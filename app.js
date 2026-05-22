@@ -106,17 +106,18 @@ function _mathToSpoken(t) {
   t = t.replace(/³/g, ' Kubik');
   // Wurzel
   t = t.replace(/\\sqrt\{([^}]+)\}/g, (_, x) => `Wurzel aus ${x}`);
-  // Operatoren NUR zwischen Zahlen/math-Kontext (kein Gedankenstrich im Fließtext!)
-  t = t.replace(/(\d)\s*\+\s*(\d)/g,   '$1 plus $2');
-  t = t.replace(/(\d)\s*[−\-]\s*(\d)/g,'$1 minus $2');
-  t = t.replace(/(\d)\s*×\s*(\d)/g,    '$1 mal $2');
-  t = t.replace(/(\d)\s*·\s*(\d)/g,    '$1 mal $2');
-  t = t.replace(/(\d)\s*÷\s*(\d)/g,    '$1 geteilt durch $2');
-  t = t.replace(/(\d)\s*=\s*(\d)/g,    '$1 ist gleich $2');
-  t = t.replace(/(\d)\s*≤\s*(\d)/g,    '$1 kleiner gleich $2');
-  t = t.replace(/(\d)\s*≥\s*(\d)/g,    '$1 größer gleich $2');
-  t = t.replace(/(\d)\s*<\s*(\d)/g,    '$1 kleiner als $2');
-  t = t.replace(/(\d)\s*>\s*(\d)/g,    '$1 größer als $2');
+  // Operatoren NUR zwischen Zahlen – Lookahead/Lookbehind, damit Ziffern erhalten bleiben
+  // Gedankenstrich im Fließtext (z.B. „Aufrufe – das ist") wird NICHT konvertiert
+  t = t.replace(/(?<=\d)\s*\+\s*(?=\d)/g,    ' plus ');
+  t = t.replace(/(?<=\d)\s*[−–\-]\s*(?=\d)/g,' minus ');  // Minus, En-Dash, Bindestrich
+  t = t.replace(/(?<=\d)\s*×\s*(?=\d)/g,     ' mal ');
+  t = t.replace(/(?<=\d)\s*·\s*(?=\d)/g,     ' mal ');
+  t = t.replace(/(?<=\d)\s*÷\s*(?=\d)/g,     ' geteilt durch ');
+  t = t.replace(/(?<=\d)\s*=\s*(?=\d)/g,     ' ist gleich ');
+  t = t.replace(/(?<=\d)\s*≤\s*(?=\d)/g,     ' kleiner gleich ');
+  t = t.replace(/(?<=\d)\s*≥\s*(?=\d)/g,     ' größer gleich ');
+  t = t.replace(/(?<=\d)\s*<\s*(?=\d)/g,     ' kleiner als ');
+  t = t.replace(/(?<=\d)\s*>\s*(?=\d)/g,     ' größer als ');
   // Freistehende Sonderzeichen
   t = t.replace(/×/g, ' mal ');
   t = t.replace(/÷/g, ' geteilt durch ');
