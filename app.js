@@ -1715,7 +1715,7 @@ function closeSidebar() {
 // ============================================================
 const GROQ_KEY = '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';
 
-const CHAT_SYSTEM = `Du bist Herr Lala, ein freundlicher und geduldiger Lernassistent auf der Schullernplattform LernStar. Du hilfst Schülerinnen und Schülern der Klassen 5–13 in Deutschland beim Verstehen von Schulstoffen. Antworte immer auf Deutsch. Erkläre in einfacher, kindgerechter Sprache mit kurzen Sätzen und konkreten Alltagsbeispielen. Halte deine Antworten kurz (maximal 4–5 Sätze). Bei Mathe- oder Physikaufgaben zeige den Lösungsweg klar Schritt für Schritt. Sei freundlich, ermutigend und positiv. Verwende gelegentlich passende Emojis.`;
+const CHAT_SYSTEM = `Du bist Herr Lala, ein freundlicher und geduldiger Lernassistent auf der Schullernplattform LernStar. Du hilfst Schülerinnen und Schülern der Klassen 5–13 in Deutschland beim Verstehen von Schulstoffen. Antworte immer auf Deutsch. Erkläre in einfacher, kindgerechter Sprache mit kurzen Sätzen und konkreten Alltagsbeispielen. Halte deine Antworten kurz (maximal 4–5 Sätze). Bei Mathe- oder Physikaufgaben zeige den Lösungsweg klar Schritt für Schritt. Sei freundlich, ermutigend und positiv. Verwende gelegentlich passende Emojis. WICHTIG: Schreibe alle mathematischen Ausdrücke, Brüche und Formeln IMMER in $...$, zum Beispiel $\\frac{1}{2}$, $3 \\cdot 4 = 12$, $x^2 + y^2$. Niemals LaTeX ohne Dollar-Zeichen schreiben.`;
 
 let _chatOpen = false;
 
@@ -1744,7 +1744,11 @@ function _chatAddBubble(text, role) {
   const div  = document.createElement('div');
   div.className = `chat-bubble chat-bubble-${role}`;
   if (role === 'bot' && typeof marked !== 'undefined') {
-    div.innerHTML = marked.parse(text);
+    const wrapped = text.replace(
+      /(\\(?:frac|sqrt|cdot|times|div|pm|leq|geq|neq|approx|sum|int|pi|alpha|beta|gamma|delta)\b[^$\n]*)/g,
+      (m) => m.startsWith('$') ? m : `$${m}$`
+    );
+    div.innerHTML = marked.parse(wrapped);
   } else {
     div.innerHTML = text.replace(/\n/g, '<br>');
   }
