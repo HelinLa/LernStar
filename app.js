@@ -114,40 +114,42 @@ function _fracSpoken(z, n) {
 }
 
 function _mathToSpoken(t) {
-  // LaTeX-Brüche: \frac{a}{b}
+  // 1. LaTeX-Brüche: \frac{a}{b}
   t = t.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, (_, z, n) => _fracSpoken(z, n));
-  // Einfache Brüche im Text: 1/4, 2/4, 3/8 usw.
-  t = t.replace(/\b(\d+)\/(\d+)\b/g, (_, z, n) => _fracSpoken(z, n));
-  // $-Dollarzeichen entfernen
+  // 2. Brüche im Text: 1/4, 2/4, 3/8 usw. (ALLE digit/slash/digit)
+  t = t.replace(/(\d+)\/(\d+)/g, (_, z, n) => _fracSpoken(z, n));
+  // 3. $-Dollarzeichen entfernen
   t = t.replace(/\$\$?([^$\n]+)\$\$?/g, '$1');
-  // Potenzen: x^2, m²
+  // 4. Potenzen
   t = t.replace(/\^(\d+)/g, (_, e) => ` hoch ${e}`);
   t = t.replace(/²/g, ' Quadrat');
   t = t.replace(/³/g, ' Kubik');
-  // Wurzel
+  // 5. Wurzel
   t = t.replace(/\\sqrt\{([^}]+)\}/g, (_, x) => `Wurzel aus ${x}`);
-  // Operatoren NUR zwischen Zahlen – Lookahead/Lookbehind, damit Ziffern erhalten bleiben
-  // Gedankenstrich im Fließtext (z.B. „Aufrufe – das ist") wird NICHT konvertiert
-  t = t.replace(/(?<=\d)\s*\+\s*(?=\d)/g,    ' plus ');
-  t = t.replace(/(?<=\d)\s*[−–\-]\s*(?=\d)/g,' minus ');  // Minus, En-Dash, Bindestrich
-  t = t.replace(/(?<=\d)\s*×\s*(?=\d)/g,     ' mal ');
-  t = t.replace(/(?<=\d)\s*·\s*(?=\d)/g,     ' mal ');
-  t = t.replace(/(?<=\d)\s*÷\s*(?=\d)/g,     ' geteilt durch ');
-  t = t.replace(/(?<=\d)\s*=\s*(?=\d)/g,     ' ist gleich ');
-  t = t.replace(/(?<=\d)\s*≤\s*(?=\d)/g,     ' kleiner gleich ');
-  t = t.replace(/(?<=\d)\s*≥\s*(?=\d)/g,     ' größer gleich ');
-  t = t.replace(/(?<=\d)\s*<\s*(?=\d)/g,     ' kleiner als ');
-  t = t.replace(/(?<=\d)\s*>\s*(?=\d)/g,     ' größer als ');
-  // Freistehende Sonderzeichen
+  // 6. Operatoren zwischen Zahlen – kein Lookbehind (Safari-kompatibel!)
+  //    (\d) nimmt letzte Ziffer vor Operator mit und gibt sie per $1 zurück
+  //    (?=\d) schaut auf erste Ziffer nach Operator ohne sie zu verbrauchen
+  t = t.replace(/(\d)\s*\+\s*(?=\d)/g,         '$1 plus ');
+  t = t.replace(/(\d)\s*[−–]\s*(?=\d)/g,       '$1 minus ');  // Unicode-Minus & En-Dash
+  t = t.replace(/(\d)\s*-\s*(?=\d)/g,           '$1 minus ');  // normaler Bindestrich
+  t = t.replace(/(\d)\s*×\s*(?=\d)/g,           '$1 mal ');
+  t = t.replace(/(\d)\s*·\s*(?=\d)/g,           '$1 mal ');
+  t = t.replace(/(\d)\s*÷\s*(?=\d)/g,           '$1 geteilt durch ');
+  t = t.replace(/(\d)\s*=\s*(?=\d)/g,           '$1 ist gleich ');
+  t = t.replace(/(\d)\s*≤\s*(?=\d)/g,           '$1 kleiner gleich ');
+  t = t.replace(/(\d)\s*≥\s*(?=\d)/g,           '$1 größer gleich ');
+  t = t.replace(/(\d)\s*<\s*(?=\d)/g,           '$1 kleiner als ');
+  t = t.replace(/(\d)\s*>\s*(?=\d)/g,           '$1 größer als ');
+  // 7. Freistehende Sonderzeichen
   t = t.replace(/×/g, ' mal ');
   t = t.replace(/÷/g, ' geteilt durch ');
   t = t.replace(/\\cdot/g, ' mal ');
-  t = t.replace(/\\times/g, ' geteilt durch ');
+  t = t.replace(/\\times/g, ' mal ');
   t = t.replace(/\\div/g, ' geteilt durch ');
-  // Restliche LaTeX-Befehle
+  // 8. Restliche LaTeX-Befehle
   t = t.replace(/\\[a-zA-Z]+\{([^}]*)\}/g, '$1');
   t = t.replace(/\\[a-zA-Z]+/g, '');
-  // Markdown bereinigen
+  // 9. Markdown bereinigen
   t = t.replace(/#{1,6}\s*/g, '');
   t = t.replace(/\*\*(.+?)\*\*/g, '$1');
   t = t.replace(/\*(.+?)\*/g, '$1');
