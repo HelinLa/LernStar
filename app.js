@@ -84,7 +84,55 @@ const ELEVEN_MODEL    = 'eleven_multilingual_v2';
 const _audioCache     = new Map();
 let   _currentAudio   = null;
 
+function _mathToSpoken(t) {
+  // Brüche: \frac{a}{b} → "a durch b" (bekannte Brüche ausschreiben)
+  const frac = { '1/2':'ein Halb','1/3':'ein Drittel','2/3':'zwei Drittel',
+    '1/4':'ein Viertel','3/4':'drei Viertel','1/5':'ein Fünftel',
+    '2/5':'zwei Fünftel','3/5':'drei Fünftel','4/5':'vier Fünftel',
+    '1/6':'ein Sechstel','1/8':'ein Achtel','3/8':'drei Achtel',
+    '5/8':'fünf Achtel','7/8':'sieben Achtel' };
+  t = t.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, (_, z, n) => {
+    const key = `${z}/${n}`;
+    return frac[key] || `${z} durch ${n}`;
+  });
+  // $...$ und $$...$$ – Dollarzeichen entfernen
+  t = t.replace(/\$\$?([^$]+)\$\$?/g, '$1');
+  // Potenzen: x^2 → x hoch 2
+  t = t.replace(/\^(\d+)/g, (_, e) => ` hoch ${e}`);
+  // Wurzel: \sqrt{x} → Wurzel aus x
+  t = t.replace(/\\sqrt\{([^}]+)\}/g, (_, x) => `Wurzel aus ${x}`);
+  // Operatoren ausschreiben
+  t = t.replace(/\s*\+\s*/g, ' plus ');
+  t = t.replace(/\s*−\s*/g, ' minus ');   // Unicode-Minus
+  t = t.replace(/\s*-\s*/g, ' minus ');
+  t = t.replace(/\s*×\s*/g, ' mal ');
+  t = t.replace(/\s*·\s*/g, ' mal ');
+  t = t.replace(/\s*\\cdot\s*/g, ' mal ');
+  t = t.replace(/\s*\\times\s*/g, ' mal ');
+  t = t.replace(/\s*÷\s*/g, ' geteilt durch ');
+  t = t.replace(/\s*\\div\s*/g, ' geteilt durch ');
+  t = t.replace(/\s*=\s*/g, ' ist gleich ');
+  t = t.replace(/\s*≤\s*/g, ' kleiner gleich ');
+  t = t.replace(/\s*≥\s*/g, ' größer gleich ');
+  t = t.replace(/\s*<\s*/g, ' kleiner als ');
+  t = t.replace(/\s*>\s*/g, ' größer als ');
+  // Restliche LaTeX-Befehle entfernen
+  t = t.replace(/\\[a-zA-Z]+\{([^}]*)\}/g, '$1');
+  t = t.replace(/\\[a-zA-Z]+/g, '');
+  // Markdown-Symbole entfernen
+  t = t.replace(/#{1,6}\s*/g, '');
+  t = t.replace(/\*\*(.+?)\*\*/g, '$1');
+  t = t.replace(/\*(.+?)\*/g, '$1');
+  t = t.replace(/`[^`]+`/g, '');
+  t = t.replace(/[-*]\s{1,2}/g, '');
+  t = t.replace(/\n{2,}/g, '. ').replace(/\n/g, ' ');
+  // Doppelte Leerzeichen bereinigen
+  t = t.replace(/\s{2,}/g, ' ').trim();
+  return t;
+}
+
 async function _elevenFetch(text) {
+  text = _mathToSpoken(text);
   const key = text.slice(0, 140);
   if (_audioCache.has(key)) return _audioCache.get(key);
   const res = await fetch(
