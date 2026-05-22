@@ -1854,15 +1854,23 @@ function _chatClose() {
 }
 
 function _fixMath(t) {
-  // Zeilenmuster: LaTeX-Ausdruck mit fehlendem $$ am Anfang, aber $$ am Ende
-  t = t.replace(/^(?!\$)(.*?\\(?:frac|sqrt|cdot|times|div|pm|leq|geq|neq|approx)\b.*?)\s*\$\$\s*$/gm,
-    (_, expr) => `$${expr.trim()}$`);
-  // Normalisiere $$...$$ → $...$
-  t = t.replace(/\$\$(.+?)\$\$/gs, (_, inner) => `$${inner.trim()}$`);
-  // Bare \frac{}{} ohne $ drumherum → $\frac{}{}$
-  t = t.replace(/(?<!\$)(\\frac\{[^}]*\}\{[^}]*\})/g, '$$$1$');
-  // Bare \sqrt{} → $\sqrt{}$
-  t = t.replace(/(?<!\$)(\\sqrt\{[^}]*\})/g, '$$$1$');
+  // Entferne \text{...} – nur den Inhalt behalten
+  t = t.replace(/\\text\{([^}]*)\}/g, '$1');
+  // Alle $ entfernen (KaTeX-Delimiter) – wir ersetzen Brüche direkt durch HTML
+  t = t.replace(/\$/g, '');
+  // \frac{a}{b} → HTML-Bruch
+  t = t.replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g,
+    '<span class="chat-frac"><sup>$1</sup><span>⁄</span><sub>$2</sub></span>');
+  // \sqrt{x} → √x
+  t = t.replace(/\\sqrt\{([^}]*)\}/g, '√$1');
+  // ^2 → ²
+  t = t.replace(/\^(\d)/g, '<sup>$1</sup>');
+  // Übrige LaTeX-Befehle: Inhalt behalten
+  t = t.replace(/\\[a-zA-Z]+\{([^}]*)\}/g, '$1');
+  t = t.replace(/\\[a-zA-Z]+/g, '');
+  // Einfache Brüche im Text: 1/4 → HTML
+  t = t.replace(/\b(\d+)\/(\d+)\b/g,
+    '<span class="chat-frac"><sup>$1</sup><span>⁄</span><sub>$2</sub></span>');
   return t;
 }
 
@@ -1876,15 +1884,6 @@ function _chatAddBubble(text, role) {
     div.innerHTML = text.replace(/\n/g, '<br>');
   }
   msgs.appendChild(div);
-  if (role === 'bot' && window._katexReady && typeof renderMathInElement !== 'undefined') {
-    renderMathInElement(div, {
-      delimiters: [
-        { left: '$$', right: '$$', display: true },
-        { left: '$', right: '$', display: false }
-      ],
-      throwOnError: false
-    });
-  }
   msgs.scrollTop = msgs.scrollHeight;
   return div;
 }

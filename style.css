@@ -1278,6 +1278,28 @@ ul { list-style: none; }
   align-self: flex-start;
 }
 
+/* HTML-Brüche im Chat */
+.chat-frac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  font-size: .85em;
+  line-height: 1.1;
+  margin: 0 2px;
+}
+.chat-frac sup, .chat-frac sub {
+  font-size: 1em;
+  line-height: 1.2;
+}
+.chat-frac span {
+  border-top: 1px solid currentColor;
+  width: 100%;
+  font-size: 0;
+  height: 1px;
+  margin: 1px 0;
+}
+
 /* Markdown rendered inside bot bubbles */
 .chat-bubble-bot p { margin: 0 0 .45em; }
 .chat-bubble-bot p:last-child { margin-bottom: 0; }
