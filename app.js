@@ -1715,7 +1715,16 @@ function closeSidebar() {
 // ============================================================
 const GROQ_KEY = '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';
 
-const CHAT_SYSTEM = `Du bist Herr Lala, ein freundlicher und geduldiger Lernassistent auf der Schullernplattform LernStar. Du hilfst Schülerinnen und Schülern der Klassen 5–13 in Deutschland beim Verstehen von Schulstoffen. Antworte immer auf Deutsch. Erkläre in einfacher, kindgerechter Sprache mit kurzen Sätzen und konkreten Alltagsbeispielen. Halte deine Antworten kurz (maximal 4–5 Sätze). Bei Mathe- oder Physikaufgaben zeige den Lösungsweg klar Schritt für Schritt. Sei freundlich, ermutigend und positiv. Verwende gelegentlich passende Emojis. WICHTIG: Schreibe alle mathematischen Ausdrücke, Brüche und Formeln IMMER in $...$, zum Beispiel $\\frac{1}{2}$, $3 \\cdot 4 = 12$, $x^2 + y^2$. Niemals LaTeX ohne Dollar-Zeichen schreiben.`;
+const CHAT_SYSTEM = `Du bist Herr Lala, ein freundlicher und geduldiger Lernassistent auf der Schullernplattform LernStar. Du hilfst Schülerinnen und Schülern der Klassen 5–13 in Deutschland beim Verstehen von Schulstoffen. Antworte immer auf Deutsch. Erkläre in einfacher, kindgerechter Sprache mit kurzen Sätzen und konkreten Alltagsbeispielen. Halte deine Antworten kurz (maximal 4–5 Sätze). Bei Mathe- oder Physikaufgaben zeige den Lösungsweg klar Schritt für Schritt. Sei freundlich, ermutigend und positiv. Verwende gelegentlich passende Emojis.
+
+MATHEMATIK-FORMATIERUNG (sehr wichtig!):
+Schreibe JEDEN mathematischen Ausdruck in einzelne Dollarzeichen: $Ausdruck$
+Beispiele:
+- Bruch: $\\frac{3}{4}$
+- Rechnung: $7 + 5 = 12$
+- Gleichung: $x^2 + 1 = 5$
+- Wurzel: $\\sqrt{9} = 3$
+Niemals LaTeX ohne Dollarzeichen schreiben. Niemals $$ (doppelte Dollarzeichen) verwenden.`;
 
 let _chatOpen = false;
 
@@ -1739,16 +1748,25 @@ function _chatClose() {
   document.getElementById('chatOverlay').classList.remove('visible');
 }
 
+function _fixMath(t) {
+  // Zeilenmuster: LaTeX-Ausdruck mit fehlendem $$ am Anfang, aber $$ am Ende
+  t = t.replace(/^(?!\$)(.*?\\(?:frac|sqrt|cdot|times|div|pm|leq|geq|neq|approx)\b.*?)\s*\$\$\s*$/gm,
+    (_, expr) => `$${expr.trim()}$`);
+  // Normalisiere $$...$$ → $...$
+  t = t.replace(/\$\$(.+?)\$\$/gs, (_, inner) => `$${inner.trim()}$`);
+  // Bare \frac{}{} ohne $ drumherum → $\frac{}{}$
+  t = t.replace(/(?<!\$)(\\frac\{[^}]*\}\{[^}]*\})/g, '$$$1$');
+  // Bare \sqrt{} → $\sqrt{}$
+  t = t.replace(/(?<!\$)(\\sqrt\{[^}]*\})/g, '$$$1$');
+  return t;
+}
+
 function _chatAddBubble(text, role) {
   const msgs = document.getElementById('chatMessages');
   const div  = document.createElement('div');
   div.className = `chat-bubble chat-bubble-${role}`;
   if (role === 'bot' && typeof marked !== 'undefined') {
-    const wrapped = text.replace(
-      /(\\(?:frac|sqrt|cdot|times|div|pm|leq|geq|neq|approx|sum|int|pi|alpha|beta|gamma|delta)\b[^$\n]*)/g,
-      (m) => m.startsWith('$') ? m : `$${m}$`
-    );
-    div.innerHTML = marked.parse(wrapped);
+    div.innerHTML = marked.parse(_fixMath(text));
   } else {
     div.innerHTML = text.replace(/\n/g, '<br>');
   }
