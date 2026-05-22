@@ -132,7 +132,6 @@ function _mathToSpoken(t) {
 }
 
 async function _elevenFetch(text) {
-  text = _mathToSpoken(text);
   const key = text.slice(0, 140);
   if (_audioCache.has(key)) return _audioCache.get(key);
   const res = await fetch(
@@ -1230,6 +1229,7 @@ function hideTopicVisual() {
 
 // Lightweight TTS for sequential playback (does not manage play/pause buttons)
 function _speakSequential(text, onDone, _skipEleven) {
+  text = _mathToSpoken(text);
   if (ELEVEN_KEY && !_skipEleven) { _elevenSpeakSequential(text, onDone); return; }
   if (!('speechSynthesis' in window)) { if (onDone) setTimeout(onDone, 600); return; }
   const voice = _getVoice();
@@ -1274,6 +1274,7 @@ function _speakSequential(text, onDone, _skipEleven) {
 
 // Kern-Sprech-Funktion (Hedda fest)
 function _speakText(text, topicIdx, onDone, _skipEleven) {
+  text = _mathToSpoken(text);
   if (ELEVEN_KEY && !_skipEleven) { _elevenSpeakText(text, onDone); return; }
   const btn      = document.getElementById('playIntroBtn');
   const pauseBtn = document.getElementById('pauseIntroBtn');
