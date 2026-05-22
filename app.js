@@ -114,6 +114,24 @@ function _fracSpoken(z, n) {
 }
 
 function _mathToSpoken(t) {
+  // 0. Physikalische Einheiten (vor Bruch-Erkennung!)
+  t = t.replace(/\bm\/s²/g,  'Meter pro Sekunde Quadrat');
+  t = t.replace(/\bm\/s\b/g, 'Meter pro Sekunde');
+  t = t.replace(/\bkm\/h\b/g,'Kilometer pro Stunde');
+  t = t.replace(/\bN\/m\b/g, 'Newton pro Meter');
+  t = t.replace(/\bJ\/kg\b/g,'Joule pro Kilogramm');
+  t = t.replace(/\bW\/m\b/g, 'Watt pro Meter');
+  t = t.replace(/\bm\/s\b/g, 'Meter pro Sekunde');
+  // Griechische Buchstaben
+  t = t.replace(/\bα\b/g,'Alpha'); t = t.replace(/\bβ\b/g,'Beta');
+  t = t.replace(/\bγ\b/g,'Gamma'); t = t.replace(/\bδ\b/g,'Delta');
+  t = t.replace(/\bλ\b/g,'Lambda'); t = t.replace(/\bμ\b/g,'My');
+  t = t.replace(/\bπ\b/g,'Pi'); t = t.replace(/\bσ\b/g,'Sigma');
+  t = t.replace(/\bω\b/g,'Omega'); t = t.replace(/\bΩ\b/g,'Ohm');
+  t = t.replace(/\bρ\b/g,'Rho'); t = t.replace(/\bΔ\b/g,'Delta');
+  // Physik-Symbole
+  t = t.replace(/\bFG\b/g,'Gewichtskraft'); t = t.replace(/\bFR\b/g,'Reibungskraft');
+  t = t.replace(/\bF_G\b/g,'Gewichtskraft'); t = t.replace(/\bF_R\b/g,'Reibungskraft');
   // 1. LaTeX-Brüche: \frac{a}{b}
   t = t.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, (_, z, n) => _fracSpoken(z, n));
   // 2. Brüche im Text: 1/4, 2/4, 3/8 usw. (ALLE digit/slash/digit)
