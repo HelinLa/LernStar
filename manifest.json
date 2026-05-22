@@ -1,0 +1,36 @@
+{
+  "name": "LernStar – Deine Lernplattform",
+  "short_name": "LernStar",
+  "description": "Moderne Lernplattform für Klasse 5–10. Mathe & Physik mit Prof. Lenny.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f0c29",
+  "theme_color": "#7C3AED",
+  "lang": "de",
+  "categories": ["education"],
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Klasse 5",
+      "short_name": "Kl. 5",
+      "url": "./index.html",
+      "description": "Zu Klasse 5 springen"
+    }
+  ]
+}
