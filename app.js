@@ -1898,11 +1898,24 @@ async function _chatAsk(question) {
     _chatHideTyping();
     _chatAddBubble(answer, 'bot');
 
-    // Avatar spricht die Antwort vor
+    // Avatar spricht die Antwort vor – Markdown/LaTeX vorher entfernen
+    const spoken = answer
+      .replace(/#{1,6}\s*/g, '')          // ### Überschriften
+      .replace(/\*\*(.+?)\*\*/g, '$1')    // **fett**
+      .replace(/\*(.+?)\*/g, '$1')        // *kursiv*
+      .replace(/`[^`]+`/g, '')            // `code`
+      .replace(/\$\$?[^$]+\$\$?/g, '')   // $Formel$ / $$Formel$$
+      .replace(/\\(?:frac|sqrt|cdot|times|div|leq|geq|pm)\{[^}]*\}(?:\{[^}]*\})?/g, '') // \frac{}{}
+      .replace(/[-*]\s+/g, '')            // Aufzählungspunkte
+      .replace(/\d+\.\s+/g, '')           // Nummerierte Listen
+      .replace(/\n{2,}/g, '. ')           // Doppelte Zeilenumbrüche
+      .replace(/\n/g, ' ')               // Einzelne Zeilenumbrüche
+      .trim();
+
     if (ELEVEN_KEY) {
-      _elevenSpeakText(answer, null);
+      _elevenSpeakText(spoken, null);
     } else {
-      _speakSequential(answer, null, false);
+      _speakSequential(spoken, null, false);
     }
 
   } catch (e) {
