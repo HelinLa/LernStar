@@ -62,14 +62,14 @@ if (typeof speechSynthesis !== 'undefined') {
   speechSynthesis.addEventListener('voiceschanged', () => {
     _cachedVoice = _pickMaleVoice();
     const badge = document.getElementById('voiceBadge');
-    if (badge) badge.textContent = ELEVEN_KEY ? '✨ ElevenLabs: Liam' : _voiceLabel(_cachedVoice);
+    if (badge) badge.textContent = ELEVEN_KEY ? '✨ ElevenLabs: Antoni' : _voiceLabel(_cachedVoice);
   });
   if (speechSynthesis.getVoices().length) _cachedVoice = _pickMaleVoice();
 }
 // Badge sofort setzen falls ElevenLabs aktiv
 document.addEventListener('DOMContentLoaded', () => {
   const badge = document.getElementById('voiceBadge');
-  if (badge && ELEVEN_KEY) badge.textContent = '✨ ElevenLabs: Liam';
+  if (badge && ELEVEN_KEY) badge.textContent = '✨ ElevenLabs: Antoni';
 });
 
 // ── VRM LIP SYNC ─────────────────────────────────────────
@@ -79,7 +79,7 @@ function _stopLipSync()  { window._vrmTalking = false; }
 
 // ── ELEVENLABS TTS ────────────────────────────────────────
 const ELEVEN_KEY      = 'e24b6be67594419d8f50afdfb195995a';
-const ELEVEN_VOICE    = 'TX3LPaxmHKxFdv7VOQHJ'; // Liam – natürlich, klar, modern
+const ELEVEN_VOICE    = 'ErXwobaYiN019PkySvjV'; // Antoni – freundlich, natürlich
 const ELEVEN_MODEL    = 'eleven_multilingual_v2';
 const _audioCache     = new Map();
 let   _currentAudio   = null;
