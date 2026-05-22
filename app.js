@@ -84,20 +84,40 @@ const ELEVEN_MODEL    = 'eleven_multilingual_v2';
 const _audioCache     = new Map();
 let   _currentAudio   = null;
 
-function _mathToSpoken(t) {
-  const fracMap = {
-    '1/2':'ein Halb','1/3':'ein Drittel','2/3':'zwei Drittel',
-    '1/4':'ein Viertel','3/4':'drei Viertel','1/5':'ein Fünftel',
-    '2/5':'zwei Fünftel','3/5':'drei Fünftel','4/5':'vier Fünftel',
-    '1/6':'ein Sechstel','5/6':'fünf Sechstel',
-    '1/8':'ein Achtel','3/8':'drei Achtel','5/8':'fünf Achtel','7/8':'sieben Achtel'
+function _fracSpoken(z, n) {
+  const LOOKUP = {
+    '1/2':'einhalb',      '2/2':'ein Ganzes',
+    '1/3':'eindrittel',   '2/3':'zweidrittel',   '3/3':'ein Ganzes',
+    '1/4':'einviertel',   '2/4':'zweiviertel',   '3/4':'dreiviertel',   '4/4':'ein Ganzes',
+    '1/5':'einfünftel',   '2/5':'zweifünftel',   '3/5':'dreifünftel',   '4/5':'vierfünftel',
+    '1/6':'einsechstel',  '2/6':'zweisechstel',  '3/6':'dreisechstel',  '4/6':'viersechstel',  '5/6':'fünfsechstel',
+    '1/7':'einsiebtel',   '2/7':'zweisiebtel',   '3/7':'dreisiebtel',
+    '1/8':'einachtel',    '2/8':'zweiachtel',    '3/8':'dreiachtel',    '4/8':'vierachteln',
+                          '5/8':'fünfachtel',    '6/8':'sechsachtel',   '7/8':'siebenachtel',
+    '1/9':'einneuntel',   '2/9':'zweineuntel',
+    '1/10':'einzehntel',  '2/10':'zweizehntel',  '3/10':'dreizehntel',
+    '1/12':'einzwölftel', '5/12':'fünfzwölftel',
+    '1/100':'ein Hundertstel', '1/1000':'ein Tausendstel',
   };
+  const key = `${z}/${n}`;
+  if (LOOKUP[key]) return LOOKUP[key];
+  // Fallback: Zähler ausschreiben + Nenner-Endung
+  const NUMS = ['null','ein','zwei','drei','vier','fünf','sechs','sieben',
+                'acht','neun','zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn'];
+  const DENS = {2:'halb',3:'drittel',4:'viertel',5:'fünftel',6:'sechstel',
+                7:'siebtel',8:'achtel',9:'neuntel',10:'zehntel',12:'zwölftel'};
+  const zi = parseInt(z), ni = parseInt(n);
+  if (isNaN(zi) || isNaN(ni) || ni === 0) return `${z} durch ${n}`;
+  const zStr = (zi >= 0 && zi < NUMS.length) ? NUMS[zi] : z;
+  const nStr = DENS[ni] || `${n}-tel`;
+  return `${zStr}${nStr}`;
+}
+
+function _mathToSpoken(t) {
   // LaTeX-Brüche: \frac{a}{b}
-  t = t.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, (_, z, n) =>
-    fracMap[`${z}/${n}`] || `${z} durch ${n}`);
-  // Einfache Brüche im Text: 1/4, 3/8 usw.
-  t = t.replace(/\b(\d+)\/(\d+)\b/g, (_, z, n) =>
-    fracMap[`${z}/${n}`] || `${z} durch ${n}`);
+  t = t.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, (_, z, n) => _fracSpoken(z, n));
+  // Einfache Brüche im Text: 1/4, 2/4, 3/8 usw.
+  t = t.replace(/\b(\d+)\/(\d+)\b/g, (_, z, n) => _fracSpoken(z, n));
   // $-Dollarzeichen entfernen
   t = t.replace(/\$\$?([^$\n]+)\$\$?/g, '$1');
   // Potenzen: x^2, m²
