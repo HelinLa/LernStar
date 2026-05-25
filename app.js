@@ -2148,47 +2148,80 @@ function openExperiment(expId) {
   const modal = document.createElement('div');
   modal.id = 'expModal';
   modal.className = 'sim-overlay';
-  modal.innerHTML = `
-    <div class="sim-box">
-      <button class="sim-x" onclick="closeExperiment()">✕</button>
-      <h3 class="sim-h3">🧪 Experiment: Gleichförmige Bewegung</h3>
-      <canvas id="simRoad" class="sim-road-canvas" width="700" height="130"></canvas>
-      <div class="sim-info-row">
-        <span>⏱ Zeit: <b id="simT">0,0 s</b></span>
-        <span>📏 Weg: <b id="simS">0 m</b></span>
-        <span>Tempo:
-          <select id="simV" onchange="_simSetV(this.value)">
-            <option value="5">5 m/s (langsam)</option>
-            <option value="10" selected>10 m/s (mittel)</option>
-            <option value="20">20 m/s (schnell)</option>
-          </select>
-        </span>
-      </div>
-      <div class="sim-btn-row">
-        <button class="sim-btn primary" id="simPlayBtn" onclick="_simToggle()">▶ Start</button>
-        <button class="sim-btn" onclick="_simMeasure()">📍 Jetzt messen</button>
-        <button class="sim-btn" onclick="_simReset()">↺ Neu starten</button>
-      </div>
-      <p class="sim-hint">Drücke mehrmals auf <b>Jetzt messen</b> während das Auto fährt – die Punkte erscheinen im Diagramm. Klicke dann auf <b>zwei Punkte</b> um die Steigung (= Geschwindigkeit) zu berechnen!</p>
-      <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(zwei Punkte anklicken → Steigung = Geschwindigkeit)</span></div>
-      <canvas id="simChart" class="sim-chart-canvas" width="680" height="290"></canvas>
-      <div id="simResult" class="sim-result"></div>
-      <table class="sim-table" id="simTableWrap" style="display:none">
-        <thead><tr><th>Punkt</th><th>Zeit t (s)</th><th>Weg s (m)</th></tr></thead>
-        <tbody id="simTbody"></tbody>
-      </table>
-    </div>`;
-  document.body.appendChild(modal);
-  _sim = _simCreate();
 
-  document.getElementById('simChart').addEventListener('click', function(e) {
-    if (!_sim) return;
-    const r = this.getBoundingClientRect();
-    _sim.handleClick(
-      (e.clientX - r.left) * (this.width / r.width),
-      (e.clientY - r.top)  * (this.height / r.height)
-    );
-  });
+  if (expId === 'fadenstrahlrohr') {
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">⚛️ Fadenstrahlrohr – Spezifische Ladung e/m</h3>
+        <canvas id="fstCanvas" width="480" height="290" style="width:100%;border-radius:10px;display:block;background:#06060f"></canvas>
+        <div class="sim-info-row">
+          <span>U = <b id="fstUVal">200</b> V</span>
+          <span>B = <b id="fstBVal">1,56</b> mT</span>
+          <span>r = <b id="fstRVal">4,1</b> cm</span>
+          <span>e/m = <b id="fstEmVal">1,76</b> ×10¹¹ C/kg</span>
+        </div>
+        <div style="padding:6px 14px 2px;display:flex;flex-direction:column;gap:7px">
+          <label style="display:flex;align-items:center;gap:8px;font-size:.87rem">⚡ Spannung U:
+            <input type="range" id="fstUSlider" min="100" max="400" step="25" value="200"
+              oninput="_fstSetU(this.value)" style="flex:1;max-width:210px;accent-color:#7C3AED">
+            <b id="fstULabel">200 V</b></label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:.87rem">🔌 Spulenstrom I:
+            <input type="range" id="fstISlider" min="5" max="20" step="1" value="15"
+              oninput="_fstSetI(this.value)" style="flex:1;max-width:210px;accent-color:#0EA5E9">
+            <b id="fstILabel">1,5 A</b></label>
+        </div>
+        <div id="fstResult" class="sim-result" style="margin:8px 14px">
+          Stelle U und I ein – beobachte wie sich der Kreisradius ändert!
+        </div>
+        <p class="sim-hint" style="text-align:center;margin:4px 0 6px">
+          Formel: <b>e/m = 2U / (B² · r²)</b> &nbsp;|&nbsp; Literaturwert: <b>1,76 × 10¹¹ C/kg</b>
+        </p>
+      </div>`;
+    document.body.appendChild(modal);
+    _sim = _fstCreate();
+  } else {
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">🧪 Experiment: Gleichförmige Bewegung</h3>
+        <canvas id="simRoad" class="sim-road-canvas" width="700" height="130"></canvas>
+        <div class="sim-info-row">
+          <span>⏱ Zeit: <b id="simT">0,0 s</b></span>
+          <span>📏 Weg: <b id="simS">0 m</b></span>
+          <span>Tempo:
+            <select id="simV" onchange="_simSetV(this.value)">
+              <option value="5">5 m/s (langsam)</option>
+              <option value="10" selected>10 m/s (mittel)</option>
+              <option value="20">20 m/s (schnell)</option>
+            </select>
+          </span>
+        </div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" id="simPlayBtn" onclick="_simToggle()">▶ Start</button>
+          <button class="sim-btn" onclick="_simMeasure()">📍 Jetzt messen</button>
+          <button class="sim-btn" onclick="_simReset()">↺ Neu starten</button>
+        </div>
+        <p class="sim-hint">Drücke mehrmals auf <b>Jetzt messen</b> während das Auto fährt – die Punkte erscheinen im Diagramm. Klicke dann auf <b>zwei Punkte</b> um die Steigung (= Geschwindigkeit) zu berechnen!</p>
+        <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(zwei Punkte anklicken → Steigung = Geschwindigkeit)</span></div>
+        <canvas id="simChart" class="sim-chart-canvas" width="680" height="290"></canvas>
+        <div id="simResult" class="sim-result"></div>
+        <table class="sim-table" id="simTableWrap" style="display:none">
+          <thead><tr><th>Punkt</th><th>Zeit t (s)</th><th>Weg s (m)</th></tr></thead>
+          <tbody id="simTbody"></tbody>
+        </table>
+      </div>`;
+    document.body.appendChild(modal);
+    _sim = _simCreate();
+    document.getElementById('simChart').addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
+  }
 }
 
 function closeExperiment() {
@@ -2396,6 +2429,183 @@ function _simCreate() {
 
   drawRoad(); drawChart();
   return { stop, toggle, measure, reset, handleClick, setV };
+}
+
+// ============================================================
+// FADENSTRAHLROHR SIMULATION
+// ============================================================
+function _fstSetU(val) { if (_sim) _sim.setU(parseFloat(val)); }
+function _fstSetI(val) { if (_sim) _sim.setI(parseFloat(val) / 10); }
+
+function _fstCreate() {
+  const canvas = document.getElementById('fstCanvas');
+  if (!canvas) return { stop:()=>{} };
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+
+  const e_c = 1.6e-19, me = 9.11e-31;
+  // Helmholtz coils: R=0.15m, N=130 turns → B [T] = kB × I [A]
+  const kB = 7.8e-4;
+  // r = kr × sqrt(U) / B
+  const kr = Math.sqrt(2 * me / e_c);
+  const SCALE = 2500; // pixels per meter
+
+  let U = 200, I = 1.5;
+  let animId = null, animAngle = 0;
+
+  const SPH_CX = Math.round(W * 0.54);
+  const SPH_CY = Math.round(H * 0.50);
+  const SPH_R  = Math.round(Math.min(W, H) * 0.41);
+  const ENTRY_X = SPH_CX - SPH_R + 22;
+  const ENTRY_Y = SPH_CY;
+  const ARC_SPAN = 11 * Math.PI / 6; // 330°
+
+  function calcPhysics() {
+    const B  = kB * I;
+    const r  = kr * Math.sqrt(U) / B;
+    const r_px = Math.min(r * SCALE, SPH_R - 8);
+    const em = 2 * U / (B * B * r * r);
+    return { B, r, r_px, em };
+  }
+
+  function draw() {
+    const { B, r, r_px, em } = calcPhysics();
+    ctx.clearRect(0, 0, W, H);
+
+    // Dark background
+    ctx.fillStyle = '#06060f';
+    ctx.fillRect(0, 0, W, H);
+
+    // B-field × symbols (field into screen)
+    ctx.fillStyle = 'rgba(80,100,200,0.32)';
+    ctx.font = '11px monospace';
+    for (let bx = 18; bx < W; bx += 40) {
+      for (let by = 14; by < H; by += 40) {
+        ctx.fillText('×', bx, by);
+      }
+    }
+    ctx.fillStyle = 'rgba(110,130,230,0.55)';
+    ctx.font = '10px sans-serif';
+    ctx.fillText('B ⊗ (ins Bild)', W - 86, H - 7);
+
+    // Glass sphere
+    const grd = ctx.createRadialGradient(SPH_CX - 20, SPH_CY - 20, 10, SPH_CX, SPH_CY, SPH_R);
+    grd.addColorStop(0, 'rgba(30,55,120,0.22)');
+    grd.addColorStop(1, 'rgba(5,10,35,0.1)');
+    ctx.beginPath();
+    ctx.arc(SPH_CX, SPH_CY, SPH_R, 0, 2 * Math.PI);
+    ctx.fillStyle = grd;
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(80,150,255,0.45)';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
+    // Electron gun (simple rectangle)
+    ctx.save();
+    ctx.fillStyle = '#444';
+    ctx.strokeStyle = '#777';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.rect(ENTRY_X - 30, ENTRY_Y - 9, 26, 18);
+    ctx.fill(); ctx.stroke();
+    // Filament glow
+    ctx.beginPath();
+    ctx.arc(ENTRY_X - 17, ENTRY_Y, 4.5, 0, 2 * Math.PI);
+    ctx.fillStyle = '#ffe066';
+    ctx.shadowColor = '#ffe066';
+    ctx.shadowBlur = 10;
+    ctx.fill();
+    ctx.restore();
+
+    // Circular electron beam arc
+    const cx = ENTRY_X, cy = ENTRY_Y + r_px;
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(cx, cy, r_px, -Math.PI / 2, -Math.PI / 2 + ARC_SPAN, false);
+    ctx.strokeStyle = '#00ffaa';
+    ctx.lineWidth = 2.5;
+    ctx.shadowColor = '#00ffcc';
+    ctx.shadowBlur = 13;
+    ctx.stroke();
+    ctx.restore();
+
+    // Dashed radius line + label
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,210,40,0.65)';
+    ctx.lineWidth = 1.2;
+    ctx.setLineDash([5, 4]);
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(ENTRY_X, ENTRY_Y);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.beginPath();
+    ctx.arc(cx, cy, 3, 0, 2 * Math.PI);
+    ctx.fillStyle = 'rgba(255,210,40,0.55)';
+    ctx.fill();
+    ctx.fillStyle = '#ffd700';
+    ctx.font = 'bold 12px monospace';
+    const lx = (cx + ENTRY_X) / 2 + 5, ly = (cy + ENTRY_Y) / 2 - 4;
+    ctx.fillText('r = ' + (r * 100).toFixed(1) + ' cm', lx, ly);
+    ctx.restore();
+
+    // Animated electron dot
+    animAngle = (animAngle + 0.038) % ARC_SPAN;
+    const ea = -Math.PI / 2 + animAngle;
+    const ex2 = cx + r_px * Math.cos(ea);
+    const ey2 = cy + r_px * Math.sin(ea);
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(ex2, ey2, 4.5, 0, 2 * Math.PI);
+    ctx.fillStyle = '#cce0ff';
+    ctx.shadowColor = '#88aaff';
+    ctx.shadowBlur = 16;
+    ctx.fill();
+    ctx.restore();
+    ctx.fillStyle = 'rgba(180,205,255,0.8)';
+    ctx.font = '11px sans-serif';
+    ctx.fillText('e⁻', ex2 + 7, ey2 - 4);
+
+    // Lorentz force arrow (short, at electron position)
+    const fx = -Math.sin(ea), fy = Math.cos(ea); // centripetal direction
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,100,100,0.7)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(ex2, ey2);
+    ctx.lineTo(ex2 + fx * 16, ey2 + fy * 16);
+    ctx.stroke();
+    ctx.restore();
+
+    // Update info labels
+    const bDisp  = (B * 1000).toFixed(2);
+    const rDisp  = (r * 100).toFixed(1);
+    const emDisp = (em / 1e11).toFixed(2);
+    document.getElementById('fstBVal').textContent  = bDisp;
+    document.getElementById('fstRVal').textContent  = rDisp;
+    document.getElementById('fstEmVal').textContent = emDisp;
+    document.getElementById('fstResult').innerHTML  =
+      '<b>e/m = 2 × ' + U + ' V / ((' + bDisp + ' mT)² × (' + rDisp + ' cm)²)' +
+      ' = <span style="color:#4ade80">' + emDisp + ' × 10¹¹ C/kg</span></b><br>' +
+      'Literaturwert: 1,76 × 10¹¹ · Abweichung: <b>' +
+      Math.abs((em / 1.76e11 - 1) * 100).toFixed(1) + ' %</b>';
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  function stop()    { if (animId) cancelAnimationFrame(animId); }
+  function setU(val) {
+    U = val;
+    document.getElementById('fstULabel').textContent = U + ' V';
+    document.getElementById('fstUVal').textContent   = U;
+  }
+  function setI(val) {
+    I = val;
+    document.getElementById('fstILabel').textContent = I.toFixed(1).replace('.', ',') + ' A';
+  }
+
+  draw();
+  return { stop, setU, setI };
 }
 
 // ============================================================
