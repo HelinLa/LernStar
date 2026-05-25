@@ -2153,30 +2153,31 @@ function openExperiment(expId) {
     modal.innerHTML = `
       <div class="sim-box">
         <button class="sim-x" onclick="closeExperiment()">✕</button>
-        <h3 class="sim-h3">⚛️ Fadenstrahlrohr – Spezifische Ladung e/m</h3>
-        <canvas id="fstCanvas" width="480" height="290" style="width:100%;border-radius:10px;display:block;background:#06060f"></canvas>
-        <div class="sim-info-row">
-          <span>U = <b id="fstUVal">200</b> V</span>
-          <span>B = <b id="fstBVal">1,56</b> mT</span>
-          <span>r = <b id="fstRVal">4,1</b> cm</span>
-          <span>e/m = <b id="fstEmVal">1,76</b> ×10¹¹ C/kg</span>
-        </div>
-        <div style="padding:6px 14px 2px;display:flex;flex-direction:column;gap:7px">
-          <label style="display:flex;align-items:center;gap:8px;font-size:.87rem">⚡ Spannung U:
+        <h3 class="sim-h3">⚛️ Fadenstrahlrohr</h3>
+        <canvas id="fstCanvas" width="460" height="310" style="width:100%;border-radius:8px;display:block"></canvas>
+        <div style="padding:8px 16px 4px;display:flex;flex-direction:column;gap:9px">
+          <label style="display:flex;align-items:center;gap:8px;font-size:.9rem">
+            ⚡ Beschleunigungsspannung U<sub>B</sub>:
             <input type="range" id="fstUSlider" min="100" max="400" step="25" value="200"
-              oninput="_fstSetU(this.value)" style="flex:1;max-width:210px;accent-color:#7C3AED">
-            <b id="fstULabel">200 V</b></label>
-          <label style="display:flex;align-items:center;gap:8px;font-size:.87rem">🔌 Spulenstrom I:
+              oninput="_fstSetU(this.value)" style="flex:1;max-width:200px;accent-color:#7C3AED">
+            <b id="fstULabel">200 V</b>
+          </label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:.9rem">
+            🔌 Spulenstrom I<sub>S</sub>:
             <input type="range" id="fstISlider" min="5" max="20" step="1" value="15"
-              oninput="_fstSetI(this.value)" style="flex:1;max-width:210px;accent-color:#0EA5E9">
-            <b id="fstILabel">1,5 A</b></label>
+              oninput="_fstSetI(this.value)" style="flex:1;max-width:200px;accent-color:#0EA5E9">
+            <b id="fstILabel">1,5 A</b>
+          </label>
         </div>
-        <div id="fstResult" class="sim-result" style="margin:8px 14px">
-          Stelle U und I ein – beobachte wie sich der Kreisradius ändert!
+        <div class="sim-info-row">
+          <span>U<sub>B</sub> = <b id="fstUVal">200</b> V</span>
+          <span>r = <b id="fstRVal">4,1</b> cm</span>
+          <span>2r = <b id="fst2RVal">8,2</b> cm</span>
+          <span>e/m = <b id="fstEmVal">1,76</b> ×10¹¹</span>
         </div>
-        <p class="sim-hint" style="text-align:center;margin:4px 0 6px">
-          Formel: <b>e/m = 2U / (B² · r²)</b> &nbsp;|&nbsp; Literaturwert: <b>1,76 × 10¹¹ C/kg</b>
-        </p>
+        <div id="fstResult" class="sim-result" style="margin:6px 14px 8px">
+          Stelle U<sub>B</sub> und I<sub>S</sub> ein – beobachte die Kreisbahn!
+        </div>
       </div>`;
     document.body.appendChild(modal);
     _sim = _fstCreate();
@@ -2441,166 +2442,155 @@ function _fstCreate() {
   const canvas = document.getElementById('fstCanvas');
   if (!canvas) return { stop:()=>{} };
   const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
+  const W = canvas.width, H = canvas.height; // 460 × 310
 
   const e_c = 1.6e-19, me = 9.11e-31;
-  // Helmholtz coils: R=0.15m, N=130 turns → B [T] = kB × I [A]
-  const kB = 7.8e-4;
-  // r = kr × sqrt(U) / B
-  const kr = Math.sqrt(2 * me / e_c);
-  const SCALE = 2500; // pixels per meter
+  const kB  = 7.8e-4;                        // B [T] = kB × I [A]
+  const kr  = Math.sqrt(2 * me / e_c);       // r = kr × √U / B
+  const SCALE = 2500;                         // px per meter
 
   let U = 200, I = 1.5;
-  let animId = null, animAngle = 0;
+  let animId = null, dotAngle = 0;
 
-  const SPH_CX = Math.round(W * 0.54);
-  const SPH_CY = Math.round(H * 0.50);
-  const SPH_R  = Math.round(Math.min(W, H) * 0.41);
-  const ENTRY_X = SPH_CX - SPH_R + 22;
-  const ENTRY_Y = SPH_CY;
-  const ARC_SPAN = 11 * Math.PI / 6; // 330°
+  // Tube sits in the upper 75 % of canvas; ruler uses the bottom strip
+  const CX = Math.round(W * 0.50);
+  const CY = Math.round(H * 0.44);
+  const TUBE_R = Math.round(Math.min(W, H) * 0.39); // ~121 px
 
   function calcPhysics() {
-    const B  = kB * I;
-    const r  = kr * Math.sqrt(U) / B;
-    const r_px = Math.min(r * SCALE, SPH_R - 8);
-    const em = 2 * U / (B * B * r * r);
-    return { B, r, r_px, em };
+    const B      = kB * I;
+    const r_real = kr * Math.sqrt(U) / B;
+    const r_px   = Math.min(r_real * SCALE, TUBE_R - 14);
+    const em     = 2 * U / (B * B * r_real * r_real);
+    return { B, r_real, r_px, em };
   }
 
   function draw() {
-    const { B, r, r_px, em } = calcPhysics();
+    const { B, r_real, r_px, em } = calcPhysics();
     ctx.clearRect(0, 0, W, H);
 
-    // Dark background
-    ctx.fillStyle = '#06060f';
+    // ── background ──────────────────────────────────────────────
+    ctx.fillStyle = '#eeeeee';
     ctx.fillRect(0, 0, W, H);
 
-    // B-field × symbols (field into screen)
-    ctx.fillStyle = 'rgba(80,100,200,0.32)';
-    ctx.font = '11px monospace';
-    for (let bx = 18; bx < W; bx += 40) {
-      for (let by = 14; by < H; by += 40) {
-        ctx.fillText('×', bx, by);
-      }
-    }
-    ctx.fillStyle = 'rgba(110,130,230,0.55)';
-    ctx.font = '10px sans-serif';
-    ctx.fillText('B ⊗ (ins Bild)', W - 86, H - 7);
-
-    // Glass sphere
-    const grd = ctx.createRadialGradient(SPH_CX - 20, SPH_CY - 20, 10, SPH_CX, SPH_CY, SPH_R);
-    grd.addColorStop(0, 'rgba(30,55,120,0.22)');
-    grd.addColorStop(1, 'rgba(5,10,35,0.1)');
+    // ── inner white disc (inside the tube) ──────────────────────
     ctx.beginPath();
-    ctx.arc(SPH_CX, SPH_CY, SPH_R, 0, 2 * Math.PI);
-    ctx.fillStyle = grd;
+    ctx.arc(CX, CY, TUBE_R - 9, 0, 2 * Math.PI);
+    ctx.fillStyle = '#fafafa';
     ctx.fill();
-    ctx.strokeStyle = 'rgba(80,150,255,0.45)';
-    ctx.lineWidth = 2.5;
+
+    // ── orange tube ring ────────────────────────────────────────
+    ctx.beginPath();
+    ctx.arc(CX, CY, TUBE_R, 0, 2 * Math.PI);
+    ctx.strokeStyle = '#e8a020';
+    ctx.lineWidth = 16;
     ctx.stroke();
 
-    // Electron gun (simple rectangle)
-    ctx.save();
-    ctx.fillStyle = '#444';
-    ctx.strokeStyle = '#777';
+    // ── electron gun (bottom of tube) ───────────────────────────
+    const gunY = CY + TUBE_R - 7;
+    ctx.fillStyle = '#666';
+    ctx.fillRect(CX - 13, gunY, 26, 16);
+    ctx.fillStyle = '#ffcc00';
+    ctx.beginPath();
+    ctx.arc(CX, gunY + 6, 4, 0, 2 * Math.PI);
+    ctx.fill();
+    // winding lines
+    ctx.strokeStyle = '#999';
     ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.rect(ENTRY_X - 30, ENTRY_Y - 9, 26, 18);
-    ctx.fill(); ctx.stroke();
-    // Filament glow
-    ctx.beginPath();
-    ctx.arc(ENTRY_X - 17, ENTRY_Y, 4.5, 0, 2 * Math.PI);
-    ctx.fillStyle = '#ffe066';
-    ctx.shadowColor = '#ffe066';
-    ctx.shadowBlur = 10;
-    ctx.fill();
-    ctx.restore();
+    for (let i = 0; i < 4; i++) {
+      ctx.beginPath();
+      ctx.moveTo(CX - 10 + i * 7, gunY + 12);
+      ctx.lineTo(CX - 10 + i * 7, gunY + 16);
+      ctx.stroke();
+    }
 
-    // Circular electron beam arc
-    const cx = ENTRY_X, cy = ENTRY_Y + r_px;
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(cx, cy, r_px, -Math.PI / 2, -Math.PI / 2 + ARC_SPAN, false);
-    ctx.strokeStyle = '#00ffaa';
-    ctx.lineWidth = 2.5;
-    ctx.shadowColor = '#00ffcc';
-    ctx.shadowBlur = 13;
-    ctx.stroke();
-    ctx.restore();
+    // ── electron beam circle ────────────────────────────────────
+    if (r_px > 5) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(CX, CY, r_px, 0, 2 * Math.PI);
+      ctx.strokeStyle = '#00cc66';
+      ctx.lineWidth = 3;
+      ctx.shadowColor = '#00ff88';
+      ctx.shadowBlur = 10;
+      ctx.stroke();
+      ctx.restore();
 
-    // Dashed radius line + label
-    ctx.save();
-    ctx.strokeStyle = 'rgba(255,210,40,0.65)';
-    ctx.lineWidth = 1.2;
-    ctx.setLineDash([5, 4]);
-    ctx.beginPath();
-    ctx.moveTo(cx, cy);
-    ctx.lineTo(ENTRY_X, ENTRY_Y);
-    ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.beginPath();
-    ctx.arc(cx, cy, 3, 0, 2 * Math.PI);
-    ctx.fillStyle = 'rgba(255,210,40,0.55)';
-    ctx.fill();
-    ctx.fillStyle = '#ffd700';
-    ctx.font = 'bold 12px monospace';
-    const lx = (cx + ENTRY_X) / 2 + 5, ly = (cy + ENTRY_Y) / 2 - 4;
-    ctx.fillText('r = ' + (r * 100).toFixed(1) + ' cm', lx, ly);
-    ctx.restore();
+      // moving electron dot
+      dotAngle = (dotAngle + 0.04) % (2 * Math.PI);
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(
+        CX + r_px * Math.cos(dotAngle),
+        CY + r_px * Math.sin(dotAngle),
+        5, 0, 2 * Math.PI
+      );
+      ctx.fillStyle = '#ffffff';
+      ctx.shadowColor = '#88ddff';
+      ctx.shadowBlur = 12;
+      ctx.fill();
+      ctx.restore();
+    }
 
-    // Animated electron dot
-    animAngle = (animAngle + 0.038) % ARC_SPAN;
-    const ea = -Math.PI / 2 + animAngle;
-    const ex2 = cx + r_px * Math.cos(ea);
-    const ey2 = cy + r_px * Math.sin(ea);
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(ex2, ey2, 4.5, 0, 2 * Math.PI);
-    ctx.fillStyle = '#cce0ff';
-    ctx.shadowColor = '#88aaff';
-    ctx.shadowBlur = 16;
-    ctx.fill();
-    ctx.restore();
-    ctx.fillStyle = 'rgba(180,205,255,0.8)';
-    ctx.font = '11px sans-serif';
-    ctx.fillText('e⁻', ex2 + 7, ey2 - 4);
+    // ── ruler (shows 2·r in cm) ──────────────────────────────────
+    const RY      = H - 34;            // top of ruler strip
+    const PX_PER_CM = SCALE * 0.01;    // 25 px per cm
+    const RL      = CX - TUBE_R + 4;   // ruler left edge
+    const RW      = (TUBE_R - 4) * 2;  // ruler width (matches tube diameter)
 
-    // Lorentz force arrow (short, at electron position)
-    const fx = -Math.sin(ea), fy = Math.cos(ea); // centripetal direction
-    ctx.save();
-    ctx.strokeStyle = 'rgba(255,100,100,0.7)';
-    ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.moveTo(ex2, ey2);
-    ctx.lineTo(ex2 + fx * 16, ey2 + fy * 16);
-    ctx.stroke();
-    ctx.restore();
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(RL, RY, RW, 20);
+    ctx.strokeStyle = '#bbb';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(RL, RY, RW, 20);
 
-    // Update info labels
-    const bDisp  = (B * 1000).toFixed(2);
-    const rDisp  = (r * 100).toFixed(1);
-    const emDisp = (em / 1e11).toFixed(2);
-    document.getElementById('fstBVal').textContent  = bDisp;
-    document.getElementById('fstRVal').textContent  = rDisp;
-    document.getElementById('fstEmVal').textContent = emDisp;
+    ctx.strokeStyle = '#555';
+    ctx.fillStyle = '#555';
+    ctx.font = '9px sans-serif';
+    ctx.textAlign = 'center';
+    const cmMax = Math.floor(RW / PX_PER_CM);
+    for (let cm = 0; cm <= cmMax; cm++) {
+      const x  = RL + cm * PX_PER_CM;
+      const tk = (cm % 5 === 0) ? 9 : (cm % 2 === 0 ? 5 : 3);
+      ctx.beginPath();
+      ctx.moveTo(x, RY); ctx.lineTo(x, RY + tk);
+      ctx.stroke();
+      if (cm % 2 === 0 && cm > 0) ctx.fillText(cm, x, RY + 17);
+    }
+    // 2·r arrow & label
+    const arrow_end = RL + r_real * 200 * PX_PER_CM;
+    ctx.fillStyle = 'rgba(0,140,255,0.22)';
+    ctx.fillRect(RL, RY + 1, Math.min(arrow_end - RL, RW - 2), 9);
+    ctx.fillStyle = '#0055bb';
+    ctx.font = 'bold 9px sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('2·r in cm', RL + 2, RY - 3);
+    ctx.textAlign = 'right';
+    ctx.fillText('→', RL + RW - 1, RY - 3);
+
+    // ── update HTML ─────────────────────────────────────────────
+    const rD  = (r_real * 100).toFixed(1).replace('.', ',');
+    const r2D = (r_real * 200).toFixed(1).replace('.', ',');
+    const emD = (em / 1e11).toFixed(2).replace('.', ',');
+    document.getElementById('fstRVal').textContent  = rD;
+    document.getElementById('fst2RVal').textContent = r2D;
+    document.getElementById('fstEmVal').textContent = emD;
     document.getElementById('fstResult').innerHTML  =
-      '<b>e/m = 2 × ' + U + ' V / ((' + bDisp + ' mT)² × (' + rDisp + ' cm)²)' +
-      ' = <span style="color:#4ade80">' + emDisp + ' × 10¹¹ C/kg</span></b><br>' +
-      'Literaturwert: 1,76 × 10¹¹ · Abweichung: <b>' +
-      Math.abs((em / 1.76e11 - 1) * 100).toFixed(1) + ' %</b>';
+      'e/m = 2 × ' + U + ' V / (B² × r²) = ' +
+      '<b style="color:#059669">' + emD + ' × 10¹¹ C/kg</b>' +
+      ' | Literaturwert: 1,76 × 10¹¹ C/kg';
 
     animId = requestAnimationFrame(draw);
   }
 
   function stop()    { if (animId) cancelAnimationFrame(animId); }
   function setU(val) {
-    U = val;
+    U = parseFloat(val);
     document.getElementById('fstULabel').textContent = U + ' V';
     document.getElementById('fstUVal').textContent   = U;
   }
   function setI(val) {
-    I = val;
+    I = parseFloat(val) / 10;
     document.getElementById('fstILabel').textContent = I.toFixed(1).replace('.', ',') + ' A';
   }
 
