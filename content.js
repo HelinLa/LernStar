@@ -828,16 +828,96 @@ const CONTENT = {
         color:'#0284C7',
         intro:'Willkommen in Physik Klasse 11! Wir starten mit Kinematik – also wie Bewegungen beschrieben werden – und arbeiten uns dann durch Kräfte, Energie, das Gravitationsfeld bis hin zur faszinierenden Relativitätstheorie von Einstein!',
         topics:[
-          { name:'Kapitel 1: Bewegungen', diff:3,
-            explanation:'In der Kinematik beschreiben wir Bewegungen ohne nach deren Ursache zu fragen. Geradlinige Bewegung mit konstanter Geschwindigkeit (gleichförmig): s = v × t, die Kurve im s-t-Diagramm ist eine Gerade. Geradlinige Bewegung mit konstanter Beschleunigung (gleichmäßig beschleunigt): v(t) = v₀ + a × t und s(t) = v₀ × t + einhalb × a × t². Im v-t-Diagramm ist die Steigung gleich der Beschleunigung a. Freier Fall: Ein Sonderfall der gleichmäßig beschleunigten Bewegung mit a = g ≈ 9,81 m/s² (Erdbeschleunigung). Galileo Galilei bewies: Alle Körper fallen gleich schnell (ohne Luftwiderstand)! Senkrechter Wurf nach oben: v₀ > 0, Körper steigt bis v = 0, dann freier Fall zurück. Schiefer Wurf (2D-Bewegung): Die Bewegung wird in waagerechten Anteil (gleichförmig, keine Kraft) und senkrechten Anteil (freier Fall, Kraft = Schwerkraft) zerlegt. Wurfweite w = v₀² × sin(2α) / g – maximal bei 45°! Kreisbewegung: Bei gleichförmiger Kreisbewegung ist |v| konstant, aber die Richtung ändert sich ständig – das bedeutet Beschleunigung! Winkelgeschwindigkeit ω = 2π/T, Bahngeschwindigkeit v = ω × r. Die Zentripetalbeschleunigung zeigt immer zur Kreismitte: a_z = v²/r = ω² × r.' },
-          { name:'Kapitel 2: Ursache von Bewegungen', diff:3,
-            explanation:'Warum ändern sich Bewegungen? Die Antwort: Kräfte! Newtons 1. Gesetz (Trägheitsprinzip): Ein Körper bleibt in Ruhe oder gleichförmiger geradliniger Bewegung, solange keine Kraft auf ihn wirkt. Trägheit ist der Widerstand eines Körpers gegen Bewegungsänderungen – je größer die Masse m, desto größer die Trägheit. Newtons 2. Gesetz (Aktionsprinzip): F = m × a. Eine Kraft F bewirkt an einem Körper der Masse m eine Beschleunigung a. Einheit der Kraft: 1 N = 1 kg × m/s². Newtons 3. Gesetz (Reaktionsprinzip): Actio gleich Reactio! Jede Kraft hat eine gleich große, entgegengerichtete Gegenkraft. Reibungskräfte: Haftreibung (solange Körper ruht) > Gleitreibung (Körper gleitet) = μ × F_N. Die Normalkraft F_N ist die Auflagekraft senkrecht zur Fläche. Gewichtskraft: F_G = m × g. Kreisbewegung und Kräfte: Zentripetalkraft F_z = m × v²/r = m × ω² × r – sie zeigt immer zum Kreismittelpunkt und ist die Ursache der Kreisbewegung. Rotation und Trägheitsmoment: Für rotierende Körper gilt: M = J × α (analog zu F = m × a). Das Trägheitsmoment J hängt von Masse und Massenverteilung ab (Vollzylinder: J = einhalb × m × r², Hohlzylinder: J = m × r²). Ein Eiskunstläufer dreht sich schneller, wenn er die Arme anzieht – warum? Weil J kleiner wird und Drehimpuls erhalten bleibt!' },
-          { name:'Kapitel 3: Erhaltungsgrößen', diff:3,
-            explanation:'Energie, Impuls und Drehimpuls sind die großen Erhaltungsgrößen der Physik – sie bleiben in abgeschlossenen Systemen immer gleich! Energie: Es gibt viele Formen – kinetische Energie E_kin = einhalb × m × v², potenzielle (Lage-)Energie E_pot = m × g × h, Federenergie E_fed = einhalb × D × x², Wärmeenergie, elektromagnetische Energie ... Energieerhaltungssatz: Die Gesamtenergie bleibt konstant – Energie wird nur umgewandelt, niemals erzeugt oder vernichtet! Beispiel: Wasserfall – E_pot wird zu E_kin und dann zu Wärme (Reibung). Leistung: P = W/t = E/t, Einheit: 1 Watt = 1 J/s. Wirkungsgrad η = P_nutz / P_gesamt – immer kleiner als 1 (wegen Reibungsverlusten). Impuls: p = m × v (Vektorgröße!). Impulserhaltungssatz: In einem abgeschlossenen System bleibt der Gesamtimpuls konstant. Stoß: Beim elastischen Stoß bleibt auch die kinetische Energie erhalten (Billardkugeln). Beim unelastischen Stoß geht kinetische Energie verloren (Knete). Impuls und Kraft: F = Δp/Δt – eine Kraft ändert den Impuls. Drehimpuls: L = J × ω. Drehimpulserhaltung: Ohne äußeres Drehmoment bleibt L konstant – daher dreht sich der Eiskunstläufer mit angezogenen Armen schneller!' },
-          { name:'Kapitel 4: Gravitationsfeld', diff:3,
-            explanation:'Die Gravitation ist eine der vier Grundkräfte der Natur und hält das Universum zusammen! Historische Weltmodelle: Das geozentrische Weltbild (Ptolemäus) stellte die Erde in den Mittelpunkt – die Planeten bewegten sich auf komplizierten Epizykeln. Das heliozentrische Weltbild (Kopernikus, 1543) stellte die Sonne in den Mittelpunkt – viel einfacher und eleganter! Keplers Gesetze (empirisch aus Messdaten von Tycho Brahe): 1. Kepler: Planetenbahnen sind Ellipsen mit der Sonne im Brennpunkt. 2. Kepler: Ein Leitstrahl Planet–Sonne überstreicht in gleichen Zeiten gleiche Flächen (Flächensatz). 3. Kepler: T² / a³ = const (T = Umlaufzeit, a = große Halbachse). Newtons Gravitationsgesetz: F_G = G × m₁ × m₂ / r² mit G = 6,674 × 10⁻¹¹ Nm²/kg². Die Kraft wirkt entlang der Verbindungslinie und ist immer anziehend. Gravitationsfeld: Das Gravitationsfeld g zeigt die Kraft pro Masse auf eine Probemasse: g = F_G / m = G × M / r². An der Erdoberfläche gilt g ≈ 9,81 m/s². Das Gravitationsfeld ist ein Vektorfeld – es zeigt überall zum Massenmittelpunkt hin. Satellitenorbits: Im Kreisbahn-Orbit gilt F_G = F_z, daraus: v = √(G × M / r). Je näher am Planeten, desto schneller muss der Satellit fliegen!' },
-          { name:'Kapitel 5: Relativitätstheorie', diff:4,
-            explanation:'Einsteins Spezielle Relativitätstheorie (1905) revolutionierte unser Bild von Raum und Zeit! Klassische Physik (Newton) nimmt an: Zeit und Raum sind absolut – überall und für jeden gleich. Einstein zeigte: Das stimmt nicht! Bezugssysteme: Ein Inertialsystem ist ein Bezugssystem, in dem das Trägheitsprinzip gilt (kein Fahrzeug, das bremst oder abbiegt). Einsteins Postulate: 1. Das Relativitätsprinzip: Die Naturgesetze gelten in allen Inertialsystemen gleich (kein absolutes Ruhesystem!). 2. Konstanz der Lichtgeschwindigkeit: Die Lichtgeschwindigkeit c ≈ 3 × 10⁸ m/s ist in allen Inertialsystemen gleich – egal ob sich Quelle oder Beobachter bewegen! Gleichzeitigkeit ist relativ: Was für einen Beobachter gleichzeitig passiert, kann für einen anderen nacheinander passieren – je nach Relativbewegung. Zeitdilatation: Bewegte Uhren gehen langsamer! Δt = Δt₀ / √(1 − v²/c²). Je schneller ein System bewegt ist, desto langsamer vergeht die Zeit darin – das Zwillingsparadoxon! Der Astronaut, der mit 90% der Lichtgeschwindigkeit fliegt, altert langsamer als sein Zwilling auf der Erde. Längenkontraktion: Bewegte Objekte sind in Bewegungsrichtung kürzer! L = L₀ × √(1 − v²/c²). Bei v → c wird L → 0. GPS-Satelliten müssen relativistische Korrekturen berücksichtigen (Zeitdilatation + Gravitation), sonst wäre die Positionsgenauigkeit nach einem Tag um Kilometer falsch!' },
+
+          // ── KAPITEL 1: BEWEGUNGEN ──────────────────────────────────────
+          { name:'1.1 – Was ist Bewegung?', diff:1,
+            explanation:'Ein Körper bewegt sich, wenn er seinen Ort verändert. Um eine Bewegung zu beschreiben, brauchen wir: den Ort s (wo ist er?), die Zeit t (wann?) und ein Bezugssystem (von wo aus schauen wir?). Im Weg-Zeit-Diagramm zeigt die Kurve, wo sich der Körper zu jedem Zeitpunkt befindet. Je steiler die Linie, desto schneller ist der Körper.' },
+
+          { name:'1.2 – Gleichförmige Bewegung', diff:1,
+            explanation:'Bei der gleichförmigen Bewegung ist die Geschwindigkeit v konstant – der Körper legt in gleichen Zeitabschnitten immer gleich lange Wege zurück. Formel: s = v × t. Im s-t-Diagramm ist es eine gerade Linie, im v-t-Diagramm eine waagerechte Linie. Beispiel: Ein Auto fährt gleichmäßig 30 m/s auf der Autobahn – keine Beschleunigung, keine Bremsung.' },
+
+          { name:'1.3 – Beschleunigte Bewegung', diff:2,
+            explanation:'Bei der gleichmäßig beschleunigten Bewegung nimmt die Geschwindigkeit gleichmäßig zu oder ab. Die Beschleunigung a gibt an, wie schnell sich die Geschwindigkeit ändert: a = Δv/Δt (Einheit: m/s²). Formeln: v(t) = v₀ + a × t und s(t) = v₀ × t + einhalb × a × t². Im v-t-Diagramm ist es eine schräge Gerade – die Steigung zeigt die Beschleunigung.' },
+
+          { name:'1.4 – Freier Fall', diff:2,
+            explanation:'Fällt ein Körper nur unter dem Einfluss der Schwerkraft (ohne Luftwiderstand), nennen wir das freier Fall. Die Fallbeschleunigung g ≈ 9,81 m/s² ist auf der Erde immer gleich. Wichtig: Alle Körper fallen gleich schnell, egal wie schwer sie sind – das bewies Galileo Galilei. Formeln: v(t) = g × t und s(t) = einhalb × g × t².' },
+
+          { name:'1.5 – Wurfbewegungen', diff:2,
+            explanation:'Beim waagerechten Wurf fliegt ein Körper gleichzeitig waagerecht (gleichförmig, keine Kraft) und senkrecht nach unten (freier Fall). Beide Teile passieren unabhängig voneinander. Beim schiefen Wurf wird der Körper schräg abgeschossen. Die Wurfweite ist am größten bei 45° Abwurfwinkel. Formel: w = v₀² × sin(2α) / g.' },
+
+          { name:'1.6 – Kreisbewegung', diff:3,
+            explanation:'Bei der Kreisbewegung bewegt sich ein Körper auf einer Kreisbahn. Auch wenn die Geschwindigkeit v dem Betrag nach gleich bleibt, ändert sich ihre Richtung ständig – das bedeutet: Es gibt trotzdem eine Beschleunigung! Diese zeigt immer zur Kreismitte und heißt Zentripetalbeschleunigung: a_z = v²/r. Wichtige Größen: Umlaufzeit T, Winkelgeschwindigkeit ω = 2π/T, Bahngeschwindigkeit v = ω × r.' },
+
+          // ── KAPITEL 2: URSACHE VON BEWEGUNGEN ─────────────────────────
+          { name:'2.1 – Was sind Kräfte?', diff:1,
+            explanation:'Eine Kraft ist eine Einwirkung auf einen Körper, die seine Bewegung oder Form ändert. Kräfte werden in Newton (N) gemessen und haben eine Richtung – man zeichnet sie als Pfeil. Bekannte Kräfte: Schwerkraft (zieht nach unten), Normalkraft (Tisch drückt nach oben), Reibungskraft (bremst Bewegung), Federkraft (zieht zurück). Kräfte kann man addieren – mehrere Kräfte ergeben eine Gesamtkraft.' },
+
+          { name:'2.2 – Newtons 1. Gesetz: Trägheit', diff:1,
+            explanation:'Newtons 1. Gesetz: Ein Körper bleibt in Ruhe oder bewegt sich geradeaus mit gleicher Geschwindigkeit weiter, solange keine Kraft auf ihn wirkt. Das nennen wir Trägheit. Je größer die Masse, desto größer die Trägheit. Beispiel: Im Auto beim Bremsen wirst du nach vorne gedrückt – dein Körper „möchte" die alte Geschwindigkeit beibehalten. Deshalb brauchen wir Sicherheitsgurte!' },
+
+          { name:'2.3 – Newtons 2. Gesetz: F = m × a', diff:2,
+            explanation:'Newtons 2. Gesetz verbindet Kraft, Masse und Beschleunigung: F = m × a. Größere Kraft → mehr Beschleunigung. Größere Masse → weniger Beschleunigung. Einheit der Kraft: 1 Newton = 1 kg × m/s². Beispiel: Ein Fußball (0,4 kg) bekommt F = 20 N → Beschleunigung a = 50 m/s². Derselbe Stoß auf einen LKW (10.000 kg) → a = 0,002 m/s² – kaum spürbar!' },
+
+          { name:'2.4 – Newtons 3. Gesetz: Actio = Reactio', diff:2,
+            explanation:'Newtons 3. Gesetz: Jede Kraft hat eine gleich große, entgegengesetzte Gegenkraft. Drückst du gegen eine Wand mit 50 N, drückt die Wand dich mit 50 N zurück! Aktionskraft und Reaktionskraft wirken immer auf verschiedene Körper. Beispiele: Raketenantrieb (Gas nach hinten → Rakete nach vorne), Schwimmen (Arme drücken Wasser zurück → Körper vorwärts).' },
+
+          { name:'2.5 – Reibungskräfte', diff:2,
+            explanation:'Reibung tritt auf, wenn zwei Oberflächen aneinander reiben. Haftreibung: hält einen ruhenden Körper an Ort (z.B. Buch auf schräger Fläche). Gleitreibung: wirkt entgegen der Bewegungsrichtung: F_R = μ × F_N. Dabei ist μ der Reibungskoeffizient (abhängig vom Material) und F_N die Normalkraft senkrecht zur Fläche. Eis hat kleines μ (glatt), Gummi auf Asphalt hat großes μ (rau).' },
+
+          { name:'2.6 – Zentripetalkraft', diff:3,
+            explanation:'Damit ein Körper auf einer Kreisbahn bleibt, braucht er eine Kraft, die ihn zur Mitte zieht – die Zentripetalkraft: F_z = m × v²/r. Ohne sie würde der Körper geradeaus weiterfliegen (Trägheit!). Beispiele: Der Faden beim Schleuderwurf, die Schwerkraft hält den Mond auf seiner Bahn um die Erde, die Schiene im Loop einer Achterbahn.' },
+
+          { name:'2.7 – Rotation und Trägheitsmoment', diff:3,
+            explanation:'Für rotierende Körper gilt: Drehmoment M = J × α (wie F = m × a für geradlinige Bewegung). Das Trägheitsmoment J beschreibt, wie schwer es ist, eine Rotation zu ändern. Es hängt von der Masse und ihrer Verteilung ab. Vollzylinder: J = einhalb × m × r². Beispiel: Ein Eiskunstläufer zieht die Arme an → J wird kleiner → er dreht sich schneller (Drehimpuls bleibt erhalten!).' },
+
+          // ── KAPITEL 3: ERHALTUNGSGRÖSSEN ──────────────────────────────
+          { name:'3.1 – Was ist Energie?', diff:1,
+            explanation:'Energie ist die Fähigkeit, Arbeit zu verrichten. Sie kommt in vielen Formen vor: Bewegungsenergie (kinetisch): E_kin = einhalb × m × v². Lageenergie (potenziell): E_pot = m × g × h. Federenergie: E_fed = einhalb × D × x². Außerdem: Wärme, elektrische Energie, chemische Energie und mehr. Einheit der Energie: 1 Joule (J) = 1 N × m.' },
+
+          { name:'3.2 – Energieerhaltungssatz', diff:2,
+            explanation:'Der Energieerhaltungssatz: In einem abgeschlossenen System bleibt die Gesamtenergie immer konstant. Energie wird nur umgewandelt, niemals erzeugt oder vernichtet! Beispiel: Ein Ball fällt – E_pot wird zu E_kin. Unten hat er maximale Bewegungsenergie. Bei jedem Aufprall geht etwas Energie als Wärme verloren – daher springt der Ball immer weniger hoch.' },
+
+          { name:'3.3 – Leistung und Wirkungsgrad', diff:2,
+            explanation:'Leistung P = Energie/Zeit = W/t. Sie zeigt, wie schnell Energie umgewandelt wird. Einheit: 1 Watt (W) = 1 J/s. Wirkungsgrad η = P_nutz / P_gesamt. Er ist immer kleiner als 1 (= 100%), weil immer etwas Energie als Wärme verloren geht. Beispiel: Ein Motor mit η = 0,4 nutzt nur 40% der Energie für Bewegung – 60% verpuffen als Wärme.' },
+
+          { name:'3.4 – Was ist Impuls?', diff:2,
+            explanation:'Der Impuls p = m × v beschreibt den „Bewegungsinhalt" eines Körpers – er hängt von Masse und Geschwindigkeit ab. Impuls ist ein Vektor (hat Richtung!). Einheit: 1 kg × m/s. Eine Kraft ändert den Impuls: F = Δp/Δt. Beispiel: Ein schwerer LKW mit 5 m/s und ein leichtes Auto mit 30 m/s können denselben Impuls haben.' },
+
+          { name:'3.5 – Impulserhaltung bei Stößen', diff:3,
+            explanation:'In einem abgeschlossenen System bleibt der Gesamtimpuls konstant: p_vorher = p_nachher. Elastischer Stoß: Gesamtenergie und Impuls bleiben erhalten (Billardkugeln). Unelastischer Stoß: Nur Impuls bleibt erhalten, kinetische Energie wird in Wärme umgewandelt (Knete). Beim vollkommen unelastischen Stoß bleiben die Körper zusammen haften (z.B. Autounfall).' },
+
+          { name:'3.6 – Drehimpuls', diff:3,
+            explanation:'Der Drehimpuls L = J × ω ist die Drehbewegungsversion des Impulses. Drehimpulserhaltung: Ohne äußeres Drehmoment bleibt L konstant. Wenn J kleiner wird, muss ω größer werden. Beispiel: Ein Eiskunstläufer zieht die Arme an → J kleiner → er dreht schneller! Auch Planeten drehen sich schneller, wenn sie der Sonne näherkommen (2. Keplersches Gesetz).' },
+
+          // ── KAPITEL 4: GRAVITATIONSFELD ───────────────────────────────
+          { name:'4.1 – Weltmodelle: Erde oder Sonne im Mittelpunkt?', diff:1,
+            explanation:'Lange glaubte man, die Erde steht im Mittelpunkt des Universums (geozentrisches Weltbild, Ptolemäus ~150 n.Chr.). Die Planeten mussten dabei komplizierte Kreise auf Kreisen fahren. 1543 zeigte Nikolaus Kopernikus: Die Sonne steht im Mittelpunkt (heliozentrisches Modell) – viel einfacher! Galileo Galilei bestätigte das mit dem Teleskop. Heute wissen wir: Nicht mal die Sonne ist der Mittelpunkt – sie ist nur einer von Milliarden Sternen.' },
+
+          { name:'4.2 – Die 3 Keplerschen Gesetze', diff:2,
+            explanation:'Johannes Kepler entdeckte aus Beobachtungsdaten drei Gesetze: 1. Gesetz: Planetenbahnen sind Ellipsen – die Sonne steht in einem Brennpunkt. 2. Gesetz (Flächensatz): Ein Leitstrahl Planet–Sonne überstreicht in gleichen Zeiten gleiche Flächen → Planeten fliegen in Sonnennähe schneller! 3. Gesetz: T²/a³ = const → Fernere Planeten brauchen viel länger für einen Umlauf.' },
+
+          { name:'4.3 – Newtons Gravitationsgesetz', diff:3,
+            explanation:'Isaac Newton erkannte: Jede Masse zieht jede andere Masse an! Gravitationsgesetz: F_G = G × m₁ × m₂ / r² (G = 6,674 × 10⁻¹¹ Nm²/kg²). Die Kraft ist größer bei größeren Massen und kleiner bei größerem Abstand (quadratisch!). Newton erklärte damit: Warum Äpfel fallen, warum der Mond die Erde umkreist, und warum Keplers Gesetze mathematisch stimmen.' },
+
+          { name:'4.4 – Das Gravitationsfeld', diff:2,
+            explanation:'Das Gravitationsfeld beschreibt, welche Kraft eine Masse an jedem Punkt im Raum spürt. Gravitationsfeldstärke: g = G × M / r². An der Erdoberfläche gilt g ≈ 9,81 m/s². Das Feld zeigt immer zum Massenmittelpunkt (Feldlinien zeigen zur Erde). Je weiter weg, desto schwächer das Feld. Satellit im Orbit: Gravitationskraft = Zentripetalkraft → F_G = F_z.' },
+
+          // ── KAPITEL 5: RELATIVITÄTSTHEORIE ────────────────────────────
+          { name:'5.1 – Was ist ein Bezugssystem?', diff:1,
+            explanation:'Ein Bezugssystem ist der „Standpunkt", von dem aus wir eine Bewegung beschreiben. Beispiel: Für den Zug-Passagier steht er still – für jemanden auf dem Bahnsteig bewegt er sich schnell. Beide haben Recht – aus ihrem Bezugssystem! Ein Inertialsystem ist ein Bezugssystem ohne Beschleunigung. In Inertialsystemen gelten Newtons Gesetze ohne Einschränkungen.' },
+
+          { name:'5.2 – Einsteins 2 Postulate', diff:2,
+            explanation:'Einstein stellte 1905 zwei Grundprinzipien auf: 1. Relativitätsprinzip: Die Naturgesetze sehen in allen Inertialsystemen gleich aus – es gibt kein „absolutes" Ruhesystem! 2. Konstanz der Lichtgeschwindigkeit: Licht bewegt sich immer mit c ≈ 3 × 10⁸ m/s – egal ob sich die Lichtquelle oder der Beobachter bewegt! Das 2. Postulat ist überraschend: Anders als ein Ball wird Licht nicht schneller, wenn man es von einem fahrenden Auto aus wirft.' },
+
+          { name:'5.3 – Gleichzeitigkeit ist relativ', diff:3,
+            explanation:'Im Alltag denken wir: Wenn zwei Dinge gleichzeitig passieren, ist das für alle gleichzeitig. Einstein zeigte: Das stimmt nicht! Ob zwei Ereignisse gleichzeitig sind, hängt vom Bezugssystem ab. Gedankenexperiment: Ein Blitz schlägt an beiden Enden eines fahrenden Zuges gleichzeitig ein (Sicht: Bahnsteig-Person). Für den Fahrgast in der Zugmitte kommen die Blitze zu verschiedenen Zeiten an!' },
+
+          { name:'5.4 – Zeitdilatation: Uhren gehen langsamer', diff:3,
+            explanation:'Bewegte Uhren gehen langsamer! Formel: Δt = Δt₀ / √(1 − v²/c²). Dabei ist Δt₀ die Zeit im ruhenden System und Δt die längere Zeit im bewegten System. Je schneller der Körper, desto langsamer vergeht die Zeit. Beispiel (Zwillingsparadoxon): Ein Astronaut fliegt mit 90% der Lichtgeschwindigkeit zum Stern und zurück. Auf der Erde vergingen 10 Jahre – der Astronaut erlebte nur 4 Jahre. Er ist jünger als sein Zwilling!' },
+
+          { name:'5.5 – Längenkontraktion: Objekte werden kürzer', diff:3,
+            explanation:'Bewegte Objekte erscheinen in Bewegungsrichtung kürzer! Formel: L = L₀ × √(1 − v²/c²). L₀ ist die Länge im Ruhesystem, L ist die kürzere beobachtete Länge. Nur die Länge in Bewegungsrichtung ändert sich – Breite und Höhe bleiben gleich. Im Alltag sind diese Effekte winzig – erst bei vielen Prozent der Lichtgeschwindigkeit werden sie messbar. GPS-Satelliten brauchen relativistische Korrekturen – sonst wäre die Position täglich um Kilometer falsch!' },
+
         ],
         exercises:[
           { id:'e1', type:'Bewegungen', diff:3, title:'Kinematik – Geradlinige Bewegung',
