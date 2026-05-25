@@ -834,7 +834,7 @@ const CONTENT = {
           { name:'1.1 – Was ist Bewegung?', diff:1,
             explanation:'Stell dir vor, du sitzt im Bus und schaust aus dem Fenster – die Bäume rasen vorbei, aber du sitzt ganz ruhig. Bewegst du dich? Jein! Es kommt immer darauf an, von wo aus man schaut – das nennt man Bezugssystem. Im Weg-Zeit-Diagramm kann man sehen, wo ein Körper zu welchem Zeitpunkt ist. Eine steile Linie bedeutet: schnell. Eine flache Linie bedeutet: langsam. Eine waagerechte Linie bedeutet: gar keine Bewegung.' },
 
-          { name:'1.2 – Gleichförmige Bewegung', diff:1,
+          { name:'1.2 – Gleichförmige Bewegung', diff:1, sim:'gleichfoermig',
             explanation:'Stell dir eine Schnecke auf einem Lineal vor, die immer genau 2 cm pro Sekunde kriecht – nie schneller, nie langsamer. Das ist gleichförmige Bewegung! Die Formel dafür lautet: s = v × t (Weg = Geschwindigkeit mal Zeit). Im v-t-Diagramm sieht das aus wie eine ruhige gerade Linie – flach wie ein See an einem windstillen Tag. Kein Gas, keine Bremse – einfach konstant.' },
 
           { name:'1.3 – Beschleunigte Bewegung', diff:2,
