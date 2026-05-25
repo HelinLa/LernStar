@@ -717,14 +717,15 @@ ul { list-style: none; }
    TOPICS LIST
    ============================================================ */
 .topics-section { padding:0 32px 32px; max-width:900px; }
-.topics-list { display:flex; flex-direction:column; gap:12px; }
+.topics-list { display:flex; flex-direction:column; gap:6px; }
 .topic-chapter-header {
-  font-size:1rem; font-weight:800; letter-spacing:.4px;
+  font-size:1.15rem; font-weight:900; letter-spacing:.4px;
   color:var(--gc,#7C3AED);
-  padding:20px 4px 8px;
+  padding:10px 4px 8px;
   border-bottom:2px solid var(--gc,#7C3AED);
-  margin-top:8px;
+  margin-top:28px;
 }
+.topic-chapter-header:first-child { margin-top:0; }
 .topic-item {
   background:var(--surface);
   border-radius:var(--radius-sm);
