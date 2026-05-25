@@ -2139,7 +2139,12 @@ document.addEventListener('keydown', e => {
 // EXPERIMENT
 // ============================================================
 
+let _sim = null;
+
 function openExperiment(expId) {
+  const ex = document.getElementById('expModal');
+  if (ex) { ex.remove(); if (_sim) _sim.stop(); }
+
   const modal = document.createElement('div');
   modal.id = 'expModal';
   modal.className = 'sim-overlay';
@@ -2147,207 +2152,250 @@ function openExperiment(expId) {
     <div class="sim-box">
       <button class="sim-x" onclick="closeExperiment()">✕</button>
       <h3 class="sim-h3">🧪 Experiment: Gleichförmige Bewegung</h3>
-
-      <div class="exp-block exp-goal">
-        <b>🎯 Was lernst du?</b><br>
-        Bei gleichförmiger Bewegung bleibt die Geschwindigkeit immer konstant.
-        Im s-t-Diagramm liegen deine Messpunkte dann auf einer <b>geraden Linie</b>.
-        Die Steigung dieser Geraden ist die Geschwindigkeit v.
+      <canvas id="simRoad" class="sim-road-canvas" width="700" height="130"></canvas>
+      <div class="sim-info-row">
+        <span>⏱ Zeit: <b id="simT">0,0 s</b></span>
+        <span>📏 Weg: <b id="simS">0 m</b></span>
+        <span>Tempo:
+          <select id="simV" onchange="_simSetV(this.value)">
+            <option value="5">5 m/s (langsam)</option>
+            <option value="10" selected>10 m/s (mittel)</option>
+            <option value="20">20 m/s (schnell)</option>
+          </select>
+        </span>
       </div>
-
-      <div class="exp-block">
-        <div class="exp-title">🧰 Das brauchst du</div>
-        <div class="exp-materials">
-          <span>📏 Maßband (mind. 6 m)</span>
-          <span>⏱ Stoppuhr oder Handy</span>
-          <span>🎯 Klebeband oder Kreide</span>
-          <span>👥 Einen Freund zum Zeitmessen</span>
-        </div>
+      <div class="sim-btn-row">
+        <button class="sim-btn primary" id="simPlayBtn" onclick="_simToggle()">▶ Start</button>
+        <button class="sim-btn" onclick="_simMeasure()">📍 Jetzt messen</button>
+        <button class="sim-btn" onclick="_simReset()">↺ Neu starten</button>
       </div>
-
-      <div class="exp-block">
-        <div class="exp-title">📐 Aufbau</div>
-        <p style="margin:.3em 0 .6em">Klebe auf dem Boden <b>7 Markierungen</b> alle 1 Meter (von 0 m bis 6 m):</p>
-        <div class="exp-track">
-          <div class="exp-mark"><div class="exp-mark-line"></div><div class="exp-mark-lbl">0 m</div></div>
-          <div class="exp-track-line"></div>
-          <div class="exp-mark"><div class="exp-mark-line"></div><div class="exp-mark-lbl">1 m</div></div>
-          <div class="exp-track-line"></div>
-          <div class="exp-mark"><div class="exp-mark-line"></div><div class="exp-mark-lbl">2 m</div></div>
-          <div class="exp-track-line"></div>
-          <div class="exp-mark"><div class="exp-mark-line"></div><div class="exp-mark-lbl">3 m</div></div>
-          <div class="exp-track-line"></div>
-          <div class="exp-mark"><div class="exp-mark-line"></div><div class="exp-mark-lbl">4 m</div></div>
-          <div class="exp-track-line"></div>
-          <div class="exp-mark"><div class="exp-mark-line"></div><div class="exp-mark-lbl">5 m</div></div>
-          <div class="exp-track-line"></div>
-          <div class="exp-mark"><div class="exp-mark-line"></div><div class="exp-mark-lbl">6 m</div></div>
-        </div>
-      </div>
-
-      <div class="exp-block">
-        <div class="exp-title">🔬 So geht's</div>
-        <ol class="exp-steps">
-          <li>Person A stellt sich auf die <b>0-m-Markierung</b> und geht <i>gleichmäßig</i> bis zur 6-m-Markierung – immer gleich schnell, kein Beschleunigen oder Bremsen!</li>
-          <li>Person B startet die Stoppuhr <b>genau beim Losgelehen</b> von Person A.</li>
-          <li>Person B ruft die Zeit laut, wenn Person A jede Markierung überquert. Person A notiert die Zeiten.</li>
-          <li>Trage deine Messwerte unten in die Tabelle ein und klicke auf <b>Diagramm zeichnen</b>.</li>
-          <li><b>Bonus:</b> Wiederhol das Experiment – diesmal schnell gehen oder laufen. Was ändert sich im Diagramm?</li>
-        </ol>
-      </div>
-
-      <div class="exp-block">
-        <div class="exp-title">📊 Messwerte eintragen</div>
-        <table class="sim-table">
-          <thead><tr><th>Weg s (m)</th><th>Deine gemessene Zeit t (s)</th></tr></thead>
-          <tbody>
-            <tr><td>0</td><td><input class="exp-input" value="0" readonly style="background:#F1F5F9;color:#94A3B8"></td></tr>
-            <tr><td>1</td><td><input class="exp-input" id="et1" type="text" placeholder="z.B. 1,5" oninput="_expAutoPlot()"></td></tr>
-            <tr><td>2</td><td><input class="exp-input" id="et2" type="text" placeholder="z.B. 3,0" oninput="_expAutoPlot()"></td></tr>
-            <tr><td>3</td><td><input class="exp-input" id="et3" type="text" placeholder="z.B. 4,5" oninput="_expAutoPlot()"></td></tr>
-            <tr><td>4</td><td><input class="exp-input" id="et4" type="text" placeholder="z.B. 6,0" oninput="_expAutoPlot()"></td></tr>
-            <tr><td>5</td><td><input class="exp-input" id="et5" type="text" placeholder="z.B. 7,5" oninput="_expAutoPlot()"></td></tr>
-            <tr><td>6</td><td><input class="exp-input" id="et6" type="text" placeholder="z.B. 9,0" oninput="_expAutoPlot()"></td></tr>
-          </tbody>
-        </table>
-        <div class="exp-btn-row">
-          <button class="sim-btn primary" onclick="_expPlot()">📈 Diagramm zeichnen</button>
-          <button class="sim-btn" onclick="_expClear()">↺ Felder leeren</button>
-        </div>
-      </div>
-
-      <div class="sim-diagram-label" style="margin-top:14px">s-t Diagramm – deine Messwerte</div>
-      <canvas id="expChart" class="sim-chart-canvas" width="680" height="290"></canvas>
-      <div id="expResult" class="sim-result"></div>
-
-      <div class="exp-block" style="margin-top:8px">
-        <div class="exp-title">🔍 Was bedeutet das?</div>
-        <p style="margin:.3em 0">
-          Liegen deine Punkte auf einer <b>geraden Linie</b>? Dann war die Bewegung tatsächlich gleichförmig!<br>
-          Die <b>Steigung</b> der Geraden = Geschwindigkeit → v = Δs ÷ Δt
-        </p>
-        <p style="margin:.3em 0;color:#64748B;font-size:.87em">
-          💡 Tipp: Wenn die Punkte <i>nicht</i> auf einer Geraden liegen, war die Geschwindigkeit nicht konstant – du hast unbewusst beschleunigt oder gebremst. Das ist ganz normal!
-        </p>
-      </div>
+      <p class="sim-hint">Drücke mehrmals auf <b>Jetzt messen</b> während das Auto fährt – die Punkte erscheinen im Diagramm. Klicke dann auf <b>zwei Punkte</b> um die Steigung (= Geschwindigkeit) zu berechnen!</p>
+      <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(zwei Punkte anklicken → Steigung = Geschwindigkeit)</span></div>
+      <canvas id="simChart" class="sim-chart-canvas" width="680" height="290"></canvas>
+      <div id="simResult" class="sim-result"></div>
+      <table class="sim-table" id="simTableWrap" style="display:none">
+        <thead><tr><th>Punkt</th><th>Zeit t (s)</th><th>Weg s (m)</th></tr></thead>
+        <tbody id="simTbody"></tbody>
+      </table>
     </div>`;
   document.body.appendChild(modal);
-  _expDrawChart([]);
+  _sim = _simCreate();
+
+  document.getElementById('simChart').addEventListener('click', function(e) {
+    if (!_sim) return;
+    const r = this.getBoundingClientRect();
+    _sim.handleClick(
+      (e.clientX - r.left) * (this.width / r.width),
+      (e.clientY - r.top)  * (this.height / r.height)
+    );
+  });
 }
 
 function closeExperiment() {
+  if (_sim) { _sim.stop(); _sim = null; }
   const m = document.getElementById('expModal');
   if (m) m.remove();
 }
 
-function _expGetPoints() {
-  const pts = [{ s:0, t:0 }];
-  for (let i=1; i<=6; i++) {
-    const el = document.getElementById('et'+i);
-    if (!el) continue;
-    const t = parseFloat(el.value.replace(',','.'));
-    if (!isNaN(t) && t > 0) pts.push({ s:i, t });
-  }
-  return pts;
-}
+function _simSetV(v) { if (_sim) _sim.setV(parseFloat(v)); }
+function _simToggle()  { if (_sim) _sim.toggle(); }
+function _simMeasure() { if (_sim) _sim.measure(); }
+function _simReset()   { if (_sim) _sim.reset(); }
 
-function _expAutoPlot() { _expDrawChart(_expGetPoints()); }
+function _simCreate() {
+  const MAX_S = 100;
+  let st = { running:false, t:0, s:0, v:10, meas:[], sel:[], raf:null, last:null };
 
-function _expPlot() {
-  const pts = _expGetPoints();
-  _expDrawChart(pts);
-  if (pts.length >= 2) {
-    const p1 = pts[0], p2 = pts[pts.length-1];
-    const dt = parseFloat((p2.t - p1.t).toFixed(2));
-    const ds = p2.s - p1.s;
-    const v = dt > 0 ? (ds/dt).toFixed(2) : '–';
-    const res = document.getElementById('expResult');
-    if (res) res.innerHTML =
-      'Deine Geschwindigkeit: v = Δs ÷ Δt = <b>'+ds+' m</b> ÷ <b>'+dt+' s</b> = <b class="sim-v-result">'+v+' m/s</b>';
-  }
-}
-
-function _expClear() {
-  for (let i=1; i<=6; i++) {
-    const el = document.getElementById('et'+i);
-    if (el) el.value = '';
-  }
-  _expDrawChart([]);
-  const res = document.getElementById('expResult');
-  if (res) res.innerHTML = '';
-}
-
-function _expDrawChart(pts) {
-  const c = document.getElementById('expChart'); if (!c) return;
-  const ctx = c.getContext('2d'), cW=c.width, cH=c.height;
-  const P = {l:58,r:24,t:22,b:48};
-  const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
-  const maxT=12, maxS=7;
-  const tx = t => P.l+(t/maxT)*gW;
-  const sy = s => P.t+gH-(s/maxS)*gH;
-
-  ctx.clearRect(0,0,cW,cH);
-
-  // Grid
-  ctx.strokeStyle='#F0F0F0'; ctx.lineWidth=1;
-  for (let i=1;i<=6;i++) {
-    const y=P.t+(i/6)*gH; ctx.beginPath(); ctx.moveTo(P.l,y); ctx.lineTo(P.l+gW,y); ctx.stroke();
-    const x=P.l+(i/6)*gW; ctx.beginPath(); ctx.moveTo(x,P.t); ctx.lineTo(x,P.t+gH); ctx.stroke();
+  function stop() {
+    if (st.raf) cancelAnimationFrame(st.raf);
+    st.running = false; st.last = null;
   }
 
-  // Axes
-  ctx.strokeStyle='#333'; ctx.lineWidth=2.5;
-  ctx.beginPath(); ctx.moveTo(P.l,P.t); ctx.lineTo(P.l,P.t+gH); ctx.lineTo(P.l+gW,P.t+gH); ctx.stroke();
-  ctx.fillStyle='#333';
-  ctx.beginPath(); ctx.moveTo(P.l+gW,P.t+gH); ctx.lineTo(P.l+gW+8,P.t+gH-4); ctx.lineTo(P.l+gW+8,P.t+gH+4); ctx.fill();
-  ctx.beginPath(); ctx.moveTo(P.l,P.t); ctx.lineTo(P.l-4,P.t+9); ctx.lineTo(P.l+4,P.t+9); ctx.fill();
+  function setV(v) { st.v = v; }
 
-  // Axis labels
-  ctx.font='bold 13px Nunito,sans-serif'; ctx.fillStyle='#333'; ctx.textAlign='center';
-  ctx.fillText('t in s', P.l+gW/2, cH-4);
-  ctx.save(); ctx.translate(14,P.t+gH/2); ctx.rotate(-Math.PI/2);
-  ctx.fillText('s in m',0,0); ctx.restore();
-
-  // Tick labels
-  ctx.font='11px Nunito,sans-serif'; ctx.fillStyle='#666';
-  for (let i=0;i<=6;i++) {
-    ctx.textAlign='center'; ctx.fillText(((i/6)*maxT).toFixed(0), P.l+(i/6)*gW, P.t+gH+16);
-    ctx.textAlign='right';  ctx.fillText(((i/6)*maxS).toFixed(0), P.l-6, sy((i/6)*maxS)+4);
+  function toggle() {
+    if (st.running) {
+      stop();
+      const b = document.getElementById('simPlayBtn');
+      if (b) b.textContent = '▶ Weiter';
+    } else if (st.s < MAX_S) {
+      st.running = true;
+      const b = document.getElementById('simPlayBtn');
+      if (b) b.textContent = '⏸ Pause';
+      function loop(ts) {
+        if (!st.running) return;
+        if (st.last !== null) {
+          st.t += Math.min((ts - st.last) / 1000, 0.05);
+          st.s = Math.min(st.v * st.t, MAX_S);
+        }
+        st.last = ts;
+        const tEl = document.getElementById('simT');
+        const sEl = document.getElementById('simS');
+        if (tEl) tEl.textContent = st.t.toFixed(1).replace('.',',') + ' s';
+        if (sEl) sEl.textContent = st.s.toFixed(1).replace('.',',') + ' m';
+        drawRoad(); drawChart();
+        if (st.s < MAX_S) st.raf = requestAnimationFrame(loop);
+        else { stop(); if (b) b.textContent = '✅ Am Ziel'; }
+      }
+      st.raf = requestAnimationFrame(loop);
+    }
   }
 
-  if (pts.length < 2) return;
+  function measure() {
+    st.meas.push({ t: parseFloat(st.t.toFixed(1)), s: parseFloat(st.s.toFixed(1)) });
+    st.sel = [];
+    const res = document.getElementById('simResult');
+    if (res) res.innerHTML = '';
+    drawChart(); updateTable();
+  }
 
-  // Slope line (first → last, orange)
-  const p0=pts[0], pN=pts[pts.length-1];
-  ctx.strokeStyle='rgba(249,115,22,.5)'; ctx.lineWidth=2.5; ctx.setLineDash([7,5]);
-  ctx.beginPath(); ctx.moveTo(tx(p0.t),sy(p0.s)); ctx.lineTo(tx(pN.t),sy(pN.s)); ctx.stroke();
-  ctx.setLineDash([]);
+  function reset() {
+    stop();
+    const v = parseFloat((document.getElementById('simV') || {value:'10'}).value);
+    st = { running:false, t:0, s:0, v, meas:[], sel:[], raf:null, last:null };
+    const b = document.getElementById('simPlayBtn');
+    if (b) { b.textContent = '▶ Start'; b.disabled = false; }
+    const tEl = document.getElementById('simT'); if (tEl) tEl.textContent = '0,0 s';
+    const sEl = document.getElementById('simS'); if (sEl) sEl.textContent = '0 m';
+    const res = document.getElementById('simResult'); if (res) res.innerHTML = '';
+    const tb = document.getElementById('simTbody'); if (tb) tb.innerHTML = '';
+    const tw = document.getElementById('simTableWrap'); if (tw) tw.style.display = 'none';
+    drawRoad(); drawChart();
+  }
 
-  // Connect points (green line)
-  ctx.strokeStyle='#16A34A'; ctx.lineWidth=2;
-  ctx.beginPath();
-  pts.forEach((p,i) => i===0 ? ctx.moveTo(tx(p.t),sy(p.s)) : ctx.lineTo(tx(p.t),sy(p.s)));
-  ctx.stroke();
+  function handleClick(mx, my) {
+    const PAD = {l:58,r:20,t:22,b:48}, cW=680, cH=290;
+    const gW = cW-PAD.l-PAD.r, gH = cH-PAD.t-PAD.b;
+    const maxT = Math.max(10, (MAX_S/st.v)+1);
+    const tx = t => PAD.l + (t/maxT)*gW;
+    const sy = s => PAD.t + gH - (s/MAX_S)*gH;
+    let closest = -1, minD = 22;
+    st.meas.forEach((m,i) => {
+      const d = Math.hypot(tx(m.t)-mx, sy(m.s)-my);
+      if (d < minD) { minD = d; closest = i; }
+    });
+    if (closest >= 0) {
+      if (st.sel.includes(closest)) st.sel = st.sel.filter(i=>i!==closest);
+      else if (st.sel.length < 2) st.sel.push(closest);
+      else st.sel = [closest];
+      drawChart();
+    }
+  }
 
-  // Δt / Δs helpers for first-last pair
-  ctx.strokeStyle='#EF4444'; ctx.lineWidth=1.5; ctx.setLineDash([4,3]);
-  ctx.beginPath();
-  ctx.moveTo(tx(p0.t),sy(p0.s)); ctx.lineTo(tx(pN.t),sy(p0.s)); ctx.lineTo(tx(pN.t),sy(pN.s));
-  ctx.stroke(); ctx.setLineDash([]);
-  ctx.font='bold 10px Nunito,sans-serif'; ctx.fillStyle='#EF4444';
-  ctx.textAlign='center';
-  ctx.fillText('Δt = '+(pN.t-p0.t).toFixed(1)+' s', tx((p0.t+pN.t)/2), sy(p0.s)+17);
-  ctx.textAlign='right';
-  ctx.fillText('Δs = '+(pN.s-p0.s)+' m', tx(pN.t)-4, sy((p0.s+pN.s)/2)-5);
+  function drawRoad() {
+    const c = document.getElementById('simRoad'); if (!c) return;
+    const ctx = c.getContext('2d'), W = c.width, H = c.height;
+    ctx.fillStyle='#C9E8F5'; ctx.fillRect(0,0,W,H*0.55);
+    ctx.fillStyle='#9DC88D'; ctx.fillRect(0,H*0.55,W,H*0.18);
+    ctx.fillStyle='#6B6B6B'; ctx.fillRect(0,H*0.70,W,H*0.30);
+    ctx.fillStyle='#FFF'; ctx.fillRect(0,H*0.70,W,3); ctx.fillRect(0,H-3,W,3);
+    ctx.strokeStyle='#FFD700'; ctx.setLineDash([22,16]); ctx.lineWidth=2.5;
+    ctx.beginPath(); ctx.moveTo(0,H*0.845); ctx.lineTo(W,H*0.845); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.font='10px Nunito,sans-serif'; ctx.textAlign='center';
+    for (let m=0; m<=MAX_S; m+=20) {
+      const x=(m/MAX_S)*W;
+      ctx.fillStyle='#BBB'; ctx.fillRect(x-1,H*0.70,2,7);
+      ctx.fillStyle='#444'; ctx.fillText(m+' m',x,H*0.67);
+    }
+    const carX = Math.min((st.s/MAX_S)*(W-72), W-72);
+    const bY = H*0.72;
+    ctx.fillStyle='#E74C3C';
+    ctx.beginPath();
+    ctx.moveTo(carX+4,bY+24); ctx.lineTo(carX+4,bY+7);
+    ctx.lineTo(carX+14,bY+7); ctx.lineTo(carX+20,bY);
+    ctx.lineTo(carX+50,bY); ctx.lineTo(carX+56,bY+7);
+    ctx.lineTo(carX+68,bY+7); ctx.lineTo(carX+68,bY+24);
+    ctx.closePath(); ctx.fill();
+    ctx.fillStyle='#C0392B'; ctx.fillRect(carX+21,bY,29,8);
+    ctx.fillStyle='#AED6F1';
+    ctx.fillRect(carX+22,bY+1,11,7); ctx.fillRect(carX+36,bY+1,11,7);
+    [carX+14, carX+54].forEach(wx => {
+      ctx.fillStyle='#222'; ctx.beginPath(); ctx.arc(wx,bY+25,8,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle='#888'; ctx.beginPath(); ctx.arc(wx,bY+25,4,0,Math.PI*2); ctx.fill();
+    });
+    const cx = carX+36;
+    ctx.strokeStyle='rgba(231,76,60,.5)'; ctx.setLineDash([4,4]); ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.moveTo(cx,H*0.70); ctx.lineTo(cx,H); ctx.stroke();
+    ctx.setLineDash([]);
+  }
 
-  // Points
-  pts.forEach((p,i) => {
-    ctx.fillStyle = i===0 ? '#64748B' : '#2563EB';
-    ctx.strokeStyle = '#fff'; ctx.lineWidth=2;
-    ctx.beginPath(); ctx.arc(tx(p.t),sy(p.s),7,0,Math.PI*2); ctx.fill(); ctx.stroke();
-    ctx.fillStyle='#fff'; ctx.font='bold 9px Nunito,sans-serif'; ctx.textAlign='center';
-    ctx.fillText(i+1, tx(p.t), sy(p.s)+3);
-  });
+  function drawChart() {
+    const c = document.getElementById('simChart'); if (!c) return;
+    const ctx = c.getContext('2d'), cW=c.width, cH=c.height;
+    const P = {l:58,r:20,t:22,b:48};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const maxT = Math.max(10, (MAX_S/st.v)+1);
+    const tx = t => P.l+(t/maxT)*gW;
+    const sy = s => P.t+gH-(s/MAX_S)*gH;
+    ctx.clearRect(0,0,cW,cH);
+    ctx.strokeStyle='#F0F0F0'; ctx.lineWidth=1;
+    for (let i=1;i<=5;i++) {
+      const y=P.t+(i/5)*gH; ctx.beginPath(); ctx.moveTo(P.l,y); ctx.lineTo(P.l+gW,y); ctx.stroke();
+      const x=P.l+(i/5)*gW; ctx.beginPath(); ctx.moveTo(x,P.t); ctx.lineTo(x,P.t+gH); ctx.stroke();
+    }
+    ctx.strokeStyle='rgba(59,130,246,.18)'; ctx.lineWidth=2; ctx.setLineDash([7,5]);
+    ctx.beginPath(); ctx.moveTo(tx(0),sy(0)); ctx.lineTo(tx(MAX_S/st.v),sy(MAX_S)); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.strokeStyle='#333'; ctx.lineWidth=2.5;
+    ctx.beginPath(); ctx.moveTo(P.l,P.t); ctx.lineTo(P.l,P.t+gH); ctx.lineTo(P.l+gW,P.t+gH); ctx.stroke();
+    ctx.fillStyle='#333';
+    ctx.beginPath(); ctx.moveTo(P.l+gW,P.t+gH); ctx.lineTo(P.l+gW+8,P.t+gH-4); ctx.lineTo(P.l+gW+8,P.t+gH+4); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(P.l,P.t); ctx.lineTo(P.l-4,P.t+9); ctx.lineTo(P.l+4,P.t+9); ctx.fill();
+    ctx.font='bold 13px Nunito,sans-serif'; ctx.fillStyle='#333'; ctx.textAlign='center';
+    ctx.fillText('t in s', P.l+gW/2, cH-4);
+    ctx.save(); ctx.translate(14,P.t+gH/2); ctx.rotate(-Math.PI/2);
+    ctx.fillText('s in m',0,0); ctx.restore();
+    ctx.font='11px Nunito,sans-serif'; ctx.fillStyle='#666';
+    for (let i=0;i<=5;i++) {
+      ctx.textAlign='center'; ctx.fillText(((i/5)*maxT).toFixed(0), P.l+(i/5)*gW, P.t+gH+16);
+      ctx.textAlign='right';  ctx.fillText(((i/5)*MAX_S).toFixed(0), P.l-6, sy((i/5)*MAX_S)+4);
+    }
+    if (st.t > 0.05) {
+      ctx.fillStyle='rgba(231,76,60,.2)';
+      ctx.beginPath(); ctx.arc(tx(st.t),sy(st.s),5,0,Math.PI*2); ctx.fill();
+    }
+    if (st.sel.length === 2) {
+      const [i1,i2] = [...st.sel].sort((a,b)=>st.meas[a].t-st.meas[b].t);
+      const p1=st.meas[i1], p2=st.meas[i2];
+      const dt=parseFloat((p2.t-p1.t).toFixed(1));
+      const ds=parseFloat((p2.s-p1.s).toFixed(1));
+      const v = dt>0 ? (ds/dt).toFixed(1) : '–';
+      ctx.strokeStyle='#F97316'; ctx.lineWidth=3;
+      ctx.beginPath(); ctx.moveTo(tx(p1.t),sy(p1.s)); ctx.lineTo(tx(p2.t),sy(p2.s)); ctx.stroke();
+      ctx.strokeStyle='#EF4444'; ctx.lineWidth=1.5; ctx.setLineDash([4,3]);
+      ctx.beginPath();
+      ctx.moveTo(tx(p1.t),sy(p1.s)); ctx.lineTo(tx(p2.t),sy(p1.s)); ctx.lineTo(tx(p2.t),sy(p2.s));
+      ctx.stroke(); ctx.setLineDash([]);
+      ctx.font='bold 11px Nunito,sans-serif'; ctx.fillStyle='#DC2626';
+      ctx.textAlign='center'; ctx.fillText('Δt = '+dt.toFixed(1)+' s', tx((p1.t+p2.t)/2), sy(p1.s)+18);
+      ctx.textAlign='right';  ctx.fillText('Δs = '+ds.toFixed(0)+' m', tx(p2.t)-4, sy((p1.s+p2.s)/2)-6);
+      const res = document.getElementById('simResult');
+      if (res) res.innerHTML = 'Steigung = Δs ÷ Δt = <b>'+ds.toFixed(0)+' m</b> ÷ <b>'+dt.toFixed(1)+' s</b> = <b class="sim-v-result">'+v+' m/s</b> &nbsp;→&nbsp; Das ist die Geschwindigkeit <b>v</b>!';
+    }
+    st.meas.forEach((m,idx) => {
+      const sel = st.sel.includes(idx);
+      ctx.fillStyle = sel ? '#F97316' : '#16A34A';
+      ctx.strokeStyle = sel ? '#C2410C' : '#15803D';
+      ctx.lineWidth=2;
+      ctx.beginPath(); ctx.arc(tx(m.t),sy(m.s),sel?9:7,0,Math.PI*2); ctx.fill(); ctx.stroke();
+      ctx.fillStyle='#fff'; ctx.font='bold 9px Nunito,sans-serif'; ctx.textAlign='center';
+      ctx.fillText(idx+1, tx(m.t), sy(m.s)+3);
+    });
+  }
+
+  function updateTable() {
+    const tb = document.getElementById('simTbody');
+    const tw = document.getElementById('simTableWrap');
+    if (!tb||!tw) return;
+    if (st.meas.length>0) tw.style.display='table';
+    tb.innerHTML = st.meas.map((m,i)=>
+      `<tr><td>P${i+1}</td><td>${m.t.toFixed(1).replace('.',',')}</td><td>${m.s.toFixed(1).replace('.',',')}</td></tr>`
+    ).join('');
+  }
+
+  drawRoad(); drawChart();
+  return { stop, toggle, measure, reset, handleClick, setV };
 }
 
 // ============================================================
