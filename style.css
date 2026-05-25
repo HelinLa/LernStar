@@ -763,13 +763,30 @@ ul { list-style: none; }
   flex-shrink:0;
 }
 .topic-play-btn:hover { background:var(--gc,#7C3AED); color:#fff; }
-.topic-sim-btn {
+.topic-exp-btn {
   padding:6px 13px; border:none; border-radius:8px; cursor:pointer;
   font-size:.82rem; font-weight:800; font-family:inherit;
-  background:#0EA5E9; color:#fff; flex-shrink:0;
+  background:#059669; color:#fff; flex-shrink:0;
   transition:background .15s;
 }
-.topic-sim-btn:hover { background:#0284C7; }
+.topic-exp-btn:hover { background:#047857; }
+
+/* Experiment blocks */
+.exp-block { margin:12px 0; padding:12px 14px; background:#F8FAFC; border-radius:10px; font-size:.93rem; line-height:1.55; }
+.exp-goal  { background:#EFF6FF; border-left:4px solid #3B82F6; }
+.exp-title { font-weight:800; font-size:.95rem; margin-bottom:7px; }
+.exp-materials { display:flex; flex-wrap:wrap; gap:7px; }
+.exp-materials span { background:#DCFCE7; color:#166534; padding:4px 11px; border-radius:20px; font-size:.87rem; font-weight:700; }
+.exp-track { display:flex; align-items:flex-start; padding:6px 0; }
+.exp-mark  { display:flex; flex-direction:column; align-items:center; }
+.exp-mark-line { width:2px; height:18px; background:#475569; }
+.exp-mark-lbl  { font-size:.75rem; font-weight:700; color:#475569; white-space:nowrap; margin-top:2px; }
+.exp-track-line { flex:1; height:3px; background:#CBD5E1; margin-top:8px; }
+.exp-steps { margin:.3em 0; padding-left:20px; }
+.exp-steps li  { margin:6px 0; }
+.exp-input { width:100%; padding:5px 8px; border:1px solid #CBD5E1; border-radius:6px; font-size:.9rem; font-family:inherit; text-align:center; box-sizing:border-box; }
+.exp-input:focus { outline:none; border-color:#3B82F6; }
+.exp-btn-row { display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; }
 
 /* ── Simulation Modal ─────────────────────────────── */
 .sim-overlay {
