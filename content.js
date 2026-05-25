@@ -830,6 +830,7 @@ const CONTENT = {
         topics:[
 
           // ── KAPITEL 1: BEWEGUNGEN ──────────────────────────────────────
+          { isChapter:true, name:'Kapitel 1 – Bewegungen' },
           { name:'1.1 – Was ist Bewegung?', diff:1,
             explanation:'Stell dir vor, du sitzt im Bus und schaust aus dem Fenster – die Bäume rasen vorbei, aber du sitzt ganz ruhig. Bewegst du dich? Jein! Es kommt immer darauf an, von wo aus man schaut – das nennt man Bezugssystem. Im Weg-Zeit-Diagramm kann man sehen, wo ein Körper zu welchem Zeitpunkt ist. Eine steile Linie bedeutet: schnell. Eine flache Linie bedeutet: langsam. Eine waagerechte Linie bedeutet: gar keine Bewegung.' },
 
@@ -849,6 +850,7 @@ const CONTENT = {
             explanation:'Stell dir eine Schleuder vor: Du drehst einen Stein an einem Faden im Kreis. Die Geschwindigkeit bleibt dem Betrag nach gleich – aber die Richtung ändert sich ständig. Und Richtungsänderung bedeutet: Beschleunigung! Diese Beschleunigung zeigt immer zur Kreismitte und heißt Zentripetalbeschleunigung: a_z = v²/r. Dazu kommt: Winkelgeschwindigkeit ω = 2π/T (wie viele Runden pro Sekunde) und Bahngeschwindigkeit v = ω × r (je größer der Radius, desto schneller läuft der Außenrand).' },
 
           // ── KAPITEL 2: URSACHE VON BEWEGUNGEN ─────────────────────────
+          { isChapter:true, name:'Kapitel 2 – Ursache von Bewegungen' },
           { name:'2.1 – Was sind Kräfte?', diff:1,
             explanation:'Kräfte sind unsichtbare „Hände", die Dinge anstoßen, bremsen, verbiegen oder festhalten. Du kannst sie nicht sehen, aber du spürst sie ständig: die Schwerkraft zieht dich auf deinen Stuhl, der Stuhl drückt dich zurück, Reibung hält dein Heft am Tisch. Kräfte haben eine Stärke (gemessen in Newton, N) und eine Richtung – deshalb zeichnet man sie als Pfeile. Mehrere Kräfte kann man wie Vektoren addieren – heraus kommt die Gesamtkraft.' },
 
@@ -871,6 +873,7 @@ const CONTENT = {
             explanation:'Ein Eiskunstläufer dreht sich langsam mit ausgestreckten Armen – zieht er sie ein, dreht er sich plötzlich viel schneller. Kein Trick, reine Physik! Das Trägheitsmoment J beschreibt, wie schwer es ist, eine Drehbewegung zu ändern. Je weiter die Masse vom Drehpunkt weg ist, desto größer J. Wenn J kleiner wird (Arme rein), muss die Drehgeschwindigkeit ω größer werden – denn der Drehimpuls L = J × ω bleibt immer gleich.' },
 
           // ── KAPITEL 3: ERHALTUNGSGRÖSSEN ──────────────────────────────
+          { isChapter:true, name:'Kapitel 3 – Erhaltungsgrößen' },
           { name:'3.1 – Was ist Energie?', diff:1,
             explanation:'Energie ist so etwas wie die „Währung" der Physik – alles, was passiert, kostet Energie. Du kannst sie in verschiedene „Münzen" umtauschen: Bewegungsenergie E_kin = einhalb × m × v², Lageenergie E_pot = m × g × h, Wärme, Licht, elektrische Energie … Aber egal in welcher Form: Die Gesamtsumme bleibt immer gleich. Einheit: 1 Joule (J). 1 J ist ungefähr die Energie, die du brauchst, um einen Apfel einen Meter hochzuheben.' },
 
@@ -890,6 +893,7 @@ const CONTENT = {
             explanation:'Hast du schon mal gesehen, wie sich ein Kreisel stundenlang dreht, ohne umzufallen? Das liegt am Drehimpuls L = J × ω – solange nichts von außen stört, bleibt er erhalten. Genau das passiert beim Eiskunstläufer: Zieht er die Arme rein, wird J kleiner, und ω (Drehgeschwindigkeit) muss zunehmen. Planeten drehen sich übrigens ebenfalls schneller, wenn sie der Sonne näherkommen – aus demselben Grund.' },
 
           // ── KAPITEL 4: GRAVITATIONSFELD ───────────────────────────────
+          { isChapter:true, name:'Kapitel 4 – Gravitationsfeld' },
           { name:'4.1 – Weltmodelle: Erde oder Sonne im Mittelpunkt?', diff:1,
             explanation:'Jahrtausende lang dachten die Menschen, die Erde sei der Nabel des Universums – alles dreht sich um uns! Das klingt logisch, wenn man nachts in den Himmel schaut und die Sterne „wandern" sieht. 1543 kam Kopernikus mit einer unbequemen Wahrheit: Die Sonne steht im Mittelpunkt, und wir drehen uns um sie. Galileo bestätigte das mit dem Teleskop – und wurde dafür fast vor Gericht gestellt. Heute wissen wir: Nicht mal die Sonne ist besonders – sie ist ein ganz gewöhnlicher Stern unter Hunderten Milliarden in unserer Galaxie.' },
 
@@ -903,6 +907,7 @@ const CONTENT = {
             explanation:'Stell dir die Erde als riesigen unsichtbaren Magneten für Masse vor. Überall um sie herum gibt es eine Zugkraft – das Gravitationsfeld. Je näher du der Erde bist, desto stärker der Zug: g = G × M / r². An der Erdoberfläche gilt g ≈ 9,81 m/s². Auf dem Mond ist g nur einhalb davon – deshalb hüpfen Astronauten dort so leicht. Ein Satellit im Orbit: Die Gravitationskraft übernimmt exakt die Rolle der Zentripetalkraft – sie hält ihn auf der Kreisbahn.' },
 
           // ── KAPITEL 5: RELATIVITÄTSTHEORIE ────────────────────────────
+          { isChapter:true, name:'Kapitel 5 – Relativitätstheorie' },
           { name:'5.1 – Was ist ein Bezugssystem?', diff:1,
             explanation:'Schau aus dem Fenster eines fahrenden Zuges – die Landschaft rauscht vorbei, du sitzt still. Jetzt schau auf den Mitreisenden neben dir – er sitzt auch still. Für den Menschen auf dem Bahnsteig rasen aber beide mit 200 km/h vorbei. Wer hat Recht? Alle! Bewegung gibt es nur relativ zu einem Bezugspunkt. Ein Inertialsystem ist ein Bezugssystem, das selbst nicht beschleunigt wird – in so einem System gelten Newtons Gesetze ohne Ausnahme.' },
 

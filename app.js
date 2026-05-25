@@ -1083,7 +1083,7 @@ function renderGrade() {
       <div class="subject-icon">${sub.icon}</div>
       <div class="subject-name">${sub.name}</div>
       <div class="subject-desc">${sub.desc}</div>
-      <div class="subject-topics">${sub.topics.length} Themen · ${sub.exercises.length} Übungseinheiten</div>
+      <div class="subject-topics">${sub.topics.filter(t=>!t.isChapter).length} Themen · ${sub.exercises.length} Übungseinheiten</div>
       ${done > 0 ? `<div style="font-size:.78rem;color:#10B981;font-weight:700;margin-top:6px">✅ ${done}% geschafft</div>` : ''}
       <div class="subject-arrow">→</div>`;
     grid.appendChild(card);
@@ -1130,12 +1130,22 @@ function renderSubject() {
   // Topics (mit Play-Button für Mathe/Physik)
   const topicsList = document.getElementById('topicsList');
   topicsList.innerHTML = '';
+  let topicNum = 0;
   subject.topics.forEach((t, i) => {
+    if (t.isChapter) {
+      const hdr = document.createElement('div');
+      hdr.className = 'topic-chapter-header';
+      hdr.id = `topic-item-${i}`;
+      hdr.textContent = t.name;
+      topicsList.appendChild(hdr);
+      return;
+    }
+    topicNum++;
     const item = document.createElement('div');
     item.className = 'topic-item';
     item.id = `topic-item-${i}`;
     item.innerHTML = `
-      <div class="topic-num">${i + 1}</div>
+      <div class="topic-num">${topicNum}</div>
       <div class="topic-name">${t.name}</div>
       <div class="topic-diff">${DIFF_STARS[t.diff]}</div>
       ${hasVideo ? `<button class="topic-play-btn" id="topicBtn${i}" onclick="playTopic(${i})">🔊 Erklären</button>` : ''}`;
@@ -1213,6 +1223,7 @@ function playAllTopics(subject) {
       return;
     }
     const topic = subject.topics[idx];
+    if (topic.isChapter) { idx++; playNext(); return; }
     _clearTopicHighlights();
     const li = document.getElementById(`topic-item-${idx}`);
     if (li) li.classList.add('topic-active');
@@ -1221,7 +1232,7 @@ function playAllTopics(subject) {
     showTopicVisual(topic);
     const speech = document.getElementById('avatarSpeech');
     if (speech) speech.textContent = topic.explanation.substring(0, 90) + '…';
-    _speakSequential(`Thema ${idx + 1}: ${topic.name}. ${topic.explanation}`, () => {
+    _speakSequential(`${topic.name}. ${topic.explanation}`, () => {
       idx++;
       playNext();
     });

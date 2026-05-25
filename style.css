@@ -718,6 +718,13 @@ ul { list-style: none; }
    ============================================================ */
 .topics-section { padding:0 32px 32px; max-width:900px; }
 .topics-list { display:flex; flex-direction:column; gap:12px; }
+.topic-chapter-header {
+  font-size:1rem; font-weight:800; letter-spacing:.4px;
+  color:var(--gc,#7C3AED);
+  padding:20px 4px 8px;
+  border-bottom:2px solid var(--gc,#7C3AED);
+  margin-top:8px;
+}
 .topic-item {
   background:var(--surface);
   border-radius:var(--radius-sm);
