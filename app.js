@@ -2173,17 +2173,27 @@ Antworte NUR mit diesem JSON (kein anderer Text):
       body: JSON.stringify({
         model: 'llama-3.3-70b-versatile',
         messages: [
-          { role: 'system', content: 'Du bist ein Lehrer. Antworte ausschließlich mit dem angeforderten JSON-Objekt. Keine Markdown-Formatierung, kein Erklärtext.' },
+          { role: 'system', content: 'You are a quiz generator. Respond with ONLY a JSON object. No markdown, no code fences, no explanatory text.' },
           { role: 'user',   content: prompt }
         ],
-        max_tokens: 500, temperature: 0.8
+        max_tokens: 550, temperature: 0.8
       })
     });
     const data = await res.json();
     const raw  = data.choices?.[0]?.message?.content || '';
     const parsed = _parseAIJSON(raw);
-    if (parsed && parsed.title) _renderAIExBox(parsed);
-    else _renderAIExBox(null, 'KI hat kein gültiges Format zurückgegeben. Bitte nochmal versuchen.');
+    // Normalisiere Felder falls Modell andere Namen benutzt
+    if (parsed) {
+      parsed.title       = parsed.title || parsed.titel || parsed.Titel || 'KI-Aufgabe';
+      parsed.question    = parsed.question || parsed.frage || parsed.Frage || parsed.aufgabe || raw.slice(0,120);
+      parsed.options     = parsed.options  || parsed.antworten || parsed.Antworten || ['A','B','C','D'];
+      parsed.correct     = typeof parsed.correct !== 'undefined' ? parsed.correct : (parsed.richtig ?? 0);
+      parsed.explanation = parsed.explanation || parsed.erklaerung || parsed.Erklärung || '';
+      parsed.hint        = parsed.hint || parsed.tipp || parsed.Tipp || '';
+      _renderAIExBox(parsed);
+    } else {
+      _renderAIExBox(null, 'Kein gültiges Format erhalten. Bitte nochmal versuchen.');
+    }
   } catch (e) {
     _renderAIExBox(null, `Fehler: ${e.message}`);
   } finally {
@@ -2279,17 +2289,35 @@ function setExamDiff(diff) {
 
 // Robuste JSON-Extraktion: funktioniert auch mit Markdown-Codeblöcken
 function _parseAIJSON(text) {
-  // Markdown-Fences entfernen (```json ... ``` oder ``` ... ```)
   let t = text.replace(/```(?:json)?\s*/gi, '').replace(/```/g, '').trim();
-  // Direkt parsen
-  try { return JSON.parse(t); } catch {}
-  // Array-Bereich suchen (greedy, um vollständiges Array zu erfassen)
+  try { const p = JSON.parse(t); if (p) return p; } catch {}
   const arrM = t.match(/\[[\s\S]*\]/);
-  if (arrM) { try { return JSON.parse(arrM[0]); } catch {} }
-  // Objekt-Bereich suchen
+  if (arrM) { try { const p = JSON.parse(arrM[0]); if (p) return p; } catch {} }
   const objM = t.match(/\{[\s\S]*\}/);
-  if (objM) { try { return JSON.parse(objM[0]); } catch {} }
+  if (objM) { try { const p = JSON.parse(objM[0]); if (p) return p; } catch {} }
   return null;
+}
+
+// Fragen aus beliebigem Struktur extrahieren (key-unabhängig)
+function _extractQuestions(parsed) {
+  if (!parsed) return [];
+  if (Array.isArray(parsed)) return parsed.filter(q => q.question || q.frage || q.Frage);
+  // Beliebigen Array-Wert im Objekt suchen (erster Array mit Fragenstruktur)
+  for (const val of Object.values(parsed)) {
+    if (Array.isArray(val) && val.length > 0) {
+      const first = val[0];
+      if (first && (first.question || first.frage || first.Frage || first.options || first.Antworten)) {
+        // Normalisieren: unterschiedliche Feldnamen vereinheitlichen
+        return val.map(q => ({
+          question:    q.question || q.frage || q.Frage || q.text || '?',
+          options:     q.options  || q.Antworten || q.antworten || ['A','B','C','D'],
+          correct:     typeof q.correct !== 'undefined' ? q.correct : (q.richtig ?? 0),
+          explanation: q.explanation || q.Erklärung || q.erklaerung || ''
+        }));
+      }
+    }
+  }
+  return [];
 }
 
 let _examRunning = false;
@@ -2319,9 +2347,10 @@ async function startExamSession() {
   const diff     = diffMap[state.examDiff] || 'mittelschwer';
 
   try {
-    const prompt = `Erstelle 5 ${diff}e Multiple-Choice-Fragen für ${subjName} Klasse ${gradeNum} im Stil einer ${modeText}.
-Gib deine Antwort als JSON-Objekt mit einem "questions"-Array zurück. Kein anderer Text, keine Markdown-Zeichen.
-Format: {"questions":[{"question":"...","options":["A","B","C","D"],"correct":0,"explanation":"..."},...]}`;
+    const prompt = `Erstelle genau 5 ${diff}e Multiple-Choice-Fragen zum Thema ${subjName} für Klasse ${gradeNum}, im Stil einer ${modeText}.
+Jede Frage hat genau 4 Antwortmöglichkeiten (index 0-3) und eine Erklärung der richtigen Antwort.
+Antworte NUR mit diesem JSON-Array – kein Text davor oder danach, keine Markdown-Formatierung:
+[{"question":"Frage 1?","options":["Option A","Option B","Option C","Option D"],"correct":0,"explanation":"Erklärung"},{"question":"Frage 2?",...},...]`;
 
     const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
@@ -2329,17 +2358,17 @@ Format: {"questions":[{"question":"...","options":["A","B","C","D"],"correct":0,
       body: JSON.stringify({
         model: 'llama-3.3-70b-versatile',
         messages: [
-          { role: 'system', content: 'Du bist ein Prüfungsersteller. Antworte ausschließlich mit dem angeforderten JSON-Objekt. Kein Erklärtext, keine Markdown-Formatierung.' },
-          { role: 'user',   content: prompt }
+          { role: 'system', content: 'You are a quiz generator. Respond with ONLY a JSON array. No explanatory text, no markdown, no code fences. Start your response with [ and end with ].' },
+          { role: 'user', content: prompt }
         ],
-        max_tokens: 1800, temperature: 0.7
+        max_tokens: 2000, temperature: 0.65
       })
     });
     const data = await res.json();
     const raw  = data.choices?.[0]?.message?.content || '';
     const parsed = _parseAIJSON(raw);
-    const questions = Array.isArray(parsed) ? parsed : (parsed?.questions || []);
-    if (!questions.length) throw new Error('Keine Fragen im Format erhalten. Bitte nochmal versuchen.');
+    const questions = _extractQuestions(parsed);
+    if (!questions.length) throw new Error('Keine Fragen erhalten – bitte nochmal versuchen.');
     state.examSession.questions = questions.slice(0,5);
     _showExamQ(0);
   } catch (e) {
