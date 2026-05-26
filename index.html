@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=7" />
+  <link rel="stylesheet" href="style.css?v=8" />
   <!-- Markdown + Mathe-Rendering für Chat -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -103,6 +103,7 @@
         <li><button class="sidebar-ki-btn" onclick="navigate('examprep');closeSidebar()">🎯 Prüfungsmodus</button></li>
         <li><button class="sidebar-ki-btn" onclick="navigate('analyse');closeSidebar()">📊 Lernanalyse</button></li>
         <li><button class="sidebar-ki-btn" onclick="resetOnboarding()">⚙️ Profil &amp; Ziel ändern</button></li>
+        <li><button class="sidebar-ki-btn" onclick="openAISettings();closeSidebar()">🔌 KI-Anbieter</button></li>
       </ul>
     </div>
   </nav>
@@ -530,8 +531,49 @@
 </div>
 <div class="chat-overlay" id="chatOverlay"></div>
 
+<!-- ===== KI-ANBIETER SETTINGS MODAL ===== -->
+<div class="ai-settings-overlay hidden" id="aiSettingsModal">
+  <div class="ai-settings-card">
+    <div class="ai-settings-header">
+      <h2>🔌 KI-Anbieter</h2>
+      <button class="ai-settings-close" onclick="closeAISettings()">✕</button>
+    </div>
+    <p class="ai-settings-desc">LernStar probiert alle aktiven Anbieter der Reihe nach aus. Fällt einer aus, wechselt er automatisch zum nächsten.</p>
+
+    <!-- Aktive Anbieter -->
+    <h3 class="ai-settings-section-title">Aktive Anbieter</h3>
+    <div id="aiProviderList" class="ai-provider-list"></div>
+
+    <!-- Ollama (lokal) -->
+    <h3 class="ai-settings-section-title">➕ Ollama hinzufügen (lokal)</h3>
+    <div class="ai-settings-form">
+      <input type="text" id="ollamaUrl" class="ai-settings-input" placeholder="URL (Standard: http://localhost:11434/v1/chat/completions)">
+      <input type="text" id="ollamaModel" class="ai-settings-input" placeholder="Modell (z.B. llama3, mistral)">
+      <button class="btn-ai-add" onclick="saveOllamaProvider()">Ollama hinzufügen</button>
+    </div>
+
+    <!-- Eigene API -->
+    <h3 class="ai-settings-section-title">➕ Eigene OpenAI-kompatible API</h3>
+    <div class="ai-settings-form">
+      <input type="text"     id="customName"  class="ai-settings-input" placeholder="Name (z.B. Mein Server)">
+      <input type="url"      id="customUrl"   class="ai-settings-input" placeholder="URL (https://…/v1/chat/completions)">
+      <input type="password" id="customKey"   class="ai-settings-input" placeholder="API-Key">
+      <input type="text"     id="customModel" class="ai-settings-input" placeholder="Modell (z.B. gpt-4o-mini)">
+      <div class="ai-settings-btn-row">
+        <button class="btn-ai-test" id="testProviderBtn" onclick="testCustomProvider()">Verbindung testen</button>
+        <button class="btn-ai-add"  onclick="saveCustomProvider()">Hinzufügen</button>
+      </div>
+      <p class="ai-test-result" id="testProviderResult"></p>
+    </div>
+
+    <div class="ai-settings-footer">
+      <button class="btn-primary" onclick="closeAISettings()">Fertig</button>
+    </div>
+  </div>
+</div>
+
 <script src="content.js?v=12"></script>
-<script src="app.js?v=19"></script>
+<script src="app.js?v=20"></script>
 <script>
   // Service Worker deregistrieren damit kein alter Cache Probleme macht
   if ('serviceWorker' in navigator) {

@@ -1858,9 +1858,85 @@ function closeSidebar() {
 }
 
 // ============================================================
-// CHAT WIDGET  –  Herr Lala KI-Assistent
+// KI-PROVIDER ABSTRACTION – unabhängig von einem einzigen Anbieter
 // ============================================================
 const GROQ_KEY = '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';
+
+// Standard-Anbieter (immer aktiv, kann nicht gelöscht werden)
+const _defaultProviders = [
+  {
+    id: 'groq',
+    name: 'Groq (Standard)',
+    url: 'https://api.groq.com/openai/v1/chat/completions',
+    key: GROQ_KEY,
+    model: 'llama-3.3-70b-versatile',
+    builtin: true,
+    active: true
+  }
+];
+
+// Lädt benutzerdefinierte Anbieter aus localStorage
+function _getProviders() {
+  const custom = JSON.parse(localStorage.getItem('ls_ai_providers') || '[]');
+  return [..._defaultProviders, ...custom];
+}
+
+// Universelle KI-Aufruf-Funktion – probiert alle aktiven Anbieter der Reihe nach
+async function _aiCall(messages, opts = {}) {
+  const providers = _getProviders().filter(p => p.active && p.url && p.key);
+  let lastErr = new Error('Kein KI-Anbieter konfiguriert.');
+
+  for (const p of providers) {
+    try {
+      const body = {
+        model:       opts.model || p.model,
+        messages,
+        max_tokens:  opts.max_tokens  ?? 700,
+        temperature: opts.temperature ?? 0.7
+      };
+      if (opts.response_format) body.response_format = opts.response_format;
+
+      const res = await fetch(p.url, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${p.key}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+
+      if (!res.ok) {
+        const e = await res.json().catch(() => ({}));
+        throw new Error(e?.error?.message || `HTTP ${res.status}`);
+      }
+
+      const data    = await res.json();
+      const content = data.choices?.[0]?.message?.content;
+      if (content) return content;
+      throw new Error('Leere Antwort.');
+    } catch (e) {
+      lastErr = e;
+      console.warn(`[LernStar] Anbieter "${p.name}" fehlgeschlagen: ${e.message}`);
+    }
+  }
+  throw lastErr;
+}
+
+// Test ob ein Anbieter erreichbar ist
+async function testAIProvider(url, key, model) {
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model, messages: [{ role: 'user', content: 'Sag nur: OK' }],
+      max_tokens: 10
+    })
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const d = await res.json();
+  return d.choices?.[0]?.message?.content || 'OK';
+}
+
+// ============================================================
+// CHAT WIDGET  –  Herr Lala KI-Assistent
+// ============================================================
 
 // ── Lernstoff-Kontext: aktuelle Themen-Inhalte aus content.js ──
 function _buildCurriculumContext() {
@@ -2064,55 +2140,38 @@ async function _chatAsk(question) {
   sendBtn.disabled = true;
   _chatShowTyping();
 
-  if (!GROQ_KEY) {
-    _chatHideTyping();
-    _chatAddBubble('⚠️ Kein API-Key eingetragen. Bitte trage deinen Groq-Key bei GROQ_KEY ein.', 'error');
-    sendBtn.disabled = false;
-    return;
-  }
-
   try {
-    let userContent;
-    if (hasImage) {
-      userContent = [
-        { type: 'image_url', image_url: { url: `data:${imgMime};base64,${imgB64}` } },
-        { type: 'text', text: question || 'Bitte löse diese Aufgabe Schritt für Schritt und erkläre den Lösungsweg auf einfache Weise auf Deutsch.' },
-      ];
-    } else {
-      userContent = question;
-    }
-
-    const model = hasImage ? 'meta-llama/llama-4-scout-17b-16e-instruct' : 'llama-3.3-70b-versatile';
-
     // Gesprächsverlauf aufbauen (System + Verlauf + neue Nachricht)
-    const historySlice = _chatHistory.slice(-12); // max. letzte 6 Austausche
-    const messages = [
-      { role: 'system', content: _getChatSystem() },
-      ...historySlice,
-      { role: 'user', content: userContent },
-    ];
+    const historySlice = _chatHistory.slice(-12);
+    let answer;
 
-    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${GROQ_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model,
-        messages,
-        max_tokens: 700,
-        temperature: 0.7,
-      }),
-    });
-
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err?.error?.message || `HTTP ${res.status}`);
+    if (hasImage) {
+      // Bildverarbeitung: direkt über Groq (braucht Vision-Modell)
+      const userContent = [
+        { type: 'image_url', image_url: { url: `data:${imgMime};base64,${imgB64}` } },
+        { type: 'text', text: question || 'Bitte löse diese Aufgabe Schritt für Schritt auf Deutsch.' },
+      ];
+      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${GROQ_KEY}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'meta-llama/llama-4-scout-17b-16e-instruct',
+          messages: [{ role: 'system', content: _getChatSystem() }, ...historySlice, { role: 'user', content: userContent }],
+          max_tokens: 700, temperature: 0.7
+        })
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const d = await res.json();
+      answer = d.choices?.[0]?.message?.content || '(Keine Antwort)';
+    } else {
+      // Text: über _aiCall() mit automatischem Fallback
+      const messages = [
+        { role: 'system', content: _getChatSystem() },
+        ...historySlice,
+        { role: 'user', content: question }
+      ];
+      answer = await _aiCall(messages, { max_tokens: 700, temperature: 0.7 });
     }
-
-    const data   = await res.json();
-    const answer = data.choices?.[0]?.message?.content || '(Keine Antwort erhalten)';
 
     // Verlauf aktualisieren (nur Text, kein Bild-Blob speichern)
     _chatHistory.push({ role: 'user',      content: typeof userContent === 'string' ? userContent : '[Bild]' });
@@ -2222,21 +2281,10 @@ async function generateAIExercise() {
 Das JSON-Objekt muss diese Felder enthalten: title, question, options (Array mit 4 Strings), correct (Index 0-3), explanation, hint.
 Beispiel: {"title":"Beispieltitel","question":"Was ist...?","options":["Option A","Option B","Option C","Option D"],"correct":0,"explanation":"Weil...","hint":"Denke an..."}`;
 
-    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${GROQ_KEY}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
-        response_format: { type: 'json_object' },
-        messages: [
-          { role: 'system', content: 'Du bist ein Schullehrer. Antworte immer mit einem JSON-Objekt mit den Feldern: title, question, options, correct, explanation, hint.' },
-          { role: 'user',   content: prompt }
-        ],
-        max_tokens: 600, temperature: 0.8
-      })
-    });
-    const data = await res.json();
-    const raw  = data.choices?.[0]?.message?.content || '';
+    const raw = await _aiCall([
+      { role: 'system', content: 'Du bist ein Schullehrer. Antworte immer mit einem JSON-Objekt mit den Feldern: title, question, options, correct, explanation, hint.' },
+      { role: 'user',   content: prompt }
+    ], { max_tokens: 600, temperature: 0.8, response_format: { type: 'json_object' } });
     const parsed = _parseAIJSON(raw);
     // Normalisiere Felder falls Modell andere Namen benutzt
     if (parsed) {
@@ -2408,21 +2456,10 @@ Jede Frage hat genau 4 Antwortmöglichkeiten. Der Wert "correct" ist der Index (
 Antworte mit einem JSON-Objekt in diesem Format:
 {"questions":[{"question":"...","options":["A","B","C","D"],"correct":0,"explanation":"..."},{"question":"...","options":["...","...","...","..."],"correct":1,"explanation":"..."},{"question":"...","options":["...","...","...","..."],"correct":2,"explanation":"..."},{"question":"...","options":["...","...","...","..."],"correct":0,"explanation":"..."},{"question":"...","options":["...","...","...","..."],"correct":3,"explanation":"..."}]}`;
 
-    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${GROQ_KEY}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
-        response_format: { type: 'json_object' },
-        messages: [
-          { role: 'system', content: 'Du bist ein Prüfungsersteller für deutsche Schulen. Antworte immer mit einem JSON-Objekt mit einem "questions"-Array.' },
-          { role: 'user', content: prompt }
-        ],
-        max_tokens: 2000, temperature: 0.65
-      })
-    });
-    const data = await res.json();
-    const raw  = data.choices?.[0]?.message?.content || '';
+    const raw = await _aiCall([
+      { role: 'system', content: 'Du bist ein Prüfungsersteller für deutsche Schulen. Antworte immer mit einem JSON-Objekt mit einem "questions"-Array.' },
+      { role: 'user', content: prompt }
+    ], { max_tokens: 2000, temperature: 0.65, response_format: { type: 'json_object' } });
     const parsed = _parseAIJSON(raw);
     const questions = _extractQuestions(parsed);
     if (!questions.length) throw new Error('Keine Fragen erhalten – bitte nochmal versuchen.');
@@ -2614,23 +2651,111 @@ async function _loadAnalyseAI(entries, bySub, avgAll) {
   }).join(', ');
 
   try {
-    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${GROQ_KEY}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'llama-3.1-8b-instant',
-        messages: [
-          { role: 'system', content: 'Du bist Herr Lala, ein ermutigender Schultutor. Antworte auf Deutsch, 3–4 Sätze, persönlich und motivierend.' },
-          { role: 'user',   content: `Ich heiße ${name}. Ergebnisse: ${entries.length} Aufgaben, Ø ${avgAll}%. Fächer: ${subjSum}. Gib mir eine persönliche Rückmeldung und einen konkreten nächsten Schritt.` }
-        ],
-        max_tokens: 180, temperature: 0.7
-      })
-    });
-    const data = await res.json();
-    el.textContent = data.choices?.[0]?.message?.content || 'Super gemacht – mach weiter so!';
+    const content = await _aiCall([
+      { role: 'system', content: 'Du bist Herr Lala, ein ermutigender Schultutor. Antworte auf Deutsch, 3–4 Sätze, persönlich und motivierend.' },
+      { role: 'user',   content: `Ich heiße ${name}. Ergebnisse: ${entries.length} Aufgaben, Ø ${avgAll}%. Fächer: ${subjSum}. Gib mir eine persönliche Rückmeldung und einen konkreten nächsten Schritt.` }
+    ], { model: 'llama-3.1-8b-instant', max_tokens: 180 });
+    el.textContent = content;
   } catch {
     el.textContent = `Toll, ${name}! Du hast bereits ${entries.length} Aufgaben gelöst. Schau dir die Schwachstellen an und übe gezielt weiter!`;
   }
+}
+
+// ── AI SETTINGS ──────────────────────────────────────────────
+function openAISettings() {
+  const modal = document.getElementById('aiSettingsModal');
+  if (!modal) return;
+  _renderProviderList();
+  modal.classList.remove('hidden');
+}
+
+function closeAISettings() {
+  document.getElementById('aiSettingsModal')?.classList.add('hidden');
+}
+
+function _renderProviderList() {
+  const list = document.getElementById('aiProviderList');
+  if (!list) return;
+  const custom = JSON.parse(localStorage.getItem('ls_ai_providers') || '[]');
+  const all = [..._defaultProviders, ...custom];
+  list.innerHTML = all.map((p, i) => `
+    <div class="ai-provider-item ${p.active ? 'active' : 'inactive'}">
+      <div class="ai-provider-info">
+        <strong>${p.name}</strong>
+        <span class="ai-provider-url">${p.url}</span>
+        <span class="ai-provider-model">${p.model}</span>
+      </div>
+      <div class="ai-provider-actions">
+        ${p.builtin
+          ? `<span class="ai-provider-builtin">Standard</span>`
+          : `<button class="btn-ai-remove" onclick="removeProvider(${i - _defaultProviders.length})">✕ Entfernen</button>`
+        }
+      </div>
+    </div>
+  `).join('');
+}
+
+function saveOllamaProvider() {
+  const url = (document.getElementById('ollamaUrl')?.value || '').trim() || 'http://localhost:11434/v1/chat/completions';
+  const model = (document.getElementById('ollamaModel')?.value || '').trim() || 'llama3';
+  _addCustomProvider({ id: 'ollama_' + Date.now(), name: 'Ollama (Lokal)', url, key: 'ollama', model });
+}
+
+function saveCustomProvider() {
+  const name  = (document.getElementById('customName')?.value  || '').trim();
+  const url   = (document.getElementById('customUrl')?.value   || '').trim();
+  const key   = (document.getElementById('customKey')?.value   || '').trim();
+  const model = (document.getElementById('customModel')?.value || '').trim();
+  if (!url || !key || !model) { alert('Bitte URL, API-Key und Modell angeben.'); return; }
+  _addCustomProvider({ id: 'custom_' + Date.now(), name: name || 'Eigene API', url, key, model });
+}
+
+function _addCustomProvider(p) {
+  const custom = JSON.parse(localStorage.getItem('ls_ai_providers') || '[]');
+  custom.push({ ...p, active: true });
+  localStorage.setItem('ls_ai_providers', JSON.stringify(custom));
+  _renderProviderList();
+  // clear inputs
+  ['ollamaUrl','ollamaModel','customName','customUrl','customKey','customModel'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
+}
+
+function removeProvider(customIndex) {
+  const custom = JSON.parse(localStorage.getItem('ls_ai_providers') || '[]');
+  custom.splice(customIndex, 1);
+  localStorage.setItem('ls_ai_providers', JSON.stringify(custom));
+  _renderProviderList();
+}
+
+async function testAIProvider(url, key, model) {
+  const btn = document.getElementById('testProviderBtn');
+  const out = document.getElementById('testProviderResult');
+  if (btn) btn.disabled = true;
+  if (out) out.textContent = '⏳ Teste…';
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model, messages: [{ role:'user', content:'Hallo' }], max_tokens: 10 })
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const reply = data.choices?.[0]?.message?.content;
+    if (out) out.textContent = reply ? `✅ Verbunden! Antwort: "${reply}"` : '✅ Verbunden (leere Antwort)';
+  } catch(e) {
+    if (out) out.textContent = `❌ Fehler: ${e.message}`;
+  } finally {
+    if (btn) btn.disabled = false;
+  }
+}
+
+function testCustomProvider() {
+  const url   = (document.getElementById('customUrl')?.value  || '').trim();
+  const key   = (document.getElementById('customKey')?.value  || '').trim();
+  const model = (document.getElementById('customModel')?.value|| '').trim();
+  if (!url || !key || !model) { alert('Bitte URL, API-Key und Modell für den Test ausfüllen.'); return; }
+  testAIProvider(url, key, model);
 }
 
 // ── INIT ─────────────────────────────────────────────────────
