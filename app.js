@@ -1161,12 +1161,17 @@ function renderSubject() {
     item.className = 'topic-item';
     item.id = `topic-item-${i}`;
     item.innerHTML = `
-      <div class="topic-item-head">
+      <div class="topic-thumb">
         <div class="topic-num">${topicNum}</div>
-        <div class="topic-name">${t.name}</div>
-        <div class="topic-diff">${DIFF_STARS[t.diff]}</div>
+        <div class="topic-play-icon">▶</div>
       </div>
-      ${hasVideo ? `<button class="topic-play-btn" id="topicBtn${i}" onclick="playTopic(${i})">Erklärvideo</button>` : ''}`;
+      <div class="topic-body">
+        <div class="topic-item-head">
+          <div class="topic-name">${t.name}</div>
+          <div class="topic-diff">${DIFF_STARS[t.diff]}</div>
+        </div>
+        ${hasVideo ? `<button class="topic-play-btn" id="topicBtn${i}" onclick="playTopic(${i})">Erklärvideo</button>` : ''}
+      </div>`;
     topicsList.appendChild(item);
   });
 
