@@ -12,6 +12,16 @@ const state = {
   progress: JSON.parse(localStorage.getItem('ls_progress') || '{}'),
   introTimer: null,
   introInterval: null,
+  // KI-Personalisierung
+  userName: localStorage.getItem('ls_userName') || null,
+  learningGoal: localStorage.getItem('ls_learningGoal') || 'normal', // 'normal','zap','abitur'
+  onboardingDone: localStorage.getItem('ls_onboardingDone') === '1',
+  currentTopicName: null,
+  // Prüfungsmodus
+  examMode: 'zap',
+  examDiff: 2,
+  examSubjectId: null,
+  examSession: { questions: [], current: 0, score: 0, answers: [] },
 };
 
 // ============================================================
@@ -1011,11 +1021,13 @@ function navigate(view, gradeId, subjectId, exerciseId) {
   updateGlobalProgress();
 
   switch (view) {
-    case 'home':    renderHome();    break;
-    case 'grade':   renderGrade();   break;
-    case 'subject': renderSubject(); break;
-    case 'quiz':    renderQuiz();    break;
-    case 'result':  showView('viewResult'); break;
+    case 'home':     renderHome();     break;
+    case 'grade':    renderGrade();    break;
+    case 'subject':  renderSubject();  break;
+    case 'quiz':     renderQuiz();     break;
+    case 'result':   showView('viewResult'); break;
+    case 'examprep': renderExamPrep(); break;
+    case 'analyse':  renderAnalyse();  break;
   }
 
   // Scroll to top
@@ -1274,6 +1286,7 @@ function playTopic(idx) {
 
   stopIntro();
   _clearTopicHighlights();
+  state.currentTopicName = topic.name;
 
   // Highlight aktives Topic
   const activeItem = document.getElementById(`topic-item-${idx}`);
@@ -1846,43 +1859,41 @@ function closeSidebar() {
 // ============================================================
 const GROQ_KEY = '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';
 
-const CHAT_SYSTEM = `Du bist Herr Lala, ein freundlicher Lernassistent auf der Schullernplattform LernStar.
+function _getChatSystem() {
+  const name    = state.userName;
+  const gradeRaw = state.gradeId;
+  const grade   = gradeRaw ? `Klasse ${gradeRaw.replace('klasse','')}` : null;
+  const subj    = gradeRaw && state.subjectId
+    ? CONTENT[gradeRaw]?.subjects.find(s => s.id === state.subjectId)?.name || null
+    : null;
+  const topic   = state.currentTopicName;
+  const goalMap = { normal:'allgemeines Lernen', zap:'ZAP-Prüfung', abitur:'Abitur' };
+  const goal    = goalMap[state.learningGoal] || 'Lernen';
+
+  let ctx = 'Du hilfst';
+  if (name)  ctx += ` ${name}`;
+  if (grade) ctx += ` aus ${grade}`;
+  if (subj)  ctx += ` im Fach ${subj}`;
+  if (topic) ctx += ` beim Thema „${topic}"`;
+  ctx += ` (Ziel: ${goal}).`;
+
+  return `Du bist Herr Lala, ein freundlicher, erfahrener Tutor für Mathematik und Physik an einer deutschen Schule. ${ctx}
 
 SPRACHE UND STIL:
 - Antworte IMMER auf Deutsch.
-- Benutze kurze, einfache Sätze.
-- Sprich ruhig und freundlich.
-- Die Kinder können wenig oder kein Deutsch – benutze deshalb sehr einfache Wörter.
-- Wichtige Wörter ruhig wiederholen.
-- Keine langen Erklärungen.
+- Passe dein Niveau an${grade ? ` ${grade}` : ''} an – klar und verständlich.
+- Kurze Sätze, Alltagsbeispiele (Pizza, Geld, Sport).
+- Sprich${name ? ` ${name}` : ' den Schüler'} direkt mit Namen an.
+- Bei Fehlern: ermutige und erkläre den richtigen Weg.
+- Stelle nach jeder Erklärung eine kurze Verständnisfrage.
+${state.learningGoal === 'zap' ? '- Orientiere dich an ZAP-Prüfungsformaten (Multiple Choice, Rechenaufgaben).' : ''}
+${state.learningGoal === 'abitur' ? '- Erkläre auf Abiturniveau mit präzisen Fachbegriffen und vollständigen Herleitungen.' : ''}
 
-MATHEMATISCHE ZEICHEN – so aussprechen:
-- "+" = "plus"
-- "−" = "minus"
-- "×" = "mal"
-- ":" = "geteilt durch"
-- "=" = "ist gleich"
-
-FACHBEGRIFFE – immer direkt erklären:
-- "Summe" = "das Ergebnis von Plus-Rechnen"
-- "Produkt" = "das Ergebnis von Mal-Rechnen"
-- "Differenz" = "das Ergebnis von Minus-Rechnen"
-- "Nenner" = "die Zahl unten beim Bruch"
-- "Zähler" = "die Zahl oben beim Bruch"
-
-ERKLÄRUNGEN:
-- Gib anschauliche Beispiele aus dem Alltag: Äpfel, Pizza, Geld, Spielzeug.
-- Erkläre Schritt für Schritt, wie man zur Lösung kommt.
-- Lies Beispiele nicht nur vor – erkläre den Weg.
-
-MATHEMATIK-FORMATIERUNG (sehr wichtig!):
+MATHEMATIK-FORMATIERUNG:
 Schreibe JEDEN mathematischen Ausdruck in einzelne Dollarzeichen: $Ausdruck$
-Beispiele:
-- Bruch: $\\frac{3}{4}$
-- Rechnung: $7 + 5 = 12$
-- Gleichung: $x^2 + 1 = 5$
-- Wurzel: $\\sqrt{9} = 3$
-Niemals LaTeX ohne Dollarzeichen schreiben. Niemals $$ (doppelte Dollarzeichen) verwenden.`;
+- Bruch: $\\frac{3}{4}$  · Rechnung: $7 + 5 = 12$  · Wurzel: $\\sqrt{9} = 3$
+Niemals $$ (doppelte Dollarzeichen) verwenden.`;
+}
 
 let _chatOpen = false;
 
@@ -2036,7 +2047,7 @@ async function _chatAsk(question) {
       body: JSON.stringify({
         model,
         messages: [
-          { role: 'system', content: CHAT_SYSTEM },
+          { role: 'system', content: _getChatSystem() },
           { role: 'user',   content: userContent },
         ],
         max_tokens: 600,
@@ -2064,6 +2075,466 @@ async function _chatAsk(question) {
     input.focus();
   }
 }
+
+// ============================================================
+// KI FEATURES – Onboarding, Prüfungsmodus, Lernanalyse
+// ============================================================
+
+// ── ONBOARDING ───────────────────────────────────────────────
+function checkOnboarding() {
+  const overlay = document.getElementById('onboardingOverlay');
+  if (!overlay) return;
+  if (!state.onboardingDone) {
+    overlay.classList.remove('hidden');
+    setTimeout(() => document.getElementById('obNameInput')?.focus(), 200);
+  }
+  _updateKIBadges();
+}
+
+function obSetName() {
+  const input = document.getElementById('obNameInput');
+  const name  = input?.value.trim();
+  if (!name) { input?.focus(); return; }
+  state.userName = name;
+  localStorage.setItem('ls_userName', name);
+  const greetEl = document.getElementById('obGreetName');
+  if (greetEl) greetEl.textContent = name;
+  document.getElementById('obStep1').classList.add('hidden');
+  document.getElementById('obStep2').classList.remove('hidden');
+}
+
+function obSetGoal(goal) {
+  state.learningGoal  = goal;
+  state.onboardingDone = true;
+  localStorage.setItem('ls_learningGoal', goal);
+  localStorage.setItem('ls_onboardingDone', '1');
+  const overlay = document.getElementById('onboardingOverlay');
+  if (overlay) overlay.classList.add('hidden');
+  _updateKIBadges();
+}
+
+function resetOnboarding() {
+  state.onboardingDone = false;
+  state.userName = null;
+  state.learningGoal = 'normal';
+  ['ls_onboardingDone','ls_userName','ls_learningGoal'].forEach(k => localStorage.removeItem(k));
+  closeSidebar();
+  checkOnboarding();
+}
+
+function _updateKIBadges() {
+  const nameBadge = document.getElementById('userNameBadge');
+  const goalBadge = document.getElementById('goalBadge');
+  if (nameBadge) {
+    if (state.userName) {
+      nameBadge.textContent = `👤 ${state.userName}`;
+      nameBadge.style.display = '';
+    } else {
+      nameBadge.style.display = 'none';
+    }
+  }
+  if (goalBadge) {
+    const icons   = { normal:'📚', zap:'🎯', abitur:'🏆' };
+    const labels  = { normal:'Lernen', zap:'ZAP', abitur:'Abitur' };
+    goalBadge.textContent = `${icons[state.learningGoal]||'📚'} ${labels[state.learningGoal]||'Lernen'}`;
+    goalBadge.style.display = '';
+  }
+}
+
+// ── KI-AUFGABE GENERIEREN ────────────────────────────────────
+let _aiExPending = false;
+
+async function generateAIExercise() {
+  if (_aiExPending) return;
+  const gradeId   = state.gradeId;
+  const subjectId = state.subjectId;
+  if (!gradeId || !subjectId) {
+    _renderAIExBox(null, 'Bitte zuerst ein Fach öffnen.');
+    return;
+  }
+  const gradeNum   = gradeId.replace('klasse','');
+  const subjectName = CONTENT[gradeId]?.subjects.find(s => s.id === subjectId)?.name || subjectId;
+  const topicCtx   = state.currentTopicName ? ` zum Thema „${state.currentTopicName}"` : '';
+  const diffMap    = { 1:'einfach', 2:'mittelschwer', 3:'schwer' };
+  const diff       = diffMap[state.examDiff] || 'mittelschwer';
+
+  const btn = document.getElementById('aiExerciseBtn');
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ KI generiert…'; }
+  _aiExPending = true;
+
+  try {
+    const prompt = `Erstelle eine ${diff}e Multiple-Choice-Aufgabe für Klasse ${gradeNum} ${subjectName}${topicCtx}.
+Antworte NUR mit diesem JSON (kein anderer Text):
+{"title":"Kurzer Titel","question":"Vollständige Frage","options":["A","B","C","D"],"correct":0,"explanation":"Erklärung","hint":"Tipp"}`;
+
+    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${GROQ_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'llama-3.3-70b-versatile',
+        messages: [
+          { role: 'system', content: 'Du bist ein Lehrer. Antworte ausschließlich mit dem angeforderten JSON.' },
+          { role: 'user',   content: prompt }
+        ],
+        max_tokens: 450, temperature: 0.8
+      })
+    });
+    const data = await res.json();
+    const text = data.choices?.[0]?.message?.content || '';
+    const m = text.match(/\{[\s\S]*\}/);
+    if (m) _renderAIExBox(JSON.parse(m[0]));
+    else   _renderAIExBox(null, 'KI hat kein gültiges Format zurückgegeben.');
+  } catch (e) {
+    _renderAIExBox(null, `Fehler: ${e.message}`);
+  } finally {
+    _aiExPending = false;
+    if (btn) { btn.disabled = false; btn.textContent = '🤖 Neue KI-Aufgabe generieren'; }
+  }
+}
+
+function _escQ(s) { return String(s).replace(/'/g,"\\'").replace(/"/g,'&quot;'); }
+
+function _renderAIExBox(ex, err) {
+  const box = document.getElementById('aiExerciseBox');
+  if (!box) return;
+  box.classList.remove('hidden');
+  if (err) { box.innerHTML = `<div class="ai-ex-error">⚠️ ${err}</div>`; return; }
+  box.innerHTML = `
+    <div class="ai-ex-badge">🤖 KI-generiert</div>
+    <div class="ai-ex-title">${ex.title}</div>
+    <div class="ai-ex-question">${ex.question}</div>
+    <div class="ai-ex-options">
+      ${ex.options.map((opt,i) => `
+        <button class="ai-ex-opt" onclick="_checkAIEx(${i},${ex.correct},this,'${_escQ(ex.explanation)}')">
+          <span class="ai-ex-opt-letter">${'ABCD'[i]}</span>${opt}
+        </button>`).join('')}
+    </div>
+    <button class="hint-toggle-btn" style="margin-top:10px" onclick="this.nextElementSibling.classList.toggle('hidden')">💡 Tipp</button>
+    <div class="quiz-hint hidden">${ex.hint}</div>
+    <div class="ai-ex-expl hidden" id="aiExExpl"></div>`;
+}
+
+function _checkAIEx(chosen, correct, btn, explanation) {
+  document.querySelectorAll('.ai-ex-opt').forEach(b => b.disabled = true);
+  const isRight = chosen === correct;
+  document.querySelectorAll('.ai-ex-opt')[correct].classList.add('ai-ex-correct');
+  if (!isRight) btn.classList.add('ai-ex-wrong');
+  const expl = document.getElementById('aiExExpl');
+  if (expl) { expl.textContent = explanation; expl.classList.remove('hidden'); }
+}
+
+// ── PRÜFUNGSMODUS ────────────────────────────────────────────
+function renderExamPrep() {
+  showView('viewExamPrep');
+  setExamMode(state.examMode);
+
+  const gradeId = state.gradeId;
+  const btns    = document.getElementById('examSubjectBtns');
+  if (!btns) return;
+  btns.innerHTML = '';
+
+  let subjects = [];
+  if (gradeId && CONTENT[gradeId]) {
+    subjects = CONTENT[gradeId].subjects;
+  } else {
+    const seen = new Set();
+    Object.values(CONTENT).forEach(g => g.subjects.forEach(s => {
+      if (!seen.has(s.id)) { seen.add(s.id); subjects.push(s); }
+    }));
+  }
+
+  subjects.forEach(s => {
+    const b = document.createElement('button');
+    b.className = 'exam-subject-btn' + (state.examSubjectId === s.id ? ' active' : '');
+    b.innerHTML = `${s.icon||''} ${s.name}`;
+    b.onclick = () => { state.examSubjectId = s.id; document.querySelectorAll('.exam-subject-btn').forEach(x => x.classList.remove('active')); b.classList.add('active'); };
+    btns.appendChild(b);
+  });
+
+  if (!state.examSubjectId && subjects.length) {
+    state.examSubjectId = subjects[0].id;
+    btns.firstChild?.classList.add('active');
+  }
+
+  ['examSession','examResults'].forEach(id => document.getElementById(id)?.classList.add('hidden'));
+  document.getElementById('examSetup')?.classList.remove('hidden');
+}
+
+function setExamMode(mode) {
+  state.examMode = mode;
+  document.getElementById('tabZAP')?.classList.toggle('active', mode === 'zap');
+  document.getElementById('tabAbi')?.classList.toggle('active', mode === 'abitur');
+  const title = document.getElementById('examPrepTitle');
+  const sub   = document.getElementById('examPrepSub');
+  if (title) title.textContent = mode === 'zap' ? '🎯 ZAP-Vorbereitung' : '🏆 Abitur-Vorbereitung';
+  if (sub)   sub.textContent   = mode === 'zap'
+    ? 'KI-generierte Aufgaben im ZAP-Stil · Klasse 9–10'
+    : 'KI-generierte Aufgaben auf Abiturniveau · Gymnasium';
+}
+
+function setExamDiff(diff) {
+  state.examDiff = diff;
+  document.querySelectorAll('.exam-diff-btn').forEach(b => b.classList.toggle('active', +b.dataset.diff === diff));
+}
+
+let _examRunning = false;
+
+async function startExamSession() {
+  if (_examRunning) return;
+  if (!state.examSubjectId) { alert('Bitte erst ein Fach auswählen.'); return; }
+
+  document.getElementById('examSetup')?.classList.add('hidden');
+  document.getElementById('examResults')?.classList.add('hidden');
+  document.getElementById('examSession')?.classList.remove('hidden');
+
+  const card = document.getElementById('examQuestionCard');
+  if (card) card.innerHTML = '<div class="exam-loading">⏳ Herr Lala bereitet 5 Aufgaben vor…</div>';
+
+  state.examSession = { questions:[], current:0, score:0, answers:[] };
+  _examRunning = true;
+
+  const gradeNum = state.gradeId ? state.gradeId.replace('klasse','') : '10';
+  const subjName = state.gradeId
+    ? CONTENT[state.gradeId]?.subjects.find(s => s.id === state.examSubjectId)?.name || state.examSubjectId
+    : state.examSubjectId;
+  const modeText = state.examMode === 'zap'
+    ? 'ZAP-Abschlussprüfung (Klasse 10, Deutschland)'
+    : 'Abitur (gymnasiale Oberstufe, Deutschland)';
+  const diffMap  = { 1:'einfach', 2:'mittelschwer', 3:'schwer' };
+  const diff     = diffMap[state.examDiff] || 'mittelschwer';
+
+  try {
+    const prompt = `Erstelle 5 ${diff}e Multiple-Choice-Fragen für ${subjName} Klasse ${gradeNum} im Stil einer ${modeText}.
+Antworte NUR mit diesem JSON-Array (kein anderer Text):
+[{"question":"?","options":["A","B","C","D"],"correct":0,"explanation":"Erklärung"},...]`;
+
+    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${GROQ_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'llama-3.3-70b-versatile',
+        messages: [
+          { role: 'system', content: 'Du bist ein Prüfungsersteller. Antworte nur mit dem JSON-Array.' },
+          { role: 'user',   content: prompt }
+        ],
+        max_tokens: 1600, temperature: 0.75
+      })
+    });
+    const data = await res.json();
+    const text = data.choices?.[0]?.message?.content || '';
+    const m = text.match(/\[[\s\S]*\]/);
+    if (!m) throw new Error('Kein gültiges JSON-Array.');
+    state.examSession.questions = JSON.parse(m[0]).slice(0,5);
+    _showExamQ(0);
+  } catch (e) {
+    if (card) card.innerHTML = `<div class="ai-ex-error">❌ ${e.message}<br><br><button class="btn-secondary" onclick="renderExamPrep()">← Zurück</button></div>`;
+  } finally {
+    _examRunning = false;
+  }
+}
+
+function _showExamQ(idx) {
+  const q     = state.examSession.questions[idx];
+  if (!q) return;
+  const total = state.examSession.questions.length;
+  const fill  = document.getElementById('examProgressFill');
+  const ctr   = document.getElementById('examQCounter');
+  if (fill) fill.style.width = `${(idx/total)*100}%`;
+  if (ctr)  ctr.textContent  = `Frage ${idx+1} / ${total}`;
+
+  const card = document.getElementById('examQuestionCard');
+  if (!card) return;
+  card.innerHTML = `
+    <div class="exam-q-text">${q.question}</div>
+    <div class="exam-q-opts">
+      ${q.options.map((opt,i) => `
+        <button class="exam-q-opt" onclick="_answerExamQ(${i})">
+          <span class="exam-opt-letter">${'ABCD'[i]}</span>${opt}
+        </button>`).join('')}
+    </div>
+    <div class="exam-q-fb hidden" id="examFB"></div>
+    <div class="hidden" id="examNext">
+      <button class="btn-primary" style="margin-top:16px" onclick="_nextExamQ()">
+        ${idx+1 < total ? 'Nächste Frage →' : '📊 Auswertung anzeigen'}
+      </button>
+    </div>`;
+}
+
+function _answerExamQ(chosen) {
+  const q = state.examSession.questions[state.examSession.current];
+  const ok = chosen === q.correct;
+  if (ok) state.examSession.score++;
+  state.examSession.answers.push({ chosen, correct: q.correct });
+
+  document.querySelectorAll('.exam-q-opt').forEach(b => b.disabled = true);
+  document.querySelectorAll('.exam-q-opt')[q.correct].classList.add('exam-correct');
+  if (!ok) document.querySelectorAll('.exam-q-opt')[chosen].classList.add('exam-wrong');
+
+  const fb = document.getElementById('examFB');
+  if (fb) {
+    fb.textContent = (ok ? '✅ Richtig! ' : '❌ Falsch. ') + q.explanation;
+    fb.className   = `exam-q-fb ${ok ? 'exam-fb-ok' : 'exam-fb-err'}`;
+  }
+  document.getElementById('examNext')?.classList.remove('hidden');
+}
+
+function _nextExamQ() {
+  const next = ++state.examSession.current;
+  if (next < state.examSession.questions.length) _showExamQ(next);
+  else _showExamResults();
+}
+
+function _showExamResults() {
+  const { score, questions, answers } = state.examSession;
+  const total = questions.length;
+  const pct   = Math.round((score/total)*100);
+  document.getElementById('examSession')?.classList.add('hidden');
+
+  const res = document.getElementById('examResults');
+  if (!res) return;
+  res.classList.remove('hidden');
+
+  const emoji  = pct>=80?'🏆':pct>=60?'😊':'💪';
+  const msg    = pct>=80?'Ausgezeichnet!':pct>=60?'Gut gemacht!':'Weiter üben!';
+  const status = pct>=80?'🟢 Bestanden':pct>=60?'🟡 Knapp bestanden':'🔴 Mehr Übung nötig';
+
+  res.innerHTML = `
+    <div class="exam-res-header">
+      <div class="exam-res-emoji">${emoji}</div>
+      <div class="exam-res-title">${msg}</div>
+      <div class="exam-res-score">${score} / ${total} richtig (${pct}%)</div>
+      <div class="exam-res-status">${status}</div>
+    </div>
+    <div class="exam-res-review">
+      ${questions.map((q,i) => {
+        const ans = answers[i]; const ok = ans?.chosen===ans?.correct;
+        return `<div class="exam-rev-item ${ok?'exam-rev-ok':'exam-rev-fail'}">
+          <span class="exam-rev-n">${i+1}</span>
+          <span class="exam-rev-q">${q.question}</span>
+          <span>${ok?'✅':'❌'}</span>
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="exam-res-actions">
+      <button class="btn-primary" onclick="startExamSession()">🔄 Nochmal</button>
+      <button class="btn-secondary" onclick="renderExamPrep()">← Neue Sitzung</button>
+      <button class="btn-secondary" onclick="navigate('home')">🏠 Startseite</button>
+    </div>`;
+}
+
+// ── LERNANALYSE ──────────────────────────────────────────────
+function renderAnalyse() {
+  showView('viewAnalyse');
+
+  const userInfo = document.getElementById('analyseUserInfo');
+  if (userInfo) {
+    const name = state.userName || 'Anonym';
+    const goalLbl = { normal:'Allgemeines Lernen', zap:'ZAP-Vorbereitung', abitur:'Abitur-Vorbereitung' };
+    userInfo.innerHTML = `<span class="an-name">👤 ${name}</span> <span class="an-goal">${goalLbl[state.learningGoal]||'Lernen'}</span>`;
+  }
+
+  const entries = Object.entries(state.progress);
+  const grid = document.getElementById('analyseGrid');
+  if (!grid) return;
+
+  if (!entries.length) {
+    grid.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:40px 20px">Noch keine Aufgaben gelöst. Starte jetzt und komm dann wieder!</p>';
+    const aiEl = document.getElementById('analyseAiText');
+    if (aiEl) aiEl.textContent = 'Keine Daten vorhanden. Löse ein paar Aufgaben!';
+    return;
+  }
+
+  // Gesamtstatistik
+  const allScores = entries.map(([,v]) => v);
+  const avgAll    = Math.round(allScores.reduce((a,b) => a+b, 0) / allScores.length);
+
+  // Pro Fach
+  const bySub = {};
+  entries.forEach(([k, score]) => {
+    const parts = k.split('_');
+    if (parts.length < 3) return;
+    const s = parts[1];
+    if (!bySub[s]) bySub[s] = [];
+    bySub[s].push(score);
+  });
+
+  grid.innerHTML = '';
+  const totalCard = document.createElement('div');
+  totalCard.className = 'an-card an-card-total';
+  totalCard.innerHTML = `
+    <div class="an-icon">📊</div>
+    <div class="an-val">${entries.length}</div>
+    <div class="an-lbl">Aufgaben gelöst</div>
+    <div class="an-avg">${avgAll}% Ø Erfolg</div>`;
+  grid.appendChild(totalCard);
+
+  Object.entries(bySub).forEach(([subj, scores]) => {
+    const avg  = Math.round(scores.reduce((a,b) => a+b, 0) / scores.length);
+    const col  = avg>=80?'#059669':avg>=60?'#D97706':'#DC2626';
+    const lbl  = avg>=80?'🟢 Stark':avg>=60?'🟡 Mittel':'🔴 Üben';
+    const icon = subj==='mathe'?'📐':subj==='physik'?'⚛️':'📚';
+    const card = document.createElement('div');
+    card.className = 'an-card';
+    card.innerHTML = `
+      <div class="an-icon">${icon}</div>
+      <div class="an-val" style="color:${col}">${avg}%</div>
+      <div class="an-lbl">${subj[0].toUpperCase()+subj.slice(1)}</div>
+      <div class="an-avg">${lbl} · ${scores.length} Aufgaben</div>
+      <div class="an-bar-wrap"><div class="an-bar" style="width:${avg}%;background:${col}"></div></div>`;
+    grid.appendChild(card);
+  });
+
+  // Schwachstellen
+  const weak = entries.filter(([,v]) => v < 60);
+  const weakBox = document.getElementById('analyseWeaknesses');
+  if (weakBox) {
+    weakBox.innerHTML = weak.length === 0
+      ? '<div class="an-strong">🎉 Keine Schwachstellen – weiter so!</div>'
+      : `<h3 class="an-weak-title">⚠️ Verbesserungspotenzial (${weak.length} Aufgaben unter 60%)</h3>
+         <div class="an-weak-list">${weak.slice(0,6).map(([k,v]) => {
+           const p = k.split('_');
+           return `<div class="an-weak-item"><span>📌 ${p[1]||'?'} · ${p[2]||'?'}</span><span class="an-weak-score">${v}%</span></div>`;
+         }).join('')}</div>`;
+  }
+
+  _loadAnalyseAI(entries, bySub, avgAll);
+}
+
+async function _loadAnalyseAI(entries, bySub, avgAll) {
+  const el = document.getElementById('analyseAiText');
+  if (!el) return;
+  el.textContent = '⏳ Analyse läuft…';
+
+  const name    = state.userName || 'du';
+  const subjSum = Object.entries(bySub).map(([s,sc]) => {
+    const avg = Math.round(sc.reduce((a,b) => a+b, 0) / sc.length);
+    return `${s} ${avg}% (${sc.length} Aufg.)`;
+  }).join(', ');
+
+  try {
+    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${GROQ_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'llama-3.1-8b-instant',
+        messages: [
+          { role: 'system', content: 'Du bist Herr Lala, ein ermutigender Schultutor. Antworte auf Deutsch, 3–4 Sätze, persönlich und motivierend.' },
+          { role: 'user',   content: `Ich heiße ${name}. Ergebnisse: ${entries.length} Aufgaben, Ø ${avgAll}%. Fächer: ${subjSum}. Gib mir eine persönliche Rückmeldung und einen konkreten nächsten Schritt.` }
+        ],
+        max_tokens: 180, temperature: 0.7
+      })
+    });
+    const data = await res.json();
+    el.textContent = data.choices?.[0]?.message?.content || 'Super gemacht – mach weiter so!';
+  } catch {
+    el.textContent = `Toll, ${name}! Du hast bereits ${entries.length} Aufgaben gelöst. Schau dir die Schwachstellen an und übe gezielt weiter!`;
+  }
+}
+
+// ── INIT ─────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  checkOnboarding();
+});
 
 // ============================================================
 // EVENT LISTENERS
