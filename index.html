@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=8" />
+  <link rel="stylesheet" href="style.css?v=9" />
   <!-- Markdown + Mathe-Rendering für Chat -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -198,6 +198,7 @@
               <img src="avatar.png" id="avatarImg" class="avatar-img" alt="Herr Lala" onerror="this.src='avatar.svg.png'">
               <div class="talk-wave" id="talkWave"><span></span><span></span><span></span></div>
             </div>
+            <video id="didVideo" class="did-video hidden" autoplay playsinline></video>
             <!-- Fallback SVG -->
             <svg id="avatarFallback" class="mascot-svg" viewBox="0 0 100 148" xmlns="http://www.w3.org/2000/svg" style="display:none">
               <defs>
@@ -573,7 +574,7 @@
 </div>
 
 <script src="content.js?v=12"></script>
-<script src="app.js?v=20"></script>
+<script src="app.js?v=21"></script>
 <script>
   // Service Worker deregistrieren damit kein alter Cache Probleme macht
   if ('serviceWorker' in navigator) {

@@ -87,6 +87,106 @@ function _startLipSync() { window._vrmTalking = true;  window._vrmTalkT = 0; }
 function _stopLipSync()  { window._vrmTalking = false; }
 // ─────────────────────────────────────────────────────────
 
+// ── D-ID TALKING AVATAR ───────────────────────────────────
+const DID_KEY      = 'aGVsaW5sYWxhQGhvdG1haWwuZGU:dgQgmkWRQDQnXwYU3XT_p';
+const DID_FACE_URL = 'https://randomuser.me/api/portraits/men/32.jpg';
+const DID_VOICE    = 'de-DE-FlorianMultilingualNeural';
+let   _didOk       = true; // set false after repeated failures
+
+async function _didTalk(text) {
+  const res = await fetch('https://api.d-id.com/talks', {
+    method: 'POST',
+    headers: { 'Authorization': `Basic ${DID_KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      source_url: DID_FACE_URL,
+      script: {
+        type: 'text',
+        input: text.slice(0, 1000),
+        provider: { type: 'microsoft', voice_id: DID_VOICE }
+      },
+      config: { fluent: true, pad_audio: 0.0 }
+    })
+  });
+  if (!res.ok) {
+    const e = await res.json().catch(() => ({}));
+    throw new Error(`D-ID ${res.status}: ${e?.description || e?.message || '?'}`);
+  }
+  const { id } = await res.json();
+  for (let i = 0; i < 40; i++) {
+    await new Promise(r => setTimeout(r, 2000));
+    const poll = await fetch(`https://api.d-id.com/talks/${id}`, {
+      headers: { 'Authorization': `Basic ${DID_KEY}` }
+    });
+    const data = await poll.json();
+    if (data.status === 'done' && data.result_url) return data.result_url;
+    if (data.status === 'error') throw new Error('D-ID Fehler: ' + (data.error?.description || '?'));
+  }
+  throw new Error('D-ID Timeout');
+}
+
+function _didShowVideo(url, fill, timeEl, onDone) {
+  const avatar = document.getElementById('avatarAnim');
+  const video  = document.getElementById('didVideo');
+  if (!video) { onDone && onDone(); return; }
+  if (avatar) avatar.classList.add('hidden');
+  video.classList.remove('hidden');
+  video.src = url;
+  const interval = setInterval(() => {
+    if (!video.paused && video.duration) {
+      if (fill) fill.style.width = Math.min(video.currentTime / video.duration, 0.98) * 100 + '%';
+      if (timeEl) timeEl.textContent = `${fmt(video.currentTime)} / ${fmt(video.duration)}`;
+    }
+  }, 120);
+  const finish = () => {
+    clearInterval(interval);
+    video.classList.add('hidden');
+    video.src = '';
+    if (avatar) avatar.classList.remove('hidden');
+    if (onDone) onDone();
+  };
+  video.onended = finish;
+  video.onerror = finish;
+  video.play().catch(finish);
+}
+
+function _didSpeakText(text, onDone) {
+  const btn     = document.getElementById('playIntroBtn');
+  const pauseBtn= document.getElementById('pauseIntroBtn');
+  const stopBtn = document.getElementById('stopIntroBtn');
+  const fill    = document.getElementById('videoProgressFill');
+  const timeEl  = document.getElementById('videoTime');
+  if (btn) { btn.disabled = true; btn.textContent = '🎬 Avatar wird geladen…'; }
+  if (pauseBtn) pauseBtn.classList.add('hidden');
+  if (stopBtn)  stopBtn.classList.add('hidden');
+  if (fill) { fill.style.transition = 'none'; fill.style.width = '0%'; }
+  _didTalk(text).then(url => {
+    if (btn) btn.textContent = '🔊 Spricht…';
+    _didShowVideo(url, fill, timeEl, () => {
+      if (fill) { fill.style.transition = 'width .4s'; fill.style.width = '100%'; }
+      if (btn) { btn.disabled = false; btn.textContent = '▶ Themen anhören'; }
+      if (onDone) onDone();
+    });
+  }).catch(err => {
+    console.warn('[LernStar] D-ID Fehler, Fallback ElevenLabs:', err.message);
+    _didOk = false;
+    if (btn) { btn.disabled = false; }
+    _elevenSpeakText(text, onDone);
+  });
+}
+
+function _didSpeakSequential(text, onDone) {
+  const fill   = document.getElementById('videoProgressFill');
+  const timeEl = document.getElementById('videoTime');
+  _didTalk(text).then(url => {
+    _didShowVideo(url, fill, timeEl, onDone);
+  }).catch(err => {
+    console.warn('[LernStar] D-ID Sequential Fehler, Fallback:', err.message);
+    _didOk = false;
+    _elevenSpeakSequential(text, onDone);
+  });
+}
+// ─────────────────────────────────────────────────────────
+
 // ── ELEVENLABS TTS ────────────────────────────────────────
 const ELEVEN_KEY      = 'e24b6be67594419d8f50afdfb195995a';
 const ELEVEN_VOICE    = 'Fghah4fztZORbiKfIGAs'; // Thomas – Deutsch, Erzählung
@@ -1328,6 +1428,7 @@ function hideTopicVisual() {
 // Lightweight TTS for sequential playback (does not manage play/pause buttons)
 function _speakSequential(text, onDone, _skipEleven) {
   text = _mathToSpoken(text);
+  if (DID_KEY && _didOk && !_skipEleven) { _didSpeakSequential(text, onDone); return; }
   if (ELEVEN_KEY && !_skipEleven) { _elevenSpeakSequential(text, onDone); return; }
   if (!('speechSynthesis' in window)) { if (onDone) setTimeout(onDone, 600); return; }
   const voice = _getVoice();
@@ -1373,6 +1474,7 @@ function _speakSequential(text, onDone, _skipEleven) {
 // Kern-Sprech-Funktion (Hedda fest)
 function _speakText(text, topicIdx, onDone, _skipEleven) {
   text = _mathToSpoken(text);
+  if (DID_KEY && _didOk && !_skipEleven) { _didSpeakText(text, onDone); return; }
   if (ELEVEN_KEY && !_skipEleven) { _elevenSpeakText(text, onDone); return; }
   const btn      = document.getElementById('playIntroBtn');
   const pauseBtn = document.getElementById('pauseIntroBtn');
