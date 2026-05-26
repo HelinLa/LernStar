@@ -521,20 +521,14 @@ ul { list-style: none; }
   animation: mascotBreath 4.4s ease-in-out infinite;
 }
 .vrm-wrap.talking {
-  animation: mascotTalk 0.55s ease-in-out infinite alternate;
+  animation: mascotTalk 0.42s ease-in-out infinite alternate;
   filter: drop-shadow(0 12px 32px rgba(0,0,0,.55))
-          drop-shadow(0 0 24px rgba(var(--gc-rgb,124,58,237),.5));
+          drop-shadow(0 0 32px rgba(var(--gc-rgb,124,58,237),.7))
+          drop-shadow(0 0 60px rgba(var(--gc-rgb,124,58,237),.3));
 }
+.vrm-wrap.talking .talk-wave { opacity: 1; }
 .vrm-canvas { display: none; cursor: grab; }
 
-/* D-ID talking avatar video */
-.did-video {
-  width: 210px;
-  height: 270px;
-  object-fit: cover;
-  border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
-  filter: drop-shadow(0 12px 32px rgba(0,0,0,.55));
-}
 .vrm-canvas:active { cursor: grabbing; }
 .vrm-loading {
   display: flex; flex-direction: column; align-items: center;
@@ -554,28 +548,30 @@ ul { list-style: none; }
 /* Talking wave indicator */
 .talk-wave {
   position: absolute;
-  bottom: 10px;
+  bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 4px;
+  align-items: flex-end;
+  gap: 5px;
   opacity: 0;
-  transition: opacity .2s;
+  transition: opacity .25s;
 }
 .talk-wave span {
   display: block;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.85);
-  animation: waveDot 0.6s ease-in-out infinite;
+  width: 5px;
+  height: 18px;
+  border-radius: 3px;
+  background: rgba(255,255,255,.9);
+  animation: waveDot 0.55s ease-in-out infinite;
 }
-.talk-wave span:nth-child(2) { animation-delay: 0.15s; }
-.talk-wave span:nth-child(3) { animation-delay: 0.30s; }
+.talk-wave span:nth-child(1) { animation-delay: 0s;    height: 10px; }
+.talk-wave span:nth-child(2) { animation-delay: 0.13s; height: 18px; }
+.talk-wave span:nth-child(3) { animation-delay: 0.26s; height: 10px; }
 .avatar-frame.talking .talk-wave { opacity: 1; }
 @keyframes waveDot {
-  0%, 100% { transform: scaleY(1);   }
-  50%       { transform: scaleY(2.2); }
+  0%, 100% { transform: scaleY(0.5);  opacity: .65; }
+  50%       { transform: scaleY(1.35); opacity: 1;   }
 }
 
 /* Fallback SVG */
@@ -587,10 +583,11 @@ ul { list-style: none; }
 }
 
 @keyframes mascotTalk {
-  0%   { transform: translateY(0)    rotate(0deg)     scaleX(1);     }
-  30%  { transform: translateY(-3px) rotate(0.4deg)   scaleX(1.006); }
-  65%  { transform: translateY(-5px) rotate(-0.22deg) scaleX(0.997); }
-  100% { transform: translateY(-2px) rotate(0.3deg)   scaleX(1.003); }
+  0%   { transform: translateY(0)    rotate(0deg)      scaleX(1)     scaleY(1);     }
+  25%  { transform: translateY(-4px) rotate(0.5deg)    scaleX(1.008) scaleY(0.995); }
+  55%  { transform: translateY(-7px) rotate(-0.3deg)   scaleX(0.996) scaleY(1.006); }
+  80%  { transform: translateY(-3px) rotate(0.25deg)   scaleX(1.005) scaleY(0.998); }
+  100% { transform: translateY(-2px) rotate(-0.15deg)  scaleX(1.002) scaleY(1.002); }
 }
 
 @keyframes mascotBreath {
