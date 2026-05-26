@@ -1919,21 +1919,6 @@ async function _aiCall(messages, opts = {}) {
   throw lastErr;
 }
 
-// Test ob ein Anbieter erreichbar ist
-async function testAIProvider(url, key, model) {
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: { 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model, messages: [{ role: 'user', content: 'Sag nur: OK' }],
-      max_tokens: 10
-    })
-  });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const d = await res.json();
-  return d.choices?.[0]?.message?.content || 'OK';
-}
-
 // ============================================================
 // CHAT WIDGET  –  Herr Lala KI-Assistent
 // ============================================================
@@ -2174,7 +2159,7 @@ async function _chatAsk(question) {
     }
 
     // Verlauf aktualisieren (nur Text, kein Bild-Blob speichern)
-    _chatHistory.push({ role: 'user',      content: typeof userContent === 'string' ? userContent : '[Bild]' });
+    _chatHistory.push({ role: 'user',      content: hasImage ? '[Bild] ' + (question || '') : question });
     _chatHistory.push({ role: 'assistant', content: answer });
 
     _chatHideTyping();
@@ -2654,7 +2639,7 @@ async function _loadAnalyseAI(entries, bySub, avgAll) {
     const content = await _aiCall([
       { role: 'system', content: 'Du bist Herr Lala, ein ermutigender Schultutor. Antworte auf Deutsch, 3–4 Sätze, persönlich und motivierend.' },
       { role: 'user',   content: `Ich heiße ${name}. Ergebnisse: ${entries.length} Aufgaben, Ø ${avgAll}%. Fächer: ${subjSum}. Gib mir eine persönliche Rückmeldung und einen konkreten nächsten Schritt.` }
-    ], { model: 'llama-3.1-8b-instant', max_tokens: 180 });
+    ], { max_tokens: 180 });
     el.textContent = content;
   } catch {
     el.textContent = `Toll, ${name}! Du hast bereits ${entries.length} Aufgaben gelöst. Schau dir die Schwachstellen an und übe gezielt weiter!`;
@@ -2851,9 +2836,9 @@ document.getElementById('sidebarToggle').addEventListener('click', openSidebar);
 document.getElementById('sidebarClose').addEventListener('click', closeSidebar);
 document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
 
-// Keyboard: Escape closes sidebar and chat
+// Keyboard: Escape closes sidebar, chat and settings
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeSidebar(); _chatClose(); }
+  if (e.key === 'Escape') { closeSidebar(); _chatClose(); closeAISettings(); }
 });
 
 // ============================================================
