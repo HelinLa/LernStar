@@ -167,6 +167,31 @@ def save_image():
     })
 
 # ============================================================
+# MANUELLES SPEICHERN
+# ============================================================
+
+@app.route("/api/save_manual", methods=["POST"])
+def save_manual():
+    data = request.get_json(force=True)
+    subject     = data.get("subject", "").strip()
+    grade       = data.get("grade", "").strip()
+    topic       = data.get("topic", "").strip()
+    question    = data.get("question", "").strip()
+    answer      = data.get("answer", "").strip()
+    explanation = data.get("explanation", "").strip()
+    difficulty  = int(data.get("difficulty", 1))
+
+    if not subject or not grade or not topic or not question or not answer:
+        return jsonify({"error": "Pflichtfelder fehlen."}), 400
+
+    ex_id = db.add(subject=subject, grade=grade, topic=topic,
+                   question=question, answer=answer,
+                   explanation=explanation, difficulty=difficulty)
+    return jsonify({"id": ex_id, "subject": subject, "grade": grade,
+                    "topic": topic, "question": question,
+                    "answer": answer, "explanation": explanation})
+
+# ============================================================
 # TRAINING
 # ============================================================
 
