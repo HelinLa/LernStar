@@ -1868,16 +1868,25 @@ function closeSidebar() {
 // ============================================================
 const GROQ_KEY = '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';
 
-// Standard-Anbieter (immer aktiv, kann nicht gelöscht werden)
+// Standard-Anbieter – eigene KI zuerst, Groq als Online-Fallback
 const _defaultProviders = [
   {
-    id: 'groq',
-    name: 'Groq (Standard)',
-    url: 'https://api.groq.com/openai/v1/chat/completions',
-    key: GROQ_KEY,
-    model: 'llama-3.3-70b-versatile',
+    id:      'local',
+    name:    'Eigene KI (LernStar)',
+    url:     'http://localhost:5000/v1/chat/completions',
+    key:     'local',
+    model:   'lernstar-finetuned',
     builtin: true,
-    active: true
+    active:  true
+  },
+  {
+    id:      'groq',
+    name:    'Groq (Online-Fallback)',
+    url:     'https://api.groq.com/openai/v1/chat/completions',
+    key:     GROQ_KEY,
+    model:   'llama-3.3-70b-versatile',
+    builtin: true,
+    active:  true
   }
 ];
 
