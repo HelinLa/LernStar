@@ -3399,6 +3399,7 @@ const _X_VISUALS = {
   'Oberflächeninhalt':                '<div class="xv-formula-vis"><span class="xvf" style="--d:0">O</span><span class="xvf xvf-eq" style="--d:1">=</span><span class="xvf xvf-res" style="--d:2">6 · a²</span></div>',
 };
 
+/* ── Teacher avatar talking ─────────────────── */
 function _xpTalkStart() {
   const svg = document.getElementById('xptSvg');
   if (svg) svg.classList.add('talking');
@@ -3408,27 +3409,91 @@ function _xpTalkStop() {
   if (svg) svg.classList.remove('talking');
 }
 
-/* TTS helper — German voice, falls back silently if unavailable */
+/* ── TTS (German) ───────────────────────────── */
 function _xpSpeak(text, onEnd) {
   if (!window.speechSynthesis || !text) { if (onEnd) onEnd(); return; }
   window.speechSynthesis.cancel();
   const utt = new SpeechSynthesisUtterance(text);
-  utt.lang  = 'de-DE';
-  utt.rate  = 0.92;
-  utt.pitch = 1.05;
-  utt.volume = 1.0;
+  utt.lang = 'de-DE'; utt.rate = 0.92; utt.pitch = 1.05; utt.volume = 1.0;
   const voices = window.speechSynthesis.getVoices();
-  const deVoice = voices.find(v => v.lang === 'de-DE' && v.localService)
-               || voices.find(v => v.lang.startsWith('de'));
-  if (deVoice) utt.voice = deVoice;
-  utt.onend   = () => { if (onEnd) onEnd(); };
-  utt.onerror = () => { if (onEnd) onEnd(); };
+  const dv = voices.find(v => v.lang === 'de-DE' && v.localService)
+          || voices.find(v => v.lang.startsWith('de'));
+  if (dv) utt.voice = dv;
+  utt.onend = utt.onerror = () => { if (onEnd) onEnd(); };
   window.speechSynthesis.speak(utt);
 }
 function _xpSpeakStop() {
   if (window.speechSynthesis) window.speechSynthesis.cancel();
 }
 
+/* ── Web Audio UI sounds ─────────────────────── */
+function _xpUISound(type) {
+  try {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    const ctx = new AC();
+    const g = ctx.createGain();
+    g.connect(ctx.destination);
+    const o = ctx.createOscillator();
+    o.connect(g);
+    if (type === 'hook') {
+      o.type = 'sine';
+      o.frequency.setValueAtTime(320, ctx.currentTime);
+      o.frequency.exponentialRampToValueAtTime(720, ctx.currentTime + 0.28);
+      g.gain.setValueAtTime(0.11, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.32);
+      o.start(); o.stop(ctx.currentTime + 0.32);
+    } else if (type === 'appear') {
+      o.type = 'sine';
+      o.frequency.setValueAtTime(900, ctx.currentTime);
+      g.gain.setValueAtTime(0.055, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.09);
+      o.start(); o.stop(ctx.currentTime + 0.09);
+    }
+    setTimeout(() => ctx.close(), 600);
+  } catch(e) {}
+}
+
+/* ── Keyword detection ───────────────────────── */
+const _xKW = new Set([
+  'Term','Terme','Bruch','Brüche','Zahl','Zahlen','Ziffer','Ziffern',
+  'Gleichung','Gleichungen','Variable','Variablen','Koeffizient',
+  'Quadrat','Dreieck','Kreis','Winkel','Fläche','Flächeninhalt','Volumen','Umfang',
+  'Seite','Basis','Höhe','Länge','Breite','Tiefe','Radius','Durchmesser',
+  'Quader','Würfel','Zylinder','Kegel','Pyramide','Kugel','Körper','Netz','Netze',
+  'Potenz','Wurzel','Faktor','Produkt','Quotient','Summe','Differenz','Betrag',
+  'Formel','Regel','Gesetz','Definition','Rechenweg','Beweis',
+  'Primzahl','Primzahlen','Teiler','Vielfache','Kgv','Ggт',
+  'Prozent','Verhältnis','Anteil','Steigung','Achse','Koordinate',
+  'Energie','Kraft','Arbeit','Leistung','Strom','Spannung','Widerstand',
+  'Atom','Molekül','Element','Reaktion','Säure','Photosynthese','Sauerstoff',
+  'Klammer','Vorzeichen','Dezimal','Bruchstrich','Nenner','Zähler',
+  'Oberflächeninhalt','Schrägbild','Rauminhalte','Volumeneinheiten',
+]);
+function _xIsKw(word) {
+  const c = word.replace(/[.,!?;:()\-–]/g, '');
+  return /^\d+([,./]\d+)?$/.test(c) || _xKW.has(c)
+      || (c.length >= 8 && /^[A-ZÄÖÜ]/.test(c));
+}
+function _xAnimWords(el, text) {
+  if (!el || !text) return;
+  el.innerHTML = text.split(' ').map((w, i) =>
+    `<span class="${_xIsKw(w) ? 'xp-w xp-kw' : 'xp-w'}" style="--wi:${i}">${w}</span>`
+  ).join(' ');
+}
+
+/* ── Hook generator ──────────────────────────── */
+const _xHooks = [
+  n => `Was ist eigentlich ${n}?`,
+  n => `So funktioniert ${n}!`,
+  n => `${n} – einfach erklärt`,
+  n => `Warum brauchen wir ${n}?`,
+];
+function _xGenHook(name) {
+  return _xHooks[(name.charCodeAt(0) + name.length) % _xHooks.length](name);
+}
+
+/* ── Main showExplainer ──────────────────────── */
 function showExplainer(topic, subjectIcon, subjectColor) {
   const modal = document.getElementById('explainerModal');
   if (!modal) return;
@@ -3437,52 +3502,71 @@ function showExplainer(topic, subjectIcon, subjectColor) {
   _xpSpeakStop(); _xpTalkStop();
 
   const sentences = Array.isArray(topic.short) ? topic.short : _xExtract2(topic.explanation);
-
-  // Fill header
-  document.getElementById('explainerEmoji').textContent  = subjectIcon || '📚';
-  document.getElementById('explainerBadge').textContent  = 'Erklärung';
-  document.getElementById('explainerTitle').textContent  = topic.name;
-
-  // Sentence area (hidden until reveal)
   const s1el = document.getElementById('explainerS1');
   const s2el = document.getElementById('explainerS2');
-  if (s1el) { s1el.textContent = sentences[0] || ''; s1el.classList.remove('xs-visible'); }
-  if (s2el) { s2el.textContent = sentences[1] || ''; s2el.classList.remove('xs-visible'); }
+  const hookEl = document.getElementById('xpHook');
 
-  // Color tint on badge
+  // Header
+  document.getElementById('explainerEmoji').textContent = subjectIcon || '📚';
+  document.getElementById('explainerBadge').textContent = 'Erklärung';
+  document.getElementById('explainerTitle').textContent = topic.name;
   if (subjectColor) {
-    const badge = document.getElementById('explainerBadge');
-    if (badge) badge.style.cssText =
-      `border-color:${subjectColor}66;background:${subjectColor}22;color:${subjectColor}`;
+    const b = document.getElementById('explainerBadge');
+    if (b) b.style.cssText = `border-color:${subjectColor}66;background:${subjectColor}22;color:${subjectColor}`;
   }
 
-  // Progress bar reset
+  // Prepare word-animated sentences (invisible)
+  if (s1el) { _xAnimWords(s1el, sentences[0] || ''); s1el.classList.remove('xs-visible'); }
+  if (s2el) { _xAnimWords(s2el, sentences[1] || ''); s2el.classList.remove('xs-visible'); }
+
+  // Prepare hook
+  if (hookEl) { hookEl.textContent = _xGenHook(topic.name); hookEl.className = 'xp-hook'; }
+
+  // Progress reset
   const fill = document.getElementById('explainerProgFill');
   if (fill) { fill.style.transition = 'none'; fill.style.width = '0%'; }
+  const timerEl = document.getElementById('xpTimer');
+  if (timerEl) timerEl.textContent = '0:00';
 
   modal.classList.add('visible');
   document.body.style.overflow = 'hidden';
 
-  // At 0.8s: show s1 + speak s1 + teacher talks
+  // Show hook immediately after paint
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    if (hookEl) hookEl.classList.add('xhvis');
+    _xpUISound('hook');
+  }));
+
+  // At 1.8s: hook fades, s1 appears with word animation + TTS
   _xTimeout1 = setTimeout(() => {
     if (_xPaused) return;
-    if (s1el) s1el.classList.add('xs-visible');
-    _xpTalkStart();
-    _xpSpeak(sentences[0] || '', () => {
-      // s1 done → short pause → show s2 + speak s2
-      _xTimeout2 = setTimeout(() => {
-        if (_xPaused) return;
-        if (s2el && !s2el.classList.contains('xs-visible')) s2el.classList.add('xs-visible');
-        _xpSpeak(sentences[1] || '', () => _xpTalkStop());
-      }, 450);
-    });
-    // Fallback: show s2 after 4s even if speech didn't fire onend
-    _xTimeout2 = setTimeout(() => {
-      if (!_xPaused && s2el && !s2el.classList.contains('xs-visible')) s2el.classList.add('xs-visible');
-    }, 4000);
-  }, 800);
+    if (hookEl) hookEl.classList.replace('xhvis', 'xhout');
+    setTimeout(() => {
+      if (_xPaused) return;
+      if (s1el) s1el.classList.add('xs-visible');
+      _xpTalkStart();
+      _xpUISound('appear');
+      _xpSpeak(sentences[0] || '', () => {
+        if (!_xPaused) setTimeout(() => {
+          if (s2el && !s2el.classList.contains('xs-visible')) {
+            s2el.classList.add('xs-visible');
+            _xpUISound('appear');
+          }
+          _xpSpeak(sentences[1] || '', () => _xpTalkStop());
+        }, 480);
+      });
+    }, 280);
+  }, 1800);
 
-  _xRunProgress(12);
+  // Visual fallback: s2 shows at 6s even if TTS doesn't fire
+  _xTimeout2 = setTimeout(() => {
+    if (!_xPaused && s2el && !s2el.classList.contains('xs-visible')) {
+      s2el.classList.add('xs-visible');
+      _xpUISound('appear');
+    }
+  }, 6000);
+
+  _xRunProgress(13);
 }
 
 function _xExtract2(text) {
@@ -3497,13 +3581,19 @@ function _xDefaultVisual(emoji) {
 function _xRunProgress(totalSec) {
   clearInterval(_xAutoTimer);
   const fill = document.getElementById('explainerProgFill');
+  const timerEl = document.getElementById('xpTimer');
   if (fill) { fill.style.transition = 'none'; fill.style.width = '0%'; }
   const t0 = Date.now();
   _xAutoTimer = setInterval(() => {
     if (_xPaused) return;
-    const pct = Math.min((Date.now() - t0) / (totalSec * 1000), 1);
+    const elapsed = (Date.now() - t0) / 1000;
+    const pct = Math.min(elapsed / totalSec, 1);
     if (fill) fill.style.width = (pct * 100) + '%';
-    if (pct >= 1) { clearInterval(_xAutoTimer); fill.style.width = '100%'; }
+    if (timerEl) {
+      const s = Math.floor(elapsed);
+      timerEl.textContent = `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
+    }
+    if (pct >= 1) { clearInterval(_xAutoTimer); if (fill) fill.style.width = '100%'; }
   }, 80);
 }
 
@@ -3522,29 +3612,56 @@ function _xReplay() {
   if (!modal.classList.contains('visible')) return;
   const s1el = document.getElementById('explainerS1');
   const s2el = document.getElementById('explainerS2');
+  const hookEl = document.getElementById('xpHook');
   if (s1el) s1el.classList.remove('xs-visible');
   if (s2el) s2el.classList.remove('xs-visible');
   _xPaused = false;
   _xpSpeakStop(); _xpTalkStop();
+  // Reset hook
+  if (hookEl) hookEl.className = 'xp-hook';
   const fill = document.getElementById('explainerProgFill');
   if (fill) { fill.style.transition = 'none'; fill.style.width = '0%'; }
+  const timerEl = document.getElementById('xpTimer');
+  if (timerEl) timerEl.textContent = '0:00';
   clearTimeout(_xTimeout1); clearTimeout(_xTimeout2); clearInterval(_xAutoTimer);
+
+  // Re-show hook
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    if (hookEl) hookEl.classList.add('xhvis');
+    _xpUISound('hook');
+  }));
+
+  const s1txt = s1el ? s1el.textContent : '';
+  const s2txt = s2el ? s2el.textContent : '';
+
   _xTimeout1 = setTimeout(() => {
     if (_xPaused) return;
-    if (s1el) s1el.classList.add('xs-visible');
-    _xpTalkStart();
-    _xpSpeak(s1el ? s1el.textContent : '', () => {
-      _xTimeout2 = setTimeout(() => {
-        if (_xPaused) return;
-        if (s2el && !s2el.classList.contains('xs-visible')) s2el.classList.add('xs-visible');
-        _xpSpeak(s2el ? s2el.textContent : '', () => _xpTalkStop());
-      }, 450);
-    });
-    _xTimeout2 = setTimeout(() => {
-      if (!_xPaused && s2el && !s2el.classList.contains('xs-visible')) s2el.classList.add('xs-visible');
-    }, 4000);
-  }, 600);
-  _xRunProgress(12);
+    if (hookEl) hookEl.classList.replace('xhvis', 'xhout');
+    setTimeout(() => {
+      if (_xPaused) return;
+      if (s1el) s1el.classList.add('xs-visible');
+      _xpTalkStart();
+      _xpUISound('appear');
+      _xpSpeak(s1txt, () => {
+        if (!_xPaused) setTimeout(() => {
+          if (s2el && !s2el.classList.contains('xs-visible')) {
+            s2el.classList.add('xs-visible');
+            _xpUISound('appear');
+          }
+          _xpSpeak(s2txt, () => _xpTalkStop());
+        }, 480);
+      });
+    }, 280);
+  }, 1800);
+
+  _xTimeout2 = setTimeout(() => {
+    if (!_xPaused && s2el && !s2el.classList.contains('xs-visible')) {
+      s2el.classList.add('xs-visible');
+      _xpUISound('appear');
+    }
+  }, 6000);
+
+  _xRunProgress(13);
 }
 
 function closeExplainer() {
@@ -3554,6 +3671,8 @@ function closeExplainer() {
   clearTimeout(_xTimeout1); clearTimeout(_xTimeout2); clearInterval(_xAutoTimer);
   _xPaused = false;
   _xpSpeakStop(); _xpTalkStop();
+  const hookEl = document.getElementById('xpHook');
+  if (hookEl) hookEl.className = 'xp-hook';
   const fill = document.getElementById('explainerProgFill');
   if (fill) fill.style.width = '0%';
   stopIntro();

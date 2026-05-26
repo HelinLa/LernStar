@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=13" />
+  <link rel="stylesheet" href="style.css?v=14" />
   <!-- Markdown + Mathe-Rendering für Chat -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -574,7 +574,7 @@
 
 <script src="content.js?v=18"></script>
 <script src="js/ai_engine.js?v=1"></script>
-<script src="app.js?v=32"></script>
+<script src="app.js?v=33"></script>
 <!-- ── Animated Explainer Modal ─────────────────────────────── -->
 <div id="explainerModal" role="dialog" aria-modal="true" aria-labelledby="explainerTitle">
   <div class="xp-card" id="explainerCard">
@@ -587,8 +587,9 @@
       <div class="xp-htitle" id="explainerTitle"></div>
     </div>
 
-    <!-- 2-sentence text box -->
+    <!-- Hook + sentences -->
     <div class="xp-stage">
+      <div class="xp-hook" id="xpHook"></div>
       <div class="xp-s1" id="explainerS1"></div>
       <div class="xp-s2" id="explainerS2"></div>
     </div>
@@ -665,8 +666,11 @@
 
       <!-- Progress bar + controls -->
       <div class="xp-controls">
-        <div class="xp-prog-track">
-          <div class="xp-prog-fill" id="explainerProgFill"></div>
+        <div class="xp-timeline">
+          <div class="xp-prog-track">
+            <div class="xp-prog-fill" id="explainerProgFill"></div>
+          </div>
+          <span class="xp-timer" id="xpTimer">0:00</span>
         </div>
         <div class="xp-btns">
           <button class="xp-ctrl" id="explainerPauseBtn" onclick="_xTogglePause()" title="Pause">⏸</button>
