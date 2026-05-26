@@ -1,0 +1,227 @@
+[
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Wie heißt das Ergebnis einer Addition?",
+    "answer": "Summe",
+    "explanation": "Bei der Addition heißt das Ergebnis Summe. Beispiel: 15 + 11 = 26 (Summe).",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Wie heißt das Ergebnis einer Subtraktion?",
+    "answer": "Differenz",
+    "explanation": "Das Ergebnis einer Subtraktion heißt Differenz. Beispiel: 41 − 19 = 22 (Differenz).",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Wie heißt das Ergebnis einer Multiplikation?",
+    "answer": "Produkt",
+    "explanation": "Das Ergebnis einer Multiplikation heißt Produkt. Beispiel: 6 × 7 = 42 (Produkt).",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Wie heißt das Ergebnis einer Division?",
+    "answer": "Quotient",
+    "explanation": "Das Ergebnis einer Division heißt Quotient. Beispiel: 36 ÷ 12 = 3 (Quotient).",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Welche Rechenart ist die Umkehrung der Addition?",
+    "answer": "Subtraktion",
+    "explanation": "Die Subtraktion kehrt die Addition um. Aus a + b = c folgt: c − b = a.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Was ergibt jede Zahl multipliziert mit 0?",
+    "answer": "0",
+    "explanation": "Jede Zahl mal 0 ergibt immer 0. Beispiel: 5 · 0 = 0, 999 · 0 = 0.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Wie nennt man die Zahlen, die bei einer Multiplikation miteinander multipliziert werden?",
+    "answer": "Faktoren",
+    "explanation": "Bei einer Multiplikation (z. B. 6 × 7 = 42) heißen die beiden Zahlen 6 und 7 Faktoren.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Berechne: 46 + 37",
+    "answer": "83",
+    "explanation": "Zehner: 40 + 30 = 70. Einer: 6 + 7 = 13. Gesamt: 70 + 13 = 83.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Berechne: 85 − 48",
+    "answer": "37",
+    "explanation": "85 − 48 = 37. Probe: 37 + 48 = 85. ✓",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Berechne: 9 × 7",
+    "answer": "63",
+    "explanation": "9 × 7 = 63. Merkhilfe: 9er-Reihe: 9, 18, 27, 36, 45, 54, 63.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Berechne: 72 ÷ 8",
+    "answer": "9",
+    "explanation": "72 ÷ 8 = 9. Probe: 9 × 8 = 72. ✓",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Welche Zahl passt in das Kästchen? □ + 58 = 130",
+    "answer": "72",
+    "explanation": "Umkehraufgabe (Subtraktion): 130 − 58 = 72. Probe: 72 + 58 = 130. ✓",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Welche Zahl passt in das Kästchen? 9 × □ = 108",
+    "answer": "12",
+    "explanation": "Umkehraufgabe (Division): 108 ÷ 9 = 12. Probe: 9 × 12 = 108. ✓",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Berechne die Summe von 347 und 586.",
+    "answer": "933",
+    "explanation": "347 + 586 = 933. Probe: 933 − 586 = 347. ✓",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Berechne die Differenz von 700 und 263.",
+    "answer": "437",
+    "explanation": "700 − 263 = 437. Probe: 437 + 263 = 700. ✓",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Berechne: 8 × 45",
+    "answer": "360",
+    "explanation": "8 × 45 = 8 × 40 + 8 × 5 = 320 + 40 = 360.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Welche Grundrechenart ist die Umkehrung der Multiplikation?",
+    "answer": "Division",
+    "explanation": "Die Division kehrt die Multiplikation um. Aus a × b = c folgt: c ÷ b = a.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Wie nennt man die Zahl, durch die in einer Division dividiert wird?",
+    "answer": "Divisor",
+    "explanation": "In der Aufgabe 36 ÷ 12 = 3 ist 36 der Dividend, 12 der Divisor und 3 der Quotient.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Welche Zahl passt in das Kästchen? □ ÷ 6 = 15",
+    "answer": "90",
+    "explanation": "Umkehraufgabe (Multiplikation): 6 × 15 = 90. Probe: 90 ÷ 6 = 15. ✓",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Welche Zahl passt in das Kästchen? 234 + □ = 500",
+    "answer": "266",
+    "explanation": "500 − 234 = 266. Probe: 234 + 266 = 500. ✓",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Was passiert mit dem Produkt, wenn man einen Faktor verdoppelt (den anderen lässt man gleich)?",
+    "answer": "Das Produkt verdoppelt sich",
+    "explanation": "Beispiel: 4 × 5 = 20. Wenn man 5 verdoppelt: 4 × 10 = 40. Das Produkt hat sich ebenfalls verdoppelt.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Ist diese Aussage wahr oder falsch: 'Man kann durch 0 dividieren.'",
+    "answer": "Falsch",
+    "explanation": "Division durch 0 ist nicht erlaubt – sie ist nicht definiert. Die Aufgabe a ÷ 0 hat keine Lösung.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Was passiert mit der Summe, wenn man beide Summanden verdoppelt?",
+    "answer": "Die Summe verdoppelt sich",
+    "explanation": "Beispiel: 10 + 6 = 16. Verdoppelt: 20 + 12 = 32. Die Summe hat sich verdoppelt.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Berechne 3 × 4 × 5. Was ergibt sich, wenn man alle drei Faktoren verdoppelt?",
+    "answer": "3 × 4 × 5 = 60, verdoppelt: 480",
+    "explanation": "3 × 4 × 5 = 60. Verdoppelt: 6 × 8 × 10 = 480. Das Produkt verachtfacht sich, wenn alle drei Faktoren verdoppelt werden.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Grundrechenarten",
+    "question": "Ist diese Aussage wahr oder falsch: 'Die Summe aus zwei natürlichen Zahlen ist mindestens so groß wie jeder Summand.'",
+    "answer": "Wahr",
+    "explanation": "Da natürliche Zahlen ≥ 0 sind, gilt: a + b ≥ a und a + b ≥ b. Die Summe ist immer mindestens so groß wie jeder Summand.",
+    "difficulty": 3
+  }
+]
