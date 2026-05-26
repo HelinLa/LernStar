@@ -2153,31 +2153,29 @@ function openExperiment(expId) {
     modal.innerHTML = `
       <div class="sim-box">
         <button class="sim-x" onclick="closeExperiment()">✕</button>
-        <h3 class="sim-h3">⚛️ Fadenstrahlrohr</h3>
-        <canvas id="fstCanvas" width="460" height="310" style="width:100%;border-radius:8px;display:block"></canvas>
-        <div style="padding:8px 16px 4px;display:flex;flex-direction:column;gap:9px">
-          <label style="display:flex;align-items:center;gap:8px;font-size:.9rem">
-            ⚡ Beschleunigungsspannung U<sub>B</sub>:
+        <h3 class="sim-h3">⚛️ Elektronenstrahl im Magnetfeld</h3>
+        <canvas id="fstCanvas" width="460" height="260" style="width:100%;border-radius:8px;display:block"></canvas>
+        <div style="padding:10px 16px 4px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="background:#f3f0ff;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#6D28D9;font-weight:700;margin-bottom:4px">⚡ Spannung U<sub>B</sub> — mehr → Kreis GRÖSSER</div>
             <input type="range" id="fstUSlider" min="100" max="400" step="25" value="200"
-              oninput="_fstSetU(this.value)" style="flex:1;max-width:200px;accent-color:#7C3AED">
-            <b id="fstULabel">200 V</b>
-          </label>
-          <label style="display:flex;align-items:center;gap:8px;font-size:.9rem">
-            🔌 Spulenstrom I<sub>S</sub>:
+              oninput="_fstSetU(this.value)" style="width:100%;accent-color:#7C3AED">
+            <div style="text-align:center;font-weight:800;font-size:1rem;color:#5B21B6"><span id="fstULabel">200</span> V</div>
+          </div>
+          <div style="background:#f0f9ff;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#0369A1;font-weight:700;margin-bottom:4px">🔌 Strom I<sub>S</sub> — mehr → Kreis KLEINER</div>
             <input type="range" id="fstISlider" min="5" max="20" step="1" value="15"
-              oninput="_fstSetI(this.value)" style="flex:1;max-width:200px;accent-color:#0EA5E9">
-            <b id="fstILabel">1,5 A</b>
-          </label>
+              oninput="_fstSetI(this.value)" style="width:100%;accent-color:#0EA5E9">
+            <div style="text-align:center;font-weight:800;font-size:1rem;color:#0369A1"><span id="fstILabel">1,5</span> A</div>
+          </div>
         </div>
-        <div class="sim-info-row">
-          <span>U<sub>B</sub> = <b id="fstUVal">200</b> V</span>
+        <div class="sim-info-row" style="margin-top:8px">
           <span>r = <b id="fstRVal">4,1</b> cm</span>
           <span>2r = <b id="fst2RVal">8,2</b> cm</span>
-          <span>e/m = <b id="fstEmVal">1,76</b> ×10¹¹</span>
+          <span>e/m ≈ <b id="fstEmVal">1,76</b> × 10¹¹ C/kg</span>
         </div>
-        <div id="fstResult" class="sim-result" style="margin:6px 14px 8px">
-          Stelle U<sub>B</sub> und I<sub>S</sub> ein – beobachte die Kreisbahn!
-        </div>
+        <div id="fstResult" class="sim-result" style="margin:6px 14px 8px;display:none"></div>
+        <p class="sim-hint" id="fstUVal" style="text-align:center;margin:2px 0 6px">Formel: <b>e/m = 2U / (B² · r²)</b> · Literaturwert: <b>1,76 × 10¹¹ C/kg</b></p>
       </div>`;
     document.body.appendChild(modal);
     _sim = _fstCreate();
@@ -2442,143 +2440,165 @@ function _fstCreate() {
   const canvas = document.getElementById('fstCanvas');
   if (!canvas) return { stop:()=>{} };
   const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height; // 460 × 310
+  const W = canvas.width, H = canvas.height; // 460 × 260
 
   const e_c = 1.6e-19, me = 9.11e-31;
-  const kB  = 7.8e-4;                        // B [T] = kB × I [A]
-  const kr  = Math.sqrt(2 * me / e_c);       // r = kr × √U / B
-  const SCALE = 2500;                         // px per meter
+  const kB  = 7.8e-4;
+  const kr  = Math.sqrt(2 * me / e_c);
+  const SCALE = 2500;
 
   let U = 200, I = 1.5;
   let animId = null, dotAngle = 0;
 
-  // Tube sits in the upper 75 % of canvas; ruler uses the bottom strip
+  // Beam circle sits in upper area; ruler in bottom strip
   const CX = Math.round(W * 0.50);
-  const CY = Math.round(H * 0.44);
-  const TUBE_R = Math.round(Math.min(W, H) * 0.39); // ~121 px
+  const CY = Math.round(H * 0.43);
+  const MAX_R = Math.round(H * 0.38); // max beam radius in px
 
   function calcPhysics() {
     const B      = kB * I;
     const r_real = kr * Math.sqrt(U) / B;
-    const r_px   = Math.min(r_real * SCALE, TUBE_R - 14);
+    const r_px   = Math.min(r_real * SCALE, MAX_R);
     const em     = 2 * U / (B * B * r_real * r_real);
-    return { B, r_real, r_px, em };
+    return { r_real, r_px, em };
   }
 
   function draw() {
-    const { B, r_real, r_px, em } = calcPhysics();
+    const { r_real, r_px, em } = calcPhysics();
     ctx.clearRect(0, 0, W, H);
 
-    // ── background ──────────────────────────────────────────────
-    ctx.fillStyle = '#eeeeee';
+    // ── clean white background ───────────────────────────────────
+    ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, W, H);
 
-    // ── inner white disc (inside the tube) ──────────────────────
-    ctx.beginPath();
-    ctx.arc(CX, CY, TUBE_R - 9, 0, 2 * Math.PI);
-    ctx.fillStyle = '#fafafa';
-    ctx.fill();
+    // ── light grid (graph-paper feel) ───────────────────────────
+    ctx.strokeStyle = 'rgba(200,220,255,0.5)';
+    ctx.lineWidth = 0.5;
+    for (let x = 0; x < W; x += 20) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+    for (let y = 0; y < H; y += 20) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
 
-    // ── orange tube ring ────────────────────────────────────────
-    ctx.beginPath();
-    ctx.arc(CX, CY, TUBE_R, 0, 2 * Math.PI);
-    ctx.strokeStyle = '#e8a020';
-    ctx.lineWidth = 16;
-    ctx.stroke();
-
-    // ── electron gun (bottom of tube) ───────────────────────────
-    const gunY = CY + TUBE_R - 7;
-    ctx.fillStyle = '#666';
-    ctx.fillRect(CX - 13, gunY, 26, 16);
+    // ── electron gun (left side, pointing right) ─────────────────
+    const GX = 28, GY = CY;
+    ctx.fillStyle = '#555';
+    ctx.fillRect(GX - 18, GY - 8, 18, 16);
     ctx.fillStyle = '#ffcc00';
     ctx.beginPath();
-    ctx.arc(CX, gunY + 6, 4, 0, 2 * Math.PI);
+    ctx.arc(GX - 9, GY, 4, 0, 2 * Math.PI);
     ctx.fill();
-    // winding lines
-    ctx.strokeStyle = '#999';
-    ctx.lineWidth = 1;
-    for (let i = 0; i < 4; i++) {
-      ctx.beginPath();
-      ctx.moveTo(CX - 10 + i * 7, gunY + 12);
-      ctx.lineTo(CX - 10 + i * 7, gunY + 16);
-      ctx.stroke();
-    }
-
-    // ── electron beam circle ────────────────────────────────────
-    if (r_px > 5) {
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(CX, CY, r_px, 0, 2 * Math.PI);
-      ctx.strokeStyle = '#00cc66';
-      ctx.lineWidth = 3;
-      ctx.shadowColor = '#00ff88';
-      ctx.shadowBlur = 10;
-      ctx.stroke();
-      ctx.restore();
-
-      // moving electron dot
-      dotAngle = (dotAngle + 0.04) % (2 * Math.PI);
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(
-        CX + r_px * Math.cos(dotAngle),
-        CY + r_px * Math.sin(dotAngle),
-        5, 0, 2 * Math.PI
-      );
-      ctx.fillStyle = '#ffffff';
-      ctx.shadowColor = '#88ddff';
-      ctx.shadowBlur = 12;
-      ctx.fill();
-      ctx.restore();
-    }
-
-    // ── ruler (shows 2·r in cm) ──────────────────────────────────
-    const RY      = H - 34;            // top of ruler strip
-    const PX_PER_CM = SCALE * 0.01;    // 25 px per cm
-    const RL      = CX - TUBE_R + 4;   // ruler left edge
-    const RW      = (TUBE_R - 4) * 2;  // ruler width (matches tube diameter)
-
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(RL, RY, RW, 20);
-    ctx.strokeStyle = '#bbb';
-    ctx.lineWidth = 1;
-    ctx.strokeRect(RL, RY, RW, 20);
-
-    ctx.strokeStyle = '#555';
+    // arrow from gun
+    ctx.strokeStyle = '#888';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(GX, GY);
+    ctx.lineTo(GX + 12, GY);
+    ctx.stroke();
+    ctx.fillStyle = '#888';
+    ctx.beginPath();
+    ctx.moveTo(GX + 14, GY);
+    ctx.lineTo(GX + 8, GY - 4);
+    ctx.lineTo(GX + 8, GY + 4);
+    ctx.fill();
+    // gun label
     ctx.fillStyle = '#555';
     ctx.font = '9px sans-serif';
     ctx.textAlign = 'center';
-    const cmMax = Math.floor(RW / PX_PER_CM);
+    ctx.fillText('Kanone', GX - 9, GY + 18);
+
+    // ── glowing beam circle ──────────────────────────────────────
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(CX, CY, r_px, 0, 2 * Math.PI);
+    ctx.strokeStyle = '#00bb55';
+    ctx.lineWidth = 3.5;
+    ctx.shadowColor = '#00ee77';
+    ctx.shadowBlur = 12;
+    ctx.stroke();
+    ctx.restore();
+
+    // ── center cross ─────────────────────────────────────────────
+    ctx.strokeStyle = 'rgba(0,0,0,0.12)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(CX - r_px - 10, CY); ctx.lineTo(CX + r_px + 10, CY); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(CX, CY - r_px - 10); ctx.lineTo(CX, CY + r_px + 10); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // ── radius arrow ─────────────────────────────────────────────
+    ctx.strokeStyle = '#e06000';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(CX, CY);
+    ctx.lineTo(CX + r_px, CY);
+    ctx.stroke();
+    ctx.fillStyle = '#e06000';
+    ctx.beginPath();
+    ctx.moveTo(CX + r_px + 1, CY);
+    ctx.lineTo(CX + r_px - 7, CY - 4);
+    ctx.lineTo(CX + r_px - 7, CY + 4);
+    ctx.fill();
+    ctx.font = 'bold 13px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('r = ' + (r_real * 100).toFixed(1).replace('.', ',') + ' cm',
+      CX + r_px / 2, CY - 8);
+
+    // ── moving electron (white dot with glow) ────────────────────
+    dotAngle = (dotAngle + 0.04) % (2 * Math.PI);
+    const ex = CX + r_px * Math.cos(dotAngle);
+    const ey = CY + r_px * Math.sin(dotAngle);
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(ex, ey, 6, 0, 2 * Math.PI);
+    ctx.fillStyle = '#2255ff';
+    ctx.shadowColor = '#88aaff';
+    ctx.shadowBlur = 14;
+    ctx.fill();
+    ctx.restore();
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 8px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('e⁻', ex, ey + 3);
+
+    // ── ruler strip (bottom) ─────────────────────────────────────
+    const RY = H - 30;
+    const PX_CM = SCALE * 0.01; // 25 px = 1 cm
+    const RL = CX - MAX_R, RW = MAX_R * 2;
+
+    ctx.fillStyle = '#f8f8f8';
+    ctx.strokeStyle = '#ccc';
+    ctx.lineWidth = 1;
+    ctx.fillRect(RL, RY, RW, 22);
+    ctx.strokeRect(RL, RY, RW, 22);
+
+    ctx.strokeStyle = '#444';
+    ctx.fillStyle = '#444';
+    ctx.font = '9px sans-serif';
+    ctx.textAlign = 'center';
+    const cmMax = Math.floor(RW / PX_CM);
     for (let cm = 0; cm <= cmMax; cm++) {
-      const x  = RL + cm * PX_PER_CM;
-      const tk = (cm % 5 === 0) ? 9 : (cm % 2 === 0 ? 5 : 3);
-      ctx.beginPath();
-      ctx.moveTo(x, RY); ctx.lineTo(x, RY + tk);
-      ctx.stroke();
-      if (cm % 2 === 0 && cm > 0) ctx.fillText(cm, x, RY + 17);
+      const x = RL + cm * PX_CM;
+      const tk = (cm % 5 === 0) ? 11 : (cm % 2 === 0 ? 6 : 3);
+      ctx.beginPath(); ctx.moveTo(x, RY); ctx.lineTo(x, RY + tk); ctx.stroke();
+      if (cm % 2 === 0 && cm > 0) ctx.fillText(cm, x, RY + 19);
     }
-    // 2·r arrow & label
-    const arrow_end = RL + r_real * 200 * PX_PER_CM;
-    ctx.fillStyle = 'rgba(0,140,255,0.22)';
-    ctx.fillRect(RL, RY + 1, Math.min(arrow_end - RL, RW - 2), 9);
-    ctx.fillStyle = '#0055bb';
+    // highlight 2r on ruler
+    const twoR_px = r_real * 200 * PX_CM;
+    ctx.fillStyle = 'rgba(0,160,80,0.20)';
+    ctx.fillRect(RL, RY + 1, Math.min(twoR_px, RW - 2), 10);
+    ctx.strokeStyle = '#00994d';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(RL, RY + 6); ctx.lineTo(RL + twoR_px, RY + 6); ctx.stroke();
+    ctx.fillStyle = '#007a3d';
     ctx.font = 'bold 9px sans-serif';
     ctx.textAlign = 'left';
-    ctx.fillText('2·r in cm', RL + 2, RY - 3);
-    ctx.textAlign = 'right';
-    ctx.fillText('→', RL + RW - 1, RY - 3);
+    ctx.fillText('← 2r = ' + (r_real * 200).toFixed(1).replace('.', ',') + ' cm', RL + 2, RY - 3);
 
-    // ── update HTML ─────────────────────────────────────────────
+    // ── update HTML ──────────────────────────────────────────────
     const rD  = (r_real * 100).toFixed(1).replace('.', ',');
     const r2D = (r_real * 200).toFixed(1).replace('.', ',');
     const emD = (em / 1e11).toFixed(2).replace('.', ',');
     document.getElementById('fstRVal').textContent  = rD;
     document.getElementById('fst2RVal').textContent = r2D;
     document.getElementById('fstEmVal').textContent = emD;
-    document.getElementById('fstResult').innerHTML  =
-      'e/m = 2 × ' + U + ' V / (B² × r²) = ' +
-      '<b style="color:#059669">' + emD + ' × 10¹¹ C/kg</b>' +
-      ' | Literaturwert: 1,76 × 10¹¹ C/kg';
 
     animId = requestAnimationFrame(draw);
   }
@@ -2586,12 +2606,11 @@ function _fstCreate() {
   function stop()    { if (animId) cancelAnimationFrame(animId); }
   function setU(val) {
     U = parseFloat(val);
-    document.getElementById('fstULabel').textContent = U + ' V';
-    document.getElementById('fstUVal').textContent   = U;
+    document.getElementById('fstULabel').textContent = U;
   }
   function setI(val) {
     I = parseFloat(val) / 10;
-    document.getElementById('fstILabel').textContent = I.toFixed(1).replace('.', ',') + ' A';
+    document.getElementById('fstILabel').textContent = I.toFixed(1).replace('.', ',');
   }
 
   draw();
