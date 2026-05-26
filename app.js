@@ -200,7 +200,7 @@ async function _elevenFetch(text) {
       body: JSON.stringify({
         text,
         model_id: ELEVEN_MODEL,
-        voice_settings: { stability: 0.30, similarity_boost: 0.82, style: 0.48, use_speaker_boost: true }
+        voice_settings: { stability: 0.42, similarity_boost: 0.72, style: 0.72, use_speaker_boost: true }
       })
     }
   );
@@ -1305,12 +1305,21 @@ function playTopic(idx) {
 
   // Sprechblase + Grafik befüllen
   const speech = document.getElementById('avatarSpeech');
-  if (speech) speech.textContent = topic.explanation;
+  if (speech) speech.textContent = topic.explanation.substring(0, 90) + '…';
   showTopicVisual(topic);
+
+  // Animated explainer modal
+  const grade2   = CONTENT[state.gradeId];
+  const subject2 = grade2?.subjects.find(s => s.id === state.subjectId);
+  showExplainer(topic, subject2?.icon, subject2?.color);
+  _xStartProgress(topic.explanation);
 
   _speakText(`${topic.name}. ${topic.explanation}`, null, () => {
     _clearTopicHighlights();
     hideTopicVisual();
+    clearInterval(_xInterval);
+    const fill = document.getElementById('explainerProgFill');
+    if (fill) fill.style.width = '100%';
   });
 }
 
@@ -1338,13 +1347,13 @@ function _speakSequential(text, onDone, _skipEleven) {
   if (!('speechSynthesis' in window)) { if (onDone) setTimeout(onDone, 600); return; }
   const voice = _getVoice();
   const utt = new SpeechSynthesisUtterance(text);
-  utt.rate = 0.90; utt.pitch = 0.72; utt.lang = 'de-DE';
+  utt.rate = 1.02; utt.pitch = 0.92; utt.lang = 'de-DE';
   if (voice) utt.voice = voice;
   currentUtterance = utt;
   speechPaused = false;
 
   const words = text.trim().split(/\s+/).length;
-  const totalSec = Math.max(4, Math.ceil((words / 130) * 60));
+  const totalSec = Math.max(4, Math.ceil((words / 135) * 60));
   const fill = document.getElementById('videoProgressFill');
   const timeEl = document.getElementById('videoTime');
   const avatar = document.getElementById('avatarAnim');
@@ -1394,8 +1403,8 @@ function _speakText(text, topicIdx, onDone, _skipEleven) {
 
   const voice = _getVoice();
   const utterance  = new SpeechSynthesisUtterance(text);
-  utterance.rate   = 0.90;
-  utterance.pitch  = 0.72;
+  utterance.rate   = 1.02;
+  utterance.pitch  = 0.92;
   utterance.lang   = 'de-DE';
   if (voice) utterance.voice = voice;
 
@@ -1403,7 +1412,7 @@ function _speakText(text, topicIdx, onDone, _skipEleven) {
   speechPaused     = false;
 
   const words    = text.trim().split(/\s+/).length;
-  const totalSec = Math.max(4, Math.ceil((words / 130) * 60));
+  const totalSec = Math.max(4, Math.ceil((words / 135) * 60));
 
   if (btn) { btn.disabled = true; btn.textContent = '🔊 Spricht…'; }
   if (pauseBtn) pauseBtn.classList.remove('hidden');
@@ -3341,6 +3350,106 @@ function _fstCreate() {
 
   draw();
   return { stop, setU, setI };
+}
+
+// ============================================================
+// ANIMATED EXPLAINER PLAYER
+// ============================================================
+let _xInterval = null;
+let _xSpeed    = 1;
+
+function showExplainer(topic, subjectIcon, subjectColor) {
+  const modal = document.getElementById('explainerModal');
+  if (!modal) return;
+  const emoji = document.getElementById('explainerEmoji');
+  const badge = document.getElementById('explainerBadge');
+  const title = document.getElementById('explainerTitle');
+  const text  = document.getElementById('explainerText');
+  if (emoji) emoji.textContent = subjectIcon || '📚';
+  if (badge) badge.textContent = (subjectColor ? '▶  Erklärung' : 'Erklärung');
+  if (title) title.textContent = topic.name;
+  if (text)  _xAnimateText(topic.explanation, text);
+  // tint badge border to subject color
+  const card = document.getElementById('explainerCard');
+  if (card && subjectColor) {
+    card.style.setProperty('--xc', subjectColor);
+    badge.style.borderColor = subjectColor + '66';
+    badge.style.background  = subjectColor + '28';
+    badge.style.color       = subjectColor;
+  }
+  modal.classList.add('visible');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeExplainer() {
+  const modal = document.getElementById('explainerModal');
+  if (modal) modal.classList.remove('visible');
+  document.body.style.overflow = '';
+  clearInterval(_xInterval);
+  const fill = document.getElementById('explainerProgFill');
+  const time = document.getElementById('explainerTime');
+  if (fill) fill.style.width = '0%';
+  if (time) time.textContent = '0:00 / 0:00';
+  stopIntro();
+  _clearTopicHighlights();
+}
+
+function _xAnimateText(rawText, container) {
+  container.innerHTML = '';
+  // Split on sentences then detect formula-like chunks
+  const parts = rawText.split(/(?<=[.!?:]) +/);
+  let delay = 0.5;
+  parts.forEach(part => {
+    const trimmed = part.trim();
+    if (!trimmed) return;
+    // Formula detection: contains = or · or ÷ and is short
+    const isFormula = /[=·÷×]/.test(trimmed) && trimmed.length < 120
+                   && /[A-Za-z]/.test(trimmed);
+    if (isFormula) {
+      const box = document.createElement('span');
+      box.className = 'x-formula';
+      box.style.animationDelay = delay + 's';
+      box.textContent = trimmed;
+      container.appendChild(box);
+      delay += 0.4;
+    } else {
+      const words = trimmed.split(/\s+/);
+      words.forEach(w => {
+        const sp = document.createElement('span');
+        sp.className = 'x-word';
+        sp.textContent = w + ' ';
+        sp.style.animationDelay = delay + 's';
+        container.appendChild(sp);
+        delay += 0.055;
+      });
+    }
+    container.appendChild(document.createTextNode(' '));
+  });
+}
+
+function _xStartProgress(explanationText) {
+  clearInterval(_xInterval);
+  const words     = explanationText.trim().split(/\s+/).length;
+  const totalSec  = Math.max(5, Math.ceil((words / 125) * 60) / _xSpeed);
+  const fill      = document.getElementById('explainerProgFill');
+  const timeEl    = document.getElementById('explainerTime');
+  const _fmt      = s => `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
+  if (fill) { fill.style.transition = 'none'; fill.style.width = '0%'; }
+  const t0 = Date.now();
+  _xInterval = setInterval(() => {
+    const el = (Date.now() - t0) / 1000;
+    const pct = Math.min(el / totalSec, 0.99);
+    if (fill) fill.style.width = (pct * 100) + '%';
+    if (timeEl) timeEl.textContent = `${_fmt(el)} / ${_fmt(totalSec)}`;
+    if (el >= totalSec) clearInterval(_xInterval);
+  }, 100);
+}
+
+function _cycleExplainerSpeed() {
+  const speeds = [1, 1.5, 2];
+  _xSpeed = speeds[(speeds.indexOf(_xSpeed) + 1) % speeds.length];
+  const btn = document.getElementById('explainerSpeedBtn');
+  if (btn) btn.textContent = _xSpeed + '×';
 }
 
 // ============================================================
