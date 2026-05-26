@@ -2262,47 +2262,52 @@ async function generateAIExercise() {
   if (_aiExPending) return;
   const gradeId   = state.gradeId;
   const subjectId = state.subjectId;
-  if (!gradeId || !subjectId) {
-    _renderAIExBox(null, 'Bitte zuerst ein Fach öffnen.');
-    return;
-  }
-  const gradeNum   = gradeId.replace('klasse','');
+  if (!gradeId || !subjectId) return;
+
+  const gradeNum    = gradeId.replace('klasse', '');
   const subjectName = CONTENT[gradeId]?.subjects.find(s => s.id === subjectId)?.name || subjectId;
-  const topicCtx   = state.currentTopicName ? ` zum Thema „${state.currentTopicName}"` : '';
-  const diffMap    = { 1:'einfach', 2:'mittelschwer', 3:'schwer' };
-  const diff       = diffMap[state.examDiff] || 'mittelschwer';
+  const topic       = state.currentTopicName || null;
+  const diffNum     = state.examDiff || 2;
 
   const btn = document.getElementById('aiExerciseBtn');
   if (btn) { btn.disabled = true; btn.textContent = '⏳ KI generiert…'; }
   _aiExPending = true;
 
   try {
-    const prompt = `Erstelle eine ${diff}e Multiple-Choice-Aufgabe für Klasse ${gradeNum} ${subjectName}${topicCtx}.
-Das JSON-Objekt muss diese Felder enthalten: title, question, options (Array mit 4 Strings), correct (Index 0-3), explanation, hint.
-Beispiel: {"title":"Beispieltitel","question":"Was ist...?","options":["Option A","Option B","Option C","Option D"],"correct":0,"explanation":"Weil...","hint":"Denke an..."}`;
+    // 1. Eigene KI (lokale Aufgaben in localStorage)
+    if (typeof LernStarAI !== 'undefined' && LernStarAI.count() > 0) {
+      const ex = LernStarAI.generateMC(subjectName, gradeNum, topic, diffNum);
+      if (ex) { _renderAIExBox(ex); return; }
+    }
 
-    const raw = await _aiCall([
-      { role: 'system', content: 'Du bist ein Schullehrer. Antworte immer mit einem JSON-Objekt mit den Feldern: title, question, options, correct, explanation, hint.' },
+    // 2. Groq / externer Anbieter als Fallback
+    const diffMap = { 1:'einfach', 2:'mittelschwer', 3:'schwer' };
+    const diff    = diffMap[diffNum] || 'mittelschwer';
+    const prompt  = `Erstelle eine ${diff}e Multiple-Choice-Aufgabe für Klasse ${gradeNum} ${subjectName}`
+      + (topic ? ` zum Thema „${topic}"` : '') + '.\n'
+      + 'Das JSON muss enthalten: title, question, options (4 Strings), correct (0-3), explanation, hint.';
+
+    const raw    = await _aiCall([
+      { role: 'system', content: 'Du bist Schullehrer. Antworte nur mit JSON: title, question, options, correct, explanation, hint.' },
       { role: 'user',   content: prompt }
-    ], { max_tokens: 600, temperature: 0.8, response_format: { type: 'json_object' } });
+    ], { max_tokens: 600, temperature: 0.8 });
+
     const parsed = _parseAIJSON(raw);
-    // Normalisiere Felder falls Modell andere Namen benutzt
     if (parsed) {
-      parsed.title       = parsed.title || parsed.titel || parsed.Titel || 'KI-Aufgabe';
-      parsed.question    = parsed.question || parsed.frage || parsed.Frage || parsed.aufgabe || raw.slice(0,120);
-      parsed.options     = parsed.options  || parsed.antworten || parsed.Antworten || ['A','B','C','D'];
-      parsed.correct     = typeof parsed.correct !== 'undefined' ? parsed.correct : (parsed.richtig ?? 0);
-      parsed.explanation = parsed.explanation || parsed.erklaerung || parsed.Erklärung || '';
-      parsed.hint        = parsed.hint || parsed.tipp || parsed.Tipp || '';
+      parsed.title       = parsed.title       || 'KI-Aufgabe';
+      parsed.options     = parsed.options      || ['A','B','C','D'];
+      parsed.correct     = parsed.correct      ?? 0;
+      parsed.explanation = parsed.explanation  || '';
+      parsed.hint        = parsed.hint         || '';
       _renderAIExBox(parsed);
     } else {
-      _renderAIExBox(null, 'Kein gültiges Format erhalten. Bitte nochmal versuchen.');
+      _renderAIExBox(null, '');
     }
-  } catch (e) {
-    _renderAIExBox(null, `Fehler: ${e.message}`);
+  } catch {
+    _renderAIExBox(null, '');
   } finally {
     _aiExPending = false;
-    if (btn) { btn.disabled = false; btn.textContent = '🤖 Neue KI-Aufgabe generieren'; }
+    if (btn) { btn.disabled = false; btn.textContent = '🔄 Neue KI-Aufgabe'; }
   }
 }
 
