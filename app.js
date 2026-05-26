@@ -3408,12 +3408,33 @@ function _xpTalkStop() {
   if (svg) svg.classList.remove('talking');
 }
 
+/* TTS helper — German voice, falls back silently if unavailable */
+function _xpSpeak(text, onEnd) {
+  if (!window.speechSynthesis || !text) { if (onEnd) onEnd(); return; }
+  window.speechSynthesis.cancel();
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang  = 'de-DE';
+  utt.rate  = 0.92;
+  utt.pitch = 1.05;
+  utt.volume = 1.0;
+  const voices = window.speechSynthesis.getVoices();
+  const deVoice = voices.find(v => v.lang === 'de-DE' && v.localService)
+               || voices.find(v => v.lang.startsWith('de'));
+  if (deVoice) utt.voice = deVoice;
+  utt.onend   = () => { if (onEnd) onEnd(); };
+  utt.onerror = () => { if (onEnd) onEnd(); };
+  window.speechSynthesis.speak(utt);
+}
+function _xpSpeakStop() {
+  if (window.speechSynthesis) window.speechSynthesis.cancel();
+}
+
 function showExplainer(topic, subjectIcon, subjectColor) {
   const modal = document.getElementById('explainerModal');
   if (!modal) return;
   _xPaused = false;
   clearTimeout(_xTimeout1); clearTimeout(_xTimeout2); clearInterval(_xAutoTimer);
-  _xpTalkStop();
+  _xpSpeakStop(); _xpTalkStop();
 
   const sentences = Array.isArray(topic.short) ? topic.short : _xExtract2(topic.explanation);
 
@@ -3442,16 +3463,26 @@ function showExplainer(topic, subjectIcon, subjectColor) {
   modal.classList.add('visible');
   document.body.style.overflow = 'hidden';
 
-  // Reveal s1 + start talking at 0.8s
+  // At 0.8s: show s1 + speak s1 + teacher talks
   _xTimeout1 = setTimeout(() => {
-    if (!_xPaused && s1el) s1el.classList.add('xs-visible');
+    if (_xPaused) return;
+    if (s1el) s1el.classList.add('xs-visible');
     _xpTalkStart();
+    _xpSpeak(sentences[0] || '', () => {
+      // s1 done → short pause → show s2 + speak s2
+      _xTimeout2 = setTimeout(() => {
+        if (_xPaused) return;
+        if (s2el && !s2el.classList.contains('xs-visible')) s2el.classList.add('xs-visible');
+        _xpSpeak(sentences[1] || '', () => _xpTalkStop());
+      }, 450);
+    });
+    // Fallback: show s2 after 4s even if speech didn't fire onend
+    _xTimeout2 = setTimeout(() => {
+      if (!_xPaused && s2el && !s2el.classList.contains('xs-visible')) s2el.classList.add('xs-visible');
+    }, 4000);
   }, 800);
-  // Reveal s2 at 4s
-  _xTimeout2 = setTimeout(() => { if (!_xPaused && s2el) s2el.classList.add('xs-visible'); }, 4000);
-  // Stop talking at 9s
-  setTimeout(() => _xpTalkStop(), 9000);
-  _xRunProgress(9);
+
+  _xRunProgress(12);
 }
 
 function _xExtract2(text) {
@@ -3480,6 +3511,10 @@ function _xTogglePause() {
   _xPaused = !_xPaused;
   const btn = document.getElementById('explainerPauseBtn');
   if (btn) btn.textContent = _xPaused ? '▶' : '⏸';
+  if (window.speechSynthesis) {
+    if (_xPaused) { window.speechSynthesis.pause(); _xpTalkStop(); }
+    else          { window.speechSynthesis.resume(); _xpTalkStart(); }
+  }
 }
 
 function _xReplay() {
@@ -3490,17 +3525,26 @@ function _xReplay() {
   if (s1el) s1el.classList.remove('xs-visible');
   if (s2el) s2el.classList.remove('xs-visible');
   _xPaused = false;
-  _xpTalkStop();
+  _xpSpeakStop(); _xpTalkStop();
   const fill = document.getElementById('explainerProgFill');
   if (fill) { fill.style.transition = 'none'; fill.style.width = '0%'; }
   clearTimeout(_xTimeout1); clearTimeout(_xTimeout2); clearInterval(_xAutoTimer);
   _xTimeout1 = setTimeout(() => {
-    if (!_xPaused && s1el) s1el.classList.add('xs-visible');
+    if (_xPaused) return;
+    if (s1el) s1el.classList.add('xs-visible');
     _xpTalkStart();
+    _xpSpeak(s1el ? s1el.textContent : '', () => {
+      _xTimeout2 = setTimeout(() => {
+        if (_xPaused) return;
+        if (s2el && !s2el.classList.contains('xs-visible')) s2el.classList.add('xs-visible');
+        _xpSpeak(s2el ? s2el.textContent : '', () => _xpTalkStop());
+      }, 450);
+    });
+    _xTimeout2 = setTimeout(() => {
+      if (!_xPaused && s2el && !s2el.classList.contains('xs-visible')) s2el.classList.add('xs-visible');
+    }, 4000);
   }, 600);
-  _xTimeout2 = setTimeout(() => { if (!_xPaused && s2el) s2el.classList.add('xs-visible'); }, 3500);
-  setTimeout(() => _xpTalkStop(), 9000);
-  _xRunProgress(9);
+  _xRunProgress(12);
 }
 
 function closeExplainer() {
@@ -3509,7 +3553,7 @@ function closeExplainer() {
   document.body.style.overflow = '';
   clearTimeout(_xTimeout1); clearTimeout(_xTimeout2); clearInterval(_xAutoTimer);
   _xPaused = false;
-  _xpTalkStop();
+  _xpSpeakStop(); _xpTalkStop();
   const fill = document.getElementById('explainerProgFill');
   if (fill) fill.style.width = '0%';
   stopIntro();
