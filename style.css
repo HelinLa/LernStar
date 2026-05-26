@@ -1783,6 +1783,131 @@ ul { list-style: none; }
 }
 .topic-play-btn.playing::before { content: '◼'; }
 
+/* ─── Exam Prep View ────────────────────────────── */
+.exam-prep-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+}
+
+.exam-prep-hero {
+  padding: 32px 0 24px;
+}
+.exam-prep-hero .hero-breadcrumb {
+  font-size: .8rem; color: var(--text-muted); margin-bottom: 12px;
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 4px 12px; border-radius: 30px;
+  transition: background .15s;
+}
+.exam-prep-hero .hero-breadcrumb:hover { background: var(--accent-light); }
+.exam-prep-hero h1 {
+  font-size: 2rem; font-weight: 900; margin-bottom: 6px;
+  background: linear-gradient(135deg, var(--accent), #06B6D4);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.exam-prep-hero p {
+  font-size: .92rem; color: var(--text-muted);
+}
+
+/* Mode tabs */
+.exam-mode-tabs {
+  display: flex; gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 5px;
+  width: fit-content;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.exam-tab {
+  padding: 8px 22px; border-radius: 40px;
+  font-weight: 800; font-size: .88rem;
+  color: var(--text-muted);
+  transition: background .2s, color .2s, box-shadow .2s;
+}
+.exam-tab.active {
+  background: linear-gradient(135deg, var(--accent), #06B6D4);
+  color: #fff;
+  box-shadow: 0 3px 12px rgba(124,58,237,.3);
+}
+
+/* Setup card */
+.exam-setup {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.07);
+  display: flex; flex-direction: column; gap: 22px;
+}
+.exam-setup-row { display: flex; flex-direction: column; gap: 10px; }
+.exam-setup-label {
+  font-weight: 800; font-size: .8rem; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+
+.exam-subject-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.exam-subject-btn {
+  padding: 9px 20px; border-radius: 30px;
+  border: 2px solid var(--border);
+  background: var(--bg); color: var(--text);
+  font-weight: 700; font-size: .88rem;
+  transition: border-color .15s, background .15s, color .15s, box-shadow .15s;
+}
+.exam-subject-btn.active,
+.exam-subject-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  color: var(--accent);
+  box-shadow: 0 2px 8px rgba(124,58,237,.15);
+}
+
+.exam-diff-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.exam-diff-btn {
+  padding: 9px 20px; border-radius: 30px;
+  border: 2px solid var(--border);
+  background: var(--bg); color: var(--text);
+  font-weight: 700; font-size: .88rem;
+  transition: border-color .15s, background .15s, color .15s;
+}
+.exam-diff-btn.active { border-color: #059669; background: #D1FAE5; color: #065F46; }
+.exam-diff-btn:hover:not(.active) { border-color: var(--border); background: var(--surface); }
+
+.exam-start-btn {
+  align-self: flex-start;
+  padding: 13px 32px !important;
+  font-size: 1rem !important;
+  border-radius: 50px !important;
+  background: linear-gradient(135deg, var(--accent), #06B6D4) !important;
+  box-shadow: 0 4px 18px rgba(124,58,237,.3) !important;
+}
+.exam-start-btn:hover { transform: scale(1.04) !important; }
+
+/* Exam session */
+.exam-progress-wrap {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+}
+.exam-progress-bar {
+  flex: 1; height: 8px; background: var(--border); border-radius: 8px; overflow: hidden;
+}
+.exam-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #06B6D4);
+  border-radius: 8px;
+  transition: width .4s ease;
+}
+.exam-q-counter { font-size: .82rem; font-weight: 700; color: var(--text-muted); white-space: nowrap; }
+
+.exam-question-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.07);
+}
+
 /* ─── Video record button in explainer ─────────── */
 .xp-rec-btn {
   width: 40px; height: 40px; border-radius: 50%;
