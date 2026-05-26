@@ -2173,17 +2173,17 @@ Antworte NUR mit diesem JSON (kein anderer Text):
       body: JSON.stringify({
         model: 'llama-3.3-70b-versatile',
         messages: [
-          { role: 'system', content: 'Du bist ein Lehrer. Antworte ausschließlich mit dem angeforderten JSON.' },
+          { role: 'system', content: 'Du bist ein Lehrer. Antworte ausschließlich mit dem angeforderten JSON-Objekt. Keine Markdown-Formatierung, kein Erklärtext.' },
           { role: 'user',   content: prompt }
         ],
-        max_tokens: 450, temperature: 0.8
+        max_tokens: 500, temperature: 0.8
       })
     });
     const data = await res.json();
-    const text = data.choices?.[0]?.message?.content || '';
-    const m = text.match(/\{[\s\S]*\}/);
-    if (m) _renderAIExBox(JSON.parse(m[0]));
-    else   _renderAIExBox(null, 'KI hat kein gültiges Format zurückgegeben.');
+    const raw  = data.choices?.[0]?.message?.content || '';
+    const parsed = _parseAIJSON(raw);
+    if (parsed && parsed.title) _renderAIExBox(parsed);
+    else _renderAIExBox(null, 'KI hat kein gültiges Format zurückgegeben. Bitte nochmal versuchen.');
   } catch (e) {
     _renderAIExBox(null, `Fehler: ${e.message}`);
   } finally {
@@ -2277,6 +2277,21 @@ function setExamDiff(diff) {
   document.querySelectorAll('.exam-diff-btn').forEach(b => b.classList.toggle('active', +b.dataset.diff === diff));
 }
 
+// Robuste JSON-Extraktion: funktioniert auch mit Markdown-Codeblöcken
+function _parseAIJSON(text) {
+  // Markdown-Fences entfernen (```json ... ``` oder ``` ... ```)
+  let t = text.replace(/```(?:json)?\s*/gi, '').replace(/```/g, '').trim();
+  // Direkt parsen
+  try { return JSON.parse(t); } catch {}
+  // Array-Bereich suchen (greedy, um vollständiges Array zu erfassen)
+  const arrM = t.match(/\[[\s\S]*\]/);
+  if (arrM) { try { return JSON.parse(arrM[0]); } catch {} }
+  // Objekt-Bereich suchen
+  const objM = t.match(/\{[\s\S]*\}/);
+  if (objM) { try { return JSON.parse(objM[0]); } catch {} }
+  return null;
+}
+
 let _examRunning = false;
 
 async function startExamSession() {
@@ -2305,8 +2320,8 @@ async function startExamSession() {
 
   try {
     const prompt = `Erstelle 5 ${diff}e Multiple-Choice-Fragen für ${subjName} Klasse ${gradeNum} im Stil einer ${modeText}.
-Antworte NUR mit diesem JSON-Array (kein anderer Text):
-[{"question":"?","options":["A","B","C","D"],"correct":0,"explanation":"Erklärung"},...]`;
+Gib deine Antwort als JSON-Objekt mit einem "questions"-Array zurück. Kein anderer Text, keine Markdown-Zeichen.
+Format: {"questions":[{"question":"...","options":["A","B","C","D"],"correct":0,"explanation":"..."},...]}`;
 
     const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
@@ -2314,20 +2329,21 @@ Antworte NUR mit diesem JSON-Array (kein anderer Text):
       body: JSON.stringify({
         model: 'llama-3.3-70b-versatile',
         messages: [
-          { role: 'system', content: 'Du bist ein Prüfungsersteller. Antworte nur mit dem JSON-Array.' },
+          { role: 'system', content: 'Du bist ein Prüfungsersteller. Antworte ausschließlich mit dem angeforderten JSON-Objekt. Kein Erklärtext, keine Markdown-Formatierung.' },
           { role: 'user',   content: prompt }
         ],
-        max_tokens: 1600, temperature: 0.75
+        max_tokens: 1800, temperature: 0.7
       })
     });
     const data = await res.json();
-    const text = data.choices?.[0]?.message?.content || '';
-    const m = text.match(/\[[\s\S]*\]/);
-    if (!m) throw new Error('Kein gültiges JSON-Array.');
-    state.examSession.questions = JSON.parse(m[0]).slice(0,5);
+    const raw  = data.choices?.[0]?.message?.content || '';
+    const parsed = _parseAIJSON(raw);
+    const questions = Array.isArray(parsed) ? parsed : (parsed?.questions || []);
+    if (!questions.length) throw new Error('Keine Fragen im Format erhalten. Bitte nochmal versuchen.');
+    state.examSession.questions = questions.slice(0,5);
     _showExamQ(0);
   } catch (e) {
-    if (card) card.innerHTML = `<div class="ai-ex-error">❌ ${e.message}<br><br><button class="btn-secondary" onclick="renderExamPrep()">← Zurück</button></div>`;
+    if (card) card.innerHTML = `<div class="ai-ex-error">❌ ${e.message}<br><br><button class="btn-secondary" onclick="startExamSession()">🔄 Nochmal</button> <button class="btn-secondary" onclick="renderExamPrep()">← Zurück</button></div>`;
   } finally {
     _examRunning = false;
   }
