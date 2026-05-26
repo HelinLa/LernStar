@@ -1292,6 +1292,11 @@ function playTopic(idx) {
   _clearTopicHighlights();
   state.currentTopicName = topic.name;
 
+  // KI-Aufgabe automatisch neu generieren
+  const _aiBox = document.getElementById('aiExerciseBox');
+  if (_aiBox) { _aiBox.classList.add('hidden'); _aiBox.innerHTML = ''; }
+  generateAIExercise();
+
   // Highlight aktives Topic
   const activeItem = document.getElementById(`topic-item-${idx}`);
   if (activeItem) activeItem.classList.add('topic-active');
@@ -2298,7 +2303,7 @@ function _renderAIExBox(ex, err) {
   const box = document.getElementById('aiExerciseBox');
   if (!box) return;
   box.classList.remove('hidden');
-  if (err) { box.innerHTML = `<div class="ai-ex-error">⚠️ ${err}</div>`; return; }
+  if (err) { box.classList.add('hidden'); return; }
   box.innerHTML = `
     <div class="ai-ex-badge">🤖 KI-generiert</div>
     <div class="ai-ex-title">${ex.title}</div>

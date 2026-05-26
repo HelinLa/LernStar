@@ -349,8 +349,8 @@
       </div>
       <!-- KI-Aufgabe -->
       <div class="ai-exercise-bar">
-        <button class="btn-ai-exercise" id="aiExerciseBtn" onclick="generateAIExercise()">🤖 Neue KI-Aufgabe generieren</button>
-        <span class="ai-ex-bar-hint">KI erstellt eine passende Aufgabe zum aktuellen Thema</span>
+        <button class="btn-ai-exercise" id="aiExerciseBtn" onclick="generateAIExercise()">🔄 Neue KI-Aufgabe</button>
+        <span class="ai-ex-bar-hint">Wird automatisch beim Thema erstellt</span>
       </div>
       <div class="ai-exercise-box hidden" id="aiExerciseBox"></div>
       <div class="exercises-list" id="exercisesList"></div>
@@ -573,7 +573,7 @@
 </div>
 
 <script src="content.js?v=12"></script>
-<script src="app.js?v=22"></script>
+<script src="app.js?v=23"></script>
 <script>
   // Service Worker deregistrieren damit kein alter Cache Probleme macht
   if ('serviceWorker' in navigator) {
