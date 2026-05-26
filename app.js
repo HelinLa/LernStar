@@ -3357,7 +3357,8 @@ const _DATA_FILES = [
   'data/mathe5_zeitangaben.json',
   'data/mathe5_symmetrie.json',
   'data/mathe5_rechnen.json',
-  'data/mathe5_flaechen.json'
+  'data/mathe5_flaechen.json',
+  'data/mathe5_koerper.json'
 ];
 
 async function _autoLoadDataFiles() {

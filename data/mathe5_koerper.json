@@ -1,0 +1,281 @@
+[
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Körper und Netze",
+    "question": "Welche geometrischen Körper haben ausschließlich gerade (ebene) Flächen?",
+    "answer": "Würfel, Quader und Pyramide",
+    "explanation": "Körper mit nur ebenen Flächen heißen Polyeder. Dazu gehören Würfel, Quader und Pyramiden. Zylinder, Kegel und Kugel haben dagegen mindestens eine gekrümmte Fläche (Mantelfläche).",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Körper und Netze",
+    "question": "Was versteht man unter dem Netz eines Körpers?",
+    "answer": "Die Abwicklung – alle Flächen des Körpers aufgeklappt in einer Ebene",
+    "explanation": "Das Netz entsteht, wenn man einen Körper entlang bestimmter Kanten aufschneidet und flach auf Papier ausbreitet. Aus dem Netz kann man den Körper wieder zusammenfalten.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Körper und Netze",
+    "question": "Wie viele Flächen hat eine quadratische Pyramide?",
+    "answer": "5 Flächen (1 quadratische Grundfläche + 4 Dreiecksflächen)",
+    "explanation": "Eine Pyramide mit quadratischer Grundfläche hat genau 5 Flächen: die Grundfläche (Quadrat) und vier Seitenflächen (gleichschenklige Dreiecke).",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Körper und Netze",
+    "question": "Was ist ein Tetraeder?",
+    "answer": "Ein Körper mit 4 dreieckigen Flächen (Dreieckspyramide)",
+    "explanation": "Das Tetraeder ist eine spezielle Pyramide, bei der alle vier Flächen Dreiecke sind – auch die Grundfläche. Bei einem regelmäßigen Tetraeder sind alle vier Flächen gleichseitige Dreiecke.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Körper und Netze",
+    "question": "Welcher Körper hat keine Ecken und keine Kanten?",
+    "answer": "Die Kugel",
+    "explanation": "Eine Kugel besteht nur aus einer einzigen gekrümmten Fläche. Sie hat keine Kanten (Linien, wo zwei Flächen aufeinandertreffen) und keine Ecken (Punkte, wo mehrere Kanten zusammenkommen).",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Quader und Würfel",
+    "question": "Wie viele Ecken, Kanten und Flächen hat ein Quader?",
+    "answer": "8 Ecken, 12 Kanten, 6 Flächen",
+    "explanation": "Ein Quader hat 8 Ecken (Eckpunkte), 12 Kanten (Linien) und 6 Flächen (Rechtecke). Beim Würfel sind alle 6 Flächen Quadrate der gleichen Größe.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Quader und Würfel",
+    "question": "Was unterscheidet einen Würfel von einem allgemeinen Quader?",
+    "answer": "Beim Würfel sind alle 12 Kanten gleich lang (und alle Flächen sind Quadrate)",
+    "explanation": "Ein Quader hat Kanten in drei verschiedenen Längen a, b, c (Länge, Breite, Höhe). Beim Würfel gilt a = b = c. Der Würfel ist also ein spezieller Quader.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Quader und Würfel",
+    "question": "Ein Quader hat die Maße 4 cm × 3 cm × 2 cm. Wie viele Kantenpaare gibt es?",
+    "answer": "3 Gruppen mit je 4 gleich langen Kanten",
+    "explanation": "Ein Quader hat 12 Kanten, die sich in 3 Gruppen à 4 aufteilen: 4 Kanten der Länge a, 4 der Länge b, 4 der Höhe c. Hier: 4 Kanten à 4 cm, 4 à 3 cm, 4 à 2 cm.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Quader und Würfel",
+    "question": "Wie viele verschiedene Netze hat ein Würfel?",
+    "answer": "11 verschiedene Netze",
+    "explanation": "Es gibt genau 11 verschiedene Möglichkeiten, einen Würfel aufzuklappen. Nicht jedes kreuzartige Muster aus 6 Quadraten ist ein gültiges Würfelnetz – man muss prüfen, ob es sich zu einem Würfel falten lässt.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Schrägbilder",
+    "question": "Was ist ein Schrägbild?",
+    "answer": "Eine perspektivische Zeichnung eines Körpers auf einer ebenen Fläche",
+    "explanation": "Im Schrägbild wird die Vorderfläche eines Körpers in wahrer Größe gezeichnet. Die Tiefenkanten werden schräg (meist unter 45°) und verkürzt eingezeichnet, damit der Körper räumlich wirkt.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Schrägbilder",
+    "question": "Wie werden verdeckte Kanten im Schrägbild dargestellt?",
+    "answer": "Als gestrichelte Linien",
+    "explanation": "Kanten, die sich hinter dem Körper befinden und nicht direkt sichtbar sind, zeichnet man gestrichelt. Sichtbare Kanten werden als durchgezogene Linien eingezeichnet.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Schrägbilder",
+    "question": "Wie werden die Tiefenkanten im Schrägbild verkürzt?",
+    "answer": "Auf die Hälfte ihrer tatsächlichen Länge verkürzt",
+    "explanation": "Bei der Schrägbildzeichnung wird die Tiefe auf die Hälfte (1/2) der echten Maße reduziert und unter einem Winkel von 45° eingezeichnet. So wirkt das Bild realistisch räumlich.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rauminhalte vergleichen",
+    "question": "Wie vergleicht man den Rauminhalt zweier Körper am einfachsten?",
+    "answer": "Man legt Einheitswürfel (z. B. Zentimeterwürfel) aus und zählt sie",
+    "explanation": "Durch Ausfüllen mit Einheitswürfeln (alle gleich groß) lassen sich Rauminhalte direkt vergleichen. Wer mehr Würfel braucht, hat den größeren Rauminhalt.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rauminhalte vergleichen",
+    "question": "Ein Quader besteht aus 24 Einheitswürfeln, ein anderer aus 18. Welcher ist größer?",
+    "answer": "Der Quader mit 24 Einheitswürfeln hat den größeren Rauminhalt",
+    "explanation": "Rauminhalt = Anzahl der Einheitswürfel. 24 > 18, also ist der erste Quader größer. In Formeln: V₁ = 24 Einheiten³ > V₂ = 18 Einheiten³.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Volumeneinheiten",
+    "question": "Wie viele cm³ sind 1 dm³?",
+    "answer": "1 000 cm³",
+    "explanation": "1 dm = 10 cm. Ein Würfel mit 1 dm Seitenlänge hat V = 10 cm × 10 cm × 10 cm = 1 000 cm³. Also: 1 dm³ = 1 000 cm³.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Volumeneinheiten",
+    "question": "Wie viele dm³ sind 1 m³?",
+    "answer": "1 000 dm³",
+    "explanation": "1 m = 10 dm. Ein Würfel mit 1 m Seitenlänge hat V = 10 dm × 10 dm × 10 dm = 1 000 dm³. Also: 1 m³ = 1 000 dm³.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Volumeneinheiten",
+    "question": "Wie hängen 1 Liter (l) und 1 dm³ zusammen?",
+    "answer": "1 l = 1 dm³ = 1 000 cm³",
+    "explanation": "Ein Liter ist genau so groß wie ein Dezimeterwürfel. Da 1 dm³ = 1 000 cm³, entspricht auch 1 l = 1 000 cm³. Wichtig für den Alltag: eine 1-Liter-Flasche hat das Volumen von 1 dm³.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Volumeneinheiten",
+    "question": "Schreibe in der nächstgrößeren Einheit: 4 500 cm³",
+    "answer": "4,5 dm³",
+    "explanation": "Um von cm³ in dm³ umzurechnen, teilt man durch 1 000. 4 500 ÷ 1 000 = 4,5. Also 4 500 cm³ = 4,5 dm³.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Volumeneinheiten",
+    "question": "Schreibe in der nächstkleineren Einheit: 2,3 m³",
+    "answer": "2 300 dm³",
+    "explanation": "Um von m³ in dm³ umzurechnen, multipliziert man mit 1 000. 2,3 × 1 000 = 2 300. Also 2,3 m³ = 2 300 dm³.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Volumeneinheiten",
+    "question": "Berechne: 3 dm³ + 750 cm³. Gib das Ergebnis in cm³ an.",
+    "answer": "3 750 cm³",
+    "explanation": "3 dm³ = 3 000 cm³. Dann 3 000 cm³ + 750 cm³ = 3 750 cm³.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Volumen eines Quaders",
+    "question": "Wie lautet die Formel für das Volumen eines Quaders?",
+    "answer": "V = a · b · c (Länge × Breite × Höhe)",
+    "explanation": "Das Volumen V eines Quaders mit Länge a, Breite b und Höhe c berechnet man mit V = a · b · c. Die Einheit ist immer eine Raumeinheit (cm³, dm³, m³ …).",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Volumen eines Quaders",
+    "question": "Berechne das Volumen: a = 5 cm, b = 4 cm, c = 3 cm",
+    "answer": "V = 60 cm³",
+    "explanation": "V = a · b · c = 5 cm · 4 cm · 3 cm = 60 cm³.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Volumen eines Quaders",
+    "question": "Ein Würfel hat die Seitenlänge 6 cm. Wie groß ist sein Volumen?",
+    "answer": "V = 216 cm³",
+    "explanation": "Würfelvolumen: V = a³ = 6³ = 6 · 6 · 6 = 216 cm³.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Volumen eines Quaders",
+    "question": "Ein Aquarium ist 80 cm lang, 35 cm breit und 40 cm hoch. Wie viele Liter fasst es?",
+    "answer": "112 Liter",
+    "explanation": "V = 80 · 35 · 40 = 112 000 cm³. Da 1 l = 1 000 cm³, sind das 112 000 ÷ 1 000 = 112 Liter.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Volumen eines Quaders",
+    "question": "Ein Quader hat V = 120 cm³, a = 6 cm, b = 4 cm. Wie hoch ist er?",
+    "answer": "c = 5 cm",
+    "explanation": "V = a · b · c → c = V ÷ (a · b) = 120 ÷ (6 · 4) = 120 ÷ 24 = 5 cm.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Volumen eines Quaders",
+    "question": "Ein Sandkasten (Quader) ist 2 m lang, 1,5 m breit und 0,4 m tief. Wie viel m³ Sand werden benötigt?",
+    "answer": "1,2 m³",
+    "explanation": "V = 2 m · 1,5 m · 0,4 m = 1,2 m³.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Oberflächeninhalt",
+    "question": "Wie lautet die Formel für den Oberflächeninhalt eines Quaders?",
+    "answer": "O = 2 · (a·b + a·c + b·c)",
+    "explanation": "Ein Quader hat 6 Rechteckflächen: 2 mit den Maßen a×b, 2 mit a×c und 2 mit b×c. Zusammen: O = 2·a·b + 2·a·c + 2·b·c = 2·(a·b + a·c + b·c).",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Oberflächeninhalt",
+    "question": "Berechne den Oberflächeninhalt: a = 4 cm, b = 3 cm, c = 2 cm",
+    "answer": "O = 52 cm²",
+    "explanation": "O = 2 · (4·3 + 4·2 + 3·2) = 2 · (12 + 8 + 6) = 2 · 26 = 52 cm².",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Oberflächeninhalt",
+    "question": "Wie lautet die Formel für den Oberflächeninhalt eines Würfels?",
+    "answer": "O = 6 · a²",
+    "explanation": "Ein Würfel hat 6 gleich große Quadratflächen. Jede Fläche hat den Inhalt a². Also O = 6 · a².",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Oberflächeninhalt",
+    "question": "Ein Würfel hat die Seitenlänge 5 cm. Wie groß ist seine Oberfläche?",
+    "answer": "O = 150 cm²",
+    "explanation": "O = 6 · a² = 6 · 5² = 6 · 25 = 150 cm².",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Oberflächeninhalt",
+    "question": "Ein Geschenkkarton (Quader) soll mit Papier beklebt werden: a = 30 cm, b = 20 cm, c = 10 cm. Wie viel cm² Papier wird benötigt?",
+    "answer": "O = 2 200 cm²",
+    "explanation": "O = 2 · (30·20 + 30·10 + 20·10) = 2 · (600 + 300 + 200) = 2 · 1 100 = 2 200 cm².",
+    "difficulty": 3
+  }
+]
