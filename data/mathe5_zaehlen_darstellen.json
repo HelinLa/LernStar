@@ -1,0 +1,227 @@
+[
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zählen und Darstellen",
+    "question": "In Klasse 5d gaben die Schüler ihre Lieblingssportart an. Wie viele Schüler wählen Ballsport?",
+    "answer": "12",
+    "explanation": "Laut Tabelle: Leichtathletik=6, Turnen=4, Ballsport=12, Sonstiges=5. Ballsport hat die meisten Schüler.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zählen und Darstellen",
+    "question": "In der Sporttabelle von Klasse 5d: Wie viele Schüler treiben Leichtathletik?",
+    "answer": "6",
+    "explanation": "Laut Tabelle haben 6 Schüler Leichtathletik als Lieblingssportart angegeben.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zählen und Darstellen",
+    "question": "Welche Sportart ist in Klasse 5d am beliebtesten?",
+    "answer": "Ballsport",
+    "explanation": "Ballsport hat mit 12 Schülern die höchste Anzahl. Leichtathletik=6, Turnen=4, Sonstiges=5.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zählen und Darstellen",
+    "question": "Wie viele Schüler spielen in Klasse 5d ein Blasinstrument?",
+    "answer": "6",
+    "explanation": "Laut Tabelle: Klavier=9, Blasinstrument=6, Streichinstrument=5, Gitarre=4, Schlagzeug=1, kein Instrument=2.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zählen und Darstellen",
+    "question": "Wie viele Schüler in Klasse 5d spielen kein Instrument?",
+    "answer": "2",
+    "explanation": "Laut Instrumententabelle spielen 2 Schüler kein Instrument.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zählen und Darstellen",
+    "question": "Welches Instrument spielen die meisten Schüler in Klasse 5d?",
+    "answer": "Klavier",
+    "explanation": "Klavier wird mit 9 Schülern am häufigsten gespielt. Dann folgen Blasinstrument=6, Streichinstrument=5.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zählen und Darstellen",
+    "question": "In Klasse 5b haben 14 Schüler blonde, 2 rote, 7 braune und 4 schwarze Haare. Wie viele Schüler hat die Klasse insgesamt?",
+    "answer": "27",
+    "explanation": "14 + 2 + 7 + 4 = 27 Schüler insgesamt in der Klasse.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zählen und Darstellen",
+    "question": "Welche Haarfarbe haben die wenigsten Schüler in Klasse 5b? (blond=14, rot=2, braun=7, schwarz=4)",
+    "answer": "rot",
+    "explanation": "Rote Haare haben nur 2 Schüler – das ist der kleinste Wert in der Haarfarben-Tabelle.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zählen und Darstellen",
+    "question": "Beim Schwimmabzeichen in Klasse 5 haben Bronze=44, Silber=20, Gold=6. Wie viele Schüler haben das Bronze-Abzeichen?",
+    "answer": "44",
+    "explanation": "Laut Tabelle haben 44 Schüler das Bronze-Schwimmabzeichen – das ist das häufigste.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zählen und Darstellen",
+    "question": "Wie viele Schüler haben das Gold-Schwimmabzeichen? (Bronze=44, Silber=20, Gold=6)",
+    "answer": "6",
+    "explanation": "Das Gold-Schwimmabzeichen haben 6 Schüler – die wenigsten, weil es das schwierigste ist.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zählen und Darstellen",
+    "question": "In der Tabelle über Mediennutzung am Kildener-Gymnasium: Wie viele Schüler nutzen Medien täglich?",
+    "answer": "70",
+    "explanation": "Laut Tabelle: täglich=70, nur an Langtagen=260, unregelmäßig=210, selten=90, nie=120.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zählen und Darstellen",
+    "question": "Wie viele Schüler am Kildener-Gymnasium nutzen Medien nie?",
+    "answer": "120",
+    "explanation": "Laut Tabelle: täglich=70, nur an Langtagen=260, unregelmäßig=210, selten=90, nie=120.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zählen und Darstellen",
+    "question": "Was ist eine Strichliste?",
+    "answer": "Eine Tabelle zum Zählen mit Strichen, wobei der 5. Strich quer durch 4 Striche gezeichnet wird",
+    "explanation": "Strichlisten werden zum Zählen und Darstellen von Häufigkeiten verwendet. Fünf Striche werden als Bündel (||||) dargestellt.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zählen und Darstellen",
+    "question": "Was zeigt ein Säulendiagramm?",
+    "answer": "Die Häufigkeit von Daten durch die Höhe der Säulen",
+    "explanation": "In einem Säulendiagramm werden Daten durch senkrechte Balken (Säulen) dargestellt. Die Höhe zeigt die Häufigkeit an.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zählen und Darstellen",
+    "question": "Was ist die Hochachse (y-Achse) in einem Säulendiagramm?",
+    "answer": "Die senkrechte Achse, die die Anzahl (Häufigkeit) anzeigt",
+    "explanation": "Die Hochachse steht senkrecht und zeigt die Werte (z.B. Anzahl der Schüler). Die waagerechte Achse heißt Abszisse.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Das Einmaleins",
+    "question": "Was ist 7 · 4?",
+    "answer": "28",
+    "explanation": "7 mal 4: 7+7+7+7 = 28. Oder: 7·4 = 4·7 = 28.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Das Einmaleins",
+    "question": "Was ist 9 · 5?",
+    "answer": "45",
+    "explanation": "9 · 5 = 45. Merkhilfe: 9er-Reihe: 9, 18, 27, 36, 45.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Das Einmaleins",
+    "question": "Was ist 8 · 9?",
+    "answer": "72",
+    "explanation": "8 · 9 = 72. Merkhilfe: 9er-Reihe von 8: 72.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Das Einmaleins",
+    "question": "Was ist 6 · 12?",
+    "answer": "72",
+    "explanation": "6 · 12 = 72. Oder: 6 · 10 + 6 · 2 = 60 + 12 = 72.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Das Einmaleins",
+    "question": "Was ist 11 · 18?",
+    "answer": "198",
+    "explanation": "11 · 18 = 10 · 18 + 1 · 18 = 180 + 18 = 198.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Das Einmaleins",
+    "question": "Was ist 8 · 7?",
+    "answer": "56",
+    "explanation": "8 · 7 = 56. Merkhilfe: 8er-Reihe: 8, 16, 24, 32, 40, 48, 56.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Das Einmaleins",
+    "question": "Was ist 8 · 12?",
+    "answer": "96",
+    "explanation": "8 · 12 = 8 · 10 + 8 · 2 = 80 + 16 = 96.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Das Einmaleins",
+    "question": "Was ist 11 · 14?",
+    "answer": "154",
+    "explanation": "11 · 14 = 10 · 14 + 1 · 14 = 140 + 14 = 154.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Das Einmaleins",
+    "question": "Was ist 8 · 16?",
+    "answer": "128",
+    "explanation": "8 · 16 = 8 · 10 + 8 · 6 = 80 + 48 = 128.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Das Einmaleins",
+    "question": "Was ist 12 · 13?",
+    "answer": "156",
+    "explanation": "12 · 13 = 10 · 13 + 2 · 13 = 130 + 26 = 156.",
+    "difficulty": 3
+  }
+]

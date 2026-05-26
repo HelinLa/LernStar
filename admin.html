@@ -172,7 +172,11 @@
     <div class="nav-logo">⭐ LernStar <span>KI-Verwaltung</span></div>
     <div class="nav-badge" id="navCount">0 Aufgaben</div>
   </div>
-  <a class="nav-btn" href="index.html">🎓 Zur Lernplattform →</a>
+  <div style="display:flex;gap:8px;align-items:center">
+    <button class="nav-btn" onclick="document.getElementById('importFile').click()">📥 JSON importieren</button>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importJSON(this)">
+    <a class="nav-btn" href="index.html">🎓 Zur Lernplattform →</a>
+  </div>
 </nav>
 
 <div class="page">
@@ -502,6 +506,41 @@ function setStatus(id, msg, color) {
   const el = document.getElementById(id);
   el.textContent = msg; el.style.color = color;
 }
+// ── JSON Import ───────────────────────────────────────────────────────────
+function importJSON(input) {
+  const file = input.files?.[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const exercises = JSON.parse(e.target.result);
+      if (!Array.isArray(exercises)) throw new Error('Kein Array');
+      let added = 0;
+      for (const ex of exercises) {
+        if (!ex.question || !ex.answer) continue;
+        const id = LernStarAI.save({
+          subject:     ex.subject     || 'Allgemein',
+          grade:       String(ex.grade || '5'),
+          topic:       ex.topic       || 'Allgemein',
+          question:    ex.question,
+          answer:      ex.answer,
+          explanation: ex.explanation || '',
+          difficulty:  parseInt(ex.difficulty) || 1
+        });
+        addExToList({ id, ...ex, grade: String(ex.grade || '5'),
+                      difficulty: parseInt(ex.difficulty) || 1 });
+        added++;
+      }
+      updateUI();
+      showToast(`✅ ${added} Aufgaben importiert!`);
+    } catch(err) {
+      showToast('❌ Fehler beim Import: ' + err.message);
+    }
+    input.value = '';
+  };
+  reader.readAsText(file);
+}
+
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg; t.classList.add('show');
