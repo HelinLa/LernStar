@@ -3344,9 +3344,56 @@ function _fstCreate() {
 }
 
 // ============================================================
+// AUTO-LOADER: JSON-Aufgaben automatisch laden
+// ============================================================
+const _DATA_FILES = [
+  'data/mathe5_zaehlen_darstellen.json',
+  'data/mathe5_zahlen_ordnen.json',
+  'data/mathe5_grosse_zahlen_runden.json',
+  'data/mathe5_grundrechenarten.json',
+  'data/mathe5_rechnen_mit_geld.json',
+  'data/mathe5_laengenangaben.json',
+  'data/mathe5_gewichtsangaben.json',
+  'data/mathe5_zeitangaben.json',
+  'data/mathe5_symmetrie.json',
+  'data/mathe5_rechnen.json'
+];
+
+async function _autoLoadDataFiles() {
+  if (typeof LernStarAI === 'undefined') return;
+  const loaded = new Set(JSON.parse(localStorage.getItem('ls_loaded_files') || '[]'));
+  let added = 0;
+  for (const file of _DATA_FILES) {
+    if (loaded.has(file)) continue;
+    try {
+      const resp = await fetch(file);
+      if (!resp.ok) continue;
+      const exercises = await resp.json();
+      if (!Array.isArray(exercises)) continue;
+      for (const ex of exercises) {
+        if (!ex.question || !ex.answer) continue;
+        LernStarAI.save({
+          subject:     ex.subject     || 'Allgemein',
+          grade:       String(ex.grade || '5'),
+          topic:       ex.topic       || 'Allgemein',
+          question:    ex.question,
+          answer:      ex.answer,
+          explanation: ex.explanation || '',
+          difficulty:  parseInt(ex.difficulty) || 1
+        });
+        added++;
+      }
+      loaded.add(file);
+    } catch(e) { /* Datei nicht gefunden – überspringen */ }
+  }
+  if (added > 0) localStorage.setItem('ls_loaded_files', JSON.stringify([...loaded]));
+}
+
+// ============================================================
 // INIT
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
   updateSidebarGrades();
   navigate('home');
+  _autoLoadDataFiles();
 });
