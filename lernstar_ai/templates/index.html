@@ -3,169 +3,248 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LernStar AI – Trainings-Verwaltung</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <title>LernStar – KI-Verwaltung</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --accent: #7C3AED; --accent-l: #EDE9FE;
-      --bg: #F4F6FB; --surface: #fff; --border: #E5E7EB;
-      --text: #1a1a2e; --muted: #6B7280; --radius: 14px;
-      --shadow: 0 4px 24px rgba(0,0,0,.08);
+      --accent: #7C3AED; --accent2: #A855F7; --accent-l: #EDE9FE;
+      --bg: #F4F6FB; --surface: #fff;
+      --border: #E5E7EB; --text: #1a1a2e; --muted: #6B7280;
+      --radius: 16px; --shadow: 0 4px 24px rgba(0,0,0,.08);
+      --font: 'Nunito',sans-serif; --font-h: 'Poppins',sans-serif;
     }
-    body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; }
 
+    /* ── TOP NAV ── */
     .topnav {
-      background: linear-gradient(135deg, #7C3AED, #A855F7);
-      color: #fff; padding: 0 32px; height: 64px;
-      display: flex; align-items: center; gap: 14px;
-      box-shadow: 0 2px 16px rgba(124,58,237,.3);
+      position: sticky; top: 0; z-index: 100;
+      height: 64px; padding: 0 28px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 2px 20px rgba(124,58,237,.35);
     }
-    .logo { font-family: 'Poppins',sans-serif; font-size: 1.4rem; font-weight: 800; }
-    .logo span { opacity: .7; font-weight: 600; font-size: 1rem; margin-left: 6px; }
-    .badge { background: rgba(255,255,255,.22); border-radius: 20px; padding: 4px 12px; font-size: .8rem; font-weight: 700; }
-    .badge.ok { background: #10B981; }
+    .nav-left { display: flex; align-items: center; gap: 14px; }
+    .nav-logo { font-family: var(--font-h); font-size: 1.3rem; font-weight: 900; color: #fff; }
+    .nav-logo span { opacity: .65; font-weight: 600; font-size: .9rem; margin-left: 6px; }
+    .nav-badge {
+      background: rgba(255,255,255,.18); border-radius: 20px;
+      padding: 4px 14px; font-size: .78rem; font-weight: 800; color: #fff;
+    }
+    .nav-link {
+      background: rgba(255,255,255,.15); border: none; border-radius: 10px;
+      padding: 8px 16px; color: #fff; font-family: var(--font); font-size: .82rem;
+      font-weight: 800; cursor: pointer; text-decoration: none;
+      transition: background .2s;
+    }
+    .nav-link:hover { background: rgba(255,255,255,.25); }
 
-    .layout { display: grid; grid-template-columns: 420px 1fr; gap: 24px; max-width: 1200px; margin: 28px auto; padding: 0 20px; }
-    @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+    /* ── LAYOUT ── */
+    .page { max-width: 1280px; margin: 28px auto; padding: 0 20px;
+            display: grid; grid-template-columns: 400px 1fr; gap: 22px; }
+    @media (max-width: 920px) { .page { grid-template-columns: 1fr; } }
 
-    .card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; }
-    .card-title { font-family: 'Poppins',sans-serif; font-size: 1rem; font-weight: 800; margin-bottom: 16px; }
+    /* ── CARD ── */
+    .card { background: var(--surface); border-radius: var(--radius);
+            box-shadow: var(--shadow); padding: 24px; }
+    .card-title { font-family: var(--font-h); font-size: 1rem; font-weight: 800;
+                  margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+
+    /* ── KI-STÄRKE ── */
+    .strength-card { background: linear-gradient(135deg,#1e1b4b,#312e81);
+                     color: #fff; border-radius: var(--radius);
+                     padding: 22px; box-shadow: var(--shadow); }
+    .strength-header { display: flex; align-items: center; justify-content: space-between;
+                       margin-bottom: 14px; }
+    .strength-title { font-family: var(--font-h); font-size: 1rem; font-weight: 800; opacity: .85; }
+    .strength-level { font-family: var(--font-h); font-size: 1.25rem; font-weight: 900;
+                      transition: color .6s; }
+    .strength-bar-bg { background: rgba(255,255,255,.15); border-radius: 99px;
+                        height: 12px; overflow: hidden; margin-bottom: 10px; }
+    .strength-bar { height: 100%; border-radius: 99px;
+                    background: linear-gradient(90deg,#A78BFA,#7C3AED);
+                    transition: width .8s cubic-bezier(.4,0,.2,1); }
+    .strength-meta { font-size: .78rem; opacity: .65; }
+    .strength-count { font-size: 2.2rem; font-weight: 900; font-family: var(--font-h);
+                      color: #A78BFA; line-height: 1; }
+    .strength-stats { display: flex; gap: 16px; margin-top: 14px; }
+    .strength-stat { flex: 1; background: rgba(255,255,255,.08);
+                     border-radius: 10px; padding: 12px; text-align: center; }
+    .strength-stat .val { font-size: 1.4rem; font-weight: 900; font-family: var(--font-h); }
+    .strength-stat .lbl { font-size: .7rem; opacity: .6; margin-top: 2px; }
 
     /* ── TABS ── */
     .tabs { display: flex; gap: 6px; margin-bottom: 18px; }
     .tab-btn {
-      flex: 1; padding: 10px; border: 2px solid var(--border); border-radius: 10px;
-      font-family: 'Nunito',sans-serif; font-size: .88rem; font-weight: 800;
+      flex: 1; padding: 10px 8px; border: 2px solid var(--border); border-radius: 10px;
+      font-family: var(--font); font-size: .85rem; font-weight: 800;
       cursor: pointer; background: #FAFAFA; color: var(--muted); transition: all .2s;
     }
-    .tab-btn.active { border-color: var(--accent); background: var(--accent-l); color: var(--accent); }
+    .tab-btn.active { border-color: var(--accent); background: var(--accent-l);
+                      color: var(--accent); }
 
     /* ── DROP ZONE ── */
     .drop-zone {
       border: 2.5px dashed #C4B5FD; border-radius: 14px;
-      padding: 36px 20px; text-align: center; cursor: pointer;
-      transition: all .2s; background: #FAFAFA; margin-bottom: 16px;
-      position: relative;
+      padding: 28px 16px; text-align: center; cursor: pointer;
+      transition: all .2s; background: #FAFAFA; margin-bottom: 14px; position: relative;
     }
     .drop-zone:hover, .drop-zone.over { border-color: var(--accent); background: var(--accent-l); }
-    .drop-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-    .drop-icon { font-size: 3rem; margin-bottom: 8px; }
-    .drop-text { font-weight: 800; font-size: .95rem; color: var(--muted); }
-    .drop-sub  { font-size: .78rem; color: #9CA3AF; margin-top: 3px; }
+    .drop-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer;
+                        width: 100%; height: 100%; }
+    .drop-icon { font-size: 2.6rem; margin-bottom: 6px; }
+    .drop-text { font-weight: 800; font-size: .9rem; color: var(--muted); }
+    .drop-sub  { font-size: .75rem; color: #9CA3AF; margin-top: 2px; }
 
-    .preview-wrap { position: relative; margin-bottom: 16px; display: none; }
-    .preview-wrap img { width: 100%; max-height: 200px; object-fit: contain; border-radius: 10px; border: 1.5px solid var(--border); }
+    .preview-wrap { position: relative; margin-bottom: 14px; display: none; }
+    .preview-wrap img { width: 100%; max-height: 180px; object-fit: contain;
+                        border-radius: 10px; border: 1.5px solid var(--border); }
     .preview-remove {
       position: absolute; top: 8px; right: 8px;
-      background: rgba(0,0,0,.6); color: #fff; border: none;
-      border-radius: 50%; width: 28px; height: 28px; font-size: .9rem;
+      background: rgba(0,0,0,.55); color: #fff; border: none;
+      border-radius: 50%; width: 26px; height: 26px; font-size: .85rem;
       cursor: pointer; display: flex; align-items: center; justify-content: center;
     }
 
     /* ── FELDER ── */
-    .fields-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-    .fields-1 { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 14px; }
-    .field label { display: block; font-size: .75rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
+    .row3 { display: grid; grid-template-columns: 1fr 80px 1fr; gap: 8px; margin-bottom: 12px; }
+    .col1 { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+    .field label { display: block; font-size: .72rem; font-weight: 800;
+                   color: var(--muted); text-transform: uppercase;
+                   letter-spacing: .04em; margin-bottom: 3px; }
     .field input, .field select, .field textarea {
-      width: 100%; padding: 10px 12px; border: 1.5px solid var(--border);
-      border-radius: 9px; font-family: 'Nunito',sans-serif; font-size: .88rem;
+      width: 100%; padding: 9px 12px; border: 1.5px solid var(--border);
+      border-radius: 9px; font-family: var(--font); font-size: .86rem;
       color: var(--text); background: #FAFAFA; transition: border-color .2s; resize: vertical;
     }
-    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); background: #fff; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none; border-color: var(--accent); background: #fff;
+    }
 
     /* ── BUTTONS ── */
-    .btn-save {
-      width: 100%; padding: 14px; border: none; border-radius: 11px;
-      font-family: 'Nunito',sans-serif; font-size: 1rem; font-weight: 900;
-      cursor: pointer; transition: opacity .2s; color: #fff;
-      background: linear-gradient(135deg, #7C3AED, #A855F7);
-    }
-    .btn-save:hover { opacity: .88; }
-    .btn-save:disabled { opacity: .5; cursor: not-allowed; }
-
-    .save-status { text-align: center; font-size: .85rem; min-height: 22px; margin-top: 10px; font-weight: 700; }
-
-    /* ── TRAINING ── */
-    .train-card { border: 2px solid var(--accent-l); margin-top: 0; }
-    .info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-    .info-tile { background: var(--accent-l); border-radius: 10px; padding: 14px; text-align: center; }
-    .info-tile .val { font-size: 1.8rem; font-weight: 900; color: var(--accent); font-family: 'Poppins',sans-serif; }
-    .info-tile .lbl { font-size: .75rem; font-weight: 700; color: var(--muted); }
-    .btn-train {
+    .btn-primary {
       width: 100%; padding: 13px; border: none; border-radius: 11px;
-      font-family: 'Nunito',sans-serif; font-size: 1rem; font-weight: 900;
-      cursor: pointer; color: #fff; background: linear-gradient(135deg,#059669,#34D399);
-      margin-bottom: 12px; transition: opacity .2s;
+      font-family: var(--font); font-size: .95rem; font-weight: 900;
+      cursor: pointer; color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      transition: opacity .2s; box-shadow: 0 4px 14px rgba(124,58,237,.3);
     }
-    .btn-train:hover { opacity: .88; }
-    .btn-train:disabled { opacity: .5; cursor: not-allowed; }
-    .progress-wrap { background: var(--border); border-radius: 99px; height: 10px; overflow: hidden; margin-bottom: 7px; }
-    .progress-fill { height: 100%; background: linear-gradient(90deg,#7C3AED,#A855F7); border-radius: 99px; transition: width .4s; }
-    .train-msg { font-size: .82rem; color: var(--muted); min-height: 18px; }
+    .btn-primary:hover   { opacity: .88; }
+    .btn-primary:disabled { opacity: .45; cursor: not-allowed; }
 
-    .api-box {
-      background: #1E1E2E; color: #A5D6FF; border-radius: 10px;
-      padding: 13px 15px; font-family: monospace; font-size: .79rem;
-      margin-top: 14px; line-height: 1.85;
-    }
-    .api-box .lbl { color: #555; font-size: .68rem; text-transform: uppercase; margin-bottom: 2px; }
-    .api-box b { color: #CBA6F7; }
+    .status-line { text-align: center; font-size: .83rem; min-height: 20px;
+                   margin-top: 9px; font-weight: 700; }
 
-    /* ── LISTE ── */
-    .ex-count { font-size: .82rem; color: var(--muted); font-weight: 700; margin-bottom: 14px; }
-    .ex-list { display: flex; flex-direction: column; gap: 10px; max-height: 680px; overflow-y: auto; }
-    .ex-item { border: 1.5px solid var(--border); border-radius: 12px; padding: 13px 15px; background: #FAFAFA; }
-    .ex-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 7px; }
+    /* ── AUFGABEN-LISTE ── */
+    .list-wrap { display: flex; flex-direction: column; gap: 10px;
+                 max-height: 75vh; overflow-y: auto; padding-right: 4px; }
+    .list-wrap::-webkit-scrollbar { width: 5px; }
+    .list-wrap::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 99px; }
+
+    .ex-item { border: 1.5px solid var(--border); border-radius: 12px;
+               padding: 13px 15px; background: #FAFAFA;
+               transition: border-color .2s; }
+    .ex-item:hover { border-color: #C4B5FD; }
+    .ex-head { display: flex; align-items: flex-start;
+               justify-content: space-between; gap: 8px; margin-bottom: 7px; }
     .ex-tags { display: flex; gap: 5px; flex-wrap: wrap; }
-    .tag { font-size: .7rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; background: var(--accent-l); color: var(--accent); }
+    .tag { font-size: .68rem; font-weight: 800; padding: 2px 9px;
+           border-radius: 20px; background: var(--accent-l); color: var(--accent); }
     .tag.g { background: #DBEAFE; color: #2563EB; }
-    .ex-q { font-weight: 700; font-size: .88rem; margin-bottom: 4px; line-height: 1.4; }
-    .ex-a { font-size: .8rem; color: #059669; font-weight: 600; }
-    .ex-e { font-size: .76rem; color: var(--muted); margin-top: 3px; line-height: 1.4; }
-    .btn-del { padding: 5px 9px; background: #FEE2E2; color: #DC2626; border: none; border-radius: 7px; font-size: .75rem; font-weight: 700; cursor: pointer; flex-shrink: 0; }
+    .tag.d1 { background: #D1FAE5; color: #059669; }
+    .tag.d2 { background: #FEF3C7; color: #D97706; }
+    .tag.d3 { background: #FEE2E2; color: #DC2626; }
+    .ex-q { font-weight: 700; font-size: .87rem; margin-bottom: 4px; line-height: 1.4; }
+    .ex-a { font-size: .8rem; color: #059669; font-weight: 700; }
+    .ex-e { font-size: .74rem; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+    .btn-del { padding: 4px 9px; background: #FEE2E2; color: #DC2626;
+               border: none; border-radius: 7px; font-size: .73rem;
+               font-weight: 800; cursor: pointer; flex-shrink: 0; }
     .btn-del:hover { background: #FECACA; }
 
-    .empty { text-align: center; padding: 48px 20px; color: var(--muted); }
-    .empty .ico { font-size: 3rem; margin-bottom: 10px; }
+    .empty-state { text-align: center; padding: 52px 20px; color: var(--muted); }
+    .empty-icon { font-size: 3.5rem; margin-bottom: 12px; }
+    .empty-title { font-family: var(--font-h); font-size: 1.1rem; font-weight: 800;
+                   margin-bottom: 6px; }
 
+    /* ── TOPIC STATS ── */
+    .topic-grid { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+    .topic-row { display: flex; align-items: center; gap: 10px;
+                 background: var(--accent-l); border-radius: 9px; padding: 7px 12px; }
+    .topic-name { font-size: .8rem; font-weight: 700; flex: 1; }
+    .topic-count { font-size: .75rem; font-weight: 900; color: var(--accent);
+                   background: #fff; border-radius: 6px; padding: 1px 8px; }
+
+    /* ── TOAST ── */
     .toast {
       position: fixed; bottom: 24px; right: 24px; z-index: 999;
       background: #1E1E2E; color: #fff; padding: 12px 20px;
       border-radius: 12px; font-size: .88rem; font-weight: 700;
-      box-shadow: 0 8px 32px rgba(0,0,0,.25);
+      box-shadow: 0 8px 32px rgba(0,0,0,.28);
       opacity: 0; transform: translateY(8px); transition: all .3s; pointer-events: none;
     }
     .toast.show { opacity: 1; transform: none; }
-
     .hidden { display: none !important; }
   </style>
 </head>
 <body>
 
+<!-- TOP NAV -->
 <nav class="topnav">
-  <div class="logo">⭐ LernStar AI <span>Trainings-Verwaltung</span></div>
-  <span class="badge {% if trained %}ok{% endif %}">
-    {% if trained %}✅ Modell trainiert{% else %}⚠️ Noch nicht trainiert{% endif %}
-  </span>
+  <div class="nav-left">
+    <div class="nav-logo">⭐ LernStar <span>KI-Verwaltung</span></div>
+    <div class="nav-badge">{{ count }} Aufgaben</div>
+  </div>
+  <a class="nav-link" href="/lernstar" target="_blank">🎓 Zur Lernplattform →</a>
 </nav>
 
-<div class="layout">
+<div class="page">
 
-  <!-- ── LINKE SPALTE ── -->
-  <div style="display:flex;flex-direction:column;gap:20px">
+  <!-- ══ LINKE SPALTE ══ -->
+  <div style="display:flex;flex-direction:column;gap:18px">
+
+    <!-- KI-STÄRKE -->
+    <div class="strength-card">
+      <div class="strength-header">
+        <div class="strength-title">🧠 KI-Stärke</div>
+        <div class="strength-level" id="aiLevel" style="color:{{ ai_color }}">{{ ai_label }}</div>
+      </div>
+      <div class="strength-bar-bg">
+        <div class="strength-bar" id="aiBar" style="width:{{ ai_pct }}%"></div>
+      </div>
+      <div class="strength-meta" id="aiMeta">
+        {% if ai_next %}
+          {{ count }} Aufgaben – noch {{ ai_next - count }} bis zum nächsten Level
+        {% else %}
+          Maximales Level erreicht! 🏆
+        {% endif %}
+      </div>
+      <div class="strength-stats">
+        <div class="strength-stat">
+          <div class="val" id="exCountBig">{{ count }}</div>
+          <div class="lbl">Aufgaben</div>
+        </div>
+        <div class="strength-stat">
+          <div class="val">{{ topic_stats | length }}</div>
+          <div class="lbl">Themen</div>
+        </div>
+        <div class="strength-stat">
+          <div class="val">{{ ai_pct }}%</div>
+          <div class="lbl">Stärke</div>
+        </div>
+      </div>
+    </div>
 
     <!-- AUFGABE HINZUFÜGEN -->
     <div class="card">
       <div class="card-title">➕ Aufgabe hinzufügen</div>
 
-      <!-- Tabs -->
       <div class="tabs">
-        <button class="tab-btn active" id="tabBild" onclick="switchTab('bild')">📷 Bild hochladen</button>
+        <button class="tab-btn active" id="tabBild"    onclick="switchTab('bild')">📷 Bild hochladen</button>
         <button class="tab-btn"        id="tabManuell" onclick="switchTab('manuell')">✍️ Manuell eingeben</button>
       </div>
 
-      <!-- ── TAB: BILD ── -->
+      <!-- TAB BILD -->
       <div id="panelBild">
         <div class="drop-zone" id="dropZone"
           ondragover="event.preventDefault();this.classList.add('over')"
@@ -173,115 +252,117 @@
           ondrop="onDrop(event)">
           <input type="file" id="imgInput" accept="image/*" onchange="onFile(this.files[0])">
           <div class="drop-icon">📸</div>
-          <div class="drop-text">Foto der Aufgabe hier ablegen</div>
-          <div class="drop-sub">oder klicken zum Auswählen · JPG · PNG · WebP</div>
+          <div class="drop-text">Foto der Aufgabe ablegen oder klicken</div>
+          <div class="drop-sub">JPG · PNG · WebP</div>
         </div>
         <div class="preview-wrap" id="previewWrap">
           <img id="preview" src="" alt="">
           <button class="preview-remove" onclick="clearImg()">✕</button>
         </div>
-        <div class="fields-3">
+        <div class="row3">
           <div class="field"><label>Fach</label><input type="text" id="inSubject" placeholder="Mathematik"></div>
           <div class="field"><label>Klasse</label><input type="text" id="inGrade" placeholder="7"></div>
           <div class="field"><label>Thema</label><input type="text" id="inTopic" placeholder="Brüche"></div>
         </div>
-        <button class="btn-save" id="saveBtn" onclick="saveExercise()" disabled>💾 Aufgabe speichern</button>
-        <div class="save-status" id="saveStatus"></div>
+        <button class="btn-primary" id="saveBtn" onclick="saveImage()" disabled>💾 KI liest Bild aus & speichert</button>
+        <div class="status-line" id="saveStatus"></div>
       </div>
 
-      <!-- ── TAB: MANUELL ── -->
+      <!-- TAB MANUELL -->
       <div id="panelManuell" class="hidden">
-        <div class="fields-3">
+        <div class="row3">
           <div class="field"><label>Fach</label><input type="text" id="mSubject" placeholder="Mathematik"></div>
           <div class="field"><label>Klasse</label><input type="text" id="mGrade" placeholder="7"></div>
           <div class="field"><label>Thema</label><input type="text" id="mTopic" placeholder="Brüche"></div>
         </div>
-        <div class="fields-1">
-          <div class="field"><label>Aufgabe / Frage</label><textarea id="mQuestion" rows="3" placeholder="Was ist 3/4 + 1/4 ?"></textarea></div>
-          <div class="field"><label>Lösung</label><input type="text" id="mAnswer" placeholder="1"></div>
-          <div class="field"><label>Erklärung (optional)</label><textarea id="mExplanation" rows="2" placeholder="Gleichnamige Brüche werden addiert..."></textarea></div>
+        <div class="col1">
+          <div class="field"><label>Aufgabe / Frage</label>
+            <textarea id="mQuestion" rows="3" placeholder="Was ist ¾ + ¼?"></textarea></div>
+          <div class="field"><label>Lösung</label>
+            <input type="text" id="mAnswer" placeholder="1"></div>
+          <div class="field"><label>Erklärung (optional)</label>
+            <textarea id="mExpl" rows="2" placeholder="Gleichnamige Brüche werden addiert..."></textarea></div>
           <div class="field">
             <label>Schwierigkeit</label>
-            <select id="mDifficulty">
+            <select id="mDiff">
               <option value="1">⭐ Einfach</option>
               <option value="2" selected>⭐⭐ Mittel</option>
               <option value="3">⭐⭐⭐ Schwer</option>
             </select>
           </div>
         </div>
-        <button class="btn-save" id="saveBtnM" onclick="saveManual()">💾 Aufgabe speichern</button>
-        <div class="save-status" id="saveStatusM"></div>
+        <button class="btn-primary" id="saveBtnM" onclick="saveManual()">💾 Aufgabe speichern</button>
+        <div class="status-line" id="saveStatusM"></div>
       </div>
     </div>
 
-    <!-- TRAINING -->
-    <div class="card train-card">
-      <div class="card-title">🤖 KI-Training</div>
-      <div class="info-row">
-        <div class="info-tile">
-          <div class="val" id="exCount">{{ count }}</div>
-          <div class="lbl">Aufgaben gespeichert</div>
-        </div>
-        <div class="info-tile">
-          <div class="val">{% if trained %}✅{% else %}❌{% endif %}</div>
-          <div class="lbl">Modell trainiert</div>
-        </div>
-      </div>
-      <button class="btn-train" id="trainBtn" onclick="startTraining()" {% if status.running %}disabled{% endif %}>
-        🚀 Training starten
-      </button>
-      <div class="progress-wrap"><div class="progress-fill" id="progressFill" style="width:{{ status.progress }}%"></div></div>
-      <div class="train-msg" id="trainMsg">{{ status.message }}</div>
-      <div class="api-box">
-        <div class="lbl">LernStar · KI-Einstellungen für die App</div>
-        <b>URL:</b> http://localhost:5000/v1/chat/completions<br>
-        <b>Key:</b> local<br>
-        <b>Modell:</b> lernstar-finetuned
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ── RECHTE SPALTE ── -->
-  <div class="card">
-    <div class="card-title">📚 Gespeicherte Aufgaben</div>
-    {% if exercises %}
-      <div class="ex-count" id="exCountLabel">{{ exercises|length }} Aufgabe(n) · ✕ zum Löschen</div>
-      <div class="ex-list" id="exList">
-        {% for ex in exercises %}
-        <div class="ex-item">
-          <div class="ex-head">
-            <div class="ex-tags">
-              <span class="tag">{{ ex.subject }}</span>
-              <span class="tag g">Kl. {{ ex.grade }}</span>
-              <span class="tag">{{ ex.topic }}</span>
-            </div>
-            <form method="POST" action="/delete/{{ ex.id }}">
-              <button type="submit" class="btn-del">✕</button>
-            </form>
-          </div>
-          <div class="ex-q">❓ {{ ex.question }}</div>
-          <div class="ex-a">✅ {{ ex.answer }}</div>
-          <div class="ex-e">💡 {{ ex.explanation }}</div>
+    <!-- THEMEN-ÜBERSICHT -->
+    {% if topic_stats %}
+    <div class="card">
+      <div class="card-title">📊 Themen-Übersicht</div>
+      <div class="topic-grid">
+        {% for (subj, grade, topic), cnt in topic_stats.items() | sort(attribute='1', reverse=True) %}
+        <div class="topic-row">
+          <div class="topic-name">{{ subj }} Kl.{{ grade }} – {{ topic }}</div>
+          <div class="topic-count">{{ cnt }}×</div>
         </div>
         {% endfor %}
       </div>
-    {% else %}
-      <div class="empty" id="emptyState">
-        <div class="ico">📝</div>
-        <p>Noch keine Aufgaben.<br>Lade ein Foto hoch oder gib sie manuell ein!</p>
+    </div>
+    {% endif %}
+
+  </div>
+
+  <!-- ══ RECHTE SPALTE ══ -->
+  <div class="card">
+    <div class="card-title">📚 Gespeicherte Aufgaben
+      <span style="margin-left:auto;font-size:.75rem;font-weight:700;color:var(--muted)" id="listCount">
+        {{ exercises | length }} Aufgabe(n)
+      </span>
+    </div>
+
+    {% if exercises %}
+    <div class="list-wrap" id="exList">
+      {% for ex in exercises %}
+      <div class="ex-item">
+        <div class="ex-head">
+          <div class="ex-tags">
+            <span class="tag">{{ ex.subject }}</span>
+            <span class="tag g">Kl. {{ ex.grade }}</span>
+            <span class="tag">{{ ex.topic }}</span>
+            <span class="tag d{{ ex.difficulty }}">
+              {{ ['', '⭐ Einfach', '⭐⭐ Mittel', '⭐⭐⭐ Schwer'][ex.difficulty] }}
+            </span>
+          </div>
+          <form method="POST" action="/delete/{{ ex.id }}">
+            <button type="submit" class="btn-del">✕</button>
+          </form>
+        </div>
+        <div class="ex-q">❓ {{ ex.question }}</div>
+        <div class="ex-a">✅ {{ ex.answer }}</div>
+        {% if ex.explanation %}<div class="ex-e">💡 {{ ex.explanation }}</div>{% endif %}
       </div>
-      <div class="ex-list hidden" id="exList"></div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">🧠</div>
+      <div class="empty-title">Noch keine Aufgaben</div>
+      <p style="font-size:.85rem">Füge Aufgaben hinzu – jede macht die KI klüger!</p>
+    </div>
+    <div class="list-wrap hidden" id="exList"></div>
     {% endif %}
   </div>
+
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
 let _imgFile = null;
+let _exCount = {{ count }};
 
-// ── Tabs ──────────────────────────────────────────────────
+// ── Tabs ─────────────────────────────────────────────────────
 function switchTab(tab) {
   const isBild = tab === 'bild';
   document.getElementById('panelBild').classList.toggle('hidden', !isBild);
@@ -290,7 +371,7 @@ function switchTab(tab) {
   document.getElementById('tabManuell').classList.toggle('active', !isBild);
 }
 
-// ── Bild ─────────────────────────────────────────────────
+// ── Bild-Upload ───────────────────────────────────────────────
 function onFile(file) {
   if (!file?.type.startsWith('image/')) return;
   _imgFile = file;
@@ -303,37 +384,33 @@ function onFile(file) {
   };
   r.readAsDataURL(file);
 }
-
 function onDrop(e) {
   e.preventDefault();
   document.getElementById('dropZone').classList.remove('over');
   onFile(e.dataTransfer.files?.[0]);
 }
-
 function clearImg() {
   _imgFile = null;
   document.getElementById('preview').src = '';
   document.getElementById('previewWrap').style.display = 'none';
   document.getElementById('dropZone').style.display = '';
   document.getElementById('saveBtn').disabled = true;
-  document.getElementById('saveStatus').textContent = '';
+  setStatus('saveStatus', '', '');
   document.getElementById('imgInput').value = '';
 }
 
-// ── Bild speichern ────────────────────────────────────────
-async function saveExercise() {
+// ── Bild speichern ────────────────────────────────────────────
+async function saveImage() {
   if (!_imgFile) return;
   const subject = document.getElementById('inSubject').value.trim();
   const grade   = document.getElementById('inGrade').value.trim();
   const topic   = document.getElementById('inTopic').value.trim();
   if (!subject || !grade || !topic) {
-    showStatus('saveStatus', '⚠️ Bitte Fach, Klasse und Thema ausfüllen.', '#D97706');
-    return;
+    setStatus('saveStatus', '⚠️ Bitte Fach, Klasse und Thema ausfüllen.', '#D97706'); return;
   }
   const btn = document.getElementById('saveBtn');
-  btn.disabled = true;
-  btn.textContent = '⏳ KI liest Aufgabe aus…';
-  showStatus('saveStatus', '🔍 Bild wird analysiert…', '#7C3AED');
+  btn.disabled = true; btn.textContent = '⏳ KI liest Bild aus…';
+  setStatus('saveStatus', '🔍 Wird analysiert…', '#7C3AED');
 
   const fd = new FormData();
   fd.append('image', _imgFile);
@@ -345,87 +422,86 @@ async function saveExercise() {
     const res  = await fetch('/api/save_image', { method: 'POST', body: fd });
     const data = await res.json();
     if (data.error) {
-      // Automatisch auf manuell wechseln und Felder vorbefüllen
+      // Auto-Wechsel zu Manuell
       document.getElementById('mSubject').value = subject;
       document.getElementById('mGrade').value   = grade;
       document.getElementById('mTopic').value   = topic;
       switchTab('manuell');
-      showStatus('saveStatusM', '💡 Bild konnte nicht automatisch ausgelesen werden – bitte manuell ausfüllen.', '#D97706');
+      setStatus('saveStatusM', '💡 Bitte Aufgabe manuell ausfüllen.', '#D97706');
       return;
     }
-    showStatus('saveStatus', '✅ Aufgabe gespeichert!', '#059669');
+    setStatus('saveStatus', '✅ Gespeichert! KI ist klüger geworden.', '#059669');
     showToast('✅ Aufgabe gespeichert!');
-    addToList(data);
+    addToList(data); updateStrength(data);
     clearImg();
     ['inSubject','inGrade','inTopic'].forEach(id => document.getElementById(id).value = '');
-  } catch(e) {
+  } catch {
     document.getElementById('mSubject').value = subject;
     document.getElementById('mGrade').value   = grade;
     document.getElementById('mTopic').value   = topic;
     switchTab('manuell');
-    showStatus('saveStatusM', '💡 Verbindungsfehler – bitte manuell ausfüllen.', '#D97706');
+    setStatus('saveStatusM', '💡 Bitte Aufgabe manuell ausfüllen.', '#D97706');
   } finally {
-    btn.disabled = false;
-    btn.textContent = '💾 Aufgabe speichern';
+    btn.disabled = false; btn.textContent = '💾 KI liest Bild aus & speichert';
   }
 }
 
-// ── Manuell speichern ─────────────────────────────────────
+// ── Manuell speichern ─────────────────────────────────────────
 async function saveManual() {
-  const subject     = document.getElementById('mSubject').value.trim();
-  const grade       = document.getElementById('mGrade').value.trim();
-  const topic       = document.getElementById('mTopic').value.trim();
-  const question    = document.getElementById('mQuestion').value.trim();
-  const answer      = document.getElementById('mAnswer').value.trim();
-  const explanation = document.getElementById('mExplanation').value.trim();
-  const difficulty  = document.getElementById('mDifficulty').value;
+  const subject  = document.getElementById('mSubject').value.trim();
+  const grade    = document.getElementById('mGrade').value.trim();
+  const topic    = document.getElementById('mTopic').value.trim();
+  const question = document.getElementById('mQuestion').value.trim();
+  const answer   = document.getElementById('mAnswer').value.trim();
+  const expl     = document.getElementById('mExpl').value.trim();
+  const diff     = parseInt(document.getElementById('mDiff').value);
 
   if (!subject || !grade || !topic || !question || !answer) {
-    showStatus('saveStatusM', '⚠️ Bitte mindestens Fach, Klasse, Thema, Aufgabe und Lösung ausfüllen.', '#D97706');
-    return;
+    setStatus('saveStatusM', '⚠️ Bitte alle Pflichtfelder ausfüllen.', '#D97706'); return;
   }
-
   const btn = document.getElementById('saveBtnM');
-  btn.disabled = true;
-  btn.textContent = '⏳ Wird gespeichert…';
+  btn.disabled = true; btn.textContent = '⏳ Wird gespeichert…';
 
   try {
     const res  = await fetch('/api/save_manual', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ subject, grade, topic, question, answer, explanation, difficulty: parseInt(difficulty) })
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ subject, grade, topic, question, answer,
+                             explanation: expl, difficulty: diff })
     });
     const data = await res.json();
-    if (data.error) { showStatus('saveStatusM', '❌ ' + data.error, '#DC2626'); return; }
+    if (data.error) { setStatus('saveStatusM', '❌ ' + data.error, '#DC2626'); return; }
 
-    showStatus('saveStatusM', '✅ Aufgabe gespeichert!', '#059669');
+    setStatus('saveStatusM', '✅ Gespeichert! KI ist klüger geworden.', '#059669');
     showToast('✅ Aufgabe gespeichert!');
-    addToList(data);
-
-    // Felder zurücksetzen
-    ['mSubject','mGrade','mTopic','mQuestion','mAnswer','mExplanation'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('mDifficulty').value = '2';
+    addToList({ ...data, difficulty: diff });
+    updateStrength(data);
+    ['mSubject','mGrade','mTopic','mQuestion','mAnswer','mExpl'].forEach(id =>
+      document.getElementById(id).value = '');
+    document.getElementById('mDiff').value = '2';
   } catch(e) {
-    showStatus('saveStatusM', '❌ Fehler: ' + e.message, '#DC2626');
+    setStatus('saveStatusM', '❌ ' + e.message, '#DC2626');
   } finally {
-    btn.disabled = false;
-    btn.textContent = '💾 Aufgabe speichern';
+    btn.disabled = false; btn.textContent = '💾 Aufgabe speichern';
   }
 }
 
-// ── Liste aktualisieren ───────────────────────────────────
+// ── Liste aktualisieren ───────────────────────────────────────
+const DIFF_LABELS = ['','⭐ Einfach','⭐⭐ Mittel','⭐⭐⭐ Schwer'];
+const DIFF_CLASS  = ['','d1','d2','d3'];
+
 function addToList(ex) {
   const empty = document.getElementById('emptyState');
   if (empty) empty.style.display = 'none';
-
-  let list = document.getElementById('exList');
+  const list = document.getElementById('exList');
   list.classList.remove('hidden');
 
-  const c = document.getElementById('exCount');
-  if (c) c.textContent = parseInt(c.textContent || 0) + 1;
-  const cl = document.getElementById('exCountLabel');
-  if (cl) { const n = parseInt(cl.textContent) + 1; cl.textContent = `${n} Aufgabe(n) · ✕ zum Löschen`; }
+  _exCount++;
+  const lc = document.getElementById('listCount');
+  if (lc) lc.textContent = _exCount + ' Aufgabe(n)';
+  const bc = document.getElementById('exCountBig');
+  if (bc) bc.textContent = _exCount;
 
+  const d = ex.difficulty || 2;
   const el = document.createElement('div');
   el.className = 'ex-item';
   el.innerHTML = `
@@ -434,6 +510,7 @@ function addToList(ex) {
         <span class="tag">${ex.subject}</span>
         <span class="tag g">Kl. ${ex.grade}</span>
         <span class="tag">${ex.topic}</span>
+        <span class="tag ${DIFF_CLASS[d]}">${DIFF_LABELS[d]}</span>
       </div>
       <form method="POST" action="/delete/${ex.id}">
         <button type="submit" class="btn-del">✕</button>
@@ -441,56 +518,37 @@ function addToList(ex) {
     </div>
     <div class="ex-q">❓ ${ex.question}</div>
     <div class="ex-a">✅ ${ex.answer}</div>
-    <div class="ex-e">💡 ${ex.explanation || ''}</div>`;
+    ${ex.explanation ? `<div class="ex-e">💡 ${ex.explanation}</div>` : ''}`;
   list.prepend(el);
 }
 
-function showStatus(id, msg, color) {
+// ── KI-Stärke aktualisieren ───────────────────────────────────
+function updateStrength(data) {
+  if (!data.ai_label) return;
+  const bar   = document.getElementById('aiBar');
+  const level = document.getElementById('aiLevel');
+  const meta  = document.getElementById('aiMeta');
+  if (bar)   bar.style.width = data.ai_pct + '%';
+  if (level) { level.textContent = data.ai_label; level.style.color = data.ai_color; }
+  if (meta) {
+    meta.textContent = data.ai_next
+      ? `${data.count} Aufgaben – noch ${data.ai_next - data.count} bis zum nächsten Level`
+      : 'Maximales Level erreicht! 🏆';
+  }
+}
+
+// ── Hilfsfunktionen ───────────────────────────────────────────
+function setStatus(id, msg, color) {
   const el = document.getElementById(id);
   if (!el) return;
   el.textContent = msg;
-  el.style.color = color || 'var(--muted)';
+  el.style.color = color;
 }
-
-// ── Training ──────────────────────────────────────────────
-function startTraining() {
-  const btn = document.getElementById('trainBtn');
-  btn.disabled = true;
-  btn.textContent = '⏳ Wird gestartet…';
-  fetch('/api/train', { method: 'POST' })
-    .then(r => r.json())
-    .then(d => {
-      if (d.error) { alert(d.error); btn.disabled = false; btn.textContent = '🚀 Training starten'; return; }
-      pollStatus();
-    });
-}
-
-function pollStatus() {
-  const fill = document.getElementById('progressFill');
-  const msg  = document.getElementById('trainMsg');
-  const btn  = document.getElementById('trainBtn');
-  const iv   = setInterval(() => {
-    fetch('/api/status').then(r => r.json()).then(s => {
-      fill.style.width = s.progress + '%';
-      msg.textContent  = s.message;
-      if (!s.running) {
-        clearInterval(iv);
-        btn.disabled = false;
-        btn.textContent = '🚀 Training starten';
-        if (s.done) location.reload();
-      }
-    });
-  }, 1500);
-}
-
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3000);
 }
-
-{% if status.running %}pollStatus();{% endif %}
 </script>
 </body>
 </html>
