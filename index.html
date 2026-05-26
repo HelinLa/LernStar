@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=6" />
   <!-- Markdown + Mathe-Rendering für Chat -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -282,6 +282,12 @@
       <div class="topics-list" id="topicsList"></div>
     </div>
 
+    <!-- Experiments Section -->
+    <div class="experiments-section" id="experimentsSection" style="display:none">
+      <h2 class="section-heading">🧪 Experimente</h2>
+      <div class="experiments-list" id="experimentsList"></div>
+    </div>
+
     <!-- Exercises Section -->
     <div class="exercises-section" id="exercisesSection">
       <h2 class="section-heading">✏️ Aufgaben & Übungen</h2>
@@ -413,7 +419,7 @@
 <div class="chat-overlay" id="chatOverlay"></div>
 
 <script src="content.js?v=12"></script>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 <script>
   // Service Worker deregistrieren damit kein alter Cache Probleme macht
   if ('serviceWorker' in navigator) {

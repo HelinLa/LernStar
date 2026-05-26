@@ -1148,10 +1148,33 @@ function renderSubject() {
       <div class="topic-num">${topicNum}</div>
       <div class="topic-name">${t.name}</div>
       <div class="topic-diff">${DIFF_STARS[t.diff]}</div>
-      ${hasVideo ? `<button class="topic-play-btn" id="topicBtn${i}" onclick="playTopic(${i})">🔊 Erklären</button>` : ''}
-      ${t.exp ? `<button class="topic-exp-btn" onclick="openExperiment('${t.exp}')">🧪 Experiment</button>` : ''}`;
+      ${hasVideo ? `<button class="topic-play-btn" id="topicBtn${i}" onclick="playTopic(${i})">🔊 Erklären</button>` : ''}`;
     topicsList.appendChild(item);
   });
+
+  // Experiments section
+  const expSection = document.getElementById('experimentsSection');
+  const expList = document.getElementById('experimentsList');
+  const expTopics = subject.topics.filter(t => !t.isChapter && t.exp);
+  expList.innerHTML = '';
+  if (expTopics.length > 0) {
+    expSection.style.display = '';
+    expTopics.forEach(t => {
+      const card = document.createElement('div');
+      card.className = 'experiment-card';
+      card.innerHTML = `
+        <div class="experiment-card-icon">🧪</div>
+        <div class="experiment-card-body">
+          <div class="experiment-card-theme">Thema</div>
+          <div class="experiment-card-title">${t.name}</div>
+          <div class="experiment-card-desc">Interaktive Simulation – spiele mit den Parametern und beobachte, was passiert!</div>
+        </div>
+        <button class="experiment-card-btn" onclick="openExperiment('${t.exp}')">▶ Simulation<br>starten</button>`;
+      expList.appendChild(card);
+    });
+  } else {
+    expSection.style.display = 'none';
+  }
 
   // Exercises
   renderExercises(subject, 'all');
