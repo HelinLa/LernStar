@@ -180,9 +180,21 @@
   <section class="view hidden" id="viewSubject">
     <div class="subject-hero" id="subjectHeroArea"></div>
 
-    <!-- Video Section removed -->
-    <div class="video-studio" id="videoPlayer" style="display:none">
-        <div class="vrm-wrap" id="avatarAnim" style="display:none">
+    <!-- Video Section -->
+    <div class="video-section" style="display:none">
+      <h2 class="section-heading">🎬 Erklärvideo mit Herr Lala</h2>
+      <div class="video-studio" id="videoPlayer">
+
+        <!-- Decorative background circles -->
+        <div class="studio-orb studio-orb-1"></div>
+        <div class="studio-orb studio-orb-2"></div>
+
+        <!-- Main area: mascot + speech + visual -->
+        <div class="studio-main">
+
+          <!-- 3D VRM Avatar -->
+          <div class="mascot-wrap">
+            <div class="vrm-wrap" id="avatarAnim">
               <img src="avatar.png" id="avatarImg" class="avatar-img" alt="Herr Lala" onerror="this.src='avatar.svg.png'">
               <div class="talk-wave" id="talkWave"><span></span><span></span><span></span></div>
             </div>
@@ -312,6 +324,7 @@
         </div>
 
       </div>
+    </div>
 
     <!-- Topics Section -->
     <div class="topics-section">
