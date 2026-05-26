@@ -2164,19 +2164,20 @@ async function generateAIExercise() {
 
   try {
     const prompt = `Erstelle eine ${diff}e Multiple-Choice-Aufgabe für Klasse ${gradeNum} ${subjectName}${topicCtx}.
-Antworte NUR mit diesem JSON (kein anderer Text):
-{"title":"Kurzer Titel","question":"Vollständige Frage","options":["A","B","C","D"],"correct":0,"explanation":"Erklärung","hint":"Tipp"}`;
+Das JSON-Objekt muss diese Felder enthalten: title, question, options (Array mit 4 Strings), correct (Index 0-3), explanation, hint.
+Beispiel: {"title":"Beispieltitel","question":"Was ist...?","options":["Option A","Option B","Option C","Option D"],"correct":0,"explanation":"Weil...","hint":"Denke an..."}`;
 
     const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${GROQ_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'llama-3.3-70b-versatile',
+        response_format: { type: 'json_object' },
         messages: [
-          { role: 'system', content: 'You are a quiz generator. Respond with ONLY a JSON object. No markdown, no code fences, no explanatory text.' },
+          { role: 'system', content: 'Du bist ein Schullehrer. Antworte immer mit einem JSON-Objekt mit den Feldern: title, question, options, correct, explanation, hint.' },
           { role: 'user',   content: prompt }
         ],
-        max_tokens: 550, temperature: 0.8
+        max_tokens: 600, temperature: 0.8
       })
     });
     const data = await res.json();
@@ -2347,18 +2348,19 @@ async function startExamSession() {
   const diff     = diffMap[state.examDiff] || 'mittelschwer';
 
   try {
-    const prompt = `Erstelle genau 5 ${diff}e Multiple-Choice-Fragen zum Thema ${subjName} für Klasse ${gradeNum}, im Stil einer ${modeText}.
-Jede Frage hat genau 4 Antwortmöglichkeiten (index 0-3) und eine Erklärung der richtigen Antwort.
-Antworte NUR mit diesem JSON-Array – kein Text davor oder danach, keine Markdown-Formatierung:
-[{"question":"Frage 1?","options":["Option A","Option B","Option C","Option D"],"correct":0,"explanation":"Erklärung"},{"question":"Frage 2?",...},...]`;
+    const prompt = `Erstelle genau 5 ${diff}e Multiple-Choice-Fragen für das Schulfach ${subjName}, Klasse ${gradeNum}, im Stil einer ${modeText}.
+Jede Frage hat genau 4 Antwortmöglichkeiten. Der Wert "correct" ist der Index (0-3) der richtigen Antwort.
+Antworte mit einem JSON-Objekt in diesem Format:
+{"questions":[{"question":"...","options":["A","B","C","D"],"correct":0,"explanation":"..."},{"question":"...","options":["...","...","...","..."],"correct":1,"explanation":"..."},{"question":"...","options":["...","...","...","..."],"correct":2,"explanation":"..."},{"question":"...","options":["...","...","...","..."],"correct":0,"explanation":"..."},{"question":"...","options":["...","...","...","..."],"correct":3,"explanation":"..."}]}`;
 
     const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${GROQ_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'llama-3.3-70b-versatile',
+        response_format: { type: 'json_object' },
         messages: [
-          { role: 'system', content: 'You are a quiz generator. Respond with ONLY a JSON array. No explanatory text, no markdown, no code fences. Start your response with [ and end with ].' },
+          { role: 'system', content: 'Du bist ein Prüfungsersteller für deutsche Schulen. Antworte immer mit einem JSON-Objekt mit einem "questions"-Array.' },
           { role: 'user', content: prompt }
         ],
         max_tokens: 2000, temperature: 0.65
