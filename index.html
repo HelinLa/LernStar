@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=11" />
+  <link rel="stylesheet" href="style.css?v=12" />
   <!-- Markdown + Mathe-Rendering für Chat -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -572,25 +572,36 @@
   </div>
 </div>
 
-<script src="content.js?v=17"></script>
+<script src="content.js?v=18"></script>
 <script src="js/ai_engine.js?v=1"></script>
-<script src="app.js?v=29"></script>
+<script src="app.js?v=30"></script>
 <!-- ── Animated Explainer Modal ─────────────────────────────── -->
 <div id="explainerModal" role="dialog" aria-modal="true" aria-labelledby="explainerTitle">
   <div class="explainer-card" id="explainerCard">
     <button class="explainer-close" onclick="closeExplainer()" aria-label="Schließen">✕</button>
-    <div class="explainer-emoji" id="explainerEmoji">📚</div>
-    <div class="explainer-badge" id="explainerBadge">Erklärung</div>
-    <div class="explainer-title" id="explainerTitle"></div>
+    <div class="explainer-header-row">
+      <div class="explainer-emoji" id="explainerEmoji">📚</div>
+      <div>
+        <div class="explainer-badge" id="explainerBadge">Erklärung</div>
+        <div class="explainer-title" id="explainerTitle"></div>
+      </div>
+    </div>
     <div class="explainer-divider"></div>
-    <div class="explainer-text" id="explainerText"></div>
+    <!-- Visual animation stage -->
+    <div class="explainer-stage" id="explainerStage"></div>
+    <div class="explainer-divider"></div>
+    <!-- 2-sentence reveal -->
+    <div class="explainer-sentences">
+      <div class="explainer-s1" id="explainerS1"></div>
+      <div class="explainer-s2" id="explainerS2"></div>
+    </div>
     <div class="explainer-prog-track">
       <div class="explainer-prog-fill" id="explainerProgFill"></div>
     </div>
     <div class="explainer-footer">
-      <div class="explainer-time" id="explainerTime">0:00 / 0:00</div>
-      <button class="explainer-ctrl" onclick="closeExplainer()" title="Stoppen">■</button>
-      <button class="explainer-speed" id="explainerSpeedBtn" onclick="_cycleExplainerSpeed()" title="Geschwindigkeit">1×</button>
+      <button class="explainer-ctrl" id="explainerPauseBtn" onclick="_xTogglePause()" title="Pause">⏸</button>
+      <button class="explainer-ctrl" onclick="_xReplay()" title="Nochmal">↺</button>
+      <button class="explainer-ctrl" onclick="closeExplainer()" title="Schließen">■</button>
     </div>
   </div>
 </div>

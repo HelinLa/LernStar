@@ -1303,24 +1303,15 @@ function playTopic(idx) {
   const activeBtn = document.getElementById(`topicBtn${idx}`);
   if (activeBtn) activeBtn.classList.add('playing');
 
-  // Sprechblase + Grafik befüllen
+  // Sprechblase + Grafik befüllen (Hintergrund, bleibt sichtbar hinter Modal)
   const speech = document.getElementById('avatarSpeech');
-  if (speech) speech.textContent = topic.explanation.substring(0, 90) + '…';
+  if (speech) speech.textContent = (topic.short ? topic.short[0] : topic.explanation.substring(0, 90)) + '…';
   showTopicVisual(topic);
 
-  // Animated explainer modal
+  // Animated explainer modal — rein visuell, keine Stimme
   const grade2   = CONTENT[state.gradeId];
   const subject2 = grade2?.subjects.find(s => s.id === state.subjectId);
   showExplainer(topic, subject2?.icon, subject2?.color);
-  _xStartProgress(topic.explanation);
-
-  _speakText(`${topic.name}. ${topic.explanation}`, null, () => {
-    _clearTopicHighlights();
-    hideTopicVisual();
-    clearInterval(_xInterval);
-    const fill = document.getElementById('explainerProgFill');
-    if (fill) fill.style.width = '100%';
-  });
 }
 
 function _clearTopicHighlights() {
@@ -3353,104 +3344,161 @@ function _fstCreate() {
 }
 
 // ============================================================
-// ANIMATED EXPLAINER PLAYER
+// ANIMATED EXPLAINER PLAYER  (visual, no TTS)
 // ============================================================
-let _xInterval = null;
-let _xSpeed    = 1;
+let _xTimeout1  = null;
+let _xTimeout2  = null;
+let _xAutoTimer = null;
+let _xPaused    = false;
+
+// Visual animations per topic category
+const _X_VISUALS = {
+  // Numbers / arithmetic
+  'Natürliche Zahlen & Stellenwerte': '<div class="xv-digits"><span class="xv-d" style="--d:0">4</span><span class="xv-d xv-hl" style="--d:1">7</span><span class="xv-d" style="--d:2">2</span><span class="xv-d" style="--d:3">3</span><div class="xv-label">T H Z E</div></div>',
+  'Addition und Subtraktion':         '<div class="xv-ops"><span class="xv-op" style="--d:0">1247</span><span class="xv-op xv-sm" style="--d:1">+</span><span class="xv-op" style="--d:2">856</span><span class="xv-op xv-sm" style="--d:3">=</span><span class="xv-op xv-res" style="--d:4">2103</span></div>',
+  'Multiplikation und Division':      '<div class="xv-ops"><span class="xv-op" style="--d:0">6</span><span class="xv-op xv-sm" style="--d:1">×</span><span class="xv-op" style="--d:2">14</span><span class="xv-op xv-sm" style="--d:3">=</span><span class="xv-op xv-res" style="--d:4">84</span></div>',
+  'Runden und Schätzen':              '<div class="xv-ops"><span class="xv-op" style="--d:0">2764</span><span class="xv-op xv-sm" style="--d:1">≈</span><span class="xv-op xv-res" style="--d:2">2800</span></div>',
+  'Große Zahlen und Runden':          '<div class="xv-bignum"><span class="xv-bn" style="--d:0">1.000.000</span><span class="xv-bnl" style="--d:1">1 Million</span></div>',
+  'Grundrechenarten – Fachbegriffe':  '<div class="xv-ops"><span class="xv-op xv-sm" style="--d:0">+</span><span class="xv-op xv-sm" style="--d:1">−</span><span class="xv-op xv-sm" style="--d:2">×</span><span class="xv-op xv-sm" style="--d:3">÷</span></div>',
+  'Terme':                            '<div class="xv-formula-vis"><span class="xvf" style="--d:0">4 + 3·5</span><span class="xvf xvf-eq" style="--d:1">=</span><span class="xvf xvf-res" style="--d:2">19</span></div>',
+  'Rechenvorteile':                   '<div class="xv-ops"><span class="xv-op" style="--d:0">37</span><span class="xv-op xv-sm" style="--d:1">+</span><span class="xv-op" style="--d:2">63</span><span class="xv-op xv-sm" style="--d:3">=</span><span class="xv-op xv-res" style="--d:4">100</span></div>',
+  'Distributivgesetz':                '<div class="xv-formula-vis"><span class="xvf" style="--d:0">8·99</span><span class="xvf xvf-eq" style="--d:1">=</span><span class="xvf" style="--d:2">8·(100−1)</span><span class="xvf xvf-eq" style="--d:3">=</span><span class="xvf xvf-res" style="--d:4">792</span></div>',
+  'Potenzieren':                      '<div class="xv-formula-vis"><span class="xvf" style="--d:0">3⁴</span><span class="xvf xvf-eq" style="--d:1">=</span><span class="xvf" style="--d:2">3·3·3·3</span><span class="xvf xvf-eq" style="--d:3">=</span><span class="xvf xvf-res" style="--d:4">81</span></div>',
+  'Teilbarkeit':                      '<div class="xv-formula-vis"><span class="xvf" style="--d:0">4+5+7+8</span><span class="xvf xvf-eq" style="--d:1">=</span><span class="xvf xvf-res" style="--d:2">24 ÷ 3 ✓</span></div>',
+  'Primzahlen':                       '<div class="xv-primes"><span class="xv-pr" style="--d:0">2</span><span class="xv-pr" style="--d:1">3</span><span class="xv-pr" style="--d:2">5</span><span class="xv-pr" style="--d:3">7</span><span class="xv-pr" style="--d:4">11</span><span class="xv-pr" style="--d:5">13</span></div>',
+  'Schriftliches Rechnen':            '<div class="xv-written"><div class="xv-wr" style="--d:0"> 3 4 8 2</div><div class="xv-wr" style="--d:1">+1 7 5 9</div><div class="xv-wr-line" style="--d:2"></div><div class="xv-wr xv-res" style="--d:3"> 5 2 4 1</div></div>',
+  // Money / units
+  'Rechnen mit Geld':                 '<div class="xv-money"><span class="xv-coin" style="--d:0">€</span><span class="xv-moneyval" style="--d:1">5,75 €</span></div>',
+  'Rechnen mit Längenangaben':        '<div class="xv-units"><span class="xv-u" style="--d:0">km</span><span class="xv-ua" style="--d:1">→</span><span class="xv-u" style="--d:2">m</span><span class="xv-ua" style="--d:3">→</span><span class="xv-u" style="--d:4">cm</span><span class="xv-ua" style="--d:5">→</span><span class="xv-u" style="--d:6">mm</span></div>',
+  'Rechnen mit Gewichtsangaben':      '<div class="xv-units"><span class="xv-u" style="--d:0">t</span><span class="xv-ua" style="--d:1">→</span><span class="xv-u" style="--d:2">kg</span><span class="xv-ua" style="--d:3">→</span><span class="xv-u" style="--d:4">g</span><span class="xv-ua" style="--d:5">→</span><span class="xv-u" style="--d:6">mg</span></div>',
+  'Rechnen mit Zeitangaben':          '<div class="xv-clock"><div class="xv-clockface"><div class="xv-hand xv-hand-h"></div><div class="xv-hand xv-hand-m"></div></div></div>',
+  'Zahlen ordnen':                    '<div class="xv-numline"><div class="xv-nl-bar"></div><span class="xv-nl-n" style="--d:0">1</span><span class="xv-nl-n" style="--d:1">5</span><span class="xv-nl-n" style="--d:2">9</span><span class="xv-nl-n xv-hl" style="--d:3">12</span><span class="xv-nl-n" style="--d:4">20</span></div>',
+  'Zählen und Darstellen':            '<div class="xv-bars"><div class="xv-bar" style="--h:60%;--d:0"></div><div class="xv-bar" style="--h:85%;--d:1"></div><div class="xv-bar" style="--h:40%;--d:2"></div><div class="xv-bar" style="--h:70%;--d:3"></div></div>',
+  'Einführung in Brüche':             '<div class="xv-fraction"><div class="xv-fnum" style="--d:0">3</div><div class="xv-fbar" style="--d:1"></div><div class="xv-fden" style="--d:2">8</div></div>',
+  // Geometry
+  'Geometrie: Flächen und Umfang':    '<div class="xv-rect"><div class="xv-rect-inner"></div><span class="xv-rl" style="--d:0">a</span><span class="xv-rw" style="--d:1">b</span></div>',
+  'Senkrechte und parallele Geraden': '<div class="xv-lines"><div class="xv-line-v" style="--d:0"></div><div class="xv-line-h" style="--d:1"></div><div class="xv-line-par1" style="--d:2"></div><div class="xv-line-par2" style="--d:3"></div></div>',
+  'Koordinatensystem':                '<div class="xv-coord"><div class="xv-cx"></div><div class="xv-cy"></div><div class="xv-cpt" style="--d:0">P(3|4)</div></div>',
+  'Achsensymmetrie':                  '<svg class="xv-svg" viewBox="0 0 120 80"><line x1="60" y1="5" x2="60" y2="75" stroke="#A855F7" stroke-width="2" stroke-dasharray="4 3"/><polygon points="20,20 60,60 100,20" fill="none" stroke="#7C3AED" stroke-width="2" class="xv-svgpoly"/><polygon points="20,20 60,60 100,20" fill="rgba(124,58,237,0.15)" class="xv-svgfill"/></svg>',
+  'Punktsymmetrie':                   '<svg class="xv-svg" viewBox="0 0 120 80"><circle cx="60" cy="40" r="5" fill="#A855F7" class="xv-svgpulse"/><polygon points="20,15 50,15 50,40" fill="rgba(124,58,237,0.3)" stroke="#7C3AED" stroke-width="2"/><polygon points="100,65 70,65 70,40" fill="rgba(59,130,246,0.3)" stroke="#3B82F6" stroke-width="2"/></svg>',
+  'Eigenschaften von Vielecken':      '<svg class="xv-svg" viewBox="0 0 120 80"><rect x="5" y="20" width="50" height="40" fill="rgba(124,58,237,0.2)" stroke="#7C3AED" stroke-width="2" class="xv-svgpoly"/><polygon points="75,60 110,60 92,15" fill="rgba(59,130,246,0.2)" stroke="#3B82F6" stroke-width="2" class="xv-svgpoly"/></svg>',
+  // Area / scale
+  'Flächeninhalte vergleichen':       '<div class="xv-grid"><div class="xv-gc xv-gc-fill" style="--d:0.1s"></div><div class="xv-gc xv-gc-fill" style="--d:0.2s"></div><div class="xv-gc xv-gc-fill" style="--d:0.3s"></div><div class="xv-gc xv-gc-fill" style="--d:0.4s"></div><div class="xv-gc xv-gc-fill" style="--d:0.5s"></div><div class="xv-gc xv-gc-fill" style="--d:0.6s"></div><div class="xv-gc" style="--d:0.7s"></div><div class="xv-gc" style="--d:0.8s"></div><div class="xv-gc" style="--d:0.9s"></div></div>',
+  'Flächeneinheiten':                 '<div class="xv-units"><span class="xv-u xv-sm2" style="--d:0">mm²</span><span class="xv-ua" style="--d:1">×100</span><span class="xv-u" style="--d:2">cm²</span><span class="xv-ua" style="--d:3">×100</span><span class="xv-u" style="--d:4">dm²</span><span class="xv-ua" style="--d:5">×100</span><span class="xv-u" style="--d:6">m²</span></div>',
+  'Flächeninhalt eines Rechtecks':    '<div class="xv-formula-vis"><span class="xvf" style="--d:0">A</span><span class="xvf xvf-eq" style="--d:1">=</span><span class="xvf" style="--d:2">a · b</span><span class="xvf xvf-eq" style="--d:3">=</span><span class="xvf xvf-res" style="--d:4">cm²</span></div>',
+  'Flächeninhalt eines Dreiecks':     '<div class="xv-formula-vis"><span class="xvf" style="--d:0">A</span><span class="xvf xvf-eq" style="--d:1">=</span><span class="xvf xvf-res" style="--d:2">(a·b)÷2</span></div>',
+  'Umfang von Figuren':               '<div class="xv-formula-vis"><span class="xvf" style="--d:0">U</span><span class="xvf xvf-eq" style="--d:1">=</span><span class="xvf xvf-res" style="--d:2">2·(a+b)</span></div>',
+  'Maßstäbe':                         '<div class="xv-formula-vis"><span class="xvf" style="--d:0">1 cm</span><span class="xvf xvf-eq" style="--d:1">=</span><span class="xvf xvf-res" style="--d:2">250 m</span></div>',
+  // 3D
+  'Körper und Netze':                 '<svg class="xv-svg" viewBox="0 0 120 80"><polygon points="20,60 60,60 80,40 40,40" fill="rgba(124,58,237,0.25)" stroke="#7C3AED" stroke-width="2" class="xv-svgpoly"/><polygon points="60,60 60,20 80,0 80,40" fill="rgba(124,58,237,0.15)" stroke="#7C3AED" stroke-width="2" class="xv-svgpoly"/><polygon points="20,60 60,20 80,0 40,0 20,20" fill="rgba(167,139,250,0.25)" stroke="#A855F7" stroke-width="2" class="xv-svgpoly"/></svg>',
+  'Quader und Würfel':                '<div class="xv-cube3d"><div class="xv-face xv-face-f"></div><div class="xv-face xv-face-t"></div><div class="xv-face xv-face-r"></div></div>',
+  'Schrägbilder':                     '<div class="xv-schraeg"><div class="xv-sch-front"></div><div class="xv-sch-top"></div><div class="xv-sch-right"></div></div>',
+  'Rauminhalte vergleichen':          '<div class="xv-unitcubes"><div class="xv-uc" style="--d:0"></div><div class="xv-uc" style="--d:1"></div><div class="xv-uc" style="--d:2"></div><div class="xv-uc" style="--d:3"></div><div class="xv-uc" style="--d:4"></div><div class="xv-uc" style="--d:5"></div></div>',
+  'Volumeneinheiten':                 '<div class="xv-units"><span class="xv-u xv-sm2" style="--d:0">cm³</span><span class="xv-ua" style="--d:1">÷1000</span><span class="xv-u" style="--d:2">dm³</span><span class="xv-ua" style="--d:3">=1L</span><span class="xv-u" style="--d:4">💧</span></div>',
+  'Volumen eines Quaders':            '<div class="xv-formula-vis"><span class="xvf" style="--d:0">V</span><span class="xvf xvf-eq" style="--d:1">=</span><span class="xvf xvf-res" style="--d:2">a · b · c</span></div>',
+  'Oberflächeninhalt':                '<div class="xv-formula-vis"><span class="xvf" style="--d:0">O</span><span class="xvf xvf-eq" style="--d:1">=</span><span class="xvf xvf-res" style="--d:2">6 · a²</span></div>',
+};
 
 function showExplainer(topic, subjectIcon, subjectColor) {
   const modal = document.getElementById('explainerModal');
   if (!modal) return;
-  const emoji = document.getElementById('explainerEmoji');
-  const badge = document.getElementById('explainerBadge');
-  const title = document.getElementById('explainerTitle');
-  const text  = document.getElementById('explainerText');
-  if (emoji) emoji.textContent = subjectIcon || '📚';
-  if (badge) badge.textContent = (subjectColor ? '▶  Erklärung' : 'Erklärung');
-  if (title) title.textContent = topic.name;
-  if (text)  _xAnimateText(topic.explanation, text);
-  // tint badge border to subject color
+  _xPaused = false;
+  clearTimeout(_xTimeout1); clearTimeout(_xTimeout2); clearInterval(_xAutoTimer);
+
+  const sentences = Array.isArray(topic.short) ? topic.short : _xExtract2(topic.explanation);
+
+  // Fill header
+  document.getElementById('explainerEmoji').textContent  = subjectIcon || '📚';
+  document.getElementById('explainerBadge').textContent  = 'Erklärung';
+  document.getElementById('explainerTitle').textContent  = topic.name;
+
+  // Visual stage
+  const stage = document.getElementById('explainerStage');
+  if (stage) stage.innerHTML = _X_VISUALS[topic.name] || _xDefaultVisual(subjectIcon || '📚');
+
+  // Sentence area (hidden until reveal)
+  const s1el = document.getElementById('explainerS1');
+  const s2el = document.getElementById('explainerS2');
+  if (s1el) { s1el.textContent = sentences[0] || ''; s1el.classList.remove('xs-visible'); }
+  if (s2el) { s2el.textContent = sentences[1] || ''; s2el.classList.remove('xs-visible'); }
+
+  // Color tint
   const card = document.getElementById('explainerCard');
   if (card && subjectColor) {
-    card.style.setProperty('--xc', subjectColor);
-    badge.style.borderColor = subjectColor + '66';
-    badge.style.background  = subjectColor + '28';
-    badge.style.color       = subjectColor;
+    document.getElementById('explainerBadge').style.cssText =
+      `border-color:${subjectColor}66;background:${subjectColor}22;color:${subjectColor}`;
   }
+
+  // Progress bar reset
+  const fill = document.getElementById('explainerProgFill');
+  if (fill) { fill.style.transition = 'none'; fill.style.width = '0%'; }
+
   modal.classList.add('visible');
   document.body.style.overflow = 'hidden';
+
+  // Reveal sentence 1 after 0.8s, sentence 2 after 4s, loop after 9s
+  _xTimeout1 = setTimeout(() => { if (!_xPaused && s1el) s1el.classList.add('xs-visible'); }, 800);
+  _xTimeout2 = setTimeout(() => { if (!_xPaused && s2el) s2el.classList.add('xs-visible'); }, 4000);
+  _xRunProgress(9);
+}
+
+function _xExtract2(text) {
+  const sents = (text || '').match(/[^.!?]+[.!?]+/g) || [text];
+  return [sents[0] || '', sents[1] || ''];
+}
+
+function _xDefaultVisual(emoji) {
+  return `<div style="font-size:64px;animation:xEmoji .65s cubic-bezier(.34,1.56,.64,1) both">${emoji}</div>`;
+}
+
+function _xRunProgress(totalSec) {
+  clearInterval(_xAutoTimer);
+  const fill = document.getElementById('explainerProgFill');
+  if (fill) { fill.style.transition = 'none'; fill.style.width = '0%'; }
+  const t0 = Date.now();
+  _xAutoTimer = setInterval(() => {
+    if (_xPaused) return;
+    const pct = Math.min((Date.now() - t0) / (totalSec * 1000), 1);
+    if (fill) fill.style.width = (pct * 100) + '%';
+    if (pct >= 1) { clearInterval(_xAutoTimer); fill.style.width = '100%'; }
+  }, 80);
+}
+
+function _xTogglePause() {
+  _xPaused = !_xPaused;
+  const btn = document.getElementById('explainerPauseBtn');
+  if (btn) btn.textContent = _xPaused ? '▶' : '⏸';
+}
+
+function _xReplay() {
+  const modal = document.getElementById('explainerModal');
+  if (!modal.classList.contains('visible')) return;
+  const s1el = document.getElementById('explainerS1');
+  const s2el = document.getElementById('explainerS2');
+  if (s1el) s1el.classList.remove('xs-visible');
+  if (s2el) s2el.classList.remove('xs-visible');
+  _xPaused = false;
+  const fill = document.getElementById('explainerProgFill');
+  if (fill) { fill.style.transition = 'none'; fill.style.width = '0%'; }
+  clearTimeout(_xTimeout1); clearTimeout(_xTimeout2); clearInterval(_xAutoTimer);
+  _xTimeout1 = setTimeout(() => { if (!_xPaused && s1el) s1el.classList.add('xs-visible'); }, 600);
+  _xTimeout2 = setTimeout(() => { if (!_xPaused && s2el) s2el.classList.add('xs-visible'); }, 3500);
+  _xRunProgress(9);
 }
 
 function closeExplainer() {
   const modal = document.getElementById('explainerModal');
   if (modal) modal.classList.remove('visible');
   document.body.style.overflow = '';
-  clearInterval(_xInterval);
+  clearTimeout(_xTimeout1); clearTimeout(_xTimeout2); clearInterval(_xAutoTimer);
+  _xPaused = false;
   const fill = document.getElementById('explainerProgFill');
-  const time = document.getElementById('explainerTime');
   if (fill) fill.style.width = '0%';
-  if (time) time.textContent = '0:00 / 0:00';
   stopIntro();
   _clearTopicHighlights();
 }
 
-function _xAnimateText(rawText, container) {
-  container.innerHTML = '';
-  // Split on sentences then detect formula-like chunks
-  const parts = rawText.split(/(?<=[.!?:]) +/);
-  let delay = 0.5;
-  parts.forEach(part => {
-    const trimmed = part.trim();
-    if (!trimmed) return;
-    // Formula detection: contains = or · or ÷ and is short
-    const isFormula = /[=·÷×]/.test(trimmed) && trimmed.length < 120
-                   && /[A-Za-z]/.test(trimmed);
-    if (isFormula) {
-      const box = document.createElement('span');
-      box.className = 'x-formula';
-      box.style.animationDelay = delay + 's';
-      box.textContent = trimmed;
-      container.appendChild(box);
-      delay += 0.4;
-    } else {
-      const words = trimmed.split(/\s+/);
-      words.forEach(w => {
-        const sp = document.createElement('span');
-        sp.className = 'x-word';
-        sp.textContent = w + ' ';
-        sp.style.animationDelay = delay + 's';
-        container.appendChild(sp);
-        delay += 0.055;
-      });
-    }
-    container.appendChild(document.createTextNode(' '));
-  });
-}
-
-function _xStartProgress(explanationText) {
-  clearInterval(_xInterval);
-  const words     = explanationText.trim().split(/\s+/).length;
-  const totalSec  = Math.max(5, Math.ceil((words / 125) * 60) / _xSpeed);
-  const fill      = document.getElementById('explainerProgFill');
-  const timeEl    = document.getElementById('explainerTime');
-  const _fmt      = s => `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
-  if (fill) { fill.style.transition = 'none'; fill.style.width = '0%'; }
-  const t0 = Date.now();
-  _xInterval = setInterval(() => {
-    const el = (Date.now() - t0) / 1000;
-    const pct = Math.min(el / totalSec, 0.99);
-    if (fill) fill.style.width = (pct * 100) + '%';
-    if (timeEl) timeEl.textContent = `${_fmt(el)} / ${_fmt(totalSec)}`;
-    if (el >= totalSec) clearInterval(_xInterval);
-  }, 100);
-}
-
-function _cycleExplainerSpeed() {
-  const speeds = [1, 1.5, 2];
-  _xSpeed = speeds[(speeds.indexOf(_xSpeed) + 1) % speeds.length];
-  const btn = document.getElementById('explainerSpeedBtn');
-  if (btn) btn.textContent = _xSpeed + '×';
-}
+function _cycleExplainerSpeed() {}
 
 // ============================================================
 // AUTO-LOADER: JSON-Aufgaben automatisch laden
