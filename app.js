@@ -1122,10 +1122,8 @@ function renderSubject() {
     <h1>${subject.icon} ${subject.name}</h1>
     <p>${subject.desc}</p>`;
 
-  // Video-Bereich nur für Mathe und Physik anzeigen
-  const videoSection = document.querySelector('.video-section');
   const hasVideo = subject.id === 'mathe' || subject.id === 'physik';
-  videoSection.style.display = hasVideo ? '' : 'none';
+  document.querySelector('.video-section').style.display = 'none';
 
   if (hasVideo) {
     document.getElementById('avatarSpeech').textContent = subject.intro.substring(0, 90) + '…';
