@@ -1169,6 +1169,7 @@ function renderSubject() {
           <div class="topic-diff">${DIFF_STARS[t.diff]}</div>
         </div>
         ${hasVideo ? `<button class="topic-play-btn" id="topicBtn${i}" onclick="playTopic(${i})">Erklärvideo</button>` : ''}
+        ${EV_SCENES[t.name] ? `<button class="ev-topic-btn" onclick="openErklaerVideo('${t.name.replace(/'/g,"\\'")}')">🎬 Erklärvideo</button>` : ''}
       </div>`;
     topicsList.appendChild(item);
   });
@@ -3783,3 +3784,261 @@ document.addEventListener('DOMContentLoaded', () => {
   navigate('home');
   _autoLoadDataFiles();
 });
+
+// ============================================================
+// ERKLÄRVIDEO PLAYER  –  Moderner 3D-Tutor Mr. Lala
+// ============================================================
+
+function _evCharHTML(mode) {
+  const cls = 'ev-char-wrap'
+    + (mode === 'talking'     ? ' ev-char-talking'     : '')
+    + (mode === 'pointing'    ? ' ev-char-pointing'    : '')
+    + (mode === 'celebrating' ? ' ev-char-celebrating' : '');
+  return `<div class="${cls}"><svg class="ev-char-svg" viewBox="0 0 180 295" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="evSk" cx="38%" cy="32%" r="68%"><stop offset="0%" stop-color="#FFD5A8"/><stop offset="68%" stop-color="#EAAA70"/><stop offset="100%" stop-color="#C07040"/></radialGradient>
+    <linearGradient id="evHd" x1="0%" y1="0%" x2="75%" y2="100%"><stop offset="0%" stop-color="#9333EA"/><stop offset="100%" stop-color="#5B21B6"/></linearGradient>
+    <linearGradient id="evPt" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#1E1B4B"/><stop offset="100%" stop-color="#312E81"/></linearGradient>
+    <radialGradient id="evHr" cx="50%" cy="20%" r="70%"><stop offset="0%" stop-color="#3D2400"/><stop offset="100%" stop-color="#150800"/></radialGradient>
+    <filter id="evSdw" x="-25%" y="-15%" width="150%" height="140%"><feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="rgba(0,0,0,.4)"/></filter>
+  </defs>
+  <ellipse cx="90" cy="291" rx="42" ry="6" fill="rgba(0,0,0,.2)"/>
+  <path d="M75,232 Q72,260 70,282" stroke="url(#evPt)" stroke-width="23" fill="none" stroke-linecap="round"/>
+  <path d="M105,232 Q108,260 110,282" stroke="url(#evPt)" stroke-width="23" fill="none" stroke-linecap="round"/>
+  <path d="M58,279 Q70,287 83,282 Q76,292 57,288 Z" fill="#111827"/>
+  <path d="M97,282 Q110,287 122,279 Q122,288 102,292 Z" fill="#111827"/>
+  <path d="M44,148 C37,172 36,212 38,234 L142,234 C144,212 143,172 136,148 C130,133 116,126 107,124 L90,130 L73,124 C64,126 50,133 44,148Z" fill="url(#evHd)" filter="url(#evSdw)"/>
+  <path d="M44,148 C37,172 36,212 38,234 L55,234 C53,212 54,172 56,150 Z" fill="rgba(0,0,0,.18)"/>
+  <rect x="66" y="190" width="48" height="26" rx="6" fill="rgba(0,0,0,.15)" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+  <text x="90" y="172" font-size="15" text-anchor="middle" fill="rgba(255,255,255,.22)">⭐</text>
+  <rect x="63" y="145" width="54" height="16" rx="8" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+  <text x="90" y="157" font-family="Nunito,sans-serif" font-size="7" font-weight="700" fill="rgba(255,255,255,.7)" text-anchor="middle">Mr. Lala ⭐</text>
+  <g class="ev-arm-default">
+    <path d="M44,150 C32,169 24,197 26,222" stroke="#7C3AED" stroke-width="21" fill="none" stroke-linecap="round"/>
+    <ellipse cx="28" cy="225" rx="13" ry="10" fill="url(#evSk)"/>
+    <path d="M136,150 C150,166 160,184 162,207" stroke="#7C3AED" stroke-width="21" fill="none" stroke-linecap="round"/>
+    <ellipse cx="163" cy="211" rx="13" ry="10" fill="url(#evSk)"/>
+  </g>
+  <g class="ev-arm-pointing" style="display:none">
+    <path d="M44,150 C32,169 24,197 26,222" stroke="#7C3AED" stroke-width="21" fill="none" stroke-linecap="round"/>
+    <ellipse cx="28" cy="225" rx="13" ry="10" fill="url(#evSk)"/>
+    <path d="M136,150 C147,132 158,114 166,96" stroke="#7C3AED" stroke-width="21" fill="none" stroke-linecap="round"/>
+    <ellipse cx="167" cy="93" rx="13" ry="10" fill="url(#evSk)"/>
+    <line x1="168" y1="87" x2="178" y2="72" stroke="url(#evSk)" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <g class="ev-arm-celebrate" style="display:none">
+    <path d="M44,150 C30,130 18,112 20,90" stroke="#7C3AED" stroke-width="21" fill="none" stroke-linecap="round"/>
+    <ellipse cx="21" cy="87" rx="13" ry="10" fill="url(#evSk)"/>
+    <path d="M136,150 C150,130 162,112 160,90" stroke="#7C3AED" stroke-width="21" fill="none" stroke-linecap="round"/>
+    <ellipse cx="159" cy="87" rx="13" ry="10" fill="url(#evSk)"/>
+  </g>
+  <rect x="83" y="122" width="14" height="20" rx="5" fill="url(#evSk)"/>
+  <ellipse cx="90" cy="79" rx="49" ry="52" fill="url(#evSk)" filter="url(#evSdw)"/>
+  <path d="M41,69 C43,28 64,12 90,12 C116,12 137,28 139,69 C133,40 114,32 90,32 C66,32 47,40 41,69Z" fill="url(#evHr)"/>
+  <path d="M66,24 C74,14 82,12 90,14 C98,12 106,14 112,22" stroke="#3A2200" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <ellipse cx="41" cy="82" rx="8" ry="11" fill="url(#evSk)"/><ellipse cx="41" cy="82" rx="4" ry="7" fill="#D08050" opacity=".45"/>
+  <ellipse cx="139" cy="82" rx="8" ry="11" fill="url(#evSk)"/><ellipse cx="139" cy="82" rx="4" ry="7" fill="#D08050" opacity=".45"/>
+  <path d="M57,60 Q69,55 79,58" stroke="#3A2000" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M101,58 Q111,55 123,60" stroke="#3A2000" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <ellipse cx="68" cy="76" rx="12" ry="13" fill="white"/>
+  <ellipse cx="68" cy="76" rx="8" ry="8.5" fill="#1D4ED8"/>
+  <ellipse cx="68" cy="76" rx="4.5" ry="4.5" fill="#0F172A"/>
+  <ellipse cx="65" cy="73" rx="2.5" ry="2.5" fill="white"/>
+  <ellipse class="ev-lid-l" cx="68" cy="76" rx="13" ry="1" fill="url(#evSk)"/>
+  <ellipse cx="112" cy="76" rx="12" ry="13" fill="white"/>
+  <ellipse cx="112" cy="76" rx="8" ry="8.5" fill="#1D4ED8"/>
+  <ellipse cx="112" cy="76" rx="4.5" ry="4.5" fill="#0F172A"/>
+  <ellipse cx="109" cy="73" rx="2.5" ry="2.5" fill="white"/>
+  <ellipse class="ev-lid-r" cx="112" cy="76" rx="13" ry="1" fill="url(#evSk)"/>
+  <rect x="53" y="64" width="30" height="24" rx="8" fill="rgba(100,140,255,.04)" stroke="rgba(180,200,255,.68)" stroke-width="1.8"/>
+  <rect x="87" y="64" width="30" height="24" rx="8" fill="rgba(100,140,255,.04)" stroke="rgba(180,200,255,.68)" stroke-width="1.8"/>
+  <line x1="83" y1="76" x2="87" y2="76" stroke="rgba(180,200,255,.68)" stroke-width="1.8"/>
+  <line x1="53" y1="76" x2="44" y2="74" stroke="rgba(180,200,255,.68)" stroke-width="1.8"/>
+  <line x1="117" y1="76" x2="126" y2="74" stroke="rgba(180,200,255,.68)" stroke-width="1.8"/>
+  <path d="M58,68 Q65,66 69,70" stroke="rgba(255,255,255,.35)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M92,68 Q99,66 103,70" stroke="rgba(255,255,255,.35)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M86,92 Q90,102 94,92" stroke="#C07040" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <circle cx="85" cy="96" r="2" fill="#D08050" opacity=".3"/><circle cx="95" cy="96" r="2" fill="#D08050" opacity=".3"/>
+  <ellipse cx="54" cy="95" rx="11" ry="6" fill="#FF8B94" opacity=".15"/>
+  <ellipse cx="126" cy="95" rx="11" ry="6" fill="#FF8B94" opacity=".15"/>
+  <g class="ev-char-mouth">
+    <path class="ev-mouth-smile" d="M74,112 Q90,124 106,112" stroke="#C06848" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <g class="ev-mouth-talk"><path d="M74,112 Q90,128 106,112 L103,120 Q90,133 77,120 Z" fill="#8B1F00"/><rect x="78" y="112" width="24" height="5" rx="2.5" fill="white" opacity=".9"/></g>
+  </g>
+</svg></div>`;
+}
+
+const EV_SCENES = {
+  'Einführung in Brüche': [
+    { dur:3500, bg:'linear-gradient(160deg,#1a0035 0%,#0e0820 100%)',
+      build(stage) {
+        stage.innerHTML = `
+          <div class="ev-bg-label" style="top:-10%;left:-5%">½</div>
+          <div style="margin-bottom:14px;animation:evBounceIn .4s cubic-bezier(.36,.07,.19,.97)">
+            <svg viewBox="0 0 140 140" width="120" height="120">
+              <circle cx="70" cy="70" r="60" fill="#c0392b" stroke="#922b21" stroke-width="3"/>
+              <path d="M70,70 L70,10 A60,60 0 0,1 130,70 Z" fill="#e74c3c"/>
+              <path d="M70,70 L130,70 A60,60 0 0,1 70,130 Z" fill="#c0392b" opacity=".8"/>
+              <line x1="70" y1="10" x2="70" y2="130" stroke="#7B241C" stroke-width="2.5" stroke-dasharray="4,3"/>
+              <line x1="10" y1="70" x2="130" y2="70" stroke="#7B241C" stroke-width="2.5" stroke-dasharray="4,3"/>
+            </svg>
+          </div>
+          <div class="ev-hook-title">BRÜCHE</div>
+          <div class="ev-hook-sub">Wie kann eine halbe Pizza eine Zahl sein?</div>`;
+      }
+    },
+    { dur:4000, bg:'linear-gradient(160deg,#1a0035 0%,#0e0820 100%)',
+      build(stage) {
+        stage.style.justifyContent = 'flex-start';
+        stage.innerHTML = `<div class="ev-scene-split">
+          <div class="ev-split-char">${_evCharHTML('talking')}<div class="ev-char-name-lbl">Mr. Lala</div></div>
+          <div class="ev-split-content">
+            <div class="ev-speech-bubble">Hallo! Ich bin Mr. Lala – heute erkläre ich dir, was Brüche sind! 🍕</div>
+            <div style="margin-top:14px;animation:evGlowPulse 1s infinite">
+              <svg viewBox="0 0 100 100" width="70" height="70">
+                <circle cx="50" cy="50" r="44" fill="#c0392b" stroke="#922b21" stroke-width="2.5"/>
+                <path d="M50,50 L50,6 A44,44 0 0,1 94,50 Z" fill="#e74c3c"/>
+                <path d="M50,50 L94,50 A44,44 0 0,1 50,94 Z" fill="#c0392b" opacity=".8"/>
+                <line x1="50" y1="6" x2="50" y2="94" stroke="#7B241C" stroke-width="2"/>
+                <line x1="6" y1="50" x2="94" y2="50" stroke="#7B241C" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
+        </div>`;
+      }
+    },
+    { dur:5000, bg:'linear-gradient(160deg,#1a0035 0%,#0e0820 100%)',
+      build(stage) {
+        stage.style.justifyContent = 'flex-start';
+        stage.innerHTML = `<div class="ev-scene-split">
+          <div class="ev-split-char">${_evCharHTML('talking')}<div class="ev-char-name-lbl">Mr. Lala</div></div>
+          <div class="ev-split-content">
+            <div class="ev-speech-bubble">Brüche zeigen, wie viele Teile von etwas Ganzem gemeint sind.</div>
+            <div style="display:flex;align-items:center;gap:10px;margin-top:14px;animation:evScaleIn .5s .3s both">
+              <svg viewBox="0 0 100 100" width="65" height="65">
+                <circle cx="50" cy="50" r="44" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.3)" stroke-width="2"/>
+                <path d="M50,50 L50,6 A44,44 0 0,1 94,50 Z" fill="#7C3AED" style="filter:drop-shadow(0 0 8px #7C3AED)"/>
+                <line x1="50" y1="6" x2="50" y2="94" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+                <line x1="6" y1="50" x2="94" y2="50" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+              </svg>
+              <div style="display:flex;flex-direction:column;align-items:center;font-family:Poppins,sans-serif;font-size:38px;font-weight:900;gap:2px">
+                <span style="color:#FBBF24">1</span>
+                <div style="width:40px;height:4px;background:linear-gradient(90deg,#FBBF24,#F472B6);border-radius:2px"></div>
+                <span style="color:rgba(255,255,255,.85)">2</span>
+              </div>
+            </div>
+            <span class="ev-label-badge" style="animation-delay:.5s;margin-top:10px">½ = ein halbes Stück</span>
+          </div>
+        </div>`;
+      }
+    },
+    { dur:10000, bg:'linear-gradient(160deg,#1a0035 0%,#0e0820 100%)',
+      build(stage) {
+        stage.style.justifyContent = 'flex-start';
+        stage.innerHTML = `<div class="ev-scene-split">
+          <div class="ev-split-char">${_evCharHTML('pointing')}<div class="ev-char-name-lbl">Mr. Lala</div></div>
+          <div class="ev-split-content">
+            <div class="ev-speech-bubble" style="font-size:12px">Die <strong style="color:#FBBF24">obere Zahl</strong> = deine Stücke.<br>Die <strong style="color:#A78BFA">untere Zahl</strong> = alle Teile.</div>
+            <div style="margin-top:16px;display:inline-flex;flex-direction:column;align-items:center;animation:evScaleIn .5s .3s both">
+              <span style="font-family:Poppins,sans-serif;font-size:52px;font-weight:900;color:#FBBF24;animation:evGlowPulse 1.4s infinite;text-shadow:0 0 20px #FBBF24">3</span>
+              <div style="width:54px;height:5px;background:linear-gradient(90deg,#FBBF24,#F472B6);border-radius:3px;margin:3px 0"></div>
+              <span style="font-family:Poppins,sans-serif;font-size:52px;font-weight:900;color:#A78BFA;animation:evGlowPulse 1.4s .7s infinite;text-shadow:0 0 20px #A78BFA">4</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;margin-top:10px;animation:evFadeUp .5s .6s both">
+              <span class="ev-label-badge" style="border-color:#FBBF24;color:#FBBF24">↑ Zähler</span>
+              <span class="ev-label-badge">↓ Nenner</span>
+            </div>
+          </div>
+        </div>`;
+      }
+    },
+    { dur:10000, bg:'linear-gradient(160deg,#1a0035 0%,#0e0820 100%)',
+      build(stage) {
+        stage.style.justifyContent = 'flex-start';
+        stage.innerHTML = `<div class="ev-scene-split">
+          <div class="ev-split-char">${_evCharHTML('pointing')}<div class="ev-char-name-lbl">Mr. Lala</div></div>
+          <div class="ev-split-content">
+            <div class="ev-speech-bubble" style="font-size:12px">3 von 4 Teilen — so schreibt man das!</div>
+            <div class="ev-choco" id="evChoco" style="margin-top:14px;grid-template-columns:repeat(2,1fr)">
+              <div class="ev-choco-piece"></div><div class="ev-choco-piece"></div>
+              <div class="ev-choco-piece"></div><div class="ev-choco-piece"></div>
+            </div>
+            <div style="margin-top:12px;display:flex;flex-direction:column;align-items:center;font-family:Poppins,sans-serif;font-size:36px;font-weight:900;gap:2px;animation:evScaleIn .5s .8s both">
+              <span style="color:#FBBF24">3</span>
+              <div style="width:40px;height:4px;background:linear-gradient(90deg,#FBBF24,#F472B6);border-radius:2px"></div>
+              <span style="color:rgba(255,255,255,.85)">4</span>
+            </div>
+            <div class="ev-particles" id="evParts"></div>
+          </div>
+        </div>`;
+        setTimeout(() => {
+          const pieces = document.querySelectorAll('.ev-choco-piece');
+          [0,1,2].forEach((pi,i) => setTimeout(() => pieces[pi]?.classList.add('marked'), i*220));
+          const container = document.getElementById('evParts');
+          if (!container) return;
+          const colors = ['#FBBF24','#F472B6','#A78BFA','#34D399'];
+          for (let n=0;n<12;n++){const p=document.createElement('div');p.className='ev-particle';const angle=(n/12)*360,dist=50+Math.random()*40;p.style.cssText=`left:${40+Math.random()*20}%;top:${40+Math.random()*20}%;background:${colors[n%colors.length]};--dx:${Math.cos(angle*Math.PI/180)*dist}px;--dy:${Math.sin(angle*Math.PI/180)*dist}px;animation-delay:${.6+n*.05}s`;container.appendChild(p);}
+        }, 400);
+      }
+    },
+    { dur:7000, bg:'linear-gradient(160deg,#1a0035 0%,#0e0820 100%)',
+      build(stage) {
+        stage.style.justifyContent = 'flex-start';
+        stage.innerHTML = `<div class="ev-scene-split">
+          <div class="ev-split-char">${_evCharHTML('talking')}<div class="ev-char-name-lbl">Mr. Lala</div></div>
+          <div class="ev-split-content">
+            <div class="ev-speech-bubble" style="font-size:12px">Brüche begegnen dir überall im Alltag!</div>
+            <div class="ev-food-row" style="margin-top:14px;gap:10px">
+              ${['🍕','🍰','🍫','🥤'].map((e,i)=>`<div class="ev-food-icon" style="font-size:36px;animation-delay:${i*.15}s">${e}</div>`).join('')}
+            </div>
+            <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap;animation:evFadeUp .5s .7s both">
+              <span class="ev-label-badge" style="font-size:11px">Essen teilen</span>
+              <span class="ev-label-badge" style="font-size:11px">Rezepte</span>
+            </div>
+          </div>
+        </div>`;
+      }
+    },
+    { dur:7000, bg:'linear-gradient(160deg,#0d001a 0%,#0e0820 100%)',
+      build(stage) {
+        stage.style.justifyContent = 'flex-start';
+        stage.innerHTML = `<div class="ev-scene-split">
+          <div class="ev-split-char">${_evCharHTML('talking')}<div class="ev-char-name-lbl">Mr. Lala</div></div>
+          <div class="ev-split-content">
+            <div class="ev-merksatz" style="padding:14px 12px">
+              <h3 style="font-size:11px">📌 Merksatz</h3>
+              <p style="font-size:13px">Der <span class="ev-word-hl">Zähler</span> sagt, wie viele Teile du hast.</p>
+              <p style="font-size:13px">Der <span class="ev-word-hl">Nenner</span> zeigt, in wie viele Teile alles geteilt wurde.</p>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:12px;justify-content:center;animation:evFadeUp .5s .4s both">
+              <div style="text-align:center"><div style="font-family:Poppins,sans-serif;font-size:22px;font-weight:900;color:#FBBF24;text-shadow:0 0 14px #FBBF24">Zähler</div><div style="font-size:10px;color:rgba(255,255,255,.5)">oben</div></div>
+              <div style="font-size:26px;color:rgba(255,255,255,.2);padding-top:2px">·</div>
+              <div style="text-align:center"><div style="font-family:Poppins,sans-serif;font-size:22px;font-weight:900;color:#A78BFA;text-shadow:0 0 14px #A78BFA">Nenner</div><div style="font-size:10px;color:rgba(255,255,255,.5)">unten</div></div>
+            </div>
+          </div>
+        </div>`;
+      }
+    },
+    { dur:5000, bg:'linear-gradient(160deg,#1a0035 0%,#0e0820 100%)',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+          <div style="animation:evBounceIn .5s cubic-bezier(.36,.07,.19,.97)">${_evCharHTML('celebrating')}</div>
+          <div class="ev-outro-text" style="font-size:clamp(20px,5vw,28px)">Brüche verstanden! 🎉</div>
+          <div class="ev-outro-next">➡ Nächstes Thema: Brüche addieren</div>
+        </div>`;
+      }
+    }
+  ]
+};
+
+let _evTopicName='',_evSceneIdx=0,_evPaused=false,_evTimer=null,_evSceneStart=0,_evSceneElapsed=0;
+
+function openErklaerVideo(topicName){const scenes=EV_SCENES[topicName];if(!scenes)return;_evTopicName=topicName;_evSceneIdx=0;_evPaused=false;_evSceneElapsed=0;const overlay=document.getElementById('erklaerVideoOverlay');if(overlay)overlay.classList.remove('hidden');_evBuildDots(scenes.length);_evPlayScene(0);}
+function closeErklaerVideo(){const overlay=document.getElementById('erklaerVideoOverlay');if(overlay)overlay.classList.add('hidden');clearTimeout(_evTimer);_evTimer=null;}
+function _evBgClick(e){if(e.target===document.getElementById('erklaerVideoOverlay'))closeErklaerVideo();}
+function _evBuildDots(count){const c=document.getElementById('evSceneDots');if(!c)return;c.innerHTML='';for(let i=0;i<count;i++){const d=document.createElement('div');d.className='ev-dot'+(i===0?' active':'');c.appendChild(d);}}
+function _evPlayScene(idx){const scenes=EV_SCENES[_evTopicName];if(!scenes||idx>=scenes.length){closeErklaerVideo();return;}_evSceneIdx=idx;_evSceneElapsed=0;clearTimeout(_evTimer);document.querySelectorAll('.ev-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));const scene=scenes[idx];const stage=document.getElementById('evStage');if(!stage)return;stage.style.background=scene.bg||'transparent';stage.innerHTML='';scene.build(stage);const btn=document.getElementById('evPlayPauseBtn');if(btn)btn.textContent='⏸';_evPaused=false;_evSceneStart=Date.now();_evTickProgress(idx,scene.dur);_evTimer=setTimeout(()=>_evPlayScene(idx+1),scene.dur);}
+function _evTickProgress(sceneIdx,dur){const fill=document.getElementById('evProgressFill');const scenes=EV_SCENES[_evTopicName];if(!fill||!scenes)return;const totalDur=scenes.reduce((s,sc)=>s+sc.dur,0);const pastDur=scenes.slice(0,sceneIdx).reduce((s,sc)=>s+sc.dur,0);function tick(){if(_evSceneIdx!==sceneIdx||_evPaused)return;const elapsed=Date.now()-_evSceneStart+_evSceneElapsed;const totalDone=pastDur+Math.min(elapsed,dur);fill.style.width=(totalDone/totalDur*100)+'%';if(elapsed<dur)requestAnimationFrame(tick);}requestAnimationFrame(tick);}
+function _evTogglePause(){const btn=document.getElementById('evPlayPauseBtn');const scenes=EV_SCENES[_evTopicName];const scene=scenes?.[_evSceneIdx];if(!scene)return;if(_evPaused){_evPaused=false;if(btn)btn.textContent='⏸';const remaining=scene.dur-_evSceneElapsed;_evSceneStart=Date.now();_evTickProgress(_evSceneIdx,scene.dur);_evTimer=setTimeout(()=>_evPlayScene(_evSceneIdx+1),remaining);}else{_evPaused=true;if(btn)btn.textContent='▶';_evSceneElapsed+=Date.now()-_evSceneStart;clearTimeout(_evTimer);}}
+function _evSkipScene(){clearTimeout(_evTimer);_evPlayScene(_evSceneIdx+1);}

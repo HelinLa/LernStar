@@ -571,9 +571,25 @@
   </div>
 </div>
 
+<!-- ERKLÄRVIDEO PLAYER -->
+<div id="erklaerVideoOverlay" class="ev-overlay hidden" onclick="_evBgClick(event)">
+  <div class="ev-player">
+    <div class="ev-topbar">
+      <div class="ev-progress-track"><div class="ev-progress-fill" id="evProgressFill"></div></div>
+      <button class="ev-close-btn" onclick="closeErklaerVideo()">✕</button>
+    </div>
+    <div class="ev-stage" id="evStage"></div>
+    <div class="ev-controls">
+      <button class="ev-ctrl-btn" id="evPlayPauseBtn" onclick="_evTogglePause()">⏸</button>
+      <div class="ev-scene-dots" id="evSceneDots"></div>
+      <button class="ev-ctrl-btn" onclick="_evSkipScene()">⏭</button>
+    </div>
+  </div>
+</div>
+
 <script src="content.js?v=18"></script>
 <script src="js/ai_engine.js?v=1"></script>
-<script src="app.js?v=38"></script>
+<script src="app.js?v=39"></script>
 <!-- ── Animated Explainer Modal ─────────────────────────────── -->
 <div id="explainerModal" role="dialog" aria-modal="true" aria-labelledby="explainerTitle">
   <div class="xp-card" id="explainerCard">
