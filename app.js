@@ -3681,6 +3681,47 @@ function closeExplainer() {
 
 function _cycleExplainerSpeed() {}
 
+/* ── Video recording (screen capture → .webm download) ── */
+let _xpRecorder = null;
+let _xpRecChunks = [];
+
+async function _xpRecord() {
+  const btn = document.getElementById('xpRecBtn');
+  if (_xpRecorder && _xpRecorder.state === 'recording') {
+    _xpRecorder.stop();
+    return;
+  }
+  try {
+    const stream = await navigator.mediaDevices.getDisplayMedia({
+      video: { frameRate: 30, displaySurface: 'browser' },
+      audio: { echoCancellation: false, noiseSuppression: false },
+      preferCurrentTab: true,
+    });
+    _xpRecChunks = [];
+    const mime = ['video/webm;codecs=vp9,opus','video/webm;codecs=vp9','video/webm']
+      .find(m => MediaRecorder.isTypeSupported(m)) || 'video/webm';
+    _xpRecorder = new MediaRecorder(stream, { mimeType: mime });
+    _xpRecorder.ondataavailable = e => { if (e.data.size > 0) _xpRecChunks.push(e.data); };
+    _xpRecorder.onstop = () => {
+      stream.getTracks().forEach(t => t.stop());
+      const blob = new Blob(_xpRecChunks, { type: 'video/webm' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href = url; a.download = `LernStar_Erklaerung_${Date.now()}.webm`;
+      document.body.appendChild(a); a.click();
+      document.body.removeChild(a); URL.revokeObjectURL(url);
+      if (btn) { btn.textContent = '🎬'; btn.classList.remove('recording'); }
+      _xpRecorder = null;
+    };
+    _xpRecorder.start(1000);
+    if (btn) { btn.textContent = '⏹'; btn.classList.add('recording'); }
+    // Auto-replay so the recording captures the full explainer
+    setTimeout(() => _xReplay(), 400);
+  } catch(e) {
+    if (btn) { btn.textContent = '🎬'; btn.classList.remove('recording'); }
+  }
+}
+
 // ============================================================
 // AUTO-LOADER: JSON-Aufgaben automatisch laden
 // ============================================================
