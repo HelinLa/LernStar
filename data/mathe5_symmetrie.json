@@ -1,0 +1,236 @@
+[
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Was bedeutet 'senkrecht' bei zwei Geraden?",
+    "answer": "Sie bilden einen rechten Winkel (90°)",
+    "explanation": "Zwei Geraden heißen senkrecht zueinander, wenn sie sich unter einem Winkel von 90° schneiden. Man schreibt: g ⊥ h.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Was bedeutet 'parallel' bei zwei Geraden?",
+    "answer": "Sie haben überall denselben Abstand und schneiden sich nie",
+    "explanation": "Parallele Geraden verlaufen in dieselbe Richtung und haben keinen Schnittpunkt. Man schreibt: g ∥ h.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Was ist der Unterschied zwischen einer Strecke und einer Geraden?",
+    "answer": "Eine Strecke hat Anfangs- und Endpunkt, eine Gerade ist unendlich lang",
+    "explanation": "Eine Strecke AB ist begrenzt. Eine Gerade wird durch Kleinbuchstaben bezeichnet und hat keine Endpunkte.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Was ist die x-Koordinate eines Punktes im Koordinatensystem?",
+    "answer": "Die erste Zahl – sie zeigt, wie weit der Punkt nach rechts liegt",
+    "explanation": "Bei P(4|2) ist 4 die x-Koordinate (4 nach rechts) und 2 die y-Koordinate (2 nach oben). Erst x, dann y – wie im Alphabet!",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Welche Koordinaten hat der Koordinatenursprung?",
+    "answer": "O(0|0)",
+    "explanation": "Der Koordinatenursprung O liegt genau dort, wo sich x-Achse und y-Achse schneiden: an der Stelle (0|0).",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Punkt P liegt 5 nach rechts und 3 nach oben. Wie schreibt man P?",
+    "answer": "P(5|3)",
+    "explanation": "Im Koordinatensystem schreibt man: P(x-Koordinate | y-Koordinate) = P(5|3). Erst x (rechts), dann y (oben).",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Wie heißt die Faltlinie einer achsensymmetrischen Figur?",
+    "answer": "Symmetrieachse",
+    "explanation": "Eine achsensymmetrische Figur lässt sich so falten, dass beide Hälften genau aufeinanderliegen. Die Faltlinie heißt Symmetrieachse.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Wie liegt die Verbindungsstrecke zwischen einem Punkt und seinem Spiegelpunkt zur Symmetrieachse?",
+    "answer": "Senkrecht zur Symmetrieachse",
+    "explanation": "Die Symmetrieachse halbiert die Verbindungsstrecke von Punkt und Spiegelpunkt rechtwinklig (senkrecht).",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Wie viele Symmetrieachsen hat ein gleichseitiges Dreieck?",
+    "answer": "3",
+    "explanation": "Ein gleichseitiges Dreieck hat 3 Symmetrieachsen – je eine durch jede Ecke und die gegenüberliegende Seite.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Wie viele Symmetrieachsen hat ein Quadrat?",
+    "answer": "4",
+    "explanation": "Ein Quadrat hat 4 Symmetrieachsen: 2 durch gegenüberliegende Seiten und 2 durch gegenüberliegende Ecken (Diagonalen).",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Wie viele Symmetrieachsen hat ein Rechteck (kein Quadrat)?",
+    "answer": "2",
+    "explanation": "Ein Rechteck hat genau 2 Symmetrieachsen – je eine durch die Mitten der gegenüberliegenden Seiten.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Hat der Buchstabe 'T' eine Symmetrieachse?",
+    "answer": "Ja – eine senkrechte Symmetrieachse",
+    "explanation": "Der Buchstabe T ist links-rechts-symmetrisch. Die senkrechte Mittellinie ist die Symmetrieachse.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Hat der Buchstabe 'S' eine Symmetrieachse?",
+    "answer": "Nein – aber er ist punktsymmetrisch",
+    "explanation": "Der Buchstabe S hat keine Achsensymmetrie. Er ist jedoch punktsymmetrisch – dreht man ihn um 180°, sieht er gleich aus.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Was ist das Symmetriezentrum einer punktsymmetrischen Figur?",
+    "answer": "Der Mittelpunkt Z, der die Verbindungsstrecken von Punkt und Spiegelpunkt halbiert",
+    "explanation": "Bei punktsymmetrischen Figuren gibt es ein Symmetriezentrum Z. Jede Verbindungsstrecke zwischen einem Punkt und seinem Spiegelpunkt verläuft durch Z und wird von Z halbiert.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Was passiert, wenn man eine punktsymmetrische Figur um 180° um das Symmetriezentrum dreht?",
+    "answer": "Sie liegt wieder genau auf sich selbst",
+    "explanation": "Das ist die Definition der Punktsymmetrie: eine Drehung um 180° (halbe Drehung) um das Symmetriezentrum ergibt dieselbe Figur.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Wie heißt ein Viereck mit zwei gegenüberliegenden, parallelen Seiten (aber nicht alle gegenüberliegenden)?",
+    "answer": "Trapez",
+    "explanation": "Ein Trapez hat genau ein Paar paralleler gegenüberliegender Seiten.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Wie heißt ein Viereck, bei dem beide Paare der gegenüberliegenden Seiten parallel sind?",
+    "answer": "Parallelogramm",
+    "explanation": "Im Parallelogramm sind je zwei gegenüberliegende Seiten parallel und gleich lang. Es ist auch punktsymmetrisch.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Wie heißt ein Viereck mit vier gleich langen Seiten (aber keine rechten Winkel)?",
+    "answer": "Raute",
+    "explanation": "Eine Raute hat vier gleich lange Seiten, aber die Winkel müssen nicht 90° betragen. Sie ist achsensymmetrisch zu beiden Diagonalen.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Ist jedes Quadrat auch ein Rechteck?",
+    "answer": "Ja",
+    "explanation": "Ein Quadrat hat vier rechte Winkel und vier gleich lange Seiten. Da ein Rechteck nur vier rechte Winkel benötigt, ist jedes Quadrat auch ein Rechteck.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Wie heißt ein Dreieck mit genau zwei gleich langen Seiten?",
+    "answer": "Gleichschenkliges Dreieck",
+    "explanation": "Beim gleichschenkligen Dreieck sind zwei Seiten gleich lang (die 'Schenkel'). Es hat genau eine Symmetrieachse.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Wie viele Symmetrieachsen hat ein Parallelogramm (kein Rechteck, keine Raute)?",
+    "answer": "0",
+    "explanation": "Ein allgemeines Parallelogramm hat keine Symmetrieachse. Es ist jedoch punktsymmetrisch.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Hat ein Parallelogramm Punktsymmetrie?",
+    "answer": "Ja",
+    "explanation": "Das Symmetriezentrum eines Parallelogramms ist der Schnittpunkt der Diagonalen. Dreht man es um 180° um diesen Punkt, liegt es auf sich selbst.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Wie ist der Abstand eines Punktes P von einer Geraden g definiert?",
+    "answer": "Die Länge der kürzesten Strecke von P zu g – also das Lot von P auf g",
+    "explanation": "Der Abstand wird gemessen, indem man von P eine Senkrechte (Lot) auf die Gerade g fällt. Der Abstand ist die Länge dieser Lotstrecke.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Wahr oder falsch: 'Eine achsensymmetrische Figur ist immer auch punktsymmetrisch.'",
+    "answer": "Falsch",
+    "explanation": "Gegenbeispiel: Ein gleichschenkliges Dreieck ist achsensymmetrisch, aber nicht punktsymmetrisch. Punktsymmetrie erfordert, dass die Figur sich um 180° auf sich selbst dreht.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Welche Figur ist sowohl achsen- als auch punktsymmetrisch?",
+    "answer": "Quadrat, Rechteck, Raute, Kreis (und andere regelmäßige Vielecke mit gerader Eckenzahl)",
+    "explanation": "Ein Quadrat hat 4 Symmetrieachsen und ein Symmetriezentrum. Auch Rechteck (2 Achsen) und Raute (2 Achsen) sind beides symmetrisch.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Symmetrie und Geometrie",
+    "question": "Wie viele Symmetrieachsen hat ein regelmäßiges Sechseck?",
+    "answer": "6",
+    "explanation": "Ein regelmäßiges Sechseck hat 6 Symmetrieachsen: 3 durch gegenüberliegende Ecken und 3 durch die Mitten gegenüberliegender Seiten.",
+    "difficulty": 3
+  }
+]
