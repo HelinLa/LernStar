@@ -1139,6 +1139,9 @@ function renderSubject() {
     document.getElementById('stopIntroBtn').classList.add('hidden');
   }
 
+  // Gesprächsverlauf beim Fachwechsel zurücksetzen
+  _chatHistory = [];
+
   // Topics (mit Play-Button für Mathe/Physik)
   const topicsList = document.getElementById('topicsList');
   topicsList.innerHTML = '';
@@ -1859,43 +1862,86 @@ function closeSidebar() {
 // ============================================================
 const GROQ_KEY = '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';
 
+// ── Lernstoff-Kontext: aktuelle Themen-Inhalte aus content.js ──
+function _buildCurriculumContext() {
+  const g = state.gradeId, s = state.subjectId;
+  if (!g || !s) return '';
+  const subject = CONTENT[g]?.subjects.find(x => x.id === s);
+  if (!subject) return '';
+
+  let ctx = `\n\n📚 LERNSTOFF (LernStar-Curriculum – ${subject.name}):\n`;
+
+  // Aktuelle Themen-Erklärung einbinden
+  if (state.currentTopicName) {
+    const t = subject.topics.find(x => x.name === state.currentTopicName);
+    if (t?.explanation) {
+      ctx += `Aktuelles Thema „${t.name}":\n${t.explanation}\n`;
+    }
+  }
+
+  // Alle Themen des Fachs auflisten (Überblick für Herr Lala)
+  const names = subject.topics.filter(t => !t.isChapter).map(t => t.name);
+  if (names.length) ctx += `Alle Themen: ${names.slice(0, 20).join(' · ')}`;
+  return ctx;
+}
+
+// ── Langzeit-Gedächtnis: Lernhistorie aus localStorage ──────
+function _buildMemoryContext() {
+  const entries = Object.entries(state.progress);
+  if (!entries.length) return '';
+  const avg    = Math.round(entries.reduce((s,[,v]) => s+v, 0) / entries.length);
+  const weak   = [...new Set(entries.filter(([,v]) => v<60).map(([k]) => k.split('_')[1]))].slice(0,4);
+  const strong = [...new Set(entries.filter(([,v]) => v>=80).map(([k]) => k.split('_')[1]))].slice(0,4);
+  let mem = `\n\n🧠 GEDÄCHTNIS – Lernhistorie von ${state.userName||'dem Schüler'}:\n`;
+  mem += `${entries.length} Aufgaben gelöst · Ø ${avg}% Erfolg\n`;
+  if (strong.length) mem += `Stärken: ${strong.join(', ')}\n`;
+  if (weak.length)   mem += `Schwachstellen: ${weak.join(', ')}\n`;
+  return mem;
+}
+
 function _getChatSystem() {
-  const name    = state.userName;
+  const name     = state.userName;
   const gradeRaw = state.gradeId;
-  const grade   = gradeRaw ? `Klasse ${gradeRaw.replace('klasse','')}` : null;
-  const subj    = gradeRaw && state.subjectId
+  const grade    = gradeRaw ? `Klasse ${gradeRaw.replace('klasse','')}` : null;
+  const subj     = gradeRaw && state.subjectId
     ? CONTENT[gradeRaw]?.subjects.find(s => s.id === state.subjectId)?.name || null
     : null;
-  const topic   = state.currentTopicName;
-  const goalMap = { normal:'allgemeines Lernen', zap:'ZAP-Prüfung', abitur:'Abitur' };
-  const goal    = goalMap[state.learningGoal] || 'Lernen';
+  const topic    = state.currentTopicName;
+  const goalMap  = { normal:'allgemeines Lernen', zap:'ZAP-Prüfung', abitur:'Abitur-Vorbereitung' };
+  const goal     = goalMap[state.learningGoal] || 'Lernen';
 
-  let ctx = 'Du hilfst';
-  if (name)  ctx += ` ${name}`;
-  if (grade) ctx += ` aus ${grade}`;
-  if (subj)  ctx += ` im Fach ${subj}`;
-  if (topic) ctx += ` beim Thema „${topic}"`;
-  ctx += ` (Ziel: ${goal}).`;
+  let wer = 'Du hilfst';
+  if (name)  wer += ` ${name}`;
+  if (grade) wer += ` aus ${grade}`;
+  if (subj)  wer += ` im Fach ${subj}`;
+  if (topic) wer += ` beim Thema „${topic}"`;
+  wer += ` (Ziel: ${goal}).`;
 
-  return `Du bist Herr Lala, ein freundlicher, erfahrener Tutor für Mathematik und Physik an einer deutschen Schule. ${ctx}
+  return `Du bist Herr Lala – der persönliche KI-Tutor der Lernplattform LernStar.
+Du bist kein allgemeiner Chatbot. Du kennst jeden Inhalt von LernStar auswendig und arbeitest ausschließlich für diese Plattform.
+${wer}
 
-SPRACHE UND STIL:
+PERSÖNLICHKEIT:
+- Du unterrichtest seit 15 Jahren Mathematik und Physik und liebst Aha-Momente.
+- Du erinnerst dich an alles was in diesem Gespräch besprochen wurde.
+- Du bist geduldig: wenn jemand es nicht versteht, versuchst du eine andere Erklärung.
+- Du fragst nach dem Gespräch immer: „Hast du noch Fragen dazu?"
+- Du kennst den Schüler persönlich und gehst auf seine Stärken und Schwächen ein.
+${state.learningGoal === 'zap' ? '- Du bereitest gezielt auf die ZAP-Prüfung vor und kennst typische Aufgabenformate.' : ''}
+${state.learningGoal === 'abitur' ? '- Du erklärst auf Abiturniveau mit vollständigen Herleitungen und Fachbegriffen.' : ''}${_buildMemoryContext()}${_buildCurriculumContext()}
+
+ANTWORTREGELN:
 - Antworte IMMER auf Deutsch.
-- Passe dein Niveau an${grade ? ` ${grade}` : ''} an – klar und verständlich.
-- Kurze Sätze, Alltagsbeispiele (Pizza, Geld, Sport).
-- Sprich${name ? ` ${name}` : ' den Schüler'} direkt mit Namen an.
-- Bei Fehlern: ermutige und erkläre den richtigen Weg.
-- Stelle nach jeder Erklärung eine kurze Verständnisfrage.
-${state.learningGoal === 'zap' ? '- Orientiere dich an ZAP-Prüfungsformaten (Multiple Choice, Rechenaufgaben).' : ''}
-${state.learningGoal === 'abitur' ? '- Erkläre auf Abiturniveau mit präzisen Fachbegriffen und vollständigen Herleitungen.' : ''}
+- Niveau anpassen an${grade ? ` ${grade}` : ' Schüler'}.
+- ${name ? `Sprich ${name} mit Namen an.` : 'Sprich den Schüler direkt an.'}
+- Alltagsbeispiele nutzen (Pizza, Geld, Sport, Smartphones).
+- Bei Fehlern: erst Mut machen, dann Erklärung.
 
-MATHEMATIK-FORMATIERUNG:
-Schreibe JEDEN mathematischen Ausdruck in einzelne Dollarzeichen: $Ausdruck$
-- Bruch: $\\frac{3}{4}$  · Rechnung: $7 + 5 = 12$  · Wurzel: $\\sqrt{9} = 3$
-Niemals $$ (doppelte Dollarzeichen) verwenden.`;
+MATHEMATIK: Jeden Ausdruck in $...$: $\\frac{3}{4}$ · $v = s \\cdot t$ · $\\sqrt{9}=3$. Niemals $$.`;
 }
 
 let _chatOpen = false;
+let _chatHistory = []; // Gesprächsverlauf für Multi-Turn-Kontext (max. 12 Nachrichten)
 
 function _chatToggle() {
   _chatOpen = !_chatOpen;
@@ -2036,7 +2082,15 @@ async function _chatAsk(question) {
       userContent = question;
     }
 
-    const model = hasImage ? 'meta-llama/llama-4-scout-17b-16e-instruct' : 'llama-3.1-8b-instant';
+    const model = hasImage ? 'meta-llama/llama-4-scout-17b-16e-instruct' : 'llama-3.3-70b-versatile';
+
+    // Gesprächsverlauf aufbauen (System + Verlauf + neue Nachricht)
+    const historySlice = _chatHistory.slice(-12); // max. letzte 6 Austausche
+    const messages = [
+      { role: 'system', content: _getChatSystem() },
+      ...historySlice,
+      { role: 'user', content: userContent },
+    ];
 
     const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
@@ -2046,11 +2100,8 @@ async function _chatAsk(question) {
       },
       body: JSON.stringify({
         model,
-        messages: [
-          { role: 'system', content: _getChatSystem() },
-          { role: 'user',   content: userContent },
-        ],
-        max_tokens: 600,
+        messages,
+        max_tokens: 700,
         temperature: 0.7,
       }),
     });
@@ -2062,6 +2113,10 @@ async function _chatAsk(question) {
 
     const data   = await res.json();
     const answer = data.choices?.[0]?.message?.content || '(Keine Antwort erhalten)';
+
+    // Verlauf aktualisieren (nur Text, kein Bild-Blob speichern)
+    _chatHistory.push({ role: 'user',      content: typeof userContent === 'string' ? userContent : '[Bild]' });
+    _chatHistory.push({ role: 'assistant', content: answer });
 
     _chatHideTyping();
     _chatAddBubble(answer, 'bot');
