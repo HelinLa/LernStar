@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=12" />
+  <link rel="stylesheet" href="style.css?v=13" />
   <!-- Markdown + Mathe-Rendering für Chat -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -574,34 +574,106 @@
 
 <script src="content.js?v=18"></script>
 <script src="js/ai_engine.js?v=1"></script>
-<script src="app.js?v=30"></script>
+<script src="app.js?v=31"></script>
 <!-- ── Animated Explainer Modal ─────────────────────────────── -->
 <div id="explainerModal" role="dialog" aria-modal="true" aria-labelledby="explainerTitle">
-  <div class="explainer-card" id="explainerCard">
-    <button class="explainer-close" onclick="closeExplainer()" aria-label="Schließen">✕</button>
-    <div class="explainer-header-row">
-      <div class="explainer-emoji" id="explainerEmoji">📚</div>
-      <div>
-        <div class="explainer-badge" id="explainerBadge">Erklärung</div>
-        <div class="explainer-title" id="explainerTitle"></div>
+  <div class="xp-card" id="explainerCard">
+    <button class="xp-close" onclick="closeExplainer()" aria-label="Schließen">✕</button>
+
+    <!-- Header -->
+    <div class="xp-header">
+      <div class="xp-hbadge" id="explainerBadge">Erklärung</div>
+      <div class="xp-hemoji" id="explainerEmoji">📚</div>
+      <div class="xp-htitle" id="explainerTitle"></div>
+    </div>
+
+    <!-- 2-sentence text box -->
+    <div class="xp-stage">
+      <div class="xp-s1" id="explainerS1"></div>
+      <div class="xp-s2" id="explainerS2"></div>
+    </div>
+
+    <!-- Bottom: cartoon teacher + controls -->
+    <div class="xp-bottom">
+      <!-- CSS/SVG cartoon teacher -->
+      <div class="xpt-wrap">
+        <svg class="xpt-svg" id="xptSvg" viewBox="0 0 100 165" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="xpShirt" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#7C3AED"/>
+              <stop offset="100%" stop-color="#4338CA"/>
+            </linearGradient>
+            <linearGradient id="xpSkin" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#FDDEC6"/>
+              <stop offset="100%" stop-color="#F4C5A3"/>
+            </linearGradient>
+          </defs>
+          <!-- shirt / body -->
+          <rect x="18" y="98" width="64" height="67" rx="14" fill="url(#xpShirt)"/>
+          <!-- collar -->
+          <polygon points="37,98 50,115 37,122" fill="#F1F5F9" opacity="0.9"/>
+          <polygon points="63,98 50,115 63,122" fill="#E2E8F0" opacity="0.9"/>
+          <!-- tie -->
+          <polygon points="47,112 53,112 55,150 50,155 45,150" fill="#E11D48"/>
+          <!-- arms -->
+          <rect x="4" y="100" width="16" height="48" rx="8" fill="url(#xpShirt)" transform="rotate(-10,12,124)"/>
+          <rect x="80" y="100" width="16" height="48" rx="8" fill="url(#xpShirt)" transform="rotate(10,88,124)"/>
+          <!-- hands -->
+          <ellipse cx="10" cy="149" rx="10" ry="8" fill="url(#xpSkin)"/>
+          <ellipse cx="90" cy="149" rx="10" ry="8" fill="url(#xpSkin)"/>
+          <!-- neck -->
+          <rect x="40" y="84" width="20" height="18" rx="7" fill="url(#xpSkin)"/>
+          <!-- head -->
+          <ellipse cx="50" cy="59" rx="31" ry="28" fill="url(#xpSkin)"/>
+          <!-- hair top -->
+          <ellipse cx="50" cy="36" rx="30" ry="16" fill="#3D2B1F"/>
+          <!-- hair sides -->
+          <rect x="19" y="38" width="11" height="23" rx="5.5" fill="#3D2B1F"/>
+          <rect x="70" y="38" width="11" height="23" rx="5.5" fill="#3D2B1F"/>
+          <!-- ears -->
+          <ellipse cx="19" cy="61" rx="5.5" ry="7" fill="#F2B393"/>
+          <ellipse cx="81" cy="61" rx="5.5" ry="7" fill="#F2B393"/>
+          <ellipse cx="19" cy="61" rx="3" ry="4.5" fill="#E9A07D" opacity="0.5"/>
+          <ellipse cx="81" cy="61" rx="3" ry="4.5" fill="#E9A07D" opacity="0.5"/>
+          <!-- eyebrows -->
+          <path d="M27 48 Q34 44 42 48" stroke="#5C3D2E" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+          <path d="M58 48 Q66 44 73 48" stroke="#5C3D2E" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+          <!-- eye whites -->
+          <ellipse cx="34" cy="58" rx="8" ry="8" fill="white"/>
+          <ellipse cx="66" cy="58" rx="8" ry="8" fill="white"/>
+          <!-- pupils + iris -->
+          <ellipse cx="35" cy="59" rx="5" ry="5.5" fill="#1E1E2E"/>
+          <ellipse cx="35" cy="59" rx="3.5" ry="3.8" fill="#2E4AB5"/>
+          <ellipse cx="67" cy="59" rx="5" ry="5.5" fill="#1E1E2E"/>
+          <ellipse cx="67" cy="59" rx="3.5" ry="3.8" fill="#2E4AB5"/>
+          <!-- eye shine -->
+          <circle cx="37.5" cy="56" r="2" fill="white" opacity="0.9"/>
+          <circle cx="69.5" cy="56" r="2" fill="white" opacity="0.9"/>
+          <!-- eyelids (blink animation) -->
+          <ellipse class="xpt-lid xpt-lid-l" cx="34" cy="58" rx="8" ry="8" fill="url(#xpSkin)"/>
+          <ellipse class="xpt-lid xpt-lid-r" cx="66" cy="58" rx="8" ry="8" fill="url(#xpSkin)"/>
+          <!-- nose -->
+          <ellipse cx="50" cy="68" rx="3.5" ry="3" fill="#E9A07D" opacity="0.55"/>
+          <!-- mouth: smile (default visible) -->
+          <path id="xptMouthSmile" d="M38 77 Q50 85 62 77" stroke="#C06B5A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- mouth: open ellipse (shown only while talking) -->
+          <ellipse id="xptMouthTalk" cx="50" cy="79" rx="11" ry="3" fill="#C06B5A" opacity="0"/>
+          <!-- teeth (shown only while talking) -->
+          <rect id="xptTeeth" x="41" y="75" width="18" height="5" rx="2.5" fill="white" opacity="0"/>
+        </svg>
       </div>
-    </div>
-    <div class="explainer-divider"></div>
-    <!-- Visual animation stage -->
-    <div class="explainer-stage" id="explainerStage"></div>
-    <div class="explainer-divider"></div>
-    <!-- 2-sentence reveal -->
-    <div class="explainer-sentences">
-      <div class="explainer-s1" id="explainerS1"></div>
-      <div class="explainer-s2" id="explainerS2"></div>
-    </div>
-    <div class="explainer-prog-track">
-      <div class="explainer-prog-fill" id="explainerProgFill"></div>
-    </div>
-    <div class="explainer-footer">
-      <button class="explainer-ctrl" id="explainerPauseBtn" onclick="_xTogglePause()" title="Pause">⏸</button>
-      <button class="explainer-ctrl" onclick="_xReplay()" title="Nochmal">↺</button>
-      <button class="explainer-ctrl" onclick="closeExplainer()" title="Schließen">■</button>
+
+      <!-- Progress bar + controls -->
+      <div class="xp-controls">
+        <div class="xp-prog-track">
+          <div class="xp-prog-fill" id="explainerProgFill"></div>
+        </div>
+        <div class="xp-btns">
+          <button class="xp-ctrl" id="explainerPauseBtn" onclick="_xTogglePause()" title="Pause">⏸</button>
+          <button class="xp-ctrl" onclick="_xReplay()" title="Wiederholen">↺</button>
+          <button class="xp-ctrl" onclick="closeExplainer()" title="Schließen">■</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

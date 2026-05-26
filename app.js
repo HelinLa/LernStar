@@ -3399,11 +3399,21 @@ const _X_VISUALS = {
   'Oberflächeninhalt':                '<div class="xv-formula-vis"><span class="xvf" style="--d:0">O</span><span class="xvf xvf-eq" style="--d:1">=</span><span class="xvf xvf-res" style="--d:2">6 · a²</span></div>',
 };
 
+function _xpTalkStart() {
+  const svg = document.getElementById('xptSvg');
+  if (svg) svg.classList.add('talking');
+}
+function _xpTalkStop() {
+  const svg = document.getElementById('xptSvg');
+  if (svg) svg.classList.remove('talking');
+}
+
 function showExplainer(topic, subjectIcon, subjectColor) {
   const modal = document.getElementById('explainerModal');
   if (!modal) return;
   _xPaused = false;
   clearTimeout(_xTimeout1); clearTimeout(_xTimeout2); clearInterval(_xAutoTimer);
+  _xpTalkStop();
 
   const sentences = Array.isArray(topic.short) ? topic.short : _xExtract2(topic.explanation);
 
@@ -3412,20 +3422,16 @@ function showExplainer(topic, subjectIcon, subjectColor) {
   document.getElementById('explainerBadge').textContent  = 'Erklärung';
   document.getElementById('explainerTitle').textContent  = topic.name;
 
-  // Visual stage
-  const stage = document.getElementById('explainerStage');
-  if (stage) stage.innerHTML = _X_VISUALS[topic.name] || _xDefaultVisual(subjectIcon || '📚');
-
   // Sentence area (hidden until reveal)
   const s1el = document.getElementById('explainerS1');
   const s2el = document.getElementById('explainerS2');
   if (s1el) { s1el.textContent = sentences[0] || ''; s1el.classList.remove('xs-visible'); }
   if (s2el) { s2el.textContent = sentences[1] || ''; s2el.classList.remove('xs-visible'); }
 
-  // Color tint
-  const card = document.getElementById('explainerCard');
-  if (card && subjectColor) {
-    document.getElementById('explainerBadge').style.cssText =
+  // Color tint on badge
+  if (subjectColor) {
+    const badge = document.getElementById('explainerBadge');
+    if (badge) badge.style.cssText =
       `border-color:${subjectColor}66;background:${subjectColor}22;color:${subjectColor}`;
   }
 
@@ -3436,9 +3442,15 @@ function showExplainer(topic, subjectIcon, subjectColor) {
   modal.classList.add('visible');
   document.body.style.overflow = 'hidden';
 
-  // Reveal sentence 1 after 0.8s, sentence 2 after 4s, loop after 9s
-  _xTimeout1 = setTimeout(() => { if (!_xPaused && s1el) s1el.classList.add('xs-visible'); }, 800);
+  // Reveal s1 + start talking at 0.8s
+  _xTimeout1 = setTimeout(() => {
+    if (!_xPaused && s1el) s1el.classList.add('xs-visible');
+    _xpTalkStart();
+  }, 800);
+  // Reveal s2 at 4s
   _xTimeout2 = setTimeout(() => { if (!_xPaused && s2el) s2el.classList.add('xs-visible'); }, 4000);
+  // Stop talking at 9s
+  setTimeout(() => _xpTalkStop(), 9000);
   _xRunProgress(9);
 }
 
@@ -3478,11 +3490,16 @@ function _xReplay() {
   if (s1el) s1el.classList.remove('xs-visible');
   if (s2el) s2el.classList.remove('xs-visible');
   _xPaused = false;
+  _xpTalkStop();
   const fill = document.getElementById('explainerProgFill');
   if (fill) { fill.style.transition = 'none'; fill.style.width = '0%'; }
   clearTimeout(_xTimeout1); clearTimeout(_xTimeout2); clearInterval(_xAutoTimer);
-  _xTimeout1 = setTimeout(() => { if (!_xPaused && s1el) s1el.classList.add('xs-visible'); }, 600);
+  _xTimeout1 = setTimeout(() => {
+    if (!_xPaused && s1el) s1el.classList.add('xs-visible');
+    _xpTalkStart();
+  }, 600);
   _xTimeout2 = setTimeout(() => { if (!_xPaused && s2el) s2el.classList.add('xs-visible'); }, 3500);
+  setTimeout(() => _xpTalkStop(), 9000);
   _xRunProgress(9);
 }
 
@@ -3492,6 +3509,7 @@ function closeExplainer() {
   document.body.style.overflow = '';
   clearTimeout(_xTimeout1); clearTimeout(_xTimeout2); clearInterval(_xAutoTimer);
   _xPaused = false;
+  _xpTalkStop();
   const fill = document.getElementById('explainerProgFill');
   if (fill) fill.style.width = '0%';
   stopIntro();
