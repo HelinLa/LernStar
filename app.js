@@ -1912,7 +1912,23 @@ function closeSidebar() {
 // ============================================================
 // KI-PROVIDER ABSTRACTION – unabhängig von einem einzigen Anbieter
 // ============================================================
-const GROQ_KEY = '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';
+let GROQ_KEY = localStorage.getItem('ls_groq_key') || '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';
+
+function _updateGroqKey(key) {
+  key = (key || '').trim();
+  if (!key) return;
+  GROQ_KEY = key;
+  localStorage.setItem('ls_groq_key', key);
+  const p = _defaultProviders.find(p => p.id === 'groq');
+  if (p) p.key = key;
+}
+
+function _promptNewKey() {
+  const key = prompt('Groq API-Key abgelaufen!\n\nNeuen kostenlosen Key holen:\n→ console.groq.com → API Keys → Create\n\nKey hier einfügen:');
+  if (!key) return;
+  _updateGroqKey(key);
+  _chatAddBubble('✅ Neuer API-Key gespeichert! Bitte sende deine Frage noch einmal.', 'bot');
+}
 
 // ============================================================
 // BROWSER-KI  –  transformers.js (kein API-Key, offline)
@@ -2043,6 +2059,7 @@ async function _aiCall(messages, opts = {}) {
 
       if (!res.ok) {
         const e = await res.json().catch(() => ({}));
+        if (res.status === 401) throw new Error('API-Key abgelaufen – <a href="#" onclick="_promptNewKey();return false">hier erneuern</a>');
         throw new Error(e?.error?.message || `HTTP ${res.status}`);
       }
 
@@ -2270,23 +2287,47 @@ async function _chatAsk(question) {
     let answer;
 
     if (hasImage) {
-      // Bildverarbeitung: direkt über Groq (braucht Vision-Modell)
-      const userContent = [
-        { type: 'image_url', image_url: { url: `data:${imgMime};base64,${imgB64}` } },
-        { type: 'text', text: question || 'Bitte löse diese Aufgabe Schritt für Schritt auf Deutsch.' },
-      ];
-      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${GROQ_KEY}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'meta-llama/llama-4-scout-17b-16e-instruct',
-          messages: [{ role: 'system', content: _getChatSystem() }, ...historySlice, { role: 'user', content: userContent }],
-          max_tokens: 700, temperature: 0.7
-        })
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const d = await res.json();
-      answer = d.choices?.[0]?.message?.content || '(Keine Antwort)';
+      // Bildverarbeitung: zuerst lokaler Server, dann Groq als Fallback
+      let imgDone = false;
+      try {
+        const localRes = await fetch('http://localhost:5000/api/chat_image', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            image_b64: imgB64, mime: imgMime,
+            question: question || 'Bitte löse diese Aufgabe Schritt für Schritt auf Deutsch.',
+            system: _getChatSystem(), history: historySlice
+          })
+        });
+        if (localRes.ok) {
+          const d = await localRes.json();
+          if (d.answer) { answer = d.answer; imgDone = true; }
+          else if (d.error) throw new Error(d.error);
+        }
+      } catch (_) {}
+
+      if (!imgDone) {
+        // Fallback: direkt zu Groq (wenn lokaler Server nicht läuft)
+        const userContent = [
+          { type: 'image_url', image_url: { url: `data:${imgMime};base64,${imgB64}` } },
+          { type: 'text', text: question || 'Bitte löse diese Aufgabe Schritt für Schritt auf Deutsch.' },
+        ];
+        const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${GROQ_KEY}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'meta-llama/llama-4-scout-17b-16e-instruct',
+            messages: [{ role: 'system', content: _getChatSystem() }, ...historySlice, { role: 'user', content: userContent }],
+            max_tokens: 700, temperature: 0.7
+          })
+        });
+        if (!res.ok) {
+          if (res.status === 401) throw new Error('API-Key abgelaufen – <a href="#" onclick="_promptNewKey();return false">hier erneuern</a>');
+          throw new Error(`HTTP ${res.status}`);
+        }
+        const d = await res.json();
+        answer = d.choices?.[0]?.message?.content || '(Keine Antwort)';
+      }
     } else {
       // Text: über _aiCall() mit automatischem Fallback
       const messages = [

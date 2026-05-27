@@ -172,6 +172,46 @@ def save_image():
                     "ai_next": next_t, "count": count})
 
 # ============================================================
+# BILD-CHAT  (Herr Lala analysiert ein Bild)
+# ============================================================
+
+@app.route("/api/chat_image", methods=["POST", "OPTIONS"])
+def chat_image():
+    if request.method == "OPTIONS":
+        return "", 204
+    data     = request.get_json(force=True)
+    img_b64  = data.get("image_b64", "")
+    mime     = data.get("mime", "image/jpeg")
+    question = data.get("question") or "Bitte löse diese Aufgabe Schritt für Schritt auf Deutsch."
+    system   = data.get("system", "Du bist Herr Lala, ein freundlicher Lernassistent.")
+    history  = data.get("history", [])
+
+    user_content = [
+        {"type": "image_url", "image_url": {"url": f"data:{mime};base64,{img_b64}"}},
+        {"type": "text", "text": question}
+    ]
+    messages = [{"role": "system", "content": system}] + history + \
+               [{"role": "user", "content": user_content}]
+
+    for model in VISION_MODELS:
+        try:
+            payload = json.dumps({
+                "model": model, "messages": messages,
+                "max_tokens": 700, "temperature": 0.7
+            }).encode()
+            req = urllib.request.Request(
+                GROQ_URL, data=payload,
+                headers={"Authorization": f"Bearer {GROQ_KEY}",
+                         "Content-Type": "application/json"}
+            )
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                d = json.loads(resp.read())
+                return jsonify({"answer": d["choices"][0]["message"]["content"]})
+        except Exception:
+            continue
+    return jsonify({"error": "Bild-Analyse nicht verfügbar (Vision-Modell nicht erreichbar)."}), 503
+
+# ============================================================
 # KI-STATUS
 # ============================================================
 
