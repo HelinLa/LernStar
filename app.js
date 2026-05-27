@@ -2426,6 +2426,99 @@ function _checkAIEx(chosen, correct, btn, explanation) {
   if (expl) { expl.textContent = explanation; expl.classList.remove('hidden'); }
 }
 
+// ============================================================
+// ZAP-AUFGABENBANK  –  Echte Prüfungsaufgaben, immer verfügbar
+// ============================================================
+const ZAP_BANK = {
+  mathe: [
+    // === Terme & Gleichungen ===
+    {topic:'Terme & Gleichungen',diff:1,question:'Löse die Gleichung: 3x + 7 = 22',options:['x = 3','x = 5','x = 7','x = 4'],correct:1,explanation:'3x + 7 = 22 → 3x = 15 → x = 5'},
+    {topic:'Terme & Gleichungen',diff:1,question:'Löse: 2(x − 3) = 10',options:['x = 4','x = 8','x = 6','x = 2'],correct:1,explanation:'2x − 6 = 10 → 2x = 16 → x = 8'},
+    {topic:'Terme & Gleichungen',diff:2,question:'Löse: 5x − 3 = 2x + 9',options:['x = 2','x = 3','x = 4','x = 6'],correct:2,explanation:'5x − 2x = 9 + 3 → 3x = 12 → x = 4'},
+    {topic:'Terme & Gleichungen',diff:1,question:'Vereinfache: 3a + 5b − 2a + b',options:['5a + 6b','a + 6b','a + 4b','5a + 4b'],correct:1,explanation:'(3a − 2a) + (5b + b) = a + 6b'},
+    {topic:'Terme & Gleichungen',diff:2,question:'Löse: x² − 9 = 0',options:['x = 3','x = ±9','x = ±3','x = 9'],correct:2,explanation:'x² = 9 → x = ±3 (beide Lösungen)'},
+    {topic:'Terme & Gleichungen',diff:2,question:'Multipliziere aus: (2x + 3)(x − 1)',options:['2x² + x − 3','2x² − x − 3','2x² + 5x − 3','x² + x − 3'],correct:0,explanation:'2x·x + 2x·(−1) + 3·x + 3·(−1) = 2x² − 2x + 3x − 3 = 2x² + x − 3'},
+    {topic:'Terme & Gleichungen',diff:1,question:'Löse: x/3 + 2 = 5',options:['x = 6','x = 9','x = 3','x = 12'],correct:1,explanation:'x/3 = 3 → x = 9'},
+    {topic:'Terme & Gleichungen',diff:2,question:'Faktorisiere: x² − 16',options:['(x + 4)(x − 4)','(x − 4)²','(x + 8)(x − 2)','(x + 4)²'],correct:0,explanation:'3. binomische Formel: a² − b² = (a+b)(a−b) → (x+4)(x−4)'},
+    {topic:'Terme & Gleichungen',diff:1,question:'Für welchen Wert von x gilt: 2x + 5 = 13?',options:['x = 3','x = 4','x = 5','x = 9'],correct:1,explanation:'2x = 8 → x = 4'},
+    {topic:'Terme & Gleichungen',diff:2,question:'Vereinfache: (x + 3)²',options:['x² + 9','x² + 3x + 9','x² + 6x + 9','x² + 6x + 6'],correct:2,explanation:'1. binomische Formel: (a+b)² = a² + 2ab + b² → x² + 6x + 9'},
+    // === Lineare Funktionen ===
+    {topic:'Lineare Funktionen',diff:1,question:'f(x) = 2x − 4: Wo schneidet die Gerade die x-Achse?',options:['x = −2','x = 2','x = 4','x = −4'],correct:1,explanation:'0 = 2x − 4 → 2x = 4 → x = 2'},
+    {topic:'Lineare Funktionen',diff:2,question:'Wie lautet die Steigung der Geraden durch A(1|3) und B(3|7)?',options:['m = 1','m = 3','m = 2','m = 4'],correct:2,explanation:'m = (y₂−y₁)/(x₂−x₁) = (7−3)/(3−1) = 4/2 = 2'},
+    {topic:'Lineare Funktionen',diff:1,question:'Die Gerade y = −3x + 6 hat den y-Achsenabschnitt:',options:['−3','3','6','−6'],correct:2,explanation:'In y = mx + b ist b = 6 der y-Achsenabschnitt'},
+    {topic:'Lineare Funktionen',diff:2,question:'Welche Gleichung hat die Steigung 3 und geht durch (0|−2)?',options:['y = 3x + 2','y = −2x + 3','y = 3x − 2','y = 2x − 3'],correct:2,explanation:'Mit m = 3 und b = −2 ergibt sich y = 3x − 2'},
+    {topic:'Lineare Funktionen',diff:3,question:'Wo schneiden sich y = 2x + 1 und y = −x + 7?',options:['(2|5)','(3|7)','(1|3)','(6|1)'],correct:0,explanation:'2x + 1 = −x + 7 → 3x = 6 → x = 2, y = 5'},
+    {topic:'Lineare Funktionen',diff:1,question:'Welche Steigung hat eine Gerade parallel zu y = 3x − 2?',options:['−3','1/3','−1/3','3'],correct:3,explanation:'Parallele Geraden haben dieselbe Steigung → m = 3'},
+    {topic:'Lineare Funktionen',diff:1,question:'Welche Gerade hat die Steigung m = 0?',options:['Eine schräge Gerade','Eine senkrechte Gerade','Eine waagrechte Gerade','Eine Parabel'],correct:2,explanation:'m = 0 bedeutet keine Steigung → waagrechte (horizontale) Gerade'},
+    // === Quadratische Funktionen ===
+    {topic:'Quadratische Funktionen',diff:2,question:'Nullstellen von f(x) = x² − 4x + 3?',options:['x = 1 und x = 3','x = −1 und x = −3','x = 2 und x = 4','x = 0 und x = 4'],correct:0,explanation:'(x−1)(x−3) = 0 → x = 1 oder x = 3'},
+    {topic:'Quadratische Funktionen',diff:1,question:'Scheitelpunkt der Parabel f(x) = (x − 2)² + 5?',options:['S(2|5)','S(−2|5)','S(2|−5)','S(−2|−5)'],correct:0,explanation:'In Scheitelpunktform f(x) = (x−d)² + e ist S(d|e) → S(2|5)'},
+    {topic:'Quadratische Funktionen',diff:2,question:'Wie viele Nullstellen hat f(x) = x² − 6x + 9?',options:['Zwei verschiedene','Eine (doppelt)','Keine','Drei'],correct:1,explanation:'x² − 6x + 9 = (x−3)² → nur x = 3 als doppelte Nullstelle'},
+    {topic:'Quadratische Funktionen',diff:3,question:'Berechne die Nullstellen von x² + 2x − 8 = 0 mit der Lösungsformel.',options:['x₁ = 2 und x₂ = −4','x₁ = −2 und x₂ = 4','x₁ = 4 und x₂ = 2','x₁ = −8 und x₂ = 1'],correct:0,explanation:'x = (−2 ± √(4+32)) / 2 = (−2 ± 6) / 2 → x₁ = 2, x₂ = −4'},
+    {topic:'Quadratische Funktionen',diff:1,question:'Wohin öffnet die Parabel f(x) = −x²?',options:['Nach oben','Nach unten','Nach rechts','Nach links'],correct:1,explanation:'Der Faktor vor x² ist negativ (−1) → Parabel öffnet nach unten'},
+    {topic:'Quadratische Funktionen',diff:2,question:'Was bedeutet eine negative Diskriminante D = b² − 4ac?',options:['Genau eine Lösung','Zwei reelle Lösungen','Keine reellen Lösungen','Unendlich viele Lösungen'],correct:2,explanation:'D < 0: keine reellen Nullstellen (Parabel schneidet x-Achse nicht)'},
+    // === Pythagoras & Trigonometrie ===
+    {topic:'Pythagoras & Trigonometrie',diff:1,question:'Rechtwinkliges Dreieck: Katheten a = 3 cm, b = 4 cm. Hypotenuse c?',options:['5 cm','6 cm','7 cm','√7 cm'],correct:0,explanation:'c² = 3² + 4² = 9 + 16 = 25 → c = 5 cm'},
+    {topic:'Pythagoras & Trigonometrie',diff:1,question:'sin(30°) = ?',options:['0,5','√2/2','√3/2','1'],correct:0,explanation:'sin(30°) = 1/2 = 0,5 (merken: 30-60-90-Dreieck)'},
+    {topic:'Pythagoras & Trigonometrie',diff:2,question:'Hypotenuse = 10 cm, Winkel α = 30°. Gegenkathete = ?',options:['4 cm','5 cm','5√3 cm','8,66 cm'],correct:1,explanation:'Gegenkathete = sin(30°) × c = 0,5 × 10 = 5 cm'},
+    {topic:'Pythagoras & Trigonometrie',diff:1,question:'Was gibt tan(α) in einem rechtwinkligen Dreieck an?',options:['Gegenkathete / Hypotenuse','Ankathete / Hypotenuse','Gegenkathete / Ankathete','Hypotenuse / Gegenkathete'],correct:2,explanation:'tan(α) = Gegenkathete / Ankathete'},
+    {topic:'Pythagoras & Trigonometrie',diff:2,question:'Ankathete = 5, Hypotenuse = 13. Berechne die Gegenkathete.',options:['8','10','12','√194'],correct:2,explanation:'b = √(13² − 5²) = √(169 − 25) = √144 = 12'},
+    {topic:'Pythagoras & Trigonometrie',diff:2,question:'Ein Turm ist 15 m hoch. Ein Seil vom Fuß ist 17 m lang. Horizontalabstand?',options:['6 m','7 m','8 m','10 m'],correct:2,explanation:'d = √(17² − 15²) = √(289 − 225) = √64 = 8 m'},
+    {topic:'Pythagoras & Trigonometrie',diff:1,question:'cos(60°) = ?',options:['√3/2','0,5','1','√2/2'],correct:1,explanation:'cos(60°) = 1/2 = 0,5'},
+    // === Ähnlichkeit & Strahlensätze ===
+    {topic:'Ähnlichkeit & Strahlensätze',diff:1,question:'Ähnliche Dreiecke im Verhältnis 1:3. Kleinere Seite = 4 cm. Größere = ?',options:['7 cm','12 cm','9 cm','16 cm'],correct:1,explanation:'4 cm × 3 = 12 cm'},
+    {topic:'Ähnlichkeit & Strahlensätze',diff:2,question:'Strahlensatz: ZA = 4, ZA\' = 6, ZB = 5. ZB\' = ?',options:['7,5','8','6','9'],correct:0,explanation:'ZB\'/ZA\' = ZB/ZA → ZB\' = 6 × 5 / 4 = 7,5'},
+    {topic:'Ähnlichkeit & Strahlensätze',diff:2,question:'Stab (2 m) wirft Schatten (1,5 m), Baum wirft Schatten (6 m). Baumhöhe?',options:['4 m','8 m','6 m','12 m'],correct:1,explanation:'Baum/6 = 2/1,5 → Baum = 6 × (2/1,5) = 8 m'},
+    {topic:'Ähnlichkeit & Strahlensätze',diff:1,question:'Was kennzeichnet ähnliche Dreiecke?',options:['Gleiche Seitenlängen','Gleiche Winkel, proportionale Seiten','Gleiche Fläche','Gleiche Umfänge'],correct:1,explanation:'Ähnliche Figuren haben gleiche Winkel und proportionale (nicht gleiche) Seiten'},
+    {topic:'Ähnlichkeit & Strahlensätze',diff:1,question:'Maßstab 1:50.000. Strecke auf Karte = 4 cm. Reale Länge?',options:['200 m','500 m','2 km','20 km'],correct:2,explanation:'4 cm × 50.000 = 200.000 cm = 2.000 m = 2 km'},
+    // === Prozent- & Zinsrechnung ===
+    {topic:'Prozent- & Zinsrechnung',diff:1,question:'Artikel kostet 80 €, wird um 25 % reduziert. Neuer Preis?',options:['55 €','60 €','65 €','70 €'],correct:1,explanation:'80 € × 0,75 = 60 €'},
+    {topic:'Prozent- & Zinsrechnung',diff:2,question:'Preis steigt von 200 € auf 250 €. Prozentualer Anstieg?',options:['20 %','25 %','30 %','50 %'],correct:1,explanation:'(250 − 200) / 200 × 100 % = 50/200 × 100 % = 25 %'},
+    {topic:'Prozent- & Zinsrechnung',diff:1,question:'Kapital: 1.000 €, Zinssatz: 3 %. Zinsen nach 1 Jahr?',options:['3 €','30 €','300 €','33 €'],correct:1,explanation:'Z = 1.000 € × 0,03 = 30 €'},
+    {topic:'Prozent- & Zinsrechnung',diff:3,question:'Auto (20.000 €) verliert jedes Jahr 15 % Wert. Wert nach 2 Jahren?',options:['14.450 €','14.000 €','15.000 €','16.000 €'],correct:0,explanation:'20.000 × 0,85² = 20.000 × 0,7225 = 14.450 €'},
+    {topic:'Prozent- & Zinsrechnung',diff:2,question:'85 % bestehen die Prüfung, das sind 17 Schüler. Klassengröße?',options:['19','20','22','25'],correct:1,explanation:'Grundwert = 17 / 0,85 = 20 Schüler'},
+    {topic:'Prozent- & Zinsrechnung',diff:3,question:'Preis mit 19 % MwSt. beträgt 400 €. Nettopreis (ohne MwSt.)?',options:['320,00 €','336,13 €','381,00 €','340,00 €'],correct:1,explanation:'Nettopreis = 400 / 1,19 ≈ 336,13 €'},
+    {topic:'Prozent- & Zinsrechnung',diff:1,question:'Von 500 € werden 40 % gespart. Wie viel bleibt zum Ausgeben?',options:['200 €','250 €','300 €','350 €'],correct:2,explanation:'500 × 0,60 = 300 € (oder 500 − 200 = 300 €)'},
+    // === Statistik & Diagramme ===
+    {topic:'Statistik & Diagramme',diff:2,question:'Noten: 2,3,1,4,3,2,3,5,2,1. Median?',options:['2','2,5','3','2,6'],correct:1,explanation:'Sortiert: 1,1,2,2,2,3,3,3,4,5 → Median = (2+3)/2 = 2,5'},
+    {topic:'Statistik & Diagramme',diff:1,question:'Werte: 4, 7, 3, 8, 3. Mittelwert?',options:['4','5','6','3'],correct:1,explanation:'(4+7+3+8+3) / 5 = 25 / 5 = 5'},
+    {topic:'Statistik & Diagramme',diff:1,question:'Modus der Reihe: 5, 3, 7, 3, 8, 5, 3, 9?',options:['5','3','7','8'],correct:1,explanation:'3 kommt 3-mal vor (häufigster Wert) → Modus = 3'},
+    {topic:'Statistik & Diagramme',diff:1,question:'Klasse (40 Schüler): 30 % mögen Mathe am liebsten. Wie viele?',options:['10','12','15','8'],correct:1,explanation:'40 × 0,30 = 12 Schüler'},
+    {topic:'Statistik & Diagramme',diff:1,question:'Median der sortierten Datenmenge 2, 5, 8, 11, 14?',options:['5','8','9','10'],correct:1,explanation:'5 Werte → Median = 3. Wert = 8'},
+    {topic:'Statistik & Diagramme',diff:1,question:'Was gibt der Median einer Datenmenge an?',options:['Den häufigsten Wert','Den größten Wert','Den mittleren Wert (nach Sortieren)','Den Durchschnitt'],correct:2,explanation:'Median = mittlerer Wert nach dem Sortieren (nicht Durchschnitt!)'},
+    // === Wahrscheinlichkeit ===
+    {topic:'Wahrscheinlichkeit',diff:1,question:'Würfel: Wahrscheinlichkeit einer geraden Zahl?',options:['1/6','1/3','1/2','2/3'],correct:2,explanation:'Gerade Zahlen: 2, 4, 6 → P = 3/6 = 1/2'},
+    {topic:'Wahrscheinlichkeit',diff:1,question:'Urne: 3 rote, 7 blaue Kugeln. P(rote Kugel)?',options:['0,3','0,7','0,4','0,2'],correct:0,explanation:'P = 3 / (3+7) = 3/10 = 0,3'},
+    {topic:'Wahrscheinlichkeit',diff:2,question:'Zweimaliger Münzwurf: P(zweimal Zahl)?',options:['1/2','1/4','1/3','1/8'],correct:1,explanation:'P = 1/2 × 1/2 = 1/4 (unabhängige Ereignisse)'},
+    {topic:'Wahrscheinlichkeit',diff:2,question:'Beutel: 5 rote, 3 grüne, 2 blaue Kugeln. P(KEINE rote)?',options:['1/2','2/5','3/10','1/5'],correct:0,explanation:'P(nicht rot) = (3+2)/10 = 5/10 = 1/2'},
+    {topic:'Wahrscheinlichkeit',diff:1,question:'Welche Wahrscheinlichkeit ist unmöglich?',options:['P = 0','P = 0,5','P = 1','P = 1,2'],correct:3,explanation:'Wahrscheinlichkeiten liegen immer zwischen 0 und 1. P = 1,2 ist unmöglich.'},
+    {topic:'Wahrscheinlichkeit',diff:1,question:'Glücksrad mit 8 gleichen Feldern, 3 davon rot. P(rot)?',options:['1/8','3/8','5/8','3/5'],correct:1,explanation:'P = 3/8 (Laplace-Wahrscheinlichkeit: günstige / mögliche Ergebnisse)'},
+  ],
+  physik: [
+    {topic:'Elektrischer Stromkreis',diff:1,question:'Ohmsches Gesetz: R = 10 Ω, U = 5 V. Stromstärke I?',options:['I = 0,5 A','I = 2 A','I = 50 A','I = 0,1 A'],correct:0,explanation:'I = U / R = 5 V / 10 Ω = 0,5 A'},
+    {topic:'Elektrischer Stromkreis',diff:1,question:'Reihenschaltung: R₁ = 4 Ω, R₂ = 6 Ω. Gesamtwiderstand?',options:['2,4 Ω','24 Ω','10 Ω','5 Ω'],correct:2,explanation:'Reihenschaltung: R_ges = R₁ + R₂ = 4 + 6 = 10 Ω'},
+    {topic:'Elektrischer Stromkreis',diff:2,question:'U = 230 V, I = 2 A. Elektrische Leistung P?',options:['115 W','460 W','232 W','228 W'],correct:1,explanation:'P = U × I = 230 V × 2 A = 460 W'},
+    {topic:'Elektrischer Stromkreis',diff:2,question:'Parallelschaltung: R₁ = 6 Ω, R₂ = 3 Ω. Gesamtwiderstand?',options:['2 Ω','9 Ω','18 Ω','4,5 Ω'],correct:0,explanation:'1/R_ges = 1/6 + 1/3 = 1/6 + 2/6 = 3/6 → R_ges = 2 Ω'},
+    {topic:'Elektrischer Stromkreis',diff:1,question:'Einheit der elektrischen Spannung?',options:['Ampere','Watt','Ohm','Volt'],correct:3,explanation:'Spannung wird in Volt (V) gemessen'},
+    {topic:'Elektrischer Stromkreis',diff:1,question:'Welcher Schaltungstyp hat denselben Strom durch alle Bauteile?',options:['Parallelschaltung','Reihenschaltung','Wechselschaltung','Brückenschaltung'],correct:1,explanation:'In der Reihenschaltung fließt derselbe Strom durch alle Bauteile'},
+    {topic:'Elektrischer Stromkreis',diff:2,question:'Widerstand verdoppelt sich, Spannung bleibt konstant. Was passiert mit I?',options:['I verdoppelt sich','I bleibt gleich','I halbiert sich','I vervierfacht sich'],correct:2,explanation:'I = U/R: wenn R verdoppelt wird, halbiert sich I'},
+    {topic:'Mechanik',diff:1,question:'Gleichförmige Bewegung: v = 10 m/s, t = 5 s. Weg s?',options:['2 m','15 m','50 m','25 m'],correct:2,explanation:'s = v × t = 10 m/s × 5 s = 50 m'},
+    {topic:'Mechanik',diff:1,question:'Masse 5 kg, g = 10 m/s². Gewichtskraft F_G?',options:['5 N','15 N','50 N','500 N'],correct:2,explanation:'F_G = m × g = 5 kg × 10 m/s² = 50 N'},
+    {topic:'Mechanik',diff:2,question:'Newton 2. Gesetz: m = 2 kg, a = 3 m/s². Kraft F?',options:['1,5 N','5 N','6 N','9 N'],correct:2,explanation:'F = m × a = 2 kg × 3 m/s² = 6 N'},
+    {topic:'Mechanik',diff:2,question:'Geschwindigkeit ändert sich von 0 auf 20 m/s in 4 s. Beschleunigung a?',options:['2 m/s²','4 m/s²','5 m/s²','80 m/s²'],correct:2,explanation:'a = Δv / t = 20 m/s / 4 s = 5 m/s²'},
+    {topic:'Mechanik',diff:1,question:'Einheit der elektrischen Leistung?',options:['Volt','Ampere','Watt','Ohm'],correct:2,explanation:'Leistung wird in Watt (W) gemessen'},
+    {topic:'Energie',diff:2,question:'Potenzielle Energie: m = 2 kg, g = 10 m/s², h = 20 m. E_pot?',options:['200 J','40 J','400 J','4.000 J'],correct:2,explanation:'E_pot = m × g × h = 2 × 10 × 20 = 400 J'},
+    {topic:'Energie',diff:1,question:'Was ist der Unterschied zwischen Masse und Gewichtskraft?',options:['Kein Unterschied','Masse in kg – Gewichtskraft in N','Masse in N – Gewichtskraft in kg','Beide in Newton'],correct:1,explanation:'Masse (kg) ist eine Eigenschaft des Körpers; Gewichtskraft (N) wirkt durch Gravitation'},
+    {topic:'Optik & Wellen',diff:1,question:'Was passiert mit Licht, wenn es von Luft in Wasser übergeht?',options:['Es wird schneller','Es wird langsamer und bricht sich','Es bleibt unverändert','Es wird reflektiert'],correct:1,explanation:'Licht wird in einem dichteren Medium (Wasser) langsamer und bricht sich (Brechungsgesetz)'},
+  ]
+};
+
+function _zapBankPick(subjectId, count, maxDiff) {
+  const pool = (ZAP_BANK[subjectId] || []).filter(q => q.diff <= maxDiff);
+  const shuffled = [...pool].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
+}
+
 // ── PRÜFUNGSMODUS ────────────────────────────────────────────
 function renderExamPrep() {
   showView('viewExamPrep');
@@ -2528,10 +2621,23 @@ async function startExamSession() {
   document.getElementById('examSession')?.classList.remove('hidden');
 
   const card = document.getElementById('examQuestionCard');
-  if (card) card.innerHTML = '<div class="exam-loading">⏳ Herr Lala bereitet 5 Aufgaben vor…</div>';
 
   state.examSession = { questions:[], current:0, score:0, answers:[] };
   _examRunning = true;
+
+  // ── ZAP-Aufgabenbank: sofort, kein Laden nötig ──────────────
+  if (state.examMode === 'zap') {
+    const maxDiff = state.examDiff || 2;
+    const bankQs  = _zapBankPick(state.examSubjectId, 5, maxDiff);
+    if (bankQs.length >= 5) {
+      state.examSession.questions = bankQs;
+      _examRunning = false;
+      _showExamQ(0);
+      return;
+    }
+  }
+
+  if (card) card.innerHTML = '<div class="exam-loading">⏳ KI bereitet Aufgaben vor…</div>';
 
   const gradeNum = state.gradeId ? state.gradeId.replace('klasse','') : '10';
   const subjName = state.gradeId
