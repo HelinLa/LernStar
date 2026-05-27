@@ -4416,9 +4416,8 @@ function _evAutoScenes(topicName) {
   ];
 }
 
-// ─── LEGACY custom scenes (kept for reference, not loaded) ───────
-const _EV_LEGACY = {
-  'Einführung in Brüche': [
+// ─── (legacy scenes removed) ────────────────────────────────────
+if (false) { const _EV_LEGACY = { 'Einführung in Brüche': [
     { dur:3500, bg:'linear-gradient(160deg,#1a0035 0%,#0e0820 100%)',
       build(stage) {
         stage.innerHTML = `
@@ -4578,8 +4577,7 @@ const _EV_LEGACY = {
         </div>`;
       }
     }
-  ]
-};
+  ] }; } // end legacy
 
 let _evTopicName='',_evSceneIdx=0,_evPaused=false,_evTimer=null,_evSceneStart=0,_evSceneElapsed=0;
 
