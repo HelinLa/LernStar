@@ -3166,7 +3166,7 @@ function _simCreate() {
 // FADENSTRAHLROHR SIMULATION
 // ============================================================
 function _fstSetU(val) { if (_sim) _sim.setU(parseFloat(val)); }
-function _fstSetI(val) { if (_sim) _sim.setI(parseFloat(val) / 10); }
+function _fstSetI(val) { if (_sim) _sim.setI(parseFloat(val)); }
 
 function _fstCreate() {
   const canvas = document.getElementById('fstCanvas');
