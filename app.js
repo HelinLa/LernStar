@@ -1874,6 +1874,84 @@ function closeSidebar() {
 // ============================================================
 const GROQ_KEY = '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';
 
+// ============================================================
+// BROWSER-KI  –  transformers.js (kein API-Key, offline)
+// ============================================================
+let _baiPipe    = null;
+let _baiPromise = null;
+let _baiStatus  = 'idle'; // 'idle'|'loading'|'ready'|'failed'
+let _baiProgCb  = null;   // (pct:number, file:string) => void
+
+async function _baiLoad() {
+  if (_baiStatus === 'ready')   return _baiPipe;
+  if (_baiStatus === 'loading') return _baiPromise;
+
+  _baiStatus  = 'loading';
+  _baiPromise = (async () => {
+    const { pipeline, env } = await import(
+      'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.3.3'
+    );
+    env.useBrowserCache  = true;
+    env.allowLocalModels = false;
+
+    const files = {};
+    _baiPipe = await pipeline(
+      'text-generation',
+      'onnx-community/Qwen2.5-0.5B-Instruct',
+      {
+        dtype: 'q4',
+        progress_callback(info) {
+          if (!info.total) return;
+          files[info.file || '?'] = { l: info.loaded || 0, t: info.total };
+          const tot = Object.values(files).reduce((s, f) => s + f.t, 0);
+          const lod = Object.values(files).reduce((s, f) => s + f.l, 0);
+          if (tot > 0 && _baiProgCb)
+            _baiProgCb(Math.round(lod / tot * 100), info.file || '');
+        }
+      }
+    );
+    _baiStatus = 'ready';
+    _renderBaiStatusBadge();
+    return _baiPipe;
+  })();
+
+  try {
+    return await _baiPromise;
+  } catch (err) {
+    _baiStatus = 'failed';
+    _renderBaiStatusBadge();
+    throw err;
+  }
+}
+
+async function _baiAsk(messages, opts = {}) {
+  const pipe = await _baiLoad();
+  const out  = await pipe(messages, {
+    max_new_tokens:     opts.max_tokens  || 1200,
+    temperature:        opts.temperature || 0.65,
+    do_sample:          true,
+    repetition_penalty: 1.1,
+  });
+  const g = out?.[0]?.generated_text;
+  if (Array.isArray(g)) return g.at(-1)?.content ?? '';
+  return typeof g === 'string' ? g : '';
+}
+
+function _renderBaiStatusBadge() {
+  const el = document.getElementById('baiStatusBadge');
+  if (!el) return;
+  const map = {
+    ready:   ['🟢 KI bereit (offline)', 'bai-badge bai-ok'],
+    loading: ['🔄 KI lädt…',           'bai-badge bai-spin'],
+    failed:  ['☁️ Online-KI aktiv',    'bai-badge'],
+    idle:    ['',                        'bai-badge'],
+  };
+  const [txt, cls] = map[_baiStatus] || ['', 'bai-badge'];
+  el.textContent = txt;
+  el.className   = cls;
+  el.style.display = txt ? 'inline-flex' : 'none';
+}
+
 // Standard-Anbieter – eigene KI zuerst, Groq als Online-Fallback
 const _defaultProviders = [
   {
@@ -2383,6 +2461,10 @@ function renderExamPrep() {
 
   ['examSession','examResults'].forEach(id => document.getElementById(id)?.classList.add('hidden'));
   document.getElementById('examSetup')?.classList.remove('hidden');
+
+  // Preload Browser-KI silently while user picks settings
+  if (_baiStatus === 'idle') _baiLoad().catch(() => {});
+  _renderBaiStatusBadge();
 }
 
 function setExamMode(mode) {
@@ -2461,16 +2543,51 @@ async function startExamSession() {
   const diffMap  = { 1:'einfach', 2:'mittelschwer', 3:'schwer' };
   const diff     = diffMap[state.examDiff] || 'mittelschwer';
 
-  try {
-    const prompt = `Erstelle genau 5 ${diff}e Multiple-Choice-Fragen für das Schulfach ${subjName}, Klasse ${gradeNum}, im Stil einer ${modeText}.
+  const prompt = `Erstelle genau 5 ${diff}e Multiple-Choice-Fragen für das Schulfach ${subjName}, Klasse ${gradeNum}, im Stil einer ${modeText}.
 Jede Frage hat genau 4 Antwortmöglichkeiten. Der Wert "correct" ist der Index (0-3) der richtigen Antwort.
-Antworte mit einem JSON-Objekt in diesem Format:
+Antworte NUR mit einem JSON-Objekt, kein erklärender Text davor oder danach:
 {"questions":[{"question":"...","options":["A","B","C","D"],"correct":0,"explanation":"..."},{"question":"...","options":["...","...","...","..."],"correct":1,"explanation":"..."},{"question":"...","options":["...","...","...","..."],"correct":2,"explanation":"..."},{"question":"...","options":["...","...","...","..."],"correct":0,"explanation":"..."},{"question":"...","options":["...","...","...","..."],"correct":3,"explanation":"..."}]}`;
 
-    const raw = await _aiCall([
-      { role: 'system', content: 'Du bist ein Prüfungsersteller für deutsche Schulen. Antworte immer mit einem JSON-Objekt mit einem "questions"-Array.' },
-      { role: 'user', content: prompt }
-    ], { max_tokens: 2000, temperature: 0.65, response_format: { type: 'json_object' } });
+  const sysMsgs = [
+    { role: 'system', content: 'Du bist ein Prüfungsersteller für deutsche Schulen. Antworte IMMER ausschließlich mit einem JSON-Objekt mit einem "questions"-Array. Kein Text außerhalb des JSON.' },
+    { role: 'user', content: prompt }
+  ];
+
+  try {
+    let raw = null;
+
+    // ── Browser-KI (kein API-Key, offline) ──────────────────
+    if (_baiStatus !== 'failed') {
+      try {
+        if (_baiStatus !== 'ready') {
+          _baiProgCb = (pct) => {
+            if (!card) return;
+            card.innerHTML = `
+              <div class="exam-loading bai-dl-screen">
+                <div class="bai-dl-icon">🧠</div>
+                <div class="bai-dl-title">Browser-KI wird geladen</div>
+                <div class="bai-dl-sub">Einmalig ~300 MB · danach immer offline nutzbar</div>
+                <div class="bai-bar-wrap"><div class="bai-bar-fill" style="width:${pct}%"></div></div>
+                <div class="bai-dl-pct">${pct}%</div>
+              </div>`;
+          };
+        }
+        raw = await _baiAsk(sysMsgs, { max_tokens: 1500, temperature: 0.65 });
+        _baiProgCb = null;
+        if (card) card.innerHTML = '<div class="exam-loading">⚙️ Aufgaben werden aufbereitet…</div>';
+      } catch (e) {
+        _baiProgCb = null;
+        console.warn('[BrowserAI] Fallback zu Online-KI:', e.message);
+        raw = null;
+      }
+    }
+
+    // ── Online-Fallback (Groq etc.) ──────────────────────────
+    if (!raw) {
+      if (card) card.innerHTML = '<div class="exam-loading">⏳ Herr Lala bereitet 5 Aufgaben vor…</div>';
+      raw = await _aiCall(sysMsgs, { max_tokens: 2000, temperature: 0.65, response_format: { type: 'json_object' } });
+    }
+
     const parsed = _parseAIJSON(raw);
     const questions = _extractQuestions(parsed);
     if (!questions.length) throw new Error('Keine Fragen erhalten – bitte nochmal versuchen.');

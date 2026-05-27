@@ -2067,4 +2067,16 @@ ul { list-style: none; }
 @keyframes evCharCelebrate{from{transform:translateY(0) rotate(-4deg)}to{transform:translateY(-12px) rotate(4deg)}}
 @keyframes evBlink{0%,88%,100%{transform:scaleY(1)}93%{transform:scaleY(14)}}
 @keyframes evArmAppear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Browser-KI badge & download screen ─────────────────────── */
+.bai-badge{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:20px;background:rgba(124,58,237,.1);color:#6D28D9;margin:8px auto 4px;text-align:center}
+.bai-badge.bai-ok{background:rgba(22,163,74,.12);color:#15803D}
+.bai-badge.bai-spin{background:rgba(234,179,8,.12);color:#92400E}
+.bai-dl-screen{display:flex;flex-direction:column;align-items:center;gap:10px;padding:32px 20px}
+.bai-dl-icon{font-size:2.8rem;animation:evCharBreathe 2s ease-in-out infinite}
+.bai-dl-title{font-size:1.1rem;font-weight:800;color:#1E293B}
+.bai-dl-sub{font-size:.82rem;color:#64748B;text-align:center;max-width:280px}
+.bai-bar-wrap{width:100%;max-width:280px;height:10px;background:#E2E8F0;border-radius:99px;overflow:hidden}
+.bai-bar-fill{height:100%;background:linear-gradient(90deg,#7C3AED,#A855F7);border-radius:99px;transition:width .3s ease}
+.bai-dl-pct{font-size:.9rem;font-weight:700;color:#7C3AED}
 @media(max-width:480px){.ev-player{border-radius:0;width:100vw;height:100vh}.ev-choco-piece{width:36px;height:30px}}
