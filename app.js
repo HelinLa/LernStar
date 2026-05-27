@@ -6638,3 +6638,4 @@ function _evTickProgress(sceneIdx,dur){const fill=document.getElementById('evPro
 function _evTogglePause(){const btn=document.getElementById('evPlayPauseBtn');const scenes=EV_SCENES[_evTopicName];const scene=scenes?.[_evSceneIdx];if(!scene)return;if(_evPaused){_evPaused=false;if(btn)btn.textContent='⏸';const remaining=scene.dur-_evSceneElapsed;_evSceneStart=Date.now();_evTickProgress(_evSceneIdx,scene.dur);_evTimer=setTimeout(()=>_evPlayScene(_evSceneIdx+1),remaining);}else{_evPaused=true;if(btn)btn.textContent='▶';_evSceneElapsed+=Date.now()-_evSceneStart;clearTimeout(_evTimer);}}
 function _evSkipScene(){clearTimeout(_evTimer);_evPlayScene(_evSceneIdx+1);}
 
+
