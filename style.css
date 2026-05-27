@@ -2041,6 +2041,105 @@ ul { list-style: none; }
 }
 
 /* ================================================================
+   SIMULATION MODAL
+   ================================================================ */
+.sim-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 5000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+}
+.sim-box {
+  background: #fff;
+  border-radius: 18px;
+  padding: 22px 22px 18px;
+  width: 100%; max-width: 760px;
+  box-shadow: 0 28px 90px rgba(0,0,0,.28);
+  position: relative;
+}
+.sim-x {
+  position: absolute; top: 14px; right: 16px;
+  background: #f1f5f9; border: none;
+  width: 36px; height: 36px; border-radius: 50%;
+  font-size: 1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: #475569; transition: background .15s;
+}
+.sim-x:hover { background: #e2e8f0; color: #1e293b; }
+.sim-h3 {
+  font-size: 1.12rem; font-weight: 800; color: #1e293b;
+  margin: 0 0 14px; padding-right: 44px;
+}
+.sim-road-canvas {
+  width: 100%; border-radius: 10px;
+  display: block; background: #f0f9ff;
+}
+.sim-chart-canvas { width: 100%; display: block; margin-top: 4px; }
+.sim-info-row {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  align-items: center; padding: 10px 2px 6px;
+  font-size: .88rem; color: #334155;
+}
+.sim-info-row span {
+  background: #f8fafc; border: 1px solid #e2e8f0;
+  border-radius: 8px; padding: 4px 10px;
+}
+.sim-info-row b { color: #1e293b; }
+.sim-btn-row { display: flex; gap: 8px; flex-wrap: wrap; padding: 6px 0 4px; }
+.sim-btn {
+  padding: 8px 18px; border-radius: 30px;
+  border: 2px solid #e2e8f0; background: #f8fafc;
+  color: #475569; font-size: .88rem; font-weight: 700;
+  cursor: pointer; transition: all .15s;
+  font-family: inherit;
+}
+.sim-btn:hover { background: #e2e8f0; color: #1e293b; }
+.sim-btn.primary { background: #7C3AED; color: #fff; border-color: #7C3AED; }
+.sim-btn.primary:hover { background: #6D28D9; border-color: #6D28D9; }
+.sim-hint {
+  font-size: .82rem; color: #64748b; line-height: 1.5;
+  margin: 8px 0 4px;
+  padding: 8px 12px;
+  background: #f8fafc; border-radius: 8px;
+  border-left: 3px solid #7C3AED;
+}
+.sim-diagram-label {
+  font-size: .88rem; font-weight: 700; color: #334155;
+  margin: 10px 0 4px;
+}
+.sim-result {
+  font-size: .9rem; color: #334155;
+  padding: 7px 12px; background: #f0fdf4;
+  border-radius: 8px; margin-top: 6px;
+  min-height: 0;
+}
+.sim-result:empty { display: none; }
+.sim-v-result { color: #16a34a; font-size: 1.05rem; }
+.sim-table {
+  width: 100%; border-collapse: collapse;
+  font-size: .82rem; margin-top: 10px;
+}
+.sim-table th {
+  background: #f1f5f9; padding: 6px 10px;
+  text-align: left; font-weight: 700;
+  color: #475569; border-bottom: 2px solid #e2e8f0;
+}
+.sim-table td {
+  padding: 5px 10px; border-bottom: 1px solid #f1f5f9; color: #334155;
+}
+.sim-table tr:last-child td { border-bottom: none; }
+
+@media (max-width: 600px) {
+  .sim-box { padding: 16px 14px 14px; }
+  .sim-h3 { font-size: .96rem; }
+  .sim-btn { padding: 7px 12px; font-size: .8rem; }
+}
+
+/* ================================================================
    ERKLÄRVIDEO PLAYER + 3D CHARAKTER MR. LALA
    ================================================================ */
 .ev-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:evOverlayIn .25s ease}
