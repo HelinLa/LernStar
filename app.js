@@ -1169,7 +1169,7 @@ function renderSubject() {
           <div class="topic-diff">${DIFF_STARS[t.diff]}</div>
         </div>
         ${hasVideo ? `<button class="topic-play-btn" id="topicBtn${i}" onclick="playTopic(${i})">Erklärvideo</button>` : ''}
-        ${EV_SCENES[t.name] ? `<button class="ev-topic-btn" onclick="openErklaerVideo('${t.name.replace(/'/g,"\\'")}')">🎬 Erklärvideo</button>` : ''}
+        ${(EV_SCENES[t.name] || t.explanation) ? `<button class="ev-topic-btn" onclick="openErklaerVideo('${t.name.replace(/'/g,"\\'")}')">🎬 Erklärvideo</button>` : ''}
       </div>`;
     topicsList.appendChild(item);
   });
@@ -4300,7 +4300,124 @@ function _evCharHTML(mode) {
 </svg></div>`;
 }
 
-const EV_SCENES = {
+// Custom overrides (leave empty — auto-generator handles all topics)
+const EV_SCENES = {};
+
+/* ─── Auto-scene generator: academic split-layout style ─────────
+   Reads explanation + short[] from CONTENT and builds 5 scenes.
+   ─────────────────────────────────────────────────────────────── */
+function _evFindTopic(name) {
+  for (const gk of Object.keys(CONTENT)) {
+    for (const sub of (CONTENT[gk].subjects || [])) {
+      const t = (sub.topics || []).find(t => t.name === name);
+      if (t) return t;
+    }
+  }
+  return null;
+}
+
+function _evAutoScenes(topicName) {
+  const t = _evFindTopic(topicName);
+  if (!t || !t.explanation) return null;
+
+  const s0  = t.short?.[0] || '';
+  const s1  = t.short?.[1] || '';
+  const vis = TOPIC_VISUALS[topicName] || '';
+
+  // Split explanation into two halves by sentence
+  const sents = (t.explanation || '').split(/(?<=[.!?])\s+/).filter(Boolean);
+  const h  = Math.ceil(sents.length / 2);
+  const e1 = sents.slice(0, h).join(' ');
+  const e2 = sents.slice(h).join(' ');
+
+  const lightStage = (stage, bg) => {
+    stage.style.background   = bg || '#F7F9F5';
+    stage.style.alignItems   = 'flex-start';
+    stage.style.justifyContent = 'flex-start';
+    stage.style.textAlign    = 'left';
+  };
+  const visPnl = `<div class="evs-vis-pnl">${vis || '📐'}</div>`;
+
+  return [
+    // Scene 1 — Hook
+    { dur: 2800, bg: '#F7F9F5', speech: topicName + '. Jetzt erklärt.',
+      build(stage) {
+        lightStage(stage);
+        stage.innerHTML = `<div class="evs-hook">
+          <div class="evs-hook-vis">${vis}</div>
+          <div class="evs-hook-title">${topicName}</div>
+          <div class="evs-hook-sub">Schritt für Schritt erklärt ✏️</div>
+        </div>`;
+      }
+    },
+    // Scene 2 — Schlüsselpunkt 1
+    { dur: 6500, bg: '#F7F9F5', speech: s0,
+      build(stage) {
+        lightStage(stage);
+        stage.innerHTML = `<div class="evs-split">
+          <div class="evs-split-left">
+            <div class="evs-kp-label">Was du wissen musst:</div>
+            <div class="evs-step evs-step-on">
+              <div class="evs-step-n">1</div>
+              <div class="evs-step-t">${s0}</div>
+            </div>
+          </div>
+          <div class="evs-split-right">${visPnl}</div>
+        </div>`;
+      }
+    },
+    // Scene 3 — Schlüsselpunkt 2
+    { dur: 6500, bg: '#F7F9F5', speech: s1,
+      build(stage) {
+        lightStage(stage);
+        stage.innerHTML = `<div class="evs-split">
+          <div class="evs-split-left">
+            <div class="evs-step evs-step-done">
+              <div class="evs-step-n">✓</div>
+              <div class="evs-step-t">${s0}</div>
+            </div>
+            <div class="evs-step evs-step-on" style="animation-delay:.35s">
+              <div class="evs-step-n">2</div>
+              <div class="evs-step-t">${s1}</div>
+            </div>
+          </div>
+          <div class="evs-split-right">${visPnl}</div>
+        </div>`;
+      }
+    },
+    // Scene 4 — Erklärung
+    { dur: 9500, bg: '#F7F9F5', speech: e1 + (e2 ? ' ' + e2 : ''),
+      build(stage) {
+        lightStage(stage);
+        stage.innerHTML = `<div class="evs-explain">
+          <div class="evs-explain-lbl">💡 Hintergrundwissen</div>
+          <div class="evs-explain-txt" style="animation:evFadeUp .5s .1s both">${e1}</div>
+          ${e2 ? `<div class="evs-explain-txt evs-explain-txt2" style="animation:evFadeUp .5s 2.2s both">${e2}</div>` : ''}
+        </div>`;
+      }
+    },
+    // Scene 5 — Merksatz
+    { dur: 5500, bg: '#EEF5E8', speech: 'Merksatz: ' + s0 + ' ' + s1,
+      build(stage) {
+        lightStage(stage, '#EEF5E8');
+        stage.innerHTML = `<div class="evs-merksatz-box">
+          <div class="evs-merksatz-hd">📌 Merksatz – ${topicName}</div>
+          <div class="evs-mk-item" style="animation:evFadeUp .4s .15s both">
+            <div class="evs-mk-dot">1</div>
+            <span>${s0}</span>
+          </div>
+          <div class="evs-mk-item" style="animation:evFadeUp .4s .55s both">
+            <div class="evs-mk-dot">2</div>
+            <span>${s1}</span>
+          </div>
+        </div>`;
+      }
+    },
+  ];
+}
+
+// ─── LEGACY custom scenes (kept for reference, not loaded) ───────
+const _EV_LEGACY = {
   'Einführung in Brüche': [
     { dur:3500, bg:'linear-gradient(160deg,#1a0035 0%,#0e0820 100%)',
       build(stage) {
@@ -4466,11 +4583,50 @@ const EV_SCENES = {
 
 let _evTopicName='',_evSceneIdx=0,_evPaused=false,_evTimer=null,_evSceneStart=0,_evSceneElapsed=0;
 
-function openErklaerVideo(topicName){const scenes=EV_SCENES[topicName];if(!scenes)return;_evTopicName=topicName;_evSceneIdx=0;_evPaused=false;_evSceneElapsed=0;const overlay=document.getElementById('erklaerVideoOverlay');if(overlay)overlay.classList.remove('hidden');_evBuildDots(scenes.length);_evPlayScene(0);}
-function closeErklaerVideo(){const overlay=document.getElementById('erklaerVideoOverlay');if(overlay)overlay.classList.add('hidden');clearTimeout(_evTimer);_evTimer=null;}
+function openErklaerVideo(topicName){
+  if(!EV_SCENES[topicName])EV_SCENES[topicName]=_evAutoScenes(topicName);
+  const scenes=EV_SCENES[topicName];
+  if(!scenes)return;
+  _evTopicName=topicName;_evSceneIdx=0;_evPaused=false;_evSceneElapsed=0;
+  const overlay=document.getElementById('erklaerVideoOverlay');
+  if(overlay)overlay.classList.remove('hidden');
+  _evBuildDots(scenes.length);_evPlayScene(0);
+}
+function closeErklaerVideo(){
+  const overlay=document.getElementById('erklaerVideoOverlay');
+  if(overlay)overlay.classList.add('hidden');
+  clearTimeout(_evTimer);_evTimer=null;
+  window.speechSynthesis?.cancel();
+}
 function _evBgClick(e){if(e.target===document.getElementById('erklaerVideoOverlay'))closeErklaerVideo();}
 function _evBuildDots(count){const c=document.getElementById('evSceneDots');if(!c)return;c.innerHTML='';for(let i=0;i<count;i++){const d=document.createElement('div');d.className='ev-dot'+(i===0?' active':'');c.appendChild(d);}}
-function _evPlayScene(idx){const scenes=EV_SCENES[_evTopicName];if(!scenes||idx>=scenes.length){closeErklaerVideo();return;}_evSceneIdx=idx;_evSceneElapsed=0;clearTimeout(_evTimer);document.querySelectorAll('.ev-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));const scene=scenes[idx];const stage=document.getElementById('evStage');if(!stage)return;stage.style.background=scene.bg||'transparent';stage.innerHTML='';scene.build(stage);const btn=document.getElementById('evPlayPauseBtn');if(btn)btn.textContent='⏸';_evPaused=false;_evSceneStart=Date.now();_evTickProgress(idx,scene.dur);_evTimer=setTimeout(()=>_evPlayScene(idx+1),scene.dur);}
+function _evPlayScene(idx){
+  const scenes=EV_SCENES[_evTopicName];
+  if(!scenes||idx>=scenes.length){closeErklaerVideo();return;}
+  _evSceneIdx=idx;_evSceneElapsed=0;clearTimeout(_evTimer);
+  document.querySelectorAll('.ev-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+  const scene=scenes[idx];
+  const stage=document.getElementById('evStage');
+  if(!stage)return;
+  stage.style.background=scene.bg||'transparent';
+  stage.innerHTML='';
+  scene.build(stage);
+  // Sprachausgabe
+  if(scene.speech && window.speechSynthesis){
+    window.speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(scene.speech);
+    u.lang='de-DE';u.rate=0.88;u.pitch=1.02;u.volume=1;
+    const vs=window.speechSynthesis.getVoices();
+    const dv=vs.find(v=>v.lang==='de-DE')||vs.find(v=>v.lang.startsWith('de'));
+    if(dv)u.voice=dv;
+    window.speechSynthesis.speak(u);
+  }
+  const btn=document.getElementById('evPlayPauseBtn');
+  if(btn)btn.textContent='⏸';
+  _evPaused=false;_evSceneStart=Date.now();
+  _evTickProgress(idx,scene.dur);
+  _evTimer=setTimeout(()=>_evPlayScene(idx+1),scene.dur);
+}
 function _evTickProgress(sceneIdx,dur){const fill=document.getElementById('evProgressFill');const scenes=EV_SCENES[_evTopicName];if(!fill||!scenes)return;const totalDur=scenes.reduce((s,sc)=>s+sc.dur,0);const pastDur=scenes.slice(0,sceneIdx).reduce((s,sc)=>s+sc.dur,0);function tick(){if(_evSceneIdx!==sceneIdx||_evPaused)return;const elapsed=Date.now()-_evSceneStart+_evSceneElapsed;const totalDone=pastDur+Math.min(elapsed,dur);fill.style.width=(totalDone/totalDur*100)+'%';if(elapsed<dur)requestAnimationFrame(tick);}requestAnimationFrame(tick);}
 function _evTogglePause(){const btn=document.getElementById('evPlayPauseBtn');const scenes=EV_SCENES[_evTopicName];const scene=scenes?.[_evSceneIdx];if(!scene)return;if(_evPaused){_evPaused=false;if(btn)btn.textContent='⏸';const remaining=scene.dur-_evSceneElapsed;_evSceneStart=Date.now();_evTickProgress(_evSceneIdx,scene.dur);_evTimer=setTimeout(()=>_evPlayScene(_evSceneIdx+1),remaining);}else{_evPaused=true;if(btn)btn.textContent='▶';_evSceneElapsed+=Date.now()-_evSceneStart;clearTimeout(_evTimer);}}
 function _evSkipScene(){clearTimeout(_evTimer);_evPlayScene(_evSceneIdx+1);}
