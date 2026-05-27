@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20" />
+  <link rel="stylesheet" href="style.css?v=21" />
   <!-- Markdown + Mathe-Rendering für Chat -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -138,6 +138,25 @@
       <p>Klicke auf deine Klassenstufe und starte sofort!</p>
     </div>
     <div class="grade-grid" id="gradeGrid"></div>
+
+    <div class="exam-quick-section">
+      <h2 class="section-heading">Prüfungsvorbereitung</h2>
+      <p class="exam-quick-sub">Direkt starten – keine Anmeldung nötig</p>
+      <div class="exam-quick-grid">
+        <button class="exam-quick-card exam-quick-zap" onclick="setExamMode('zap');navigate('examprep')">
+          <div class="eqc-icon">🎯</div>
+          <div class="eqc-title">ZAP-Vorbereitung</div>
+          <div class="eqc-sub">Klasse 9–10 · Multiple Choice · Sofort verfügbar</div>
+          <div class="eqc-badge">65 Aufgaben</div>
+        </button>
+        <button class="exam-quick-card exam-quick-abi" onclick="setExamMode('abitur');navigate('examprep')">
+          <div class="eqc-icon">🏆</div>
+          <div class="eqc-title">Abitur-Vorbereitung</div>
+          <div class="eqc-sub">Gymnasium · KI-generiert · Höchste Anforderung</div>
+          <div class="eqc-badge">KI-generiert</div>
+        </button>
+      </div>
+    </div>
 
     <div class="features-section">
       <h2 class="section-heading">Warum LernStar?</h2>
@@ -590,7 +609,7 @@
 
 <script src="content.js?v=18"></script>
 <script src="js/ai_engine.js?v=1"></script>
-<script src="app.js?v=42"></script>
+<script src="app.js?v=43"></script>
 <!-- ── Animated Explainer Modal ─────────────────────────────── -->
 <div id="explainerModal" role="dialog" aria-modal="true" aria-labelledby="explainerTitle">
   <div class="xp-card" id="explainerCard">

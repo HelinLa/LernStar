@@ -358,6 +358,58 @@ ul { list-style: none; }
 /* ============================================================
    FEATURES SECTION
    ============================================================ */
+/* ── Prüfungs-Schnellstart auf der Startseite ─────────────── */
+.exam-quick-section {
+  padding: 56px 32px 48px;
+  text-align: center;
+  background: linear-gradient(160deg, #f5f3ff 0%, #eff6ff 100%);
+}
+.exam-quick-sub { color: var(--text-muted); margin: -18px 0 32px; font-size: 1rem; }
+.exam-quick-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.exam-quick-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 24px 28px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+  position: relative;
+  overflow: hidden;
+}
+.exam-quick-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.15); }
+.exam-quick-zap {
+  background: linear-gradient(135deg, #7C3AED, #4F46E5);
+  color: white;
+}
+.exam-quick-abi {
+  background: linear-gradient(135deg, #D97706, #B45309);
+  color: white;
+}
+.eqc-icon { font-size: 2.6rem; line-height: 1; }
+.eqc-title { font-size: 1.25rem; font-weight: 800; }
+.eqc-sub { font-size: .82rem; opacity: .85; line-height: 1.4; }
+.eqc-badge {
+  margin-top: 6px;
+  background: rgba(255,255,255,.22);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: .75rem;
+  font-weight: 700;
+}
+@media (max-width: 540px) {
+  .exam-quick-grid { grid-template-columns: 1fr; }
+  .exam-quick-section { padding: 40px 16px 32px; }
+}
+
 .features-section {
   background: var(--surface);
   padding: 60px 32px;

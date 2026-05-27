@@ -2493,6 +2493,32 @@ const ZAP_BANK = {
     {topic:'Wahrscheinlichkeit',diff:2,question:'Beutel: 5 rote, 3 grüne, 2 blaue Kugeln. P(KEINE rote)?',options:['1/2','2/5','3/10','1/5'],correct:0,explanation:'P(nicht rot) = (3+2)/10 = 5/10 = 1/2'},
     {topic:'Wahrscheinlichkeit',diff:1,question:'Welche Wahrscheinlichkeit ist unmöglich?',options:['P = 0','P = 0,5','P = 1','P = 1,2'],correct:3,explanation:'Wahrscheinlichkeiten liegen immer zwischen 0 und 1. P = 1,2 ist unmöglich.'},
     {topic:'Wahrscheinlichkeit',diff:1,question:'Glücksrad mit 8 gleichen Feldern, 3 davon rot. P(rot)?',options:['1/8','3/8','5/8','3/5'],correct:1,explanation:'P = 3/8 (Laplace-Wahrscheinlichkeit: günstige / mögliche Ergebnisse)'},
+    // === Weitere Terme & Gleichungen ===
+    {topic:'Terme & Gleichungen',diff:2,question:'Löse das Gleichungssystem: x + y = 10 und x − y = 4',options:['x=6, y=4','x=7, y=3','x=8, y=2','x=5, y=5'],correct:1,explanation:'Addition: 2x=14 → x=7; Einsetzen: 7+y=10 → y=3'},
+    {topic:'Terme & Gleichungen',diff:3,question:'Löse: x² − 5x + 6 = 0 durch Faktorisierung',options:['x=2 und x=3','x=−2 und x=−3','x=1 und x=6','x=−1 und x=−6'],correct:0,explanation:'(x−2)(x−3)=0 → x=2 oder x=3'},
+    {topic:'Terme & Gleichungen',diff:2,question:'Berechne: 2³ + 3² − 4',options:['12','13','15','17'],correct:1,explanation:'2³=8, 3²=9 → 8+9−4=13'},
+    // === Weitere Lineare Funktionen ===
+    {topic:'Lineare Funktionen',diff:2,question:'Stelle die Geradengleichung durch A(2|5) mit Steigung m=−2 auf.',options:['y=−2x+1','y=−2x+9','y=2x+1','y=−2x−1'],correct:1,explanation:'y=mx+b: 5=−2·2+b → b=9 → y=−2x+9'},
+    {topic:'Lineare Funktionen',diff:1,question:'Welchen y-Achsenabschnitt hat y = 4x + 7?',options:['4','−7','7','−4'],correct:2,explanation:'In y=mx+b ist b=7 der y-Achsenabschnitt'},
+    // === Weitere Quadratische Funktionen ===
+    {topic:'Quadratische Funktionen',diff:3,question:'Forme in Scheitelpunktform um: f(x) = x² − 4x + 7',options:['(x−2)²+3','(x+2)²+3','(x−2)²−3','(x−4)²+7'],correct:0,explanation:'x²−4x+7 = (x²−4x+4)+3 = (x−2)²+3 → Scheitelpunkt S(2|3)'},
+    {topic:'Quadratische Funktionen',diff:2,question:'Berechne den Scheitelpunkt von f(x) = x² + 6x + 5',options:['S(3|14)','S(−3|−4)','S(3|−4)','S(−3|14)'],correct:1,explanation:'x_S = −b/(2a) = −6/2 = −3; y_S = 9−18+5 = −4 → S(−3|−4)'},
+    // === Weitere Pythagoras & Trig ===
+    {topic:'Pythagoras & Trigonometrie',diff:2,question:'Berechne Winkel α wenn tan(α) = 1. Ergebnis?',options:['30°','45°','60°','90°'],correct:1,explanation:'tan(45°) = 1 → α = 45°'},
+    {topic:'Pythagoras & Trigonometrie',diff:2,question:'Hypotenuse = 10 cm, Winkel α = 60°. Ankathete = ?',options:['5 cm','5√3 cm','10 cm','2 cm'],correct:0,explanation:'Ankathete = cos(α) · c = cos(60°) · 10 = 0,5 · 10 = 5 cm'},
+    {topic:'Pythagoras & Trigonometrie',diff:2,question:'In einem rechtwinkligen Dreieck gilt a=6, b=8. Wie groß ist der Flächeninhalt?',options:['14 cm²','24 cm²','48 cm²','12 cm²'],correct:1,explanation:'A = (a·b)/2 = (6·8)/2 = 24 cm²'},
+    // === Weitere Prozentrechnung ===
+    {topic:'Prozent- & Zinsrechnung',diff:2,question:'Zinseszins: 1.000 € für 2 Jahre zu 5 % p.a. Endkapital?',options:['1.100,00 €','1.102,50 €','1.050,00 €','1.200,00 €'],correct:1,explanation:'K₂ = 1000·1,05² = 1000·1,1025 = 1.102,50 €'},
+    {topic:'Prozent- & Zinsrechnung',diff:1,question:'Was sind 15 % von 200 €?',options:['15 €','20 €','30 €','35 €'],correct:2,explanation:'200·0,15 = 30 €'},
+    {topic:'Prozent- & Zinsrechnung',diff:2,question:'Ein Produkt wird erst um 20 % erhöht, dann um 20 % gesenkt. Ergebnis?',options:['Gleicher Preis','4 % günstiger','4 % teurer','20 % günstiger'],correct:1,explanation:'1,2 · 0,8 = 0,96 → 4 % günstiger als ursprünglich'},
+    // === Weitere Statistik ===
+    {topic:'Statistik & Diagramme',diff:2,question:'Noten: 1, 2, 2, 3, 4, 4, 4, 5. Median?',options:['2','3','3,5','4'],correct:2,explanation:'8 Werte → Median = (4.+5.)/2 = (3+4)/2 = 3,5'},
+    {topic:'Statistik & Diagramme',diff:2,question:'Spannweite der Datenmenge: 3, 7, 2, 9, 1, 5?',options:['6','7','8','9'],correct:2,explanation:'Spannweite = Max − Min = 9 − 1 = 8'},
+    {topic:'Statistik & Diagramme',diff:1,question:'Was ist die Spannweite einer Datenmenge?',options:['Der Mittelwert','Größter minus kleinster Wert','Der häufigste Wert','Die Summe aller Werte'],correct:1,explanation:'Spannweite = maximaler Wert − minimaler Wert'},
+    // === Weitere Wahrscheinlichkeit ===
+    {topic:'Wahrscheinlichkeit',diff:3,question:'Karten 1–10. P(Primzahl)?',options:['2/5','3/10','1/2','4/10'],correct:0,explanation:'Primzahlen: 2,3,5,7 → 4 von 10 → P=4/10=2/5'},
+    {topic:'Wahrscheinlichkeit',diff:2,question:'Ein Würfel wird 2-mal geworfen. P(Summe = 7)?',options:['1/6','5/36','6/36','7/36'],correct:0,explanation:'Günstige Paare: (1,6),(2,5),(3,4),(4,3),(5,2),(6,1) = 6 von 36 → P=6/36=1/6'},
+    {topic:'Wahrscheinlichkeit',diff:2,question:'Gegenwahrscheinlichkeit: P(A) = 0,3. P(nicht A) = ?',options:['0,3','0,6','0,7','1,3'],correct:2,explanation:'P(nicht A) = 1 − P(A) = 1 − 0,3 = 0,7'},
   ],
   physik: [
     {topic:'Elektrischer Stromkreis',diff:1,question:'Ohmsches Gesetz: R = 10 Ω, U = 5 V. Stromstärke I?',options:['I = 0,5 A','I = 2 A','I = 50 A','I = 0,1 A'],correct:0,explanation:'I = U / R = 5 V / 10 Ω = 0,5 A'},
