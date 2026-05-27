@@ -3437,6 +3437,347 @@ function openExperiment(expId) {
       </div>`;
     document.body.appendChild(modal);
     _sim = _fstCreate();
+  } else if (expId === 'federkraft') {
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">🌀 Experiment: Federkraft</h3>
+        <canvas id="fedCanvas" width="460" height="200" style="width:100%;border-radius:8px;display:block"></canvas>
+        <div style="padding:8px 16px 4px">
+          <div style="background:#f0fdf4;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#15803D;font-weight:700;margin-bottom:4px">Kraft F (0 – 50 N)</div>
+            <input type="range" id="fedFSlider" min="0" max="50" step="1" value="20"
+              oninput="_fedSetF(this.value)" style="width:100%;accent-color:#16A34A">
+            <div style="text-align:center;font-weight:800;font-size:1rem;color:#15803D"><span id="fedFLabel">20</span> N</div>
+          </div>
+        </div>
+        <div class="sim-info-row" style="margin-top:6px">
+          <span>F = <b id="fedFVal">20</b> N</span>
+          <span>x = <b id="fedXVal">2,0</b> cm</span>
+          <span>k = <b>10</b> N/cm</span>
+        </div>
+        <p class="sim-hint" style="text-align:center;margin:4px 0 6px">Formel: <b>F = k · x</b> &nbsp;|&nbsp; k = 10 N/cm</p>
+      </div>`;
+    document.body.appendChild(modal);
+    _sim = _simFederkraft();
+  } else if (expId === 'hebelgesetz') {
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">⚖️ Experiment: Hebelgesetz</h3>
+        <canvas id="hebCanvas" width="460" height="200" style="width:100%;border-radius:8px;display:block"></canvas>
+        <div style="padding:8px 16px 4px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="background:#fef9c3;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#854D0E;font-weight:700;margin-bottom:4px">Last F₂ (10–100 N)</div>
+            <input type="range" id="hebF2Slider" min="10" max="100" step="1" value="50"
+              oninput="_hebSet('f2',this.value)" style="width:100%;accent-color:#CA8A04">
+            <div style="text-align:center;font-weight:800;color:#854D0E"><span id="hebF2Label">50</span> N</div>
+          </div>
+          <div style="background:#fff7ed;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#9A3412;font-weight:700;margin-bottom:4px">Lastarm l₂ (0,5–3 m)</div>
+            <input type="range" id="hebL2Slider" min="0.5" max="3" step="0.1" value="1.5"
+              oninput="_hebSet('l2',this.value)" style="width:100%;accent-color:#EA580C">
+            <div style="text-align:center;font-weight:800;color:#9A3412"><span id="hebL2Label">1,5</span> m</div>
+          </div>
+        </div>
+        <div class="sim-info-row" style="margin-top:6px">
+          <span>F₁ = <b id="hebF1Val">37,5</b> N</span>
+          <span>l₁ = <b>2,0</b> m</span>
+          <span id="hebBalance" style="font-weight:700;color:#15803D">✓ Gleichgewicht</span>
+        </div>
+        <p class="sim-hint" style="text-align:center;margin:4px 0 6px">Formel: <b>F₁ · l₁ = F₂ · l₂</b></p>
+      </div>`;
+    document.body.appendChild(modal);
+    _sim = _simHebelgesetz();
+  } else if (expId === 'ohmsches-gesetz') {
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">⚡ Experiment: Ohmsches Gesetz</h3>
+        <canvas id="ohmCanvas" width="460" height="200" style="width:100%;border-radius:8px;display:block"></canvas>
+        <div style="padding:8px 16px 4px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="background:#fef2f2;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#991B1B;font-weight:700;margin-bottom:4px">Spannung U (1–12 V)</div>
+            <input type="range" id="ohmUSlider" min="1" max="12" step="0.5" value="6"
+              oninput="_ohmSet('u',this.value)" style="width:100%;accent-color:#DC2626">
+            <div style="text-align:center;font-weight:800;color:#991B1B"><span id="ohmULabel">6</span> V</div>
+          </div>
+          <div style="background:#f0f9ff;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#0369A1;font-weight:700;margin-bottom:4px">Widerstand R (10–100 Ω)</div>
+            <input type="range" id="ohmRSlider" min="10" max="100" step="5" value="30"
+              oninput="_ohmSet('r',this.value)" style="width:100%;accent-color:#0EA5E9">
+            <div style="text-align:center;font-weight:800;color:#0369A1"><span id="ohmRLabel">30</span> Ω</div>
+          </div>
+        </div>
+        <div class="sim-info-row" style="margin-top:6px">
+          <span>U = <b id="ohmUVal">6</b> V</span>
+          <span>I = <b id="ohmIVal">0,20</b> A</span>
+          <span>P = <b id="ohmPVal">1,20</b> W</span>
+        </div>
+        <p class="sim-hint" style="text-align:center;margin:4px 0 6px">Formel: <b>I = U / R</b> &nbsp;|&nbsp; P = U² / R</p>
+      </div>`;
+    document.body.appendChild(modal);
+    _sim = _simOhm();
+  } else if (expId === 'reihenschaltung') {
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">🔌 Experiment: Reihen- und Parallelschaltung</h3>
+        <canvas id="schCanvas" width="460" height="200" style="width:100%;border-radius:8px;display:block"></canvas>
+        <div style="padding:8px 16px 4px;text-align:center">
+          <button class="sim-btn primary" id="schBtnReihe" onclick="_schSetMode('reihe')">Reihenschaltung</button>
+          <button class="sim-btn" id="schBtnParallel" onclick="_schSetMode('parallel')">Parallelschaltung</button>
+        </div>
+        <div class="sim-info-row" style="margin-top:6px">
+          <span>R₁=30 Ω &nbsp; R₂=60 Ω</span>
+          <span>R<sub>ges</sub> = <b id="schRges">90</b> Ω</span>
+          <span>I<sub>ges</sub> = <b id="schIges">0,13</b> A</span>
+        </div>
+        <div id="schDetails" style="text-align:center;font-size:.88rem;color:#374151;padding:2px 0 6px"></div>
+        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Reihe: <b>R = R₁+R₂</b> &nbsp;|&nbsp; Parallel: <b>1/R = 1/R₁ + 1/R₂</b></p>
+      </div>`;
+    document.body.appendChild(modal);
+    _sim = _simSchaltung();
+  } else if (expId === 'beschleunigung') {
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">🚀 Experiment: Beschleunigte Bewegung</h3>
+        <canvas id="beschCanvas" width="460" height="220" style="width:100%;border-radius:8px;display:block"></canvas>
+        <div style="padding:8px 16px 4px">
+          <div style="background:#f5f3ff;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#5B21B6;font-weight:700;margin-bottom:4px">Beschleunigung a (1–10 m/s²)</div>
+            <input type="range" id="beschASlider" min="1" max="10" step="0.5" value="3"
+              oninput="_beschSetA(this.value)" style="width:100%;accent-color:#7C3AED">
+            <div style="text-align:center;font-weight:800;color:#5B21B6"><span id="beschALabel">3,0</span> m/s²</div>
+          </div>
+        </div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" id="beschPlayBtn" onclick="_beschToggle()">▶ Start</button>
+          <button class="sim-btn" onclick="_beschReset()">↺ Neu</button>
+        </div>
+        <div class="sim-info-row">
+          <span>t = <b id="beschTVal">0,0</b> s</span>
+          <span>v = <b id="beschVVal">0,0</b> m/s</span>
+          <span>s = <b id="beschSVal">0,0</b> m</span>
+        </div>
+        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Formeln: <b>v = a·t</b> &nbsp;|&nbsp; <b>s = ½·a·t²</b></p>
+      </div>`;
+    document.body.appendChild(modal);
+    _sim = _simBeschleunigung();
+  } else if (expId === 'freierfall') {
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">🍎 Experiment: Freier Fall</h3>
+        <canvas id="fallCanvas" width="460" height="240" style="width:100%;border-radius:8px;display:block"></canvas>
+        <div style="padding:8px 16px 4px">
+          <div style="background:#fff7ed;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#9A3412;font-weight:700;margin-bottom:4px">Anfangshöhe h (5–50 m)</div>
+            <input type="range" id="fallHSlider" min="5" max="50" step="1" value="20"
+              oninput="_fallSetH(this.value)" style="width:100%;accent-color:#EA580C">
+            <div style="text-align:center;font-weight:800;color:#9A3412"><span id="fallHLabel">20</span> m</div>
+          </div>
+        </div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" id="fallPlayBtn" onclick="_fallToggle()">▶ Loslassen</button>
+          <button class="sim-btn" onclick="_fallReset()">↺ Neu</button>
+        </div>
+        <div class="sim-info-row">
+          <span>t = <b id="fallTVal">0,0</b> s</span>
+          <span>v = <b id="fallVVal">0,0</b> m/s</span>
+          <span>h = <b id="fallHVal">20,0</b> m</span>
+        </div>
+        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Formeln: <b>s = ½·g·t²</b> &nbsp;|&nbsp; <b>v = g·t</b> &nbsp;|&nbsp; g = 9,81 m/s²</p>
+      </div>`;
+    document.body.appendChild(modal);
+    _sim = _simFreierFall();
+  } else if (expId === 'newton2') {
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">🧱 Experiment: Newton F = m × a</h3>
+        <canvas id="newCanvas" width="460" height="180" style="width:100%;border-radius:8px;display:block"></canvas>
+        <div style="padding:8px 16px 4px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="background:#fef2f2;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#991B1B;font-weight:700;margin-bottom:4px">Kraft F (1–50 N)</div>
+            <input type="range" id="newFSlider" min="1" max="50" step="1" value="20"
+              oninput="_newSet('f',this.value)" style="width:100%;accent-color:#DC2626">
+            <div style="text-align:center;font-weight:800;color:#991B1B"><span id="newFLabel">20</span> N</div>
+          </div>
+          <div style="background:#f0fdf4;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#15803D;font-weight:700;margin-bottom:4px">Masse m (1–10 kg)</div>
+            <input type="range" id="newMSlider" min="1" max="10" step="0.5" value="5"
+              oninput="_newSet('m',this.value)" style="width:100%;accent-color:#16A34A">
+            <div style="text-align:center;font-weight:800;color:#15803D"><span id="newMLabel">5,0</span> kg</div>
+          </div>
+        </div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" id="newPlayBtn" onclick="_newToggle()">▶ Start</button>
+          <button class="sim-btn" onclick="_newReset()">↺ Neu</button>
+        </div>
+        <div class="sim-info-row">
+          <span>F = <b id="newFVal">20</b> N</span>
+          <span>m = <b id="newMVal">5,0</b> kg</span>
+          <span>a = <b id="newAVal">4,0</b> m/s²</span>
+        </div>
+        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Formel: <b>F = m · a</b> &nbsp;→&nbsp; <b>a = F / m</b></p>
+      </div>`;
+    document.body.appendChild(modal);
+    _sim = _simNewton2();
+  } else if (expId === 'energieerhaltung') {
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">🔋 Experiment: Energieerhaltung – Pendel</h3>
+        <canvas id="engCanvas" width="460" height="240" style="width:100%;border-radius:8px;display:block"></canvas>
+        <div style="padding:8px 16px 4px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="background:#eff6ff;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#1D4ED8;font-weight:700;margin-bottom:4px">Startwinkel θ (10–60°)</div>
+            <input type="range" id="engAngleSlider" min="10" max="60" step="1" value="40"
+              oninput="_engSet('angle',this.value)" style="width:100%;accent-color:#2563EB">
+            <div style="text-align:center;font-weight:800;color:#1D4ED8"><span id="engAngleLabel">40</span>°</div>
+          </div>
+          <div style="background:#f0fdf4;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#15803D;font-weight:700;margin-bottom:4px">Länge L (0,5–2 m)</div>
+            <input type="range" id="engLSlider" min="0.5" max="2" step="0.1" value="1.0"
+              oninput="_engSet('l',this.value)" style="width:100%;accent-color:#16A34A">
+            <div style="text-align:center;font-weight:800;color:#15803D"><span id="engLLabel">1,0</span> m</div>
+          </div>
+        </div>
+        <div class="sim-info-row" style="margin-top:4px">
+          <span style="color:#2563EB">E_kin = <b id="engEkin">0,00</b> J</span>
+          <span style="color:#15803D">E_pot = <b id="engEpot">0,00</b> J</span>
+          <span>E_ges = <b id="engEges">0,00</b> J</span>
+        </div>
+        <p class="sim-hint" style="text-align:center;margin:2px 0 6px"><b>E_pot = m·g·h</b> &nbsp;|&nbsp; <b>E_kin = ½·m·v²</b></p>
+      </div>`;
+    document.body.appendChild(modal);
+    _sim = _simEnergieerhaltung();
+  } else if (expId === 'impuls') {
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">🎱 Experiment: Impulserhaltung bei Stößen</h3>
+        <canvas id="impCanvas" width="460" height="200" style="width:100%;border-radius:8px;display:block"></canvas>
+        <div style="padding:8px 16px 4px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+          <div style="background:#fef2f2;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#991B1B;font-weight:700;margin-bottom:4px">m₁ (1–5 kg)</div>
+            <input type="range" id="impM1Slider" min="1" max="5" step="0.5" value="2"
+              oninput="_impSet('m1',this.value)" style="width:100%;accent-color:#DC2626">
+            <div style="text-align:center;font-weight:700;color:#991B1B"><span id="impM1Label">2,0</span> kg</div>
+          </div>
+          <div style="background:#eff6ff;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#1D4ED8;font-weight:700;margin-bottom:4px">v₁ (1–10 m/s)</div>
+            <input type="range" id="impV1Slider" min="1" max="10" step="0.5" value="5"
+              oninput="_impSet('v1',this.value)" style="width:100%;accent-color:#2563EB">
+            <div style="text-align:center;font-weight:700;color:#1D4ED8"><span id="impV1Label">5,0</span> m/s</div>
+          </div>
+          <div style="background:#f0fdf4;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#15803D;font-weight:700;margin-bottom:4px">m₂ (1–5 kg)</div>
+            <input type="range" id="impM2Slider" min="1" max="5" step="0.5" value="2"
+              oninput="_impSet('m2',this.value)" style="width:100%;accent-color:#16A34A">
+            <div style="text-align:center;font-weight:700;color:#15803D"><span id="impM2Label">2,0</span> kg</div>
+          </div>
+        </div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" onclick="_impStoss()">💥 Stoß!</button>
+          <button class="sim-btn" onclick="_impReset()">↺ Neu</button>
+        </div>
+        <div class="sim-info-row">
+          <span>p_vor = <b id="impPvor">10,0</b> kg·m/s</span>
+          <span>p_nach = <b id="impPnach">–</b></span>
+        </div>
+        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Elastischer Stoß: <b>p_ges = const</b></p>
+      </div>`;
+    document.body.appendChild(modal);
+    _sim = _simImpuls();
+  } else if (expId === 'fadenpendel') {
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">🕰️ Experiment: Fadenpendel</h3>
+        <canvas id="penCanvas" width="460" height="220" style="width:100%;border-radius:8px;display:block"></canvas>
+        <div style="padding:8px 16px 4px">
+          <div style="background:#f5f3ff;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#5B21B6;font-weight:700;margin-bottom:4px">Fadenlänge L (0,2–2,0 m)</div>
+            <input type="range" id="penLSlider" min="0.2" max="2.0" step="0.05" value="1.0"
+              oninput="_penSetL(this.value)" style="width:100%;accent-color:#7C3AED">
+            <div style="text-align:center;font-weight:800;color:#5B21B6"><span id="penLLabel">1,00</span> m</div>
+          </div>
+        </div>
+        <div class="sim-info-row" style="margin-top:6px">
+          <span>L = <b id="penLVal">1,00</b> m</span>
+          <span>T = <b id="penTVal">2,01</b> s</span>
+          <span>θ = <b id="penAngleVal">30</b>°</span>
+        </div>
+        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Formel: <b>T = 2π · √(L/g)</b></p>
+      </div>`;
+    document.body.appendChild(modal);
+    _sim = _simFadenpendel();
+  } else if (expId === 'wellen') {
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">〰️ Experiment: Harmonische Wellen</h3>
+        <canvas id="welCanvas" width="460" height="180" style="width:100%;border-radius:8px;display:block"></canvas>
+        <div style="padding:8px 16px 4px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="background:#eff6ff;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#1D4ED8;font-weight:700;margin-bottom:4px">Frequenz f (0,5–5 Hz)</div>
+            <input type="range" id="welFSlider" min="0.5" max="5" step="0.5" value="2"
+              oninput="_welSet('f',this.value)" style="width:100%;accent-color:#2563EB">
+            <div style="text-align:center;font-weight:800;color:#1D4ED8"><span id="welFLabel">2,0</span> Hz</div>
+          </div>
+          <div style="background:#f0fdf4;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#15803D;font-weight:700;margin-bottom:4px">Amplitude A (10–60 px)</div>
+            <input type="range" id="welASlider" min="10" max="60" step="2" value="30"
+              oninput="_welSet('a',this.value)" style="width:100%;accent-color:#16A34A">
+            <div style="text-align:center;font-weight:800;color:#15803D"><span id="welALabel">30</span> px</div>
+          </div>
+        </div>
+        <div class="sim-info-row" style="margin-top:4px">
+          <span>f = <b id="welFVal">2,0</b> Hz</span>
+          <span>T = <b id="welTVal">0,50</b> s</span>
+          <span>λ = <b id="welLamVal">115</b> px</span>
+        </div>
+        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Formel: <b>y(x,t) = A · sin(2π(x/λ − f·t))</b></p>
+      </div>`;
+    document.body.appendChild(modal);
+    _sim = _simWellen();
+  } else if (expId === 'kondensator') {
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">🔋 Experiment: Kondensator laden / entladen</h3>
+        <canvas id="kondCanvas" width="460" height="200" style="width:100%;border-radius:8px;display:block"></canvas>
+        <div style="padding:8px 16px 4px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="background:#fef9c3;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#854D0E;font-weight:700;margin-bottom:4px">Kapazität C (100–1000 µF)</div>
+            <input type="range" id="kondCSlider" min="100" max="1000" step="50" value="500"
+              oninput="_kondSet('c',this.value)" style="width:100%;accent-color:#CA8A04">
+            <div style="text-align:center;font-weight:800;color:#854D0E"><span id="kondCLabel">500</span> µF</div>
+          </div>
+          <div style="background:#fef2f2;border-radius:8px;padding:8px 10px">
+            <div style="font-size:.82rem;color:#991B1B;font-weight:700;margin-bottom:4px">Widerstand R (100–1000 Ω)</div>
+            <input type="range" id="kondRSlider" min="100" max="1000" step="50" value="500"
+              oninput="_kondSet('r',this.value)" style="width:100%;accent-color:#DC2626">
+            <div style="text-align:center;font-weight:800;color:#991B1B"><span id="kondRLabel">500</span> Ω</div>
+          </div>
+        </div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" id="kondLadenBtn" onclick="_kondSetMode('laden')">⬆ Laden</button>
+          <button class="sim-btn" id="kondEntladenBtn" onclick="_kondSetMode('entladen')">⬇ Entladen</button>
+          <button class="sim-btn" onclick="_kondReset()">↺ Neu</button>
+        </div>
+        <div class="sim-info-row">
+          <span>τ = <b id="kondTauVal">0,25</b> s</span>
+          <span>U_C = <b id="kondUVal">0,0</b> V</span>
+          <span><b id="kondPctVal">0</b>% geladen</span>
+        </div>
+        <p class="sim-hint" style="text-align:center;margin:2px 0 6px"><b>U(t) = U₀·(1−e^(−t/τ))</b> &nbsp;|&nbsp; τ = R·C</p>
+      </div>`;
+    document.body.appendChild(modal);
+    _sim = _simKondensator();
   } else {
     modal.innerHTML = `
       <div class="sim-box">
@@ -3873,6 +4214,1510 @@ function _fstCreate() {
 
   draw();
   return { stop, setU, setI };
+}
+
+// ============================================================
+// BRIDGE FUNCTIONS FOR NEW SIMULATIONS
+// ============================================================
+function _fedSetF(v) { if (_sim) _sim.setF(parseFloat(v)); }
+function _hebSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
+function _ohmSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
+function _schSetMode(m){ if (_sim) _sim.setMode(m); }
+function _beschSetA(v){ if (_sim) _sim.setA(parseFloat(v)); }
+function _beschToggle(){ if (_sim) _sim.toggle(); }
+function _beschReset(){ if (_sim) _sim.reset(); }
+function _fallSetH(v){ if (_sim) _sim.setH(parseFloat(v)); }
+function _fallToggle(){ if (_sim) _sim.toggle(); }
+function _fallReset(){ if (_sim) _sim.reset(); }
+function _newSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
+function _newToggle(){ if (_sim) _sim.toggle(); }
+function _newReset(){ if (_sim) _sim.reset(); }
+function _engSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
+function _impSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
+function _impStoss(){ if (_sim) _sim.stoss(); }
+function _impReset(){ if (_sim) _sim.reset(); }
+function _penSetL(v){ if (_sim) _sim.setL(parseFloat(v)); }
+function _welSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
+function _kondSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
+function _kondSetMode(m){ if (_sim) _sim.setMode(m); }
+function _kondReset(){ if (_sim) _sim.reset(); }
+
+// ============================================================
+// SIM 1: FEDERKRAFT
+// ============================================================
+function _simFederkraft() {
+  const canvas = document.getElementById('fedCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  let F = 20, animId = null;
+  let wobble = 0, wobbleDir = 1;
+
+  function fmt(n) { return n.toFixed(1).replace('.', ','); }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const k = 10; // N/cm
+    const x_cm = F / k; // extension in cm
+    const x_px = x_cm * 12; // scale: 12px per cm
+
+    // background
+    ctx.fillStyle = '#f8fafc';
+    ctx.fillRect(0, 0, W, H);
+
+    const wallX = 40, restX = 160, blockW = 50, blockH = 40;
+    const blockX = restX + x_px + wobble;
+    const midY = H / 2;
+
+    // wall
+    ctx.fillStyle = '#94A3B8';
+    ctx.fillRect(wallX - 15, midY - 60, 15, 120);
+    ctx.fillStyle = '#64748B';
+    for (let i = -55; i < 60; i += 15) {
+      ctx.beginPath();
+      ctx.moveTo(wallX - 15, midY + i);
+      ctx.lineTo(wallX - 30, midY + i + 12);
+      ctx.strokeStyle = '#94A3B8';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    // spring
+    const springStartX = wallX;
+    const springEndX = blockX;
+    const springY = midY;
+    const coils = 8;
+    const coilH = 14;
+    ctx.beginPath();
+    ctx.moveTo(springStartX, springY);
+    const segLen = (springEndX - springStartX) / (coils * 2 + 2);
+    ctx.lineTo(springStartX + segLen, springY);
+    for (let i = 0; i < coils; i++) {
+      ctx.lineTo(springStartX + segLen * (2 + i * 2), springY - coilH);
+      ctx.lineTo(springStartX + segLen * (3 + i * 2), springY + coilH);
+    }
+    ctx.lineTo(springEndX, springY);
+    ctx.strokeStyle = x_cm > 0 ? '#DC2626' : '#2563EB';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
+    // block
+    ctx.fillStyle = '#3B82F6';
+    ctx.beginPath();
+    ctx.roundRect(blockX, midY - blockH / 2, blockW, blockH, 6);
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 13px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('m', blockX + blockW / 2, midY + 5);
+
+    // ground line
+    ctx.beginPath();
+    ctx.moveTo(wallX - 15, midY + 25);
+    ctx.lineTo(W - 20, midY + 25);
+    ctx.strokeStyle = '#CBD5E1';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // force arrow
+    if (F > 0) {
+      const arrowStartX = blockX + blockW;
+      const arrowEndX = arrowStartX + Math.min(F * 1.5, 80);
+      ctx.beginPath();
+      ctx.moveTo(arrowStartX, midY);
+      ctx.lineTo(arrowEndX, midY);
+      ctx.strokeStyle = '#DC2626';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(arrowEndX, midY - 8);
+      ctx.lineTo(arrowEndX + 12, midY);
+      ctx.lineTo(arrowEndX, midY + 8);
+      ctx.fillStyle = '#DC2626';
+      ctx.fill();
+      ctx.fillStyle = '#DC2626';
+      ctx.font = 'bold 12px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('F', arrowEndX + 18, midY + 4);
+    }
+
+    // labels
+    ctx.fillStyle = '#374151';
+    ctx.font = '13px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('F = ' + fmt(F) + ' N     x = ' + fmt(x_cm) + ' cm', W / 2, H - 12);
+
+    // update HTML
+    const fEl = document.getElementById('fedFVal');
+    const xEl = document.getElementById('fedXVal');
+    const lEl = document.getElementById('fedFLabel');
+    if (fEl) fEl.textContent = fmt(F);
+    if (xEl) xEl.textContent = fmt(x_cm);
+    if (lEl) lEl.textContent = fmt(F);
+
+    // gentle wobble
+    wobble += wobbleDir * 0.4;
+    if (wobble > 3 || wobble < -3) wobbleDir *= -1;
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  function stop() { if (animId) cancelAnimationFrame(animId); }
+  function setF(v) { F = v; }
+
+  draw();
+  return { stop, setF };
+}
+
+// ============================================================
+// SIM 2: HEBELGESETZ
+// ============================================================
+function _simHebelgesetz() {
+  const canvas = document.getElementById('hebCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  let F2 = 50, l2 = 1.5, l1 = 2.0;
+  let animId = null;
+
+  function fmt(n, d=1) { return n.toFixed(d).replace('.', ','); }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#fafaf9';
+    ctx.fillRect(0, 0, W, H);
+
+    const F1 = F2 * l2 / l1;
+    const balanced = Math.abs(F1 * l1 - F2 * l2) < 0.5;
+
+    const pivotX = W / 2;
+    const pivotY = H / 2 + 20;
+    const scale = 60; // px per meter
+    const tiltAngle = balanced ? 0 : Math.atan2((F2 * l2 - F1 * l1) * 0.003, 1);
+
+    // fulcrum triangle
+    ctx.beginPath();
+    ctx.moveTo(pivotX, pivotY);
+    ctx.lineTo(pivotX - 18, pivotY + 36);
+    ctx.lineTo(pivotX + 18, pivotY + 36);
+    ctx.closePath();
+    ctx.fillStyle = '#78716C';
+    ctx.fill();
+    // base
+    ctx.fillRect(pivotX - 30, pivotY + 36, 60, 8);
+
+    // beam
+    ctx.save();
+    ctx.translate(pivotX, pivotY);
+    ctx.rotate(tiltAngle);
+    const beamLen = (l1 + l2 + 0.3) * scale;
+    ctx.fillStyle = '#92400E';
+    ctx.fillRect(-l2 * scale - 8, -8, beamLen, 16);
+    ctx.restore();
+
+    // force arrows
+    function drawArrow(x, y, dir, label, color, F_val) {
+      const len = Math.min(F_val * 1.2, 70);
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x, y + dir * len);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      const tipY = y + dir * len;
+      ctx.beginPath();
+      ctx.moveTo(x - 8, tipY - dir * 10);
+      ctx.lineTo(x, tipY);
+      ctx.lineTo(x + 8, tipY - dir * 10);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.fillStyle = color;
+      ctx.font = 'bold 12px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(label, x, y + dir * (len + 16));
+    }
+
+    // F2 arrow (right, pointing down = load)
+    const f2x = pivotX + Math.cos(tiltAngle) * l2 * scale;
+    const f2y = pivotY + Math.sin(tiltAngle) * l2 * scale - Math.sin(tiltAngle) * 8;
+    drawArrow(f2x, pivotY - 5, 1, 'F₂=' + fmt(F2) + 'N', '#DC2626', F2);
+
+    // F1 arrow (left, pointing down = applied force)
+    const f1x = pivotX - Math.cos(tiltAngle) * l1 * scale;
+    const f1y = pivotY - Math.sin(tiltAngle) * l1 * scale;
+    drawArrow(f1x, pivotY - 5, -1, 'F₁=' + fmt(F1, 1) + 'N', '#2563EB', F1);
+
+    // arm labels
+    ctx.fillStyle = '#374151';
+    ctx.font = '11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('l₁ = ' + fmt(l1) + ' m', pivotX - l1 * scale / 2, pivotY - 16);
+    ctx.fillText('l₂ = ' + fmt(l2) + ' m', pivotX + l2 * scale / 2, pivotY - 16);
+
+    // update HTML
+    const f1El = document.getElementById('hebF1Val');
+    const balEl = document.getElementById('hebBalance');
+    const f2El = document.getElementById('hebF2Label');
+    const l2El = document.getElementById('hebL2Label');
+    if (f1El) f1El.textContent = fmt(F1, 1);
+    if (balEl) {
+      if (balanced) { balEl.textContent = '✓ Gleichgewicht'; balEl.style.color = '#15803D'; }
+      else { balEl.textContent = '✗ Kein GGW'; balEl.style.color = '#DC2626'; }
+    }
+    if (f2El) f2El.textContent = fmt(F2);
+    if (l2El) l2El.textContent = fmt(l2);
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  function stop() { if (animId) cancelAnimationFrame(animId); }
+  function set(key, val) {
+    if (key === 'f2') F2 = val;
+    if (key === 'l2') l2 = val;
+  }
+
+  draw();
+  return { stop, set };
+}
+
+// ============================================================
+// SIM 3: OHMSCHES GESETZ
+// ============================================================
+function _simOhm() {
+  const canvas = document.getElementById('ohmCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  let U = 6, R = 30;
+  let animId = null;
+
+  function fmt(n, d=2) { return n.toFixed(d).replace('.', ','); }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#f8fafc';
+    ctx.fillRect(0, 0, W, H);
+
+    const I = U / R;
+    const P = U * U / R;
+    const glow = Math.min(P / 5, 1); // 0..1
+
+    // circuit layout
+    const cx = W / 2, cy = H / 2;
+    const bW = 50, bH = 80; // battery
+    const topY = cy - 60, botY = cy + 60;
+    const leftX = 60, rightX = W - 80;
+
+    // wires
+    ctx.strokeStyle = '#374151';
+    ctx.lineWidth = 3;
+    // top wire
+    ctx.beginPath(); ctx.moveTo(leftX, topY); ctx.lineTo(rightX, topY); ctx.stroke();
+    // bottom wire
+    ctx.beginPath(); ctx.moveTo(leftX, botY); ctx.lineTo(rightX, botY); ctx.stroke();
+    // left wire
+    ctx.beginPath(); ctx.moveTo(leftX, topY); ctx.lineTo(leftX, botY); ctx.stroke();
+    // right wire
+    ctx.beginPath(); ctx.moveTo(rightX, topY); ctx.lineTo(rightX, botY); ctx.stroke();
+
+    // battery (left)
+    ctx.fillStyle = '#1D4ED8';
+    ctx.fillRect(leftX - 18, cy - bH / 2, 36, bH);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('+', leftX, cy - 20);
+    ctx.fillText('−', leftX, cy + 22);
+    ctx.fillStyle = '#BFDBFE';
+    ctx.font = 'bold 13px sans-serif';
+    ctx.fillText(fmt(U, 0) + 'V', leftX, cy + 2);
+
+    // resistor (top center)
+    const rX = cx - 35, rY = topY - 14, rW = 70, rH = 18;
+    ctx.fillStyle = '#92400E';
+    ctx.beginPath();
+    ctx.roundRect(rX, rY, rW, rH, 4);
+    ctx.fill();
+    ctx.fillStyle = '#FEF3C7';
+    ctx.font = 'bold 11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(fmt(R, 0) + ' Ω', cx, rY + 12);
+
+    // bulb (right side)
+    const bulbX = rightX, bulbY = cy;
+    const bulbR = 22;
+    // glow effect
+    if (glow > 0.05) {
+      const grad = ctx.createRadialGradient(bulbX, bulbY, 0, bulbX, bulbY, bulbR * 2.5);
+      grad.addColorStop(0, `rgba(253,224,71,${glow * 0.8})`);
+      grad.addColorStop(1, 'rgba(253,224,71,0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(bulbX, bulbY, bulbR * 2.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    const bulbColor = `rgb(${Math.round(100 + glow * 155)},${Math.round(80 + glow * 144)},${Math.round(30 + glow * 20)})`;
+    ctx.fillStyle = bulbColor;
+    ctx.beginPath();
+    ctx.arc(bulbX, bulbY, bulbR, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#374151';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    // bulb filament
+    ctx.strokeStyle = glow > 0.3 ? '#FEF08A' : '#9CA3AF';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(bulbX - 6, bulbY + 6);
+    ctx.lineTo(bulbX - 3, bulbY - 4);
+    ctx.lineTo(bulbX, bulbY + 4);
+    ctx.lineTo(bulbX + 3, bulbY - 4);
+    ctx.lineTo(bulbX + 6, bulbY + 6);
+    ctx.stroke();
+
+    // current arrows on top wire
+    const arrowColor = `rgba(59,130,246,${0.4 + I / 0.5 * 0.5})`;
+    for (let ax = leftX + 40; ax < rightX - 40; ax += 60) {
+      ctx.beginPath();
+      ctx.moveTo(ax, topY - 6);
+      ctx.lineTo(ax + 14, topY - 6);
+      ctx.strokeStyle = arrowColor;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(ax + 10, topY - 10);
+      ctx.lineTo(ax + 14, topY - 6);
+      ctx.lineTo(ax + 10, topY - 2);
+      ctx.fillStyle = arrowColor;
+      ctx.fill();
+    }
+
+    // update HTML
+    const uEl = document.getElementById('ohmUVal');
+    const iEl = document.getElementById('ohmIVal');
+    const pEl = document.getElementById('ohmPVal');
+    const ulEl = document.getElementById('ohmULabel');
+    const rlEl = document.getElementById('ohmRLabel');
+    if (uEl) uEl.textContent = fmt(U, 1);
+    if (iEl) iEl.textContent = fmt(I, 2);
+    if (pEl) pEl.textContent = fmt(P, 2);
+    if (ulEl) ulEl.textContent = fmt(U, 1);
+    if (rlEl) rlEl.textContent = fmt(R, 0);
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  function stop() { if (animId) cancelAnimationFrame(animId); }
+  function set(key, val) {
+    if (key === 'u') U = val;
+    if (key === 'r') R = val;
+  }
+
+  draw();
+  return { stop, set };
+}
+
+// ============================================================
+// SIM 4: REIHEN- UND PARALLELSCHALTUNG
+// ============================================================
+function _simSchaltung() {
+  const canvas = document.getElementById('schCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  let mode = 'reihe';
+  let animId = null;
+  const R1 = 30, R2 = 60, Uq = 12;
+  let t = 0;
+
+  function fmt(n, d=2) { return n.toFixed(d).replace('.', ','); }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#f8fafc';
+    ctx.fillRect(0, 0, W, H);
+    t += 0.05;
+
+    const isReihe = mode === 'reihe';
+    const Rges = isReihe ? R1 + R2 : R1 * R2 / (R1 + R2);
+    const Iges = Uq / Rges;
+
+    if (isReihe) {
+      // Series circuit: battery → R1 → R2 → back
+      const topY = 50, botY = H - 30;
+      const leftX = 50, rightX = W - 50;
+      const r1X = leftX + 90, r2X = leftX + 220;
+
+      ctx.strokeStyle = '#374151'; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(leftX, topY); ctx.lineTo(rightX, topY); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(leftX, botY); ctx.lineTo(rightX, botY); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(leftX, topY); ctx.lineTo(leftX, botY); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(rightX, topY); ctx.lineTo(rightX, botY); ctx.stroke();
+
+      // battery
+      ctx.fillStyle = '#1D4ED8';
+      ctx.fillRect(leftX - 16, (topY + botY) / 2 - 30, 32, 60);
+      ctx.fillStyle = '#BFDBFE'; ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('12V', leftX, (topY + botY) / 2 + 4);
+
+      // R1
+      ctx.fillStyle = '#7C3AED';
+      ctx.fillRect(r1X - 30, topY - 14, 60, 20);
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('R₁=30Ω', r1X, topY - 1);
+      const u1 = Iges * R1;
+      ctx.fillStyle = '#7C3AED'; ctx.font = '10px sans-serif';
+      ctx.fillText('U₁=' + fmt(u1, 1) + 'V', r1X, topY + 18);
+
+      // R2
+      ctx.fillStyle = '#DC2626';
+      ctx.fillRect(r2X - 30, topY - 14, 60, 20);
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('R₂=60Ω', r2X, topY - 1);
+      const u2 = Iges * R2;
+      ctx.fillStyle = '#DC2626'; ctx.font = '10px sans-serif';
+      ctx.fillText('U₂=' + fmt(u2, 1) + 'V', r2X, topY + 18);
+
+      // current animation
+      const pos = (t * 80) % (2 * (rightX - leftX) + 2 * (botY - topY));
+      drawCurrentDot(ctx, pos, topY, botY, leftX, rightX, '#2563EB');
+
+    } else {
+      // Parallel circuit
+      const topY = 40, botY = H - 30;
+      const leftX = 50, rightX = W - 50;
+      const r1Y = topY + 40, r2Y = topY + 90;
+      const midX1 = leftX + 90, midX2 = rightX - 30;
+
+      ctx.strokeStyle = '#374151'; ctx.lineWidth = 3;
+      // main top/bot
+      ctx.beginPath(); ctx.moveTo(leftX, topY); ctx.lineTo(rightX, topY); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(leftX, botY); ctx.lineTo(rightX, botY); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(leftX, topY); ctx.lineTo(leftX, botY); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(rightX, topY); ctx.lineTo(rightX, botY); ctx.stroke();
+      // R1 branch
+      ctx.beginPath(); ctx.moveTo(midX1, topY); ctx.lineTo(midX1, r1Y - 10); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(midX1, r1Y + 10); ctx.lineTo(midX1, botY); ctx.stroke();
+      // R2 branch
+      ctx.beginPath(); ctx.moveTo(midX2, topY); ctx.lineTo(midX2, r2Y - 10); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(midX2, r2Y + 10); ctx.lineTo(midX2, botY); ctx.stroke();
+      // horizontal connectors
+      ctx.beginPath(); ctx.moveTo(midX1, topY); ctx.lineTo(midX2, topY); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(midX1, botY); ctx.lineTo(midX2, botY); ctx.stroke();
+
+      // battery
+      ctx.fillStyle = '#1D4ED8';
+      ctx.fillRect(leftX - 16, (topY + botY) / 2 - 30, 32, 60);
+      ctx.fillStyle = '#BFDBFE'; ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('12V', leftX, (topY + botY) / 2 + 4);
+
+      // R1
+      ctx.fillStyle = '#7C3AED';
+      ctx.fillRect(midX1 - 25, r1Y - 10, 50, 20);
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('R₁=30Ω', midX1, r1Y + 3);
+      ctx.fillStyle = '#7C3AED'; ctx.font = '9px sans-serif';
+      ctx.fillText('I₁=' + fmt(Uq / R1, 2) + 'A', midX1, r1Y + 22);
+
+      // R2
+      ctx.fillStyle = '#DC2626';
+      ctx.fillRect(midX2 - 25, r2Y - 10, 50, 20);
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('R₂=60Ω', midX2, r2Y + 3);
+      ctx.fillStyle = '#DC2626'; ctx.font = '9px sans-serif';
+      ctx.fillText('I₂=' + fmt(Uq / R2, 2) + 'A', midX2, r2Y + 22);
+    }
+
+    // update HTML
+    const rgesEl = document.getElementById('schRges');
+    const igesEl = document.getElementById('schIges');
+    const detEl = document.getElementById('schDetails');
+    const Rges2 = isReihe ? R1 + R2 : R1 * R2 / (R1 + R2);
+    if (rgesEl) rgesEl.textContent = fmt(Rges2, 1);
+    if (igesEl) igesEl.textContent = fmt(Uq / Rges2, 2);
+    if (detEl) detEl.textContent = isReihe
+      ? 'Reihenschaltung: R_ges = R₁+R₂ = ' + fmt(Rges2, 0) + ' Ω  |  I = ' + fmt(Uq / Rges2, 2) + ' A überall gleich'
+      : 'Parallelschaltung: 1/R_ges = 1/30+1/60  |  R_ges = ' + fmt(Rges2, 1) + ' Ω  |  I_ges = ' + fmt(Uq / Rges2, 2) + ' A';
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  function drawCurrentDot(ctx, pos, topY, botY, leftX, rightX) {
+    const perimeter = 2 * (rightX - leftX) + 2 * (botY - topY);
+    const p = pos % perimeter;
+    let dotX, dotY;
+    const top = rightX - leftX, right = botY - topY, bot = rightX - leftX;
+    if (p < top) { dotX = leftX + p; dotY = topY; }
+    else if (p < top + right) { dotX = rightX; dotY = topY + (p - top); }
+    else if (p < top + right + bot) { dotX = rightX - (p - top - right); dotY = botY; }
+    else { dotX = leftX; dotY = botY - (p - top - right - bot); }
+    ctx.beginPath();
+    ctx.arc(dotX, dotY, 5, 0, Math.PI * 2);
+    ctx.fillStyle = '#FCD34D';
+    ctx.fill();
+  }
+
+  function stop() { if (animId) cancelAnimationFrame(animId); }
+  function setMode(m) {
+    mode = m;
+    const rBtn = document.getElementById('schBtnReihe');
+    const pBtn = document.getElementById('schBtnParallel');
+    if (rBtn && pBtn) {
+      rBtn.className = m === 'reihe' ? 'sim-btn primary' : 'sim-btn';
+      pBtn.className = m === 'parallel' ? 'sim-btn primary' : 'sim-btn';
+    }
+  }
+
+  draw();
+  return { stop, setMode };
+}
+
+// ============================================================
+// SIM 5: BESCHLEUNIGTE BEWEGUNG
+// ============================================================
+function _simBeschleunigung() {
+  const canvas = document.getElementById('beschCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  let a = 3, running = false, t = 0, last = null, raf = null;
+  const chartData = [];
+  const maxT = 8;
+
+  function fmt(n, d=1) { return n.toFixed(d).replace('.', ','); }
+
+  function draw(ts) {
+    if (running) {
+      if (last !== null) {
+        const dt = Math.min((ts - last) / 1000, 0.05);
+        t = Math.min(t + dt, maxT);
+        if (t >= maxT) { running = false; document.getElementById('beschPlayBtn').textContent = '▶ Start'; }
+        chartData.push({ t, v: a * t });
+      }
+      last = ts;
+    }
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#f1f5f9';
+    ctx.fillRect(0, 0, W, H);
+
+    const v = a * t;
+    const s = 0.5 * a * t * t;
+    const trackY = H - 55;
+    const trackH = 16;
+
+    // track
+    ctx.fillStyle = '#94A3B8';
+    ctx.fillRect(20, trackY, W - 40, trackH);
+
+    // block (position capped to track width)
+    const maxBlockX = W - 90;
+    const blockX = 20 + Math.min((s / (0.5 * a * maxT * maxT)) * (maxBlockX - 20), maxBlockX - 20);
+    ctx.fillStyle = '#7C3AED';
+    ctx.beginPath();
+    ctx.roundRect(blockX, trackY - 30, 40, 30, 5);
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('m', blockX + 20, trackY - 12);
+
+    // force arrow
+    if (a > 0) {
+      const arrowLen = Math.min(a * 10, 50);
+      ctx.beginPath();
+      ctx.moveTo(blockX + 40, trackY - 16);
+      ctx.lineTo(blockX + 40 + arrowLen, trackY - 16);
+      ctx.strokeStyle = '#DC2626';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(blockX + 40 + arrowLen, trackY - 22);
+      ctx.lineTo(blockX + 40 + arrowLen + 10, trackY - 16);
+      ctx.lineTo(blockX + 40 + arrowLen, trackY - 10);
+      ctx.fillStyle = '#DC2626';
+      ctx.fill();
+    }
+
+    // v-t chart area
+    const chartX = 30, chartY = 10, chartW = W - 60, chartH = trackY - 55;
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(chartX, chartY, chartW, chartH);
+    ctx.strokeStyle = '#E2E8F0';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(chartX, chartY, chartW, chartH);
+
+    // grid
+    const maxV = a * maxT;
+    for (let i = 0; i <= 4; i++) {
+      const gx = chartX + (i / 4) * chartW;
+      const gy = chartY + chartH - (i / 4) * chartH;
+      ctx.beginPath(); ctx.moveTo(gx, chartY); ctx.lineTo(gx, chartY + chartH); ctx.strokeStyle = '#F1F5F9'; ctx.lineWidth = 1; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(chartX, gy); ctx.lineTo(chartX + chartW, gy); ctx.stroke();
+    }
+    // axes labels
+    ctx.fillStyle = '#64748B'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Zeit t (s)', chartX + chartW / 2, chartY + chartH + 14);
+    ctx.save(); ctx.translate(chartX - 14, chartY + chartH / 2); ctx.rotate(-Math.PI / 2);
+    ctx.fillText('v (m/s)', 0, 0); ctx.restore();
+
+    // plot line
+    if (chartData.length > 1) {
+      ctx.beginPath();
+      ctx.moveTo(chartX, chartY + chartH);
+      for (const p of chartData) {
+        const px = chartX + (p.t / maxT) * chartW;
+        const py = chartY + chartH - (p.v / (a * maxT)) * chartH;
+        ctx.lineTo(px, py);
+      }
+      ctx.strokeStyle = '#7C3AED';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+    }
+
+    // current point dot
+    const dotX = chartX + (t / maxT) * chartW;
+    const dotY = chartY + chartH - (v / Math.max(a * maxT, 0.01)) * chartH;
+    ctx.beginPath(); ctx.arc(dotX, dotY, 5, 0, Math.PI * 2);
+    ctx.fillStyle = '#7C3AED'; ctx.fill();
+
+    // update HTML
+    const tEl = document.getElementById('beschTVal');
+    const vEl = document.getElementById('beschVVal');
+    const sEl = document.getElementById('beschSVal');
+    if (tEl) tEl.textContent = fmt(t);
+    if (vEl) vEl.textContent = fmt(v);
+    if (sEl) sEl.textContent = fmt(s);
+
+    raf = requestAnimationFrame(draw);
+  }
+
+  function stop() { if (raf) cancelAnimationFrame(raf); running = false; last = null; }
+  function setA(val) {
+    a = val;
+    const lEl = document.getElementById('beschALabel');
+    if (lEl) lEl.textContent = fmt(a);
+  }
+  function toggle() {
+    if (running) {
+      running = false; last = null;
+      const b = document.getElementById('beschPlayBtn');
+      if (b) b.textContent = '▶ Weiter';
+    } else {
+      if (t >= maxT) { t = 0; chartData.length = 0; }
+      running = true;
+      const b = document.getElementById('beschPlayBtn');
+      if (b) b.textContent = '⏸ Pause';
+    }
+  }
+  function reset() {
+    running = false; last = null; t = 0; chartData.length = 0;
+    const b = document.getElementById('beschPlayBtn');
+    if (b) b.textContent = '▶ Start';
+  }
+
+  raf = requestAnimationFrame(draw);
+  return { stop, setA, toggle, reset };
+}
+
+// ============================================================
+// SIM 6: FREIER FALL
+// ============================================================
+function _simFreierFall() {
+  const canvas = document.getElementById('fallCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const g = 9.81;
+  let h0 = 20, running = false, t = 0, last = null, raf = null, bouncing = false;
+
+  function fmt(n, d=1) { return n.toFixed(d).replace('.', ','); }
+
+  function draw(ts) {
+    if (running) {
+      if (last !== null) {
+        const dt = Math.min((ts - last) / 1000, 0.05);
+        t += dt;
+      }
+      last = ts;
+    }
+
+    const t_fall = Math.sqrt(2 * h0 / g);
+    const curT = Math.min(t, t_fall);
+    const fallen = 0.5 * g * curT * curT;
+    const h = Math.max(h0 - fallen, 0);
+    const v = Math.min(g * curT, Math.sqrt(2 * g * h0));
+
+    if (running && t >= t_fall) {
+      running = false; t = t_fall;
+      const b = document.getElementById('fallPlayBtn');
+      if (b) b.textContent = '▶ Loslassen';
+    }
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#f0f9ff';
+    ctx.fillRect(0, 0, W, H);
+
+    // ground
+    ctx.fillStyle = '#78716C';
+    ctx.fillRect(30, H - 30, W - 60, 12);
+    ctx.fillStyle = '#D6D3D1';
+    ctx.fillRect(30, H - 18, W - 60, 6);
+
+    // height ruler
+    const rulerX = 60;
+    const rulerTopY = 30;
+    const rulerBotY = H - 30;
+    const rulerH = rulerBotY - rulerTopY;
+    ctx.strokeStyle = '#CBD5E1'; ctx.lineWidth = 1;
+    for (let hi = 0; hi <= h0; hi += 5) {
+      const ty = rulerBotY - (hi / h0) * rulerH;
+      ctx.beginPath(); ctx.moveTo(rulerX - 8, ty); ctx.lineTo(rulerX + 8, ty); ctx.stroke();
+      ctx.fillStyle = '#64748B'; ctx.font = '10px sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(hi + 'm', rulerX - 10, ty + 4);
+    }
+
+    // ball
+    const ballY = rulerBotY - (h / h0) * rulerH;
+    const ballR = 14;
+    const grad = ctx.createRadialGradient(ballX() - 4, ballY - 4, 2, ballX(), ballY, ballR);
+    grad.addColorStop(0, '#FCD34D');
+    grad.addColorStop(1, '#D97706');
+    ctx.beginPath();
+    ctx.arc(ballX(), ballY, ballR, 0, Math.PI * 2);
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.strokeStyle = '#92400E'; ctx.lineWidth = 1.5; ctx.stroke();
+
+    // velocity arrow
+    if (v > 0.1) {
+      const arrowLen = Math.min(v * 4, 50);
+      ctx.beginPath();
+      ctx.moveTo(ballX() + ballR + 5, ballY);
+      ctx.lineTo(ballX() + ballR + 5, ballY + arrowLen);
+      ctx.strokeStyle = '#DC2626'; ctx.lineWidth = 2.5; ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(ballX() + ballR + 5 - 6, ballY + arrowLen - 6);
+      ctx.lineTo(ballX() + ballR + 5, ballY + arrowLen + 2);
+      ctx.lineTo(ballX() + ballR + 5 + 6, ballY + arrowLen - 6);
+      ctx.fillStyle = '#DC2626'; ctx.fill();
+    }
+
+    // formula box
+    const t_show = Math.sqrt(2 * h0 / g);
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    ctx.fillRect(W - 175, 15, 160, 70);
+    ctx.fillStyle = '#374151'; ctx.font = '11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('h = ' + fmt(h, 1) + ' m', W - 168, 32);
+    ctx.fillText('v = ' + fmt(v, 1) + ' m/s', W - 168, 48);
+    ctx.fillText('t_fall = ' + fmt(t_show, 2) + ' s', W - 168, 64);
+    ctx.fillText('t = ' + fmt(curT, 2) + ' s', W - 168, 80);
+
+    const tEl = document.getElementById('fallTVal');
+    const vEl = document.getElementById('fallVVal');
+    const hEl = document.getElementById('fallHVal');
+    if (tEl) tEl.textContent = fmt(curT);
+    if (vEl) vEl.textContent = fmt(v);
+    if (hEl) hEl.textContent = fmt(h);
+
+    raf = requestAnimationFrame(draw);
+  }
+
+  function ballX() { return 160; }
+
+  function stop() { if (raf) cancelAnimationFrame(raf); running = false; last = null; }
+  function setH(v) {
+    h0 = v; t = 0;
+    const lEl = document.getElementById('fallHLabel');
+    if (lEl) lEl.textContent = v;
+    const hEl = document.getElementById('fallHVal');
+    if (hEl) hEl.textContent = v.toFixed(1).replace('.', ',');
+  }
+  function toggle() {
+    if (running) {
+      running = false; last = null;
+      const b = document.getElementById('fallPlayBtn');
+      if (b) b.textContent = '▶ Weiter';
+    } else {
+      running = true;
+      const b = document.getElementById('fallPlayBtn');
+      if (b) b.textContent = '⏸ Pause';
+    }
+  }
+  function reset() {
+    running = false; last = null; t = 0;
+    const b = document.getElementById('fallPlayBtn');
+    if (b) b.textContent = '▶ Loslassen';
+  }
+
+  raf = requestAnimationFrame(draw);
+  return { stop, setH, toggle, reset };
+}
+
+// ============================================================
+// SIM 7: NEWTON F = m × a
+// ============================================================
+function _simNewton2() {
+  const canvas = document.getElementById('newCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  let F = 20, m = 5, running = false, t = 0, last = null, raf = null;
+
+  function fmt(n, d=1) { return n.toFixed(d).replace('.', ','); }
+
+  function draw(ts) {
+    if (running) {
+      if (last !== null) {
+        const dt = Math.min((ts - last) / 1000, 0.05);
+        t += dt;
+        if (t > 6) { t = 0; }
+      }
+      last = ts;
+    }
+
+    const a = F / m;
+    const s = Math.min(0.5 * a * t * t, W - 140);
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#f8fafc';
+    ctx.fillRect(0, 0, W, H);
+
+    const trackY = H / 2 + 15;
+    // track
+    ctx.fillStyle = '#94A3B8';
+    ctx.fillRect(20, trackY, W - 40, 12);
+
+    // block
+    const blockW = 50, blockH = 36;
+    const blockX = 25 + Math.min(s * 3, W - 120);
+    ctx.fillStyle = '#059669';
+    ctx.beginPath();
+    ctx.roundRect(blockX, trackY - blockH, blockW, blockH, 5);
+    ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(fmt(m, 1) + 'kg', blockX + blockW / 2, trackY - blockH / 2 + 4);
+
+    // force arrow
+    const arrowLen = Math.min(F * 2.5, 80);
+    ctx.beginPath();
+    ctx.moveTo(blockX - 5, trackY - blockH / 2);
+    ctx.lineTo(blockX - 5 - arrowLen, trackY - blockH / 2);
+    ctx.strokeStyle = '#DC2626'; ctx.lineWidth = 3; ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(blockX - 5 - arrowLen, trackY - blockH / 2 - 7);
+    ctx.lineTo(blockX - 5, trackY - blockH / 2);
+    ctx.lineTo(blockX - 5 - arrowLen, trackY - blockH / 2 + 7);
+    ctx.fillStyle = '#DC2626'; ctx.fill();
+    ctx.fillStyle = '#DC2626'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('F=' + fmt(F, 0) + 'N', blockX - 5 - arrowLen / 2, trackY - blockH / 2 - 14);
+
+    // formula box
+    ctx.fillStyle = 'rgba(255,255,255,0.95)';
+    ctx.fillRect(W - 160, 10, 145, 60);
+    ctx.fillStyle = '#374151'; ctx.font = 'bold 14px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('a = F / m', W - 152, 30);
+    ctx.font = '13px sans-serif';
+    ctx.fillText('a = ' + fmt(F, 0) + '/' + fmt(m, 1) + ' = ' + fmt(a, 2) + ' m/s²', W - 152, 54);
+
+    // update HTML
+    const fEl = document.getElementById('newFVal');
+    const mEl = document.getElementById('newMVal');
+    const aEl = document.getElementById('newAVal');
+    const flEl = document.getElementById('newFLabel');
+    const mlEl = document.getElementById('newMLabel');
+    if (fEl) fEl.textContent = fmt(F, 0);
+    if (mEl) mEl.textContent = fmt(m, 1);
+    if (aEl) aEl.textContent = fmt(a, 2);
+    if (flEl) flEl.textContent = fmt(F, 0);
+    if (mlEl) mlEl.textContent = fmt(m, 1);
+
+    raf = requestAnimationFrame(draw);
+  }
+
+  function stop() { if (raf) cancelAnimationFrame(raf); running = false; last = null; }
+  function set(key, val) {
+    if (key === 'f') F = val;
+    if (key === 'm') m = val;
+  }
+  function toggle() {
+    if (running) {
+      running = false; last = null;
+      const b = document.getElementById('newPlayBtn');
+      if (b) b.textContent = '▶ Start';
+    } else {
+      t = 0; running = true;
+      const b = document.getElementById('newPlayBtn');
+      if (b) b.textContent = '⏸ Pause';
+    }
+  }
+  function reset() {
+    running = false; last = null; t = 0;
+    const b = document.getElementById('newPlayBtn');
+    if (b) b.textContent = '▶ Start';
+  }
+
+  raf = requestAnimationFrame(draw);
+  return { stop, set, toggle, reset };
+}
+
+// ============================================================
+// SIM 8: ENERGIEERHALTUNG – PENDEL
+// ============================================================
+function _simEnergieerhaltung() {
+  const canvas = document.getElementById('engCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const g = 9.81, M = 1.0; // mass kg
+  let theta0 = 40 * Math.PI / 180, L = 1.0;
+  let animId = null, startTime = null;
+
+  function fmt(n, d=2) { return n.toFixed(d).replace('.', ','); }
+
+  function draw(ts) {
+    if (!startTime) startTime = ts;
+    const t = (ts - startTime) / 1000;
+    const omega = Math.sqrt(g / L);
+    const theta = theta0 * Math.cos(omega * t);
+    const h = L * (1 - Math.cos(theta));
+    const E_pot = M * g * h;
+    const E_tot = M * g * L * (1 - Math.cos(theta0));
+    const E_kin = Math.max(E_tot - E_pot, 0);
+    const v = Math.sqrt(2 * E_kin / M);
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#f0f9ff';
+    ctx.fillRect(0, 0, W, H);
+
+    const pivotX = W / 2 - 60, pivotY = 30;
+    const scale = Math.min((H - 80) / L, 140);
+    const ballX = pivotX + Math.sin(theta) * L * scale;
+    const ballY = pivotY + Math.cos(theta) * L * scale;
+
+    // ceiling attachment
+    ctx.fillStyle = '#94A3B8';
+    ctx.fillRect(pivotX - 20, 0, 40, 15);
+
+    // string
+    ctx.beginPath();
+    ctx.moveTo(pivotX, pivotY);
+    ctx.lineTo(ballX, ballY);
+    ctx.strokeStyle = '#374151'; ctx.lineWidth = 2; ctx.stroke();
+
+    // path arc (ghost)
+    ctx.beginPath();
+    ctx.arc(pivotX, pivotY, L * scale, Math.PI / 2 - theta0, Math.PI / 2 + theta0);
+    ctx.strokeStyle = 'rgba(100,116,139,0.2)'; ctx.lineWidth = 1; ctx.stroke();
+
+    // ball
+    const bR = 14;
+    const bgrad = ctx.createRadialGradient(ballX - 3, ballY - 3, 2, ballX, ballY, bR);
+    bgrad.addColorStop(0, '#60A5FA');
+    bgrad.addColorStop(1, '#1D4ED8');
+    ctx.beginPath(); ctx.arc(ballX, ballY, bR, 0, Math.PI * 2);
+    ctx.fillStyle = bgrad; ctx.fill();
+    ctx.strokeStyle = '#1E3A8A'; ctx.lineWidth = 1.5; ctx.stroke();
+
+    // equilibrium marker
+    ctx.beginPath();
+    ctx.moveTo(pivotX, pivotY);
+    ctx.lineTo(pivotX, pivotY + L * scale);
+    ctx.strokeStyle = 'rgba(100,116,139,0.3)'; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+    ctx.stroke(); ctx.setLineDash([]);
+
+    // height marker h
+    ctx.beginPath();
+    ctx.moveTo(ballX, ballY);
+    ctx.lineTo(ballX, pivotY + L * scale);
+    ctx.strokeStyle = '#16A34A'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]);
+    ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#15803D'; ctx.font = '11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('h=' + fmt(h, 2) + 'm', ballX + 5, (ballY + pivotY + L * scale) / 2 + 4);
+
+    // energy bars
+    const barX = W - 90, barTopY = 20, barMaxH = H - 60;
+    const E_max = E_tot;
+    function drawBar(x, y, w, h, color, label, val) {
+      const barH = E_max > 0 ? (val / E_max) * barMaxH : 0;
+      ctx.fillStyle = '#E2E8F0';
+      ctx.fillRect(x, barTopY, w, barMaxH);
+      ctx.fillStyle = color;
+      ctx.fillRect(x, barTopY + barMaxH - barH, w, barH);
+      ctx.fillStyle = '#374151'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(label, x + w / 2, barTopY + barMaxH + 14);
+      ctx.fillText(fmt(val, 2) + 'J', x + w / 2, barTopY + barMaxH + 26);
+    }
+    drawBar(barX, barTopY, 22, barMaxH, '#3B82F6', 'Ekin', E_kin);
+    drawBar(barX + 28, barTopY, 22, barMaxH, '#16A34A', 'Epot', E_pot);
+    drawBar(barX + 56, barTopY, 22, barMaxH, '#94A3B8', 'Eges', E_tot);
+
+    // update HTML
+    const kinEl = document.getElementById('engEkin');
+    const potEl = document.getElementById('engEpot');
+    const gesEl = document.getElementById('engEges');
+    if (kinEl) kinEl.textContent = fmt(E_kin);
+    if (potEl) potEl.textContent = fmt(E_pot);
+    if (gesEl) gesEl.textContent = fmt(E_tot);
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  function stop() { if (animId) cancelAnimationFrame(animId); }
+  function set(key, val) {
+    startTime = null;
+    if (key === 'angle') {
+      theta0 = val * Math.PI / 180;
+      const lbl = document.getElementById('engAngleLabel');
+      if (lbl) lbl.textContent = val;
+    }
+    if (key === 'l') {
+      L = val;
+      const lbl = document.getElementById('engLLabel');
+      if (lbl) lbl.textContent = val.toFixed(1).replace('.', ',');
+    }
+  }
+
+  animId = requestAnimationFrame(draw);
+  return { stop, set };
+}
+
+// ============================================================
+// SIM 9: IMPULSERHALTUNG
+// ============================================================
+function _simImpuls() {
+  const canvas = document.getElementById('impCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  let m1 = 2, v1 = 5, m2 = 2;
+  let state = 'before'; // before | animating | after
+  let animId = null;
+  let b1x, b2x, b1v, b2v, animT = 0;
+
+  function fmt(n, d=1) { return n.toFixed(d).replace('.', ','); }
+
+  function initPositions() {
+    b1x = 80; b2x = W - 100;
+  }
+  initPositions();
+
+  function draw(ts) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+    const trackY = H / 2 + 10;
+    // track
+    ctx.fillStyle = '#94A3B8'; ctx.fillRect(20, trackY, W - 40, 12);
+
+    const r1 = 12 + m1 * 2, r2 = 12 + m2 * 2;
+
+    if (state === 'animating') {
+      animT += 0.025;
+      const speed = 80;
+      b1x += b1v * speed * 0.025;
+      b2x += b2v * speed * 0.025;
+
+      // check overlap for collision end
+      if (b1v > 0 && b1x + r1 >= b2x - r2 && animT > 0.1) {
+        state = 'after';
+        updateAfterInfo();
+      }
+      if (animT > 4) state = 'after';
+    }
+
+    // ball 1
+    ctx.beginPath();
+    ctx.arc(b1x, trackY - r1, r1, 0, Math.PI * 2);
+    ctx.fillStyle = '#DC2626'; ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(fmt(m1, 0) + 'kg', b1x, trackY - r1 + 4);
+
+    // ball 2
+    ctx.beginPath();
+    ctx.arc(b2x, trackY - r2, r2, 0, Math.PI * 2);
+    ctx.fillStyle = '#2563EB'; ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(fmt(m2, 0) + 'kg', b2x, trackY - r2 + 4);
+
+    // velocity labels
+    if (state === 'before') {
+      ctx.fillStyle = '#DC2626'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('v₁ = ' + fmt(v1) + ' m/s →', b1x, trackY - r1 * 2 - 10);
+      ctx.fillStyle = '#2563EB';
+      ctx.fillText('v₂ = 0 m/s', b2x, trackY - r2 * 2 - 10);
+    } else if (state === 'after' || state === 'animating') {
+      const v1a = (m1 - m2) / (m1 + m2) * v1;
+      const v2a = 2 * m1 / (m1 + m2) * v1;
+      ctx.fillStyle = '#DC2626'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText("v₁' = " + fmt(v1a) + ' m/s', b1x, trackY - r1 * 2 - 10);
+      ctx.fillStyle = '#2563EB';
+      ctx.fillText("v₂' = " + fmt(v2a) + ' m/s', b2x, trackY - r2 * 2 - 10);
+    }
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  function updateAfterInfo() {
+    const pVor = m1 * v1;
+    const v1a = (m1 - m2) / (m1 + m2) * v1;
+    const v2a = 2 * m1 / (m1 + m2) * v1;
+    const pNach = m1 * v1a + m2 * v2a;
+    const pVorEl = document.getElementById('impPvor');
+    const pNachEl = document.getElementById('impPnach');
+    if (pVorEl) pVorEl.textContent = fmt(pVor) + ' kg·m/s';
+    if (pNachEl) pNachEl.textContent = fmt(pNach, 1) + ' kg·m/s ✓';
+  }
+
+  function stop() { if (animId) cancelAnimationFrame(animId); }
+  function set(key, val) {
+    if (key === 'm1') { m1 = val; const l = document.getElementById('impM1Label'); if (l) l.textContent = fmt(val); }
+    if (key === 'v1') { v1 = val; const l = document.getElementById('impV1Label'); if (l) l.textContent = fmt(val); }
+    if (key === 'm2') { m2 = val; const l = document.getElementById('impM2Label'); if (l) l.textContent = fmt(val); }
+    state = 'before'; initPositions(); animT = 0;
+    const pEl = document.getElementById('impPvor');
+    if (pEl) pEl.textContent = fmt(m1 * v1, 1) + ' kg·m/s';
+    const nEl = document.getElementById('impPnach');
+    if (nEl) nEl.textContent = '–';
+  }
+  function stoss() {
+    if (state !== 'before') { reset(); return; }
+    const v1a = (m1 - m2) / (m1 + m2) * v1;
+    const v2a = 2 * m1 / (m1 + m2) * v1;
+    b1v = v1a; b2v = v2a;
+    // start with b1 moving toward b2
+    b1x = 80; b2x = W - 100;
+    // animate approach then separate
+    b1v = v1; // approach speed
+    state = 'animating'; animT = 0;
+  }
+  function reset() {
+    state = 'before'; initPositions(); animT = 0;
+    const pEl = document.getElementById('impPvor');
+    if (pEl) pEl.textContent = fmt(m1 * v1, 1) + ' kg·m/s';
+    const nEl = document.getElementById('impPnach');
+    if (nEl) nEl.textContent = '–';
+  }
+
+  animId = requestAnimationFrame(draw);
+  return { stop, set, stoss, reset };
+}
+
+// ============================================================
+// SIM 10: FADENPENDEL
+// ============================================================
+function _simFadenpendel() {
+  const canvas = document.getElementById('penCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const g = 9.81;
+  const theta0 = 30 * Math.PI / 180;
+  let L = 1.0;
+  let animId = null, startTime = null;
+
+  function fmt(n, d=2) { return n.toFixed(d).replace('.', ','); }
+
+  function draw(ts) {
+    if (!startTime) startTime = ts;
+    const t = (ts - startTime) / 1000;
+    const omega = Math.sqrt(g / L);
+    const T = 2 * Math.PI / omega;
+    const theta = theta0 * Math.cos(omega * t);
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#f5f3ff'; ctx.fillRect(0, 0, W, H);
+
+    const pivotX = W / 2, pivotY = 30;
+    const scale = Math.min((H - 60) / L, 160);
+    const ballX = pivotX + Math.sin(theta) * L * scale;
+    const ballY = pivotY + Math.cos(theta) * L * scale;
+
+    // ceiling
+    ctx.fillStyle = '#94A3B8';
+    ctx.fillRect(pivotX - 25, 0, 50, 15);
+    ctx.beginPath();
+    ctx.arc(pivotX, pivotY, 5, 0, Math.PI * 2);
+    ctx.fillStyle = '#64748B'; ctx.fill();
+
+    // ghost path
+    ctx.beginPath();
+    ctx.arc(pivotX, pivotY, L * scale, Math.PI / 2 - theta0 - 0.1, Math.PI / 2 + theta0 + 0.1);
+    ctx.strokeStyle = 'rgba(124,58,237,0.15)'; ctx.lineWidth = 2; ctx.stroke();
+
+    // string
+    ctx.beginPath(); ctx.moveTo(pivotX, pivotY); ctx.lineTo(ballX, ballY);
+    ctx.strokeStyle = '#4B5563'; ctx.lineWidth = 2; ctx.stroke();
+
+    // ball
+    const bR = 16;
+    ctx.beginPath(); ctx.arc(ballX, ballY, bR, 0, Math.PI * 2);
+    ctx.fillStyle = '#7C3AED'; ctx.fill();
+    ctx.strokeStyle = '#4C1D95'; ctx.lineWidth = 2; ctx.stroke();
+
+    // length label
+    ctx.fillStyle = '#5B21B6'; ctx.font = '11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('L = ' + fmt(L) + ' m', pivotX + 6, pivotY + L * scale / 2);
+
+    // period box
+    ctx.fillStyle = 'rgba(255,255,255,0.92)';
+    ctx.fillRect(10, 10, 140, 50);
+    ctx.fillStyle = '#374151'; ctx.font = 'bold 13px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('T = 2π·√(L/g)', 18, 28);
+    ctx.font = '13px sans-serif';
+    ctx.fillText('T = ' + fmt(T) + ' s', 18, 50);
+
+    // angle display
+    const deg = Math.abs(theta * 180 / Math.PI).toFixed(1);
+    ctx.fillStyle = '#374151'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('θ = ' + deg.replace('.', ',') + '°', W / 2, H - 10);
+
+    // update HTML
+    const lEl = document.getElementById('penLVal');
+    const tEl = document.getElementById('penTVal');
+    const aEl = document.getElementById('penAngleVal');
+    if (lEl) lEl.textContent = fmt(L);
+    if (tEl) tEl.textContent = fmt(T);
+    if (aEl) aEl.textContent = (Math.abs(theta * 180 / Math.PI)).toFixed(0).replace('.', ',');
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  function stop() { if (animId) cancelAnimationFrame(animId); }
+  function setL(val) {
+    L = val; startTime = null;
+    const lbl = document.getElementById('penLLabel');
+    if (lbl) lbl.textContent = val.toFixed(2).replace('.', ',');
+  }
+
+  animId = requestAnimationFrame(draw);
+  return { stop, setL };
+}
+
+// ============================================================
+// SIM 11: HARMONISCHE WELLEN
+// ============================================================
+function _simWellen() {
+  const canvas = document.getElementById('welCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  let f = 2, A = 30;
+  const v_wave = 230; // px per second (wave speed)
+  let animId = null, startTime = null;
+
+  function fmt(n, d=1) { return n.toFixed(d).replace('.', ','); }
+
+  function draw(ts) {
+    if (!startTime) startTime = ts;
+    const t = (ts - startTime) / 1000;
+
+    const lambda = v_wave / f; // in px
+    const T = 1 / f;
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#eff6ff'; ctx.fillRect(0, 0, W, H);
+
+    const midY = H / 2;
+
+    // grid lines
+    ctx.strokeStyle = '#DBEAFE'; ctx.lineWidth = 1;
+    for (let gy = midY - 60; gy <= midY + 60; gy += 20) {
+      ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+    }
+    // zero line
+    ctx.beginPath(); ctx.moveTo(0, midY); ctx.lineTo(W, midY);
+    ctx.strokeStyle = '#93C5FD'; ctx.lineWidth = 1.5; ctx.stroke();
+
+    // wave
+    ctx.beginPath();
+    for (let x = 0; x <= W; x++) {
+      const y = midY - A * Math.sin(2 * Math.PI * (x / lambda - f * t));
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = '#2563EB'; ctx.lineWidth = 2.5; ctx.stroke();
+
+    // amplitude arrow
+    const ax = 30;
+    ctx.beginPath();
+    ctx.moveTo(ax, midY);
+    ctx.lineTo(ax, midY - A);
+    ctx.strokeStyle = '#DC2626'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = '#DC2626'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('A', ax, midY - A - 5);
+
+    // wavelength arrow
+    const wlStartX = 60;
+    const wlEndX = wlStartX + lambda;
+    if (wlEndX < W - 20) {
+      ctx.beginPath();
+      ctx.moveTo(wlStartX, midY + A + 20);
+      ctx.lineTo(wlEndX, midY + A + 20);
+      ctx.strokeStyle = '#059669'; ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.fillStyle = '#059669'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('λ = ' + fmt(lambda, 0) + ' px', wlStartX + lambda / 2, midY + A + 34);
+    }
+
+    // update HTML
+    const fEl = document.getElementById('welFVal');
+    const tEl = document.getElementById('welTVal');
+    const lEl = document.getElementById('welLamVal');
+    const flEl = document.getElementById('welFLabel');
+    const alEl = document.getElementById('welALabel');
+    if (fEl) fEl.textContent = fmt(f);
+    if (tEl) tEl.textContent = fmt(T, 2);
+    if (lEl) lEl.textContent = fmt(lambda, 0);
+    if (flEl) flEl.textContent = fmt(f);
+    if (alEl) alEl.textContent = fmt(A, 0);
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  function stop() { if (animId) cancelAnimationFrame(animId); }
+  function set(key, val) {
+    if (key === 'f') f = val;
+    if (key === 'a') A = val;
+  }
+
+  animId = requestAnimationFrame(draw);
+  return { stop, set };
+}
+
+// ============================================================
+// SIM 12: KONDENSATOR LADEN / ENTLADEN
+// ============================================================
+function _simKondensator() {
+  const canvas = document.getElementById('kondCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  let C = 500e-6, R = 500, mode = 'laden';
+  const U0 = 12;
+  let t = 0, running = false, last = null, animId = null;
+  const chartData = [];
+
+  function fmt(n, d=2) { return n.toFixed(d).replace('.', ','); }
+
+  function draw(ts) {
+    if (running) {
+      if (last !== null) {
+        const dt = Math.min((ts - last) / 1000, 0.05);
+        t += dt;
+        const tau = R * C;
+        const Uc = mode === 'laden'
+          ? U0 * (1 - Math.exp(-t / tau))
+          : U0 * Math.exp(-t / tau);
+        chartData.push({ t, Uc });
+      }
+      last = ts;
+    }
+
+    const tau = R * C;
+    const Uc_now = mode === 'laden'
+      ? U0 * (1 - Math.exp(-t / tau))
+      : U0 * Math.exp(-t / tau);
+    const pct = mode === 'laden' ? (Uc_now / U0) * 100 : (Uc_now / U0) * 100;
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+    // chart
+    const chartX = 50, chartY = 15, chartW = W - 80, chartH = H - 50;
+    ctx.fillStyle = '#fff'; ctx.fillRect(chartX, chartY, chartW, chartH);
+    ctx.strokeStyle = '#E2E8F0'; ctx.lineWidth = 1; ctx.strokeRect(chartX, chartY, chartW, chartH);
+
+    // grid
+    ctx.strokeStyle = '#F1F5F9'; ctx.lineWidth = 1;
+    for (let i = 1; i <= 4; i++) {
+      const gx = chartX + (i / 5) * chartW;
+      ctx.beginPath(); ctx.moveTo(gx, chartY); ctx.lineTo(gx, chartY + chartH); ctx.stroke();
+    }
+    for (let i = 1; i <= 3; i++) {
+      const gy = chartY + chartH - (i / 4) * chartH;
+      ctx.beginPath(); ctx.moveTo(chartX, gy); ctx.lineTo(chartX + chartW, gy); ctx.stroke();
+      ctx.fillStyle = '#94A3B8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(fmt(U0 * i / 4, 0) + 'V', chartX - 4, gy + 4);
+    }
+
+    // axis labels
+    ctx.fillStyle = '#64748B'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+    const maxT_show = 5 * tau;
+    for (let i = 1; i <= 5; i++) {
+      const gx = chartX + (i / 5) * chartW;
+      ctx.fillText(fmt(maxT_show * i / 5, 2) + 's', gx, chartY + chartH + 14);
+    }
+    ctx.fillText('Zeit t', chartX + chartW / 2, chartY + chartH + 26);
+    ctx.save(); ctx.translate(chartX - 32, chartY + chartH / 2); ctx.rotate(-Math.PI / 2);
+    ctx.fillText('U_C (V)', 0, 0); ctx.restore();
+
+    // theoretical curve (full)
+    ctx.beginPath();
+    const steps = 200;
+    for (let i = 0; i <= steps; i++) {
+      const tx = (i / steps) * maxT_show;
+      const uy = mode === 'laden'
+        ? U0 * (1 - Math.exp(-tx / tau))
+        : U0 * Math.exp(-tx / tau);
+      const px = chartX + (tx / maxT_show) * chartW;
+      const py = chartY + chartH - (uy / U0) * chartH;
+      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.strokeStyle = '#CBD5E1'; ctx.lineWidth = 1; ctx.setLineDash([4, 3]); ctx.stroke(); ctx.setLineDash([]);
+
+    // actual data
+    if (chartData.length > 1) {
+      ctx.beginPath();
+      let started = false;
+      for (const p of chartData) {
+        if (p.t > maxT_show * 1.1) continue;
+        const px = chartX + (p.t / maxT_show) * chartW;
+        const py = chartY + chartH - (p.Uc / U0) * chartH;
+        if (!started) { ctx.moveTo(px, py); started = true; }
+        else ctx.lineTo(px, py);
+      }
+      ctx.strokeStyle = mode === 'laden' ? '#2563EB' : '#DC2626';
+      ctx.lineWidth = 2.5; ctx.stroke();
+    }
+
+    // tau marker
+    const tauX = chartX + (tau / maxT_show) * chartW;
+    if (tauX < chartX + chartW) {
+      ctx.beginPath(); ctx.moveTo(tauX, chartY); ctx.lineTo(tauX, chartY + chartH);
+      ctx.strokeStyle = '#F59E0B'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = '#F59E0B'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('τ', tauX, chartY - 3);
+    }
+
+    // current dot
+    if (t <= maxT_show * 1.1) {
+      const dotX = chartX + (t / maxT_show) * chartW;
+      const dotY = chartY + chartH - (Uc_now / U0) * chartH;
+      ctx.beginPath(); ctx.arc(dotX, dotY, 5, 0, Math.PI * 2);
+      ctx.fillStyle = mode === 'laden' ? '#2563EB' : '#DC2626'; ctx.fill();
+    }
+
+    // update HTML
+    const tauEl = document.getElementById('kondTauVal');
+    const uEl = document.getElementById('kondUVal');
+    const pEl = document.getElementById('kondPctVal');
+    if (tauEl) tauEl.textContent = (tau * 1000 < 1000) ? fmt(tau * 1000, 0) + ' ms' : fmt(tau, 2) + ' s';
+    if (uEl) uEl.textContent = fmt(Uc_now, 2);
+    if (pEl) pEl.textContent = fmt(pct, 0);
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  function stop() { if (animId) cancelAnimationFrame(animId); running = false; last = null; }
+  function set(key, val) {
+    if (key === 'c') { C = val * 1e-6; const l = document.getElementById('kondCLabel'); if (l) l.textContent = val; }
+    if (key === 'r') { R = val; const l = document.getElementById('kondRLabel'); if (l) l.textContent = val; }
+    reset();
+  }
+  function setMode(m) {
+    mode = m; reset();
+    const lBtn = document.getElementById('kondLadenBtn');
+    const eBtn = document.getElementById('kondEntladenBtn');
+    if (lBtn && eBtn) {
+      lBtn.className = m === 'laden' ? 'sim-btn primary' : 'sim-btn';
+      eBtn.className = m === 'entladen' ? 'sim-btn primary' : 'sim-btn';
+    }
+  }
+  function reset() {
+    t = 0; chartData.length = 0; running = true; last = null;
+  }
+
+  running = true;
+  animId = requestAnimationFrame(draw);
+  return { stop, set, setMode, reset };
 }
 
 // ============================================================
