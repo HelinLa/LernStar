@@ -1200,7 +1200,7 @@ function renderSubject() {
           <div class="topic-name">${t.name}</div>
           <div class="topic-diff">${DIFF_STARS[t.diff]}</div>
         </div>
-        ${hasVideo ? `<button class="topic-play-btn" id="topicBtn${i}" onclick="playTopic(${i})">Erklärvideo</button>` : ''}
+        ${(hasVideo && !t.explanation) ? `<button class="topic-play-btn" id="topicBtn${i}" onclick="playTopic(${i})">Erklärvideo</button>` : ''}
         ${(EV_SCENES[t.name] || t.explanation) ? `<button class="ev-topic-btn" onclick="openErklaerVideo('${t.name.replace(/'/g,"\\'")}')">🎬 Erklärvideo</button>` : ''}
       </div>`;
     topicsList.appendChild(item);
