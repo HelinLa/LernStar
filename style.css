@@ -2342,3 +2342,63 @@ ul { list-style: none; }
 .evs-mk-item{display:flex;align-items:flex-start;gap:10px;animation:evFadeUp .45s ease both}
 .evs-mk-dot{width:26px;height:26px;border-radius:50%;background:#3E6E1E;color:#fff;font-size:.78rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
 .evs-mk-item span{font-size:.84rem;color:#1E293B;line-height:1.5;font-weight:600}
+
+/* ============================================================
+   PRÜFUNGSMODUS – Antwort-Buttons (ZAP / Abitur)
+   ============================================================ */
+.exam-q-text { font-size:1.08rem; font-weight:700; line-height:1.6; margin-bottom:22px; color:var(--text,#111); }
+
+.exam-q-opts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.exam-q-opt {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 2px solid var(--border,#e5e7eb);
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: .97rem;
+  font-weight: 600;
+  transition: border-color .13s, background .13s;
+  width: 100%;
+}
+.exam-q-opt:hover:not(:disabled) { border-color: var(--gc,#7C3AED); background: var(--gl,#EDE9FE); }
+.exam-q-opt:disabled { cursor: default; opacity: .75; }
+
+.exam-opt-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gl,#EDE9FE);
+  color: var(--gc,#7C3AED);
+  font-weight: 900;
+  font-size: .92rem;
+  flex-shrink: 0;
+}
+.exam-correct { border-color:#059669 !important; background:#ECFDF5 !important; }
+.exam-correct .exam-opt-letter { background:#059669; color:#fff; }
+.exam-wrong   { border-color:#DC2626 !important; background:#FEF2F2 !important; }
+.exam-wrong   .exam-opt-letter { background:#DC2626; color:#fff; }
+
+.exam-q-fb { margin-top:16px; padding:14px 16px; border-radius:10px; font-size:.92rem; line-height:1.5; font-weight:600; }
+.exam-fb-ok  { background:#ECFDF5; color:#065F46; border:1px solid #6EE7B7; }
+.exam-fb-err { background:#FEF2F2; color:#991B1B; border:1px solid #FCA5A5; }
+
+/* Fortschrittsbalken */
+.exam-progress-bar  { height:6px; background:var(--border,#e5e7eb); border-radius:6px; overflow:hidden; margin-bottom:8px; }
+.exam-progress-fill { height:100%; background:linear-gradient(90deg,var(--gc,#7C3AED),var(--gc2,#A855F7)); border-radius:6px; transition:width .4s; }
+.exam-q-counter     { font-size:.82rem; font-weight:700; color:var(--text-muted,#6b7280); margin-bottom:16px; }
+
+/* Key-Eingabe im Chat */
+#groqKeyInp { box-sizing: border-box; }

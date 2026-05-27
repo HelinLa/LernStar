@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    LernStar – App Logic
    ============================================================ */
 
@@ -1912,7 +1912,7 @@ function closeSidebar() {
 // ============================================================
 // KI-PROVIDER ABSTRACTION – unabhängig von einem einzigen Anbieter
 // ============================================================
-let GROQ_KEY = localStorage.getItem('ls_groq_key') || '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';
+let GROQ_KEY = localStorage.getItem('ls_groq_key') || '';
 
 function _updateGroqKey(key) {
   key = (key || '').trim();
@@ -1924,10 +1924,28 @@ function _updateGroqKey(key) {
 }
 
 function _promptNewKey() {
-  const key = prompt('Groq API-Key abgelaufen!\n\nNeuen kostenlosen Key holen:\n→ console.groq.com → API Keys → Create\n\nKey hier einfügen:');
-  if (!key) return;
-  _updateGroqKey(key);
-  _chatAddBubble('✅ Neuer API-Key gespeichert! Bitte sende deine Frage noch einmal.', 'bot');
+  const msgs = document.getElementById('chatMessages');
+  if (!msgs) { const k = prompt('Neuen Groq-Key eingeben:'); if (k) _updateGroqKey(k); return; }
+  // Entferne alten Key-Input falls vorhanden
+  document.getElementById('groqKeyBubble')?.remove();
+  const div = document.createElement('div');
+  div.id = 'groqKeyBubble';
+  div.className = 'chat-bubble chat-bubble-error';
+  div.style.maxWidth = '100%';
+  div.innerHTML = `🔑 <b>Groq API-Key abgelaufen.</b><br>
+    Kostenlosen Key holen: <a href="https://console.groq.com/keys" target="_blank">console.groq.com/keys</a><br><br>
+    <input id="groqKeyInp" type="password" placeholder="gsk_..." autocomplete="off"
+      style="width:100%;padding:9px 12px;border-radius:9px;border:2px solid #fca5a5;font-size:.95rem;margin:4px 0 8px;font-family:inherit">
+    <button onclick="
+      var k=document.getElementById('groqKeyInp').value.trim();
+      if(k){_updateGroqKey(k);document.getElementById('groqKeyBubble').outerHTML='';
+      _chatAddBubble('✅ Key gespeichert! Nochmal senden.',\'bot\');}
+    " style="width:100%;padding:9px;background:#7c3aed;color:#fff;border:none;border-radius:9px;font-weight:700;cursor:pointer;font-size:.95rem">
+      💾 Key speichern & weiter
+    </button>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  setTimeout(() => document.getElementById('groqKeyInp')?.focus(), 100);
 }
 
 // ============================================================
@@ -6619,3 +6637,4 @@ function _evPlayScene(idx){
 function _evTickProgress(sceneIdx,dur){const fill=document.getElementById('evProgressFill');const scenes=EV_SCENES[_evTopicName];if(!fill||!scenes)return;const totalDur=scenes.reduce((s,sc)=>s+sc.dur,0);const pastDur=scenes.slice(0,sceneIdx).reduce((s,sc)=>s+sc.dur,0);function tick(){if(_evSceneIdx!==sceneIdx||_evPaused)return;const elapsed=Date.now()-_evSceneStart+_evSceneElapsed;const totalDone=pastDur+Math.min(elapsed,dur);fill.style.width=(totalDone/totalDur*100)+'%';if(elapsed<dur)requestAnimationFrame(tick);}requestAnimationFrame(tick);}
 function _evTogglePause(){const btn=document.getElementById('evPlayPauseBtn');const scenes=EV_SCENES[_evTopicName];const scene=scenes?.[_evSceneIdx];if(!scene)return;if(_evPaused){_evPaused=false;if(btn)btn.textContent='⏸';const remaining=scene.dur-_evSceneElapsed;_evSceneStart=Date.now();_evTickProgress(_evSceneIdx,scene.dur);_evTimer=setTimeout(()=>_evPlayScene(_evSceneIdx+1),remaining);}else{_evPaused=true;if(btn)btn.textContent='▶';_evSceneElapsed+=Date.now()-_evSceneStart;clearTimeout(_evTimer);}}
 function _evSkipScene(){clearTimeout(_evTimer);_evPlayScene(_evSceneIdx+1);}
+
