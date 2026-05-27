@@ -2172,6 +2172,12 @@ ANTWORTREGELN:
 - Alltagsbeispiele nutzen (Pizza, Geld, Sport, Smartphones).
 - Bei Fehlern: erst Mut machen, dann Erklärung.
 
+BILDER MIT AUFGABEN:
+- Wenn du ein Foto mit mehreren Aufgaben siehst, löse ALLE Aufgaben vollständig – nicht nur die ersten.
+- Nummeriere jede Aufgabe klar: "Aufgabe 1:", "Aufgabe 2:", usw.
+- Zeige bei jeder Aufgabe den vollständigen Lösungsweg Schritt für Schritt.
+- Brich NIEMALS mittendrin ab – löse jede einzelne Teilaufgabe bis zum Ende.
+
 MATHEMATIK: Jeden Ausdruck in $...$: $\\frac{3}{4}$ · $v = s \\cdot t$ · $\\sqrt{9}=3$. Niemals $$.`;
 }
 
@@ -2313,7 +2319,7 @@ async function _chatAsk(question) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             image_b64: imgB64, mime: imgMime,
-            question: question || 'Bitte löse diese Aufgabe Schritt für Schritt auf Deutsch.',
+            question: question || 'Löse ALLE Aufgaben auf diesem Bild vollständig und Schritt für Schritt auf Deutsch. Nummeriere jede Aufgabe.',
             system: _getChatSystem(), history: historySlice
           })
         });
@@ -2328,7 +2334,7 @@ async function _chatAsk(question) {
         // Fallback: direkt zu Groq (wenn lokaler Server nicht läuft)
         const userContent = [
           { type: 'image_url', image_url: { url: `data:${imgMime};base64,${imgB64}` } },
-          { type: 'text', text: question || 'Bitte löse diese Aufgabe Schritt für Schritt auf Deutsch.' },
+          { type: 'text', text: question || 'Löse ALLE Aufgaben auf diesem Bild vollständig und Schritt für Schritt auf Deutsch. Nummeriere jede Aufgabe.' },
         ];
         const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
           method: 'POST',
@@ -2336,7 +2342,7 @@ async function _chatAsk(question) {
           body: JSON.stringify({
             model: 'meta-llama/llama-4-scout-17b-16e-instruct',
             messages: [{ role: 'system', content: _getChatSystem() }, ...historySlice, { role: 'user', content: userContent }],
-            max_tokens: 700, temperature: 0.7
+            max_tokens: 2500, temperature: 0.7
           })
         });
         if (!res.ok) {
@@ -2353,7 +2359,7 @@ async function _chatAsk(question) {
         ...historySlice,
         { role: 'user', content: question }
       ];
-      answer = await _aiCall(messages, { max_tokens: 700, temperature: 0.7 });
+      answer = await _aiCall(messages, { max_tokens: 1500, temperature: 0.7 });
     }
 
     // Verlauf aktualisieren (nur Text, kein Bild-Blob speichern)
@@ -6637,6 +6643,8 @@ function _evPlayScene(idx){
 function _evTickProgress(sceneIdx,dur){const fill=document.getElementById('evProgressFill');const scenes=EV_SCENES[_evTopicName];if(!fill||!scenes)return;const totalDur=scenes.reduce((s,sc)=>s+sc.dur,0);const pastDur=scenes.slice(0,sceneIdx).reduce((s,sc)=>s+sc.dur,0);function tick(){if(_evSceneIdx!==sceneIdx||_evPaused)return;const elapsed=Date.now()-_evSceneStart+_evSceneElapsed;const totalDone=pastDur+Math.min(elapsed,dur);fill.style.width=(totalDone/totalDur*100)+'%';if(elapsed<dur)requestAnimationFrame(tick);}requestAnimationFrame(tick);}
 function _evTogglePause(){const btn=document.getElementById('evPlayPauseBtn');const scenes=EV_SCENES[_evTopicName];const scene=scenes?.[_evSceneIdx];if(!scene)return;if(_evPaused){_evPaused=false;if(btn)btn.textContent='⏸';const remaining=scene.dur-_evSceneElapsed;_evSceneStart=Date.now();_evTickProgress(_evSceneIdx,scene.dur);_evTimer=setTimeout(()=>_evPlayScene(_evSceneIdx+1),remaining);}else{_evPaused=true;if(btn)btn.textContent='▶';_evSceneElapsed+=Date.now()-_evSceneStart;clearTimeout(_evTimer);}}
 function _evSkipScene(){clearTimeout(_evTimer);_evPlayScene(_evSceneIdx+1);}
+
+
 
 
 
