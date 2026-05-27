@@ -60,6 +60,38 @@ function _getVoice() {
   return _cachedVoice;
 }
 
+// Beste verfügbare deutsche Stimme für Erklärvideos
+// Priorität: Natural (Neural) > Online > bekannte gute Stimmen > jede deutsche
+let _evVoiceCache = null;
+function _evPickVoice() {
+  if (_evVoiceCache) return _evVoiceCache;
+  const vs = window.speechSynthesis?.getVoices() || [];
+  const de = vs.filter(v => v.lang === 'de-DE' || v.lang.startsWith('de'));
+  if (!de.length) return null;
+  _evVoiceCache =
+    // 1. "Natural" = KI-Stimme, klingt am menschlichsten (z.B. Katja Online Natural)
+    de.find(v => /natural/i.test(v.name))
+    // 2. Neural-Stimme
+    || de.find(v => /neural/i.test(v.name))
+    // 3. Online-Stimme (cloud-basiert, besser als lokale)
+    || de.find(v => /online/i.test(v.name))
+    // 4. Bekannte gute Microsoft-Stimmen
+    || de.find(v => /katja/i.test(v.name))
+    || de.find(v => /stefan|markus|georg/i.test(v.name))
+    // 5. Irgendeine Microsoft-Stimme
+    || de.find(v => /microsoft/i.test(v.name))
+    // 6. Google-Stimme
+    || de.find(v => /google/i.test(v.name))
+    // 7. Erste verfügbare
+    || de[0]
+    || null;
+  return _evVoiceCache;
+}
+// Cache invalidieren wenn Browser neue Stimmen lädt
+if (typeof speechSynthesis !== 'undefined') {
+  speechSynthesis.addEventListener('voiceschanged', () => { _evVoiceCache = null; });
+}
+
 function _voiceLabel(v) {
   if (!v) return '🎤 Keine Stimme';
   if (/(natural|neural)/i.test(v.name)) return `✨ ${v.name}`;
@@ -4609,14 +4641,18 @@ function _evPlayScene(idx){
   stage.style.background=scene.bg||'transparent';
   stage.innerHTML='';
   scene.build(stage);
-  // Sprachausgabe
+  // Sprachausgabe — beste verfügbare Stimme
   if(scene.speech && window.speechSynthesis){
     window.speechSynthesis.cancel();
     const u=new SpeechSynthesisUtterance(scene.speech);
-    u.lang='de-DE';u.rate=0.88;u.pitch=1.02;u.volume=1;
-    const vs=window.speechSynthesis.getVoices();
-    const dv=vs.find(v=>v.lang==='de-DE')||vs.find(v=>v.lang.startsWith('de'));
-    if(dv)u.voice=dv;
+    u.lang='de-DE';u.volume=1;
+    const voice=_evPickVoice();
+    if(voice)u.voice=voice;
+    // Natural/Online-Stimmen klingen am besten ohne Anpassung;
+    // ältere Stimmen brauchen langsamere Rate + wärmeres Pitch
+    const isNatural=/natural|neural|online/i.test(voice?.name||'');
+    u.rate  = isNatural ? 0.94 : 0.86;
+    u.pitch = isNatural ? 1.0  : 1.06;
     window.speechSynthesis.speak(u);
   }
   const btn=document.getElementById('evPlayPauseBtn');
