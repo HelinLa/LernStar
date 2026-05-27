@@ -4632,52 +4632,26 @@ if (false) { const _EV_LEGACY = { 'Einführung in Brüche': [
 
 let _evTopicName='',_evSceneIdx=0,_evPaused=false,_evTimer=null,_evSceneStart=0,_evSceneElapsed=0;
 
-/* ─── Sanfte TTS: HF-API → Web Speech Fallback ───────────────────
-   Versucht zuerst facebook/mms-tts-deu via Hugging Face (kein Key),
-   fällt bei Fehler/Timeout auf besten Browser-Voice zurück.
+/* ─── Sanfte TTS: ResponsiveVoice → Web Speech Fallback ─────────
+   ResponsiveVoice liefert eine warme, natürliche deutsche Stimme
+   direkt im Browser — kein API-Key, kein Download, kein Warten.
    ─────────────────────────────────────────────────────────────── */
-const _evTTSCache = {};   // text → blob-URL
-let   _evCurAudio  = null;
-let   _evHFCtrl    = null;
+let _evCurAudio = null;
 
-async function _evSpeak(text) {
+function _evSpeak(text) {
   if (!text) return;
   _evSpeakStop();
-  const snap = _evSceneIdx; // Scene-Snapshot zum Abbrechen veralteter Anfragen
 
-  // Cache-Treffer: sofort abspielen
-  if (_evTTSCache[text]) {
-    _evCurAudio = new Audio(_evTTSCache[text]);
-    _evCurAudio.playbackRate = 1.05;
-    _evCurAudio.play().catch(() => _evSpeakFallback(text));
+  // 1. ResponsiveVoice — warme, natürliche deutsche Frauenstimme
+  if (window.responsiveVoice?.voiceSupport()) {
+    window.responsiveVoice.speak(text, 'Deutsch Female', {
+      rate: 0.88, pitch: 1.0, volume: 1.0
+    });
     return;
   }
 
-  // Hugging Face Inference API (kostenlos, kein Key)
-  try {
-    const ctrl = new AbortController();
-    _evHFCtrl   = ctrl;
-    const timer = setTimeout(() => ctrl.abort(), 7000); // 7s Timeout
-    const res   = await fetch(
-      'https://api-inference.huggingface.co/models/facebook/mms-tts-deu',
-      { method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ inputs: text }),
-        signal: ctrl.signal }
-    );
-    clearTimeout(timer);
-    if (res.ok && _evSceneIdx === snap) {
-      const blob = await res.blob();
-      const url  = URL.createObjectURL(blob);
-      _evTTSCache[text] = url;
-      _evCurAudio = new Audio(url);
-      _evCurAudio.playbackRate = 1.05;
-      _evCurAudio.play().catch(() => _evSpeakFallback(text));
-      return;
-    }
-  } catch (_) { /* Timeout oder Netzwerkfehler → Fallback */ }
-
-  if (_evSceneIdx === snap) _evSpeakFallback(text);
+  // 2. Fallback: bester verfügbarer Browser-Voice
+  _evSpeakFallback(text);
 }
 
 function _evSpeakFallback(text) {
@@ -4694,21 +4668,12 @@ function _evSpeakFallback(text) {
 }
 
 function _evSpeakStop() {
+  window.responsiveVoice?.cancel();
   if (_evCurAudio) { _evCurAudio.pause(); _evCurAudio = null; }
-  try { _evHFCtrl?.abort(); } catch (_) {}
   window.speechSynthesis?.cancel();
 }
 
-// Nächste Szene vorausladen (damit Audio sofort bereit ist)
-function _evPrefetch(text) {
-  if (!text || _evTTSCache[text]) return;
-  fetch('https://api-inference.huggingface.co/models/facebook/mms-tts-deu',
-    { method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ inputs: text }) })
-    .then(r => r.ok ? r.blob() : null)
-    .then(b => { if (b) _evTTSCache[text] = URL.createObjectURL(b); })
-    .catch(() => {});
-}
+function _evPrefetch() {} // kein Prefetch nötig bei ResponsiveVoice
 
 function openErklaerVideo(topicName){
   if(!EV_SCENES[topicName])EV_SCENES[topicName]=_evAutoScenes(topicName);
