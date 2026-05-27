@@ -2402,3 +2402,50 @@ ul { list-style: none; }
 
 /* Key-Eingabe im Chat */
 #groqKeyInp { box-sizing: border-box; }
+
+/* ============================================================
+   ZAP/ABITUR – ai-ex-opt Buttons (Aufgabenbank)
+   ============================================================ */
+.ai-ex-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0;
+}
+.ai-ex-opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 2px solid var(--border,#e5e7eb);
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: .97rem;
+  font-weight: 600;
+  width: 100%;
+  transition: border-color .13s, background .13s;
+}
+.ai-ex-opt:hover:not(:disabled) { border-color: var(--gc,#7C3AED); background: var(--gl,#EDE9FE); }
+.ai-ex-opt:disabled { cursor: default; opacity: .75; }
+.ai-ex-opt-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--gl,#EDE9FE);
+  color: var(--gc,#7C3AED);
+  font-weight: 900;
+  font-size: .88rem;
+  flex-shrink: 0;
+}
+.ai-ex-opt.correct  { border-color:#059669 !important; background:#ECFDF5 !important; }
+.ai-ex-opt.correct .ai-ex-opt-letter { background:#059669; color:#fff; }
+.ai-ex-opt.wrong    { border-color:#DC2626 !important; background:#FEF2F2 !important; }
+.ai-ex-opt.wrong    .ai-ex-opt-letter { background:#DC2626; color:#fff; }
+
+.exam-q-topic { font-size:.8rem; font-weight:700; color:var(--gc,#7C3AED); margin-bottom:10px; }
