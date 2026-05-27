@@ -2862,6 +2862,21 @@ function _showExamResults() {
   const { score, questions, answers } = state.examSession;
   const total = questions.length;
   const pct   = Math.round((score/total)*100);
+
+  // ── Sitzung in Verlauf speichern ─────────────────────────────
+  const topicStats = {};
+  questions.forEach((q, i) => {
+    const t = q.topic || 'Allgemein';
+    if (!topicStats[t]) topicStats[t] = { correct:0, total:0 };
+    topicStats[t].total++;
+    if (answers[i]?.chosen === answers[i]?.correct) topicStats[t].correct++;
+  });
+  const hist = JSON.parse(localStorage.getItem('ls_exam_history') || '[]');
+  hist.push({ mode: state.examMode||'zap', subject: state.examSubjectId||'mathe',
+               score, total, pct, topics: topicStats, ts: Date.now() });
+  if (hist.length > 100) hist.splice(0, hist.length - 100);
+  localStorage.setItem('ls_exam_history', JSON.stringify(hist));
+
   document.getElementById('examSession')?.classList.add('hidden');
 
   const res = document.getElementById('examResults');
@@ -2900,100 +2915,193 @@ function _showExamResults() {
 function renderAnalyse() {
   showView('viewAnalyse');
 
+  const name    = state.userName || 'Anonym';
+  const goalLbl = { normal:'Allgemeines Lernen', zap:'ZAP-Vorbereitung', abitur:'Abitur-Vorbereitung' };
   const userInfo = document.getElementById('analyseUserInfo');
-  if (userInfo) {
-    const name = state.userName || 'Anonym';
-    const goalLbl = { normal:'Allgemeines Lernen', zap:'ZAP-Vorbereitung', abitur:'Abitur-Vorbereitung' };
-    userInfo.innerHTML = `<span class="an-name">👤 ${name}</span> <span class="an-goal">${goalLbl[state.learningGoal]||'Lernen'}</span>`;
-  }
+  if (userInfo) userInfo.innerHTML =
+    `<span class="an-name">👤 ${name}</span> <span class="an-goal">${goalLbl[state.learningGoal]||'Lernen'}</span>`;
 
-  const entries = Object.entries(state.progress);
-  const grid = document.getElementById('analyseGrid');
-  if (!grid) return;
+  // ── Daten sammeln ────────────────────────────────────────────
+  const quizEntries = Object.entries(state.progress); // {key: pct}
+  const examHist    = JSON.parse(localStorage.getItem('ls_exam_history') || '[]');
 
-  if (!entries.length) {
-    grid.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:40px 20px">Noch keine Aufgaben gelöst. Starte jetzt und komm dann wieder!</p>';
-    const aiEl = document.getElementById('analyseAiText');
-    if (aiEl) aiEl.textContent = 'Keine Daten vorhanden. Löse ein paar Aufgaben!';
+  const grid    = document.getElementById('analyseGrid');
+  const weakBox = document.getElementById('analyseWeaknesses');
+  const aiEl    = document.getElementById('analyseAiText');
+
+  if (!quizEntries.length && !examHist.length) {
+    if (grid)    grid.innerHTML    = '<p class="an-empty">Noch keine Aufgaben gelöst. Starte jetzt und komm dann wieder!</p>';
+    if (weakBox) weakBox.innerHTML = '';
+    if (aiEl)    aiEl.textContent  = 'Keine Daten vorhanden. Löse ein paar Aufgaben!';
     return;
   }
 
-  // Gesamtstatistik
-  const allScores = entries.map(([,v]) => v);
-  const avgAll    = Math.round(allScores.reduce((a,b) => a+b, 0) / allScores.length);
+  // ── Fach-Aggregat (Quiz + Prüfungen zusammen) ────────────────
+  const subjData = {}; // { mathe: { scores:[], sessions:0, modes:{zap:0,abitur:0} }, physik:... }
+  const modeData = {}; // { zap: { scores:[], subjects:{} }, abitur:... }
+
+  // Quiz-Daten
+  quizEntries.forEach(([k, pct]) => {
+    const s = k.split('_')[1] || 'allgemein';
+    if (!subjData[s]) subjData[s] = { scores:[], sessions:0, modes:{} };
+    subjData[s].scores.push(pct);
+  });
+
+  // Prüfungs-Daten
+  examHist.forEach(e => {
+    const s = e.subject || 'mathe';
+    const m = e.mode    || 'zap';
+    if (!subjData[s]) subjData[s] = { scores:[], sessions:0, modes:{} };
+    subjData[s].scores.push(e.pct);
+    subjData[s].sessions++;
+    subjData[s].modes[m] = (subjData[s].modes[m]||0) + 1;
+    if (!modeData[m]) modeData[m] = { scores:[], subjects:{} };
+    modeData[m].scores.push(e.pct);
+    modeData[m].subjects[s] = (modeData[m].subjects[s]||0) + 1;
+  });
+
+  // Themen-Aggregat aus Prüfungs-Verlauf
+  const topicAgg = {}; // { 'Wahrscheinlichkeit': { correct:0, total:0 } }
+  examHist.forEach(e => {
+    Object.entries(e.topics || {}).forEach(([t, v]) => {
+      if (!topicAgg[t]) topicAgg[t] = { correct:0, total:0 };
+      topicAgg[t].correct += v.correct;
+      topicAgg[t].total   += v.total;
+    });
+  });
+
+  const totalExercises  = quizEntries.length;
+  const totalExamSess   = examHist.length;
+  const allScores       = [...quizEntries.map(([,v])=>v), ...examHist.map(e=>e.pct)];
+  const avgAll          = allScores.length ? Math.round(allScores.reduce((a,b)=>a+b,0)/allScores.length) : 0;
+
+  // ── Statistik-Karten ─────────────────────────────────────────
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  function makeCard(icon, val, lbl, sub, color) {
+    const d = document.createElement('div');
+    d.className = 'an-card';
+    d.innerHTML = `<div class="an-icon">${icon}</div>
+      <div class="an-val" style="color:${color||'var(--primary)'}">${val}</div>
+      <div class="an-lbl">${lbl}</div>
+      <div class="an-avg">${sub}</div>
+      ${typeof val==='number'&&val<=100?`<div class="an-bar-wrap"><div class="an-bar" style="width:${val}%;background:${color||'var(--primary)'}"></div></div>`:''}`;
+    return d;
+  }
+
+  // Gesamt
+  grid.appendChild(makeCard('📊', totalExercises+totalExamSess, 'Aufgaben gesamt',
+    `${totalExercises} Lernaufg. · ${totalExamSess} Prüfungssitzungen`, '#6D28D9'));
 
   // Pro Fach
-  const bySub = {};
-  entries.forEach(([k, score]) => {
-    const parts = k.split('_');
-    if (parts.length < 3) return;
-    const s = parts[1];
-    if (!bySub[s]) bySub[s] = [];
-    bySub[s].push(score);
-  });
-
-  grid.innerHTML = '';
-  const totalCard = document.createElement('div');
-  totalCard.className = 'an-card an-card-total';
-  totalCard.innerHTML = `
-    <div class="an-icon">📊</div>
-    <div class="an-val">${entries.length}</div>
-    <div class="an-lbl">Aufgaben gelöst</div>
-    <div class="an-avg">${avgAll}% Ø Erfolg</div>`;
-  grid.appendChild(totalCard);
-
-  Object.entries(bySub).forEach(([subj, scores]) => {
-    const avg  = Math.round(scores.reduce((a,b) => a+b, 0) / scores.length);
+  const fachMeta = { mathe:{icon:'🔢',name:'Mathematik',color:'#7C3AED'}, physik:{icon:'⚡',name:'Physik',color:'#0369A1'} };
+  Object.entries(subjData).forEach(([s, d]) => {
+    if (!d.scores.length) return;
+    const avg  = Math.round(d.scores.reduce((a,b)=>a+b,0)/d.scores.length);
     const col  = avg>=80?'#059669':avg>=60?'#D97706':'#DC2626';
-    const lbl  = avg>=80?'🟢 Stark':avg>=60?'🟡 Mittel':'🔴 Üben';
-    const icon = subj==='mathe'?'📐':subj==='physik'?'⚛️':'📚';
-    const card = document.createElement('div');
-    card.className = 'an-card';
-    card.innerHTML = `
-      <div class="an-icon">${icon}</div>
-      <div class="an-val" style="color:${col}">${avg}%</div>
-      <div class="an-lbl">${subj[0].toUpperCase()+subj.slice(1)}</div>
-      <div class="an-avg">${lbl} · ${scores.length} Aufgaben</div>
-      <div class="an-bar-wrap"><div class="an-bar" style="width:${avg}%;background:${col}"></div></div>`;
-    grid.appendChild(card);
+    const lbl  = avg>=80?'🟢 Stark':avg>=60?'🟡 Mittel':'🔴 Mehr üben';
+    const meta = fachMeta[s]||{icon:'📚',name:s,color:'#555'};
+    const modeStr = Object.entries(d.modes).map(([m,c])=>`${m==='zap'?'ZAP':'Abitur'}: ${c}×`).join(' · ');
+    grid.appendChild(makeCard(meta.icon, avg+'%', meta.name,
+      `${lbl} · ${d.scores.length} Aufg.${modeStr?' · '+modeStr:''}`, col));
   });
 
-  // Schwachstellen
-  const weak = entries.filter(([,v]) => v < 60);
-  const weakBox = document.getElementById('analyseWeaknesses');
+  // Pro Prüfungsmodus
+  Object.entries(modeData).forEach(([m, d]) => {
+    if (!d.scores.length) return;
+    const avg = Math.round(d.scores.reduce((a,b)=>a+b,0)/d.scores.length);
+    const col = avg>=80?'#059669':avg>=60?'#D97706':'#DC2626';
+    const sub = Object.entries(d.subjects).map(([s,c])=>`${s==='mathe'?'Mathe':'Physik'} ${c}×`).join(' · ');
+    grid.appendChild(makeCard(m==='zap'?'🎯':'🏆', avg+'%', m==='zap'?'ZAP-Vorbereitung':'Abitur-Vorbereitung',
+      `${d.scores.length} Sitzungen · ${sub}`, col));
+  });
+
+  // ── Themen-Analyse ───────────────────────────────────────────
+  const topicEntries = Object.entries(topicAgg)
+    .map(([t,v]) => ({ t, pct: Math.round(v.correct/v.total*100), total: v.total }))
+    .sort((a,b) => a.pct - b.pct);
+
+  const weakTopics   = topicEntries.filter(e => e.pct < 60);
+  const strongTopics = topicEntries.filter(e => e.pct >= 80);
+
   if (weakBox) {
-    weakBox.innerHTML = weak.length === 0
-      ? '<div class="an-strong">🎉 Keine Schwachstellen – weiter so!</div>'
-      : `<h3 class="an-weak-title">⚠️ Verbesserungspotenzial (${weak.length} Aufgaben unter 60%)</h3>
-         <div class="an-weak-list">${weak.slice(0,6).map(([k,v]) => {
-           const p = k.split('_');
-           return `<div class="an-weak-item"><span>📌 ${p[1]||'?'} · ${p[2]||'?'}</span><span class="an-weak-score">${v}%</span></div>`;
-         }).join('')}</div>`;
+    let html = '';
+    if (weakTopics.length) {
+      html += `<h3 class="an-weak-title">⚠️ Diese Themen brauchst du noch Übung</h3>
+        <div class="an-weak-list">${weakTopics.map(e =>
+          `<div class="an-weak-item">
+            <span>📌 ${e.t}</span>
+            <div class="an-topic-bar-wrap"><div class="an-topic-bar" style="width:${e.pct}%;background:#DC2626"></div></div>
+            <span class="an-weak-score" style="color:#DC2626">${e.pct}%</span>
+          </div>`).join('')}</div>`;
+    }
+    if (strongTopics.length) {
+      html += `<h3 class="an-weak-title" style="margin-top:16px">✅ Stärken</h3>
+        <div class="an-weak-list">${strongTopics.map(e =>
+          `<div class="an-weak-item">
+            <span>⭐ ${e.t}</span>
+            <div class="an-topic-bar-wrap"><div class="an-topic-bar" style="width:${e.pct}%;background:#059669"></div></div>
+            <span class="an-weak-score" style="color:#059669">${e.pct}%</span>
+          </div>`).join('')}</div>`;
+    }
+    if (!html) html = '<div class="an-strong">🎉 Noch keine Prüfungssitzungen – starte jetzt!</div>';
+    weakBox.innerHTML = html;
   }
 
-  _loadAnalyseAI(entries, bySub, avgAll);
+  // ── Letzten 5 Sitzungen ──────────────────────────────────────
+  if (examHist.length) {
+    const recentEl = document.createElement('div');
+    recentEl.className = 'an-recent';
+    recentEl.innerHTML = `<h3 class="an-weak-title" style="margin-bottom:8px">🕐 Letzte Prüfungssitzungen</h3>`
+      + examHist.slice(-5).reverse().map(e => {
+        const d   = new Date(e.ts);
+        const dt  = d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'}) + ' ' + d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
+        const col = e.pct>=80?'#059669':e.pct>=60?'#D97706':'#DC2626';
+        return `<div class="an-recent-row">
+          <span class="an-recent-mode">${e.mode==='zap'?'🎯 ZAP':'🏆 Abitur'}</span>
+          <span class="an-recent-sub">${e.subject==='mathe'?'🔢 Mathe':'⚡ Physik'}</span>
+          <span class="an-recent-score" style="color:${col}">${e.score}/${e.total} (${e.pct}%)</span>
+          <span class="an-recent-dt">${dt}</span>
+        </div>`;
+      }).join('');
+    weakBox.parentNode?.insertBefore(recentEl, weakBox);
+  }
+
+  // ── Analyse-Text (lokal, kein API nötig) ─────────────────────
+  if (aiEl) aiEl.textContent = _buildAnalysisText(name, totalExercises, totalExamSess, avgAll, subjData, weakTopics, strongTopics);
 }
 
-async function _loadAnalyseAI(entries, bySub, avgAll) {
-  const el = document.getElementById('analyseAiText');
-  if (!el) return;
-  el.textContent = '⏳ Analyse läuft…';
+function _buildAnalysisText(name, quizN, examN, avgAll, subjData, weak, strong) {
+  if (!quizN && !examN) return `Hallo ${name}! Starte jetzt mit einer Aufgabe – ich bin gespannt wie du abschneidest!`;
 
-  const name    = state.userName || 'du';
-  const subjSum = Object.entries(bySub).map(([s,sc]) => {
-    const avg = Math.round(sc.reduce((a,b) => a+b, 0) / sc.length);
-    return `${s} ${avg}% (${sc.length} Aufg.)`;
-  }).join(', ');
+  const parts = [];
+  parts.push(`Hallo ${name}! Du hast insgesamt ${quizN+examN} Aufgaben absolviert${examN?` (davon ${examN} Prüfungssitzungen)`:''} mit einem Ø von ${avgAll}%.`);
 
-  try {
-    const content = await _aiCall([
-      { role: 'system', content: 'Du bist Herr Lala, ein ermutigender Schultutor. Antworte auf Deutsch, 3–4 Sätze, persönlich und motivierend.' },
-      { role: 'user',   content: `Ich heiße ${name}. Ergebnisse: ${entries.length} Aufgaben, Ø ${avgAll}%. Fächer: ${subjSum}. Gib mir eine persönliche Rückmeldung und einen konkreten nächsten Schritt.` }
-    ], { max_tokens: 180 });
-    el.textContent = content;
-  } catch {
-    el.textContent = `Toll, ${name}! Du hast bereits ${entries.length} Aufgaben gelöst. Schau dir die Schwachstellen an und übe gezielt weiter!`;
+  // Fachbewertung
+  const mathD  = subjData['mathe'];
+  const physD  = subjData['physik'];
+  if (mathD && physD) {
+    const ma = Math.round(mathD.scores.reduce((a,b)=>a+b,0)/mathD.scores.length);
+    const ph = Math.round(physD.scores.reduce((a,b)=>a+b,0)/physD.scores.length);
+    if (Math.abs(ma-ph) >= 15)
+      parts.push(`In ${ma>ph?'Mathematik':'Physik'} bist du deutlich stärker (${Math.max(ma,ph)}%) – in ${ma>ph?'Physik':'Mathematik'} (${Math.min(ma,ph)}%) gibt es noch Luft nach oben.`);
   }
+
+  // Themen
+  if (strong.length)
+    parts.push(`Besonders stark: ${strong.slice(0,2).map(e=>e.t).join(' und ')}. 🌟`);
+  if (weak.length)
+    parts.push(`Fokussiere dich jetzt auf: ${weak.slice(0,2).map(e=>e.t).join(' und ')} – dort gibt es am meisten zu holen!`);
+  else if (examN > 0)
+    parts.push('Alle geübten Themen sind stark – weiter so!');
+
+  // Motivations-Tipp
+  if (avgAll >= 80)      parts.push('🏆 Ausgezeichnete Leistung – du bist gut auf die Prüfung vorbereitet!');
+  else if (avgAll >= 60) parts.push('💡 Du bist auf dem richtigen Weg! Noch ein paar Übungen und du bist ready!');
+  else                   parts.push('💪 Nicht aufgeben! Starte mit "Einfach" und steigere dich dann schrittweise.');
+
+  return parts.join(' ');
 }
 
 // ── AI SETTINGS ──────────────────────────────────────────────
