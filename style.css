@@ -1323,6 +1323,35 @@ ul { list-style: none; }
   border-bottom-left-radius: 4px;
   align-self: flex-start;
 }
+
+/* Markdown-Formatierung in Chat-Bubbles klein halten */
+.chat-bubble-bot h1,
+.chat-bubble-bot h2,
+.chat-bubble-bot h3 {
+  font-size: 1rem !important;
+  font-weight: 700;
+  margin: 8px 0 4px;
+  line-height: 1.4;
+}
+.chat-bubble-bot h4,
+.chat-bubble-bot h5 {
+  font-size: .95rem !important;
+  font-weight: 700;
+  margin: 6px 0 2px;
+}
+.chat-bubble-bot p  { margin: 4px 0; }
+.chat-bubble-bot ul,
+.chat-bubble-bot ol { padding-left: 18px; margin: 4px 0; }
+.chat-bubble-bot li { margin: 2px 0; }
+.chat-bubble-bot strong { font-weight: 700; }
+.chat-bubble-bot code {
+  background: #e5e7eb;
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: .85rem;
+  font-family: monospace;
+}
+.chat-bubble-bot hr { border: none; border-top: 1px solid #d1d5db; margin: 8px 0; }
 .chat-bubble-user {
   background: linear-gradient(135deg, #7C3AED, #4F46E5);
   color: #fff;
