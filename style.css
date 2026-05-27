@@ -2120,6 +2120,20 @@ ul { list-style: none; }
 @keyframes evBlink{0%,88%,100%{transform:scaleY(1)}93%{transform:scaleY(14)}}
 @keyframes evArmAppear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
+/* ── Fach-Karten im Prüfungsmodus ───────────────────────────── */
+.exam-subj-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.exam-subj-card{background:var(--bg);border:2px solid rgba(0,0,0,.07);border-radius:16px;padding:20px 18px;display:flex;flex-direction:column;gap:10px;transition:box-shadow .18s,transform .18s}
+.exam-subj-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.1);transform:translateY(-2px)}
+.esc-top{display:flex;align-items:center;gap:12px}
+.esc-icon{font-size:2rem;line-height:1}
+.esc-name{font-size:1.1rem;font-weight:800;color:var(--sc,#7C3AED)}
+.esc-count{font-size:.78rem;color:var(--text-muted);font-weight:600}
+.esc-topics{font-size:.78rem;color:var(--text-muted);line-height:1.5;border-top:1px solid rgba(0,0,0,.06);padding-top:10px}
+.esc-start{margin-top:4px;background:var(--sc,#7C3AED);color:#fff;border:none;border-radius:10px;padding:10px 0;font-size:.9rem;font-weight:700;cursor:pointer;transition:opacity .15s}
+.esc-start:hover{opacity:.88}
+@media(max-width:540px){.exam-subj-grid{grid-template-columns:1fr}}
+/* ── Themen-Label auf Prüfungsfragen ────────────────────────── */
+.exam-q-topic{display:inline-block;background:rgba(124,58,237,.1);color:#6D28D9;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:10px}
 /* ── Browser-KI badge & download screen ─────────────────────── */
 .bai-badge{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:20px;background:rgba(124,58,237,.1);color:#6D28D9;margin:8px auto 4px;text-align:center}
 .bai-badge.bai-ok{background:rgba(22,163,74,.12);color:#15803D}

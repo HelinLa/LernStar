@@ -2618,33 +2618,39 @@ function renderExamPrep() {
   showView('viewExamPrep');
   setExamMode(state.examMode);
 
-  const gradeId = state.gradeId;
-  const btns    = document.getElementById('examSubjectBtns');
-  if (!btns) return;
-  btns.innerHTML = '';
+  const grid = document.getElementById('examSubjectBtns');
+  if (!grid) return;
+  grid.innerHTML = '';
 
-  let subjects = [];
-  if (gradeId && CONTENT[gradeId]) {
-    subjects = CONTENT[gradeId].subjects;
-  } else {
-    const seen = new Set();
-    Object.values(CONTENT).forEach(g => g.subjects.forEach(s => {
-      if (!seen.has(s.id)) { seen.add(s.id); subjects.push(s); }
-    }));
-  }
+  const bank       = state.examMode === 'abitur' ? ABI_BANK : ZAP_BANK;
+  const topicHints = {
+    mathe: state.examMode === 'abitur'
+      ? 'Kurvendiskussion · Integral · Analytische Geometrie · Logarithmen · Stochastik'
+      : 'Terme & Gleichungen · Lineare & Quadratische Funktionen · Pythagoras · Trigonometrie · Prozentrechnung · Statistik · Wahrscheinlichkeit',
+    physik: state.examMode === 'abitur'
+      ? 'Quantenphysik · Relativitätstheorie · Elektromagnetismus · Schwingungen & Wellen'
+      : 'Elektrischer Stromkreis · Mechanik · Energie · Optik & Wellen',
+  };
 
-  subjects.forEach(s => {
-    const b = document.createElement('button');
-    b.className = 'exam-subject-btn' + (state.examSubjectId === s.id ? ' active' : '');
-    b.innerHTML = `${s.icon||''} ${s.name}`;
-    b.onclick = () => { state.examSubjectId = s.id; document.querySelectorAll('.exam-subject-btn').forEach(x => x.classList.remove('active')); b.classList.add('active'); };
-    btns.appendChild(b);
+  [{ id:'mathe', name:'Mathematik', icon:'🔢', color:'#7C3AED' },
+   { id:'physik', name:'Physik',      icon:'⚡', color:'#0369A1' }
+  ].forEach(s => {
+    const count = (bank[s.id] || []).length;
+    const card  = document.createElement('div');
+    card.className = 'exam-subj-card';
+    card.style.setProperty('--sc', s.color);
+    card.innerHTML = `
+      <div class="esc-top">
+        <span class="esc-icon">${s.icon}</span>
+        <div class="esc-info">
+          <div class="esc-name">${s.name}</div>
+          <div class="esc-count">${count} Aufgaben im Pool</div>
+        </div>
+      </div>
+      <div class="esc-topics">${topicHints[s.id] || ''}</div>
+      <button class="esc-start" onclick="state.examSubjectId='${s.id}';startExamSession()">▶ Jetzt starten</button>`;
+    grid.appendChild(card);
   });
-
-  if (!state.examSubjectId && subjects.length) {
-    state.examSubjectId = subjects[0].id;
-    btns.firstChild?.classList.add('active');
-  }
 
   ['examSession','examResults'].forEach(id => document.getElementById(id)?.classList.add('hidden'));
   document.getElementById('examSetup')?.classList.remove('hidden');
@@ -2812,6 +2818,7 @@ function _showExamQ(idx) {
   const card = document.getElementById('examQuestionCard');
   if (!card) return;
   card.innerHTML = `
+    ${q.topic ? `<div class="exam-q-topic">📌 ${q.topic}</div>` : ''}
     <div class="exam-q-text">${q.question}</div>
     <div class="exam-q-opts">
       ${q.options.map((opt,i) => `
