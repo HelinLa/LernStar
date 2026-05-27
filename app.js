@@ -4638,42 +4638,53 @@ let _evTopicName='',_evSceneIdx=0,_evPaused=false,_evTimer=null,_evSceneStart=0,
    ─────────────────────────────────────────────────────────────── */
 let _evCurAudio = null;
 
-function _evSpeak(text) {
-  if (!text) return;
-  _evSpeakStop();
+let _evVoiceReady = null; // cached best voice after first lookup
 
-  // 1. ResponsiveVoice — warme, natürliche deutsche Frauenstimme
-  if (window.responsiveVoice?.voiceSupport()) {
-    window.responsiveVoice.speak(text, 'Deutsch Female', {
-      rate: 0.88, pitch: 1.0, volume: 1.0
+async function _evGetBestVoice() {
+  if (_evVoiceReady) return _evVoiceReady;
+  const synth = window.speechSynthesis;
+  if (!synth) return null;
+  let voices = synth.getVoices();
+  if (!voices.length) {
+    await new Promise(r => {
+      const h = () => { synth.removeEventListener('voiceschanged', h); r(); };
+      synth.addEventListener('voiceschanged', h);
+      setTimeout(r, 900);
     });
-    return;
+    voices = synth.getVoices();
   }
-
-  // 2. Fallback: bester verfügbarer Browser-Voice
-  _evSpeakFallback(text);
+  const de = voices.filter(v => v.lang === 'de-DE' || v.lang.startsWith('de'));
+  _evVoiceReady =
+    de.find(v => /natural/i.test(v.name))   // Microsoft Katja Online (Natural)
+    || de.find(v => /neural/i.test(v.name))
+    || de.find(v => /online/i.test(v.name))
+    || de.find(v => /katja/i.test(v.name))
+    || de.find(v => /microsoft/i.test(v.name))
+    || de.find(v => /google/i.test(v.name))
+    || de[0] || null;
+  synth.addEventListener('voiceschanged', () => { _evVoiceReady = null; }, { once: true });
+  return _evVoiceReady;
 }
 
-function _evSpeakFallback(text) {
-  if (!window.speechSynthesis || !text) return;
-  window.speechSynthesis.cancel();
+async function _evSpeak(text) {
+  if (!text || !window.speechSynthesis) return;
+  _evSpeakStop();
+  const voice = await _evGetBestVoice();
   const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'de-DE'; u.volume = 1;
-  const voice = _evPickVoice();
+  u.lang = 'de-DE'; u.volume = 1.0;
   if (voice) u.voice = voice;
-  const natural = /natural|neural|online/i.test(voice?.name || '');
-  u.rate  = natural ? 0.94 : 0.86;
-  u.pitch = natural ? 1.0  : 1.06;
+  const isNatural = /natural|neural|online/i.test(voice?.name || '');
+  u.rate  = isNatural ? 0.88 : 0.80;
+  u.pitch = isNatural ? 1.0  : 1.02;
   window.speechSynthesis.speak(u);
 }
 
 function _evSpeakStop() {
-  window.responsiveVoice?.cancel();
   if (_evCurAudio) { _evCurAudio.pause(); _evCurAudio = null; }
   window.speechSynthesis?.cancel();
 }
 
-function _evPrefetch() {} // kein Prefetch nötig bei ResponsiveVoice
+function _evPrefetch() {}
 
 function openErklaerVideo(topicName){
   if(!EV_SCENES[topicName])EV_SCENES[topicName]=_evAutoScenes(topicName);
