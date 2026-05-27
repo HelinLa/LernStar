@@ -1038,6 +1038,14 @@ function navigate(view, gradeId, subjectId, exerciseId) {
   if (subjectId)  state.subjectId  = subjectId;
   if (exerciseId) state.exerciseId = exerciseId;
 
+  // Seite merken — wird beim Neuladen wiederhergestellt
+  const noSave = ['quiz','result']; // Quiz-Mitten nicht speichern
+  if (!noSave.includes(view)) {
+    localStorage.setItem('ls_lastNav', JSON.stringify({
+      view, gradeId: state.gradeId, subjectId: state.subjectId
+    }));
+  }
+
   // Hide all views
   document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
   stopIntro();
@@ -3235,7 +3243,20 @@ function testCustomProvider() {
 
 // ── INIT ─────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  updateSidebarGrades();
   checkOnboarding();
+
+  // Letzte Seite wiederherstellen (außer beim Onboarding)
+  if (state.onboardingDone) {
+    try {
+      const saved = JSON.parse(localStorage.getItem('ls_lastNav') || 'null');
+      if (saved?.view && saved.view !== 'home') {
+        navigate(saved.view, saved.gradeId, saved.subjectId);
+        return;
+      }
+    } catch (_) {}
+  }
+  navigate('home');
 });
 
 // ============================================================
@@ -4244,8 +4265,6 @@ async function _autoLoadDataFiles() {
 // INIT
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
-  updateSidebarGrades();
-  navigate('home');
   _autoLoadDataFiles();
 });
 
