@@ -3566,26 +3566,40 @@ function openExperiment(expId) {
     modal.innerHTML = `
       <div class="sim-box">
         <button class="sim-x" onclick="closeExperiment()">✕</button>
-        <h3 class="sim-h3">🚀 Experiment: Beschleunigte Bewegung</h3>
-        <canvas id="beschCanvas" width="460" height="220" style="width:100%;border-radius:8px;display:block"></canvas>
-        <div style="padding:8px 16px 4px">
-          <div style="background:#f5f3ff;border-radius:8px;padding:8px 10px">
-            <div style="font-size:.82rem;color:#5B21B6;font-weight:700;margin-bottom:4px">Beschleunigung a (1–10 m/s²)</div>
-            <input type="range" id="beschASlider" min="1" max="10" step="0.5" value="3"
+        <h3 class="sim-h3">🚀 Beschleunigte Bewegung</h3>
+        <canvas id="beschAnim" width="460" height="90" style="width:100%;border-radius:8px;display:block;background:#f1f5f9"></canvas>
+        <div style="padding:5px 12px 2px;display:flex;gap:10px;align-items:center">
+          <div style="flex:1">
+            <label style="font-weight:700;font-size:.82rem;color:#5B21B6">a = <span id="beschALabel">3,0</span> m/s²</label>
+            <input type="range" id="beschASlider" min="0.5" max="10" step="0.5" value="3"
               oninput="_beschSetA(this.value)" style="width:100%;accent-color:#7C3AED">
-            <div style="text-align:center;font-weight:800;color:#5B21B6"><span id="beschALabel">3,0</span> m/s²</div>
+          </div>
+          <div style="display:flex;gap:6px">
+            <button id="beschPlayBtn" onclick="_beschToggle()" style="background:#7c3aed;color:#fff;border:none;border-radius:8px;padding:5px 12px;font-weight:700;cursor:pointer;font-size:.82rem">▶ Start</button>
+            <button onclick="_beschReset()" style="background:#e5e7eb;color:#374151;border:none;border-radius:8px;padding:5px 12px;font-weight:700;cursor:pointer;font-size:.82rem">↺ Neu</button>
           </div>
         </div>
-        <div class="sim-btn-row">
-          <button class="sim-btn primary" id="beschPlayBtn" onclick="_beschToggle()">▶ Start</button>
-          <button class="sim-btn" onclick="_beschReset()">↺ Neu</button>
+        <div class="sim-info-row" style="font-size:.8rem">
+          <span>⏱ t = <b id="beschTVal">0,0</b> s</span>
+          <span>📏 s = <b id="beschSVal">0,0</b> m</span>
+          <span>🚀 v = <b id="beschVVal">0,0</b> m/s</span>
+          <span>📐 a = <b id="beschACur">3,0</b> m/s²</span>
         </div>
-        <div class="sim-info-row">
-          <span>t = <b id="beschTVal">0,0</b> s</span>
-          <span>v = <b id="beschVVal">0,0</b> m/s</span>
-          <span>s = <b id="beschSVal">0,0</b> m</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;padding:4px 10px">
+          <div>
+            <div style="text-align:center;font-size:.72rem;font-weight:800;color:#7c3aed;padding:2px 0">s-t Diagramm</div>
+            <canvas id="beschCST" width="130" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+          </div>
+          <div>
+            <div style="text-align:center;font-size:.72rem;font-weight:800;color:#0891b2;padding:2px 0">v-t Diagramm</div>
+            <canvas id="beschCVT" width="130" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+          </div>
+          <div>
+            <div style="text-align:center;font-size:.72rem;font-weight:800;color:#dc2626;padding:2px 0">a-t Diagramm</div>
+            <canvas id="beschCAT" width="130" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+          </div>
         </div>
-        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Formeln: <b>v = a·t</b> &nbsp;|&nbsp; <b>s = ½·a·t²</b></p>
+        <p class="sim-hint" style="text-align:center;margin:4px 0 6px;font-size:.78rem"><b>v = a · t</b> &nbsp;|&nbsp; <b>s = ½ · a · t²</b></p>
       </div>`;
     document.body.appendChild(modal);
     _sim = _simBeschleunigung();
@@ -3593,26 +3607,40 @@ function openExperiment(expId) {
     modal.innerHTML = `
       <div class="sim-box">
         <button class="sim-x" onclick="closeExperiment()">✕</button>
-        <h3 class="sim-h3">🍎 Experiment: Freier Fall</h3>
-        <canvas id="fallCanvas" width="460" height="240" style="width:100%;border-radius:8px;display:block"></canvas>
-        <div style="padding:8px 16px 4px">
-          <div style="background:#fff7ed;border-radius:8px;padding:8px 10px">
-            <div style="font-size:.82rem;color:#9A3412;font-weight:700;margin-bottom:4px">Anfangshöhe h (5–50 m)</div>
+        <h3 class="sim-h3">🍎 Freier Fall</h3>
+        <canvas id="fallAnim" width="460" height="110" style="width:100%;border-radius:8px;display:block;background:#f0f9ff"></canvas>
+        <div style="padding:5px 12px 2px;display:flex;gap:10px;align-items:center">
+          <div style="flex:1">
+            <label style="font-weight:700;font-size:.82rem;color:#9A3412">h₀ = <span id="fallHLabel">20</span> m</label>
             <input type="range" id="fallHSlider" min="5" max="50" step="1" value="20"
               oninput="_fallSetH(this.value)" style="width:100%;accent-color:#EA580C">
-            <div style="text-align:center;font-weight:800;color:#9A3412"><span id="fallHLabel">20</span> m</div>
+          </div>
+          <div style="display:flex;gap:6px">
+            <button id="fallPlayBtn" onclick="_fallToggle()" style="background:#ea580c;color:#fff;border:none;border-radius:8px;padding:5px 12px;font-weight:700;cursor:pointer;font-size:.82rem">▶ Loslassen</button>
+            <button onclick="_fallReset()" style="background:#e5e7eb;color:#374151;border:none;border-radius:8px;padding:5px 12px;font-weight:700;cursor:pointer;font-size:.82rem">↺ Neu</button>
           </div>
         </div>
-        <div class="sim-btn-row">
-          <button class="sim-btn primary" id="fallPlayBtn" onclick="_fallToggle()">▶ Loslassen</button>
-          <button class="sim-btn" onclick="_fallReset()">↺ Neu</button>
+        <div class="sim-info-row" style="font-size:.8rem">
+          <span>⏱ t = <b id="fallTVal">0,0</b> s</span>
+          <span>📏 s = <b id="fallSVal">0,0</b> m</span>
+          <span>🚀 v = <b id="fallVVal">0,0</b> m/s</span>
+          <span>📐 a = <b>9,81</b> m/s²</span>
         </div>
-        <div class="sim-info-row">
-          <span>t = <b id="fallTVal">0,0</b> s</span>
-          <span>v = <b id="fallVVal">0,0</b> m/s</span>
-          <span>h = <b id="fallHVal">20,0</b> m</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;padding:4px 10px">
+          <div>
+            <div style="text-align:center;font-size:.72rem;font-weight:800;color:#7c3aed;padding:2px 0">s-t Diagramm</div>
+            <canvas id="fallCST" width="130" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+          </div>
+          <div>
+            <div style="text-align:center;font-size:.72rem;font-weight:800;color:#0891b2;padding:2px 0">v-t Diagramm</div>
+            <canvas id="fallCVT" width="130" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+          </div>
+          <div>
+            <div style="text-align:center;font-size:.72rem;font-weight:800;color:#16a34a;padding:2px 0">a-t Diagramm</div>
+            <canvas id="fallCAT" width="130" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+          </div>
         </div>
-        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Formeln: <b>s = ½·g·t²</b> &nbsp;|&nbsp; <b>v = g·t</b> &nbsp;|&nbsp; g = 9,81 m/s²</p>
+        <p class="sim-hint" style="text-align:center;margin:4px 0 6px;font-size:.78rem"><b>s = ½·g·t²</b> &nbsp;|&nbsp; <b>v = g·t</b> &nbsp;|&nbsp; g = 9,81 m/s²</p>
       </div>`;
     document.body.appendChild(modal);
     _sim = _simFreierFall();
@@ -3772,12 +3800,37 @@ function openExperiment(expId) {
     modal.innerHTML = `<div class="sim-box">
       <button class="sim-x" onclick="closeExperiment()">✕</button>
       <h3 class="sim-h3">🚗 Gleichförmige Bewegung</h3>
-      <canvas id="gfCanvas" width="460" height="160" style="width:100%;border-radius:8px;display:block"></canvas>
-      <div style="padding:8px 16px">
-        <label style="font-weight:700;font-size:.85rem">Geschwindigkeit v: <span id="gfVLabel">60</span> km/h</label>
-        <input type="range" id="gfVSlider" min="10" max="200" value="60" style="width:100%;accent-color:#7c3aed"
-          oninput="document.getElementById('gfVLabel').textContent=this.value">
-      </div></div>`;
+      <canvas id="gfAnim" width="460" height="110" style="width:100%;border-radius:8px;display:block;background:#dbeafe"></canvas>
+      <div style="padding:6px 14px 2px;display:flex;gap:10px;align-items:center">
+        <div style="flex:1">
+          <label style="font-weight:700;font-size:.82rem;color:#5B21B6">v = <span id="gfVLabel">10</span> m/s</label>
+          <input type="range" id="gfVSlider" min="1" max="30" value="10" style="width:100%;accent-color:#7c3aed"
+            oninput="document.getElementById('gfVLabel').textContent=this.value">
+        </div>
+        <button onclick="_gfReset()" style="background:#7c3aed;color:#fff;border:none;border-radius:8px;padding:5px 14px;font-weight:700;cursor:pointer;font-size:.85rem">↺ Neu</button>
+      </div>
+      <div class="sim-info-row" style="font-size:.8rem">
+        <span>⏱ t = <b id="gfTimeVal">0,0</b> s</span>
+        <span>📏 s = <b id="gfSVal">0,0</b> m</span>
+        <span>🚀 v = <b id="gfVCur">10</b> m/s</span>
+        <span>📐 a = <b>0</b> m/s²</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;padding:4px 10px">
+        <div>
+          <div style="text-align:center;font-size:.72rem;font-weight:800;color:#7c3aed;padding:2px 0">s-t Diagramm</div>
+          <canvas id="gfCST" width="130" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+        </div>
+        <div>
+          <div style="text-align:center;font-size:.72rem;font-weight:800;color:#0891b2;padding:2px 0">v-t Diagramm</div>
+          <canvas id="gfCVT" width="130" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+        </div>
+        <div>
+          <div style="text-align:center;font-size:.72rem;font-weight:800;color:#16a34a;padding:2px 0">a-t Diagramm</div>
+          <canvas id="gfCAT" width="130" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+        </div>
+      </div>
+      <p class="sim-hint" style="text-align:center;margin:4px 0 6px;font-size:.78rem"><b>s = v · t</b> &nbsp;|&nbsp; v = konst. &nbsp;|&nbsp; <b>a = 0 m/s²</b></p>
+    </div>`;
     document.body.appendChild(modal);
     _sim = _simGleichfoermig();
 
@@ -3973,35 +4026,244 @@ function closeExperiment() {
   if (m) m.remove();
 }
 
-// ── Gleichförmige Bewegung ─────────────────────────────────
+// ── Gleichförmige Bewegung – mit live s-t / v-t / a-t Diagrammen ──────────
 function _simGleichfoermig() {
-  const cv = document.getElementById('gfCanvas');
-  const ctx = cv.getContext('2d');
-  let x = 0, raf;
-  function draw() {
-    const v = +document.getElementById('gfVSlider').value;
-    ctx.clearRect(0,0,cv.width,cv.height);
-    // Straße
-    ctx.fillStyle='#e5e7eb'; ctx.fillRect(0,80,cv.width,60);
-    ctx.strokeStyle='#fff'; ctx.setLineDash([30,20]); ctx.lineWidth=3;
-    ctx.beginPath(); ctx.moveTo(0,110); ctx.lineTo(cv.width,110); ctx.stroke();
-    ctx.setLineDash([]);
-    // Auto
-    ctx.fillStyle='#7c3aed'; ctx.beginPath();
-    ctx.roundRect(x,88,60,30,6); ctx.fill();
-    ctx.fillStyle='#4f46e5'; ctx.fillRect(x+10,83,35,15);
-    // Räder
-    ctx.fillStyle='#111';
-    ctx.beginPath(); ctx.arc(x+12,118,7,0,Math.PI*2); ctx.fill();
-    ctx.beginPath(); ctx.arc(x+48,118,7,0,Math.PI*2); ctx.fill();
-    // Info
-    ctx.fillStyle='#1f2937'; ctx.font='700 14px sans-serif';
-    ctx.fillText(`v = ${v} km/h`, 10,30);
-    ctx.fillText(`s = v × t`, 10,52);
-    x = (x + v/180) % (cv.width + 10);
-    raf = requestAnimationFrame(draw);
+  const cvA  = document.getElementById('gfAnim');
+  const ctA  = cvA.getContext('2d');
+  const cvST = document.getElementById('gfCST'), ctST = cvST.getContext('2d');
+  const cvVT = document.getElementById('gfCVT'), ctVT = cvVT.getContext('2d');
+  const cvAT = document.getElementById('gfCAT'), ctAT = cvAT.getContext('2d');
+
+  let t = 0, s = 0, roadOff = 0, pts = [], lastTs = null, raf;
+
+  // ── Hilfsfunktion: ein Diagramm zeichnen ──────────────────
+  function drawDiagram(ctx, cv, data, color, yLabel, yMin, yMax, tMax) {
+    const W = cv.width, H = cv.height;
+    const pL=34, pB=18, pT=8, pR=6;
+    const iW = W-pL-pR, iH = H-pT-pB;
+
+    ctx.clearRect(0,0,W,H);
+    // Hintergrund
+    const bg = ctx.createLinearGradient(0,0,0,H);
+    bg.addColorStop(0,'#f8fafc'); bg.addColorStop(1,'#ffffff');
+    ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+
+    // Grid-Linien
+    ctx.strokeStyle='#f1f5f9'; ctx.lineWidth=0.8;
+    for(let i=0;i<=4;i++){
+      const y=pT+iH*i/4;
+      ctx.beginPath(); ctx.moveTo(pL,y); ctx.lineTo(W-pR,y); ctx.stroke();
+    }
+    for(let i=0;i<=4;i++){
+      const x=pL+iW*i/4;
+      ctx.beginPath(); ctx.moveTo(x,pT); ctx.lineTo(x,H-pB); ctx.stroke();
+    }
+
+    // Achsen
+    ctx.strokeStyle='#94a3b8'; ctx.lineWidth=1.5;
+    ctx.beginPath();
+    ctx.moveTo(pL,pT); ctx.lineTo(pL,H-pB); // Y
+    ctx.moveTo(pL,H-pB); ctx.lineTo(W-pR,H-pB); // X
+    ctx.stroke();
+
+    // Achsenbeschriftung
+    ctx.fillStyle='#64748b'; ctx.font='bold 8px sans-serif';
+    ctx.textAlign='center'; ctx.fillText('t / s', W-pR+2, H-pB-2);
+    ctx.save(); ctx.translate(10, pT+iH/2); ctx.rotate(-Math.PI/2);
+    ctx.fillText(yLabel, 0, 0); ctx.restore();
+
+    // Y-Achse Werte
+    ctx.fillStyle='#94a3b8'; ctx.font='7px sans-serif'; ctx.textAlign='right';
+    const yRange = yMax - yMin;
+    for(let i=0;i<=2;i++){
+      const val = yMax - yRange*i/2;
+      const y = pT + iH*i/2;
+      ctx.fillText(val%1===0 ? val.toFixed(0) : val.toFixed(1), pL-3, y+3);
+      // kleine Tick-Striche
+      ctx.strokeStyle='#94a3b8'; ctx.lineWidth=0.8;
+      ctx.beginPath(); ctx.moveTo(pL-3,y); ctx.lineTo(pL,y); ctx.stroke();
+    }
+
+    // X-Achse Werte
+    ctx.textAlign='center'; ctx.fillStyle='#94a3b8';
+    for(let i=0;i<=2;i++){
+      const tVal = tMax*i/2;
+      const x = pL + iW*i/2;
+      ctx.fillText(tVal.toFixed(0), x, H-4);
+    }
+
+    if(data.length < 2) {
+      // Null-Linie als Vorschau (gestrichelt)
+      ctx.strokeStyle=color+'44'; ctx.lineWidth=1.2; ctx.setLineDash([4,4]);
+      const y0=pT+iH*(1-(0-yMin)/yRange);
+      ctx.beginPath(); ctx.moveTo(pL,Math.max(pT,Math.min(H-pB,y0)));
+      ctx.lineTo(W-pR,Math.max(pT,Math.min(H-pB,y0))); ctx.stroke();
+      ctx.setLineDash([]);
+      return;
+    }
+
+    // Datenlinie mit Füllung
+    ctx.beginPath();
+    data.forEach((p,i)=>{
+      const px = pL + (p.t/tMax)*iW;
+      const py = pT + (1-(p.y-yMin)/yRange)*iH;
+      i===0 ? ctx.moveTo(px,Math.max(pT,Math.min(H-pB,py)))
+            : ctx.lineTo(px,Math.max(pT,Math.min(H-pB,py)));
+    });
+    // Füllung unter der Linie
+    const lastPx = pL + (data[data.length-1].t/tMax)*iW;
+    ctx.lineTo(lastPx, H-pB); ctx.lineTo(pL, H-pB); ctx.closePath();
+    ctx.fillStyle=color+'22'; ctx.fill();
+
+    // Linie erneut zeichnen (sauber oben drüber)
+    ctx.strokeStyle=color; ctx.lineWidth=2.2; ctx.lineJoin='round'; ctx.setLineDash([]);
+    ctx.beginPath();
+    data.forEach((p,i)=>{
+      const px = pL + (p.t/tMax)*iW;
+      const py = pT + (1-(p.y-yMin)/yRange)*iH;
+      i===0 ? ctx.moveTo(px,Math.max(pT,Math.min(H-pB,py)))
+            : ctx.lineTo(px,Math.max(pT,Math.min(H-pB,py)));
+    });
+    ctx.stroke();
+
+    // Aktueller Punkt (leuchtend)
+    const lp = data[data.length-1];
+    const lpx = pL + (lp.t/tMax)*iW;
+    const lpy = pT + (1-(lp.y-yMin)/yRange)*iH;
+    const lpyC = Math.max(pT,Math.min(H-pB,lpy));
+    ctx.fillStyle='#fff';
+    ctx.beginPath(); ctx.arc(lpx,lpyC,4.5,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle=color;
+    ctx.beginPath(); ctx.arc(lpx,lpyC,3,0,Math.PI*2); ctx.fill();
+    // Wert als Label
+    ctx.fillStyle=color; ctx.font='bold 8px sans-serif'; ctx.textAlign='left';
+    const label = lp.y%1===0 ? lp.y.toFixed(0) : lp.y.toFixed(1);
+    ctx.fillText(label, Math.min(lpx+5,W-pR-16), Math.max(pT+8,lpyC-3));
   }
-  draw();
+
+  // ── Baum zeichnen ─────────────────────────────────────────
+  function drawTree(x,y,sz){
+    const W=cvA.width, H=cvA.height;
+    if(x<-sz*2||x>W+sz*2) return;
+    ctA.fillStyle='#92400e'; ctA.fillRect(x-2,y,4,sz*0.55);
+    const g=ctA.createRadialGradient(x-sz*0.15,y-sz*0.2,1,x,y,sz*0.75);
+    g.addColorStop(0,'#4ade80'); g.addColorStop(1,'#15803d');
+    ctA.fillStyle=g;
+    ctA.beginPath(); ctA.arc(x,y-sz*0.1,sz*0.75,0,Math.PI*2); ctA.fill();
+  }
+
+  // ── Reset ─────────────────────────────────────────────────
+  window._gfReset = ()=>{
+    t=0; s=0; roadOff=0; pts=[]; lastTs=null;
+    document.getElementById('gfTimeVal').textContent='0,0';
+    document.getElementById('gfSVal').textContent='0,0';
+  };
+
+  // ── Animations-Loop ───────────────────────────────────────
+  function frame(ts){
+    if(!lastTs) lastTs=ts;
+    const dt = Math.min((ts-lastTs)/1000, 0.05);
+    lastTs=ts;
+
+    const v = +document.getElementById('gfVSlider').value;
+    t   += dt;
+    s   += v*dt;
+    roadOff += v*dt;
+
+    // Datenpunkte alle ~0,1 s
+    if(pts.length===0 || t-pts[pts.length-1].t >= 0.1)
+      pts.push({t, s, v, a:0});
+
+    // Info-Zeile aktualisieren
+    document.getElementById('gfTimeVal').textContent = t.toFixed(1);
+    document.getElementById('gfSVal').textContent    = s.toFixed(1);
+    document.getElementById('gfVCur').textContent    = v;
+
+    // ── ANIMATION ──────────────────────────────────────────
+    const W=cvA.width, H=cvA.height;
+    ctA.clearRect(0,0,W,H);
+
+    // Himmel (Verlauf)
+    const sky = ctA.createLinearGradient(0,0,0,H*0.52);
+    sky.addColorStop(0,'#bfdbfe'); sky.addColorStop(1,'#dbeafe');
+    ctA.fillStyle=sky; ctA.fillRect(0,0,W,H*0.52);
+
+    // Straße
+    ctA.fillStyle='#6b7280'; ctA.fillRect(0,H*0.52,W,H*0.48);
+    // Randstreifen
+    ctA.fillStyle='#f59e0b'; ctA.fillRect(0,H*0.52,W,3);
+    ctA.fillStyle='#f59e0b'; ctA.fillRect(0,H-3,W,3);
+    // Strichlinie Mitte
+    ctA.strokeStyle='#fff'; ctA.setLineDash([28,18]); ctA.lineWidth=2.5;
+    ctA.lineDashOffset = -(roadOff*2.5)%46;
+    ctA.beginPath(); ctA.moveTo(0,H*0.75); ctA.lineTo(W,H*0.75); ctA.stroke();
+    ctA.setLineDash([]); ctA.lineDashOffset=0;
+
+    // Bäume (Parallax 80%)
+    const tOff = (roadOff*2.2)%W;
+    drawTree(((W*0.15-tOff)%W+W)%W, H*0.28, 22);
+    drawTree(((W*0.55-tOff)%W+W)%W, H*0.26, 18);
+    drawTree(((W*0.85-tOff)%W+W)%W, H*0.29, 20);
+
+    // Auto (fest bei 35%)
+    const cx=Math.round(W*0.33), cy=Math.round(H*0.36);
+    // Schatten
+    ctA.fillStyle='rgba(0,0,0,0.12)';
+    ctA.beginPath(); ctA.ellipse(cx+37,H*0.52+4,38,6,0,0,Math.PI*2); ctA.fill();
+    // Karosserie
+    const grad=ctA.createLinearGradient(cx,cy,cx,cy+38);
+    grad.addColorStop(0,'#8b5cf6'); grad.addColorStop(1,'#6d28d9');
+    ctA.fillStyle=grad;
+    ctA.beginPath(); ctA.roundRect(cx,cy,74,38,8); ctA.fill();
+    // Dach
+    const dach=ctA.createLinearGradient(cx+10,cy-18,cx+10,cy);
+    dach.addColorStop(0,'#4c1d95'); dach.addColorStop(1,'#5b21b6');
+    ctA.fillStyle=dach;
+    ctA.beginPath(); ctA.roundRect(cx+10,cy-18,48,20,6); ctA.fill();
+    // Fenster
+    ctA.fillStyle='#bfdbfe'; ctA.fillRect(cx+13,cy-15,20,13);
+    ctA.fillStyle='#bfdbfe'; ctA.fillRect(cx+37,cy-15,18,13);
+    // Räder
+    [cx+15,cx+59].forEach(wx=>{
+      ctA.fillStyle='#1f2937';
+      ctA.beginPath(); ctA.arc(wx,cy+38,10,0,Math.PI*2); ctA.fill();
+      ctA.strokeStyle='#9ca3af'; ctA.lineWidth=2;
+      ctA.beginPath(); ctA.arc(wx,cy+38,6,0,Math.PI*2); ctA.stroke();
+    });
+    // Geschwindigkeits-Badge
+    ctA.fillStyle='rgba(255,255,255,0.92)';
+    ctA.beginPath(); ctA.roundRect(W-86,6,80,44,8); ctA.fill();
+    ctA.fillStyle='#7c3aed'; ctA.font='bold 11px sans-serif'; ctA.textAlign='center';
+    ctA.fillText(`v = ${v} m/s`, W-46, 22);
+    ctA.fillStyle='#374151'; ctA.font='10px sans-serif';
+    ctA.fillText(`t = ${t.toFixed(1)} s`, W-46, 36);
+    ctA.fillText(`s = ${s.toFixed(0)} m`, W-46, 48);
+
+    // Auto-Reset nach 20 s
+    if(t>20) _gfReset();
+
+    // ── DIAGRAMME ──────────────────────────────────────────
+    const tMax = Math.max(Math.ceil(t/5)*5, 10);
+    const sMax = Math.max(Math.ceil(v*tMax/10)*10, 20);
+    const vDisp = +document.getElementById('gfVSlider').value;
+    const vMax = Math.max(Math.ceil(vDisp*1.3/5)*5, 10);
+
+    drawDiagram(ctST, cvST,
+      pts.map(p=>({t:p.t,y:p.s})),
+      '#7c3aed', 's / m', 0, sMax, tMax);
+
+    drawDiagram(ctVT, cvVT,
+      pts.map(p=>({t:p.t,y:p.v})),
+      '#0891b2', 'v / m/s', 0, vMax, tMax);
+
+    drawDiagram(ctAT, cvAT,
+      pts.map(p=>({t:p.t,y:0})),
+      '#16a34a', 'a / m/s²', -0.5, 1, tMax);
+
+    raf = requestAnimationFrame(frame);
+  }
+
+  raf = requestAnimationFrame(frame);
   return { stop(){ cancelAnimationFrame(raf); } };
 }
 
@@ -5213,282 +5475,333 @@ function _simSchaltung() {
 }
 
 // ============================================================
-// SIM 5: BESCHLEUNIGTE BEWEGUNG
+// SIM 5: BESCHLEUNIGTE BEWEGUNG – mit s-t / v-t / a-t Diagrammen
 // ============================================================
 function _simBeschleunigung() {
-  const canvas = document.getElementById('beschCanvas');
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
-  let a = 3, running = false, t = 0, last = null, raf = null;
-  const chartData = [];
+  const cvA  = document.getElementById('beschAnim');
+  const ctA  = cvA.getContext('2d');
+  const cvST = document.getElementById('beschCST'), ctST = cvST.getContext('2d');
+  const cvVT = document.getElementById('beschCVT'), ctVT = cvVT.getContext('2d');
+  const cvAT = document.getElementById('beschCAT'), ctAT = cvAT.getContext('2d');
+
+  let a = 3, running = false, t = 0, lastTs = null, raf = null;
+  let pts = []; // {t, s, v, a}
   const maxT = 8;
 
-  function fmt(n, d=1) { return n.toFixed(d).replace('.', ','); }
+  function fmt(n,d=1){ return n.toFixed(d).replace('.',','); }
 
-  function draw(ts) {
-    if (running) {
-      if (last !== null) {
-        const dt = Math.min((ts - last) / 1000, 0.05);
-        t = Math.min(t + dt, maxT);
-        if (t >= maxT) { running = false; document.getElementById('beschPlayBtn').textContent = '▶ Start'; }
-        chartData.push({ t, v: a * t });
-      }
-      last = ts;
+  // ── Shared Diagram Renderer ───────────────────────────────
+  function drawDiagram(ctx, cv, color, yLabel, yMin, yMax, getData) {
+    const W=cv.width, H=cv.height, pL=34, pB=18, pT=8, pR=6;
+    const iW=W-pL-pR, iH=H-pT-pB;
+    ctx.clearRect(0,0,W,H);
+    const bg=ctx.createLinearGradient(0,0,0,H);
+    bg.addColorStop(0,'#f8fafc'); bg.addColorStop(1,'#fff');
+    ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+    // Grid
+    ctx.strokeStyle='#f1f5f9'; ctx.lineWidth=0.8;
+    for(let i=0;i<=4;i++){
+      ctx.beginPath(); ctx.moveTo(pL, pT+iH*i/4); ctx.lineTo(W-pR, pT+iH*i/4); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(pL+iW*i/4, pT); ctx.lineTo(pL+iW*i/4, H-pB); ctx.stroke();
     }
+    // Achsen
+    ctx.strokeStyle='#94a3b8'; ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.moveTo(pL,pT); ctx.lineTo(pL,H-pB); ctx.moveTo(pL,H-pB); ctx.lineTo(W-pR,H-pB); ctx.stroke();
+    // Beschriftung
+    ctx.fillStyle='#64748b'; ctx.font='bold 8px sans-serif'; ctx.textAlign='center';
+    ctx.fillText('t / s', W-pR+2, H-pB-2);
+    ctx.save(); ctx.translate(10,pT+iH/2); ctx.rotate(-Math.PI/2); ctx.fillText(yLabel,0,0); ctx.restore();
+    // Y-Werte
+    ctx.fillStyle='#94a3b8'; ctx.font='7px sans-serif'; ctx.textAlign='right';
+    for(let i=0;i<=2;i++){
+      const val=yMax-(yMax-yMin)*i/2, y=pT+iH*i/2;
+      ctx.fillText(val%1===0?val.toFixed(0):val.toFixed(1), pL-3, y+3);
+    }
+    // X-Werte
+    ctx.textAlign='center'; ctx.fillStyle='#94a3b8';
+    for(let i=0;i<=2;i++) ctx.fillText((maxT*i/2).toFixed(0), pL+iW*i/2, H-4);
 
-    ctx.clearRect(0, 0, W, H);
-    ctx.fillStyle = '#f1f5f9';
-    ctx.fillRect(0, 0, W, H);
-
-    const v = a * t;
-    const s = 0.5 * a * t * t;
-    const trackY = H - 55;
-    const trackH = 16;
-
-    // track
-    ctx.fillStyle = '#94A3B8';
-    ctx.fillRect(20, trackY, W - 40, trackH);
-
-    // block (position capped to track width)
-    const maxBlockX = W - 90;
-    const blockX = 20 + Math.min((s / (0.5 * a * maxT * maxT)) * (maxBlockX - 20), maxBlockX - 20);
-    ctx.fillStyle = '#7C3AED';
+    const data = getData();
+    if(data.length < 2){
+      ctx.strokeStyle=color+'44'; ctx.lineWidth=1; ctx.setLineDash([4,4]);
+      const y0=pT+iH*(1-(0-yMin)/(yMax-yMin));
+      ctx.beginPath(); ctx.moveTo(pL,Math.max(pT,Math.min(H-pB,y0))); ctx.lineTo(W-pR,Math.max(pT,Math.min(H-pB,y0))); ctx.stroke();
+      ctx.setLineDash([]); return;
+    }
+    // Füllung
+    const clipY=p=>Math.max(pT,Math.min(H-pB,pT+iH*(1-(p.y-yMin)/(yMax-yMin))));
     ctx.beginPath();
-    ctx.roundRect(blockX, trackY - 30, 40, 30, 5);
-    ctx.fill();
-    ctx.fillStyle = '#fff';
-    ctx.font = 'bold 11px sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('m', blockX + 20, trackY - 12);
+    data.forEach((p,i)=>{ const px=pL+(p.t/maxT)*iW; i===0?ctx.moveTo(px,clipY(p)):ctx.lineTo(px,clipY(p)); });
+    ctx.lineTo(pL+(data[data.length-1].t/maxT)*iW,H-pB); ctx.lineTo(pL,H-pB); ctx.closePath();
+    ctx.fillStyle=color+'22'; ctx.fill();
+    // Linie
+    ctx.strokeStyle=color; ctx.lineWidth=2.2; ctx.lineJoin='round'; ctx.setLineDash([]);
+    ctx.beginPath();
+    data.forEach((p,i)=>{ const px=pL+(p.t/maxT)*iW; i===0?ctx.moveTo(px,clipY(p)):ctx.lineTo(px,clipY(p)); });
+    ctx.stroke();
+    // Aktueller Punkt
+    const lp=data[data.length-1];
+    const lpx=pL+(lp.t/maxT)*iW, lpy=clipY(lp);
+    ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(lpx,lpy,4.5,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle=color; ctx.beginPath(); ctx.arc(lpx,lpy,3,0,Math.PI*2); ctx.fill();
+    ctx.font='bold 8px sans-serif'; ctx.textAlign='left'; ctx.fillStyle=color;
+    ctx.fillText(lp.y%1===0?lp.y.toFixed(0):lp.y.toFixed(1), Math.min(lpx+5,W-pR-16), Math.max(pT+8,lpy-3));
+  }
 
-    // force arrow
-    if (a > 0) {
-      const arrowLen = Math.min(a * 10, 50);
-      ctx.beginPath();
-      ctx.moveTo(blockX + 40, trackY - 16);
-      ctx.lineTo(blockX + 40 + arrowLen, trackY - 16);
-      ctx.strokeStyle = '#DC2626';
-      ctx.lineWidth = 3;
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(blockX + 40 + arrowLen, trackY - 22);
-      ctx.lineTo(blockX + 40 + arrowLen + 10, trackY - 16);
-      ctx.lineTo(blockX + 40 + arrowLen, trackY - 10);
-      ctx.fillStyle = '#DC2626';
-      ctx.fill();
+  // ── Animations-Canvas ─────────────────────────────────────
+  function drawAnim() {
+    const W=cvA.width, H=cvA.height;
+    ctA.clearRect(0,0,W,H);
+    // Hintergrund
+    ctA.fillStyle='#f1f5f9'; ctA.fillRect(0,0,W,H);
+    const v = a*t, s = 0.5*a*t*t;
+    const trackY = H-22, trackH=10;
+    // Schiene
+    ctA.fillStyle='#94a3b8'; ctA.fillRect(10,trackY,W-20,trackH);
+    ctA.fillStyle='#cbd5e1'; ctA.fillRect(10,trackY+trackH,W-20,4);
+    // Block – Skalenposition basierend auf s
+    const sMax = 0.5*a*maxT*maxT;
+    const blockW = 40, maxBx = W-blockW-20;
+    const blockX = 10 + Math.min((s/Math.max(sMax,1))*maxBx, maxBx);
+    // Block-Schatten
+    ctA.fillStyle='rgba(0,0,0,0.12)'; ctA.fillRect(blockX+3,trackY-2,blockW,6);
+    // Block
+    const bg2=ctA.createLinearGradient(blockX,trackY-34,blockX,trackY);
+    bg2.addColorStop(0,'#8b5cf6'); bg2.addColorStop(1,'#6d28d9');
+    ctA.fillStyle=bg2; ctA.beginPath(); ctA.roundRect(blockX,trackY-34,blockW,34,5); ctA.fill();
+    ctA.fillStyle='#fff'; ctA.font='bold 11px sans-serif'; ctA.textAlign='center';
+    ctA.fillText('m', blockX+blockW/2, trackY-13);
+    // Kraft-Pfeil
+    if(a>0 && running){
+      const arLen=Math.min(10+a*6,55);
+      ctA.strokeStyle='#dc2626'; ctA.lineWidth=3;
+      ctA.beginPath(); ctA.moveTo(blockX+blockW,trackY-20); ctA.lineTo(blockX+blockW+arLen,trackY-20); ctA.stroke();
+      ctA.fillStyle='#dc2626';
+      ctA.beginPath(); ctA.moveTo(blockX+blockW+arLen,trackY-26); ctA.lineTo(blockX+blockW+arLen+8,trackY-20); ctA.lineTo(blockX+blockW+arLen,trackY-14); ctA.fill();
+      ctA.fillStyle='#dc2626'; ctA.font='bold 9px sans-serif'; ctA.textAlign='left';
+      ctA.fillText('F', blockX+blockW+arLen+11, trackY-16);
     }
+    // Info-Badge
+    ctA.fillStyle='rgba(255,255,255,0.9)'; ctA.beginPath(); ctA.roundRect(6,4,120,38,6); ctA.fill();
+    ctA.fillStyle='#374151'; ctA.font='bold 10px sans-serif'; ctA.textAlign='left';
+    ctA.fillText(`v = ${v.toFixed(1)} m/s`, 12, 18);
+    ctA.fillText(`s = ${s.toFixed(1)} m  |  t = ${t.toFixed(1)} s`, 12, 34);
+  }
 
-    // v-t chart area
-    const chartX = 30, chartY = 10, chartW = W - 60, chartH = trackY - 55;
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(chartX, chartY, chartW, chartH);
-    ctx.strokeStyle = '#E2E8F0';
-    ctx.lineWidth = 1;
-    ctx.strokeRect(chartX, chartY, chartW, chartH);
-
-    // grid
-    const maxV = a * maxT;
-    for (let i = 0; i <= 4; i++) {
-      const gx = chartX + (i / 4) * chartW;
-      const gy = chartY + chartH - (i / 4) * chartH;
-      ctx.beginPath(); ctx.moveTo(gx, chartY); ctx.lineTo(gx, chartY + chartH); ctx.strokeStyle = '#F1F5F9'; ctx.lineWidth = 1; ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(chartX, gy); ctx.lineTo(chartX + chartW, gy); ctx.stroke();
-    }
-    // axes labels
-    ctx.fillStyle = '#64748B'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
-    ctx.fillText('Zeit t (s)', chartX + chartW / 2, chartY + chartH + 14);
-    ctx.save(); ctx.translate(chartX - 14, chartY + chartH / 2); ctx.rotate(-Math.PI / 2);
-    ctx.fillText('v (m/s)', 0, 0); ctx.restore();
-
-    // plot line
-    if (chartData.length > 1) {
-      ctx.beginPath();
-      ctx.moveTo(chartX, chartY + chartH);
-      for (const p of chartData) {
-        const px = chartX + (p.t / maxT) * chartW;
-        const py = chartY + chartH - (p.v / (a * maxT)) * chartH;
-        ctx.lineTo(px, py);
+  // ── Frame-Loop ────────────────────────────────────────────
+  function frame(ts) {
+    if(running){
+      if(lastTs!==null){
+        const dt=Math.min((ts-lastTs)/1000,0.05);
+        t=Math.min(t+dt,maxT);
+        if(t>=maxT){ running=false; const b=document.getElementById('beschPlayBtn'); if(b)b.textContent='▶ Start'; }
       }
-      ctx.strokeStyle = '#7C3AED';
-      ctx.lineWidth = 2.5;
-      ctx.stroke();
+      lastTs=ts;
+      // Datenpunkte
+      if(pts.length===0||t-pts[pts.length-1].t>=0.1)
+        pts.push({t,s:0.5*a*t*t,v:a*t,a});
     }
 
-    // current point dot
-    const dotX = chartX + (t / maxT) * chartW;
-    const dotY = chartY + chartH - (v / Math.max(a * maxT, 0.01)) * chartH;
-    ctx.beginPath(); ctx.arc(dotX, dotY, 5, 0, Math.PI * 2);
-    ctx.fillStyle = '#7C3AED'; ctx.fill();
+    drawAnim();
 
-    // update HTML
-    const tEl = document.getElementById('beschTVal');
-    const vEl = document.getElementById('beschVVal');
-    const sEl = document.getElementById('beschSVal');
-    if (tEl) tEl.textContent = fmt(t);
-    if (vEl) vEl.textContent = fmt(v);
-    if (sEl) sEl.textContent = fmt(s);
+    // Info-Zeile
+    const v2=a*t, s2=0.5*a*t*t;
+    const tEl=document.getElementById('beschTVal'); if(tEl)tEl.textContent=fmt(t);
+    const vEl=document.getElementById('beschVVal'); if(vEl)vEl.textContent=fmt(v2);
+    const sEl=document.getElementById('beschSVal'); if(sEl)sEl.textContent=fmt(s2);
 
-    raf = requestAnimationFrame(draw);
+    // Diagramme
+    const sMax2=Math.max(0.5*a*maxT*maxT*1.1,5);
+    const vMax2=Math.max(a*maxT*1.1,5);
+    const aVal=a;
+    drawDiagram(ctST,cvST,'#7c3aed','s / m',0,Math.ceil(sMax2/5)*5,()=>pts.map(p=>({t:p.t,y:p.s})));
+    drawDiagram(ctVT,cvVT,'#0891b2','v / m/s',0,Math.ceil(vMax2/5)*5,()=>pts.map(p=>({t:p.t,y:p.v})));
+    drawDiagram(ctAT,cvAT,'#dc2626','a / m/s²',0,Math.ceil(aVal*1.5/2)*2||2,()=>pts.map(p=>({t:p.t,y:p.a})));
+
+    raf=requestAnimationFrame(frame);
   }
 
-  function stop() { if (raf) cancelAnimationFrame(raf); running = false; last = null; }
-  function setA(val) {
-    a = val;
-    const lEl = document.getElementById('beschALabel');
-    if (lEl) lEl.textContent = fmt(a);
+  function stop(){ if(raf)cancelAnimationFrame(raf); running=false; lastTs=null; }
+  function setA(val){
+    a=val;
+    const lEl=document.getElementById('beschALabel'); if(lEl)lEl.textContent=fmt(a);
+    const cEl=document.getElementById('beschACur'); if(cEl)cEl.textContent=fmt(a);
   }
-  function toggle() {
-    if (running) {
-      running = false; last = null;
-      const b = document.getElementById('beschPlayBtn');
-      if (b) b.textContent = '▶ Weiter';
-    } else {
-      if (t >= maxT) { t = 0; chartData.length = 0; }
-      running = true;
-      const b = document.getElementById('beschPlayBtn');
-      if (b) b.textContent = '⏸ Pause';
-    }
+  function toggle(){
+    if(running){ running=false; lastTs=null; const b=document.getElementById('beschPlayBtn'); if(b)b.textContent='▶ Weiter'; }
+    else { if(t>=maxT){t=0;pts=[];} running=true; const b=document.getElementById('beschPlayBtn'); if(b)b.textContent='⏸ Pause'; }
   }
-  function reset() {
-    running = false; last = null; t = 0; chartData.length = 0;
-    const b = document.getElementById('beschPlayBtn');
-    if (b) b.textContent = '▶ Start';
-  }
+  function reset(){ running=false; lastTs=null; t=0; pts=[]; const b=document.getElementById('beschPlayBtn'); if(b)b.textContent='▶ Start'; }
 
-  raf = requestAnimationFrame(draw);
+  raf=requestAnimationFrame(frame);
   return { stop, setA, toggle, reset };
 }
 
 // ============================================================
-// SIM 6: FREIER FALL
+// SIM 6: FREIER FALL – mit s-t / v-t / a-t Diagrammen
 // ============================================================
 function _simFreierFall() {
-  const canvas = document.getElementById('fallCanvas');
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
+  const cvA  = document.getElementById('fallAnim');
+  const ctA  = cvA.getContext('2d');
+  const cvST = document.getElementById('fallCST'), ctST = cvST.getContext('2d');
+  const cvVT = document.getElementById('fallCVT'), ctVT = cvVT.getContext('2d');
+  const cvAT = document.getElementById('fallCAT'), ctAT = cvAT.getContext('2d');
+
   const g = 9.81;
-  let h0 = 20, running = false, t = 0, last = null, raf = null, bouncing = false;
+  let h0 = 20, running = false, t = 0, lastTs = null, raf = null;
+  let pts = []; // {t, s, v}
 
-  function fmt(n, d=1) { return n.toFixed(d).replace('.', ','); }
+  function fmt(n,d=1){ return n.toFixed(d).replace('.',','); }
 
-  function draw(ts) {
-    if (running) {
-      if (last !== null) {
-        const dt = Math.min((ts - last) / 1000, 0.05);
-        t += dt;
-      }
-      last = ts;
+  const tFall = ()=>Math.sqrt(2*h0/g);
+
+  // ── Shared Diagram Renderer ───────────────────────────────
+  function drawDiagram(ctx, cv, color, yLabel, yMin, yMax, data, tMax) {
+    const W=cv.width, H=cv.height, pL=34, pB=18, pT=8, pR=6;
+    const iW=W-pL-pR, iH=H-pT-pB;
+    ctx.clearRect(0,0,W,H);
+    const bg=ctx.createLinearGradient(0,0,0,H);
+    bg.addColorStop(0,'#f8fafc'); bg.addColorStop(1,'#fff');
+    ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle='#f1f5f9'; ctx.lineWidth=0.8;
+    for(let i=0;i<=4;i++){
+      ctx.beginPath(); ctx.moveTo(pL,pT+iH*i/4); ctx.lineTo(W-pR,pT+iH*i/4); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(pL+iW*i/4,pT); ctx.lineTo(pL+iW*i/4,H-pB); ctx.stroke();
     }
-
-    const t_fall = Math.sqrt(2 * h0 / g);
-    const curT = Math.min(t, t_fall);
-    const fallen = 0.5 * g * curT * curT;
-    const h = Math.max(h0 - fallen, 0);
-    const v = Math.min(g * curT, Math.sqrt(2 * g * h0));
-
-    if (running && t >= t_fall) {
-      running = false; t = t_fall;
-      const b = document.getElementById('fallPlayBtn');
-      if (b) b.textContent = '▶ Loslassen';
+    ctx.strokeStyle='#94a3b8'; ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.moveTo(pL,pT); ctx.lineTo(pL,H-pB); ctx.moveTo(pL,H-pB); ctx.lineTo(W-pR,H-pB); ctx.stroke();
+    ctx.fillStyle='#64748b'; ctx.font='bold 8px sans-serif'; ctx.textAlign='center';
+    ctx.fillText('t / s', W-pR+2, H-pB-2);
+    ctx.save(); ctx.translate(10,pT+iH/2); ctx.rotate(-Math.PI/2); ctx.fillText(yLabel,0,0); ctx.restore();
+    ctx.fillStyle='#94a3b8'; ctx.font='7px sans-serif'; ctx.textAlign='right';
+    for(let i=0;i<=2;i++){
+      const val=yMax-(yMax-yMin)*i/2, y=pT+iH*i/2;
+      ctx.fillText(val%1===0?val.toFixed(0):val.toFixed(1), pL-3, y+3);
     }
+    ctx.textAlign='center'; ctx.fillStyle='#94a3b8';
+    for(let i=0;i<=2;i++) ctx.fillText((tMax*i/2).toFixed(1), pL+iW*i/2, H-4);
 
-    ctx.clearRect(0, 0, W, H);
-    ctx.fillStyle = '#f0f9ff';
-    ctx.fillRect(0, 0, W, H);
-
-    // ground
-    ctx.fillStyle = '#78716C';
-    ctx.fillRect(30, H - 30, W - 60, 12);
-    ctx.fillStyle = '#D6D3D1';
-    ctx.fillRect(30, H - 18, W - 60, 6);
-
-    // height ruler
-    const rulerX = 60;
-    const rulerTopY = 30;
-    const rulerBotY = H - 30;
-    const rulerH = rulerBotY - rulerTopY;
-    ctx.strokeStyle = '#CBD5E1'; ctx.lineWidth = 1;
-    for (let hi = 0; hi <= h0; hi += 5) {
-      const ty = rulerBotY - (hi / h0) * rulerH;
-      ctx.beginPath(); ctx.moveTo(rulerX - 8, ty); ctx.lineTo(rulerX + 8, ty); ctx.stroke();
-      ctx.fillStyle = '#64748B'; ctx.font = '10px sans-serif'; ctx.textAlign = 'right';
-      ctx.fillText(hi + 'm', rulerX - 10, ty + 4);
+    const clipY=p=>Math.max(pT,Math.min(H-pB,pT+iH*(1-(p.y-yMin)/(yMax-yMin))));
+    if(data.length<2){
+      ctx.strokeStyle=color+'44'; ctx.lineWidth=1; ctx.setLineDash([4,4]);
+      const y0=pT+iH*(1-(0-yMin)/(yMax-yMin));
+      ctx.beginPath(); ctx.moveTo(pL,Math.max(pT,Math.min(H-pB,y0))); ctx.lineTo(W-pR,Math.max(pT,Math.min(H-pB,y0))); ctx.stroke();
+      ctx.setLineDash([]); return;
     }
-
-    // ball
-    const ballY = rulerBotY - (h / h0) * rulerH;
-    const ballR = 14;
-    const grad = ctx.createRadialGradient(ballX() - 4, ballY - 4, 2, ballX(), ballY, ballR);
-    grad.addColorStop(0, '#FCD34D');
-    grad.addColorStop(1, '#D97706');
     ctx.beginPath();
-    ctx.arc(ballX(), ballY, ballR, 0, Math.PI * 2);
-    ctx.fillStyle = grad;
-    ctx.fill();
-    ctx.strokeStyle = '#92400E'; ctx.lineWidth = 1.5; ctx.stroke();
+    data.forEach((p,i)=>{ const px=pL+(p.t/tMax)*iW; i===0?ctx.moveTo(px,clipY(p)):ctx.lineTo(px,clipY(p)); });
+    ctx.lineTo(pL+(data[data.length-1].t/tMax)*iW,H-pB); ctx.lineTo(pL,H-pB); ctx.closePath();
+    ctx.fillStyle=color+'22'; ctx.fill();
+    ctx.strokeStyle=color; ctx.lineWidth=2.2; ctx.lineJoin='round'; ctx.setLineDash([]);
+    ctx.beginPath();
+    data.forEach((p,i)=>{ const px=pL+(p.t/tMax)*iW; i===0?ctx.moveTo(px,clipY(p)):ctx.lineTo(px,clipY(p)); });
+    ctx.stroke();
+    const lp=data[data.length-1];
+    const lpx=pL+(lp.t/tMax)*iW, lpy=clipY(lp);
+    ctx.fillStyle='#fff'; ctx.beginPath(); ctx.arc(lpx,lpy,4.5,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle=color; ctx.beginPath(); ctx.arc(lpx,lpy,3,0,Math.PI*2); ctx.fill();
+    ctx.font='bold 8px sans-serif'; ctx.textAlign='left'; ctx.fillStyle=color;
+    ctx.fillText(lp.y%1===0?lp.y.toFixed(0):lp.y.toFixed(1), Math.min(lpx+5,W-pR-16), Math.max(pT+8,lpy-3));
+  }
 
-    // velocity arrow
-    if (v > 0.1) {
-      const arrowLen = Math.min(v * 4, 50);
-      ctx.beginPath();
-      ctx.moveTo(ballX() + ballR + 5, ballY);
-      ctx.lineTo(ballX() + ballR + 5, ballY + arrowLen);
-      ctx.strokeStyle = '#DC2626'; ctx.lineWidth = 2.5; ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(ballX() + ballR + 5 - 6, ballY + arrowLen - 6);
-      ctx.lineTo(ballX() + ballR + 5, ballY + arrowLen + 2);
-      ctx.lineTo(ballX() + ballR + 5 + 6, ballY + arrowLen - 6);
-      ctx.fillStyle = '#DC2626'; ctx.fill();
+  // ── Animations-Canvas ─────────────────────────────────────
+  function drawAnim(curT) {
+    const W=cvA.width, H=cvA.height;
+    const fallen=0.5*g*curT*curT;
+    const h=Math.max(h0-fallen,0);
+    const v=g*curT;
+
+    ctA.clearRect(0,0,W,H);
+    // Himmel
+    const sky=ctA.createLinearGradient(0,0,0,H);
+    sky.addColorStop(0,'#bfdbfe'); sky.addColorStop(1,'#e0f2fe');
+    ctA.fillStyle=sky; ctA.fillRect(0,0,W,H);
+    // Boden
+    ctA.fillStyle='#78716c'; ctA.fillRect(20,H-14,W-40,10);
+    ctA.fillStyle='#a8a29e'; ctA.fillRect(20,H-4,W-40,4);
+
+    // Lineal (links)
+    const ruX=40, ruTop=8, ruBot=H-14, ruH=ruBot-ruTop;
+    ctA.strokeStyle='#94a3b8'; ctA.lineWidth=1;
+    ctA.beginPath(); ctA.moveTo(ruX,ruTop); ctA.lineTo(ruX,ruBot); ctA.stroke();
+    const step=h0<=20?5:10;
+    for(let hi=0;hi<=h0;hi+=step){
+      const ty=ruBot-(hi/h0)*ruH;
+      ctA.beginPath(); ctA.moveTo(ruX-6,ty); ctA.lineTo(ruX+6,ty); ctA.stroke();
+      ctA.fillStyle='#64748b'; ctA.font='9px sans-serif'; ctA.textAlign='right';
+      ctA.fillText(hi+'m', ruX-8, ty+3);
     }
 
-    // formula box
-    const t_show = Math.sqrt(2 * h0 / g);
-    ctx.fillStyle = 'rgba(255,255,255,0.9)';
-    ctx.fillRect(W - 175, 15, 160, 70);
-    ctx.fillStyle = '#374151'; ctx.font = '11px sans-serif'; ctx.textAlign = 'left';
-    ctx.fillText('h = ' + fmt(h, 1) + ' m', W - 168, 32);
-    ctx.fillText('v = ' + fmt(v, 1) + ' m/s', W - 168, 48);
-    ctx.fillText('t_fall = ' + fmt(t_show, 2) + ' s', W - 168, 64);
-    ctx.fillText('t = ' + fmt(curT, 2) + ' s', W - 168, 80);
+    // Ball
+    const ballX2=W/2, ballY=ruBot-(h/h0)*ruH;
+    const ballR=12;
+    const grad=ctA.createRadialGradient(ballX2-3,ballY-3,2,ballX2,ballY,ballR);
+    grad.addColorStop(0,'#fde68a'); grad.addColorStop(1,'#d97706');
+    ctA.beginPath(); ctA.arc(ballX2,ballY,ballR,0,Math.PI*2);
+    ctA.fillStyle=grad; ctA.fill();
+    ctA.strokeStyle='#92400e'; ctA.lineWidth=1.5; ctA.stroke();
 
-    const tEl = document.getElementById('fallTVal');
-    const vEl = document.getElementById('fallVVal');
-    const hEl = document.getElementById('fallHVal');
-    if (tEl) tEl.textContent = fmt(curT);
-    if (vEl) vEl.textContent = fmt(v);
-    if (hEl) hEl.textContent = fmt(h);
-
-    raf = requestAnimationFrame(draw);
-  }
-
-  function ballX() { return 160; }
-
-  function stop() { if (raf) cancelAnimationFrame(raf); running = false; last = null; }
-  function setH(v) {
-    h0 = v; t = 0;
-    const lEl = document.getElementById('fallHLabel');
-    if (lEl) lEl.textContent = v;
-    const hEl = document.getElementById('fallHVal');
-    if (hEl) hEl.textContent = v.toFixed(1).replace('.', ',');
-  }
-  function toggle() {
-    if (running) {
-      running = false; last = null;
-      const b = document.getElementById('fallPlayBtn');
-      if (b) b.textContent = '▶ Weiter';
-    } else {
-      running = true;
-      const b = document.getElementById('fallPlayBtn');
-      if (b) b.textContent = '⏸ Pause';
+    // Geschwindigkeitspfeil
+    if(v>0.5){
+      const arLen=Math.min(v*3,42);
+      ctA.strokeStyle='#dc2626'; ctA.lineWidth=2.5;
+      ctA.beginPath(); ctA.moveTo(ballX2,ballY+ballR); ctA.lineTo(ballX2,ballY+ballR+arLen); ctA.stroke();
+      ctA.fillStyle='#dc2626';
+      ctA.beginPath(); ctA.moveTo(ballX2-5,ballY+ballR+arLen-5); ctA.lineTo(ballX2,ballY+ballR+arLen+3); ctA.lineTo(ballX2+5,ballY+ballR+arLen-5); ctA.fill();
     }
-  }
-  function reset() {
-    running = false; last = null; t = 0;
-    const b = document.getElementById('fallPlayBtn');
-    if (b) b.textContent = '▶ Loslassen';
+
+    // Info-Badge
+    ctA.fillStyle='rgba(255,255,255,0.92)'; ctA.beginPath(); ctA.roundRect(W-120,4,114,50,6); ctA.fill();
+    ctA.fillStyle='#374151'; ctA.font='bold 10px sans-serif'; ctA.textAlign='left';
+    ctA.fillText(`h = ${fmt(h,1)} m`, W-114,18);
+    ctA.fillText(`v = ${fmt(v,1)} m/s`, W-114,32);
+    ctA.fillText(`t = ${fmt(curT,2)} s`, W-114,46);
   }
 
-  raf = requestAnimationFrame(draw);
+  // ── Frame-Loop ────────────────────────────────────────────
+  function frame(ts) {
+    if(running){
+      if(lastTs!==null){
+        const dt=Math.min((ts-lastTs)/1000,0.05);
+        t=Math.min(t+dt,tFall());
+        if(t>=tFall()){ running=false; const b=document.getElementById('fallPlayBtn'); if(b)b.textContent='▶ Loslassen'; }
+      }
+      lastTs=ts;
+      if(pts.length===0||t-pts[pts.length-1].t>=0.1)
+        pts.push({t,s:0.5*g*t*t,v:g*t});
+    }
+
+    drawAnim(t);
+
+    // Info-Zeile
+    const s2=0.5*g*t*t, v2=g*t;
+    const tEl=document.getElementById('fallTVal'); if(tEl)tEl.textContent=fmt(t,2);
+    const sEl=document.getElementById('fallSVal'); if(sEl)sEl.textContent=fmt(s2,1);
+    const vEl=document.getElementById('fallVVal'); if(vEl)vEl.textContent=fmt(v2,1);
+
+    // Diagramme
+    const tM=Math.max(tFall()*1.1,1);
+    const sMax=Math.max(h0*1.1,5);
+    const vMax=Math.max(g*tFall()*1.1,10);
+    drawDiagram(ctST,cvST,'#7c3aed','s / m', 0,Math.ceil(sMax/5)*5, pts.map(p=>({t:p.t,y:p.s})), tM);
+    drawDiagram(ctVT,cvVT,'#0891b2','v / m/s',0,Math.ceil(vMax/5)*5,pts.map(p=>({t:p.t,y:p.v})), tM);
+    drawDiagram(ctAT,cvAT,'#16a34a','a / m/s²',0,12,            pts.map(p=>({t:p.t,y:9.81})),tM);
+
+    raf=requestAnimationFrame(frame);
+  }
+
+  function stop(){ if(raf)cancelAnimationFrame(raf); running=false; lastTs=null; }
+  function setH(val){
+    h0=val; t=0; pts=[];
+    const lEl=document.getElementById('fallHLabel'); if(lEl)lEl.textContent=val;
+  }
+  function toggle(){
+    if(running){ running=false; lastTs=null; const b=document.getElementById('fallPlayBtn'); if(b)b.textContent='▶ Weiter'; }
+    else { if(t>=tFall()){t=0;pts=[];} running=true; const b=document.getElementById('fallPlayBtn'); if(b)b.textContent='⏸ Pause'; }
+  }
+  function reset(){ running=false; lastTs=null; t=0; pts=[]; const b=document.getElementById('fallPlayBtn'); if(b)b.textContent='▶ Loslassen'; }
+
+  raf=requestAnimationFrame(frame);
   return { stop, setH, toggle, reset };
 }
 
