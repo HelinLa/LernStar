@@ -4613,6 +4613,84 @@ if (false) { const _EV_LEGACY = { 'Einführung in Brüche': [
 
 let _evTopicName='',_evSceneIdx=0,_evPaused=false,_evTimer=null,_evSceneStart=0,_evSceneElapsed=0;
 
+/* ─── Sanfte TTS: HF-API → Web Speech Fallback ───────────────────
+   Versucht zuerst facebook/mms-tts-deu via Hugging Face (kein Key),
+   fällt bei Fehler/Timeout auf besten Browser-Voice zurück.
+   ─────────────────────────────────────────────────────────────── */
+const _evTTSCache = {};   // text → blob-URL
+let   _evCurAudio  = null;
+let   _evHFCtrl    = null;
+
+async function _evSpeak(text) {
+  if (!text) return;
+  _evSpeakStop();
+  const snap = _evSceneIdx; // Scene-Snapshot zum Abbrechen veralteter Anfragen
+
+  // Cache-Treffer: sofort abspielen
+  if (_evTTSCache[text]) {
+    _evCurAudio = new Audio(_evTTSCache[text]);
+    _evCurAudio.playbackRate = 1.05;
+    _evCurAudio.play().catch(() => _evSpeakFallback(text));
+    return;
+  }
+
+  // Hugging Face Inference API (kostenlos, kein Key)
+  try {
+    const ctrl = new AbortController();
+    _evHFCtrl   = ctrl;
+    const timer = setTimeout(() => ctrl.abort(), 7000); // 7s Timeout
+    const res   = await fetch(
+      'https://api-inference.huggingface.co/models/facebook/mms-tts-deu',
+      { method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ inputs: text }),
+        signal: ctrl.signal }
+    );
+    clearTimeout(timer);
+    if (res.ok && _evSceneIdx === snap) {
+      const blob = await res.blob();
+      const url  = URL.createObjectURL(blob);
+      _evTTSCache[text] = url;
+      _evCurAudio = new Audio(url);
+      _evCurAudio.playbackRate = 1.05;
+      _evCurAudio.play().catch(() => _evSpeakFallback(text));
+      return;
+    }
+  } catch (_) { /* Timeout oder Netzwerkfehler → Fallback */ }
+
+  if (_evSceneIdx === snap) _evSpeakFallback(text);
+}
+
+function _evSpeakFallback(text) {
+  if (!window.speechSynthesis || !text) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'de-DE'; u.volume = 1;
+  const voice = _evPickVoice();
+  if (voice) u.voice = voice;
+  const natural = /natural|neural|online/i.test(voice?.name || '');
+  u.rate  = natural ? 0.94 : 0.86;
+  u.pitch = natural ? 1.0  : 1.06;
+  window.speechSynthesis.speak(u);
+}
+
+function _evSpeakStop() {
+  if (_evCurAudio) { _evCurAudio.pause(); _evCurAudio = null; }
+  try { _evHFCtrl?.abort(); } catch (_) {}
+  window.speechSynthesis?.cancel();
+}
+
+// Nächste Szene vorausladen (damit Audio sofort bereit ist)
+function _evPrefetch(text) {
+  if (!text || _evTTSCache[text]) return;
+  fetch('https://api-inference.huggingface.co/models/facebook/mms-tts-deu',
+    { method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ inputs: text }) })
+    .then(r => r.ok ? r.blob() : null)
+    .then(b => { if (b) _evTTSCache[text] = URL.createObjectURL(b); })
+    .catch(() => {});
+}
+
 function openErklaerVideo(topicName){
   if(!EV_SCENES[topicName])EV_SCENES[topicName]=_evAutoScenes(topicName);
   const scenes=EV_SCENES[topicName];
@@ -4626,7 +4704,7 @@ function closeErklaerVideo(){
   const overlay=document.getElementById('erklaerVideoOverlay');
   if(overlay)overlay.classList.add('hidden');
   clearTimeout(_evTimer);_evTimer=null;
-  window.speechSynthesis?.cancel();
+  _evSpeakStop();
 }
 function _evBgClick(e){if(e.target===document.getElementById('erklaerVideoOverlay'))closeErklaerVideo();}
 function _evBuildDots(count){const c=document.getElementById('evSceneDots');if(!c)return;c.innerHTML='';for(let i=0;i<count;i++){const d=document.createElement('div');d.className='ev-dot'+(i===0?' active':'');c.appendChild(d);}}
@@ -4642,19 +4720,11 @@ function _evPlayScene(idx){
   stage.innerHTML='';
   scene.build(stage);
   // Sprachausgabe — beste verfügbare Stimme
-  if(scene.speech && window.speechSynthesis){
-    window.speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance(scene.speech);
-    u.lang='de-DE';u.volume=1;
-    const voice=_evPickVoice();
-    if(voice)u.voice=voice;
-    // Natural/Online-Stimmen klingen am besten ohne Anpassung;
-    // ältere Stimmen brauchen langsamere Rate + wärmeres Pitch
-    const isNatural=/natural|neural|online/i.test(voice?.name||'');
-    u.rate  = isNatural ? 0.94 : 0.86;
-    u.pitch = isNatural ? 1.0  : 1.06;
-    window.speechSynthesis.speak(u);
-  }
+  // Sprachausgabe (HF Neural TTS → Web Speech Fallback)
+  if (scene.speech) _evSpeak(scene.speech);
+  // Nächste Szene vorausladen
+  const nextSpeech = scenes[idx+1]?.speech;
+  if (nextSpeech) _evPrefetch(nextSpeech);
   const btn=document.getElementById('evPlayPauseBtn');
   if(btn)btn.textContent='⏸';
   _evPaused=false;_evSceneStart=Date.now();
