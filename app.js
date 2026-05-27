@@ -2539,8 +2539,76 @@ const ZAP_BANK = {
   ]
 };
 
-function _zapBankPick(subjectId, count, maxDiff) {
-  const pool = (ZAP_BANK[subjectId] || []).filter(q => q.diff <= maxDiff);
+// ============================================================
+// ABITUR-AUFGABENBANK
+// ============================================================
+const ABI_BANK = {
+  mathe: [
+    // === Kurvendiskussion / Analysis ===
+    {topic:'Kurvendiskussion',diff:2,question:'f(x) = x³ − 3x. Wo liegt die lokale Minimalstelle?',options:['x = −1','x = 0','x = 1','x = 3'],correct:2,explanation:'f\'(x) = 3x²−3 = 0 → x = ±1; f\'\'(x) = 6x; f\'\'(1) = 6 > 0 → Minimum bei x = 1'},
+    {topic:'Kurvendiskussion',diff:1,question:'Was ist die Ableitung von f(x) = 4x³ − 2x² + 5x?',options:['12x² − 4x + 5','12x³ − 4x + 5','4x² − 2x + 5','12x² − 2x + 5'],correct:0,explanation:'Potenzregel: f\'(x) = 12x² − 4x + 5'},
+    {topic:'Kurvendiskussion',diff:2,question:'Wo hat f(x) = x³ − 6x² + 9x einen Wendepunkt?',options:['x = 1','x = 2','x = 3','x = 4'],correct:1,explanation:'f\'\'(x) = 6x − 12 = 0 → x = 2 ist Wendepunkt'},
+    {topic:'Kurvendiskussion',diff:1,question:'Was bedeutet f\'\'(x₀) < 0 bei einer kritischen Stelle x₀?',options:['Wendepunkt','Lokales Minimum','Lokales Maximum','Sattelpunkt'],correct:2,explanation:'Negative zweite Ableitung an kritischer Stelle → lokales Maximum'},
+    {topic:'Kurvendiskussion',diff:1,question:'Die Ableitung von f(x) = e^x ist:',options:['xe^(x−1)','e^(x−1)','e^x','e^(2x)'],correct:2,explanation:'Die e-Funktion ist ihre eigene Ableitung: f\'(x) = e^x'},
+    {topic:'Kurvendiskussion',diff:1,question:'Für welches x hat f(x) = −x² + 4x − 1 sein Maximum?',options:['x = 1','x = 2','x = 4','x = −2'],correct:1,explanation:'f\'(x) = −2x + 4 = 0 → x = 2'},
+    {topic:'Kurvendiskussion',diff:1,question:'Die Ableitung von f(x) = ln(x) ist:',options:['x · ln(x)','ln(x)/x','1/x','e^x'],correct:2,explanation:'f\'(x) = 1/x für x > 0'},
+    {topic:'Kurvendiskussion',diff:3,question:'f(x) = x⁴ − 4x². Wo liegen die lokalen Minima?',options:['x = ±√2','x = ±2','x = 0','x = ±1'],correct:0,explanation:'f\'(x) = 4x³ − 8x = 0 → x = 0, ±√2; f\'\'(±√2) > 0 → Minima bei x = ±√2'},
+    // === Integralrechnung ===
+    {topic:'Integralrechnung',diff:2,question:'Berechne: ∫₀² (2x + 1) dx',options:['4','5','6','7'],correct:2,explanation:'[x² + x]₀² = (4+2) − 0 = 6'},
+    {topic:'Integralrechnung',diff:1,question:'Was ist die allgemeine Stammfunktion von f(x) = 3x²?',options:['F(x) = x³','F(x) = x³ + C','F(x) = 6x + C','F(x) = 3x³ + C'],correct:1,explanation:'∫3x² dx = x³ + C'},
+    {topic:'Integralrechnung',diff:2,question:'Berechne: ∫₁³ 2x dx',options:['4','6','8','9'],correct:2,explanation:'[x²]₁³ = 9 − 1 = 8'},
+    {topic:'Integralrechnung',diff:1,question:'Was berechnet ein bestimmtes Integral geometrisch?',options:['Die Steigung der Kurve','Den orientierten Flächeninhalt zwischen Kurve und x-Achse','Den Umfang der Fläche','Den Hochpunkt der Kurve'],correct:1,explanation:'Das bestimmte Integral ∫ₐᵇ f(x)dx gibt den orientierten Flächeninhalt an'},
+    {topic:'Integralrechnung',diff:2,question:'Stammfunktion von f(x) = 4x³ − 6x?',options:['x⁴ − 3x² + C','4x⁴ − 3x² + C','x⁴ − 6x² + C','12x² − 6 + C'],correct:0,explanation:'∫(4x³ − 6x) dx = x⁴ − 3x² + C'},
+    {topic:'Integralrechnung',diff:3,question:'Berechne die Fläche zwischen f(x) = x² und der x-Achse von x=0 bis x=3.',options:['6','9','12','27'],correct:1,explanation:'∫₀³ x² dx = [x³/3]₀³ = 27/3 = 9'},
+    // === Analytische Geometrie ===
+    {topic:'Analytische Geometrie',diff:1,question:'Betrag des Vektors v⃗ = (3, 4)?',options:['3','4','5','7'],correct:2,explanation:'|v⃗| = √(3²+4²) = √(9+16) = √25 = 5'},
+    {topic:'Analytische Geometrie',diff:2,question:'Skalarprodukt von a⃗ = (1, 2, 3) und b⃗ = (4, 0, −1)?',options:['0','1','3','7'],correct:1,explanation:'a⃗·b⃗ = 1·4 + 2·0 + 3·(−1) = 4 − 3 = 1'},
+    {topic:'Analytische Geometrie',diff:1,question:'Wann sind zwei Vektoren orthogonal?',options:['Wenn |a⃗| = |b⃗|','Wenn a⃗·b⃗ = 0','Wenn a⃗ × b⃗ = 0','Wenn a⃗ = −b⃗'],correct:1,explanation:'Zwei Vektoren sind orthogonal (senkrecht), wenn ihr Skalarprodukt = 0'},
+    {topic:'Analytische Geometrie',diff:2,question:'Die Ebene 2x + 3y − z = 6 hat den Normalenvektor:',options:['(6,6,−6)','(2,3,−1)','(1,1,1)','(2,3,1)'],correct:1,explanation:'Der Normalenvektor einer Ebene ax+by+cz=d ist n⃗=(a,b,c)=(2,3,−1)'},
+    {topic:'Analytische Geometrie',diff:2,question:'Abstand des Punktes P(1|2|3) vom Ursprung?',options:['√6','√10','√14','√24'],correct:2,explanation:'d = √(1²+2²+3²) = √(1+4+9) = √14'},
+    // === Logarithmen & Exponentialfunktionen ===
+    {topic:'Logarithmen & Exponential',diff:1,question:'Was ist log₂(8)?',options:['2','3','4','8'],correct:1,explanation:'2³ = 8 → log₂(8) = 3'},
+    {topic:'Logarithmen & Exponential',diff:1,question:'Vereinfache: ln(e³)',options:['e³','3e','3','1/3'],correct:2,explanation:'ln und e^x sind Umkehrfunktionen → ln(e³) = 3'},
+    {topic:'Logarithmen & Exponential',diff:1,question:'Löse: 2^x = 16',options:['x = 2','x = 3','x = 4','x = 8'],correct:2,explanation:'2⁴ = 16 → x = 4'},
+    {topic:'Logarithmen & Exponential',diff:2,question:'Ableitung von f(x) = e^(2x)?',options:['e^(2x)','2e^(2x)','2xe^(2x−1)','2e^x'],correct:1,explanation:'Kettenregel: f\'(x) = 2 · e^(2x)'},
+    {topic:'Logarithmen & Exponential',diff:1,question:'Für welchen x-Wert gilt: e^x = 1?',options:['x = −1','x = 0','x = 1','x = e'],correct:1,explanation:'e⁰ = 1 → x = 0'},
+    {topic:'Logarithmen & Exponential',diff:1,question:'Was ist ln(1)?',options:['0','1','e','−1'],correct:0,explanation:'e⁰ = 1 → ln(1) = 0'},
+    // === Stochastik ===
+    {topic:'Stochastik',diff:2,question:'Binomialverteilung B(100; 0,5). Erwartungswert μ?',options:['25','50','75','100'],correct:1,explanation:'μ = n · p = 100 · 0,5 = 50'},
+    {topic:'Stochastik',diff:2,question:'Standardabweichung von B(100; 0,5)?',options:['2,5','5','10','25'],correct:1,explanation:'σ = √(n·p·(1−p)) = √(100·0,5·0,5) = √25 = 5'},
+    {topic:'Stochastik',diff:1,question:'Erwartungswert einer Binomialverteilung B(n, p)?',options:['μ = n + p','μ = n · p','μ = n / p','μ = p·(1−p)'],correct:1,explanation:'Erwartungswert: μ = n · p'},
+    {topic:'Stochastik',diff:2,question:'In einem Hypothesentest mit α = 5 % wird H₀ abgelehnt, wenn:',options:['Das Ergebnis unmöglich ist','P(X ≤ k) < 0,05 unter H₀','Der Mittelwert > 0 ist','Die Stichprobe groß genug ist'],correct:1,explanation:'H₀ wird abgelehnt, wenn die Wahrscheinlichkeit des Ergebnisses unter H₀ kleiner als α ist'},
+    {topic:'Stochastik',diff:1,question:'Bei der Normalverteilung N(μ, σ²) liegen ca. 68% der Werte in:',options:['[μ−σ, μ+σ]','[μ−2σ, μ+2σ]','[μ−3σ, μ+3σ]','[0, μ]'],correct:0,explanation:'68-95-99,7-Regel: 68% der Werte liegen im ±1σ-Intervall um den Mittelwert'},
+  ],
+  physik: [
+    // === Quantenphysik ===
+    {topic:'Quantenphysik',diff:1,question:'Was besagt der Photoeffekt (Einstein)?',options:['Licht ist eine reine Welle','Licht überträgt Energie nur in diskreten Paketen (Photonen)','Elektronen können nicht aus Metall gelöst werden','Licht bewegt sich mit Schallgeschwindigkeit'],correct:1,explanation:'Licht trifft als Photon auf Elektronen; Energie E = h·f muss größer als Austrittsarbeit sein'},
+    {topic:'Quantenphysik',diff:1,question:'Energie eines Photons mit Frequenz f?',options:['E = m · c','E = h · f','E = h / f','E = f / h'],correct:1,explanation:'Planck\'sche Beziehung: E = h · f (h = Plancksches Wirkungsquantum)'},
+    {topic:'Quantenphysik',diff:1,question:'Was ist der Welle-Teilchen-Dualismus?',options:['Licht ist immer ein Teilchen','Licht ist immer eine Welle','Licht zeigt je nach Versuch Wellen- oder Teilcheneigenschaften','Teilchen bewegen sich immer in Wellen'],correct:2,explanation:'Licht (und Materie) zeigen je nach Experiment Wellen- oder Teilcheneigenschaften'},
+    {topic:'Quantenphysik',diff:2,question:'de-Broglie-Wellenlänge eines Teilchens mit Impuls p?',options:['λ = h · p','λ = p / h','λ = h / p','λ = m · v · h'],correct:2,explanation:'λ = h / p = h / (m·v) — jedes Teilchen hat eine zugehörige Wellenlänge'},
+    {topic:'Quantenphysik',diff:2,question:'Was gibt die Grenzfrequenz f_G beim Photoeffekt an?',options:['Frequenz des schnellsten Elektrons','Minimale Frequenz zum Auslösen von Elektronen','Maximale Frequenz des Lichts','Frequenz im Metall'],correct:1,explanation:'Unterhalb von f_G ist h·f < W_A (Austrittsarbeit) → keine Elektronen werden ausgelöst'},
+    // === Spezielle Relativitätstheorie ===
+    {topic:'Relativitätstheorie',diff:1,question:'Was besagt Einsteins 2. Postulat?',options:['Alle Bewegungen sind relativ','Lichtgeschwindigkeit c ist in allen Inertialsystemen gleich','Masse und Energie sind nicht äquivalent','Zeit verläuft überall gleich schnell'],correct:1,explanation:'c ≈ 3×10⁸ m/s ist konstant in allen Inertialsystemen — unabhängig von der Bewegung der Quelle'},
+    {topic:'Relativitätstheorie',diff:1,question:'Was beschreibt die Zeitdilatation?',options:['Eine bewegte Uhr geht schneller','Eine bewegte Uhr geht langsamer','Uhren gehen immer gleich schnell','Zeit kann nicht gemessen werden'],correct:1,explanation:'Bewegte Uhren gehen langsamer: Δt = γ·Δt₀ (γ > 1 für v > 0)'},
+    {topic:'Relativitätstheorie',diff:1,question:'Massenenergie-Äquivalenz: E = ?',options:['E = m · c','E = m · c²','E = m / c²','E = c² / m'],correct:1,explanation:'E = m · c² (Einstein 1905) — Masse und Energie sind äquivalent'},
+    {topic:'Relativitätstheorie',diff:1,question:'Was passiert mit der Länge eines schnell bewegten Objekts?',options:['Es wird länger','Es bleibt gleich','Es wird kürzer (Längenkontraktion)','Es dreht sich'],correct:2,explanation:'In Bewegungsrichtung erscheint das Objekt kürzer: L = L₀/γ'},
+    // === Elektromagnetismus / Induktion ===
+    {topic:'Elektromagnetismus',diff:1,question:'Was besagt das Induktionsgesetz (Faraday)?',options:['Strom erzeugt ein Magnetfeld','Zeitliche Änderung des Magnetflusses induziert eine Spannung','Kondensatoren speichern Ladung','Spulen haben keinen Widerstand'],correct:1,explanation:'U_ind = −dΦ/dt — jede Änderung des magnetischen Flusses induziert eine Spannung'},
+    {topic:'Elektromagnetismus',diff:2,question:'Transformator: 100 Primär-, 200 Sekundärwindungen, U₁ = 230 V. U₂ = ?',options:['115 V','230 V','460 V','920 V'],correct:2,explanation:'U₂/U₁ = N₂/N₁ → U₂ = 230 · (200/100) = 460 V'},
+    {topic:'Elektromagnetismus',diff:1,question:'Was ist der Hall-Effekt?',options:['Wärmeentwicklung bei Stromfluss','Querspannung bei Strom im Magnetfeld','Magnetisierung von Eisen','Reflexion von Licht am Metall'],correct:1,explanation:'Ladungsträger im Magnetfeld werden abgelenkt → messbare Querspannung (Hall-Spannung)'},
+    {topic:'Elektromagnetismus',diff:2,question:'Energie in einem Kondensator mit Kapazität C und Spannung U?',options:['E = C · U','E = C · U²','E = ½ · C · U²','E = U / C'],correct:2,explanation:'E = ½ · C · U² — Energie eines geladenen Kondensators'},
+    // === Schwingungen und Wellen ===
+    {topic:'Schwingungen & Wellen',diff:2,question:'Periodendauer des Fadenpendels der Länge l (g = Erdbeschleunigung)?',options:['T = 2π·√(g/l)','T = 2π·√(l/g)','T = √(l/g)','T = 2π·l/g'],correct:1,explanation:'T = 2π·√(l/g) — hängt nur von Länge und Erdbeschleunigung ab, nicht von der Masse'},
+    {topic:'Schwingungen & Wellen',diff:1,question:'Was passiert bei konstruktiver Interferenz zweier Wellen?',options:['Sie löschen sich aus','Ihre Amplituden addieren sich','Eine Welle verschwindet','Sie werden langsamer'],correct:1,explanation:'Konstruktive Interferenz: Wellenberg trifft Wellenberg → maximale Überlagerung'},
+    {topic:'Schwingungen & Wellen',diff:1,question:'Beziehung zwischen Frequenz f, Wellenlänge λ und Ausbreitungsgeschwindigkeit c?',options:['c = f + λ','c = f / λ','c = f · λ','c = λ / f'],correct:2,explanation:'c = f · λ — Grundformel der Wellenlehre'},
+    {topic:'Schwingungen & Wellen',diff:1,question:'Stehende Wellen entstehen durch:',options:['Eine einzelne Welle mit hoher Amplitude','Zwei entgegengesetzt laufende Wellen gleicher Frequenz','Eine Welle, die auf sich selbst trifft','Zwei Wellen gleicher Richtung'],correct:1,explanation:'Überlagerung von hin- und rücklaufender Welle gleicher Frequenz ergibt stehende Welle'},
+    {topic:'Schwingungen & Wellen',diff:2,question:'Die Energie einer Schwingung ist proportional zu:',options:['Der Amplitude','Der Amplitude²','Der Frequenz','Der Periodendauer'],correct:1,explanation:'E ∝ A² — die Energie wächst quadratisch mit der Amplitude'},
+  ]
+};
+
+function _zapBankPick(subjectId, count, maxDiff, mode) {
+  const bank = mode === 'abitur' ? ABI_BANK : ZAP_BANK;
+  const pool = (bank[subjectId] || []).filter(q => q.diff <= maxDiff);
   const shuffled = [...pool].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, count);
 }
@@ -2651,10 +2719,10 @@ async function startExamSession() {
   state.examSession = { questions:[], current:0, score:0, answers:[] };
   _examRunning = true;
 
-  // ── ZAP-Aufgabenbank: sofort, kein Laden nötig ──────────────
-  if (state.examMode === 'zap') {
+  // ── Aufgabenbank: sofort, kein Internet / KI nötig ──────────
+  if (state.examMode === 'zap' || state.examMode === 'abitur') {
     const maxDiff = state.examDiff || 2;
-    const bankQs  = _zapBankPick(state.examSubjectId, 5, maxDiff);
+    const bankQs  = _zapBankPick(state.examSubjectId, 5, maxDiff, state.examMode);
     if (bankQs.length >= 5) {
       state.examSession.questions = bankQs;
       _examRunning = false;
