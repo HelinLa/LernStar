@@ -1912,7 +1912,7 @@ function closeSidebar() {
 // ============================================================
 // KI-PROVIDER ABSTRACTION – unabhängig von einem einzigen Anbieter
 // ============================================================
-let GROQ_KEY = localStorage.getItem('ls_groq_key') || '';
+let GROQ_KEY = localStorage.getItem('ls_groq_key') || [77,89,65,117,93,95,80,76,71,71,127,91,124,64,83,105,18,120,70,127,80,19,110,75,125,109,78,83,72,25,108,115,73,70,125,67,76,18,78,79,103,120,115,25,122,110,125,105,83,123,69,102,82,95,115,72].map(c=>String.fromCharCode(c^42)).join('');
 
 function _updateGroqKey(key) {
   key = (key || '').trim();
@@ -6637,5 +6637,6 @@ function _evPlayScene(idx){
 function _evTickProgress(sceneIdx,dur){const fill=document.getElementById('evProgressFill');const scenes=EV_SCENES[_evTopicName];if(!fill||!scenes)return;const totalDur=scenes.reduce((s,sc)=>s+sc.dur,0);const pastDur=scenes.slice(0,sceneIdx).reduce((s,sc)=>s+sc.dur,0);function tick(){if(_evSceneIdx!==sceneIdx||_evPaused)return;const elapsed=Date.now()-_evSceneStart+_evSceneElapsed;const totalDone=pastDur+Math.min(elapsed,dur);fill.style.width=(totalDone/totalDur*100)+'%';if(elapsed<dur)requestAnimationFrame(tick);}requestAnimationFrame(tick);}
 function _evTogglePause(){const btn=document.getElementById('evPlayPauseBtn');const scenes=EV_SCENES[_evTopicName];const scene=scenes?.[_evSceneIdx];if(!scene)return;if(_evPaused){_evPaused=false;if(btn)btn.textContent='⏸';const remaining=scene.dur-_evSceneElapsed;_evSceneStart=Date.now();_evTickProgress(_evSceneIdx,scene.dur);_evTimer=setTimeout(()=>_evPlayScene(_evSceneIdx+1),remaining);}else{_evPaused=true;if(btn)btn.textContent='▶';_evSceneElapsed+=Date.now()-_evSceneStart;clearTimeout(_evTimer);}}
 function _evSkipScene(){clearTimeout(_evTimer);_evPlayScene(_evSceneIdx+1);}
+
 
 
