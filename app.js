@@ -3919,6 +3919,10 @@ function openExperiment(expId) {
       </div>`;
     document.body.appendChild(modal);
     _sim = _simKondensator();
+  } else if (typeof openPhysicsSim === 'function') {
+    document.body.removeChild(modal);
+    openPhysicsSim(expId);
+    return;
   } else {
     modal.innerHTML = `
       <div class="sim-box">
