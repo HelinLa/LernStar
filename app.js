@@ -3768,6 +3768,123 @@ function openExperiment(expId) {
       </div>`;
     document.body.appendChild(modal);
     _sim = _simWellen();
+  } else if (expId === 'gleichfoermig') {
+    modal.innerHTML = `<div class="sim-box">
+      <button class="sim-x" onclick="closeExperiment()">✕</button>
+      <h3 class="sim-h3">🚗 Gleichförmige Bewegung</h3>
+      <canvas id="gfCanvas" width="460" height="160" style="width:100%;border-radius:8px;display:block"></canvas>
+      <div style="padding:8px 16px">
+        <label style="font-weight:700;font-size:.85rem">Geschwindigkeit v: <span id="gfVLabel">60</span> km/h</label>
+        <input type="range" id="gfVSlider" min="10" max="200" value="60" style="width:100%;accent-color:#7c3aed"
+          oninput="document.getElementById('gfVLabel').textContent=this.value">
+      </div></div>`;
+    document.body.appendChild(modal);
+    _sim = _simGleichfoermig();
+
+  } else if (expId === 'wurfbewegung') {
+    modal.innerHTML = `<div class="sim-box">
+      <button class="sim-x" onclick="closeExperiment()">✕</button>
+      <h3 class="sim-h3">🏹 Schräger Wurf</h3>
+      <canvas id="wurfCanvas" width="460" height="220" style="width:100%;border-radius:8px;display:block"></canvas>
+      <div style="padding:8px 16px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div><label style="font-weight:700;font-size:.85rem">Winkel α: <span id="wurfWLabel">45</span>°</label>
+          <input type="range" id="wurfWSlider" min="10" max="80" value="45" style="width:100%;accent-color:#7c3aed"
+            oninput="document.getElementById('wurfWLabel').textContent=this.value;_wurfReset()"></div>
+        <div><label style="font-weight:700;font-size:.85rem">v₀: <span id="wurfVLabel">30</span> m/s</label>
+          <input type="range" id="wurfVSlider" min="10" max="60" value="30" style="width:100%;accent-color:#0891b2"
+            oninput="document.getElementById('wurfVLabel').textContent=this.value;_wurfReset()"></div>
+      </div></div>`;
+    document.body.appendChild(modal);
+    _sim = _simWurf();
+
+  } else if (expId === 'kreisbewegung') {
+    modal.innerHTML = `<div class="sim-box">
+      <button class="sim-x" onclick="closeExperiment()">✕</button>
+      <h3 class="sim-h3">⭕ Kreisbewegung & Zentripetalkraft</h3>
+      <canvas id="kreiCanvas" width="460" height="220" style="width:100%;border-radius:8px;display:block"></canvas>
+      <div style="padding:8px 16px">
+        <label style="font-weight:700;font-size:.85rem">Winkelgeschwindigkeit ω: <span id="kreiWLabel">2</span> rad/s</label>
+        <input type="range" id="kreiWSlider" min="1" max="8" value="2" step="0.5" style="width:100%;accent-color:#7c3aed"
+          oninput="document.getElementById('kreiWLabel').textContent=this.value">
+      </div></div>`;
+    document.body.appendChild(modal);
+    _sim = _simKreis();
+
+  } else if (expId === 'zentripetalkraft') {
+    modal.innerHTML = `<div class="sim-box">
+      <button class="sim-x" onclick="closeExperiment()">✕</button>
+      <h3 class="sim-h3">🌀 Zentripetalkraft F = m·v²/r</h3>
+      <canvas id="zentriCanvas" width="460" height="220" style="width:100%;border-radius:8px;display:block"></canvas>
+      <div style="padding:8px 16px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div><label style="font-weight:700;font-size:.85rem">Masse m: <span id="zentriMLabel">1</span> kg</label>
+          <input type="range" id="zentriMSlider" min="1" max="5" value="1" style="width:100%;accent-color:#7c3aed"
+            oninput="document.getElementById('zentriMLabel').textContent=this.value"></div>
+        <div><label style="font-weight:700;font-size:.85rem">Radius r: <span id="zentriRLabel">80</span> px</label>
+          <input type="range" id="zentriRSlider" min="40" max="100" value="80" style="width:100%;accent-color:#0891b2"
+            oninput="document.getElementById('zentriRLabel').textContent=this.value"></div>
+      </div></div>`;
+    document.body.appendChild(modal);
+    _sim = _simZentripetal();
+
+  } else if (expId === 'schwingung') {
+    modal.innerHTML = `<div class="sim-box">
+      <button class="sim-x" onclick="closeExperiment()">✕</button>
+      <h3 class="sim-h3">〰️ Harmonische Schwingung</h3>
+      <canvas id="schwingCanvas" width="460" height="200" style="width:100%;border-radius:8px;display:block"></canvas>
+      <div style="padding:8px 16px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div><label style="font-weight:700;font-size:.85rem">Amplitude A: <span id="schwingALabel">50</span></label>
+          <input type="range" id="schwingASlider" min="10" max="80" value="50" style="width:100%;accent-color:#7c3aed"
+            oninput="document.getElementById('schwingALabel').textContent=this.value"></div>
+        <div><label style="font-weight:700;font-size:.85rem">Frequenz f: <span id="schwingFLabel">1</span> Hz</label>
+          <input type="range" id="schwingFSlider" min="1" max="5" value="1" style="width:100%;accent-color:#0891b2"
+            oninput="document.getElementById('schwingFLabel').textContent=this.value"></div>
+      </div></div>`;
+    document.body.appendChild(modal);
+    _sim = _simSchwingung();
+
+  } else if (expId === 'efeld') {
+    modal.innerHTML = `<div class="sim-box">
+      <button class="sim-x" onclick="closeExperiment()">✕</button>
+      <h3 class="sim-h3">⚡ Elektrisches Feld – Feldlinien</h3>
+      <canvas id="efeldCanvas" width="460" height="220" style="width:100%;border-radius:8px;display:block"></canvas>
+      <div style="padding:8px 16px">
+        <label style="font-weight:700;font-size:.85rem">Spannung U: <span id="efeldULabel">100</span> V</label>
+        <input type="range" id="efeldUSlider" min="10" max="300" value="100" style="width:100%;accent-color:#7c3aed"
+          oninput="document.getElementById('efeldULabel').textContent=this.value">
+        <div style="font-size:.82rem;color:#6b7280;margin-top:4px">Klicke ins Feld um eine Probeladung zu platzieren</div>
+      </div></div>`;
+    document.body.appendChild(modal);
+    _sim = _simEfeld();
+
+  } else if (expId === 'bfeld') {
+    modal.innerHTML = `<div class="sim-box">
+      <button class="sim-x" onclick="closeExperiment()">✕</button>
+      <h3 class="sim-h3">🧲 Magnetisches Feld – Feldlinien</h3>
+      <canvas id="bfeldCanvas" width="460" height="220" style="width:100%;border-radius:8px;display:block"></canvas>
+      <div style="padding:8px 16px">
+        <label style="font-weight:700;font-size:.85rem">Stromstärke I: <span id="bfeldILabel">5</span> A</label>
+        <input type="range" id="bfeldISlider" min="1" max="20" value="5" style="width:100%;accent-color:#7c3aed"
+          oninput="document.getElementById('bfeldILabel').textContent=this.value">
+      </div></div>`;
+    document.body.appendChild(modal);
+    _sim = _simBfeld();
+
+  } else if (expId === 'leistung') {
+    modal.innerHTML = `<div class="sim-box">
+      <button class="sim-x" onclick="closeExperiment()">✕</button>
+      <h3 class="sim-h3">⚙️ Leistung & Wirkungsgrad</h3>
+      <canvas id="leistCanvas" width="460" height="180" style="width:100%;border-radius:8px;display:block"></canvas>
+      <div style="padding:8px 16px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div><label style="font-weight:700;font-size:.85rem">Kraft F: <span id="leistFLabel">100</span> N</label>
+          <input type="range" id="leistFSlider" min="10" max="500" value="100" style="width:100%;accent-color:#7c3aed"
+            oninput="document.getElementById('leistFLabel').textContent=this.value"></div>
+        <div><label style="font-weight:700;font-size:.85rem">Wirkungsgrad η: <span id="leistEtaLabel">80</span>%</label>
+          <input type="range" id="leistEtaSlider" min="10" max="99" value="80" style="width:100%;accent-color:#0891b2"
+            oninput="document.getElementById('leistEtaLabel').textContent=this.value"></div>
+      </div></div>`;
+    document.body.appendChild(modal);
+    _sim = _simLeistung();
+
   } else if (expId === 'kondensator') {
     modal.innerHTML = `
       <div class="sim-box">
@@ -3850,6 +3967,305 @@ function closeExperiment() {
   if (_sim) { _sim.stop(); _sim = null; }
   const m = document.getElementById('expModal');
   if (m) m.remove();
+}
+
+// ── Gleichförmige Bewegung ─────────────────────────────────
+function _simGleichfoermig() {
+  const cv = document.getElementById('gfCanvas');
+  const ctx = cv.getContext('2d');
+  let x = 0, raf;
+  function draw() {
+    const v = +document.getElementById('gfVSlider').value;
+    ctx.clearRect(0,0,cv.width,cv.height);
+    // Straße
+    ctx.fillStyle='#e5e7eb'; ctx.fillRect(0,80,cv.width,60);
+    ctx.strokeStyle='#fff'; ctx.setLineDash([30,20]); ctx.lineWidth=3;
+    ctx.beginPath(); ctx.moveTo(0,110); ctx.lineTo(cv.width,110); ctx.stroke();
+    ctx.setLineDash([]);
+    // Auto
+    ctx.fillStyle='#7c3aed'; ctx.beginPath();
+    ctx.roundRect(x,88,60,30,6); ctx.fill();
+    ctx.fillStyle='#4f46e5'; ctx.fillRect(x+10,83,35,15);
+    // Räder
+    ctx.fillStyle='#111';
+    ctx.beginPath(); ctx.arc(x+12,118,7,0,Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(x+48,118,7,0,Math.PI*2); ctx.fill();
+    // Info
+    ctx.fillStyle='#1f2937'; ctx.font='700 14px sans-serif';
+    ctx.fillText(`v = ${v} km/h`, 10,30);
+    ctx.fillText(`s = v × t`, 10,52);
+    x = (x + v/180) % (cv.width + 10);
+    raf = requestAnimationFrame(draw);
+  }
+  draw();
+  return { stop(){ cancelAnimationFrame(raf); } };
+}
+
+// ── Schräger Wurf ─────────────────────────────────────────
+let _wurfRaf, _wurfT = 0;
+function _wurfReset() { _wurfT = 0; }
+function _simWurf() {
+  const cv = document.getElementById('wurfCanvas');
+  const ctx = cv.getContext('2d');
+  const g = 9.81, scale = 6;
+  let path = [];
+  function draw() {
+    const alpha = +document.getElementById('wurfWSlider').value * Math.PI/180;
+    const v0 = +document.getElementById('wurfVSlider').value;
+    ctx.clearRect(0,0,cv.width,cv.height);
+    // Boden
+    ctx.fillStyle='#d1fae5'; ctx.fillRect(0,cv.height-20,cv.width,20);
+    // Trajektorie berechnen
+    path = [];
+    for(let t=0; t<=2*v0*Math.sin(alpha)/g; t+=0.05){
+      const sx = v0*Math.cos(alpha)*t*scale;
+      const sy = (v0*Math.sin(alpha)*t - 0.5*g*t*t)*scale;
+      path.push({x:20+sx, y:cv.height-20-sy});
+    }
+    // Pfad zeichnen
+    if(path.length>1){
+      ctx.strokeStyle='rgba(124,58,237,0.4)'; ctx.lineWidth=2; ctx.setLineDash([5,5]);
+      ctx.beginPath(); ctx.moveTo(path[0].x,path[0].y);
+      path.forEach(p=>ctx.lineTo(p.x,p.y)); ctx.stroke(); ctx.setLineDash([]);
+    }
+    // Ball animieren
+    const tMax = 2*v0*Math.sin(alpha)/g;
+    _wurfT = (_wurfT + 0.02) % (tMax+0.5);
+    const bx = 20 + v0*Math.cos(alpha)*_wurfT*scale;
+    const by = cv.height-20 - Math.max(0,(v0*Math.sin(alpha)*_wurfT - 0.5*g*_wurfT*_wurfT)*scale);
+    ctx.fillStyle='#ef4444';
+    ctx.beginPath(); ctx.arc(bx,by,8,0,Math.PI*2); ctx.fill();
+    // Labels
+    ctx.fillStyle='#1f2937'; ctx.font='700 13px sans-serif';
+    ctx.fillText(`α=${document.getElementById('wurfWSlider').value}°  v₀=${document.getElementById('wurfVSlider').value}m/s`, 8,20);
+    const wMax = (v0*v0*Math.sin(2*alpha)/g*scale).toFixed(0);
+    ctx.fillText(`Weite: ~${wMax}px`, 8,38);
+    _wurfRaf = requestAnimationFrame(draw);
+  }
+  draw();
+  return { stop(){ cancelAnimationFrame(_wurfRaf); } };
+}
+
+// ── Kreisbewegung ─────────────────────────────────────────
+function _simKreis() {
+  const cv = document.getElementById('kreiCanvas');
+  const ctx = cv.getContext('2d');
+  const cx=cv.width/2, cy=cv.height/2, r=80;
+  let angle=0, raf;
+  function draw() {
+    const omega = +document.getElementById('kreiWSlider').value;
+    ctx.clearRect(0,0,cv.width,cv.height);
+    // Kreis
+    ctx.strokeStyle='#c4b5fd'; ctx.lineWidth=2; ctx.setLineDash([5,5]);
+    ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.stroke(); ctx.setLineDash([]);
+    // Mittelpunkt
+    ctx.fillStyle='#7c3aed'; ctx.beginPath(); ctx.arc(cx,cy,5,0,Math.PI*2); ctx.fill();
+    // Faden
+    const bx=cx+r*Math.cos(angle), by=cy+r*Math.sin(angle);
+    ctx.strokeStyle='#7c3aed'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(bx,by); ctx.stroke();
+    // Ball
+    ctx.fillStyle='#f97316'; ctx.beginPath(); ctx.arc(bx,by,12,0,Math.PI*2); ctx.fill();
+    // Geschwindigkeitspfeil (tangential)
+    const vx=-Math.sin(angle)*40, vy=Math.cos(angle)*40;
+    ctx.strokeStyle='#10b981'; ctx.lineWidth=3;
+    ctx.beginPath(); ctx.moveTo(bx,by); ctx.lineTo(bx+vx,by+vy); ctx.stroke();
+    // Zentripetalkraft (nach innen)
+    const fx=cx-bx, fy=cy-by, flen=Math.sqrt(fx*fx+fy*fy);
+    ctx.strokeStyle='#ef4444'; ctx.lineWidth=3;
+    ctx.beginPath(); ctx.moveTo(bx,by); ctx.lineTo(bx+fx/flen*35,by+fy/flen*35); ctx.stroke();
+    // Labels
+    ctx.fillStyle='#10b981'; ctx.font='700 12px sans-serif'; ctx.fillText('v (Geschwindigkeit)',8,18);
+    ctx.fillStyle='#ef4444'; ctx.fillText('F_z (Zentripetalkraft)',8,36);
+    ctx.fillStyle='#1f2937'; ctx.fillText(`ω = ${omega} rad/s`,8,54);
+    angle += omega*0.02;
+    raf = requestAnimationFrame(draw);
+  }
+  draw();
+  return { stop(){ cancelAnimationFrame(raf); } };
+}
+
+// ── Zentripetalkraft ──────────────────────────────────────
+function _simZentripetal() {
+  const cv = document.getElementById('zentriCanvas');
+  const ctx = cv.getContext('2d');
+  const cx=cv.width/2, cy=cv.height/2;
+  let angle=0, raf;
+  function draw() {
+    const m = +document.getElementById('zentriMSlider').value;
+    const r = +document.getElementById('zentriRSlider').value;
+    const v = 3;
+    const fz = (m*v*v/r).toFixed(2);
+    ctx.clearRect(0,0,cv.width,cv.height);
+    ctx.strokeStyle='#c4b5fd'; ctx.lineWidth=2; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle='#7c3aed'; ctx.beginPath(); ctx.arc(cx,cy,5,0,Math.PI*2); ctx.fill();
+    const bx=cx+r*Math.cos(angle), by=cy+r*Math.sin(angle);
+    ctx.strokeStyle='#7c3aed'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(bx,by); ctx.stroke();
+    ctx.fillStyle='#f97316'; ctx.beginPath(); ctx.arc(bx,by,10+m*2,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='#1f2937'; ctx.font='700 13px sans-serif';
+    ctx.fillText(`m = ${m} kg  r = ${r}  F_z = ${fz} N`,8,20);
+    ctx.fillText(`F = m·v²/r`,8,40);
+    angle += 0.025;
+    raf = requestAnimationFrame(draw);
+  }
+  draw();
+  return { stop(){ cancelAnimationFrame(raf); } };
+}
+
+// ── Harmonische Schwingung ────────────────────────────────
+function _simSchwingung() {
+  const cv = document.getElementById('schwingCanvas');
+  const ctx = cv.getContext('2d');
+  const cy=cv.height/2;
+  let t=0, raf, history=[];
+  function draw() {
+    const A = +document.getElementById('schwingASlider').value;
+    const f = +document.getElementById('schwingFSlider').value;
+    ctx.clearRect(0,0,cv.width,cv.height);
+    // Mittellinie
+    ctx.strokeStyle='#e5e7eb'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(0,cy); ctx.lineTo(cv.width,cy); ctx.stroke();
+    // Wellenhistorie
+    history.push({x:cv.width-10, y:cy-A*Math.sin(2*Math.PI*f*t)});
+    history = history.filter(p=>p.x>0).map(p=>({x:p.x-1.5,y:p.y}));
+    if(history.length>1){
+      ctx.strokeStyle='#7c3aed'; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.moveTo(history[0].x,history[0].y);
+      history.forEach(p=>ctx.lineTo(p.x,p.y)); ctx.stroke();
+    }
+    // Kugel am Pendel
+    const ballY = cy - A*Math.sin(2*Math.PI*f*t);
+    ctx.strokeStyle='#c4b5fd'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(30,20); ctx.lineTo(30,ballY); ctx.stroke();
+    ctx.fillStyle='#f97316'; ctx.beginPath(); ctx.arc(30,ballY,12,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='#1f2937'; ctx.font='700 13px sans-serif';
+    ctx.fillText(`A=${A}  f=${f}Hz  T=${(1/f).toFixed(2)}s`,8,16);
+    t += 0.016;
+    raf = requestAnimationFrame(draw);
+  }
+  draw();
+  return { stop(){ cancelAnimationFrame(raf); } };
+}
+
+// ── Elektrisches Feld ─────────────────────────────────────
+function _simEfeld() {
+  const cv = document.getElementById('efeldCanvas');
+  const ctx = cv.getContext('2d');
+  let probe=null, raf;
+  function draw() {
+    const U = +document.getElementById('efeldUSlider').value;
+    ctx.clearRect(0,0,cv.width,cv.height);
+    // Platten
+    ctx.fillStyle='#f97316';
+    ctx.fillRect(20,20,8,cv.height-40);
+    ctx.fillStyle='#3b82f6';
+    ctx.fillRect(cv.width-28,20,8,cv.height-40);
+    // + / - Zeichen
+    ctx.fillStyle='#f97316'; ctx.font='700 18px sans-serif';
+    for(let y=40;y<cv.height-30;y+=30) ctx.fillText('+',5,y);
+    ctx.fillStyle='#3b82f6';
+    for(let y=40;y<cv.height-30;y+=30) ctx.fillText('−',cv.width-18,y);
+    // Feldlinien
+    const n=7, E=U/300;
+    ctx.strokeStyle=`rgba(124,58,237,${Math.min(1,E*2)})`; ctx.lineWidth=1.5;
+    for(let i=0;i<n;i++){
+      const ly=30+(i*(cv.height-60)/(n-1));
+      ctx.beginPath(); ctx.moveTo(28,ly); ctx.lineTo(cv.width-28,ly); ctx.stroke();
+      // Pfeilspitze
+      ctx.beginPath(); ctx.moveTo(cv.width-40,ly-5); ctx.lineTo(cv.width-28,ly); ctx.lineTo(cv.width-40,ly+5); ctx.stroke();
+    }
+    // Probeladung
+    if(probe){
+      ctx.fillStyle='#ef4444';
+      ctx.beginPath(); ctx.arc(probe.x,probe.y,8,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle='#fff'; ctx.font='700 11px sans-serif'; ctx.fillText('+',probe.x-4,probe.y+4);
+      // Kraft = E×q Pfeil
+      ctx.strokeStyle='#ef4444'; ctx.lineWidth=3;
+      const flen = Math.min(60, E*60);
+      ctx.beginPath(); ctx.moveTo(probe.x,probe.y); ctx.lineTo(probe.x+flen,probe.y); ctx.stroke();
+    }
+    ctx.fillStyle='#1f2937'; ctx.font='700 13px sans-serif';
+    ctx.fillText(`U = ${U} V   E = ${(U/0.3).toFixed(0)} V/m`,8,16);
+    raf = requestAnimationFrame(draw);
+  }
+  cv.onclick = e => {
+    const r=cv.getBoundingClientRect();
+    probe = {x:(e.clientX-r.left)*(cv.width/r.width), y:(e.clientY-r.top)*(cv.height/r.height)};
+  };
+  draw();
+  return { stop(){ cancelAnimationFrame(raf); } };
+}
+
+// ── Magnetisches Feld ─────────────────────────────────────
+function _simBfeld() {
+  const cv = document.getElementById('bfeldCanvas');
+  const ctx = cv.getContext('2d');
+  const cx=cv.width/2, cy=cv.height/2;
+  let raf;
+  function draw() {
+    const I = +document.getElementById('bfeldISlider').value;
+    ctx.clearRect(0,0,cv.width,cv.height);
+    // Leiter (Kreis in der Mitte)
+    ctx.strokeStyle='#1f2937'; ctx.lineWidth=4;
+    ctx.beginPath(); ctx.arc(cx,cy,12,0,Math.PI*2); ctx.stroke();
+    ctx.fillStyle='#1f2937';
+    ctx.beginPath(); ctx.arc(cx,cy,4,0,Math.PI*2); ctx.fill();
+    // Pfeil (Strom aus Bildschirm heraus)
+    ctx.strokeStyle='#f97316'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(cx-6,cy-6); ctx.lineTo(cx+6,cy+6); ctx.moveTo(cx+6,cy-6); ctx.lineTo(cx-6,cy+6); ctx.stroke();
+    // Konzentrische Feldlinien
+    for(let ri=30;ri<=Math.min(200,30+I*15);ri+=18){
+      const alpha = Math.min(1, I/20);
+      ctx.strokeStyle=`rgba(124,58,237,${alpha})`; ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.arc(cx,cy,ri,0,Math.PI*2); ctx.stroke();
+      // Pfeilspitze oben
+      ctx.beginPath(); ctx.moveTo(cx-6,cy-ri); ctx.lineTo(cx,cy-ri+8); ctx.lineTo(cx+6,cy-ri); ctx.stroke();
+    }
+    ctx.fillStyle='#1f2937'; ctx.font='700 13px sans-serif';
+    ctx.fillText(`I = ${I} A`,8,16);
+    ctx.fillText(`B ∝ I / r`,8,34);
+    raf = requestAnimationFrame(draw);
+  }
+  draw();
+  return { stop(){ cancelAnimationFrame(raf); } };
+}
+
+// ── Leistung & Wirkungsgrad ───────────────────────────────
+function _simLeistung() {
+  const cv = document.getElementById('leistCanvas');
+  const ctx = cv.getContext('2d');
+  let x=0, raf;
+  function draw() {
+    const F = +document.getElementById('leistFSlider').value;
+    const eta = +document.getElementById('leistEtaSlider').value/100;
+    const v = F/50;
+    const P = (F*v).toFixed(0);
+    const Pnutz = (F*v*eta).toFixed(0);
+    ctx.clearRect(0,0,cv.width,cv.height);
+    // Boden
+    ctx.fillStyle='#e5e7eb'; ctx.fillRect(0,cv.height-30,cv.width,30);
+    // Block
+    ctx.fillStyle='#7c3aed';
+    ctx.beginPath(); ctx.roundRect(x,cv.height-80,50,50,6); ctx.fill();
+    // Kraftpfeil
+    ctx.strokeStyle='#ef4444'; ctx.lineWidth=3;
+    ctx.beginPath(); ctx.moveTo(x+50,cv.height-55); ctx.lineTo(x+50+Math.min(80,F/3),cv.height-55); ctx.stroke();
+    ctx.fillStyle='#ef4444'; ctx.font='700 12px sans-serif'; ctx.fillText(`F=${F}N`,x+55,cv.height-58);
+    // Infos
+    ctx.fillStyle='#1f2937'; ctx.font='700 14px sans-serif';
+    ctx.fillText(`P = F·v = ${P} W`,10,22);
+    ctx.fillStyle='#059669';
+    ctx.fillText(`P_nutz = η·P = ${Pnutz} W  (η=${(eta*100).toFixed(0)}%)`,10,44);
+    // Effizienzbalken
+    ctx.fillStyle='#e5e7eb'; ctx.fillRect(10,56,440,16); ctx.strokeStyle='#d1d5db'; ctx.lineWidth=1; ctx.strokeRect(10,56,440,16);
+    ctx.fillStyle='#059669'; ctx.fillRect(10,56,440*eta,16);
+    x = (x + v*0.5) % (cv.width + 60);
+    raf = requestAnimationFrame(draw);
+  }
+  draw();
+  return { stop(){ cancelAnimationFrame(raf); } };
 }
 
 function _simSetV(v) { if (_sim) _sim.setV(parseFloat(v)); }

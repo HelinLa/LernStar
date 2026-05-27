@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    LernStar – Content Database
    Nur Mathematik & Physik (Klasse 5–10)
    Videos mit Hedda-Erklärungen für alle Themen
@@ -1235,7 +1235,7 @@ const CONTENT = {
 
           // ── KAPITEL 1: BEWEGUNGEN ──────────────────────────────────────
           { isChapter:true, name:'Kapitel 1 – Bewegungen' },
-          { name:'1.1 – Was ist Bewegung?', diff:1,
+          { name:'1.1 – Was ist Bewegung?', diff:1, exp:'gleichfoermig',
             explanation:'Stell dir vor, du sitzt im Bus und schaust aus dem Fenster – die Bäume rasen vorbei, aber du sitzt ganz ruhig. Bewegst du dich? Jein! Es kommt immer darauf an, von wo aus man schaut – das nennt man Bezugssystem. Im Weg-Zeit-Diagramm kann man sehen, wo ein Körper zu welchem Zeitpunkt ist. Eine steile Linie bedeutet: schnell. Eine flache Linie bedeutet: langsam. Eine waagerechte Linie bedeutet: gar keine Bewegung.' },
 
           { name:'1.2 – Gleichförmige Bewegung', diff:1, exp:'gleichfoermig',
@@ -1247,10 +1247,10 @@ const CONTENT = {
           { name:'1.4 – Freier Fall', diff:2, exp:'freierfall',
             explanation:'Lass gleichzeitig einen Tennisball und einen Stein aus derselben Höhe fallen – welcher trifft zuerst auf? Beide gleichzeitig! Das hat Galileo Galilei vor über 400 Jahren herausgefunden. Die Erde zieht alle Körper gleich stark nach unten – mit g ≈ 9,81 m/s² (wenn kein Luftwiderstand stört). Formeln: v(t) = g × t und s(t) = einhalb × g × t². Nach 1 Sekunde hat ein frei fallender Körper bereits fast 10 m/s erreicht.' },
 
-          { name:'1.5 – Wurfbewegungen', diff:2,
+          { name:'1.5 – Wurfbewegungen', diff:2, exp:'wurfbewegung',
             explanation:'Wenn du einen Basketball wirfst, passieren gleichzeitig zwei Dinge: Waagerecht fliegt er mit gleichmäßiger Geschwindigkeit (keine Kraft bremst ihn in dieser Richtung), und senkrecht zieht die Schwerkraft ihn nach unten. Diese beiden Bewegungen addieren sich zur bekannten Kurve. Der optimale Wurfwinkel für maximale Weite? Genau 45° – dann teilen sich waagerechte und senkrechte Kraft am besten auf.' },
 
-          { name:'1.6 – Kreisbewegung', diff:3,
+          { name:'1.6 – Kreisbewegung', diff:3, exp:'kreisbewegung',
             explanation:'Stell dir eine Schleuder vor: Du drehst einen Stein an einem Faden im Kreis. Die Geschwindigkeit bleibt dem Betrag nach gleich – aber die Richtung ändert sich ständig. Und Richtungsänderung bedeutet: Beschleunigung! Diese Beschleunigung zeigt immer zur Kreismitte und heißt Zentripetalbeschleunigung: a_z = v²/r. Dazu kommt: Winkelgeschwindigkeit ω = 2π/T (wie viele Runden pro Sekunde) und Bahngeschwindigkeit v = ω × r (je größer der Radius, desto schneller läuft der Außenrand).' },
 
           // ── KAPITEL 2: URSACHE VON BEWEGUNGEN ─────────────────────────
@@ -1270,7 +1270,7 @@ const CONTENT = {
           { name:'2.5 – Reibungskräfte', diff:2,
             explanation:'Warum rutschst du auf Eis fast aus, aber auf einem Teppich nicht? Der Unterschied liegt im Reibungskoeffizienten μ – Eis hat ein winzig kleines μ, Teppich ein großes. Gleitreibung hält Körper in Bewegung zurück: F_R = μ × F_N (F_N ist die Kraft, die die Fläche senkrecht drückt). Haftreibung ist noch etwas größer und hält einen ruhenden Körper an Ort – deshalb ist Anfahren auf Eis schwieriger als Fahren auf Eis.' },
 
-          { name:'2.6 – Zentripetalkraft', diff:3,
+          { name:'2.6 – Zentripetalkraft', diff:3, exp:'zentripetalkraft',
             explanation:'Probier mal, einen Eimer mit Wasser über dem Kopf zu schwingen – das Wasser fällt nicht heraus, solange du schnell genug bist! Damit ein Körper auf einer Kreisbahn bleibt, muss ihn ständig eine Kraft zur Mitte ziehen – die Zentripetalkraft: F_z = m × v²/r. Lässt du den Eimer-Faden los, fliegt er sofort geradeaus weg (Trägheit!). Bei Planeten übernimmt die Schwerkraft diese Rolle – sie hält den Mond auf seiner Bahn.' },
 
           { name:'2.7 – Rotation und Trägheitsmoment', diff:3,
@@ -1284,7 +1284,7 @@ const CONTENT = {
           { name:'3.2 – Energieerhaltungssatz', diff:2, exp:'energieerhaltung',
             explanation:'Stell dir vor, du hast einen 10-Euro-Schein. Du wechselst ihn in Münzen – du hast immer noch 10 Euro, nur in einer anderen Form. Genau so funktioniert Energie: Sie wechselt die Form, verschwindet aber nie! Ein Roller fährt einen Hügel herunter – E_pot wird zu E_kin. Unten geht etwas davon durch Reibung in Wärme über. Die Summe bleibt immer gleich. Das ist einer der wichtigsten Sätze der gesamten Physik.' },
 
-          { name:'3.3 – Leistung und Wirkungsgrad', diff:2,
+          { name:'3.3 – Leistung und Wirkungsgrad', diff:2, exp:'leistung',
             explanation:'Zwei Schüler schleppen dieselbe Kiste vier Stockwerke hoch – einer in 20 Sekunden, der andere in 2 Minuten. Beide haben die gleiche Arbeit verrichtet, aber der schnelle hatte viel mehr Leistung! Leistung P = Arbeit/Zeit (Einheit: Watt). Wirkungsgrad η = Nutzleistung/zugeführte Leistung – er zeigt, wie viel Energie wirklich ankommt. Ein Glühbirne hat η ≈ 5% (95% Wärme!), eine LED ≈ 40%.' },
 
           { name:'3.4 – Was ist Impuls?', diff:2,
@@ -1469,7 +1469,7 @@ const CONTENT = {
         intro:'Herzlich willkommen in Physik Klasse 12! In diesem Jahr erkundest du fünf faszinierende Welten: Schwingungen, die in jeder Gitarrensaite und jedem Brückenbau stecken. Wellen, die Energie durch den Raum tragen – von Wasserwellen bis Licht. Das elektrische Feld, das unsere gesamte Technik antreibt. Das magnetische Feld, das Erde und Kompass miteinander verbindet. Und die Induktion – das Geheimnis hinter jedem Kraftwerk und jedem Motor. Zusammen bilden diese Themen das Herzstück der klassischen Physik!',
         topics:[
           { isChapter:true, name:'Kapitel 1 – Schwingungen' },
-          { name:'1.1 – Merkmale von Schwingungen', diff:2,
+          { name:'1.1 – Merkmale von Schwingungen', diff:2, exp:'schwingung',
             explanation:'Stell dir eine Schaukel vor: einmal angestoßen schwingt sie regelmäßig hin und her um ihre Ruhelage – das ist eine Schwingung! Eine Schwingung ist eine periodische Hin-und-Her-Bewegung um eine Gleichgewichtsposition. Wichtige Begriffe: Die Periode T ist die Zeit für einen vollständigen Durchgang (in Sekunden). Die Frequenz f = 1/T gibt an, wie viele Schwingungen pro Sekunde stattfinden (Einheit: Hertz, Hz). Die Amplitude A ist die maximale Auslenkung. Die Kreisfrequenz ω = 2πf. Eine harmonische Schwingung folgt einer Sinuskurve: y(t) = A × sin(ωt + φ₀). Die Phase φ₀ beschreibt die Startposition. Beispiele im Alltag: Gitarrensaite, Stimmgabel, Herzschlag (ca. 1 Hz), Wechselstrom (50 Hz), Quartz in Armbanduhren (32.768 Hz). Schwingungen bilden die Grundlage von Musik, Funkübertragung und präziser Zeitmessung!' },
           { name:'1.2 – Energie von Schwingungen', diff:2,
             explanation:'Beobachte einen Ball, der auf und ab springt: ganz oben hat er maximale Lageenergie, am tiefsten Punkt maximale Bewegungsenergie. Bei jeder Schwingung wird Energie ständig umgewandelt, aber die Summe bleibt konstant. Bei einer Federschwingung mit Federkonstante D und Auslenkung x gilt: kinetische Energie E_kin = ½mv², potenzielle Energie E_pot = ½Dx². Die Gesamtenergie E_ges = ½DA² (A = Amplitude) bleibt immer gleich. Ohne Reibung schwingt das System ewig mit gleicher Amplitude. Mit Dämpfung verliert das System Energie als Wärme – die Amplitude nimmt exponentiell ab. Resonanz: Wird von außen Energie im richtigen Rhythmus zugeführt, steigt die Amplitude enorm an. Dieses Prinzip erklärt Brückenvibrationen, Lautsprechertöne und sogar Spektrallinien von Atomen!' },
@@ -1497,7 +1497,7 @@ const CONTENT = {
           { isChapter:true, name:'Kapitel 3 – Elektrisches Feld' },
           { name:'3.1 – Die elektrische Ladung', diff:1,
             explanation:'Reibe einen Luftballon am Haar – er haftet danach an der Wand. Das liegt an elektrischer Ladung! Elektrische Ladung existiert in zwei Formen: positiv (Protonen) und negativ (Elektronen). Einheit: Coulomb (C). Die Elementarladung e ≈ 1,6 × 10⁻¹⁹ C ist die kleinste frei vorkommende Ladungsmenge – sie ist nicht weiter teilbar. Gleichnamige Ladungen stossen sich ab, ungleichnamige ziehen sich an. Ladungserhaltung: In einem abgeschlossenen System bleibt die Nettoladung konstant – das ist ein unverbruechliches Naturgesetz! Leiter lassen Ladungen wandern (Metalle, Salzsaeure), Isolatoren halten sie fest (Holz, Gummi, Luft). Blitz: Riesige Ladungstrennung in Gewitterwolken, dann schlagartige Entladung zur Erde. Das Universum hat insgesamt Nettoladung null – positive und negative Ladungen halten sich exakt die Waage!' },
-          { name:'3.2 – Das elektrische Feld', diff:2,
+          { name:'3.2 – Das elektrische Feld', diff:2, exp:'efeld',
             explanation:'Wie weiss eine Ladung, dass eine andere in der Naehe ist – obwohl kein koerperlicher Kontakt besteht? Durch das elektrische Feld! Das elektrische Feld durchdringt den Raum um jede Ladung und uebertraegt die Kraft. Elektrische Feldstaerke E = F/q (Kraft auf eine positive Probeladung q), Einheit: V/m oder N/C. Feldlinien zeigen die Richtung der Kraft auf positive Ladungen: sie beginnen bei + und enden bei −. Feldlinien dichterer Anordnung bedeuten staerkeres Feld. Feld einer Punktladung: E = k × Q / r² (nimmt mit dem Quadrat des Abstands ab). Homogenes Feld im Plattenkondensator: E = U/d (ueberall gleich stark). Feldlinien koennen sich niemals schneiden! Das Konzept des Feldes revolutionierte die Physik: Vorher dachte man, Kraefte wirken auf magische Weise ueber Distanz – jetzt weiss man, das Feld ist der eigentliche Traeger!' },
           { name:'3.3 – Das Coulombsche Gesetz', diff:2,
             explanation:'Wie stark ist die Kraft zwischen zwei Ladungen? Das Coulombsche Gesetz gibt die praezise Antwort! F = k × |q₁ × q₂| / r², mit k ≈ 8,99 × 10⁹ N·m²/C² (Coulomb-Konstante) und r = Abstand zwischen den Ladungen. Die Kraft ist anziehend bei ungleichen Ladungen, abstossend bei gleichen. Sie ist proportional zu beiden Ladungen und nimmt mit dem Quadrat des Abstands ab – genau wie die Gravitation! Vergleich zur Schwerkraft: Die Coulomb-Kraft zwischen zwei Elektronen ist 10⁴² Mal staerker als ihre gegenseitige Gravitationsanziehung! Deshalb dominieren elektrische Kraefte auf atomarer Ebene. Charles-Augustin de Coulomb entdeckte dieses Gesetz 1785 mit einer empfindlichen Torsionswaage. Das Gesetz erklaert Atombindungen, Ionen in Loesungen und warum Materie ueberhaupt zusammenhaelt.' },
@@ -1515,7 +1515,7 @@ const CONTENT = {
             explanation:'Woher wissen wir, dass elektrische Ladung in kleinsten Portionen vorkommt und nicht beliebig klein werden kann? Robert Millikan bewies es 1909 mit einem genialen Experiment! Millikans Oeltroepfchenversuch: Winzige Oeltroepfchen schweben zwischen zwei Kondensatorplatten. Durch Roentgenstrahlen werden sie ionisiert (erhalten ganzzahlige Vielfache der Elementarladung). Ohne Feld sinken sie (Schwerkraft). Mit passendem E-Feld schweben sie: F_E = F_g → qE = mg → q = mg/E. Ergebnis: Alle gemessenen Ladungen sind ganzzahlige Vielfache von e ≈ 1,6 × 10⁻¹⁹ C! Das beweist: Ladung ist quantisiert – sie kommt in Portionen, ist nicht beliebig teilbar. Millikan erhielt dafuer 1923 den Nobelpreis. Die Elementarladung e ist eine der fundamentalsten Naturkonstanten: Sie steckt in jedem Atom, jedem Ion, jeder chemischen Bindung und bestimmt die Staerke aller elektromagnetischen Wechselwirkungen.' },
 
           { isChapter:true, name:'Kapitel 4 – Magnetisches Feld' },
-          { name:'4.1 – Das magnetische Feld', diff:1,
+          { name:'4.1 – Das magnetische Feld', diff:1, exp:'bfeld',
             explanation:'Magnete ziehen Eisen an, Kompassnadeln zeigen nach Norden – aber wie wird diese Kraft ueber Distanz uebertragen ohne Kontakt? Durch das magnetische Feld! Das magnetische Feld B (magnetische Flussdichte) beschreibt, wie stark und in welche Richtung eine Kraft auf bewegte Ladungen und Magnete wirkt. Einheit: Tesla (T). Magnetische Feldlinien verlaufen ausserhalb des Magneten vom Nordpol zum Suedpol und bilden immer geschlossene Schleifen. Wichtig: Magnetische Einzelpole (Monopole) existieren nicht – jeder Magnet hat immer beide Pole! Das Erdmagnetfeld (ca. 5 × 10⁻⁵ T) entsteht durch Konvektionsstroeume im fluessigen Eisenkern. Magnetfeld um einen geraden Stromleiter: B = μ₀ × I / (2πr). Im Innern einer langen Spule: B = μ₀ × n × I (n = Windungen pro Meter). Rechte-Hand-Regel: Daumen zeigt in Stromrichtung – gebogene Finger zeigen Feldrichtung!' },
           { name:'4.2 – Quantitative Beschreibung des Magnetfeldes', diff:3,
             explanation:'Mit Zahlen laesst sich das Magnetfeld vollstaendig beschreiben und berechnen! Magnetischer Fluss Φ = B × A × cos(θ) beschreibt, wie viele Feldlinien durch die Flaeche A treten, wobei θ der Winkel zwischen B und der Flaechennormalen ist. Einheit: Weber (Wb = T·m²). Lorentzkraft auf einen stromdurchflossenen Leiter: F = B × I × L × sin(α). Magnetfeld einer kreisfoermigen Leiterschleife im Mittelpunkt: B = μ₀ × I / (2R). Kraft zwischen zwei parallelen Stromleitern: F/L = μ₀ × I₁ × I₂ / (2πd). Parallele Stroeme in gleicher Richtung ziehen sich an, entgegengesetzte stossen sich ab! Genau darauf basiert die SI-Definition des Ampere: 1 A erzeugt zwischen zwei 1 m entfernten Leitern die Kraft 2 × 10⁻⁷ N pro Meter. Energie des Magnetfelds: E = ½ × L × I² (L = Induktivitaet in Henry).' },
@@ -1715,3 +1715,4 @@ const CONTENT = {
   },
 
 };
+
