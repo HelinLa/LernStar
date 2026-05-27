@@ -4638,12 +4638,27 @@ let _evTopicName='',_evSceneIdx=0,_evPaused=false,_evTimer=null,_evSceneStart=0,
    ─────────────────────────────────────────────────────────────── */
 let _evCurAudio = null;
 
-let _evVoiceReady = null; // cached best voice after first lookup
+async function _evSpeak(text) {
+  if (!text) return;
+  _evSpeakStop();
 
-async function _evGetBestVoice() {
-  if (_evVoiceReady) return _evVoiceReady;
+  // ElevenLabs — Thomas (sanfte deutsche Männerstimme, Erzählung)
+  if (ELEVEN_KEY) {
+    try {
+      const url = await _elevenFetch(text);
+      const audio = new Audio(url);
+      _evCurAudio = audio;
+      audio.onended = audio.onerror = () => { _evCurAudio = null; };
+      audio.play().catch(() => {});
+      return;
+    } catch(e) {
+      console.warn('[EV] ElevenLabs nicht verfügbar, Fallback:', e);
+    }
+  }
+
+  // Fallback: bester verfügbarer Browser-Voice
+  if (!window.speechSynthesis) return;
   const synth = window.speechSynthesis;
-  if (!synth) return null;
   let voices = synth.getVoices();
   if (!voices.length) {
     await new Promise(r => {
@@ -4654,29 +4669,18 @@ async function _evGetBestVoice() {
     voices = synth.getVoices();
   }
   const de = voices.filter(v => v.lang === 'de-DE' || v.lang.startsWith('de'));
-  _evVoiceReady =
-    de.find(v => /natural/i.test(v.name))   // Microsoft Katja Online (Natural)
+  const voice =
+    de.find(v => /natural/i.test(v.name))
     || de.find(v => /neural/i.test(v.name))
     || de.find(v => /online/i.test(v.name))
-    || de.find(v => /katja/i.test(v.name))
     || de.find(v => /microsoft/i.test(v.name))
-    || de.find(v => /google/i.test(v.name))
     || de[0] || null;
-  synth.addEventListener('voiceschanged', () => { _evVoiceReady = null; }, { once: true });
-  return _evVoiceReady;
-}
-
-async function _evSpeak(text) {
-  if (!text || !window.speechSynthesis) return;
-  _evSpeakStop();
-  const voice = await _evGetBestVoice();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'de-DE'; u.volume = 1.0;
   if (voice) u.voice = voice;
-  const isNatural = /natural|neural|online/i.test(voice?.name || '');
-  u.rate  = isNatural ? 0.88 : 0.80;
-  u.pitch = isNatural ? 1.0  : 1.02;
-  window.speechSynthesis.speak(u);
+  u.rate = /natural|neural|online/i.test(voice?.name || '') ? 0.88 : 0.80;
+  u.pitch = 1.0;
+  synth.speak(u);
 }
 
 function _evSpeakStop() {
