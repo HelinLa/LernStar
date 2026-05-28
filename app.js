@@ -7105,44 +7105,61 @@ function _simBeschleunigung() {
     ctx.fillText(lp.y%1===0?lp.y.toFixed(0):lp.y.toFixed(1), Math.min(lpx+5,W-pR-16), Math.max(pT+8,lpy-3));
   }
 
-  // ── Animations-Canvas ─────────────────────────────────────
+  // ── Animations-Canvas: Auto auf Straße ───────────────────
   function drawAnim() {
     const W=cvA.width, H=cvA.height;
     ctA.clearRect(0,0,W,H);
-    // Hintergrund
-    ctA.fillStyle='#f1f5f9'; ctA.fillRect(0,0,W,H);
     const v = a*t, s = 0.5*a*t*t;
-    const trackY = H-22, trackH=10;
-    // Schiene
-    ctA.fillStyle='#94a3b8'; ctA.fillRect(10,trackY,W-20,trackH);
-    ctA.fillStyle='#cbd5e1'; ctA.fillRect(10,trackY+trackH,W-20,4);
-    // Block – Skalenposition basierend auf s
-    const sMax = 0.5*a*maxT*maxT;
-    const blockW = 40, maxBx = W-blockW-20;
-    const blockX = 10 + Math.min((s/Math.max(sMax,1))*maxBx, maxBx);
-    // Block-Schatten
-    ctA.fillStyle='rgba(0,0,0,0.12)'; ctA.fillRect(blockX+3,trackY-2,blockW,6);
-    // Block
-    const bg2=ctA.createLinearGradient(blockX,trackY-34,blockX,trackY);
-    bg2.addColorStop(0,'#8b5cf6'); bg2.addColorStop(1,'#6d28d9');
-    ctA.fillStyle=bg2; ctA.beginPath(); ctA.roundRect(blockX,trackY-34,blockW,34,5); ctA.fill();
-    ctA.fillStyle='#fff'; ctA.font='bold 11px sans-serif'; ctA.textAlign='center';
-    ctA.fillText('m', blockX+blockW/2, trackY-13);
-    // Kraft-Pfeil
-    if(a>0 && running){
-      const arLen=Math.min(10+a*6,55);
-      ctA.strokeStyle='#dc2626'; ctA.lineWidth=3;
-      ctA.beginPath(); ctA.moveTo(blockX+blockW,trackY-20); ctA.lineTo(blockX+blockW+arLen,trackY-20); ctA.stroke();
+    const sMax = Math.max(0.5*a*maxT*maxT, 1);
+
+    // Himmel
+    ctA.fillStyle='#C9E8F5'; ctA.fillRect(0,0,W,H*0.45);
+    // Wiese
+    ctA.fillStyle='#9DC88D'; ctA.fillRect(0,H*0.45,W,H*0.18);
+    // Straße
+    ctA.fillStyle='#6B6B6B'; ctA.fillRect(0,H*0.60,W,H*0.40);
+    ctA.fillStyle='#FFF'; ctA.fillRect(0,H*0.60,W,3); ctA.fillRect(0,H-3,W,3);
+    // Straßenmarkierung (gestrichelt)
+    ctA.strokeStyle='#FFD700'; ctA.setLineDash([18,12]); ctA.lineWidth=2;
+    ctA.beginPath(); ctA.moveTo(0,H*0.80); ctA.lineTo(W,H*0.80); ctA.stroke();
+    ctA.setLineDash([]);
+
+    // Auto-Position
+    const carW = 68, maxCarX = W - carW - 10;
+    const carX = Math.min((s/sMax)*maxCarX, maxCarX);
+    const bY = H*0.62;
+
+    // Auto zeichnen (rot, wie bei 1.2)
+    ctA.fillStyle='#E74C3C';
+    ctA.beginPath();
+    ctA.moveTo(carX+4,  bY+24); ctA.lineTo(carX+4,  bY+7);
+    ctA.lineTo(carX+14, bY+7);  ctA.lineTo(carX+20, bY);
+    ctA.lineTo(carX+50, bY);    ctA.lineTo(carX+56, bY+7);
+    ctA.lineTo(carX+68, bY+7);  ctA.lineTo(carX+68, bY+24);
+    ctA.closePath(); ctA.fill();
+    ctA.fillStyle='#C0392B'; ctA.fillRect(carX+21,bY,29,8);
+    ctA.fillStyle='#AED6F1';
+    ctA.fillRect(carX+22,bY+1,11,7); ctA.fillRect(carX+36,bY+1,11,7);
+    // Räder
+    [carX+14, carX+54].forEach(wx => {
+      ctA.fillStyle='#222'; ctA.beginPath(); ctA.arc(wx,bY+25,8,0,Math.PI*2); ctA.fill();
+      ctA.fillStyle='#888'; ctA.beginPath(); ctA.arc(wx,bY+25,4,0,Math.PI*2); ctA.fill();
+    });
+    // Kraft-Pfeil (zeigt Beschleunigung)
+    if(a>0){
+      const arLen=Math.min(8+a*5,50);
+      ctA.strokeStyle='#dc2626'; ctA.lineWidth=2.5;
+      ctA.beginPath(); ctA.moveTo(carX+68,bY+12); ctA.lineTo(carX+68+arLen,bY+12); ctA.stroke();
       ctA.fillStyle='#dc2626';
-      ctA.beginPath(); ctA.moveTo(blockX+blockW+arLen,trackY-26); ctA.lineTo(blockX+blockW+arLen+8,trackY-20); ctA.lineTo(blockX+blockW+arLen,trackY-14); ctA.fill();
+      ctA.beginPath(); ctA.moveTo(carX+68+arLen,bY+6); ctA.lineTo(carX+68+arLen+8,bY+12); ctA.lineTo(carX+68+arLen,bY+18); ctA.fill();
       ctA.fillStyle='#dc2626'; ctA.font='bold 9px sans-serif'; ctA.textAlign='left';
-      ctA.fillText('F', blockX+blockW+arLen+11, trackY-16);
+      ctA.fillText('F', carX+68+arLen+11, bY+16);
     }
     // Info-Badge
-    ctA.fillStyle='rgba(255,255,255,0.9)'; ctA.beginPath(); ctA.roundRect(6,4,120,38,6); ctA.fill();
+    ctA.fillStyle='rgba(255,255,255,0.9)'; ctA.beginPath(); ctA.roundRect(6,4,130,36,6); ctA.fill();
     ctA.fillStyle='#374151'; ctA.font='bold 10px sans-serif'; ctA.textAlign='left';
     ctA.fillText(`v = ${v.toFixed(1)} m/s`, 12, 18);
-    ctA.fillText(`s = ${s.toFixed(1)} m  |  t = ${t.toFixed(1)} s`, 12, 34);
+    ctA.fillText(`s = ${s.toFixed(1)} m  |  t = ${t.toFixed(1)} s`, 12, 33);
   }
 
   // ── Frame-Loop ────────────────────────────────────────────
