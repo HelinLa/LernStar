@@ -1235,7 +1235,7 @@ const CONTENT = {
 
           // ── KAPITEL 1: BEWEGUNGEN ──────────────────────────────────────
           { isChapter:true, name:'Kapitel 1 – Bewegungen' },
-          { name:'1.1 – Was ist Bewegung?', diff:1, exp:'gleichfoermig',
+          { name:'1.1 – Was ist Bewegung?', diff:1,
             explanation:'Stell dir vor, du sitzt im Bus und schaust aus dem Fenster – die Bäume rasen vorbei, aber du sitzt ganz ruhig. Bewegst du dich? Jein! Es kommt immer darauf an, von wo aus man schaut – das nennt man Bezugssystem. Im Weg-Zeit-Diagramm kann man sehen, wo ein Körper zu welchem Zeitpunkt ist. Eine steile Linie bedeutet: schnell. Eine flache Linie bedeutet: langsam. Eine waagerechte Linie bedeutet: gar keine Bewegung.' },
 
           { name:'1.2 – Gleichförmige Bewegung', diff:1, exp:'gleichfoermig',
