@@ -3797,42 +3797,50 @@ function openExperiment(expId) {
     document.body.appendChild(modal);
     _sim = _simWellen();
   } else if (expId === 'gleichfoermig') {
-    modal.innerHTML = `<div class="sim-box">
-      <button class="sim-x" onclick="closeExperiment()">✕</button>
-      <h3 class="sim-h3">🚗 Gleichförmige Bewegung</h3>
-      <canvas id="gfAnim" width="460" height="110" style="width:100%;border-radius:8px;display:block;background:#dbeafe"></canvas>
-      <div style="padding:6px 14px 2px;display:flex;gap:10px;align-items:center">
-        <div style="flex:1">
-          <label style="font-weight:700;font-size:.82rem;color:#5B21B6">v = <span id="gfVLabel">10</span> m/s</label>
-          <input type="range" id="gfVSlider" min="1" max="30" value="10" style="width:100%;accent-color:#7c3aed"
-            oninput="document.getElementById('gfVLabel').textContent=this.value">
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">🧪 Experiment: Gleichförmige Bewegung</h3>
+        <canvas id="simRoad" class="sim-road-canvas" width="700" height="130"></canvas>
+        <div class="sim-info-row">
+          <span>⏱ Zeit: <b id="simT">0,0 s</b></span>
+          <span>📏 Weg: <b id="simS">0 m</b></span>
+          <span>Tempo:
+            <select id="simV" onchange="_simSetV(this.value)">
+              <option value="5">5 m/s (langsam)</option>
+              <option value="10" selected>10 m/s (mittel)</option>
+              <option value="20">20 m/s (schnell)</option>
+            </select>
+          </span>
         </div>
-        <button onclick="_gfReset()" style="background:#7c3aed;color:#fff;border:none;border-radius:8px;padding:5px 14px;font-weight:700;cursor:pointer;font-size:.85rem">↺ Neu</button>
-      </div>
-      <div class="sim-info-row" style="font-size:.8rem">
-        <span>⏱ t = <b id="gfTimeVal">0,0</b> s</span>
-        <span>📏 s = <b id="gfSVal">0,0</b> m</span>
-        <span>🚀 v = <b id="gfVCur">10</b> m/s</span>
-        <span>📐 a = <b>0</b> m/s²</span>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;padding:4px 10px">
-        <div>
-          <div style="text-align:center;font-size:.72rem;font-weight:800;color:#7c3aed;padding:2px 0">s-t Diagramm</div>
-          <canvas id="gfCST" width="130" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" id="simPlayBtn" onclick="_simToggle()">▶ Start</button>
+          <button class="sim-btn" onclick="_simMeasure()">📍 Jetzt messen</button>
+          <button class="sim-btn" onclick="_simReset()">↺ Neu starten</button>
         </div>
-        <div>
-          <div style="text-align:center;font-size:.72rem;font-weight:800;color:#0891b2;padding:2px 0">v-t Diagramm</div>
-          <canvas id="gfCVT" width="130" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
-        </div>
-        <div>
-          <div style="text-align:center;font-size:.72rem;font-weight:800;color:#16a34a;padding:2px 0">a-t Diagramm</div>
-          <canvas id="gfCAT" width="130" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
-        </div>
-      </div>
-      <p class="sim-hint" style="text-align:center;margin:4px 0 6px;font-size:.78rem"><b>s = v · t</b> &nbsp;|&nbsp; v = konst. &nbsp;|&nbsp; <b>a = 0 m/s²</b></p>
-    </div>`;
+        <p class="sim-hint">Drücke mehrmals auf <b>Jetzt messen</b> während das Auto fährt – die Punkte erscheinen im Diagramm. Klicke dann auf <b>zwei Punkte</b> um die Steigung (= Geschwindigkeit) zu berechnen!</p>
+        <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(zwei Punkte anklicken → Steigung = Geschwindigkeit)</span></div>
+        <canvas id="simChart" class="sim-chart-canvas" width="680" height="290"></canvas>
+        <div id="simResult" class="sim-result"></div>
+        <div class="sim-diagram-label" style="margin-top:10px">v-t Diagramm <span style="font-weight:400;font-size:.82em;color:#0891b2">(v = konst. → waagrechte Linie)</span></div>
+        <canvas id="simChartVT" class="sim-chart-canvas" width="680" height="180"></canvas>
+        <div class="sim-diagram-label" style="margin-top:10px">a-t Diagramm <span style="font-weight:400;font-size:.82em;color:#16a34a">(a = 0 → keine Beschleunigung)</span></div>
+        <canvas id="simChartAT" class="sim-chart-canvas" width="680" height="150"></canvas>
+        <table class="sim-table" id="simTableWrap" style="display:none">
+          <thead><tr><th>Punkt</th><th>Zeit t (s)</th><th>Weg s (m)</th><th>v (m/s)</th></tr></thead>
+          <tbody id="simTbody"></tbody>
+        </table>
+      </div>`;
     document.body.appendChild(modal);
-    _sim = _simGleichfoermig();
+    _sim = _simCreate();
+    document.getElementById('simChart').addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
 
   } else if (expId === 'wurfbewegung') {
     modal.innerHTML = `<div class="sim-box">
@@ -4719,6 +4727,124 @@ function _simCreate() {
       ctx.fillStyle='#fff'; ctx.font='bold 9px Nunito,sans-serif'; ctx.textAlign='center';
       ctx.fillText(idx+1, tx(m.t), sy(m.s)+3);
     });
+    drawChartVT(); drawChartAT();
+  }
+
+  // ── v-t Diagramm ─────────────────────────────────────────
+  function drawChartVT() {
+    const c = document.getElementById('simChartVT'); if (!c) return;
+    const ctx = c.getContext('2d'), cW=c.width, cH=c.height;
+    const P = {l:58,r:20,t:22,b:48};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const maxT = Math.max(10, (MAX_S/st.v)+1);
+    const maxV = Math.max(25, Math.ceil(st.v*1.4/5)*5);
+    const tx = t => P.l+(t/maxT)*gW;
+    const vy = v => P.t+gH-(v/maxV)*gH;
+    ctx.clearRect(0,0,cW,cH);
+    // Hintergrund
+    ctx.fillStyle='#f8fafc'; ctx.fillRect(0,0,cW,cH);
+    // Grid
+    ctx.strokeStyle='#F0F0F0'; ctx.lineWidth=1;
+    for(let i=1;i<=5;i++){
+      const y=P.t+(i/5)*gH; ctx.beginPath(); ctx.moveTo(P.l,y); ctx.lineTo(P.l+gW,y); ctx.stroke();
+      const x=P.l+(i/5)*gW; ctx.beginPath(); ctx.moveTo(x,P.t); ctx.lineTo(x,P.t+gH); ctx.stroke();
+    }
+    // Achsen
+    ctx.strokeStyle='#333'; ctx.lineWidth=2.5;
+    ctx.beginPath(); ctx.moveTo(P.l,P.t); ctx.lineTo(P.l,P.t+gH); ctx.lineTo(P.l+gW,P.t+gH); ctx.stroke();
+    ctx.fillStyle='#333';
+    ctx.beginPath(); ctx.moveTo(P.l+gW,P.t+gH); ctx.lineTo(P.l+gW+8,P.t+gH-4); ctx.lineTo(P.l+gW+8,P.t+gH+4); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(P.l,P.t); ctx.lineTo(P.l-4,P.t+9); ctx.lineTo(P.l+4,P.t+9); ctx.fill();
+    // Achsenbeschriftung
+    ctx.font='bold 13px Nunito,sans-serif'; ctx.fillStyle='#333'; ctx.textAlign='center';
+    ctx.fillText('t in s', P.l+gW/2, cH-4);
+    ctx.save(); ctx.translate(14,P.t+gH/2); ctx.rotate(-Math.PI/2); ctx.fillText('v in m/s',0,0); ctx.restore();
+    // Tick-Werte
+    ctx.font='11px Nunito,sans-serif'; ctx.fillStyle='#666';
+    for(let i=0;i<=5;i++){
+      ctx.textAlign='center'; ctx.fillText(((i/5)*maxT).toFixed(0), P.l+(i/5)*gW, P.t+gH+16);
+      ctx.textAlign='right';  ctx.fillText(((i/5)*maxV).toFixed(0), P.l-6, vy((i/5)*maxV)+4);
+    }
+    // Gestrichelte Führungslinie (volle Breite)
+    ctx.strokeStyle='rgba(8,145,178,.22)'; ctx.lineWidth=1.5; ctx.setLineDash([6,5]);
+    ctx.beginPath(); ctx.moveTo(P.l,vy(st.v)); ctx.lineTo(P.l+gW,vy(st.v)); ctx.stroke();
+    ctx.setLineDash([]);
+    // Fläche + Linie bis aktuelles t
+    if(st.t > 0.05){
+      ctx.fillStyle='rgba(8,145,178,.1)';
+      ctx.fillRect(P.l, vy(st.v), tx(st.t)-P.l, P.t+gH-vy(st.v));
+      ctx.strokeStyle='#0891b2'; ctx.lineWidth=3;
+      ctx.beginPath(); ctx.moveTo(P.l,vy(st.v)); ctx.lineTo(tx(st.t),vy(st.v)); ctx.stroke();
+      // Aktueller Punkt
+      ctx.fillStyle='rgba(8,145,178,.4)';
+      ctx.beginPath(); ctx.arc(tx(st.t),vy(st.v),5,0,Math.PI*2); ctx.fill();
+    }
+    // v-Label
+    if(st.t > 0.8){
+      ctx.fillStyle='#0891b2'; ctx.font='bold 12px Nunito,sans-serif'; ctx.textAlign='left';
+      ctx.fillText('v = '+st.v+' m/s', P.l+10, vy(st.v)-8);
+    }
+    // Messpunkte
+    st.meas.forEach((m,idx)=>{
+      ctx.fillStyle='#0891b2'; ctx.strokeStyle='#0369a1'; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.arc(tx(m.t),vy(st.v),7,0,Math.PI*2); ctx.fill(); ctx.stroke();
+      ctx.fillStyle='#fff'; ctx.font='bold 9px Nunito,sans-serif'; ctx.textAlign='center';
+      ctx.fillText(idx+1, tx(m.t), vy(st.v)+3);
+    });
+  }
+
+  // ── a-t Diagramm ─────────────────────────────────────────
+  function drawChartAT() {
+    const c = document.getElementById('simChartAT'); if (!c) return;
+    const ctx = c.getContext('2d'), cW=c.width, cH=c.height;
+    const P = {l:58,r:20,t:22,b:48};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const maxT = Math.max(10, (MAX_S/st.v)+1);
+    const tx = t => P.l+(t/maxT)*gW;
+    const a0Y = P.t+gH;
+    ctx.clearRect(0,0,cW,cH);
+    // Hintergrund
+    ctx.fillStyle='#f8fafc'; ctx.fillRect(0,0,cW,cH);
+    // Grid
+    ctx.strokeStyle='#F0F0F0'; ctx.lineWidth=1;
+    for(let i=0;i<=4;i++){
+      const x=P.l+(i/4)*gW; ctx.beginPath(); ctx.moveTo(x,P.t); ctx.lineTo(x,P.t+gH); ctx.stroke();
+    }
+    // Achsen
+    ctx.strokeStyle='#333'; ctx.lineWidth=2.5;
+    ctx.beginPath(); ctx.moveTo(P.l,P.t); ctx.lineTo(P.l,P.t+gH); ctx.lineTo(P.l+gW,P.t+gH); ctx.stroke();
+    ctx.fillStyle='#333';
+    ctx.beginPath(); ctx.moveTo(P.l+gW,P.t+gH); ctx.lineTo(P.l+gW+8,P.t+gH-4); ctx.lineTo(P.l+gW+8,P.t+gH+4); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(P.l,P.t); ctx.lineTo(P.l-4,P.t+9); ctx.lineTo(P.l+4,P.t+9); ctx.fill();
+    // Achsenbeschriftung
+    ctx.font='bold 13px Nunito,sans-serif'; ctx.fillStyle='#333'; ctx.textAlign='center';
+    ctx.fillText('t in s', P.l+gW/2, cH-4);
+    ctx.save(); ctx.translate(14,P.t+gH/2); ctx.rotate(-Math.PI/2); ctx.fillText('a in m/s²',0,0); ctx.restore();
+    // Tick-Werte
+    ctx.font='11px Nunito,sans-serif'; ctx.fillStyle='#666';
+    for(let i=0;i<=4;i++){ ctx.textAlign='center'; ctx.fillText(((i/4)*maxT).toFixed(0), P.l+(i/4)*gW, P.t+gH+16); }
+    ctx.textAlign='right'; ctx.fillText('0', P.l-6, a0Y+4);
+    ctx.fillText('5', P.l-6, P.t+gH/2+4);
+    // a=0 Linie (grün)
+    if(st.t > 0.05){
+      ctx.fillStyle='rgba(22,163,74,.1)'; ctx.fillRect(P.l, a0Y-4, tx(st.t)-P.l, 8);
+      ctx.strokeStyle='#16a34a'; ctx.lineWidth=3;
+      ctx.beginPath(); ctx.moveTo(P.l,a0Y); ctx.lineTo(tx(st.t),a0Y); ctx.stroke();
+      ctx.fillStyle='rgba(22,163,74,.4)';
+      ctx.beginPath(); ctx.arc(tx(st.t),a0Y,5,0,Math.PI*2); ctx.fill();
+    }
+    // Label
+    if(st.t > 0.8){
+      ctx.fillStyle='#16a34a'; ctx.font='bold 12px Nunito,sans-serif'; ctx.textAlign='left';
+      ctx.fillText('a = 0 m/s²', P.l+10, a0Y-10);
+    }
+    // Messpunkte bei a=0
+    st.meas.forEach((m,idx)=>{
+      ctx.fillStyle='#16a34a'; ctx.strokeStyle='#15803d'; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.arc(tx(m.t),a0Y,7,0,Math.PI*2); ctx.fill(); ctx.stroke();
+      ctx.fillStyle='#fff'; ctx.font='bold 9px Nunito,sans-serif'; ctx.textAlign='center';
+      ctx.fillText(idx+1, tx(m.t), a0Y+3);
+    });
   }
 
   function updateTable() {
@@ -4726,8 +4852,9 @@ function _simCreate() {
     const tw = document.getElementById('simTableWrap');
     if (!tb||!tw) return;
     if (st.meas.length>0) tw.style.display='table';
+    const hasVT = !!document.getElementById('simChartVT');
     tb.innerHTML = st.meas.map((m,i)=>
-      `<tr><td>P${i+1}</td><td>${m.t.toFixed(1).replace('.',',')}</td><td>${m.s.toFixed(1).replace('.',',')}</td></tr>`
+      `<tr><td>P${i+1}</td><td>${m.t.toFixed(1).replace('.',',')}</td><td>${m.s.toFixed(1).replace('.',',')}</td>${hasVT?`<td>${st.v}</td>`:''}</tr>`
     ).join('');
   }
 
