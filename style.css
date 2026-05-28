@@ -2171,6 +2171,47 @@ ul { list-style: none; }
   .sim-btn { padding: 7px 12px; font-size: .8rem; }
 }
 
+/* ── PhysicsSim-Framework Layout ─────────────────────────── */
+.phys-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0;
+}
+.phys-anim-cv,
+.phys-chart-cv {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  background: #f0f9ff;
+}
+.phys-controls {
+  padding: 6px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.phys-ctrl {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.phys-ctrl-label {
+  font-size: .82rem;
+  font-weight: 700;
+  color: #374151;
+}
+.phys-hint {
+  font-size: .79rem;
+  color: #64748b;
+  padding: 6px 10px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 3px solid #7c3aed;
+  margin: 4px 0;
+}
+.sim-box-wide { max-width: 900px !important; }
+
 /* ================================================================
    ERKLÄRVIDEO PLAYER + 3D CHARAKTER MR. LALA
    ================================================================ */

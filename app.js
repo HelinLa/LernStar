@@ -4290,7 +4290,6 @@ function openExperiment(expId) {
     document.body.appendChild(modal);
     _sim = _simKondensator();
   } else if (typeof openPhysicsSim === 'function') {
-    document.body.removeChild(modal);
     openPhysicsSim(expId);
     return;
   } else {
