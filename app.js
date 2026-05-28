@@ -3822,11 +3822,17 @@ function openExperiment(expId) {
         <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(zwei Punkte anklicken → Steigung = Geschwindigkeit)</span></div>
         <canvas id="simChart" class="sim-chart-canvas" width="680" height="290"></canvas>
         <div id="simResult" class="sim-result"></div>
-        <div class="sim-diagram-label" style="margin-top:10px">v-t Diagramm <span style="font-weight:400;font-size:.82em;color:#0891b2">(v = konst. → waagrechte Linie)</span></div>
-        <canvas id="simChartVT" class="sim-chart-canvas" width="680" height="180"></canvas>
-        <div class="sim-diagram-label" style="margin-top:10px">a-t Diagramm <span style="font-weight:400;font-size:.82em;color:#16a34a">(a = 0 → keine Beschleunigung)</span></div>
-        <canvas id="simChartAT" class="sim-chart-canvas" width="680" height="150"></canvas>
-        <table class="sim-table" id="simTableWrap" style="display:none">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+          <div>
+            <div class="sim-diagram-label">v-t Diagramm <span style="font-weight:400;font-size:.8em;color:#0891b2">(v = konst.)</span></div>
+            <canvas id="simChartVT" class="sim-chart-canvas" width="340" height="200"></canvas>
+          </div>
+          <div>
+            <div class="sim-diagram-label">a-t Diagramm <span style="font-weight:400;font-size:.8em;color:#16a34a">(a = 0)</span></div>
+            <canvas id="simChartAT" class="sim-chart-canvas" width="340" height="200"></canvas>
+          </div>
+        </div>
+        <table class="sim-table" id="simTableWrap" style="display:none;margin-top:12px">
           <thead><tr><th>Punkt</th><th>Zeit t (s)</th><th>Weg s (m)</th><th>v (m/s)</th></tr></thead>
           <tbody id="simTbody"></tbody>
         </table>
