@@ -3745,14 +3745,25 @@ function openExperiment(expId) {
         </div>
         <div class="sim-diagram-label">E(t) Diagramm – Energieerhaltung</div>
         <canvas id="engChart" class="sim-chart-canvas" width="460" height="180"></canvas>
+        <div class="sim-btn-row"><button class="sim-btn" onclick="_simMeasure()">📍 Messen</button></div>
+        <div id="engResult" class="sim-result"></div>
+        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Klicke <b>Messen</b> bei verschiedenen Positionen, dann <b>zwei Punkte</b> im Diagramm → Energieerhaltung prüfen! &nbsp;|&nbsp; <b>E_pot = m·g·h</b> &nbsp;|&nbsp; <b>E_kin = ½·m·v²</b></p>
         <table class="sim-table" id="engTable" style="display:none">
           <thead><tr><th>t (s)</th><th>h (m)</th><th>v (m/s)</th><th>E_pot (J)</th><th>E_kin (J)</th></tr></thead>
           <tbody id="engTbody"></tbody>
         </table>
-        <p class="sim-hint" style="text-align:center;margin:2px 0 6px"><b>E_pot = m·g·h</b> &nbsp;|&nbsp; <b>E_kin = ½·m·v²</b></p>
       </div>`;
     document.body.appendChild(modal);
     _sim = _simEnergieerhaltung();
+    const engChartEl = document.getElementById('engChart');
+    if (engChartEl) engChartEl.addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      if (_sim.handleClick) _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
   } else if (expId === 'impuls') {
     modal.innerHTML = `
       <div class="sim-box">
@@ -3787,16 +3798,26 @@ function openExperiment(expId) {
           <span>p_vor = <b id="impPvor">10,0</b> kg·m/s</span>
           <span>p_nach = <b id="impPnach">–</b></span>
         </div>
-        <div class="sim-diagram-label">Impuls-Diagramm (vor und nach dem Stoß)</div>
+        <div class="sim-diagram-label">p_nach vs p_vor Diagramm (Impulserhaltung)</div>
         <canvas id="impChart" class="sim-chart-canvas" width="460" height="160"></canvas>
+        <div id="impResult" class="sim-result"></div>
+        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Mache mehrere Stöße mit verschiedenen Massen → Klicke <b>zwei Punkte</b> im p_nach-vs-p_vor Diagramm um Impulserhaltung zu bestätigen! &nbsp;|&nbsp; Elastischer Stoß: <b>p_ges = const</b></p>
         <table class="sim-table" id="impTable" style="display:none">
           <thead><tr><th>Objekt</th><th>Masse (kg)</th><th>v_vor (m/s)</th><th>v_nach (m/s)</th><th>p (kg·m/s)</th></tr></thead>
           <tbody id="impTbody"></tbody>
         </table>
-        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Elastischer Stoß: <b>p_ges = const</b></p>
       </div>`;
     document.body.appendChild(modal);
     _sim = _simImpuls();
+    const impChartEl = document.getElementById('impChart');
+    if (impChartEl) impChartEl.addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      if (_sim.handleClick) _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
   } else if (expId === 'fadenpendel') {
     modal.innerHTML = `
       <div class="sim-box">
@@ -3864,14 +3885,27 @@ function openExperiment(expId) {
         </div>
         <div class="sim-diagram-label">A(f) Frequenzspektrum</div>
         <canvas id="welChart" class="sim-chart-canvas" width="460" height="160"></canvas>
+        <div class="sim-btn-row"><button class="sim-btn" onclick="_simMeasure()">📍 Messen</button></div>
+        <div class="sim-diagram-label">λ(T) Messpunkte – Wellengeschwindigkeit</div>
+        <canvas id="welChart2" class="sim-chart-canvas" width="460" height="150"></canvas>
+        <div id="welResult" class="sim-result"></div>
+        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Ändere f, klicke <b>Messen</b>, dann <b>zwei Punkte</b> im λ(T)-Diagramm → Steigung = v_Welle! &nbsp;|&nbsp; Formel: <b>y(x,t) = A · sin(2π(x/λ − f·t))</b></p>
         <table class="sim-table" id="welTable" style="display:none">
           <thead><tr><th>f (Hz)</th><th>T (s)</th><th>λ (px)</th><th>A (px)</th></tr></thead>
           <tbody id="welTbody"></tbody>
         </table>
-        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Formel: <b>y(x,t) = A · sin(2π(x/λ − f·t))</b></p>
       </div>`;
     document.body.appendChild(modal);
     _sim = _simWellen();
+    const welChart2El = document.getElementById('welChart2');
+    if (welChart2El) welChart2El.addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      if (_sim.handleClick) _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
   } else if (expId === 'gleichfoermig') {
     modal.innerHTML = `
       <div class="sim-box">
@@ -3943,6 +3977,9 @@ function openExperiment(expId) {
         <span>y = <b id="wurfYDisp">0</b> m</span>
         <span>v = <b id="wurfVDisp">0</b> m/s</span>
       </div>
+      <div class="sim-btn-row"><button class="sim-btn" onclick="_simMeasure()">📍 Messen</button></div>
+      <div id="wurfResult" class="sim-result"></div>
+      <p class="sim-hint" style="text-align:center;margin:2px 0 4px">Klicke <b>Messen</b> während des Fluges, dann <b>zwei Punkte</b> im x(t)-Diagramm → Steigung = horizontale Geschwindigkeit vx!</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px 10px">
         <div>
           <div class="sim-diagram-label" style="font-size:.75rem">x(t) Diagramm</div>
@@ -3960,6 +3997,15 @@ function openExperiment(expId) {
       </div>`;
     document.body.appendChild(modal);
     _sim = _simWurf();
+    const wurfChartXEl = document.getElementById('wurfChartX');
+    if (wurfChartXEl) wurfChartXEl.addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      if (_sim.handleClick) _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
 
   } else if (expId === 'kreisbewegung') {
     modal.innerHTML = `<div class="sim-box">
@@ -4070,6 +4116,9 @@ function openExperiment(expId) {
           <canvas id="schwingChartV" class="sim-chart-canvas" width="220" height="130"></canvas>
         </div>
       </div>
+      <div class="sim-btn-row"><button class="sim-btn" onclick="_simMeasure()">📍 Messen</button></div>
+      <div id="schwingResult" class="sim-result"></div>
+      <p class="sim-hint" style="text-align:center;margin:2px 0 4px">Klicke <b>Messen</b> während der Schwingung, dann <b>zwei Punkte</b> im x(t)-Diagramm wählen → Periode T ermitteln!</p>
       <table class="sim-table" id="schwingTable" style="display:none">
         <thead><tr><th>t (s)</th><th>x (px)</th><th>v (px/s)</th></tr></thead>
         <tbody id="schwingTbody"></tbody>
@@ -4077,6 +4126,15 @@ function openExperiment(expId) {
       </div>`;
     document.body.appendChild(modal);
     _sim = _simSchwingung();
+    const schwingChartXEl = document.getElementById('schwingChartX');
+    if (schwingChartXEl) schwingChartXEl.addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      if (_sim.handleClick) _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
 
   } else if (expId === 'efeld') {
     modal.innerHTML = `<div class="sim-box">
@@ -4094,6 +4152,9 @@ function openExperiment(expId) {
         <span>d = 0,3 m</span>
         <span>E = <b id="efeldEDisp">333</b> V/m</span>
       </div>
+      <div class="sim-btn-row"><button class="sim-btn" onclick="_simMeasure()">📍 Messen</button></div>
+      <div id="efeldResult" class="sim-result"></div>
+      <p class="sim-hint" style="text-align:center;margin:2px 0 4px">Klicke <b>Messen</b> bei verschiedenen Spannungen, dann <b>zwei Punkte</b> im E(U)-Diagramm → Steigung = 1/d!</p>
       <div class="sim-diagram-label">E(U) Diagramm (E = U/d)</div>
       <canvas id="efeldChart" class="sim-chart-canvas" width="460" height="160"></canvas>
       <table class="sim-table" id="efeldTable" style="display:none">
@@ -4103,6 +4164,15 @@ function openExperiment(expId) {
       </div>`;
     document.body.appendChild(modal);
     _sim = _simEfeld();
+    const efeldChartEl = document.getElementById('efeldChart');
+    if (efeldChartEl) efeldChartEl.addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      if (_sim.handleClick) _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
 
   } else if (expId === 'bfeld') {
     modal.innerHTML = `<div class="sim-box">
@@ -4122,6 +4192,9 @@ function openExperiment(expId) {
         <span>v = <b id="bfeldVDisp">2,0</b> m/s</span>
         <span>F = <b id="bfeldFDisp">0,02</b> N</span>
       </div>
+      <div class="sim-btn-row"><button class="sim-btn" onclick="_simMeasure()">📍 Messen</button></div>
+      <div id="bfeldResult" class="sim-result"></div>
+      <p class="sim-hint" style="text-align:center;margin:2px 0 4px">Klicke <b>Messen</b> bei verschiedenen Geschwindigkeiten, dann <b>zwei Punkte</b> im F(v)-Diagramm → Steigung = q·B!</p>
       <div class="sim-diagram-label">F(v) Diagramm (F = q·v·B)</div>
       <canvas id="bfeldChart" class="sim-chart-canvas" width="460" height="160"></canvas>
       <table class="sim-table" id="bfeldTable" style="display:none">
@@ -4131,6 +4204,15 @@ function openExperiment(expId) {
       </div>`;
     document.body.appendChild(modal);
     _sim = _simBfeld();
+    const bfeldChartEl = document.getElementById('bfeldChart');
+    if (bfeldChartEl) bfeldChartEl.addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      if (_sim.handleClick) _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
 
   } else if (expId === 'leistung') {
     modal.innerHTML = `<div class="sim-box">
@@ -4151,6 +4233,9 @@ function openExperiment(expId) {
         <span>P = <b id="leistPDisp">24,0</b> W</span>
         <span>R = <b id="leistRDisp">6,0</b> Ω</span>
       </div>
+      <div class="sim-btn-row"><button class="sim-btn" onclick="_simMeasure()">📍 Messen</button></div>
+      <div id="leistResult" class="sim-result"></div>
+      <p class="sim-hint" style="text-align:center;margin:2px 0 4px">Klicke <b>Messen</b> bei verschiedenen Stromstärken (U=const), dann <b>zwei Punkte</b> im P(I)-Diagramm → Steigung = U!</p>
       <div class="sim-diagram-label">P(I) Diagramm (P = U·I)</div>
       <canvas id="leistChart" class="sim-chart-canvas" width="460" height="160"></canvas>
       <table class="sim-table" id="leistTable" style="display:none">
@@ -4160,6 +4245,15 @@ function openExperiment(expId) {
       </div>`;
     document.body.appendChild(modal);
     _sim = _simLeistung();
+    const leistChartEl = document.getElementById('leistChart');
+    if (leistChartEl) leistChartEl.addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      if (_sim.handleClick) _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
 
   } else if (expId === 'kondensator') {
     modal.innerHTML = `
@@ -4499,15 +4593,20 @@ function _simWurf() {
   const g = 9.81, scale = 6;
   let path = [];
   const wurfPts = [];
+  const wurfMeas = [];
+  let wurfSel = [];
+  let _curAlpha=45*Math.PI/180, _curV0=30, _curTMax=0;
   function draw() {
     const alpha = +document.getElementById('wurfWSlider').value * Math.PI/180;
     const v0 = +document.getElementById('wurfVSlider').value;
+    _curAlpha=alpha; _curV0=v0;
     ctx.clearRect(0,0,cv.width,cv.height);
     // Boden
     ctx.fillStyle='#d1fae5'; ctx.fillRect(0,cv.height-20,cv.width,20);
     // Trajektorie berechnen
     path = [];
     const tMax2 = 2*v0*Math.sin(alpha)/g;
+    _curTMax=tMax2;
     for(let t=0; t<=tMax2; t+=0.05){
       const sx = v0*Math.cos(alpha)*t*scale;
       const sy = (v0*Math.sin(alpha)*t - 0.5*g*t*t)*scale;
@@ -4586,8 +4685,62 @@ function _simWurf() {
     ctx2.fillStyle=color; ctx2.beginPath(); ctx2.arc(dotX,dotY,4,0,Math.PI*2); ctx2.fill();
   }
 
+  function drawWurfChartXFull(curT, alpha, v0, tMax2) {
+    const c=document.getElementById('wurfChartX'); if(!c) return;
+    const ctx2=c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:42,r:10,t:14,b:28};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#f8fafc'; ctx2.fillRect(0,0,cW,cH);
+    if(wurfPts.length<2) return;
+    const xMaxT=wurfPts[wurfPts.length-1].t||1;
+    const xMaxX=Math.max(...wurfPts.map(p=>p.x))*1.1||1;
+    ctx2.strokeStyle='#e5e7eb'; ctx2.lineWidth=1;
+    for(let i=1;i<=3;i++){
+      const y=P.t+(i/3)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+    }
+    ctx2.strokeStyle='#333'; ctx2.lineWidth=1.5;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    ctx2.font='9px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
+    ctx2.fillText('t (s)', P.l+gW/2, cH-2);
+    ctx2.save(); ctx2.translate(10,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('x (m)',0,0); ctx2.restore();
+    // trajectory curve
+    ctx2.strokeStyle='#7c3aed'; ctx2.lineWidth=2;
+    ctx2.beginPath();
+    wurfPts.forEach((p,i)=>{
+      const px=P.l+(p.t/xMaxT)*gW, py=P.t+gH-(p.x/xMaxX)*gH;
+      i===0?ctx2.moveTo(px,py):ctx2.lineTo(px,py);
+    });
+    ctx2.stroke();
+    // current dot
+    const dotX=P.l+(curT/xMaxT)*gW, dotY=P.t+gH-((v0*Math.cos(alpha)*curT)/xMaxX)*gH;
+    ctx2.fillStyle='#7c3aed'; ctx2.beginPath(); ctx2.arc(dotX,dotY,4,0,Math.PI*2); ctx2.fill();
+    function ptX(t){ return P.l+(t/xMaxT)*gW; }
+    function ptY(x){ return P.t+gH-(x/xMaxX)*gH; }
+    // measured points
+    wurfMeas.forEach((p,i)=>{
+      const sel=wurfSel.includes(i);
+      ctx2.fillStyle=sel?'#f97316':'#dc2626';
+      ctx2.beginPath(); ctx2.arc(p.px,p.py,6,0,Math.PI*2); ctx2.fill();
+      if(sel){ ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2; ctx2.beginPath(); ctx2.arc(p.px,p.py,9,0,Math.PI*2); ctx2.stroke(); }
+    });
+    if(wurfSel.length===2){
+      const a=wurfMeas[wurfSel[0]], b=wurfMeas[wurfSel[1]];
+      if(Math.abs(b.t-a.t)>0.001){
+        const slope=(b.x-a.x)/(b.t-a.t);
+        ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2;
+        ctx2.beginPath(); ctx2.moveTo(a.px,a.py); ctx2.lineTo(b.px,b.py); ctx2.stroke();
+        const res=document.getElementById('wurfResult');
+        if(res) res.innerHTML=`<b>Δx/Δt = ${slope.toFixed(1)} m/s = vx (horizontale Geschwindigkeit)</b>`;
+      }
+    } else {
+      const res=document.getElementById('wurfResult');
+      if(res&&wurfSel.length===0) res.innerHTML='';
+    }
+  }
+
   function drawWurfCharts(curT, alpha, v0, tMax2) {
-    miniChart('wurfChartX', wurfPts, 't','x','t (s)','x (m)','#7c3aed', curT, alpha, v0);
+    drawWurfChartXFull(curT, alpha, v0, tMax2);
     miniChart('wurfChartY', wurfPts, 't','y','t (s)','y (m)','#0891b2', curT, alpha, v0);
   }
 
@@ -4606,8 +4759,36 @@ function _simWurf() {
     tb.innerHTML=rows.map(r=>`<tr><td>${r.t.toFixed(2).replace('.',',')}</td><td>${r.x.toFixed(1).replace('.',',')}</td><td>${r.y.toFixed(1).replace('.',',')}</td><td>${r.v.toFixed(1).replace('.',',')}</td></tr>`).join('');
   }
 
+  function measure() {
+    const alpha=_curAlpha, v0=_curV0, tMax2=_curTMax;
+    const curT=Math.min(_wurfT,tMax2);
+    const curX=v0*Math.cos(alpha)*curT;
+    const c=document.getElementById('wurfChartX'); if(!c||wurfPts.length<2) return;
+    const P={l:42,r:10,t:14,b:28};
+    const gW=c.width-P.l-P.r, gH=c.height-P.t-P.b;
+    const xMaxT=wurfPts[wurfPts.length-1].t||1;
+    const xMaxX=Math.max(...wurfPts.map(p=>p.x))*1.1||1;
+    const px=P.l+(curT/xMaxT)*gW;
+    const py=P.t+gH-(curX/xMaxX)*gH;
+    wurfMeas.push({t:curT,x:curX,px,py});
+    drawWurfChartXFull(curT,alpha,v0,tMax2);
+  }
+
+  function handleClick(mx,my) {
+    let best=-1, bestD=22;
+    wurfMeas.forEach((p,i)=>{
+      const d=Math.hypot(p.px-mx,p.py-my);
+      if(d<bestD){ bestD=d; best=i; }
+    });
+    if(best===-1) return;
+    const idx=wurfSel.indexOf(best);
+    if(idx>=0) wurfSel.splice(idx,1);
+    else{ if(wurfSel.length>=2) wurfSel=[wurfSel[1]]; wurfSel.push(best); }
+    drawWurfChartXFull(Math.min(_wurfT,_curTMax),_curAlpha,_curV0,_curTMax);
+  }
+
   draw();
-  return { stop(){ cancelAnimationFrame(_wurfRaf); } };
+  return { stop(){ cancelAnimationFrame(_wurfRaf); }, measure, handleClick };
 }
 
 // ── Kreisbewegung ─────────────────────────────────────────
@@ -4956,6 +5137,9 @@ function _simSchwingung() {
   const ctx = cv.getContext('2d');
   const cy=cv.height/2;
   let t=0, raf, history=[];
+  const schwingPts = [];
+  let schwingSel = [];
+
   function draw() {
     const A = +document.getElementById('schwingASlider').value;
     const f = +document.getElementById('schwingFSlider').value;
@@ -4978,11 +5162,93 @@ function _simSchwingung() {
     ctx.fillStyle='#f97316'; ctx.beginPath(); ctx.arc(30,ballY,12,0,Math.PI*2); ctx.fill();
     ctx.fillStyle='#1f2937'; ctx.font='700 13px sans-serif';
     ctx.fillText(`A=${A}  f=${f}Hz  T=${(1/f).toFixed(2)}s`,8,16);
+    // update displays
+    const td=document.getElementById('schwingTDisp'); if(td) td.textContent=t.toFixed(2).replace('.',',');
+    const xd=document.getElementById('schwingXDisp'); if(xd) xd.textContent=(A*Math.sin(2*Math.PI*f*t)).toFixed(1).replace('.',',');
+    const vd=document.getElementById('schwingVDisp'); if(vd) vd.textContent=(A*2*Math.PI*f*Math.cos(2*Math.PI*f*t)).toFixed(1).replace('.',',');
     t += 0.016;
+    drawSchwingChartX();
     raf = requestAnimationFrame(draw);
   }
+
+  function drawSchwingChartX() {
+    const c = document.getElementById('schwingChartX'); if(!c) return;
+    const ctx2=c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:42,r:10,t:16,b:28};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const tMax=10, xMax=100;
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#f8fafc'; ctx2.fillRect(0,0,cW,cH);
+    // grid
+    ctx2.strokeStyle='#e5e7eb'; ctx2.lineWidth=1;
+    for(let i=1;i<=4;i++){
+      const y=P.t+(i/4)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+    }
+    // axes
+    ctx2.strokeStyle='#333'; ctx2.lineWidth=1.5;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    ctx2.font='9px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
+    ctx2.fillText('t (s)', P.l+gW/2, cH-2);
+    ctx2.save(); ctx2.translate(10,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('x (px)',0,0); ctx2.restore();
+    function ptX(val){ return P.l+(val/tMax)*gW; }
+    function ptY(val){ return P.t+gH/2-(val/xMax)*(gH/2); }
+    // measured points
+    schwingPts.forEach((p,i)=>{
+      const sel=schwingSel.includes(i);
+      ctx2.fillStyle=sel?'#f97316':'#dc2626';
+      ctx2.beginPath(); ctx2.arc(p.px,p.py,6,0,Math.PI*2); ctx2.fill();
+      if(sel){ ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2; ctx2.beginPath(); ctx2.arc(p.px,p.py,9,0,Math.PI*2); ctx2.stroke(); }
+    });
+    // if 2 selected: draw line and show result
+    if(schwingSel.length===2){
+      const a=schwingPts[schwingSel[0]], b=schwingPts[schwingSel[1]];
+      ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2;
+      ctx2.beginPath(); ctx2.moveTo(a.px,a.py); ctx2.lineTo(b.px,b.py); ctx2.stroke();
+      const dt=Math.abs(b.x-a.x);
+      const res=document.getElementById('schwingResult');
+      if(res) res.innerHTML=`<b>Δt = ${dt.toFixed(2)} s → Periode T ≈ Δt (bei Peakabstand)</b>`;
+    } else {
+      const res=document.getElementById('schwingResult');
+      if(res&&schwingSel.length===0&&schwingPts.length>0) res.innerHTML='';
+    }
+  }
+
+  function measure() {
+    const A=+document.getElementById('schwingASlider').value;
+    const f=+document.getElementById('schwingFSlider').value;
+    const curT=t, curX=A*Math.sin(2*Math.PI*f*t);
+    const c=document.getElementById('schwingChartX'); if(!c) return;
+    const P={l:42,r:10,t:16,b:28};
+    const gW=c.width-P.l-P.r, gH=c.height-P.t-P.b;
+    const tMax=10, xMax=100;
+    const px=P.l+(Math.min(curT,tMax)/tMax)*gW;
+    const py=P.t+gH/2-(curX/xMax)*(gH/2);
+    schwingPts.push({x:curT,y:curX,px,py});
+    // update table
+    const tb=document.getElementById('schwingTbody'), tw=document.getElementById('schwingTable');
+    if(tb&&tw){
+      tw.style.display='table';
+      const v=A*2*Math.PI*f*Math.cos(2*Math.PI*f*t);
+      tb.innerHTML+=`<tr><td>${curT.toFixed(2).replace('.',',')}</td><td>${curX.toFixed(1).replace('.',',')}</td><td>${v.toFixed(1).replace('.',',')}</td></tr>`;
+    }
+    drawSchwingChartX();
+  }
+
+  function handleClick(mx,my) {
+    let best=-1, bestD=22;
+    schwingPts.forEach((p,i)=>{
+      const d=Math.hypot(p.px-mx,p.py-my);
+      if(d<bestD){ bestD=d; best=i; }
+    });
+    if(best===-1) return;
+    const idx=schwingSel.indexOf(best);
+    if(idx>=0) schwingSel.splice(idx,1);
+    else{ if(schwingSel.length>=2) schwingSel=[schwingSel[1]]; schwingSel.push(best); }
+    drawSchwingChartX();
+  }
+
   draw();
-  return { stop(){ cancelAnimationFrame(raf); } };
+  return { stop(){ cancelAnimationFrame(raf); }, measure, handleClick };
 }
 
 // ── Elektrisches Feld ─────────────────────────────────────
@@ -4990,8 +5256,12 @@ function _simEfeld() {
   const cv = document.getElementById('efeldCanvas');
   const ctx = cv.getContext('2d');
   let probe=null, raf;
+  const efeldPts=[], d_m=0.3;
+  let efeldSel=[];
+
   function draw() {
     const U = +document.getElementById('efeldUSlider').value;
+    const E = U/d_m;
     ctx.clearRect(0,0,cv.width,cv.height);
     // Platten
     ctx.fillStyle='#f97316';
@@ -5004,12 +5274,11 @@ function _simEfeld() {
     ctx.fillStyle='#3b82f6';
     for(let y=40;y<cv.height-30;y+=30) ctx.fillText('−',cv.width-18,y);
     // Feldlinien
-    const n=7, E=U/300;
-    ctx.strokeStyle=`rgba(124,58,237,${Math.min(1,E*2)})`; ctx.lineWidth=1.5;
+    const n=7, Enorm=U/300;
+    ctx.strokeStyle=`rgba(124,58,237,${Math.min(1,Enorm*2)})`; ctx.lineWidth=1.5;
     for(let i=0;i<n;i++){
       const ly=30+(i*(cv.height-60)/(n-1));
       ctx.beginPath(); ctx.moveTo(28,ly); ctx.lineTo(cv.width-28,ly); ctx.stroke();
-      // Pfeilspitze
       ctx.beginPath(); ctx.moveTo(cv.width-40,ly-5); ctx.lineTo(cv.width-28,ly); ctx.lineTo(cv.width-40,ly+5); ctx.stroke();
     }
     // Probeladung
@@ -5017,21 +5286,111 @@ function _simEfeld() {
       ctx.fillStyle='#ef4444';
       ctx.beginPath(); ctx.arc(probe.x,probe.y,8,0,Math.PI*2); ctx.fill();
       ctx.fillStyle='#fff'; ctx.font='700 11px sans-serif'; ctx.fillText('+',probe.x-4,probe.y+4);
-      // Kraft = E×q Pfeil
       ctx.strokeStyle='#ef4444'; ctx.lineWidth=3;
-      const flen = Math.min(60, E*60);
+      const flen=Math.min(60,Enorm*60);
       ctx.beginPath(); ctx.moveTo(probe.x,probe.y); ctx.lineTo(probe.x+flen,probe.y); ctx.stroke();
     }
     ctx.fillStyle='#1f2937'; ctx.font='700 13px sans-serif';
-    ctx.fillText(`U = ${U} V   E = ${(U/0.3).toFixed(0)} V/m`,8,16);
+    ctx.fillText(`U = ${U} V   E = ${E.toFixed(0)} V/m`,8,16);
+    // update displays
+    const ud=document.getElementById('efeldUDisp'); if(ud) ud.textContent=U;
+    const ed=document.getElementById('efeldEDisp'); if(ed) ed.textContent=E.toFixed(0);
+    drawEfeldChart();
     raf = requestAnimationFrame(draw);
   }
+
+  function drawEfeldChart() {
+    const c=document.getElementById('efeldChart'); if(!c) return;
+    const ctx2=c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:58,r:16,t:20,b:36};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const uMax=300, eMax=1100;
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#f0f9ff'; ctx2.fillRect(0,0,cW,cH);
+    // grid
+    ctx2.strokeStyle='#e5e7eb'; ctx2.lineWidth=1;
+    for(let i=1;i<=4;i++){
+      const y=P.t+(i/4)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+    }
+    for(let i=1;i<=4;i++){
+      const x=P.l+(i/4)*gW; ctx2.beginPath(); ctx2.moveTo(x,P.t); ctx2.lineTo(x,P.t+gH); ctx2.stroke();
+    }
+    // axes
+    ctx2.strokeStyle='#333'; ctx2.lineWidth=2;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
+    ctx2.fillText('U (V)', P.l+gW/2, cH-2);
+    ctx2.save(); ctx2.translate(12,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('E (V/m)',0,0); ctx2.restore();
+    ctx2.textAlign='right';
+    for(let i=0;i<=4;i++) ctx2.fillText((eMax*i/4).toFixed(0), P.l-4, P.t+gH-(i/4)*gH+4);
+    ctx2.textAlign='center';
+    for(let i=0;i<=4;i++) ctx2.fillText((uMax*i/4).toFixed(0), P.l+(i/4)*gW, P.t+gH+14);
+    // theoretical line (dashed blue)
+    ctx2.strokeStyle='#2563eb'; ctx2.lineWidth=1.5; ctx2.setLineDash([5,4]);
+    ctx2.beginPath();
+    ctx2.moveTo(P.l, P.t+gH);
+    ctx2.lineTo(P.l+gW, P.t+gH-(uMax/d_m/eMax)*gH);
+    ctx2.stroke(); ctx2.setLineDash([]);
+    function ptX(u){ return P.l+(u/uMax)*gW; }
+    function ptY(e){ return P.t+gH-(e/eMax)*gH; }
+    // measured points
+    efeldPts.forEach((p,i)=>{
+      const sel=efeldSel.includes(i);
+      ctx2.fillStyle=sel?'#f97316':'#dc2626';
+      ctx2.beginPath(); ctx2.arc(p.px,p.py,7,0,Math.PI*2); ctx2.fill();
+      if(sel){ ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2; ctx2.beginPath(); ctx2.arc(p.px,p.py,10,0,Math.PI*2); ctx2.stroke(); }
+    });
+    if(efeldSel.length===2){
+      const a=efeldPts[efeldSel[0]], b=efeldPts[efeldSel[1]];
+      if(Math.abs(b.x-a.x)>0.01){
+        const slope=(b.y-a.y)/(b.x-a.x);
+        ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2;
+        ctx2.beginPath(); ctx2.moveTo(a.px,a.py); ctx2.lineTo(b.px,b.py); ctx2.stroke();
+        const res=document.getElementById('efeldResult');
+        if(res) res.innerHTML=`<b>ΔE/ΔU = ${slope.toFixed(1)} /m → d = ${(1/slope*1000).toFixed(0)} mm</b>`;
+      }
+    } else {
+      const res=document.getElementById('efeldResult');
+      if(res&&efeldSel.length===0) res.innerHTML='';
+    }
+  }
+
+  function measure() {
+    const U=+document.getElementById('efeldUSlider').value;
+    const E=U/d_m;
+    const c=document.getElementById('efeldChart'); if(!c) return;
+    const P={l:58,r:16,t:20,b:36};
+    const gW=c.width-P.l-P.r, gH=c.height-P.t-P.b;
+    const uMax=300, eMax=1100;
+    const px=P.l+(U/uMax)*gW;
+    const py=P.t+gH-(E/eMax)*gH;
+    efeldPts.push({x:U,y:E,px,py});
+    const tb=document.getElementById('efeldTbody'), tw=document.getElementById('efeldTable');
+    if(tb&&tw){
+      tw.style.display='table';
+      tb.innerHTML+=`<tr><td>${U}</td><td>${d_m.toFixed(1)}</td><td>${E.toFixed(0)}</td></tr>`;
+    }
+  }
+
+  function handleClick(mx,my) {
+    let best=-1, bestD=22;
+    efeldPts.forEach((p,i)=>{
+      const d=Math.hypot(p.px-mx,p.py-my);
+      if(d<bestD){ bestD=d; best=i; }
+    });
+    if(best===-1) return;
+    const idx=efeldSel.indexOf(best);
+    if(idx>=0) efeldSel.splice(idx,1);
+    else{ if(efeldSel.length>=2) efeldSel=[efeldSel[1]]; efeldSel.push(best); }
+    drawEfeldChart();
+  }
+
   cv.onclick = e => {
     const r=cv.getBoundingClientRect();
     probe = {x:(e.clientX-r.left)*(cv.width/r.width), y:(e.clientY-r.top)*(cv.height/r.height)};
   };
   draw();
-  return { stop(){ cancelAnimationFrame(raf); } };
+  return { stop(){ cancelAnimationFrame(raf); }, measure, handleClick };
 }
 
 // ── Magnetisches Feld ─────────────────────────────────────
@@ -5040,32 +5399,130 @@ function _simBfeld() {
   const ctx = cv.getContext('2d');
   const cx=cv.width/2, cy=cv.height/2;
   let raf;
+  const bfeldPts=[];
+  let bfeldSel=[];
+
   function draw() {
     const I = +document.getElementById('bfeldISlider').value;
+    const v_ms = +document.getElementById('bfeldVSlider').value;
+    const B = I*0.005;
+    const F = v_ms*B; // q=1
     ctx.clearRect(0,0,cv.width,cv.height);
     // Leiter (Kreis in der Mitte)
     ctx.strokeStyle='#1f2937'; ctx.lineWidth=4;
     ctx.beginPath(); ctx.arc(cx,cy,12,0,Math.PI*2); ctx.stroke();
     ctx.fillStyle='#1f2937';
     ctx.beginPath(); ctx.arc(cx,cy,4,0,Math.PI*2); ctx.fill();
-    // Pfeil (Strom aus Bildschirm heraus)
     ctx.strokeStyle='#f97316'; ctx.lineWidth=2;
     ctx.beginPath(); ctx.moveTo(cx-6,cy-6); ctx.lineTo(cx+6,cy+6); ctx.moveTo(cx+6,cy-6); ctx.lineTo(cx-6,cy+6); ctx.stroke();
     // Konzentrische Feldlinien
     for(let ri=30;ri<=Math.min(200,30+I*15);ri+=18){
-      const alpha = Math.min(1, I/20);
+      const alpha=Math.min(1,I/20);
       ctx.strokeStyle=`rgba(124,58,237,${alpha})`; ctx.lineWidth=1.5;
       ctx.beginPath(); ctx.arc(cx,cy,ri,0,Math.PI*2); ctx.stroke();
-      // Pfeilspitze oben
       ctx.beginPath(); ctx.moveTo(cx-6,cy-ri); ctx.lineTo(cx,cy-ri+8); ctx.lineTo(cx+6,cy-ri); ctx.stroke();
     }
     ctx.fillStyle='#1f2937'; ctx.font='700 13px sans-serif';
-    ctx.fillText(`I = ${I} A`,8,16);
-    ctx.fillText(`B ∝ I / r`,8,34);
+    ctx.fillText(`I = ${I} A   B = ${B.toFixed(3)} T   v = ${v_ms} m/s   F = ${F.toFixed(3)} N`,8,16);
+    // update displays
+    const bd=document.getElementById('bfeldBDisp'); if(bd) bd.textContent=B.toFixed(3).replace('.',',');
+    const vd=document.getElementById('bfeldVDisp'); if(vd) vd.textContent=parseFloat(v_ms).toFixed(1).replace('.',',');
+    const fd=document.getElementById('bfeldFDisp'); if(fd) fd.textContent=F.toFixed(3).replace('.',',');
+    drawBfeldChart(I);
     raf = requestAnimationFrame(draw);
   }
+
+  function drawBfeldChart(I_cur) {
+    const c=document.getElementById('bfeldChart'); if(!c) return;
+    const ctx2=c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:58,r:16,t:20,b:36};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const vMax=10, fMax=1.1;
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#f0f4f8'; ctx2.fillRect(0,0,cW,cH);
+    // grid
+    ctx2.strokeStyle='#e5e7eb'; ctx2.lineWidth=1;
+    for(let i=1;i<=4;i++){
+      const y=P.t+(i/4)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+    }
+    for(let i=1;i<=4;i++){
+      const x=P.l+(i/4)*gW; ctx2.beginPath(); ctx2.moveTo(x,P.t); ctx2.lineTo(x,P.t+gH); ctx2.stroke();
+    }
+    // axes
+    ctx2.strokeStyle='#333'; ctx2.lineWidth=2;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
+    ctx2.fillText('v (m/s)', P.l+gW/2, cH-2);
+    ctx2.save(); ctx2.translate(12,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('F (N)',0,0); ctx2.restore();
+    ctx2.textAlign='right';
+    for(let i=0;i<=4;i++) ctx2.fillText((fMax*i/4).toFixed(2), P.l-4, P.t+gH-(i/4)*gH+4);
+    ctx2.textAlign='center';
+    for(let i=0;i<=4;i++) ctx2.fillText((vMax*i/4).toFixed(0), P.l+(i/4)*gW, P.t+gH+14);
+    // theoretical line (dashed blue) for current I
+    const B_cur=I_cur*0.005;
+    ctx2.strokeStyle='#2563eb'; ctx2.lineWidth=1.5; ctx2.setLineDash([5,4]);
+    ctx2.beginPath();
+    ctx2.moveTo(P.l, P.t+gH);
+    ctx2.lineTo(P.l+gW, P.t+gH-(vMax*B_cur/fMax)*gH);
+    ctx2.stroke(); ctx2.setLineDash([]);
+    function ptX(v){ return P.l+(v/vMax)*gW; }
+    function ptY(f){ return P.t+gH-(f/fMax)*gH; }
+    // measured points
+    bfeldPts.forEach((p,i)=>{
+      const sel=bfeldSel.includes(i);
+      ctx2.fillStyle=sel?'#f97316':'#dc2626';
+      ctx2.beginPath(); ctx2.arc(p.px,p.py,7,0,Math.PI*2); ctx2.fill();
+      if(sel){ ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2; ctx2.beginPath(); ctx2.arc(p.px,p.py,10,0,Math.PI*2); ctx2.stroke(); }
+    });
+    if(bfeldSel.length===2){
+      const a=bfeldPts[bfeldSel[0]], b=bfeldPts[bfeldSel[1]];
+      if(Math.abs(b.x-a.x)>0.01){
+        const slope=(b.y-a.y)/(b.x-a.x);
+        ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2;
+        ctx2.beginPath(); ctx2.moveTo(a.px,a.py); ctx2.lineTo(b.px,b.py); ctx2.stroke();
+        const res=document.getElementById('bfeldResult');
+        if(res) res.innerHTML=`<b>ΔF/Δv = ${slope.toFixed(4)} N·s/m = q·B → B = ${slope.toFixed(4)} T</b>`;
+      }
+    } else {
+      const res=document.getElementById('bfeldResult');
+      if(res&&bfeldSel.length===0) res.innerHTML='';
+    }
+  }
+
+  function measure() {
+    const I=+document.getElementById('bfeldISlider').value;
+    const v_ms=+document.getElementById('bfeldVSlider').value;
+    const B=I*0.005;
+    const F=v_ms*B;
+    const c=document.getElementById('bfeldChart'); if(!c) return;
+    const P={l:58,r:16,t:20,b:36};
+    const gW=c.width-P.l-P.r, gH=c.height-P.t-P.b;
+    const vMax=10, fMax=1.1;
+    const px=P.l+(v_ms/vMax)*gW;
+    const py=P.t+gH-(F/fMax)*gH;
+    bfeldPts.push({x:v_ms,y:F,px,py});
+    const tb=document.getElementById('bfeldTbody'), tw=document.getElementById('bfeldTable');
+    if(tb&&tw){
+      tw.style.display='table';
+      tb.innerHTML+=`<tr><td>${B.toFixed(3)}</td><td>${parseFloat(v_ms).toFixed(1)}</td><td>${F.toFixed(3)}</td></tr>`;
+    }
+  }
+
+  function handleClick(mx,my) {
+    let best=-1, bestD=22;
+    bfeldPts.forEach((p,i)=>{
+      const d=Math.hypot(p.px-mx,p.py-my);
+      if(d<bestD){ bestD=d; best=i; }
+    });
+    if(best===-1) return;
+    const idx=bfeldSel.indexOf(best);
+    if(idx>=0) bfeldSel.splice(idx,1);
+    else{ if(bfeldSel.length>=2) bfeldSel=[bfeldSel[1]]; bfeldSel.push(best); }
+    drawBfeldChart(+document.getElementById('bfeldISlider').value);
+  }
+
   draw();
-  return { stop(){ cancelAnimationFrame(raf); } };
+  return { stop(){ cancelAnimationFrame(raf); }, measure, handleClick };
 }
 
 // ── Leistung & Wirkungsgrad ───────────────────────────────
@@ -5073,35 +5530,123 @@ function _simLeistung() {
   const cv = document.getElementById('leistCanvas');
   const ctx = cv.getContext('2d');
   let x=0, raf;
+  const leistPts=[];
+  let leistSel=[];
+
   function draw() {
-    const F = +document.getElementById('leistFSlider').value;
-    const eta = +document.getElementById('leistEtaSlider').value/100;
-    const v = F/50;
-    const P = (F*v).toFixed(0);
-    const Pnutz = (F*v*eta).toFixed(0);
+    const U = +document.getElementById('leistUSlider').value;
+    const I = +document.getElementById('leistISlider').value;
+    const P = U*I;
+    const R = U/I;
     ctx.clearRect(0,0,cv.width,cv.height);
     // Boden
     ctx.fillStyle='#e5e7eb'; ctx.fillRect(0,cv.height-30,cv.width,30);
-    // Block
+    // Block (speed proportional to P)
     ctx.fillStyle='#7c3aed';
     ctx.beginPath(); ctx.roundRect(x,cv.height-80,50,50,6); ctx.fill();
-    // Kraftpfeil
+    // Stromfluss Pfeil
     ctx.strokeStyle='#ef4444'; ctx.lineWidth=3;
-    ctx.beginPath(); ctx.moveTo(x+50,cv.height-55); ctx.lineTo(x+50+Math.min(80,F/3),cv.height-55); ctx.stroke();
-    ctx.fillStyle='#ef4444'; ctx.font='700 12px sans-serif'; ctx.fillText(`F=${F}N`,x+55,cv.height-58);
+    const plen=Math.min(80,P/3);
+    ctx.beginPath(); ctx.moveTo(x+50,cv.height-55); ctx.lineTo(x+50+plen,cv.height-55); ctx.stroke();
+    ctx.fillStyle='#ef4444'; ctx.font='700 12px sans-serif'; ctx.fillText(`P=${P.toFixed(0)}W`,x+55,cv.height-58);
     // Infos
     ctx.fillStyle='#1f2937'; ctx.font='700 14px sans-serif';
-    ctx.fillText(`P = F·v = ${P} W`,10,22);
-    ctx.fillStyle='#059669';
-    ctx.fillText(`P_nutz = η·P = ${Pnutz} W  (η=${(eta*100).toFixed(0)}%)`,10,44);
-    // Effizienzbalken
-    ctx.fillStyle='#e5e7eb'; ctx.fillRect(10,56,440,16); ctx.strokeStyle='#d1d5db'; ctx.lineWidth=1; ctx.strokeRect(10,56,440,16);
-    ctx.fillStyle='#059669'; ctx.fillRect(10,56,440*eta,16);
-    x = (x + v*0.5) % (cv.width + 60);
+    ctx.fillText(`U = ${U} V   I = ${parseFloat(I).toFixed(1)} A`,10,22);
+    ctx.fillStyle='#059669'; ctx.font='700 13px sans-serif';
+    ctx.fillText(`P = U·I = ${P.toFixed(1)} W   R = U/I = ${R.toFixed(1)} Ω`,10,44);
+    // update displays
+    const ud=document.getElementById('leistUDisp'); if(ud) ud.textContent=U;
+    const id=document.getElementById('leistIDisp'); if(id) id.textContent=parseFloat(I).toFixed(1).replace('.',',');
+    const pd=document.getElementById('leistPDisp'); if(pd) pd.textContent=P.toFixed(1).replace('.',',');
+    const rd=document.getElementById('leistRDisp'); if(rd) rd.textContent=R.toFixed(1).replace('.',',');
+    x=(x+P*0.005)%(cv.width+60);
+    drawLeistChart();
     raf = requestAnimationFrame(draw);
   }
+
+  function drawLeistChart() {
+    const c=document.getElementById('leistChart'); if(!c) return;
+    const ctx2=c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:58,r:16,t:20,b:36};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const iMax=10, pMax=250;
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#f0fdf4'; ctx2.fillRect(0,0,cW,cH);
+    // grid
+    ctx2.strokeStyle='#e5e7eb'; ctx2.lineWidth=1;
+    for(let i=1;i<=4;i++){
+      const y=P.t+(i/4)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+    }
+    for(let i=1;i<=4;i++){
+      const x=P.l+(i/4)*gW; ctx2.beginPath(); ctx2.moveTo(x,P.t); ctx2.lineTo(x,P.t+gH); ctx2.stroke();
+    }
+    // axes
+    ctx2.strokeStyle='#333'; ctx2.lineWidth=2;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
+    ctx2.fillText('I (A)', P.l+gW/2, cH-2);
+    ctx2.save(); ctx2.translate(12,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('P (W)',0,0); ctx2.restore();
+    ctx2.textAlign='right';
+    for(let i=0;i<=4;i++) ctx2.fillText((pMax*i/4).toFixed(0), P.l-4, P.t+gH-(i/4)*gH+4);
+    ctx2.textAlign='center';
+    for(let i=0;i<=4;i++) ctx2.fillText((iMax*i/4).toFixed(0), P.l+(i/4)*gW, P.t+gH+14);
+    function ptX(I){ return P.l+(I/iMax)*gW; }
+    function ptY(Pw){ return P.t+gH-(Pw/pMax)*gH; }
+    // measured points
+    leistPts.forEach((p,i)=>{
+      const sel=leistSel.includes(i);
+      ctx2.fillStyle=sel?'#f97316':'#dc2626';
+      ctx2.beginPath(); ctx2.arc(p.px,p.py,7,0,Math.PI*2); ctx2.fill();
+      if(sel){ ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2; ctx2.beginPath(); ctx2.arc(p.px,p.py,10,0,Math.PI*2); ctx2.stroke(); }
+    });
+    if(leistSel.length===2){
+      const a=leistPts[leistSel[0]], b=leistPts[leistSel[1]];
+      if(Math.abs(b.x-a.x)>0.01){
+        const slope=(b.y-a.y)/(b.x-a.x);
+        ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2;
+        ctx2.beginPath(); ctx2.moveTo(a.px,a.py); ctx2.lineTo(b.px,b.py); ctx2.stroke();
+        const res=document.getElementById('leistResult');
+        if(res) res.innerHTML=`<b>ΔP/ΔI = ${slope.toFixed(1)} W/A = U → Spannung U = ${slope.toFixed(1)} V</b>`;
+      }
+    } else {
+      const res=document.getElementById('leistResult');
+      if(res&&leistSel.length===0) res.innerHTML='';
+    }
+  }
+
+  function measure() {
+    const U=+document.getElementById('leistUSlider').value;
+    const I=+document.getElementById('leistISlider').value;
+    const Pw=U*I, R=U/I;
+    const c=document.getElementById('leistChart'); if(!c) return;
+    const P={l:58,r:16,t:20,b:36};
+    const gW=c.width-P.l-P.r, gH=c.height-P.t-P.b;
+    const iMax=10, pMax=250;
+    const px=P.l+(I/iMax)*gW;
+    const py=P.t+gH-(Pw/pMax)*gH;
+    leistPts.push({x:I,y:Pw,px,py});
+    const tb=document.getElementById('leistTbody'), tw=document.getElementById('leistTable');
+    if(tb&&tw){
+      tw.style.display='table';
+      tb.innerHTML+=`<tr><td>${U}</td><td>${parseFloat(I).toFixed(1)}</td><td>${Pw.toFixed(1)}</td><td>${R.toFixed(1)}</td></tr>`;
+    }
+  }
+
+  function handleClick(mx,my) {
+    let best=-1, bestD=22;
+    leistPts.forEach((p,i)=>{
+      const d=Math.hypot(p.px-mx,p.py-my);
+      if(d<bestD){ bestD=d; best=i; }
+    });
+    if(best===-1) return;
+    const idx=leistSel.indexOf(best);
+    if(idx>=0) leistSel.splice(idx,1);
+    else{ if(leistSel.length>=2) leistSel=[leistSel[1]]; leistSel.push(best); }
+    drawLeistChart();
+  }
+
   draw();
-  return { stop(){ cancelAnimationFrame(raf); } };
+  return { stop(){ cancelAnimationFrame(raf); }, measure, handleClick };
 }
 
 function _simSetV(v) { if (_sim) _sim.setV(parseFloat(v)); }
@@ -7063,6 +7608,24 @@ function _simEnergieerhaltung() {
     ctx2.fillStyle='#2563EB'; ctx2.fillRect(P.l+4,P.t+4,10,3); ctx2.fillText('E_pot',P.l+18,P.t+10);
     ctx2.fillStyle='#dc2626'; ctx2.fillRect(P.l+60,P.t+4,10,3); ctx2.fillText('E_kin',P.l+74,P.t+10);
     ctx2.fillStyle='#16a34a'; ctx2.fillRect(P.l+116,P.t+4,10,3); ctx2.fillText('E_ges',P.l+130,P.t+10);
+    // draw measured points (engMeas defined after this function)
+    if(typeof engMeas!=='undefined'){
+      const tStart2=engPts.length>0?engPts[0].t:0;
+      const Emax2=Math.max(E_tot*1.2,0.01);
+      engMeas.forEach((m,i)=>{
+        m.px=P.l+((m.t-tStart2)/Math.max(tWindow,curT-tStart2+1))*gW;
+        m.py=P.t+gH-(m.E_pot/Emax2)*gH;
+        const sel=typeof engSelArr!=='undefined'&&engSelArr.includes(i);
+        ctx2.fillStyle=sel?'#f97316':'#1d4ed8';
+        ctx2.beginPath(); ctx2.arc(m.px,m.py,5,0,Math.PI*2); ctx2.fill();
+        if(sel){ ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2; ctx2.beginPath(); ctx2.arc(m.px,m.py,8,0,Math.PI*2); ctx2.stroke(); }
+      });
+      if(typeof engSelArr!=='undefined'&&engSelArr.length===2){
+        const a=engMeas[engSelArr[0]], b=engMeas[engSelArr[1]];
+        ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2;
+        ctx2.beginPath(); ctx2.moveTo(a.px,a.py); ctx2.lineTo(b.px,b.py); ctx2.stroke();
+      }
+    }
     // add table row
     updateEngTable(curT, h, v, E_pot, E_kin);
   }
@@ -7088,6 +7651,8 @@ function _simEnergieerhaltung() {
   function stop() { if (animId) cancelAnimationFrame(animId); }
   function set(key, val) {
     startTime = null; engPts.length=0; engTableRows.length=0;
+    engMeas.length=0; engSelArr.length=0;
+    const res=document.getElementById('engResult'); if(res) res.innerHTML='';
     if (key === 'angle') {
       theta0 = val * Math.PI / 180;
       const lbl = document.getElementById('engAngleLabel');
@@ -7100,8 +7665,64 @@ function _simEnergieerhaltung() {
     }
   }
 
+  const engMeas = [];
+  let engSelArr = [];
+
+  function engMeasure() {
+    if(engPts.length===0) return;
+    const last=engPts[engPts.length-1];
+    const c=document.getElementById('engChart'); if(!c) return;
+    const P2={l:55,r:20,t:22,b:42};
+    const gW2=c.width-P2.l-P2.r, gH2=c.height-P2.t-P2.b;
+    const tStart=engPts[0].t;
+    const tWindow=8;
+    const Emax=Math.max(last.E_tot*1.2,0.01);
+    const curT=last.t;
+    function ptX2(tp){ return P2.l+((tp-tStart)/Math.max(tWindow,curT-tStart+1))*gW2; }
+    function ptY2(e){ return P2.t+gH2-(e/Emax)*gH2; }
+    const px=ptX2(last.t);
+    const py=ptY2(last.E_pot);
+    engMeas.push({t:last.t,E_pot:last.E_pot,E_kin:last.E_kin,E_tot:last.E_tot,px,py});
+  }
+
+  function engHandleClick(mx,my) {
+    if(engMeas.length===0) return;
+    // Recalculate pixel positions (they may drift as chart scrolls)
+    const c=document.getElementById('engChart'); if(!c) return;
+    const P2={l:55,r:20,t:22,b:42};
+    const gW2=c.width-P2.l-P2.r, gH2=c.height-P2.t-P2.b;
+    const tStart=engPts.length>0?engPts[0].t:0;
+    const curT=engPts.length>0?engPts[engPts.length-1].t:0;
+    const tWindow=8;
+    const Emax=engPts.length>0?Math.max(engPts[engPts.length-1].E_tot*1.2,0.01):1;
+    engMeas.forEach(p=>{
+      p.px=P2.l+((p.t-tStart)/Math.max(tWindow,curT-tStart+1))*gW2;
+      p.py=P2.t+gH2-(p.E_pot/Emax)*gH2;
+    });
+    let best=-1, bestD=22;
+    engMeas.forEach((p,i)=>{
+      const d=Math.hypot(p.px-mx,p.py-my);
+      if(d<bestD){ bestD=d; best=i; }
+    });
+    if(best===-1) return;
+    const idx=engSelArr.indexOf(best);
+    if(idx>=0) engSelArr.splice(idx,1);
+    else{ if(engSelArr.length>=2) engSelArr=[engSelArr[1]]; engSelArr.push(best); }
+    if(engSelArr.length===2){
+      const a=engMeas[engSelArr[0]], b=engMeas[engSelArr[1]];
+      const deltaEpot=Math.abs(b.E_pot-a.E_pot);
+      const deltaEkin=Math.abs(b.E_kin-a.E_kin);
+      const sum=((b.E_pot+b.E_kin)-(a.E_pot+a.E_kin));
+      const res=document.getElementById('engResult');
+      if(res) res.innerHTML=`<b>ΔE_pot + ΔE_kin = ${sum.toFixed(3)} J ≈ 0 → Energieerhaltung bestätigt!</b>`;
+    } else {
+      const res=document.getElementById('engResult');
+      if(res&&engSelArr.length===0) res.innerHTML='';
+    }
+  }
+
   animId = requestAnimationFrame(draw);
-  return { stop, set };
+  return { stop, set, measure: engMeasure, handleClick: engHandleClick };
 }
 
 // ============================================================
@@ -7115,6 +7736,8 @@ function _simImpuls() {
   let state = 'before'; // before | animating | after
   let animId = null;
   let b1x, b2x, b1v, b2v, animT = 0;
+  const impScatter = [];
+  let impSel = [];
 
   function fmt(n, d=1) { return n.toFixed(d).replace('.', ','); }
 
@@ -7188,54 +7811,75 @@ function _simImpuls() {
     const pNachEl = document.getElementById('impPnach');
     if (pVorEl) pVorEl.textContent = fmt(pVor) + ' kg·m/s';
     if (pNachEl) pNachEl.textContent = fmt(pNach, 1) + ' kg·m/s ✓';
-    drawImpChart(v1, v1a, v2a);
+    // add to scatter
+    const pMax_sc=Math.max(...impScatter.map(p=>Math.max(p.x,p.y)),pVor,pNach,5)*1.2;
+    const c=document.getElementById('impChart');
+    if(c){
+      const P={l:60,r:20,t:28,b:35};
+      const gW=c.width-P.l-P.r, gH=c.height-P.t-P.b;
+      const pM=Math.max(pVor,pNach,5)*1.3;
+      const px=P.l+(pVor/pM)*gW;
+      const py=P.t+gH-(pNach/pM)*gH;
+      impScatter.push({x:pVor,y:pNach,px,py});
+    }
+    drawImpChart();
+    updateImpTable(v1, v1a, v2a);
   }
 
-  function drawImpChart(v1_vor, v1_nach, v2_nach) {
+  function drawImpChart() {
     const c = document.getElementById('impChart'); if (!c) return;
     const ctx2 = c.getContext('2d'), cW=c.width, cH=c.height;
     const P={l:60,r:20,t:28,b:35};
     const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
     ctx2.clearRect(0,0,cW,cH);
     ctx2.fillStyle='#f8fafc'; ctx2.fillRect(0,0,cW,cH);
-    const p1_vor=m1*v1_vor, p2_vor=0, p1_nach=m1*v1_nach, p2_nach=m2*v2_nach;
-    const pMax=Math.max(p1_vor,p1_nach,p2_nach,5)*1.15;
-    const bW=38, cols=['Vor','Nach'];
-    const xs=[P.l+20, P.l+20+bW+8, P.l+gW/2+20, P.l+gW/2+20+bW+8];
+    const pM=Math.max(...impScatter.map(p=>Math.max(p.x,p.y)),5)*1.3;
+    // recalculate pixel positions
+    impScatter.forEach(p=>{
+      p.px=P.l+(p.x/pM)*gW;
+      p.py=P.t+gH-(p.y/pM)*gH;
+    });
     // grid
-    ctx2.strokeStyle='#f0f0f0'; ctx2.lineWidth=1;
+    ctx2.strokeStyle='#e5e7eb'; ctx2.lineWidth=1;
     for(let i=1;i<=4;i++){
       const y=P.t+(i/4)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+      const x=P.l+(i/4)*gW; ctx2.beginPath(); ctx2.moveTo(x,P.t); ctx2.lineTo(x,P.t+gH); ctx2.stroke();
     }
-    // y axis
+    // axes
     ctx2.strokeStyle='#333'; ctx2.lineWidth=2;
-    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.stroke();
-    ctx2.beginPath(); ctx2.moveTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
-    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='right';
-    for(let i=0;i<=4;i++) ctx2.fillText((pMax*i/4).toFixed(1), P.l-4, P.t+gH-(i/4)*gH+4);
-    ctx2.font='bold 11px sans-serif'; ctx2.fillStyle='#333'; ctx2.textAlign='center';
-    ctx2.fillText('Impuls p = m·v (kg·m/s)', P.l+gW/2, P.t-8);
-    function drawBar(x,h,color,label,val){
-      const bH=(h/pMax)*gH;
-      ctx2.fillStyle=color; ctx2.fillRect(x,P.t+gH-bH,bW,bH);
-      ctx2.font='10px sans-serif'; ctx2.fillStyle='#333'; ctx2.textAlign='center';
-      ctx2.fillText(label, x+bW/2, P.t+gH+14);
-      ctx2.fillText(val.toFixed(1), x+bW/2, P.t+gH+26);
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
+    ctx2.fillText('p_vor (kg·m/s)', P.l+gW/2, cH-2);
+    ctx2.save(); ctx2.translate(14,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('p_nach (kg·m/s)',0,0); ctx2.restore();
+    ctx2.textAlign='right';
+    for(let i=0;i<=4;i++) ctx2.fillText((pM*i/4).toFixed(1), P.l-4, P.t+gH-(i/4)*gH+4);
+    ctx2.textAlign='center';
+    for(let i=0;i<=4;i++) ctx2.fillText((pM*i/4).toFixed(1), P.l+(i/4)*gW, P.t+gH+14);
+    // reference line y=x (dashed)
+    ctx2.strokeStyle='#94a3b8'; ctx2.lineWidth=1.5; ctx2.setLineDash([5,4]);
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t); ctx2.stroke(); ctx2.setLineDash([]);
+    ctx2.font='9px sans-serif'; ctx2.fillStyle='#94a3b8'; ctx2.textAlign='left';
+    ctx2.fillText('p_vor=p_nach',P.l+4,P.t+14);
+    // scatter points
+    impScatter.forEach((p,i)=>{
+      const sel=impSel.includes(i);
+      ctx2.fillStyle=sel?'#f97316':'#7c3aed';
+      ctx2.beginPath(); ctx2.arc(p.px,p.py,7,0,Math.PI*2); ctx2.fill();
+      if(sel){ ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2; ctx2.beginPath(); ctx2.arc(p.px,p.py,10,0,Math.PI*2); ctx2.stroke(); }
+    });
+    if(impSel.length===2){
+      const a=impScatter[impSel[0]], b=impScatter[impSel[1]];
+      if(Math.abs(b.x-a.x)>0.01){
+        const slope=(b.y-a.y)/(b.x-a.x);
+        ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2;
+        ctx2.beginPath(); ctx2.moveTo(a.px,a.py); ctx2.lineTo(b.px,b.py); ctx2.stroke();
+        const res=document.getElementById('impResult');
+        if(res) res.innerHTML=`<b>Steigung = ${slope.toFixed(2)} ≈ 1 → Impulserhaltung bestätigt!</b>`;
+      }
+    } else {
+      const res=document.getElementById('impResult');
+      if(res&&impSel.length===0&&impScatter.length>0) res.innerHTML='';
     }
-    // Vor
-    ctx2.font='bold 10px sans-serif'; ctx2.fillStyle='#374151'; ctx2.textAlign='center';
-    ctx2.fillText('Vor Stoß', xs[0]+bW/2+4+bW/2, P.t-6);
-    drawBar(xs[0], p1_vor, '#dc2626cc', 'p₁', p1_vor);
-    drawBar(xs[1], p2_vor, '#2563EBcc', 'p₂', p2_vor);
-    // Nach
-    ctx2.fillText('Nach Stoß', xs[2]+bW/2+4+bW/2, P.t-6);
-    drawBar(xs[2], Math.abs(p1_nach), '#dc2626cc', "p₁'", p1_nach);
-    drawBar(xs[3], p2_nach, '#2563EBcc', "p₂'", p2_nach);
-    // divider
-    ctx2.strokeStyle='#94a3b8'; ctx2.lineWidth=1; ctx2.setLineDash([4,3]);
-    ctx2.beginPath(); ctx2.moveTo(P.l+gW/2, P.t); ctx2.lineTo(P.l+gW/2, P.t+gH); ctx2.stroke(); ctx2.setLineDash([]);
-    // update table
-    updateImpTable(v1_vor, v1_nach, v2_nach);
   }
 
   function updateImpTable(v1_vor, v1_nach, v2_nach){
@@ -7282,8 +7926,31 @@ function _simImpuls() {
     if (nEl) nEl.textContent = '–';
   }
 
+  function impHandleClick(mx,my) {
+    if(impScatter.length===0) return;
+    // recalculate positions based on current pM
+    const c=document.getElementById('impChart'); if(!c) return;
+    const P={l:60,r:20,t:28,b:35};
+    const gW=c.width-P.l-P.r, gH=c.height-P.t-P.b;
+    const pM=Math.max(...impScatter.map(p=>Math.max(p.x,p.y)),5)*1.3;
+    impScatter.forEach(p=>{
+      p.px=P.l+(p.x/pM)*gW;
+      p.py=P.t+gH-(p.y/pM)*gH;
+    });
+    let best=-1, bestD=22;
+    impScatter.forEach((p,i)=>{
+      const d=Math.hypot(p.px-mx,p.py-my);
+      if(d<bestD){ bestD=d; best=i; }
+    });
+    if(best===-1) return;
+    const idx=impSel.indexOf(best);
+    if(idx>=0) impSel.splice(idx,1);
+    else{ if(impSel.length>=2) impSel=[impSel[1]]; impSel.push(best); }
+    drawImpChart();
+  }
+
   animId = requestAnimationFrame(draw);
-  return { stop, set, stoss, reset };
+  return { stop, set, stoss, reset, handleClick: impHandleClick };
 }
 
 // ============================================================
@@ -7572,6 +8239,7 @@ function _simWellen() {
     if (alEl) alEl.textContent = fmt(A, 0);
 
     drawWelChart(f, T, lambda, A);
+    if(welMeas.length>0) drawWelChart2();
     animId = requestAnimationFrame(draw);
   }
 
@@ -7619,6 +8287,99 @@ function _simWellen() {
     tb.innerHTML=rows.map(r=>`<tr><td>${r.f.toFixed(1).replace('.',',')}</td><td>${r.T.toFixed(2).replace('.',',')}</td><td>${r.lambda.toFixed(0)}</td><td>${r.A.toFixed(0)}</td></tr>`).join('');
   }
 
+  const welMeas = [];
+  let welSel = [];
+
+  function welMeasure() {
+    const T=1/f, lambda=v_wave/f;
+    const c=document.getElementById('welChart2'); if(!c) return;
+    const P={l:55,r:16,t:20,b:36};
+    const gW=c.width-P.l-P.r, gH=c.height-P.t-P.b;
+    const tMax=2.1, lamMax=500;
+    const px=P.l+(T/tMax)*gW;
+    const py=P.t+gH-(lambda/lamMax)*gH;
+    welMeas.push({x:T,y:lambda,f,px,py});
+    drawWelChart2();
+  }
+
+  function drawWelChart2() {
+    const c=document.getElementById('welChart2'); if(!c) return;
+    const ctx2=c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:55,r:16,t:20,b:36};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const tMax=2.1, lamMax=500;
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#f0f9ff'; ctx2.fillRect(0,0,cW,cH);
+    // grid
+    ctx2.strokeStyle='#e5e7eb'; ctx2.lineWidth=1;
+    for(let i=1;i<=4;i++){
+      const y=P.t+(i/4)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+    }
+    for(let i=1;i<=4;i++){
+      const x=P.l+(i/4)*gW; ctx2.beginPath(); ctx2.moveTo(x,P.t); ctx2.lineTo(x,P.t+gH); ctx2.stroke();
+    }
+    // axes
+    ctx2.strokeStyle='#333'; ctx2.lineWidth=2;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
+    ctx2.fillText('T (s)', P.l+gW/2, cH-2);
+    ctx2.save(); ctx2.translate(14,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('λ (px)',0,0); ctx2.restore();
+    ctx2.textAlign='right';
+    for(let i=0;i<=4;i++) ctx2.fillText((lamMax*i/4).toFixed(0), P.l-4, P.t+gH-(i/4)*gH+4);
+    ctx2.textAlign='center';
+    for(let i=0;i<=4;i++) ctx2.fillText((tMax*i/4).toFixed(2), P.l+(i/4)*gW, P.t+gH+14);
+    // theory line (dashed): λ = v_wave * T
+    ctx2.strokeStyle='#2563eb'; ctx2.lineWidth=1.5; ctx2.setLineDash([5,4]);
+    ctx2.beginPath();
+    ctx2.moveTo(P.l, P.t+gH); // T=0, λ=0
+    // end at T=tMax or at λ=lamMax, whichever comes first
+    const tEnd=Math.min(tMax, lamMax/v_wave);
+    const lamEnd=v_wave*tEnd;
+    ctx2.lineTo(P.l+(tEnd/tMax)*gW, P.t+gH-(lamEnd/lamMax)*gH);
+    ctx2.stroke(); ctx2.setLineDash([]);
+    ctx2.font='9px sans-serif'; ctx2.fillStyle='#2563eb'; ctx2.textAlign='left';
+    ctx2.fillText(`v=${v_wave}px/s`, P.l+4, P.t+12);
+    // recalculate px/py
+    welMeas.forEach(m=>{
+      m.px=P.l+(m.x/tMax)*gW;
+      m.py=P.t+gH-(m.y/lamMax)*gH;
+    });
+    // measured points
+    welMeas.forEach((m,i)=>{
+      const sel=welSel.includes(i);
+      ctx2.fillStyle=sel?'#f97316':'#dc2626';
+      ctx2.beginPath(); ctx2.arc(m.px,m.py,7,0,Math.PI*2); ctx2.fill();
+      if(sel){ ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2; ctx2.beginPath(); ctx2.arc(m.px,m.py,10,0,Math.PI*2); ctx2.stroke(); }
+    });
+    if(welSel.length===2){
+      const a=welMeas[welSel[0]], b=welMeas[welSel[1]];
+      if(Math.abs(b.x-a.x)>0.001){
+        const slope=(b.y-a.y)/(b.x-a.x);
+        ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2;
+        ctx2.beginPath(); ctx2.moveTo(a.px,a.py); ctx2.lineTo(b.px,b.py); ctx2.stroke();
+        const res=document.getElementById('welResult');
+        if(res) res.innerHTML=`<b>Δλ/ΔT = ${slope.toFixed(0)} px/s = v_Welle</b>`;
+      }
+    } else {
+      const res=document.getElementById('welResult');
+      if(res&&welSel.length===0) res.innerHTML='';
+    }
+  }
+
+  function welHandleClick(mx,my) {
+    if(welMeas.length===0) return;
+    let best=-1, bestD=22;
+    welMeas.forEach((m,i)=>{
+      const d=Math.hypot(m.px-mx,m.py-my);
+      if(d<bestD){ bestD=d; best=i; }
+    });
+    if(best===-1) return;
+    const idx=welSel.indexOf(best);
+    if(idx>=0) welSel.splice(idx,1);
+    else{ if(welSel.length>=2) welSel=[welSel[1]]; welSel.push(best); }
+    drawWelChart2();
+  }
+
   function stop() { if (animId) cancelAnimationFrame(animId); }
   function set(key, val) {
     if (key === 'f') f = val;
@@ -7626,7 +8387,7 @@ function _simWellen() {
   }
 
   animId = requestAnimationFrame(draw);
-  return { stop, set };
+  return { stop, set, measure: welMeasure, handleClick: welHandleClick };
 }
 
 // ============================================================
