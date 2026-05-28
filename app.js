@@ -3590,11 +3590,16 @@ function openExperiment(expId) {
     modal.innerHTML = `
       <div class="sim-box">
         <button class="sim-x" onclick="closeExperiment()">✕</button>
-        <h3 class="sim-h3">🚀 Experiment: Beschleunigte Bewegung</h3>
-        <canvas id="beschAnim" width="460" height="90" style="width:100%;border-radius:8px;display:block;background:#f1f5f9"></canvas>
-        <div style="padding:5px 12px 2px;display:flex;gap:10px;align-items:center">
+        <h3 class="sim-h3">🚗 Gleichmäßig beschleunigte Bewegung</h3>
+        <canvas id="beschAnim" width="460" height="95" style="width:100%;border-radius:8px;display:block;background:#f1f5f9"></canvas>
+        <div style="display:flex;gap:6px;padding:5px 10px 2px;justify-content:center;flex-wrap:wrap">
+          <span style="background:#ede9fe;color:#5b21b6;padding:3px 12px;border-radius:20px;font-size:.82rem;font-weight:700">v = a · t</span>
+          <span style="background:#fce7f3;color:#9d174d;padding:3px 12px;border-radius:20px;font-size:.82rem;font-weight:700">s = ½ · a · t²</span>
+          <span style="background:#dcfce7;color:#166534;padding:3px 12px;border-radius:20px;font-size:.82rem;font-weight:700">a = konst. → Parabel!</span>
+        </div>
+        <div style="padding:4px 12px 2px;display:flex;gap:10px;align-items:center">
           <div style="flex:1">
-            <label style="font-weight:700;font-size:.82rem;color:#5B21B6">a = <span id="beschALabel">3,0</span> m/s²</label>
+            <label style="font-weight:700;font-size:.82rem;color:#5B21B6">Beschleunigung a = <span id="beschALabel">3,0</span> m/s²</label>
             <input type="range" id="beschASlider" min="0.5" max="10" step="0.5" value="3"
               oninput="_beschSetA(this.value)" style="width:100%;accent-color:#7C3AED">
           </div>
@@ -3610,25 +3615,25 @@ function openExperiment(expId) {
           <span>📐 a = <b id="beschACur">3,0</b> m/s²</span>
         </div>
         <div class="sim-btn-row">
-          <button class="sim-btn" onclick="_simMeasure()">📍 Jetzt messen</button>
+          <button class="sim-btn" onclick="_simMeasure()">📍 Messen</button>
           <button class="sim-btn" onclick="_beschReset()">↺ Neu starten</button>
         </div>
-        <p class="sim-hint">Drücke mehrmals auf <b>Jetzt messen</b> während das Auto fährt – die Punkte erscheinen im Diagramm. Klicke dann auf <b>zwei Punkte</b> um die Steigung (= Beschleunigung a) zu berechnen!</p>
-        <div class="sim-diagram-label">v-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(zwei Punkte anklicken → Steigung = Beschleunigung a)</span></div>
+        <p class="sim-hint">Drücke mehrmals auf <b>Messen</b> während das Auto fährt. Im v-t Diagramm siehst du: <b>v wächst gleichmäßig</b> mit der Zeit → das ist der Unterschied zur gleichförmigen Bewegung (wo v=konst.)! Klicke dann auf <b>zwei Punkte</b> → Steigung = a</p>
+        <div class="sim-diagram-label">v-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(Steigung der Geraden = Beschleunigung a = Δv/Δt)</span></div>
         <canvas id="beschChart" class="sim-chart-canvas" width="680" height="290"></canvas>
         <div id="beschResult" class="sim-result"></div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
           <div>
-            <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.8em;color:#7c3aed">(Parabel)</span></div>
+            <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.8em;color:#7c3aed">– Parabel (s = ½·a·t²)</span></div>
             <canvas id="beschCST" class="sim-chart-canvas" width="340" height="200"></canvas>
           </div>
           <div>
-            <div class="sim-diagram-label">a-t Diagramm <span style="font-weight:400;font-size:.8em;color:#dc2626">(a = konst.)</span></div>
+            <div class="sim-diagram-label">a-t Diagramm <span style="font-weight:400;font-size:.8em;color:#dc2626">– a konstant ≠ 0 (≠ gleichförmig!)</span></div>
             <canvas id="beschCAT" class="sim-chart-canvas" width="340" height="200"></canvas>
           </div>
         </div>
         <table class="sim-table" id="beschTable" style="display:none;margin-top:12px">
-          <thead><tr><th>Punkt</th><th>t (s)</th><th>v (m/s)</th></tr></thead>
+          <thead><tr><th>Punkt</th><th>t (s)</th><th>v (m/s)</th><th>s (m)</th></tr></thead>
           <tbody id="beschTbody"></tbody>
         </table>
       </div>`;
@@ -7280,6 +7285,11 @@ function _simBeschleunigung() {
     ctBig.lineTo(tX(maxT), vY(a * maxT));
     ctBig.stroke();
     ctBig.setLineDash([]);
+    // "v = a·t" Beschriftung an der theoretischen Linie
+    ctBig.fillStyle = 'rgba(59,130,246,.7)';
+    ctBig.font = 'bold 11px Nunito,sans-serif'; ctBig.textAlign = 'left';
+    const lblT = maxT * 0.55, lblV = a * lblT;
+    ctBig.fillText('v = a·t', tX(lblT) + 4, vY(lblV) - 6);
     // Achsen
     ctBig.strokeStyle = '#333'; ctBig.lineWidth = 2.5;
     ctBig.beginPath(); ctBig.moveTo(P.l, P.t); ctBig.lineTo(P.l, P.t+gH); ctBig.lineTo(P.l+gW, P.t+gH); ctBig.stroke();
@@ -7341,7 +7351,7 @@ function _simBeschleunigung() {
     if (!tb || !tw) return;
     tw.style.display = meas.length > 0 ? '' : 'none';
     tb.innerHTML = meas.map((m, i) =>
-      `<tr><td>${i+1}</td><td>${fmt(m.t,2)}</td><td>${fmt(m.v,2)}</td></tr>`
+      `<tr><td>${i+1}</td><td>${fmt(m.t,2)}</td><td>${fmt(m.v,2)}</td><td>${fmt(m.s,2)}</td></tr>`
     ).join('');
   }
 
@@ -7479,6 +7489,26 @@ function _simBeschleunigung() {
     ctA.fillStyle='#374151'; ctA.font='bold 10px sans-serif'; ctA.textAlign='left';
     ctA.fillText(`v = ${v.toFixed(1)} m/s`, 12, 18);
     ctA.fillText(`s = ${s.toFixed(1)} m  |  t = ${t.toFixed(1)} s`, 12, 33);
+    // Geschwindigkeits-Balken (rechts, wächst mit v)
+    const vFull = a * maxT || 1;
+    const barFill = Math.min(v / vFull, 1);
+    const bW=12, bH=Math.round(H*0.76), bX=W-bW-5, bY2=Math.round(H*0.10);
+    ctA.fillStyle='rgba(255,255,255,0.82)';
+    ctA.beginPath(); ctA.roundRect(bX-3, bY2-13, bW+6, bH+24, 4); ctA.fill();
+    ctA.fillStyle='rgba(124,58,237,0.10)';
+    ctA.beginPath(); ctA.roundRect(bX, bY2, bW, bH, 3); ctA.fill();
+    if(barFill>0){
+      const fillH2=Math.round(bH*barFill);
+      const grd=ctA.createLinearGradient(0,bY2+bH-fillH2,0,bY2+bH);
+      grd.addColorStop(0,'#7c3aed'); grd.addColorStop(1,'#dc2626');
+      ctA.fillStyle=grd;
+      ctA.beginPath(); ctA.roundRect(bX, bY2+bH-fillH2, bW, fillH2, 3); ctA.fill();
+    }
+    ctA.strokeStyle='rgba(124,58,237,0.25)'; ctA.lineWidth=0.8;
+    ctA.strokeRect(bX,bY2,bW,bH);
+    ctA.fillStyle='#5b21b6'; ctA.font='bold 8px sans-serif'; ctA.textAlign='center';
+    ctA.fillText('v', bX+bW/2, bY2-4);
+    ctA.fillText(fmt(v,0), bX+bW/2, bY2+bH+10);
   }
 
   // ── Frame-Loop ────────────────────────────────────────────
