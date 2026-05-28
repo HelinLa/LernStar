@@ -3688,98 +3688,121 @@ function openExperiment(expId) {
     modal.innerHTML = `
       <div class="sim-box">
         <button class="sim-x" onclick="closeExperiment()">✕</button>
-        <h3 class="sim-h3">🧱 Experiment: Newton F = m × a</h3>
-        <canvas id="newCanvas" width="460" height="180" style="width:100%;border-radius:8px;display:block"></canvas>
-        <div style="padding:8px 16px 4px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <div style="background:#fef2f2;border-radius:8px;padding:8px 10px">
-            <div style="font-size:.82rem;color:#991B1B;font-weight:700;margin-bottom:4px">Kraft F (1–50 N)</div>
-            <input type="range" id="newFSlider" min="1" max="50" step="1" value="20"
-              oninput="_newSet('f',this.value)" style="width:100%;accent-color:#DC2626">
-            <div style="text-align:center;font-weight:800;color:#991B1B"><span id="newFLabel">20</span> N</div>
+        <h3 class="sim-h3">🚀 Raketenstart zum Mond – F = m · a</h3>
+        <canvas id="rakCanvas" width="460" height="310" style="width:100%;border-radius:10px;display:block"></canvas>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;padding:6px 10px">
+          <div>
+            <label style="font-size:.78rem;font-weight:700;color:#f97316">🔥 Schubkraft: <span id="rakFLabel">500</span> N</label>
+            <input type="range" id="rakFSlider" min="100" max="2000" step="50" value="500" style="width:100%;accent-color:#f97316"
+              oninput="document.getElementById('rakFLabel').textContent=this.value;_rakUpdate()">
           </div>
-          <div style="background:#f0fdf4;border-radius:8px;padding:8px 10px">
-            <div style="font-size:.82rem;color:#15803D;font-weight:700;margin-bottom:4px">Masse m (1–10 kg)</div>
-            <input type="range" id="newMSlider" min="1" max="10" step="0.5" value="5"
-              oninput="_newSet('m',this.value)" style="width:100%;accent-color:#16A34A">
-            <div style="text-align:center;font-weight:800;color:#15803D"><span id="newMLabel">5,0</span> kg</div>
+          <div>
+            <label style="font-size:.78rem;font-weight:700;color:#0891b2">⚖️ Masse: <span id="rakMLabel">100</span> kg</label>
+            <input type="range" id="rakMSlider" min="20" max="500" step="10" value="100" style="width:100%;accent-color:#0891b2"
+              oninput="document.getElementById('rakMLabel').textContent=this.value;_rakUpdate()">
           </div>
+          <div>
+            <label style="font-size:.78rem;font-weight:700;color:#dc2626">⛽ Treibstoff: <span id="rakTLabel">100</span> %</label>
+            <input type="range" id="rakTSlider" min="20" max="200" step="10" value="100" style="width:100%;accent-color:#dc2626"
+              oninput="document.getElementById('rakTLabel').textContent=this.value;_rakUpdate()">
+          </div>
+          <div>
+            <label style="font-size:.78rem;font-weight:700;color:#6b21a8">💨 Luftwiderstand: <span id="rakLLabel">1,0</span></label>
+            <input type="range" id="rakLSlider" min="0" max="5" step="0.5" value="1" style="width:100%;accent-color:#6b21a8"
+              oninput="document.getElementById('rakLLabel').textContent=(+this.value).toFixed(1).replace('.',',');_rakUpdate()">
+          </div>
+        </div>
+        <div class="sim-info-row" style="font-size:.8rem">
+          <span>t = <b id="rakT">0,0</b> s</span>
+          <span>h = <b id="rakH">0</b> m</span>
+          <span>v = <b id="rakV">0,0</b> m/s</span>
+          <span>a = <b id="rakA">0,0</b> m/s²</span>
+          <span>⛽ <b id="rakFuel">100</b>%</span>
         </div>
         <div class="sim-btn-row">
-          <button class="sim-btn primary" id="newPlayBtn" onclick="_newToggle()">▶ Start</button>
-          <button class="sim-btn" onclick="_newReset()">↺ Neu</button>
-          <button class="sim-btn" onclick="_newMeasure()">📍 Messen</button>
+          <button class="sim-btn primary" id="rakPlayBtn" onclick="_rakToggle()">🚀 Starten!</button>
+          <button class="sim-btn" onclick="_rakReset()">↺ Neu</button>
         </div>
-        <div class="sim-info-row">
-          <span>F = <b id="newFVal">20</b> N</span>
-          <span>m = <b id="newMVal">5,0</b> kg</span>
-          <span>a = <b id="newAVal">4,0</b> m/s²</span>
+        <div id="rakResult" class="sim-result"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px;padding:0 4px">
+          <div>
+            <div class="sim-diagram-label" style="font-size:.75rem">h-t Diagramm</div>
+            <canvas id="rakHChart" width="200" height="120" style="width:100%;border:1px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+          </div>
+          <div>
+            <div class="sim-diagram-label" style="font-size:.75rem">v-t Diagramm</div>
+            <canvas id="rakVChart" width="200" height="120" style="width:100%;border:1px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+          </div>
+          <div>
+            <div class="sim-diagram-label" style="font-size:.75rem">F-t Diagramm</div>
+            <canvas id="rakFChart" width="200" height="120" style="width:100%;border:1px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+          </div>
         </div>
-        <div class="sim-diagram-label">a-F Diagramm (F = m·a)</div>
-        <canvas id="newChart" class="sim-chart-canvas" width="460" height="180"></canvas>
-        <div id="newResult" class="sim-result"></div>
-        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Klicke auf <b>zwei Messpunkte</b> im Diagramm um die Steigung zu berechnen! &nbsp;|&nbsp; Formel: <b>F = m · a</b></p>
-        <table class="sim-table" id="newTable" style="display:none">
-          <thead><tr><th>F (N)</th><th>m (kg)</th><th>a (m/s²)</th></tr></thead>
-          <tbody id="newTbody"></tbody>
+        <p class="sim-hint">Stelle Schubkraft und Masse ein → <b>🚀 Starten!</b> Wenn Treibstoff leer, fliegt die Rakete mit dem gewonnenen Schwung weiter! &nbsp;|&nbsp; <b>F = m · a</b></p>
+        <table class="sim-table" id="rakTable" style="display:none;margin-top:8px">
+          <thead><tr><th>t (s)</th><th>h (m)</th><th>v (m/s)</th><th>F_net (N)</th></tr></thead>
+          <tbody id="rakTbody"></tbody>
         </table>
       </div>`;
     document.body.appendChild(modal);
     _sim = _simNewton2();
-    const newChartEl = document.getElementById('newChart');
-    if (newChartEl) newChartEl.addEventListener('click', function(e) {
-      if (!_sim) return;
-      const r = this.getBoundingClientRect();
-      if (_sim.handleClick) _sim.handleClick(
-        (e.clientX - r.left) * (this.width / r.width),
-        (e.clientY - r.top)  * (this.height / r.height)
-      );
-    });
   } else if (expId === 'energieerhaltung') {
     modal.innerHTML = `
       <div class="sim-box">
         <button class="sim-x" onclick="closeExperiment()">✕</button>
-        <h3 class="sim-h3">🔋 Experiment: Energieerhaltung – Pendel</h3>
-        <canvas id="engCanvas" width="460" height="240" style="width:100%;border-radius:8px;display:block"></canvas>
-        <div style="padding:8px 16px 4px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <div style="background:#eff6ff;border-radius:8px;padding:8px 10px">
-            <div style="font-size:.82rem;color:#1D4ED8;font-weight:700;margin-bottom:4px">Startwinkel θ (10–60°)</div>
-            <input type="range" id="engAngleSlider" min="10" max="60" step="1" value="40"
-              oninput="_engSet('angle',this.value)" style="width:100%;accent-color:#2563EB">
-            <div style="text-align:center;font-weight:800;color:#1D4ED8"><span id="engAngleLabel">40</span>°</div>
+        <h3 class="sim-h3">🎢 Die verrückte Achterbahn – Energieerhaltung</h3>
+        <canvas id="achtCanvas" width="460" height="250" style="width:100%;border-radius:10px;display:block"></canvas>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px 10px;padding:6px 10px">
+          <div>
+            <label style="font-size:.78rem;font-weight:700;color:#16a34a">⛰️ Starthöhe: <span id="achtHLabel">10</span> m</label>
+            <input type="range" id="achtHSlider" min="2" max="20" step="1" value="10" style="width:100%;accent-color:#16a34a"
+              oninput="document.getElementById('achtHLabel').textContent=this.value;_achtUpdate()">
           </div>
-          <div style="background:#f0fdf4;border-radius:8px;padding:8px 10px">
-            <div style="font-size:.82rem;color:#15803D;font-weight:700;margin-bottom:4px">Länge L (0,5–2 m)</div>
-            <input type="range" id="engLSlider" min="0.5" max="2" step="0.1" value="1.0"
-              oninput="_engSet('l',this.value)" style="width:100%;accent-color:#16A34A">
-            <div style="text-align:center;font-weight:800;color:#15803D"><span id="engLLabel">1,0</span> m</div>
+          <div>
+            <label style="font-size:.78rem;font-weight:700;color:#dc2626">🔥 Reibung μ: <span id="achtFrLabel">0,05</span></label>
+            <input type="range" id="achtFrSlider" min="0" max="0.3" step="0.01" value="0.05" style="width:100%;accent-color:#dc2626"
+              oninput="document.getElementById('achtFrLabel').textContent=(+this.value).toFixed(2).replace('.',',');_achtUpdate()">
+          </div>
+          <div>
+            <label style="font-size:.78rem;font-weight:700;color:#7c3aed">⚖️ Masse: <span id="achtMLabel">5</span> kg</label>
+            <input type="range" id="achtMSlider" min="1" max="20" step="1" value="5" style="width:100%;accent-color:#7c3aed"
+              oninput="document.getElementById('achtMLabel').textContent=this.value;_achtUpdate()">
           </div>
         </div>
-        <div class="sim-info-row" style="margin-top:4px">
-          <span style="color:#2563EB">E_kin = <b id="engEkin">0,00</b> J</span>
-          <span style="color:#15803D">E_pot = <b id="engEpot">0,00</b> J</span>
-          <span>E_ges = <b id="engEges">0,00</b> J</span>
+        <div class="sim-info-row" style="font-size:.8rem">
+          <span>h = <b id="achtH">10,0</b> m</span>
+          <span style="color:#3b82f6">E_kin = <b id="achtEkin">0,0</b> J</span>
+          <span style="color:#16a34a">E_pot = <b id="achtEpot">490,5</b> J</span>
+          <span>E_ges = <b id="achtEges">490,5</b> J</span>
+          <span>v = <b id="achtV">0,0</b> m/s</span>
         </div>
-        <div class="sim-diagram-label">E(t) Diagramm – Energieerhaltung</div>
-        <canvas id="engChart" class="sim-chart-canvas" width="460" height="180"></canvas>
-        <div class="sim-btn-row"><button class="sim-btn" onclick="_simMeasure()">📍 Messen</button></div>
-        <div id="engResult" class="sim-result"></div>
-        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Klicke <b>Messen</b> bei verschiedenen Positionen, dann <b>zwei Punkte</b> im Diagramm → Energieerhaltung prüfen! &nbsp;|&nbsp; <b>E_pot = m·g·h</b> &nbsp;|&nbsp; <b>E_kin = ½·m·v²</b></p>
-        <table class="sim-table" id="engTable" style="display:none">
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" id="achtPlayBtn" onclick="_achtToggle()">▶ Starten!</button>
+          <button class="sim-btn" onclick="_achtReset()">↺ Neu</button>
+        </div>
+        <div id="achtResult" class="sim-result"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px;padding:0 4px">
+          <div>
+            <div class="sim-diagram-label" style="font-size:.75rem">E-t Diagramm</div>
+            <canvas id="achtEChart" width="200" height="120" style="width:100%;border:1px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+          </div>
+          <div>
+            <div class="sim-diagram-label" style="font-size:.75rem">v-t Diagramm</div>
+            <canvas id="achtVChart" width="200" height="120" style="width:100%;border:1px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+          </div>
+          <div>
+            <div class="sim-diagram-label" style="font-size:.75rem">h-t Diagramm</div>
+            <canvas id="achtHChart" width="200" height="120" style="width:100%;border:1px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+          </div>
+        </div>
+        <p class="sim-hint">Stelle Starthöhe und Reibung ein → <b>▶ Starten!</b> Beobachte wie E_kin und E_pot sich wandeln! &nbsp;|&nbsp; <b>E_kin = ½mv²</b> &nbsp;|&nbsp; <b>E_pot = mgh</b></p>
+        <table class="sim-table" id="achtTable" style="display:none;margin-top:8px">
           <thead><tr><th>t (s)</th><th>h (m)</th><th>v (m/s)</th><th>E_pot (J)</th><th>E_kin (J)</th></tr></thead>
-          <tbody id="engTbody"></tbody>
+          <tbody id="achtTbody"></tbody>
         </table>
       </div>`;
     document.body.appendChild(modal);
     _sim = _simEnergieerhaltung();
-    const engChartEl = document.getElementById('engChart');
-    if (engChartEl) engChartEl.addEventListener('click', function(e) {
-      if (!_sim) return;
-      const r = this.getBoundingClientRect();
-      if (_sim.handleClick) _sim.handleClick(
-        (e.clientX - r.left) * (this.width / r.width),
-        (e.clientY - r.top)  * (this.height / r.height)
-      );
-    });
   } else if (expId === 'impuls') {
     modal.innerHTML = `
       <div class="sim-box">
@@ -4053,41 +4076,62 @@ function openExperiment(expId) {
     _sim = _simWurf();
 
   } else if (expId === 'kreisbewegung') {
-    modal.innerHTML = `<div class="sim-box">
-      <button class="sim-x" onclick="closeExperiment()">✕</button>
-      <h3 class="sim-h3">⭕ Kreisbewegung & Zentripetalkraft</h3>
-      <canvas id="kreiCanvas" width="460" height="220" style="width:100%;border-radius:8px;display:block"></canvas>
-      <div style="padding:8px 16px">
-        <label style="font-weight:700;font-size:.85rem">Winkelgeschwindigkeit ω: <span id="kreiWLabel">2</span> rad/s</label>
-        <input type="range" id="kreiWSlider" min="1" max="8" value="2" step="0.5" style="width:100%;accent-color:#7c3aed"
-          oninput="document.getElementById('kreiWLabel').textContent=this.value">
-      </div>
-      <div class="sim-info-row" style="font-size:.82rem">
-        <span>ω = <b id="kreiOmegaDisp">2,0</b> rad/s</span>
-        <span>v = <b id="kreiVDisp">1,60</b> m/s</span>
-        <span>T = <b id="kreiTDisp">3,14</b> s</span>
-      </div>
-      <div class="sim-btn-row"><button class="sim-btn" onclick="_kreiMeasure()">📍 Messen</button></div>
-      <div class="sim-diagram-label">v–ω Diagramm (v = ω·r)</div>
-      <canvas id="kreiChart" class="sim-chart-canvas" width="460" height="160"></canvas>
-      <div id="kreiResult" class="sim-result"></div>
-      <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Klicke auf <b>zwei Messpunkte</b> im Diagramm um den Radius zu bestimmen! &nbsp;|&nbsp; Formel: <b>v = ω · r</b></p>
-      <table class="sim-table" id="kreiTable" style="display:none">
-        <thead><tr><th>ω (rad/s)</th><th>v (m/s)</th><th>T (s)</th></tr></thead>
-        <tbody id="kreiTbody"></tbody>
-      </table>
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">🎡 Das Mega-Karussell – Zentripetalkraft F = m·ω²·r</h3>
+        <canvas id="kreiCanvas" width="460" height="260" style="width:100%;border-radius:10px;display:block"></canvas>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px 10px;padding:6px 10px">
+          <div>
+            <label style="font-size:.78rem;font-weight:700;color:#7c3aed">📏 Radius: <span id="kreiRLabel">2,0</span> m</label>
+            <input type="range" id="kreiRSlider" min="1" max="5" step="0.5" value="2" style="width:100%;accent-color:#7c3aed"
+              oninput="document.getElementById('kreiRLabel').textContent=(+this.value).toFixed(1).replace('.',',');_kreiUpdate()">
+          </div>
+          <div>
+            <label style="font-size:.78rem;font-weight:700;color:#0891b2">⚖️ Masse: <span id="kreiMLabel">50</span> kg</label>
+            <input type="range" id="kreiMSlider" min="10" max="200" step="10" value="50" style="width:100%;accent-color:#0891b2"
+              oninput="document.getElementById('kreiMLabel').textContent=this.value;_kreiUpdate()">
+          </div>
+          <div>
+            <label style="font-size:.78rem;font-weight:700;color:#16a34a">🔄 Drehzahl: <span id="kreiOmLabel">2,0</span> rad/s</label>
+            <input type="range" id="kreiOmSlider" min="0.5" max="5" step="0.5" value="2" style="width:100%;accent-color:#16a34a"
+              oninput="document.getElementById('kreiOmLabel').textContent=(+this.value).toFixed(1).replace('.',',');_kreiUpdate()">
+          </div>
+        </div>
+        <div class="sim-info-row" style="font-size:.8rem">
+          <span>ω = <b id="kreiOmDisp">2,0</b> rad/s</span>
+          <span>v = <b id="kreiVDisp">4,0</b> m/s</span>
+          <span>F_z = <b id="kreiFzDisp">800</b> N</span>
+          <span>T = <b id="kreiTDisp">3,14</b> s</span>
+        </div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" id="kreiPlayBtn" onclick="_kreiToggle()">▶ Starten</button>
+          <button class="sim-btn" style="background:#dc2626;color:#fff;border-color:#dc2626" onclick="_kreiSchnur()">💥 Schnur reißt!</button>
+          <button class="sim-btn" onclick="_kreiReset()">↺ Neu</button>
+        </div>
+        <div id="kreiResult" class="sim-result"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px;padding:0 4px">
+          <div>
+            <div class="sim-diagram-label" style="font-size:.75rem">F_z-t Diagramm</div>
+            <canvas id="kreiFChart" width="200" height="120" style="width:100%;border:1px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+          </div>
+          <div>
+            <div class="sim-diagram-label" style="font-size:.75rem">v-t Diagramm</div>
+            <canvas id="kreiVChart" width="200" height="120" style="width:100%;border:1px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+          </div>
+          <div>
+            <div class="sim-diagram-label" style="font-size:.75rem">F_z-r Diagramm</div>
+            <canvas id="kreiRChart" width="200" height="120" style="width:100%;border:1px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+          </div>
+        </div>
+        <p class="sim-hint">Ändere Radius oder Drehzahl → beobachte wie F_z steigt! Drücke <b>💥 Schnur reißt!</b> wenn die Kraft zu groß wird! &nbsp;|&nbsp; <b>F = m·ω²·r</b></p>
+        <table class="sim-table" id="kreiTable" style="display:none;margin-top:8px">
+          <thead><tr><th>t (s)</th><th>ω (rad/s)</th><th>v (m/s)</th><th>F_z (N)</th></tr></thead>
+          <tbody id="kreiTbody"></tbody>
+        </table>
       </div>`;
     document.body.appendChild(modal);
     _sim = _simKreis();
-    const kreiChartEl = document.getElementById('kreiChart');
-    if (kreiChartEl) kreiChartEl.addEventListener('click', function(e) {
-      if (!_sim) return;
-      const r = this.getBoundingClientRect();
-      if (_sim.handleClick) _sim.handleClick(
-        (e.clientX - r.left) * (this.width / r.width),
-        (e.clientY - r.top)  * (this.height / r.height)
-      );
-    });
 
   } else if (expId === 'zentripetalkraft') {
     modal.innerHTML = `<div class="sim-box">
@@ -4981,170 +5025,259 @@ function _simWurf() {
   return { stop(){ running=false; if(raf) cancelAnimationFrame(raf); }, toggle, reset, update };
 }
 
-// ── Kreisbewegung ─────────────────────────────────────────
+// ── Kreisbewegung – Das Mega-Karussell ────────────────────
 function _simKreis() {
   const cv = document.getElementById('kreiCanvas');
+  if (!cv) return {};
   const ctx = cv.getContext('2d');
-  const cx=cv.width/2, cy=cv.height/2, r_px=80, r_m=0.8; // r=0.8m physical
-  let angle=0, raf;
-  const kreiMeas = [];
-  let kreiSel = [];
+  const W = cv.width, H = cv.height;
+  let running = false, raf = null, simT = 0, last = null;
+  let schnurGebrochen = false, schnurAngle = 0;
+  let flyX = 0, flyY = 0, flyVx = 0, flyVy = 0;
+  const pts = [];
 
-  function draw() {
-    const omega = +document.getElementById('kreiWSlider').value;
-    const v_ms = omega * r_m; // v = ω·r in m/s
-    const T_s = (2*Math.PI/omega).toFixed(2);
-    ctx.clearRect(0,0,cv.width,cv.height);
-    ctx.fillStyle='#f5f3ff'; ctx.fillRect(0,0,cv.width,cv.height);
-    // Kreis
-    ctx.strokeStyle='#c4b5fd'; ctx.lineWidth=2; ctx.setLineDash([5,5]);
-    ctx.beginPath(); ctx.arc(cx,cy,r_px,0,Math.PI*2); ctx.stroke(); ctx.setLineDash([]);
-    // Mittelpunkt
-    ctx.fillStyle='#7c3aed'; ctx.beginPath(); ctx.arc(cx,cy,5,0,Math.PI*2); ctx.fill();
-    // Faden
-    const bx=cx+r_px*Math.cos(angle), by=cy+r_px*Math.sin(angle);
-    ctx.strokeStyle='#7c3aed'; ctx.lineWidth=2;
-    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(bx,by); ctx.stroke();
-    // Ball
-    ctx.fillStyle='#f97316'; ctx.beginPath(); ctx.arc(bx,by,12,0,Math.PI*2); ctx.fill();
-    // Geschwindigkeitspfeil (tangential)
-    const vlen=Math.min(v_ms*15, 60);
-    const vx=-Math.sin(angle)*vlen, vy=Math.cos(angle)*vlen;
-    ctx.strokeStyle='#10b981'; ctx.lineWidth=3;
-    ctx.beginPath(); ctx.moveTo(bx,by); ctx.lineTo(bx+vx,by+vy); ctx.stroke();
-    // Zentripetalkraft (nach innen)
-    const fx=cx-bx, fy=cy-by, flen2=Math.sqrt(fx*fx+fy*fy);
-    ctx.strokeStyle='#ef4444'; ctx.lineWidth=3;
-    ctx.beginPath(); ctx.moveTo(bx,by); ctx.lineTo(bx+fx/flen2*35,by+fy/flen2*35); ctx.stroke();
-    // Labels
-    ctx.fillStyle='#10b981'; ctx.font='700 12px sans-serif'; ctx.fillText('v (Geschwindigkeit)',8,18);
-    ctx.fillStyle='#ef4444'; ctx.fillText('F_z (Zentripetalkraft)',8,36);
-    ctx.fillStyle='#1f2937'; ctx.fillText(`ω = ${omega} rad/s  v = ${v_ms.toFixed(1)} m/s  r = ${r_m} m`,8,54);
-    // update display
-    const od=document.getElementById('kreiOmegaDisp'), vd=document.getElementById('kreiVDisp'), td=document.getElementById('kreiTDisp');
-    if(od) od.textContent=parseFloat(omega).toFixed(1).replace('.',',');
-    if(vd) vd.textContent=v_ms.toFixed(2).replace('.',',');
-    if(td) td.textContent=T_s.replace('.',',');
-    angle += omega*0.02;
-    drawKreiChart();
-    raf = requestAnimationFrame(draw);
+  function getP() {
+    return {
+      r:  +document.getElementById('kreiRSlider').value,
+      m:  +document.getElementById('kreiMSlider').value,
+      om: +document.getElementById('kreiOmSlider').value
+    };
   }
+  function fmt(n,d=1){ return n.toFixed(d).replace('.',','); }
 
-  function drawKreiChart() {
-    const c = document.getElementById('kreiChart'); if (!c) return;
-    const ctx2 = c.getContext('2d'), cW=c.width, cH=c.height;
-    const P={l:55,r:20,t:22,b:38};
-    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
-    const omMax=10, vMax=10; // ω up to 10 rad/s, v up to 10 m/s
-    ctx2.clearRect(0,0,cW,cH);
-    ctx2.fillStyle='#f5f3ff'; ctx2.fillRect(0,0,cW,cH);
-    // grid
-    ctx2.strokeStyle='#ece9f8'; ctx2.lineWidth=1;
-    for(let i=1;i<=5;i++){
-      const y=P.t+(i/5)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
-      const x=P.l+(i/5)*gW; ctx2.beginPath(); ctx2.moveTo(x,P.t); ctx2.lineTo(x,P.t+gH); ctx2.stroke();
-    }
-    // axes
-    ctx2.strokeStyle='#333'; ctx2.lineWidth=2;
-    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
-    ctx2.fillStyle='#333';
-    ctx2.beginPath(); ctx2.moveTo(P.l+gW,P.t+gH); ctx2.lineTo(P.l+gW+7,P.t+gH-3); ctx2.lineTo(P.l+gW+7,P.t+gH+3); ctx2.fill();
-    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l-3,P.t+8); ctx2.lineTo(P.l+3,P.t+8); ctx2.fill();
-    // labels
-    ctx2.font='bold 12px Nunito,sans-serif'; ctx2.fillStyle='#333'; ctx2.textAlign='center';
-    ctx2.fillText('ω (rad/s)', P.l+gW/2, cH-2);
-    ctx2.save(); ctx2.translate(14,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('v (m/s)',0,0); ctx2.restore();
-    // ticks
-    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
-    for(let i=0;i<=5;i++) ctx2.fillText((omMax*i/5).toFixed(0), P.l+(i/5)*gW, P.t+gH+13);
-    ctx2.textAlign='right';
-    for(let i=0;i<=5;i++) ctx2.fillText((vMax*i/5).toFixed(0), P.l-4, P.t+gH-(i/5)*gH+4);
-    // theoretical line v = ω·r
-    ctx2.strokeStyle='#7c3aed44'; ctx2.lineWidth=1.5; ctx2.setLineDash([5,4]);
-    ctx2.beginPath();
-    ctx2.moveTo(P.l, P.t+gH);
-    ctx2.lineTo(P.l+gW, P.t+gH-(Math.min(omMax*r_m,vMax)/vMax)*gH);
-    ctx2.stroke(); ctx2.setLineDash([]);
-    ctx2.font='11px sans-serif'; ctx2.fillStyle='#7c3aed'; ctx2.textAlign='left';
-    ctx2.fillText('v=ω·r', P.l+4, P.t+12);
-    // current ω point
-    const omega_cur = +document.getElementById('kreiWSlider').value;
-    const v_cur = omega_cur * r_m;
-    const ccx=P.l+(omega_cur/omMax)*gW, ccy=P.t+gH-(Math.min(v_cur,vMax)/vMax)*gH;
-    ctx2.fillStyle='#7c3aed';
-    ctx2.beginPath(); ctx2.arc(ccx,ccy,6,0,Math.PI*2); ctx2.fill();
-    // slope line + result when 2 selected
-    if (kreiSel.length === 2) {
-      const [i1,i2] = [...kreiSel].sort((a,b)=>kreiMeas[a].omega-kreiMeas[b].omega);
-      const p1=kreiMeas[i1], p2=kreiMeas[i2];
-      const pxFn = mp => P.l+(mp.omega/omMax)*gW;
-      const pyFn = mp => P.t+gH-(Math.min(mp.v,vMax)/vMax)*gH;
-      ctx2.strokeStyle='#F97316'; ctx2.lineWidth=3;
-      ctx2.beginPath(); ctx2.moveTo(pxFn(p1),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p2)); ctx2.stroke();
-      ctx2.strokeStyle='#EF4444'; ctx2.lineWidth=1.5; ctx2.setLineDash([4,3]);
-      ctx2.beginPath();
-      ctx2.moveTo(pxFn(p1),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p2));
-      ctx2.stroke(); ctx2.setLineDash([]);
-      const dom=parseFloat((p2.omega-p1.omega).toFixed(2));
-      const dv=parseFloat((p2.v-p1.v).toFixed(3));
-      if(Math.abs(dom)>0){
-        const r_calc=(dv/dom).toFixed(3);
-        const res=document.getElementById('kreiResult');
-        if(res) res.innerHTML='Steigung = Δv ÷ Δω = <b>'+dv.toFixed(2)+' m/s</b> ÷ <b>'+dom.toFixed(1)+' rad/s</b> = <b class="sim-v-result">'+r_calc+' m</b> → Das ist der Radius r!';
+  function draw(ts) {
+    if (running && !schnurGebrochen) {
+      if (last !== null) {
+        const dt = Math.min((ts - last) / 1000, 0.05);
+        simT += dt;
       }
+      last = ts;
     }
-    // measured points
-    kreiMeas.forEach((mp,idx) => {
-      const isSel = kreiSel.includes(idx);
-      ctx2.fillStyle = isSel ? '#F97316' : '#dc2626';
-      ctx2.strokeStyle = isSel ? '#C2410C' : '#b91c1c';
-      ctx2.lineWidth=2;
-      const mx=P.l+(mp.omega/omMax)*gW, my=P.t+gH-(Math.min(mp.v,vMax)/vMax)*gH;
-      ctx2.beginPath(); ctx2.arc(mx,my,isSel?9:6,0,Math.PI*2); ctx2.fill(); ctx2.stroke();
-      ctx2.fillStyle='#fff'; ctx2.font='bold 9px Nunito,sans-serif'; ctx2.textAlign='center';
-      ctx2.fillText(idx+1, mx, my+3);
-    });
+    const p = getP();
+    const fz = p.m * p.om * p.om * p.r;
+    const v  = p.om * p.r;
+    const T  = 2 * Math.PI / p.om;
+    const od=document.getElementById('kreiOmDisp'), vd=document.getElementById('kreiVDisp');
+    const fd=document.getElementById('kreiFzDisp'), td=document.getElementById('kreiTDisp');
+    if(od) od.textContent=fmt(p.om,1);
+    if(vd) vd.textContent=fmt(v,1);
+    if(fd) fd.textContent=fz.toFixed(0);
+    if(td) td.textContent=fmt(T,2);
+
+    ctx.clearRect(0,0,W,H);
+    const sky=ctx.createLinearGradient(0,0,0,H);
+    sky.addColorStop(0,'#bfdbfe'); sky.addColorStop(1,'#e0f2fe');
+    ctx.fillStyle=sky; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#4ade80'; ctx.fillRect(0,H-28,W,28);
+    ctx.fillStyle='#86efac'; ctx.fillRect(0,H-28,W,8);
+
+    const CX=W/2, CY=H*0.42;
+    const r_px=Math.min((p.r/5)*(W*0.33), W*0.4);
+    const nG=6;
+    const ang0=running?simT*p.om:(schnurGebrochen?schnurAngle:0);
+
+    // Center pole
+    ctx.strokeStyle='#92400e'; ctx.lineWidth=10;
+    ctx.beginPath(); ctx.moveTo(CX,H-28); ctx.lineTo(CX,CY-22); ctx.stroke();
+    ctx.fillStyle='#dc2626';
+    ctx.beginPath(); ctx.arc(CX,CY-22,20,0,Math.PI*2); ctx.fill();
+    ctx.strokeStyle='#b91c1c'; ctx.lineWidth=2; ctx.stroke();
+
+    if (!schnurGebrochen) {
+      for(let i=0;i<nG;i++){
+        const a=ang0+(i/nG)*Math.PI*2;
+        const gx=CX+r_px*Math.cos(a), gy=CY+r_px*Math.sin(a)*0.32;
+        ctx.strokeStyle='#a78bfa'; ctx.lineWidth=2;
+        ctx.beginPath(); ctx.moveTo(CX,CY-22); ctx.lineTo(gx,gy-8); ctx.stroke();
+        const cols=['#f97316','#3b82f6','#a855f7','#10b981','#f59e0b','#ef4444'];
+        ctx.fillStyle=cols[i];
+        ctx.beginPath();
+        if(ctx.roundRect) ctx.roundRect(gx-10,gy-8,20,18,4);
+        else ctx.rect(gx-10,gy-8,20,18);
+        ctx.fill(); ctx.strokeStyle='rgba(0,0,0,0.3)'; ctx.lineWidth=1; ctx.stroke();
+        // Person silhouette
+        ctx.fillStyle='rgba(0,0,0,0.5)';
+        ctx.beginPath(); ctx.arc(gx,gy-14,4,0,Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(gx,gy-10); ctx.lineTo(gx,gy-4); ctx.strokeStyle='rgba(0,0,0,0.5)'; ctx.lineWidth=1.5; ctx.stroke();
+
+        if(running && i===0){
+          // Centripetal arrow (red, toward center)
+          const arrowLen=Math.min(fz/40,48);
+          const dx=CX-gx, dy=CY-gy, dist=Math.sqrt(dx*dx+dy*dy);
+          const nx=dx/dist, ny=dy/dist;
+          ctx.strokeStyle='#dc2626'; ctx.lineWidth=3;
+          ctx.beginPath(); ctx.moveTo(gx,gy); ctx.lineTo(gx+nx*arrowLen,gy+ny*arrowLen); ctx.stroke();
+          ctx.fillStyle='#dc2626';
+          ctx.beginPath();
+          const ax=gx+nx*arrowLen, ay=gy+ny*arrowLen;
+          const px2=-ny, py2=nx;
+          ctx.moveTo(ax,ay); ctx.lineTo(ax-nx*8+px2*5,ay-ny*8+py2*5); ctx.lineTo(ax-nx*8-px2*5,ay-ny*8-py2*5);
+          ctx.fill();
+          ctx.fillStyle='#dc2626'; ctx.font='bold 10px sans-serif'; ctx.textAlign='center';
+          ctx.fillText('F_z='+fz.toFixed(0)+'N', gx+nx*(arrowLen/2+12), gy+ny*(arrowLen/2+12)-7);
+          // Tangential arrow (green)
+          const tx=-Math.sin(a), ty=Math.cos(a)*0.32;
+          const tl=Math.sqrt(tx*tx+ty*ty), vLen=Math.min(v*9,50);
+          const tnx=tx/tl, tny=ty/tl;
+          ctx.strokeStyle='#10b981'; ctx.lineWidth=3;
+          ctx.beginPath(); ctx.moveTo(gx,gy); ctx.lineTo(gx+tnx*vLen,gy+tny*vLen); ctx.stroke();
+          ctx.fillStyle='#10b981';
+          ctx.beginPath();
+          const vax=gx+tnx*vLen, vay=gy+tny*vLen;
+          const vpx=-tny, vpy=tnx;
+          ctx.moveTo(vax,vay); ctx.lineTo(vax-tnx*7+vpx*4,vay-tny*7+vpy*4); ctx.lineTo(vax-tnx*7-vpx*4,vay-tny*7-vpy*4);
+          ctx.fill();
+          ctx.fillStyle='#10b981'; ctx.font='bold 10px sans-serif'; ctx.textAlign='left';
+          ctx.fillText('v='+fmt(v,1)+'m/s', vax+4, vay-2);
+        }
+      }
+    } else {
+      // Remaining gondolas (stationary)
+      for(let i=1;i<nG;i++){
+        const a=schnurAngle+(i/nG)*Math.PI*2;
+        const gx=CX+r_px*Math.cos(a), gy=CY+r_px*Math.sin(a)*0.32;
+        ctx.strokeStyle='#a78bfa'; ctx.lineWidth=2;
+        ctx.beginPath(); ctx.moveTo(CX,CY-22); ctx.lineTo(gx,gy-8); ctx.stroke();
+        const cols=['#3b82f6','#a855f7','#10b981','#f59e0b','#ef4444'];
+        ctx.fillStyle=cols[i-1];
+        ctx.beginPath(); ctx.rect(gx-10,gy-8,20,18); ctx.fill();
+        ctx.strokeStyle='rgba(0,0,0,0.3)'; ctx.lineWidth=1; ctx.stroke();
+      }
+      // Flying gondola
+      flyX+=flyVx; flyY+=flyVy; flyVy+=0.2;
+      ctx.fillStyle='#f97316';
+      ctx.beginPath();
+      if(ctx.roundRect) ctx.roundRect(flyX-10,flyY-8,20,18,4); else ctx.rect(flyX-10,flyY-8,20,18);
+      ctx.fill(); ctx.strokeStyle='#ea580c'; ctx.lineWidth=1.5; ctx.stroke();
+      // Explosion text
+      ctx.font='24px sans-serif'; ctx.textAlign='center';
+      ctx.fillText('💥', CX+r_px*Math.cos(schnurAngle)*0.85, CY+r_px*Math.sin(schnurAngle)*0.32*0.85);
+    }
+
+    // Info badge
+    ctx.fillStyle='rgba(255,255,255,0.92)'; ctx.strokeStyle='#e5e7eb'; ctx.lineWidth=1;
+    ctx.beginPath(); if(ctx.roundRect) ctx.roundRect(8,8,196,68,6); else ctx.rect(8,8,196,68); ctx.fill(); ctx.stroke();
+    ctx.fillStyle='#1f2937'; ctx.font='bold 12px sans-serif'; ctx.textAlign='left';
+    ctx.fillText('F = m·ω²·r', 14,25);
+    ctx.font='11px sans-serif';
+    ctx.fillText('= '+p.m+'·'+fmt(p.om,1)+'²·'+fmt(p.r,1)+' = '+fz.toFixed(1)+' N', 14,41);
+    ctx.fillText('v = ω·r = '+fmt(v,1)+' m/s    T = '+fmt(T,2)+' s', 14,57);
+
+    if(running && !schnurGebrochen && (pts.length===0 || simT-pts[pts.length-1].t>0.15)){
+      pts.push({t:simT, fz, v, r:p.r});
+      if(pts.length>400) pts.shift();
+    }
+    drawKreiMini('kreiFChart', pts, 'fz', 'F_z (N)', '#dc2626');
+    drawKreiMini('kreiVChart', pts, 'v', 'v (m/s)', '#10b981');
+    drawKreiRChart(p);
+    raf=requestAnimationFrame(draw);
   }
 
-  function kreiMeasure() {
-    const omega = +document.getElementById('kreiWSlider').value;
-    const v_ms = omega * r_m;
-    const T_s = 2*Math.PI/omega;
-    kreiMeas.push({omega:parseFloat(omega.toFixed(2)), v:parseFloat(v_ms.toFixed(3)), T:parseFloat(T_s.toFixed(3))});
-    kreiSel=[];
-    const res=document.getElementById('kreiResult');
-    if(res) res.innerHTML='';
-    updateKreiTable();
-  }
-
-  function updateKreiTable() {
-    const tb=document.getElementById('kreiTbody'), tw=document.getElementById('kreiTable');
-    if(!tb||!tw) return;
-    if(kreiMeas.length>0) tw.style.display='table';
-    tb.innerHTML=kreiMeas.map(mp=>`<tr><td>${mp.omega.toFixed(2).replace('.',',')}</td><td>${mp.v.toFixed(3).replace('.',',')}</td><td>${mp.T.toFixed(3).replace('.',',')}</td></tr>`).join('');
-  }
-
-  function handleClick(mx, my) {
-    const cW=460, cH=160;
-    const P={l:55,r:20,t:22,b:38};
+  function drawKreiMini(id, data, yKey, yLabel, color){
+    const c=document.getElementById(id); if(!c) return;
+    const c2=c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:36,r:8,t:10,b:24};
     const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
-    const omMax=10, vMax=10;
-    const pxFn = mp => P.l+(mp.omega/omMax)*gW;
-    const pyFn = mp => P.t+gH-(Math.min(mp.v,vMax)/vMax)*gH;
-    let closest=-1, minD=24;
-    kreiMeas.forEach((mp,i) => {
-      const d=Math.hypot(pxFn(mp)-mx, pyFn(mp)-my);
-      if(d<minD){ minD=d; closest=i; }
-    });
-    if(closest<0) return;
-    if(kreiSel.includes(closest)) kreiSel=kreiSel.filter(i=>i!==closest);
-    else if(kreiSel.length<2) kreiSel.push(closest);
-    else kreiSel=[closest];
-    drawKreiChart();
+    c2.clearRect(0,0,cW,cH); c2.fillStyle='#fff'; c2.fillRect(0,0,cW,cH);
+    c2.strokeStyle='#333'; c2.lineWidth=1.5;
+    c2.beginPath(); c2.moveTo(P.l,P.t); c2.lineTo(P.l,P.t+gH); c2.lineTo(P.l+gW,P.t+gH); c2.stroke();
+    if(data.length<2){
+      c2.fillStyle='#aaa'; c2.font='9px sans-serif'; c2.textAlign='center';
+      c2.fillText('Start...', P.l+gW/2, P.t+gH/2+4); return;
+    }
+    const xs=data.map(d=>d.t), ys=data.map(d=>d[yKey]);
+    const x0=xs[0], x1=xs[xs.length-1]||1;
+    const y0=0, y1=Math.max(...ys)*1.1||1;
+    c2.strokeStyle=color; c2.lineWidth=2;
+    c2.beginPath();
+    data.forEach((d,i)=>{
+      const px=P.l+((d.t-x0)/(x1-x0))*gW;
+      const py=P.t+gH-((d[yKey]-y0)/(y1-y0))*gH;
+      i===0?c2.moveTo(px,py):c2.lineTo(px,py);
+    }); c2.stroke();
+    c2.fillStyle='#555'; c2.font='8px sans-serif'; c2.textAlign='center';
+    c2.fillText('t (s)', P.l+gW/2, cH-2);
+    c2.save(); c2.translate(9,P.t+gH/2); c2.rotate(-Math.PI/2); c2.fillText(yLabel,0,0); c2.restore();
+    c2.textAlign='right'; c2.fillText(y1.toFixed(0), P.l-2, P.t+8);
+    c2.textAlign='center'; c2.fillText(x1.toFixed(1), P.l+gW, P.t+gH+10);
   }
 
-  draw();
-  return { stop(){ cancelAnimationFrame(raf); }, measure: kreiMeasure, handleClick };
+  function drawKreiRChart(p){
+    const c=document.getElementById('kreiRChart'); if(!c) return;
+    const c2=c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:36,r:8,t:10,b:24};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    c2.clearRect(0,0,cW,cH); c2.fillStyle='#fff'; c2.fillRect(0,0,cW,cH);
+    const rMax=5, fMax=p.m*p.om*p.om*5*1.15+1;
+    c2.strokeStyle='#333'; c2.lineWidth=1.5;
+    c2.beginPath(); c2.moveTo(P.l,P.t); c2.lineTo(P.l,P.t+gH); c2.lineTo(P.l+gW,P.t+gH); c2.stroke();
+    // theoretical F_z vs r line
+    c2.strokeStyle='#dc262655'; c2.lineWidth=1.5; c2.setLineDash([4,3]);
+    c2.beginPath();
+    for(let ri=0;ri<=rMax;ri+=0.05){
+      const fi=p.m*p.om*p.om*ri;
+      const px=P.l+(ri/rMax)*gW, py=P.t+gH-(Math.min(fi,fMax)/fMax)*gH;
+      ri===0?c2.moveTo(px,py):c2.lineTo(px,py);
+    } c2.stroke(); c2.setLineDash([]);
+    // current point
+    const fzC=p.m*p.om*p.om*p.r;
+    const cpx=P.l+(p.r/rMax)*gW, cpy=P.t+gH-(Math.min(fzC,fMax)/fMax)*gH;
+    c2.fillStyle='#dc2626'; c2.beginPath(); c2.arc(cpx,cpy,5,0,Math.PI*2); c2.fill();
+    c2.fillStyle='#555'; c2.font='8px sans-serif'; c2.textAlign='center';
+    c2.fillText('r (m)', P.l+gW/2, cH-2);
+    c2.save(); c2.translate(9,P.t+gH/2); c2.rotate(-Math.PI/2); c2.fillText('F_z (N)',0,0); c2.restore();
+    c2.textAlign='center';
+    for(let i=0;i<=5;i++) c2.fillText(i, P.l+(i/5)*gW, P.t+gH+10);
+  }
+
+  function toggle(){
+    running=!running; last=null;
+    if(running) schnurGebrochen=false;
+    const btn=document.getElementById('kreiPlayBtn');
+    if(btn) btn.textContent=running?'⏸ Pause':'▶ Starten';
+  }
+  function reset(){
+    running=false; last=null; simT=0; schnurGebrochen=false; pts.length=0;
+    const btn=document.getElementById('kreiPlayBtn'); if(btn) btn.textContent='▶ Starten';
+    const res=document.getElementById('kreiResult'); if(res) res.innerHTML='';
+    const tb=document.getElementById('kreiTbody'), tw=document.getElementById('kreiTable');
+    if(tb) tb.innerHTML=''; if(tw) tw.style.display='none';
+  }
+  function update(){
+    const p=getP();
+    const fz=p.m*p.om*p.om*p.r, v=p.om*p.r, T=2*Math.PI/p.om;
+    const od=document.getElementById('kreiOmDisp'), vd=document.getElementById('kreiVDisp');
+    const fd=document.getElementById('kreiFzDisp'), td=document.getElementById('kreiTDisp');
+    if(od) od.textContent=fmt(p.om,1); if(vd) vd.textContent=fmt(v,1);
+    if(fd) fd.textContent=fz.toFixed(0); if(td) td.textContent=fmt(T,2);
+  }
+  function schnurReisst(){
+    if(!running) return;
+    schnurGebrochen=true;
+    const p=getP();
+    schnurAngle=simT*p.om;
+    const r_px=Math.min((p.r/5)*(W*0.33), W*0.4);
+    flyX=W/2+r_px*Math.cos(schnurAngle);
+    flyY=H*0.42+r_px*Math.sin(schnurAngle)*0.32;
+    const v=p.om*p.r;
+    const tx=-Math.sin(schnurAngle), ty=Math.cos(schnurAngle)*0.32;
+    const tl=Math.sqrt(tx*tx+ty*ty);
+    flyVx=(tx/tl)*v*0.8; flyVy=(ty/tl)*v*0.8;
+    const fz=p.m*p.om*p.om*p.r;
+    const res=document.getElementById('kreiResult');
+    if(res) res.innerHTML=`💥 Die Kette reißt! F_z = <b>${fz.toFixed(0)} N</b> → Gondel fliegt tangential! <b>v = ${fmt(v,1)} m/s</b>`;
+    const tb=document.getElementById('kreiTbody'), tw=document.getElementById('kreiTable');
+    if(tw) tw.style.display='table';
+    if(tb){
+      const row=document.createElement('tr');
+      row.innerHTML=`<td>${fmt(simT,1)}</td><td>${fmt(p.om,1)}</td><td>${fmt(v,1)}</td><td>${fz.toFixed(0)}</td>`;
+      tb.prepend(row);
+    }
+  }
+  function stop(){ if(raf) cancelAnimationFrame(raf); }
+
+  raf=requestAnimationFrame(draw);
+  return { stop, toggle, reset, update, schnurReisst };
 }
 
 // ── Zentripetalkraft ──────────────────────────────────────
@@ -6368,6 +6501,16 @@ function _newSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
 function _newToggle(){ if (_sim) _sim.toggle(); }
 function _newReset(){ if (_sim) _sim.reset(); }
 function _engSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
+function _rakToggle(){ if (_sim) _sim.toggle(); }
+function _rakReset(){ if (_sim) _sim.reset(); }
+function _rakUpdate(){ if (_sim) _sim.update(); }
+function _achtToggle(){ if (_sim) _sim.toggle(); }
+function _achtReset(){ if (_sim) _sim.reset(); }
+function _achtUpdate(){ if (_sim) _sim.update(); }
+function _kreiToggle(){ if (_sim) _sim.toggle(); }
+function _kreiReset(){ if (_sim) _sim.reset(); }
+function _kreiSchnur(){ if (_sim) _sim.schnurReisst(); }
+function _kreiUpdate(){ if (_sim) _sim.update(); }
 function _impSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
 function _impStoss(){ if (_sim) _sim.stoss(); }
 function _impReset(){ if (_sim) _sim.reset(); }
@@ -7564,18 +7707,219 @@ function _simFreierFall() {
 }
 
 // ============================================================
-// SIM 7: NEWTON F = m × a
+// SIM 7: RAKETENSTART ZUM MOND – F = m · a
 // ============================================================
 function _simNewton2() {
-  const canvas = document.getElementById('newCanvas');
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
-  let F = 20, m = 5, running = false, t = 0, last = null, raf = null;
+  const cv = document.getElementById('rakCanvas');
+  if (!cv) return {};
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const g = 9.81;
+  let running = false, raf = null, last = null;
+  let t = 0, h = 0, v = 0, fuelPct = 100;
+  const pts = [];
 
-  function fmt(n, d=1) { return n.toFixed(d).replace('.', ','); }
+  function getP(){
+    return {
+      F:  +document.getElementById('rakFSlider').value,
+      m:  +document.getElementById('rakMSlider').value,
+      tf: +document.getElementById('rakTSlider').value,
+      drag: +document.getElementById('rakLSlider').value
+    };
+  }
+  function fmt(n,d=1){ return n.toFixed(d).replace('.',','); }
 
+  function draw(ts){
+    if(running){
+      if(last!==null){
+        const dt=Math.min((ts-last)/1000, 0.04);
+        const p=getP();
+        const fuelDur=(p.tf/100)*60;
+        const hasFuel=t<fuelDur;
+        fuelPct=hasFuel?Math.max(0,100-(t/fuelDur)*100):0;
+        const thrust=hasFuel?p.F:0;
+        const dragF=p.drag*0.008*v*Math.abs(v);
+        const fnet=thrust-p.m*g-dragF;
+        const a=fnet/p.m;
+        v+=a*dt; h+=v*dt;
+        if(h<0){ h=0; if(v<0) v=0; running=false;
+          const res=document.getElementById('rakResult');
+          if(res&&t>1) res.innerHTML=`🏁 Gelandet! Max h = <b>${Math.round(Math.max(...pts.map(d=>d.h)))} m</b>`;
+        }
+        t+=dt;
+        if(pts.length===0||t-pts[pts.length-1].t>0.4){
+          const fnetAbs=Math.abs(thrust-p.m*g-dragF);
+          pts.push({t,h,v:Math.max(v,0),fnet:fnetAbs});
+          if(pts.length>200) pts.shift();
+        }
+        // Milestones
+        const res=document.getElementById('rakResult');
+        if(!hasFuel&&res&&!res.innerHTML.includes('Treibstoff')&&!res.innerHTML.includes('Gelandet')&&t>2){
+          res.innerHTML=`⛽ Treibstoff leer! v = <b>${fmt(v,1)} m/s</b> – freier Flug!`;
+        }
+        if(h>1000&&res&&!res.innerHTML.includes('1000')) res.innerHTML=`🚀 1 km Höhe erreicht! v = <b>${fmt(v,1)} m/s</b>`;
+        // Update info
+        const tE=document.getElementById('rakT'), hE=document.getElementById('rakH');
+        const vE=document.getElementById('rakV'), aE=document.getElementById('rakA');
+        const fE=document.getElementById('rakFuel');
+        if(tE) tE.textContent=fmt(t,1); if(hE) hE.textContent=Math.round(h);
+        if(vE) vE.textContent=fmt(v,1); if(aE) aE.textContent=fmt(a,1);
+        if(fE) fE.textContent=Math.round(fuelPct);
+      }
+      last=ts;
+    }
+
+    // === DRAW ===
+    ctx.clearRect(0,0,W,H);
+    const p=getP();
+    const fuelDur=(p.tf/100)*60;
+    const hasFuel=t<fuelDur;
+    const skyG=ctx.createLinearGradient(0,0,0,H);
+    const darkness=Math.min(h/8000,1);
+    skyG.addColorStop(0,`rgba(${Math.round(15+darkness*0)},${Math.round(15+darkness*0)},${Math.round(40+darkness*0)},1)`);
+    skyG.addColorStop(0,h>4000?'#060618':'#1e3a8a');
+    skyG.addColorStop(0.5,h>2000?'#1e40af':'#3b82f6');
+    skyG.addColorStop(1,'#93c5fd');
+    ctx.fillStyle=skyG; ctx.fillRect(0,0,W,H);
+    // Stars
+    if(h>2000){
+      const starAlpha=Math.min((h-2000)/5000,0.9);
+      ctx.fillStyle=`rgba(255,255,255,${starAlpha})`;
+      for(let i=0;i<25;i++){
+        ctx.beginPath(); ctx.arc(((i*173+31)%W),((i*107+17)%(H*0.75)),1.2,0,Math.PI*2); ctx.fill();
+      }
+    }
+    // Ground
+    const groundY=H-35;
+    ctx.fillStyle='#4ade80'; ctx.fillRect(0,groundY,W,35);
+    ctx.fillStyle='#d4b483'; ctx.fillRect(0,groundY+8,W,27);
+    // Launch pad
+    ctx.fillStyle='#6b7280'; ctx.fillRect(W/2-35,groundY-10,70,10);
+    ctx.fillStyle='#9ca3af'; ctx.fillRect(W/2-18,groundY-28,36,20);
+    // Rocket visual position
+    const maxVisH=Math.max(h+300,800);
+    const rkBase=groundY-20-(h/maxVisH)*(groundY-80);
+    const rkX=W/2, rkY=Math.max(70,rkBase);
+    // Flame
+    if(running&&hasFuel){
+      const flH=28+Math.random()*18;
+      const flG=ctx.createLinearGradient(rkX,rkY+22,rkX,rkY+22+flH);
+      flG.addColorStop(0,'#fff'); flG.addColorStop(0.3,'#fbbf24'); flG.addColorStop(1,'rgba(239,68,68,0)');
+      ctx.fillStyle=flG;
+      ctx.beginPath(); ctx.moveTo(rkX-11,rkY+22); ctx.lineTo(rkX,rkY+22+flH); ctx.lineTo(rkX+11,rkY+22); ctx.fill();
+    }
+    // Rocket body
+    ctx.fillStyle='#e2e8f0';
+    ctx.beginPath(); ctx.rect(rkX-13,rkY-32,26,54); ctx.fill();
+    ctx.strokeStyle='#94a3b8'; ctx.lineWidth=1.5; ctx.stroke();
+    // Nose
+    ctx.fillStyle='#dc2626';
+    ctx.beginPath(); ctx.moveTo(rkX-13,rkY-32); ctx.lineTo(rkX,rkY-58); ctx.lineTo(rkX+13,rkY-32); ctx.fill();
+    // Fins
+    ctx.fillStyle='#3b82f6';
+    ctx.beginPath(); ctx.moveTo(rkX-13,rkY+18); ctx.lineTo(rkX-24,rkY+36); ctx.lineTo(rkX-13,rkY+36); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(rkX+13,rkY+18); ctx.lineTo(rkX+24,rkY+36); ctx.lineTo(rkX+13,rkY+36); ctx.fill();
+    // Window
+    ctx.fillStyle='#bfdbfe'; ctx.beginPath(); ctx.arc(rkX,rkY-12,7,0,Math.PI*2); ctx.fill();
+    ctx.strokeStyle='#1d4ed8'; ctx.lineWidth=1.5; ctx.stroke();
+    // Fuel bar
+    const fbX=W-28, fbY=H*0.28, fbH=H*0.38;
+    ctx.fillStyle='#1f2937'; ctx.fillRect(fbX,fbY,16,fbH);
+    ctx.fillStyle=fuelPct>30?'#f97316':'#dc2626';
+    const fill=fuelPct/100*fbH;
+    ctx.fillRect(fbX,fbY+fbH-fill,16,fill);
+    ctx.fillStyle='#fff'; ctx.font='bold 9px sans-serif'; ctx.textAlign='center';
+    ctx.fillText('⛽',fbX+8,fbY-4); ctx.fillText(Math.round(fuelPct)+'%',fbX+8,fbY+fbH+12);
+    // Info badge
+    ctx.fillStyle='rgba(255,255,255,0.92)';
+    ctx.beginPath(); if(ctx.roundRect) ctx.roundRect(6,6,192,74,6); else ctx.rect(6,6,192,74);
+    ctx.fill(); ctx.strokeStyle='#e2e8f0'; ctx.lineWidth=1; ctx.stroke();
+    ctx.fillStyle='#1f2937'; ctx.font='bold 11px sans-serif'; ctx.textAlign='left';
+    ctx.fillText('F = m · a', 12,22);
+    ctx.font='10px sans-serif';
+    const dragF2=p.drag*0.008*v*Math.abs(v);
+    const fnet2=(hasFuel?p.F:0)-p.m*g-dragF2;
+    ctx.fillText('Schub = '+(hasFuel?p.F:0)+' N',12,37);
+    ctx.fillText('Schwere = '+(p.m*g).toFixed(0)+' N',12,52);
+    ctx.fillText('F_net = '+fnet2.toFixed(0)+' N → a = '+(fnet2/p.m).toFixed(1)+' m/s²',12,67);
+    drawRakChart('rakHChart',pts,'h','h (m)','#0891b2');
+    drawRakChart('rakVChart',pts,'v','v (m/s)','#16a34a');
+    drawRakChart('rakFChart',pts,'fnet','F (N)','#f97316');
+    updateRakTable();
+    raf=requestAnimationFrame(draw);
+  }
+
+  function drawRakChart(id,data,yKey,yLabel,color){
+    const c=document.getElementById(id); if(!c) return;
+    const c2=c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:42,r:8,t:10,b:24};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    c2.clearRect(0,0,cW,cH); c2.fillStyle='#fff'; c2.fillRect(0,0,cW,cH);
+    c2.strokeStyle='#e5e7eb'; c2.lineWidth=1;
+    for(let i=1;i<=4;i++){ c2.beginPath(); c2.moveTo(P.l,P.t+(i/4)*gH); c2.lineTo(P.l+gW,P.t+(i/4)*gH); c2.stroke(); }
+    c2.strokeStyle='#333'; c2.lineWidth=1.5;
+    c2.beginPath(); c2.moveTo(P.l,P.t); c2.lineTo(P.l,P.t+gH); c2.lineTo(P.l+gW,P.t+gH); c2.stroke();
+    if(data.length<2){
+      c2.fillStyle='#aaa'; c2.font='9px sans-serif'; c2.textAlign='center';
+      c2.fillText('Start...', P.l+gW/2, P.t+gH/2+4); return;
+    }
+    const t0=data[0].t, t1=data[data.length-1].t||1;
+    const y1=Math.max(...data.map(d=>d[yKey]))*1.1||1;
+    c2.strokeStyle=color; c2.lineWidth=2;
+    c2.beginPath();
+    data.forEach((d,i)=>{
+      const px=P.l+((d.t-t0)/(t1-t0))*gW;
+      const py=P.t+gH-(d[yKey]/y1)*gH;
+      i===0?c2.moveTo(px,py):c2.lineTo(px,py);
+    }); c2.stroke();
+    c2.fillStyle='#555'; c2.font='8px sans-serif'; c2.textAlign='center';
+    c2.fillText('t (s)', P.l+gW/2, cH-2);
+    c2.save(); c2.translate(10,P.t+gH/2); c2.rotate(-Math.PI/2); c2.fillText(yLabel,0,0); c2.restore();
+    c2.textAlign='right'; c2.fillText(y1>999?(y1/1000).toFixed(1)+'k':y1.toFixed(0), P.l-2, P.t+8);
+  }
+
+  function updateRakTable(){
+    const tb=document.getElementById('rakTbody'), tw=document.getElementById('rakTable');
+    if(!tb||!tw) return;
+    if(pts.length>0) tw.style.display='table';
+    tb.innerHTML=pts.slice(-8).map(d=>
+      `<tr><td>${fmt(d.t,1)}</td><td>${Math.round(d.h)}</td><td>${fmt(d.v,1)}</td><td>${d.fnet.toFixed(0)}</td></tr>`
+    ).join('');
+  }
+
+  function toggle(){
+    running=!running; last=null;
+    const btn=document.getElementById('rakPlayBtn');
+    if(btn) btn.textContent=running?'⏸ Pause':'🚀 Starten!';
+  }
+  function reset(){
+    running=false; last=null; t=0; h=0; v=0; fuelPct=100; pts.length=0;
+    const btn=document.getElementById('rakPlayBtn'); if(btn) btn.textContent='🚀 Starten!';
+    const res=document.getElementById('rakResult'); if(res) res.innerHTML='';
+    ['rakT','rakH','rakV','rakA','rakFuel'].forEach((id,i)=>{
+      const el=document.getElementById(id); if(el) el.textContent=['0,0','0','0,0','0,0','100'][i];
+    });
+    const tb=document.getElementById('rakTbody'), tw=document.getElementById('rakTable');
+    if(tb) tb.innerHTML=''; if(tw) tw.style.display='none';
+  }
+  function update(){
+    const p=getP();
+    const a0=(p.F-p.m*g)/p.m;
+    const res=document.getElementById('rakResult');
+    if(res&&!running) res.innerHTML=`a₀ = (${p.F}N − ${(p.m*g).toFixed(0)}N) / ${p.m}kg = <b>${a0.toFixed(2)} m/s²</b>`;
+  }
+  function stop(){ if(raf) cancelAnimationFrame(raf); }
+
+  raf=requestAnimationFrame(draw);
+  return { stop, toggle, reset, update };
+}
+
+// ============================================================
+// SIM 7b: OLD NEWTON (dead code removed – replaced by Raketenstart)
+// ============================================================
+function _simNewton2_OLD_DEAD() {
   function draw(ts) {
-    if (running) {
+    if (false) {
       if (last !== null) {
         const dt = Math.min((ts - last) / 1000, 0.05);
         t += dt;
@@ -7782,18 +8126,257 @@ function _simNewton2() {
 }
 
 // ============================================================
-// SIM 8: ENERGIEERHALTUNG – PENDEL
+// SIM 8: DIE VERRÜCKTE ACHTERBAHN – ENERGIEERHALTUNG
 // ============================================================
 function _simEnergieerhaltung() {
-  const canvas = document.getElementById('engCanvas');
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
-  const g = 9.81, M = 1.0; // mass kg
-  let theta0 = 40 * Math.PI / 180, L = 1.0;
-  let animId = null, startTime = null;
+  const cv = document.getElementById('achtCanvas');
+  if (!cv) return {};
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const g = 9.81;
+  let running = false, raf = null, last = null;
+  let xPos = 0, t = 0, v = 0, distTrav = 0;
+  const pts = [];
 
-  function fmt(n, d=2) { return n.toFixed(d).replace('.', ','); }
+  // Track segments: normalized x [0..1], normalized height nh [0..1]
+  const trackSegs = [
+    {x:0,nh:1},{x:0.14,nh:0},{x:0.27,nh:0.65},{x:0.41,nh:0.1},
+    {x:0.54,nh:0.4},{x:0.68,nh:0.05},{x:0.83,nh:0.22},{x:1.0,nh:0}
+  ];
+  const trackLen = 150; // total track length in meters
 
+  function getP(){
+    return {
+      h0: +document.getElementById('achtHSlider').value,
+      mu: +document.getElementById('achtFrSlider').value,
+      m:  +document.getElementById('achtMSlider').value
+    };
+  }
+  function fmt(n,d=1){ return n.toFixed(d).replace('.',','); }
+
+  function interpH(xn, h0){
+    for(let i=1;i<trackSegs.length;i++){
+      if(xn<=trackSegs[i].x){
+        const frac=(xn-trackSegs[i-1].x)/(trackSegs[i].x-trackSegs[i-1].x);
+        return (trackSegs[i-1].nh+frac*(trackSegs[i].nh-trackSegs[i-1].nh))*h0;
+      }
+    }
+    return 0;
+  }
+
+  function draw(ts){
+    if(running){
+      if(last!==null){
+        const dt=Math.min((ts-last)/1000,0.04);
+        const p=getP();
+        const E0=p.m*g*p.h0;
+        const hC=interpH(xPos,p.h0);
+        const Erib=p.mu*p.m*g*distTrav;
+        const Ekin=Math.max(0,E0-p.m*g*hC-Erib);
+        v=Math.sqrt(2*Ekin/p.m);
+        if(v<0.05&&xPos>0.05){
+          running=false;
+          const res=document.getElementById('achtResult');
+          if(res) res.innerHTML=`🛑 Wagen stoppt bei h = <b>${fmt(hC,1)} m</b>! Reibung fraß <b>${Erib.toFixed(1)} J</b> von <b>${E0.toFixed(1)} J</b>`;
+        } else {
+          xPos=Math.min(xPos+(v/trackLen)*dt, 1.0);
+          distTrav+=v*dt; t+=dt;
+          if(xPos>=1.0){
+            running=false;
+            const res=document.getElementById('achtResult');
+            if(res) res.innerHTML=`🏁 Ziel! v = <b>${fmt(v,1)} m/s</b> &nbsp;|&nbsp; Reibungsenergie: <b>${Erib.toFixed(1)} J</b>`;
+          }
+        }
+        const hN=interpH(xPos,p.h0);
+        const Erib2=p.mu*p.m*g*distTrav;
+        const Ekin2=Math.max(0,E0-p.m*g*hN-Erib2);
+        const Epot2=p.m*g*hN;
+        const hEl=document.getElementById('achtH'), vEl=document.getElementById('achtV');
+        const ekEl=document.getElementById('achtEkin'), epEl=document.getElementById('achtEpot'), egEl=document.getElementById('achtEges');
+        if(hEl) hEl.textContent=fmt(hN,1);
+        if(vEl) vEl.textContent=fmt(v,1);
+        if(ekEl) ekEl.textContent=Ekin2.toFixed(1);
+        if(epEl) epEl.textContent=Epot2.toFixed(1);
+        if(egEl) egEl.textContent=E0.toFixed(1);
+        if(pts.length===0||t-pts[pts.length-1].t>0.25){
+          pts.push({t,h:hN,v,ekin:Ekin2,epot:Epot2,etot:E0});
+          if(pts.length>250) pts.shift();
+        }
+      }
+      last=ts;
+    }
+
+    // === DRAW ===
+    ctx.clearRect(0,0,W,H);
+    const p=getP();
+    const groundY=H-20;
+    const scY=Math.min((H-50)/(p.h0*1.15+0.1), 14);
+
+    // Sky
+    const skyG=ctx.createLinearGradient(0,0,0,H);
+    skyG.addColorStop(0,'#bfdbfe'); skyG.addColorStop(1,'#dbeafe');
+    ctx.fillStyle=skyG; ctx.fillRect(0,0,W,H);
+
+    // Build track points
+    const tPts=[];
+    for(let i=0;i<=120;i++){
+      const xn=i/120;
+      const hh=interpH(xn,p.h0);
+      const px=28+xn*(W-56), py=groundY-hh*scY;
+      tPts.push({px,py});
+    }
+
+    // Track fill
+    ctx.beginPath();
+    ctx.moveTo(tPts[0].px,groundY);
+    tPts.forEach(pt=>ctx.lineTo(pt.px,pt.py));
+    ctx.lineTo(tPts[tPts.length-1].px,groundY);
+    ctx.closePath();
+    ctx.fillStyle='#78716c'; ctx.fill();
+
+    // Track surface
+    ctx.beginPath();
+    tPts.forEach((pt,i)=>i===0?ctx.moveTo(pt.px,pt.py):ctx.lineTo(pt.px,pt.py));
+    ctx.strokeStyle='#1c1917'; ctx.lineWidth=3; ctx.stroke();
+
+    // Rails dashed highlight
+    ctx.strokeStyle='rgba(168,162,158,0.5)'; ctx.lineWidth=1; ctx.setLineDash([4,6]);
+    ctx.stroke(); ctx.setLineDash([]);
+
+    // Ground
+    ctx.fillStyle='#4ade80'; ctx.fillRect(0,groundY,W,H-groundY);
+
+    // Cart
+    const ci=Math.min(Math.round(xPos*120),120);
+    const cPt=tPts[ci]||tPts[tPts.length-1];
+    const prev2=ci>0?tPts[ci-1]:tPts[0];
+    const next2=ci<120?tPts[ci+1]:tPts[120];
+    const slp=Math.atan2(next2.py-prev2.py, next2.px-prev2.px);
+    ctx.save();
+    ctx.translate(cPt.px, cPt.py);
+    ctx.rotate(slp);
+    ctx.fillStyle='#f97316';
+    ctx.beginPath(); if(ctx.roundRect) ctx.roundRect(-14,-16,28,16,3); else ctx.rect(-14,-16,28,16);
+    ctx.fill(); ctx.strokeStyle='#ea580c'; ctx.lineWidth=1.5; ctx.stroke();
+    // Wheels
+    ctx.fillStyle='#1f2937';
+    ctx.beginPath(); ctx.arc(-8,2,5,0,Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(8,2,5,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='#d1d5db';
+    ctx.beginPath(); ctx.arc(-8,2,2.5,0,Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(8,2,2.5,0,Math.PI*2); ctx.fill();
+    // Passenger
+    ctx.strokeStyle='#1f2937'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.arc(0,-22,5,0,Math.PI*2); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0,-17); ctx.lineTo(0,-10); ctx.stroke();
+    ctx.restore();
+
+    // Energy bars (right side)
+    const E0=p.m*g*p.h0;
+    const hC=interpH(xPos,p.h0);
+    const Erib=p.mu*p.m*g*distTrav;
+    const Ekin=Math.max(0,E0-p.m*g*hC-Erib);
+    const Epot=p.m*g*hC;
+    const bx=W-72,by=8,bh=Math.min(H*0.38,80);
+    function drawBar(bxb,col,lbl,val){
+      const fill=E0>0?(val/E0)*bh:0;
+      ctx.fillStyle='#e2e8f0'; ctx.fillRect(bxb,by,15,bh);
+      ctx.fillStyle=col; ctx.fillRect(bxb,by+bh-fill,15,fill);
+      ctx.fillStyle='#374151'; ctx.font='7px sans-serif'; ctx.textAlign='center';
+      ctx.fillText(lbl,bxb+7.5,by+bh+9);
+    }
+    drawBar(bx,'#3b82f6','Ekin',Ekin);
+    drawBar(bx+19,'#16a34a','Epot',Epot);
+    drawBar(bx+38,'#dc2626','Erib',Erib);
+    drawBar(bx+57,'#94a3b8','Eg',E0);
+
+    // Info badge
+    ctx.fillStyle='rgba(255,255,255,0.9)';
+    ctx.beginPath(); if(ctx.roundRect) ctx.roundRect(6,6,180,58,5); else ctx.rect(6,6,180,58);
+    ctx.fill(); ctx.strokeStyle='#e5e7eb'; ctx.lineWidth=1; ctx.stroke();
+    ctx.fillStyle='#1f2937'; ctx.font='bold 10px sans-serif'; ctx.textAlign='left';
+    ctx.fillText('Energieerhaltung',12,20);
+    ctx.font='9px sans-serif';
+    ctx.fillText('E_kin = '+Ekin.toFixed(1)+' J  E_pot = '+Epot.toFixed(1)+' J',12,34);
+    ctx.fillText('E_ges = '+E0.toFixed(1)+' J  Verlust = '+Erib.toFixed(1)+' J',12,48);
+
+    drawAchtChart('achtEChart',pts,['ekin','epot'],['#3b82f6','#16a34a'],'E (J)');
+    drawAchtChart('achtVChart',pts,['v'],['#f97316'],'v (m/s)');
+    drawAchtChart('achtHChart',pts,['h'],['#16a34a'],'h (m)');
+    updateAchtTable();
+    raf=requestAnimationFrame(draw);
+  }
+
+  function drawAchtChart(id,data,keys,colors,yLabel){
+    const c=document.getElementById(id); if(!c) return;
+    const c2=c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:38,r:8,t:10,b:24};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    c2.clearRect(0,0,cW,cH); c2.fillStyle='#fff'; c2.fillRect(0,0,cW,cH);
+    c2.strokeStyle='#333'; c2.lineWidth=1.5;
+    c2.beginPath(); c2.moveTo(P.l,P.t); c2.lineTo(P.l,P.t+gH); c2.lineTo(P.l+gW,P.t+gH); c2.stroke();
+    if(data.length<2){ c2.fillStyle='#aaa'; c2.font='9px sans-serif'; c2.textAlign='center'; c2.fillText('Start...',P.l+gW/2,P.t+gH/2+4); return; }
+    const t0=data[0].t, t1=data[data.length-1].t||1;
+    let yMax=0;
+    keys.forEach(k=>{yMax=Math.max(yMax,...data.map(d=>d[k]||0));});
+    yMax=yMax*1.1||1;
+    keys.forEach((k,ki)=>{
+      c2.strokeStyle=colors[ki]; c2.lineWidth=2;
+      c2.beginPath();
+      data.forEach((d,i)=>{
+        const px=P.l+((d.t-t0)/(t1-t0))*gW;
+        const py=P.t+gH-((d[k]||0)/yMax)*gH;
+        i===0?c2.moveTo(px,py):c2.lineTo(px,py);
+      }); c2.stroke();
+    });
+    c2.fillStyle='#555'; c2.font='8px sans-serif'; c2.textAlign='center';
+    c2.fillText('t (s)',P.l+gW/2,cH-2);
+    c2.save(); c2.translate(9,P.t+gH/2); c2.rotate(-Math.PI/2); c2.fillText(yLabel,0,0); c2.restore();
+    c2.textAlign='right'; c2.fillText(yMax.toFixed(0),P.l-2,P.t+8);
+  }
+
+  function updateAchtTable(){
+    const tb=document.getElementById('achtTbody'), tw=document.getElementById('achtTable');
+    if(!tb||!tw) return;
+    if(pts.length>0) tw.style.display='table';
+    tb.innerHTML=pts.slice(-8).map(d=>
+      `<tr><td>${fmt(d.t,1)}</td><td>${fmt(d.h,1)}</td><td>${fmt(d.v,1)}</td><td>${d.epot.toFixed(1).replace('.',',')}</td><td>${d.ekin.toFixed(1).replace('.',',')}</td></tr>`
+    ).join('');
+  }
+
+  function toggle(){
+    running=!running; last=null;
+    const btn=document.getElementById('achtPlayBtn');
+    if(btn) btn.textContent=running?'⏸ Pause':'▶ Starten!';
+  }
+  function reset(){
+    running=false; last=null; xPos=0; t=0; v=0; distTrav=0; pts.length=0;
+    const btn=document.getElementById('achtPlayBtn'); if(btn) btn.textContent='▶ Starten!';
+    const res=document.getElementById('achtResult'); if(res) res.innerHTML='';
+    const p=getP(); const E0=p.m*g*p.h0;
+    const hEl=document.getElementById('achtH'), ekEl=document.getElementById('achtEkin');
+    const epEl=document.getElementById('achtEpot'), egEl=document.getElementById('achtEges'), vEl=document.getElementById('achtV');
+    if(hEl) hEl.textContent=fmt(p.h0,1); if(vEl) vEl.textContent='0,0';
+    if(ekEl) ekEl.textContent='0,0'; if(epEl) epEl.textContent=E0.toFixed(1); if(egEl) egEl.textContent=E0.toFixed(1);
+    const tb=document.getElementById('achtTbody'), tw=document.getElementById('achtTable');
+    if(tb) tb.innerHTML=''; if(tw) tw.style.display='none';
+  }
+  function update(){
+    reset();
+    const p=getP(); const E0=p.m*g*p.h0;
+    const res=document.getElementById('achtResult');
+    if(res) res.innerHTML=`E_ges = m·g·h₀ = ${p.m}·9,81·${p.h0} = <b>${E0.toFixed(1)} J</b>`;
+  }
+  function stop(){ if(raf) cancelAnimationFrame(raf); }
+
+  raf=requestAnimationFrame(draw);
+  return { stop, toggle, reset, update };
+}
+// ── old pendulum code isolated so hoisting doesn't conflict ──
+function _engPendel_unused() {
+  const g=9.81,M=1.0; let theta0=40*Math.PI/180, L=1.0, animId=null, startTime=null;
+  const engPts=[],engMeas=[],engSelArr=[],engTableRows=[];
+  function fmt(n,d=2){ return n.toFixed(d).replace('.',','); }
   function draw(ts) {
     if (!startTime) startTime = ts;
     const t = (ts - startTime) / 1000;
