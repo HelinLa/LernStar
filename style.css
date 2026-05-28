@@ -2123,11 +2123,13 @@ ul { list-style: none; }
 .sim-info-row b { color: #1e293b; }
 .sim-btn-row { display: flex; gap: 8px; flex-wrap: wrap; padding: 6px 0 4px; }
 .sim-btn {
+  display: inline-block;
   padding: 8px 18px; border-radius: 30px;
   border: 2px solid #e2e8f0; background: #f8fafc;
   color: #475569; font-size: .88rem; font-weight: 700;
   cursor: pointer; transition: all .15s;
-  font-family: inherit;
+  font-family: inherit; text-decoration: none;
+  box-sizing: border-box;
 }
 .sim-btn:hover { background: #e2e8f0; color: #1e293b; }
 .sim-btn.primary { background: #7C3AED; color: #fff; border-color: #7C3AED; }
