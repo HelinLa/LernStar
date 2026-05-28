@@ -3617,6 +3617,7 @@ function openExperiment(expId) {
         <div class="sim-btn-row">
           <button class="sim-btn" onclick="_simMeasure()">📍 Messen</button>
           <button class="sim-btn" onclick="_beschReset()">↺ Neu starten</button>
+          <a class="sim-btn" href="arbeitsblaetter/AB_1.3_Beschleunigte_Bewegung.pdf" download style="text-decoration:none">📄 Arbeitsblatt</a>
         </div>
         <p class="sim-hint">Drücke mehrmals auf <b>Messen</b> während das Auto fährt. Im v-t Diagramm siehst du: <b>v wächst gleichmäßig</b> mit der Zeit → das ist der Unterschied zur gleichförmigen Bewegung (wo v=konst.)! Klicke dann auf <b>zwei Punkte</b> → Steigung = a</p>
         <div class="sim-diagram-label">v-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(Steigung der Geraden = Beschleunigung a = Δv/Δt)</span></div>
@@ -3667,6 +3668,7 @@ function openExperiment(expId) {
           <div style="display:flex;gap:6px">
             <button id="fallPlayBtn" onclick="_fallToggle()" style="background:#ea580c;color:#fff;border:none;border-radius:8px;padding:5px 12px;font-weight:700;cursor:pointer;font-size:.82rem">▶ Loslassen</button>
             <button onclick="_fallReset()" style="background:#e5e7eb;color:#374151;border:none;border-radius:8px;padding:5px 12px;font-weight:700;cursor:pointer;font-size:.82rem">↺ Neu</button>
+            <a href="arbeitsblaetter/AB_1.4_Freier_Fall.pdf" download style="background:#e5e7eb;color:#374151;border:none;border-radius:8px;padding:5px 12px;font-weight:700;cursor:pointer;font-size:.82rem;text-decoration:none;display:inline-block">📄 Arbeitsblatt</a>
           </div>
         </div>
         <div class="sim-info-row" style="font-size:.8rem">
@@ -3731,6 +3733,7 @@ function openExperiment(expId) {
         <div class="sim-btn-row">
           <button class="sim-btn primary" id="rakPlayBtn" onclick="_rakToggle()">🚀 Starten!</button>
           <button class="sim-btn" onclick="_rakReset()">↺ Neu</button>
+          <a class="sim-btn" href="arbeitsblaetter/AB_2.3_Newton_Raketenstart.pdf" download style="text-decoration:none">📄 Arbeitsblatt</a>
         </div>
         <div id="rakResult" class="sim-result"></div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px;padding:0 4px">
@@ -3788,6 +3791,7 @@ function openExperiment(expId) {
         <div class="sim-btn-row">
           <button class="sim-btn primary" id="achtPlayBtn" onclick="_achtToggle()">▶ Starten!</button>
           <button class="sim-btn" onclick="_achtReset()">↺ Neu</button>
+          <a class="sim-btn" href="arbeitsblaetter/AB_3.2_Energieerhaltung_Achterbahn.pdf" download style="text-decoration:none">📄 Arbeitsblatt</a>
         </div>
         <div id="achtResult" class="sim-result"></div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px;padding:0 4px">
@@ -3975,6 +3979,7 @@ function openExperiment(expId) {
           <button class="sim-btn primary" id="simPlayBtn" onclick="_simToggle()">▶ Start</button>
           <button class="sim-btn" onclick="_simMeasure()">📍 Jetzt messen</button>
           <button class="sim-btn" onclick="_simReset()">↺ Neu starten</button>
+          <a class="sim-btn" href="arbeitsblaetter/AB_1.2_Gleichfoermige_Bewegung.pdf" download style="text-decoration:none">📄 Arbeitsblatt</a>
         </div>
         <p class="sim-hint">Drücke mehrmals auf <b>Jetzt messen</b> während das Auto fährt – die Punkte erscheinen im Diagramm. Klicke dann auf <b>zwei Punkte</b> um die Steigung (= Geschwindigkeit) zu berechnen!</p>
         <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(zwei Punkte anklicken → Steigung = Geschwindigkeit)</span></div>
@@ -4117,6 +4122,7 @@ function openExperiment(expId) {
           <button class="sim-btn primary" id="kreiPlayBtn" onclick="_kreiToggle()">▶ Starten</button>
           <button class="sim-btn" style="background:#dc2626;color:#fff;border-color:#dc2626" onclick="_kreiSchnur()">💥 Schnur reißt!</button>
           <button class="sim-btn" onclick="_kreiReset()">↺ Neu</button>
+          <a class="sim-btn" href="arbeitsblaetter/AB_1.6_Kreisbewegung.pdf" download style="text-decoration:none">📄 Arbeitsblatt</a>
         </div>
         <div id="kreiResult" class="sim-result"></div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px;padding:0 4px">
@@ -4411,6 +4417,7 @@ function openExperiment(expId) {
           <button class="sim-btn primary" id="simPlayBtn" onclick="_simToggle()">▶ Start</button>
           <button class="sim-btn" onclick="_simMeasure()">📍 Jetzt messen</button>
           <button class="sim-btn" onclick="_simReset()">↺ Neu starten</button>
+          <a class="sim-btn" href="arbeitsblaetter/AB_1.2_Gleichfoermige_Bewegung.pdf" download style="text-decoration:none">📄 Arbeitsblatt</a>
         </div>
         <p class="sim-hint">Drücke mehrmals auf <b>Jetzt messen</b> während das Auto fährt – die Punkte erscheinen im Diagramm. Klicke dann auf <b>zwei Punkte</b> um die Steigung (= Geschwindigkeit) zu berechnen!</p>
         <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(zwei Punkte anklicken → Steigung = Geschwindigkeit)</span></div>
