@@ -3590,7 +3590,7 @@ function openExperiment(expId) {
     modal.innerHTML = `
       <div class="sim-box">
         <button class="sim-x" onclick="closeExperiment()">✕</button>
-        <h3 class="sim-h3">🚀 Beschleunigte Bewegung</h3>
+        <h3 class="sim-h3">🚀 Experiment: Beschleunigte Bewegung</h3>
         <canvas id="beschAnim" width="460" height="90" style="width:100%;border-radius:8px;display:block;background:#f1f5f9"></canvas>
         <div style="padding:5px 12px 2px;display:flex;gap:10px;align-items:center">
           <div style="flex:1">
@@ -3609,24 +3609,39 @@ function openExperiment(expId) {
           <span>🚀 v = <b id="beschVVal">0,0</b> m/s</span>
           <span>📐 a = <b id="beschACur">3,0</b> m/s²</span>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;padding:4px 10px">
+        <div class="sim-btn-row">
+          <button class="sim-btn" onclick="_simMeasure()">📍 Jetzt messen</button>
+        </div>
+        <p class="sim-hint">Drücke mehrmals auf <b>Jetzt messen</b> während der Block fährt – die Punkte erscheinen im v-t-Diagramm. Klicke dann auf <b>zwei Punkte</b> um die Steigung (= Beschleunigung a) zu berechnen!</p>
+        <div class="sim-diagram-label">v-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(zwei Punkte anklicken → Steigung = Beschleunigung a)</span></div>
+        <canvas id="beschChart" class="sim-chart-canvas" width="460" height="220"></canvas>
+        <div id="beschResult" class="sim-result"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:4px 10px;margin-top:4px">
           <div>
-            <div style="text-align:center;font-size:.72rem;font-weight:800;color:#7c3aed;padding:2px 0">s-t Diagramm</div>
-            <canvas id="beschCST" width="130" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+            <div style="text-align:center;font-size:.72rem;font-weight:800;color:#7c3aed;padding:2px 0">s-t Diagramm (Parabel)</div>
+            <canvas id="beschCST" width="200" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
           </div>
           <div>
-            <div style="text-align:center;font-size:.72rem;font-weight:800;color:#0891b2;padding:2px 0">v-t Diagramm</div>
-            <canvas id="beschCVT" width="130" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
-          </div>
-          <div>
-            <div style="text-align:center;font-size:.72rem;font-weight:800;color:#dc2626;padding:2px 0">a-t Diagramm</div>
-            <canvas id="beschCAT" width="130" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+            <div style="text-align:center;font-size:.72rem;font-weight:800;color:#dc2626;padding:2px 0">a-t Diagramm (a = konst.)</div>
+            <canvas id="beschCAT" width="200" height="100" style="width:100%;border:1.5px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
           </div>
         </div>
-        <p class="sim-hint" style="text-align:center;margin:4px 0 6px;font-size:.78rem"><b>v = a · t</b> &nbsp;|&nbsp; <b>s = ½ · a · t²</b></p>
+        <table class="sim-table" id="beschTable" style="display:none;margin-top:8px">
+          <thead><tr><th>Punkt</th><th>t (s)</th><th>v (m/s)</th></tr></thead>
+          <tbody id="beschTbody"></tbody>
+        </table>
       </div>`;
     document.body.appendChild(modal);
     _sim = _simBeschleunigung();
+    const beschChartEl = document.getElementById('beschChart');
+    if (beschChartEl) beschChartEl.addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      if (_sim.handleClick) _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
   } else if (expId === 'freierfall') {
     modal.innerHTML = `
       <div class="sim-box">
@@ -6906,17 +6921,131 @@ function _simSchaltung() {
 // SIM 5: BESCHLEUNIGTE BEWEGUNG – mit s-t / v-t / a-t Diagrammen
 // ============================================================
 function _simBeschleunigung() {
-  const cvA  = document.getElementById('beschAnim');
-  const ctA  = cvA.getContext('2d');
-  const cvST = document.getElementById('beschCST'), ctST = cvST.getContext('2d');
-  const cvVT = document.getElementById('beschCVT'), ctVT = cvVT.getContext('2d');
-  const cvAT = document.getElementById('beschCAT'), ctAT = cvAT.getContext('2d');
+  const cvA   = document.getElementById('beschAnim');
+  const ctA   = cvA.getContext('2d');
+  const cvST  = document.getElementById('beschCST'), ctST = cvST.getContext('2d');
+  const cvAT  = document.getElementById('beschCAT'), ctAT = cvAT.getContext('2d');
+  const cvBig = document.getElementById('beschChart');
+  const ctBig = cvBig ? cvBig.getContext('2d') : null;
 
   let a = 3, running = false, t = 0, lastTs = null, raf = null;
-  let pts = []; // {t, s, v, a}
+  let pts = []; // {t, s, v, a} – live-Kurve für kleine Diagramme
+  let meas = [], sel = []; // Mess-Punkte für das große v-t Diagramm
   const maxT = 8;
 
   function fmt(n,d=1){ return n.toFixed(d).replace('.',','); }
+
+  // ── Großes v-t Diagramm mit Klick-Auswahl ────────────────
+  function drawBeschChart() {
+    if (!cvBig || !ctBig) return;
+    const cW = cvBig.width, cH = cvBig.height;
+    const P = {l:58, r:20, t:22, b:48};
+    const gW = cW - P.l - P.r, gH = cH - P.t - P.b;
+    const vMax = Math.max(Math.ceil((a * maxT * 1.1) / 5) * 5, 5);
+    const tX = tt => P.l + (tt / maxT) * gW;
+    const vY = vv => P.t + gH - (vv / vMax) * gH;
+
+    ctBig.clearRect(0, 0, cW, cH);
+    // Gitter
+    ctBig.strokeStyle = '#F0F0F0'; ctBig.lineWidth = 1;
+    for (let i = 1; i <= 5; i++) {
+      const y = P.t + (i/5)*gH;
+      ctBig.beginPath(); ctBig.moveTo(P.l, y); ctBig.lineTo(P.l+gW, y); ctBig.stroke();
+      const x = P.l + (i/5)*gW;
+      ctBig.beginPath(); ctBig.moveTo(x, P.t); ctBig.lineTo(x, P.t+gH); ctBig.stroke();
+    }
+    // Theoretische Linie v = a·t (gestrichelt)
+    ctBig.strokeStyle = 'rgba(59,130,246,.22)'; ctBig.lineWidth = 2.5; ctBig.setLineDash([7,5]);
+    ctBig.beginPath();
+    ctBig.moveTo(tX(0), vY(0));
+    ctBig.lineTo(tX(maxT), vY(a * maxT));
+    ctBig.stroke();
+    ctBig.setLineDash([]);
+    // Achsen
+    ctBig.strokeStyle = '#333'; ctBig.lineWidth = 2.5;
+    ctBig.beginPath(); ctBig.moveTo(P.l, P.t); ctBig.lineTo(P.l, P.t+gH); ctBig.lineTo(P.l+gW, P.t+gH); ctBig.stroke();
+    // Pfeilspitzen
+    ctBig.fillStyle = '#333';
+    ctBig.beginPath(); ctBig.moveTo(P.l+gW, P.t+gH); ctBig.lineTo(P.l+gW+8, P.t+gH-4); ctBig.lineTo(P.l+gW+8, P.t+gH+4); ctBig.fill();
+    ctBig.beginPath(); ctBig.moveTo(P.l, P.t); ctBig.lineTo(P.l-4, P.t+9); ctBig.lineTo(P.l+4, P.t+9); ctBig.fill();
+    // Achsen-Beschriftung
+    ctBig.font = 'bold 13px Nunito,sans-serif'; ctBig.fillStyle = '#333'; ctBig.textAlign = 'center';
+    ctBig.fillText('t in s', P.l+gW/2, cH-4);
+    ctBig.save(); ctBig.translate(14, P.t+gH/2); ctBig.rotate(-Math.PI/2);
+    ctBig.fillText('v in m/s', 0, 0); ctBig.restore();
+    // Skalenwerte
+    ctBig.font = '11px Nunito,sans-serif'; ctBig.fillStyle = '#666';
+    for (let i = 0; i <= 5; i++) {
+      ctBig.textAlign = 'center';
+      ctBig.fillText(((i/5)*maxT).toFixed(0), tX((i/5)*maxT), P.t+gH+16);
+      ctBig.textAlign = 'right';
+      ctBig.fillText(((i/5)*vMax).toFixed(0), P.l-6, vY((i/5)*vMax)+4);
+    }
+    // Messpunkte zeichnen
+    meas.forEach((m, i) => {
+      const px = tX(m.t), py = vY(m.v);
+      const isSel = sel.includes(i);
+      ctBig.beginPath(); ctBig.arc(px, py, isSel ? 8 : 6, 0, Math.PI*2);
+      ctBig.fillStyle = isSel ? '#DC2626' : '#7c3aed'; ctBig.fill();
+      ctBig.fillStyle = '#fff'; ctBig.font = 'bold 9px Nunito,sans-serif'; ctBig.textAlign = 'center';
+      ctBig.fillText(i+1, px, py+3);
+    });
+    // Wenn 2 Punkte gewählt: Steigungslinie + Ergebnis
+    if (sel.length === 2) {
+      const p1 = meas[sel[0]], p2 = meas[sel[1]];
+      const dt = p2.t - p1.t, dv = p2.v - p1.v;
+      if (Math.abs(dt) > 0.01) {
+        const slope = dv / dt;
+        ctBig.strokeStyle = '#DC2626'; ctBig.lineWidth = 2.5;
+        ctBig.beginPath(); ctBig.moveTo(tX(p1.t), vY(p1.v)); ctBig.lineTo(tX(p2.t), vY(p2.v)); ctBig.stroke();
+        const res = document.getElementById('beschResult');
+        if (res) res.innerHTML =
+          `📏 <b>Δv / Δt = ${fmt(Math.abs(dv),2)} m/s ÷ ${fmt(Math.abs(dt),2)} s = ${fmt(Math.abs(slope),2)} m/s²</b> &nbsp;← das ist die Beschleunigung a!`;
+      }
+    }
+  }
+
+  function measure() {
+    if (t < 0.05) return;
+    const v = a * t, s = 0.5 * a * t * t;
+    meas.push({ t: parseFloat(t.toFixed(2)), v: parseFloat(v.toFixed(2)), s: parseFloat(s.toFixed(2)) });
+    sel = [];
+    const res = document.getElementById('beschResult');
+    if (res) res.innerHTML = '';
+    drawBeschChart();
+    updateTable();
+  }
+
+  function updateTable() {
+    const tb = document.getElementById('beschTbody');
+    const tw = document.getElementById('beschTable');
+    if (!tb || !tw) return;
+    tw.style.display = meas.length > 0 ? '' : 'none';
+    tb.innerHTML = meas.map((m, i) =>
+      `<tr><td>${i+1}</td><td>${fmt(m.t,2)}</td><td>${fmt(m.v,2)}</td></tr>`
+    ).join('');
+  }
+
+  function handleClick(mx, my) {
+    if (!cvBig) return;
+    const cW = cvBig.width, cH = cvBig.height;
+    const P = {l:58, r:20, t:22, b:48};
+    const gW = cW - P.l - P.r, gH = cH - P.t - P.b;
+    const vMax = Math.max(Math.ceil((a * maxT * 1.1) / 5) * 5, 5);
+    const tX = tt => P.l + (tt / maxT) * gW;
+    const vY = vv => P.t + gH - (vv / vMax) * gH;
+    let closest = -1, minD = 24;
+    meas.forEach((m, i) => {
+      const d = Math.hypot(tX(m.t) - mx, vY(m.v) - my);
+      if (d < minD) { minD = d; closest = i; }
+    });
+    if (closest >= 0) {
+      if (sel.includes(closest)) sel = sel.filter(i => i !== closest);
+      else if (sel.length < 2) sel.push(closest);
+      else sel = [closest];
+      drawBeschChart();
+    }
+  }
 
   // ── Shared Diagram Renderer ───────────────────────────────
   function drawDiagram(ctx, cv, color, yLabel, yMin, yMax, getData) {
@@ -7038,13 +7167,13 @@ function _simBeschleunigung() {
     const vEl=document.getElementById('beschVVal'); if(vEl)vEl.textContent=fmt(v2);
     const sEl=document.getElementById('beschSVal'); if(sEl)sEl.textContent=fmt(s2);
 
-    // Diagramme
+    // Kleine Diagramme (s-t Parabel + a-t konstant)
     const sMax2=Math.max(0.5*a*maxT*maxT*1.1,5);
-    const vMax2=Math.max(a*maxT*1.1,5);
     const aVal=a;
     drawDiagram(ctST,cvST,'#7c3aed','s / m',0,Math.ceil(sMax2/5)*5,()=>pts.map(p=>({t:p.t,y:p.s})));
-    drawDiagram(ctVT,cvVT,'#0891b2','v / m/s',0,Math.ceil(vMax2/5)*5,()=>pts.map(p=>({t:p.t,y:p.v})));
     drawDiagram(ctAT,cvAT,'#dc2626','a / m/s²',0,Math.ceil(aVal*1.5/2)*2||2,()=>pts.map(p=>({t:p.t,y:p.a})));
+    // Großes v-t Diagramm (mit Messpunkten)
+    drawBeschChart();
 
     raf=requestAnimationFrame(frame);
   }
@@ -7059,10 +7188,18 @@ function _simBeschleunigung() {
     if(running){ running=false; lastTs=null; const b=document.getElementById('beschPlayBtn'); if(b)b.textContent='▶ Weiter'; }
     else { if(t>=maxT){t=0;pts=[];} running=true; const b=document.getElementById('beschPlayBtn'); if(b)b.textContent='⏸ Pause'; }
   }
-  function reset(){ running=false; lastTs=null; t=0; pts=[]; const b=document.getElementById('beschPlayBtn'); if(b)b.textContent='▶ Start'; }
+  function reset(){
+    running=false; lastTs=null; t=0; pts=[]; meas=[]; sel=[];
+    const b=document.getElementById('beschPlayBtn'); if(b) b.textContent='▶ Start';
+    const res=document.getElementById('beschResult'); if(res) res.innerHTML='';
+    const tb=document.getElementById('beschTbody'); if(tb) tb.innerHTML='';
+    const tw=document.getElementById('beschTable'); if(tw) tw.style.display='none';
+    drawBeschChart();
+  }
 
+  drawBeschChart();
   raf=requestAnimationFrame(frame);
-  return { stop, setA, toggle, reset };
+  return { stop, setA, toggle, reset, measure, handleClick };
 }
 
 // ============================================================
