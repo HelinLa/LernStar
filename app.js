@@ -3622,14 +3622,18 @@ function openExperiment(expId) {
         <div class="sim-diagram-label">v-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(Steigung der Geraden = Beschleunigung a = Δv/Δt)</span></div>
         <canvas id="beschChart" class="sim-chart-canvas" width="680" height="290"></canvas>
         <div id="beschResult" class="sim-result"></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px">
           <div>
-            <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.8em;color:#7c3aed">– Parabel (s = ½·a·t²)</span></div>
-            <canvas id="beschCST" class="sim-chart-canvas" width="340" height="200"></canvas>
+            <div class="sim-diagram-label">v-t Diagramm <span style="font-weight:400;font-size:.8em;color:#0891b2">– linear (v = a·t)</span></div>
+            <canvas id="beschCVT" class="sim-chart-canvas" width="220" height="190"></canvas>
           </div>
           <div>
-            <div class="sim-diagram-label">a-t Diagramm <span style="font-weight:400;font-size:.8em;color:#dc2626">– a konstant ≠ 0 (≠ gleichförmig!)</span></div>
-            <canvas id="beschCAT" class="sim-chart-canvas" width="340" height="200"></canvas>
+            <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.8em;color:#7c3aed">– Parabel (s = ½·a·t²)</span></div>
+            <canvas id="beschCST" class="sim-chart-canvas" width="220" height="190"></canvas>
+          </div>
+          <div>
+            <div class="sim-diagram-label">a-t Diagramm <span style="font-weight:400;font-size:.8em;color:#dc2626">– a konstant ≠ 0</span></div>
+            <canvas id="beschCAT" class="sim-chart-canvas" width="220" height="190"></canvas>
           </div>
         </div>
         <table class="sim-table" id="beschTable" style="display:none;margin-top:12px">
@@ -7247,6 +7251,7 @@ function _simSchaltung() {
 function _simBeschleunigung() {
   const cvA   = document.getElementById('beschAnim');
   const ctA   = cvA.getContext('2d');
+  const cvVT  = document.getElementById('beschCVT'), ctVT = cvVT.getContext('2d');
   const cvST  = document.getElementById('beschCST'), ctST = cvST.getContext('2d');
   const cvAT  = document.getElementById('beschCAT'), ctAT = cvAT.getContext('2d');
   const cvBig = document.getElementById('beschChart');
@@ -7533,9 +7538,11 @@ function _simBeschleunigung() {
     const vEl=document.getElementById('beschVVal'); if(vEl)vEl.textContent=fmt(v2);
     const sEl=document.getElementById('beschSVal'); if(sEl)sEl.textContent=fmt(s2);
 
-    // Kleine Diagramme (s-t Parabel + a-t konstant)
+    // Kleine Diagramme (v-t linear + s-t Parabel + a-t konstant)
     const sMax2=Math.max(0.5*a*maxT*maxT*1.1,5);
+    const vMax2=Math.max(a*maxT*1.1,2);
     const aVal=a;
+    drawDiagram(ctVT,cvVT,'#0891b2','v / m/s',0,Math.ceil(vMax2/2)*2,()=>pts.map(p=>({t:p.t,y:p.v})));
     drawDiagram(ctST,cvST,'#7c3aed','s / m',0,Math.ceil(sMax2/5)*5,()=>pts.map(p=>({t:p.t,y:p.s})));
     drawDiagram(ctAT,cvAT,'#dc2626','a / m/s²',0,Math.ceil(aVal*1.5/2)*2||2,()=>pts.map(p=>({t:p.t,y:p.a})));
     // Großes v-t Diagramm (mit Messpunkten)
@@ -7560,6 +7567,7 @@ function _simBeschleunigung() {
     const res=document.getElementById('beschResult'); if(res) res.innerHTML='';
     const tb=document.getElementById('beschTbody'); if(tb) tb.innerHTML='';
     const tw=document.getElementById('beschTable'); if(tw) tw.style.display='none';
+    ctVT.clearRect(0,0,cvVT.width,cvVT.height);
     drawBeschChart();
   }
 
