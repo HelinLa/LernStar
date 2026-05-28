@@ -1225,6 +1225,7 @@ function renderSubject() {
       gleichfoermig:   'arbeitsblaetter/AB_1.2_Gleichfoermige_Bewegung.pdf',
       beschleunigung:  'arbeitsblaetter/AB_1.3_Beschleunigte_Bewegung.pdf',
       freierfall:      'arbeitsblaetter/AB_1.4_Freier_Fall.pdf',
+      wurfbewegung:    'arbeitsblaetter/AB_1.5_Wurfbewegungen.pdf',
       kreisbewegung:   'arbeitsblaetter/AB_1.6_Kreisbewegung.pdf',
       newton2:         'arbeitsblaetter/AB_2.3_Newton_Raketenstart.pdf',
       energieerhaltung:'arbeitsblaetter/AB_3.2_Energieerhaltung_Achterbahn.pdf'
@@ -4073,6 +4074,7 @@ function openExperiment(expId) {
       <div class="sim-btn-row">
         <button class="sim-btn primary" id="basketPlayBtn" onclick="_basketToggle()">▶ Werfen!</button>
         <button class="sim-btn" onclick="_basketReset()">↺ Neu</button>
+        <a class="sim-btn" href="arbeitsblaetter/AB_1.5_Wurfbewegungen.pdf" download style="text-decoration:none">📄 Arbeitsblatt</a>
       </div>
       <div id="basketResult" class="sim-result"></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px 10px;margin-top:4px">

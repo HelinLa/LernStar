@@ -1,9 +1,14 @@
 # -*- coding: utf-8 -*-
 """
 LernStar Physik-Arbeitsblätter Generator
+Passwortschutz: 0123
 """
 from fpdf import FPDF
+from PyPDF2 import PdfWriter, PdfReader
+import io
 import os
+
+PASSWORT = "0123"
 
 # Farben
 PURPLE   = (124, 58, 237)
@@ -11,17 +16,17 @@ BLUE     = (37, 99, 235)
 RED      = (220, 38, 38)
 GREEN    = (22, 163, 74)
 ORANGE   = (234, 88, 12)
+TEAL     = (8, 145, 178)
 DARKGRAY = (31, 41, 55)
 MIDGRAY  = (107, 114, 128)
-LIGHTBG  = (249, 250, 251)
 WHITE    = (255, 255, 255)
 
 def s(text):
     """Ersetzt Zeichen, die nicht in Latin-1 (ISO-8859-1) vorkommen."""
     return (text
-        .replace('–', '-').replace('—', '-')   # En-Dash, Em-Dash
-        .replace('→', '->').replace('←', '<-') # Pfeile
-        .replace('•', '*').replace('·', '.')   # Bullet, Mittelpunkt
+        .replace('–', '-').replace('—', '-')
+        .replace('→', '->').replace('←', '<-')
+        .replace('•', '*').replace('·', '.')
         .replace('Δ', 'D').replace('α', 'alpha')
         .replace('β', 'beta').replace('ω', 'om')
         .replace('π', 'pi').replace('≈', '~')
@@ -30,6 +35,18 @@ def s(text):
         .replace('÷', '/').replace('²', '^2')
         .replace('³', '^3').replace('μ', 'mu')
     )
+
+def verschluesseln(pdf_obj, passwort):
+    """Fügt Passwortschutz zu einem fpdf-Objekt hinzu. Gibt verschlüsselte Bytes zurück."""
+    raw = bytes(pdf_obj.output())
+    reader = PdfReader(io.BytesIO(raw))
+    writer = PdfWriter()
+    for page in reader.pages:
+        writer.add_page(page)
+    writer.encrypt(passwort)
+    out = io.BytesIO()
+    writer.write(out)
+    return out.getvalue()
 
 
 class AB(FPDF):
@@ -62,7 +79,6 @@ class AB(FPDF):
         self.set_text_color(*MIDGRAY)
         self.cell(0, 8, "LernStar - Deine Lernplattform  |  helinla.github.io/LernStar", align="C")
 
-    # ---- Bausteine ----
     def sec(self, text, color=PURPLE):
         self.set_fill_color(*color)
         self.set_text_color(*WHITE)
@@ -90,12 +106,18 @@ class AB(FPDF):
         self.set_text_color(*DARKGRAY)
         self.multi_cell(0, 6, s(text))
 
-    def formula_box(self, lines):
-        self.set_fill_color(237, 233, 254)
-        self.set_draw_color(*PURPLE)
+    def formula_box(self, lines, color=PURPLE):
+        bg = (237, 233, 254)
+        if color == BLUE:   bg = (239, 246, 255)
+        if color == ORANGE: bg = (255, 247, 237)
+        if color == GREEN:  bg = (240, 253, 244)
+        if color == TEAL:   bg = (236, 254, 255)
+        if color == RED:    bg = (254, 242, 242)
+        self.set_fill_color(*bg)
+        self.set_draw_color(*color)
         self.set_line_width(0.5)
         self.set_font("Helvetica", "B", 9.5)
-        self.set_text_color(*PURPLE)
+        self.set_text_color(*color)
         y0 = self.get_y()
         h = len(lines) * 7 + 4
         self.rect(18, y0, 174, h, 'DF')
@@ -175,7 +197,6 @@ class AB(FPDF):
         self.ln(4)
 
     def grid(self, w=158, h=65, cols=8, rows=5):
-        """Leeres Koordinatensystem"""
         y0 = self.get_y()
         self.set_fill_color(250, 250, 255)
         self.set_draw_color(*MIDGRAY)
@@ -220,7 +241,7 @@ def ab_gleichfoermig():
         "v = s / t          (Geschwindigkeit = Weg durch Zeit)",
         "t = s / v          (Zeit = Weg durch Geschwindigkeit)",
         "a = 0              (keine Beschleunigung - v bleibt konstant)",
-    ])
+    ], BLUE)
 
     pdf.sec("Versuchsdurchführung")
     pdf.body("Öffne '1.2 Gleichförmige Bewegung' in LernStar (Klasse 11 -> Physik).", bold=True)
@@ -367,7 +388,7 @@ def ab_freierfall():
         "v(t) = g * t           (Fallgeschwindigkeit - linear steigend)",
         "s(t) = 1/2 * g * t^2   (Fallstrecke - Parabel)",
         "v^2 = 2 * g * s        (Geschwindigkeit aus Weg - ohne Zeit)",
-    ])
+    ], ORANGE)
 
     pdf.sec("Versuchsdurchführung")
     pdf.body("Öffne '1.4 Freier Fall' in LernStar (Klasse 11 -> Physik).", bold=True)
@@ -399,6 +420,107 @@ def ab_freierfall():
     pdf.q(3, "Hat die Masse des fallenden Körpers Einfluss auf die Fallzeit? Erkläre (Galilei)!")
     pdf.q(4, "Erkläre, warum das a-t-Diagramm eine konstante horizontale Linie zeigt.")
     pdf.q(5, "Ein Ball wird aus 80 m Höhe fallen gelassen. Berechne tF und vF. (Rechenweg!)", lines=3)
+
+    pdf.sec("Fazit")
+    pdf.lines(4)
+    return pdf
+
+
+# ============================================================
+# AB 1.5 - WURFBEWEGUNG
+# ============================================================
+def ab_wurfbewegung():
+    pdf = AB("1.5 Wurfbewegungen", "Klasse 11")
+    pdf.add_page()
+    pdf.title_block(
+        "Versuch 1.5: Schräger Wurf - Basketballwurf",
+        "Simulation: Wurfparabel  |  x = v0*cos(a)*t  |  y = h0 + v0*sin(a)*t - 1/2*g*t^2", TEAL)
+    pdf.name_row()
+
+    pdf.sec("Lernziele")
+    pdf.bullet("Du verstehst, dass der schräge Wurf eine Überlagerung zweier Bewegungen ist.")
+    pdf.bullet("Horizontal: gleichförmig (x = vx * t), Vertikal: gleichmäßig beschleunigt (Freier Fall).")
+    pdf.bullet("Du kannst Wurfweite, maximale Höhe und Flugzeit berechnen.")
+    pdf.bullet("Du erkennst: der optimale Wurfwinkel für maximale Wurfweite beträgt 45°.")
+    pdf.ln(2)
+
+    pdf.sec("Physikalischer Hintergrund", TEAL)
+    pdf.body("Die Bewegung wird in eine horizontale (x) und eine vertikale (y) Komponente zerlegt:")
+    pdf.formula_box([
+        "vx = v0 * cos(alpha)         (horizontale Geschwindigkeit - konstant!)",
+        "vy(t) = v0*sin(alpha) - g*t   (vertikale Geschwindigkeit - nimmt ab)",
+        "x(t) = vx * t                (horizontaler Weg - gleichförmig)",
+        "y(t) = h0 + vy0*t - 1/2*g*t^2 (vertikaler Weg - Parabel)",
+        "Flugzeit tF: y(tF) = 0       (Aufprall - quadratische Gleichung lösen)",
+        "Wurfweite W = vx * tF        (maximale Reichweite)",
+    ], TEAL)
+    pdf.ln(2)
+
+    pdf.sec("Versuchsdurchführung")
+    pdf.body("Öffne '1.5 Wurfbewegungen' (Basketballwurf) in LernStar (Klasse 11 -> Physik).", bold=True)
+    pdf.step(1, "Starteinstellung: v0 = 8 m/s, alpha = 45°, h0 = 1,5 m. Drücke 'Werfen!'.")
+    pdf.step(2, "Lies Flugzeit, Wurfweite und max. Höhe ab. Trage die Werte in Tabelle A ein.")
+    pdf.step(3, "Variiere den Winkel alpha (20°, 30°, 45°, 60°, 75°) bei v0 = 8 m/s. (Tabelle B)")
+    pdf.step(4, "Variiere v0 (4, 6, 8, 10, 12 m/s) bei alpha = 45°. (Tabelle C)")
+    pdf.step(5, "Ändere g auf 1,6 m/s^2 (Mond). Wie verändert sich die Wurfweite? (Tabelle D)")
+    pdf.ln(2)
+
+    pdf.sec("Tabelle A  -  Basisversuch (v0=8 m/s, alpha=45°, h0=1,5 m)", TEAL)
+    pdf.th(["Größe", "Symbol", "Einheit", "Simulationswert", "Formel-Berechnung"],
+           [52, 20, 22, 42, 38])
+    pdf.tr(0, [52, 20, 22, 42, 38],
+           prefill=[
+               ["Horizontale Geschw.","vx","m/s","","vx = 8*cos(45) ="],
+               ["Vertikale Anfangsgeschw.","vy0","m/s","","vy0 = 8*sin(45) ="],
+               ["Flugzeit","tF","s","","--"],
+               ["Wurfweite","W","m","","W = vx * tF ="],
+               ["Max. Höhe","ymax","m","","--"],
+           ])
+    pdf.ln(3)
+
+    pdf.sec("Tabelle B  -  Variation Wurfwinkel alpha  (v0=8 m/s, h0=1,5 m)")
+    pdf.th(["alpha", "vx (m/s)", "vy0 (m/s)", "Flugzeit tF (s)", "Wurfweite W (m)", "ymax (m)"],
+           [22, 28, 28, 34, 34, 28])
+    pdf.tr(5, [22, 28, 28, 34, 34, 28],
+           prefill=[["20°","","","","",""],["30°","","","","",""],
+                    ["45°","","","","",""],["60°","","","","",""],["75°","","","","",""]])
+    pdf.ln(2)
+    pdf.note("Bei welchem Winkel ist die Wurfweite am größten? Notiere: alpha = _______°")
+    pdf.ln(1)
+
+    pdf.sec("Tabelle C  -  Variation Anfangsgeschwindigkeit v0  (alpha=45°, h0=1,5 m)")
+    pdf.th(["v0 (m/s)", "vx = vy0 (m/s)", "Flugzeit tF (s)", "Wurfweite W (m)", "W verdoppelt?"],
+           [28, 42, 36, 36, 32])
+    pdf.tr(5, [28, 42, 36, 36, 32],
+           prefill=[["4","","","",""],["6","","","",""],["8","","","",""],
+                    ["10","","","",""],["12","","",""," "]])
+    pdf.ln(3)
+
+    pdf.add_page()
+    pdf.sec("Tabelle D  -  Einfluss der Schwerkraft g  (v0=8 m/s, alpha=45°)", RED)
+    pdf.th(["g (m/s^2)", "Himmelskörper", "Wurfweite W (m)", "Flugzeit tF (s)", "W x-fach vs. Erde"],
+           [28, 42, 36, 34, 34])
+    pdf.tr(0, [28, 42, 36, 34, 34],
+           prefill=[
+               ["9,81","Erde","","","1,0 (Referenz)"],
+               ["1,62","Mond","","",""],
+               ["3,72","Mars","","",""],
+               ["24,8","Jupiter","","",""],
+           ])
+    pdf.ln(3)
+
+    pdf.sec("Diagramm  -  Wurfparabel y-x zeichnen (Bahnkurve)")
+    pdf.body("Zeichne die Bahn des Balls als y-x-Kurve für alpha = 30°, 45° und 60° (v0 = 8 m/s):")
+    pdf.note("Waagerecht: x in m (0 bis 8), Senkrecht: y in m (0 bis 6). Unterschiedliche Farben je Winkel.")
+    pdf.grid(w=158, h=75, cols=8, rows=6)
+    pdf.ln(3)
+
+    pdf.sec("Auswertung")
+    pdf.q(1, "Berechne vx und vy0 für v0=8 m/s, alpha=45°:  vx = v0*cos(45) =       vy0 = v0*sin(45) =", lines=2)
+    pdf.q(2, "Warum ist der optimale Wurfwinkel für maximale Wurfweite 45°? Erkläre mit Formeln!")
+    pdf.q(3, "Wie verändert sich die Wurfweite, wenn v0 verdoppelt wird? (Tabelle C - Begründung!)")
+    pdf.q(4, "Auf dem Mond (g=1,62 m/s^2) fliegt der Ball viel weiter - warum? Berechne das Verhältnis W_Mond / W_Erde!", lines=2)
+    pdf.q(5, "Ein Basketballer wirft mit v0=9 m/s, alpha=52°, h0=2,0 m auf einen Korb in 6 m Entfernung. Trifft er? (Rechnung!)", lines=4)
 
     pdf.sec("Fazit")
     pdf.lines(4)
@@ -503,7 +625,7 @@ def ab_newton():
         "F_Gewicht = m * g = m * 9,81 N/kg",
         "a = F_netto / m                            (Newtons 2. Gesetz)",
         "Startbedingung:  F_Schub > m * g           => a > 0 => Rakete hebt ab!",
-    ])
+    ], RED)
     pdf.body("Der Luftwiderstand nimmt mit v^2 zu und wirkt der Bewegung entgegen.")
     pdf.ln(2)
 
@@ -567,7 +689,7 @@ def ab_energie():
         "E_kin = 1/2 * m * v^2      (kinetische Energie - abhängig von v)",
         "E_ges = E_pot + E_kin      (Gesamtenergie - ohne Reibung konstant!)",
         "v_max = sqrt(2 * g * h0)   (max. Geschw. wenn E_pot vollst. in E_kin)",
-    ])
+    ], GREEN)
     pdf.body("Mit Reibung: E_Reibung = mu * m * g * s_ges  (s_ges = zurückgelegte Strecke)")
     pdf.ln(2)
 
@@ -621,19 +743,22 @@ if __name__ == "__main__":
     os.makedirs(folder, exist_ok=True)
 
     sheets = [
-        ("AB_1.2_Gleichfoermige_Bewegung.pdf",  ab_gleichfoermig()),
-        ("AB_1.3_Beschleunigte_Bewegung.pdf",   ab_beschleunigung()),
-        ("AB_1.4_Freier_Fall.pdf",              ab_freierfall()),
-        ("AB_1.6_Kreisbewegung.pdf",            ab_kreis()),
-        ("AB_2.3_Newton_Raketenstart.pdf",      ab_newton()),
+        ("AB_1.2_Gleichfoermige_Bewegung.pdf",   ab_gleichfoermig()),
+        ("AB_1.3_Beschleunigte_Bewegung.pdf",    ab_beschleunigung()),
+        ("AB_1.4_Freier_Fall.pdf",               ab_freierfall()),
+        ("AB_1.5_Wurfbewegungen.pdf",            ab_wurfbewegung()),
+        ("AB_1.6_Kreisbewegung.pdf",             ab_kreis()),
+        ("AB_2.3_Newton_Raketenstart.pdf",       ab_newton()),
         ("AB_3.2_Energieerhaltung_Achterbahn.pdf", ab_energie()),
     ]
 
-    print("Erstelle Arbeitsblätter...")
+    print("Erstelle Arbeitsblaetter mit Passwortschutz '%s'..." % PASSWORT)
     for filename, pdf in sheets:
         path = os.path.join(folder, filename)
-        pdf.output(path)
+        encrypted = verschluesseln(pdf, PASSWORT)
+        with open(path, 'wb') as f:
+            f.write(encrypted)
         print("  OK  " + path)
 
-    print("\nFertig! %d Arbeitsblätter erstellt." % len(sheets))
+    print("\nFertig! %d Arbeitsblaetter erstellt (Passwort: %s)." % (len(sheets), PASSWORT))
     print("Ordner: " + os.path.abspath(folder))
