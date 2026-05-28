@@ -3611,16 +3611,23 @@ function openExperiment(expId) {
         </div>
         <div class="sim-btn-row">
           <button class="sim-btn" onclick="_simMeasure()">📍 Jetzt messen</button>
+          <button class="sim-btn" onclick="_beschReset()">↺ Neu starten</button>
         </div>
-        <div class="sim-diagram-label" style="margin-top:8px">s-t Diagramm <span style="font-weight:400;font-size:.82em;color:#7c3aed">(Parabel – s = ½·a·t²)</span></div>
-        <canvas id="beschCST" class="sim-chart-canvas" width="460" height="150"></canvas>
-        <p class="sim-hint">Drücke mehrmals auf <b>Jetzt messen</b> während das Auto fährt – die Punkte erscheinen im v-t-Diagramm. Klicke dann auf <b>zwei Punkte</b> um die Steigung (= Beschleunigung a) zu berechnen!</p>
+        <p class="sim-hint">Drücke mehrmals auf <b>Jetzt messen</b> während das Auto fährt – die Punkte erscheinen im Diagramm. Klicke dann auf <b>zwei Punkte</b> um die Steigung (= Beschleunigung a) zu berechnen!</p>
         <div class="sim-diagram-label">v-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(zwei Punkte anklicken → Steigung = Beschleunigung a)</span></div>
-        <canvas id="beschChart" class="sim-chart-canvas" width="460" height="220"></canvas>
+        <canvas id="beschChart" class="sim-chart-canvas" width="680" height="290"></canvas>
         <div id="beschResult" class="sim-result"></div>
-        <div class="sim-diagram-label" style="margin-top:8px">a-t Diagramm <span style="font-weight:400;font-size:.82em;color:#dc2626">(a = konst.)</span></div>
-        <canvas id="beschCAT" class="sim-chart-canvas" width="460" height="120"></canvas>
-        <table class="sim-table" id="beschTable" style="display:none;margin-top:8px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+          <div>
+            <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.8em;color:#7c3aed">(Parabel)</span></div>
+            <canvas id="beschCST" class="sim-chart-canvas" width="340" height="200"></canvas>
+          </div>
+          <div>
+            <div class="sim-diagram-label">a-t Diagramm <span style="font-weight:400;font-size:.8em;color:#dc2626">(a = konst.)</span></div>
+            <canvas id="beschCAT" class="sim-chart-canvas" width="340" height="200"></canvas>
+          </div>
+        </div>
+        <table class="sim-table" id="beschTable" style="display:none;margin-top:12px">
           <thead><tr><th>Punkt</th><th>t (s)</th><th>v (m/s)</th></tr></thead>
           <tbody id="beschTbody"></tbody>
         </table>
