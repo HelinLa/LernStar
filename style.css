@@ -2048,8 +2048,11 @@ ul { list-style: none; }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 
-.experiment-card-btn {
+.experiment-card-actions {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
   flex-shrink: 0; margin-right: 16px;
+}
+.experiment-card-btn {
   padding: 8px 18px; border-radius: 30px;
   background: linear-gradient(135deg, #0EA5E9, #6366F1);
   color: #fff; font-size: .8rem; font-weight: 800; border: none; cursor: pointer;
@@ -2058,6 +2061,15 @@ ul { list-style: none; }
   transition: transform .15s, box-shadow .15s;
 }
 .experiment-card-btn:hover { transform: scale(1.06); box-shadow: 0 6px 18px rgba(99,102,241,.4); }
+.experiment-card-pdf {
+  display: inline-block; font-size: .73rem; font-weight: 700;
+  color: #6366F1; text-decoration: none;
+  padding: 3px 10px; border-radius: 20px;
+  border: 1.5px solid #c7d2fe; background: #f5f3ff;
+  transition: background .15s;
+  white-space: nowrap;
+}
+.experiment-card-pdf:hover { background: #ede9fe; }
 
 @media (max-width: 600px) {
   .topics-section { padding: 0 16px 40px; }
@@ -2066,7 +2078,8 @@ ul { list-style: none; }
   .topic-name { font-size: .92rem; }
   .experiments-section { padding: 0 16px 32px; }
   .experiment-card-icon { width: 60px; font-size: 1.4rem; }
-  .experiment-card-btn { padding: 7px 12px; font-size: .75rem; margin-right: 12px; }
+  .experiment-card-actions { margin-right: 12px; }
+  .experiment-card-btn { padding: 7px 12px; font-size: .75rem; }
 }
 
 /* ================================================================

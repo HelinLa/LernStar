@@ -1221,9 +1221,21 @@ function renderSubject() {
   expList.innerHTML = '';
   if (expTopics.length > 0) {
     expSection.style.display = '';
+    const expToPdf = {
+      gleichfoermig:   'arbeitsblaetter/AB_1.2_Gleichfoermige_Bewegung.pdf',
+      beschleunigung:  'arbeitsblaetter/AB_1.3_Beschleunigte_Bewegung.pdf',
+      freierfall:      'arbeitsblaetter/AB_1.4_Freier_Fall.pdf',
+      kreisbewegung:   'arbeitsblaetter/AB_1.6_Kreisbewegung.pdf',
+      newton2:         'arbeitsblaetter/AB_2.3_Newton_Raketenstart.pdf',
+      energieerhaltung:'arbeitsblaetter/AB_3.2_Energieerhaltung_Achterbahn.pdf'
+    };
     expTopics.forEach(t => {
       const card = document.createElement('div');
       card.className = 'experiment-card';
+      const pdf = expToPdf[t.exp];
+      const pdfBtn = pdf
+        ? `<a class="experiment-card-pdf" href="${pdf}" download>📄 Arbeitsblatt</a>`
+        : '';
       card.innerHTML = `
         <div class="experiment-card-icon">🧪</div>
         <div class="experiment-card-body">
@@ -1231,7 +1243,10 @@ function renderSubject() {
           <div class="experiment-card-title">${t.name}</div>
           <div class="experiment-card-desc">Interaktive Simulation – spiele mit den Parametern und beobachte, was passiert!</div>
         </div>
-        <button class="experiment-card-btn" onclick="openExperiment('${t.exp}')">▶ Simulation<br>starten</button>`;
+        <div class="experiment-card-actions">
+          <button class="experiment-card-btn" onclick="openExperiment('${t.exp}')">▶ Simulation<br>starten</button>
+          ${pdfBtn}
+        </div>`;
       expList.appendChild(card);
     });
   } else {
