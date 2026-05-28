@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-LernStar Physik-Arbeitsblatter Generator (Latin-1 sicher)
+LernStar Physik-Arbeitsblätter Generator
 """
 from fpdf import FPDF
 import os
@@ -17,17 +17,18 @@ LIGHTBG  = (249, 250, 251)
 WHITE    = (255, 255, 255)
 
 def s(text):
-    """Latin-1-sichere Zeichenersetzung"""
+    """Ersetzt Zeichen, die nicht in Latin-1 (ISO-8859-1) vorkommen."""
     return (text
-        .replace('–', '-').replace('—', '-')
-        .replace('→', '->').replace('←', '<-')
-        .replace('•', '*').replace('·', '.')
+        .replace('–', '-').replace('—', '-')   # En-Dash, Em-Dash
+        .replace('→', '->').replace('←', '<-') # Pfeile
+        .replace('•', '*').replace('·', '.')   # Bullet, Mittelpunkt
         .replace('Δ', 'D').replace('α', 'alpha')
         .replace('β', 'beta').replace('ω', 'om')
         .replace('π', 'pi').replace('≈', '~')
         .replace('≥', '>=').replace('≤', '<=')
         .replace('√', 'sqrt').replace('×', 'x')
-        .replace('÷', '/').replace('°', 'Grad')
+        .replace('÷', '/').replace('²', '^2')
+        .replace('³', '^3').replace('μ', 'mu')
     )
 
 
@@ -118,10 +119,10 @@ class AB(FPDF):
         self.set_font("Helvetica", "", 9)
         self.set_line_width(0.2)
         self.set_draw_color(190, 190, 190)
-        for i in range(n):
+        rows = prefill if prefill else [None] * n
+        for i, row in enumerate(rows):
             self.set_fill_color(248, 248, 255) if i % 2 == 0 else self.set_fill_color(*WHITE)
-            if prefill and i < len(prefill):
-                row = prefill[i]
+            if row:
                 for j, w in enumerate(widths):
                     val = row[j] if j < len(row) else ""
                     self.cell(w, h, s(val), border=1, fill=(i%2==0), align="C")
@@ -197,18 +198,18 @@ class AB(FPDF):
 
 
 # ============================================================
-# AB 1.2 - GLEICHFOERMIGE BEWEGUNG
+# AB 1.2 - GLEICHFÖRMIGE BEWEGUNG
 # ============================================================
 def ab_gleichfoermig():
-    pdf = AB("1.2 Gleichfoermige Bewegung", "Klasse 11")
+    pdf = AB("1.2 Gleichförmige Bewegung", "Klasse 11")
     pdf.add_page()
     pdf.title_block(
-        "Versuch 1.2: Gleichfoermige Bewegung",
+        "Versuch 1.2: Gleichförmige Bewegung",
         "Simulation: Auto mit konstanter Geschwindigkeit  |  s = v * t", BLUE)
     pdf.name_row()
 
     pdf.sec("Lernziele")
-    pdf.bullet("Du kennst die Merkmale gleichfoermiger Bewegung: v = konstant, a = 0.")
+    pdf.bullet("Du kennst die Merkmale gleichförmiger Bewegung: v = konstant, a = 0.")
     pdf.bullet("Du kannst den Weg s aus Geschwindigkeit v und Zeit t berechnen: s = v * t")
     pdf.bullet("Du erkennst: s-t ist eine Gerade, v-t ist konstant, a-t = Nulllinie.")
     pdf.ln(2)
@@ -221,12 +222,12 @@ def ab_gleichfoermig():
         "a = 0              (keine Beschleunigung - v bleibt konstant)",
     ])
 
-    pdf.sec("Versuchsdurchfuehrung")
-    pdf.body("Oeffne '1.2 Gleichfoermige Bewegung' in LernStar (Klasse 11 -> Physik).", bold=True)
+    pdf.sec("Versuchsdurchführung")
+    pdf.body("Öffne '1.2 Gleichförmige Bewegung' in LernStar (Klasse 11 -> Physik).", bold=True)
     pdf.step(1, "Stelle die Geschwindigkeit v = 10 m/s ein.")
-    pdf.step(2, "Starte die Simulation und druecke bei t = 1, 2, 3, 4, 5, 6, 8 s auf 'Messen'.")
+    pdf.step(2, "Starte die Simulation und drücke bei t = 1, 2, 3, 4, 5, 6, 8 s auf 'Messen'.")
     pdf.step(3, "Lies die Werte aus der Simulation ab und trage sie in die Tabelle ein.")
-    pdf.step(4, "Berechne v = s / t fuer jeden Messpunkt und pruefer ob v konstant bleibt.")
+    pdf.step(4, "Berechne v = s / t für jeden Messpunkt und prüfe, ob v konstant bleibt.")
     pdf.step(5, "Wiederhole mit v = 20 m/s und vergleiche beide s-t-Geraden im Diagramm.")
     pdf.ln(2)
 
@@ -253,8 +254,8 @@ def ab_gleichfoermig():
     pdf.ln(3)
 
     pdf.sec("Auswertung")
-    pdf.q(1, "Welche Form hat die s-t-Kurve? Was zeigt das ueber die Bewegung?")
-    pdf.q(2, "Berechne: Wie lange braucht das Auto bei v=10 m/s fuer 500 m?  t = s/v = _______", lines=2)
+    pdf.q(1, "Welche Form hat die s-t-Kurve? Was zeigt das über die Bewegung?")
+    pdf.q(2, "Berechne: Wie lange braucht das Auto bei v=10 m/s für 500 m?  t = s/v = _______", lines=2)
     pdf.q(3, "Was ist der Unterschied zwischen s-t (1.2) und s-t bei beschleunigter Bewegung (1.3)?")
     pdf.q(4, "Warum zeigt das a-t-Diagramm eine Nulllinie? Was bedeutet a = 0 physikalisch?")
 
@@ -270,18 +271,18 @@ def ab_beschleunigung():
     pdf = AB("1.3 Beschleunigte Bewegung", "Klasse 11")
     pdf.add_page()
     pdf.title_block(
-        "Versuch 1.3: Gleichmaessig beschleunigte Bewegung",
+        "Versuch 1.3: Gleichmäßig beschleunigte Bewegung",
         "Simulation: Auto auf gerader Fahrbahn  |  a = Dv/Dt  |  s = 1/2*a*t^2", PURPLE)
     pdf.name_row()
 
     pdf.sec("Lernziele")
-    pdf.bullet("Du kennst den Unterschied zwischen gleichfoermiger und beschleunigter Bewegung.")
+    pdf.bullet("Du kennst den Unterschied zwischen gleichförmiger und beschleunigter Bewegung.")
     pdf.bullet("Du kannst die Beschleunigung a aus dem v-t-Diagramm bestimmen (Steigung = Dv/Dt).")
-    pdf.bullet("Du weisst: s-t ist eine Parabel, v-t ist eine Gerade, a-t ist konstant.")
+    pdf.bullet("Du weißt: s-t ist eine Parabel, v-t ist eine Gerade, a-t ist konstant.")
     pdf.ln(2)
 
     pdf.sec("Physikalischer Hintergrund", PURPLE)
-    pdf.body("Bei gleichmaessig beschleunigter Bewegung nimmt v gleichmaessig zu. a ist konstant.")
+    pdf.body("Bei gleichmäßig beschleunigter Bewegung nimmt v gleichmäßig zu. a ist konstant.")
     pdf.formula_box([
         "v(t) = a * t           (v steigt linear - Gerade im v-t-Diagramm)",
         "s(t) = 1/2 * a * t^2   (Weg ist eine Parabel im s-t-Diagramm)",
@@ -289,12 +290,12 @@ def ab_beschleunigung():
         "Einheit:  a in m/s^2   (Meter pro Sekunde zum Quadrat)",
     ])
 
-    pdf.sec("Versuchsdurchfuehrung")
-    pdf.body("Oeffne '1.3 Beschleunigte Bewegung' in LernStar (Klasse 11 -> Physik).", bold=True)
+    pdf.sec("Versuchsdurchführung")
+    pdf.body("Öffne '1.3 Beschleunigte Bewegung' in LernStar (Klasse 11 -> Physik).", bold=True)
     pdf.step(1, "Stelle die Beschleunigung a = 3,0 m/s^2 ein (Schieberegler).")
-    pdf.step(2, "Druecke '> Start' und beobachte das Auto sowie alle drei Diagramme (v-t, s-t, a-t).")
-    pdf.step(3, "Druecke bei t = 1, 2, 4, 6 und 8 s jeweils auf 'Messen'. Tabelle wird unten ausgefuellt.")
-    pdf.step(4, "Klicke im grossen v-t-Diagramm auf zwei Messpunkte -> Steigung = a ablesen.")
+    pdf.step(2, "Drücke '> Start' und beobachte das Auto sowie alle drei Diagramme (v-t, s-t, a-t).")
+    pdf.step(3, "Drücke bei t = 1, 2, 4, 6 und 8 s jeweils auf 'Messen'. Tabelle wird unten ausgefüllt.")
+    pdf.step(4, "Klicke im großen v-t-Diagramm auf zwei Messpunkte -> Steigung = a ablesen.")
     pdf.step(5, "Vergleiche gemessene a mit dem eingestellten Wert.")
     pdf.step(6, "Wiederhole mit a = 6,0 m/s^2 und notiere den Unterschied.")
     pdf.ln(2)
@@ -316,7 +317,7 @@ def ab_beschleunigung():
     pdf.ln(3)
 
     pdf.sec("Diagramm  -  v-t zeichnen (Versuche A und B vergleichen)")
-    pdf.note("Verwende fuer Versuch A blaue und fuer Versuch B rote Farbe. Zeichne Ausgleichsgeraden.")
+    pdf.note("Verwende für Versuch A blaue und für Versuch B rote Farbe. Zeichne Ausgleichsgeraden.")
     pdf.grid(w=158, h=68, cols=8, rows=5)
     pdf.set_font("Helvetica", "", 7.5)
     pdf.set_text_color(*MIDGRAY)
@@ -332,7 +333,7 @@ def ab_beschleunigung():
     pdf.add_page()
     pdf.sec("Auswertung")
     pdf.q(1, "Berechne a aus Versuch A: a = Dv / Dt = (v2 - v1) / (t2 - t1) = _____________", lines=2)
-    pdf.q(2, "Stimmt dein berechneter Wert mit a = 3,0 m/s^2 ueberein? Erklaere Abweichungen!")
+    pdf.q(2, "Stimmt dein berechneter Wert mit a = 3,0 m/s^2 überein? Erkläre Abweichungen!")
     pdf.q(3, "Welche Form hat die s-t-Kurve bei beschleunigter Bewegung? Warum ist das keine Gerade?")
     pdf.q(4, "Was passiert mit s nach 8 s, wenn a verdoppelt wird (3 -> 6 m/s^2)? Berechne!", lines=2)
     pdf.q(5, "Vergleiche das a-t-Diagramm von Versuch A und B - was ist gleich, was ist anders?")
@@ -350,7 +351,7 @@ def ab_freierfall():
     pdf.add_page()
     pdf.title_block(
         "Versuch 1.4: Freier Fall",
-        "Simulation: Fallender Koerper  |  g = 9,81 m/s^2  |  s = 1/2*g*t^2", ORANGE)
+        "Simulation: Fallender Körper  |  g = 9,81 m/s^2  |  s = 1/2*g*t^2", ORANGE)
     pdf.name_row()
 
     pdf.sec("Lernziele")
@@ -368,10 +369,10 @@ def ab_freierfall():
         "v^2 = 2 * g * s        (Geschwindigkeit aus Weg - ohne Zeit)",
     ])
 
-    pdf.sec("Versuchsdurchfuehrung")
-    pdf.body("Oeffne '1.4 Freier Fall' in LernStar (Klasse 11 -> Physik).", bold=True)
-    pdf.step(1, "Stelle Starthoehe h0 = 20 m ein. Druecke '>  Loslassen'.")
-    pdf.step(2, "Lies bei t = 0,5 / 1,0 / 1,5 / 2,0 s die Werte fuer s und v ab.")
+    pdf.sec("Versuchsdurchführung")
+    pdf.body("Öffne '1.4 Freier Fall' in LernStar (Klasse 11 -> Physik).", bold=True)
+    pdf.step(1, "Stelle Starthöhe h0 = 20 m ein. Drücke '>  Loslassen'.")
+    pdf.step(2, "Lies bei t = 0,5 / 1,0 / 1,5 / 2,0 s die Werte für s und v ab.")
     pdf.step(3, "Berechne s und v mit den Formeln und vergleiche.")
     pdf.step(4, "Wiederhole mit h0 = 45 m. Notiere die Gesamtfallzeit tF und Aufprallgeschwindigkeit.")
     pdf.step(5, "Vergleiche das a-t-Diagramm: Ist a wirklich konstant?")
@@ -385,7 +386,7 @@ def ab_freierfall():
                     ["2,0","","","",""],["tF (Aufprall)","","--","","--"]])
     pdf.ln(3)
 
-    pdf.sec("Messwerterfassung  -  Verschiedene Starthoehen")
+    pdf.sec("Messwerterfassung  -  Verschiedene Starthöhen")
     pdf.th(["h0 (m)", "tF (Fallzeit, s)", "vF (Aufprall, m/s)", "tF berechnet (s)", "vF berechnet (m/s)"],
            [22, 34, 38, 38, 42])
     pdf.tr(4, [22, 34, 38, 38, 42],
@@ -393,11 +394,11 @@ def ab_freierfall():
     pdf.ln(3)
 
     pdf.sec("Auswertung")
-    pdf.q(1, "Berechne tF fuer h0=45 m:  h0 = 1/2*g*tF^2  =>  tF = sqrt(2*h0/g) = ________", lines=2)
-    pdf.q(2, "Berechne vF fuer h0=45 m:  vF = g * tF = ________  Oder: v = sqrt(2*g*h) = _____", lines=2)
-    pdf.q(3, "Hat die Masse des fallenden Koerpers Einfluss auf die Fallzeit? Erklaere (Galilei)!")
-    pdf.q(4, "Erklaere, warum das a-t-Diagramm eine konstante horizontale Linie zeigt.")
-    pdf.q(5, "Ein Ball wird aus 80 m Hoehe fallen gelassen. Berechne tF und vF. (Rechenweg!)", lines=3)
+    pdf.q(1, "Berechne tF für h0=45 m:  h0 = 1/2*g*tF^2  =>  tF = sqrt(2*h0/g) = ________", lines=2)
+    pdf.q(2, "Berechne vF für h0=45 m:  vF = g * tF = ________  Oder: v = sqrt(2*g*h) = _____", lines=2)
+    pdf.q(3, "Hat die Masse des fallenden Körpers Einfluss auf die Fallzeit? Erkläre (Galilei)!")
+    pdf.q(4, "Erkläre, warum das a-t-Diagramm eine konstante horizontale Linie zeigt.")
+    pdf.q(5, "Ein Ball wird aus 80 m Höhe fallen gelassen. Berechne tF und vF. (Rechenweg!)", lines=3)
 
     pdf.sec("Fazit")
     pdf.lines(4)
@@ -417,8 +418,8 @@ def ab_kreis():
 
     pdf.sec("Lernziele")
     pdf.bullet("Du kannst Winkelgeschwindigkeit om, Bahngeschwindigkeit v und Umlaufzeit T berechnen.")
-    pdf.bullet("Du kennst die Formel fuer die Zentripetalkraft Fz und weisst, worauf sie zeigt.")
-    pdf.bullet("Du kannst erklaeren, was passiert, wenn die Zentripetalkraft wegfaellt (Schnur reisst).")
+    pdf.bullet("Du kennst die Formel für die Zentripetalkraft Fz und weißt, worauf sie zeigt.")
+    pdf.bullet("Du kannst erklären, was passiert, wenn die Zentripetalkraft wegfällt (Schnur reißt).")
     pdf.ln(2)
 
     pdf.sec("Physikalischer Hintergrund", (79, 70, 229))
@@ -428,20 +429,20 @@ def ab_kreis():
         "Fz = m * om^2 * r = m*v^2/r  (Zentripetalkraft - zeigt immer nach innen!)",
         "az = v^2 / r = om^2 * r      (Zentripetalbeschleunigung in m/s^2)",
     ])
-    pdf.body("Die Zentripetalkraft wird durch die Schnur/Schiene aufgebracht. Faellt sie weg, fliegt das Objekt tangential davon!")
+    pdf.body("Die Zentripetalkraft wird durch die Schnur aufgebracht. Fällt sie weg, fliegt das Objekt tangential davon!")
     pdf.ln(2)
 
-    pdf.sec("Versuchsdurchfuehrung")
-    pdf.body("Oeffne '1.6 Kreisbewegung' in LernStar (Klasse 11 -> Physik).", bold=True)
+    pdf.sec("Versuchsdurchführung")
+    pdf.body("Öffne '1.6 Kreisbewegung' in LernStar (Klasse 11 -> Physik).", bold=True)
     pdf.step(1, "Starteinstellung: m = 50 kg, r = 2,0 m, om = 2,0 rad/s. Starte die Simulation.")
     pdf.step(2, "Lies v, Fz und T aus der Anzeige ab und trage in Tabelle A ein.")
     pdf.step(3, "Variiere nur r (Werte: 1,0 / 2,0 / 3,5 / 5,0 m) bei gleichem om - notiere Fz. (Tab. B)")
     pdf.step(4, "Variiere nur om (Werte: 1,0 / 2,0 / 3,0 / 4,0 rad/s) bei gleichem r - notiere Fz. (Tab. C)")
-    pdf.step(5, "Druecke '>> Schnur reisst!' - beobachte die Richtung der Gondelbewegung!")
+    pdf.step(5, "Drücke '>> Schnur reißt!' - beobachte die Richtung der Gondelbewegung!")
     pdf.ln(2)
 
     pdf.sec("Tabelle A  -  Basisversuch (m=50 kg, r=2 m, om=2 rad/s)", GREEN)
-    pdf.th(["Groesse", "Symbol", "Einheit", "Simulationswert", "Formel-Berechnung"],
+    pdf.th(["Größe", "Symbol", "Einheit", "Simulationswert", "Formel-Berechnung"],
            [52, 20, 22, 42, 38])
     pdf.tr(0, [52, 20, 22, 42, 38],
            prefill=[
@@ -468,11 +469,11 @@ def ab_kreis():
 
     pdf.add_page()
     pdf.sec("Auswertung")
-    pdf.q(1, "Berechne Fz fuer m=50 kg, om=2 rad/s, r=2 m mit der Formel. Stimmt es mit Tabelle A?", lines=2)
-    pdf.q(2, "Wie veraendert sich Fz, wenn r verdoppelt wird (Tabelle B)? Formuliere eine Regel!")
-    pdf.q(3, "Wie veraendert sich Fz, wenn om verdoppelt wird (Tabelle C)? Quadratisch oder linear?")
-    pdf.q(4, "In welche Richtung fliegt die Gondel, wenn die Schnur reisst? Erklaere physikalisch!")
-    pdf.q(5, "Auto mit v=20 m/s in Kurve mit r=50 m. Berechne az = v^2/r und Fz fuer m=1200 kg.", lines=3)
+    pdf.q(1, "Berechne Fz für m=50 kg, om=2 rad/s, r=2 m mit der Formel. Stimmt es mit Tabelle A?", lines=2)
+    pdf.q(2, "Wie verändert sich Fz, wenn r verdoppelt wird (Tabelle B)? Formuliere eine Regel!")
+    pdf.q(3, "Wie verändert sich Fz, wenn om verdoppelt wird (Tabelle C)? Quadratisch oder linear?")
+    pdf.q(4, "In welche Richtung fliegt die Gondel, wenn die Schnur reißt? Erkläre physikalisch!")
+    pdf.q(5, "Auto mit v=20 m/s in Kurve mit r=50 m. Berechne az = v^2/r und Fz für m=1200 kg.", lines=3)
 
     pdf.sec("Fazit")
     pdf.lines(4)
@@ -491,14 +492,14 @@ def ab_newton():
     pdf.name_row()
 
     pdf.sec("Lernziele")
-    pdf.bullet("Du kennst Newtons 2. Gesetz: F_netto = m * a (Kraeftebilanz).")
-    pdf.bullet("Du kannst erklaeren, wie Schubkraft, Gewicht und Luftwiderstand zusammenwirken.")
-    pdf.bullet("Du kannst die Anfangsbeschleunigung einer Rakete berechnen und Startbedingung pruefen.")
+    pdf.bullet("Du kennst Newtons 2. Gesetz: F_netto = m * a (Kräftebilanz).")
+    pdf.bullet("Du kannst erklären, wie Schubkraft, Gewicht und Luftwiderstand zusammenwirken.")
+    pdf.bullet("Du kannst die Anfangsbeschleunigung einer Rakete berechnen und Startbedingung prüfen.")
     pdf.ln(2)
 
     pdf.sec("Physikalischer Hintergrund", RED)
     pdf.formula_box([
-        "F_netto = F_Schub - F_Gewicht - F_Luft   (Kraeftebilanz)",
+        "F_netto = F_Schub - F_Gewicht - F_Luft   (Kräftebilanz)",
         "F_Gewicht = m * g = m * 9,81 N/kg",
         "a = F_netto / m                            (Newtons 2. Gesetz)",
         "Startbedingung:  F_Schub > m * g           => a > 0 => Rakete hebt ab!",
@@ -506,11 +507,11 @@ def ab_newton():
     pdf.body("Der Luftwiderstand nimmt mit v^2 zu und wirkt der Bewegung entgegen.")
     pdf.ln(2)
 
-    pdf.sec("Versuchsdurchfuehrung")
-    pdf.body("Oeffne '2.3 Newton' in LernStar (Klasse 11 -> Physik).", bold=True)
+    pdf.sec("Versuchsdurchführung")
+    pdf.body("Öffne '2.3 Newton' in LernStar (Klasse 11 -> Physik).", bold=True)
     pdf.step(1, "Setze: F_Schub=500 N, m=100 kg, Treibstoff=100%, Luftwiderstand=0. Starte.")
     pdf.step(2, "Berechne theoretisch die Anfangsbeschleunigung a0. Vergleiche mit Simulation.")
-    pdf.step(3, "Erhoehe die Masse auf 200 kg - wie aendert sich a0? Schafft die Rakete noch abzuheben?")
+    pdf.step(3, "Erhöhe die Masse auf 200 kg - wie ändert sich a0? Schafft die Rakete noch abzuheben?")
     pdf.step(4, "Setze Luftwiderstand = 3 - vergleiche das v-t-Diagramm mit LW=0.")
     pdf.step(5, "Finde die minimale Schubkraft, bei der eine Rakete mit m=100 kg gerade noch abhebt.")
     pdf.ln(2)
@@ -524,7 +525,7 @@ def ab_newton():
     pdf.ln(3)
 
     pdf.sec("Messwerterfassung  -  Variation Masse m (F=1000 N, LW=0)")
-    pdf.th(["m (kg)", "F_Gewicht (N)", "F_netto (N)", "a0 (m/s^2)", "Max. Hoehe ca."],
+    pdf.th(["m (kg)", "F_Gewicht (N)", "F_netto (N)", "a0 (m/s^2)", "Max. Höhe ca."],
            [26, 36, 34, 34, 44])
     pdf.tr(5, [26, 36, 34, 34, 44],
            prefill=[["20","","","",""],["50","","","",""],["100","","","",""],
@@ -533,7 +534,7 @@ def ab_newton():
 
     pdf.sec("Auswertung")
     pdf.q(1, "Ab welcher minimalen Schubkraft hebt eine Rakete mit m=100 kg ab? Berechne!", lines=2)
-    pdf.q(2, "Wie aendert sich a0, wenn die Masse halbiert wird (bei F=1000 N)?")
+    pdf.q(2, "Wie ändert sich a0, wenn die Masse halbiert wird (bei F=1000 N)?")
     pdf.q(3, "Warum nimmt die Beschleunigung zu, wenn der Treibstoff (und damit die Masse) abnimmt?", lines=2)
     pdf.q(4, "Welchen Einfluss hat der Luftwiderstand auf die Maximalgeschwindigkeit? (Diagramm!)")
     pdf.q(5, "Berechne a: F_Schub=1500 N, m=80 kg, v=100 m/s, F_Luft=200 N. Rechenweg zeigen!", lines=3)
@@ -557,25 +558,25 @@ def ab_energie():
     pdf.sec("Lernziele")
     pdf.bullet("Du verstehst die Umwandlung von potenzieller Energie E_pot in kinetische E_kin.")
     pdf.bullet("Du kannst E_pot = m*g*h und E_kin = 1/2*m*v^2 berechnen.")
-    pdf.bullet("Du erkennst den Energieerhaltungssatz und weisst, was Reibung veraendert.")
+    pdf.bullet("Du erkennst den Energieerhaltungssatz und weißt, was Reibung verändert.")
     pdf.ln(2)
 
     pdf.sec("Physikalischer Hintergrund", GREEN)
     pdf.formula_box([
-        "E_pot = m * g * h          (potenzielle Energie - abhaengig von Hoehe h)",
-        "E_kin = 1/2 * m * v^2      (kinetische Energie - abhaengig von v)",
+        "E_pot = m * g * h          (potenzielle Energie - abhängig von Höhe h)",
+        "E_kin = 1/2 * m * v^2      (kinetische Energie - abhängig von v)",
         "E_ges = E_pot + E_kin      (Gesamtenergie - ohne Reibung konstant!)",
-        "v_max = sqrt(2 * g * h0)   (max. Geschw. wenn E_pot vollstaendig in E_kin)",
+        "v_max = sqrt(2 * g * h0)   (max. Geschw. wenn E_pot vollst. in E_kin)",
     ])
-    pdf.body("Mit Reibung: E_Reibung = mu * m * g * s_ges  (s_ges = zurueckgelegte Strecke)")
+    pdf.body("Mit Reibung: E_Reibung = mu * m * g * s_ges  (s_ges = zurückgelegte Strecke)")
     pdf.ln(2)
 
-    pdf.sec("Versuchsdurchfuehrung")
-    pdf.body("Oeffne '3.2 Energieerhaltung' in LernStar (Klasse 11 -> Physik).", bold=True)
-    pdf.step(1, "Stelle: Starthoehe h0 = 10 m, Reibung mu = 0, Masse m = 5 kg. Starte.")
+    pdf.sec("Versuchsdurchführung")
+    pdf.body("Öffne '3.2 Energieerhaltung' in LernStar (Klasse 11 -> Physik).", bold=True)
+    pdf.step(1, "Stelle: Starthöhe h0 = 10 m, Reibung mu = 0, Masse m = 5 kg. Starte.")
     pdf.step(2, "Notiere E_pot, E_kin und E_ges an 5 verschiedenen Positionen (Tabelle A).")
     pdf.step(3, "Berechne v_max (im Tal) und vergleiche mit dem Simulationswert.")
-    pdf.step(4, "Erhoehe Reibung auf mu = 0,1 und dann 0,2 - notiere wann der Wagen stoppt (Tab. B).")
+    pdf.step(4, "Erhöhe Reibung auf mu = 0,1 und dann 0,2 - notiere wann der Wagen stoppt (Tab. B).")
     pdf.step(5, "Stelle h0 = 15 m ein. Berechne v_max und vergleiche.")
     pdf.ln(2)
 
@@ -586,7 +587,7 @@ def ab_energie():
            prefill=[
                ["Start (Berg h0=10m)","10,0","","","",""],
                ["1. Tal","0,0","","","",""],
-               ["2. Huegel (h~6m)","~6","","","",""],
+               ["2. Hügel (h~6m)","~6","","","",""],
                ["2. Tal","0,0","","","",""],
                ["Ziel","0,0","","","",""],
            ])
@@ -602,10 +603,10 @@ def ab_energie():
 
     pdf.sec("Auswertung")
     pdf.q(1, "Berechne v_max (mu=0, h0=10 m):  v = sqrt(2*g*h) = sqrt(2*9,81*10) = _______ m/s", lines=2)
-    pdf.q(2, "Ist E_ges ohne Reibung wirklich konstant? Pruefe mit Tabelle A - nenne Zahlenwerte!")
+    pdf.q(2, "Ist E_ges ohne Reibung wirklich konstant? Prüfe mit Tabelle A - nenne Zahlenwerte!")
     pdf.q(3, "Was passiert mit der 'verlorenen' Energie bei Reibung? Wohin geht sie?")
-    pdf.q(4, "Kann der Wagen (h0=10m) einen zweiten Berg mit h=12 m ueberqueren? Begruende!", lines=2)
-    pdf.q(5, "Berechne E_ges fuer h0=15 m, m=5 kg: E_ges = m*g*h = 5*9,81*15 = ________ J", lines=2)
+    pdf.q(4, "Kann der Wagen (h0=10m) einen zweiten Berg mit h=12 m überqueren? Begründe!", lines=2)
+    pdf.q(5, "Berechne E_ges für h0=15 m, m=5 kg: E_ges = m*g*h = 5*9,81*15 = ________ J", lines=2)
 
     pdf.sec("Fazit")
     pdf.lines(4)
@@ -628,11 +629,11 @@ if __name__ == "__main__":
         ("AB_3.2_Energieerhaltung_Achterbahn.pdf", ab_energie()),
     ]
 
-    print("Erstelle Arbeitsblaetter...")
+    print("Erstelle Arbeitsblätter...")
     for filename, pdf in sheets:
         path = os.path.join(folder, filename)
         pdf.output(path)
         print("  OK  " + path)
 
-    print("\nFertig! %d Arbeitsblaetter erstellt." % len(sheets))
+    print("\nFertig! %d Arbeitsblätter erstellt." % len(sheets))
     print("Ordner: " + os.path.abspath(folder))
