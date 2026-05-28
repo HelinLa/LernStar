@@ -17,7 +17,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=31" />
+  <link rel="stylesheet" href="style.css?v=32" />
+  <link rel="stylesheet" href="quiz-game.css?v=1" />
 <!-- Markdown + Mathe-Rendering für Chat -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -132,6 +133,15 @@
         <div class="stat"><span class="stat-num">300+</span><span class="stat-lbl">Aufgaben</span></div>
       </div>
     </div>
+
+    <button class="qg-home-banner" onclick="openQuizGame()">
+      <div class="qg-home-banner-icon">🎮</div>
+      <div class="qg-home-banner-text">
+        <div class="qg-home-banner-title">Quiz-Spiel starten!</div>
+        <div class="qg-home-banner-sub">Mathe &amp; Physik · Klasse 5–13 · Timer · Lives · Streak-Bonus · Highscore</div>
+      </div>
+      <div class="qg-home-banner-arrow">→</div>
+    </button>
 
     <div class="section-title">
       <h2>Wähle deine Klasse</h2>
@@ -607,7 +617,8 @@
 <script src="content.js?v=22"></script>
 <script src="js/ai_engine.js?v=1"></script>
 <script src="physics-sim.js?v=2"></script>
-<script src="app.js?v=78"></script>
+<script src="app.js?v=79"></script>
+<script src="quiz-game.js?v=1"></script>
 <!-- ── Animated Explainer Modal ─────────────────────────────── -->
 <div id="explainerModal" role="dialog" aria-modal="true" aria-labelledby="explainerTitle">
   <div class="xp-card" id="explainerCard">
