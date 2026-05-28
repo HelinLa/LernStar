@@ -3627,14 +3627,14 @@ function openExperiment(expId) {
           <button class="sim-btn" onclick="_beschReset()">↺ Neu starten</button>
           <a class="sim-btn" href="arbeitsblaetter/AB_1.3_Beschleunigte_Bewegung.pdf" download style="text-decoration:none">📄 Arbeitsblatt</a>
         </div>
-        <p class="sim-hint">Drücke mehrmals auf <b>Jetzt messen</b> während das Auto fährt – die Punkte erscheinen im Diagramm. Klicke dann auf <b>zwei Punkte</b> um die Steigung (= Beschleunigung a = Δv/Δt) zu berechnen!</p>
-        <div class="sim-diagram-label">v-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(zwei Punkte anklicken → Steigung = Beschleunigung a = Δv/Δt)</span></div>
-        <canvas id="beschChart" class="sim-chart-canvas" width="680" height="290"></canvas>
+        <p class="sim-hint">Drücke mehrmals auf <b>Jetzt messen</b> während das Auto fährt – die Punkte erscheinen in allen Diagrammen. Klicke dann im <b>v-t Diagramm</b> auf <b>zwei Punkte</b> um die Steigung (= Beschleunigung a = Δv/Δt) zu berechnen!</p>
+        <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.82em;color:#7c3aed">(Parabel – s = ½·a·t²)</span></div>
+        <canvas id="beschCST" class="sim-chart-canvas" width="680" height="290"></canvas>
         <div id="beschResult" class="sim-result"></div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
           <div>
-            <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.8em;color:#7c3aed">(Parabel – s = ½·a·t²)</span></div>
-            <canvas id="beschCST" class="sim-chart-canvas" width="340" height="200"></canvas>
+            <div class="sim-diagram-label">v-t Diagramm <span style="font-weight:400;font-size:.8em;color:#64748B">(zwei Punkte anklicken → Steigung = Beschleunigung a = Δv/Δt)</span></div>
+            <canvas id="beschChart" class="sim-chart-canvas" width="340" height="200"></canvas>
           </div>
           <div>
             <div class="sim-diagram-label">a-t Diagramm <span style="font-weight:400;font-size:.8em;color:#dc2626">(a = konst. ≠ 0)</span></div>
