@@ -3968,53 +3968,82 @@ function openExperiment(expId) {
     });
 
   } else if (expId === 'wurfbewegung') {
-    modal.innerHTML = `<div class="sim-box">
+    modal.innerHTML = `<div class="sim-box sim-box-wide">
       <button class="sim-x" onclick="closeExperiment()">✕</button>
-      <h3 class="sim-h3">🏹 Schräger Wurf</h3>
-      <canvas id="wurfCanvas" width="460" height="220" style="width:100%;border-radius:8px;display:block"></canvas>
-      <div style="padding:8px 16px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <div><label style="font-weight:700;font-size:.85rem">Winkel α: <span id="wurfWLabel">45</span>°</label>
-          <input type="range" id="wurfWSlider" min="10" max="80" value="45" style="width:100%;accent-color:#7c3aed"
-            oninput="document.getElementById('wurfWLabel').textContent=this.value;_wurfReset()"></div>
-        <div><label style="font-weight:700;font-size:.85rem">v₀: <span id="wurfVLabel">30</span> m/s</label>
-          <input type="range" id="wurfVSlider" min="10" max="60" value="30" style="width:100%;accent-color:#0891b2"
-            oninput="document.getElementById('wurfVLabel').textContent=this.value;_wurfReset()"></div>
-      </div>
-      <div id="wurfInfo" class="sim-info-row" style="font-size:.82rem">
-        <span>t = <b id="wurfTDisp">0,0</b> s</span>
-        <span>x = <b id="wurfXDisp">0</b> m</span>
-        <span>y = <b id="wurfYDisp">0</b> m</span>
-        <span>v = <b id="wurfVDisp">0</b> m/s</span>
-      </div>
-      <div class="sim-btn-row"><button class="sim-btn" onclick="_simMeasure()">📍 Messen</button></div>
-      <div id="wurfResult" class="sim-result"></div>
-      <p class="sim-hint" style="text-align:center;margin:2px 0 4px">Klicke <b>Messen</b> während des Fluges, dann <b>zwei Punkte</b> im x(t)-Diagramm → Steigung = horizontale Geschwindigkeit vx!</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px 10px">
+      <h3 class="sim-h3">🏀 Basketballwurf – Schräger Wurf</h3>
+      <canvas id="basketCanvas" width="680" height="230" style="width:100%;border-radius:10px;display:block"></canvas>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px 10px;padding:6px 10px">
         <div>
-          <div class="sim-diagram-label" style="font-size:.75rem">x(t) Diagramm</div>
-          <canvas id="wurfChartX" class="sim-chart-canvas" width="220" height="130"></canvas>
+          <label style="font-size:.78rem;font-weight:700;color:#7c3aed">🎯 Winkel α: <span id="basketAlphaL">45</span>°</label>
+          <input type="range" id="basketAlpha" min="20" max="80" value="45" style="width:100%;accent-color:#7c3aed"
+            oninput="document.getElementById('basketAlphaL').textContent=this.value;_basketUpdate()">
         </div>
         <div>
-          <div class="sim-diagram-label" style="font-size:.75rem">y(t) Diagramm</div>
-          <canvas id="wurfChartY" class="sim-chart-canvas" width="220" height="130"></canvas>
+          <label style="font-size:.78rem;font-weight:700;color:#0891b2">💨 v₀: <span id="basketV0L">8,0</span> m/s</label>
+          <input type="range" id="basketV0" min="3" max="15" value="8" step="0.5" style="width:100%;accent-color:#0891b2"
+            oninput="document.getElementById('basketV0L').textContent=(+this.value).toFixed(1).replace('.',',');_basketUpdate()">
+        </div>
+        <div>
+          <label style="font-size:.78rem;font-weight:700;color:#dc2626">🌍 g: <span id="basketGL">9,8</span> m/s²</label>
+          <input type="range" id="basketG" min="1" max="20" value="9.81" step="0.1" style="width:100%;accent-color:#dc2626"
+            oninput="document.getElementById('basketGL').textContent=(+this.value).toFixed(1).replace('.',',');_basketUpdate()">
+        </div>
+        <div>
+          <label style="font-size:.78rem;font-weight:700;color:#059669">📏 Abwurfhöhe h₀: <span id="basketH0L">1,5</span> m</label>
+          <input type="range" id="basketH0" min="0.5" max="2.5" value="1.5" step="0.1" style="width:100%;accent-color:#059669"
+            oninput="document.getElementById('basketH0L').textContent=(+this.value).toFixed(1).replace('.',',');_basketUpdate()">
+        </div>
+        <div>
+          <label style="font-size:.78rem;font-weight:700;color:#d97706">🏀 Korbhöhe hK: <span id="basketHKL">3,0</span> m</label>
+          <input type="range" id="basketHK" min="2" max="4" value="3.05" step="0.05" style="width:100%;accent-color:#d97706"
+            oninput="document.getElementById('basketHKL').textContent=(+this.value).toFixed(1).replace('.',',');_basketUpdate()">
+        </div>
+        <div>
+          <label style="font-size:.78rem;font-weight:700;color:#6b21a8">↔️ Entfernung d: <span id="basketDL">5,0</span> m</label>
+          <input type="range" id="basketD" min="2" max="10" value="5" step="0.5" style="width:100%;accent-color:#6b21a8"
+            oninput="document.getElementById('basketDL').textContent=(+this.value).toFixed(1).replace('.',',');_basketUpdate()">
         </div>
       </div>
-      <table class="sim-table" id="wurfTable" style="display:none">
-        <thead><tr><th>t (s)</th><th>x (m)</th><th>y (m)</th><th>v (m/s)</th></tr></thead>
-        <tbody id="wurfTbody"></tbody>
+      <div class="sim-info-row" style="font-size:.8rem">
+        <span>t = <b id="basketT">0,00</b> s</span>
+        <span>x = <b id="basketX">0,00</b> m</span>
+        <span>y = <b id="basketY">0,00</b> m</span>
+        <span>v = <b id="basketV">0,00</b> m/s</span>
+        <span>a = <b id="basketA">9,81</b> m/s²</span>
+      </div>
+      <div class="sim-btn-row">
+        <button class="sim-btn primary" id="basketPlayBtn" onclick="_basketToggle()">▶ Werfen!</button>
+        <button class="sim-btn" onclick="_basketReset()">↺ Neu</button>
+      </div>
+      <div id="basketResult" class="sim-result"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px 10px;margin-top:4px">
+        <div>
+          <div class="sim-diagram-label" style="font-size:.75rem">x-t Diagramm (x = vx·t)</div>
+          <canvas id="basketXT" width="320" height="120" style="width:100%;border:1px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+        </div>
+        <div>
+          <div class="sim-diagram-label" style="font-size:.75rem">y-t Diagramm (Parabel)</div>
+          <canvas id="basketYT" width="320" height="120" style="width:100%;border:1px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+        </div>
+        <div>
+          <div class="sim-diagram-label" style="font-size:.75rem">v-t Diagramm</div>
+          <canvas id="basketVT" width="320" height="120" style="width:100%;border:1px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+        </div>
+        <div>
+          <div class="sim-diagram-label" style="font-size:.75rem">a-t Diagramm (a = g = konst.)</div>
+          <canvas id="basketAT" width="320" height="120" style="width:100%;border:1px solid #e5e7eb;border-radius:6px;background:#fff"></canvas>
+        </div>
+      </div>
+      <div class="sim-diagram-label" style="margin-top:4px">Flugbahn y(x) – Parabel-Trajektorie</div>
+      <canvas id="basketTraj" class="sim-chart-canvas" width="680" height="160"></canvas>
+      <p class="sim-hint" style="margin-top:6px">Stelle Winkel und Geschwindigkeit ein → klicke <b>▶ Werfen!</b> und beobachte ob der Ball den Korb trifft! Die Diagramme zeigen alle Bewegungsgrößen.</p>
+      <table class="sim-table" id="basketTable" style="display:none;margin-top:8px">
+        <thead><tr><th>t (s)</th><th>x (m)</th><th>y (m)</th><th>v (m/s)</th><th>a (m/s²)</th></tr></thead>
+        <tbody id="basketTbody"></tbody>
       </table>
-      </div>`;
+    </div>`;
     document.body.appendChild(modal);
     _sim = _simWurf();
-    const wurfChartXEl = document.getElementById('wurfChartX');
-    if (wurfChartXEl) wurfChartXEl.addEventListener('click', function(e) {
-      if (!_sim) return;
-      const r = this.getBoundingClientRect();
-      if (_sim.handleClick) _sim.handleClick(
-        (e.clientX - r.left) * (this.width / r.width),
-        (e.clientY - r.top)  * (this.height / r.height)
-      );
-    });
 
   } else if (expId === 'kreisbewegung') {
     modal.innerHTML = `<div class="sim-box">
@@ -4592,211 +4621,357 @@ function _simGleichfoermig() {
   return { stop(){ cancelAnimationFrame(raf); } };
 }
 
-// ── Schräger Wurf ─────────────────────────────────────────
-let _wurfRaf, _wurfT = 0;
-function _wurfReset() { _wurfT = 0; }
+// ── Basketballwurf ────────────────────────────────────────
+function _basketToggle() { if (_sim) _sim.toggle(); }
+function _basketReset()  { if (_sim) _sim.reset();  }
+function _basketUpdate() { if (_sim) _sim.update();  }
 function _simWurf() {
-  const cv = document.getElementById('wurfCanvas');
+  const cv = document.getElementById('basketCanvas');
+  if (!cv) return {};
   const ctx = cv.getContext('2d');
-  const g = 9.81, scale = 6;
-  let path = [];
-  const wurfPts = [];
-  const wurfMeas = [];
-  let wurfSel = [];
-  let _curAlpha=45*Math.PI/180, _curV0=30, _curTMax=0;
-  function draw() {
-    const alpha = +document.getElementById('wurfWSlider').value * Math.PI/180;
-    const v0 = +document.getElementById('wurfVSlider').value;
-    _curAlpha=alpha; _curV0=v0;
-    ctx.clearRect(0,0,cv.width,cv.height);
-    // Boden
-    ctx.fillStyle='#d1fae5'; ctx.fillRect(0,cv.height-20,cv.width,20);
-    // Trajektorie berechnen
-    path = [];
-    const tMax2 = 2*v0*Math.sin(alpha)/g;
-    _curTMax=tMax2;
-    for(let t=0; t<=tMax2; t+=0.05){
-      const sx = v0*Math.cos(alpha)*t*scale;
-      const sy = (v0*Math.sin(alpha)*t - 0.5*g*t*t)*scale;
-      path.push({t, x:v0*Math.cos(alpha)*t, y:v0*Math.sin(alpha)*t - 0.5*g*t*t, px:20+sx, py:cv.height-20-sy});
-    }
-    // Pfad zeichnen
-    if(path.length>1){
-      ctx.strokeStyle='rgba(124,58,237,0.4)'; ctx.lineWidth=2; ctx.setLineDash([5,5]);
-      ctx.beginPath(); ctx.moveTo(path[0].px,path[0].py);
-      path.forEach(p=>ctx.lineTo(p.px,p.py)); ctx.stroke(); ctx.setLineDash([]);
-    }
-    // Ball animieren
-    _wurfT = (_wurfT + 0.02) % (tMax2+0.5);
-    const curT = Math.min(_wurfT, tMax2);
-    const bx = 20 + v0*Math.cos(alpha)*curT*scale;
-    const yRaw = v0*Math.sin(alpha)*curT - 0.5*g*curT*curT;
-    const by = cv.height-20 - Math.max(0, yRaw*scale);
-    const vx = v0*Math.cos(alpha), vy = v0*Math.sin(alpha)-g*curT;
-    const vTotal = Math.sqrt(vx*vx+vy*vy);
-    ctx.fillStyle='#ef4444';
-    ctx.beginPath(); ctx.arc(bx,by,8,0,Math.PI*2); ctx.fill();
-    // Labels
-    ctx.fillStyle='#1f2937'; ctx.font='700 13px sans-serif';
-    ctx.fillText(`α=${document.getElementById('wurfWSlider').value}°  v₀=${document.getElementById('wurfVSlider').value}m/s`, 8,20);
-    const wMax = (v0*v0*Math.sin(2*alpha)/g).toFixed(1);
-    ctx.fillText(`Weite: ~${wMax}m  t=${curT.toFixed(1)}s`, 8,38);
-    // update displays
-    const td=document.getElementById('wurfTDisp'); if(td) td.textContent=curT.toFixed(1).replace('.',',');
-    const xd=document.getElementById('wurfXDisp'); if(xd) xd.textContent=(v0*Math.cos(alpha)*curT).toFixed(1).replace('.',',');
-    const yd=document.getElementById('wurfYDisp'); if(yd) yd.textContent=Math.max(0,yRaw).toFixed(1).replace('.',',');
-    const vd=document.getElementById('wurfVDisp'); if(vd) vd.textContent=vTotal.toFixed(1).replace('.',',');
-    // record trajectory points for charts
-    if(_wurfT<0.05){
-      wurfPts.length=0;
-      for(let ti=0;ti<=tMax2;ti+=tMax2/30){
-        const xi=v0*Math.cos(alpha)*ti;
-        const yi=Math.max(0,v0*Math.sin(alpha)*ti-0.5*g*ti*ti);
-        const vi=Math.sqrt((v0*Math.cos(alpha))**2+(v0*Math.sin(alpha)-g*ti)**2);
-        wurfPts.push({t:ti,x:xi,y:yi,v:vi});
-      }
-      drawWurfCharts(curT, alpha, v0, tMax2);
-      updateWurfTable(alpha, v0, tMax2);
-    }
-    drawWurfCharts(curT, alpha, v0, tMax2);
-    _wurfRaf = requestAnimationFrame(draw);
+  let raf = null, running = false, simT = 0, lastTs = null;
+  let params = getParams(), tr = calcTraj(params);
+  function fmt(n, d=2) { return n.toFixed(d).replace('.', ','); }
+
+  function getParams() {
+    return {
+      alpha: +document.getElementById('basketAlpha').value * Math.PI / 180,
+      v0:    +document.getElementById('basketV0').value,
+      g:     +document.getElementById('basketG').value,
+      h0:    +document.getElementById('basketH0').value,
+      hK:    +document.getElementById('basketHK').value,
+      d:     +document.getElementById('basketD').value
+    };
   }
 
-  function miniChart(canvId, pts, xKey, yKey, xLabel, yLabel, color, curT, alpha, v0) {
-    const c=document.getElementById(canvId); if(!c) return;
-    const ctx2=c.getContext('2d'), cW=c.width, cH=c.height;
-    const P={l:38,r:10,t:14,b:28};
-    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
-    ctx2.clearRect(0,0,cW,cH);
-    ctx2.fillStyle='#f8fafc'; ctx2.fillRect(0,0,cW,cH);
-    if(pts.length<2) return;
-    const xMax=pts[pts.length-1][xKey], yMax=Math.max(...pts.map(p=>p[yKey]))*1.1||1;
-    ctx2.strokeStyle='#e5e7eb'; ctx2.lineWidth=1;
-    for(let i=1;i<=3;i++){
-      const y=P.t+(i/3)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+  function calcTraj(p) {
+    const { alpha, v0, g, h0 } = p;
+    const vc = v0 * Math.cos(alpha), vs = v0 * Math.sin(alpha);
+    const disc = vs * vs + 2 * g * h0;
+    const tGround = disc > 0 ? (vs + Math.sqrt(disc)) / g : (vs / g) * 2;
+    const steps = 80;
+    const pts = [];
+    for (let i = 0; i <= steps; i++) {
+      const t = (tGround / steps) * i;
+      const x = vc * t;
+      const y = Math.max(0, h0 + vs * t - 0.5 * g * t * t);
+      const vy = vs - g * t;
+      pts.push({ t, x, y, v: Math.sqrt(vc*vc + vy*vy), a: g });
     }
-    ctx2.strokeStyle='#333'; ctx2.lineWidth=1.5;
-    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
-    ctx2.font='9px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
-    ctx2.fillText(xLabel, P.l+gW/2, cH-2);
-    ctx2.save(); ctx2.translate(10,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText(yLabel,0,0); ctx2.restore();
-    ctx2.strokeStyle=color; ctx2.lineWidth=2;
-    ctx2.beginPath();
-    pts.forEach((p,i)=>{
-      const x=P.l+(p[xKey]/xMax)*gW, y=P.t+gH-(p[yKey]/yMax)*gH;
-      i===0?ctx2.moveTo(x,y):ctx2.lineTo(x,y);
-    });
-    ctx2.stroke();
-    // current dot
-    const g2=9.81, curX=curT, curY=(yKey==='x'?v0*Math.cos(alpha)*curT:Math.max(0,v0*Math.sin(alpha)*curT-0.5*g2*curT*curT));
-    const dotX=P.l+(curX/xMax)*gW, dotY=P.t+gH-(Math.min(curY,yMax)/yMax)*gH;
-    ctx2.fillStyle=color; ctx2.beginPath(); ctx2.arc(dotX,dotY,4,0,Math.PI*2); ctx2.fill();
+    return { pts, tGround, vc, vs };
   }
 
-  function drawWurfChartXFull(curT, alpha, v0, tMax2) {
-    const c=document.getElementById('wurfChartX'); if(!c) return;
-    const ctx2=c.getContext('2d'), cW=c.width, cH=c.height;
-    const P={l:42,r:10,t:14,b:28};
-    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
-    ctx2.clearRect(0,0,cW,cH);
-    ctx2.fillStyle='#f8fafc'; ctx2.fillRect(0,0,cW,cH);
-    if(wurfPts.length<2) return;
-    const xMaxT=wurfPts[wurfPts.length-1].t||1;
-    const xMaxX=Math.max(...wurfPts.map(p=>p.x))*1.1||1;
-    ctx2.strokeStyle='#e5e7eb'; ctx2.lineWidth=1;
-    for(let i=1;i<=3;i++){
-      const y=P.t+(i/3)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
-    }
-    ctx2.strokeStyle='#333'; ctx2.lineWidth=1.5;
-    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
-    ctx2.font='9px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
-    ctx2.fillText('t (s)', P.l+gW/2, cH-2);
-    ctx2.save(); ctx2.translate(10,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('x (m)',0,0); ctx2.restore();
-    // trajectory curve
-    ctx2.strokeStyle='#7c3aed'; ctx2.lineWidth=2;
-    ctx2.beginPath();
-    wurfPts.forEach((p,i)=>{
-      const px=P.l+(p.t/xMaxT)*gW, py=P.t+gH-(p.x/xMaxX)*gH;
-      i===0?ctx2.moveTo(px,py):ctx2.lineTo(px,py);
-    });
-    ctx2.stroke();
-    // current dot
-    const dotX=P.l+(curT/xMaxT)*gW, dotY=P.t+gH-((v0*Math.cos(alpha)*curT)/xMaxX)*gH;
-    ctx2.fillStyle='#7c3aed'; ctx2.beginPath(); ctx2.arc(dotX,dotY,4,0,Math.PI*2); ctx2.fill();
-    function ptX(t){ return P.l+(t/xMaxT)*gW; }
-    function ptY(x){ return P.t+gH-(x/xMaxX)*gH; }
-    // measured points
-    wurfMeas.forEach((p,i)=>{
-      const sel=wurfSel.includes(i);
-      ctx2.fillStyle=sel?'#f97316':'#dc2626';
-      ctx2.beginPath(); ctx2.arc(p.px,p.py,6,0,Math.PI*2); ctx2.fill();
-      if(sel){ ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2; ctx2.beginPath(); ctx2.arc(p.px,p.py,9,0,Math.PI*2); ctx2.stroke(); }
-    });
-    if(wurfSel.length===2){
-      const a=wurfMeas[wurfSel[0]], b=wurfMeas[wurfSel[1]];
-      if(Math.abs(b.t-a.t)>0.001){
-        const slope=(b.x-a.x)/(b.t-a.t);
-        ctx2.strokeStyle='#f97316'; ctx2.lineWidth=2;
-        ctx2.beginPath(); ctx2.moveTo(a.px,a.py); ctx2.lineTo(b.px,b.py); ctx2.stroke();
-        const res=document.getElementById('wurfResult');
-        if(res) res.innerHTML=`<b>Δx/Δt = ${slope.toFixed(1)} m/s = vx (horizontale Geschwindigkeit)</b>`;
+  function checkTreffer(p, tr) {
+    const { d, hK } = p;
+    for (let i = 1; i < tr.pts.length; i++) {
+      if (tr.pts[i-1].x <= d && tr.pts[i].x >= d) {
+        const frac = (d - tr.pts[i-1].x) / Math.max(tr.pts[i].x - tr.pts[i-1].x, 0.001);
+        const yAtD = tr.pts[i-1].y + frac * (tr.pts[i].y - tr.pts[i-1].y);
+        return Math.abs(yAtD - hK) < 0.23;
       }
+    }
+    return false;
+  }
+
+  function drawScene(curT, p, tr2) {
+    const W = cv.width, H = cv.height;
+    ctx.clearRect(0, 0, W, H);
+    const { d, h0, hK, alpha, v0, g } = p;
+    const { vc, vs, tGround } = tr2;
+    const groundY = H - 30;
+    const leftMar = 70, rightMar = 50;
+    const scX = (W - leftMar - rightMar) / (d + 1.5);
+    const scY = Math.min(scX, (groundY - 20) / Math.max(hK * 1.4, 4));
+    const sX = x => leftMar + x * scX;
+    const sY = y => groundY - y * scY;
+
+    // Sky
+    const sky = ctx.createLinearGradient(0, 0, 0, groundY);
+    sky.addColorStop(0, '#6BB8D4'); sky.addColorStop(1, '#BEE1F0');
+    ctx.fillStyle = sky; ctx.fillRect(0, 0, W, groundY);
+    // Clouds
+    [[120,28],[300,18],[500,32]].forEach(([cx2,cy2]) => {
+      ctx.fillStyle='rgba(255,255,255,0.75)';
+      [[-18,0,22,14],[0,0,28,18],[16,0,20,14]].forEach(([dx,dy,rw,rh])=>{
+        ctx.beginPath(); ctx.ellipse(cx2+dx,cy2+dy,rw,rh,0,0,Math.PI*2); ctx.fill();
+      });
+    });
+    // Ground / court
+    ctx.fillStyle = '#8BC34A'; ctx.fillRect(0, groundY, W, H - groundY);
+    ctx.fillStyle = '#C5803A'; ctx.fillRect(0, groundY + 6, W, 5);
+    // Parkettmuster
+    ctx.strokeStyle = 'rgba(0,0,0,0.12)'; ctx.lineWidth = 1;
+    for (let xi = 0; xi < W; xi += 40) {
+      ctx.beginPath(); ctx.moveTo(xi, groundY + 6); ctx.lineTo(xi, H); ctx.stroke();
+    }
+
+    // Trajectory (dashed purple)
+    if (tr2.pts.length > 1) {
+      ctx.strokeStyle = 'rgba(124,58,237,0.35)'; ctx.lineWidth = 2; ctx.setLineDash([5,5]);
+      ctx.beginPath(); ctx.moveTo(sX(tr2.pts[0].x), sY(tr2.pts[0].y));
+      tr2.pts.forEach(pt => ctx.lineTo(sX(pt.x), sY(Math.max(0,pt.y))));
+      ctx.stroke(); ctx.setLineDash([]);
+    }
+
+    // Child figure at x=0
+    drawChild(sX(0), groundY, alpha, h0, scY);
+
+    // Basketball hoop at x=d
+    drawHoop(sX(d), sY(hK), groundY);
+
+    // Ball
+    const clampT = Math.min(curT, tGround);
+    const bx = vc * clampT;
+    const by = Math.max(0, h0 + vs * clampT - 0.5 * g * clampT * clampT);
+    const bPx = sX(bx), bPy = sY(by);
+    const br = 9;
+    const bg2 = ctx.createRadialGradient(bPx-2, bPy-2, 1, bPx, bPy, br);
+    bg2.addColorStop(0, '#FF9500'); bg2.addColorStop(1, '#CC4400');
+    ctx.fillStyle = bg2; ctx.beginPath(); ctx.arc(bPx, bPy, br, 0, Math.PI*2); ctx.fill();
+    ctx.strokeStyle = '#333'; ctx.lineWidth = 0.8;
+    ctx.beginPath(); ctx.arc(bPx, bPy, br, 0, Math.PI*2); ctx.stroke();
+    ctx.strokeStyle = '#5c2800'; ctx.lineWidth = 0.8;
+    ctx.beginPath(); ctx.arc(bPx, bPy, br, -Math.PI*0.3, Math.PI*0.7); ctx.stroke();
+    ctx.beginPath(); ctx.arc(bPx, bPy, br, Math.PI*0.7, -Math.PI*0.3); ctx.stroke();
+
+    // Info badge
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    ctx.beginPath(); ctx.roundRect(W-162, 6, 156, 56, 6); ctx.fill();
+    ctx.fillStyle = '#374151'; ctx.font = 'bold 9px Nunito,sans-serif'; ctx.textAlign = 'left';
+    const alpDeg = document.getElementById('basketAlpha').value;
+    const v0Val  = document.getElementById('basketV0').value;
+    const gVal   = (+document.getElementById('basketG').value).toFixed(1).replace('.',',');
+    ctx.fillText(`α=${alpDeg}°  v₀=${v0Val} m/s  g=${gVal} m/s²`, W-156, 20);
+    ctx.fillText(`d=${p.d.toFixed(1)}m  hK=${p.hK.toFixed(1)}m  h₀=${p.h0.toFixed(1)}m`, W-156, 34);
+    const wMax = (vc * tGround).toFixed(1).replace('.',',');
+    const hMax = (h0 + vs*vs/(2*g)).toFixed(1).replace('.',',');
+    ctx.fillText(`Weite: ${wMax}m  hMax: ${hMax}m`, W-156, 48);
+
+    // Info row
+    const vy = vs - g * clampT;
+    document.getElementById('basketT').textContent = fmt(clampT);
+    document.getElementById('basketX').textContent = fmt(bx);
+    document.getElementById('basketY').textContent = fmt(by);
+    document.getElementById('basketV').textContent = fmt(Math.sqrt(vc*vc+vy*vy));
+    document.getElementById('basketA').textContent = fmt(g);
+  }
+
+  function drawChild(x, groundY, alpha, h0, scY) {
+    const armLen = 22, headR = 9, legH = 24, bodyH = 26;
+    const headY = groundY - legH - bodyH - headR;
+    const bodyTop = headY + headR, bodyBot = bodyTop + bodyH;
+    // shadow
+    ctx.fillStyle='rgba(0,0,0,0.1)'; ctx.beginPath(); ctx.ellipse(x,groundY,18,5,0,0,Math.PI*2); ctx.fill();
+    // legs
+    ctx.strokeStyle='#1e3a5f'; ctx.lineWidth=2.5;
+    ctx.beginPath(); ctx.moveTo(x,bodyBot); ctx.lineTo(x-8,groundY); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x,bodyBot); ctx.lineTo(x+6,groundY); ctx.stroke();
+    // body
+    ctx.strokeStyle='#2563EB'; ctx.lineWidth=3;
+    ctx.beginPath(); ctx.moveTo(x,bodyTop); ctx.lineTo(x,bodyBot); ctx.stroke();
+    // throwing arm
+    const aEx = x + armLen * Math.cos(alpha);
+    const aEy = bodyTop + 8 - armLen * Math.sin(alpha);
+    ctx.strokeStyle='#2563EB'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(x,bodyTop+8); ctx.lineTo(aEx,aEy); ctx.stroke();
+    // other arm
+    ctx.beginPath(); ctx.moveTo(x,bodyTop+8); ctx.lineTo(x-14,bodyTop+20); ctx.stroke();
+    // head
+    ctx.fillStyle='#FDBCB4'; ctx.strokeStyle='#c8845a'; ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.arc(x,headY,headR,0,Math.PI*2); ctx.fill(); ctx.stroke();
+    ctx.fillStyle='#4a2c0a';
+    ctx.beginPath(); ctx.arc(x,headY-2,headR,Math.PI,0); ctx.fill();
+    // small ball at hand
+    ctx.fillStyle='#FF9500'; ctx.beginPath(); ctx.arc(aEx,aEy,5,0,Math.PI*2); ctx.fill();
+    ctx.strokeStyle='#333'; ctx.lineWidth=0.6;
+    ctx.beginPath(); ctx.arc(aEx,aEy,5,0,Math.PI*2); ctx.stroke();
+  }
+
+  function drawHoop(hx, hy, groundY) {
+    const ry = hy; // hoop ring y
+    // pole
+    ctx.strokeStyle='#888'; ctx.lineWidth=4;
+    ctx.beginPath(); ctx.moveTo(hx+16, ry-20); ctx.lineTo(hx+16, groundY); ctx.stroke();
+    // backboard
+    ctx.fillStyle='rgba(240,240,240,0.9)'; ctx.strokeStyle='#aaa'; ctx.lineWidth=2;
+    ctx.fillRect(hx+8, ry-30, 16, 44); ctx.strokeRect(hx+8, ry-30, 16, 44);
+    // inner rectangle on backboard
+    ctx.strokeStyle='#dc2626'; ctx.lineWidth=1.5;
+    ctx.strokeRect(hx+11, ry-18, 10, 20);
+    // arm
+    ctx.strokeStyle='#888'; ctx.lineWidth=2.5;
+    ctx.beginPath(); ctx.moveTo(hx+8, ry-2); ctx.lineTo(hx, ry-2); ctx.stroke();
+    // hoop ring (orange)
+    ctx.strokeStyle='#FF6600'; ctx.lineWidth=4;
+    ctx.beginPath(); ctx.moveTo(hx-20, ry-2); ctx.lineTo(hx, ry-2); ctx.stroke();
+    // net
+    ctx.strokeStyle='#ccc'; ctx.lineWidth=1;
+    for (let i=0; i<=5; i++) {
+      const nx = hx-20+i*4;
+      ctx.beginPath(); ctx.moveTo(nx, ry-2); ctx.lineTo(nx+2, ry+20); ctx.stroke();
+    }
+    ctx.beginPath(); ctx.moveTo(hx-20, ry+10); ctx.lineTo(hx, ry+10); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(hx-18, ry+20); ctx.lineTo(hx-2, ry+20); ctx.stroke();
+  }
+
+  function miniChart(id, pts, yKey, xLabel, yLabel, color, curT) {
+    const c = document.getElementById(id); if (!c) return;
+    const ct = c.getContext('2d'), cW = c.width, cH = c.height;
+    const P = {l:36, r:8, t:12, b:26};
+    const gW = cW-P.l-P.r, gH = cH-P.t-P.b;
+    ct.clearRect(0,0,cW,cH); ct.fillStyle='#f8fafc'; ct.fillRect(0,0,cW,cH);
+    if (pts.length < 2) return;
+    const tMax = pts[pts.length-1].t || 1;
+    const vals = pts.map(p => p[yKey]);
+    const yMax = Math.max(...vals.map(Math.abs)) * 1.2 || 1;
+    const yMin = Math.min(0, ...vals);
+    const yRange = yMax - yMin;
+    ct.strokeStyle='#e5e7eb'; ct.lineWidth=0.8;
+    for (let i=1; i<=3; i++) { ct.beginPath(); ct.moveTo(P.l,P.t+(i/3)*gH); ct.lineTo(P.l+gW,P.t+(i/3)*gH); ct.stroke(); }
+    ct.strokeStyle='#555'; ct.lineWidth=1.5;
+    ct.beginPath(); ct.moveTo(P.l,P.t); ct.lineTo(P.l,P.t+gH); ct.lineTo(P.l+gW,P.t+gH); ct.stroke();
+    ct.strokeStyle=color; ct.lineWidth=2;
+    ct.beginPath();
+    pts.forEach((p,i) => {
+      const px=P.l+(p.t/tMax)*gW, py=P.t+gH-((p[yKey]-yMin)/yRange)*gH;
+      i===0?ct.moveTo(px,py):ct.lineTo(px,py);
+    });
+    ct.stroke();
+    ct.font='9px Nunito,sans-serif'; ct.fillStyle='#666'; ct.textAlign='center';
+    ct.fillText(xLabel, P.l+gW/2, cH-2);
+    ct.save(); ct.translate(11,P.t+gH/2); ct.rotate(-Math.PI/2); ct.fillText(yLabel,0,0); ct.restore();
+    // current dot
+    const ci = pts.findIndex(p => p.t >= curT);
+    if (ci >= 0) {
+      const p = pts[ci];
+      ct.fillStyle = color;
+      ct.beginPath(); ct.arc(P.l+(p.t/tMax)*gW, P.t+gH-((p[yKey]-yMin)/yRange)*gH, 4, 0, Math.PI*2); ct.fill();
+    }
+    // scale labels
+    ct.fillStyle='#888'; ct.textAlign='right'; ct.font='8px Nunito,sans-serif';
+    ct.fillText(yMax.toFixed(1).replace('.',','), P.l-2, P.t+8);
+    ct.fillText(yMin.toFixed(1).replace('.',','), P.l-2, P.t+gH);
+    ct.textAlign='center';
+    ct.fillText('0', P.l, P.t+gH+14);
+    ct.fillText(tMax.toFixed(1).replace('.',','), P.l+gW, P.t+gH+14);
+  }
+
+  function drawTraj(pts, curT, p) {
+    const c = document.getElementById('basketTraj'); if (!c) return;
+    const ct = c.getContext('2d'), cW = c.width, cH = c.height;
+    const P = {l:44, r:20, t:14, b:28};
+    const gW = cW-P.l-P.r, gH = cH-P.t-P.b;
+    ct.clearRect(0,0,cW,cH); ct.fillStyle='#f0f9ff'; ct.fillRect(0,0,cW,cH);
+    if (pts.length < 2) return;
+    const xMax = Math.max(...pts.map(pt=>pt.x), p.d) * 1.1;
+    const yMax = Math.max(...pts.map(pt=>pt.y), p.hK) * 1.3;
+    const tx = x => P.l+(x/xMax)*gW;
+    const ty = y => P.t+gH-(y/yMax)*gH;
+    // grid
+    ct.strokeStyle='#e5e7eb'; ct.lineWidth=0.8;
+    for (let i=1; i<=4; i++) {
+      ct.beginPath(); ct.moveTo(P.l+(i/4)*gW,P.t); ct.lineTo(P.l+(i/4)*gW,P.t+gH); ct.stroke();
+      ct.beginPath(); ct.moveTo(P.l,P.t+(i/4)*gH); ct.lineTo(P.l+gW,P.t+(i/4)*gH); ct.stroke();
+    }
+    // axes
+    ct.strokeStyle='#555'; ct.lineWidth=1.5;
+    ct.beginPath(); ct.moveTo(P.l,P.t); ct.lineTo(P.l,P.t+gH); ct.lineTo(P.l+gW,P.t+gH); ct.stroke();
+    // labels
+    ct.font='10px Nunito,sans-serif'; ct.fillStyle='#555'; ct.textAlign='center';
+    ct.fillText('x in m', P.l+gW/2, cH-4);
+    ct.save(); ct.translate(14,P.t+gH/2); ct.rotate(-Math.PI/2); ct.fillText('y in m',0,0); ct.restore();
+    // scale
+    ct.font='8px Nunito,sans-serif'; ct.fillStyle='#888';
+    [0.25,0.5,0.75,1].forEach(f => {
+      ct.textAlign='center'; ct.fillText((f*xMax).toFixed(1), tx(f*xMax), P.t+gH+14);
+      ct.textAlign='right'; ct.fillText((f*yMax).toFixed(1), P.l-3, ty(f*yMax)+3);
+    });
+    // hoop marker
+    ct.strokeStyle='#FF6600'; ct.lineWidth=3;
+    ct.beginPath(); ct.moveTo(tx(p.d)-18, ty(p.hK)); ct.lineTo(tx(p.d), ty(p.hK)); ct.stroke();
+    ct.fillStyle='#FF6600'; ct.font='9px Nunito,sans-serif'; ct.textAlign='left';
+    ct.fillText('🏀', tx(p.d)+2, ty(p.hK)+4);
+    // abwurfhöhe marker
+    ct.strokeStyle='#059669'; ct.lineWidth=1.5; ct.setLineDash([3,3]);
+    ct.beginPath(); ct.moveTo(P.l, ty(p.h0)); ct.lineTo(tx(0.3), ty(p.h0)); ct.stroke();
+    ct.setLineDash([]);
+    // trajectory
+    ct.strokeStyle='#7c3aed'; ct.lineWidth=2.5;
+    ct.beginPath(); pts.forEach((pt,i) => i===0?ct.moveTo(tx(pt.x),ty(pt.y)):ct.lineTo(tx(pt.x),ty(pt.y))); ct.stroke();
+    // current ball dot
+    const ci = pts.findIndex(pt => pt.t >= curT);
+    if (ci >= 0) {
+      ct.fillStyle='#FF9500'; ct.beginPath(); ct.arc(tx(pts[ci].x),ty(pts[ci].y),7,0,Math.PI*2); ct.fill();
+      ct.strokeStyle='#333'; ct.lineWidth=0.8; ct.stroke();
+    }
+  }
+
+  function drawAllCharts(p, tr2, curT) {
+    miniChart('basketXT', tr2.pts, 'x', 't (s)', 'x (m)', '#7c3aed', curT);
+    miniChart('basketYT', tr2.pts, 'y', 't (s)', 'y (m)', '#0891b2', curT);
+    miniChart('basketVT', tr2.pts, 'v', 't (s)', 'v (m/s)', '#16a34a', curT);
+    miniChart('basketAT', tr2.pts, 'a', 't (s)', 'a (m/s²)', '#dc2626', curT);
+    drawTraj(tr2.pts, curT, p);
+  }
+
+  function updateTable(tr2) {
+    const tb = document.getElementById('basketTbody'), tw = document.getElementById('basketTable');
+    if (!tb || !tw) return;
+    tw.style.display = 'table';
+    const rows = tr2.pts.filter((_,i) => i % 8 === 0);
+    tb.innerHTML = rows.map(r =>
+      `<tr><td>${fmt(r.t,2)}</td><td>${fmt(r.x,2)}</td><td>${fmt(r.y,2)}</td><td>${fmt(r.v,2)}</td><td>${fmt(r.a,2)}</td></tr>`
+    ).join('');
+  }
+
+  function update() {
+    params = getParams(); tr = calcTraj(params);
+    drawScene(0, params, tr);
+    drawAllCharts(params, tr, 0);
+    updateTable(tr);
+  }
+
+  function toggle() {
+    if (running) {
+      running = false; lastTs = null;
+      const b = document.getElementById('basketPlayBtn'); if(b) b.textContent='▶ Weiter';
     } else {
-      const res=document.getElementById('wurfResult');
-      if(res&&wurfSel.length===0) res.innerHTML='';
+      params = getParams(); tr = calcTraj(params);
+      if (simT >= tr.tGround) simT = 0;
+      running = true;
+      const b = document.getElementById('basketPlayBtn'); if(b) b.textContent='⏸ Pause';
+      const res = document.getElementById('basketResult'); if(res) res.innerHTML='';
+      (function loop(ts) {
+        if (!running) return;
+        if (lastTs !== null) simT = Math.min(simT + (ts - lastTs)/1000, tr.tGround + 0.2);
+        lastTs = ts;
+        drawScene(simT, params, tr);
+        drawAllCharts(params, tr, simT);
+        if (simT < tr.tGround + 0.15) {
+          raf = requestAnimationFrame(loop);
+        } else {
+          running = false;
+          const b2 = document.getElementById('basketPlayBtn'); if(b2) b2.textContent='▶ Nochmal';
+          const treffer = checkTreffer(params, tr);
+          const res2 = document.getElementById('basketResult');
+          if (res2) res2.innerHTML = treffer
+            ? '<span style="color:#16a34a;font-size:1.05rem">🎉 <b>Treffer! Ball im Korb!</b></span>'
+            : `<span style="color:#dc2626">❌ <b>Daneben!</b> – Korb bei x=${params.d.toFixed(1)}m, y=${params.hK.toFixed(1)}m. Winkel oder v₀ anpassen!</span>`;
+        }
+      })(performance.now());
     }
   }
 
-  function drawWurfCharts(curT, alpha, v0, tMax2) {
-    drawWurfChartXFull(curT, alpha, v0, tMax2);
-    miniChart('wurfChartY', wurfPts, 't','y','t (s)','y (m)','#0891b2', curT, alpha, v0);
+  function reset() {
+    running = false; lastTs = null; simT = 0;
+    if (raf) cancelAnimationFrame(raf);
+    const b = document.getElementById('basketPlayBtn'); if(b) b.textContent='▶ Werfen!';
+    const res = document.getElementById('basketResult'); if(res) res.innerHTML='';
+    update();
   }
 
-  function updateWurfTable(alpha, v0, tMax2){
-    const tb=document.getElementById('wurfTbody'), tw=document.getElementById('wurfTable');
-    if(!tb||!tw) return;
-    tw.style.display='table';
-    const g2=9.81;
-    const rows=[];
-    for(let ti=0;ti<=tMax2;ti+=tMax2/8){
-      const xi=v0*Math.cos(alpha)*ti;
-      const yi=Math.max(0,v0*Math.sin(alpha)*ti-0.5*g2*ti*ti);
-      const vi=Math.sqrt((v0*Math.cos(alpha))**2+(v0*Math.sin(alpha)-g2*ti)**2);
-      rows.push({t:ti,x:xi,y:yi,v:vi});
-    }
-    tb.innerHTML=rows.map(r=>`<tr><td>${r.t.toFixed(2).replace('.',',')}</td><td>${r.x.toFixed(1).replace('.',',')}</td><td>${r.y.toFixed(1).replace('.',',')}</td><td>${r.v.toFixed(1).replace('.',',')}</td></tr>`).join('');
-  }
-
-  function measure() {
-    const alpha=_curAlpha, v0=_curV0, tMax2=_curTMax;
-    const curT=Math.min(_wurfT,tMax2);
-    const curX=v0*Math.cos(alpha)*curT;
-    const c=document.getElementById('wurfChartX'); if(!c||wurfPts.length<2) return;
-    const P={l:42,r:10,t:14,b:28};
-    const gW=c.width-P.l-P.r, gH=c.height-P.t-P.b;
-    const xMaxT=wurfPts[wurfPts.length-1].t||1;
-    const xMaxX=Math.max(...wurfPts.map(p=>p.x))*1.1||1;
-    const px=P.l+(curT/xMaxT)*gW;
-    const py=P.t+gH-(curX/xMaxX)*gH;
-    wurfMeas.push({t:curT,x:curX,px,py});
-    drawWurfChartXFull(curT,alpha,v0,tMax2);
-  }
-
-  function handleClick(mx,my) {
-    let best=-1, bestD=22;
-    wurfMeas.forEach((p,i)=>{
-      const d=Math.hypot(p.px-mx,p.py-my);
-      if(d<bestD){ bestD=d; best=i; }
-    });
-    if(best===-1) return;
-    const idx=wurfSel.indexOf(best);
-    if(idx>=0) wurfSel.splice(idx,1);
-    else{ if(wurfSel.length>=2) wurfSel=[wurfSel[1]]; wurfSel.push(best); }
-    drawWurfChartXFull(Math.min(_wurfT,_curTMax),_curAlpha,_curV0,_curTMax);
-  }
-
-  draw();
-  return { stop(){ cancelAnimationFrame(_wurfRaf); }, measure, handleClick };
+  update();
+  return { stop(){ running=false; if(raf) cancelAnimationFrame(raf); }, toggle, reset, update };
 }
 
 // ── Kreisbewegung ─────────────────────────────────────────
