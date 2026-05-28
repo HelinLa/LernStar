@@ -3606,55 +3606,43 @@ function openExperiment(expId) {
     modal.innerHTML = `
       <div class="sim-box">
         <button class="sim-x" onclick="closeExperiment()">✕</button>
-        <h3 class="sim-h3">🚗 Gleichmäßig beschleunigte Bewegung</h3>
-        <canvas id="beschAnim" width="460" height="95" style="width:100%;border-radius:8px;display:block;background:#f1f5f9"></canvas>
-        <div style="display:flex;gap:6px;padding:5px 10px 2px;justify-content:center;flex-wrap:wrap">
-          <span style="background:#ede9fe;color:#5b21b6;padding:3px 12px;border-radius:20px;font-size:.82rem;font-weight:700">v = a · t</span>
-          <span style="background:#fce7f3;color:#9d174d;padding:3px 12px;border-radius:20px;font-size:.82rem;font-weight:700">s = ½ · a · t²</span>
-          <span style="background:#dcfce7;color:#166534;padding:3px 12px;border-radius:20px;font-size:.82rem;font-weight:700">a = konst. → Parabel!</span>
-        </div>
-        <div style="padding:4px 12px 2px;display:flex;gap:10px;align-items:center">
-          <div style="flex:1">
-            <label style="font-weight:700;font-size:.82rem;color:#5B21B6">Beschleunigung a = <span id="beschALabel">3,0</span> m/s²</label>
-            <input type="range" id="beschASlider" min="0.5" max="10" step="0.5" value="3"
-              oninput="_beschSetA(this.value)" style="width:100%;accent-color:#7C3AED">
-          </div>
-          <div style="display:flex;gap:6px">
-            <button id="beschPlayBtn" onclick="_beschToggle()" style="background:#7c3aed;color:#fff;border:none;border-radius:8px;padding:5px 12px;font-weight:700;cursor:pointer;font-size:.82rem">▶ Start</button>
-            <button onclick="_beschReset()" style="background:#e5e7eb;color:#374151;border:none;border-radius:8px;padding:5px 12px;font-weight:700;cursor:pointer;font-size:.82rem">↺ Neu</button>
-          </div>
-        </div>
-        <div class="sim-info-row" style="font-size:.8rem">
-          <span>⏱ t = <b id="beschTVal">0,0</b> s</span>
-          <span>📏 s = <b id="beschSVal">0,0</b> m</span>
-          <span>🚀 v = <b id="beschVVal">0,0</b> m/s</span>
-          <span>📐 a = <b id="beschACur">3,0</b> m/s²</span>
+        <h3 class="sim-h3">🚗 Experiment: Gleichmäßig beschleunigte Bewegung</h3>
+        <canvas id="beschAnim" class="sim-road-canvas" width="700" height="130"></canvas>
+        <div class="sim-info-row">
+          <span>⏱ Zeit: <b id="beschTVal">0,0 s</b></span>
+          <span>🚀 v: <b id="beschVVal">0,0 m/s</b></span>
+          <span>📏 Weg: <b id="beschSVal">0,0 m</b></span>
+          <span>Beschleunigung:
+            <select id="beschASelect" onchange="_beschSetA(this.value)">
+              <option value="1">1 m/s² (langsam)</option>
+              <option value="2">2 m/s²</option>
+              <option value="3" selected>3 m/s² (mittel)</option>
+              <option value="5">5 m/s² (schnell)</option>
+            </select>
+          </span>
         </div>
         <div class="sim-btn-row">
-          <button class="sim-btn" onclick="_simMeasure()">📍 Messen</button>
+          <button class="sim-btn primary" id="beschPlayBtn" onclick="_beschToggle()">▶ Start</button>
+          <button class="sim-btn" onclick="_simMeasure()">📍 Jetzt messen</button>
           <button class="sim-btn" onclick="_beschReset()">↺ Neu starten</button>
           <a class="sim-btn" href="arbeitsblaetter/AB_1.3_Beschleunigte_Bewegung.pdf" download style="text-decoration:none">📄 Arbeitsblatt</a>
         </div>
-        <p class="sim-hint">Drücke mehrmals auf <b>Messen</b> während das Auto fährt. Im v-t Diagramm siehst du: <b>v wächst gleichmäßig</b> mit der Zeit → das ist der Unterschied zur gleichförmigen Bewegung (wo v=konst.)! Klicke dann auf <b>zwei Punkte</b> → Steigung = a</p>
-        <div class="sim-diagram-label">v-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(Steigung der Geraden = Beschleunigung a = Δv/Δt)</span></div>
+        <p class="sim-hint">Drücke mehrmals auf <b>Jetzt messen</b> während das Auto fährt – die Punkte erscheinen im Diagramm. Klicke dann auf <b>zwei Punkte</b> um die Steigung (= Beschleunigung a = Δv/Δt) zu berechnen!</p>
+        <div class="sim-diagram-label">v-t Diagramm <span style="font-weight:400;font-size:.82em;color:#64748B">(zwei Punkte anklicken → Steigung = Beschleunigung a = Δv/Δt)</span></div>
         <canvas id="beschChart" class="sim-chart-canvas" width="680" height="290"></canvas>
         <div id="beschResult" class="sim-result"></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
           <div>
-            <div class="sim-diagram-label">v-t Diagramm <span style="font-weight:400;font-size:.8em;color:#0891b2">– linear (v = a·t)</span></div>
-            <canvas id="beschCVT" class="sim-chart-canvas" width="220" height="190"></canvas>
+            <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.8em;color:#7c3aed">(Parabel – s = ½·a·t²)</span></div>
+            <canvas id="beschCST" class="sim-chart-canvas" width="340" height="200"></canvas>
           </div>
           <div>
-            <div class="sim-diagram-label">s-t Diagramm <span style="font-weight:400;font-size:.8em;color:#7c3aed">– Parabel (s = ½·a·t²)</span></div>
-            <canvas id="beschCST" class="sim-chart-canvas" width="220" height="190"></canvas>
-          </div>
-          <div>
-            <div class="sim-diagram-label">a-t Diagramm <span style="font-weight:400;font-size:.8em;color:#dc2626">– a konstant ≠ 0</span></div>
-            <canvas id="beschCAT" class="sim-chart-canvas" width="220" height="190"></canvas>
+            <div class="sim-diagram-label">a-t Diagramm <span style="font-weight:400;font-size:.8em;color:#dc2626">(a = konst. ≠ 0)</span></div>
+            <canvas id="beschCAT" class="sim-chart-canvas" width="340" height="200"></canvas>
           </div>
         </div>
         <table class="sim-table" id="beschTable" style="display:none;margin-top:12px">
-          <thead><tr><th>Punkt</th><th>t (s)</th><th>v (m/s)</th><th>s (m)</th></tr></thead>
+          <thead><tr><th>Punkt</th><th>Zeit t (s)</th><th>v (m/s)</th><th>s (m)</th><th>a (m/s²)</th></tr></thead>
           <tbody id="beschTbody"></tbody>
         </table>
       </div>`;
@@ -6524,7 +6512,7 @@ function _zentriMeasure() { if (_sim) _sim.measure(); }
 function _hebSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
 function _ohmSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
 function _schSetMode(m){ if (_sim) _sim.setMode(m); }
-function _beschSetA(v){ if (_sim) _sim.setA(parseFloat(v)); }
+function _beschSetA(v){ if (_sim) { _sim.setA(parseFloat(v)); _sim.reset(); } }
 function _beschToggle(){ if (_sim) _sim.toggle(); }
 function _beschReset(){ if (_sim) _sim.reset(); }
 function _fallSetH(v){ if (_sim) _sim.setH(parseFloat(v)); }
@@ -7273,20 +7261,79 @@ function _simSchaltung() {
 // SIM 5: BESCHLEUNIGTE BEWEGUNG – mit s-t / v-t / a-t Diagrammen
 // ============================================================
 function _simBeschleunigung() {
-  const cvA   = document.getElementById('beschAnim');
-  const ctA   = cvA.getContext('2d');
-  const cvVT  = document.getElementById('beschCVT'), ctVT = cvVT.getContext('2d');
-  const cvST  = document.getElementById('beschCST'), ctST = cvST.getContext('2d');
-  const cvAT  = document.getElementById('beschCAT'), ctAT = cvAT.getContext('2d');
+  const cvA  = document.getElementById('beschAnim');
+  const ctA  = cvA ? cvA.getContext('2d') : null;
+  const cvST = document.getElementById('beschCST');
+  const ctST = cvST ? cvST.getContext('2d') : null;
+  const cvAT = document.getElementById('beschCAT');
+  const ctAT = cvAT ? cvAT.getContext('2d') : null;
   const cvBig = document.getElementById('beschChart');
   const ctBig = cvBig ? cvBig.getContext('2d') : null;
 
   let a = 3, running = false, t = 0, lastTs = null, raf = null;
-  let pts = []; // {t, s, v, a} – live-Kurve für kleine Diagramme
-  let meas = [], sel = []; // Mess-Punkte für das große v-t Diagramm
+  let meas = [], sel = [];
   const maxT = 8;
 
   function fmt(n,d=1){ return n.toFixed(d).replace('.',','); }
+  function getSMax(){ return Math.max(0.5*a*maxT*maxT, 1); }
+
+  // ── Animations-Canvas: Auto auf Straße (700×130) ──────────
+  function drawAnim() {
+    if (!cvA || !ctA) return;
+    const W = cvA.width, H = cvA.height;
+    const v = a*t, s = 0.5*a*t*t;
+    const sMax = getSMax();
+    ctA.clearRect(0,0,W,H);
+    // Himmel
+    ctA.fillStyle='#C9E8F5'; ctA.fillRect(0,0,W,H*0.55);
+    // Wiese
+    ctA.fillStyle='#9DC88D'; ctA.fillRect(0,H*0.55,W,H*0.18);
+    // Straße
+    ctA.fillStyle='#6B6B6B'; ctA.fillRect(0,H*0.70,W,H*0.30);
+    ctA.fillStyle='#FFF'; ctA.fillRect(0,H*0.70,W,3); ctA.fillRect(0,H-3,W,3);
+    ctA.strokeStyle='#FFD700'; ctA.setLineDash([22,16]); ctA.lineWidth=2;
+    ctA.beginPath(); ctA.moveTo(0,H*0.845); ctA.lineTo(W,H*0.845); ctA.stroke();
+    ctA.setLineDash([]);
+    // Abstandsmarkierungen
+    const step = sMax<=50?10:sMax<=100?20:40;
+    ctA.font='10px Nunito,sans-serif'; ctA.textAlign='center';
+    for(let m=0; m<=sMax; m+=step){
+      const x=(m/sMax)*W;
+      ctA.fillStyle='#BBB'; ctA.fillRect(x-1,H*0.70,2,7);
+      ctA.fillStyle='#444'; ctA.fillText(m.toFixed(0)+' m',x,H*0.67);
+    }
+    // Auto
+    const carW=68, maxCarX=W-carW-10;
+    const carX=Math.min((s/sMax)*maxCarX, maxCarX);
+    const bY=H*0.72;
+    ctA.fillStyle='#E74C3C';
+    ctA.beginPath();
+    ctA.moveTo(carX+4,bY+24); ctA.lineTo(carX+4,bY+7);
+    ctA.lineTo(carX+14,bY+7); ctA.lineTo(carX+20,bY);
+    ctA.lineTo(carX+50,bY);   ctA.lineTo(carX+56,bY+7);
+    ctA.lineTo(carX+68,bY+7); ctA.lineTo(carX+68,bY+24);
+    ctA.closePath(); ctA.fill();
+    ctA.fillStyle='#C0392B'; ctA.fillRect(carX+21,bY,29,8);
+    ctA.fillStyle='#AED6F1';
+    ctA.fillRect(carX+22,bY+1,11,7); ctA.fillRect(carX+36,bY+1,11,7);
+    [carX+14, carX+54].forEach(wx=>{
+      ctA.fillStyle='#222'; ctA.beginPath(); ctA.arc(wx,bY+25,8,0,Math.PI*2); ctA.fill();
+      ctA.fillStyle='#888'; ctA.beginPath(); ctA.arc(wx,bY+25,4,0,Math.PI*2); ctA.fill();
+    });
+    // Beschleunigungspfeil (zeigt Kraft)
+    if(a>0 && t<maxT){
+      const arLen=Math.min(8+a*5,50);
+      ctA.strokeStyle='#dc2626'; ctA.lineWidth=2.5;
+      ctA.beginPath(); ctA.moveTo(carX+68,bY+12); ctA.lineTo(carX+68+arLen,bY+12); ctA.stroke();
+      ctA.fillStyle='#dc2626';
+      ctA.beginPath(); ctA.moveTo(carX+68+arLen,bY+6); ctA.lineTo(carX+68+arLen+8,bY+12); ctA.lineTo(carX+68+arLen,bY+18); ctA.fill();
+    }
+    // Positionslinie
+    const cx=carX+36;
+    ctA.strokeStyle='rgba(231,76,60,.5)'; ctA.setLineDash([4,4]); ctA.lineWidth=1.5;
+    ctA.beginPath(); ctA.moveTo(cx,H*0.70); ctA.lineTo(cx,H); ctA.stroke();
+    ctA.setLineDash([]);
+  }
 
   // ── Großes v-t Diagramm mit Klick-Auswahl ────────────────
   function drawBeschChart() {
@@ -7366,11 +7413,11 @@ function _simBeschleunigung() {
   function measure() {
     if (t < 0.05) return;
     const v = a * t, s = 0.5 * a * t * t;
-    meas.push({ t: parseFloat(t.toFixed(2)), v: parseFloat(v.toFixed(2)), s: parseFloat(s.toFixed(2)) });
+    meas.push({ t: parseFloat(t.toFixed(2)), v: parseFloat(v.toFixed(2)), s: parseFloat(s.toFixed(2)), a });
     sel = [];
     const res = document.getElementById('beschResult');
     if (res) res.innerHTML = '';
-    drawBeschChart();
+    drawBeschChart(); drawChartST(); drawChartAT();
     updateTable();
   }
 
@@ -7380,7 +7427,7 @@ function _simBeschleunigung() {
     if (!tb || !tw) return;
     tw.style.display = meas.length > 0 ? '' : 'none';
     tb.innerHTML = meas.map((m, i) =>
-      `<tr><td>${i+1}</td><td>${fmt(m.t,2)}</td><td>${fmt(m.v,2)}</td><td>${fmt(m.s,2)}</td></tr>`
+      `<tr><td>P${i+1}</td><td>${fmt(m.t,2)}</td><td>${fmt(m.v,2)}</td><td>${fmt(m.s,2)}</td><td>${m.a.toFixed(1)}</td></tr>`
     ).join('');
   }
 
@@ -7403,6 +7450,111 @@ function _simBeschleunigung() {
       else sel = [closest];
       drawBeschChart();
     }
+  }
+
+  // ── Kleines s-t Diagramm (Parabel) ───────────────────────
+  function drawChartST() {
+    if (!cvST || !ctST) return;
+    const cW=cvST.width, cH=cvST.height;
+    const P={l:58,r:20,t:22,b:48};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const sMax=Math.max(Math.ceil(getSMax()*1.05/5)*5,5);
+    const tX=tt=>P.l+(tt/maxT)*gW;
+    const sY=ss=>P.t+gH-(Math.min(ss,sMax)/sMax)*gH;
+    ctST.clearRect(0,0,cW,cH);
+    ctST.fillStyle='#f8fafc'; ctST.fillRect(0,0,cW,cH);
+    // Grid
+    ctST.strokeStyle='#F0F0F0'; ctST.lineWidth=1;
+    for(let i=1;i<=5;i++){
+      ctST.beginPath(); ctST.moveTo(P.l,P.t+(i/5)*gH); ctST.lineTo(P.l+gW,P.t+(i/5)*gH); ctST.stroke();
+      ctST.beginPath(); ctST.moveTo(P.l+(i/5)*gW,P.t); ctST.lineTo(P.l+(i/5)*gW,P.t+gH); ctST.stroke();
+    }
+    // Achsen
+    ctST.strokeStyle='#333'; ctST.lineWidth=2.5;
+    ctST.beginPath(); ctST.moveTo(P.l,P.t); ctST.lineTo(P.l,P.t+gH); ctST.lineTo(P.l+gW,P.t+gH); ctST.stroke();
+    ctST.fillStyle='#333';
+    ctST.beginPath(); ctST.moveTo(P.l+gW,P.t+gH); ctST.lineTo(P.l+gW+8,P.t+gH-4); ctST.lineTo(P.l+gW+8,P.t+gH+4); ctST.fill();
+    ctST.beginPath(); ctST.moveTo(P.l,P.t); ctST.lineTo(P.l-4,P.t+9); ctST.lineTo(P.l+4,P.t+9); ctST.fill();
+    ctST.font='bold 13px Nunito,sans-serif'; ctST.fillStyle='#333'; ctST.textAlign='center';
+    ctST.fillText('t in s',P.l+gW/2,cH-4);
+    ctST.save(); ctST.translate(14,P.t+gH/2); ctST.rotate(-Math.PI/2); ctST.fillText('s in m',0,0); ctST.restore();
+    ctST.font='11px Nunito,sans-serif'; ctST.fillStyle='#666';
+    for(let i=0;i<=5;i++){
+      ctST.textAlign='center'; ctST.fillText(((i/5)*maxT).toFixed(0),tX((i/5)*maxT),P.t+gH+16);
+      ctST.textAlign='right';  ctST.fillText(((i/5)*sMax).toFixed(0),P.l-6,sY((i/5)*sMax)+4);
+    }
+    // Theoretische Parabel (gestrichelt)
+    ctST.strokeStyle='rgba(124,58,237,.22)'; ctST.lineWidth=2.5; ctST.setLineDash([7,5]);
+    ctST.beginPath();
+    for(let i=0;i<=60;i++){
+      const tt=(i/60)*maxT, ss=0.5*a*tt*tt;
+      i===0?ctST.moveTo(tX(tt),sY(ss)):ctST.lineTo(tX(tt),sY(ss));
+    }
+    ctST.stroke(); ctST.setLineDash([]);
+    ctST.fillStyle='rgba(124,58,237,.7)'; ctST.font='bold 11px Nunito,sans-serif'; ctST.textAlign='left';
+    ctST.fillText('s = ½·a·t²',tX(maxT*0.45)+4,sY(0.5*a*(maxT*0.45)**2)-8);
+    // Live-Cursor
+    if(t>0.05){
+      ctST.fillStyle='rgba(124,58,237,.35)';
+      ctST.beginPath(); ctST.arc(tX(t),sY(0.5*a*t*t),5,0,Math.PI*2); ctST.fill();
+    }
+    // Messpunkte
+    meas.forEach((m,idx)=>{
+      ctST.fillStyle='#7c3aed'; ctST.strokeStyle='#5b21b6'; ctST.lineWidth=2;
+      ctST.beginPath(); ctST.arc(tX(m.t),sY(m.s),7,0,Math.PI*2); ctST.fill(); ctST.stroke();
+      ctST.fillStyle='#fff'; ctST.font='bold 9px Nunito,sans-serif'; ctST.textAlign='center';
+      ctST.fillText(idx+1,tX(m.t),sY(m.s)+3);
+    });
+  }
+
+  // ── Kleines a-t Diagramm (a = konst. ≠ 0) ────────────────
+  function drawChartAT() {
+    if (!cvAT || !ctAT) return;
+    const cW=cvAT.width, cH=cvAT.height;
+    const P={l:58,r:20,t:22,b:48};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const aMax=Math.max(Math.ceil(a*1.5/2)*2,4);
+    const tX=tt=>P.l+(tt/maxT)*gW;
+    const aY=aa=>P.t+gH-(aa/aMax)*gH;
+    ctAT.clearRect(0,0,cW,cH);
+    ctAT.fillStyle='#f8fafc'; ctAT.fillRect(0,0,cW,cH);
+    // Grid
+    ctAT.strokeStyle='#F0F0F0'; ctAT.lineWidth=1;
+    for(let i=1;i<=5;i++){
+      ctAT.beginPath(); ctAT.moveTo(P.l,P.t+(i/5)*gH); ctAT.lineTo(P.l+gW,P.t+(i/5)*gH); ctAT.stroke();
+      ctAT.beginPath(); ctAT.moveTo(P.l+(i/5)*gW,P.t); ctAT.lineTo(P.l+(i/5)*gW,P.t+gH); ctAT.stroke();
+    }
+    // Achsen
+    ctAT.strokeStyle='#333'; ctAT.lineWidth=2.5;
+    ctAT.beginPath(); ctAT.moveTo(P.l,P.t); ctAT.lineTo(P.l,P.t+gH); ctAT.lineTo(P.l+gW,P.t+gH); ctAT.stroke();
+    ctAT.fillStyle='#333';
+    ctAT.beginPath(); ctAT.moveTo(P.l+gW,P.t+gH); ctAT.lineTo(P.l+gW+8,P.t+gH-4); ctAT.lineTo(P.l+gW+8,P.t+gH+4); ctAT.fill();
+    ctAT.beginPath(); ctAT.moveTo(P.l,P.t); ctAT.lineTo(P.l-4,P.t+9); ctAT.lineTo(P.l+4,P.t+9); ctAT.fill();
+    ctAT.font='bold 13px Nunito,sans-serif'; ctAT.fillStyle='#333'; ctAT.textAlign='center';
+    ctAT.fillText('t in s',P.l+gW/2,cH-4);
+    ctAT.save(); ctAT.translate(14,P.t+gH/2); ctAT.rotate(-Math.PI/2); ctAT.fillText('a in m/s²',0,0); ctAT.restore();
+    ctAT.font='11px Nunito,sans-serif'; ctAT.fillStyle='#666';
+    for(let i=0;i<=5;i++){ ctAT.textAlign='center'; ctAT.fillText(((i/5)*maxT).toFixed(0),tX((i/5)*maxT),P.t+gH+16); }
+    for(let i=0;i<=3;i++){ ctAT.textAlign='right'; ctAT.fillText(((i/3)*aMax).toFixed(0),P.l-6,aY((i/3)*aMax)+4); }
+    // Konstante a-Linie
+    if(t>0.05){
+      ctAT.fillStyle='rgba(220,38,38,.1)'; ctAT.fillRect(P.l,aY(a)-4,tX(t)-P.l,8);
+      ctAT.strokeStyle='#dc2626'; ctAT.lineWidth=3;
+      ctAT.beginPath(); ctAT.moveTo(P.l,aY(a)); ctAT.lineTo(tX(t),aY(a)); ctAT.stroke();
+      ctAT.fillStyle='rgba(220,38,38,.4)';
+      ctAT.beginPath(); ctAT.arc(tX(t),aY(a),5,0,Math.PI*2); ctAT.fill();
+    }
+    if(t>0.5){
+      ctAT.fillStyle='#dc2626'; ctAT.font='bold 12px Nunito,sans-serif'; ctAT.textAlign='left';
+      ctAT.fillText('a = '+a.toFixed(1)+' m/s²',P.l+10,aY(a)-8);
+    }
+    // Messpunkte auf Höhe a
+    meas.forEach((m,idx)=>{
+      ctAT.fillStyle='#dc2626'; ctAT.strokeStyle='#b91c1c'; ctAT.lineWidth=2;
+      ctAT.beginPath(); ctAT.arc(tX(m.t),aY(a),7,0,Math.PI*2); ctAT.fill(); ctAT.stroke();
+      ctAT.fillStyle='#fff'; ctAT.font='bold 9px Nunito,sans-serif'; ctAT.textAlign='center';
+      ctAT.fillText(idx+1,tX(m.t),aY(a)+3);
+    });
   }
 
   // ── Shared Diagram Renderer ───────────────────────────────
@@ -7549,53 +7701,39 @@ function _simBeschleunigung() {
         if(t>=maxT){ running=false; const b=document.getElementById('beschPlayBtn'); if(b)b.textContent='▶ Start'; }
       }
       lastTs=ts;
-      // Datenpunkte
-      if(pts.length===0||t-pts[pts.length-1].t>=0.1)
-        pts.push({t,s:0.5*a*t*t,v:a*t,a});
     }
-
     drawAnim();
-
-    // Info-Zeile
+    // Info-Zeile aktualisieren
     const v2=a*t, s2=0.5*a*t*t;
-    const tEl=document.getElementById('beschTVal'); if(tEl)tEl.textContent=fmt(t);
-    const vEl=document.getElementById('beschVVal'); if(vEl)vEl.textContent=fmt(v2);
-    const sEl=document.getElementById('beschSVal'); if(sEl)sEl.textContent=fmt(s2);
-
-    // Kleine Diagramme (v-t linear + s-t Parabel + a-t konstant)
-    const sMax2=Math.max(0.5*a*maxT*maxT*1.1,5);
-    const vMax2=Math.max(a*maxT*1.1,2);
-    const aVal=a;
-    drawDiagram(ctVT,cvVT,'#0891b2','v / m/s',0,Math.ceil(vMax2/2)*2,()=>pts.map(p=>({t:p.t,y:p.v})));
-    drawDiagram(ctST,cvST,'#7c3aed','s / m',0,Math.ceil(sMax2/5)*5,()=>pts.map(p=>({t:p.t,y:p.s})));
-    drawDiagram(ctAT,cvAT,'#dc2626','a / m/s²',0,Math.ceil(aVal*1.5/2)*2||2,()=>pts.map(p=>({t:p.t,y:p.a})));
-    // Großes v-t Diagramm (mit Messpunkten)
+    const tEl=document.getElementById('beschTVal'); if(tEl)tEl.textContent=fmt(t)+' s';
+    const vEl=document.getElementById('beschVVal'); if(vEl)vEl.textContent=fmt(v2)+' m/s';
+    const sEl=document.getElementById('beschSVal'); if(sEl)sEl.textContent=fmt(s2)+' m';
+    // Alle Diagramme
     drawBeschChart();
-
+    drawChartST();
+    drawChartAT();
     raf=requestAnimationFrame(frame);
   }
 
   function stop(){ if(raf)cancelAnimationFrame(raf); running=false; lastTs=null; }
-  function setA(val){
-    a=val;
-    const lEl=document.getElementById('beschALabel'); if(lEl)lEl.textContent=fmt(a);
-    const cEl=document.getElementById('beschACur'); if(cEl)cEl.textContent=fmt(a);
-  }
+
+  function setA(val){ a=val; }
+
   function toggle(){
     if(running){ running=false; lastTs=null; const b=document.getElementById('beschPlayBtn'); if(b)b.textContent='▶ Weiter'; }
-    else { if(t>=maxT){t=0;pts=[];} running=true; const b=document.getElementById('beschPlayBtn'); if(b)b.textContent='⏸ Pause'; }
+    else { if(t>=maxT){t=0; meas=[]; sel=[];} running=true; const b=document.getElementById('beschPlayBtn'); if(b)b.textContent='⏸ Pause'; }
   }
+
   function reset(){
-    running=false; lastTs=null; t=0; pts=[]; meas=[]; sel=[];
+    running=false; lastTs=null; t=0; meas=[]; sel=[];
     const b=document.getElementById('beschPlayBtn'); if(b) b.textContent='▶ Start';
     const res=document.getElementById('beschResult'); if(res) res.innerHTML='';
     const tb=document.getElementById('beschTbody'); if(tb) tb.innerHTML='';
     const tw=document.getElementById('beschTable'); if(tw) tw.style.display='none';
-    ctVT.clearRect(0,0,cvVT.width,cvVT.height);
-    drawBeschChart();
+    drawAnim(); drawBeschChart(); drawChartST(); drawChartAT();
   }
 
-  drawBeschChart();
+  reset();
   raf=requestAnimationFrame(frame);
   return { stop, setA, toggle, reset, measure, handleClick };
 }

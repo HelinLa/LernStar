@@ -298,66 +298,66 @@ def ab_beschleunigung():
 
     pdf.sec("Lernziele")
     pdf.bullet("Du kennst den Unterschied zwischen gleichförmiger und beschleunigter Bewegung.")
-    pdf.bullet("Du kannst die Beschleunigung a aus dem v-t-Diagramm bestimmen (Steigung = Dv/Dt).")
-    pdf.bullet("Du weißt: s-t ist eine Parabel, v-t ist eine Gerade, a-t ist konstant.")
+    pdf.bullet("Du kannst die Beschleunigung a aus dem v-t-Diagramm bestimmen: Steigung = Dv/Dt = a.")
+    pdf.bullet("Du weißt: v-t ist eine Gerade, s-t ist eine Parabel, a-t ist eine Konstante.")
     pdf.ln(2)
 
     pdf.sec("Physikalischer Hintergrund", PURPLE)
-    pdf.body("Bei gleichmäßig beschleunigter Bewegung nimmt v gleichmäßig zu. a ist konstant.")
+    pdf.body("Bei gleichmäßig beschleunigter Bewegung nimmt die Geschwindigkeit v gleichmäßig zu – die Beschleunigung a ist konstant.")
     pdf.formula_box([
-        "v(t) = a * t           (v steigt linear - Gerade im v-t-Diagramm)",
-        "s(t) = 1/2 * a * t^2   (Weg ist eine Parabel im s-t-Diagramm)",
+        "v(t) = a * t           (v steigt linear -> Gerade im v-t-Diagramm)",
+        "s(t) = 1/2 * a * t^2   (Weg wächst quadratisch -> Parabel im s-t-Diagramm)",
         "a = Dv / Dt            (Beschleunigung = Steigung der v-t-Geraden)",
-        "Einheit:  a in m/s^2   (Meter pro Sekunde zum Quadrat)",
+        "Einheit:  [a] = m/s^2  (Meter pro Sekunde zum Quadrat)",
     ])
 
     pdf.sec("Versuchsdurchführung")
     pdf.body("Öffne '1.3 Beschleunigte Bewegung' in LernStar (Klasse 11 -> Physik).", bold=True)
-    pdf.step(1, "Stelle die Beschleunigung a = 3,0 m/s^2 ein (Schieberegler).")
-    pdf.step(2, "Drücke '> Start' und beobachte das Auto sowie alle drei Diagramme (v-t, s-t, a-t).")
-    pdf.step(3, "Drücke bei t = 1, 2, 4, 6 und 8 s jeweils auf 'Messen'. Tabelle wird unten ausgefüllt.")
-    pdf.step(4, "Klicke im großen v-t-Diagramm auf zwei Messpunkte -> Steigung = a ablesen.")
-    pdf.step(5, "Vergleiche gemessene a mit dem eingestellten Wert.")
-    pdf.step(6, "Wiederhole mit a = 6,0 m/s^2 und notiere den Unterschied.")
+    pdf.step(1, "Wähle im Dropdown-Menü die Beschleunigung a = 3 m/s^2 (mittel) aus.")
+    pdf.step(2, "Drücke '> Start' und beobachte das Auto auf der Straße sowie alle drei Diagramme.")
+    pdf.step(3, "Drücke bei t ~ 1, 2, 4, 6 und 8 s jeweils auf '> Jetzt messen'. Die Punkte erscheinen im v-t-Diagramm und in der Tabelle.")
+    pdf.step(4, "Klicke im großen v-t-Diagramm auf zwei Messpunkte. Die Steigung (= a) wird automatisch berechnet und angezeigt.")
+    pdf.step(5, "Vergleiche den abgelesenen Wert mit dem eingestellten a. Passen sie überein?")
+    pdf.step(6, "Drücke 'Neu starten', wähle a = 5 m/s^2 und wiederhole die Messung (Versuch B).")
     pdf.ln(2)
 
-    pdf.sec("Messwerterfassung  -  Versuch A (a = 3,0 m/s^2)", PURPLE)
-    pdf.th(["Punkt", "t (s)", "v (m/s)", "s (m)", "v/t = a (m/s^2)"],
-           [22, 26, 34, 34, 58])
-    pdf.tr(6, [22, 26, 34, 34, 58],
-           prefill=[["1","1","","",""],["2","2","","",""],["3","4","","",""],
-                    ["4","6","","",""],["5","8","","",""],["6","- (max)","","",""]])
+    pdf.sec("Messwerterfassung  -  Versuch A (a = 3 m/s^2)", PURPLE)
+    pdf.th(["Punkt", "t (s)", "v (m/s)", "s (m)", "a (m/s^2)"],
+           [22, 28, 36, 36, 52])
+    pdf.tr(6, [22, 28, 36, 36, 52],
+           prefill=[["1","~1","","","3,0"],["2","~2","","","3,0"],["3","~4","","","3,0"],
+                    ["4","~6","","","3,0"],["5","~8","","","3,0"],["6","max","","","3,0"]])
     pdf.ln(3)
 
-    pdf.sec("Messwerterfassung  -  Versuch B (a = 6,0 m/s^2)", RED)
-    pdf.th(["Punkt", "t (s)", "v (m/s)", "s (m)", "Vergleich mit a=3 m/s^2"],
-           [22, 26, 34, 34, 58])
-    pdf.tr(5, [22, 26, 34, 34, 58],
-           prefill=[["1","1","","",""],["2","2","","",""],["3","4","","",""],
-                    ["4","6","","",""],["5","8","","",""]])
+    pdf.sec("Messwerterfassung  -  Versuch B (a = 5 m/s^2)", RED)
+    pdf.th(["Punkt", "t (s)", "v (m/s)", "s (m)", "a (m/s^2)"],
+           [22, 28, 36, 36, 52])
+    pdf.tr(5, [22, 28, 36, 36, 52],
+           prefill=[["1","~1","","","5,0"],["2","~2","","","5,0"],["3","~4","","","5,0"],
+                    ["4","~6","","","5,0"],["5","~8","","","5,0"]])
     pdf.ln(3)
 
-    pdf.sec("Diagramm  -  v-t zeichnen (Versuche A und B vergleichen)")
-    pdf.note("Verwende für Versuch A blaue und für Versuch B rote Farbe. Zeichne Ausgleichsgeraden.")
-    pdf.grid(w=158, h=68, cols=8, rows=5)
+    pdf.sec("Diagramm  -  v-t zeichnen (Versuch A blau, Versuch B rot)")
+    pdf.note("Trage deine Messwerte ein und zeichne je eine Ausgleichsgerade. Die Steigung der Geraden ist die Beschleunigung a.")
+    pdf.grid(w=158, h=72, cols=8, rows=6)
     pdf.set_font("Helvetica", "", 7.5)
     pdf.set_text_color(*MIDGRAY)
     y = pdf.get_y()
     pdf.set_xy(18, y)
-    pdf.cell(158, 5, "t in s  ->  (0 bis 8 s)", align="R")
+    pdf.cell(158, 5, "t in s  (0 bis 8 s)  ->", align="R")
     pdf.ln(1)
-    pdf.set_xy(10, y - 30)
+    pdf.set_xy(10, y - 34)
     pdf.cell(6, 5, "v")
     pdf.set_text_color(*DARKGRAY)
     pdf.ln(4)
 
     pdf.add_page()
     pdf.sec("Auswertung")
-    pdf.q(1, "Berechne a aus Versuch A: a = Dv / Dt = (v2 - v1) / (t2 - t1) = _____________", lines=2)
-    pdf.q(2, "Stimmt dein berechneter Wert mit a = 3,0 m/s^2 überein? Erkläre Abweichungen!")
+    pdf.q(1, "Lies aus dem v-t-Diagramm (Versuch A) die Steigung ab: a = Dv / Dt = _____ / _____ = _______ m/s^2", lines=2)
+    pdf.q(2, "Berechne s nach t = 6 s für Versuch A (a = 3 m/s^2):  s = 1/2 * a * t^2 = ________________", lines=2)
     pdf.q(3, "Welche Form hat die s-t-Kurve bei beschleunigter Bewegung? Warum ist das keine Gerade?")
-    pdf.q(4, "Was passiert mit s nach 8 s, wenn a verdoppelt wird (3 -> 6 m/s^2)? Berechne!", lines=2)
-    pdf.q(5, "Vergleiche das a-t-Diagramm von Versuch A und B - was ist gleich, was ist anders?")
+    pdf.q(4, "Vergleiche Versuch A und B: Wie ändert sich v nach 8 s, wenn a von 3 auf 5 m/s^2 steigt?", lines=2)
+    pdf.q(5, "Was zeigt das a-t-Diagramm? Warum ist die Linie horizontal (und nicht bei 0 wie bei gleichförmiger Bewegung)?")
 
     pdf.sec("Fazit")
     pdf.lines(4)
