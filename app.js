@@ -8500,8 +8500,6 @@ function _engPendel_unused() {
     animId = requestAnimationFrame(draw);
   }
 
-  const engPts = [];
-
   function drawEngChart(curT, E_pot, E_kin, E_tot, v, h) {
     const c = document.getElementById('engChart'); if (!c) return;
     const ctx2 = c.getContext('2d'), cW=c.width, cH=c.height;
@@ -8572,7 +8570,6 @@ function _engPendel_unused() {
     updateEngTable(curT, h, v, E_pot, E_kin);
   }
 
-  const engTableRows = [];
   function updateEngTable(t, h, v, E_pot, E_kin) {
     if(engTableRows.length === 0 || t - engTableRows[engTableRows.length-1].t > 0.5){
       engTableRows.push({t,h,v,E_pot,E_kin});
@@ -8606,9 +8603,6 @@ function _engPendel_unused() {
       if (lbl) lbl.textContent = val.toFixed(1).replace('.', ',');
     }
   }
-
-  const engMeas = [];
-  let engSelArr = [];
 
   function engMeasure() {
     if(engPts.length===0) return;
