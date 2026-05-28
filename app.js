@@ -3480,6 +3480,13 @@ function openExperiment(expId) {
           <span>x = <b id="fedXVal">2,0</b> cm</span>
           <span>k = <b>10</b> N/cm</span>
         </div>
+        <div class="sim-btn-row"><button class="sim-btn" onclick="_fedMeasure()">📍 Messen</button></div>
+        <div class="sim-diagram-label">F-x Diagramm (Hookesches Gesetz)</div>
+        <canvas id="fedChart" class="sim-chart-canvas" width="460" height="200"></canvas>
+        <table class="sim-table" id="fedTable" style="display:none">
+          <thead><tr><th>Dehnung x (cm)</th><th>Kraft F (N)</th></tr></thead>
+          <tbody id="fedTbody"></tbody>
+        </table>
         <p class="sim-hint" style="text-align:center;margin:4px 0 6px">Formel: <b>F = k · x</b> &nbsp;|&nbsp; k = 10 N/cm</p>
       </div>`;
     document.body.appendChild(modal);
@@ -3509,6 +3516,13 @@ function openExperiment(expId) {
           <span>l₁ = <b>2,0</b> m</span>
           <span id="hebBalance" style="font-weight:700;color:#15803D">✓ Gleichgewicht</span>
         </div>
+        <div class="sim-btn-row"><button class="sim-btn" onclick="_hebMeasure()">📍 Messen</button></div>
+        <div class="sim-diagram-label">Drehmoment-Diagramm (M₁ vs M₂)</div>
+        <canvas id="hebChart" class="sim-chart-canvas" width="460" height="180"></canvas>
+        <table class="sim-table" id="hebTable" style="display:none">
+          <thead><tr><th>Kraft F (N)</th><th>Abstand d (m)</th><th>Moment M (N·m)</th></tr></thead>
+          <tbody id="hebTbody"></tbody>
+        </table>
         <p class="sim-hint" style="text-align:center;margin:4px 0 6px">Formel: <b>F₁ · l₁ = F₂ · l₂</b></p>
       </div>`;
     document.body.appendChild(modal);
@@ -3667,12 +3681,19 @@ function openExperiment(expId) {
         <div class="sim-btn-row">
           <button class="sim-btn primary" id="newPlayBtn" onclick="_newToggle()">▶ Start</button>
           <button class="sim-btn" onclick="_newReset()">↺ Neu</button>
+          <button class="sim-btn" onclick="_newMeasure()">📍 Messen</button>
         </div>
         <div class="sim-info-row">
           <span>F = <b id="newFVal">20</b> N</span>
           <span>m = <b id="newMVal">5,0</b> kg</span>
           <span>a = <b id="newAVal">4,0</b> m/s²</span>
         </div>
+        <div class="sim-diagram-label">a-F Diagramm (F = m·a)</div>
+        <canvas id="newChart" class="sim-chart-canvas" width="460" height="180"></canvas>
+        <table class="sim-table" id="newTable" style="display:none">
+          <thead><tr><th>F (N)</th><th>m (kg)</th><th>a (m/s²)</th></tr></thead>
+          <tbody id="newTbody"></tbody>
+        </table>
         <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Formel: <b>F = m · a</b> &nbsp;→&nbsp; <b>a = F / m</b></p>
       </div>`;
     document.body.appendChild(modal);
@@ -3702,6 +3723,12 @@ function openExperiment(expId) {
           <span style="color:#15803D">E_pot = <b id="engEpot">0,00</b> J</span>
           <span>E_ges = <b id="engEges">0,00</b> J</span>
         </div>
+        <div class="sim-diagram-label">E(t) Diagramm – Energieerhaltung</div>
+        <canvas id="engChart" class="sim-chart-canvas" width="460" height="180"></canvas>
+        <table class="sim-table" id="engTable" style="display:none">
+          <thead><tr><th>t (s)</th><th>h (m)</th><th>v (m/s)</th><th>E_pot (J)</th><th>E_kin (J)</th></tr></thead>
+          <tbody id="engTbody"></tbody>
+        </table>
         <p class="sim-hint" style="text-align:center;margin:2px 0 6px"><b>E_pot = m·g·h</b> &nbsp;|&nbsp; <b>E_kin = ½·m·v²</b></p>
       </div>`;
     document.body.appendChild(modal);
@@ -3740,6 +3767,12 @@ function openExperiment(expId) {
           <span>p_vor = <b id="impPvor">10,0</b> kg·m/s</span>
           <span>p_nach = <b id="impPnach">–</b></span>
         </div>
+        <div class="sim-diagram-label">Impuls-Diagramm (vor und nach dem Stoß)</div>
+        <canvas id="impChart" class="sim-chart-canvas" width="460" height="160"></canvas>
+        <table class="sim-table" id="impTable" style="display:none">
+          <thead><tr><th>Objekt</th><th>Masse (kg)</th><th>v_vor (m/s)</th><th>v_nach (m/s)</th><th>p (kg·m/s)</th></tr></thead>
+          <tbody id="impTbody"></tbody>
+        </table>
         <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Elastischer Stoß: <b>p_ges = const</b></p>
       </div>`;
     document.body.appendChild(modal);
@@ -3763,6 +3796,13 @@ function openExperiment(expId) {
           <span>T = <b id="penTVal">2,01</b> s</span>
           <span>θ = <b id="penAngleVal">30</b>°</span>
         </div>
+        <div class="sim-btn-row"><button class="sim-btn" onclick="_penMeasure()">📍 Messen</button></div>
+        <div class="sim-diagram-label">T-L Diagramm (T = 2π·√(L/g))</div>
+        <canvas id="penChart" class="sim-chart-canvas" width="460" height="180"></canvas>
+        <table class="sim-table" id="penTable" style="display:none">
+          <thead><tr><th>L (m)</th><th>T_gemessen (s)</th><th>T_berechnet (s)</th></tr></thead>
+          <tbody id="penTbody"></tbody>
+        </table>
         <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Formel: <b>T = 2π · √(L/g)</b></p>
       </div>`;
     document.body.appendChild(modal);
@@ -3792,6 +3832,12 @@ function openExperiment(expId) {
           <span>T = <b id="welTVal">0,50</b> s</span>
           <span>λ = <b id="welLamVal">115</b> px</span>
         </div>
+        <div class="sim-diagram-label">A(f) Frequenzspektrum</div>
+        <canvas id="welChart" class="sim-chart-canvas" width="460" height="160"></canvas>
+        <table class="sim-table" id="welTable" style="display:none">
+          <thead><tr><th>f (Hz)</th><th>T (s)</th><th>λ (px)</th><th>A (px)</th></tr></thead>
+          <tbody id="welTbody"></tbody>
+        </table>
         <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Formel: <b>y(x,t) = A · sin(2π(x/λ − f·t))</b></p>
       </div>`;
     document.body.appendChild(modal);
@@ -3860,7 +3906,28 @@ function openExperiment(expId) {
         <div><label style="font-weight:700;font-size:.85rem">v₀: <span id="wurfVLabel">30</span> m/s</label>
           <input type="range" id="wurfVSlider" min="10" max="60" value="30" style="width:100%;accent-color:#0891b2"
             oninput="document.getElementById('wurfVLabel').textContent=this.value;_wurfReset()"></div>
-      </div></div>`;
+      </div>
+      <div id="wurfInfo" class="sim-info-row" style="font-size:.82rem">
+        <span>t = <b id="wurfTDisp">0,0</b> s</span>
+        <span>x = <b id="wurfXDisp">0</b> m</span>
+        <span>y = <b id="wurfYDisp">0</b> m</span>
+        <span>v = <b id="wurfVDisp">0</b> m/s</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px 10px">
+        <div>
+          <div class="sim-diagram-label" style="font-size:.75rem">x(t) Diagramm</div>
+          <canvas id="wurfChartX" class="sim-chart-canvas" width="220" height="130"></canvas>
+        </div>
+        <div>
+          <div class="sim-diagram-label" style="font-size:.75rem">y(t) Diagramm</div>
+          <canvas id="wurfChartY" class="sim-chart-canvas" width="220" height="130"></canvas>
+        </div>
+      </div>
+      <table class="sim-table" id="wurfTable" style="display:none">
+        <thead><tr><th>t (s)</th><th>x (m)</th><th>y (m)</th><th>v (m/s)</th></tr></thead>
+        <tbody id="wurfTbody"></tbody>
+      </table>
+      </div>`;
     document.body.appendChild(modal);
     _sim = _simWurf();
 
@@ -3873,7 +3940,19 @@ function openExperiment(expId) {
         <label style="font-weight:700;font-size:.85rem">Winkelgeschwindigkeit ω: <span id="kreiWLabel">2</span> rad/s</label>
         <input type="range" id="kreiWSlider" min="1" max="8" value="2" step="0.5" style="width:100%;accent-color:#7c3aed"
           oninput="document.getElementById('kreiWLabel').textContent=this.value">
-      </div></div>`;
+      </div>
+      <div class="sim-info-row" style="font-size:.82rem">
+        <span>ω = <b id="kreiOmegaDisp">2,0</b> rad/s</span>
+        <span>v = <b id="kreiVDisp">160</b> px/s</span>
+        <span>T = <b id="kreiTDisp">3,14</b> s</span>
+      </div>
+      <div class="sim-diagram-label">v–ω Diagramm (v = ω·r)</div>
+      <canvas id="kreiChart" class="sim-chart-canvas" width="460" height="160"></canvas>
+      <table class="sim-table" id="kreiTable" style="display:none">
+        <thead><tr><th>ω (rad/s)</th><th>v (px/s)</th><th>T (s)</th></tr></thead>
+        <tbody id="kreiTbody"></tbody>
+      </table>
+      </div>`;
     document.body.appendChild(modal);
     _sim = _simKreis();
 
@@ -3889,7 +3968,19 @@ function openExperiment(expId) {
         <div><label style="font-weight:700;font-size:.85rem">Radius r: <span id="zentriRLabel">80</span> px</label>
           <input type="range" id="zentriRSlider" min="40" max="100" value="80" style="width:100%;accent-color:#0891b2"
             oninput="document.getElementById('zentriRLabel').textContent=this.value"></div>
-      </div></div>`;
+      </div>
+      <div class="sim-info-row" style="font-size:.82rem">
+        <span>m = <b id="zentriMDisp">1</b> kg</span>
+        <span>r = <b id="zentriRDisp">80</b> px</span>
+        <span>F_z = <b id="zentrFDisp">0,11</b> N</span>
+      </div>
+      <div class="sim-diagram-label">F–v² Diagramm (F = m/r · v²)</div>
+      <canvas id="zentriChart" class="sim-chart-canvas" width="460" height="160"></canvas>
+      <table class="sim-table" id="zentriTable" style="display:none">
+        <thead><tr><th>m (kg)</th><th>r (px)</th><th>v (px/s)</th><th>F_z (N)</th></tr></thead>
+        <tbody id="zentriTbody"></tbody>
+      </table>
+      </div>`;
     document.body.appendChild(modal);
     _sim = _simZentripetal();
 
@@ -3905,7 +3996,27 @@ function openExperiment(expId) {
         <div><label style="font-weight:700;font-size:.85rem">Frequenz f: <span id="schwingFLabel">1</span> Hz</label>
           <input type="range" id="schwingFSlider" min="1" max="5" value="1" style="width:100%;accent-color:#0891b2"
             oninput="document.getElementById('schwingFLabel').textContent=this.value"></div>
-      </div></div>`;
+      </div>
+      <div class="sim-info-row" style="font-size:.82rem">
+        <span>t = <b id="schwingTDisp">0,00</b> s</span>
+        <span>x = <b id="schwingXDisp">0</b></span>
+        <span>v = <b id="schwingVDisp">0</b></span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px 10px">
+        <div>
+          <div class="sim-diagram-label" style="font-size:.75rem">x(t) Diagramm</div>
+          <canvas id="schwingChartX" class="sim-chart-canvas" width="220" height="130"></canvas>
+        </div>
+        <div>
+          <div class="sim-diagram-label" style="font-size:.75rem">v(t) Diagramm</div>
+          <canvas id="schwingChartV" class="sim-chart-canvas" width="220" height="130"></canvas>
+        </div>
+      </div>
+      <table class="sim-table" id="schwingTable" style="display:none">
+        <thead><tr><th>t (s)</th><th>x (px)</th><th>v (px/s)</th></tr></thead>
+        <tbody id="schwingTbody"></tbody>
+      </table>
+      </div>`;
     document.body.appendChild(modal);
     _sim = _simSchwingung();
 
@@ -3919,7 +4030,19 @@ function openExperiment(expId) {
         <input type="range" id="efeldUSlider" min="10" max="300" value="100" style="width:100%;accent-color:#7c3aed"
           oninput="document.getElementById('efeldULabel').textContent=this.value">
         <div style="font-size:.82rem;color:#6b7280;margin-top:4px">Klicke ins Feld um eine Probeladung zu platzieren</div>
-      </div></div>`;
+      </div>
+      <div class="sim-info-row" style="font-size:.82rem">
+        <span>U = <b id="efeldUDisp">100</b> V</span>
+        <span>d = 0,3 m</span>
+        <span>E = <b id="efeldEDisp">333</b> V/m</span>
+      </div>
+      <div class="sim-diagram-label">E(U) Diagramm (E = U/d)</div>
+      <canvas id="efeldChart" class="sim-chart-canvas" width="460" height="160"></canvas>
+      <table class="sim-table" id="efeldTable" style="display:none">
+        <thead><tr><th>U (V)</th><th>d (m)</th><th>E (V/m)</th></tr></thead>
+        <tbody id="efeldTbody"></tbody>
+      </table>
+      </div>`;
     document.body.appendChild(modal);
     _sim = _simEfeld();
 
@@ -3932,7 +4055,22 @@ function openExperiment(expId) {
         <label style="font-weight:700;font-size:.85rem">Stromstärke I: <span id="bfeldILabel">5</span> A</label>
         <input type="range" id="bfeldISlider" min="1" max="20" value="5" style="width:100%;accent-color:#7c3aed"
           oninput="document.getElementById('bfeldILabel').textContent=this.value">
-      </div></div>`;
+        <label style="font-weight:700;font-size:.85rem;margin-top:6px;display:block">Geschwindigkeit v: <span id="bfeldVLabel">2</span> m/s (Probeladung q=1C, B=0,01T)</label>
+        <input type="range" id="bfeldVSlider" min="0" max="10" value="2" step="0.5" style="width:100%;accent-color:#0891b2"
+          oninput="document.getElementById('bfeldVLabel').textContent=this.value">
+      </div>
+      <div class="sim-info-row" style="font-size:.82rem">
+        <span>B ∝ <b id="bfeldBDisp">0,01</b> T</span>
+        <span>v = <b id="bfeldVDisp">2,0</b> m/s</span>
+        <span>F = <b id="bfeldFDisp">0,02</b> N</span>
+      </div>
+      <div class="sim-diagram-label">F(v) Diagramm (F = q·v·B)</div>
+      <canvas id="bfeldChart" class="sim-chart-canvas" width="460" height="160"></canvas>
+      <table class="sim-table" id="bfeldTable" style="display:none">
+        <thead><tr><th>B (T)</th><th>v (m/s)</th><th>F (N)</th></tr></thead>
+        <tbody id="bfeldTbody"></tbody>
+      </table>
+      </div>`;
     document.body.appendChild(modal);
     _sim = _simBfeld();
 
@@ -3942,13 +4080,26 @@ function openExperiment(expId) {
       <h3 class="sim-h3">⚙️ Leistung & Wirkungsgrad</h3>
       <canvas id="leistCanvas" width="460" height="180" style="width:100%;border-radius:8px;display:block"></canvas>
       <div style="padding:8px 16px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <div><label style="font-weight:700;font-size:.85rem">Kraft F: <span id="leistFLabel">100</span> N</label>
-          <input type="range" id="leistFSlider" min="10" max="500" value="100" style="width:100%;accent-color:#7c3aed"
-            oninput="document.getElementById('leistFLabel').textContent=this.value"></div>
-        <div><label style="font-weight:700;font-size:.85rem">Wirkungsgrad η: <span id="leistEtaLabel">80</span>%</label>
-          <input type="range" id="leistEtaSlider" min="10" max="99" value="80" style="width:100%;accent-color:#0891b2"
-            oninput="document.getElementById('leistEtaLabel').textContent=this.value"></div>
-      </div></div>`;
+        <div><label style="font-weight:700;font-size:.85rem">Spannung U: <span id="leistULabel">12</span> V</label>
+          <input type="range" id="leistUSlider" min="1" max="24" value="12" style="width:100%;accent-color:#7c3aed"
+            oninput="document.getElementById('leistULabel').textContent=this.value"></div>
+        <div><label style="font-weight:700;font-size:.85rem">Strom I: <span id="leistILabel">2</span> A</label>
+          <input type="range" id="leistISlider" min="0.1" max="10" value="2" step="0.1" style="width:100%;accent-color:#0891b2"
+            oninput="document.getElementById('leistILabel').textContent=this.value"></div>
+      </div>
+      <div class="sim-info-row" style="font-size:.82rem">
+        <span>U = <b id="leistUDisp">12</b> V</span>
+        <span>I = <b id="leistIDisp">2,0</b> A</span>
+        <span>P = <b id="leistPDisp">24,0</b> W</span>
+        <span>R = <b id="leistRDisp">6,0</b> Ω</span>
+      </div>
+      <div class="sim-diagram-label">P(I) Diagramm (P = U·I)</div>
+      <canvas id="leistChart" class="sim-chart-canvas" width="460" height="160"></canvas>
+      <table class="sim-table" id="leistTable" style="display:none">
+        <thead><tr><th>U (V)</th><th>I (A)</th><th>P (W)</th><th>R (Ω)</th></tr></thead>
+        <tbody id="leistTbody"></tbody>
+      </table>
+      </div>`;
     document.body.appendChild(modal);
     _sim = _simLeistung();
 
@@ -4289,6 +4440,7 @@ function _simWurf() {
   const ctx = cv.getContext('2d');
   const g = 9.81, scale = 6;
   let path = [];
+  const wurfPts = [];
   function draw() {
     const alpha = +document.getElementById('wurfWSlider').value * Math.PI/180;
     const v0 = +document.getElementById('wurfVSlider').value;
@@ -4297,31 +4449,105 @@ function _simWurf() {
     ctx.fillStyle='#d1fae5'; ctx.fillRect(0,cv.height-20,cv.width,20);
     // Trajektorie berechnen
     path = [];
-    for(let t=0; t<=2*v0*Math.sin(alpha)/g; t+=0.05){
+    const tMax2 = 2*v0*Math.sin(alpha)/g;
+    for(let t=0; t<=tMax2; t+=0.05){
       const sx = v0*Math.cos(alpha)*t*scale;
       const sy = (v0*Math.sin(alpha)*t - 0.5*g*t*t)*scale;
-      path.push({x:20+sx, y:cv.height-20-sy});
+      path.push({t, x:v0*Math.cos(alpha)*t, y:v0*Math.sin(alpha)*t - 0.5*g*t*t, px:20+sx, py:cv.height-20-sy});
     }
     // Pfad zeichnen
     if(path.length>1){
       ctx.strokeStyle='rgba(124,58,237,0.4)'; ctx.lineWidth=2; ctx.setLineDash([5,5]);
-      ctx.beginPath(); ctx.moveTo(path[0].x,path[0].y);
-      path.forEach(p=>ctx.lineTo(p.x,p.y)); ctx.stroke(); ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(path[0].px,path[0].py);
+      path.forEach(p=>ctx.lineTo(p.px,p.py)); ctx.stroke(); ctx.setLineDash([]);
     }
     // Ball animieren
-    const tMax = 2*v0*Math.sin(alpha)/g;
-    _wurfT = (_wurfT + 0.02) % (tMax+0.5);
-    const bx = 20 + v0*Math.cos(alpha)*_wurfT*scale;
-    const by = cv.height-20 - Math.max(0,(v0*Math.sin(alpha)*_wurfT - 0.5*g*_wurfT*_wurfT)*scale);
+    _wurfT = (_wurfT + 0.02) % (tMax2+0.5);
+    const curT = Math.min(_wurfT, tMax2);
+    const bx = 20 + v0*Math.cos(alpha)*curT*scale;
+    const yRaw = v0*Math.sin(alpha)*curT - 0.5*g*curT*curT;
+    const by = cv.height-20 - Math.max(0, yRaw*scale);
+    const vx = v0*Math.cos(alpha), vy = v0*Math.sin(alpha)-g*curT;
+    const vTotal = Math.sqrt(vx*vx+vy*vy);
     ctx.fillStyle='#ef4444';
     ctx.beginPath(); ctx.arc(bx,by,8,0,Math.PI*2); ctx.fill();
     // Labels
     ctx.fillStyle='#1f2937'; ctx.font='700 13px sans-serif';
     ctx.fillText(`α=${document.getElementById('wurfWSlider').value}°  v₀=${document.getElementById('wurfVSlider').value}m/s`, 8,20);
-    const wMax = (v0*v0*Math.sin(2*alpha)/g*scale).toFixed(0);
-    ctx.fillText(`Weite: ~${wMax}px`, 8,38);
+    const wMax = (v0*v0*Math.sin(2*alpha)/g).toFixed(1);
+    ctx.fillText(`Weite: ~${wMax}m  t=${curT.toFixed(1)}s`, 8,38);
+    // update displays
+    const td=document.getElementById('wurfTDisp'); if(td) td.textContent=curT.toFixed(1).replace('.',',');
+    const xd=document.getElementById('wurfXDisp'); if(xd) xd.textContent=(v0*Math.cos(alpha)*curT).toFixed(1).replace('.',',');
+    const yd=document.getElementById('wurfYDisp'); if(yd) yd.textContent=Math.max(0,yRaw).toFixed(1).replace('.',',');
+    const vd=document.getElementById('wurfVDisp'); if(vd) vd.textContent=vTotal.toFixed(1).replace('.',',');
+    // record trajectory points for charts
+    if(_wurfT<0.05){
+      wurfPts.length=0;
+      for(let ti=0;ti<=tMax2;ti+=tMax2/30){
+        const xi=v0*Math.cos(alpha)*ti;
+        const yi=Math.max(0,v0*Math.sin(alpha)*ti-0.5*g*ti*ti);
+        const vi=Math.sqrt((v0*Math.cos(alpha))**2+(v0*Math.sin(alpha)-g*ti)**2);
+        wurfPts.push({t:ti,x:xi,y:yi,v:vi});
+      }
+      drawWurfCharts(curT, alpha, v0, tMax2);
+      updateWurfTable(alpha, v0, tMax2);
+    }
+    drawWurfCharts(curT, alpha, v0, tMax2);
     _wurfRaf = requestAnimationFrame(draw);
   }
+
+  function miniChart(canvId, pts, xKey, yKey, xLabel, yLabel, color, curT, alpha, v0) {
+    const c=document.getElementById(canvId); if(!c) return;
+    const ctx2=c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:38,r:10,t:14,b:28};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#f8fafc'; ctx2.fillRect(0,0,cW,cH);
+    if(pts.length<2) return;
+    const xMax=pts[pts.length-1][xKey], yMax=Math.max(...pts.map(p=>p[yKey]))*1.1||1;
+    ctx2.strokeStyle='#e5e7eb'; ctx2.lineWidth=1;
+    for(let i=1;i<=3;i++){
+      const y=P.t+(i/3)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+    }
+    ctx2.strokeStyle='#333'; ctx2.lineWidth=1.5;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    ctx2.font='9px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
+    ctx2.fillText(xLabel, P.l+gW/2, cH-2);
+    ctx2.save(); ctx2.translate(10,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText(yLabel,0,0); ctx2.restore();
+    ctx2.strokeStyle=color; ctx2.lineWidth=2;
+    ctx2.beginPath();
+    pts.forEach((p,i)=>{
+      const x=P.l+(p[xKey]/xMax)*gW, y=P.t+gH-(p[yKey]/yMax)*gH;
+      i===0?ctx2.moveTo(x,y):ctx2.lineTo(x,y);
+    });
+    ctx2.stroke();
+    // current dot
+    const g2=9.81, curX=curT, curY=(yKey==='x'?v0*Math.cos(alpha)*curT:Math.max(0,v0*Math.sin(alpha)*curT-0.5*g2*curT*curT));
+    const dotX=P.l+(curX/xMax)*gW, dotY=P.t+gH-(Math.min(curY,yMax)/yMax)*gH;
+    ctx2.fillStyle=color; ctx2.beginPath(); ctx2.arc(dotX,dotY,4,0,Math.PI*2); ctx2.fill();
+  }
+
+  function drawWurfCharts(curT, alpha, v0, tMax2) {
+    miniChart('wurfChartX', wurfPts, 't','x','t (s)','x (m)','#7c3aed', curT, alpha, v0);
+    miniChart('wurfChartY', wurfPts, 't','y','t (s)','y (m)','#0891b2', curT, alpha, v0);
+  }
+
+  function updateWurfTable(alpha, v0, tMax2){
+    const tb=document.getElementById('wurfTbody'), tw=document.getElementById('wurfTable');
+    if(!tb||!tw) return;
+    tw.style.display='table';
+    const g2=9.81;
+    const rows=[];
+    for(let ti=0;ti<=tMax2;ti+=tMax2/8){
+      const xi=v0*Math.cos(alpha)*ti;
+      const yi=Math.max(0,v0*Math.sin(alpha)*ti-0.5*g2*ti*ti);
+      const vi=Math.sqrt((v0*Math.cos(alpha))**2+(v0*Math.sin(alpha)-g2*ti)**2);
+      rows.push({t:ti,x:xi,y:yi,v:vi});
+    }
+    tb.innerHTML=rows.map(r=>`<tr><td>${r.t.toFixed(2).replace('.',',')}</td><td>${r.x.toFixed(1).replace('.',',')}</td><td>${r.y.toFixed(1).replace('.',',')}</td><td>${r.v.toFixed(1).replace('.',',')}</td></tr>`).join('');
+  }
+
   draw();
   return { stop(){ cancelAnimationFrame(_wurfRaf); } };
 }
@@ -5197,14 +5423,87 @@ function _simFederkraft() {
     wobble += wobbleDir * 0.4;
     if (wobble > 3 || wobble < -3) wobbleDir *= -1;
 
+    drawChart();
     animId = requestAnimationFrame(draw);
+  }
+
+  const meas = [];
+
+  function drawChart() {
+    const c = document.getElementById('fedChart'); if (!c) return;
+    const ctx2 = c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:55,r:20,t:22,b:42};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#f8fafc'; ctx2.fillRect(0,0,cW,cH);
+    // grid
+    ctx2.strokeStyle='#f0f0f0'; ctx2.lineWidth=1;
+    for(let i=1;i<=5;i++){
+      const y=P.t+(i/5)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+      const x=P.l+(i/5)*gW; ctx2.beginPath(); ctx2.moveTo(x,P.t); ctx2.lineTo(x,P.t+gH); ctx2.stroke();
+    }
+    // axes
+    ctx2.strokeStyle='#333'; ctx2.lineWidth=2;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    // axis arrows
+    ctx2.fillStyle='#333';
+    ctx2.beginPath(); ctx2.moveTo(P.l+gW,P.t+gH); ctx2.lineTo(P.l+gW+7,P.t+gH-3); ctx2.lineTo(P.l+gW+7,P.t+gH+3); ctx2.fill();
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l-3,P.t+8); ctx2.lineTo(P.l+3,P.t+8); ctx2.fill();
+    // labels
+    ctx2.font='bold 12px Nunito,sans-serif'; ctx2.fillStyle='#333'; ctx2.textAlign='center';
+    ctx2.fillText('Dehnung x (cm)', P.l+gW/2, cH-4);
+    ctx2.save(); ctx2.translate(14,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('Kraft F (N)',0,0); ctx2.restore();
+    // axis ticks
+    const xMax=5, yMax=50;
+    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
+    for(let i=0;i<=5;i++){
+      const x=P.l+(i/5)*gW;
+      ctx2.fillText((xMax*i/5).toFixed(0), x, P.t+gH+14);
+    }
+    ctx2.textAlign='right';
+    for(let i=0;i<=5;i++){
+      const y=P.t+gH-(i/5)*gH;
+      ctx2.fillText((yMax*i/5).toFixed(0), P.l-4, y+4);
+    }
+    // theoretical line F=k*x (k=10 N/cm)
+    ctx2.strokeStyle='#7c3aed44'; ctx2.lineWidth=1.5; ctx2.setLineDash([5,4]);
+    ctx2.beginPath();
+    ctx2.moveTo(P.l, P.t+gH);
+    ctx2.lineTo(P.l+gW, P.t+gH-(yMax/yMax)*gH);
+    ctx2.stroke(); ctx2.setLineDash([]);
+    ctx2.font='11px sans-serif'; ctx2.fillStyle='#7c3aed'; ctx2.textAlign='left';
+    ctx2.fillText('F=k·x', P.l+4, P.t+12);
+    // current point
+    const k=10, x_cm=F/k;
+    const cx2=P.l+(x_cm/xMax)*gW, cy2=P.t+gH-(F/yMax)*gH;
+    ctx2.fillStyle='#7c3aed';
+    ctx2.beginPath(); ctx2.arc(cx2,cy2,6,0,Math.PI*2); ctx2.fill();
+    // measured points
+    ctx2.fillStyle='#dc2626';
+    for(const m of meas){
+      const mx=P.l+(m.x/xMax)*gW, my=P.t+gH-(m.F/yMax)*gH;
+      ctx2.beginPath(); ctx2.arc(mx,my,5,0,Math.PI*2); ctx2.fill();
+    }
+  }
+
+  function measure() {
+    const k=10, x_cm=F/k;
+    meas.push({x:parseFloat(x_cm.toFixed(2)), F:parseFloat(F.toFixed(1))});
+    updateTable();
+  }
+
+  function updateTable() {
+    const tb=document.getElementById('fedTbody'), tw=document.getElementById('fedTable');
+    if(!tb||!tw) return;
+    if(meas.length>0) tw.style.display='table';
+    tb.innerHTML=meas.map((m,i)=>`<tr><td>${m.x.toFixed(2).replace('.',',')}</td><td>${m.F.toFixed(1).replace('.',',')}</td></tr>`).join('');
   }
 
   function stop() { if (animId) cancelAnimationFrame(animId); }
   function setF(v) { F = v; }
 
   draw();
-  return { stop, setF };
+  return { stop, setF, measure };
 }
 
 // ============================================================
@@ -5304,7 +5603,76 @@ function _simHebelgesetz() {
     if (f2El) f2El.textContent = fmt(F2);
     if (l2El) l2El.textContent = fmt(l2);
 
+    drawHebChart();
     animId = requestAnimationFrame(draw);
+  }
+
+  const hebMeas = [];
+
+  function drawHebChart() {
+    const c = document.getElementById('hebChart'); if (!c) return;
+    const ctx2 = c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:60,r:20,t:22,b:35};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#fafaf9'; ctx2.fillRect(0,0,cW,cH);
+    // background bars area
+    const F1 = F2*l2/l1, M1=F1*l1, M2=F2*l2;
+    const maxM = Math.max(M1,M2,200)*1.1;
+    const bW=60, gap=30;
+    const barY = P.t+gH;
+    // grid lines
+    ctx2.strokeStyle='#f0f0f0'; ctx2.lineWidth=1;
+    for(let i=1;i<=4;i++){
+      const y=P.t+(i/4)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+    }
+    // y axis
+    ctx2.strokeStyle='#333'; ctx2.lineWidth=2;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.stroke();
+    // baseline
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    // y ticks
+    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='right';
+    for(let i=0;i<=4;i++){
+      const y=P.t+gH-(i/4)*gH;
+      ctx2.fillText((maxM*i/4).toFixed(0), P.l-4, y+4);
+    }
+    // bar M1
+    const m1H=(M1/maxM)*gH;
+    ctx2.fillStyle='#2563EB';
+    ctx2.fillRect(P.l+gap, barY-m1H, bW, m1H);
+    ctx2.font='bold 11px sans-serif'; ctx2.fillStyle='#2563EB'; ctx2.textAlign='center';
+    ctx2.fillText('M₁', P.l+gap+bW/2, barY+14);
+    ctx2.fillText(M1.toFixed(1)+'N·m', P.l+gap+bW/2, barY+26);
+    // bar M2
+    const m2H=(M2/maxM)*gH;
+    ctx2.fillStyle='#dc2626';
+    ctx2.fillRect(P.l+gap+bW+gap, barY-m2H, bW, m2H);
+    ctx2.fillStyle='#dc2626';
+    ctx2.fillText('M₂', P.l+gap+bW+gap+bW/2, barY+14);
+    ctx2.fillText(M2.toFixed(1)+'N·m', P.l+gap+bW+gap+bW/2, barY+26);
+    // balance indicator
+    const balanced=Math.abs(M1-M2)<0.5;
+    ctx2.font='bold 13px sans-serif'; ctx2.fillStyle= balanced?'#16a34a':'#dc2626'; ctx2.textAlign='center';
+    ctx2.fillText(balanced?'✓ M₁ = M₂ (Gleichgewicht)':'M₁ ≠ M₂', cW/2, P.t-4);
+    // measured points as dots
+    ctx2.fillStyle='#f59e0b';
+    for(const m of hebMeas){
+      const bx=P.l+gap+bW/2+(P.l+gap+bW+gap+bW/2-P.l-gap-bW/2)/2-20;
+    }
+  }
+
+  function hebMeasure() {
+    const F1=F2*l2/l1, M1=F1*l1, M2=F2*l2;
+    hebMeas.push({F:parseFloat(F2.toFixed(1)), d:parseFloat(l2.toFixed(2)), M:parseFloat(M2.toFixed(2))});
+    updateHebTable();
+  }
+
+  function updateHebTable() {
+    const tb=document.getElementById('hebTbody'), tw=document.getElementById('hebTable');
+    if(!tb||!tw) return;
+    if(hebMeas.length>0) tw.style.display='table';
+    tb.innerHTML=hebMeas.map(m=>`<tr><td>${m.F.toFixed(1).replace('.',',')}</td><td>${m.d.toFixed(2).replace('.',',')}</td><td>${m.M.toFixed(2).replace('.',',')}</td></tr>`).join('');
   }
 
   function stop() { if (animId) cancelAnimationFrame(animId); }
@@ -5314,7 +5682,7 @@ function _simHebelgesetz() {
   }
 
   draw();
-  return { stop, set };
+  return { stop, set, measure: hebMeasure };
 }
 
 // ============================================================
@@ -6015,7 +6383,70 @@ function _simNewton2() {
     if (flEl) flEl.textContent = fmt(F, 0);
     if (mlEl) mlEl.textContent = fmt(m, 1);
 
+    drawNewChart();
     raf = requestAnimationFrame(draw);
+  }
+
+  const newMeas = [];
+
+  function drawNewChart() {
+    const c = document.getElementById('newChart'); if (!c) return;
+    const ctx2 = c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:55,r:20,t:22,b:42};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#f8fafc'; ctx2.fillRect(0,0,cW,cH);
+    const Fmax=50, aMax=50;
+    ctx2.strokeStyle='#f0f0f0'; ctx2.lineWidth=1;
+    for(let i=1;i<=5;i++){
+      const y=P.t+(i/5)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+      const x=P.l+(i/5)*gW; ctx2.beginPath(); ctx2.moveTo(x,P.t); ctx2.lineTo(x,P.t+gH); ctx2.stroke();
+    }
+    ctx2.strokeStyle='#333'; ctx2.lineWidth=2;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    ctx2.fillStyle='#333';
+    ctx2.beginPath(); ctx2.moveTo(P.l+gW,P.t+gH); ctx2.lineTo(P.l+gW+7,P.t+gH-3); ctx2.lineTo(P.l+gW+7,P.t+gH+3); ctx2.fill();
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l-3,P.t+8); ctx2.lineTo(P.l+3,P.t+8); ctx2.fill();
+    ctx2.font='bold 12px Nunito,sans-serif'; ctx2.fillStyle='#333'; ctx2.textAlign='center';
+    ctx2.fillText('Kraft F (N)', P.l+gW/2, cH-4);
+    ctx2.save(); ctx2.translate(14,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('a (m/s²)',0,0); ctx2.restore();
+    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
+    for(let i=0;i<=5;i++) ctx2.fillText((Fmax*i/5).toFixed(0), P.l+(i/5)*gW, P.t+gH+14);
+    ctx2.textAlign='right';
+    for(let i=0;i<=5;i++) ctx2.fillText((aMax*i/5).toFixed(0), P.l-4, P.t+gH-(i/5)*gH+4);
+    // line a = F/m (current mass)
+    ctx2.strokeStyle='#7c3aed44'; ctx2.lineWidth=1.5; ctx2.setLineDash([5,4]);
+    ctx2.beginPath();
+    ctx2.moveTo(P.l, P.t+gH);
+    const ya = P.t+gH-((Fmax/m)/aMax)*gH;
+    ctx2.lineTo(P.l+gW, Math.max(P.t,ya));
+    ctx2.stroke(); ctx2.setLineDash([]);
+    ctx2.font='11px sans-serif'; ctx2.fillStyle='#7c3aed'; ctx2.textAlign='left';
+    ctx2.fillText('a=F/m  (m='+fmt(m,1)+'kg)', P.l+4, P.t+12);
+    // current point
+    const a=F/m;
+    const cpx=P.l+(F/Fmax)*gW, cpy=P.t+gH-(Math.min(a,aMax)/aMax)*gH;
+    ctx2.fillStyle='#7c3aed';
+    ctx2.beginPath(); ctx2.arc(cpx,cpy,6,0,Math.PI*2); ctx2.fill();
+    // measured
+    ctx2.fillStyle='#dc2626';
+    for(const mp of newMeas){
+      const mx=P.l+(mp.F/Fmax)*gW, my=P.t+gH-(Math.min(mp.a,aMax)/aMax)*gH;
+      ctx2.beginPath(); ctx2.arc(mx,my,5,0,Math.PI*2); ctx2.fill();
+    }
+  }
+
+  function newMeasure() {
+    const a=F/m;
+    newMeas.push({F:parseFloat(F.toFixed(1)),m:parseFloat(m.toFixed(1)),a:parseFloat(a.toFixed(2))});
+    updateNewTable();
+  }
+
+  function updateNewTable() {
+    const tb=document.getElementById('newTbody'), tw=document.getElementById('newTable');
+    if(!tb||!tw) return;
+    if(newMeas.length>0) tw.style.display='table';
+    tb.innerHTML=newMeas.map(mp=>`<tr><td>${mp.F.toFixed(1).replace('.',',')}</td><td>${mp.m.toFixed(1).replace('.',',')}</td><td>${mp.a.toFixed(2).replace('.',',')}</td></tr>`).join('');
   }
 
   function stop() { if (raf) cancelAnimationFrame(raf); running = false; last = null; }
@@ -6041,7 +6472,7 @@ function _simNewton2() {
   }
 
   raf = requestAnimationFrame(draw);
-  return { stop, set, toggle, reset };
+  return { stop, set, toggle, reset, measure: newMeasure };
 }
 
 // ============================================================
@@ -6142,12 +6573,89 @@ function _simEnergieerhaltung() {
     if (potEl) potEl.textContent = fmt(E_pot);
     if (gesEl) gesEl.textContent = fmt(E_tot);
 
+    // record for chart
+    engPts.push({t, E_pot, E_kin, E_tot});
+    if(engPts.length > 200) engPts.shift();
+    drawEngChart(t, E_pot, E_kin, E_tot, v, h);
+
     animId = requestAnimationFrame(draw);
+  }
+
+  const engPts = [];
+
+  function drawEngChart(curT, E_pot, E_kin, E_tot, v, h) {
+    const c = document.getElementById('engChart'); if (!c) return;
+    const ctx2 = c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:55,r:20,t:22,b:42};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#f0f9ff'; ctx2.fillRect(0,0,cW,cH);
+    const tWindow=8; // seconds to show
+    const Emax=Math.max(E_tot*1.2, 0.01);
+    // grid
+    ctx2.strokeStyle='#e0e7ef'; ctx2.lineWidth=1;
+    for(let i=1;i<=4;i++){
+      const y=P.t+(i/4)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+    }
+    // axes
+    ctx2.strokeStyle='#333'; ctx2.lineWidth=2;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    ctx2.font='bold 11px Nunito,sans-serif'; ctx2.fillStyle='#333'; ctx2.textAlign='center';
+    ctx2.fillText('Zeit t (s)', P.l+gW/2, cH-4);
+    ctx2.save(); ctx2.translate(14,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('Energie (J)',0,0); ctx2.restore();
+    // ticks
+    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='right';
+    for(let i=0;i<=4;i++) ctx2.fillText((Emax*i/4).toFixed(2), P.l-4, P.t+gH-(i/4)*gH+4);
+    if(engPts.length>1){
+      const tStart=engPts[0].t;
+      function ptX(tp){ return P.l+((tp-tStart)/Math.max(tWindow,curT-tStart+1))*gW; }
+      function ptY(e){ return P.t+gH-(e/Emax)*gH; }
+      // E_pot blue
+      ctx2.strokeStyle='#2563EB'; ctx2.lineWidth=2;
+      ctx2.beginPath();
+      engPts.forEach((p,i)=>{ i===0?ctx2.moveTo(ptX(p.t),ptY(p.E_pot)):ctx2.lineTo(ptX(p.t),ptY(p.E_pot)); });
+      ctx2.stroke();
+      // E_kin red
+      ctx2.strokeStyle='#dc2626'; ctx2.lineWidth=2;
+      ctx2.beginPath();
+      engPts.forEach((p,i)=>{ i===0?ctx2.moveTo(ptX(p.t),ptY(p.E_kin)):ctx2.lineTo(ptX(p.t),ptY(p.E_kin)); });
+      ctx2.stroke();
+      // E_tot green
+      ctx2.strokeStyle='#16a34a'; ctx2.lineWidth=1.5; ctx2.setLineDash([5,3]);
+      ctx2.beginPath();
+      engPts.forEach((p,i)=>{ i===0?ctx2.moveTo(ptX(p.t),ptY(p.E_tot)):ctx2.lineTo(ptX(p.t),ptY(p.E_tot)); });
+      ctx2.stroke(); ctx2.setLineDash([]);
+    }
+    // legend
+    ctx2.font='10px sans-serif'; ctx2.textAlign='left';
+    ctx2.fillStyle='#2563EB'; ctx2.fillRect(P.l+4,P.t+4,10,3); ctx2.fillText('E_pot',P.l+18,P.t+10);
+    ctx2.fillStyle='#dc2626'; ctx2.fillRect(P.l+60,P.t+4,10,3); ctx2.fillText('E_kin',P.l+74,P.t+10);
+    ctx2.fillStyle='#16a34a'; ctx2.fillRect(P.l+116,P.t+4,10,3); ctx2.fillText('E_ges',P.l+130,P.t+10);
+    // add table row
+    updateEngTable(curT, h, v, E_pot, E_kin);
+  }
+
+  const engTableRows = [];
+  function updateEngTable(t, h, v, E_pot, E_kin) {
+    if(engTableRows.length === 0 || t - engTableRows[engTableRows.length-1].t > 0.5){
+      engTableRows.push({t,h,v,E_pot,E_kin});
+      if(engTableRows.length > 20) engTableRows.shift();
+    }
+    const tb=document.getElementById('engTbody'), tw=document.getElementById('engTable');
+    if(!tb||!tw) return;
+    if(engTableRows.length>0) tw.style.display='table';
+    tb.innerHTML=engTableRows.slice(-8).map(r=>`<tr>
+      <td>${r.t.toFixed(2).replace('.',',')}</td>
+      <td>${r.h.toFixed(3).replace('.',',')}</td>
+      <td>${r.v.toFixed(2).replace('.',',')}</td>
+      <td>${r.E_pot.toFixed(3).replace('.',',')}</td>
+      <td>${r.E_kin.toFixed(3).replace('.',',')}</td>
+    </tr>`).join('');
   }
 
   function stop() { if (animId) cancelAnimationFrame(animId); }
   function set(key, val) {
-    startTime = null;
+    startTime = null; engPts.length=0; engTableRows.length=0;
     if (key === 'angle') {
       theta0 = val * Math.PI / 180;
       const lbl = document.getElementById('engAngleLabel');
@@ -6248,6 +6756,66 @@ function _simImpuls() {
     const pNachEl = document.getElementById('impPnach');
     if (pVorEl) pVorEl.textContent = fmt(pVor) + ' kg·m/s';
     if (pNachEl) pNachEl.textContent = fmt(pNach, 1) + ' kg·m/s ✓';
+    drawImpChart(v1, v1a, v2a);
+  }
+
+  function drawImpChart(v1_vor, v1_nach, v2_nach) {
+    const c = document.getElementById('impChart'); if (!c) return;
+    const ctx2 = c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:60,r:20,t:28,b:35};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#f8fafc'; ctx2.fillRect(0,0,cW,cH);
+    const p1_vor=m1*v1_vor, p2_vor=0, p1_nach=m1*v1_nach, p2_nach=m2*v2_nach;
+    const pMax=Math.max(p1_vor,p1_nach,p2_nach,5)*1.15;
+    const bW=38, cols=['Vor','Nach'];
+    const xs=[P.l+20, P.l+20+bW+8, P.l+gW/2+20, P.l+gW/2+20+bW+8];
+    // grid
+    ctx2.strokeStyle='#f0f0f0'; ctx2.lineWidth=1;
+    for(let i=1;i<=4;i++){
+      const y=P.t+(i/4)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+    }
+    // y axis
+    ctx2.strokeStyle='#333'; ctx2.lineWidth=2;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.stroke();
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='right';
+    for(let i=0;i<=4;i++) ctx2.fillText((pMax*i/4).toFixed(1), P.l-4, P.t+gH-(i/4)*gH+4);
+    ctx2.font='bold 11px sans-serif'; ctx2.fillStyle='#333'; ctx2.textAlign='center';
+    ctx2.fillText('Impuls p = m·v (kg·m/s)', P.l+gW/2, P.t-8);
+    function drawBar(x,h,color,label,val){
+      const bH=(h/pMax)*gH;
+      ctx2.fillStyle=color; ctx2.fillRect(x,P.t+gH-bH,bW,bH);
+      ctx2.font='10px sans-serif'; ctx2.fillStyle='#333'; ctx2.textAlign='center';
+      ctx2.fillText(label, x+bW/2, P.t+gH+14);
+      ctx2.fillText(val.toFixed(1), x+bW/2, P.t+gH+26);
+    }
+    // Vor
+    ctx2.font='bold 10px sans-serif'; ctx2.fillStyle='#374151'; ctx2.textAlign='center';
+    ctx2.fillText('Vor Stoß', xs[0]+bW/2+4+bW/2, P.t-6);
+    drawBar(xs[0], p1_vor, '#dc2626cc', 'p₁', p1_vor);
+    drawBar(xs[1], p2_vor, '#2563EBcc', 'p₂', p2_vor);
+    // Nach
+    ctx2.fillText('Nach Stoß', xs[2]+bW/2+4+bW/2, P.t-6);
+    drawBar(xs[2], Math.abs(p1_nach), '#dc2626cc', "p₁'", p1_nach);
+    drawBar(xs[3], p2_nach, '#2563EBcc', "p₂'", p2_nach);
+    // divider
+    ctx2.strokeStyle='#94a3b8'; ctx2.lineWidth=1; ctx2.setLineDash([4,3]);
+    ctx2.beginPath(); ctx2.moveTo(P.l+gW/2, P.t); ctx2.lineTo(P.l+gW/2, P.t+gH); ctx2.stroke(); ctx2.setLineDash([]);
+    // update table
+    updateImpTable(v1_vor, v1_nach, v2_nach);
+  }
+
+  function updateImpTable(v1_vor, v1_nach, v2_nach){
+    const tb=document.getElementById('impTbody'), tw=document.getElementById('impTable');
+    if(!tb||!tw) return;
+    tw.style.display='table';
+    const p1_vor=m1*v1_vor, p1_nach=m1*v1_nach, p2_nach=m2*v2_nach;
+    tb.innerHTML=`
+      <tr><td>Kugel 1</td><td>${fmt(m1)}</td><td>${fmt(v1_vor)}</td><td>${fmt(v1_nach)}</td><td>${fmt(p1_nach)}</td></tr>
+      <tr><td>Kugel 2</td><td>${fmt(m2)}</td><td>0,0</td><td>${fmt(v2_nach)}</td><td>${fmt(p2_nach)}</td></tr>
+      <tr style="font-weight:700;background:#f0fdf4"><td>Gesamt</td><td>${fmt(m1+m2)}</td><td>–</td><td>–</td><td>${fmt(p1_nach+p2_nach)} ✓</td></tr>
+    `;
   }
 
   function stop() { if (animId) cancelAnimationFrame(animId); }
@@ -6260,6 +6828,8 @@ function _simImpuls() {
     if (pEl) pEl.textContent = fmt(m1 * v1, 1) + ' kg·m/s';
     const nEl = document.getElementById('impPnach');
     if (nEl) nEl.textContent = '–';
+    const c = document.getElementById('impChart'); if(c){ const ctx2=c.getContext('2d'); ctx2.clearRect(0,0,c.width,c.height); }
+    const tw=document.getElementById('impTable'); if(tw) tw.style.display='none';
   }
   function stoss() {
     if (state !== 'before') { reset(); return; }
@@ -6360,7 +6930,76 @@ function _simFadenpendel() {
     if (tEl) tEl.textContent = fmt(T);
     if (aEl) aEl.textContent = (Math.abs(theta * 180 / Math.PI)).toFixed(0).replace('.', ',');
 
+    drawPenChart(T);
     animId = requestAnimationFrame(draw);
+  }
+
+  const penMeas = [];
+
+  function drawPenChart(T_cur) {
+    const c = document.getElementById('penChart'); if (!c) return;
+    const ctx2 = c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:55,r:20,t:22,b:42};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#f5f3ff'; ctx2.fillRect(0,0,cW,cH);
+    const Lmax=2.0, Tmax=4.5;
+    ctx2.strokeStyle='#ece9f8'; ctx2.lineWidth=1;
+    for(let i=1;i<=5;i++){
+      const y=P.t+(i/5)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+      const x=P.l+(i/5)*gW; ctx2.beginPath(); ctx2.moveTo(x,P.t); ctx2.lineTo(x,P.t+gH); ctx2.stroke();
+    }
+    ctx2.strokeStyle='#333'; ctx2.lineWidth=2;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    ctx2.fillStyle='#333';
+    ctx2.beginPath(); ctx2.moveTo(P.l+gW,P.t+gH); ctx2.lineTo(P.l+gW+7,P.t+gH-3); ctx2.lineTo(P.l+gW+7,P.t+gH+3); ctx2.fill();
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l-3,P.t+8); ctx2.lineTo(P.l+3,P.t+8); ctx2.fill();
+    ctx2.font='bold 12px Nunito,sans-serif'; ctx2.fillStyle='#333'; ctx2.textAlign='center';
+    ctx2.fillText('Länge L (m)', P.l+gW/2, cH-4);
+    ctx2.save(); ctx2.translate(14,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('Periodendauer T (s)',0,0); ctx2.restore();
+    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
+    for(let i=0;i<=5;i++) ctx2.fillText((Lmax*i/5).toFixed(1), P.l+(i/5)*gW, P.t+gH+14);
+    ctx2.textAlign='right';
+    for(let i=0;i<=5;i++) ctx2.fillText((Tmax*i/5).toFixed(1), P.l-4, P.t+gH-(i/5)*gH+4);
+    // theoretical curve T=2π√(L/g)
+    ctx2.strokeStyle='#7c3aed44'; ctx2.lineWidth=1.5; ctx2.setLineDash([5,4]);
+    ctx2.beginPath();
+    for(let i=0;i<=100;i++){
+      const l=Lmax*i/100;
+      const t_=2*Math.PI*Math.sqrt(l/g);
+      const x=P.l+(l/Lmax)*gW, y=P.t+gH-(Math.min(t_,Tmax)/Tmax)*gH;
+      i===0?ctx2.moveTo(x,y):ctx2.lineTo(x,y);
+    }
+    ctx2.stroke(); ctx2.setLineDash([]);
+    ctx2.font='11px sans-serif'; ctx2.fillStyle='#7c3aed'; ctx2.textAlign='left';
+    ctx2.fillText('T=2π√(L/g)', P.l+4, P.t+12);
+    // current point
+    const cpx=P.l+(L/Lmax)*gW, cpy=P.t+gH-(Math.min(T_cur,Tmax)/Tmax)*gH;
+    ctx2.fillStyle='#7c3aed';
+    ctx2.beginPath(); ctx2.arc(cpx,cpy,6,0,Math.PI*2); ctx2.fill();
+    // measured points
+    ctx2.fillStyle='#dc2626';
+    for(const mp of penMeas){
+      const mx=P.l+(mp.L/Lmax)*gW, my=P.t+gH-(Math.min(mp.T,Tmax)/Tmax)*gH;
+      ctx2.beginPath(); ctx2.arc(mx,my,5,0,Math.PI*2); ctx2.fill();
+    }
+  }
+
+  function penMeasure() {
+    const omega=Math.sqrt(g/L), T=2*Math.PI/omega;
+    penMeas.push({L:parseFloat(L.toFixed(3)),T:parseFloat(T.toFixed(3))});
+    updatePenTable();
+  }
+
+  function updatePenTable(){
+    const tb=document.getElementById('penTbody'), tw=document.getElementById('penTable');
+    if(!tb||!tw) return;
+    if(penMeas.length>0) tw.style.display='table';
+    const g2=9.81;
+    tb.innerHTML=penMeas.map(m=>{
+      const T_calc=2*Math.PI*Math.sqrt(m.L/g2);
+      return `<tr><td>${m.L.toFixed(3).replace('.',',')}</td><td>${m.T.toFixed(3).replace('.',',')}</td><td>${T_calc.toFixed(3).replace('.',',')}</td></tr>`;
+    }).join('');
   }
 
   function stop() { if (animId) cancelAnimationFrame(animId); }
@@ -6371,7 +7010,7 @@ function _simFadenpendel() {
   }
 
   animId = requestAnimationFrame(draw);
-  return { stop, setL };
+  return { stop, setL, measure: penMeasure };
 }
 
 // ============================================================
@@ -6450,7 +7089,52 @@ function _simWellen() {
     if (flEl) flEl.textContent = fmt(f);
     if (alEl) alEl.textContent = fmt(A, 0);
 
+    drawWelChart(f, T, lambda, A);
     animId = requestAnimationFrame(draw);
+  }
+
+  function drawWelChart(f_cur, T_cur, lambda_cur, A_cur) {
+    const c = document.getElementById('welChart'); if (!c) return;
+    const ctx2 = c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:55,r:20,t:22,b:35};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#eff6ff'; ctx2.fillRect(0,0,cW,cH);
+    // Show spectrum bars: for f=0.5 to 5 step 0.5, bar height = A if f matches, else 0
+    const fMax=5.5, steps=[0.5,1,1.5,2,2.5,3,3.5,4,4.5,5];
+    const Amax=65;
+    ctx2.strokeStyle='#e0e7ef'; ctx2.lineWidth=1;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    ctx2.font='bold 12px Nunito,sans-serif'; ctx2.fillStyle='#333'; ctx2.textAlign='center';
+    ctx2.fillText('Frequenz f (Hz)', P.l+gW/2, cH-4);
+    ctx2.save(); ctx2.translate(14,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('Amplitude A (px)',0,0); ctx2.restore();
+    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='right';
+    for(let i=0;i<=4;i++) ctx2.fillText((Amax*i/4).toFixed(0), P.l-4, P.t+gH-(i/4)*gH+4);
+    const bW=Math.floor(gW/(steps.length+1))-4;
+    ctx2.textAlign='center';
+    steps.forEach((fi,idx)=>{
+      const x=P.l+((fi/fMax)*gW)-bW/2;
+      const isActive=Math.abs(fi-f_cur)<0.26;
+      const bH=isActive?(A_cur/Amax)*gH:2;
+      ctx2.fillStyle=isActive?'#2563EB':'#93c5fd';
+      ctx2.fillRect(x, P.t+gH-bH, bW, bH);
+      ctx2.font='9px sans-serif'; ctx2.fillStyle='#374151';
+      ctx2.fillText(fi.toFixed(1), x+bW/2, P.t+gH+14);
+    });
+    ctx2.font='11px sans-serif'; ctx2.fillStyle='#2563EB'; ctx2.textAlign='left';
+    ctx2.fillText(`f=${fmt(f_cur)} Hz  A=${A_cur.toFixed(0)}px  T=${fmt(T_cur,2)}s  λ=${lambda_cur.toFixed(0)}px`, P.l+4, P.t+12);
+    // update table
+    updateWelTable(f_cur, T_cur, lambda_cur, A_cur);
+  }
+
+  const welTableData = {};
+  function updateWelTable(f_cur, T_cur, lambda_cur, A_cur){
+    welTableData[f_cur.toFixed(1)]={f:f_cur,T:T_cur,lambda:lambda_cur,A:A_cur};
+    const tb=document.getElementById('welTbody'), tw=document.getElementById('welTable');
+    if(!tb||!tw) return;
+    const rows=Object.values(welTableData);
+    if(rows.length>0) tw.style.display='table';
+    tb.innerHTML=rows.map(r=>`<tr><td>${r.f.toFixed(1).replace('.',',')}</td><td>${r.T.toFixed(2).replace('.',',')}</td><td>${r.lambda.toFixed(0)}</td><td>${r.A.toFixed(0)}</td></tr>`).join('');
   }
 
   function stop() { if (animId) cancelAnimationFrame(animId); }
