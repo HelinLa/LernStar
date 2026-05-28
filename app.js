@@ -3483,14 +3483,24 @@ function openExperiment(expId) {
         <div class="sim-btn-row"><button class="sim-btn" onclick="_fedMeasure()">📍 Messen</button></div>
         <div class="sim-diagram-label">F-x Diagramm (Hookesches Gesetz)</div>
         <canvas id="fedChart" class="sim-chart-canvas" width="460" height="200"></canvas>
+        <div id="fedResult" class="sim-result"></div>
+        <p class="sim-hint" style="text-align:center;margin:4px 0 6px">Klicke auf <b>zwei Messpunkte</b> im Diagramm um die Steigung zu berechnen! &nbsp;|&nbsp; Formel: <b>F = k · x</b></p>
         <table class="sim-table" id="fedTable" style="display:none">
           <thead><tr><th>Dehnung x (cm)</th><th>Kraft F (N)</th></tr></thead>
           <tbody id="fedTbody"></tbody>
         </table>
-        <p class="sim-hint" style="text-align:center;margin:4px 0 6px">Formel: <b>F = k · x</b> &nbsp;|&nbsp; k = 10 N/cm</p>
       </div>`;
     document.body.appendChild(modal);
     _sim = _simFederkraft();
+    const fedChartEl = document.getElementById('fedChart');
+    if (fedChartEl) fedChartEl.addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      if (_sim.handleClick) _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
   } else if (expId === 'hebelgesetz') {
     modal.innerHTML = `
       <div class="sim-box">
@@ -3690,14 +3700,24 @@ function openExperiment(expId) {
         </div>
         <div class="sim-diagram-label">a-F Diagramm (F = m·a)</div>
         <canvas id="newChart" class="sim-chart-canvas" width="460" height="180"></canvas>
+        <div id="newResult" class="sim-result"></div>
+        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Klicke auf <b>zwei Messpunkte</b> im Diagramm um die Steigung zu berechnen! &nbsp;|&nbsp; Formel: <b>F = m · a</b></p>
         <table class="sim-table" id="newTable" style="display:none">
           <thead><tr><th>F (N)</th><th>m (kg)</th><th>a (m/s²)</th></tr></thead>
           <tbody id="newTbody"></tbody>
         </table>
-        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Formel: <b>F = m · a</b> &nbsp;→&nbsp; <b>a = F / m</b></p>
       </div>`;
     document.body.appendChild(modal);
     _sim = _simNewton2();
+    const newChartEl = document.getElementById('newChart');
+    if (newChartEl) newChartEl.addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      if (_sim.handleClick) _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
   } else if (expId === 'energieerhaltung') {
     modal.innerHTML = `
       <div class="sim-box">
@@ -3799,14 +3819,24 @@ function openExperiment(expId) {
         <div class="sim-btn-row"><button class="sim-btn" onclick="_penMeasure()">📍 Messen</button></div>
         <div class="sim-diagram-label">T-L Diagramm (T = 2π·√(L/g))</div>
         <canvas id="penChart" class="sim-chart-canvas" width="460" height="180"></canvas>
+        <div id="penResult" class="sim-result"></div>
+        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Klicke auf <b>zwei Messpunkte</b> im Diagramm um g zu bestimmen! &nbsp;|&nbsp; Formel: <b>T = 2π · √(L/g)</b></p>
         <table class="sim-table" id="penTable" style="display:none">
           <thead><tr><th>L (m)</th><th>T_gemessen (s)</th><th>T_berechnet (s)</th></tr></thead>
           <tbody id="penTbody"></tbody>
         </table>
-        <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Formel: <b>T = 2π · √(L/g)</b></p>
       </div>`;
     document.body.appendChild(modal);
     _sim = _simFadenpendel();
+    const penChartEl = document.getElementById('penChart');
+    if (penChartEl) penChartEl.addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      if (_sim.handleClick) _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
   } else if (expId === 'wellen') {
     modal.innerHTML = `
       <div class="sim-box">
@@ -3943,46 +3973,74 @@ function openExperiment(expId) {
       </div>
       <div class="sim-info-row" style="font-size:.82rem">
         <span>ω = <b id="kreiOmegaDisp">2,0</b> rad/s</span>
-        <span>v = <b id="kreiVDisp">160</b> px/s</span>
+        <span>v = <b id="kreiVDisp">1,60</b> m/s</span>
         <span>T = <b id="kreiTDisp">3,14</b> s</span>
       </div>
+      <div class="sim-btn-row"><button class="sim-btn" onclick="_kreiMeasure()">📍 Messen</button></div>
       <div class="sim-diagram-label">v–ω Diagramm (v = ω·r)</div>
       <canvas id="kreiChart" class="sim-chart-canvas" width="460" height="160"></canvas>
+      <div id="kreiResult" class="sim-result"></div>
+      <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Klicke auf <b>zwei Messpunkte</b> im Diagramm um den Radius zu bestimmen! &nbsp;|&nbsp; Formel: <b>v = ω · r</b></p>
       <table class="sim-table" id="kreiTable" style="display:none">
-        <thead><tr><th>ω (rad/s)</th><th>v (px/s)</th><th>T (s)</th></tr></thead>
+        <thead><tr><th>ω (rad/s)</th><th>v (m/s)</th><th>T (s)</th></tr></thead>
         <tbody id="kreiTbody"></tbody>
       </table>
       </div>`;
     document.body.appendChild(modal);
     _sim = _simKreis();
+    const kreiChartEl = document.getElementById('kreiChart');
+    if (kreiChartEl) kreiChartEl.addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      if (_sim.handleClick) _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
 
   } else if (expId === 'zentripetalkraft') {
     modal.innerHTML = `<div class="sim-box">
       <button class="sim-x" onclick="closeExperiment()">✕</button>
       <h3 class="sim-h3">🌀 Zentripetalkraft F = m·v²/r</h3>
       <canvas id="zentriCanvas" width="460" height="220" style="width:100%;border-radius:8px;display:block"></canvas>
-      <div style="padding:8px 16px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="padding:8px 16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
         <div><label style="font-weight:700;font-size:.85rem">Masse m: <span id="zentriMLabel">1</span> kg</label>
           <input type="range" id="zentriMSlider" min="1" max="5" value="1" style="width:100%;accent-color:#7c3aed"
             oninput="document.getElementById('zentriMLabel').textContent=this.value"></div>
-        <div><label style="font-weight:700;font-size:.85rem">Radius r: <span id="zentriRLabel">80</span> px</label>
-          <input type="range" id="zentriRSlider" min="40" max="100" value="80" style="width:100%;accent-color:#0891b2"
+        <div><label style="font-weight:700;font-size:.85rem">Radius r: <span id="zentriRLabel">1</span> m</label>
+          <input type="range" id="zentriRSlider" min="1" max="5" value="1" step="0.5" style="width:100%;accent-color:#0891b2"
             oninput="document.getElementById('zentriRLabel').textContent=this.value"></div>
+        <div><label style="font-weight:700;font-size:.85rem">Geschw. v: <span id="zentriVLabel">3</span> m/s</label>
+          <input type="range" id="zentriVSlider" min="1" max="10" value="3" step="0.5" style="width:100%;accent-color:#16a34a"
+            oninput="document.getElementById('zentriVLabel').textContent=this.value"></div>
       </div>
       <div class="sim-info-row" style="font-size:.82rem">
         <span>m = <b id="zentriMDisp">1</b> kg</span>
-        <span>r = <b id="zentriRDisp">80</b> px</span>
-        <span>F_z = <b id="zentrFDisp">0,11</b> N</span>
+        <span>r = <b id="zentriRDisp">1</b> m</span>
+        <span>v = <b id="zentriVDisp">3</b> m/s</span>
+        <span>F_z = <b id="zentrFDisp">9,00</b> N</span>
       </div>
+      <div class="sim-btn-row"><button class="sim-btn" onclick="_zentriMeasure()">📍 Messen</button></div>
       <div class="sim-diagram-label">F–v² Diagramm (F = m/r · v²)</div>
       <canvas id="zentriChart" class="sim-chart-canvas" width="460" height="160"></canvas>
+      <div id="zentriResult" class="sim-result"></div>
+      <p class="sim-hint" style="text-align:center;margin:2px 0 6px">Klicke auf <b>zwei Messpunkte</b> im Diagramm um m/r zu bestimmen! &nbsp;|&nbsp; Formel: <b>F = m/r · v²</b></p>
       <table class="sim-table" id="zentriTable" style="display:none">
-        <thead><tr><th>m (kg)</th><th>r (px)</th><th>v (px/s)</th><th>F_z (N)</th></tr></thead>
+        <thead><tr><th>m (kg)</th><th>r (m)</th><th>v² (m²/s²)</th><th>F_z (N)</th></tr></thead>
         <tbody id="zentriTbody"></tbody>
       </table>
       </div>`;
     document.body.appendChild(modal);
     _sim = _simZentripetal();
+    const zentriChartEl = document.getElementById('zentriChart');
+    if (zentriChartEl) zentriChartEl.addEventListener('click', function(e) {
+      if (!_sim) return;
+      const r = this.getBoundingClientRect();
+      if (_sim.handleClick) _sim.handleClick(
+        (e.clientX - r.left) * (this.width / r.width),
+        (e.clientY - r.top)  * (this.height / r.height)
+      );
+    });
 
   } else if (expId === 'schwingung') {
     modal.innerHTML = `<div class="sim-box">
@@ -4556,39 +4614,166 @@ function _simWurf() {
 function _simKreis() {
   const cv = document.getElementById('kreiCanvas');
   const ctx = cv.getContext('2d');
-  const cx=cv.width/2, cy=cv.height/2, r=80;
+  const cx=cv.width/2, cy=cv.height/2, r_px=80, r_m=0.8; // r=0.8m physical
   let angle=0, raf;
+  const kreiMeas = [];
+  let kreiSel = [];
+
   function draw() {
     const omega = +document.getElementById('kreiWSlider').value;
+    const v_ms = omega * r_m; // v = ω·r in m/s
+    const T_s = (2*Math.PI/omega).toFixed(2);
     ctx.clearRect(0,0,cv.width,cv.height);
+    ctx.fillStyle='#f5f3ff'; ctx.fillRect(0,0,cv.width,cv.height);
     // Kreis
     ctx.strokeStyle='#c4b5fd'; ctx.lineWidth=2; ctx.setLineDash([5,5]);
-    ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.stroke(); ctx.setLineDash([]);
+    ctx.beginPath(); ctx.arc(cx,cy,r_px,0,Math.PI*2); ctx.stroke(); ctx.setLineDash([]);
     // Mittelpunkt
     ctx.fillStyle='#7c3aed'; ctx.beginPath(); ctx.arc(cx,cy,5,0,Math.PI*2); ctx.fill();
     // Faden
-    const bx=cx+r*Math.cos(angle), by=cy+r*Math.sin(angle);
+    const bx=cx+r_px*Math.cos(angle), by=cy+r_px*Math.sin(angle);
     ctx.strokeStyle='#7c3aed'; ctx.lineWidth=2;
     ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(bx,by); ctx.stroke();
     // Ball
     ctx.fillStyle='#f97316'; ctx.beginPath(); ctx.arc(bx,by,12,0,Math.PI*2); ctx.fill();
     // Geschwindigkeitspfeil (tangential)
-    const vx=-Math.sin(angle)*40, vy=Math.cos(angle)*40;
+    const vlen=Math.min(v_ms*15, 60);
+    const vx=-Math.sin(angle)*vlen, vy=Math.cos(angle)*vlen;
     ctx.strokeStyle='#10b981'; ctx.lineWidth=3;
     ctx.beginPath(); ctx.moveTo(bx,by); ctx.lineTo(bx+vx,by+vy); ctx.stroke();
     // Zentripetalkraft (nach innen)
-    const fx=cx-bx, fy=cy-by, flen=Math.sqrt(fx*fx+fy*fy);
+    const fx=cx-bx, fy=cy-by, flen2=Math.sqrt(fx*fx+fy*fy);
     ctx.strokeStyle='#ef4444'; ctx.lineWidth=3;
-    ctx.beginPath(); ctx.moveTo(bx,by); ctx.lineTo(bx+fx/flen*35,by+fy/flen*35); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(bx,by); ctx.lineTo(bx+fx/flen2*35,by+fy/flen2*35); ctx.stroke();
     // Labels
     ctx.fillStyle='#10b981'; ctx.font='700 12px sans-serif'; ctx.fillText('v (Geschwindigkeit)',8,18);
     ctx.fillStyle='#ef4444'; ctx.fillText('F_z (Zentripetalkraft)',8,36);
-    ctx.fillStyle='#1f2937'; ctx.fillText(`ω = ${omega} rad/s`,8,54);
+    ctx.fillStyle='#1f2937'; ctx.fillText(`ω = ${omega} rad/s  v = ${v_ms.toFixed(1)} m/s  r = ${r_m} m`,8,54);
+    // update display
+    const od=document.getElementById('kreiOmegaDisp'), vd=document.getElementById('kreiVDisp'), td=document.getElementById('kreiTDisp');
+    if(od) od.textContent=parseFloat(omega).toFixed(1).replace('.',',');
+    if(vd) vd.textContent=v_ms.toFixed(2).replace('.',',');
+    if(td) td.textContent=T_s.replace('.',',');
     angle += omega*0.02;
+    drawKreiChart();
     raf = requestAnimationFrame(draw);
   }
+
+  function drawKreiChart() {
+    const c = document.getElementById('kreiChart'); if (!c) return;
+    const ctx2 = c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:55,r:20,t:22,b:38};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const omMax=10, vMax=10; // ω up to 10 rad/s, v up to 10 m/s
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#f5f3ff'; ctx2.fillRect(0,0,cW,cH);
+    // grid
+    ctx2.strokeStyle='#ece9f8'; ctx2.lineWidth=1;
+    for(let i=1;i<=5;i++){
+      const y=P.t+(i/5)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+      const x=P.l+(i/5)*gW; ctx2.beginPath(); ctx2.moveTo(x,P.t); ctx2.lineTo(x,P.t+gH); ctx2.stroke();
+    }
+    // axes
+    ctx2.strokeStyle='#333'; ctx2.lineWidth=2;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    ctx2.fillStyle='#333';
+    ctx2.beginPath(); ctx2.moveTo(P.l+gW,P.t+gH); ctx2.lineTo(P.l+gW+7,P.t+gH-3); ctx2.lineTo(P.l+gW+7,P.t+gH+3); ctx2.fill();
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l-3,P.t+8); ctx2.lineTo(P.l+3,P.t+8); ctx2.fill();
+    // labels
+    ctx2.font='bold 12px Nunito,sans-serif'; ctx2.fillStyle='#333'; ctx2.textAlign='center';
+    ctx2.fillText('ω (rad/s)', P.l+gW/2, cH-2);
+    ctx2.save(); ctx2.translate(14,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('v (m/s)',0,0); ctx2.restore();
+    // ticks
+    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
+    for(let i=0;i<=5;i++) ctx2.fillText((omMax*i/5).toFixed(0), P.l+(i/5)*gW, P.t+gH+13);
+    ctx2.textAlign='right';
+    for(let i=0;i<=5;i++) ctx2.fillText((vMax*i/5).toFixed(0), P.l-4, P.t+gH-(i/5)*gH+4);
+    // theoretical line v = ω·r
+    ctx2.strokeStyle='#7c3aed44'; ctx2.lineWidth=1.5; ctx2.setLineDash([5,4]);
+    ctx2.beginPath();
+    ctx2.moveTo(P.l, P.t+gH);
+    ctx2.lineTo(P.l+gW, P.t+gH-(Math.min(omMax*r_m,vMax)/vMax)*gH);
+    ctx2.stroke(); ctx2.setLineDash([]);
+    ctx2.font='11px sans-serif'; ctx2.fillStyle='#7c3aed'; ctx2.textAlign='left';
+    ctx2.fillText('v=ω·r', P.l+4, P.t+12);
+    // current ω point
+    const omega_cur = +document.getElementById('kreiWSlider').value;
+    const v_cur = omega_cur * r_m;
+    const ccx=P.l+(omega_cur/omMax)*gW, ccy=P.t+gH-(Math.min(v_cur,vMax)/vMax)*gH;
+    ctx2.fillStyle='#7c3aed';
+    ctx2.beginPath(); ctx2.arc(ccx,ccy,6,0,Math.PI*2); ctx2.fill();
+    // slope line + result when 2 selected
+    if (kreiSel.length === 2) {
+      const [i1,i2] = [...kreiSel].sort((a,b)=>kreiMeas[a].omega-kreiMeas[b].omega);
+      const p1=kreiMeas[i1], p2=kreiMeas[i2];
+      const pxFn = mp => P.l+(mp.omega/omMax)*gW;
+      const pyFn = mp => P.t+gH-(Math.min(mp.v,vMax)/vMax)*gH;
+      ctx2.strokeStyle='#F97316'; ctx2.lineWidth=3;
+      ctx2.beginPath(); ctx2.moveTo(pxFn(p1),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p2)); ctx2.stroke();
+      ctx2.strokeStyle='#EF4444'; ctx2.lineWidth=1.5; ctx2.setLineDash([4,3]);
+      ctx2.beginPath();
+      ctx2.moveTo(pxFn(p1),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p2));
+      ctx2.stroke(); ctx2.setLineDash([]);
+      const dom=parseFloat((p2.omega-p1.omega).toFixed(2));
+      const dv=parseFloat((p2.v-p1.v).toFixed(3));
+      if(Math.abs(dom)>0){
+        const r_calc=(dv/dom).toFixed(3);
+        const res=document.getElementById('kreiResult');
+        if(res) res.innerHTML='Steigung = Δv ÷ Δω = <b>'+dv.toFixed(2)+' m/s</b> ÷ <b>'+dom.toFixed(1)+' rad/s</b> = <b class="sim-v-result">'+r_calc+' m</b> → Das ist der Radius r!';
+      }
+    }
+    // measured points
+    kreiMeas.forEach((mp,idx) => {
+      const isSel = kreiSel.includes(idx);
+      ctx2.fillStyle = isSel ? '#F97316' : '#dc2626';
+      ctx2.strokeStyle = isSel ? '#C2410C' : '#b91c1c';
+      ctx2.lineWidth=2;
+      const mx=P.l+(mp.omega/omMax)*gW, my=P.t+gH-(Math.min(mp.v,vMax)/vMax)*gH;
+      ctx2.beginPath(); ctx2.arc(mx,my,isSel?9:6,0,Math.PI*2); ctx2.fill(); ctx2.stroke();
+      ctx2.fillStyle='#fff'; ctx2.font='bold 9px Nunito,sans-serif'; ctx2.textAlign='center';
+      ctx2.fillText(idx+1, mx, my+3);
+    });
+  }
+
+  function kreiMeasure() {
+    const omega = +document.getElementById('kreiWSlider').value;
+    const v_ms = omega * r_m;
+    const T_s = 2*Math.PI/omega;
+    kreiMeas.push({omega:parseFloat(omega.toFixed(2)), v:parseFloat(v_ms.toFixed(3)), T:parseFloat(T_s.toFixed(3))});
+    kreiSel=[];
+    const res=document.getElementById('kreiResult');
+    if(res) res.innerHTML='';
+    updateKreiTable();
+  }
+
+  function updateKreiTable() {
+    const tb=document.getElementById('kreiTbody'), tw=document.getElementById('kreiTable');
+    if(!tb||!tw) return;
+    if(kreiMeas.length>0) tw.style.display='table';
+    tb.innerHTML=kreiMeas.map(mp=>`<tr><td>${mp.omega.toFixed(2).replace('.',',')}</td><td>${mp.v.toFixed(3).replace('.',',')}</td><td>${mp.T.toFixed(3).replace('.',',')}</td></tr>`).join('');
+  }
+
+  function handleClick(mx, my) {
+    const cW=460, cH=160;
+    const P={l:55,r:20,t:22,b:38};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const omMax=10, vMax=10;
+    const pxFn = mp => P.l+(mp.omega/omMax)*gW;
+    const pyFn = mp => P.t+gH-(Math.min(mp.v,vMax)/vMax)*gH;
+    let closest=-1, minD=24;
+    kreiMeas.forEach((mp,i) => {
+      const d=Math.hypot(pxFn(mp)-mx, pyFn(mp)-my);
+      if(d<minD){ minD=d; closest=i; }
+    });
+    if(closest<0) return;
+    if(kreiSel.includes(closest)) kreiSel=kreiSel.filter(i=>i!==closest);
+    else if(kreiSel.length<2) kreiSel.push(closest);
+    else kreiSel=[closest];
+    drawKreiChart();
+  }
+
   draw();
-  return { stop(){ cancelAnimationFrame(raf); } };
+  return { stop(){ cancelAnimationFrame(raf); }, measure: kreiMeasure, handleClick };
 }
 
 // ── Zentripetalkraft ──────────────────────────────────────
@@ -4597,27 +4782,172 @@ function _simZentripetal() {
   const ctx = cv.getContext('2d');
   const cx=cv.width/2, cy=cv.height/2;
   let angle=0, raf;
+  const zentriMeas = [];
+  let zentriSel = [];
+
   function draw() {
     const m = +document.getElementById('zentriMSlider').value;
-    const r = +document.getElementById('zentriRSlider').value;
-    const v = 3;
-    const fz = (m*v*v/r).toFixed(2);
+    const r_m = +document.getElementById('zentriRSlider').value; // physical radius in m
+    const v = +document.getElementById('zentriVSlider').value;   // velocity in m/s
+    const fz = m*v*v/r_m;
+    const omega = v/r_m; // ω = v/r
+    const r_px = Math.min(40 + r_m*12, 90); // visual radius scales with r_m
+
     ctx.clearRect(0,0,cv.width,cv.height);
+    ctx.fillStyle='#f5f3ff'; ctx.fillRect(0,0,cv.width,cv.height);
     ctx.strokeStyle='#c4b5fd'; ctx.lineWidth=2; ctx.setLineDash([4,4]);
-    ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.stroke(); ctx.setLineDash([]);
+    ctx.beginPath(); ctx.arc(cx,cy,r_px,0,Math.PI*2); ctx.stroke(); ctx.setLineDash([]);
     ctx.fillStyle='#7c3aed'; ctx.beginPath(); ctx.arc(cx,cy,5,0,Math.PI*2); ctx.fill();
-    const bx=cx+r*Math.cos(angle), by=cy+r*Math.sin(angle);
+    const bx=cx+r_px*Math.cos(angle), by=cy+r_px*Math.sin(angle);
     ctx.strokeStyle='#7c3aed'; ctx.lineWidth=2;
     ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(bx,by); ctx.stroke();
-    ctx.fillStyle='#f97316'; ctx.beginPath(); ctx.arc(bx,by,10+m*2,0,Math.PI*2); ctx.fill();
-    ctx.fillStyle='#1f2937'; ctx.font='700 13px sans-serif';
-    ctx.fillText(`m = ${m} kg  r = ${r}  F_z = ${fz} N`,8,20);
-    ctx.fillText(`F = m·v²/r`,8,40);
-    angle += 0.025;
+    // ball size scales with mass
+    ctx.fillStyle='#f97316'; ctx.beginPath(); ctx.arc(bx,by,8+m*2,0,Math.PI*2); ctx.fill();
+    // velocity arrow (tangential)
+    const vlen=Math.min(v*8, 60);
+    const vx=-Math.sin(angle)*vlen, vy=Math.cos(angle)*vlen;
+    ctx.strokeStyle='#10b981'; ctx.lineWidth=3;
+    ctx.beginPath(); ctx.moveTo(bx,by); ctx.lineTo(bx+vx,by+vy); ctx.stroke();
+    // centripetal force arrow (inward)
+    const fx=cx-bx, fy=cy-by, flen2=Math.sqrt(fx*fx+fy*fy);
+    const fscale=Math.min(fz*3, 55);
+    ctx.strokeStyle='#ef4444'; ctx.lineWidth=3;
+    ctx.beginPath(); ctx.moveTo(bx,by); ctx.lineTo(bx+fx/flen2*fscale,by+fy/flen2*fscale); ctx.stroke();
+    // labels
+    ctx.fillStyle='#10b981'; ctx.font='700 12px sans-serif'; ctx.fillText('v',8,18);
+    ctx.fillStyle='#ef4444'; ctx.fillText('F_z',8,36);
+    ctx.fillStyle='#1f2937'; ctx.fillText(`m=${m}kg  r=${r_m}m  v=${v}m/s  F_z=${fz.toFixed(2)}N`,8,54);
+    // update HTML
+    const md=document.getElementById('zentriMDisp'), rd=document.getElementById('zentriRDisp');
+    const vd=document.getElementById('zentriVDisp'), fd=document.getElementById('zentrFDisp');
+    if(md) md.textContent=m; if(rd) rd.textContent=r_m;
+    if(vd) vd.textContent=v; if(fd) fd.textContent=fz.toFixed(2).replace('.',',');
+    angle += omega*0.02;
+    drawZentriChart();
     raf = requestAnimationFrame(draw);
   }
+
+  function drawZentriChart() {
+    const c = document.getElementById('zentriChart'); if (!c) return;
+    const ctx2 = c.getContext('2d'), cW=c.width, cH=c.height;
+    const P={l:55,r:20,t:22,b:38};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const v2Max=100, FMax=60; // v² up to 100 m²/s², F up to 60 N
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#f5f3ff'; ctx2.fillRect(0,0,cW,cH);
+    // grid
+    ctx2.strokeStyle='#ece9f8'; ctx2.lineWidth=1;
+    for(let i=1;i<=5;i++){
+      const y=P.t+(i/5)*gH; ctx2.beginPath(); ctx2.moveTo(P.l,y); ctx2.lineTo(P.l+gW,y); ctx2.stroke();
+      const x=P.l+(i/5)*gW; ctx2.beginPath(); ctx2.moveTo(x,P.t); ctx2.lineTo(x,P.t+gH); ctx2.stroke();
+    }
+    // axes
+    ctx2.strokeStyle='#333'; ctx2.lineWidth=2;
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l,P.t+gH); ctx2.lineTo(P.l+gW,P.t+gH); ctx2.stroke();
+    ctx2.fillStyle='#333';
+    ctx2.beginPath(); ctx2.moveTo(P.l+gW,P.t+gH); ctx2.lineTo(P.l+gW+7,P.t+gH-3); ctx2.lineTo(P.l+gW+7,P.t+gH+3); ctx2.fill();
+    ctx2.beginPath(); ctx2.moveTo(P.l,P.t); ctx2.lineTo(P.l-3,P.t+8); ctx2.lineTo(P.l+3,P.t+8); ctx2.fill();
+    // labels
+    ctx2.font='bold 12px Nunito,sans-serif'; ctx2.fillStyle='#333'; ctx2.textAlign='center';
+    ctx2.fillText('v² (m²/s²)', P.l+gW/2, cH-2);
+    ctx2.save(); ctx2.translate(14,P.t+gH/2); ctx2.rotate(-Math.PI/2); ctx2.fillText('F_z (N)',0,0); ctx2.restore();
+    // ticks
+    ctx2.font='10px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
+    for(let i=0;i<=5;i++) ctx2.fillText((v2Max*i/5).toFixed(0), P.l+(i/5)*gW, P.t+gH+13);
+    ctx2.textAlign='right';
+    for(let i=0;i<=5;i++) ctx2.fillText((FMax*i/5).toFixed(0), P.l-4, P.t+gH-(i/5)*gH+4);
+    // current theoretical line F = (m/r)·v²
+    const m_cur = +document.getElementById('zentriMSlider').value;
+    const r_cur = +document.getElementById('zentriRSlider').value;
+    const slope_th = m_cur/r_cur;
+    ctx2.strokeStyle='#7c3aed44'; ctx2.lineWidth=1.5; ctx2.setLineDash([5,4]);
+    ctx2.beginPath();
+    ctx2.moveTo(P.l, P.t+gH);
+    ctx2.lineTo(P.l+gW, P.t+gH-(Math.min(slope_th*v2Max,FMax)/FMax)*gH);
+    ctx2.stroke(); ctx2.setLineDash([]);
+    ctx2.font='11px sans-serif'; ctx2.fillStyle='#7c3aed'; ctx2.textAlign='left';
+    ctx2.fillText('F=m/r·v²', P.l+4, P.t+12);
+    // current point
+    const v_cur = +document.getElementById('zentriVSlider').value;
+    const v2_cur = v_cur*v_cur;
+    const F_cur = m_cur*v2_cur/r_cur;
+    const ccx=P.l+(Math.min(v2_cur,v2Max)/v2Max)*gW, ccy=P.t+gH-(Math.min(F_cur,FMax)/FMax)*gH;
+    ctx2.fillStyle='#7c3aed';
+    ctx2.beginPath(); ctx2.arc(ccx,ccy,6,0,Math.PI*2); ctx2.fill();
+    // slope line + result when 2 selected
+    if (zentriSel.length === 2) {
+      const [i1,i2] = [...zentriSel].sort((a,b)=>zentriMeas[a].v2-zentriMeas[b].v2);
+      const p1=zentriMeas[i1], p2=zentriMeas[i2];
+      const pxFn = mp => P.l+(Math.min(mp.v2,v2Max)/v2Max)*gW;
+      const pyFn = mp => P.t+gH-(Math.min(mp.F,FMax)/FMax)*gH;
+      ctx2.strokeStyle='#F97316'; ctx2.lineWidth=3;
+      ctx2.beginPath(); ctx2.moveTo(pxFn(p1),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p2)); ctx2.stroke();
+      ctx2.strokeStyle='#EF4444'; ctx2.lineWidth=1.5; ctx2.setLineDash([4,3]);
+      ctx2.beginPath();
+      ctx2.moveTo(pxFn(p1),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p2));
+      ctx2.stroke(); ctx2.setLineDash([]);
+      const dv2=parseFloat((p2.v2-p1.v2).toFixed(2));
+      const dF=parseFloat((p2.F-p1.F).toFixed(2));
+      if(Math.abs(dv2)>0){
+        const mr=(dF/dv2).toFixed(3);
+        const res=document.getElementById('zentriResult');
+        if(res) res.innerHTML='Steigung = ΔF ÷ Δv² = <b>'+dF.toFixed(2)+' N</b> ÷ <b>'+dv2.toFixed(1)+' m²/s²</b> = <b class="sim-v-result">'+mr+' kg/m</b> → m/r Verhältnis';
+      }
+    }
+    // measured points
+    zentriMeas.forEach((mp,idx) => {
+      const isSel = zentriSel.includes(idx);
+      ctx2.fillStyle = isSel ? '#F97316' : '#dc2626';
+      ctx2.strokeStyle = isSel ? '#C2410C' : '#b91c1c';
+      ctx2.lineWidth=2;
+      const mx=P.l+(Math.min(mp.v2,v2Max)/v2Max)*gW, my=P.t+gH-(Math.min(mp.F,FMax)/FMax)*gH;
+      ctx2.beginPath(); ctx2.arc(mx,my,isSel?9:6,0,Math.PI*2); ctx2.fill(); ctx2.stroke();
+      ctx2.fillStyle='#fff'; ctx2.font='bold 9px Nunito,sans-serif'; ctx2.textAlign='center';
+      ctx2.fillText(idx+1, mx, my+3);
+    });
+  }
+
+  function zentriMeasure() {
+    const m_val = +document.getElementById('zentriMSlider').value;
+    const r_val = +document.getElementById('zentriRSlider').value;
+    const v_val = +document.getElementById('zentriVSlider').value;
+    const v2 = parseFloat((v_val*v_val).toFixed(2));
+    const F = parseFloat((m_val*v2/r_val).toFixed(3));
+    zentriMeas.push({m:m_val, r:r_val, v2, F});
+    zentriSel=[];
+    const res=document.getElementById('zentriResult');
+    if(res) res.innerHTML='';
+    updateZentriTable();
+  }
+
+  function updateZentriTable() {
+    const tb=document.getElementById('zentriTbody'), tw=document.getElementById('zentriTable');
+    if(!tb||!tw) return;
+    if(zentriMeas.length>0) tw.style.display='table';
+    tb.innerHTML=zentriMeas.map(mp=>`<tr><td>${mp.m}</td><td>${mp.r}</td><td>${mp.v2.toFixed(2).replace('.',',')}</td><td>${mp.F.toFixed(3).replace('.',',')}</td></tr>`).join('');
+  }
+
+  function handleClick(mx, my) {
+    const cW=460, cH=160;
+    const P={l:55,r:20,t:22,b:38};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const v2Max=100, FMax=60;
+    const pxFn = mp => P.l+(Math.min(mp.v2,v2Max)/v2Max)*gW;
+    const pyFn = mp => P.t+gH-(Math.min(mp.F,FMax)/FMax)*gH;
+    let closest=-1, minD=24;
+    zentriMeas.forEach((mp,i) => {
+      const d=Math.hypot(pxFn(mp)-mx, pyFn(mp)-my);
+      if(d<minD){ minD=d; closest=i; }
+    });
+    if(closest<0) return;
+    if(zentriSel.includes(closest)) zentriSel=zentriSel.filter(i=>i!==closest);
+    else if(zentriSel.length<2) zentriSel.push(closest);
+    else zentriSel=[closest];
+    drawZentriChart();
+  }
+
   draw();
-  return { stop(){ cancelAnimationFrame(raf); } };
+  return { stop(){ cancelAnimationFrame(raf); }, measure: zentriMeasure, handleClick };
 }
 
 // ── Harmonische Schwingung ────────────────────────────────
@@ -5285,6 +5615,11 @@ function _fstCreate() {
 // BRIDGE FUNCTIONS FOR NEW SIMULATIONS
 // ============================================================
 function _fedSetF(v) { if (_sim) _sim.setF(parseFloat(v)); }
+function _fedMeasure() { if (_sim) _sim.measure(); }
+function _newMeasure() { if (_sim) _sim.measure(); }
+function _penMeasure() { if (_sim) _sim.measure(); }
+function _kreiMeasure() { if (_sim) _sim.measure(); }
+function _zentriMeasure() { if (_sim) _sim.measure(); }
 function _hebSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
 function _ohmSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
 function _schSetMode(m){ if (_sim) _sim.setMode(m); }
@@ -5428,6 +5763,7 @@ function _simFederkraft() {
   }
 
   const meas = [];
+  let sel = [];
 
   function drawChart() {
     const c = document.getElementById('fedChart'); if (!c) return;
@@ -5478,17 +5814,64 @@ function _simFederkraft() {
     const cx2=P.l+(x_cm/xMax)*gW, cy2=P.t+gH-(F/yMax)*gH;
     ctx2.fillStyle='#7c3aed';
     ctx2.beginPath(); ctx2.arc(cx2,cy2,6,0,Math.PI*2); ctx2.fill();
-    // measured points
-    ctx2.fillStyle='#dc2626';
-    for(const m of meas){
-      const mx=P.l+(m.x/xMax)*gW, my=P.t+gH-(m.F/yMax)*gH;
-      ctx2.beginPath(); ctx2.arc(mx,my,5,0,Math.PI*2); ctx2.fill();
+    // slope line + result when 2 points selected
+    if (sel.length === 2) {
+      const [i1,i2] = [...sel].sort((a,b)=>meas[a].x-meas[b].x);
+      const p1=meas[i1], p2=meas[i2];
+      const pxFn = m => P.l+(m.x/xMax)*gW;
+      const pyFn = m => P.t+gH-(m.F/yMax)*gH;
+      ctx2.strokeStyle='#F97316'; ctx2.lineWidth=3;
+      ctx2.beginPath(); ctx2.moveTo(pxFn(p1),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p2)); ctx2.stroke();
+      ctx2.strokeStyle='#EF4444'; ctx2.lineWidth=1.5; ctx2.setLineDash([4,3]);
+      ctx2.beginPath();
+      ctx2.moveTo(pxFn(p1),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p2));
+      ctx2.stroke(); ctx2.setLineDash([]);
+      const dx=parseFloat((p2.x-p1.x).toFixed(2));
+      const dy=parseFloat((p2.F-p1.F).toFixed(1));
+      if (dx > 0) {
+        const slope=(dy/dx).toFixed(1);
+        const res=document.getElementById('fedResult');
+        if(res) res.innerHTML='Steigung = ΔF ÷ Δx = <b>'+dy.toFixed(1)+' N</b> ÷ <b>'+dx.toFixed(2)+' cm</b> = <b class="sim-v-result">'+slope+' N/cm</b> → Das ist die Federkonstante k!';
+      }
     }
+    // measured points
+    meas.forEach((m,idx) => {
+      const isSel = sel.includes(idx);
+      ctx2.fillStyle = isSel ? '#F97316' : '#dc2626';
+      ctx2.strokeStyle = isSel ? '#C2410C' : '#b91c1c';
+      ctx2.lineWidth=2;
+      const mx=P.l+(m.x/xMax)*gW, my=P.t+gH-(m.F/yMax)*gH;
+      ctx2.beginPath(); ctx2.arc(mx,my,isSel?9:6,0,Math.PI*2); ctx2.fill(); ctx2.stroke();
+      ctx2.fillStyle='#fff'; ctx2.font='bold 9px Nunito,sans-serif'; ctx2.textAlign='center';
+      ctx2.fillText(idx+1, mx, my+3);
+    });
+  }
+
+  function handleClick(mx, my) {
+    const cW=460, cH=200;
+    const P={l:55,r:20,t:22,b:42};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const xMax=5, yMax=50;
+    const pxFn = m => P.l+(m.x/xMax)*gW;
+    const pyFn = m => P.t+gH-(m.F/yMax)*gH;
+    let closest=-1, minD=24;
+    meas.forEach((m,i) => {
+      const d=Math.hypot(pxFn(m)-mx, pyFn(m)-my);
+      if(d<minD){ minD=d; closest=i; }
+    });
+    if(closest<0) return;
+    if(sel.includes(closest)) sel=sel.filter(i=>i!==closest);
+    else if(sel.length<2) sel.push(closest);
+    else sel=[closest];
+    drawChart();
   }
 
   function measure() {
     const k=10, x_cm=F/k;
     meas.push({x:parseFloat(x_cm.toFixed(2)), F:parseFloat(F.toFixed(1))});
+    sel=[];
+    const res=document.getElementById('fedResult');
+    if(res) res.innerHTML='';
     updateTable();
   }
 
@@ -5503,7 +5886,7 @@ function _simFederkraft() {
   function setF(v) { F = v; }
 
   draw();
-  return { stop, setF, measure };
+  return { stop, setF, measure, handleClick };
 }
 
 // ============================================================
@@ -6388,6 +6771,7 @@ function _simNewton2() {
   }
 
   const newMeas = [];
+  let newSel = [];
 
   function drawNewChart() {
     const c = document.getElementById('newChart'); if (!c) return;
@@ -6428,17 +6812,65 @@ function _simNewton2() {
     const cpx=P.l+(F/Fmax)*gW, cpy=P.t+gH-(Math.min(a,aMax)/aMax)*gH;
     ctx2.fillStyle='#7c3aed';
     ctx2.beginPath(); ctx2.arc(cpx,cpy,6,0,Math.PI*2); ctx2.fill();
-    // measured
-    ctx2.fillStyle='#dc2626';
-    for(const mp of newMeas){
-      const mx=P.l+(mp.F/Fmax)*gW, my=P.t+gH-(Math.min(mp.a,aMax)/aMax)*gH;
-      ctx2.beginPath(); ctx2.arc(mx,my,5,0,Math.PI*2); ctx2.fill();
+    // slope line + result when 2 points selected
+    if (newSel.length === 2) {
+      const [i1,i2] = [...newSel].sort((a2,b2)=>newMeas[a2].F-newMeas[b2].F);
+      const p1=newMeas[i1], p2=newMeas[i2];
+      const pxFn = mp => P.l+(mp.F/Fmax)*gW;
+      const pyFn = mp => P.t+gH-(Math.min(mp.a,aMax)/aMax)*gH;
+      ctx2.strokeStyle='#F97316'; ctx2.lineWidth=3;
+      ctx2.beginPath(); ctx2.moveTo(pxFn(p1),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p2)); ctx2.stroke();
+      ctx2.strokeStyle='#EF4444'; ctx2.lineWidth=1.5; ctx2.setLineDash([4,3]);
+      ctx2.beginPath();
+      ctx2.moveTo(pxFn(p1),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p2));
+      ctx2.stroke(); ctx2.setLineDash([]);
+      const dF=parseFloat((p2.F-p1.F).toFixed(1));
+      const da=parseFloat((p2.a-p1.a).toFixed(2));
+      if(Math.abs(dF)>0){
+        const inv_m=(da/dF).toFixed(3);
+        const mass_kg=Math.abs(dF/da).toFixed(2);
+        const res=document.getElementById('newResult');
+        if(res) res.innerHTML='Steigung = Δa ÷ ΔF = <b>'+da.toFixed(2)+' m/s²</b> ÷ <b>'+dF.toFixed(1)+' N</b> = <b class="sim-v-result">'+inv_m+'</b> → Masse m = <b class="sim-v-result">'+mass_kg+' kg</b>';
+      }
     }
+    // measured
+    newMeas.forEach((mp,idx) => {
+      const isSel = newSel.includes(idx);
+      ctx2.fillStyle = isSel ? '#F97316' : '#dc2626';
+      ctx2.strokeStyle = isSel ? '#C2410C' : '#b91c1c';
+      ctx2.lineWidth=2;
+      const mx=P.l+(mp.F/Fmax)*gW, my=P.t+gH-(Math.min(mp.a,aMax)/aMax)*gH;
+      ctx2.beginPath(); ctx2.arc(mx,my,isSel?9:6,0,Math.PI*2); ctx2.fill(); ctx2.stroke();
+      ctx2.fillStyle='#fff'; ctx2.font='bold 9px Nunito,sans-serif'; ctx2.textAlign='center';
+      ctx2.fillText(idx+1, mx, my+3);
+    });
+  }
+
+  function newHandleClick(mx, my) {
+    const cW=460, cH=180;
+    const P={l:55,r:20,t:22,b:42};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const Fmax=50, aMax=50;
+    const pxFn = mp => P.l+(mp.F/Fmax)*gW;
+    const pyFn = mp => P.t+gH-(Math.min(mp.a,aMax)/aMax)*gH;
+    let closest=-1, minD=24;
+    newMeas.forEach((mp,i) => {
+      const d=Math.hypot(pxFn(mp)-mx, pyFn(mp)-my);
+      if(d<minD){ minD=d; closest=i; }
+    });
+    if(closest<0) return;
+    if(newSel.includes(closest)) newSel=newSel.filter(i=>i!==closest);
+    else if(newSel.length<2) newSel.push(closest);
+    else newSel=[closest];
+    drawNewChart();
   }
 
   function newMeasure() {
     const a=F/m;
     newMeas.push({F:parseFloat(F.toFixed(1)),m:parseFloat(m.toFixed(1)),a:parseFloat(a.toFixed(2))});
+    newSel=[];
+    const res=document.getElementById('newResult');
+    if(res) res.innerHTML='';
     updateNewTable();
   }
 
@@ -6472,7 +6904,7 @@ function _simNewton2() {
   }
 
   raf = requestAnimationFrame(draw);
-  return { stop, set, toggle, reset, measure: newMeasure };
+  return { stop, set, toggle, reset, measure: newMeasure, handleClick: newHandleClick };
 }
 
 // ============================================================
@@ -6935,6 +7367,7 @@ function _simFadenpendel() {
   }
 
   const penMeas = [];
+  let penSel = [];
 
   function drawPenChart(T_cur) {
     const c = document.getElementById('penChart'); if (!c) return;
@@ -6977,17 +7410,66 @@ function _simFadenpendel() {
     const cpx=P.l+(L/Lmax)*gW, cpy=P.t+gH-(Math.min(T_cur,Tmax)/Tmax)*gH;
     ctx2.fillStyle='#7c3aed';
     ctx2.beginPath(); ctx2.arc(cpx,cpy,6,0,Math.PI*2); ctx2.fill();
-    // measured points
-    ctx2.fillStyle='#dc2626';
-    for(const mp of penMeas){
-      const mx=P.l+(mp.L/Lmax)*gW, my=P.t+gH-(Math.min(mp.T,Tmax)/Tmax)*gH;
-      ctx2.beginPath(); ctx2.arc(mx,my,5,0,Math.PI*2); ctx2.fill();
+    // slope line + result when 2 points selected
+    if (penSel.length === 2) {
+      const [i1,i2] = [...penSel].sort((a,b)=>penMeas[a].L-penMeas[b].L);
+      const p1=penMeas[i1], p2=penMeas[i2];
+      const pxFn = mp => P.l+(mp.L/Lmax)*gW;
+      const pyFn = mp => P.t+gH-(Math.min(mp.T,Tmax)/Tmax)*gH;
+      ctx2.strokeStyle='#F97316'; ctx2.lineWidth=3;
+      ctx2.beginPath(); ctx2.moveTo(pxFn(p1),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p2)); ctx2.stroke();
+      ctx2.strokeStyle='#EF4444'; ctx2.lineWidth=1.5; ctx2.setLineDash([4,3]);
+      ctx2.beginPath();
+      ctx2.moveTo(pxFn(p1),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p1)); ctx2.lineTo(pxFn(p2),pyFn(p2));
+      ctx2.stroke(); ctx2.setLineDash([]);
+      const dL=parseFloat((p2.L-p1.L).toFixed(3));
+      const dT=parseFloat((p2.T-p1.T).toFixed(3));
+      if(Math.abs(dL)>0 && Math.abs(dT)>0){
+        // T=2π√(L/g) → T²=4π²L/g → g=4π²ΔL/ΔT²
+        const g_calc=(4*Math.PI*Math.PI*Math.abs(dL)/(dT*dT)).toFixed(2);
+        const res=document.getElementById('penResult');
+        if(res) res.innerHTML='Aus ΔT/ΔL: g ≈ <b class="sim-v-result">'+g_calc+' m/s²</b> &nbsp;(Theoriewert: 9,81 m/s²)';
+      }
     }
+    // measured points
+    penMeas.forEach((mp,idx) => {
+      const isSel = penSel.includes(idx);
+      ctx2.fillStyle = isSel ? '#F97316' : '#dc2626';
+      ctx2.strokeStyle = isSel ? '#C2410C' : '#b91c1c';
+      ctx2.lineWidth=2;
+      const mx=P.l+(mp.L/Lmax)*gW, my=P.t+gH-(Math.min(mp.T,Tmax)/Tmax)*gH;
+      ctx2.beginPath(); ctx2.arc(mx,my,isSel?9:6,0,Math.PI*2); ctx2.fill(); ctx2.stroke();
+      ctx2.fillStyle='#fff'; ctx2.font='bold 9px Nunito,sans-serif'; ctx2.textAlign='center';
+      ctx2.fillText(idx+1, mx, my+3);
+    });
+  }
+
+  function penHandleClick(mx, my) {
+    const cW=460, cH=180;
+    const P={l:55,r:20,t:22,b:42};
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    const Lmax=2.0, Tmax=4.5;
+    const pxFn = mp => P.l+(mp.L/Lmax)*gW;
+    const pyFn = mp => P.t+gH-(Math.min(mp.T,Tmax)/Tmax)*gH;
+    let closest=-1, minD=24;
+    penMeas.forEach((mp,i) => {
+      const d=Math.hypot(pxFn(mp)-mx, pyFn(mp)-my);
+      if(d<minD){ minD=d; closest=i; }
+    });
+    if(closest<0) return;
+    if(penSel.includes(closest)) penSel=penSel.filter(i=>i!==closest);
+    else if(penSel.length<2) penSel.push(closest);
+    else penSel=[closest];
+    const omega2=Math.sqrt(g/L), T2=2*Math.PI/omega2;
+    drawPenChart(T2);
   }
 
   function penMeasure() {
     const omega=Math.sqrt(g/L), T=2*Math.PI/omega;
     penMeas.push({L:parseFloat(L.toFixed(3)),T:parseFloat(T.toFixed(3))});
+    penSel=[];
+    const res=document.getElementById('penResult');
+    if(res) res.innerHTML='';
     updatePenTable();
   }
 
@@ -7010,7 +7492,7 @@ function _simFadenpendel() {
   }
 
   animId = requestAnimationFrame(draw);
-  return { stop, setL, measure: penMeasure };
+  return { stop, setL, measure: penMeasure, handleClick: penHandleClick };
 }
 
 // ============================================================
