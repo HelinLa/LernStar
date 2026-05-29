@@ -922,6 +922,22 @@ ul { list-style: none; }
    ============================================================ */
 .topics-section { padding:0 32px 32px; max-width:900px; }
 .topics-list { display:flex; flex-direction:column; gap:12px; }
+
+/* ── Kapitel-Überschriften (isChapter:true) ── */
+.topic-chapter-header {
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--gc, #7C3AED);
+  margin: 20px 0 4px;
+  padding: 10px 16px;
+  background: var(--gl, #EDE9FE);
+  border-left: 4px solid var(--gc, #7C3AED);
+  border-radius: 0 10px 10px 0;
+  letter-spacing: .02em;
+  text-transform: none;
+}
+.topic-chapter-header:first-child { margin-top: 4px; }
+
 .topic-item {
   background:var(--surface);
   border-radius:var(--radius-sm);
