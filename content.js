@@ -6,6 +6,298 @@
 
 const CONTENT = {
 
+  /* =========================================================  KLASSE 1 – GRUNDSCHULE  */
+  klasse1: {
+    id:'klasse1', num:1, label:'Klasse 1',
+    emoji:'🌱', color:['#10B981','#34D399'], light:'#ECFDF5',
+    tagline:'Grundschule: Erste Zahlen, Buchstaben und Formen',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Zahlen bis 20, erste Addition und Subtraktion',
+        color:'#2563EB',
+        intro:'Willkommen in Mathe Klasse 1! Wir entdecken die Welt der Zahlen. Zahlen sind überall – beim Treppensteigen, beim Zählen von Äpfeln und beim Spielen. Los geht\'s!',
+        topics:[
+          { name:'Zahlen bis 10', diff:1,
+            explanation:'Die Zahlen 1 bis 10 sind deine ersten Freunde in der Mathematik! Du kannst sie überall finden: 1 Hund, 2 Katzen, 3 Vögel. Zähle immer laut mit: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10! Jede Zahl hat ein eigenes Symbol (eine Ziffer). Die 3 sieht aus wie eine kleine Schlange und steht für drei Dinge. Das Wichtigste beim Zählen: Du lässt keine Zahl aus und zählst keine doppelt! Tipp: Benutze deine Finger – du hast genau 10 davon. Wenn du bis 10 zählst und alle Finger hochhältst, hast du es geschafft!' },
+          { name:'Zahlen bis 20', diff:1,
+            explanation:'Weiter geht\'s! Nach der 10 kommen noch 10 mehr Zahlen: 11, 12, 13, 14, 15, 16, 17, 18, 19, 20. Diese Zahlen haben alle zwei Stellen. Die 11 bedeutet: 1 Zehner und 1 Einer = elf. Die 15 bedeutet: 1 Zehner und 5 Einer = fünfzehn. Stell dir die Zahlen wie Legobausteine vor: Ein Zehner-Stab (10 Steine) plus einzelne Steine. Bei 13 nimmst du einen Zehner-Stab und legst noch 3 einzelne Steine dazu. Zähle üben: Zähle immer wieder laut von 1 bis 20 und rückwärts von 20 bis 1!' },
+          { name:'Addition bis 20', diff:1,
+            explanation:'Addieren heißt zusammenzählen! Das Zeichen dafür ist das Pluszeichen +. Beispiel: Du hast 3 Äpfel und bekommst noch 4 dazu. Wie viele hast du jetzt? 3 + 4 = 7 Äpfel! Trick: Fang mit der größeren Zahl an und zähle von dort weiter. Bei 3 + 4: Starte bei 4 und zähle 3 weiter: 4 → 5 → 6 → 7. Fertig! Du kannst auch deine Finger nutzen: Halte 4 Finger hoch, zähle dann 3 weitere hoch. Am Ende zählst du alle hoch gehaltenen Finger. Probiere es aus: 5 + 3 = ? Starte bei 5, zähle 3 weiter: 5, 6, 7, 8.' },
+          { name:'Subtraktion bis 20', diff:1,
+            explanation:'Subtrahieren heißt wegnehmen! Das Zeichen ist das Minuszeichen −. Beispiel: Du hast 8 Bonbons und isst 3 davon. Wie viele hast du noch? 8 − 3 = 5 Bonbons! Trick: Gehe von der ersten Zahl rückwärts. Bei 8 − 3: Starte bei 8 und gehe 3 Schritte zurück: 8 → 7 → 6 → 5. Fertig! Probe: Du kannst dein Ergebnis immer überprüfen! 5 + 3 muss wieder 8 ergeben. Wenn das stimmt, hast du richtig gerechnet! Subtraktion ist das Gegenteil von Addition – zusammen sind sie wie zwei Seiten einer Münze.' },
+          { name:'Geometrische Formen', diff:1,
+            explanation:'Formen sind überall um uns herum! Die wichtigsten Formen der ersten Klasse: Das Quadrat hat 4 gleich lange Seiten und 4 rechte Ecken – wie ein Schachfeld. Das Rechteck hat auch 4 rechte Ecken, aber 2 Seiten sind länger (wie ein Buch). Der Kreis ist rund und hat keine Ecken – wie eine Pizza oder ein Rad. Das Dreieck hat 3 Seiten und 3 Ecken – wie ein Dach oder ein Bergpfeil. Kannst du diese Formen in deinem Zimmer finden? Das Fenster ist ein Rechteck, die Uhr ist ein Kreis, und Verkehrsschilder sind oft Dreiecke!' },
+        ],
+        exercises:[
+          { id:'e1', type:'Zahlen & Rechnen', diff:1, title:'Rechnen bis 20',
+            desc:'Zahlen kennen und einfach rechnen.',
+            questions:[
+              { q:'Was kommt nach der 7?', hint:'Zähle weiter: 7, …', options:['6','8','9','10'], correct:1, explanation:'Nach der 7 kommt die 8. Zähle immer weiter: 7, 8, 9, 10!' },
+              { q:'3 + 5 = ?', hint:'Starte bei 5 und zähle 3 weiter.', options:['7','8','9','6'], correct:1, explanation:'3 + 5 = 8. Starte bei 5 und zähle 3 Schritte weiter: 6, 7, 8.' },
+              { q:'9 − 4 = ?', hint:'Starte bei 9 und gehe 4 Schritte zurück.', options:['3','4','5','6'], correct:2, explanation:'9 − 4 = 5. Geh von 9 rückwärts: 8, 7, 6, 5.' },
+              { q:'Wie viele Ecken hat ein Dreieck?', hint:'Dreieck = drei …', options:['2','3','4','5'], correct:1, explanation:'Ein Dreieck hat 3 Seiten und 3 Ecken. Deshalb heißt es Drei-eck!' },
+              { q:'6 + 7 = ?', hint:'Starte bei 7 und zähle 6 weiter.', options:['11','12','13','14'], correct:2, explanation:'6 + 7 = 13. Starte bei 7: 8, 9, 10, 11, 12, 13.' },
+              { q:'Was ist die größte Zahl bis 20?', hint:'Zähle bis ganz zum Ende!', options:['18','19','20','21'], correct:2, explanation:'20 ist die größte Zahl, die wir bis jetzt gelernt haben.' },
+              { q:'15 − 8 = ?', hint:'Gehe von 15 rückwärts 8 Schritte.', options:['5','6','7','8'], correct:2, explanation:'15 − 8 = 7. Probe: 7 + 8 = 15 ✓' },
+              { q:'Welche Form ist rund und hat keine Ecken?', hint:'Pizza, Rad, Uhr …', options:['Quadrat','Rechteck','Dreieck','Kreis'], correct:3, explanation:'Der Kreis ist rund und hat keine Ecken. Er ist überall in unserem Alltag!' },
+            ]
+          },
+          { id:'e2', type:'Formen', diff:1, title:'Geometrische Formen erkennen',
+            desc:'Formen und ihre Eigenschaften.',
+            questions:[
+              { q:'Wie viele Seiten hat ein Quadrat?', hint:'Quad bedeutet vier …', options:['2','3','4','5'], correct:2, explanation:'Ein Quadrat hat 4 Seiten, die alle gleich lang sind.' },
+              { q:'4 + 4 = ?', hint:'Doppelt 4!', options:['6','7','8','9'], correct:2, explanation:'4 + 4 = 8. Das nennt man auch „das Doppelte von 4".' },
+              { q:'Was zeigt das Zeichen „+"?', hint:'Plus bedeutet …', options:['Wegnehmen','Zusammenzählen','Teilen','Messen'], correct:1, explanation:'Das Pluszeichen + bedeutet addieren – also zusammenzählen!' },
+              { q:'10 − 6 = ?', hint:'Von 10 gehe 6 Schritte zurück.', options:['3','4','5','6'], correct:1, explanation:'10 − 6 = 4. Probe: 4 + 6 = 10 ✓' },
+              { q:'Was kommt vor der 11?', hint:'Zähle rückwärts von 11 …', options:['9','10','12','13'], correct:1, explanation:'Vor der 11 kommt die 10. Rückwärts: 12, 11, 10, 9 …' },
+              { q:'Wie viele Finger hast du an beiden Händen zusammen?', hint:'Jede Hand hat 5 Finger.', options:['8','9','10','12'], correct:2, explanation:'5 + 5 = 10 Finger. Du hast 10 Finger – genau so viele wie unsere Zahlen von 0 bis 9!' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'deutsch', name:'Deutsch', icon:'📖',
+        desc:'Buchstaben, Silben und erste Sätze',
+        color:'#DC2626',
+        intro:'Willkommen in Deutsch Klasse 1! Wir lernen Buchstaben, schreiben erste Wörter und lesen kurze Sätze. Sprache macht Spaß – los geht\'s!',
+        topics:[
+          { name:'Buchstaben & Laute', diff:1,
+            explanation:'Unser Alphabet hat 26 Buchstaben – das sind die Bausteine aller Wörter! Jeder Buchstabe hat einen Namen (A, B, C …) und einen Laut (a, b, k …). Beim Lesen schaust du auf die Buchstaben und sagst ihre Laute. Das nennt man Buchstabieren. Vokale (Selbstlaute) sind: A, E, I, O, U – sie klingen „offen", als würdest du einfach nur Atem rauspusten. Alle anderen Buchstaben sind Konsonanten (Mitlaute). Tipp: Lerne die Buchstaben durch Wörter: A wie Apfel, B wie Ball, C wie Clown. Wenn du jeden Buchstaben mit einem Bild verbindest, merkst du dir ihn viel besser!' },
+          { name:'Silben trennen', diff:1,
+            explanation:'Lange Wörter macht man kürzer, indem man sie in Silben aufteilt! Eine Silbe ist ein Klang-Stückchen. Trick: Klatsche beim Sprechen – jedes Klatschen ist eine Silbe! Beispiel: Schmet-ter-ling – 3 Klatscher = 3 Silben. Ka-tze – 2 Klatscher = 2 Silben. Hund – 1 Klatscher = 1 Silbe. Das Silbentrennen hilft dir beim Lesen: Lies zuerst Silbe für Silbe, dann das ganze Wort. So wird auch schwieriges Lesen leichter! Übung: Klatsche: Ball (1), Blume (2), Schmetterling (3), Apfelbaum (3).' },
+          { name:'Wörter schreiben', diff:1,
+            explanation:'Beim Schreiben machst du Laute sichtbar! Du hörst die Laute in einem Wort und schreibst den passenden Buchstaben. Beispiel: Du hörst "Hhh-uuu-nnn-ddd" und schreibst: H-u-n-d. So entsteht das Wort HUND! Groß oder klein? Alle Wörter, die man anfassen kann (Dinge) und alle Namen schreibt man groß: Der Hund, Anna, Berlin. Alle anderen Wörter schreibt man klein: laufen, schön, der. Der erste Buchstabe am Satzanfang ist immer groß! Tipp: Lies dein geschriebenes Wort immer laut vor. Klingt es richtig?' },
+          { name:'Erste Sätze lesen', diff:1,
+            explanation:'Ein Satz ist eine vollständige Aussage – er fängt mit einem großen Buchstaben an und endet mit einem Punkt, Fragezeichen oder Ausrufezeichen! Aussagesatz: Die Katze schläft. (Was passiert?) Fragesatz: Schläft die Katze? (Du fragst etwas!) Ausrufesatz: Die Katze schläft! (Du bist überrascht oder aufgeregt!) Wenn du liest: Fange langsam an, Silbe für Silbe. Dann lies das ganze Wort. Dann den ganzen Satz. Und wenn du kannst: Den ganzen Satz mit der richtigen Betonung. Übe jeden Tag, auch wenn es manchmal schwer ist!' },
+        ],
+        exercises:[
+          { id:'e1', type:'Buchstaben', diff:1, title:'Buchstaben und Wörter',
+            desc:'Buchstaben kennen und einfache Wörter lesen.',
+            questions:[
+              { q:'Welcher Buchstabe kommt nach dem A im Alphabet?', hint:'A, B, C …', options:['C','B','D','E'], correct:1, explanation:'Das Alphabet beginnt: A, B, C, D, E … Nach dem A kommt das B!' },
+              { q:'Wie viele Silben hat das Wort "Schmet-ter-ling"?', hint:'Klatsche beim Sprechen!', options:['1','2','3','4'], correct:2, explanation:'Schmet-ter-ling hat 3 Silben. Klatsche 3 Mal!' },
+              { q:'Welches Wort schreibt man GROSS?', hint:'Dinge, Namen und Satzanfänge = groß!', options:['laufen','schön','Katze','blau'], correct:2, explanation:'Katze ist ein Nomen (Ding) und wird deshalb großgeschrieben: Die Katze.' },
+              { q:'Womit endet ein Fragesatz?', hint:'Wenn ich frage, nehme ich …', options:['Punkt .','Fragezeichen ?','Ausrufezeichen !','Komma ,'], correct:1, explanation:'Ein Fragesatz endet mit einem Fragezeichen: Wie heißt du?' },
+              { q:'Was sind Vokale?', hint:'A, E, I, O, U', options:['Alle Buchstaben','Nur A, E, I, O, U','Nur Konsonanten','Die letzten 5 Buchstaben'], correct:1, explanation:'Vokale (Selbstlaute) sind A, E, I, O, U. Sie klingen „offen".' },
+              { q:'Wie viele Silben hat "Blu-me"?', hint:'Klatsche beim Sprechen!', options:['1','2','3','4'], correct:1, explanation:'Blu-me hat 2 Silben: Blu – me. Klatsche 2 Mal!' },
+              { q:'Welches Wort beginnt mit dem Laut „mmm"?', hint:'M wie …?', options:['Nase','Lampe','Maus','Buch'], correct:2, explanation:'Maus beginnt mit M. Mmm-ause! M wie Maus.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+  /* =========================================================  KLASSE 2 – GRUNDSCHULE  */
+  klasse2: {
+    id:'klasse2', num:2, label:'Klasse 2',
+    emoji:'🌿', color:['#06B6D4','#22D3EE'], light:'#ECFEFF',
+    tagline:'Grundschule: Zahlen bis 100, Einmaleins und Wortarten',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Zahlen bis 100, kleines Einmaleins und Sachaufgaben',
+        color:'#2563EB',
+        intro:'Klasse 2 Mathe – wir gehen noch weiter! Zahlen bis 100, das berühmte Einmaleins und erste Sachaufgaben. Du kannst das – mit etwas Übung klappt es super!',
+        topics:[
+          { name:'Zahlen bis 100', diff:1,
+            explanation:'Jetzt geht\'s bis 100! 100 Zahlen – das klingt viel, aber du kennst schon die Hälfte davon. Ab 20 folgt ein Muster: 21, 22, 23 … bis 29, dann 30, 31 … Die Zahl 57 bedeutet: 5 Zehner (= 50) und 7 Einer. Den Zehner erkennst du an der ersten Stelle: 5 Zehner = 50. Auf dem Zahlenstrahl liegt 57 zwischen 50 und 60, näher an 60. Zahlen vergleichen: 73 > 58, weil 7 Zehner mehr als 5 Zehner sind. Gerade Zahlen (teilbar durch 2): 2, 4, 6, 8 … Ungerade Zahlen: 1, 3, 5, 7 … Der Zahlenstrahl ist dein bester Freund beim Rechnen!' },
+          { name:'Addition und Subtraktion bis 100', diff:1,
+            explanation:'Rechnen bis 100! Einfacher Weg: Zerlege die Zahlen in Zehner und Einer. Beispiel: 34 + 25 = ? Erst die Zehner: 30 + 20 = 50. Dann die Einer: 4 + 5 = 9. Zusammen: 50 + 9 = 59! Subtraktion: 67 − 34 = ? Erst Zehner: 60 − 30 = 30. Dann Einer: 7 − 4 = 3. Zusammen: 33! Wenn die Einer nicht reichen (z.B. 43 − 17): Dann "borge" dir einen Zehner. Aus 43 mach 30 + 13, dann: 13 − 7 = 6 und 30 − 10 = 20. Ergebnis: 26.' },
+          { name:'Das kleine Einmaleins (1×1)', diff:2,
+            explanation:'Das Einmaleins ist das wichtigste Werkzeug der Mathematik! Du lernst die Malreihen von 1 bis 10. Tipps: Die 1er-Reihe ist einfach: 1×1=1, 1×5=5, 1×9=9. Die 2er-Reihe ist doppelt nehmen: 2×3=6, 2×7=14. Die 5er-Reihe endet immer auf 0 oder 5: 5, 10, 15, 20, 25. Die 10er-Reihe hängt immer eine 0 dran: 10, 20, 30. Trick für die 9er-Reihe: Die Quersumme (Ziffern addiert) ist immer 9! 9×4=36 (3+6=9), 9×7=63 (6+3=9). Am besten: Jeden Tag eine Reihe üben!' },
+          { name:'Sachaufgaben lösen', diff:2,
+            explanation:'Sachaufgaben sind Mathe aus dem echten Leben! In einem Supermarkt, auf dem Spielplatz, beim Sport – überall steckt Mathematik drin. So löst du eine Sachaufgabe: Schritt 1: Lies die Aufgabe genau durch. Schritt 2: Finde heraus, was gefragt wird. Schritt 3: Welche Zahlen sind gegeben? Schritt 4: Welche Rechenart brauchst du? (+ wenn etwas dazukommt, − wenn etwas weggeht, × wenn Gruppen gebildet werden). Schritt 5: Rechne aus. Schritt 6: Schreibe den Antwortsatz! Beispiel: Lena hat 15 Äpfel. Sie gibt 7 weg. Wie viele hat sie noch? 15 − 7 = 8. Lena hat noch 8 Äpfel.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Rechnen bis 100', diff:1, title:'Zahlen und Rechnen bis 100',
+            desc:'Zahlen bis 100 und das Einmaleins üben.',
+            questions:[
+              { q:'Wie viele Zehner hat die Zahl 74?', hint:'Die erste Stelle zeigt die Zehner!', options:['4','7','74','14'], correct:1, explanation:'74 hat 7 Zehner (= 70) und 4 Einer. Die erste Stelle von links zeigt die Zehner.' },
+              { q:'38 + 25 = ?', hint:'Erst Zehner, dann Einer!', options:['53','62','63','73'], correct:2, explanation:'30+20=50, 8+5=13 → 50+13=63.' },
+              { q:'5 × 4 = ?', hint:'Die 5er-Reihe: 5, 10, 15, 20 …', options:['9','16','20','25'], correct:2, explanation:'5 × 4 = 20. Die 5er-Reihe: 5, 10, 15, 20 – das 4. Glied ist 20.' },
+              { q:'65 − 38 = ?', hint:'Erst Zehner, dann Einer (mit borgen!)', options:['27','28','33','37'], correct:0, explanation:'65 − 38 = 27. Probe: 27 + 38 = 65 ✓' },
+              { q:'3 × 7 = ?', hint:'3er-Reihe: 3, 6, 9, 12, 15, 18, 21 …', options:['18','21','24','27'], correct:1, explanation:'3 × 7 = 21. Zähle die 3er-Reihe bis zum 7. Glied: 3,6,9,12,15,18,21.' },
+              { q:'Tim hat 45 Murmeln. Er bekommt 18 dazu. Wie viele hat er jetzt?', hint:'Dazukommen = addieren!', options:['27','53','63','73'], correct:2, explanation:'45 + 18 = 63 Murmeln. Tim hat jetzt 63 Murmeln.' },
+              { q:'Welche Zahl liegt genau zwischen 30 und 40?', hint:'30, 31, 32 … 40', options:['34','35','36','38'], correct:1, explanation:'35 liegt genau in der Mitte: 35 − 30 = 5 und 40 − 35 = 5.' },
+              { q:'2 × 9 = ?', hint:'Doppelt 9!', options:['11','16','18','19'], correct:2, explanation:'2 × 9 = 18. Doppelt nehmen: 9 + 9 = 18.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'deutsch', name:'Deutsch', icon:'📖',
+        desc:'Wortarten, Satzzeichen und Texte verstehen',
+        color:'#DC2626',
+        intro:'Willkommen in Deutsch Klasse 2! Wir lernen die drei wichtigsten Wortarten, schreiben längere Sätze und lesen erste Texte. Sprache macht uns stark!',
+        topics:[
+          { name:'Nomen – Namenwörter', diff:1,
+            explanation:'Nomen (auch Namenwörter oder Hauptwörter genannt) sind die Wörter für Dinge, Lebewesen und Orte – alles, was du mit dem Wort „der", „die" oder „das" benennen kannst! Beispiele: der Hund, die Blume, das Haus, die Schule, der Lehrer. Erkennungszeichen 1: Nomen werden immer GROSSGESCHRIEBEN! Erkennungszeichen 2: Vor jedem Nomen steht ein Artikel: der (männlich), die (weiblich), das (sächlich). Manchmal ist der Artikel tricky: das Mädchen (nicht die, obwohl es weiblich ist!). Tipp: Wenn du nicht sicher bist, ob ein Wort ein Nomen ist, frage: Kann ich dieses Ding sehen oder anfassen?' },
+          { name:'Verben – Tutwörter', diff:1,
+            explanation:'Verben (auch Tutwörter oder Zeitwörter) beschreiben, was jemand tut, erlebt oder fühlt! Beispiele: laufen, essen, schlafen, sehen, lieben, haben, sein. Verben verändern sich je nachdem, wer handelt (Person) und wann (Zeit): Ich laufe, du läufst, er/sie/es läuft, wir laufen. Verben stehen oft in der Mitte oder am Ende des Satzes. Das Grundwort eines Verbs heißt Infinitiv und endet meist auf -en: laufen, essen, schlafen. Trick: Stelle die Frage „Was tut jemand?" oder „Was passiert?" – die Antwort ist das Verb!' },
+          { name:'Adjektive – Wiewörter', diff:1,
+            explanation:'Adjektive (auch Wie-Wörter oder Eigenschaftswörter) beschreiben, wie etwas ist! Beispiele: groß, klein, schnell, langsam, rot, schön, laut, leise. Adjektive machen Sätze viel lebendiger! Vergleich: „Der Hund sitzt." (langweilig) vs. „Der große, braune Hund sitzt ruhig." (viel besser!). Adjektive stehen oft vor einem Nomen oder nach den Verben „sein", „werden", „bleiben": Das ist ein roter Ball. Der Ball ist rot. Adjektive haben keine feste Groß-/Kleinschreibung – sie werden kleingeschrieben, außer am Satzanfang.' },
+          { name:'Satzzeichen richtig nutzen', diff:1,
+            explanation:'Satzzeichen helfen beim Lesen – sie zeigen, wann eine Pause kommt und wie ein Satz klingt! Punkt (.): Am Ende einer Aussage. „Die Sonne scheint." Fragezeichen (?): Am Ende einer Frage. „Scheint die Sonne?" Ausrufezeichen (!): Am Ende eines Ausrufs oder Befehls. „Die Sonne scheint endlich!" Komma (,): Trennt Aufzählungen und Teilsätze. „Ich kaufe Äpfel, Birnen und Bananen." Tipp beim Vorlesen: Beim Komma kurz anhalten, beim Punkt länger pausieren, beim Fragezeichen die Stimme heben, beim Ausrufezeichen betonen.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Wortarten', diff:1, title:'Nomen, Verben und Adjektive',
+            desc:'Die drei wichtigsten Wortarten erkennen.',
+            questions:[
+              { q:'Welches Wort ist ein Nomen?', hint:'Nomen werden GROSSGESCHRIEBEN!', options:['laufen','schön','Schule','blau'], correct:2, explanation:'Schule ist ein Nomen – es ist ein Ding und wird großgeschrieben!' },
+              { q:'Was ist das Verb im Satz: „Das Kind spielt im Garten."?', hint:'Was tut das Kind?', options:['Kind','spielt','Garten','im'], correct:1, explanation:'Spielt ist das Verb – es beschreibt, was das Kind tut.' },
+              { q:'Welches Wort ist ein Adjektiv?', hint:'Adjektive sagen, WIE etwas ist!', options:['Katze','schlafen','groß','Baum'], correct:2, explanation:'Groß ist ein Adjektiv – es beschreibt, wie etwas ist.' },
+              { q:'Was kommt am Ende eines Fragesatzes?', hint:'Wenn ich frage, nehme ich …', options:['Punkt','Komma','Fragezeichen','Ausrufezeichen'], correct:2, explanation:'Am Ende eines Fragesatzes steht das Fragezeichen ?' },
+              { q:'Welcher Artikel passt zu „Hund"?', hint:'Männlich, weiblich oder sächlich?', options:['die','das','der','einen'], correct:2, explanation:'Es heißt „der Hund" – Hund ist männlich.' },
+              { q:'Nomen werden immer … geschrieben.', hint:'Der erste Buchstabe ist …', options:['klein','kursiv','GROSS','blau'], correct:2, explanation:'Nomen werden immer GROSSGESCHRIEBEN: der Hund, die Blume, das Haus.' },
+              { q:'Was ist das Adjektiv im Satz: „Der kleine Hund bellt laut."?', hint:'Wie ist der Hund?', options:['Hund','bellt','kleine','laut'], correct:2, explanation:'Kleine ist das Adjektiv – es beschreibt, wie der Hund ist.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+  /* =========================================================  KLASSE 3 – GRUNDSCHULE  */
+  klasse3: {
+    id:'klasse3', num:3, label:'Klasse 3',
+    emoji:'🌟', color:['#F59E0B','#FCD34D'], light:'#FFFBEB',
+    tagline:'Grundschule: Zahlen bis 1000, Einmaleins und Satzglieder',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Zahlen bis 1000, Einmaleins und Geometrie',
+        color:'#2563EB',
+        intro:'Klasse 3 Mathe – jetzt wird es richtig spannend! Zahlen bis 1000, das große Einmaleins und erste Geometrie. Du bist schon ein richtiger Mathe-Profi!',
+        topics:[
+          { name:'Zahlen bis 1000', diff:2,
+            explanation:'Ab jetzt kennen wir Zahlen mit drei Stellen! Die Zahl 742 hat: 7 Hunderter (= 700), 4 Zehner (= 40) und 2 Einer (= 2). Zusammen: 742. Der Zahlenstrahl geht jetzt bis 1000. 1000 ist das Gleiche wie 10 Hunderter oder 100 Zehner. Zahlen ordnen: 489 < 498 (weil die Zehner 8 > 9 aber die Hunderter gleich sind – also schauen wir auf die nächste Stelle: 8 < 9). Runden auf Hunderter: Wenn die Zehner ≥ 5, runde auf; sonst runde ab. 362 → 400; 341 → 300. Tipp: Benutze einen Tausenderkasten aus Würfeln, Stäbchen und Einerwürfeln, um dir die Zahlen vorzustellen!' },
+          { name:'Das große Einmaleins', diff:2,
+            explanation:'Du kennst schon die kleinen Malreihen – jetzt lernst du sie auswendig und kombiniertst! Das große Einmaleins geht bis 10 × 10 = 100. Wichtige Strategien: Tauschgesetz: 6 × 8 = 8 × 6 = 48 (du hast nur halb so viel zu lernen!). Nachbaraufgaben: Wenn du 6 × 8 weißt, rechnest du 6 × 9 einfach +6 dazu: 48 + 6 = 54. Zerlegen: 7 × 8 = (5 + 2) × 8 = 40 + 16 = 56. Die schwierigsten Aufgaben sind meist die 6er, 7er und 8er Reihen. Übungstipp: Mach Karteikarten mit der Aufgabe vorne und dem Ergebnis hinten!' },
+          { name:'Schriftliche Multiplikation', diff:2,
+            explanation:'Mit dem Schriftlichen Multiplizieren kannst du auch große Zahlen schnell multiplizieren! Beispiel: 34 × 6 = ? Schreibe untereinander: 34 × 6 Schritt 1: Einerstelle: 4 × 6 = 24. Schreibe 4, merke dir 2 (Übertrag). Schritt 2: Zehnerstelle: 3 × 6 = 18, plus Übertrag 2 = 20. Schreibe 20. Ergebnis: 204! Probe: 200 + 4 = 204. Und: 34 × 6 ≈ 30 × 6 = 180, also muss das Ergebnis etwas über 180 liegen. 204 passt!' },
+          { name:'Geometrie: Umfang und Fläche', diff:2,
+            explanation:'Geometrie ist Mathe mit Formen! Der Umfang ist der Weg einmal um die Figur herum – wie viel Zaun brauche ich für meinen Garten? Bei einem Rechteck: U = 2 × Länge + 2 × Breite. Beispiel: Länge 8m, Breite 5m → U = 2×8 + 2×5 = 16 + 10 = 26 m. Die Fläche ist der Platz innerhalb der Figur – wie viel Teppich brauche ich? Bei einem Rechteck: A = Länge × Breite. Beispiel: 8m × 5m = 40 m². Das m² (Quadratmeter) ist die Einheit für Flächen. 1 m² = ein Quadrat mit 1m Seitenlänge.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Großes Einmaleins', diff:2, title:'Einmaleins und Rechnen bis 1000',
+            desc:'Das Einmaleins und Zahlen bis 1000 üben.',
+            questions:[
+              { q:'Wie viele Hunderter hat die Zahl 537?', hint:'Die erste Stelle von links bei 3-stelligen Zahlen!', options:['3','5','7','53'], correct:1, explanation:'537 hat 5 Hunderter (= 500), 3 Zehner (= 30) und 7 Einer.' },
+              { q:'7 × 8 = ?', hint:'Zerlege: 7 × 8 = (5 + 2) × 8', options:['48','54','56','64'], correct:2, explanation:'7 × 8 = 56. Oder: 5×8=40, 2×8=16, 40+16=56.' },
+              { q:'234 × 3 = ? (schriftlich)', hint:'Erst Einer, dann Zehner, dann Hunderter!', options:['602','692','702','712'], correct:2, explanation:'4×3=12 (schreibe 2, Übertrag 1), 3×3=9+1=10 (schreibe 0, Übertrag 1), 2×3=6+1=7 → 702.' },
+              { q:'6 × 9 = ?', hint:'6er-Reihe: 6, 12, 18, 24, 30, 36, 42, 48, 54 …', options:['48','52','54','56'], correct:2, explanation:'6 × 9 = 54. Oder: Du weißt 6×8=48, addiere noch 6: 48+6=54.' },
+              { q:'Umfang eines Rechtecks: Länge = 6 cm, Breite = 4 cm. U = ?', hint:'U = 2×L + 2×B', options:['10 cm','20 cm','24 cm','48 cm'], correct:1, explanation:'U = 2×6 + 2×4 = 12 + 8 = 20 cm.' },
+              { q:'Welche Zahl ist größer: 649 oder 694?', hint:'Vergleiche Stelle für Stelle von links!', options:['649','694','Gleich groß','Kann man nicht sagen'], correct:1, explanation:'694 > 649. Beide haben 6 Hunderter, aber 694 hat 9 Zehner und 649 nur 4 Zehner.' },
+              { q:'8 × 8 = ?', hint:'Das berühmte 8×8!', options:['56','62','64','72'], correct:2, explanation:'8 × 8 = 64. Das ist eine der wichtigsten Aufgaben – am besten auswendig lernen!' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'deutsch', name:'Deutsch', icon:'📖',
+        desc:'Satzglieder, Wortarten vertiefen und Texte schreiben',
+        color:'#DC2626',
+        intro:'Deutsch Klasse 3 – wir werden zu echten Sprachprofis! Satzglieder, zusammengesetzte Wörter und das Schreiben eigener Texte erwarten uns.',
+        topics:[
+          { name:'Satzglieder: Subjekt und Prädikat', diff:2,
+            explanation:'Jeder Satz hat Bausteine – die Satzglieder! Die zwei wichtigsten sind: Subjekt (= Satzgegenstand): Wer oder was tut etwas? Frage: „Wer oder was?" Der Hund bellt laut. → Wer? Der Hund → Subjekt! Prädikat (= Satzaussage): Was tut das Subjekt? Frage: „Was tut es?" Der Hund bellt laut. → Was tut der Hund? bellt → Prädikat! Das Prädikat ist immer ein Verb. Tipp: Das Subjekt und das Prädikat müssen immer zusammenpassen. Wenn das Subjekt „wir" ist, muss das Verb auch zur Mehrzahl passen: Wir laufen (nicht: Wir läuft).' },
+          { name:'Zusammengesetzte Wörter', diff:1,
+            explanation:'Das Deutsche liebt es, Wörter zusammenzubauen! Ein zusammengesetztes Wort besteht aus zwei oder mehr Grundwörtern: Fußball = Fuß + Ball. Handschuh = Hand + Schuh. Schulbus = Schule + Bus. Das letzte Wort bestimmt, was es ist (und welchen Artikel es bekommt): der Fuß + der Ball = der Fußball. das Haus + die Tür = die Haustür (der Artikel vom letzten Wort!). Zusammengesetzte Wörter können sehr lang werden: Donaudampfschifffahrtsgesellschaft! Spaß: Bau dein eigenes zusammengesetztes Wort: Welches Tier könnte ein Fliegenauto sein?' },
+          { name:'Direkte Rede', diff:2,
+            explanation:'Wenn wir genau schreiben, was jemand sagt, schreiben wir die direkten Worte in Anführungszeichen! Regel: Redebegleitsatz + Doppelpunkt + „gesprochene Worte in Anführungszeichen". Beispiel: Tom sagte: „Ich bin müde." Oder umgekehrt: „Ich bin müde", sagte Tom. Wichtig: Die erste Anführungszeichen kommen UNTEN (,, ) und die letzten OBEN (" ). Das ist in Deutsch anders als in anderen Sprachen! In der direkten Rede schreibt man auch das erste Wort groß. Tipp: Direkte Rede macht Geschichten viel spannender – die Figuren „reden selbst"!' },
+          { name:'Texte planen und schreiben', diff:2,
+            explanation:'Ein guter Text entsteht nicht zufällig – er wird geplant! Die 4 Schritte zum guten Text: 1. Sammeln: Was will ich schreiben? Schreibe alle Ideen auf – auch verrückte! 2. Ordnen: Bringe deine Ideen in eine logische Reihenfolge. Was kommt zuerst? Was danach? 3. Schreiben: Schreibe in vollständigen Sätzen. Denke an Anfang (Wer? Wo? Wann?), Mitte (Was passiert?) und Ende (Wie endet es?). 4. Überarbeiten: Lies alles noch einmal! Rechtschreibfehler? Fehlende Satzzeichen? Klingt es gut? Ein Erzähltext hat einen spannenden Anfang, einen aufregenden Mittelteil und ein befriedigendes Ende.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Satzglieder', diff:2, title:'Satzglieder und Wortarten',
+            desc:'Subjekt, Prädikat und Wortarten erkennen.',
+            questions:[
+              { q:'Was ist das Subjekt im Satz: „Die Katze schläft auf dem Sofa."?', hint:'Wer oder was tut etwas?', options:['schläft','dem Sofa','Die Katze','auf'], correct:2, explanation:'Die Katze ist das Subjekt. Frage: Wer schläft? → Die Katze.' },
+              { q:'Was ist das Prädikat im Satz: „Die Kinder spielen im Garten."?', hint:'Was tun die Kinder?', options:['Die Kinder','spielen','Garten','im'], correct:1, explanation:'Spielen ist das Prädikat (das Verb). Es beschreibt, was die Kinder tun.' },
+              { q:'Aus welchen Wörtern besteht „Schulbus"?', hint:'Trenne das zusammengesetzte Wort!', options:['Schul + Bus','Schu + Bus','Schulb + us','Sch + ulbus'], correct:0, explanation:'Schulbus = Schule + Bus. Der Artikel kommt vom letzten Wort: der Bus → der Schulbus.' },
+              { q:'Welche Anführungszeichen stehen am ANFANG der direkten Rede?', hint:'Oben oder unten?', options:['"(oben)','„(unten)','«(links)','»(rechts)'], correct:1, explanation:'Im Deutschen beginnt die direkte Rede mit unten stehenden Anführungszeichen: „…"' },
+              { q:'Welches Wort ist ein zusammengesetztes Nomen?', hint:'Aus zwei Wörtern zusammengesetzt!', options:['laufen','Fußball','schnell','der'], correct:1, explanation:'Fußball = Fuß + Ball. Es ist zusammengesetzt aus zwei Nomen.' },
+              { q:'Was ist der erste Schritt beim Texte schreiben?', hint:'Bevor man schreibt, muss man …', options:['Fertig sein','Ideen sammeln','Vorlesen','Einschlafen'], correct:1, explanation:'Zuerst sammelst du alle Ideen (Brainstorming), dann ordnest du sie, dann schreibst du.' },
+              { q:'Welche Wortart ist „rennen"?', hint:'Rennen beschreibt etwas, das jemand tut.', options:['Nomen','Adjektiv','Verb','Artikel'], correct:2, explanation:'Rennen ist ein Verb (Tutwort) – es beschreibt eine Tätigkeit.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+  /* =========================================================  KLASSE 4 – GRUNDSCHULE  */
+  klasse4: {
+    id:'klasse4', num:4, label:'Klasse 4',
+    emoji:'⭐', color:['#EC4899','#F9A8D4'], light:'#FDF2F8',
+    tagline:'Grundschule: Große Zahlen, Brüche und Grammatik für die weiterführende Schule',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Zahlen bis 1.000.000, Division, erste Brüche und Flächeninhalte',
+        color:'#2563EB',
+        intro:'Klasse 4 – das letzte Grundschul-Jahr! Wir bereiten uns auf die weiterführende Schule vor. Große Zahlen, erste Brüche und schriftliche Division machen uns fit für Klasse 5!',
+        topics:[
+          { name:'Zahlen bis 1.000.000', diff:2,
+            explanation:'Eine Million – das ist 1 mit sechs Nullen: 1.000.000! Die Zahl 348.256 liest du so: dreihundertachtundvierzigtausendzweihundertsechsundfünfzig. Stellenwerte: Millionen, Hunderttausender, Zehntausender, Tausender, Hunderter, Zehner, Einer. Beispiel: 348.256 hat 3 Hunderttausender, 4 Zehntausender, 8 Tausender, 2 Hunderter, 5 Zehner, 6 Einer. Zahlen ordnen: Vergleiche immer Stelle für Stelle von links: 348.256 > 284.999 (weil 3 > 2 an der ersten Stelle). Runden auf Tausender: 3.456 → 3.000; 3.512 → 4.000 (ab 500 wird aufgerundet).' },
+          { name:'Schriftliche Division', diff:3,
+            explanation:'Division – das Aufteilen! Schriftliche Division geht so (Beispiel: 756 ÷ 4): Schritt 1: Wie oft passt 4 in 7? Antwort: 1 Mal (4×1=4). Rest: 7−4=3. Schritt 2: Nächste Stelle dranschreiben: 35. Wie oft passt 4 in 35? Antwort: 8 Mal (4×8=32). Rest: 35−32=3. Schritt 3: Nächste Stelle: 36. Wie oft passt 4 in 36? Antwort: 9 Mal (4×9=36). Rest: 0. Ergebnis: 756 ÷ 4 = 189. Probe: 189 × 4 = 756 ✓. Manchmal bleibt ein Rest: 757 ÷ 4 = 189 Rest 1.' },
+          { name:'Brüche kennenlernen', diff:2,
+            explanation:'Was ist ein Viertel? Die Hälfte? Ein Drittel? Das sind Brüche! Ein Bruch teilt etwas Ganzes in gleiche Teile: ½ bedeutet: Das Ganze ist in 2 gleiche Teile geteilt, und du nimmst 1 Teil. ¼ bedeutet: Das Ganze ist in 4 gleiche Teile geteilt, du nimmst 1 Teil. ¾ bedeutet: Das Ganze ist in 4 gleiche Teile geteilt, du nimmst 3 Teile. Der Bruchstrich trennt Zähler (oben, wie viele Teile du nimmst) und Nenner (unten, in wie viele Teile das Ganze geteilt ist). ½ einer Pizza = 1 von 2 Hälften. ¾ eines Kuchens = 3 von 4 Vierteln.' },
+          { name:'Flächeninhalte berechnen', diff:2,
+            explanation:'Die Fläche zeigt, wie viel Platz eine Figur bedeckt. Einheit: Quadratzentimeter (cm²) oder Quadratmeter (m²). Rechteck: A = Länge × Breite. Beispiel: 8 cm × 5 cm = 40 cm². Quadrat: A = Seite × Seite = Seite². Beispiel: 6 cm × 6 cm = 36 cm². Alltagsbeispiele: Zimmer 4m × 5m = 20 m² → So viel Teppich brauchst du. Garten 8m × 12m = 96 m² → So viel Rasen musst du mähen. Vergleich: 1 m² = 100 cm × 100 cm = 10.000 cm². Das macht deutlich: 1 m² ist viel größer als 1 cm²!' },
+        ],
+        exercises:[
+          { id:'e1', type:'Rechnen', diff:2, title:'Große Zahlen, Division und Brüche',
+            desc:'Fit für die weiterführende Schule!',
+            questions:[
+              { q:'Wie viele Stellen hat die Zahl 1.000.000?', hint:'Zähle alle Ziffern!', options:['5','6','7','8'], correct:2, explanation:'1.000.000 hat 7 Ziffern (1 und sechs Nullen).' },
+              { q:'584 ÷ 4 = ?', hint:'Schriftliche Division: Stelle für Stelle!', options:['141','146','148','151'], correct:1, explanation:'584 ÷ 4 = 146. Probe: 146 × 4 = 584 ✓' },
+              { q:'Was bedeutet der Bruch ¾?', hint:'Oben = wie viele Teile, unten = wie viele Teile insgesamt', options:['3 ganze Pizzen','3 von 4 gleichen Teilen','4 von 3 Teilen','Die Hälfte'], correct:1, explanation:'¾ bedeutet: Das Ganze ist in 4 gleiche Teile geteilt, du nimmst 3 davon.' },
+              { q:'Fläche eines Rechtecks: Länge = 9 cm, Breite = 7 cm. A = ?', hint:'A = Länge × Breite', options:['32 cm²','63 cm²','81 cm²','126 cm²'], correct:1, explanation:'A = 9 × 7 = 63 cm².' },
+              { q:'Welcher Bruch ist größer: ½ oder ¼?', hint:'Stell dir eine Pizza vor!', options:['½','¼','Beide gleich','Kann man nicht sagen'], correct:0, explanation:'½ ist größer als ¼. Die Hälfte einer Pizza ist mehr als ein Viertel!' },
+              { q:'738.000 auf Zehntausender gerundet = ?', hint:'Schaue auf die Tausenderstelle!', options:['730.000','740.000','700.000','800.000'], correct:1, explanation:'738.000 → Die Tausenderstelle ist 8 (≥5), also aufgerundetauf 740.000.' },
+              { q:'Berechne: 360 ÷ 6 = ?', hint:'6er-Reihe rückwärts!', options:['54','56','60','66'], correct:2, explanation:'360 ÷ 6 = 60. Probe: 60 × 6 = 360 ✓' },
+              { q:'Fläche eines Quadrats mit Seite 7 cm = ?', hint:'A = Seite × Seite', options:['14 cm²','28 cm²','49 cm²','56 cm²'], correct:2, explanation:'A = 7 × 7 = 49 cm².' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'deutsch', name:'Deutsch', icon:'📖',
+        desc:'Die vier Fälle, Zeitformen und Rechtschreibregeln',
+        color:'#DC2626',
+        intro:'Deutsch Klasse 4 – wir lernen die Grammatik richtig! Die vier Fälle, Zeitformen und wichtige Rechtschreibregeln machen uns fit für die weiterführende Schule.',
+        topics:[
+          { name:'Die vier Fälle (Kasus)', diff:3,
+            explanation:'In der deutschen Sprache verändert sich ein Nomen je nach seiner Rolle im Satz – das nennt man Kasus (Fall)! Die vier Fälle: 1. Nominativ: Wer oder was? Das ist das Subjekt. „Der Hund bellt." → Der Hund = Nominativ. 2. Genitiv: Wessen? Zeigt Besitz. „Das Spielzeug des Hundes." → des Hundes = Genitiv. 3. Dativ: Wem? „Ich gebe dem Hund Futter." → dem Hund = Dativ. 4. Akkusativ: Wen oder was? „Ich sehe den Hund." → den Hund = Akkusativ. Eselsbrücke: „Wer? Wessen? Wem? Wen?" – diese Fragen zeigen den Fall.' },
+          { name:'Zeitformen: Präsens, Präteritum, Perfekt', diff:2,
+            explanation:'Verben verändern sich je nach Zeitpunkt des Geschehens! Präsens (Gegenwart): Ich spiele. Das passiert gerade jetzt. Präteritum (Vergangenheit – meist schriftlich): Ich spielte. Das ist schon vorbei (oft in Büchern und Berichten). Perfekt (Vergangenheit – meist mündlich): Ich habe gespielt. Das ist abgeschlossen, ich rede darüber jetzt. Futur (Zukunft): Ich werde spielen. Das kommt noch. Tipp für Aufsätze: Erzählungen schreibt man meist im Präteritum. Wenn du erzählst, was du heute erlebt hast, nutzt du Perfekt.' },
+          { name:'Wichtige Rechtschreibregeln', diff:2,
+            explanation:'Die wichtigsten Rechtschreibregeln der Grundschule: 1. Nomen immer GROSSSCHREIBEN: der Baum, die Schule, das Kind. 2. Nach kurzem Vokal kommt oft doppelter Konsonant: Bett, kommen, rennen. 3. Nach langem Vokal kommt oft h (Dehn-h) oder ie: fahren, schreiben, Brief. 4. Das scharfe ß schreibst du nach langem Vokal oder Diphthong (ei, au, eu): Straße, heißen, außen. 5. tz kommt nach kurzem Vokal: sitzen, Katze, Platz. 6. ck kommt nach kurzem Vokal: backen, Zucker, Fleck. Merkhilfe: Sprich das Wort laut aus und achte auf die Länge des Vokals!' },
+          { name:'Aufsatz: Bildergeschichte und Erlebniserzählung', diff:2,
+            explanation:'Der Aufsatz ist deine Chance, kreativ zu sein! Bildergeschichte: Du bekommst 4–6 Bilder und schreibst dazu eine Geschichte. Wichtig: Beschreibe jedes Bild, aber erzähle auch, was dazwischen passiert. Benutze Verbindungswörter: zuerst, dann, danach, schließlich, am Ende. Erlebniserzählung: Du erzählst etwas, das du selbst erlebt hast. Guter Aufbau: Einleitung (Wer? Wo? Wann?), Hauptteil (Was ist passiert? Was war besonders spannend?), Schluss (Wie hat es geendet? Wie hast du dich gefühlt?). Tipp: Benutze viele Adjektive und direkte Rede, um deine Geschichte lebendig zu machen!' },
+        ],
+        exercises:[
+          { id:'e1', type:'Grammatik', diff:2, title:'Fälle, Zeitformen und Rechtschreibung',
+            desc:'Fit für die weiterführende Schule!',
+            questions:[
+              { q:'In welchem Fall steht das Nomen im Satz: „Ich sehe den Hund."?', hint:'Wen oder was sehe ich?', options:['Nominativ','Genitiv','Dativ','Akkusativ'], correct:3, explanation:'Ich sehe wen? Den Hund → Akkusativ (Frage: Wen oder was?).' },
+              { q:'Welche Zeitform ist „Ich habe gespielt."?', hint:'Ich rede jetzt über die Vergangenheit.', options:['Präsens','Präteritum','Perfekt','Futur'], correct:2, explanation:'Ich habe gespielt → Perfekt. Erkennbar am Hilfsverb „habe" + gespielt (Partizip II).' },
+              { q:'Welches Wort hat ein Dehn-h?', hint:'Langes i wird oft zu ie oder ih.', options:['kommen','rennen','fahren','sitzen'], correct:2, explanation:'Fahren hat ein Dehn-h: fa-h-ren. Das h zeigt den langen Vokal a.' },
+              { q:'In welchem Fall steht „dem Lehrer" im Satz: „Ich gebe dem Lehrer das Heft."?', hint:'Wem gebe ich?', options:['Nominativ','Genitiv','Dativ','Akkusativ'], correct:2, explanation:'Wem? Dem Lehrer → Dativ. Erkennbar am Artikel „dem".' },
+              { q:'Richtige Schreibweise: „Katze" oder „Katsse"?', hint:'Nach kurzem a kommt …', options:['Katze','Katzze','Katsse','Katssse'], correct:0, explanation:'Katze – nach dem kurzen a kommt tz (nicht zz!). Regel: tz nach kurzem Vokal.' },
+              { q:'Welche Zeitform benutzt man meistens in Erzählungen (Aufsatz)?', hint:'Bücher und Berichte nutzen meist …', options:['Präsens','Präteritum','Perfekt','Futur'], correct:1, explanation:'Erzählungen werden meist im Präteritum geschrieben: „Er spielte, sie lachte …"' },
+              { q:'Wie schreibt man „Straße" richtig?', hint:'Langes a vor ß!', options:['Strase','Straße','Strasse','Strasße'], correct:1, explanation:'Straße – nach dem langen a kommt ß. Regel: ß nach langem Vokal oder Diphthong.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
   /* =========================================================  KLASSE 5  */
   klasse5: {
     id:'klasse5', num:5, label:'Klasse 5',

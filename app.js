@@ -339,6 +339,10 @@ function _elevenSpeakSequential(text, onDone) {
 
 // ---- Grade colors for card backgrounds ----
 const GRADE_GRADIENTS = {
+  klasse1:  'linear-gradient(135deg,#10B981,#34D399)',
+  klasse2:  'linear-gradient(135deg,#06B6D4,#22D3EE)',
+  klasse3:  'linear-gradient(135deg,#F59E0B,#FCD34D)',
+  klasse4:  'linear-gradient(135deg,#EC4899,#F9A8D4)',
   klasse5:  'linear-gradient(135deg,#7C3AED,#A855F7)',
   klasse6:  'linear-gradient(135deg,#2563EB,#60A5FA)',
   klasse7:  'linear-gradient(135deg,#0D9488,#2DD4BF)',
@@ -349,6 +353,60 @@ const GRADE_GRADIENTS = {
   klasse12: 'linear-gradient(135deg,#0E7490,#22D3EE)',
   klasse13: 'linear-gradient(135deg,#B45309,#F59E0B)',
 };
+
+// ── Schulform-System ─────────────────────────────────────────
+const SCHOOL_TYPES = {
+  grundschule: { label:'Grundschule', icon:'🎒', range:'1–4', color:'#10B981',
+    grades:['klasse1','klasse2','klasse3','klasse4'] },
+  hauptschule: { label:'Hauptschule', icon:'📚', range:'5–9', color:'#F59E0B',
+    grades:['klasse5','klasse6','klasse7','klasse8','klasse9'] },
+  realschule:  { label:'Realschule',  icon:'📐', range:'5–10', color:'#2563EB',
+    grades:['klasse5','klasse6','klasse7','klasse8','klasse9','klasse10'] },
+  gymnasium:   { label:'Gymnasium',   icon:'🎓', range:'5–13', color:'#7C3AED',
+    grades:['klasse5','klasse6','klasse7','klasse8','klasse9','klasse10','klasse11','klasse12','klasse13'] },
+};
+let activeSchoolType = localStorage.getItem('ls_school_type') || 'gymnasium';
+
+function selectSchoolType(type) {
+  activeSchoolType = type;
+  localStorage.setItem('ls_school_type', type);
+  document.querySelectorAll('.sf-btn').forEach(b => b.classList.toggle('sf-active', b.dataset.sf === type));
+  renderGradeGrid();
+  // Update hero text
+  const sf = SCHOOL_TYPES[type];
+  const heroSub = document.getElementById('heroSubText');
+  if (heroSub) heroSub.textContent = `Deine Lernplattform für ${sf.label} – Klasse ${sf.range}. Lerne smart, übe effektiv!`;
+}
+
+function renderGradeGrid() {
+  const grid = document.getElementById('gradeGrid');
+  if (!grid) return;
+  const grades = SCHOOL_TYPES[activeSchoolType]?.grades || [];
+  grid.innerHTML = '';
+  grades.forEach(id => {
+    const grade = CONTENT[id];
+    if (!grade) return;
+    const subjectNames = grade.subjects.slice(0,3).map(s => s.name);
+    const progress = getGradeProgress(grade.id);
+    const card = document.createElement('div');
+    card.className = 'grade-card';
+    card.style.background = GRADE_GRADIENTS[grade.id];
+    card.onclick = () => navigate('grade', grade.id);
+    card.innerHTML = `
+      <div class="grade-card-inner">
+        <div class="grade-card-num">${grade.num}</div>
+        <div class="grade-card-emoji">${grade.emoji}</div>
+        <div class="grade-card-title">${grade.label}</div>
+        <div class="grade-card-sub">${grade.tagline}</div>
+        <div class="grade-card-subjects">
+          ${subjectNames.map(n => `<span class="grade-card-tag">${n}</span>`).join('')}
+        </div>
+        ${progress > 0 ? `<div style="margin-top:8px;font-size:.78rem;opacity:.8">✅ ${progress}% abgeschlossen</div>` : ''}
+        <div class="grade-card-arrow">→</div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
 
 const DIFF_STARS = { 1:'⭐', 2:'⭐⭐', 3:'⭐⭐⭐' };
 const DIFF_LABEL = { 1:'Einfach', 2:'Mittel', 3:'Schwer' };
@@ -1080,30 +1138,13 @@ function navigate(view, gradeId, subjectId, exerciseId) {
 // ============================================================
 function renderHome() {
   showView('viewHome');
-  const grid = document.getElementById('gradeGrid');
-  grid.innerHTML = '';
-  Object.values(CONTENT).forEach(grade => {
-    const subjectNames = grade.subjects.slice(0,3).map(s => s.name);
-    const progress = getGradeProgress(grade.id);
-    const card = document.createElement('div');
-    card.className = 'grade-card';
-    card.style.background = GRADE_GRADIENTS[grade.id];
-    card.onclick = () => navigate('grade', grade.id);
-    card.innerHTML = `
-      <div class="grade-card-inner">
-        <div class="grade-card-num">${grade.num}</div>
-        <div class="grade-card-emoji">${grade.emoji}</div>
-        <div class="grade-card-title">${grade.label}</div>
-        <div class="grade-card-sub">${grade.tagline}</div>
-        <div class="grade-card-subjects">
-          ${subjectNames.map(n => `<span class="grade-card-tag">${n}</span>`).join('')}
-          <span class="grade-card-tag">+${grade.subjects.length - 3 > 0 ? grade.subjects.length - 3 + ' mehr' : grade.subjects.length + ' Fächer'}</span>
-        </div>
-        ${progress > 0 ? `<div style="margin-top:8px;font-size:.78rem;opacity:.8">✅ ${progress}% abgeschlossen</div>` : ''}
-        <div class="grade-card-arrow">→</div>
-      </div>`;
-    grid.appendChild(card);
-  });
+  // Schulform-Buttons aktivieren
+  document.querySelectorAll('.sf-btn').forEach(b => b.classList.toggle('sf-active', b.dataset.sf === activeSchoolType));
+  // Hero-Text aktualisieren
+  const sf = SCHOOL_TYPES[activeSchoolType];
+  const heroSub = document.getElementById('heroSubText');
+  if (heroSub && sf) heroSub.textContent = `Deine Lernplattform für ${sf.label} – Klasse ${sf.range}. Lerne smart, übe effektiv!`;
+  renderGradeGrid();
   updateSidebarGrades();
 }
 

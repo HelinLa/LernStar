@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=32" />
+  <link rel="stylesheet" href="style.css?v=33" />
   <link rel="stylesheet" href="quiz-game.css?v=1" />
 <!-- Markdown + Mathe-Rendering für Chat -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
@@ -124,12 +124,39 @@
   <!-- HOME VIEW -->
   <section class="view" id="viewHome">
     <div class="hero">
-<h1 class="hero-title">Willkommen bei <span class="accent">LernStar</span></h1>
-      <p class="hero-sub">Deine moderne Lernplattform für Klasse 5–13. Lerne smart, übe effektiv und werde fit für jede Prüfung!</p>
+      <h1 class="hero-title">Willkommen bei <span class="accent">LernStar</span></h1>
+      <p class="hero-sub" id="heroSubText">Deine Lernplattform für alle Schulformen – von Klasse 1 bis 13. Lerne smart, übe effektiv!</p>
       <div class="hero-stats">
-        <div class="stat"><span class="stat-num">9</span><span class="stat-lbl">Klassenstufen</span></div>
-        <div class="stat"><span class="stat-num">2</span><span class="stat-lbl">Fächer</span></div>
-        <div class="stat"><span class="stat-num">300+</span><span class="stat-lbl">Aufgaben</span></div>
+        <div class="stat"><span class="stat-num">13</span><span class="stat-lbl">Klassenstufen</span></div>
+        <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">Schulformen</span></div>
+        <div class="stat"><span class="stat-num">500+</span><span class="stat-lbl">Aufgaben</span></div>
+      </div>
+    </div>
+
+    <!-- Schulform-Selektor -->
+    <div class="sf-selector">
+      <div class="sf-selector-title">🏫 Wähle deine Schulform</div>
+      <div class="sf-row">
+        <button class="sf-btn" data-sf="grundschule" onclick="selectSchoolType('grundschule')">
+          <span class="sf-icon">🎒</span>
+          <span class="sf-label">Grundschule</span>
+          <span class="sf-range">Klasse 1–4</span>
+        </button>
+        <button class="sf-btn" data-sf="hauptschule" onclick="selectSchoolType('hauptschule')">
+          <span class="sf-icon">📚</span>
+          <span class="sf-label">Hauptschule</span>
+          <span class="sf-range">Klasse 5–9</span>
+        </button>
+        <button class="sf-btn" data-sf="realschule" onclick="selectSchoolType('realschule')">
+          <span class="sf-icon">📐</span>
+          <span class="sf-label">Realschule</span>
+          <span class="sf-range">Klasse 5–10</span>
+        </button>
+        <button class="sf-btn sf-active" data-sf="gymnasium" onclick="selectSchoolType('gymnasium')">
+          <span class="sf-icon">🎓</span>
+          <span class="sf-label">Gymnasium</span>
+          <span class="sf-range">Klasse 5–13</span>
+        </button>
       </div>
     </div>
 
@@ -613,10 +640,10 @@
   </div>
 </div>
 
-<script src="content.js?v=26"></script>
+<script src="content.js?v=27"></script>
 <script src="js/ai_engine.js?v=1"></script>
 <script src="physics-sim.js?v=2"></script>
-<script src="app.js?v=80"></script>
+<script src="app.js?v=81"></script>
 <script src="quiz-game.js?v=1"></script>
 <!-- ── Animated Explainer Modal ─────────────────────────────── -->
 <div id="explainerModal" role="dialog" aria-modal="true" aria-labelledby="explainerTitle">

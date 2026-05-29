@@ -264,6 +264,72 @@ ul { list-style: none; }
 .stat-lbl { font-size:.85rem; color:rgba(255,255,255,.6); font-weight:600; }
 
 /* ============================================================
+   SCHULFORM-SELEKTOR
+   ============================================================ */
+.sf-selector {
+  max-width: 860px;
+  margin: 0 auto 20px;
+  padding: 0 24px;
+  text-align: center;
+}
+.sf-selector-title {
+  font-size: .92rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 14px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.sf-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.sf-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 24px;
+  border-radius: 20px;
+  border: 2.5px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.08);
+  cursor: pointer;
+  transition: all .22s cubic-bezier(.4,0,.2,1);
+  font-family: inherit;
+  color: rgba(255,255,255,.75);
+  min-width: 120px;
+  backdrop-filter: blur(6px);
+}
+.sf-btn:hover {
+  border-color: rgba(255,255,255,.5);
+  background: rgba(255,255,255,.16);
+  transform: translateY(-3px);
+  color: #fff;
+}
+.sf-icon { font-size: 1.8rem; line-height: 1; }
+.sf-label { font-size: .95rem; font-weight: 800; }
+.sf-range { font-size: .75rem; font-weight: 600; opacity: .7; }
+
+.sf-active {
+  border-color: #fff !important;
+  background: rgba(255,255,255,.22) !important;
+  color: #fff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.25);
+}
+.sf-active .sf-range { opacity: .9; }
+
+@media (max-width: 600px) {
+  .sf-row { gap: 8px; }
+  .sf-btn { min-width: 80px; padding: 12px 14px; }
+  .sf-icon { font-size: 1.4rem; }
+  .sf-label { font-size: .82rem; }
+  .sf-range { font-size: .68rem; }
+}
+
+/* ============================================================
    GRADE GRID
    ============================================================ */
 .section-title {
