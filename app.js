@@ -3914,6 +3914,51 @@ function openExperiment(expId) {
         (e.clientY - r.top)  * (this.height / r.height)
       );
     });
+  } else if (expId === 'federpendel') {
+    modal.innerHTML = `
+      <div class="sim-box">
+        <button class="sim-x" onclick="closeExperiment()">✕</button>
+        <h3 class="sim-h3">🌀 Experiment: Federpendel</h3>
+        <canvas id="fpAnimCanvas" width="460" height="270" style="width:100%;border-radius:10px;display:block"></canvas>
+        <div style="padding:8px 16px 4px;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px">
+          <div style="background:#eff6ff;border-radius:10px;padding:9px 12px">
+            <div style="font-size:.8rem;color:#1D4ED8;font-weight:700;margin-bottom:4px">Masse m (0,2–2,0 kg)</div>
+            <input type="range" id="fpMSlider" min="0.2" max="2.0" step="0.1" value="0.5"
+              oninput="_fpSetM(this.value)" style="width:100%;accent-color:#2563EB">
+            <div style="text-align:center;font-weight:800;color:#1D4ED8"><span id="fpMLabel">0,50</span> kg</div>
+          </div>
+          <div style="background:#f0fdf4;border-radius:10px;padding:9px 12px">
+            <div style="font-size:.8rem;color:#15803D;font-weight:700;margin-bottom:4px">Federkonstante D (5–50 N/m)</div>
+            <input type="range" id="fpDSlider" min="5" max="50" step="5" value="20"
+              oninput="_fpSetD(this.value)" style="width:100%;accent-color:#16A34A">
+            <div style="text-align:center;font-weight:800;color:#15803D"><span id="fpDLabel">20</span> N/m</div>
+          </div>
+        </div>
+        <div class="sim-info-row" style="margin-top:6px">
+          <span>m = <b id="fpMVal">0,50</b> kg</span>
+          <span>D = <b id="fpDVal">20</b> N/m</span>
+          <span>T = <b id="fpTVal">0,99</b> s</span>
+          <span>s = <b id="fpSVal">10,0</b> cm</span>
+          <span>F = <b id="fpFVal">-2,0</b> N</span>
+        </div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" id="fpToggleBtn" onclick="_fpToggle()">▶ Messung starten</button>
+          <button class="sim-btn" onclick="_simReset()">↺ Neu starten</button>
+        </div>
+        <div class="sim-diagram-label">s-t Diagramm – Auslenkung <span style="font-weight:400;font-size:.82em;color:#7c3aed">(s = A·cos(ω·t))</span></div>
+        <canvas id="fpSTChart" class="sim-chart-canvas" width="460" height="180"></canvas>
+        <div class="sim-diagram-label">v-t Diagramm – Geschwindigkeit <span style="font-weight:400;font-size:.82em;color:#0284C7">(v = −A·ω·sin(ω·t))</span></div>
+        <canvas id="fpVTChart" class="sim-chart-canvas" width="460" height="150"></canvas>
+        <div id="fpResult" class="sim-result"></div>
+        <p class="sim-hint" style="text-align:center;margin:4px 0 6px">Drücke <b>Messung starten</b> → Messwerte werden alle 0,2 s automatisch aufgezeichnet &nbsp;|&nbsp; <b>F = −D·s</b> &nbsp;|&nbsp; <b>T = 2π·√(m/D)</b></p>
+        <table class="sim-table" id="fpTable" style="display:none">
+          <thead><tr><th>t (s)</th><th>s (cm)</th><th>v (cm/s)</th><th>F (N)</th></tr></thead>
+          <tbody id="fpTbody"></tbody>
+        </table>
+      </div>`;
+    document.body.appendChild(modal);
+    _sim = _simFederpendel();
+
   } else if (expId === 'wellen') {
     modal.innerHTML = `
       <div class="sim-box">
@@ -6537,6 +6582,9 @@ function _impStoss(){ if (_sim) _sim.stoss(); }
 function _impReset(){ if (_sim) _sim.reset(); }
 function _penSetL(v){ if (_sim) _sim.setL(parseFloat(v)); }
 function _welSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
+function _fpToggle(){ if (_sim) _sim.toggle(); }
+function _fpSetM(v){ if (_sim) _sim.setM(parseFloat(v)); }
+function _fpSetD(v){ if (_sim) _sim.setD(parseFloat(v)); }
 function _kondSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
 function _kondSetMode(m){ if (_sim) _sim.setMode(m); }
 function _kondReset(){ if (_sim) _sim.reset(); }
@@ -9266,6 +9314,342 @@ function _simFadenpendel() {
 
   animId = requestAnimationFrame(draw);
   return { stop, setL, measure: penMeasure, handleClick: penHandleClick };
+}
+
+// ============================================================
+// SIM: FEDERPENDEL (Klasse 11)
+// ============================================================
+function _simFederpendel() {
+  const cvAnim = document.getElementById('fpAnimCanvas');
+  const cvST   = document.getElementById('fpSTChart');
+  const cvVT   = document.getElementById('fpVTChart');
+  if (!cvAnim) return { stop(){}, toggle(){}, reset(){}, setM(){}, setD(){} };
+  const ctxA = cvAnim.getContext('2d');
+  const WA = cvAnim.width, HA = cvAnim.height;
+
+  let m = 0.5, D = 20;
+  const AMP = 0.10;        // amplitude 10 cm in m (fixed)
+  let simTime = 0;
+  let lastTs = null;
+  let animId = null;
+  let measuring = false;
+  let measTimer = null;
+  let data = [];
+
+  const fmt  = (n, d=2) => n.toFixed(d).replace('.', ',');
+  const omega = () => Math.sqrt(D / m);
+  const period= () => 2 * Math.PI / omega();
+  const s_m  = t => AMP * Math.cos(omega() * t);
+  const v_ms = t => -AMP * omega() * Math.sin(omega() * t);
+  const F_N  = t => -D * s_m(t);
+
+  // ── Canvas helpers ──────────────────────────────────────────
+  const ANCHOR_X = WA / 2, ANCHOR_Y = 22;
+  const Y_EQ = 158;   // equilibrium y
+  const PX_M = 270;   // px per metre
+  const MW = 48, MH = 26;  // mass block size
+
+  function yMass(s) { return Y_EQ + s * PX_M; }
+
+  function drawSpring(ctx, x, y0, y1, coils) {
+    const n = coils * 2;
+    const segH = (y1 - y0) / (n + 2);
+    const hw = 20;
+    ctx.beginPath();
+    ctx.moveTo(x, y0);
+    ctx.lineTo(x, y0 + segH);
+    for (let i = 0; i < n; i++) {
+      ctx.lineTo(x + (i % 2 === 0 ? hw : -hw), y0 + segH + (i + 1) * segH);
+    }
+    ctx.lineTo(x, y1);
+    ctx.strokeStyle = '#475569'; ctx.lineWidth = 2.5; ctx.stroke();
+  }
+
+  function rrect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y); ctx.arcTo(x+w,y,x+w,y+r,r);
+    ctx.lineTo(x+w,y+h-r); ctx.arcTo(x+w,y+h,x+w-r,y+h,r);
+    ctx.lineTo(x+r,y+h); ctx.arcTo(x,y+h,x,y+h-r,r);
+    ctx.lineTo(x,y+r); ctx.arcTo(x,y,x+r,y,r); ctx.closePath();
+  }
+
+  function drawAnim(t) {
+    const s = s_m(t), v = v_ms(t), F = F_N(t);
+    const yM = yMass(s);
+
+    ctxA.clearRect(0,0,WA,HA);
+    // Background
+    ctxA.fillStyle = '#f8fafc'; ctxA.fillRect(0,0,WA,HA);
+
+    // Equilibrium dashed line
+    ctxA.strokeStyle='#c7d2fe'; ctxA.lineWidth=1.5; ctxA.setLineDash([6,4]);
+    ctxA.beginPath(); ctxA.moveTo(40,Y_EQ); ctxA.lineTo(WA-10,Y_EQ); ctxA.stroke();
+    ctxA.setLineDash([]);
+    ctxA.fillStyle='#818cf8'; ctxA.font='10px sans-serif'; ctxA.textAlign='left';
+    ctxA.fillText('Ruhelage (s = 0)', 44, Y_EQ - 4);
+
+    // Ceiling bar
+    ctxA.fillStyle='#94a3b8';
+    ctxA.fillRect(ANCHOR_X-32, 0, 64, ANCHOR_Y-4);
+    for(let i=0;i<5;i++){
+      ctxA.strokeStyle='#64748b'; ctxA.lineWidth=1.5;
+      ctxA.beginPath();
+      ctxA.moveTo(ANCHOR_X-24+i*12, ANCHOR_Y-4);
+      ctxA.lineTo(ANCHOR_X-30+i*12, 0);
+      ctxA.stroke();
+    }
+    ctxA.beginPath(); ctxA.arc(ANCHOR_X,ANCHOR_Y,5,0,Math.PI*2);
+    ctxA.fillStyle='#475569'; ctxA.fill();
+
+    // Spring
+    const massTopY = yM - MH/2;
+    drawSpring(ctxA, ANCHOR_X, ANCHOR_Y+5, massTopY, 9);
+
+    // Displacement arrow (left side)
+    if (Math.abs(s) > 0.004) {
+      const ax = ANCHOR_X - 40;
+      ctxA.strokeStyle='#7C3AED'; ctxA.lineWidth=2; ctxA.setLineDash([4,3]);
+      ctxA.beginPath(); ctxA.moveTo(ax,Y_EQ); ctxA.lineTo(ax,yM); ctxA.stroke();
+      ctxA.setLineDash([]);
+      // arrowhead
+      const dir = s > 0 ? 1 : -1;
+      ctxA.fillStyle='#7C3AED';
+      ctxA.beginPath(); ctxA.moveTo(ax,yM); ctxA.lineTo(ax-5,yM-dir*9); ctxA.lineTo(ax+5,yM-dir*9); ctxA.fill();
+      ctxA.font='bold 12px sans-serif'; ctxA.textAlign='center'; ctxA.fillStyle='#5b21b6';
+      ctxA.fillText('s', ax, (Y_EQ+yM)/2 + 4);
+    }
+
+    // Force arrow (right side)
+    if (Math.abs(F) > 0.05) {
+      const ax = ANCHOR_X + 38;
+      const arrowLen = Math.min(Math.abs(F) * 18, 50);
+      const arrowDir = F < 0 ? -1 : 1;  // F<0 → force upward (restoring when s>0)
+      ctxA.strokeStyle='#DC2626'; ctxA.lineWidth=2.5;
+      ctxA.beginPath(); ctxA.moveTo(ax,yM); ctxA.lineTo(ax,yM - arrowDir*arrowLen); ctxA.stroke();
+      ctxA.fillStyle='#DC2626';
+      ctxA.beginPath();
+      ctxA.moveTo(ax,yM - arrowDir*arrowLen);
+      ctxA.lineTo(ax-5,yM - arrowDir*(arrowLen-9));
+      ctxA.lineTo(ax+5,yM - arrowDir*(arrowLen-9));
+      ctxA.fill();
+      ctxA.font='bold 12px sans-serif'; ctxA.textAlign='left'; ctxA.fillStyle='#b91c1c';
+      ctxA.fillText('F', ax+7, yM - arrowDir*arrowLen/2 + 4);
+    }
+
+    // Mass block
+    const bx = ANCHOR_X-MW/2, by = yM-MH/2;
+    // Spring connects here (top center of block)
+    ctxA.fillStyle='rgba(0,0,0,0.08)'; rrect(ctxA,bx+3,by+3,MW,MH,6); ctxA.fill();
+    ctxA.fillStyle='#2563EB'; rrect(ctxA,bx,by,MW,MH,6); ctxA.fill();
+    ctxA.strokeStyle='#1e40af'; ctxA.lineWidth=1.5; rrect(ctxA,bx,by,MW,MH,6); ctxA.stroke();
+    ctxA.fillStyle='#fff'; ctxA.font='bold 13px Nunito,sans-serif'; ctxA.textAlign='center';
+    ctxA.fillText('m', ANCHOR_X, yM+5);
+
+    // Info panel
+    const ip={x:WA-160,y:HA-96,w:152,h:90};
+    ctxA.fillStyle='rgba(255,255,255,0.93)'; ctxA.fillRect(ip.x,ip.y,ip.w,ip.h);
+    ctxA.strokeStyle='#e2e8f0'; ctxA.lineWidth=1; ctxA.strokeRect(ip.x,ip.y,ip.w,ip.h);
+    ctxA.fillStyle='#1e1b4b'; ctxA.font='bold 11px sans-serif'; ctxA.textAlign='left';
+    ctxA.fillText('s = '+fmt(s*100,1)+' cm',  ip.x+8, ip.y+18);
+    ctxA.fillText('v = '+fmt(v*100,1)+' cm/s', ip.x+8, ip.y+34);
+    ctxA.fillText('F = '+fmt(F,2)+' N',        ip.x+8, ip.y+50);
+    ctxA.fillText('T = '+fmt(period(),2)+' s', ip.x+8, ip.y+66);
+    ctxA.fillText('t = '+fmt(simTime,1)+' s',  ip.x+8, ip.y+82);
+
+    // Measuring indicator
+    if (measuring) {
+      ctxA.fillStyle='#16a34a'; ctxA.font='bold 11px sans-serif'; ctxA.textAlign='right';
+      ctxA.fillText('● REC', WA-8, 18);
+    }
+
+    // Update HTML info row
+    const ids={fpSVal:fmt(s*100,1), fpVVal:fmt(v*100,1), fpFVal:fmt(F,2), fpTVal:fmt(period(),2)};
+    Object.entries(ids).forEach(([id,val])=>{const el=document.getElementById(id);if(el)el.textContent=val;});
+  }
+
+  // ── Charts ─────────────────────────────────────────────────
+  function _chartBase(ctx2, cW, cH, P, xLabel, yLabel, tMax, yMax, zeroline) {
+    const gW=cW-P.l-P.r, gH=cH-P.t-P.b;
+    ctx2.clearRect(0,0,cW,cH);
+    ctx2.fillStyle='#f5f3ff'; ctx2.fillRect(0,0,cW,cH);
+    ctx2.strokeStyle='#ece9f8'; ctx2.lineWidth=1;
+    for(let i=1;i<=5;i++){
+      const y=P.t+(i/5)*gH; ctx2.beginPath();ctx2.moveTo(P.l,y);ctx2.lineTo(P.l+gW,y);ctx2.stroke();
+      const x=P.l+(i/5)*gW; ctx2.beginPath();ctx2.moveTo(x,P.t);ctx2.lineTo(x,P.t+gH);ctx2.stroke();
+    }
+    ctx2.strokeStyle='#333';ctx2.lineWidth=2;
+    ctx2.beginPath();ctx2.moveTo(P.l,P.t);ctx2.lineTo(P.l,P.t+gH);ctx2.lineTo(P.l+gW,P.t+gH);ctx2.stroke();
+    ctx2.fillStyle='#333';
+    ctx2.beginPath();ctx2.moveTo(P.l+gW,P.t+gH);ctx2.lineTo(P.l+gW+7,P.t+gH-3);ctx2.lineTo(P.l+gW+7,P.t+gH+3);ctx2.fill();
+    ctx2.beginPath();ctx2.moveTo(P.l,P.t);ctx2.lineTo(P.l-3,P.t+7);ctx2.lineTo(P.l+3,P.t+7);ctx2.fill();
+    ctx2.font='bold 11px Nunito,sans-serif'; ctx2.fillStyle='#333'; ctx2.textAlign='center';
+    ctx2.fillText(xLabel, P.l+gW/2, cH-4);
+    ctx2.save();ctx2.translate(13,P.t+gH/2);ctx2.rotate(-Math.PI/2);ctx2.fillText(yLabel,0,0);ctx2.restore();
+    ctx2.font='9px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='center';
+    const steps=5;
+    for(let i=0;i<=steps;i++) ctx2.fillText(fmt(tMax*i/steps,1), P.l+(i/steps)*gW, P.t+gH+13);
+    if (zeroline) {
+      const y0=P.t+gH/2;
+      ctx2.strokeStyle='#999';ctx2.lineWidth=1;ctx2.setLineDash([4,4]);
+      ctx2.beginPath();ctx2.moveTo(P.l,y0);ctx2.lineTo(P.l+gW,y0);ctx2.stroke();
+      ctx2.setLineDash([]);
+    }
+    return {gW,gH};
+  }
+
+  function drawSTChart() {
+    if (!cvST) return;
+    const ctx2=cvST.getContext('2d'), cW=cvST.width, cH=cvST.height;
+    const P={l:52,r:16,t:18,b:36};
+    const tMax=Math.max(4*period(), data.length>0?data[data.length-1].t+0.5:4*period());
+    const sMax=12;
+    const {gW,gH}=_chartBase(ctx2,cW,cH,P,'Zeit t (s)','s (cm)',tMax,sMax,true);
+    // Y labels
+    ctx2.font='9px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='right';
+    [sMax, sMax/2, 0, -sMax/2, -sMax].forEach((v,i)=>ctx2.fillText(v.toFixed(0),P.l-3,P.t+(i/4)*gH+4));
+    // Theory curve
+    ctx2.strokeStyle='rgba(124,58,237,0.25)'; ctx2.lineWidth=1.5; ctx2.setLineDash([5,4]);
+    ctx2.beginPath();
+    for(let i=0;i<=120;i++){
+      const t=tMax*i/120, s=s_m(t)*100;
+      const x=P.l+(t/tMax)*gW, y=P.t+gH/2-(s/sMax)*(gH/2);
+      i===0?ctx2.moveTo(x,y):ctx2.lineTo(x,y);
+    }
+    ctx2.stroke();ctx2.setLineDash([]);
+    // Data
+    if(data.length>1){
+      ctx2.strokeStyle='#7C3AED'; ctx2.lineWidth=2; ctx2.beginPath();
+      data.forEach((d,i)=>{
+        const x=P.l+(Math.min(d.t,tMax)/tMax)*gW;
+        const y=P.t+gH/2-(Math.max(-sMax,Math.min(sMax,d.s_cm))/sMax)*(gH/2);
+        i===0?ctx2.moveTo(x,y):ctx2.lineTo(x,y);
+      });
+      ctx2.stroke();
+    }
+    data.forEach(d=>{
+      const x=P.l+(Math.min(d.t,tMax)/tMax)*gW;
+      const y=P.t+gH/2-(Math.max(-sMax,Math.min(sMax,d.s_cm))/sMax)*(gH/2);
+      ctx2.beginPath();ctx2.arc(x,y,3,0,Math.PI*2);
+      ctx2.fillStyle='#7C3AED';ctx2.fill();
+    });
+  }
+
+  function drawVTChart() {
+    if (!cvVT) return;
+    const ctx2=cvVT.getContext('2d'), cW=cvVT.width, cH=cvVT.height;
+    const P={l:58,r:16,t:18,b:36};
+    const tMax=Math.max(4*period(), data.length>0?data[data.length-1].t+0.5:4*period());
+    const vMax=Math.ceil(AMP*omega()*100*1.15);
+    const {gW,gH}=_chartBase(ctx2,cW,cH,P,'Zeit t (s)','v (cm/s)',tMax,vMax,true);
+    // Y labels
+    ctx2.font='9px sans-serif'; ctx2.fillStyle='#666'; ctx2.textAlign='right';
+    [vMax, vMax/2, 0, -vMax/2, -vMax].forEach((v,i)=>ctx2.fillText(Math.round(v),P.l-3,P.t+(i/4)*gH+4));
+    // Theory
+    ctx2.strokeStyle='rgba(2,132,199,0.25)'; ctx2.lineWidth=1.5; ctx2.setLineDash([5,4]);
+    ctx2.beginPath();
+    for(let i=0;i<=120;i++){
+      const t=tMax*i/120, v=v_ms(t)*100;
+      const x=P.l+(t/tMax)*gW, y=P.t+gH/2-(v/vMax)*(gH/2);
+      i===0?ctx2.moveTo(x,y):ctx2.lineTo(x,y);
+    }
+    ctx2.stroke();ctx2.setLineDash([]);
+    // Data
+    if(data.length>1){
+      ctx2.strokeStyle='#0284C7'; ctx2.lineWidth=2; ctx2.beginPath();
+      data.forEach((d,i)=>{
+        const x=P.l+(Math.min(d.t,tMax)/tMax)*gW;
+        const y=P.t+gH/2-(Math.max(-vMax,Math.min(vMax,d.v_cms))/vMax)*(gH/2);
+        i===0?ctx2.moveTo(x,y):ctx2.lineTo(x,y);
+      });
+      ctx2.stroke();
+    }
+    data.forEach(d=>{
+      const x=P.l+(Math.min(d.t,tMax)/tMax)*gW;
+      const y=P.t+gH/2-(Math.max(-vMax,Math.min(vMax,d.v_cms))/vMax)*(gH/2);
+      ctx2.beginPath();ctx2.arc(x,y,3,0,Math.PI*2);
+      ctx2.fillStyle='#0284C7';ctx2.fill();
+    });
+  }
+
+  // ── Data recording ─────────────────────────────────────────
+  function recordPoint() {
+    if (!measuring) return;
+    const t=parseFloat(simTime.toFixed(1));
+    data.push({ t, s_cm:parseFloat((s_m(simTime)*100).toFixed(1)),
+      v_cms:parseFloat((v_ms(simTime)*100).toFixed(1)),
+      F_N:parseFloat(F_N(simTime).toFixed(2)) });
+    updateFpTable();
+  }
+
+  function updateFpTable() {
+    const tb=document.getElementById('fpTbody'), tw=document.getElementById('fpTable');
+    if(!tb||!tw) return;
+    if(data.length>0) tw.style.display='table';
+    tb.innerHTML=data.map(d=>
+      `<tr><td>${fmt(d.t,1)}</td><td>${fmt(d.s_cm,1)}</td><td>${fmt(d.v_cms,1)}</td><td>${fmt(d.F_N,2)}</td></tr>`
+    ).join('');
+    // scroll table to bottom
+    tw.scrollTop=tw.scrollHeight;
+  }
+
+  // ── Animation loop ──────────────────────────────────────────
+  function loop(ts) {
+    if(!lastTs) lastTs=ts;
+    simTime += (ts-lastTs)/1000;
+    lastTs=ts;
+    drawAnim(simTime);
+    drawSTChart();
+    drawVTChart();
+    animId=requestAnimationFrame(loop);
+  }
+
+  // ── Controls ────────────────────────────────────────────────
+  function startMeas() {
+    measuring=true; data=[]; simTime=0; lastTs=null;
+    updateFpTable();
+    const btn=document.getElementById('fpToggleBtn');
+    if(btn){btn.textContent='⏹ Messung stoppen';btn.classList.remove('primary');}
+    measTimer=setInterval(recordPoint,200);
+  }
+  function stopMeas() {
+    measuring=false;
+    if(measTimer){clearInterval(measTimer);measTimer=null;}
+    const btn=document.getElementById('fpToggleBtn');
+    if(btn){btn.textContent='▶ Messung starten';btn.classList.add('primary');}
+  }
+
+  function toggle(){ measuring?stopMeas():startMeas(); }
+
+  function reset() {
+    stopMeas(); data=[]; simTime=0; lastTs=null;
+    const tw=document.getElementById('fpTable');
+    if(tw) tw.style.display='none';
+    const tb=document.getElementById('fpTbody'); if(tb) tb.innerHTML='';
+    const res=document.getElementById('fpResult'); if(res) res.innerHTML='';
+  }
+
+  function stop() {
+    if(animId) cancelAnimationFrame(animId);
+    if(measTimer) clearInterval(measTimer);
+  }
+
+  function setM(val) {
+    m=val;
+    const lbl=document.getElementById('fpMLabel'); if(lbl) lbl.textContent=val.toFixed(2).replace('.',',');
+    const el=document.getElementById('fpMVal'); if(el) el.textContent=val.toFixed(2).replace('.',',');
+    reset();
+  }
+
+  function setD(val) {
+    D=val;
+    const lbl=document.getElementById('fpDLabel'); if(lbl) lbl.textContent=val.toFixed(0);
+    const el=document.getElementById('fpDVal'); if(el) el.textContent=val.toFixed(0);
+    reset();
+  }
+
+  // Start
+  animId=requestAnimationFrame(loop);
+  return { stop, toggle, reset, setM, setD };
 }
 
 // ============================================================

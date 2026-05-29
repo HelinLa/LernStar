@@ -1276,6 +1276,9 @@ const CONTENT = {
           { name:'2.7 – Rotation und Trägheitsmoment', diff:3, exp:'rotation',
             explanation:'Ein Eiskunstläufer dreht sich langsam mit ausgestreckten Armen – zieht er sie ein, dreht er sich plötzlich viel schneller. Kein Trick, reine Physik! Das Trägheitsmoment J beschreibt, wie schwer es ist, eine Drehbewegung zu ändern. Je weiter die Masse vom Drehpunkt weg ist, desto größer J. Wenn J kleiner wird (Arme rein), muss die Drehgeschwindigkeit ω größer werden – denn der Drehimpuls L = J × ω bleibt immer gleich.' },
 
+          { name:'2.8 – Das Federpendel', diff:2, exp:'federpendel',
+            explanation:'Hänge einen Körper an eine Feder und ziehe ihn nach unten – was passiert? Er schwingt! Das Federpendel ist das einfachste Modell für eine harmonische Schwingung. Die Rückstellkraft der Feder zieht den Körper immer zurück zur Ruhelage: F = −D · s. Das Minuszeichen bedeutet: Die Kraft wirkt entgegen der Auslenkung s. D ist die Federkonstante in N/m – je größer D, desto steifer die Feder und desto schneller die Schwingung. Die Schwingungsdauer hängt nur von Masse und Federkonstante ab: T = 2π · √(m/D). Weder Amplitude noch Schwingungsort beeinflussen T! Größere Masse → längere Periode. Stärkere Feder → kürzere Periode. Die Auslenkung folgt einer Kosinus-Kurve: s(t) = A · cos(ω · t) mit ω = √(D/m). Die Geschwindigkeit ist die Ableitung davon: v(t) = −A · ω · sin(ω · t). Sie ist null an den Umkehrpunkten (±A) und maximal in der Ruhelage. Anwendungen: Stoßdämpfer im Auto, Uhrenfedern, Seismografen – überall steckt das Federmodell drin!' },
+
           // ── KAPITEL 3: ERHALTUNGSGRÖSSEN ──────────────────────────────
           { isChapter:true, name:'Kapitel 3 – Erhaltungsgrößen' },
           { name:'3.1 – Was ist Energie?', diff:1, exp:'energieerhaltung',
