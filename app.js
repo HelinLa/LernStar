@@ -356,11 +356,13 @@ const GRADE_GRADIENTS = {
 
 // ── Schulform-System ─────────────────────────────────────────
 const SCHOOL_TYPES = {
-  grundschule: { label:'Grundschule',         icon:'🎒', range:'1–4',  color:'#10B981',
+  grundschule: { label:'Grundschule', icon:'🎒', range:'1–4',  color:'#10B981',
     grades:['klasse1','klasse2','klasse3','klasse4'] },
-  haupt_real:  { label:'Haupt- & Realschule', icon:'📚', range:'5–10', color:'#F59E0B',
+  hauptschule: { label:'Hauptschule', icon:'📚', range:'5–9',  color:'#F59E0B',
+    grades:['klasse5','klasse6','klasse7','klasse8','klasse9'] },
+  realschule:  { label:'Realschule',  icon:'📐', range:'5–10', color:'#2563EB',
     grades:['klasse5','klasse6','klasse7','klasse8','klasse9','klasse10'] },
-  gymnasium:   { label:'Gymnasium',           icon:'🎓', range:'5–13', color:'#7C3AED',
+  gymnasium:   { label:'Gymnasium',   icon:'🎓', range:'5–13', color:'#7C3AED',
     grades:['klasse5','klasse6','klasse7','klasse8','klasse9','klasse10','klasse11','klasse12','klasse13'] },
 };
 // Aktive Schulform – null bedeutet: noch keine gewählt (zeige Schulform-Auswahl)
