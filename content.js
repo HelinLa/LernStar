@@ -183,6 +183,45 @@ const CONTENT = {
               { q:'Was ist ein häufiges Wort, das man auswendig lernt?', hint:'Es kommt in fast jedem Satz vor.', options:['Schmetterling','Eisenbahn','und','Planetarium'], correct:2, explanation:'"und" ist ein sehr häufiges Wort – das lernst du auswendig zu schreiben.' },
             ]
           },
+          { id:'e3', type:'Lesen & Satzverständnis', diff:1, title:'Sätze lesen und verstehen',
+            desc:'Texte lesen und einfache Fragen dazu beantworten.',
+            questions:[
+              { q:'Was steht am Ende eines Aussagesatzes?', hint:'Ein Aussagesatz sagt etwas aus – welches Zeichen beendet ihn?', options:['Fragezeichen','Ausrufezeichen','Punkt','Komma'], correct:2, explanation:'Aussagesätze enden mit einem Punkt: „Die Sonne scheint."' },
+              { q:'Wie viele Silben hat „Win-ter"?', hint:'Klatsche beim Sprechen – jeder Klatsch ist eine Silbe!', options:['1','2','3','4'], correct:1, explanation:'Win-ter = 2 Silben.' },
+              { q:'Welches ist ein Fragesatz?', hint:'Ein Fragesatz endet mit einem Fragezeichen und fragt etwas!', options:['Mach das sofort!','Die Katze schläft.','Wie heißt du?','Ich bin müde.'], correct:2, explanation:'"Wie heißt du?" ist ein Fragesatz – er endet mit dem Fragezeichen.' },
+              { q:'Lies: „Tom hat einen Hund." – Was hat Tom?', hint:'Lies den Satz aufmerksam und finde die Antwort darin!', options:['Eine Katze','Einen Hund','Ein Pferd','Eine Maus'], correct:1, explanation:'Im Satz steht: Tom hat einen Hund.' },
+              { q:'Wie viele Wörter hat: „Die Sonne scheint hell."?', hint:'Zähle jedes Wort einzeln – Leerzeichen trennen Wörter!', options:['2','3','4','5'], correct:2, explanation:'"Die" + "Sonne" + "scheint" + "hell" = 4 Wörter.' },
+              { q:'Was kommt am Anfang jedes Satzes?', hint:'Der erste Buchstabe eines Satzes ist immer …?', options:['Ein Punkt','Ein kleiner Buchstabe','Ein großer Buchstabe','Ein Komma'], correct:2, explanation:'Jeder Satz beginnt mit einem großen Buchstaben.' },
+              { q:'Was ist eine Silbe?', hint:'Klatsche ein Wort – jedes Klatschen ist eine Silbe: „Kat-ze" = ?', options:['Ein Buchstabe','Ein Teil eines Wortes','Ein ganzes Wort','Ein Satz'], correct:1, explanation:'Eine Silbe ist ein Sprachteil: „Kat-ze" = 2 Silben.' },
+              { q:'Welches Satzzeichen passt zu einem Befehl?', hint:'Befehle und Ausrufe klingen laut – welches Zeichen passt dazu?', options:['Punkt','Fragezeichen','Ausrufezeichen','Komma'], correct:2, explanation:'"Lauf schnell!" endet mit dem Ausrufezeichen.' },
+            ]
+          },
+          { id:'e4', type:'Wortarten', diff:1, title:'Nomen, Verben und Adjektive entdecken',
+            desc:'Die ersten Wortarten erkennen und benennen.',
+            questions:[
+              { q:'Welches Wort ist ein Nomen?', hint:'Kannst du „der", „die" oder „das" davor stellen?', options:['laufen','groß','Hund','rot'], correct:2, explanation:'Hund ist ein Nomen – „der Hund" → großgeschrieben.' },
+              { q:'Welches Wort ist ein Verb?', hint:'Verben beschreiben Handlungen – was tut man?', options:['Ball','blau','springen','Schule'], correct:2, explanation:'Springen ist ein Verb (Tutwort).' },
+              { q:'Welches Wort ist ein Adjektiv?', hint:'Adjektive beschreiben Eigenschaften – wie ist etwas?', options:['schreiben','klein','Stuhl','und'], correct:1, explanation:'Klein ist ein Adjektiv – es beschreibt eine Eigenschaft.' },
+              { q:'Im Satz „Die rote Rose blüht." – welches Wort ist das Adjektiv?', hint:'Was beschreibt die Rose genauer? Wie ist sie?', options:['Die','Rose','rote','blüht'], correct:2, explanation:'„rote" ist das Adjektiv – es sagt, welche Farbe die Rose hat.' },
+              { q:'Nomen werden immer … geschrieben.', hint:'Der erste Buchstabe von Nomen ist immer …?', options:['klein','kursiv','GROSS','unterstrichen'], correct:2, explanation:'Nomen schreibt man immer mit einem großen Anfangsbuchstaben.' },
+              { q:'Was ist das Verb im Satz: „Das Kind spielt."?', hint:'Was tut das Kind?', options:['Das','Kind','spielt','im'], correct:2, explanation:'„spielt" ist das Verb.' },
+              { q:'Welches Wort ist ein Nomen?', hint:'Dinge, Tiere, Personen und Orte sind Nomen!', options:['rennen','laut','Sonne','blau'], correct:2, explanation:'Sonne ist ein Nomen – „die Sonne" → immer großgeschrieben.' },
+              { q:'Was beschreiben Adjektive?', hint:'Adjektive = Wiewörter. Wie ist etwas?', options:['Handlungen','Personen und Orte','Eigenschaften','Zeitangaben'], correct:2, explanation:'Adjektive beschreiben Eigenschaften: groß, rot, schnell, schön.' },
+            ]
+          },
+          { id:'e5', type:'Buchstaben & Schreiben', diff:1, title:'Buchstaben, Laute und erste Regeln',
+            desc:'Alphabet, Vokale, Konsonanten und Grundregeln der Rechtschreibung.',
+            questions:[
+              { q:'Wie viele Buchstaben hat das deutsche Alphabet?', hint:'Singe das Alphabet – zähle jeden Buchstaben!', options:['24','26','28','30'], correct:1, explanation:'Das deutsche Alphabet hat 26 Buchstaben (A–Z).' },
+              { q:'Welcher Buchstabe ist ein Vokal?', hint:'Vokale kann man allein singen: A, E, I, O, U!', options:['B','F','E','K'], correct:2, explanation:'E ist ein Vokal. Vokale sind: A, E, I, O, U.' },
+              { q:'Welcher Satz ist richtig geschrieben?', hint:'Satzanfang groß, Nomen groß, Satzzeichen am Ende!', options:['die katze schläft','Die Katze schläft.','Die katze Schläft.','die Katze schläft?'], correct:1, explanation:'"Die Katze schläft." – Satzanfang und Nomen groß, Punkt.' },
+              { q:'Was sind Konsonanten?', hint:'Konsonanten sind alle Buchstaben, die keine Vokale sind!', options:['Nur A, E, I, O, U','B, C, D, F, G … (keine Vokale)','Nur Großbuchstaben','Alle Buchstaben'], correct:1, explanation:'Konsonanten (Mitlaute) sind B, C, D, F, G … – alle außer A, E, I, O, U.' },
+              { q:'Welches Wort beginnt mit einem Vokal?', hint:'Vokale: A, E, I, O, U – welches Wort fängt damit an?', options:['Ball','Lampe','Apfel','Dach'], correct:2, explanation:'Apfel beginnt mit A – A ist ein Vokal.' },
+              { q:'Welcher Buchstabe fehlt in „Hu__ d" → Hund?', hint:'Sprich das Wort langsam: H-u-n-…', options:['t','d','g','b'], correct:1, explanation:'Hund endet mit d: H-u-n-d.' },
+              { q:'Wie schreibt man Nomen?', hint:'Der erste Buchstabe von Nomen ist besonders!', options:['immer klein','immer GROSS','immer kursiv','immer unterstrichen'], correct:1, explanation:'Nomen schreibt man immer mit großem Anfangsbuchstaben.' },
+              { q:'Was übt man mit dem Klatsch-Trick?', hint:'Klatsche beim Sprechen – was zählt man dabei?', options:['Buchstaben','Wörter','Silben','Sätze'], correct:2, explanation:'Der Klatsch-Trick hilft, Silben zu zählen: „Schmett-ter-ling" = 3 Silben.' },
+            ]
+          },
         ]
       },
     ]
@@ -368,6 +407,45 @@ const CONTENT = {
               { q:'Wie schreibt man: ba__en (Klang: backen)?', hint:'K-Laut nach kurzem Vokal!', options:['baken','backen','bakken','bacen'], correct:1, explanation:'Backen – nach kurzem a kommt ck.' },
             ]
           },
+          { id:'e3', type:'Texte schreiben', diff:1, title:'Geschichten planen und schreiben',
+            desc:'Texte strukturieren, planen und überarbeiten.',
+            questions:[
+              { q:'Aus wie vielen Teilen besteht eine gute Geschichte?', hint:'Anfang, Mitte und … – denke an den Aufbau!', options:['2','3','4','5'], correct:1, explanation:'Eine gute Geschichte hat 3 Teile: Einleitung, Hauptteil und Schluss.' },
+              { q:'Was gehört in die Einleitung einer Geschichte?', hint:'Wer? Wo? Wann? – was setzt man an den Anfang?', options:['Das Ende','Die Auflösung','Wer, Wo, Wann','Den Höhepunkt'], correct:2, explanation:'Die Einleitung beantwortet: Wer? Wo? Wann? – damit der Leser den Einstieg findet.' },
+              { q:'Was ist ein Verbindungswort (Konjunktion)?', hint:'Wörter, die Sätze miteinander verknüpfen …', options:['laufen','Hund','und, aber, weil','groß'], correct:2, explanation:'Konjunktionen verbinden Sätze: und, aber, weil, dann, danach, schließlich.' },
+              { q:'Was ist der Höhepunkt einer Geschichte?', hint:'Der aufregendste, spannendste Moment – wenn alles auf dem Spiel steht!', options:['Der Anfang','Der ruhige Mittelteil','Der spannendste Moment','Das Ende'], correct:2, explanation:'Der Höhepunkt ist der spannendste Moment der Geschichte.' },
+              { q:'Was sollte man nach dem Schreiben immer tun?', hint:'Sind alle Wörter richtig? Stehen Satzzeichen? Ist alles vollständig?', options:['Nichts mehr tun','Alles nochmal abschreiben','Den Text überarbeiten','Sofort abgeben'], correct:2, explanation:'Überarbeiten: Rechtschreibung, Satzzeichen und Vollständigkeit prüfen.' },
+              { q:'Was macht einen Text lebendig?', hint:'Statt immer „gehen" oder „sagen" – nutze verschiedene …', options:['Immer dasselbe Verb','Keine Adjektive','Verschiedene Verben und Adjektive','Sehr kurze Sätze'], correct:2, explanation:'Verschiedene Verben (flüstern, rufen, fragen) und Adjektive machen Texte lebendig.' },
+              { q:'Welche Zeitform benutzt man meist in Geschichten?', hint:'In Büchern liest man: er spielTE, sie lachTE – wie heißt diese Zeitform?', options:['Futur','Präteritum','Präsens','Konjunktiv'], correct:1, explanation:'In Erzählungen nutzt man das Präteritum: Er spielte, sie lachte.' },
+              { q:'Was ist ein Bericht (Unterschied zur Geschichte)?', hint:'Bericht = Fakten. Kein Fantasie, keine Gefühle – nur …?', options:['Fantasie und Spannung','Nur Gefühle','Sachliche Fakten, W-Fragen','Reime und Gedichte'], correct:2, explanation:'Ein Bericht ist sachlich: Wer, Was, Wo, Wann, Warum – keine Fantasie.' },
+            ]
+          },
+          { id:'e4', type:'Grammatik', diff:2, title:'Artikel, Pronomen und Satzstruktur',
+            desc:'Grammatikwissen aus Klasse 2 sicher anwenden.',
+            questions:[
+              { q:'Welchen Artikel hat „Schule"?', hint:'Ist „Schule" männlich, weiblich oder sächlich?', options:['der','die','das','ein'], correct:1, explanation:'die Schule – Schule ist weiblich.' },
+              { q:'Was ist ein Pronomen?', hint:'„Der Hund bellt." → „__ bellt." – welches Wort ersetzt „der Hund"?', options:['Ein Verb','Ein Adjektiv','Ein Wort, das ein Nomen ersetzt','Ein Artikel'], correct:2, explanation:'Pronomen ersetzen Nomen: er, sie, es, wir, ihr, sie.' },
+              { q:'Welches Pronomen ersetzt „die Katze"?', hint:'Katze ist weiblich – welches Pronomen passt zu weiblichen Nomen?', options:['er','es','sie','wir'], correct:2, explanation:'"die Katze" → „sie" (weiblich).' },
+              { q:'Welche Präposition passt? „Das Buch liegt ___ dem Tisch."', hint:'Das Buch liegt obenauf – welche Präposition bedeutet das?', options:['neben','unter','auf','hinter'], correct:2, explanation:'"auf" dem Tisch – das Buch liegt auf der Oberfläche des Tisches.' },
+              { q:'Was ist der Unterschied zwischen „der" und „ein"?', hint:'„Der" meint einen bestimmten – „ein" meint einen beliebigen!', options:['"der" ist weiblich','Kein Unterschied','"der" = bestimmt, "ein" = unbestimmt','"ein" ist immer richtig'], correct:2, explanation:'"der Hund" = bestimmt (man weiß welcher). „ein Hund" = unbestimmt (irgendein).' },
+              { q:'Im Satz „Wir spielen im Garten." – was ist das Subjekt?', hint:'Wer macht etwas in diesem Satz?', options:['spielen','im Garten','Wir','Satz'], correct:2, explanation:'"Wir" ist das Subjekt – Frage: Wer spielt?' },
+              { q:'Was verbindet „aber" in einem Satz?', hint:'„Ich will spielen, aber es regnet." – Was drückt „aber" aus?', options:['Zwei gleiche Aussagen','Einen Gegensatz','Eine Frage','Einen Befehl'], correct:1, explanation:'"aber" verbindet einen Gegensatz.' },
+              { q:'Welcher Artikel passt zu „Auto"?', hint:'Auto = sächlich – welcher Artikel gehört dazu?', options:['der','die','das','ein'], correct:2, explanation:'das Auto – Auto ist sächlich.' },
+            ]
+          },
+          { id:'e5', type:'Rechtschreibung', diff:2, title:'Rechtschreibstrategien anwenden',
+            desc:'Schwierige Wörter mit Strategien korrekt schreiben.',
+            questions:[
+              { q:'Verlängerungsprobe: „Wal__" → „Wälder" → d oder t?', hint:'Verlängere das Wort – wie klingt der Endlaut in „Wälder"?', options:['Walt','Wals','Wald','Waldt'], correct:2, explanation:'Wald → Wälder → d. Die Verlängerung zeigt das d.' },
+              { q:'Welche Regel gilt für „Bett, kommen, rennen"?', hint:'Was folgt nach einem kurzen Vokal – ein oder zwei Konsonanten?', options:['Dehn-h folgt','Doppelter Konsonant folgt','ß folgt','ie folgt'], correct:1, explanation:'Nach einem kurzen Vokal kommt oft ein doppelter Konsonant: Bett, kommen, rennen.' },
+              { q:'Warum schreibt man „fahren" mit h?', hint:'Das a in „fahren" klingt lang – was folgt nach langen Vokalen?', options:['Das ist ein Fehler','Das ist das Dehn-h nach langem a','Zufällig','Wegen der Aussprache von f'], correct:1, explanation:'Fahren hat ein Dehn-h: das a ist lang → Dehn-h nach langem Vokal.' },
+              { q:'tz oder z? „si__en" (sitzen)?', hint:'Ist das i kurz oder lang? Was folgt nach einem kurzen Vokal?', options:['sizen','sizzen','sitzen','sitsen'], correct:2, explanation:'Sitzen – das i ist kurz → tz.' },
+              { q:'Welches Wort ist richtig geschrieben?', hint:'Nomen groß, Satzanfang groß, Punkt am Ende!', options:['die blume blüht.','Die blume blüht.','Die Blume blüht.','die Blume blüht.'], correct:2, explanation:'"Die Blume blüht." – Satzanfang + Nomen groß, Punkt am Ende.' },
+              { q:'Was hilft die Ableitungsstrategie zu erkennen?', hint:'Wie hilft ein verwandtes Wort beim Schreiben?', options:['Wörter im Wörterbuch finden','Wörter schnell schreiben','Die richtige Schreibweise durch Verwandtes ableiten','Wörter laut vorlesen'], correct:2, explanation:'Ableiten: „Hände" → Stamm „Hand" → a. Verwandte Wörter zeigen die Schreibweise.' },
+              { q:'Welches Wort hat ein Dehn-h?', hint:'Suche das Wort mit einem langen Vokal – nach dem kommt das Dehn-h!', options:['kommen','backen','Uhr','sitzen'], correct:2, explanation:'"Uhr" hat ein Dehn-h: U-h-r. Das u ist lang.' },
+              { q:'Wie schreibt man ein Nomen korrekt?', hint:'Jedes Nomen beginnt mit …', options:['immer klein','GROSS (großem Anfangsbuchstaben)','kursiv','mit Komma davor'], correct:1, explanation:'Nomen schreibt man immer mit großem Anfangsbuchstaben: der Hund, die Blume.' },
+            ]
+          },
         ]
       },
     ]
@@ -547,6 +625,45 @@ const CONTENT = {
               { q:'Wie lautet das schließende Anführungszeichen?', hint:'Direkte Rede endet mit …', options:['"(oben)','„(unten)','«','»'], correct:0, explanation:'Die direkte Rede endet mit " (oben).' },
             ]
           },
+          { id:'e3', type:'Satzglieder & Satzarten', diff:2, title:'Subjekt, Prädikat, Objekt',
+            desc:'Satzglieder sicher erkennen und benennen.',
+            questions:[
+              { q:'Subjekt im Satz: „Das Mädchen lacht laut."?', hint:'Frage: Wer lacht?', options:['lacht','laut','Das Mädchen','im Zimmer'], correct:2, explanation:'"Das Mädchen" ist das Subjekt – Frage: Wer lacht?' },
+              { q:'Prädikat im Satz: „Der Hund bellt den ganzen Tag."?', hint:'Was tut der Hund?', options:['Der Hund','bellt','den ganzen Tag','Tag'], correct:1, explanation:'"bellt" ist das Prädikat – es ist das Verb.' },
+              { q:'Akkusativobjekt: „Ich sehe den Vogel." – Welches Satzglied ist „den Vogel"?', hint:'Frage: Wen oder was sehe ich?', options:['Subjekt','Prädikat','Akkusativobjekt','Dativobjekt'], correct:2, explanation:'"den Vogel" = Akkusativobjekt. Frage: Wen sehe ich? → den Vogel.' },
+              { q:'Welchen Artikel hat „Schulbus"?', hint:'Der Artikel richtet sich nach dem letzten Wort – was ist das letzte Wort?', options:['die Schulbus','das Schulbus','der Schulbus','ein Schulbus'], correct:2, explanation:'"der Bus" → der Schulbus.' },
+              { q:'Wie beginnt eine direkte Rede im Deutschen?', hint:'Anführungszeichen: Die erste öffnet unten oder oben?', options:['Mit " (oben)','Mit „ (unten)','Mit «','Mit dem Doppelpunkt'], correct:1, explanation:'Direkte Rede beginnt mit „ (unten): Tom sagte: „Ich bin müde."' },
+              { q:'Verb im Weil-Satz: „Ich bleibe zuhause, weil es regnet." – wo steht „regnet"?', hint:'In Nebensätzen mit „weil" wandert das Verb …', options:['An den Anfang','An zweite Stelle','Ans Ende','Bleibt gleich'], correct:2, explanation:'Im Nebensatz steht das Verb ans Ende: „… weil es regnet."' },
+              { q:'Was ist ein zusammengesetztes Nomen?', hint:'Es entsteht aus zwei Wörtern zusammen – z.B. Fuß + Ball.', options:['Ein Nomen mit Artikel','Aus zwei Wörtern zusammengesetzt','Ein Nomen mit Adjektiv','Ein Verb'], correct:1, explanation:'Fußball = Fuß + Ball – der Artikel richtet sich nach dem letzten Wort.' },
+              { q:'Welcher Satz enthält direkte Rede?', hint:'Direkte Rede steht in Anführungszeichen!', options:['Er sagte es laut.','Sie fragte mich.','Tom rief: „Hilfe!"','Der Hund bellt.'], correct:2, explanation:'"Tom rief: „Hilfe!"" enthält direkte Rede – sie steht in Anführungszeichen.' },
+            ]
+          },
+          { id:'e4', type:'Texte lesen & verstehen', diff:2, title:'Sachtexte und Kinderliteratur',
+            desc:'Texte lesen, verstehen und Informationen entnehmen.',
+            questions:[
+              { q:'Was ist der Unterschied zwischen einem Sachtext und einer Erzählung?', hint:'Sachtext = Fakten. Erzählung = Geschichte. Was ist der Hauptunterschied?', options:['Sachtext hat Bilder','Sachtext enthält Fakten, Erzählung enthält Geschichten','Erzählung ist kürzer','Kein Unterschied'], correct:1, explanation:'Sachtext = Fakten und Erklärungen. Erzählung = Geschichte mit Handlung.' },
+              { q:'Was ist die erste Lesestrategie vor dem Lesen?', hint:'Bevor du einen Text liest – schau dir an, was …', options:['Direkt von Anfang an lesen','Überschrift und Bilder anschauen, Erwartungen bilden','Alle Wörter markieren','Den Text auswendig lernen'], correct:1, explanation:'Vor dem Lesen: Überschrift und Bilder anschauen, Erwartungen formulieren.' },
+              { q:'Was hilft bei unbekannten Wörtern im Text?', hint:'Auch ohne Wörterbuch kann man Wörter erschließen – wie?', options:['Wort überspringen','Aus dem Kontext (Zusammenhang) erschließen','Wörter ignorieren','Text abbrechen'], correct:1, explanation:'Unbekannte Wörter aus dem Kontext (Zusammenhang) erschließen.' },
+              { q:'Was ist eine Schlussfolgerung?', hint:'Man schließt aus dem Gelesenen etwas, das nicht direkt dasteht – man …', options:['Einen Satz wörtlich wiederholen','Aus dem Text herausdenken, was es bedeutet','Nichts tun','Einen neuen Text schreiben'], correct:1, explanation:'Schlussfolgerung = aus dem Text herausdenken, was es bedeutet oder bedeuten könnte.' },
+              { q:'Wie fasst man einen Text richtig zusammen?', hint:'Zusammenfassen heißt: nur das Wichtigste in eigenen Worten sagen!', options:['Den ganzen Text abschreiben','Alles weglassen','Die Hauptidee in 2–3 Sätzen in eigenen Worten','Nur den letzten Satz wiederholen'], correct:2, explanation:'Zusammenfassung = Hauptidee in 2–3 Sätzen in eigenen Worten.' },
+              { q:'Was ist der Unterschied zwischen einem Kinderbuch und einem Sachbuch?', hint:'Kinderbuch = Fantasie und Spannung. Sachbuch = ?', options:['Kinderbücher haben keine Bilder','Sachbücher enthalten Fakten, Kinderbücher Geschichten','Sachbücher sind kürzer','Kein Unterschied'], correct:1, explanation:'Kinderbücher = Geschichten. Sachbücher = Informationen und Fakten.' },
+              { q:'Welche W-Fragen beantwortet ein Bericht?', hint:'Bericht = Fakten: Wer? Was? …', options:['Wann, Wo, Wie viel','Wer, Was, Wo, Wann, Warum','Wie viel, Woher','Welche, Warum, Wieso'], correct:1, explanation:'Ein Bericht beantwortet: Wer? Was? Wo? Wann? Warum?' },
+              { q:'Was tut man beim Lesen mit Schlüsselwörtern?', hint:'Wichtige Wörter sollen hervorgehoben werden – wie?', options:['Man ignoriert sie','Man streicht sie durch','Man markiert sie','Man löscht sie'], correct:2, explanation:'Schlüsselwörter werden markiert (unterstrichen/eingekreist) – sie tragen die Hauptinformation.' },
+            ]
+          },
+          { id:'e5', type:'Rechtschreibung Fortgeschritten', diff:2, title:'Wortstamm, direkte Rede und ß/ss',
+            desc:'Fortgeschrittene Rechtschreibregeln sicher anwenden.',
+            questions:[
+              { q:'Was ist der Wortstamm von „Wälder"?', hint:'Welcher Teil bleibt bei allen verwandten Wörtern gleich?', options:['Wäld','Wald','Wälder','äld'], correct:1, explanation:'"Wald" ist der Wortstamm – alle Wörter der Familie teilen ihn: Wald, Wälder, waldig.' },
+              { q:'Welche Wörter gehören zur Wortfamilie von „laufen"?', hint:'Alle Wörter mit demselben Stamm – hier: „lauf"!', options:['leben, lachen','Läufer, gelaufen, Auflauf','leider, leise','lassen, liegen'], correct:1, explanation:'Läufer, gelaufen, Auflauf – alle mit Stamm „lauf".' },
+              { q:'ß oder ss? „Stra__e"', hint:'Das a in „Straße" ist lang oder kurz? Langes a → ß oder ss?', options:['Strase','Strasse','Straße','Straaße'], correct:2, explanation:'Straße – langes a → ß. Nach langen Vokalen und Diphthongen schreibt man ß.' },
+              { q:'ß oder ss? „Flu__" (Gewässer)', hint:'Das u in „Fluss" ist kurz. Was kommt nach einem kurzen Vokal?', options:['Fluß','Fluss','Flusse','Fluße'], correct:1, explanation:'Fluss – kurzes u → ss.' },
+              { q:'Wie schreibt man direkte Rede richtig?', hint:'Doppelpunkt, dann Anführungszeichen – wo stehen sie?', options:['Tom sagte "Ich bin müde".','Tom sagte: „Ich bin müde."','Tom sagte, ich bin müde.','„Tom sagte" Ich bin müde.'], correct:1, explanation:'Tom sagte: „Ich bin müde." – Doppelpunkt, öffnende Anführung unten, schließende oben.' },
+              { q:'Was zeigt die Verlängerungsstrategie?', hint:'Verlängere das Wort – was wird aus dem letzten Laut?', options:['Ob das Wort schwierig ist','Ob man d oder t schreibt am Wortende','Wie lang das Wort ist','Ob es ein Nomen ist'], correct:1, explanation:'Verlängerung zeigt d oder t: „Hund" → „Hunde" → d!' },
+              { q:'Welche Wortart schreibt man in einem Nebensatz ans Ende?', hint:'„weil", „dass" – diese Konjunktionen verändern die Satzstellung!', options:['Das Adjektiv','Das Nomen','Das Verb','Die Präposition'], correct:2, explanation:'Im Nebensatz steht das Verb am Ende: „… weil er gespielt hat."' },
+              { q:'Welcher Satz zeigt korrekte direkte Rede?', hint:'Anführungszeichen, Großschreibung nach dem öffnenden Zeichen, Punkt vor schließendem Zeichen!', options:['Lisa rief: „komm her!"','Lisa rief: „Komm her!"','lisa rief: „komm her!"','Lisa rief „Komm her!".'], correct:1, explanation:'"Lisa rief: „Komm her!"" – korrekt: Doppelpunkt, öffn. Anführung unten, Großschreibung.' },
+            ]
+          },
         ]
       },
     ]
@@ -722,6 +839,45 @@ const CONTENT = {
               { q:'Dehn-h: welches Wort hat eins?', hint:'Langes a, e, i, o, u!', options:['kommen','rennen','fahren','sitzen'], correct:2, explanation:'Fahren hat Dehn-h: fa-h-ren.' },
               { q:'„Brief" – warum ie?', hint:'Langes i-Laut!', options:['Weil es kurz klingt','Weil das i lang klingt','Zufällig','Weil b davor steht'], correct:1, explanation:'Brief – langes i → ie (ich = kurz, Brief = lang).' },
               { q:'Welche Wörter gehören zur Wortfamilie von „fahren"?', hint:'Gleicher Stamm!', options:['fallen, fühlen','Fahrt, Fahrer, Abfahrt','fragen, finden','fern, fest, fein'], correct:1, explanation:'Fahrt, Fahrer, Abfahrt, Einfahrt – alle mit Stamm „fahr".' },
+            ]
+          },
+          { id:'e3', type:'Die vier Fälle (Kasus)', diff:3, title:'Nominativ, Genitiv, Dativ, Akkusativ',
+            desc:'Die vier Fälle der deutschen Grammatik sicher beherrschen.',
+            questions:[
+              { q:'Welchen Fall hat „der Hund" in: „Der Hund bellt."?', hint:'Frage: Wer bellt? Das ist der … Fall.', options:['Genitiv','Dativ','Akkusativ','Nominativ'], correct:3, explanation:'„Der Hund" = Nominativ. Frage: Wer bellt? → der Hund.' },
+              { q:'Welchen Fall hat „den Hund" in: „Ich sehe den Hund."?', hint:'Frage: Wen oder was sehe ich?', options:['Nominativ','Genitiv','Dativ','Akkusativ'], correct:3, explanation:'„den Hund" = Akkusativ. Frage: Wen sehe ich? → den Hund.' },
+              { q:'Welchen Fall hat „dem Lehrer" in: „Ich gebe dem Lehrer das Heft."?', hint:'Frage: Wem gebe ich das Heft?', options:['Nominativ','Genitiv','Dativ','Akkusativ'], correct:2, explanation:'"dem Lehrer" = Dativ. Frage: Wem? → dem Lehrer.' },
+              { q:'Welchen Fall hat „des Hundes" in: „Das Spielzeug des Hundes liegt dort."?', hint:'Frage: Wessen Spielzeug?', options:['Nominativ','Genitiv','Dativ','Akkusativ'], correct:1, explanation:'"des Hundes" = Genitiv. Frage: Wessen? → des Hundes.' },
+              { q:'Welcher Artikel steht im Nominativ für männliche Nomen?', hint:'Eselsbrücke: Wer? → … Hund bellt.', options:['den','dem','des','der'], correct:3, explanation:'Nominativ maskulin: der – „der Hund".' },
+              { q:'Welcher Artikel steht im Akkusativ für männliche Nomen?', hint:'Wen oder was? → Ich sehe … Hund.', options:['der','dem','des','den'], correct:3, explanation:'Akkusativ maskulin: den – „Ich sehe den Hund."' },
+              { q:'In welchem Fall stehen indirekte Objekte (nach „geben, zeigen, helfen")?', hint:'Wem gebe ich etwas? Wem helfe ich?', options:['Nominativ','Genitiv','Dativ','Akkusativ'], correct:2, explanation:'Indirekte Objekte stehen im Dativ: Ich helfe dem Lehrer.' },
+              { q:'Eselsbrücke für die vier Fälle – in welcher Reihenfolge?', hint:'Nominativ → Genitiv → Dativ → Akkusativ – welche Fragen gehören dazu?', options:['Wer, Wessen, Wem, Wen/Was','Was, Wessen, Wem, Wer','Wen, Wem, Wessen, Wer','Wem, Was, Wer, Wessen'], correct:0, explanation:'Wer? = Nominativ. Wessen? = Genitiv. Wem? = Dativ. Wen/Was? = Akkusativ.' },
+            ]
+          },
+          { id:'e4', type:'Zeitformen & Satzstrukturen', diff:3, title:'Zeitformen und Haupt-/Nebensätze',
+            desc:'Verbformen, Zeitformen und Satzgefüge beherrschen.',
+            questions:[
+              { q:'Zeitform: „Ich habe gespielt."?', hint:'Hilfsverb „haben" + Partizip II → welche Zeitform?', options:['Präsens','Präteritum','Perfekt','Futur'], correct:2, explanation:'"habe gespielt" = Perfekt. Bildung: haben/sein + Partizip II.' },
+              { q:'Zeitform: „Ich spielte gestern."?', hint:'Keine Hilfsverben, Vergangenheit, schriftlich – welche Zeitform?', options:['Präsens','Präteritum','Perfekt','Futur'], correct:1, explanation:'"spielte" = Präteritum. Oft in Büchern und Berichten verwendet.' },
+              { q:'Zeitform: „Ich werde morgen spielen."?', hint:'„Werden" + Infinitiv → Zukunft = ?', options:['Präsens','Präteritum','Perfekt','Futur'], correct:3, explanation:'"werde spielen" = Futur. Bildung: werden + Infinitiv.' },
+              { q:'Welche Zeitform nutzt man für mündliche Erlebnisberichte?', hint:'„Ich habe heute … gemacht" – was ist das?', options:['Futur','Präteritum','Perfekt','Präsens'], correct:2, explanation:'Mündliche Erlebnisberichte nutzen das Perfekt: „Ich habe gespielt."' },
+              { q:'Das Verb im Nebensatz steht …', hint:'Im Nebensatz mit „weil" oder „dass" wandert das Verb …', options:['an den Anfang','an zweite Stelle','ans Ende','in die Mitte'], correct:2, explanation:'Im Nebensatz steht das Verb am Ende: „… weil er gespielt hat."' },
+              { q:'Was ist ein Hauptsatz?', hint:'Ein Hauptsatz kann allein stehen und hat das Verb …', options:['Am Ende','An zweiter Stelle','Am Anfang','Beliebig'], correct:1, explanation:'Hauptsatz: Verb an zweiter Stelle. Er kann alleine stehen.' },
+              { q:'Was ist ein Satzgefüge?', hint:'Es besteht aus mehreren Teilsätzen, die …', options:['Ohne Verbindung nebeneinander stehen','Haupt- und Nebensatz verbunden','Nur aus Nomen bestehen','Aus Fragen bestehen'], correct:1, explanation:'Ein Satzgefüge = Hauptsatz + Nebensatz, verbunden durch Konjunktionen.' },
+              { q:'Steigerung: schön – schöner – …?', hint:'Der höchste Grad der Steigerung heißt Superlativ!', options:['schönst','am schönsten','schönste','schönlich'], correct:1, explanation:'Steigerung: schön – schöner – am schönsten (Superlativ).' },
+            ]
+          },
+          { id:'e5', type:'Rechtschreibung Meisterklasse', diff:3, title:'Alle Rechtschreibregeln sicher',
+            desc:'Komplexe Rechtschreibregeln und Strategien beherrschen.',
+            questions:[
+              { q:'Wortfamilie von „Kraft": Welche Wörter gehören dazu?', hint:'Alle mit demselben Stamm „Kraft" oder „kräft"!', options:['Kraut, Kragen','kräftig, Kraftwerk, entkräften','Kran, Krise','krachen, kriechen'], correct:1, explanation:'kräftig, Kraftwerk, entkräften – alle mit Stamm „Kraft/kräft".' },
+              { q:'ß oder ss? „hei__en" (sagen wie jemand heißt)?', hint:'Das ei in „heißen" ist ein Diphthong. Was folgt nach Diphthongen?', options:['heissen','heißen','heisen','heiisen'], correct:1, explanation:'heißen – ei ist ein Diphthong → ß.' },
+              { q:'ß oder ss? „mu__te" (musste)?', hint:'Ist das u in „musste" kurz oder lang?', options:['mußte','müsste','musste','muste'], correct:2, explanation:'musste – kurzes u → ss.' },
+              { q:'Verlängerungsprobe: „kur__" (Adjektiv)?', hint:'Verlängere: „kurze" – was hörst du am Ende?', options:['kurt','kurz','kurrs','kurtz'], correct:1, explanation:'"kurz" → „kurze" → z. Die Verlängerung zeigt das z.' },
+              { q:'Welche Regel gilt für ie in „Brief, schreiben"?', hint:'Das i klingt lang – welche Schreibweise nutzt man bei langem i?', options:['Nach kurzem i kommt ie','Nach langem i-Laut schreibt man ie','Zufällig','ie nach Konsonant'], correct:1, explanation:'Nach langem i-Laut schreibt man ie: Brief, schreiben.' },
+              { q:'Was ist die Dehn-h-Regel?', hint:'Dehn-h erscheint nach … Vokalen!', options:['Kurzen Vokalen','Langen Vokalen','Doppelvokalen','Konsonanten'], correct:1, explanation:'Dehn-h kommt nach langen Vokalen: fahren, stehlen, Uhr.' },
+              { q:'Wie erkennt man Nomen sicher?', hint:'Teste mit dem Artikel – kannst du „der/die/das" davor stellen?', options:['Sie enden auf -en','Man kann einen Artikel davor stellen','Sie sind immer kurz','Sie haben kein Satzzeichen'], correct:1, explanation:'Nomen = man kann „der/die/das" davor stellen. → Dann großschreiben!' },
+              { q:'Welcher Satz ist vollständig korrekt geschrieben?', hint:'Nomen groß, Verb klein, Satzzeichen, Kasus korrekt!', options:['Ich gebe den ball dem Lehrer.','Ich gebe den Ball dem Lehrer.','ich gebe den Ball dem lehrer.','Ich gebe Den Ball Dem Lehrer.'], correct:1, explanation:'"Ich gebe den Ball dem Lehrer." – Satzanfang groß, Nomen groß, Verb klein, Punkt.' },
             ]
           },
         ]
