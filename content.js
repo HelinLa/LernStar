@@ -3705,5 +3705,572 @@ const CONTENT = {
     ]
   },
 
+
+  /* =========================================================  KLASSE 5 – HAUPTSCHULE NRW  */
+  klasse5_hs: {
+    id:'klasse5_hs', num:5, label:'Klasse 5',
+    emoji:'🌟', color:['#BE185D','#EC4899'], light:'#FCE7F3',
+    tagline:'Hauptschule NRW: Zahlen, Größen und erste Geometrie',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Grundrechenarten, Größen, Geometrie und erste Diagramme',
+        color:'#BE185D',
+        intro:'Willkommen in Mathe Klasse 5! Wir üben Zahlen lesen und ordnen, Rechnen mit Köpfchen, Längen und Gewichte messen und erste geometrische Formen kennenlernen.',
+        topics:[
+          { isChapter:true, name:'🔢 Zahlen und Rechnen' },
+          { name:'Natürliche Zahlen & Grundrechenarten', diff:1,
+            explanation:'Natürliche Zahlen sind die Zahlen 1, 2, 3, 4, … und die Null. Sie haben Stellen: Einer, Zehner, Hunderter, Tausender. Beispiel: 3.456 = 3 Tausender + 4 Hunderter + 5 Zehner + 6 Einer. Rechnen: Addieren (+), Subtrahieren (−), Multiplizieren (×), Dividieren (÷). Punkt vor Strich! Das bedeutet: × und ÷ rechnet man vor + und −. Beispiel: 3 + 4 × 2 = 3 + 8 = 11 (nicht 14!).' },
+          { isChapter:true, name:'📏 Größen' },
+          { name:'Länge, Gewicht, Zeit und Geld', diff:1,
+            explanation:'Einheiten sind wichtig, damit alle das Gleiche meinen! Länge: 1 km = 1.000 m, 1 m = 100 cm, 1 cm = 10 mm. Gewicht: 1 t = 1.000 kg, 1 kg = 1.000 g. Zeit: 1 h = 60 min, 1 min = 60 s. Geld: 1 € = 100 Cent. Beim Umrechnen: Größere Einheit → kleinere Einheit: multiplizieren. Kleinere → größere: dividieren.' },
+          { isChapter:true, name:'📐 Geometrie' },
+          { name:'Quadrat, Rechteck, Dreieck und Kreis', diff:1,
+            explanation:'Geometrische Formen erkennen und berechnen: Quadrat: alle 4 Seiten gleich lang, Umfang U = 4a, Fläche A = a×a. Rechteck: 2 Paare gleicher Seiten, Umfang U = 2(a+b), Fläche A = a×b. Dreieck: 3 Seiten, Winkel zusammen = 180°, Fläche A = (Grundseite × Höhe) ÷ 2. Kreis: runde Form, hat Mittelpunkt und Radius r.' },
+          { isChapter:true, name:'📊 Daten' },
+          { name:'Tabellen und Diagramme lesen', diff:1,
+            explanation:'Daten sammeln und darstellen: Eine Tabelle ordnet Daten in Zeilen und Spalten. Ein Balkendiagramm zeigt Werte als Balken – je länger der Balken, desto größer der Wert. Ein Kreisdiagramm teilt einen Kreis in Stücke auf. Beim Lesen: Immer zuerst den Titel und die Achsenbeschriftung lesen, dann erst die Werte ablesen.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Zahlen', diff:1, title:'Natürliche Zahlen und Rechnen',
+            desc:'Grundrechenarten und Stellenwerte üben.',
+            questions:[
+              { q:'Welche Zahl hat 4 Tausender, 2 Hunderter, 0 Zehner und 7 Einer?', hint:'Schreibe die Stellen nacheinander: T-H-Z-E.', options:['4.207','4.270','4.027','42.07'], correct:0, explanation:'4 Tausender = 4.000, 2 Hunderter = 200, 0 Zehner = 0, 7 Einer = 7 → 4.207.' },
+              { q:'12 + 8 × 3 = ?', hint:'Punkt vor Strich – zuerst multiplizieren!', options:['60','36','24','48'], correct:1, explanation:'Zuerst 8 × 3 = 24, dann 12 + 24 = 36. Punkt vor Strich!' },
+              { q:'315 ÷ 5 = ?', hint:'Wie oft passt 5 in 315? Teile schrittweise auf.', options:['53','63','73','83'], correct:1, explanation:'5 × 60 = 300, 315 − 300 = 15, 15 ÷ 5 = 3 → 63.' },
+              { q:'736 − 289 = ?', hint:'Rechne schrittweise: 736 − 200 = 536, dann − 89.', options:['447','457','467','437'], correct:0, explanation:'736 − 200 = 536, 536 − 89 = 447.' },
+              { q:'Was ist der Wert der Ziffer 7 in der Zahl 3.725?', hint:'Zähle die Stelle ab rechts: E, Z, H, T …', options:['7','70','700','7.000'], correct:2, explanation:'7 steht an der Hunderterstelle → Wert ist 700.' },
+              { q:'24 × 15 = ?', hint:'Zerlege: 24 × 10 = 240, 24 × 5 = ?', options:['240','360','480','120'], correct:1, explanation:'24 × 10 = 240, 24 × 5 = 120 → 240 + 120 = 360.' },
+              { q:'Ordne von klein nach groß: 4.502 | 4.052 | 4.520 | 4.025', hint:'Vergleiche zuerst die Tausender, dann die Hunderter …', options:['4.502 – 4.052 – 4.520 – 4.025','4.025 – 4.052 – 4.502 – 4.520','4.025 – 4.502 – 4.052 – 4.520','4.052 – 4.025 – 4.502 – 4.520'], correct:1, explanation:'Alle beginnen mit 4.0__ oder 4.5__. Aufsteigend: 4.025 – 4.052 – 4.502 – 4.520.' },
+              { q:'Was ergibt 1.000 − 375?', hint:'Ergänze bis 1.000: 375 + ? = 1.000.', options:['615','625','635','725'], correct:1, explanation:'375 + 625 = 1.000 → Ergebnis ist 625.' },
+            ]
+          },
+          { id:'e2', type:'Größen', diff:1, title:'Größen und Einheiten',
+            desc:'Länge, Gewicht, Zeit und Geld umrechnen.',
+            questions:[
+              { q:'2,5 km = ? m', hint:'1 km = 1.000 m → mal 1.000 rechnen.', options:['25 m','250 m','2.500 m','25.000 m'], correct:2, explanation:'2,5 × 1.000 = 2.500 m.' },
+              { q:'3.200 g = ? kg', hint:'1 kg = 1.000 g → durch 1.000 rechnen.', options:['0,32 kg','3,2 kg','32 kg','320 kg'], correct:1, explanation:'3.200 ÷ 1.000 = 3,2 kg.' },
+              { q:'2 Stunden 15 Minuten = ? Minuten', hint:'1 Stunde = 60 Minuten → 2 × 60 + 15.', options:['115 min','125 min','135 min','215 min'], correct:2, explanation:'2 × 60 = 120 Minuten, + 15 = 135 Minuten.' },
+              { q:'Ein Buch kostet 8,50 €. Du zahlst mit 10 €. Wie viel Wechselgeld?', hint:'10 € − 8,50 € rechnen. Denke in Cent oder Kommarechnung.', options:['1,00 €','1,50 €','2,00 €','2,50 €'], correct:1, explanation:'10,00 − 8,50 = 1,50 €.' },
+              { q:'450 cm = ? m', hint:'1 m = 100 cm → durch 100 rechnen.', options:['0,45 m','4,5 m','45 m','4.500 m'], correct:1, explanation:'450 ÷ 100 = 4,5 m.' },
+              { q:'Ein Zug fährt um 14:35 Uhr ab und kommt um 17:10 Uhr an. Wie lange fährt er?', hint:'Rechne die Minuten und Stunden getrennt: erst von :35 bis :10 (nächste Stunde), dann die Stunden zählen.', options:['2 h 25 min','2 h 35 min','2 h 45 min','3 h 25 min'], correct:1, explanation:'14:35 → 15:35 = 1 h, → 16:35 = 2 h, → 17:10 = + 35 min → insgesamt 2 h 35 min.' },
+              { q:'Wie viele Millimeter sind 3 cm 7 mm?', hint:'1 cm = 10 mm → 3 cm in mm umrechnen, dann addieren.', options:['37 mm','307 mm','370 mm','3,7 mm'], correct:0, explanation:'3 cm = 30 mm, + 7 mm = 37 mm.' },
+              { q:'4 kg 300 g = ? g', hint:'1 kg = 1.000 g, dann addieren.', options:['4.030 g','4.300 g','43.000 g','430 g'], correct:1, explanation:'4 × 1.000 g = 4.000 g, + 300 g = 4.300 g.' },
+            ]
+          },
+          { id:'e3', type:'Geometrie', diff:1, title:'Flächen und Formen',
+            desc:'Umfang und Fläche von einfachen Figuren.',
+            questions:[
+              { q:'Ein Rechteck hat a = 6 cm und b = 4 cm. Wie groß ist die Fläche?', hint:'A = a × b (Länge mal Breite).', options:['10 cm²','20 cm²','24 cm²','48 cm²'], correct:2, explanation:'A = 6 × 4 = 24 cm².' },
+              { q:'Ein Quadrat hat die Seite a = 5 cm. Wie groß ist der Umfang?', hint:'Alle 4 Seiten sind gleich → U = 4 × a.', options:['10 cm','20 cm','25 cm','100 cm'], correct:1, explanation:'U = 4 × 5 cm = 20 cm.' },
+              { q:'Wie groß ist die Fläche eines Dreiecks mit Grundseite 8 cm und Höhe 5 cm?', hint:'A = (g × h) ÷ 2.', options:['13 cm²','20 cm²','40 cm²','80 cm²'], correct:1, explanation:'A = (8 × 5) ÷ 2 = 40 ÷ 2 = 20 cm².' },
+              { q:'Welche Form hat genau 4 gleich lange Seiten und 4 rechte Winkel?', hint:'Alle Seiten gleich + 4 rechte Winkel = ?', options:['Rechteck','Dreieck','Quadrat','Kreis'], correct:2, explanation:'Das Quadrat hat alle 4 Seiten gleich lang und genau 4 rechte Winkel (90°).' },
+              { q:'Ein Rechteck hat a = 10 cm, b = 3 cm. Wie groß ist der Umfang?', hint:'U = 2 × (a + b).', options:['13 cm','26 cm','30 cm','60 cm'], correct:1, explanation:'U = 2 × (10 + 3) = 2 × 13 = 26 cm.' },
+              { q:'Wie viele Grad haben die Winkel im Dreieck zusammen?', hint:'Denke an die Regel für alle Dreiecke – immer dieselbe Summe!', options:['90°','180°','270°','360°'], correct:1, explanation:'Die drei Innenwinkel eines Dreiecks ergeben immer zusammen 180°.' },
+              { q:'Welche Form hat keinen geraden Rand?', hint:'Diese Form ist vollkommen rund.', options:['Quadrat','Rechteck','Dreieck','Kreis'], correct:3, explanation:'Der Kreis hat keinen geraden Rand, sondern ist vollkommen rund.' },
+              { q:'Ein Quadrat hat eine Fläche von 36 cm². Wie lang ist eine Seite?', hint:'A = a² → a = √A. Welche Zahl mal sich selbst ergibt 36?', options:['4 cm','6 cm','9 cm','12 cm'], correct:1, explanation:'6 × 6 = 36 → a = 6 cm.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚡',
+        desc:'Licht & Schatten, Magnetismus, Stromkreis und Wärme',
+        color:'#BE185D',
+        intro:'Physik Klasse 5: Wir entdecken die Welt mit Experimenten! Warum gibt es Schatten? Warum zieht ein Magnet Eisen an? Wie leuchtet eine Glühlampe?',
+        topics:[
+          { isChapter:true, name:'💡 Licht & Schatten' },
+          { name:'Lichtquellen, Schatten und Reflexion', diff:1,
+            explanation:'Licht kommt von Lichtquellen: Sonne (natürlich), Lampe, Kerze (künstlich). Licht breitet sich geradlinig aus. Trifft Licht auf einen undurchsichtigen Körper, entsteht ein Schatten dahinter. Je näher die Lichtquelle, desto größer der Schatten. Reflexion: Licht wird von Spiegeln und hellen Flächen zurückgeworfen. Der Einfallswinkel = Reflexionswinkel.' },
+          { isChapter:true, name:'🧲 Magnetismus' },
+          { name:'Magnete und Kompass', diff:1,
+            explanation:'Magnete haben zwei Pole: Nordpol (N) und Südpol (S). Gleiche Pole stoßen sich ab, ungleiche ziehen sich an. Magnetische Materialien: Eisen, Nickel, Kobalt werden angezogen. Kompass: Die Nadel zeigt immer zum magnetischen Nordpol der Erde. Die Erde selbst ist ein riesiger Magnet!' },
+          { isChapter:true, name:'⚡ Strom und Wärme' },
+          { name:'Einfacher Stromkreis und Temperatur', diff:1,
+            explanation:'Stromkreis: Strom fließt nur, wenn der Kreislauf geschlossen ist: Batterie → Kabel → Lampe → zurück zur Batterie. Leiter (z.B. Metall) lassen Strom durch, Isolatoren (z.B. Gummi, Holz) nicht. Temperatur messen: Das Thermometer zeigt die Temperatur in Grad Celsius (°C). Wasser friert bei 0°C und siedet bei 100°C.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Licht', diff:1, title:'Licht, Schatten und Reflexion',
+            desc:'Wie entsteht Schatten? Wie funktioniert ein Spiegel?',
+            questions:[
+              { q:'Was braucht man, um einen Schatten zu erzeugen?', hint:'Zwei Dinge sind nötig: eine Quelle und ein Hindernis.', options:['Nur eine Lampe','Eine Lichtquelle und einen undurchsichtigen Gegenstand','Zwei Spiegel','Einen dunklen Raum'], correct:1, explanation:'Schatten entsteht, wenn eine Lichtquelle Licht aussendet und ein undurchsichtiger Körper das Licht blockiert.' },
+              { q:'Wie breitet sich Licht aus?', hint:'Denke an Sonnenstrahlen oder Taschenlampenstrahl.', options:['In Kurven','Zickzack','Geradlinig','Kreisförmig'], correct:2, explanation:'Licht breitet sich immer geradlinig (in geraden Linien) aus.' },
+              { q:'Was ist eine natürliche Lichtquelle?', hint:'Sie existiert ohne Menschen – sie leuchtet von alleine.', options:['Glühlampe','Kerze','Sonne','Taschenlampe'], correct:2, explanation:'Die Sonne ist eine natürliche Lichtquelle – sie leuchtet ohne menschliche Hilfe.' },
+              { q:'Wie groß ist der Reflexionswinkel im Vergleich zum Einfallswinkel?', hint:'Das ist das wichtigste Reflexionsgesetz!', options:['Größer','Kleiner','Gleich groß','Immer 90°'], correct:2, explanation:'Einfallswinkel = Reflexionswinkel – das ist das Reflexionsgesetz.' },
+              { q:'Was passiert mit dem Schatten, wenn du die Lampe näher an den Gegenstand bewegst?', hint:'Denke daran, wie viel Licht um den Gegenstand herum geblockt wird.', options:['Er wird kleiner','Er verschwindet','Er wird größer','Er bleibt gleich'], correct:2, explanation:'Je näher die Lichtquelle, desto mehr Licht wird seitlich blockiert und desto größer wird der Schatten.' },
+              { q:'Ein Spiegel zeigt dein Spiegelbild – wo liegt das Bild?', hint:'Das Bild scheint hinter dem Spiegel zu liegen.', options:['Vor dem Spiegel','Auf dem Spiegel','Hinter dem Spiegel','Neben dem Spiegel'], correct:2, explanation:'Das Spiegelbild erscheint hinter dem Spiegel – es ist ein virtuelles Bild.' },
+              { q:'Was braucht Licht nicht, um sich auszubreiten?', hint:'Licht kommt sogar aus dem Weltraum zur Erde!', options:['Energie','Ein Medium (Luft, Wasser)','Nichts – Licht breitet sich auch im Vakuum aus','Einen Spiegel'], correct:2, explanation:'Licht breitet sich auch im Vakuum (leerer Raum) aus – deshalb erreicht uns das Licht der Sonne.' },
+              { q:'Welche Aussage über Schatten ist FALSCH?', hint:'Überlege, was der Schatten wirklich ist.', options:['Schatten entsteht hinter einem undurchsichtigen Körper','Schatten ist der Bereich ohne Licht','Schatten hat dieselbe Farbe wie der Körper','Schatten ist umso größer, je näher die Lichtquelle ist'], correct:2, explanation:'Der Schatten hat KEINE Farbe – er ist einfach der dunkle Bereich, wo das Licht fehlt.' },
+            ]
+          },
+          { id:'e2', type:'Magnetismus & Strom', diff:1, title:'Magnetismus und Stromkreis',
+            desc:'Magnete, Pole und einfache Schaltungen.',
+            questions:[
+              { q:'Was passiert, wenn zwei Nordpole sich begegnen?', hint:'Gleiche Pole …', options:['Ziehen sich an','Stoßen sich ab','Passiert nichts','Verschmelzen'], correct:1, explanation:'Gleiche Pole stoßen sich ab. Nur ungleiche Pole (N und S) ziehen sich an.' },
+              { q:'Welche Materialien werden von einem Magneten angezogen?', hint:'Das sind magnetische Werkstoffe.', options:['Holz und Glas','Eisen und Nickel','Gummi und Plastik','Kupfer und Aluminium'], correct:1, explanation:'Eisen, Nickel und Kobalt sind magnetische Materialien und werden vom Magneten angezogen.' },
+              { q:'Was zeigt ein Kompass immer an?', hint:'Die Erde hat selbst ein Magnetfeld.', options:['Die nächste Stadt','Den magnetischen Nordpol der Erde','Den Südpol','Die Sonne'], correct:1, explanation:'Die Kompassnadel ist ein kleiner Magnet – sie richtet sich immer nach dem Erdmagnetfeld aus und zeigt zum magnetischen Nordpol.' },
+              { q:'Was braucht ein Stromkreis, damit Strom fließen kann?', hint:'Der Kreis muss … sein.', options:['Eine Unterbrechung','Einen geschlossenen Kreislauf','Mehrere Batterien','Mindestens zwei Lampen'], correct:1, explanation:'Nur ein geschlossener Stromkreis lässt Strom fließen. Jede Unterbrechung (z.B. offener Schalter) stoppt den Strom.' },
+              { q:'Welches Material leitet Strom gut?', hint:'Metalle sind oft gute …', options:['Gummi','Holz','Kupfer','Plastik'], correct:2, explanation:'Kupfer ist ein sehr guter elektrischer Leiter – deshalb bestehen Kabel innen aus Kupfer.' },
+              { q:'Bei welcher Temperatur friert Wasser?', hint:'Temperatur in Grad Celsius – ein Basiswert!', options:['100°C','−100°C','0°C','37°C'], correct:2, explanation:'Wasser friert bei 0°C (Celsius) und siedet bei 100°C.' },
+              { q:'Was ist der Unterschied zwischen einem Leiter und einem Isolator?', hint:'Einer lässt Strom durch, der andere nicht.', options:['Leiter ist schwer, Isolator ist leicht','Leiter lässt Strom durch, Isolator nicht','Leiter ist aus Holz, Isolator aus Metall','Kein Unterschied'], correct:1, explanation:'Leiter (z.B. Metalle) lassen elektrischen Strom durch. Isolatoren (z.B. Gummi, Holz) nicht.' },
+              { q:'Wozu dient der Schalter in einem Stromkreis?', hint:'Er kann den Kreislauf öffnen oder schließen.', options:['Er erzeugt Strom','Er unterbricht oder schließt den Stromkreis','Er speichert Energie','Er macht die Lampe heller'], correct:1, explanation:'Der Schalter kann den Stromkreis öffnen (Strom hört auf) oder schließen (Strom fließt).' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+
+  /* =========================================================  KLASSE 6 – HAUPTSCHULE NRW  */
+  klasse6_hs: {
+    id:'klasse6_hs', num:6, label:'Klasse 6',
+    emoji:'🎯', color:['#9D174D','#F43F5E'], light:'#FFE4E6',
+    tagline:'Hauptschule NRW: Brüche, Dezimalzahlen und Geometrie',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Brüche, Dezimalzahlen, Prozentvorstellungen und Winkel',
+        color:'#9D174D',
+        intro:'In Klasse 6 Mathe dreht sich alles um Brüche und Dezimalzahlen. Diese braucht man im Alltag ständig – beim Einkaufen, Kochen und Teilen!',
+        topics:[
+          { isChapter:true, name:'🍕 Brüche' },
+          { name:'Brüche erkennen, vergleichen und rechnen', diff:1,
+            explanation:'Ein Bruch zeigt, wie viele Teile von einem Ganzen genommen werden. Zum Beispiel: 3/4 bedeutet 3 von 4 gleich großen Teilen. Zähler (oben) = wie viele Teile. Nenner (unten) = wie viele Teile insgesamt. Gleichnamige Brüche (gleicher Nenner) vergleichen: 3/8 < 5/8. Brüche addieren: 1/4 + 2/4 = 3/4 (nur bei gleichem Nenner einfach Zähler addieren). Kürzen: 4/8 = 1/2 (Zähler und Nenner durch dieselbe Zahl teilen).' },
+          { isChapter:true, name:'💶 Dezimalzahlen' },
+          { name:'Dezimalzahlen lesen, schreiben und rechnen', diff:1,
+            explanation:'Dezimalzahlen haben Stellen nach dem Komma: 3,45 bedeutet 3 Einer, 4 Zehntel, 5 Hundertstel. Beim Addieren/Subtrahieren: Komma untereinander schreiben! 3,45 + 1,2 = 3,45 + 1,20 = 4,65. Beim Multiplizieren mit 10, 100, 1.000: Komma um 1, 2, 3 Stellen nach rechts verschieben. Beim Dividieren durch 10, 100: Komma nach links.' },
+          { isChapter:true, name:'📊 Prozentvorstellungen' },
+          { name:'50 %, 25 % und 10 % verstehen', diff:1,
+            explanation:'Prozent bedeutet "von Hundert". 100 % = das Ganze. 50 % = die Hälfte = 1/2. 25 % = ein Viertel = 1/4. 10 % = ein Zehntel = 1/10. Schnell rechnen: 10 % von 80 = 80 ÷ 10 = 8. 50 % von 80 = 80 ÷ 2 = 40. 25 % von 80 = 80 ÷ 4 = 20. 1 % von 80 = 80 ÷ 100 = 0,80.' },
+          { isChapter:true, name:'📐 Geometrie' },
+          { name:'Winkel und Symmetrie', diff:1,
+            explanation:'Winkel messen, wie weit sich zwei Strahlen von einem Punkt öffnen. Einheit: Grad (°). Wichtige Winkel: Spitzer Winkel: kleiner als 90°. Rechter Winkel: genau 90° (Quadrat-Ecke). Stumpfer Winkel: zwischen 90° und 180°. Gestreckter Winkel: genau 180° (gerade Linie). Symmetrie: Eine Figur ist symmetrisch, wenn sie gespiegelt gleich aussieht. Achsensymmetrie: Es gibt eine Spiegelachse.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Brüche', diff:1, title:'Brüche verstehen und rechnen',
+            desc:'Brüche erkennen, vergleichen, addieren und kürzen.',
+            questions:[
+              { q:'Was bedeutet der Bruch 3/4?', hint:'Nenner = Teile insgesamt, Zähler = genommene Teile.', options:['4 von 3 Teilen','3 von 4 gleich großen Teilen','3 + 4','3 mal 4'], correct:1, explanation:'3/4 bedeutet: Das Ganze ist in 4 gleiche Teile geteilt, davon werden 3 genommen.' },
+              { q:'Welcher Bruch ist größer: 2/5 oder 3/5?', hint:'Gleicher Nenner → vergleiche nur die Zähler.', options:['2/5','3/5','Beide gleich groß','Kann man nicht sagen'], correct:1, explanation:'Bei gleichem Nenner (5) gilt: Größerer Zähler → größerer Bruch. 3 > 2 → 3/5 > 2/5.' },
+              { q:'1/3 + 1/3 = ?', hint:'Gleiche Nenner – addiere nur die Zähler.', options:['2/6','1/6','2/3','1/3'], correct:2, explanation:'1/3 + 1/3 = 2/3 – die Zähler werden addiert, der Nenner bleibt.' },
+              { q:'Kürze 6/8.', hint:'Durch welche Zahl lassen sich beide teilen? (Tipp: 2)', options:['3/4','2/3','6/8','1/4'], correct:0, explanation:'6 ÷ 2 = 3, 8 ÷ 2 = 4 → 6/8 = 3/4.' },
+              { q:'Welcher Bruch entspricht einer halben Pizza?', hint:'Die Hälfte: 1 von 2 gleichen Teilen.', options:['1/4','2/3','1/2','3/4'], correct:2, explanation:'1/2 bedeutet: Die Pizza ist in 2 Teile geteilt, ich nehme 1 Teil → eine halbe Pizza.' },
+              { q:'4/4 = ?', hint:'Alle Teile des Ganzen zusammen ergeben …', options:['0','1/2','2','1'], correct:3, explanation:'4/4 = 1 – alle 4 Teile von 4 ergeben das Ganze (= 1).' },
+              { q:'Schreibe als Bruch: "drei Achtel".', hint:'Drei von acht gleichen Teilen.', options:['8/3','3/8','3+8','38'], correct:1, explanation:'"Drei Achtel" = 3/8. Drei = Zähler (oben), Acht = Nenner (unten).' },
+              { q:'Kürze 10/15.', hint:'Durch welche Zahl lassen sich 10 und 15 teilen? (Tipp: 5)', options:['5/6','2/3','1/3','4/5'], correct:1, explanation:'10 ÷ 5 = 2, 15 ÷ 5 = 3 → 10/15 = 2/3.' },
+            ]
+          },
+          { id:'e2', type:'Dezimalzahlen', diff:1, title:'Dezimalzahlen und Prozent',
+            desc:'Mit Kommazahlen rechnen und Prozentwerte bestimmen.',
+            questions:[
+              { q:'3,4 + 2,15 = ?', hint:'Komma untereinander schreiben: 3,40 + 2,15.', options:['5,19','5,55','5,65','5,45'], correct:1, explanation:'3,40 + 2,15 = 5,55. Komma immer untereinander!' },
+              { q:'10 % von 90 €?', hint:'10 % = 1/10 → durch 10 dividieren.', options:['9 €','19 €','90 €','0,90 €'], correct:0, explanation:'90 ÷ 10 = 9 €.' },
+              { q:'50 % von 60 kg?', hint:'50 % = Hälfte → durch 2 dividieren.', options:['5 kg','10 kg','30 kg','50 kg'], correct:2, explanation:'60 ÷ 2 = 30 kg.' },
+              { q:'6,8 × 10 = ?', hint:'Das Komma verschiebt sich nach rechts.', options:['0,68','6,8','68','680'], correct:2, explanation:'Bei ×10 das Komma eine Stelle nach rechts: 6,8 → 68.' },
+              { q:'25 % von 200 €?', hint:'25 % = 1/4 → durch 4 dividieren.', options:['25 €','50 €','75 €','100 €'], correct:1, explanation:'200 ÷ 4 = 50 €.' },
+              { q:'7,50 − 3,20 = ?', hint:'Komma untereinander, dann subtrahieren.', options:['3,30','4,30','4,70','5,30'], correct:1, explanation:'7,50 − 3,20 = 4,30 €.' },
+              { q:'Welche Dezimalzahl ist größer: 0,7 oder 0,59?', hint:'Vergleiche zuerst die Zehntelstelle.', options:['0,59','0,7','Beide gleich','Kann man nicht sagen'], correct:1, explanation:'0,7 = 0,70. Zehntelstelle: 7 > 5 → 0,7 > 0,59.' },
+              { q:'1 % von 500 €?', hint:'1 % = 1/100 → durch 100 dividieren.', options:['50 €','5 €','0,50 €','0,05 €'], correct:1, explanation:'500 ÷ 100 = 5 €.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚡',
+        desc:'Licht, Magnetismus, Strom und Wärme vertiefen',
+        color:'#9D174D',
+        intro:'Physik Klasse 6: Wir vertiefen Licht, Schatten, Magnete und Strom mit Experimenten und einfachen Erklärungen.',
+        topics:[
+          { isChapter:true, name:'💡 Licht & Reflexion' },
+          { name:'Lichtquellen, Schatten und Spiegel', diff:1,
+            explanation:'Licht breitet sich geradlinig aus und wird an Spiegeln reflektiert: Einfallswinkel = Reflexionswinkel. Durchsichtige Stoffe (Glas, Wasser) lassen Licht durch. Undurchsichtige Stoffe (Holz, Metall) erzeugen Schatten. Halbdurchsichtige Stoffe (Milchglas) streuen das Licht.' },
+          { isChapter:true, name:'🧲 Magnetismus & Elektrizität' },
+          { name:'Magnetpole und einfache Stromkreise', diff:1,
+            explanation:'Magnet: Nordpol (N) und Südpol (S). Gleiche Pole stoßen sich ab, ungleiche ziehen sich an. Elektromagnet: Eine Spule mit Strom verhält sich wie ein Magnet. Stromkreis: Batterie – Kabel – Verbraucher (Lampe) – zurück. Schalter öffnet/schließt den Kreis. Parallelschaltung: mehrere Lampen nebeneinander – fällt eine aus, leuchten die anderen weiter.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Licht & Strom', diff:1, title:'Licht, Schatten und Stromkreise',
+            desc:'Grundlegende Physik der Klasse 5–6 sicher wiederholen.',
+            questions:[
+              { q:'Welches Material ist durchsichtig?', hint:'Man kann hindurchschauen.', options:['Holz','Metall','Klarglas','Stein'], correct:2, explanation:'Klarglas ist durchsichtig – Licht geht fast vollständig hindurch.' },
+              { q:'Was ist ein Elektromagnet?', hint:'Er braucht Strom, um zu wirken.', options:['Ein natürlicher Magnet aus Stein','Eine stromdurchflossene Spule, die wie ein Magnet wirkt','Ein Magnet, der Strom erzeugt','Ein Transformator'], correct:1, explanation:'Ein Elektromagnet ist eine Spule, durch die Strom fließt – dabei entsteht ein Magnetfeld.' },
+              { q:'Was passiert beim Ausschalten des Stroms beim Elektromagneten?', hint:'Das Magnetfeld wird durch … erzeugt.', options:['Er wird stärker','Er bleibt wie ein normaler Magnet','Das Magnetfeld verschwindet','Nichts ändert sich'], correct:2, explanation:'Ohne Strom kein Magnetfeld – der Elektromagnet verliert seine magnetische Wirkung.' },
+              { q:'In einer Parallelschaltung brennen 2 Lampen. Eine geht aus. Was passiert?', hint:'Jede Lampe hat ihren eigenen Weg zum Strom.', options:['Beide gehen aus','Die andere leuchtet weiter','Beide leuchten heller','Strom hört auf'], correct:1, explanation:'Bei Parallelschaltung hat jede Lampe ihren eigenen Stromweg – die andere bleibt an.' },
+              { q:'Was zeigt ein Thermometer an?', hint:'Eine Zustandsgröße der Wärme.', options:['Luftdruck','Temperatur in °C','Helligkeit','Feuchtigkeit'], correct:1, explanation:'Ein Thermometer misst die Temperatur in Grad Celsius (°C).' },
+              { q:'Welche Aussage zur Reflexion ist richtig?', hint:'Das Reflexionsgesetz hat eine einfache Regel.', options:['Einfallswinkel ist doppelt so groß wie Reflexionswinkel','Einfallswinkel = Reflexionswinkel','Reflexionswinkel ist immer 45°','Das Licht wird verlangsamt'], correct:1, explanation:'Einfallswinkel = Reflexionswinkel – das ist das Gesetz der Reflexion.' },
+              { q:'Wie erkennt man einen geschlossenen Stromkreis?', hint:'Schau auf die Lampe!', options:['Die Batterie wird warm','Die Lampe leuchtet','Der Schalter ist geöffnet','Es gibt kein Kabel'], correct:1, explanation:'Wenn die Lampe leuchtet, fließt Strom – das zeigt einen geschlossenen Stromkreis an.' },
+              { q:'Was sind die beiden Pole eines Magneten?', hint:'Denke an Himmelsrichtungen.', options:['Plus und Minus','Ost und West','Nord und Süd','Oben und Unten'], correct:2, explanation:'Jeder Magnet hat einen Nordpol (N) und einen Südpol (S).' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+
+  /* =========================================================  KLASSE 7 – HAUPTSCHULE NRW  */
+  klasse7_hs: {
+    id:'klasse7_hs', num:7, label:'Klasse 7',
+    emoji:'💡', color:['#92400E','#F59E0B'], light:'#FEF3C7',
+    tagline:'Hauptschule NRW: Prozentrechnung, Dreisatz und Kräfte',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Ganze Zahlen, Prozentrechnung, Dreisatz und Flächenberechnung',
+        color:'#92400E',
+        intro:'Klasse 7: Wir rechnen mit negativen Zahlen, Prozenten und dem Dreisatz. Das sind Alltagsmathematik-Themen – Rabatte, Mehrwertsteuer und Rezepte!',
+        topics:[
+          { isChapter:true, name:'🌡️ Ganze Zahlen' },
+          { name:'Positive und negative Zahlen', diff:1,
+            explanation:'Negative Zahlen: Zahlen kleiner als Null – auf dem Zahlenstrahl links von der Null. Beispiele: Temperatur −5°C, Schulden −20 €, Stockwerk −1 (Keller). Rechnen: −3 + 5 = 2 (5 Schritte nach rechts vom −3). −3 − 2 = −5 (2 Schritte weiter links). Vorzeichen bei Multiplikation: Plus × Plus = Plus. Minus × Minus = Plus. Plus × Minus = Minus.' },
+          { isChapter:true, name:'💰 Prozentrechnung' },
+          { name:'Rabatte, Mehrwertsteuer und Prozentrechnung', diff:2,
+            explanation:'Formel Prozentwert: W = G × p ÷ 100. G = Grundwert (Ausgangswert), p = Prozentsatz, W = Prozentwert. Beispiel: 20 % Rabatt auf 150 € → W = 150 × 20 ÷ 100 = 30 €. Neuer Preis: 150 − 30 = 120 €. Mehrwertsteuer (MwSt.): In Deutschland 19 % auf die meisten Waren. Nettopreis + 19 % = Bruttopreis. Beispiel: 100 € netto → 100 × 1,19 = 119 € brutto.' },
+          { isChapter:true, name:'⚖️ Dreisatz' },
+          { name:'Dreisatz für Preise und Mengen', diff:2,
+            explanation:'Dreisatz: Wenn du weißt, was 1 Stück kostet, kannst du jeden Betrag berechnen. Schritt 1: Finde den Wert für 1 (teile). Schritt 2: Multipliziere mit der gesuchten Menge. Beispiel: 3 kg Äpfel kosten 4,50 €. Was kosten 7 kg? 1 kg: 4,50 ÷ 3 = 1,50 €. 7 kg: 7 × 1,50 = 10,50 €.' },
+          { isChapter:true, name:'📐 Flächenberechnung' },
+          { name:'Flächen von Rechteck und Dreieck', diff:1,
+            explanation:'Rechteck: A = a × b (Länge × Breite). Quadrat: A = a² (Seite × Seite). Dreieck: A = (g × h) ÷ 2 (Grundseite × Höhe durch 2). Parallelogramm: A = g × h (Grundseite × Höhe). Einheit der Fläche: cm² oder m². Merke: 1 m² = 10.000 cm².' },
+        ],
+        exercises:[
+          { id:'e1', type:'Zahlen & Prozent', diff:1, title:'Negative Zahlen und Prozentrechnung',
+            desc:'Mit negativen Zahlen rechnen und Prozentwerte berechnen.',
+            questions:[
+              { q:'−4 + 7 = ?', hint:'Starte bei −4 und gehe 7 Schritte nach rechts auf dem Zahlenstrahl.', options:['−11','3','11','−3'], correct:1, explanation:'−4 + 7 = 3. Auf dem Zahlenstrahl: von −4 sieben Schritte nach rechts → 3.' },
+              { q:'20 % von 80 €?', hint:'W = G × p ÷ 100 → 80 × 20 ÷ 100.', options:['4 €','16 €','20 €','40 €'], correct:1, explanation:'W = 80 × 20 ÷ 100 = 1600 ÷ 100 = 16 €.' },
+              { q:'Ein Pullover kostet 60 €. Es gibt 30 % Rabatt. Wie viel zahlst du?', hint:'Erst den Rabatt berechnen, dann abziehen.', options:['18 €','30 €','42 €','48 €'], correct:2, explanation:'Rabatt: 60 × 30 ÷ 100 = 18 €. Preis: 60 − 18 = 42 €.' },
+              { q:'−3 × −4 = ?', hint:'Minus × Minus = ?', options:['−12','+12','−7','+7'], correct:1, explanation:'Minus × Minus = Plus → (−3) × (−4) = +12.' },
+              { q:'Was kostet 5 kg Orangen, wenn 2 kg 2,60 € kosten?', hint:'Erst: 1 kg = 2,60 ÷ 2. Dann: 5 kg = 1 kg × 5.', options:['5,20 €','6,50 €','7,20 €','8,00 €'], correct:1, explanation:'1 kg = 2,60 ÷ 2 = 1,30 €. 5 kg = 5 × 1,30 = 6,50 €.' },
+              { q:'−10 − 5 = ?', hint:'Von −10 noch 5 Schritte nach links.', options:['−5','+5','−15','+15'], correct:2, explanation:'−10 − 5 = −15. Noch weiter in den negativen Bereich.' },
+              { q:'Nettopreis: 200 €, MwSt. 19 %. Wie hoch ist der Bruttopreis?', hint:'Brutto = Netto × 1,19.', options:['19 €','219 €','238 €','181 €'], correct:2, explanation:'200 × 1,19 = 238 €. (Oder: 200 + 19 % von 200 = 200 + 38 = 238 €).' },
+              { q:'−6 + 6 = ?', hint:'Eine Zahl und ihr Gegenteil – was gibt das?', options:['12','−12','6','0'], correct:3, explanation:'−6 + 6 = 0. Jede Zahl plus ihr Gegenteil ergibt Null.' },
+            ]
+          },
+          { id:'e2', type:'Dreisatz & Flächen', diff:1, title:'Dreisatz und Flächenberechnung',
+            desc:'Proportionale Zuordnungen und Flächenformeln anwenden.',
+            questions:[
+              { q:'3 Brötchen kosten 1,20 €. Was kosten 9 Brötchen?', hint:'Erst 1 Brötchen berechnen, dann ×9.', options:['2,40 €','3,60 €','4,80 €','5,00 €'], correct:1, explanation:'1 Brötchen: 1,20 ÷ 3 = 0,40 €. 9 Stück: 9 × 0,40 = 3,60 €.' },
+              { q:'Fläche eines Rechtecks: a = 12 cm, b = 5 cm. A = ?', hint:'A = a × b.', options:['34 cm²','17 cm²','60 cm²','120 cm²'], correct:2, explanation:'A = 12 × 5 = 60 cm².' },
+              { q:'Ein Auto fährt 240 km in 3 Stunden. Wie weit in 5 Stunden (gleiche Geschwindigkeit)?', hint:'Erst 1 Stunde berechnen, dann × 5.', options:['300 km','350 km','400 km','480 km'], correct:2, explanation:'1 h: 240 ÷ 3 = 80 km. 5 h: 5 × 80 = 400 km.' },
+              { q:'Fläche eines Dreiecks: Grundseite 10 cm, Höhe 6 cm. A = ?', hint:'A = (g × h) ÷ 2.', options:['16 cm²','30 cm²','60 cm²','120 cm²'], correct:1, explanation:'A = (10 × 6) ÷ 2 = 60 ÷ 2 = 30 cm².' },
+              { q:'Ein Handwerker verdient 18 € pro Stunde. Was verdient er in 7,5 Stunden?', hint:'Lohn = Stundenlohn × Stunden.', options:['115 €','125 €','135 €','145 €'], correct:2, explanation:'18 × 7,5 = 135 €.' },
+              { q:'Quadrat mit Seite a = 9 cm. Fläche?', hint:'A = a².', options:['18 cm²','36 cm²','81 cm²','729 cm²'], correct:2, explanation:'A = 9² = 81 cm².' },
+              { q:'4 Liter Farbe reichen für 20 m². Wie viel Liter für 35 m²?', hint:'Erst 1 m² berechnen, dann × 35.', options:['5 Liter','6 Liter','7 Liter','8 Liter'], correct:2, explanation:'1 m² braucht 4 ÷ 20 = 0,2 L. 35 m²: 35 × 0,2 = 7 L.' },
+              { q:'Was ist der Unterschied zwischen Fläche und Umfang?', hint:'Fläche = Inhalt, Umfang = Rand.', options:['Kein Unterschied','Fläche misst den Rand, Umfang den Inhalt','Fläche misst den Inhalt (cm²), Umfang den Rand (cm)','Fläche wird in cm gemessen'], correct:2, explanation:'Fläche = Inhalt einer Form, Einheit cm². Umfang = gesamte Randlänge, Einheit cm.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚡',
+        desc:'Bewegung, Kraft und Hebel',
+        color:'#92400E',
+        intro:'Physik Klasse 7: Warum bewegen sich Dinge? Was ist eine Kraft? Wie funktioniert eine Schere oder Wippe? Wir entdecken die Mechanik!',
+        topics:[
+          { isChapter:true, name:'🚀 Bewegung' },
+          { name:'Geschwindigkeit v = s/t', diff:2,
+            explanation:'Geschwindigkeit beschreibt, wie schnell sich ein Körper bewegt. Formel: v = s ÷ t (Weg durch Zeit). Einheiten: m/s oder km/h. Umrechnen: 1 m/s = 3,6 km/h. Beispiel: 120 km in 2 h → v = 120 ÷ 2 = 60 km/h. Weg berechnen: s = v × t. Zeit berechnen: t = s ÷ v.' },
+          { isChapter:true, name:'⚖️ Kraft & Hebel' },
+          { name:'Kräfte im Alltag und Hebelgesetz', diff:2,
+            explanation:'Kraft ist eine Einwirkung, die Bewegungen verändern oder Körper verformen kann. Einheit: Newton (N). Gewichtskraft: G = m × g (g ≈ 10 N/kg). Reibung bremst Bewegungen. Hebel: Ein Hebel ist ein starrer Stab, der um einen Drehpunkt dreht. Hebelgesetz: F₁ × l₁ = F₂ × l₂. Beispiele: Schere, Zange, Wippe, Türklinke.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Mechanik', diff:1, title:'Geschwindigkeit und Kraft',
+            desc:'v = s/t anwenden und Kräfte im Alltag verstehen.',
+            questions:[
+              { q:'Ein Radfahrer fährt 30 km in 1 Stunde. Wie groß ist seine Geschwindigkeit?', hint:'v = s ÷ t.', options:['15 km/h','30 km/h','60 km/h','90 km/h'], correct:1, explanation:'v = 30 km ÷ 1 h = 30 km/h.' },
+              { q:'Welche Einheit hat die Kraft?', hint:'Benannt nach dem Physiker Isaac Newton.', options:['Kilometer','Kilogramm','Newton','Watt'], correct:2, explanation:'Kraft wird in Newton (N) gemessen.' },
+              { q:'Ein Fußball (2 kg) liegt auf dem Boden. Wie groß ist seine Gewichtskraft? (g = 10 N/kg)', hint:'G = m × g.', options:['2 N','5 N','10 N','20 N'], correct:3, explanation:'G = 2 × 10 = 20 N.' },
+              { q:'Wie lange braucht ein Auto mit v = 80 km/h für 240 km?', hint:'t = s ÷ v.', options:['2 h','3 h','4 h','5 h'], correct:1, explanation:'t = 240 ÷ 80 = 3 h.' },
+              { q:'Was ist Reibung?', hint:'Reibung wirkt immer gegen die Bewegungsrichtung.', options:['Eine Kraft, die Bewegung antreibt','Eine Kraft, die Bewegung bremst und Wärme erzeugt','Eine Kraft, die nur bei Metall wirkt','Keine richtige Kraft'], correct:1, explanation:'Reibungskraft bremst gleitende oder rollende Körper und erzeugt Wärme.' },
+              { q:'Hebelgesetz: F₁ = 50 N, l₁ = 2 m, l₂ = 4 m. Wie groß ist F₂?', hint:'F₁ × l₁ = F₂ × l₂ → F₂ = (F₁ × l₁) ÷ l₂.', options:['25 N','50 N','100 N','200 N'], correct:0, explanation:'F₂ = (50 × 2) ÷ 4 = 100 ÷ 4 = 25 N. Mit dem langen Arm braucht man weniger Kraft!' },
+              { q:'Ein Auto fährt mit v = 50 km/h. Wie weit kommt es in 3 Stunden?', hint:'s = v × t.', options:['50 km','100 km','150 km','200 km'], correct:2, explanation:'s = 50 × 3 = 150 km.' },
+              { q:'Was ist ein Hebel?', hint:'Denke an Schere, Zange oder Wippe.', options:['Ein Energiespeicher','Ein starrer Stab, der sich um einen Drehpunkt dreht','Ein Gerät zum Strommessen','Ein Magnet'], correct:1, explanation:'Ein Hebel ist ein starrer Stab, der um einen festen Punkt (Drehpunkt) dreht. Er verändert Kraft oder Weg.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+
+  /* =========================================================  KLASSE 8 – HAUPTSCHULE NRW  */
+  klasse8_hs: {
+    id:'klasse8_hs', num:8, label:'Klasse 8',
+    emoji:'🔧', color:['#065F46','#34D399'], light:'#D1FAE5',
+    tagline:'Hauptschule NRW: Gleichungen, Funktionen und Elektrizität',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Gleichungen lösen, lineare Funktionen, Zinsrechnung und Körper',
+        color:'#065F46',
+        intro:'Klasse 8: Wir lösen erste Gleichungen, schauen uns Geraden im Koordinatensystem an und rechnen mit Zinsen – wichtig fürs Leben!',
+        topics:[
+          { isChapter:true, name:'⚖️ Gleichungen lösen' },
+          { name:'Einfache Gleichungen', diff:2,
+            explanation:'Eine Gleichung ist wie eine Waage – beide Seiten müssen gleich schwer sein. Was ich auf einer Seite tue, muss ich auch auf der anderen tun! Ziel: Die Unbekannte x allein auf einer Seite. Beispiel: x + 5 = 12 → x = 12 − 5 = 7. Probe: 7 + 5 = 12 ✓. Weitere Beispiele: 3x = 18 → x = 6. 2x + 4 = 14 → 2x = 10 → x = 5.' },
+          { isChapter:true, name:'📈 Lineare Funktionen' },
+          { name:'Geraden im Koordinatensystem', diff:2,
+            explanation:'Eine lineare Funktion hat die Form y = m × x + b. m = Steigung (wie steil ist die Gerade?). b = y-Achsenabschnitt (wo schneidet die Gerade die y-Achse?). Beispiel: y = 2x + 1: Bei x = 0 → y = 1 (Startpunkt). Bei x = 1 → y = 3. Die Gerade steigt um 2 pro Schritt nach rechts. Positive m: Gerade steigt. Negative m: Gerade fällt.' },
+          { isChapter:true, name:'💰 Zinsrechnung' },
+          { name:'Prozentwert und Zinsen', diff:2,
+            explanation:'Zinsrechnung: Zinsen sind der "Preis" für geliehenes Geld. Prozentwert: W = G × p ÷ 100. Grundwert: G = W × 100 ÷ p. Prozentsatz: p = W × 100 ÷ G. Einfacher Zins (1 Jahr): Z = K × p ÷ 100. K = Kapital, p = Zinssatz. Beispiel: 1.000 € bei 3 % Zinsen → Z = 1.000 × 3 ÷ 100 = 30 €.' },
+          { isChapter:true, name:'📦 Körper' },
+          { name:'Volumen des Quaders', diff:1,
+            explanation:'Körper sind dreidimensionale Formen. Quader: Ein "Schuhkarton" – 6 Rechtecksflächen. Volumen: V = a × b × c (Länge × Breite × Höhe). Einheit: cm³ oder m³. Oberfläche: O = 2 × (a×b + b×c + a×c). Würfel: alle Kanten gleich lang, V = a³.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Gleichungen', diff:2, title:'Gleichungen lösen',
+            desc:'Einfache und zweistufige Gleichungen.',
+            questions:[
+              { q:'x + 8 = 15. Lösung?', hint:'Was muss ich von beiden Seiten abziehen?', options:['x = 5','x = 6','x = 7','x = 23'], correct:2, explanation:'x = 15 − 8 = 7. Probe: 7 + 8 = 15 ✓' },
+              { q:'3x = 21. Lösung?', hint:'Beide Seiten durch 3 dividieren.', options:['x = 7','x = 18','x = 24','x = 63'], correct:0, explanation:'x = 21 ÷ 3 = 7. Probe: 3 × 7 = 21 ✓' },
+              { q:'2x + 4 = 14. Lösung?', hint:'Erst 4 abziehen, dann durch 2 dividieren.', options:['x = 5','x = 6','x = 7','x = 9'], correct:0, explanation:'2x = 14 − 4 = 10 → x = 10 ÷ 2 = 5.' },
+              { q:'x ÷ 3 = 6. Lösung?', hint:'Beide Seiten mit 3 multiplizieren.', options:['x = 2','x = 9','x = 18','x = 3'], correct:2, explanation:'x = 6 × 3 = 18. Probe: 18 ÷ 3 = 6 ✓' },
+              { q:'5x − 10 = 20. Lösung?', hint:'Erst 10 addieren, dann durch 5 dividieren.', options:['x = 2','x = 4','x = 6','x = 30'], correct:2, explanation:'5x = 20 + 10 = 30 → x = 30 ÷ 5 = 6.' },
+              { q:'Was ist eine Probe bei Gleichungen?', hint:'Man setzt den gefundenen Wert ein und prüft.', options:['Ein zweiter Lösungsweg','Das Ergebnis nochmal in die Gleichung einsetzen und prüfen','Eine schwierigere Gleichung lösen','Die Gleichung umformen'], correct:1, explanation:'Probe: Den gefundenen Wert x in die Originalgleichung einsetzen und prüfen, ob beide Seiten gleich sind.' },
+              { q:'4x = 0. Lösung?', hint:'Was mal 4 ergibt 0?', options:['x = 4','x = 1','x = 0','Keine Lösung'], correct:2, explanation:'4 × 0 = 0 → x = 0.' },
+              { q:'x − 12 = 8. Lösung?', hint:'Beide Seiten +12.', options:['x = −4','x = 4','x = 20','x = 96'], correct:2, explanation:'x = 8 + 12 = 20. Probe: 20 − 12 = 8 ✓' },
+            ]
+          },
+          { id:'e2', type:'Funktionen & Zinsen', diff:2, title:'Lineare Funktionen und Zinsrechnung',
+            desc:'Geraden und Zinsen berechnen.',
+            questions:[
+              { q:'y = 2x + 3. Was ergibt y bei x = 4?', hint:'Einsetzen: y = 2 × 4 + 3.', options:['9','11','14','16'], correct:1, explanation:'y = 2 × 4 + 3 = 8 + 3 = 11.' },
+              { q:'Was bedeutet m in y = mx + b?', hint:'m beschreibt die Form der Gerade.', options:['y-Achsenabschnitt','Steigung der Gerade','x-Wert','Nullstelle'], correct:1, explanation:'m ist die Steigung – sie gibt an, wie steil die Gerade ist.' },
+              { q:'Zinsen auf 500 € bei 4 % p.a. nach 1 Jahr?', hint:'Z = K × p ÷ 100.', options:['4 €','20 €','40 €','200 €'], correct:1, explanation:'Z = 500 × 4 ÷ 100 = 20 €.' },
+              { q:'y = −x + 5. Bei x = 3: y = ?', hint:'Einsetzen: y = −3 + 5.', options:['2','3','8','−2'], correct:0, explanation:'y = −3 + 5 = 2.' },
+              { q:'Volumen eines Quaders: a = 5, b = 4, c = 3. V = ?', hint:'V = a × b × c.', options:['12','36','60','120'], correct:2, explanation:'V = 5 × 4 × 3 = 60 cm³.' },
+              { q:'Wo schneidet y = 3x − 6 die y-Achse?', hint:'Bei x = 0 einsetzen.', options:['y = 3','y = 0','y = −6','y = 6'], correct:2, explanation:'x = 0: y = 3 × 0 − 6 = −6. Die Gerade schneidet die y-Achse bei −6.' },
+              { q:'Grundwert G = 800 €, Prozentsatz p = 5 %. Prozentwert W = ?', hint:'W = G × p ÷ 100.', options:['4 €','16 €','40 €','160 €'], correct:2, explanation:'W = 800 × 5 ÷ 100 = 40 €.' },
+              { q:'Würfel mit Kantenlänge a = 4 cm. Volumen?', hint:'V = a³.', options:['12 cm³','16 cm³','48 cm³','64 cm³'], correct:3, explanation:'V = 4³ = 4 × 4 × 4 = 64 cm³.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚡',
+        desc:'Elektrizität, Ohmsches Gesetz und Energie',
+        color:'#065F46',
+        intro:'Physik Klasse 8: Spannung, Stromstärke, Widerstand – die Grundlagen der Elektrizität. Und wie wandeln wir Energie um?',
+        topics:[
+          { isChapter:true, name:'⚡ Elektrizität: U, I, R' },
+          { name:'Spannung, Stromstärke und Widerstand', diff:2,
+            explanation:'Die drei wichtigsten Größen der Elektrizität: Spannung U in Volt (V) – der "Druck", der den Strom antreibt. Stromstärke I in Ampere (A) – wie viel Strom fließt. Widerstand R in Ohm (Ω) – wie sehr der Leiter den Strom bremst. Ohmsches Gesetz: U = R × I. Umgestellt: R = U ÷ I und I = U ÷ R.' },
+          { isChapter:true, name:'🔋 Energie und Energieumwandlung' },
+          { name:'Energieformen und Energieumwandlung', diff:1,
+            explanation:'Energie kann viele Formen haben: Bewegungsenergie (kinetisch), Lageenergie (potenziell), Wärmeenergie, elektrische Energie, Lichtenergie. Energie kann umgewandelt werden: Lampe: Elektrisch → Licht + Wärme. Motor: Elektrisch → Bewegung. Kraftwerk: Wärme → Elektrisch. Energie wird nicht verbraucht – sie wird umgewandelt!' },
+        ],
+        exercises:[
+          { id:'e1', type:'Elektrizität', diff:2, title:'Ohmsches Gesetz und Energie',
+            desc:'U = R × I anwenden und Energieumwandlungen verstehen.',
+            questions:[
+              { q:'U = 12 V, R = 4 Ω. Wie groß ist I?', hint:'I = U ÷ R.', options:['3 A','4 A','8 A','48 A'], correct:0, explanation:'I = 12 ÷ 4 = 3 A.' },
+              { q:'U = 9 V, I = 3 A. Wie groß ist R?', hint:'R = U ÷ I.', options:['3 Ω','6 Ω','12 Ω','27 Ω'], correct:0, explanation:'R = 9 ÷ 3 = 3 Ω.' },
+              { q:'R = 5 Ω, I = 2 A. Wie groß ist U?', hint:'U = R × I.', options:['2,5 V','7 V','10 V','25 V'], correct:2, explanation:'U = 5 × 2 = 10 V.' },
+              { q:'Eine Glühlampe wandelt elektrische Energie hauptsächlich in was um?', hint:'Lampen leuchten, aber auch …', options:['Nur Licht','Nur Wärme','Licht und Wärme','Bewegungsenergie'], correct:2, explanation:'Glühlampen wandeln elektrische Energie in Licht und Wärme um. Der Wärmeanteil ist sehr groß (ineffizient).' },
+              { q:'Was bedeutet Spannung in einem Stromkreis?', hint:'Sie treibt den Strom an – wie ein "Druck".', options:['Die Menge der Elektronen pro Sekunde','Der "Druck", der Elektronen antreibt, gemessen in Volt','Die Energie, die verbraucht wurde','Der Widerstand des Leiters'], correct:1, explanation:'Spannung U (in Volt) ist der Antrieb für den Strom – ohne Spannung kein Strom.' },
+              { q:'Verdoppelt sich der Widerstand bei gleicher Spannung, was passiert mit dem Strom?', hint:'I = U ÷ R – was passiert, wenn R größer wird?', options:['Strom verdoppelt sich','Strom halbiert sich','Strom bleibt gleich','Strom wird null'], correct:1, explanation:'I = U ÷ R. Wenn R doppelt so groß: I wird halb so groß (I = U ÷ 2R).' },
+              { q:'Welche Energieumwandlung findet im Motor statt?', hint:'Motor erzeugt Bewegung.', options:['Wärme → Strom','Elektrisch → Bewegung','Bewegung → Licht','Licht → Wärme'], correct:1, explanation:'Ein Elektromotor wandelt elektrische Energie in Bewegungsenergie (kinetische Energie) um.' },
+              { q:'Einheit der Stromstärke?', hint:'Benannt nach dem Physiker André-Marie Ampère.', options:['Volt','Ohm','Watt','Ampere'], correct:3, explanation:'Stromstärke I wird in Ampere (A) gemessen.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+
+  /* =========================================================  KLASSE 9 – HAUPTSCHULE NRW  */
+  klasse9_hs: {
+    id:'klasse9_hs', num:9, label:'Klasse 9',
+    emoji:'🔭', color:['#1E3A8A','#60A5FA'], light:'#DBEAFE',
+    tagline:'Hauptschule NRW: Pythagoras, Kreis, Statistik und Optik',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Pythagoras, Maßstab, Kreisberechnungen und Statistik',
+        color:'#1E3A8A',
+        intro:'Klasse 9 Mathe: Der Satz des Pythagoras, Kreisformeln, Maßstab und Statistik – alles wichtig für den Hauptschulabschluss!',
+        topics:[
+          { isChapter:true, name:'📐 Satz des Pythagoras' },
+          { name:'Pythagoras: a² + b² = c²', diff:2,
+            explanation:'Der Satz des Pythagoras gilt für rechtwinklige Dreiecke: a² + b² = c². c ist die längste Seite (Hypotenuse), a und b sind die kürzeren Seiten (Katheten). Anwendungen: Fehlende Seite berechnen. Prüfen, ob ein Dreieck rechtwinklig ist. Diagonalen berechnen. Beispiel: a = 3, b = 4 → c = √(9 + 16) = √25 = 5.' },
+          { isChapter:true, name:'🗺️ Maßstab' },
+          { name:'Karten- und Planmaßstab', diff:1,
+            explanation:'Maßstab gibt das Verhältnis zwischen der Darstellung und der Wirklichkeit an. 1 : 100.000 bedeutet: 1 cm auf der Karte = 100.000 cm = 1 km in der Wirklichkeit. Rechnen: Kartenmaß × Maßstabszahl = wirkliches Maß. Wirkliches Maß ÷ Maßstabszahl = Kartenmaß. Beispiel: 3 cm auf Karte, Maßstab 1:50.000 → wirklich: 3 × 50.000 = 150.000 cm = 1,5 km.' },
+          { isChapter:true, name:'⭕ Kreis' },
+          { name:'Umfang und Fläche des Kreises', diff:2,
+            explanation:'Kreis mit Radius r (Mittelpunkt bis Rand) oder Durchmesser d = 2r. Umfang: U = 2 × π × r = π × d. Fläche: A = π × r². π ≈ 3,14 oder exakt als π. Beispiel: r = 5 cm → U = 2 × 3,14 × 5 = 31,4 cm → A = 3,14 × 25 = 78,5 cm².' },
+          { isChapter:true, name:'📊 Statistik' },
+          { name:'Durchschnitt und Diagramme', diff:1,
+            explanation:'Durchschnitt (Mittelwert): Alle Werte addieren, dann durch die Anzahl dividieren. Beispiel: 4, 6, 8, 10 → Summe = 28, Anzahl = 4 → Mittelwert = 7. Median: Der mittlere Wert, wenn alle aufsteigend sortiert sind. Diagramme: Balkendiagramm, Liniendiagramm, Kreisdiagramm – immer Achsen und Titel lesen!' },
+        ],
+        exercises:[
+          { id:'e1', type:'Pythagoras', diff:2, title:'Satz des Pythagoras',
+            desc:'Fehlende Seiten im rechtwinkligen Dreieck berechnen.',
+            questions:[
+              { q:'a = 6 cm, b = 8 cm. Wie lang ist die Hypotenuse c?', hint:'c = √(a² + b²) = √(36 + 64).', options:['10 cm','12 cm','14 cm','100 cm'], correct:0, explanation:'c = √(36 + 64) = √100 = 10 cm.' },
+              { q:'c = 13 cm, a = 5 cm. Wie lang ist b?', hint:'b = √(c² − a²) = √(169 − 25).', options:['10 cm','12 cm','14 cm','8 cm'], correct:1, explanation:'b = √(169 − 25) = √144 = 12 cm.' },
+              { q:'Gilt 3, 4, 5 als pythagoreisches Tripel? (3² + 4² = 5²?)', hint:'Rechne: 9 + 16 = ? Ist das 25?', options:['Ja','Nein','Nur ungefähr','Kommt auf die Einheit an'], correct:0, explanation:'3² + 4² = 9 + 16 = 25 = 5² ✓ – ja, das ist ein pythagoreisches Tripel!' },
+              { q:'Wie nennt man die längste Seite im rechtwinkligen Dreieck?', hint:'Sie liegt dem rechten Winkel gegenüber.', options:['Kathete','Ankathete','Gegenkathete','Hypotenuse'], correct:3, explanation:'Die längste Seite im rechtwinkligen Dreieck heißt Hypotenuse (c) – sie liegt dem rechten Winkel gegenüber.' },
+              { q:'Ein Zimmer ist 4 m × 3 m. Wie lang ist die Diagonale?', hint:'Rechteck → rechtwinkliges Dreieck mit a = 4, b = 3.', options:['5 m','7 m','5,5 m','6 m'], correct:0, explanation:'c = √(4² + 3²) = √(16 + 9) = √25 = 5 m.' },
+              { q:'a = 5 cm, b = 12 cm. c = ?', hint:'c = √(25 + 144).', options:['13 cm','17 cm','15 cm','11 cm'], correct:0, explanation:'c = √(25 + 144) = √169 = 13 cm.' },
+              { q:'Wann darf man den Satz des Pythagoras anwenden?', hint:'Er gilt nur für eine bestimmte Art von Dreieck.', options:['Bei jedem Dreieck','Nur bei gleichseitigen Dreiecken','Nur bei rechtwinkligen Dreiecken','Nur bei Dreiecken mit 60°'], correct:2, explanation:'Der Satz des Pythagoras gilt ausschließlich bei rechtwinkligen Dreiecken.' },
+              { q:'c = 10 cm, a = b (gleichschenklig-rechtwinklig). Wie lang ist a?', hint:'a² + a² = 100 → 2a² = 100 → a² = 50 → a = √50 ≈ ?', options:['5 cm','7 cm','ca. 7,07 cm','ca. 8 cm'], correct:2, explanation:'a² = 50 → a = √50 ≈ 7,07 cm.' },
+            ]
+          },
+          { id:'e2', type:'Kreis & Statistik', diff:2, title:'Kreisberechnung und Statistik',
+            desc:'Umfang, Fläche und Mittelwert berechnen.',
+            questions:[
+              { q:'Kreis mit r = 7 cm. Umfang U = ? (π ≈ 3,14)', hint:'U = 2 × π × r.', options:['21,98 cm','43,96 cm','153,86 cm','78,5 cm'], correct:1, explanation:'U = 2 × 3,14 × 7 = 43,96 cm.' },
+              { q:'Kreis mit r = 5 cm. Fläche A = ? (π ≈ 3,14)', hint:'A = π × r².', options:['15,7 cm²','31,4 cm²','78,5 cm²','314 cm²'], correct:2, explanation:'A = 3,14 × 25 = 78,5 cm².' },
+              { q:'Maßstab 1:25.000. 4 cm auf der Karte = ? km in Wirklichkeit?', hint:'4 × 25.000 = ? cm → in km umrechnen.', options:['0,1 km','1 km','10 km','100 km'], correct:1, explanation:'4 × 25.000 = 100.000 cm = 1.000 m = 1 km.' },
+              { q:'Noten: 2, 3, 3, 4, 3. Mittelwert?', hint:'Alle addieren ÷ Anzahl.', options:['2,8','3,0','3,2','3,5'], correct:1, explanation:'(2 + 3 + 3 + 4 + 3) ÷ 5 = 15 ÷ 5 = 3,0.' },
+              { q:'Wie heißt der Abstand vom Mittelpunkt zum Kreisrand?', hint:'Halber Durchmesser.', options:['Durchmesser','Umfang','Radius','Sehne'], correct:2, explanation:'Der Radius r ist der Abstand vom Mittelpunkt zum Rand. Durchmesser d = 2r.' },
+              { q:'Werte: 5, 9, 3, 7, 1. Median?', hint:'Erst sortieren, dann den mittleren Wert nehmen.', options:['3','5','7','9'], correct:1, explanation:'Sortiert: 1, 3, 5, 7, 9. Mittlerer Wert (3. von 5) = 5.' },
+              { q:'Wirkliche Strecke: 3 km, Maßstab 1:100.000. Wie lang auf der Karte?', hint:'km → cm umrechnen, dann ÷ 100.000.', options:['0,3 cm','3 cm','30 cm','300 cm'], correct:1, explanation:'3 km = 300.000 cm. 300.000 ÷ 100.000 = 3 cm.' },
+              { q:'Durchmesser eines Kreises d = 10 cm. Radius r = ?', hint:'r = d ÷ 2.', options:['20 cm','10 cm','5 cm','2 cm'], correct:2, explanation:'r = 10 ÷ 2 = 5 cm.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚡',
+        desc:'Schall, Optik und Druck',
+        color:'#1E3A8A',
+        intro:'Physik Klasse 9: Wie entsteht Schall? Wie funktioniert ein Spiegel oder eine Lupe? Was ist Luft- und Wasserdruck?',
+        topics:[
+          { isChapter:true, name:'🔊 Schall' },
+          { name:'Schall: Entstehung und Lautstärke', diff:1,
+            explanation:'Schall entsteht durch Schwingungen. Schall ist eine mechanische Welle – sie braucht ein Medium (Luft, Wasser, Feststoff) zur Ausbreitung. Im Vakuum gibt es keinen Schall! Lautstärke in Dezibel (dB). Frequenz in Hertz (Hz) – je höher die Frequenz, desto höher der Ton. Menschliches Gehör: ca. 20 Hz bis 20.000 Hz. Schallgeschwindigkeit in Luft: ca. 340 m/s.' },
+          { isChapter:true, name:'🔦 Optik' },
+          { name:'Spiegel, Linsen und das Auge', diff:1,
+            explanation:'Spiegel: Ebener Spiegel → Bild erscheint hinter dem Spiegel, gleich groß. Konvexspiegel (gewölbt nach außen) → verkleinertes Bild, größerer Bereich (Rückspiegel). Linsen: Sammellinse (konvex) → bündelt Licht, erzeugt vergrößertes Bild (Lupe). Zerstreuungslinse (konkav) → Licht auseinander. Auge: Linse im Auge fokussiert Licht auf die Netzhaut.' },
+          { isChapter:true, name:'🌊 Druck' },
+          { name:'Luftdruck und Wasserdruck', diff:1,
+            explanation:'Druck p = Kraft ÷ Fläche. Einheit: Pascal (Pa) oder bar. Luftdruck: Normaldruck ca. 1013 hPa (Hektopascal). Auf hohen Bergen ist der Luftdruck kleiner. Wasserdruck: Steigt mit der Tiefe. Je tiefer im Wasser, desto größer der Druck. Taucher spüren das deutlich.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Schall & Optik & Druck', diff:1, title:'Schall, Licht und Druck',
+            desc:'Grundlegende Physik der Klasse 9.',
+            questions:[
+              { q:'Kann sich Schall im Weltall ausbreiten?', hint:'Schall braucht ein Medium.', options:['Ja, sehr schnell','Ja, aber langsam','Nein, im Vakuum gibt es keinen Schall','Nur Ultraschall'], correct:2, explanation:'Schall ist eine mechanische Welle und braucht ein Medium (Luft, Wasser). Im Vakuum des Weltalls gibt es keinen Schall.' },
+              { q:'Was ist Frequenz beim Schall?', hint:'Sie bestimmt, ob ein Ton hoch oder tief klingt.', options:['Die Lautstärke des Tons','Wie schnell der Schall ausbreitet','Anzahl der Schwingungen pro Sekunde (Hz)','Die Energie des Schalls'], correct:2, explanation:'Frequenz in Hertz (Hz) = Schwingungen pro Sekunde. Hohe Frequenz → hoher Ton.' },
+              { q:'Was macht eine Sammellinse (Lupe) mit Licht?', hint:'Sie bündelt das Licht in einem Punkt.', options:['Sie streut das Licht','Sie absorbiert das Licht','Sie bündelt das Licht in einem Brennpunkt','Sie reflektiert das Licht'], correct:2, explanation:'Eine Sammellinse bündelt parallel einfallendes Licht im Brennpunkt – das macht sie zur Lupe.' },
+              { q:'Schallgeschwindigkeit in Luft ≈ ?', hint:'Ungefähr 340 …', options:['340 km/h','340 m/s','3.400 m/s','34 m/s'], correct:1, explanation:'Schall breitet sich in Luft mit ca. 340 m/s aus (ca. 1.224 km/h). Licht ist eine Million Mal schneller!' },
+              { q:'Was passiert mit dem Wasserdruck, je tiefer man taucht?', hint:'Mehr Wassersäule drückt von oben.', options:['Er wird kleiner','Er bleibt gleich','Er wird größer','Er wird null'], correct:2, explanation:'Je tiefer man taucht, desto mehr Wasser drückt von oben → der Wasserdruck steigt.' },
+              { q:'Was ist ein Konvexspiegel (gewölbt nach außen)?', hint:'Er wird z.B. als Rückspiegel am Auto verwendet.', options:['Erzeugt ein vergrößertes Bild','Erzeugt ein verkleinertes Bild mit größerem Sichtbereich','Bündelt Licht','Streut Licht nach innen'], correct:1, explanation:'Konvexspiegel: verkleinertes Bild, aber größerer Sichtbereich – deshalb als Rückspiegel im Auto.' },
+              { q:'Einheit des Drucks?', hint:'Benannt nach Blaise Pascal.', options:['Joule','Newton','Pascal','Ampere'], correct:2, explanation:'Druck wird in Pascal (Pa) gemessen. 1 Pa = 1 N/m².' },
+              { q:'Warum erscheint das Bild in einem ebenen Spiegel hinter dem Spiegel?', hint:'Das Licht wird reflektiert und unser Gehirn verlängert die Strahlen.', options:['Weil das Licht durch den Spiegel geht','Unser Gehirn verlängert die reflektierten Strahlen hinter den Spiegel','Weil der Spiegel ein Loch hat','Das Bild liegt immer vor dem Spiegel'], correct:1, explanation:'Das reflektierte Licht kommt vor dem Spiegel an, aber unser Gehirn verlängert die Strahlen gedanklich nach hinten → virtuelles Bild hinter dem Spiegel.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+
+  /* =========================================================  KLASSE 10 – HAUPTSCHULE NRW  */
+  klasse10_hs: {
+    id:'klasse10_hs', num:10, label:'Klasse 10',
+    emoji:'🏆', color:['#4C1D95','#8B5CF6'], light:'#EDE9FE',
+    tagline:'Hauptschule NRW: Abschluss – Finanzen, Wahrscheinlichkeit und Atomphysik',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Finanzen, Wahrscheinlichkeit und berufsbezogene Mathematik',
+        color:'#4C1D95',
+        intro:'Klasse 10 – Abschlussjahr! Wir üben Finanzmathematik (Kredit, Lohn, Handy), Wahrscheinlichkeiten und praktische Berechnungen für den Beruf.',
+        topics:[
+          { isChapter:true, name:'💳 Finanzmathematik' },
+          { name:'Kredit, Sparen und Alltagsfinanzen', diff:2,
+            explanation:'Kredit: Man leiht Geld und zahlt Zinsen dafür zurück. Zinsformel: Z = K × p ÷ 100 (pro Jahr). Monatliche Rate: (K + Zinsen) ÷ Anzahl Monate. Handyvertrag: Grundgebühr + Kosten pro Gespräch/SMS/GB. Lohnabrechnung: Bruttolohn (vor Abzügen) − Steuern − Sozialabgaben = Nettolohn (was wirklich auf dem Konto landet).' },
+          { isChapter:true, name:'🎲 Wahrscheinlichkeit' },
+          { name:'Zufallsexperimente und Baumdiagramme', diff:2,
+            explanation:'Wahrscheinlichkeit = günstige Ergebnisse ÷ alle möglichen Ergebnisse. Münzwurf: P(Kopf) = 1/2 = 50 %. Würfel: P(6) = 1/6. Baumdiagramm: Hilft bei mehrstufigen Zufallsexperimenten. Pfadregeln: Gleiche Stufe: Wahrscheinlichkeiten addieren. Aufeinanderfolgende Stufen: Wahrscheinlichkeiten multiplizieren.' },
+          { isChapter:true, name:'🏗️ Berufsbezogene Mathematik' },
+          { name:'Materialberechnungen und Kostenkalkulation', diff:2,
+            explanation:'Im Beruf braucht man Mathe ständig! Flächen berechnen: Zimmer streichen (Fläche × Preis pro m²). Volumen berechnen: Beton bestellen (V = a × b × c). Kostenkalkulation: Materialkosten + Lohnkosten = Gesamtkosten. Maßstab: Pläne lesen und umrechnen. Tipp: Immer zuerst ausrechnen, was 1 Stück/1 m² kostet – dann hochrechnen.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Finanzen', diff:2, title:'Finanzmathematik für den Alltag',
+            desc:'Kredit, Lohn und Alltagskosten berechnen.',
+            questions:[
+              { q:'Bruttolohn 2.500 €, Abzüge 650 €. Nettolohn?', hint:'Netto = Brutto − Abzüge.', options:['1.750 €','1.850 €','2.150 €','3.150 €'], correct:1, explanation:'2.500 − 650 = 1.850 € Nettolohn.' },
+              { q:'Kredit: 5.000 € bei 6 % Zinsen p.a. Zinsen nach 1 Jahr?', hint:'Z = K × p ÷ 100.', options:['30 €','60 €','300 €','600 €'], correct:2, explanation:'Z = 5.000 × 6 ÷ 100 = 300 €.' },
+              { q:'Handyvertrag: 15 € Grundgebühr + 0,10 € pro SMS. 30 SMS gesendete. Gesamtkosten?', hint:'Grundgebühr + (Anzahl SMS × Preis pro SMS).', options:['15,30 €','17,00 €','18,00 €','45,00 €'], correct:2, explanation:'15 + 30 × 0,10 = 15 + 3 = 18 €.' },
+              { q:'Sparbuch: 1.000 € bei 2 % Zinsen. Nach 1 Jahr Kontostand?', hint:'Erst Zinsen berechnen, dann addieren.', options:['1.002 €','1.020 €','1.200 €','2.000 €'], correct:1, explanation:'Zinsen: 1.000 × 2 ÷ 100 = 20 €. Kontostand: 1.000 + 20 = 1.020 €.' },
+              { q:'Einkauf: 3 Artikel à 4,99 €, 1 Artikel 12,50 €. Gesamtbetrag?', hint:'3 × 4,99 + 12,50.', options:['22,47 €','27,47 €','30,00 €','17,49 €'], correct:1, explanation:'3 × 4,99 = 14,97 €. 14,97 + 12,50 = 27,47 €.' },
+              { q:'Stundenlohn 12,50 €, 8 Stunden gearbeitet. Bruttolohn?', hint:'Stundenlohn × Stunden.', options:['80 €','100 €','120,50 €','1.250 €'], correct:1, explanation:'12,50 × 8 = 100 €.' },
+              { q:'Ein Fernseher kostet 599 €. Bei Ratenzahlung: 12 Monate à 55 €. Wie viel mehr zahlt man?', hint:'12 × 55 − 599 = Aufpreis.', options:['11 €','51 €','61 €','101 €'], correct:2, explanation:'12 × 55 = 660 €. 660 − 599 = 61 € Aufpreis durch Ratenzahlung.' },
+              { q:'MwSt. 19 % auf 80 €. Bruttopreis?', hint:'Brutto = 80 × 1,19.', options:['80,19 €','83,20 €','95,20 €','99,00 €'], correct:2, explanation:'80 × 1,19 = 95,20 €.' },
+            ]
+          },
+          { id:'e2', type:'Wahrscheinlichkeit', diff:2, title:'Wahrscheinlichkeit und Baumdiagramme',
+            desc:'Zufallsexperimente verstehen und Wahrscheinlichkeiten berechnen.',
+            questions:[
+              { q:'Würfel: P(gerade Zahl) = ?', hint:'Welche Zahlen auf dem Würfel sind gerade?', options:['1/6','2/6','3/6','4/6'], correct:2, explanation:'Gerade Zahlen: 2, 4, 6 → 3 von 6 Ergebnissen → P = 3/6 = 1/2 = 50 %.' },
+              { q:'Münzwurf 2x: P(2x Kopf) = ?', hint:'P(K) × P(K) = 1/2 × 1/2.', options:['1/4','1/2','3/4','1'], correct:0, explanation:'P(K, K) = 1/2 × 1/2 = 1/4 = 25 %. (Unabhängige Ereignisse → multiplizieren.)' },
+              { q:'In einer Lostrommel: 2 Gewinne, 8 Nieten. P(Gewinn) = ?', hint:'Gewinne ÷ alle Lose.', options:['1/5','1/4','2/5','1/8'], correct:0, explanation:'P(Gewinn) = 2 ÷ 10 = 1/5 = 20 %.' },
+              { q:'Im Baumdiagramm: gleiche Stufe addieren. Für 2-stufigen Münzwurf – wie viele Pfade gibt es?', hint:'2 × 2 = ?', options:['2','3','4','8'], correct:2, explanation:'Jede Stufe hat 2 Möglichkeiten: 2 × 2 = 4 Pfade (KK, KZ, ZK, ZZ).' },
+              { q:'P(kein Gewinn) aus Aufgabe mit P(Gewinn) = 1/5?', hint:'P(kein Gewinn) = 1 − P(Gewinn).', options:['1/5','2/5','4/5','5/5'], correct:2, explanation:'P(kein Gewinn) = 1 − 1/5 = 4/5 = 80 %.' },
+              { q:'Was ist ein Zufallsexperiment?', hint:'Das Ergebnis ist vorher nicht sicher bekannt.', options:['Ein geplanter Versuch mit bekanntem Ergebnis','Ein Experiment, bei dem der Ausgang vom Zufall abhängt','Jede Messung in der Physik','Eine Rechenaufgabe'], correct:1, explanation:'Ein Zufallsexperiment ist ein Versuch, bei dem das Ergebnis nicht vorher bestimmbar ist (zufällig).' },
+              { q:'Würfel: P(keine 6) = ?', hint:'P(keine 6) = 1 − P(6).', options:['1/6','5/6','1/3','2/3'], correct:1, explanation:'P(keine 6) = 1 − 1/6 = 5/6 ≈ 83,3 %.' },
+              { q:'Materialkosten: 5 m² Fliesen à 18 € + 2 Liter Kleber à 9 €. Gesamt?', hint:'5 × 18 + 2 × 9.', options:['90 €','108 €','100 €','126 €'], correct:1, explanation:'5 × 18 = 90 €, 2 × 9 = 18 €. Gesamt: 90 + 18 = 108 €.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚡',
+        desc:'Atommodell, Radioaktivität und Energieversorgung',
+        color:'#4C1D95',
+        intro:'Physik Klasse 10: Was steckt in einem Atom? Wie entsteht Radioaktivität? Welche Energiequellen haben wir für die Zukunft?',
+        topics:[
+          { isChapter:true, name:'⚛️ Atommodell' },
+          { name:'Aufbau des Atoms', diff:2,
+            explanation:'Das Atom besteht aus: Kern: Protonen (positiv geladen) und Neutronen (keine Ladung). Hülle: Elektronen (negativ geladen) umkreisen den Kern. Im neutralen Atom: Anzahl Protonen = Anzahl Elektronen. Ordnungszahl = Anzahl der Protonen. Massenzahl = Protonen + Neutronen. Beispiel Kohlenstoff: 6 Protonen, 6 Neutronen, 6 Elektronen.' },
+          { isChapter:true, name:'☢️ Radioaktivität' },
+          { name:'Alpha-, Beta- und Gammastrahlung', diff:2,
+            explanation:'Radioaktive Strahlung entsteht beim Zerfall instabiler Atomkerne. Drei Arten: Alpha (α): Heliumkern (2p + 2n), wenig durchdringend (Blatt Papier hält es auf). Beta (β): schnelles Elektron oder Positron, mittlere Durchdringung (Aluminium). Gamma (γ): hochenergetische elektromagnetische Strahlung, sehr durchdringend (braucht Blei oder dickes Beton). Halbwertszeit: Zeit, nach der die Hälfte der Atome zerfallen ist.' },
+          { isChapter:true, name:'🌱 Energie & Umwelt' },
+          { name:'Energiequellen und Klimaschutz', diff:1,
+            explanation:'Fossile Energie: Kohle, Öl, Gas – endlich und erzeugen CO₂. Erneuerbare Energie: Sonnenenergie (Solar), Windkraft, Wasserkraft, Biomasse – unerschöpflich und klimaschonend. Treibhauseffekt: CO₂ in der Atmosphäre lässt Wärme nicht entweichen → Erderwärmung. Energiesparen: LED statt Glühlampe, Dämmung, Öffentliche Verkehrsmittel – jeder kann helfen!' },
+        ],
+        exercises:[
+          { id:'e1', type:'Atom & Radioaktivität', diff:2, title:'Atommodell und Radioaktivität',
+            desc:'Atomaufbau, Strahlungsarten und Halbwertszeit.',
+            questions:[
+              { q:'Was sind Protonen?', hint:'Sie befinden sich im Atomkern und sind positiv geladen.', options:['Negativ geladene Teilchen in der Hülle','Positiv geladene Teilchen im Kern','Neutrale Teilchen in der Hülle','Elektronen mit Ladung'], correct:1, explanation:'Protonen sind positiv geladene Teilchen im Atomkern. Ihre Anzahl bestimmt das Element.' },
+              { q:'Kohlenstoff hat 6 Protonen und 6 Neutronen. Massenzahl?', hint:'Massenzahl = Protonen + Neutronen.', options:['6','8','12','18'], correct:2, explanation:'Massenzahl = 6 + 6 = 12.' },
+              { q:'Welche Strahlung ist am wenigsten durchdringend?', hint:'Ein Blatt Papier reicht als Schutz.', options:['Gammastrahlung','Betastrahlung','Alphastrahlung','Röntgenstrahlung'], correct:2, explanation:'Alphastrahlung (Heliumkerne) wird schon durch ein Blatt Papier oder die Haut gestoppt.' },
+              { q:'Halbwertszeit einer Substanz: 10 Jahre. Nach 20 Jahren: Wie viel bleibt von 100 g?', hint:'Nach jeder Halbwertszeit halbiert sich die Menge.', options:['50 g','25 g','10 g','0 g'], correct:1, explanation:'Nach 10 Jahren: 50 g. Nach 20 Jahren: 25 g. (Jede HWZ halbiert die Menge.)' },
+              { q:'Was ist Gammastrahlung?', hint:'Elektromagnetische Strahlung mit sehr hoher Energie.', options:['Heliumkerne','Elektronen','Hochenergetische elektromagnetische Strahlung','Röntgenstrahlen unter 100 keV'], correct:2, explanation:'Gammastrahlung ist elektromagnetische Strahlung (wie Licht, nur extrem energiereich). Durchdringt fast alles.' },
+              { q:'Was schützt am besten gegen Gammastrahlung?', hint:'Ein sehr dichtes Material.', options:['Papier','Aluminium','Blei oder dickes Beton','Holz'], correct:2, explanation:'Gegen Gammastrahlung schützt nur dichtes Material wie Blei oder sehr dickes Beton.' },
+              { q:'Windkraft ist eine erneuerbare Energie. Was bedeutet "erneuerbar"?', hint:'Sie erschöpft sich nicht.', options:['Die Energie wird billiger','Die Energie kommt aus dem Ausland','Die Energiequelle erschöpft sich nicht oder regeneriert sich','Die Energie muss erneuert werden'], correct:2, explanation:'Erneuerbare Energien (Wind, Sonne, Wasser) erschöpfen sich nicht – sie sind immer wieder verfügbar.' },
+              { q:'Wie viele Elektronen hat ein neutrales Atom mit 8 Protonen?', hint:'Im neutralen Atom: Protonen = Elektronen.', options:['4','6','8','16'], correct:2, explanation:'Neutrales Atom: Anzahl Elektronen = Anzahl Protonen = 8 (das ist Sauerstoff, O).' },
+            ]
+          },
+          { id:'e2', type:'Energie & Umwelt', diff:1, title:'Energieversorgung und Klimaschutz',
+            desc:'Energiequellen vergleichen und Umweltauswirkungen verstehen.',
+            questions:[
+              { q:'Welche Energiequelle ist fossil?', hint:'Fossile Energien sind endlich und aus vergangenen Lebewesen entstanden.', options:['Windkraft','Solarenergie','Kohle','Wasserkraft'], correct:2, explanation:'Kohle ist ein fossiler Energieträger – sie entstand vor Millionen Jahren aus abgestorbenen Pflanzen und ist endlich.' },
+              { q:'Was erzeugt der Treibhauseffekt?', hint:'CO₂ verhindert das Entweichen von Wärme.', options:['Abkühlung der Erde','Stärkere Stürme ohne Erwärmung','Erwärmung der Erde durch Wärmestau','Mehr Regen überall'], correct:2, explanation:'CO₂ und andere Treibhausgase halten Wärme in der Atmosphäre zurück → die Erde erwärmt sich.' },
+              { q:'Welche Energieform erzeugt kein CO₂ bei der Stromerzeugung?', hint:'Keine Verbrennung nötig!', options:['Kohle','Erdgas','Öl','Windkraft'], correct:3, explanation:'Windkraftanlagen erzeugen Strom ohne Verbrennung und ohne CO₂-Ausstoß.' },
+              { q:'Welche einfache Maßnahme spart zu Hause am meisten Energie?', hint:'Licht an, wenn man geht? Oder …?', options:['Licht immer anlassen','LED-Lampen statt Glühbirnen verwenden','Nur heißes Wasser verwenden','Fenster immer öffnen'], correct:1, explanation:'LED-Lampen verbrauchen ca. 80 % weniger Strom als Glühbirnen bei gleicher Helligkeit.' },
+              { q:'Was ist Wasserkraft?', hint:'Wasser, das von oben nach unten fließt, dreht …', options:['Strom durch Wärme','Strom durch die Bewegung von Wasser durch Turbinen','Strom durch Sonnenlicht','Strom durch Wind'], correct:1, explanation:'Wasserkraft: Fließendes oder fallendes Wasser dreht Turbinen → erzeugt Strom ohne CO₂.' },
+              { q:'Warum ist Energiesparen auch Klimaschutz?', hint:'Weniger Energiebedarf → weniger Verbrennung.', options:['Kein Zusammenhang','Gesparte Energie kostet weniger','Weniger Energiebedarf → weniger Verbrennung von Kohle/Gas → weniger CO₂','Nur bei Kernenergie relevant'], correct:2, explanation:'Weniger Energieverbrauch → weniger fossile Brennstoffe nötig → weniger CO₂-Ausstoß → weniger Treibhauseffekt.' },
+              { q:'Was ist Solarenergie?', hint:'Die Sonne liefert sie kostenlos.', options:['Energie aus dem Erdinneren','Energie aus dem Wind','Energie aus Sonnenstrahlen','Energie aus Meereswellen'], correct:2, explanation:'Solarenergie wird direkt aus Sonnenstrahlen gewonnen – mit Solarzellen (Strom) oder Solarkollektoren (Wärme).' },
+              { q:'Welcher Begriff beschreibt die Zeit, bis die Hälfte eines radioaktiven Stoffs zerfallen ist?', hint:'Eine spezifische Zeitangabe für radioaktive Stoffe.', options:['Reaktionszeit','Verfallszeit','Halbwertszeit','Zerfallsdauer'], correct:2, explanation:'Halbwertszeit: Die Zeit, nach der genau die Hälfte der radioaktiven Atome zerfallen ist. Jedes Isotop hat seine eigene Halbwertszeit.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
 };
 

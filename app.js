@@ -339,19 +339,33 @@ function _elevenSpeakSequential(text, onDone) {
 
 // ---- Grade colors for card backgrounds ----
 const GRADE_GRADIENTS = {
-  klasse1:  'linear-gradient(135deg,#10B981,#34D399)',
-  klasse2:  'linear-gradient(135deg,#06B6D4,#22D3EE)',
-  klasse3:  'linear-gradient(135deg,#F59E0B,#FCD34D)',
-  klasse4:  'linear-gradient(135deg,#EC4899,#F9A8D4)',
-  klasse5:  'linear-gradient(135deg,#7C3AED,#A855F7)',
-  klasse6:  'linear-gradient(135deg,#2563EB,#60A5FA)',
-  klasse7:  'linear-gradient(135deg,#0D9488,#2DD4BF)',
-  klasse8:  'linear-gradient(135deg,#059669,#34D399)',
-  klasse9:  'linear-gradient(135deg,#D97706,#FBBF24)',
-  klasse10: 'linear-gradient(135deg,#DC2626,#F87171)',
-  klasse11: 'linear-gradient(135deg,#4F46E5,#818CF8)',
-  klasse12: 'linear-gradient(135deg,#0E7490,#22D3EE)',
-  klasse13: 'linear-gradient(135deg,#B45309,#F59E0B)',
+  klasse1:     'linear-gradient(135deg,#10B981,#34D399)',
+  klasse2:     'linear-gradient(135deg,#06B6D4,#22D3EE)',
+  klasse3:     'linear-gradient(135deg,#F59E0B,#FCD34D)',
+  klasse4:     'linear-gradient(135deg,#EC4899,#F9A8D4)',
+  klasse5:     'linear-gradient(135deg,#7C3AED,#A855F7)',
+  klasse6:     'linear-gradient(135deg,#2563EB,#60A5FA)',
+  klasse7:     'linear-gradient(135deg,#0D9488,#2DD4BF)',
+  klasse8:     'linear-gradient(135deg,#059669,#34D399)',
+  klasse9:     'linear-gradient(135deg,#D97706,#FBBF24)',
+  klasse10:    'linear-gradient(135deg,#DC2626,#F87171)',
+  klasse11:    'linear-gradient(135deg,#4F46E5,#818CF8)',
+  klasse12:    'linear-gradient(135deg,#0E7490,#22D3EE)',
+  klasse13:    'linear-gradient(135deg,#B45309,#F59E0B)',
+  // Realschule variants
+  klasse5_rs:  'linear-gradient(135deg,#6D28D9,#9333EA)',
+  klasse6_rs:  'linear-gradient(135deg,#1D4ED8,#3B82F6)',
+  klasse7_rs:  'linear-gradient(135deg,#0F766E,#14B8A6)',
+  klasse8_rs:  'linear-gradient(135deg,#047857,#10B981)',
+  klasse9_rs:  'linear-gradient(135deg,#B45309,#F59E0B)',
+  klasse10_rs: 'linear-gradient(135deg,#B91C1C,#EF4444)',
+  // Hauptschule variants
+  klasse5_hs:  'linear-gradient(135deg,#BE185D,#EC4899)',
+  klasse6_hs:  'linear-gradient(135deg,#9D174D,#F43F5E)',
+  klasse7_hs:  'linear-gradient(135deg,#92400E,#F59E0B)',
+  klasse8_hs:  'linear-gradient(135deg,#065F46,#34D399)',
+  klasse9_hs:  'linear-gradient(135deg,#1E3A8A,#60A5FA)',
+  klasse10_hs: 'linear-gradient(135deg,#4C1D95,#8B5CF6)',
 };
 
 // ── Schulform-System ─────────────────────────────────────────
@@ -431,19 +445,31 @@ function backToSchoolFormSelection() {
 /** Kompatibilitäts-Alias (wird ggf. noch von alten localStorage-Werten genutzt) */
 function selectSchoolType(type) { showGradesForSchoolForm(type); }
 
+/** Gibt den effektiven Content-Key zurück (_hs für Hauptschule, _rs für Realschule, sonst Basis) */
+function getGradeKey(baseId) {
+  if (activeSchoolType === 'hauptschule' && CONTENT[baseId + '_hs']) {
+    return baseId + '_hs';
+  }
+  if ((activeSchoolType === 'realschule' || activeSchoolType === 'hauptschule') && CONTENT[baseId + '_rs']) {
+    return baseId + '_rs';
+  }
+  return baseId;
+}
+
 function renderGradeGrid() {
   const grid = document.getElementById('gradeGrid');
   if (!grid) return;
   const grades = SCHOOL_TYPES[activeSchoolType]?.grades || [];
   grid.innerHTML = '';
   grades.forEach(id => {
-    const grade = CONTENT[id];
+    const key = getGradeKey(id);
+    const grade = CONTENT[key] || CONTENT[id];
     if (!grade) return;
     const subjectNames = grade.subjects.slice(0,3).map(s => s.name);
     const progress = getGradeProgress(grade.id);
     const card = document.createElement('div');
     card.className = 'grade-card';
-    card.style.background = GRADE_GRADIENTS[grade.id];
+    card.style.background = GRADE_GRADIENTS[grade.id] || GRADE_GRADIENTS[id];
     card.onclick = () => navigate('grade', grade.id);
     card.innerHTML = `
       <div class="grade-card-inner">
@@ -1161,9 +1187,9 @@ function navigate(view, gradeId, subjectId, exerciseId) {
   document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
   stopIntro();
 
-  // Set grade data attribute for CSS vars
+  // Set grade data attribute for CSS vars (strip _rs suffix)
   if (state.gradeId) {
-    document.body.setAttribute('data-grade', state.gradeId.replace('klasse',''));
+    document.body.setAttribute('data-grade', state.gradeId.replace('klasse','').replace('_rs','').replace('_hs',''));
   } else {
     document.body.removeAttribute('data-grade');
   }
@@ -1204,9 +1230,10 @@ function renderGrade() {
   const grade = CONTENT[state.gradeId];
   if (!grade) return;
 
-  // Hero
+  // Hero (use base key for gradient lookup when _rs variant active)
   const hero = document.getElementById('gradeHeroArea');
-  hero.style.background = GRADE_GRADIENTS[state.gradeId];
+  const baseGradeId = state.gradeId.replace('_rs','').replace('_hs','');
+  hero.style.background = GRADE_GRADIENTS[state.gradeId] || GRADE_GRADIENTS[baseGradeId];
   hero.innerHTML = `
     <div class="hero-breadcrumb" onclick="navigate('home')">🏠 Startseite</div>
     <h1>${grade.emoji} ${grade.label}</h1>
