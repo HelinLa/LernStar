@@ -344,6 +344,28 @@ ul { list-style: none; }
   line-height: 1.4;
 }
 
+/* ── Prüfungs-Banner innerhalb der Schulform-Ansicht ── */
+.sf-exam-wrap {
+  margin: 32px 0 8px;
+  text-align: center;
+}
+.sf-exam-title {
+  font-size: .88rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.7);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.sf-exam-grid {
+  display: flex;
+  justify-content: center;
+}
+.sf-exam-grid .exam-quick-card {
+  max-width: 420px;
+  width: 100%;
+}
+
 /* ── SCHRITT 2: Klassen-Auswahl ── */
 .sf-grades-section {
   max-width: 900px;

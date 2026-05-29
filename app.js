@@ -383,14 +383,49 @@ function showGradesForSchoolForm(type) {
   if (titleEl && sf) titleEl.textContent = `${sf.icon} ${sf.label} – Klasse ${sf.range}`;
   // Klassen-Grid rendern
   renderGradeGrid();
+  // Prüfungs-Banner passend zur Schulform einblenden
+  const banner = document.getElementById('sfExamBanner');
+  if (banner) {
+    if (type === 'hauptschule' || type === 'realschule') {
+      banner.innerHTML = `
+        <div class="sf-exam-wrap">
+          <div class="sf-exam-title">📝 Prüfungsvorbereitung</div>
+          <div class="sf-exam-grid">
+            <button class="exam-quick-card exam-quick-zap" onclick="setExamMode('zap');navigate('examprep')">
+              <div class="eqc-icon">🎯</div>
+              <div class="eqc-title">ZAP-Vorbereitung</div>
+              <div class="eqc-sub">Klasse 9–10 · Multiple Choice · Sofort verfügbar</div>
+              <div class="eqc-badge">65 Aufgaben</div>
+            </button>
+          </div>
+        </div>`;
+    } else if (type === 'gymnasium') {
+      banner.innerHTML = `
+        <div class="sf-exam-wrap">
+          <div class="sf-exam-title">📝 Prüfungsvorbereitung</div>
+          <div class="sf-exam-grid">
+            <button class="exam-quick-card exam-quick-abi" onclick="setExamMode('abitur');navigate('examprep')">
+              <div class="eqc-icon">🏆</div>
+              <div class="eqc-title">Abitur-Vorbereitung</div>
+              <div class="eqc-sub">Gymnasium · KI-generiert · Höchste Anforderung</div>
+              <div class="eqc-badge">KI-generiert</div>
+            </button>
+          </div>
+        </div>`;
+    } else {
+      banner.innerHTML = '';
+    }
+  }
 }
 
 /** Schritt 2 → Schritt 1: Zurück zur Schulform-Auswahl */
 function backToSchoolFormSelection() {
   const sfCards  = document.getElementById('sfCardsSection');
   const sfGrades = document.getElementById('sfGradesSection');
+  const banner   = document.getElementById('sfExamBanner');
   if (sfCards)  sfCards.style.display  = '';
   if (sfGrades) sfGrades.style.display = 'none';
+  if (banner)   banner.innerHTML       = '';
 }
 
 /** Kompatibilitäts-Alias (wird ggf. noch von alten localStorage-Werten genutzt) */
