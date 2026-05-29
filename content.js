@@ -1487,6 +1487,45 @@ const CONTENT = {
               { q:'Maßstab 1:50. Im Plan: 4 cm. Wirklichkeit?', hint:'4 cm × 50 = 200 cm = 2 m.', options:['4 m','2 m','200 m','0,08 m'], correct:1, explanation:'4 × 50 = 200 cm = 2 m.' },
             ]
           },
+          { id:'e6', type:'Negative Zahlen', diff:2, title:'Negative Zahlen und Zahlenstrahl',
+            desc:'Mit negativen Zahlen rechnen und sie am Zahlenstrahl einordnen.',
+            questions:[
+              { q:'Was ist –3 + 5?', hint:'Starte bei –3 auf dem Zahlenstrahl und gehe 5 Schritte nach rechts!', options:['–8','–2','2','8'], correct:2, explanation:'–3 + 5 = +2. Am Zahlenstrahl: –3 → 0 → +2.' },
+              { q:'Was ist –4 – 3?', hint:'Subtraktion einer positiven Zahl: Gehe weitere Schritte nach links!', options:['–7','–1','1','7'], correct:0, explanation:'–4 – 3 = –7. Noch tiefer ins Minus.' },
+              { q:'Was ist (–5) × (–2)?', hint:'Minus mal Minus = ? Merke die Vorzeichenregel!', options:['–10','10','–7','3'], correct:1, explanation:'(–5) × (–2) = +10. Minus × Minus = Plus.' },
+              { q:'Was ist (–12) ÷ 4?', hint:'Vorzeichen: Minus ÷ Plus = ? Dann normal dividieren.', options:['–3','3','–8','8'], correct:0, explanation:'(–12) ÷ 4 = –3. Minus ÷ Plus = Minus.' },
+              { q:'Ordne von klein nach groß: –5, 3, –1, 0, –3', hint:'Auf dem Zahlenstrahl: Je weiter links, desto kleiner!', options:['–1; –3; –5; 0; 3','–5; –3; –1; 0; 3','3; 0; –1; –3; –5','0; –1; –3; –5; 3'], correct:1, explanation:'–5 < –3 < –1 < 0 < 3.' },
+              { q:'Temperatur: Morgens –4 °C, mittags +6 °C. Differenz?', hint:'Differenz = obere Temperatur – untere Temperatur.', options:['2 °C','8 °C','10 °C','–10 °C'], correct:2, explanation:'6 – (–4) = 6 + 4 = 10 °C Temperaturunterschied.' },
+              { q:'Was ist der Betrag von –7?', hint:'Der Betrag ist der Abstand von 0 – immer positiv!', options:['–7','7','0','1/7'], correct:1, explanation:'|–7| = 7. Der Betrag einer Zahl ist immer positiv.' },
+              { q:'Was ist 3 + (–8)?', hint:'Addition einer negativen Zahl = Subtraktion: 3 – 8 = ?', options:['–5','5','–11','11'], correct:0, explanation:'3 + (–8) = 3 – 8 = –5.' },
+            ]
+          },
+          { id:'e7', type:'Geometrie – Kreise', diff:2, title:'Kreisumfang und Kreisfläche',
+            desc:'Mit Pi rechnen und Kreisformeln anwenden.',
+            questions:[
+              { q:'Formel für den Kreisumfang?', hint:'U = π × … (Durchmesser oder Radius?)', options:['U = π × r','U = π × d','U = 2 × d','U = r²'], correct:1, explanation:'U = π × d = 2 × π × r. (π ≈ 3,14)' },
+              { q:'Formel für die Kreisfläche?', hint:'A = π × … hoch 2.', options:['A = π × r','A = π × d²','A = π × r²','A = 2πr'], correct:2, explanation:'A = π × r². Der Radius wird quadriert!' },
+              { q:'Kreisumfang: r = 5 cm. U = ? (π ≈ 3,14)', hint:'U = 2 × π × r = 2 × 3,14 × 5 = ?', options:['15,7 cm','31,4 cm','78,5 cm','3,14 cm'], correct:1, explanation:'U = 2 × 3,14 × 5 = 31,4 cm.' },
+              { q:'Kreisfläche: r = 4 cm. A = ? (π ≈ 3,14)', hint:'A = π × r² = 3,14 × 4² = 3,14 × 16 = ?', options:['25,12 cm²','50,24 cm²','12,56 cm²','100,48 cm²'], correct:1, explanation:'A = 3,14 × 16 = 50,24 cm².' },
+              { q:'Ein Kreis hat Durchmesser 10 cm. Wie groß ist der Radius?', hint:'Radius = Durchmesser ÷ 2!', options:['20 cm','10 cm','5 cm','2 cm'], correct:2, explanation:'r = d ÷ 2 = 10 ÷ 2 = 5 cm.' },
+              { q:'Welche Einheit hat die Kreisfläche?', hint:'Fläche wird immer in cm² (Quadrat-Einheiten) gemessen!', options:['cm','cm²','cm³','π'], correct:1, explanation:'Fläche wird in cm² angegeben – Länge × Länge = Fläche.' },
+              { q:'π (Pi) ist ungefähr …?', hint:'Auswendig merken: 3 Komma 14 …', options:['3,00','3,14','3,41','31,4'], correct:1, explanation:'π ≈ 3,14159… ≈ 3,14 für Berechnungen.' },
+              { q:'Kreisumfang: d = 7 cm. U = ? (π ≈ 3,14)', hint:'U = π × d = 3,14 × 7 = ?', options:['9,87 cm','21,98 cm','43,96 cm','3,14 cm'], correct:1, explanation:'U = 3,14 × 7 = 21,98 cm.' },
+            ]
+          },
+          { id:'e8', type:'Zufall & Wahrscheinlichkeit', diff:2, title:'Wahrscheinlichkeit und Zufallsexperimente',
+            desc:'Wahrscheinlichkeiten berechnen und Zufallsexperimente auswerten.',
+            questions:[
+              { q:'Ein fairer Würfel: P(gerade Augenzahl) = ?', hint:'Gerade Zahlen: 2, 4, 6 – das sind 3 von 6 möglichen Ergebnissen.', options:['1/6','1/3','1/2','2/3'], correct:2, explanation:'P(gerade) = 3/6 = 1/2.' },
+              { q:'P(Kopf) beim fairen Münzwurf = ?', hint:'Münze: 2 Seiten, eine ist Kopf.', options:['1/4','1/3','1/2','1'], correct:2, explanation:'P(Kopf) = 1/2. Kopf oder Zahl – beide gleich wahrscheinlich.' },
+              { q:'Eine Urne hat 4 rote, 6 blaue Kugeln. P(rot) = ?', hint:'Günstige Ergebnisse ÷ alle Ergebnisse = Wahrscheinlichkeit!', options:['4/10','6/10','4/6','2/5'], correct:0, explanation:'P(rot) = 4/10 = 2/5. Insgesamt 10 Kugeln.' },
+              { q:'Was bedeutet P = 0?', hint:'Eine Wahrscheinlichkeit von 0 ist der kleinstmögliche Wert – was heißt das?', options:['Sehr unwahrscheinlich','Unmöglich','Sicher','Gleich wahrscheinlich'], correct:1, explanation:'P = 0: das Ereignis ist unmöglich.' },
+              { q:'Was bedeutet P = 1?', hint:'Eine Wahrscheinlichkeit von 1 ist der größtmögliche Wert!', options:['Sehr wahrscheinlich','Möglich','Sicher (wird immer eintreten)','Unmöglich'], correct:2, explanation:'P = 1: das Ereignis ist sicher – es tritt immer ein.' },
+              { q:'Ein Würfel: P(Augenzahl > 4) = ?', hint:'Welche Zahlen sind größer als 4? Zähle sie!', options:['1/6','2/6','3/6','4/6'], correct:1, explanation:'5 und 6 sind > 4 → P = 2/6 = 1/3.' },
+              { q:'Experiment: 50 Würfe, Kopf fiel 22-mal. Relative Häufigkeit von Kopf?', hint:'Relative Häufigkeit = Anzahl Treffer ÷ Gesamtanzahl Versuche.', options:['22%','44%','50%','78%'], correct:1, explanation:'22 ÷ 50 = 0,44 = 44 %.' },
+              { q:'Ein Glücksrad mit 4 gleich großen Feldern: P(Feld 1) = ?', hint:'Gleich große Felder → jedes gleich wahrscheinlich!', options:['1/2','1/3','1/4','1'], correct:2, explanation:'P = 1/4 – 4 gleich große Felder.' },
+            ]
+          },
         ]
       },
     ]
@@ -1568,6 +1607,45 @@ const CONTENT = {
               { q:'Klasse: 12 Mädchen, 18 Jungen. Anteil Mädchen in %?', hint:'Gesamt = 30. Formel: 12 ÷ 30 × 100.', options:['12 %','33 %','40 %','60 %'], correct:2, explanation:'12 ÷ 30 = 0,4 = 40 %.' },
             ]
           },
+          { id:'e5', type:'Algebra', diff:3, title:'Terme und Variablen',
+            desc:'Terme aufstellen, vereinfachen und ausmultiplizieren.',
+            questions:[
+              { q:'Was sind gleichartige Terme?', hint:'Gleichartig = gleiche Variable UND gleiche Potenz.', options:['Terme mit gleicher Zahl','Terme mit gleicher Variable und Potenz','Alle Terme','Terme ohne Variable'], correct:1, explanation:'Nur gleichartige Terme (z.B. 3x und 2x) können zusammengefasst werden.' },
+              { q:'Vereinfache: 5x + 3x', hint:'Beide Terme haben x → addiere die Koeffizienten: 5 + 3 = ?', options:['8x²','8x','15x','2x'], correct:1, explanation:'5x + 3x = 8x.' },
+              { q:'Vereinfache: 4a – a + 2a', hint:'Koeffizienten zusammenzählen: 4 – 1 + 2 = ?', options:['5a','6a','7a','8a'], correct:0, explanation:'4 – 1 + 2 = 5 → 5a.' },
+              { q:'Multipliziere aus: 3(x + 4)', hint:'3 × x und 3 × 4 einzeln berechnen, dann addieren.', options:['3x + 4','3x + 7','3x + 12','x + 12'], correct:2, explanation:'3(x + 4) = 3x + 12 (Distributivgesetz).' },
+              { q:'Multipliziere aus: –2(x – 5)', hint:'–2 × x = –2x und –2 × (–5) = +10. Minus mal Minus = Plus!', options:['–2x – 5','–2x + 10','–2x – 10','2x – 10'], correct:1, explanation:'–2(x – 5) = –2x + 10.' },
+              { q:'Vereinfache: 3x + 2y – x + 4y', hint:'x-Terme getrennt sammeln: (3x – x). y-Terme: (2y + 4y).', options:['2x + 6y','4x + 6y','2x + 2y','8xy'], correct:0, explanation:'3x – x = 2x und 2y + 4y = 6y → 2x + 6y.' },
+              { q:'Klammere aus: 4x + 6', hint:'Welche Zahl ist ein Teiler von 4 und 6? Das ist der gemeinsame Faktor.', options:['4(x + 6)','2(2x + 3)','6(x + 4)','4(x + 1)'], correct:1, explanation:'GGT(4, 6) = 2 → 4x + 6 = 2(2x + 3).' },
+              { q:'Multipliziere aus und vereinfache: 2(3x – 1) + x', hint:'Schritt 1: Klammer auflösen. Schritt 2: gleichartige Terme zusammenfassen.', options:['5x – 2','6x – 2','7x – 2','7x + 2'], correct:2, explanation:'2(3x – 1) + x = 6x – 2 + x = 7x – 2.' },
+            ]
+          },
+          { id:'e6', type:'Prozent', diff:3, title:'Zinsrechnung',
+            desc:'Zinsen, Zinssatz und Kapital berechnen.',
+            questions:[
+              { q:'Was sind Zinsen?', hint:'Geld, das man für die Nutzung von geliehenen Geld zahlt oder bekommt.', options:['Der geliehene Betrag','Bezahlung für die Nutzung von Kapital','Die Laufzeit','Der Gewinn'], correct:1, explanation:'Zinsen = Betrag für die Nutzung von Kapital (Kredit oder Sparguthaben).' },
+              { q:'Zinsformel: Z = K × p ÷ 100. Was ist p?', hint:'p steht für die Prozentzahl des Zinssatzes.', options:['Das Kapital','Die Laufzeit','Der Zinssatz in Prozent','Die Zinsen'], correct:2, explanation:'p = Zinssatz in Prozent (z.B. p = 3 bedeutet 3 % Zinsen).' },
+              { q:'K = 1.000 €, p = 5 %. Zinsen nach 1 Jahr?', hint:'Z = 1.000 × 5 ÷ 100. Oder: 0,05 × 1.000.', options:['5 €','50 €','500 €','5.000 €'], correct:1, explanation:'Z = 1.000 × 5 / 100 = 50 €.' },
+              { q:'K = 800 €, p = 2,5 %. Jahreszinsen?', hint:'Z = 800 × 2,5 ÷ 100 = ?', options:['2 €','20 €','200 €','25 €'], correct:1, explanation:'Z = 800 × 2,5 / 100 = 20 €.' },
+              { q:'Sparbuch: 600 € bei 3 % für 2 Jahre. Zinsen gesamt?', hint:'Jahreszins = 600 × 0,03 = 18 €. Dann für 2 Jahre verdoppeln.', options:['18 €','36 €','180 €','54 €'], correct:1, explanation:'18 € × 2 Jahre = 36 € Zinsen gesamt.' },
+              { q:'Zinsen 60 €, Kapital 2.000 €. Zinssatz p?', hint:'Umformen: p = Z × 100 ÷ K = 60 × 100 ÷ 2.000.', options:['2 %','3 %','4 %','5 %'], correct:1, explanation:'p = 60 × 100 / 2.000 = 3 %.' },
+              { q:'K = 500 €, p = 4 %. Endkapital nach 1 Jahr?', hint:'Zinsen = 500 × 0,04 = 20 €. Endkapital = Anfangskapital + Zinsen.', options:['504 €','520 €','540 €','560 €'], correct:1, explanation:'500 + 20 = 520 €.' },
+              { q:'Grundwert gesucht: 3 % Zinsen = 45 €. Kapital K?', hint:'Umformen: K = Z × 100 ÷ p = 45 × 100 ÷ 3.', options:['135 €','450 €','1.500 €','15 €'], correct:2, explanation:'K = 45 × 100 / 3 = 1.500 €.' },
+            ]
+          },
+          { id:'e7', type:'Geometrie', diff:2, title:'Parallelogramm und Trapez',
+            desc:'Flächeninhalte berechnen und Formeln anwenden.',
+            questions:[
+              { q:'Formel für den Flächeninhalt eines Parallelogramms?', hint:'Grundseite × Höhe – die Höhe steht senkrecht zur Grundseite.', options:['A = a × b','A = a × h','A = (a + b) × h','A = a²'], correct:1, explanation:'A = a × h (Grundseite × Höhe). Die Höhe muss senkrecht auf der Grundseite stehen.' },
+              { q:'Parallelogramm: a = 8 cm, h = 5 cm. Flächeninhalt?', hint:'A = a × h = 8 × 5.', options:['13 cm²','40 cm²','80 cm²','26 cm²'], correct:1, explanation:'A = 8 × 5 = 40 cm².' },
+              { q:'Formel für den Flächeninhalt eines Trapezes?', hint:'Ein Trapez hat zwei parallele Seiten a und c. Die Formel nutzt deren Durchschnitt.', options:['A = a × h','A = (a + c) / 2 × h','A = (a × c) + h','A = a + c + h'], correct:1, explanation:'A = (a + c) / 2 × h. Mittelwert der parallelen Seiten × Höhe.' },
+              { q:'Trapez: a = 6 cm, c = 10 cm, h = 4 cm. Fläche?', hint:'A = (6 + 10) / 2 × 4. Erst die Klammer ausrechnen.', options:['32 cm²','64 cm²','40 cm²','24 cm²'], correct:0, explanation:'A = 16 / 2 × 4 = 8 × 4 = 32 cm².' },
+              { q:'Was ist ein Parallelogramm?', hint:'Para-llel-o-gramm → zwei Paare paralleler Seiten.', options:['Nur zwei Seiten parallel','Gegenüberliegende Seiten gleich lang und parallel','Alle Seiten gleich lang','Alle Winkel 90°'], correct:1, explanation:'Beim Parallelogramm sind gegenüberliegende Seiten gleich lang und parallel.' },
+              { q:'Warum ist ein Rechteck ein Sonderfall des Parallelogramms?', hint:'Was gilt beim Rechteck zusätzlich zu parallelen Seiten?', options:['Alle Seiten gleich lang','Alle Winkel = 90°','Nur 3 Seiten','Trapezform'], correct:1, explanation:'Das Rechteck ist ein Parallelogramm mit vier rechten Winkeln (90°).' },
+              { q:'Trapez: a = 5 cm, c = 7 cm, h = 6 cm. Fläche?', hint:'A = (5 + 7) / 2 × 6 = ? / 2 × 6.', options:['36 cm²','72 cm²','30 cm²','24 cm²'], correct:0, explanation:'A = 12 / 2 × 6 = 6 × 6 = 36 cm².' },
+              { q:'Parallelogramm: Fläche = 48 cm², h = 6 cm. Grundseite a?', hint:'Umformen: a = A / h = 48 / 6.', options:['6 cm','8 cm','10 cm','12 cm'], correct:1, explanation:'a = 48 / 6 = 8 cm.' },
+            ]
+          },
         ]
       },
       {
@@ -1625,6 +1703,32 @@ const CONTENT = {
               { q:'Was ist kinetische Energie?', hint:'„Kinetisch" kommt von griechisch „Bewegung". Formel: Ekin = ½ × m × v².', options:['Lageenergie','Wärmeenergie','Bewegungsenergie','Elektrische Energie'], correct:2, explanation:'Kinetische Energie = Bewegungsenergie = ½ × m × v².' },
               { q:'P = 500 W, t = 10 s. Wie viel Arbeit?', hint:'Umstellen: W = P × t = 500 W × 10 s.', options:['50 J','500 J','5.000 J','0,05 J'], correct:2, explanation:'W = 500 × 10 = 5.000 J.' },
               { q:'Energieerhaltungssatz: Was gilt beim freien Fall?', hint:'Energie kann nicht verschwinden, sie wandelt sich nur um.', options:['Energie nimmt ab','Lageenergie → Bewegungsenergie','Energie entsteht aus Nichts','Bewegungsenergie → Lageenergie'], correct:1, explanation:'Beim Fall: Lageenergie wird in Bewegungsenergie umgewandelt.' },
+            ]
+          },
+          { id:'e4', type:'Druck', diff:2, title:'Druck und Auftrieb',
+            desc:'Druck berechnen und Auftriebskraft verstehen.',
+            questions:[
+              { q:'Formel für den Druck p?', hint:'Druck = Kraft pro Fläche. Kleine Fläche → großer Druck!', options:['p = F × A','p = F / A','p = A / F','p = F + A'], correct:1, explanation:'p = F / A (Kraft durch Fläche), Einheit: Pascal (Pa).' },
+              { q:'Einheit des Drucks?', hint:'1 Pascal = 1 Newton pro Quadratmeter.', options:['Newton (N)','Joule (J)','Pascal (Pa)','Watt (W)'], correct:2, explanation:'Druck wird in Pascal (Pa) gemessen.' },
+              { q:'Kraft 200 N, Fläche 0,04 m². Druck?', hint:'p = F / A = 200 / 0,04. Division durch Dezimalzahl!', options:['8 Pa','50 Pa','5.000 Pa','800 Pa'], correct:2, explanation:'p = 200 / 0,04 = 5.000 Pa.' },
+              { q:'Warum sinkt eine Nadel in Wasser, aber ein Schiff nicht?', hint:'Auftrieb hängt vom Gewicht des verdrängten Wassers ab.', options:['Nadel ist aus Metall','Schiff verdrängt mehr Wasser, Auftrieb > Gewicht','Schiff ist leichter','Nadel ist zu lang'], correct:1, explanation:'Das Schiff verdrängt viel Wasser. Auftriebskraft ≥ Gewichtskraft → es schwimmt.' },
+              { q:'Was ist Auftriebskraft?', hint:'Das verdrängete Wasser "drückt" zurück.', options:['Schwerkraft auf den Körper','Kraft des Mediums nach oben','Reibungskraft','Normalkraft'], correct:1, explanation:'Auftrieb = Gewichtskraft des verdrängten Flüssigkeitsvolumens (Archimedisches Prinzip).' },
+              { q:'Warum empfindet man sich im Wasser leichter?', hint:'Wasser drückt nach oben – Auftrieb wirkt der Schwerkraft entgegen.', options:['Wasser kühlt den Körper ab','Auftriebskraft verringert die scheinbare Gewichtskraft','Man ist im Wasser schneller','Wasser verändert die Masse'], correct:1, explanation:'Der Auftrieb wirkt der Schwerkraft entgegen → scheinbarer Gewichtsverlust.' },
+              { q:'Druck mit Füßen auf Boden: 600 N auf 300 cm². In Pa?', hint:'Erst cm² in m² umrechnen: 300 cm² = 0,03 m². Dann p = F / A.', options:['2 Pa','200 Pa','20.000 Pa','2.000 Pa'], correct:2, explanation:'p = 600 / 0,03 = 20.000 Pa.' },
+              { q:'Warum sind Schneeschuhe breit?', hint:'Gleiche Kraft, aber viel größere Fläche → was passiert mit dem Druck?', options:['Um besser zu gleiten','Um den Druck zu verringern','Um schneller zu laufen','Um mehr Reibung zu erzeugen'], correct:1, explanation:'Größere Fläche → kleinerer Druck → Schneeschuhe versinken nicht.' },
+            ]
+          },
+          { id:'e5', type:'Wärme', diff:3, title:'Wärme und Temperatur',
+            desc:'Wärmeübertragung und Wärmeausdehnung verstehen.',
+            questions:[
+              { q:'Einheit der Temperatur in der Physik?', hint:'Absolute Temperaturskala, benannt nach Lord Kelvin.', options:['Grad Celsius (°C)','Kelvin (K)','Fahrenheit (°F)','Joule (J)'], correct:1, explanation:'In der Physik wird Temperatur in Kelvin (K) gemessen. 0 K = –273,15 °C.' },
+              { q:'Wie rechnet man °C in Kelvin um?', hint:'0°C entspricht 273 K – einfach addieren.', options:['K = °C × 273','K = °C – 273','K = °C + 273','K = °C / 273'], correct:2, explanation:'K = °C + 273,15. Beispiel: 20 °C = 293 K.' },
+              { q:'Welche Arten der Wärmeübertragung gibt es?', hint:'Es gibt drei: Leitung, Strömung und Strahlung.', options:['Leitung und Strahlung','Leitung, Strömung und Strahlung','Nur Strahlung','Reibung und Strahlung'], correct:1, explanation:'Wärmeleitung (Berührung), Konvektion (Strömung), Wärmestrahlung (ohne Medium).' },
+              { q:'Wie überträgt sich Wärme in Metallen?', hint:'Metalle leiten Wärme durch direkten Kontakt.', options:['Konvektion','Strahlung','Wärmeleitung','Alle gleich'], correct:2, explanation:'In Metallen hauptsächlich durch Wärmeleitung (freie Elektronen übertragen Energie).' },
+              { q:'Warum steigt heiße Luft nach oben?', hint:'Heiße Luft wird leichter – Dichte nimmt ab.', options:['Magnetismus','Wärme drückt nach oben','Heiße Luft ist leichter (geringere Dichte)','Kältere Luft zieht sie nach oben'], correct:2, explanation:'Heiße Luft dehnt sich aus → geringere Dichte → steigt auf. Das nennt man Konvektion.' },
+              { q:'Warum dehnen sich Metalle beim Erwärmen aus?', hint:'Teilchen bewegen sich schneller und brauchen mehr Platz.', options:['Masse nimmt zu','Atome werden größer','Teilchen bewegen sich schneller und brauchen mehr Raum','Schwerkraft nimmt ab'], correct:2, explanation:'Wärme erhöht die Bewegungsenergie der Teilchen → größere Abstände → Ausdehnung.' },
+              { q:'Womit misst man Temperatur?', hint:'Klassisches Gerät mit Skala.', options:['Manometer','Voltmeter','Thermometer','Barometer'], correct:2, explanation:'Thermometer misst Temperatur (°C, K oder °F).' },
+              { q:'Warum sind Freileitungen im Sommer länger als im Winter?', hint:'Wärmeausdehnung von Metallen.', options:['Mehr Strom fließt im Sommer','Metall dehnt sich bei Wärme aus','Wind zieht die Leitung lang','Erdmagnetfeld verändert sich'], correct:1, explanation:'Wärmeausdehnung: Metalldrähte werden bei höherer Temperatur länger – deshalb hängen sie im Sommer durch.' },
             ]
           },
         ]
@@ -1706,6 +1810,32 @@ const CONTENT = {
               { q:'Werte: 10, 20, 30, 40, 100. Mittelwert?', hint:'Summe = 200. Anzahl = 5. 200 ÷ 5 = ?', options:['30','35','40','50'], correct:2, explanation:'200 ÷ 5 = 40. Der Ausreißer 100 zieht den Mittelwert hoch!' },
             ]
           },
+          { id:'e5', type:'Algebra', diff:3, title:'Terme und binomische Formeln',
+            desc:'Terme vereinfachen und binomische Formeln anwenden.',
+            questions:[
+              { q:'Erste binomische Formel: (a + b)² = ?', hint:'Ausmultiplizieren: (a+b)(a+b). Jedes mit jedem.', options:['a² + b²','a² + ab + b²','a² + 2ab + b²','2a² + 2b²'], correct:2, explanation:'(a + b)² = a² + 2ab + b².' },
+              { q:'(x + 3)² = ?', hint:'Erste binomische Formel: a = x, b = 3. → a² + 2ab + b².', options:['x² + 9','x² + 3x + 9','x² + 6x + 9','x² + 6x + 3'], correct:2, explanation:'(x+3)² = x² + 2·x·3 + 3² = x² + 6x + 9.' },
+              { q:'Zweite binomische Formel: (a – b)² = ?', hint:'Wie erste Formel, aber mit Minus vor dem mittleren Term.', options:['a² – b²','a² – ab + b²','a² – 2ab + b²','a² – 2ab – b²'], correct:2, explanation:'(a – b)² = a² – 2ab + b².' },
+              { q:'(x – 5)² = ?', hint:'Zweite binomische Formel: a = x, b = 5. → a² – 2ab + b².', options:['x² – 25','x² – 5x + 25','x² – 10x + 25','x² – 10x – 25'], correct:2, explanation:'(x–5)² = x² – 10x + 25.' },
+              { q:'Dritte binomische Formel: (a + b)(a – b) = ?', hint:'Vollständig ausmultiplizieren – was kürzt sich heraus?', options:['a² – b²','a² + b²','a² – 2ab','2ab'], correct:0, explanation:'(a+b)(a–b) = a² – b² (die mittleren Terme kürzen sich).' },
+              { q:'(x + 4)(x – 4) = ?', hint:'Dritte binomische Formel: a = x, b = 4. → a² – b².', options:['x² – 4','x² – 8x – 16','x² – 16','x² + 16'], correct:2, explanation:'(x+4)(x–4) = x² – 16.' },
+              { q:'Vereinfache: (2x + 1)² – 1', hint:'Erst (2x+1)² ausrechnen, dann –1 abziehen.', options:['4x²','4x² + 4x','4x² + 4x + 1 – 1 = 4x² + 4x','4x² + 2x'], correct:2, explanation:'(2x+1)² = 4x² + 4x + 1. Dann – 1 = 4x² + 4x.' },
+              { q:'Faktorisiere: x² – 9', hint:'Dritte binomische Formel rückwärts: a² – b² = (a+b)(a–b). Was ist b?', options:['(x–9)(x+9)','(x–3)²','(x+3)(x–3)','(x–3)(x–3)'], correct:2, explanation:'x² – 9 = x² – 3² = (x+3)(x–3).' },
+            ]
+          },
+          { id:'e6', type:'Geometrie', diff:2, title:'Kreise und Körper',
+            desc:'Kreisfläche, Kreisumfang, Oberfläche und Volumen.',
+            questions:[
+              { q:'Kreisumfang: U = ?', hint:'Merke: U = π × d oder U = 2 × π × r.', options:['U = π × r','U = π × d','U = r × d','U = 2 × r'], correct:1, explanation:'U = π × d = 2 × π × r.' },
+              { q:'Kreisfläche: A = ?', hint:'Die Fläche hängt vom Radius ab – quadratisch!', options:['A = π × r','A = π × r²','A = 2 × π × r','A = π × d²'], correct:1, explanation:'A = π × r².' },
+              { q:'Kreis mit r = 7 cm. Umfang (π ≈ 3,14)?', hint:'U = 2 × 3,14 × 7 = ?', options:['21,98 cm','43,96 cm','153,86 cm','31,4 cm'], correct:1, explanation:'U = 2 × 3,14 × 7 = 43,96 cm.' },
+              { q:'Kreis mit r = 5 cm. Fläche (π ≈ 3,14)?', hint:'A = 3,14 × 5² = 3,14 × 25 = ?', options:['15,7 cm²','31,4 cm²','78,5 cm²','314 cm²'], correct:2, explanation:'A = 3,14 × 25 = 78,5 cm².' },
+              { q:'Oberfläche eines Würfels mit Kantenlänge a = 4 cm?', hint:'6 gleiche Flächen. O = 6 × a².', options:['16 cm²','24 cm²','48 cm²','96 cm²'], correct:3, explanation:'O = 6 × 4² = 6 × 16 = 96 cm².' },
+              { q:'Volumen eines Quaders: l = 5 cm, b = 3 cm, h = 2 cm?', hint:'V = l × b × h = 5 × 3 × 2.', options:['10 cm³','15 cm³','30 cm³','60 cm³'], correct:2, explanation:'V = 5 × 3 × 2 = 30 cm³.' },
+              { q:'Volumen eines Würfels mit a = 3 cm?', hint:'V = a³ = 3³ = ?', options:['9 cm³','18 cm³','27 cm³','81 cm³'], correct:2, explanation:'V = 3³ = 27 cm³.' },
+              { q:'Kreisdurchmesser d = 10 cm. Radius r = ?', hint:'Radius = halber Durchmesser.', options:['10 cm','20 cm','5 cm','π cm'], correct:2, explanation:'r = d / 2 = 10 / 2 = 5 cm.' },
+            ]
+          },
         ]
       },
       {
@@ -1763,6 +1893,19 @@ const CONTENT = {
               { q:'Was passiert in der Reihenschaltung, wenn eine Lampe ausfällt?', hint:'Kette unterbrochen → Strom kann nicht mehr fließen.', options:['Andere leuchten heller','Andere leuchten weiter','Alle gehen aus','Nichts ändert sich'], correct:2, explanation:'Alle Lampen erlöschen – der Stromkreis ist unterbrochen.' },
               { q:'Spannung an Reihenschaltung 12V, 3 gleiche Widerstände. Spannung pro Widerstand?', hint:'Spannung teilt sich gleichmäßig auf alle auf: 12 ÷ 3.', options:['3 V','4 V','6 V','12 V'], correct:1, explanation:'12 V ÷ 3 = 4 V pro Widerstand.' },
               { q:'Was ist ein Kurzschluss?', hint:'Strom nimmt den Weg des geringsten Widerstands.', options:['Zu hoher Widerstand','Zu niedrige Spannung','Direktverbindung ohne Widerstand','Keine Spannung'], correct:2, explanation:'Kurzschluss: Strom fließt direkt ohne Widerstand → gefährlich hohe Stromstärke.' },
+            ]
+          },
+          { id:'e4', type:'Magnetismus', diff:2, title:'Magnetismus und elektromagnetische Induktion',
+            desc:'Magnetfelder, Elektromagnete und Induktion.',
+            questions:[
+              { q:'Was haben alle Magnete?', hint:'Denk an Nord- und Südpol – wie beim Globus.', options:['Nur einen Pol','Zwei Pole (Nord und Süd)','Drei Pole','Keinen Pol'], correct:1, explanation:'Jeder Magnet hat genau zwei Pole: Nordpol und Südpol.' },
+              { q:'Welche Pole stoßen sich ab?', hint:'Gleich und gleich …', options:['Ungleiche Pole','Gleiche Pole','Nord und Süd','Alle Pole'], correct:1, explanation:'Gleiche Pole (N–N oder S–S) stoßen sich ab. Ungleiche Pole (N–S) ziehen sich an.' },
+              { q:'Was ist ein Elektromagnet?', hint:'Strom erzeugt ein Magnetfeld.', options:['Permanent-Magnet aus Eisen','Spule, die durch Strom magnetisch wird','Radioaktives Metall','Solarzelle'], correct:1, explanation:'Ein Elektromagnet ist eine Spule, die durch elektrischen Strom ein Magnetfeld erzeugt.' },
+              { q:'Was ist elektromagnetische Induktion?', hint:'Änderung des Magnetfeldes → elektrische Spannung.', options:['Strom erzeugt Magnetfeld','Sich änderndes Magnetfeld erzeugt Spannung','Magnet zieht Eisen an','Wärme entsteht im Leiter'], correct:1, explanation:'Induktion: Ein wechselndes Magnetfeld erzeugt in einem Leiter eine elektrische Spannung.' },
+              { q:'Was nutzt das Induktionsprinzip?', hint:'Es wandelt mechanische in elektrische Energie um.', options:['Batterie','Generator / Dynamo','Thermometer','Kondensator'], correct:1, explanation:'Generator/Dynamo nutzt Induktion: mechanische Energie → elektrische Energie.' },
+              { q:'Wie verstärkt man einen Elektromagneten?', hint:'Mehr Windungen oder mehr Strom – was denkst du?', options:['Kältere Spule verwenden','Mehr Windungen oder höhere Stromstärke','Dünneren Draht','Kürzere Spule'], correct:1, explanation:'Mehr Windungen oder mehr Stromstärke → stärkeres Magnetfeld.' },
+              { q:'Welches Material wird von einem Magneten angezogen?', hint:'Ferromagnetische Materialien.', options:['Aluminium','Kupfer','Eisen','Glas'], correct:2, explanation:'Eisen (und Nickel, Kobalt) sind ferromagnetisch – sie werden von Magneten angezogen.' },
+              { q:'Was ist die Feldliniendarstellung?', hint:'Linien, die den Verlauf des Magnetfelds zeigen.', options:['Linien auf Magneten','Visualisierung des Magnetfeldes mit Feldlinien','Stromrichtung im Leiter','Temperaturverteilung'], correct:1, explanation:'Feldlinien zeigen Richtung und Stärke des Magnetfeldes (von Nord zu Süd außen am Magneten).' },
             ]
           },
         ]
@@ -1844,6 +1987,32 @@ const CONTENT = {
               { q:'Welcher Winkel liegt im rechtwinkligen Dreieck gegenüber der Hypotenuse?', hint:'Die Hypotenuse ist die längste Seite.', options:['30°','45°','60°','90°'], correct:3, explanation:'Die Hypotenuse liegt gegenüber dem 90°-Winkel (rechter Winkel).' },
             ]
           },
+          { id:'e5', type:'Geometrie', diff:3, title:'Strahlensätze und Ähnlichkeit',
+            desc:'Ähnliche Figuren und Strahlensätze anwenden.',
+            questions:[
+              { q:'Was bedeutet Ähnlichkeit bei geometrischen Figuren?', hint:'Gleiche Form, aber eventuell verschiedene Größe.', options:['Gleiche Größe und Form','Gleiche Form, proportionale Seiten, gleiche Winkel','Gleiche Fläche','Nur gleiche Winkel'], correct:1, explanation:'Ähnliche Figuren haben dieselbe Form (gleiche Winkel) und proportionale Seiten.' },
+              { q:'Was ist ein Maßstab?', hint:'Auf einem Stadtplan steht z.B. 1:50.000.', options:['Abstand zweier Punkte','Verhältnis von Zeichnungsgröße zu realer Größe','Fläche der Figur','Länge der Hypotenuse'], correct:1, explanation:'Maßstab = Verhältnis Modellgröße : reale Größe (z.B. 1:100).' },
+              { q:'Maßstab 1:200. Im Plan 3 cm. Echte Länge?', hint:'Echte Länge = Planlänge × Maßstabzahl. 3 × 200 = ?', options:['200 cm','300 cm','600 cm','3 cm'], correct:2, explanation:'3 cm × 200 = 600 cm = 6 m.' },
+              { q:'Kleines Dreieck: Seite 4 cm, Ähnliches großes Dreieck: entsprechende Seite 12 cm. Maßstab?', hint:'Verhältnis klein zu groß: 4 : 12 = ?', options:['1:2','1:3','1:4','2:3'], correct:1, explanation:'4 : 12 = 1 : 3. Der Maßstab beträgt 1 : 3.' },
+              { q:'Was besagt der erste Strahlensatz?', hint:'Zwei Strahlen vom gleichen Punkt, von parallelen Linien geschnitten.', options:['Winkelsumme = 180°','Parallele Schnittlinien teilen die Strahlen proportional','Alle Winkel gleich','Flächeninhalt bleibt gleich'], correct:1, explanation:'Erster Strahlensatz: Zwei Strahlen, von parallelen Geraden geschnitten, werden in gleichem Verhältnis geteilt.' },
+              { q:'Person 1,8 m groß, Schatten 0,6 m. Baum-Schatten 10 m. Baumhöhe?', hint:'Verhältnis Schatten = Verhältnis Größe. 1,8 / 0,6 = Baumhöhe / 10.', options:['18 m','30 m','10 m','3 m'], correct:1, explanation:'1,8 / 0,6 = 3. Baumhöhe = 3 × 10 = 30 m.' },
+              { q:'Im Modell 5 cm, Maßstab 1:50. Echte Länge?', hint:'Echte Länge = 5 × 50 cm = ? Dann in m umrechnen.', options:['10 m','2,5 m','5 m','25 m'], correct:1, explanation:'5 × 50 = 250 cm = 2,5 m.' },
+              { q:'Zwei ähnliche Rechtecke: kleines 3×4, großes mit Länge 9. Breite des großen?', hint:'Maßstab: 9/3 = 3. Breite großes = 4 × 3.', options:['4','8','12','6'], correct:2, explanation:'Maßstab = 9/3 = 3. Breite = 4 × 3 = 12.' },
+            ]
+          },
+          { id:'e6', type:'Statistik', diff:2, title:'Daten und Statistik',
+            desc:'Diagramme lesen, Kennwerte berechnen, Wahrscheinlichkeiten.',
+            questions:[
+              { q:'Was zeigt ein Boxplot?', hint:'Median, Quartile, Minimal- und Maximalwert.', options:['Nur den Mittelwert','Median, Quartile und Extremwerte','Alle Messwerte einzeln','Nur die Häufigkeiten'], correct:1, explanation:'Boxplot zeigt Median, Q1 (25 %), Q3 (75 %), Minimum und Maximum.' },
+              { q:'Was ist ein Histogramm?', hint:'Balkendiagramm für zusammengefasste Häufigkeiten.', options:['Kreisdiagramm','Balkendiagramm mit klassierten Häufigkeiten','Strichliste','Kurvendiagramm'], correct:1, explanation:'Histogramm: Balken zeigen Häufigkeiten für Wertebereiche (Klassen).' },
+              { q:'Würfelwurf: Wie viele gleich-wahrscheinliche Ergebnisse gibt es?', hint:'Ein fairer Würfel hat ? Seiten.', options:['2','4','6','8'], correct:2, explanation:'Fairer Würfel: 6 Seiten → 6 gleichwahrscheinliche Ergebnisse.' },
+              { q:'P(gerade Zahl beim Würfeln)?', hint:'Gerade Zahlen: 2, 4, 6 → 3 von 6.', options:['1/6','1/3','1/2','2/3'], correct:2, explanation:'P = 3/6 = 1/2 = 50 %.' },
+              { q:'5 rote, 3 blaue, 2 grüne Kugeln in Beutel. P(blau ziehen)?', hint:'Günstige Ergebnisse ÷ alle Ergebnisse = 3 ÷ ?', options:['1/3','3/10','3/8','1/4'], correct:1, explanation:'P(blau) = 3 / (5+3+2) = 3/10 = 30 %.' },
+              { q:'Was ist der Unterschied zwischen relativer und absoluter Häufigkeit?', hint:'Absolut = Anzahl. Relativ = Anteil.', options:['Kein Unterschied','Absolut = Anzahl, Relativ = Anteil (÷ Gesamtanzahl)','Relativ ist immer größer','Absolut ist immer ein Prozentsatz'], correct:1, explanation:'Absolute Häufigkeit: wie oft etwas vorkommt (z.B. 12-mal). Relative Häufigkeit: Anteil (12/50 = 0,24).' },
+              { q:'Messwerte: 4, 4, 5, 6, 8, 9, 9. Modus?', hint:'Welcher Wert kommt am häufigsten vor?', options:['5','6','4 und 9','9'], correct:2, explanation:'4 und 9 kommen je 2-mal vor → beide sind Modus (bimodal).' },
+              { q:'Urne: 4 rote, 6 blaue. Zwei Kugeln nacheinander OHNE Zurücklegen. P(beide rot)?', hint:'Erster Zug: 4/10. Dann: noch 3 rote bei 9 übrigen.', options:['4/10 × 4/10','4/10 × 3/9','4/10 × 3/10','2/5'], correct:1, explanation:'P = 4/10 × 3/9 = 12/90 = 2/15 ≈ 13,3 %.' },
+            ]
+          },
         ]
       },
       {
@@ -1899,6 +2068,19 @@ const CONTENT = {
               { q:'Welche Strahlung stoppt eine dünne Aluminiumschicht?', hint:'Alpha wird von Papier gestoppt, Gamma braucht Beton – Beta ist dazwischen.', options:['Alpha','Beta','Gamma','Röntgen'], correct:1, explanation:'Beta-Strahlung wird von wenigen Millimetern Aluminium gestoppt.' },
               { q:'Was bedeutet radioaktiver Zerfall?', hint:'Ein instabiler Kern gibt Energie und Strahlung ab.', options:['Ein Atom verbrennt','Ein instabiler Atomkern sendet Strahlung aus','Elektronen verlassen das Atom','Neutronen werden abgespalten'], correct:1, explanation:'Radioaktiver Zerfall: instabile Atomkerne werden stabil, indem sie Strahlung (α, β, γ) abgeben.' },
               { q:'Wofür wird Gamma-Strahlung in der Medizin eingesetzt?', hint:'Gamma dringt tief ins Gewebe ein.', options:['Ultraschalldiagnostik','Krebsbehandlung (Strahlentherapie)','Röntgenbilder','Blutdruckmessung'], correct:1, explanation:'Gamma-Strahlung wird zur gezielten Bestrahlungstherapie bei Krebs eingesetzt.' },
+            ]
+          },
+          { id:'e4', type:'Optik', diff:2, title:'Optik – Linsen und Spiegel',
+            desc:'Reflexion, Brechung und optische Geräte.',
+            questions:[
+              { q:'Was ist das Reflexionsgesetz?', hint:'Beide Winkel werden zur Senkrechten gemessen.', options:['Einfallswinkel < Reflexionswinkel','Einfallswinkel = Reflexionswinkel','Einfallswinkel > Reflexionswinkel','Kein festes Gesetz'], correct:1, explanation:'Das Reflexionsgesetz: Einfallswinkel = Reflexionswinkel (beide zur Senkrechten der Fläche).' },
+              { q:'Was ist Lichtbrechung?', hint:'Licht ändert die Richtung, wenn es das Medium wechselt.', options:['Licht wird reflektiert','Licht ändert beim Mediumwechsel seine Richtung','Licht wird absorbiert','Licht teilt sich auf'], correct:1, explanation:'Brechung: Licht ändert die Richtung beim Übergang zwischen Medien unterschiedlicher optischer Dichte.' },
+              { q:'Was ist eine Sammellinse?', hint:'Sie bündelt Lichtstrahlen in einem Punkt.', options:['Zerstreut Licht','Bündelt Lichtstrahlen in einem Brennpunkt','Reflektiert Licht','Absorbiert Licht'], correct:1, explanation:'Sammellinse (konvex): bündelt parallele Strahlen im Brennpunkt F.' },
+              { q:'Was ist eine Zerstreuungslinse?', hint:'Das Gegenteil der Sammellinse.', options:['Bündelt Strahlen','Zerstreut parallele Strahlen auseinander','Reflektiert Strahlen','Hat keinen Brennpunkt'], correct:1, explanation:'Zerstreuungslinse (konkav): parallele Strahlen divergieren nach dem Durchgang.' },
+              { q:'Wofür nutzt man Sammellinsen?', hint:'Optische Geräte, die vergrößern oder Bilder erzeugen.', options:['Brillen gegen Kurzsichtigkeit','Kamera, Lupe, Fernrohr','Periskop','Autospiegel'], correct:1, explanation:'Sammellinsen: Lupen, Kameraobjektive, Fernrohre, Brillen bei Weitsichtigkeit.' },
+              { q:'Was ist der Brennpunkt einer Linse?', hint:'Parallele Strahlen treffen sich nach der Linse in einem Punkt.', options:['Mittelpunkt der Linse','Punkt, wo parallele Strahlen gebündelt werden','Rand der Linse','Optische Achse'], correct:1, explanation:'Brennpunkt F: Alle parallel zur optischen Achse einfallenden Strahlen gehen durch F.' },
+              { q:'Kurzsichtige Menschen brauchen …?', hint:'Das Bild entsteht vor der Netzhaut → Korrektur?', options:['Sammellinse (konvex)','Zerstreuungslinse (konkav)','Planspiegel','Prisma'], correct:1, explanation:'Kurzsichtig: Zerstreuungslinse (konkav) korrigiert → Bild entsteht auf der Netzhaut.' },
+              { q:'Was ist Totalreflexion?', hint:'Ab einem bestimmten Winkel verlässt kein Licht mehr das dichtere Medium.', options:['Vollständige Absorption','Vollständige Reflexion ab dem kritischen Winkel','Dreifache Brechung','Licht wird grün'], correct:1, explanation:'Totalreflexion: Trifft Licht unter einem großen Winkel auf die Grenzfläche, wird es vollständig reflektiert → Glasfaserkabel.' },
             ]
           },
         ]
@@ -1980,6 +2162,19 @@ const CONTENT = {
               { q:'Was bedeutet f\'\'(x) > 0 an einem Extrempunkt?', hint:'Positive zweite Ableitung → Kurve ist nach oben gewölbt.', options:['Hochpunkt','Tiefpunkt (Minimum)','Wendepunkt','Keine Aussage möglich'], correct:1, explanation:'f\'\'(x) > 0 → Linkskrümmung → Tiefpunkt (Minimum).' },
             ]
           },
+          { id:'e5', type:'Geometrie', diff:3, title:'Vektoren',
+            desc:'Vektoren addieren, subtrahieren und Betrag berechnen.',
+            questions:[
+              { q:'Was ist ein Vektor?', hint:'Hat Richtung UND Länge – im Gegensatz zu einem Skalar.', options:['Eine Zahl ohne Richtung','Eine gerichtete Größe mit Betrag','Ein Punkt im Koordinatensystem','Eine Fläche'], correct:1, explanation:'Ein Vektor beschreibt Richtung und Länge (Betrag) – z.B. Verschiebung, Geschwindigkeit, Kraft.' },
+              { q:'Vektor a = (3, 4). Betrag |a| = ?', hint:'Satz des Pythagoras: √(3² + 4²) = √(9+16).', options:['7','5','√7','25'], correct:1, explanation:'|a| = √(3² + 4²) = √25 = 5.' },
+              { q:'a = (2, 3), b = (1, –1). Summe a + b?', hint:'Komponentenweise addieren: (2+1 | 3+(–1)).', options:['(3, 2)','(3, 4)','(1, 4)','(2, –3)'], correct:0, explanation:'(2+1 | 3–1) = (3 | 2).' },
+              { q:'a = (5, 2), b = (3, 5). Differenz a – b?', hint:'Komponentenweise subtrahieren: (5–3 | 2–5).', options:['(2, –3)','(8, 7)','(2, 3)','(–2, 3)'], correct:0, explanation:'(5–3 | 2–5) = (2 | –3).' },
+              { q:'Nullvektor: Was ist das?', hint:'Kein Betrag, keine Richtung.', options:['Ein Vektor mit Länge 1','Vektor mit Betrag 0','Vektor mit unbekannter Richtung','Der größte mögliche Vektor'], correct:1, explanation:'Nullvektor 0⃗ = (0|0): hat Betrag 0 und keine festgelegte Richtung.' },
+              { q:'a = (–3, 4). Betrag |a| = ?', hint:'Vorzeichen weg: √(3² + 4²).', options:['1','5','7','25'], correct:1, explanation:'|a| = √(9 + 16) = √25 = 5. Vorzeichen spielen keine Rolle beim Betrag.' },
+              { q:'Was ist eine Vektoraddition geometrisch?', hint:'Aneinanderhängen der Pfeile.', options:['Pfeile kreuzen sich','Zweiten Pfeil am Ende des ersten ansetzen','Pfeile spiegeln','Pfeile verdoppeln'], correct:1, explanation:'Vektoraddition: Zweiten Vektor am Ende des ersten ansetzen → der Summenvektor ist der direkte Pfeil vom Start zum Ende.' },
+              { q:'2 × Vektor a = (3, 5). Ergebnis?', hint:'Skalarmultiplikation: jeden Anteil × 2.', options:['(3, 5)','(5, 3)','(6, 10)','(9, 25)'], correct:2, explanation:'2 × (3, 5) = (6, 10). Skalarmultiplikation skaliert Richtung und Länge.' },
+            ]
+          },
         ]
       },
       {
@@ -2035,6 +2230,19 @@ const CONTENT = {
               { q:'Was ist diffuse Reflexion?', hint:'Gegenteil von direkter (gerichteter) Reflexion.', options:['Licht wird vollständig absorbiert','Licht wird in alle Richtungen gestreut','Licht bricht durch ein Medium','Licht ändert seine Farbe'], correct:1, explanation:'Raue Oberflächen streuen Licht in alle Richtungen – deshalb blenden sie nicht wie ein Spiegel.' },
               { q:'Warum ist der Himmel blau?', hint:'Kurzwelliges Licht wird stärker gestreut.', options:['Wasser im Himmel','Blaues Licht wird stärker gestreut als rotes','Sonnenenergie ist blau','Sauerstoff ist blau'], correct:1, explanation:'Blaues Licht hat kürzere Wellenlänge und wird von Luftmolekülen stärker gestreut (Rayleigh-Streuung).' },
               { q:'Wo tritt Lichtbrechung im Alltag auf?', hint:'Brillen, Lupen und Kameras nutzen das Prinzip.', options:['Nur im Labor','In Linsen, Brillen und Prismen','Nur im Wasser','Nur in Glasfaser'], correct:1, explanation:'Lichtbrechung wird in Linsen (Brillen, Kameras, Lupen) und Prismen genutzt, um Licht zu bündeln oder zu zerstreuen.' },
+            ]
+          },
+          { id:'e4', type:'Elektromagnetismus', diff:3, title:'Elektromagnetismus und Transformator',
+            desc:'Induktion, Transformator und elektromagnetische Wellen.',
+            questions:[
+              { q:'Was ist das Induktionsgesetz?', hint:'Änderung des magnetischen Flusses → ?', options:['Strom erzeugt Magnetfeld','Änderndes Magnetfeld induziert Spannung in einem Leiter','Spannung erzeugt Wärme','Licht wird zu Strom'], correct:1, explanation:'Faradaysches Induktionsgesetz: Eine Änderung des magnetischen Flusses induziert eine elektrische Spannung.' },
+              { q:'Was macht ein Transformator?', hint:'Er verändert Wechselspannungen nach oben oder unten.', options:['Wandelt Gleich- in Wechselstrom','Ändert elektrische Spannungen (Wechselstrom)','Erzeugt Magnetfelder','Misst Stromstärke'], correct:1, explanation:'Transformator: Erhöht oder verringert Wechselspannungen durch Induktion zwischen zwei Spulen.' },
+              { q:'Transformator: Primärwicklung 200 Windungen, Sekundär 1.000 Windungen. Übersetzungsverhältnis?', hint:'Verhältnis Windungen = Verhältnis Spannungen.', options:['1:5','5:1','1:200','200:1'], correct:0, explanation:'200 : 1.000 = 1 : 5 – Hochspannungstransformator (Sekundärspannung 5-fach höher).' },
+              { q:'Primärspannung 230 V, Übersetzung 1:10. Sekundärspannung?', hint:'Sekundärspannung = Primärspannung × Übersetzungsfaktor.', options:['23 V','2.300 V','230 V','460 V'], correct:1, explanation:'230 V × 10 = 2.300 V (Aufwärtstransformator).' },
+              { q:'Warum werden hohe Spannungen für die Stromübertragung genutzt?', hint:'P = U × I. Bei hoher Spannung wird der Strom kleiner – was bedeutet das für Verluste?', options:['Höhere Sicherheit','Weniger Wärmeverluste bei kleiner Stromstärke','Leichtere Kabel','Bessere Isolation'], correct:1, explanation:'Bei gleicher Leistung (P = U×I) → hohe Spannung = kleine Stromstärke → kleine Wärmeverluste (P_Verlust = I²×R).' },
+              { q:'Was sind elektromagnetische Wellen?', hint:'Sie brauchen kein Medium und breiten sich mit Lichtgeschwindigkeit aus.', options:['Mechanische Druckwellen','Schwingungen aus gekoppelten E- und B-Feldern','Nur Lichtwellen','Schallwellen hoher Frequenz'], correct:1, explanation:'EM-Wellen: Transversalwellen aus schwingenden elektrischen und magnetischen Feldern – kein Medium nötig.' },
+              { q:'Welche Strahlung hat die höchste Frequenz?', hint:'Je kürzer die Wellenlänge, desto höher die Frequenz.', options:['Radiowellen','Sichtbares Licht','Infrarot','Gamma-Strahlung'], correct:3, explanation:'Gamma-Strahlung hat die höchste Frequenz und kürzeste Wellenlänge im EM-Spektrum.' },
+              { q:'Was ist Wechselstrom (AC)?', hint:'Strom aus der Steckdose.', options:['Strom fließt nur in eine Richtung','Strom wechselt periodisch die Richtung','Strom ist immer gleich stark','Strom kommt aus Batterien'], correct:1, explanation:'Wechselstrom (AC): Stromrichtung wechselt periodisch (in Deutschland 50 Mal pro Sekunde = 50 Hz).' },
             ]
           },
         ]
