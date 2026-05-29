@@ -376,7 +376,9 @@ const SCHOOL_TYPES = {
     grades:['klasse5','klasse6','klasse7','klasse8','klasse9'] },
   realschule:  { label:'Realschule',  icon:'📐', range:'5–10', color:'#2563EB',
     grades:['klasse5','klasse6','klasse7','klasse8','klasse9','klasse10'] },
-  gymnasium:   { label:'Gymnasium',   icon:'🎓', range:'5–13', color:'#7C3AED',
+  gymnasium:     { label:'Gymnasium',     icon:'🎓', range:'5–13', color:'#7C3AED',
+    grades:['klasse5','klasse6','klasse7','klasse8','klasse9','klasse10','klasse11','klasse12','klasse13'] },
+  gesamtschule:  { label:'Gesamtschule',  icon:'🏫', range:'5–13', color:'#0891B2',
     grades:['klasse5','klasse6','klasse7','klasse8','klasse9','klasse10','klasse11','klasse12','klasse13'] },
 };
 // Aktive Schulform – null bedeutet: noch keine gewählt (zeige Schulform-Auswahl)

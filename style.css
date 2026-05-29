@@ -313,6 +313,7 @@ ul { list-style: none; }
 .sf-card-hs::before  { background: linear-gradient(90deg,#F59E0B,#FCD34D); }
 .sf-card-rs::before  { background: linear-gradient(90deg,#2563EB,#60A5FA); }
 .sf-card-gym::before { background: linear-gradient(90deg,#7C3AED,#A855F7); }
+.sf-card-gts::before { background: linear-gradient(90deg,#0891B2,#22D3EE); }
 .sf-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 14px 40px rgba(0,0,0,.2);
@@ -321,6 +322,7 @@ ul { list-style: none; }
 .sf-card-hs:hover  { border-color: #F59E0B; }
 .sf-card-rs:hover  { border-color: #2563EB; }
 .sf-card-gym:hover { border-color: #7C3AED; }
+.sf-card-gts:hover { border-color: #0891B2; }
 .sf-card-icon { font-size: 3rem; line-height: 1; margin-bottom: 12px; display: block; }
 .sf-card-name {
   font-size: 1.15rem;
@@ -337,6 +339,7 @@ ul { list-style: none; }
 .sf-card-hs  .sf-card-grades { color: #D97706; }
 .sf-card-rs  .sf-card-grades { color: #1D4ED8; }
 .sf-card-gym .sf-card-grades { color: #7C3AED; }
+.sf-card-gts .sf-card-grades { color: #0891B2; }
 .sf-card-desc {
   font-size: .78rem;
   color: #64748b;
@@ -401,8 +404,17 @@ ul { list-style: none; }
   opacity: .9;
 }
 
+/* 5. Karte (Gesamtschule) mittig im Grid wenn allein in einer Zeile */
+.sf-cards-grid > button:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: calc(50% - 6px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (max-width: 680px) {
   .sf-cards-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .sf-cards-grid > button:last-child:nth-child(odd) { max-width: 100%; }
   .sf-card { padding: 20px 12px 16px; }
   .sf-card-icon { font-size: 2.2rem; }
   .sf-card-name { font-size: 1rem; }
