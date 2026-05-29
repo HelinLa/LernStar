@@ -366,6 +366,13 @@ const GRADE_GRADIENTS = {
   klasse8_hs:  'linear-gradient(135deg,#065F46,#34D399)',
   klasse9_hs:  'linear-gradient(135deg,#1E3A8A,#60A5FA)',
   klasse10_hs: 'linear-gradient(135deg,#4C1D95,#8B5CF6)',
+  // Gesamtschule variants
+  klasse5_gts:  'linear-gradient(135deg,#0891B2,#22D3EE)',
+  klasse6_gts:  'linear-gradient(135deg,#0284C7,#38BDF8)',
+  klasse7_gts:  'linear-gradient(135deg,#0369A1,#60A5FA)',
+  klasse8_gts:  'linear-gradient(135deg,#1D4ED8,#818CF8)',
+  klasse9_gts:  'linear-gradient(135deg,#4F46E5,#A78BFA)',
+  klasse10_gts: 'linear-gradient(135deg,#6D28D9,#C084FC)',
 };
 
 // ── Schulform-System ─────────────────────────────────────────
@@ -447,8 +454,11 @@ function backToSchoolFormSelection() {
 /** Kompatibilitäts-Alias (wird ggf. noch von alten localStorage-Werten genutzt) */
 function selectSchoolType(type) { showGradesForSchoolForm(type); }
 
-/** Gibt den effektiven Content-Key zurück (_hs für Hauptschule, _rs für Realschule, sonst Basis) */
+/** Gibt den effektiven Content-Key zurück (_gts/_hs/_rs je Schulform, sonst Basis) */
 function getGradeKey(baseId) {
+  if (activeSchoolType === 'gesamtschule' && CONTENT[baseId + '_gts']) {
+    return baseId + '_gts';
+  }
   if (activeSchoolType === 'hauptschule' && CONTENT[baseId + '_hs']) {
     return baseId + '_hs';
   }
@@ -1191,7 +1201,7 @@ function navigate(view, gradeId, subjectId, exerciseId) {
 
   // Set grade data attribute for CSS vars (strip _rs suffix)
   if (state.gradeId) {
-    document.body.setAttribute('data-grade', state.gradeId.replace('klasse','').replace('_rs','').replace('_hs',''));
+    document.body.setAttribute('data-grade', state.gradeId.replace('klasse','').replace('_rs','').replace('_hs','').replace('_gts',''));
   } else {
     document.body.removeAttribute('data-grade');
   }
@@ -1234,7 +1244,7 @@ function renderGrade() {
 
   // Hero (use base key for gradient lookup when _rs variant active)
   const hero = document.getElementById('gradeHeroArea');
-  const baseGradeId = state.gradeId.replace('_rs','').replace('_hs','');
+  const baseGradeId = state.gradeId.replace('_rs','').replace('_hs','').replace('_gts','');
   hero.style.background = GRADE_GRADIENTS[state.gradeId] || GRADE_GRADIENTS[baseGradeId];
   hero.innerHTML = `
     <div class="hero-breadcrumb" onclick="navigate('home')">🏠 Startseite</div>

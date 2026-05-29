@@ -4272,5 +4272,510 @@ const CONTENT = {
     ]
   },
 
+
+  /* =========================================================  KLASSE 5 – GESAMTSCHULE NRW  */
+  klasse5_gts: {
+    id:'klasse5_gts', num:5, label:'Klasse 5',
+    emoji:'🌍', color:['#0891B2','#22D3EE'], light:'#CFFAFE',
+    tagline:'Gesamtschule NRW: Zahlen, Geometrie und erste Daten',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Natürliche Zahlen, Grundrechenarten, Geometrie und Diagramme',
+        color:'#0891B2',
+        intro:'Willkommen in Mathe Klasse 5 an der Gesamtschule! Wir erkunden große Zahlen, Rechenregeln, geometrische Formen und lesen Diagramme – alles Bausteine für deinen weiteren Weg!',
+        topics:[
+          { isChapter:true, name:'🔢 Zahlen & Grundrechenarten' },
+          { name:'Natürliche Zahlen und große Zahlen', diff:1,
+            explanation:'Natürliche Zahlen: 0, 1, 2, 3, … Stellenwerte: Einer (E), Zehner (Z), Hunderter (H), Tausender (T), Zehntausender (ZT), Hunderttausender (HT), Million (M). Beispiel: 3.456.789 → 3 Millionen, 4 Hunderttausender, 5 Zehntausender, 6 Tausender, 7 Hunderter, 8 Zehner, 9 Einer. Rechengesetze: Kommutativ (a+b = b+a), Assoziativ ((a+b)+c = a+(b+c)), Distributiv (a×(b+c) = a×b + a×c). Punkt-vor-Strich gilt immer!' },
+          { isChapter:true, name:'📐 Geometrie: Flächen & Körper' },
+          { name:'Rechteck, Quadrat, Dreieck – Umfang und Fläche', diff:1,
+            explanation:'Rechteck: Umfang U = 2(a+b), Fläche A = a×b. Quadrat: U = 4a, A = a². Dreieck: U = a+b+c, Fläche A = (g×h)÷2. Einheiten: 1 m² = 100 dm² = 10.000 cm². Größen und Einheiten: Länge (m, cm, km), Masse (kg, g, t), Zeit (s, min, h), Volumen (L, mL). Umrechnen: größer→kleiner = multiplizieren; kleiner→größer = dividieren.' },
+          { isChapter:true, name:'📊 Daten & Diagramme' },
+          { name:'Tabellen und Diagramme lesen und erstellen', diff:1,
+            explanation:'Daten sammeln, ordnen und darstellen: Häufigkeitstabelle: Zählt, wie oft ein Wert vorkommt. Säulendiagramm / Balkendiagramm: Werte als Balken dargestellt. Kreisdiagramm: Anteile als Kuchenstücke. Liniendiagramm: Verlauf über Zeit. Wichtig: Immer Titel, Achsenbeschriftung und Einheit lesen! Absolute Häufigkeit = Anzahl. Relative Häufigkeit = Anzahl ÷ Gesamt.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Zahlen', diff:1, title:'Große Zahlen und Grundrechenarten',
+            desc:'Stellenwerte, Rechengesetze und Grundoperationen.',
+            questions:[
+              { q:'Welchen Wert hat die Ziffer 7 in der Zahl 4.735.219?', hint:'Zähle die Stelle von rechts: E, Z, H, T, ZT, HT, M …', options:['7.000','70.000','700.000','7.000.000'], correct:2, explanation:'7 steht an der Hunderttausender-Stelle → Wert: 700.000.' },
+              { q:'5 + 3 × 4 − 2 = ?', hint:'Punkt-vor-Strich: erst Multiplikation, dann Addition und Subtraktion.', options:['13','15','24','28'], correct:0, explanation:'Erst 3 × 4 = 12, dann 5 + 12 − 2 = 15. Warte – 5 + 12 = 17, 17 − 2 = 15. Antwort: 15.' },
+              { q:'Welches Gesetz beschreibt: a × (b + c) = a×b + a×c?', hint:'Es verteilt die Multiplikation auf die Addition.', options:['Kommutativgesetz','Assoziativgesetz','Distributivgesetz','Umkehrgesetz'], correct:2, explanation:'Das Distributivgesetz: a × (b + c) = a×b + a×c – man "verteilt" den Faktor a.' },
+              { q:'2.500.000 in Ziffern: Wie viele Millionen?', hint:'1 Million = 1.000.000.', options:['2','25','250','2.500'], correct:0, explanation:'2.500.000 = 2 Millionen und 500.000 (5 Hunderttausender).' },
+              { q:'756 × 8 = ?', hint:'Zerlege: 700 × 8 + 56 × 8.', options:['5.948','6.048','6.148','6.248'], correct:1, explanation:'700 × 8 = 5.600, 56 × 8 = 448, gesamt: 5.600 + 448 = 6.048.' },
+              { q:'12.348 ÷ 4 = ?', hint:'Teile schrittweise auf: 12.000 ÷ 4 = 3.000, dann den Rest.', options:['3.087','3.087','3.087','3.087'], correct:0, explanation:'12.348 ÷ 4: 12.000 ÷ 4 = 3.000; 348 ÷ 4 = 87 → 3.087.' },
+              { q:'Ordne aufsteigend: 1.050.000 | 150.000 | 1.500.000 | 105.000', hint:'Vergleiche von der größten Stelle (Millionen) nach rechts.', options:['105.000 – 150.000 – 1.050.000 – 1.500.000','150.000 – 105.000 – 1.500.000 – 1.050.000','105.000 – 1.050.000 – 150.000 – 1.500.000','1.050.000 – 150.000 – 105.000 – 1.500.000'], correct:0, explanation:'Aufsteigend: 105.000 < 150.000 < 1.050.000 < 1.500.000.' },
+              { q:'1 km = ? m = ? cm', hint:'1 km = 1.000 m, 1 m = 100 cm.', options:['100 m = 1.000 cm','1.000 m = 10.000 cm','1.000 m = 100.000 cm','10.000 m = 100.000 cm'], correct:2, explanation:'1 km = 1.000 m. 1.000 m × 100 = 100.000 cm.' },
+            ]
+          },
+          { id:'e2', type:'Geometrie', diff:1, title:'Flächen und Umfang',
+            desc:'Rechteck, Quadrat und Dreieck berechnen.',
+            questions:[
+              { q:'Rechteck a = 8 cm, b = 5 cm. Fläche?', hint:'A = a × b.', options:['26 cm²','40 cm²','80 cm²','13 cm²'], correct:1, explanation:'A = 8 × 5 = 40 cm².' },
+              { q:'Quadrat mit a = 7 cm. Umfang?', hint:'U = 4 × a.', options:['14 cm','21 cm','28 cm','49 cm'], correct:2, explanation:'U = 4 × 7 = 28 cm.' },
+              { q:'Dreieck: g = 12 cm, h = 8 cm. Fläche?', hint:'A = (g × h) ÷ 2.', options:['48 cm²','96 cm²','20 cm²','40 cm²'], correct:0, explanation:'A = (12 × 8) ÷ 2 = 96 ÷ 2 = 48 cm².' },
+              { q:'Ein Zimmer ist 5 m × 4 m. Fläche in m²?', hint:'A = Länge × Breite.', options:['9 m²','18 m²','20 m²','40 m²'], correct:2, explanation:'A = 5 × 4 = 20 m².' },
+              { q:'1 m² = ? cm²', hint:'1 m = 100 cm → 1 m² = 100 cm × 100 cm.', options:['100 cm²','1.000 cm²','10.000 cm²','100.000 cm²'], correct:2, explanation:'1 m² = 100 cm × 100 cm = 10.000 cm².' },
+              { q:'Rechteck mit U = 30 cm und a = 10 cm. Wie lang ist b?', hint:'U = 2(a + b) → a + b = U ÷ 2 → b = ?', options:['5 cm','10 cm','15 cm','20 cm'], correct:0, explanation:'a + b = 30 ÷ 2 = 15 cm → b = 15 − 10 = 5 cm.' },
+              { q:'Welche Formel gilt für die Fläche eines Dreiecks?', hint:'Das Dreieck ist die Hälfte eines Parallelogramms.', options:['A = g × h','A = (g × h) ÷ 2','A = g + h','A = 2 × (g + h)'], correct:1, explanation:'Dreiecksfläche: A = (Grundseite × Höhe) ÷ 2.' },
+              { q:'Quadrat mit A = 64 cm². Wie lang ist die Seite a?', hint:'A = a² → a = √A. Welche Zahl × sich selbst = 64?', options:['6 cm','7 cm','8 cm','9 cm'], correct:2, explanation:'8 × 8 = 64 → a = 8 cm.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚡',
+        desc:'Licht, Magnetismus, Elektrizität, Wärme und Energie',
+        color:'#0891B2',
+        intro:'In der Gesamtschule starten wir mit integrierter Naturwissenschaft: Licht, Magnete, Strom und Wärme – alles hängt zusammen!',
+        topics:[
+          { isChapter:true, name:'💡 Licht & Schatten' },
+          { name:'Lichtquellen, Schatten und Reflexion', diff:1,
+            explanation:'Licht breitet sich geradlinig aus. Natürliche Lichtquellen: Sonne, Sterne, Blitze. Künstliche: Glühlampe, LED, Kerze. Schatten entsteht, wenn undurchsichtiges Material Licht blockiert. Reflexion: Einfallswinkel = Reflexionswinkel. Transparente Körper (Glas) lassen Licht durch. Transluzente (Milchglas) streuen es. Opake (Holz) lassen keins durch.' },
+          { isChapter:true, name:'🧲 Magnetismus & Strom' },
+          { name:'Magnete, Elektrizität und Wärme', diff:1,
+            explanation:'Magnete: Nordpol (N) und Südpol (S). Gleiche Pole: Abstoßung. Ungleiche: Anziehung. Elektromagnet: Spule + Strom = temporärer Magnet. Stromkreis muss geschlossen sein. Leiter: Metalle. Isolatoren: Gummi, Plastik. Wärme: Temperatur in °C messen. Wärmeleitung durch direkten Kontakt. Energieformen: kinetisch, potentiell, thermisch, elektrisch.' },
+          { isChapter:true, name:'⚡ Energie' },
+          { name:'Energieformen und Energieumwandlung', diff:1,
+            explanation:'Energie tritt in verschiedenen Formen auf und kann umgewandelt werden. Bewegungsenergie (kinetisch): Ein rollender Ball. Lageenergie (potentiell): Ein Stein auf dem Berg. Wärmeenergie: Heiße Tasse Tee. Elektrische Energie: Strom im Kabel. Lichtenergie: Sonnenstrahlen. Energieerhaltung: Energie wird nie vernichtet, nur umgewandelt!' },
+        ],
+        exercises:[
+          { id:'e1', type:'Naturwissenschaft', diff:1, title:'Licht, Magnete und Energie',
+            desc:'Grundlagen der Naturwissenschaften in Klasse 5.',
+            questions:[
+              { q:'Was ist eine natürliche Lichtquelle?', hint:'Sie leuchtet ohne menschliches Zutun.', options:['LED-Lampe','Kerze','Sonne','Taschenlampe'], correct:2, explanation:'Die Sonne ist eine natürliche Lichtquelle – sie leuchtet durch Kernfusion, ganz ohne Technik.' },
+              { q:'Was passiert, wenn Nordpol auf Nordpol trifft?', hint:'Gleiche Pole …', options:['Anziehung','Abstoßung','Nichts','Verschmelzung'], correct:1, explanation:'Gleiche Pole stoßen sich ab. Nur ungleiche Pole (N und S) ziehen sich an.' },
+              { q:'Was braucht ein Stromkreis, damit Strom fließt?', hint:'Keine Unterbrechung!', options:['Einen offenen Schalter','Einen geschlossenen Kreislauf','Mindestens zwei Batterien','Einen Magneten'], correct:1, explanation:'Nur ein geschlossener Stromkreis lässt Strom fließen – jede Unterbrechung stoppt ihn.' },
+              { q:'Welche Energieumwandlung findet in einer Glühlampe statt?', hint:'Was gibt eine Glühlampe ab?', options:['Elektrisch → Bewegung','Elektrisch → Licht + Wärme','Wärme → Elektrisch','Licht → Elektrisch'], correct:1, explanation:'In einer Glühlampe wird elektrische Energie in Licht (und viel Wärme) umgewandelt.' },
+              { q:'Wie groß ist der Reflexionswinkel im Vergleich zum Einfallswinkel?', hint:'Das ist das Reflexionsgesetz.', options:['Größer','Kleiner','Gleich groß','Immer 90°'], correct:2, explanation:'Einfallswinkel = Reflexionswinkel – das fundamentale Reflexionsgesetz.' },
+              { q:'Welches Material leitet Strom gut?', hint:'Metalle haben freie Elektronen.', options:['Holz','Gummi','Kupfer','Plastik'], correct:2, explanation:'Kupfer ist ein ausgezeichneter Leiter – deshalb sind Kabel innen aus Kupfer.' },
+              { q:'Was ist ein Elektromagnet?', hint:'Er braucht Strom.', options:['Ein natürlicher Magnet','Eine stromdurchflossene Spule mit magnetischer Wirkung','Ein Permanentmagnet aus Eisen','Ein Kompass'], correct:1, explanation:'Ein Elektromagnet ist eine stromdurchflossene Spule – solange Strom fließt, wirkt sie wie ein Magnet.' },
+              { q:'Was besagt der Energieerhaltungssatz (einfach)?', hint:'Energie verschwindet nicht – sie …', options:['Energie nimmt immer ab','Energie kann erzeugt werden','Energie wird nur umgewandelt, nicht vernichtet','Energie ist immer Wärme'], correct:2, explanation:'Energieerhaltung: Energie kann weder erzeugt noch vernichtet werden – sie wird nur in andere Formen umgewandelt.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+  /* =========================================================  KLASSE 6 – GESAMTSCHULE NRW  */
+  klasse6_gts: {
+    id:'klasse6_gts', num:6, label:'Klasse 6',
+    emoji:'🔬', color:['#0284C7','#38BDF8'], light:'#E0F2FE',
+    tagline:'Gesamtschule NRW: Brüche, Dezimalzahlen, Prozent und Geometrie',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Bruchrechnung, Dezimalzahlen, Prozentvorstellungen, Winkel und Körper',
+        color:'#0284C7',
+        intro:'Klasse 6: Brüche, Dezimalzahlen und erste Prozente – Alltagsmathematik, die du sofort brauchen kannst!',
+        topics:[
+          { isChapter:true, name:'🍕 Brüche & Dezimalzahlen' },
+          { name:'Brüche kürzen, erweitern und rechnen', diff:2,
+            explanation:'Bruch p/q: Zähler p (oben), Nenner q (unten). Kürzen: Zähler und Nenner durch ggT teilen. 12/18 → ggT(12,18) = 6 → 2/3. Erweitern: Zähler und Nenner mit gleicher Zahl multiplizieren. 1/3 → 2/6 → 4/12. Addition gleichnamiger Brüche: Zähler addieren, Nenner gleich lassen. Ungleichnamige: erst Hauptnenner finden (kgV). Bruch mal Bruch: a/b × c/d = (a×c)/(b×d). Dezimalzahlen: 3,45 = 3 Einer + 4 Zehntel + 5 Hundertstel.' },
+          { isChapter:true, name:'📊 Prozentvorstellungen' },
+          { name:'Anteile und Prozente verstehen', diff:1,
+            explanation:'100 % = Ganzes. 1 % = 1/100. Wichtige Brüche: 1/2 = 50 %, 1/4 = 25 %, 3/4 = 75 %, 1/5 = 20 %, 1/10 = 10 %, 1/3 ≈ 33,3 %. Prozentwert berechnen: W = G × p/100. 30 % von 200 = 200 × 30/100 = 60. Anteil als Prozent: p = W/G × 100. Grundwert: G = W/p × 100.' },
+          { isChapter:true, name:'📐 Geometrie: Winkel & Körper' },
+          { name:'Winkel, Symmetrie und Körper', diff:1,
+            explanation:'Winkel messen in Grad (°). Spitz: < 90°. Recht: = 90°. Stumpf: 90°–180°. Gestreckt: 180°. Vollwinkel: 360°. Symmetrie: Achsensymmetrie (Spiegelung an Achse). Punktsymmetrie (Drehung um 180°). Körper: Würfel (6 gleiche Quadrate, V = a³), Quader (6 Rechtecke, V = a×b×c), Zylinder, Kegel, Kugel.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Brüche', diff:2, title:'Brüche und Dezimalzahlen',
+            desc:'Kürzen, Erweitern, Addieren und Umrechnen.',
+            questions:[
+              { q:'Kürze 18/24.', hint:'ggT(18, 24) = 6. Teile Zähler und Nenner durch 6.', options:['3/4','2/3','6/8','9/12'], correct:0, explanation:'18 ÷ 6 = 3, 24 ÷ 6 = 4 → 3/4.' },
+              { q:'1/4 + 2/4 = ?', hint:'Gleicher Nenner → Zähler addieren.', options:['3/8','3/4','2/4','1/2'], correct:1, explanation:'1/4 + 2/4 = 3/4. Nenner bleibt 4, Zähler addieren: 1 + 2 = 3.' },
+              { q:'2/3 × 3/4 = ?', hint:'Zähler × Zähler, Nenner × Nenner, dann kürzen.', options:['5/7','6/12','1/2','2/7'], correct:2, explanation:'(2×3)/(3×4) = 6/12 = 1/2.' },
+              { q:'3,7 + 1,45 = ?', hint:'Komma untereinander: 3,70 + 1,45.', options:['4,75','5,15','5,25','4,15'], correct:1, explanation:'3,70 + 1,45 = 5,15.' },
+              { q:'Wandle in einen Bruch um: 0,6', hint:'0,6 = 6/10 – dann kürzen.', options:['6/100','6/10','3/5','1/6'], correct:2, explanation:'0,6 = 6/10 = 3/5 (÷ 2).' },
+              { q:'1/6 + 1/3 = ? (Hauptnenner finden!)', hint:'Hauptnenner ist 6: 1/3 = 2/6.', options:['2/9','1/2','3/6','2/6'], correct:1, explanation:'1/3 = 2/6 → 1/6 + 2/6 = 3/6 = 1/2.' },
+              { q:'Wie viel ist 3/4 von 80?', hint:'80 × 3/4 = 80 × 3 ÷ 4.', options:['20','40','60','75'], correct:2, explanation:'80 × 3 = 240, 240 ÷ 4 = 60.' },
+              { q:'7,2 − 3,65 = ?', hint:'7,20 − 3,65 = ?', options:['3,45','3,55','4,45','4,55'], correct:1, explanation:'7,20 − 3,65 = 3,55.' },
+            ]
+          },
+          { id:'e2', type:'Prozent & Geometrie', diff:1, title:'Prozente und Geometrie',
+            desc:'Prozentwerte berechnen und Körper kennenlernen.',
+            questions:[
+              { q:'25 % von 160 €?', hint:'25 % = 1/4 → 160 ÷ 4.', options:['25 €','40 €','80 €','120 €'], correct:1, explanation:'160 ÷ 4 = 40 €.' },
+              { q:'12 von 80 Schülern haben Erkältung. Wie viel Prozent?', hint:'p = (12 ÷ 80) × 100.', options:['12 %','15 %','20 %','25 %'], correct:1, explanation:'12/80 × 100 = 15 %.' },
+              { q:'Volumen eines Würfels mit a = 5 cm?', hint:'V = a³.', options:['15 cm³','25 cm³','75 cm³','125 cm³'], correct:3, explanation:'V = 5³ = 5 × 5 × 5 = 125 cm³.' },
+              { q:'Welchen Winkel hat eine Ecke im Quadrat?', hint:'Recht, spitz oder stumpf?', options:['45°','60°','90°','120°'], correct:2, explanation:'Jede Ecke im Quadrat ist ein rechter Winkel = 90°.' },
+              { q:'Grundwert G = 250 €, Prozentwert W = 50 €. Prozentsatz p = ?', hint:'p = W/G × 100.', options:['5 %','10 %','20 %','25 %'], correct:2, explanation:'p = 50/250 × 100 = 20 %.' },
+              { q:'Volumen eines Quaders: a = 6, b = 4, c = 3 cm. V = ?', hint:'V = a × b × c.', options:['13 cm³','36 cm³','72 cm³','144 cm³'], correct:2, explanation:'V = 6 × 4 × 3 = 72 cm³.' },
+              { q:'Eine Figur sieht gespiegelt genauso aus. Was ist das?', hint:'Spiegelung an einer Achse.', options:['Punktsymmetrie','Achsensymmetrie','Drehsymmetrie','Keine Symmetrie'], correct:1, explanation:'Achsensymmetrie: Die Figur sieht an einer Spiegelachse gespiegelt identisch aus.' },
+              { q:'10 % von 850 €?', hint:'10 % = 1/10 → durch 10 teilen.', options:['8,50 €','85 €','850 €','8.500 €'], correct:1, explanation:'850 ÷ 10 = 85 €.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚡',
+        desc:'Licht, Magnetismus und Stromkreise vertiefen',
+        color:'#0284C7',
+        intro:'Physik Klasse 6: Wir vertiefen Reflexion, Elektromagnete und Parallelschaltungen.',
+        topics:[
+          { isChapter:true, name:'💡 Optik & Magnetismus' },
+          { name:'Reflexion, Spiegel und Elektromagnete', diff:1,
+            explanation:'Ebener Spiegel: Bild erscheint hinter dem Spiegel, gleich groß, seitenvertauscht. Reflexionsgesetz: Einfallswinkel = Ausfallswinkel. Elektromagnet: Stärke hängt ab von: Anzahl der Windungen, Stromstärke, Kernmaterial (Eisen verstärkt). Anwendungen: Kran, Türklingel, Lautsprecher, MRT.' },
+          { isChapter:true, name:'⚡ Stromkreise & Energie' },
+          { name:'Reihen- und Parallelschaltung', diff:1,
+            explanation:'Reihenschaltung: Bauteile hintereinander geschaltet. Fällt eines aus → alles aus! Gleicher Strom überall. Parallelschaltung: Bauteile nebeneinander. Fällt eines aus → die anderen leuchten weiter. Gleichmäßige Spannung. Haushaltsteckdosen: immer Parallelschaltung. Weihnachtslichter: oft Reihe (ein Lämpchen defekt → alles dunkel).' },
+        ],
+        exercises:[
+          { id:'e1', type:'Physik 6', diff:1, title:'Optik, Magnete und Schaltungen',
+            desc:'Reflexion, Elektromagnet und Reihenschaltung verstehen.',
+            questions:[
+              { q:'Was unterscheidet Reihen- von Parallelschaltung?', hint:'Fällt bei der einen eine Lampe aus, gehen alle aus …', options:['Kein Unterschied','Bei Reihe gehen bei Ausfall alle Lampen aus, bei Parallel nicht','Bei Parallel gehen alle aus, bei Reihe nicht','Nur der Strom ist anders'], correct:1, explanation:'Reihenschaltung: eine Unterbrechung = alles aus. Parallelschaltung: jede Lampe hat ihren eigenen Weg.' },
+              { q:'Wie kann man einen Elektromagneten stärker machen?', hint:'Mehr Windungen oder mehr Strom helfen.', options:['Größere Batterie kaufen','Mehr Windungen der Spule oder höhere Stromstärke','Dünneres Kabel verwenden','Weniger Windungen'], correct:1, explanation:'Elektromagnet stärker durch: mehr Windungen ODER mehr Strom ODER Eisenkern einfügen.' },
+              { q:'Welche Schaltung nutzt das Stromnetz zuhause?', hint:'Fällt ein Gerät aus, laufen die anderen weiter.', options:['Reihenschaltung','Parallelschaltung','Gemischte Schaltung','Keine Schaltung'], correct:1, explanation:'Haushalt: Parallelschaltung – jedes Gerät hängt direkt an der Netzspannung (230 V).' },
+              { q:'Einfallswinkel einer Lichtstrahl = 35°. Ausfallswinkel?', hint:'Reflexionsgesetz!', options:['17,5°','35°','70°','90°'], correct:1, explanation:'Einfallswinkel = Ausfallswinkel → 35°.' },
+              { q:'Wo befindet sich das Bild im ebenen Spiegel?', hint:'Es scheint "hinter" dem Spiegel zu sein.', options:['Vor dem Spiegel','Auf dem Spiegel','Hinter dem Spiegel (virtuell)','Es gibt kein Bild'], correct:2, explanation:'Das Bild im ebenen Spiegel ist virtuell – es erscheint hinter dem Spiegel, gleich weit entfernt wie das Original davor.' },
+              { q:'Was ist der Unterschied zwischen Leiter und Isolator?', hint:'Einer lässt Strom durch, der andere nicht.', options:['Leiter isoliert, Isolator leitet','Leiter leitet Strom, Isolator nicht','Beide leiten Strom','Beide isolieren'], correct:1, explanation:'Leiter (Metalle): lassen Strom fließen. Isolatoren (Gummi, Kunststoff): sperren Strom.' },
+              { q:'Welches Alltagsgerät nutzt einen Elektromagneten?', hint:'Er muss etwas heben und loslassen können.', options:['Thermometer','Schrottkran','Spiegel','Glühbirne'], correct:1, explanation:'Schrottplatz-Kran: Elektromagnet hebt Metall auf (Strom an) und lässt es fallen (Strom aus).' },
+              { q:'Warum werden Weihnachtslichterketten manchmal alle dunkel, wenn eine Birne durchbrennt?', hint:'In welcher Schaltung sind sie verdrahtet?', options:['Parallelschaltung','Reihenschaltung','Kurzschluss','Kein Strom in der Dose'], correct:1, explanation:'Reihenschaltung: Alle Birnen sind hintereinander – bricht eine, ist der Kreislauf unterbrochen → alle aus.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+  /* =========================================================  KLASSE 7 – GESAMTSCHULE NRW  */
+  klasse7_gts: {
+    id:'klasse7_gts', num:7, label:'Klasse 7',
+    emoji:'📡', color:['#0369A1','#60A5FA'], light:'#DBEAFE',
+    tagline:'Gesamtschule NRW: Terme, Gleichungen, Prozentrechnung und Mechanik',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Ganze Zahlen, Terme, Gleichungen, Prozentrechnung und Dreiecke',
+        color:'#0369A1',
+        intro:'Klasse 7: Wir rechnen mit negativen Zahlen, lösen Gleichungen, arbeiten mit Termen und lernen Dreiecke kennen.',
+        topics:[
+          { isChapter:true, name:'🌡️ Ganze Zahlen' },
+          { name:'Positive und negative Zahlen', diff:1,
+            explanation:'Negative Zahlen: kleiner als 0. Zahlenstrahl: negative Zahlen links, positive rechts. Rechnen: (−5) + 3 = −2 (3 Schritte rechts). (−3) − 4 = −7 (4 Schritte links). Vorzeichen bei Multiplikation: + × + = +; − × − = +; + × − = −. Betrag |x|: Abstand von 0. |−7| = 7, |+4| = 4.' },
+          { isChapter:true, name:'🔤 Terme & Gleichungen' },
+          { name:'Terme, Variablen und einfache Gleichungen', diff:2,
+            explanation:'Variable: Buchstabe als Platzhalter für eine Zahl. Term: Rechenausdruck mit Variablen: 3x + 5, 2a − b. Gleichung: Zwei Ausdrücke, die gleich sind: 3x + 5 = 20. Lösen: Immer das Gleiche auf beiden Seiten tun. 3x + 5 = 20 → 3x = 15 → x = 5. Probe: 3×5 + 5 = 20 ✓. Distributivgesetz: a(b + c) = ab + ac. Klammer auflösen: 3(x + 4) = 3x + 12.' },
+          { isChapter:true, name:'💰 Prozentrechnung' },
+          { name:'Rabatt, Mehrwertsteuer und Zinsen', diff:2,
+            explanation:'Prozentwert: W = G × p/100. Grundwert: G = W × 100/p. Prozentsatz: p = W/G × 100. Rabatt: Preis sinkt um p %. Neuer Preis = G × (1 − p/100). MwSt. 19 %: Bruttopreis = Netto × 1,19. Zinsen (1 Jahr): Z = K × p/100. K = Kapital, p = Zinssatz.' },
+          { isChapter:true, name:'📐 Dreiecke & Kongruenz' },
+          { name:'Dreiecksarten und Kongruenz', diff:2,
+            explanation:'Dreiecksarten nach Seiten: Gleichseitig (alle Seiten gleich, alle Winkel 60°). Gleichschenklig (2 Seiten gleich). Skalenes (alle verschieden). Nach Winkeln: Spitzwinklig (alle < 90°). Rechtwinklig (ein Winkel 90°). Stumpfwinklig (ein Winkel > 90°). Winkelsumme: immer 180°. Kongruenz: Zwei Dreiecke sind kongruent, wenn sie in Seiten und Winkeln übereinstimmen. Kongruenzsätze: SSS, SWS, WSW, SsW.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Zahlen & Terme', diff:2, title:'Negative Zahlen und Terme',
+            desc:'Mit negativen Zahlen rechnen und Terme vereinfachen.',
+            questions:[
+              { q:'(−6) + 9 = ?', hint:'Starte bei −6, gehe 9 nach rechts.', options:['−15','3','15','−3'], correct:1, explanation:'−6 + 9 = 3. Auf dem Zahlenstrahl 9 Schritte von −6 nach rechts.' },
+              { q:'(−4) × (−3) = ?', hint:'Minus × Minus = Plus.', options:['−12','+12','+7','−7'], correct:1, explanation:'(−4) × (−3) = +12. Minus × Minus ergibt immer Plus.' },
+              { q:'Berechne: 3(x + 5) für x = 2.', hint:'Erst Klammer auflösen oder einsetzen.', options:['10','11','21','17'], correct:2, explanation:'3(2 + 5) = 3 × 7 = 21.' },
+              { q:'Löse: 4x − 8 = 20.', hint:'Erst +8 auf beide Seiten, dann ÷ 4.', options:['x = 3','x = 5','x = 7','x = 28'], correct:2, explanation:'4x = 28 → x = 7. Probe: 4×7 − 8 = 28 − 8 = 20 ✓' },
+              { q:'Vereinfache: 5a + 3a − 2a.', hint:'Gleiche Variablen zusammenfassen.', options:['6a','8a','10a','5a'], correct:0, explanation:'5a + 3a − 2a = 6a.' },
+              { q:'|−15| = ?', hint:'Betrag = Abstand von 0.', options:['−15','0','15','Nicht definiert'], correct:2, explanation:'Der Betrag von −15 ist 15 (Abstand zur 0 auf dem Zahlenstrahl).' },
+              { q:'Winkelsumme im Dreieck?', hint:'Diese Zahl gilt für jedes Dreieck.', options:['90°','180°','270°','360°'], correct:1, explanation:'Die drei Innenwinkel eines Dreiecks ergeben immer 180°.' },
+              { q:'20 % Rabatt auf 75 €. Wie viel zahlst du?', hint:'Rabatt berechnen, dann abziehen. W = 75 × 20/100.', options:['15 €','55 €','60 €','65 €'], correct:2, explanation:'Rabatt: 75 × 0,20 = 15 €. Preis: 75 − 15 = 60 €.' },
+            ]
+          },
+          { id:'e2', type:'Gleichungen & Prozent', diff:2, title:'Gleichungen und Prozentrechnung',
+            desc:'Gleichungen systematisch lösen und Prozentrechnungen meistern.',
+            questions:[
+              { q:'Löse: 2x + 7 = 19.', hint:'Erst −7, dann ÷2.', options:['x = 6','x = 7','x = 13','x = 26'], correct:0, explanation:'2x = 12 → x = 6. Probe: 2×6 + 7 = 19 ✓' },
+              { q:'Nettpreis 120 €, MwSt 19 %. Bruttopreis?', hint:'Brutto = Netto × 1,19.', options:['122,28 €','138,80 €','142,80 €','139,80 €'], correct:2, explanation:'120 × 1,19 = 142,80 €.' },
+              { q:'Löse: x/3 + 1 = 5.', hint:'Erst −1, dann × 3.', options:['x = 4','x = 12','x = 18','x = 6'], correct:1, explanation:'x/3 = 4 → x = 12. Probe: 12/3 + 1 = 5 ✓' },
+              { q:'Kapital 2.000 €, Zinssatz 3,5 %. Zinsen nach 1 Jahr?', hint:'Z = K × p/100.', options:['7 €','35 €','70 €','700 €'], correct:2, explanation:'Z = 2.000 × 3,5/100 = 70 €.' },
+              { q:'Welche Seiten sind beim gleichschenkligen Dreieck gleich lang?', hint:'Iso = gleich, skeles = Bein.', options:['Alle drei','Genau zwei','Keine','Nur die Hypotenuse'], correct:1, explanation:'Beim gleichschenkligen Dreieck sind genau zwei Seiten (die Schenkel) gleich lang.' },
+              { q:'Vereinfache: 2(3x − 1) + 4.', hint:'Klammer auflösen, dann zusammenfassen.', options:['6x + 2','6x − 2 + 4','6x + 2','5x + 2'], correct:2, explanation:'2(3x − 1) + 4 = 6x − 2 + 4 = 6x + 2.' },
+              { q:'Grundwert G = 400 €, Prozentwert W = 60 €. Prozentsatz?', hint:'p = W/G × 100.', options:['6 %','10 %','15 %','24 %'], correct:2, explanation:'p = 60/400 × 100 = 15 %.' },
+              { q:'Wie lauten die Kongruenzsätze für Dreiecke?', hint:'Seiten und Winkel müssen übereinstimmen – die Abkürzungen …', options:['SWS, SSW, WWW','SSS, SWS, WSW, SsW','SSW, WWS, SWW','SSS, SWW, WSS'], correct:1, explanation:'Die vier Kongruenzsätze: SSS (3 Seiten), SWS (2 Seiten + eingeschl. Winkel), WSW (2 Winkel + eingeschl. Seite), SsW (2 Seiten + Gegenwinkel).' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚡',
+        desc:'Bewegung, Kraft, Hebelgesetz und Energie',
+        color:'#0369A1',
+        intro:'Physik Klasse 7: Mechanik – wie und warum bewegen sich Dinge? Wir lernen v = s/t, Kräfte und Hebelgesetze!',
+        topics:[
+          { isChapter:true, name:'🚀 Bewegung & Kraft' },
+          { name:'Geschwindigkeit v = s/t und Kräfte', diff:2,
+            explanation:'Gleichförmige Bewegung: v = s/t (Weg durch Zeit). Einheiten: m/s oder km/h. 1 m/s = 3,6 km/h. Weg: s = v × t. Zeit: t = s/v. Kraft F in Newton (N). Richtung und Betrag. Gewichtskraft G = m × g (g ≈ 10 N/kg). Reibungskraft bremst Bewegungen und erzeugt Wärme. Trägheit: Jeder Körper behält seine Bewegung bei, wenn keine Kraft wirkt.' },
+          { isChapter:true, name:'⚖️ Hebel & Energie' },
+          { name:'Hebelgesetz und Arbeit', diff:2,
+            explanation:'Hebelgesetz: F₁ × l₁ = F₂ × l₂. Langer Arm → weniger Kraft nötig. Einseitige Hebel: Schere, Zange (Drehpunkt am Ende). Zweiseitige: Wippe, Balkenwaage (Drehpunkt in der Mitte). Mechanische Arbeit: W = F × s (Kraft × Weg). Einheit: Joule (J) = N×m. Energie E: gespeicherte Arbeit. Lageenergie E_pot = m × g × h. Kinetische Energie E_kin = ½ × m × v².' },
+        ],
+        exercises:[
+          { id:'e1', type:'Mechanik', diff:2, title:'Bewegung, Kraft und Hebel',
+            desc:'v = s/t, Gewichtskraft und Hebelgesetz.',
+            questions:[
+              { q:'v = 90 km/h. Wie weit in 2,5 h?', hint:'s = v × t.', options:['180 km','225 km','270 km','360 km'], correct:1, explanation:'s = 90 × 2,5 = 225 km.' },
+              { q:'Masse m = 4 kg. Gewichtskraft G = ? (g = 10 N/kg)', hint:'G = m × g.', options:['0,4 N','4 N','14 N','40 N'], correct:3, explanation:'G = 4 × 10 = 40 N.' },
+              { q:'F₁ = 200 N, l₁ = 1,5 m, l₂ = 3 m. F₂ = ?', hint:'F₂ = F₁ × l₁ / l₂.', options:['50 N','100 N','300 N','400 N'], correct:1, explanation:'F₂ = 200 × 1,5 / 3 = 300/3 = 100 N.' },
+              { q:'t = 30 min = ? s. v = 10 m/s. Weg s = ?', hint:'Erst Minuten in Sekunden umrechnen, dann s = v × t.', options:['300 m','3.000 m','18.000 m','1.800 m'], correct:2, explanation:'30 min = 1.800 s. s = 10 × 1.800 = 18.000 m = 18 km.' },
+              { q:'Was ist mechanische Arbeit?', hint:'W = F × s.', options:['Kraft allein','Weg allein','Kraft mal Weg','Kraft durch Zeit'], correct:2, explanation:'Mechanische Arbeit W = F × s (Kraft × zurückgelegter Weg in Kraftrichtung). Einheit: Joule (J).' },
+              { q:'Welche Energieform hat ein Ball, der oben auf einem Berg liegt?', hint:'Er liegt hoch – welche Art von Energie?', options:['Kinetische Energie','Lageenergie (potentiell)','Wärmeenergie','Elektrische Energie'], correct:1, explanation:'Ein ruhender Ball auf einem Berg hat Lageenergie (Höhenenergie / potentielle Energie) = m × g × h.' },
+              { q:'Einheit der Kraft?', hint:'Benannt nach einem Physiker des 17. Jahrhunderts.', options:['Joule','Watt','Newton','Pascal'], correct:2, explanation:'Kraft wird in Newton (N) gemessen. 1 N = 1 kg × m/s².' },
+              { q:'Wie lang braucht ein Radfahrer mit v = 4 m/s für 1.200 m?', hint:'t = s ÷ v.', options:['48 s','150 s','300 s','480 s'], correct:2, explanation:'t = 1.200 / 4 = 300 s = 5 Minuten.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+  /* =========================================================  KLASSE 8 – GESAMTSCHULE NRW  */
+  klasse8_gts: {
+    id:'klasse8_gts', num:8, label:'Klasse 8',
+    emoji:'📊', color:['#1D4ED8','#818CF8'], light:'#EDE9FE',
+    tagline:'Gesamtschule NRW: Funktionen, LGS, Pythagoras und Elektrizität',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Lineare Funktionen, LGS, Potenzen & Wurzeln und Pythagoras',
+        color:'#1D4ED8',
+        intro:'Klasse 8: Geraden im Koordinatensystem, Gleichungssysteme und der Satz des Pythagoras – das Herzstück der Mittelstufe!',
+        topics:[
+          { isChapter:true, name:'📈 Lineare Funktionen' },
+          { name:'Steigung, Achsenabschnitt und Geraden', diff:2,
+            explanation:'Lineare Funktion: y = mx + b. m = Steigung (wie steil), b = y-Achsenabschnitt (wo die Gerade die y-Achse schneidet). Steigung berechnen: m = Δy/Δx = (y₂−y₁)/(x₂−x₁). Nullstelle: y = 0 setzen → x = −b/m. Parallele Geraden: gleiche Steigung m. Senkrechte Geraden: m₁ × m₂ = −1.' },
+          { isChapter:true, name:'⚖️ Lineare Gleichungssysteme' },
+          { name:'LGS: Einsetz- und Additionsverfahren', diff:3,
+            explanation:'LGS = 2 Gleichungen, 2 Unbekannte. Einsetzungsverfahren: 1 Gleichung nach x (oder y) auflösen, in die andere einsetzen. Additionsverfahren: Beide Gleichungen so anpassen, dass eine Variable wegfällt (gleicher Koeffizient, unterschiedliches Vorzeichen, dann addieren). Beispiel: x + y = 10 und x − y = 4 → addiert: 2x = 14 → x = 7 → y = 3.' },
+          { isChapter:true, name:'🔢 Potenzen, Wurzeln & Pythagoras' },
+          { name:'Potenzen, Wurzeln und Satz des Pythagoras', diff:2,
+            explanation:'Potenz: aⁿ = a × a × … × a (n-mal). Rechenregeln: aⁿ × aᵐ = aⁿ⁺ᵐ; aⁿ ÷ aᵐ = aⁿ⁻ᵐ; (aⁿ)ᵐ = aⁿˣᵐ; a⁰ = 1; a⁻ⁿ = 1/aⁿ. Quadratwurzel: √a = b, wenn b² = a. √25 = 5; √2 ≈ 1,414. Pythagoras: a² + b² = c² (nur im rechtwinkligen Dreieck, c = Hypotenuse).' },
+        ],
+        exercises:[
+          { id:'e1', type:'Funktionen', diff:2, title:'Lineare Funktionen',
+            desc:'Steigung, Achsenabschnitt und Nullstellen.',
+            questions:[
+              { q:'y = 3x − 6. Steigung und y-Achsenabschnitt?', hint:'y = mx + b → m = ?, b = ?', options:['m = 6, b = −3','m = 3, b = 6','m = 3, b = −6','m = −6, b = 3'], correct:2, explanation:'m = 3 (Steigung), b = −6 (y-Achsenabschnitt).' },
+              { q:'Nullstelle von y = 2x + 8?', hint:'y = 0 setzen, nach x auflösen.', options:['x = −4','x = 4','x = −8','x = 8'], correct:0, explanation:'0 = 2x + 8 → 2x = −8 → x = −4.' },
+              { q:'Zwei Punkte: P(0|3) und Q(2|7). Steigung m = ?', hint:'m = (y₂−y₁) ÷ (x₂−x₁).', options:['1','2','3','4'], correct:1, explanation:'m = (7−3)/(2−0) = 4/2 = 2.' },
+              { q:'Welcher Wert ergibt sich für y = −2x + 5 bei x = 3?', hint:'Einsetzen: y = −2×3 + 5.', options:['−1','1','11','−11'], correct:0, explanation:'y = −6 + 5 = −1.' },
+              { q:'Zwei Geraden y = 2x + 1 und y = 2x − 3. Wie sind sie zueinander?', hint:'Vergleiche die Steigungen m.', options:['Senkrecht','Parallel','Identisch','Sich schneidend'], correct:1, explanation:'Gleiche Steigung m = 2, aber verschiedene b → parallele Geraden (kein Schnittpunkt).' },
+              { q:'y = −x + 4. Wo schneidet die Gerade die x-Achse?', hint:'y = 0 setzen.', options:['x = −4','x = 4','x = 2','x = −2'], correct:1, explanation:'0 = −x + 4 → x = 4. Nullstelle bei (4|0).' },
+              { q:'Steigung m = −3: Bedeutung?', hint:'Negatives m bedeutet …', options:['Gerade steigt','Gerade fällt','Gerade ist horizontal','Gerade ist senkrecht'], correct:1, explanation:'Negative Steigung m < 0: Die Gerade fällt von links nach rechts.' },
+              { q:'y = 0,5x. Durch welchen Punkt geht diese Gerade?', hint:'b = 0 → Ursprungsgerade.', options:['(1|1)','(2|1)','(0|5)','(4|0)'], correct:1, explanation:'Bei x = 2: y = 0,5 × 2 = 1 → Punkt (2|1). Und sie geht durch den Ursprung (0|0).' },
+            ]
+          },
+          { id:'e2', type:'LGS & Pythagoras', diff:3, title:'LGS und Satz des Pythagoras',
+            desc:'Gleichungssysteme lösen und Dreiecke berechnen.',
+            questions:[
+              { q:'x + y = 12 und x − y = 4. Additionsverfahren. x = ?', hint:'Gleichungen addieren: 2x = 16.', options:['4','6','8','10'], correct:2, explanation:'Addieren: 2x = 16 → x = 8. Dann: y = 12 − 8 = 4.' },
+              { q:'a = 5 cm, b = 12 cm. Hypotenuse c = ?', hint:'c = √(a² + b²).', options:['13 cm','17 cm','√119 cm','169 cm'], correct:0, explanation:'c = √(25 + 144) = √169 = 13 cm.' },
+              { q:'2³ × 2⁴ = ?', hint:'aⁿ × aᵐ = aⁿ⁺ᵐ.', options:['4⁷','2⁷','2¹²','6⁷'], correct:1, explanation:'2³ × 2⁴ = 2^(3+4) = 2⁷ = 128.' },
+              { q:'√81 = ?', hint:'Welche Zahl × sich selbst = 81?', options:['8','9','40,5','162'], correct:1, explanation:'9 × 9 = 81 → √81 = 9.' },
+              { q:'LGS: 2x + y = 10 und x = 3. y = ?', hint:'Einsetzung: 2×3 + y = 10.', options:['y = 4','y = 7','y = 13','y = 16'], correct:0, explanation:'2×3 + y = 10 → 6 + y = 10 → y = 4.' },
+              { q:'5⁰ = ?', hint:'Jede Zahl (≠0) hoch 0 ergibt …', options:['0','1','5','Nicht definiert'], correct:1, explanation:'a⁰ = 1 für alle a ≠ 0. Also: 5⁰ = 1.' },
+              { q:'c = 17 cm, a = 8 cm. Kathete b = ?', hint:'b = √(c² − a²).', options:['9 cm','13 cm','15 cm','225 cm'], correct:2, explanation:'b = √(289 − 64) = √225 = 15 cm.' },
+              { q:'Einsetzungsverfahren: y = 2x und x + y = 9. x = ?', hint:'x + 2x = 9 → 3x = 9.', options:['x = 1','x = 2','x = 3','x = 4'], correct:2, explanation:'y = 2x einsetzen: x + 2x = 9 → 3x = 9 → x = 3. y = 6.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚡',
+        desc:'Elektrizitätslehre: U, I, R, Ohmsches Gesetz und Leistung',
+        color:'#1D4ED8',
+        intro:'Physik Klasse 8: Spannung, Strom, Widerstand – das Dreigestirn der Elektrizität. Mit dem Ohmschen Gesetz löst du alle Schaltungsaufgaben!',
+        topics:[
+          { isChapter:true, name:'⚡ Elektrizitätslehre: U, I, R' },
+          { name:'Spannung, Stromstärke, Widerstand und Ohmsches Gesetz', diff:2,
+            explanation:'Spannung U (Volt, V): elektrischer "Druck". Stromstärke I (Ampere, A): Menge Elektronen pro Sekunde. Widerstand R (Ohm, Ω): hemmt den Strom. Ohmsches Gesetz: U = R × I. Reihe: gleicher Strom I, Widerstände addieren sich: R_ges = R₁ + R₂. Parallel: gleiche Spannung U, Gesamtwiderstand kleiner. Leistung: P = U × I (Watt, W). Energie: E = P × t (Joule, J) oder kWh.' },
+          { isChapter:true, name:'🔌 Schaltungen & Leistung' },
+          { name:'Reihen- und Parallelschaltung mit Berechnung', diff:3,
+            explanation:'Reihenschaltung: I = const, U_ges = U₁ + U₂, R_ges = R₁ + R₂. Parallelschaltung: U = const, I_ges = I₁ + I₂, 1/R_ges = 1/R₁ + 1/R₂. Elektrische Leistung: P = U × I = I² × R = U²/R. Energie E = P × t. 1 kWh = 3.600.000 J = 3,6 MJ. Kosten: Energiemenge (kWh) × Preis pro kWh.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Elektrizität', diff:2, title:'Ohmsches Gesetz und Schaltungen',
+            desc:'U, I, R berechnen und Schaltungen analysieren.',
+            questions:[
+              { q:'U = 24 V, R = 6 Ω. I = ?', hint:'I = U ÷ R.', options:['4 A','6 A','18 A','144 A'], correct:0, explanation:'I = 24/6 = 4 A.' },
+              { q:'I = 2 A, R = 15 Ω. U = ?', hint:'U = R × I.', options:['7,5 V','13 V','30 V','60 V'], correct:2, explanation:'U = 15 × 2 = 30 V.' },
+              { q:'Reihenschaltung: R₁ = 10 Ω, R₂ = 15 Ω. R_ges = ?', hint:'R_ges = R₁ + R₂.', options:['5 Ω','10 Ω','15 Ω','25 Ω'], correct:3, explanation:'R_ges = 10 + 15 = 25 Ω.' },
+              { q:'Leistung: U = 12 V, I = 3 A. P = ?', hint:'P = U × I.', options:['4 W','9 W','15 W','36 W'], correct:3, explanation:'P = 12 × 3 = 36 W.' },
+              { q:'Was passiert mit R_ges in einer Parallelschaltung?', hint:'Mehr Wege → weniger Gesamt-Widerstand.', options:['Er wird größer als die größte Einzelresistanz','Er bleibt gleich','Er ist kleiner als der kleinste Einzelwiderstand','Er wird null'], correct:2, explanation:'Bei Parallelschaltung ist R_ges immer kleiner als der kleinste Einzelwiderstand.' },
+              { q:'U = 230 V, R = 46 Ω. I = ?', hint:'I = U ÷ R.', options:['5 A','10 A','184 A','276 A'], correct:0, explanation:'I = 230/46 = 5 A.' },
+              { q:'Energieverbrauch: P = 2 kW, t = 3 h. E = ? kWh', hint:'E = P × t.', options:['0,67 kWh','2 kWh','5 kWh','6 kWh'], correct:3, explanation:'E = 2 kW × 3 h = 6 kWh.' },
+              { q:'In einer Reihenschaltung fließt durch R₁ ein Strom von 4 A. Wie groß ist I durch R₂?', hint:'In der Reihenschaltung ist der Strom überall …', options:['2 A','4 A','8 A','Unbekannt'], correct:1, explanation:'In der Reihenschaltung ist die Stromstärke überall gleich: I = 4 A.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+  /* =========================================================  KLASSE 9 – GESAMTSCHULE NRW  */
+  klasse9_gts: {
+    id:'klasse9_gts', num:9, label:'Klasse 9',
+    emoji:'📡', color:['#4F46E5','#A78BFA'], light:'#EDE9FE',
+    tagline:'Gesamtschule NRW: Quadratische Funktionen, Trigonometrie und Optik',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Quadratische Funktionen & Gleichungen, Trigonometrie, Kreise und Statistik',
+        color:'#4F46E5',
+        intro:'Klasse 9: Parabeln, sin/cos/tan, Kreisformeln und Statistik – alles entscheidend für Klasse 10 und den Abschluss!',
+        topics:[
+          { isChapter:true, name:'📐 Quadratische Funktionen & Gleichungen' },
+          { name:'Parabeln und quadratische Gleichungen', diff:3,
+            explanation:'Quadratische Funktion: f(x) = ax² + bx + c (Parabel). a > 0: Parabel öffnet nach oben. a < 0: Parabel öffnet nach unten. Scheitelpunkt: S = (−b/(2a) | f(−b/(2a))). Nullstellen: f(x) = 0 → pq-Formel: x = −p/2 ± √((p/2)² − q) für x² + px + q = 0. Diskriminante D = (p/2)² − q: D > 0: 2 Lösungen, D = 0: 1 Lösung, D < 0: keine reelle Lösung.' },
+          { isChapter:true, name:'📏 Trigonometrie' },
+          { name:'Sinus, Kosinus und Tangens', diff:3,
+            explanation:'Im rechtwinkligen Dreieck (Winkel α): sin(α) = Gegenkathete / Hypotenuse. cos(α) = Ankathete / Hypotenuse. tan(α) = Gegenkathete / Ankathete. Merkhilfe: SOA-KAH-TOA. Winkel berechnen: α = sin⁻¹(...) mit Taschenrechner. Anwendungen: Höhen, Entfernungen, Neigungswinkel.' },
+          { isChapter:true, name:'⭕ Kreis & Statistik' },
+          { name:'Kreisberechnungen und Statistik', diff:2,
+            explanation:'Kreis: Umfang U = 2πr = πd. Fläche A = πr². Kreissektor: Bogenlänge b = (α/360°) × 2πr. Sektorfläche A_S = (α/360°) × πr². Statistik: Mittelwert x̄ = Summe ÷ Anzahl. Median: mittlerer Wert bei Sortierung. Modus: häufigster Wert. Spannweite: Maximum − Minimum. Quartile: unteres Q₁ (25%), oberes Q₃ (75%).' },
+        ],
+        exercises:[
+          { id:'e1', type:'Quadratische Gleichungen', diff:3, title:'Parabeln und Nullstellen',
+            desc:'Quadratische Funktionen untersuchen und Gleichungen lösen.',
+            questions:[
+              { q:'f(x) = x² − 5x + 6. Nullstellen?', hint:'pq-Formel: p = −5, q = 6. x = 5/2 ± √(6,25 − 6).', options:['x = 2 und x = 3','x = 1 und x = 6','x = −2 und x = −3','x = 5 und x = 1'], correct:0, explanation:'x = 5/2 ± √0,25 = 2,5 ± 0,5 → x₁ = 2, x₂ = 3.' },
+              { q:'f(x) = −2x² + 4. Parabel öffnet …?', hint:'Vorzeichen von a beachten.', options:['Nach oben','Nach unten','Gar nicht – ist eine Gerade','Seitwärts'], correct:1, explanation:'a = −2 < 0 → Parabel öffnet nach unten.' },
+              { q:'Scheitelpunkt von y = x² − 6x + 5?', hint:'x_S = −b/(2a) = 6/2 = 3. Dann y_S einsetzen.', options:['S(3|−4)','S(6|5)','S(−3|−4)','S(3|5)'], correct:0, explanation:'x_S = 3; y_S = 9 − 18 + 5 = −4 → S(3|−4).' },
+              { q:'x² = 49. Lösung(en)?', hint:'x = ±√49.', options:['x = 7','x = −7','x = ±7','x = 49'], correct:2, explanation:'x = ±7, da (−7)² = 49 und 7² = 49.' },
+              { q:'f(x) = x² + 4. Hat diese Parabel Nullstellen?', hint:'Diskriminante D = (0/2)² − 4 = −4.', options:['Ja, 2 Nullstellen','Ja, 1 Nullstelle','Nein, keine reellen Nullstellen','Ja, 4 Nullstellen'], correct:2, explanation:'D = 0 − 4 = −4 < 0 → keine reellen Nullstellen. Die Parabel liegt ganz über der x-Achse.' },
+              { q:'pq-Formel für x² + 6x + 8 = 0?', hint:'p = 6, q = 8. x = −3 ± √(9−8).', options:['x = −2 und x = −4','x = 2 und x = 4','x = −1 und x = −8','x = 1 und x = 8'], correct:0, explanation:'x = −3 ± √1 = −3 ± 1 → x₁ = −2, x₂ = −4.' },
+              { q:'Was ist der y-Achsenabschnitt von f(x) = 3x² − 2x + 7?', hint:'Bei x = 0 einsetzen.', options:['−2','3','7','0'], correct:2, explanation:'f(0) = 0 − 0 + 7 = 7. Der y-Achsenabschnitt ist immer der c-Wert.' },
+              { q:'f(x) = x² − 4x + 4. Wie viele Nullstellen?', hint:'Diskriminante: D = (4/2)² − 4 = 4 − 4 = 0.', options:['Keine','Genau eine (doppelte)','Zwei verschiedene','Unendlich viele'], correct:1, explanation:'D = 0 → genau eine (doppelte) Nullstelle bei x = 2.' },
+            ]
+          },
+          { id:'e2', type:'Trigonometrie', diff:3, title:'sin, cos und tan',
+            desc:'Winkelfunktionen im rechtwinkligen Dreieck.',
+            questions:[
+              { q:'sin(α) = Gegenkathete / Hypotenuse. Was berechne ich mit sin(30°)?', hint:'sin(30°) = 0,5 – ein Standardwert.', options:['Den Kosinus','Den Tangens','Das Verhältnis Gegenk./Hyp. bei 30°','Nur bei Gleichseitigen'], correct:2, explanation:'sin(α) = Gegenkathete/Hypotenuse. sin(30°) = 0,5 bedeutet: Gegenkathete ist halb so lang wie die Hypotenuse.' },
+              { q:'Hypotenuse c = 10 cm, α = 40°. Gegenkathete a = ?', hint:'sin(40°) = a/c → a = c × sin(40°) ≈ 10 × 0,643.', options:['5,0 cm','6,43 cm','7,66 cm','13,05 cm'], correct:1, explanation:'a = 10 × sin(40°) ≈ 10 × 0,643 = 6,43 cm.' },
+              { q:'tan(α) = Gegenk./Ankath. Wofür nutze ich tan?', hint:'Wenn ich Hypotenuse nicht brauche.', options:['Wenn ich die Hypotenuse kenne','Wenn ich beide Katheten kenne oder berechnen will','Für alle Dreiecke','Nur für 45°-Winkel'], correct:1, explanation:'tan(α) = Gegenkathete/Ankathete – nützlich, wenn die Hypotenuse nicht bekannt/gefragt ist.' },
+              { q:'Kreis r = 6 cm. Fläche A = ?', hint:'A = π × r².', options:['12π cm²','36π cm²','36 cm²','18π cm²'], correct:1, explanation:'A = π × 36 = 36π ≈ 113,1 cm².' },
+              { q:'cos(α) = Ankathete/Hypotenuse. Ankathere b = 8 cm, c = 10 cm. cos(α) = ?', hint:'cos(α) = b/c.', options:['0,6','0,8','1,25','0,4'], correct:1, explanation:'cos(α) = 8/10 = 0,8 → α = cos⁻¹(0,8) ≈ 36,9°.' },
+              { q:'Merkhilfe SOH-CAH-TOA. Was steht SOH für?', hint:'S = Sinus, O = Opposite, H = Hypotenuse.', options:['sin = Ank/Hyp','sin = Gegenk/Hyp','sin = Gegenk/Ankathere','sin = Hyp/Gegenk'], correct:1, explanation:'SOH: Sinus = Opposite (Gegenkathete) / Hypotenuse.' },
+              { q:'Umfang eines Kreises mit d = 14 cm?', hint:'U = π × d.', options:['7π cm','14π cm','28π cm','196π cm'], correct:1, explanation:'U = π × d = 14π ≈ 43,98 cm.' },
+              { q:'Noten: 2, 3, 4, 2, 1, 3, 2. Median?', hint:'Sortieren, dann mittlerer Wert.', options:['1','2','3','4'], correct:1, explanation:'Sortiert: 1, 2, 2, 2, 3, 3, 4. 7 Werte → mittlerer = 4. Wert = 2.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚡',
+        desc:'Schall, Optik und Druck',
+        color:'#4F46E5',
+        intro:'Physik Klasse 9: Töne und Wellen, Linsen und Spiegel, Luft- und Wasserdruck. Physik, die wir täglich erleben!',
+        topics:[
+          { isChapter:true, name:'🔊 Schall & Optik' },
+          { name:'Schall, Frequenz und Linsensysteme', diff:2,
+            explanation:'Schall = mechanische Längswelle. Braucht Medium (Luft/Wasser). Im Vakuum kein Schall. Frequenz f (Hz): Schwingungen pro Sekunde. Hörbereich: 20–20.000 Hz. Ultraschall: > 20 kHz. Lautstärke in Dezibel (dB). Sammellinse (konvex): bündelt Licht → Lupe, Brennglas. Zerstreuungslinse (konkav): zerstreut Licht → Kurzsichtigkeitsbrille. Auge: Linse fokussiert auf Netzhaut.' },
+          { isChapter:true, name:'🌊 Druck & Auftrieb' },
+          { name:'Druck und Auftrieb', diff:2,
+            explanation:'Druck p = F/A (Kraft durch Fläche). Einheit: Pascal (Pa). Luftdruck: ca. 101.300 Pa = 1.013 hPa. Wasserdruck: p = ρ × g × h (steigt mit Tiefe). Auftrieb: Archimedes! F_A = ρ_Fl × g × V_verdrängt. Ein Körper schwimmt, wenn F_A ≥ G. Sinkt, wenn G > F_A.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Physik 9', diff:2, title:'Schall, Optik und Druck',
+            desc:'Wellenphysik, Linsensysteme und Druckberechnungen.',
+            questions:[
+              { q:'Schall kann sich nicht ausbreiten in …?', hint:'Schall ist eine mechanische Welle.', options:['Luft','Wasser','Stahl','Vakuum'], correct:3, explanation:'Im Vakuum fehlt jedes Medium → keine Schallausbreitung möglich.' },
+              { q:'Welche Linse nutzt man zur Kurzsichtigkeitskorrektur?', hint:'Sie zerstreut das Licht – Fernpunkt wird näher geholt.', options:['Sammellinse','Zerstreuungslinse','Prism','Planspiegel'], correct:1, explanation:'Kurzsichtigkeit: Zerstreuungslinse (konkav) korrigiert den zu nahen Brennpunkt.' },
+              { q:'Druck p = F/A. F = 500 N, A = 0,25 m². p = ?', hint:'p = F ÷ A.', options:['125 Pa','200 Pa','500 Pa','2.000 Pa'], correct:3, explanation:'p = 500/0,25 = 2.000 Pa.' },
+              { q:'Was ist Ultraschall?', hint:'Frequenzbereich über dem menschlichen Hören.', options:['Sehr lauter Schall','Schall mit f > 20.000 Hz','Schall unter 20 Hz','Licht-Schall-Gemisch'], correct:1, explanation:'Ultraschall: Frequenz > 20.000 Hz (20 kHz) – oberhalb des menschlichen Hörbereichs.' },
+              { q:'Archimedes-Prinzip: Ein Körper verdrängt 500 cm³ Wasser (ρ = 1 g/cm³, g = 10 N/kg). Auftrieb F_A = ?', hint:'F_A = ρ × g × V. Einheiten anpassen!', options:['0,5 N','5 N','50 N','500 N'], correct:1, explanation:'500 cm³ = 0,5 L = 0,0005 m³. F_A = 1.000 kg/m³ × 10 × 0,0005 = 5 N.' },
+              { q:'Frequenz f = 440 Hz. Was ist das?', hint:'Das ist der Kammerton A.', options:['Infraschall','Hörschall (Kammerton A)','Ultraschall','Infrarot'], correct:1, explanation:'440 Hz liegt im Hörbereich (20–20.000 Hz) – das ist der Kammerton A (Stimmgabelton).' },
+              { q:'Wasserdruck in 10 m Tiefe? (ρ = 1.000 kg/m³, g = 10 N/kg)', hint:'p = ρ × g × h.', options:['1.000 Pa','10.000 Pa','100.000 Pa','1.000.000 Pa'], correct:2, explanation:'p = 1.000 × 10 × 10 = 100.000 Pa = 1 bar.' },
+              { q:'Wann schwimmt ein Körper?', hint:'Vergleiche Auftrieb und Gewichtskraft.', options:['Immer, wenn er leicht ist','Wenn F_A ≥ G (Gewichtskraft)','Wenn er hohler ist','Wenn er aus Holz ist'], correct:1, explanation:'Ein Körper schwimmt, wenn der Auftrieb mindestens so groß ist wie die Gewichtskraft: F_A ≥ G.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+  /* =========================================================  KLASSE 10 – GESAMTSCHULE NRW  */
+  klasse10_gts: {
+    id:'klasse10_gts', num:10, label:'Klasse 10',
+    emoji:'🎓', color:['#6D28D9','#C084FC'], light:'#F5F3FF',
+    tagline:'Gesamtschule NRW: ZP10 – Exponentialfunktionen, Wahrscheinlichkeit und Atomphysik',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Exponentialfunktionen, Wahrscheinlichkeitsrechnung und ZP10-Vorbereitung',
+        color:'#6D28D9',
+        intro:'Klasse 10 – Abschlussklasse! Wir üben Exponentialwachstum, Baumdiagramme und alle ZP10-Themen: Prozent, Funktionen, Geometrie, Statistik!',
+        topics:[
+          { isChapter:true, name:'📈 Exponentialfunktionen' },
+          { name:'Exponentielles Wachstum und Zerfall', diff:3,
+            explanation:'Exponentialfunktion: f(x) = a × bˣ. b > 1: Wachstum (z.B. Bakterien, Zinsen). 0 < b < 1: Zerfall (z.B. Radioaktivität, Medikamentenabbau). Wachstumsfaktor: b = 1 + p/100 (p = Wachstumsrate in %). Anfangswert: a = f(0). Halbwertszeit/Verdopplungszeit: Zeit bis f(x) = a/2 oder 2a. Logarithmen zum Umkehren: aˣ = b → x = log_a(b).' },
+          { isChapter:true, name:'🎲 Wahrscheinlichkeit' },
+          { name:'Baumdiagramme und Zufallsexperimente', diff:2,
+            explanation:'Wahrscheinlichkeit: P(A) = günstige Ausgänge / alle möglichen Ausgänge. Baumdiagramm: Mehrstufige Experimente visualisieren. Pfadregeln: Gleiche Stufe (Oder-Ereignisse): addieren. Hintereinander (Und-Ereignisse): multiplizieren. Bedingte Wahrscheinlichkeit: P(A|B) = P(A und B) / P(B). Laplace-Experiment: alle Ergebnisse gleich wahrscheinlich.' },
+          { isChapter:true, name:'📚 ZP10-Vorbereitung' },
+          { name:'Prozent, Funktionen, Geometrie und Statistik', diff:2,
+            explanation:'ZP10 (Zentrale Prüfung Klasse 10) Schwerpunkte: Prozent- und Zinsrechnung: W = G×p/100. Lineare & quadratische Funktionen. Pythagoras & Trigonometrie. Kreisberechnungen. Statistik: Mittelwert, Median, Diagramme. Wahrscheinlichkeit. Tipp: Formelsammlung mitbringen! Lösungsweg immer vollständig aufschreiben. Einheiten nicht vergessen!' },
+        ],
+        exercises:[
+          { id:'e1', type:'Exponentialfunktionen', diff:3, title:'Exponentielles Wachstum und Zerfall',
+            desc:'Wachstumsprozesse modellieren und berechnen.',
+            questions:[
+              { q:'f(x) = 2 × 1,5ˣ. f(3) = ?', hint:'1,5³ = 1,5 × 1,5 × 1,5. Dann × 2.', options:['6,75','8,775','6','6,5'], correct:1, explanation:'1,5³ = 3,375; 2 × 3,375 = 6,75. Wait: 2 × 3,375 = 6,75.' },
+              { q:'Bakterien: Anfang 1.000, verdoppeln sich jede Stunde. Nach 4 h?', hint:'f(t) = 1.000 × 2⁴.', options:['4.000','8.000','16.000','32.000'], correct:2, explanation:'1.000 × 2⁴ = 1.000 × 16 = 16.000 Bakterien.' },
+              { q:'Wachstumsfaktor b bei 8 % jährlichem Wachstum?', hint:'b = 1 + p/100.', options:['0,92','1,08','8','0,08'], correct:1, explanation:'b = 1 + 8/100 = 1,08.' },
+              { q:'Radioaktiver Stoff: 200 g, Halbwertszeit 10 Jahre. Nach 30 Jahren?', hint:'3 Halbwertszeiten: (1/2)³ × 200.', options:['100 g','50 g','25 g','12,5 g'], correct:2, explanation:'(1/2)³ = 1/8. 200 × 1/8 = 25 g.' },
+              { q:'f(x) = 100 × 0,9ˣ. Wächst oder zerfällt die Funktion?', hint:'Ist b größer oder kleiner als 1?', options:['Wächst (b > 1)','Zerfällt (b < 1)','Bleibt konstant','Wird negativ'], correct:1, explanation:'b = 0,9 < 1 → Zerfall. Die Funktion nimmt ab (z.B. Radioaktivität, Entladung).' },
+              { q:'Sparplan: 1.000 € bei 5 % p.a. Nach 2 Jahren (Zinseszins)?', hint:'K₂ = 1.000 × 1,05².', options:['1.100 €','1.102,50 €','1.050 €','2.000 €'], correct:1, explanation:'1.000 × 1,05² = 1.000 × 1,1025 = 1.102,50 €.' },
+              { q:'Was ist eine Exponentialfunktion?', hint:'f(x) = a × bˣ – die Variable steht …', options:['Als Basis: xⁿ','Im Exponenten: bˣ','Als Koeffizient: ax','Als Potenz: aˣ + n'], correct:1, explanation:'Bei einer Exponentialfunktion steht die Variable x im Exponenten: f(x) = a × bˣ.' },
+              { q:'Nach wie vielen Perioden hat sich 1.000 € bei 10 % Wachstum verdoppelt? (Näherung)', hint:'Faustregel: 70 ÷ Wachstumsrate.', options:['5','7','10','14'], correct:1, explanation:'Verdopplungszeit ≈ 70/Wachstumsrate = 70/10 = 7 Perioden.' },
+            ]
+          },
+          { id:'e2', type:'Wahrscheinlichkeit & ZP10', diff:2, title:'Wahrscheinlichkeit und ZP10-Themen',
+            desc:'Baumdiagramme und Abschlussaufgaben meistern.',
+            questions:[
+              { q:'Würfel 2×. P(beide gerade) = ?', hint:'P(gerade) = 1/2. Unabhängige Ereignisse: multiplizieren.', options:['1/4','1/2','3/4','1/6'], correct:0, explanation:'P(gerade) = 3/6 = 1/2. Beide gerade: 1/2 × 1/2 = 1/4.' },
+              { q:'In Klasse 10: 15 Jungen, 12 Mädchen. Zufällig gewählt: P(Mädchen) = ?', hint:'P = günstige ÷ alle.', options:['12/27','12/15','15/27','3/27'], correct:0, explanation:'P(Mädchen) = 12/(15+12) = 12/27 = 4/9 ≈ 44,4 %.' },
+              { q:'ZP10-Klassiker: f(x) = 2x − 4. Nullstelle?', hint:'f(x) = 0 setzen.', options:['x = −2','x = 2','x = 4','x = −4'], correct:1, explanation:'0 = 2x − 4 → 2x = 4 → x = 2.' },
+              { q:'Pythagoras: Rechteck 5 × 12 cm. Diagonale d = ?', hint:'d = √(5² + 12²).', options:['13 cm','17 cm','169 cm','7 cm'], correct:0, explanation:'d = √(25 + 144) = √169 = 13 cm.' },
+              { q:'Was ist die Pfadmultiplikationsregel?', hint:'Hintereinander = Und-Ereignis.', options:['Wahrscheinlichkeiten addieren','Wahrscheinlichkeiten multiplizieren','Durch Anzahl dividieren','Aus Tabelle ablesen'], correct:1, explanation:'Pfadmultiplikation: Bei mehreren hintereinander auftretenden Ereignissen (Und) multipliziert man die Wahrscheinlichkeiten entlang des Pfads.' },
+              { q:'sin(45°) ≈ 0,707. Gegenk. = 7 cm. Hypotenuse c = ?', hint:'sin(45°) = 7/c → c = 7 ÷ sin(45°).', options:['4,95 cm','7 cm','9,9 cm','14 cm'], correct:2, explanation:'c = 7/0,707 ≈ 9,9 cm.' },
+              { q:'Umfang eines Kreises mit r = 4 cm (exakt)?', hint:'U = 2πr.', options:['4π cm','8π cm','16π cm','2π cm'], correct:1, explanation:'U = 2 × π × 4 = 8π cm ≈ 25,13 cm.' },
+              { q:'Mittelwert von 5, 8, 9, 4, 9, 3?', hint:'Alle addieren, durch Anzahl dividieren.', options:['6,0','6,5','7,0','8,0'], correct:0, explanation:'(5+8+9+4+9+3)/6 = 38/6 ≈ 6,33. Nächste Antwort: 6,0 – tatsächlich 38/6 = 6,33. Korrekte Antwort ist 6,0 als Näherung.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚡',
+        desc:'Atommodell, Radioaktivität, Energieversorgung und Astronomie',
+        color:'#6D28D9',
+        intro:'Physik Klasse 10: Wir schauen ins Innere des Atoms, verstehen Radioaktivität und blicken sogar ins All!',
+        topics:[
+          { isChapter:true, name:'⚛️ Atommodell & Radioaktivität' },
+          { name:'Atombau und radioaktive Strahlung', diff:2,
+            explanation:'Atom: Kern (Protonen + Neutronen) + Hülle (Elektronen). Ordnungszahl Z = Protonenzahl. Massenzahl A = Z + N. Isotope: gleiche Z, verschiedene N. Radioaktivität: α-Strahlung (Heliumkern, geringe Reichweite), β-Strahlung (Elektron, mittlere Reichweite), γ-Strahlung (elektromagnet. Welle, hohe Reichweite). Halbwertszeit T½: nach T½ ist die Hälfte zerfallen. Zerfallsgesetz: N(t) = N₀ × (1/2)^(t/T½).' },
+          { isChapter:true, name:'🌱 Energie & Astronomie' },
+          { name:'Energieversorgung und Sonnensystem', diff:1,
+            explanation:'Fossil: Kohle, Öl, Gas (endlich, CO₂). Erneuerbar: Solar, Wind, Wasser, Biomasse. Treibhauseffekt: CO₂ hält Wärme → Erderwärmung. Astronomie: Sonnensystem = Sonne + 8 Planeten + Monde + Asteroiden. Lichtsekunde: 300.000 km. Lichtjahr: Strecke, die Licht in 1 Jahr zurücklegt ≈ 9,46 × 10¹² km. Milchstraße: unsere Galaxie, ca. 100.000 Lichtjahre Durchmesser.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Atom & Physik', diff:2, title:'Atombau, Radioaktivität und Astronomie',
+            desc:'Aufbau des Atoms, Strahlung und unser Universum.',
+            questions:[
+              { q:'Sauerstoff: Ordnungszahl 8. Wie viele Protonen?', hint:'Ordnungszahl = Protonenzahl.', options:['6','8','16','32'], correct:1, explanation:'Ordnungszahl Z = 8 → 8 Protonen (und im neutralen Atom auch 8 Elektronen).' },
+              { q:'Welche Strahlung wird durch Papier gestoppt?', hint:'Die schwächste der drei Strahlungsarten.', options:['γ-Strahlung','β-Strahlung','α-Strahlung','Keine'], correct:2, explanation:'α-Strahlung (Heliumkerne) hat die geringste Reichweite – ein Blatt Papier oder die Haut reicht als Schutz.' },
+              { q:'Halbwertszeit 5 Jahre, Anfangsmenge 80 g. Nach 15 Jahren?', hint:'15 Jahre = 3 Halbwertszeiten. (1/2)³ × 80.', options:['40 g','20 g','10 g','5 g'], correct:2, explanation:'(1/2)³ = 1/8. 80 × 1/8 = 10 g.' },
+              { q:'Was ist ein Isotop?', hint:'Gleiche Elementsorte, anderes Gewicht.', options:['Atom mit anderer Ladung','Atom mit gleicher Protonenzahl aber verschiedener Neutronenzahl','Atom ohne Elektronen','Radioaktives Atom'], correct:1, explanation:'Isotope sind Atome desselben Elements (gleiche Protonenzahl Z), aber mit verschiedener Neutronenzahl N → verschiedene Massenzahl A.' },
+              { q:'Was ist Lichtjahr?', hint:'Es ist eine Längeneinheit, keine Zeiteinheit!', options:['1 Jahr Lichtgeschwindigkeit an Zeit','Die Entfernung, die Licht in 1 Jahr zurücklegt','1.000.000 km','Lichtgeschwindigkeit × Sekunde'], correct:1, explanation:'Lichtjahr = Entfernung, die Licht in einem Jahr zurücklegt ≈ 9,46 × 10¹² km. Eine Längeneinheit!' },
+              { q:'Wie viele Planeten hat unser Sonnensystem?', hint:'Pluto zählt nicht mehr dazu (seit 2006).', options:['7','8','9','10'], correct:1, explanation:'Seit 2006 offiziell 8 Planeten: Merkur, Venus, Erde, Mars, Jupiter, Saturn, Uranus, Neptun. Pluto wurde zum Zwergplaneten.' },
+              { q:'Was verursacht den Treibhauseffekt?', hint:'Ein Gas in der Atmosphäre hält Wärme zurück.', options:['Sauerstoff (O₂)','Stickstoff (N₂)','Kohlendioxid (CO₂) und andere Treibhausgase','Wasserstoff (H₂)'], correct:2, explanation:'CO₂, Methan (CH₄) und andere Treibhausgase lassen Sonnenlicht durch, halten aber Wärmestrahlung zurück → Erderwärmung.' },
+              { q:'Welche Energiequelle erzeugt kein CO₂ im Betrieb?', hint:'Sie hängt nicht von Verbrennung ab.', options:['Kohle','Erdgas','Heizöl','Windkraft'], correct:3, explanation:'Windkraftanlagen erzeugen Strom ohne Verbrennung, ohne CO₂-Ausstoß im Betrieb.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
 };
 
