@@ -897,6 +897,7 @@ const CONTENT = {
         color:'#2563EB',
         intro:'Hallo und herzlich willkommen! Ich bin dein digitaler Lernassistent für Mathematik in Klasse 5. Wir starten mit natürlichen Zahlen, Grundrechenarten, ersten Brüchen und Geometrie. Ich erkläre dir alles Schritt für Schritt mit Beispielen aus deinem Alltag!',
         topics:[
+          { isChapter:true, name:'📚 Zahlen & Grundrechenarten' },
           { name:'Natürliche Zahlen & Stellenwerte', diff:1,
             short:['Jede Ziffer hat je nach Position einen anderen Wert — die 7 in 4.723 steht für 700, nicht für 7.', 'Das Dezimalsystem macht aus denselben Ziffern völlig verschiedene Zahlen — Position ist alles!'],
             explanation:'Stell dir vor, dein Lieblingsvideo auf YouTube hat 1.347.850 Aufrufe – das ist über eine Million! Damit wir solche riesigen Zahlen lesen und verstehen können, haben wir das Stellenwert-System erfunden. Jede Stelle in einer Zahl hat einen eigenen Wert, der zehnmal größer ist als die Stelle rechts davon. In der Zahl 4.723 zum Beispiel steht die 4 für 4.000, die 7 für 700, die 2 für 20 und die 3 einfach für 3. Die Position von rechts bestimmt den Wert: erste Stelle = Einer, zweite = Zehner, dritte = Hunderter, vierte = Tausender. Wenn du eine Zahl schreibst, darfst du keine Stelle vergessen – eine fehlende Null kann aus 1.023 die falsche Zahl 123 machen! Das Stellenwert-System ist die Basis für die gesamte Mathematik und wird auf der ganzen Welt verwendet.' },
@@ -909,15 +910,18 @@ const CONTENT = {
           { name:'Runden und Schätzen', diff:2,
             short:['Zum Runden schaust du auf die nächste Stelle rechts: 0–4 → abrunden, 5–9 → aufrunden.', 'Aus 2.764 wird 2.800 gerundet auf Hunderter, weil die Zehnerstelle 6 ≥ 5 ist.'],
             explanation:'An der Supermarktkasse kannst du blitzschnell abschätzen, ob dein Geld reicht: 3,95 Euro wird zu 4 Euro, 2,10 Euro zu 2 Euro – macht ungefähr 6 Euro. Genau dafür gibt es das Runden! Die Grundregel ist einfach: Schau die Stelle rechts neben der an, auf die du rundest. Ist diese Stelle 5 oder größer, rundest du auf – die Ziffer davor wird um 1 erhöht. Ist sie kleiner als 5, rundest du ab – die Ziffer davor bleibt gleich, alle Stellen rechts davon werden zu Nullen. Ingenieure, Architekten und Kaufleute nutzen Runden täglich – es spart Zeit und ist oft genau genug!' },
+          { isChapter:true, name:'🍕 Brüche & Dezimalzahlen' },
           { name:'Einführung in Brüche', diff:2,
             short:['Ein Bruch zeigt einen Teil eines Ganzen — bei 3/8 hast du 3 von 8 gleich großen Teilen.', 'Der Nenner (unten) zeigt die Gesamtteile, der Zähler (oben) wie viele du davon hast.'],
             explanation:'Teilst du eine Pizza mit drei Freunden, bekommt jeder ein Viertel – das schreibt man als 1/4. Brüche beschreiben Teile eines Ganzen und begegnen uns überall: halbe Stunden, dreiviertel gefüllte Wasserflasche, ein Fünftel Rabatt! Die Zahl unten heißt Nenner und sagt, in wie viele gleiche Teile das Ganze geteilt wurde. Die Zahl oben heißt Zähler und sagt, wie viele dieser Teile du hast. Brüche lassen sich auch kürzen: Teile einfach Zähler und Nenner durch dieselbe Zahl – 4/8 wird zu 1/2.' },
+          { isChapter:true, name:'📐 Geometrie & Formen' },
           { name:'Geometrie: Flächen und Umfang', diff:2,
             short:['Der Umfang ist der Weg einmal rund um eine Figur — beim Rechteck: U = 2·(a+b).', 'Der Flächeninhalt zeigt wie viel Platz eine Figur einnimmt — beim Rechteck: A = a · b.'],
             explanation:'Willst du deinem Zimmer einen neuen Teppich kaufen, brauchst du den Flächeninhalt – also wie viele Quadratmeter der Boden hat. Willst du eine Lichterkette rund ums Zimmer befestigen, brauchst du den Umfang – die Summe aller Seiten. Für ein Rechteck gilt: Fläche = Länge × Breite, und Umfang = 2 × (Länge + Breite). Geometrie steckt in Architektur, Stadtplanung, Design und sogar in Videospielen!' },
           { name:'Zahlen ordnen', diff:1,
             short:['Auf dem Zahlenstrahl werden Zahlen von links nach rechts immer größer.', 'Mit < (kleiner als) und > (größer als) vergleichst du zwei Zahlen — der Pfeil zeigt immer zur kleineren!'],
             explanation:'Zahlen vergleichen ist eine Grundfertigkeit. Auf dem Zahlenstrahl werden Zahlen von links nach rechts immer größer. Zwei Zahlen vergleichst du mit den Zeichen < (kleiner als), > (größer als) oder = (gleich). Beim Vergleichen mehrstelliger Zahlen schaust du von links: Mehr Stellen bedeutet größer – 10 000 > 9 999! Bei gleicher Stellenanzahl vergleichst du Stelle für Stelle.' },
+          { isChapter:true, name:'📊 Daten & Zufall' },
           { name:'Zählen und Darstellen', diff:1,
             short:['Mit einer Strichliste zählst du Häufigkeiten — der 5. Strich quert durch vier.', 'Im Säulendiagramm zeigt die Höhe jeder Säule, wie oft etwas vorkam.'],
             explanation:'Daten sammeln und darstellen ist eine wichtige Alltagskompetenz. Mit einer Strichliste zählst du Häufigkeiten – der 5. Strich geht quer durch vier Striche. Aus den Daten erstellst du eine Tabelle und daraus ein Diagramm. Das Säulendiagramm vergleicht Häufigkeiten: Die Höhe jeder Säule zeigt die Anzahl. Beim Lesen von Diagrammen immer auf Achsenbeschriftungen und Maßstab achten!' },
@@ -927,6 +931,7 @@ const CONTENT = {
           { name:'Grundrechenarten – Fachbegriffe', diff:1,
             short:['Die 4 Grundrechenarten sind +, −, × und ÷ — jede hat eigene Fachbegriffe für Zahlen und Ergebnis.', 'Wichtigste Regel: Punkt vor Strich — × und ÷ werden immer vor + und − gerechnet!'],
             explanation:'Die vier Grundrechenarten sind Addition (+), Subtraktion (−), Multiplikation (×) und Division (÷). Fachbegriffe: Addition: Summand + Summand = Summe. Subtraktion: Minuend − Subtrahend = Differenz. Multiplikation: Faktor × Faktor = Produkt. Division: Dividend ÷ Divisor = Quotient. Durch 0 darf man nie dividieren! Merke: Punkt vor Strich – Multiplikation und Division werden vor Addition und Subtraktion gerechnet.' },
+          { isChapter:true, name:'⚖️ Größen & Einheiten' },
           { name:'Rechnen mit Geld', diff:1,
             short:['1 Euro = 100 Cent — Geldbeträge schreibt man mit Komma: 5,75 € = 5 Euro und 75 Cent.', 'Beim Rechnen immer in einer Einheit bleiben und am Ende die Lösung als vollständigen Satz schreiben!'],
             explanation:'Geldbeträge schreibt man mit Komma: 5,75 € = 5 Euro und 75 Cent. 1 Euro = 100 Cent. Beim Umrechnen: Cent in Euro → durch 100. Euro in Cent → mal 100. Beim Rechnen immer in derselben Einheit arbeiten. Tipp: Rechne in Cent um, dann kein Kommafehler möglich!' },
@@ -939,6 +944,7 @@ const CONTENT = {
           { name:'Rechnen mit Zeitangaben', diff:1,
             short:['1 Minute = 60 Sekunden, 1 Stunde = 60 Minuten, 1 Tag = 24 Stunden — Zeit ist kein Dezimalsystem!', 'Unterscheide Zeitpunkt (Wann? z.B. 14:30 Uhr) und Zeitdauer (Wie lange? z.B. 2 h 15 min).'],
             explanation:'Zeitspannen messen wir in d (Tag), h (Stunde), min (Minute) und s (Sekunde). Umrechnung: 1 d = 24 h, 1 h = 60 min, 1 min = 60 s. Unterscheide: Zeitpunkt ("Wann?" → 14:30 Uhr) und Zeitdauer ("Wie lange?" → 2 h 15 min). Beim Berechnen von Zeitspannen nutze den Zahlenstrahl schrittweise.' },
+          { isChapter:true, name:'📏 Geometrie – Linien & Koordinaten' },
           { name:'Senkrechte und parallele Geraden', diff:1,
             short:['Senkrechte Geraden schneiden sich unter genau 90° — Symbol ⊥.', 'Parallele Geraden haben überall denselben Abstand und treffen sich niemals — Symbol ∥.'],
             explanation:'Zwei Geraden heißen senkrecht zueinander (g ⊥ h), wenn sie sich unter 90° schneiden. Parallele Geraden (g ∥ h) haben überall denselben Abstand und schneiden sich nie. Der Abstand eines Punktes von einer Geraden ist die Länge des Lotes – der kürzesten Strecke zum Punkt. Eine Strecke hat Anfangs- und Endpunkt; eine Gerade ist unendlich lang.' },
@@ -954,6 +960,7 @@ const CONTENT = {
           { name:'Eigenschaften von Vielecken', diff:2,
             short:['Dreiecke und Vierecke unterscheiden sich durch Seiten, Winkel und Symmetrieeigenschaften.', 'Ein Quadrat ist der Boss aller Vierecke: 4 gleiche Seiten UND 4 rechte Winkel — daher auch immer ein Rechteck!'],
             explanation:'Dreiecke: gleichseitig (3 gleiche Seiten, 3 Achsen), gleichschenklig (2 gleiche Seiten, 1 Achse), rechtwinklig (1 rechter Winkel). Vierecke: Trapez (1 Paar paralleler Seiten), Parallelogramm (2 Paare paralleler Seiten, punktsymmetrisch), Raute (4 gleiche Seiten, 2 Achsen), Rechteck (4 rechte Winkel, 2 Achsen), Quadrat (4 gleiche Seiten + 4 rechte Winkel, 4 Achsen). Jedes Quadrat ist auch ein Rechteck!' },
+          { isChapter:true, name:'🔤 Algebra & Terme' },
           { name:'Terme', diff:1,
             short:['Ein Term ist ein Rechenausdruck, der einen Wert hat — z.B. ergibt 4 + 3·5 = 19.', 'Regel: Klammern zuerst, dann Potenzen, dann Punkt vor Strich — sonst gibt es falsche Ergebnisse!'],
             explanation:'Ein Term ist ein mathematischer Ausdruck aus Zahlen, Rechenzeichen und ggf. Klammern. Rechenregeln: 1. Klammern zuerst. 2. Potenzen. 3. Punkt vor Strich: × und ÷ vor + und −. 4. Von links nach rechts. Beispiel: 4 + 3 · 5 = 4 + 15 = 19. Fachbegriffe: Summe, Differenz, Produkt, Quotient.' },
@@ -1401,14 +1408,17 @@ const CONTENT = {
         color:'#0284C7',
         intro:'Willkommen in Physik Klasse 5! Du entdeckst, wie Licht entsteht, warum Magnete anziehen, woher Energie kommt und was Wärme bedeutet. Physik erklärt, warum die Welt so funktioniert!',
         topics:[
+          { isChapter:true, name:'💡 Licht & Schatten' },
           { name:'Licht und Sehen', diff:1,
             explanation:'Wie sehen wir? Unser Auge sieht Objekte, die Licht aussenden oder reflektieren. Lichtquellen (Sonne, Lampen, Feuer) strahlen selbst Licht aus. Der Mond leuchtet nicht selbst – er reflektiert Sonnenlicht. Licht breitet sich geradlinig aus mit 300.000 km/s – schnellste Geschwindigkeit im Universum! Trifft Licht auf undurchsichtige Körper, entsteht ein Schatten. Durchsichtige Körper (Glas) lassen Licht durch.' },
           { name:'Schatten', diff:1,
             explanation:'Schatten entstehen, wenn undurchsichtige Körper Licht blockieren. Bei einer Punktlichtquelle: gleichmäßiger Kernschatten (Umbra). Bei ausgedehnter Quelle (Sonne): Kern- und Halbschatten (Penumbra). Sonnenfinsternisse: Mond zwischen Sonne und Erde. Mondfinsternisse: Erde zwischen Sonne und Mond. Je größer der Abstand zur Lichtquelle, desto kleiner der Schatten.' },
+          { isChapter:true, name:'🧲 Magnetismus & Elektrizität' },
           { name:'Magnetismus', diff:1,
             explanation:'Magnete haben zwei Pole: Nordpol (N) und Südpol (S). Gleiche Pole stoßen sich ab, ungleiche ziehen sich an. Die Erde ist ein riesiger Magnet – deshalb zeigt der Kompass nach Norden. Ferromagnetische Materialien (Eisen, Nickel, Kobalt) werden angezogen; Aluminium, Kupfer, Plastik nicht. Mit Eisenfeilspänen macht man Feldlinien sichtbar. Zerteilt man einen Magneten, entstehen zwei vollständige Magnete.' },
           { name:'Elektrizität im Alltag', diff:1,
             explanation:'Stromkreis = Stromquelle (Batterie) + Leiter (Drähte) + Verbraucher (Lampe), alles geschlossen verbunden. Leiter: Metalle. Isolatoren: Plastik, Glas, Holz. Reihenschaltung: alle aus, wenn einer ausfällt. Parallelschaltung: andere bleiben an. Sicherheitsregel: Nur Batterien (max. 9 V) – Steckdosen (230 V) sind lebensgefährlich!' },
+          { isChapter:true, name:'⚡ Energie & Wärme' },
           { name:'Energieformen', diff:2,
             explanation:'Energieformen: Bewegungsenergie, Lageenergie, Wärmeenergie, elektrische Energie, Lichtenergie, chemische Energie. Energie kann nicht erzeugt oder vernichtet, nur umgewandelt werden (Energieerhaltungssatz)! Beispiel: Glühlampe wandelt elektrische → Licht + Wärme. Fahrrad: chemische Energie (Nahrung) → Bewegung + Wärme.' },
           { name:'Temperatur und Wärme', diff:2,
@@ -1471,14 +1481,17 @@ const CONTENT = {
         color:'#2563EB',
         intro:'Willkommen in Mathematik Klasse 6! Heute rechnen wir mit Brüchen und Dezimalzahlen und lernen proportionale Zuordnungen kennen. Diese Themen begegnen dir täglich – beim Einkaufen, Kochen und Planen!',
         topics:[
+          { isChapter:true, name:'🍕 Brüche & Dezimalzahlen' },
           { name:'Brüche addieren und subtrahieren', diff:2,
             explanation:'Du isst 1/4 einer Pizza und dein Freund noch 2/4 – zusammen habt ihr 3/4 gegessen. So einfach ist Bruchaddition, wenn beide Brüche denselben Nenner haben: einfach die Zähler addieren, der Nenner bleibt gleich. Schwieriger wird es bei verschiedenen Nennern, zum Beispiel 1/3 + 1/6. Dann musst du zuerst auf einen gemeinsamen Nenner bringen: 1/3 ist dasselbe wie 2/6 (Zähler und Nenner mit 2 multipliziert). Jetzt rechne: 2/6 + 1/6 = 3/6, und das kürzt sich zu 1/2. Der gemeinsame Nenner ist das kleinste gemeinsame Vielfache beider Nenner – bei 4 und 6 wäre das 12. Bei der Subtraktion gehst du genauso vor: erst den gemeinsamen Nenner herstellen, dann die Zähler subtrahieren. Am Ende immer kürzen! Denke daran: 3/6 = 1/2 = 0,5 – alle drei beschreiben dasselbe. Bruchrechnen steckt in Rezepten, Messungen, Bauplänen und Musiknoten!' },
           { name:'Brüche multiplizieren und dividieren', diff:2,
             explanation:'Ein Rezept für 4 Personen braucht 3/4 Liter Milch – du kochst aber nur für 2 Personen, also brauchst du die Hälfte davon: 1/2 × 3/4. Bei der Bruchmultiplikation ist das ganz einfach: Zähler mit Zähler, Nenner mit Nenner multiplizieren. Also 1×3 = 3 und 2×4 = 8 – Ergebnis: 3/8 Liter. Das Schöne: Du brauchst keinen gemeinsamen Nenner! Vergiss am Ende nicht zu kürzen. Division durch einen Bruch klingt kompliziert, ist aber ein Trick: Du multiplizierst mit dem Kehrwert. Den Kehrwert erhältst du, indem du Zähler und Nenner vertauschst – der Kehrwert von 3/4 ist 4/3. Also ist 3/4 ÷ 1/2 = 3/4 × 2/1 = 6/4 = 3/2 = 1,5. Diesen Trick nennt man "Dividieren durch Umkehren und Multiplizieren". Vor dem Rechnen kannst du Zähler und Nenner auch quer kürzen, um mit kleineren Zahlen zu arbeiten. Bruchmultiplikation und -division stecken in Rezepten, beim Handwerk und in der Technik!' },
           { name:'Dezimalzahlen', diff:2,
             explanation:'Der Benzinpreis an der Tankstelle zeigt 1,879 Euro pro Liter – das sind Dezimalzahlen! Sie begegnen uns überall: Preise, Temperaturen, Sportergebnisse, Medikamentendosierungen. Das Komma trennt die ganzen Zahlen links davon von den Teilen rechts davon. Die erste Stelle nach dem Komma sind Zehntel, die zweite Hundertstel, die dritte Tausendstel – also ist 1,879 Euro gleich 1 Euro + 8 Zehntelcent + 7 Hundertstelcent + 9 Tausendstelcent. Beim Addieren und Subtrahieren ist das Wichtigste: Komma unter Komma schreiben, dann wie gewohnt rechnen. Multiplikation mit 10 verschiebt das Komma eine Stelle nach rechts (3,5 × 10 = 35), Division durch 10 verschiebt es nach links (3,5 ÷ 10 = 0,35). Dezimalzahlen und Brüche sind eng verwandt: 1/4 = 0,25, 1/2 = 0,5, 3/4 = 0,75 – du kannst jederzeit zwischen beiden Darstellungen wechseln! Beim Vergleichen von Dezimalzahlen schau Stelle für Stelle von links nach rechts, z.B. ist 0,9 größer als 0,85, weil 0,90 > 0,85.' },
+          { isChapter:true, name:'📈 Proportionale Zuordnungen' },
           { name:'Proportionale Zuordnungen', diff:3,
             explanation:'Wenn 3 Schokoriegel 2,70 Euro kosten, kosten 6 Riegel das Doppelte – genau 5,40 Euro. Das ist eine proportionale Zuordnung: verdoppelst du die Menge, verdoppelt sich der Preis. Bei proportionalen Zuordnungen ist das Verhältnis zwischen beiden Größen immer gleich – man nennt das den Proportionalitätsfaktor. Mit dem Dreisatz löst du solche Aufgaben in drei Schritten: Erst schreibst du auf, was du weißt (3 Riegel = 2,70 €), dann berechnest du eine Einheit (1 Riegel = 0,90 €), zuletzt multiplizierst du für die gewünschte Menge (5 Riegel = 4,50 €). Schreib dir immer eine Tabelle auf – das verhindert Fehler! Nicht alle Zuordnungen sind proportional: Wenn mehr Arbeiter eine Arbeit schneller erledigen, ist das antiproportional – hier nimmt eine Größe zu, während die andere abnimmt. Proportionale Zuordnungen stecken im Tanken, Kochen, Reisen, Zinsrechnen und in der Wirtschaft!' },
+          { isChapter:true, name:'📐 Geometrie & Symmetrie' },
           { name:'Symmetrie und Spiegelung', diff:1,
             explanation:'Schmetterlinge, das Mercedes-Logo, die Eiffelturm-Silhouette – Symmetrie ist überall um uns herum! Eine Figur heißt achsensymmetrisch, wenn du sie an einer Linie (der Symmetrieachse) spiegeln kannst und beide Hälften exakt übereinanderliegen. Buchstaben wie A, M, T, U, V, W und Y sind symmetrisch; B, C, D, E haben eine waagerechte Symmetrieachse; S und Z dagegen sind überhaupt nicht symmetrisch. Beim Spiegeln wird jeder Punkt der Figur auf die andere Seite der Achse "geklappt", wobei sein Abstand zur Achse gleich bleibt. Eine Figur kann sogar mehrere Symmetrieachsen haben: Ein Quadrat hat vier, ein gleichseitiges Dreieck drei, ein Kreis sogar unendlich viele! Punktsymmetrie ist anders: Eine Figur ist punktsymmetrisch, wenn man sie um 180° um einen Mittelpunkt drehen kann und sie danach gleich aussieht – wie ein S oder eine Raute. Symmetrie ist nicht nur schön, sondern steckt auch in Physik, Chemie, Molekülstrukturen, Musik und Computeranimation!' },
         ],
@@ -1676,12 +1689,15 @@ const CONTENT = {
         color:'#2563EB',
         intro:'Herzlich willkommen in Mathematik Klasse 7! Wir lösen Gleichungen, rechnen mit negativen Zahlen und erkunden Dreiecke. Diese Themen sind das Fundament für die gesamte Oberstufe!',
         topics:[
+          { isChapter:true, name:'🔢 Rationale Zahlen & Gleichungen' },
           { name:'Negative Zahlen und rationale Zahlen', diff:2,
             explanation:'Im Winter zeigt das Thermometer minus 8 Grad Celsius – das sind negative Zahlen! Schulden, Minusgrade, der Meeresspiegel und Stockwerke unter der Erde zeigen: Negative Zahlen sind überall. Auf der Zahlengeraden liegen sie links der Null – je weiter links, desto kleiner die Zahl: –7 < –3 < 0 < 5. Addition mit negativen Zahlen: –3 + 7 = 4 (7 Schritte nach rechts starten von –3). Subtraktion: –3 – 5 = –8 (5 Schritte weiter nach links). Die wichtigste Regel bei Multiplikation und Division: Zwei negative Vorzeichen ergeben ein positives! Also: (–4) × (–3) = +12. Aber: positiv × negativ ergibt immer negativ – (–4) × 3 = –12. Diese Vorzeichenregeln gelten auch für die Division. Rationale Zahlen sind alle Zahlen, die sich als Bruch schreiben lassen – also auch Dezimalzahlen und alle ganzen Zahlen. Negative Zahlen machen Mathematik vollständig: Ohne sie könnten wir keine Temperaturen, Schulden, Tiefen oder Zeitpunkte vor einem Ereignis ausdrücken!' },
           { name:'Lineare Gleichungen lösen', diff:2,
             explanation:'Ich denke an eine Zahl, addiere 5 und erhalte 12 – welche Zahl war es? Das ist eine lineare Gleichung: x + 5 = 12. Das Geheimnis beim Lösen ist: Eine Gleichung ist wie eine Waage – was du auf einer Seite tust, musst du auf der anderen auch tun! Subtrahiere 5 auf beiden Seiten: x + 5 – 5 = 12 – 5, also x = 7. Schwieriger: 2x + 4 = 14. Erst –4 auf beiden Seiten: 2x = 10. Dann ÷2: x = 5. Mache immer eine Probe: 2×5 + 4 = 14. Wenn x auf beiden Seiten steht, z.B. 3x + 7 = x + 13, sammle erst alle x-Terme auf einer Seite: 3x – x = 13 – 7, also 2x = 6, x = 3. Probe: 3×3+7 = 16 und 3+13 = 16. Erlaubte Umformungen sind: Addieren/Subtrahieren derselben Zahl auf beiden Seiten, und Multiplizieren/Dividieren durch dieselbe Zahl (ausser 0). Lineare Gleichungen stecken in Physik, Chemie, Wirtschaft und überall in der Wissenschaft!' },
+          { isChapter:true, name:'📐 Geometrie: Dreiecke & Kongruenz' },
           { name:'Dreiecke: Arten und Winkelsumme', diff:2,
             explanation:'Das Dach eines Hauses, ein Bootssegel, das Adidas-Logo, die ägyptischen Pyramiden – überall Dreiecke! Die wichtigste Regel: Die Winkelsumme in jedem Dreieck beträgt immer genau 180 Grad. Kennst du zwei Winkel, berechnest du den dritten einfach: 180° minus die beiden bekannten Winkel. Beim gleichseitigen Dreieck sind alle drei Seiten gleich lang und alle drei Winkel je 60°. Das gleichschenklige Dreieck hat zwei gleich lange Seiten und zwei gleich große Basiswinkel. Das rechtwinklige Dreieck hat genau einen 90°-Winkel und ist die Grundlage des berühmten Satzes von Pythagoras. Ein stumpfwinkliges Dreieck hat einen Winkel größer als 90°, ein spitzwinkliges Dreieck hat alle Winkel kleiner als 90°. Dreiecke sind die stabilste geometrische Form: Deshalb nutzen Brücken, Kräne und Fachwerkkonstruktionen überall Dreiecke in ihren Strukturen. Diese Eigenschaft der Dreiecke – Starrheit und Stabilität – macht sie unverzichtbar in der Architektur und im Ingenieurwesen!' },
+          { isChapter:true, name:'🔤 Algebra: Terme & Zuordnungen' },
           { name:'Terme und Variablen', diff:3,
             explanation:'In der Formel U = 2×(Länge + Breite) stehen "Länge" und "Breite" für beliebige Werte – das sind Variablen, Platzhalter für Zahlen, die wir noch nicht kennen oder die sich ändern können. Ein Term ist ein mathematischer Ausdruck mit Zahlen, Variablen und Rechenzeichen, wie 3x + 2y – 5. Beim Vereinfachen sammelst du gleichartige Glieder zusammen: 3x + 2x = 5x, oder 4a – a + 3 = 3a + 3. Wichtig: Nur Terme mit derselben Variable und Potenz lassen sich zusammenfassen – 3x + 2y bleibt so, weil x und y verschiedene Variablen sind! Beim Ausmultiplizieren (Distributivgesetz) löst du Klammern auf: 3(x + 4) = 3x + 12 – jedes Glied in der Klammer wird mit dem Faktor multipliziert. Steht vor der Klammer ein Minuszeichen, dreht sich jedes Vorzeichen darin um: –(x + 3) = –x – 3. Du kannst auch umgekehrt vorgehen und gemeinsame Faktoren ausklammern: 4x + 6 = 2(2x + 3). Diese Fähigkeiten sind das absolute Fundament für alle weiteren Themen der Algebra!' },
           { name:'Prozentrechnungen', diff:3,
@@ -1813,12 +1829,14 @@ const CONTENT = {
         color:'#0284C7',
         intro:'Willkommen in Physik Klasse 7! Hier lernst du die Grundlagen der Mechanik kennen – Kräfte, Bewegungen und einfache Maschinen. Physik erklärt dir, warum Dinge so funktionieren, wie sie es tun!',
         topics:[
+          { isChapter:true, name:'⚖️ Mechanik: Kräfte & Bewegung' },
           { name:'Kraft und Kraftmessung', diff:1, exp:'federkraft',
             explanation:'Wenn du einen Ball wirfst, eine Tür aufdrückst oder eine Schubkarre schiebst – du übst immer eine Kraft aus! Kräfte können zwei Dinge bewirken: Sie verändern den Bewegungszustand eines Körpers (er beschleunigt, bremst oder ändert die Richtung), oder sie verformen ihn (ein Gummiball beim Aufprall). Die Einheit der Kraft ist Newton (N), benannt nach dem berühmten Wissenschaftler Isaac Newton. Ein Newton entspricht ungefähr dem Gewicht eines kleinen Apfels. Auf der Erde hat 1 Kilogramm Masse eine Gewichtskraft von etwa 9,81 N – vereinfacht sagen wir oft 10 N pro kg. Mit einem Federkraftmesser kannst du Kräfte direkt messen: Die Feder dehnt sich proportional zur wirkenden Kraft aus. Kräfte haben immer eine Richtung und einen Betrag – sie sind sogenannte Vektoren und werden als Pfeile dargestellt. Mehrere Kräfte können sich addieren oder gegenseitig aufheben – wenn zwei gleich starke Kräfte entgegengesetzt wirken, ist die Gesamtkraft null und der Körper bewegt sich nicht.' },
           { name:'Geschwindigkeit und Bewegung', diff:1, exp:'gleichfoermig',
             explanation:'Ein Auto fährt auf der Autobahn 130 km/h – das ist seine Durchschnittsgeschwindigkeit! Die Grundformel lautet: Geschwindigkeit (v) = Weg (s) ÷ Zeit (t). Fährst du 180 km in 2 Stunden, ist deine Geschwindigkeit 90 km/h. Du kannst die Formel auch umstellen: Weg = Geschwindigkeit × Zeit (s = v × t) und Zeit = Weg ÷ Geschwindigkeit (t = s ÷ v). In der Physik rechnen wir oft in Metern pro Sekunde (m/s): Um km/h in m/s umzurechnen, dividiere durch 3,6. Also: 36 km/h ÷ 3,6 = 10 m/s. Gleichförmige Bewegung bedeutet: Die Geschwindigkeit bleibt immer gleich, der zurückgelegte Weg wächst gleichmäßig mit der Zeit. Im Gegensatz dazu gibt es beschleunigte Bewegung: Beim Anfahren eines Autos oder beim freien Fall wächst die Geschwindigkeit mit der Zeit. Die Beschleunigung gibt an, wie schnell sich die Geschwindigkeit ändert und wird in m/s² gemessen. Geschwindigkeit und Bewegung stecken in allem: Auto, Flugzeuge, Satelliten, Sport und sogar Blutfluss in deinem Körper!' },
           { name:'Reibungskräfte', diff:2, exp:'reibung',
             explanation:'Warum bleibt ein Buch auf einem schrägen Pult liegen, statt herunterzurutschen? Wegen der Reibungskraft! Reibung entsteht überall, wo zwei Flächen aneinander berühren – sie wirkt immer der Bewegung entgegen. Es gibt drei wichtige Reibungsarten: Haftreibung hält einen ruhenden Körper an seinem Platz, bevor er sich überhaupt bewegt – sie ist am stärksten. Gleitreibung wirkt, sobald ein Körper über eine Fläche gleitet – sie ist kleiner als Haftreibung. Rollreibung entsteht bei rollenden Körpern wie Rädern – sie ist am kleinsten, deshalb haben Autos und Fahrräder Räder statt Kufen! Manchmal ist Reibung nützlich: Autoreifen beim Bremsen, Schuhe damit wir nicht ausrutschen, Finger zum Greifen. Manchmal ist sie störend: Maschinenteile nutzen sich ab, weshalb man Öl und Schmierung verwendet. Reibungskräfte hängen von der Oberflächenrauheit und der Normalkraft ab – je glatter die Fläche und je leichter der Körper, desto kleiner die Reibung. Wintersportler wachsen ihre Skier, um Gleitreibung gezielt zu verringern.' },
+          { isChapter:true, name:'🔧 Einfache Maschinen & Druck' },
           { name:'Hebel und einfache Maschinen', diff:2, exp:'hebelgesetz',
             explanation:'Mit einem langen Hebel kannst du schwere Lasten mit wenig Kraft bewegen – Menschen nutzten dieses Prinzip schon beim Bau der Pyramiden! Das Hebelgesetz lautet: Kraft × Kraftarm = Last × Lastarm. Der Kraftarm ist der Abstand zwischen dem Drehpunkt (Fulkrum) und der angreifenden Kraft; der Lastarm ist der Abstand vom Drehpunkt zur Last. Je länger dein Kraftarm, desto weniger Kraft brauchst du – du musst dafür aber einen längeren Weg zurücklegen. Beispiel: Du willst eine 200 N schwere Last mit 50 N Kraft heben. Dann muss dein Kraftarm viermal so lang sein wie der Lastarm (50 × 4 = 200 × 1). Eine Schaukel ist ein zweiseitiger Hebel: Sitzt die schwerere Person näher am Mittelpunkt, können beide ins Gleichgewicht kommen. Einseitige Hebel wie Nussknacker, Schubkarre und Flaschenöffner haben Kraft und Last auf derselben Seite. Auch dein Unterarm ist ein Hebel! Archimedes sagte berühmt: "Gebt mir einen festen Punkt und ich hebe die Erde aus den Angeln" – er meinte die enorme Kraftverstärkung durch einen langen Hebelarm.' },
           { name:'Masse und Gewichtskraft', diff:2, exp:'newton2',
@@ -1907,10 +1925,13 @@ const CONTENT = {
         color:'#2563EB',
         intro:'Herzlich willkommen in Mathe Klasse 8! Heute entdecken wir lineare Funktionen, den Satz des Pythagoras und lernen Statistik kennen. Diese Themen begegnen dir im Alltag, in der Wirtschaft und in der Technik!',
         topics:[
+          { isChapter:true, name:'📈 Lineare Funktionen' },
           { name:'Lineare Funktionen und Graphen', diff:2,
             explanation:'Wenn du einen Streamingdienst für 10 Euro pro Monat abonnierst, steigen deine Gesamtkosten gleichmäßig: nach 1 Monat 10 €, nach 6 Monaten 60 €, nach 12 Monaten 120 €. Das ist eine lineare Funktion! Die allgemeine Form ist y = mx + b. Darin ist m die Steigung – sie sagt, wie stark die Gerade ansteigt (m > 0) oder fällt (m < 0). Und b ist der y-Achsenabschnitt, also der Wert der Funktion genau bei x = 0. Beispiel: Ein Taxi berechnet 3 € Grundgebühr plus 2 € pro Kilometer: y = 2x + 3. Die Steigung 2 bedeutet: jeder Kilometer mehr kostet 2 € extra. Bei x = 0 (noch keine Fahrt) zahlst du 3 € Grundgebühr. Um den Graphen zu zeichnen, brauchst du nur zwei Punkte: Berechne den y-Achsenabschnitt (x = 0 einsetzen) und einen weiteren Punkt. Die Nullstelle (Schnittpunkt mit der x-Achse) findest du, indem du y = 0 setzt und nach x auflöst. Lineare Funktionen sind überall: Stromtarife, Handyverträge, Arbeitslohn und Temperaturen sind lineare Zusammenhänge!' },
+          { isChapter:true, name:'📐 Geometrie: Pythagoras & Körper' },
           { name:'Satz des Pythagoras', diff:3,
             explanation:'Bauarbeiter überprüfen rechte Winkel mit dem legendären 3-4-5-Trick: Ein Dreieck mit Seiten 3, 4 und 5 Meter hat immer exakt einen rechten Winkel – weil 3² + 4² = 9 + 16 = 25 = 5². Das ist der Satz des Pythagoras: In jedem rechtwinkligen Dreieck gilt a² + b² = c². Die Seiten a und b heißen Katheten, die längste Seite c heißt Hypotenuse und liegt gegenüber dem rechten Winkel. Willst du die Hypotenuse berechnen: c = Wurzel aus (a² + b²). Willst du eine Kathete berechnen, stelle um: a = Wurzel aus (c² – b²). Praxisbeispiel: Eine 5 m lange Leiter lehnt an einer Wand, der Fuß ist 3 m entfernt. In welcher Höhe lehnt sie? h² = 5² – 3² = 25 – 9 = 16, also h = 4 m. Pythagoras war ein griechischer Mathematiker (ca. 570–510 v. Chr.), aber der Satz war schon Jahrtausende früher in Ägypten und Babylonien bekannt. Er steckt heute in GPS-Navigation, Architektur, Computergrafik und unzähligen technischen Berechnungen!' },
+          { isChapter:true, name:'📊 Statistik & Algebra' },
           { name:'Statistik: Mittelwert, Median, Modus', diff:2,
             explanation:'Instagram-Analytics, Sportergebnisse, Wahlergebnisse, Klimadaten – überall wird Statistik genutzt, um Daten zu verstehen! Es gibt drei wichtige Lagemaße: Der Mittelwert (Durchschnitt) wird berechnet, indem du alle Werte addierst und durch ihre Anzahl teilst – einfach und häufig genutzt, aber empfindlich gegenüber Ausreißern. Zum Beispiel: Die Werte 2, 3, 3, 4, 100 haben einen Mittelwert von 22,4 – obwohl fast alle Werte unter 5 liegen! Der Median ist der mittlere Wert einer sortierten Liste – er wird durch extreme Werte kaum beeinflusst. Bei einer geraden Anzahl von Werten nimmst du den Durchschnitt der beiden mittleren. Beim Durchschnittsgehalt sagt der Median oft mehr aus als der Mittelwert, weil wenige Topverdiener den Mittelwert stark nach oben ziehen. Der Modus ist der am häufigsten vorkommende Wert – bei den Noten 1, 2, 2, 3, 2, 4 ist der Modus 2. Wann nutzt man was? Mittelwert für gleichmäßige Daten ohne Ausreißer; Median für schiefe Verteilungen wie Gehälter und Hauspreise; Modus für Schuhgrößen oder Lieblingsprodukte. Statistik hilft uns, aus vielen Zahlen verständliche Aussagen zu machen!' },
           { name:'Terme vereinfachen und ausmultiplizieren', diff:3,
@@ -2029,12 +2050,14 @@ const CONTENT = {
         color:'#0284C7',
         intro:'Willkommen in Physik Klasse 8! Heute tauchen wir in die Welt des elektrischen Stroms ein. Spannung, Stromstärke, Widerstand – und das Ohmsche Gesetz verbindet alles!',
         topics:[
+          { isChapter:true, name:'⚡ Elektrizitätslehre: U, I, R' },
           { name:'Elektrische Spannung (Volt)', diff:1, exp:'ohmsches-gesetz',
             explanation:'Dein Handy-Akku hat 3,7 Volt, eine Haushaltssteckdose 230 Volt und eine Autobatterie 12 Volt – das alles sind elektrische Spannungen! Spannung ist der Antrieb, der Elektronen durch einen Leiter bewegt – vergleichbar mit dem Wasserdruck in einem Rohr: Je höher der Druck (Spannung), desto stärker fließt das Wasser (der Strom). Die elektrische Spannung entsteht, wenn zwischen zwei Punkten ein Unterschied in der elektrischen Energie besteht – das nennt man Potenzialdifferenz. Die Einheit ist Volt (V), benannt nach dem Physiker Alessandro Volta, der 1800 die erste Batterie erfand. Gemessen wird Spannung mit einem Voltmeter, das immer parallel (also nebenher, nicht hintereinander) zum Bauteil angeschlossen wird. Ohne Spannung fließt kein Strom – eine leere Batterie hat fast 0 Volt. Sehr hohe Spannungen wie in Hochspannungsleitungen (bis 380.000 V) sind tödlich gefährlich: niemals anfassen! Bei Strom zuhause (230 V) gilt: Immer einen Elektriker beauftragen und niemals selbst reparieren.' },
           { name:'Stromstärke (Ampere)', diff:1, exp:'ohmsches-gesetz',
             explanation:'Dein Handyladekabel überträgt 1 bis 2 Ampere, ein Herd braucht bis zu 16 Ampere und eine LED-Lampe nur 0,05 Ampere – das sind sehr unterschiedliche Stromstärken! Die Stromstärke beschreibt, wie viele Elektronen pro Sekunde durch einen Querschnitt eines Leiters fließen – ähnlich wie die Fließmenge von Wasser in einem Rohr. Die Einheit ist Ampere (A), benannt nach dem französischen Physiker André-Marie Ampère. Gemessen wird die Stromstärke mit einem Amperemeter, das immer in Reihe (also hintereinander) in den Stromkreis eingebaut wird – nie parallel! Schließt du es falsch (parallel) an, kann es zerstört werden, weil fast kein Widerstand da ist und der gesamte Strom hindurchfließt. In der Sicherungstechnik ist Stromstärke entscheidend: Fließt zu viel Strom, schmilzt die Sicherung und schützt vor Überhitzung und Bränden. Interessant: Obwohl Elektronen sich im Leiter nur millimeterweise vorwärts bewegen, breitet sich der elektrische Impuls mit nahezu Lichtgeschwindigkeit aus – deshalb leuchtet eine Lampe sofort!' },
           { name:'Das Ohmsche Gesetz', diff:2, exp:'ohmsches-gesetz',
             explanation:'Das Ohmsche Gesetz lautet: Spannung (U) = Stromstärke (I) × Widerstand (R), kurz U = I × R. Der elektrische Widerstand beschreibt, wie stark ein Material den Stromfluss bremst – wie ein enges Rohr, das den Wasserfluss verringert. Einheit des Widerstands ist Ohm (Ω). Eine dicke Kupferschiene hat kleinen Widerstand (Strom fließt leicht), ein dünnes Wolframglühwendel hat großen Widerstand (wird heiß und leuchtet). Das Gesetz lässt sich auch umstellen: I = U ÷ R (Strom berechnen) und R = U ÷ I (Widerstand berechnen). Beispiel: U = 12 V, R = 6 Ω – dann ist I = 12 ÷ 6 = 2 A. Merke dir das "Dreieck": U oben, I und R unten – decke die gesuchte Größe ab, um die richtige Formel zu sehen. Schließt du eine LED an eine Batterie an, berechnest du damit den nötigen Vorwiderstand, damit die LED nicht durchbrennt. Georg Simon Ohm entdeckte diesen Zusammenhang 1826 – es ist die wichtigste Formel der gesamten Elektrizitätslehre!' },
+          { isChapter:true, name:'🔌 Schaltungen & Leistung' },
           { name:'Reihen- und Parallelschaltung', diff:3, exp:'reihenschaltung',
             explanation:'Weihnachtslichter früher waren in Reihe geschaltet – fiel eine Birne aus, wurden alle dunkel! Das war ein typisches Problem der Reihenschaltung. Heute sind LED-Lichterketten parallel geschaltet: Fällt eine aus, leuchten alle anderen weiter. In der Reihenschaltung sind alle Bauteile hintereinander in einem einzigen Stromkreis geschaltet. Dabei gilt: Die Stromstärke ist überall gleich groß, aber die Spannungen addieren sich – jedes Bauteil bekommt einen Teil der Gesamtspannung. In der Parallelschaltung liegen alle Bauteile nebeneinander zwischen denselben zwei Leitungen. Dabei gilt: Die Spannung ist an allen Zweigen gleich, aber die Gesamtstromstärke teilt sich auf die Zweige auf. In deinem Zuhause sind alle Steckdosen parallel geschaltet – deshalb hat jede die volle Netzspannung von 230 V und jedes Gerät kann unabhängig ein- und ausgeschaltet werden. Widerstände in Reihe addieren sich: R_ges = R1 + R2. Widerstände parallel ergeben einen kleineren Gesamtwiderstand: immer kleiner als der kleinste Einzelwiderstand!' },
           { name:'Elektrische Energie und Leistung', diff:3, exp:'leistung',
@@ -2110,10 +2133,12 @@ const CONTENT = {
         color:'#2563EB',
         intro:'Klasse 9 Mathematik – jetzt kommen quadratische Gleichungen und Trigonometrie! Mit den richtigen Schritten löst du jede Aufgabe. Ich zeige dir alles systematisch mit Beispielen aus Physik, Sport und Technik!',
         topics:[
+          { isChapter:true, name:'📐 Quadratische Funktionen & Gleichungen' },
           { name:'Quadratische Funktionen (Parabeln)', diff:3,
             explanation:'Der Wurf eines Basketballs, ein springender Wasserstrahl, das Seil einer Hängebrücke – sie alle beschreiben Parabeln! Eine Parabel ist der Graph einer quadratischen Funktion der Form y = ax² + bx + c. Die einfachste Parabel ist y = x²: Sie öffnet sich nach oben und hat ihren tiefsten Punkt, den Scheitelpunkt, im Ursprung (0|0). Ist a positiv, öffnet die Parabel nach oben (Lächeln); ist a negativ, öffnet sie nach unten (Trauriges Gesicht). Je größer der Betrag von a, desto schmaler und steiler ist die Parabel. Die Parabel y = (x – 2)² + 3 hat ihren Scheitelpunkt bei (2|3) – die Zahl in der Klammer verschiebt horizontal, die addierte Zahl verschiebt vertikal. Nullstellen sind die x-Werte, wo die Parabel die x-Achse schneidet (y = 0 setzen). Satellitenschüsseln und Autoscheinwerfer nutzen die Reflexionseigenschaft der Parabel: Alle Strahlen werden in einem Punkt (Brennpunkt) gebündelt. Quadratische Funktionen sind überall in Physik, Technik und Wirtschaft!' },
           { name:'Quadratische Gleichungen – Lösungsformel', diff:3,
             explanation:'Bei einem Ballwurf in der Physik entsteht automatisch eine quadratische Gleichung: Wann trifft der Ball den Boden? Die allgemeine Form lautet: ax² + bx + c = 0. Zur Lösung gibt es die Mitternachtsformel (auch Lösungsformel genannt): x = (–b ± Wurzel(b² – 4ac)) ÷ (2a). Der Ausdruck unter der Wurzel heißt Diskriminante (D = b² – 4ac) und verrät, wie viele Lösungen es gibt: Ist D > 0, gibt es zwei verschiedene Lösungen (Parabel schneidet x-Achse zweimal). Ist D = 0, gibt es genau eine Lösung (Parabel berührt x-Achse nur einmal). Ist D < 0, gibt es keine reelle Lösung (Parabel berührt die x-Achse gar nicht). Beispiel: x² – 5x + 6 = 0. Hier ist a=1, b=–5, c=6. D = 25 – 24 = 1 > 0 → zwei Lösungen: x = (5 ± 1) ÷ 2, also x₁ = 3 und x₂ = 2. Manchmal geht es einfacher: x² – 9 = 0 → x² = 9 → x = ±3. Quadratische Gleichungen stecken in Physik, Ingenieurwesen, Wirtschaft und Computergrafik!' },
+          { isChapter:true, name:'📏 Geometrie: Ähnlichkeit & Trigonometrie' },
           { name:'Ähnlichkeit und Strahlensätze', diff:3,
             explanation:'Wie hoch ist ein Gebäude, ohne es zu besteigen? Ganz einfach mit Ähnlichkeit! Stell dich in die Sonne und miss deinen Schatten (z.B. 0,5 m) und den Schatten des Gebäudes (z.B. 20 m). Wenn du 1,70 m groß bist, kannst du rechnen: 1,70 ÷ 0,5 = 3,4, also ist das Gebäude 20 × 3,4 = 68 m hoch! Zwei Figuren sind ähnlich, wenn sie dieselbe Form haben – also gleiche Winkel und proportionale Seiten. Maßstab gibt das Verhältnis der entsprechenden Seiten an (z.B. 1:100 bei Bauplänen). Die Strahlensätze beschreiben, wie sich Strecken verhalten, wenn zwei Geraden von einem gemeinsamen Punkt ausgehen und von parallelen Linien geschnitten werden: Die Strecken sind dann immer proportional zueinander. Erster Strahlensatz: parallele Abschnitte teilen die Strahlen im gleichen Verhältnis. Zweiter Strahlensatz: die parallelen Abschnitte selbst verhalten sich wie die Abstände vom Ausgangspunkt. Architekten, Landvermesser, GPS-Systeme und Computergrafik nutzen Ähnlichkeit und Strahlensätze täglich!' },
           { name:'Trigonometrie: Sinus, Kosinus, Tangens', diff:3,
@@ -2219,12 +2244,15 @@ const CONTENT = {
         color:'#0284C7',
         intro:'Willkommen in Physik Klasse 9! Wir erkunden Wellen, Schall und Licht. Diese Phänomene begegnen dir in Musik, Handy-Übertragung und optischen Geräten!',
         topics:[
+          { isChapter:true, name:'🔊 Wellen & Schall' },
           { name:'Wellen und Wellengrößen', diff:2, exp:'wellen',
             explanation:'Wirfst du einen Stein ins Wasser, breiten sich Wellen kreisförmig aus – das Wasser selbst bewegt sich dabei kaum vorwärts, nur die Energie wird transportiert! Wellen transportieren immer Energie, aber keine Materie. Jede Welle hat eine Wellenlänge (lambda): der Abstand von einem Wellenberg zum nächsten, gemessen in Metern. Die Frequenz (f) gibt an, wie viele vollständige Schwingungen pro Sekunde stattfinden – Einheit: Hertz (Hz). Die Periode (T) ist die Zeit für eine vollständige Schwingung: T = 1/f. Die Ausbreitungsgeschwindigkeit (v) hängt mit Wellenlänge und Frequenz zusammen: v = lambda × f. Transversalwellen schwingen quer zur Ausbreitungsrichtung (z.B. Wasserwellen, Lichtwellen). Longitudinalwellen schwingen in Ausbreitungsrichtung (z.B. Schallwellen). Die Lichtgeschwindigkeit im Vakuum beträgt 300.000 km/s – das ist die schnellste Geschwindigkeit im Universum. Wellen begegnen dir in Musik (Schall), Handy (Radiowellen), Licht und Medizin (Ultraschall)!' },
           { name:'Schall und Schallgeschwindigkeit', diff:2, exp:'schall',
             explanation:'Schall entsteht durch Schwingungen – wenn eine Gitarrensaite schwingt, drückt sie die Luft zusammen und verdünnt sie abwechselnd, und diese Druckwellen wandern als Schall zu deinen Ohren. Schall ist eine mechanische Longitudinalwelle: die Luftteilchen schwingen in dieselbe Richtung, in die sich der Schall ausbreitet. Schall braucht immer ein Medium (Luft, Wasser, Feststoffe) – im Vakuum ist es still! In Luft beträgt die Schallgeschwindigkeit etwa 343 m/s bei 20°C – wärmer macht Schall schneller. Im Wasser ist Schall etwa viermal schneller (~1.480 m/s), in Stahl sogar etwa 15-mal schneller (~5.000 m/s). Den Abstand eines Gewitters berechnest du so: Sekunden zwischen Blitz und Donner × 340 m = Entfernung in Metern. Ultraschall (über 20.000 Hz) hören Menschen nicht, aber Hunde und Fledermäuse schon. In der Medizin nutzt man Ultraschall für sichere Untersuchungen ohne Strahlung. Infrasschall (unter 20 Hz) wird von Elefanten und Walen über Hunderte Kilometer kommuniziert!' },
+          { isChapter:true, name:'🔦 Optik & Licht' },
           { name:'Licht: Spektrum und Farben', diff:2, exp:'licht',
             explanation:'Weißes Licht sieht nach einer Farbe aus, enthält aber alle Farben des Regenbogens – das zeigt ein Prisma eindrucksvoll! Ein Prisma bricht verschiedene Wellenlängen unterschiedlich stark und trennt sie dadurch: Violett wird am stärksten gebrochen, Rot am schwächsten. Das sichtbare Lichtspektrum reicht von Violett (ca. 380 nm, kürzeste Wellenlänge) über Blau, Grün, Gelb, Orange bis Rot (ca. 780 nm, längste Wellenlänge). Je kürzer die Wellenlänge, desto mehr Energie hat das Licht. Jenseits des sichtbaren Bereichs gibt es unsichtbare Strahlung: Infrarot (wärmt uns, Wärmekameras nutzen es) und Ultraviolett (lässt uns braun werden, kann Haut schädigen). Weißes Licht entsteht, wenn alle Farben zusammen auf unser Auge treffen – ein weißes T-Shirt reflektiert alle Farben, ein schwarzes absorbiert sie alle. Farben entstehen durch selektive Absorption: Eine rote Tomate absorbiert alle Farben außer Rot und reflektiert nur Rot. So erklären sich alle Farben in unserer Welt!' },
+          { isChapter:true, name:'☢️ Atom & Radioaktivität' },
           { name:'Radioaktivität – Grundlagen', diff:3, exp:'radioaktivitaet',
             explanation:'Manche Atomkerne sind instabil – sie senden Strahlung aus, um stabil zu werden. Das nennt man radioaktiven Zerfall. Es gibt drei wichtige Strahlungsarten: Alpha-Strahlung (α) besteht aus Heliumkernen (2 Protonen + 2 Neutronen) und wird schon von einem Blatt Papier oder der Haut gestoppt – gefährlich ist sie nur, wenn Alpha-Strahler eingeatmet oder geschluckt werden. Beta-Strahlung (β) besteht aus schnellen Elektronen und dringt tiefer ein – eine dünne Aluminiumschicht hält sie auf. Gamma-Strahlung (γ) ist elektromagnetische Strahlung (wie Licht, aber viel energiereicher) und dringt tief in Materie ein – nur dickes Blei oder Beton können sie abschirmen. Die Halbwertszeit gibt an, nach welcher Zeit die Hälfte der radioaktiven Atome zerfallen ist – sie reicht von Bruchteilen einer Sekunde bis zu Milliarden Jahren. Kernkraftwerke nutzen die enorme Energie bei der Kernspaltung (Uran-235), Kernfusionsreaktoren der Zukunft sollen Wasserstoffkerne verschmelzen lassen. In der Medizin nutzt man Radioaktivität für Diagnose und Therapie bei Krebs!' },
         ],
@@ -2298,12 +2326,15 @@ const CONTENT = {
         color:'#2563EB',
         intro:'Willkommen in Klasse 10 Mathematik – dem letzten Schritt vor dem Abitur! Wir vertiefen Wahrscheinlichkeitsrechnung, Analysis und Vektoren. Diese Grundlagen stecken in KI, Wirtschaft und Technik!',
         topics:[
+          { isChapter:true, name:'🎲 Stochastik & Wahrscheinlichkeit' },
           { name:'Wahrscheinlichkeitsrechnung', diff:3,
             explanation:'Wetterdienste berechnen "70% Regenwahrscheinlichkeit", Versicherungen kalkulieren Risiken und KI-Algorithmen treffen Entscheidungen – all das basiert auf Wahrscheinlichkeitsrechnung! Wahrscheinlichkeit (P) misst, wie wahrscheinlich ein Ereignis eintritt: P = (günstige Ergebnisse) ÷ (alle möglichen Ergebnisse). Beim Würfeln ist P(eine 6) = 1/6. Beim Laplace-Experiment sind alle Ergebnisse gleichwahrscheinlich. Die Gegenwahrscheinlichkeit: P(A nicht eintritt) = 1 – P(A). Wenn P(Regen) = 0,3, dann P(kein Regen) = 0,7. Bei unabhängigen Ereignissen multiplizierst du: P(zweimal Kopf beim Münzwurf) = 0,5 × 0,5 = 0,25 = 25%. Beim Lotto (6 aus 49) gibt es 13.983.816 mögliche Kombination – die Gewinnwahrscheinlichkeit ist also etwa 1 zu 14 Millionen! Baumdiagramme helfen beim Visualisieren mehrstufiger Experimente: Jeder Ast zeigt eine Möglichkeit und die Wahrscheinlichkeiten der Äste auf demselben Weg werden multipliziert. Wahrscheinlichkeitsrechnung ist die Grundlage von Statistik, KI, Medizin, Finanzen und Spieltheorie!' },
+          { isChapter:true, name:'📈 Exponentialfunktionen & Analysis' },
           { name:'Exponentialfunktionen', diff:3,
             explanation:'Ein TikTok-Video bekommt am ersten Tag 100 Views, am zweiten 200, am dritten 400, am vierten 800 – die Anzahl verdoppelt sich täglich. Das ist exponentielles Wachstum! Die allgemeine Form lautet: f(x) = a × bˣ. Dabei ist a der Startwert und b die Basis (der Wachstumsfaktor). Ist b > 1, wächst die Funktion (z.B. Zinsen, Bevölkerung, Virusausbreitung). Ist 0 < b < 1, nimmt die Funktion ab (exponentieller Zerfall, z.B. radioaktiver Zerfall, Medikament im Körper). Der Unterschied zu linearem Wachstum ist enorm: Linear wächst um einen festen Betrag (z.B. +100 pro Tag), exponentiell wächst um einen festen Faktor (z.B. ×2 pro Tag). Nach kurzer Zeit überholt Exponentialwachstum lineares Wachstum bei weitem. Zinseszins ist ein klassisches Beispiel: 1.000 € bei 5% Zinsen nach 30 Jahren: 1.000 × 1,05³⁰ ≈ 4.322 €! Die Eulersche Zahl e ≈ 2,718 ist die Basis der natürlichen Exponentialfunktion und überall in der Natur zu finden. Exponentialfunktionen sind fundamental in Mathematik, Physik, Biologie, Wirtschaft und Informatik!' },
           { name:'Ableitung und Analysis', diff:3,
             explanation:'Wie schnell steigt gerade ein Aktienkurs? Wie stark beschleunigt ein Elektroauto in genau diesem Moment? Die Ableitung beantwortet diese Fragen! Die Ableitung f\'(x) gibt die momentane Steigung des Graphen von f(x) an jedem Punkt x an. Ist f\'(x) > 0, steigt der Graph; ist f\'(x) < 0, fällt er; ist f\'(x) = 0, liegt ein Extrempunkt oder Sattelpunkt vor. Mit der Potenzregel leitest du einfach ab: f(x) = xⁿ → f\'(x) = n × xⁿ⁻¹. Beispiele: (x³)\' = 3x², (5x²)\' = 10x, (x)\' = 1, Konstante\' = 0. Für Summen: Jedes Glied einzeln ableiten. f(x) = 3x² + 2x + 5 → f\'(x) = 6x + 2. Extrempunkte findest du, indem du f\'(x) = 0 setzt und die Lösungen in f\'\'(x) einsetzt: f\'\'(x) > 0 = Tiefpunkt (Minimum), f\'\'(x) < 0 = Hochpunkt (Maximum). Analysis ist das Werkzeug für Optimierungsprobleme: Wann ist Gewinn maximal? Welche Form braucht ein Behälter, um bei minimalem Material maximales Volumen zu haben? Ableitung ist fundamental für Physik, Technik, KI und Wirtschaft!' },
+          { isChapter:true, name:'🔢 Analytische Geometrie & Vektoren' },
           { name:'Analytische Geometrie – Vektoren', diff:3,
             explanation:'In 3D-Computerspielen, autonomen Fahrzeugen, Robotik und GPS werden ständig Vektoren berechnet. Ein Vektor beschreibt gleichzeitig eine Richtung und eine Länge (Betrag) im Raum. Im Gegensatz zu einer Zahl (Skalar) hat ein Vektor also auch eine Richtung. In 2D schreibt man einen Vektor als Spalte (a, b) – er bedeutet "a Schritte in x-Richtung und b Schritte in y-Richtung". In 3D kommt noch eine z-Komponente dazu. Vektoren addierst du komponentenweise: (2, 3) + (1, –1) = (3, 2). Multiplizierst du einen Vektor mit einer Zahl (Skalar), verändert sich seine Länge: 2 × (2, 3) = (4, 6). Die Länge (Betrag) eines Vektors berechnest du mit dem Satz des Pythagoras: |(a, b)| = Wurzel(a² + b²). Mit Vektoren beschreibst du Positionen, Geraden (Punkte + Richtung), Ebenen und Bewegungen im Raum. Der Skalarprodukt zweier Vektoren hilft, Winkel zwischen ihnen zu berechnen: Wenn das Skalarprodukt = 0, stehen sie senkrecht aufeinander. Vektoren sind das Fundament für 3D-Grafik, Physik und maschinelles Lernen!' },
         ],
@@ -2394,12 +2425,15 @@ const CONTENT = {
         color:'#0284C7',
         intro:'Willkommen in Physik Klasse 10! Wir runden Mechanik ab und erkunden Optik und Elektromagnetismus. Diese Themen stecken in Glasfaserkabeln, Elektroautos und Smartphones!',
         topics:[
+          { isChapter:true, name:'⚙️ Mechanik: Impuls & Energie' },
           { name:'Impuls und Impulserhaltung', diff:3, exp:'impuls',
             explanation:'Bei einem Autounfall überträgt sich Impuls von einem Fahrzeug auf das andere – deshalb sind Knautschzonen so wichtig! Sie verlängern die Aufprallzeit und verringern damit die wirkende Kraft. Der Impuls eines Körpers ist: p = m × v (Masse × Geschwindigkeit), Einheit: kg × m/s. Der Impulserhaltungssatz besagt: In einem abgeschlossenen System (keine äußeren Kräfte) bleibt der Gesamtimpuls konstant. Beim Stoß zweier Körper: Gesamtimpuls vorher = Gesamtimpuls nachher. Beim elastischen Stoß bleiben Impuls UND kinetische Energie erhalten (z.B. Billardkugeln). Beim unelastischen Stoß bleibt nur der Impuls erhalten, kinetische Energie wird in Wärme und Verformung umgewandelt (z.B. Autounfall). Raketen nutzen den Impulserhaltungssatz perfekt: Die Rakete stößt Gase nach hinten aus (Impuls nach hinten), die Rakete selbst bewegt sich dadurch nach vorne (gleicher Impuls in entgegengesetzter Richtung). Das funktioniert sogar im Vakuum! Das ist auch das dritte Newtonsche Gesetz: Actio = Reactio.' },
+          { isChapter:true, name:'🔦 Optik & Elektromagnetismus' },
           { name:'Optik: Reflexion und Brechung', diff:2, exp:'optik',
             explanation:'Glasfaserkabel übertragen Internetdaten mit Lichtgeschwindigkeit durch Totalreflexion – Licht prallt dabei tausende Male von den Wänden des Glasfasers ab! Das Reflexionsgesetz beschreibt den einfachen Spiegeleffekt: Einfallswinkel = Reflexionswinkel (beide gemessen zur Senkrechten der Fläche). Regelmäßige Reflexion (Spiegel) ergibt scharfe Bilder; diffuse Reflexion (raue Fläche) streut Licht in alle Richtungen. Lichtbrechung tritt auf, wenn Licht von einem Medium ins andere übergeht (z.B. Luft → Wasser) und dabei die Richtung ändert. Das Snelliusssche Brechungsgesetz beschreibt das genaue Verhältnis der Winkel. Totalreflexion tritt auf, wenn Licht aus einem dichteren Medium (z.B. Glas) flach genug auf die Grenzfläche trifft – dann tritt kein Licht aus und wird vollständig reflektiert. Dieser Kritische Winkel ist die Grundlage der Glasfasertechnik. Regenbögen entstehen durch Brechung und Reflexion in kugelförmigen Wassertropfen – rotes Licht wird am schwächsten gebrochen, violettes am stärksten, deshalb entsteht das Farbspektrum. Linsen in Kameras, Brillen und Mikroskopen nutzen kontrollierte Lichtbrechung!' },
           { name:'Magnetismus und Elektromagnetismus', diff:3, exp:'bfeld',
             explanation:'Elektromotoren in Elektroautos, Generatoren in Windrädern, Transformatoren im Stromnetz, MRT-Geräte im Krankenhaus – alles basiert auf Elektromagnetismus! Magnetismus und Elektrizität sind zwei Seiten derselben Medaille. Ein Magnet erzeugt ein Magnetfeld. Fließt elektrischer Strom durch einen Leiter, entsteht um ihn herum ebenfalls ein Magnetfeld – das ist Elektromagnetismus. Eine Spule mit Strom (Elektromagnet) verhält sich wie ein Stabmagnet und kann durch Stromänderung gesteuert werden. Das Induktionsprinzip dreht es um: Ein sich änderndes Magnetfeld erzeugt in einem Leiter eine elektrische Spannung (induzierten Strom). Faraday entdeckte dieses Prinzip 1831 – und legte damit die Grundlage für unsere gesamte Stromerzeugung! Im Generator wird durch Rotation mechanische Energie in elektrische Energie umgewandelt. Im Motor dreht sich die Sache um: Elektrische Energie wird in mechanische Energie umgewandelt. Transformatoren nutzen Induktion, um Spannungen zu erhöhen (für Übertragung über weite Strecken) oder zu verringern (für Haushaltsgeräte). Elektromagnetismus ist die Grundlage moderner Zivilisation!' },
+          { isChapter:true, name:'⚛️ Quanten- & Atomphysik' },
           { name:'Einführung Quantenphysik', diff:3, exp:'quantenphysik',
             explanation:'Dein Handy-Chip, der Laser im Supermarktscanner, LED-Leuchten, MRT-Geräte und Solarzellen – alles basiert auf Quantenphysik! In der Quantenwelt gelten völlig andere Regeln als in unserem Alltag. Licht verhält sich sowohl wie eine Welle (Beugung, Interferenz) als auch wie ein Teilchen – ein Photon. Das nennt man Welle-Teilchen-Dualismus. Elektronen in einem Atom können nur bestimmte Energieniveaus einnehmen, keine dazwischen – das ist Quantisierung. Wenn ein Elektron von einem höheren auf ein niedrigeres Energieniveau fällt, sendet es ein Photon (Lichtteilchen) mit genau der entsprechenden Energie aus. So entstehen die charakteristischen Spektrallinien jedes Elements und das Licht von LEDs und Lasern. Das photoelektrische Effekt (entdeckt von Einstein, dafür Nobelpreis 1921): Licht, das auf Metall trifft, schlägt Elektronen heraus – Grundlage für Solarzellen. Heisenbergs Unschärfeprinzip besagt: Ort und Impuls eines Teilchens können nicht gleichzeitig beliebig genau gemessen werden. Die Quantenmechanik klingt seltsam, aber sie ist die am genauesten überprüfte Theorie der Physik!' },
         ],
@@ -2486,10 +2520,12 @@ const CONTENT = {
         color:'#2563EB',
         intro:'Willkommen in Klasse 11 Mathematik! Die Oberstufe beginnt – wir vertiefen Analysis, führen das Integral ein und lernen statistische Tests. Diese Werkzeuge stecken in KI, Wirtschaft und Forschung!',
         topics:[
+          { isChapter:true, name:'📈 Analysis & Integralrechnung' },
           { name:'Kurvendiskussion', diff:3,
             explanation:'Eine vollständige Kurvendiskussion ist das Schweizer Taschenmesser der Analysis! Sie beantwortet alle wichtigen Fragen über eine Funktion auf einmal. Gegeben ist z.B. f(x) = x³ – 3x² + 2. Schritt 1 – Definitionsbereich: Wo ist f definiert? Polynome sind überall definiert: D = ℝ. Schritt 2 – Nullstellen: f(x) = 0 lösen, z.B. durch Ausklammern oder numerisch. Schritt 3 – Ableitungen bilden: f\'(x), f\'\'(x). Schritt 4 – Extremstellen: f\'(x) = 0 setzen und Vorzeichen von f\'\'(x) prüfen. f\'\'(x) > 0 → Minimum, f\'\'(x) < 0 → Maximum. Schritt 5 – Wendepunkte: f\'\'(x) = 0 und Vorzeichenwechsel von f\'\'(x) prüfen. Schritt 6 – Verhalten im Unendlichen: Wie verhält sich f für x → ±∞? Bei Polynomen dominiert der höchste Term. Schritt 7 – Skizze zeichnen. Eine vollständige Kurvendiskussion verbindet alle analytischen Werkzeuge und liefert ein vollständiges Bild der Funktion. Ingenieure nutzen sie z.B. um Brückenbögen optimal zu gestalten!' },
           { name:'Integralrechnung – Einführung', diff:3,
             explanation:'Wie viel Fläche liegt unter einer Kurve? Das ist die zentrale Frage der Integralrechnung! Der bestimmte Grenzen ∫ₐᵇ f(x) dx gibt den orientierten Flächeninhalt zwischen dem Graphen und der x-Achse an. Der Hauptsatz der Differential- und Integralrechnung verknüpft beide: Eine Stammfunktion F von f erfüllt F\'(x) = f(x). Dann gilt: ∫ₐᵇ f(x) dx = F(b) – F(a). Stammfunktionen findest du durch "umgekehrtes Ableiten": Stammfunktion von xⁿ ist xⁿ⁺¹/(n+1). Beispiel: ∫ 3x² dx = x³ + C (C = Integrationskonstante). Wichtig: Liegt der Graph unter der x-Achse, ist der Integralwert negativ – für den echten Flächeninhalt nimmst du den Betrag! Anwendungen: Flächeninhalte, Volumen von Rotationskörpern, Weg aus Geschwindigkeit, Arbeit aus Kraft, Gewinne in der Wirtschaft. Das Integral ist das zweite fundamentale Werkzeug der Analysis neben der Ableitung – zusammen revolutionierten sie die Mathematik im 17. Jahrhundert (Newton & Leibniz)!' },
+          { isChapter:true, name:'🎲 Stochastik & Vektoren' },
           { name:'Binomialverteilung', diff:3,
             explanation:'Du wirfst eine Münze 10-mal – wie wahrscheinlich ist genau 6-mal Kopf? Die Binomialverteilung beantwortet genau solche Fragen! Voraussetzungen: n gleichartige, unabhängige Versuche, jeder Versuch hat zwei mögliche Ergebnisse (Erfolg/Misserfolg) mit konstanter Erfolgswahrscheinlichkeit p. Formel: P(X = k) = C(n,k) × pᵏ × (1-p)ⁿ⁻ᵏ. Dabei ist C(n,k) = n!/(k!×(n-k)!) der Binomialkoeffizient – er zählt alle Möglichkeiten, genau k Erfolge in n Versuchen zu erzielen. Erwartungswert μ = n × p (im Durchschnitt so viele Erfolge). Standardabweichung σ = √(n × p × (1-p)). Beispiel: n=10, p=0,5 (Münze), k=6: P(X=6) = C(10,6) × 0,5⁶ × 0,5⁴ = 210 × 0,015625 ≈ 20,5%. Kumulierte Wahrscheinlichkeiten P(X ≤ k) erhältst du durch Addition. Anwendungen: Qualitätskontrolle, Medizinstudien, Meinungsumfragen, Genetik. Die Binomialverteilung ist überall dort, wo man Ja/Nein-Experimente wiederholt!' },
           { name:'Vektoren und lineare Abhängigkeit', diff:3,
@@ -2725,12 +2761,15 @@ const CONTENT = {
         color:'#2563EB',
         intro:'Willkommen in Klasse 12 Mathematik! Wir vertiefen die Integralrechnung, lernen Logarithmen und tauchen tief in die analytische Geometrie mit Ebenen ein – alles Abitur-relevantes Wissen!',
         topics:[
+          { isChapter:true, name:'📈 Analysis & Logarithmen' },
           { name:'Integralrechnung – Flächenberechnung', diff:3,
             explanation:'Wie groß ist die Fläche zwischen zwei Kurven? Das ist eine klassische Abituraufgabe! Für die Fläche zwischen Kurve und x-Achse gilt: Fläche = |∫ₐᵇ f(x) dx|. Liegt ein Teil des Graphen unter der x-Achse, ist das Integral dort negativ – du musst das Intervall aufteilen und Beträge addieren. Fläche zwischen zwei Kurven f(x) und g(x): A = ∫ₐᵇ |f(x) – g(x)| dx = ∫ₐᵇ (obere Kurve – untere Kurve) dx. Schnittstellen der Kurven (f(x) = g(x)) geben die Integralgrenzen a und b. Rotationsvolumen: Dreht man den Bereich um die x-Achse, erhält man ein Volumen: V = π × ∫ₐᵇ [f(x)]² dx. Beispiel: Ein parabolisches Tal hat den Umriss y = x². Um zu wissen, wie viel Beton man für ein Dammbauwerk braucht, berechnet man die Fläche unter der Parabel. Integrale kommen in Wirtschaft (Gewinn aus Grenzkosten), Physik (Weg aus Geschwindigkeit) und Technik ständig vor!' },
           { name:'Logarithmen und Logarithmusfunktionen', diff:3,
             explanation:'Auf welcher Stelle in einer Potenz steckt die Variable? Beim Logarithmus! log_b(x) beantwortet: "Zu welcher Potenz muss ich b erheben, um x zu bekommen?" Beispiel: log₂(8) = 3, weil 2³ = 8. Wichtige Logarithmen: lg (dekadischer Logarithmus, Basis 10), ln (natürlicher Logarithmus, Basis e ≈ 2,718). Logarithmusgesetze: log(a×b) = log(a) + log(b), log(a/b) = log(a) – log(b), log(aⁿ) = n×log(a), log_b(b) = 1, log(1) = 0. Exponentialgleichungen lösen: 2^x = 100 → x = log₂(100) = ln(100)/ln(2) ≈ 6,64. Die Logarithmusfunktion f(x) = ln(x) ist streng monoton steigend, geht durch (1,0), hat als Ableitung f\'(x) = 1/x. Anwendungen: pH-Wert in der Chemie (pH = –log[H⁺]), Dezibel in der Akustik, Erdbebenstärke (Richterskala), Halbwertszeit (radioaktiver Zerfall), Wachstumszeiten berechnen, Informationstheorie!' },
+          { isChapter:true, name:'🔢 Analytische Geometrie' },
           { name:'Analytische Geometrie: Ebenen', diff:3,
             explanation:'Wie beschreibt man eine Ebene im 3D-Raum mathematisch? Mit der Parameterdarstellung oder der Normalenform! Parameterdarstellung: E: x⃗ = a⃗ + s×u⃗ + t×v⃗ (Aufpunkt a⃗, zwei Richtungsvektoren u⃗, v⃗ in der Ebene). Normalenform: E: n⃗ · (x⃗ – a⃗) = 0, wobei n⃗ der Normalenvektor (senkrecht zur Ebene) ist. Koordinatenform: ax₁ + bx₂ + cx₃ = d. Normalenvektor n⃗ = (a, b, c) kann aus zwei Richtungsvektoren durch Kreuzprodukt gewonnen werden. Lagebeziehungen Gerade–Ebene: Liegt die Gerade in der Ebene (Schnittpunkt aller Punkte), schneidet sie die Ebene in einem Punkt, oder ist sie parallel (kein Schnittpunkt). Lagebeziehungen Ebene–Ebene: parallel, identisch oder schneidend (dann in einer Geraden). Abstand Punkt–Ebene: d = |n⃗·a⃗_P – d| / |n⃗|. Analytische Geometrie steckt in Computer-Grafik, CAD-Software, Robotersteuerung und Kollisionserkennung!' },
+          { isChapter:true, name:'🎲 Stochastik & Hypothesentests' },
           { name:'Hypothesentest (Stochastik)', diff:3,
             explanation:'Eine Medikamentenfirma behauptet, ihr Mittel hilft in 80% der Fälle. Du testest es an 20 Patienten – nur 12 wurden gesund. Widerspricht das der Behauptung? Das testest du mit einem Hypothesentest! Schritt 1: Nullhypothese H₀ aufstellen (z.B. p = 0,8) und Alternativhypothese H₁ (p < 0,8). Schritt 2: Signifikanzniveau α wählen (meist 5% oder 1%). Schritt 3: Ablehnungsbereich bestimmen – für welche Werte von k (Anzahl Erfolge) lehnst du H₀ ab? Der Ablehnungsbereich enthält Werte, bei denen P(X ≤ k) ≤ α. Schritt 4: Entscheidung – liegt k im Ablehnungsbereich? Dann lehne H₀ ab. Fehlerarten: Fehler 1. Art = H₀ fälschlicherweise ablehnen (Wahrscheinlichkeit = α). Fehler 2. Art = H₀ fälschlicherweise beibehalten. Im Alltag: Medikamententests, Qualitätskontrolle, Wahlprognosen, wissenschaftliche Studien. Der p-Wert gibt an, wie wahrscheinlich das beobachtete Ergebnis (oder Extremeres) ist, wenn H₀ gilt – je kleiner, desto mehr spricht gegen H₀!' },
         ],
@@ -2917,12 +2956,15 @@ const CONTENT = {
         color:'#2563EB',
         intro:'Klasse 13 – die Zielgerade zum Abitur! Wir verbinden alle Themen der Oberstufe: vollständige Kurvendiskussion, Integralanwendungen, Raumgeometrie und die Normalverteilung. Ich begleite dich durch jeden Schritt!',
         topics:[
+          { isChapter:true, name:'📈 Analysis & Kurvendiskussion' },
           { name:'Vollständige Kurvendiskussion (Abitur)', diff:3,
             explanation:'Die vollständige Kurvendiskussion ist eine der häufigsten Abituraufgaben in Mathematik – und mit System ist sie lösbar! Checkliste: 1. Definitionsbereich D bestimmen (Ausschluss: Division durch 0, Logarithmus negativer Zahlen). 2. Symmetrie prüfen: f(–x) = f(x) → achsensymmetrisch; f(–x) = –f(x) → punktsymmetrisch. 3. Nullstellen: f(x) = 0 (Ausklammern, pq-Formel, Substitution, Polynomdivision). 4. Ableitungen: f\'(x), f\'\'(x), ggf. f\'\'\'(x). 5. Extrempunkte: f\'(x) = 0 und Vorzeichen von f\'\'(x). 6. Wendepunkte: f\'\'(x) = 0 und Vorzeichenwechsel von f\'\'(x). 7. Asymptoten: horizontale (Verhalten x→±∞), vertikale (Poles), schiefe. 8. Monotoniebereiche aus f\'(x)-Vorzeichen. 9. Krümmungsverhalten aus f\'\'(x)-Vorzeichen. 10. Wertetabelle und sorgfältige Skizze. Tipp: Schreibe jeden Schritt auf, auch wenn er trivial erscheint – Punktabzug droht bei fehlenden Begründungen!' },
           { name:'Integral und Anwendungen im Abitur', diff:3,
             explanation:'Integrale im Abitur gehen über einfaches Ausrechnen hinaus – Anwendungen sind gefragt! Flächeninhalt zwischen Kurve und x-Achse: Null­stellen bestimmen, Integral über jedes Teilintervall separat berechnen, Beträge addieren. Fläche zwischen zwei Kurven: Schnittpunkte = Grenzen, ∫(obere – untere) dx. Mittelwert einer Funktion auf [a,b]: f_M = 1/(b–a) × ∫ₐᵇ f(x) dx. Stammfunktionen besonderer Funktionen: ∫sin(x) dx = –cos(x) + C, ∫cos(x) dx = sin(x) + C, ∫e^x dx = e^x + C, ∫(1/x) dx = ln|x| + C, ∫e^(ax) dx = (1/a)×e^(ax) + C. Partielle Integration: ∫u×v\' dx = u×v – ∫u\'×v dx. Substitution: Ersetze g(x) = u, dx umschreiben. Wirtschaft: Gesamtkosten = ∫Grenzkosten dx, Gewinnmaximierung. Physik: Weg = ∫Geschwindigkeit dt. Das Integral ist ein universelles Werkzeug – es löst Probleme in jeder Wissenschaft!' },
+          { isChapter:true, name:'🔢 Analytische Geometrie' },
           { name:'Analytische Geometrie – Abstände und Winkel', diff:3,
             explanation:'Im Abitur müssen Abstände und Winkel in 3D-Räumen berechnet werden – die Rechenwege sind klar, aber erfordern Präzision! Abstand Punkt–Punkt: |PQ⃗| = √((x₂–x₁)² + (y₂–y₁)² + (z₂–z₁)²). Abstand Punkt–Gerade: Lotfußpunkt L bestimmen (L liegt auf g, PL⃗ ⊥ r⃗), dann |PL⃗|. Abstand Punkt–Ebene: d = |n⃗·OA⃗ – d| / |n⃗| (bei Koordinatenform ax+by+cz=d). Winkel zwischen zwei Geraden: cos(α) = |r₁⃗·r₂⃗| / (|r₁⃗|×|r₂⃗|). Winkel zwischen Gerade und Ebene: sin(φ) = |r⃗·n⃗| / (|r⃗|×|n⃗|). Winkel zwischen zwei Ebenen: cos(α) = |n₁⃗·n₂⃗| / (|n₁⃗|×|n₂⃗|). Spiegelung: Punkt P an Ebene E spiegeln → Lotfußpunkt L berechnen, P\' = 2L – P. Diese Werkzeuge sind die Grundlage von CAD-Software, 3D-Druckern, Robotersteuerungen und Navigationssystemen!' },
+          { isChapter:true, name:'🎲 Stochastik & Normalverteilung' },
           { name:'Normalverteilung und Konfidenzintervalle', diff:3,
             explanation:'Die Normalverteilung ist das "Universel-Werkzeug" der Statistik – sie beschreibt Körpergrößen, Messfehler, IQ-Werte und unzählige Naturphänomene! Die Normalverteilung N(μ; σ²) hat die glockenförmige Dichte: Symmetrisch um den Mittelwert μ, Standardabweichung σ bestimmt die Breite. Faustregeln: ca. 68% aller Werte liegen in [μ–σ, μ+σ], ca. 95% in [μ–2σ, μ+2σ], ca. 99,7% in [μ–3σ, μ+3σ]. Mit dem Tabellenwerk oder GTR berechnest du P(X ≤ x) für standardisierte Z-Werte: Z = (X–μ)/σ. Konfidenzintervall: Ein Vertrauensbereich für einen unbekannten Parameter. Bei 95%-Konfidenz: μ liegt mit 95% Wahrscheinlichkeit in [x̄ – 1,96×σ/√n, x̄ + 1,96×σ/√n]. Die Binomialverteilung kann für große n durch die Normalverteilung approximiert werden, wenn np > 5 und n(1–p) > 5. Normalverteilung + Hypothesentest + Konfidenzintervalle sind die Grundlage jeder empirischen Forschung, von Medizinstudien bis zu Wahlumfragen!' },
         ],
@@ -3073,6 +3115,589 @@ const CONTENT = {
               { q:'Fraunhofer-Linien in der Sonne sind …', hint:'Sonne als Lichtquelle, Atmosphäre als Filter.', options:['Emissionslinien der Sonnenoberfläche','Absorptionslinien: Sonnenatmosphäre absorbiert bestimmte Wellenlängen','Reflexionen an Planeten','Fehler im Spektrometer'], correct:1, explanation:'Das kontinuierliche Sonnenspektrum zeigt dunkle Linien (Absorptionsspektrum) – Elemente der Sonnenatmosphäre (H, He, Ca, Fe …) absorbieren ihre charakteristischen Wellenlängen.' },
               { q:'Wozu dient der Resonator (Spiegel) im Laser?', hint:'Licht wird hin- und herreflektiert.', options:['Licht zu kühlen','Licht vielfach durch das aktive Medium zu schicken und zu verstärken','Licht zu polarisieren','Wärme abzuleiten'], correct:1, explanation:'Zwei Spiegel reflektieren das Licht, stimulieren weitere Emissionen und bauen so kohärentes Licht auf. Ein Spiegel ist teildurchlässig – der Laserstrahl tritt dort aus.' },
               { q:'Potenzialtopf-Modell: Warum sind Energieniveaus diskret?', hint:'Stehende Welle muss ins Intervall passen.', options:['Weil der Kern rund ist','Weil nur bestimmte stehende Wellen in den Kasten passen','Wegen Gravitation','Wegen elektromagnetischer Strahlung'], correct:1, explanation:'Im Potenzialkasten passen nur stehende Wellen, deren Länge in das Intervall passt: L = n·λ/2. Jede erlaubte Wellenlänge entspricht einem diskreten Energieniveau.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+
+  /* =========================================================  KLASSE 5 – REALSCHULE NRW  */
+  klasse5_rs: {
+    id:'klasse5_rs', num:5, label:'Klasse 5',
+    emoji:'🏫', color:['#6D28D9','#9333EA'], light:'#F5F3FF',
+    tagline:'Realschule NRW: Natürliche Zahlen, Brüche, Dezimalzahlen, Licht & Magnetismus',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Natürliche Zahlen, Brüche und Dezimalzahlen – Realschule NRW Klasse 5',
+        color:'#2563EB',
+        intro:'Willkommen in Mathe Klasse 5 (Realschule NRW)! Wir üben das Stellenwertsystem, Brüche und Dezimalzahlen – das Fundament für alle weiteren Schuljahre.',
+        topics:[
+          { isChapter:true, name:'📚 Natürliche Zahlen' },
+          { name:'Stellenwertsystem & Runden', diff:1, explanation:'Jede Stelle einer Zahl hat einen Wert: Einer, Zehner, Hunderter, Tausender usw. 7.435 = 7·1000 + 4·100 + 3·10 + 5·1. Runden: Schau die nächste Stelle an – ist sie ≥ 5, runde auf; < 5, runde ab. 7.435 auf Hunderter: Zehner ist 3 → abrunden → 7.400.' },
+          { name:'Grundrechenarten & schriftliches Rechnen', diff:1, explanation:'Schriftliche Addition/Subtraktion: von rechts nach links, Übertrag beachten. Schriftliche Multiplikation: Zeile für Zeile, Stellenverschiebung. Schriftliche Division: wie Schritte beim Teilen. Probe: Ergebnis zurückrechnen!' },
+          { isChapter:true, name:'🍕 Brüche – Einführung' },
+          { name:'Brüche verstehen und darstellen', diff:1, explanation:'Ein Bruch a/b teilt ein Ganzes in b gleiche Teile und nimmt a davon. 3/4 = 3 von 4 gleichen Teilen. Zähler a ist oben, Nenner b ist unten. Gleichwertige Brüche: 1/2 = 2/4 = 3/6. Brüche auf dem Zahlenstrahl: 1/2 liegt genau in der Mitte zwischen 0 und 1.' },
+          { name:'Brüche vergleichen & kürzen', diff:1, explanation:'Kürzen: Zähler und Nenner durch denselben Faktor dividieren. 6/8 ÷ 2 = 3/4. Vollständig kürzt du bis nichts mehr geht (ggT). Vergleichen: Gleiche Nenner → direkt vergleichen. Verschiedene Nenner → erst auf gleichen Nenner bringen (Hauptnenner = kgV).' },
+          { isChapter:true, name:'🔢 Dezimalzahlen' },
+          { name:'Dezimalzahlen lesen, schreiben & runden', diff:1, explanation:'3,75 = 3 Einer + 7 Zehntel + 5 Hundertstel. Das Komma trennt Ganze von Nachkommastellen. Runden auf eine Stelle: schau die zweite Nachkommastelle an. 3,75 → 3,8 (weil 5 ≥ 5). Dezimalzahlen addieren/subtrahieren: Komma untereinander ausrichten!' },
+        ],
+        exercises:[
+          { id:'e1', type:'Natürliche Zahlen', diff:1, title:'Stellenwertsystem & Runden',
+            desc:'Zahlen lesen, Stellen bestimmen und richtig runden.',
+            questions:[
+              { q:'Welchen Wert hat die Ziffer 4 in der Zahl 34.572?', hint:'Schau, an welcher Stelle die 4 steht – zähle von rechts: Einer, Zehner, Hunderter …', options:['4 Einer','4 Hunderter','4 Tausender','4 Zehntausender'], correct:2, explanation:'34.572: die 4 steht an der Tausender-Stelle → Wert = 4.000.' },
+              { q:'Runde 6.843 auf Hundert.', hint:'Schau die Zehner-Stelle an (4) – ist sie ≥ 5 oder < 5?', options:['6.900','6.800','6.850','7.000'], correct:1, explanation:'Zehner = 4 < 5 → abrunden → 6.800.' },
+              { q:'Welche Zahl hat die Dezimaldarstellung 5·10.000 + 3·1.000 + 7·10 + 2?', hint:'Setze jeden Wert ein und addiere – stelle für Stelle.', options:['53.072','50.372','53.720','50.372'], correct:0, explanation:'5·10.000 = 50.000, 3·1.000 = 3.000, 7·10 = 70, 2·1 = 2 → 53.072.' },
+              { q:'Zwischen welchen zwei runden Hundertern liegt 4.730?', hint:'Runde einmal ab und einmal auf.', options:['4.600 und 4.700','4.700 und 4.800','4.000 und 5.000','4.730 liegt genau auf einer Hunderterstelle'], correct:1, explanation:'4.730 liegt zwischen 4.700 und 4.800 (Zehner = 3 < 5 → rundet auf 4.700).' },
+              { q:'Wie schreibt man 2·1.000.000 + 5·100 + 3?', hint:'Fülle fehlende Stellen mit Nullen auf!', options:['2.050.003','2.000.503','2.500.030','2.000.530'], correct:1, explanation:'2·1.000.000 + 5·100 + 3 = 2.000.000 + 500 + 3 = 2.000.503.' },
+            ]
+          },
+          { id:'e2', type:'Brüche', diff:1, title:'Brüche verstehen & kürzen',
+            desc:'Brüche darstellen, vergleichen und kürzen.',
+            questions:[
+              { q:'Welcher Bruch ist gleich groß wie 2/4?', hint:'Kürze 2/4 – durch welche Zahl lassen sich Zähler und Nenner teilen?', options:['3/5','1/3','1/2','2/3'], correct:2, explanation:'2/4 ÷ 2 = 1/2. Beide durch 2 geteilt ergibt 1/2.' },
+              { q:'Welcher Bruch ist größer: 3/5 oder 2/3?', hint:'Bringe beide auf denselben Nenner (15) und vergleiche dann die Zähler.', options:['3/5','2/3','Beide gleich groß','Lässt sich nicht sagen'], correct:1, explanation:'3/5 = 9/15; 2/3 = 10/15. Da 10 > 9, ist 2/3 > 3/5.' },
+              { q:'Kürze den Bruch 12/18 vollständig.', hint:'Was ist der größte gemeinsame Teiler (ggT) von 12 und 18?', options:['6/9','4/6','2/3','3/4'], correct:2, explanation:'ggT(12,18) = 6. 12÷6 = 2, 18÷6 = 3 → 2/3.' },
+              { q:'3/4 eines Kuchens – wie viel Prozent ist das?', hint:'Berechne: 3÷4 und wandle in Prozent um (×100).', options:['34 %','75 %','43 %','80 %'], correct:1, explanation:'3/4 = 0,75 = 75 %.' },
+              { q:'Welcher Punkt auf dem Zahlenstrahl zeigt 5/4?', hint:'5/4 ist größer als 1 – schreibe es als gemischte Zahl.', options:['Zwischen 0 und 1','Genau bei 1','Zwischen 1 und 2','Genau bei 2'], correct:2, explanation:'5/4 = 1¼ – das liegt zwischen 1 und 2.' },
+            ]
+          },
+          { id:'e3', type:'Dezimalzahlen', diff:1, title:'Dezimalzahlen – Lesen, Vergleichen & Rechnen',
+            desc:'Dezimalzahlen verstehen und mit ihnen rechnen.',
+            questions:[
+              { q:'Welchen Wert hat die Ziffer 7 in 4,375?', hint:'Zähle die Stellen nach dem Komma von links: Zehntel, Hundertstel, Tausendstel …', options:['7 Zehntel','7 Hundertstel','7 Tausendstel','7 Ganze'], correct:1, explanation:'4,375 → nach dem Komma: 3 = Zehntel, 7 = Hundertstel → 7 Hundertstel.' },
+              { q:'Welche Zahl ist größer: 3,07 oder 3,7?', hint:'Vergleiche die Zehntel-Stelle – wer hat mehr Zehntel?', options:['3,07','3,7','Beide gleich','Lässt sich nicht sagen'], correct:1, explanation:'3,7 = 3,70 – die Zehntel-Stelle ist 7 > 0 → 3,7 > 3,07.' },
+              { q:'Runde 5,386 auf eine Dezimalstelle.', hint:'Schau die zweite Dezimalstelle an (8) – ist sie ≥ 5?', options:['5,3','5,4','5,39','5,00'], correct:1, explanation:'Zweite Nachkommastelle = 8 ≥ 5 → aufrunden → 5,4.' },
+              { q:'2,4 + 1,75 = ?', hint:'Schreibe die Kommas untereinander: 2,40 + 1,75.', options:['3,15','4,15','3,79','4,19'], correct:1, explanation:'2,40 + 1,75 = 4,15.' },
+              { q:'3,6 × 10 = ?', hint:'Beim Multiplizieren mit 10 verschiebe das Komma um eine Stelle nach rechts.', options:['0,36','360','36','3,60'], correct:2, explanation:'3,6 × 10 = 36 (Komma eine Stelle nach rechts).' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚛️',
+        desc:'Licht & Schatten, Magnetismus, einfacher Stromkreis (Realschule NRW Klasse 5)',
+        color:'#7C3AED',
+        intro:'Physik Klasse 5 – wir entdecken die Welt der Naturwissenschaften! Licht, Schatten, Magnete und der erste Stromkreis.',
+        topics:[
+          { isChapter:true, name:'💡 Licht & Schatten' },
+          { name:'Lichtquellen, Lichtausbreitung & Schatten', diff:1, explanation:'Lichtquellen senden Licht aus (Sonne, Glühlampe, Kerze). Licht breitet sich geradlinig aus. Trifft es auf ein undurchsichtiges Objekt, entsteht ein Schatten. Kernschatten: kein Licht. Halbschatten: nur Teillicht.' },
+          { isChapter:true, name:'🧲 Magnetismus' },
+          { name:'Magnete & magnetische Felder', diff:1, explanation:'Magnete haben einen Nord- und einen Südpol. Gleiche Pole stoßen sich ab, ungleiche ziehen sich an. Magnetische Feldlinien verlaufen vom Nordpol zum Südpol. Eisen, Nickel und Kobalt sind magnetisch. Ein Kompass zeigt zum Erdmagnetpol (geografischer Südpol = magnetischer Nordpol).' },
+          { isChapter:true, name:'⚡ Einfacher Stromkreis' },
+          { name:'Stromkreis & Schaltzeichen', diff:1, explanation:'Ein Stromkreis braucht: Energiequelle (Batterie), Leiter (Kabel), Verbraucher (Lampe) – und muss geschlossen sein. Unterbricht man den Kreis, erlischt die Lampe. Schalter unterbrechen den Stromkreis. Schaltzeichen: Batterie =⊣⊢, Lampe = ⊗, Schalter = / (offen) oder — (geschlossen).' },
+        ],
+        exercises:[
+          { id:'e1', type:'Licht', diff:1, title:'Licht & Schatten',
+            desc:'Lichtquellen, Ausbreitung und Schattenbildung.',
+            questions:[
+              { q:'Was ist eine primäre Lichtquelle?', hint:'Unterscheide: Was leuchtet selbst – und was wird nur angestrahlt?', options:['Der Mond','Ein Spiegel','Die Sonne','Ein weißes Blatt Papier'], correct:2, explanation:'Primäre Lichtquellen erzeugen Licht selbst (Sonne, Kerze, Lampe). Mond und Spiegel reflektieren nur fremdes Licht.' },
+              { q:'Warum breitet sich Licht geradlinig aus?', hint:'Was sieht man, wenn man durch eine Lücke schaut?', options:['Weil Licht schwer ist','Weil Photonen keine Masse haben und nichts sie ablenkt (im Vakuum)','Weil Luft warm ist','Weil Schatten rund sind'], correct:1, explanation:'Im homogenen Medium (Vakuum, Luft) bewegen sich Lichtteilchen (Photonen) geradlinig – das erklärt Schatten und Strahlen.' },
+              { q:'Wann entsteht ein Halbschatten?', hint:'Denke an eine große Lichtquelle – kann sie von allen Seiten leuchten?', options:['Wenn kein Licht da ist','Wenn eine Punktlichtquelle leuchtet','Wenn eine ausgedehnte Lichtquelle teilweise verdeckt wird','Wenn der Schatten sehr groß ist'], correct:2, explanation:'Bei ausgedehnten Lichtquellen (z. B. Sonne) gibt es Bereiche, die teilweise Licht erhalten → Halbschatten. Der Kernschatten erhält kein Licht.' },
+              { q:'Ein Baum steht im Sonnenlicht. Wo ist der längste Schatten?', hint:'Wann steht die Sonne am niedrigsten über dem Horizont?', options:['Am Mittag','Am frühen Morgen oder Abend','Wenn es bewölkt ist','Im Sommer'], correct:1, explanation:'Tiefer Sonnenstand (morgens/abends) → langer Schatten. Hoher Sonnenstand (Mittag) → kurzer Schatten.' },
+            ]
+          },
+          { id:'e2', type:'Magnetismus', diff:1, title:'Magnete & Magnetismus',
+            desc:'Poleigenschaften, magnetische Stoffe und Kompass.',
+            questions:[
+              { q:'Welches Material wird von einem Magneten angezogen?', hint:'Denke an das Periodensystem – welche Metalle sind magnetisch?', options:['Kupfer','Aluminium','Eisen','Gold'], correct:2, explanation:'Ferromagnetische Stoffe: Eisen (Fe), Nickel (Ni), Kobalt (Co). Kupfer, Aluminium und Gold sind nicht magnetisch.' },
+              { q:'Was passiert, wenn man zwei Nordpole zusammenbringt?', hint:'Gleiche Pole … was tun sie?', options:['Sie ziehen sich an','Sie stoßen sich ab','Nichts passiert','Sie werden zu einem Magneten'], correct:1, explanation:'Gleiche Pole stoßen sich ab. Ungleiche Pole (Nord–Süd) ziehen sich an.' },
+              { q:'Warum zeigt eine Kompassnadel nach Norden?', hint:'Die Erde selbst hat ein Magnetfeld – was hat die Erde nahe dem geografischen Nordpol?', options:['Weil Norden kälter ist','Weil am geografischen Nordpol der magnetische Südpol liegt (zieht den Nordpol an)','Weil die Sonne im Norden steht','Wegen der Erdrotation'], correct:1, explanation:'Der magnetische Südpol der Erde liegt nahe dem geografischen Nordpol. Der Nordpol der Kompassnadel wird vom magnetischen Südpol der Erde angezogen → zeigt nach Norden.' },
+              { q:'Man zerschneidet einen Stabmagneten in der Mitte. Was entsteht?', hint:'Kann ein Magnet nur einen Pol haben?', options:['Ein Magnet nur mit Nordpol und einer ohne Pol','Zwei Magnete, jeder mit Nord- und Südpol','Zwei Magnete ohne Pole','Das Material wird unmagnetisch'], correct:1, explanation:'Jeder Teilmagnet hat wieder Nord- und Südpol – Magnete sind immer Dipole. Einzelne magnetische Monopole existieren nicht.' },
+            ]
+          },
+          { id:'e3', type:'Stromkreis', diff:1, title:'Einfacher Stromkreis',
+            desc:'Bauteile, Schaltzeichen und Funktionsprinzip.',
+            questions:[
+              { q:'Was braucht ein einfacher Stromkreis MINDESTENS?', hint:'Ohne welche drei Dinge fließt kein Strom?', options:['Nur eine Batterie','Batterie, Kabel und Verbraucher (geschlossener Kreis)','Nur Kabel und Lampe','Batterie und Schalter'], correct:1, explanation:'Ein Stromkreis braucht: Energiequelle (Batterie), Leiter (Kabel) und Verbraucher (Lampe) – und muss geschlossen sein.' },
+              { q:'Was passiert, wenn man den Schalter öffnet?', hint:'Öffnen = Stromkreis ist unterbrochen oder geschlossen?', options:['Die Lampe leuchtet heller','Die Lampe erlischt','Nichts ändert sich','Die Batterie lädt sich auf'], correct:1, explanation:'Offener Schalter = unterbrochener Stromkreis → kein Strom → Lampe erlischt.' },
+              { q:'In welche Richtung fließt der technische Strom (Konvention)?', hint:'Dies ist eine Festlegung (Konvention) – Physiker haben sich darauf geeinigt.', options:['Von Minus nach Plus','Von Plus nach Minus (+ → −)','Er fließt gar nicht','In beide Richtungen gleichzeitig'], correct:1, explanation:'Technischer Strom fließt vom Plus-Pol durch den äußeren Stromkreis zum Minus-Pol (Konvention). Elektronen fließen tatsächlich entgegengesetzt.' },
+              { q:'Was ist ein elektrischer Leiter?', hint:'Manche Stoffe lassen Elektronen durch – andere nicht. Welche?', options:['Stoff, der Wärme leitet','Stoff, durch den Strom leicht fließen kann (Metalle)','Stoff, der isoliert','Stoff, der Licht durchlässt'], correct:1, explanation:'Elektrische Leiter (Metalle: Kupfer, Silber, Gold) haben freie Elektronen, die Strom leiten. Nichtleiter (Gummi, Kunststoff, Holz) isolieren.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+  /* =========================================================  KLASSE 6 – REALSCHULE NRW  */
+  klasse6_rs: {
+    id:'klasse6_rs', num:6, label:'Klasse 6',
+    emoji:'📐', color:['#1D4ED8','#3B82F6'], light:'#EFF6FF',
+    tagline:'Realschule NRW: Brüche & Dezimalzahlen vertiefen, Prozentrechnung, Geometrie, Optik & Elektrizität',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Brüche rechnen, Dezimalzahlen, Prozentrechnung & Geometrie (Realschule NRW Klasse 6)',
+        color:'#2563EB',
+        intro:'Klasse 6 Realschule NRW – wir rechnen mit Brüchen und Dezimalzahlen, entdecken Prozentrechnung und Geometrie!',
+        topics:[
+          { isChapter:true, name:'🍕 Brüche: Rechnen' },
+          { name:'Brüche addieren & subtrahieren', diff:1, explanation:'Gleiche Nenner: Zähler addieren/subtrahieren. Verschiedene Nenner: Hauptnenner (kgV) berechnen, Brüche erweitern, dann rechnen. 1/3 + 1/4: Hauptnenner = 12 → 4/12 + 3/12 = 7/12.' },
+          { name:'Brüche multiplizieren & dividieren', diff:1, explanation:'Multiplizieren: Zähler × Zähler, Nenner × Nenner. 2/3 × 3/4 = 6/12 = 1/2. Dividieren: mit Kehrwert multiplizieren. 2/3 ÷ 4/5 = 2/3 × 5/4 = 10/12 = 5/6.' },
+          { isChapter:true, name:'💯 Prozentrechnung' },
+          { name:'Prozentrechnung – Grundaufgaben', diff:2, explanation:'W = G · p/100 (Prozentwert). G = W/(p/100) (Grundwert). p = W/G · 100 (Prozentsatz). Merke: W=G·p%, G=W/p%, p%=W/G. Beispiel: 20% von 80 = 80·0,2 = 16.' },
+          { isChapter:true, name:'📐 Geometrie: Winkel & Dreiecke' },
+          { name:'Winkel messen & berechnen', diff:1, explanation:'Winkelarten: spitz (<90°), rechts (=90°), stumpf (90°–180°), gestreckt (=180°). Nebenwinkels = 180°, Scheitelwinkel = gleich groß. Stufenwinkel an Parallelen = gleich groß, Wechselwinkel = gleich groß.' },
+          { name:'Dreiecke: Arten & Winkelsumme 180°', diff:1, explanation:'Winkelsumme in jedem Dreieck: α + β + γ = 180°. Gleichseitig: alle Seiten gleich, alle Winkel 60°. Gleichschenklig: zwei Seiten gleich, zwei Basiswinkel gleich. Rechtwinklig: ein Winkel = 90°.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Bruchrechnung', diff:1, title:'Brüche addieren, subtrahieren, multiplizieren, dividieren',
+            desc:'Alle vier Grundrechenarten mit Brüchen.',
+            questions:[
+              { q:'2/5 + 1/3 = ?', hint:'Bestimme zuerst den Hauptnenner von 5 und 3, dann erweitere beide Brüche.', options:['3/8','11/15','7/15','3/15'], correct:1, explanation:'Hauptnenner = 15. 2/5 = 6/15, 1/3 = 5/15. 6/15 + 5/15 = 11/15.' },
+              { q:'3/4 − 1/6 = ?', hint:'Hauptnenner von 4 und 6 ist … ? Dann beide Brüche erweitern.', options:['2/10','7/12','5/12','1/3'], correct:1, explanation:'Hauptnenner = 12. 3/4 = 9/12, 1/6 = 2/12. 9/12 − 2/12 = 7/12.' },
+              { q:'2/3 × 3/4 = ?', hint:'Zähler mal Zähler, Nenner mal Nenner – dann kürzen.', options:['5/7','1/2','6/12','2/7'], correct:1, explanation:'2/3 × 3/4 = 6/12 = 1/2.' },
+              { q:'5/6 ÷ 5/3 = ?', hint:'Division = Multiplikation mit dem Kehrwert: Drehe den zweiten Bruch um!', options:['25/18','1/2','2','3/5'], correct:1, explanation:'5/6 ÷ 5/3 = 5/6 × 3/5 = 15/30 = 1/2.' },
+              { q:'Ein Kuchen wird zu 3/8 aufgegessen. Wie viel bleibt?', hint:'Ganze = 1 = 8/8. Ziehe ab, was weg ist.', options:['3/8','5/8','1/4','1/2'], correct:1, explanation:'8/8 − 3/8 = 5/8 des Kuchens sind noch da.' },
+            ]
+          },
+          { id:'e2', type:'Prozentrechnung', diff:2, title:'Prozentrechnung – Grundaufgaben',
+            desc:'Prozentwert, Grundwert und Prozentsatz berechnen.',
+            questions:[
+              { q:'Wie viel sind 25 % von 200 €?', hint:'Formel: W = G · p/100. Setze G=200 und p=25 ein.', options:['25 €','50 €','40 €','75 €'], correct:1, explanation:'W = 200 · 25/100 = 200 · 0,25 = 50 €.' },
+              { q:'Ein T-Shirt kostet 40 €, ist aber um 15 % reduziert. Wie viel zahlt man?', hint:'Berechne den Rabatt (15% von 40) und ziehe ihn ab.', options:['25 €','34 €','36 €','38 €'], correct:1, explanation:'Rabatt = 40 · 0,15 = 6 €. Preis = 40 − 6 = 34 €.' },
+              { q:'Von 80 Schülern sind 20 krank. Wie viel Prozent fehlen?', hint:'Formel: p = W/G · 100. W=20, G=80.', options:['20 %','25 %','40 %','15 %'], correct:1, explanation:'p = 20/80 · 100 = 25 %.' },
+              { q:'Nach 30 % Aufschlag kostet etwas 130 €. Was war der Originalpreis?', hint:'Formel: G = W/(p/100). Aber Vorsicht: W ist der neue Preis (130% des Originals).', options:['91 €','100 €','110 €','95 €'], correct:1, explanation:'130 € = 130 % des Originals → G = 130/1,30 = 100 €.' },
+              { q:'12 von 60 Aufgaben wurden falsch gelöst. Wie viel % ist das?', hint:'p = Falsche / Gesamt × 100', options:['12 %','15 %','20 %','25 %'], correct:2, explanation:'p = 12/60 · 100 = 20 %.' },
+            ]
+          },
+          { id:'e3', type:'Geometrie', diff:1, title:'Winkel & Dreiecke',
+            desc:'Winkelbeziehungen und Winkelsumme im Dreieck.',
+            questions:[
+              { q:'Ein Dreieck hat Winkel 60° und 80°. Wie groß ist der dritte Winkel?', hint:'Winkelsumme im Dreieck = 180°. Ziehe die bekannten Winkel ab.', options:['120°','40°','60°','50°'], correct:1, explanation:'180° − 60° − 80° = 40°.' },
+              { q:'Welche Aussage über Scheitelwinkel ist korrekt?', hint:'Scheitelwinkel entstehen, wenn sich zwei Geraden kreuzen – sie liegen sich gegenüber.', options:['Scheitelwinkel sind Supplementwinkel (ergänzen auf 180°)','Scheitelwinkel sind gleich groß','Scheitelwinkel sind immer 90°','Scheitelwinkel existieren nicht'], correct:1, explanation:'Scheitelwinkel (gegenüberliegende Winkel beim Geradenschnitt) sind gleich groß.' },
+              { q:'Zwei parallele Geraden werden von einer Querlinie geschnitten. Wie heißen die gleichgroßen Winkel auf derselben Seite?', hint:'Es gibt Stufen- und Wechselwinkel – welche liegen auf derselben Seite der Querlinie?', options:['Wechselwinkel','Stufenwinkel','Scheitelwinkel','Nebenwinkel'], correct:1, explanation:'Stufenwinkel (F-Winkel) liegen auf derselben Seite der Querlinie und sind gleich groß.' },
+              { q:'Ein Dreieck hat zwei gleiche Basiswinkel von je 55°. Welche Art von Dreieck ist es?', hint:'Zwei gleiche Seiten → zwei gleiche Winkel gegenüber. Wie nennt man so ein Dreieck?', options:['Gleichseitiges Dreieck','Rechtwinkliges Dreieck','Gleichschenkliges Dreieck','Stumpfwinkliges Dreieck'], correct:2, explanation:'Gleichschenkliges Dreieck: zwei gleiche Seiten, zwei gleiche Basiswinkel. 3. Winkel = 180° − 55° − 55° = 70°.' },
+              { q:'Zwei Geraden stehen senkrecht aufeinander. Wie groß ist der Winkel dazwischen?', hint:'Senkrecht bedeutet …?', options:['45°','180°','90°','60°'], correct:2, explanation:'Senkrecht = rechter Winkel = 90°.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚛️',
+        desc:'Optik: Reflexion & Spiegel, Stromkreis & Elektromagnet (Realschule NRW Klasse 6)',
+        color:'#7C3AED',
+        intro:'Klasse 6 Physik – wir erforschen Lichtreflexion und bauen erste elektrische Schaltungen!',
+        topics:[
+          { isChapter:true, name:'🔦 Optik: Reflexion' },
+          { name:'Reflexionsgesetz & ebene Spiegel', diff:1, explanation:'Einfallswinkel = Reflexionswinkel (beide gemessen zur Normalen). Am ebenen Spiegel entsteht ein virtuelles, aufrechtes, seitenverkehrtes Bild, das gleich weit hinter dem Spiegel liegt wie das Objekt davor.' },
+          { isChapter:true, name:'🔌 Stromkreis & Elektromagnetismus' },
+          { name:'Reihenschaltung & Parallelschaltung', diff:1, explanation:'Reihenschaltung: alle Bauteile hintereinander, gleicher Strom, Spannungen addieren sich. Fällt ein Bauteil aus → alles aus. Parallelschaltung: Bauteile nebeneinander, gleiche Spannung, Ströme addieren sich. Fällt ein Bauteil aus → Rest funktioniert weiter.' },
+          { name:'Elektromagnet', diff:1, explanation:'Eine stromdurchflossene Spule (Drahtwicklung) erzeugt ein Magnetfeld. Mit Eisenkern → viel stärkeres Magnetfeld → Elektromagnet. Je mehr Windungen und je mehr Strom, desto stärker. Vorteil: abschaltbar (kein Strom → kein Magnetfeld). Anwendungen: Türklingel, Lautsprecher, Kran.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Optik', diff:1, title:'Reflexion & Spiegel',
+            desc:'Reflexionsgesetz und Bildentstehung am ebenen Spiegel.',
+            questions:[
+              { q:'Ein Lichtstrahl trifft mit 35° zur Normalen auf einen Spiegel. Wie groß ist der Reflexionswinkel?', hint:'Erinnerung: Einfallswinkel und Reflexionswinkel werden beide zur … gemessen.', options:['55°','70°','35°','90°'], correct:2, explanation:'Reflexionsgesetz: Einfallswinkel = Reflexionswinkel = 35°.' },
+              { q:'Ein Mensch steht 2 m vor einem ebenen Spiegel. Wie weit ist sein Spiegelbild vom Spiegel entfernt?', hint:'Das Bild liegt genauso weit hinter dem Spiegel wie das Objekt davor.', options:['1 m','4 m','2 m','0 m'], correct:2, explanation:'Das virtuelle Bild liegt 2 m hinter dem Spiegel (gleiche Entfernung wie das Objekt davor).' },
+              { q:'Welche Eigenschaften hat das Bild in einem ebenen Spiegel?', hint:'Ist das Bild vergrößert? Richtig herum? Wo genau?', options:['Vergrößert, aufrecht, reell','Kleiner, umgekehrt, reell','Gleich groß, aufrecht, virtuell, seitenverkehrt','Gleich groß, umgekehrt, virtuell'], correct:2, explanation:'Ebener Spiegel: Bild gleich groß, aufrecht, virtuell (hinter dem Spiegel) und seitenverkehrt.' },
+              { q:'Warum erscheint die linke Hand im Spiegel als rechte Hand?', hint:'Spiegel tauscht vorne und hinten – das führt zur …', options:['Links-Rechts-Vertauschung (Seitenverkehrung)','Oben-unten-Vertauschung','Das Bild ist nicht seitenverkehrt','Das liegt an der Brechung'], correct:0, explanation:'Der Spiegel kehrt die Tiefenachse um (vorne↔hinten) – wahrgenommen wirkt das wie Seitenverkehrung (links↔rechts).' },
+            ]
+          },
+          { id:'e2', type:'Stromkreis', diff:1, title:'Schaltungen & Elektromagnet',
+            desc:'Reihen- und Parallelschaltung, Elektromagnet verstehen.',
+            questions:[
+              { q:'Zwei Lampen in Reihenschaltung: eine Lampe brennt durch. Was passiert?', hint:'Bei der Reihenschaltung fließt Strom durch alle Bauteile hintereinander. Was passiert, wenn ein Bauteil ausfällt?', options:['Nur die zweite Lampe leuchtet weiter','Beide Lampen erlöschen','Nur die kaputte Lampe erlischt','Die zweite Lampe leuchtet heller'], correct:1, explanation:'Reihenschaltung = ein Stromkreis. Ist er an einer Stelle unterbrochen, fließt nirgends mehr Strom → beide Lampen aus.' },
+              { q:'Zwei Lampen in Parallelschaltung: eine Lampe brennt durch. Was passiert mit der anderen?', hint:'Jede Lampe hat in der Parallelschaltung ihren eigenen Zweig.', options:['Beide erlöschen','Die andere leuchtet weiter','Die andere leuchtet heller','Die andere flackert'], correct:1, explanation:'Parallelschaltung: Jeder Zweig ist unabhängig. Eine Lampe kaputt → die andere leuchtet weiter.' },
+              { q:'Was macht einen Elektromagneten stärker?', hint:'Denke an Windungsanzahl und Stromstärke – was passiert, wenn du beides erhöhst?', options:['Mehr Strom ODER mehr Windungen (oder beides)','Weniger Strom','Kürzeres Kabel','Keine Eisenkern einbauen'], correct:0, explanation:'Stärkerer Elektromagnet: mehr Windungen, mehr Strom, Eisenkern einbauen.' },
+              { q:'Worin unterscheidet sich ein Elektromagnet von einem Permanentmagneten?', hint:'Wann ist der Elektromagnet „aktiv"?', options:['Elektromagnet ist immer stärker','Elektromagnet kann durch Strom an- und abgeschaltet werden','Permanentmagnet kann auch abgeschaltet werden','Beide sind identisch'], correct:1, explanation:'Elektromagnet: nur bei Stromfluss aktiv (abschaltbar). Permanentmagnet: immer magnetisch.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+  /* =========================================================  KLASSE 7 – REALSCHULE NRW  */
+  klasse7_rs: {
+    id:'klasse7_rs', num:7, label:'Klasse 7',
+    emoji:'📊', color:['#0F766E','#14B8A6'], light:'#F0FDFA',
+    tagline:'Realschule NRW: Terme & Gleichungen, Proportionalität, Zinsrechnung, Bewegung & Kräfte',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Terme, Gleichungen, Proportionalität und Zinsrechnung (Realschule NRW Klasse 7)',
+        color:'#2563EB',
+        intro:'Klasse 7 Mathe – Variablen, Gleichungen und Prozentrechnung vertiefen! Jetzt denken wir algebraisch.',
+        topics:[
+          { isChapter:true, name:'🔤 Terme & Gleichungen' },
+          { name:'Terme aufstellen und vereinfachen', diff:2, explanation:'Ein Term ist ein mathematischer Ausdruck mit Zahlen und Variablen. 3x + 2x = 5x (gleichartige Terme zusammenfassen). 3(x + 4) = 3x + 12 (Distributivgesetz). Terme dürfen keine Gleichheitszeichen haben.' },
+          { name:'Lineare Gleichungen lösen', diff:2, explanation:'Ziel: Variable allein auf einer Seite. Äquivalenzumformungen: beidseitig addieren, subtrahieren, multiplizieren oder dividieren. 2x + 5 = 13 → 2x = 8 → x = 4. Probe: 2·4+5 = 13 ✓' },
+          { isChapter:true, name:'📈 Proportionalität' },
+          { name:'Direkte & indirekte Proportionalität', diff:2, explanation:'Direkt proportional: y = k·x, Quotient y/x ist konstant. Beispiel: Preis pro kg. Indirekt proportional: y·x = k, Produkt ist konstant. Beispiel: Arbeiter und Zeit. Dreieck-Methode (Dreisatz) hilft beim Berechnen.' },
+          { isChapter:true, name:'💰 Zinsrechnung' },
+          { name:'Zinsrechnung: Z = K·p·t/(100·360)', diff:2, explanation:'Zinsen Z = Kapital K × Prozentsatz p × Zeit t / (100 × 360). K = Kapital (Grundwert), p = Zinssatz in %, t = Zeit in Tagen. Einfache Zinsen berechnen für beliebige Zeiträume. Jahresabschluss: Z = K · p/100.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Terme & Gleichungen', diff:2, title:'Terme vereinfachen & Gleichungen lösen',
+            desc:'Terme aufstellen, vereinfachen und lineare Gleichungen lösen.',
+            questions:[
+              { q:'Vereinfache: 4x + 3 − 2x + 7', hint:'Fasse gleichartige Terme zusammen: x-Terme und Zahlen getrennt.', options:['2x + 10','6x + 10','2x + 4','4x + 10'], correct:0, explanation:'4x − 2x = 2x und 3 + 7 = 10 → 2x + 10.' },
+              { q:'Löse: 3x − 4 = 11', hint:'Bringe zuerst die Zahl auf die rechte Seite, dann dividiere durch 3.', options:['x = 3','x = 5','x = 7','x = 4'], correct:1, explanation:'3x = 11 + 4 = 15 → x = 15/3 = 5. Probe: 3·5−4 = 11 ✓' },
+              { q:'Multipliziere aus: 2(3x − 5)', hint:'Distributivgesetz: jeder Term in der Klammer wird mit 2 multipliziert.', options:['6x − 5','6x − 10','5x − 10','2x − 10'], correct:1, explanation:'2·3x − 2·5 = 6x − 10.' },
+              { q:'Löse: 5x + 2 = 3x + 10', hint:'Bringe alle x-Terme auf eine Seite und alle Zahlen auf die andere.', options:['x = 4','x = 3','x = 6','x = 2'], correct:0, explanation:'5x − 3x = 10 − 2 → 2x = 8 → x = 4. Probe: 5·4+2 = 22 = 3·4+10 ✓' },
+              { q:'Welcher Term beschreibt den Preis p für n Hefte zu 1,50 € pro Heft?', hint:'Preis = Anzahl × Einzelpreis.', options:['p = n + 1,50','p = 1,50/n','p = 1,50·n','p = n − 1,50'], correct:2, explanation:'p = 1,50 · n (Preis pro Heft × Anzahl).' },
+            ]
+          },
+          { id:'e2', type:'Proportionalität', diff:2, title:'Direkte & indirekte Proportionalität',
+            desc:'Proportionale Zuordnungen erkennen und Dreisatz anwenden.',
+            questions:[
+              { q:'5 kg Äpfel kosten 8 €. Was kosten 3 kg?', hint:'Direkte Proportionalität: berechne den Preis pro 1 kg (Einheitspreis), dann × 3.', options:['4,80 €','5,60 €','6,00 €','3,00 €'], correct:0, explanation:'1 kg = 8/5 = 1,60 €. 3 kg = 3 × 1,60 = 4,80 €.' },
+              { q:'4 Arbeiter bauen eine Mauer in 6 Tagen. Wie lange brauchen 3 Arbeiter?', hint:'Mehr Arbeiter → weniger Tage = indirekte Proportionalität. Produkt Arbeiter × Tage ist konstant.', options:['4,5 Tage','8 Tage','9 Tage','12 Tage'], correct:1, explanation:'4 × 6 = 24 Arbeitertage. 24 / 3 = 8 Tage.' },
+              { q:'Woran erkennt man direkte Proportionalität in einer Tabelle?', hint:'Schaue, was passiert wenn x verdoppelt wird – was passiert mit y?', options:['x + y = konstant','x · y = konstant','y/x = konstant (Quotient)','y − x = konstant'], correct:2, explanation:'Direkte Proportionalität: y/x = k (konstanter Quotient). Wenn x doppelt so groß → y auch doppelt so groß.' },
+              { q:'Ein Auto fährt mit 80 km/h 3 Stunden. Wie weit fährt es?', hint:'Strecke = Geschwindigkeit × Zeit. Das ist direkte Proportionalität.', options:['240 km','260 km','280 km','200 km'], correct:0, explanation:'s = v · t = 80 · 3 = 240 km.' },
+            ]
+          },
+          { id:'e3', type:'Zinsrechnung', diff:2, title:'Zinsrechnung',
+            desc:'Zinsen berechnen mit der Formel Z = K·p·t/(100·360).',
+            questions:[
+              { q:'Was sind Zinsen?', hint:'Wer zahlt Zinsen – der Sparer oder die Bank? In welcher Richtung fließt Geld?', options:['Der Preis für ein Produkt','Die Vergütung für geliehenes Kapital','Der Gewinn beim Aktienhandel','Die Steuern auf Einkommen'], correct:1, explanation:'Zinsen = Vergütung für verliehenes/angelegtes Kapital. Spart man Geld → Bank zahlt Zinsen. Leiht man sich Geld → man zahlt Zinsen.' },
+              { q:'Zinsen berechnen: K = 2.000 €, p = 3 %, t = 360 Tage. Z = ?', hint:'Formel: Z = K · p · t / (100 · 360). Setze ein und rechne.', options:['60 €','6 €','600 €','30 €'], correct:0, explanation:'Z = 2.000 · 3 · 360 / (100 · 360) = 2.000 · 3/100 = 60 €.' },
+              { q:'Zinsen für 6 Monate (180 Tage): K = 1.000 €, p = 4 %. Z = ?', hint:'t = 180 Tage einsetzen: Z = 1000 · 4 · 180 / (100 · 360).', options:['40 €','20 €','80 €','10 €'], correct:1, explanation:'Z = 1.000 · 4 · 180 / (100 · 360) = 720.000/36.000 = 20 €.' },
+              { q:'Wie nennt man K + Z zusammen?', hint:'Du hast dein Kapital angelegt und bekommst es plus die Zinsen zurück.', options:['Gewinn','Endkapital (Schlusskapital)','Grundwert','Zinssatz'], correct:1, explanation:'Endkapital = Anfangskapital + Zinsen: K_end = K + Z.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚛️',
+        desc:'Bewegung (v=s/t), Kraft & Newton, Hebelgesetz (Realschule NRW Klasse 7)',
+        color:'#7C3AED',
+        intro:'Klasse 7 Physik – Mechanik! Wir berechnen Geschwindigkeiten, Kräfte und verstehen den Hebel.',
+        topics:[
+          { isChapter:true, name:'🚀 Bewegung & Geschwindigkeit' },
+          { name:'Geschwindigkeit v = s/t', diff:2, explanation:'Geschwindigkeit v = Strecke s / Zeit t. Einheit: m/s oder km/h. Umrechnen: 1 m/s = 3,6 km/h. Gleichförmige Bewegung: v = konstant, s = v · t. s-t-Diagramm: Steigung = Geschwindigkeit.' },
+          { name:'Beschleunigung a = Δv/Δt', diff:2, explanation:'Beschleunigung a = Geschwindigkeitsänderung Δv / Zeit Δt. Einheit: m/s². Positiv = schneller werden, negativ = bremsen (Verzögerung). Aus dem Stand (v₀=0): v = a · t, s = ½·a·t².' },
+          { isChapter:true, name:'⚖️ Kraft & Newton' },
+          { name:'Kraft F = m · a und Einheit Newton', diff:2, explanation:'Kraft F = Masse m × Beschleunigung a. Einheit: 1 Newton (N) = 1 kg·m/s². Gewichtskraft: G = m · g (g ≈ 10 m/s² auf der Erde). Kräfte sind Vektoren (haben Betrag und Richtung). Reibung, Federkraft, Normalkraft sind verschiedene Kraftarten.' },
+          { isChapter:true, name:'🔧 Hebelgesetz' },
+          { name:'Hebelgesetz: F₁·l₁ = F₂·l₂', diff:2, explanation:'Am Hebel gilt: Kraft × Kraftarm = Last × Lastarm. F₁·l₁ = F₂·l₂. Einseitiger Hebel: Kraftarm und Lastarm auf derselben Seite. Zweiseitiger Hebel: auf gegenüberliegenden Seiten. Anwendungen: Schere, Zange, Brechstange, Wippe.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Bewegung', diff:2, title:'Geschwindigkeit & Beschleunigung',
+            desc:'v = s/t und a = Δv/Δt berechnen und anwenden.',
+            questions:[
+              { q:'Ein Auto fährt 180 km in 2 Stunden. Wie groß ist die Durchschnittsgeschwindigkeit?', hint:'v = s/t. Achte auf die Einheit – km und Stunden geben km/h.', options:['80 km/h','90 km/h','100 km/h','120 km/h'], correct:1, explanation:'v = 180 km / 2 h = 90 km/h.' },
+              { q:'Wandle 72 km/h in m/s um.', hint:'Teile durch 3,6 (oder: ÷3600 s × 1000 m).', options:['72 m/s','36 m/s','20 m/s','7,2 m/s'], correct:2, explanation:'72 km/h ÷ 3,6 = 20 m/s.' },
+              { q:'Ein Zug beschleunigt von 0 auf 40 m/s in 20 s. Wie groß ist a?', hint:'a = Δv/Δt. Δv = 40−0, Δt = 20 s.', options:['0,5 m/s²','2 m/s²','20 m/s²','800 m/s²'], correct:1, explanation:'a = 40 m/s / 20 s = 2 m/s².' },
+              { q:'Ein Fahrrad fährt gleichförmig mit 5 m/s. Wie weit kommt es in 30 s?', hint:'s = v · t. Einheiten: m/s × s = m.', options:['6 m','25 m','150 m','35 m'], correct:2, explanation:'s = 5 m/s · 30 s = 150 m.' },
+              { q:'Was bedeutet eine negative Beschleunigung (Verzögerung)?', hint:'Wird das Objekt schneller oder langsamer?', options:['Das Objekt wird schneller','Das Objekt bewegt sich rückwärts','Das Objekt wird langsamer (bremst)','Das Objekt steht still'], correct:2, explanation:'Negative Beschleunigung = Verzögerung. Das Objekt verliert Geschwindigkeit (bremst).' },
+            ]
+          },
+          { id:'e2', type:'Kraft', diff:2, title:'Kraft, Masse & Gewichtskraft',
+            desc:'F = m·a und Gewichtskraft G = m·g berechnen.',
+            questions:[
+              { q:'Ein Körper der Masse 5 kg wird mit a = 3 m/s² beschleunigt. Welche Kraft wirkt?', hint:'F = m · a. Einheit: kg × m/s² = N.', options:['1,67 N','15 N','8 N','53 N'], correct:1, explanation:'F = 5 kg · 3 m/s² = 15 N.' },
+              { q:'Wie groß ist die Gewichtskraft eines 8-kg-Objekts auf der Erde? (g = 10 m/s²)', hint:'G = m · g. Das Ergebnis ist in Newton.', options:['0,8 N','8 N','80 N','800 N'], correct:2, explanation:'G = 8 kg · 10 m/s² = 80 N.' },
+              { q:'Was ist der Unterschied zwischen Masse und Gewichtskraft?', hint:'Masse ändert sich nie – aber was ändert sich auf dem Mond?', options:['Kein Unterschied','Masse = kg (unveränderlich), Gewichtskraft = N (abhängig von g)','Masse ist die Kraft, Gewicht die Menge','Gewichtskraft ist immer 0'], correct:1, explanation:'Masse (kg): unveränderliche Materiemenge. Gewichtskraft (N): G = m·g, abhängig vom Ort (Erde: g=10, Mond: g≈1,6).' },
+              { q:'Ein Apfel hat eine Masse von 200 g. Wie groß ist seine Gewichtskraft?', hint:'Achtung: Umrechnen! 200 g = ? kg. Dann G = m · g.', options:['200 N','20 N','2 N','0,2 N'], correct:2, explanation:'m = 0,2 kg. G = 0,2 · 10 = 2 N.' },
+            ]
+          },
+          { id:'e3', type:'Hebelgesetz', diff:2, title:'Hebelgesetz F₁·l₁ = F₂·l₂',
+            desc:'Hebelgesetz verstehen und Aufgaben lösen.',
+            questions:[
+              { q:'Am Hebel: F₁ = 40 N, l₁ = 3 m, l₂ = 6 m. Wie groß ist F₂?', hint:'Hebelgesetz: F₁·l₁ = F₂·l₂. Forme nach F₂ um.', options:['80 N','20 N','40 N','120 N'], correct:1, explanation:'F₂ = F₁·l₁/l₂ = 40·3/6 = 20 N.' },
+              { q:'Was ist der Vorteil eines langen Kraftarms?', hint:'Wenn l₁ größer als l₂ ist – was passiert mit der nötigen Kraft?', options:['Man braucht mehr Kraft','Man braucht weniger Kraft','Der Hebel bricht','Keine Wirkung'], correct:1, explanation:'Langer Kraftarm (l₁ groß) → F₁ muss kleiner sein (Kraftvorteil). Kraft sparen durch langen Hebel!' },
+              { q:'Wer hat Recht: „Gib mir einen festen Punkt und ich hebe die Erde aus den Angeln!" – wer sagte das?', hint:'Griechischer Mathematiker und Physiker der Antike.', options:['Pythagoras','Aristoteles','Archimedes','Euklid'], correct:2, explanation:'Archimedes (287–212 v. Chr.) erkannte das Prinzip des Hebels und sprach diesen berühmten Satz.' },
+              { q:'Eine Schere ist ein … Hebel.', hint:'Drehpunkt (Gelenk) liegt zwischen Kraft- und Lastangriffspunkt oder am Ende?', options:['Einseitiger Hebel (Klasse 3)','Zweiseitiger Hebel (Drehpunkt zwischen Kraft und Last)','Kein Hebel','Schiefer Ebene'], correct:1, explanation:'Schere = zweiseitiger Hebel. Der Drehpunkt (Gelenk) liegt zwischen Kraftangriffspunkt (Griff) und Lastangriffspunkt (Schneide).' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+  /* =========================================================  KLASSE 8 – REALSCHULE NRW  */
+  klasse8_rs: {
+    id:'klasse8_rs', num:8, label:'Klasse 8',
+    emoji:'⚡', color:['#047857','#10B981'], light:'#ECFDF5',
+    tagline:'Realschule NRW: LGS, Pythagoras, Kreisberechnungen, Elektrizitätslehre (U, I, R, P)',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Lineare Gleichungssysteme, Pythagoras, Kreisberechnungen (Realschule NRW Klasse 8)',
+        color:'#2563EB',
+        intro:'Klasse 8 Mathe – LGS, Pythagoras und Kreisformeln! Das sind Kernthemen der ZP10-Prüfung.',
+        topics:[
+          { isChapter:true, name:'🔗 Lineare Gleichungssysteme (LGS)' },
+          { name:'Einsetzverfahren', diff:2, explanation:'Eine Gleichung nach einer Variable auflösen und in die andere einsetzen. x + y = 10 und x − y = 4 → x = 4+y → (4+y)+y = 10 → 2y = 6 → y = 3, x = 7.' },
+          { name:'Additionsverfahren', diff:2, explanation:'Gleichungen so multiplizieren, dass sich eine Variable aufhebt, dann addieren. 2x + y = 8, x − y = 1 → addiert: 3x = 9 → x = 3, y = 8−6 = 2.' },
+          { isChapter:true, name:'📐 Pythagoras' },
+          { name:'Satz des Pythagoras: a² + b² = c²', diff:2, explanation:'Im rechtwinkligen Dreieck: a² + b² = c² (c = Hypotenuse, längste Seite). c = √(a²+b²). Kathete: a = √(c²−b²). Anwendungen: Abstand, Höhen berechnen. Pythagorische Tripel: 3-4-5, 5-12-13, 8-15-17.' },
+          { isChapter:true, name:'⭕ Kreisberechnungen' },
+          { name:'Kreisumfang & Kreisfläche', diff:2, explanation:'Umfang: U = 2·π·r = π·d. Fläche: A = π·r². π ≈ 3,14159. Tipp: Merke „2πr" für Umfang (eine Runde) und „πr²" für Fläche (alles drin). Kreissektor: A_Sektor = (α/360°)·π·r².' },
+        ],
+        exercises:[
+          { id:'e1', type:'LGS', diff:2, title:'Lineare Gleichungssysteme lösen',
+            desc:'Einsetz- und Additionsverfahren anwenden.',
+            questions:[
+              { q:'LGS: x + y = 8 und x − y = 2. Lösung?', hint:'Addiere beide Gleichungen – y hebt sich auf. Dann x berechnen.', options:['x=5, y=3','x=4, y=4','x=6, y=2','x=3, y=5'], correct:0, explanation:'Addiert: 2x = 10 → x = 5. In Gl.1: 5+y=8 → y=3.' },
+              { q:'LGS: 2x + y = 7 und x = y − 1 (Einsetzverfahren). x = ?', hint:'Setze x = y−1 in die erste Gleichung ein. Dann nach y auflösen.', options:['x=2','x=3','x=1','x=4'], correct:0, explanation:'2(y−1)+y=7 → 2y−2+y=7 → 3y=9 → y=3. x=3−1=2.' },
+              { q:'Zwei Zahlen: Ihre Summe ist 15 und ihre Differenz ist 3. Welche Zahlen sind es?', hint:'Stelle zwei Gleichungen auf: x+y=15 und x−y=3. Löse das LGS.', options:['6 und 9','7 und 8','5 und 10','9 und 6'], correct:3, explanation:'x+y=15, x−y=3 → addiert: 2x=18 → x=9, y=6.' },
+              { q:'Wann hat ein LGS keine Lösung?', hint:'Was passiert, wenn beide Geraden im Koordinatensystem parallel zueinander laufen?', options:['Wenn beide Gleichungen gleich sind','Wenn die Geraden parallel sind (kein Schnittpunkt)','Wenn eine Variable wegfällt','Wenn x=0'], correct:1, explanation:'Parallele Geraden (gleiche Steigung, verschiedene Achsenabschnitte) haben keinen Schnittpunkt → keine Lösung.' },
+            ]
+          },
+          { id:'e2', type:'Pythagoras', diff:2, title:'Satz des Pythagoras anwenden',
+            desc:'Seiten im rechtwinkligen Dreieck berechnen.',
+            questions:[
+              { q:'Katheten a = 3 cm, b = 4 cm. Wie lang ist die Hypotenuse c?', hint:'c = √(a² + b²). Das ist das berühmte 3-4-5-Tripel!', options:['5 cm','7 cm','√7 cm','25 cm'], correct:0, explanation:'c = √(9+16) = √25 = 5 cm.' },
+              { q:'Hypotenuse c = 13 cm, Kathete b = 5 cm. Wie lang ist a?', hint:'a = √(c² − b²). Berechne erst c²−b².', options:['8 cm','12 cm','9 cm','√134 cm'], correct:1, explanation:'a = √(169−25) = √144 = 12 cm. (5-12-13-Tripel)' },
+              { q:'Ein Rechteck hat Länge 8 cm und Breite 6 cm. Wie lang ist die Diagonale?', hint:'Die Diagonale ist die Hypotenuse im rechtwinkligen Dreieck (L und B sind Katheten).', options:['14 cm','10 cm','√(48) cm','12 cm'], correct:1, explanation:'d = √(8²+6²) = √(64+36) = √100 = 10 cm.' },
+              { q:'Hat das Dreieck mit a=5, b=12, c=13 einen rechten Winkel?', hint:'Prüfe: a²+b² = c²? Berechne beide Seiten.', options:['Ja, weil 5²+12²=13²','Nein, weil 5+12≠13','Ja, weil 5+12+13=30','Nein, weil 13>12'], correct:0, explanation:'5²+12² = 25+144 = 169 = 13² ✓ → rechtwinkliges Dreieck.' },
+              { q:'Wozu benötigt man den Satz des Pythagoras im Alltag?', hint:'Denke an Gebäude, Navigation oder Handwerk.', options:['Nur für Prüfungen','Abstände berechnen, Schrägen bestimmen (z. B. Dachlänge, Treppengeländer)','Nur bei gleichseitigen Dreiecken','Für Kreisberechnungen'], correct:1, explanation:'Pythagoras wird für Abstandsberechnungen, Dachlängen, Diagonalen, GPS-Navigation und vieles mehr verwendet.' },
+            ]
+          },
+          { id:'e3', type:'Kreisberechnungen', diff:2, title:'Kreisumfang & Kreisfläche',
+            desc:'U = 2πr und A = πr² anwenden.',
+            questions:[
+              { q:'Kreisumfang mit r = 5 cm: U = ?', hint:'Formel: U = 2 · π · r. Nutze π ≈ 3,14.', options:['15,7 cm','31,4 cm','78,5 cm','10 cm'], correct:1, explanation:'U = 2 · 3,14 · 5 = 31,4 cm.' },
+              { q:'Kreisfläche mit r = 4 cm: A = ?', hint:'A = π · r². Quadriere erst den Radius, dann mit π multiplizieren.', options:['12,56 cm²','25,12 cm²','50,24 cm²','16 cm²'], correct:2, explanation:'A = π · 4² = π · 16 ≈ 50,24 cm².' },
+              { q:'Ein Kreis hat Durchmesser d = 10 cm. Wie groß ist r?', hint:'r = d/2. Der Radius ist die Hälfte des Durchmessers.', options:['10 cm','20 cm','5 cm','2,5 cm'], correct:2, explanation:'r = d/2 = 10/2 = 5 cm.' },
+              { q:'Ein Kreissektor hat r = 6 cm und Mittelpunktswinkel 90°. Fläche?', hint:'A_Sektor = (α/360°) · π · r². Mit α=90°: das ist 1/4 des Kreises.', options:['9π cm²','36π cm²','6π cm²','18π cm²'], correct:0, explanation:'A = (90/360) · π · 36 = ¼ · 36π = 9π ≈ 28,27 cm².' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚛️',
+        desc:'Elektrizitätslehre: U, I, R, Ohmsches Gesetz, elektrische Leistung (Realschule NRW Klasse 8)',
+        color:'#7C3AED',
+        intro:'Klasse 8 Physik – Elektrizitätslehre! Spannung, Stromstärke, Widerstand und Leistung.',
+        topics:[
+          { isChapter:true, name:'⚡ Elektrische Spannung & Stromstärke' },
+          { name:'Spannung U (Volt) und Stromstärke I (Ampere)', diff:2, explanation:'Spannung U: „Druck", der Ladungen antreibt. Einheit: Volt (V). Messgerät: Voltmeter (parallel). Stromstärke I: Menge der Ladungen pro Zeit. Einheit: Ampere (A). Messgerät: Amperemeter (in Reihe). Analogie: Spannung = Wasserdruck, Strom = Wassermenge.' },
+          { isChapter:true, name:'🔌 Widerstand & Ohmsches Gesetz' },
+          { name:'R = U/I – Ohmsches Gesetz', diff:2, explanation:'Widerstand R = Spannung U / Stromstärke I. Einheit: Ohm (Ω). Ohmsches Gesetz: U = R · I (bei konstanter Temperatur). Umgestellt: I = U/R, R = U/I. Spezifischer Widerstand hängt vom Material ab.' },
+          { isChapter:true, name:'💡 Elektrische Leistung' },
+          { name:'P = U · I und Energie E = P · t', diff:2, explanation:'Elektrische Leistung P = Spannung U × Stromstärke I. Einheit: Watt (W). Energie E = P · t. Einheit: Wh (Wattstunde) oder J (Joule). 1 kWh = 1.000 Wh. Stromkosten = E (kWh) × Preis pro kWh.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Spannung & Strom', diff:2, title:'Spannung und Stromstärke',
+            desc:'Grundgrößen der Elektrizitätslehre verstehen und messen.',
+            questions:[
+              { q:'Wie wird ein Voltmeter in einen Stromkreis eingebaut?', hint:'Voltmeter misst die Spannung ÜBER einem Bauteil – parallel oder in Reihe?', options:['In Reihe','Parallel zum Bauteil','Am Ende des Stromkreises','Nur außen am Gehäuse'], correct:1, explanation:'Voltmeter immer parallel (nebeneinander) zum Bauteil schalten. Innenwiderstand sehr groß → nimmt kaum Strom ab.' },
+              { q:'Wie wird ein Amperemeter eingebaut?', hint:'Amperemeter misst, wie viel Strom durch es hindurchfließt – muss also im … liegen.', options:['Parallel zum Bauteil','In Reihe (Serie) mit dem Stromkreis','Vor der Batterie außen','Nirgends, es misst Funkwellen'], correct:1, explanation:'Amperemeter in Reihe schalten. Innenwiderstand sehr klein → kaum Spannungsabfall.' },
+              { q:'Was versteht man unter elektrischer Spannung?', hint:'Denke an die Wasseranalogy: Spannung ist wie …?', options:['Die Menge fließender Elektronen','Der „Druck", der Elektronen antreibt (Potenzialdifferenz)','Die Wärmeabgabe','Die Leistung des Geräts'], correct:1, explanation:'Spannung = Potenzialdifferenz (wie Wasserdruck). Ohne Spannung kein Strom.' },
+              { q:'Welche Einheit hat die Stromstärke?', hint:'Benannt nach einem französischen Physiker, Abkürzung A.', options:['Volt (V)','Watt (W)','Ampere (A)','Ohm (Ω)'], correct:2, explanation:'Stromstärke I wird in Ampere (A) gemessen. Benannt nach André-Marie Ampère.' },
+            ]
+          },
+          { id:'e2', type:'Ohmsches Gesetz', diff:2, title:'Widerstand & Ohmsches Gesetz U = R · I',
+            desc:'Das Ohmsche Gesetz anwenden und Aufgaben lösen.',
+            questions:[
+              { q:'U = 12 V, I = 2 A. Wie groß ist R?', hint:'Forme das Ohmsche Gesetz nach R um: R = ?', options:['24 Ω','6 Ω','10 Ω','0,17 Ω'], correct:1, explanation:'R = U/I = 12 V / 2 A = 6 Ω.' },
+              { q:'R = 50 Ω, I = 0,4 A. Welche Spannung liegt an?', hint:'Ohmsches Gesetz: U = R · I.', options:['125 V','20 V','50,4 V','0,008 V'], correct:1, explanation:'U = R · I = 50 · 0,4 = 20 V.' },
+              { q:'U = 9 V, R = 30 Ω. Wie groß ist die Stromstärke?', hint:'Forme das Ohmsche Gesetz nach I um: I = U/R.', options:['3 A','270 A','0,3 A','0,03 A'], correct:2, explanation:'I = U/R = 9/30 = 0,3 A.' },
+              { q:'Was beschreibt das Ohmsche Gesetz?', hint:'Welchen Zusammenhang beschreibt U=R·I?', options:['Zusammenhang zwischen Kraft und Beschleunigung','Linearen Zusammenhang zwischen Spannung, Widerstand und Strom','Energieerhaltung','Magnetismus'], correct:1, explanation:'Ohmsches Gesetz: Bei konstanter Temperatur ist U = R · I – Spannung proportional zur Stromstärke.' },
+              { q:'Ein Widerstand verdoppelt sich. Wenn die Spannung gleich bleibt – was passiert mit dem Strom?', hint:'I = U/R. Wenn R doppelt so groß und U gleich bleibt …', options:['Strom verdoppelt sich','Strom halbiert sich','Strom bleibt gleich','Strom wird null'], correct:1, explanation:'I = U/R. Bei doppeltem R halbiert sich I (bei gleicher Spannung).' },
+            ]
+          },
+          { id:'e3', type:'Elektrische Leistung', diff:2, title:'Elektrische Leistung P = U · I',
+            desc:'Leistung berechnen und Energiekosten ermitteln.',
+            questions:[
+              { q:'Eine Lampe: U = 230 V, I = 0,5 A. Wie groß ist die Leistung?', hint:'P = U · I. Einheit: Watt (W).', options:['460 W','230,5 W','115 W','45 W'], correct:2, explanation:'P = 230 · 0,5 = 115 W.' },
+              { q:'Ein Gerät hat P = 2.000 W und läuft 3 Stunden. Wie viel Energie verbraucht es?', hint:'E = P · t. Ergebnis in Wh, dann in kWh umrechnen (÷1000).', options:['2 kWh','6 kWh','600 kWh','0,6 kWh'], correct:1, explanation:'E = 2.000 W · 3 h = 6.000 Wh = 6 kWh.' },
+              { q:'1 kWh Strom kostet 0,30 €. Wie viel kostet 6 kWh?', hint:'Kosten = Energie × Preis pro kWh.', options:['0,30 €','1,80 €','6 €','0,05 €'], correct:1, explanation:'Kosten = 6 kWh · 0,30 €/kWh = 1,80 €.' },
+              { q:'Was ist die Einheit der elektrischen Leistung?', hint:'Benannt nach dem Erfinder der Dampfmaschine.', options:['Joule (J)','Kilowattstunde (kWh)','Watt (W)','Ampere (A)'], correct:2, explanation:'Leistung P wird in Watt (W) gemessen. Benannt nach James Watt.' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+  /* =========================================================  KLASSE 9 – REALSCHULE NRW  */
+  klasse9_rs: {
+    id:'klasse9_rs', num:9, label:'Klasse 9',
+    emoji:'🔬', color:['#B45309','#F59E0B'], light:'#FFFBEB',
+    tagline:'Realschule NRW: Quadratische Gleichungen, Trigonometrie, Statistik, Schall, Druck & Optik',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Quadratische Gleichungen, Trigonometrie, Statistik & Wahrscheinlichkeit (Realschule NRW Klasse 9)',
+        color:'#2563EB',
+        intro:'Klasse 9 Mathe – Vorbereitung auf die ZP10! Quadratische Gleichungen, Trigonometrie und Statistik.',
+        topics:[
+          { isChapter:true, name:'📐 Quadratische Gleichungen' },
+          { name:'Quadratische Gleichungen lösen (pq-Formel)', diff:2, explanation:'ax² + bx + c = 0. pq-Form: x² + px + q = 0. Lösung: x₁₂ = −p/2 ± √((p/2)² − q). Diskriminante D = (p/2)²−q: D>0 → 2 Lösungen, D=0 → 1 Lösung, D<0 → keine reelle Lösung.' },
+          { isChapter:true, name:'📐 Trigonometrie: sin, cos, tan' },
+          { name:'sin, cos, tan im rechtwinkligen Dreieck', diff:2, explanation:'sin α = Gegenkathete/Hypotenuse. cos α = Ankathete/Hypotenuse. tan α = Gegenkathete/Ankathete. Merke: SOA-CAH-TOA. Winkelberechnung: α = arcsin(...), α = arccos(...), α = arctan(...).' },
+          { isChapter:true, name:'📊 Statistik & Wahrscheinlichkeit' },
+          { name:'Mittelwert, Median, Modus & Häufigkeit', diff:1, explanation:'Mittelwert x̄ = Summe aller Werte / Anzahl. Median = mittlerer Wert (nach Sortierung). Modus = häufigster Wert. Relative Häufigkeit = Anzahl Ereignisse / Gesamtversuche. Wahrscheinlichkeit P(E) = günstige Fälle / alle Fälle.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Quadratische Gleichungen', diff:2, title:'Quadratische Gleichungen lösen',
+            desc:'pq-Formel anwenden und Lösungen bestimmen.',
+            questions:[
+              { q:'x² − 5x + 6 = 0. Lösungen?', hint:'pq-Form: p=−5, q=6. x₁₂ = −p/2 ± √((p/2)²−q). Alternativ: Suche zwei Zahlen mit Summe 5 und Produkt 6.', options:['x₁=2, x₂=3','x₁=1, x₂=6','x₁=−2, x₂=−3','x₁=0, x₂=5'], correct:0, explanation:'x₁₂ = 5/2 ± √(6,25−6) = 2,5 ± 0,5 → x₁=3, x₂=2. Oder: (x−2)(x−3)=0.' },
+              { q:'x² − 4 = 0. Lösungen?', hint:'x² = 4. Ziehe die Wurzel auf beiden Seiten – vergiss das negative Vorzeichen nicht!', options:['x=2','x=±2','x=4','x=±4'], correct:1, explanation:'x² = 4 → x = ±√4 = ±2. Beide Vorzeichen beachten!' },
+              { q:'Wie viele reelle Lösungen hat x² + 2x + 5 = 0?', hint:'Berechne die Diskriminante D = (p/2)² − q. Wenn D < 0 …', options:['Keine reelle Lösung','Genau eine','Genau zwei','Unendlich viele'], correct:0, explanation:'D = (1)² − 5 = 1 − 5 = −4 < 0 → keine reelle Lösung.' },
+              { q:'x² − 6x + 9 = 0. Lösungen?', hint:'Erkenne ein vollständiges Quadrat: (x−?)² = 0.', options:['x₁=3, x₂=3 (doppelte Lösung)','x₁=3, x₂=−3','Keine Lösung','x₁=6, x₂=9'], correct:0, explanation:'(x−3)² = 0 → x = 3 (doppelte Lösung). D = (−3)²−9 = 0.' },
+            ]
+          },
+          { id:'e2', type:'Trigonometrie', diff:2, title:'sin, cos, tan anwenden',
+            desc:'Winkel und Seiten im rechtwinkligen Dreieck berechnen.',
+            questions:[
+              { q:'In einem rechtwinkligen Dreieck: Hypotenuse c=10, Winkel α=30°. Wie lang ist die Gegenkathete a?', hint:'sin α = Gegenkathete/Hypotenuse. Forme nach a um: a = c · sin α.', options:['5','8,66','3,33','10'], correct:0, explanation:'a = c · sin 30° = 10 · 0,5 = 5.' },
+              { q:'Gegenkathete a=6, Hypotenuse c=10. Wie groß ist Winkel α?', hint:'sin α = a/c. Dann α = arcsin(a/c). Benutze den Taschenrechner!', options:['arcsin(0,6) ≈ 36,87°','arccos(0,6) ≈ 53,13°','arctan(0,6) ≈ 30,96°','45°'], correct:0, explanation:'sin α = 6/10 = 0,6 → α = arcsin(0,6) ≈ 36,87°.' },
+              { q:'Was bedeutet SOA-CAH-TOA?', hint:'Jeder Buchstabe steht für einen Bruch mit Dreiecksseiten.', options:['Drei Flüsse in Peru','Merkhilfe: sin=Gegen/Hypo, cos=An/Hypo, tan=Gegen/An','Pythagorischer Lehrsatz','Griechisches Alphabet'], correct:1, explanation:'SOH-CAH-TOA: Sin = Opposite/Hypotenuse, Cos = Adjacent/Hypotenuse, Tan = Opposite/Adjacent.' },
+              { q:'Ankathete b=8, Gegenkathete a=6. Wie groß ist Winkel α (gegenüber von a)?', hint:'Welche Funktion nutzt Gegen- und Ankathete ohne Hypotenuse?', options:['sin α = 6/8','tan α = 6/8 → α ≈ 36,87°','cos α = 6/8','tan α = 8/6'], correct:1, explanation:'tan α = Gegenkathete/Ankathete = 6/8 = 0,75 → α = arctan(0,75) ≈ 36,87°.' },
+              { q:'Wie lautet die Beziehung sin²α + cos²α = ?', hint:'Das ist ein fundamentaler Satz der Trigonometrie.', options:['= 2','= 0','= 1','= tan²α'], correct:2, explanation:'sin²α + cos²α = 1 (trigonometrischer Pythagoras). Folgt direkt aus a² + b² = c² im rechtwinkligen Dreieck.' },
+            ]
+          },
+          { id:'e3', type:'Statistik', diff:1, title:'Statistik & Wahrscheinlichkeit',
+            desc:'Mittelwert, Median, Häufigkeit und Wahrscheinlichkeit berechnen.',
+            questions:[
+              { q:'Noten: 2, 3, 1, 4, 2, 3, 2. Wie groß ist der Mittelwert?', hint:'Addiere alle Noten und teile durch die Anzahl der Noten.', options:['2','2,43','3','2,5'], correct:1, explanation:'Summe = 2+3+1+4+2+3+2 = 17. Anzahl = 7. x̄ = 17/7 ≈ 2,43.' },
+              { q:'Noten: 1, 2, 2, 3, 4, 5. Was ist der Median?', hint:'Sortiere (schon sortiert) und finde die mittlere Zahl. Bei gerader Anzahl: Mittelwert der zwei Mittleren.', options:['2','2,5','3','3,5'], correct:1, explanation:'6 Werte: mittlere zwei sind 2 und 3. Median = (2+3)/2 = 2,5.' },
+              { q:'In einer Urne sind 3 rote, 2 blaue und 5 grüne Kugeln. Wie groß ist P(rot)?', hint:'P = günstige Fälle / alle Fälle. Zähle zuerst alle Kugeln zusammen.', options:['3/5','3/10','1/3','1/10'], correct:1, explanation:'Gesamt = 3+2+5 = 10. P(rot) = 3/10.' },
+              { q:'Was beschreibt ein Histogramm?', hint:'Histogramme zeigen Häufigkeiten – in welchem Diagrammtyp?', options:['Kreisdiagramm der Wahrscheinlichkeiten','Balkendiagramm von Häufigkeiten (kontinuierliche Daten)','Koordinatensystem mit Geraden','Tortendiagramm'], correct:1, explanation:'Histogramm: Balkendiagramm für Häufigkeiten von Messgrößen in Klassen (kontinuierliche Daten, keine Lücken zwischen Balken).' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚛️',
+        desc:'Schall, Druck & Auftrieb, Optik: Linsen & Spiegel (Realschule NRW Klasse 9)',
+        color:'#7C3AED',
+        intro:'Klasse 9 Physik – Schall, Druck und Optik! Drei spannende Themenfelder der Realschule.',
+        topics:[
+          { isChapter:true, name:'🔊 Schall' },
+          { name:'Schall: Frequenz, Wellenlänge & Schallgeschwindigkeit', diff:2, explanation:'Schall ist eine mechanische Welle (braucht Medium). Frequenz f in Hertz (Hz): Anzahl Schwingungen pro Sekunde. Tonhöhe ~ Frequenz. Lautstärke ~ Amplitude. Schallgeschwindigkeit: v_Schall ≈ 343 m/s in Luft. v = f · λ (Wellenformel). Infra- (< 20 Hz) und Ultraschall (> 20 kHz) nicht hörbar.' },
+          { isChapter:true, name:'🌊 Druck & Auftrieb' },
+          { name:'Druck p = F/A und Auftrieb', diff:2, explanation:'Druck p = Kraft F / Fläche A. Einheit: Pascal (Pa) = N/m². 1 bar = 100.000 Pa. Wasserdruck: p = ρ·g·h. Auftrieb (Archimedes): F_A = ρ_Fl · g · V_verdrängt. Körper schwimmt, wenn F_A ≥ G (Gewichtskraft).' },
+          { isChapter:true, name:'🔭 Optik: Linsen & Spiegel' },
+          { name:'Sammellinse & Zerstreuungslinse', diff:2, explanation:'Sammellinse (konvex): bündelt parallele Strahlen im Brennpunkt F. Brechkraft D = 1/f in Dioptrien (dpt). Zerstreuungslinse (konkav): divergiert Strahlen. Bildentstehung mit Strahlengang: Parallelstrahl → Brennpunkt; Brennpunktstrahl → parallel; Mittelpunktstrahl → gerade durch.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Schall', diff:2, title:'Schall – Frequenz & Schallgeschwindigkeit',
+            desc:'Schall als Welle verstehen und berechnen.',
+            questions:[
+              { q:'Was ist Schall physikalisch?', hint:'Braucht Schall ein Medium wie Luft oder Wasser – oder kann er durch das Vakuum?', options:['Elektromagnetische Welle (wie Licht)','Mechanische Longitudinalwelle (braucht Medium)','Transversalwelle im Vakuum','Wärmestrahlung'], correct:1, explanation:'Schall ist eine mechanische Welle (Druckwelle), die ein Medium (Luft, Wasser, Feststoffe) braucht. Im Vakuum gibt es keinen Schall.' },
+              { q:'Ein Ton hat f = 440 Hz und Schallgeschwindigkeit v = 340 m/s. Wie groß ist die Wellenlänge?', hint:'Wellenformel: v = f · λ. Forme nach λ um.', options:['0,77 m','149.600 m','440 m','34 m'], correct:0, explanation:'λ = v/f = 340/440 ≈ 0,77 m.' },
+              { q:'Welcher Frequenzbereich ist für Menschen hörbar?', hint:'Unterhalb ist Infra-, oberhalb ist Ultraschall.', options:['0 – 20 Hz','20 Hz – 20 kHz','20 kHz – 200 kHz','0,1 Hz – 1 Hz'], correct:1, explanation:'Menschliches Gehör: ca. 20 Hz bis 20.000 Hz (20 kHz). Darunter = Infraschall, darüber = Ultraschall.' },
+              { q:'Wovon hängt die Tonhöhe eines Klangs ab?', hint:'Denke an die Definiton von Frequenz – was zählt sie?', options:['Von der Amplitude','Von der Lautstärke','Von der Frequenz (Hz)','Von der Schallgeschwindigkeit'], correct:2, explanation:'Höhere Frequenz → höherer Ton. Tiefere Frequenz → tieferer Ton. Lautstärke hängt von der Amplitude ab.' },
+            ]
+          },
+          { id:'e2', type:'Druck', diff:2, title:'Druck p = F/A und Auftrieb',
+            desc:'Druck und Auftrieb berechnen und Archimedisches Prinzip anwenden.',
+            questions:[
+              { q:'Eine Kraft F = 100 N wirkt auf A = 0,5 m². Wie groß ist der Druck?', hint:'p = F/A. Einheit: N/m² = Pa.', options:['50 Pa','200 Pa','100 Pa','500 Pa'], correct:1, explanation:'p = F/A = 100/0,5 = 200 Pa.' },
+              { q:'Warum sinkt ein Stein im Wasser, aber schwimmt ein Holzklotz?', hint:'Vergleiche die Dichte des Körpers mit der Dichte des Wassers.', options:['Stein ist schwerer','Holz ist leichter als Wasser (Dichte < 1000 kg/m³), Stein schwerer (Dichte > 1000 kg/m³)','Wasser ist zu kalt','Holz hat mehr Volumen'], correct:1, explanation:'Körper schwimmt, wenn seine Dichte kleiner ist als die des Mediums. Holz: ρ ≈ 500–900 kg/m³ < ρ_Wasser. Stein: ρ > 1000 kg/m³.' },
+              { q:'Was besagt das Archimedische Prinzip?', hint:'Was ist die Auftriebskraft gleich groß wie?', options:['Druck nimmt mit der Tiefe zu','Auftriebskraft = Gewichtskraft des verdrängten Fluids','Alle Körper sinken im Wasser','Schwimmen hängt nur von der Masse ab'], correct:1, explanation:'Archimedes: F_Auftrieb = Gewichtskraft des verdrängten Fluids. F_A = ρ_Fluid · g · V_verdrängt.' },
+              { q:'Wasserdruck in 10 m Tiefe (ρ=1000 kg/m³, g=10 m/s²): p = ?', hint:'p = ρ · g · h. Setze ρ=1000, g=10, h=10 ein.', options:['100 Pa','10.000 Pa','100.000 Pa','1000 Pa'], correct:2, explanation:'p = 1000 · 10 · 10 = 100.000 Pa = 1 bar.' },
+            ]
+          },
+          { id:'e3', type:'Optik', diff:2, title:'Linsen und Spiegel',
+            desc:'Sammellinse, Zerstreuungslinse und Hohlspiegel.',
+            questions:[
+              { q:'Was ist der Unterschied zwischen einer Sammellinse und einer Zerstreuungslinse?', hint:'Konvex = wölbt sich nach außen. Konkav = wölbt sich nach innen. Was macht jede mit Lichtstrahlen?', options:['Sammellinse divergiert, Zerstreuungslinse bündelt','Sammellinse bündelt (konvex), Zerstreuungslinse divergiert (konkav)','Beide bündeln gleich','Beide zerstreuen gleich'], correct:1, explanation:'Sammellinse (konvex): bündelt parallele Strahlen im Brennpunkt. Zerstreuungslinse (konkav): divergiert Strahlen – Brennpunkt virtuell.' },
+              { q:'Was ist die Brechkraft einer Linse mit f = 0,25 m?', hint:'Brechkraft D = 1/f (in Dioptrien dpt, wenn f in Metern).', options:['0,25 dpt','4 dpt','25 dpt','2,5 dpt'], correct:1, explanation:'D = 1/f = 1/0,25 = 4 dpt.' },
+              { q:'Das menschliche Auge nutzt …', hint:'Muss das Auge Licht bündeln oder zerstreuen, um ein Bild auf der Netzhaut zu erzeugen?', options:['Nur Spiegel','Sammellinsen-System (Hornhaut + Augenlinse)','Nur eine Zerstreuungslinse','Keine Linsen'], correct:1, explanation:'Auge = Sammellinsen-System. Hornhaut (feststehend) + Augenlinse (verstellbar durch Akkommodation) erzeugen reelles Bild auf der Netzhaut.' },
+              { q:'Bei welchem Abstand vom Objekt entsteht kein reelles Bild einer Sammellinse?', hint:'Was passiert, wenn das Objekt genau in der Brennweite oder näher steht?', options:['Wenn das Objekt sehr weit weg ist','Wenn das Objekt in der Brennweite oder näher steht (dann virtuelles Bild)','Immer entsteht ein reelles Bild','Nur bei Doppellinsen'], correct:1, explanation:'Objekt im oder vor dem Brennpunkt → kein reelles Bild (oder Lupe: virtuelles, vergrößertes Bild).' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+
+  /* =========================================================  KLASSE 10 – REALSCHULE NRW  */
+  klasse10_rs: {
+    id:'klasse10_rs', num:10, label:'Klasse 10',
+    emoji:'🎓', color:['#B91C1C','#EF4444'], light:'#FEF2F2',
+    tagline:'Realschule NRW: Funktionen, Wahrscheinlichkeit (ZP10), Atomphysik, Radioaktivität & Energie',
+    subjects:[
+      {
+        id:'mathe', name:'Mathematik', icon:'🔢',
+        desc:'Lineare & Quadratische Funktionen, Exponentialfunktionen, Wahrscheinlichkeit – ZP10-Vorbereitung',
+        color:'#2563EB',
+        intro:'Klasse 10 Mathe Realschule – alles für die ZP10! Funktionen, Exponentialfunktionen und Wahrscheinlichkeitsrechnung.',
+        topics:[
+          { isChapter:true, name:'📈 Lineare Funktionen' },
+          { name:'f(x) = mx + b – Geradengleichung', diff:2, explanation:'Lineare Funktion: f(x) = mx + b. m = Steigung (Steigungsdreieck: Δy/Δx). b = y-Achsenabschnitt. Zwei Punkte → m = (y₂−y₁)/(x₂−x₁), dann b ausrechnen. Parallelen: gleiche Steigung. Schnittpunkt zweier Geraden: Gleichung setzen.' },
+          { isChapter:true, name:'📐 Quadratische Funktionen' },
+          { name:'f(x) = ax² + bx + c – Parabel', diff:2, explanation:'Parabel: a > 0 nach oben geöffnet, a < 0 nach unten. Scheitelpunkt S = (−b/(2a); f(−b/(2a))). Nullstellen: Diskriminante D = b²−4ac. Scheitelpunktform: f(x) = a(x−d)²+e.' },
+          { isChapter:true, name:'📊 Exponentialfunktionen' },
+          { name:'f(x) = a · bˣ – Wachstum & Zerfall', diff:2, explanation:'Exponentielles Wachstum: b > 1. Exponentieller Zerfall: 0 < b < 1. Basis b = Wachstumsfaktor. f(x) = a · bˣ: a = Anfangswert (bei x=0). Halbwertszeit: wenn b = 1/2. Verdopplungszeit: wenn b = 2.' },
+          { isChapter:true, name:'🎲 Wahrscheinlichkeit (ZP10)' },
+          { name:'Baumdiagramme & mehrstufige Versuche', diff:2, explanation:'Mehrstufige Versuche: Pfadregeln. Pfadprodukt: P(A und B) = P(A) · P(B|A). Pfadsumme: P(A oder B) = P(A) + P(B) (wenn A und B nicht gleichzeitig möglich). Mit Zurücklegen: unabhängig. Ohne Zurücklegen: abhängig.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Lineare Funktionen', diff:2, title:'Lineare Funktionen – Geradengleichung',
+            desc:'Steigung, y-Achsenabschnitt und Geradengleichungen bestimmen.',
+            questions:[
+              { q:'Welche Gerade hat Steigung m=2 und y-Achsenabschnitt b=−3?', hint:'Setze m und b in f(x) = mx + b ein.', options:['f(x) = 3x − 2','f(x) = 2x + 3','f(x) = 2x − 3','f(x) = −3x + 2'], correct:2, explanation:'f(x) = 2x − 3. m=2 (Steigung), b=−3 (Schnittpunkt mit y-Achse).' },
+              { q:'Eine Gerade geht durch P₁(0|4) und P₂(2|8). Wie lautet f(x)?', hint:'m = (y₂−y₁)/(x₂−x₁). b ist der y-Wert bei x=0.', options:['f(x) = 2x + 4','f(x) = 4x + 2','f(x) = 2x','f(x) = 4x'], correct:0, explanation:'m = (8−4)/(2−0) = 2. b = 4. f(x) = 2x + 4.' },
+              { q:'Wo schneidet f(x) = 3x − 6 die x-Achse?', hint:'An der x-Achse gilt y = f(x) = 0. Löse die Gleichung nach x auf.', options:['x=2','x=6','x=3','x=−2'], correct:0, explanation:'0 = 3x − 6 → x = 2. Nullstelle bei x=2.' },
+              { q:'Zwei Geraden: f(x) = 2x+1 und g(x) = −x+7. Wo ist ihr Schnittpunkt?', hint:'Setze f(x)=g(x), löse nach x, dann y berechnen.', options:['(3|7)','(2|5)','(1|3)','(4|9)'], correct:1, explanation:'2x+1 = −x+7 → 3x = 6 → x=2. y = 2·2+1 = 5. Schnittpunkt (2|5).' },
+            ]
+          },
+          { id:'e2', type:'Quadratische Funktionen', diff:2, title:'Parabel & Scheitelpunkt',
+            desc:'Quadratische Funktionen analysieren und Nullstellen berechnen.',
+            questions:[
+              { q:'f(x) = x² − 4x + 3. Wo ist der Scheitelpunkt?', hint:'Scheitelpunkt x_S = −b/(2a) = 4/2 = 2. Dann y_S = f(2) berechnen.', options:['S(2|−1)','S(−2|15)','S(2|1)','S(4|3)'], correct:0, explanation:'x_S = 4/2 = 2. y_S = 4−8+3 = −1. S(2|−1).' },
+              { q:'f(x) = x² − 5x + 6. Nullstellen?', hint:'Setze f(x)=0 und löse. Versuche Faktorisierung: (x−?)(x−?).', options:['x₁=2, x₂=3','x₁=1, x₂=6','x₁=−2, x₂=−3','x₁=0, x₂=5'], correct:0, explanation:'(x−2)(x−3) = 0 → x₁=2, x₂=3.' },
+              { q:'Wann ist eine Parabel nach unten geöffnet?', hint:'Schaue auf den Koeffizienten a vor x². Was gilt für a?', options:['Wenn a > 0','Wenn a < 0','Wenn b = 0','Wenn c < 0'], correct:1, explanation:'Parabel nach unten geöffnet: a < 0. Nach oben: a > 0.' },
+              { q:'Was ist die Scheitelpunktform einer quadratischen Funktion?', hint:'S=(d|e) und a gibt die Öffnung an.', options:['f(x) = ax² + bx + c','f(x) = a(x−d)² + e','f(x) = mx + b','f(x) = a/x + c'], correct:1, explanation:'Scheitelpunktform: f(x) = a(x−d)² + e mit Scheitelpunkt S(d|e).' },
+            ]
+          },
+          { id:'e3', type:'Wahrscheinlichkeit', diff:2, title:'Baumdiagramme & Wahrscheinlichkeit (ZP10)',
+            desc:'Mehrstufige Versuche mit Baumdiagramm und Pfadregeln.',
+            questions:[
+              { q:'Münze zweimal werfen: P(zweimal Kopf)?', hint:'Jeder Wurf unabhängig. Pfadregel: Wahrscheinlichkeiten auf einem Pfad multiplizieren.', options:['1/2','1/4','1/3','3/4'], correct:1, explanation:'P(KK) = 1/2 · 1/2 = 1/4.' },
+              { q:'Aus Urne (4 rote, 6 blaue) ohne Zurücklegen: P(erst rot, dann blau)?', hint:'Für die zweite Kugel: Urne hat jetzt noch 9 Kugeln, darunter 6 blaue.', options:['4/10 · 6/10','4/10 · 6/9','6/10 · 5/9','4/9 · 6/10'], correct:1, explanation:'P(rot) = 4/10. Dann noch 9 Kugeln, 6 blau: P(blau|nach rot) = 6/9. P = 4/10 · 6/9 = 24/90 = 4/15.' },
+              { q:'Was ist die Gegenwahrscheinlichkeit von P(A) = 0,3?', hint:'Alle Wahrscheinlichkeiten zusammen ergeben 1 (Sicherheit).', options:['0,3','0,7','3','−0,3'], correct:1, explanation:'P(Ā) = 1 − P(A) = 1 − 0,3 = 0,7.' },
+              { q:'Bernoulli-Kette: Treffer mit p=0,4, 3 Versuche. P(genau 2 Treffer)?', hint:'B(3;0,4;2) = C(3,2) · 0,4² · 0,6¹. C(3,2) = 3.', options:['0,288','0,144','0,096','0,216'], correct:0, explanation:'P(X=2) = 3 · (0,4)² · (0,6)¹ = 3 · 0,16 · 0,6 = 0,288.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚛️',
+        desc:'Atommodell, Radioaktivität, Halbwertszeit, Energie & Wirkungsgrad (Realschule NRW Klasse 10)',
+        color:'#7C3AED',
+        intro:'Klasse 10 Physik – Atomphysik, Radioaktivität und Energielehre! Prüfungsrelevante Themen der ZP10.',
+        topics:[
+          { isChapter:true, name:'⚛️ Atommodell & Aufbau' },
+          { name:'Kern & Elektronenhülle', diff:2, explanation:'Atom: Kern (Protonen p⁺, Neutronen n⁰) + Elektronenhülle (e⁻). Protonenzahl = Ordnungszahl (bestimmt Element). Massenzahl = p + n. Isotope: gleiche Protonenzahl, verschiedene Neutronenzahl. Atomradius ≈ 10⁻¹⁰ m, Kernradius ≈ 10⁻¹⁵ m.' },
+          { isChapter:true, name:'☢️ Radioaktivität' },
+          { name:'α-, β- und γ-Strahlung & Halbwertszeit', diff:2, explanation:'α-Strahlung: Heliumkerne (2p+2n), kurze Reichweite, von Papier gestoppt. β-Strahlung: schnelle Elektronen (β⁻) oder Positronen (β⁺), mittlere Reichweite. γ-Strahlung: elektromagnetische Welle, hohe Energie, kaum aufhaltbar. Halbwertszeit T₁/₂: Zeit bis Aktivität auf die Hälfte sinkt. N(t) = N₀ · (1/2)^(t/T₁/₂).' },
+          { isChapter:true, name:'⚡ Energie & Wirkungsgrad' },
+          { name:'Energieformen, Umwandlung & Wirkungsgrad η', diff:2, explanation:'Energieformen: mechanisch, thermisch, elektrisch, chemisch, Strahlungsenergie, Kernenergie. Energieerhaltung: Energie kann nicht erzeugt oder vernichtet werden – nur umgewandelt. Wirkungsgrad η = Nutzenergie/Zugeführte Energie × 100 % = W_nutz/W_zu. Immer η < 100 % wegen Wärmeverlusten.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Atomphysik', diff:2, title:'Atommodell & Aufbau des Atoms',
+            desc:'Atomkern, Elektronen, Isotope und Ordnungszahl.',
+            questions:[
+              { q:'Kohlenstoff-14 (¹⁴C): Wie viele Neutronen hat der Kern? (Ordnungszahl = 6)', hint:'Neutronenzahl = Massenzahl − Protonenzahl.', options:['6','8','14','12'], correct:1, explanation:'Massenzahl 14, Protonenzahl 6 → Neutronen = 14 − 6 = 8.' },
+              { q:'Was sind Isotope?', hint:'Isotope gehören zum selben Element – was haben sie gleich, was verschieden?', options:['Atome verschiedener Elemente mit gleicher Masse','Atome desselben Elements mit gleicher Protonenzahl, aber verschiedener Neutronenzahl','Atome mit identischem Aufbau','Radioaktive Elemente'], correct:1, explanation:'Isotope: gleiche Protonenzahl (gleiches Element), verschiedene Neutronenzahl → verschiedene Massenzahlen.' },
+              { q:'Was bestimmt die Ordnungszahl eines Elements?', hint:'Im Periodensystem steht diese Zahl oben links – sie ist eindeutig für jedes Element.', options:['Anzahl der Neutronen','Massenzahl','Anzahl der Protonen im Kern','Anzahl der Elektronen in der Hülle'], correct:2, explanation:'Ordnungszahl = Anzahl der Protonen. Sie bestimmt das Element eindeutig (H=1, He=2, Li=3 …).' },
+              { q:'Wie groß ist ein Atom im Vergleich zu seinem Kern?', hint:'Radius des Atoms: ca. 10⁻¹⁰ m. Radius des Kerns: ca. 10⁻¹⁵ m. Welcher Faktor liegt dazwischen?', options:['10-mal größer','100-mal größer','100.000-mal größer','Gleich groß'], correct:2, explanation:'Atom ca. 10⁻¹⁰ m, Kern ca. 10⁻¹⁵ m → Atom ist ca. 100.000-mal größer als der Kern!' },
+            ]
+          },
+          { id:'e2', type:'Radioaktivität', diff:2, title:'α-, β-, γ-Strahlung & Halbwertszeit',
+            desc:'Strahlungsarten unterscheiden und Halbwertszeit berechnen.',
+            questions:[
+              { q:'Welche Strahlung wird von einem Blatt Papier gestoppt?', hint:'α-Strahlung besteht aus großen Teilchen mit doppelter Ladung – wie weit kommt sie?', options:['γ-Strahlung','β-Strahlung','α-Strahlung','Alle drei'], correct:2, explanation:'α-Strahlung (He-Kerne): geringe Reichweite, von Papier oder Haut gestoppt. β von Alu gestoppt. γ braucht Blei/Beton.' },
+              { q:'Ein Stoff hat T₁/₂ = 4 Tage und N₀ = 800 Atome. Wie viele sind nach 12 Tagen noch übrig?', hint:'12 Tage = 3 Halbwertszeiten. Nach jeder T₁/₂ halbiert sich die Menge.', options:['400','200','100','50'], correct:2, explanation:'Nach 4 Tagen: 400. Nach 8 Tagen: 200. Nach 12 Tagen: 100.' },
+              { q:'Was ist die Halbwertszeit?', hint:'Nicht die Zeit bis alles zerfallen ist – sondern bis …?', options:['Zeit bis alle Atome zerfallen sind','Zeit bis die Hälfte der Kerne zerfallen ist','Zeit bis die Strahlung halbiert wird','Halbe Lebensdauer eines Atoms'], correct:1, explanation:'Halbwertszeit T₁/₂: Zeit bis genau die Hälfte der ursprünglichen Anzahl radioaktiver Kerne zerfallen ist.' },
+              { q:'Was passiert beim α-Zerfall mit der Ordnungszahl des Elements?', hint:'α-Teilchen = 2 Protonen + 2 Neutronen. Diese verlässt den Kern. Was passiert mit der Protonenzahl?', options:['Sie steigt um 2','Sie sinkt um 2','Sie bleibt gleich','Sie sinkt um 4'], correct:1, explanation:'Beim α-Zerfall verliert der Kern 2 Protonen (und 2 Neutronen) → Ordnungszahl sinkt um 2, Massenzahl um 4.' },
+              { q:'Welche Strahlung ist elektromagnetische Strahlung (wie Röntgenstrahlen)?', hint:'Eine der drei Strahlungsarten besteht aus Wellen, nicht aus Teilchen.', options:['α-Strahlung','β-Strahlung','γ-Strahlung','Alle drei'], correct:2, explanation:'γ-Strahlung ist elektromagnetische Strahlung (hochenergetische Photonen) – keine Teilchen, daher kaum zu stoppen.' },
+            ]
+          },
+          { id:'e3', type:'Energie', diff:2, title:'Energie, Wirkungsgrad & Energieversorgung',
+            desc:'Energieformen, Umwandlung und Wirkungsgrad η berechnen.',
+            questions:[
+              { q:'Eine Glühlampe nimmt 60 W auf und gibt 6 W als Licht ab. Wie groß ist η?', hint:'η = Nutzenergie / Zugeführte Energie × 100 %.', options:['6 %','10 %','60 %','54 %'], correct:1, explanation:'η = 6/60 × 100 % = 10 %. Der Rest (90 %) wird als Wärme abgegeben.' },
+              { q:'Was ist das Gesetz der Energieerhaltung?', hint:'Energie kann nie entstehen oder verschwinden – was passiert dann?', options:['Energie kann erzeugt werden','Energie kann vernichtet werden','Energie kann nur umgewandelt, aber nicht erzeugt oder vernichtet werden','Energie nimmt immer ab'], correct:2, explanation:'Energieerhaltungssatz: Die Gesamtenergie eines abgeschlossenen Systems bleibt konstant – Energie wird nur umgewandelt.' },
+              { q:'Welche erneuerbaren Energiequellen gibt es?', hint:'Diese Quellen erschöpfen sich nicht – Sonne, Wind, …', options:['Kohle, Öl, Gas','Solar, Wind, Wasser, Geothermie, Biomasse','Atom- und Kernenergie','Nur Solarenergie'], correct:1, explanation:'Erneuerbare Energiequellen: Solarenergie, Windkraft, Wasserkraft, Geothermie, Biomasse. Sie erschöpfen sich nicht (oder regenerieren sich).' },
+              { q:'Ein Motor wandelt 1.000 J Energie ein und hat η = 80 %. Wie viel Nutzenergie gibt er ab?', hint:'W_nutz = η · W_zu. Achtung: η als Dezimalzahl (0,8) einsetzen.', options:['80 J','800 J','1.800 J','8.000 J'], correct:1, explanation:'W_nutz = 0,80 · 1.000 J = 800 J.' },
+              { q:'Was ist der Unterschied zwischen Energie (J) und Leistung (W)?', hint:'Denke an Zeit: Leistung ist Energie pro … ?', options:['Kein Unterschied','Energie = Kraft × Fläche, Leistung = Kraft × Volumen','Leistung P = Energie/Zeit (W = J/s), Energie = P · t','Energie misst man in Watt'], correct:2, explanation:'Leistung P = Energie W / Zeit t. Einheit W = J/s. Energie = P · t. Beispiel: 100 W · 3600 s = 360.000 J = 0,1 kWh.' },
             ]
           },
         ]
