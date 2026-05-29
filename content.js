@@ -79,6 +79,45 @@ const CONTENT = {
               { q:'Der große Uhrzeiger steht auf der 12, der kleine auf der 5. Wie spät ist es?', hint:'Großer Zeiger auf 12 = volle Stunde.', options:['12:05','5:00','5:30','12:00'], correct:1, explanation:'Großer Zeiger auf 12 = volle Stunde. Kleiner Zeiger auf 5 = 5 Uhr.' },
             ]
           },
+          { id:'e3', type:'Zahlen vergleichen & Reihen', diff:1, title:'Zahlen ordnen und Muster entdecken',
+            desc:'Zahlen bis 20 vergleichen, anordnen und Muster fortsetzen.',
+            questions:[
+              { q:'Welche Zahl ist größer: 14 oder 17?', hint:'Nutze den Zahlenstrahl: Welche Zahl liegt weiter rechts?', options:['14','17','Beide gleich','Keine'], correct:1, explanation:'17 > 14, weil 17 weiter rechts auf dem Zahlenstrahl liegt.' },
+              { q:'Setze das richtige Zeichen: 8 __ 12', hint:'Welche der beiden Zahlen liegt auf dem Zahlenstrahl weiter links?', options:['8 > 12','8 = 12','8 < 12','8 ≥ 12'], correct:2, explanation:'8 < 12 – acht ist kleiner als zwölf.' },
+              { q:'Welche Zahl kommt zwischen 9 und 11?', hint:'Zähle vorwärts: nach 9 kommt … und vor 11 liegt …', options:['8','10','12','13'], correct:1, explanation:'9, 10, 11 – zwischen 9 und 11 liegt die 10.' },
+              { q:'Zähle in 2er-Schritten: 2, 4, 6, 8, __', hint:'Schau: Was wird bei jedem Schritt dazugezählt?', options:['9','10','11','12'], correct:1, explanation:'2, 4, 6, 8, 10 – immer 2 dazuzählen (gerade Zahlen).' },
+              { q:'Wie heißt die Zahl vor der 15?', hint:'Rückwärts zählen: 15, …?', options:['13','14','16','17'], correct:1, explanation:'Vor der 15 kommt die 14 (15 − 1 = 14).' },
+              { q:'Ordne: 7, 3, 11, 5 – was ist die kleinste Zahl?', hint:'Welche Zahl liegt am weitesten links auf dem Zahlenstrahl?', options:['7','3','11','5'], correct:1, explanation:'3 ist die kleinste Zahl – sie liegt am weitesten links auf dem Zahlenstrahl.' },
+              { q:'Muster: 1, 3, 5, 7, __ – was fehlt?', hint:'Um wie viel wird die Zahl bei jedem Schritt größer?', options:['8','9','10','11'], correct:1, explanation:'1, 3, 5, 7, 9 – immer 2 mehr. Das sind die ungeraden Zahlen!' },
+              { q:'Wie viele Zahlen liegen zwischen 5 und 10 (ohne 5 und 10)?', hint:'Zähle: 6, 7, 8, … – wie viele sind das?', options:['3','4','5','6'], correct:1, explanation:'6, 7, 8, 9 – das sind 4 Zahlen zwischen 5 und 10.' },
+            ]
+          },
+          { id:'e4', type:'Sachaufgaben', diff:1, title:'Mathe im Alltag – Sachaufgaben',
+            desc:'Rechengeschichten aus dem echten Leben lösen.',
+            questions:[
+              { q:'Lena hat 5 Buntstifte und kauft 4 neue. Wie viele hat sie jetzt?', hint:'Dazukaufen bedeutet: mehr bekommen – welches Rechenzeichen passt?', options:['1','8','9','10'], correct:2, explanation:'5 + 4 = 9. Lena hat jetzt 9 Buntstifte.' },
+              { q:'Im Regal stehen 12 Bücher. Tom nimmt 5 weg. Wie viele stehen noch da?', hint:'Wegnehmen = welche Rechenart? Schreibe die Aufgabe auf!', options:['5','6','7','8'], correct:2, explanation:'12 − 5 = 7. Es stehen noch 7 Bücher im Regal.' },
+              { q:'Auf einem Baum sitzen 8 Vögel, dann fliegen 3 weg. Wie viele bleiben?', hint:'Wegfliegen = weniger werden. Welches Zeichen brauchst du: + oder −?', options:['3','4','5','6'], correct:2, explanation:'8 − 3 = 5. Es bleiben 5 Vögel auf dem Baum.' },
+              { q:'Zwei Kinder haben je 6 Murmeln. Wie viele Murmeln haben sie zusammen?', hint:'„Zusammen" oder „insgesamt" bedeutet …?', options:['6','10','12','14'], correct:2, explanation:'6 + 6 = 12. Zusammen haben sie 12 Murmeln.' },
+              { q:'Jan hat 10 Cent. Er kauft etwas für 7 Cent. Wie viel bleibt übrig?', hint:'Bezahlen heißt: es wird weniger. Welche Rechenart brauchst du?', options:['2 Cent','3 Cent','4 Cent','17 Cent'], correct:1, explanation:'10 − 7 = 3 Cent. Jan hat noch 3 Cent übrig.' },
+              { q:'In der Klasse sind 18 Kinder. 9 sind Mädchen. Wie viele sind Jungen?', hint:'Gesamtanzahl minus eine Gruppe ergibt die andere Gruppe!', options:['7','8','9','10'], correct:2, explanation:'18 − 9 = 9. Es sind 9 Jungen in der Klasse.' },
+              { q:'Ein Bäcker macht morgens 15 Brötchen. Er verkauft 8. Wie viele sind noch übrig?', hint:'Verkaufen = Brötchen verschwinden. Schreibe die Aufgabe mit − auf!', options:['5','6','7','8'], correct:2, explanation:'15 − 8 = 7. Es sind noch 7 Brötchen übrig.' },
+              { q:'Mia hat 4 Stifte. Sie bekommt noch mal so viele dazu. Wie viele hat sie jetzt?', hint:'Noch mal so viele = nochmal dieselbe Anzahl. Was kommt dazu?', options:['4','6','8','10'], correct:2, explanation:'Mia bekommt nochmal 4 Stifte → 4 + 4 = 8.' },
+            ]
+          },
+          { id:'e5', type:'Geometrie & Muster', diff:1, title:'Formen, Symmetrie und Körper',
+            desc:'Geometrische Formen erkennen und Muster fortsetzen.',
+            questions:[
+              { q:'Ein Rechteck hat 4 Seiten. Je 2 Seiten sind …', hint:'Schau dir ein Fenster oder ein Buch an – welche Seiten sind gleich?', options:['alle gleich lang','je 2 gleich lang','alle verschieden lang','je 3 gleich lang'], correct:1, explanation:'Beim Rechteck sind je 2 gegenüberliegende Seiten gleich lang (2 kurze, 2 lange Seiten).' },
+              { q:'Wie viele Flächen hat ein Würfel?', hint:'Denke an eine Schachtel – wie viele Seiten hat sie?', options:['4','5','6','8'], correct:2, explanation:'Ein Würfel hat 6 quadratische Flächen (oben, unten, vorne, hinten, links, rechts).' },
+              { q:'Wie viele Ecken hat ein Kreis?', hint:'Ein Kreis ist vollständig rund – hat er spitze Stellen?', options:['0','1','2','4'], correct:0, explanation:'Ein Kreis hat gar keine Ecken – er ist rund.' },
+              { q:'Ist ein Schmetterling symmetrisch?', hint:'Kannst du ihn so falten, dass beide Flügel genau aufeinanderliegen?', options:['Ja','Nein','Manchmal','Nur wenn er groß ist'], correct:0, explanation:'Ja! Ein Schmetterling ist symmetrisch – linke und rechte Seite sind spiegelgleich.' },
+              { q:'Welcher Körper rollt in alle Richtungen?', hint:'Welcher Körper ist überall rund – ohne Kanten?', options:['Würfel','Quader','Zylinder','Kugel'], correct:3, explanation:'Die Kugel rollt in alle Richtungen, weil sie überall rund ist.' },
+              { q:'Muster: Dreieck, Kreis, Dreieck, Kreis, Dreieck, __', hint:'Welche Form kommt nach dem letzten Dreieck? Schau auf den Rhythmus!', options:['Dreieck','Kreis','Quadrat','Stern'], correct:1, explanation:'Das Muster ist: Dreieck, Kreis, Dreieck, Kreis … → als nächstes kommt der Kreis.' },
+              { q:'Welche Form siehst du, wenn du von oben auf eine Dose schaust?', hint:'Eine Dose ist ein Zylinder – was ist seine Deckfläche?', options:['Quadrat','Rechteck','Kreis','Dreieck'], correct:2, explanation:'Von oben sieht eine Dose (Zylinder) wie ein Kreis aus.' },
+              { q:'Welcher Buchstabe hat eine Symmetrieachse senkrecht in der Mitte?', hint:'Falte den Buchstaben gedanklich in der Mitte – passt die linke Hälfte auf die rechte?', options:['R','F','A','G'], correct:2, explanation:'Der Buchstabe A hat eine senkrechte Symmetrieachse – links und rechts sind gleich.' },
+            ]
+          },
         ]
       },
       {
@@ -224,6 +263,45 @@ const CONTENT = {
               { q:'Im Diagramm haben Fußball 8, Tennis 5, Schwimmen 4 Stimmen. Was ist am beliebtesten?', hint:'Welche Zahl ist am größten?', options:['Tennis','Schwimmen','Fußball','Alle gleich'], correct:2, explanation:'Fußball hat 8 Stimmen – das ist die größte Zahl.' },
             ]
           },
+          { id:'e3', type:'Einmaleins & Verdoppeln', diff:1, title:'Einmaleins – Alle Reihen üben',
+            desc:'Das kleine Einmaleins vollständig beherrschen.',
+            questions:[
+              { q:'4 × 6 = ?', hint:'Nutze die 4er-Reihe oder zerlege: 2×6 + 2×6 – wie viel ist das?', options:['20','22','24','26'], correct:2, explanation:'4 × 6 = 24. Probe: 24 ÷ 4 = 6 ✓' },
+              { q:'7 × 7 = ?', hint:'Das ist eine Quadratzahl – 7 mal mit sich selbst. Weißt du es auswendig?', options:['42','47','49','56'], correct:2, explanation:'7 × 7 = 49. Quadratzahlen am besten auswendig lernen!' },
+              { q:'9 × 3 = ?', hint:'9er-Reihe: Die Quersumme der Ergebnisse ergibt immer 9! Zähle die 9er-Reihe auf.', options:['24','27','29','32'], correct:1, explanation:'9 × 3 = 27. Quersumme: 2 + 7 = 9 ✓' },
+              { q:'Das Doppelte von 14 ist …', hint:'Doppelt heißt: zweimal nehmen. Was ist 2 × 14?', options:['16','22','28','30'], correct:2, explanation:'2 × 14 = 28. Das Doppelte von 14 ist 28.' },
+              { q:'6 × 8 = ?', hint:'Zerlege: 6×8 = 5×8 + 1×8. Weißt du, was 5×8 ergibt?', options:['42','46','48','52'], correct:2, explanation:'6 × 8 = 48. Probe: 48 ÷ 6 = 8 ✓' },
+              { q:'Die Hälfte von 36 ist …', hint:'Hälfte bedeutet: durch 2 teilen. Was ist 36 ÷ 2?', options:['13','17','18','19'], correct:2, explanation:'36 ÷ 2 = 18. Die Hälfte von 36 ist 18.' },
+              { q:'8 × 4 = ?', hint:'Tauschaufgabe: 8×4 ist dasselbe wie 4×8 – welche Reihe kennst du besser?', options:['28','30','32','36'], correct:2, explanation:'8 × 4 = 32 (= 4 × 8). Beide ergeben dasselbe!' },
+              { q:'Welche Aufgabe ergibt 45?', hint:'Überlege: Durch welche Zahlen kann man 45 dividieren? 45 = 5 × ? = 9 × ?', options:['4 × 9','5 × 8','5 × 9','6 × 7'], correct:2, explanation:'5 × 9 = 45. Probe: 45 ÷ 5 = 9 ✓' },
+            ]
+          },
+          { id:'e4', type:'Sachaufgaben bis 100', diff:1, title:'Sachaufgaben und Alltagsrechnen',
+            desc:'Textaufgaben aus dem Schulalltag und Alltag lösen.',
+            questions:[
+              { q:'Ein Heft kostet 95 Cent, ein Stift kostet 45 Cent. Was kosten beide zusammen?', hint:'Kosten zusammen = addieren. Vergiss nicht: 100 Cent = 1 Euro!', options:['1,30 €','1,40 €','1,50 €','1,60 €'], correct:1, explanation:'95 + 45 = 140 Cent = 1,40 €.' },
+              { q:'28 Kinder sind in der Klasse. 12 fehlen krank. Wie viele sind da?', hint:'Fehlende von der Gesamtzahl wegnehmen – welche Rechenart?', options:['14','15','16','17'], correct:2, explanation:'28 − 12 = 16. Es sind 16 Kinder da.' },
+              { q:'Ein Bauer hat 6 Hühner. Jedes legt 3 Eier. Wie viele Eier gibt es?', hint:'Jedes von 6 Hühnern legt 3 – das ist eine Mal-Aufgabe!', options:['9','15','18','24'], correct:2, explanation:'6 × 3 = 18 Eier.' },
+              { q:'56 Bonbons sollen auf 8 Kinder gleich verteilt werden. Wie viele bekommt jedes Kind?', hint:'Gleichmäßig verteilen = dividieren. Welche Aufgabe aus dem Einmaleins hilft dir?', options:['5','6','7','8'], correct:2, explanation:'56 ÷ 8 = 7. Jedes Kind bekommt 7 Bonbons.' },
+              { q:'Lena hat 3,50 €. Sie kauft Brot für 1,80 €. Wie viel hat sie noch?', hint:'Bezahlen = ausgeben = wegnehmen. Rechne schrittweise!', options:['1,60 €','1,70 €','1,80 €','2,10 €'], correct:1, explanation:'3,50 − 1,80 = 1,70 €.' },
+              { q:'Ein Zug fährt um 9:00 Uhr ab und kommt um 11:30 Uhr an. Wie lange fährt er?', hint:'Von 9 Uhr bis 11 Uhr sind es 2 Stunden – und dann noch die Minuten!', options:['1 h 30 min','2 h','2 h 30 min','3 h'], correct:2, explanation:'Von 9:00 bis 11:30 = 2 Stunden 30 Minuten.' },
+              { q:'In einem Bücherregal stehen 4 Reihen mit je 9 Büchern. Wie viele Bücher gibt es?', hint:'Reihen × Bücher pro Reihe – das ist eine Mal-Aufgabe!', options:['27','32','36','45'], correct:2, explanation:'4 × 9 = 36 Bücher.' },
+              { q:'Tom spart jeden Monat 8 €. Wie viel hat er nach 6 Monaten?', hint:'Pro Monat denselben Betrag – wie oft mal wie viel?', options:['42 €','46 €','48 €','54 €'], correct:2, explanation:'6 × 8 = 48 €.' },
+            ]
+          },
+          { id:'e5', type:'Geometrie & Messen', diff:1, title:'Figuren, Umfang und Messen',
+            desc:'Geometrische Figuren und Messaufgaben für Klasse 2.',
+            questions:[
+              { q:'Was ist der Umfang eines Quadrats mit Seite 5 cm?', hint:'Umfang = alle Seiten zusammenzählen. Wie viele Seiten hat ein Quadrat?', options:['10 cm','15 cm','20 cm','25 cm'], correct:2, explanation:'Umfang = 4 × 5 cm = 20 cm.' },
+              { q:'Wie viele Achsen der Symmetrie hat ein Quadrat?', hint:'Probiere: horizontal, vertikal und diagonal – wie oft passt es genau aufeinander?', options:['1','2','3','4'], correct:3, explanation:'Ein Quadrat hat 4 Symmetrieachsen: 2 durch die Seitenmitten, 2 durch die Ecken.' },
+              { q:'1 dm = ? cm', hint:'Dezi bedeutet „zehntel" – 1 m hat 10 dm, 1 dm hat wie viele cm?', options:['1 cm','5 cm','10 cm','100 cm'], correct:2, explanation:'1 dm = 10 cm.' },
+              { q:'500 g + 300 g = ? (in Kilogramm)', hint:'Erst addieren, dann umrechnen: 1000 g = 1 kg. Wie viel sind 800 g in kg?', options:['0,8 kg','8 kg','80 kg','8000 g'], correct:0, explanation:'500 + 300 = 800 g = 0,8 kg.' },
+              { q:'Ein Rechteck hat die Seiten 8 cm und 3 cm. Wie groß ist sein Umfang?', hint:'Umfang beim Rechteck: Es gibt 2 lange und 2 kurze Seiten – addiere alle 4!', options:['11 cm','22 cm','24 cm','48 cm'], correct:1, explanation:'U = 2×8 + 2×3 = 16 + 6 = 22 cm.' },
+              { q:'Welche Einheit passt zu Entfernungen zwischen Städten?', hint:'Zentimeter und Meter sind zu klein – was kommt noch größer als ein Meter?', options:['cm','dm','m','km'], correct:3, explanation:'Entfernungen zwischen Städten misst man in Kilometer (km). 1 km = 1000 m.' },
+              { q:'Ein Dreieck hat Seiten von 4 cm, 5 cm und 6 cm. Wie groß ist der Umfang?', hint:'Umfang = alle Seiten zusammenzählen – auch beim Dreieck!', options:['13 cm','14 cm','15 cm','16 cm'], correct:2, explanation:'4 + 5 + 6 = 15 cm.' },
+              { q:'Wie viele Ecken hat ein Sechseck?', hint:'Sechs bedeutet … wie viele Seiten und Ecken?', options:['5','6','7','8'], correct:1, explanation:'Ein Sechseck (Hexagon) hat 6 Ecken und 6 Seiten.' },
+            ]
+          },
         ]
       },
       {
@@ -366,6 +444,45 @@ const CONTENT = {
               { q:'Im Diagramm: Katzen 6, Hunde 9, Vögel 3. Wie viele Tiere insgesamt?', hint:'Addiere alle!', options:['15','18','21','24'], correct:1, explanation:'6 + 9 + 3 = 18 Tiere.' },
             ]
           },
+          { id:'e3', type:'Schriftliches Rechnen', diff:2, title:'Schriftlich addieren, subtrahieren, multiplizieren',
+            desc:'Schriftliche Rechenverfahren sicher anwenden.',
+            questions:[
+              { q:'354 + 278 = ?', hint:'Schriftliche Addition: Stelle für Stelle – vergiss den Übertrag von Einern in die Zehner und von Zehnern in die Hunderter!', options:['522','622','632','724'], correct:2, explanation:'4+8=12 (2 hin, 1 Übertrag); 5+7+1=13 (3 hin, 1 Übertrag); 3+2+1=6 → 632.' },
+              { q:'805 − 367 = ?', hint:'Schriftliche Subtraktion: Wenn eine Stelle nicht reicht, borge von der nächsten Stelle!', options:['428','438','448','528'], correct:1, explanation:'805 − 367 = 438. Probe: 438 + 367 = 805 ✓' },
+              { q:'123 × 4 = ?', hint:'Schriftlich multiplizieren: Beginne bei den Einern und vergiss den Übertrag nicht!', options:['482','492','502','512'], correct:1, explanation:'3×4=12 (2 hin, 1 Ü); 2×4+1=9; 1×4=4 → 492.' },
+              { q:'436 + 159 + 205 = ?', hint:'Addiere schrittweise: Erst die ersten beiden Zahlen, dann die dritte dazu!', options:['780','790','800','810'], correct:2, explanation:'436 + 159 = 595; 595 + 205 = 800.' },
+              { q:'700 − 432 = ?', hint:'Stelle unter Stelle – borge wenn eine Stelle nicht reicht. Manchmal musst du mehrmals borgen!', options:['258','268','278','288'], correct:1, explanation:'700 − 432 = 268. Probe: 268 + 432 = 700 ✓' },
+              { q:'214 × 3 = ?', hint:'Schriftlich: jede Stelle mal 3, mit Übertrag von rechts nach links!', options:['622','632','642','652'], correct:2, explanation:'4×3=12 (2, 1 Ü); 1×3+1=4; 2×3=6 → 642.' },
+              { q:'Welche Summe ergibt genau 600?', hint:'Prüfe jede Option oder schätze zuerst, welche nah an 600 liegt!', options:['345 + 256','475 + 125','250 + 390','399 + 202'], correct:1, explanation:'475 + 125 = 600. Probe: 600 − 125 = 475 ✓' },
+              { q:'389 + 211 = ?', hint:'Runde 389 auf 390 auf – was ändert sich dann bei der 211?', options:['590','600','610','620'], correct:1, explanation:'389 + 211 = 600. (390 + 210 = 600, denn 389+1=390 und 211−1=210).' },
+            ]
+          },
+          { id:'e4', type:'Brüche & Größen', diff:2, title:'Einfache Brüche und Maßeinheiten',
+            desc:'Bruchteile verstehen und Einheiten umrechnen.',
+            questions:[
+              { q:'Was bedeutet ½?', hint:'Der Nenner sagt: in wie viele gleiche Teile wird etwas geteilt. Der Zähler sagt: wie viele Teile du hast!', options:['Ein Ganzes','Ein von 2 gleichen Teilen','Zwei Teile','Die Hälfte von 4'], correct:1, explanation:'½ = 1 von 2 gleichen Teilen – also die Hälfte.' },
+              { q:'Was ist größer: ⅓ oder ¼?', hint:'Je größer der Nenner, desto kleiner jeder Teil. Überlege: Bei 3 Teilen oder 4 Teilen – welches Teil ist größer?', options:['⅓','¼','Beide gleich','Kommt auf die Größe an'], correct:0, explanation:'⅓ > ¼. Bei 3 Teilen ist jedes Teil größer als bei 4 Teilen.' },
+              { q:'4,5 km = ? m', hint:'1 km = 1000 m – also: 4,5 × 1000 = ?', options:['45 m','450 m','4500 m','45000 m'], correct:2, explanation:'4,5 × 1000 = 4500 m.' },
+              { q:'2 kg 300 g = ? g', hint:'Rechne zuerst die Kilogramm in Gramm um (1 kg = 1000 g), dann addiere die restlichen Gramm!', options:['230 g','2030 g','2300 g','23000 g'], correct:2, explanation:'2 × 1000 + 300 = 2300 g.' },
+              { q:'Von 20 Kugeln sind ¼ rot. Wie viele sind das?', hint:'Einen Bruchteil von einer Zahl berechnen: Zahl durch Nenner teilen!', options:['4','5','6','8'], correct:1, explanation:'20 ÷ 4 = 5. Ein Viertel von 20 sind 5 Kugeln.' },
+              { q:'1 h 45 min = ? min', hint:'1 Stunde = 60 Minuten. Rechne um und addiere dann die restlichen Minuten!', options:['85 min','95 min','100 min','105 min'], correct:3, explanation:'60 + 45 = 105 min.' },
+              { q:'Wie viele Liter sind 3500 ml?', hint:'1 Liter = 1000 ml. Teile 3500 durch 1000!', options:['3,5 l','35 l','350 l','0,35 l'], correct:0, explanation:'3500 ml ÷ 1000 = 3,5 Liter.' },
+              { q:'Welcher Bruchteil von 12 Äpfeln ist 3?', hint:'Stelle die Frage: 3 von 12 = 3/12. Kannst du diesen Bruch kürzen?', options:['⅙','¼','⅓','½'], correct:1, explanation:'3/12 = ¼ (Zähler und Nenner durch 3 geteilt).' },
+            ]
+          },
+          { id:'e5', type:'Geometrie & Problemlösen', diff:2, title:'Flächen, Umfang und cleveres Denken',
+            desc:'Geometrie vertiefen und Problemlösestrategien anwenden.',
+            questions:[
+              { q:'Umfang eines Rechtecks: Länge 9 cm, Breite 4 cm', hint:'U = 2 × Länge + 2 × Breite – oder: alle 4 Seiten addieren!', options:['13 cm','22 cm','26 cm','36 cm'], correct:2, explanation:'U = 2×9 + 2×4 = 18 + 8 = 26 cm.' },
+              { q:'Fläche eines Rechtecks: Länge 6 cm, Breite 5 cm', hint:'A = Länge × Breite. Das Ergebnis hat die Einheit cm² (Quadratzentimeter)!', options:['11 cm²','22 cm²','30 cm²','60 cm²'], correct:2, explanation:'A = 6 × 5 = 30 cm².' },
+              { q:'Ein Quadrat hat einen Umfang von 24 cm. Wie lang ist eine Seite?', hint:'Alle 4 Seiten sind gleich lang – teile den Umfang durch die Anzahl der Seiten!', options:['4 cm','6 cm','8 cm','12 cm'], correct:1, explanation:'24 ÷ 4 = 6 cm.' },
+              { q:'Welche Figur hat die größte Fläche? A: 4×5 cm, B: 3×7 cm, C: 6×4 cm', hint:'Berechne die Fläche jeder Figur: A = Länge × Breite – welche ist am größten?', options:['A: 20 cm²','B: 21 cm²','C: 24 cm²','Alle gleich'], correct:2, explanation:'A=20 cm², B=21 cm², C=24 cm² – C hat die größte Fläche.' },
+              { q:'Wie viele Einheitswürfel braucht man für einen 3×3×3-Quader?', hint:'Multipliziere Länge × Breite × Höhe!', options:['9','18','27','36'], correct:2, explanation:'3 × 3 × 3 = 27 kleine Würfel.' },
+              { q:'Anna denkt an eine Zahl. Das Doppelte minus 5 ergibt 11. Welche Zahl?', hint:'Rückwärtsrechnen: Starte beim Ergebnis 11 und gehe jeden Schritt zurück!', options:['6','7','8','9'], correct:2, explanation:'11 + 5 = 16; 16 ÷ 2 = 8. Probe: 2×8−5 = 11 ✓' },
+              { q:'Ein Weg hat 450 m. Markus läuft ihn 3-mal. Wie weit läuft er insgesamt?', hint:'Wie oft × wie weit pro Runde = Gesamtstrecke. Welche Rechenart?', options:['1250 m','1350 m','1450 m','1550 m'], correct:1, explanation:'3 × 450 = 1350 m.' },
+              { q:'Wie viele Diagonalen hat ein Viereck?', hint:'Verbinde jede Ecke mit den Ecken, die nicht daneben liegen – das sind die Diagonalen!', options:['1','2','3','4'], correct:1, explanation:'Ein Viereck hat 2 Diagonalen (von Ecke zu Ecke durch die Mitte).' },
+            ]
+          },
         ]
       },
       {
@@ -500,6 +617,45 @@ const CONTENT = {
               { q:'3,7 km = ? m', hint:'1 km = 1000 m', options:['37 m','370 m','3700 m','37000 m'], correct:2, explanation:'3,7 × 1000 = 3700 m.' },
               { q:'2 h 45 min = ? min', hint:'1 h = 60 min', options:['125 min','145 min','165 min','185 min'], correct:2, explanation:'2 × 60 + 45 = 165 min.' },
               { q:'Im Maßstab 1:100 entsprechen 5 cm in der Zeichnung … in der Wirklichkeit?', hint:'Der Maßstab sagt: Kartenlänge × Maßstabszahl = Wirkliche Länge. Was ist die Maßstabszahl hier?', options:['5 m','50 m','500 cm','50 cm'], correct:0, explanation:'5 cm × 100 = 500 cm = 5 m.' },
+            ]
+          },
+          { id:'e3', type:'Schriftliche Division & Brüche', diff:2, title:'Division und Brüche sicher beherrschen',
+            desc:'Schriftliche Division und Bruchteilrechnung für Klasse 4.',
+            questions:[
+              { q:'672 ÷ 6 = ?', hint:'Schriftliche Division: Fange links an. Wie oft passt 6 in 6? In 7? In 12?', options:['102','110','112','122'], correct:2, explanation:'6÷6=1; 07÷6=1 R1; 12÷6=2 → 112. Probe: 112 × 6 = 672 ✓' },
+              { q:'¾ + ¼ = ?', hint:'Die Nenner sind gleich – was machst du dann nur mit den Zählern?', options:['½','¾','1','2'], correct:2, explanation:'¾ + ¼ = 4/4 = 1 ganzes.' },
+              { q:'Welcher Bruch ist kleiner: ⅔ oder ¾?', hint:'Mache beide Brüche auf denselben Nenner (z.B. 12). Was ergibt ⅔ als Zwölftel?', options:['⅔','¾','Beide gleich','Hängt vom Ganzen ab'], correct:0, explanation:'⅔ = 8/12; ¾ = 9/12 → ⅔ < ¾.' },
+              { q:'546 ÷ 3 = ?', hint:'Schriftlich: Wie oft passt 3 in 5? Dann in den Rest + nächste Stelle?', options:['172','182','192','202'], correct:1, explanation:'546 ÷ 3 = 182. Probe: 182 × 3 = 546 ✓' },
+              { q:'Wie viel ist ⅖ von 30?', hint:'Bruchteil einer Zahl: Teile durch den Nenner, dann multipliziere mit dem Zähler!', options:['5','10','12','15'], correct:2, explanation:'30 ÷ 5 = 6; 6 × 2 = 12. ⅖ von 30 = 12.' },
+              { q:'735 ÷ 5 = ?', hint:'Schriftliche Division: 7÷5=1 R2; dann 23÷5=? …', options:['137','147','157','167'], correct:1, explanation:'735 ÷ 5 = 147. Probe: 147 × 5 = 735 ✓' },
+              { q:'½ von 120 = ?', hint:'Die Hälfte einer Zahl berechnen = durch 2 teilen.', options:['40','50','60','70'], correct:2, explanation:'120 ÷ 2 = 60.' },
+              { q:'¾ von 80 = ?', hint:'Erst ¼ von 80 berechnen (÷ 4), dann mit 3 multiplizieren!', options:['40','50','60','70'], correct:2, explanation:'80 ÷ 4 = 20; 20 × 3 = 60.' },
+            ]
+          },
+          { id:'e4', type:'Geometrie & Körper', diff:3, title:'Flächen, Volumen und Raumvorstellung',
+            desc:'Geometrie auf Klasse-4-Niveau: Flächen, Körper und Maßstab.',
+            questions:[
+              { q:'Fläche eines rechtwinkligen Dreiecks mit Katheten 6 cm und 8 cm', hint:'Ein rechtwinkliges Dreieck ist die Hälfte eines Rechtecks. A = (Seite 1 × Seite 2) ÷ 2!', options:['24 cm²','36 cm²','48 cm²','96 cm²'], correct:0, explanation:'A = (6 × 8) ÷ 2 = 48 ÷ 2 = 24 cm².' },
+              { q:'Volumen eines Würfels mit Kantenlänge 4 cm', hint:'Volumen = Länge × Breite × Höhe – beim Würfel sind alle drei gleich lang!', options:['12 cm³','48 cm³','64 cm³','128 cm³'], correct:2, explanation:'V = 4 × 4 × 4 = 64 cm³.' },
+              { q:'Im Maßstab 1:500 ist ein Gebäude 3 cm groß. Wie groß ist es wirklich?', hint:'Wirkliche Größe = Zeichnungsgröße × Maßstabszahl. Was ist die Maßstabszahl?', options:['15 m','1,5 m','150 cm','150 m'], correct:0, explanation:'3 cm × 500 = 1500 cm = 15 m.' },
+              { q:'Volumen eines Quaders: L=5 cm, B=4 cm, H=3 cm', hint:'V = Länge × Breite × Höhe – genauso wie beim Würfel, aber alle drei Maße können verschieden sein!', options:['40 cm³','50 cm³','60 cm³','120 cm³'], correct:2, explanation:'V = 5 × 4 × 3 = 60 cm³.' },
+              { q:'Umfang eines gleichseitigen Dreiecks mit Seite 7 cm', hint:'Gleichseitig bedeutet: alle 3 Seiten sind gleich lang!', options:['14 cm','21 cm','28 cm','49 cm'], correct:1, explanation:'U = 3 × 7 = 21 cm.' },
+              { q:'Wie viele Kanten hat ein Würfel?', hint:'Zähle systematisch: 4 Kanten oben, 4 unten, und wie viele an den Seiten?', options:['6','8','10','12'], correct:3, explanation:'Ein Würfel hat 12 Kanten: 4 oben + 4 unten + 4 senkrecht = 12.' },
+              { q:'Eine Fläche hat 40 cm². Die Breite ist 5 cm. Wie lang ist die Länge?', hint:'A = L × B → L = A ÷ B. Stelle die Formel nach der gesuchten Größe um!', options:['5 cm','6 cm','7 cm','8 cm'], correct:3, explanation:'L = 40 ÷ 5 = 8 cm. Probe: 8 × 5 = 40 cm² ✓' },
+              { q:'Wie viele Flächen (nicht Kanten) hat ein Würfel?', hint:'Denke an eine Schachtel: oben, unten, vorne, hinten, links, rechts – wie viele?', options:['4','5','6','8'], correct:2, explanation:'Ein Würfel hat 6 Flächen (alle quadratisch und gleich groß).' },
+            ]
+          },
+          { id:'e5', type:'Komplexe Sachaufgaben', diff:3, title:'Mehrschrittige Sachaufgaben',
+            desc:'Textaufgaben mit mehreren Rechenschritten – wie in der Schularbeit!',
+            questions:[
+              { q:'348 Bücher werden gleichmäßig auf 4 Schulen verteilt. Wie viele Bücher bekommt jede Schule?', hint:'Gleichmäßig verteilen = dividieren. Welche Zahl teilst du durch welche?', options:['87','88','97','98'], correct:0, explanation:'348 ÷ 4 = 87 Bücher pro Schule. Probe: 87 × 4 = 348 ✓' },
+              { q:'3 Äpfel kosten 1,20 €. Wie viel kosten 12 Äpfel?', hint:'Erst den Preis für 1 Apfel herausfinden (÷ 3), dann mit 12 multiplizieren!', options:['3,60 €','4,20 €','4,80 €','5,40 €'], correct:2, explanation:'1 Apfel = 1,20 ÷ 3 = 0,40 €; 12 × 0,40 = 4,80 €.' },
+              { q:'Garten-Umfang 36 m. Die Länge ist doppelt so lang wie die Breite. Wie lang ist die Länge?', hint:'Stelle auf: U = 2×(L+B) = 36 → L+B = 18. Und L = 2×B. Was ist dann B?', options:['6 m','9 m','12 m','18 m'], correct:2, explanation:'B + 2B = 18 → B = 6 m; L = 2 × 6 = 12 m. Probe: 2×(12+6) = 36 ✓' },
+              { q:'Ein Zug fährt 180 km in 2 Stunden. Wie schnell ist er im Durchschnitt?', hint:'Geschwindigkeit = zurückgelegter Weg ÷ benötigte Zeit!', options:['60 km/h','80 km/h','90 km/h','100 km/h'], correct:2, explanation:'180 ÷ 2 = 90 km/h.' },
+              { q:'Klasse 4a hat 24 Kinder. ¼ spielen Fußball, ⅓ schwimmen. Wie viele machen insgesamt Sport?', hint:'Berechne jeden Bruchteil von 24 getrennt und addiere die Ergebnisse!', options:['10','12','14','16'], correct:2, explanation:'¼ von 24 = 6; ⅓ von 24 = 8; Gesamt: 6 + 8 = 14 Kinder.' },
+              { q:'Tom kauft 3 Hefte à 0,95 € und 2 Stifte à 0,75 €. Er zahlt 5 €. Wie viel Rückgeld?', hint:'Erst den Gesamtpreis berechnen, dann: Rückgeld = bezahlt − Preis!', options:['0,55 €','0,65 €','0,75 €','0,85 €'], correct:1, explanation:'3×0,95 = 2,85 €; 2×0,75 = 1,50 €; Gesamt 4,35 €; Rückgeld: 5,00 − 4,35 = 0,65 €.' },
+              { q:'Eine 2,4 km lange Straße kostet pro 100 m je 8.000 €. Was kostet die ganze Straße?', hint:'2,4 km = ? m. Dann: Wie viele 100-m-Abschnitte gibt es? Dann multiplizieren!', options:['160.000 €','168.000 €','192.000 €','200.000 €'], correct:2, explanation:'2,4 km = 2400 m; 2400 ÷ 100 = 24 Abschnitte; 24 × 8000 = 192.000 €.' },
+              { q:'Wie groß ist die Wahrscheinlichkeit, beim Würfeln eine Zahl ≥ 5 zu würfeln?', hint:'Zähle: Wie viele der 6 Augenzahlen sind größer oder gleich 5?', options:['1/6','2/6 = 1/3','3/6 = 1/2','4/6 = 2/3'], correct:1, explanation:'5 und 6 sind ≥ 5 → 2 von 6 Möglichkeiten = 2/6 = 1/3.' },
             ]
           },
         ]
