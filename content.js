@@ -1395,6 +1395,67 @@ const CONTENT = {
           },
         ]
       },
+      {
+        id:'physik', name:'Physik', icon:'⚡',
+        desc:'Licht, Schatten, Magnetismus und Energie',
+        color:'#0284C7',
+        intro:'Willkommen in Physik Klasse 5! Du entdeckst, wie Licht entsteht, warum Magnete anziehen, woher Energie kommt und was Wärme bedeutet. Physik erklärt, warum die Welt so funktioniert!',
+        topics:[
+          { name:'Licht und Sehen', diff:1,
+            explanation:'Wie sehen wir? Unser Auge sieht Objekte, die Licht aussenden oder reflektieren. Lichtquellen (Sonne, Lampen, Feuer) strahlen selbst Licht aus. Der Mond leuchtet nicht selbst – er reflektiert Sonnenlicht. Licht breitet sich geradlinig aus mit 300.000 km/s – schnellste Geschwindigkeit im Universum! Trifft Licht auf undurchsichtige Körper, entsteht ein Schatten. Durchsichtige Körper (Glas) lassen Licht durch.' },
+          { name:'Schatten', diff:1,
+            explanation:'Schatten entstehen, wenn undurchsichtige Körper Licht blockieren. Bei einer Punktlichtquelle: gleichmäßiger Kernschatten (Umbra). Bei ausgedehnter Quelle (Sonne): Kern- und Halbschatten (Penumbra). Sonnenfinsternisse: Mond zwischen Sonne und Erde. Mondfinsternisse: Erde zwischen Sonne und Mond. Je größer der Abstand zur Lichtquelle, desto kleiner der Schatten.' },
+          { name:'Magnetismus', diff:1,
+            explanation:'Magnete haben zwei Pole: Nordpol (N) und Südpol (S). Gleiche Pole stoßen sich ab, ungleiche ziehen sich an. Die Erde ist ein riesiger Magnet – deshalb zeigt der Kompass nach Norden. Ferromagnetische Materialien (Eisen, Nickel, Kobalt) werden angezogen; Aluminium, Kupfer, Plastik nicht. Mit Eisenfeilspänen macht man Feldlinien sichtbar. Zerteilt man einen Magneten, entstehen zwei vollständige Magnete.' },
+          { name:'Elektrizität im Alltag', diff:1,
+            explanation:'Stromkreis = Stromquelle (Batterie) + Leiter (Drähte) + Verbraucher (Lampe), alles geschlossen verbunden. Leiter: Metalle. Isolatoren: Plastik, Glas, Holz. Reihenschaltung: alle aus, wenn einer ausfällt. Parallelschaltung: andere bleiben an. Sicherheitsregel: Nur Batterien (max. 9 V) – Steckdosen (230 V) sind lebensgefährlich!' },
+          { name:'Energieformen', diff:2,
+            explanation:'Energieformen: Bewegungsenergie, Lageenergie, Wärmeenergie, elektrische Energie, Lichtenergie, chemische Energie. Energie kann nicht erzeugt oder vernichtet, nur umgewandelt werden (Energieerhaltungssatz)! Beispiel: Glühlampe wandelt elektrische → Licht + Wärme. Fahrrad: chemische Energie (Nahrung) → Bewegung + Wärme.' },
+          { name:'Temperatur und Wärme', diff:2,
+            explanation:'Temperatur (°C): Thermometer. Wärme fließt immer vom Warmen zum Kalten. Wärmeübertragung: Wärmeleitung (Kontakt, z.B. Metall), Konvektion (warme Luft steigt auf), Wärmestrahlung (ohne Materie, z.B. Sonne). Wärmeausdehnung: Körper dehnen sich beim Erwärmen aus → Brücken haben Dehnungsfugen.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Licht', diff:1, title:'Licht und Schatten',
+            desc:'Wie Licht sich ausbreitet und Schatten entsteht.',
+            questions:[
+              { q:'Wie breitet sich Licht aus?', hint:'Denk an eine Taschenlampe – der Strahl ist immer gerade.', options:['In Kurven','Geradlinig','Spiralförmig','Unregelmäßig'], correct:1, explanation:'Licht breitet sich immer geradlinig aus – Grundlage der Schattenbildung.' },
+              { q:'Wie schnell ist Licht?', hint:'Von der Sonne bis zur Erde braucht Licht 8 Minuten.', options:['343 m/s','3.000 km/s','300.000 km/s','1.000 km/s'], correct:2, explanation:'Licht: 300.000 km/s – schnellste Geschwindigkeit im Universum.' },
+              { q:'Was ist eine Lichtquelle?', hint:'Sonne, Kerze, Glühlampe – was haben sie gemeinsam?', options:['Etwas das Licht reflektiert','Etwas das selbst Licht aussendet','Ein Spiegel','Etwas das Licht absorbiert'], correct:1, explanation:'Lichtquellen senden selbst Licht aus: Sonne, Glühlampen, Feuer, LEDs.' },
+              { q:'Leuchtet der Mond selbst?', hint:'Der Mond hat keine Kernfusion.', options:['Ja, durch Kernfusion','Ja, durch Radioaktivität','Nein, er reflektiert Sonnenlicht','Nein, er ist immer dunkel'], correct:2, explanation:'Der Mond reflektiert nur Sonnenlicht – er ist keine Lichtquelle.' },
+              { q:'Wann entsteht ein Schatten?', hint:'Licht trifft auf etwas, das es aufhält.', options:['Immer wenn es hell ist','Wenn undurchsichtiger Körper Licht blockiert','Wenn Licht reflektiert wird','Nachts immer'], correct:1, explanation:'Schatten entsteht, wenn undurchsichtiger Körper die geradlinige Lichtausbreitung blockiert.' },
+              { q:'Was passiert mit dem Schatten, wenn der Gegenstand näher zur Lichtquelle kommt?', hint:'Kleiner oder größer?', options:['Er wird kleiner','Er bleibt gleich','Er wird größer','Er verschwindet'], correct:2, explanation:'Näher an der Lichtquelle → größerer Schatten.' },
+              { q:'Was ist der Unterschied zwischen Kern- und Halbschatten?', hint:'Bei der Sonne (ausgedehnte Quelle) entstehen beide.', options:['Kernschatten = wenig Licht, Halbschatten = kein Licht','Kernschatten = kein Licht, Halbschatten = wenig Licht','Beide gleich dunkel','Gibt keinen Unterschied'], correct:1, explanation:'Kernschatten: kein direktes Licht. Halbschatten: teilweise beleuchtet (ausgedehnte Quelle nötig).' },
+              { q:'Was lässt transparentes (durchsichtiges) Glas passieren?', hint:'Durch Fensterglas kann man sehen.', options:['Kein Licht','Licht vollständig','Nur Wärme','Nur Schatten'], correct:1, explanation:'Transparente Körper lassen Licht durch – daher kein klarer Schatten.' },
+            ]
+          },
+          { id:'e2', type:'Magnetismus', diff:1, title:'Magnetismus und Stromkreis',
+            desc:'Magnete, Pole und der einfache Stromkreis.',
+            questions:[
+              { q:'Welche Pole hat jeder Magnet?', hint:'Wie bei der Erde: Nord und …', options:['Nur Nordpol','Nordpol und Südpol','Plus und Minus','Ost und West'], correct:1, explanation:'Jeder Magnet hat Nordpol (N) und Südpol (S).' },
+              { q:'Zwei Nordpole begegnen sich. Was passiert?', hint:'Gleich und gleich …', options:['Anziehung','Abstoßung','Nichts','Verschmelzung'], correct:1, explanation:'Gleiche Pole stoßen sich ab – ungleiche ziehen sich an (N–S).' },
+              { q:'Welches Material wird von Magneten angezogen?', hint:'Das Material in Nägeln und Schrauben.', options:['Aluminium','Plastik','Eisen','Kupfer'], correct:2, explanation:'Eisen (und Nickel, Kobalt) sind ferromagnetisch und werden angezogen.' },
+              { q:'Was braucht ein Stromkreis, damit Strom fließt?', hint:'Offen oder geschlossen?', options:['Er muss unterbrochen sein','Er muss geschlossen sein','Nur eine Batterie','Nur Drähte'], correct:1, explanation:'Strom fließt nur im geschlossenen Stromkreis.' },
+              { q:'Was ist ein Isolator?', hint:'Das Material um Stromkabel herum.', options:['Leitet Strom gut','Leitet keinen Strom','Erzeugt Strom','Speichert Strom'], correct:1, explanation:'Isolatoren (Plastik, Gummi, Glas, Holz) leiten keinen Strom.' },
+              { q:'Warum zeigt der Kompass nach Norden?', hint:'Die Erde ist selbst ein …', options:['Die Sonne zieht ihn an','Die Erde ist ein Magnet','Schwerkraft','Zufall'], correct:1, explanation:'Das Erdmagnetfeld richtet den Kompass aus.' },
+              { q:'Was zeigen Eisenfeilspäne um einen Magneten?', hint:'Sie richten sich entlang der Feldlinien aus.', options:['Die Temperatur','Die Magnetfeldlinien','Die Stromrichtung','Nichts Besonderes'], correct:1, explanation:'Eisenfeilspäne machen das unsichtbare Magnetfeld durch ihre Ausrichtung sichtbar.' },
+              { q:'Wie viel Volt darf man sicher zum Experimentieren nutzen?', hint:'Nicht die Steckdose!', options:['230 V','100 V','12 V','Batterie (max. 9 V)'], correct:3, explanation:'Batterien (max. 9 V) sind sicher. Die Steckdose (230 V) ist lebensgefährlich!' },
+            ]
+          },
+          { id:'e3', type:'Energie', diff:2, title:'Energieformen und Wärme',
+            desc:'Energieumwandlungen und Wärmeübertragung.',
+            questions:[
+              { q:'Was ist Energie?', hint:'Ohne sie kann nichts passieren.', options:['Eine Kraftform','Die Fähigkeit, Arbeit zu verrichten','Eine Temperatur','Nur Licht'], correct:1, explanation:'Energie ist die Fähigkeit, Arbeit zu verrichten – sie treibt alle Vorgänge an.' },
+              { q:'Welche Energieform steckt in Nahrung und Benzin?', hint:'In Molekülen gespeichert.', options:['Lichtenergie','Bewegungsenergie','Chemische Energie','Wärmeenergie'], correct:2, explanation:'Chemische Energie ist in Nahrung, Benzin und Batterien gespeichert.' },
+              { q:'Wohin fließt Wärme immer?', hint:'Heißer Kakao kühlt sich ab …', options:['Vom Kalten zum Warmen','Nach unten','Vom Warmen zum Kalten','Zufällig'], correct:2, explanation:'Wärme fließt immer vom wärmeren zum kälteren Körper.' },
+              { q:'Welche Energieform hat ein Stein auf einem Berg?', hint:'Energie durch Höhe.', options:['Bewegungsenergie','Lageenergie','Wärmeenergie','Elektrische Energie'], correct:1, explanation:'Lageenergie (potenzielle Energie) = Energie durch Höhe über dem Boden.' },
+              { q:'Was ist Konvektion?', hint:'Warme Luft steigt auf, kalte sinkt ab.', options:['Wärme durch Kontakt','Wärme durch Strömung von Luft/Wasser','Wärme durch Strahlung','Wärme durch Reibung'], correct:1, explanation:'Konvektion: Wärmetransport durch Strömungen – warme Teile steigen auf, kalte sinken.' },
+              { q:'Warum dehnen sich Körper beim Erwärmen aus?', hint:'Die Teilchen bewegen sich schneller.', options:['Masse nimmt zu','Teilchen brauchen mehr Platz','Schwerkraft nimmt ab','Zufall'], correct:1, explanation:'Wärme → höhere Teilchenbewegung → größere Abstände → Ausdehnung.' },
+              { q:'Welche Energieform gibt eine Glühlampe hauptsächlich ab?', hint:'Eine Glühlampe wird sehr heiß!', options:['Nur Licht','Nur Wärme','Licht und Wärme','Elektrische Energie'], correct:2, explanation:'Glühlampe: elektrisch → Licht + viel Wärme (deshalb ineffizient).' },
+              { q:'Was gilt für Energie (Energieerhaltungssatz)?', hint:'Energie kann nicht einfach verschwinden.', options:['Energie kann vernichtet werden','Energie kann nur erzeugt werden','Energie kann weder erzeugt noch vernichtet, nur umgewandelt werden','Energie nimmt immer ab'], correct:2, explanation:'Energieerhaltungssatz: Energie wird nie vernichtet – nur umgewandelt.' },
+            ]
+          },
+        ]
+      },
     ]
   },
 
@@ -1526,6 +1587,78 @@ const CONTENT = {
               { q:'Ein Glücksrad mit 4 gleich großen Feldern: P(Feld 1) = ?', hint:'Gleich große Felder → jedes gleich wahrscheinlich!', options:['1/2','1/3','1/4','1'], correct:2, explanation:'P = 1/4 – 4 gleich große Felder.' },
             ]
           },
+          { id:'e9', type:'Geometrie', diff:2, title:'Symmetrie und Achsensymmetrie',
+            desc:'Achsensymmetrie erkennen, Symmetrieachsen zeichnen und anwenden.',
+            questions:[
+              { q:'Was bedeutet Achsensymmetrie?', hint:'Die Figur ist auf beiden Seiten einer Achse spiegelgleich.', options:['Figur ist auf einer Seite größer','Eine Achse teilt die Figur in zwei spiegelgleiche Hälften','Figur dreht sich um einen Punkt','Figur hat nur eine Seite'], correct:1, explanation:'Achsensymmetrie: Eine Achse teilt die Figur in zwei Hälften, die sich wie Bild und Spiegelbild verhalten.' },
+              { q:'Wie viele Symmetrieachsen hat ein Quadrat?', hint:'Horizontal, vertikal und diagonal – zähle sie!', options:['1','2','4','6'], correct:2, explanation:'Ein Quadrat hat 4 Symmetrieachsen: 2 durch Seiten, 2 durch Ecken (Diagonalen).' },
+              { q:'Wie viele Symmetrieachsen hat ein gleichseitiges Dreieck?', hint:'Jede Ecke hat eine Achse durch die gegenüberliegende Seite.', options:['1','2','3','6'], correct:2, explanation:'Gleichseitiges Dreieck: 3 Symmetrieachsen (durch jede Ecke zur Mitte der Gegenseite).' },
+              { q:'Hat ein Rechteck (kein Quadrat) diagonale Symmetrieachsen?', hint:'Falte das Rechteck diagonal – stimmt das überein?', options:['Ja, 4 Achsen','Ja, 2 diagonale Achsen','Nein, nur 2 (horizontal + vertikal)','Keine Symmetrieachse'], correct:2, explanation:'Rechteck hat nur 2 Symmetrieachsen: horizontal (durch Seitenmittelpunkte) und vertikal. Diagonalen sind KEINE Achsen!' },
+              { q:'Was ist Punktsymmetrie?', hint:'Die Figur kann um einen Punkt gedreht werden, ohne ihr Aussehen zu verändern.', options:['Symmetrie um eine Achse','Symmetrie um einen Mittelpunkt (180°-Drehung)','Nur bei Kreisen','Keine echte Symmetrie'], correct:1, explanation:'Punktsymmetrie: 180°-Drehung um den Mittelpunkt ergibt deckungsgleiche Figur.' },
+              { q:'Welche Figur hat unendlich viele Symmetrieachsen?', hint:'Vollkommen rund.', options:['Quadrat','Gleichseitiges Dreieck','Kreis','Rechteck'], correct:2, explanation:'Der Kreis hat unendlich viele Symmetrieachsen – jeder Durchmesser ist eine Symmetrieachse.' },
+              { q:'Ist der Buchstabe "H" achsensymmetrisch?', hint:'Klappe ihn gedanklich an der Mitte – stimmt er überein?', options:['Nein','Ja, eine vertikale Achse','Ja, eine horizontale Achse','Ja, zwei Achsen'], correct:3, explanation:'"H" hat zwei Symmetrieachsen: eine horizontale und eine vertikale.' },
+              { q:'Ist der Buchstabe "R" achsensymmetrisch?', hint:'Hat er eine Spiegelachse?', options:['Ja, vertikal','Ja, horizontal','Nein, keine Achse','Ja, diagonal'], correct:2, explanation:'"R" ist nicht achsensymmetrisch – keine Spiegelachse bringt deckungsgleiche Hälften.' },
+            ]
+          },
+        ]
+      },
+      {
+        id:'physik', name:'Physik', icon:'⚡',
+        desc:'Licht, Magnetfelder, Energie und Wärme vertieft',
+        color:'#0284C7',
+        intro:'Willkommen in Physik Klasse 6! Wir vertiefen Licht und Schatten, erkunden Magnetfelder und erfahren, warum Energie so wichtig ist. Physik ist überall in deinem Alltag!',
+        topics:[
+          { name:'Licht – Reflexion und Spiegel', diff:1,
+            explanation:'Das Reflexionsgesetz: Einfallswinkel = Reflexionswinkel (beide zur Senkrechten). Ein Planspiegel zeigt ein aufrechtes, seitenverkehrtes, gleich großes Bild, das hinter dem Spiegel zu stecken scheint (virtuelles Bild). Hohlspiegel (konkav) bündeln Licht im Brennpunkt – Solarkollektoren, Teleskope. Wölbspiegel (konvex) streuen Licht – Rückspiegel im Auto, Überwachungsspiegel.' },
+          { name:'Magnetismus vertieft', diff:2,
+            explanation:'Magnetfelder werden durch Feldlinien dargestellt: vom Nordpol zum Südpol außen, innen umgekehrt. Enge Feldlinien = starkes Feld. Zerbricht man einen Magneten, entstehen immer zwei vollständige kleinere Magnete. Das Erdmagnetfeld schützt uns vor Sonnenstrahlung. Tiere (Zugvögel, Bienen) nutzen es zur Navigation. Elektromagnete erzeugen steuerbare Magnetfelder.' },
+          { name:'Elektrizität vertieft', diff:2,
+            explanation:'Spannung (Volt) treibt Strom an. Stromstärke (Ampere) = Elektronenfluss. Widerstand (Ohm) hemmt den Strom. Reihenschaltung: gleicher Strom überall, Spannungen addieren sich. Parallelschaltung: gleiche Spannung überall, Ströme addieren sich. Sicherungen schmelzen bei zu hohem Strom und schützen so vor Bränden.' },
+          { name:'Energieformen und Energieversorgung', diff:2,
+            explanation:'Fossile Brennstoffe (Kohle, Öl, Gas): gespeicherte Sonnenenergie aus Millionen Jahren, verbrennen erzeugt CO₂ (Klimawandel). Erneuerbare Energien: Sonne, Wind, Wasser, Biomasse – immer neu erzeugt. Wirkungsgrad = Nutzenergie / zugeführte Energie × 100 %. Kein Gerät ist 100% effizient – immer gehen Verluste als Wärme verloren.' },
+          { name:'Wärme und Temperatur', diff:2,
+            explanation:'Wärmeleitung: Durch Kontakt, Metalle leiten gut, Holz und Styropor schlecht. Konvektion: Strömungen in Gasen/Flüssigkeiten, warmes Material steigt auf. Wärmestrahlung: Ohne Materie, z.B. Infrarotstrahlung der Sonne. Wärmedämmung: Schlechte Leiter (Luft, Wolle, Styropor) reduzieren Wärmeverluste. Thermoskanne: Vakuum zwischen Doppelwänden isoliert dreifach.' },
+        ],
+        exercises:[
+          { id:'e1', type:'Optik', diff:1, title:'Licht und Reflexion',
+            desc:'Wie Licht gespiegelt wird und was das Reflexionsgesetz besagt.',
+            questions:[
+              { q:'Was besagt das Reflexionsgesetz?', hint:'Einfallswinkel und Reflexionswinkel – wie verhalten sie sich?', options:['Reflexionswinkel > Einfallswinkel','Einfallswinkel = Reflexionswinkel','Reflexionswinkel < Einfallswinkel','Kein festes Gesetz'], correct:1, explanation:'Reflexionsgesetz: Einfallswinkel = Reflexionswinkel (zur Flächensenkrechten).' },
+              { q:'Wie ist das Bild in einem Planspiegel?', hint:'Dein Spiegelbild – groß, aufrecht, aber was ist anders?', options:['Kleiner, aufrecht','Gleich groß, aufrecht, seitenverkehrt','Größer, umgekehrt','Gleich wie das Original'], correct:1, explanation:'Planspiegelbild: gleich groß, aufrecht, seitenverkehrt, virtuell (hinter dem Spiegel).' },
+              { q:'Was macht ein Hohlspiegel mit Licht?', hint:'Solar-Öfen und Teleskope nutzen dieses Prinzip.', options:['Streut es','Bündelt es im Brennpunkt','Lässt es durch','Absorbiert es'], correct:1, explanation:'Hohlspiegel (Konkavspiegel) bündelt parallele Strahlen im Brennpunkt.' },
+              { q:'Wo nutzt man Wölbspiegel (Konvexspiegel)?', hint:'Im Supermarkt und im Auto.', options:['Teleskope','Rückspiegel, Überwachungsspiegel','Mikroskope','Scheinwerfer'], correct:1, explanation:'Konvexspiegel streus Licht – breites Sichtfeld → Rückspiegel, Überwachungsspiegel.' },
+              { q:'Was ist der Unterschied zwischen regulärer und diffuser Reflexion?', hint:'Glatte vs. raue Fläche.', options:['Kein Unterschied','Regulär: gerichtet (Spiegel); diffus: gestreut (raue Fläche)','Diffus ist heller','Regulär streut mehr'], correct:1, explanation:'Reguläre Reflexion: glatte Flächen (Spiegel). Diffuse Reflexion: raue Flächen (Buch).' },
+              { q:'Wie groß ist ein Planspiegelbild im Vergleich zum Objekt?', hint:'Schau in dein Spiegelbild.', options:['Halb so groß','Doppelt so groß','Gleich groß','Immer kleiner'], correct:2, explanation:'Das Planspiegelbild ist immer gleich groß wie das Objekt.' },
+              { q:'Was ist ein virtuelles Bild?', hint:'Es scheint hinter dem Spiegel zu stecken, ist aber nicht wirklich dort.', options:['Ein echtes Bild auf einer Wand','Scheinbares Bild, das nicht auf einem Schirm aufgefangen werden kann','Ein verschwommenes Bild','Ein farbiges Bild'], correct:1, explanation:'Virtuelles Bild: scheint hinter dem Spiegel zu liegen, kann nicht auf Schirm projiziert werden.' },
+              { q:'Was passiert mit Licht an einer rauen Oberfläche?', hint:'Buch oder Spiegel – was ist rauer?', options:['Reguläre Reflexion','Diffuse Reflexion in alle Richtungen','Absorption','Keine Reflexion'], correct:1, explanation:'Raue Oberflächen streuen Licht diffus in alle Richtungen – deshalb nicht blendend wie ein Spiegel.' },
+            ]
+          },
+          { id:'e2', type:'Magnetismus', diff:2, title:'Magnetfelder und Elektromagnetismus',
+            desc:'Feldlinien, Erdmagnetismus und Elektromagnete.',
+            questions:[
+              { q:'Was zeigen Feldlinien bei einem Magneten?', hint:'Sie verlaufen vom Nordpol zum Südpol.', options:['Temperaturverteilung','Richtung und Stärke des Magnetfeldes','Lichtverteilung','Elektrische Ladung'], correct:1, explanation:'Feldlinien zeigen die Richtung und Stärke des Magnetfeldes (dicht = stark).' },
+              { q:'Wo ist das Magnetfeld am stärksten?', hint:'Wo sind die Feldlinien am engsten?', options:['In der Mitte','An den Polen','Überall gleich','Außerhalb des Magneten'], correct:1, explanation:'Das Magnetfeld ist an den Polen am stärksten (Feldlinien am dichtesten).' },
+              { q:'Was passiert, wenn man einen Magneten zerbricht?', hint:'Erhält man einen isolierten Nord- oder Südpol?', options:['Verliert er Magnetismus','Zwei vollständige Magnete entstehen','Nur N-Pol und S-Pol separat','Nichts ändert sich'], correct:1, explanation:'Jede Hälfte wird zu einem vollständigen Magneten mit N- und S-Pol – isolierte Pole gibt es nicht!' },
+              { q:'Was schützt das Erdmagnetfeld?', hint:'Es lenkt gefährliche Teilchen ab.', options:['Vor Meteoriten','Vor Sonnensturm (geladene Teilchen)','Vor Erdbeben','Vor Vulkanen'], correct:1, explanation:'Das Erdmagnetfeld schützt vor dem Sonnenwind (energiereiche geladene Teilchen).' },
+              { q:'Wie macht man ein Magnetfeld sichtbar?', hint:'Mit diesen Metallpartikeln in der Physikstunde.', options:['Mit Kreide','Mit Eisenfeilspänen','Mit Sand','Mit Wasser'], correct:1, explanation:'Eisenfeilspäne richten sich entlang der Feldlinien aus und machen das Magnetfeld sichtbar.' },
+              { q:'Was ist ein Elektromagnet?', hint:'Strom erzeugt Magnetismus.', options:['Permanentmagnet aus Stahl','Spule, die durch Strom magnetisch wird','Natürliches Magnetit-Erz','Magnet im Weltraum'], correct:1, explanation:'Elektromagnet: Strom durch Spule → Magnetfeld. Strom aus → Magnetfeld weg.' },
+              { q:'Wie nutzen Zugvögel das Erdmagnetfeld?', hint:'Wie ein eingebauter Kompass.', options:['Nur mit den Augen','Als Navigationshilfe (eingebauter Magnetsinn)','GPS','Geruch'], correct:1, explanation:'Zugvögel haben magnetoreceptive Zellen – sie navigieren am Erdmagnetfeld.' },
+              { q:'Wie verstärkt man einen Elektromagneten?', hint:'Mehr Windungen oder mehr Strom.', options:['Dünneren Draht','Kürzere Spule','Mehr Windungen oder höhere Stromstärke','Weniger Strom'], correct:2, explanation:'Mehr Windungen oder höhere Stromstärke → stärkeres Magnetfeld.' },
+            ]
+          },
+          { id:'e3', type:'Energie', diff:2, title:'Energie und Wärme',
+            desc:'Erneuerbare Energien, Wirkungsgrad und Wärmetransport.',
+            questions:[
+              { q:'Was ist eine erneuerbare Energiequelle?', hint:'Sie wird ständig neu erzeugt.', options:['Kohle','Erdöl','Windenergie','Erdgas'], correct:2, explanation:'Erneuerbare Energien (Sonne, Wind, Wasser, Biomasse) werden ständig neu erzeugt.' },
+              { q:'Was ist der Wirkungsgrad?', hint:'Kein Gerät ist 100 % effizient.', options:['Maximale Leistung','Nutzenergie ÷ zugeführte Energie × 100 %','Energieverbrauch pro Stunde','Verlustenergie'], correct:1, explanation:'Wirkungsgrad = Nutzenergie / zugeführte Energie × 100 %. Kein reales Gerät erreicht 100 %.' },
+              { q:'Woher kommt die Energie in fossilen Brennstoffen?', hint:'Uralte Organismen speicherten Sonnenenergie.', options:['Aus dem Weltraum','Gespeicherte Sonnenenergie aus Jahrmillionen','Aus dem Erdkern','Aus Radioaktivität'], correct:1, explanation:'Fossile Brennstoffe = Sonnenergie, die vor Millionen Jahren von Pflanzen gespeichert wurde.' },
+              { q:'Welcher Stoff leitet Wärme am besten?', hint:'Beim Kochen wird der Metalltopf sofort heiß.', options:['Holz','Kunststoff','Wolle','Metall (z.B. Kupfer)'], correct:3, explanation:'Metalle leiten Wärme am besten (freie Elektronen transportieren Energie).' },
+              { q:'Was ist Konvektion?', hint:'Warme Luft steigt auf, kalte sinkt ab.', options:['Wärme durch Kontakt','Wärme durch Strömung in Gasen/Flüssigkeiten','Wärme durch Strahlung','Reibungswärme'], correct:1, explanation:'Konvektion: Wärmetransport durch Strömungen – warme Teile steigen, kalte sinken.' },
+              { q:'Was erzeugt ein Windrad?', hint:'Bewegungsenergie des Windes wird umgewandelt.', options:['Wärmeenergie','Elektrische Energie','Lageenergie','Schallenergie'], correct:1, explanation:'Windrad: Wind → mechanische Energie → elektrische Energie (Generator).' },
+              { q:'Warum ist eine Thermoskanne gut isoliert?', hint:'Sie hat Vakuum im Doppelmantel.', options:['Sie ist aus Metall','Vakuumschicht stoppt Leitung und Konvektion; Silberbesch. reduziert Strahlung','Kühlrippen','Spezialfarbe'], correct:1, explanation:'Thermoskanne: Vakuum verhindert Leitung und Konvektion; Silberbeschichtung reduziert Strahlung.' },
+              { q:'Was entsteht beim Verbrennen fossiler Brennstoffe hauptsächlich?', hint:'Das Treibhausgas, das den Klimawandel verursacht.', options:['Sauerstoff','Stickstoff','CO₂ (Kohlendioxid)','Helium'], correct:2, explanation:'Verbrennen fossiler Stoffe → CO₂ → Treibhauseffekt → Klimawandel.' },
+            ]
+          },
         ]
       },
     ]
@@ -1644,6 +1777,32 @@ const CONTENT = {
               { q:'Warum ist ein Rechteck ein Sonderfall des Parallelogramms?', hint:'Was gilt beim Rechteck zusätzlich zu parallelen Seiten?', options:['Alle Seiten gleich lang','Alle Winkel = 90°','Nur 3 Seiten','Trapezform'], correct:1, explanation:'Das Rechteck ist ein Parallelogramm mit vier rechten Winkeln (90°).' },
               { q:'Trapez: a = 5 cm, c = 7 cm, h = 6 cm. Fläche?', hint:'A = (5 + 7) / 2 × 6 = ? / 2 × 6.', options:['36 cm²','72 cm²','30 cm²','24 cm²'], correct:0, explanation:'A = 12 / 2 × 6 = 6 × 6 = 36 cm².' },
               { q:'Parallelogramm: Fläche = 48 cm², h = 6 cm. Grundseite a?', hint:'Umformen: a = A / h = 48 / 6.', options:['6 cm','8 cm','10 cm','12 cm'], correct:1, explanation:'a = 48 / 6 = 8 cm.' },
+            ]
+          },
+          { id:'e8', type:'Geometrie', diff:2, title:'Kongruenz und Kongruenzsätze',
+            desc:'Kongruente Figuren erkennen und die Kongruenzsätze anwenden.',
+            questions:[
+              { q:'Was bedeutet Kongruenz bei zwei Figuren?', hint:'Gleiche Form UND gleiche Größe.', options:['Gleiche Form, verschiedene Größe','Gleiche Form und gleiche Größe (deckungsgleich)','Nur gleiche Winkel','Nur gleiche Seiten'], correct:1, explanation:'Kongruente Figuren sind deckungsgleich: gleiche Form und gleiche Größe. Sie können übereinandergelegt werden.' },
+              { q:'Was besagt der Kongruenzsatz SSS?', hint:'Drei Seiten bestimmen ein Dreieck eindeutig.', options:['Zwei Seiten und ein Winkel','Alle drei Seiten gleich → eindeutig bestimmtes Dreieck','Alle drei Winkel gleich','Zwei Winkel und eine Seite'], correct:1, explanation:'SSS: Sind alle drei Seiten zweier Dreiecke gleich, sind die Dreiecke kongruent.' },
+              { q:'Was besagt der Kongruenzsatz SWS?', hint:'Zwei Seiten und der eingeschlossene Winkel.', options:['Drei Seiten gleich','Zwei Seiten und der zwischen ihnen liegende Winkel gleich','Ein Winkel und zwei Seiten beliebig','Alle Winkel gleich'], correct:1, explanation:'SWS: Zwei Seiten und der eingeschlossene Winkel → Dreiecke eindeutig bestimmt und kongruent.' },
+              { q:'Was besagt der Kongruenzsatz WSW?', hint:'Zwei Winkel und die dazwischen liegende Seite.', options:['Drei Winkel gleich','Zwei Winkel und eingeschlossene Seite gleich','Zwei Winkel und beliebige Seite','Eine Seite und drei Winkel'], correct:1, explanation:'WSW: Zwei Winkel und die eingeschlossene Seite → Dreiecke eindeutig bestimmt und kongruent.' },
+              { q:'Welche Transformation erzeugt eine kongruente Figur?', hint:'Form und Größe bleiben erhalten.', options:['Streckung (vergrößern)','Verschiebung, Spiegelung oder Drehung','Stauchung','Perspektive ändern'], correct:1, explanation:'Kongruenzabbildungen: Verschiebung, Spiegelung, Drehung – Form und Größe bleiben erhalten.' },
+              { q:'Zwei Dreiecke: alle drei Winkel gleich. Sind sie kongruent?', hint:'Gleiche Winkel → gleiche Form – aber gleiche Größe?', options:['Ja, immer','Nicht unbedingt – sie sind nur ähnlich','Nur wenn eine Seite gleich ist','Nie'], correct:1, explanation:'Gleiche Winkel → ähnlich, aber nicht unbedingt kongruent (verschiedene Größen möglich). Es braucht mindestens eine Seite!' },
+              { q:'Kongruenzsatz SSW – warum ist er problematisch?', hint:'Es kann zwei verschiedene Dreiecke geben.', options:['Er ist immer eindeutig','Er kann nicht eindeutig sein (zwei Dreiecke möglich)','Er funktioniert nur bei rechtwinkligen Dreiecken','Er existiert nicht'], correct:1, explanation:'SSW (zwei Seiten, nicht eingeschlossener Winkel) kann zwei verschiedene Dreiecke ergeben – daher kein allgemeiner Kongruenzsatz.' },
+              { q:'Wie prüft man, ob zwei Dreiecke kongruent sind?', hint:'Alle Seiten und Winkel vergleichen.', options:['Nur Winkel vergleichen','Nur Seiten vergleichen','Alle Seiten und Winkel müssen paarweise gleich sein','Flächeninhalt vergleichen'], correct:2, explanation:'Kongruent: alle drei Seiten UND alle drei Winkel paarweise gleich. (Mindestens ein SSS/SWS/WSW-Satz reicht zum Beweis.)' },
+            ]
+          },
+          { id:'e9', type:'Algebra', diff:2, title:'Zuordnungen und Proportionalität',
+            desc:'Proportionale und antiproportionale Zuordnungen verstehen.',
+            questions:[
+              { q:'Was ist eine proportionale Zuordnung?', hint:'Doppelt so viel kostet doppelt so viel.', options:['y nimmt zu, wenn x kleiner wird','y = k × x (gleiches Verhältnis)','y und x sind unabhängig','y bleibt konstant'], correct:1, explanation:'Proportional: y = k × x. Verdoppelt sich x, verdoppelt sich auch y. Quotient y/x = konstant.' },
+              { q:'Was ist eine antiproportionale Zuordnung?', hint:'Mehr Arbeiter → weniger Zeit für dieselbe Arbeit.', options:['y = k × x','y = k / x (Produkt konstant)','y wächst immer','y und x wachsen zusammen'], correct:1, explanation:'Antiproportional: y = k / x. Produkt x × y = konstant. Doppeltes x → halbes y.' },
+              { q:'4 Arbeiter brauchen 6 Stunden. Wie lange brauchen 8 Arbeiter?', hint:'Mehr Arbeiter → weniger Zeit. Anti-proportional!', options:['12 h','6 h','3 h','2 h'], correct:2, explanation:'8 Arbeiter = doppelte Anzahl → halbe Zeit: 6 ÷ 2 = 3 Stunden.' },
+              { q:'3 Hefte kosten 4,50 €. Wie viel kosten 5 Hefte?', hint:'Proportional! Preis pro Heft berechnen.', options:['6,00 €','7,00 €','7,50 €','9,00 €'], correct:2, explanation:'Preis/Heft = 1,50 €. 5 × 1,50 = 7,50 €.' },
+              { q:'Woran erkennst du eine proportionale Zuordnung im Graphen?', hint:'Welche Form hat der Graph?', options:['Parabel durch Ursprung','Gerade durch den Ursprung','Waagerechte Linie','Kurve, die sich dem Nullpunkt nähert'], correct:1, explanation:'Proportionale Zuordnungen: Gerade durch den Ursprung (0|0) im Koordinatensystem.' },
+              { q:'Woran erkennst du eine antiproportionale Zuordnung im Graphen?', hint:'Der Graph nähert sich beiden Achsen, ohne sie zu berühren.', options:['Gerade durch Ursprung','Parabel','Hyperbel (nach Achsen annähernd)','Kreis'], correct:2, explanation:'Antiproportionale Zuordnungen: Hyperbel im Graphen.' },
+              { q:'Dreisatz: 6 kg Äpfel kosten 9 €. Was kosten 10 kg?', hint:'Schritt 1: Preis für 1 kg. Schritt 2: × 10.', options:['12 €','15 €','18 €','6 €'], correct:1, explanation:'1 kg = 9 ÷ 6 = 1,50 €. 10 kg = 10 × 1,50 = 15 €.' },
+              { q:'Was ist der Dreisatz?', hint:'Erst auf Einheit, dann auf gewünschte Anzahl rechnen.', options:['Eine Art Gleichung','Eine Methode: über den Einzelwert zum gesuchten Wert','Eine Formel für Dreiecke','Eine Zinsformel'], correct:1, explanation:'Dreisatz: 1. Einzelwert berechnen, 2. Mit gewünschter Anzahl multiplizieren. Ideal bei proportionalen Zuordnungen.' },
             ]
           },
         ]
@@ -1836,6 +1995,32 @@ const CONTENT = {
               { q:'Kreisdurchmesser d = 10 cm. Radius r = ?', hint:'Radius = halber Durchmesser.', options:['10 cm','20 cm','5 cm','π cm'], correct:2, explanation:'r = d / 2 = 10 / 2 = 5 cm.' },
             ]
           },
+          { id:'e7', type:'Algebra', diff:3, title:'Lineare Gleichungssysteme (LGS)',
+            desc:'Zwei Gleichungen mit zwei Unbekannten lösen.',
+            questions:[
+              { q:'Was ist ein lineares Gleichungssystem (LGS)?', hint:'Zwei oder mehr Gleichungen mit mehreren Unbekannten.', options:['Eine Gleichung mit einer Unbekannten','Mehrere Gleichungen mit mehreren Unbekannten','Eine quadratische Gleichung','Ein System von Formeln'], correct:1, explanation:'LGS: Mehrere lineare Gleichungen mit mehreren Unbekannten, die gemeinsam gelöst werden.' },
+              { q:'Löse: x + y = 5 und x – y = 1 (Additionsverfahren). Was ist x?', hint:'Addiere beide Gleichungen: die y-Terme verschwinden.', options:['x = 2','x = 3','x = 4','x = 1'], correct:1, explanation:'(x+y)+(x–y) = 5+1 → 2x = 6 → x = 3.' },
+              { q:'Löse: x + y = 5 und x = 3. Was ist y?', hint:'x einsetzen und nach y auflösen.', options:['y = 1','y = 2','y = 3','y = 8'], correct:1, explanation:'3 + y = 5 → y = 2.' },
+              { q:'Was ist das Substitutionsverfahren?', hint:'Eine Variable durch den Ausdruck der anderen ersetzen.', options:['Beide Gleichungen addieren','Eine Variable durch Ausdruck ersetzen','Gleichungen subtrahieren','Raten und Prüfen'], correct:1, explanation:'Substitution: Eine Gleichung nach einer Variable auflösen und in die andere einsetzen.' },
+              { q:'Löse mit Substitution: y = 2x und x + y = 9. Was ist x?', hint:'y durch 2x ersetzen: x + 2x = 9.', options:['x = 2','x = 3','x = 4','x = 6'], correct:1, explanation:'x + 2x = 9 → 3x = 9 → x = 3. Dann y = 6.' },
+              { q:'Was ist das Additionsverfahren?', hint:'Gleichungen so addieren, dass eine Variable verschwindet.', options:['Gleichungen zusammenzählen','Gleichungen so addieren (evtl. nach Multiplikation), dass eine Variable eliminiert wird','Beide Gleichungen subtrahieren','Variablen raten'], correct:1, explanation:'Additionsverfahren: Gleichungen addieren (ggf. vorher multiplizieren), um eine Variable zu eliminieren.' },
+              { q:'2x + y = 8 und x + y = 5. Subtraktions-Methode: Was ist x?', hint:'Erste minus zweite Gleichung: y verschwindet.', options:['x = 1','x = 2','x = 3','x = 4'], correct:2, explanation:'(2x+y)–(x+y) = 8–5 → x = 3.' },
+              { q:'Wie viele Lösungen hat ein LGS mit zwei parallelen Geraden?', hint:'Parallele Geraden schneiden sich nie.', options:['Unendlich viele','Genau eine','Keine','Immer zwei'], correct:2, explanation:'Parallele Geraden → kein Schnittpunkt → keine Lösung (widersprüchliches LGS).' },
+            ]
+          },
+          { id:'e8', type:'Geometrie', diff:2, title:'Prismen, Zylinder und Körper',
+            desc:'Oberfläche und Volumen von Prismen und Zylindern berechnen.',
+            questions:[
+              { q:'Was ist ein Prisma?', hint:'Denk an eine Säule mit gleichbleibendem Querschnitt.', options:['Ein Körper mit 4 Dreiecken','Ein Körper mit zwei parallelen kongruenten Grundflächen und rechteckigen Seitenflächen','Eine Kugel','Ein Körper mit einer Grundfläche'], correct:1, explanation:'Prisma: zwei parallele, kongruente Grundflächen + rechteckige Seitenflächen.' },
+              { q:'Volumenformel für ein Prisma?', hint:'Grundfläche × Höhe.', options:['V = a × b','V = G × h','V = π × r² × h','V = ⅓ × G × h'], correct:1, explanation:'V = G × h (Grundflächeninhalt × Höhe).' },
+              { q:'Dreieckiges Prisma: Dreieck-Grundfläche = 12 cm², h = 8 cm. Volumen?', hint:'V = G × h = 12 × 8.', options:['20 cm³','48 cm³','96 cm³','192 cm³'], correct:2, explanation:'V = 12 × 8 = 96 cm³.' },
+              { q:'Was ist ein Zylinder?', hint:'Dose, Rohr, Kerze.', options:['Körper mit dreieckiger Grundfläche','Körper mit kreisrunden Grundflächen und gekrümmter Mantelfläche','Körper mit 6 rechteckigen Seiten','Körper mit Spitze'], correct:1, explanation:'Zylinder: zwei kreisrunde parallele Grundflächen + gekrümmte Mantelfläche.' },
+              { q:'Volumen Zylinder: r = 3 cm, h = 10 cm (π ≈ 3,14)?', hint:'V = π × r² × h = 3,14 × 9 × 10.', options:['94,2 cm³','282,6 cm³','942 cm³','28,26 cm³'], correct:1, explanation:'V = 3,14 × 9 × 10 = 282,6 cm³.' },
+              { q:'Mantelfläche eines Zylinders?', hint:'Rolle die Mantelfläche ab – ein Rechteck entsteht.', options:['M = π × r²','M = 2 × π × r × h','M = π × d','M = r × h'], correct:1, explanation:'Mantelfläche: M = 2 × π × r × h (aufgerollt = Rechteck: Breite = Umfang, Höhe = h).' },
+              { q:'Gesamtoberfläche Zylinder (r = 4 cm, h = 7 cm, π ≈ 3,14)?', hint:'O = 2 × Grundfläche + Mantelfläche = 2 × π×r² + 2×π×r×h.', options:['87,92 cm²','175,84 cm²','276,32 cm²','213,52 cm²'], correct:2, explanation:'O = 2×3,14×16 + 2×3,14×4×7 = 100,48 + 175,84 = 276,32 cm².' },
+              { q:'Was ist der Unterschied zwischen einem geraden und einem schiefen Prisma?', hint:'Sind die Seitenkanten senkrecht oder schräg?', options:['Kein Unterschied','Gerade: Seitenkanten senkrecht zur Grundfläche; schief: schräg','Gerade hat mehr Flächen','Schief hat weniger Volumen'], correct:1, explanation:'Gerades Prisma: Seitenkanten stehen senkrecht auf der Grundfläche. Schief: sie stehen schräg.' },
+            ]
+          },
         ]
       },
       {
@@ -2013,6 +2198,19 @@ const CONTENT = {
               { q:'Urne: 4 rote, 6 blaue. Zwei Kugeln nacheinander OHNE Zurücklegen. P(beide rot)?', hint:'Erster Zug: 4/10. Dann: noch 3 rote bei 9 übrigen.', options:['4/10 × 4/10','4/10 × 3/9','4/10 × 3/10','2/5'], correct:1, explanation:'P = 4/10 × 3/9 = 12/90 = 2/15 ≈ 13,3 %.' },
             ]
           },
+          { id:'e7', type:'Analysis', diff:3, title:'Exponentielles Wachstum und Zerfall',
+            desc:'Exponentielles Wachstum erkennen, beschreiben und berechnen.',
+            questions:[
+              { q:'Was ist exponentielles Wachstum?', hint:'Der Bestand wächst immer um denselben Faktor (nicht um denselben Betrag).', options:['Wächst um festen Betrag','Wächst um festen Faktor (z.B. verdoppelt sich)','Wächst mal schnell, mal langsam','Wächst umgekehrt proportional'], correct:1, explanation:'Exponentiell: Bestand wird regelmäßig mit gleichem Faktor multipliziert (z.B. ×2 täglich).' },
+              { q:'Was ist der Unterschied zwischen linearem und exponentiellem Wachstum?', hint:'Linear: +10 täglich. Exponentiell: ×2 täglich.', options:['Kein Unterschied','Linear: fester Zuwachs; exponentiell: fester Faktor','Linear: schneller am Anfang','Exponentiell: langsamer am Anfang'], correct:1, explanation:'Linear: gleicher Zuwachs pro Schritt. Exponentiell: gleicher Faktor pro Schritt → enorm schneller!' },
+              { q:'Formel für exponentielles Wachstum?', hint:'f(x) = a × b^x. Was ist b?', options:['f(x) = a × x','f(x) = a × bˣ','f(x) = a + bx','f(x) = x^a'], correct:1, explanation:'f(x) = a × bˣ. a = Startwert, b = Wachstumsfaktor (b > 1 für Wachstum, 0 < b < 1 für Zerfall).' },
+              { q:'Startbestand 200 Bakterien, verdoppeln sich täglich. Nach 3 Tagen?', hint:'f(3) = 200 × 2³ = 200 × 8.', options:['400','800','1.200','1.600'], correct:3, explanation:'200 × 2³ = 200 × 8 = 1.600 Bakterien nach 3 Tagen.' },
+              { q:'Was ist exponentieller Zerfall (Abnahme)?', hint:'Halbwertszeit! Der Bestand nimmt regelmäßig ab.', options:['b > 1 in f(x) = a × bˣ','b < 1 (zwischen 0 und 1) in f(x) = a × bˣ','Negativer Startwert','Konstante Abnahme'], correct:1, explanation:'Exponentieller Zerfall: 0 < b < 1. Der Bestand halbiert sich oder nimmt um festen Anteil ab.' },
+              { q:'Was ist die Halbwertszeit?', hint:'Wie lange es dauert, bis die Hälfte übrig ist.', options:['Zeit bis zum Nullpunkt','Zeit, nach der der Bestand halbiert ist','Durchschnittliche Lebensdauer','Verdopplungszeit'], correct:1, explanation:'Halbwertszeit: Zeit, nach der der Bestand auf die Hälfte gesunken ist (z.B. radioaktiver Zerfall).' },
+              { q:'Bestand: f(x) = 1.000 × 0,5ˣ. Was ist nach 2 Schritten übrig?', hint:'f(2) = 1.000 × 0,5² = 1.000 × 0,25.', options:['100','250','500','750'], correct:1, explanation:'f(2) = 1.000 × 0,25 = 250.' },
+              { q:'Wo begegnet uns exponentielles Wachstum im Alltag?', hint:'Sehr schnell wachsende Prozesse.', options:['Gleichmäßige Bewegung','Virenpandemic, Zinsen, Bevölkerungswachstum','Lineares Sparen','Gleichbleibender Verbrauch'], correct:1, explanation:'Exponentiell: Virus-Ausbreitung, Zinseszins, Kettenreaktionen, Bevölkerungswachstum.' },
+            ]
+          },
         ]
       },
       {
@@ -2175,6 +2373,19 @@ const CONTENT = {
               { q:'2 × Vektor a = (3, 5). Ergebnis?', hint:'Skalarmultiplikation: jeden Anteil × 2.', options:['(3, 5)','(5, 3)','(6, 10)','(9, 25)'], correct:2, explanation:'2 × (3, 5) = (6, 10). Skalarmultiplikation skaliert Richtung und Länge.' },
             ]
           },
+          { id:'e6', type:'Analysis', diff:3, title:'Logarithmen – Grundlagen',
+            desc:'Logarithmus verstehen, Rechenregeln und Anwendungen.',
+            questions:[
+              { q:'Was ist ein Logarithmus?', hint:'Er beantwortet: "2 hoch wie viel ergibt 8?"', options:['Das Gegenteil der Multiplikation','Die Umkehrung der Potenzierung: bˣ = y → logb(y) = x','Eine spezielle Wurzel','Ein Spezialprozentsatz'], correct:1, explanation:'Logarithmus = Umkehrfunktion der Potenz: 2³ = 8 → log₂(8) = 3.' },
+              { q:'Was ist log₁₀(100)?', hint:'10 hoch wie viel ergibt 100?', options:['1','2','10','100'], correct:1, explanation:'10² = 100 → log₁₀(100) = 2.' },
+              { q:'Was ist log₂(8)?', hint:'2 hoch wie viel ergibt 8?', options:['2','3','4','8'], correct:1, explanation:'2³ = 8 → log₂(8) = 3.' },
+              { q:'Was ist der natürliche Logarithmus ln?', hint:'Er hat eine besondere Basis – die Eulersche Zahl.', options:['Logarithmus zur Basis 10','Logarithmus zur Basis 2','Logarithmus zur Basis e ≈ 2,718','Logarithmus zur Basis π'], correct:2, explanation:'ln(x) = logₑ(x). Basis ist die Eulersche Zahl e ≈ 2,718.' },
+              { q:'Rechenregel: log(a × b) = ?', hint:'Produkt unter dem Logarithmus.', options:['log(a) × log(b)','log(a) + log(b)','log(a) – log(b)','log(a + b)'], correct:1, explanation:'log(a × b) = log(a) + log(b). Multiplikation → Addition der Logarithmen.' },
+              { q:'Was ist log₁₀(1)?', hint:'10 hoch wie viel ergibt 1?', options:['0','1','10','–1'], correct:0, explanation:'10⁰ = 1 → log₁₀(1) = 0. Der Logarithmus von 1 ist immer 0 (bei jeder Basis).' },
+              { q:'Wofür nutzt man Logarithmen im Alltag?', hint:'Erdbebenstärke, Lautstärke, Säuregehalt ...', options:['Nur in der Mathematik','Richter-Skala, Dezibel (Schall), pH-Wert','Nur für Zinsen','Nur in der Physik'], correct:1, explanation:'Logarithmen: Richter-Skala (Erdbeben), Dezibel (Lautstärke), pH-Wert (Säure) – alle logarithmische Skalen.' },
+              { q:'Was ist log₃(27)?', hint:'3 hoch wie viel ergibt 27?', options:['2','3','9','27'], correct:1, explanation:'3³ = 27 → log₃(27) = 3.' },
+            ]
+          },
         ]
       },
       {
@@ -2243,6 +2454,19 @@ const CONTENT = {
               { q:'Was sind elektromagnetische Wellen?', hint:'Sie brauchen kein Medium und breiten sich mit Lichtgeschwindigkeit aus.', options:['Mechanische Druckwellen','Schwingungen aus gekoppelten E- und B-Feldern','Nur Lichtwellen','Schallwellen hoher Frequenz'], correct:1, explanation:'EM-Wellen: Transversalwellen aus schwingenden elektrischen und magnetischen Feldern – kein Medium nötig.' },
               { q:'Welche Strahlung hat die höchste Frequenz?', hint:'Je kürzer die Wellenlänge, desto höher die Frequenz.', options:['Radiowellen','Sichtbares Licht','Infrarot','Gamma-Strahlung'], correct:3, explanation:'Gamma-Strahlung hat die höchste Frequenz und kürzeste Wellenlänge im EM-Spektrum.' },
               { q:'Was ist Wechselstrom (AC)?', hint:'Strom aus der Steckdose.', options:['Strom fließt nur in eine Richtung','Strom wechselt periodisch die Richtung','Strom ist immer gleich stark','Strom kommt aus Batterien'], correct:1, explanation:'Wechselstrom (AC): Stromrichtung wechselt periodisch (in Deutschland 50 Mal pro Sekunde = 50 Hz).' },
+            ]
+          },
+          { id:'e5', type:'Atomphysik', diff:3, title:'Atommodelle und Kernphysik',
+            desc:'Atombau, Atommodelle, Radioaktivität und Kernphysik.',
+            questions:[
+              { q:'Aus welchen Teilchen besteht ein Atomkern?', hint:'Positiv geladen + neutral = ?', options:['Nur Protonen','Protonen und Neutronen','Nur Elektronen','Protonen, Neutronen und Elektronen'], correct:1, explanation:'Atomkern: Protonen (positiv geladen) + Neutronen (neutral). Elektronen umkreisen den Kern.' },
+              { q:'Was beschreibt das Bohrsche Atommodell?', hint:'Elektronen auf festen Bahnen wie Planeten.', options:['Elektronen bewegen sich zufällig','Elektronen bewegen sich auf festen Bahnen (Schalen) um den Kern','Atome sind unteilbar','Elektronen sind im Kern'], correct:1, explanation:'Bohr-Modell (1913): Elektronen auf festen Kreisbahnen (Energieniveaus) um den Kern.' },
+              { q:'Was ist die Ordnungszahl (Kernladungszahl) eines Atoms?', hint:'Charakterisiert jedes Element eindeutig.', options:['Anzahl der Neutronen','Anzahl der Protonen im Kern','Masse des Atoms','Anzahl der Elektronen in der Hülle'], correct:1, explanation:'Ordnungszahl Z = Anzahl der Protonen im Kern. Sie bestimmt das chemische Element.' },
+              { q:'Was ist ein Isotop?', hint:'Gleiche Protonenzahl, andere Neutronenzahl.', options:['Atome verschiedener Elemente','Atome gleichen Elements mit gleicher Neutronenzahl','Atome gleichen Elements mit verschiedener Neutronenzahl','Radioaktive Atome'],correct:2, explanation:'Isotope: gleiche Protonenzahl (= gleich Element), aber verschiedene Neutronenzahl → verschiedene Massenzahl.' },
+              { q:'Was ist die Bindungsenergie im Atomkern?', hint:'Warum bleiben Protonen und Neutronen zusammen, obwohl sich Protonen abstoßen?', options:['Energie für chemische Bindung','Energie, die die Kernbausteine zusammenhält (starke Kernkraft)','Energie der Elektronen','Energie der Strahlung'], correct:1, explanation:'Bindungsenergie: Die starke Kernkraft hält Protonen und Neutronen trotz elektrostatischer Abstoßung zusammen.' },
+              { q:'Was ist Kernspaltung?', hint:'In Kernkraftwerken und bei der Atombombe.', options:['Atom verliert Elektronen','Schwerer Atomkern zerfällt in leichtere Kerne unter Energiefreisetzung','Zwei Kerne verschmelzen','Radioaktiver Zerfall'], correct:1, explanation:'Kernspaltung: Schwerer Kern (z.B. Uran-235) zerfällt in leichtere Kerne + Energie + Neutronen (Kettenreaktion).' },
+              { q:'Was ist die Sonne energetisch?', hint:'Sie "verbrennt" Wasserstoff, aber keine chemische Verbrennung.', options:['Riesige Holzverbrennung','Kernfusion: Wasserstoff zu Helium','Kernspaltung wie im Kraftwerk','Chemische Reaktion'], correct:1, explanation:'Sonne: Kernfusion – Wasserstoffkerne fusionieren zu Helium → enorme Energie (E = mc²).' },
+              { q:'In welcher Einheit misst man die Entfernung im Weltall?', hint:'Eine AU = Sonne-Erde-Abstand. Für noch größere Entfernungen?', options:['Kilometer','Lichtjahr (Entfernung, die Licht in einem Jahr zurücklegt)','Meter','Parsec'], correct:1, explanation:'Lichtjahr: Entfernung, die Licht in 1 Jahr zurücklegt (≈ 9,46 × 10¹² km). Standard in der Astronomie.' },
             ]
           },
         ]
