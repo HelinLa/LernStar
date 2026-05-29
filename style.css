@@ -264,69 +264,122 @@ ul { list-style: none; }
 .stat-lbl { font-size:.85rem; color:rgba(255,255,255,.6); font-weight:600; }
 
 /* ============================================================
-   SCHULFORM-SELEKTOR
+   SCHULFORM-SELEKTOR – Karten-Design (2-Schritt-Navigation)
    ============================================================ */
-.sf-selector {
-  max-width: 860px;
-  margin: 0 auto 20px;
+
+/* ── SCHRITT 1: Schulform-Karten ── */
+.sf-cards-section {
+  max-width: 900px;
+  margin: 0 auto 36px;
   padding: 0 24px;
   text-align: center;
 }
-.sf-selector-title {
-  font-size: .92rem;
+.sf-cards-title {
+  font-size: 1rem;
   font-weight: 700;
-  color: rgba(255,255,255,.6);
-  margin-bottom: 14px;
-  letter-spacing: .04em;
+  color: rgba(255,255,255,.8);
+  margin-bottom: 22px;
+  letter-spacing: .05em;
   text-transform: uppercase;
 }
-.sf-row {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
+.sf-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
-.sf-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: 16px 24px;
-  border-radius: 20px;
-  border: 2.5px solid rgba(255,255,255,.18);
-  background: rgba(255,255,255,.08);
+.sf-card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 32px 20px 26px;
+  text-align: center;
   cursor: pointer;
-  transition: all .22s cubic-bezier(.4,0,.2,1);
+  border: 3px solid transparent;
   font-family: inherit;
-  color: rgba(255,255,255,.75);
-  min-width: 120px;
-  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 24px rgba(0,0,0,.12);
+  transition: all .22s cubic-bezier(.4,0,.2,1);
+  position: relative;
+  overflow: hidden;
 }
-.sf-btn:hover {
-  border-color: rgba(255,255,255,.5);
-  background: rgba(255,255,255,.16);
-  transform: translateY(-3px);
+.sf-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  border-radius: 22px 22px 0 0;
+}
+.sf-card-gs::before { background: linear-gradient(90deg,#10B981,#34D399); }
+.sf-card-hr::before { background: linear-gradient(90deg,#F59E0B,#FCD34D); }
+.sf-card-gym::before { background: linear-gradient(90deg,#7C3AED,#A855F7); }
+.sf-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 40px rgba(0,0,0,.2);
+}
+.sf-card-gs:hover { border-color: #10B981; }
+.sf-card-hr:hover { border-color: #F59E0B; }
+.sf-card-gym:hover { border-color: #7C3AED; }
+.sf-card-icon { font-size: 3rem; line-height: 1; margin-bottom: 12px; display: block; }
+.sf-card-name {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #1e1b4b;
+  margin-bottom: 5px;
+}
+.sf-card-grades {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.sf-card-gs .sf-card-grades { color: #059669; }
+.sf-card-hr .sf-card-grades { color: #D97706; }
+.sf-card-gym .sf-card-grades { color: #7C3AED; }
+.sf-card-desc {
+  font-size: .78rem;
+  color: #64748b;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* ── SCHRITT 2: Klassen-Auswahl ── */
+.sf-grades-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 12px;
+}
+.sf-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,.18);
+  border: 1.5px solid rgba(255,255,255,.4);
   color: #fff;
+  border-radius: 12px;
+  padding: 9px 20px;
+  font-size: .9rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  margin-bottom: 22px;
+  transition: all .18s;
 }
-.sf-icon { font-size: 1.8rem; line-height: 1; }
-.sf-label { font-size: .95rem; font-weight: 800; }
-.sf-range { font-size: .75rem; font-weight: 600; opacity: .7; }
-
-.sf-active {
-  border-color: #fff !important;
-  background: rgba(255,255,255,.22) !important;
-  color: #fff !important;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(0,0,0,.25);
+.sf-back-btn:hover {
+  background: rgba(255,255,255,.28);
+  transform: translateX(-2px);
 }
-.sf-active .sf-range { opacity: .9; }
+.sf-grades-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  opacity: .9;
+}
 
-@media (max-width: 600px) {
-  .sf-row { gap: 8px; }
-  .sf-btn { min-width: 80px; padding: 12px 14px; }
-  .sf-icon { font-size: 1.4rem; }
-  .sf-label { font-size: .82rem; }
-  .sf-range { font-size: .68rem; }
+@media (max-width: 680px) {
+  .sf-cards-grid { grid-template-columns: 1fr; gap: 12px; }
+  .sf-card { padding: 22px 16px 18px; }
+  .sf-card-icon { font-size: 2.2rem; }
+  .sf-card-name { font-size: 1rem; }
+  .sf-card-grades { font-size: .9rem; }
 }
 
 /* ============================================================

@@ -356,27 +356,43 @@ const GRADE_GRADIENTS = {
 
 // ── Schulform-System ─────────────────────────────────────────
 const SCHOOL_TYPES = {
-  grundschule: { label:'Grundschule', icon:'🎒', range:'1–4', color:'#10B981',
+  grundschule: { label:'Grundschule',         icon:'🎒', range:'1–4',  color:'#10B981',
     grades:['klasse1','klasse2','klasse3','klasse4'] },
-  hauptschule: { label:'Hauptschule', icon:'📚', range:'5–9', color:'#F59E0B',
-    grades:['klasse5','klasse6','klasse7','klasse8','klasse9'] },
-  realschule:  { label:'Realschule',  icon:'📐', range:'5–10', color:'#2563EB',
+  haupt_real:  { label:'Haupt- & Realschule', icon:'📚', range:'5–10', color:'#F59E0B',
     grades:['klasse5','klasse6','klasse7','klasse8','klasse9','klasse10'] },
-  gymnasium:   { label:'Gymnasium',   icon:'🎓', range:'5–13', color:'#7C3AED',
+  gymnasium:   { label:'Gymnasium',           icon:'🎓', range:'5–13', color:'#7C3AED',
     grades:['klasse5','klasse6','klasse7','klasse8','klasse9','klasse10','klasse11','klasse12','klasse13'] },
 };
-let activeSchoolType = localStorage.getItem('ls_school_type') || 'gymnasium';
+// Aktive Schulform – null bedeutet: noch keine gewählt (zeige Schulform-Auswahl)
+let activeSchoolType = localStorage.getItem('ls_school_type') || null;
 
-function selectSchoolType(type) {
+/** Schritt 1 → Schritt 2: Schulform wählen und Klassen-Grid einblenden */
+function showGradesForSchoolForm(type) {
   activeSchoolType = type;
   localStorage.setItem('ls_school_type', type);
-  document.querySelectorAll('.sf-btn').forEach(b => b.classList.toggle('sf-active', b.dataset.sf === type));
-  renderGradeGrid();
-  // Update hero text
   const sf = SCHOOL_TYPES[type];
-  const heroSub = document.getElementById('heroSubText');
-  if (heroSub) heroSub.textContent = `Deine Lernplattform für ${sf.label} – Klasse ${sf.range}. Lerne smart, übe effektiv!`;
+  // Schulform-Karten verstecken, Klassen-Bereich einblenden
+  const sfCards  = document.getElementById('sfCardsSection');
+  const sfGrades = document.getElementById('sfGradesSection');
+  if (sfCards)  sfCards.style.display  = 'none';
+  if (sfGrades) sfGrades.style.display = 'block';
+  // Titel aktualisieren
+  const titleEl = document.getElementById('sfGradesTitle');
+  if (titleEl && sf) titleEl.textContent = `${sf.icon} ${sf.label} – Klasse ${sf.range}`;
+  // Klassen-Grid rendern
+  renderGradeGrid();
 }
+
+/** Schritt 2 → Schritt 1: Zurück zur Schulform-Auswahl */
+function backToSchoolFormSelection() {
+  const sfCards  = document.getElementById('sfCardsSection');
+  const sfGrades = document.getElementById('sfGradesSection');
+  if (sfCards)  sfCards.style.display  = '';
+  if (sfGrades) sfGrades.style.display = 'none';
+}
+
+/** Kompatibilitäts-Alias (wird ggf. noch von alten localStorage-Werten genutzt) */
+function selectSchoolType(type) { showGradesForSchoolForm(type); }
 
 function renderGradeGrid() {
   const grid = document.getElementById('gradeGrid');
@@ -1138,13 +1154,8 @@ function navigate(view, gradeId, subjectId, exerciseId) {
 // ============================================================
 function renderHome() {
   showView('viewHome');
-  // Schulform-Buttons aktivieren
-  document.querySelectorAll('.sf-btn').forEach(b => b.classList.toggle('sf-active', b.dataset.sf === activeSchoolType));
-  // Hero-Text aktualisieren
-  const sf = SCHOOL_TYPES[activeSchoolType];
-  const heroSub = document.getElementById('heroSubText');
-  if (heroSub && sf) heroSub.textContent = `Deine Lernplattform für ${sf.label} – Klasse ${sf.range}. Lerne smart, übe effektiv!`;
-  renderGradeGrid();
+  // Startseite zeigt immer zuerst die Schulform-Karten (Schritt 1)
+  backToSchoolFormSelection();
   updateSidebarGrades();
 }
 
