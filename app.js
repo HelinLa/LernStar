@@ -130,8 +130,8 @@ function _stopLipSync()  { window._vrmTalking = false; }
 
 // ── ELEVENLABS TTS ────────────────────────────────────────
 const ELEVEN_KEY      = 'e24b6be67594419d8f50afdfb195995a';
-const ELEVEN_VOICE    = 'Fghah4fztZORbiKfIGAs'; // Thomas – Deutsch, Erzählung
-const ELEVEN_MODEL    = 'eleven_multilingual_v2';
+const ELEVEN_VOICE    = 'pNInz6obpgDQGcFmaJgB'; // Adam – warm, natürlich
+const ELEVEN_MODEL    = 'eleven_flash_v2_5';     // <500ms Latenz
 const _audioCache     = new Map();
 let   _currentAudio   = null;
 
@@ -240,7 +240,7 @@ async function _elevenFetch(text) {
       body: JSON.stringify({
         text,
         model_id: ELEVEN_MODEL,
-        voice_settings: { stability: 0.74, similarity_boost: 0.55, style: 0.03, use_speaker_boost: false }
+        voice_settings: { stability: 0.80, similarity_boost: 0.45, style: 0.0, use_speaker_boost: false }
       })
     }
   );
@@ -11020,17 +11020,22 @@ async function _evSpeak(text, onDone) {
     voices = synth.getVoices();
   }
   const de = voices.filter(v => v.lang === 'de-DE' || v.lang.startsWith('de'));
+  // Reihenfolge: beste Online-Stimmen zuerst, dann Offline-Fallback
   const voice =
-    de.find(v => /natural/i.test(v.name))
+    de.find(v => /hedda.*online/i.test(v.name))        // Microsoft Hedda Online (sehr gut)
+    || de.find(v => /katja.*online/i.test(v.name))     // Microsoft Katja Online
+    || de.find(v => /google.*deutsch/i.test(v.name))   // Google Deutsch
+    || de.find(v => /online/i.test(v.name) && !/offline/i.test(v.name))
     || de.find(v => /neural/i.test(v.name))
-    || de.find(v => /online/i.test(v.name))
+    || de.find(v => /natural/i.test(v.name))
     || de.find(v => /microsoft/i.test(v.name))
     || de[0] || null;
+  const isOnline = /online|google|neural/i.test(voice?.name || '');
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'de-DE'; u.volume = 1.0;
   if (voice) u.voice = voice;
-  u.rate = /natural|neural|online/i.test(voice?.name || '') ? 0.84 : 0.78;
-  u.pitch = 0.92;
+  u.rate = isOnline ? 0.85 : 0.76;  // Online-Stimmen vertragen höhere Rate
+  u.pitch = 0.90;                    // leicht tiefer = weniger schrill
   u.onend = () => _fireDone();
   u.onerror = () => { if (onDone) setTimeout(onDone, 300); };
   synth.speak(u);
@@ -11070,15 +11075,18 @@ function _evPlayScene(idx){
   const stage=document.getElementById('evStage');
   if(!stage)return;
 
-  // Sanfter Übergang: kurz ausblenden, dann neue Szene einblenden
-  stage.style.transition='opacity .28s ease';
-  stage.style.opacity='0';
-  setTimeout(()=>{
-    stage.style.background=scene.bg||'transparent';
-    stage.innerHTML='';
-    scene.build(stage);
-    stage.style.opacity='1';
-  },280);
+  // Sofort neuen Inhalt zeigen – kein Blank-Screen – Inhalt slidet per CSS ein
+  stage.style.transition='';
+  stage.style.opacity='1';
+  stage.style.background=scene.bg||'transparent';
+  stage.innerHTML='';
+  scene.build(stage);
+  // Entrance-Animation auf ersten Kind-Element
+  if(stage.firstElementChild){
+    stage.firstElementChild.style.animation='none';
+    stage.firstElementChild.offsetHeight; // reflow
+    stage.firstElementChild.style.animation='evSceneEnter .32s cubic-bezier(.22,1,.36,1) both';
+  }
 
   const btn=document.getElementById('evPlayPauseBtn');
   if(btn)btn.textContent='⏸';

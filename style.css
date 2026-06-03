@@ -2514,6 +2514,7 @@ ul { list-style: none; }
 .ev-char-name-lbl{font-family:'Nunito',sans-serif;font-size:10px;font-weight:700;color:rgba(255,255,255,.55);margin-top:4px;background:rgba(255,255,255,.08);border-radius:10px;padding:2px 10px}
 .ev-speech-bubble{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:16px 16px 16px 4px;padding:12px 14px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:white;line-height:1.5;animation:evFadeUp .4s .15s both ease;position:relative}
 .ev-speech-bubble::before{content:'';position:absolute;left:-7px;bottom:14px;width:0;height:0;border-style:solid;border-width:7px 7px 0 0;border-color:rgba(255,255,255,.15) transparent transparent transparent}
+@keyframes evSceneEnter{from{transform:translateY(14px) scale(.97);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
 @keyframes evBounceIn{0%{transform:scale(.3);opacity:0}60%{transform:scale(1.1);opacity:1}80%{transform:scale(.95)}100%{transform:scale(1)}}
 @keyframes evFadeUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes evScaleIn{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
