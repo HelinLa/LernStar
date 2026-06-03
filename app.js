@@ -10682,8 +10682,196 @@ function _evCharHTML(mode) {
 </svg></div>`;
 }
 
-// Custom overrides (leave empty — auto-generator handles all topics)
 const EV_SCENES = {};
+
+// ════════════════════════════════════════════════════════════════
+// HANDGEFERTIGTE PREMIUM-SZENEN – Klasse 1 Mathe
+// Storyboard: 8-Punkte-Framework, pädagogisch überprüft
+// ════════════════════════════════════════════════════════════════
+(function() {
+  const dark = 'linear-gradient(160deg,#1a0035 0%,#0e0820 100%)';
+  const warm = 'linear-gradient(160deg,#1f1200 0%,#0e0820 100%)';
+  const deep = 'linear-gradient(160deg,#0d001a 0%,#0e0820 100%)';
+
+  // ── Addition und Subtraktion bis 20 ─────────────────────────
+  EV_SCENES['Addition und Subtraktion bis 20'] = [
+
+    // Szene 1: Intro / Lernziel (8s)
+    // Lernziel: Plus und Minus verstehen
+    { dur: 8000, bg: dark,
+      speech: 'Hallo! Ich bin Mr. Lala. Heute lernst du Plus und Minus rechnen. Das kannst du bald ganz alleine! Ich zeige dir wie.',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+            <div style="animation:evBounceIn .5s cubic-bezier(.36,.07,.19,.97)">
+              ${_evCharHTML('talking')}
+              <div class="ev-char-name-lbl" style="margin-top:4px">Mr. Lala</div>
+            </div>
+            <div style="font-size:10px;color:rgba(255,255,255,.55);font-weight:800;letter-spacing:.12em;text-transform:uppercase">Heute lernst du</div>
+            <div class="ev-hook-title" style="font-size:clamp(20px,5.5vw,30px);line-height:1.3">Plus und Minus<br>rechnen</div>
+            <div style="font-size:52px;animation:evFadeUp .4s .8s both">➕ ➖</div>
+          </div>`;
+      }
+    },
+
+    // Szene 2: Alltagsbeispiel – Bonbons (12s)
+    // Konkrete Situation: 3 + 4 Bonbons
+    { dur: 12000, bg: warm,
+      speech: 'Stell dir vor, du hast 3 Bonbons in der Tasche. Dein Freund gibt dir noch 4 dazu. Wie viele hast du jetzt? Gleich weißt du es!',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:0 16px">
+            <div style="font-size:10px;color:rgba(255,215,100,.7);text-transform:uppercase;letter-spacing:.12em;font-weight:800">Kennst du das?</div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:36px;flex-wrap:wrap;justify-content:center">
+              <span style="animation:evBounceIn .3s .10s both">🍬</span>
+              <span style="animation:evBounceIn .3s .20s both">🍬</span>
+              <span style="animation:evBounceIn .3s .30s both">🍬</span>
+              <span style="font-size:24px;margin:0 4px;font-weight:900;color:#a78bfa;align-self:center;animation:evFadeUp .3s .50s both">+</span>
+              <span style="animation:evBounceIn .3s .70s both">🍬</span>
+              <span style="animation:evBounceIn .3s .80s both">🍬</span>
+              <span style="animation:evBounceIn .3s .90s both">🍬</span>
+              <span style="animation:evBounceIn .3s 1.00s both">🍬</span>
+            </div>
+            <div style="font-size:14px;font-weight:800;color:white;line-height:2.0;max-width:260px">
+              Du hast <span style="color:#a78bfa">3</span> Bonbons.<br>
+              Du bekommst <span style="color:#a78bfa">4</span> dazu.<br>
+              Wie viele sind es jetzt?
+            </div>
+          </div>`;
+      }
+    },
+
+    // Szene 3: Plus erklärt (13s)
+    // Eine Idee: Zusammenzählen = mehr dazutun
+    { dur: 13000, bg: dark,
+      speech: 'Plus bedeutet: mehr dazutun. Wir fangen bei 3 an... und zählen 4 weiter: 4, 5, 6, 7. Zusammen sind es 7 Bonbons!',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:0 14px;text-align:center">
+            <div style="font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.12em;font-weight:800">➕ Das ist Plus</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;font-size:34px;max-width:280px">
+              <span style="animation:evBounceIn .3s .00s both">🍬</span>
+              <span style="animation:evBounceIn .3s .10s both">🍬</span>
+              <span style="animation:evBounceIn .3s .20s both">🍬</span>
+              <span style="font-size:24px;margin:0 5px;font-weight:900;color:#a78bfa;align-self:center;animation:evFadeUp .3s .40s both">+</span>
+              <span style="animation:evBounceIn .3s .60s both">🍬</span>
+              <span style="animation:evBounceIn .3s .70s both">🍬</span>
+              <span style="animation:evBounceIn .3s .80s both">🍬</span>
+              <span style="animation:evBounceIn .3s .90s both">🍬</span>
+            </div>
+            <div style="font-size:26px;font-weight:900;color:white;line-height:1.4;animation:evFadeUp .4s 1.30s both">
+              3 + 4 = <span style="color:#86EFAC;font-size:34px">7</span> ✓
+            </div>
+            <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.7);animation:evFadeUp .3s 1.60s both">
+              Plus = mehr dazutun ✨
+            </div>
+          </div>`;
+      }
+    },
+
+    // Szene 4: Minus erklärt (13s)
+    // Eine Idee: Wegnehmen = Minus
+    { dur: 13000, bg: dark,
+      speech: 'Minus bedeutet: wegnehmen. Du hast 7 Bonbons. Du isst 2 davon. Wir fangen bei 7 an und zählen 2 rückwärts: 6, 5. Es bleiben 5 übrig!',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:0 14px;text-align:center">
+            <div style="font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.12em;font-weight:800">➖ Das ist Minus</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;font-size:34px;max-width:280px">
+              <span style="animation:evBounceIn .3s .00s both">🍬</span>
+              <span style="animation:evBounceIn .3s .10s both">🍬</span>
+              <span style="animation:evBounceIn .3s .20s both">🍬</span>
+              <span style="animation:evBounceIn .3s .30s both">🍬</span>
+              <span style="animation:evBounceIn .3s .40s both">🍬</span>
+              <span style="position:relative;display:inline-block;animation:evBounceIn .3s .50s both">🍬
+                <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px;color:#EF4444;font-weight:900;animation:evFadeUp .3s 1.00s both">✕</span>
+              </span>
+              <span style="position:relative;display:inline-block;animation:evBounceIn .3s .60s both">🍬
+                <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px;color:#EF4444;font-weight:900;animation:evFadeUp .3s 1.10s both">✕</span>
+              </span>
+            </div>
+            <div style="font-size:26px;font-weight:900;color:white;line-height:1.4;animation:evFadeUp .4s 1.40s both">
+              7 − 2 = <span style="color:#86EFAC;font-size:34px">5</span> ✓
+            </div>
+            <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.7);animation:evFadeUp .3s 1.70s both">
+              Minus = wegnehmen 🍬
+            </div>
+          </div>`;
+      }
+    },
+
+    // Szene 5: Wiederholung – beide Ideen zusammen (10s)
+    { dur: 10000, bg: deep,
+      speech: 'Nochmal zusammen. Plus bedeutet: mehr dazutun. Minus bedeutet: wegnehmen. Gut gemerkt!',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:0 14px;text-align:center;width:100%">
+            <div style="font-size:10px;color:rgba(255,255,255,.5);font-weight:800;letter-spacing:.12em;text-transform:uppercase">🔁 Das haben wir gelernt</div>
+            <div style="display:flex;gap:10px;width:100%">
+              <div style="flex:1;background:rgba(167,139,250,.15);border:1.5px solid #a78bfa;border-radius:14px;padding:16px 10px;text-align:center;animation:evFadeUp .4s .10s both">
+                <div style="font-size:36px;margin-bottom:8px">➕</div>
+                <div style="font-size:14px;font-weight:900;color:white">Plus</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.65);margin-top:5px;line-height:1.5">mehr<br>dazutun</div>
+              </div>
+              <div style="flex:1;background:rgba(129,140,248,.15);border:1.5px solid #818cf8;border-radius:14px;padding:16px 10px;text-align:center;animation:evFadeUp .4s .40s both">
+                <div style="font-size:36px;margin-bottom:8px">➖</div>
+                <div style="font-size:14px;font-weight:900;color:white">Minus</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.65);margin-top:5px;line-height:1.5">weg-<br>nehmen</div>
+              </div>
+            </div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">3 + 4 = 7 &nbsp;·&nbsp; 7 − 2 = 5</div>
+          </div>`;
+      }
+    },
+
+    // Szene 6: Mini-Frage – 3 + 5 = ? (15s)
+    { dur: 20000, bg: dark,
+      speech: 'Jetzt bist du dran! Ich habe eine Frage für dich. Was ergibt 3 plus 5? Welche Antwort ist richtig?',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 12px;width:100%;text-align:center">
+            <div style="font-size:34px;animation:evBounceIn .4s both">🙋</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5);font-weight:800;letter-spacing:.12em;text-transform:uppercase">Deine Aufgabe</div>
+            <div style="font-size:24px;font-weight:900;color:white;margin:4px 0">3 + 5 = ?</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%">
+              <button onclick="window._evAnswerQ(0,1,this)" style="background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);border-radius:12px;padding:14px 8px;color:white;font-size:18px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif">7</button>
+              <button onclick="window._evAnswerQ(1,1,this)" style="background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);border-radius:12px;padding:14px 8px;color:white;font-size:18px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif">8</button>
+              <button onclick="window._evAnswerQ(2,1,this)" style="background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);border-radius:12px;padding:14px 8px;color:white;font-size:18px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif">9</button>
+              <button onclick="window._evAnswerQ(3,1,this)" style="background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);border-radius:12px;padding:14px 8px;color:white;font-size:18px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif">6</button>
+            </div>
+            <div id="evQFeedback" style="min-height:24px;font-size:14px;font-weight:800;margin-top:2px"></div>
+          </div>`;
+      }
+    },
+
+    // Szene 7: Outro / Celebration (7s)
+    { dur: 7000, bg: dark,
+      speech: 'Wunderbar! Du kannst jetzt Plus und Minus rechnen. Ich bin so stolz auf dich. Bis zum nächsten Mal!',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+            <div style="animation:evBounceIn .5s cubic-bezier(.36,.07,.19,.97)">
+              ${_evCharHTML('celebrating')}
+              <div class="ev-char-name-lbl" style="margin-top:4px">Mr. Lala</div>
+            </div>
+            <div class="ev-outro-text" style="font-size:clamp(18px,5vw,24px)">Klasse gemacht! 🌟</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.8);font-weight:700;line-height:1.9">
+              Plus und Minus ✓<br>
+              <span style="font-size:11px;opacity:.6">Du hast es gelernt!</span>
+            </div>
+          </div>`;
+      }
+    },
+  ];
+
+})(); // Ende handgefertigte Szenen
 
 /* ─── Auto-scene generator: academic split-layout style ─────────
    Reads explanation + short[] from CONTENT and builds 5 scenes.
