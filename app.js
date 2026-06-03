@@ -11034,7 +11034,7 @@ async function _evSpeak(text, onDone) {
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'de-DE'; u.volume = 1.0;
   if (voice) u.voice = voice;
-  u.rate = isOnline ? 0.85 : 0.76;  // Online-Stimmen vertragen höhere Rate
+  u.rate = isOnline ? 0.78 : 0.70;  // Langsam und deutlich – Kinder brauchen Zeit
   u.pitch = 0.90;                    // leicht tiefer = weniger schrill
   u.onend = () => _fireDone();
   u.onerror = () => { if (onDone) setTimeout(onDone, 300); };
@@ -11062,17 +11062,98 @@ function _evPrefetch() {}
 //  Fächer: NUR Mathe + Deutsch (kein Sachkunde)
 // ════════════════════════════════════════════════════════════════
 
+// Alltagsbeispiele pro Thema – konkret, kindgerecht, aus dem Leben
+function _evGetBeispiel(topicName) {
+  const n = topicName.toLowerCase();
+  const map = [
+    { keys:['zählen','zahlen','nummer','zahl'],
+      emoji:'🍎', text:'Du zählst Äpfel im Korb.',
+      speech:'Stell dir vor, du hast einen Korb mit Äpfeln. Eins, zwei, drei... Zählen kannst du schon!' },
+    { keys:['plus','addier','zusammenzähl'],
+      emoji:'🍬', text:'Du bekommst noch mehr Bonbons dazu!',
+      speech:'Du hast 3 Bonbons. Dein Freund gibt dir noch 2 dazu. Wie viele hast du jetzt? Das ist Plus!' },
+    { keys:['minus','abzieh','weniger'],
+      emoji:'🍪', text:'Du isst ein paar Kekse auf.',
+      speech:'Du hast 5 Kekse. Du isst 2 davon. Wie viele sind noch übrig? Das ist Minus, also Abziehen!' },
+    { keys:['mal','malrechnen','multipliz','vielfach'],
+      emoji:'🚗', text:'3 Autos – jedes hat 4 Räder. Wie viele Räder sind das?',
+      speech:'Schau mal! 3 Autos. Jedes Auto hat 4 Räder. Wie viele Räder sind das zusammen? Das ist Malnehmen!' },
+    { keys:['teilen','geteilt','aufteilen'],
+      emoji:'🍕', text:'Eine Pizza für alle Kinder aufteilen.',
+      speech:'Stell dir vor, ihr teilt eine Pizza. Alle sollen gleich viel bekommen. Das nennt man Teilen!' },
+    { keys:['uhr','zeit','stunde','minut'],
+      emoji:'⏰', text:'Um wie viel Uhr fängt deine Lieblingssendung an?',
+      speech:'Weißt du, wann deine Lieblingssendung kommt? Dafür schaut man auf die Uhr. Das lernst du jetzt!' },
+    { keys:['geld','euro','münz','cent','kauf'],
+      emoji:'💰', text:'Du kaufst ein Eis für 1 Euro.',
+      speech:'Du möchtest ein Eis kaufen. Es kostet 1 Euro. Hast du genug Geld dabei? Das üben wir jetzt!' },
+    { keys:['form','figur','dreieck','kreis','rechteck','quadrat','geomet'],
+      emoji:'📐', text:'Fenster, Teller, Schilder – überall sind Formen!',
+      speech:'Schau dich mal um! Ein Fenster ist ein Rechteck. Ein Teller ist ein Kreis. Formen sehen wir jeden Tag!' },
+    { keys:['länge','messen','cm','meter','linie'],
+      emoji:'📏', text:'Wie groß bist du? Das können wir messen!',
+      speech:'Wie groß bist du? Das misst man mit einem Lineal oder Maßband. Messen macht Spaß!' },
+    { keys:['buchstabe','alphabet','abc'],
+      emoji:'🔤', text:'Das ABC aus dem Lied kennst du schon!',
+      speech:'Das ABC kennst du bestimmt aus dem Lied. A, B, C... Jetzt lernst du, wie man sie schreibt!' },
+    { keys:['lesen','text','wort lesen'],
+      emoji:'📖', text:'Mit Lesen kannst du alle Bücher verstehen.',
+      speech:'Stell dir vor, du kannst alle Bücher selbst lesen! Das lernst du gerade. Das ist etwas sehr Besonderes!' },
+    { keys:['schreib','aufsatz'],
+      emoji:'✏️', text:'Du schreibst deinen Namen und bald ganze Geschichten!',
+      speech:'Du kannst schon deinen Namen schreiben! Bald schreibst du ganze Sätze und spannende Geschichten!' },
+    { keys:['silbe','silbentrennung'],
+      emoji:'🎵', text:'Klatsch beim Sprechen mit: To-ma-te!',
+      speech:'Klatschen wir zusammen! To-ma-te. Jedes Klatschen ist eine Silbe. Das hilft beim Lesen und Schreiben!' },
+    { keys:['großschreib','anfangsbuchstab'],
+      emoji:'🅰️', text:'Namen schreiben wir immer groß: Emma, Luca, Finn.',
+      speech:'Dein Name fängt immer mit einem großen Buchstaben an. Emma, Luca, Finn. Namen werden groß geschrieben!' },
+    { keys:['vokal','selbstlaut'],
+      emoji:'🗣️', text:'A, E, I, O, U – die fünf Selbstlaute!',
+      speech:'A, E, I, O, U! Diese fünf Buchstaben sind die Selbstlaute. Man kann sie ganz alleine aussprechen!' },
+    { keys:['reim','gedicht'],
+      emoji:'🎤', text:'Katze – Tatze. Das hört sich gleich an!',
+      speech:'Katze und Tatze reimen sich! Das Ende klingt gleich. Reime machen Sprache lustig und lebendig!' },
+    { keys:['nomen','substantiv','namenwort'],
+      emoji:'🏠', text:'Haus, Hund, Schule – alles Namenwörter!',
+      speech:'Hund, Haus, Schule – alle Dinge und Lebewesen haben einen Namen. Diese Namen schreiben wir groß!' },
+    { keys:['verb','tunwort'],
+      emoji:'🏃', text:'Laufen, springen, lachen – Tunwörter!',
+      speech:'Laufen, springen, lachen... Was machst du gerne? Diese Wörter sagen, was jemand tut!' },
+    { keys:['adjektiv','eigenschaftswort','beschreib'],
+      emoji:'🌈', text:'Klein, groß, blau, lustig – Beschreibungswörter!',
+      speech:'Ist dein Hund groß oder klein? Ist das Haus alt oder neu? Solche Wörter beschreiben uns alles!' },
+    { keys:['hundert','tausend','stelle','ziffer'],
+      emoji:'🔢', text:'100 Cent sind 1 Euro!',
+      speech:'Weißt du, wie viele Cent in einem Euro sind? Genau, 100 Cent! Große Zahlen begegnen uns überall.' },
+  ];
+  const found = map.find(e => e.keys.some(k => n.includes(k)));
+  return found || {
+    emoji: '🌟',
+    text: `${topicName} begegnet dir im Alltag.`,
+    speech: `${topicName}... Klingt das schwer? Keine Angst! Wir schauen es uns zusammen ganz langsam an.`
+  };
+}
+
 function _evChildSafe(text) {
   if (!text) return '';
   const pairs = [
-    [/\bAddition\b/gi,'Zusammenzählen'], [/\bSubtraktion\b/gi,'Abziehen'],
-    [/\bMultiplikation\b/gi,'Malnehmen'], [/\bDivision\b/gi,'Aufteilen'],
-    [/\bGleichung\b/gi,'Rechenaufgabe'], [/\bSumme\b/gi,'Ergebnis'],
-    [/\bDifferenz\b/gi,'Unterschied'], [/\bProdukt\b/gi,'Ergebnis beim Malrechnen'],
-    [/\bQuotient\b/gi,'Ergebnis beim Teilen'], [/\bNatürliche Zahlen\b/gi,'normale Zahlen'],
-    [/\bStellenwert\b/gi,'Platz der Ziffer'], [/\bZehner\b/gi,'zehn'],
-    [/\bEiner\b/gi,'einzelne Zahl'], [/\bSatz des Pythagoras\b/gi,'ein Rechenweg'],
-    [/\bKomma\b/gi,'Komma'], [/\bBruch\b/gi,'Teiler der Pizza'],
+    [/\bAddition\b/gi,'Zusammenzählen'],
+    [/\bSubtraktion\b/gi,'Abziehen'],
+    [/\bMultiplikation\b/gi,'Malnehmen'],
+    [/\bDivision\b/gi,'Teilen'],
+    [/\bGleichung\b/gi,'Rechenaufgabe'],
+    [/\bSumme\b/gi,'Gesamtergebnis'],
+    [/\bDifferenz\b/gi,'Unterschied'],
+    [/\bProdukt\b/gi,'Ergebnis beim Malnehmen'],
+    [/\bQuotient\b/gi,'Ergebnis beim Teilen'],
+    [/\bVokale?\b/gi,'Selbstlaute'],
+    [/\bKonsonanten?\b/gi,'Mitlaute'],
+    [/\bSubstantive?\b/gi,'Namenwörter'],
+    [/\bVerben?\b/gi,'Tunwörter'],
+    [/\bAdjektive?\b/gi,'Beschreibungswörter'],
+    [/\bSatz des Pythagoras\b/gi,'ein wichtiger Rechenweg'],
+    [/\bnatürliche Zahlen\b/gi,'normale Zahlen'],
   ];
   let r = text;
   for (const [p, v] of pairs) r = r.replace(p, v);
@@ -11109,139 +11190,153 @@ function _evAutoScenesGrundschule(topicName) {
   const t = _evFindTopic(topicName);
   if (!t) return null;
 
-  // ── Storyboard-Planung (Qualitätscheck-Framework) ────────────
   const s0 = _evChildSafe(t.short?.[0] || '');
   const s1 = _evChildSafe(t.short?.[1] || '');
   const vis = TOPIC_VISUALS[topicName] || '✨';
 
-  // Qualitätscheck 8: Sätze dürfen max 20 Wörter haben
+  // Max 14 Wörter sichtbar – Kinder brauchen kurze Sätze
   const clamp = txt => {
-    const ws = (txt||'').split(' ');
-    return ws.length > 20 ? ws.slice(0,19).join(' ')+'…' : txt;
+    if (!txt) return '';
+    const ws = txt.split(' ');
+    return ws.length > 14 ? ws.slice(0,13).join(' ')+'…' : txt;
   };
 
   const dark = 'linear-gradient(160deg,#1a0035 0%,#0e0820 100%)';
+  const warm = 'linear-gradient(160deg,#1f1200 0%,#0e0820 100%)';
   const deep = 'linear-gradient(160deg,#0d001a 0%,#0e0820 100%)';
   const ch = m => `<div class="ev-split-char">${_evCharHTML(m)}<div class="ev-char-name-lbl">Mr. Lala</div></div>`;
   const mq = _evGetMiniQuestion(topicName);
+  const bsp = _evGetBeispiel(topicName);
 
-  // ── Szene 1: Lernziel – freundlicher Hook (≈8s) ───────────────
-  // Qualitätscheck: 1 Satz Lernziel, kein Fachwort, vis-Emoji groß
+  // ── Szene 1: Begrüßung + Lernziel ────────────────────────────
+  // Eine Idee: WAS lernst du heute?
   const scenes = [
-    { dur: 6500, bg: dark,
-      speech: `Hey! Ich bin Mr. Lala. Heute lernst du: ${topicName}. Das kannst du schaffen!`,
+    { dur: 8000, bg: dark,
+      speech: `Hallo! Ich bin Mr. Lala. Heute lernst du... ${topicName}. Das ist gar nicht schwer. Ich zeige es dir!`,
       build(stage) {
         stage.style.justifyContent = 'center';
         stage.innerHTML = `
-          <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
             <div style="animation:evBounceIn .5s cubic-bezier(.36,.07,.19,.97)">${_evCharHTML('talking')}<div class="ev-char-name-lbl" style="margin-top:4px">Mr. Lala</div></div>
-            <div style="font-size:11px;color:rgba(255,255,255,.55);font-weight:800;letter-spacing:.1em;text-transform:uppercase">Heute lernst du:</div>
-            <div class="ev-hook-title" style="font-size:clamp(22px,6vw,36px);line-height:1.2">${topicName}</div>
-            <div style="font-size:56px;animation:evFadeUp .4s .7s both">${vis}</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.55);font-weight:800;letter-spacing:.12em;text-transform:uppercase">Heute lernst du</div>
+            <div class="ev-hook-title" style="font-size:clamp(22px,6vw,34px);line-height:1.2">${topicName}</div>
+            <div style="font-size:62px;animation:evFadeUp .4s .8s both">${vis}</div>
           </div>`;
       }
     },
 
-    // ── Szene 2: Erster Gedanke / Alltagsbeispiel (≈14s) ─────────
-    // Qualitätscheck: max 1 Satz sichtbar, zeigender Mr. Lala
-    { dur: 10000, bg: dark,
-      speech: clamp(s0) || 'Schau dir das genau an!',
+    // ── Szene 2: Alltagsbeispiel ──────────────────────────────────
+    // Eine Idee: Wo begegnet dir das im Leben?
+    { dur: 11000, bg: warm,
+      speech: bsp.speech,
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:0 16px">
+            <div style="font-size:10px;color:rgba(255,215,100,.7);text-transform:uppercase;letter-spacing:.12em;font-weight:800">Kennst du das?</div>
+            <div style="font-size:58px;animation:evBounceIn .4s both">${bsp.emoji}</div>
+            <div style="font-size:14px;font-weight:800;color:white;line-height:1.9;max-width:260px">${bsp.text}</div>
+          </div>`;
+      }
+    },
+
+    // ── Szene 3: Erste Erklärung ──────────────────────────────────
+    // Eine Idee: s0 – ein Gedanke, klar und einfach
+    { dur: 11000, bg: dark,
+      speech: s0 ? `Gut. Jetzt erkläre ich es dir. Schau: ${s0}` : `Schau genau hin. Das lernst du jetzt.`,
       build(stage) {
         stage.style.justifyContent = 'flex-start';
         stage.innerHTML = `
           <div class="ev-scene-split">
             ${ch('pointing')}
             <div class="ev-split-content">
-              <div style="font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">🔍 Schau mal:</div>
-              ${s0 ? `<div class="ev-speech-bubble" style="font-size:14px;line-height:1.7;font-weight:700">${clamp(s0)}</div>` : ''}
-              <div style="margin-top:14px;font-size:46px;animation:evScaleIn .4s .6s both;text-align:center">${vis}</div>
+              <div style="font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">🔍 Schau mal:</div>
+              ${s0 ? `<div class="ev-speech-bubble" style="font-size:14px;line-height:1.9;font-weight:700">${clamp(s0)}</div>` : ''}
+              <div style="margin-top:14px;font-size:50px;animation:evScaleIn .4s .5s both;text-align:center">${vis}</div>
             </div>
           </div>`;
       }
     },
   ];
 
-  // ── Szene 3: Zweiter Gedanke (nur wenn vorhanden, ≈14s) ───────
-  // Qualitätscheck: vorheriger Satz als Badge, neuer Satz in Bubble
+  // ── Szene 4: Zweiter Gedanke (nur wenn s1 vorhanden) ─────────
+  // Eine Idee: s1 – neuer Gedanke, kein Rückbezug
   if (s1) {
     scenes.push({
-      dur: 10000, bg: dark,
-      speech: clamp(s1),
+      dur: 11000, bg: dark,
+      speech: `Und noch etwas Wichtiges. Merke dir: ${s1}`,
       build(stage) {
         stage.style.justifyContent = 'flex-start';
         stage.innerHTML = `
           <div class="ev-scene-split">
             ${ch('talking')}
             <div class="ev-split-content">
-              <div style="font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">📌 Und das noch:</div>
-              ${s0 ? `<div style="margin-bottom:10px;animation:evFadeUp .3s both"><span class="ev-label-badge" style="font-size:11px">✓ ${s0.length>34?s0.slice(0,32)+'…':s0}</span></div>` : ''}
-              <div class="ev-speech-bubble" style="font-size:14px;line-height:1.7">${clamp(s1)}</div>
+              <div style="font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">📌 Und noch etwas:</div>
+              <div class="ev-speech-bubble" style="font-size:14px;line-height:1.9">${clamp(s1)}</div>
             </div>
           </div>`;
       }
     });
   }
 
-  // ── Szene 4: Merksatz (≈12s) ──────────────────────────────────
-  // Qualitätscheck: sichtbarer Merksatz, kurze Sätze, Mr. Lala seitlich
+  // ── Szene 5: WIEDERHOLUNG ─────────────────────────────────────
+  // Eine Idee: Lass uns alles nochmal zusammenfassen
   scenes.push({
-    dur: 8000, bg: deep,
-    speech: `Hier ist dein Merkspruch: ${clamp(s0)}${s1 ? ' Und: '+clamp(s1) : ''} Gut merken!`,
+    dur: 10000, bg: deep,
+    speech: `Jetzt wiederholen wir nochmal alles zusammen.${s0 ? ' Erstens: '+s0+'.' : ''}${s1 ? ' Zweitens: '+s1+'.' : ''} Gut gemerkt!`,
     build(stage) {
       stage.style.justifyContent = 'center';
       stage.innerHTML = `
-        <div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding:0 14px;text-align:center;width:100%">
-          <div style="font-size:28px">📌</div>
-          <div style="font-size:11px;color:rgba(255,255,255,.5);font-weight:800;letter-spacing:.1em;text-transform:uppercase">Dein Merkspruch</div>
-          <div class="ev-merksatz" style="width:100%;text-align:left">
-            ${s0 ? `<p style="margin:0 0 8px;font-size:15px;font-weight:800;line-height:1.5">${clamp(s0)}</p>` : ''}
-            ${s1 ? `<p style="margin:0;font-size:13px;opacity:.9;line-height:1.5">${clamp(s1)}</p>` : ''}
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:0 14px;text-align:center;width:100%">
+          <div style="font-size:10px;color:rgba(255,255,255,.5);font-weight:800;letter-spacing:.12em;text-transform:uppercase">🔁 Das haben wir gelernt</div>
+          <div style="font-size:30px">📋</div>
+          <div style="width:100%;text-align:left;display:flex;flex-direction:column;gap:10px">
+            ${s0 ? `<div style="background:rgba(255,255,255,.09);border-left:3px solid #a78bfa;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:700;line-height:1.7;color:white"><span style="opacity:.55">1. </span>${clamp(s0)}</div>` : ''}
+            ${s1 ? `<div style="background:rgba(255,255,255,.07);border-left:3px solid #818cf8;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:700;line-height:1.7;color:rgba(255,255,255,.9)"><span style="opacity:.55">2. </span>${clamp(s1)}</div>` : ''}
           </div>
         </div>`;
     }
   });
 
-  // ── Szene 5: Interaktive Mini-Frage (≈15s) ────────────────────
-  // Qualitätscheck: 2–4 Antwort-Buttons, direktes Feedback, auto-weiter
+  // ── Szene 6: Interaktive Mini-Frage ──────────────────────────
   if (mq && (mq.options||[]).length >= 2) {
     scenes.push({
       dur: 20000, bg: dark,
-      speech: `Jetzt bist du dran! ${mq.q}`,
+      speech: `Jetzt bist du dran! Ich habe eine Frage für dich. Hör gut zu. ${mq.q} Was ist richtig?`,
       build(stage) {
         stage.style.justifyContent = 'center';
         const opts = (mq.options||[]).slice(0,4);
         stage.innerHTML = `
-          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:0 12px;width:100%;text-align:center">
-            <div style="font-size:28px;animation:evBounceIn .4s both">🤔</div>
-            <div style="font-size:11px;color:rgba(255,255,255,.5);font-weight:800;letter-spacing:.1em;text-transform:uppercase">Deine Frage</div>
-            <div style="font-size:13px;font-weight:800;color:white;line-height:1.6;max-width:270px">${mq.q}</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;margin-top:2px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 12px;width:100%;text-align:center">
+            <div style="font-size:34px;animation:evBounceIn .4s both">🙋</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5);font-weight:800;letter-spacing:.12em;text-transform:uppercase">Deine Aufgabe</div>
+            <div style="font-size:14px;font-weight:800;color:white;line-height:1.7;max-width:280px">${mq.q}</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;margin-top:4px">
               ${opts.map((opt,i) =>
                 `<button onclick="window._evAnswerQ(${i},${mq.correct},this)"
                   style="background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);
-                         border-radius:12px;padding:10px 8px;color:white;font-size:12px;font-weight:700;
+                         border-radius:12px;padding:12px 8px;color:white;font-size:12px;font-weight:700;
                          cursor:pointer;transition:background .2s,border-color .2s;
-                         font-family:'Nunito',sans-serif;line-height:1.3">${opt}</button>`
+                         font-family:'Nunito',sans-serif;line-height:1.4">${opt}</button>`
               ).join('')}
             </div>
-            <div id="evQFeedback" style="min-height:22px;font-size:13px;font-weight:800"></div>
+            <div id="evQFeedback" style="min-height:24px;font-size:13px;font-weight:800;margin-top:2px"></div>
           </div>`;
       }
     });
   }
 
-  // ── Szene 6: Outro / Celebration (≈7s) ───────────────────────
-  // Qualitätscheck: kurze Motivation, Mr. Lala feiert
+  // ── Szene 7: Outro / Celebration ─────────────────────────────
   scenes.push({
-    dur: 6000, bg: dark,
-    speech: `Klasse! Du hast ${topicName} super verstanden. Weiter so – du bist toll!`,
+    dur: 7000, bg: dark,
+    speech: `Wunderbar! Du hast ${topicName} gelernt. Das war super! Ich bin stolz auf dich. Bis zum nächsten Mal!`,
     build(stage) {
       stage.style.justifyContent = 'center';
       stage.innerHTML = `
         <div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
           <div style="animation:evBounceIn .5s cubic-bezier(.36,.07,.19,.97)">${_evCharHTML('celebrating')}<div class="ev-char-name-lbl" style="margin-top:4px">Mr. Lala</div></div>
-          <div class="ev-outro-text" style="font-size:clamp(20px,5vw,28px)">Klasse gemacht! 🎉</div>
-          <div style="font-size:14px;color:rgba(255,255,255,.75);font-weight:700">${topicName} ✓</div>
+          <div class="ev-outro-text" style="font-size:clamp(20px,5vw,26px)">Super gemacht! 🌟</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.8);font-weight:700;line-height:1.8">${topicName} ✓<br><span style="font-size:11px;opacity:.65">Du hast es gelernt!</span></div>
         </div>`;
     }
   });
