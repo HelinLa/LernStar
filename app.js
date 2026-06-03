@@ -11048,8 +11048,232 @@ function _evSpeakStop() {
 
 function _evPrefetch() {}
 
+// ════════════════════════════════════════════════════════════════
+// GRUNDSCHULE ERKLÄRVIDEO – STORYBOARD-GENERATOR (Klasse 1–4)
+// 8-Punkte-Qualitätsframework:
+//  1. Lernziel in 1 Satz (→ Intro-Szene)
+//  2. Zielgruppe + Vorwissen (→ einfache Sprache, Alltagsbeispiele)
+//  3. 60–90s Gesamtsprechzeit (ruhiges Lehrerin-Tempo)
+//  4. Szene-für-Szene Storyboard (→ je 1 Gedanke pro Szene)
+//  5. Bildschirmtext: max 1–2 kurze Sätze, keine Fachwörter
+//  6. Sprechertext: freundlich, ruhig, wie eine gute Grundschullehrerin
+//  7. Interaktive Mini-Frage am Ende
+//  8. Qualitätscheck: kindgerecht, langsam, konkret, visuell
+//  Fächer: NUR Mathe + Deutsch (kein Sachkunde)
+// ════════════════════════════════════════════════════════════════
+
+function _evChildSafe(text) {
+  if (!text) return '';
+  const pairs = [
+    [/\bAddition\b/gi,'Zusammenzählen'], [/\bSubtraktion\b/gi,'Abziehen'],
+    [/\bMultiplikation\b/gi,'Malnehmen'], [/\bDivision\b/gi,'Aufteilen'],
+    [/\bGleichung\b/gi,'Rechenaufgabe'], [/\bSumme\b/gi,'Ergebnis'],
+    [/\bDifferenz\b/gi,'Unterschied'], [/\bProdukt\b/gi,'Ergebnis beim Malrechnen'],
+    [/\bQuotient\b/gi,'Ergebnis beim Teilen'], [/\bNatürliche Zahlen\b/gi,'normale Zahlen'],
+    [/\bStellenwert\b/gi,'Platz der Ziffer'], [/\bZehner\b/gi,'zehn'],
+    [/\bEiner\b/gi,'einzelne Zahl'], [/\bSatz des Pythagoras\b/gi,'ein Rechenweg'],
+    [/\bKomma\b/gi,'Komma'], [/\bBruch\b/gi,'Teiler der Pizza'],
+  ];
+  let r = text;
+  for (const [p, v] of pairs) r = r.replace(p, v);
+  return r;
+}
+
+function _evGetMiniQuestion(topicName) {
+  const gradeKey = (typeof getGradeKey === 'function')
+    ? getGradeKey(state.gradeId || 'klasse1')
+    : (state.gradeId || 'klasse1');
+  const grade = CONTENT[gradeKey];
+  if (!grade) return null;
+  // Suche nach Frage die zum Thema passt
+  for (const subj of grade.subjects || []) {
+    if (subj.id !== 'mathe' && subj.id !== 'deutsch') continue;
+    for (const ex of subj.exercises || []) {
+      const q = (ex.questions || []).find(q =>
+        topicName.split(' ').some(w => w.length > 3 &&
+          q.q?.toLowerCase().includes(w.toLowerCase()))
+      );
+      if (q) return q;
+    }
+  }
+  // Fallback: erste Frage aus dem gleichen Fach
+  for (const subj of grade?.subjects || []) {
+    if (subj.id !== 'mathe' && subj.id !== 'deutsch') continue;
+    const q = subj.exercises?.[0]?.questions?.[0];
+    if (q) return q;
+  }
+  return null;
+}
+
+function _evAutoScenesGrundschule(topicName) {
+  const t = _evFindTopic(topicName);
+  if (!t) return null;
+
+  // ── Storyboard-Planung (Qualitätscheck-Framework) ────────────
+  const s0 = _evChildSafe(t.short?.[0] || '');
+  const s1 = _evChildSafe(t.short?.[1] || '');
+  const vis = TOPIC_VISUALS[topicName] || '✨';
+
+  // Qualitätscheck 8: Sätze dürfen max 20 Wörter haben
+  const clamp = txt => {
+    const ws = (txt||'').split(' ');
+    return ws.length > 20 ? ws.slice(0,19).join(' ')+'…' : txt;
+  };
+
+  const dark = 'linear-gradient(160deg,#1a0035 0%,#0e0820 100%)';
+  const deep = 'linear-gradient(160deg,#0d001a 0%,#0e0820 100%)';
+  const ch = m => `<div class="ev-split-char">${_evCharHTML(m)}<div class="ev-char-name-lbl">Mr. Lala</div></div>`;
+  const mq = _evGetMiniQuestion(topicName);
+
+  // ── Szene 1: Lernziel – freundlicher Hook (≈8s) ───────────────
+  // Qualitätscheck: 1 Satz Lernziel, kein Fachwort, vis-Emoji groß
+  const scenes = [
+    { dur: 6500, bg: dark,
+      speech: `Hey! Ich bin Mr. Lala. Heute lernst du: ${topicName}. Das kannst du schaffen!`,
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+            <div style="animation:evBounceIn .5s cubic-bezier(.36,.07,.19,.97)">${_evCharHTML('talking')}<div class="ev-char-name-lbl" style="margin-top:4px">Mr. Lala</div></div>
+            <div style="font-size:11px;color:rgba(255,255,255,.55);font-weight:800;letter-spacing:.1em;text-transform:uppercase">Heute lernst du:</div>
+            <div class="ev-hook-title" style="font-size:clamp(22px,6vw,36px);line-height:1.2">${topicName}</div>
+            <div style="font-size:56px;animation:evFadeUp .4s .7s both">${vis}</div>
+          </div>`;
+      }
+    },
+
+    // ── Szene 2: Erster Gedanke / Alltagsbeispiel (≈14s) ─────────
+    // Qualitätscheck: max 1 Satz sichtbar, zeigender Mr. Lala
+    { dur: 10000, bg: dark,
+      speech: clamp(s0) || 'Schau dir das genau an!',
+      build(stage) {
+        stage.style.justifyContent = 'flex-start';
+        stage.innerHTML = `
+          <div class="ev-scene-split">
+            ${ch('pointing')}
+            <div class="ev-split-content">
+              <div style="font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">🔍 Schau mal:</div>
+              ${s0 ? `<div class="ev-speech-bubble" style="font-size:14px;line-height:1.7;font-weight:700">${clamp(s0)}</div>` : ''}
+              <div style="margin-top:14px;font-size:46px;animation:evScaleIn .4s .6s both;text-align:center">${vis}</div>
+            </div>
+          </div>`;
+      }
+    },
+  ];
+
+  // ── Szene 3: Zweiter Gedanke (nur wenn vorhanden, ≈14s) ───────
+  // Qualitätscheck: vorheriger Satz als Badge, neuer Satz in Bubble
+  if (s1) {
+    scenes.push({
+      dur: 10000, bg: dark,
+      speech: clamp(s1),
+      build(stage) {
+        stage.style.justifyContent = 'flex-start';
+        stage.innerHTML = `
+          <div class="ev-scene-split">
+            ${ch('talking')}
+            <div class="ev-split-content">
+              <div style="font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">📌 Und das noch:</div>
+              ${s0 ? `<div style="margin-bottom:10px;animation:evFadeUp .3s both"><span class="ev-label-badge" style="font-size:11px">✓ ${s0.length>34?s0.slice(0,32)+'…':s0}</span></div>` : ''}
+              <div class="ev-speech-bubble" style="font-size:14px;line-height:1.7">${clamp(s1)}</div>
+            </div>
+          </div>`;
+      }
+    });
+  }
+
+  // ── Szene 4: Merksatz (≈12s) ──────────────────────────────────
+  // Qualitätscheck: sichtbarer Merksatz, kurze Sätze, Mr. Lala seitlich
+  scenes.push({
+    dur: 8000, bg: deep,
+    speech: `Hier ist dein Merkspruch: ${clamp(s0)}${s1 ? ' Und: '+clamp(s1) : ''} Gut merken!`,
+    build(stage) {
+      stage.style.justifyContent = 'center';
+      stage.innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding:0 14px;text-align:center;width:100%">
+          <div style="font-size:28px">📌</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.5);font-weight:800;letter-spacing:.1em;text-transform:uppercase">Dein Merkspruch</div>
+          <div class="ev-merksatz" style="width:100%;text-align:left">
+            ${s0 ? `<p style="margin:0 0 8px;font-size:15px;font-weight:800;line-height:1.5">${clamp(s0)}</p>` : ''}
+            ${s1 ? `<p style="margin:0;font-size:13px;opacity:.9;line-height:1.5">${clamp(s1)}</p>` : ''}
+          </div>
+        </div>`;
+    }
+  });
+
+  // ── Szene 5: Interaktive Mini-Frage (≈15s) ────────────────────
+  // Qualitätscheck: 2–4 Antwort-Buttons, direktes Feedback, auto-weiter
+  if (mq && (mq.options||[]).length >= 2) {
+    scenes.push({
+      dur: 20000, bg: dark,
+      speech: `Jetzt bist du dran! ${mq.q}`,
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        const opts = (mq.options||[]).slice(0,4);
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:0 12px;width:100%;text-align:center">
+            <div style="font-size:28px;animation:evBounceIn .4s both">🤔</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.5);font-weight:800;letter-spacing:.1em;text-transform:uppercase">Deine Frage</div>
+            <div style="font-size:13px;font-weight:800;color:white;line-height:1.6;max-width:270px">${mq.q}</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;margin-top:2px">
+              ${opts.map((opt,i) =>
+                `<button onclick="window._evAnswerQ(${i},${mq.correct},this)"
+                  style="background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);
+                         border-radius:12px;padding:10px 8px;color:white;font-size:12px;font-weight:700;
+                         cursor:pointer;transition:background .2s,border-color .2s;
+                         font-family:'Nunito',sans-serif;line-height:1.3">${opt}</button>`
+              ).join('')}
+            </div>
+            <div id="evQFeedback" style="min-height:22px;font-size:13px;font-weight:800"></div>
+          </div>`;
+      }
+    });
+  }
+
+  // ── Szene 6: Outro / Celebration (≈7s) ───────────────────────
+  // Qualitätscheck: kurze Motivation, Mr. Lala feiert
+  scenes.push({
+    dur: 6000, bg: dark,
+    speech: `Klasse! Du hast ${topicName} super verstanden. Weiter so – du bist toll!`,
+    build(stage) {
+      stage.style.justifyContent = 'center';
+      stage.innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+          <div style="animation:evBounceIn .5s cubic-bezier(.36,.07,.19,.97)">${_evCharHTML('celebrating')}<div class="ev-char-name-lbl" style="margin-top:4px">Mr. Lala</div></div>
+          <div class="ev-outro-text" style="font-size:clamp(20px,5vw,28px)">Klasse gemacht! 🎉</div>
+          <div style="font-size:14px;color:rgba(255,255,255,.75);font-weight:700">${topicName} ✓</div>
+        </div>`;
+    }
+  });
+
+  return scenes;
+}
+
+window._evAnswerQ = function(selected, correct, btn) {
+  const stage = document.getElementById('evStage');
+  const btns = stage ? stage.querySelectorAll('button') : [];
+  btns.forEach(b => { b.disabled = true; b.style.cursor = 'default'; });
+  const fb = document.getElementById('evQFeedback');
+  if (selected === correct) {
+    btn.style.background = '#16A34A'; btn.style.borderColor = '#16A34A';
+    if (fb) { fb.textContent = '✅ Richtig! Super gemacht!'; fb.style.color = '#86EFAC'; }
+  } else {
+    btn.style.background = '#DC2626'; btn.style.borderColor = '#DC2626';
+    if (btns[correct]) { btns[correct].style.background = '#16A34A'; btns[correct].style.borderColor = '#16A34A'; }
+    if (fb) { fb.textContent = '❌ Fast! Das Grüne war richtig.'; fb.style.color = '#FCA5A5'; }
+  }
+  clearTimeout(_evTimer);
+  _evTimer = setTimeout(() => _evPlayScene(_evSceneIdx + 1), 2600);
+};
+
 function openErklaerVideo(topicName){
-  if(!EV_SCENES[topicName])EV_SCENES[topicName]=_evAutoScenes(topicName);
+  if(!EV_SCENES[topicName]){
+    const gradeNum = parseInt((state.gradeId||'klasse5').replace(/klasse/,'')) || 5;
+    const isGrundschule = gradeNum >= 1 && gradeNum <= 4 && !/(_rs|_hs|_gts)/.test(state.gradeId||'');
+    EV_SCENES[topicName] = isGrundschule
+      ? _evAutoScenesGrundschule(topicName)
+      : _evAutoScenes(topicName);
+  }
   const scenes=EV_SCENES[topicName];
   if(!scenes)return;
   _evTopicName=topicName;_evSceneIdx=0;_evPaused=false;_evSceneElapsed=0;
