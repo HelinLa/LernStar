@@ -4,7 +4,7 @@
    Videos mit Hedda-Erklärungen für alle Themen
    ============================================================ */
 
-const CONTENT = {
+const CONTENT = { ...(typeof GS_CONTENT !== 'undefined' ? GS_CONTENT : {}),
 
   /* =========================================================  KLASSE 1 – GRUNDSCHULE  */
   klasse1: {

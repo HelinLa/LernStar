@@ -17,6 +17,14 @@ const state = {
   learningGoal: localStorage.getItem('ls_learningGoal') || 'normal', // 'normal','zap','abitur'
   onboardingDone: localStorage.getItem('ls_onboardingDone') === '1',
   currentTopicName: null,
+  // Modulgenerator
+  modulGradeId: null, modulSubjectId: null, modulTopicIdx: 0, modulStep: 1,
+  modulVorwissenIdx: 0, modulVorwissenAnswers: [],
+  modulDiagnose: { idx: 0, answers: [] },
+  modulKompetenz: { idx: 0, score: 0, answers: [] },
+  modulErsteAnw: { idx: 0 },
+  modulReflexion: null,
+  modulExerciseId: null,
   // Prüfungsmodus
   examMode: 'zap',
   examDiff: 2,
@@ -1215,6 +1223,7 @@ function navigate(view, gradeId, subjectId, exerciseId) {
     case 'grade':    renderGrade();    break;
     case 'subject':  renderSubject();  break;
     case 'quiz':     renderQuiz();     break;
+    case 'modul':    renderModul();    break;
     case 'result':   showView('viewResult'); break;
     case 'examprep': renderExamPrep(); break;
     case 'analyse':  renderAnalyse();  break;
@@ -1336,8 +1345,9 @@ function renderSubject() {
           <div class="topic-name">${t.name}</div>
           <div class="topic-diff">${DIFF_STARS[t.diff]}</div>
         </div>
-        ${(hasVideo && !t.explanation) ? `<button class="topic-play-btn" id="topicBtn${i}" onclick="playTopic(${i})">Erklärvideo</button>` : ''}
-        ${(EV_SCENES[t.name] || t.explanation) ? `<button class="ev-topic-btn" onclick="openErklaerVideo('${t.name.replace(/'/g,"\\'")}')">🎬 Erklärvideo</button>` : ''}
+        ${t.kompetenz ? `<button class="modul-start-btn" onclick="startModul('${state.gradeId}','${state.subjectId}',${topicNum-1})">&#127775; Lernmodul</button>` : ''}
+        ${(hasVideo && !t.explanation && !t.kompetenz) ? `<button class="topic-play-btn" id="topicBtn${i}" onclick="playTopic(${i})">Erklärvideo</button>` : ''}
+        ${((EV_SCENES[t.name] || t.explanation) && !t.kompetenz) ? `<button class="ev-topic-btn" onclick="openErklaerVideo('${t.name.replace(/'/g,"\\'")}')">🎬 Erklärvideo</button>` : ''}
       </div>`;
     topicsList.appendChild(item);
   });
@@ -11059,4 +11069,263 @@ function _evSkipScene(){clearTimeout(_evTimer);_evPlayScene(_evSceneIdx+1);}
 
 
 
+
+
+// ============================================================
+// MODULGENERATOR – 10-Schritt-Lernmodul (Grundschule)
+// ============================================================
+
+function startModul(gradeId, subjectId, topicIdx) {
+  const grade   = CONTENT[gradeId];
+  const subject = grade && grade.subjects.find(function(s){return s.id===subjectId;});
+  if (!subject) return;
+  const nonChapterTopics = subject.topics.filter(function(t){return !t.isChapter;});
+  const topic = nonChapterTopics[topicIdx];
+  if (!topic || !topic.kompetenz) return;
+  const ex = subject.exercises.find(function(e){return e.ersteAnwendung;}) || subject.exercises[0] || null;
+  state.modulGradeId      = gradeId;
+  state.modulSubjectId    = subjectId;
+  state.modulTopicIdx     = topicIdx;
+  state.modulStep         = 1;
+  state.modulVorwissenIdx = 0;
+  state.modulVorwissenAnswers = [];
+  state.modulDiagnose     = { idx: 0, answers: [] };
+  state.modulKompetenz    = { idx: 0, score: 0, answers: [] };
+  state.modulErsteAnw     = { idx: 0 };
+  state.modulReflexion    = null;
+  state.modulExerciseId   = ex ? ex.id : null;
+  navigate('modul');
+}
+
+function _modulGetTopic() {
+  const grade   = CONTENT[state.modulGradeId];
+  const subject = grade && grade.subjects.find(function(s){return s.id===state.modulSubjectId;});
+  if (!subject) return null;
+  return subject.topics.filter(function(t){return !t.isChapter;})[state.modulTopicIdx];
+}
+
+function _modulGetExercise() {
+  const grade   = CONTENT[state.modulGradeId];
+  const subject = grade && grade.subjects.find(function(s){return s.id===state.modulSubjectId;});
+  if (!subject || !state.modulExerciseId) return subject && subject.exercises[0];
+  return subject.exercises.find(function(e){return e.id===state.modulExerciseId;}) || subject.exercises[0];
+}
+
+function renderModul() {
+  showView('viewModul');
+  const topic = _modulGetTopic();
+  if (!topic) { navigate('home'); return; }
+  const c = document.getElementById('modulContainer');
+  if (!c) return;
+  const steps = ['Kompetenzziel','Vorwissen','Erklaerung','Videoskript','Erste Anwendung',
+                  'Mini-Diagnose','Individuelle Uebungen','Transfer','Reflexion','Kompetenznachweis'];
+  const pct = Math.round((state.modulStep / 10) * 100);
+  c.innerHTML =
+    '<div class="modul-header">' +
+      '<button class="btn-modul-hint" onclick="navigate(\'subject\',state.modulGradeId,state.modulSubjectId)">&#8592; Zurueck</button>' +
+      '<div class="modul-step-label">Schritt ' + state.modulStep + '/10 &mdash; ' + steps[state.modulStep-1] + '</div>' +
+      '<div class="modul-progress-bar"><div class="modul-progress-fill" style="width:' + pct + '%"></div></div>' +
+    '</div>' +
+    '<div class="modul-step-card" id="modulStepContent"></div>';
+  var fn = [null,_modulStep1,_modulStep2,_modulStep3,_modulStep4,_modulStep5,
+             _modulStep6,_modulStep7,_modulStep8,_modulStep9,_modulStep10];
+  fn[state.modulStep](topic);
+}
+
+function _modulStep1(t) {
+  document.getElementById('modulStepContent').innerHTML =
+    '<div class="modul-kompetenz"><div class="modul-kompetenz-icon">&#127919;</div>' +
+    '<h2>Was lernst du heute?</h2>' +
+    '<p class="modul-kompetenz-text">' + t.kompetenz + '</p>' +
+    (t.merksatz ? '<div class="modul-merksatz">&#128161; ' + t.merksatz + '</div>' : '') +
+    '</div>' +
+    '<button class="btn-modul-next" onclick="modulNext()">Weiter &#8594;</button>';
+}
+
+function _modulStep2(t) {
+  const vw = t.vorwissen || [];
+  const idx = state.modulVorwissenIdx;
+  if (idx >= vw.length) { state.modulStep = 3; renderModul(); return; }
+  document.getElementById('modulStepContent').innerHTML =
+    '<h2>&#129504; Vorwissen pruefen</h2>' +
+    '<p style="color:#6B7280;margin-bottom:8px">Frage ' + (idx+1) + ' von ' + vw.length + '</p>' +
+    '<p class="modul-question">' + vw[idx] + '</p>' +
+    '<div class="modul-options">' +
+      '<button class="modul-option-btn" onclick="modulVorwissenAntwort(true)">&#10003; Ja</button>' +
+      '<button class="modul-option-btn" onclick="modulVorwissenAntwort(false)">&#10007; Nein</button>' +
+    '</div>';
+}
+
+function modulVorwissenAntwort(ja) {
+  state.modulVorwissenAnswers.push(ja);
+  state.modulVorwissenIdx++;
+  renderModul();
+}
+
+function _modulStep3(t) {
+  document.getElementById('modulStepContent').innerHTML =
+    '<h2>&#128218; Erklaerung</h2>' +
+    '<div class="modul-explanation">' + (t.explanation || '') + '</div>' +
+    (t.typischeFehler && t.typischeFehler.length ? '<div class="modul-fehler"><strong>&#9888;&#65039; Typische Fehler:</strong><ul>' +
+      t.typischeFehler.map(function(f){return '<li>' + f + '</li>';}).join('') + '</ul></div>' : '') +
+    '<button class="btn-modul-next" onclick="modulNext()">Verstanden &#8594;</button>';
+}
+
+function _modulStep4(t) {
+  const vs = t.videoskript || 'Kein Videoskript vorhanden.';
+  document.getElementById('modulStepContent').innerHTML =
+    '<h2>&#127909; Videoskript</h2>' +
+    '<div class="ev-skript-container">' + vs.replace(/\n/g,'<br>') + '</div>' +
+    '<button class="btn-modul-next" onclick="modulNext()">Weiter &#8594;</button>';
+}
+
+function _modulStep5(t) {
+  const ex   = _modulGetExercise();
+  const anws = ex && ex.ersteAnwendung;
+  if (!anws || !anws.length) { state.modulStep = 6; renderModul(); return; }
+  const idx = state.modulErsteAnw.idx;
+  if (idx >= anws.length) { state.modulStep = 6; renderModul(); return; }
+  const a = anws[idx];
+  document.getElementById('modulStepContent').innerHTML =
+    '<h2>&#9999;&#65039; Erste Anwendung (' + (idx+1) + '/' + anws.length + ')</h2>' +
+    '<p class="modul-question">' + a.aufgabe + '</p>' +
+    '<button class="btn-modul-hint" onclick="this.nextSibling.style.display=\'block\';this.style.display=\'none\'">&#128161; Hinweis anzeigen</button>' +
+    '<div class="modul-hint-text" style="display:none">' + a.hinweis + '</div>' +
+    '<button class="btn-modul-hint" onclick="this.nextSibling.style.display=\'block\';this.style.display=\'none\'">&#10003; Loesung anzeigen</button>' +
+    '<div class="modul-hint-text" style="display:none">&#128994; ' + a.loesung + '</div>' +
+    '<button class="btn-modul-next" onclick="modulErsteAnwWeiter()">Naechste Aufgabe &#8594;</button>';
+}
+
+function modulErsteAnwWeiter() { state.modulErsteAnw.idx++; renderModul(); }
+
+function _modulStep6() {
+  const ex = _modulGetExercise();
+  const mq = ex && ex.minidiagnose;
+  if (!mq || !mq.length) { state.modulStep = 7; renderModul(); return; }
+  const idx = state.modulDiagnose.idx;
+  if (idx >= mq.length) { _modulStep6Result(mq); return; }
+  const f = mq[idx];
+  document.getElementById('modulStepContent').innerHTML =
+    '<h2>&#128203; Mini-Diagnose (' + (idx+1) + '/' + mq.length + ')</h2>' +
+    '<p class="modul-question">' + f.q + '</p>' +
+    '<div class="modul-options">' +
+      f.options.map(function(o, oi){
+        return '<button class="modul-option-btn" onclick="modulDiagnoseAntwort(' + oi + ')">' + o + '</button>';
+      }).join('') +
+    '</div>';
+}
+
+function modulDiagnoseAntwort(chosen) {
+  const ex = _modulGetExercise();
+  const f  = ex.minidiagnose[state.modulDiagnose.idx];
+  state.modulDiagnose.answers.push({ q: f.q, correct: chosen === f.correct });
+  state.modulDiagnose.idx++;
+  renderModul();
+}
+
+function _modulStep6Result(mq) {
+  const richtig = state.modulDiagnose.answers.filter(function(a){return a.correct;}).length;
+  const falsch  = state.modulDiagnose.answers.filter(function(a){return !a.correct;});
+  document.getElementById('modulStepContent').innerHTML =
+    '<h2>&#128203; Diagnose-Ergebnis</h2>' +
+    '<div class="modul-diagnose-result">' + richtig + ' / ' + mq.length + ' richtig</div>' +
+    (falsch.length > 0 ? '<p>Schau nochmal auf diese Fragen:</p><ul class="modul-retry-list">' +
+      falsch.map(function(a){return '<li>&#10060; ' + a.q + '</li>';}).join('') + '</ul>' : '') +
+    '<button class="btn-modul-next" onclick="modulNext()">Weiter &#8594;</button>';
+}
+
+function _modulStep7() {
+  const ex = _modulGetExercise();
+  if (!ex || !ex.questions || !ex.questions.length) { state.modulStep = 8; renderModul(); return; }
+  const idx  = state.modulKompetenz.idx;
+  if (idx >= Math.min(4, ex.questions.length)) { state.modulStep = 8; renderModul(); return; }
+  const f = ex.questions[idx];
+  document.getElementById('modulStepContent').innerHTML =
+    '<h2>&#128218; Individuelle Uebung (' + (idx+1) + '/4)</h2>' +
+    '<p class="modul-question">' + f.q + '</p>' +
+    '<button class="btn-modul-hint" onclick="this.nextSibling.style.display=\'block\';this.style.display=\'none\'">&#128161; Tipp</button>' +
+    '<div class="modul-hint-text" style="display:none">' + (f.hint || '') + '</div>' +
+    '<div class="modul-options">' +
+      f.options.map(function(o, oi){
+        return '<button class="modul-option-btn" onclick="modulKompetenzAntwort(' + oi + ')">' + o + '</button>';
+      }).join('') +
+    '</div>';
+}
+
+function modulKompetenzAntwort(chosen) {
+  const ex = _modulGetExercise();
+  const f  = ex.questions[state.modulKompetenz.idx];
+  const ok = chosen === f.correct;
+  if (ok) state.modulKompetenz.score++;
+  state.modulKompetenz.answers.push({ q: f.q, correct: ok });
+  state.modulKompetenz.idx++;
+  renderModul();
+}
+
+function _modulStep8(t) {
+  const tr = t.transfer;
+  if (!tr) { state.modulStep = 9; renderModul(); return; }
+  document.getElementById('modulStepContent').innerHTML =
+    '<h2>&#127758; Transfer – Im Alltag anwenden</h2>' +
+    '<div class="modul-transfer-kontext">&#128205; ' + (tr.kontext || '') + '</div>' +
+    '<p class="modul-question">' + tr.aufgabe + '</p>' +
+    (tr.tipp ? '<div class="modul-merksatz">&#128161; ' + tr.tipp + '</div>' : '') +
+    '<button class="btn-modul-next" onclick="modulNext()">Erledigt &#8594;</button>';
+}
+
+function _modulStep9() {
+  document.getElementById('modulStepContent').innerHTML =
+    '<h2>&#129504; Reflexion</h2>' +
+    '<p>Wie sicher fuehlst du dich jetzt?</p>' +
+    '<div class="modul-reflexion-buttons">' +
+      '<button class="modul-option-btn" onclick="modulSetReflexion(\'sicher\')">&#128994; Sicher!</button>' +
+      '<button class="modul-option-btn" onclick="modulSetReflexion(\'unsicher\')">&#128993; Noch unsicher</button>' +
+      '<button class="modul-option-btn" onclick="modulSetReflexion(\'unklar\')">&#128308; Brauche Hilfe</button>' +
+    '</div>';
+}
+
+function modulSetReflexion(v) { state.modulReflexion = v; modulNext(); }
+
+function _modulStep10() {
+  const ex = _modulGetExercise();
+  const qs = ex && ex.kompetenznachweis;
+  if (!qs || !qs.length) { _modulStep10Result(); return; }
+  const idx = state.modulKompetenz.idx;
+  if (idx >= qs.length) { _modulStep10Result(); return; }
+  const f = qs[idx];
+  document.getElementById('modulStepContent').innerHTML =
+    '<h2>&#127941; Kompetenznachweis (' + (idx+1) + '/' + qs.length + ')</h2>' +
+    '<p class="modul-question">' + f.q + '</p>' +
+    '<div class="modul-options">' +
+      f.options.map(function(o, oi){
+        return '<button class="modul-option-btn" onclick="modulKompetenzNachweis(' + oi + ')">' + o + '</button>';
+      }).join('') +
+    '</div>';
+}
+
+function modulKompetenzNachweis(chosen) {
+  const ex = _modulGetExercise();
+  const qs = ex.kompetenznachweis;
+  const f  = qs[state.modulKompetenz.idx];
+  if (chosen === f.correct) state.modulKompetenz.score++;
+  state.modulKompetenz.idx++;
+  renderModul();
+}
+
+function _modulStep10Result() {
+  const total  = state.modulKompetenz.answers.length + state.modulKompetenz.idx;
+  const score  = state.modulKompetenz.score;
+  const pct    = total > 0 ? Math.round((score / total) * 100) : 0;
+  const passed = pct >= 70;
+  document.getElementById('modulStepContent').innerHTML =
+    '<h2>&#127941; Dein Ergebnis</h2>' +
+    '<div class="modul-diagnose-result" style="color:' + (passed ? '#059669' : '#DC2626') + '">' + pct + '% &ndash; ' + (passed ? 'Bestanden! &#127881;' : 'Weiter ueben') + '</div>' +
+    '<div class="modul-btn-row">' +
+      (!passed ? '<button class="btn-modul-hint" onclick="state.modulStep=3;state.modulKompetenz={idx:0,score:0,answers:[]};renderModul()">&#8592; Nochmal ueben</button>' : '') +
+      '<button class="btn-modul-next" onclick="modulAbschliessen()">Zum Fach &#8594;</button>' +
+    '</div>';
+}
+
+function modulNext() { if (state.modulStep < 10) { state.modulStep++; renderModul(); } }
+function modulAbschliessen() { navigate('subject', state.modulGradeId, state.modulSubjectId); }
 
