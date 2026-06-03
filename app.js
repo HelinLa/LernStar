@@ -240,7 +240,7 @@ async function _elevenFetch(text) {
       body: JSON.stringify({
         text,
         model_id: ELEVEN_MODEL,
-        voice_settings: { stability: 0.58, similarity_boost: 0.80, style: 0.18, use_speaker_boost: true }
+        voice_settings: { stability: 0.74, similarity_boost: 0.55, style: 0.03, use_speaker_boost: false }
       })
     }
   );
@@ -10972,7 +10972,7 @@ if (false) { const _EV_LEGACY = { 'Einführung in Brüche': [
     }
   ] }; } // end legacy
 
-let _evTopicName='',_evSceneIdx=0,_evPaused=false,_evTimer=null,_evSceneStart=0,_evSceneElapsed=0;
+let _evTopicName='',_evSceneIdx=0,_evPaused=false,_evTimer=null,_evSceneStart=0,_evSceneElapsed=0,_evSpeechDoneWhilePaused=false;
 
 /* ─── Sanfte TTS: ResponsiveVoice → Web Speech Fallback ─────────
    ResponsiveVoice liefert eine warme, natürliche deutsche Stimme
@@ -10980,9 +10980,17 @@ let _evTopicName='',_evSceneIdx=0,_evPaused=false,_evTimer=null,_evSceneStart=0,
    ─────────────────────────────────────────────────────────────── */
 let _evCurAudio = null;
 
-async function _evSpeak(text) {
-  if (!text) return;
+async function _evSpeak(text, onDone) {
+  if (!text || text.trim() === '') { if (onDone) setTimeout(onDone, 300); return; }
   _evSpeakStop();
+
+  const _fireDone = () => {
+    if (!_evPaused) {
+      if (onDone) setTimeout(onDone, 750);
+    } else {
+      _evSpeechDoneWhilePaused = true;
+    }
+  };
 
   // ElevenLabs — Thomas (sanfte deutsche Männerstimme, Erzählung)
   if (ELEVEN_KEY) {
@@ -10990,8 +10998,9 @@ async function _evSpeak(text) {
       const url = await _elevenFetch(text);
       const audio = new Audio(url);
       _evCurAudio = audio;
-      audio.onended = audio.onerror = () => { _evCurAudio = null; };
-      audio.play().catch(() => {});
+      audio.onended = () => { _evCurAudio = null; _fireDone(); };
+      audio.onerror = () => { _evCurAudio = null; if (onDone) setTimeout(onDone, 300); };
+      audio.play().catch(() => { if (onDone) setTimeout(onDone, 300); });
       return;
     } catch(e) {
       console.warn('[EV] ElevenLabs nicht verfügbar, Fallback:', e);
@@ -10999,7 +11008,7 @@ async function _evSpeak(text) {
   }
 
   // Fallback: bester verfügbarer Browser-Voice
-  if (!window.speechSynthesis) return;
+  if (!window.speechSynthesis) { if (onDone) setTimeout(onDone, 2000); return; }
   const synth = window.speechSynthesis;
   let voices = synth.getVoices();
   if (!voices.length) {
@@ -11020,8 +11029,10 @@ async function _evSpeak(text) {
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'de-DE'; u.volume = 1.0;
   if (voice) u.voice = voice;
-  u.rate = /natural|neural|online/i.test(voice?.name || '') ? 0.88 : 0.80;
-  u.pitch = 1.0;
+  u.rate = /natural|neural|online/i.test(voice?.name || '') ? 0.84 : 0.78;
+  u.pitch = 0.92;
+  u.onend = () => _fireDone();
+  u.onerror = () => { if (onDone) setTimeout(onDone, 300); };
   synth.speak(u);
 }
 
@@ -11052,28 +11063,65 @@ function _evBuildDots(count){const c=document.getElementById('evSceneDots');if(!
 function _evPlayScene(idx){
   const scenes=EV_SCENES[_evTopicName];
   if(!scenes||idx>=scenes.length){closeErklaerVideo();return;}
-  _evSceneIdx=idx;_evSceneElapsed=0;clearTimeout(_evTimer);
+  _evSceneIdx=idx;_evSceneElapsed=0;_evSpeechDoneWhilePaused=false;
+  clearTimeout(_evTimer);_evTimer=null;
   document.querySelectorAll('.ev-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
   const scene=scenes[idx];
   const stage=document.getElementById('evStage');
   if(!stage)return;
-  stage.style.background=scene.bg||'transparent';
-  stage.innerHTML='';
-  scene.build(stage);
-  // Sprachausgabe — beste verfügbare Stimme
-  // Sprachausgabe (HF Neural TTS → Web Speech Fallback)
-  if (scene.speech) _evSpeak(scene.speech);
-  // Nächste Szene vorausladen
-  const nextSpeech = scenes[idx+1]?.speech;
-  if (nextSpeech) _evPrefetch(nextSpeech);
+
+  // Sanfter Übergang: kurz ausblenden, dann neue Szene einblenden
+  stage.style.transition='opacity .28s ease';
+  stage.style.opacity='0';
+  setTimeout(()=>{
+    stage.style.background=scene.bg||'transparent';
+    stage.innerHTML='';
+    scene.build(stage);
+    stage.style.opacity='1';
+  },280);
+
   const btn=document.getElementById('evPlayPauseBtn');
   if(btn)btn.textContent='⏸';
   _evPaused=false;_evSceneStart=Date.now();
   _evTickProgress(idx,scene.dur);
-  _evTimer=setTimeout(()=>_evPlayScene(idx+1),scene.dur);
+
+  if(scene.speech){
+    // Sprach-getriebener Szenenübergang: nächste Szene erst nach Ende der Sprache
+    // Sicherheits-Timeout falls Audio-Event nie feuert (max scene.dur + 9s)
+    _evTimer=setTimeout(()=>_evPlayScene(idx+1), scene.dur+9000);
+    _evSpeak(scene.speech,()=>{
+      clearTimeout(_evTimer);
+      _evTimer=setTimeout(()=>_evPlayScene(idx+1),600);
+    });
+  }else{
+    _evTimer=setTimeout(()=>_evPlayScene(idx+1),scene.dur);
+  }
 }
 function _evTickProgress(sceneIdx,dur){const fill=document.getElementById('evProgressFill');const scenes=EV_SCENES[_evTopicName];if(!fill||!scenes)return;const totalDur=scenes.reduce((s,sc)=>s+sc.dur,0);const pastDur=scenes.slice(0,sceneIdx).reduce((s,sc)=>s+sc.dur,0);function tick(){if(_evSceneIdx!==sceneIdx||_evPaused)return;const elapsed=Date.now()-_evSceneStart+_evSceneElapsed;const totalDone=pastDur+Math.min(elapsed,dur);fill.style.width=(totalDone/totalDur*100)+'%';if(elapsed<dur)requestAnimationFrame(tick);}requestAnimationFrame(tick);}
-function _evTogglePause(){const btn=document.getElementById('evPlayPauseBtn');const scenes=EV_SCENES[_evTopicName];const scene=scenes?.[_evSceneIdx];if(!scene)return;if(_evPaused){_evPaused=false;if(btn)btn.textContent='⏸';const remaining=scene.dur-_evSceneElapsed;_evSceneStart=Date.now();_evTickProgress(_evSceneIdx,scene.dur);_evTimer=setTimeout(()=>_evPlayScene(_evSceneIdx+1),remaining);}else{_evPaused=true;if(btn)btn.textContent='▶';_evSceneElapsed+=Date.now()-_evSceneStart;clearTimeout(_evTimer);}}
+function _evTogglePause(){
+  const btn=document.getElementById('evPlayPauseBtn');
+  const scenes=EV_SCENES[_evTopicName];
+  const scene=scenes?.[_evSceneIdx];
+  if(!scene)return;
+  if(_evPaused){
+    _evPaused=false;
+    if(btn)btn.textContent='⏸';
+    _evSceneStart=Date.now();
+    _evTickProgress(_evSceneIdx,scene.dur);
+    if(_evSpeechDoneWhilePaused){
+      // Sprache war schon fertig als wir pausierten → sofort weiter
+      _evSpeechDoneWhilePaused=false;
+      clearTimeout(_evTimer);
+      _evTimer=setTimeout(()=>_evPlayScene(_evSceneIdx+1),600);
+    }
+    // sonst läuft Sprache noch → onDone-Callback übernimmt den Übergang
+  }else{
+    _evPaused=true;
+    if(btn)btn.textContent='▶';
+    _evSceneElapsed+=Date.now()-_evSceneStart;
+    clearTimeout(_evTimer);
+  }
+}
 function _evSkipScene(){clearTimeout(_evTimer);_evPlayScene(_evSceneIdx+1);}
 
 
