@@ -1,0 +1,553 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LernStar â€“ KI-Verwaltung</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+  <script src="js/ai_engine.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent:#7C3AED; --accent2:#A855F7; --accent-l:#EDE9FE;
+      --bg:#F4F6FB; --surface:#fff; --border:#E5E7EB;
+      --text:#1a1a2e; --muted:#6B7280; --r:16px;
+      --shadow:0 4px 24px rgba(0,0,0,.08);
+    }
+    body { font-family:'Nunito',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+
+    /* NAV */
+    .topnav {
+      position:sticky; top:0; z-index:100; height:64px; padding:0 24px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      display:flex; align-items:center; justify-content:space-between;
+      box-shadow:0 2px 20px rgba(124,58,237,.35);
+    }
+    .nav-left { display:flex; align-items:center; gap:12px; }
+    .nav-logo { font-family:'Poppins',sans-serif; font-size:1.25rem; font-weight:900; color:#fff; }
+    .nav-logo span { opacity:.65; font-weight:600; font-size:.85rem; margin-left:6px; }
+    .nav-badge { background:rgba(255,255,255,.18); border-radius:20px;
+                  padding:3px 12px; font-size:.76rem; font-weight:800; color:#fff; }
+    .nav-btn {
+      background:rgba(255,255,255,.15); border:none; border-radius:10px;
+      padding:7px 14px; color:#fff; font-family:'Nunito',sans-serif;
+      font-size:.82rem; font-weight:800; cursor:pointer; text-decoration:none;
+      transition:background .2s;
+    }
+    .nav-btn:hover { background:rgba(255,255,255,.28); }
+
+    /* LAYOUT */
+    .page { max-width:1240px; margin:24px auto; padding:0 18px;
+            display:grid; grid-template-columns:390px 1fr; gap:20px; }
+    @media(max-width:900px) { .page { grid-template-columns:1fr; } }
+
+    /* CARD */
+    .card { background:var(--surface); border-radius:var(--r); box-shadow:var(--shadow); padding:22px; }
+    .card-title { font-family:'Poppins',sans-serif; font-size:.95rem; font-weight:800;
+                  margin-bottom:16px; display:flex; align-items:center; gap:7px; }
+
+    /* KI-STÃ„RKE */
+    .strength {
+      background:linear-gradient(135deg,#1e1b4b,#312e81);
+      border-radius:var(--r); padding:20px; color:#fff;
+      box-shadow:var(--shadow);
+    }
+    .str-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+    .str-title { font-family:'Poppins',sans-serif; font-size:.9rem; font-weight:800; opacity:.8; }
+    .str-level { font-family:'Poppins',sans-serif; font-size:1.15rem; font-weight:900; }
+    .str-bar-bg { background:rgba(255,255,255,.15); border-radius:99px; height:11px;
+                  overflow:hidden; margin-bottom:8px; }
+    .str-bar { height:100%; background:linear-gradient(90deg,#A78BFA,#7C3AED);
+               border-radius:99px; transition:width .8s cubic-bezier(.4,0,.2,1); }
+    .str-meta { font-size:.76rem; opacity:.6; }
+    .str-stats { display:flex; gap:12px; margin-top:14px; }
+    .str-stat { flex:1; background:rgba(255,255,255,.08); border-radius:10px;
+                padding:10px; text-align:center; }
+    .str-stat .v { font-size:1.35rem; font-weight:900; font-family:'Poppins',sans-serif; color:#A78BFA; }
+    .str-stat .l { font-size:.68rem; opacity:.55; margin-top:2px; }
+
+    /* TABS */
+    .tabs { display:flex; gap:6px; margin-bottom:16px; }
+    .tab { flex:1; padding:9px 6px; border:2px solid var(--border); border-radius:10px;
+           font-family:'Nunito',sans-serif; font-size:.84rem; font-weight:800;
+           cursor:pointer; background:#FAFAFA; color:var(--muted); transition:all .2s; }
+    .tab.active { border-color:var(--accent); background:var(--accent-l); color:var(--accent); }
+
+    /* DROP ZONE */
+    .drop {
+      border:2.5px dashed #C4B5FD; border-radius:12px;
+      padding:26px 14px; text-align:center; cursor:pointer;
+      transition:all .2s; background:#FAFAFA; margin-bottom:12px; position:relative;
+    }
+    .drop:hover, .drop.over { border-color:var(--accent); background:var(--accent-l); }
+    .drop input { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
+    .drop-icon { font-size:2.4rem; margin-bottom:5px; }
+    .drop-text { font-weight:800; font-size:.88rem; color:var(--muted); }
+    .drop-sub  { font-size:.72rem; color:#9CA3AF; margin-top:2px; }
+    .prev-wrap { position:relative; margin-bottom:12px; display:none; }
+    .prev-wrap img { width:100%; max-height:160px; object-fit:contain;
+                     border-radius:9px; border:1.5px solid var(--border); }
+    .prev-rm { position:absolute; top:6px; right:6px; background:rgba(0,0,0,.55);
+               color:#fff; border:none; border-radius:50%; width:24px; height:24px;
+               font-size:.8rem; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+
+    /* FELDER */
+    .row3 { display:grid; grid-template-columns:1fr 72px 1fr; gap:8px; margin-bottom:10px; }
+    .col1 { display:flex; flex-direction:column; gap:8px; margin-bottom:10px; }
+    .field label { display:block; font-size:.7rem; font-weight:800; color:var(--muted);
+                   text-transform:uppercase; letter-spacing:.04em; margin-bottom:3px; }
+    .field input, .field select, .field textarea {
+      width:100%; padding:8px 11px; border:1.5px solid var(--border); border-radius:8px;
+      font-family:'Nunito',sans-serif; font-size:.85rem; color:var(--text);
+      background:#FAFAFA; transition:border-color .2s; resize:vertical;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline:none; border-color:var(--accent); background:#fff;
+    }
+
+    /* BTN */
+    .btn-save {
+      width:100%; padding:12px; border:none; border-radius:10px;
+      font-family:'Nunito',sans-serif; font-size:.92rem; font-weight:900;
+      cursor:pointer; color:#fff;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      transition:opacity .2s; box-shadow:0 4px 14px rgba(124,58,237,.28);
+    }
+    .btn-save:hover { opacity:.88; }
+    .btn-save:disabled { opacity:.45; cursor:not-allowed; }
+    .status { text-align:center; font-size:.82rem; min-height:18px; margin-top:8px; font-weight:700; }
+
+    /* TOPIC STATS */
+    .topic-grid { display:flex; flex-direction:column; gap:5px; }
+    .topic-row { display:flex; align-items:center; gap:8px;
+                 background:var(--accent-l); border-radius:8px; padding:6px 11px; }
+    .topic-name { font-size:.78rem; font-weight:700; flex:1; }
+    .topic-cnt { font-size:.73rem; font-weight:900; color:var(--accent);
+                 background:#fff; border-radius:5px; padding:1px 7px; }
+
+    /* LISTE */
+    .list-head { display:flex; align-items:center; justify-content:space-between;
+                 margin-bottom:14px; }
+    .list-count { font-size:.8rem; color:var(--muted); font-weight:700; }
+    .ex-list { display:flex; flex-direction:column; gap:9px;
+               max-height:74vh; overflow-y:auto; padding-right:4px; }
+    .ex-list::-webkit-scrollbar { width:4px; }
+    .ex-list::-webkit-scrollbar-thumb { background:#D1D5DB; border-radius:99px; }
+    .ex-item { border:1.5px solid var(--border); border-radius:11px;
+               padding:12px 14px; background:#FAFAFA; transition:border-color .2s; }
+    .ex-item:hover { border-color:#C4B5FD; }
+    .ex-head { display:flex; align-items:flex-start; justify-content:space-between;
+               gap:8px; margin-bottom:6px; }
+    .tags { display:flex; gap:4px; flex-wrap:wrap; }
+    .tag { font-size:.67rem; font-weight:800; padding:2px 8px; border-radius:20px;
+           background:var(--accent-l); color:var(--accent); }
+    .tag.g { background:#DBEAFE; color:#2563EB; }
+    .tag.d1 { background:#D1FAE5; color:#059669; }
+    .tag.d2 { background:#FEF3C7; color:#D97706; }
+    .tag.d3 { background:#FEE2E2; color:#DC2626; }
+    .ex-q { font-weight:700; font-size:.85rem; margin-bottom:3px; line-height:1.4; }
+    .ex-a { font-size:.78rem; color:#059669; font-weight:700; }
+    .ex-e { font-size:.72rem; color:var(--muted); margin-top:2px; line-height:1.4; }
+    .btn-del { padding:4px 8px; background:#FEE2E2; color:#DC2626; border:none;
+               border-radius:6px; font-size:.72rem; font-weight:800; cursor:pointer; flex-shrink:0; }
+    .btn-del:hover { background:#FECACA; }
+    .empty { text-align:center; padding:48px 16px; color:var(--muted); }
+    .empty-ico { font-size:3rem; margin-bottom:10px; }
+    .empty-t { font-family:'Poppins',sans-serif; font-size:1rem; font-weight:800; margin-bottom:5px; }
+
+    /* TOAST */
+    .toast { position:fixed; bottom:22px; right:22px; z-index:999;
+             background:#1E1E2E; color:#fff; padding:11px 18px;
+             border-radius:11px; font-size:.86rem; font-weight:700;
+             box-shadow:0 8px 28px rgba(0,0,0,.28);
+             opacity:0; transform:translateY(8px); transition:all .3s; pointer-events:none; }
+    .toast.show { opacity:1; transform:none; }
+    .hidden { display:none !important; }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-left">
+    <div class="nav-logo">â­ LernStar <span>KI-Verwaltung</span></div>
+    <div class="nav-badge" id="navCount">0 Aufgaben</div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <button class="nav-btn" onclick="document.getElementById('importFile').click()">ðŸ“¥ JSON importieren</button>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importJSON(this)">
+    <a class="nav-btn" href="index.html">ðŸŽ“ Zur Lernplattform â†’</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- LINKE SPALTE -->
+  <div style="display:flex;flex-direction:column;gap:16px">
+
+    <!-- KI-STÃ„RKE -->
+    <div class="strength">
+      <div class="str-top">
+        <div class="str-title">ðŸ§  KI-StÃ¤rke</div>
+        <div class="str-level" id="strLevel">â€”</div>
+      </div>
+      <div class="str-bar-bg"><div class="str-bar" id="strBar" style="width:0%"></div></div>
+      <div class="str-meta" id="strMeta">FÃ¼ge Aufgaben hinzu um die KI zu trainieren</div>
+      <div class="str-stats">
+        <div class="str-stat"><div class="v" id="statCount">0</div><div class="l">Aufgaben</div></div>
+        <div class="str-stat"><div class="v" id="statTopics">0</div><div class="l">Themen</div></div>
+        <div class="str-stat"><div class="v" id="statPct">0%</div><div class="l">StÃ¤rke</div></div>
+      </div>
+    </div>
+
+    <!-- AUFGABE HINZUFÃœGEN -->
+    <div class="card">
+      <div class="card-title">âž• Aufgabe hinzufÃ¼gen</div>
+      <div class="tabs">
+        <button class="tab active" id="tabB" onclick="switchTab('b')">ðŸ“· Bild hochladen</button>
+        <button class="tab"        id="tabM" onclick="switchTab('m')">âœï¸ Manuell</button>
+      </div>
+
+      <!-- TAB BILD -->
+      <div id="panelB">
+        <div class="drop" id="dropZone"
+          ondragover="event.preventDefault();this.classList.add('over')"
+          ondragleave="this.classList.remove('over')"
+          ondrop="onDrop(event)">
+          <input type="file" id="imgInput" accept="image/*" onchange="onFile(this.files[0])">
+          <div class="drop-icon">ðŸ“¸</div>
+          <div class="drop-text">Foto der Aufgabe ablegen oder klicken</div>
+          <div class="drop-sub">JPG Â· PNG Â· WebP</div>
+        </div>
+        <div class="prev-wrap" id="prevWrap">
+          <img id="prevImg" src="" alt="">
+          <button class="prev-rm" onclick="clearImg()">âœ•</button>
+        </div>
+        <div class="row3">
+          <div class="field"><label>Fach</label><input id="bSub" placeholder="Mathematik"></div>
+          <div class="field"><label>Klasse</label><input id="bGrade" placeholder="7"></div>
+          <div class="field"><label>Thema</label><input id="bTopic" placeholder="BrÃ¼che"></div>
+        </div>
+        <button class="btn-save" id="btnB" onclick="saveImage()" disabled>ðŸ’¾ Speichern</button>
+        <div class="status" id="statusB"></div>
+      </div>
+
+      <!-- TAB MANUELL -->
+      <div id="panelM" class="hidden">
+        <div class="row3">
+          <div class="field"><label>Fach</label><input id="mSub" placeholder="Mathematik"></div>
+          <div class="field"><label>Klasse</label><input id="mGrade" placeholder="7"></div>
+          <div class="field"><label>Thema</label><input id="mTopic" placeholder="BrÃ¼che"></div>
+        </div>
+        <div class="col1">
+          <div class="field"><label>Aufgabe / Frage</label>
+            <textarea id="mQ" rows="3" placeholder="Was ist Â¾ + Â¼?"></textarea></div>
+          <div class="field"><label>LÃ¶sung</label>
+            <input id="mA" placeholder="1"></div>
+          <div class="field"><label>ErklÃ¤rung (optional)</label>
+            <textarea id="mE" rows="2" placeholder="Gleichnamige BrÃ¼che werden addiertâ€¦"></textarea></div>
+          <div class="field"><label>Schwierigkeit</label>
+            <select id="mD">
+              <option value="1">â­ Einfach</option>
+              <option value="2" selected>â­â­ Mittel</option>
+              <option value="3">â­â­â­ Schwer</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-save" id="btnM" onclick="saveManual()">ðŸ’¾ Aufgabe speichern</button>
+        <div class="status" id="statusM"></div>
+      </div>
+    </div>
+
+    <!-- THEMEN -->
+    <div class="card" id="topicCard" style="display:none">
+      <div class="card-title">ðŸ“Š Themen-Ãœbersicht</div>
+      <div class="topic-grid" id="topicGrid"></div>
+    </div>
+
+  </div>
+
+  <!-- RECHTE SPALTE -->
+  <div class="card">
+    <div class="list-head">
+      <div class="card-title" style="margin-bottom:0">ðŸ“š Gespeicherte Aufgaben</div>
+      <div class="list-count" id="listCount">0 Aufgaben</div>
+    </div>
+    <div id="emptyState" class="empty">
+      <div class="empty-ico">ðŸ§ </div>
+      <div class="empty-t">Noch keine Aufgaben</div>
+      <p style="font-size:.83rem">Jede Aufgabe macht die KI klÃ¼ger!</p>
+    </div>
+    <div class="ex-list" id="exList"></div>
+  </div>
+
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// â”€â”€ Groq Vision (optional â€“ Fallback auf Manuell wenn kein Key) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const GROQ_KEY = localStorage.getItem('ls_groq_key') || '';
+const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const VISION_MODELS = [
+  'meta-llama/llama-4-scout-17b-16e-instruct',
+  'llama-3.2-11b-vision-preview',
+  'llama-3.2-90b-vision-preview',
+];
+
+async function _visionExtract(imgB64, mime, subject, grade, topic) {
+  const prompt = `Schulaufgabe. Fach:${subject}, Klasse:${grade}, Thema:${topic}. `
+    + 'Antworte NUR mit JSON:\n'
+    + '{"question":"Aufgabenstellung","answer":"LÃ¶sung","explanation":"LÃ¶sungsweg","difficulty":1}'
+    + '\n(difficulty: 1=einfach, 2=mittel, 3=schwer)';
+
+  for (const model of VISION_MODELS) {
+    try {
+      const res = await fetch(GROQ_URL, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${GROQ_KEY}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model,
+          messages: [{ role: 'user', content: [
+            { type: 'image_url', image_url: { url: `data:${mime};base64,${imgB64}` } },
+            { type: 'text', text: prompt }
+          ]}],
+          max_tokens: 500
+        })
+      });
+      if (!res.ok) continue;
+      const data    = await res.json();
+      const content = data.choices?.[0]?.message?.content || '';
+      const start   = content.indexOf('{');
+      const end     = content.lastIndexOf('}') + 1;
+      if (start >= 0 && end > start) return JSON.parse(content.slice(start, end));
+    } catch { continue; }
+  }
+  throw new Error('Vision-API nicht verfÃ¼gbar');
+}
+
+// â”€â”€ Bild â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+let _imgFile = null;
+let _imgB64  = null;
+
+function onFile(file) {
+  if (!file?.type.startsWith('image/')) return;
+  _imgFile = file;
+  const r = new FileReader();
+  r.onload = e => {
+    const src = e.target.result;
+    _imgB64 = src.split(',')[1];
+    document.getElementById('prevImg').src = src;
+    document.getElementById('prevWrap').style.display = '';
+    document.getElementById('dropZone').style.display = 'none';
+    document.getElementById('btnB').disabled = false;
+  };
+  r.readAsDataURL(file);
+}
+function onDrop(e) {
+  e.preventDefault();
+  document.getElementById('dropZone').classList.remove('over');
+  onFile(e.dataTransfer.files?.[0]);
+}
+function clearImg() {
+  _imgFile = _imgB64 = null;
+  document.getElementById('prevImg').src = '';
+  document.getElementById('prevWrap').style.display = 'none';
+  document.getElementById('dropZone').style.display = '';
+  document.getElementById('btnB').disabled = true;
+  setStatus('statusB', '', '');
+  document.getElementById('imgInput').value = '';
+}
+
+async function saveImage() {
+  const subject = v('bSub'), grade = v('bGrade'), topic = v('bTopic');
+  if (!subject || !grade || !topic)
+    return setStatus('statusB', 'âš ï¸ Fach, Klasse und Thema ausfÃ¼llen.', '#D97706');
+
+  const btn = document.getElementById('btnB');
+  btn.disabled = true; btn.textContent = 'â³ KI liest Bild ausâ€¦';
+  setStatus('statusB', 'ðŸ” Wird analysiertâ€¦', '#7C3AED');
+
+  try {
+    const ext = await _visionExtract(_imgB64, _imgFile.type || 'image/jpeg', subject, grade, topic);
+    const id  = LernStarAI.save({
+      subject, grade, topic,
+      question:    ext.question    || '?',
+      answer:      ext.answer      || '?',
+      explanation: ext.explanation || '',
+      difficulty:  parseInt(ext.difficulty) || 1
+    });
+    addExToList({ id, subject, grade, topic,
+                  question: ext.question, answer: ext.answer,
+                  explanation: ext.explanation, difficulty: ext.difficulty || 1 });
+    updateUI();
+    clearImg();
+    setStatus('statusB', 'âœ… Gespeichert! KI ist klÃ¼ger geworden.', '#059669');
+    showToast('âœ… Aufgabe gespeichert!');
+    ['bSub','bGrade','bTopic'].forEach(id => { document.getElementById(id).value = ''; });
+  } catch {
+    // Fallback: Manuell
+    document.getElementById('mSub').value   = subject;
+    document.getElementById('mGrade').value = grade;
+    document.getElementById('mTopic').value = topic;
+    switchTab('m');
+    setStatus('statusM', 'ðŸ’¡ Bitte die Aufgabe manuell ausfÃ¼llen.', '#D97706');
+  } finally {
+    btn.disabled = false; btn.textContent = 'ðŸ’¾ Speichern';
+  }
+}
+
+// â”€â”€ Manuell â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function saveManual() {
+  const subject = v('mSub'), grade = v('mGrade'), topic = v('mTopic');
+  const question = v('mQ'), answer = v('mA'), explanation = v('mE');
+  const difficulty = parseInt(document.getElementById('mD').value);
+
+  if (!subject || !grade || !topic || !question || !answer)
+    return setStatus('statusM', 'âš ï¸ Pflichtfelder fehlen.', '#D97706');
+
+  const id = LernStarAI.save({ subject, grade, topic, question, answer, explanation, difficulty });
+  addExToList({ id, subject, grade, topic, question, answer, explanation, difficulty });
+  updateUI();
+  setStatus('statusM', 'âœ… Gespeichert! KI ist klÃ¼ger geworden.', '#059669');
+  showToast('âœ… Aufgabe gespeichert!');
+  ['mSub','mGrade','mTopic','mQ','mA','mE'].forEach(id => { document.getElementById(id).value=''; });
+  document.getElementById('mD').value = '2';
+}
+
+// â”€â”€ Liste â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const DLBL = ['','â­ Einfach','â­â­ Mittel','â­â­â­ Schwer'];
+const DCLS = ['','d1','d2','d3'];
+
+function addExToList(ex) {
+  document.getElementById('emptyState').style.display = 'none';
+  const list = document.getElementById('exList');
+  const d = ex.difficulty || 2;
+  const el = document.createElement('div');
+  el.className = 'ex-item'; el.dataset.id = ex.id;
+  el.innerHTML = `
+    <div class="ex-head">
+      <div class="tags">
+        <span class="tag">${ex.subject}</span>
+        <span class="tag g">Kl. ${ex.grade}</span>
+        <span class="tag">${ex.topic}</span>
+        <span class="tag ${DCLS[d]}">${DLBL[d]}</span>
+      </div>
+      <button class="btn-del" onclick="deleteEx(${ex.id},this)">âœ•</button>
+    </div>
+    <div class="ex-q">â“ ${ex.question}</div>
+    <div class="ex-a">âœ… ${ex.answer}</div>
+    ${ex.explanation ? `<div class="ex-e">ðŸ’¡ ${ex.explanation}</div>` : ''}`;
+  list.prepend(el);
+}
+
+function deleteEx(id, btn) {
+  LernStarAI.remove(id);
+  btn.closest('.ex-item').remove();
+  updateUI();
+}
+
+// â”€â”€ UI aktualisieren â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function updateUI() {
+  const { label, pct, color, count, next } = LernStarAI.strength();
+  document.getElementById('strLevel').textContent = label;
+  document.getElementById('strLevel').style.color  = color;
+  document.getElementById('strBar').style.width    = pct + '%';
+  document.getElementById('strMeta').textContent   = next
+    ? `${count} Aufgaben â€“ noch ${next - count} bis zum nÃ¤chsten Level`
+    : 'Maximales Level erreicht! ðŸ†';
+  document.getElementById('statCount').textContent  = count;
+  document.getElementById('statPct').textContent    = pct + '%';
+  document.getElementById('listCount').textContent  = count + ' Aufgaben';
+  document.getElementById('navCount').textContent   = count + ' Aufgaben';
+
+  // Themen-Stats
+  const stats = LernStarAI.topicStats();
+  const keys  = Object.keys(stats);
+  document.getElementById('statTopics').textContent = keys.length;
+  const topicCard = document.getElementById('topicCard');
+  const grid      = document.getElementById('topicGrid');
+  if (keys.length) {
+    topicCard.style.display = '';
+    grid.innerHTML = keys
+      .sort((a,b) => stats[b] - stats[a])
+      .map(k => {
+        const [sub, grade, topic] = k.split('||');
+        return `<div class="topic-row">
+          <div class="topic-name">${sub} Kl.${grade} â€“ ${topic}</div>
+          <div class="topic-cnt">${stats[k]}Ã—</div>
+        </div>`;
+      }).join('');
+  } else {
+    topicCard.style.display = 'none';
+  }
+}
+
+// â”€â”€ Init: vorhandene Aufgaben laden â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+(function init() {
+  const all = LernStarAI.getAll();
+  if (all.length) {
+    document.getElementById('emptyState').style.display = 'none';
+    all.forEach(ex => addExToList(ex));
+  }
+  updateUI();
+})();
+
+// â”€â”€ Tabs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function switchTab(t) {
+  const isBild = t === 'b';
+  document.getElementById('panelB').classList.toggle('hidden', !isBild);
+  document.getElementById('panelM').classList.toggle('hidden',  isBild);
+  document.getElementById('tabB').classList.toggle('active',  isBild);
+  document.getElementById('tabM').classList.toggle('active', !isBild);
+}
+
+// â”€â”€ Hilfsfunktionen â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function v(id) { return document.getElementById(id).value.trim(); }
+function setStatus(id, msg, color) {
+  const el = document.getElementById(id);
+  el.textContent = msg; el.style.color = color;
+}
+// â”€â”€ JSON Import â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function importJSON(input) {
+  const file = input.files?.[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const exercises = JSON.parse(e.target.result);
+      if (!Array.isArray(exercises)) throw new Error('Kein Array');
+      let added = 0;
+      for (const ex of exercises) {
+        if (!ex.question || !ex.answer) continue;
+        const id = LernStarAI.save({
+          subject:     ex.subject     || 'Allgemein',
+          grade:       String(ex.grade || '5'),
+          topic:       ex.topic       || 'Allgemein',
+          question:    ex.question,
+          answer:      ex.answer,
+          explanation: ex.explanation || '',
+          difficulty:  parseInt(ex.difficulty) || 1
+        });
+        addExToList({ id, ...ex, grade: String(ex.grade || '5'),
+                      difficulty: parseInt(ex.difficulty) || 1 });
+        added++;
+      }
+      updateUI();
+      showToast(`âœ… ${added} Aufgaben importiert!`);
+    } catch(err) {
+      showToast('âŒ Fehler beim Import: ' + err.message);
+    }
+    input.value = '';
+  };
+  reader.readAsText(file);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>
+
+

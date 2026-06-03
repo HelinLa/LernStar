@@ -1,0 +1,272 @@
+[
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeninhalte vergleichen",
+    "question": "Wie vergleicht man den Flächeninhalt zweier Figuren auf Karopapier?",
+    "answer": "Man zählt die Kästchen, die jede Figur bedeckt",
+    "explanation": "Figuren auf Karopapier lassen sich durch Abzählen der Kästchen vergleichen. Benötigt man für beide Figuren gleich viele Kästchen, haben sie den gleichen Flächeninhalt.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeninhalte vergleichen",
+    "question": "Zwei Figuren haben denselben Flächeninhalt. Was sagt das über ihre Form?",
+    "answer": "Nichts – gleicher Flächeninhalt bedeutet nicht gleiche Form",
+    "explanation": "Ein Rechteck (4 cm × 3 cm) und ein anderes Rechteck (6 cm × 2 cm) haben beide A = 12 cm², sehen aber verschieden aus. Gleicher Flächeninhalt ≠ gleiche Form.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeneinheiten",
+    "question": "Wie viele mm² sind 1 cm²?",
+    "answer": "100 mm²",
+    "explanation": "1 cm = 10 mm. Ein Quadrat mit 1 cm Seitenlänge hat A = 10 mm × 10 mm = 100 mm². Also: 1 cm² = 100 mm².",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeneinheiten",
+    "question": "Wie viele cm² sind 1 dm²?",
+    "answer": "100 cm²",
+    "explanation": "1 dm = 10 cm. Also 1 dm² = 10 cm × 10 cm = 100 cm².",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeneinheiten",
+    "question": "Wie viele m² sind 1 Hektar (ha)?",
+    "answer": "10 000 m²",
+    "explanation": "1 Ar (a) = 100 m². 1 Hektar (ha) = 100 a = 10 000 m². Merkhilfe: Ein Fußballfeld ist ungefähr 1 ha groß.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeneinheiten",
+    "question": "Wie viele ha sind 1 km²?",
+    "answer": "100 ha",
+    "explanation": "1 km² = 1000 m × 1000 m = 1 000 000 m². Da 1 ha = 10 000 m², gilt: 1 km² = 1 000 000 ÷ 10 000 = 100 ha.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeneinheiten",
+    "question": "Welche Flächeneinheit passt am besten für ein Zimmer?",
+    "answer": "m²",
+    "explanation": "Zimmer haben typischerweise Flächen von 10–25 m². Für Briefmarken verwendet man cm², für Baugrundstücke m² oder a, für ganze Länder km².",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeneinheiten",
+    "question": "Schreibe in der nächstgrößeren Einheit: 350 cm²",
+    "answer": "3,5 dm²",
+    "explanation": "Um in die nächstgrößere Einheit umzurechnen, dividiert man durch 100. 350 cm² ÷ 100 = 3,5 dm².",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeneinheiten",
+    "question": "Schreibe in der nächstkleineren Einheit: 4,5 m²",
+    "answer": "450 dm²",
+    "explanation": "Um in die nächstkleinere Einheit umzurechnen, multipliziert man mit 100. 4,5 m² × 100 = 450 dm².",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeneinheiten",
+    "question": "Berechne: 3 m² + 450 dm². Gib das Ergebnis in dm² an.",
+    "answer": "750 dm²",
+    "explanation": "3 m² = 300 dm². Dann 300 dm² + 450 dm² = 750 dm².",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeneinheiten",
+    "question": "Ordne von klein nach groß: 5 dm², 600 cm², 0,04 m²",
+    "answer": "600 cm² < 5 dm² = 0,05 m² — Reihenfolge: 600 cm², dann 5 dm² und 0,04 m² (beide ≈ gleich)",
+    "explanation": "600 cm² = 6 dm². 0,04 m² = 4 dm². Reihenfolge: 0,04 m² (4 dm²) < 5 dm² < 600 cm² (6 dm²).",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeninhalt eines Rechtecks",
+    "question": "Wie lautet die Formel für den Flächeninhalt eines Rechtecks?",
+    "answer": "A = a · b (Länge mal Breite)",
+    "explanation": "Der Flächeninhalt A eines Rechtecks mit Länge a und Breite b: A = a · b. Für ein Quadrat: A = a · a = a².",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeninhalt eines Rechtecks",
+    "question": "Berechne den Flächeninhalt: a = 6 cm, b = 9 cm",
+    "answer": "A = 54 cm²",
+    "explanation": "A = a · b = 6 cm · 9 cm = 54 cm².",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeninhalt eines Rechtecks",
+    "question": "Ein Quadrat hat die Seitenlänge 7 cm. Wie groß ist sein Flächeninhalt?",
+    "answer": "A = 49 cm²",
+    "explanation": "A = a² = 7 cm · 7 cm = 49 cm².",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeninhalt eines Rechtecks",
+    "question": "Ein Rechteck hat A = 72 cm² und a = 8 cm. Wie lang ist die Seite b?",
+    "answer": "b = 9 cm",
+    "explanation": "Umkehraufgabe: b = A ÷ a = 72 cm² ÷ 8 cm = 9 cm.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeninhalt eines Rechtecks",
+    "question": "Eine Wiese ist 40 m lang und 25 m breit. Wie groß ist ihr Flächeninhalt in Ar?",
+    "answer": "10 a",
+    "explanation": "A = 40 m · 25 m = 1 000 m². 1 a = 100 m², also A = 1 000 ÷ 100 = 10 a.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeninhalt eines Rechtecks",
+    "question": "Ein Zimmer ist 5 m lang und 4 m breit. Wie viele Bodenfliesen (je 50 cm × 50 cm) werden benötigt?",
+    "answer": "80 Fliesen",
+    "explanation": "Zimmerfläche: 5 m · 4 m = 20 m² = 200 000 cm². Fliesenfläche: 50 cm · 50 cm = 2 500 cm². 200 000 ÷ 2 500 = 80 Fliesen.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeninhalt eines Dreiecks",
+    "question": "Wie lautet die Formel für den Flächeninhalt eines rechtwinkligen Dreiecks?",
+    "answer": "A = (a · b) : 2",
+    "explanation": "Ein rechtwinkliges Dreieck ist genau die Hälfte eines Rechtecks. Daher: A = (a · b) ÷ 2. Die Seiten a und b liegen am rechten Winkel.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeninhalt eines Dreiecks",
+    "question": "Berechne den Flächeninhalt: a = 8 cm, b = 5 cm (rechtwinkliges Dreieck)",
+    "answer": "A = 20 cm²",
+    "explanation": "A = (a · b) ÷ 2 = (8 cm · 5 cm) ÷ 2 = 40 cm² ÷ 2 = 20 cm².",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeninhalt eines Dreiecks",
+    "question": "Ein rechtwinkliges Dreieck hat A = 30 cm² und a = 10 cm. Wie lang ist b?",
+    "answer": "b = 6 cm",
+    "explanation": "A = (a · b) ÷ 2 → 30 = (10 · b) ÷ 2 → 60 = 10 · b → b = 6 cm.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Flächeninhalt eines Dreiecks",
+    "question": "Ein Segel hat die Form eines rechtwinkligen Dreiecks mit den Katheten 6 m und 4 m. Wie groß ist die Segelfläche?",
+    "answer": "A = 12 m²",
+    "explanation": "A = (6 m · 4 m) ÷ 2 = 24 m² ÷ 2 = 12 m².",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Umfang von Figuren",
+    "question": "Wie berechnet man den Umfang eines Rechtecks?",
+    "answer": "U = 2 · (a + b)",
+    "explanation": "Der Umfang ist die Summe aller Seiten. Ein Rechteck hat 2 Seiten der Länge a und 2 der Breite b. U = a + b + a + b = 2a + 2b = 2 · (a + b).",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Umfang von Figuren",
+    "question": "Berechne den Umfang: a = 7 cm, b = 4 cm",
+    "answer": "U = 22 cm",
+    "explanation": "U = 2 · (a + b) = 2 · (7 cm + 4 cm) = 2 · 11 cm = 22 cm.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Umfang von Figuren",
+    "question": "Ein Quadrat hat den Umfang 36 cm. Wie lang ist eine Seite?",
+    "answer": "a = 9 cm",
+    "explanation": "U = 4 · a → a = U ÷ 4 = 36 cm ÷ 4 = 9 cm.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Umfang von Figuren",
+    "question": "Ein rechteckiges Grundstück ist 30 m lang und 18 m breit. Wie viel Meter Zaun werden benötigt?",
+    "answer": "U = 96 m",
+    "explanation": "U = 2 · (30 m + 18 m) = 2 · 48 m = 96 m.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Umfang von Figuren",
+    "question": "Ein Rechteck hat U = 40 cm und a = 13 cm. Wie lang ist b?",
+    "answer": "b = 7 cm",
+    "explanation": "U = 2 · (a + b) → 40 = 2 · (13 + b) → 20 = 13 + b → b = 7 cm.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Maßstäbe",
+    "question": "Was bedeutet der Maßstab 1:50 000?",
+    "answer": "1 cm auf der Karte = 50 000 cm = 500 m in der Wirklichkeit",
+    "explanation": "Ein Maßstab 1:50 000 bedeutet: jede Länge auf der Karte ist 50 000-mal kleiner als in der Wirklichkeit. 1 cm → 50 000 cm = 500 m.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Maßstäbe",
+    "question": "Auf einer Karte (Maßstab 1:25 000) misst eine Strecke 4 cm. Wie lang ist sie in Wirklichkeit?",
+    "answer": "1 km",
+    "explanation": "Wirkliche Länge = Kartenlänge × Maßstabszahl. 4 cm × 25 000 = 100 000 cm = 1 000 m = 1 km.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Maßstäbe",
+    "question": "Eine Strecke ist 3 km lang. Wie lang ist sie auf einer Karte mit Maßstab 1:100 000?",
+    "answer": "3 cm",
+    "explanation": "Kartenlänge = Wirkliche Länge ÷ Maßstabszahl. 3 km = 300 000 cm. 300 000 ÷ 100 000 = 3 cm.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Maßstäbe",
+    "question": "Ein Modell-Auto hat Maßstab 1:43. Es ist 10 cm lang. Wie lang ist das echte Auto?",
+    "answer": "430 cm = 4,30 m",
+    "explanation": "Wirkliche Länge = Modelllänge × Maßstabszahl = 10 cm × 43 = 430 cm = 4,30 m.",
+    "difficulty": 3
+  }
+]

@@ -1,0 +1,200 @@
+[
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Wie viele Minuten sind 1 Stunde?",
+    "answer": "60 min",
+    "explanation": "1 h = 60 min.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Wie viele Sekunden sind 1 Minute?",
+    "answer": "60 s",
+    "explanation": "1 min = 60 s.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Wie viele Stunden hat ein Tag?",
+    "answer": "24 h",
+    "explanation": "1 d = 24 h.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Schreibe in Minuten: 2 h",
+    "answer": "120 min",
+    "explanation": "2 h × 60 = 120 min.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Schreibe in Sekunden: 3 min",
+    "answer": "180 s",
+    "explanation": "3 min × 60 = 180 s.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Was ist länger: 90 min oder 1 h 20 min?",
+    "answer": "90 min",
+    "explanation": "1 h 20 min = 80 min. Da 90 min > 80 min, ist 90 min länger.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Wie viele Minuten sind 2,5 h?",
+    "answer": "150 min",
+    "explanation": "2,5 h × 60 = 150 min.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Was ist der Unterschied zwischen einem Zeitpunkt und einer Zeitdauer?",
+    "answer": "Zeitpunkt: Wann? (z.B. 14:30 Uhr) — Zeitdauer: Wie lange? (z.B. 2 h 15 min)",
+    "explanation": "Zeitpunkte sind Antworten auf 'Wann?'. Zeitdauern sind Antworten auf 'Wie lange?' oder 'Wie viel Zeit ist vergangen?'.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Schreibe in Minuten: 3 h 45 min",
+    "answer": "225 min",
+    "explanation": "3 h × 60 + 45 min = 180 + 45 = 225 min.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Schreibe in h und min: 135 min",
+    "answer": "2 h 15 min",
+    "explanation": "135 ÷ 60 = 2 Rest 15. Also 2 h 15 min.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Berechne: 47 min + 38 min. Gib das Ergebnis in h und min an.",
+    "answer": "1 h 25 min",
+    "explanation": "47 + 38 = 85 min = 1 h 25 min.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Berechne: 3 h 15 min − 1 h 20 min",
+    "answer": "1 h 55 min",
+    "explanation": "3 h 15 min − 1 h 20 min: Erst Stunden (3−1=2), dann Minuten (15−20 geht nicht, also 2h 15min = 1h 75min). 75 min − 20 min = 55 min → 1 h 55 min.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Ein Zug fährt um 9:40 Uhr ab und kommt um 11:15 Uhr an. Wie lange dauert die Fahrt?",
+    "answer": "1 h 35 min",
+    "explanation": "Von 9:40 bis 10:00 = 20 min. Von 10:00 bis 11:15 = 1 h 15 min. Gesamt: 1 h 35 min.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Es ist 14:30 Uhr. Wie viel Zeit vergeht bis 16:45 Uhr?",
+    "answer": "2 h 15 min",
+    "explanation": "Von 14:30 bis 16:30 = 2 h. Von 16:30 bis 16:45 = 15 min. Gesamt: 2 h 15 min.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Wie viele Stunden hat eine Woche?",
+    "answer": "168 h",
+    "explanation": "7 Tage × 24 h = 168 h.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Gib in Sekunden an: 4 min (s)",
+    "answer": "240 s",
+    "explanation": "4 min × 60 = 240 s.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Ein Schulunterricht beginnt um 8:10 Uhr. Es gibt 5 Stunden à 45 min, mit einer Pause von 20 min nach der 2. Stunde. Wann endet der Schultag?",
+    "answer": "12:05 Uhr",
+    "explanation": "5 × 45 min = 225 min + 20 min Pause = 245 min = 4 h 5 min. 8:10 + 4:05 = 12:15 Uhr. (Genau: 8:10 + 3 h 55 min ohne Pause = 12:05 Uhr, plus 20 min = 12:25 Uhr — Variante je nach Pausenposition möglich.)",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Ein Zug fährt um 22:40 Uhr ab und kommt nach 3 h 35 min an. Um wie viel Uhr kommt er an?",
+    "answer": "02:15 Uhr",
+    "explanation": "22:40 + 3 h = 01:40 Uhr. 01:40 + 35 min = 02:15 Uhr (am nächsten Tag).",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Wie viele Sekunden hat ein ganzer Tag?",
+    "answer": "86 400 s",
+    "explanation": "1 d = 24 h × 60 min × 60 s = 24 × 3600 = 86 400 s.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Jana übt täglich (außer samstags) 40 min Klavier. Tim übt jeden Tag 30 min. Wer übt pro Woche mehr, und um wie viele Minuten?",
+    "answer": "Jana übt 30 min mehr",
+    "explanation": "Jana: 6 × 40 min = 240 min. Tim: 7 × 30 min = 210 min. 240 − 210 = 30 min mehr für Jana.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Wie viele Tage liegen zwischen dem Frühlingsanfang (21.03.) und dem Sommeranfang (21.06.)?",
+    "answer": "92 Tage",
+    "explanation": "März: 10 Tage (21.–31.), April: 30 Tage, Mai: 31 Tage, Juni: 21 Tage. Gesamt: 10 + 30 + 31 + 21 = 92 Tage.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Zeitangaben",
+    "question": "Vera hört Hörspiele (je 25 min) auf einer 2 h 30 min langen Zugfahrt. Wie viele Hörspiele kann sie vollständig hören?",
+    "answer": "6 Hörspiele",
+    "explanation": "2 h 30 min = 150 min. 150 ÷ 25 = 6. Sie kann genau 6 vollständige Hörspiele hören.",
+    "difficulty": 3
+  }
+]

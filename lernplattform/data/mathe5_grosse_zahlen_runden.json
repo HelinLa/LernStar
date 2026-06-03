@@ -1,0 +1,200 @@
+[
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Wie lautet 1 Million in Ziffern?",
+    "answer": "1 000 000",
+    "explanation": "1 Million hat 6 Nullen: 1 000 000. Sie entspricht 1000 Tausend.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Wie viele Nullen hat 1 Milliarde?",
+    "answer": "9",
+    "explanation": "1 Milliarde = 1 000 000 000 – das sind 9 Nullen.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Was ist größer: 3 Millionen oder 999 Tausend?",
+    "answer": "3 Millionen",
+    "explanation": "3 Millionen = 3 000 000, aber 999 Tausend = 999 000. Da 3 000 000 > 999 000, ist 3 Millionen größer.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Runde 73 auf Zehner.",
+    "answer": "70",
+    "explanation": "Die Einerstelle ist 3 (kleiner als 5), also wird abgerundet: 73 → 70.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Runde 3 742 auf Hundert.",
+    "answer": "3 700",
+    "explanation": "Die Zehnerstelle ist 4 (kleiner als 5), also wird abgerundet: 3 742 → 3 700.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Runde 8 560 auf Tausend.",
+    "answer": "9 000",
+    "explanation": "Die Hunderterstelle ist 5 (≥ 5), also wird aufgerundet: 8 560 → 9 000.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Schreibe in Ziffern: vier Millionen dreihundert.",
+    "answer": "4 000 300",
+    "explanation": "Vier Millionen = 4 000 000, plus dreihundert = 300. Zusammen: 4 000 300.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Wie nennt man unser Zahlensystem mit der Basis 10?",
+    "answer": "Dezimalsystem",
+    "explanation": "Unser Zahlensystem heißt Dezimalsystem (von lat. decem = zehn). Jede Stelle ist zehnmal so viel wert wie die nächst kleinere.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Welche Zahl wurde wohl gerundet: 5 800 000 oder 5 823 914?",
+    "answer": "5 800 000",
+    "explanation": "5 800 000 endet auf viele Nullen – das ist ein typisches Merkmal einer gerundeten Zahl. 5 823 914 sieht nach einem genauen Messwert aus.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Runde 46 830 auf Zehntausend.",
+    "answer": "50 000",
+    "explanation": "Die Tausenderstelle ist 6 (≥ 5), also wird aufgerundet: 46 830 → 50 000.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Schreibe in Ziffern: sieben Millionen zweihundertfünfzigtausend.",
+    "answer": "7 250 000",
+    "explanation": "7 Millionen = 7 000 000, plus 250 Tausend = 250 000. Zusammen: 7 250 000.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Runde 3 499 auf Tausend.",
+    "answer": "3 000",
+    "explanation": "Die Hunderterstelle ist 4 (< 5), also wird abgerundet: 3 499 → 3 000.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Wie viele Stellen hat 1 Milliarde?",
+    "answer": "10",
+    "explanation": "1 000 000 000 – die 1 vorne und neun Nullen = 10 Stellen insgesamt.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Schreibe in Worten: 5 030 002",
+    "answer": "fünf Millionen dreißigtausendundzwei",
+    "explanation": "5 000 000 = fünf Millionen, 030 000 = dreißigtausend, 002 = zwei.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Runde 274 830 auf Hunderttausend.",
+    "answer": "300 000",
+    "explanation": "Die Zehntausenderstelle ist 7 (≥ 5), also wird aufgerundet: 274 830 → 300 000.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Auf welche Stelle wurde gerundet, wenn aus 63 762 die Zahl 63 800 wurde?",
+    "answer": "Hundert",
+    "explanation": "Die Zehnerstelle (6) war ≥ 5, also wurde auf Hundert aufgerundet: 63 762 → 63 800.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "1 Billion hat wie viele Nullen?",
+    "answer": "12",
+    "explanation": "1 Billion = 1 000 Milliarden = 1 000 000 000 000 – das sind 12 Nullen.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Eine Zahl wird auf Tausend gerundet und ergibt 15 000. Welche Zahlen kommen dafür in Frage?",
+    "answer": "Zahlen von 14 500 bis 15 499",
+    "explanation": "Alle Zahlen von 14 500 bis 15 499 ergeben beim Runden auf Tausend den Wert 15 000.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Schreibe in Worten: 12 007 040",
+    "answer": "zwölf Millionen siebentausendvierzig",
+    "explanation": "12 000 000 = zwölf Millionen, 007 000 = siebentausend, 040 = vierzig.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Runde 999 500 auf Hunderttausend.",
+    "answer": "1 000 000",
+    "explanation": "Die Zehntausenderstelle ist 9 (≥ 5), also wird aufgerundet: 999 500 → 1 000 000.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Ist diese Aussage wahr oder falsch: 'Beim Runden wird eine Zahl immer kleiner.'",
+    "answer": "Falsch",
+    "explanation": "Beim Runden kann man auch aufrunden. Zum Beispiel: 75 → 80. Die Zahl wird dabei größer. Die Aussage ist falsch.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Große Zahlen und Runden",
+    "question": "Schreibe in Ziffern: elf Milliarden dreihundertfünfzig Millionen.",
+    "answer": "11 350 000 000",
+    "explanation": "11 Milliarden = 11 000 000 000, plus 350 Millionen = 350 000 000. Zusammen: 11 350 000 000.",
+    "difficulty": 3
+  }
+]

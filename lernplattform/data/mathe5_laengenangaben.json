@@ -1,0 +1,191 @@
+[
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Wie viele Meter sind 1 km?",
+    "answer": "1000 m",
+    "explanation": "1 km = 1000 m. Umrechnung in die kleinere Einheit: × 1000.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Wie viele cm sind 1 m?",
+    "answer": "100 cm",
+    "explanation": "1 m = 10 dm, 1 dm = 10 cm. Also: 1 m = 10 × 10 cm = 100 cm.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Wie viele mm sind 1 cm?",
+    "answer": "10 mm",
+    "explanation": "1 cm = 10 mm. Umrechnung in die kleinere Einheit: × 10.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Schreibe in Metern: 5 km",
+    "answer": "5000 m",
+    "explanation": "5 km × 1000 = 5000 m.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Schreibe in Zentimetern: 3 m",
+    "answer": "300 cm",
+    "explanation": "3 m × 100 = 300 cm.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Was ist länger: 1 m oder 95 cm?",
+    "answer": "1 m",
+    "explanation": "1 m = 100 cm. Da 100 cm > 95 cm, ist 1 m länger.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Schreibe in mm: 4 cm",
+    "answer": "40 mm",
+    "explanation": "4 cm × 10 = 40 mm.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Gib in cm an: 17 dm",
+    "answer": "170 cm",
+    "explanation": "17 dm × 10 = 170 cm.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Schreibe in der kleineren Einheit: 2,5 km",
+    "answer": "2500 m",
+    "explanation": "2,5 km = 2 km + 0,5 km = 2000 m + 500 m = 2500 m.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Schreibe in m: 3 km 400 m",
+    "answer": "3400 m",
+    "explanation": "3 km = 3000 m, plus 400 m = 3400 m.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Berechne: 6 m − 70 cm. Gib das Ergebnis in cm an.",
+    "answer": "530 cm",
+    "explanation": "6 m = 600 cm. 600 cm − 70 cm = 530 cm (= 5 m 30 cm).",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Berechne: 4 km 200 m + 1500 m. Gib das Ergebnis in km und m an.",
+    "answer": "5 km 700 m",
+    "explanation": "4200 m + 1500 m = 5700 m = 5 km 700 m.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Schreibe in der größeren Einheit mit Komma: 85 mm",
+    "answer": "8,5 cm",
+    "explanation": "85 mm ÷ 10 = 8,5 cm.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Berechne: 85 mm − 3,3 cm. Gib das Ergebnis in mm an.",
+    "answer": "52 mm",
+    "explanation": "3,3 cm = 33 mm. 85 mm − 33 mm = 52 mm.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Ordne von klein nach groß: 4 m 4 cm, 44 dm, 4,50 m, 4,65 m",
+    "answer": "4 m 4 cm, 44 dm, 4,50 m, 4,65 m",
+    "explanation": "In cm: 404 cm, 440 cm, 450 cm, 465 cm. Reihenfolge: 4 m 4 cm < 44 dm < 4,50 m < 4,65 m.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Schreibe in der nächstkleineren Einheit: 10,1 cm",
+    "answer": "101 mm",
+    "explanation": "10,1 cm × 10 = 101 mm.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Auf einem Waggon stehen 6 Autos hintereinander, jedes ist 3 m 80 cm lang. Wie lang ist der Waggon mindestens?",
+    "answer": "22 m 80 cm",
+    "explanation": "6 × 380 cm = 2280 cm = 22 m 80 cm.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Ein Floh ist etwa 2 mm groß und kann 50 cm weit springen. Wie viele Male seine eigene Körperlänge springt er?",
+    "answer": "250 Mal",
+    "explanation": "50 cm = 500 mm. 500 mm ÷ 2 mm = 250. Der Floh springt 250 Mal seine Körperlänge.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Wie viele 9 mm lange Bohnen braucht man, um eine Strecke von 11,7 cm zu legen?",
+    "answer": "13 Bohnen",
+    "explanation": "11,7 cm = 117 mm. 117 mm ÷ 9 mm = 13 Bohnen.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Ist diese Aussage wahr oder falsch: 'Wenn man eine Länge durch eine größere Zahl dividiert, wird das Ergebnis kürzer.'",
+    "answer": "Wahr",
+    "explanation": "Wenn man z. B. 100 cm durch 4 teilt, erhält man 25 cm – das ist kürzer. Die Aussage ist wahr.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Längenangaben",
+    "question": "Schreibe in einer sinnvollen Einheit: 1 575 300 000 cm",
+    "answer": "15 753 km",
+    "explanation": "1 575 300 000 cm ÷ 100 = 15 753 000 m ÷ 1000 = 15 753 km.",
+    "difficulty": 3
+  }
+]

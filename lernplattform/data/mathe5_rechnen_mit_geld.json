@@ -1,0 +1,200 @@
+[
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Wie viele Cent sind 1 Euro?",
+    "answer": "100 Cent",
+    "explanation": "1 Euro = 100 Cent. Der Punkt oder das Komma trennt Euro von Cent: 1,00 € = 100 ct.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Wie viele Cent sind 2,50 €?",
+    "answer": "250 ct",
+    "explanation": "2,50 € = 2 × 100 ct + 50 ct = 200 ct + 50 ct = 250 ct.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Schreibe 350 ct in Euro.",
+    "answer": "3,50 €",
+    "explanation": "350 ct ÷ 100 = 3,50 €. Die ersten Ziffern vor dem Komma sind Euro, die letzten zwei Cent.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Schreibe 7 € in Cent.",
+    "answer": "700 ct",
+    "explanation": "7 € × 100 = 700 ct.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Wie viele Cent sind 0,85 €?",
+    "answer": "85 ct",
+    "explanation": "0,85 € = 0 Euro und 85 Cent = 85 ct.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Schreibe 1275 ct in Euro.",
+    "answer": "12,75 €",
+    "explanation": "1275 ct ÷ 100 = 12,75 €.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Was kostet mehr: 4,90 € oder 490 ct?",
+    "answer": "Beide sind gleich teuer",
+    "explanation": "4,90 € = 490 ct. Beide Beträge sind identisch, nur unterschiedlich geschrieben.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Schreibe 1050 ct in Euro.",
+    "answer": "10,50 €",
+    "explanation": "1050 ct ÷ 100 = 10,50 €.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Ein Buch kostet 8,90 € und ein Heft 1,50 €. Was kostet beides zusammen?",
+    "answer": "10,40 €",
+    "explanation": "8,90 € + 1,50 € = 10,40 €. In Cent: 890 + 150 = 1040 ct = 10,40 €.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Jonas kauft Äpfel für 2,30 € und zahlt mit einem 5-Euro-Schein. Wie viel Rückgeld bekommt er?",
+    "answer": "2,70 €",
+    "explanation": "5,00 € − 2,30 € = 2,70 €.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Eine Flasche Saft kostet 1,95 €. Was kosten 4 Flaschen?",
+    "answer": "7,80 €",
+    "explanation": "4 × 1,95 € = 7,80 €. In Cent: 4 × 195 ct = 780 ct = 7,80 €.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Mia hat 20 € und gibt 13,45 € aus. Wie viel hat sie noch übrig?",
+    "answer": "6,55 €",
+    "explanation": "20,00 € − 13,45 € = 6,55 €.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "3 gleiche Hefte kosten zusammen 4,50 €. Was kostet ein Heft?",
+    "answer": "1,50 €",
+    "explanation": "4,50 € ÷ 3 = 1,50 € pro Heft.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Familie Ott geht ins Kino: 2 Erwachsene zahlen je 9,50 € und 3 Kinder je 5,00 €. Was kostet der Ausflug insgesamt?",
+    "answer": "34,00 €",
+    "explanation": "Erwachsene: 2 × 9,50 € = 19,00 €. Kinder: 3 × 5,00 € = 15,00 €. Gesamt: 19,00 + 15,00 = 34,00 €.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Lea spart jeden Monat 12 €. Wie viel hat sie nach 8 Monaten gespart?",
+    "answer": "96 €",
+    "explanation": "8 × 12 € = 96 €.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "5 Kinder fahren gemeinsam ins Schwimmbad. Jedes zahlt 6,50 €. Was zahlen alle zusammen?",
+    "answer": "32,50 €",
+    "explanation": "5 × 6,50 € = 32,50 €. In Cent: 5 × 650 ct = 3250 ct = 32,50 €.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "1 Liter Benzin kostet 1,60 €. Herr Meier tankt 35 Liter. Was muss er bezahlen?",
+    "answer": "56,00 €",
+    "explanation": "35 × 1,60 € = 56,00 €. In Cent: 35 × 160 ct = 5600 ct = 56,00 €.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Berechne: 2,55 € + 81 ct",
+    "answer": "3,36 €",
+    "explanation": "2,55 € = 255 ct. 255 ct + 81 ct = 336 ct = 3,36 €.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Eine Zeitschrift kostet 3,80 € pro Heft oder 36 € im Jahresabo (12 Hefte). Wie viel spart man mit dem Abo?",
+    "answer": "9,60 €",
+    "explanation": "Einzelkauf: 12 × 3,80 € = 45,60 €. Abo: 36,00 €. Ersparnis: 45,60 − 36,00 = 9,60 €.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Tim möchte ein Fahrrad für 480 € kaufen. Er hat 195 € gespart und bekommt monatlich 15 € Taschengeld, das er komplett spart. Wie viele Monate muss er noch warten?",
+    "answer": "19 Monate",
+    "explanation": "Fehlender Betrag: 480 − 195 = 285 €. Bei 15 € pro Monat: 285 ÷ 15 = 19 Monate.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Ist diese Aussage wahr oder falsch: 'Wenn man einen Geldbetrag auf ganze Euro rundet, weicht der gerundete Betrag höchstens 50 ct vom ursprünglichen ab.'",
+    "answer": "Wahr",
+    "explanation": "Beim Runden auf ganze Euro ist die Abweichung maximal 50 ct. Zum Beispiel: 3,50 € → 4,00 €. Die Aussage ist wahr.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Geld",
+    "question": "Zwei Erwachsene und vier Kinder fahren mit der Bahn. Die Fahrt kostet insgesamt 76 €. Kinder zahlen den halben Preis. Was kostet eine Erwachsenenkarte?",
+    "answer": "19 €",
+    "explanation": "Sei E der Erwachsenenpreis. 4 Kinder zahlen je E/2. Gleichung: 2E + 4·(E/2) = 76 → 2E + 2E = 76 → 4E = 76 → E = 19 €.",
+    "difficulty": 3
+  }
+]

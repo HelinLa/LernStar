@@ -1,0 +1,290 @@
+[
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Terme",
+    "question": "Was ist ein 'Term' in der Mathematik?",
+    "answer": "Ein sinnvoller Rechenausdruck aus Zahlen und Rechenzeichen",
+    "explanation": "Ein Term ist ein mathematischer Ausdruck aus Zahlen, Rechenzeichen und ggf. Klammern. Beispiele: 3 + 5, 4 · (7 − 2), 6² − 1. Terme ohne Variablen haben einen festen Wert.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Terme",
+    "question": "Berechne: 4 + 6 · 3",
+    "answer": "22",
+    "explanation": "Punkt vor Strich: Zuerst 6 · 3 = 18, dann 4 + 18 = 22.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Terme",
+    "question": "Berechne: (8 + 4) · 5",
+    "answer": "60",
+    "explanation": "Klammern zuerst: 8 + 4 = 12, dann 12 · 5 = 60.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Terme",
+    "question": "Was wird bei 3 · (10 + 7) zuerst berechnet?",
+    "answer": "Der Klammerinhalt: 10 + 7 = 17",
+    "explanation": "Klammern haben Vorrang vor allen anderen Rechenoperationen. Erst 10 + 7 = 17, dann 3 · 17 = 51.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Terme",
+    "question": "Berechne: 50 − 3 · 4 + 8",
+    "answer": "46",
+    "explanation": "Punkt vor Strich: Erst 3 · 4 = 12, dann von links: 50 − 12 + 8 = 38 + 8 = 46.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Terme",
+    "question": "Berechne: 6 · (12 − 5) − (3 + 4) · 2",
+    "answer": "28",
+    "explanation": "Klammern: (12 − 5) = 7 und (3 + 4) = 7. Dann: 6 · 7 = 42 und 7 · 2 = 14. Zuletzt: 42 − 14 = 28.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Terme",
+    "question": "Was bedeutet 'Produkt' bei einem Term?",
+    "answer": "Das Ergebnis einer Multiplikation",
+    "explanation": "Fachbegriffe: Summe = Ergebnis der Addition, Differenz = Ergebnis der Subtraktion, Produkt = Ergebnis der Multiplikation, Quotient = Ergebnis der Division.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Terme",
+    "question": "Berechne: 2 + [4 · (9 − 6)]",
+    "answer": "14",
+    "explanation": "Innere Klammer zuerst: 9 − 6 = 3. Dann: 4 · 3 = 12 (Punkt vor Strich / innere Klammer). Zuletzt: 2 + 12 = 14.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechenvorteile",
+    "question": "Was besagt das Kommutativgesetz der Addition?",
+    "answer": "Man kann die Summanden vertauschen: a + b = b + a",
+    "explanation": "Beispiel: 47 + 153 = 153 + 47 = 200. Das Vertauschen ändert das Ergebnis nicht. Gilt auch für die Multiplikation: a · b = b · a.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechenvorteile",
+    "question": "Welches Gesetz erlaubt: (25 + 37) + 63 = 25 + (37 + 63)?",
+    "answer": "Das Assoziativgesetz der Addition",
+    "explanation": "Das Assoziativgesetz besagt, dass man Klammern beliebig setzen oder weglassen kann: a + (b + c) = (a + b) + c. So kann man zuerst 37 + 63 = 100 rechnen, dann + 25 = 125.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechenvorteile",
+    "question": "Berechne geschickt: 24 + 58 + 76",
+    "answer": "158",
+    "explanation": "Günstige Paare suchen: 24 + 76 = 100 (ergänzen sich auf 100). Dann 100 + 58 = 158. Das Kommutativ- und Assoziativgesetz erlauben das Umordnen.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Distributivgesetz",
+    "question": "Was bedeutet 'Ausmultiplizieren'? Rechne: 6 · (40 + 3)",
+    "answer": "6 · 40 + 6 · 3 = 240 + 18 = 258",
+    "explanation": "Beim Ausmultiplizieren wird der Faktor vor der Klammer mit jedem Summanden multipliziert: a · (b + c) = a · b + a · c.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Distributivgesetz",
+    "question": "Klammere aus: 9 · 7 + 9 · 3",
+    "answer": "9 · (7 + 3) = 9 · 10 = 90",
+    "explanation": "Da beide Produkte den gemeinsamen Faktor 9 haben: 9 · 7 + 9 · 3 = 9 · (7 + 3) = 9 · 10 = 90. Ausklammern ist die Umkehrung des Ausmultiplizierens.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Distributivgesetz",
+    "question": "Berechne geschickt mithilfe des Distributivgesetzes: 8 · 99",
+    "answer": "792",
+    "explanation": "8 · 99 = 8 · (100 − 1) = 8 · 100 − 8 · 1 = 800 − 8 = 792.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Potenzieren",
+    "question": "Was bedeutet 3⁴?",
+    "answer": "3 · 3 · 3 · 3 = 81",
+    "explanation": "3⁴ bedeutet: 3 (Grundzahl) wird 4-mal (Hochzahl) mit sich selbst multipliziert. 3 · 3 = 9, 9 · 3 = 27, 27 · 3 = 81.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Potenzieren",
+    "question": "Wie heißt die 8 in 8²?",
+    "answer": "Grundzahl (auch: Basis)",
+    "explanation": "Bei einer Potenz aⁿ ist a die Grundzahl (Basis) und n die Hochzahl (Exponent). Bei 8² ist 8 die Grundzahl und 2 die Hochzahl. 8² = 8 · 8 = 64.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Potenzieren",
+    "question": "Welche Zahl ist eine Quadratzahl: 36, 50 oder 60?",
+    "answer": "36 (= 6²)",
+    "explanation": "Quadratzahlen entstehen durch Potenzieren mit der Hochzahl 2: 1, 4, 9, 16, 25, 36, 49 … Da 6 · 6 = 36, ist 36 eine Quadratzahl.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Potenzieren",
+    "question": "Berechne: 2³ + 3²",
+    "answer": "17",
+    "explanation": "Potenzen vor Strichrechnung: 2³ = 8 und 3² = 9. Dann 8 + 9 = 17.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Teilbarkeit",
+    "question": "Ist 4 836 durch 2 teilbar?",
+    "answer": "Ja – die letzte Ziffer ist 6 (gerade Zahl)",
+    "explanation": "Eine Zahl ist durch 2 teilbar, wenn ihre letzte Ziffer 0, 2, 4, 6 oder 8 ist. Die letzte Ziffer von 4 836 ist 6 → teilbar durch 2.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Teilbarkeit",
+    "question": "Ist 5 730 durch 5 und durch 10 teilbar?",
+    "answer": "Ja – letzte Ziffer ist 0",
+    "explanation": "Durch 5 teilbar: letzte Ziffer ist 0 oder 5. Durch 10 teilbar: letzte Ziffer ist 0. Bei 5 730 ist die letzte Ziffer 0 → teilbar durch 5 und durch 10.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Teilbarkeit",
+    "question": "Ist 2 814 durch 3 teilbar?",
+    "answer": "Ja – Quersumme = 15, teilbar durch 3",
+    "explanation": "Die Quersumme ist 2 + 8 + 1 + 4 = 15. Da 15 durch 3 teilbar ist, ist auch 2 814 durch 3 teilbar.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Teilbarkeit",
+    "question": "Ist 3 548 durch 4 teilbar?",
+    "answer": "Ja – 48 ÷ 4 = 12",
+    "explanation": "Eine Zahl ist durch 4 teilbar, wenn die aus den letzten zwei Ziffern gebildete Zahl durch 4 teilbar ist. Die letzten zwei Ziffern sind 48: 48 ÷ 4 = 12 → teilbar durch 4.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Primzahlen",
+    "question": "Was ist eine Primzahl?",
+    "answer": "Eine natürliche Zahl größer als 1, die nur durch 1 und sich selbst teilbar ist",
+    "explanation": "Primzahlen haben genau zwei Teiler: 1 und sich selbst. Die ersten Primzahlen: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 … Die 1 ist KEINE Primzahl. Die 2 ist die einzige gerade Primzahl.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Primzahlen",
+    "question": "Ist 51 eine Primzahl?",
+    "answer": "Nein – 51 = 3 · 17",
+    "explanation": "Quersumme von 51: 5 + 1 = 6 → teilbar durch 3. Probe: 51 ÷ 3 = 17. Da 51 weitere Teiler hat, ist es keine Primzahl.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Primzahlen",
+    "question": "Gib die Primfaktorzerlegung von 60 in Potenzschreibweise an.",
+    "answer": "2² · 3 · 5",
+    "explanation": "60 = 2 · 30 = 2 · 2 · 15 = 2 · 2 · 3 · 5 = 2² · 3 · 5. Die Faktoren werden der Größe nach geordnet und als Potenzen geschrieben.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Primzahlen",
+    "question": "Wie viele Teiler hat eine Primzahl immer?",
+    "answer": "Genau 2 Teiler: 1 und die Zahl selbst",
+    "explanation": "Das ist die Definition der Primzahl. Z.B. hat 13 nur die Teiler 1 und 13. Zahlen mit mehr Teilern (z.B. 12 hat die Teiler 1, 2, 3, 4, 6, 12) nennt man zusammengesetzte Zahlen.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Schriftliches Rechnen",
+    "question": "Berechne schriftlich: 3 482 + 1 759",
+    "answer": "5 241",
+    "explanation": "Stellengerecht untereinander, von rechts: E: 2+9=11 (1 schreiben, 1 übertragen), Z: 8+5+1=14 (4 schreiben, 1 übertragen), H: 4+7+1=12 (2 schreiben, 1 übertragen), T: 3+1+1=5. Ergebnis: 5 241.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Schriftliches Rechnen",
+    "question": "Berechne schriftlich: 6 000 − 2 348",
+    "answer": "3 652",
+    "explanation": "6 000 − 2 348: Von rechts borgen. E: 10−8=2, Z: 9−4=5, H: 9−3=6, T: 5−2=3. Ergebnis: 3 652.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Schriftliches Rechnen",
+    "question": "Berechne schriftlich: 347 · 8",
+    "answer": "2 776",
+    "explanation": "347 · 8 – von rechts: E: 7·8=56 (6, 5 merken), Z: 4·8=32+5=37 (7, 3 merken), H: 3·8=24+3=27. Ergebnis: 2 776.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Schriftliches Rechnen",
+    "question": "Berechne schriftlich: 936 ÷ 4",
+    "answer": "234",
+    "explanation": "936 ÷ 4: 9÷4=2 Rest 1, 13÷4=3 Rest 1, 16÷4=4. Ergebnis: 234 (kein Rest). Probe: 234 · 4 = 936 ✓",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Schriftliches Rechnen",
+    "question": "Berechne schriftlich: 253 · 46",
+    "answer": "11 638",
+    "explanation": "253 · 46 = 253 · 6 + 253 · 40 = 1 518 + 10 120 = 11 638. Beim zweistelligen Multiplikator die Teilergebnisse stellenweise versetzt aufschreiben.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Schriftliches Rechnen",
+    "question": "Berechne schriftlich mit Rest: 1 000 ÷ 7",
+    "answer": "142 Rest 6",
+    "explanation": "1000 ÷ 7: 10÷7=1 R3, 30÷7=4 R2, 20÷7=2 R6. Ergebnis: 142 Rest 6. Probe: 142·7+6=994+6=1000 ✓",
+    "difficulty": 3
+  }
+]

@@ -1,0 +1,290 @@
+[
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Was ist der Nachfolger von 999?",
+    "answer": "1000",
+    "explanation": "Der Nachfolger ist immer die nächstgrößere Zahl: 999 + 1 = 1000.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Was ist der Vorgänger von 10 000?",
+    "answer": "9999",
+    "explanation": "Der Vorgänger ist die nächstkleinere Zahl: 10 000 − 1 = 9999.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Was ist der Nachfolger von 2999?",
+    "answer": "3000",
+    "explanation": "2999 + 1 = 3000. Beim Übergang zur nächsten Tausenderstelle ändert sich viel.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Was ist der Vorgänger von 7000?",
+    "answer": "6999",
+    "explanation": "7000 − 1 = 6999. Der Vorgänger liegt immer 1 links auf dem Zahlenstrahl.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Welche Zahl liegt genau zwischen 48 und 50?",
+    "answer": "49",
+    "explanation": "Zwischen 48 und 50 liegt genau die Zahl 49. Das ist der Nachfolger von 48 und der Vorgänger von 50.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Welches Zeichen passt? 456 ☐ 465",
+    "answer": "<",
+    "explanation": "456 ist kleiner als 465, weil im Zehnerstelle 5 < 6 ist. Man schreibt: 456 < 465.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Welches Zeichen passt? 3200 ☐ 3020",
+    "answer": ">",
+    "explanation": "3200 > 3020. Die Hunderterstelle: 2 > 0, also ist 3200 die größere Zahl.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Welches Zeichen passt? 10 000 ☐ 9999",
+    "answer": ">",
+    "explanation": "10 000 hat 5 Stellen, 9999 nur 4. Eine fünfstellige Zahl ist immer größer als eine vierstellige.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Welches Zeichen passt? 599 ☐ 601",
+    "answer": "<",
+    "explanation": "599 < 601. 599 ist kleiner als 600, und 601 ist größer als 600.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Welches Zeichen passt? 8080 ☐ 8008",
+    "answer": ">",
+    "explanation": "8080 > 8008. Zehnerstelle: 8 > 0, also ist 8080 größer.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Welche Zahl ist die größte: 4321, 4312, 4231, 4132?",
+    "answer": "4321",
+    "explanation": "Alle beginnen mit 4. Die Hunderterstelle: 3 > 2 > 1. Also ist 4321 die größte Zahl.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Welche Zahl ist die kleinste: 905, 950, 509, 590?",
+    "answer": "509",
+    "explanation": "509 beginnt mit 5, die anderen mit 9 oder 5 aber mit größerer Hunderterstelle. 509 < 590 < 905 < 950.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Ordne von klein nach groß: 387, 73, 3870, 738, 37",
+    "answer": "37, 73, 387, 738, 3870",
+    "explanation": "Zuerst nach Stellenanzahl sortieren: 2-stellig (37, 73), 3-stellig (387, 738), 4-stellig (3870).",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Ordne von groß nach klein: 6060, 6600, 6006, 6606",
+    "answer": "6606, 6600, 6060, 6006",
+    "explanation": "Hunderterstelle vergleichen: 6606 (6>0), 6600 (0=0), 6060 (6>0), 6006 (0<6). Reihenfolge: 6606 > 6600 > 6060 > 6006.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Welche Zahl liegt genau in der Mitte zwischen 40 und 60?",
+    "answer": "50",
+    "explanation": "Die Mitte berechnet man mit: (40 + 60) ÷ 2 = 100 ÷ 2 = 50.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Welche Zahl liegt genau in der Mitte zwischen 100 und 200?",
+    "answer": "150",
+    "explanation": "(100 + 200) ÷ 2 = 300 ÷ 2 = 150. Die Mitte liegt bei 150.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Welche Zahl liegt genau in der Mitte zwischen 250 und 350?",
+    "answer": "300",
+    "explanation": "(250 + 350) ÷ 2 = 600 ÷ 2 = 300.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Welche Zahl liegt genau in der Mitte zwischen 1000 und 2000?",
+    "answer": "1500",
+    "explanation": "(1000 + 2000) ÷ 2 = 3000 ÷ 2 = 1500.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Wie viele natürliche Zahlen liegen zwischen 10 und 20 (ohne 10 und 20)?",
+    "answer": "9",
+    "explanation": "Die Zahlen 11, 12, 13, 14, 15, 16, 17, 18, 19 liegen zwischen 10 und 20. Das sind 9 Zahlen.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Wie lautet die nächste Zahl in der Reihe: 150, 300, 450, 600, ___?",
+    "answer": "750",
+    "explanation": "Die Zahlen steigen immer um 150. 600 + 150 = 750.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Wie lautet die nächste Zahl in der Reihe: 1000, 900, 800, 700, ___?",
+    "answer": "600",
+    "explanation": "Die Zahlen werden immer um 100 kleiner. 700 − 100 = 600.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Was ist ein Nachfolger einer natürlichen Zahl?",
+    "answer": "Die um 1 größere Zahl",
+    "explanation": "Jede natürliche Zahl hat einen Nachfolger: Man addiert 1. Zum Beispiel: Nachfolger von 99 ist 100.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Was ist ein Vorgänger einer natürlichen Zahl?",
+    "answer": "Die um 1 kleinere Zahl",
+    "explanation": "Der Vorgänger entsteht durch Subtraktion von 1. Zum Beispiel: Vorgänger von 500 ist 499.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "In welche Richtung werden Zahlen auf dem Zahlenstrahl größer?",
+    "answer": "Nach rechts (in Pfeilrichtung)",
+    "explanation": "Auf dem Zahlenstrahl zeigt der Pfeil nach rechts. In dieser Richtung werden die Zahlen immer größer.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Liegt die Zahl 7 links oder rechts von der Zahl 12 auf dem Zahlenstrahl?",
+    "answer": "Links",
+    "explanation": "7 < 12, also liegt 7 links von 12 auf dem Zahlenstrahl. Kleinere Zahlen liegen immer links.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Welche Aussage ist falsch: Eine Zahl mit mehr Ziffern ist immer größer.",
+    "answer": "Die Aussage ist falsch",
+    "explanation": "Gegenbeispiel: 99 hat 2 Ziffern, 100 hat 3 Ziffern – und 100 > 99. Aber: 999 hat mehr Ziffern als 100 und ist auch größer. Die Aussage gilt nur beim Vergleich gleichstelliger Zahlen nicht immer.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Zahlen ordnen",
+    "question": "Gibt es eine größte natürliche Zahl?",
+    "answer": "Nein",
+    "explanation": "Es gibt unendlich viele natürliche Zahlen. Zu jeder Zahl gibt es immer einen Nachfolger, also gibt es keine größte.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Das Einmaleins",
+    "question": "7er-Reihe: Was ist 7 · 8?",
+    "answer": "56",
+    "explanation": "7er-Reihe: 7, 14, 21, 28, 35, 42, 49, 56. Der 8. Schritt ergibt 56.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Das Einmaleins",
+    "question": "9er-Reihe: Was ist 9 · 7?",
+    "answer": "63",
+    "explanation": "9 · 7 = 63. Merkhilfe: Quersumme von 63 ist 6+3=9 – das gilt für alle Vielfachen von 9.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Das Einmaleins",
+    "question": "9er-Reihe: Was ist 9 · 12?",
+    "answer": "108",
+    "explanation": "9 · 12 = 9 · 10 + 9 · 2 = 90 + 18 = 108.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Das Einmaleins",
+    "question": "13er-Reihe: Was ist 13 · 4?",
+    "answer": "52",
+    "explanation": "13 · 4 = 10 · 4 + 3 · 4 = 40 + 12 = 52.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Das Einmaleins",
+    "question": "13er-Reihe: Was ist 13 · 7?",
+    "answer": "91",
+    "explanation": "13 · 7 = 10 · 7 + 3 · 7 = 70 + 21 = 91.",
+    "difficulty": 2
+  }
+]

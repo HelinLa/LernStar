@@ -1,0 +1,191 @@
+[
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Wie viele Gramm sind 1 kg?",
+    "answer": "1000 g",
+    "explanation": "1 kg = 1000 g. Kilo bedeutet Tausend.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Wie viele kg sind 1 t?",
+    "answer": "1000 kg",
+    "explanation": "1 t (Tonne) = 1000 kg.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Wie viele mg sind 1 g?",
+    "answer": "1000 mg",
+    "explanation": "1 g = 1000 mg. Milli bedeutet Tausendstel.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Schreibe in Gramm: 3 kg",
+    "answer": "3000 g",
+    "explanation": "3 kg × 1000 = 3000 g.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Was ist schwerer: 2 kg oder 1900 g?",
+    "answer": "2 kg",
+    "explanation": "2 kg = 2000 g. Da 2000 g > 1900 g, ist 2 kg schwerer.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Schreibe in kg: 5000 g",
+    "answer": "5 kg",
+    "explanation": "5000 g ÷ 1000 = 5 kg.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Wie viele g sind 0,5 kg?",
+    "answer": "500 g",
+    "explanation": "0,5 kg = 500 g. Die Hälfte von 1000 g.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Wie viele mg sind 2 g?",
+    "answer": "2000 mg",
+    "explanation": "2 g × 1000 = 2000 mg.",
+    "difficulty": 1
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Schreibe in der kleineren Einheit: 2,6 kg",
+    "answer": "2600 g",
+    "explanation": "2,6 kg = 2 kg + 0,6 kg = 2000 g + 600 g = 2600 g.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Schreibe in der größeren Einheit mit Komma: 4500 g",
+    "answer": "4,5 kg",
+    "explanation": "4500 g ÷ 1000 = 4,5 kg.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Berechne: 23 kg − 2800 g. Gib das Ergebnis in kg und g an.",
+    "answer": "20 kg 200 g",
+    "explanation": "23 kg = 23 000 g. 23 000 g − 2800 g = 20 200 g = 20 kg 200 g.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Berechne: 5,2 kg − 700 g. Gib das Ergebnis in kg und g an.",
+    "answer": "4 kg 500 g",
+    "explanation": "5,2 kg = 5200 g. 5200 g − 700 g = 4500 g = 4 kg 500 g.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "In der Schulkantine essen 40 Schüler. Man rechnet mit 150 g Nudeln pro Person. Wie viele kg Nudeln braucht man?",
+    "answer": "6 kg",
+    "explanation": "40 × 150 g = 6000 g = 6 kg.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Schreibe in Kommaschreibweise in der größeren Einheit: 1 t 500 kg",
+    "answer": "1,5 t",
+    "explanation": "1 t 500 kg = 1500 kg = 1,5 t.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Wie oft passt 500 g in 3 kg?",
+    "answer": "6 Mal",
+    "explanation": "3 kg = 3000 g. 3000 g ÷ 500 g = 6.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Ordne die Gewichte der Größe nach (kleinstes zuerst): 980 g, 0,9 t, 11,9 kg, 1050 kg",
+    "answer": "980 g, 11,9 kg, 1050 kg, 0,9 t",
+    "explanation": "In kg: 0,98 kg, 11,9 kg, 1050 kg, 900 kg. Reihenfolge: 980 g < 11,9 kg < 0,9 t (900 kg) < 1050 kg.",
+    "difficulty": 2
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Janas Hund wiegt 8,5 kg und bekommt täglich 85 g Trockenfutter. Wie viele Tage reicht ein 2,55-kg-Sack?",
+    "answer": "30 Tage",
+    "explanation": "2,55 kg = 2550 g. 2550 g ÷ 85 g = 30 Tage.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Ein Pkw hat eine Zuladung von 600 kg. Familie Kern (Vater 85 kg, Mutter 68 kg, Kind 32 kg) fährt in den Urlaub mit 3 Koffern à 22 kg. Ist das erlaubt?",
+    "answer": "Ja, es sind 251 kg — unter der Grenze",
+    "explanation": "Personen: 85 + 68 + 32 = 185 kg. Koffer: 3 × 22 = 66 kg. Gesamt: 185 + 66 = 251 kg < 600 kg. ✓",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Ist diese Aussage wahr oder falsch: 'Wenn man ein Gewicht durch ein anderes gleich großes Gewicht ersetzt, muss man daran nichts ändern.'",
+    "answer": "Wahr",
+    "explanation": "Wenn zwei Gewichtsangaben identisch sind (z. B. 500 g = 500 g), kann man sie austauschen, ohne dass sich etwas ändert.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Notiere in einer sinnvollen Einheit: 36 000 000 000 mg",
+    "answer": "36 t",
+    "explanation": "36 000 000 000 mg ÷ 1000 = 36 000 000 g ÷ 1000 = 36 000 kg ÷ 1000 = 36 t.",
+    "difficulty": 3
+  },
+  {
+    "subject": "Mathematik",
+    "grade": "5",
+    "topic": "Rechnen mit Gewichtsangaben",
+    "question": "Eine Tafel Schokolade wiegt 80 g. Wie viele Tafeln ergeben zusammen 1 kg?",
+    "answer": "12 Tafeln (mit Rest 40 g)",
+    "explanation": "1000 g ÷ 80 g = 12,5. Also passen 12 ganze Tafeln (= 960 g) in 1 kg, mit 40 g Rest.",
+    "difficulty": 3
+  }
+]
