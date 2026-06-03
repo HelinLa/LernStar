@@ -240,7 +240,7 @@ async function _elevenFetch(text) {
       body: JSON.stringify({
         text,
         model_id: ELEVEN_MODEL,
-        voice_settings: { stability: 0.42, similarity_boost: 0.72, style: 0.72, use_speaker_boost: true }
+        voice_settings: { stability: 0.58, similarity_boost: 0.80, style: 0.18, use_speaker_boost: true }
       })
     }
   );
@@ -10706,92 +10706,103 @@ function _evAutoScenes(topicName) {
   const s1  = t.short?.[1] || '';
   const vis = TOPIC_VISUALS[topicName] || '';
 
-  // Split explanation into two halves by sentence
   const sents = (t.explanation || '').split(/(?<=[.!?])\s+/).filter(Boolean);
   const h  = Math.ceil(sents.length / 2);
   const e1 = sents.slice(0, h).join(' ');
   const e2 = sents.slice(h).join(' ');
 
-  const lightStage = (stage, bg) => {
-    stage.style.background   = bg || '#F7F9F5';
-    stage.style.alignItems   = 'flex-start';
-    stage.style.justifyContent = 'flex-start';
-    stage.style.textAlign    = 'left';
-  };
-  const visPnl = `<div class="evs-vis-pnl">${vis || '📐'}</div>`;
+  const dark = 'linear-gradient(160deg,#1a0035 0%,#0e0820 100%)';
+  const darkDeep = 'linear-gradient(160deg,#0d001a 0%,#0e0820 100%)';
+  const ch = m => `<div class="ev-split-char">${_evCharHTML(m)}<div class="ev-char-name-lbl">Mr. Lala</div></div>`;
+  const s0short = s0.length > 40 ? s0.slice(0, 38) + '…' : s0;
 
   return [
-    // Scene 1 — Hook
-    { dur: 2800, bg: '#F7F9F5', speech: topicName + '. Jetzt erklärt.',
+    // Szene 1 – Intro mit Charakter
+    { dur: 4000, bg: dark,
+      speech: `Hallo! Ich bin Mr. Lala. Heute erkläre ich dir: ${topicName}. Schau gut zu!`,
       build(stage) {
-        lightStage(stage);
-        stage.innerHTML = `<div class="evs-hook">
-          <div class="evs-hook-vis">${vis}</div>
-          <div class="evs-hook-title">${topicName}</div>
-          <div class="evs-hook-sub">Schritt für Schritt erklärt ✏️</div>
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+          <div style="animation:evBounceIn .5s cubic-bezier(.36,.07,.19,.97)">${_evCharHTML('talking')}<div class="ev-char-name-lbl" style="margin-top:4px">Mr. Lala</div></div>
+          <div class="ev-speech-bubble" style="max-width:220px;text-align:center;font-size:14px">Hallo! Heute lernst du:</div>
+          <div class="ev-hook-title" style="font-size:clamp(22px,6vw,32px);line-height:1.2;text-align:center">${topicName}</div>
+          ${vis ? `<div style="font-size:46px;animation:evFadeUp .4s .7s both;text-align:center">${vis}</div>` : ''}
         </div>`;
       }
     },
-    // Scene 2 — Schlüsselpunkt 1
-    { dur: 6500, bg: '#F7F9F5', speech: s0,
+    // Szene 2 – Schlüsselpunkt 1
+    { dur: 7500, bg: dark,
+      speech: s0 || e1,
       build(stage) {
-        lightStage(stage);
-        stage.innerHTML = `<div class="evs-split">
-          <div class="evs-split-left">
-            <div class="evs-kp-label">Was du wissen musst:</div>
-            <div class="evs-step evs-step-on">
-              <div class="evs-step-n">1</div>
-              <div class="evs-step-t">${s0}</div>
+        stage.style.justifyContent = 'flex-start';
+        stage.innerHTML = `<div class="ev-scene-split">
+          ${ch('pointing')}
+          <div class="ev-split-content">
+            <div style="font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">🔑 Das Wichtigste zuerst</div>
+            <div class="ev-speech-bubble" style="font-size:13px;line-height:1.65">${s0}</div>
+            ${vis ? `<div style="margin-top:14px;font-size:40px;animation:evScaleIn .5s .5s both;text-align:center">${vis}</div>` : ''}
+          </div>
+        </div>`;
+      }
+    },
+    // Szene 3 – Schlüsselpunkt 2
+    { dur: 7500, bg: dark,
+      speech: (s1 || '') + (s1 ? '' : ' '),
+      build(stage) {
+        stage.style.justifyContent = 'flex-start';
+        stage.innerHTML = `<div class="ev-scene-split">
+          ${ch('talking')}
+          <div class="ev-split-content">
+            <div style="font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">📌 Und das kommt dazu</div>
+            <div style="margin-bottom:10px;animation:evFadeUp .4s both">
+              <span class="ev-label-badge" style="font-size:11px">✓ ${s0short}</span>
+            </div>
+            <div class="ev-speech-bubble" style="font-size:13px;line-height:1.65">${s1}</div>
+          </div>
+        </div>`;
+      }
+    },
+    // Szene 4 – Hintergrundwissen
+    { dur: 11000, bg: dark,
+      speech: e1 + (e2 ? ' ' + e2 : ''),
+      build(stage) {
+        stage.style.justifyContent = 'flex-start';
+        stage.innerHTML = `<div class="ev-scene-split" style="align-items:flex-start;padding-top:8px">
+          ${ch('talking')}
+          <div class="ev-split-content">
+            <div style="font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">💡 Hintergrundwissen</div>
+            <div class="ev-explain-text" style="animation:evFadeUp .5s .15s both;font-size:12px;margin-bottom:8px">${e1}</div>
+            ${e2 ? `<div class="ev-explain-text" style="animation:evFadeUp .5s 3s both;font-size:12px;opacity:.85">${e2}</div>` : ''}
+          </div>
+        </div>`;
+      }
+    },
+    // Szene 5 – Merksatz
+    { dur: 6500, bg: darkDeep,
+      speech: `Hier ist dein Merksatz: ${s0}. ${s1 ? s1 + '.' : ''} Gut merken!`,
+      build(stage) {
+        stage.style.justifyContent = 'flex-start';
+        stage.innerHTML = `<div class="ev-scene-split">
+          ${ch('talking')}
+          <div class="ev-split-content">
+            <div class="ev-merksatz" style="padding:14px 12px">
+              <h3 style="font-size:11px">📌 Merksatz – ${topicName}</h3>
+              ${s0 ? `<p style="font-size:13px;margin:6px 0">${s0}</p>` : ''}
+              ${s1 ? `<p style="font-size:12px;margin:6px 0;opacity:.88">${s1}</p>` : ''}
             </div>
           </div>
-          <div class="evs-split-right">${visPnl}</div>
         </div>`;
       }
     },
-    // Scene 3 — Schlüsselpunkt 2
-    { dur: 6500, bg: '#F7F9F5', speech: s1,
+    // Szene 6 – Outro / Celebration
+    { dur: 4200, bg: dark,
+      speech: `Toll! Du hast ${topicName} gemeistert. Viel Erfolg beim Üben!`,
       build(stage) {
-        lightStage(stage);
-        stage.innerHTML = `<div class="evs-split">
-          <div class="evs-split-left">
-            <div class="evs-step evs-step-done">
-              <div class="evs-step-n">✓</div>
-              <div class="evs-step-t">${s0}</div>
-            </div>
-            <div class="evs-step evs-step-on" style="animation-delay:.35s">
-              <div class="evs-step-n">2</div>
-              <div class="evs-step-t">${s1}</div>
-            </div>
-          </div>
-          <div class="evs-split-right">${visPnl}</div>
-        </div>`;
-      }
-    },
-    // Scene 4 — Erklärung
-    { dur: 9500, bg: '#F7F9F5', speech: e1 + (e2 ? ' ' + e2 : ''),
-      build(stage) {
-        lightStage(stage);
-        stage.innerHTML = `<div class="evs-explain">
-          <div class="evs-explain-lbl">💡 Hintergrundwissen</div>
-          <div class="evs-explain-txt" style="animation:evFadeUp .5s .1s both">${e1}</div>
-          ${e2 ? `<div class="evs-explain-txt evs-explain-txt2" style="animation:evFadeUp .5s 2.2s both">${e2}</div>` : ''}
-        </div>`;
-      }
-    },
-    // Scene 5 — Merksatz
-    { dur: 5500, bg: '#EEF5E8', speech: 'Merksatz: ' + s0 + ' ' + s1,
-      build(stage) {
-        lightStage(stage, '#EEF5E8');
-        stage.innerHTML = `<div class="evs-merksatz-box">
-          <div class="evs-merksatz-hd">📌 Merksatz – ${topicName}</div>
-          <div class="evs-mk-item" style="animation:evFadeUp .4s .15s both">
-            <div class="evs-mk-dot">1</div>
-            <span>${s0}</span>
-          </div>
-          <div class="evs-mk-item" style="animation:evFadeUp .4s .55s both">
-            <div class="evs-mk-dot">2</div>
-            <span>${s1}</span>
-          </div>
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+          <div style="animation:evBounceIn .5s cubic-bezier(.36,.07,.19,.97)">${_evCharHTML('celebrating')}<div class="ev-char-name-lbl" style="margin-top:4px">Mr. Lala</div></div>
+          <div class="ev-outro-text" style="font-size:clamp(18px,5vw,26px)">${topicName} verstanden! 🎉</div>
+          <div class="ev-outro-next">➡ Jetzt üben!</div>
         </div>`;
       }
     },
@@ -11117,8 +11128,8 @@ function renderModul() {
   if (!topic) { navigate('home'); return; }
   const c = document.getElementById('modulContainer');
   if (!c) return;
-  const steps = ['Kompetenzziel','Vorwissen','Erklaerung','Videoskript','Erste Anwendung',
-                  'Mini-Diagnose','Individuelle Uebungen','Transfer','Reflexion','Kompetenznachweis'];
+  const steps = ['🎯 Lernziel','🧠 Vorwissen','📖 Erklärung','🎬 Erklärvideo','✏️ Erste Übung',
+                  '📋 Mini-Test','📚 Üben','🌍 Im Alltag','💭 Reflexion','🏆 Abschluss'];
   const pct = Math.round((state.modulStep / 10) * 100);
   c.innerHTML =
     '<div class="modul-header">' +
@@ -11134,25 +11145,29 @@ function renderModul() {
 
 function _modulStep1(t) {
   document.getElementById('modulStepContent').innerHTML =
-    '<div class="modul-kompetenz"><div class="modul-kompetenz-icon">&#127919;</div>' +
-    '<h2>Was lernst du heute?</h2>' +
-    '<p class="modul-kompetenz-text">' + t.kompetenz + '</p>' +
-    (t.merksatz ? '<div class="modul-merksatz">&#128161; ' + t.merksatz + '</div>' : '') +
+    '<div class="modul-kompetenz">' +
+      '<div class="modul-kompetenz-icon">&#127775;</div>' +
+      '<div style="font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#7C3AED;margin-bottom:10px">&#127919; Dein Lernziel heute</div>' +
+      '<p class="modul-kompetenz-text">' + t.kompetenz + '</p>' +
+      (t.merksatz ? '<div class="modul-merksatz">&#128161; <strong>Merksatz:</strong> ' + t.merksatz + '</div>' : '') +
     '</div>' +
-    '<button class="btn-modul-next" onclick="modulNext()">Weiter &#8594;</button>';
+    '<button class="btn-modul-next" onclick="modulNext()">Los geht&#39;s! &#128640;</button>';
 }
 
 function _modulStep2(t) {
   const vw = t.vorwissen || [];
   const idx = state.modulVorwissenIdx;
   if (idx >= vw.length) { state.modulStep = 3; renderModul(); return; }
+  const dots = vw.map(function(_,i){ return '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:'+(i<idx?'#7C3AED':i===idx?'#A855F7':'#DDD6FE')+';margin:0 3px;transition:background .3s"></span>'; }).join('');
   document.getElementById('modulStepContent').innerHTML =
-    '<h2>&#129504; Vorwissen pruefen</h2>' +
-    '<p style="color:#6B7280;margin-bottom:8px">Frage ' + (idx+1) + ' von ' + vw.length + '</p>' +
-    '<p class="modul-question">' + vw[idx] + '</p>' +
-    '<div class="modul-options">' +
-      '<button class="modul-option-btn" onclick="modulVorwissenAntwort(true)">&#10003; Ja</button>' +
-      '<button class="modul-option-btn" onclick="modulVorwissenAntwort(false)">&#10007; Nein</button>' +
+    '<div style="text-align:center;margin-bottom:16px">' +
+      '<div style="font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#7C3AED;margin-bottom:10px">&#129504; Weißt du das schon?</div>' +
+      '<div style="margin-bottom:12px">' + dots + '</div>' +
+    '</div>' +
+    '<p class="modul-question">&#10067; ' + vw[idx] + '</p>' +
+    '<div class="modul-options" style="flex-direction:row">' +
+      '<button class="modul-option-btn modul-vorwissen-ja" onclick="modulVorwissenAntwort(true)" style="flex:1;justify-content:center;background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border-color:#10B981;color:#065F46">&#9989; Ja, weiß ich!</button>' +
+      '<button class="modul-option-btn modul-vorwissen-nein" onclick="modulVorwissenAntwort(false)" style="flex:1;justify-content:center;background:linear-gradient(135deg,#FFF7ED,#FEE2D5);border-color:#F97316;color:#9A3412">&#128481;&#65039; Lerne ich noch</button>' +
     '</div>';
 }
 
@@ -11164,17 +11179,26 @@ function modulVorwissenAntwort(ja) {
 
 function _modulStep3(t) {
   document.getElementById('modulStepContent').innerHTML =
-    '<h2>&#128218; Erklaerung</h2>' +
+    '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">' +
+      '<span style="font-size:1.8rem">&#128218;</span>' +
+      '<div><div style="font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#3B82F6">Erklärung</div>' +
+      '<div style="font-size:1.1rem;font-weight:800;color:#1E3A5F">' + t.name + '</div></div>' +
+    '</div>' +
     '<div class="modul-explanation">' + (t.explanation || '') + '</div>' +
-    (t.typischeFehler && t.typischeFehler.length ? '<div class="modul-fehler"><strong>&#9888;&#65039; Typische Fehler:</strong><ul>' +
-      t.typischeFehler.map(function(f){return '<li>' + f + '</li>';}).join('') + '</ul></div>' : '') +
-    '<button class="btn-modul-next" onclick="modulNext()">Verstanden &#8594;</button>';
+    (t.merksatz ? '<div class="modul-merksatz">&#128161; <strong>Merksatz:</strong> ' + t.merksatz + '</div>' : '') +
+    (t.typischeFehler && t.typischeFehler.length ? '<div class="modul-fehler"><strong>&#9888;&#65039; Typische Fehler – aufpassen!</strong><ul style="margin-top:8px">' +
+      t.typischeFehler.map(function(f){return '<li style="margin-bottom:4px">' + f + '</li>';}).join('') + '</ul></div>' : '') +
+    '<button class="btn-modul-next" onclick="modulNext()">Verstanden! &#10003;</button>';
 }
 
 function _modulStep4(t) {
   const vs = t.videoskript || 'Kein Videoskript vorhanden.';
   document.getElementById('modulStepContent').innerHTML =
-    '<h2>&#127909; Videoskript</h2>' +
+    '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">' +
+      '<span style="font-size:1.8rem">&#127909;</span>' +
+      '<div><div style="font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#A855F7">Erklärvideo-Skript</div>' +
+      '<div style="font-size:.9rem;color:#6B7280">Schau zu, wie Mr. Lala es erklärt</div></div>' +
+    '</div>' +
     '<div class="ev-skript-container">' + vs.replace(/\n/g,'<br>') + '</div>' +
     '<button class="btn-modul-next" onclick="modulNext()">Weiter &#8594;</button>';
 }
@@ -11186,14 +11210,19 @@ function _modulStep5(t) {
   const idx = state.modulErsteAnw.idx;
   if (idx >= anws.length) { state.modulStep = 6; renderModul(); return; }
   const a = anws[idx];
+  const dots = anws.map(function(_,i){ return '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:'+(i<idx?'#10B981':i===idx?'#3B82F6':'#BFDBFE')+';margin:0 3px"></span>'; }).join('');
   document.getElementById('modulStepContent').innerHTML =
-    '<h2>&#9999;&#65039; Erste Anwendung (' + (idx+1) + '/' + anws.length + ')</h2>' +
-    '<p class="modul-question">' + a.aufgabe + '</p>' +
-    '<button class="btn-modul-hint" onclick="this.nextSibling.style.display=\'block\';this.style.display=\'none\'">&#128161; Hinweis anzeigen</button>' +
-    '<div class="modul-hint-text" style="display:none">' + a.hinweis + '</div>' +
-    '<button class="btn-modul-hint" onclick="this.nextSibling.style.display=\'block\';this.style.display=\'none\'">&#10003; Loesung anzeigen</button>' +
-    '<div class="modul-hint-text" style="display:none">&#128994; ' + a.loesung + '</div>' +
-    '<button class="btn-modul-next" onclick="modulErsteAnwWeiter()">Naechste Aufgabe &#8594;</button>';
+    '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">' +
+      '<span style="font-size:1.8rem">&#9999;&#65039;</span>' +
+      '<div><div style="font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#3B82F6">Erste Anwendung</div>' +
+      '<div>' + dots + '</div></div>' +
+    '</div>' +
+    '<p class="modul-question">&#128270; ' + a.aufgabe + '</p>' +
+    '<button class="btn-modul-hint" style="width:100%" onclick="this.nextSibling.style.display=\'block\';this.style.display=\'none\'">&#128161; Tipp anzeigen</button>' +
+    '<div class="modul-hint-text" style="display:none">&#128161; ' + a.hinweis + '</div>' +
+    '<button class="btn-modul-hint" style="width:100%;margin-top:6px" onclick="this.nextSibling.style.display=\'block\';this.style.display=\'none\'">&#128994; Lösung anzeigen</button>' +
+    '<div class="modul-hint-text" style="display:none;background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border-color:#10B981">&#10004; <strong>Lösung:</strong> ' + a.loesung + '</div>' +
+    '<button class="btn-modul-next" onclick="modulErsteAnwWeiter()">' + (idx+1 < anws.length ? 'Nächste Aufgabe &#8594;' : 'Weiter &#8594;') + '</button>';
 }
 
 function modulErsteAnwWeiter() { state.modulErsteAnw.idx++; renderModul(); }
@@ -11205,9 +11234,15 @@ function _modulStep6() {
   const idx = state.modulDiagnose.idx;
   if (idx >= mq.length) { _modulStep6Result(mq); return; }
   const f = mq[idx];
+  const pct = Math.round((idx / mq.length) * 100);
   document.getElementById('modulStepContent').innerHTML =
-    '<h2>&#128203; Mini-Diagnose (' + (idx+1) + '/' + mq.length + ')</h2>' +
-    '<p class="modul-question">' + f.q + '</p>' +
+    '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">' +
+      '<span style="font-size:1.8rem">&#128203;</span>' +
+      '<div style="flex:1"><div style="font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#EF4444">Mini-Diagnose – Frage ' + (idx+1) + ' von ' + mq.length + '</div>' +
+        '<div style="height:6px;background:#FEE2E2;border-radius:3px;margin-top:6px"><div style="height:100%;width:' + pct + '%;background:linear-gradient(90deg,#EF4444,#F87171);border-radius:3px;transition:width .4s"></div></div>' +
+      '</div>' +
+    '</div>' +
+    '<p class="modul-question">&#128176; ' + f.q + '</p>' +
     '<div class="modul-options">' +
       f.options.map(function(o, oi){
         return '<button class="modul-option-btn" onclick="modulDiagnoseAntwort(' + oi + ')">' + o + '</button>';
@@ -11226,24 +11261,37 @@ function modulDiagnoseAntwort(chosen) {
 function _modulStep6Result(mq) {
   const richtig = state.modulDiagnose.answers.filter(function(a){return a.correct;}).length;
   const falsch  = state.modulDiagnose.answers.filter(function(a){return !a.correct;});
+  const pct = mq.length > 0 ? Math.round((richtig/mq.length)*100) : 0;
+  const stars = richtig >= mq.length ? '&#11088;&#11088;&#11088;' : richtig >= Math.ceil(mq.length*.6) ? '&#11088;&#11088;' : '&#11088;';
+  const msg = richtig >= mq.length ? 'Perfekt! Du weißt es schon sehr gut! 🎉' : richtig >= Math.ceil(mq.length*.6) ? 'Gut gemacht! Noch ein bisschen üben.' : 'Kein Problem – dafür ist der Kurs da!';
   document.getElementById('modulStepContent').innerHTML =
-    '<h2>&#128203; Diagnose-Ergebnis</h2>' +
-    '<div class="modul-diagnose-result">' + richtig + ' / ' + mq.length + ' richtig</div>' +
-    (falsch.length > 0 ? '<p>Schau nochmal auf diese Fragen:</p><ul class="modul-retry-list">' +
-      falsch.map(function(a){return '<li>&#10060; ' + a.q + '</li>';}).join('') + '</ul>' : '') +
-    '<button class="btn-modul-next" onclick="modulNext()">Weiter &#8594;</button>';
+    '<div class="modul-celebrate">' +
+      '<div class="modul-celebrate-emoji">' + stars + '</div>' +
+      '<div class="modul-diagnose-result" style="color:' + (pct>=60?'#059669':'#D97706') + '">' + richtig + ' / ' + mq.length + ' richtig</div>' +
+      '<div style="font-size:1rem;color:#374151;font-weight:600;margin-top:4px">' + msg + '</div>' +
+    '</div>' +
+    (falsch.length > 0 ? '<div style="margin:14px 0;padding:12px 16px;background:#FFF7ED;border-radius:10px;border-left:4px solid #F59E0B"><strong>&#9888;&#65039; Diese Themen üben wir gleich:</strong><ul class="modul-retry-list" style="margin-top:8px">' +
+      falsch.map(function(a){return '<li>' + a.q + '</li>';}).join('') + '</ul></div>' : '') +
+    '<button class="btn-modul-next" onclick="modulNext()">Weiter üben &#8594;</button>';
 }
 
 function _modulStep7() {
   const ex = _modulGetExercise();
   if (!ex || !ex.questions || !ex.questions.length) { state.modulStep = 8; renderModul(); return; }
+  const total = Math.min(4, ex.questions.length);
   const idx  = state.modulKompetenz.idx;
-  if (idx >= Math.min(4, ex.questions.length)) { state.modulStep = 8; renderModul(); return; }
+  if (idx >= total) { state.modulStep = 8; renderModul(); return; }
   const f = ex.questions[idx];
+  const stars = '&#11088;'.repeat(state.modulKompetenz.score) + (state.modulKompetenz.score < idx ? '&#10006; ' : '');
   document.getElementById('modulStepContent').innerHTML =
-    '<h2>&#128218; Individuelle Uebung (' + (idx+1) + '/4)</h2>' +
+    '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">' +
+      '<span style="font-size:1.8rem">&#128218;</span>' +
+      '<div style="flex:1"><div style="font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#7C3AED">Übungsaufgabe ' + (idx+1) + ' von ' + total + '</div>' +
+        '<div style="font-size:.85rem;color:#6B7280;margin-top:2px">' + (idx>0 ? stars : 'Zeig was du kannst!') + '</div>' +
+      '</div>' +
+    '</div>' +
     '<p class="modul-question">' + f.q + '</p>' +
-    '<button class="btn-modul-hint" onclick="this.nextSibling.style.display=\'block\';this.style.display=\'none\'">&#128161; Tipp</button>' +
+    '<button class="btn-modul-hint" style="width:100%" onclick="this.nextSibling.style.display=\'block\';this.style.display=\'none\'">&#128161; Tipp anzeigen</button>' +
     '<div class="modul-hint-text" style="display:none">' + (f.hint || '') + '</div>' +
     '<div class="modul-options">' +
       f.options.map(function(o, oi){
@@ -11266,21 +11314,28 @@ function _modulStep8(t) {
   const tr = t.transfer;
   if (!tr) { state.modulStep = 9; renderModul(); return; }
   document.getElementById('modulStepContent').innerHTML =
-    '<h2>&#127758; Transfer – Im Alltag anwenden</h2>' +
-    '<div class="modul-transfer-kontext">&#128205; ' + (tr.kontext || '') + '</div>' +
-    '<p class="modul-question">' + tr.aufgabe + '</p>' +
+    '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">' +
+      '<span style="font-size:1.8rem">&#127758;</span>' +
+      '<div><div style="font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#059669">Transfer</div>' +
+      '<div style="font-size:.9rem;color:#374151;font-weight:600">So nutzt du das im Alltag!</div></div>' +
+    '</div>' +
+    '<div style="background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border-radius:12px;padding:14px 16px;margin-bottom:14px;font-size:.9rem;color:#065F46;font-weight:600">&#128205; ' + (tr.kontext || '') + '</div>' +
+    '<p class="modul-question">&#127919; ' + tr.aufgabe + '</p>' +
     (tr.tipp ? '<div class="modul-merksatz">&#128161; ' + tr.tipp + '</div>' : '') +
-    '<button class="btn-modul-next" onclick="modulNext()">Erledigt &#8594;</button>';
+    '<button class="btn-modul-next" onclick="modulNext()">Erledigt! &#10003;</button>';
 }
 
 function _modulStep9() {
   document.getElementById('modulStepContent').innerHTML =
-    '<h2>&#129504; Reflexion</h2>' +
-    '<p>Wie sicher fuehlst du dich jetzt?</p>' +
+    '<div style="text-align:center;margin-bottom:20px">' +
+      '<div style="font-size:3rem;margin-bottom:8px">&#129504;</div>' +
+      '<div style="font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#7C3AED;margin-bottom:8px">Reflexion</div>' +
+      '<p style="font-size:1.05rem;font-weight:700;color:#1F2937">Wie sicher fühlst du dich jetzt?</p>' +
+    '</div>' +
     '<div class="modul-reflexion-buttons">' +
-      '<button class="modul-option-btn" onclick="modulSetReflexion(\'sicher\')">&#128994; Sicher!</button>' +
-      '<button class="modul-option-btn" onclick="modulSetReflexion(\'unsicher\')">&#128993; Noch unsicher</button>' +
-      '<button class="modul-option-btn" onclick="modulSetReflexion(\'unklar\')">&#128308; Brauche Hilfe</button>' +
+      '<button class="modul-option-btn" onclick="modulSetReflexion(\'sicher\')" style="background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border-color:#10B981;color:#065F46;text-align:center;flex:1;padding:18px 10px;font-size:1.1rem">&#128994;<br><span style="font-size:.85rem">Sicher!</span></button>' +
+      '<button class="modul-option-btn" onclick="modulSetReflexion(\'unsicher\')" style="background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border-color:#F59E0B;color:#92400E;text-align:center;flex:1;padding:18px 10px;font-size:1.1rem">&#128993;<br><span style="font-size:.85rem">Fast!</span></button>' +
+      '<button class="modul-option-btn" onclick="modulSetReflexion(\'unklar\')" style="background:linear-gradient(135deg,#FEF2F2,#FEE2E2);border-color:#EF4444;color:#991B1B;text-align:center;flex:1;padding:18px 10px;font-size:1.1rem">&#128308;<br><span style="font-size:.85rem">Brauche Hilfe</span></button>' +
     '</div>';
 }
 
@@ -11293,9 +11348,16 @@ function _modulStep10() {
   const idx = state.modulKompetenz.idx;
   if (idx >= qs.length) { _modulStep10Result(); return; }
   const f = qs[idx];
+  const progress = Math.round((idx / qs.length) * 100);
   document.getElementById('modulStepContent').innerHTML =
-    '<h2>&#127941; Kompetenznachweis (' + (idx+1) + '/' + qs.length + ')</h2>' +
-    '<p class="modul-question">' + f.q + '</p>' +
+    '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">' +
+      '<span style="font-size:1.8rem">&#127941;</span>' +
+      '<div style="flex:1">' +
+        '<div style="font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#7C3AED">Abschlussprüfung – Frage ' + (idx+1) + ' von ' + qs.length + '</div>' +
+        '<div style="height:8px;background:#EDE9FE;border-radius:4px;margin-top:6px"><div style="height:100%;width:' + progress + '%;background:linear-gradient(90deg,#7C3AED,#A855F7);border-radius:4px;transition:width .5s;box-shadow:0 0 8px rgba(124,58,237,.4)"></div></div>' +
+      '</div>' +
+    '</div>' +
+    '<p class="modul-question">&#127775; ' + f.q + '</p>' +
     '<div class="modul-options">' +
       f.options.map(function(o, oi){
         return '<button class="modul-option-btn" onclick="modulKompetenzNachweis(' + oi + ')">' + o + '</button>';
@@ -11317,12 +11379,21 @@ function _modulStep10Result() {
   const score  = state.modulKompetenz.score;
   const pct    = total > 0 ? Math.round((score / total) * 100) : 0;
   const passed = pct >= 70;
+  const stars  = pct >= 90 ? '&#11088;&#11088;&#11088;' : pct >= 70 ? '&#11088;&#11088;' : '&#11088;';
+  const emoji  = passed ? '&#127881;' : '&#128170;';
+  const title  = passed ? 'Super gemacht!' : 'Nicht aufgeben!';
+  const sub    = passed ? 'Du hast das Thema gemeistert!' : 'Schau dir nochmal die Erklärung an.';
   document.getElementById('modulStepContent').innerHTML =
-    '<h2>&#127941; Dein Ergebnis</h2>' +
-    '<div class="modul-diagnose-result" style="color:' + (passed ? '#059669' : '#DC2626') + '">' + pct + '% &ndash; ' + (passed ? 'Bestanden! &#127881;' : 'Weiter ueben') + '</div>' +
+    '<div class="modul-celebrate">' +
+      '<div class="modul-celebrate-emoji">' + emoji + '</div>' +
+      '<div style="font-size:1.8rem;margin:6px 0">' + stars + '</div>' +
+      '<div class="modul-diagnose-result" style="color:' + (passed ? '#059669' : '#D97706') + '">' + pct + '% – ' + title + '</div>' +
+      '<div style="font-size:1rem;color:#374151;font-weight:600;margin-top:4px">' + sub + '</div>' +
+      '<div style="font-size:.9rem;color:#6B7280;margin-top:8px">' + score + ' von ' + total + ' Aufgaben richtig</div>' +
+    '</div>' +
     '<div class="modul-btn-row">' +
-      (!passed ? '<button class="btn-modul-hint" onclick="state.modulStep=3;state.modulKompetenz={idx:0,score:0,answers:[]};renderModul()">&#8592; Nochmal ueben</button>' : '') +
-      '<button class="btn-modul-next" onclick="modulAbschliessen()">Zum Fach &#8594;</button>' +
+      (!passed ? '<button class="btn-modul-hint" style="flex:1" onclick="state.modulStep=3;state.modulKompetenz={idx:0,score:0,answers:[]};renderModul()">&#8592; Nochmal üben</button>' : '') +
+      '<button class="btn-modul-next" style="margin-top:0" onclick="modulAbschliessen()">Zurück zum Fach &#8594;</button>' +
     '</div>';
 }
 
