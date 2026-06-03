@@ -3,20 +3,620 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LernStar – Weiterleitung</title>
-  <script>
-    var base = window.location.href.replace(/\/lernplattform\/?.*$/, '/');
-    if (window.location.href !== base) window.location.replace(base);
-  </script>
-  <style>
-    body{display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;font-family:sans-serif;background:#f3f0ff;flex-direction:column;gap:16px;text-align:center}
-    h2{color:#7C3AED;margin:0}
-    a.btn{display:inline-block;padding:14px 32px;background:#7C3AED;color:#fff;border-radius:12px;text-decoration:none;font-size:18px;font-weight:700}
-  </style>
+  <title>LernStar – Deine Lernplattform</title>
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#7C3AED" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="LernStar" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css?v=40" />
+  <link rel="stylesheet" href="../quiz-game.css?v=1" />
+  <!-- Markdown + Mathe-Rendering für Chat -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="window._katexReady=true"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
 </head>
 <body>
-  <h2>🌟 LernStar wird geöffnet…</h2>
-  <p>Falls die Seite nicht automatisch öffnet:</p>
-  <a class="btn" href="../index.html">▶ LernStar starten</a>
+
+<!-- ===== ONBOARDING ===== -->
+<div id="onboardingOverlay" class="onboarding-overlay hidden">
+  <div class="onboarding-card">
+    <div class="ob-step" id="obStep1">
+      <div class="ob-icon">🌟</div>
+      <h2 class="ob-title">Willkommen bei <span class="accent">LernStar KI</span>!</h2>
+      <p class="ob-desc">Ich bin Herr Lala, dein persönlicher KI-Tutor. Wie heißt du?</p>
+      <input type="text" id="obNameInput" class="ob-input" placeholder="Dein Name…" maxlength="30"
+        autocomplete="given-name" onkeydown="if(event.key==='Enter')obSetName()">
+      <button class="btn-primary ob-btn" onclick="obSetName()">Weiter →</button>
+      <button class="ob-skip" onclick="obSetGoal('normal')">Überspringen</button>
+    </div>
+    <div class="ob-step hidden" id="obStep2">
+      <div class="ob-icon">🎯</div>
+      <h2 class="ob-title">Hallo <span id="obGreetName"></span>!</h2>
+      <p class="ob-desc">Was ist dein Lernziel?</p>
+      <div class="ob-goals">
+        <button class="ob-goal-btn" onclick="obSetGoal('normal')">
+          <span class="ob-goal-icon">📚</span>
+          <span class="ob-goal-title">Allgemeines Lernen</span>
+          <span class="ob-goal-desc">Themen verstehen &amp; üben</span>
+        </button>
+        <button class="ob-goal-btn" onclick="obSetGoal('zap')">
+          <span class="ob-goal-icon">🎯</span>
+          <span class="ob-goal-title">ZAP-Vorbereitung</span>
+          <span class="ob-goal-desc">Zentrale Abschlussprüfung</span>
+        </button>
+        <button class="ob-goal-btn" onclick="obSetGoal('abitur')">
+          <span class="ob-goal-icon">🏆</span>
+          <span class="ob-goal-title">Abitur-Vorbereitung</span>
+          <span class="ob-goal-desc">Schriftliches Abitur</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TOP NAV ===== -->
+<header class="topnav">
+  <div class="topnav-inner">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="#" class="logo" id="homeLogo" onclick="navigate('home')">
+      <span class="logo-star">⭐</span>
+      <span class="logo-text">LernStar</span>
+    </a>
+    <button class="home-btn" onclick="navigate('home')">🏠 Startseite</button>
+    <div class="topnav-ki-row">
+      <span class="ki-user-badge" id="userNameBadge" style="display:none"></span>
+      <span class="ki-goal-badge" id="goalBadge" style="display:none"></span>
+    </div>
+  </div>
+</header>
+
+<!-- ===== SIDEBAR ===== -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-title">Navigation</span>
+    <button class="sidebar-close" id="sidebarClose">✕</button>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="sidebar-section">
+      <p class="sidebar-label">Klassenstufen</p>
+      <ul id="gradeNavList"></ul>
+    </div>
+    <div class="sidebar-section" id="subjectNavSection" style="display:none">
+      <p class="sidebar-label">Fächer</p>
+      <ul id="subjectNavList"></ul>
+    </div>
+    <div class="sidebar-section">
+      <p class="sidebar-label">KI-Features</p>
+      <ul>
+        <li><button class="sidebar-ki-btn" onclick="navigate('examprep');closeSidebar()">🎯 Prüfungsmodus</button></li>
+        <li><button class="sidebar-ki-btn" onclick="navigate('analyse');closeSidebar()">📊 Lernanalyse</button></li>
+        <li><button class="sidebar-ki-btn" onclick="resetOnboarding()">⚙️ Profil &amp; Ziel ändern</button></li>
+        <li><button class="sidebar-ki-btn" onclick="openAISettings();closeSidebar()">🔌 KI-Anbieter</button></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="progress-display">
+      <span class="progress-label">Dein Fortschritt</span>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="globalProgress"></div></div>
+      <span class="progress-pct" id="globalProgressText">0%</span>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main-content" id="mainContent">
+
+  <!-- HOME VIEW -->
+  <section class="view" id="viewHome">
+    <div class="hero">
+      <div class="hero-badge">✨ Kostenlos &amp; Werbefrei</div>
+      <h1 class="hero-title">Willkommen bei <span class="accent">LernStar</span></h1>
+      <p class="hero-sub" id="heroSubText">Deine moderne Lernplattform für alle Schulformen – von Klasse 1 bis 13. Lerne smart, übe effektiv und werde fit für jede Prüfung!</p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">13</span><span class="stat-lbl">Klassenstufen</span></div>
+        <div class="stat"><span class="stat-num">5</span><span class="stat-lbl">Schulformen</span></div>
+        <div class="stat"><span class="stat-num">500+</span><span class="stat-lbl">Aufgaben</span></div>
+      </div>
+    </div>
+
+    <!-- SCHRITT 1: Schulform-Auswahl -->
+    <div class="sf-cards-section" id="sfCardsSection">
+      <div class="section-title"><h2>🏫 Wähle deine Schulform</h2></div>
+      <div class="sf-cards-grid">
+        <button class="sf-card sf-card-gs" onclick="showGradesForSchoolForm('grundschule')">
+          <div class="sf-card-icon">🎒</div>
+          <div class="sf-card-name">Grundschule</div>
+          <div class="sf-card-grades">Klasse 1–4</div>
+          <div class="sf-card-desc">Zahlen, Buchstaben &amp; erste Schritte</div>
+        </button>
+        <button class="sf-card sf-card-hs" onclick="showGradesForSchoolForm('hauptschule')">
+          <div class="sf-card-icon">📚</div>
+          <div class="sf-card-name">Hauptschule</div>
+          <div class="sf-card-grades">Klasse 5–9</div>
+          <div class="sf-card-desc">Praxisorientiert &amp; berufsvorbereitend</div>
+        </button>
+        <button class="sf-card sf-card-rs" onclick="showGradesForSchoolForm('realschule')">
+          <div class="sf-card-icon">📐</div>
+          <div class="sf-card-name">Realschule</div>
+          <div class="sf-card-grades">Klasse 5–10</div>
+          <div class="sf-card-desc">Solide Grundlagen für Beruf &amp; Studium</div>
+        </button>
+        <button class="sf-card sf-card-gym" onclick="showGradesForSchoolForm('gymnasium')">
+          <div class="sf-card-icon">🎓</div>
+          <div class="sf-card-name">Gymnasium</div>
+          <div class="sf-card-grades">Klasse 5–13</div>
+          <div class="sf-card-desc">Von der Mittelstufe bis zum Abitur</div>
+        </button>
+        <button class="sf-card sf-card-gts" onclick="showGradesForSchoolForm('gesamtschule')">
+          <div class="sf-card-icon">🏫</div>
+          <div class="sf-card-name">Gesamtschule</div>
+          <div class="sf-card-grades">Klasse 5–13</div>
+          <div class="sf-card-desc">Alle Abschlüsse unter einem Dach</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- SCHRITT 2: Klassen-Auswahl -->
+    <div class="sf-grades-section" id="sfGradesSection" style="display:none">
+      <button class="sf-back-btn" onclick="backToSchoolFormSelection()">← Schulform ändern</button>
+      <div class="sf-grades-title" id="sfGradesTitle">Wähle deine Klasse</div>
+      <div class="grade-grid" id="gradeGrid"></div>
+      <div id="sfExamBanner"></div>
+    </div>
+
+    <button class="qg-home-banner" onclick="openQuizGame()">
+      <div class="qg-home-banner-icon">🎮</div>
+      <div class="qg-home-banner-text">
+        <div class="qg-home-banner-title">Quiz-Spiel starten!</div>
+        <div class="qg-home-banner-sub">Mathe &amp; Physik · Klasse 5–13 · Timer · Lives · Streak-Bonus · Highscore</div>
+      </div>
+      <div class="qg-home-banner-arrow">→</div>
+    </button>
+
+    <div class="features-section">
+      <h2 class="section-heading">Warum LernStar?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎥</div>
+          <h3>Erklärvideos</h3>
+          <p>Kurze, verständliche Videos mit digitalem Lernassistenten erklären jeden Stoff</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧠</div>
+          <h3>Interaktive Aufgaben</h3>
+          <p>Übe direkt im Browser – mit sofortigem Feedback und ausführlichen Lösungen</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Fortschritt verfolgen</h3>
+          <p>Sieh immer wo du stehst und was als Nächstes dran ist</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏆</div>
+          <h3>Abzeichen sammeln</h3>
+          <p>Verdiene Sterne und Badges für jede gemeisterte Aufgabe</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRADE VIEW -->
+  <section class="view hidden" id="viewGrade">
+    <div class="grade-hero" id="gradeHeroArea"></div>
+    <div class="section-title">
+      <h2>Wähle ein Fach</h2>
+      <p>Alle Themen und Aufgaben auf einen Blick</p>
+    </div>
+    <div class="subject-grid" id="subjectGrid"></div>
+  </section>
+
+  <!-- SUBJECT VIEW -->
+  <section class="view hidden" id="viewSubject">
+    <div class="subject-hero" id="subjectHeroArea"></div>
+
+    <!-- Video Section -->
+    <div class="video-section" style="display:none">
+      <h2 class="section-heading">🎬 Erklärvideo mit Herr Lala</h2>
+      <div class="video-studio" id="videoPlayer">
+        <div class="studio-orb studio-orb-1"></div>
+        <div class="studio-orb studio-orb-2"></div>
+        <div class="studio-main">
+          <div class="mascot-wrap">
+            <div class="vrm-wrap" id="avatarAnim">
+              <img src="avatar.png" id="avatarImg" class="avatar-img" alt="Herr Lala" onerror="this.src='avatar.svg.png'">
+              <div class="talk-wave" id="talkWave"><span></span><span></span><span></span></div>
+            </div>
+            <div class="mascot-name-badge">Herr Lala</div>
+          </div>
+          <div class="studio-right">
+            <div class="studio-bubble" id="avatarSpeech">
+              Klick auf <strong>▶ Themen anhören</strong>, um zu starten!
+            </div>
+            <div class="video-illustration hidden" id="videoIllustration"></div>
+          </div>
+        </div>
+        <div class="studio-controls">
+          <div class="studio-controls-top">
+            <span class="voice-badge" id="voiceBadge">🎤 Microsoft Hedda</span>
+            <div class="studio-progress-wrap">
+              <div class="video-progress-wrap">
+                <div class="video-progress-fill" id="videoProgressFill"></div>
+              </div>
+              <span class="video-time" id="videoTime">bereit</span>
+            </div>
+          </div>
+          <div class="playback-row">
+            <button class="btn-play" id="playIntroBtn">▶ Themen anhören</button>
+            <button class="btn-ctrl hidden" id="pauseIntroBtn" onclick="togglePause()">⏸ Pause</button>
+            <button class="btn-ctrl btn-ctrl-stop hidden" id="stopIntroBtn" onclick="stopIntro()">⏹ Stop</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Topics Section -->
+    <div class="topics-section">
+      <div class="topics-list" id="topicsList"></div>
+    </div>
+
+    <!-- Experiments Section -->
+    <div class="experiments-section" id="experimentsSection" style="display:none">
+      <h2 class="section-heading">🧪 Experimente</h2>
+      <div class="experiments-list" id="experimentsList"></div>
+    </div>
+
+    <!-- Exercises Section -->
+    <div class="exercises-section" id="exercisesSection">
+      <h2 class="section-heading">✏️ Aufgaben &amp; Übungen</h2>
+      <div class="exercise-filter">
+        <button class="filter-btn active" data-diff="all">Alle</button>
+        <button class="filter-btn" data-diff="1">⭐ Einfach</button>
+        <button class="filter-btn" data-diff="2">⭐⭐ Mittel</button>
+        <button class="filter-btn" data-diff="3">⭐⭐⭐ Schwer</button>
+      </div>
+      <div class="ai-exercise-bar">
+        <button class="btn-ai-exercise" id="aiExerciseBtn" onclick="generateAIExercise()">🔄 Neue KI-Aufgabe</button>
+        <span class="ai-ex-bar-hint">Wird automatisch beim Thema erstellt</span>
+      </div>
+      <div class="ai-exercise-box hidden" id="aiExerciseBox"></div>
+      <div class="exercises-list" id="exercisesList"></div>
+    </div>
+  </section>
+
+  <!-- QUIZ VIEW -->
+  <section class="view hidden" id="viewQuiz">
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <div class="quiz-meta" id="quizMeta"></div>
+        <div class="quiz-progress-wrap">
+          <div class="quiz-progress-fill" id="quizProgressFill"></div>
+        </div>
+        <span class="quiz-counter" id="quizCounter"></span>
+      </div>
+      <div class="quiz-card" id="quizCard">
+        <div class="quiz-question" id="quizQuestion"></div>
+        <div class="quiz-hint-wrap">
+          <button class="hint-toggle-btn" id="hintToggleBtn" onclick="toggleHint()">💡 Tipp anzeigen</button>
+          <div class="quiz-hint hidden" id="quizHint"></div>
+        </div>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div class="quiz-feedback hidden" id="quizFeedback"></div>
+        <div class="quiz-actions">
+          <button class="btn-secondary" onclick="navigate('subject')" id="backToSubjectBtn">← Zurück</button>
+          <button class="btn-primary hidden" id="nextQuestionBtn" onclick="nextQuestion()">Weiter →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULT VIEW -->
+  <section class="view hidden" id="viewResult">
+    <div class="result-container">
+      <div class="result-emoji" id="resultEmoji"></div>
+      <h2 class="result-title" id="resultTitle"></h2>
+      <p class="result-sub" id="resultSub"></p>
+      <div class="result-score">
+        <div class="score-ring">
+          <svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#e5e7eb" stroke-width="10"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="url(#scoreGrad)" stroke-width="10"
+              stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314"
+              id="scoreCircle" transform="rotate(-90 60 60)"/>
+            <defs>
+              <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#7C3AED"/>
+                <stop offset="100%" style="stop-color:#06B6D4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="score-text" id="scoreText"></div>
+        </div>
+      </div>
+      <div class="result-badges" id="resultBadges"></div>
+      <div class="result-review" id="resultReview"></div>
+      <div class="result-actions">
+        <button class="btn-primary" id="retryBtn" onclick="retryQuiz()">🔄 Nochmal versuchen</button>
+        <button class="btn-secondary" onclick="navigate('subject')">← Zurück zu den Aufgaben</button>
+        <button class="btn-secondary" onclick="navigate('home')">🏠 Startseite</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXAM PREP VIEW -->
+  <section class="view hidden" id="viewExamPrep">
+    <div class="exam-prep-container">
+      <div class="exam-prep-hero">
+        <div class="hero-breadcrumb" onclick="navigate('home')" style="cursor:pointer">← Startseite</div>
+        <h1 id="examPrepTitle">🎯 Prüfungsvorbereitung</h1>
+        <p id="examPrepSub">KI-generierte Aufgaben · Typische Prüfungsformate</p>
+      </div>
+      <div class="exam-mode-tabs">
+        <button class="exam-tab active" id="tabZAP" onclick="setExamMode('zap')">🎯 ZAP</button>
+        <button class="exam-tab" id="tabAbi" onclick="setExamMode('abitur')">🏆 Abitur</button>
+      </div>
+      <div id="baiStatusBadge" class="bai-badge" style="display:none"></div>
+      <div class="exam-setup" id="examSetup">
+        <div class="exam-setup-row">
+          <label class="exam-setup-label">Schwierigkeitsgrad</label>
+          <div class="exam-diff-btns">
+            <button class="exam-diff-btn" data-diff="1" onclick="setExamDiff(1)">⭐ Einfach</button>
+            <button class="exam-diff-btn active" data-diff="2" onclick="setExamDiff(2)">⭐⭐ Mittel</button>
+            <button class="exam-diff-btn" data-diff="3" onclick="setExamDiff(3)">⭐⭐⭐ Schwer</button>
+          </div>
+        </div>
+        <div class="exam-subj-grid" id="examSubjectBtns"></div>
+      </div>
+      <div class="exam-session hidden" id="examSession">
+        <div class="exam-progress-wrap">
+          <div class="exam-progress-bar"><div class="exam-progress-fill" id="examProgressFill" style="width:0%"></div></div>
+          <span class="exam-q-counter" id="examQCounter">Frage 1 / 5</span>
+        </div>
+        <div class="exam-question-card" id="examQuestionCard"></div>
+      </div>
+      <div class="exam-results hidden" id="examResults"></div>
+    </div>
+  </section>
+
+  <!-- MODUL VIEW -->
+  <section class="view hidden" id="viewModul">
+    <div id="modulContainer"></div>
+  </section>
+
+  <!-- ANALYSIS VIEW -->
+  <section class="view hidden" id="viewAnalyse">
+    <div class="analyse-container">
+      <div class="hero-breadcrumb" onclick="navigate('home')" style="cursor:pointer">← Startseite</div>
+      <h1 class="analyse-title">📊 Meine Lernanalyse</h1>
+      <div id="analyseUserInfo" class="analyse-user-info"></div>
+      <div class="analyse-grid" id="analyseGrid"></div>
+      <div class="analyse-ai-card" id="analyseAiCard">
+        <div class="analyse-ai-header">
+          <span class="analyse-ai-avatar">🎓</span>
+          <strong>Herr Lala sagt:</strong>
+        </div>
+        <div id="analyseAiText" class="analyse-ai-text">Lernanalyse wird geladen…</div>
+      </div>
+      <div id="analyseWeaknesses"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== CHAT WIDGET ===== -->
+<button class="chat-fab" id="chatFab" title="Frage Herr Lala">
+  <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 10H6v-2h12v2zm0-3H6V7h12v2z"/>
+  </svg>
+  <span class="chat-fab-badge" id="chatFabBadge">?</span>
+</button>
+
+<div class="chat-panel" id="chatPanel" aria-hidden="true">
+  <div class="chat-panel-header">
+    <div class="chat-panel-title">
+      <div class="chat-panel-avatar-icon">🎓</div>
+      <div>
+        <strong>Herr Lala</strong>
+        <span class="chat-panel-sub">KI-Lernassistent · antwortet sofort</span>
+      </div>
+    </div>
+    <button onclick="if(!_chatOpen)_chatToggle();setTimeout(_promptNewKey,200)" title="Groq Key eingeben" style="background:none;border:none;cursor:pointer;font-size:1.1rem;padding:4px 8px;border-radius:8px;opacity:0.7">🔑</button>
+    <button class="chat-panel-close" id="chatClose" title="Schließen">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-bubble chat-bubble-bot">
+      Hallo! 👋 Ich bin Herr Lala, dein persönlicher Lernassistent.<br>
+      Schreib mir deine Frage – ich erkläre dir alles auf einfache Weise! 😊
+    </div>
+  </div>
+  <div class="chat-img-preview" id="chatImgPreview" style="display:none">
+    <img id="chatImgThumb" src="" alt="Aufgabe">
+    <button type="button" class="chat-img-remove" id="chatImgRemove" title="Bild entfernen">✕</button>
+  </div>
+  <form class="chat-input-row" id="chatForm" autocomplete="off">
+    <label class="chat-img-btn" title="Aufgabenbild hochladen" for="chatImgInput">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+      </svg>
+    </label>
+    <input type="file" id="chatImgInput" accept="image/*" style="display:none">
+    <button type="button" class="chat-mic-btn" id="chatMic" title="Sprechen">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1 1.93c-3.94-.49-7-3.85-7-7.93H2c0 4.42 3.06 8.1 7 8.93V21h2v-3.07c.17-.02.33-.04.5-.06z"/>
+      </svg>
+    </button>
+    <input type="text" id="chatInput" class="chat-input"
+      placeholder="Frage schreiben, sprechen oder Bild hochladen…"
+      maxlength="400" autocomplete="off" enterkeyhint="send">
+    <button type="submit" class="chat-send-btn" id="chatSend" title="Fragen">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+      </svg>
+    </button>
+  </form>
+</div>
+<div class="chat-overlay" id="chatOverlay"></div>
+
+<!-- ===== KI-ANBIETER SETTINGS MODAL ===== -->
+<div class="ai-settings-overlay hidden" id="aiSettingsModal">
+  <div class="ai-settings-card">
+    <div class="ai-settings-header">
+      <h2>🔌 KI-Anbieter</h2>
+      <button class="ai-settings-close" onclick="closeAISettings()">✕</button>
+    </div>
+    <p class="ai-settings-desc">LernStar probiert alle aktiven Anbieter der Reihe nach aus. Fällt einer aus, wechselt er automatisch zum nächsten.</p>
+    <h3 class="ai-settings-section-title">Aktive Anbieter</h3>
+    <div id="aiProviderList" class="ai-provider-list"></div>
+    <h3 class="ai-settings-section-title">➕ Ollama hinzufügen (lokal)</h3>
+    <div class="ai-settings-form">
+      <input type="text" id="ollamaUrl" class="ai-settings-input" placeholder="URL (Standard: http://localhost:11434/v1/chat/completions)">
+      <input type="text" id="ollamaModel" class="ai-settings-input" placeholder="Modell (z.B. llama3, mistral)">
+      <button class="btn-ai-add" onclick="saveOllamaProvider()">Ollama hinzufügen</button>
+    </div>
+    <h3 class="ai-settings-section-title">➕ Eigene OpenAI-kompatible API</h3>
+    <div class="ai-settings-form">
+      <input type="text"     id="customName"  class="ai-settings-input" placeholder="Name (z.B. Mein Server)">
+      <input type="url"      id="customUrl"   class="ai-settings-input" placeholder="URL (https://…/v1/chat/completions)">
+      <input type="password" id="customKey"   class="ai-settings-input" placeholder="API-Key">
+      <input type="text"     id="customModel" class="ai-settings-input" placeholder="Modell (z.B. gpt-4o-mini)">
+      <div class="ai-settings-btn-row">
+        <button class="btn-ai-test" id="testProviderBtn" onclick="testCustomProvider()">Verbindung testen</button>
+        <button class="btn-ai-add"  onclick="saveCustomProvider()">Hinzufügen</button>
+      </div>
+      <p class="ai-test-result" id="testProviderResult"></p>
+    </div>
+    <div class="ai-settings-footer">
+      <button class="btn-primary" onclick="closeAISettings()">Fertig</button>
+    </div>
+  </div>
+</div>
+
+<!-- ERKLÄRVIDEO PLAYER -->
+<div id="erklaerVideoOverlay" class="ev-overlay hidden" onclick="_evBgClick(event)">
+  <div class="ev-player">
+    <div class="ev-topbar">
+      <div class="ev-progress-track"><div class="ev-progress-fill" id="evProgressFill"></div></div>
+      <button class="ev-close-btn" onclick="closeErklaerVideo()">✕</button>
+    </div>
+    <div class="ev-stage" id="evStage"></div>
+    <div class="ev-controls">
+      <button class="ev-ctrl-btn" id="evPlayPauseBtn" onclick="_evTogglePause()">⏸</button>
+      <div class="ev-scene-dots" id="evSceneDots"></div>
+      <button class="ev-ctrl-btn" onclick="_evSkipScene()">⏭</button>
+    </div>
+  </div>
+</div>
+
+<!-- EXPLAINER MODAL -->
+<div id="explainerModal" role="dialog" aria-modal="true" aria-labelledby="explainerTitle">
+  <div class="xp-card" id="explainerCard">
+    <button class="xp-close" onclick="closeExplainer()" aria-label="Schließen">✕</button>
+    <div class="xp-header">
+      <div class="xp-hbadge" id="explainerBadge">Erklärung</div>
+      <div class="xp-hemoji" id="explainerEmoji">📚</div>
+      <div class="xp-htitle" id="explainerTitle"></div>
+    </div>
+    <div class="xp-stage">
+      <div class="xp-hook" id="xpHook"></div>
+      <div class="xp-s1" id="explainerS1"></div>
+      <div class="xp-s2" id="explainerS2"></div>
+    </div>
+    <div class="xp-bottom">
+      <div class="xpt-wrap">
+        <svg class="xpt-svg" id="xptSvg" viewBox="0 0 100 165" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="xpShirt" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#7C3AED"/>
+              <stop offset="100%" stop-color="#4338CA"/>
+            </linearGradient>
+            <linearGradient id="xpSkin" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#FDDEC6"/>
+              <stop offset="100%" stop-color="#F4C5A3"/>
+            </linearGradient>
+          </defs>
+          <rect x="18" y="98" width="64" height="67" rx="14" fill="url(#xpShirt)"/>
+          <polygon points="37,98 50,115 37,122" fill="#F1F5F9" opacity="0.9"/>
+          <polygon points="63,98 50,115 63,122" fill="#E2E8F0" opacity="0.9"/>
+          <polygon points="47,112 53,112 55,150 50,155 45,150" fill="#E11D48"/>
+          <rect x="4" y="100" width="16" height="48" rx="8" fill="url(#xpShirt)" transform="rotate(-10,12,124)"/>
+          <rect x="80" y="100" width="16" height="48" rx="8" fill="url(#xpShirt)" transform="rotate(10,88,124)"/>
+          <ellipse cx="10" cy="149" rx="10" ry="8" fill="url(#xpSkin)"/>
+          <ellipse cx="90" cy="149" rx="10" ry="8" fill="url(#xpSkin)"/>
+          <rect x="40" y="84" width="20" height="18" rx="7" fill="url(#xpSkin)"/>
+          <ellipse cx="50" cy="59" rx="31" ry="28" fill="url(#xpSkin)"/>
+          <ellipse cx="50" cy="36" rx="30" ry="16" fill="#3D2B1F"/>
+          <rect x="19" y="38" width="11" height="23" rx="5.5" fill="#3D2B1F"/>
+          <rect x="70" y="38" width="11" height="23" rx="5.5" fill="#3D2B1F"/>
+          <ellipse cx="19" cy="61" rx="5.5" ry="7" fill="#F2B393"/>
+          <ellipse cx="81" cy="61" rx="5.5" ry="7" fill="#F2B393"/>
+          <ellipse cx="19" cy="61" rx="3" ry="4.5" fill="#E9A07D" opacity="0.5"/>
+          <ellipse cx="81" cy="61" rx="3" ry="4.5" fill="#E9A07D" opacity="0.5"/>
+          <path d="M27 48 Q34 44 42 48" stroke="#5C3D2E" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+          <path d="M58 48 Q66 44 73 48" stroke="#5C3D2E" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+          <ellipse cx="34" cy="58" rx="8" ry="8" fill="white"/>
+          <ellipse cx="66" cy="58" rx="8" ry="8" fill="white"/>
+          <ellipse cx="35" cy="59" rx="5" ry="5.5" fill="#1E1E2E"/>
+          <ellipse cx="35" cy="59" rx="3.5" ry="3.8" fill="#2E4AB5"/>
+          <ellipse cx="67" cy="59" rx="5" ry="5.5" fill="#1E1E2E"/>
+          <ellipse cx="67" cy="59" rx="3.5" ry="3.8" fill="#2E4AB5"/>
+          <circle cx="37.5" cy="56" r="2" fill="white" opacity="0.9"/>
+          <circle cx="69.5" cy="56" r="2" fill="white" opacity="0.9"/>
+          <ellipse class="xpt-lid xpt-lid-l" cx="34" cy="58" rx="8" ry="8" fill="url(#xpSkin)"/>
+          <ellipse class="xpt-lid xpt-lid-r" cx="66" cy="58" rx="8" ry="8" fill="url(#xpSkin)"/>
+          <ellipse cx="50" cy="68" rx="3.5" ry="3" fill="#E9A07D" opacity="0.55"/>
+          <path id="xptMouthSmile" d="M38 77 Q50 85 62 77" stroke="#C06B5A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <ellipse id="xptMouthTalk" cx="50" cy="79" rx="11" ry="3" fill="#C06B5A" opacity="0"/>
+          <rect id="xptTeeth" x="41" y="75" width="18" height="5" rx="2.5" fill="white" opacity="0"/>
+        </svg>
+      </div>
+      <div class="xp-controls">
+        <div class="xp-timeline">
+          <div class="xp-prog-track">
+            <div class="xp-prog-fill" id="explainerProgFill"></div>
+          </div>
+          <span class="xp-timer" id="xpTimer">0:00</span>
+        </div>
+        <div class="xp-btns">
+          <button class="xp-ctrl" id="explainerPauseBtn" onclick="_xTogglePause()" title="Pause">⏸</button>
+          <button class="xp-ctrl" onclick="_xReplay()" title="Wiederholen">↺</button>
+          <button class="xp-rec-btn" id="xpRecBtn" onclick="_xpRecord()" title="Als Video aufnehmen">🎬</button>
+          <button class="xp-ctrl" onclick="closeExplainer()" title="Schließen">■</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../gs-content.js?v=1"></script>
+<script src="../content.js?v=38"></script>
+<script src="../js/ai_engine.js?v=1"></script>
+<script src="../physics-sim.js?v=2"></script>
+<script src="../app.js?v=85"></script>
+<script src="../quiz-game.js?v=1"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(regs => {
+      regs.forEach(r => r.unregister());
+    });
+  }
+</script>
+<script>
+  window._vrmTalking = false;
+  window._vrmTalkT   = 0;
+</script>
 </body>
 </html>
