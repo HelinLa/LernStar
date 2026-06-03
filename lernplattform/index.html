@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LernStar – Deine Lernplattform</title>
+  <script>
+    // Weiterleitung zur Hauptversion (mit Modulgenerator)
+    var base = window.location.href.replace(/\/lernplattform\/?.*$/, '/');
+    if (window.location.href !== base) window.location.replace(base);
+  </script>
   <!-- PWA -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#7C3AED" />
