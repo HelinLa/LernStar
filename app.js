@@ -10876,7 +10876,7 @@ const EV_SCENES = {};
 
     // Szene 1: Intro / Lernziel (8s)
     { dur: 8000, bg: dark,
-      speech: 'Hallo! Ich bin Mr. Lala. Heute zeige ich dir einen tollen Trick! Du kannst Mathe-Aufgaben ganz schnell im Kopf lösen. Ohne Finger – einfach so!',
+      speech: 'Hallo! Ich bin Mr. Lala. Heute lernst du einen cleveren Rechenweg! Wir benutzen die 10 als Helfer. Schritt für Schritt zeige ich dir, wie das geht.',
       build(stage) {
         stage.style.justifyContent = 'center';
         stage.innerHTML = `
@@ -10886,32 +10886,32 @@ const EV_SCENES = {};
               <div class="ev-char-name-lbl" style="margin-top:4px">Mr. Lala</div>
             </div>
             <div style="font-size:10px;color:rgba(255,255,255,.55);font-weight:800;letter-spacing:.12em;text-transform:uppercase">Heute lernst du</div>
-            <div class="ev-hook-title" style="font-size:clamp(20px,5.5vw,30px);line-height:1.3">Kopfrechnen –<br>der Zehn-Trick</div>
-            <div style="font-size:48px;animation:evFadeUp .4s .8s both">⚡ 🧠</div>
+            <div class="ev-hook-title" style="font-size:clamp(20px,5.5vw,30px);line-height:1.3">Der Zehn-Trick –<br>dein Rechenhelfer</div>
+            <div style="font-size:48px;animation:evFadeUp .4s .8s both">🔟 🌉</div>
           </div>`;
       }
     },
 
-    // Szene 2: Alltagsbeispiel – 8 + 5 Gummibärchen (12s)
+    // Szene 2: Alltagsbeispiel – 7 + 5 Gummibärchen (12s)
     { dur: 12000, bg: warm,
-      speech: 'Stell dir vor, du hast 8 bunte Gummibärchen. Deine Oma gibt dir noch 5 dazu. Wie viele sind es jetzt? Ich zeige dir einen cleveren Weg!',
+      speech: 'Stell dir vor, du hast 7 bunte Gummibärchen. Dein Freund gibt dir noch 5 dazu. Wie viele sind es jetzt? Ich zeige dir einen cleveren Weg!',
       build(stage) {
         stage.style.justifyContent = 'center';
-        const g8 = Array(8).fill(0).map((_,i) =>
+        const g7 = Array(7).fill(0).map((_,i) =>
           `<span style="animation:evBounceIn .3s ${(.10+i*.11).toFixed(2)}s both;font-size:29px">🍬</span>`).join('');
         const g5 = Array(5).fill(0).map((_,i) =>
-          `<span style="animation:evBounceIn .3s ${(1.10+i*.12).toFixed(2)}s both;font-size:29px">🍬</span>`).join('');
+          `<span style="animation:evBounceIn .3s ${(.90+i*.12).toFixed(2)}s both;font-size:29px">🍬</span>`).join('');
         stage.innerHTML = `
           <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:0 16px">
             <div style="font-size:10px;color:rgba(255,215,100,.7);text-transform:uppercase;letter-spacing:.12em;font-weight:800">Kennst du das?</div>
             <div style="display:flex;align-items:center;gap:5px;flex-wrap:wrap;justify-content:center">
-              ${g8}
-              <span style="font-size:22px;font-weight:900;color:#a78bfa;margin:0 4px;animation:evFadeUp .3s 1.00s both">+</span>
+              ${g7}
+              <span style="font-size:22px;font-weight:900;color:#a78bfa;margin:0 4px;animation:evFadeUp .3s .90s both">+</span>
               ${g5}
             </div>
             <div style="font-size:14px;font-weight:800;color:white;line-height:2.0;max-width:260px;animation:evFadeUp .4s .4s both">
-              Du hast <span style="color:#a78bfa">8</span> Gummibärchen.<br>
-              Oma gibt dir <span style="color:#a78bfa">5</span> dazu.<br>
+              Du hast <span style="color:#a78bfa">7</span> Gummibärchen.<br>
+              Dein Freund gibt dir <span style="color:#a78bfa">5</span> dazu.<br>
               Wie viele sind es jetzt?
             </div>
           </div>`;
@@ -10919,26 +10919,27 @@ const EV_SCENES = {};
     },
 
     // Szene 3: Schritt 1 – Bis zur 10 (12s)
-    // Eine Idee: Von 8 fehlen noch 2 bis zur Brücke 10
+    // Eine Idee: Von 7 fehlen noch 3 bis zur Brücke 10
     { dur: 12000, bg: dark,
-      speech: 'Die 10 ist unsere Brücke! Von 8 bis zur 10 sind es 2 Schritte. Wir nehmen zuerst 2 Gummibärchen. Acht plus zwei gleich zehn!',
+      speech: 'Die 10 ist unsere Brücke! Von 7 bis zur 10 sind es 3 Schritte. Wir nehmen zuerst 3 Gummibärchen. Sieben plus drei gleich zehn!',
       build(stage) {
         stage.style.justifyContent = 'center';
-        const g8 = Array(8).fill(0).map((_,i) =>
+        const g7 = Array(7).fill(0).map((_,i) =>
           `<span style="animation:evBounceIn .3s ${(.05+i*.08).toFixed(2)}s both;font-size:27px">🍬</span>`).join('');
         stage.innerHTML = `
           <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:0 14px;width:100%">
             <div style="font-size:10px;color:rgba(96,165,250,.8);text-transform:uppercase;letter-spacing:.12em;font-weight:800">Schritt 1 – Bis zur Brücke</div>
             <div style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;max-width:270px">
-              ${g8}
-              <span style="font-size:20px;font-weight:900;color:#60A5FA;margin:0 3px;align-self:center;animation:evFadeUp .3s .85s both">+</span>
-              <span style="animation:evBounceIn .3s 1.00s both;font-size:27px;filter:drop-shadow(0 0 7px #60A5FA)">🍬</span>
-              <span style="animation:evBounceIn .3s 1.12s both;font-size:27px;filter:drop-shadow(0 0 7px #60A5FA)">🍬</span>
+              ${g7}
+              <span style="font-size:20px;font-weight:900;color:#60A5FA;margin:0 3px;align-self:center;animation:evFadeUp .3s .75s both">+</span>
+              <span style="animation:evBounceIn .3s .90s both;font-size:27px;filter:drop-shadow(0 0 7px #60A5FA)">🍬</span>
+              <span style="animation:evBounceIn .3s 1.02s both;font-size:27px;filter:drop-shadow(0 0 7px #60A5FA)">🍬</span>
+              <span style="animation:evBounceIn .3s 1.14s both;font-size:27px;filter:drop-shadow(0 0 7px #60A5FA)">🍬</span>
             </div>
-            <div style="font-size:26px;font-weight:900;color:white;animation:evFadeUp .4s 1.50s both">
-              8 + 2 = <span style="color:#FFD700;font-size:34px">10</span> 🌉
+            <div style="font-size:26px;font-weight:900;color:white;animation:evFadeUp .4s 1.55s both">
+              7 + 3 = <span style="color:#FFD700;font-size:34px">10</span> 🌉
             </div>
-            <div style="font-size:12px;font-weight:700;color:rgba(255,215,0,.75);animation:evFadeUp .3s 1.80s both">
+            <div style="font-size:12px;font-weight:700;color:rgba(255,215,0,.75);animation:evFadeUp .3s 1.85s both">
               Die 10 ist die Brücke! ✨
             </div>
           </div>`;
@@ -10946,26 +10947,26 @@ const EV_SCENES = {};
     },
 
     // Szene 4: Schritt 2 – Rest dazuzählen (12s)
-    // Eine Idee: 5 = 2 + 3, von 10 noch 3 dazu → 13
+    // Eine Idee: 5 = 3 + 2, von 10 noch 2 dazu → 12
     { dur: 12000, bg: dark,
-      speech: 'Von den 5 habe ich schon 2 genommen. Was ist noch übrig? Noch 3! Also: zehn plus drei gleich dreizehn. Du hast 13 Gummibärchen!',
+      speech: 'Von den 5 habe ich schon 3 genommen. Was ist noch übrig? Noch 2! Also: zehn plus zwei gleich zwölf. Du hast 12 Gummibärchen!',
       build(stage) {
         stage.style.justifyContent = 'center';
-        const g3 = Array(3).fill(0).map((_,i) =>
-          `<span style="animation:evBounceIn .3s ${(.80+i*.13).toFixed(2)}s both;font-size:27px;filter:drop-shadow(0 0 7px #4ADE80)">🍬</span>`).join('');
+        const g2 = Array(2).fill(0).map((_,i) =>
+          `<span style="animation:evBounceIn .3s ${(.80+i*.15).toFixed(2)}s both;font-size:27px;filter:drop-shadow(0 0 7px #4ADE80)">🍬</span>`).join('');
         stage.innerHTML = `
           <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:0 14px;width:100%">
             <div style="font-size:10px;color:rgba(74,222,128,.8);text-transform:uppercase;letter-spacing:.12em;font-weight:800">Schritt 2 – Rest dazuzählen</div>
             <div style="display:flex;align-items:center;gap:10px;justify-content:center;animation:evFadeUp .4s .2s both">
               <div style="background:rgba(255,215,0,.18);border:2.5px solid #FFD700;border-radius:12px;padding:10px 18px;font-size:28px;font-weight:900;color:#FFD700">10</div>
               <span style="font-size:22px;font-weight:900;color:#4ADE80;animation:evFadeUp .3s .60s both">+</span>
-              <div style="display:flex;gap:5px">${g3}</div>
+              <div style="display:flex;gap:5px">${g2}</div>
             </div>
-            <div style="font-size:26px;font-weight:900;color:white;animation:evFadeUp .4s 1.30s both">
-              10 + 3 = <span style="color:#4ADE80;font-size:34px">13</span> ✓
+            <div style="font-size:26px;font-weight:900;color:white;animation:evFadeUp .4s 1.25s both">
+              10 + 2 = <span style="color:#4ADE80;font-size:34px">12</span> ✓
             </div>
-            <div style="font-size:12px;font-weight:700;color:rgba(74,222,128,.7);animation:evFadeUp .3s 1.60s both">
-              8 + 5 = 13 🎉
+            <div style="font-size:12px;font-weight:700;color:rgba(74,222,128,.7);animation:evFadeUp .3s 1.55s both">
+              7 + 5 = 12 🎉
             </div>
           </div>`;
       }
@@ -10983,12 +10984,12 @@ const EV_SCENES = {};
               <div style="background:rgba(96,165,250,.15);border-left:4px solid #60A5FA;border-radius:0 12px 12px 0;padding:12px 14px;text-align:left;animation:evFadeUp .4s .10s both">
                 <div style="font-size:13px;font-weight:900;color:#60A5FA">Schritt 1</div>
                 <div style="font-size:12px;color:white;margin-top:3px">Bis zur <span style="color:#FFD700;font-weight:900">10</span> ergänzen</div>
-                <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px">8 + <span style="color:#60A5FA">2</span> = <span style="color:#FFD700">10</span></div>
+                <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px">7 + <span style="color:#60A5FA">3</span> = <span style="color:#FFD700">10</span></div>
               </div>
               <div style="background:rgba(74,222,128,.15);border-left:4px solid #4ADE80;border-radius:0 12px 12px 0;padding:12px 14px;text-align:left;animation:evFadeUp .4s .40s both">
                 <div style="font-size:13px;font-weight:900;color:#4ADE80">Schritt 2</div>
                 <div style="font-size:12px;color:white;margin-top:3px">Den Rest dazuzählen</div>
-                <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px"><span style="color:#FFD700">10</span> + <span style="color:#4ADE80">3</span> = <span style="color:#4ADE80;font-weight:900">13</span></div>
+                <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px"><span style="color:#FFD700">10</span> + <span style="color:#4ADE80">2</span> = <span style="color:#4ADE80;font-weight:900">12</span></div>
               </div>
             </div>
             <div style="font-size:11px;color:rgba(255,215,0,.65);margin-top:2px;animation:evFadeUp .3s .70s both">🌉 Die Zehn ist die Brücke!</div>
@@ -10996,23 +10997,23 @@ const EV_SCENES = {};
       }
     },
 
-    // Szene 6: Mini-Frage – 9 + 4 = ? (20s)
-    // Lösung: 9 + 1 = 10, dann 10 + 3 = 13
+    // Szene 6: Mini-Frage – 9 + 3 = ? (20s)
+    // Lösung: 9 + 1 = 10, dann 10 + 2 = 12
     { dur: 20000, bg: dark,
-      speech: 'Jetzt bist du dran! 9 plus 4 – was kommt heraus? Denk an die Brücke!',
+      speech: 'Jetzt bist du dran! 9 plus 3 – was kommt heraus? Denk an die Brücke! Wie viele fehlen von 9 bis zur 10?',
       build(stage) {
         stage.style.justifyContent = 'center';
         stage.innerHTML = `
           <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 12px;width:100%;text-align:center">
             <div style="font-size:34px;animation:evBounceIn .4s both">🙋</div>
             <div style="font-size:10px;color:rgba(255,255,255,.5);font-weight:800;letter-spacing:.12em;text-transform:uppercase">Deine Aufgabe</div>
-            <div style="font-size:28px;font-weight:900;color:white;margin:4px 0">9 + 4 = ?</div>
+            <div style="font-size:28px;font-weight:900;color:white;margin:4px 0">9 + 3 = ?</div>
             <div style="font-size:11px;color:rgba(255,215,0,.75);font-weight:700;margin-bottom:4px">🌉 Tipp: Wie viele bis zur 10?</div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%">
-              <button onclick="window._evAnswerQ(0,1,this)" style="background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);border-radius:12px;padding:14px 8px;color:white;font-size:18px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif">12</button>
-              <button onclick="window._evAnswerQ(1,1,this)" style="background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);border-radius:12px;padding:14px 8px;color:white;font-size:18px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif">13</button>
-              <button onclick="window._evAnswerQ(2,1,this)" style="background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);border-radius:12px;padding:14px 8px;color:white;font-size:18px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif">14</button>
-              <button onclick="window._evAnswerQ(3,1,this)" style="background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);border-radius:12px;padding:14px 8px;color:white;font-size:18px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif">15</button>
+              <button onclick="window._evAnswerQ(0,1,this)" style="background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);border-radius:12px;padding:14px 8px;color:white;font-size:18px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif">11</button>
+              <button onclick="window._evAnswerQ(1,1,this)" style="background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);border-radius:12px;padding:14px 8px;color:white;font-size:18px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif">12</button>
+              <button onclick="window._evAnswerQ(2,1,this)" style="background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);border-radius:12px;padding:14px 8px;color:white;font-size:18px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif">13</button>
+              <button onclick="window._evAnswerQ(3,1,this)" style="background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.22);border-radius:12px;padding:14px 8px;color:white;font-size:18px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif">14</button>
             </div>
             <div id="evQFeedback" style="min-height:24px;font-size:14px;font-weight:800;margin-top:2px"></div>
           </div>`;
@@ -11032,7 +11033,7 @@ const EV_SCENES = {};
             </div>
             <div class="ev-outro-text" style="font-size:clamp(18px,5vw,24px)">Klasse gemacht! 🌟</div>
             <div style="font-size:13px;color:rgba(255,255,255,.8);font-weight:700;line-height:1.9">
-              Kopfrechnen ✓<br>
+              7 + 5 = 12 ✓<br>
               <span style="font-size:11px;opacity:.6">Der Zehn-Trick hilft dir immer!</span>
             </div>
           </div>`;
@@ -11094,7 +11095,7 @@ const EV_SCENES = {};
 
     // Szene 3: Zehnerfeld – 8 gefüllt, 2 leer hervorgehoben (12s)
     { dur: 12000, bg: dark,
-      speech: 'Beim Rechnen hilft uns die 10. Von 8 bis 10 fehlen noch 2.',
+      speech: 'Schau auf das Zehnerfeld. Es hat 10 Felder. 8 sind schon voll. Und jetzt schau genau: Von 8 bis zur 10 fehlen noch 2 Felder. Die goldenen Ränder zeigen uns: dort fehlen noch 2!',
       build(stage) {
         stage.style.justifyContent = 'center';
         const filled8 = Array(8).fill(0).map((_,i) =>
