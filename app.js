@@ -11040,6 +11040,262 @@ const EV_SCENES = {};
     },
   ];
 
+  // ── Plusaufgaben mit Zehnerübergang (Klasse 2) ───────────────
+  EV_SCENES['Plusaufgaben mit Zehnerübergang'] = [
+
+    // Szene 1: Einstieg (8s) – langsam, kein "ganz schnell"
+    { dur: 8000, bg: dark,
+      speech: 'Hallo! Heute rechnen wir eine Plusaufgabe über die 10. Wir machen das langsam und Schritt für Schritt.',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+            <div style="animation:evBounceIn .5s cubic-bezier(.36,.07,.19,.97)">
+              ${_evCharHTML('talking')}
+              <div class="ev-char-name-lbl" style="margin-top:4px">Mr. Lala</div>
+            </div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5);font-weight:800;letter-spacing:.12em;text-transform:uppercase">Schritt für Schritt</div>
+            <div style="font-size:clamp(24px,6.5vw,36px);font-weight:900;color:white;animation:evFadeUp .4s .6s both;line-height:1.3">
+              8 + 5 = <span style="color:#FFD700">?</span>
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,.45);animation:evFadeUp .3s .9s both">Klasse 2 – Zehnerübergang</div>
+          </div>`;
+      }
+    },
+
+    // Szene 2: Konkrete Situation – 8 + 5 Gummibärchen (10s)
+    { dur: 10000, bg: warm,
+      speech: 'Stell dir vor: Du hast 8 Gummibärchen. Dann bekommst du noch 5 Gummibärchen dazu. Wie viele sind es zusammen?',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        const g8 = Array(8).fill(0).map((_,i) =>
+          `<span style="font-size:24px;animation:evBounceIn .25s ${(.05+i*.09).toFixed(2)}s both">🍬</span>`).join('');
+        const g5 = Array(5).fill(0).map((_,i) =>
+          `<span style="font-size:24px;animation:evBounceIn .25s ${(.90+i*.10).toFixed(2)}s both">🍬</span>`).join('');
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:0 14px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                <div style="display:flex;flex-wrap:wrap;gap:3px;justify-content:center;max-width:110px">${g8}</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.55);font-weight:800">8 Gummibärchen</div>
+              </div>
+              <div style="font-size:24px;font-weight:900;color:#a78bfa;animation:evFadeUp .3s .85s both">+</div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                <div style="display:flex;flex-wrap:wrap;gap:3px;justify-content:center;max-width:80px">${g5}</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.55);font-weight:800;animation:evFadeUp .3s 1.40s both">5 dazu</div>
+              </div>
+            </div>
+            <div style="font-size:28px;font-weight:900;color:white;animation:evFadeUp .4s 1.50s both">
+              8 + 5 = <span style="color:#FFD700">?</span>
+            </div>
+          </div>`;
+      }
+    },
+
+    // Szene 3: Zehnerfeld – 8 gefüllt, 2 leer hervorgehoben (12s)
+    { dur: 12000, bg: dark,
+      speech: 'Beim Rechnen hilft uns die 10. Von 8 bis 10 fehlen noch 2.',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        const filled8 = Array(8).fill(0).map((_,i) =>
+          `<div style="width:28px;height:28px;background:#6D28D9;border-radius:5px;animation:evBounceIn .2s ${(.04+i*.06).toFixed(2)}s both"></div>`).join('');
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:0 14px">
+            <div style="font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.12em;font-weight:800">Das Zehnerfeld</div>
+            <div style="display:inline-grid;grid-template-columns:repeat(5,28px);gap:4px;border:2px solid rgba(109,40,217,.45);border-radius:9px;padding:6px;background:rgba(0,0,0,.2)">
+              ${filled8}
+              <div style="width:28px;height:28px;border:2.5px solid #FFD700;border-radius:5px;background:rgba(255,215,0,.10);animation:evBounceIn .35s 1.00s both"></div>
+              <div style="width:28px;height:28px;border:2.5px solid #FFD700;border-radius:5px;background:rgba(255,215,0,.10);animation:evBounceIn .35s 1.12s both"></div>
+            </div>
+            <div style="font-size:18px;font-weight:900;color:white;animation:evFadeUp .4s 1.45s both">
+              Von 8 bis 10 fehlen <span style="color:#FFD700;font-size:26px">2</span>.
+            </div>
+            <div style="font-size:11px;color:rgba(255,215,0,.65);font-weight:700;animation:evFadeUp .3s 1.75s both">
+              🟡 Die 2 leeren Felder warten!
+            </div>
+          </div>`;
+      }
+    },
+
+    // Szene 4: 5 zerlegen – 2 ins Feld, 3 bleiben sichtbar (12s)
+    { dur: 12000, bg: dark,
+      speech: 'Wir nehmen von den 5 Gummibärchen zuerst 2. Dann ist die 10 voll.',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        const filled8 = Array(8).fill(0).map(() =>
+          `<div style="width:28px;height:28px;background:#6D28D9;border-radius:5px"></div>`).join('');
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:0 14px;width:100%">
+            <div style="font-size:10px;color:rgba(96,165,250,.8);text-transform:uppercase;letter-spacing:.12em;font-weight:800">2 füllen die 10 auf</div>
+            <div style="display:flex;align-items:center;gap:14px;justify-content:center">
+              <div style="display:inline-grid;grid-template-columns:repeat(5,28px);gap:4px;border:2px solid rgba(109,40,217,.45);border-radius:9px;padding:6px;background:rgba(0,0,0,.2)">
+                ${filled8}
+                <div style="width:28px;height:28px;background:#3B82F6;border-radius:5px;animation:evBounceIn .3s 1.00s both"></div>
+                <div style="width:28px;height:28px;background:#3B82F6;border-radius:5px;animation:evBounceIn .3s 1.12s both"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                <div style="font-size:10px;color:rgba(255,255,255,.4);font-weight:700">noch übrig:</div>
+                <span style="font-size:26px;animation:evBounceIn .3s .75s both">🍬</span>
+                <span style="font-size:26px;animation:evBounceIn .3s .88s both">🍬</span>
+                <span style="font-size:26px;animation:evBounceIn .3s 1.00s both">🍬</span>
+              </div>
+            </div>
+            <div style="font-size:24px;font-weight:900;color:white;animation:evFadeUp .4s 1.42s both">
+              8 + <span style="color:#3B82F6">2</span> = <span style="color:#FFD700;font-size:30px">10</span> ✓
+            </div>
+            <div style="font-size:11px;color:rgba(255,255,255,.45);animation:evFadeUp .3s 1.70s both">
+              5 = <span style="color:#3B82F6">2</span> + <span style="color:#4ADE80">3</span>
+            </div>
+          </div>`;
+      }
+    },
+
+    // Szene 5: Rest dazuzählen – 3 neben das volle Feld (12s)
+    { dur: 12000, bg: dark,
+      speech: 'Von den 5 haben wir schon 2 benutzt. Es bleiben noch 3 übrig. Diese 3 zählen wir jetzt zur 10 dazu.',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        const filled10 = Array(10).fill(0).map(() =>
+          `<div style="width:28px;height:28px;background:#6D28D9;border-radius:5px"></div>`).join('');
+        const g3 = Array(3).fill(0).map((_,i) =>
+          `<span style="font-size:26px;animation:evBounceIn .3s ${(.80+i*.13).toFixed(2)}s both;filter:drop-shadow(0 0 7px #4ADE80)">🍬</span>`).join('');
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:0 14px;width:100%">
+            <div style="font-size:10px;color:rgba(74,222,128,.8);text-transform:uppercase;letter-spacing:.12em;font-weight:800">Die 3 kommen dazu</div>
+            <div style="display:flex;align-items:center;gap:13px;justify-content:center">
+              <div style="display:inline-grid;grid-template-columns:repeat(5,28px);gap:4px;border:2px solid rgba(109,40,217,.45);border-radius:9px;padding:6px;background:rgba(0,0,0,.2)">
+                ${filled10}
+              </div>
+              <span style="font-size:20px;font-weight:900;color:#4ADE80;animation:evFadeUp .3s .65s both">+</span>
+              <div style="display:flex;flex-direction:column;gap:4px">${g3}</div>
+            </div>
+            <div style="font-size:24px;font-weight:900;color:white;animation:evFadeUp .4s 1.30s both">
+              <span style="color:#FFD700">10</span> + <span style="color:#4ADE80">3</span> = <span style="color:#4ADE80;font-size:32px">13</span> ✓
+            </div>
+          </div>`;
+      }
+    },
+
+    // Szene 6: Gleichungskette – Ergebnis verbinden (13s)
+    { dur: 13000, bg: deep,
+      speech: 'Also ist 8 plus 5 gleich 13. Wir haben die 5 in 2 und 3 zerlegt. Erst bis zur 10. Dann den Rest dazu.',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;padding:0 14px;width:100%">
+            <div style="font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.12em;font-weight:800;margin-bottom:6px">Die ganze Rechnung</div>
+            <div style="font-size:28px;font-weight:900;color:white;animation:evFadeUp .4s .5s both">8 + 5</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.28);animation:evFadeUp .3s 1.0s both">↓</div>
+            <div style="font-size:22px;font-weight:900;color:white;animation:evFadeUp .4s 1.5s both">
+              8 + <span style="color:#3B82F6">2</span> + <span style="color:#4ADE80">3</span>
+            </div>
+            <div style="font-size:13px;color:rgba(255,255,255,.28);animation:evFadeUp .3s 2.5s both">↓</div>
+            <div style="font-size:22px;font-weight:900;color:white;animation:evFadeUp .4s 3.0s both">
+              <span style="color:#FFD700">10</span> + <span style="color:#4ADE80">3</span>
+            </div>
+            <div style="font-size:13px;color:rgba(255,255,255,.28);animation:evFadeUp .3s 4.0s both">↓</div>
+            <div style="font-size:46px;font-weight:900;color:#4ADE80;animation:evBounceIn .5s 4.5s both">13</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.38);margin-top:6px;animation:evFadeUp .3s 5.5s both">
+              Erst bis zur <span style="color:#FFD700">10</span>. Dann den Rest dazu.
+            </div>
+          </div>`;
+      }
+    },
+
+    // Szene 7: Merksatz (10s)
+    { dur: 10000, bg: deep,
+      speech: 'Merke dir: Wenn eine Aufgabe über die 10 geht, kannst du zuerst bis zur 10 auffüllen. Danach zählst du den Rest dazu.',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:0 14px;text-align:center;width:100%">
+            <div style="font-size:10px;color:rgba(255,255,255,.5);font-weight:800;letter-spacing:.12em;text-transform:uppercase">📌 Merke dir</div>
+            <div style="display:flex;flex-direction:column;gap:10px;width:100%">
+              <div style="background:rgba(59,130,246,.18);border-left:4.5px solid #3B82F6;border-radius:0 14px 14px 0;padding:13px 16px;text-align:left;animation:evFadeUp .4s .15s both">
+                <div style="font-size:15px;font-weight:900;color:#60A5FA">① Bis zur 10 auffüllen.</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:3px">Wie viele fehlen noch bis 10?</div>
+              </div>
+              <div style="background:rgba(74,222,128,.18);border-left:4.5px solid #4ADE80;border-radius:0 14px 14px 0;padding:13px 16px;text-align:left;animation:evFadeUp .4s .50s both">
+                <div style="font-size:15px;font-weight:900;color:#4ADE80">② Rest dazuzählen.</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:3px">Was ist noch übrig?</div>
+              </div>
+            </div>
+          </div>`;
+      }
+    },
+
+    // Szene 8: Mitmachfrage – 9 + 4 mit Zehnerfeld (20s)
+    // 1 Plättchen wandert ins Feld (Animations-Trick: blau erschwindet, Zelle füllt sich)
+    { dur: 20000, bg: dark,
+      speech: 'Jetzt probierst du es: 9 plus 4. Bis zur 10 fehlt 1. Zerlege die 4: erst 1, dann 3. Was ist 10 plus 3? Überleg kurz...',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        const filled9 = Array(9).fill(0).map(() =>
+          `<div style="width:26px;height:26px;background:#6D28D9;border-radius:4px"></div>`).join('');
+        const g3 = Array(3).fill(0).map((_,i) =>
+          `<div style="width:26px;height:26px;background:#4ADE80;border-radius:4px;animation:evBounceIn .25s ${(1.35+i*.12).toFixed(2)}s both"></div>`).join('');
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:11px;text-align:center;padding:0 14px;width:100%">
+            <div style="font-size:26px;font-weight:900;color:white;animation:evBounceIn .4s both">9 + 4 = ?</div>
+            <div style="display:flex;align-items:flex-start;gap:14px;justify-content:center">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                <div style="font-size:9px;color:rgba(255,255,255,.35);font-weight:700;text-transform:uppercase;letter-spacing:.08em">Zehnerfeld</div>
+                <div style="display:inline-grid;grid-template-columns:repeat(5,26px);gap:3px;border:2px solid rgba(109,40,217,.4);border-radius:8px;padding:5px;background:rgba(0,0,0,.2)">
+                  ${filled9}
+                  <div style="position:relative;width:26px;height:26px">
+                    <div style="position:absolute;inset:0;border:2.5px solid #FFD700;border-radius:4px;background:rgba(255,215,0,.08)"></div>
+                    <div style="position:absolute;inset:0;background:#3B82F6;border-radius:4px;animation:evBounceIn .3s 1.15s both"></div>
+                  </div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding-top:18px">
+                <div style="font-size:9px;color:rgba(255,255,255,.35);font-weight:700;text-transform:uppercase;letter-spacing:.08em">4 Plättchen</div>
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <div style="width:26px;height:26px;background:#3B82F6;border-radius:4px;animation:evBounceIn .25s .95s reverse both"></div>
+                  ${g3}
+                </div>
+                <div style="font-size:9px;color:rgba(255,255,255,.3);line-height:1.6;text-align:center;margin-top:2px">
+                  <span style="color:#3B82F6">1</span>→ 10<br>
+                  <span style="color:#4ADE80">3</span> Rest
+                </div>
+              </div>
+            </div>
+            <div style="font-size:19px;font-weight:900;color:white;line-height:1.9;animation:evFadeUp .4s 2.00s both">
+              9 + <span style="color:#3B82F6">1</span> = <span style="color:#FFD700">10</span><br>
+              <span style="color:#FFD700">10</span> + <span style="color:#4ADE80">3</span> = <span style="color:#86EFAC">?</span>
+            </div>
+          </div>`;
+      }
+    },
+
+    // Szene 9: Auflösung + Abschluss (10s)
+    { dur: 10000, bg: dark,
+      speech: 'Richtig: 13. Denn 9 plus 1 ist 10. Und 10 plus 3 ist 13. Super! Du hast gelernt, wie man über die 10 rechnet: erst die 10 vollmachen, dann den Rest dazuzählen.',
+      build(stage) {
+        stage.style.justifyContent = 'center';
+        stage.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:13px;text-align:center">
+            <div style="animation:evBounceIn .5s cubic-bezier(.36,.07,.19,.97)">
+              ${_evCharHTML('celebrating')}
+              <div class="ev-char-name-lbl" style="margin-top:4px">Mr. Lala</div>
+            </div>
+            <div style="font-size:22px;font-weight:900;color:white;animation:evFadeUp .4s .3s both">
+              9 + 4 = <span style="color:#4ADE80;font-size:32px">13</span> ✓
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,.65);font-weight:700;line-height:1.9;animation:evFadeUp .3s .5s both">
+              9 + <span style="color:#3B82F6">1</span> = <span style="color:#FFD700">10</span> &nbsp;·&nbsp; <span style="color:#FFD700">10</span> + <span style="color:#4ADE80">3</span> = 13
+            </div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);animation:evFadeUp .3s .8s both;line-height:1.6">
+              <span style="color:#3B82F6">① Bis zur 10</span> &nbsp;·&nbsp; <span style="color:#4ADE80">② Rest dazu</span>
+            </div>
+            <div class="ev-outro-text" style="font-size:clamp(15px,4vw,20px);animation:evBounceIn .4s .9s both">
+              Klasse! Zehnerübergang verstanden! 🌟
+            </div>
+          </div>`;
+      }
+    },
+  ];
+
 })(); // Ende handgefertigte Szenen
 
 /* ─── Auto-scene generator: academic split-layout style ─────────
