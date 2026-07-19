@@ -2140,6 +2140,20 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('frlTakt', 'frlKeinChart');
     _pSim.start(dt => _frlTakt(dt), () => _frlRender(), []);
   },
+
+  // Schluesselexperiment 15 des KLP: der Franck-Hertz-Versuch. Nachweis
+  // diskreter Energiestufen in der Atomhuelle ueber Elektronenstoesse.
+  'franck-hertz': modal => {
+    _fhInit();
+    modal.innerHTML = _fhHTML();
+    const erkl = document.getElementById('fhErkl');
+    if (erkl) erkl.innerHTML = _fhErklHTML();
+    _fhSetStation(0);
+    _fhUpdate();
+    _fhDrawKennlinie();
+    _pSim = new PhysicsSimEngine('fhTakt', 'fhKeinChart');
+    _pSim.start(dt => _fhTakt(dt), () => _fhRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -21500,6 +21514,1005 @@ function _frlRender() {
     .frl-vergleich { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
       padding: 11px 13px; }
     .frl-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// DER FRANCK-HERTZ-VERSUCH – Schluesselexperiment 15 (angehaengt)
+// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// DER FRANCK-HERTZ-VERSUCH
+// Schluesselexperiment 15 der NRW-Handreichung.
+// Kernkompetenzen des KLP: die Energie absorbierter und emittierter Photonen
+// mit den Energieniveaus in der Atomhuelle erklaeren (UF1, E6); die Ergebnisse
+// des Franck-Hertz-Versuchs fuer die Entwicklung von Modellen der diskreten
+// Energiezustaende deuten (E2, E5, E6, E7).
+// ═══════════════════════════════════════════════════════
+
+const _FH_DE = 4.9;        // Anregungsenergie Quecksilber in eV
+const _FH_UG = 1.5;        // Gegenspannung (Bremsspannung) in V
+const _FH_UH = 6.3;        // Heizspannung in V
+const _FH_UAMAX = 30;      // maximale Anodenspannung in V
+const _FH_HC = 1239.84;    // h·c in eV·nm
+const _FH_TAU = 1e-8;      // Lebensdauer des angeregten Zustands in s
+const _FH_MRATIO = 370000; // m(Hg)/m(e)
+
+// Neon: die im Franck-Hertz-Versuch beobachtete Stufe liegt bei rund 18,7 eV
+// (2p⁵3p-Zustaende). Das SICHTBARE Leuchten stammt aber aus dem Zerfall ueber
+// tiefere Zustaende (~1,9 eV, orangerot) – deshalb sieht man die Anregungszonen.
+const _FH_DE_NE = 18.7;
+const _FH_NE_VIS = 1.96;   // Energie des sichtbaren Neon-Photons in eV
+
+// Temperaturstufen: amp ist die "Stoßstärke" – der Anteil der Elektronen, die
+// beim Erreichen der Schwelle wirklich inelastisch stossen und geblockt werden.
+// Kalt (amp ≈ 0) = reine Diodenkennlinie (Abb. 3), heiss = tiefe Zacken.
+const _FH_TEMPS = [
+  { id: 'kalt', n: 'Zimmertemperatur', t: '≈ 20 °C', amp: 0.0,
+    kurz: 'kaum Hg-Dampf – reine Diodenkennlinie' },
+  { id: 'warm', n: 'angewärmt', t: '≈ 120 °C', amp: 0.45,
+    kurz: 'einige Stöße – flache Zacken' },
+  { id: 'heiss', n: 'Betriebstemperatur', t: '≈ 180 °C', amp: 0.78,
+    kurz: 'dichter Dampf – deutliche Einbrüche' }
+];
+
+let _fh = null;
+
+function _fhInit() {
+  _fh = {
+    station: 0,
+    // Station 1
+    UA: 0, sweep: true, t: 0, temp: 2, Ukont: 1.3, UG: _FH_UG,
+    elektronen: [], atome: [],
+    // Station 2
+    UA2: 16, schritt: 0,
+    // Station 3
+    peaksMarkiert: false,
+    // Station 4
+    zeigeKalt: true,
+    // Station 5
+    gas: 'hg', neT: 0
+  };
+  // Feste Hg-Atome fuer die Roehren-Animation
+  for (let i = 0; i < 26; i++) {
+    _fh.atome.push({ x: 0.08 + Math.random() * 0.66, y: Math.random(), flash: 0 });
+  }
+}
+
+// ── Zahlformat ──────────────────────────────────────────
+function _fhZahl(v) {
+  if (!isFinite(v) || v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const dez = Math.max(0, Math.min(20, 5 - ex));
+  const s = v.toFixed(dez);
+  return s.indexOf('.') >= 0 ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
+}
+
+// ── Das Kennlinienmodell ────────────────────────────────
+// Restenergie, mit der ein Elektron das Gitter erreicht (in eV). Physikalisch:
+// Das Elektron gewinnt im Feld Energie, verliert bei jedem inelastischen Stoss
+// genau ΔE und startet wieder bei null. Am Gitter bleibt ein Saegezahn 0..ΔE.
+function _fhEGrid(UA, DE, Ukont) {
+  const s = Math.max(0, UA - Ukont);
+  if (s < DE) return s;
+  // + 1e-9: an exakten Vielfachen von DE zaehlt der Stoss als "gerade
+  // geschehen" (Restenergie 0), damit die Grenze eindeutig ist.
+  return s - DE * Math.floor(s / DE + 1e-9);
+}
+// Der Auffaengerstrom. Steigende Einhuellende (mehr Elektronen bei hoeherer
+// Spannung) mal (1 − Blockade). Die Blockade greift, wenn die Restenergie am
+// Gitter unter der Gegenspannung liegt; ihre Staerke amp haengt von der
+// Temperatur ab: kalt -> amp ≈ 0 -> reine Diodenkennlinie (Einhuellende).
+function _fhStrom(UA, DE, Ukont, UG, amp) {
+  const s = Math.max(0, UA - Ukont);
+  if (s <= 0) return 0;
+  const Eg = _fhEGrid(UA, DE, Ukont);
+  const env = Math.sqrt(s);
+  const block = 1 / (1 + Math.exp((Eg - UG) / 0.55));  // ~1 falls Eg<UG, ~0 sonst
+  return env * (1 - amp * block);
+}
+// Bequemer Aufruf mit dem aktuellen Zustand
+function _fhStromAkt(UA) {
+  return _fhStrom(UA, _FH_DE, _fh.Ukont, _fh.UG, _FH_TEMPS[_fh.temp].amp);
+}
+
+// Photon aus der Anregungsenergie
+function _fhLambda(DE) { return _FH_HC / DE; }        // nm
+function _fhFrequenz(DE) { return DE * 1.602176634e-19 / 6.62607015e-34; }
+
+// Die theoretischen Maxima-Positionen
+function _fhMaxima(DE, Ukont, umax) {
+  const out = [];
+  for (let n = 1; Ukont + n * DE <= umax + 1e-9; n++) out.push(Ukont + n * DE);
+  return out;
+}
+
+// ── Oberflaeche ─────────────────────────────────────────
+function _fhHTML() {
+  const stationen = ['1 · Röhre und Kennlinie', '2 · Warum die Zacken?',
+                     '3 · Anregungsenergie bestimmen', '4 · Temperatur & Kontaktpotential',
+                     '5 · Quecksilber, Neon & Energiestufen']
+    .map((s, i) => `<button class="fpm-tab${i === _fh.station ? ' on' : ''}" id="fhSt${i}" onclick="_fhSetStation(${i})">${s}</button>`).join('');
+
+  const tempwahl = _FH_TEMPS.map((c, i) =>
+    `<button class="osz-segb" id="fhTemp${i}" onclick="_fhSetTemp(${i})">${c.n}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim fh-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">⚛️ Der Franck-Hertz-Versuch: das Schlüsselexperiment</h3>
+    <canvas id="fhTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="fhS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="fhRohr" width="440" height="215" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Elektronen von der Kathode K über das Gitter G zum Auffänger A</div>
+          <canvas id="fhKennlinie" width="440" height="235" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Auffängerstrom I_A über der Beschleunigungsspannung U_A</div>
+        </div>
+        <div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="fhSweepBtn" onclick="_fhToggleSweep()">⏸ Rampe anhalten</button>
+            <button class="sim-btn" onclick="_fhReset()">↺ Kurve neu</button>
+          </div>
+          <div class="osz-gruppe">
+            <div class="osz-gruppe-k">Röhre einstellen</div>
+            <div class="osz-zeile"><span>Beschleunigung U<sub>A</sub></span>
+              <input type="range" id="fhUA" min="0" max="30" step="0.1" value="0"
+                oninput="_fhSetUA(this.value)"><b id="fhUALbl">0,0 V</b></div>
+            <div class="osz-zeile"><span>Temperatur</span>
+              <span class="osz-seg">${tempwahl}</span></div>
+            <div class="osz-zeile"><span>Gegenspannung U<sub>G</sub></span>
+              <input type="range" id="fhUG" min="0.5" max="3" step="0.1" value="1.5"
+                oninput="_fhSetUG(this.value)"><b id="fhUGLbl">1,5 V</b></div>
+          </div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Beschleunigung U<sub>A</sub></span><span class="fpm-ro-v" id="fhUAA">—</span><span class="fpm-ro-u">V</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Restenergie am Gitter</span><span class="fpm-ro-v" id="fhEgA">—</span><span class="fpm-ro-u">eV</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Auffängerstrom I<sub>A</sub></span><span class="fpm-ro-v" id="fhIaA">—</span><span class="fpm-ro-u">nA</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">inelastische Stöße bis zum Gitter</span><span class="fpm-ro-v" id="fhNstA">—</span><span class="fpm-ro-u"></span></div>
+          </div>
+          <div class="fh-lage" id="fhLage"></div>
+          <div class="fh-mess" id="fhMess"></div>
+        </div>
+      </div>
+      <div class="fh-k3" id="fhK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="fhS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="fhTrace" width="440" height="240" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Ein einzelnes Elektron auf seinem Weg – die Stoßzone wandert</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Beschleunigung U<sub>A</sub></span>
+              <input type="range" id="fhUA2" min="1" max="30" step="0.1" value="16"
+                oninput="_fhSetUA2(this.value)"><b id="fhUA2Lbl">16,0 V</b></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_fhSchritt(-1)">◀ zurück</button>
+            <button class="sim-btn primary" onclick="_fhSchritt(1)">weiter ▶</button>
+            <button class="sim-btn" onclick="_fhSchritt(99)">alle zeigen</button>
+          </div>
+        </div>
+        <div>
+          <div class="fpm-label">Der Mechanismus Schritt für Schritt</div>
+          <div class="lsk-schritte" id="fhSchritte"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="fhS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="fhKennlinie3" width="440" height="260" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Abstand benachbarter Maxima ablesen</div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_fhMarkiere()">✓ Maxima markieren</button>
+            <button class="sim-btn" onclick="_fhSet('peaksMarkiert',false)">zurücksetzen</button>
+          </div>
+          <div class="ebr-rechnung" id="fhSpacingRechnung"></div>
+        </div>
+        <div>
+          <div class="fh-auswert" id="fhAuswert"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="fhS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="fhVergleich" width="440" height="270" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Warme (bunte) gegen kalte (graue) Röhre</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Kontaktpotential</span>
+              <input type="range" id="fhUkont" min="0" max="2.5" step="0.1" value="1.3"
+                oninput="_fhSetUkont(this.value)"><b id="fhUkontLbl">1,3 V</b></div>
+            <label class="fpm-check"><input type="checkbox" id="fhKalt" checked
+              onchange="_fhSet('zeigeKalt',this.checked)"> kalte Röhre (Diodenkennlinie) mitzeichnen</label>
+          </div>
+        </div>
+        <div>
+          <div class="fh-temp" id="fhTempText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="fhS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="fhNeon" width="440" height="180" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Neonröhre: die Anregungszonen leuchten sichtbar</div>
+          <canvas id="fhNiveau" width="440" height="215" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Energiestufen und der emittierte Lichtquant</div>
+        </div>
+        <div>
+          <div class="fh-gas" id="fhGasText"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="fhErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>ΔE = 4,9 eV</b> &nbsp;|&nbsp; <b>Abstand benachbarter Maxima = 4,9 V</b>
+      &nbsp;|&nbsp; <b>ΔE = h·f</b> &nbsp;|&nbsp; <b>λ = h·c/ΔE ≈ 253 nm (UV)</b>
+    </p>
+  </div>`;
+}
+
+function _fhErklHTML() {
+  return `<div class="dsp-erkl-kopf">Was der Versuch zeigt</div>
+    <div class="dsp-erkl-text">
+      Der Franck-Hertz-Versuch von 1913 ist der direkte Nachweis, dass ein Atom Energie nur in
+      <b>festen Portionen</b> aufnimmt. James Franck und Gustav Hertz (Nobelpreis 1925) wollten das
+      gar nicht zeigen – sie untersuchten Stöße in Gasentladungen und wollten eine damalige Theorie
+      widerlegen. Herausgekommen ist einer der schönsten Belege für <b>diskrete Energiestufen</b>
+      in der Atomhülle.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Der Aufbau</div>
+    <div class="dsp-erkl-text">
+      In einer evakuierten Röhre mit einem Tropfen Quecksilber, auf etwa 180 °C erhitzt, sitzen
+      drei Elektroden: die <b>Glühkathode K</b>, das <b>Gitter G</b> und der <b>Auffänger A</b>. Aus
+      K treten Elektronen aus und werden durch die Beschleunigungsspannung U<sub>A</sub> zum Gitter
+      hin beschleunigt. Zwischen Gitter und Auffänger liegt eine kleine <b>Gegenspannung</b>
+      U<sub>G</sub> ≈ 1,5 V: Nur Elektronen, die noch genug Energie haben, laufen gegen sie an und
+      erreichen A. Der Auffängerstrom I<sub>A</sub> wird gemessen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum die Zacken entstehen</div>
+    <div class="dsp-erkl-text">
+      Auf ihrem Weg stoßen die Elektronen mit Quecksilberatomen zusammen. Solange ihre Energie
+      unter 4,9 eV liegt, sind diese Stöße <b>elastisch</b> – das Hg-Atom ist 370 000-mal schwerer,
+      es nimmt praktisch keine Energie auf, das Elektron fliegt weiter. Erreicht die Energie eines
+      Elektrons aber gerade <b>4,9 eV</b>, wird der Stoß <b>inelastisch</b>: Das Elektron gibt seine
+      gesamte kinetische Energie an das Atom ab, regt es an und bleibt fast stehen. Jetzt kommt es
+      nicht mehr gegen U<sub>G</sub> an – der Strom <b>bricht ein</b>. Steigert man U<sub>A</sub>
+      weiter, gewinnt das Elektron nach dem Stoß auf der Reststrecke wieder Energie und erreicht A;
+      der Strom steigt erneut, bis es kurz vor dem Gitter ein <b>zweites</b> Mal 4,9 eV erreicht.
+      So folgen Maxima und Minima <b>periodisch</b> im Abstand von 4,9 V.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Von 4,9 V zur Energiestufe</div>
+    <div class="dsp-erkl-text">
+      Der Abstand der Einbrüche ist die <b>Anregungsenergie</b> des Quecksilberatoms:
+      ΔE = 4,9 eV. Das angeregte Atom fällt nach nur etwa 10<sup>−8</sup> s von selbst zurück und
+      sendet dabei ein Photon der Energie ΔE = h·f aus. Dessen Wellenlänge ist
+      λ = h·c/ΔE ≈ <b>253 nm</b> – ultraviolett, für das Auge <b>unsichtbar</b>. Genau deshalb
+      sieht man bei der Quecksilberröhre nichts leuchten, obwohl ständig Licht ausgesandt wird.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Kontaktpotential – nur Abstände zählen</div>
+    <div class="dsp-erkl-text">
+      Weil die Elektroden aus verschiedenen Metallen bestehen, liegt zwischen ihnen ein festes
+      <b>Kontaktpotential</b> von etwa 1–2 V. Es überlagert sich der Beschleunigungsspannung und
+      verschiebt die ganze Kurve nach links oder rechts – der <b>Abstand</b> der Minima ändert sich
+      dadurch aber nicht. Deshalb bestimmt man die Anregungsenergie grundsätzlich aus den
+      <b>Abständen</b> benachbarter Maxima, nie aus ihrer absoluten Lage.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die Temperatur</div>
+    <div class="dsp-erkl-text">
+      Bei Zimmertemperatur ist kaum Quecksilberdampf in der Röhre, es finden fast keine Stöße
+      statt – die Kennlinie gleicht dann der einer gewöhnlichen <b>Vakuumdiode</b>, ganz ohne
+      Zacken. Erst bei etwa 180 °C ist der Dampf dicht genug, dass jedes Elektron mehrfach stößt
+      und die Einbrüche deutlich werden.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Quecksilber oder Neon</div>
+    <div class="dsp-erkl-text">
+      Mit <b>Neon</b> statt Quecksilber kann man bei Raumtemperatur arbeiten. Die Maxima sind
+      weniger ausgeprägt und liegen weiter auseinander, dafür sendet das angeregte Neon <b>sichtbares
+      Licht</b> aus (orangerot). Man sieht dann die <b>Anregungszonen</b> als leuchtende Bänder in
+      der Röhre – dort, wo die Elektronen gerade genug Energie für den inelastischen Stoß gesammelt
+      haben. Bei Quecksilber liegt dieses Licht dagegen im UV und bleibt unsichtbar.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Der Franck-Hertz-Ofen wird sehr heiß (Aufheizen bis 15 Minuten).
+      Bei Berührung besteht Verbrennungsgefahr.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _fhSetStation(i) {
+  _fh.station = Math.max(0, Math.min(4, i));
+  for (let k = 0; k < 5; k++) {
+    document.getElementById('fhSt' + k)?.classList.toggle('on', k === _fh.station);
+    const d = document.getElementById('fhS' + k);
+    if (d) d.style.display = k === _fh.station ? 'block' : 'none';
+  }
+  _fhUpdate();
+  if (_fh.station === 2) _fhDrawKennlinie3();
+  if (_fh.station === 3) _fhDrawVergleich();
+}
+function _fhSet(key, val) {
+  _fh[key] = val;
+  if (_fh.station === 2) _fhDrawKennlinie3();
+  if (_fh.station === 3) _fhDrawVergleich();
+  _fhUpdate();
+}
+
+// ── Bedienung Station 1 ────────────────────────────────
+function _fhToggleSweep() {
+  _fh.sweep = !_fh.sweep;
+  const b = document.getElementById('fhSweepBtn');
+  if (b) b.textContent = _fh.sweep ? '⏸ Rampe anhalten' : '▶ Rampe weiter';
+}
+function _fhReset() { _fh.UA = 0; _fh.sweep = true; _fhUpdate(); }
+function _fhSetUA(v) { _fh.UA = Math.max(0, Math.min(_FH_UAMAX, +v)); _fh.sweep = false;
+  const b = document.getElementById('fhSweepBtn'); if (b) b.textContent = '▶ Rampe weiter';
+  _fhUpdate(); }
+function _fhSetTemp(i) { _fh.temp = Math.max(0, Math.min(2, i)); _fhUpdate(); }
+function _fhSetUG(v) { _fh.UG = Math.max(0.5, Math.min(3, +v)); _fhUpdate(); }
+function _fhSetUkont(v) {
+  _fh.Ukont = Math.max(0, Math.min(2.5, +v));
+  const el = document.getElementById('fhUkontLbl');
+  if (el) el.textContent = _fpmNum(_fh.Ukont, 1) + ' V';
+  _fhDrawVergleich();
+}
+function _fhSetUA2(v) {
+  _fh.UA2 = Math.max(1, Math.min(_FH_UAMAX, +v));
+  const el = document.getElementById('fhUA2Lbl');
+  if (el) el.textContent = _fpmNum(_fh.UA2, 1) + ' V';
+  _fhRenderSchritte();
+}
+
+function _fhUpdate() {
+  if (!_fh) return;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  const T = _FH_TEMPS[_fh.temp];
+  const Ia = _fhStromAkt(_fh.UA);
+  const Eg = _fhEGrid(_fh.UA, _FH_DE, _fh.Ukont);
+  const nst = Math.max(0, Math.floor(Math.max(0, _fh.UA - _fh.Ukont) / _FH_DE));
+
+  set('fhUALbl', _fpmNum(_fh.UA, 1) + ' V');
+  set('fhUGLbl', _fpmNum(_fh.UG, 1) + ' V');
+  set('fhUAA', _fpmNum(_fh.UA, 1));
+  set('fhEgA', _fpmNum(Eg, 2));
+  set('fhIaA', _fpmNum(Ia * 3, 2));   // willkuerliche nA-Skala fuer die Anzeige
+  set('fhNstA', String(nst));
+  _FH_TEMPS.forEach((c, i) => document.getElementById('fhTemp' + i)?.classList.toggle('on', i === _fh.temp));
+
+  const lage = document.getElementById('fhLage');
+  if (lage) {
+    const nahMin = Eg < _fh.UG + 0.3 && _fh.UA > _fh.Ukont + 0.5;
+    if (_fh.UA < _fh.Ukont) {
+      lage.className = 'fh-lage';
+      lage.innerHTML = 'Die Elektronen kommen noch nicht gegen die Gegenspannung an – der '
+        + 'Auffänger bleibt praktisch stromlos.';
+    } else if (nahMin) {
+      lage.className = 'fh-lage min';
+      lage.innerHTML = '<b>Einbruch.</b> Die Elektronen haben kurz vor dem Gitter gerade 4,9 eV '
+        + 'erreicht und diese bei einem <b>inelastischen Stoß</b> vollständig an ein Hg-Atom '
+        + 'abgegeben. Sie kommen nun nicht mehr gegen U<sub>G</sub> an – der Strom bricht ein.';
+    } else {
+      lage.className = 'fh-lage max';
+      lage.innerHTML = '<b>Der Strom steigt.</b> Die Elektronen erreichen das Gitter mit genug '
+        + 'Restenergie (' + _fpmNum(Eg, 1) + ' eV > U<sub>G</sub>) und laufen erfolgreich gegen '
+        + 'die Gegenspannung an.';
+    }
+  }
+
+  const me = document.getElementById('fhMess');
+  if (me) {
+    const maxima = _fhMaxima(_FH_DE, _fh.Ukont, _FH_UAMAX);
+    me.innerHTML = `<div class="git-sch-kopf">Was zu erwarten ist</div>
+      <div class="fh-mess-t">Bei ${T.n} (${T.t}): ${T.kurz}. Die Maxima liegen bei
+        U<sub>A</sub> = ${maxima.map(m => _fpmNum(m, 1)).join(' · ')} V – jeweils
+        <b>4,9 V</b> auseinander. Genau dieser Abstand ist die Anregungsenergie des
+        Quecksilberatoms.</div>`;
+  }
+
+  _fhRenderK3();
+  _fhRenderSchritte();
+  _fhRenderAuswert();
+  _fhRenderTemp();
+  _fhRenderGas();
+}
+
+function _fhRenderK3() {
+  const el = document.getElementById('fhK3'); if (!el) return;
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du diesen Versuch jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Wir wollen zeigen, dass ein Atom Energie nur in festen Portionen aufnimmt – also dass es
+        diskrete Energiestufen gibt.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        In einer heißen Quecksilberdampf-Röhre werden Elektronen von der Kathode zum Gitter
+        beschleunigt. Hinter dem Gitter bremst eine kleine Gegenspannung; nur schnelle genug
+        Elektronen erreichen den Auffänger.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Die Beschleunigungsspannung wird langsam erhöht und der Auffängerstrom aufgezeichnet.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        Der Strom steigt nicht gleichmäßig, sondern zeigt Maxima und Minima im festen Abstand von
+        <b>4,9 V</b>.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Bei 4,9 eV wird der Stoß inelastisch – das Elektron gibt genau diese Energie ans Atom ab.
+        4,9 eV ist die Anregungsenergie; das angeregte Atom sendet sie als UV-Photon wieder aus.</div>
+    </div>`;
+}
+
+// ── Station 2: Mechanismus ─────────────────────────────
+const _FH_SCHRITTE = [
+  { k: 'Elektronen treten aus der Kathode aus',
+    t: 'Die Glühkathode gibt durch Glühemission Elektronen ab. Die Beschleunigungsspannung U<sub>A</sub> zieht sie zum Gitter hin – sie gewinnen unterwegs kinetische Energie.',
+    f: 'E<sub>kin</sub> = e · U<sub>A</sub> · (Weganteil bis zum Stoß)' },
+  { k: 'Elastische Stöße kosten keine Energie',
+    t: 'Auf dem Weg stoßen die Elektronen mit Quecksilberatomen zusammen. Weil das Hg-Atom rund 370 000-mal schwerer ist, prallt das Elektron praktisch ohne Energieverlust ab – wie ein Flummi von einer Wand.',
+    f: 'Energieübertrag ≈ 4·mₑ/m(Hg) ≈ 10⁻⁵ – vernachlässigbar' },
+  { k: 'Bei 4,9 eV wird der Stoß inelastisch',
+    t: 'Sobald ein Elektron 4,9 eV angesammelt hat, kann es ein Hg-Atom anregen. Beim nächsten Stoß gibt es seine gesamte Energie ab und bleibt fast stehen. Das ist die Resonanz: erst ab genau dieser Energie „passt" die Portion.',
+    f: 'ΔE = 4,9 eV wird komplett übertragen' },
+  { k: 'Das gebremste Elektron erreicht A nicht',
+    t: 'Direkt nach dem inelastischen Stoß hat das Elektron kaum noch Energie. Es kommt nicht mehr gegen die Gegenspannung U<sub>G</sub> an und fehlt am Auffänger – der Strom bricht ein.',
+    f: 'E<sub>kin</sub> < e·U<sub>G</sub> → kein Beitrag zu I<sub>A</sub>' },
+  { k: 'Höhere Spannung: die Stoßzone wandert',
+    t: 'Steigert man U<sub>A</sub>, erreicht das Elektron die 4,9 eV schon früher – die Stoßzone wandert zur Kathode hin. Auf der Reststrecke bis zum Gitter gewinnt es wieder Energie und erreicht A. Bei doppelter Schwelle stößt es zweimal, bei dreifacher dreimal.',
+    f: 'Einbrüche bei U<sub>A</sub> = n · 4,9 V (+ Kontaktpotential)' }
+];
+function _fhSchritt(d) {
+  _fh.schritt = d === 99 ? _FH_SCHRITTE.length - 1 : Math.max(0, Math.min(_FH_SCHRITTE.length - 1, _fh.schritt + d));
+  _fhRenderSchritte();
+}
+function _fhRenderSchritte() {
+  const el = document.getElementById('fhSchritte');
+  if (el) {
+    el.innerHTML = _FH_SCHRITTE.map((sc, i) => {
+      const aktiv = i <= _fh.schritt;
+      return `<div class="lsk-schritt${aktiv ? ' an' : ''}${i === _fh.schritt ? ' jetzt' : ''}">
+        <span class="lsk-schritt-n">${i + 1}</span>
+        <div><div class="lsk-schritt-k">${sc.k}</div>
+        ${aktiv ? '<div class="lsk-schritt-t">' + sc.t + '</div>' : ''}
+        ${aktiv ? '<div class="lsk-schritt-f">' + sc.f + '</div>' : ''}</div></div>`;
+    }).join('');
+  }
+}
+
+// ── Station 3: Anregungsenergie bestimmen ──────────────
+function _fhMarkiere() { _fh.peaksMarkiert = true; _fhDrawKennlinie3(); _fhRenderAuswert(); }
+function _fhRenderAuswert() {
+  const el = document.getElementById('fhAuswert'); if (!el) return;
+  const maxima = _fhMaxima(_FH_DE, _fh.Ukont, _FH_UAMAX);
+  const lam = _fhLambda(_FH_DE);
+  const f = _fhFrequenz(_FH_DE);
+  const spacings = [];
+  for (let i = 1; i < maxima.length; i++) spacings.push(maxima[i] - maxima[i - 1]);
+  const mittel = spacings.length ? spacings.reduce((a, b) => a + b, 0) / spacings.length : _FH_DE;
+
+  el.innerHTML = `<div class="git-sch-kopf">Von der Kurve zur Energiestufe</div>
+    <div class="fh-auswert-t">Man liest die Spannungen der Maxima ab und bildet ihre
+      <b>Abstände</b> – nicht ihre Absolutlage, denn die hängt vom Kontaktpotential ab.</div>
+    ${_fh.peaksMarkiert ? `
+      <div class="fh-peaks">
+        <div class="fh-peaks-z"><span>Maxima bei</span>
+          <b>${maxima.map(m => _fpmNum(m, 1)).join(' · ')} V</b></div>
+        <div class="fh-peaks-z"><span>Abstände</span>
+          <b>${spacings.map(s => _fpmNum(s, 1)).join(' · ')} V</b></div>
+        <div class="fh-peaks-z erg"><span>Mittelwert</span>
+          <b>ΔU = ${_fpmNum(mittel, 2)} V → ΔE = ${_fpmNum(mittel, 2)} eV</b></div>
+      </div>
+      <div class="ebr-rechnung" style="margin-top:8px">
+        <div class="pho-rz"><span class="pho-rz-t">Anregungsenergie</span>
+          <span class="pho-rz-f">ΔE = e · ΔU</span>
+          <span class="pho-rz-v">${_fpmNum(_FH_DE, 1)} eV</span></div>
+        <div class="pho-rz"><span class="pho-rz-t">Frequenz des Photons</span>
+          <span class="pho-rz-f">f = ΔE / h</span>
+          <span class="pho-rz-v">${_fpmNum(f / 1e15, 2)}·10¹⁵ Hz</span></div>
+        <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Wellenlänge</span>
+          <span class="pho-rz-f">λ = h·c / ΔE</span>
+          <span class="pho-rz-v">${_fpmNum(lam, 0)} nm</span></div>
+      </div>
+      <div class="fh-uv">λ ≈ ${_fpmNum(lam, 0)} nm liegt im <b>Ultravioletten</b> (unter 380 nm) –
+        deshalb sieht man bei der Quecksilberröhre nichts leuchten, obwohl ständig Photonen
+        ausgesandt werden.</div>
+    ` : '<div class="fh-auswert-t"><i>Klicke „Maxima markieren", um die Abstände auszuwerten.</i></div>'}
+    <div class="fpm-note">Das angeregte Atom fällt nach nur etwa 10<sup>−8</sup> s von selbst
+      zurück in den Grundzustand (spontane Emission) und gibt die 4,9 eV als ein einziges Photon
+      wieder ab. ΔE = h·f verbindet die im Stoß aufgenommene Energie direkt mit der Farbe des
+      ausgesandten Lichts.</div>`;
+}
+
+// ── Station 4: Temperatur & Kontaktpotential ───────────
+function _fhRenderTemp() {
+  const el = document.getElementById('fhTempText'); if (!el) return;
+  el.innerHTML = `<div class="git-sch-kopf">Zwei Störeinflüsse – und was sie tun</div>
+    <div class="fh-temp-z"><b>Temperatur</b> Bei Zimmertemperatur ist fast kein
+      Quecksilberdampf da. Die Elektronen stoßen kaum – die Kennlinie gleicht der einer
+      gewöhnlichen <b>Vakuumdiode</b> (graue Kurve): Der Strom steigt einfach an, der verspätete
+      Beginn liegt allein an der Gegenspannung. Erst bei 180 °C ist der Dampf dicht genug für die
+      typischen Zacken.</div>
+    <div class="fh-temp-z"><b>Kontaktpotential</b> Weil die Elektroden aus verschiedenen Metallen
+      bestehen, liegt zwischen ihnen eine feste Spannung von 1 bis 2 V. Sie <b>verschiebt</b> die
+      ganze Kurve nach links oder rechts – schiebe den Regler und beobachte: Die Maxima wandern,
+      ihr <b>Abstand bleibt aber exakt 4,9 V</b>.</div>
+    <div class="fh-temp-form">Deshalb die goldene Regel: Die Anregungsenergie bestimmt man aus den
+      <b>Abständen</b> benachbarter Maxima – niemals aus ihrer absoluten Lage.</div>
+    <div class="fpm-note">Das Kontaktpotential hängt vom Zustand der Elektrodenoberflächen ab und
+      kann sich über die Lebensdauer der Röhre sogar ändern. Für die Abstände ist das völlig
+      gleichgültig – ein schönes Beispiel dafür, wie man einen systematischen Fehler durch die
+      richtige Auswertung umgeht.</div>`;
+}
+
+// ── Station 5: Neon & Energiestufen ────────────────────
+function _fhSetGas(g) { _fh.gas = g; _fhRenderGas(); }
+function _fhRenderGas() {
+  const el = document.getElementById('fhGasText'); if (!el) return;
+  const lamHg = _fhLambda(_FH_DE);
+  const lamNe = _fhLambda(_FH_NE_VIS);
+  el.innerHTML = `<div class="git-sch-kopf">Quecksilber und Neon im Vergleich</div>
+    <div class="fh-gas-grid">
+      <div class="fh-gas-sp hg">
+        <div class="fh-gas-k">Quecksilber</div>
+        <div class="fh-gas-z">Anregung <b>4,9 eV</b></div>
+        <div class="fh-gas-z">Photon λ ≈ ${_fpmNum(lamHg, 0)} nm</div>
+        <div class="fh-gas-z"><b>UV – unsichtbar</b></div>
+        <div class="fh-gas-z">Betrieb bei ≈ 180 °C</div>
+        <div class="fh-gas-z">Maxima scharf, viele</div>
+      </div>
+      <div class="fh-gas-sp ne">
+        <div class="fh-gas-k">Neon</div>
+        <div class="fh-gas-z">Anregung ≈ <b>18,7 eV</b></div>
+        <div class="fh-gas-z">sichtbares Photon ≈ ${_fpmNum(lamNe, 0)} nm</div>
+        <div class="fh-gas-z"><b>orangerot – sichtbar</b></div>
+        <div class="fh-gas-z">Betrieb bei Raumtemperatur</div>
+        <div class="fh-gas-z">Maxima flacher, wenige</div>
+      </div>
+    </div>
+    <div class="fh-gas-t">Bei Neon leuchten die <b>Anregungszonen</b> als orangerote Bänder in der
+      Röhre – dort haben die Elektronen gerade genug Energie für den inelastischen Stoß gesammelt.
+      Mit jeder weiteren 18,7-eV-Portion kommt ein Band hinzu. Das sichtbare Licht stammt dabei
+      nicht direkt aus dem 18,7-eV-Übergang, sondern aus dem Zerfall über tiefere Zustände (etwa
+      1,9 eV) – deshalb ist es rot und nicht ultraviolett.</div>
+    <div class="fh-gas-t"><b>Der Bogen zur Atomhülle:</b> Die 4,9 eV sind der Abstand zwischen dem
+      Grundzustand und dem ersten angeregten Zustand des Quecksilberatoms. Der Franck-Hertz-Versuch
+      misst diesen Abstand mechanisch – über die kinetische Energie der Elektronen –, ganz ohne
+      Licht zu betrachten. Dass dieselbe Energie als Photon wieder herauskommt (ΔE = h·f),
+      schließt den Kreis zwischen Stoßanregung und Spektrallinie.</div>
+    <div class="fpm-note">Historisch: Franck und Hertz führten die Versuche 1911–1914 durch und
+      erhielten 1925 den Nobelpreis. Sie wollten ursprünglich gar keine Energiestufen nachweisen,
+      sondern eine Stoßtheorie widerlegen – die diskreten Stufen ergaben sich als Nebenprodukt und
+      wurden zu einem der wichtigsten Belege für das Bohrsche Atommodell.</div>`;
+}
+
+// ── Zeichnungen ────────────────────────────────────────
+function _fhDrawRohr(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const kx = 40, gx = 320, ax = 400;   // Kathode, Gitter, Auffaenger
+  const cyTop = 24, cyBot = H - 24;
+
+  // Roehrenwand
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+  ctx.strokeRect(24, 16, W - 48, H - 32);
+
+  // Kathode
+  ctx.fillStyle = '#f97316'; ctx.fillRect(kx - 4, cyTop, 6, cyBot - cyTop);
+  ctx.fillStyle = '#fb923c'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('K', kx, cyBot + 16);
+  // Gitter
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  for (let y = cyTop; y < cyBot; y += 7) { ctx.beginPath(); ctx.moveTo(gx, y); ctx.lineTo(gx, y + 4); ctx.stroke(); }
+  ctx.fillStyle = '#cbd5e1'; ctx.fillText('G', gx, cyBot + 16);
+  // Auffaenger
+  ctx.fillStyle = '#38bdf8'; ctx.fillRect(ax, cyTop, 5, cyBot - cyTop);
+  ctx.fillText('A', ax + 2, cyBot + 16);
+
+  // Hg-Atome
+  _fh.atome.forEach(a => {
+    const px = 24 + a.x * (W - 48), py = cyTop + a.y * (cyBot - cyTop);
+    if (a.flash > 0) {
+      ctx.fillStyle = 'rgba(148,163,184,' + (a.flash * 0.5) + ')';
+      ctx.beginPath(); ctx.arc(px, py, 4 + a.flash * 6, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.fillStyle = a.flash > 0 ? '#e2e8f0' : '#475569';
+    ctx.beginPath(); ctx.arc(px, py, 3, 0, 2 * Math.PI); ctx.fill();
+  });
+
+  // Elektronen
+  _fh.elektronen.forEach(e => {
+    const px = 24 + e.x * (W - 48), py = cyTop + e.y * (cyBot - cyTop);
+    ctx.fillStyle = e.blocked ? '#64748b' : '#fde047';
+    ctx.beginPath(); ctx.arc(px, py, 2.5, 0, 2 * Math.PI); ctx.fill();
+    // kleiner Schweif in Bewegungsrichtung
+    ctx.strokeStyle = 'rgba(253,224,71,0.4)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(px - 6 * e.dir, py); ctx.stroke();
+  });
+
+  // Beschriftung Spannungen
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('U_A = ' + _fpmNum(_fh.UA, 1) + ' V', 30, 12 + 0);
+  ctx.textAlign = 'right';
+  ctx.fillText('U_G = ' + _fpmNum(_fh.UG, 1) + ' V', W - 28, 12);
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#334155';
+  ctx.fillText('Beschleunigung →', (kx + gx) / 2, H - 6);
+  ctx.fillStyle = '#475569';
+  ctx.fillText('Bremsfeld', (gx + ax) / 2 + 4, H - 6);
+  ctx.textAlign = 'left';
+}
+
+function _fhDrawKennlinieAuf(ctx, cv, bisUA, markiere, kaltZusatz) {
+  const W = cv.width, H = cv.height;
+  const padL = 46, padR = 12, padT = 14, padB = 34;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const T = _FH_TEMPS[_fh.temp];
+  // ymax aus dem Maximalstrom bei U=30
+  let ymax = 0;
+  for (let u = 0; u <= _FH_UAMAX; u += 0.2) ymax = Math.max(ymax, _fhStrom(u, _FH_DE, _fh.Ukont, _fh.UG, T.amp));
+  ymax *= 1.12;
+  const X = u => x0 + u / _FH_UAMAX * (x1 - x0);
+  const Y = i => y0 - i / ymax * (y0 - y1);
+
+  // Raster
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '10px sans-serif';
+  for (let u = 0; u <= _FH_UAMAX; u += 5) {
+    ctx.beginPath(); ctx.moveTo(X(u), y0); ctx.lineTo(X(u), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(u + '', X(u), y0 + 13);
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('U_A / V', x1, y0 + 26);
+  ctx.save(); ctx.translate(12, y1 + 4); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('I_A', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+
+  // Kalte Diodenkurve als Vergleich
+  if (kaltZusatz) {
+    ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.6; ctx.setLineDash([5, 3]);
+    ctx.beginPath();
+    for (let u = 0; u <= _FH_UAMAX; u += 0.2) {
+      const i = _fhStrom(u, _FH_DE, _fh.Ukont, _fh.UG, 0.0);
+      const px = X(u), py = Y(i);
+      u === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+
+  // Die Kennlinie bis bisUA
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  let first = true;
+  for (let u = 0; u <= bisUA + 1e-9; u += 0.15) {
+    const i = _fhStrom(u, _FH_DE, _fh.Ukont, _fh.UG, T.amp);
+    const px = X(u), py = Y(i);
+    first ? (ctx.moveTo(px, py), first = false) : ctx.lineTo(px, py);
+  }
+  ctx.stroke();
+
+  // Laufmarke
+  if (bisUA < _FH_UAMAX) {
+    const iNow = _fhStrom(bisUA, _FH_DE, _fh.Ukont, _fh.UG, T.amp);
+    ctx.fillStyle = '#db2777';
+    ctx.beginPath(); ctx.arc(X(bisUA), Y(iNow), 4, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  // Maxima markieren
+  if (markiere) {
+    const maxima = _fhMaxima(_FH_DE, _fh.Ukont, bisUA);
+    maxima.forEach((m, k) => {
+      const i = _fhStrom(m, _FH_DE, _fh.Ukont, _fh.UG, T.amp);
+      ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+      ctx.beginPath(); ctx.moveTo(X(m), Y(i)); ctx.lineTo(X(m), y0); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#f59e0b';
+      ctx.beginPath(); ctx.arc(X(m), Y(i), 3.5, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = '#b45309'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(_fpmNum(m, 1), X(m), Y(i) - 7);
+      // Abstandspfeil
+      if (k > 0) {
+        const mp = (X(maxima[k - 1]) + X(m)) / 2;
+        ctx.fillStyle = '#16a34a'; ctx.font = '700 9px sans-serif';
+        ctx.fillText('4,9 V', mp, y0 - 6);
+        ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(X(maxima[k - 1]) + 2, y0 - 14); ctx.lineTo(X(m) - 2, y0 - 14); ctx.stroke();
+      }
+    });
+  }
+}
+function _fhDrawKennlinie() {
+  const cv = document.getElementById('fhKennlinie');
+  if (cv && _fh) _fhDrawKennlinieAuf(cv.getContext('2d'), cv, _fh.UA, false, false);
+}
+function _fhDrawKennlinie3() {
+  const cv = document.getElementById('fhKennlinie3');
+  if (cv && _fh) _fhDrawKennlinieAuf(cv.getContext('2d'), cv, _FH_UAMAX, _fh.peaksMarkiert, false);
+}
+function _fhDrawVergleich() {
+  const cv = document.getElementById('fhVergleich');
+  if (cv && _fh) _fhDrawKennlinieAuf(cv.getContext('2d'), cv, _FH_UAMAX, false, _fh.zeigeKalt);
+}
+
+function _fhDrawTrace(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const kx = 36, gx = 340, ax = 410;
+  const cy = H / 2;
+  // Roehre
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5; ctx.strokeRect(20, 20, W - 40, H - 40);
+  ctx.fillStyle = '#f97316'; ctx.fillRect(kx - 4, 30, 6, H - 60);
+  ctx.strokeStyle = '#94a3b8';
+  for (let y = 30; y < H - 30; y += 7) { ctx.beginPath(); ctx.moveTo(gx, y); ctx.lineTo(gx, y + 4); ctx.stroke(); }
+  ctx.fillStyle = '#38bdf8'; ctx.fillRect(ax, 30, 5, H - 60);
+  ctx.fillStyle = '#fb923c'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('K', kx, H - 24); ctx.fillStyle = '#cbd5e1'; ctx.fillText('G', gx, H - 24);
+  ctx.fillStyle = '#38bdf8'; ctx.fillText('A', ax + 2, H - 24);
+
+  // Die Energiekurve entlang des Weges: Saegezahn, faellt bei jedem Stoss auf 0
+  const UA = _fh.UA2;
+  const nColl = Math.floor(UA / _FH_DE);   // Zahl der inelastischen Stoesse
+  const collX = [];
+  for (let k = 1; k <= nColl; k++) collX.push(k * _FH_DE / UA);  // Position (0..1) im K-G-Bereich
+
+  // Energieverlauf zeichnen (als Kurve ueber dem Weg)
+  const wegX = f => kx + f * (gx - kx);
+  const eScale = 40 / _FH_DE;   // px je eV
+  const eBase = cy + 70;
+  ctx.strokeStyle = '#22d3ee'; ctx.lineWidth = 1.8;
+  ctx.beginPath();
+  let e = 0, lastColl = 0;
+  for (let f = 0; f <= 1.0001; f += 0.004) {
+    // Energie = e·U·(Weg seit letztem Stoss)
+    let cur = 0, prev = 0;
+    for (let k = 0; k <= nColl; k++) {
+      const start = k === 0 ? 0 : collX[k - 1];
+      const end = k < nColl ? collX[k] : 1;
+      if (f >= start && f <= end + 1e-9) { cur = (f - start) * UA; break; }
+    }
+    const px = wegX(f), py = eBase - cur * eScale;
+    f === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+  }
+  ctx.stroke();
+  // Schwelle 4,9 eV
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+  ctx.beginPath(); ctx.moveTo(kx, eBase - _FH_DE * eScale); ctx.lineTo(gx, eBase - _FH_DE * eScale); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#fbbf24'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('4,9 eV', gx + 4, eBase - _FH_DE * eScale + 3);
+
+  // Stosszonen markieren
+  collX.forEach((cxf, k) => {
+    const px = wegX(cxf);
+    ctx.fillStyle = 'rgba(248,113,113,0.7)';
+    ctx.beginPath(); ctx.arc(px, eBase - _FH_DE * eScale, 5, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fca5a5'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Stoß ' + (k + 1), px, eBase - _FH_DE * eScale - 9);
+    // Blitz nach unten (Energie faellt auf 0)
+    ctx.strokeStyle = '#f87171'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(px, eBase - _FH_DE * eScale + 5); ctx.lineTo(px, eBase); ctx.stroke();
+  });
+
+  // Restenergie am Gitter
+  const Egit = UA - nColl * _FH_DE;
+  ctx.fillStyle = Egit > _fh.UG ? '#4ade80' : '#f87171';
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Restenergie am Gitter: ' + _fpmNum(Egit, 1) + ' eV', (gx + W) / 2 - 20, 40);
+  ctx.font = '9px sans-serif';
+  ctx.fillText(Egit > _fh.UG ? 'reicht gegen U_G → erreicht A' : 'zu wenig → wird gebremst',
+               (gx + W) / 2 - 20, 54);
+
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Energie des Elektrons entlang des Weges (' + nColl + ' inelastische Stöße)', kx, 16);
+  ctx.textAlign = 'left';
+}
+
+function _fhDrawNeon(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#1a1206'; ctx.fillRect(0, 0, W, H);
+  const kx = 30, gx = W - 50, cy = H / 2;
+  ctx.strokeStyle = '#3f3320'; ctx.lineWidth = 1.5; ctx.strokeRect(18, 18, W - 36, H - 36);
+  ctx.fillStyle = '#f97316'; ctx.fillRect(kx - 4, 26, 6, H - 52);
+  ctx.fillStyle = '#38bdf8'; ctx.fillRect(gx, 26, 5, H - 52);
+  // Leuchtende Anregungszonen (bei Vielfachen der Neon-Schwelle)
+  const UA = 30;   // fest hoch fuer mehrere Zonen (illustrativ)
+  const zones = Math.max(1, Math.floor(UA / 6));   // illustrativ ein paar Zonen
+  for (let k = 1; k <= zones; k++) {
+    const zx = kx + k / (zones + 0.3) * (gx - kx);
+    const puls = 0.55 + 0.45 * Math.sin(_fh.neT * 3 + k);
+    const grad = ctx.createRadialGradient(zx, cy, 2, zx, cy, 26);
+    grad.addColorStop(0, 'rgba(251,146,60,' + (0.85 * puls) + ')');
+    grad.addColorStop(1, 'rgba(249,115,22,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(zx - 26, 26, 52, H - 52);
+  }
+  // Elektronen
+  for (let i = 0; i < 8; i++) {
+    const ex = kx + ((_fh.neT * 60 + i * 47) % (gx - kx));
+    ctx.fillStyle = '#fde047';
+    ctx.beginPath(); ctx.arc(ex, cy + (i % 3 - 1) * 20, 2.2, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#fdba74'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('orangerote Anregungszonen', W / 2, H - 8);
+  ctx.textAlign = 'left';
+}
+
+function _fhDrawNiveau(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const x0 = 60, x1 = 200;
+  const yGrund = H - 40, yAngeregt = 50;
+
+  // Zwei Niveaus
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(x0, yGrund); ctx.lineTo(x1, yGrund); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x0, yAngeregt); ctx.lineTo(x1, yAngeregt); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Grundzustand (0 eV)', x1 + 8, yGrund + 4);
+  ctx.fillText('1. angeregter Zustand (4,9 eV)', x1 + 8, yAngeregt + 4);
+
+  // Absorption (Stoss): Pfeil hoch
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x0 + 30, yGrund); ctx.lineTo(x0 + 30, yAngeregt); ctx.stroke();
+  ctx.fillStyle = '#dc2626';
+  ctx.beginPath(); ctx.moveTo(x0 + 30, yAngeregt); ctx.lineTo(x0 + 26, yAngeregt + 8); ctx.lineTo(x0 + 34, yAngeregt + 8); ctx.closePath(); ctx.fill();
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Stoß', x0 + 30, (yGrund + yAngeregt) / 2 - 4);
+  ctx.fillText('+4,9 eV', x0 + 30, (yGrund + yAngeregt) / 2 + 8);
+
+  // Emission: Pfeil runter + Photon
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x0 + 100, yAngeregt); ctx.lineTo(x0 + 100, yGrund); ctx.stroke();
+  ctx.fillStyle = '#7c3aed';
+  ctx.beginPath(); ctx.moveTo(x0 + 100, yGrund); ctx.lineTo(x0 + 96, yGrund - 8); ctx.lineTo(x0 + 104, yGrund - 8); ctx.closePath(); ctx.fill();
+  // Photon-Wellenlinie
+  ctx.strokeStyle = '#a78bfa'; ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  for (let t = 0; t <= 40; t++) {
+    const px = x0 + 108 + t, py = (yGrund + yAngeregt) / 2 + Math.sin(t * 0.6) * 5;
+    t === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+  }
+  ctx.stroke();
+  ctx.fillStyle = '#7c3aed'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Photon', x0 + 100, (yGrund + yAngeregt) / 2 - 4);
+  ctx.fillText('253 nm (UV)', x0 + 130, (yGrund + yAngeregt) / 2 + 20);
+
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('ΔE = h·f = 4,9 eV', x0, 24);
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _fhSpawn() {
+  // Ein neues Elektron an der Kathode
+  _fh.elektronen.push({ x: 0.09, y: 0.15 + Math.random() * 0.7, dir: 1, e: 0,
+                        nextColl: _FH_DE, blocked: false });
+}
+function _fhTakt(dt) {
+  if (!_fh) return;
+  const d = Math.min(0.05, dt);
+  _fh.t += d;
+  _fh.neT += d;
+
+  // Rampe
+  if (_fh.sweep && _fh.station === 0) {
+    _fh.UA += d * 6;
+    if (_fh.UA > _FH_UAMAX) _fh.UA = 0;
+  }
+
+  // Atome-Flash abklingen
+  _fh.atome.forEach(a => { if (a.flash > 0) a.flash = Math.max(0, a.flash - d * 3); });
+
+  if (_fh.station === 0) {
+    // Elektronen erzeugen (Rate ~ Strom, aber immer ein paar)
+    if (Math.random() < 0.5) _fhSpawn();
+    const UA = Math.max(0.01, _fh.UA);
+    const Ukont = _fh.Ukont;
+    _fh.elektronen.forEach(e => {
+      const v = 0.35 + 0.05 * Math.sqrt(UA);   // grobe Geschwindigkeit
+      e.x += v * d * e.dir;
+      // Energie waechst im Beschleunigungsbereich (bis Gitter bei x=0.72)
+      if (e.x < 0.72) {
+        e.e = Math.max(0, (e.x - 0.09) / 0.63) * Math.max(0, UA - Ukont);
+        // inelastischer Stoss, wenn Energie die naechste Schwelle erreicht
+        if (e.e >= e.nextColl && Math.random() < 0.5) {
+          e.e = 0; e.nextColl = _FH_DE;
+          // naechstes Atom flashen
+          const near = _fh.atome.reduce((best, a) =>
+            Math.abs(a.x - e.x) < Math.abs(best.x - e.x) ? a : best, _fh.atome[0]);
+          near.flash = 1;
+          // Elektron faengt neu an zu sammeln – Position der Schwelle relativ
+          e.baseX = e.x;
+        }
+      } else if (e.x >= 0.72 && e.x < 0.9) {
+        // Bremsbereich: Restenergie entscheidet
+        const Eg = _fhEGrid(UA, _FH_DE, Ukont);
+        e.blocked = Eg < _fh.UG;
+      }
+      if (e.x > 1.05) e.dead = true;
+    });
+    _fh.elektronen = _fh.elektronen.filter(e => !e.dead && _fh.elektronen.length);
+    if (_fh.elektronen.length > 60) _fh.elektronen.splice(0, _fh.elektronen.length - 60);
+  }
+}
+function _fhRender() {
+  if (!_fh) return;
+  const st = _fh.station;
+  if (st === 0) {
+    const cr = document.getElementById('fhRohr');
+    if (cr) _fhDrawRohr(cr.getContext('2d'), cr);
+    _fhDrawKennlinie();
+    if (_fh.sweep) _fhUpdate();
+  } else if (st === 1) {
+    const ct = document.getElementById('fhTrace');
+    if (ct) _fhDrawTrace(ct.getContext('2d'), ct);
+  } else if (st === 4) {
+    const cn = document.getElementById('fhNeon');
+    if (cn) _fhDrawNeon(cn.getContext('2d'), cn);
+    const cv = document.getElementById('fhNiveau');
+    if (cv) _fhDrawNiveau(cv.getContext('2d'), cv);
+  }
+}
+
+// ── Zusätzliche Styles für den Franck-Hertz-Versuch ────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .fh-lage { font-size: .78rem; border-radius: 9px; padding: 9px 11px; margin: 8px 0;
+      line-height: 1.55; border: 1px solid #e2e8f0; background: #f8fafc; color: #64748b; }
+    .fh-lage.max { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+    .fh-lage.min { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+    .fh-mess { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; margin-top: 8px; }
+    .fh-mess-t { font-size: .78rem; color: #475569; line-height: 1.6; }
+    .fh-mess-t b { color: #334155; }
+    .fh-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-top: 12px; }
+    .fh-auswert { display: flex; flex-direction: column; gap: 7px; }
+    .fh-auswert-t { font-size: .78rem; color: #475569; line-height: 1.65; }
+    .fh-auswert-t b { color: #334155; }
+    .fh-peaks { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 9px 12px; }
+    .fh-peaks-z { display: flex; align-items: baseline; gap: 8px; font-size: .78rem;
+      color: #475569; padding: 3px 0; }
+    .fh-peaks-z span { flex: 0 0 92px; font-size: .66rem; text-transform: uppercase;
+      letter-spacing: .04em; font-weight: 800; color: #94a3b8; }
+    .fh-peaks-z b { color: #334155; font-variant-numeric: tabular-nums; }
+    .fh-peaks-z.erg { border-top: 1px solid #e2e8f0; padding-top: 6px; margin-top: 2px; }
+    .fh-peaks-z.erg b { color: #7c3aed; }
+    .fh-uv { font-size: .77rem; color: #5b21b6; background: #f5f3ff; border: 1px solid #ddd6fe;
+      border-radius: 8px; padding: 8px 10px; line-height: 1.55; }
+    .fh-uv b { color: #4c1d95; }
+    .fh-temp { display: flex; flex-direction: column; gap: 7px; }
+    .fh-temp-z { font-size: .78rem; color: #475569; line-height: 1.65; background: #f8fafc;
+      border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; }
+    .fh-temp-z b { color: #334155; }
+    .fh-temp-form { font-size: .82rem; text-align: center; color: #166534; background: #f0fdf4;
+      border: 1px solid #bbf7d0; border-radius: 8px; padding: 8px 10px; }
+    .fh-temp-form b { color: #14532d; }
+    .fh-gas { display: flex; flex-direction: column; gap: 8px; }
+    .fh-gas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .fh-gas-sp { border-radius: 9px; padding: 9px 11px; }
+    .fh-gas-sp.hg { background: #eff6ff; border: 1px solid #bfdbfe; }
+    .fh-gas-sp.ne { background: #fff7ed; border: 1px solid #fed7aa; }
+    .fh-gas-k { font-size: .8rem; font-weight: 800; margin-bottom: 5px; }
+    .fh-gas-sp.hg .fh-gas-k { color: #1e40af; }
+    .fh-gas-sp.ne .fh-gas-k { color: #9a3412; }
+    .fh-gas-z { font-size: .73rem; color: #475569; line-height: 1.5; padding: 1px 0; }
+    .fh-gas-z b { color: #334155; }
+    .fh-gas-t { font-size: .78rem; color: #475569; line-height: 1.65; }
+    .fh-gas-t b { color: #334155; }
+    .fh-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
