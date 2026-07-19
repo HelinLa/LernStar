@@ -2154,6 +2154,20 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('fhTakt', 'fhKeinChart');
     _pSim.start(dt => _fhTakt(dt), () => _fhRender(), []);
   },
+
+  // Schluesselexperiment 16 des KLP: Linienspektren / Spektralanalyse.
+  // Diskrete Linienspektren, Wellenlaengenmessung am Gitter, Balmer-Serie
+  // und der Bogen zu den Energiestufen der Atomhuelle.
+  'linienspektren': modal => {
+    _lspInit();
+    modal.innerHTML = _lspHTML();
+    const erkl = document.getElementById('lspErkl');
+    if (erkl) erkl.innerHTML = _lspErklHTML();
+    _lspSetStation(0);
+    _lspUpdate();
+    _pSim = new PhysicsSimEngine('lspTakt', 'lspKeinChart');
+    _pSim.start(dt => _lspTakt(dt), () => _lspRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -22513,6 +22527,833 @@ function _fhRender() {
     .fh-gas-t { font-size: .78rem; color: #475569; line-height: 1.65; }
     .fh-gas-t b { color: #334155; }
     .fh-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// LINIENSPEKTREN / SPEKTRALANALYSE – Schluesselexperiment 16 (angehaengt)
+// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// LINIENSPEKTREN / SPEKTRALANALYSE
+// Schluesselexperiment 16 der NRW-Handreichung.
+// Kernkompetenzen des KLP: die Energie absorbierter und emittierter Photonen
+// mit den Energieniveaus in der Atomhuelle erklaeren (UF1, E6); Wellenlaengen
+// und Frequenzen mit Doppelspalt und Gitter bestimmen (E5); Modelle der
+// diskreten Energiezustaende erlaeutern (E2, E5, E6, E7).
+// ═══════════════════════════════════════════════════════
+
+const _LSP_HC = 1239.84;        // h·c in eV·nm
+const _LSP_RYD = 1.0973731e7;   // Rydberg-Konstante in 1/m
+const _LSP_E0 = 13.605;         // Ionisierungsenergie Wasserstoff in eV
+
+// Spektralliniendaten (starke sichtbare Linien, Wellenlaenge in nm, Intensitaet 0..1)
+const _LSP_GASE = [
+  { id: 'h', n: 'Wasserstoff', sym: 'H', glow: '#d9adff',
+    linien: [
+      { nm: 410.2, i: 0.35, name: 'Hδ (n=6→2)' },
+      { nm: 434.0, i: 0.5, name: 'Hγ (n=5→2)' },
+      { nm: 486.1, i: 0.75, name: 'Hβ (n=4→2)' },
+      { nm: 656.3, i: 1.0, name: 'Hα (n=3→2)' }
+    ] },
+  { id: 'he', n: 'Helium', sym: 'He', glow: '#ffd9a3',
+    linien: [
+      { nm: 447.1, i: 0.5 }, { nm: 471.3, i: 0.35 }, { nm: 492.2, i: 0.4 },
+      { nm: 501.6, i: 0.55 }, { nm: 587.6, i: 1.0, name: 'gelbe He-Linie' },
+      { nm: 667.8, i: 0.6 }, { nm: 706.5, i: 0.45 }
+    ] },
+  { id: 'ne', n: 'Neon', sym: 'Ne', glow: '#ff8a5c',
+    linien: [
+      { nm: 585.2, i: 0.9 }, { nm: 594.5, i: 0.7 }, { nm: 603.0, i: 0.6 },
+      { nm: 607.4, i: 0.65 }, { nm: 614.3, i: 0.7 }, { nm: 621.7, i: 0.6 },
+      { nm: 626.6, i: 0.7 }, { nm: 633.4, i: 0.85 }, { nm: 640.2, i: 1.0 },
+      { nm: 650.7, i: 0.75 }, { nm: 659.9, i: 0.6 }, { nm: 692.9, i: 0.5 }
+    ] },
+  { id: 'na', n: 'Natrium', sym: 'Na', glow: '#ffe27a',
+    linien: [
+      { nm: 589.0, i: 1.0, name: 'Na-D₂' }, { nm: 589.6, i: 0.95, name: 'Na-D₁' }
+    ] },
+  { id: 'hg', n: 'Quecksilber', sym: 'Hg', glow: '#a3d9ff',
+    linien: [
+      { nm: 404.7, i: 0.6, name: 'violett' }, { nm: 435.8, i: 0.9, name: 'blau' },
+      { nm: 546.1, i: 1.0, name: 'grün' }, { nm: 577.0, i: 0.6, name: 'gelb' },
+      { nm: 579.1, i: 0.6, name: 'gelb' }
+    ] }
+];
+
+// Aufbau-Parameter des Grundversuchs (Handreichung)
+const _LSP_G0 = 1.75e-6;    // Gitterkonstante in m (≈ 571 Striche/mm)
+const _LSP_L0 = 0.40;       // Abstand Gitter–Maßstab in m
+
+let _lsp = null;
+
+function _lspInit() {
+  _lsp = {
+    station: 0,
+    gas: 0,
+    zeigeLambda: false,
+    // Station 2
+    g: _LSP_G0, L: _LSP_L0, k: 1, linie: 2,   // Default: Hβ
+    // Station 4
+    raten: 0, geraten: null, aufgedeckt: false,
+    // Station 5
+    epoche: 0,
+    t: 0
+  };
+}
+
+// ── Zahlformat ──────────────────────────────────────────
+function _lspZahl(v) {
+  if (!isFinite(v) || v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const dez = Math.max(0, Math.min(20, 5 - ex));
+  const s = v.toFixed(dez);
+  return s.indexOf('.') >= 0 ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
+}
+
+// ── Physik ──────────────────────────────────────────────
+// Photonenenergie und Frequenz
+function _lspEnergie(nm) { return _LSP_HC / nm; }              // eV
+function _lspFrequenz(nm) { return 2.99792458e8 / (nm * 1e-9); } // Hz
+
+// Beugung am Gitter: g·sin(α) = k·λ. Winkel des Hauptmaximums k-ter Ordnung.
+function _lspWinkel(nm, g, k) {
+  const s = k * nm * 1e-9 / g;
+  return s <= 1 ? Math.asin(s) : NaN;      // NaN, wenn keine Ordnung existiert
+}
+// Ort auf dem Maßstab: a = L·tan(α)
+function _lspOrt(nm, g, L, k) {
+  const a = _lspWinkel(nm, g, k);
+  return isFinite(a) ? L * Math.tan(a) : NaN;
+}
+// Rueckweg: aus dem Ort a die Wellenlaenge bestimmen (das Messverfahren)
+function _lspLambdaAus(a, g, L, k) {
+  const alpha = Math.atan(a / L);
+  return g * Math.sin(alpha) / k * 1e9;   // nm
+}
+
+// Wasserstoff: Rydbergformel und Energiestufen
+function _lspBalmer(n) {                 // Wellenlaenge des Uebergangs n->2 in nm
+  const inv = _LSP_RYD * (1 / 4 - 1 / (n * n));
+  return 1 / inv * 1e9;
+}
+function _lspEn(n) { return -_LSP_E0 / (n * n); }   // Energieniveau in eV
+
+// Wellenlaenge -> RGB (Naeherung nach Bruton, fuer die Darstellung)
+function _lspFarbe(nm) {
+  let r = 0, g = 0, b = 0;
+  if (nm >= 380 && nm < 440) { r = -(nm - 440) / 60; b = 1; }
+  else if (nm < 490) { g = (nm - 440) / 50; b = 1; }
+  else if (nm < 510) { g = 1; b = -(nm - 510) / 20; }
+  else if (nm < 580) { r = (nm - 510) / 70; g = 1; }
+  else if (nm < 645) { r = 1; g = -(nm - 645) / 65; }
+  else if (nm <= 780) { r = 1; }
+  // Intensitaetsabfall an den Raendern
+  let f = 1;
+  if (nm < 420) f = 0.3 + 0.7 * (nm - 380) / 40;
+  else if (nm > 700) f = 0.3 + 0.7 * (780 - nm) / 80;
+  const to = v => Math.round(255 * Math.pow(Math.max(0, v) * f, 0.8));
+  return 'rgb(' + to(r) + ',' + to(g) + ',' + to(b) + ')';
+}
+
+// ── Oberflaeche ─────────────────────────────────────────
+function _lspHTML() {
+  const stationen = ['1 · Spektralröhre & Gitter', '2 · Wellenlänge messen',
+                     '3 · Von der Linie zur Energiestufe', '4 · Jedes Gas ein Fingerabdruck',
+                     '5 · Geschichte & Modelle']
+    .map((s, i) => `<button class="fpm-tab${i === _lsp.station ? ' on' : ''}" id="lspSt${i}" onclick="_lspSetStation(${i})">${s}</button>`).join('');
+
+  const gaswahl = _LSP_GASE.map((c, i) =>
+    `<button class="osz-segb" id="lspGas${i}" onclick="_lspSetGas(${i})">${c.n}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim lsp-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌈 Linienspektren & Spektralanalyse: das Schlüsselexperiment</h3>
+    <canvas id="lspTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="lspS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="lspRohr" width="440" height="150" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Die Spektralröhre leuchtet in ihrer charakteristischen Farbe</div>
+          <canvas id="lspSpektrum" width="440" height="120" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Das Licht durch das Gitter: einzelne, scharfe Linien</div>
+        </div>
+        <div>
+          <div class="osz-gruppe">
+            <div class="osz-gruppe-k">Gas in der Röhre</div>
+            <div class="osz-zeile" style="flex-wrap:wrap"><span class="osz-seg" style="flex-wrap:wrap">${gaswahl}</span></div>
+            <label class="fpm-check"><input type="checkbox" id="lspZeigeL"
+              onchange="_lspSet('zeigeLambda',this.checked)"> Wellenlängen einblenden</label>
+          </div>
+          <div class="lsp-lage" id="lspLage"></div>
+          <div class="lsp-linien" id="lspLinien"></div>
+        </div>
+      </div>
+      <div class="lsp-k3" id="lspK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="lspS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="lspMess" width="440" height="260" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Subjektive Beobachtung: das gebeugte Bild auf dem Maßstab</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Gitterkonstante g</span>
+              <input type="range" id="lspGk" min="1.0" max="3.3" step="0.05" value="1.75"
+                oninput="_lspSetG(this.value)"><b id="lspGkLbl">1,75 µm</b></div>
+            <div class="osz-zeile"><span>Abstand L</span>
+              <input type="range" id="lspLl" min="0.2" max="0.8" step="0.01" value="0.40"
+                oninput="_lspSetL(this.value)"><b id="lspLlLbl">0,40 m</b></div>
+            <div class="osz-zeile"><span>Ordnung k</span>
+              <span class="osz-seg">
+                <button class="osz-segb" id="lspK1" onclick="_lspSetK(1)">1</button>
+                <button class="osz-segb" id="lspK2" onclick="_lspSetK(2)">2</button></span></div>
+          </div>
+        </div>
+        <div>
+          <div class="fpm-label">Spektrallinie auswählen (Wasserstoff)</div>
+          <div class="lsp-linienwahl" id="lspLinienwahl"></div>
+          <div class="ebr-rechnung" id="lspMessRechnung"></div>
+          <div class="lsp-bsp" id="lspBeispiel"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="lspS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="lspNiveau" width="440" height="320" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Energiestufen des Wasserstoffs und die Balmer-Übergänge</div>
+        </div>
+        <div>
+          <div class="lsp-balmer" id="lspBalmerText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="lspS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="lspVergleich" width="440" height="300" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Die Spektren im Vergleich – jedes Gas ein Fingerabdruck</div>
+        </div>
+        <div>
+          <div class="lsp-raten" id="lspRatenBox"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="lspS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <div class="lsp-zeit" id="lspZeitleiste"></div>
+        </div>
+        <div>
+          <div class="lsp-hist" id="lspHist"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="lspErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>g · sin α = k · λ</b> &nbsp;|&nbsp; <b>tan α = a / L</b>
+      &nbsp;|&nbsp; <b>E = h · c / λ</b> &nbsp;|&nbsp; <b>1/λ = R · (1/2² − 1/n²)</b>
+    </p>
+  </div>`;
+}
+
+function _lspErklHTML() {
+  return `<div class="dsp-erkl-kopf">Worum es geht</div>
+    <div class="dsp-erkl-text">
+      Schickt man das Licht einer <b>Gasentladungslampe</b> durch ein optisches Gitter, so
+      zerlegt es sich nicht in einen kontinuierlichen Regenbogen, sondern in einzelne, scharfe
+      <b>farbige Linien</b> vor schwarzem Hintergrund. Das ist die zentrale Beobachtung der
+      Spektralanalyse: Das Spektrum eines Gases besteht aus <b>diskreten Linien</b>. Und jedes Gas
+      hat sein eigenes, unverwechselbares Linienmuster – seinen <b>Fingerabdruck</b>.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Was das Gitter tut</div>
+    <div class="dsp-erkl-text">
+      Das Gitter trennt die Wellenlängen, weil die Beugung <b>wellenlängenabhängig</b> ist: Für
+      jede Farbe liegt das Hauptmaximum unter einem anderen Winkel. Es gilt
+      <b>g · sin α = k · λ</b>, wobei g die Gitterkonstante und k die Beugungsordnung ist. Aus der
+      Geometrie folgt der Winkel über <b>tan α = a / L</b>: a ist der Abstand der Linie von der
+      Mitte auf dem Maßstab, L der Abstand vom Gitter zum Maßstab. Das ist genau derselbe Aufbau
+      wie bei der Wellenlängenmessung mit dem Gitter (Schlüsselexperiment 3) – nur dass jetzt
+      mehrere Wellenlängen gleichzeitig ankommen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Von der Linie zur Energie</div>
+    <div class="dsp-erkl-text">
+      Aus der gemessenen Wellenlänge folgt die Energie des Strahlungsübergangs:
+      <b>E = h · c / λ</b>. Im Auswertungsbeispiel der Handreichung ergibt die violette
+      Wasserstofflinie λ ≈ 432,5 nm und damit E ≈ <b>2,86 eV</b>. Diese Energie ist die Differenz
+      zweier <b>Energieniveaus</b> in der Atomhülle: Fällt ein Elektron von einem höheren auf ein
+      tieferes Niveau, wird die frei werdende Energie als ein Photon dieser Energie ausgesandt.
+      Die Linien sind also ein direktes Bild der erlaubten Energiestufen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Wasserstoff und die Balmer-Serie</div>
+    <div class="dsp-erkl-text">
+      Das einfachste und am besten auswertbare Spektrum ist das des Wasserstoffs. Seine vier
+      sichtbaren Linien (rot 656 nm, blaugrün 486 nm, violett 434 nm und 410 nm) gehören alle zu
+      Übergängen, die auf dem <b>zweiten</b> Energieniveau enden – der <b>Balmer-Serie</b>. Johann
+      Balmer fand 1885 rein empirisch eine Formel für ihre Wellenlängen, Johannes Rydberg
+      verallgemeinerte sie 1908 zu <b>1/λ = R · (1/2² − 1/n²)</b> mit n = 3, 4, 5, … Übergänge
+      auf das erste Niveau (Lyman-Serie) liegen im UV, solche auf das dritte (Paschen-Serie) im
+      Infraroten – beide sind unsichtbar.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum das wichtig ist</div>
+    <div class="dsp-erkl-text">
+      Weil jedes Element sein eigenes Linienmuster hat, lässt sich aus einem Spektrum bestimmen,
+      <b>welche Stoffe</b> eine Lichtquelle enthält – ohne sie je zu berühren. So bestimmt man die
+      Zusammensetzung von Sternen (Schlüsselexperiment 17: Sonnenspektrum), weist Elemente in
+      Flammen nach (Schlüsselexperiment 18: Flammenfärbung) und analysiert Materialien im Labor.
+      Historisch waren die Spektren die ersten Boten aus dem Inneren des Atoms: Fraunhofer,
+      Kirchhoff und Bunsen, Balmer und Rydberg legten die Spuren, denen Niels Bohr 1913 mit seinem
+      Atommodell einen Sinn gab.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Spektralröhren werden mit <b>Hochspannung</b> betrieben.
+      Hochspannungswarnschild aufstellen, die Röhre nur durch die Lehrkraft betreiben.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _lspSetStation(i) {
+  _lsp.station = Math.max(0, Math.min(4, i));
+  for (let k = 0; k < 5; k++) {
+    document.getElementById('lspSt' + k)?.classList.toggle('on', k === _lsp.station);
+    const d = document.getElementById('lspS' + k);
+    if (d) d.style.display = k === _lsp.station ? 'block' : 'none';
+  }
+  _lspUpdate();
+}
+function _lspSet(key, val) { _lsp[key] = val; _lspUpdate(); }
+
+function _lspSetGas(i) { _lsp.gas = Math.max(0, Math.min(_LSP_GASE.length - 1, i)); _lspUpdate(); }
+function _lspSetG(v) {
+  _lsp.g = +v * 1e-6;
+  const el = document.getElementById('lspGkLbl'); if (el) el.textContent = _fpmNum(+v, 2) + ' µm';
+  _lspRenderMess();
+}
+function _lspSetL(v) {
+  _lsp.L = +v;
+  const el = document.getElementById('lspLlLbl'); if (el) el.textContent = _fpmNum(+v, 2) + ' m';
+  _lspRenderMess();
+}
+function _lspSetK(k) { _lsp.k = k; _lspRenderMess(); }
+function _lspSetLinie(i) { _lsp.linie = i; _lspRenderMess(); }
+
+function _lspUpdate() {
+  if (!_lsp) return;
+  const G = _LSP_GASE[_lsp.gas];
+  _LSP_GASE.forEach((c, i) => document.getElementById('lspGas' + i)?.classList.toggle('on', i === _lsp.gas));
+
+  const lage = document.getElementById('lspLage');
+  if (lage) {
+    lage.innerHTML = `<b>${G.n} (${G.sym})</b> zeigt ${G.linien.length} deutliche Linien im
+      sichtbaren Bereich. ${G.id === 'h'
+        ? 'Wasserstoff ist das einfachste Spektrum – vier Linien, alle Teil der Balmer-Serie.'
+        : G.id === 'na'
+        ? 'Natrium zeigt fast nur die berühmte gelbe Doppellinie bei 589 nm – daher das gelbe Licht von Natriumdampflampen.'
+        : G.id === 'ne'
+        ? 'Neon hat besonders viele Linien im roten und orangen Bereich – deshalb leuchtet eine Neonröhre orangerot.'
+        : 'Jede Linie entspricht einem bestimmten Übergang zwischen zwei Energieniveaus.'}`;
+  }
+
+  const ll = document.getElementById('lspLinien');
+  if (ll) {
+    ll.innerHTML = '<div class="git-sch-kopf">Die Linien dieses Gases</div>'
+      + '<div class="lsp-lin-tab">'
+      + G.linien.slice().sort((a, b) => a.nm - b.nm).map(l =>
+        `<div class="lsp-lin-z"><span class="lsp-lin-farbe" style="background:${_lspFarbe(l.nm)}"></span>
+           <b>${_fpmNum(l.nm, 1)} nm</b>
+           <span class="lsp-lin-e">${_fpmNum(_lspEnergie(l.nm), 2)} eV</span>
+           <span class="lsp-lin-n">${l.name || ''}</span></div>`).join('')
+      + '</div>';
+  }
+
+  _lspRenderK3();
+  _lspRenderMess();
+  _lspRenderBalmer();
+  _lspRenderRaten();
+  _lspRenderHist();
+}
+
+function _lspRenderK3() {
+  const el = document.getElementById('lspK3'); if (!el) return;
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du diesen Versuch jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Wir wollen zeigen, dass das Licht eines Gases aus einzelnen Wellenlängen besteht, und
+        daraus auf die Energiestufen im Atom schließen.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Eine Spektralröhre wird mit Hochspannung zum Leuchten gebracht. Man blickt durch ein
+        optisches Gitter (mindestens 300 Striche/mm) auf die Röhre; daneben steht ein Maßstab.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Man beobachtet die gebeugten farbigen Linien und liest ihre Abstände von der Mitte auf
+        dem Maßstab ab.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        Das Spektrum besteht aus <b>diskreten Linien</b>, nicht aus einem durchgehenden
+        Farbverlauf. Jedes Gas hat sein eigenes Muster.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Über g·sinα = k·λ folgt aus jeder Linie eine Wellenlänge, über E = hc/λ eine Energie –
+        die Differenz zweier Energiestufen in der Atomhülle.</div>
+    </div>`;
+}
+
+// ── Station 2: Wellenlänge messen ──────────────────────
+function _lspRenderMess() {
+  const G = _LSP_GASE[0];   // Wasserstoff fuer die Messung
+  const lw = document.getElementById('lspLinienwahl');
+  if (lw) {
+    const sorted = G.linien.slice().sort((a, b) => a.nm - b.nm);
+    lw.innerHTML = sorted.map((l, i) =>
+      `<button class="lsp-lw-b${i === _lsp.linie ? ' on' : ''}" onclick="_lspSetLinie(${i})"
+         style="${i === _lsp.linie ? 'border-color:' + _lspFarbe(l.nm) : ''}">
+         <span class="lsp-lw-farbe" style="background:${_lspFarbe(l.nm)}"></span>
+         ${_fpmNum(l.nm, 0)} nm</button>`).join('');
+  }
+  document.getElementById('lspK1')?.classList.toggle('on', _lsp.k === 1);
+  document.getElementById('lspK2')?.classList.toggle('on', _lsp.k === 2);
+
+  const sorted = G.linien.slice().sort((a, b) => a.nm - b.nm);
+  const linie = sorted[Math.min(_lsp.linie, sorted.length - 1)];
+  const el = document.getElementById('lspMessRechnung');
+  if (el) {
+    const a = _lspOrt(linie.nm, _lsp.g, _lsp.L, _lsp.k);
+    const alpha = _lspWinkel(linie.nm, _lsp.g, _lsp.k);
+    if (!isFinite(a)) {
+      el.innerHTML = '<div class="fpm-note">Für diese Wellenlänge und Ordnung existiert kein '
+        + 'Hauptmaximum (sin α > 1). Wähle eine kleinere Ordnung oder ein feineres Gitter.</div>';
+    } else {
+      const lamZurueck = _lspLambdaAus(a, _lsp.g, _lsp.L, _lsp.k);
+      el.innerHTML = `
+        <div class="pho-rz"><span class="pho-rz-t">Ort auf dem Maßstab</span>
+          <span class="pho-rz-f">a = L·tan α</span>
+          <span class="pho-rz-v">${_fpmNum(a * 100, 2)} cm</span></div>
+        <div class="pho-rz"><span class="pho-rz-t">Beugungswinkel</span>
+          <span class="pho-rz-f">tan α = a/L</span>
+          <span class="pho-rz-v">${_fpmNum(alpha * 180 / Math.PI, 2)}°</span></div>
+        <div class="pho-rz"><span class="pho-rz-t">Wellenlänge</span>
+          <span class="pho-rz-f">λ = g·sin α / k</span>
+          <span class="pho-rz-v">${_fpmNum(lamZurueck, 1)} nm</span></div>
+        <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Energie des Übergangs</span>
+          <span class="pho-rz-f">E = h·c/λ</span>
+          <span class="pho-rz-v">${_fpmNum(_lspEnergie(lamZurueck), 2)} eV</span></div>
+        <div class="fpm-note">Aus dem gemessenen Ort a folgt über zwei Winkelbeziehungen die
+          Wellenlänge – und daraus die Energie. Der Rückweg liefert wieder die
+          ${_fpmNum(linie.nm, 0)} nm, mit denen wir gestartet sind.</div>`;
+    }
+  }
+
+  const bs = document.getElementById('lspBeispiel');
+  if (bs) {
+    // Das Auswertungsbeispiel der Handreichung nachstellen
+    const aBsp = 0.102, LBsp = 0.40, gBsp = 1.75e-6;
+    const alphaBsp = Math.atan(aBsp / LBsp);
+    const lamBsp = gBsp * Math.sin(alphaBsp) * 1e9;
+    bs.innerHTML = `<div class="git-sch-kopf">Das Auswertungsbeispiel der Handreichung</div>
+      <div class="lsp-bsp-t">Für die violette Wasserstofflinie (1. Ordnung) wird auf dem Maßstab
+        a = (0,701 − 0,498)/2 = <b>0,102 m</b> abgelesen, bei g = 1,75 µm und L = 0,40 m. Daraus:
+        α = arctan(0,102/0,40) = <b>14,31°</b>, λ = 1,75 µm · sin 14,31° = <b>432,5 nm</b> und
+        E = <b>2,86 eV</b>. Das ist die Balmer-Linie Hγ (Übergang n = 5 → 2).</div>`;
+  }
+}
+
+// ── Station 3: Balmer / Energiestufen ──────────────────
+function _lspRenderBalmer() {
+  const el = document.getElementById('lspBalmerText'); if (!el) return;
+  const zeilen = [3, 4, 5, 6].map(n => {
+    const lam = _lspBalmer(n);
+    return `<tr><td>n = ${n} → 2</td>
+      <td><span class="lsp-lin-farbe" style="background:${_lspFarbe(lam)};display:inline-block;vertical-align:middle"></span>
+        ${_fpmNum(lam, 1)} nm</td>
+      <td>${_fpmNum(_lspEnergie(lam), 2)} eV</td></tr>`;
+  }).join('');
+  el.innerHTML = `<div class="git-sch-kopf">Die Balmer-Serie des Wasserstoffs</div>
+    <div class="lsp-balmer-t">Alle vier sichtbaren Wasserstofflinien enden auf dem
+      <b>zweiten</b> Energieniveau. Der Übergang von n auf 2 liefert nach der Rydbergformel
+      1/λ = R·(1/2² − 1/n²):</div>
+    <div class="fpm-tablewrap"><table class="sim-table thr-tab">
+      <thead><tr><th>Übergang</th><th>Wellenlänge</th><th>Energie</th></tr></thead>
+      <tbody>${zeilen}</tbody></table></div>
+    <div class="lsp-balmer-form">R = 1,097·10⁷ 1/m &nbsp;·&nbsp; E<sub>n</sub> = −13,6 eV / n²</div>
+    <div class="lsp-balmer-t" style="margin-top:8px"><b>Die anderen Serien:</b> Übergänge auf
+      n = 1 bilden die <b>Lyman-Serie</b> (Ultraviolett, unsichtbar), Übergänge auf n = 3 die
+      <b>Paschen-Serie</b> (Infrarot, unsichtbar). Nur die Balmer-Serie liegt im sichtbaren
+      Bereich – deshalb sieht man beim Wasserstoff gerade diese vier Linien.</div>
+    <div class="fpm-note">Balmer fand seine Formel 1885 rein durch Probieren an den vier Zahlen –
+      ohne jede Vorstellung vom Atombau. Erst Bohr gab ihr 1913 eine physikalische Bedeutung: Die
+      ganzen Zahlen n sind die erlaubten Energiestufen der Elektronen.</div>`;
+}
+
+// ── Station 4: Fingerabdruck / Ratespiel ───────────────
+function _lspRaten() {
+  // waehle ein "unbekanntes" Gas deterministisch aus dem Zustand
+  _lsp.raten = (_lsp.raten + 1) % _LSP_GASE.length;
+  _lsp.geraten = null; _lsp.aufgedeckt = false;
+  _lspRenderRaten();
+  const c = document.getElementById('lspVergleich');
+  if (c) _lspDrawVergleich(c.getContext('2d'), c);
+}
+function _lspTipp(i) {
+  _lsp.geraten = i; _lsp.aufgedeckt = true;
+  _lspRenderRaten();
+}
+function _lspRenderRaten() {
+  const el = document.getElementById('lspRatenBox'); if (!el) return;
+  const unbekannt = _LSP_GASE[_lsp.raten];
+  const knoepfe = _LSP_GASE.map((c, i) =>
+    `<button class="lsp-rate-b${_lsp.aufgedeckt && i === _lsp.raten ? ' richtig' : ''}${
+      _lsp.aufgedeckt && i === _lsp.geraten && i !== _lsp.raten ? ' falsch' : ''}"
+      onclick="_lspTipp(${i})">${c.n}</button>`).join('');
+  el.innerHTML = `<div class="git-sch-kopf">Spektralanalyse: welches Gas ist das?</div>
+    <div class="lsp-rate-t">Ganz unten im Vergleich siehst du das Spektrum eines
+      <b>unbekannten</b> Gases. Vergleiche sein Linienmuster mit den bekannten darüber und
+      bestimme, um welches Gas es sich handelt.</div>
+    <div class="lsp-rate-knoepfe">${knoepfe}</div>
+    ${_lsp.aufgedeckt ? `<div class="lsp-rate-erg ${_lsp.geraten === _lsp.raten ? 'ok' : 'no'}">
+      ${_lsp.geraten === _lsp.raten
+        ? '<b>Richtig!</b> Es ist ' + unbekannt.n + '. Genau so bestimmt man die Zusammensetzung ferner Sterne – allein aus ihrem Licht.'
+        : '<b>Nicht ganz.</b> Es war ' + unbekannt.n + '. Achte besonders auf die auffälligsten Linien: Ihre Lage ist für jedes Gas charakteristisch.'}
+      </div>` : ''}
+    <div class="sim-btn-row"><button class="sim-btn primary" onclick="_lspRaten()">🔄 neues Gas</button></div>
+    <div class="fpm-note">Weil jedes Element sein eigenes Linienmuster hat, ist ein Spektrum wie
+      ein Fingerabdruck. So wurde 1868 das <b>Helium</b> zuerst in der Sonne entdeckt – über eine
+      unbekannte Linie im Sonnenspektrum – und erst später auf der Erde gefunden.</div>`;
+}
+
+// ── Station 5: Geschichte ──────────────────────────────
+const _LSP_EPOCHEN = [
+  { j: '1814', n: 'Fraunhofer',
+    t: 'Joseph von Fraunhofer entdeckt im Spektrum der Sonne hunderte dunkler Linien – Wellenlängen, bei denen Licht fehlt. Er katalogisiert sie, ohne ihre Ursache zu kennen. Diese <b>Fraunhoferlinien</b> sind Absorptionslinien der Sonnenatmosphäre (Schlüsselexperiment 17).' },
+  { j: '1859', n: 'Kirchhoff & Bunsen',
+    t: 'Gustav Kirchhoff und Robert Bunsen zeigen, dass jedes Element in der Flamme eine <b>charakteristische</b> Linienfarbe erzeugt (Schlüsselexperiment 18). Sie begründen die Spektralanalyse als Methode – und entdecken damit die Elemente Caesium und Rubidium.' },
+  { j: '1885', n: 'Balmer',
+    t: 'Johann Balmer, ein Basler Mathematiklehrer, findet rein durch Probieren eine Formel, die die vier sichtbaren Wasserstofflinien exakt beschreibt. Er weiß nicht, warum sie stimmt – aber sie stimmt auf Bruchteile eines Nanometers genau.' },
+  { j: '1888', n: 'Rydberg',
+    t: 'Johannes Rydberg verallgemeinert Balmers Formel zu 1/λ = R·(1/m² − 1/n²) und sagt damit weitere, noch unbeobachtete Serien voraus – die <b>Lyman-</b> und die <b>Paschen-Serie</b>, die später tatsächlich gefunden werden.' },
+  { j: '1913', n: 'Bohr',
+    t: 'Niels Bohr gibt den ganzen Zahlen einen Sinn: Elektronen dürfen nur bestimmte <b>Energiestufen</b> einnehmen. Beim Sprung von einer Stufe auf eine tiefere wird ein Photon der Energie E = h·f ausgesandt. Auf einen Schlag erklärt sein Atommodell die Spektren – und leitet einen Umsturz in der Physik ein.' }
+];
+function _lspSetEpoche(i) { _lsp.epoche = Math.max(0, Math.min(_LSP_EPOCHEN.length - 1, i)); _lspRenderHist(); }
+function _lspRenderHist() {
+  const z = document.getElementById('lspZeitleiste');
+  if (z) {
+    z.innerHTML = `<div class="git-sch-kopf">Von den Linien zum Atommodell</div>
+      <div class="lsp-zeit-reihe">${_LSP_EPOCHEN.map((e, i) =>
+        `<button class="lsp-zeit-p${i === _lsp.epoche ? ' on' : ''}" onclick="_lspSetEpoche(${i})">
+           <span>${e.j}</span>${e.n}</button>`).join('')}</div>`;
+  }
+  const h = document.getElementById('lspHist');
+  if (h) {
+    const e = _LSP_EPOCHEN[_lsp.epoche];
+    h.innerHTML = `<div class="lsp-hist-j">${e.j}</div>
+      <div class="lsp-hist-n">${e.n}</div>
+      <div class="lsp-hist-t">${e.t}</div>
+      <div class="fpm-note">Die Handreichung empfiehlt die Entwicklung des Bohrschen
+        Atommodells ausdrücklich als Beispiel dafür, wie sich naturwissenschaftliche Modelle –
+        und mit ihnen das Weltbild – im Lauf der Zeit verändern (Kompetenzen E7 und B4).</div>`;
+  }
+}
+
+// ── Zeichnungen ────────────────────────────────────────
+function _lspDrawRohr(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const G = _LSP_GASE[_lsp.gas];
+  const cy = H / 2, x0 = 70, x1 = W - 70;
+  // Elektroden
+  ctx.fillStyle = '#475569';
+  ctx.fillRect(x0 - 14, cy - 20, 12, 40); ctx.fillRect(x1 + 2, cy - 20, 12, 40);
+  // Leuchtende Roehre mit pulsierendem Glimmen
+  const puls = 0.8 + 0.2 * Math.sin(_lsp.t * 3);
+  const grad = ctx.createLinearGradient(0, cy - 18, 0, cy + 18);
+  grad.addColorStop(0, 'rgba(255,255,255,0.05)');
+  grad.addColorStop(0.5, G.glow);
+  grad.addColorStop(1, 'rgba(255,255,255,0.05)');
+  ctx.globalAlpha = puls;
+  ctx.fillStyle = grad;
+  ctx.fillRect(x0, cy - 16, x1 - x0, 32);
+  ctx.globalAlpha = 1;
+  // Umriss
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+  ctx.strokeRect(x0, cy - 16, x1 - x0, 32);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(G.n + ' (' + G.sym + ')', W / 2, cy - 30);
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif';
+  ctx.fillText('Hochspannung ⚡', W / 2, cy + 40);
+  ctx.textAlign = 'left';
+}
+
+function _lspDrawSpektrum(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+  const G = _LSP_GASE[_lsp.gas];
+  const nmMin = 380, nmMax = 720;
+  const X = nm => 30 + (nm - nmMin) / (nmMax - nmMin) * (W - 45);
+  // schwacher Referenz-Farbverlauf oben als Skala
+  for (let px = 30; px < W - 15; px++) {
+    const nm = nmMin + (px - 30) / (W - 45) * (nmMax - nmMin);
+    ctx.fillStyle = _lspFarbe(nm); ctx.globalAlpha = 0.18;
+    ctx.fillRect(px, H - 18, 1, 10);
+  }
+  ctx.globalAlpha = 1;
+  // Die Linien
+  G.linien.forEach(l => {
+    const x = X(l.nm);
+    ctx.fillStyle = _lspFarbe(l.nm);
+    ctx.globalAlpha = 0.4 + 0.6 * l.i;
+    ctx.fillRect(x - 1, 10, 2.4, H - 34);
+    ctx.globalAlpha = 1;
+    if (_lsp.zeigeLambda) {
+      ctx.fillStyle = '#cbd5e1'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+      ctx.save(); ctx.translate(x, H - 22); ctx.rotate(-Math.PI / 2);
+      ctx.fillText(_fpmNum(l.nm, 0), 0, 3); ctx.restore();
+    }
+  });
+  // Skalenmarken
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  [400, 500, 600, 700].forEach(nm => ctx.fillText(nm + ' nm', X(nm), H - 4));
+  ctx.textAlign = 'left';
+}
+
+function _lspDrawMess(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const G = _LSP_GASE[0];   // Wasserstoff
+  const cx = W / 2, gitterY = 40;
+  // Gitter
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(cx - 40, gitterY); ctx.lineTo(cx + 40, gitterY); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Gitter', cx, gitterY - 6);
+  // Massstab unten
+  const massY = H - 34;
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(20, massY); ctx.lineTo(W - 20, massY); ctx.stroke();
+  const scale = (W / 2 - 30) / 0.25;   // px je Meter (Bereich +/- 0,25 m)
+  for (let m = -0.25; m <= 0.25 + 1e-9; m += 0.05) {
+    const x = cx + m * scale;
+    ctx.beginPath(); ctx.moveTo(x, massY - 4); ctx.lineTo(x, massY + 4); ctx.stroke();
+    ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmNum(Math.abs(m) * 100, 0), x, massY + 14);
+  }
+  ctx.fillStyle = '#94a3b8'; ctx.fillText('Maßstab (cm)', cx, H - 6);
+
+  // Zentrale (weisse) 0. Ordnung
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+  ctx.beginPath(); ctx.moveTo(cx, gitterY); ctx.lineTo(cx, massY); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#fff';
+  ctx.beginPath(); ctx.arc(cx, massY, 3, 0, 2 * Math.PI); ctx.fill();
+
+  const sorted = G.linien.slice().sort((a, b) => a.nm - b.nm);
+  sorted.forEach((l, i) => {
+    const aktiv = i === _lsp.linie;
+    [1, -1].forEach(seite => {
+      for (let ord = 1; ord <= 2; ord++) {
+        if (ord !== _lsp.k && !aktiv) continue;
+        const a = _lspOrt(l.nm, _lsp.g, _lsp.L, ord);
+        if (!isFinite(a)) continue;
+        const x = cx + seite * a * scale;
+        if (x < 20 || x > W - 20) continue;
+        ctx.strokeStyle = _lspFarbe(l.nm);
+        ctx.globalAlpha = aktiv && ord === _lsp.k ? 1 : 0.35;
+        ctx.lineWidth = aktiv && ord === _lsp.k ? 2 : 1;
+        // Strahl vom Gitter zur Linie
+        ctx.beginPath(); ctx.moveTo(cx, gitterY); ctx.lineTo(x, massY); ctx.stroke();
+        // Linie auf dem Massstab
+        ctx.beginPath(); ctx.moveTo(x, massY - 22); ctx.lineTo(x, massY); ctx.lineWidth += 1; ctx.stroke();
+        ctx.globalAlpha = 1;
+        if (aktiv && ord === _lsp.k && seite === 1) {
+          ctx.fillStyle = _lspFarbe(l.nm); ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+          ctx.fillText('a = ' + _fpmNum(a * 100, 1) + ' cm', x, massY - 26);
+          ctx.fillText(_fpmNum(l.nm, 0) + ' nm, k=' + ord, x, massY - 38);
+        }
+      }
+    });
+  });
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('L = ' + _fpmNum(_lsp.L, 2) + ' m', 24, gitterY + 4);
+  ctx.textAlign = 'left';
+}
+
+function _lspDrawNiveau(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const x0 = 44, x1 = W - 130, yTop = 30, yBot = H - 40;
+  // Energieachse: E von -13,6 (n=1) bis 0 (n=inf). Wir zeigen n=1..6.
+  // Nichtlineare Skala (1/n²) waere gedraengt; wir platzieren die Niveaus nach E.
+  const Emin = -13.6, Emax = 0;
+  const Y = E => yBot - (E - Emin) / (Emax - Emin) * (yBot - yTop);
+  // Niveaus
+  for (let n = 1; n <= 6; n++) {
+    const E = _lspEn(n), y = Y(E);
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = n === 2 ? 2.2 : 1.4;
+    ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke();
+    ctx.fillStyle = '#475569'; ctx.font = (n === 2 ? '700 ' : '') + '10px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText('n=' + n, x0 - 4, y + 3);
+    ctx.textAlign = 'left'; ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif';
+    ctx.fillText(_fpmNum(E, 2) + ' eV', x1 + 4, y + 3);
+  }
+  // Grundzustand-Marke
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Grundzustand', x0 - 4, Y(_lspEn(1)) + 14);
+  ctx.textAlign = 'left';
+
+  // Balmer-Uebergaenge n->2 als farbige Pfeile
+  const y2 = Y(_lspEn(2));
+  [3, 4, 5, 6].forEach((n, i) => {
+    const lam = _lspBalmer(n);
+    const yn = Y(_lspEn(n));
+    const x = x0 + 60 + i * 55;
+    ctx.strokeStyle = _lspFarbe(lam); ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x, yn); ctx.lineTo(x, y2); ctx.stroke();
+    // Pfeilspitze
+    ctx.fillStyle = _lspFarbe(lam);
+    ctx.beginPath(); ctx.moveTo(x, y2); ctx.lineTo(x - 3, y2 - 6); ctx.lineTo(x + 3, y2 - 6); ctx.closePath(); ctx.fill();
+    ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmNum(lam, 0), x, yn - 4);
+  });
+  ctx.fillStyle = '#7c3aed'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Balmer-Serie: alle enden auf n = 2', (x0 + x1) / 2, y2 + 20);
+  // Andeutung Lyman (nach n=1) und Paschen (nach n=3)
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(x0 + 30, Y(_lspEn(3))); ctx.lineTo(x0 + 30, Y(_lspEn(1))); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Lyman → n=1 (UV)', x0 + 34, Y(_lspEn(1)) - 4);
+  ctx.textAlign = 'left';
+}
+
+function _lspDrawVergleich(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+  const nmMin = 380, nmMax = 720;
+  const X = nm => 60 + (nm - nmMin) / (nmMax - nmMin) * (W - 75);
+  // bekannte Gase + unbekanntes ganz unten
+  const reihen = _LSP_GASE.map((g, i) => ({ g, label: g.n }));
+  reihen.push({ g: _LSP_GASE[_lsp.raten], label: '??? (unbekannt)', unbekannt: true });
+  const nReihen = reihen.length;
+  const rh = (H - 20) / nReihen;
+  reihen.forEach((r, i) => {
+    const y = 10 + i * rh;
+    // Zeilenband
+    ctx.fillStyle = r.unbekannt ? '#1a1a1a' : '#0a0a0a';
+    ctx.fillRect(55, y, W - 65, rh - 4);
+    ctx.fillStyle = r.unbekannt ? '#fbbf24' : '#94a3b8';
+    ctx.font = (r.unbekannt ? '700 ' : '') + '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(r.label, 4, y + rh / 2 + 3);
+    r.g.linien.forEach(l => {
+      const x = X(l.nm);
+      ctx.fillStyle = _lspFarbe(l.nm);
+      ctx.globalAlpha = 0.4 + 0.6 * l.i;
+      ctx.fillRect(x - 1, y + 2, 2, rh - 8);
+      ctx.globalAlpha = 1;
+    });
+  });
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(55, H - 12 - rh + 6); ctx.lineTo(W - 10, H - 12 - rh + 6); ctx.stroke();
+  ctx.textAlign = 'left';
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _lspTakt(dt) {
+  if (!_lsp) return;
+  _lsp.t += Math.min(0.05, dt);
+}
+function _lspRender() {
+  if (!_lsp) return;
+  const st = _lsp.station;
+  if (st === 0) {
+    const cr = document.getElementById('lspRohr');
+    if (cr) _lspDrawRohr(cr.getContext('2d'), cr);
+    const cs = document.getElementById('lspSpektrum');
+    if (cs) _lspDrawSpektrum(cs.getContext('2d'), cs);
+  } else if (st === 1) {
+    const cm = document.getElementById('lspMess');
+    if (cm) _lspDrawMess(cm.getContext('2d'), cm);
+  } else if (st === 2) {
+    const cn = document.getElementById('lspNiveau');
+    if (cn) _lspDrawNiveau(cn.getContext('2d'), cn);
+  } else if (st === 3) {
+    const cv = document.getElementById('lspVergleich');
+    if (cv) _lspDrawVergleich(cv.getContext('2d'), cv);
+  }
+}
+
+// ── Zusätzliche Styles für die Linienspektren ──────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .lsp-lage { font-size: .78rem; border-radius: 9px; padding: 9px 11px; margin: 8px 0;
+      line-height: 1.55; border: 1px solid #e2e8f0; background: #f8fafc; color: #475569; }
+    .lsp-lage b { color: #334155; }
+    .lsp-linien { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; }
+    .lsp-lin-tab { display: flex; flex-direction: column; gap: 3px; margin-top: 5px; }
+    .lsp-lin-z { display: flex; align-items: center; gap: 8px; font-size: .76rem; color: #475569; }
+    .lsp-lin-farbe { width: 14px; height: 14px; border-radius: 3px; flex: 0 0 auto;
+      border: 1px solid rgba(0,0,0,.15); }
+    .lsp-lin-z b { flex: 0 0 66px; font-variant-numeric: tabular-nums; color: #334155; }
+    .lsp-lin-e { flex: 0 0 58px; color: #7c3aed; font-variant-numeric: tabular-nums; }
+    .lsp-lin-n { color: #94a3b8; font-size: .72rem; }
+    .lsp-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-top: 12px; }
+    .lsp-linienwahl, .lsp-lw-b { }
+    .lsp-linienwahl { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+    .lsp-lw-b { display: flex; align-items: center; gap: 5px; font-size: .74rem; padding: 5px 9px;
+      background: #fff; border: 2px solid #e2e8f0; border-radius: 999px; cursor: pointer;
+      color: #475569; font-variant-numeric: tabular-nums; }
+    .lsp-lw-b:hover { border-color: #cbd5e1; }
+    .lsp-lw-b.on { font-weight: 700; color: #334155; }
+    .lsp-lw-farbe { width: 11px; height: 11px; border-radius: 2px; border: 1px solid rgba(0,0,0,.15); }
+    .lsp-bsp { background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 9px;
+      padding: 9px 12px; margin-top: 8px; }
+    .lsp-bsp-t { font-size: .76rem; color: #5b21b6; line-height: 1.6; }
+    .lsp-bsp-t b { color: #4c1d95; }
+    .lsp-balmer { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 11px 13px; }
+    .lsp-balmer-t { font-size: .78rem; color: #475569; line-height: 1.6; }
+    .lsp-balmer-t b { color: #334155; }
+    .lsp-balmer-form { font-size: .82rem; text-align: center; color: #7c3aed; background: #f5f3ff;
+      border: 1px solid #ddd6fe; border-radius: 8px; padding: 7px 10px; margin: 8px 0; }
+    .lsp-raten { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 11px 13px; }
+    .lsp-rate-t { font-size: .78rem; color: #475569; line-height: 1.6; }
+    .lsp-rate-t b { color: #334155; }
+    .lsp-rate-knoepfe { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0; }
+    .lsp-rate-b { flex: 1 1 80px; font-size: .74rem; padding: 7px 8px; background: #fff;
+      border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; color: #475569; }
+    .lsp-rate-b:hover { border-color: #cbd5e1; }
+    .lsp-rate-b.richtig { border-color: #16a34a; background: #f0fdf4; color: #166534; font-weight: 700; }
+    .lsp-rate-b.falsch { border-color: #dc2626; background: #fef2f2; color: #991b1b; }
+    .lsp-rate-erg { font-size: .77rem; border-radius: 8px; padding: 8px 10px; margin: 6px 0;
+      line-height: 1.55; }
+    .lsp-rate-erg.ok { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+    .lsp-rate-erg.no { background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412; }
+    .lsp-zeit { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; }
+    .lsp-zeit-reihe { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+    .lsp-zeit-p { display: flex; align-items: baseline; gap: 10px; text-align: left; padding: 8px 10px;
+      background: #fff; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer;
+      font-size: .78rem; color: #475569; font-weight: 700; }
+    .lsp-zeit-p:hover { border-color: #cbd5e1; }
+    .lsp-zeit-p.on { border-color: #7c3aed; background: #f5f3ff; color: #5b21b6; }
+    .lsp-zeit-p span { font-size: .9rem; font-weight: 800; color: #94a3b8; flex: 0 0 48px; }
+    .lsp-zeit-p.on span { color: #7c3aed; }
+    .lsp-hist { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 11px 13px; }
+    .lsp-hist-j { font-size: 1.3rem; font-weight: 800; color: #7c3aed; line-height: 1; }
+    .lsp-hist-n { font-size: .86rem; font-weight: 800; color: #334155; margin: 3px 0 6px; }
+    .lsp-hist-t { font-size: .79rem; color: #475569; line-height: 1.7; }
+    .lsp-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
