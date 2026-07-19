@@ -2045,7 +2045,7 @@ function _fpmHTML() {
   const presets = ['m → T', 'm → T²', '1/D → T²', 'm/D → T²'].map((p, i) =>
     `<button class="fpm-tab${i === _fpm.preset ? ' on' : ''}" id="fpmTab${i}" onclick="_fpmSetPreset(${i})">${p}</button>`).join('');
 
-  return `<div class="sim-box sim-box-wide">
+  return `<div class="sim-box sim-box-wide fpm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🌀 Federpendel – Messreihe &amp; Linearisierung</h3>
 
@@ -2082,8 +2082,8 @@ function _fpmHTML() {
           <button class="sim-btn" id="fpmStopBtn" onclick="_fpmStop()" disabled>■ Stopp</button>
           <button class="sim-btn" id="fpmTakeBtn" onclick="_fpmTake()" disabled>✓ Messwert übernehmen</button>
         </div>
-        <label class="fpm-check"><input type="checkbox" id="fpmTrig" checked>
-          Stoppuhr startet automatisch am oberen Umkehrpunkt</label>
+        <label class="fpm-check"><input type="checkbox" id="fpmTrig">
+          Genauer messen: Uhr erst am oberen Umkehrpunkt starten</label>
         <div class="sim-btn-row">
           <button class="sim-btn" onclick="_fpmAuto()">⏱ Lichtschranke: 10 Perioden</button>
           <button class="sim-btn" onclick="_fpmDemo()">📋 Beispielmessreihe</button>
@@ -2149,6 +2149,8 @@ function _fpmResetSW() {
   _fpmUpdateSW();
 }
 function _fpmStart() {
+  // Scharf gestellte Uhr laesst sich mit demselben Knopf wieder abbrechen
+  if (_fpm.sw.state === 'armed') { _fpmResetSW(); return; }
   if (document.getElementById('fpmTrig')?.checked) {
     _fpm.sw = { state: 'armed', t0: 0, n: 0, elapsed: 0, result: null };
   } else {
@@ -2158,6 +2160,7 @@ function _fpmStart() {
 }
 function _fpmStop() {
   const sw = _fpm.sw;
+  if (sw.state === 'armed') { _fpmResetSW(); return; }   // Stopp bricht das Warten ab
   if (sw.state !== 'running') return;
   sw.state = 'stopped';
   sw.elapsed = _fpm.t - sw.t0;
@@ -2166,17 +2169,22 @@ function _fpmStop() {
 }
 function _fpmUpdateSW() {
   const sw = _fpm.sw;
+  const armed = sw.state === 'armed', running = sw.state === 'running';
   const tEl = document.getElementById('fpmT');
   if (tEl) {
-    tEl.textContent = sw.state === 'armed' ? 'bereit' : _fpmNum(sw.elapsed, 2);
-    tEl.style.color = sw.state === 'armed' ? '#f97316' : '#7c3aed';
+    tEl.textContent = armed ? 'wartet…' : _fpmNum(sw.elapsed, 2);
+    tEl.style.color = armed ? '#f97316' : '#7c3aed';
   }
   const nEl = document.getElementById('fpmN'); if (nEl) nEl.textContent = sw.n;
   const ttEl = document.getElementById('fpmTT'); if (ttEl) ttEl.textContent = sw.result ? _fpmNum(sw.result, 3) : '—';
-  const stop = document.getElementById('fpmStopBtn'); if (stop) stop.disabled = sw.state !== 'running';
+  // Stopp bleibt auch im Wartezustand bedienbar – ein toter Knopf verwirrt nur
+  const stop = document.getElementById('fpmStopBtn'); if (stop) stop.disabled = !(running || armed);
   const take = document.getElementById('fpmTakeBtn'); if (take) take.disabled = !(sw.state === 'stopped' && sw.result);
   const st = document.getElementById('fpmStartBtn');
-  if (st) st.textContent = sw.state === 'armed' ? '⏳ wartet…' : '▶ Start';
+  if (st) {
+    st.textContent = armed ? '✕ Abbrechen' : running ? '↻ Neu starten' : '▶ Start';
+    st.classList.toggle('fpm-waiting', armed);
+  }
 }
 function _fpmTake() {
   if (!_fpm.sw.result) return;
@@ -2291,7 +2299,7 @@ function _fpmDrawApparatus(ctx, cv) {
   ctx.lineWidth = _fpm.topFlash > 0 ? 2.5 : 1;
   ctx.beginPath(); ctx.moveTo(cx - 46, rev); ctx.lineTo(cx + 62, rev); ctx.stroke();
   ctx.fillStyle = _fpm.topFlash > 0 ? '#f97316' : '#94a3b8';
-  ctx.fillText('oberer Umkehrpunkt', cx - 46, rev - 4);
+  ctx.fillText(_fpm.sw.state === 'armed' ? 'Uhr startet hier ⏳' : 'oberer Umkehrpunkt', cx - 46, rev - 4);
 
   // Feder
   ctx.strokeStyle = sp.col; ctx.lineWidth = sp.w; ctx.lineJoin = 'round';
@@ -2698,6 +2706,10 @@ function _fpmRenderFit(groups, P) {
     .fpm-input:focus { outline: 2px solid #7c3aed; outline-offset: 1px; border-color: #7c3aed; }
     .fpm-err { color: #dc2626; font-size: .7rem; min-height: 13px; margin-top: 2px; }
     .fpm-note { font-size: .72rem; color: #64748b; line-height: 1.45; }
+    /* Gesperrte Knoepfe muessen gesperrt AUSSEHEN – sonst klickt man ins Leere */
+    .fpm-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+    .fpm-sim .sim-btn:disabled:hover { background: #f1f5f9; color: #475569; }
+    .fpm-sim .sim-btn.fpm-waiting { background: #f97316; border-color: #f97316; color: #fff; }
   `;
   document.head.appendChild(s);
 })();
