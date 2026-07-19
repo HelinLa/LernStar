@@ -2196,6 +2196,20 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('flmTakt', 'flmKeinChart');
     _pSim.start(dt => _flmTakt(dt), () => _flmRender(), []);
   },
+
+  // Versuch 19 des KLP (Q2.1): das Geiger-Mueller-Zaehlrohr. Nachweisgeraet
+  // fuer ionisierende Strahlung – Aufbau, Kennlinie, Totzeit und wahre
+  // Zaehlrate, Nullrate und Statistik.
+  'geiger-mueller': modal => {
+    _gmzInit();
+    modal.innerHTML = _gmzHTML();
+    const erkl = document.getElementById('gmzErkl');
+    if (erkl) erkl.innerHTML = _gmzErklHTML();
+    _gmzSetStation(0);
+    _gmzUpdate();
+    _pSim = new PhysicsSimEngine('gmzTakt', 'gmzKeinChart');
+    _pSim.start(dt => _gmzTakt(dt), () => _gmzRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -25153,6 +25167,857 @@ function _flmRender() {
       border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; }
     .flm-hist-z b { color: #334155; }
     .flm-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// GEIGER-MÜLLER-ZÄHLROHR – Versuch 19 (angehaengt)
+// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// DAS GEIGER-MÜLLER-ZÄHLROHR
+// Versuch 19 der NRW-Handreichung (Qualifikationsphase Q2.1).
+// Kernkompetenzen des KLP: Aufbau und Funktionsweise von Nachweisgeraeten
+// fuer ionisierende Strahlung erlaeutern, Halbwertszeiten und Zaehlraten
+// bestimmen (UF1, E2); den Nachweis unterschiedlicher Strahlungsarten mit
+// Absorptionsexperimenten erlaeutern (E4, E5).
+// ═══════════════════════════════════════════════════════
+
+// Die fuenf Betriebsbereiche der Kennlinie (Spannung in V).
+const _GMZ_BEREICHE = [
+  { r: 'I', n: 'Rekombination', u0: 0, u1: 20, farbe: '#94a3b8',
+    t: 'Nur wenige Volt: Ein Teil der erzeugten Ionen rekombiniert wieder, bevor er die Elektroden erreicht. Der gemessene Strom steigt erst mit der Spannung.' },
+  { r: 'II', n: 'Sättigungsstrom', u0: 20, u1: 100, farbe: '#38bdf8',
+    t: 'Bis etwa 100 V werden praktisch alle primär erzeugten Ionen gesammelt – der Strom erreicht seinen Sättigungswert und hängt kaum noch von der Spannung ab.' },
+  { r: 'III', n: 'Proportionalbereich', u0: 100, u1: 300, farbe: '#22c55e',
+    t: 'Ab der Einsatzspannung (~300 V) beschleunigt das Feld die Primärelektronen so stark, dass sie durch Stoßionisation Sekundärionen erzeugen. Die Gesamtladung bleibt PROPORTIONAL zur Primärionisation – man kann die Energie der Strahlung bestimmen.' },
+  { r: 'IV', n: 'Auslösebereich (Plateau)', u0: 300, u1: 600, farbe: '#f59e0b',
+    t: 'Zwischen etwa 300 und 600 V zündet jedes Teilchen eine Entladung über das ganze Rohr. Jeder Impuls ist gleich groß, unabhängig von der Energie – man zählt die ANZAHL der Teilchen. Hier arbeitet das Zählrohr normalerweise (~450 V).' },
+  { r: 'V', n: 'Dauerentladung', u0: 600, u1: 700, farbe: '#dc2626',
+    t: 'Oberhalb ~600 V wächst die Ladungsträgerzahl lawinenartig zu einer Dauerentladung an – das zerstört das Zählrohr. Diesen Bereich meidet man.' }
+];
+
+const _GMZ_UBETRIEB = 450;       // uebliche Betriebsspannung in V
+const _GMZ_TOT_MIN = 50, _GMZ_TOT_MAX = 300;   // Totzeit in µs
+
+let _gmz = null;
+
+function _gmzInit() {
+  _gmz = {
+    station: 0,
+    // Station 1
+    U: 450, laeuft: true, t: 0, teilchen: [], lawine: null, spanne: 0,
+    letzterImpuls: -999, nullrate: false,
+    // Station 2
+    Ukenn: 450,
+    // Station 3
+    modus: 'ausloese',   // 'proportional' | 'ausloese'
+    // Station 4
+    zTrue: 2000, tau: 100,   // wahre Rate in 1/s, Totzeit in µs
+    // Station 5
+    quelle: 'am'
+  };
+}
+
+// ── Zahlformat ──────────────────────────────────────────
+function _gmzZahl(v) {
+  if (!isFinite(v) || v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const dez = Math.max(0, Math.min(20, 5 - ex));
+  const s = v.toFixed(dez);
+  return s.indexOf('.') >= 0 ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
+}
+
+// ── Physik ──────────────────────────────────────────────
+// Welcher Betriebsbereich gehoert zu einer Spannung?
+function _gmzBereich(U) {
+  return _GMZ_BEREICHE.find(b => U >= b.u0 && U < b.u1) || _GMZ_BEREICHE[_GMZ_BEREICHE.length - 1];
+}
+
+// Die Kennlinie: relativer "Ausschlag" (Strom bzw. Zaehlrate) ueber der Spannung.
+// Qualitativ nach Handreichung: Anstieg (I), Plateau (II), Anstieg (III),
+// flaches Plateau (IV), steiler Anstieg (V).
+function _gmzKennlinie(U) {
+  if (U < 20) return 0.35 * (U / 20);                       // I Rekombination
+  if (U < 100) return 0.35 + 0.05 * (U - 20) / 80;          // II Saettigung
+  if (U < 300) return 0.40 + 0.35 * (U - 100) / 200;        // III Proportional
+  if (U < 600) return 0.78 + 0.06 * (U - 300) / 300;        // IV Plateau (leicht steigend)
+  return 0.84 + 0.16 * Math.min(1, (U - 600) / 60);         // V Dauerentladung (steil)
+}
+
+// Totzeitkorrektur (nicht-paralysierbares Modell, Handreichung):
+// gemessene Rate aus wahrer Rate
+function _gmzZMess(zTrue, tauS) { return zTrue / (1 + zTrue * tauS); }
+// wahre (korrigierte) Rate aus gemessener Rate  ->  Z_kor = Z_mess/(1 - Z_mess·τ)
+function _gmzZKor(zMess, tauS) {
+  const nenner = 1 - zMess * tauS;
+  return nenner > 0 ? zMess / nenner : Infinity;
+}
+// Verlust in Prozent
+function _gmzVerlust(zTrue, tauS) {
+  const zm = _gmzZMess(zTrue, tauS);
+  return (zTrue - zm) / zTrue * 100;
+}
+
+// Radioaktive Quellen fuer Station 5 (typische Naeherungswerte)
+const _GMZ_QUELLEN = [
+  { id: 'null', n: 'ohne Präparat (Nullrate)', rate: 0.4, art: 'Höhen- und Umgebungsstrahlung', natur: true },
+  { id: 'brazil', n: 'Paranussmehl', rate: 2.5, art: 'natürliches Kalium-40', natur: true },
+  { id: 'ziegel', n: 'gebrannter Ziegel', rate: 1.8, art: 'natürliche Zerfallsreihen', natur: true },
+  { id: 'am', n: 'Am-241 (Schulpräparat)', rate: 120, art: 'α-Strahler', natur: false }
+];
+
+// ── Oberflaeche ─────────────────────────────────────────
+function _gmzHTML() {
+  const stationen = ['1 · Aufbau & Funktion', '2 · Die Kennlinie',
+                     '3 · Proportional- oder Auslösebereich', '4 · Totzeit & wahre Zählrate',
+                     '5 · Nullrate, Statistik & Geschichte']
+    .map((s, i) => `<button class="fpm-tab${i === _gmz.station ? ' on' : ''}" id="gmzSt${i}" onclick="_gmzSetStation(${i})">${s}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim gmz-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">☢️ Das Geiger-Müller-Zählrohr</h3>
+    <canvas id="gmzTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="gmzS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="gmzRohr" width="440" height="230" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Ein Teilchen tritt durch das Glimmerfenster – die Lawine läuft zum Draht</div>
+          <canvas id="gmzImpuls" width="440" height="120" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Die Spannungsimpulse am Arbeitswiderstand R</div>
+        </div>
+        <div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="gmzLaufBtn" onclick="_gmzToggle()">⏸ Anhalten</button>
+            <label class="fpm-check" style="margin:0 0 0 8px"><input type="checkbox" id="gmzNull"
+              onchange="_gmzSet('nullrate',this.checked)"> nur Nullrate (kein Präparat)</label>
+          </div>
+          <div class="gmz-zaehler" id="gmzZaehler"></div>
+          <div class="gmz-schritte" id="gmzSchritte"></div>
+        </div>
+      </div>
+      <div class="gmz-k3" id="gmzK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="gmzS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="gmzKennCv" width="440" height="290" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Kennlinie: Ausschlag über der Zählrohrspannung</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Zählrohrspannung U</span>
+              <input type="range" id="gmzUk" min="0" max="700" step="5" value="450"
+                oninput="_gmzSetUkenn(this.value)"><b id="gmzUkLbl">450 V</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="gmz-bereich" id="gmzBereichText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="gmzS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="gmzModus" width="440" height="250" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Drei Teilchen verschiedener Ionisierungsstärke</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Betriebsart</span>
+              <span class="osz-seg">
+                <button class="osz-segb" id="gmzMp" onclick="_gmzSetModus('proportional')">Proportionalbereich</button>
+                <button class="osz-segb" id="gmzMa" onclick="_gmzSetModus('ausloese')">Auslösebereich</button>
+              </span></div>
+          </div>
+        </div>
+        <div>
+          <div class="gmz-modus-t" id="gmzModusText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="gmzS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="gmzTotCv" width="440" height="280" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Gemessene gegen wahre Zählrate</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>wahre Zählrate</span>
+              <input type="range" id="gmzZt" min="10" max="9000" step="10" value="2000"
+                oninput="_gmzSetZt(this.value)"><b id="gmzZtLbl">2000 /s</b></div>
+            <div class="osz-zeile"><span>Totzeit τ</span>
+              <input type="range" id="gmzTau" min="50" max="300" step="5" value="100"
+                oninput="_gmzSetTau(this.value)"><b id="gmzTauLbl">100 µs</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="gmzTotRechnung"></div>
+          <div class="gmz-tot-t" id="gmzTotText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="gmzS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="gmzStat" width="440" height="200" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Zählereignisse über der Zeit – zufällig verteilt</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Quelle</span><span class="osz-seg" id="gmzQuelleWahl"></span></div>
+          </div>
+        </div>
+        <div>
+          <div class="gmz-hist" id="gmzHistText"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="gmzErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Ionisation → Lawine → Impuls</b> &nbsp;|&nbsp; <b>Z = N·z</b>
+      &nbsp;|&nbsp; <b>Z<sub>kor</sub> = Z<sub>mess</sub> / (1 − Z<sub>mess</sub>·τ)</b>
+    </p>
+  </div>`;
+}
+
+function _gmzErklHTML() {
+  return `<div class="dsp-erkl-kopf">Was das Zählrohr tut</div>
+    <div class="dsp-erkl-text">
+      Das Geiger-Müller-Zählrohr, 1928 von Hans Geiger und seinem Schüler Walter Müller
+      entwickelt, macht einzelne Teilchen ionisierender Strahlung <b>zählbar</b>. Es ist ein
+      dünnwandiges Metallrohr, gefüllt mit einem Edelgas (Argon oder Neon, etwa 100 hPa) und
+      etwas Alkoholdampf. In der Achse ist ein dünner Draht isoliert aufgespannt und über einen
+      Widerstand mit dem Pluspol einer Spannungsquelle (rund <b>450 V</b>) verbunden. Ein extrem
+      dünnes <b>Glimmerfenster</b> lässt die Strahlung eintreten.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Von einem Teilchen zum Impuls</div>
+    <div class="dsp-erkl-text">
+      Ein einfallendes Teilchen <b>ionisiert</b> das Füllgas und setzt Elektronen frei. In der
+      Nähe des dünnen Drahtes ist die Feldstärke sehr groß (über 10⁵ V/m); dort werden die
+      Elektronen so stark beschleunigt, dass sie durch <b>Stoßionisation</b> lawinenartig immer
+      mehr Ladungen erzeugen. Die Entladung breitet sich am Draht entlang aus, die abfließenden
+      Ladungen erzeugen am Widerstand R einen <b>Spannungsimpuls</b>, der gezählt wird. Erzeugt
+      ein Teilchen z Primärelektronen und löst jedes eine Lawine von N Elektronen aus, so ist die
+      Gesamtzahl Z = N·z.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Proportional- oder Auslösebereich</div>
+    <div class="dsp-erkl-text">
+      Bei mittlerer Spannung (dem <b>Proportionalbereich</b>) bleibt der Impuls proportional zur
+      Primärionisation – daraus lässt sich die <b>Energie</b> der Strahlung bestimmen. Bei höherer
+      Spannung (dem <b>Auslösebereich</b>, in dem das Zählrohr normalerweise arbeitet) zündet
+      jedes Teilchen eine Entladung über das ganze Rohr; jeder Impuls ist dann <b>gleich groß</b>,
+      unabhängig von der Energie – man zählt nur noch die <b>Anzahl</b> der Teilchen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Totzeit und wahre Zählrate</div>
+    <div class="dsp-erkl-text">
+      Nach jedem Impuls umhüllt ein Schlauch träger positiver Ionen den Draht und macht das Gebiet
+      um ihn für kurze Zeit <b>feldfrei</b>: Das Zählrohr ist unempfindlich. Diese <b>Totzeit</b>
+      liegt bei 100 bis 300 µs (kleine Halogenzählrohre 50 bis 100 µs). Der Alkoholdampf als
+      <b>Löschzusatz</b> fängt die störenden Photonen weg und verkürzt die Totzeit. Weil während
+      der Totzeit einfallende Teilchen nicht gezählt werden, misst man bei hohen Raten zu wenig.
+      Aus der gemessenen Rate Z<sub>mess</sub> und der bekannten Totzeit τ erhält man die
+      <b>wahre Zählrate</b>:
+    </div>
+    <div class="dsp-erkl-formel">Z<sub>kor</sub> = Z<sub>mess</sub> / (1 − Z<sub>mess</sub> · τ)</div>
+    <div class="dsp-erkl-text">
+      Bei kleinen Raten ist die Korrektur winzig, bei hohen Raten aber entscheidend: Bei 5000
+      Impulsen je Sekunde und 100 µs Totzeit fehlt bereits ein Drittel.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die Nullrate</div>
+    <div class="dsp-erkl-text">
+      Schon ohne jedes Präparat zählt das Rohr Ereignisse – die <b>Nullrate</b>. Sie stammt aus
+      der <b>Höhen- und kosmischen Strahlung</b> und der natürlichen Umgebungsradioaktivität. Auch
+      Alltagsstoffe wie <b>Paranussmehl</b> (durch Kalium-40) oder gebrannte Ziegel zeigen eine
+      erhöhte Rate. Bei jeder genauen Messung muss man die Nullrate abziehen. Die Zählereignisse
+      treten dabei rein <b>zufällig</b> (poissonverteilt) auf – zwei gleich lange Messungen liefern
+      selten genau dieselbe Zahl.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Werden radioaktive Präparate verwendet, ist ein Warnschild
+      aufzustellen. Thoriumsalze, Glühstrümpfe oder radiumbestrichene Zeiger alter Uhren sind
+      nicht zulässig (offene Präparate oberhalb der Freigrenze).</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _gmzSetStation(i) {
+  _gmz.station = Math.max(0, Math.min(4, i));
+  for (let k = 0; k < 5; k++) {
+    document.getElementById('gmzSt' + k)?.classList.toggle('on', k === _gmz.station);
+    const d = document.getElementById('gmzS' + k);
+    if (d) d.style.display = k === _gmz.station ? 'block' : 'none';
+  }
+  _gmzUpdate();
+}
+function _gmzSet(key, val) { _gmz[key] = val; _gmzUpdate(); }
+function _gmzToggle() {
+  _gmz.laeuft = !_gmz.laeuft;
+  const b = document.getElementById('gmzLaufBtn');
+  if (b) b.textContent = _gmz.laeuft ? '⏸ Anhalten' : '▶ Weiter';
+}
+function _gmzSetUkenn(v) {
+  _gmz.Ukenn = Math.max(0, Math.min(700, +v));
+  const el = document.getElementById('gmzUkLbl'); if (el) el.textContent = Math.round(_gmz.Ukenn) + ' V';
+  _gmzRenderBereich();
+}
+function _gmzSetModus(m) { _gmz.modus = m; _gmzUpdate(); }
+function _gmzSetZt(v) {
+  _gmz.zTrue = Math.max(10, Math.min(9000, +v));
+  const el = document.getElementById('gmzZtLbl'); if (el) el.textContent = Math.round(_gmz.zTrue) + ' /s';
+  _gmzRenderTot();
+}
+function _gmzSetTau(v) {
+  _gmz.tau = Math.max(50, Math.min(300, +v));
+  const el = document.getElementById('gmzTauLbl'); if (el) el.textContent = Math.round(_gmz.tau) + ' µs';
+  _gmzRenderTot();
+}
+function _gmzSetQuelle(id) { _gmz.quelle = id; _gmzRenderHist(); }
+
+function _gmzUpdate() {
+  if (!_gmz) return;
+  _gmzRenderK3();
+  _gmzRenderSchritte();
+  _gmzRenderBereich();
+  _gmzRenderModus();
+  _gmzRenderTot();
+  _gmzRenderHist();
+}
+
+function _gmzRenderSchritte() {
+  const el = document.getElementById('gmzSchritte'); if (!el) return;
+  el.innerHTML = `<div class="git-sch-kopf">Was gerade im Rohr passiert</div>
+    <div class="gmz-schr-liste">
+      <div class="gmz-schr-z"><span>1</span>Strahlung tritt durch das <b>Glimmerfenster</b> ein und ionisiert Gasatome.</div>
+      <div class="gmz-schr-z"><span>2</span>Die freien Elektronen werden zum <b>Draht</b> beschleunigt (Feld über 10⁵ V/m).</div>
+      <div class="gmz-schr-z"><span>3</span>Durch <b>Stoßionisation</b> wächst eine Lawine – die Entladung läuft am Draht entlang.</div>
+      <div class="gmz-schr-z"><span>4</span>Die Ladungen fließen über <b>R</b> ab und erzeugen einen Spannungsimpuls.</div>
+      <div class="gmz-schr-z"><span>5</span>Ein Schlauch positiver Ionen macht das Rohr kurz <b>feldfrei</b> (Totzeit).</div>
+    </div>`;
+}
+
+function _gmzRenderK3() {
+  const el = document.getElementById('gmzK3'); if (!el) return;
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du diesen Versuch jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Wir wollen ionisierende Strahlung nachweisen und einzelne Teilchen zählbar machen.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Ein gasgefülltes Metallrohr mit dünnem Draht in der Achse, an etwa 450 V, mit einem
+        Glimmerfenster und einem Zählgerät.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Zuerst die Nullrate ohne Präparat messen, dann die Zählrate einer Probe bestimmen.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        Jedes Teilchen erzeugt einen zählbaren Spannungsimpuls. Auch ohne Präparat gibt es eine
+        Nullrate aus der Umgebungsstrahlung.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Ionisation löst eine Elektronenlawine aus. Wegen der Totzeit misst man bei hohen Raten zu
+        wenig – die wahre Rate folgt aus Z<sub>kor</sub> = Z<sub>mess</sub>/(1 − Z<sub>mess</sub>·τ).</div>
+    </div>`;
+}
+
+// ── Station 2: Kennlinie ───────────────────────────────
+function _gmzRenderBereich() {
+  const el = document.getElementById('gmzBereichText'); if (!el) return;
+  const b = _gmzBereich(_gmz.Ukenn);
+  el.innerHTML = `<div class="git-sch-kopf">Bereich ${b.r} – ${b.n}</div>
+    <div class="gmz-ber-box" style="border-color:${b.farbe}">
+      <div class="gmz-ber-r" style="background:${b.farbe}">${b.r}</div>
+      <div class="gmz-ber-t">${b.t}</div>
+    </div>
+    <div class="gmz-ber-liste">
+      ${_GMZ_BEREICHE.map(x => `<div class="gmz-ber-z${x.r === b.r ? ' on' : ''}">
+        <span style="background:${x.farbe}">${x.r}</span>
+        <b>${x.n}</b><span class="gmz-ber-u">${x.u0}–${x.u1 > 690 ? '600+' : x.u1} V</span></div>`).join('')}
+    </div>
+    <div class="fpm-note">Bei der üblichen Betriebsspannung von <b>~450 V</b> arbeitet das Zählrohr
+      im <b>Auslösebereich</b> (Plateau): Die Zählrate hängt dort kaum von der genauen Spannung ab,
+      was die Messung stabil macht. Deshalb wählt man die Spannung mitten im Plateau.</div>`;
+}
+
+// ── Station 3: Proportional vs Auslösebereich ──────────
+function _gmzRenderModus() {
+  const el = document.getElementById('gmzModusText'); if (!el) return;
+  const prop = _gmz.modus === 'proportional';
+  document.getElementById('gmzMp')?.classList.toggle('on', prop);
+  document.getElementById('gmzMa')?.classList.toggle('on', !prop);
+  el.innerHTML = `<div class="git-sch-kopf">${prop ? 'Proportionalbereich (~200 V)' : 'Auslösebereich (~450 V)'}</div>
+    <div class="gmz-modus-z">${prop
+      ? 'Die Ladung jeder Entladung bleibt <b>proportional zur Primärionisation</b>. Ein stark '
+        + 'ionisierendes α-Teilchen erzeugt viele Primärelektronen (großes z) und damit einen '
+        + '<b>großen</b> Impuls; ein schwach ionisierendes Teilchen einen kleinen. Aus der '
+        + 'Impulshöhe lässt sich die <b>Energie</b> der Strahlung bestimmen (Z = N·z).'
+      : 'Jedes Teilchen zündet eine Entladung über das <b>ganze</b> Rohr. Der Impuls ist deshalb '
+        + '<b>immer gleich groß</b> – egal, wie stark das Teilchen ionisiert. Man verliert die '
+        + 'Energieinformation, kann aber sehr zuverlässig die <b>Anzahl</b> der Teilchen zählen. '
+        + 'So arbeitet das Zählrohr im Normalbetrieb.'}</div>
+    <div class="gmz-modus-tab">
+      <div class="gmz-modus-h"><span>Teilchen</span><span>Primärionisation z</span><span>Impulshöhe</span></div>
+      ${[['α (stark)', 'groß', prop ? 'groß' : 'gleich'],
+         ['β (mittel)', 'mittel', prop ? 'mittel' : 'gleich'],
+         ['γ (schwach)', 'klein', prop ? 'klein' : 'gleich']].map(r =>
+        `<div class="gmz-modus-r"><span>${r[0]}</span><span>${r[1]}</span><span class="${prop ? '' : 'gleich'}">${r[2]}</span></div>`).join('')}
+    </div>
+    <div class="fpm-note">Ein Zählrohr, das im Auslösebereich betrieben wird, heißt
+      <b>Fensterzählrohr</b>. Die Wahl der Betriebsspannung entscheidet also, ob man die Energie
+      (Proportionalzähler) oder nur die Anzahl (Geiger-Zähler) misst.</div>`;
+}
+
+// ── Station 4: Totzeit & wahre Zählrate ────────────────
+function _gmzRenderTot() {
+  const el = document.getElementById('gmzTotRechnung'); if (!el) return;
+  const tauS = _gmz.tau * 1e-6;
+  const zMess = _gmzZMess(_gmz.zTrue, tauS);
+  const zKor = _gmzZKor(zMess, tauS);
+  const verlust = _gmzVerlust(_gmz.zTrue, tauS);
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">wahre Rate (Vorgabe)</span>
+      <span class="pho-rz-f">Z<sub>wahr</sub></span><span class="pho-rz-v">${_fpmNum(_gmz.zTrue, 0)} /s</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Totzeit</span>
+      <span class="pho-rz-f">τ</span><span class="pho-rz-v">${_fpmNum(_gmz.tau, 0)} µs</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">gemessen (mit Totzeitverlust)</span>
+      <span class="pho-rz-f">Z<sub>mess</sub> = Z<sub>wahr</sub>/(1+Z<sub>wahr</sub>·τ)</span>
+      <span class="pho-rz-v">${_fpmNum(zMess, 0)} /s</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Verlust durch Totzeit</span>
+      <span class="pho-rz-f">(Z<sub>wahr</sub>−Z<sub>mess</sub>)/Z<sub>wahr</sub></span>
+      <span class="pho-rz-v">${_fpmNum(verlust, 1)} %</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">zurückkorrigiert</span>
+      <span class="pho-rz-f">Z<sub>kor</sub> = Z<sub>mess</sub>/(1−Z<sub>mess</sub>·τ)</span>
+      <span class="pho-rz-v">${_fpmNum(zKor, 0)} /s</span></div>`;
+
+  const t = document.getElementById('gmzTotText');
+  if (t) {
+    t.innerHTML = `<div class="fpm-note">Die Korrektur gewinnt aus der gemessenen Rate wieder die
+      wahre zurück (${_fpmNum(zKor, 0)} /s ≈ ${_fpmNum(_gmz.zTrue, 0)} /s). <b>Wichtig:</b> Weil ein
+      totzeitbehaftetes Zählrohr höchstens 1/τ = <b>${_fpmNum(1 / tauS, 0)} Impulse je Sekunde</b>
+      registrieren kann, bleibt Z<sub>mess</sub>·τ stets kleiner als 1 – die Korrektur ist immer
+      wohldefiniert. Je höher die wahre Rate, desto stärker unterschätzt die reine Messung sie:
+      bei niedrigen Raten ist die Korrektur vernachlässigbar, bei hohen wird sie entscheidend.</div>`;
+  }
+}
+
+// ── Station 5: Nullrate & Statistik ────────────────────
+function _gmzRenderHist() {
+  const wahl = document.getElementById('gmzQuelleWahl');
+  if (wahl) {
+    wahl.innerHTML = _GMZ_QUELLEN.map(q =>
+      `<button class="osz-segb${_gmz.quelle === q.id ? ' on' : ''}" onclick="_gmzSetQuelle('${q.id}')">${q.n.split(' (')[0]}</button>`).join('');
+  }
+  const el = document.getElementById('gmzHistText'); if (!el) return;
+  const q = _GMZ_QUELLEN.find(x => x.id === _gmz.quelle) || _GMZ_QUELLEN[0];
+  el.innerHTML = `<div class="git-sch-kopf">${q.n}</div>
+    <div class="gmz-hist-z"><b>Mittlere Zählrate:</b> etwa ${_fpmNum(q.rate, 1)} Impulse je Sekunde
+      (${q.art}).</div>
+    ${q.id === 'null'
+      ? '<div class="gmz-hist-z">Diese <b>Nullrate</b> misst man <b>ohne jedes Präparat</b>. Sie '
+        + 'stammt aus der Höhen- und kosmischen Strahlung sowie der natürlichen '
+        + 'Umgebungsradioaktivität und ist immer vorhanden. Bei genauen Messungen muss man sie '
+        + 'von der Gesamtrate <b>abziehen</b>.</div>'
+      : q.natur
+      ? '<div class="gmz-hist-z">Auch ganz alltägliche Stoffe sind schwach radioaktiv: '
+        + 'Paranüsse reichern <b>Kalium-40</b> an, gebrannte Ziegel enthalten Spuren der '
+        + 'natürlichen Zerfallsreihen. Ihre Rate liegt spürbar über der Nullrate – ein '
+        + 'eindrucksvoller Beleg, dass Radioaktivität allgegenwärtig ist.</div>'
+      : '<div class="gmz-hist-z">Ein echtes Schulpräparat (hier Americium-241, ein '
+        + '<b>α-Strahler</b>) liefert eine viele Male höhere Rate. Sein Nachweis zeigt die '
+        + 'volle Funktion des Zählrohrs.</div>'}
+    <div class="gmz-hist-z"><b>Zufall und Statistik:</b> Die Ereignisse treten rein zufällig auf
+      (Poisson-Verteilung). Zwei gleich lange Messungen liefern selten genau dieselbe Zahl; erst
+      über viele Ereignisse wird die mittlere Rate zuverlässig. Deshalb misst man lieber lange oder
+      wiederholt.</div>
+    <div class="fpm-note"><b>Geschichte:</b> Hans Geiger und sein Schüler Walter Müller bauten das
+      Zählrohr 1928. Geiger war zuvor Schüler von Ernest Rutherford und hatte 1913 den
+      Spitzenzähler entwickelt. Die Reihe setzt sich fort mit der charakteristischen
+      Röntgenstrahlung (V20) und Absorptionsexperimenten zu α-, β- und γ-Strahlung (V21).</div>`;
+}
+
+// ── Zeichnungen ────────────────────────────────────────
+function _gmzDrawRohr(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const cy = H / 2 - 6, x0 = 60, x1 = W - 60;
+  // Zaehlrohrwand
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  ctx.strokeRect(x0, cy - 50, x1 - x0, 100);
+  ctx.fillStyle = 'rgba(56,189,248,0.06)'; ctx.fillRect(x0, cy - 50, x1 - x0, 100);
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Zählrohrwand (−)', x0, cy - 56);
+  ctx.fillText('Edelgas + Alkoholdampf', x0 + 4, cy + 62);
+  // Draht in der Achse
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(x0, cy); ctx.lineTo(x1, cy); ctx.stroke();
+  ctx.fillStyle = '#fbbf24'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Draht (+)', x1, cy - 4);
+  // Glimmerfenster links
+  ctx.strokeStyle = '#93c5fd'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(x0, cy - 26); ctx.lineTo(x0, cy + 26); ctx.stroke();
+  ctx.fillStyle = '#93c5fd'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Glimmer-', x0 - 26, cy - 4); ctx.fillText('fenster', x0 - 26, cy + 6);
+  // Spannungsquelle / R
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(x1, cy); ctx.lineTo(x1 + 20, cy); ctx.lineTo(x1 + 20, cy + 40); ctx.stroke();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('450 V, R', x1 + 8, cy - 8);
+
+  // einfallendes Teilchen + Lawine
+  _gmz.teilchen.forEach(p => {
+    ctx.strokeStyle = p.farbe; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x - p.vx * 5, p.y - p.vy * 5); ctx.stroke();
+    ctx.fillStyle = p.farbe;
+    ctx.beginPath(); ctx.arc(p.x, p.y, 3, 0, 2 * Math.PI); ctx.fill();
+  });
+  // aktive Lawine am Draht
+  if (_gmz.lawine && _gmz.lawine.leben > 0) {
+    const L = _gmz.lawine;
+    ctx.globalAlpha = Math.min(1, L.leben);
+    // Lawinenpunkt am Draht
+    ctx.fillStyle = '#38bdf8';
+    for (let k = 0; k < 14; k++) {
+      const a = k / 14 * 2 * Math.PI, rr = 3 + L.r * 10;
+      ctx.beginPath(); ctx.arc(L.x + Math.cos(a) * rr, cy + Math.sin(a) * rr * 0.5, 1.4, 0, 2 * Math.PI); ctx.fill();
+    }
+    // Entladung laeuft am Draht entlang (Auslösebereich)
+    ctx.strokeStyle = 'rgba(56,189,248,0.7)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(Math.max(x0, L.x - L.spread), cy); ctx.lineTo(Math.min(x1, L.x + L.spread), cy); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  // Totzeit-Anzeige
+  const seit = _gmz.t - _gmz.letzterImpuls;
+  const tot = seit < 0.18;
+  ctx.fillStyle = tot ? '#f87171' : '#4ade80'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(tot ? '● Totzeit – unempfindlich' : '● empfangsbereit', W - 8, H - 8);
+  ctx.textAlign = 'left';
+}
+
+function _gmzDrawImpuls(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const x0 = 30, x1 = W - 12, y0 = H - 22, yTop = 14;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  // Schwelle U1
+  const yS = y0 - (y0 - yTop) * 0.3;
+  ctx.strokeStyle = '#64748b'; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(x0, yS); ctx.lineTo(x1, yS); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Schwelle U₁', x0 + 2, yS - 2);
+  // Impulse aus der Historie
+  const span = 3;   // s sichtbar
+  ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.6;
+  (_gmz.impulse || []).forEach(imp => {
+    const dt = _gmz.t - imp.t;
+    if (dt < 0 || dt > span) return;
+    const x = x1 - dt / span * (x1 - x0);
+    const h = (y0 - yTop) * imp.hoehe;
+    ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, y0 - h); ctx.stroke();
+    // kleiner Abfall
+    ctx.beginPath(); ctx.moveTo(x, y0 - h); ctx.lineTo(x + 5, y0); ctx.stroke();
+  });
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('U_R', x0 - 2, yTop + 6);
+  ctx.textAlign = 'left';
+}
+
+function _gmzDrawKenn(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  const padL = 40, padR = 12, padT = 14, padB = 40;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const Umax = 700;
+  const X = U => x0 + U / Umax * (x1 - x0);
+  const Y = v => y0 - v * (y0 - y1);
+  // Bereichsflaechen
+  _GMZ_BEREICHE.forEach(b => {
+    ctx.fillStyle = b.farbe; ctx.globalAlpha = 0.09;
+    ctx.fillRect(X(b.u0), y1, X(Math.min(Umax, b.u1)) - X(b.u0), y0 - y1);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = b.farbe; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(b.r, (X(b.u0) + X(Math.min(Umax, b.u1))) / 2, y1 + 12);
+  });
+  // Achsen
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  [0, 100, 200, 300, 400, 500, 600, 700].forEach(U => ctx.fillText(U + '', X(U), y0 + 12));
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Spannung U / V', x1, y0 + 26);
+  ctx.save(); ctx.translate(12, y1 + 4); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Ausschlag', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+  // Kurve
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let U = 0; U <= Umax; U += 3) {
+    const py = Y(Math.min(1, _gmzKennlinie(U)));
+    U === 0 ? ctx.moveTo(X(U), py) : ctx.lineTo(X(U), py);
+  }
+  ctx.stroke();
+  // aktueller Punkt
+  const uc = _gmz.Ukenn, vc = Math.min(1, _gmzKennlinie(uc));
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(X(uc), Y(vc)); ctx.lineTo(X(uc), y0); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#db2777';
+  ctx.beginPath(); ctx.arc(X(uc), Y(vc), 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#be185d'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(Math.round(uc) + ' V', X(uc), Y(vc) - 8);
+  // Betriebspunkt 450V markieren
+  ctx.fillStyle = '#16a34a'; ctx.font = '8px sans-serif';
+  ctx.fillText('Betrieb', X(450), y0 - 4);
+  ctx.textAlign = 'left';
+}
+
+function _gmzDrawModus(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const prop = _gmz.modus === 'proportional';
+  const teil = [
+    { n: 'α', z: 1.0, farbe: '#f87171', y: 55 },
+    { n: 'β', z: 0.6, farbe: '#fbbf24', y: 125 },
+    { n: 'γ', z: 0.3, farbe: '#a5b4fc', y: 195 }
+  ];
+  teil.forEach(p => {
+    // Teilchen links, Draht/Impuls rechts
+    ctx.fillStyle = p.farbe; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(p.n, 20, p.y + 4);
+    // Primaerionisation als Punkte
+    const nz = Math.round(3 + p.z * 9);
+    for (let k = 0; k < nz; k++) {
+      ctx.fillStyle = p.farbe; ctx.globalAlpha = 0.7;
+      ctx.beginPath(); ctx.arc(60 + k * 12, p.y, 2.5, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif';
+    ctx.fillText('z = ' + (p.z > 0.8 ? 'groß' : p.z > 0.4 ? 'mittel' : 'klein'), 60, p.y + 16);
+    // Impulsbalken rechts
+    const bx = W - 150, bh = prop ? p.z * 44 : 44;
+    ctx.fillStyle = p.farbe;
+    ctx.fillRect(bx, p.y + 20 - bh, 120, bh);
+    ctx.strokeStyle = '#334155'; ctx.strokeRect(bx, p.y - 24, 120, 44);
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(prop ? (p.z > 0.8 ? 'groß' : p.z > 0.4 ? 'mittel' : 'klein') : 'gleich', bx + 116, p.y + 16);
+  });
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Primärionisation', 60, 28);
+  ctx.textAlign = 'right';
+  ctx.fillText('Impulshöhe', W - 30, 28);
+  ctx.fillStyle = prop ? '#22c55e' : '#f59e0b'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(prop ? 'Proportionalbereich: Impuls ∝ Energie' : 'Auslösebereich: jeder Impuls gleich groß', W / 2, H - 8);
+  ctx.textAlign = 'left';
+}
+
+function _gmzDrawTot(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  const padL = 46, padR = 12, padT = 14, padB = 38;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const tauS = _gmz.tau * 1e-6;
+  const ztMax = 9000;
+  const zmMax = 1 / tauS;   // Saettigung
+  const ymax = Math.max(ztMax, zmMax) * 1.02;
+  const X = z => x0 + z / ztMax * (x1 - x0);
+  const Y = z => y0 - z / ymax * (y0 - y1);
+  // Raster
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
+  [0, 2000, 4000, 6000, 8000].forEach(z => {
+    ctx.beginPath(); ctx.moveTo(X(z), y0); ctx.lineTo(X(z), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText((z / 1000) + 'k', X(z), y0 + 12);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('wahre Rate /s', x1, y0 + 24);
+  ctx.save(); ctx.translate(12, y1 + 4); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('gemessene Rate /s', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+  // Ideallinie (ohne Totzeit)
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.4; ctx.setLineDash([5, 3]);
+  ctx.beginPath(); ctx.moveTo(X(0), Y(0)); ctx.lineTo(X(ztMax), Y(Math.min(ymax, ztMax))); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif';
+  ctx.fillText('ohne Totzeit', X(ztMax * 0.72), Y(ztMax * 0.82));
+  // Saettigungslinie 1/tau
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+  ctx.beginPath(); ctx.moveTo(x0, Y(zmMax)); ctx.lineTo(x1, Y(zmMax)); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#b45309';
+  ctx.fillText('Sättigung 1/τ = ' + _fpmNum(zmMax, 0) + '/s', x0 + 4, Y(zmMax) - 3);
+  // reale Messkurve
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let zt = 0; zt <= ztMax; zt += 40) {
+    const py = Y(_gmzZMess(zt, tauS));
+    zt === 0 ? ctx.moveTo(X(zt), py) : ctx.lineTo(X(zt), py);
+  }
+  ctx.stroke();
+  // aktueller Punkt
+  const zm = _gmzZMess(_gmz.zTrue, tauS);
+  ctx.fillStyle = '#db2777';
+  ctx.beginPath(); ctx.arc(X(_gmz.zTrue), Y(zm), 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(X(_gmz.zTrue), Y(zm)); ctx.lineTo(X(_gmz.zTrue), y0); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(X(_gmz.zTrue), Y(zm)); ctx.lineTo(x0, Y(zm)); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.textAlign = 'left';
+}
+
+function _gmzDrawStat(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const q = _GMZ_QUELLEN.find(x => x.id === _gmz.quelle) || _GMZ_QUELLEN[0];
+  const y0 = H - 30, x0 = 20, x1 = W - 14;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  // Ereignisse als Striche (aus der Klick-Historie)
+  ctx.strokeStyle = '#4ade80'; ctx.lineWidth = 1.5;
+  const span = 6;
+  (_gmz.statEreignisse || []).forEach(t => {
+    const dt = _gmz.t - t;
+    if (dt < 0 || dt > span) return;
+    const x = x1 - dt / span * (x1 - x0);
+    ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, y0 - 40); ctx.stroke();
+  });
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(q.n + ' – ~' + _fpmNum(q.rate, 1) + ' Impulse/s', x0, 18);
+  ctx.fillText('Zeit →', x1 - 40, H - 10);
+  // Zaehlerstand
+  ctx.fillStyle = '#4ade80'; ctx.font = '700 14px monospace'; ctx.textAlign = 'right';
+  ctx.fillText('Σ ' + (_gmz.statZaehler || 0), x1, 20);
+  ctx.textAlign = 'left';
+}
+
+function _gmzRenderZaehler() {
+  const el = document.getElementById('gmzZaehler'); if (!el) return;
+  const seit = _gmz.t - _gmz.letzterImpuls;
+  const tot = seit < 0.18;
+  el.innerHTML = `<div class="gmz-zaehler-wert">${_gmz.zaehler || 0}<span>Impulse</span></div>
+    <div class="gmz-zaehler-rate">${_fpmNum((_gmz.zaehler || 0) / Math.max(0.5, _gmz.t), 1)} /s im Mittel</div>
+    <div class="gmz-zaehler-st ${tot ? 'tot' : 'bereit'}">${tot ? '● Totzeit' : '● bereit'}</div>`;
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _gmzTakt(dt) {
+  if (!_gmz) return;
+  const d = Math.min(0.05, dt);
+  _gmz.t += d;
+  _gmz.impulse = _gmz.impulse || [];
+  _gmz.statEreignisse = _gmz.statEreignisse || [];
+
+  // Teilchen bewegen
+  _gmz.teilchen.forEach(p => { p.x += p.vx; p.y += p.vy; });
+  _gmz.teilchen = _gmz.teilchen.filter(p => p.leben-- > 0);
+  if (_gmz.lawine) { _gmz.lawine.leben -= d * 6; _gmz.lawine.spread += d * 900; }
+
+  if (_gmz.station === 0 && _gmz.laeuft) {
+    // Teilchen einwerfen (Rate abhaengig von Nullrate)
+    const rate = _gmz.nullrate ? 0.6 : 4.0;
+    if (Math.random() < rate * d) {
+      const arten = [{ f: '#f87171', h: 1.0 }, { f: '#fbbf24', h: 0.8 }, { f: '#a5b4fc', h: 0.6 }];
+      const a = arten[Math.floor(Math.random() * arten.length)];
+      _gmz.teilchen.push({ x: 60, y: (60 + Math.random() * 40) + (110 - 30), vx: 3.5, vy: (Math.random() - 0.5) * 1.2, leben: 40, farbe: a.f });
+      // Impuls nur, wenn nicht in Totzeit
+      const seit = _gmz.t - _gmz.letzterImpuls;
+      if (seit > 0.18) {
+        _gmz.letzterImpuls = _gmz.t;
+        _gmz.lawine = { x: 210, r: 1, leben: 1, spread: 0 };
+        _gmz.zaehler = (_gmz.zaehler || 0) + 1;
+        _gmz.impulse.push({ t: _gmz.t, hoehe: a.h });
+        if (_gmz.impulse.length > 60) _gmz.impulse.shift();
+      }
+    }
+  }
+  if (_gmz.station === 4) {
+    // Statistik-Ereignisse nach Quellenrate
+    const q = _GMZ_QUELLEN.find(x => x.id === _gmz.quelle) || _GMZ_QUELLEN[0];
+    if (Math.random() < q.rate * d) {
+      _gmz.statEreignisse.push(_gmz.t);
+      _gmz.statZaehler = (_gmz.statZaehler || 0) + 1;
+      if (_gmz.statEreignisse.length > 200) _gmz.statEreignisse.shift();
+    }
+  }
+}
+function _gmzRender() {
+  if (!_gmz) return;
+  const st = _gmz.station;
+  if (st === 0) {
+    const cr = document.getElementById('gmzRohr');
+    if (cr) _gmzDrawRohr(cr.getContext('2d'), cr);
+    const ci = document.getElementById('gmzImpuls');
+    if (ci) _gmzDrawImpuls(ci.getContext('2d'), ci);
+    _gmzRenderZaehler();
+  } else if (st === 1) {
+    const c = document.getElementById('gmzKennCv');
+    if (c) _gmzDrawKenn(c.getContext('2d'), c);
+  } else if (st === 2) {
+    const c = document.getElementById('gmzModus');
+    if (c) _gmzDrawModus(c.getContext('2d'), c);
+  } else if (st === 3) {
+    const c = document.getElementById('gmzTotCv');
+    if (c) _gmzDrawTot(c.getContext('2d'), c);
+  } else if (st === 4) {
+    const c = document.getElementById('gmzStat');
+    if (c) _gmzDrawStat(c.getContext('2d'), c);
+  }
+}
+
+// ── Zusätzliche Styles für das Geiger-Müller-Zählrohr ──
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .gmz-zaehler { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+      background: #0f172a; border-radius: 9px; padding: 10px 14px; margin: 8px 0; }
+    .gmz-zaehler-wert { font-size: 1.6rem; font-weight: 800; color: #4ade80;
+      font-variant-numeric: tabular-nums; font-family: monospace; }
+    .gmz-zaehler-wert span { font-size: .7rem; font-weight: 600; color: #64748b; margin-left: 6px; }
+    .gmz-zaehler-rate { font-size: .78rem; color: #94a3b8; }
+    .gmz-zaehler-st { font-size: .75rem; font-weight: 700; margin-left: auto; }
+    .gmz-zaehler-st.bereit { color: #4ade80; }
+    .gmz-zaehler-st.tot { color: #f87171; }
+    .gmz-schritte { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 12px; }
+    .gmz-schr-liste { display: flex; flex-direction: column; gap: 4px; margin-top: 5px; }
+    .gmz-schr-z { display: flex; gap: 8px; align-items: flex-start; font-size: .76rem; color: #475569;
+      line-height: 1.45; }
+    .gmz-schr-z span { flex: 0 0 18px; height: 18px; border-radius: 50%; background: #7c3aed; color: #fff;
+      font-size: .68rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .gmz-schr-z b { color: #334155; }
+    .gmz-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 13px; margin-top: 12px; }
+    .gmz-bereich { display: flex; flex-direction: column; gap: 8px; }
+    .gmz-ber-box { display: flex; gap: 10px; align-items: flex-start; border: 2px solid #e2e8f0;
+      border-radius: 9px; padding: 10px 12px; }
+    .gmz-ber-r { flex: 0 0 28px; height: 28px; border-radius: 7px; color: #fff; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; }
+    .gmz-ber-t { font-size: .78rem; color: #475569; line-height: 1.55; }
+    .gmz-ber-liste { display: flex; flex-direction: column; gap: 4px; }
+    .gmz-ber-z { display: flex; align-items: center; gap: 8px; font-size: .75rem; color: #64748b;
+      padding: 4px 6px; border-radius: 7px; }
+    .gmz-ber-z.on { background: #f1f5f9; }
+    .gmz-ber-z span { flex: 0 0 20px; height: 20px; border-radius: 5px; color: #fff; font-weight: 800;
+      font-size: .68rem; display: flex; align-items: center; justify-content: center; }
+    .gmz-ber-z b { color: #334155; flex: 1; }
+    .gmz-ber-u { color: #94a3b8; font-variant-numeric: tabular-nums; }
+    .gmz-modus-t { display: flex; flex-direction: column; gap: 8px; }
+    .gmz-modus-z { font-size: .78rem; color: #475569; line-height: 1.65; }
+    .gmz-modus-z b { color: #334155; }
+    .gmz-modus-tab { border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
+    .gmz-modus-h, .gmz-modus-r { display: grid; grid-template-columns: 1fr 1.2fr 1fr; font-size: .74rem; }
+    .gmz-modus-h { background: #f1f5f9; font-weight: 800; color: #64748b; }
+    .gmz-modus-h span, .gmz-modus-r span { padding: 5px 8px; }
+    .gmz-modus-r { border-top: 1px solid #eef2f7; color: #475569; }
+    .gmz-modus-r span.gleich { color: #b45309; font-weight: 700; }
+    .gmz-tot-t { margin-top: 8px; }
+    .gmz-hist { }
+    .gmz-hist-z { font-size: .77rem; color: #475569; line-height: 1.6; background: #f8fafc;
+      border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px; }
+    .gmz-hist-z b { color: #334155; }
+    .dsp-erkl-formel { font-size: .9rem; text-align: center; color: #5b21b6; background: #f5f3ff;
+      border: 1px solid #ddd6fe; border-radius: 8px; padding: 8px 10px; margin: 6px 0;
+      font-variant-numeric: tabular-nums; }
+    .gmz-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
