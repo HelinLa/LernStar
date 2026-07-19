@@ -1879,6 +1879,18 @@ const _physSimDefs = {
       ]
     );
   },
+
+  // ── 30. FEDERPENDEL – MESSREIHE & LINEARISIERUNG ───────
+  // Schlüsselexperiment: T in Abhängigkeit von m und D selbst ausmessen,
+  // Messwerte auftragen, linearisieren und k ≈ 4π² bestimmen.
+  'federpendel-messreihe': modal => {
+    _fpmInit();
+    modal.innerHTML = _fpmHTML();
+    _fpmRenderTable();
+    _pSim = new PhysicsSimEngine('fpmAnim', 'fpmPlot');
+    _pSim.start(dt => _fpmUpdate(dt), (ctx, cv) => _fpmDrawApparatus(ctx, cv), []);
+    _fpmDrawPlot();
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -1984,6 +1996,708 @@ function _infoBox(ctx, cv, lines) {
       align-self: center;
     }
     .phys-btn:hover { opacity: .88; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// FEDERPENDEL – MESSREIHE & LINEARISIERUNG
+// Grundlage: Handreichung "Schlüsselexperiment Federpendel" (NRW, 2023)
+// T = 2π·√(m/D)  →  T² = 4π²·m/D  →  Linearisierung T²~m bzw. T²~1/D
+// ═══════════════════════════════════════════════════════
+
+const _FPM_SPRINGS = [
+  { n: 'A', D: 3.4,  coils: 22, r: 17, w: 2.0, col: '#7c3aed' },
+  { n: 'B', D: 10.1, coils: 16, r: 14, w: 2.8, col: '#f97316' },
+  { n: 'C', D: 17.4, coils: 13, r: 11, w: 3.6, col: '#0284c7' },
+  { n: 'D', D: 25.0, coils: 11, r: 9,  w: 4.4, col: '#16a34a' }
+];
+const _FPM_MF = 0.006;          // Federmasse in kg
+const _FPM_K  = 4 * Math.PI * Math.PI;   // 39,478…
+
+let _fpm = null;
+
+function _fpmInit() {
+  _fpm = {
+    D: 10.1, m: 0.250, amp: 0.05,
+    t: 0, phase: 0, speed: 1, topFlash: 0,
+    springMass: false, showTheory: false, origin: true, reveal: false,
+    trace: [], rows: [], nextId: 1, preset: 1, fn: null,
+    sw: { state: 'idle', t0: 0, n: 0, elapsed: 0, result: null }
+  };
+}
+
+function _fpmNum(v, d) { return isFinite(v) ? v.toFixed(d).replace('.', ',') : '—'; }
+function _fpmMeff() { return _fpm.m + (_fpm.springMass ? _FPM_MF / 3 : 0); }
+function _fpmOmega() { return Math.sqrt(_fpm.D / _fpmMeff()); }
+function _fpmTtheo() { return 2 * Math.PI / _fpmOmega(); }
+function _fpmSpring() { return _FPM_SPRINGS.find(s => s.D === _fpm.D) || _FPM_SPRINGS[1]; }
+
+// ── Aufbau der Oberfläche ──────────────────────────────
+function _fpmHTML() {
+  const springBtns = _FPM_SPRINGS.map(s =>
+    `<button class="fpm-spring${s.D === _fpm.D ? ' on' : ''}" id="fpmSp${s.n}" onclick="_fpmSetSpring(${s.D})">
+       <span class="fpm-spring-n">Feder ${s.n}</span>
+       <span class="fpm-spring-d">D = ${_fpmNum(s.D, 1)}</span>
+       <span class="fpm-spring-u">N/m</span>
+     </button>`).join('');
+
+  const presets = ['m → T', 'm → T²', '1/D → T²', 'm/D → T²'].map((p, i) =>
+    `<button class="fpm-tab${i === _fpm.preset ? ' on' : ''}" id="fpmTab${i}" onclick="_fpmSetPreset(${i})">${p}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌀 Federpendel – Messreihe &amp; Linearisierung</h3>
+
+    <div class="fpm-grid">
+      <div>
+        <canvas id="fpmAnim" width="420" height="300" class="phys-anim-cv"></canvas>
+        <div class="fpm-label">Feder austauschen</div>
+        <div class="fpm-springs">${springBtns}</div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Masse m: <b id="fpmMLbl">250 g</b></span>
+          <input type="range" id="fpmM" min="10" max="500" step="5" value="250"
+            oninput="_fpmSetM(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Amplitude ŝ: <b id="fpmALbl">5,0 cm</b></span>
+          <input type="range" id="fpmA" min="1" max="10" step="0.5" value="5"
+            oninput="_fpmSetAmp(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <label class="fpm-check"><input type="checkbox" onchange="_fpmSet('springMass',this.checked)">
+          Federmasse m<sub>F</sub> = 6 g mitrechnen</label>
+        <label class="fpm-check"><input type="checkbox" onchange="_fpmSet('reveal',this.checked)">
+          theoretische Periodendauer anzeigen</label>
+      </div>
+
+      <div>
+        <div class="fpm-label">Periodendauer messen</div>
+        <div class="fpm-readout">
+          <div class="fpm-ro"><span class="fpm-ro-k">Stoppuhr t</span><span class="fpm-ro-v" id="fpmT">0,00</span><span class="fpm-ro-u">s</span></div>
+          <div class="fpm-ro"><span class="fpm-ro-k">Perioden n</span><span class="fpm-ro-v" id="fpmN">0</span><span class="fpm-ro-u">gezählt</span></div>
+          <div class="fpm-ro"><span class="fpm-ro-k">T = t / n</span><span class="fpm-ro-v" id="fpmTT">—</span><span class="fpm-ro-u">s</span></div>
+        </div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" id="fpmStartBtn" onclick="_fpmStart()">▶ Start</button>
+          <button class="sim-btn" id="fpmStopBtn" onclick="_fpmStop()" disabled>■ Stopp</button>
+          <button class="sim-btn" id="fpmTakeBtn" onclick="_fpmTake()" disabled>✓ Messwert übernehmen</button>
+        </div>
+        <label class="fpm-check"><input type="checkbox" id="fpmTrig" checked>
+          Stoppuhr startet automatisch am oberen Umkehrpunkt</label>
+        <div class="sim-btn-row">
+          <button class="sim-btn" onclick="_fpmAuto()">⏱ Lichtschranke: 10 Perioden</button>
+          <button class="sim-btn" onclick="_fpmDemo()">📋 Beispielmessreihe</button>
+          <button class="sim-btn" onclick="_fpmClear()">🗑 Tabelle leeren</button>
+        </div>
+        <div class="fpm-tablewrap">
+          <table class="sim-table">
+            <thead><tr><th>m (kg)</th><th>D (N/m)</th><th>n</th><th>t (s)</th><th>T (s)</th><th>T² (s²)</th><th></th></tr></thead>
+            <tbody id="fpmTbody"></tbody>
+          </table>
+          <div class="fpm-empty" id="fpmEmpty">Noch keine Messwerte.<br>Start → Perioden zählen → Stopp → übernehmen.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fpm-label" style="margin-top:12px">Auswertung – Achsen wechseln, bis die Punkte auf einer Ursprungsgeraden liegen</div>
+    <div class="fpm-tabs">${presets}</div>
+    <div class="fpm-grid2">
+      <canvas id="fpmPlot" width="470" height="330" class="phys-chart-cv"></canvas>
+      <div>
+        <div class="fpm-fit" id="fpmFit"></div>
+        <div class="fpm-label" style="margin-top:10px">Funktion plotten</div>
+        <input type="text" id="fpmFn" class="fpm-input" placeholder="z. B. 39.478*x" spellcheck="false"
+          oninput="_fpmSetFn(this.value)">
+        <div class="fpm-err" id="fpmFnErr"></div>
+        <div class="fpm-note">Erlaubt: x, pi, + − * / ^, sqrt(), sin(), cos(), abs(), exp(), ln(). Malpunkt immer schreiben.</div>
+        <label class="fpm-check"><input type="checkbox" checked onchange="_fpmSet('origin',this.checked)">
+          Ausgleichsgerade durch den Ursprung</label>
+        <label class="fpm-check"><input type="checkbox" onchange="_fpmSet('showTheory',this.checked)">
+          Theoriekurve einblenden</label>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>T = 2π·√(m/D)</b> &nbsp;⇒&nbsp; <b>T² = 4π² · m/D</b> &nbsp;|&nbsp; Variablen-Kontroll-Strategie: immer nur <i>eine</i> Größe verändern
+    </p>
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _fpmSet(key, val) { _fpm[key] = val; if (key === 'springMass') _fpmResetSW(); _fpmDrawPlot(); }
+function _fpmSetSpring(D) {
+  _fpm.D = D; _fpm.trace = []; _fpmResetSW();
+  _FPM_SPRINGS.forEach(s => document.getElementById('fpmSp' + s.n)?.classList.toggle('on', s.D === D));
+}
+function _fpmSetM(v) {
+  _fpm.m = +v / 1000; _fpm.trace = []; _fpmResetSW();
+  const el = document.getElementById('fpmMLbl'); if (el) el.textContent = Math.round(+v) + ' g';
+}
+function _fpmSetAmp(v) {
+  _fpm.amp = +v / 100;
+  const el = document.getElementById('fpmALbl'); if (el) el.textContent = _fpmNum(+v, 1) + ' cm';
+}
+function _fpmSetPreset(i) {
+  _fpm.preset = i;
+  for (let k = 0; k < 4; k++) document.getElementById('fpmTab' + k)?.classList.toggle('on', k === i);
+  _fpmDrawPlot();
+}
+
+// ── Stoppuhr ───────────────────────────────────────────
+function _fpmResetSW() {
+  if (!_fpm) return;
+  _fpm.sw = { state: 'idle', t0: 0, n: 0, elapsed: 0, result: null };
+  _fpmUpdateSW();
+}
+function _fpmStart() {
+  if (document.getElementById('fpmTrig')?.checked) {
+    _fpm.sw = { state: 'armed', t0: 0, n: 0, elapsed: 0, result: null };
+  } else {
+    _fpm.sw = { state: 'running', t0: _fpm.t, n: 0, elapsed: 0, result: null };
+  }
+  _fpmUpdateSW();
+}
+function _fpmStop() {
+  const sw = _fpm.sw;
+  if (sw.state !== 'running') return;
+  sw.state = 'stopped';
+  sw.elapsed = _fpm.t - sw.t0;
+  sw.result = sw.n > 0 ? sw.elapsed / sw.n : null;
+  _fpmUpdateSW();
+}
+function _fpmUpdateSW() {
+  const sw = _fpm.sw;
+  const tEl = document.getElementById('fpmT');
+  if (tEl) {
+    tEl.textContent = sw.state === 'armed' ? 'bereit' : _fpmNum(sw.elapsed, 2);
+    tEl.style.color = sw.state === 'armed' ? '#f97316' : '#7c3aed';
+  }
+  const nEl = document.getElementById('fpmN'); if (nEl) nEl.textContent = sw.n;
+  const ttEl = document.getElementById('fpmTT'); if (ttEl) ttEl.textContent = sw.result ? _fpmNum(sw.result, 3) : '—';
+  const stop = document.getElementById('fpmStopBtn'); if (stop) stop.disabled = sw.state !== 'running';
+  const take = document.getElementById('fpmTakeBtn'); if (take) take.disabled = !(sw.state === 'stopped' && sw.result);
+  const st = document.getElementById('fpmStartBtn');
+  if (st) st.textContent = sw.state === 'armed' ? '⏳ wartet…' : '▶ Start';
+}
+function _fpmTake() {
+  if (!_fpm.sw.result) return;
+  _fpmAddRow(_fpm.m, _fpm.D, _fpm.sw.n, _fpm.sw.elapsed, _fpm.sw.result);
+  _fpmResetSW();
+}
+function _fpmAuto() {
+  const n = 10, t = n * _fpmTtheo() * (1 + (Math.random() - 0.5) * 0.006);
+  _fpmAddRow(_fpm.m, _fpm.D, n, t, t / n);
+}
+
+// ── Messwerttabelle ────────────────────────────────────
+function _fpmAddRow(m, D, n, t, T) {
+  _fpm.rows.push({ id: _fpm.nextId++, m, D, n, t, T });
+  _fpmRenderTable(); _fpmDrawPlot();
+}
+function _fpmDelRow(id) {
+  _fpm.rows = _fpm.rows.filter(r => r.id !== id);
+  _fpmRenderTable(); _fpmDrawPlot();
+}
+function _fpmClear() {
+  if (_fpm.rows.length && !confirm('Alle ' + _fpm.rows.length + ' Messwerte löschen?')) return;
+  _fpm.rows = []; _fpmRenderTable(); _fpmDrawPlot();
+}
+function _fpmDemo() {
+  [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40].forEach(m => {
+    const T = 2 * Math.PI * Math.sqrt((m + _FPM_MF / 3) / 10.1) * (1 + (Math.random() - 0.5) * 0.012);
+    _fpm.rows.push({ id: _fpm.nextId++, m, D: 10.1, n: 10, t: T * 10, T });
+  });
+  [3.4, 17.4, 25.0].forEach(D => {
+    const T = 2 * Math.PI * Math.sqrt((0.25 + _FPM_MF / 3) / D) * (1 + (Math.random() - 0.5) * 0.012);
+    _fpm.rows.push({ id: _fpm.nextId++, m: 0.25, D, n: 10, t: T * 10, T });
+  });
+  _fpmRenderTable(); _fpmDrawPlot();
+}
+function _fpmColD(D) { return (_FPM_SPRINGS.find(s => s.D === D) || {}).col || '#64748b'; }
+function _fpmRenderTable() {
+  const tb = document.getElementById('fpmTbody'); if (!tb) return;
+  const empty = document.getElementById('fpmEmpty');
+  if (empty) empty.style.display = _fpm.rows.length ? 'none' : 'block';
+  tb.innerHTML = _fpm.rows.map(r =>
+    `<tr>
+       <td><span class="fpm-dot" style="background:${_fpmColD(r.D)}"></span>${_fpmNum(r.m, 3)}</td>
+       <td>${_fpmNum(r.D, 1)}</td><td>${r.n}</td><td>${_fpmNum(r.t, 2)}</td>
+       <td><b>${_fpmNum(r.T, 3)}</b></td><td>${_fpmNum(r.T * r.T, 4)}</td>
+       <td class="fpm-del" onclick="_fpmDelRow(${r.id})" title="löschen">✕</td>
+     </tr>`).join('');
+}
+
+// ── Simulation & Zeichnung der Apparatur ───────────────
+function _fpmElong(t) {
+  return _fpm.amp * Math.cos(_fpmOmega() * t);
+}
+function _fpmUpdate(dt) {
+  if (!_fpm) return;
+  const step = dt * _fpm.speed;
+  const prev = _fpm.phase;
+  _fpm.t += step;
+  _fpm.phase += _fpmOmega() * step;
+  // oberer Umkehrpunkt = Phase passiert ein Vielfaches von 2π
+  if (Math.floor(_fpm.phase / (2 * Math.PI)) > Math.floor(prev / (2 * Math.PI))) {
+    _fpm.topFlash = 1;
+    if (_fpm.sw.state === 'armed') { _fpm.sw.state = 'running'; _fpm.sw.t0 = _fpm.t; _fpm.sw.n = 0; }
+    else if (_fpm.sw.state === 'running') _fpm.sw.n++;
+  }
+  if (_fpm.sw.state === 'running') _fpm.sw.elapsed = _fpm.t - _fpm.sw.t0;
+  _fpm.topFlash = Math.max(0, _fpm.topFlash - step * 3);
+  _fpm.trace.push({ t: _fpm.t, s: _fpmElong(_fpm.t) });
+  while (_fpm.trace.length && _fpm.t - _fpm.trace[0].t > 6) _fpm.trace.shift();
+  _fpmUpdateSW();
+}
+
+function _fpmDrawApparatus(ctx, cv) {
+  if (!_fpm) return;
+  const W = cv.width, H = cv.height, sp = _fpmSpring();
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f0f9ff'; ctx.fillRect(0, 0, W, H);
+
+  const scopeH = 74, aH = H - scopeH;
+  const cx = W * 0.42, topY = 24, PX = 620;
+  let restLen = 70 + (_fpm.m * 9.81 / _fpm.D) * PX * 0.5;
+  restLen = Math.min(restLen, aH - 96);
+  const zero = topY + restLen;
+  const s = _fpmElong(_fpm.t);
+  const massY = zero + s * PX;
+
+  // Stativ
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(cx - 95, aH - 8); ctx.lineTo(cx - 95, topY - 8); ctx.lineTo(cx + 12, topY - 8); ctx.stroke();
+  ctx.lineWidth = 7; ctx.beginPath(); ctx.moveTo(cx - 130, aH - 6); ctx.lineTo(cx - 55, aH - 6); ctx.stroke();
+
+  // Skala
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  for (let k = -10; k <= 10; k++) {
+    const y = zero + k * 0.01 * PX;
+    if (y < topY + 6 || y > aH - 12) continue;
+    const big = k % 5 === 0;
+    ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(cx + 62, y); ctx.lineTo(cx + 62 + (big ? 11 : 5), y); ctx.stroke();
+    if (big) { ctx.fillStyle = '#94a3b8'; ctx.fillText((-k) + ' cm', cx + 77, y + 3); }
+  }
+  // Ruhelage
+  ctx.strokeStyle = '#7c3aed'; ctx.setLineDash([5, 4]); ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(cx - 46, zero); ctx.lineTo(cx + 62, zero); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#7c3aed'; ctx.font = '700 9px sans-serif';
+  ctx.fillText('Ruhelage', cx - 46, zero - 4);
+
+  // oberer Umkehrpunkt (blinkt beim Durchgang → Zählhilfe)
+  const rev = zero - _fpm.amp * PX;
+  ctx.strokeStyle = _fpm.topFlash > 0 ? '#f97316' : '#e2e8f0';
+  ctx.lineWidth = _fpm.topFlash > 0 ? 2.5 : 1;
+  ctx.beginPath(); ctx.moveTo(cx - 46, rev); ctx.lineTo(cx + 62, rev); ctx.stroke();
+  ctx.fillStyle = _fpm.topFlash > 0 ? '#f97316' : '#94a3b8';
+  ctx.fillText('oberer Umkehrpunkt', cx - 46, rev - 4);
+
+  // Feder
+  ctx.strokeStyle = sp.col; ctx.lineWidth = sp.w; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(cx, topY);
+  const len = massY - topY, N = 220;
+  for (let i = 1; i <= N; i++) {
+    const u = i / N, env = Math.min(1, Math.min(u, 1 - u) * 8);
+    ctx.lineTo(cx + Math.sin(u * sp.coils * 2 * Math.PI) * sp.r * env, topY + u * len);
+  }
+  ctx.stroke();
+
+  // Masse
+  const bw = 54, bh = 26 + Math.min(22, _fpm.m * 40);
+  ctx.fillStyle = '#475569';
+  ctx.beginPath(); ctx.roundRect ? ctx.roundRect(cx - bw / 2, massY, bw, bh, 4) : ctx.rect(cx - bw / 2, massY, bw, bh);
+  ctx.fill();
+  ctx.fillStyle = '#fff'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(Math.round(_fpm.m * 1000) + ' g', cx, massY + bh / 2 + 4);
+  ctx.textAlign = 'left';
+
+  // Infozeile
+  ctx.fillStyle = '#1e293b'; ctx.font = '700 11px sans-serif';
+  ctx.fillText('Feder ' + sp.n + ' · D = ' + _fpmNum(sp.D, 1) + ' N/m', 8, 15);
+  ctx.fillStyle = '#475569'; ctx.font = '10px sans-serif';
+  ctx.fillText('s = ' + _fpmNum(-s * 100, 1) + ' cm', 8, 30);
+  if (_fpm.reveal) {
+    ctx.fillStyle = '#16a34a'; ctx.font = '700 10px sans-serif';
+    ctx.fillText('T_theorie = ' + _fpmNum(_fpmTtheo(), 3) + ' s', 8, 45);
+  }
+
+  // t-s-Streifen (Oszillogramm)
+  const sy = aH;
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, sy, W, scopeH);
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, sy + scopeH / 2); ctx.lineTo(W, sy + scopeH / 2); ctx.stroke();
+  if (_fpm.trace.length > 1) {
+    const t1 = _fpm.trace[_fpm.trace.length - 1].t, sc = (scopeH / 2 - 7) / Math.max(0.01, _fpm.amp);
+    ctx.strokeStyle = sp.col; ctx.lineWidth = 1.8; ctx.beginPath();
+    _fpm.trace.forEach((p, i) => {
+      const x = W - (t1 - p.t) / 6 * W, y = sy + scopeH / 2 - p.s * sc;
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+  }
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.fillText('t-s-Diagramm (letzte 6 s)', 8, sy + 12);
+}
+
+// ── Ausgleichsrechnung ─────────────────────────────────
+function _fpmFitOrigin(pts) {
+  let sxy = 0, sxx = 0;
+  pts.forEach(p => { sxy += p.x * p.y; sxx += p.x * p.x; });
+  if (!sxx) return null;
+  const k = sxy / sxx;
+  let ssr = 0, sst = 0;
+  pts.forEach(p => { ssr += (p.y - k * p.x) ** 2; sst += p.y * p.y; });
+  return { k, b: 0, r2: sst > 0 ? 1 - ssr / sst : 1 };
+}
+function _fpmFitLinear(pts) {
+  const n = pts.length;
+  let sx = 0, sy = 0, sxy = 0, sxx = 0;
+  pts.forEach(p => { sx += p.x; sy += p.y; sxy += p.x * p.y; sxx += p.x * p.x; });
+  const den = n * sxx - sx * sx;
+  if (!den) return null;
+  const k = (n * sxy - sx * sy) / den, b = (sy - k * sx) / n, my = sy / n;
+  let ssr = 0, sst = 0;
+  pts.forEach(p => { ssr += (p.y - (k * p.x + b)) ** 2; sst += (p.y - my) ** 2; });
+  return { k, b, r2: sst > 0 ? 1 - ssr / sst : 1 };
+}
+
+// ── Formelparser (Shunting-Yard, ohne eval) ────────────
+const _FPM_FN = {
+  sqrt: Math.sqrt, sin: Math.sin, cos: Math.cos, tan: Math.tan,
+  abs: Math.abs, exp: Math.exp, ln: Math.log, log: v => Math.log(v) / Math.LN10
+};
+const _FPM_OP = { '+': [1, 'L'], '-': [1, 'L'], '*': [2, 'L'], '/': [2, 'L'], '^': [4, 'R'], 'u-': [3, 'R'] };
+
+function _fpmTokenize(src) {
+  const s = src.replace(/,/g, '.').replace(/·/g, '*').replace(/−/g, '-').replace(/\s+/g, '');
+  const out = [];
+  let i = 0;
+  while (i < s.length) {
+    const c = s[i];
+    if (/[0-9.]/.test(c)) {
+      let j = i; while (j < s.length && /[0-9.]/.test(s[j])) j++;
+      out.push({ t: 'num', v: parseFloat(s.slice(i, j)) }); i = j;
+    } else if (/[a-z]/i.test(c)) {
+      let j = i; while (j < s.length && /[a-z0-9]/i.test(s[j])) j++;
+      const w = s.slice(i, j).toLowerCase(); i = j;
+      if (_FPM_FN[w]) out.push({ t: 'fn', v: w });
+      else if (w === 'x') out.push({ t: 'var' });
+      else if (w === 'pi') out.push({ t: 'num', v: Math.PI });
+      else if (w === 'e') out.push({ t: 'num', v: Math.E });
+      else throw new Error('unbekannt: ' + w);
+    } else if ('+-*/^'.includes(c)) { out.push({ t: 'op', v: c }); i++; }
+    else if (c === '(' || c === ')') { out.push({ t: c }); i++; }
+    else throw new Error('ungültiges Zeichen: ' + c);
+  }
+  return out;
+}
+function _fpmRPN(tokens) {
+  const out = [], st = [];
+  let prev = null;
+  tokens.forEach(tk => {
+    if (tk.t === 'num' || tk.t === 'var') out.push(tk);
+    else if (tk.t === 'fn') st.push(tk);
+    else if (tk.t === 'op') {
+      const name = (tk.v === '-' && (!prev || prev.t === 'op' || prev.t === '(')) ? 'u-' : tk.v;
+      while (st.length) {
+        const top = st[st.length - 1];
+        if (top.t === 'fn' || (top.t === 'op' &&
+          (_FPM_OP[top.v][0] > _FPM_OP[name][0] ||
+           (_FPM_OP[top.v][0] === _FPM_OP[name][0] && _FPM_OP[name][1] === 'L')))) out.push(st.pop());
+        else break;
+      }
+      st.push({ t: 'op', v: name });
+    }
+    else if (tk.t === '(') st.push(tk);
+    else if (tk.t === ')') {
+      while (st.length && st[st.length - 1].t !== '(') out.push(st.pop());
+      if (!st.length) throw new Error('Klammer fehlt');
+      st.pop();
+      if (st.length && st[st.length - 1].t === 'fn') out.push(st.pop());
+    }
+    prev = tk;
+  });
+  while (st.length) { const s2 = st.pop(); if (s2.t === '(') throw new Error('Klammer fehlt'); out.push(s2); }
+  return out;
+}
+function _fpmMakeFn(src) {
+  const rpn = _fpmRPN(_fpmTokenize(src));
+  return x => {
+    const st = [];
+    for (const tk of rpn) {
+      if (tk.t === 'num') st.push(tk.v);
+      else if (tk.t === 'var') st.push(x);
+      else if (tk.t === 'fn') { if (!st.length) throw new Error('Argument fehlt'); st.push(_FPM_FN[tk.v](st.pop())); }
+      else if (tk.v === 'u-') { if (!st.length) throw new Error('Operand fehlt'); st.push(-st.pop()); }
+      else {
+        if (st.length < 2) throw new Error('Operand fehlt');
+        const b = st.pop(), a = st.pop();
+        st.push(tk.v === '+' ? a + b : tk.v === '-' ? a - b : tk.v === '*' ? a * b : tk.v === '/' ? a / b : Math.pow(a, b));
+      }
+    }
+    if (st.length !== 1) throw new Error('Term unvollständig');
+    return st[0];
+  };
+}
+function _fpmSetFn(str) {
+  const err = document.getElementById('fpmFnErr');
+  const v = (str || '').trim();
+  if (!v) { _fpm.fn = null; if (err) err.textContent = ''; _fpmDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _fpm.fn = f; if (err) err.textContent = '';
+  } catch (e) { _fpm.fn = null; if (err) err.textContent = e.message; }
+  _fpmDrawPlot();
+}
+
+// ── Auswertungsdiagramm ────────────────────────────────
+const _FPM_PRESETS = [
+  { xl: 'm in kg', yl: 'T in s', x: r => r.m, y: r => r.T, grp: r => r.D,
+    gl: k => 'D = ' + _fpmNum(+k, 1) + ' N/m', curve: true,
+    note: 'Die Punkte liegen auf einer Kurve – kein linearer Zusammenhang. Quadriere T und wechsle zur Auftragung m → T².' },
+  { xl: 'm in kg', yl: 'T² in s²', x: r => r.m, y: r => r.T * r.T, grp: r => r.D,
+    gl: k => 'D = ' + _fpmNum(+k, 1) + ' N/m', slope: k => _FPM_K / +k,
+    note: 'Ursprungsgerade ⇒ T² ~ m. Erwartete Steigung: 4π²/D.' },
+  { xl: '1/D in m/N', yl: 'T² in s²', x: r => 1 / r.D, y: r => r.T * r.T, grp: r => r.m,
+    gl: k => 'm = ' + _fpmNum(+k, 3) + ' kg', slope: k => _FPM_K * +k,
+    note: 'Ursprungsgerade ⇒ T² ~ 1/D. Erwartete Steigung: 4π²·m.' },
+  { xl: 'm/D in kg·m/N', yl: 'T² in s²', x: r => r.m / r.D, y: r => r.T * r.T, grp: null,
+    slope: () => _FPM_K,
+    note: 'Alle Messwerte zusammen. Die Steigung ist der gesuchte Proportionalitätsfaktor k ≈ 4π².' }
+];
+
+function _fpmTicks(max, count) {
+  let step = Math.pow(10, Math.floor(Math.log10(max / count)));
+  const err = max / count / step;
+  if (err >= 7.5) step *= 10; else if (err >= 3.5) step *= 5; else if (err >= 1.5) step *= 2;
+  const out = [];
+  for (let v = 0; v <= max * 1.0001; v += step) out.push(v);
+  return { ticks: out, step };
+}
+function _fpmTickLbl(v, step) {
+  const d = step < 0.001 ? 4 : step < 0.01 ? 3 : step < 0.1 ? 2 : step < 1 ? 1 : 0;
+  return _fpmNum(v, d);
+}
+
+function _fpmDrawPlot() {
+  const cv = document.getElementById('fpmPlot');
+  if (!cv || !_fpm) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = _FPM_PRESETS[_fpm.preset];
+  const padL = 62, padR = 14, padT = 14, padB = 40;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const pts = _fpm.rows.map(r => ({ x: P.x(r), y: P.y(r) })).filter(p => isFinite(p.x) && isFinite(p.y));
+  let xmax = pts.length ? Math.max(...pts.map(p => p.x)) * 1.15 : 1;
+  let ymax = pts.length ? Math.max(...pts.map(p => p.y)) * 1.15 : 1;
+  if (_fpm.fn) for (let i = 0; i <= 20; i++) {
+    let v; try { v = _fpm.fn(xmax * i / 20); } catch (e) { v = NaN; }
+    if (isFinite(v) && v > ymax) ymax = v * 1.05;
+  }
+  if (!(xmax > 0) || !isFinite(xmax)) xmax = 1;
+  if (!(ymax > 0) || !isFinite(ymax)) ymax = 1;
+
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+
+  // Gitter & Achsen
+  const xt = _fpmTicks(xmax, 6), yt = _fpmTicks(ymax, 5);
+  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  xt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
+  });
+  yt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(P.xl, x1, y0 + 28);
+  ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillText('Noch keine Messwerte aufgenommen', (x0 + x1) / 2, (y0 + y1) / 2);
+    ctx.textAlign = 'left';
+    const fo = document.getElementById('fpmFit');
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + P.note + '</div>';
+    return;
+  }
+
+  // Nutzerfunktion
+  if (_fpm.fn) {
+    ctx.strokeStyle = '#db2777'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _fpm.fn((px - x0) / (x1 - x0) * xmax); } catch (e) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv);
+      if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+
+  // Gruppen (je Feder bzw. je Masse)
+  const groups = [];
+  if (P.grp) {
+    const map = new Map();
+    _fpm.rows.forEach(r => {
+      const k = P.grp(r);
+      if (!map.has(k)) map.set(k, []);
+      map.get(k).push(r);
+    });
+    [...map.keys()].sort((a, b) => a - b).forEach(k => groups.push({ key: k, rows: map.get(k) }));
+  } else groups.push({ key: null, rows: _fpm.rows });
+
+  const palette = ['#7c3aed', '#f97316', '#0284c7', '#16a34a', '#db2777'];
+  const info = [];
+
+  groups.forEach((g, gi) => {
+    const col = _fpm.preset <= 1 ? _fpmColD(g.key) : (_fpm.preset === 3 ? '#7c3aed' : palette[gi % 5]);
+    const gp = g.rows.map(r => ({ x: P.x(r), y: P.y(r) })).filter(p => isFinite(p.x) && isFinite(p.y));
+
+    // Theoriekurve
+    if (_fpm.showTheory) {
+      ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
+      ctx.beginPath();
+      let first = true;
+      for (let px = x0; px <= x1; px += 3) {
+        const xv = (px - x0) / (x1 - x0) * xmax;
+        const yv = P.curve ? 2 * Math.PI * Math.sqrt(Math.max(0, xv) / (g.key || _fpm.D)) : P.slope(g.key) * xv;
+        const py = Y(yv);
+        if (py < y1 - 20) { first = true; continue; }
+        first ? (ctx.moveTo(px, py), first = false) : ctx.lineTo(px, py);
+      }
+      ctx.stroke(); ctx.setLineDash([]);
+    }
+
+    // Ausgleichsgerade
+    let fit = null;
+    if (!P.curve && gp.length >= 2) {
+      fit = _fpm.origin ? _fpmFitOrigin(gp) : _fpmFitLinear(gp);
+      if (fit) {
+        ctx.strokeStyle = col; ctx.lineWidth = 1.6;
+        ctx.beginPath(); ctx.moveTo(X(0), Y(fit.b)); ctx.lineTo(X(xmax), Y(fit.k * xmax + fit.b)); ctx.stroke();
+      }
+    }
+
+    // Messpunkte
+    gp.forEach(p => {
+      ctx.fillStyle = col;
+      ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke();
+    });
+
+    info.push({ key: g.key, col, fit, n: gp.length });
+  });
+
+  _fpmRenderFit(info, P);
+}
+
+function _fpmRenderFit(groups, P) {
+  const el = document.getElementById('fpmFit');
+  if (!el) return;
+  if (P.curve) { el.innerHTML = '<div class="fpm-note">' + P.note + '</div>'; return; }
+
+  let html = '';
+  groups.forEach(g => {
+    if (!g.fit) return;
+    const name = g.key === null ? 'alle Messwerte' : P.gl(g.key);
+    const eq = 'y = ' + _fpmNum(g.fit.k, g.fit.k < 1 ? 4 : 3) + '·x' +
+      (_fpm.origin ? '' : (g.fit.b >= 0 ? ' + ' : ' − ') + _fpmNum(Math.abs(g.fit.b), 4));
+    html += `<div class="fpm-fitline">
+       <span class="fpm-fitmeta"><span class="fpm-dot" style="background:${g.col}"></span>${name} · ${g.n} Messwerte</span>
+       <span class="fpm-fiteq">${eq}</span>
+       <span class="fpm-fitmeta">R² = ${_fpmNum(g.fit.r2, 4)}${P.slope ? ' · erwartet: ' + _fpmNum(P.slope(g.key), P.slope(g.key) < 1 ? 4 : 3) : ''}</span>
+     </div>`;
+  });
+
+  if (!html) {
+    el.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte je Messreihe nötig.<br>' + P.note + '</div>';
+    return;
+  }
+  // Abschluss: Vergleich mit 4π² bei der Auftragung m/D → T²
+  if (_fpm.preset === 3 && groups[0] && groups[0].fit) {
+    const k = groups[0].fit.k, dev = Math.abs(k - _FPM_K) / _FPM_K * 100;
+    const cls = dev < 1 ? 'ok' : dev < 5 ? 'mid' : 'no';
+    html += `<div class="fpm-fitline" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">
+        <span class="fpm-fitmeta">k<sub>exp</sub> = ${_fpmNum(k, 3)} &nbsp;·&nbsp; 4π² = 39,478</span>
+        <span class="fpm-badge ${cls}">Abweichung ${_fpmNum(dev, 2)} %</span>
+        <span class="fpm-fitmeta" style="margin-top:3px">T² = k·m/D &nbsp;⇒&nbsp; T = 2π·√(m/D)</span>
+      </div>`;
+  }
+  el.innerHTML = html + '<div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">' + P.note + '</div>';
+}
+
+// ── Zusätzliche Styles für diese Simulation ────────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .fpm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+    .fpm-grid2 { display: grid; grid-template-columns: 1fr 300px; gap: 14px; align-items: start; }
+    @media (max-width: 780px) {
+      .fpm-grid, .fpm-grid2 { grid-template-columns: 1fr; }
+    }
+    .fpm-label { font-size: .74rem; font-weight: 800; color: #64748b; text-transform: uppercase;
+      letter-spacing: .06em; margin: 10px 0 5px; }
+    .fpm-springs { display: flex; gap: 6px; flex-wrap: wrap; }
+    .fpm-spring { flex: 1 1 68px; display: flex; flex-direction: column; gap: 1px; align-items: flex-start;
+      padding: 6px 8px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 9px; cursor: pointer; }
+    .fpm-spring:hover { border-color: #cbd5e1; }
+    .fpm-spring.on { border-color: #7c3aed; background: #f5f3ff; }
+    .fpm-spring-n { font-size: .68rem; font-weight: 800; color: #64748b; }
+    .fpm-spring.on .fpm-spring-n { color: #7c3aed; }
+    .fpm-spring-d { font-size: .84rem; font-weight: 800; color: #1e293b; }
+    .fpm-spring-u { font-size: .62rem; color: #94a3b8; }
+    .fpm-check { display: flex; align-items: center; gap: 7px; font-size: .78rem; color: #475569;
+      margin-top: 6px; cursor: pointer; }
+    .fpm-check input { accent-color: #7c3aed; width: 15px; height: 15px; }
+    .fpm-readout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .fpm-ro { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 7px 9px;
+      display: flex; flex-direction: column; gap: 1px; }
+    .fpm-ro-k { font-size: .64rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: .05em; }
+    .fpm-ro-v { font-size: 1.15rem; font-weight: 800; color: #7c3aed; font-variant-numeric: tabular-nums; }
+    .fpm-ro-u { font-size: .64rem; color: #94a3b8; }
+    .fpm-tablewrap { max-height: 210px; overflow: auto; border: 1px solid #e2e8f0; border-radius: 9px; margin-top: 8px; }
+    .fpm-tablewrap .sim-table { margin-top: 0; font-variant-numeric: tabular-nums; }
+    .fpm-tablewrap .sim-table th { position: sticky; top: 0; z-index: 1; font-size: .7rem; }
+    .fpm-empty { padding: 16px 12px; text-align: center; color: #94a3b8; font-size: .78rem; }
+    .fpm-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
+    .fpm-del { color: #cbd5e1; cursor: pointer; text-align: center; }
+    .fpm-del:hover { color: #dc2626; }
+    .fpm-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+    .fpm-tab { padding: 6px 12px; border: 1px solid #e2e8f0; background: #fff; border-radius: 18px;
+      font-size: .8rem; font-weight: 700; color: #64748b; cursor: pointer; }
+    .fpm-tab:hover { border-color: #cbd5e1; }
+    .fpm-tab.on { background: #7c3aed; border-color: #7c3aed; color: #fff; }
+    .fpm-fit { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 9px 11px; }
+    .fpm-fitline { display: flex; flex-direction: column; gap: 1px; margin-bottom: 7px; }
+    .fpm-fiteq { font-size: .86rem; font-weight: 800; color: #1e293b; font-variant-numeric: tabular-nums; }
+    .fpm-fitmeta { font-size: .7rem; color: #64748b; }
+    .fpm-badge { display: inline-block; align-self: flex-start; font-size: .7rem; font-weight: 800;
+      padding: 2px 7px; border-radius: 6px; margin-top: 3px; }
+    .fpm-badge.ok { background: #dcfce7; color: #15803d; }
+    .fpm-badge.mid { background: #fef3c7; color: #b45309; }
+    .fpm-badge.no { background: #fee2e2; color: #b91c1c; }
+    .fpm-input { width: 100%; padding: 7px 9px; border: 1px solid #e2e8f0; border-radius: 8px;
+      font-family: ui-monospace, monospace; font-size: .82rem; color: #1e293b; }
+    .fpm-input:focus { outline: 2px solid #7c3aed; outline-offset: 1px; border-color: #7c3aed; }
+    .fpm-err { color: #dc2626; font-size: .7rem; min-height: 13px; margin-top: 2px; }
+    .fpm-note { font-size: .72rem; color: #64748b; line-height: 1.45; }
   `;
   document.head.appendChild(s);
 })();
