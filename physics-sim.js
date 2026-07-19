@@ -1903,6 +1903,22 @@ const _physSimDefs = {
     _fpmRenderTheorie(false);
     _fpmDrawPlot();
   },
+
+  // ── 32. DOPPELSPALT ────────────────────────────────────
+  // Schluesselexperiment 02 des KLP: Wellenlaenge von Licht selbst messen
+  'doppelspalt': modal => {
+    _dspInit();
+    modal.innerHTML = _dspHTML();
+    const erkl = document.getElementById('dspErkl');
+    if (erkl) erkl.innerHTML = _dspErklHTML();
+    _dspBind();
+    _dspRenderTable();
+    _dspUpdateRead();
+    _dspRenderTheorie(false);
+    _dspDrawPlot();
+    _pSim = new PhysicsSimEngine('dspBank', 'dspKeinChart');
+    _pSim.start(() => {}, (ctx, cv) => { _dspRenderBank(ctx, cv); _dspRenderScreen(); }, []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -3231,6 +3247,965 @@ function _wwInfo() {
       background: #fef3c7; color: #92400e; border: 1px solid #fde68a; border-radius: 999px;
       padding: 2px 9px; font-size: .62rem; font-weight: 800; letter-spacing: .04em;
       text-transform: uppercase; white-space: nowrap; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// DOPPELSPALT – Schluesselexperiment 02 des KLP
+// Grundlage: Handreichung "Versuch 02: Doppelspaltversuch" (NRW)
+//
+// Die Schueler messen selbst: Marken auf das Schirmbild setzen,
+// Streifenabstand ueber MEHRERE Ordnungen bestimmen und teilen
+// (so empfiehlt es die Handreichung), daraus die Wellenlaenge
+// berechnen und den Zusammenhang linearisieren.
+//
+//   Maxima:  sin α_k = k · λ/d          Minima: sin α_k = (2k+1)/2 · λ/d
+//   tan α_k = a_k / e,  fuer kleine α:  Δa = e · λ / d   ⇒   λ = Δa · d / e
+//
+// Das Schirmbild entsteht aus der vollen Intensitaetsformel
+//   I ~ cos²(π·d·sinα/λ) · sinc²(π·b·sinα/λ)
+// also inklusive Einzelspalt-Einhuellender – deshalb sind die
+// aeusseren Maxima schwaecher, genau wie im echten Versuch.
+// sin α wird exakt aus x und e berechnet, nicht genaehert; wer weit
+// aussen misst, sieht die Kleinwinkelnaeherung tatsaechlich abweichen.
+// ═══════════════════════════════════════════════════════
+
+const _DSP_W = 860;                       // Breite des Schirm-Canvas in px
+const _DSP_LASER = [
+  { n: 'He-Ne',   lam: 632.8, col: '#e11d48', kurz: 'He-Ne-Laser (Schulversuch)' },
+  { n: 'rot',     lam: 650,   col: '#ef4444', kurz: 'Laserpointer rot' },
+  { n: 'grün',    lam: 532,   col: '#16a34a', kurz: 'Laserpointer grün' },
+  { n: 'violett', lam: 405,   col: '#7c3aed', kurz: 'Laserpointer violett' }
+];
+const _DSP_SPALTE = [0.10, 0.15, 0.20, 0.25, 0.30];   // Spaltabstaende d des Dias in mm
+const _DSP_VIEWS  = [2, 5, 10, 20, 50, 100];          // Ausschnitt ± in mm
+
+let _dsp = null;
+
+function _dspInit() {
+  _dsp = {
+    li: 0, d: 0.20, e: 2.00, b: 0.02,
+    weiss: false, profil: true, reveal: false, view: 20,
+    m1: -6, m2: 6, aktiv: 2, n: 1, drag: false,
+    rows: [], nextId: 1,
+    preset: 1, fn: null, fnAuto: false, origin: true,
+    key: '', off: null, prof: null
+  };
+}
+
+// ── Physik ─────────────────────────────────────────────
+function _dspLam()   { return _DSP_LASER[_dsp.li].lam; }        // in nm
+function _dspLamMm(lam) { return (lam || _dspLam()) * 1e-6; }   // 1 nm = 1e-6 mm
+function _dspEmm()   { return _dsp.e * 1000; }                  // Schirmabstand in mm
+
+// Intensitaet an der Stelle x (in mm, von der Mitte aus)
+function _dspI(x, lam) {
+  const e = _dspEmm();
+  const s = x / Math.sqrt(x * x + e * e);          // sin α, exakt
+  const l = _dspLamMm(lam);
+  const bet = Math.PI * _dsp.b * s / l;
+  const gam = Math.PI * _dsp.d * s / l;
+  const si = Math.abs(bet) < 1e-9 ? 1 : Math.sin(bet) / bet;
+  const co = Math.cos(gam);
+  return si * si * co * co;
+}
+
+// Lage des k-ten Maximums in mm – exakt, ohne Kleinwinkelnaeherung
+function _dspXk(k) {
+  const q = k * _dspLamMm() / _dsp.d;
+  if (Math.abs(q) >= 1) return NaN;
+  return _dspEmm() * Math.tan(Math.asin(q));
+}
+// theoretischer Streifenabstand in Schirmmitte (Kleinwinkelnaeherung)
+function _dspDaTheo() { return _dspEmm() * _dspLamMm() / _dsp.d; }
+
+// gemessene Groessen aus den beiden Marken
+function _dspDx() { return Math.abs(_dsp.m2 - _dsp.m1); }
+function _dspDa() { return _dsp.n > 0 ? _dspDx() / _dsp.n : NaN; }
+// λ in nm aus  λ = Δa · d / e   (Δa, d in mm, e in m)
+function _dspLamAus(da, d, e) { return 1000 * da * d / e; }
+
+// Spektralfarbe einer Wellenlaenge (Naeherung nach Bruton)
+function _dspSpektralRGB(lam) {
+  let r = 0, g = 0, b = 0;
+  if (lam >= 380 && lam < 440)      { r = -(lam - 440) / 60; b = 1; }
+  else if (lam < 490)               { g = (lam - 440) / 50;  b = 1; }
+  else if (lam < 510)               { g = 1; b = -(lam - 510) / 20; }
+  else if (lam < 580)               { r = (lam - 510) / 70;  g = 1; }
+  else if (lam < 645)               { r = 1; g = -(lam - 645) / 65; }
+  else if (lam <= 780)              { r = 1; }
+  let f = 1;
+  if (lam >= 380 && lam < 420)      f = 0.3 + 0.7 * (lam - 380) / 40;
+  else if (lam > 700 && lam <= 780) f = 0.3 + 0.7 * (780 - lam) / 80;
+  return [r * f, g * f, b * f];
+}
+function _dspWeissLams() {
+  const out = [];
+  for (let lam = 400; lam <= 700; lam += 20) out.push({ lam, rgb: _dspSpektralRGB(lam) });
+  // Die drei Farbkurven decken unterschiedlich breite Bereiche ab (Rot reicht
+  // von 580 bis 700 nm, Blau nur von 400 bis 490 nm). Ohne Ausgleich waere das
+  // nullte Maximum rotstichig statt weiss. Kanalweise so normieren, dass ein
+  // flaches Spektrum tatsaechlich Weiss ergibt.
+  const s = [0, 0, 0];
+  out.forEach(L => { for (let c = 0; c < 3; c++) s[c] += L.rgb[c]; });
+  const mx = Math.max(s[0], s[1], s[2]);
+  out.forEach(L => { for (let c = 0; c < 3; c++) if (s[c] > 0) L.rgb[c] *= mx / s[c]; });
+  return out;
+}
+
+// ── Schirmbild vorberechnen ────────────────────────────
+// Das Bild aendert sich nur, wenn ein Parameter wechselt – also einmal
+// rechnen und puffern, statt 60-mal pro Sekunde dieselbe Summe zu bilden.
+function _dspScale() { return (_DSP_W / 2 - 10) / _dsp.view; }   // px pro mm
+function _dspMmToPx(x) { return _DSP_W / 2 + x * _dspScale(); }
+function _dspPxToMm(px) {
+  const v = (px - _DSP_W / 2) / _dspScale();
+  return Math.max(-_dsp.view, Math.min(_dsp.view, v));
+}
+function _dspKey() {
+  return [_dsp.li, _dsp.d, _dsp.e, _dsp.b, _dsp.weiss ? 1 : 0, _dsp.view].join('|');
+}
+
+function _dspBuild() {
+  const W = _DSP_W, cx = W / 2, sc = _dspScale();
+  const lams = _dsp.weiss ? _dspWeissLams()
+                          : [{ lam: _dspLam(), rgb: _dspSpektralRGB(_dspLam()) }];
+  const SUB = _dsp.weiss ? 2 : 4;          // Unterabtastung gegen Aliasing
+  const tmp = new Float64Array(W * 3);
+  const prof = new Float64Array(W);
+  let maxC = 0, maxI = 0;
+
+  for (let px = 0; px < W; px++) {
+    let r = 0, g = 0, b = 0, ii = 0;
+    for (let s = 0; s < SUB; s++) {
+      const x = (px + (s + 0.5) / SUB - cx) / sc;
+      for (const L of lams) {
+        const I = _dspI(x, L.lam);
+        r += I * L.rgb[0]; g += I * L.rgb[1]; b += I * L.rgb[2]; ii += I;
+      }
+    }
+    const nl = SUB * lams.length;
+    r /= SUB; g /= SUB; b /= SUB; ii /= nl;
+    tmp[px * 3] = r; tmp[px * 3 + 1] = g; tmp[px * 3 + 2] = b;
+    prof[px] = ii;
+    if (r > maxC) maxC = r; if (g > maxC) maxC = g; if (b > maxC) maxC = b;
+    if (ii > maxI) maxI = ii;
+  }
+  if (!(maxC > 0)) maxC = 1;
+  if (!(maxI > 0)) maxI = 1;
+  for (let px = 0; px < W; px++) prof[px] /= maxI;
+
+  const off = document.createElement('canvas');
+  off.width = W; off.height = 1;
+  const octx = off.getContext('2d');
+  const img = octx.createImageData(W, 1);
+  for (let px = 0; px < W; px++) {
+    // leichte Gamma-Korrektur: sonst verschwinden die schwachen aeusseren
+    // Maxima, die man auf dem echten Schirm sehr wohl noch erkennt
+    img.data[px * 4]     = 255 * Math.pow(Math.min(1, tmp[px * 3]     / maxC), 0.45);
+    img.data[px * 4 + 1] = 255 * Math.pow(Math.min(1, tmp[px * 3 + 1] / maxC), 0.45);
+    img.data[px * 4 + 2] = 255 * Math.pow(Math.min(1, tmp[px * 3 + 2] / maxC), 0.45);
+    img.data[px * 4 + 3] = 255;
+  }
+  octx.putImageData(img, 0, 0);
+
+  _dsp.off = off; _dsp.prof = prof; _dsp.key = _dspKey();
+}
+
+// ── Schirm zeichnen ────────────────────────────────────
+function _dspRenderScreen() {
+  const cv = document.getElementById('dspScreen');
+  if (!cv || !_dsp) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  if (_dsp.key !== _dspKey() || !_dsp.off) _dspBuild();
+
+  const sy = 6, sh = _dsp.profil ? 66 : 130;          // Schirmbild
+  const py = sy + sh + 10, ph = 76;                   // Intensitaetsprofil
+  const ay = _dsp.profil ? py + ph + 6 : sy + sh + 6; // Achse
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+
+  // Schirmbild
+  ctx.save();
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(_dsp.off, 0, 0, W, 1, 0, sy, W, sh);
+  ctx.restore();
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  ctx.strokeRect(0.5, sy + 0.5, W - 1, sh - 1);
+  ctx.fillStyle = 'rgba(226,232,240,.75)'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('SCHIRMBILD', 8, sy + 13);
+
+  // Intensitaetsprofil (entspricht der Messung mit einer Fotodiode)
+  if (_dsp.profil) {
+    ctx.fillStyle = '#111c30'; ctx.fillRect(0, py, W, ph);
+    ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1;
+    for (let i = 1; i < 4; i++) {
+      const gy = py + ph * i / 4;
+      ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+    }
+    ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.6;
+    ctx.beginPath();
+    for (let px = 0; px < W; px++) {
+      const gy = py + ph - _dsp.prof[px] * (ph - 6);
+      px === 0 ? ctx.moveTo(px, gy) : ctx.lineTo(px, gy);
+    }
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(226,232,240,.75)'; ctx.font = '700 10px sans-serif';
+    ctx.fillText('INTENSITÄT I(x)', 8, py + 13);
+  }
+
+  // Achse mit mm-Skala
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(0, ay); ctx.lineTo(W, ay); ctx.stroke();
+  const t = _fpmTicks(_dsp.view, 5);
+  ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+  t.ticks.forEach(v => {
+    [v, -v].forEach(vv => {
+      if (Math.abs(vv) > _dsp.view) return;
+      const px = _dspMmToPx(vv);
+      ctx.strokeStyle = '#64748b';
+      ctx.beginPath(); ctx.moveTo(px, ay); ctx.lineTo(px, ay + 5); ctx.stroke();
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillText(_fpmTickLbl(vv, t.step), px, ay + 16);
+    });
+  });
+  ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+  ctx.fillText('x in mm', W - 6, ay + 16);
+
+  // Marken
+  [[_dsp.m1, 1, '#fbbf24'], [_dsp.m2, 2, '#f472b6']].forEach(([mm, nr, col]) => {
+    const px = _dspMmToPx(mm);
+    ctx.strokeStyle = col; ctx.lineWidth = _dsp.aktiv === nr ? 2 : 1.2;
+    ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(px, sy); ctx.lineTo(px, ay); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = col;
+    ctx.beginPath();
+    ctx.moveTo(px, ay - 9); ctx.lineTo(px - 6, ay - 20); ctx.lineTo(px + 6, ay - 20);
+    ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(String(nr), px, ay - 11);
+  });
+
+  // Messstrecke zwischen den Marken
+  const p1 = _dspMmToPx(_dsp.m1), p2 = _dspMmToPx(_dsp.m2);
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(p1, ay + 24); ctx.lineTo(p2, ay + 24); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(p1, ay + 20); ctx.lineTo(p1, ay + 28); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(p2, ay + 20); ctx.lineTo(p2, ay + 28); ctx.stroke();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Δx = ' + _fpmNum(_dspDx(), 2) + ' mm', (p1 + p2) / 2, ay + 40);
+}
+
+// ── Aufbau auf der optischen Bank ──────────────────────
+function _dspRenderBank(ctx, cv) {
+  if (!_dsp) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  const col = _DSP_LASER[_dsp.li].col;
+  const yM = H / 2 + 6;
+  const xL = 34, xS = 150, xSch = W - 42;
+
+  // optische Bank
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(20, H - 34, W - 40, 8);
+  [xL, xS, xSch].forEach(x => { ctx.fillStyle = '#94a3b8'; ctx.fillRect(x - 3, H - 34, 6, 12); });
+
+  // Laser
+  ctx.fillStyle = '#334155';
+  ctx.fillRect(xL - 30, yM - 11, 44, 22);
+  ctx.fillStyle = col; ctx.fillRect(xL + 12, yM - 3, 5, 6);
+  ctx.fillStyle = '#fff'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('LASER', xL - 8, yM + 3);
+
+  // Buendel bis zum Spalt
+  ctx.strokeStyle = col; ctx.lineWidth = 2.4; ctx.globalAlpha = 0.85;
+  ctx.beginPath(); ctx.moveTo(xL + 17, yM); ctx.lineTo(xS - 2, yM); ctx.stroke();
+  ctx.globalAlpha = 1;
+
+  // Doppelspalt
+  const gap = 7;
+  ctx.fillStyle = '#1e293b';
+  ctx.fillRect(xS - 3, yM - 52, 6, 52 - gap - 3);
+  ctx.fillRect(xS - 3, yM - gap + 2, 6, (gap - 2) * 2 - 4);
+  ctx.fillRect(xS - 3, yM + gap + 3, 6, 52 - gap - 3);
+
+  // Schirm
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(xSch, yM - 62, 10, 124);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.strokeRect(xSch + 0.5, yM - 62.5, 10, 124);
+
+  // Strahlenfaecher der Ordnungen 0, ±1, ±2 – schematisch aufgefaechert
+  const spread = 22;
+  for (let k = -2; k <= 2; k++) {
+    const yT = yM + k * spread;
+    [-1, 1].forEach(sgn => {
+      ctx.strokeStyle = col; ctx.globalAlpha = k === 0 ? 0.85 : 0.4 - Math.abs(k) * 0.08;
+      ctx.lineWidth = k === 0 ? 2 : 1.3;
+      ctx.beginPath(); ctx.moveTo(xS, yM + sgn * gap); ctx.lineTo(xSch, yT); ctx.stroke();
+    });
+    ctx.globalAlpha = 1;
+    // Leuchtfleck auf dem Schirm
+    const helligkeit = k === 0 ? 1 : Math.max(0.25, 1 - Math.abs(k) * 0.3);
+    ctx.globalAlpha = helligkeit;
+    ctx.fillStyle = col;
+    ctx.beginPath(); ctx.ellipse(xSch + 5, yT, 3.5, 6, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('k = ' + (k > 0 ? '+' + k : k), xSch + 13, yT + 3);
+  }
+
+  // Winkel α am Spalt
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(xS, yM); ctx.lineTo(xSch, yM); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.arc(xS, yM, 40, -Math.atan2(spread, xSch - xS), 0); ctx.stroke();
+  ctx.fillStyle = '#7c3aed'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('α', xS + 45, yM - 6);
+
+  // Bemassung e
+  const yE = H - 46;
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(xS, yE); ctx.lineTo(xSch, yE); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xS, yE - 4); ctx.lineTo(xS, yE + 4); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xSch, yE - 4); ctx.lineTo(xSch, yE + 4); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('e = ' + _fpmNum(_dsp.e, 2) + ' m', (xS + xSch) / 2, yE - 7);
+
+  // Lupe auf den Doppelspalt
+  const lx = 62, ly = 40, lr = 26;
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(lx, ly, lr, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#1e293b';
+  ctx.fillRect(lx - 4, ly - lr + 4, 8, lr - 12);
+  ctx.fillRect(lx - 4, ly - 4, 8, 8);
+  ctx.fillRect(lx - 4, ly + 8, 8, lr - 12);
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(lx + 8, ly - 8); ctx.lineTo(lx + 8, ly + 4); ctx.stroke();
+  ctx.fillStyle = '#7c3aed'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('d', lx + 11, ly - 1);
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif';
+  ctx.fillText('d = ' + _fpmNum(_dsp.d, 2) + ' mm', lx + lr + 4, ly - 3);
+  ctx.fillText('b = ' + _fpmNum(_dsp.b, 2) + ' mm', lx + lr + 4, ly + 8);
+
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('schematisch, nicht maßstäblich', W - 8, H - 8);
+  ctx.textAlign = 'left';
+}
+
+// ── Oberflaeche ────────────────────────────────────────
+function _dspHTML() {
+  const laser = _DSP_LASER.map((L, i) =>
+    `<button class="dsp-laser${i === _dsp.li ? ' on' : ''}" id="dspL${i}" onclick="_dspSetLaser(${i})">
+       <span class="dsp-laser-p" style="background:${L.col}"></span>
+       <span class="dsp-laser-n">${L.n}</span>
+     </button>`).join('');
+
+  const spalte = _DSP_SPALTE.map((d, i) =>
+    `<button class="dsp-slit${d === _dsp.d ? ' on' : ''}" id="dspD${i}"
+       onclick="_dspSetD(${i})">${_fpmNum(d, 2)}</button>`).join('');
+
+  const views = _DSP_VIEWS.map(v =>
+    `<option value="${v}"${v === _dsp.view ? ' selected' : ''}>± ${v} mm</option>`).join('');
+
+  const presets = ['n → Δx', 'e → Δa', '1/d → Δa'].map((p, i) =>
+    `<button class="fpm-tab${i === _dsp.preset ? ' on' : ''}" id="dspTab${i}" onclick="_dspSetPreset(${i})">${p}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim dsp-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔦 Doppelspalt: das Schlüsselexperiment</h3>
+
+    <canvas id="dspScreen" width="${_DSP_W}" height="236" class="dsp-screen"></canvas>
+    <div class="dsp-screen-bar">
+      <span class="dsp-hint">Tippe oder ziehe im Bild – die nähere Marke springt an die Stelle.</span>
+      <label class="dsp-sel">Ausschnitt
+        <select onchange="_dspSetView(this.value)">${views}</select>
+      </label>
+      <label class="fpm-check" style="margin:0"><input type="checkbox" checked onchange="_dspSet('profil',this.checked)">
+        Intensitätsprofil</label>
+    </div>
+
+    <div class="fpm-grid" style="margin-top:10px">
+      <div>
+        <canvas id="dspBank" width="420" height="260" class="phys-anim-cv"></canvas>
+        <div class="fpm-label">Lichtquelle wählen</div>
+        <div class="dsp-lasers">${laser}</div>
+        <div class="dsp-lam" id="dspLam"></div>
+        <div class="fpm-label">Doppelspalt einsetzen – Spaltabstand d in mm</div>
+        <div class="dsp-slits">${spalte}</div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Schirmabstand e: <b id="dspELbl">2,00 m</b></span>
+          <input type="range" id="dspE" min="0.5" max="4" step="0.1" value="2"
+            oninput="_dspSetE(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Spaltbreite b: <b id="dspBLbl">0,02 mm</b></span>
+          <input type="range" id="dspB" min="0.01" max="0.08" step="0.01" value="0.02"
+            oninput="_dspSetB(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="fpm-note" id="dspBNote"></div>
+        <label class="fpm-check"><input type="checkbox" onchange="_dspSet('weiss',this.checked)">
+          Glühlicht statt Laser (Weißlicht)</label>
+        <label class="fpm-check"><input type="checkbox" onchange="_dspSet('reveal',this.checked)">
+          Sollwert der Wellenlänge anzeigen</label>
+      </div>
+
+      <div>
+        <div class="fpm-label">Ausmessen</div>
+        <div class="dsp-marks">
+          <button class="dsp-mk" id="dspMk1" onclick="_dspSetAktiv(1)"><span class="dsp-mk-p" style="background:#fbbf24"></span>Marke 1</button>
+          <button class="dsp-mk on" id="dspMk2" onclick="_dspSetAktiv(2)"><span class="dsp-mk-p" style="background:#f472b6"></span>Marke 2</button>
+          <button class="sim-btn" onclick="_dspNudge(-1)" title="aktive Marke nach links">◀</button>
+          <button class="sim-btn" onclick="_dspNudge(1)" title="aktive Marke nach rechts">▶</button>
+        </div>
+        <div class="dsp-nrow">
+          <label class="phys-ctrl-label" for="dspN">Streifenabstände zwischen den Marken n:</label>
+          <input type="number" id="dspN" class="dsp-num" min="1" max="40" step="1" value="1"
+            oninput="_dspSetN(this.value)">
+        </div>
+        <div class="fpm-readout">
+          <div class="fpm-ro"><span class="fpm-ro-k">Strecke Δx</span><span class="fpm-ro-v" id="dspDx">—</span><span class="fpm-ro-u">mm</span></div>
+          <div class="fpm-ro"><span class="fpm-ro-k">Δa = Δx / n</span><span class="fpm-ro-v" id="dspDa">—</span><span class="fpm-ro-u">mm</span></div>
+          <div class="fpm-ro"><span class="fpm-ro-k">λ = Δa·d / e</span><span class="fpm-ro-v" id="dspLamMess">—</span><span class="fpm-ro-u">nm</span></div>
+        </div>
+        <div id="dspSoll" class="dsp-soll"></div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" id="dspTakeBtn" onclick="_dspTake()">✓ Messwert übernehmen</button>
+          <button class="sim-btn" onclick="_dspFit()">🔍 Ausschnitt passend</button>
+        </div>
+        <div class="sim-btn-row">
+          <button class="sim-btn" onclick="_dspAuto()">📏 Fotodiode: 10 Abstände</button>
+          <button class="sim-btn" onclick="_dspDemo()">📋 Beispielmessreihe</button>
+          <button class="sim-btn" onclick="_dspClear()">🗑 Tabelle leeren</button>
+        </div>
+        <div class="fpm-tablewrap">
+          <table class="sim-table">
+            <thead><tr><th>λ-Quelle</th><th>d (mm)</th><th>e (m)</th><th>n</th><th>Δx (mm)</th><th>Δa (mm)</th><th>λ (nm)</th><th></th></tr></thead>
+            <tbody id="dspTbody"></tbody>
+          </table>
+          <div class="fpm-empty" id="dspEmpty">Noch keine Messwerte.<br>Marken setzen → n eintragen → übernehmen.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fpm-label" style="margin-top:12px">Auswertung – jede Auftragung muss eine Ursprungsgerade ergeben</div>
+    <div class="fpm-tabs">${presets}</div>
+    <div class="fpm-grid2">
+      <canvas id="dspPlot" width="470" height="330" class="phys-chart-cv"></canvas>
+      <div>
+        <div class="fpm-fit" id="dspFitBox"></div>
+        <div class="fpm-label" style="margin-top:10px">Funktion plotten</div>
+        <input type="text" id="dspFn" class="fpm-input" placeholder="z. B. 6.328*x" spellcheck="false"
+          oninput="_dspSetFn(this.value)">
+        <div class="fpm-err" id="dspFnErr"></div>
+        <div class="sim-btn-row" style="padding:2px 0 4px">
+          <button class="sim-btn primary" onclick="_dspTheorieFn()">ƒ Theoriefunktion</button>
+          <button class="sim-btn" onclick="_dspClearFn()">Feld leeren</button>
+        </div>
+        <div class="fpm-theo" id="dspTheo"></div>
+        <div class="fpm-note">Erlaubt: x, pi, + − * / ^, sqrt(), sin(), cos(), abs(), exp(), ln(). Malpunkt immer schreiben.</div>
+        <label class="fpm-check"><input type="checkbox" checked onchange="_dspSet('origin',this.checked)">
+          Ausgleichsgerade durch den Ursprung</label>
+      </div>
+    </div>
+
+    <div id="dspErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Maxima: <b>sin α<sub>k</sub> = k · λ/d</b> &nbsp;|&nbsp; Minima: <b>sin α<sub>k</sub> = (2k+1)/2 · λ/d</b>
+      &nbsp;|&nbsp; kleine Winkel: <b>Δa = e·λ/d</b> ⇒ <b>λ = Δa·d/e</b>
+    </p>
+  </div>`;
+}
+
+function _dspErklHTML() {
+  return `<div class="dsp-erkl-kopf">Warum entstehen die Streifen?</div>
+    <div class="dsp-erkl-text">
+      Nach dem <b>Huygensschen Prinzip</b> wirkt jede der beiden Spaltöffnungen als Ausgangspunkt einer
+      neuen Kreiswelle – genau wie der enge Spalt in der Wellenwanne. Beide Wellen sind kohärent, weil sie
+      aus derselben Lichtquelle stammen. Sie überlagern sich auf dem Schirm: Wo der <b>Gangunterschied</b>
+      Δs = d·sin α ein ganzzahliges Vielfaches von λ ist, verstärken sie sich (Maximum), wo er ein
+      ungeradzahliges Vielfaches von λ/2 ist, löschen sie sich aus (Minimum).
+      Thomas Young hat damit 1802 gezeigt, dass Licht Welleneigenschaften hat.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Messtipp aus der Handreichung</div>
+    <div class="dsp-erkl-text">
+      Das nullte Maximum ist oft schwer genau zu treffen. Miss deshalb <b>nicht</b> vom Zentrum aus, sondern
+      über <b>mehrere</b> Streifen hinweg von Maximum zu Maximum – oder besser von Minimum zu Minimum, die
+      sind schärfer – und teile die Strecke durch die Anzahl n der Abstände. Der Fehler beim Anlegen der
+      Marken verteilt sich dann auf n Abstände und wird n-mal kleiner.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Im echten Versuch: niemals in den Laserstrahl blicken, Warnschild aufstellen,
+      Raum abdunkeln. Nur Laser der zugelassenen Leistungsklasse verwenden.</div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _dspSet(key, val) {
+  _dsp[key] = val;
+  if (key === 'weiss') { _dspRefreshTheorie(); _dspUpdateRead(); }
+  _dspDrawPlot();
+}
+function _dspSetLaser(i) {
+  _dsp.li = i;
+  _DSP_LASER.forEach((L, k) => document.getElementById('dspL' + k)?.classList.toggle('on', k === i));
+  _dspLamInfo(); _dspUpdateRead(); _dspRefreshTheorie();
+}
+function _dspSetD(i) {
+  _dsp.d = _DSP_SPALTE[i];
+  _DSP_SPALTE.forEach((v, k) => document.getElementById('dspD' + k)?.classList.toggle('on', k === i));
+  _dspSetB(_dsp.b);          // b nachziehen, falls es jetzt zu breit waere
+  _dspUpdateRead(); _dspRefreshTheorie();
+}
+function _dspSetE(v) {
+  _dsp.e = +v;
+  const el = document.getElementById('dspELbl'); if (el) el.textContent = _fpmNum(+v, 2) + ' m';
+  _dspUpdateRead(); _dspRefreshTheorie();
+}
+// Zwei Spalte der Breite b im Abstand d koennen sich nicht ueberlappen –
+// b wird deshalb auf 0,6·d begrenzt, so wie es das echte Dia vorgibt.
+function _dspBMax() { return Math.round(_dsp.d * 0.6 * 100) / 100; }
+function _dspSetB(v) {
+  _dsp.b = Math.min(+v, _dspBMax());
+  const el = document.getElementById('dspBLbl'); if (el) el.textContent = _fpmNum(_dsp.b, 2) + ' mm';
+  const sl = document.getElementById('dspB'); if (sl) sl.value = String(_dsp.b);
+  _dspBNote();
+}
+// Bei ganzzahligem d/b faellt jedes d/b-te Maximum in ein Minimum der
+// Einhuellenden und fehlt – das ist echte Physik und lohnt einen Hinweis.
+function _dspBNote() {
+  const el = document.getElementById('dspBNote'); if (!el) return;
+  const q = _dsp.d / _dsp.b;
+  const ganz = Math.abs(q - Math.round(q)) < 0.02 && Math.round(q) >= 2;
+  el.innerHTML = 'd / b = ' + _fpmNum(q, 1) +
+    (ganz ? ' – jedes ' + Math.round(q) + '. Maximum fehlt, es liegt im Minimum der Einzelspalt-Einhüllenden.'
+          : ' – die Einhüllende des Einzelspalts macht die äußeren Maxima schwächer.');
+}
+function _dspSetView(v) { _dsp.view = +v; _dspUpdateRead(); }
+function _dspSetAktiv(nr) {
+  _dsp.aktiv = nr;
+  document.getElementById('dspMk1')?.classList.toggle('on', nr === 1);
+  document.getElementById('dspMk2')?.classList.toggle('on', nr === 2);
+}
+function _dspNudge(dir) {
+  const schritt = _dsp.view / 200;          // feine Korrektur, unabhaengig vom Zoom
+  const k = _dsp.aktiv === 1 ? 'm1' : 'm2';
+  _dsp[k] = Math.max(-_dsp.view, Math.min(_dsp.view, _dsp[k] + dir * schritt));
+  _dspUpdateRead();
+}
+function _dspSetN(v) {
+  const n = Math.max(1, Math.min(40, Math.round(+v || 1)));
+  _dsp.n = n;
+  _dspUpdateRead();
+}
+// Waehlt den kleinsten Ausschnitt, in dem noch mehrere Streifen Platz haben
+function _dspFit() {
+  const da = _dspDaTheo();
+  const ziel = da * 4;
+  const v = _DSP_VIEWS.find(x => x >= ziel) || _DSP_VIEWS[_DSP_VIEWS.length - 1];
+  _dsp.view = v;
+  const sel = document.querySelector('.dsp-screen-bar select');
+  if (sel) sel.value = String(v);
+  _dsp.m1 = Math.max(-v, Math.min(v, _dsp.m1));
+  _dsp.m2 = Math.max(-v, Math.min(v, _dsp.m2));
+  _dspUpdateRead();
+}
+function _dspSetPreset(i) {
+  _dsp.preset = i;
+  for (let k = 0; k < 3; k++) document.getElementById('dspTab' + k)?.classList.toggle('on', k === i);
+  _dspRefreshTheorie();
+  _dspDrawPlot();
+}
+
+function _dspLamInfo() {
+  const el = document.getElementById('dspLam'); if (!el) return;
+  const L = _DSP_LASER[_dsp.li];
+  el.innerHTML = _dsp.weiss
+    ? '<b>Glühlicht</b> – alle Wellenlängen von 400 nm bis 700 nm gleichzeitig'
+    : L.kurz + (_dsp.reveal ? ' · <b>λ = ' + _fpmNum(L.lam, 1) + ' nm</b>' : '');
+}
+
+function _dspUpdateRead() {
+  if (!_dsp) return;
+  const dx = _dspDx(), da = _dspDa();
+  const lam = _dspLamAus(da, _dsp.d, _dsp.e);
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  set('dspDx', _fpmNum(dx, 2));
+  set('dspDa', _fpmNum(da, 3));
+  set('dspLamMess', dx > 0 ? _fpmNum(lam, 1) : '—');
+  _dspLamInfo(); _dspBNote();
+
+  const soll = document.getElementById('dspSoll');
+  if (soll) {
+    if (_dsp.weiss) {
+      soll.innerHTML = '<span class="fpm-note">Glühlicht enthält viele Wellenlängen gleichzeitig – ' +
+        'eine einzelne Wellenlänge lässt sich so nicht bestimmen. Für die Messung einen Laser wählen.</span>';
+    } else if (_dsp.reveal && dx > 0) {
+      const w = _dspLam();
+      const abw = Math.abs(lam - w) / w * 100;
+      const cls = abw < 1 ? 'ok' : abw < 5 ? 'mid' : 'no';
+      soll.innerHTML = `<span class="fpm-fitmeta">gemessen ${_fpmNum(lam, 1)} nm · Sollwert ${_fpmNum(w, 1)} nm</span>
+        <span class="fpm-badge ${cls}">Abweichung ${_fpmNum(abw, 2)} %</span>`;
+    } else soll.innerHTML = '';
+  }
+  const take = document.getElementById('dspTakeBtn');
+  if (take) take.disabled = !(dx > 0) || _dsp.weiss;
+}
+
+// ── Messwerttabelle ────────────────────────────────────
+function _dspAddRow(lam, li, d, e, n, dx) {
+  _dsp.rows.push({ id: _dsp.nextId++, lam, li, d, e, n, dx, da: dx / n });
+  _dspRenderTable(); _dspDrawPlot();
+}
+function _dspTake() {
+  const dx = _dspDx();
+  if (!(dx > 0) || _dsp.weiss) return;
+  _dspAddRow(_dspLam(), _dsp.li, _dsp.d, _dsp.e, _dsp.n, dx);
+}
+// Fotodiode: faehrt das Muster ab und findet 10 Streifenabstaende
+function _dspAuto() {
+  if (_dsp.weiss) return;
+  const n = 10;
+  const x = _dspXk(n);
+  if (!isFinite(x)) return;
+  const dx = Math.abs(x) * (1 + (Math.random() - 0.5) * 0.008);
+  _dspAddRow(_dspLam(), _dsp.li, _dsp.d, _dsp.e, n, dx);
+}
+function _dspDelRow(id) {
+  _dsp.rows = _dsp.rows.filter(r => r.id !== id);
+  _dspRenderTable(); _dspDrawPlot();
+}
+function _dspClear() {
+  if (_dsp.rows.length && !confirm('Alle ' + _dsp.rows.length + ' Messwerte löschen?')) return;
+  _dsp.rows = []; _dspRenderTable(); _dspDrawPlot();
+}
+// Eine vollstaendige Messreihe, wie sie im Unterricht entstehen wuerde
+function _dspDemo() {
+  const alt = { li: _dsp.li, d: _dsp.d, e: _dsp.e };
+  const mess = (li, d, e, n) => {
+    _dsp.li = li; _dsp.d = d; _dsp.e = e;
+    const x = _dspXk(n);
+    if (!isFinite(x)) return;
+    _dsp.rows.push({ id: _dsp.nextId++, lam: _DSP_LASER[li].lam, li, d, e, n,
+      dx: Math.abs(x) * (1 + (Math.random() - 0.5) * 0.01), da: 0 });
+    const r = _dsp.rows[_dsp.rows.length - 1]; r.da = r.dx / r.n;
+  };
+  [2, 4, 6, 8, 10].forEach(n => mess(0, 0.20, 2.0, n));           // Ordnung variieren
+  [0.5, 1.0, 1.5, 2.5, 3.0, 3.5, 4.0].forEach(e => mess(0, 0.20, e, 10));  // Schirmabstand
+  [0.10, 0.15, 0.25, 0.30].forEach(d => mess(0, d, 2.0, 10));     // Spaltabstand
+  _dsp.li = alt.li; _dsp.d = alt.d; _dsp.e = alt.e;
+  _dspRenderTable(); _dspDrawPlot();
+}
+function _dspRenderTable() {
+  const tb = document.getElementById('dspTbody'); if (!tb) return;
+  const empty = document.getElementById('dspEmpty');
+  if (empty) empty.style.display = _dsp.rows.length ? 'none' : 'block';
+  tb.innerHTML = _dsp.rows.map(r =>
+    `<tr>
+       <td><span class="fpm-dot" style="background:${_DSP_LASER[r.li].col}"></span>${_DSP_LASER[r.li].n}</td>
+       <td>${_fpmNum(r.d, 2)}</td><td>${_fpmNum(r.e, 2)}</td><td>${r.n}</td>
+       <td>${_fpmNum(r.dx, 2)}</td><td><b>${_fpmNum(r.da, 3)}</b></td>
+       <td>${_fpmNum(_dspLamAus(r.da, r.d, r.e), 1)}</td>
+       <td class="fpm-del" onclick="_dspDelRow(${r.id})" title="löschen">✕</td>
+     </tr>`).join('');
+}
+
+// ── Auswertungsdiagramm ────────────────────────────────
+// Jede Auftragung isoliert eine Abhaengigkeit; die Steigung liefert λ.
+const _DSP_PRESETS = [
+  { xl: 'n (Anzahl der Streifenabstände)', yl: 'Δx in mm',
+    x: r => r.n, y: r => r.dx,
+    grp: r => r.li + '|' + r.d + '|' + r.e,
+    gl: r => _DSP_LASER[r.li].n + ', d = ' + _fpmNum(r.d, 2) + ' mm, e = ' + _fpmNum(r.e, 2) + ' m',
+    slope: r => r.e * r.lam / (1000 * r.d),
+    lamAus: (k, r) => 1000 * k * r.d / r.e,
+    note: 'Ursprungsgerade ⇒ die Streifen liegen gleich weit auseinander. Die Steigung ist genau ein Streifenabstand Δa.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'Δx(n) = n · e·λ/d',
+    term: () => _dspZahl(_dsp.e * _dspLam() / (1000 * _dsp.d)) + '*x',
+    param: () => 'Steigung e·λ/d = ' + _fpmNum(_dspDaTheo(), 3) + ' mm',
+    deutung: 'Misst du über n Streifen statt über einen, wird die Strecke n-mal so lang – der Ablesefehler aber nicht. Genau deshalb misst man über viele Ordnungen und teilt.' },
+
+  { xl: 'e in m', yl: 'Δa in mm',
+    x: r => r.e, y: r => r.da,
+    grp: r => r.li + '|' + r.d,
+    gl: r => _DSP_LASER[r.li].n + ', d = ' + _fpmNum(r.d, 2) + ' mm',
+    slope: r => r.lam / (1000 * r.d),
+    lamAus: (k, r) => 1000 * k * r.d,
+    note: 'Ursprungsgerade ⇒ Δa ~ e. Doppelter Schirmabstand, doppelter Streifenabstand.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'Δa(e) = (λ/d) · e',
+    term: () => _dspZahl(_dspLam() / (1000 * _dsp.d)) + '*x',
+    param: () => 'Steigung λ/d = ' + _fpmNum(_dspLam() / (1000 * _dsp.d), 4) + ' mm/m',
+    deutung: 'Das Streifenmuster wird einfach mitvergrößert: Die Winkel α bleiben gleich, nur der Weg bis zum Schirm wird länger. Aus der Steigung folgt λ = Steigung · d.' },
+
+  { xl: '1/d in 1/mm', yl: 'Δa in mm',
+    x: r => 1 / r.d, y: r => r.da,
+    grp: r => r.li + '|' + r.e,
+    gl: r => _DSP_LASER[r.li].n + ', e = ' + _fpmNum(r.e, 2) + ' m',
+    slope: r => r.e * r.lam / 1000,
+    lamAus: (k, r) => 1000 * k / r.e,
+    note: 'Ursprungsgerade über 1/d ⇒ Δa ~ 1/d. Enger Doppelspalt, breiteres Muster.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'Δa(1/d) = (e·λ) · (1/d)',
+    term: () => _dspZahl(_dsp.e * _dspLam() / 1000) + '*x',
+    param: () => 'Steigung e·λ = ' + _fpmNum(_dsp.e * _dspLam() / 1000, 4) + ' mm²',
+    deutung: 'Nicht d selbst, sondern der Kehrwert 1/d liefert die Gerade: Δa ist umgekehrt proportional zu d. Aus der Steigung folgt λ = Steigung / e.' }
+];
+
+function _dspZahl(v) { return String(Math.round(v * 1e6) / 1e6); }
+
+function _dspDrawPlot() {
+  const cv = document.getElementById('dspPlot');
+  if (!cv || !_dsp) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = _DSP_PRESETS[_dsp.preset];
+  const padL = 62, padR = 14, padT = 14, padB = 42;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const pts = _dsp.rows.map(r => ({ x: P.x(r), y: P.y(r) })).filter(p => isFinite(p.x) && isFinite(p.y));
+  let xmax = pts.length ? Math.max(...pts.map(p => p.x)) * 1.15 : 1;
+  let ymax = pts.length ? Math.max(...pts.map(p => p.y)) * 1.15 : 1;
+  if (_dsp.fn) for (let i = 0; i <= 20; i++) {
+    let v; try { v = _dsp.fn(xmax * i / 20); } catch (err) { v = NaN; }
+    if (isFinite(v) && v > ymax) ymax = v * 1.05;
+  }
+  if (!(xmax > 0) || !isFinite(xmax)) xmax = 1;
+  if (!(ymax > 0) || !isFinite(ymax)) ymax = 1;
+
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+
+  const xt = _fpmTicks(xmax, 6), yt = _fpmTicks(ymax, 5);
+  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  xt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
+  });
+  yt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(P.xl, x1, y0 + 30);
+  ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillText('Noch keine Messwerte aufgenommen', (x0 + x1) / 2, (y0 + y1) / 2);
+    ctx.textAlign = 'left';
+    const fo = document.getElementById('dspFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + P.note + '</div>';
+    return;
+  }
+
+  // eingegebene Funktion
+  if (_dsp.fn) {
+    ctx.strokeStyle = '#db2777'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _dsp.fn((px - x0) / (x1 - x0) * xmax); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv);
+      if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+
+  // Messreihen gruppieren
+  const map = new Map();
+  _dsp.rows.forEach(r => {
+    const k = P.grp(r);
+    if (!map.has(k)) map.set(k, []);
+    map.get(k).push(r);
+  });
+  const palette = ['#7c3aed', '#f97316', '#0284c7', '#16a34a', '#db2777', '#0f766e'];
+  const info = [];
+
+  [...map.keys()].sort().forEach((k, gi) => {
+    const rows = map.get(k);
+    const col = rows.length === 1 ? _DSP_LASER[rows[0].li].col : palette[gi % palette.length];
+    const gp = rows.map(r => ({ x: P.x(r), y: P.y(r) })).filter(p => isFinite(p.x) && isFinite(p.y));
+
+    let fit = null;
+    if (gp.length >= 2) {
+      fit = _dsp.origin ? _fpmFitOrigin(gp) : _fpmFitLinear(gp);
+      if (fit) {
+        ctx.strokeStyle = col; ctx.lineWidth = 1.6;
+        ctx.beginPath(); ctx.moveTo(X(0), Y(fit.b)); ctx.lineTo(X(xmax), Y(fit.k * xmax + fit.b)); ctx.stroke();
+      }
+    }
+    gp.forEach(p => {
+      ctx.fillStyle = col;
+      ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke();
+    });
+    info.push({ ref: rows[0], col, fit, n: gp.length });
+  });
+
+  _dspRenderFit(info, P);
+}
+
+function _dspRenderFit(groups, P) {
+  const el = document.getElementById('dspFitBox');
+  if (!el) return;
+  let html = '';
+  groups.forEach(g => {
+    if (!g.fit) return;
+    const lam = P.lamAus(g.fit.k, g.ref);
+    const soll = g.ref.lam;
+    const abw = Math.abs(lam - soll) / soll * 100;
+    const cls = abw < 1 ? 'ok' : abw < 5 ? 'mid' : 'no';
+    const eq = 'y = ' + _fpmNum(g.fit.k, g.fit.k < 1 ? 4 : 3) + '·x' +
+      (_dsp.origin ? '' : (g.fit.b >= 0 ? ' + ' : ' − ') + _fpmNum(Math.abs(g.fit.b), 4));
+    html += `<div class="fpm-fitline">
+       <span class="fpm-fitmeta"><span class="fpm-dot" style="background:${g.col}"></span>${P.gl(g.ref)} · ${g.n} Messwerte</span>
+       <span class="fpm-fiteq">${eq}</span>
+       <span class="fpm-fitmeta">R² = ${_fpmNum(g.fit.r2, 4)} · erwartete Steigung ${_fpmNum(P.slope(g.ref), P.slope(g.ref) < 1 ? 4 : 3)}</span>
+       <span class="fpm-fiteq" style="color:#5b21b6">λ = ${_fpmNum(lam, 1)} nm</span>
+       ${_dsp.reveal ? `<span class="fpm-badge ${cls}">Sollwert ${_fpmNum(soll, 1)} nm · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+     </div>`;
+  });
+  if (!html) {
+    el.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte je Messreihe nötig – und dabei jeweils nur <i>eine</i> Größe verändern.<br>' + P.note + '</div>';
+    return;
+  }
+  el.innerHTML = html + '<div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">' + P.note + '</div>';
+}
+
+// ── Theoriefunktion ────────────────────────────────────
+function _dspTheorieFn() {
+  const term = _DSP_PRESETS[_dsp.preset].term();
+  const inp = document.getElementById('dspFn');
+  if (inp) inp.value = term;
+  _dspSetFn(term);
+  _dsp.fnAuto = true;
+  _dspRenderTheorie(true);
+}
+function _dspClearFn() {
+  const inp = document.getElementById('dspFn');
+  if (inp) inp.value = '';
+  _dspSetFn('');
+  _dspRenderTheorie(false);
+}
+function _dspRefreshTheorie() {
+  if (_dsp.fnAuto) {
+    const term = _DSP_PRESETS[_dsp.preset].term();
+    const inp = document.getElementById('dspFn');
+    if (inp) inp.value = term;
+    _dspSetFn(term);
+    _dsp.fnAuto = true;
+  }
+  _dspRenderTheorie(_dsp.fnAuto);
+}
+function _dspRenderTheorie(eingesetzt) {
+  const el = document.getElementById('dspTheo');
+  if (!el) return;
+  const P = _DSP_PRESETS[_dsp.preset];
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">${P.typ}</div>
+     <div class="fpm-theo-form">${P.form}</div>
+     <div class="fpm-theo-par">${P.param()}</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${P.term()}</div>` : ''}
+     <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+function _dspSetFn(str) {
+  _dsp.fnAuto = false;
+  const err = document.getElementById('dspFnErr');
+  const v = (str || '').trim();
+  if (!v) { _dsp.fn = null; if (err) err.textContent = ''; _dspDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _dsp.fn = f; if (err) err.textContent = '';
+  } catch (e) { _dsp.fn = null; if (err) err.textContent = e.message; }
+  _dspDrawPlot();
+}
+
+// ── Marken per Finger oder Maus setzen ─────────────────
+function _dspBind() {
+  const cv = document.getElementById('dspScreen');
+  if (!cv || !cv.addEventListener) return;
+  const mmAus = ev => {
+    const r = cv.getBoundingClientRect();
+    return _dspPxToMm((ev.clientX - r.left) * (cv.width / r.width));
+  };
+  const setze = ev => {
+    const mm = mmAus(ev);
+    if (_dsp.aktiv === 1) _dsp.m1 = mm; else _dsp.m2 = mm;
+    _dspUpdateRead();
+  };
+  cv.addEventListener('pointerdown', ev => {
+    ev.preventDefault();
+    const mm = mmAus(ev);
+    // die naeher liegende Marke anfassen – so wie man im Labor greift
+    _dspSetAktiv(Math.abs(mm - _dsp.m1) <= Math.abs(mm - _dsp.m2) ? 1 : 2);
+    _dsp.drag = true;
+    if (cv.setPointerCapture) cv.setPointerCapture(ev.pointerId);
+    setze(ev);
+  });
+  cv.addEventListener('pointermove', ev => { if (_dsp.drag) { ev.preventDefault(); setze(ev); } });
+  cv.addEventListener('pointerup',     () => { _dsp.drag = false; });
+  cv.addEventListener('pointercancel', () => { _dsp.drag = false; });
+  cv.addEventListener('pointerleave',  () => { _dsp.drag = false; });
+}
+
+// ── Zusaetzliche Styles ────────────────────────────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .dsp-screen { width: 100%; display: block; border-radius: 10px; background: #0f172a;
+      touch-action: none; cursor: crosshair; }
+    .dsp-screen-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 7px; }
+    .dsp-hint { font-size: .74rem; color: #64748b; flex: 1 1 200px; }
+    .dsp-sel { font-size: .74rem; font-weight: 700; color: #64748b; display: flex; align-items: center; gap: 5px; }
+    .dsp-sel select { padding: 4px 7px; border: 1px solid #e2e8f0; border-radius: 7px;
+      font-size: .76rem; color: #1e293b; background: #fff; }
+    .dsp-lasers { display: flex; gap: 6px; flex-wrap: wrap; }
+    .dsp-laser { flex: 1 1 70px; display: flex; align-items: center; gap: 6px; padding: 6px 9px;
+      background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 9px; cursor: pointer;
+      font-size: .76rem; font-weight: 700; color: #475569; }
+    .dsp-laser:hover { border-color: #cbd5e1; }
+    .dsp-laser.on { border-color: #7c3aed; background: #f5f3ff; color: #5b21b6; }
+    .dsp-laser-p { width: 11px; height: 11px; border-radius: 50%; flex: 0 0 auto; }
+    .dsp-lam { font-size: .73rem; color: #64748b; margin-top: 5px; }
+    .dsp-lam b { color: #5b21b6; font-variant-numeric: tabular-nums; }
+    .dsp-slits { display: flex; gap: 6px; flex-wrap: wrap; }
+    .dsp-slit { flex: 1 1 46px; padding: 6px 4px; background: #f8fafc; border: 2px solid #e2e8f0;
+      border-radius: 9px; cursor: pointer; font-size: .8rem; font-weight: 800; color: #1e293b;
+      font-variant-numeric: tabular-nums; }
+    .dsp-slit:hover { border-color: #cbd5e1; }
+    .dsp-slit.on { border-color: #7c3aed; background: #f5f3ff; color: #5b21b6; }
+    .dsp-marks { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+    .dsp-mk { display: flex; align-items: center; gap: 6px; padding: 7px 11px; background: #f8fafc;
+      border: 2px solid #e2e8f0; border-radius: 9px; cursor: pointer; font-size: .78rem;
+      font-weight: 700; color: #475569; }
+    .dsp-mk:hover { border-color: #cbd5e1; }
+    .dsp-mk.on { border-color: #7c3aed; background: #f5f3ff; color: #5b21b6; }
+    .dsp-mk-p { width: 10px; height: 10px; border-radius: 2px; }
+    .dsp-nrow { display: flex; align-items: center; gap: 8px; margin: 8px 0 7px; flex-wrap: wrap; }
+    .dsp-num { width: 68px; padding: 5px 8px; border: 1px solid #e2e8f0; border-radius: 8px;
+      font-size: .84rem; font-weight: 800; color: #1e293b; font-variant-numeric: tabular-nums; }
+    .dsp-num:focus { outline: 2px solid #7c3aed; outline-offset: 1px; border-color: #7c3aed; }
+    .dsp-soll { display: flex; flex-direction: column; gap: 2px; min-height: 16px; margin-top: 6px; }
+    .dsp-erkl { background: #f5f3ff; border: 1px solid #ddd6fe; border-left: 3px solid #7c3aed;
+      border-radius: 9px; padding: 10px 12px; margin-top: 12px; }
+    .dsp-erkl-kopf { font-size: .8rem; font-weight: 800; color: #5b21b6; }
+    .dsp-erkl-text { font-size: .76rem; color: #475569; line-height: 1.55; margin-top: 4px; }
+    .dsp-erkl-warn { font-size: .73rem; color: #b45309; background: #fffbeb; border: 1px solid #fde68a;
+      border-radius: 7px; padding: 6px 9px; margin-top: 8px; }
   `;
   document.head.appendChild(s);
 })();
