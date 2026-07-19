@@ -1999,6 +1999,23 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('fsrTakt', 'fsrKeinChart');
     _pSim.start(dt => _fsrTakt(dt), () => _fsrRender(), []);
   },
+
+  // Schluesselexperiment 07 des KLP: Beugungsringe polykristalliner Graphitfolie,
+  // de-Broglie-Wellenlaenge und daraus das Plancksche Wirkungsquantum
+  'elektronenbeugung': modal => {
+    _ebrInit();
+    modal.innerHTML = _ebrHTML();
+    const erkl = document.getElementById('ebrErkl');
+    if (erkl) erkl.innerHTML = _ebrErklHTML();
+    _ebrSetStation(0);
+    _ebrSetObjekt(_ebr.objekt);
+    _ebrRenderTable();
+    _ebrRenderTheorie(false);
+    _ebrUpdate();
+    _ebrDrawPlot();
+    _pSim = new PhysicsSimEngine('ebrTakt', 'ebrKeinChart');
+    _pSim.start(dt => _ebrTakt(dt), () => _ebrRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -9081,6 +9098,1291 @@ function _fsrRender() {
     .fsr-kachel.mid b { color: #b45309; }
     .fsr-kachel.no b { color: #b91c1c; }
     .fsr-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+// ═══════════════════════════════════════════════════════
+// ELEKTRONENBEUGUNGSROEHRE
+// Schluesselexperiment 07 der NRW-Handreichung.
+// Gemessen wird der Durchmesser der beiden Beugungsringe auf dem
+// Leuchtschirm; daraus folgt die de-Broglie-Wellenlaenge der Elektronen
+// und – als eigentliches Ergebnis – das Plancksche Wirkungsquantum.
+// ═══════════════════════════════════════════════════════
+
+const _EBR_H   = 6.626e-34;   // Plancksches Wirkungsquantum in Js (Sollwert)
+const _EBR_ME  = 9.109e-31;   // Elektronenmasse in kg (aus dem Fadenstrahlrohr)
+const _EBR_E   = 1.602e-19;   // Elementarladung in C (aus dem Millikanversuch)
+const _EBR_C   = 2.998e8;     // Lichtgeschwindigkeit in m/s
+
+// Geraetedaten aus der Handreichung
+const _EBR_L   = 0.135;       // Abstand Graphitfolie – Leuchtschirm in m
+const _EBR_D1  = 123e-12;     // kleinerer Netzebenenabstand des Graphits in m
+const _EBR_D2  = 213e-12;     // groesserer Netzebenenabstand des Graphits in m
+const _EBR_RS  = 0.045;       // Radius des Leuchtschirms in m
+const _EBR_ABL = 0.001;       // Ableseschaerfe auf der Schirmskala: 1 mm
+
+// Der kleinere Netzebenenabstand erzeugt den groesseren Ring.
+// Ring 0 = innen (gehoert zu d2), Ring 1 = aussen (gehoert zu d1).
+const _EBR_RINGE = [
+  { name: 'innerer Ring', d: _EBR_D2, kurz: 'd₂ = 213 pm', farbe: '#0369a1' },
+  { name: 'äußerer Ring', d: _EBR_D1, kurz: 'd₁ = 123 pm', farbe: '#db2777' }
+];
+
+const _EBR_HEIZ_MIN = 150;    // darunter emittiert die Kathode nicht
+const _EBR_WARM_S   = 6;      // Anheizdauer in s (real etwa eine halbe Minute)
+
+let _ebr = null;
+
+function _ebrInit() {
+  _ebr = {
+    station: 0,
+    U: 4000,            // Beschleunigungsspannung in V
+    heiz: 0,            // Heizstrom in mA
+    warm: 0,            // Aufheizgrad 0..1
+    dunkel: false,      // Raum verdunkelt?
+    abgeklebt: false,   // zentrales Maximum abgeklebt?
+    rows: [], nextId: 1,
+    preset: 0, fn: null, fnAuto: false, reveal: false,
+    ringFn: 0,          // fuer welchen Ring die Theoriefunktion gilt
+    drehzahl: 0,        // Kreuzgitter in Station 3, Umdrehungen pro Sekunde
+    gitterPhase: 0,
+    objekt: 2,
+    t: 0
+  };
+}
+
+// ── Physik ─────────────────────────────────────────────
+// de-Broglie-Wellenlaenge nach dem Durchlaufen der Spannung U:
+// e·U = ½·m_e·v²  und  λ = h/(m_e·v)  ⇒  λ = h/√(2·m_e·e·U)
+function _ebrLambda(U) { return _EBR_H / Math.sqrt(2 * _EBR_ME * _EBR_E * U); }
+function _ebrV(U) { return Math.sqrt(2 * _EBR_E * U / _EBR_ME); }
+
+// Bragg-Bedingung k·λ = 2·d·sin ϑ mit k = 1, Ablenkung um 2ϑ, tan 2ϑ = R/L
+function _ebrTheta(U, d) {
+  const s = _ebrLambda(U) / (2 * d);
+  return s >= 1 ? NaN : Math.asin(s);
+}
+function _ebrDurchmesser(U, d) {
+  const th = _ebrTheta(U, d);
+  return isFinite(th) ? 2 * _EBR_L * Math.tan(2 * th) : NaN;
+}
+// Was der Schueler auf der Millimeterskala abliest
+function _ebrDAbles(U, d) {
+  const D = _ebrDurchmesser(U, d);
+  return isFinite(D) ? Math.round(D / _EBR_ABL) * _EBR_ABL : NaN;
+}
+// Rueckweg: aus dem abgelesenen Durchmesser die Wellenlaenge
+function _ebrLamAus(D, d) { return 2 * d * Math.sin(0.5 * Math.atan(D / 2 / _EBR_L)); }
+// Naeherung fuer kleine Winkel: λ ≈ d·R/L = d·D/(2·L)
+function _ebrLamNaeh(D, d) { return d * D / (2 * _EBR_L); }
+// Aus einer einzelnen Ringmessung folgt das Wirkungsquantum
+function _ebrHAus(lam, U) { return lam * Math.sqrt(2 * _EBR_ME * _EBR_E * U); }
+
+// ── Zustand der Roehre ─────────────────────────────────
+// Unterhalb des Mindestheizstroms loest die Kathode keine Elektronen aus;
+// darueber braucht die Emission Zeit, bis sie stabil ist.
+function _ebrEmission() {
+  if (!_ebr || _ebr.heiz < _EBR_HEIZ_MIN) return 0;
+  const anteil = Math.min(1, (_ebr.heiz - _EBR_HEIZ_MIN) / 100);
+  return anteil * _ebr.warm;
+}
+function _ebrHellig() {
+  // Der Strahlstrom waechst mit der Beschleunigungsspannung
+  return _ebrEmission() * Math.min(1, _ebr.U / 3500);
+}
+function _ebrProblem() {
+  if (_ebr.heiz < _EBR_HEIZ_MIN) return 'kalt';
+  if (_ebr.warm < 0.98) return 'heizt';
+  if (!_ebr.dunkel) return 'hell';
+  if (_ebrRingPasst(1) === false) return 'zu gross';
+  return null;
+}
+function _ebrRingPasst(ring) {
+  const D = _ebrDurchmesser(_ebr.U, _EBR_RINGE[ring].d);
+  return isFinite(D) && D / 2 <= _EBR_RS;
+}
+function _ebrBereit() { return _ebrProblem() === null; }
+
+// ── Zehnerpotenzen ─────────────────────────────────────
+const _EBR_HOCH = { '-': '⁻', '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹' };
+function _ebrExp(v, d) {
+  if (!isFinite(v)) return '—';
+  if (v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const m = v / Math.pow(10, ex);
+  const hoch = String(ex).split('').map(c => _EBR_HOCH[c] || c).join('');
+  return _fpmNum(m, d) + ' · 10' + hoch;
+}
+
+// ── Oberfläche ─────────────────────────────────────────
+function _ebrHTML() {
+  const stationen = ['1 · Beugungsröhre', '2 · Das Wirkungsquantum',
+                     '3 · Optisches Analogon', '4 · Materie als Welle']
+    .map((s, i) => `<button class="fpm-tab${i === _ebr.station ? ' on' : ''}" id="ebrSt${i}" onclick="_ebrSetStation(${i})">${s}</button>`).join('');
+
+  const presets = ['1/√U → D', 'U → 1/λ²', 'λ<sub>Theorie</sub> → λ<sub>Messung</sub>'].map((p, i) =>
+    `<button class="fpm-tab${i === _ebr.preset ? ' on' : ''}" id="ebrTab${i}" onclick="_ebrSetPreset(${i})">${p}</button>`).join('');
+
+  const objekte = _EBR_OBJEKTE.map((o, i) =>
+    `<button class="ebr-obj${i === _ebr.objekt ? ' on' : ''}" id="ebrObj${i}" onclick="_ebrSetObjekt(${i})">
+       <span class="ebr-obj-n">${o.n}</span><span class="ebr-obj-k">${o.k}</span></button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim ebr-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">💫 Elektronenbeugung: das Schlüsselexperiment</h3>
+    <canvas id="ebrTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="ebrS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="ebrSchirm" width="420" height="340" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Blick auf den Leuchtschirm – die Skala misst in Millimetern</div>
+          <canvas id="ebrRohr" width="420" height="152" class="phys-anim-cv"></canvas>
+          <div class="fpm-note">Die Elektronen verlassen die Glühkathode K, werden durch die
+            Anodenspannung beschleunigt und durchsetzen in der durchbohrten Anode A eine dünne
+            Schicht aus <b>polykristallinem Graphit</b>. Die Zylinder Z₁, Z₂, Z₃ bilden eine
+            elektrostatische Linse, die den Strahl bündelt.</div>
+        </div>
+        <div>
+          <div class="fpm-label">Kathodenheizung</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Heizstrom: <b id="ebrHeizLbl">0 mA</b></span>
+            <input type="range" id="ebrHeiz" min="0" max="300" step="5" value="0"
+              oninput="_ebrSetHeiz(this.value)" style="width:100%;accent-color:#b45309">
+          </div>
+          <div class="ebr-heizbar"><div class="ebr-heizbar-f" id="ebrHeizBar"></div></div>
+          <div class="fpm-label">Beschleunigungsspannung</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">U<sub>A</sub>: <b id="ebrULbl">4,00 kV</b></span>
+            <input type="range" id="ebrU" min="2000" max="5000" step="50" value="4000"
+              oninput="_ebrSetU(this.value)" style="width:100%;accent-color:#7c3aed">
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" id="ebrDunkelBtn" onclick="_ebrToggleDunkel()">🌑 Raum verdunkeln</button>
+            <button class="sim-btn" id="ebrKlebBtn" onclick="_ebrToggleKleb()">⬤ Zentrum abkleben</button>
+          </div>
+          <div class="ebr-zustand" id="ebrZustand"></div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Geschwindigkeit v</span><span class="fpm-ro-v" id="ebrVA">—</span><span class="fpm-ro-u">10⁷ m/s</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">innerer Ring D₁</span><span class="fpm-ro-v" id="ebrD1A">—</span><span class="fpm-ro-u">mm</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">äußerer Ring D₂</span><span class="fpm-ro-v" id="ebrD2A">—</span><span class="fpm-ro-u">mm</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">λ aus dem inneren Ring</span><span class="fpm-ro-v" id="ebrL1A">—</span><span class="fpm-ro-u">pm</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">λ aus dem äußeren Ring</span><span class="fpm-ro-v" id="ebrL2A">—</span><span class="fpm-ro-u">pm</span></div>
+          </div>
+          <div class="ebr-rechnung" id="ebrRechnung"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="ebrTakeBtn" onclick="_ebrTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_ebrDemo()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_ebrClear()">🗑 Tabelle leeren</button>
+          </div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Nr.</th><th>U<sub>A</sub> (kV)</th><th>D₁ (mm)</th><th>D₂ (mm)</th><th>λ₁ (pm)</th><th>λ₂ (pm)</th><th></th></tr></thead>
+              <tbody id="ebrTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="ebrEmpty">Noch keine Messwerte.<br>Kathode heizen, Raum verdunkeln, Ringdurchmesser ablesen.</div>
+          </div>
+        </div>
+      </div>
+      <div class="ebr-bragg" id="ebrBragg"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="ebrS1" style="display:none">
+      <div class="fpm-label">Jede einzelne Ringmessung liefert einen Wert für h</div>
+      <div class="fsr-stat" id="ebrStat"></div>
+      <div class="fpm-label" style="margin-top:12px">Grafische Auswertung nach Linearisierung</div>
+      <div class="fpm-tabs">${presets}</div>
+      <div class="fpm-grid2">
+        <canvas id="ebrPlot" width="470" height="340" class="phys-chart-cv"></canvas>
+        <div>
+          <div class="fpm-fit" id="ebrFitBox"></div>
+          <div class="fpm-label" style="margin-top:10px">Funktion plotten</div>
+          <input type="text" id="ebrFn" class="fpm-input" placeholder="z. B. 1560*x" spellcheck="false"
+            oninput="_ebrSetFn(this.value)">
+          <div class="fpm-err" id="ebrFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px" id="ebrFnBtns"></div>
+          <div class="fpm-theo" id="ebrTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_ebrSet('reveal',this.checked)">
+            Literaturwert anzeigen</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="ebrS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="ebrGitter" width="420" height="316" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Laserlicht durch ein Kreuzgitter – das Gitter lässt sich drehen</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Drehzahl des Gitters: <b id="ebrDrehLbl">0,0 /s</b></span>
+            <input type="range" id="ebrDreh" min="0" max="20" step="0.1" value="0"
+              oninput="_ebrSetDreh(this.value)" style="width:100%;accent-color:#dc2626">
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_ebrSetDreh(0)">still</button>
+            <button class="sim-btn" onclick="_ebrSetDreh(1.5)">langsam</button>
+            <button class="sim-btn" onclick="_ebrSetDreh(20)">schnell</button>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-analog" id="ebrAnalog"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="ebrS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <div class="fpm-label">Wähle ein Objekt</div>
+          <div class="ebr-objs">${objekte}</div>
+          <div class="fpm-note">Alle Werte nach λ = h/(m·v). Die Zahlen für Tischtennisball und
+            Elektron stehen so in der Handreichung.</div>
+        </div>
+        <div>
+          <div class="fpm-label">Materiewellenlänge</div>
+          <div class="ebr-rechnung" id="ebrObjRechnung"></div>
+          <canvas id="ebrSkala" width="420" height="132" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Größenvergleich auf logarithmischer Achse</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="ebrErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>λ = h / (m<sub>e</sub> · v)</b> &nbsp;|&nbsp; <b>λ = h / √(2·m<sub>e</sub>·e·U<sub>A</sub>)</b>
+      &nbsp;|&nbsp; <b>λ = 2·d·sin(½·arctan(R/L))</b>
+    </p>
+  </div>`;
+}
+
+function _ebrErklHTML() {
+  return `<div class="dsp-erkl-kopf">Der kognitive Konflikt</div>
+    <div class="dsp-erkl-text">
+      Im Fadenstrahlrohr haben sich Elektronen wie kleine Kugeln verhalten: Sie tragen Ladung und
+      Masse, sie werden von Kräften abgelenkt, sie fliegen auf berechenbaren Bahnen. Schickt man
+      dieselben Elektronen aber durch eine dünne Graphitfolie, dann erwartet man auf dem Schirm
+      einen hellen Fleck, der von innen nach außen gleichmäßig dunkler wird – die Elektronen werden
+      ja an den Atomen in alle Richtungen gestreut. Man sieht stattdessen <b>konzentrische Ringe</b>.
+      Ringe sind ein Interferenzmuster, und Interferenz ist etwas, das nur Wellen zeigen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">De Broglies Hypothese</div>
+    <div class="dsp-erkl-text">
+      1924 stellte der Doktorand <b>Louis de Broglie</b> eine sehr kühne Vermutung auf. Vom Licht
+      wusste man damals schon, dass es sich in manchen Versuchen als Welle und in anderen als
+      Teilchenstrom zeigt. Für Photonen folgt aus E = h·f zusammen mit E = c·p sofort λ = h/p.
+      De Broglie schlug vor, diese Beziehung <b>auf alle Materie</b> zu übertragen:
+      <b>λ = h/p = h/(m·v)</b>. Es gab dafür keinerlei Beleg – es war eine Aussage über die
+      Symmetrie der Natur: Das Universum besteht aus Materie und Strahlung, also soll für beide
+      dasselbe gelten. Wichtig dabei: Weder Welle noch Korpuskel <i>ist</i> das Elektron. Beides
+      sind <b>Modelle</b>, also Werkzeuge unseres Denkens, mit denen wir jeweils einen Teil der
+      Beobachtungen beschreiben können. Dass zwei Modelle nebeneinander nötig sind, nennt man
+      <b>Welle-Teilchen-Dualismus</b>.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum man das nie vorher bemerkt hat</div>
+    <div class="dsp-erkl-text">
+      Beugung zeigt sich erst, wenn die Öffnungen etwa so klein sind wie die Wellenlänge. Weil h so
+      winzig ist, hat ein Tischtennisball die Wellenlänge 6,6 · 10⁻³² m – dafür gibt es kein Gitter
+      im Universum. Erst bei sehr kleinen Massen wird λ messbar: Ein Elektron mit v = 0,01·c kommt
+      auf etwa 2,4 · 10⁻¹⁰ m, und das liegt im Bereich der Röntgenwellenlängen. Und ein Gitter
+      dieser Feinheit gibt es tatsächlich – nämlich <b>Kristalle</b>. Genau diesen Weg hatten Vater
+      und Sohn Bragg 1913 schon für Röntgenstrahlen beschritten.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Wie die Ringe entstehen</div>
+    <div class="dsp-erkl-text">
+      Die Graphitschicht besteht aus vielen winzigen Kristallen, die ungeordnet nebeneinander
+      liegen – sie ist <b>polykristallin</b>. Ihre Netzebenen bilden mit dem einfallenden Strahl alle möglichen Winkel – darunter
+      immer auch solche, die die <b>Bragg-Bedingung k·λ = 2·d·sin ϑ</b> erfüllen. Diese Kristalle
+      lenken den Strahl um 2ϑ ab. Weil um die Strahlachse herum Kristalle in jeder Drehlage
+      vorkommen, verlassen die abgelenkten Elektronen die Folie auf dem <b>Mantel eines Kegels</b>,
+      und der Schirm schneidet daraus einen Kreis. Graphit hat zwei verschiedene Netzebenenabstände,
+      d₁ = 123 pm und d₂ = 213 pm – deshalb zwei Ringe. Beide sind Maxima <b>erster</b> Ordnung;
+      das erkennt man daran, dass der größere Radius nicht das Doppelte des kleineren ist.
+      Und weil sin ϑ mit kleinerem d wächst, gehört der <b>größere Ring zum kleineren
+      Netzebenenabstand</b> – eine Vertauschung, die beim Auswerten gern passiert.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Davisson und Germer – ein Zufall</div>
+    <div class="dsp-erkl-text">
+      Den ersten Nachweis lieferten am 6. Januar 1927 <b>Clinton Davisson</b> und <b>Lester Germer</b>
+      in den Laboratorien der Bell Telephone Company in New York – ohne de Broglies Arbeit zu kennen.
+      Sie untersuchten die Reflexion von Elektronen an Nickel. Nachdem ein Leck im Vakuumsystem eine
+      Oxidschicht hatte entstehen lassen, erhitzten sie die Probe, um sie zu säubern. Beim Abkühlen
+      kristallisierte das Nickel – und plötzlich zeigte die Streuintensität Maxima und Minima. Die
+      beiden erkannten die Tragweite ihrer Zufallsentdeckung und gingen der Sache gezielt nach.
+      Schon 1925 hatte übrigens Walter Elsasser in den <i>Naturwissenschaften</i> genau diesen
+      Versuch vorgeschlagen; auch davon wussten sie nichts.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Was die Wellen bedeuten</div>
+    <div class="dsp-erkl-text">
+      De Broglie deutete mit seiner Hypothese auch die Bohrsche Quantenbedingung: Aus
+      m·v·r = n·ħ folgt 2π·r = n·h/(m·v) = n·λ. Der Bahnumfang enthält also genau ganzzahlig viele
+      Wellenlängen – die erlaubten Bahnen sind die, auf denen eine <b>stehende Welle</b> passt.
+      Ende 1925 griff <b>Erwin Schrödinger</b> diese Idee auf und baute sie zu einer vollständigen
+      Theorie aus.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Simulation und echte Röhre</div>
+    <div class="dsp-erkl-text">
+      Diese Simulation berechnet die Ringdurchmesser aus der ebenen Geometrie
+      D = 2·L·tan(2ϑ) – also genau so, wie die Handreichung auswertet. Der Leuchtschirm einer
+      echten Röhre ist aber gewölbt, und der Abstand L lässt sich nicht sauber messen. Deshalb
+      liegen die im Handbuch protokollierten Messwerte (22,8 pm und 22,5 pm bei U = 3,6 kV) rund
+      10 % über dem theoretischen Wert von 20,4 pm. Hier stimmt beides zusammen; die Abweichungen,
+      die du siehst, kommen allein vom Ablesen auf Millimeter genau.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Im echten Versuch: Die Beschleunigungsspannung von bis zu 4 kV ist
+      berührungsgefährlich. Warnschild aufstellen, Erdung anschließen, einen Widerstand zur
+      Strombegrenzung einbauen (die Kathode ist empfindlich) und die Vorgaben der RiSU einhalten.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _ebrSetStation(i) {
+  _ebr.station = i;
+  for (let k = 0; k < 4; k++) {
+    document.getElementById('ebrSt' + k)?.classList.toggle('on', k === i);
+    const d = document.getElementById('ebrS' + k);
+    if (d) d.style.display = k === i ? 'block' : 'none';
+  }
+  _ebrUpdate();
+  if (i === 1) _ebrDrawPlot();
+}
+function _ebrSet(key, val) { _ebr[key] = val; _ebrDrawPlot(); }
+
+// ── Bedienung Station 1 ────────────────────────────────
+function _ebrSetU(v) {
+  _ebr.U = Math.max(2000, Math.min(5000, +v));
+  const sl = document.getElementById('ebrU'); if (sl) sl.value = String(_ebr.U);
+  const el = document.getElementById('ebrULbl'); if (el) el.textContent = _fpmNum(_ebr.U / 1000, 2) + ' kV';
+  _ebrUpdate();
+}
+function _ebrSetHeiz(v) {
+  const alt = _ebr.heiz;
+  _ebr.heiz = Math.max(0, Math.min(300, +v));
+  // Faellt der Strom unter die Schwelle, kuehlt die Kathode aus und muss neu anheizen
+  if (_ebr.heiz < _EBR_HEIZ_MIN) _ebr.warm = 0;
+  else if (alt < _EBR_HEIZ_MIN) _ebr.warm = 0;
+  const sl = document.getElementById('ebrHeiz'); if (sl) sl.value = String(_ebr.heiz);
+  const el = document.getElementById('ebrHeizLbl'); if (el) el.textContent = Math.round(_ebr.heiz) + ' mA';
+  _ebrUpdate();
+}
+function _ebrToggleDunkel() {
+  _ebr.dunkel = !_ebr.dunkel;
+  const b = document.getElementById('ebrDunkelBtn');
+  if (b) b.textContent = _ebr.dunkel ? '☀ Licht anschalten' : '🌑 Raum verdunkeln';
+  _ebrUpdate();
+}
+function _ebrToggleKleb() {
+  _ebr.abgeklebt = !_ebr.abgeklebt;
+  const b = document.getElementById('ebrKlebBtn');
+  if (b) b.textContent = _ebr.abgeklebt ? '○ Abklebung entfernen' : '⬤ Zentrum abkleben';
+  _ebrUpdate();
+}
+
+function _ebrTake() {
+  if (!_ebrBereit()) return;
+  const D1 = _ebrDAbles(_ebr.U, _EBR_D2);   // innerer Ring
+  const D2 = _ebrDAbles(_ebr.U, _EBR_D1);   // aeusserer Ring
+  const l1 = _ebrLamAus(D1, _EBR_D2), l2 = _ebrLamAus(D2, _EBR_D1);
+  _ebr.rows.push({ id: _ebr.nextId++, U: _ebr.U,
+                   D: [D1, D2], lam: [l1, l2],
+                   h: [_ebrHAus(l1, _ebr.U), _ebrHAus(l2, _ebr.U)] });
+  _ebrRenderTable();
+  _ebrDrawPlot();
+}
+function _ebrDelRow(id) { _ebr.rows = _ebr.rows.filter(r => r.id !== id); _ebrRenderTable(); _ebrDrawPlot(); }
+function _ebrClear() {
+  if (_ebr.rows.length && !confirm('Alle ' + _ebr.rows.length + ' Messwerte löschen?')) return;
+  _ebr.rows = []; _ebrRenderTable(); _ebrDrawPlot();
+}
+// Eine Messreihe ueber den ganzen einstellbaren Spannungsbereich
+function _ebrDemo() {
+  [2000, 2250, 2500, 2750, 3000, 3250, 3500, 3750, 4000, 4250, 4500, 4750, 5000].forEach(U => {
+    const D1 = _ebrDAbles(U, _EBR_D2), D2 = _ebrDAbles(U, _EBR_D1);
+    if (!isFinite(D1) || !isFinite(D2) || D2 / 2 > _EBR_RS) return;
+    const l1 = _ebrLamAus(D1, _EBR_D2), l2 = _ebrLamAus(D2, _EBR_D1);
+    _ebr.rows.push({ id: _ebr.nextId++, U, D: [D1, D2], lam: [l1, l2],
+                     h: [_ebrHAus(l1, U), _ebrHAus(l2, U)] });
+  });
+  _ebrRenderTable();
+  _ebrDrawPlot();
+}
+function _ebrRenderTable() {
+  // Die Statistik haengt an denselben Daten – sonst bleibt nach dem Leeren
+  // der Tabelle der alte Mittelwert stehen.
+  _ebrRenderStat();
+  const tb = document.getElementById('ebrTbody'); if (!tb) return;
+  const empty = document.getElementById('ebrEmpty');
+  if (empty) empty.style.display = _ebr.rows.length ? 'none' : 'block';
+  tb.innerHTML = _ebr.rows.map((r, i) =>
+    `<tr><td>${i + 1}</td><td>${_fpmNum(r.U / 1000, 2)}</td>
+       <td>${_fpmNum(r.D[0] * 1000, 0)}</td><td>${_fpmNum(r.D[1] * 1000, 0)}</td>
+       <td><b>${_fpmNum(r.lam[0] * 1e12, 2)}</b></td><td><b>${_fpmNum(r.lam[1] * 1e12, 2)}</b></td>
+       <td class="fpm-del" onclick="_ebrDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+
+// ── Anzeige Station 1 ──────────────────────────────────
+function _ebrUpdate() {
+  if (!_ebr) return;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  const sicht = _ebrBereit();
+  const D1 = _ebrDAbles(_ebr.U, _EBR_D2), D2 = _ebrDAbles(_ebr.U, _EBR_D1);
+
+  set('ebrVA', _fpmNum(_ebrV(_ebr.U) / 1e7, 3));
+  set('ebrD1A', sicht ? _fpmNum(D1 * 1000, 0) : '—');
+  set('ebrD2A', sicht ? _fpmNum(D2 * 1000, 0) : '—');
+  set('ebrL1A', sicht ? _fpmNum(_ebrLamAus(D1, _EBR_D2) * 1e12, 2) : '—');
+  set('ebrL2A', sicht ? _fpmNum(_ebrLamAus(D2, _EBR_D1) * 1e12, 2) : '—');
+
+  const bar = document.getElementById('ebrHeizBar');
+  if (bar) bar.style.width = Math.round(_ebr.warm * 100) + '%';
+
+  const z = document.getElementById('ebrZustand');
+  if (z) {
+    const p = _ebrProblem();
+    if (p === 'kalt') {
+      z.className = 'ebr-zustand aus';
+      z.innerHTML = 'Die Kathode ist kalt und gibt keine Elektronen ab. <b>Heizstrom langsam '
+        + 'hochregeln</b> – ab etwa ' + _EBR_HEIZ_MIN + ' mA setzt die Emission ein.';
+    } else if (p === 'heizt') {
+      z.className = 'ebr-zustand';
+      z.innerHTML = 'Die Kathode heizt auf. Bis die Emission stabil ist, dauert es einen Moment – '
+        + 'in der echten Röhre etwa eine halbe Minute.';
+    } else if (p === 'hell') {
+      z.className = 'ebr-zustand aus';
+      z.innerHTML = 'Das Leuchten des Zinksulfidschirms ist viel zu schwach für den hellen Raum. '
+        + '<b>Erst im verdunkelten Raum</b> lassen sich die Beugungsringe erkennen.';
+    } else if (p === 'zu gross') {
+      z.className = 'ebr-zustand aus';
+      z.innerHTML = 'Der äußere Ring ist größer als der Leuchtschirm und läuft an dessen Rand '
+        + 'hinaus. <b>Spannung erhöhen</b> – dann werden die Elektronen schneller, ihre '
+        + 'Wellenlänge kleiner und die Ringe enger.';
+    } else {
+      z.className = 'ebr-zustand ok';
+      z.innerHTML = '<b>Beide Ringe liegen vollständig auf dem Schirm.</b> Durchmesser an der '
+        + 'Millimeterskala ablesen und übernehmen.';
+    }
+  }
+
+  const rch = document.getElementById('ebrRechnung');
+  if (rch) {
+    if (sicht) {
+      const lt = _ebrLambda(_ebr.U);
+      const l1 = _ebrLamAus(D1, _EBR_D2), l2 = _ebrLamAus(D2, _EBR_D1);
+      const h1 = _ebrHAus(l1, _ebr.U), h2 = _ebrHAus(l2, _ebr.U);
+      const n1 = _ebrLamNaeh(D1, _EBR_D2);
+      rch.innerHTML = `
+        <div class="pho-rz"><span class="pho-rz-t">aus der Spannung – de-Broglie-Hypothese</span>
+          <span class="pho-rz-f">λ = h/√(2·m<sub>e</sub>·e·U<sub>A</sub>)</span>
+          <span class="pho-rz-v">${_fpmNum(lt * 1e12, 2)} pm</span></div>
+        <div class="pho-rz"><span class="pho-rz-t">aus dem inneren Ring, d₂ = 213 pm</span>
+          <span class="pho-rz-f">λ = 2·d₂·sin(½·arctan(R₁/L))</span>
+          <span class="pho-rz-v">${_fpmNum(l1 * 1e12, 2)} pm</span></div>
+        <div class="pho-rz"><span class="pho-rz-t">aus dem äußeren Ring, d₁ = 123 pm</span>
+          <span class="pho-rz-f">λ = 2·d₁·sin(½·arctan(R₂/L))</span>
+          <span class="pho-rz-v">${_fpmNum(l2 * 1e12, 2)} pm</span></div>
+        <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">daraus das Wirkungsquantum</span>
+          <span class="pho-rz-f">h = λ · √(2·m<sub>e</sub>·e·U<sub>A</sub>)</span>
+          <span class="pho-rz-v">${_ebrExp((h1 + h2) / 2, 4)} Js</span></div>
+        <div class="fpm-note">Zum Vergleich die Näherung für kleine Winkel, λ ≈ d·D/(2·L):
+          ${_fpmNum(n1 * 1e12, 2)} pm für den inneren Ring – hier noch dicht am exakten Wert.
+          Beim äußeren Ring ist der Winkel größer und die Näherung schlechter.</div>`;
+    } else {
+      rch.innerHTML = '<div class="fpm-note">Sobald die Ringe sichtbar sind, läuft die Auswertung hier mit.</div>';
+    }
+  }
+
+  const tb = document.getElementById('ebrTakeBtn');
+  if (tb) tb.disabled = !sicht;
+
+  _ebrRenderBragg();
+  _ebrRenderStat();
+  _ebrRenderAnalog();
+  _ebrRenderObjekt();
+}
+
+function _ebrRenderBragg() {
+  const el = document.getElementById('ebrBragg'); if (!el) return;
+  const th1 = _ebrTheta(_ebr.U, _EBR_D2), th2 = _ebrTheta(_ebr.U, _EBR_D1);
+  const g = v => _fpmNum(v * 180 / Math.PI, 2);
+  el.innerHTML =
+    `<div class="git-sch-kopf">Die Bragg-Bedingung – warum überhaupt Ringe entstehen</div>
+     <div class="ebr-bragg-text">
+       Jeder einzelne Mikrokristall der Graphitfolie wirkt wie ein winziges Gitter. Trifft der
+       Elektronenstrahl seine Netzebenen unter dem Winkel ϑ, so verstärken sich die an
+       benachbarten Ebenen gestreuten Wellen genau dann, wenn der Gangunterschied ein Vielfaches
+       der Wellenlänge ist: <b>k·λ = 2·d·sin ϑ</b>, hier mit k = 1. Der Strahl wird dann um
+       <b>2ϑ</b> abgelenkt. Die Folie enthält Kristalle in <i>jeder</i> Drehlage um die
+       Strahlachse – die abgelenkten Elektronen bilden deshalb einen Kegelmantel, und der ebene
+       Schirm schneidet daraus einen Kreis. Aus tan 2ϑ = R/L folgt umgekehrt
+       <b>λ = 2·d·sin(½·arctan(R/L))</b>.
+     </div>
+     <div class="ebr-bragg-jetzt">
+       Bei U<sub>A</sub> = ${_fpmNum(_ebr.U / 1000, 2)} kV ist λ = ${_fpmNum(_ebrLambda(_ebr.U) * 1e12, 2)} pm.
+       Daraus folgt für den <b>inneren</b> Ring (d₂ = 213 pm) ein Glanzwinkel ϑ = ${g(th1)}° und
+       eine Ablenkung um ${g(2 * th1)}°, für den <b>äußeren</b> Ring (d₁ = 123 pm)
+       ϑ = ${g(th2)}° und eine Ablenkung um ${g(2 * th2)}°. Der kleinere Netzebenenabstand
+       verlangt den größeren Winkel – deshalb gehört der <b>größere Ring zum kleineren d</b>.
+     </div>`;
+}
+
+// ── Auswertung: das Wirkungsquantum ────────────────────
+// Jede einzelne Ringmessung liefert einen eigenen Wert fuer h.
+function _ebrStatistik() {
+  if (!_ebr.rows.length) return null;
+  const hs = [];
+  _ebr.rows.forEach(r => { hs.push(r.h[0], r.h[1]); });
+  const mit = hs.reduce((a, b) => a + b, 0) / hs.length;
+  const min = Math.min(...hs), max = Math.max(...hs);
+  return { n: hs.length, mit, min, max, spanne: max - min,
+           abw: (mit - _EBR_H) / _EBR_H * 100 };
+}
+function _ebrRenderStat() {
+  const el = document.getElementById('ebrStat'); if (!el) return;
+  const s = _ebrStatistik();
+  if (!s) {
+    el.innerHTML = '<div class="fpm-note">Noch keine Messwerte. Nimm in Station 1 die Ringdurchmesser bei verschiedenen Beschleunigungsspannungen auf.</div>';
+    return;
+  }
+  const cls = Math.abs(s.abw) < 2 ? 'ok' : Math.abs(s.abw) < 6 ? 'mid' : 'no';
+  el.innerHTML =
+    `<div class="fsr-stat-reihe">
+       <div class="fsr-kachel"><span>Einzelwerte</span><b>${s.n}</b></div>
+       <div class="fsr-kachel gross"><span>Mittelwert h</span><b>${_ebrExp(s.mit, 4)} Js</b></div>
+       <div class="fsr-kachel"><span>kleinster Wert</span><b>${_fpmNum(s.min / 1e-34, 3)}</b></div>
+       <div class="fsr-kachel"><span>größter Wert</span><b>${_fpmNum(s.max / 1e-34, 3)}</b></div>
+       <div class="fsr-kachel"><span>Spannweite</span><b>${_fpmNum(s.spanne / 1e-34, 3)}</b></div>
+       <div class="fsr-kachel ${cls}"><span>gegen 6,626 · 10⁻³⁴ Js</span><b>${_fpmNum(s.abw, 1)} %</b></div>
+     </div>
+     <div class="fpm-note">Aus jeder Ringmessung folgt h = λ · √(2·m<sub>e</sub>·e·U<sub>A</sub>),
+       wobei λ aus dem Durchmesser stammt. Alle Werte in 10⁻³⁴ Js. Mitteln, die <b>Spannweite</b>
+       als Fehlerabschätzung angeben und mit dem Literaturwert vergleichen – so wertet eine
+       Lerngruppe aus. Bemerkenswert ist, was hier eigentlich passiert: Aus einem Ring auf einem
+       Leuchtschirm wird die Naturkonstante bestimmt, die die gesamte Quantenphysik trägt.</div>`;
+}
+
+// ── Auswertungsdiagramm ────────────────────────────────
+// Alle drei Auftragungen pruefen dieselbe Aussage λ = h/√(2·m_e·e·U).
+const _EBR_PRESETS = [
+  { xl: '1/√U in 1/√V', yl: 'Ringdurchmesser D in mm',
+    x: (r) => 1 / Math.sqrt(r.U), y: (r, g) => r.D[g] * 1000,
+    origin: true, ringe: true,
+    // D ≈ 2·L·λ/d = (2·L·h/(d·√(2·m_e·e))) · 1/√U   (Naeherung kleiner Winkel)
+    aus: (k, g) => {
+      const hh = k / 1000 * _EBR_RINGE[g].d * Math.sqrt(2 * _EBR_ME * _EBR_E) / (2 * _EBR_L);
+      return { txt: 'h = ' + _ebrExp(hh, 4) + ' Js', abw: Math.abs(hh - _EBR_H) / _EBR_H * 100 };
+    },
+    term: g => _dspZahl(2 * _EBR_L * _EBR_H / (_EBR_RINGE[g].d * Math.sqrt(2 * _EBR_ME * _EBR_E)) * 1000) + '*x',
+    note: 'Die direkteste Auftragung: Der abgelesene Durchmesser gegen 1/√U. Weil hier die Näherung für kleine Winkel steckt, ist der äußere Ring leicht gekrümmt.',
+    typ: 'Ursprungsgerade je Ring',
+    form: 'D = (2·L·h / (d·√(2·m_e·e))) · 1/√U',
+    param: () => 'gesucht: die Steigung, denn sie enthält h',
+    deutung: 'Für kleine Winkel gilt λ ≈ d·R/L, also D ≈ 2·L·λ/d. Mit λ = h/√(2·m_e·e·U) wird daraus eine Ursprungsgerade in 1/√U. Aus ihrer Steigung k folgt h = k·d·√(2·m_e·e)/(2·L). Beide Ringe müssen auf denselben Wert führen, obwohl ihre Geraden sehr verschieden steil sind – das ist die eigentliche Probe. Der äußere Ring liefert dabei den etwas schlechteren Wert, weil sein Ablenkwinkel für die Näherung schon zu groß ist.' },
+
+  { xl: 'U in V', yl: '1/λ² in 10⁻³ pm⁻²',
+    x: (r) => r.U, y: (r, g) => 1 / Math.pow(r.lam[g] * 1e12, 2) / 1e-3,
+    origin: true, ringe: false,
+    // 1/λ² = (2·m_e·e/h²)·U
+    aus: (k) => {
+      const hh = Math.sqrt(2 * _EBR_ME * _EBR_E / (k * 1e21));
+      return { txt: 'h = ' + _ebrExp(hh, 4) + ' Js', abw: Math.abs(hh - _EBR_H) / _EBR_H * 100 };
+    },
+    term: () => _dspZahl(2 * _EBR_ME * _EBR_E / (_EBR_H * _EBR_H) / 1e21) + '*x',
+    note: 'Hier wird die exakte Formel λ = 2·d·sin(½·arctan(R/L)) verwendet – deshalb liegen beide Ringe auf derselben Geraden und die Näherungsfehler fallen weg.',
+    typ: 'eine Ursprungsgerade für beide Ringe',
+    form: '1/λ² = (2·m_e·e / h²) · U',
+    param: () => 'gesucht: die Steigung 2·m_e·e/h²',
+    deutung: 'Quadriert man λ = h/√(2·m_e·e·U) und stürzt um, so steht dort 1/λ² = (2·m_e·e/h²)·U – eine Ursprungsgerade. Aus der Steigung k folgt h = √(2·m_e·e/k). Dass hier die Punkte beider Ringe auf einer einzigen Geraden liegen, ist der schärfste Test des Experiments: Zwei völlig verschiedene Netzebenenabstände liefern dieselbe Wellenlänge.' },
+
+  { xl: 'λ aus der Spannung in pm', yl: 'λ aus dem Ringmuster in pm',
+    x: (r) => _ebrLambda(r.U) * 1e12, y: (r, g) => r.lam[g] * 1e12,
+    origin: true, ringe: false,
+    aus: (k) => ({ txt: 'Steigung = ' + _fpmNum(k, 4), abw: Math.abs(k - 1) * 100 }),
+    term: () => '1*x',
+    note: 'Die Nagelprobe auf de Broglie: Wellenlänge aus der Teilchengröße Spannung gegen Wellenlänge aus dem Wellenphänomen Interferenz.',
+    typ: 'Ursprungsgerade mit der Steigung 1',
+    form: 'λ_Messung = 1 · λ_Theorie',
+    param: () => 'erwartet: Steigung 1,000',
+    deutung: 'Auf der x-Achse steht die Wellenlänge, die de Broglie aus einer reinen Teilchengröße vorhersagt – der Beschleunigungsspannung. Auf der y-Achse steht die Wellenlänge, die das Interferenzmuster liefert, also eine reine Welleneigenschaft. Beide haben zunächst nichts miteinander zu tun. Dass die Punkte trotzdem auf der Winkelhalbierenden liegen, ist der Inhalt der de-Broglie-Hypothese. Abweichungen entstehen nur durch das Ablesen auf Millimeter genau.' }
+];
+
+function _ebrDrawPlot() {
+  const cv = document.getElementById('ebrPlot');
+  if (!cv || !_ebr) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = _EBR_PRESETS[_ebr.preset];
+  const padL = 62, padR = 16, padT = 14, padB = 42;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const pts = [];
+  _ebr.rows.forEach(r => {
+    for (let g = 0; g < 2; g++) {
+      const x = P.x(r, g), y = P.y(r, g);
+      if (isFinite(x) && isFinite(y)) pts.push({ x, y, g });
+    }
+  });
+  const xmax = Math.max(1e-12, pts.length ? Math.max(...pts.map(p => p.x)) * 1.12 : 10);
+  const ymax = Math.max(1e-12, pts.length ? Math.max(...pts.map(p => p.y)) * 1.15 : 10);
+
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+
+  const xt = _fpmTicks(xmax, 6);
+  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  xt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
+  });
+  const yt = _fpmTicks(ymax, 5);
+  yt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
+  });
+
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(P.xl, x1, y0 + 30);
+  ctx.save(); ctx.translate(15, y1 + 2); ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillText('Noch keine Messwerte – lies zuerst in Station 1 die Ringe ab', (x0 + x1) / 2, (y0 + y1) / 2);
+    ctx.textAlign = 'left';
+    const fo = document.getElementById('ebrFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + P.note + '</div>';
+    _ebrRenderFnBtns();
+    return;
+  }
+
+  if (_ebr.fn) {
+    ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _ebr.fn((px - x0) / (x1 - x0) * xmax); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv);
+      if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+
+  // Bei P.ringe bekommt jeder Ring eine eigene Gerade, sonst eine gemeinsame
+  const info = [];
+  const zeichneFit = (gp, col, g) => {
+    let fit = null;
+    if (gp.length >= 2) {
+      fit = P.origin ? _fpmFitOrigin(gp) : _fpmFitLinear(gp);
+      if (fit) {
+        ctx.strokeStyle = col; ctx.lineWidth = 1.7;
+        ctx.beginPath();
+        ctx.moveTo(X(0), Y(fit.b || 0));
+        ctx.lineTo(X(xmax), Y(fit.k * xmax + (fit.b || 0)));
+        ctx.stroke();
+      }
+    }
+    info.push({ g, col, fit, n: gp.length });
+  };
+  if (P.ringe) {
+    for (let g = 0; g < 2; g++) zeichneFit(pts.filter(p => p.g === g), _EBR_RINGE[g].farbe, g);
+  } else {
+    zeichneFit(pts, '#7c3aed', null);
+  }
+  // Punkte immer in ihrer Ringfarbe – auch beim gemeinsamen Fit bleibt so
+  // sichtbar, welcher Punkt von welchem Ring stammt.
+  pts.forEach(p => {
+    ctx.fillStyle = _EBR_RINGE[p.g].farbe;
+    ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke();
+  });
+
+  _ebrRenderFit(info, P);
+  _ebrRenderFnBtns();
+}
+
+function _ebrRenderFit(gruppen, P) {
+  const el = document.getElementById('ebrFitBox'); if (!el) return;
+  let html = '';
+  gruppen.forEach(gr => {
+    if (!gr.fit) return;
+    const e = P.aus(gr.fit.k, gr.g);
+    const cls = e.abw < 2 ? 'ok' : e.abw < 6 ? 'mid' : 'no';
+    const kopf = gr.g === null
+      ? gr.n + ' Messpunkte aus beiden Ringen'
+      : '<span class="fpm-dot" style="background:' + gr.col + '"></span>'
+        + _EBR_RINGE[gr.g].name + ' · ' + _EBR_RINGE[gr.g].kurz + ' · ' + gr.n + ' Werte';
+    html += `<div class="fpm-fitline">
+       <span class="fpm-fitmeta">${kopf}</span>
+       <span class="fpm-fiteq">y = ${_fpmNum(gr.fit.k, 5)}·x</span>
+       <span class="fpm-fitmeta">R² = ${_fpmNum(gr.fit.r2, 5)}</span>
+       <span class="fpm-fiteq" style="color:#5b21b6">${e.txt}</span>
+       ${_ebr.reveal ? `<span class="fpm-badge ${cls}">${_ebr.preset === 2
+         ? 'erwartet 1,000 · Abweichung ' + _fpmNum(e.abw, 2) + ' %'
+         : 'Literaturwert 6,626 · 10⁻³⁴ Js · Abweichung ' + _fpmNum(e.abw, 2) + ' %'}</span>` : ''}
+     </div>`;
+  });
+  if (!html) {
+    el.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte nötig.<br>' + P.note + '</div>';
+    return;
+  }
+  if (P.ringe && gruppen.filter(g => g.fit).length === 2) {
+    html += `<div class="fpm-fitline" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">
+       <span class="fpm-fitmeta">Die beiden Geraden sind unterschiedlich steil, weil die
+         Netzebenenabstände verschieden sind. Dass sie trotzdem auf denselben Wert für h führen,
+         ist die eigentliche Bestätigung.</span></div>`;
+  }
+  el.innerHTML = html + '<div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">' + P.note + '</div>';
+}
+
+// ── Theoriefunktion ────────────────────────────────────
+function _ebrSetPreset(i) {
+  _ebr.preset = i;
+  for (let k = 0; k < 3; k++) document.getElementById('ebrTab' + k)?.classList.toggle('on', k === i);
+  if (!_EBR_PRESETS[i].ringe) _ebr.ringFn = 0;
+  _ebrRefreshTheorie();
+  _ebrDrawPlot();
+}
+// Bei der Auftragung 1/√U → D gehoert zu jedem Ring eine eigene Theoriegerade.
+function _ebrRenderFnBtns() {
+  const el = document.getElementById('ebrFnBtns'); if (!el) return;
+  const P = _EBR_PRESETS[_ebr.preset];
+  const btn = P.ringe
+    ? [0, 1].map(g => `<button class="sim-btn${_ebr.ringFn === g && _ebr.fnAuto ? ' primary' : ''}"
+         onclick="_ebrTheorieFn(${g})">ƒ ${_EBR_RINGE[g].name}</button>`).join('')
+    : `<button class="sim-btn primary" onclick="_ebrTheorieFn(0)">ƒ Theoriefunktion</button>`;
+  el.innerHTML = btn + '<button class="sim-btn" onclick="_ebrClearFn()">Feld leeren</button>';
+}
+function _ebrTheorieFn(g) {
+  _ebr.ringFn = g || 0;
+  const term = _EBR_PRESETS[_ebr.preset].term(_ebr.ringFn);
+  const inp = document.getElementById('ebrFn');
+  if (inp) inp.value = term;
+  _ebrSetFn(term);
+  _ebr.fnAuto = true;
+  _ebrRenderTheorie(true);
+  _ebrRenderFnBtns();
+}
+function _ebrClearFn() {
+  const inp = document.getElementById('ebrFn');
+  if (inp) inp.value = '';
+  _ebrSetFn('');
+  _ebrRenderTheorie(false);
+  _ebrRenderFnBtns();
+}
+function _ebrRefreshTheorie() {
+  if (_ebr.fnAuto) {
+    const term = _EBR_PRESETS[_ebr.preset].term(_ebr.ringFn);
+    const inp = document.getElementById('ebrFn');
+    if (inp) inp.value = term;
+    _ebrSetFn(term);
+    _ebr.fnAuto = true;
+  }
+  _ebrRenderTheorie(_ebr.fnAuto);
+  _ebrRenderFnBtns();
+}
+function _ebrRenderTheorie(eingesetzt) {
+  const el = document.getElementById('ebrTheo'); if (!el) return;
+  const P = _EBR_PRESETS[_ebr.preset];
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">${P.typ}</div>
+     <div class="fpm-theo-form">${P.form}</div>
+     <div class="fpm-theo-par">${P.param()}${P.ringe ? ' – hier für den ' + _EBR_RINGE[_ebr.ringFn].name : ''}</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${P.term(_ebr.ringFn)}</div>` : ''}
+     <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+function _ebrSetFn(str) {
+  _ebr.fnAuto = false;
+  const err = document.getElementById('ebrFnErr');
+  const v = (str || '').trim();
+  if (!v) { _ebr.fn = null; if (err) err.textContent = ''; _ebrDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _ebr.fn = f; if (err) err.textContent = '';
+  } catch (e) { _ebr.fn = null; if (err) err.textContent = e.message; }
+  _ebrDrawPlot();
+}
+
+// ── Station 3: optisches Analogon ──────────────────────
+function _ebrSetDreh(v) {
+  _ebr.drehzahl = Math.max(0, Math.min(20, +v));
+  const sl = document.getElementById('ebrDreh'); if (sl) sl.value = String(_ebr.drehzahl);
+  const el = document.getElementById('ebrDrehLbl'); if (el) el.textContent = _fpmNum(_ebr.drehzahl, 1) + ' /s';
+  _ebrRenderAnalog();
+}
+// Das Auge mittelt ueber etwa 60 ms. Daraus folgt, wie weit ein Beugungsfleck
+// waehrend dieser Zeit auf seinem Kreis wandert – und damit, ob man noch
+// Punkte, schon Bogen oder nur noch Ringe sieht.
+const _EBR_NACHBILD = 0.06;
+function _ebrSchmierWinkel() {
+  return Math.min(2 * Math.PI, 2 * Math.PI * _ebr.drehzahl * _EBR_NACHBILD);
+}
+function _ebrRenderAnalog() {
+  const el = document.getElementById('ebrAnalog'); if (!el) return;
+  const w = _ebrSchmierWinkel();
+  const grad = w * 180 / Math.PI;
+  let stand;
+  if (_ebr.drehzahl < 0.05) {
+    stand = 'Das Gitter steht still. Man sieht <b>einzelne Beugungsflecke</b> in einem regelmäßigen '
+      + 'Muster – genau das, was ein Kreuzgitter erzeugt: In beiden Gitterrichtungen entsteht je '
+      + 'eine Maximumfolge, zusammen ergibt das ein Punktraster.';
+  } else if (grad < 120) {
+    stand = 'Das Gitter dreht sich langsam. Die Flecke ziehen zu <b>kurzen Bögen</b> auseinander '
+      + '(etwa ' + Math.round(grad) + '° pro Bogen), lassen sich aber noch einzeln verfolgen.';
+  } else if (grad < 359) {
+    stand = 'Die Bögen sind schon <b>' + Math.round(grad) + '° lang</b> und wachsen zusammen. '
+      + 'Gleich sind die einzelnen Maxima nicht mehr auseinanderzuhalten.';
+  } else {
+    stand = 'Die Drehung ist so schnell, dass das Auge die einzelnen Maxima nicht mehr auflöst. '
+      + 'Übrig bleiben <b>durchgehende Ringe</b> – dasselbe Bild wie in der Elektronenbeugungsröhre.';
+  }
+  el.innerHTML =
+    `<div class="ebr-analog-stand">${stand}</div>
+     <div class="dsp-erkl" style="margin-top:10px">
+       <div class="dsp-erkl-kopf">Warum das genau die Beugungsringe erklärt</div>
+       <div class="dsp-erkl-text">
+         Ein einzelner Graphitkristall wäre wie das stillstehende Kreuzgitter: Er erzeugt einzelne
+         Flecke. Die Graphitfolie ist aber <b>polykristallin</b> – sie besteht aus unzähligen
+         Mikrokristallen, die alle in einer anderen Richtung liegen. Jeder von ihnen liefert sein
+         eigenes Punktmuster, um einen anderen Winkel verdreht. Alle diese Muster zusammen ergeben
+         geschlossene Ringe. Das schnelle Drehen des Kreuzgitters macht mit einem einzigen Gitter
+         zeitlich dasselbe, was die Folie räumlich mit vielen Kristallen gleichzeitig tut.
+       </div>
+       <div class="dsp-erkl-text" style="margin-top:6px">
+         Der Versuch ist auch aus einem zweiten Grund lehrreich: Hier <b>weiß</b> man, dass Licht
+         eine Welle ist, und sieht Ringe. Dort sieht man dieselben Ringe – und muss daraus
+         schließen, dass auch Elektronen sich wie Wellen verhalten können. Der Aufbau braucht nur
+         einen Laser und ein Kreuzgitter auf einer drehbaren Scheibe.
+       </div>
+     </div>`;
+}
+
+// ── Station 4: Materiewellen im Alltag ─────────────────
+const _EBR_OBJEKTE = [
+  { n: 'Elektron, 0,01 · c', k: 'm = 9,1 · 10⁻³¹ kg, v = 3,0 · 10⁶ m/s', m: 9.109e-31, v: 3.0e6,
+    txt: 'Das Beispiel aus der Handreichung. Die Wellenlänge liegt im Bereich der Röntgenstrahlung – und Gitter dieser Feinheit gibt es: Kristalle.' },
+  { n: 'Elektron nach 4 kV', k: 'wie in dieser Röhre', m: 9.109e-31, v: null, U: 4000,
+    txt: 'Die Elektronen in der Beugungsröhre. Ihre Wellenlänge ist noch einmal deutlich kleiner als die der Netzebenenabstände – deshalb sind die Beugungswinkel klein und die Ringe passen auf den Schirm.' },
+  { n: 'Tischtennisball', k: 'm = 2,0 g, v = 5,0 m/s', m: 2.0e-3, v: 5.0,
+    txt: 'Das Gegenbeispiel aus der Handreichung. Diese Wellenlänge ist nicht messbar – sie ist milliardenfach kleiner als ein Atomkern. Zum Vergleich: Röntgenstrahlen liegen zwischen 10⁻⁸ m und 10⁻¹³ m. Genau deshalb ist an Alltagsgegenständen nie ein Wellenverhalten aufgefallen.' },
+  { n: 'C₆₀-Fulleren', k: 'm = 1,2 · 10⁻²⁴ kg, v = 200 m/s', m: 1.196e-24, v: 200,
+    txt: 'Ein Molekül aus 60 Kohlenstoffatomen. 1999 gelang es einer Wiener Arbeitsgruppe um Anton Zeilinger, damit Interferenz zu erzeugen – de Broglies Hypothese gilt also nicht nur für Elementarteilchen, sondern auch für ganze Moleküle.' },
+  { n: 'thermisches Neutron', k: 'm = 1,675 · 10⁻²⁷ kg, v = 2200 m/s', m: 1.675e-27, v: 2200,
+    txt: 'Neutronen aus einem Reaktor haben Wellenlängen in der Größenordnung von Atomabständen. Die Neutronenbeugung ist heute ein Standardverfahren der Materialforschung.' },
+  { n: 'Mensch beim Gehen', k: 'm = 70 kg, v = 1,4 m/s', m: 70, v: 1.4,
+    txt: 'Auch für einen Menschen gilt λ = h/(m·v). Der Wert ist so unvorstellbar klein, dass die Frage nach Beugung sinnlos wird – aber die Formel gilt trotzdem. Das ist der Punkt der de-Broglie-Hypothese: Sie macht keine Ausnahmen.' }
+];
+// Vergleichsmarken auf der logarithmischen Achse
+const _EBR_MARKEN = [
+  { v: 1e-15, n: 'Atomkern' },
+  { v: 123e-12, n: 'Graphit d₁' },
+  { v: 1e-10, n: 'Atom' },
+  { v: 5e-7, n: 'grünes Licht' },
+  { v: 1e-3, n: 'Millimeter' }
+];
+function _ebrSetObjekt(i) {
+  _ebr.objekt = Math.max(0, Math.min(_EBR_OBJEKTE.length - 1, i));
+  for (let k = 0; k < _EBR_OBJEKTE.length; k++)
+    document.getElementById('ebrObj' + k)?.classList.toggle('on', k === _ebr.objekt);
+  _ebrRenderObjekt();
+}
+function _ebrObjV(o) { return o.v !== null && o.v !== undefined ? o.v : _ebrV(o.U); }
+function _ebrObjLambda(o) { return _EBR_H / (o.m * _ebrObjV(o)); }
+function _ebrRenderObjekt() {
+  const el = document.getElementById('ebrObjRechnung'); if (!el) return;
+  const o = _EBR_OBJEKTE[_ebr.objekt];
+  const v = _ebrObjV(o), lam = _ebrObjLambda(o), p = o.m * v;
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Masse</span>
+      <span class="pho-rz-f">m</span>
+      <span class="pho-rz-v">${_ebrExp(o.m, 3)} kg</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Geschwindigkeit${o.U ? ' aus U = ' + (o.U / 1000) + ' kV' : ''}</span>
+      <span class="pho-rz-f">v</span>
+      <span class="pho-rz-v">${_ebrExp(v, 3)} m/s</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Impuls</span>
+      <span class="pho-rz-f">p = m · v</span>
+      <span class="pho-rz-v">${_ebrExp(p, 3)} kg·m/s</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Materiewellenlänge</span>
+      <span class="pho-rz-f">λ = h / p</span>
+      <span class="pho-rz-v">${_ebrExp(lam, 3)} m</span></div>
+    <div class="fpm-note">${o.txt}</div>`;
+  _ebrRenderSkala();
+}
+function _ebrRenderSkala() {
+  const cv = document.getElementById('ebrSkala'); if (!cv) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const lo = -36, hi = 0;             // Zehnerpotenzen von 10⁻³⁶ m bis 1 m
+  const x0 = 22, x1 = W - 22, ya = 84;
+  const X = e => x0 + (e - lo) / (hi - lo) * (x1 - x0);
+
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(x0, ya); ctx.lineTo(x1, ya); ctx.stroke();
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  for (let e = lo; e <= hi; e += 6) {
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(X(e), ya - 5); ctx.lineTo(X(e), ya + 5); ctx.stroke();
+    const hoch = String(e).split('').map(c => _EBR_HOCH[c] || c).join('');
+    ctx.fillStyle = '#94a3b8';
+    ctx.fillText(e === 0 ? '1 m' : '10' + hoch, X(e), ya + 17);
+  }
+  _EBR_MARKEN.forEach((mk, i) => {
+    const e = Math.log10(mk.v);
+    ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(X(e), ya); ctx.lineTo(X(e), ya + 26 + (i % 2) * 13); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(mk.n, X(e), ya + 36 + (i % 2) * 13);
+  });
+
+  const lam = _ebrObjLambda(_EBR_OBJEKTE[_ebr.objekt]);
+  const e = Math.max(lo, Math.min(hi, Math.log10(lam)));
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(X(e), ya - 34); ctx.lineTo(X(e), ya); ctx.stroke();
+  ctx.fillStyle = '#7c3aed';
+  ctx.beginPath(); ctx.arc(X(e), ya, 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  const lbl = _ebrExp(lam, 2) + ' m';
+  const lx = Math.max(x0 + 34, Math.min(x1 - 34, X(e)));
+  ctx.fillText(lbl, lx, ya - 40);
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif';
+  ctx.fillText(_EBR_OBJEKTE[_ebr.objekt].n, lx, ya - 52);
+  ctx.textAlign = 'left';
+}
+
+// ── Zeichnung: Leuchtschirm ────────────────────────────
+// Aufsicht auf den Zinksulfidschirm. Der Massstab bildet den Schirmradius
+// von 4,5 cm auf 144 px ab, also 3,2 px je Millimeter.
+const _EBR_PXMM = 3.2;
+function _ebrRenderSchirm(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  const cx = W / 2, cy = 158;
+  const rs = _EBR_RS * 1000 * _EBR_PXMM;
+  const dunkel = _ebr.dunkel;
+
+  ctx.fillStyle = dunkel ? '#0b1020' : '#e8edf5';
+  ctx.fillRect(0, 0, W, H);
+
+  // Glaskolben mit Leuchtschirm
+  ctx.fillStyle = dunkel ? '#111a2e' : '#f8fafc';
+  ctx.beginPath(); ctx.arc(cx, cy, rs + 12, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = dunkel ? '#1e293b' : '#cbd5e1'; ctx.lineWidth = 2;
+  ctx.stroke();
+
+  const hell = _ebrHellig();
+  if (hell > 0.01 && dunkel) {
+    // Untergrund: gestreute Elektronen, nach aussen abnehmend
+    const gr = ctx.createRadialGradient(cx, cy, 0, cx, cy, rs);
+    gr.addColorStop(0, 'rgba(120,255,170,' + (0.20 * hell) + ')');
+    gr.addColorStop(0.5, 'rgba(120,255,170,' + (0.07 * hell) + ')');
+    gr.addColorStop(1, 'rgba(120,255,170,0)');
+    ctx.fillStyle = gr;
+    ctx.beginPath(); ctx.arc(cx, cy, rs, 0, 2 * Math.PI); ctx.fill();
+
+    // Die beiden Beugungsringe erster Ordnung
+    for (let g = 0; g < 2; g++) {
+      const D = _ebrDurchmesser(_ebr.U, _EBR_RINGE[g].d);
+      if (!isFinite(D)) continue;
+      const rp = D / 2 * 1000 * _EBR_PXMM;
+      if (rp > rs) continue;
+      const staerke = (g === 0 ? 0.85 : 0.7) * hell;
+      for (let s = 3; s >= 1; s--) {
+        ctx.strokeStyle = 'rgba(150,255,190,' + (staerke * 0.30 / s) + ')';
+        ctx.lineWidth = s * 4.5;
+        ctx.beginPath(); ctx.arc(cx, cy, rp, 0, 2 * Math.PI); ctx.stroke();
+      }
+      ctx.strokeStyle = 'rgba(215,255,230,' + staerke + ')';
+      ctx.lineWidth = 2.2;
+      ctx.beginPath(); ctx.arc(cx, cy, rp, 0, 2 * Math.PI); ctx.stroke();
+    }
+
+    // Zentrales Maximum – der ungebeugte Strahl, sehr viel heller
+    if (_ebr.abgeklebt) {
+      ctx.fillStyle = '#0b1020';
+      ctx.beginPath(); ctx.arc(cx, cy, 13, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(cx, cy, 13, 0, 2 * Math.PI); ctx.stroke();
+    } else {
+      const gz = ctx.createRadialGradient(cx, cy, 0, cx, cy, 26);
+      gz.addColorStop(0, 'rgba(255,255,255,' + hell + ')');
+      gz.addColorStop(0.35, 'rgba(190,255,215,' + (0.8 * hell) + ')');
+      gz.addColorStop(1, 'rgba(150,255,190,0)');
+      ctx.fillStyle = gz;
+      ctx.beginPath(); ctx.arc(cx, cy, 26, 0, 2 * Math.PI); ctx.fill();
+    }
+  } else if (!dunkel) {
+    ctx.fillStyle = '#94a3b8'; ctx.font = '12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Im hellen Raum ist auf dem Schirm nichts zu erkennen.', cx, cy - 6);
+    ctx.font = '11px sans-serif';
+    ctx.fillText('Der Zinksulfidschirm leuchtet viel zu schwach.', cx, cy + 12);
+    ctx.textAlign = 'left';
+  } else {
+    ctx.fillStyle = '#334155'; ctx.font = '12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Der Schirm bleibt dunkel – es kommen keine Elektronen an.', cx, cy);
+    ctx.textAlign = 'left';
+  }
+
+  // Millimeterskala quer über den Schirm
+  const sy = cy + rs + 26;
+  ctx.strokeStyle = dunkel ? '#475569' : '#94a3b8'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(cx - rs, sy); ctx.lineTo(cx + rs, sy); ctx.stroke();
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  for (let mm = -45; mm <= 45; mm += 5) {
+    const x = cx + mm * _EBR_PXMM;
+    const gross = mm % 10 === 0;
+    ctx.strokeStyle = dunkel ? '#475569' : '#94a3b8';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x, sy); ctx.lineTo(x, sy - (gross ? 7 : 4)); ctx.stroke();
+    if (gross) {
+      ctx.fillStyle = dunkel ? '#64748b' : '#94a3b8';
+      ctx.fillText(String(Math.abs(mm)), x, sy + 12);
+    }
+  }
+
+  // Bemassung der beiden Durchmesser
+  if (hell > 0.01 && dunkel && _ebrBereit()) {
+    for (let g = 0; g < 2; g++) {
+      const D = _ebrDAbles(_ebr.U, _EBR_RINGE[g].d);
+      const rp = D / 2 * 1000 * _EBR_PXMM;
+      if (rp > rs) continue;
+      const y = cy + (g === 0 ? -rs - 14 : rs + 12);
+      ctx.strokeStyle = _EBR_RINGE[g].farbe; ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      ctx.moveTo(cx - rp, y); ctx.lineTo(cx + rp, y);
+      ctx.moveTo(cx - rp, y - 4); ctx.lineTo(cx - rp, y + 4);
+      ctx.moveTo(cx + rp, y - 4); ctx.lineTo(cx + rp, y + 4);
+      ctx.stroke();
+      ctx.fillStyle = _EBR_RINGE[g].farbe; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('D' + (g === 0 ? '₁' : '₂') + ' = ' + _fpmNum(D * 1000, 0) + ' mm', cx, y - 7);
+    }
+  }
+  ctx.textAlign = 'left';
+}
+
+// ── Zeichnung: Röhrenschema ────────────────────────────
+// Laengsschnitt nach Abb. 7 der Handreichung.
+function _ebrRenderRohr(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const my = 66;
+  const kx = 34, ax = 148, sx = W - 40;
+
+  // Glaskolben
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  ctx.moveTo(kx - 12, my - 22);
+  ctx.lineTo(ax + 40, my - 22);
+  ctx.bezierCurveTo(sx - 20, my - 52, sx - 20, my + 52, ax + 40, my + 22);
+  ctx.lineTo(kx - 12, my + 22);
+  ctx.closePath(); ctx.stroke();
+
+  // Kathodenwendel
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 1.8;
+  ctx.beginPath();
+  for (let i = 0; i <= 12; i++) {
+    const y = my - 9 + i * 1.5;
+    i === 0 ? ctx.moveTo(kx + (i % 2 ? 5 : -5), y) : ctx.lineTo(kx + (i % 2 ? 5 : -5), y);
+  }
+  ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('K', kx, my + 30);
+  ctx.font = '9px sans-serif'; ctx.fillStyle = '#94a3b8';
+  ctx.fillText('6 V', kx, my + 42);
+
+  // Elektrostatische Linse Z1 Z2 Z3
+  ['Z₁', 'Z₂', 'Z₃'].forEach((z, i) => {
+    const x = kx + 30 + i * 30;
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2.4;
+    ctx.beginPath();
+    ctx.moveTo(x, my - 17); ctx.lineTo(x, my - 6);
+    ctx.moveTo(x, my + 6); ctx.lineTo(x, my + 17);
+    ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif';
+    ctx.fillText(z, x, my - 22);
+  });
+
+  // Anode mit Graphitfolie
+  ctx.strokeStyle = '#0f766e'; ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(ax, my - 20); ctx.lineTo(ax, my - 4);
+  ctx.moveTo(ax, my + 4); ctx.lineTo(ax, my + 20);
+  ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif';
+  ctx.fillText('A', ax, my + 33);
+  ctx.fillStyle = '#0f766e'; ctx.font = '8px sans-serif';
+  ctx.fillText('Graphitfolie', ax + 4, my - 26);
+
+  // Strahlengang: ungebeugt und die beiden Beugungskegel
+  const hell = _ebrHellig();
+  const alpha = _ebr.dunkel && hell > 0.01 ? 0.9 : 0.28;
+  ctx.strokeStyle = 'rgba(124,58,237,' + alpha + ')'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(kx + 8, my); ctx.lineTo(sx, my); ctx.stroke();
+
+  for (let g = 0; g < 2; g++) {
+    const D = _ebrDurchmesser(_ebr.U, _EBR_RINGE[g].d);
+    if (!isFinite(D)) continue;
+    // Der Schirm liegt L hinter der Folie; hier auf die Bildbreite umgerechnet
+    const dy = (D / 2) / _EBR_L * (sx - ax);
+    ctx.strokeStyle = _EBR_RINGE[g].farbe;
+    ctx.globalAlpha = alpha;
+    ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    ctx.moveTo(ax, my); ctx.lineTo(sx, my - dy);
+    ctx.moveTo(ax, my); ctx.lineTo(sx, my + dy);
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+
+  // Leuchtschirm
+  ctx.strokeStyle = _ebr.dunkel && hell > 0.01 ? '#4ade80' : '#94a3b8';
+  ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(sx, my - 40); ctx.lineTo(sx, my + 40); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Leuchtschirm', sx - 4, my + 52);
+
+  // Bemassung L
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  const ly = my + 62;
+  ctx.beginPath();
+  ctx.moveTo(ax, ly); ctx.lineTo(sx, ly);
+  ctx.moveTo(ax, ly - 4); ctx.lineTo(ax, ly + 4);
+  ctx.moveTo(sx, ly - 4); ctx.lineTo(sx, ly + 4);
+  ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('L = 13,5 cm', (ax + sx) / 2, ly - 5);
+
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.fillText('U_A bis 5 kV', kx + 26, H - 8);
+}
+
+// ── Zeichnung: Kreuzgitter ─────────────────────────────
+// Ein Kreuzgitter erzeugt ein quadratisches Raster von Maxima. Beim Drehen
+// wandert jedes Maximum auf einem Kreis um die Mitte; ist die Drehung schnell
+// genug, verschmieren die Maxima zu geschlossenen Ringen.
+function _ebrRenderGitter(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2, cy = 152, a = 34;
+
+  const w = _ebrSchmierWinkel();
+  const kopien = w < 0.02 ? 1 : Math.max(2, Math.min(60, Math.round(w / 0.06)));
+
+  for (let m = -3; m <= 3; m++) {
+    for (let n = -3; n <= 3; n++) {
+      const rr = Math.hypot(m, n) * a;
+      if (rr > 142) continue;
+      // Intensitaet nimmt mit der Ordnung ab; das nullte Maximum ist sehr hell
+      const ord = Math.max(Math.abs(m), Math.abs(n));
+      const int = ord === 0 ? 1 : 0.55 / (1 + 0.7 * (m * m + n * n));
+      const grund = Math.atan2(n, m) + _ebr.gitterPhase;
+      for (let c = 0; c < kopien; c++) {
+        const ph = grund + (kopien === 1 ? 0 : (c / (kopien - 1) - 0.5) * w);
+        const x = cx + rr * Math.cos(ph), y = cy + rr * Math.sin(ph);
+        const al = int / (kopien === 1 ? 1 : Math.sqrt(kopien)) * 2.2;
+        const rad = ord === 0 ? 9 : 4.5;
+        const gr = ctx.createRadialGradient(x, y, 0, x, y, rad);
+        gr.addColorStop(0, 'rgba(255,120,120,' + Math.min(1, al) + ')');
+        gr.addColorStop(0.4, 'rgba(230,40,40,' + Math.min(1, al * 0.6) + ')');
+        gr.addColorStop(1, 'rgba(200,0,0,0)');
+        ctx.fillStyle = gr;
+        ctx.beginPath(); ctx.arc(x, y, rad, 0, 2 * Math.PI); ctx.fill();
+      }
+    }
+  }
+
+  // Der Aufbau als kleine Skizze am oberen Rand
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.rect(14, 12, 30, 12); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('HeNe-Laser', 14, 34);
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(44, 18); ctx.lineTo(96, 18); ctx.stroke();
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.arc(104, 18, 9, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#64748b';
+  ctx.fillText('drehbares Kreuzgitter', 96, 40);
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(113, 18); ctx.lineTo(W - 60, 18); ctx.stroke();
+  ctx.fillStyle = '#64748b';
+  ctx.fillText('Schirm', W - 58, 21);
+
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(kopien === 1 ? 'Gitter steht still – einzelne Beugungsflecke'
+    : (w >= 2 * Math.PI - 0.01 ? 'schnelle Drehung – geschlossene Ringe'
+      : 'Drehung: die Flecke ziehen zu Bögen auseinander'), cx, H - 10);
+  ctx.textAlign = 'left';
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _ebrTakt(dt) {
+  if (!_ebr) return;
+  const d = Math.min(0.05, dt);
+  _ebr.t += d;
+  if (_ebr.heiz >= _EBR_HEIZ_MIN) _ebr.warm = Math.min(1, _ebr.warm + d / _EBR_WARM_S);
+  else _ebr.warm = Math.max(0, _ebr.warm - d / 2);
+  _ebr.gitterPhase += 2 * Math.PI * _ebr.drehzahl * d * 0.15;
+  if (_ebr.gitterPhase > 1e6) _ebr.gitterPhase = 0;
+}
+function _ebrRender() {
+  if (!_ebr) return;
+  if (_ebr.station === 0) {
+    const cs = document.getElementById('ebrSchirm');
+    if (cs) _ebrRenderSchirm(cs.getContext('2d'), cs);
+    const cr = document.getElementById('ebrRohr');
+    if (cr) _ebrRenderRohr(cr.getContext('2d'), cr);
+    // Die Anzeige haengt am Aufheizgrad und muss deshalb mitlaufen
+    if (_ebr.warm > 0 && _ebr.warm < 1) _ebrUpdate();
+  } else if (_ebr.station === 2) {
+    const cg = document.getElementById('ebrGitter');
+    if (cg) _ebrRenderGitter(cg.getContext('2d'), cg);
+  }
+}
+
+// ── Zusätzliche Styles für die Elektronenbeugung ───────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .ebr-heizbar { height: 5px; background: #f1f5f9; border-radius: 3px; overflow: hidden; margin: 3px 0 9px; }
+    .ebr-heizbar-f { height: 100%; width: 0%; border-radius: 3px;
+      background: linear-gradient(90deg, #fbbf24, #dc2626); transition: width .12s linear; }
+    .ebr-zustand { font-size: .78rem; color: #64748b; background: #f8fafc; border: 1px solid #e2e8f0;
+      border-radius: 9px; padding: 8px 11px; margin: 8px 0; line-height: 1.5; }
+    .ebr-zustand.ok { background: #f5f3ff; border-color: #ddd6fe; color: #5b21b6; }
+    .ebr-zustand.aus { background: #fffbeb; border-color: #fde68a; color: #b45309; }
+    .ebr-rechnung { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 4px 11px; }
+    .ebr-bragg { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-top: 12px; }
+    .ebr-bragg-text { font-size: .79rem; color: #475569; line-height: 1.65; margin-top: 4px; }
+    .ebr-bragg-jetzt { font-size: .78rem; color: #5b21b6; background: #f5f3ff; border: 1px solid #ddd6fe;
+      border-radius: 8px; padding: 8px 10px; margin-top: 8px; line-height: 1.55; }
+    .ebr-analog-stand { font-size: .79rem; color: #5b21b6; background: #f5f3ff; border: 1px solid #ddd6fe;
+      border-radius: 9px; padding: 9px 11px; line-height: 1.55; }
+    .ebr-objs { display: flex; flex-direction: column; gap: 5px; }
+    .ebr-obj { display: flex; flex-direction: column; gap: 1px; align-items: flex-start; text-align: left;
+      padding: 7px 10px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 9px; cursor: pointer; }
+    .ebr-obj:hover { border-color: #cbd5e1; }
+    .ebr-obj.on { border-color: #7c3aed; background: #f5f3ff; }
+    .ebr-obj-n { font-size: .78rem; font-weight: 800; color: #475569; }
+    .ebr-obj.on .ebr-obj-n { color: #5b21b6; }
+    .ebr-obj-k { font-size: .66rem; color: #94a3b8; font-variant-numeric: tabular-nums; }
+    .ebr-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
