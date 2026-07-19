@@ -1883,6 +1883,17 @@ const _physSimDefs = {
   // ── 30. FEDERPENDEL – MESSREIHE & LINEARISIERUNG ───────
   // Schlüsselexperiment: T in Abhängigkeit von m und D selbst ausmessen,
   // Messwerte auftragen, linearisieren und k ≈ 4π² bestimmen.
+  // ── 31. WELLENWANNE ────────────────────────────────────
+  // Schluesselexperiment 01 des KLP: alle Wellenphaenomene in einer Wanne
+  'wellenwanne': modal => {
+    _wwInit();
+    modal.innerHTML = _wwHTML();
+    const ex = document.getElementById('wwExtra'); if (ex) ex.innerHTML = _wwExtraHTML();
+    _wwErkl(); _wwInfo();
+    _pSim = new PhysicsSimEngine('wwCanvas', 'wwKeinChart');
+    _pSim.start(() => _wwUpdate(), (ctx, cv) => _wwRender(ctx, cv), []);
+  },
+
   'federpendel-messreihe': modal => {
     _fpmInit();
     modal.innerHTML = _fpmHTML();
@@ -2786,6 +2797,436 @@ function _fpmRenderFit(groups, P) {
     .fpm-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
     .fpm-sim .sim-btn:disabled:hover { background: #f1f5f9; color: #475569; }
     .fpm-sim .sim-btn.fpm-waiting { background: #f97316; border-color: #f97316; color: #fff; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// WELLENWANNE – Schluesselexperiment 01 des KLP (Qualifikationsphase)
+// Loest die Wellengleichung u_tt = c²·∇²u auf einem Gitter (FDTD).
+// Kreiswellen, ebene Wellen, Beugung, Interferenz, Reflexion und
+// Brechung entstehen dadurch alle aus derselben Physik – so wie in
+// der echten Wanne, in der ebenfalls nur Wasser schwingt.
+// ═══════════════════════════════════════════════════════
+
+const _WW_NX = 280, _WW_NY = 180;   // Gitterzellen, 1 Zelle = 1 mm
+const _WW_C  = 250;                 // Ausbreitungsgeschwindigkeit in mm/s
+const _WW_DT = 0.002;               // Zeitschritt in s  → C = c·dt/dx = 0,5
+const _WW_RAND = 18;                // Breite des daempfenden Randes
+
+let _ww = null;
+
+const _WW_VERSUCHE = {
+  kreis: {
+    name: 'Kreiswellen', icon: '⊙',
+    kurz: 'Ein punktfoermiger Erreger tippt auf die Wasseroberflaeche.',
+    text: 'Von einem einzigen Punkt laufen kreisfoermige Wellenberge und -taeler nach allen Seiten. Der Abstand zweier benachbarter Berge ist die Wellenlaenge λ. Der Erreger schwingt f-mal pro Sekunde, also entsteht pro Sekunde f-mal eine neue Kreiswelle.'
+  },
+  zwei: {
+    name: 'Zwei Erreger – Interferenz', icon: '◎',
+    kurz: 'Zwei gleich schwingende Erreger, ihre Wellen ueberlagern sich.',
+    text: 'Wo zwei Wellenberge zusammentreffen, entsteht ein besonders hoher Berg (konstruktive Interferenz). Wo Berg auf Tal trifft, bleibt das Wasser ruhig (destruktive Interferenz). Die ruhigen Stellen liegen auf Kurven, die vom Erregerpaar wegfuehren: den Interferenzhyperbeln. Genau das ist die Vorbereitung auf den Doppelspalt.'
+  },
+  eben: {
+    name: 'Ebene Wellen aus Punkterregern', icon: '≡',
+    kurz: 'Viele Punkterreger nebeneinander erzeugen gerade Wellenfronten.',
+    text: 'Stelle den Regler zuerst auf 1 Erreger: Du siehst Kreiswellen. Erhoehe die Zahl Schritt fuer Schritt. Je mehr Punkterreger nebeneinander schwingen, desto gerader werden die Wellenfronten in der Mitte – aus vielen Elementarwellen entsteht eine ebene Welle. Das ist der zweite Teil des Huygensschen Prinzips zum Anfassen.'
+  },
+  spalt: {
+    name: 'Beugung am Spalt', icon: '⌷',
+    kurz: 'Eine ebene Welle trifft auf eine Wand mit einem Spalt.',
+    text: 'Mache den Spalt schmal: Hinter dem Spalt laufen Kreiswellen weiter, obwohl vorne eine gerade Welle ankam. Der Spalt wirkt wie ein einzelner Punkterreger – das ist der erste Teil des Huygensschen Prinzips: Jeder Punkt einer Wellenfront ist Ausgangspunkt einer Elementarwelle. Mache den Spalt breit: Die Welle laeuft ueberwiegend gerade weiter und beugt sich nur an den Raendern.'
+  },
+  doppelspalt: {
+    name: 'Doppelspalt', icon: '⑈',
+    kurz: 'Zwei Spalte machen aus einer ebenen Welle zwei Erreger.',
+    text: 'Hinter jedem Spalt entsteht eine Elementarwelle. Beide ueberlagern sich und erzeugen dasselbe Muster wie zwei Punkterreger: Richtungen mit starker Welle wechseln sich ab mit Richtungen, in denen das Wasser ruhig bleibt. Verändere den Spaltabstand und beobachte, wie sich die Abstaende der Streifen aendern.'
+  },
+  reflexion: {
+    name: 'Reflexion', icon: '◺',
+    kurz: 'Eine ebene Welle trifft schraeg auf eine Wand.',
+    text: 'Die Welle wird zurueckgeworfen. Miss den Winkel zwischen einfallender Welle und dem Lot auf die Wand und vergleiche ihn mit dem Winkel der zurueckgeworfenen Welle: Einfallswinkel = Reflexionswinkel. Stelle den Wandwinkel auf 45°, dann laeuft die reflektierte Welle senkrecht zur einfallenden.'
+  },
+  brechung: {
+    name: 'Brechung', icon: '◣',
+    kurz: 'Im flacheren Wasser ist die Welle langsamer.',
+    text: 'Rechts ist das Wasser flacher, dort laeuft die Welle langsamer. Die Frequenz bleibt gleich (der Erreger schwingt ja unveraendert), also muss die Wellenlaenge kleiner werden: λ = c/f. Weil die Grenze schraeg liegt, kommt eine Seite der Wellenfront frueher an als die andere – die Welle knickt ab. Genau das ist Brechung.'
+  }
+};
+
+function _wwInit() {
+  const N = _WW_NX * _WW_NY;
+  _ww = {
+    u: new Float32Array(N), up: new Float32Array(N), un: new Float32Array(N),
+    cc: new Float32Array(N), wall: new Uint8Array(N), damp: new Float32Array(N),
+    t: 0, f: 12, versuch: 'kreis', laufen: true, tempo: 1, huygens: false,
+    nErr: 6, spalt: 14, abstand: 60, winkel: 45, nBrech: 1.6, erregerAbstand: 60,
+    sources: [], off: null, offctx: null, img: null
+  };
+  // Daempfender Rand: verhindert Reflexionen am Wannenrand
+  for (let y = 0; y < _WW_NY; y++) {
+    for (let x = 0; x < _WW_NX; x++) {
+      const rand = Math.min(x, y, _WW_NX - 1 - x, _WW_NY - 1 - y);
+      _ww.damp[y * _WW_NX + x] = rand < _WW_RAND ? 0.14 * Math.pow((_WW_RAND - rand) / _WW_RAND, 2) : 0;
+    }
+  }
+  _wwBaue();
+}
+
+// Setzt Wellenfeld, Hindernisse, Wassertiefe und Erreger fuer den gewaehlten Versuch
+function _wwBaue() {
+  const w = _ww, NX = _WW_NX, NY = _WW_NY, C2 = 0.25;
+  w.u.fill(0); w.up.fill(0); w.un.fill(0); w.wall.fill(0);
+  w.cc.fill(C2);
+  w.sources = [];
+  w.t = 0;
+
+  const linie = (n) => {           // n Punkterreger senkrecht untereinander
+    const y0 = 22, y1 = NY - 22, x = 20;
+    if (n <= 1) { w.sources.push({ x, y: (y0 + y1) >> 1 }); return; }
+    for (let i = 0; i < n; i++) w.sources.push({ x, y: Math.round(y0 + (y1 - y0) * i / (n - 1)) });
+  };
+  const ebeneWelle = () => { for (let y = 20; y < NY - 20; y++) w.sources.push({ x: 20, y }); };
+
+  switch (w.versuch) {
+    case 'kreis':
+      w.sources.push({ x: 55, y: NY >> 1 });
+      break;
+
+    case 'zwei': {
+      const d = w.erregerAbstand;
+      w.sources.push({ x: 55, y: (NY >> 1) - (d >> 1) });
+      w.sources.push({ x: 55, y: (NY >> 1) + (d >> 1) });
+      break;
+    }
+
+    case 'eben':
+      linie(w.nErr);
+      break;
+
+    case 'spalt': {
+      ebeneWelle();
+      const xw = 140, halb = w.spalt >> 1, mid = NY >> 1;
+      for (let y = 0; y < NY; y++)
+        if (Math.abs(y - mid) > halb)
+          for (let x = xw; x < xw + 3; x++) w.wall[y * NX + x] = 1;
+      break;
+    }
+
+    case 'doppelspalt': {
+      ebeneWelle();
+      const xw = 140, halb = 6, mid = NY >> 1, a = w.abstand >> 1;
+      for (let y = 0; y < NY; y++) {
+        const offen = Math.abs(y - (mid - a)) <= halb || Math.abs(y - (mid + a)) <= halb;
+        if (!offen) for (let x = xw; x < xw + 3; x++) w.wall[y * NX + x] = 1;
+      }
+      break;
+    }
+
+    case 'reflexion': {
+      ebeneWelle();
+      const rad = w.winkel * Math.PI / 180;
+      const px = 200, py = NY / 2;
+      const dx = Math.sin(rad), dy = -Math.cos(rad);   // Richtungsvektor der Wand
+      for (let y = 0; y < NY; y++) for (let x = 0; x < NX; x++) {
+        const rx = x - px, ry = y - py;
+        const laengs = rx * dx + ry * dy;              // Position entlang der Wand
+        const quer = Math.abs(rx * dy - ry * dx);      // Abstand zur Wand
+        if (quer < 2 && Math.abs(laengs) < 130) w.wall[y * NX + x] = 1;
+      }
+      break;
+    }
+
+    case 'brechung': {
+      ebeneWelle();
+      const rad = 28 * Math.PI / 180;
+      const px = 145, py = NY / 2;
+      const dx = Math.sin(rad), dy = -Math.cos(rad);
+      const langsamer = C2 / (w.nBrech * w.nBrech);
+      for (let y = 0; y < NY; y++) for (let x = 0; x < NX; x++) {
+        // seite < 0 liegt rechts der Grenze – dort ist das Wasser flacher
+        const seite = (x - px) * dy - (y - py) * dx;
+        if (seite < 0) w.cc[y * NX + x] = langsamer;
+      }
+      break;
+    }
+  }
+}
+
+// Ein Zeitschritt der Wellengleichung
+function _wwSchritt() {
+  const w = _ww, NX = _WW_NX, NY = _WW_NY;
+  const u = w.u, up = w.up, un = w.un, cc = w.cc, wall = w.wall, damp = w.damp;
+  for (let y = 1; y < NY - 1; y++) {
+    const zeile = y * NX;
+    for (let x = 1; x < NX - 1; x++) {
+      const i = zeile + x;
+      if (wall[i]) { un[i] = 0; continue; }
+      const lap = u[i + 1] + u[i - 1] + u[i + NX] + u[i - NX] - 4 * u[i];
+      const d = damp[i];
+      un[i] = (2 * u[i] - (1 - d) * up[i] + cc[i] * lap) / (1 + d);
+    }
+  }
+  w.t += _WW_DT;
+  // Erreger aufpraegen
+  const a = Math.sin(2 * Math.PI * w.f * w.t);
+  for (const s of w.sources) un[s.y * NX + s.x] = a;
+  // Felder durchtauschen
+  w.up.set(u); w.u.set(un);
+}
+
+function _wwUpdate() {
+  if (!_ww || !_ww.laufen) return;
+  const schritte = _ww.tempo === 0.5 ? 2 : _ww.tempo === 2 ? 8 : 4;
+  for (let i = 0; i < schritte; i++) _wwSchritt();
+}
+
+function _wwLambda(n) { return _WW_C / _ww.f / (n || 1); }   // in mm
+
+// ── Darstellung ────────────────────────────────────────
+function _wwRender(ctx, cv) {
+  if (!_ww) return;
+  const w = _ww, NX = _WW_NX, NY = _WW_NY;
+
+  if (!w.off) {
+    w.off = document.createElement('canvas');
+    w.off.width = NX; w.off.height = NY;
+    w.offctx = w.off.getContext('2d');
+    w.img = w.offctx.createImageData(NX, NY);
+  }
+  const px = w.img.data, u = w.u, wall = w.wall, cc = w.cc;
+  const skala = 2.6;
+  for (let i = 0, p = 0; i < NX * NY; i++, p += 4) {
+    if (wall[i]) { px[p] = 51; px[p + 1] = 65; px[p + 2] = 85; px[p + 3] = 255; continue; }
+    let v = u[i] * skala;
+    v = v > 1 ? 1 : v < -1 ? -1 : v;
+    // dunkelblau (Tal) → mittelblau (Ruhe) → weiss (Berg)
+    let r, g, b;
+    if (v < 0) { const k = v + 1; r = 8 + 21 * k; g = 28 + 50 * k; b = 62 + 75 * k; }
+    else { r = 29 + 194 * v; g = 78 + 168 * v; b = 137 + 118 * v; }
+    if (cc[i] < 0.249) { r *= 0.86; g *= 0.92; b *= 1.0; }   // flacheres Wasser leicht abgesetzt
+    px[p] = r; px[p + 1] = g; px[p + 2] = b; px[p + 3] = 255;
+  }
+  w.offctx.putImageData(w.img, 0, 0);
+  ctx.imageSmoothingEnabled = true;
+  ctx.drawImage(w.off, 0, 0, cv.width, cv.height);
+
+  const sx = cv.width / NX, sy = cv.height / NY;
+
+  // Erreger markieren
+  ctx.fillStyle = '#fbbf24';
+  const zeigen = w.sources.length <= 26 ? w.sources : [];
+  zeigen.forEach(s => {
+    ctx.beginPath(); ctx.arc(s.x * sx, s.y * sy, 3, 0, 2 * Math.PI); ctx.fill();
+  });
+  if (w.sources.length > 26) {
+    ctx.fillRect(18 * sx, 20 * sy, 4, (NY - 40) * sy);
+  }
+
+  // Huygenssche Elementarwellen einzeichnen
+  if (w.huygens) {
+    ctx.strokeStyle = 'rgba(251,191,36,.75)'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+    let zentren = [];
+    if (w.versuch === 'spalt') {
+      const mid = NY >> 1, halb = w.spalt >> 1;
+      for (let k = -2; k <= 2; k++) zentren.push({ x: 143, y: mid + Math.round(k * halb / 2.2) });
+    } else if (w.versuch === 'doppelspalt') {
+      const mid = NY >> 1, a = w.abstand >> 1;
+      zentren = [{ x: 143, y: mid - a }, { x: 143, y: mid + a }];
+    } else zentren = zeigen;
+    const lam = _wwLambda(1);
+    zentren.forEach(z => {
+      for (let k = 1; k <= 3; k++) {
+        ctx.beginPath();
+        ctx.arc(z.x * sx, z.y * sy, k * lam * sx, 0, 2 * Math.PI);
+        ctx.stroke();
+      }
+    });
+    ctx.setLineDash([]);
+  }
+
+  // Grenze bei der Brechung beschriften
+  if (w.versuch === 'brechung') {
+    const rad = 28 * Math.PI / 180, px0 = 145, py0 = NY / 2;
+    const dx = Math.sin(rad), dy = -Math.cos(rad);
+    ctx.strokeStyle = 'rgba(255,255,255,.55)'; ctx.lineWidth = 1.5; ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    ctx.moveTo((px0 - dx * 200) * sx, (py0 - dy * 200) * sy);
+    ctx.lineTo((px0 + dx * 200) * sx, (py0 + dy * 200) * sy);
+    ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(255,255,255,.9)'; ctx.font = '600 11px sans-serif';
+    ctx.fillText('tiefes Wasser · c = ' + _WW_C + ' mm/s', 26, cv.height - 12);
+    ctx.textAlign = 'right';
+    ctx.fillText('flach · c = ' + Math.round(_WW_C / w.nBrech) + ' mm/s', cv.width - 12, 20);
+    ctx.textAlign = 'left';
+  }
+
+  // Lot und Winkel bei der Reflexion
+  if (w.versuch === 'reflexion') {
+    ctx.strokeStyle = 'rgba(255,255,255,.5)'; ctx.setLineDash([4, 4]); ctx.lineWidth = 1;
+    const rad = w.winkel * Math.PI / 180;
+    const cxp = 200 * sx, cyp = (NY / 2) * sy;
+    ctx.beginPath();
+    ctx.moveTo(cxp, cyp);
+    ctx.lineTo(cxp - Math.cos(rad) * 55, cyp - Math.sin(rad) * 55);   // Lot
+    ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(255,255,255,.9)'; ctx.font = '600 11px sans-serif';
+    ctx.fillText('Lot', cxp - Math.cos(rad) * 66, cyp - Math.sin(rad) * 60);
+  }
+
+  // Massstab fuer die Wellenlaenge
+  const lamPx = _wwLambda(1) * sx;
+  const bx = 26, by = 16;
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  ctx.moveTo(bx, by + 5); ctx.lineTo(bx, by); ctx.lineTo(bx + lamPx, by); ctx.lineTo(bx + lamPx, by + 5);
+  ctx.stroke();
+  ctx.fillStyle = '#fbbf24'; ctx.font = '700 11px sans-serif';
+  ctx.fillText('λ = ' + _fpmNum(_wwLambda(1), 1) + ' mm', bx + lamPx + 8, by + 4);
+}
+
+// ── Oberflaeche ────────────────────────────────────────
+function _wwHTML() {
+  const v = _ww.versuch;
+  const tabs = Object.keys(_WW_VERSUCHE).map(k =>
+    `<button class="ww-tab${k === v ? ' on' : ''}" id="wwTab_${k}" onclick="_wwSetVersuch('${k}')">
+       <span class="ww-tab-i">${_WW_VERSUCHE[k].icon}</span>${_WW_VERSUCHE[k].name}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide ww-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌊 Wellenwanne – Kreiswellen, Beugung, Interferenz, Reflexion, Brechung</h3>
+
+    <div class="ww-tabs">${tabs}</div>
+
+    <div class="ww-grid">
+      <div>
+        <canvas id="wwCanvas" width="560" height="360" class="ww-canvas"></canvas>
+        <div class="ww-info" id="wwInfo"></div>
+      </div>
+      <div class="ww-side">
+        <div class="ww-erkl" id="wwErkl"></div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Erregerfrequenz f: <b id="wwFLbl">12 Hz</b></span>
+          <input type="range" id="wwF" min="6" max="26" step="1" value="12"
+            oninput="_wwSetF(this.value)" style="width:100%;accent-color:#0284c7">
+        </div>
+        <div id="wwExtra"></div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" id="wwPlayBtn" onclick="_wwToggle()">⏸ Stroboskop</button>
+          <button class="sim-btn" onclick="_wwReset()">↺ Neu</button>
+          <button class="sim-btn" id="wwSpeedBtn" onclick="_wwSpeed()">Tempo 1×</button>
+        </div>
+        <label class="fpm-check"><input type="checkbox" id="wwHuy" onchange="_wwSetHuygens(this.checked)">
+          Huygenssche Elementarwellen einzeichnen</label>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>c = λ · f</b> &nbsp;|&nbsp; Die Wanne rechnet die Wellengleichung – Beugung, Interferenz,
+      Reflexion und Brechung entstehen von selbst, nichts davon ist eingezeichnet.
+    </p>
+  </div>`;
+}
+
+// Zusatzregler je nach Versuch
+function _wwExtraHTML() {
+  const w = _ww;
+  const r = (id, label, min, max, val, step, unit, fn) =>
+    `<div class="phys-ctrl">
+       <span class="phys-ctrl-label">${label}: <b id="${id}Lbl">${val}${unit}</b></span>
+       <input type="range" id="${id}" min="${min}" max="${max}" step="${step}" value="${val}"
+         oninput="${fn}(this.value)" style="width:100%;accent-color:#0284c7">
+     </div>`;
+  switch (w.versuch) {
+    case 'zwei':        return r('wwD', 'Abstand der Erreger', 24, 110, w.erregerAbstand, 2, ' mm', '_wwSetD');
+    case 'eben':        return r('wwN', 'Anzahl der Punkterreger', 1, 24, w.nErr, 1, '', '_wwSetN');
+    case 'spalt':       return r('wwS', 'Spaltbreite', 4, 70, w.spalt, 2, ' mm', '_wwSetSpalt');
+    case 'doppelspalt': return r('wwA', 'Spaltabstand', 30, 110, w.abstand, 2, ' mm', '_wwSetAbstand');
+    case 'reflexion':   return r('wwW', 'Wandwinkel gegen die Senkrechte', 0, 70, w.winkel, 5, '°', '_wwSetWinkel');
+    case 'brechung':    return r('wwB', 'Verhaeltnis c₁/c₂', 1.2, 2.4, w.nBrech, 0.1, '', '_wwSetBrech');
+    default:            return '';
+  }
+}
+
+function _wwSetVersuch(k) {
+  _ww.versuch = k;
+  Object.keys(_WW_VERSUCHE).forEach(n =>
+    document.getElementById('wwTab_' + n)?.classList.toggle('on', n === k));
+  _wwBaue();
+  const ex = document.getElementById('wwExtra'); if (ex) ex.innerHTML = _wwExtraHTML();
+  _wwErkl(); _wwInfo();
+}
+function _wwSetF(v) {
+  _ww.f = +v;
+  const el = document.getElementById('wwFLbl'); if (el) el.textContent = v + ' Hz';
+  _wwInfo();
+}
+function _wwSetD(v)       { _ww.erregerAbstand = +v; _wwLbl('wwDLbl', v + ' mm'); _wwBaue(); }
+function _wwSetN(v)       { _ww.nErr = +v;           _wwLbl('wwNLbl', v);         _wwBaue(); _wwInfo(); }
+function _wwSetSpalt(v)   { _ww.spalt = +v;          _wwLbl('wwSLbl', v + ' mm'); _wwBaue(); _wwInfo(); }
+function _wwSetAbstand(v) { _ww.abstand = +v;        _wwLbl('wwALbl', v + ' mm'); _wwBaue(); }
+function _wwSetWinkel(v)  { _ww.winkel = +v;         _wwLbl('wwWLbl', v + '°');   _wwBaue(); }
+function _wwSetBrech(v)   { _ww.nBrech = +v;         _wwLbl('wwBLbl', (+v).toFixed(1).replace('.', ',')); _wwBaue(); _wwInfo(); }
+function _wwLbl(id, txt)  { const el = document.getElementById(id); if (el) el.textContent = txt; }
+function _wwSetHuygens(b) { _ww.huygens = b; }
+function _wwReset()       { _wwBaue(); }
+function _wwToggle() {
+  _ww.laufen = !_ww.laufen;
+  const b = document.getElementById('wwPlayBtn');
+  if (b) b.textContent = _ww.laufen ? '⏸ Stroboskop' : '▶ weiter';
+}
+function _wwSpeed() {
+  _ww.tempo = _ww.tempo === 1 ? 2 : _ww.tempo === 2 ? 0.5 : 1;
+  const b = document.getElementById('wwSpeedBtn');
+  if (b) b.textContent = 'Tempo ' + (_ww.tempo === 0.5 ? '½' : _ww.tempo) + '×';
+}
+function _wwErkl() {
+  const el = document.getElementById('wwErkl'); if (!el) return;
+  const V = _WW_VERSUCHE[_ww.versuch];
+  el.innerHTML = `<div class="ww-erkl-kopf">${V.icon} ${V.name}</div>
+    <div class="ww-erkl-kurz">${V.kurz}</div><div class="ww-erkl-text">${V.text}</div>`;
+}
+function _wwInfo() {
+  const el = document.getElementById('wwInfo'); if (!el) return;
+  const w = _ww, lam = _wwLambda(1);
+  let z = `<span>f = <b>${w.f} Hz</b></span><span>c = <b>${_WW_C} mm/s</b></span>` +
+          `<span>λ = c/f = <b>${_fpmNum(lam, 1)} mm</b></span>`;
+  if (w.versuch === 'brechung') {
+    const c2 = _WW_C / w.nBrech;
+    z += `<span class="ww-info-2">flach: c₂ = <b>${_fpmNum(c2, 0)} mm/s</b></span>` +
+         `<span class="ww-info-2">λ₂ = <b>${_fpmNum(c2 / w.f, 1)} mm</b></span>`;
+  }
+  if (w.versuch === 'spalt') {
+    const v = w.spalt < lam ? 'Spalt schmaler als λ → fast reine Kreiswelle'
+            : w.spalt < 2.5 * lam ? 'Spalt ≈ λ → deutliche Beugung'
+            : 'Spalt ≫ λ → Beugung nur an den Raendern';
+    z += `<span class="ww-info-2">Spalt/λ = <b>${_fpmNum(w.spalt / lam, 2)}</b></span><span class="ww-info-2">${v}</span>`;
+  }
+  el.innerHTML = z;
+}
+
+// ── Formatierung ───────────────────────────────────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .ww-tabs { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
+    .ww-tab { display: flex; align-items: center; gap: 5px; padding: 6px 10px; border: 1px solid #e2e8f0;
+      background: #fff; border-radius: 18px; font-size: .76rem; font-weight: 700; color: #64748b; cursor: pointer; }
+    .ww-tab:hover { border-color: #cbd5e1; }
+    .ww-tab.on { background: #0284c7; border-color: #0284c7; color: #fff; }
+    .ww-tab-i { font-size: .95rem; }
+    .ww-grid { display: grid; grid-template-columns: minmax(0,1fr) 290px; gap: 14px; align-items: start; }
+    @media (max-width: 820px) { .ww-grid { grid-template-columns: 1fr; } }
+    .ww-canvas { width: 100%; display: block; border-radius: 10px; background: #1d4e89; }
+    .ww-side { display: flex; flex-direction: column; gap: 10px; }
+    .ww-info { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 7px; font-size: .78rem; color: #475569; }
+    .ww-info b { color: #0c4a6e; font-variant-numeric: tabular-nums; }
+    .ww-info-2 { color: #64748b; }
+    .ww-erkl { background: #f0f9ff; border: 1px solid #bae6fd; border-left: 3px solid #0284c7;
+      border-radius: 8px; padding: 9px 11px; }
+    .ww-erkl-kopf { font-size: .84rem; font-weight: 800; color: #0c4a6e; }
+    .ww-erkl-kurz { font-size: .76rem; color: #0369a1; margin-top: 2px; font-weight: 600; }
+    .ww-erkl-text { font-size: .74rem; color: #475569; line-height: 1.5; margin-top: 5px; }
+    .ww-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
