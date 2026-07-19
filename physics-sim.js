@@ -2182,6 +2182,20 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('sonTakt', 'sonKeinChart');
     _pSim.start(dt => _sonTakt(dt), () => _sonRender(), []);
   },
+
+  // Schluesselexperiment 18 des KLP: die Flammenfaerbung. Emissions-
+  // Gegenstueck zum Sonnenspektrum: charakteristische Flammenfarben und
+  // Emissionslinien, Kobaltglas-Trick, Smartphone-Spektrograf, Feuerwerk.
+  'flammenfaerbung': modal => {
+    _flmInit();
+    modal.innerHTML = _flmHTML();
+    const erkl = document.getElementById('flmErkl');
+    if (erkl) erkl.innerHTML = _flmErklHTML();
+    _flmSetStation(0);
+    _flmUpdate();
+    _pSim = new PhysicsSimEngine('flmTakt', 'flmKeinChart');
+    _pSim.start(dt => _flmTakt(dt), () => _flmRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -24315,6 +24329,830 @@ function _sonRender() {
     .son-hv-track { flex: 1; height: 9px; background: #eef2f7; border-radius: 5px; overflow: hidden; }
     .son-hv-fill { height: 100%; }
     .son-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// FLAMMENFÄRBUNG – Schluesselexperiment 18 (angehaengt)
+// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// FLAMMENFÄRBUNG
+// Schluesselexperiment 18 der NRW-Handreichung. Emissions-Gegenstueck zum
+// Sonnenspektrum (17) und Anwendung der Linienspektren (16).
+// Kernkompetenzen des KLP: die Energie emittierter Photonen mit den
+// Energieniveaus der Atomhuelle erklaeren (UF1, E6); die Bedeutung der
+// Flammenfaerbung fuer die Modelle diskreter Energiezustaende erlaeutern
+// (E2, E5, E6, E7); Wellenlaengen mit dem Gitter bestimmen (E5).
+// ═══════════════════════════════════════════════════════
+
+const _FLM_HC = 1239.84;        // h·c in eV·nm
+// Kalibrierung des Smartphone-Gitterspektrografen (Handreichung):
+// 11 Skt = (656 − 434) nm, Nullpunkt bei der H-gamma-Linie (434 nm).
+const _FLM_NM_PRO_SKT = 20.2;   // nm je Skalenteil
+const _FLM_NULL_NM = 434;       // Nullpunkt-Wellenlaenge (H-gamma)
+
+// Emissionslinien und Flammenfarben (Handreichung, Tabelle S. 5).
+const _FLM_ELEMENTE = [
+  { id: 'na', n: 'Natrium', sym: 'Na', salz: 'NaCl', farbe: 'gelb', rgb: '#facc15',
+    linien: [{ nm: 589.3, i: 1.0 }] },
+  { id: 'li', n: 'Lithium', sym: 'Li', salz: 'LiCl', farbe: 'rot', rgb: '#ef4444',
+    linien: [{ nm: 670.8, i: 1.0 }] },
+  { id: 'k', n: 'Kalium', sym: 'K', salz: 'KCl', farbe: 'violett', rgb: '#a855f7', kobalt: true,
+    linien: [{ nm: 404.4, i: 0.85 }, { nm: 766.5, i: 0.6 }, { nm: 589.3, i: 0.4, na: true }] },
+  { id: 'ca', n: 'Calcium', sym: 'Ca', salz: 'CaCl₂', farbe: 'ziegelrot', rgb: '#e0562d',
+    linien: [{ nm: 622.0, i: 0.9 }, { nm: 553.3, i: 0.6 }] },
+  { id: 'ba', n: 'Barium', sym: 'Ba', salz: 'BaCl₂', farbe: 'grün', rgb: '#65a30d',
+    linien: [{ nm: 524.2, i: 0.9 }, { nm: 513.7, i: 0.8 }] },
+  { id: 'cu', n: 'Kupfer', sym: 'Cu', salz: 'CuCl₂', farbe: 'grün', rgb: '#22c55e',
+    linien: [{ nm: 510.5, i: 0.7 }, { nm: 515.3, i: 0.9 }, { nm: 521.8, i: 0.85 }] },
+  { id: 'sr', n: 'Strontium', sym: 'Sr', salz: 'SrCl₂', farbe: 'karminrot', rgb: '#dc2626',
+    linien: [{ nm: 460.7, i: 0.5 }, { nm: 604.5, i: 0.7 }, { nm: 650.0, i: 0.85 }, { nm: 674.0, i: 0.9 }, { nm: 688.0, i: 0.8 }] },
+  { id: 'cs', n: 'Cäsium', sym: 'Cs', salz: 'CsCl', farbe: 'blau', rgb: '#3b82f6',
+    linien: [{ nm: 458.0, i: 1.0 }] },
+  { id: 'rb', n: 'Rubidium', sym: 'Rb', salz: 'RbCl', farbe: 'rot-violett', rgb: '#c026d3',
+    linien: [{ nm: 420.0, i: 0.6 }, { nm: 780.0, i: 0.85 }, { nm: 794.8, i: 0.8 }] }
+];
+
+let _flm = null;
+
+function _flmInit() {
+  _flm = {
+    station: 0,
+    element: 0,
+    kobalt: false,
+    ausgegluht: true, t: 0,
+    // Station 3
+    skt: 7.6, kalibriert: true,
+    // Station 4
+    probe: 0, tipp: null, aufgedeckt: false
+  };
+}
+
+// ── Zahlformat ──────────────────────────────────────────
+function _flmZahl(v) {
+  if (!isFinite(v) || v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const dez = Math.max(0, Math.min(20, 5 - ex));
+  const s = v.toFixed(dez);
+  return s.indexOf('.') >= 0 ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
+}
+
+// ── Physik ──────────────────────────────────────────────
+function _flmEnergie(nm) { return _FLM_HC / nm; }
+// Der Smartphone-Spektrograf: aus dem Skalenteil die Wellenlaenge
+function _flmLambda(skt) { return _FLM_NM_PRO_SKT * skt + _FLM_NULL_NM; }
+// und der Rueckweg: aus der Wellenlaenge das Skalenteil
+function _flmSkt(nm) { return (nm - _FLM_NULL_NM) / _FLM_NM_PRO_SKT; }
+
+// Welches Element passt am besten zu einer gemessenen Wellenlaenge?
+function _flmIdentifiziere(nm) {
+  let best = null, bestD = 1e9;
+  _FLM_ELEMENTE.forEach(e => {
+    e.linien.forEach(l => {
+      const d = Math.abs(l.nm - nm);
+      if (d < bestD) { bestD = d; best = e; }
+    });
+  });
+  return { element: best, abw: bestD };
+}
+
+// Wellenlaenge -> RGB (Bruton-Naeherung)
+function _flmFarbe(nm) {
+  let r = 0, g = 0, b = 0;
+  if (nm >= 380 && nm < 440) { r = -(nm - 440) / 60; b = 1; }
+  else if (nm < 490) { g = (nm - 440) / 50; b = 1; }
+  else if (nm < 510) { g = 1; b = -(nm - 510) / 20; }
+  else if (nm < 580) { r = (nm - 510) / 70; g = 1; }
+  else if (nm < 645) { r = 1; g = -(nm - 645) / 65; }
+  else if (nm <= 780) { r = 1; }
+  let f = 1;
+  if (nm < 420) f = 0.3 + 0.7 * (nm - 380) / 40;
+  else if (nm > 700) f = 0.3 + 0.7 * (780 - nm) / 80;
+  const to = v => Math.round(255 * Math.pow(Math.max(0, v) * f, 0.8));
+  return 'rgb(' + to(r) + ',' + to(g) + ',' + to(b) + ')';
+}
+
+// ── Oberflaeche ─────────────────────────────────────────
+function _flmHTML() {
+  const stationen = ['1 · Die Flammenfärbung', '2 · Der Fingerabdruck',
+                     '3 · Kalibrieren & Messen', '4 · Unbekannte Probe',
+                     '5 · Emission, Feuerwerk & Geschichte']
+    .map((s, i) => `<button class="fpm-tab${i === _flm.station ? ' on' : ''}" id="flmSt${i}" onclick="_flmSetStation(${i})">${s}</button>`).join('');
+
+  const salzwahl = _FLM_ELEMENTE.map((c, i) =>
+    `<button class="flm-salz-b${i === _flm.element ? ' on' : ''}" id="flmSalz${i}" onclick="_flmSetElement(${i})"
+       style="${i === _flm.element ? 'border-color:' + c.rgb : ''}">${c.salz}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim flm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔥 Flammenfärbung: das Schlüsselexperiment</h3>
+    <canvas id="flmTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="flmS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="flmFlamme" width="440" height="230" class="phys-anim-cv"></canvas>
+          <div class="fpm-label" id="flmFlammeLbl">—</div>
+          <canvas id="flmSpektrum" width="440" height="90" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Das Emissionsspektrum der Flamme</div>
+        </div>
+        <div>
+          <div class="osz-gruppe">
+            <div class="osz-gruppe-k">Salz auf dem Magnesiastäbchen</div>
+            <div class="flm-salz-reihe">${salzwahl}</div>
+            <label class="fpm-check"><input type="checkbox" id="flmKobalt"
+              onchange="_flmSet('kobalt',this.checked)"> durch Kobaltglas betrachten</label>
+          </div>
+          <div class="flm-lage" id="flmLage"></div>
+          <div class="flm-linien" id="flmLinien"></div>
+        </div>
+      </div>
+      <div class="flm-k3" id="flmK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="flmS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="flmFinger" width="440" height="330" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Die Emissionsspektren aller Elemente – jedes ein Fingerabdruck</div>
+        </div>
+        <div>
+          <div class="flm-finger-t" id="flmFingerText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="flmS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="flmKalib" width="440" height="130" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Kalibrierung mit der Balmer-Lampe (Hγ = 0, Hα = 11 Skt)</div>
+          <canvas id="flmMess" width="440" height="130" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Die gemessene Probe auf derselben Skala</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Linie bei Skalenteil</span>
+              <input type="range" id="flmSktSl" min="-2" max="12" step="0.1" value="7.6"
+                oninput="_flmSetSkt(this.value)"><b id="flmSktLbl">7,6 Skt</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="flmMessRechnung"></div>
+          <div class="flm-bsp" id="flmBeispiel"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="flmS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="flmProbe" width="440" height="130" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Das Spektrum einer unbekannten Probe</div>
+          <div class="flm-probe-mess" id="flmProbeMess"></div>
+        </div>
+        <div>
+          <div class="flm-raten" id="flmRatenBox"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="flmS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="flmFeuer" width="440" height="230" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Feuerwerk: dieselben Elemente, dieselben Farben</div>
+          <canvas id="flmVergleich" width="440" height="90" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Emission (hell) und Absorption (dunkel) – dieselben Linien</div>
+        </div>
+        <div>
+          <div class="flm-hist" id="flmHistText"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="flmErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Anregung → Rücksprung → Photon</b> &nbsp;|&nbsp; <b>E = h·c/λ</b>
+      &nbsp;|&nbsp; <b>λ = 20,2·x + 434 nm</b> &nbsp;|&nbsp; <b>Emission = Absorption</b>
+    </p>
+  </div>`;
+}
+
+function _flmErklHTML() {
+  return `<div class="dsp-erkl-kopf">Was man beobachtet</div>
+    <div class="dsp-erkl-text">
+      Bringt man ein Salz in eine Brennerflamme, so färbt sie sich in einer für das Metall
+      <b>charakteristischen Farbe</b>: Natrium gelb, Lithium rot, Kalium violett, Barium und Kupfer
+      grün. Zerlegt man dieses Licht mit einem Prisma oder Gitter, so erscheinen einzelne helle
+      <b>Emissionslinien</b> – für jedes Element ein eigenes Muster, sein <b>Fingerabdruck</b>.
+      Bunsen und Kirchhoff erkannten das schon 1860 und begründeten damit die Spektralanalyse:
+      „ein Mittel von bewunderungswürdiger Einfachheit, die kleinsten Spuren gewisser Elemente zu
+      entdecken.“
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum die Flamme leuchtet</div>
+    <div class="dsp-erkl-text">
+      Die Hitze der Flamme führt den <b>Valenzelektronen</b> der Metallatome Energie zu und hebt
+      sie auf höhere Energieniveaus (Anregung). Von selbst kehren sie kurz darauf in den
+      Grundzustand zurück und geben die Energiedifferenz als <b>Photon</b> ab: E = h·f. Weil die
+      Energiestufen in der Atomhülle <b>diskret</b> sind, hat auch das ausgesandte Licht ganz
+      bestimmte, für das Element typische Wellenlängen – daher die reinen Farben. Dasselbe
+      Prinzip, dieselben Energiestufen wie beim Franck-Hertz-Versuch und bei den Linienspektren.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Emission und Absorption sind dasselbe</div>
+    <div class="dsp-erkl-text">
+      Ein Atom sendet in der Flamme genau die Wellenlängen <b>aus</b>, die es im Sternspektrum
+      <b>verschluckt</b> (Schlüsselexperiment 17). Die gelbe Natriumlinie bei 589 nm ist im Labor
+      eine helle Emissionslinie und im Sonnenspektrum eine dunkle Fraunhoferlinie – es ist
+      derselbe Übergang, nur einmal von unten und einmal von oben betrachtet. Deshalb passen die
+      im Labor gemessenen Muster exakt auf die Linien in Sternspektren, und man kann die
+      Zusammensetzung ferner Sonnen bestimmen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Der Kobaltglas-Trick</div>
+    <div class="dsp-erkl-text">
+      Schon geringste Spuren von Natrium erzeugen ein sehr intensives gelbes Leuchten, das die
+      Beobachtung anderer Elemente – etwa Kalium – überstrahlt. Sieht man durch ein <b>Kobaltglas</b>,
+      so absorbiert dieses gerade das gelbe Natriumlicht, lässt das violette Kaliumlicht aber
+      hindurch. So wird das schwache Kaliumleuchten sichtbar. Ein schönes Beispiel dafür, wie man
+      eine Störgröße gezielt herausfiltert.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Quantitativ mit dem Smartphone</div>
+    <div class="dsp-erkl-text">
+      Mit einem einfachen Gitter-Spektrografen und einem Smartphone lässt sich die Wellenlänge
+      sogar messen. Man kalibriert die Skala mit einer bekannten Lampe – etwa den
+      Wasserstofflinien Hγ (434 nm) und Hα (656 nm), die 11 Skalenteile auseinander liegen, also
+      <b>20,2 nm je Skalenteil</b>. Legt man den Nullpunkt auf Hγ, gilt λ ≈ 20,2·x + 434 nm. Für
+      eine unbekannte Probe liest man das Skalenteil ab, rechnet die Wellenlänge aus und
+      vergleicht sie mit der Tabelle. Der Fehler bleibt unter 5 % – für eine sichere
+      Identifizierung genügt das.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Wo man es täglich sieht</div>
+    <div class="dsp-erkl-text">
+      Im <b>Feuerwerk</b> sind es genau diese Elemente, die für die Farben sorgen: Strontium- und
+      Lithiumsalze für Rot, Barium- und Kupfersalze für Grün, Natrium für Gelb, Kupfer für Blau.
+      Die Farbgeber sind Salze, die beim Abbrand des pyrotechnischen Satzes durch die
+      freiwerdende Wärme angeregt werden – Flammenfärbung im Großen.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Salzsäure verätzt – Schutzbrille tragen. Bariumchlorid ist
+      giftig, nicht einatmen. Lange Haare gegen Verbrennen schützen. Für jedes Salz ein eigenes
+      Stäbchen verwenden und dieses vorher gründlich ausglühen.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _flmSetStation(i) {
+  _flm.station = Math.max(0, Math.min(4, i));
+  for (let k = 0; k < 5; k++) {
+    document.getElementById('flmSt' + k)?.classList.toggle('on', k === _flm.station);
+    const d = document.getElementById('flmS' + k);
+    if (d) d.style.display = k === _flm.station ? 'block' : 'none';
+  }
+  _flmUpdate();
+}
+function _flmSet(key, val) { _flm[key] = val; _flmUpdate(); }
+function _flmSetElement(i) { _flm.element = Math.max(0, Math.min(_FLM_ELEMENTE.length - 1, i)); _flmUpdate(); }
+function _flmSetSkt(v) {
+  _flm.skt = Math.max(-2, Math.min(12, +v));
+  const el = document.getElementById('flmSktLbl'); if (el) el.textContent = _fpmNum(_flm.skt, 1) + ' Skt';
+  _flmRenderMess();
+}
+
+// Sichtbare Linien eines Elements (Kobaltglas filtert das Na-Gelb weg)
+function _flmSichtbar(e, kobalt) {
+  return e.linien.filter(l => !(kobalt && (l.na || Math.abs(l.nm - 589.3) < 4)));
+}
+
+function _flmUpdate() {
+  if (!_flm) return;
+  const e = _FLM_ELEMENTE[_flm.element];
+  _FLM_ELEMENTE.forEach((c, i) => document.getElementById('flmSalz' + i)?.classList.toggle('on', i === _flm.element));
+
+  const lbl = document.getElementById('flmFlammeLbl');
+  if (lbl) lbl.textContent = e.n + ' (' + e.sym + '): Flammenfärbung ' + e.farbe;
+
+  const lage = document.getElementById('flmLage');
+  if (lage) {
+    const kob = _flm.kobalt;
+    if (e.id === 'k' && !kob) {
+      lage.className = 'flm-lage warn';
+      lage.innerHTML = '<b>Kalium – aber das Natrium stört.</b> Schon Spuren von Natrium erzeugen '
+        + 'ein kräftiges Gelb, das das schwache Violett des Kaliums überstrahlt. Setze das '
+        + '<b>Kobaltglas</b> ein: Es schluckt das Gelb und lässt das Kaliumlicht durch.';
+    } else if (e.id === 'k' && kob) {
+      lage.className = 'flm-lage ok';
+      lage.innerHTML = '<b>Durch das Kobaltglas</b> ist das störende Natriumgelb verschwunden – '
+        + 'jetzt sieht man das charakteristische <b>violette</b> Kaliumlicht.';
+    } else {
+      lage.className = 'flm-lage';
+      lage.innerHTML = 'Die <b>' + e.farbe + '</b> Färbung entsteht durch die Emissionslinien des '
+        + e.n + '. Ihre Lage und Intensität ergeben zusammen den Farbeindruck.'
+        + (kob ? ' Das Kobaltglas dämpft dabei den gelben Bereich.' : '');
+    }
+  }
+
+  const ll = document.getElementById('flmLinien');
+  if (ll) {
+    ll.innerHTML = '<div class="git-sch-kopf">Die wichtigsten Emissionslinien</div>'
+      + '<div class="flm-lin-tab">'
+      + e.linien.slice().sort((a, b) => a.nm - b.nm).map(l =>
+        `<div class="flm-lin-z"><span class="flm-lin-farbe" style="background:${_flmFarbe(l.nm)}"></span>
+           <b>${_fpmNum(l.nm, 1)} nm</b>
+           <span class="flm-lin-e">${_fpmNum(_flmEnergie(l.nm), 2)} eV</span>
+           <span class="flm-lin-b">${l.nm > 700 ? 'infrarot' : l.nm < 400 ? 'violett/UV-Rand' : ''}</span></div>`).join('')
+      + '</div><div class="fpm-note">Aus jeder Wellenlänge folgt über E = h·c/λ die Energie des '
+      + 'Übergangs – die Differenz zweier Energiestufen in der Atomhülle des ' + e.n + '.</div>';
+  }
+
+  _flmRenderK3();
+  _flmRenderFinger();
+  _flmRenderMess();
+  _flmRenderRaten();
+  _flmRenderHist();
+}
+
+function _flmRenderK3() {
+  const el = document.getElementById('flmK3'); if (!el) return;
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du diesen Versuch jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Wir wollen zeigen, dass jedes Element ein eigenes Lichtmuster aussendet, und daraus auf
+        die Energiestufen im Atom schließen.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Ein Magnesiastäbchen wird gereinigt, in eine Salzlösung getaucht und in die rauschende
+        Brennerflamme gehalten; das Licht wird mit dem Auge oder einem Spektroskop beobachtet.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Für jedes Salz ein eigenes, ausgeglühtes Stäbchen verwenden und die Flammenfarbe bzw. die
+        Linien notieren.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        Jedes Salz färbt die Flamme charakteristisch und erzeugt ein eigenes Muster heller
+        <b>Emissionslinien</b>.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Die Hitze regt Valenzelektronen an; beim Rücksprung senden sie Photonen fester Energie
+        aus. Das Muster identifiziert das Element eindeutig.</div>
+    </div>`;
+}
+
+// ── Station 2: Fingerabdruck ───────────────────────────
+function _flmRenderFinger() {
+  const el = document.getElementById('flmFingerText'); if (!el) return;
+  el.innerHTML = `<div class="git-sch-kopf">Jedes Element ein eigenes Muster</div>
+    <div class="flm-finger-t2">Kein anderes Atom kann das Linienmuster eines Elements nachahmen.
+      Darauf beruht die <b>qualitative Analyse</b>: Aus dem Muster der hellen Linien lässt sich
+      sicher bestimmen, welches Element in der Flamme war. Bunsen und Kirchhoff entdeckten mit
+      dieser Methode 1860 sogar zwei neue Elemente – <b>Caesium</b> (nach dem Lateinischen für
+      „himmelblau“) und <b>Rubidium</b> („dunkelrot“), benannt nach ihren auffälligsten Linien.</div>
+    <div class="flm-finger-t2"><b>Auffällige Merkmale zum Wiedererkennen:</b></div>
+    <div class="flm-merk">
+      <div class="flm-merk-z"><span class="flm-lin-farbe" style="background:${_flmFarbe(589)}"></span>
+        <b>Natrium</b> – eine einzige kräftige gelbe Linie bei 589 nm</div>
+      <div class="flm-merk-z"><span class="flm-lin-farbe" style="background:${_flmFarbe(671)}"></span>
+        <b>Lithium</b> – eine tiefrote Linie bei 671 nm</div>
+      <div class="flm-merk-z"><span class="flm-lin-farbe" style="background:${_flmFarbe(517)}"></span>
+        <b>Barium/Kupfer</b> – ein Bündel grüner Linien um 515–524 nm</div>
+      <div class="flm-merk-z"><span class="flm-lin-farbe" style="background:${_flmFarbe(404)}"></span>
+        <b>Kalium</b> – violett, nur durch Kobaltglas gut zu sehen</div>
+    </div>
+    <div class="fpm-note">Dieselben Linien, die hier hell aufleuchten, erscheinen im Sternspektrum
+      als dunkle Absorptionslinien (Schlüsselexperiment 17) – Emission und Absorption betreffen
+      dieselben Energieübergänge.</div>`;
+}
+
+// ── Station 3: Kalibrieren & Messen ────────────────────
+function _flmRenderMess() {
+  const el = document.getElementById('flmMessRechnung'); if (!el) return;
+  const lam = _flmLambda(_flm.skt);
+  const id = _flmIdentifiziere(lam);
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">abgelesenes Skalenteil</span>
+      <span class="pho-rz-f">x</span><span class="pho-rz-v">${_fpmNum(_flm.skt, 1)} Skt</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Kalibrierung</span>
+      <span class="pho-rz-f">20,2 nm/Skt, Nullpunkt Hγ</span><span class="pho-rz-v">434 nm</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Wellenlänge</span>
+      <span class="pho-rz-f">λ = 20,2·x + 434</span><span class="pho-rz-v">${_fpmNum(lam, 1)} nm</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Energie des Übergangs</span>
+      <span class="pho-rz-f">E = h·c/λ</span><span class="pho-rz-v">${_fpmNum(_flmEnergie(lam), 2)} eV</span></div>
+    <div class="flm-ident ${id.abw < 8 ? 'ok' : ''}">
+      ${id.abw < 8
+        ? 'Das passt am besten zu <b>' + id.element.n + '</b> (' + _fpmNum(id.element.linien.find(l => Math.abs(l.nm - lam) === id.abw).nm, 1)
+          + ' nm, Abweichung ' + _fpmNum(id.abw, 1) + ' nm).'
+        : 'Keine Tabellenlinie liegt nahe genug – zwischen den Elementlinien.'}
+    </div>`;
+}
+function _flmRenderMessBsp() {
+  const bs = document.getElementById('flmBeispiel'); if (!bs) return;
+  bs.innerHTML = `<div class="git-sch-kopf">Die Auswertungsbeispiele der Handreichung</div>
+    <div class="flm-bsp-t">
+      <b>Probe F</b> (Linie bei 7,6 Skt): λ = 20,2·7,5 + 434 = <b>587,5 nm</b> → Natrium (589 nm).<br>
+      <b>Probe G</b>, zwei Linien: 7,6 Skt → 588 nm (Natrium) und 11,5 Skt → 666 nm → <b>Lithium</b>
+      (670,8 nm), verunreinigt mit Natrium.<br>
+      <b>Kontrolle der Kalibrierung</b> mit Hβ: bei 2,6 Skt ergibt sich λ = 486,5 nm – der
+      Tabellenwert der Hβ-Linie. Die lineare Skala ist damit gerechtfertigt.</div>
+    <div class="fpm-note">Der Fehler bleibt in allen Fällen unter 5 % – das genügt, um die
+      Elemente sicher zu identifizieren.</div>`;
+}
+
+// ── Station 4: Unbekannte Probe ────────────────────────
+const _FLM_PROBEN = [
+  { n: 'Probe 1', linien: [7.6], loesung: ['na'] },
+  { n: 'Probe 2', linien: [11.7], loesung: ['li'] },
+  { n: 'Probe 3', linien: [4.0, 4.5], loesung: ['cu', 'ba'] },
+  { n: 'Probe 4', linien: [7.6, 11.7], loesung: ['na', 'li'] },
+  { n: 'Probe 5', linien: [9.3], loesung: ['ca'] }
+];
+function _flmProbeNeu() {
+  _flm.probe = (_flm.probe + 1) % _FLM_PROBEN.length;
+  _flm.tipp = null; _flm.aufgedeckt = false;
+  _flmRenderRaten();
+  const c = document.getElementById('flmProbe');
+  if (c) _flmDrawProbe(c.getContext('2d'), c);
+}
+function _flmProbeTipp(id) { if (!_flm.aufgedeckt) { _flm.tipp = id; _flmRenderRaten(); } }
+function _flmProbePruefen() { _flm.aufgedeckt = true; _flmRenderRaten(); }
+function _flmRenderRaten() {
+  const mess = document.getElementById('flmProbeMess');
+  const probe = _FLM_PROBEN[_flm.probe];
+  if (mess) {
+    mess.innerHTML = '<div class="git-sch-kopf">Gemessene Linien</div>'
+      + probe.linien.map(x => {
+        const lam = _flmLambda(x);
+        return `<div class="flm-pm-z"><span>bei ${_fpmNum(x, 1)} Skt</span>
+          <b>λ = 20,2·${_fpmNum(x, 1)} + 434 = ${_fpmNum(lam, 0)} nm</b>
+          <span class="flm-lin-farbe" style="background:${_flmFarbe(lam)}"></span></div>`;
+      }).join('');
+  }
+  const el = document.getElementById('flmRatenBox'); if (!el) return;
+  // moegliche Elemente (ein Element pro auffaelliger Linie)
+  const kandidaten = ['na', 'li', 'k', 'ca', 'ba', 'cu', 'sr', 'cs'];
+  const namen = {}; _FLM_ELEMENTE.forEach(e => namen[e.id] = e.n);
+  const knoepfe = kandidaten.map(id => {
+    const gew = _flm.tipp === id;
+    const richtig = probe.loesung.indexOf(id) >= 0;
+    let cls = gew ? ' gewaehlt' : '';
+    if (_flm.aufgedeckt) {
+      if (richtig) cls = ' richtig';
+      else if (gew) cls = ' falsch';
+    }
+    return `<button class="flm-rate-b${cls}" onclick="_flmProbeTipp('${id}')">${namen[id]}</button>`;
+  }).join('');
+  const korrekt = _flm.aufgedeckt && _flm.tipp && probe.loesung.indexOf(_flm.tipp) >= 0;
+  el.innerHTML = `<div class="git-sch-kopf">Welches Element steckt in ${probe.n}?</div>
+    <div class="flm-rate-t">Rechne aus den Skalenteilen die Wellenlängen aus (links) und
+      vergleiche sie mit der Tabelle. Welches Element passt am besten? ${probe.loesung.length > 1
+        ? '(Diese Probe enthält mehrere Elemente – tippe das <b>auffälligste</b>.)' : ''}</div>
+    <div class="flm-rate-knoepfe">${knoepfe}</div>
+    <div class="sim-btn-row">
+      <button class="sim-btn primary" onclick="_flmProbePruefen()">✓ prüfen</button>
+      <button class="sim-btn" onclick="_flmProbeNeu()">🔄 neue Probe</button>
+    </div>
+    ${_flm.aufgedeckt ? `<div class="flm-rate-erg ${korrekt ? 'ok' : 'no'}">
+      ${korrekt
+        ? '<b>Richtig!</b> ' + probe.n + ' enthält ' + probe.loesung.map(e => namen[e]).join(' und ') + '.'
+        : '<b>Noch nicht.</b> ' + probe.n + ' enthält ' + probe.loesung.map(e => namen[e]).join(' und ')
+          + '. Vergleiche die berechneten Wellenlängen mit der Tabelle.'}
+      </div>` : ''}
+    <div class="fpm-note">In der Handreichung wird so eine mit Natrium verunreinigte Lithiumprobe
+      erkannt: zwei Linien bei 588 nm (Na) und 666 nm (Li). Die Verunreinigung mit Natrium ist
+      wegen dessen starkem Leuchten fast immer dabei.</div>`;
+}
+
+// ── Station 5: Geschichte / Feuerwerk ──────────────────
+function _flmRenderHist() {
+  const el = document.getElementById('flmHistText'); if (!el) return;
+  el.innerHTML = `<div class="git-sch-kopf">Von der Flamme zum Fixstern</div>
+    <div class="flm-hist-z"><b>1860 – Bunsen & Kirchhoff</b> begründen in Heidelberg die
+      Spektralanalyse. Sie bauen aus zwei Fernrohren und einem drehbaren Prisma den ersten
+      Spektralapparat und erkennen: Jedes Element hinterlässt einen eindeutigen „Fingerabdruck“
+      im Flammenspektrum.</div>
+    <div class="flm-hist-z"><b>Neue Elemente</b> Noch im selben Jahrzehnt entdecken sie mit dieser
+      Methode Caesium und Rubidium – allein anhand ihrer Spektrallinien, bevor jemand sie in der
+      Hand hielt.</div>
+    <div class="flm-hist-z"><b>Bis zu den Sternen</b> Schon Bunsen und Kirchhoff ahnten die
+      Tragweite: „Da es ausreicht, das glühende Gas zu sehen, so liegt der Gedanke nahe, dass
+      dieselbe auch anwendbar sei auf die Atmosphäre der Sonne und die helleren Fixsterne.“ Genau
+      das ist das Sonnenspektrum (Schlüsselexperiment 17).</div>
+    <div class="flm-hist-z"><b>Und ins Atom hinein</b> Die Spektren forderten die Physiker heraus,
+      Erklärungsmodelle zu bauen – das führte über den Franck-Hertz-Versuch bis zur Quantentheorie
+      und zum Bohrschen Atommodell.</div>
+    <div class="git-sch-kopf" style="margin-top:10px">Feuerwerk</div>
+    <div class="flm-hist-z">Die Farben im Feuerwerk sind Flammenfärbung im Großen: <b>Strontium</b>
+      und Lithium für Rot, <b>Barium</b> und Kupfer für Grün, <b>Natrium</b> für Gelb, Kupfer für
+      Blau. Die „Farbgeber“ sind Salze, die beim Abbrand durch die freiwerdende Wärme angeregt
+      werden und beim Rücksprung ihrer Valenzelektronen charakteristisches Licht aussenden.</div>`;
+}
+
+// ── Zeichnungen ────────────────────────────────────────
+function _flmDrawFlamme(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const e = _FLM_ELEMENTE[_flm.element];
+  const cx = W / 2, basis = H - 30;
+  // Brenner
+  ctx.fillStyle = '#334155'; ctx.fillRect(cx - 12, basis, 24, 24);
+  ctx.fillStyle = '#475569'; ctx.fillRect(cx - 6, basis - 8, 12, 10);
+  // Flamme: Grundfarbe blau + Elementfarbe ueberlagert
+  const flack = 1 + 0.06 * Math.sin(_flm.t * 9);
+  const zeichneFlamme = (farbe, breite, hoehe, alpha) => {
+    const g = ctx.createLinearGradient(0, basis, 0, basis - hoehe);
+    g.addColorStop(0, farbe); g.addColorStop(0.7, farbe); g.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.moveTo(cx - breite, basis);
+    ctx.quadraticCurveTo(cx - breite * 0.4, basis - hoehe * 0.6, cx, basis - hoehe * flack);
+    ctx.quadraticCurveTo(cx + breite * 0.4, basis - hoehe * 0.6, cx + breite, basis);
+    ctx.closePath(); ctx.fill();
+    ctx.globalAlpha = 1;
+  };
+  // schwache blaue Grundflamme
+  zeichneFlamme('#1d4ed8', 22, 120, 0.5);
+  // Elementfarbe (Kobaltglas: Gelb daempfen -> Kalium wird violett sichtbar)
+  let ef = e.rgb;
+  if (_flm.kobalt && (e.id === 'na')) ef = '#3f3f46';   // Na fast weg
+  zeichneFlamme(ef, 26, 150, _flm.kobalt && e.id === 'na' ? 0.15 : 0.8);
+  // heller Kern
+  zeichneFlamme('#fef3c7', 8, 60, 0.35);
+
+  // Magnesiastaebchen
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(cx + 40, basis - 60); ctx.lineTo(cx + 6, basis - 90); ctx.stroke();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Stäbchen + ' + e.salz, cx + 44, basis - 58);
+
+  // Beschriftung
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(e.farbe.toUpperCase(), cx, 24);
+  if (_flm.kobalt) {
+    ctx.fillStyle = 'rgba(30,58,138,0.25)'; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#93c5fd'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText('Blick durch Kobaltglas', W - 8, H - 8);
+  }
+  ctx.textAlign = 'left';
+}
+
+function _flmDrawSpektrumBand(ctx, x0, y0, w, h, linien, emission) {
+  const nmMin = 380, nmMax = 720;
+  const X = nm => x0 + (nm - nmMin) / (nmMax - nmMin) * w;
+  if (emission) {
+    ctx.fillStyle = '#000'; ctx.fillRect(x0, y0, w, h);
+    linien.forEach(l => {
+      if (l.nm < nmMin || l.nm > nmMax) return;
+      ctx.fillStyle = _flmFarbe(l.nm);
+      ctx.globalAlpha = 0.4 + 0.6 * (l.i || 1);
+      ctx.fillRect(X(l.nm) - 1, y0, 2.4, h);
+      ctx.globalAlpha = 1;
+    });
+  } else {
+    // Kontinuum mit dunklen Absorptionslinien
+    for (let px = 0; px < w; px++) {
+      const nm = nmMin + px / w * (nmMax - nmMin);
+      let hell = 1;
+      linien.forEach(l => { if (Math.abs(nm - l.nm) < 3) hell *= 1 - 0.85 * (1 - Math.abs(nm - l.nm) / 3); });
+      const f = _flmFarbe(nm).match(/\d+/g).map(Number);
+      ctx.fillStyle = 'rgb(' + Math.round(f[0] * hell) + ',' + Math.round(f[1] * hell) + ',' + Math.round(f[2] * hell) + ')';
+      ctx.fillRect(x0 + px, y0, 1, h);
+    }
+  }
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1; ctx.strokeRect(x0, y0, w, h);
+}
+
+function _flmDrawSpektrum(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const e = _FLM_ELEMENTE[_flm.element];
+  const sichtbar = _flmSichtbar(e, _flm.kobalt);
+  const x0 = 30, w = W - 45, y0 = 12, h = 54;
+  _flmDrawSpektrumBand(ctx, x0, y0, w, h, sichtbar, true);
+  const X = nm => x0 + (nm - 380) / (720 - 380) * w;
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  [400, 500, 600, 700].forEach(nm => ctx.fillText(nm + ' nm', X(nm), H - 4));
+  sichtbar.forEach(l => {
+    if (l.nm < 380 || l.nm > 720) return;
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmNum(l.nm, 0), X(l.nm), y0 + h + 10);
+  });
+  ctx.textAlign = 'left';
+}
+
+function _flmDrawFinger(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+  const x0 = 62, w = W - 76;
+  const rh = (H - 8) / _FLM_ELEMENTE.length;
+  const X = nm => x0 + (nm - 380) / (720 - 380) * w;
+  _FLM_ELEMENTE.forEach((e, i) => {
+    const y = 4 + i * rh;
+    ctx.fillStyle = '#0a0a0a'; ctx.fillRect(x0, y, w, rh - 3);
+    e.linien.forEach(l => {
+      if (l.nm < 380 || l.nm > 720) return;
+      ctx.fillStyle = _flmFarbe(l.nm);
+      ctx.globalAlpha = 0.4 + 0.6 * l.i;
+      ctx.fillRect(X(l.nm) - 1, y + 1, 2.2, rh - 5);
+      ctx.globalAlpha = 1;
+    });
+    ctx.fillStyle = e.rgb; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(e.sym, x0 - 5, y + rh / 2 + 3);
+  });
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  [400, 500, 600, 700].forEach(nm => ctx.fillText(nm, X(nm), H - 1));
+  ctx.textAlign = 'left';
+}
+
+// Skala mit Skalenteilen und einer Linie darauf
+function _flmDrawSkala(ctx, cv, linienSkt, farben, titel) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+  const x0 = 20, w = W - 35, y0 = 20, h = 54;
+  const sktMin = -2, sktMax = 12;
+  const X = s => x0 + (s - sktMin) / (sktMax - sktMin) * w;
+  // farbiger Hintergrund entsprechend der Wellenlaenge an jedem Skalenteil
+  for (let px = 0; px < w; px++) {
+    const skt = sktMin + px / w * (sktMax - sktMin);
+    const nm = _flmLambda(skt);
+    ctx.fillStyle = _flmFarbe(nm); ctx.globalAlpha = 0.12;
+    ctx.fillRect(x0 + px, y0, 1, h);
+  }
+  ctx.globalAlpha = 1;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1; ctx.strokeRect(x0, y0, w, h);
+  // Skalenteilstriche
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  for (let s = -2; s <= 12; s += 2) {
+    ctx.strokeStyle = '#334155';
+    ctx.beginPath(); ctx.moveTo(X(s), y0 + h); ctx.lineTo(X(s), y0 + h + 4); ctx.stroke();
+    ctx.fillText(s + '', X(s), y0 + h + 14);
+  }
+  ctx.fillStyle = '#94a3b8'; ctx.fillText('Skalenteile', W / 2, H - 3);
+  // die Linien
+  linienSkt.forEach((s, i) => {
+    if (s < sktMin || s > sktMax) return;
+    ctx.fillStyle = farben[i] || '#fff';
+    ctx.fillRect(X(s) - 1.5, y0, 3, h);
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmNum(s, 1), X(s), y0 - 4);
+  });
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(titel, x0, 12);
+  ctx.textAlign = 'left';
+}
+
+function _flmDrawKalib(ctx, cv) {
+  // Balmer-Lampe: Hgamma (434 = 0 Skt), Hbeta (486 = 2,6), Halpha (656 = 11)
+  const linien = [_flmSkt(434.0), _flmSkt(486.1), _flmSkt(656.3)];
+  const farben = [_flmFarbe(434), _flmFarbe(486), _flmFarbe(656)];
+  _flmDrawSkala(ctx, cv, linien, farben, 'Balmer-Lampe: Hγ (0) · Hβ (2,6) · Hα (11 Skt)');
+}
+function _flmDrawMess(ctx, cv) {
+  const lam = _flmLambda(_flm.skt);
+  _flmDrawSkala(ctx, cv, [_flm.skt], [_flmFarbe(lam)], 'Probe: Linie bei ' + _fpmNum(_flm.skt, 1) + ' Skt → ' + _fpmNum(lam, 0) + ' nm');
+}
+function _flmDrawProbe(ctx, cv) {
+  const probe = _FLM_PROBEN[_flm.probe];
+  const farben = probe.linien.map(s => _flmFarbe(_flmLambda(s)));
+  _flmDrawSkala(ctx, cv, probe.linien, farben, probe.n + ' (unbekannt)');
+}
+
+function _flmDrawFeuer(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0a0a1a'; ctx.fillRect(0, 0, W, H);
+  // Mehrere Feuerwerks-"Bursts" in Elementfarben
+  const bursts = [
+    { x: 90, y: 70, rgb: '#dc2626', el: 'Sr' },
+    { x: 220, y: 55, rgb: '#22c55e', el: 'Ba' },
+    { x: 340, y: 80, rgb: '#facc15', el: 'Na' },
+    { x: 160, y: 140, rgb: '#3b82f6', el: 'Cu' },
+    { x: 300, y: 150, rgb: '#c026d3', el: 'K' }
+  ];
+  bursts.forEach((b, bi) => {
+    const ph = (_flm.t * 0.6 + bi * 0.7) % 2;
+    const r = 8 + ph * 32;
+    const alpha = Math.max(0, 1 - ph / 2);
+    ctx.globalAlpha = alpha;
+    for (let k = 0; k < 16; k++) {
+      const a = k / 16 * 2 * Math.PI;
+      ctx.strokeStyle = b.rgb; ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(b.x + Math.cos(a) * r * 0.4, b.y + Math.sin(a) * r * 0.4);
+      ctx.lineTo(b.x + Math.cos(a) * r, b.y + Math.sin(a) * r);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = b.rgb; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(b.el, b.x, b.y + 3);
+  });
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Sr/Li rot · Ba/Cu grün · Na gelb · Cu blau · K violett', W / 2, H - 8);
+  ctx.textAlign = 'left';
+}
+
+function _flmDrawVergleich(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  // Natriumlinie: oben Emission (hell), unten Absorption (dunkel)
+  const na = [{ nm: 589.3, i: 1 }];
+  const x0 = 62, w = W - 76;
+  _flmDrawSpektrumBand(ctx, x0, 8, w, 30, na, true);
+  _flmDrawSpektrumBand(ctx, x0, 46, w, 30, na, false);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Flamme', x0 - 5, 26);
+  ctx.fillText('Stern', x0 - 5, 64);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  const X = nm => x0 + (nm - 380) / (720 - 380) * w;
+  ctx.fillText('589 nm (Na)', X(589.3), H - 3);
+  ctx.textAlign = 'left';
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _flmTakt(dt) { if (_flm) _flm.t += Math.min(0.05, dt); }
+function _flmRender() {
+  if (!_flm) return;
+  const st = _flm.station;
+  if (st === 0) {
+    const c = document.getElementById('flmFlamme');
+    if (c) _flmDrawFlamme(c.getContext('2d'), c);
+    const cs = document.getElementById('flmSpektrum');
+    if (cs) _flmDrawSpektrum(cs.getContext('2d'), cs);
+  } else if (st === 1) {
+    const c = document.getElementById('flmFinger');
+    if (c) _flmDrawFinger(c.getContext('2d'), c);
+  } else if (st === 2) {
+    const ck = document.getElementById('flmKalib');
+    if (ck) _flmDrawKalib(ck.getContext('2d'), ck);
+    const cm = document.getElementById('flmMess');
+    if (cm) _flmDrawMess(cm.getContext('2d'), cm);
+    _flmRenderMessBsp();
+  } else if (st === 3) {
+    const c = document.getElementById('flmProbe');
+    if (c) _flmDrawProbe(c.getContext('2d'), c);
+  } else if (st === 4) {
+    const c = document.getElementById('flmFeuer');
+    if (c) _flmDrawFeuer(c.getContext('2d'), c);
+    const cv = document.getElementById('flmVergleich');
+    if (cv) _flmDrawVergleich(cv.getContext('2d'), cv);
+  }
+}
+
+// ── Zusätzliche Styles für die Flammenfärbung ──────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .flm-salz-reihe { display: flex; gap: 5px; flex-wrap: wrap; margin: 6px 0; }
+    .flm-salz-b { font-size: .73rem; padding: 5px 9px; background: #fff; border: 2px solid #e2e8f0;
+      border-radius: 999px; cursor: pointer; color: #475569; }
+    .flm-salz-b:hover { border-color: #cbd5e1; }
+    .flm-salz-b.on { font-weight: 700; color: #334155; }
+    .flm-lage { font-size: .78rem; border-radius: 9px; padding: 9px 11px; margin: 8px 0;
+      line-height: 1.55; border: 1px solid #e2e8f0; background: #f8fafc; color: #475569; }
+    .flm-lage b { color: #334155; }
+    .flm-lage.warn { background: #fff7ed; border-color: #fed7aa; color: #9a3412; }
+    .flm-lage.ok { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+    .flm-linien { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 12px; }
+    .flm-lin-tab { display: flex; flex-direction: column; gap: 3px; margin-top: 5px; }
+    .flm-lin-z { display: flex; align-items: center; gap: 8px; font-size: .76rem; color: #475569; }
+    .flm-lin-farbe { width: 14px; height: 14px; border-radius: 3px; flex: 0 0 auto; border: 1px solid rgba(0,0,0,.15); }
+    .flm-lin-z b { flex: 0 0 62px; font-variant-numeric: tabular-nums; color: #334155; }
+    .flm-lin-e { flex: 0 0 54px; color: #7c3aed; font-variant-numeric: tabular-nums; }
+    .flm-lin-b { color: #94a3b8; font-size: .72rem; }
+    .flm-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 13px; margin-top: 12px; }
+    .flm-finger-t { display: flex; flex-direction: column; gap: 8px; }
+    .flm-finger-t2 { font-size: .78rem; color: #475569; line-height: 1.65; }
+    .flm-finger-t2 b { color: #334155; }
+    .flm-merk { display: flex; flex-direction: column; gap: 5px; }
+    .flm-merk-z { display: flex; align-items: center; gap: 8px; font-size: .77rem; color: #475569;
+      background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 6px 9px; }
+    .flm-merk-z b { color: #334155; }
+    .flm-ident { font-size: .77rem; border-radius: 8px; padding: 8px 10px; margin-top: 6px;
+      background: #f1f5f9; border: 1px solid #e2e8f0; color: #475569; }
+    .flm-ident.ok { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+    .flm-ident b { color: #334155; }
+    .flm-bsp { background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 9px; padding: 9px 12px; margin-top: 8px; }
+    .flm-bsp-t { font-size: .76rem; color: #5b21b6; line-height: 1.7; }
+    .flm-bsp-t b { color: #4c1d95; }
+    .flm-probe-mess { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 9px 12px; margin-top: 8px; }
+    .flm-pm-z { display: flex; align-items: center; gap: 8px; font-size: .76rem; color: #475569; padding: 3px 0; }
+    .flm-pm-z span:first-child { flex: 0 0 78px; font-size: .72rem; color: #94a3b8; }
+    .flm-pm-z b { color: #334155; font-variant-numeric: tabular-nums; }
+    .flm-raten { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 11px 13px; }
+    .flm-rate-t { font-size: .78rem; color: #475569; line-height: 1.6; }
+    .flm-rate-t b { color: #334155; }
+    .flm-rate-knoepfe { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0; }
+    .flm-rate-b { font-size: .73rem; padding: 6px 9px; background: #fff; border: 2px solid #e2e8f0;
+      border-radius: 8px; cursor: pointer; color: #475569; }
+    .flm-rate-b:hover { border-color: #cbd5e1; }
+    .flm-rate-b.gewaehlt { border-color: #0284c7; background: #eff6ff; color: #075985; font-weight: 700; }
+    .flm-rate-b.richtig { border-color: #16a34a; background: #f0fdf4; color: #166534; font-weight: 700; }
+    .flm-rate-b.falsch { border-color: #dc2626; background: #fef2f2; color: #991b1b; }
+    .flm-rate-erg { font-size: .77rem; border-radius: 8px; padding: 8px 10px; margin: 6px 0; line-height: 1.55; }
+    .flm-rate-erg.ok { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+    .flm-rate-erg.no { background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412; }
+    .flm-hist { display: flex; flex-direction: column; gap: 6px; }
+    .flm-hist-z { font-size: .77rem; color: #475569; line-height: 1.6; background: #f8fafc;
+      border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; }
+    .flm-hist-z b { color: #334155; }
+    .flm-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
