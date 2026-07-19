@@ -2059,7 +2059,7 @@ function _fpmHTML() {
 
   return `<div class="sim-box sim-box-wide fpm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
-    <h3 class="sim-h3">🌀 Federpendel – Messreihe &amp; Linearisierung <span class="sim-schluessel">Schlüsselexperiment</span></h3>
+    <h3 class="sim-h3">🌀 Federpendel: das Schlüsselexperiment</h3>
 
     <div class="fpm-grid">
       <div>
