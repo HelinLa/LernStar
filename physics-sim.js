@@ -2122,6 +2122,24 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('trfTakt', 'trfKeinChart');
     _pSim.start(dt => _trfTakt(dt), () => _trfRender(), []);
   },
+
+  // Schluesselexperiment 14 des KLP: der Modellversuch zu Freileitungen.
+  // Warum wird elektrische Energie mit Hochspannung uebertragen? Baut auf
+  // dem Transformator (Schluesselexperiment 13) auf.
+  'freileitungen': modal => {
+    _frlInit();
+    modal.innerHTML = _frlHTML();
+    const erkl = document.getElementById('frlErkl');
+    if (erkl) erkl.innerHTML = _frlErklHTML();
+    _frlSetStation(0);
+    _frlSetTrafo(0);
+    _frlSetVergleich(0);
+    _frlNormal();
+    _frlUpdate();
+    _frlDrawSweep();
+    _pSim = new PhysicsSimEngine('frlTakt', 'frlKeinChart');
+    _pSim.start(dt => _frlTakt(dt), () => _frlRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -20242,6 +20260,1246 @@ function _trfRender() {
     .trf-anw-warn { font-size: .75rem; color: #9a3412; background: #fff7ed;
       border: 1px solid #fed7aa; border-radius: 8px; padding: 8px 10px; line-height: 1.55; }
     .trf-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// MODELLVERSUCH ZU FREILEITUNGEN – Schluesselexperiment 14 (angehaengt)
+// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// MODELLVERSUCH ZU FREILEITUNGEN
+// Schluesselexperiment 14 der NRW-Handreichung. Baut auf dem Transformator
+// (Schluesselexperiment 13) auf.
+// Kernkompetenzen des KLP: die Notwendigkeit des Transformierens der
+// Wechselspannung fuer die Uebertragung ueber grosse Entfernungen bewerten
+// (B1), Vor- und Nachteile verschiedener Uebertragungskonzepte beurteilen
+// (B2, B4), die Spannung als Energie je Ladung (UF2), ein Modellexperiment
+// zur Demonstration nutzen (K3).
+// ═══════════════════════════════════════════════════════
+
+// ── Kenndaten der Handreichung ──────────────────────────
+// Alle in Python gegen die Aufgabenloesungen A1..A7 geprueft.
+const _FRL_RCRNI = 5.4;      // Ohm je Meter Chromnickeldraht (0,5 mm)
+const _FRL_RCU   = 0.0075;   // Ohm je Meter Kupfer (2,5 mm²)
+const _FRL_LLEIT = 4.0;      // m: zwei mal 2 m Hin- und Rueckleitung
+const _FRL_RSP500 = 2.5;     // ohmscher Widerstand je Spule mit 500 Wdg
+const _FRL_RSP50  = 0.08;    // ohmscher Widerstand je Spule mit 50 Wdg
+const _FRL_RLAMP  = 6.4;     // Widerstand der beiden parallelen Lampen im Betrieb
+const _FRL_PNOM   = 6.4;     // Nennleistung beider Lampen zusammen (W)
+const _FRL_ULNOM  = 6.4;     // Betriebsspannung der Lampen
+const _FRL_ILNOM  = 1.0;     // Betriebsstrom beider Lampen
+
+// Windungszahlen der beiden Trafos (linker: hoch, rechter: runter)
+const _FRL_N1 = 50, _FRL_N2 = 500, _FRL_N3 = 500, _FRL_N4 = 50;
+
+// Gemessene Werte des 1. Teilversuchs (Abbildung 1 a). Fest – so gemessen.
+const _FRL_MESS = {
+  U1: 9.6, I1: 3.2, U2L: 82.2, U2R: 80.6, I2: 0.20, U3: 6.4, I3: 1.0,
+  Ileer: 1.25   // Leerlaufstrom des linken Trafos bei 9,6 V
+};
+
+// Die drei Leitungskonzepte
+const _FRL_KONZ = [
+  { id: 'hv', n: 'Hochspannung', kurz: 'zwei Transformatoren, CrNi-Draht',
+    draht: 'CrNi', trafo: true, farbe: '#16a34a' },
+  { id: 'lv-crni', n: 'Niederspannung, CrNi', kurz: 'keine Transformatoren, CrNi-Draht',
+    draht: 'CrNi', trafo: false, farbe: '#dc2626' },
+  { id: 'lv-cu', n: 'Niederspannung, Kupfer', kurz: 'keine Transformatoren, dicker Kupferdraht',
+    draht: 'Cu', trafo: false, farbe: '#0284c7' }
+];
+
+let _frl = null;
+
+function _frlInit() {
+  _frl = {
+    station: 0,
+    // Station 1
+    konz: 0, Us: 6.7, laeuft: true, t: 0,
+    // Station 2 – Energiebilanz / 1/U²
+    Utrans: 80, sweepRows: [],
+    // Station 3 – idealer Trafo
+    trafoSeite: 0,   // 0 = rechter (A6), 1 = linker (A7)
+    // Station 4 – Selbstinduktion
+    siPhase: 0, siT: 0, siLaeuft: true,
+    // Station 5
+    vergleich: 0
+  };
+}
+
+// ── Zahlformat ──────────────────────────────────────────
+// Dritte Kopie des Formatierers (vgl. _genZahl, _trfZahl). Bewusst lokal
+// gehalten, um die geteilte _dspZahl nicht anzufassen.
+function _frlZahl(v) {
+  if (!isFinite(v) || v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const dez = Math.max(0, Math.min(20, 5 - ex));
+  const s = v.toFixed(dez);
+  return s.indexOf('.') >= 0 ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
+}
+
+// ── Leitungswiderstaende ────────────────────────────────
+function _frlRLeitung(draht) {
+  return (draht === 'Cu' ? _FRL_RCU : _FRL_RCRNI) * _FRL_LLEIT;
+}
+
+// ── Das Schaltungsmodell ────────────────────────────────
+// Idealisiert: ideale Transformatoren (Spannungsverhaeltnis unabhaengig von
+// der Last), rein ohmsche Leitung, Lampen als fester Widerstand im Betrieb.
+// Damit sind die Teilversuche 2 und 3 exakt so berechenbar wie in den
+// Aufgaben A3 und A4 der Handreichung. Fuer den Hochspannungsversuch liefert
+// das Modell die IDEALEN (theoretischen) Werte – die real gemessenen liegen
+// wegen der Selbstinduktion darueber (Station 3 und 4).
+function _frlModell(konzId, Us) {
+  const K = _FRL_KONZ.find(k => k.id === konzId);
+  const Rl = _frlRLeitung(K.draht);
+  const RL = _FRL_RLAMP;
+  let r;
+  if (K.trafo) {
+    // Linker Trafo 50:500 (hoch), rechter 500:50 (runter).
+    // Ideale Trafos halten das Spannungsverhaeltnis bei jeder Last.
+    const ue1 = _FRL_N2 / _FRL_N1;   // 10, Aufwaertsuebersetzung
+    const ue2 = _FRL_N3 / _FRL_N4;   // 10, rechter Trafo runter
+    const Rline = Rl + 2 * _FRL_RSP500;   // CrNi + zwei Spulen 500 Wdg
+    const Uhv = ue1 * Us;                 // Spannung am Anfang der Fernleitung
+    const RLref = RL * ue2 * ue2;         // Lampe auf die HV-Seite gespiegelt
+    const Ihv = Uhv / (Rline + RLref);    // Strom in der Fernleitung
+    const UL = Ihv * RLref / ue2;         // Lampenspannung
+    const IL = UL / RL;                   // Lampenstrom
+    const Is = ue1 * Ihv;                 // Primaerstrom (ideal)
+    r = { UL, IL, Iline: Ihv, Uline: Uhv, Uline2: Ihv * RLref, Is, Rline,
+          Ploss: Ihv * Ihv * Rline, Pquelle: Us * Is };
+  } else {
+    // Reihenschaltung Quelle – Leitung – Lampen
+    const I = Us / (Rl + RL);
+    const UL = I * RL;
+    r = { UL, IL: I, Iline: I, Uline: Us, Is: I, Rline: Rl,
+          Ploss: I * I * Rl, Pquelle: Us * I };
+  }
+  r.Plamp = r.UL * r.IL;
+  r.bright = r.Plamp / _FRL_PNOM;   // 1 = Nennhelligkeit
+  return r;
+}
+
+// Die Netzspannung, bei der die Lampen im gewaehlten Konzept normal hell
+// leuchten (Lampenspannung = 6,4 V). Fuer die Voreinstellung je Konzept.
+function _frlUsFuerNormal(konzId) {
+  const K = _FRL_KONZ.find(k => k.id === konzId);
+  const Rl = _frlRLeitung(K.draht);
+  if (K.trafo) {
+    // ideal: Us = U_L, weil beide Trafos das Verhaeltnis 1:10 und 10:1 haben
+    // (Spannung wird hoch- und wieder heruntergesetzt) – bis auf den
+    // Leitungsabfall. Genauer aus dem Modell zurueckgerechnet:
+    const ue2 = _FRL_N3 / _FRL_N4;
+    const Rline = Rl + 2 * _FRL_RSP500;
+    const RLref = _FRL_RLAMP * ue2 * ue2;
+    // Der rechte Trafo setzt herunter: der HV-seitige Strom ist um ue2 KLEINER
+    // als der Lampenstrom, nicht groesser.
+    const Ihv = _FRL_ULNOM / _FRL_RLAMP / ue2;  // noetiger HV-Strom
+    const Uhv = Ihv * (Rline + RLref);
+    return Uhv / (_FRL_N2 / _FRL_N1);
+  }
+  return (Rl + _FRL_RLAMP) * _FRL_ILNOM;
+}
+
+// ── Oberflaeche ─────────────────────────────────────────
+function _frlHTML() {
+  const stationen = ['1 · Die drei Teilversuche', '2 · Warum Hochspannung?',
+                     '3 · Idealer Trafo vs. Messung', '4 · Selbstinduktion',
+                     '5 · Konzepte im Vergleich']
+    .map((s, i) => `<button class="fpm-tab${i === _frl.station ? ' on' : ''}" id="frlSt${i}" onclick="_frlSetStation(${i})">${s}</button>`).join('');
+
+  const konzwahl = _FRL_KONZ.map((k, i) =>
+    `<button class="osz-segb" id="frlKonz${i}" onclick="_frlSetKonz(${i})">${k.n}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim frl-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🗼 Modellversuch zu Freileitungen: das Schlüsselexperiment</h3>
+    <canvas id="frlTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="frlS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="frlAufbau" width="440" height="300" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Gleiche Quelle, gleiche Lampen – nur die Leitung ändert sich</div>
+          <div class="osz-gruppe">
+            <div class="osz-gruppe-k">Leitungskonzept</div>
+            <div class="osz-zeile" style="flex-wrap:wrap"><span class="osz-seg" style="flex-wrap:wrap">${konzwahl}</span></div>
+            <div class="osz-zeile"><span>Netzspannung U<sub>Netz</sub></span>
+              <input type="range" id="frlUs" min="1" max="30" step="0.1" value="6.7"
+                oninput="_frlSetUs(this.value)"><b id="frlUsLbl">6,7 V</b></div>
+            <div class="sim-btn-row" style="padding-top:4px">
+              <button class="sim-btn" onclick="_frlNormal()">↻ auf „normal hell" stellen</button>
+            </div>
+          </div>
+          <div class="frl-lampen" id="frlLampen"></div>
+        </div>
+        <div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Spannung an der Leitung</span><span class="fpm-ro-v" id="frlUlineA">—</span><span class="fpm-ro-u">V</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Strom in der Leitung</span><span class="fpm-ro-v" id="frlIlineA">—</span><span class="fpm-ro-u">A</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Lampenspannung U<sub>L</sub></span><span class="fpm-ro-v" id="frlUlA">—</span><span class="fpm-ro-u">V</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Lampenstrom I<sub>L</sub></span><span class="fpm-ro-v" id="frlIlA">—</span><span class="fpm-ro-u">A</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Leistung an den Lampen</span><span class="fpm-ro-v" id="frlPlA">—</span><span class="fpm-ro-u">W</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Verlust in der Leitung</span><span class="fpm-ro-v" id="frlPvA">—</span><span class="fpm-ro-u">W</span></div>
+          </div>
+          <div class="frl-lage" id="frlLage"></div>
+          <div class="ebr-rechnung" id="frlRechnung"></div>
+          <div class="frl-mess" id="frlMess"></div>
+        </div>
+      </div>
+      <div class="frl-k3" id="frlK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="frlS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="frlSweep" width="440" height="300" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Leitungsverlust über der Übertragungsspannung (feste Nutzleistung)</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Übertragungsspannung</span>
+              <input type="range" id="frlUtrans" min="10" max="400" step="1" value="80"
+                oninput="_frlSetUtrans(this.value)"><b id="frlUtransLbl">80 V</b></div>
+          </div>
+          <div class="ebr-rechnung" id="frlSweepRechnung"></div>
+        </div>
+        <div>
+          <div class="frl-bilanz" id="frlBilanz"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="frlS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>welcher Transformator?</span>
+              <span class="osz-seg">
+                <button class="osz-segb" id="frlTr0" onclick="_frlSetTrafo(0)">rechter (runter)</button>
+                <button class="osz-segb" id="frlTr1" onclick="_frlSetTrafo(1)">linker (hoch)</button>
+              </span></div>
+          </div>
+          <canvas id="frlTrafoCv" width="440" height="240" class="phys-anim-cv"></canvas>
+          <div class="fpm-label" id="frlTrafoLbl">—</div>
+          <div class="ebr-rechnung" id="frlTrafoRechnung"></div>
+        </div>
+        <div>
+          <div class="frl-ideal" id="frlIdealText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="frlS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="frlSiAufbau" width="440" height="210" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Zwei gleiche Lampen – oben mit Spule, unten mit Widerstand</div>
+          <canvas id="frlSiPlot" width="440" height="220" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Stromverlauf nach dem Einschalten und dem Ausschalten</div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="frlSiBtn" onclick="_frlSiToggle()">⏸ Anhalten</button>
+            <button class="sim-btn" onclick="_frlSiReset()">↺ Neu schalten</button>
+          </div>
+        </div>
+        <div>
+          <div class="frl-si" id="frlSiText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="frlS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="frlNetzCv" width="440" height="270" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Vom Kraftwerk zur Steckdose – die Spannungsebenen</div>
+          <div class="frl-konz-wahl" id="frlKonzWahl"></div>
+        </div>
+        <div>
+          <div class="frl-vergleich" id="frlVergleich"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="frlErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>P = U · I</b> &nbsp;|&nbsp; <b>P<sub>Verlust</sub> = R<sub>Leitung</sub> · I²</b>
+      &nbsp;|&nbsp; <b>bei fester Leistung: I = P/U</b>
+      &nbsp;|&nbsp; <b>P<sub>Verlust</sub> ∝ 1/U²</b>
+    </p>
+  </div>`;
+}
+
+function _frlErklHTML() {
+  return `<div class="dsp-erkl-kopf">Die Leitfrage</div>
+    <div class="dsp-erkl-text">
+      Warum wird elektrische Energie in Freileitungen mit <b>Hochspannung</b> bis zu 400 000 Volt
+      übertragen, obwohl das gefährlich und aufwendig ist? Ein Auto kommt schließlich mit
+      ungefährlichen 12 Volt aus, und sein Anlasser ist kräftiger als jeder Haushaltsmotor. Der
+      Modellversuch beantwortet das mit <b>drei Teilversuchen</b>, bei denen dieselbe Quelle
+      dieselben Lampen versorgt – nur die Leitung dazwischen ändert sich.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die drei Teilversuche</div>
+    <div class="dsp-erkl-text">
+      <b>1. Hochspannung:</b> Ein Transformator setzt die Kleinspannung von rund 10 V auf etwa
+      80 V hoch, ein zweiter am anderen Ende wieder auf die 6 V der Lampen herunter. Die Lampen
+      leuchten hell. <b>2. Niederspannung mit demselben (dünnen) Draht:</b> ohne die beiden
+      Transformatoren, direkt mit 10 V. Die Lampen leuchten kaum. <b>3. Niederspannung mit dickem
+      Kupferdraht:</b> gleiche Kleinspannung, aber ein Draht mit viel kleinerem Widerstand. Die
+      Lampen leuchten wieder hell. Daraus folgen zwei Aussagen: Je größer der Leitungswiderstand,
+      desto weniger Energie kommt an – und die Verluste sind bei <b>hoher Spannung</b> deutlich
+      geringer.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum Hochspannung hilft</div>
+    <div class="dsp-erkl-text">
+      Der Verlust in der Leitung ist P<sub>Verlust</sub> = R<sub>Leitung</sub> · I² – er hängt vom
+      <b>Quadrat der Stromstärke</b> ab, nicht von der Spannung in der Leitung. Um eine bestimmte
+      Leistung P zu übertragen, braucht man bei hoher Spannung nur einen kleinen Strom: I = P/U.
+      Verdoppelt man die Übertragungsspannung, halbiert sich der Strom – und der Verlust geht auf
+      ein <b>Viertel</b> zurück. Deshalb transformiert man für die Fernleitung hoch und beim
+      Verbraucher wieder herunter. Das kostet zwei Transformatoren, spart aber weit mehr, als es
+      kostet.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum Spannung überhaupt Energie bedeutet</div>
+    <div class="dsp-erkl-text">
+      Die ganze Rechnung steht und fällt mit der Definition der Spannung als <b>Energie je
+      Ladung</b>: U = W/Q. In der Zeit Δt fließt die Ladung Q = I·Δt durch den Leitungswiderstand,
+      und an ihm fällt nach dem Ohmschen Gesetz U = R·I ab. Zusammen ergibt das die in Wärme
+      umgesetzte Energie W = U·I·Δt = R·I²·Δt. Genau mit diesem einen Term rechnet die
+      Handreichung alle drei Teilversuche durch – und erhält 1,1 J beim Hochspannungsmodell,
+      21,6 J beim Niederspannungsmodell mit demselben Draht und nur 0,07 J beim Kupferdraht,
+      jeweils gegen die 6,4 J, welche die Lampen brauchen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die Grenze des einfachen Modells</div>
+    <div class="dsp-erkl-text">
+      Rechnet man den Versuch mit den Beziehungen für den <b>idealen</b> Transformator nach, so
+      stimmen die Spannungen ganz gut, die Ströme aber nicht: Im Primärkreis fließt mit 3,2 A fast
+      doppelt so viel wie die erwarteten 2,0 A. Der Grund ist die <b>Selbstinduktion</b>. Eine
+      Spule hat im Wechselstromkreis neben ihrem winzigen ohmschen Widerstand einen viel größeren
+      <b>induktiven Widerstand</b>: Bei 9,6 V und 0,08 Ω ohmschem Widerstand müssten rein rechnerisch
+      120 A fließen – gemessen werden nur 3,2 A, also der 37,5-te Teil. Der Überschuss von 3,2 A
+      gegenüber den 2,0 A der Last ist gerade der <b>Leerlaufstrom</b> von etwa 1,25 A, der den
+      Eisenkern magnetisiert. Die vollständige Behandlung des belasteten Transformators übersteigt
+      den Grundkurs – der Effekt selbst lässt sich aber gut sichtbar machen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die Konzepte im Vergleich</div>
+    <div class="dsp-erkl-text">
+      <b>Hochspannung</b> – geringe Verluste, wenig Leitermaterial, aber teure Transformatoren,
+      gefährliche Spannungen und hohe Masten. <b>Niederspannung</b> – technisch einfach und wenig
+      gefährlich, aber große Verluste. <b>Dicker Leiter</b> – kaum Verluste, aber teures, schweres
+      Material in großen Mengen. In der Realität kombiniert man alles: Der Generator liefert rund
+      10–25 kV, für die Fernübertragung wird auf 220–380 kV hochgespannt, und in mehreren Stufen
+      geht es wieder herunter bis auf die 230 V der Steckdose.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Dieser Versuch ist ausschließlich ein Lehrerversuch. Es treten
+      berührungsgefährliche Spannungen um 80 V auf; alle nicht isolierten Hochspannungsleiter sind
+      abzudecken und außer Reichweite zu bringen, Umbauten nur im spannungsfreien Zustand. Warn-
+      und Hinweisschilder sind aufzustellen.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _frlSetStation(i) {
+  _frl.station = Math.max(0, Math.min(4, i));
+  for (let k = 0; k < 5; k++) {
+    document.getElementById('frlSt' + k)?.classList.toggle('on', k === _frl.station);
+    const d = document.getElementById('frlS' + k);
+    if (d) d.style.display = k === _frl.station ? 'block' : 'none';
+  }
+  _frlUpdate();
+  if (_frl.station === 1) _frlDrawSweep();
+}
+
+function _frlSetKonz(i) {
+  _frl.konz = Math.max(0, Math.min(2, i));
+  _frlUpdate();
+}
+function _frlSetUs(v) {
+  _frl.Us = Math.max(1, Math.min(30, +v));
+  _frlUpdate();
+}
+function _frlNormal() {
+  const us = _frlUsFuerNormal(_FRL_KONZ[_frl.konz].id);
+  _frl.Us = Math.max(1, Math.min(30, us));
+  const sl = document.getElementById('frlUs');
+  if (sl) sl.value = String(_frl.Us);
+  _frlUpdate();
+}
+
+function _frlUpdate() {
+  if (!_frl) return;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  const K = _FRL_KONZ[_frl.konz];
+  const m = _frlModell(K.id, _frl.Us);
+
+  _FRL_KONZ.forEach((k, i) => document.getElementById('frlKonz' + i)?.classList.toggle('on', i === _frl.konz));
+  set('frlUsLbl', _fpmNum(_frl.Us, 1) + ' V');
+  set('frlUlineA', _fpmNum(m.Uline, 1));
+  set('frlIlineA', _fpmNum(m.Iline, 3));
+  set('frlUlA', _fpmNum(m.UL, 2));
+  set('frlIlA', _fpmNum(m.IL, 3));
+  set('frlPlA', _fpmNum(m.Plamp, 2));
+  set('frlPvA', _fpmNum(m.Ploss, 3));
+
+  // Helligkeit in Worten
+  const lage = document.getElementById('frlLage');
+  if (lage) {
+    let cls, txt;
+    if (m.bright < 0.12) {
+      cls = 'aus'; txt = '<b>Die Lampen leuchten praktisch nicht.</b> Fast die gesamte Spannung '
+        + 'fällt schon an der Leitung ab – an den Lampen bleibt zu wenig übrig.';
+    } else if (m.bright < 0.55) {
+      cls = 'schwach'; txt = '<b>Die Lampen glimmen nur schwach.</b> Ein großer Teil der Energie '
+        + 'wird in der Leitung in Wärme umgesetzt, statt an die Lampen zu gelangen.';
+    } else if (m.bright <= 1.5) {
+      cls = 'normal'; txt = '<b>Die Lampen leuchten normal hell.</b> So sollen sie im Betrieb '
+        + 'aussehen – rund ' + _fpmNum(_FRL_ULNOM, 1) + ' V und ' + _fpmNum(_FRL_ILNOM, 1) + ' A.';
+    } else {
+      cls = 'hell'; txt = '<b>Die Lampen leuchten sehr hell – sie sind überlastet.</b> Bei so '
+        + 'niedrigem Leitungswiderstand kommt fast die volle Spannung an; auf Dauer brennen die '
+        + 'Glühwendeln durch.';
+    }
+    lage.className = 'frl-lage ' + cls;
+    lage.innerHTML = txt;
+  }
+
+  const r = document.getElementById('frlRechnung');
+  if (r) {
+    const Rl = _frlRLeitung(K.draht);
+    if (K.trafo) {
+      r.innerHTML = `
+        <div class="pho-rz"><span class="pho-rz-t">Leitungswiderstand (CrNi 4 m + 2 Spulen)</span>
+          <span class="pho-rz-f">R = 5,4·4 + 2·2,5</span>
+          <span class="pho-rz-v">${_fpmNum(m.Rline, 1)} Ω</span></div>
+        <div class="pho-rz"><span class="pho-rz-t">hochtransformiert auf</span>
+          <span class="pho-rz-f">U<sub>HV</sub> = (n₂/n₁)·U<sub>Netz</sub></span>
+          <span class="pho-rz-v">${_fpmNum(m.Uline, 1)} V</span></div>
+        <div class="pho-rz"><span class="pho-rz-t">Strom in der Fernleitung</span>
+          <span class="pho-rz-f">klein, weil hochgespannt</span>
+          <span class="pho-rz-v">${_fpmNum(m.Iline, 3)} A</span></div>
+        <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Verlust in der Leitung</span>
+          <span class="pho-rz-f">P = R·I²</span>
+          <span class="pho-rz-v">${_fpmNum(m.Ploss, 3)} W</span></div>
+        <div class="fpm-note">Weil hochgespannt wird, ist der Strom in der Fernleitung klein – und
+          weil der Verlust mit dem <b>Quadrat</b> des Stroms geht, bleibt er winzig. Das Modell
+          rechnet mit <b>idealen</b> Transformatoren; die real gemessenen Ströme liegen wegen der
+          Selbstinduktion höher (Station 3 und 4).</div>`;
+    } else {
+      r.innerHTML = `
+        <div class="pho-rz"><span class="pho-rz-t">Leitungswiderstand (${K.draht === 'Cu' ? 'Kupfer' : 'CrNi'} 4 m)</span>
+          <span class="pho-rz-f">R = ${K.draht === 'Cu' ? '0,0075' : '5,4'}·4</span>
+          <span class="pho-rz-v">${_fpmNum(Rl, Rl < 1 ? 3 : 1)} Ω</span></div>
+        <div class="pho-rz"><span class="pho-rz-t">Strom (Reihenschaltung Leitung + Lampen)</span>
+          <span class="pho-rz-f">I = U<sub>Netz</sub>/(R<sub>Leitung</sub>+R<sub>Lampe</sub>)</span>
+          <span class="pho-rz-v">${_fpmNum(m.Iline, 3)} A</span></div>
+        <div class="pho-rz"><span class="pho-rz-t">an den Lampen</span>
+          <span class="pho-rz-f">U<sub>L</sub> = R<sub>Lampe</sub>·I</span>
+          <span class="pho-rz-v">${_fpmNum(m.UL, 2)} V</span></div>
+        <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Verlust in der Leitung</span>
+          <span class="pho-rz-f">P = R·I²</span>
+          <span class="pho-rz-v">${_fpmNum(m.Ploss, 3)} W</span></div>
+        <div class="fpm-note">Ohne Transformatoren fließt derselbe (große) Strom durch Leitung
+          <b>und</b> Lampen. ${K.draht === 'Cu'
+            ? 'Der dicke Kupferdraht hat kaum Widerstand – fast die ganze Spannung kommt an.'
+            : 'Am hohen Widerstand des dünnen CrNi-Drahtes fällt der Großteil der Spannung ab, bevor sie die Lampen erreicht.'}</div>`;
+    }
+  }
+
+  // Messwerte der Handreichung (nur beim Hochspannungskonzept)
+  const me = document.getElementById('frlMess');
+  if (me) {
+    if (K.trafo) {
+      me.innerHTML = `<div class="git-sch-kopf">Die Messwerte der Handreichung (Teilversuch 1)</div>
+        <div class="frl-mess-grid">
+          <div><span>U₁</span><b>${_fpmNum(_FRL_MESS.U1, 1)} V</b></div>
+          <div><span>I₁</span><b>${_fpmNum(_FRL_MESS.I1, 1)} A</b></div>
+          <div><span>U₂ links</span><b>${_fpmNum(_FRL_MESS.U2L, 1)} V</b></div>
+          <div><span>U₂ rechts</span><b>${_fpmNum(_FRL_MESS.U2R, 1)} V</b></div>
+          <div><span>I₂</span><b>${_fpmNum(_FRL_MESS.I2, 2)} A</b></div>
+          <div><span>U₃</span><b>${_fpmNum(_FRL_MESS.U3, 1)} V</b></div>
+          <div><span>I₃</span><b>${_fpmNum(_FRL_MESS.I3, 1)} A</b></div>
+          <div><span>Verlust</span><b>1,1 J/s</b></div>
+        </div>
+        <div class="fpm-note">Diese Werte wurden am realen Aufbau gemessen (Windungszahlen
+          50 : 500 : 500 : 50). Der ideale Strom I₂ wäre 0,1 A – gemessen sind 0,2 A; die
+          Differenz ist die Selbstinduktion.</div>`;
+    } else {
+      me.innerHTML = '';
+    }
+  }
+
+  _frlRenderK3();
+  _frlRenderBilanz();
+  _frlRenderIdeal();
+  _frlRenderSi();
+  _frlRenderVergleich();
+}
+
+function _frlRenderK3() {
+  const el = document.getElementById('frlK3'); if (!el) return;
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du diesen Versuch jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Wir wollen verstehen, warum elektrische Energie über weite Strecken mit Hochspannung
+        übertragen wird, obwohl das gefährlich ist.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Dieselbe Wechselspannungsquelle versorgt dieselben zwei Lampen. Dazwischen liegt eine
+        Modell-Fernleitung, die man in drei Varianten betreibt: hochtransformiert mit dünnem
+        Draht, direkt mit dünnem Draht, direkt mit dickem Kupferdraht.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Bei jeder Variante beobachtet man die Helligkeit der Lampen und misst Spannungen und
+        Ströme an den entscheidenden Stellen.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        Hochspannung: hell. Niederspannung, dünner Draht: kaum sichtbar. Niederspannung, dicker
+        Draht: wieder hell. Der Leitungsverlust beträgt 1,1 J, 21,6 J bzw. 0,07 J je Sekunde
+        gegen 6,4 J Nutzenergie.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Der Verlust ist R·I². Hochspannung senkt bei gleicher Leistung den Strom (I = P/U) und
+        damit den Verlust quadratisch. Ein dicker Leiter senkt stattdessen R.</div>
+    </div>`;
+}
+
+// ── Station 2: Energiebilanz ───────────────────────────
+function _frlSetUtrans(v) {
+  _frl.Utrans = Math.max(10, Math.min(400, +v));
+  const el = document.getElementById('frlUtransLbl');
+  if (el) el.textContent = _fpmNum(_frl.Utrans, 0) + ' V';
+  _frlRenderBilanz(); _frlDrawSweep();
+}
+function _frlRenderBilanz() {
+  const el = document.getElementById('frlBilanz'); if (!el) return;
+  // Feste Nutzleistung, Leitung = CrNi 4 m. Strom = P/U_trans.
+  const P = _FRL_PNOM;
+  const Rl = _frlRLeitung('CrNi');
+  const I = P / _frl.Utrans;
+  const Ploss = Rl * I * I;
+
+  // Die drei Handreichungsfaelle als feste Vergleichsbalken
+  const faelle = [
+    { n: 'Hochspannung (≈80 V)', verlust: 1.1, nutz: 6.4, farbe: '#16a34a' },
+    { n: 'Niederspannung, CrNi', verlust: 21.6, nutz: 6.4, farbe: '#dc2626' },
+    { n: 'Niederspannung, Kupfer', verlust: 0.068, nutz: 6.4, farbe: '#0284c7' }
+  ];
+  const maxV = 21.6;
+  const balken = faelle.map(f => {
+    const wV = Math.max(2, f.verlust / maxV * 100);
+    const wN = Math.max(2, f.nutz / maxV * 100);
+    return `<div class="frl-bal-fall">
+      <div class="frl-bal-n">${f.n}</div>
+      <div class="frl-bal-row"><span class="frl-bal-tag">Verlust</span>
+        <div class="frl-bal-track"><div class="frl-bal-fill verl" style="width:${_fpmNum(wV, 0).replace(',', '.')}%;background:${f.farbe}"></div></div>
+        <b>${_fpmNum(f.verlust, f.verlust < 1 ? 3 : 1)} J</b></div>
+      <div class="frl-bal-row"><span class="frl-bal-tag">Nutzen</span>
+        <div class="frl-bal-track"><div class="frl-bal-fill" style="width:${_fpmNum(wN, 0).replace(',', '.')}%"></div></div>
+        <b>${_fpmNum(f.nutz, 1)} J</b></div>
+      <div class="frl-bal-verh">Nutzen : Verlust = 1 : ${_fpmNum(f.nutz / f.verlust, f.nutz / f.verlust > 10 ? 0 : 1)}</div>
+    </div>`;
+  }).join('');
+
+  el.innerHTML = `<div class="git-sch-kopf">Die Energiebilanz der drei Teilversuche</div>
+    ${balken}
+    <div class="fpm-note">Alle Werte pro Sekunde, bei den Lampen-Nenndaten (6,4 J). Der
+      Hochspannungsversuch verliert nur ein Sechstel der Nutzenergie, der gleiche dünne Draht
+      ohne Hochspannung dagegen das Dreifache. <b>Hinweis:</b> Die Handreichung gibt für den
+      Kupferfall „1 : 91" an – das entsteht durch Runden von 0,068 J auf 0,07 J; genau gerechnet
+      sind es 1 : ${_fpmNum(6.4 / 0.068, 0)}.</div>
+    <div class="git-sch-kopf" style="margin-top:10px">Und allgemein: der Verlust geht mit 1/U²</div>
+    <div class="frl-bal-erg">
+      Bei fester Nutzleistung P = ${_fpmNum(P, 1)} W und der CrNi-Leitung (${_fpmNum(Rl, 1)} Ω):
+      Übertragung bei <b>${_fpmNum(_frl.Utrans, 0)} V</b> → Strom I = P/U =
+      <b>${_fpmNum(I, 3)} A</b> → Verlust R·I² = <b>${_fpmNum(Ploss, 4)} W</b>.
+      Verdopple die Spannung und der Verlust viertelt sich.
+    </div>`;
+}
+function _frlDrawSweep() {
+  const cv = document.getElementById('frlSweep');
+  if (!cv || !_frl) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const padL = 58, padR = 14, padT = 14, padB = 40;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const P = _FRL_PNOM, Rl = _frlRLeitung('CrNi');
+  const Umin = 10, Umax = 400;
+  const loss = U => Rl * (P / U) * (P / U);
+  const ymax = loss(Umin) * 1.05;
+  const X = u => x0 + (u - Umin) / (Umax - Umin) * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+
+  // Raster
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '10px sans-serif';
+  [10, 100, 200, 300, 400].forEach(u => {
+    ctx.beginPath(); ctx.moveTo(X(u), y0); ctx.lineTo(X(u), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillText(u + ' V', X(u), y0 + 14);
+  });
+  const yt = _fpmTicks(ymax, 4);
+  yt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Übertragungsspannung U', x1, y0 + 28);
+  ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Leitungsverlust in W', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+
+  // Die 1/U²-Kurve
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let u = Umin; u <= Umax; u += 2) {
+    const py = Y(Math.min(ymax, loss(u)));
+    u === Umin ? ctx.moveTo(X(u), py) : ctx.lineTo(X(u), py);
+  }
+  ctx.stroke();
+
+  // aktueller Punkt
+  const uc = _frl.Utrans, lc = loss(uc);
+  ctx.fillStyle = '#db2777';
+  ctx.beginPath(); ctx.arc(X(uc), Y(Math.min(ymax, lc)), 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(X(uc), Y(Math.min(ymax, lc))); ctx.lineTo(X(uc), y0); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#be185d'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_fpmNum(uc, 0) + ' V → ' + _fpmNum(lc, 3) + ' W', X(uc), Y(Math.min(ymax, lc)) - 9);
+
+  // Markierung der drei Handreichungsfaelle (10 V und 80 V)
+  [[10, '#dc2626', 'LV'], [80, '#16a34a', 'HV']].forEach(m => {
+    const u = m[0];
+    ctx.fillStyle = m[1];
+    ctx.beginPath(); ctx.arc(X(u), Y(Math.min(ymax, loss(u))), 3, 0, 2 * Math.PI); ctx.fill();
+  });
+
+  const rb = document.getElementById('frlSweepRechnung');
+  if (rb) {
+    rb.innerHTML = `<div class="fpm-note">Die Kurve zeigt den Leitungsverlust bei fester
+      Nutzleistung, aufgetragen über der Übertragungsspannung. Sie fällt mit <b>1/U²</b>: Der
+      Bereich links (Niederspannung) ist steil, rechts (Hochspannung) wird sie flach – dort holt
+      weiteres Hochspannen kaum noch etwas heraus. Genau deshalb gibt es Höchstspannungsnetze,
+      aber keine „Höchst-Höchstspannung".</div>`;
+  }
+}
+
+// ── Station 3: idealer Trafo vs. Messung ───────────────
+function _frlSetTrafo(i) {
+  _frl.trafoSeite = i;
+  document.getElementById('frlTr0')?.classList.toggle('on', i === 0);
+  document.getElementById('frlTr1')?.classList.toggle('on', i === 1);
+  _frlRenderIdeal();
+}
+function _frlRenderIdeal() {
+  const el = document.getElementById('frlIdealText');
+  const rb = document.getElementById('frlTrafoRechnung');
+  const lbl = document.getElementById('frlTrafoLbl');
+  if (!el || !rb) return;
+  const M = _FRL_MESS;
+
+  if (_frl.trafoSeite === 0) {
+    // Rechter Trafo (A6): sekundaer U3,I3 -> ideal I2,U2
+    const I2th = M.I3 * _FRL_N4 / _FRL_N3;
+    const U2th = M.U3 * _FRL_N3 / _FRL_N4;
+    if (lbl) lbl.textContent = 'Rechter Transformator: 500 → 50 Windungen (Aufgabe A6)';
+    rb.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">gemessen sekundär (an den Lampen)</span>
+        <span class="pho-rz-f">U₃, I₃</span>
+        <span class="pho-rz-v">${_fpmNum(M.U3, 1)} V; ${_fpmNum(M.I3, 1)} A</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">ideal: Strom in der Leitung</span>
+        <span class="pho-rz-f">I₂ = I₃·n₄/n₃</span>
+        <span class="pho-rz-v">${_fpmNum(I2th, 2)} A</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">gemessen</span>
+        <span class="pho-rz-f">I₂</span>
+        <span class="pho-rz-v" style="color:#dc2626">${_fpmNum(M.I2, 2)} A</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">ideal: Spannung in der Leitung</span>
+        <span class="pho-rz-f">U₂ = U₃·n₃/n₄</span>
+        <span class="pho-rz-v">${_fpmNum(U2th, 0)} V</span></div>`;
+    el.innerHTML = `<div class="git-sch-kopf">Idealer Transformator und die Wirklichkeit</div>
+      <div class="frl-ideal-t">Für den idealen Transformator gilt U<sub>prim</sub>/U<sub>sek</sub>
+        = n<sub>prim</sub>/n<sub>sek</sub> und I<sub>prim</sub>/I<sub>sek</sub> =
+        n<sub>sek</sub>/n<sub>prim</sub>. Rechnet man damit vom Verbraucher rückwärts, erwartet
+        man in der Fernleitung einen Strom von <b>${_fpmNum(I2th, 1)} A</b>.</div>
+      <div class="frl-ideal-t"><b>Gemessen wurden aber ${_fpmNum(M.I2, 2)} A</b> – das Doppelte.
+        Die Spannung stimmt dagegen gut: ${_fpmNum(U2th, 0)} V theoretisch gegen ${_fpmNum(M.U2R, 0)}
+        V gemessen; die Differenz von rund 4,8 V fällt an den ohmschen Widerständen von Leitung und
+        Spule ab.</div>
+      <div class="frl-ideal-t">Die deutliche Abweichung beim Strom beruht auf den in der Theorie des
+        idealen Transformators <b>nicht berücksichtigten Verlusten</b> – ohmscher Widerstand,
+        Ummagnetisierung, Hysterese, Wirbelströme – und vor allem auf der Selbstinduktion, die in
+        Station 4 sichtbar wird.</div>`;
+  } else {
+    // Linker Trafo (A7): sekundaer U2,I2 -> ideal I1,U1
+    const U2 = 82;
+    const I1th = M.I2 * _FRL_N2 / _FRL_N1;
+    const U1th = U2 * _FRL_N1 / _FRL_N2;
+    if (lbl) lbl.textContent = 'Linker Transformator: 50 → 500 Windungen (Aufgabe A7)';
+    rb.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">gemessen sekundär (Fernleitung)</span>
+        <span class="pho-rz-f">U₂, I₂</span>
+        <span class="pho-rz-v">${_fpmNum(U2, 0)} V; ${_fpmNum(M.I2, 2)} A</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">ideal: Primärstrom</span>
+        <span class="pho-rz-f">I₁ = I₂·n₂/n₁</span>
+        <span class="pho-rz-v">${_fpmNum(I1th, 1)} A</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">gemessen</span>
+        <span class="pho-rz-f">I₁</span>
+        <span class="pho-rz-v" style="color:#dc2626">${_fpmNum(M.I1, 1)} A (+${_fpmNum((M.I1 - I1th) / I1th * 100, 0)} %)</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">ideal: Primärspannung</span>
+        <span class="pho-rz-f">U₁ = U₂·n₁/n₂</span>
+        <span class="pho-rz-v">${_fpmNum(U1th, 1)} V (gemessen ${_fpmNum(M.U1, 1)} V, +17 %)</span></div>`;
+    el.innerHTML = `<div class="git-sch-kopf">Der Primärstrom ist „zu groß"</div>
+      <div class="frl-ideal-t">Am linken Trafo erwartet man ideal einen Primärstrom von
+        I₁ = I₂·n₂/n₁ = <b>${_fpmNum(I1th, 1)} A</b>. Gemessen wurden aber <b>${_fpmNum(M.I1, 1)} A</b>,
+        also 60 % mehr.</div>
+      <div class="frl-ideal-t">Der Schlüssel: Schon im <b>Leerlauf</b> – wenn sekundär gar kein
+        Strom fließt – zieht der Trafo bei ${_fpmNum(M.U1, 1)} V einen Strom von etwa
+        <b>${_fpmNum(M.Ileer, 2)} A</b>, um den Eisenkern zu magnetisieren. Zählt man diesen zum
+        idealen Laststrom hinzu, stimmt es fast genau:</div>
+      <div class="frl-ideal-form">
+        I₁ = I<sub>Leerlauf</sub> + I<sub>ideal</sub> = ${_fpmNum(M.Ileer, 2)} A + ${_fpmNum(I1th, 1)} A
+        = <b>${_fpmNum(M.Ileer + I1th, 2)} A</b> ≈ ${_fpmNum(M.I1, 1)} A gemessen
+      </div>
+      <div class="frl-ideal-t">Dass der Leerlaufstrom trotz des winzigen ohmschen Spulenwiderstands
+        von 0,08 Ω so klein bleibt (und nicht 120 A beträgt), ist die Wirkung des induktiven
+        Widerstands – das Thema der nächsten Station.</div>`;
+  }
+}
+function _frlDrawTrafo(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const M = _FRL_MESS;
+  const links = _frl.trafoSeite === 1;
+  const np = links ? _FRL_N1 : _FRL_N3;
+  const ns = links ? _FRL_N2 : _FRL_N4;
+  const kx = 150, ky = 44, kw = 150, kh = 150, dick = 20;
+
+  // Kern
+  ctx.fillStyle = '#cbd5e1';
+  ctx.fillRect(kx, ky, kw, dick);
+  ctx.fillRect(kx, ky + kh - dick, kw, dick);
+  ctx.fillRect(kx, ky, dick, kh);
+  ctx.fillRect(kx + kw - dick, ky, dick, kh);
+
+  const wick = (x, n, farbe, name, oben) => {
+    const anz = Math.max(3, Math.min(9, Math.round(n / 120)));
+    ctx.strokeStyle = farbe; ctx.lineWidth = 2.4;
+    for (let i = 0; i < anz; i++) {
+      const y = ky + 20 + i * (kh - 44) / Math.max(1, anz - 1);
+      ctx.beginPath(); ctx.ellipse(x, y, 18, 5, 0, 0, 2 * Math.PI); ctx.stroke();
+    }
+    ctx.fillStyle = farbe; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(name, x, ky - 8);
+    ctx.font = '9px sans-serif';
+    ctx.fillText(n + ' Wdg.', x, ky + kh + 14);
+  };
+  wick(kx + dick / 2, np, '#dc2626', 'primär');
+  wick(kx + kw - dick / 2, ns, '#0284c7', 'sekundär');
+
+  // Beschriftete Werte links/rechts
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillStyle = '#dc2626';
+  if (links) {
+    ctx.fillText('U₁ = ' + _fpmNum(M.U1, 1) + ' V', 12, 60);
+    ctx.fillText('I₁ = ' + _fpmNum(M.I1, 1) + ' A', 12, 78);
+  } else {
+    ctx.fillText('U₂ ≈ 80 V', 12, 60);
+    ctx.fillText('I₂ = ' + _fpmNum(M.I2, 2) + ' A', 12, 78);
+  }
+  ctx.fillStyle = '#0284c7'; ctx.textAlign = 'right';
+  if (links) {
+    ctx.fillText('U₂ ≈ 82 V', W - 12, 60);
+    ctx.fillText('I₂ = ' + _fpmNum(M.I2, 2) + ' A', W - 12, 78);
+  } else {
+    ctx.fillText('U₃ = ' + _fpmNum(M.U3, 1) + ' V', W - 12, 60);
+    ctx.fillText('I₃ = ' + _fpmNum(M.I3, 1) + ' A', W - 12, 78);
+  }
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(np + ' : ' + ns + '  Übersetzung ' + _fpmNum(ns / np, ns > np ? 0 : 2), W / 2, H - 10);
+  ctx.textAlign = 'left';
+}
+
+// ── Station 4: Selbstinduktion ─────────────────────────
+// Der RL-Einschaltvorgang. Zeitkonstante illustrativ – die Handreichung nutzt
+// eine Spule hoher Induktivitaet mit Eisenkern, deren Diagramm ueber Sekunden
+// laeuft. R_ges (oberer Zweig) = R1 + R_Spule = 100 + 300 = 400 Ohm.
+const _FRL_SI_TAU = 0.32;      // s, illustrativ
+const _FRL_SI_UGES = 8;        // V
+const _FRL_SI_R = 400;         // Ohm gesamt je Zweig
+function _frlSiIobendrauf(t, ein) {
+  const Iinf = _FRL_SI_UGES / _FRL_SI_R;
+  return ein ? Iinf * (1 - Math.exp(-t / _FRL_SI_TAU))
+             : Iinf * Math.exp(-t / _FRL_SI_TAU);
+}
+function _frlSiIunten(ein) {
+  // springt sofort auf den Endwert und faellt beim Ausschalten sofort auf 0
+  return ein ? _FRL_SI_UGES / _FRL_SI_R : 0;
+}
+function _frlSiToggle() {
+  _frl.siLaeuft = !_frl.siLaeuft;
+  const b = document.getElementById('frlSiBtn');
+  if (b) b.textContent = _frl.siLaeuft ? '⏸ Anhalten' : '▶ Weiterlaufen';
+}
+function _frlSiReset() { _frl.siT = 0; }
+function _frlRenderSi() {
+  const el = document.getElementById('frlSiText'); if (!el) return;
+  el.innerHTML = `<div class="git-sch-kopf">Warum eine Spule den Strom bremst</div>
+    <div class="frl-si-t">Schaltet man eine Reihenschaltung aus <b>Spule und Widerstand</b> ein,
+      so wächst der Strom nicht sprunghaft, sondern <b>langsam</b> auf seinen Endwert. Denn während
+      der Strom steigt, wächst auch das Magnetfeld der Spule – und dieses zeitlich veränderliche
+      Feld induziert in der Spule selbst eine Spannung. Nach der <b>Lenzschen Regel</b> wirkt sie
+      ihrer Ursache entgegen, bremst also das Anwachsen des Stroms. Das ist die
+      <b>Selbstinduktion</b>.</div>
+    <div class="frl-si-t">Im oberen Zweig (mit Spule) steigt der Strom I₁ verzögert, im unteren
+      Zweig (nur Widerstand) springt I₂ sofort auf seinen Wert. Deshalb leuchtet die Lampe an der
+      Spule <b>später</b> auf. Beim Ausschalten fließt der Spulenstrom noch eine Weile weiter –
+      auch das ist Selbstinduktion, jetzt gegen das Abnehmen des Stroms.</div>
+    <div class="frl-si-box">
+      <div class="git-sch-kopf">Der Rechentrick, der alles erklärt</div>
+      <div class="frl-si-t">Die Primärspule des linken Trafos hat nur <b>0,08 Ω</b> ohmschen
+        Widerstand. Rein ohmsch müsste bei ${_fpmNum(_FRL_MESS.U1, 1)} V also fließen:</div>
+      <div class="frl-ideal-form">I = U/R = ${_fpmNum(_FRL_MESS.U1, 1)} V / 0,08 Ω =
+        <b>120 A</b> – das 37,5-fache der gemessenen ${_fpmNum(_FRL_MESS.I1, 1)} A</div>
+      <div class="frl-si-t">Dass tatsächlich nur ${_fpmNum(_FRL_MESS.I1, 1)} A fließen, zeigt: Im
+        Wechselstromkreis bestimmt nicht der ohmsche, sondern der viel größere <b>induktive
+        Widerstand</b> der Spule den Strom. Genau er sorgt dafür, dass ein Transformator im
+        Leerlauf nur wenig Strom zieht – und macht die scheinbaren Widersprüche aus Station 3
+        auf.</div>
+    </div>`;
+}
+function _frlDrawSiAufbau(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const ein = (_frl.siT % 2) < 1.4;   // 1,4 s ein, 0,6 s aus
+  const tLocal = ein ? _frl.siT % 2 : (_frl.siT % 2) - 1.4;
+  const I1 = _frlSiIobendrauf(tLocal, ein);
+  const I2 = _frlSiIunten(ein);
+  const Imax = _FRL_SI_UGES / _FRL_SI_R;
+
+  // Quelle links
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.arc(30, H / 2, 15, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('=', 30, H / 2 + 4);
+  ctx.font = '9px sans-serif'; ctx.fillText(_FRL_SI_UGES + ' V', 30, H / 2 + 28);
+
+  // Schalter
+  ctx.strokeStyle = ein ? '#16a34a' : '#94a3b8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(52, H / 2); ctx.lineTo(84, H / 2 + (ein ? 0 : -12)); ctx.stroke();
+  ctx.fillStyle = ein ? '#16a34a' : '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.fillText(ein ? 'S ein' : 'S aus', 68, H / 2 + 26);
+
+  const lampe = (y, hell, name, spule) => {
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(84, H / 2); ctx.lineTo(84, y); ctx.lineTo(150, y); ctx.stroke();
+    // Bauteil (Spule oder Widerstand)
+    if (spule) {
+      ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+      for (let i = 0; i < 4; i++) {
+        ctx.beginPath(); ctx.arc(160 + i * 12, y, 6, Math.PI, 2 * Math.PI); ctx.stroke();
+      }
+      ctx.fillStyle = '#7c3aed'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('Spule', 178, y - 12);
+    } else {
+      ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.4;
+      ctx.strokeRect(150, y - 6, 56, 12);
+      ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('Widerstand', 178, y - 12);
+    }
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(206, y); ctx.lineTo(300, y); ctx.stroke();
+    // Lampe
+    const g = Math.max(0, Math.min(1, hell / Imax));
+    ctx.fillStyle = g > 0.5 ? '#fbbf24' : g > 0.15 ? '#f59e0b' : '#cbd5e1';
+    ctx.beginPath(); ctx.arc(320, y, 13, 0, 2 * Math.PI); ctx.fill();
+    if (g > 0.3) {
+      ctx.fillStyle = 'rgba(251,191,36,' + (g * 0.4) + ')';
+      ctx.beginPath(); ctx.arc(320, y, 13 + g * 12, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(320, y, 13, 0, 2 * Math.PI); ctx.stroke();
+    ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(name, 340, y + 4);
+    // Rueckleitung
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(333, y); ctx.lineTo(420, y); ctx.lineTo(420, H / 2); ctx.lineTo(30, H / 2); ctx.lineTo(30, H / 2); ctx.stroke();
+  };
+  lampe(H / 2 - 60, I1, 'La 1', true);
+  lampe(H / 2 + 60, I2, 'La 2', false);
+
+  ctx.fillStyle = '#7c3aed'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('I₁ = ' + _fpmNum(I1 * 1000, 1) + ' mA', 240, H / 2 - 78);
+  ctx.fillStyle = '#0ea5e9';
+  ctx.fillText('I₂ = ' + _fpmNum(I2 * 1000, 1) + ' mA', 240, H / 2 + 84);
+  ctx.textAlign = 'left';
+}
+function _frlDrawSiPlot(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const x0 = 40, x1 = W - 12, yo = 16, yu = H - 28;
+  const Imax = _FRL_SI_UGES / _FRL_SI_R;
+  const spanne = 2;   // eine volle Ein/Aus-Periode
+  const X = t => x0 + t / spanne * (x1 - x0);
+  const Y = i => yu - i / (Imax * 1.15) * (yu - yo);
+
+  // Raster
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const x = x0 + i / 4 * (x1 - x0);
+    ctx.beginPath(); ctx.moveTo(x, yo); ctx.lineTo(x, yu); ctx.stroke();
+  }
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x0, yu); ctx.lineTo(x1, yu); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x0, yo); ctx.lineTo(x0, yu); ctx.stroke();
+
+  // Schaltzeitpunkte markieren
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(X(1.4), yo); ctx.lineTo(X(1.4), yu); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('ein', X(0.7), yo + 10); ctx.fillText('aus', X(1.7), yo + 10);
+
+  const kurve = (farbe, fn) => {
+    ctx.strokeStyle = farbe; ctx.lineWidth = 1.9;
+    ctx.beginPath();
+    for (let px = 0; px <= x1 - x0; px++) {
+      const t = px / (x1 - x0) * spanne;
+      const ein = t < 1.4;
+      const tl = ein ? t : t - 1.4;
+      const i = fn(tl, ein);
+      const py = Y(i);
+      px ? ctx.lineTo(x0 + px, py) : ctx.moveTo(x0 + px, py);
+    }
+    ctx.stroke();
+  };
+  kurve('#0ea5e9', (t, ein) => _frlSiIunten(ein));       // I2 springt
+  kurve('#7c3aed', (t, ein) => _frlSiIobendrauf(t, ein)); // I1 verzoegert
+
+  // Laufmarke
+  const tc = _frl.siT % 2;
+  ctx.strokeStyle = '#db2777'; ctx.lineWidth = 1; ctx.setLineDash([2, 2]);
+  ctx.beginPath(); ctx.moveTo(X(tc), yo); ctx.lineTo(X(tc), yu); ctx.stroke();
+  ctx.setLineDash([]);
+
+  ctx.fillStyle = '#7c3aed'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('I₁ mit Spule – steigt und fällt verzögert', x0 + 4, yo + 11);
+  ctx.fillStyle = '#0ea5e9';
+  ctx.fillText('I₂ nur Widerstand – springt', x0 + 4, yo + 23);
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Zeit', x1, yu + 13);
+  ctx.textAlign = 'left';
+}
+
+// ── Station 5: Vergleich ───────────────────────────────
+const _FRL_VERGLEICH = [
+  { n: 'Hochspannungs-Fernleitung', verh: '1 : 6', farbe: '#16a34a',
+    pro: ['geringe Energieverluste in der Leitung', 'wenig Leitermaterial, auch bei großer Länge',
+          'kleine Ströme – problemarme Schaltvorgänge'],
+    con: ['teure Transformatoren nötig', 'gefährlich hohe Spannungen',
+          'sehr hohe Masten, aufwändige Montage'] },
+  { n: 'Niederspannungs-Fernleitung', verh: '1 : 0,3', farbe: '#dc2626',
+    pro: ['technisch einfach, keine Transformatoren', 'kaum gefährlich',
+          'leicht als Erdkabel oder in Siedlungen realisierbar'],
+    con: ['sehr hohe Leitungsverluste durch große Ströme', 'dickere Kabel, hoher Materialbedarf'] },
+  { n: 'Leitung mit kleinem spez. Widerstand', verh: '1 : 91', farbe: '#0284c7',
+    pro: ['technisch einfach', 'kaum Verluste in der Leitung'],
+    con: ['teures Material (viel Kupfer)', 'hoher Materialbedarf', 'hohes Gewicht'] }
+];
+function _frlSetVergleich(i) {
+  _frl.vergleich = Math.max(0, Math.min(2, i));
+  _frlRenderVergleich();
+}
+function _frlRenderVergleich() {
+  const w = document.getElementById('frlKonzWahl');
+  if (w) {
+    w.innerHTML = _FRL_VERGLEICH.map((v, i) =>
+      `<button class="frl-konz-b${i === _frl.vergleich ? ' on' : ''}" onclick="_frlSetVergleich(${i})"
+         style="${i === _frl.vergleich ? 'border-color:' + v.farbe : ''}">${v.n}</button>`).join('');
+  }
+  const el = document.getElementById('frlVergleich');
+  if (el) {
+    const v = _FRL_VERGLEICH[_frl.vergleich];
+    el.innerHTML = `<div class="git-sch-kopf">${v.n}</div>
+      <div class="frl-verh" style="color:${v.farbe}">Nutzen : Verlust = <b>${v.verh}</b>
+        <span>(im Modellversuch)</span></div>
+      <div class="frl-vg-spalten">
+        <div class="frl-vg-pro"><div class="frl-vg-kopf">Vorteile</div>
+          ${v.pro.map(p => '<div class="frl-vg-z">✓ ' + p + '</div>').join('')}</div>
+        <div class="frl-vg-con"><div class="frl-vg-kopf">Nachteile</div>
+          ${v.con.map(c => '<div class="frl-vg-z">✗ ' + c + '</div>').join('')}</div>
+      </div>
+      <div class="fpm-note">In der Wirklichkeit kombiniert man die Konzepte über mehrere
+        Spannungsebenen: Der Generator liefert etwa <b>10–25 kV</b>, für die Fernübertragung wird
+        auf <b>220–380 kV</b> hochgespannt, dann stufenweise heruntertransformiert – über 110 kV
+        und 10 kV bis auf die <b>230/400 V</b> im Haushalt. Warum man nicht den Wirkungsgrad η
+        angibt: Er bezieht die Nutz- auf die Gesamtenergie, und letztere ist wegen der
+        Wechselstromverluste in den Transformatoren im Grundkurs kaum zu bestimmen.</div>`;
+  }
+}
+function _frlDrawNetz(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const my = 96;
+  const stufen = [
+    { x: 40, n: 'Kraftwerk', u: '10–25 kV', f: '#7c3aed', ikon: 'gen' },
+    { x: 140, n: 'hoch', u: '220–380 kV', f: '#16a34a', ikon: 'up' },
+    { x: 240, n: 'Fernleitung', u: 'kleiner Strom', f: '#0ea5e9', ikon: 'line' },
+    { x: 330, n: 'herunter', u: '110 → 10 kV', f: '#f59e0b', ikon: 'down' },
+    { x: 410, n: 'Haushalt', u: '230 V', f: '#dc2626', ikon: 'haus' }
+  ];
+  stufen.forEach((s, i) => {
+    ctx.fillStyle = s.f;
+    ctx.beginPath(); ctx.arc(s.x, my, 20, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(String(i + 1), s.x, my + 3);
+    ctx.fillStyle = '#334155'; ctx.font = '700 9px sans-serif';
+    ctx.fillText(s.n, s.x, my + 36);
+    ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif';
+    ctx.fillText(s.u, s.x, my + 48);
+    if (i < stufen.length - 1) {
+      ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(s.x + 22, my); ctx.lineTo(stufen[i + 1].x - 26, my); ctx.stroke();
+      ctx.fillStyle = '#cbd5e1';
+      ctx.beginPath();
+      ctx.moveTo(stufen[i + 1].x - 20, my);
+      ctx.lineTo(stufen[i + 1].x - 26, my - 4); ctx.lineTo(stufen[i + 1].x - 26, my + 4);
+      ctx.closePath(); ctx.fill();
+    }
+  });
+  // Masten ueber der Fernleitung
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  [230, 250, 270].forEach(x => {
+    ctx.beginPath(); ctx.moveTo(x, my - 30); ctx.lineTo(x, my - 52); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x - 7, my - 46); ctx.lineTo(x + 7, my - 46); ctx.stroke();
+  });
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Hochspannen senkt den Strom – und damit den Verlust auf der langen Strecke', W / 2, 22);
+  ctx.fillText('Genau hier arbeitet der Transformator aus Schlüsselexperiment 13', W / 2, H - 10);
+  ctx.textAlign = 'left';
+}
+
+// ── Zeichnung Station 1 ─────────────────────────────────
+function _frlDrawAufbau(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const K = _FRL_KONZ[_frl.konz];
+  const m = _frlModell(K.id, _frl.Us);
+  const my = 96;
+
+  // Quelle links
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.4;
+  ctx.fillStyle = '#fff';
+  ctx.beginPath(); ctx.arc(30, my, 16, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('∼', 30, my + 5);
+  ctx.font = '9px sans-serif'; ctx.fillText(_fpmNum(_frl.Us, 1) + ' V', 30, my + 30);
+
+  let xL = 54, xR = W - 30;
+
+  // Bei Trafo-Konzept: zwei Trafos zeichnen
+  if (K.trafo) {
+    const trafo = (x, hoch) => {
+      ctx.fillStyle = '#cbd5e1';
+      ctx.fillRect(x, my - 26, 22, 52);
+      ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2;
+      for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.ellipse(x, my - 14 + i * 14, 7, 4, 0, 0, 2 * Math.PI); ctx.stroke(); }
+      ctx.strokeStyle = '#0284c7';
+      for (let i = 0; i < 5; i++) { ctx.beginPath(); ctx.ellipse(x + 22, my - 18 + i * 9, 7, 3.5, 0, 0, 2 * Math.PI); ctx.stroke(); }
+      ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(hoch ? '50:500' : '500:50', x + 11, my + 40);
+      ctx.fillText(hoch ? 'hoch' : 'runter', x + 11, my - 32);
+    };
+    // Leitung Quelle -> linker Trafo
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(46, my); ctx.lineTo(80, my); ctx.stroke();
+    trafo(80, true);
+    // Fernleitung (rot markiert = Hochspannung)
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2.6;
+    ctx.beginPath(); ctx.moveTo(102, my); ctx.lineTo(300, my); ctx.stroke();
+    // Warnsymbol
+    ctx.fillStyle = '#f59e0b'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('⚡', 200, my - 8);
+    ctx.fillStyle = '#b45309'; ctx.font = '8px sans-serif';
+    ctx.fillText('Hochspannung ' + _fpmNum(m.Uline, 0) + ' V', 200, my - 20);
+    ctx.fillText('CrNi-Draht', 200, my + 16);
+    trafo(300, false);
+    xL = 322;
+  } else {
+    // Direkte Leitung
+    ctx.strokeStyle = K.draht === 'Cu' ? '#b45309' : '#94a3b8';
+    ctx.lineWidth = K.draht === 'Cu' ? 4 : 2;
+    ctx.beginPath(); ctx.moveTo(46, my); ctx.lineTo(xR - 60, my); ctx.stroke();
+    ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(K.draht === 'Cu' ? 'dicker Kupferdraht (0,03 Ω)' : 'dünner CrNi-Draht (21,6 Ω)',
+                 W / 2 - 20, my - 10);
+    xL = 46;
+  }
+
+  // Lampen rechts (zwei parallel)
+  const g = Math.max(0, Math.min(1.4, m.bright));
+  const lx = xR - 34;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(K.trafo ? 322 : xR - 60, my); ctx.lineTo(lx, my); ctx.stroke();
+  [-16, 16].forEach(dy => {
+    const cy = my + dy;
+    // Gluehen
+    const gg = Math.min(1, g);
+    if (gg > 0.15) {
+      ctx.fillStyle = 'rgba(251,191,36,' + (gg * 0.5) + ')';
+      ctx.beginPath(); ctx.arc(lx, cy, 10 + gg * 16, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.fillStyle = gg > 0.6 ? '#fde047' : gg > 0.15 ? '#f59e0b' : '#cbd5e1';
+    ctx.beginPath(); ctx.arc(lx, cy, 9, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(lx, cy, 9, 0, 2 * Math.PI); ctx.stroke();
+  });
+  ctx.fillStyle = '#334155'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('2 Lampen', lx, my + 44);
+  ctx.fillText('6 V', lx, my + 55);
+
+  // Rueckleitung
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.4;
+  ctx.beginPath();
+  ctx.moveTo(lx, my + 16 + 9); ctx.lineTo(lx, H - 16); ctx.lineTo(30, H - 16); ctx.lineTo(30, my + 16);
+  ctx.stroke();
+
+  // Helligkeitsbalken oben
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Helligkeit', 12, 18);
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  ctx.strokeRect(70, 10, 120, 10);
+  ctx.fillStyle = g > 1.5 ? '#dc2626' : g > 0.55 ? '#16a34a' : '#f59e0b';
+  ctx.fillRect(70, 10, Math.min(120, g / 1.5 * 120), 10);
+  ctx.textAlign = 'left';
+}
+
+// ── Lampen-Kachel unter dem Aufbau ─────────────────────
+function _frlRenderLampen() {
+  const el = document.getElementById('frlLampen'); if (!el) return;
+  const K = _FRL_KONZ[_frl.konz];
+  const m = _frlModell(K.id, _frl.Us);
+  const g = m.bright;
+  const grad = g > 1.5 ? 'überlastet hell' : g > 0.55 ? 'normal hell' : g > 0.12 ? 'schwaches Glimmen' : 'praktisch aus';
+  el.innerHTML = `<div class="frl-lampen-zeile">
+    <span class="frl-lampen-k">Leitungskonzept</span><b>${K.n}</b></div>
+    <div class="frl-lampen-zeile"><span class="frl-lampen-k">${K.kurz}</span></div>
+    <div class="frl-lampen-zeile"><span class="frl-lampen-k">Helligkeit</span>
+      <b style="color:${g > 1.5 ? '#dc2626' : g > 0.55 ? '#16a34a' : '#b45309'}">${grad}</b>
+      <span class="frl-lampen-pct">(${_fpmNum(g * 100, 0)} % der Nennleistung)</span></div>`;
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _frlTakt(dt) {
+  if (!_frl) return;
+  const d = Math.min(0.05, dt);
+  _frl.t += d;
+  if (_frl.siLaeuft) _frl.siT += d;
+  if (_frl.siT > 1e6) _frl.siT = 0;
+}
+function _frlRender() {
+  if (!_frl) return;
+  const st = _frl.station;
+  if (st === 0) {
+    const c = document.getElementById('frlAufbau');
+    if (c) _frlDrawAufbau(c.getContext('2d'), c);
+    _frlRenderLampen();
+  } else if (st === 2) {
+    const c = document.getElementById('frlTrafoCv');
+    if (c) _frlDrawTrafo(c.getContext('2d'), c);
+  } else if (st === 3) {
+    const ca = document.getElementById('frlSiAufbau');
+    if (ca) _frlDrawSiAufbau(ca.getContext('2d'), ca);
+    const cp = document.getElementById('frlSiPlot');
+    if (cp) _frlDrawSiPlot(cp.getContext('2d'), cp);
+  } else if (st === 4) {
+    const c = document.getElementById('frlNetzCv');
+    if (c) _frlDrawNetz(c.getContext('2d'), c);
+  }
+}
+
+// ── Zusätzliche Styles für den Freileitungsversuch ─────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .frl-lage { font-size: .78rem; border-radius: 9px; padding: 9px 11px; margin: 8px 0;
+      line-height: 1.55; border: 1px solid #e2e8f0; background: #f8fafc; color: #64748b; }
+    .frl-lage.aus { background: #f1f5f9; border-color: #e2e8f0; color: #64748b; }
+    .frl-lage.schwach { background: #fff7ed; border-color: #fed7aa; color: #9a3412; }
+    .frl-lage.normal { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+    .frl-lage.hell { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+    .frl-lampen { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 9px 12px; margin-top: 8px; }
+    .frl-lampen-zeile { display: flex; align-items: baseline; gap: 8px; font-size: .78rem;
+      color: #475569; padding: 2px 0; flex-wrap: wrap; }
+    .frl-lampen-k { font-size: .66rem; text-transform: uppercase; letter-spacing: .04em;
+      font-weight: 800; color: #94a3b8; flex: 0 0 92px; }
+    .frl-lampen-pct { font-size: .72rem; color: #94a3b8; font-variant-numeric: tabular-nums; }
+    .frl-mess { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; margin-top: 10px; }
+    .frl-mess-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
+      margin-top: 6px; }
+    .frl-mess-grid > div { background: #fff; border: 1px solid #e2e8f0; border-radius: 7px;
+      padding: 5px 6px; text-align: center; }
+    .frl-mess-grid span { display: block; font-size: .6rem; text-transform: uppercase;
+      letter-spacing: .03em; font-weight: 800; color: #94a3b8; }
+    .frl-mess-grid b { font-size: .82rem; color: #334155; font-variant-numeric: tabular-nums; }
+    .frl-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-top: 12px; }
+    .frl-bilanz { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 11px 13px; }
+    .frl-bal-fall { margin: 8px 0; padding-bottom: 8px; border-bottom: 1px solid #eef2f7; }
+    .frl-bal-fall:last-of-type { border-bottom: none; }
+    .frl-bal-n { font-size: .78rem; font-weight: 700; color: #334155; margin-bottom: 4px; }
+    .frl-bal-row { display: flex; align-items: center; gap: 7px; font-size: .74rem;
+      color: #475569; margin: 2px 0; }
+    .frl-bal-tag { flex: 0 0 52px; font-size: .64rem; text-transform: uppercase;
+      letter-spacing: .03em; font-weight: 800; color: #94a3b8; }
+    .frl-bal-track { flex: 1; height: 11px; background: #eef2f7; border-radius: 6px; overflow: hidden; }
+    .frl-bal-fill { height: 100%; background: #86efac; }
+    .frl-bal-fill.verl { background: #fca5a5; }
+    .frl-bal-row b { flex: 0 0 52px; text-align: right; font-variant-numeric: tabular-nums;
+      color: #334155; }
+    .frl-bal-verh { font-size: .72rem; color: #64748b; margin-top: 3px; font-weight: 600; }
+    .frl-bal-erg { font-size: .77rem; color: #475569; line-height: 1.6; background: #f5f3ff;
+      border: 1px solid #ddd6fe; border-radius: 8px; padding: 8px 10px; margin-top: 6px; }
+    .frl-bal-erg b { color: #5b21b6; }
+    .frl-ideal { display: flex; flex-direction: column; gap: 7px; }
+    .frl-ideal-t { font-size: .78rem; color: #475569; line-height: 1.65; }
+    .frl-ideal-t b { color: #334155; }
+    .frl-ideal-form { font-size: .82rem; text-align: center; color: #5b21b6; background: #f5f3ff;
+      border: 1px solid #ddd6fe; border-radius: 8px; padding: 8px 10px; font-variant-numeric: tabular-nums; }
+    .frl-ideal-form b { color: #4c1d95; }
+    .frl-si { display: flex; flex-direction: column; gap: 7px; }
+    .frl-si-t { font-size: .78rem; color: #475569; line-height: 1.65; }
+    .frl-si-t b { color: #334155; }
+    .frl-si-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 9px;
+      padding: 10px 12px; margin-top: 4px; }
+    .frl-verh { font-size: .9rem; margin: 4px 0 10px; }
+    .frl-verh span { font-size: .72rem; color: #94a3b8; font-weight: 400; }
+    .frl-vg-spalten { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .frl-vg-pro, .frl-vg-con { border-radius: 8px; padding: 8px 10px; }
+    .frl-vg-pro { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .frl-vg-con { background: #fef2f2; border: 1px solid #fecaca; }
+    .frl-vg-kopf { font-size: .66rem; text-transform: uppercase; letter-spacing: .04em;
+      font-weight: 800; margin-bottom: 4px; }
+    .frl-vg-pro .frl-vg-kopf { color: #166534; }
+    .frl-vg-con .frl-vg-kopf { color: #991b1b; }
+    .frl-vg-z { font-size: .73rem; color: #475569; line-height: 1.45; padding: 2px 0; }
+    .frl-konz-wahl { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+    .frl-konz-b { flex: 1 1 120px; font-size: .72rem; padding: 7px 9px; background: #fff;
+      border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; color: #475569;
+      line-height: 1.3; }
+    .frl-konz-b:hover { border-color: #cbd5e1; }
+    .frl-konz-b.on { background: #f8fafc; font-weight: 700; color: #334155; }
+    .frl-vergleich { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 11px 13px; }
+    .frl-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
