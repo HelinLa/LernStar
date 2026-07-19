@@ -2168,6 +2168,20 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('lspTakt', 'lspKeinChart');
     _pSim.start(dt => _lspTakt(dt), () => _lspRender(), []);
   },
+
+  // Schluesselexperiment 17 des KLP: das Sonnenspektrum und die
+  // Fraunhoferlinien. Absorptionsspektren, der Natrium-Schatten, die
+  // chemische Zusammensetzung und die Harvard-Temperatursequenz der Sterne.
+  'sonnenspektrum': modal => {
+    _sonInit();
+    modal.innerHTML = _sonHTML();
+    const erkl = document.getElementById('sonErkl');
+    if (erkl) erkl.innerHTML = _sonErklHTML();
+    _sonSetStation(0);
+    _sonUpdate();
+    _pSim = new PhysicsSimEngine('sonTakt', 'sonKeinChart');
+    _pSim.start(dt => _sonTakt(dt), () => _sonRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -23354,6 +23368,953 @@ function _lspRender() {
     .lsp-hist-n { font-size: .86rem; font-weight: 800; color: #334155; margin: 3px 0 6px; }
     .lsp-hist-t { font-size: .79rem; color: #475569; line-height: 1.7; }
     .lsp-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// SONNENSPEKTRUM / FRAUNHOFERLINIEN – Schluesselexperiment 17 (angehaengt)
+// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// SONNENSPEKTRUM / FRAUNHOFERLINIEN
+// Schluesselexperiment 17 der NRW-Handreichung. Baut auf den Linienspektren
+// (Schluesselexperiment 16) auf.
+// Kernkompetenzen des KLP: Sternspektren und Fraunhoferlinien erklaeren
+// (UF1, E5, K2); die Energie absorbierter/emittierter Photonen mit den
+// Energieniveaus deuten (UF1, E6); darstellen, wie mit Spektroskopie
+// Informationen ueber Aufbau und Entstehung des Weltalls gewonnen werden
+// (E2, K1); Spektraltafeln im Hinblick auf vorhandene Stoffe interpretieren.
+// ═══════════════════════════════════════════════════════
+
+const _SON_HC = 1239.84;        // h·c in eV·nm
+const _SON_WIEN = 2.898e6;      // Wiensche Konstante in nm·K
+const _SON_HCK = 1.439e7;       // h·c/k in nm·K (fuer die Planck-Funktion)
+
+// Die klassischen Fraunhoferlinien mit ihren historischen Buchstaben.
+const _SON_FRAUNHOFER = [
+  { L: 'A', nm: 759.4, el: 'O₂', atm: true },
+  { L: 'B', nm: 686.7, el: 'O₂', atm: true },
+  { L: 'C', nm: 656.3, el: 'H (Hα)' },
+  { L: 'D', nm: 589.3, el: 'Na' },
+  { L: 'E', nm: 527.0, el: 'Fe' },
+  { L: 'b', nm: 518.4, el: 'Mg' },
+  { L: 'F', nm: 486.1, el: 'H (Hβ)' },
+  { L: 'G', nm: 430.8, el: 'Fe/Ca' },
+  { L: 'H', nm: 396.8, el: 'Ca⁺' },
+  { L: 'K', nm: 393.4, el: 'Ca⁺' }
+];
+
+// Spektrale Merkmale mit ihrer Temperaturabhaengigkeit. Jedes Merkmal ist am
+// staerksten bei einer charakteristischen Temperatur (log-Gauss), TiO-Banden
+// dagegen nur bei niedrigen Temperaturen (Molekuele zerfallen in der Hitze).
+const _SON_MERKMALE = [
+  { id: 'he2', n: 'He⁺ (ionisiert)', tp: 40000, w: 0.35, farbe: '#a5b4fc',
+    linien: [468.6, 541.2] },
+  { id: 'he1', n: 'He (neutral)', tp: 18000, w: 0.35, farbe: '#c4b5fd',
+    linien: [447.1, 471.3, 501.6, 587.6] },
+  { id: 'h', n: 'H (Balmer)', tp: 9500, w: 0.30, farbe: '#93c5fd',
+    linien: [410.2, 434.0, 486.1, 656.3] },
+  { id: 'ca2', n: 'Ca⁺ (H & K)', tp: 6200, w: 0.42, farbe: '#fca5a5',
+    linien: [393.4, 396.8] },
+  { id: 'metall', n: 'Metalle (Fe, Mg, Na, Ca)', tp: 4800, w: 0.42, farbe: '#fcd34d',
+    linien: [422.7, 438.4, 467.0, 489.1, 518.4, 527.0, 532.8, 589.3] },
+  { id: 'tio', n: 'TiO-Banden (Moleküle)', tp: 3000, w: 0, farbe: '#fdba74', molekuel: true,
+    linien: [476, 495, 516, 567, 616, 665] }
+];
+
+// Harvard-Spektralklassen (Temperatursequenz O-B-A-F-G-K-M)
+const _SON_KLASSEN = [
+  { c: 'O', tmin: 30000, tmax: 55000, farbe: '#9db4ff', kurz: 'sehr heiß, blau; ionisiertes Helium, kaum Linien' },
+  { c: 'B', tmin: 10000, tmax: 30000, farbe: '#aabfff', kurz: 'blauweiß; neutrales Helium, erste H-Linien' },
+  { c: 'A', tmin: 7500, tmax: 10000, farbe: '#cad7ff', kurz: 'weiß; Balmerlinien im Maximum, Ca⁺ tritt auf' },
+  { c: 'F', tmin: 6000, tmax: 7500, farbe: '#f8f7ff', kurz: 'gelbweiß; Balmer schwächer, Ca⁺ stark, Metalle' },
+  { c: 'G', tmin: 5200, tmax: 6000, farbe: '#fff4e8', kurz: 'gelb – wie unsere Sonne; starke Ca- und Fe-Linien' },
+  { c: 'K', tmin: 3700, tmax: 5200, farbe: '#ffd9b3', kurz: 'orange; intensive Metalllinien, erste Molekülbanden' },
+  { c: 'M', tmin: 2400, tmax: 3700, farbe: '#ffb38a', kurz: 'rot, kühl; neutrale Metalle, starke TiO-Banden' }
+];
+
+let _son = null;
+
+function _sonInit() {
+  _son = {
+    station: 0,
+    // Station 1
+    quelle: 'sonne',   // 'gluehe' | 'sonne'
+    zeigeLetter: true,
+    // Station 2
+    lampe: 'na',       // 'na' | 'hg'
+    salz: true, t: 0,
+    // Station 3
+    element: 'metall',
+    // Station 4
+    raten: 0, geraten: [], aufgedeckt: false,
+    // Station 5
+    T: 5800
+  };
+}
+
+// ── Zahlformat ──────────────────────────────────────────
+function _sonZahl(v) {
+  if (!isFinite(v) || v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const dez = Math.max(0, Math.min(20, 5 - ex));
+  const s = v.toFixed(dez);
+  return s.indexOf('.') >= 0 ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
+}
+
+// ── Physik ──────────────────────────────────────────────
+function _sonEnergie(nm) { return _SON_HC / nm; }
+function _sonWien(T) { return _SON_WIEN / T; }        // Wellenlaenge des Maximums in nm
+
+// Planck-Strahlungskurve (relativ, unnormiert). Form der Kontinuumsstrahlung.
+function _sonPlanck(nm, T) {
+  const x = _SON_HCK / (nm * T);
+  return 1 / (Math.pow(nm, 5) * (Math.exp(x) - 1));
+}
+// Normiert auf das Maximum im sichtbaren Bereich (fuer die Darstellung)
+function _sonKontinuum(nm, T) {
+  const peak = Math.max(380, Math.min(700, _sonWien(T)));
+  return _sonPlanck(nm, T) / _sonPlanck(peak, T);
+}
+
+// Staerke eines spektralen Merkmals bei der Temperatur T (0..1).
+function _sonStaerke(m, T) {
+  if (m.molekuel) {
+    // Molekuelbanden: nur bei niedriger Temperatur (Sigmoid, hoch unter ~3600 K)
+    return 1 / (1 + Math.exp((T - 3600) / 350));
+  }
+  const l = Math.log(T / m.tp) / m.w;
+  return Math.exp(-0.5 * l * l);
+}
+
+// Harvard-Klasse aus der Temperatur
+function _sonKlasse(T) {
+  return _SON_KLASSEN.find(k => T >= k.tmin && T < k.tmax) || _SON_KLASSEN[_SON_KLASSEN.length - 1];
+}
+
+// Wellenlaenge -> RGB (Bruton-Naeherung)
+function _sonFarbe(nm) {
+  let r = 0, g = 0, b = 0;
+  if (nm >= 380 && nm < 440) { r = -(nm - 440) / 60; b = 1; }
+  else if (nm < 490) { g = (nm - 440) / 50; b = 1; }
+  else if (nm < 510) { g = 1; b = -(nm - 510) / 20; }
+  else if (nm < 580) { r = (nm - 510) / 70; g = 1; }
+  else if (nm < 645) { r = 1; g = -(nm - 645) / 65; }
+  else if (nm <= 780) { r = 1; }
+  let f = 1;
+  if (nm < 420) f = 0.3 + 0.7 * (nm - 380) / 40;
+  else if (nm > 700) f = 0.3 + 0.7 * (780 - nm) / 80;
+  const to = v => Math.round(255 * Math.pow(Math.max(0, v) * f, 0.8));
+  return 'rgb(' + to(r) + ',' + to(g) + ',' + to(b) + ')';
+}
+
+// ── Oberflaeche ─────────────────────────────────────────
+function _sonHTML() {
+  const stationen = ['1 · Kontinuum & Fraunhoferlinien', '2 · Der Natrium-Schatten',
+                     '3 · Ein Stern im Labor', '4 · Welche Stoffe stecken drin?',
+                     '5 · Harvard-Klassen & Temperatur']
+    .map((s, i) => `<button class="fpm-tab${i === _son.station ? ' on' : ''}" id="sonSt${i}" onclick="_sonSetStation(${i})">${s}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim son-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">☀️ Sonnenspektrum & Fraunhoferlinien: das Schlüsselexperiment</h3>
+    <canvas id="sonTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="sonS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="sonSpektrum" width="440" height="180" class="phys-anim-cv"></canvas>
+          <div class="fpm-label" id="sonSpLbl">—</div>
+          <div class="osz-gruppe">
+            <div class="osz-gruppe-k">Lichtquelle</div>
+            <div class="osz-zeile"><span class="osz-seg">
+              <button class="osz-segb" id="sonQg" onclick="_sonSetQuelle('gluehe')">Glühlampe</button>
+              <button class="osz-segb" id="sonQs" onclick="_sonSetQuelle('sonne')">Sonne</button>
+            </span></div>
+            <label class="fpm-check"><input type="checkbox" id="sonLetter" checked
+              onchange="_sonSet('zeigeLetter',this.checked)"> Fraunhofer-Buchstaben einblenden</label>
+          </div>
+          <div class="son-lage" id="sonLage"></div>
+        </div>
+        <div>
+          <div class="son-fh" id="sonFhTab"></div>
+        </div>
+      </div>
+      <div class="son-k3" id="sonK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="sonS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="sonSchatten" width="440" height="280" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Kochsalzflamme, von einer Lampe beleuchtet, Bild auf dem Schirm</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Beleuchtung</span>
+              <span class="osz-seg">
+                <button class="osz-segb" id="sonLna" onclick="_sonSetLampe('na')">Na-Dampflampe</button>
+                <button class="osz-segb" id="sonLhg" onclick="_sonSetLampe('hg')">Hg-Dampflampe</button>
+              </span></div>
+            <label class="fpm-check"><input type="checkbox" id="sonSalz" checked
+              onchange="_sonSet('salz',this.checked)"> Kochsalz (NaCl) in der Flamme</label>
+          </div>
+        </div>
+        <div>
+          <div class="son-schatten-t" id="sonSchattenText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="sonS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="sonStern" width="440" height="180" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Glühlampe → Flamme mit Stoffprobe → Spektrometer</div>
+          <canvas id="sonSternSp" width="440" height="120" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Das gemessene Spektrum: Kontinuum mit Absorptionslinie</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Stoffprobe in der Flamme</span>
+              <span class="osz-seg" id="sonElWahl"></span></div>
+          </div>
+        </div>
+        <div>
+          <div class="son-stern-t" id="sonSternText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="sonS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="sonRaten" width="440" height="150" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Das Absorptionsspektrum eines unbekannten Sterns</div>
+          <canvas id="sonReferenz" width="440" height="170" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Referenzspektren der Elemente zum Vergleich</div>
+        </div>
+        <div>
+          <div class="son-raten-box" id="sonRatenBox"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="sonS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="sonHarvard" width="440" height="150" class="phys-anim-cv"></canvas>
+          <div class="fpm-label" id="sonHarvardLbl">—</div>
+          <canvas id="sonStaerken" width="440" height="170" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Linienstärke über der Temperatur</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Oberflächentemperatur</span>
+              <input type="range" id="sonT" min="2800" max="42000" step="100" value="5800"
+                oninput="_sonSetT(this.value)"><b id="sonTLbl">5800 K</b></div>
+            <div class="son-klassen-reihe" id="sonKlassenReihe"></div>
+          </div>
+        </div>
+        <div>
+          <div class="son-harvard-t" id="sonHarvardText"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="sonErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Kontinuum + Absorptionslinien</b> &nbsp;|&nbsp; <b>λ<sub>max</sub> = 2,898·10⁶ nm·K / T</b>
+      &nbsp;|&nbsp; <b>Linienmuster = Fingerabdruck</b> &nbsp;|&nbsp; <b>O B A F G K M</b>
+    </p>
+  </div>`;
+}
+
+function _sonErklHTML() {
+  return `<div class="dsp-erkl-kopf">Die Entdeckung</div>
+    <div class="dsp-erkl-text">
+      Vor gut 200 Jahren zerlegte Joseph von Fraunhofer 1814 das Sonnenlicht mit einem Prisma und
+      fand darin nicht ein durchgehendes Farbband, sondern „ungefähr 574 Linien“ – hunderte
+      schmaler <b>dunkler Linien</b>, die das Spektrum durchziehen. Er dokumentierte ihre Lage
+      genau, verfolgte aber nicht, woher sie kamen. Erst mehr als hundert Jahre später war das
+      Rätsel gelöst – und die <b>Fraunhoferlinien</b> wurden zum wichtigsten Werkzeug der
+      Astronomie: Rund 80 % aller astronomischen Arbeiten beruhen heute auf dem Studium der
+      Spektrallinien.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Emission und Absorption</div>
+    <div class="dsp-erkl-text">
+      Eine Glühlampe sendet ein <b>kontinuierliches</b> Spektrum aus – alle Farben, mit einem
+      Maximum im Orangeroten. Das Sonnenspektrum ist auch kontinuierlich (Maximum im Grünen),
+      aber von scharfen dunklen Linien durchzogen. Die Erklärung: Das heiße, dichte Gas im
+      <b>Inneren</b> des Sterns erzeugt das Kontinuum. Auf dem Weg nach außen durchläuft das Licht
+      die kühlere <b>Sternatmosphäre</b>. Dort absorbieren die Atome genau die Wellenlängen, die
+      zu ihrem eigenen Linienmuster gehören. Sie senden die Energie zwar wieder aus – aber in
+      <b>alle Richtungen</b>, sodass entlang des ursprünglichen Strahls Licht dieser Wellenlängen
+      fehlt. Zurück bleiben dunkle Linien: Ein Atom absorbiert genau die Wellenlängen, die es auch
+      emittieren würde.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Der Natrium-Schatten</div>
+    <div class="dsp-erkl-text">
+      Dieses Prinzip lässt sich im Labor eindrucksvoll zeigen. Eine Kochsalzflamme (gelb durch das
+      Natrium) wird von zwei Seiten beleuchtet – mit einer <b>Na-Dampflampe</b> und mit einer
+      <b>Hg-Dampflampe</b>. Auf dem Schirm hinter der Hg-Beleuchtung ändert sich nichts: Keine der
+      Quecksilber-Wellenlängen passt zur Anregungsenergie des Natriums. Auf dem Schirm hinter der
+      Na-Beleuchtung aber erscheint ein deutlicher <b>Schatten</b> der Flamme: Das Na-Licht hat
+      genau die passende Energie, wird von den Na-Atomen absorbiert und in alle Richtungen
+      gestreut – auf dem Schirm fehlt es. Ersetzt man die Na-Lampe durch eine Glühlampe mit
+      kontinuierlichem Spektrum, so wird darin nur die gelbe Na-Linie geschwächt: ein
+      <b>Stern im Kleinen</b>, mit der Glühlampe als Stern und der Flamme als Sternatmosphäre.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Was die Linien verraten</div>
+    <div class="dsp-erkl-text">
+      Ein Linienmuster ist für den Astronomen, was der Fingerabdruck für den Kriminalisten ist:
+      die <b>Identifikation des Elements</b>. Kein anderes Atom kann das Balmer-Muster des
+      Wasserstoffs nachahmen. So liest man die <b>chemische Zusammensetzung</b> ferner Sterne
+      allein aus ihrem Licht. Komplizierte Elemente wie Eisen haben tausende Linien; Moleküle
+      erzeugen breite, verschmierte <b>Banden</b>. 1868 wurde auf diese Weise das Helium zuerst in
+      der Sonne entdeckt – Jahre bevor man es auf der Erde fand.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Farbe, Linien und Temperatur</div>
+    <div class="dsp-erkl-text">
+      Die Lage des Kontinuumsmaximums verrät die Temperatur: Nach dem <b>Wienschen Gesetz</b> ist
+      λ<sub>max</sub> = 2,898·10⁶ nm·K / T. Die Sonne (≈ 5800 K) hat ihr Maximum bei 500 nm im
+      Grünen. Auch die <b>Linien</b> hängen von der Temperatur ab: Die Balmerlinien des
+      Wasserstoffs sind bei etwa 10 000 K am stärksten, bei höherer oder tieferer Temperatur
+      schwächer. Deshalb ist die berühmte Spektralsequenz <b>O B A F G K M</b> („Oh Be A Fine
+      Girl/Guy, Kiss Me“) in Wahrheit eine <b>Temperatursequenz</b> – von den heißen blauen
+      O-Sternen bis zu den kühlen roten M-Sternen. Unsere Sonne ist ein <b>G-Stern</b>.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Niemals mit einem Fernrohr oder Prisma direkt in die Sonne
+      blicken – schwere Augenschäden drohen. Fraunhofers Versuch wird heute mit Projektionen oder
+      Kompaktspektrometern gefahrlos nachvollzogen.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _sonSetStation(i) {
+  _son.station = Math.max(0, Math.min(4, i));
+  for (let k = 0; k < 5; k++) {
+    document.getElementById('sonSt' + k)?.classList.toggle('on', k === _son.station);
+    const d = document.getElementById('sonS' + k);
+    if (d) d.style.display = k === _son.station ? 'block' : 'none';
+  }
+  _sonUpdate();
+}
+function _sonSet(key, val) { _son[key] = val; _sonUpdate(); }
+function _sonSetQuelle(q) { _son.quelle = q; _sonUpdate(); }
+function _sonSetLampe(l) { _son.lampe = l; _sonUpdate(); }
+function _sonSetElement(id) { _son.element = id; _sonUpdate(); }
+function _sonSetT(v) {
+  _son.T = Math.max(2800, Math.min(42000, +v));
+  const el = document.getElementById('sonTLbl'); if (el) el.textContent = Math.round(_son.T) + ' K';
+  _sonRenderHarvard();
+}
+
+function _sonUpdate() {
+  if (!_son) return;
+  document.getElementById('sonQg')?.classList.toggle('on', _son.quelle === 'gluehe');
+  document.getElementById('sonQs')?.classList.toggle('on', _son.quelle === 'sonne');
+  document.getElementById('sonLna')?.classList.toggle('on', _son.lampe === 'na');
+  document.getElementById('sonLhg')?.classList.toggle('on', _son.lampe === 'hg');
+
+  const lbl = document.getElementById('sonSpLbl');
+  if (lbl) lbl.textContent = _son.quelle === 'gluehe'
+    ? 'Glühlampe: durchgehendes Kontinuum, Maximum im Orangeroten'
+    : 'Sonne: Kontinuum (Maximum im Grünen), durchzogen von dunklen Fraunhoferlinien';
+
+  const lage = document.getElementById('sonLage');
+  if (lage) {
+    lage.innerHTML = _son.quelle === 'gluehe'
+      ? '<b>Glühlampe.</b> Ein heißer, dichter Glühdraht sendet alle Wellenlängen aus – ein '
+        + 'lückenloser Farbverlauf ohne dunkle Linien. Das Maximum liegt im Orangeroten, denn der '
+        + 'Draht ist mit etwa 2800 K kühler als die Sonne.'
+      : '<b>Sonne.</b> Dasselbe Kontinuum, aber von hunderten <b>dunklen Linien</b> durchzogen – '
+        + 'den Fraunhoferlinien. Sie entstehen, weil die kühlere Sonnenatmosphäre bestimmte '
+        + 'Wellenlängen aus dem Licht des heißen Sonneninneren herausfiltert.';
+  }
+
+  const ft = document.getElementById('sonFhTab');
+  if (ft) {
+    ft.innerHTML = '<div class="git-sch-kopf">Die klassischen Fraunhoferlinien</div>'
+      + '<div class="son-fh-tab">'
+      + _SON_FRAUNHOFER.map(l =>
+        `<div class="son-fh-z"><span class="son-fh-l">${l.L}</span>
+           <span class="son-fh-farbe" style="background:${_sonFarbe(l.nm)}"></span>
+           <b>${_fpmNum(l.nm, 1)} nm</b>
+           <span class="son-fh-el">${l.el}${l.atm ? ' *' : ''}</span></div>`).join('')
+      + '</div><div class="fpm-note">* Die Linien A und B stammen nicht von der Sonne, sondern '
+      + 'vom <b>Sauerstoff der Erdatmosphäre</b> – sie zeigen, dass auch unsere Luft ihre Spur '
+      + 'im Sonnenlicht hinterlässt.</div>';
+  }
+
+  const elw = document.getElementById('sonElWahl');
+  if (elw) {
+    const wahl = [['metall', 'Natrium (Na)'], ['h', 'Wasserstoff (H)'], ['ca2', 'Kalzium (Ca⁺)']];
+    elw.innerHTML = wahl.map(w =>
+      `<button class="osz-segb${_son.element === w[0] ? ' on' : ''}" onclick="_sonSetElement('${w[0]}')">${w[1]}</button>`).join('');
+  }
+
+  _sonRenderK3();
+  _sonRenderSchatten();
+  _sonRenderStern();
+  _sonRenderRaten();
+  _sonRenderHarvard();
+}
+
+function _sonRenderK3() {
+  const el = document.getElementById('sonK3'); if (!el) return;
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du diesen Versuch jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Wir wollen verstehen, warum das Sonnenspektrum dunkle Linien hat und was sie über die
+        Sonne verraten.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Man vergleicht das Spektrum einer Glühlampe mit dem der Sonne (Kompaktspektrometer) und
+        zeigt die Absorption im Labor mit einer Kochsalzflamme.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Beide Spektren aufnehmen und die dunklen Linien im Sonnenspektrum den Elementen
+        zuordnen.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        Das Sonnenlicht enthält ein Kontinuum mit scharfen dunklen <b>Absorptionslinien</b> an den
+        Wellenlängen bestimmter Elemente.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Die kühlere Sternatmosphäre absorbiert die zu ihren Atomen passenden Wellenlängen. Aus dem
+        Muster folgen die <b>Elemente</b>, aus der Farbe die <b>Temperatur</b>.</div>
+    </div>`;
+}
+
+// ── Station 2: Na-Schatten ─────────────────────────────
+function _sonRenderSchatten() {
+  const el = document.getElementById('sonSchattenText'); if (!el) return;
+  const na = _son.lampe === 'na';
+  const schatten = na && _son.salz;
+  el.innerHTML = `<div class="git-sch-kopf">Warum ein Schatten entsteht – oder auch nicht</div>
+    <div class="son-schatten-z ${schatten ? 'ja' : ''}">
+      <b>${na ? 'Natrium-Dampflampe' : 'Quecksilber-Dampflampe'} ${_son.salz ? 'mit' : 'ohne'} Kochsalz:</b>
+      ${schatten
+        ? 'Auf dem Schirm erscheint ein deutlicher <b>Schatten</b> der Flamme.'
+        : na && !_son.salz
+        ? 'Ohne Natrium in der Flamme ist nichts zu sehen – es gibt keine Na-Atome, die absorbieren könnten.'
+        : !na && _son.salz
+        ? 'Trotz Natrium in der Flamme: <b>kein Schatten</b>. Das Hg-Licht passt nicht.'
+        : 'Nichts zu sehen.'}
+    </div>
+    <div class="son-schatten-erkl">
+      ${na
+        ? 'Die Na-Dampflampe sendet <b>genau die Wellenlänge</b> aus, die Natriumatome anregt (die '
+          + 'gelbe 589-nm-Linie). Das Licht wird von den Na-Atomen in der Flamme absorbiert und '
+          + 'anschließend in <b>alle Richtungen</b> wieder abgestrahlt. Entlang des ursprünglichen '
+          + 'Strahls fehlt es deshalb – auf dem Schirm bleibt es dunkler.'
+        : 'Die Hg-Dampflampe sendet nur ihre eigenen Wellenlängen aus. <b>Keine</b> davon stimmt mit '
+          + 'der Anregungsenergie des Natriums überein, also gibt es keine Wechselwirkung: Das '
+          + 'Hg-Licht läuft ungehindert durch die Flamme.'}
+    </div>
+    <div class="fpm-note">Das ist Kirchhoffs Grundgesetz in einem Bild: Ein Atom <b>absorbiert
+      genau die Wellenlängen, die es selbst emittieren würde</b>. Ersetzt man die Na-Lampe durch
+      eine Glühlampe, so wird in deren kontinuierlichem Spektrum nur die gelbe Na-Linie
+      geschwächt – man hat ein Sternspektrum im Kleinen erzeugt.</div>`;
+}
+
+// ── Station 3: Stern im Labor ──────────────────────────
+function _sonRenderStern() {
+  const el = document.getElementById('sonSternText'); if (!el) return;
+  const m = _SON_MERKMALE.find(x => x.id === _son.element);
+  const namen = { metall: 'Natrium', h: 'Wasserstoff', ca2: 'Kalzium (Ca⁺)' };
+  const lin = _son.element === 'metall' ? [589.3]
+    : _son.element === 'h' ? [656.3, 486.1, 434.0]
+    : [393.4, 396.8];
+  el.innerHTML = `<div class="git-sch-kopf">Ein Stern im Labor</div>
+    <div class="son-stern-t2">Eine Glühlampe liefert ein <b>kontinuierliches</b> Spektrum – sie
+      spielt den Stern. Das Licht läuft durch eine Brennerflamme mit einer <b>${namen[_son.element]}</b>-Stoffprobe
+      – sie spielt die Sternatmosphäre. Im Spektrometer sieht man das Kontinuum, aber an den
+      Wellenlängen des ${namen[_son.element]} sind <b>dunkle Absorptionslinien</b> eingekerbt.</div>
+    <div class="son-stern-lin">
+      ${lin.map(nm => `<span class="son-stern-chip"><span class="son-fh-farbe" style="background:${_sonFarbe(nm)}"></span>${_fpmNum(nm, 1)} nm</span>`).join('')}
+    </div>
+    <div class="son-stern-t2">Genau dieselben Wellenlängen würde die Probe in einer Flammenfärbung
+      (Schlüsselexperiment 18) <b>aussenden</b>. Absorption und Emission betreffen dieselben
+      Übergänge – deshalb passt das dunkle Linienmuster im Sternspektrum exakt auf das helle
+      Linienmuster aus dem Labor.</div>
+    <div class="fpm-note">So bereitet dieser Laborversuch das Verständnis des echten
+      Sonnenspektrums vor: Der Stern ist die heiße Quelle, seine Atmosphäre der kühle Filter.</div>`;
+}
+
+// ── Station 4: Ratespiel ───────────────────────────────
+const _SON_RATE_STERNE = [
+  { n: 'Stern Alpha', elemente: ['h', 'ca2'] },
+  { n: 'Stern Beta', elemente: ['metall', 'ca2'] },
+  { n: 'Stern Gamma', elemente: ['h', 'he1'] },
+  { n: 'Stern Delta', elemente: ['metall', 'tio'] }
+];
+function _sonRatenNeu() {
+  _son.raten = (_son.raten + 1) % _SON_RATE_STERNE.length;
+  _son.geraten = []; _son.aufgedeckt = false;
+  _sonRenderRaten();
+  const c = document.getElementById('sonRaten');
+  if (c) _sonDrawRaten(c.getContext('2d'), c);
+}
+function _sonRatenTipp(id) {
+  if (_son.aufgedeckt) return;
+  const i = _son.geraten.indexOf(id);
+  if (i >= 0) _son.geraten.splice(i, 1); else _son.geraten.push(id);
+  _sonRenderRaten();
+}
+function _sonRatenPruefen() { _son.aufgedeckt = true; _sonRenderRaten(); }
+function _sonRenderRaten() {
+  const el = document.getElementById('sonRatenBox'); if (!el) return;
+  const stern = _SON_RATE_STERNE[_son.raten];
+  const wahl = ['h', 'ca2', 'metall', 'he1', 'tio'];
+  const namen = { h: 'Wasserstoff', ca2: 'Kalzium (Ca⁺)', metall: 'Metalle (Fe/Na/Mg)', he1: 'Helium', tio: 'TiO-Moleküle' };
+  const knoepfe = wahl.map(id => {
+    const gew = _son.geraten.indexOf(id) >= 0;
+    const richtig = stern.elemente.indexOf(id) >= 0;
+    let cls = gew ? ' gewaehlt' : '';
+    if (_son.aufgedeckt) {
+      if (richtig && gew) cls = ' richtig';
+      else if (richtig && !gew) cls = ' verpasst';
+      else if (!richtig && gew) cls = ' falsch';
+    }
+    return `<button class="son-rate-b${cls}" onclick="_sonRatenTipp('${id}')">${namen[id]}</button>`;
+  }).join('');
+  const korrekt = _son.aufgedeckt && stern.elemente.length === _son.geraten.length
+    && stern.elemente.every(e => _son.geraten.indexOf(e) >= 0);
+  el.innerHTML = `<div class="git-sch-kopf">Welche Elemente enthält dieser Stern?</div>
+    <div class="son-rate-t">Vergleiche die dunklen Linien im Sternspektrum (oben) mit den
+      Referenzspektren (darunter). Wähle alle Elemente aus, deren Linienmuster du wiederfindest.</div>
+    <div class="son-rate-knoepfe">${knoepfe}</div>
+    <div class="sim-btn-row">
+      <button class="sim-btn primary" onclick="_sonRatenPruefen()">✓ prüfen</button>
+      <button class="sim-btn" onclick="_sonRatenNeu()">🔄 neuer Stern</button>
+    </div>
+    ${_son.aufgedeckt ? `<div class="son-rate-erg ${korrekt ? 'ok' : 'no'}">
+      ${korrekt
+        ? '<b>Richtig!</b> ' + stern.n + ' enthält ' + stern.elemente.map(e => namen[e]).join(' und ') + '. Genau so bestimmt man die Zusammensetzung ferner Sterne.'
+        : '<b>Noch nicht ganz.</b> ' + stern.n + ' enthält ' + stern.elemente.map(e => namen[e]).join(' und ') + '. Achte auf die auffälligsten Linien jedes Musters.'}
+      </div>` : ''}
+    <div class="fpm-note">In echten Sternspektren überlagern sich die Muster vieler Elemente zu
+      einem „Gewirr von Linien“ – Eisen allein liefert tausende. Moleküle wie TiO erzeugen breite,
+      verschmierte <b>Banden</b> statt scharfer Linien.</div>`;
+}
+
+// ── Station 5: Harvard / Temperatur ────────────────────
+function _sonRenderHarvard() {
+  const K = _sonKlasse(_son.T);
+  const lbl = document.getElementById('sonHarvardLbl');
+  if (lbl) lbl.textContent = 'Synthetisches Sternspektrum bei ' + Math.round(_son.T) + ' K';
+
+  const kr = document.getElementById('sonKlassenReihe');
+  if (kr) {
+    kr.innerHTML = '<span class="son-kl-merk">Oh Be A Fine Girl/Guy, Kiss Me:</span>'
+      + _SON_KLASSEN.map(k =>
+        `<button class="son-kl-b${k.c === K.c ? ' on' : ''}" onclick="_sonSetT(${Math.round((k.tmin + k.tmax) / 2)})"
+          style="${k.c === K.c ? 'background:' + k.farbe + ';color:#0f172a' : ''}">${k.c}</button>`).join('');
+  }
+
+  const el = document.getElementById('sonHarvardText');
+  if (el) {
+    const sonne = _son.T >= 5200 && _son.T < 6000;
+    // Merkmalsstaerken bei dieser Temperatur
+    const zeilen = _SON_MERKMALE.map(m => {
+      const s = _sonStaerke(m, _son.T);
+      return `<div class="son-hv-z"><span class="son-hv-n" style="color:${m.farbe}">${m.n}</span>
+        <div class="son-hv-track"><div class="son-hv-fill" style="width:${_fpmNum(s * 100, 0).replace(',', '.')}%;background:${m.farbe}"></div></div></div>`;
+    }).join('');
+    el.innerHTML = `<div class="git-sch-kopf">Spektralklasse ${K.c}${sonne ? ' – wie unsere Sonne' : ''}</div>
+      <div class="son-hv-klasse" style="border-color:${K.farbe}">
+        <b>Klasse ${K.c}</b> (${_fpmNum(K.tmin / 1000, 0)}–${_fpmNum(K.tmax / 1000, 0)} kK): ${K.kurz}</div>
+      <div class="son-hv-wien">Kontinuumsmaximum nach Wien:
+        λ<sub>max</sub> = 2,898·10⁶ / ${Math.round(_son.T)} = <b>${_fpmNum(_sonWien(_son.T), 0)} nm</b>
+        ${_sonWien(_son.T) < 380 ? '(im UV)' : _sonWien(_son.T) > 700 ? '(im IR)' : ''}</div>
+      <div class="son-hv-staerken">${zeilen}</div>
+      <div class="fpm-note">Die Balmerlinien des Wasserstoffs sind bei etwa <b>10 000 K</b> am
+        stärksten – dort liegen die weißen A-Sterne. Heißer werden die H-Atome ionisiert, kühler
+        werden sie nicht mehr angeregt; in beiden Fällen verschwinden die Linien. Weil jedes
+        Element sein eigenes Temperaturfenster hat, ist die Reihenfolge O B A F G K M eine reine
+        <b>Temperatursequenz</b>.</div>`;
+  }
+}
+
+// ── Zeichnungen ────────────────────────────────────────
+// Ein Spektralband: Kontinuum nach Planck, minus Absorptionslinien.
+function _sonDrawBand(ctx, x0, y0, w, h, T, linien, kontinuierlich) {
+  const nmMin = 380, nmMax = 720;
+  for (let px = 0; px < w; px++) {
+    const nm = nmMin + px / w * (nmMax - nmMin);
+    let hell = kontinuierlich ? _sonKontinuum(nm, T) : 1;
+    // Absorptionslinien einkerben
+    linien.forEach(l => {
+      const d = Math.abs(nm - l.nm);
+      if (d < l.br) hell *= 1 - l.tief * (1 - d / l.br);
+    });
+    hell = Math.max(0, Math.min(1, hell));
+    const f = _sonFarbe(nm).match(/\d+/g).map(Number);
+    ctx.fillStyle = 'rgb(' + Math.round(f[0] * hell) + ',' + Math.round(f[1] * hell) + ',' + Math.round(f[2] * hell) + ')';
+    ctx.fillRect(x0 + px, y0, 1, h);
+  }
+}
+
+function _sonDrawSpektrum(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const x0 = 30, w = W - 45, y0 = 20, h = 90;
+  const T = _son.quelle === 'gluehe' ? 2800 : 5800;
+  const linien = _son.quelle === 'sonne'
+    ? _SON_FRAUNHOFER.map(l => ({ nm: l.nm, br: 3.5, tief: l.atm ? 0.5 : 0.8 }))
+    : [];
+  _sonDrawBand(ctx, x0, y0, w, h, T, linien, true);
+  // Rahmen
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1; ctx.strokeRect(x0, y0, w, h);
+  // Wellenlaengenskala
+  const X = nm => x0 + (nm - 380) / (720 - 380) * w;
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  [400, 500, 600, 700].forEach(nm => ctx.fillText(nm + ' nm', X(nm), H - 4));
+  // Fraunhofer-Buchstaben
+  if (_son.quelle === 'sonne' && _son.zeigeLetter) {
+    _SON_FRAUNHOFER.forEach(l => {
+      const x = X(l.nm);
+      ctx.fillStyle = '#e2e8f0'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(l.L, x, y0 + h + 12);
+    });
+  }
+  // Maximum markieren
+  const peak = _sonWien(T);
+  if (peak >= 380 && peak <= 720) {
+    ctx.strokeStyle = 'rgba(255,255,255,0.6)'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(X(peak), y0); ctx.lineTo(X(peak), y0 + h); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Max ' + _fpmNum(peak, 0) + ' nm', X(peak), y0 - 5);
+  }
+  ctx.textAlign = 'left';
+}
+
+function _sonDrawSchatten(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const na = _son.lampe === 'na';
+  const farbe = na ? '#fde047' : '#67e8f9';
+  const cyF = H / 2, flammeX = 220;
+  // Lampe links
+  ctx.fillStyle = farbe;
+  ctx.beginPath(); ctx.arc(40, cyF, 16, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(na ? 'Na' : 'Hg', 40, cyF + 3);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.fillText((na ? 'Na' : 'Hg') + '-Lampe', 40, cyF + 32);
+
+  // Lichtbuendel zur Flamme
+  const schatten = na && _son.salz;
+  ctx.globalAlpha = 0.5;
+  ctx.strokeStyle = farbe; ctx.lineWidth = 2;
+  for (let i = -2; i <= 2; i++) {
+    ctx.beginPath(); ctx.moveTo(56, cyF + i * 5); ctx.lineTo(flammeX - 20, cyF + i * 10); ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+
+  // Flamme mit/ohne Salz
+  const grad = ctx.createLinearGradient(flammeX, cyF + 40, flammeX, cyF - 40);
+  grad.addColorStop(0, _son.salz ? '#fbbf24' : '#3b82f6');
+  grad.addColorStop(1, 'rgba(251,146,60,0)');
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  ctx.moveTo(flammeX - 14, cyF + 40);
+  ctx.quadraticCurveTo(flammeX, cyF - 50, flammeX + 14, cyF + 40);
+  ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_son.salz ? 'Flamme + NaCl' : 'Flamme (leer)', flammeX, cyF + 56);
+
+  // Licht hinter der Flamme zum Schirm
+  ctx.globalAlpha = schatten ? 0.2 : 0.5;
+  ctx.strokeStyle = farbe; ctx.lineWidth = 2;
+  for (let i = -2; i <= 2; i++) {
+    ctx.beginPath(); ctx.moveTo(flammeX + 20, cyF + i * 10); ctx.lineTo(W - 40, cyF + i * 16); ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+
+  // Schirm rechts
+  ctx.fillStyle = '#1e293b'; ctx.fillRect(W - 40, cyF - 55, 12, 110);
+  // Beleuchteter Fleck
+  const spotGrad = ctx.createRadialGradient(W - 34, cyF, 2, W - 34, cyF, 40);
+  spotGrad.addColorStop(0, farbe); spotGrad.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.globalAlpha = schatten ? 0.45 : 0.9;
+  ctx.fillStyle = spotGrad;
+  ctx.fillRect(W - 40, cyF - 45, 12, 90);
+  ctx.globalAlpha = 1;
+  // Schatten
+  if (schatten) {
+    ctx.fillStyle = 'rgba(15,23,42,0.75)';
+    ctx.beginPath();
+    ctx.moveTo(W - 40, cyF + 22); ctx.quadraticCurveTo(W - 34, cyF - 30, W - 28, cyF + 22);
+    ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#fbbf24'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Schatten!', W - 34, cyF - 40);
+  }
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Schirm', W - 34, cyF + 66);
+  ctx.textAlign = 'left';
+}
+
+function _sonDrawStern(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const cy = H / 2;
+  // Gluehlampe (Stern)
+  const g = ctx.createRadialGradient(45, cy, 2, 45, cy, 22);
+  g.addColorStop(0, '#fff7ed'); g.addColorStop(1, 'rgba(251,146,60,0)');
+  ctx.fillStyle = g; ctx.fillRect(20, cy - 24, 50, 48);
+  ctx.fillStyle = '#fbbf24';
+  ctx.beginPath(); ctx.arc(45, cy, 12, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Glühlampe', 45, cy + 34); ctx.fillText('= „Stern"', 45, cy + 45);
+  // Strahl
+  ctx.strokeStyle = 'rgba(251,191,36,0.5)'; ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.moveTo(58, cy); ctx.lineTo(220, cy); ctx.stroke();
+  // Flamme (Atmosphaere)
+  const fg = ctx.createLinearGradient(0, cy + 30, 0, cy - 35);
+  fg.addColorStop(0, '#fbbf24'); fg.addColorStop(1, 'rgba(251,146,60,0)');
+  ctx.fillStyle = fg;
+  ctx.beginPath(); ctx.moveTo(226, cy + 30); ctx.quadraticCurveTo(240, cy - 40, 254, cy + 30);
+  ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Flamme + Probe', 240, cy + 44); ctx.fillText('= „Atmosphäre"', 240, cy + 55);
+  // Strahl zum Spektrometer
+  ctx.strokeStyle = 'rgba(226,232,240,0.4)'; ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.moveTo(258, cy); ctx.lineTo(W - 60, cy); ctx.stroke();
+  // Spektrometer
+  ctx.fillStyle = '#334155'; ctx.fillRect(W - 56, cy - 18, 40, 36);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Spektro-', W - 36, cy - 2); ctx.fillText('meter', W - 36, cy + 8);
+  ctx.textAlign = 'left';
+}
+
+function _sonDrawSternSp(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const x0 = 30, w = W - 45, y0 = 14, h = 72;
+  const lin = (_son.element === 'metall' ? [589.3]
+    : _son.element === 'h' ? [656.3, 486.1, 434.0]
+    : [393.4, 396.8]).map(nm => ({ nm, br: 4, tief: 0.85 }));
+  _sonDrawBand(ctx, x0, y0, w, h, 2800, lin, true);
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1; ctx.strokeRect(x0, y0, w, h);
+  const X = nm => x0 + (nm - 380) / (720 - 380) * w;
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  [400, 500, 600, 700].forEach(nm => ctx.fillText(nm, X(nm), H - 3));
+  lin.forEach(l => {
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(X(l.nm), y0); ctx.lineTo(X(l.nm), y0 - 6); ctx.stroke();
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '8px sans-serif';
+    ctx.fillText(_fpmNum(l.nm, 0), X(l.nm), y0 - 8);
+  });
+  ctx.textAlign = 'left';
+}
+
+function _sonDrawRaten(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const stern = _SON_RATE_STERNE[_son.raten];
+  const x0 = 30, w = W - 45, y0 = 16, h = 100;
+  const lin = [];
+  stern.elemente.forEach(id => {
+    const m = _SON_MERKMALE.find(x => x.id === id);
+    m.linien.forEach(nm => lin.push({ nm, br: m.molekuel ? 10 : 4, tief: 0.85 }));
+  });
+  _sonDrawBand(ctx, x0, y0, w, h, 5000, lin, true);
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1; ctx.strokeRect(x0, y0, w, h);
+  const X = nm => x0 + (nm - 380) / (720 - 380) * w;
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  [400, 500, 600, 700].forEach(nm => ctx.fillText(nm + ' nm', X(nm), H - 3));
+  ctx.fillStyle = '#fbbf24'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(stern.n + ' (unbekannt)', x0 + 2, y0 + 11);
+  ctx.textAlign = 'left';
+}
+
+function _sonDrawReferenz(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const zeigen = ['h', 'ca2', 'metall', 'he1', 'tio'];
+  const namen = { h: 'H', ca2: 'Ca⁺', metall: 'Metalle', he1: 'He', tio: 'TiO' };
+  const x0 = 56, w = W - 70;
+  const rh = (H - 8) / zeigen.length;
+  const X = nm => x0 + (nm - 380) / (720 - 380) * w;
+  zeigen.forEach((id, i) => {
+    const m = _SON_MERKMALE.find(x => x.id === id);
+    const y = 4 + i * rh;
+    // Referenz als HELLE Emissionslinien
+    ctx.fillStyle = '#000'; ctx.fillRect(x0, y, w, rh - 3);
+    m.linien.forEach(nm => {
+      ctx.fillStyle = _sonFarbe(nm);
+      ctx.fillRect(X(nm) - 1, y + 1, m.molekuel ? 6 : 2, rh - 5);
+    });
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(namen[id], x0 - 4, y + rh / 2 + 3);
+  });
+  ctx.textAlign = 'left';
+}
+
+function _sonDrawHarvard(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const x0 = 30, w = W - 45, y0 = 16, h = 96;
+  // Merkmalsstaerken bei _son.T -> Absorptionslinien
+  const lin = [];
+  _SON_MERKMALE.forEach(m => {
+    const s = _sonStaerke(m, _son.T);
+    if (s > 0.05) m.linien.forEach(nm => lin.push({ nm, br: m.molekuel ? 9 : 3.5, tief: 0.85 * s }));
+  });
+  _sonDrawBand(ctx, x0, y0, w, h, _son.T, lin, true);
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1; ctx.strokeRect(x0, y0, w, h);
+  const X = nm => x0 + (nm - 380) / (720 - 380) * w;
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  [400, 500, 600, 700].forEach(nm => ctx.fillText(nm + ' nm', X(nm), H - 3));
+  const peak = _sonWien(_son.T);
+  if (peak >= 380 && peak <= 720) {
+    ctx.strokeStyle = 'rgba(255,255,255,0.6)'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(X(peak), y0); ctx.lineTo(X(peak), y0 + h); ctx.stroke();
+    ctx.setLineDash([]);
+  }
+  ctx.textAlign = 'left';
+}
+
+function _sonDrawStaerken(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const padL = 40, padR = 12, padT = 12, padB = 30;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  const Tmin = 2800, Tmax = 42000;
+  // log-Temperaturachse
+  const X = T => x0 + (Math.log(T) - Math.log(Tmin)) / (Math.log(Tmax) - Math.log(Tmin)) * (x1 - x0);
+  const Y = s => y0 - s * (y0 - y1);
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
+  [3000, 5000, 10000, 20000, 40000].forEach(T => {
+    ctx.beginPath(); ctx.moveTo(X(T), y0); ctx.lineTo(X(T), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillText(T >= 1000 ? (T / 1000) + 'k' : T, X(T), y0 + 12);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Temperatur / K', x1, y0 + 24);
+  ctx.textAlign = 'left';
+  // Kurven je Merkmal
+  _SON_MERKMALE.forEach(m => {
+    ctx.strokeStyle = m.farbe; ctx.lineWidth = 1.7;
+    ctx.beginPath();
+    for (let px = 0; px <= x1 - x0; px += 2) {
+      const T = Math.exp(Math.log(Tmin) + px / (x1 - x0) * (Math.log(Tmax) - Math.log(Tmin)));
+      const s = _sonStaerke(m, T);
+      const py = Y(s);
+      px === 0 ? ctx.moveTo(x0 + px, py) : ctx.lineTo(x0 + px, py);
+    }
+    ctx.stroke();
+  });
+  // aktuelle Temperatur
+  ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(X(_son.T), y1); ctx.lineTo(X(_son.T), y0); ctx.stroke();
+  ctx.setLineDash([]);
+  // Legende
+  ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+  _SON_MERKMALE.forEach((m, i) => {
+    ctx.fillStyle = m.farbe;
+    ctx.fillRect(x0 + 6 + (i % 3) * 96, y1 + 2 + Math.floor(i / 3) * 11, 8, 8);
+    ctx.fillStyle = '#475569';
+    ctx.fillText(m.id === 'metall' ? 'Metalle' : m.id === 'tio' ? 'TiO' : m.n.split(' ')[0],
+      x0 + 17 + (i % 3) * 96, y1 + 9 + Math.floor(i / 3) * 11);
+  });
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _sonTakt(dt) { if (_son) _son.t += Math.min(0.05, dt); }
+function _sonRender() {
+  if (!_son) return;
+  const st = _son.station;
+  if (st === 0) {
+    const c = document.getElementById('sonSpektrum');
+    if (c) _sonDrawSpektrum(c.getContext('2d'), c);
+  } else if (st === 1) {
+    const c = document.getElementById('sonSchatten');
+    if (c) _sonDrawSchatten(c.getContext('2d'), c);
+  } else if (st === 2) {
+    const c = document.getElementById('sonStern');
+    if (c) _sonDrawStern(c.getContext('2d'), c);
+    const cs = document.getElementById('sonSternSp');
+    if (cs) _sonDrawSternSp(cs.getContext('2d'), cs);
+  } else if (st === 3) {
+    const c = document.getElementById('sonRaten');
+    if (c) _sonDrawRaten(c.getContext('2d'), c);
+    const cr = document.getElementById('sonReferenz');
+    if (cr) _sonDrawReferenz(cr.getContext('2d'), cr);
+  } else if (st === 4) {
+    const c = document.getElementById('sonHarvard');
+    if (c) _sonDrawHarvard(c.getContext('2d'), c);
+    const cs = document.getElementById('sonStaerken');
+    if (cs) _sonDrawStaerken(cs.getContext('2d'), cs);
+  }
+}
+
+// ── Zusätzliche Styles für das Sonnenspektrum ──────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .son-lage { font-size: .78rem; border-radius: 9px; padding: 9px 11px; margin: 8px 0;
+      line-height: 1.55; border: 1px solid #e2e8f0; background: #f8fafc; color: #475569; }
+    .son-lage b { color: #334155; }
+    .son-fh { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 12px; }
+    .son-fh-tab { display: flex; flex-direction: column; gap: 3px; margin-top: 5px; }
+    .son-fh-z { display: flex; align-items: center; gap: 8px; font-size: .76rem; color: #475569; }
+    .son-fh-l { flex: 0 0 20px; font-weight: 800; color: #334155; text-align: center; }
+    .son-fh-farbe { width: 14px; height: 14px; border-radius: 3px; flex: 0 0 auto;
+      border: 1px solid rgba(0,0,0,.15); }
+    .son-fh-z b { flex: 0 0 62px; font-variant-numeric: tabular-nums; color: #334155; }
+    .son-fh-el { color: #64748b; font-size: .74rem; }
+    .son-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-top: 12px; }
+    .son-schatten-t { display: flex; flex-direction: column; gap: 7px; }
+    .son-schatten-z { font-size: .78rem; border-radius: 8px; padding: 8px 10px; line-height: 1.55;
+      background: #f1f5f9; border: 1px solid #e2e8f0; color: #475569; }
+    .son-schatten-z.ja { background: #fefce8; border-color: #fde68a; color: #854d0e; }
+    .son-schatten-z b { color: #334155; }
+    .son-schatten-erkl { font-size: .78rem; color: #475569; line-height: 1.65; }
+    .son-schatten-erkl b { color: #334155; }
+    .son-stern-t { display: flex; flex-direction: column; gap: 7px; }
+    .son-stern-t2 { font-size: .78rem; color: #475569; line-height: 1.65; }
+    .son-stern-t2 b { color: #334155; }
+    .son-stern-lin { display: flex; gap: 6px; flex-wrap: wrap; }
+    .son-stern-chip { display: inline-flex; align-items: center; gap: 5px; font-size: .74rem;
+      background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 999px; padding: 3px 9px;
+      color: #475569; font-variant-numeric: tabular-nums; }
+    .son-raten-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 11px 13px; }
+    .son-rate-t { font-size: .78rem; color: #475569; line-height: 1.6; }
+    .son-rate-knoepfe { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0; }
+    .son-rate-b { font-size: .73rem; padding: 6px 9px; background: #fff; border: 2px solid #e2e8f0;
+      border-radius: 8px; cursor: pointer; color: #475569; }
+    .son-rate-b:hover { border-color: #cbd5e1; }
+    .son-rate-b.gewaehlt { border-color: #0284c7; background: #eff6ff; color: #075985; font-weight: 700; }
+    .son-rate-b.richtig { border-color: #16a34a; background: #f0fdf4; color: #166534; font-weight: 700; }
+    .son-rate-b.verpasst { border-color: #16a34a; background: #fff; color: #166534; border-style: dashed; }
+    .son-rate-b.falsch { border-color: #dc2626; background: #fef2f2; color: #991b1b; }
+    .son-rate-erg { font-size: .77rem; border-radius: 8px; padding: 8px 10px; margin: 6px 0; line-height: 1.55; }
+    .son-rate-erg.ok { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+    .son-rate-erg.no { background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412; }
+    .son-klassen-reihe { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; margin-top: 6px; }
+    .son-kl-merk { flex: 0 0 100%; font-size: .66rem; text-transform: uppercase; letter-spacing: .03em;
+      font-weight: 800; color: #94a3b8; }
+    .son-kl-b { width: 30px; height: 30px; border-radius: 7px; border: 2px solid #e2e8f0;
+      background: #fff; cursor: pointer; font-weight: 800; color: #475569; }
+    .son-kl-b:hover { border-color: #cbd5e1; }
+    .son-kl-b.on { border-color: #0f172a; }
+    .son-harvard-t { display: flex; flex-direction: column; gap: 8px; }
+    .son-hv-klasse { font-size: .78rem; color: #475569; line-height: 1.55; background: #f8fafc;
+      border: 2px solid #e2e8f0; border-radius: 9px; padding: 9px 11px; }
+    .son-hv-klasse b { color: #334155; }
+    .son-hv-wien { font-size: .78rem; color: #475569; background: #eff6ff; border: 1px solid #bfdbfe;
+      border-radius: 8px; padding: 7px 10px; }
+    .son-hv-wien b { color: #075985; }
+    .son-hv-staerken { display: flex; flex-direction: column; gap: 4px; }
+    .son-hv-z { display: flex; align-items: center; gap: 8px; }
+    .son-hv-n { flex: 0 0 150px; font-size: .72rem; font-weight: 700; }
+    .son-hv-track { flex: 1; height: 9px; background: #eef2f7; border-radius: 5px; overflow: hidden; }
+    .son-hv-fill { height: 100%; }
+    .son-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
