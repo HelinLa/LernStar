@@ -2048,6 +2048,23 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('lskTakt', 'lskKeinChart');
     _pSim.start(dt => _lskTakt(dt), () => _lskRender(), []);
   },
+
+  // Schluesselexperiment 10 des KLP: der Schluessel zum Minuszeichen im
+  // Induktionsgesetz. Sieben Teilphasen, Lenzsche Regel, Wirbelstroeme.
+  'thomson-ring': modal => {
+    _thrInit();
+    modal.innerHTML = _thrHTML();
+    const erkl = document.getElementById('thrErkl');
+    if (erkl) erkl.innerHTML = _thrErklHTML();
+    _thrSetStation(0);
+    _thrSetZeitlupe(4);
+    _thrSetVorzeichen('ein');
+    _thrSetAufbau('einzel');
+    _thrSetAnw(0);
+    _thrUpdate();
+    _pSim = new PhysicsSimEngine('thrTakt', 'thrKeinChart');
+    _pSim.start(dt => _thrTakt(dt), () => _thrRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -13639,6 +13656,1546 @@ function _lskRender() {
       padding: 8px 11px; margin-top: 8px; }
     .lsk-ur-t { font-size: .78rem; color: #475569; line-height: 1.6; margin-bottom: 6px; }
     .lsk-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+// ═══════════════════════════════════════════════════════
+// THOMSON'SCHER RINGVERSUCH
+// Schluesselexperiment 10 der NRW-Handreichung.
+// Er ist der experimentell gesicherte Schluessel zum Minuszeichen im
+// Induktionsgesetz. Der KLP nennt dazu genau eine Kompetenz:
+// anhand des Versuchs die Lenz'sche Regel erlaeutern (E5, UF4).
+// Dazu kommt K3 – Aufbau und Ergebnis adressatenbezogen erlaeutern.
+// ═══════════════════════════════════════════════════════
+
+const _THR_G = 9.81;
+
+// Feldspule mit Eisenkern, Daten aus Abschnitt 3b der Handreichung
+const _THR_R_SPULE = 5.0;        // Ohm'scher Widerstand der Feldspule
+const _THR_L_EISEN = 0.108;      // Induktivitaet mit Eisenkern in H
+const _THR_L_LEER  = 0.0144;     // ohne Eisenkern, rund ein Achtel davon
+// Beim Ausschalten reisst der Strom viel schneller ab als er aufgebaut wird –
+// die Handreichung spricht von einer "sehr schnellen" Aenderung.
+const _THR_TAU_AUS = 0.004;
+
+// Aluminiumring, bifilar aufgehaengt
+const _THR_RING_R  = 0.030;      // Ringradius in m
+const _THR_A       = Math.PI * _THR_RING_R * _THR_RING_R;
+const _THR_QUER    = 3e-3 * 3e-3;
+const _THR_RHO_AL  = 2.65e-8;    // spezifischer Widerstand von Aluminium
+const _THR_DICHTE  = 2700;
+const _THR_UMFANG  = 2 * Math.PI * _THR_RING_R;
+const _THR_R_RING  = _THR_RHO_AL * _THR_UMFANG / _THR_QUER;
+const _THR_M_RING  = _THR_UMFANG * _THR_QUER * _THR_DICHTE;
+const _THR_PENDEL  = 0.35;       // Laenge der bifilaren Aufhaengung in m
+
+// Feld am Ort des Rings. Es ist ausgepraegt inhomogen – genau darauf beruht
+// die Bremswirkung in Phase 1, Teil 2.
+const _THR_BMAX = 0.12;          // Feld am Ruheort des Rings bei vollem Strom
+const _THR_LAMBDA = 0.06;        // Abklinglaenge laengs des Eisenkerns
+
+const _THR_LUFT = 0.5;           // Luftwiderstand und Aufhaengung
+
+let _thr = null;
+
+function _thrInit() {
+  _thr = {
+    station: 0,
+    // Grundversuch
+    an: false, jeAn: false, f: 0, df: 0, tSchalt: 0,
+    x: 0, v: 0, t: 0, spur: [],
+    zeitlupe: 1, eisen: true, geschlitzt: false, laeuft: true,
+    aufbau: 'einzel',         // 'einzel' | 'nn' | 'ns' | 'quer'
+    // Station 2
+    schritt: 0, vorzeichen: 'ein',
+    // Station 3
+    leseT: '', geprueft: null, kernAn: true,
+    // Station 4
+    prognose: null, drehWinkel: 30, drehLaeuft: false, drehT: 0, drehPhi: 0, drehW: 6,
+    // Station 5
+    uAc: 0, hRing: 0, gedrueckt: false, waerme: 20, kanone: false, kanoneT: 0
+  };
+}
+
+// ── Feldaufbau in der Spule ────────────────────────────
+// Einschalten: I(t) = I_max·(1 − e^(−t/τ)) mit τ = L/R
+// Die Halbwertszeit T_1/2 = ln2 · L/R erlaubt es, L aus der Messkurve zu
+// bestimmen – genau das rechnet die Handreichung vor.
+function _thrL() { return _thr.eisen ? _THR_L_EISEN : _THR_L_LEER; }
+function _thrTau() { return _thrL() / _THR_R_SPULE; }
+function _thrTauFuer(L) { return L / _THR_R_SPULE; }
+function _thrHalbwert(L) { return Math.LN2 * L / _THR_R_SPULE; }
+function _thrLAusHalbwert(T12) { return T12 * _THR_R_SPULE / Math.LN2; }
+// Anteil des Endwerts nach der Zeit t
+function _thrAnteil(t, L) { return 1 - Math.exp(-t / _thrTauFuer(L)); }
+// Wann sind p Prozent erreicht?
+function _thrZeitFuer(p, L) { return -_thrTauFuer(L) * Math.log(1 - p); }
+
+// ── Magnetfeld am Ort des Rings ────────────────────────
+// Der Aufbau bestimmt, wie stark der Ring vom Fluss durchsetzt wird.
+function _thrAufbauFaktor() {
+  switch (_thr.aufbau) {
+    // Zwei Spulen, gleiche Pole einander zugewandt: die Fluesse treiben von
+    // beiden Seiten zur Mitte und heben sich dort in Achsenrichtung auf.
+    case 'nn': return 0.04;
+    // Ungleiche Pole einander zugewandt: der Fluss laeuft durch – er addiert sich.
+    case 'ns': return 1.95;
+    // Homogenes Querfeld: der Ring wird gar nicht axial durchsetzt.
+    case 'quer': return 0;
+    default: return 1;
+  }
+}
+function _thrB(x, f) {
+  return _THR_BMAX * _thrAufbauFaktor() * Math.exp(-x / _THR_LAMBDA) * f;
+}
+function _thrdBdx(x, f) { return -_thrB(x, f) / _THR_LAMBDA; }
+
+// ── Induktion im Ring ──────────────────────────────────
+// U_i = −dΦ/dt, und dΦ/dt zerfaellt in zwei Beitraege:
+//   A · ∂B/∂t  – das Feld aendert sich mit der Zeit (Phasen 1.1 und 3)
+//   A · ∂B/∂x · v – der Ring faehrt durch das inhomogene Feld (Phasen 1.2, 2.2)
+// Diese Trennung ist der Kern der Handreichung.
+function _thrUiZeit(x, df) {
+  return -_THR_A * _THR_BMAX * _thrAufbauFaktor() * Math.exp(-x / _THR_LAMBDA) * df;
+}
+function _thrUiOrt(x, v, f) {
+  return -_THR_A * _thrdBdx(x, f) * v;
+}
+function _thrUi(x, v, f, df) { return _thrUiZeit(x, df) + _thrUiOrt(x, v, f); }
+function _thrRRing() { return _thr.geschlitzt ? 1e9 : _THR_R_RING; }
+function _thrIRing(x, v, f, df) { return _thrUi(x, v, f, df) / _thrRRing(); }
+// Kraft auf den stromdurchflossenen Ring im inhomogenen Feld: F = m·dB/dx
+// mit dem magnetischen Moment m = A·I.
+function _thrKraft(x, v, f, df) {
+  return _THR_A * _thrIRing(x, v, f, df) * _thrdBdx(x, f);
+}
+
+// ── Bewegung des Rings ─────────────────────────────────
+function _thrOmega0() { return Math.sqrt(_THR_G / _THR_PENDEL); }
+function _thrSchrittRechnen(dt) {
+  const s = _thr;
+  const F = _thrKraft(s.x, s.v, s.f, s.df);
+  const w0 = _thrOmega0();
+  const a = F / _THR_M_RING - w0 * w0 * s.x - _THR_LUFT * s.v;
+  s.v += a * dt;
+  s.x += s.v * dt;
+}
+function _thrFeldSchritt(dt) {
+  const s = _thr;
+  if (s.an) {
+    const tau = _thrTau();
+    s.df = (1 - s.f) / tau;
+    s.f += s.df * dt;
+    if (s.f > 1) s.f = 1;
+  } else {
+    s.df = -s.f / _THR_TAU_AUS;
+    s.f += s.df * dt;
+    if (s.f < 1e-6) { s.f = 0; s.df = 0; }
+  }
+}
+
+// ── Die Phasen, wie die Handreichung sie unterscheidet ─
+// Erkannt wird am physikalischen Zustand, nicht an der Uhr.
+function _thrPhase() {
+  const s = _thr;
+  if (!s.jeAn) return 'bereit';
+  if (s.an) {
+    if (s.f < 0.95) return '1.1';
+    if (s.v > 0.002) return '1.2';
+    if (s.v < -0.002) return '2.2';
+    return s.x > 0.004 ? '2.1' : '2.3';
+  }
+  return s.f > 0.02 ? '3' : '4';
+}
+const _THR_PHASEN = {
+  'bereit': { n: 'Bereit', t: 'Der Ring hängt in Ruhe. Drücke den Taster.',
+    beob: 'Der Ring hängt still neben der Spule.',
+    deut: 'Ohne Strom kein Magnetfeld, ohne Feldänderung keine Induktion.' },
+  '1.1': { n: 'Phase 1, Teil 1', t: 'Einschalten – der Ring wird abgestoßen',
+    beob: 'Der Ring wird <b>abgestoßen</b>.',
+    deut: 'Durch das Einschalten entsteht ein schnell wachsendes Magnetfeld der Spule. Dadurch wird im Ring ein Strom induziert und dieser erzeugt ein eigenes Magnetfeld. Dass der Ring abgestoßen wird, zeigt: Das Ringfeld ist dem Spulenfeld <b>entgegengerichtet</b>.' },
+  '1.2': { n: 'Phase 1, Teil 2', t: 'Die Abstoßung wird gebremst',
+    beob: 'Die Abstoßung des Rings wird <b>gebremst</b>.',
+    deut: 'Das Spulenfeld ist inzwischen fast vollständig aufgebaut, ändert sich zeitlich also kaum noch. Weil es aber <b>inhomogen</b> ist, nimmt es für den wegfliegenden Ring trotzdem ab. Auch das ist eine Flussänderung – und der jetzt induzierte Strom fließt <b>umgekehrt</b>. Sein Feld ist dem Spulenfeld gleichgerichtet, die Bewegung wird gebremst.' },
+  '2.1': { n: 'Phase 2, Teil 1', t: 'Umkehrpunkt – kurzer Stillstand',
+    beob: 'Der Ring steht für einen Augenblick in maximaler Auslenkung <b>still</b>.',
+    deut: 'Er ruht, das Feld ist zeitlich konstant – es ändert sich also gar nichts am Fluss. Deshalb wird kein Strom induziert und der Ring hat kein eigenes Magnetfeld.' },
+  '2.2': { n: 'Phase 2, Teil 2', t: 'Der Ring kriecht zurück',
+    beob: 'Der Ring <b>kriecht</b> in seine Ruhelage zurück – er schwingt nicht.',
+    deut: 'Wie ein ausgelenktes Pendel wird er zur Ruhelage zurückgezogen. Dabei durchfährt er wieder das inhomogene Feld, es wird wieder ein Strom induziert, und wieder wirkt die Kraft der Bewegung entgegen. Genau deshalb <i>kriecht</i> er, statt zu schwingen.' },
+  '2.3': { n: 'Phase 2, Teil 3', t: 'Der Ring ruht',
+    beob: 'Der Ring <b>ruht</b> in seiner Ausgangslage, obwohl der Strom weiter fließt.',
+    deut: 'Er bewegt sich nicht, das Feld ändert sich nicht – also keine Flussänderung, kein Strom, kein Ringfeld. Ein konstantes Magnetfeld allein bewirkt nichts.' },
+  '3': { n: 'Phase 3', t: 'Ausschalten – der Ring wird angezogen',
+    beob: 'Der Ring wird <b>angezogen</b> und läuft aus Trägheit noch etwas weiter.',
+    deut: 'Beim Ausschalten verschwindet das Spulenfeld sehr schnell. Diese Änderung induziert wieder einen Strom – nun aber in umgekehrter Richtung als beim Einschalten. Das Ringfeld ist dem Spulenfeld jetzt <b>gleichgerichtet</b>, der Ring wird zur Spule hingezogen.' },
+  '4': { n: 'Phase 4', t: 'Freies Pendeln',
+    beob: 'Der Ring <b>pendelt</b> wie ein gewöhnliches Fadenpendel aus.',
+    deut: 'Das Spulenfeld existiert nicht mehr. Ohne äußeres Feld wird kein Strom mehr induziert – es bleibt reine Mechanik.' }
+};
+
+// ── Station 4: Ring am verdrillten Faden ───────────────
+// Φ = B·A·cos θ. Die Flussaenderung ist am groessten, wenn die Ringebene
+// PARALLEL zum Feld steht – nicht, wenn der Ring quer dazu steht.
+// Genau das erkennen Lernende laut Handreichung meist nicht sofort.
+const _THR_B_HUF = 0.25;
+function _thrDrehFluss(phi) { return _THR_B_HUF * _THR_A * Math.cos(phi); }
+function _thrDrehUi(phi, w) { return _THR_B_HUF * _THR_A * Math.sin(phi) * w; }
+function _thrDrehBrems(phi, w) {
+  if (_thr.geschlitzt) return 0;
+  const I = _thrDrehUi(phi, w) / _THR_R_RING;
+  return I * _THR_A * _THR_B_HUF * Math.sin(phi);
+}
+// Das Traegheitsmoment eines duennen Rings um einen Durchmesser
+function _thrTraegheit() { return 0.5 * _THR_M_RING * _THR_RING_R * _THR_RING_R; }
+
+// ── Station 5: Schweben im Wechselfeld ─────────────────
+// Die ausfuehrliche Begruendung ist laut Handreichung sehr anspruchsvoll –
+// sie braucht die Selbstinduktion des Rings, die den Strom phasenverschiebt.
+// Hier wird nur das Ergebnis modelliert: eine zeitlich gemittelte Kraft,
+// die mit dem Quadrat der Spannung waechst und mit der Hoehe abfaellt.
+const _THR_AC_K = 4.5e-4;      // Kraftbeiwert in N/V²; so hebt der Ring
+                               // ab etwa 10 V ab, wie in einem Schulaufbau
+const _THR_AC_LAMBDA = 0.045;  // Abklinglaenge der Kraft in m
+function _thrACKraft(U, h) { return _THR_AC_K * U * U * Math.exp(-2 * h / _THR_AC_LAMBDA); }
+function _thrGewicht() { return _THR_M_RING * _THR_G; }
+// Schwebehoehe: dort ist die Kraft gerade so gross wie die Gewichtskraft
+function _thrSchwebeHoehe(U) {
+  const q = _THR_AC_K * U * U / _thrGewicht();
+  return q <= 1 ? 0 : _THR_AC_LAMBDA / 2 * Math.log(q);
+}
+function _thrSchwebtBei(U) { return _thrSchwebeHoehe(U) > 0.001; }
+// Die Verlustleistung waechst mit demselben Ausdruck wie die Kraft. Deshalb
+// ist sie in der freien Schwebelage IMMER gleich – dort haelt die Kraft ja
+// gerade das Gewicht. Drueckt man den Ring hinunter, steigt sie.
+function _thrACLeistung(U, h) { return 80 * _thrACKraft(U, h); }
+
+// ── Wirbelstromanwendungen ─────────────────────────────
+const _THR_ANWENDUNGEN = [
+  { n: 'Wirbelstrombremse', k: 'Achterbahn, Fallturm, Bahn',
+    t: 'Am bewegten Wagen sitzen Metallfinnen, die zwischen starken Magneten hindurchlaufen. Im Metall entstehen Wirbelströme, deren Felder der Bewegung entgegenwirken. Die Bremse ist <b>verschleißfrei und berührungslos</b> – sie bremst aber nur, solange etwas in Bewegung ist, und kann deshalb nicht festhalten. Genau das ist Phase 2, Teil 3 des Ringversuchs: keine Bewegung, keine Flussänderung, keine Kraft.' },
+  { n: 'Waltenhofensches Pendel', k: 'Vollplatte gegen Kammplatte',
+    t: 'Eine Metallplatte pendelt zwischen den Polen eines Magneten und wird stark abgebremst. Schlitzt man dieselbe Platte kammartig ein, so pendelt sie fast ungehindert weiter: Die Schlitze unterbrechen die Wirbelströme. Das ist derselbe Nachweis wie beim <b>geschlitzten Ring</b> – ohne geschlossenen Stromweg keine Kraft.' },
+  { n: 'Magnet im Aluminiumrohr', k: 'Heimversuch mit Alufolienrolle',
+    t: 'Lässt man einen starken Magneten durch ein Aluminiumrohr gleiten, sinkt er auffällig langsam. Im Rohr entstehen ringförmige Wirbelströme, deren Felder ihn abstoßen. Aluminium ist nicht magnetisch – der Magnet wird nicht angezogen, sondern von seinen eigenen Induktionswirkungen getragen. <b>Vorsicht mit Neodym-Magneten, die Quetschgefahr ist erheblich.</b>' },
+  { n: 'Aluminiumfolie auf Wasser', k: 'Neodym-Magnet kreisend darüber',
+    t: 'Bewegt man einen starken Magneten dicht über einer auf Wasser schwimmenden Aluminiumfolie im Kreis, so wird die Folie mitgezogen. Die Wirbelströme in der Folie versuchen, der Flussänderung entgegenzuwirken – und das gelingt am besten, indem die Folie dem Magneten folgt. Nach demselben Prinzip arbeitet der Asynchronmotor.' },
+  { n: 'Gauß-Kanone', k: 'Coilgun',
+    t: 'Schaltet man den Spulenstrom schlagartig ein statt langsam, so ist die Feldänderung so heftig, dass der Ring regelrecht fortgeschleudert wird. Das ist der Grundversuch zur <b>Gauß-Kanone</b>. Größere selbstgebaute Geräte dieser Art sind ernsthaft gefährlich – der Reiz der Bastelvideos im Netz sollte nicht darüber hinwegtäuschen.' },
+  { n: 'Induktionskochfeld', k: 'Wirbelströme als Heizung',
+    t: 'Hier ist die Verlustwärme nicht Nebenwirkung, sondern Zweck: Ein hochfrequentes Wechselfeld erzeugt Wirbelströme im Topfboden, die ihn direkt erwärmen. Das Kochfeld selbst bleibt kalt. Dasselbe Erwärmen macht sich auch beim schwebenden Ring bemerkbar – er wird spürbar heiß.' }
+];
+
+// ── Oberfläche ─────────────────────────────────────────
+function _thrHTML() {
+  const stationen = ['1 · Der Grundversuch', '2 · Das Minuszeichen',
+                     '3 · Wie schnell wächst das Feld?', '4 · Varianten & Gegenproben',
+                     '5 · Wechselfeld & Wirbelströme']
+    .map((s, i) => `<button class="fpm-tab${i === _thr.station ? ' on' : ''}" id="thrSt${i}" onclick="_thrSetStation(${i})">${s}</button>`).join('');
+
+  const anwendungen = _THR_ANWENDUNGEN.map((a, i) =>
+    `<button class="ebr-obj" id="thrAnw${i}" onclick="_thrSetAnw(${i})">
+       <span class="ebr-obj-n">${a.n}</span><span class="ebr-obj-k">${a.k}</span></button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim thr-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">💍 Thomsonscher Ringversuch: das Schlüsselexperiment</h3>
+    <canvas id="thrTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="thrS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="thrAufbau" width="440" height="270" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Feldspule mit Eisenkern, daneben der bifilar aufgehängte Aluminiumring</div>
+          <canvas id="thrSpur" width="440" height="230" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Auslenkung des Rings und Ringstrom über der Zeit</div>
+        </div>
+        <div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="thrTasterBtn" onclick="_thrTaster()">⏻ Strom einschalten</button>
+            <button class="sim-btn" onclick="_thrReset()">↺ Zurücksetzen</button>
+          </div>
+          <div class="osz-gruppe">
+            <div class="osz-gruppe-k">Ablauf</div>
+            <div class="osz-zeile"><span>Zeitlupe</span>
+              <span class="osz-seg">
+                <button class="osz-segb" id="thrZl1" onclick="_thrSetZeitlupe(1)">1 : 1</button>
+                <button class="osz-segb" id="thrZl4" onclick="_thrSetZeitlupe(4)">1 : 4</button>
+                <button class="osz-segb" id="thrZl20" onclick="_thrSetZeitlupe(20)">1 : 20</button>
+              </span></div>
+            <label class="fpm-check"><input type="checkbox" id="thrGeschlitzt"
+              onchange="_thrSetGeschlitzt(this.checked)"> geschlitzten Ring verwenden (Gegenprobe)</label>
+          </div>
+          <div class="thr-phase" id="thrPhase"></div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Spulenstrom</span><span class="fpm-ro-v" id="thrIA">—</span><span class="fpm-ro-u">% vom Endwert</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Feld am Ring B</span><span class="fpm-ro-v" id="thrBA">—</span><span class="fpm-ro-u">mT</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Auslenkung x</span><span class="fpm-ro-v" id="thrXA">—</span><span class="fpm-ro-u">cm</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Geschwindigkeit v</span><span class="fpm-ro-v" id="thrVA">—</span><span class="fpm-ro-u">m/s</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Ringstrom I</span><span class="fpm-ro-v" id="thrIRA">—</span><span class="fpm-ro-u">A</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Kraft auf den Ring</span><span class="fpm-ro-v" id="thrFA">—</span><span class="fpm-ro-u">mN</span></div>
+          </div>
+          <div class="fpm-label">Woher kommt die Flussänderung gerade?</div>
+          <div class="thr-anteile" id="thrAnteile"></div>
+          <div class="ebr-rechnung" id="thrRechnung"></div>
+        </div>
+      </div>
+      <div class="thr-k3" id="thrK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="thrS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="thrVorz" width="440" height="300" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Feldrichtungen von Spule und Ring</div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" id="thrVzEin" onclick="_thrSetVorzeichen('ein')">Einschalten (Ḃ &gt; 0)</button>
+            <button class="sim-btn" id="thrVzAus" onclick="_thrSetVorzeichen('aus')">Ausschalten (Ḃ &lt; 0)</button>
+          </div>
+          <div class="thr-vorztab" id="thrVorzTab"></div>
+        </div>
+        <div>
+          <div class="fpm-label">Die Argumentation Schritt für Schritt</div>
+          <div class="lsk-schritte" id="thrSchritte"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_thrSchritt(-1)">◀ zurück</button>
+            <button class="sim-btn primary" onclick="_thrSchritt(1)">weiter ▶</button>
+            <button class="sim-btn" onclick="_thrSchritt(99)">alle zeigen</button>
+          </div>
+          <div class="thr-lenz" id="thrLenz"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="thrS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="thrStrom" width="440" height="300" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Spulenstrom nach dem Einschalten – Messkurve wie in Abbildung 3</div>
+          <label class="fpm-check"><input type="checkbox" id="thrKern" checked
+            onchange="_thrSetKern(this.checked)"> Eisenkern eingesetzt</label>
+          <div class="fpm-note">Die Handreichung zeigt beide Kurven: mit Eisenkern (Abbildung 3a)
+            und ohne (Abbildung 3b). Die eisengefüllte Spule hat rund die 7- bis 8-fache
+            Induktivität.</div>
+        </div>
+        <div>
+          <div class="thr-warum" id="thrWarum"></div>
+          <div class="fpm-label" style="margin-top:10px">Halbwertszeit ablesen</div>
+          <div class="osz-lese">
+            <div class="osz-lese-z"><span>T<sub>1/2</sub> =</span>
+              <input type="text" class="fpm-input osz-inp" id="thrLeseT" placeholder="?"
+                spellcheck="false" oninput="_thrSetLese(this.value)"><span>ms</span></div>
+          </div>
+          <div class="ebr-rechnung" id="thrLeseAus"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_thrPruefen()">✓ Ablesung prüfen</button>
+          </div>
+          <div class="lsk-zustand" id="thrLesePruef"></div>
+        </div>
+      </div>
+      <div class="thr-zeitachse" id="thrZeitachse"></div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="thrS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="thrVariante" width="440" height="280" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Aufbau wählen</div>
+          <div class="fsr-quellen" style="flex-wrap:wrap">
+            <button class="fsr-quelle on" id="thrAu0" onclick="_thrSetAufbau('einzel')">
+              <span class="fsr-quelle-n">eine Spule</span><span class="fsr-quelle-k">Grundversuch</span></button>
+            <button class="fsr-quelle" id="thrAu1" onclick="_thrSetAufbau('nn')">
+              <span class="fsr-quelle-n">gleiche Pole</span><span class="fsr-quelle-k">Abb. 5a · N gegenüber N</span></button>
+            <button class="fsr-quelle" id="thrAu2" onclick="_thrSetAufbau('ns')">
+              <span class="fsr-quelle-n">ungleiche Pole</span><span class="fsr-quelle-k">Abb. 5b · N gegenüber S</span></button>
+            <button class="fsr-quelle" id="thrAu3" onclick="_thrSetAufbau('quer')">
+              <span class="fsr-quelle-n">homogenes Querfeld</span><span class="fsr-quelle-k">Gegenprobe</span></button>
+          </div>
+          <div class="thr-prognose" id="thrPrognose"></div>
+        </div>
+        <div>
+          <div class="fpm-label">Ring am verdrillten Faden im Hufeisenfeld (Abbildung 7)</div>
+          <canvas id="thrDreh" width="440" height="220" class="phys-anim-cv"></canvas>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="thrDrehBtn" onclick="_thrDrehToggle()">▶ Faden entdrillen lassen</button>
+            <button class="sim-btn" onclick="_thrDrehReset()">↺ neu verdrillen</button>
+          </div>
+          <div class="ebr-rechnung" id="thrDrehRechnung"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="thrS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="thrSchweb" width="440" height="320" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Senkrechter Aufbau, Feldspule mit Wechselstrom (Abbildung 6)</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Wechselspannung: <b id="thrUacLbl">0 V</b></span>
+            <input type="range" id="thrUac" min="0" max="30" step="0.5" value="0"
+              oninput="_thrSetUac(this.value)" style="width:100%;accent-color:#dc2626">
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" id="thrDrueckBtn" onclick="_thrDruecken()">👇 Ring hinunterdrücken</button>
+            <button class="sim-btn" onclick="_thrKanone()">💥 schlagartig einschalten</button>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="thrSchwebRechnung"></div>
+          <div class="lsk-zustand" id="thrWaerme"></div>
+          <div class="fpm-label" style="margin-top:10px">Wirbelströme in Natur und Technik</div>
+          <div class="ebr-objs">${anwendungen}</div>
+          <div class="thr-anw" id="thrAnwText"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="thrErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>U<sub>i</sub> = −dΦ/dt</b> &nbsp;|&nbsp; <b>Ḃ &gt; 0 ⇒ U<sub>i</sub> = −U</b>
+      &nbsp;|&nbsp; <b>Ḃ &lt; 0 ⇒ U<sub>i</sub> = +U</b>
+      &nbsp;|&nbsp; <b>T<sub>1/2</sub> = ln 2 · L / R</b>
+    </p>
+  </div>`;
+}
+
+function _thrErklHTML() {
+  return `<div class="dsp-erkl-kopf">Wozu dieser Versuch der Schlüssel ist</div>
+    <div class="dsp-erkl-text">
+      Dass eine Flussänderung eine Spannung induziert, weiß man schon. Offen ist nur eine Frage:
+      <b>in welche Richtung?</b> Genau darauf antwortet der Thomsonsche Ringversuch – er ist der
+      experimentell gesicherte Schlüssel zum <b>Minuszeichen</b> in U<sub>i</sub> = −dΦ/dt. Und er
+      verlangt dabei etwas, das man in der Physik selten so unmittelbar üben kann: <b>sehr genaues
+      Hinsehen</b>. Der Versuch dauert keine zwei Sekunden, enthält aber sieben klar unterscheidbare
+      Teilphasen. Wer nur „der Ring springt weg" beobachtet, hat das Wesentliche verpasst.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Der Aufbau</div>
+    <div class="dsp-erkl-text">
+      Eine Feldspule mit 500 bis 600 Windungen, durch ihren Hohlraum ein langer Eisenkern, der auch
+      den daneben hängenden Aluminiumring durchsetzt. Der Kern verstärkt das Feld erheblich. Der
+      Ring hängt <b>bifilar</b>, also an zwei Fäden – so kann er beim Wegfliegen nicht seitlich
+      ausweichen. Geschaltet wird mit einem Taster. Als Quelle empfiehlt sich ein Akku: Bei
+      Netzteilen mit Restwelligkeit sieht man den Ring in seiner Ruhelage leicht zittern.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Das Entscheidende: Die Feldrichtung ändert sich nie</div>
+    <div class="dsp-erkl-text">
+      Ein Punkt, an dem viele Erklärungen scheitern: Das Magnetfeld der Spule wird während des
+      ganzen Versuchs <b>nur auf- und wieder abgebaut</b> – seine Richtung bleibt immer dieselbe.
+      Der Nordpol bleibt, wo er ist. Was sich umkehrt, ist allein die Richtung des <b>Ringstroms</b>,
+      und zwar je nachdem, ob der Fluss durch den Ring gerade zu- oder abnimmt.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Zwei Ursachen, eine Formel</div>
+    <div class="dsp-erkl-text">
+      Der Fluss durch den Ring, Φ = B · A, kann sich aus zwei Gründen ändern: weil <b>B sich mit der
+      Zeit ändert</b> (Ein- und Ausschalten) oder weil der Ring sich <b>durch ein inhomogenes
+      Feld bewegt</b> und dabei in Bereiche anderer Feldstärke gerät. Beim Ringversuch treten
+      nacheinander beide auf – und genau das macht den Ablauf so lehrreich. In Phase 1, Teil 1
+      wirkt die erste Ursache, in Phase 1, Teil 2 und in Phase 2, Teil 2 die zweite.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum das Feld schon fertig ist, wenn der Ring noch fliegt</div>
+    <div class="dsp-erkl-text">
+      Die Deutung von Phase 1, Teil 2 steht und fällt damit, dass das Spulenfeld längst vollständig
+      aufgebaut ist, während der Ring noch unterwegs ist. Die Handreichung belegt das mit einer
+      Messung: Der Spulenstrom erreicht nach etwa <b>60 bis 70 ms</b> rund 95 % seines Endwerts,
+      der Ring braucht aber etwa <b>250 ms</b> bis zum Umkehrpunkt. In den letzten rund 180 ms
+      bewegt er sich also durch ein Feld, das sich zeitlich nicht mehr ändert – die Bremsung kann
+      dann nur von der <b>Inhomogenität</b> herrühren. Aus der Halbwertszeit der Stromkurve lässt
+      sich über T<sub>1/2</sub> = ln 2 · L/R sogar die Induktivität bestimmen: Mit R = 5 Ω ergibt
+      sich L ≈ 108 mH.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die Lenzsche Regel</div>
+    <div class="dsp-erkl-text">
+      Fasst man die Beobachtungen zusammen, ergibt sich: Beim Einschalten (Ḃ &gt; 0) sind die
+      Felder von Spule und Ring <b>entgegengesetzt</b>, induzierte und angelegte Spannung also
+      auch – U<sub>i</sub> = −U. Beim Ausschalten (Ḃ &lt; 0) sind sie <b>gleichgerichtet</b> –
+      U<sub>i</sub> = +U. Ḃ und U<sub>i</sub> haben also stets <b>entgegengesetztes Vorzeichen</b>.
+      Sprachlich: <i>Die induzierte Spannung, der dadurch fließende Strom und dessen Magnetfeld
+      sind stets so gerichtet, dass sie der Änderung entgegenwirken, die sie hervorruft.</i>
+      Das ist die Lenzsche Regel – und sie ist nichts anderes als der Energieerhaltungssatz in
+      Verkleidung: Würde das Ringfeld die Änderung <i>verstärken</i>, entstünde eine
+      Selbstverstärkung, die aus dem Nichts Energie liefern würde.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Ein Hinweis zur Argumentation</div>
+    <div class="dsp-erkl-text">
+      Die Handreichung rät ausdrücklich davon ab, im Grundkurs mit dem <b>Umlaufsinn einer
+      Fläche</b> zu argumentieren – das hilft erfahrungsgemäß wenig. Einfacher ist der Vergleich
+      der <b>Vorzeichen</b> von B und U<sub>i</sub>: Eine negative Induktionsspannung bedeutet,
+      dass sie einer vorgegebenen Spannung entgegengesetzt ist, eine positive, dass sie ihr
+      gleichgerichtet ist.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Wozu das alles gut ist</div>
+    <div class="dsp-erkl-text">
+      Der Ringversuch ist die Grundlage aller <b>Wirbelstromanwendungen</b>: der berührungslosen
+      Bremsen an Achterbahnen, Falltürmen und Zügen, des Waltenhofenschen Pendels, des langsam
+      fallenden Magneten im Aluminiumrohr, des Induktionskochfelds. Ihnen allen ist gemeinsam,
+      dass sie nur wirken, <b>solange sich etwas ändert</b> – eine Wirbelstrombremse kann deshalb
+      abbremsen, aber niemals festhalten.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Beim schwebenden Ring im Wechselfeld: Der Ring wird <b>heiß</b>.
+      Drückt man ihn unter seine Schwebehöhe, erwärmt er sich noch deutlich schneller. Bei
+      Ergänzungsversuchen mit Neodym-Magneten ist die Quetschgefahr nicht zu unterschätzen.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _thrSetStation(i) {
+  _thr.station = i;
+  for (let k = 0; k < 5; k++) {
+    document.getElementById('thrSt' + k)?.classList.toggle('on', k === i);
+    const d = document.getElementById('thrS' + k);
+    if (d) d.style.display = k === i ? 'block' : 'none';
+  }
+  _thrUpdate();
+}
+
+// ── Station 1 ──────────────────────────────────────────
+function _thrTaster() {
+  _thr.an = !_thr.an;
+  if (_thr.an) { _thr.jeAn = true; }
+  const b = document.getElementById('thrTasterBtn');
+  if (b) b.textContent = _thr.an ? '⏻ Strom ausschalten' : '⏻ Strom einschalten';
+  _thrUpdate();
+}
+function _thrReset() {
+  _thr.an = false; _thr.jeAn = false; _thr.f = 0; _thr.df = 0;
+  _thr.x = 0; _thr.v = 0; _thr.t = 0; _thr.spur = [];
+  const b = document.getElementById('thrTasterBtn');
+  if (b) b.textContent = '⏻ Strom einschalten';
+  _thrUpdate();
+}
+function _thrSetZeitlupe(z) {
+  _thr.zeitlupe = z;
+  [1, 4, 20].forEach(k => document.getElementById('thrZl' + k)?.classList.toggle('on', k === z));
+  _thrUpdate();
+}
+function _thrSetGeschlitzt(v) { _thr.geschlitzt = !!v; _thrReset(); }
+
+function _thrUpdate() {
+  if (!_thr) return;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  const s = _thr;
+  const B = _thrB(s.x, s.f), I = _thrIRing(s.x, s.v, s.f, s.df);
+  const F = _thrKraft(s.x, s.v, s.f, s.df);
+  set('thrIA', _fpmNum(s.f * 100, 1));
+  set('thrBA', _fpmNum(B * 1000, 2));
+  set('thrXA', _fpmNum(s.x * 100, 2));
+  set('thrVA', _fpmNum(s.v, 3));
+  set('thrIRA', _fpmNum(I, 1));
+  set('thrFA', _fpmNum(F * 1000, 2));
+  [1, 4, 20].forEach(k => document.getElementById('thrZl' + k)?.classList.toggle('on', k === s.zeitlupe));
+
+  const ph = _thrPhase();
+  const P = _THR_PHASEN[ph];
+  const el = document.getElementById('thrPhase');
+  if (el) {
+    el.className = 'thr-phase ' + (ph === 'bereit' ? '' : ph === '4' ? 'fertig' : 'an');
+    el.innerHTML = `<div class="thr-phase-k">${P.n}<span>${P.t}</span></div>
+      <div class="thr-phase-b"><b>Beobachtung</b> ${P.beob}</div>
+      <div class="thr-phase-d"><b>Deutung</b> ${P.deut}</div>`;
+  }
+
+  // Die beiden Beitraege zur Flussaenderung getrennt ausweisen
+  const an = document.getElementById('thrAnteile');
+  if (an) {
+    const uz = _thrUiZeit(s.x, s.df), uo = _thrUiOrt(s.x, s.v, s.f);
+    const ges = Math.abs(uz) + Math.abs(uo);
+    const pz = ges > 1e-12 ? Math.abs(uz) / ges * 100 : 0;
+    an.innerHTML = `
+      <div class="thr-balken">
+        <div class="thr-balken-z" style="width:${_fpmNum(pz, 1)}%"></div>
+        <div class="thr-balken-o" style="width:${_fpmNum(100 - pz, 1)}%"></div>
+      </div>
+      <div class="thr-balken-lbl">
+        <span><i class="thr-pkt z"></i>Feld ändert sich mit der Zeit · ${_fpmNum(pz, 0)} %</span>
+        <span><i class="thr-pkt o"></i>Ring fährt durchs inhomogene Feld · ${_fpmNum(100 - pz, 0)} %</span>
+      </div>`;
+  }
+
+  const r = document.getElementById('thrRechnung');
+  if (r) {
+    const uz = _thrUiZeit(s.x, s.df), uo = _thrUiOrt(s.x, s.v, s.f);
+    r.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">weil das Feld zeitlich wächst oder fällt</span>
+        <span class="pho-rz-f">−A · ∂B/∂t</span>
+        <span class="pho-rz-v">${_fpmNum(uz * 1000, 2)} mV</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">weil der Ring durchs inhomogene Feld fährt</span>
+        <span class="pho-rz-f">−A · ∂B/∂x · v</span>
+        <span class="pho-rz-v">${_fpmNum(uo * 1000, 2)} mV</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Induktionsspannung insgesamt</span>
+        <span class="pho-rz-f">U<sub>i</sub> = −dΦ/dt</span>
+        <span class="pho-rz-v">${_fpmNum((uz + uo) * 1000, 2)} mV</span></div>
+      ${s.geschlitzt ? '<div class="fpm-note">Der Ring ist <b>geschlitzt</b>. Die Spannung wird '
+        + 'nach wie vor induziert – aber der Stromweg ist unterbrochen, es fließt kein Strom, es '
+        + 'entsteht kein Ringfeld und damit keine Kraft. Der Ring hängt einfach da. Das ist die '
+        + 'sauberste Gegenprobe zum ganzen Versuch.</div>' : ''}`;
+  }
+
+  _thrRenderK3();
+  _thrRenderVorz();
+  _thrRenderStrom();
+  _thrRenderPrognose();
+  _thrRenderDreh();
+  _thrRenderSchweb();
+}
+
+function _thrRenderK3() {
+  const el = document.getElementById('thrK3'); if (!el) return;
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du diesen Versuch jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Wir wollen herausfinden, in <b>welche Richtung</b> eine Induktionsspannung wirkt – also
+        warum im Induktionsgesetz ein Minuszeichen steht.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Eine Feldspule mit langem Eisenkern; der Kern durchsetzt einen daneben bifilar
+        aufgehängten Aluminiumring. Der Spulenstrom lässt sich mit einem Taster ein- und
+        ausschalten.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Strom einschalten, warten, wieder ausschalten – und dabei sehr genau hinsehen.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        Beim <b>Einschalten</b> wird der Ring abgestoßen, beim <b>Ausschalten</b> angezogen.
+        Dazwischen kriecht er langsam zurück, danach pendelt er frei aus.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Das Ringfeld wirkt der Änderung immer entgegen: Wächst der Fluss, stellt es sich dagegen
+        (Abstoßung); schwindet der Fluss, versucht es ihn zu halten (Anziehung). Das ist die
+        <b>Lenzsche Regel</b> – und der Grund für das Minuszeichen.</div>
+    </div>`;
+}
+
+// ── Station 2: das Minuszeichen ────────────────────────
+function _thrSetVorzeichen(v) {
+  _thr.vorzeichen = v;
+  document.getElementById('thrVzEin')?.classList.toggle('primary', v === 'ein');
+  document.getElementById('thrVzAus')?.classList.toggle('primary', v === 'aus');
+  _thrRenderVorz();
+}
+function _thrSchritt(d) {
+  _thr.schritt = d === 99 ? 4 : Math.max(0, Math.min(4, _thr.schritt + d));
+  _thrRenderVorz();
+}
+const _THR_SCHRITTE = [
+  { k: 'Was fest bleibt',
+    t: 'Die Feldspule behält während des ganzen Versuchs ihre <b>Polung</b>. Ihr Nordpol wandert nicht. Das Spulenfeld wird nur auf- und wieder abgebaut.',
+    f: '' },
+  { k: 'Einschalten: Der Fluss wächst',
+    t: 'Beim Einschalten wächst das Spulenfeld schnell an, der Fluss durch den Ring nimmt also zu.',
+    f: 'Ḃ &gt; 0' },
+  { k: 'Was man sieht, verrät die Feldrichtung',
+    t: 'Der Ring wird <b>abgestoßen</b>. Zwei Magnetfelder stoßen einander genau dann ab, wenn sie <b>entgegengesetzt</b> gerichtet sind. Also muss das Ringfeld dem Spulenfeld entgegenstehen – das ist keine Annahme, sondern eine Ablesung aus der Beobachtung.',
+    f: 'B<sub>Ring</sub> ↑↓ B<sub>Spule</sub>  ⇒  U<sub>i</sub> = −U' },
+  { k: 'Ausschalten: Der Fluss schwindet',
+    t: 'Beim Ausschalten bricht das Spulenfeld zusammen. Jetzt wird der Ring <b>angezogen</b> – und anziehen tun sich Felder, die <b>gleich</b> gerichtet sind.',
+    f: 'Ḃ &lt; 0  ⇒  B<sub>Ring</sub> ↑↑ B<sub>Spule</sub>  ⇒  U<sub>i</sub> = +U' },
+  { k: 'Das Minuszeichen',
+    t: 'Beide Fälle zusammengenommen: Wächst B, ist U<sub>i</sub> negativ; fällt B, ist U<sub>i</sub> positiv. Ḃ und U<sub>i</sub> haben also <b>immer entgegengesetztes Vorzeichen</b>. Genau das drückt das Minuszeichen im Induktionsgesetz aus.',
+    f: 'U<sub>i</sub> = −dΦ/dt' }
+];
+function _thrRenderVorz() {
+  const el = document.getElementById('thrSchritte');
+  if (el) {
+    el.innerHTML = _THR_SCHRITTE.map((sc, i) => {
+      const aktiv = i <= _thr.schritt;
+      return `<div class="lsk-schritt${aktiv ? ' an' : ''}${i === _thr.schritt ? ' jetzt' : ''}">
+        <span class="lsk-schritt-n">${i + 1}</span>
+        <div><div class="lsk-schritt-k">${sc.k}</div>
+        ${aktiv ? '<div class="lsk-schritt-t">' + sc.t + '</div>' : ''}
+        ${aktiv && sc.f ? '<div class="lsk-schritt-f">' + sc.f + '</div>' : ''}</div></div>`;
+    }).join('');
+  }
+  const tab = document.getElementById('thrVorzTab');
+  if (tab) {
+    const ein = _thr.vorzeichen === 'ein';
+    tab.innerHTML = `
+      <table class="sim-table thr-tab">
+        <thead><tr><th></th><th>Einschalten</th><th>Ausschalten</th></tr></thead>
+        <tbody>
+          <tr><td>Fluss durch den Ring</td><td class="${ein ? 'hell' : ''}">nimmt zu</td><td class="${ein ? '' : 'hell'}">nimmt ab</td></tr>
+          <tr><td>Ḃ</td><td class="${ein ? 'hell' : ''}">&gt; 0</td><td class="${ein ? '' : 'hell'}">&lt; 0</td></tr>
+          <tr><td>Beobachtung</td><td class="${ein ? 'hell' : ''}"><b>abgestoßen</b></td><td class="${ein ? '' : 'hell'}"><b>angezogen</b></td></tr>
+          <tr><td>Felder von Ring und Spule</td><td class="${ein ? 'hell' : ''}">entgegengesetzt</td><td class="${ein ? '' : 'hell'}">gleichgerichtet</td></tr>
+          <tr><td>Induktionsspannung</td><td class="${ein ? 'hell' : ''}">U<sub>i</sub> = −U</td><td class="${ein ? '' : 'hell'}">U<sub>i</sub> = +U</td></tr>
+          <tr><td>Vorzeichen von Ḃ und U<sub>i</sub></td><td class="${ein ? 'hell' : ''}">entgegengesetzt</td><td class="${ein ? '' : 'hell'}">entgegengesetzt</td></tr>
+        </tbody>
+      </table>`;
+  }
+  const lz = document.getElementById('thrLenz');
+  if (lz) {
+    lz.innerHTML = `<div class="git-sch-kopf">Die Lenzsche Regel</div>
+      <div class="thr-lenz-satz">Die induzierte Spannung, der dadurch fließende Strom und dessen
+        Magnetfeld sind stets so gerichtet, dass sie <b>der Änderung entgegenwirken, die sie
+        hervorruft</b>.</div>
+      <div class="thr-lenz-t">Man kann die Regel auch aus der <b>Energieerhaltung</b> begründen:
+        Würde das Ringfeld die Änderung nicht hemmen, sondern verstärken, so würde die dadurch
+        erzeugte Bewegung ihrerseits die Induktion vergrößern und so fort – ein sich selbst
+        aufschaukelnder Vorgang, der aus dem Nichts Energie liefern würde. Die Lenzsche Regel ist
+        also kein zusätzliches Naturgesetz, sondern eine Folge eines bekannten.</div>
+      <div class="fpm-note">Die Handreichung rät davon ab, im Grundkurs mit dem <b>Umlaufsinn
+        einer Fläche</b> zu argumentieren – das hilft erfahrungsgemäß wenig. Der Vergleich der
+        Vorzeichen von B und U<sub>i</sub> ist der leichter zugängliche Weg.</div>`;
+  }
+}
+
+// ── Station 3: der Feldaufbau ──────────────────────────
+function _thrSetKern(v) { _thr.kernAn = !!v; _thr.geprueft = null; _thrRenderStrom(); }
+function _thrSetLese(v) { _thr.leseT = v; _thrRenderStrom(); }
+function _thrLeseL() {
+  const t = parseFloat(String(_thr.leseT).replace(',', '.'));
+  return isFinite(t) && t > 0 ? _thrLAusHalbwert(t / 1000) : NaN;
+}
+function _thrPruefen() {
+  const L = _thrLeseL();
+  const soll = _thr.kernAn ? _THR_L_EISEN : _THR_L_LEER;
+  _thr.geprueft = isFinite(L) ? { L, soll, abw: Math.abs(L - soll) / soll * 100 } : { L: NaN, soll };
+  _thrRenderStrom();
+}
+function _thrRenderStrom() {
+  const L = _thr.kernAn ? _THR_L_EISEN : _THR_L_LEER;
+  const w = document.getElementById('thrWarum');
+  if (w) {
+    const t95 = _thrZeitFuer(0.95, _THR_L_EISEN);
+    w.innerHTML = `<div class="git-sch-kopf">Warum diese Messung gebraucht wird</div>
+      <div class="thr-warum-t">
+        Die Deutung von Phase 1, Teil 2 – die Bremsung stammt allein von der <b>Inhomogenität</b>
+        des Feldes – gilt nur, wenn das Feld zu diesem Zeitpunkt schon <b>fertig aufgebaut</b> ist.
+        Das lässt sich nicht behaupten, das muss man messen. Der Spulenstrom folgt
+        I(t) = I<sub>max</sub> · (1 − e<sup>−t/τ</sup>) mit τ = L/R und erreicht 95 % seines
+        Endwerts nach <b>${_fpmNum(t95 * 1000, 0)} ms</b>. Der Ring braucht aber rund
+        <b>250 ms</b> bis zum Umkehrpunkt. In den letzten etwa <b>180 ms</b> bewegt er sich also
+        durch ein Feld, das sich zeitlich nicht mehr ändert.
+      </div>
+      <div class="fpm-note">Im Grundkurs muss man diese Rechnung nicht durchführen – es genügt der
+        Hinweis, dass das Feld sehr viel schneller aufgebaut ist, als der Ring fliegt. Die
+        Lehrkraft sollte die Zeiten aber kennen. Der Zusammenhang war 2014 Gegenstand einer
+        Zentralabituraufgabe.</div>`;
+  }
+  const el = document.getElementById('thrLeseAus');
+  if (el) {
+    const Lg = _thrLeseL();
+    if (!isFinite(Lg)) {
+      el.innerHTML = '<div class="fpm-note">Lies in der Kurve ab, nach welcher Zeit der Strom die '
+        + '<b>Hälfte</b> seines Endwerts erreicht hat, und trage sie oben ein. Daraus folgt die '
+        + 'Induktivität der Spule.</div>';
+    } else {
+      el.innerHTML = `
+        <div class="pho-rz"><span class="pho-rz-t">abgelesene Halbwertszeit</span>
+          <span class="pho-rz-f">T<sub>1/2</sub></span>
+          <span class="pho-rz-v">${_fpmNum(parseFloat(String(_thr.leseT).replace(',', '.')), 2)} ms</span></div>
+        <div class="pho-rz"><span class="pho-rz-t">Widerstand der Feldspule</span>
+          <span class="pho-rz-f">R</span><span class="pho-rz-v">${_fpmNum(_THR_R_SPULE, 1)} Ω</span></div>
+        <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">daraus die Induktivität</span>
+          <span class="pho-rz-f">L = T<sub>1/2</sub> · R / ln 2</span>
+          <span class="pho-rz-v">${_fpmNum(Lg * 1000, 2)} mH</span></div>
+        <div class="fpm-note">Aus T<sub>1/2</sub> = ln 2 · L/R folgt umgestellt
+          L = T<sub>1/2</sub> · R / ln 2. Die Halbwertszeit ist bei einem Exponentialverlauf
+          immer dieselbe – egal, von welchem Punkt aus man sie misst.</div>`;
+    }
+  }
+  const pr = document.getElementById('thrLesePruef');
+  if (pr) {
+    const g = _thr.geprueft;
+    if (!g) { pr.className = 'lsk-zustand'; pr.innerHTML = 'Trage deine Ablesung ein und prüfe sie.'; return; }
+    if (!isFinite(g.L)) {
+      pr.className = 'lsk-zustand no';
+      pr.innerHTML = 'Keine Zahl eingetragen.';
+      return;
+    }
+    const gut = g.abw < 12;
+    pr.className = 'lsk-zustand ' + (gut ? 'ok' : 'no');
+    pr.innerHTML = (gut ? '<b>Gut abgelesen.</b> ' : '<b>Da stimmt etwas nicht.</b> ')
+      + 'Der Sollwert ist L = ' + _fpmNum(g.soll * 1000, 1) + ' mH, deine Ablesung ergibt '
+      + _fpmNum(g.L * 1000, 1) + ' mH – ' + _fpmNum(g.abw, 1) + ' % daneben.'
+      + (_thr.kernAn
+        ? ' Das Handbuch nennt für die eisengefüllte Spule 108 mH.'
+        : ' Ohne Eisenkern ist die Induktivität rund sieben- bis achtmal kleiner.');
+  }
+  const za = document.getElementById('thrZeitachse');
+  if (za) {
+    const t95 = _thrZeitFuer(0.95, _THR_L_EISEN) * 1000;
+    za.innerHTML = `<div class="git-sch-kopf">Die beiden Zeitskalen nebeneinander</div>
+      <div class="thr-zeit-bar">
+        <div class="thr-zeit-feld" style="width:${_fpmNum(t95 / 250 * 100, 1)}%">Feld aufgebaut · ${_fpmNum(t95, 0)} ms</div>
+        <div class="thr-zeit-ring">Ring fliegt weiter, Feld schon konstant · ${_fpmNum(250 - t95, 0)} ms</div>
+      </div>
+      <div class="thr-warum-t">Bis zum Umkehrpunkt vergehen rund 250 ms. Nur im ersten kleinen
+        Abschnitt wächst das Feld noch merklich. Die Bremsung, die man in Phase 1, Teil 2
+        beobachtet, fällt vollständig in den zweiten Abschnitt – sie kann also unmöglich von einer
+        zeitlichen Feldänderung stammen, sondern nur davon, dass der Ring in Bereiche
+        <b>schwächeren</b> Feldes gerät.</div>`;
+  }
+}
+
+// ── Station 4: Varianten ───────────────────────────────
+function _thrSetAufbau(a) {
+  _thr.aufbau = a;
+  ['einzel', 'nn', 'ns', 'quer'].forEach((k, i) =>
+    document.getElementById('thrAu' + i)?.classList.toggle('on', k === a));
+  _thr.prognose = null;
+  _thrReset();
+}
+function _thrSetAnw(i) {
+  const el = document.getElementById('thrAnwText');
+  const a = _THR_ANWENDUNGEN[i];
+  _THR_ANWENDUNGEN.forEach((x, k) =>
+    document.getElementById('thrAnw' + k)?.classList.toggle('on', k === i));
+  if (el) el.innerHTML = `<div class="thr-anw-k">${a.n}</div><div class="thr-anw-t">${a.t}</div>`;
+}
+function _thrRenderPrognose() {
+  const el = document.getElementById('thrPrognose'); if (!el) return;
+  const a = _thr.aufbau;
+  const staerke = _thrAufbauFaktor();
+  const texte = {
+    'einzel': ['Der Grundversuch', 'Eine Spule, ein Eisenkern, ein Ring. Beim Einschalten Abstoßung, beim Ausschalten Anziehung.'],
+    'nn': ['Gleiche Pole einander zugewandt (Abbildung 5a)',
+      'Zwei in Reihe geschaltete Feldspulen auf demselben Kern, mit <b>gleichen Polen</b> zueinander. '
+      + 'Beide treiben den Fluss von ihrer Seite zur Mitte – dort heben sich die Beiträge längs der '
+      + 'Achse weitgehend auf. Durch den Ring geht deshalb <b>fast kein Fluss</b>, und er reagiert '
+      + 'kaum. Diese Prognose können Lernende sicher stellen, sofern sie die Polung richtig erkannt '
+      + 'haben.'],
+    'ns': ['Ungleiche Pole einander zugewandt (Abbildung 5b)',
+      'Jetzt liegt ein Nordpol dem Südpol der anderen Spule gegenüber. Der Fluss läuft glatt durch '
+      + 'den Kern hindurch, die Beiträge <b>addieren</b> sich. Durch den Ring geht damit rund der '
+      + 'doppelte Fluss wie beim Grundversuch, und die Wirkung ist entsprechend heftiger. Die '
+      + 'Handreichung schlägt vor, hier eine Prognose <i>vor</i> der Durchführung zu verlangen – '
+      + 'und bei Fehlprognosen auch darüber zu sprechen, warum man seine Meinung geändert hat.'],
+    'quer': ['Homogenes Querfeld – die Gegenprobe',
+      'Ein <b>homogenes</b> Feld, das von vorn nach hinten zeigt, durchsetzt den Ring gar nicht in '
+      + 'Achsenrichtung. Und selbst wenn: In einem homogenen Feld ändert sich der Fluss durch eine '
+      + 'starre Leiterschleife nicht, solange man sie nur <b>verschiebt</b> und nicht dreht. Es wird '
+      + 'also nichts induziert und der Ring wird in den Phasen 1 und 2 auch nicht gebremst. Genau '
+      + 'darauf weist die Handreichung hin – die Bremswirkung im Grundversuch stammt <i>allein</i> '
+      + 'von der Inhomogenität.']
+  };
+  const t = texte[a];
+  el.innerHTML = `<div class="thr-prog-k">${t[0]}</div>
+    <div class="thr-prog-t">${t[1]}</div>
+    <div class="thr-prog-w">Fluss durch den Ring gegenüber dem Grundversuch:
+      <b>${staerke === 0 ? 'null' : _fpmNum(staerke * 100, 0) + ' %'}</b></div>`;
+}
+
+function _thrDrehToggle() {
+  _thr.drehLaeuft = !_thr.drehLaeuft;
+  const b = document.getElementById('thrDrehBtn');
+  if (b) b.textContent = _thr.drehLaeuft ? '⏸ Anhalten' : '▶ Faden entdrillen lassen';
+  _thrRenderDreh();
+}
+function _thrDrehReset() {
+  _thr.drehLaeuft = false; _thr.drehPhi = 0; _thr.drehW = 6; _thr.drehT = 0;
+  const b = document.getElementById('thrDrehBtn');
+  if (b) b.textContent = '▶ Faden entdrillen lassen';
+  _thrRenderDreh();
+}
+function _thrRenderDreh() {
+  const el = document.getElementById('thrDrehRechnung'); if (!el) return;
+  const phi = _thr.drehPhi, w = _thr.drehW;
+  const s = Math.abs(Math.sin(phi));
+  const parallel = s > 0.9;
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Fluss durch den Ring</span>
+      <span class="pho-rz-f">Φ = B · A · cos θ</span>
+      <span class="pho-rz-v">${_ebrExp(_thrDrehFluss(phi), 2)} Wb</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Winkelgeschwindigkeit</span>
+      <span class="pho-rz-f">θ̇</span>
+      <span class="pho-rz-v">${_fpmNum(w, 2)} 1/s</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">induzierte Spannung</span>
+      <span class="pho-rz-f">U<sub>i</sub> = B·A·sin θ · θ̇</span>
+      <span class="pho-rz-v">${_fpmNum(_thrDrehUi(phi, w) * 1000, 3)} mV</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">bremsendes Drehmoment ∝ sin²θ</span>
+      <span class="pho-rz-f">M = A²·B²·sin²θ · θ̇ / R</span>
+      <span class="pho-rz-v">${_ebrExp(Math.abs(_thrDrehBrems(phi, w)), 2)} N·m</span></div>
+    <div class="fpm-note">${_thr.geschlitzt
+      ? 'Der Ring ist geschlitzt – kein Stromweg, kein Bremsmoment. Er dreht ungehindert weiter.'
+      : parallel
+        ? '<b>Die Ringebene steht gerade parallel zum Feld.</b> Hier ist die Änderung der wirksamen '
+          + 'Fläche am größten – und damit die Bremsung. Das erkennen Lernende laut Handreichung '
+          + 'meist nicht sofort; viele vermuten die stärkste Bremsung dort, wo der Ring quer zum '
+          + 'Feld steht und der Fluss am größten ist. Entscheidend ist aber nicht der Fluss, '
+          + 'sondern seine <b>Änderungsrate</b>.'
+        : 'Steht die Ringebene <b>quer</b> zum Feld, ist der Fluss zwar maximal, ändert sich aber '
+          + 'gerade kaum – die Bremsung ist dort am kleinsten. Der Ring nimmt wieder Fahrt auf.'}
+      Und zur naheliegenden Frage, ob ein sehr starker Magnet den Ring ganz zum Stillstand bringen
+      könnte: nein. Das Bremsmoment ist der Drehgeschwindigkeit proportional und verschwindet mit
+      ihr. Der Ring kommt beliebig nah an den Stillstand heran, erreicht ihn aber nie.</div>`;
+}
+
+// ── Station 5: Wechselfeld ─────────────────────────────
+function _thrSetUac(v) {
+  _thr.uAc = Math.max(0, Math.min(30, +v));
+  const sl = document.getElementById('thrUac'); if (sl) sl.value = String(_thr.uAc);
+  const el = document.getElementById('thrUacLbl'); if (el) el.textContent = _fpmNum(_thr.uAc, 1) + ' V';
+  _thrRenderSchweb();
+}
+function _thrDruecken() {
+  _thr.gedrueckt = !_thr.gedrueckt;
+  const b = document.getElementById('thrDrueckBtn');
+  if (b) b.textContent = _thr.gedrueckt ? '☝ Ring loslassen' : '👇 Ring hinunterdrücken';
+  _thrRenderSchweb();
+}
+function _thrKanone() {
+  _thr.kanone = true; _thr.kanoneT = 0;
+  if (_thr.uAc < 12) _thrSetUac(20);
+  _thrRenderSchweb();
+}
+// Hoehe, in der sich der Ring gerade befindet
+function _thrHoehe() {
+  const frei = _thrSchwebeHoehe(_thr.uAc);
+  return _thr.gedrueckt ? Math.min(frei, 0.01) : frei;
+}
+function _thrRenderSchweb() {
+  const el = document.getElementById('thrSchwebRechnung'); if (!el) return;
+  const U = _thr.uAc, h = _thrHoehe();
+  const F = _thrACKraft(U, h), G = _thrGewicht(), P = _thrACLeistung(U, h);
+  const schwebt = _thrSchwebtBei(U);
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Gewichtskraft des Rings</span>
+      <span class="pho-rz-f">F<sub>G</sub> = m · g</span>
+      <span class="pho-rz-v">${_fpmNum(G * 1000, 1)} mN</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">mittlere Kraft nach oben</span>
+      <span class="pho-rz-f">F ∝ U² · e<sup>−2h/λ</sup></span>
+      <span class="pho-rz-v">${_fpmNum(F * 1000, 1)} mN</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">${schwebt ? 'Schwebehöhe' : 'Der Ring bleibt liegen'}</span>
+      <span class="pho-rz-f">dort ist F = F<sub>G</sub></span>
+      <span class="pho-rz-v">${schwebt ? _fpmNum(h * 100, 1) + ' cm' : '—'}</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">im Ring umgesetzte Leistung</span>
+      <span class="pho-rz-f">P = I² · R</span>
+      <span class="pho-rz-v">${_fpmNum(P, 2)} W</span></div>
+    <div class="fpm-note">Die ausführliche Begründung des Schwebens ist – wie die Handreichung
+      ausdrücklich anmerkt – <b>sehr anspruchsvoll</b>. Sie braucht die Selbstinduktion des Rings:
+      Erst dadurch eilt der Ringstrom dem Feld nicht um genau eine Viertelperiode nach, und erst
+      dann bleibt im zeitlichen Mittel überhaupt eine Kraft übrig. Hier ist nur das Ergebnis
+      nachgebildet, nicht die Herleitung.</div>`;
+
+  const w = document.getElementById('thrWaerme');
+  if (w) {
+    if (!schwebt) {
+      w.className = 'lsk-zustand';
+      w.innerHTML = 'Die Spannung reicht noch nicht aus, um das Gewicht des Rings zu tragen. '
+        + 'Erhöhe sie behutsam.';
+    } else if (_thr.gedrueckt) {
+      const Pf = _thrACLeistung(U, _thrSchwebeHoehe(U));
+      w.className = 'lsk-zustand no';
+      w.innerHTML = '<b>Vorsicht, der Ring wird schnell heiß.</b> Hinuntergedrückt sitzt er im '
+        + 'stärkeren Feld: Der Ringstrom steigt, und mit ihm die Verlustleistung – hier auf '
+        + _fpmNum(P / Math.max(1e-9, Pf), 1) + '-fache gegenüber der freien Schwebelage. '
+        + '<b>Bemerkenswert ist die Kehrseite:</b> In der <i>freien</i> Schwebelage ist die '
+        + 'Leistung immer dieselbe, ganz gleich wie hoch der Ring schwebt. Denn dort hält die '
+        + 'Kraft gerade das Gewicht – und Kraft und Verlustleistung hängen von derselben Größe ab. '
+        + 'Nur das Hinunterdrücken bricht dieses Gleichgewicht auf.';
+    } else {
+      w.className = 'lsk-zustand ok';
+      w.innerHTML = '<b>Der Ring schwebt bei ' + _fpmNum(h * 100, 1) + ' cm.</b> '
+        + 'Erhöht man die Spannung, steigt er höher, bis Kraft und Gewicht wieder im Gleichgewicht '
+        + 'sind. Er wird dabei warm – die im Ring umgesetzte Leistung von '
+        + _fpmNum(P, 2) + ' W wird vollständig in Wärme verwandelt. Drücke ihn einmal hinunter '
+        + 'und beobachte, was mit der Leistung passiert.';
+    }
+  }
+}
+
+// ── Zeichnung: Grundaufbau ─────────────────────────────
+function _thrRenderAufbau(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const my = 128, SK = 700;      // Bildpunkte je Meter
+  const spuleX = 96, spuleB = 74;
+  const ringX = 196 + _thr.x * SK;
+
+  // Eisenkern
+  ctx.fillStyle = '#94a3b8';
+  ctx.fillRect(40, my - 9, W - 76, 18);
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Eisenkern', W - 78, my + 24);
+
+  // Feldspule
+  const f = _thr.f;
+  ctx.fillStyle = '#b45309';
+  for (let i = 0; i < 10; i++) {
+    ctx.fillRect(spuleX - spuleB / 2 + i * (spuleB / 10), my - 26, spuleB / 10 - 2, 52);
+  }
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Feldspule', spuleX, my - 34);
+  // Polkennzeichnung – sie aendert sich waehrend des Versuchs NIE
+  if (f > 0.02) {
+    ctx.fillStyle = '#dc2626'; ctx.font = '700 13px sans-serif';
+    ctx.fillText('N', spuleX - spuleB / 2 - 14, my + 5);
+    ctx.fillStyle = '#2563eb';
+    ctx.fillText('S', spuleX + spuleB / 2 + 14, my + 5);
+  }
+
+  // Feldstaerke als Helligkeit laengs des Kerns
+  if (f > 0.01) {
+    for (let px = spuleX; px < W - 36; px++) {
+      const x = (px - 196) / SK;
+      const b = Math.exp(-Math.max(0, x) / _THR_LAMBDA) * f * Math.abs(_thrAufbauFaktor());
+      if (b < 0.02) continue;
+      ctx.fillStyle = 'rgba(37,99,235,' + Math.min(0.35, 0.35 * b) + ')';
+      ctx.fillRect(px, my - 30, 1, 60);
+    }
+  }
+
+  // Aufhaengung
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(196 - 14, 16); ctx.lineTo(ringX - 14, my - 30);
+  ctx.moveTo(196 + 14, 16); ctx.lineTo(ringX + 14, my - 30);
+  ctx.stroke();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(140, 14); ctx.lineTo(260, 14); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('bifilar aufgehängt', 264, 17);
+
+  // Der Ring, in der Aufsicht als schmale Ellipse
+  ctx.strokeStyle = _thr.geschlitzt ? '#f59e0b' : '#64748b';
+  ctx.lineWidth = 5;
+  ctx.beginPath();
+  if (_thr.geschlitzt) ctx.ellipse(ringX, my, 9, 30, 0, 0.35, 2 * Math.PI - 0.35);
+  else ctx.ellipse(ringX, my, 9, 30, 0, 0, 2 * Math.PI);
+  ctx.stroke();
+  ctx.fillStyle = _thr.geschlitzt ? '#b45309' : '#475569';
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_thr.geschlitzt ? 'geschlitzter Ring' : 'Al-Ring', ringX, my + 46);
+
+  // Ringstrom und sein Feld
+  const I = _thrIRing(_thr.x, _thr.v, _thr.f, _thr.df);
+  if (Math.abs(I) > 0.3) {
+    ctx.fillStyle = I < 0 ? '#dc2626' : '#2563eb';
+    ctx.font = '700 9px sans-serif';
+    ctx.fillText(I < 0 ? 'Ringfeld ⟵ entgegen' : 'Ringfeld ⟶ gleich', ringX, my - 42);
+  }
+
+  // Kraftpfeil
+  const F = _thrKraft(_thr.x, _thr.v, _thr.f, _thr.df);
+  if (Math.abs(F) > 2e-4) {
+    const len = Math.max(-70, Math.min(70, F * 260));
+    ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.moveTo(ringX, my); ctx.lineTo(ringX + len, my); ctx.stroke();
+    ctx.fillStyle = '#16a34a';
+    const sg = Math.sign(len);
+    ctx.beginPath();
+    ctx.moveTo(ringX + len + sg * 8, my);
+    ctx.lineTo(ringX + len, my - 5); ctx.lineTo(ringX + len, my + 5);
+    ctx.closePath(); ctx.fill();
+    ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(F > 0 ? 'abgestoßen' : 'angezogen', ringX + len / 2, my - 10);
+  }
+
+  // Taster und Quelle
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(spuleX - spuleB / 2, my + 30); ctx.lineTo(spuleX - spuleB / 2, H - 20);
+  ctx.lineTo(spuleX + spuleB / 2, H - 20); ctx.lineTo(spuleX + spuleB / 2, my + 30);
+  ctx.stroke();
+  ctx.fillStyle = _thr.an ? '#16a34a' : '#cbd5e1';
+  ctx.fillRect(spuleX - 12, H - 27, 24, 14);
+  ctx.fillStyle = '#fff'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_thr.an ? 'EIN' : 'AUS', spuleX, H - 17);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Taster · Akku', spuleX + 22, H - 16);
+
+  // Stromanzeige
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Spulenstrom ' + _fpmNum(f * 100, 0) + ' %', W - 10, 16);
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(W - 96, 22, 86, 7);
+  ctx.fillStyle = '#b45309'; ctx.fillRect(W - 96, 22, 86 * f, 7);
+  ctx.textAlign = 'left';
+}
+
+// ── Zeichnung: Spur ────────────────────────────────────
+function _thrRenderSpur(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const x0 = 44, x1 = W - 12, yo = 22, yu = H - 26;
+  const mitte = (yo + yu) / 2;
+  const spanne = 3.0;    // dargestellte Zeitspanne in s
+
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  for (let i = 0; i <= 6; i++) {
+    const x = x0 + i / 6 * (x1 - x0);
+    ctx.beginPath(); ctx.moveTo(x, yo); ctx.lineTo(x, yu); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmNum(i / 6 * spanne, 1), x, yu + 12);
+  }
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x0, mitte); ctx.lineTo(x1, mitte); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x0, yo); ctx.lineTo(x0, yu); ctx.stroke();
+
+  if (!_thr.spur.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Drücke den Taster – dann wird hier aufgezeichnet.', (x0 + x1) / 2, mitte);
+    ctx.textAlign = 'left';
+    return;
+  }
+  const xmax = 0.05;      // Auslenkung in m fuer die volle Halbhoehe
+  const imax = 90;        // Ringstrom in A fuer die volle Halbhoehe
+  const X = t => x0 + Math.min(1, t / spanne) * (x1 - x0);
+
+  // Ringstrom blass im Hintergrund
+  ctx.strokeStyle = '#f9a8d4'; ctx.lineWidth = 1.3;
+  ctx.beginPath();
+  _thr.spur.forEach((p, i) => {
+    const y = mitte - Math.max(-1, Math.min(1, p.i / imax)) * (mitte - yo);
+    i ? ctx.lineTo(X(p.t), y) : ctx.moveTo(X(p.t), y);
+  });
+  ctx.stroke();
+  // Auslenkung
+  ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.8;
+  ctx.beginPath();
+  _thr.spur.forEach((p, i) => {
+    const y = mitte - Math.max(-1, Math.min(1, p.x / xmax)) * (mitte - yo);
+    i ? ctx.lineTo(X(p.t), y) : ctx.moveTo(X(p.t), y);
+  });
+  ctx.stroke();
+
+  // Schaltzeitpunkte markieren
+  ctx.strokeStyle = '#94a3b8'; ctx.setLineDash([3, 3]); ctx.lineWidth = 1;
+  _thr.spur.forEach((p, i) => {
+    if (i && p.an !== _thr.spur[i - 1].an) {
+      ctx.beginPath(); ctx.moveTo(X(p.t), yo); ctx.lineTo(X(p.t), yu); ctx.stroke();
+      ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(p.an ? 'ein' : 'aus', X(p.t), yo - 4);
+    }
+  });
+  ctx.setLineDash([]);
+
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillStyle = '#0369a1'; ctx.fillText('■ Auslenkung', x0 + 3, yo - 6);
+  ctx.fillStyle = '#db2777'; ctx.fillText('■ Ringstrom', x0 + 78, yo - 6);
+  ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+  ctx.fillText('t in s', x1, yu + 22);
+  ctx.textAlign = 'left';
+}
+
+// ── Zeichnung: Feldrichtungen Station 2 ────────────────
+function _thrRenderVorzCv(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const ein = _thr.vorzeichen === 'ein';
+  const my = 118;
+
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(ein ? 'Einschalten:  Ḃ > 0,  der Fluss wächst'
+                   : 'Ausschalten:  Ḃ < 0,  der Fluss schwindet', W / 2, 20);
+
+  // Spule
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(30, my - 8, W - 60, 16);
+  ctx.fillStyle = '#b45309';
+  for (let i = 0; i < 8; i++) ctx.fillRect(70 + i * 9, my - 24, 6, 48);
+  ctx.fillStyle = '#dc2626'; ctx.font = '700 13px sans-serif';
+  ctx.fillText('N', 58, my + 5);
+  ctx.fillStyle = '#2563eb'; ctx.fillText('S', 154, my + 5);
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif';
+  ctx.fillText('Spule – Polung bleibt immer gleich', 106, my - 32);
+
+  // Spulenfeld als Pfeil
+  ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2.4;
+  ctx.beginPath(); ctx.moveTo(200, my - 44); ctx.lineTo(300, my - 44); ctx.stroke();
+  ctx.fillStyle = '#2563eb';
+  ctx.beginPath(); ctx.moveTo(310, my - 44); ctx.lineTo(300, my - 49); ctx.lineTo(300, my - 39);
+  ctx.closePath(); ctx.fill();
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('B der Spule', 200, my - 50);
+
+  // Ring
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.ellipse(300, my, 9, 30, 0, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Al-Ring', 300, my + 46);
+
+  // Ringfeld – beim Einschalten entgegengesetzt, beim Ausschalten gleich
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2.4;
+  const rx = 340, ry = my + 62;
+  if (ein) {
+    ctx.beginPath(); ctx.moveTo(rx + 60, ry); ctx.lineTo(rx - 30, ry); ctx.stroke();
+    ctx.fillStyle = '#dc2626';
+    ctx.beginPath(); ctx.moveTo(rx - 40, ry); ctx.lineTo(rx - 30, ry - 5); ctx.lineTo(rx - 30, ry + 5);
+    ctx.closePath(); ctx.fill();
+  } else {
+    ctx.beginPath(); ctx.moveTo(rx - 30, ry); ctx.lineTo(rx + 50, ry); ctx.stroke();
+    ctx.fillStyle = '#dc2626';
+    ctx.beginPath(); ctx.moveTo(rx + 60, ry); ctx.lineTo(rx + 50, ry - 5); ctx.lineTo(rx + 50, ry + 5);
+    ctx.closePath(); ctx.fill();
+  }
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('B des Rings', rx + 12, ry - 10);
+
+  // Ergebnis
+  ctx.fillStyle = ein ? '#b91c1c' : '#15803d';
+  ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(ein ? 'entgegengesetzt  →  Abstoßung  →  U_i = −U'
+                   : 'gleichgerichtet  →  Anziehung  →  U_i = +U', W / 2, H - 22);
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif';
+  ctx.fillText('In beiden Fällen: Ḃ und U_i haben entgegengesetztes Vorzeichen.', W / 2, H - 8);
+  ctx.textAlign = 'left';
+}
+
+// ── Zeichnung: Stromkurve Station 3 ────────────────────
+function _thrRenderStromCv(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const x0 = 50, x1 = W - 14, y0 = H - 36, y1 = 18;
+  const L = _thr.kernAn ? _THR_L_EISEN : _THR_L_LEER;
+  const spanne = _thr.kernAn ? 0.25 : 0.04;   // dargestellte Zeit in s
+
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  ctx.font = '9px sans-serif';
+  for (let i = 0; i <= 5; i++) {
+    const x = x0 + i / 5 * (x1 - x0);
+    ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmNum(i / 5 * spanne * 1000, 0), x, y0 + 13);
+  }
+  for (let j = 0; j <= 4; j++) {
+    const y = y0 - j / 4 * (y0 - y1);
+    ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillText(String(j * 25) + ' %', x0 - 5, y + 3);
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+
+  // Die Stromkurve
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let px = 0; px <= x1 - x0; px++) {
+    const t = px / (x1 - x0) * spanne;
+    const y = y0 - _thrAnteil(t, L) * (y0 - y1);
+    px ? ctx.lineTo(x0 + px, y) : ctx.moveTo(x0 + px, y);
+  }
+  ctx.stroke();
+
+  // Halbwertszeit einzeichnen
+  const T12 = _thrHalbwert(L);
+  const xT = x0 + T12 / spanne * (x1 - x0), yT = y0 - 0.5 * (y0 - y1);
+  ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+  ctx.beginPath();
+  ctx.moveTo(x0, yT); ctx.lineTo(xT, yT); ctx.lineTo(xT, y0);
+  ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#0369a1'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('T₁ᐟ₂', xT + 4, yT - 4);
+
+  // 95-Prozent-Marke
+  const t95 = _thrZeitFuer(0.95, L);
+  if (t95 < spanne) {
+    const x95 = x0 + t95 / spanne * (x1 - x0), y95 = y0 - 0.95 * (y0 - y1);
+    ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+    ctx.beginPath(); ctx.moveTo(x95, y0); ctx.lineTo(x95, y95); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#16a34a'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('95 % nach ' + _fpmNum(t95 * 1000, 0) + ' ms', x95, y95 - 6);
+  }
+
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('t in ms', x1, y0 + 26);
+  ctx.save(); ctx.translate(14, (y0 + y1) / 2); ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = 'center'; ctx.fillText('Spulenstrom', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#b45309'; ctx.font = '9px sans-serif';
+  ctx.fillText(_thr.kernAn ? 'mit Eisenkern (Abb. 3a)' : 'ohne Eisenkern (Abb. 3b)', x0 + 4, y1 + 10);
+}
+
+// ── Zeichnung: Varianten ───────────────────────────────
+function _thrRenderVariante(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const my = 110;
+  const a = _thr.aufbau;
+
+  if (a === 'quer') {
+    // Homogenes Querfeld: Kreuze in der Zeichenebene
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+    for (let ix = 0; ix < 10; ix++) {
+      for (let iy = 0; iy < 4; iy++) {
+        const x = 40 + ix * 40, y = my - 50 + iy * 34;
+        if (Math.abs(x - W / 2) < 22 && Math.abs(y - my) < 40) continue;
+        ctx.beginPath();
+        ctx.moveTo(x - 4, y - 4); ctx.lineTo(x + 4, y + 4);
+        ctx.moveTo(x + 4, y - 4); ctx.lineTo(x - 4, y + 4); ctx.stroke();
+      }
+    }
+    ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('homogenes Feld, in die Zeichenebene hinein', 12, 16);
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 5;
+    ctx.beginPath(); ctx.ellipse(W / 2, my, 9, 32, 0, 0, 2 * Math.PI); ctx.stroke();
+    ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Al-Ring', W / 2, my + 48);
+    ctx.fillStyle = '#b45309'; ctx.font = '700 10px sans-serif';
+    ctx.fillText('Verschieben ändert den Fluss nicht → keine Induktion, keine Bremsung', W / 2, H - 16);
+    ctx.textAlign = 'left';
+    return;
+  }
+
+  // Eisenkern
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(20, my - 9, W - 40, 18);
+
+  const einzel = a === 'einzel';
+  const spulen = einzel ? [{ x: 96, n: -1 }] : [{ x: 78, n: -1 }, { x: W - 78, n: (a === 'nn' ? 1 : -1) }];
+  spulen.forEach(sp => {
+    ctx.fillStyle = '#b45309';
+    for (let i = 0; i < 8; i++) ctx.fillRect(sp.x - 36 + i * 9, my - 25, 6, 50);
+    // Pole: n = -1 heisst Nordpol links
+    ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillStyle = '#dc2626';
+    ctx.fillText('N', sp.x + sp.n * 46, my + 5);
+    ctx.fillStyle = '#2563eb';
+    ctx.fillText('S', sp.x - sp.n * 46, my + 5);
+  });
+
+  // Fluss laengs des Kerns andeuten
+  const fak = _thrAufbauFaktor();
+  ctx.strokeStyle = fak > 0.5 ? '#2563eb' : '#cbd5e1';
+  ctx.lineWidth = fak > 0.5 ? 2.4 : 1.2;
+  const ringX = einzel ? 200 : W / 2;
+  if (a === 'nn') {
+    // Fluesse treiben von beiden Seiten zur Mitte und heben sich dort auf
+    ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(130, my - 34); ctx.lineTo(ringX - 30, my - 34); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(W - 130, my - 34); ctx.lineTo(ringX + 30, my - 34); ctx.stroke();
+    ctx.fillStyle = '#dc2626'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('die Beiträge heben sich hier auf', ringX, my - 44);
+  } else {
+    ctx.beginPath(); ctx.moveTo(einzel ? 130 : 120, my - 34);
+    ctx.lineTo(W - (einzel ? 30 : 120), my - 34); ctx.stroke();
+    ctx.fillStyle = fak > 0.5 ? '#2563eb' : '#94a3b8'; ctx.font = '700 10px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(a === 'ns' ? 'die Beiträge addieren sich' : 'Fluss durch den Ring',
+      (W) / 2, my - 44);
+  }
+
+  // Ring
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.ellipse(ringX, my, 9, 30, 0, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Al-Ring', ringX, my + 46);
+
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif';
+  ctx.fillText('Fluss durch den Ring: ' + (fak === 0 ? 'null' : _fpmNum(fak * 100, 0) + ' % des Grundversuchs'),
+    W / 2, H - 16);
+  ctx.textAlign = 'left';
+}
+
+// ── Zeichnung: Ring am verdrillten Faden ───────────────
+function _thrRenderDrehCv(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2, cy = 108;
+
+  // Hufeisenfeld von links nach rechts
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  for (let i = -3; i <= 3; i++) {
+    const y = cy + i * 16;
+    ctx.beginPath(); ctx.moveTo(52, y); ctx.lineTo(W - 52, y); ctx.stroke();
+  }
+  ctx.fillStyle = '#dc2626'; ctx.fillRect(24, cy - 54, 24, 108);
+  ctx.fillStyle = '#2563eb'; ctx.fillRect(W - 48, cy - 54, 24, 108);
+  ctx.fillStyle = '#fff'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('N', 36, cy + 5);
+  ctx.fillText('S', W - 36, cy + 5);
+
+  // Der Ring, um die senkrechte Achse gedreht
+  const phi = _thr.drehPhi;
+  const breite = Math.abs(Math.cos(phi)) * 34 + 3;
+  ctx.strokeStyle = _thr.geschlitzt ? '#f59e0b' : '#64748b';
+  ctx.lineWidth = 5;
+  ctx.beginPath();
+  if (_thr.geschlitzt) ctx.ellipse(cx, cy, breite, 34, 0, 0.35, 2 * Math.PI - 0.35);
+  else ctx.ellipse(cx, cy, breite, 34, 0, 0, 2 * Math.PI);
+  ctx.stroke();
+  // Faden
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(cx, 12); ctx.lineTo(cx, cy - 34); ctx.stroke();
+
+  // Bremsung anzeigen
+  const s = Math.abs(Math.sin(phi));
+  const brems = Math.abs(_thrDrehBrems(phi, _thr.drehW));
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(s > 0.9 ? 'Ringebene parallel zum Feld – Fläche ändert sich am schnellsten'
+    : s < 0.2 ? 'Ringebene quer zum Feld – Fluss maximal, Änderung fast null'
+    : 'dazwischen', cx, H - 32);
+
+  // Bremsbalken
+  const bmax = _THR_A * _THR_A * _THR_B_HUF * _THR_B_HUF * 6 / _THR_R_RING;
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(60, H - 24, W - 120, 8);
+  ctx.fillStyle = '#dc2626';
+  ctx.fillRect(60, H - 24, (W - 120) * Math.min(1, brems / Math.max(1e-12, bmax)), 8);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Bremsmoment', 60, H - 28);
+  ctx.textAlign = 'left';
+}
+
+// ── Zeichnung: Schweben ────────────────────────────────
+function _thrRenderSchwebCv(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2, boden = H - 30, SK = 900;
+
+  // Eisenkern senkrecht
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(cx - 9, 24, 18, boden - 24);
+  // Spule unten
+  ctx.fillStyle = '#b45309';
+  for (let i = 0; i < 7; i++) ctx.fillRect(cx - 34, boden - 62 + i * 9, 68, 6);
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Feldspule ~', cx, boden + 14);
+
+  const U = _thr.uAc;
+  const h = _thrHoehe();
+  const kanone = _thr.kanone ? Math.max(0, 0.16 - 0.6 * _thr.kanoneT * _thr.kanoneT) : 0;
+  const hh = Math.max(h, kanone);
+  const ry = boden - 72 - hh * SK;
+
+  // Wechselfeld andeuten
+  if (U > 0.5) {
+    for (let i = 0; i < 8; i++) {
+      const y = boden - 70 - i * 22;
+      if (y < 24) break;
+      const st = Math.exp(-(boden - 70 - y) / SK / _THR_AC_LAMBDA) * Math.min(1, U / 20);
+      ctx.strokeStyle = 'rgba(220,38,38,' + Math.min(0.5, 0.5 * st) + ')';
+      ctx.lineWidth = 1.4;
+      ctx.beginPath(); ctx.ellipse(cx, y, 30 + i * 3, 7, 0, 0, 2 * Math.PI); ctx.stroke();
+    }
+  }
+
+  // Der Ring
+  const heiss = U > 0.5 && _thrSchwebtBei(U);
+  ctx.strokeStyle = _thr.gedrueckt && heiss ? '#dc2626' : heiss ? '#f59e0b' : '#64748b';
+  ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.ellipse(cx, Math.min(ry, boden - 68), 32, 9, 0, 0, 2 * Math.PI); ctx.stroke();
+
+  if (_thr.gedrueckt && heiss) {
+    ctx.fillStyle = '#dc2626'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('heiß!', cx + 62, Math.min(ry, boden - 68) + 4);
+  }
+
+  // Hoehenskala
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(W - 34, 24); ctx.lineTo(W - 34, boden - 68); ctx.stroke();
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+  for (let c = 0; c <= 14; c += 2) {
+    const y = boden - 68 - c * 0.01 * SK;
+    if (y < 24) break;
+    ctx.beginPath(); ctx.moveTo(W - 38, y); ctx.lineTo(W - 30, y); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.fillText(c + ' cm', W - 42, y + 3);
+  }
+
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(U < 0.5 ? 'Wechselspannung behutsam erhöhen'
+    : _thrSchwebtBei(U) ? 'Schwebehöhe ' + _fpmNum(h * 100, 1) + ' cm'
+    : 'Spannung reicht noch nicht', 12, 18);
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _thrTakt(dt) {
+  if (!_thr) return;
+  const s = _thr;
+  const d = Math.min(0.05, dt) / s.zeitlupe;
+  // Der Ablauf wird in kleinen Schritten gerechnet, damit der schnelle
+  // Feldaufbau sauber aufgeloest wird.
+  const n = 40;
+  for (let i = 0; i < n; i++) {
+    _thrFeldSchritt(d / n);
+    _thrSchrittRechnen(d / n);
+  }
+  if (s.jeAn || s.f > 0) {
+    s.t += d;
+    s.spur.push({ t: s.t, x: s.x, i: _thrIRing(s.x, s.v, s.f, s.df), an: s.an });
+    if (s.spur.length > 4000) s.spur.shift();
+  }
+  if (s.drehLaeuft) {
+    const J = _thrTraegheit();
+    for (let i = 0; i < 20; i++) {
+      const M = -_thrDrehBrems(s.drehPhi, s.drehW);
+      s.drehW += M / J * (d / 20);
+      s.drehPhi += s.drehW * (d / 20);
+    }
+    s.drehT += d;
+  }
+  if (s.kanone) { s.kanoneT += d; if (s.kanoneT > 0.55) { s.kanone = false; s.kanoneT = 0; } }
+}
+function _thrRender() {
+  if (!_thr) return;
+  const st = _thr.station;
+  if (st === 0) {
+    const ca = document.getElementById('thrAufbau');
+    if (ca) _thrRenderAufbau(ca.getContext('2d'), ca);
+    const cs = document.getElementById('thrSpur');
+    if (cs) _thrRenderSpur(cs.getContext('2d'), cs);
+    if (_thr.jeAn) _thrUpdate();
+  } else if (st === 1) {
+    const cv = document.getElementById('thrVorz');
+    if (cv) _thrRenderVorzCv(cv.getContext('2d'), cv);
+  } else if (st === 2) {
+    const cc = document.getElementById('thrStrom');
+    if (cc) _thrRenderStromCv(cc.getContext('2d'), cc);
+  } else if (st === 3) {
+    const cv2 = document.getElementById('thrVariante');
+    if (cv2) _thrRenderVariante(cv2.getContext('2d'), cv2);
+    const cd = document.getElementById('thrDreh');
+    if (cd) _thrRenderDrehCv(cd.getContext('2d'), cd);
+    if (_thr.drehLaeuft) _thrRenderDreh();
+  } else if (st === 4) {
+    const cw = document.getElementById('thrSchweb');
+    if (cw) _thrRenderSchwebCv(cw.getContext('2d'), cw);
+  }
+}
+
+// ── Zusätzliche Styles für den Thomsonschen Ringversuch ──
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .thr-phase { border: 1px solid #e2e8f0; background: #f8fafc; border-radius: 9px;
+      padding: 9px 11px; margin: 8px 0; }
+    .thr-phase.an { border-color: #bfdbfe; background: #eff6ff; }
+    .thr-phase.fertig { border-color: #bbf7d0; background: #f0fdf4; }
+    .thr-phase-k { font-size: .8rem; font-weight: 800; color: #1e293b; margin-bottom: 5px; }
+    .thr-phase-k span { display: block; font-size: .68rem; font-weight: 600; color: #94a3b8; }
+    .thr-phase-b, .thr-phase-d { font-size: .77rem; color: #475569; line-height: 1.55; margin-top: 5px; }
+    .thr-phase-b b, .thr-phase-d b:first-child { display: inline-block; font-size: .6rem;
+      text-transform: uppercase; letter-spacing: .05em; color: #94a3b8; margin-right: 5px; }
+    .thr-anteile { margin: 6px 0 8px; }
+    .thr-balken { display: flex; height: 9px; border-radius: 5px; overflow: hidden; background: #f1f5f9; }
+    .thr-balken-z { background: #2563eb; }
+    .thr-balken-o { background: #f59e0b; }
+    .thr-balken-lbl { display: flex; justify-content: space-between; gap: 8px;
+      font-size: .66rem; color: #64748b; margin-top: 4px; }
+    .thr-pkt { display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+      margin-right: 4px; }
+    .thr-pkt.z { background: #2563eb; }
+    .thr-pkt.o { background: #f59e0b; }
+    .thr-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-top: 12px; }
+    .thr-vorztab { margin-top: 10px; }
+    .thr-tab td.hell { background: #eff6ff; color: #1e40af; font-weight: 700; }
+    .thr-lenz { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-top: 10px; }
+    .thr-lenz-satz { font-size: .82rem; color: #075985; background: #f0f9ff;
+      border: 1px solid #bae6fd; border-radius: 8px; padding: 9px 11px; margin: 6px 0;
+      line-height: 1.6; }
+    .thr-lenz-t { font-size: .78rem; color: #475569; line-height: 1.65; margin-bottom: 6px; }
+    .thr-warum { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 12px; }
+    .thr-warum-t { font-size: .78rem; color: #475569; line-height: 1.65; margin-top: 4px; }
+    .thr-zeitachse { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-top: 12px; }
+    .thr-zeit-bar { display: flex; height: 26px; border-radius: 7px; overflow: hidden;
+      margin: 8px 0; font-size: .64rem; font-weight: 700; }
+    .thr-zeit-feld { background: #2563eb; color: #fff; display: flex; align-items: center;
+      justify-content: center; white-space: nowrap; overflow: hidden; }
+    .thr-zeit-ring { flex: 1 1 auto; background: #fbbf24; color: #78350f; display: flex;
+      align-items: center; justify-content: center; }
+    .thr-prognose { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; margin-top: 8px; }
+    .thr-prog-k { font-size: .62rem; text-transform: uppercase; letter-spacing: .05em;
+      font-weight: 800; color: #94a3b8; margin-bottom: 4px; }
+    .thr-prog-t { font-size: .78rem; color: #475569; line-height: 1.65; }
+    .thr-prog-w { font-size: .76rem; color: #075985; background: #f0f9ff; border: 1px solid #bae6fd;
+      border-radius: 7px; padding: 6px 9px; margin-top: 7px; }
+    .thr-anw { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; margin-top: 8px; min-height: 40px; }
+    .thr-anw-k { font-size: .78rem; font-weight: 800; color: #334155; margin-bottom: 4px; }
+    .thr-anw-t { font-size: .77rem; color: #475569; line-height: 1.65; }
+    .thr-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
