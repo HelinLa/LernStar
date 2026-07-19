@@ -2100,6 +2100,28 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('genTakt', 'genKeinChart');
     _pSim.start(dt => _genTakt(dt), () => _genRender(), []);
   },
+
+  // Schluesselexperiment 13 des KLP: Spannungs- und Stromtransformation,
+  // Verluste am Transformator, dazu Hoernerblitz, glühender Nagel und die
+  // beruehrungslose Ladestation der elektrischen Zahnbuerste.
+  // Eigene ID, damit die bestehende, einfachere 'transformator'-Simulation
+  // (Themen 5.8 und 5.9) unveraendert erhalten bleibt.
+  'transformator-schluessel': modal => {
+    _trfInit();
+    modal.innerHTML = _trfHTML();
+    const erkl = document.getElementById('trfErkl');
+    if (erkl) erkl.innerHTML = _trfErklHTML();
+    _trfSetStation(0);
+    _trfSetArt(true);
+    _trfSetAnw(0);
+    _trfRenderUTheorie(false);
+    _trfRenderITheorie(false);
+    _trfUpdate();
+    _trfDrawUPlot();
+    _trfDrawIPlot();
+    _pSim = new PhysicsSimEngine('trfTakt', 'trfKeinChart');
+    _pSim.start(dt => _trfTakt(dt), () => _trfRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -18231,6 +18253,1995 @@ function _genRender() {
       border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; }
     .gen-aus-z b { color: #334155; }
     .gen-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// DER TRANSFORMATOR – Schluesselexperiment 13 (angehaengt)
+// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// DER TRANSFORMATOR
+// Schluesselexperiment 13 der NRW-Handreichung.
+// Kernkompetenzen des KLP: die Uebersetzungsverhaeltnisse von Spannung und
+// Stromstaerke ermitteln (UF1, UF2) und Parameter zur gezielten Veraenderung
+// einer Wechselspannung angeben (E4). Dazu UF3/UF4 (Induktionsursachen) und
+// E2/E5 (Oszillogramme und Messwerterfassung auswerten).
+// ═══════════════════════════════════════════════════════
+
+// Die Spulensaetze, die die Handreichung ausdruecklich nennt
+const _TRF_SPULEN = [250, 500, 1000];
+const _TRF_F0 = 50;          // Netzfrequenz in Hz
+const _TRF_UNETZ = 230;      // Effektivwert der Netzspannung in V
+
+// ── Wie gut uebertraegt der Transformator? ──────────────
+// Zwei VERSCHIEDENE Verlustmechanismen, keine konkurrierenden Modelle:
+//
+// 1) Auf der Spannungsseite fehlt ein Teil, weil nicht der gesamte Fluss der
+//    Primaerspule auch die Sekundaerspule durchsetzt (Streufluss) und weil an
+//    den Wicklungswiderstaenden Spannung abfaellt. Das fasst der
+//    Kopplungsgrad k zusammen.
+// 2) Auf der Stromseite fehlt ein Teil, weil ein Anteil des Primaerstroms nur
+//    dazu dient, den Eisenkern ueberhaupt zu magnetisieren. Dieser
+//    Magnetisierungsstrom erreicht die Sekundaerseite gar nicht.
+//
+// Beide Zahlen sind aus den Messtabellen der Handreichung gewonnen: k als
+// Mittel der sechs Zeilen von Tabelle 1, I_m als kleinste Fehlerquadrate ueber
+// die sechs Zeilen von Tabelle 2. Wichtig und ehrlich: KEIN Modell mit einem
+// einzigen Parameter trifft alle sechs Zeilen innerhalb der Ablesegenauigkeit
+// der Drehspulinstrumente – die Handreichungswerte streuen dafuer zu stark.
+const _TRF_KU = 0.88;        // Kopplungsgrad, laminierter Eisenkern
+const _TRF_IM = 0.008;       // Magnetisierungsstrom in A
+
+// Der massive Kern ist eine MODELLANNAHME, kein Messwert: Wirbelstroeme
+// schirmen das Innere ab, deshalb sinkt die Kopplung und der Leerlaufstrom
+// steigt. Die Groessenordnung ist plausibel, die genauen Zahlen sind es nicht.
+const _TRF_KERNE = [
+  { id: 'lam',  n: 'geschlossen, laminiert', k: 0.88, im: 0.008,
+    kurz: 'Dynamobleche, gegeneinander isoliert' },
+  { id: 'mas',  n: 'geschlossen, massiv',    k: 0.55, im: 0.030,
+    kurz: 'ein Stueck Eisen – Wirbelstroeme' },
+  { id: 'ohne', n: 'ohne Eisenkern',         k: 0.12, im: 0.004,
+    kurz: 'nur Luft zwischen den Spulen' }
+];
+
+// Primaerinduktivitaet und -widerstand fuer den Gleichspannungsversuch.
+// L waechst mit dem Quadrat der Windungszahl, R nur linear – deshalb waechst
+// die Zeitkonstante tau = L/R proportional zur Windungszahl.
+const _TRF_L500 = 0.10;      // H bei 500 Windungen
+const _TRF_R500 = 5.0;       // Ohm bei 500 Windungen
+
+// Hochspannung und Hochstrom, beides aus der Handreichung
+const _TRF_HS_NP = 500, _TRF_HS_NS = 23000, _TRF_HS_IS = 0.100;
+const _TRF_ST_NP = 500, _TRF_ST_NS = 5;
+const _TRF_NAGEL_L = 0.060;      // m
+const _TRF_NAGEL_D = 0.0030;     // m
+const _TRF_RHO_FE  = 1.0e-7;     // Ohm·m
+const _TRF_R_KREIS = 0.006;      // Wicklung, Klemmen und Kontakte in Ohm
+
+// Die Anwendungsaufgabe „elektrische Zahnbuerste"
+const _TRF_ZB_NP = 600, _TRF_ZB_UP = 10, _TRF_ZB_US = 1.2;
+const _TRF_ZB_A = 6e-4;          // Querschnitt der Sekundaerspule in m²
+const _TRF_ZB_BHUT = 12e-3;      // Scheitelwert der Flussdichte in T
+
+let _trf = null;
+
+function _trfInit() {
+  _trf = {
+    station: 0,
+    // Station 1
+    kern: 0, wechsel: true, Np: 500, Ns: 1000, Up: 5, f: _TRF_F0,
+    laeuft: true, t: 0, zeitlupe: 1, kette: 0,
+    // Station 2 – Spannungsmessreihe
+    uRows: [], uNext: 1, uPreset: 0, uFn: null, uFnAuto: false, uReveal: false,
+    // Station 4 – Strommessreihe
+    Ip: 0.10,
+    iRows: [], iNext: 1, iPreset: 0, iFn: null, iFnAuto: false, iReveal: false,
+    // Station 5 – Oszilloskop
+    gegensinnig: false, oszF: 50, oszUp: 5,
+    leseUp: '', leseUs: '', leseT: '', oszGeprueft: null,
+    // Station 6 – Anwendungen
+    anw: 0, zbNs: '', zbGeprueft: null, zbT: 0
+  };
+}
+
+// ── Zahlformat fuer die Theoriefunktionen ───────────────
+// Zweite Kopie dieses Formatierers (die erste steht beim Generator als
+// _genZahl). Die gemeinsame Hilfsfunktion _dspZahl rundet auf sechs
+// NACHKOMMAstellen; die Steigungen hier werden aber bis auf 4·10⁻⁴ klein,
+// da blieben davon nur zwei gueltige Ziffern uebrig. Sauber waere ein
+// gemeinsamer Helfer – der wuerde aber sechs bestehende Simulationen
+// beruehren und ist deshalb hier bewusst nicht angefasst.
+function _trfZahl(v) {
+  if (!isFinite(v) || v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const dez = Math.max(0, Math.min(20, 5 - ex));
+  const s = v.toFixed(dez);
+  return s.indexOf('.') >= 0 ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
+}
+
+// ── Das Uebersetzungsverhaeltnis ────────────────────────
+function _trfKern() { return _TRF_KERNE[_trf ? _trf.kern : 0]; }
+function _trfUeb(Np, Ns) { return Ns / Np; }
+
+// Spannungstransformation am unbelasteten Transformator.
+// Ideal: Us/Up = Ns/Np. Real ein Stueck darunter.
+function _trfUsIdeal(Up, Np, Ns) { return Ns / Np * Up; }
+function _trfUs(Up, Np, Ns, k) { return k * Ns / Np * Up; }
+
+// Stromtransformation am belasteten Transformator.
+// Ideal: Is/Ip = Np/Ns. Real fehlt der Magnetisierungsstrom, der gar nicht
+// erst zur Sekundaerseite gelangt.
+function _trfIsIdeal(Ip, Np, Ns) { return Np / Ns * Ip; }
+function _trfIs(Ip, Np, Ns, im) {
+  return Math.max(0, Np / Ns * (Ip - im));
+}
+
+// Wirkungsgrad. Aus den beiden Ansaetzen folgt er ohne weitere Annahme:
+// eta = Us·Is/(Up·Ip) = k · (1 − I_m/I_p). Er faellt also bei kleiner Last –
+// genau das beobachtet man am Transformator auch.
+function _trfEta(Ip, k, im) { return Ip > 0 ? k * (1 - im / Ip) : 0; }
+
+// ── Zeitverlaeufe ───────────────────────────────────────
+function _trfOmega(f) { return 2 * Math.PI * f; }
+// Scheitelwert einer sinusfoermigen Wechselspannung
+function _trfScheitel(Ueff) { return Math.SQRT2 * Ueff; }
+function _trfEffektiv(Uhut) { return Uhut / Math.SQRT2; }
+
+// Der Fluss im Kern. Aus U = −N·dΦ/dt mit Up = Ûp·sin(ω·t) folgt durch
+// Integrieren Φ(t) = +Ûp/(Np·ω)·cos(ω·t): nur mit diesem Vorzeichen liefert
+// die Ableitung −Np·dΦ/dt wieder die aufgepraegte Sinusspannung zurueck. Der
+// Fluss ist damit um eine Viertelperiode gegen die Spannung verschoben, genau
+// wie beim Generator die Projektionsflaeche gegen die Induktionsspannung.
+function _trfFlussHut(Uhut, Np, f) { return Uhut / (Np * _trfOmega(f)); }
+function _trfFluss(t, Uhut, Np, f) {
+  return _trfFlussHut(Uhut, Np, f) * Math.cos(_trfOmega(f) * t);
+}
+function _trfUp(t, Uhut, f) { return Uhut * Math.sin(_trfOmega(f) * t); }
+// Primaer- und Sekundaerspannung sind in Phase oder um 180° verschoben –
+// nie um eine Viertelperiode. Welches von beiden, entscheidet allein der
+// Wickelsinn der Sekundaerspule.
+function _trfUsT(t, Uhut, Np, Ns, f, k, gegensinnig) {
+  return (gegensinnig ? -1 : 1) * k * Ns / Np * Uhut * Math.sin(_trfOmega(f) * t);
+}
+
+// ── Gleichspannung: warum es nicht geht ─────────────────
+// Beim Einschalten steigt der Strom wie I(t) = I∞·(1−e^(−t/τ)), der Fluss
+// folgt ihm. Also faellt dΦ/dt exponentiell ab – und mit ihm die
+// Sekundaerspannung. Im ERSTEN Augenblick ist sie genauso gross wie bei
+// Wechselspannung, danach stirbt sie weg.
+function _trfTau(Np) {
+  const L = _TRF_L500 * (Np / 500) * (Np / 500);
+  const R = _TRF_R500 * (Np / 500);
+  return L / R;
+}
+function _trfGleichUs(t, Up, Np, Ns, k) {
+  return t < 0 ? 0 : k * Ns / Np * Up * Math.exp(-t / _trfTau(Np));
+}
+// Die Flaeche unter dieser Kurve ist der gesamte Flusshub mal Ns –
+// das Spannungszeitflaechen-Argument, das auch beim Thomsonschen
+// Ringversuch traegt.
+function _trfGleichIntegral(Up, Np, Ns, k) {
+  return k * Ns / Np * Up * _trfTau(Np);
+}
+
+// ── Hochspannung und Hochstrom ──────────────────────────
+function _trfNagelR() {
+  const A = Math.PI * (_TRF_NAGEL_D / 2) * (_TRF_NAGEL_D / 2);
+  return _TRF_RHO_FE * _TRF_NAGEL_L / A;
+}
+function _trfNagelI(k) {
+  const Us = _trfUs(_TRF_UNETZ, _TRF_ST_NP, _TRF_ST_NS, k);
+  return Us / (_trfNagelR() + _TRF_R_KREIS);
+}
+function _trfNagelP(k) { const I = _trfNagelI(k); return I * I * _trfNagelR(); }
+function _trfNagelFlaeche() { return Math.PI * _TRF_NAGEL_D * _TRF_NAGEL_L; }
+
+// ── Zahnbuerste ─────────────────────────────────────────
+// Aufgabe 4 der Handreichung: aus 10 V bei 600 Windungen auf 1,2 V schliessen.
+function _trfZbNs(Np, Up, Us) { return Np * Us / Up; }
+// Aufgabe 3: B(t) = B̂·sin(ω·t) mit B(0) = 0, daraus
+// U(t) = −n·A·dB/dt = −n·A·B̂·ω·cos(ω·t)
+function _trfZbB(t, Bhut, f) { return Bhut * Math.sin(_trfOmega(f) * t); }
+function _trfZbUhut(n, A, Bhut, f) { return n * A * Bhut * _trfOmega(f); }
+function _trfZbU(t, n, A, Bhut, f) {
+  return -_trfZbUhut(n, A, Bhut, f) * Math.cos(_trfOmega(f) * t);
+}
+
+// ── Oberflaeche ─────────────────────────────────────────
+function _trfHTML() {
+  const stationen = ['1 · Aufbau und Wirkungskette', '2 · Spannungstransformation',
+                     '3 · Verluste', '4 · Stromtransformation',
+                     '5 · Am Oszilloskop', '6 · Anwendungen']
+    .map((s, i) => `<button class="fpm-tab${i === _trf.station ? ' on' : ''}" id="trfSt${i}" onclick="_trfSetStation(${i})">${s}</button>`).join('');
+
+  const uPresets = ['N<sub>S</sub> → U<sub>S</sub>', '1/N<sub>P</sub> → U<sub>S</sub>', 'U<sub>P</sub> → U<sub>S</sub>']
+    .map((p, i) => `<button class="fpm-tab${i === _trf.uPreset ? ' on' : ''}" id="trfUTab${i}" onclick="_trfSetUPreset(${i})">${p}</button>`).join('');
+  const iPresets = ['N<sub>P</sub> → I<sub>S</sub>', '1/N<sub>S</sub> → I<sub>S</sub>', 'I<sub>P</sub> → I<sub>S</sub>']
+    .map((p, i) => `<button class="fpm-tab${i === _trf.iPreset ? ' on' : ''}" id="trfITab${i}" onclick="_trfSetIPreset(${i})">${p}</button>`).join('');
+  const anwahl = ['Hörnerblitz', 'Nagel zum Glühen', 'Elektrische Zahnbürste']
+    .map((p, i) => `<button class="fpm-tab${i === _trf.anw ? ' on' : ''}" id="trfAnwT${i}" onclick="_trfSetAnw(${i})">${p}</button>`).join('');
+
+  const kernwahl = _TRF_KERNE.map((c, i) =>
+    `<button class="osz-segb" id="trfKern${i}" onclick="_trfSetKern(${i})">${c.n}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim trf-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔌 Der Transformator: das Schlüsselexperiment</h3>
+    <canvas id="trfTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="trfS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="trfKernCv" width="440" height="285" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Zwei Spulen auf einem gemeinsamen Eisenkern</div>
+          <canvas id="trfSpurCv" width="440" height="235" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Primärspannung, Fluss im Kern und Sekundärspannung</div>
+        </div>
+        <div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="trfLaufBtn" onclick="_trfToggle()">⏸ Anhalten</button>
+            <button class="sim-btn" onclick="_trfReset()">↺ Zurücksetzen</button>
+          </div>
+          <div class="osz-gruppe">
+            <div class="osz-gruppe-k">Was an der Primärspule anliegt</div>
+            <div class="osz-zeile"><span>Spannungsart</span>
+              <span class="osz-seg">
+                <button class="osz-segb" id="trfArtW" onclick="_trfSetArt(true)">Wechselspannung</button>
+                <button class="osz-segb" id="trfArtG" onclick="_trfSetArt(false)">Gleichspannung</button>
+              </span></div>
+            <div class="osz-zeile"><span>Spannung U<sub>P</sub></span>
+              <input type="range" id="trfUp" min="1" max="12" step="0.1" value="5"
+                oninput="_trfSetUp(this.value)"><b id="trfUpLbl">5,0 V</b></div>
+            <div class="osz-zeile"><span>Frequenz f</span>
+              <input type="range" id="trfF" min="10" max="200" step="1" value="50"
+                oninput="_trfSetF(this.value)"><b id="trfFLbl">50 Hz</b></div>
+          </div>
+          <div class="osz-gruppe">
+            <div class="osz-gruppe-k">Spulen und Kern</div>
+            <div class="osz-zeile"><span>Primär N<sub>P</sub></span>
+              <input type="range" id="trfNp" min="100" max="2000" step="50" value="500"
+                oninput="_trfSetNp(this.value)"><b id="trfNpLbl">500</b></div>
+            <div class="osz-zeile"><span>Sekundär N<sub>S</sub></span>
+              <input type="range" id="trfNs" min="100" max="2000" step="50" value="1000"
+                oninput="_trfSetNs(this.value)"><b id="trfNsLbl">1000</b></div>
+            <div class="trf-schnell" id="trfSchnell"></div>
+            <div class="osz-zeile"><span>Eisenkern</span>
+              <span class="osz-seg">${kernwahl}</span></div>
+          </div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Übersetzung N<sub>S</sub>/N<sub>P</sub></span><span class="fpm-ro-v" id="trfUebA">—</span><span class="fpm-ro-u"></span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">U<sub>S</sub> ideal</span><span class="fpm-ro-v" id="trfUsIdA">—</span><span class="fpm-ro-u">V</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">U<sub>S</sub> gemessen</span><span class="fpm-ro-v" id="trfUsA">—</span><span class="fpm-ro-u">V</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Scheitelfluss Φ̂</span><span class="fpm-ro-v" id="trfPhiA">—</span><span class="fpm-ro-u">µWb</span></div>
+          </div>
+          <div class="trf-lage" id="trfLage"></div>
+          <div class="ebr-rechnung" id="trfRechnung"></div>
+        </div>
+      </div>
+      <div class="trf-kette" id="trfKette"></div>
+      <div class="trf-k3" id="trfK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="trfS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <div class="fpm-label">Der unbelastete Transformator: Sekundärkreis offen</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Primär N<sub>P</sub></span>
+              <input type="range" id="trfNp2" min="100" max="2000" step="50" value="500"
+                oninput="_trfSetNp(this.value)"><b id="trfNpLbl2">500</b></div>
+            <div class="osz-zeile"><span>Sekundär N<sub>S</sub></span>
+              <input type="range" id="trfNs2" min="100" max="2000" step="50" value="1000"
+                oninput="_trfSetNs(this.value)"><b id="trfNsLbl2">1000</b></div>
+            <div class="osz-zeile"><span>Spannung U<sub>P</sub></span>
+              <input type="range" id="trfUp2" min="1" max="12" step="0.1" value="5"
+                oninput="_trfSetUp(this.value)"><b id="trfUpLbl2">5,0 V</b></div>
+          </div>
+          <div class="ebr-rechnung" id="trfURechnung"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_trfUTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_trfUDemo()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_trfUClear()">🗑 leeren</button>
+          </div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Nr.</th><th>N<sub>P</sub></th><th>N<sub>S</sub></th><th>U<sub>P</sub> (V)</th><th>U<sub>S</sub> (V)</th><th>U<sub>S</sub>/U<sub>P</sub></th><th></th></tr></thead>
+              <tbody id="trfUTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="trfUEmpty">Noch keine Messwerte.<br>Immer nur eine Größe verändern.</div>
+          </div>
+          <div class="trf-hb" id="trfHandbuch1"></div>
+        </div>
+        <div>
+          <div class="fpm-tabs">${uPresets}</div>
+          <canvas id="trfUPlot" width="440" height="300" class="phys-chart-cv"></canvas>
+          <div class="fpm-fit" id="trfUFitBox"></div>
+          <input type="text" id="trfUFn" class="fpm-input" placeholder="z. B. 0,0088*x" spellcheck="false"
+            oninput="_trfSetUFn(this.value)" style="margin-top:8px">
+          <div class="fpm-err" id="trfUFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_trfUTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_trfUClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="trfUTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_trfSet('uReveal',this.checked)">
+            Sollwert anzeigen</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="trfS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="trfVerlustCv" width="440" height="270" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Wirbelströme im massiven und im geschichteten Kern</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Eisenkern</span>
+              <span class="osz-seg">${_TRF_KERNE.map((c, i) =>
+                `<button class="osz-segb" id="trfKernB${i}" onclick="_trfSetKern(${i})">${c.n}</button>`).join('')}</span></div>
+            <div class="osz-zeile"><span>Primärstrom I<sub>P</sub></span>
+              <input type="range" id="trfIp3" min="0.02" max="0.5" step="0.005" value="0.1"
+                oninput="_trfSetIp(this.value)"><b id="trfIpLbl3">0,100 A</b></div>
+          </div>
+          <div class="trf-bilanz" id="trfBilanz"></div>
+        </div>
+        <div>
+          <div class="trf-verl" id="trfVerlText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="trfS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <div class="fpm-label">Der belastete Transformator: Sekundärkreis geschlossen</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Primär N<sub>P</sub></span>
+              <input type="range" id="trfNp4" min="100" max="2000" step="50" value="500"
+                oninput="_trfSetNp(this.value)"><b id="trfNpLbl4">500</b></div>
+            <div class="osz-zeile"><span>Sekundär N<sub>S</sub></span>
+              <input type="range" id="trfNs4" min="100" max="2000" step="50" value="1000"
+                oninput="_trfSetNs(this.value)"><b id="trfNsLbl4">1000</b></div>
+            <div class="osz-zeile"><span>Primärstrom I<sub>P</sub></span>
+              <input type="range" id="trfIp4" min="0.02" max="0.5" step="0.005" value="0.1"
+                oninput="_trfSetIp(this.value)"><b id="trfIpLbl4">0,100 A</b></div>
+          </div>
+          <div class="fpm-note">Den Primärstrom stellst du – wie in der Handreichung – über den
+            <b>regelbaren Widerstand</b> im Sekundärkreis ein. Die Messtabelle des Handbuchs hält
+            I<sub>P</sub> = 0,10 A für alle Zeilen fest; genau das lässt sich hier nachstellen.</div>
+          <div class="ebr-rechnung" id="trfIRechnung"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_trfITake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_trfIDemo()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_trfIClear()">🗑 leeren</button>
+          </div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Nr.</th><th>N<sub>P</sub></th><th>N<sub>S</sub></th><th>I<sub>P</sub> (A)</th><th>I<sub>S</sub> (A)</th><th>I<sub>S</sub>/I<sub>P</sub></th><th></th></tr></thead>
+              <tbody id="trfITbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="trfIEmpty">Noch keine Messwerte.<br>Immer nur eine Größe verändern.</div>
+          </div>
+          <div class="trf-hb" id="trfHandbuch2"></div>
+        </div>
+        <div>
+          <div class="fpm-tabs">${iPresets}</div>
+          <canvas id="trfIPlot" width="440" height="300" class="phys-chart-cv"></canvas>
+          <div class="fpm-fit" id="trfIFitBox"></div>
+          <input type="text" id="trfIFn" class="fpm-input" placeholder="z. B. 0,5*x" spellcheck="false"
+            oninput="_trfSetIFn(this.value)" style="margin-top:8px">
+          <div class="fpm-err" id="trfIFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_trfITheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_trfIClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="trfITheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_trfSet('iReveal',this.checked)">
+            Sollwert anzeigen</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="trfS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="trfOsziCv" width="440" height="280" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Beide Spannungen im gemeinsamen Diagramm</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Frequenz f</span>
+              <input type="range" id="trfOszF" min="10" max="200" step="1" value="50"
+                oninput="_trfSetOszF(this.value)"><b id="trfOszFLbl">50 Hz</b></div>
+            <div class="osz-zeile"><span>U<sub>P</sub> (Effektivwert)</span>
+              <input type="range" id="trfOszUp" min="1" max="12" step="0.1" value="5"
+                oninput="_trfSetOszUp(this.value)"><b id="trfOszUpLbl">5,0 V</b></div>
+            <label class="fpm-check"><input type="checkbox" id="trfGegen"
+              onchange="_trfSetGegen(this.checked)"> Sekundärspule gegensinnig gewickelt</label>
+          </div>
+          <div class="trf-phase" id="trfPhase"></div>
+        </div>
+        <div>
+          <div class="trf-auf" id="trfOszAufgabe"></div>
+          <div class="fpm-label">Am Diagramm ablesen</div>
+          <div class="osz-lese">
+            <div class="osz-lese-z"><span>Û<sub>P</sub> =</span>
+              <input type="text" class="fpm-input osz-inp" id="trfLeseUp" placeholder="?"
+                spellcheck="false" oninput="_trfSetLese('leseUp',this.value)"><span>V</span></div>
+            <div class="osz-lese-z"><span>Û<sub>S</sub> =</span>
+              <input type="text" class="fpm-input osz-inp" id="trfLeseUs" placeholder="?"
+                spellcheck="false" oninput="_trfSetLese('leseUs',this.value)"><span>V</span></div>
+            <div class="osz-lese-z"><span>Periodendauer T =</span>
+              <input type="text" class="fpm-input osz-inp" id="trfLeseT" placeholder="?"
+                spellcheck="false" oninput="_trfSetLese('leseT',this.value)"><span>ms</span></div>
+          </div>
+          <div class="ebr-rechnung" id="trfOszRechnung"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_trfOszPruefen()">✓ Ergebnis prüfen</button>
+          </div>
+          <div class="lsk-zustand" id="trfOszPruef"></div>
+          <div class="trf-netz" id="trfNetz"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 6 ══ -->
+    <div id="trfS5" style="display:none">
+      <div class="fpm-tabs">${anwahl}</div>
+      <div class="fpm-grid">
+        <div>
+          <canvas id="trfAnwCv" width="440" height="280" class="phys-anim-cv"></canvas>
+          <div class="fpm-label" id="trfAnwLbl">—</div>
+          <div class="ebr-rechnung" id="trfAnwRechnung"></div>
+        </div>
+        <div>
+          <div class="trf-anw" id="trfAnwText"></div>
+          <div id="trfZbBox" style="display:none">
+            <div class="fpm-label">Windungszahl in der Zahnbürste bestimmen</div>
+            <div class="osz-lese">
+              <div class="osz-lese-z"><span>N<sub>S</sub> =</span>
+                <input type="text" class="fpm-input osz-inp" id="trfZbNsIn" placeholder="?"
+                  spellcheck="false" oninput="_trfSetZbNs(this.value)"><span>Windungen</span></div>
+            </div>
+            <div class="sim-btn-row">
+              <button class="sim-btn" onclick="_trfZbPruefen()">✓ Ergebnis prüfen</button>
+            </div>
+            <div class="lsk-zustand" id="trfZbPruef"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="trfErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>U<sub>S</sub>/U<sub>P</sub> = N<sub>S</sub>/N<sub>P</sub></b>
+      &nbsp;|&nbsp; <b>I<sub>S</sub>/I<sub>P</sub> = N<sub>P</sub>/N<sub>S</sub></b>
+      &nbsp;|&nbsp; <b>Û = √2 · U<sub>eff</sub></b>
+      &nbsp;|&nbsp; <b>U = −N · dΦ/dt</b>
+    </p>
+  </div>`;
+}
+
+function _trfErklHTML() {
+  return `<div class="dsp-erkl-kopf">Was ein Transformator tut</div>
+    <div class="dsp-erkl-text">
+      Zwei Spulen sitzen auf den beiden Armen eines geschlossenen Eisenkerns. An die
+      <b>Primärspule</b> wird eine Wechselspannung gelegt. Sie treibt einen Wechselstrom, der ein
+      <b>sich änderndes Magnetfeld</b> erzeugt; der Eisenkern bündelt dieses Feld und führt es zur
+      <b>Sekundärspule</b>. Dort induziert die Flussänderung eine Spannung. Der Eisenkern verstärkt
+      den Effekt erheblich, ist aber – wie die Handreichung ausdrücklich anmerkt – für die
+      Funktion <b>nicht zwingend notwendig</b>: Auch ohne ihn arbeitet der Transformator, nur eben
+      viel schwächer.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum es mit Gleichstrom nicht geht</div>
+    <div class="dsp-erkl-text">
+      Induziert wird nur bei einer <b>Änderung</b> des Flusses. Legt man Gleichspannung an, so
+      wird zwar ein Magnetfeld aufgebaut – aber nur während der kurzen Einschaltphase ändert es
+      sich. Danach steht es still, und die Sekundärspannung ist null. Bemerkenswert ist der
+      Vergleich der beiden Fälle: Im <b>ersten Augenblick</b> nach dem Einschalten liefert die
+      Gleichspannung genau dieselbe Sekundärspannung wie die Wechselspannung. Sie stirbt nur
+      danach exponentiell weg, mit der Zeitkonstanten τ = L/R der Primärspule. Ein Transformator
+      funktioniert an Gleichspannung also für einen Augenblick – und dann nie wieder.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die beiden Übersetzungsverhältnisse</div>
+    <div class="dsp-erkl-text">
+      Beide Spulen umschließen denselben Fluss, und jede einzelne Windung liefert denselben
+      Beitrag. Deshalb verhalten sich die Spannungen wie die Windungszahlen:
+      <b>U<sub>S</sub>/U<sub>P</sub> = N<sub>S</sub>/N<sub>P</sub></b>. Beim <b>belasteten</b>
+      Transformator kommt die Energiebilanz hinzu: Mehr Spannung kann es nur zulasten der
+      Stromstärke geben. Deshalb kehrt sich das Verhältnis für die Ströme gerade um:
+      <b>I<sub>S</sub>/I<sub>P</sub> = N<sub>P</sub>/N<sub>S</sub></b>. Eine Spule mit wenigen
+      Windungen liefert wenig Spannung, aber sehr viel Strom – darauf beruht der Versuch mit dem
+      glühenden Nagel.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum die Messwerte etwas darunter liegen</div>
+    <div class="dsp-erkl-text">
+      Die Handreichung schreibt vorsichtig „≈" statt „=", und die Messtabellen zeigen auch,
+      warum. Auf der Spannungsseite geht ein Teil des Flusses an der Sekundärspule vorbei
+      (<b>Streufluss</b>), außerdem fällt an den Wicklungswiderständen Spannung ab. Auf der
+      Stromseite fehlt der <b>Magnetisierungsstrom</b>: Ein Teil des Primärstroms dient allein
+      dazu, den Eisenkern überhaupt umzumagnetisieren, und erreicht die Sekundärseite gar nicht.
+      Daraus folgt eine Vorhersage, die man prüfen kann: Der Wirkungsgrad muss bei <b>kleiner
+      Last</b> schlechter werden, weil der Magnetisierungsstrom dann relativ stärker ins Gewicht
+      fällt. Genau das zeigt die Bilanz in Station 3.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Wirbelströme und der laminierte Kern</div>
+    <div class="dsp-erkl-text">
+      Der sich ändernde Fluss induziert nicht nur in den Spulen eine Spannung, sondern auch im
+      <b>Eisen selbst</b> – dort treibt sie ringförmige <b>Wirbelströme</b>, die den Kern
+      aufheizen. Deshalb baut man ihn aus dünnen, durch Lack oder Papier gegeneinander isolierten
+      <b>Dynamoblechen</b> auf: Die Wirbel werden dadurch in schmale Bahnen zerlegt und stark
+      geschwächt. Hinzu kommen <b>Hystereseverluste</b>, weil der Kern fortwährend ummagnetisiert
+      wird. Einen Transformator ganz ohne solche Verluste nennt man einen <b>idealen</b>
+      Transformator – ihn gibt es nur auf dem Papier.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Scheitelwert und Effektivwert</div>
+    <div class="dsp-erkl-text">
+      Ein Messwerterfassungssystem zeigt den <b>zeitlichen Verlauf</b>, ein Vielfachmessgerät nur
+      eine Zahl – und zwar den <b>Effektivwert</b>. Für eine Sinusspannung gilt
+      Û = √2 · U<sub>eff</sub>. Auch die 230 V der Steckdose sind „nur" der Effektivwert; der
+      Scheitelwert beträgt √2 · 230 V = <b>325 V</b>. Am Oszilloskop lässt sich außerdem die
+      <b>Phasenlage</b> beider Spannungen vergleichen: Sie sind in Phase oder um 180° verschoben,
+      je nach Wickelsinn – aber nie um eine Viertelperiode. Der <b>Fluss</b> dagegen ist genau
+      eine Viertelperiode gegen beide verschoben, denn die Spannungen sind seine Ableitung.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum das Verhältnis nicht von der Frequenz abhängt</div>
+    <div class="dsp-erkl-text">
+      Erhöht man die Frequenz, so wächst zwar die induzierte Spannung je Windung – aber auf
+      <b>beiden</b> Seiten im selben Maß. Im Verhältnis U<sub>S</sub>/U<sub>P</sub> kürzt sich ω
+      deshalb heraus. Mit einem Frequenzgenerator lässt sich das direkt nachweisen, wie die
+      Handreichung vorschlägt. Was sich dabei sehr wohl ändert, ist der <b>Fluss</b> im Kern: Er
+      ist bei fester Primärspannung umgekehrt proportional zur Frequenz.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Beim Hörnerblitz und beim Hochstromversuch mit Netzspannung:
+      Diese Versuche gehören in die Hand der Lehrkraft. Der Nagel muss fest eingespannt sein und
+      unter Zug stehen; nach dem Versuch sofort ausschalten und vom Netz trennen.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _trfSetStation(i) {
+  _trf.station = Math.max(0, Math.min(5, i));
+  for (let k = 0; k < 6; k++) {
+    document.getElementById('trfSt' + k)?.classList.toggle('on', k === _trf.station);
+    const d = document.getElementById('trfS' + k);
+    if (d) d.style.display = k === _trf.station ? 'block' : 'none';
+  }
+  _trfUpdate();
+  if (_trf.station === 1) _trfDrawUPlot();
+  if (_trf.station === 3) _trfDrawIPlot();
+}
+function _trfSet(key, val) {
+  _trf[key] = val;
+  _trfDrawUPlot(); _trfDrawIPlot();
+}
+
+// ── Bedienung Station 1 ────────────────────────────────
+function _trfToggle() {
+  _trf.laeuft = !_trf.laeuft;
+  const b = document.getElementById('trfLaufBtn');
+  if (b) b.textContent = _trf.laeuft ? '⏸ Anhalten' : '▶ Weiterlaufen';
+}
+function _trfReset() { _trf.t = 0; _trfUpdate(); }
+function _trfSetArt(w) { _trf.wechsel = !!w; _trf.t = 0; _trfUpdate(); }
+function _trfSetKern(i) { _trf.kern = Math.max(0, Math.min(_TRF_KERNE.length - 1, i)); _trfUpdate(); }
+function _trfSetUp(v) { _trf.Up = Math.max(1, Math.min(12, +v)); _trfUpdate(); }
+function _trfSetF(v) { _trf.f = Math.max(10, Math.min(200, +v)); _trfUpdate(); }
+function _trfSetNp(v) { _trf.Np = Math.max(100, Math.min(2000, Math.round(+v))); _trfUpdate(); }
+function _trfSetNs(v) { _trf.Ns = Math.max(100, Math.min(2000, Math.round(+v))); _trfUpdate(); }
+function _trfSetIp(v) { _trf.Ip = Math.max(0.02, Math.min(0.5, +v)); _trfUpdate(); }
+function _trfSchnellSetzen(np, ns) { _trf.Np = np; _trf.Ns = ns; _trfUpdate(); }
+
+function _trfUpdate() {
+  if (!_trf) return;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  const s = _trf, K = _trfKern();
+  const ueb = _trfUeb(s.Np, s.Ns);
+  const usId = _trfUsIdeal(s.Up, s.Np, s.Ns);
+  const us = _trfUs(s.Up, s.Np, s.Ns, K.k);
+  const uhut = _trfScheitel(s.Up);
+  const phiHut = _trfFlussHut(uhut, s.Np, s.f);
+
+  ['', '2', '4'].forEach(function (suf) {
+    set('trfNpLbl' + suf, String(s.Np));
+    set('trfNsLbl' + suf, String(s.Ns));
+    set('trfUpLbl' + suf, _fpmNum(s.Up, 1) + ' V');
+  });
+  ['3', '4'].forEach(suf => set('trfIpLbl' + suf, _fpmNum(s.Ip, 3) + ' A'));
+  set('trfFLbl', _fpmNum(s.f, 0) + ' Hz');
+  set('trfUebA', _fpmNum(ueb, 3));
+  set('trfUsIdA', _fpmNum(usId, 3));
+  set('trfUsA', _fpmNum(us, 3));
+  set('trfPhiA', _fpmNum(phiHut * 1e6, 2));
+
+  document.getElementById('trfArtW')?.classList.toggle('on', s.wechsel);
+  document.getElementById('trfArtG')?.classList.toggle('on', !s.wechsel);
+  _TRF_KERNE.forEach((c, i) => {
+    document.getElementById('trfKern' + i)?.classList.toggle('on', i === s.kern);
+    document.getElementById('trfKernB' + i)?.classList.toggle('on', i === s.kern);
+  });
+
+  const sch = document.getElementById('trfSchnell');
+  if (sch) {
+    sch.innerHTML = '<span class="trf-schnell-k">Spulensätze der Handreichung</span>'
+      + [[1000, 1000], [1000, 500], [1000, 250], [500, 250], [500, 1000], [250, 1000]]
+        .map(p => `<button class="trf-schnell-b${s.Np === p[0] && s.Ns === p[1] ? ' on' : ''}"
+          onclick="_trfSchnellSetzen(${p[0]},${p[1]})">${p[0]} → ${p[1]}</button>`).join('');
+  }
+
+  const lage = document.getElementById('trfLage');
+  if (lage) {
+    if (!s.wechsel) {
+      const tau = _trfTau(s.Np);
+      const jetzt = _trfGleichUs(s.t, s.Up, s.Np, s.Ns, K.k);
+      const anteil = us > 0 ? jetzt / us * 100 : 0;
+      lage.className = 'trf-lage gleich';
+      lage.innerHTML = '<b>Gleichspannung.</b> Im Augenblick des Einschaltens ist die '
+        + 'Sekundärspannung genauso groß wie bei Wechselspannung – danach stirbt sie mit der '
+        + 'Zeitkonstanten τ = L/R = <b>' + _fpmNum(tau * 1000, 1) + ' ms</b> weg. Nach '
+        + _fpmNum(s.t * 1000, 0) + ' ms sind noch <b>' + _fpmNum(anteil, 1) + ' %</b> übrig. '
+        + 'Ein aufgebautes Magnetfeld ändert sich nicht mehr – und ohne Änderung keine Induktion.';
+    } else if (ueb > 1.02) {
+      lage.className = 'trf-lage hoch';
+      lage.innerHTML = '<b>Aufwärtstransformator.</b> Die Sekundärspule hat mehr Windungen, '
+        + 'deshalb ist die Sekundärspannung größer als die Primärspannung – und der '
+        + 'Sekundärstrom entsprechend kleiner.';
+    } else if (ueb < 0.98) {
+      lage.className = 'trf-lage tief';
+      lage.innerHTML = '<b>Abwärtstransformator.</b> Weniger Windungen auf der Sekundärseite: '
+        + 'weniger Spannung, dafür mehr Strom. Im Extremfall – fünf Windungen an der '
+        + 'Netzspannung – bringt das einen Nagel zum Glühen.';
+    } else {
+      lage.className = 'trf-lage';
+      lage.innerHTML = '<b>Gleiche Windungszahlen.</b> Spannung und Stromstärke bleiben (bis auf '
+        + 'die Verluste) unverändert. Ein solcher Transformator wird zur <b>galvanischen '
+        + 'Trennung</b> eingesetzt: Er überträgt Energie, ohne dass die Stromkreise leitend '
+        + 'verbunden sind – genau darauf beruht die Ladestation der Zahnbürste.';
+    }
+  }
+
+  const r = document.getElementById('trfRechnung');
+  if (r) {
+    r.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">Übersetzungsverhältnis</span>
+        <span class="pho-rz-f">N<sub>S</sub>/N<sub>P</sub></span>
+        <span class="pho-rz-v">${_fpmNum(ueb, 3)}</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">ideal erwartet</span>
+        <span class="pho-rz-f">U<sub>S</sub> = (N<sub>S</sub>/N<sub>P</sub>)·U<sub>P</sub></span>
+        <span class="pho-rz-v">${_fpmNum(usId, 3)} V</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">tatsächlich gemessen</span>
+        <span class="pho-rz-f">mit Kopplungsgrad k = ${_fpmNum(K.k, 2)}</span>
+        <span class="pho-rz-v">${_fpmNum(us, 3)} V</span></div>
+      <div class="fpm-note">Kern: <b>${K.n}</b> – ${K.kurz}. Der Scheitelfluss beträgt
+        Φ̂ = Û<sub>P</sub>/(N<sub>P</sub>·ω) = ${_fpmNum(phiHut * 1e6, 2)} µWb. Er hängt von der
+        <b>Frequenz</b> ab, das Spannungsverhältnis dagegen nicht.</div>`;
+  }
+
+  _trfRenderKette();
+  _trfRenderK3();
+  _trfRenderUMess();
+  _trfRenderIMess();
+  _trfRenderBilanz();
+  _trfRenderVerlText();
+  _trfRenderHandbuch();
+  _trfRenderOszi();
+  _trfRenderAnw();
+}
+
+// ── Die Wirkungskette der Handreichung ─────────────────
+const _TRF_KETTE = [
+  { k: 'An die Primärspule wird Wechselspannung angelegt',
+    t: 'Der Plus- und der Minuspol wechseln ständig – bei Netzspannung fünfzigmal in der Sekunde.' },
+  { k: 'Die Wechselspannung erzeugt ein sich änderndes Magnetfeld',
+    t: 'Ein stromdurchflossener Leiter erzeugt ein Magnetfeld; die Aufwicklung zur Spule verstärkt es. Weil der Strom ständig die Richtung wechselt, tut das Feld es auch.' },
+  { k: 'Das sich ändernde Magnetfeld wird auf die Sekundärspule übertragen',
+    t: 'Der geschlossene Eisenkern bündelt das Feld und führt es zum anderen Arm hinüber. Nötig ist er dafür nicht – aber er verstärkt den Effekt erheblich.' },
+  { k: 'An der Sekundärspule entsteht eine Spannung',
+    t: 'Ein sich änderndes Magnetfeld erzeugt eine elektrische Spannung. Das ist dieselbe Ursache wie beim Schlüsselexperiment „Leiterschleife": ein zeitlich veränderliches Magnetfeld.' }
+];
+function _trfSetKette(i) { _trf.kette = i; _trfRenderKette(); }
+function _trfRenderKette() {
+  const el = document.getElementById('trfKette'); if (!el) return;
+  el.innerHTML = `<div class="git-sch-kopf">Die Wirkungskette in vier Schritten</div>
+    <div class="trf-kette-reihe">${_TRF_KETTE.map((s, i) =>
+      `<div class="trf-kette-p${i === _trf.kette ? ' on' : ''}" onclick="_trfSetKette(${i})">
+         <span class="trf-kette-n">${i + 1}</span>
+         <div class="trf-kette-k">${s.k}</div>
+         ${i === _trf.kette ? '<div class="trf-kette-t">' + s.t + '</div>' : ''}</div>`).join('')}</div>
+    <div class="fpm-note">Nur der <b>dritte</b> Schritt braucht den Eisenkern – und auch der nur,
+      um den Effekt zu verstärken. Alle vier Schritte hängen daran, dass sich etwas
+      <b>ändert</b>. Fällt die Änderung weg, bricht die Kette beim vierten Schritt ab: Genau das
+      passiert bei Gleichspannung.</div>`;
+}
+
+function _trfRenderK3() {
+  const el = document.getElementById('trfK3'); if (!el) return;
+  const K = _trfKern();
+  const us = _trfUs(_trf.Up, _trf.Np, _trf.Ns, K.k);
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du diesen Versuch jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Wir wollen wissen, wovon die Sekundärspannung eines Transformators abhängt – und ob sich
+        eine Wechselspannung damit gezielt verändern lässt.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Zwei Spulen mit ${_trf.Np} und ${_trf.Ns} Windungen sitzen auf den Armen eines
+        geschlossenen Eisenjochs. Ein Netzgerät mit regelbarer Wechselspannung speist die
+        Primärseite, zwei Drehspulmessinstrumente messen beide Spannungen.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Bei offenem Sekundärkreis werden die Effektivwerte von U<sub>P</sub> und U<sub>S</sub>
+        für verschiedene Spulenkombinationen gemessen.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        Bei U<sub>P</sub> = ${_fpmNum(_trf.Up, 1)} V ergibt sich U<sub>S</sub> =
+        ${_fpmNum(us, 2)} V. Das Verhältnis der Spannungen ist stets ungefähr das Verhältnis der
+        Windungszahlen.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Beide Spulen umschließen denselben veränderlichen Fluss. Jede Windung liefert denselben
+        Spannungsbeitrag, und alle liegen in Reihe – also verhalten sich die Spannungen wie die
+        Windungszahlen.</div>
+    </div>`;
+}
+
+// ── Station 2: Spannungsmessreihe ──────────────────────
+function _trfUTake() {
+  const K = _trfKern();
+  _trf.uRows.push({ id: _trf.uNext++, Np: _trf.Np, Ns: _trf.Ns, Up: _trf.Up, kern: _trf.kern,
+                    Us: _trfUs(_trf.Up, _trf.Np, _trf.Ns, K.k) });
+  _trfRenderUTable(); _trfDrawUPlot();
+}
+function _trfUDelRow(id) {
+  _trf.uRows = _trf.uRows.filter(r => r.id !== id);
+  _trfRenderUTable(); _trfDrawUPlot();
+}
+function _trfUClear() {
+  if (_trf.uRows.length && !confirm('Alle ' + _trf.uRows.length + ' Messwerte löschen?')) return;
+  _trf.uRows = []; _trfRenderUTable(); _trfDrawUPlot();
+}
+function _trfUDemo() {
+  const k = _TRF_KERNE[0].k;
+  const nimm = (Np, Ns, Up) => _trf.uRows.push({ id: _trf.uNext++, Np, Ns, Up, kern: 0,
+                                                 Us: _trfUs(Up, Np, Ns, k) });
+  // eine Reihe je Linearisierung, damit alle drei Diagramme etwas zeigen
+  [250, 500, 750, 1000, 1500, 2000].forEach(Ns => nimm(500, Ns, 5));
+  [250, 500, 1000, 1500, 2000].forEach(Np => nimm(Np, 1000, 5));
+  [1, 2, 4, 6, 9, 12].forEach(Up => nimm(500, 1000, Up));
+  _trf.kern = 0; _trf.Np = 500; _trf.Ns = 1000; _trf.Up = 5;
+  _trfUpdate(); _trfRenderUTable(); _trfDrawUPlot();
+}
+function _trfRenderUTable() {
+  const tb = document.getElementById('trfUTbody'); if (!tb) return;
+  const leer = document.getElementById('trfUEmpty');
+  if (leer) leer.style.display = _trf.uRows.length ? 'none' : 'block';
+  tb.innerHTML = _trf.uRows.map((r, i) =>
+    `<tr><td>${i + 1}</td><td>${r.Np}</td><td>${r.Ns}</td><td>${_fpmNum(r.Up, 1)}</td>
+       <td><b>${_fpmNum(r.Us, 3)}</b></td><td>${_fpmNum(r.Us / r.Up, 3)}</td>
+       <td class="fpm-del" onclick="_trfUDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _trfRenderUMess() {
+  const el = document.getElementById('trfURechnung'); if (!el) return;
+  const K = _trfKern();
+  const usId = _trfUsIdeal(_trf.Up, _trf.Np, _trf.Ns);
+  const us = _trfUs(_trf.Up, _trf.Np, _trf.Ns, K.k);
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Windungsverhältnis</span>
+      <span class="pho-rz-f">N<sub>S</sub>/N<sub>P</sub></span>
+      <span class="pho-rz-v">${_fpmNum(_trfUeb(_trf.Np, _trf.Ns), 3)}</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">ideal erwartet</span>
+      <span class="pho-rz-f">(N<sub>S</sub>/N<sub>P</sub>)·U<sub>P</sub></span>
+      <span class="pho-rz-v">${_fpmNum(usId, 3)} V</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">gemessen</span>
+      <span class="pho-rz-f">U<sub>S</sub></span>
+      <span class="pho-rz-v">${_fpmNum(us, 3)} V</span></div>
+    <div class="fpm-note">Verändere <b>immer nur eine</b> der drei Größen und halte die anderen
+      fest – sonst lässt sich keine der Proportionalitäten belegen.</div>`;
+}
+
+const _TRF_UPRESETS = [
+  { xl: 'Windungszahl N_S', yl: 'Sekundärspannung U_S in V',
+    x: r => r.Ns, y: r => r.Us,
+    fest: r => r.Np === _trf.Np && Math.abs(r.Up - _trf.Up) < 1e-9 && r.kern === _trf.kern,
+    k: () => _trfKern().k * _trf.Up / _trf.Np, ktxt: 'k·U_P/N_P', durchNull: true,
+    note: 'Nur Messwerte mit derselben Primärwindungszahl, derselben Primärspannung und demselben Kern gehören auf diese Gerade.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'U_S = (k·U_P/N_P) · N_S',
+    deutung: 'Jede Sekundärwindung umschließt denselben Fluss und liefert denselben Spannungsbeitrag; alle liegen in Reihe. Deshalb wächst die Sekundärspannung proportional zur Windungszahl. Das ist die eine Hälfte des Übersetzungsverhältnisses.' },
+  { xl: '1000/N_P', yl: 'Sekundärspannung U_S in V',
+    x: r => 1000 / r.Np, y: r => r.Us,
+    fest: r => r.Ns === _trf.Ns && Math.abs(r.Up - _trf.Up) < 1e-9 && r.kern === _trf.kern,
+    k: () => _trfKern().k * _trf.Up * _trf.Ns / 1000, ktxt: 'k·U_P·N_S/1000', durchNull: true,
+    note: 'Nur Messwerte mit derselben Sekundärwindungszahl, derselben Primärspannung und demselben Kern gehören auf diese Gerade.',
+    typ: 'Ursprungsgerade nach Linearisierung', form: 'U_S = (k·U_P·N_S/1000) · (1000/N_P)',
+    deutung: 'U_S gegen N_P aufgetragen ergibt eine Hyperbel – daran lässt sich schlecht ablesen. Trägt man stattdessen den Kehrwert auf, so wird daraus eine Ursprungsgerade. Physikalisch steckt dahinter: Je mehr Primärwindungen, desto kleiner der Fluss, den eine gegebene Primärspannung im Kern aufbaut.' },
+  { xl: 'Primärspannung U_P in V', yl: 'Sekundärspannung U_S in V',
+    x: r => r.Up, y: r => r.Us,
+    fest: r => r.Np === _trf.Np && r.Ns === _trf.Ns && r.kern === _trf.kern,
+    k: () => _trfKern().k * _trf.Ns / _trf.Np, ktxt: 'k·N_S/N_P', durchNull: true,
+    note: 'Nur Messwerte mit denselben beiden Windungszahlen und demselben Kern gehören auf diese Gerade.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'U_S = (k·N_S/N_P) · U_P',
+    deutung: 'Die Steigung dieser Geraden ist unmittelbar das Übersetzungsverhältnis – bis auf den Kopplungsgrad. Vergleicht man die abgelesene Steigung mit N_S/N_P, so hat man den Verlust direkt gemessen: Er ist genau die Differenz zwischen beiden.' }
+];
+
+// ── Station 4: Strommessreihe ──────────────────────────
+function _trfITake() {
+  const K = _trfKern();
+  _trf.iRows.push({ id: _trf.iNext++, Np: _trf.Np, Ns: _trf.Ns, Ip: _trf.Ip, kern: _trf.kern,
+                    Is: _trfIs(_trf.Ip, _trf.Np, _trf.Ns, K.im) });
+  _trfRenderITable(); _trfDrawIPlot();
+}
+function _trfIDelRow(id) {
+  _trf.iRows = _trf.iRows.filter(r => r.id !== id);
+  _trfRenderITable(); _trfDrawIPlot();
+}
+function _trfIClear() {
+  if (_trf.iRows.length && !confirm('Alle ' + _trf.iRows.length + ' Messwerte löschen?')) return;
+  _trf.iRows = []; _trfRenderITable(); _trfDrawIPlot();
+}
+function _trfIDemo() {
+  const im = _TRF_KERNE[0].im;
+  const nimm = (Np, Ns, Ip) => _trf.iRows.push({ id: _trf.iNext++, Np, Ns, Ip, kern: 0,
+                                                 Is: _trfIs(Ip, Np, Ns, im) });
+  [250, 500, 750, 1000, 1500, 2000].forEach(Np => nimm(Np, 1000, 0.10));
+  [250, 500, 1000, 1500, 2000].forEach(Ns => nimm(500, Ns, 0.10));
+  [0.02, 0.05, 0.10, 0.20, 0.35, 0.50].forEach(Ip => nimm(500, 1000, Ip));
+  _trf.kern = 0; _trf.Np = 500; _trf.Ns = 1000; _trf.Ip = 0.10;
+  _trfUpdate(); _trfRenderITable(); _trfDrawIPlot();
+}
+function _trfRenderITable() {
+  const tb = document.getElementById('trfITbody'); if (!tb) return;
+  const leer = document.getElementById('trfIEmpty');
+  if (leer) leer.style.display = _trf.iRows.length ? 'none' : 'block';
+  tb.innerHTML = _trf.iRows.map((r, i) =>
+    `<tr><td>${i + 1}</td><td>${r.Np}</td><td>${r.Ns}</td><td>${_fpmNum(r.Ip, 3)}</td>
+       <td><b>${_fpmNum(r.Is, 4)}</b></td><td>${_fpmNum(r.Is / r.Ip, 3)}</td>
+       <td class="fpm-del" onclick="_trfIDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _trfRenderIMess() {
+  const el = document.getElementById('trfIRechnung'); if (!el) return;
+  const K = _trfKern();
+  const isId = _trfIsIdeal(_trf.Ip, _trf.Np, _trf.Ns);
+  const is = _trfIs(_trf.Ip, _trf.Np, _trf.Ns, K.im);
+  const K2 = _trfKern();
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">umgekehrtes Windungsverhältnis</span>
+      <span class="pho-rz-f">N<sub>P</sub>/N<sub>S</sub></span>
+      <span class="pho-rz-v">${_fpmNum(_trf.Np / _trf.Ns, 3)}</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">ideal erwartet</span>
+      <span class="pho-rz-f">(N<sub>P</sub>/N<sub>S</sub>)·I<sub>P</sub></span>
+      <span class="pho-rz-v">${_fpmNum(isId, 4)} A</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">davon geht ab</span>
+      <span class="pho-rz-f">Magnetisierungsstrom I<sub>m</sub></span>
+      <span class="pho-rz-v">${_fpmNum(K2.im, 3)} A</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">gemessen</span>
+      <span class="pho-rz-f">I<sub>S</sub> = (N<sub>P</sub>/N<sub>S</sub>)·(I<sub>P</sub>−I<sub>m</sub>)</span>
+      <span class="pho-rz-v">${_fpmNum(is, 4)} A</span></div>
+    <div class="fpm-note">Ein Teil des Primärstroms magnetisiert nur den Eisenkern und erreicht
+      die Sekundärseite gar nicht. Deshalb ist der Verlust hier <b>kein fester Prozentsatz</b>,
+      sondern ein fester Betrag – bei kleinem I<sub>P</sub> fällt er stärker ins Gewicht.</div>`;
+}
+
+const _TRF_IPRESETS = [
+  { xl: 'Windungszahl N_P', yl: 'Sekundärstrom I_S in A',
+    x: r => r.Np, y: r => r.Is,
+    fest: r => r.Ns === _trf.Ns && Math.abs(r.Ip - _trf.Ip) < 1e-9 && r.kern === _trf.kern,
+    k: () => (_trf.Ip - _trfKern().im) / _trf.Ns, ktxt: '(I_P−I_m)/N_S', durchNull: true,
+    note: 'Nur Messwerte mit derselben Sekundärwindungszahl, demselben Primärstrom und demselben Kern gehören auf diese Gerade.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'I_S = ((I_P−I_m)/N_S) · N_P',
+    deutung: 'Der Sekundärstrom wächst proportional zur Primärwindungszahl – genau umgekehrt zur Spannung, die mit der Sekundärwindungszahl wächst. Dahinter steht die Energiebilanz: Was an Spannung gewonnen wird, muss an Stromstärke abgegeben werden.' },
+  { xl: '1000/N_S', yl: 'Sekundärstrom I_S in A',
+    x: r => 1000 / r.Ns, y: r => r.Is,
+    fest: r => r.Np === _trf.Np && Math.abs(r.Ip - _trf.Ip) < 1e-9 && r.kern === _trf.kern,
+    k: () => _trf.Np * (_trf.Ip - _trfKern().im) / 1000, ktxt: 'N_P·(I_P−I_m)/1000', durchNull: true,
+    note: 'Nur Messwerte mit derselben Primärwindungszahl, demselben Primärstrom und demselben Kern gehören auf diese Gerade.',
+    typ: 'Ursprungsgerade nach Linearisierung', form: 'I_S = (N_P·(I_P−I_m)/1000) · (1000/N_S)',
+    deutung: 'Wenige Sekundärwindungen bedeuten viel Strom. Weil das eine Hyperbel ergibt, wird der Kehrwert aufgetragen. Der Hochstromversuch nutzt genau diesen Ast: fünf Windungen an der Netzspannung liefern Hunderte von Ampere.' },
+  { xl: 'Primärstrom I_P in A', yl: 'Sekundärstrom I_S in A',
+    x: r => r.Ip, y: r => r.Is,
+    fest: r => r.Np === _trf.Np && r.Ns === _trf.Ns && r.kern === _trf.kern,
+    k: () => _trf.Np / _trf.Ns, ktxt: 'N_P/N_S', durchNull: false,
+    b: () => -_trf.Np / _trf.Ns * _trfKern().im,
+    note: 'Nur Messwerte mit denselben beiden Windungszahlen und demselben Kern gehören auf diese Gerade.',
+    typ: 'Gerade mit negativem Achsenabschnitt', form: 'I_S = (N_P/N_S)·I_P − (N_P/N_S)·I_m',
+    deutung: 'Diese Gerade geht NICHT durch den Ursprung – und das ist kein Messfehler. Der Achsenabschnitt verrät den Magnetisierungsstrom: Verlängert man die Gerade bis zur waagerechten Achse, so liest man dort I_m ab. Das geht über die Handreichung hinaus, folgt aber zwingend aus ihren eigenen Messwerten, die sich mit einem einzigen festen Prozentsatz nicht beschreiben lassen.' }
+];
+
+// ── Gemeinsames Zeichnen der beiden Messdiagramme ──────
+function _trfPlot(cvId, fitId, presets, prIdx, rows, fn, reveal) {
+  const cv = document.getElementById(cvId);
+  if (!cv || !_trf) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = presets[prIdx];
+  const padL = 62, padR = 12, padT = 12, padB = 38;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const alle = rows.map(r => ({ x: P.x(r), y: P.y(r), passt: P.fest(r) }))
+    .filter(p => isFinite(p.x) && isFinite(p.y));
+  const pts = alle.filter(p => p.passt);
+  const xmax = Math.max(1e-9, alle.length ? Math.max(...alle.map(p => p.x)) * 1.12 : 1);
+  const ymax = Math.max(1e-9, alle.length ? Math.max(...alle.map(p => p.y)) * 1.15 : 1);
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+
+  const xt = _fpmTicks(xmax, 5);
+  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  xt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 13);
+  });
+  const yt = _fpmTicks(ymax, 4);
+  yt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(P.xl, x1, y0 + 27);
+  ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText(P.yl, 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+
+  const fo = document.getElementById(fitId);
+  if (!alle.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2);
+    ctx.textAlign = 'left';
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + P.note + '</div>';
+    return;
+  }
+  if (fn) {
+    ctx.strokeStyle = '#db2777'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    let beg = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = fn((px - x0) / (x1 - x0) * xmax); } catch (e) { yv = NaN; }
+      if (!isFinite(yv)) { beg = false; continue; }
+      const py = Y(yv);
+      if (py < y1 - 30 || py > y0 + 30) { beg = false; continue; }
+      beg ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), beg = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  let fit = null;
+  if (pts.length >= 2) {
+    fit = P.durchNull ? _fpmFitOrigin(pts) : _fpmFitLinear(pts);
+    if (fit) {
+      ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 1.7;
+      ctx.beginPath();
+      ctx.moveTo(X(0), Y(fit.b)); ctx.lineTo(X(xmax), Y(fit.k * xmax + fit.b));
+      ctx.stroke();
+      // Bei der affinen Geraden den Achsenabschnitt sichtbar machen –
+      // dort steckt der Magnetisierungsstrom.
+      if (!P.durchNull && fit.k !== 0) {
+        const xs = -fit.b / fit.k;
+        if (xs > 0 && xs < xmax) {
+          ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.4; ctx.setLineDash([3, 3]);
+          ctx.beginPath(); ctx.moveTo(X(xs), y0); ctx.lineTo(X(xs), y1); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.fillStyle = '#b45309'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+          ctx.fillText('I_m = ' + _fpmNum(xs, 3) + ' A', X(xs) + 4, y1 + 12);
+        }
+      }
+    }
+  }
+  alle.forEach(p => {
+    ctx.fillStyle = p.passt ? '#0284c7' : '#e2e8f0';
+    ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), p.passt ? 4 : 3, 0, 2 * Math.PI); ctx.fill();
+    if (p.passt) { ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke(); }
+  });
+
+  if (fo) {
+    const soll = P.k();
+    if (!fit) {
+      fo.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte nötig, bei denen die '
+        + 'übrigen Größen <b>gleich</b> sind.<br>' + P.note + '</div>';
+    } else {
+      const abw = Math.abs(fit.k - soll) / Math.abs(soll) * 100;
+      const cls = abw < 1 ? 'ok' : abw < 5 ? 'mid' : 'no';
+      const sollB = P.b ? P.b() : 0;
+      fo.innerHTML = `<div class="fpm-fitline">
+        <span class="fpm-fitmeta">${pts.length} passende Messwerte${
+          alle.length > pts.length ? ', ' + (alle.length - pts.length) + ' andere blass' : ''}</span>
+        <span class="fpm-fiteq">y = ${_fpmNum(fit.k, 5)}·x${
+          P.durchNull ? '' : (fit.b >= 0 ? ' + ' : ' − ') + _fpmNum(Math.abs(fit.b), 5)}</span>
+        <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 5)}</span>
+        <span class="fpm-fiteq" style="color:#075985">Steigung = ${P.ktxt} = ${_fpmNum(soll, 5)}</span>
+        ${P.durchNull ? '' : `<span class="fpm-fiteq" style="color:#b45309">Achsenabschnitt erwartet ${_fpmNum(sollB, 5)}</span>`}
+        ${reveal ? `<span class="fpm-badge ${cls}">Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+      </div><div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">${P.note}</div>`;
+    }
+  }
+}
+function _trfDrawUPlot() {
+  _trfPlot('trfUPlot', 'trfUFitBox', _TRF_UPRESETS, _trf.uPreset, _trf.uRows, _trf.uFn, _trf.uReveal);
+}
+function _trfDrawIPlot() {
+  _trfPlot('trfIPlot', 'trfIFitBox', _TRF_IPRESETS, _trf.iPreset, _trf.iRows, _trf.iFn, _trf.iReveal);
+}
+function _trfSetUPreset(i) {
+  _trf.uPreset = i;
+  for (let k = 0; k < _TRF_UPRESETS.length; k++)
+    document.getElementById('trfUTab' + k)?.classList.toggle('on', k === i);
+  if (_trf.uFnAuto) _trfUTheorieFn(); else _trfRenderUTheorie(false);
+  _trfDrawUPlot();
+}
+function _trfSetIPreset(i) {
+  _trf.iPreset = i;
+  for (let k = 0; k < _TRF_IPRESETS.length; k++)
+    document.getElementById('trfITab' + k)?.classList.toggle('on', k === i);
+  if (_trf.iFnAuto) _trfITheorieFn(); else _trfRenderITheorie(false);
+  _trfDrawIPlot();
+}
+function _trfTerm(P) {
+  const k = _trfZahl(P.k());
+  if (P.durchNull) return k + '*x';
+  const b = P.b();
+  return k + '*x' + (b >= 0 ? '+' : '-') + _trfZahl(Math.abs(b));
+}
+function _trfUTheorieFn() {
+  const term = _trfTerm(_TRF_UPRESETS[_trf.uPreset]);
+  const inp = document.getElementById('trfUFn'); if (inp) inp.value = term;
+  _trfSetUFn(term); _trf.uFnAuto = true; _trfRenderUTheorie(true);
+}
+function _trfITheorieFn() {
+  const term = _trfTerm(_TRF_IPRESETS[_trf.iPreset]);
+  const inp = document.getElementById('trfIFn'); if (inp) inp.value = term;
+  _trfSetIFn(term); _trf.iFnAuto = true; _trfRenderITheorie(true);
+}
+function _trfUClearFn() {
+  const inp = document.getElementById('trfUFn'); if (inp) inp.value = '';
+  _trfSetUFn(''); _trfRenderUTheorie(false);
+}
+function _trfIClearFn() {
+  const inp = document.getElementById('trfIFn'); if (inp) inp.value = '';
+  _trfSetIFn(''); _trfRenderITheorie(false);
+}
+function _trfRenderTheo(elId, P, eingesetzt) {
+  const el = document.getElementById(elId); if (!el) return;
+  el.innerHTML = `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+    <div class="fpm-theo-typ">${P.typ}</div>
+    <div class="fpm-theo-form">${P.form}</div>
+    <div class="fpm-theo-par">gesucht: die Steigung ${P.ktxt}</div>
+    ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${_trfTerm(P)}</div>` : ''}
+    <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+function _trfRenderUTheorie(e) { _trfRenderTheo('trfUTheo', _TRF_UPRESETS[_trf.uPreset], e); }
+function _trfRenderITheorie(e) { _trfRenderTheo('trfITheo', _TRF_IPRESETS[_trf.iPreset], e); }
+function _trfMachFn(str, errId) {
+  const err = document.getElementById(errId);
+  const v = (str || '').trim();
+  if (!v) { if (err) err.textContent = ''; return null; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    if (err) err.textContent = '';
+    return f;
+  } catch (e) { if (err) err.textContent = e.message; return null; }
+}
+function _trfSetUFn(str) { _trf.uFnAuto = false; _trf.uFn = _trfMachFn(str, 'trfUFnErr'); _trfDrawUPlot(); }
+function _trfSetIFn(str) { _trf.iFnAuto = false; _trf.iFn = _trfMachFn(str, 'trfIFnErr'); _trfDrawIPlot(); }
+
+// ── Die Messtabellen der Handreichung ──────────────────
+const _TRF_TAB1 = [[1000, 1000, 5, 4.5], [1000, 500, 4, 1.7], [1000, 250, 8, 1.7],
+                   [500, 250, 8, 3.6], [500, 1000, 4, 7], [250, 1000, 2.1, 7.8]];
+const _TRF_TAB2 = [[1000, 1000, 0.10, 0.09], [1000, 500, 0.10, 0.19], [1000, 250, 0.10, 0.36],
+                   [500, 250, 0.10, 0.19], [500, 1000, 0.10, 0.05], [250, 1000, 0.10, 0.02]];
+
+function _trfRenderHandbuch() {
+  const h1 = document.getElementById('trfHandbuch1');
+  if (h1) {
+    const z = _TRF_TAB1.map(r => {
+      const ueb = r[1] / r[0], verh = r[3] / r[2];
+      return `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${_fpmNum(r[2], 1)}</td>
+        <td>${_fpmNum(r[3], 1)}</td><td>${_fpmNum(ueb, 2)}</td>
+        <td><b>${_fpmNum(verh, 2)}</b></td><td>${_fpmNum(verh / ueb * 100, 1)} %</td></tr>`;
+    }).join('');
+    h1.innerHTML = `<div class="git-sch-kopf">Die Messwerte der Handreichung, Tabelle 1</div>
+      <div class="fpm-tablewrap"><table class="sim-table thr-tab">
+        <thead><tr><th>N<sub>P</sub></th><th>N<sub>S</sub></th><th>U<sub>P</sub></th><th>U<sub>S</sub></th>
+          <th>N<sub>S</sub>/N<sub>P</sub></th><th>U<sub>S</sub>/U<sub>P</sub></th><th>Anteil</th></tr></thead>
+        <tbody>${z}</tbody></table></div>
+      <div class="fpm-note">Die letzte Spalte zeigt, wie viel vom idealen Wert wirklich ankommt:
+        zwischen <b>85 % und 93 %</b>. Deshalb schreibt die Handreichung „≈" und nicht „=". Ein
+        <b>einziger</b> fester Prozentsatz beschreibt diese sechs Zeilen allerdings nicht – die
+        Werte streuen stärker, als die Ablesegenauigkeit der Drehspulinstrumente zulässt. Diese
+        Simulation rechnet mit dem Mittelwert k = ${_fpmNum(_TRF_KU, 2)}.</div>`;
+  }
+  const h2 = document.getElementById('trfHandbuch2');
+  if (h2) {
+    const z = _TRF_TAB2.map(r => {
+      const ueb = r[0] / r[1], verh = r[3] / r[2];
+      const im = r[2] - r[3] * r[1] / r[0];
+      return `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${_fpmNum(r[2], 2)}</td>
+        <td>${_fpmNum(r[3], 2)}</td><td>${_fpmNum(ueb, 2)}</td>
+        <td><b>${_fpmNum(verh, 2)}</b></td><td>${_fpmNum(im * 1000, 0)} mA</td></tr>`;
+    }).join('');
+    h2.innerHTML = `<div class="git-sch-kopf">Die Messwerte der Handreichung, Tabelle 2</div>
+      <div class="fpm-tablewrap"><table class="sim-table thr-tab">
+        <thead><tr><th>N<sub>P</sub></th><th>N<sub>S</sub></th><th>I<sub>P</sub></th><th>I<sub>S</sub></th>
+          <th>N<sub>P</sub>/N<sub>S</sub></th><th>I<sub>S</sub>/I<sub>P</sub></th><th>fehlt</th></tr></thead>
+        <tbody>${z}</tbody></table></div>
+      <div class="fpm-note">Die letzte Spalte rechnet aus jeder Zeile zurück, wie viel
+        Primärstrom nicht auf der Sekundärseite ankommt. Das Ergebnis liegt bei allen Zeilen im
+        Bereich weniger Milliampere und ist – anders als bei der Spannung – <b>kein fester
+        Prozentsatz</b>, sondern ein fester Betrag. Genau das erwartet man vom
+        Magnetisierungsstrom. Diese Simulation rechnet mit
+        I<sub>m</sub> = ${_fpmNum(_TRF_IM * 1000, 0)} mA.</div>`;
+  }
+}
+
+// ── Station 3: Verluste ────────────────────────────────
+function _trfRenderBilanz() {
+  const el = document.getElementById('trfBilanz'); if (!el) return;
+  const K = _trfKern();
+  const Pp = _trf.Up * _trf.Ip;
+  const Us = _trfUs(_trf.Up, _trf.Np, _trf.Ns, K.k);
+  const Is = _trfIs(_trf.Ip, _trf.Np, _trf.Ns, K.im);
+  const Ps = Us * Is;
+  const eta = _trfEta(_trf.Ip, K.k, K.im);
+  const bal = Math.max(0, Pp - Ps);
+  el.innerHTML = `<div class="git-sch-kopf">Leistungsbilanz</div>
+    <div class="trf-bal">
+      <div class="trf-bal-z"><span>hineingesteckt P<sub>P</sub> = U<sub>P</sub>·I<sub>P</sub></span>
+        <b>${_fpmNum(Pp, 3)} W</b></div>
+      <div class="trf-bal-z"><span>herausgeholt P<sub>S</sub> = U<sub>S</sub>·I<sub>S</sub></span>
+        <b>${_fpmNum(Ps, 3)} W</b></div>
+      <div class="trf-bal-z verl"><span>im Transformator geblieben</span>
+        <b>${_fpmNum(bal, 3)} W</b></div>
+      <div class="trf-bal-bar">
+        <div class="trf-bal-nutz" style="width:${_fpmNum(Math.max(0, Math.min(100, eta * 100)), 0).replace(',', '.')}%"></div>
+      </div>
+      <div class="trf-bal-z erg"><span>Wirkungsgrad η = P<sub>S</sub>/P<sub>P</sub></span>
+        <b>${_fpmNum(eta * 100, 1)} %</b></div>
+    </div>
+    <div class="fpm-note">Aus den beiden Ansätzen folgt ohne weitere Annahme
+      <b>η = k · (1 − I<sub>m</sub>/I<sub>P</sub>)</b>. Der Wirkungsgrad hängt also von der
+      <b>Last</b> ab: Schiebe den Primärstrom nach unten, und er bricht ein – weil der
+      Magnetisierungsstrom immer derselbe bleibt, während die übertragene Leistung schrumpft.
+      Ein Transformator im Leerlauf ist am ineffizientesten. Genau deshalb ziehen viele
+      Netzteile auch dann Strom, wenn nichts angeschlossen ist.</div>`;
+}
+
+function _trfRenderVerlText() {
+  const el = document.getElementById('trfVerlText'); if (!el) return;
+  const K = _trfKern();
+  el.innerHTML = `<div class="git-sch-kopf">Wo die fehlende Energie bleibt</div>
+    <div class="trf-verl-z"><b>Wirbelströme</b> Der sich ändernde Fluss induziert auch im Eisen
+      selbst eine Spannung. Sie treibt dort ringförmige Ströme, die den Kern erwärmen. Deshalb
+      baut man ihn aus dünnen <b>Dynamoblechen</b> auf, die durch Lack oder Papier gegeneinander
+      isoliert sind: Die Wirbel werden in schmale Bahnen zerlegt und dadurch stark geschwächt.
+      Einen so aufgebauten Kern nennt man <b>laminiert</b>.</div>
+    <div class="trf-verl-z"><b>Hystereseverluste</b> Der Kern wird durch die Wechselspannung
+      fortwährend ummagnetisiert. Jeder Durchlauf der Hystereseschleife kostet Energie, die als
+      Wärme im Eisen bleibt – unabhängig davon, wie fein der Kern geschichtet ist.</div>
+    <div class="trf-verl-z"><b>Streufluss</b> Nicht jede Feldlinie, die die Primärspule erzeugt,
+      läuft auch durch die Sekundärspule. Was daneben geht, trägt zur Übertragung nichts bei.
+      Das ist der Grund für den Kopplungsgrad k.</div>
+    <div class="trf-verl-z"><b>Wicklungswiderstand</b> Der Kupferdraht ist kein idealer Leiter.
+      An ihm fällt Spannung ab, und zwar umso mehr, je größer der Strom ist.</div>
+    <div class="trf-verl-z ideal"><b>Der ideale Transformator</b> Hat man keine derartigen
+      Verluste, so spricht man von einem idealen Transformator. Für ihn gilt exakt
+      U<sub>S</sub>/U<sub>P</sub> = N<sub>S</sub>/N<sub>P</sub> und
+      I<sub>S</sub>/I<sub>P</sub> = N<sub>P</sub>/N<sub>S</sub>. Er ist ein Rechenmodell, kein
+      Bauteil.</div>
+    <div class="trf-verl-z leer"><b>Der unbelastete Transformator</b> Ist der Sekundärkreis
+      offen, so entzieht er dem Transformator keine Energie. Ein <b>idealer</b> unbelasteter
+      Transformator würde deshalb gar keine Leistung aufnehmen. Ein wirklicher nimmt sehr wohl
+      welche auf – nämlich genau die Verluste, die er im Kern erzeugt.</div>
+    <div class="fpm-note">Gerade eingestellt: <b>${K.n}</b> (${K.kurz}), Kopplungsgrad
+      k = ${_fpmNum(K.k, 2)}, Magnetisierungsstrom
+      I<sub>m</sub> = ${_fpmNum(K.im * 1000, 0)} mA. <b>Achtung:</b> Nur die Zahlen für den
+      laminierten Kern stammen aus den Messtabellen der Handreichung. Die Werte für den massiven
+      Kern und für den Betrieb ohne Kern sind <b>Modellannahmen</b>, die die Größenordnung
+      treffen sollen – gemessen sind sie nicht.</div>`;
+}
+
+// ── Station 5: Oszilloskop ─────────────────────────────
+function _trfSetOszF(v) {
+  _trf.oszF = Math.max(10, Math.min(200, +v));
+  const el = document.getElementById('trfOszFLbl');
+  if (el) el.textContent = _fpmNum(_trf.oszF, 0) + ' Hz';
+  _trf.oszGeprueft = null; _trfRenderOszi();
+}
+function _trfSetOszUp(v) {
+  _trf.oszUp = Math.max(1, Math.min(12, +v));
+  const el = document.getElementById('trfOszUpLbl');
+  if (el) el.textContent = _fpmNum(_trf.oszUp, 1) + ' V';
+  _trf.oszGeprueft = null; _trfRenderOszi();
+}
+function _trfSetGegen(v) { _trf.gegensinnig = !!v; _trfRenderOszi(); }
+function _trfSetLese(feld, v) { _trf[feld] = v; _trfRenderOszi(); }
+function _trfOszLeseAus() {
+  const p = parseFloat(String(_trf.leseUp).replace(',', '.'));
+  const s = parseFloat(String(_trf.leseUs).replace(',', '.'));
+  const t = parseFloat(String(_trf.leseT).replace(',', '.'));
+  const r = {};
+  if (isFinite(p) && p > 0) { r.Uhp = p; r.Ueffp = _trfEffektiv(p); }
+  if (isFinite(s) && s > 0) r.Uhs = s;
+  if (isFinite(t) && t > 0) { r.T = t / 1000; r.f = 1000 / t; }
+  if (r.Uhp !== undefined && r.Uhs !== undefined) r.verh = r.Uhs / r.Uhp;
+  return r;
+}
+function _trfOszPruefen() {
+  const r = _trfOszLeseAus();
+  const K = _trfKern();
+  const sollVerh = K.k * _trf.Ns / _trf.Np;
+  _trf.oszGeprueft = (r.verh !== undefined && r.f !== undefined)
+    ? { verh: r.verh, f: r.f,
+        abwV: Math.abs(r.verh - sollVerh) / sollVerh * 100,
+        abwF: Math.abs(r.f - _trf.oszF) / _trf.oszF * 100,
+        effp: r.Ueffp, abwE: Math.abs(r.Ueffp - _trf.oszUp) / _trf.oszUp * 100 }
+    : null;
+  _trfRenderOszi();
+}
+function _trfRenderOszi() {
+  const K = _trfKern();
+  const uhp = _trfScheitel(_trf.oszUp);
+  const uhs = K.k * _trf.Ns / _trf.Np * uhp;
+  const T = 1 / _trf.oszF;
+
+  const a = document.getElementById('trfOszAufgabe');
+  if (a) {
+    a.innerHTML = `<div class="git-sch-kopf">Mit dem Messwerterfassungssystem auswerten</div>
+      <div class="trf-auf-t">
+        Die beiden Drehspulinstrumente sind durch ein Messwerterfassungssystem ersetzt. Es zeigt
+        nicht mehr eine Zahl, sondern den <b>zeitlichen Verlauf</b>. Damit lassen sich drei Dinge
+        gleichzeitig ablesen, die ein Vielfachmessgerät nicht hergibt: die <b>Phasenlage</b>
+        beider Spannungen, der <b>Scheitelwert</b> und die <b>Frequenz</b>.
+      </div>
+      <div class="trf-auf-t" style="margin-top:6px">
+        Lies Û<sub>P</sub>, Û<sub>S</sub> und die Periodendauer T ab. Bestimme daraus das
+        Übersetzungsverhältnis, die Frequenz und den <b>Effektivwert</b> der Primärspannung.
+      </div>`;
+  }
+
+  const el = document.getElementById('trfOszRechnung');
+  if (el) {
+    const r = _trfOszLeseAus();
+    if (r.verh === undefined && r.f === undefined) {
+      el.innerHTML = '<div class="fpm-note">Trage die drei abgelesenen Werte ein. Es gilt '
+        + 'f = 1/T und U<sub>eff</sub> = Û/√2.</div>';
+    } else {
+      el.innerHTML = `
+        ${r.verh !== undefined ? `<div class="pho-rz"><span class="pho-rz-t">Verhältnis der Scheitelwerte</span>
+          <span class="pho-rz-f">Û<sub>S</sub>/Û<sub>P</sub></span>
+          <span class="pho-rz-v">${_fpmNum(r.verh, 3)}</span></div>` : ''}
+        ${r.f !== undefined ? `<div class="pho-rz"><span class="pho-rz-t">Frequenz</span>
+          <span class="pho-rz-f">f = 1/T</span>
+          <span class="pho-rz-v">${_fpmNum(r.f, 1)} Hz</span></div>` : ''}
+        ${r.Ueffp !== undefined ? `<div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Effektivwert primär</span>
+          <span class="pho-rz-f">U<sub>eff</sub> = Û/√2</span>
+          <span class="pho-rz-v">${_fpmNum(r.Ueffp, 3)} V</span></div>` : ''}`;
+    }
+  }
+
+  const pr = document.getElementById('trfOszPruef');
+  if (pr) {
+    const g = _trf.oszGeprueft;
+    if (!g) { pr.className = 'lsk-zustand'; pr.innerHTML = 'Trage deine Ablesungen ein und prüfe sie.'; }
+    else {
+      const gut = g.abwV < 8 && g.abwF < 8;
+      pr.className = 'lsk-zustand ' + (gut ? 'ok' : 'no');
+      const sollVerh = K.k * _trf.Ns / _trf.Np;
+      pr.innerHTML = (gut ? '<b>Das passt.</b> ' : '<b>Da stimmt etwas nicht.</b> ')
+        + 'Erwartet werden Û<sub>S</sub>/Û<sub>P</sub> = ' + _fpmNum(sollVerh, 3)
+        + ' und f = ' + _fpmNum(_trf.oszF, 0) + ' Hz; du erhältst '
+        + _fpmNum(g.verh, 3) + ' und ' + _fpmNum(g.f, 1) + ' Hz.'
+        + (g.effp !== undefined && g.abwE < 8
+          ? ' Der Effektivwert stimmt ebenfalls: ' + _fpmNum(g.effp, 2) + ' V.'
+          : g.effp !== undefined
+          ? ' Der Effektivwert weicht um ' + _fpmNum(g.abwE, 0) + ' % ab – hast du durch √2 geteilt?'
+          : '')
+        + (g.abwV > 30 && g.abwV < 60
+          ? ' Die Abweichung sieht nach √2 aus: Verwechselst du Scheitel- und Effektivwert?' : '');
+    }
+  }
+
+  const ph = document.getElementById('trfPhase');
+  if (ph) {
+    ph.innerHTML = `<div class="git-sch-kopf">Die Phasenlage</div>
+      <div class="trf-ph-z"><span>Primär- und Sekundärspannung</span>
+        <b>${_trf.gegensinnig ? '180° verschoben (Gegenphase)' : 'in Phase (0°)'}</b></div>
+      <div class="trf-ph-z"><span>Fluss Φ gegen beide Spannungen</span>
+        <b>90° – eine Viertelperiode</b></div>
+      <div class="fpm-note">Was hier zu sehen ist, hängt allein vom <b>Wickelsinn</b> der
+        Sekundärspule ab (und davon, wie herum man die Messleitungen anschließt). Beide Fälle
+        sind gleich richtig – dazwischen gibt es nichts. Denn beide Spannungen sind dieselbe
+        Ableitung desselben Flusses, nur mit verschiedenen Faktoren: U = −N·dΦ/dt. Deshalb ist
+        auch der <b>Fluss</b> zwangsläufig um eine Viertelperiode gegen beide verschoben – genau
+        wie beim Generator die Projektionsfläche gegen die Spannung.</div>`;
+  }
+
+  const nz = document.getElementById('trfNetz');
+  if (nz) {
+    nz.innerHTML = `<div class="git-sch-kopf">Zwei Dinge, die man hier gleich mitnimmt</div>
+      <div class="trf-netz-z"><b>Die Steckdose führt 325 V</b> Die 230 V, von denen alle reden,
+        sind der <b>Effektivwert</b>. Der Scheitelwert beträgt
+        Û = √2 · ${_TRF_UNETZ} V = <b>${_fpmNum(_trfScheitel(_TRF_UNETZ), 0)} V</b>. Ein
+        Oszilloskop zeigt diesen Wert – ein Vielfachmessgerät nicht.</div>
+      <div class="trf-netz-z"><b>Das Verhältnis hängt nicht von der Frequenz ab</b> Schiebe die
+        Frequenz von 10 auf 200 Hz: Beide Scheitelwerte bleiben stehen, das Verhältnis erst
+        recht. Denn ω steckt in beiden Spannungen und kürzt sich heraus. Der <b>Fluss</b> im Kern
+        ändert sich sehr wohl – er ist bei fester Primärspannung umgekehrt proportional zu f.
+        Bei ${_fpmNum(_trf.oszF, 0)} Hz beträgt er
+        Φ̂ = ${_fpmNum(_trfFlussHut(uhp, _trf.Np, _trf.oszF) * 1e6, 2)} µWb.</div>
+      <div class="fpm-note">Gerade eingestellt: Û<sub>P</sub> = ${_fpmNum(uhp, 2)} V,
+        Û<sub>S</sub> = ${_fpmNum(uhs, 2)} V, T = ${_fpmNum(T * 1000, 2)} ms.</div>`;
+  }
+}
+
+// ── Station 6: Anwendungen ─────────────────────────────
+function _trfSetAnw(i) {
+  _trf.anw = Math.max(0, Math.min(2, i));
+  for (let k = 0; k < 3; k++)
+    document.getElementById('trfAnwT' + k)?.classList.toggle('on', k === _trf.anw);
+  const box = document.getElementById('trfZbBox');
+  if (box) box.style.display = _trf.anw === 2 ? 'block' : 'none';
+  _trfRenderAnw();
+}
+function _trfSetZbNs(v) { _trf.zbNs = v; _trf.zbGeprueft = null; _trfRenderAnw(); }
+function _trfZbPruefen() {
+  const n = parseFloat(String(_trf.zbNs).replace(',', '.'));
+  const soll = _trfZbNs(_TRF_ZB_NP, _TRF_ZB_UP, _TRF_ZB_US);
+  _trf.zbGeprueft = isFinite(n)
+    ? { n, soll, abw: Math.abs(n - soll) / soll * 100 } : { n: NaN, soll };
+  _trfRenderAnw();
+}
+function _trfRenderAnw() {
+  const K = _trfKern();
+  const lbl = document.getElementById('trfAnwLbl');
+  const txt = document.getElementById('trfAnwText');
+  const re = document.getElementById('trfAnwRechnung');
+  if (!txt || !re) return;
+
+  if (_trf.anw === 0) {
+    const usId = _trfUsIdeal(_TRF_UNETZ, _TRF_HS_NP, _TRF_HS_NS);
+    const us = _trfUs(_TRF_UNETZ, _TRF_HS_NP, _TRF_HS_NS, K.k);
+    const ip = _trfIsIdeal(_TRF_HS_IS, _TRF_HS_NS, _TRF_HS_NP);
+    if (lbl) lbl.textContent = 'Hochspannungstransformator mit Hörnerblitzableiter';
+    re.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">Übersetzung</span>
+        <span class="pho-rz-f">${_TRF_HS_NS}/${_TRF_HS_NP}</span>
+        <span class="pho-rz-v">${_fpmNum(_TRF_HS_NS / _TRF_HS_NP, 0)}</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">Leerlaufspannung ideal</span>
+        <span class="pho-rz-f">(N<sub>S</sub>/N<sub>P</sub>)·${_TRF_UNETZ} V</span>
+        <span class="pho-rz-v">${_fpmNum(usId / 1000, 2)} kV</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">mit Kopplungsgrad</span>
+        <span class="pho-rz-f">k = ${_fpmNum(K.k, 2)}</span>
+        <span class="pho-rz-v">${_fpmNum(us / 1000, 2)} kV</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">Primärstrom bei ${_fpmNum(_TRF_HS_IS * 1000, 0)} mA sekundär</span>
+        <span class="pho-rz-f">(N<sub>S</sub>/N<sub>P</sub>)·I<sub>S</sub></span>
+        <span class="pho-rz-v">${_fpmNum(ip, 2)} A</span></div>`;
+    txt.innerHTML = `<div class="git-sch-kopf">Hochspannung und Hörnerblitz</div>
+      <div class="trf-anw-t">An die Primärspule mit <b>${_TRF_HS_NP}</b> Windungen wird die
+        Netzspannung gelegt, an die Sekundärspule mit <b>${_TRF_HS_NS}</b> Windungen ein
+        Hörnerblitzableiter. Zwischen den Hörnern springt ein Funke über, der die Luft
+        <b>ionisiert</b> und damit leitend macht. Der fließende Strom von etwa
+        ${_fpmNum(_TRF_HS_IS * 1000, 0)} mA erwärmt die Luft dieses „Blitzkanals". Sie steigt in
+        der umgebenden kalten Luft auf – unterstützt durch die Form der Hörner – bis der Kanal
+        <b>reißt</b>. Dann setzt der Vorgang unten wieder ein.</div>
+      <div class="trf-anw-t"><b>Eine Einschränkung, die man kennen sollte:</b> Die oben
+        gerechneten ${_fpmNum(us / 1000, 1)} kV sind die <b>Leerlaufspannung</b>. Sobald der
+        Funke brennt, bricht die Spannung über dem Lichtbogen weit darunter zusammen; der Strom
+        wird dann durch die Streuinduktivität des Transformators begrenzt, die bei solchen Geräten
+        absichtlich groß gebaut ist. Der oben genannte Primärstrom ist deshalb eine obere
+        Abschätzung, kein Messwert.</div>
+      <div class="trf-anw-warn">⚠ Der untere Abstand zwischen den Hörnern darf nicht zu groß
+        sein, damit die Zündspannung <b>unter 5 kV</b> bleibt – sonst wird der Aufbau zum
+        Störstrahler. Versuch nur durch die Lehrkraft.</div>
+      <div class="fpm-note">Die Handreichung empfiehlt diesen Versuch ausdrücklich zur
+        Vorbereitung auf das Schlüsselexperiment 14, das Modellexperiment zu Freileitungen. Dort
+        wird klar, warum man elektrische Energie überhaupt hochspannt: Bei gleicher Leistung
+        sinkt die Stromstärke – und die Verluste in der Leitung gehen mit dem <b>Quadrat</b> der
+        Stromstärke.</div>`;
+  } else if (_trf.anw === 1) {
+    const us = _trfUs(_TRF_UNETZ, _TRF_ST_NP, _TRF_ST_NS, K.k);
+    const R = _trfNagelR(), I = _trfNagelI(K.k), P = _trfNagelP(K.k);
+    const dichte = P / (_trfNagelFlaeche() * 1e4);
+    if (lbl) lbl.textContent = 'Hochstromtransformation: fünf Windungen an der Netzspannung';
+    re.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">Sekundärspannung</span>
+        <span class="pho-rz-f">k·(${_TRF_ST_NS}/${_TRF_ST_NP})·${_TRF_UNETZ} V</span>
+        <span class="pho-rz-v">${_fpmNum(us, 2)} V</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">Widerstand des Nagels</span>
+        <span class="pho-rz-f">R = ρ·l/A</span>
+        <span class="pho-rz-v">${_fpmNum(R * 1000, 3)} mΩ</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Stromstärke im Kreis</span>
+        <span class="pho-rz-f">I = U<sub>S</sub>/(R+R<sub>Kreis</sub>)</span>
+        <span class="pho-rz-v">${_fpmNum(I, 0)} A</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">im Nagel umgesetzte Leistung</span>
+        <span class="pho-rz-f">P = I²·R</span>
+        <span class="pho-rz-v">${_fpmNum(P, 1)} W</span></div>`;
+    txt.innerHTML = `<div class="git-sch-kopf">Den Nagel zum Glühen bringen</div>
+      <div class="trf-anw-t">An die Primärspule mit <b>${_TRF_ST_NP}</b> Windungen wird die
+        Netzspannung gelegt, sekundär hängt eine Spule mit nur <b>${_TRF_ST_NS}</b> Windungen, die
+        über einen Nagel kurzgeschlossen ist. Die Spannung ist winzig – aber weil das
+        Übersetzungsverhältnis für den <b>Strom</b> gerade umgekehrt gilt, fließen einige hundert
+        Ampere. Am kleinen Widerstand des Nagels setzt das genug Leistung um, dass er glüht und
+        schließlich durchschmilzt.</div>
+      <div class="trf-anw-t">Zur Einordnung: ${_fpmNum(P, 0)} W verteilen sich auf rund
+        ${_fpmNum(_trfNagelFlaeche() * 1e4, 1)} cm² Nageloberfläche, also etwa
+        <b>${_fpmNum(dichte, 1)} W/cm²</b>. Zum Glühen genügen wenige W/cm² – der Wert liegt also
+        klar darüber, und das deckt sich mit dem, was die Handreichung beschreibt.</div>
+      <div class="trf-anw-t">Solche <b>Hochstromtransformatoren</b> arbeiten in Induktionsöfen,
+        in der Galvanik sowie in Schmelz- und Glühöfen. Auch jedes Punktschweißgerät ist im Kern
+        genau dieser Versuch.</div>
+      <div class="trf-anw-warn">⚠ Den Nagel sehr gut einspannen; er soll unter leichtem Zug
+        stehen, damit er sauber durchreißt. Nach dem Versuch <b>sofort ausschalten und vom Netz
+        trennen</b>. Nur durch die Lehrkraft.</div>
+      <div class="fpm-note">Gerechnet wird mit einem Eisennagel von
+        ${_fpmNum(_TRF_NAGEL_L * 1000, 0)} mm Länge und ${_fpmNum(_TRF_NAGEL_D * 1000, 1)} mm
+        Durchmesser sowie ${_fpmNum(_TRF_R_KREIS * 1000, 0)} mΩ für Wicklung, Klemmen und
+        Kontakte. Diese Zahlen nennt die Handreichung nicht – sie sind plausibel gewählt, und der
+        Kreiswiderstand bestimmt das Ergebnis deutlich stärker als der Nagel selbst.</div>`;
+  } else {
+    const soll = _trfZbNs(_TRF_ZB_NP, _TRF_ZB_UP, _TRF_ZB_US);
+    const uh = _trfZbUhut(soll, _TRF_ZB_A, _TRF_ZB_BHUT, _TRF_F0);
+    const uh60 = _trfZbUhut(soll, _TRF_ZB_A, _TRF_ZB_BHUT, 60);
+    if (lbl) lbl.textContent = 'Ladestation der Zahnbürste: B(t) und U(t) im gemeinsamen Diagramm';
+    re.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">Flussdichte</span>
+        <span class="pho-rz-f">B(t) = B̂·sin(ω·t)</span>
+        <span class="pho-rz-v">B̂ = ${_fpmNum(_TRF_ZB_BHUT * 1000, 1)} mT</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">daraus die Spannung</span>
+        <span class="pho-rz-f">U = −n·A·dB/dt = −n·A·B̂·ω·cos(ω·t)</span>
+        <span class="pho-rz-v">—</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Scheitelwert bei 50 Hz</span>
+        <span class="pho-rz-f">Û = n·A·B̂·ω</span>
+        <span class="pho-rz-v">${_fpmNum(uh, 3)} V</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">derselbe Aufbau bei 60 Hz</span>
+        <span class="pho-rz-f">Û ∝ ω</span>
+        <span class="pho-rz-v">${_fpmNum(uh60, 3)} V</span></div>`;
+    const g = _trf.zbGeprueft;
+    let pruef = 'Trage deine Windungszahl ein und prüfe sie.';
+    let cls = '';
+    if (g) {
+      if (!isFinite(g.n)) { cls = ' no'; pruef = 'Da fehlt noch eine Zahl.'; }
+      else if (g.abw < 5) {
+        cls = ' ok';
+        pruef = '<b>Richtig.</b> N<sub>S</sub> = N<sub>P</sub>·U<sub>S</sub>/U<sub>P</sub> = '
+          + _TRF_ZB_NP + ' · ' + _fpmNum(_TRF_ZB_US, 1) + ' V / ' + _fpmNum(_TRF_ZB_UP, 0)
+          + ' V = <b>' + _fpmNum(g.soll, 0) + '</b> Windungen.';
+      } else {
+        cls = ' no';
+        pruef = '<b>Noch nicht.</b> Du hast ' + _fpmNum(g.n, 0) + ' angegeben, richtig sind '
+          + _fpmNum(g.soll, 0) + '. Stelle U<sub>S</sub>/U<sub>P</sub> = N<sub>S</sub>/N<sub>P</sub> '
+          + 'nach N<sub>S</sub> um.'
+          + (Math.abs(g.n - _TRF_ZB_NP * _TRF_ZB_UP / _TRF_ZB_US) / g.n < 0.05
+            ? ' Es sieht so aus, als hättest du den Bruch <b>umgekehrt</b> herum gebildet.' : '');
+      }
+    }
+    const pel = document.getElementById('trfZbPruef');
+    if (pel) { pel.className = 'lsk-zustand' + cls; pel.innerHTML = pruef; }
+
+    txt.innerHTML = `<div class="git-sch-kopf">Die elektrische Zahnbürste</div>
+      <div class="trf-anw-t">Metallkontakte wären hier unpraktisch – sie würden durch
+        Verunreinigungen unbrauchbar. Deshalb steckt in der Ladestation eine Primärspule mit
+        Eisenkern und in der Bürste selbst eine Sekundärspule. Die Energie wird
+        <b>berührungslos</b> übertragen: Es ist ein ganz gewöhnlicher Transformator, dessen beide
+        Hälften man auseinandernehmen kann.</div>
+      <div class="trf-anw-t"><b>Wie erkennt man, welcher Graph welcher ist?</b> Über die
+        <b>Steigung</b>. Die Spannung ist die Ableitung des Flusses – also ist U dort am größten,
+        wo B am <b>steilsten</b> verläuft, und U ist <b>null</b>, wo B einen Extremwert hat. Wer
+        die beiden Kurven vertauscht, bekommt genau die umgekehrte Zuordnung und einen
+        Widerspruch zum Induktionsgesetz. Bei einem nicht sinusförmigen Strom wird das noch
+        deutlicher: Ein geradliniges Stück von B gehört zu einem <b>waagerechten</b> Stück von U.</div>
+      <div class="trf-anw-t"><b>50 Hz oder 60 Hz?</b> In Europa und weiten Teilen der Welt sind es
+        50 Hz, in Nordamerika 60 Hz. Weil Û proportional zu ω ist, liefert dieselbe Ladestation in
+        den USA rund <b>20 % mehr</b> Spannung (${_fpmNum(uh, 2)} V → ${_fpmNum(uh60, 2)} V),
+        umgekehrt in Deutschland etwa ${_fpmNum((1 - 50 / 60) * 100, 0)} % weniger. Die Ladeschaltung
+        muss das abfangen; ein einfaches Netzteil ohne Regelung würde den Akku entweder überlasten
+        oder nicht mehr voll laden. Das <b>Übersetzungsverhältnis</b> ändert sich dabei nicht –
+        nur der Scheitelwert.</div>
+      <div class="fpm-note">Die Handreichung stellt zu diesem Kontext sechs Teilaufgaben. Die
+        Rechenaufgabe (Windungszahl) und die beiden Deutungsaufgaben (Graphenzuordnung,
+        Netzfrequenz) sind hier umgesetzt; die Aufgabe zur Videokritik lässt sich nur im
+        Unterricht sinnvoll bearbeiten.</div>`;
+  }
+}
+
+// ── Zeichnungen ────────────────────────────────────────
+function _trfDrawKern(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const K = _trfKern();
+  const s = _trf;
+  const kx = 120, ky = 48, kw = 200, kh = 150, dick = 22;
+
+  // Der Kern als Rahmen
+  if (K.id !== 'ohne') {
+    ctx.fillStyle = K.id === 'lam' ? '#cbd5e1' : '#94a3b8';
+    ctx.fillRect(kx, ky, kw, dick);
+    ctx.fillRect(kx, ky + kh - dick, kw, dick);
+    ctx.fillRect(kx, ky, dick, kh);
+    ctx.fillRect(kx + kw - dick, ky, dick, kh);
+    if (K.id === 'lam') {
+      ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 0.7;
+      for (let x = kx + 4; x < kx + kw; x += 5) {
+        ctx.beginPath(); ctx.moveTo(x, ky); ctx.lineTo(x, ky + dick); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(x, ky + kh - dick); ctx.lineTo(x, ky + kh); ctx.stroke();
+      }
+    }
+  } else {
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+    ctx.strokeRect(kx, ky, kw, kh); ctx.setLineDash([]);
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('kein Kern', kx + kw / 2, ky + kh / 2);
+  }
+
+  // Fluss im Kern: als wanderndes Muster auf dem Rahmen
+  const uhut = _trfScheitel(s.Up);
+  const phiHut = _trfFlussHut(uhut, s.Np, s.f);
+  const rel = s.wechsel
+    ? _trfFluss(s.t, uhut, s.Np, s.f) / Math.max(1e-12, phiHut)
+    : 1 - Math.exp(-Math.max(0, s.t) / _trfTau(s.Np));
+  if (K.id !== 'ohne') {
+    const staerke = Math.min(1, Math.abs(rel)) * (K.id === 'lam' ? 1 : 0.6);
+    ctx.strokeStyle = rel >= 0 ? '#f59e0b' : '#7c3aed';
+    ctx.lineWidth = 1 + 3 * staerke;
+    ctx.beginPath();
+    ctx.moveTo(kx + dick / 2, ky + dick / 2);
+    ctx.lineTo(kx + kw - dick / 2, ky + dick / 2);
+    ctx.lineTo(kx + kw - dick / 2, ky + kh - dick / 2);
+    ctx.lineTo(kx + dick / 2, ky + kh - dick / 2);
+    ctx.closePath(); ctx.stroke();
+    ctx.fillStyle = '#b45309'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Φ', kx + kw / 2, ky + dick / 2 - 5);
+  }
+
+  // Die beiden Wicklungen
+  const wick = (x, n, farbe, name) => {
+    const anz = Math.max(3, Math.min(9, Math.round(n / 250)));
+    ctx.strokeStyle = farbe; ctx.lineWidth = 2.6;
+    for (let i = 0; i < anz; i++) {
+      const y = ky + 22 + i * (kh - 48) / Math.max(1, anz - 1);
+      ctx.beginPath(); ctx.ellipse(x, y, 20, 5, 0, 0, 2 * Math.PI); ctx.stroke();
+    }
+    ctx.fillStyle = farbe; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(name, x, ky - 8);
+    ctx.font = '9px sans-serif';
+    ctx.fillText(n + ' Wdg.', x, ky + kh + 14);
+  };
+  wick(kx + dick / 2, s.Np, '#dc2626', 'Primär');
+  wick(kx + kw - dick / 2, s.Ns, '#0284c7', 'Sekundär');
+
+  // Quelle links
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.moveTo(kx + dick / 2 - 20, ky + 30); ctx.lineTo(40, ky + 30);
+  ctx.lineTo(40, ky + kh - 20); ctx.lineTo(kx + dick / 2 - 20, ky + kh - 20);
+  ctx.stroke();
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.arc(40, ky + kh / 2 + 5, 17, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#dc2626'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(s.wechsel ? '∼' : '=', 40, ky + kh / 2 + 10);
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif';
+  ctx.fillText(_fpmNum(s.Up, 1) + ' V', 40, ky + kh / 2 + 34);
+
+  // Voltmeter rechts
+  const us = s.wechsel ? _trfUs(s.Up, s.Np, s.Ns, K.k)
+                       : _trfGleichUs(s.t, s.Up, s.Np, s.Ns, K.k);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.moveTo(kx + kw - dick / 2 + 20, ky + 30); ctx.lineTo(W - 40, ky + 30);
+  ctx.lineTo(W - 40, ky + kh - 20); ctx.lineTo(kx + kw - dick / 2 + 20, ky + kh - 20);
+  ctx.stroke();
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.arc(W - 40, ky + kh / 2 + 5, 19, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0284c7'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('V', W - 40, ky + kh / 2 - 2);
+  ctx.font = '700 9px sans-serif';
+  ctx.fillText(_fpmNum(us, 2), W - 40, ky + kh / 2 + 12);
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif';
+  ctx.fillText('Volt', W - 40, ky + kh / 2 + 34);
+
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(K.n, W / 2, H - 8);
+  ctx.textAlign = 'left';
+}
+
+function _trfDrawSpur(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const s = _trf, K = _trfKern();
+  const x0 = 52, x1 = W - 12;
+  const uhut = _trfScheitel(s.Up);
+  const phiHut = Math.max(1e-15, _trfFlussHut(uhut, s.Np, s.f));
+  const ushut = Math.max(1e-12, K.k * s.Ns / s.Np * uhut);
+  const spanne = s.wechsel ? 3 / s.f : Math.max(0.08, 5 * _trfTau(s.Np));
+
+  const band = (yo, yu, farbe, fn, name, einheit, max) => {
+    const my = (yo + yu) / 2;
+    ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0, my); ctx.lineTo(x1, my); ctx.stroke();
+    ctx.strokeStyle = '#cbd5e1';
+    ctx.beginPath(); ctx.moveTo(x0, yo); ctx.lineTo(x0, yu); ctx.stroke();
+    ctx.strokeStyle = farbe; ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    for (let px = 0; px <= x1 - x0; px++) {
+      const t = s.wechsel
+        ? s.t - spanne + px / (x1 - x0) * spanne
+        : px / (x1 - x0) * spanne;
+      let y = my - fn(t) / max * (my - yo - 3);
+      if (!isFinite(y)) y = my;
+      px ? ctx.lineTo(x0 + px, y) : ctx.moveTo(x0 + px, y);
+    }
+    ctx.stroke();
+    ctx.fillStyle = farbe; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(name, x0 + 3, yo + 10);
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(_fpmNum(max, 2) + ' ' + einheit, x0 - 4, yo + 10);
+    ctx.fillText('0', x0 - 4, my + 3);
+  };
+
+  if (s.wechsel) {
+    band(12, 76, '#dc2626', t => _trfUp(t, uhut, s.f), 'Primärspannung U_P', 'V', uhut);
+    band(84, 148, '#f59e0b', t => _trfFluss(t, uhut, s.Np, s.f) * 1e6,
+         'Fluss im Kern Φ', 'µWb', phiHut * 1e6);
+    band(156, 220, '#0284c7',
+         t => _trfUsT(t, uhut, s.Np, s.Ns, s.f, K.k, s.gegensinnig),
+         'Sekundärspannung U_S', 'V', ushut);
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Der Fluss ist gegen beide Spannungen um eine Viertelperiode verschoben',
+                 (x0 + x1) / 2, 152);
+  } else {
+    // Gleichspannung: Einschaltvorgang
+    const tau = _trfTau(s.Np);
+    band(12, 76, '#dc2626', t => (t >= 0 ? s.Up : 0), 'Primärspannung U_P (Gleichspannung)', 'V', s.Up);
+    band(84, 148, '#f59e0b',
+         t => phiHut * (1 - Math.exp(-Math.max(0, t) / tau)) * 1e6,
+         'Fluss im Kern Φ – steigt und bleibt dann stehen', 'µWb', phiHut * 1e6);
+    band(156, 220, '#0284c7',
+         t => _trfGleichUs(t, s.Up, s.Np, s.Ns, K.k),
+         'Sekundärspannung U_S – stirbt weg', 'V', ushut);
+    // tau markieren
+    const xt = x0 + tau / spanne * (x1 - x0);
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(xt, 84); ctx.lineTo(xt, 220); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#64748b'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('τ = ' + _fpmNum(tau * 1000, 1) + ' ms', xt + 3, 92);
+  }
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Zeitausschnitt ' + _fpmNum(spanne * 1000, 1) + ' ms', (x0 + x1) / 2, H - 6);
+  ctx.textAlign = 'left';
+}
+
+function _trfDrawVerlust(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const K = _trfKern();
+
+  const block = (bx, laminiert, titel, unten) => {
+    const bw = 150, bh = 150, by = 52;
+    ctx.fillStyle = laminiert ? '#cbd5e1' : '#94a3b8';
+    ctx.fillRect(bx, by, bw, bh);
+    if (laminiert) {
+      ctx.strokeStyle = '#f8fafc'; ctx.lineWidth = 2;
+      for (let x = bx + 10; x < bx + bw; x += 12) {
+        ctx.beginPath(); ctx.moveTo(x, by); ctx.lineTo(x, by + bh); ctx.stroke();
+      }
+    }
+    // Wirbelstroeme: im massiven Kern ein grosser Ring, im laminierten viele kleine
+    ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2;
+    if (laminiert) {
+      for (let x = bx + 16; x < bx + bw - 6; x += 12) {
+        for (let y = by + 34; y < by + bh - 20; y += 42) {
+          ctx.beginPath(); ctx.ellipse(x, y, 3.5, 16, 0, 0, 2 * Math.PI); ctx.stroke();
+        }
+      }
+    } else {
+      ctx.beginPath(); ctx.ellipse(bx + bw / 2, by + bh / 2, 52, 56, 0, 0, 2 * Math.PI); ctx.stroke();
+      ctx.beginPath(); ctx.ellipse(bx + bw / 2, by + bh / 2, 30, 34, 0, 0, 2 * Math.PI); ctx.stroke();
+    }
+    ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(titel, bx + bw / 2, by - 22);
+    ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif';
+    ctx.fillText(unten, bx + bw / 2, by + bh + 16);
+  };
+  block(28, false, 'massiver Kern', 'große Wirbel, viel Wärme');
+  block(258, true, 'laminierter Kern', 'schmale Bahnen, wenig Wärme');
+
+  ctx.fillStyle = '#dc2626'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Wirbelströme', W / 2, 26);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.fillText('gerade eingestellt: ' + K.n, W / 2, H - 8);
+
+  // Pfeil dazwischen
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(190, 127); ctx.lineTo(246, 127); ctx.stroke();
+  ctx.fillStyle = '#cbd5e1';
+  ctx.beginPath();
+  ctx.moveTo(254, 127); ctx.lineTo(246, 122); ctx.lineTo(246, 132);
+  ctx.closePath(); ctx.fill();
+  ctx.textAlign = 'left';
+}
+
+function _trfDrawOszi(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const s = _trf, K = _trfKern();
+  const x0 = 44, x1 = W - 12, yo = 16, yu = H - 34;
+  const my = (yo + yu) / 2;
+  const uhp = _trfScheitel(s.oszUp);
+  const uhs = K.k * s.Ns / s.Np * uhp;
+  const skal = Math.max(uhp, Math.abs(uhs)) * 1.2;
+  const T = 1 / s.oszF;
+  const spanne = 2.5 * T;
+
+  // Raster
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  for (let i = 0; i <= 10; i++) {
+    const x = x0 + i / 10 * (x1 - x0);
+    ctx.beginPath(); ctx.moveTo(x, yo); ctx.lineTo(x, yu); ctx.stroke();
+  }
+  for (let i = 0; i <= 8; i++) {
+    const y = yo + i / 8 * (yu - yo);
+    ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke();
+  }
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(x0, my); ctx.lineTo(x1, my); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x0, yo); ctx.lineTo(x0, yu); ctx.stroke();
+
+  const kurve = (farbe, fn) => {
+    ctx.strokeStyle = farbe; ctx.lineWidth = 1.9;
+    ctx.beginPath();
+    for (let px = 0; px <= x1 - x0; px++) {
+      const t = px / (x1 - x0) * spanne;
+      const y = my - fn(t) / skal * (my - yo - 3);
+      px ? ctx.lineTo(x0 + px, y) : ctx.moveTo(x0 + px, y);
+    }
+    ctx.stroke();
+  };
+  kurve('#dc2626', t => _trfUp(t, uhp, s.oszF));
+  kurve('#0284c7', t => _trfUsT(t, uhp, s.Np, s.Ns, s.oszF, K.k, s.gegensinnig));
+
+  // Achsenbeschriftung in Volt und Millisekunden
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'right'; ctx.fillStyle = '#94a3b8';
+  ctx.fillText(_fpmNum(skal, 1) + ' V', x0 - 4, yo + 10);
+  ctx.fillText('0', x0 - 4, my + 3);
+  ctx.fillText('−' + _fpmNum(skal, 1), x0 - 4, yu - 2);
+  ctx.textAlign = 'center';
+  for (let i = 0; i <= 5; i++) {
+    const x = x0 + i / 5 * (x1 - x0);
+    ctx.fillText(_fpmNum(i / 5 * spanne * 1000, 1), x, yu + 13);
+  }
+  ctx.fillStyle = '#64748b';
+  ctx.fillText('t in ms', (x0 + x1) / 2, yu + 27);
+
+  // Hilfslinien: Scheitelwerte und eine Periode
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+  ctx.beginPath();
+  ctx.moveTo(x0, my - uhp / skal * (my - yo - 3));
+  ctx.lineTo(x1, my - uhp / skal * (my - yo - 3)); ctx.stroke();
+  const xT = x0 + T / spanne * (x1 - x0);
+  ctx.beginPath(); ctx.moveTo(xT, yo); ctx.lineTo(xT, yu); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#b45309'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Û_P', x0 + 3, my - uhp / skal * (my - yo - 3) - 4);
+  ctx.fillText('T', xT + 3, yo + 10);
+
+  ctx.fillStyle = '#dc2626'; ctx.font = '700 9px sans-serif';
+  ctx.fillText('U_P', x1 - 74, yo + 11);
+  ctx.fillStyle = '#0284c7';
+  ctx.fillText('U_S', x1 - 34, yo + 11);
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif';
+  ctx.fillText(s.gegensinnig ? 'gegensinnig gewickelt: 180° verschoben'
+                             : 'gleichsinnig gewickelt: in Phase', x0 + 3, yu - 4);
+  ctx.textAlign = 'left';
+}
+
+function _trfDrawAnw(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const K = _trfKern();
+
+  if (_trf.anw === 0) {
+    // Hoernerblitz: zwei nach oben auseinanderlaufende Hoerner
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.moveTo(200, H - 40); ctx.lineTo(140, 40); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(240, H - 40); ctx.lineTo(300, 40); ctx.stroke();
+    // Der Lichtbogen wandert nach oben
+    const p = (_trf.zbT % 2) / 2;
+    const yb = H - 46 - p * 150;
+    const xl = 200 - (H - 40 - yb) * 60 / 200, xr = 240 + (H - 40 - yb) * 60 / 200;
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2.2;
+    ctx.beginPath();
+    ctx.moveTo(xl, yb);
+    for (let i = 1; i <= 6; i++) {
+      const f = i / 6;
+      ctx.lineTo(xl + (xr - xl) * f, yb + (i % 2 ? -7 : 7) * (1 - f));
+    }
+    ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Hörner', 220, H - 22);
+    ctx.fillStyle = '#7c3aed'; ctx.font = '700 10px sans-serif';
+    ctx.fillText('ionisierte Luft steigt auf', 220, 24);
+    ctx.fillStyle = '#0284c7'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(_fpmNum(_trfUs(_TRF_UNETZ, _TRF_HS_NP, _TRF_HS_NS, K.k) / 1000, 1) + ' kV', 20, 60);
+    ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif';
+    ctx.fillText(_TRF_HS_NP + ' → ' + _TRF_HS_NS + ' Wdg.', 20, 76);
+    ctx.fillText('Netzspannung ' + _TRF_UNETZ + ' V', 20, 90);
+  } else if (_trf.anw === 1) {
+    // Nagel zwischen zwei Klemmen, Glut nach Leistung
+    const I = _trfNagelI(K.k), P = _trfNagelP(K.k);
+    const glut = Math.min(1, P / 40);
+    ctx.fillStyle = '#64748b';
+    ctx.fillRect(70, 120, 26, 44); ctx.fillRect(344, 120, 26, 44);
+    ctx.fillStyle = glut > 0.6 ? '#fbbf24' : glut > 0.3 ? '#f97316' : '#94a3b8';
+    ctx.fillRect(96, 136, 248, 12);
+    ctx.fillStyle = '#334155'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Klemme', 83, 178); ctx.fillText('Klemme', 357, 178);
+    ctx.fillStyle = '#b45309'; ctx.font = '700 11px sans-serif';
+    ctx.fillText('Nagel: ' + _fpmNum(I, 0) + ' A, ' + _fpmNum(P, 0) + ' W', W / 2, 118);
+    ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif';
+    ctx.fillText('unter Zug eingespannt', W / 2, 200);
+    ctx.fillStyle = '#0284c7'; ctx.font = '700 10px sans-serif';
+    ctx.fillText(_TRF_ST_NP + ' → ' + _TRF_ST_NS + ' Windungen an ' + _TRF_UNETZ + ' V', W / 2, 40);
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+    ctx.fillText('wenig Spannung, sehr viel Strom', W / 2, 58);
+    ctx.fillStyle = glut > 0.6 ? '#b45309' : '#94a3b8'; ctx.font = '700 10px sans-serif';
+    ctx.fillText(glut > 0.6 ? 'der Nagel glüht' : 'noch kalt', W / 2, 232);
+  } else {
+    // B(t) und U(t) im gemeinsamen Koordinatensystem
+    const n = _trfZbNs(_TRF_ZB_NP, _TRF_ZB_UP, _TRF_ZB_US);
+    const uh = _trfZbUhut(n, _TRF_ZB_A, _TRF_ZB_BHUT, _TRF_F0);
+    const x0 = 44, x1 = W - 12, yo = 30, yu = H - 34, my = (yo + yu) / 2;
+    const spanne = 2.5 / _TRF_F0;
+    ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+    for (let i = 0; i <= 10; i++) {
+      const x = x0 + i / 10 * (x1 - x0);
+      ctx.beginPath(); ctx.moveTo(x, yo); ctx.lineTo(x, yu); ctx.stroke();
+    }
+    ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(x0, my); ctx.lineTo(x1, my); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x0, yo); ctx.lineTo(x0, yu); ctx.stroke();
+    const kurve = (farbe, fn, max) => {
+      ctx.strokeStyle = farbe; ctx.lineWidth = 1.9;
+      ctx.beginPath();
+      for (let px = 0; px <= x1 - x0; px++) {
+        const t = px / (x1 - x0) * spanne;
+        const y = my - fn(t) / max * (my - yo - 4);
+        px ? ctx.lineTo(x0 + px, y) : ctx.moveTo(x0 + px, y);
+      }
+      ctx.stroke();
+    };
+    kurve('#f59e0b', t => _trfZbB(t, _TRF_ZB_BHUT, _TRF_F0), _TRF_ZB_BHUT * 1.15);
+    kurve('#0284c7', t => _trfZbU(t, n, _TRF_ZB_A, _TRF_ZB_BHUT, _TRF_F0), uh * 1.15);
+    ctx.fillStyle = '#b45309'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('B(t) – Extremwert hier', x0 + 3, yo - 6);
+    ctx.fillStyle = '#0284c7';
+    ctx.fillText('U(t) – hier null', x0 + 150, yo - 6);
+    // Die Stelle markieren, an der B maximal und U null ist
+    const tm = 0.25 / _TRF_F0;
+    const xm = x0 + tm / spanne * (x1 - x0);
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(xm, yo); ctx.lineTo(xm, yu); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('B maximal → Steigung null → U null', (x0 + x1) / 2, yu + 16);
+    ctx.fillText('n = ' + _fpmNum(n, 0) + ' Windungen, Û = ' + _fpmNum(uh, 2) + ' V',
+                 (x0 + x1) / 2, yu + 29);
+  }
+  ctx.textAlign = 'left';
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _trfTakt(dt) {
+  if (!_trf) return;
+  const d = Math.min(0.05, dt);
+  // Die Netzfrequenz ist zu schnell zum Zusehen – deshalb laeuft die Zeit hier
+  // stark verlangsamt. Die Kurven zeigen trotzdem die richtigen Zeitachsen.
+  if (_trf.laeuft) _trf.t += d / 60;
+  if (!_trf.wechsel && _trf.t > 8 * _trfTau(_trf.Np)) _trf.t = 0;
+  _trf.zbT += d;
+  if (_trf.zbT > 1e6) _trf.zbT = 0;
+}
+function _trfRender() {
+  if (!_trf) return;
+  const st = _trf.station;
+  if (st === 0) {
+    const ck = document.getElementById('trfKernCv');
+    if (ck) _trfDrawKern(ck.getContext('2d'), ck);
+    const cs = document.getElementById('trfSpurCv');
+    if (cs) _trfDrawSpur(cs.getContext('2d'), cs);
+    if (_trf.laeuft && !_trf.wechsel) _trfUpdate();
+  } else if (st === 2) {
+    const cv = document.getElementById('trfVerlustCv');
+    if (cv) _trfDrawVerlust(cv.getContext('2d'), cv);
+  } else if (st === 4) {
+    const co = document.getElementById('trfOsziCv');
+    if (co) _trfDrawOszi(co.getContext('2d'), co);
+  } else if (st === 5) {
+    const ca = document.getElementById('trfAnwCv');
+    if (ca) _trfDrawAnw(ca.getContext('2d'), ca);
+  }
+}
+
+// ── Zusätzliche Styles für den Transformator ───────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .trf-lage { font-size: .78rem; border-radius: 9px; padding: 9px 11px; margin: 8px 0;
+      line-height: 1.55; border: 1px solid #e2e8f0; background: #f8fafc; color: #64748b; }
+    .trf-lage.hoch { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
+    .trf-lage.tief { background: #fff7ed; border-color: #fed7aa; color: #9a3412; }
+    .trf-lage.gleich { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+    .trf-schnell { display: flex; flex-wrap: wrap; gap: 5px; align-items: center;
+      margin: 6px 0 2px; }
+    .trf-schnell-k { flex: 0 0 100%; font-size: .64rem; text-transform: uppercase;
+      letter-spacing: .04em; font-weight: 800; color: #94a3b8; }
+    .trf-schnell-b { font-size: .7rem; padding: 3px 8px; border: 1px solid #e2e8f0;
+      background: #fff; border-radius: 999px; cursor: pointer; color: #475569;
+      font-variant-numeric: tabular-nums; }
+    .trf-schnell-b:hover { border-color: #cbd5e1; }
+    .trf-schnell-b.on { border-color: #0284c7; background: #eff6ff; color: #075985;
+      font-weight: 700; }
+    .trf-kette { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-top: 12px; }
+    .trf-kette-reihe { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 6px; }
+    .trf-kette-p { flex: 1 1 180px; display: flex; flex-direction: column; gap: 3px;
+      padding: 8px 10px; background: #fff; border: 2px solid #e2e8f0; border-radius: 9px;
+      cursor: pointer; position: relative; }
+    .trf-kette-p:hover { border-color: #cbd5e1; }
+    .trf-kette-p.on { border-color: #0284c7; background: #f8fbff; }
+    .trf-kette-n { position: absolute; top: -9px; left: -9px; width: 20px; height: 20px;
+      border-radius: 50%; background: #0284c7; color: #fff; font-size: .7rem;
+      font-weight: 800; display: flex; align-items: center; justify-content: center; }
+    .trf-kette-k { font-size: .74rem; font-weight: 700; color: #334155; line-height: 1.35; }
+    .trf-kette-t { font-size: .73rem; color: #475569; line-height: 1.55; }
+    .trf-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-top: 12px; }
+    .trf-hb { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; margin-top: 12px; }
+    .trf-bilanz { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 11px 13px; margin-top: 8px; }
+    .trf-bal { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
+    .trf-bal-z { display: flex; justify-content: space-between; align-items: baseline;
+      font-size: .78rem; color: #475569; }
+    .trf-bal-z b { font-variant-numeric: tabular-nums; color: #334155; }
+    .trf-bal-z.verl b { color: #dc2626; }
+    .trf-bal-z.erg { border-top: 1px solid #e2e8f0; padding-top: 6px; margin-top: 3px;
+      font-weight: 700; }
+    .trf-bal-z.erg b { color: #0284c7; font-size: .92rem; }
+    .trf-bal-bar { height: 12px; border-radius: 6px; background: #fee2e2; overflow: hidden;
+      margin: 5px 0; }
+    .trf-bal-nutz { height: 100%; background: linear-gradient(90deg,#0ea5e9,#0284c7); }
+    .trf-verl { display: flex; flex-direction: column; gap: 6px; }
+    .trf-verl-z { font-size: .77rem; color: #475569; line-height: 1.6; background: #f8fafc;
+      border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; }
+    .trf-verl-z b { color: #334155; }
+    .trf-verl-z.ideal { background: #eff6ff; border-color: #bfdbfe; }
+    .trf-verl-z.leer { background: #fefce8; border-color: #fde68a; }
+    .trf-phase { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; margin-top: 10px; }
+    .trf-ph-z { display: flex; align-items: baseline; gap: 8px; font-size: .78rem;
+      color: #475569; padding: 3px 0; }
+    .trf-ph-z span { flex: 0 0 168px; font-size: .66rem; text-transform: uppercase;
+      letter-spacing: .04em; font-weight: 800; color: #94a3b8; }
+    .trf-ph-z b { color: #075985; }
+    .trf-auf { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 9px;
+      padding: 10px 12px; margin-bottom: 8px; }
+    .trf-auf-t { font-size: .78rem; color: #475569; line-height: 1.65; }
+    .trf-netz { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; margin-top: 10px; }
+    .trf-netz-z { font-size: .77rem; color: #475569; line-height: 1.6; padding: 4px 0;
+      border-bottom: 1px solid #eef2f7; }
+    .trf-netz-z:last-of-type { border-bottom: none; }
+    .trf-netz-z b { color: #334155; }
+    .trf-anw { display: flex; flex-direction: column; gap: 7px; }
+    .trf-anw-t { font-size: .78rem; color: #475569; line-height: 1.65; }
+    .trf-anw-t b { color: #334155; }
+    .trf-anw-warn { font-size: .75rem; color: #9a3412; background: #fff7ed;
+      border: 1px solid #fed7aa; border-radius: 8px; padding: 8px 10px; line-height: 1.55; }
+    .trf-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
