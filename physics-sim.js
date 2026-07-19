@@ -1981,6 +1981,24 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('milTakt', 'milKeinChart');
     _pSim.start(dt => _milTakt(dt), () => _milRender(), []);
   },
+
+  // ── 36. FADENSTRAHLROHR ────────────────────────────────
+  // Schluesselexperiment 06 des KLP: Kreisbahn im Helmholtzfeld,
+  // Auswertung zur Elektronenmasse und Schraubenbahn
+  'fadenstrahlrohr-messreihe': modal => {
+    _fsrInit();
+    modal.innerHTML = _fsrHTML();
+    const erkl = document.getElementById('fsrErkl');
+    if (erkl) erkl.innerHTML = _fsrErklHTML();
+    _fsrSetStation(0);
+    _fsrSetQuelle('formel');
+    _fsrRenderTable();
+    _fsrRenderTheorie(false);
+    _fsrUpdate();
+    _fsrDrawPlot();
+    _pSim = new PhysicsSimEngine('fsrTakt', 'fsrKeinChart');
+    _pSim.start(dt => _fsrTakt(dt), () => _fsrRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -7948,6 +7966,1121 @@ function _milRender() {
     .mil-fazit-text { font-size: .8rem; color: #475569; line-height: 1.65; margin-top: 4px; }
     .mil-fazit-text b { color: #0f766e; }
     .mil-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════════════
+//  FADENSTRAHLROHR – das Schlüsselexperiment
+//  Nach dem Handbuch "Schlüsselexperiment 6: Fadenstrahlrohr" (NRW).
+//  Drei Stationen: Messung im Fadenstrahlrohr → Auswertung zur
+//  Elektronenmasse → Schraubenbahn und Polarlichter.
+// ═══════════════════════════════════════════════════════════════
+
+const _FSR_E   = 1.602e-19;      // Elementarladung in C (aus dem Millikanversuch)
+const _FSR_ME  = 9.109e-31;      // Literaturwert der Elektronenmasse in kg
+const _FSR_MU0 = 4e-7 * Math.PI; // magnetische Feldkonstante in Vs/(Am)
+const _FSR_R   = 0.150;          // Radius der Helmholtzspulen in m
+const _FSR_N   = 130;            // Windungen je Spule
+
+// Der Glaskolben begrenzt die Kreisbahn nach oben, die Ablesbarkeit nach unten
+const _FSR_RMAX = 0.050;
+const _FSR_RMIN = 0.010;
+// Auf der Skala im Rohr ist der Durchmesser auf einen Millimeter genau ablesbar
+const _FSR_ABLESUNG = 0.001;
+// Auflösung eines gebräuchlichen Teslameters
+const _FSR_HALL = 0.01e-3;
+
+let _fsr = null;
+
+function _fsrInit() {
+  _fsr = {
+    station: 0, t: 0,
+    U: 200, I: 1.5, bQuelle: 'formel', richtung: 1, strahl: true,
+    elektronen: [], rows: [], nextId: 1,
+    preset: 0, fn: null, fnAuto: false, reveal: false,
+    alpha: 30, schraube: []
+  };
+}
+
+// ── Physik ─────────────────────────────────────────────
+// Helmholtzbedingung: zwei gleiche Spulen im Abstand ihres Radius,
+// gleichsinnig vom selben Strom durchflossen.
+const _FSR_K = 8 / (5 * Math.sqrt(5));            // ≈ 0,7155
+function _fsrBFormel(I) { return _FSR_K * _FSR_MU0 * _FSR_N * I / _FSR_R; }
+// Die Hallsonde misst dasselbe Feld, aber nur mit der Auflösung des Geräts
+function _fsrBHall(I) { return Math.round(_fsrBFormel(I) / _FSR_HALL) * _FSR_HALL; }
+function _fsrB() { return _fsr.bQuelle === 'hall' ? _fsrBHall(_fsr.I) : _fsrBFormel(_fsr.I); }
+
+// e·U = ½·m·v²  ⇒  v = √(2·e·U/m)
+function _fsrV(U) { return Math.sqrt(2 * _FSR_E * U / _FSR_ME); }
+// F_L = F_z:  e·v·B = m·v²/r  ⇒  r = m·v/(e·B)
+function _fsrRadius(U, B) { return _FSR_ME * _fsrV(U) / (_FSR_E * B); }
+// Nach m aufgelöst – die Größe, um die es im Versuch geht
+function _fsrMasse(U, B, r) { return _FSR_E * B * B * r * r / (2 * U); }
+function _fsrSpez(U, B, r) { return 2 * U / (B * B * r * r); }
+// Die Umlaufdauer hängt nicht von der Geschwindigkeit ab
+function _fsrUmlauf(B) { return 2 * Math.PI * _FSR_ME / (_FSR_E * B); }
+
+// Der wahre Bahnradius bei der eingestellten Apparatur
+function _fsrRWahr() { return _fsrRadius(_fsr.U, _fsrBFormel(_fsr.I)); }
+// Das, was auf der Skala im Rohr tatsächlich abzulesen ist: der Durchmesser,
+// auf einen Millimeter genau.
+function _fsrDAblesung() {
+  return Math.round(2 * _fsrRWahr() / _FSR_ABLESUNG) * _FSR_ABLESUNG;
+}
+function _fsrRAblesung() { return _fsrDAblesung() / 2; }
+
+function _fsrPasst() {
+  return _fsrProblem() === null;
+}
+function _fsrProblem() {
+  // Bei umgekehrter Feldrichtung biegt die Lorentzkraft den Strahl nach unten;
+  // er trifft sofort die Glaswand. Genau das passiert auch in der echten Roehre,
+  // wenn die Spulen falsch herum angeschlossen sind.
+  if (_fsr.richtung < 0) return 'verpolt';
+  const r = _fsrRWahr();
+  if (r > _FSR_RMAX) return 'zu gross';
+  if (r < _FSR_RMIN) return 'zu klein';
+  return null;
+}
+
+// ── Station 3: Schraubenbahn ───────────────────────────
+function _fsrAlphaRad() { return _fsr.alpha * Math.PI / 180; }
+function _fsrVPar()  { return _fsrV(_fsr.U) * Math.cos(_fsrAlphaRad()); }
+function _fsrVSenk() { return _fsrV(_fsr.U) * Math.sin(_fsrAlphaRad()); }
+function _fsrRSchraube() {
+  const B = _fsrB();
+  return B > 0 ? _FSR_ME * _fsrVSenk() / (_FSR_E * B) : Infinity;
+}
+// Ganghöhe = Strecke längs des Feldes während eines vollen Umlaufs
+function _fsrGanghoehe() { return _fsrVPar() * _fsrUmlauf(_fsrB()); }
+
+// ── Formatierung ───────────────────────────────────────
+const _FSR_HOCH = { '-': '⁻', '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹' };
+function _fsrExp(v, d) {
+  if (!isFinite(v)) return '—';
+  if (v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const m = v / Math.pow(10, ex);
+  const hoch = String(ex).split('').map(c => _FSR_HOCH[c] || c).join('');
+  return _fpmNum(m, d) + ' · 10' + hoch;
+}
+
+// ── Oberfläche ─────────────────────────────────────────
+function _fsrHTML() {
+  const stationen = ['1 · Fadenstrahlrohr', '2 · Die Elektronenmasse', '3 · Schraubenbahn & Polarlicht']
+    .map((s, i) => `<button class="fpm-tab${i === _fsr.station ? ' on' : ''}" id="fsrSt${i}" onclick="_fsrSetStation(${i})">${s}</button>`).join('');
+
+  const presets = ['U → B²·r²', '1/B → r', '√U → r'].map((p, i) =>
+    `<button class="fpm-tab${i === _fsr.preset ? ' on' : ''}" id="fsrTab${i}" onclick="_fsrSetPreset(${i})">${p}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim fsr-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌀 Fadenstrahlrohr: das Schlüsselexperiment</h3>
+    <canvas id="fsrTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="fsrS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="fsrRohr" width="420" height="340" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Blick längs der Spulenachse in den Glaskolben</div>
+          <canvas id="fsrSchalt" width="420" height="128" class="phys-anim-cv"></canvas>
+          <div class="fpm-note">Elektronenkanone: Glühkathode (1), Wehneltzylinder (2), Anode (3).
+            Das Restgas im Kolben – Wasserstoff oder Argon bei 0,1 bis 1 Pa – leuchtet dort,
+            wo die Elektronen es ionisieren. Erst dadurch wird die Bahn sichtbar.</div>
+        </div>
+        <div>
+          <div class="fpm-label">Elektronenkanone</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Beschleunigungsspannung U: <b id="fsrULbl">200 V</b></span>
+            <input type="range" id="fsrU" min="100" max="300" step="5" value="200"
+              oninput="_fsrSetU(this.value)" style="width:100%;accent-color:#0369a1">
+          </div>
+          <div class="fpm-label">Helmholtzspulen</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Spulenstrom I: <b id="fsrILbl">1,50 A</b></span>
+            <input type="range" id="fsrI" min="1" max="3" step="0.01" value="1.5"
+              oninput="_fsrSetI(this.value)" style="width:100%;accent-color:#0369a1">
+          </div>
+          <div class="fpm-label">Woher kommt die Magnetfeldstärke?</div>
+          <div class="fsr-quellen">
+            <button class="fsr-quelle on" id="fsrQ0" onclick="_fsrSetQuelle('formel')">
+              <span class="fsr-quelle-n">aus der Formel</span>
+              <span class="fsr-quelle-k">B = 0,7155 · µ₀ · n · I / R</span></button>
+            <button class="fsr-quelle" id="fsrQ1" onclick="_fsrSetQuelle('hall')">
+              <span class="fsr-quelle-n">mit der Hallsonde</span>
+              <span class="fsr-quelle-k">gemessen, Auflösung 0,01 mT</span></button>
+          </div>
+          <div class="fsr-bvergleich" id="fsrBVergleich"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_fsrUmpolen()">🔄 Feldrichtung umkehren</button>
+            <button class="sim-btn" id="fsrStrahlBtn" onclick="_fsrToggleStrahl()">Magnetfeld aus</button>
+          </div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Geschwindigkeit v</span><span class="fpm-ro-v" id="fsrVA">—</span><span class="fpm-ro-u">10⁶ m/s</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Magnetfeld B</span><span class="fpm-ro-v" id="fsrBA">—</span><span class="fpm-ro-u">mT</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">abgelesener Durchmesser d</span><span class="fpm-ro-v" id="fsrDA">—</span><span class="fpm-ro-u">cm</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Bahnradius r = d/2</span><span class="fpm-ro-v" id="fsrRA">—</span><span class="fpm-ro-u">cm</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Umlaufdauer T</span><span class="fpm-ro-v" id="fsrTA">—</span><span class="fpm-ro-u">ns</span></div>
+          </div>
+          <div class="fsr-zustand" id="fsrZustand"></div>
+          <div class="fsr-rechnung" id="fsrRechnung"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="fsrTakeBtn" onclick="_fsrTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_fsrDemo()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_fsrClear()">🗑 Tabelle leeren</button>
+          </div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Nr.</th><th>U (V)</th><th>I (A)</th><th>B (mT)</th><th>d (cm)</th><th>m<sub>e</sub> (10⁻³¹ kg)</th><th></th></tr></thead>
+              <tbody id="fsrTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="fsrEmpty">Noch keine Messwerte.<br>Spannung und Spulenstrom einstellen, Durchmesser ablesen, übernehmen.</div>
+          </div>
+        </div>
+      </div>
+      <div class="fsr-drei" id="fsrDrei"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="fsrS1" style="display:none">
+      <div class="fpm-label">Mittelwert und Spannweite – so wertet eine Lerngruppe aus</div>
+      <div class="fsr-stat" id="fsrStat"></div>
+      <div class="fpm-label" style="margin-top:12px">Grafische Auswertung nach Linearisierung</div>
+      <div class="fpm-tabs">${presets}</div>
+      <div class="fpm-grid2">
+        <canvas id="fsrPlot" width="470" height="340" class="phys-chart-cv"></canvas>
+        <div>
+          <div class="fpm-fit" id="fsrFitBox"></div>
+          <div class="fpm-label" style="margin-top:10px">Funktion plotten</div>
+          <input type="text" id="fsrFn" class="fpm-input" placeholder="z. B. 1.137e-11*x" spellcheck="false"
+            oninput="_fsrSetFn(this.value)">
+          <div class="fpm-err" id="fsrFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_fsrTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_fsrClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="fsrTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_fsrSet('reveal',this.checked)">
+            Literaturwert anzeigen</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="fsrS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="fsrSchraube" width="420" height="300" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Das Rohr gegen das Feld verdreht</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Winkel α zwischen v und der Feldrichtung: <b id="fsrAlphaLbl">30°</b></span>
+            <input type="range" id="fsrAlpha" min="0" max="90" step="1" value="30"
+              oninput="_fsrSetAlpha(this.value)" style="width:100%;accent-color:#0369a1">
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_fsrSetAlpha(0)">α = 0° (Gerade)</button>
+            <button class="sim-btn" onclick="_fsrSetAlpha(45)">α = 45°</button>
+            <button class="sim-btn" onclick="_fsrSetAlpha(90)">α = 90° (Kreis)</button>
+          </div>
+          <div class="fpm-note">Spannung und Spulenstrom werden aus Station 1 übernommen.</div>
+        </div>
+        <div>
+          <div class="fpm-label">Zerlegung der Geschwindigkeit</div>
+          <div class="fsr-rechnung" id="fsrSchraubeRechnung"></div>
+          <div class="dsp-erkl" style="margin-top:10px">
+            <div class="dsp-erkl-kopf">Polarlicht und magnetische Flasche</div>
+            <div class="dsp-erkl-text">
+              Genau diese Schraubenbahn beschreiben geladene Teilchen des Sonnenwindes im Erdmagnetfeld.
+              Sie werden im <b>van-Allen-Strahlungsgürtel</b> gefangen und laufen dabei längs der Feldlinien
+              zu den Polen. Dort rücken die Feldlinien enger zusammen, das Feld wird stärker – die Teilchen
+              werden abgebremst und schließlich zurückgeworfen. Dieses Prinzip heißt
+              <b>magnetische Flasche</b>. Wo die Teilchen tief genug in die Atmosphäre eindringen, regen
+              sie Luftmoleküle zum Leuchten an: Das ist das <b>Polarlicht</b> – dasselbe Leuchten durch
+              Stoßanregung, das im Fadenstrahlrohr die Bahn sichtbar macht.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="fsrErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>e · U = ½ · m<sub>e</sub> · v²</b> &nbsp;|&nbsp; <b>e · v · B = m<sub>e</sub> · v² / r</b>
+      &nbsp;|&nbsp; <b>m<sub>e</sub> = e · B² · r² / (2 · U)</b>
+    </p>
+  </div>`;
+}
+
+function _fsrErklHTML() {
+  return `<div class="dsp-erkl-kopf">Warum man ein Elektron nicht wiegen kann</div>
+    <div class="dsp-erkl-text">
+      Der Millikanversuch hat die <b>Ladung</b> des Elektrons geliefert. Die zweite Eigenschaft, seine
+      <b>Masse</b>, lässt sich auf keiner Waage bestimmen. Man kommt aber indirekt heran: Zwingt man
+      Elektronen im Magnetfeld auf eine Kreisbahn, dann verrät der Radius dieser Bahn ihre Masse.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die beiden Ansätze</div>
+    <div class="dsp-erkl-text">
+      <b>Erstens</b> die Elektronenkanone: Beim Durchlaufen der Beschleunigungsspannung U erhält jedes
+      Elektron die Energie e·U, und diese steckt danach vollständig in der Bewegung. Aus
+      e·U = ½·m<sub>e</sub>·v² folgt v = √(2·e·U/m<sub>e</sub>).
+      <b>Zweitens</b> die Kreisbahn: Die Lorentzkraft steht immer senkrecht auf der Bewegungsrichtung und
+      wirkt deshalb als Zentripetalkraft. Aus e·v·B = m<sub>e</sub>·v²/r folgt m<sub>e</sub>·v = e·B·r.
+      Setzt man die Geschwindigkeit ein und löst nach der Masse auf, bleibt nur noch Messbares übrig:
+      <b>m<sub>e</sub> = e · B² · r² / (2 · U)</b> ≈ 9,109 · 10⁻³¹ kg. Gleichwertig lässt sich die
+      spezifische Ladung angeben: e/m<sub>e</sub> = 2·U/(B²·r²) ≈ 1,759 · 10¹¹ C/kg.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum der Strahl ein Faden ist</div>
+    <div class="dsp-erkl-text">
+      Der Kolben ist nicht leer, sondern enthält Wasserstoff oder Argon bei 0,1 bis 1 Pa. So wenig Gas,
+      dass die Elektronen kaum Energie verlieren – aber genug, dass sie beim Stoß Gasmoleküle ionisieren.
+      Bei der anschließenden Rekombination leuchtet das Gas, und die Bahn wird sichtbar. Die dabei
+      herausgeschlagenen Sekundärelektronen verlassen den Strahlbereich, die viel schwereren Gasionen
+      bleiben zurück. Ihre positive Ladung hält den Strahl zusammen – ohne sie würde er durch die
+      gegenseitige Abstoßung der Elektronen auseinanderlaufen. Daher der Name <b>Fadenstrahl</b>.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die Energie bleibt konstant</div>
+    <div class="dsp-erkl-text">
+      Auf der Kreisbahn werden die Elektronen ständig beschleunigt – trotzdem ändert sich der
+      <b>Betrag</b> ihrer Geschwindigkeit nicht, denn die Beschleunigung steht immer senkrecht auf der
+      Geschwindigkeit. Sie ändert nur die Richtung. Streng genommen strahlen die kreisenden Elektronen
+      elektromagnetische Wellen ab, deren Frequenz gerade ihre Umlauffrequenz ist; dieser Energieverlust
+      ist hier aber vernachlässigbar. Bemerkenswert nebenbei: Die Umlaufdauer T = 2π·m<sub>e</sub>/(e·B)
+      hängt gar nicht von der Geschwindigkeit ab – schnellere Elektronen laufen auf größeren Kreisen und
+      brauchen genauso lange.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Verwandte Aufbauten</div>
+    <div class="dsp-erkl-text">
+      Im <b>Wienschen Geschwindigkeitsfilter</b> wirken ein elektrisches und ein magnetisches Feld
+      gekreuzt und damit entgegengesetzt auf die Teilchen. Nur wer die Geschwindigkeit v = E/B hat,
+      fliegt geradeaus durch die Lochblende – alle anderen werden abgefangen. Setzt man dahinter ein
+      reines Magnetfeld, entsteht das <b>Bainbridge-Massenspektrometer</b>: Der Halbkreisradius hängt
+      dann nur noch von der spezifischen Ladung ab, sodass sich Teilchen nach Masse trennen lassen.
+      So werden Isotope getrennt, Proteine charakterisiert und Funde in der Archäologie datiert.
+      Historisch bestimmte übrigens J. J. Thomson die spezifische Ladung 1897 nicht am Fadenstrahlrohr,
+      sondern am Parabelspektrographen.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Im echten Versuch: Hochspannung an der Elektronenkanone, heiße Glühkathode,
+      Glaskolben unter Unterdruck. Bestimmungen der RiSU einhalten.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _fsrSetStation(i) {
+  _fsr.station = i;
+  for (let k = 0; k < 3; k++) {
+    document.getElementById('fsrSt' + k)?.classList.toggle('on', k === i);
+    const d = document.getElementById('fsrS' + k);
+    if (d) d.style.display = k === i ? 'block' : 'none';
+  }
+  _fsrUpdate();
+  if (i === 1) _fsrDrawPlot();
+}
+function _fsrSet(key, val) { _fsr[key] = val; _fsrDrawPlot(); }
+
+// ── Bedienung Station 1 ────────────────────────────────
+function _fsrSetU(v) {
+  _fsr.U = Math.max(100, Math.min(300, +v));
+  const sl = document.getElementById('fsrU'); if (sl) sl.value = String(_fsr.U);
+  const el = document.getElementById('fsrULbl'); if (el) el.textContent = Math.round(_fsr.U) + ' V';
+  _fsrUpdate();
+}
+function _fsrSetI(v) {
+  _fsr.I = Math.max(1, Math.min(3, +v));
+  const sl = document.getElementById('fsrI'); if (sl) sl.value = String(_fsr.I);
+  const el = document.getElementById('fsrILbl'); if (el) el.textContent = _fpmNum(_fsr.I, 2) + ' A';
+  _fsrUpdate();
+}
+function _fsrSetQuelle(q) {
+  _fsr.bQuelle = q;
+  document.getElementById('fsrQ0')?.classList.toggle('on', q === 'formel');
+  document.getElementById('fsrQ1')?.classList.toggle('on', q === 'hall');
+  _fsrUpdate();
+}
+function _fsrUmpolen() { _fsr.richtung = -_fsr.richtung; _fsrUpdate(); }
+function _fsrToggleStrahl() {
+  _fsr.strahl = !_fsr.strahl;
+  const b = document.getElementById('fsrStrahlBtn');
+  if (b) b.textContent = _fsr.strahl ? 'Magnetfeld aus' : 'Magnetfeld an';
+  _fsrUpdate();
+}
+
+function _fsrTake() {
+  if (!_fsrPasst() || !_fsr.strahl) return;
+  const B = _fsrB(), d = _fsrDAblesung(), r = d / 2;
+  _fsr.rows.push({ id: _fsr.nextId++, U: _fsr.U, I: _fsr.I, B, d, r,
+                   quelle: _fsr.bQuelle, m: _fsrMasse(_fsr.U, B, r) });
+  _fsrRenderTable();
+  _fsrDrawPlot();
+}
+function _fsrDelRow(id) { _fsr.rows = _fsr.rows.filter(r => r.id !== id); _fsrRenderTable(); _fsrDrawPlot(); }
+function _fsrClear() {
+  if (_fsr.rows.length && !confirm('Alle ' + _fsr.rows.length + ' Messwerte löschen?')) return;
+  _fsr.rows = []; _fsrRenderTable(); _fsrDrawPlot();
+}
+// Eine Messreihe, wie sie eine Lerngruppe arbeitsteilig aufnimmt:
+// verschiedene Spulenströme bei fester Spannung und umgekehrt.
+function _fsrDemo() {
+  const nimm = (U, I) => {
+    const B = _fsrBFormel(I);
+    const rw = _fsrRadius(U, B);
+    if (rw > _FSR_RMAX || rw < _FSR_RMIN) return;
+    const d = Math.round(2 * rw / _FSR_ABLESUNG) * _FSR_ABLESUNG;
+    _fsr.rows.push({ id: _fsr.nextId++, U, I, B, d, r: d / 2,
+                     quelle: 'formel', m: _fsrMasse(U, B, d / 2) });
+  };
+  [1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3.0].forEach(I => nimm(200, I));
+  [120, 160, 200, 240, 280].forEach(U => nimm(U, 2.0));
+  _fsrRenderTable();
+  _fsrDrawPlot();
+}
+function _fsrRenderTable() {
+  // Die Statistik haengt an denselben Daten – sonst bleibt nach dem Leeren
+  // der Tabelle der alte Mittelwert stehen.
+  _fsrRenderStat();
+  const tb = document.getElementById('fsrTbody'); if (!tb) return;
+  const empty = document.getElementById('fsrEmpty');
+  if (empty) empty.style.display = _fsr.rows.length ? 'none' : 'block';
+  tb.innerHTML = _fsr.rows.map((r, i) =>
+    `<tr><td>${i + 1}</td><td>${Math.round(r.U)}</td><td>${_fpmNum(r.I, 2)}</td>
+       <td>${_fpmNum(r.B * 1000, 3)}${r.quelle === 'hall' ? ' <span class="fsr-hall">H</span>' : ''}</td>
+       <td>${_fpmNum(r.d * 100, 1)}</td>
+       <td><b>${_fpmNum(r.m / 1e-31, 3)}</b></td>
+       <td class="fpm-del" onclick="_fsrDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+
+// ── Bedienung Station 3 ────────────────────────────────
+function _fsrSetAlpha(v) {
+  _fsr.alpha = Math.max(0, Math.min(90, +v));
+  const sl = document.getElementById('fsrAlpha'); if (sl) sl.value = String(_fsr.alpha);
+  const el = document.getElementById('fsrAlphaLbl'); if (el) el.textContent = Math.round(_fsr.alpha) + '°';
+  _fsrRenderSchraube();
+}
+function _fsrRenderSchraube() {
+  const el = document.getElementById('fsrSchraubeRechnung'); if (!el) return;
+  const v = _fsrV(_fsr.U), B = _fsrB();
+  const vp = _fsrVPar(), vs = _fsrVSenk();
+  const rs = _fsrRSchraube(), T = _fsrUmlauf(B), h = _fsrGanghoehe();
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Gesamtgeschwindigkeit aus U = ${Math.round(_fsr.U)} V</span>
+      <span class="pho-rz-f">v = √(2·e·U/m<sub>e</sub>)</span>
+      <span class="pho-rz-v">${_fpmNum(v / 1e6, 3)} · 10⁶ m/s</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">längs des Feldes – bleibt unbeeinflusst</span>
+      <span class="pho-rz-f">v<sub>∥</sub> = v · cos α</span>
+      <span class="pho-rz-v">${_fpmNum(vp / 1e6, 3)} · 10⁶ m/s</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">quer zum Feld – erzeugt die Kreisbewegung</span>
+      <span class="pho-rz-f">v<sub>⊥</sub> = v · sin α</span>
+      <span class="pho-rz-v">${_fpmNum(vs / 1e6, 3)} · 10⁶ m/s</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Radius der Schraube</span>
+      <span class="pho-rz-f">r = m<sub>e</sub>·v<sub>⊥</sub>/(e·B)</span>
+      <span class="pho-rz-v">${_fpmNum(rs * 100, 2)} cm</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Umlaufdauer – unabhängig von α und v</span>
+      <span class="pho-rz-f">T = 2π·m<sub>e</sub>/(e·B)</span>
+      <span class="pho-rz-v">${_fpmNum(T / 1e-9, 2)} ns</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Ganghöhe</span>
+      <span class="pho-rz-f">h = v<sub>∥</sub> · T</span>
+      <span class="pho-rz-v">${_fpmNum(h * 100, 2)} cm</span></div>
+    <div class="fpm-note" style="margin-top:8px">
+      ${_fsr.alpha === 0
+        ? 'Bei α = 0° gibt es keine Geschwindigkeitskomponente quer zum Feld – die Lorentzkraft verschwindet und der Strahl läuft geradeaus.'
+        : _fsr.alpha === 90
+          ? 'Bei α = 90° gibt es keine Komponente längs des Feldes – die Ganghöhe ist null und aus der Schraube wird der geschlossene Kreis aus Station 1.'
+          : 'Die Bewegung setzt sich aus einer gleichförmigen Bewegung längs des Feldes und einer Kreisbewegung quer dazu zusammen. Nur die Querkomponente spürt die Lorentzkraft.'}
+    </div>`;
+}
+
+// ── Gemeinsame Aktualisierung ──────────────────────────
+function _fsrUpdate() {
+  if (!_fsr) return;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  const B = _fsrB(), v = _fsrV(_fsr.U);
+  const rw = _fsrRWahr(), d = _fsrDAblesung();
+  const an = _fsr.strahl;
+
+  set('fsrVA', _fpmNum(v / 1e6, 3));
+  set('fsrBA', an ? _fpmNum(B * 1000, 3) : '0,000');
+  set('fsrDA', an && _fsrPasst() ? _fpmNum(d * 100, 1) : '—');
+  set('fsrRA', an && _fsrPasst() ? _fpmNum(d * 50, 2) : '—');
+  set('fsrTA', an ? _fpmNum(_fsrUmlauf(B) / 1e-9, 2) : '—');
+
+  // Formel und Messung nebeneinander – die Handreichung empfiehlt den Vergleich
+  const bv = document.getElementById('fsrBVergleich');
+  if (bv) {
+    const bf = _fsrBFormel(_fsr.I), bh = _fsrBHall(_fsr.I);
+    const abw = Math.abs(bh - bf) / bf * 100;
+    bv.innerHTML = `<span class="fsr-bv"><span>berechnet</span><b>${_fpmNum(bf * 1000, 4)} mT</b></span>
+      <span class="fsr-bv"><span>Hallsonde</span><b>${_fpmNum(bh * 1000, 4)} mT</b></span>
+      <span class="fsr-bv-ab">Unterschied ${_fpmNum(abw, 2)} %</span>`;
+  }
+
+  const z = document.getElementById('fsrZustand');
+  if (z) {
+    const p = _fsrProblem();
+    if (!an) {
+      z.className = 'fsr-zustand';
+      z.innerHTML = 'Ohne Magnetfeld fliegen die Elektronen <b>geradeaus</b> – der Faden ist eine gerade Linie. '
+        + 'Erst die Lorentzkraft biegt ihn zum Kreis.';
+    } else if (p === 'verpolt') {
+      z.className = 'fsr-zustand aus';
+      z.innerHTML = 'Die Lorentzkraft biegt den Strahl <b>nach unten</b> – er trifft nach wenigen '
+        + 'Zentimetern die Glaswand. Genau das passiert, wenn die Spulen falsch herum angeschlossen '
+        + 'sind. Kehre die Feldrichtung um.';
+    } else if (p === 'zu gross') {
+      z.className = 'fsr-zustand aus';
+      z.innerHTML = 'Der Kreis wäre mit ' + _fpmNum(rw * 100, 1) + ' cm Radius größer als der Glaskolben – '
+        + 'der Strahl trifft die Wand. <b>Spulenstrom erhöhen</b> oder Spannung verringern.';
+    } else if (p === 'zu klein') {
+      z.className = 'fsr-zustand aus';
+      z.innerHTML = 'Der Kreis ist mit ' + _fpmNum(rw * 100, 2) + ' cm Radius zu klein, um den Durchmesser '
+        + 'noch sinnvoll abzulesen. <b>Spulenstrom verringern</b> oder Spannung erhöhen.';
+    } else {
+      z.className = 'fsr-zustand ok';
+      z.innerHTML = '<b>Die Kreisbahn liegt vollständig im Kolben.</b> Durchmesser an der Skala ablesen '
+        + 'und übernehmen.';
+    }
+  }
+
+  // Die Rechnung Schritt für Schritt mitlaufen lassen
+  const rch = document.getElementById('fsrRechnung');
+  if (rch) {
+    if (an && _fsrPasst()) {
+      const r = d / 2, m = _fsrMasse(_fsr.U, B, r), sp = _fsrSpez(_fsr.U, B, r);
+      const abw = (m - _FSR_ME) / _FSR_ME * 100;
+      rch.innerHTML = `
+        <div class="pho-rz"><span class="pho-rz-t">Elektronenmasse aus diesem Messwert</span>
+          <span class="pho-rz-f">m<sub>e</sub> = e·B²·r²/(2·U)</span>
+          <span class="pho-rz-v">${_fsrExp(m, 3)} kg</span></div>
+        <div class="pho-rz"><span class="pho-rz-t">gleichwertig: die spezifische Ladung</span>
+          <span class="pho-rz-f">e/m<sub>e</sub> = 2·U/(B²·r²)</span>
+          <span class="pho-rz-v">${_fsrExp(sp, 4)} C/kg</span></div>
+        <div class="fpm-note">Abweichung vom Literaturwert 9,109 · 10⁻³¹ kg: ${_fpmNum(abw, 1)} %.
+          Sie stammt fast vollständig vom Ablesen des Durchmessers: r geht quadratisch ein, ein
+          Millimeter Lesefehler wirkt sich also doppelt aus – bei kleinen Kreisen besonders stark.</div>`;
+    } else {
+      rch.innerHTML = '<div class="fpm-note">Stelle eine Kreisbahn ein, die in den Kolben passt.</div>';
+    }
+  }
+
+  const tb = document.getElementById('fsrTakeBtn');
+  if (tb) tb.disabled = !(an && _fsrPasst());
+
+  _fsrRenderDrei();
+  _fsrRenderStat();
+  _fsrRenderSchraube();
+}
+
+function _fsrRenderDrei() {
+  const el = document.getElementById('fsrDrei'); if (!el) return;
+  const raus = _fsr.richtung > 0;
+  el.innerHTML =
+    `<div class="git-sch-kopf">Drei-Finger-Regel – in welche Richtung wird der Strahl gebogen?</div>
+     <div class="fsr-drei-text">
+       Nimm die <b>rechte Hand</b>. Der <b>Daumen</b> zeigt in die technische Stromrichtung – das ist
+       <i>entgegen</i> der Bewegungsrichtung der Elektronen, denn sie sind negativ geladen. Der
+       <b>Zeigefinger</b> zeigt in Richtung des Magnetfeldes, der <b>Mittelfinger</b> dann in Richtung
+       der Lorentzkraft. Diese Kraft steht immer senkrecht auf der Bewegung; sie ändert deshalb nur die
+       Richtung, nie den Betrag der Geschwindigkeit – und taugt gerade deshalb als Zentripetalkraft.
+     </div>
+     <div class="fsr-drei-jetzt">Im Moment zeigt das Magnetfeld <b>${raus ? 'aus dem Bildschirm heraus' : 'in den Bildschirm hinein'}</b>.
+       Die Elektronen verlassen die Kanone waagerecht nach rechts, also zeigt der Daumen nach links.
+       Die Lorentzkraft weist damit nach <b>${raus ? 'oben' : 'unten'}</b> – ${raus
+         ? 'dorthin liegt der Mittelpunkt, und der Kreis steht auf der Kanone.'
+         : 'der Strahl wird nach unten gebogen und trifft sofort die Glaswand.'}</div>`;
+}
+
+// ── Auswertung: Mittelwert und Spannweite ──────────────
+function _fsrStatistik() {
+  if (!_fsr.rows.length) return null;
+  const ms = _fsr.rows.map(r => r.m);
+  const mit = ms.reduce((a, b) => a + b, 0) / ms.length;
+  const min = Math.min(...ms), max = Math.max(...ms);
+  return { n: ms.length, mit, min, max, spanne: max - min,
+           abw: (mit - _FSR_ME) / _FSR_ME * 100 };
+}
+function _fsrRenderStat() {
+  const el = document.getElementById('fsrStat'); if (!el) return;
+  const s = _fsrStatistik();
+  if (!s) {
+    el.innerHTML = '<div class="fpm-note">Noch keine Messwerte. Nimm in Station 1 mehrere Kreisbahnen bei verschiedenen Spulenströmen und Spannungen auf.</div>';
+    return;
+  }
+  const cls = Math.abs(s.abw) < 3 ? 'ok' : Math.abs(s.abw) < 8 ? 'mid' : 'no';
+  el.innerHTML =
+    `<div class="fsr-stat-reihe">
+       <div class="fsr-kachel"><span>Messwerte</span><b>${s.n}</b></div>
+       <div class="fsr-kachel gross"><span>Mittelwert m<sub>e</sub></span><b>${_fsrExp(s.mit, 3)} kg</b></div>
+       <div class="fsr-kachel"><span>kleinster Wert</span><b>${_fpmNum(s.min / 1e-31, 3)}</b></div>
+       <div class="fsr-kachel"><span>größter Wert</span><b>${_fpmNum(s.max / 1e-31, 3)}</b></div>
+       <div class="fsr-kachel"><span>Spannweite</span><b>${_fpmNum(s.spanne / 1e-31, 3)}</b></div>
+       <div class="fsr-kachel ${cls}"><span>gegen 9,109 · 10⁻³¹ kg</span><b>${_fpmNum(s.abw, 1)} %</b></div>
+     </div>
+     <div class="fpm-note">Die Handreichung schlägt genau dieses Vorgehen vor: mitteln, die
+       <b>Spannweite</b> als Fehlerabschätzung angeben und mit dem Literaturwert vergleichen. Alle
+       Messwerte in 10⁻³¹ kg. Die Streuung kommt fast ausschließlich vom abgelesenen Durchmesser –
+       große Kreise liefern deshalb die genaueren Werte.</div>`;
+}
+
+// ── Auswertungsdiagramm ────────────────────────────────
+// Alle drei Auftragungen sind Linearisierungen von m_e = e·B²·r²/(2U).
+const _FSR_PRESETS = [
+  { xl: 'U in V', yl: 'B²·r² in 10⁻⁹ T²m²',
+    x: r => r.U, y: r => r.B * r.B * r.r * r.r / 1e-9,
+    origin: true,
+    mAus: k => k * 1e-9 * _FSR_E / 2,
+    note: 'Die Auftragung, die jeden Messwert brauchen kann – ganz gleich, bei welchem Strom und welcher Spannung er aufgenommen wurde.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)',
+    form: 'B²·r² = (2·m_e/e) · U',
+    param: () => 'gesucht: die Steigung 2·m_e/e',
+    term: () => _dspZahl(2 * _FSR_ME / _FSR_E / 1e-9) + '*x',
+    deutung: 'Aus m_e = e·B²·r²/(2·U) folgt B²·r² = (2·m_e/e)·U. Die Steigung ist also 2·m_e/e, und daraus ergibt sich m_e = Steigung · e/2. Weil hier Spannung und Spulenstrom frei gemischt werden dürfen, ist das die belastbarste Auswertung.' },
+
+  { xl: '1/B in 1/mT', yl: 'r in cm',
+    x: r => 1 / (r.B * 1000), y: r => r.r * 100,
+    origin: true, gruppe: r => Math.round(r.U), gruppeName: U => U + ' V',
+    mAus: (k, U) => _FSR_E * k * k / (2 * U * 1e10),
+    note: 'Bei fester Beschleunigungsspannung wächst der Bahnradius proportional zu 1/B. Für jede Spannung entsteht eine eigene Ursprungsgerade.',
+    typ: 'Ursprungsgerade je Beschleunigungsspannung',
+    form: 'r = √(2·U·m_e/e) · (1/B)',
+    param: () => 'Steigung = √(2·U·m_e/e), hier für U = ' + Math.round(_fsr.U) + ' V',
+    term: () => _dspZahl(Math.sqrt(2 * _fsr.U * _FSR_ME / _FSR_E) * 1e5) + '*x',
+    deutung: 'Aus m_e·v = e·B·r und v = √(2·e·U/m_e) folgt r = √(2·U·m_e/e)/B. Bei fester Spannung ist das eine Ursprungsgerade in 1/B. Aus ihrer Steigung k folgt m_e = e·k²/(2·U). Jede Spannung liefert eine eigene Gerade – die steilere gehört zur höheren Spannung.' },
+
+  { xl: '√U in √V', yl: 'r in cm',
+    x: r => Math.sqrt(r.U), y: r => r.r * 100,
+    origin: true, gruppe: r => Math.round(r.I * 100) / 100, gruppeName: I => _fpmNum(I, 2) + ' A',
+    mAus: (k, I) => _FSR_E * k * k * 1e-4 * _fsrBFormel(I) * _fsrBFormel(I) / 2,
+    note: 'Bei festem Spulenstrom wächst der Bahnradius proportional zur Wurzel aus der Spannung. Für jeden Strom entsteht eine eigene Ursprungsgerade.',
+    typ: 'Ursprungsgerade je Spulenstrom',
+    form: 'r = (1/B)·√(2·m_e/e) · √U',
+    param: () => 'Steigung = √(2·m_e/e)/B, hier für I = ' + _fpmNum(_fsr.I, 2) + ' A',
+    term: () => _dspZahl(Math.sqrt(2 * _FSR_ME / _FSR_E) / _fsrBFormel(_fsr.I) * 100) + '*x',
+    deutung: 'Dieselbe Beziehung, nur nach der Spannung sortiert: r = √(2·m_e/e)·√U/B. Dass hier die Wurzel aus U steht und nicht U selbst, ist eine gute Probe auf die Herleitung – wer sich beim Quadrieren vertut, bekommt hier eine gekrümmte Kurve statt einer Geraden.' }
+];
+
+const _FSR_FARBEN = ['#0369a1', '#db2777', '#16a34a', '#f97316', '#7c3aed', '#0f766e', '#b45309'];
+
+function _fsrDrawPlot() {
+  const cv = document.getElementById('fsrPlot');
+  if (!cv || !_fsr) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = _FSR_PRESETS[_fsr.preset];
+  const padL = 62, padR = 16, padT = 14, padB = 42;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const pts = _fsr.rows.map(r => ({ x: P.x(r), y: P.y(r), r }))
+    .filter(p => isFinite(p.x) && isFinite(p.y));
+  const xmax = Math.max(1e-9, pts.length ? Math.max(...pts.map(p => p.x)) * 1.12 : 10);
+  const ymax = Math.max(1e-9, pts.length ? Math.max(...pts.map(p => p.y)) * 1.15 : 10);
+
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+
+  const xt = _fpmTicks(xmax, 6);
+  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  xt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
+  });
+  const yt = _fpmTicks(ymax, 5);
+  yt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
+  });
+
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(P.xl, x1, y0 + 30);
+  ctx.save(); ctx.translate(15, y1 + 2); ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillText('Noch keine Messwerte – nimm zuerst Kreisbahnen in Station 1 auf', (x0 + x1) / 2, (y0 + y1) / 2);
+    ctx.textAlign = 'left';
+    const fo = document.getElementById('fsrFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + P.note + '</div>';
+    return;
+  }
+
+  if (_fsr.fn) {
+    ctx.strokeStyle = '#db2777'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _fsr.fn((px - x0) / (x1 - x0) * xmax); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv);
+      if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+
+  // Ohne Gruppierung ein einziger Fit, sonst einer je Spannung bzw. Strom
+  const gruppen = new Map();
+  pts.forEach(p => {
+    const g = P.gruppe ? P.gruppe(p.r) : 0;
+    if (!gruppen.has(g)) gruppen.set(g, []);
+    gruppen.get(g).push(p);
+  });
+
+  const info = [];
+  [...gruppen.keys()].sort((a, b) => a - b).forEach((g, gi) => {
+    const gp = gruppen.get(g);
+    const col = P.gruppe ? _FSR_FARBEN[gi % _FSR_FARBEN.length] : '#0369a1';
+    let fit = null;
+    if (gp.length >= 2) {
+      fit = P.origin ? _fpmFitOrigin(gp) : _fpmFitLinear(gp);
+      if (fit) {
+        ctx.strokeStyle = col; ctx.lineWidth = 1.7;
+        ctx.beginPath();
+        ctx.moveTo(X(0), Y(fit.b || 0));
+        ctx.lineTo(X(xmax), Y(fit.k * xmax + (fit.b || 0)));
+        ctx.stroke();
+      }
+    }
+    gp.forEach(p => {
+      ctx.fillStyle = col;
+      ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke();
+    });
+    info.push({ g, col, fit, n: gp.length });
+  });
+
+  _fsrRenderFit(info, P);
+}
+
+function _fsrRenderFit(gruppen, P) {
+  const el = document.getElementById('fsrFitBox'); if (!el) return;
+  let html = '';
+  gruppen.forEach(g => {
+    if (!g.fit) return;
+    const m = P.mAus(g.fit.k, g.g);
+    const abw = Math.abs(m - _FSR_ME) / _FSR_ME * 100;
+    const cls = abw < 3 ? 'ok' : abw < 8 ? 'mid' : 'no';
+    html += `<div class="fpm-fitline">
+       <span class="fpm-fitmeta">${P.gruppe ? '<span class="fpm-dot" style="background:' + g.col + '"></span>' + P.gruppeName(g.g) + ' · ' : ''}${g.n} Messwerte</span>
+       <span class="fpm-fiteq">y = ${_fpmNum(g.fit.k, 5)}·x</span>
+       <span class="fpm-fitmeta">R² = ${_fpmNum(g.fit.r2, 5)}</span>
+       <span class="fpm-fiteq" style="color:#075985">m<sub>e</sub> = ${_fsrExp(m, 4)} kg</span>
+       ${_fsr.reveal ? `<span class="fpm-badge ${cls}">Literaturwert 9,109 · 10⁻³¹ kg · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+     </div>`;
+  });
+  if (!html) {
+    const noetig = P.gruppe
+      ? 'Mindestens zwei Messwerte bei <b>derselben</b> ' + (_fsr.preset === 1 ? 'Beschleunigungsspannung' : 'Stromstärke') + ' nötig.'
+      : 'Mindestens zwei Messwerte nötig.';
+    el.innerHTML = '<div class="fpm-note">' + noetig + '<br>' + P.note + '</div>';
+    return;
+  }
+  if (gruppen.filter(g => g.fit).length >= 2 && P.gruppe) {
+    html += `<div class="fpm-fitline" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">
+       <span class="fpm-fitmeta">Jede Gerade liefert für sich einen Wert für die Elektronenmasse.
+         Dass alle auf denselben Wert führen, obwohl die Geraden verschieden steil sind, ist die
+         eigentliche Bestätigung der Herleitung.</span></div>`;
+  }
+  el.innerHTML = html + '<div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">' + P.note + '</div>';
+}
+
+// ── Theoriefunktion ────────────────────────────────────
+function _fsrSetPreset(i) {
+  _fsr.preset = i;
+  for (let k = 0; k < 3; k++) document.getElementById('fsrTab' + k)?.classList.toggle('on', k === i);
+  _fsrRefreshTheorie();
+  _fsrDrawPlot();
+}
+function _fsrTheorieFn() {
+  const term = _FSR_PRESETS[_fsr.preset].term();
+  const inp = document.getElementById('fsrFn');
+  if (inp) inp.value = term;
+  _fsrSetFn(term);
+  _fsr.fnAuto = true;
+  _fsrRenderTheorie(true);
+}
+function _fsrClearFn() {
+  const inp = document.getElementById('fsrFn');
+  if (inp) inp.value = '';
+  _fsrSetFn('');
+  _fsrRenderTheorie(false);
+}
+function _fsrRefreshTheorie() {
+  if (_fsr.fnAuto) {
+    const term = _FSR_PRESETS[_fsr.preset].term();
+    const inp = document.getElementById('fsrFn');
+    if (inp) inp.value = term;
+    _fsrSetFn(term);
+    _fsr.fnAuto = true;
+  }
+  _fsrRenderTheorie(_fsr.fnAuto);
+}
+function _fsrRenderTheorie(eingesetzt) {
+  const el = document.getElementById('fsrTheo'); if (!el) return;
+  const P = _FSR_PRESETS[_fsr.preset];
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">${P.typ}</div>
+     <div class="fpm-theo-form">${P.form}</div>
+     <div class="fpm-theo-par">${P.param()}</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${P.term()}</div>` : ''}
+     <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+function _fsrSetFn(str) {
+  _fsr.fnAuto = false;
+  const err = document.getElementById('fsrFnErr');
+  const v = (str || '').trim();
+  if (!v) { _fsr.fn = null; if (err) err.textContent = ''; _fsrDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _fsr.fn = f; if (err) err.textContent = '';
+  } catch (e) { _fsr.fn = null; if (err) err.textContent = e.message; }
+  _fsrDrawPlot();
+}
+
+// ── Zeichnung Station 1 ────────────────────────────────
+// Der Blick geht längs der Spulenachse: Die Spulen erscheinen als Kreise,
+// die Kreisbahn der Elektronen liegt in der Bildebene.
+function _fsrRenderRohr(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#0b1220'; ctx.fillRect(0, 0, W, H);
+
+  const SKALA = 1600;                       // Pixel je Meter
+  const rKolben = 0.080 * SKALA;            // Glaskolben, Radius 8 cm
+  const cx = W / 2, cy = 22 + rKolben;
+  const gx = cx, gy = cy + rKolben - 2;     // Kanonenmuendung am Kolbenboden
+
+  // Helmholtzspulen, leicht versetzt fuer die Tiefenwirkung
+  [[-10, 'rgba(148,163,184,.26)'], [10, 'rgba(148,163,184,.42)']].forEach(v => {
+    ctx.strokeStyle = v[1]; ctx.lineWidth = 8;
+    ctx.beginPath(); ctx.ellipse(cx + v[0], cy, rKolben + 26, rKolben + 22, 0, 0, 2 * Math.PI); ctx.stroke();
+  });
+
+  // Glaskolben
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(cx, cy, rKolben, 0, 2 * Math.PI);
+  ctx.fillStyle = 'rgba(30,41,59,.45)'; ctx.fill(); ctx.stroke();
+
+  const an = _fsr.strahl;
+  const raus = _fsr.richtung > 0;
+  const rw = _fsrRWahr();
+  const rpx = rw * SKALA;
+  const problem = _fsrProblem();
+
+  // Feldrichtung: Punkte heraus, Kreuze hinein
+  if (an) {
+    ctx.strokeStyle = 'rgba(56,189,248,.45)'; ctx.lineWidth = 1.1;
+    ctx.fillStyle = '#38bdf8';
+    for (let i = 0; i < 4; i++) {
+      const fx = 24 + i * 13, fy = 30;
+      ctx.beginPath(); ctx.arc(fx, fy, 4.5, 0, 2 * Math.PI); ctx.stroke();
+      if (raus) { ctx.beginPath(); ctx.arc(fx, fy, 1.7, 0, 2 * Math.PI); ctx.fill(); }
+      else {
+        ctx.beginPath();
+        ctx.moveTo(fx - 3.2, fy - 3.2); ctx.lineTo(fx + 3.2, fy + 3.2);
+        ctx.moveTo(fx + 3.2, fy - 3.2); ctx.lineTo(fx - 3.2, fy + 3.2); ctx.stroke();
+      }
+    }
+    ctx.fillStyle = '#38bdf8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(raus ? 'B zeigt aus der Ebene heraus' : 'B zeigt in die Ebene hinein', 82, 33);
+  }
+
+  // Der leuchtende Faden
+  ctx.save();
+  ctx.beginPath(); ctx.arc(cx, cy, rKolben - 1, 0, 2 * Math.PI); ctx.clip();
+  const faden = (pfad) => {
+    [[9, 'rgba(125,211,252,.20)'], [4.5, 'rgba(186,230,253,.5)'], [1.8, '#e0f2fe']]
+      .forEach(v => { ctx.strokeStyle = v[1]; ctx.lineWidth = v[0]; ctx.beginPath(); pfad(); ctx.stroke(); });
+  };
+  if (!an) {
+    // Ohne Feld laeuft der Strahl geradeaus quer durch den Kolben
+    faden(() => { ctx.moveTo(gx, gy); ctx.lineTo(gx + rKolben + 10, gy); });
+  } else if (problem === 'verpolt') {
+    // Nach unten gebogen: der Strahl trifft nach kurzer Strecke die Wand
+    faden(() => ctx.arc(gx, gy + rpx, rpx, -Math.PI / 2, -Math.PI / 2 + 0.9));
+  } else {
+    // Mittelpunkt senkrecht ueber der Muendung, der Kreis steht auf der Kanone
+    const my = gy - rpx;
+    faden(() => ctx.arc(gx, my, rpx, 0, 2 * Math.PI));
+    // Einzelne Elektronen als helle Punkte auf der Bahn
+    _fsr.elektronen.forEach(p => {
+      const w = Math.PI / 2 - 2 * Math.PI * p;
+      ctx.fillStyle = 'rgba(255,255,255,.92)';
+      ctx.beginPath();
+      ctx.arc(gx + rpx * Math.cos(w), my + rpx * Math.sin(w), 2.2, 0, 2 * Math.PI);
+      ctx.fill();
+    });
+  }
+  ctx.restore();
+
+  // Elektronenkanone unter dem Kolben, sie schiesst waagerecht nach rechts
+  ctx.fillStyle = '#475569'; ctx.fillRect(gx - 44, gy - 9, 40, 20);
+  ctx.fillStyle = '#f59e0b'; ctx.fillRect(gx - 41, gy - 5, 4, 12);
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(gx - 30, gy - 7, 4, 16);
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(gx - 18, gy - 6, 3, 14);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('1', gx - 39, gy + 19); ctx.fillText('2', gx - 28, gy + 19); ctx.fillText('3', gx - 16, gy + 19);
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Elektronenkanone', gx - 46, gy + 30);
+
+  // Durchmesser bemassen und die Skala danebenstellen
+  if (an && problem === null) {
+    const sx = gx + rpx + 16;
+    ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.2; ctx.setLineDash([4, 3]);
+    ctx.beginPath(); ctx.moveTo(gx, gy); ctx.lineTo(sx + 4, gy); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(gx, gy - 2 * rpx); ctx.lineTo(sx + 4, gy - 2 * rpx); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(sx, gy); ctx.lineTo(sx, gy - 2 * rpx); ctx.stroke();
+    [gy, gy - 2 * rpx].forEach(py => {
+      ctx.beginPath(); ctx.moveTo(sx - 4, py); ctx.lineTo(sx + 4, py); ctx.stroke();
+    });
+    ctx.fillStyle = '#fbbf24'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+    ctx.save(); ctx.translate(sx + 8, gy - rpx); ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = 'center';
+    ctx.fillText('d = ' + _fpmNum(_fsrDAblesung() * 100, 1) + ' cm', 0, 0);
+    ctx.restore();
+  }
+
+  // Millimeterskala im Rohr, an der der Durchmesser abgelesen wird
+  const mx = gx - 14;
+  ctx.strokeStyle = 'rgba(148,163,184,.5)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(mx, gy); ctx.lineTo(mx, gy - 0.11 * SKALA); ctx.stroke();
+  ctx.font = '8px sans-serif'; ctx.textAlign = 'right';
+  for (let mm = 0; mm <= 110; mm += 5) {
+    const py = gy - mm / 1000 * SKALA;
+    const lang = mm % 10 === 0, sehr = mm % 20 === 0;
+    ctx.strokeStyle = lang ? 'rgba(148,163,184,.75)' : 'rgba(100,116,139,.6)';
+    ctx.beginPath(); ctx.moveTo(mx, py); ctx.lineTo(mx - (sehr ? 9 : lang ? 6 : 3.5), py); ctx.stroke();
+    if (sehr) { ctx.fillStyle = '#94a3b8'; ctx.fillText(String(mm / 10), mx - 11, py + 3); }
+  }
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif';
+  ctx.fillText('Skala in cm', 10, H - 22);
+
+  // Hinweise am Rand
+  ctx.fillStyle = '#64748b'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Helmholtzspulen: n = ' + _FSR_N + ', R = 15,0 cm', 10, H - 8);
+  ctx.textAlign = 'right';
+  if (an && problem === 'verpolt') {
+    ctx.fillStyle = '#f87171';
+    ctx.fillText('Strahl nach unten – Spulen verpolt', W - 10, H - 8);
+  } else if (an && problem) {
+    ctx.fillStyle = '#f87171';
+    ctx.fillText(problem === 'zu gross' ? 'Strahl trifft die Glaswand' : 'Kreis zu klein zum Ablesen', W - 10, H - 8);
+  } else {
+    ctx.fillStyle = an ? '#38bdf8' : '#64748b';
+    ctx.fillText(an ? 'B = ' + _fpmNum(_fsrB() * 1000, 3) + ' mT' : 'Magnetfeld aus', W - 10, H - 8);
+  }
+  ctx.textAlign = 'left';
+}
+
+function _fsrRenderSchalt(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  const kasten = (x, y, w, h, txt, wert, col) => {
+    ctx.fillStyle = '#fff'; ctx.strokeStyle = col; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#475569'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(txt, x + w / 2, y + 14);
+    ctx.fillStyle = col; ctx.font = '700 11px sans-serif';
+    ctx.fillText(wert, x + w / 2, y + 30);
+  };
+
+  kasten(14, 22, 108, 40, 'Beschleunigung', Math.round(_fsr.U) + ' V', '#0369a1');
+  kasten(14, 74, 108, 40, 'Heizung Kathode', '6,3 V', '#f59e0b');
+  kasten(W - 122, 48, 108, 40, 'Spulenstrom', _fpmNum(_fsr.I, 2) + ' A', '#16a34a');
+
+  // Rohr in der Mitte
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.ellipse(W / 2, 68, 46, 40, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Fadenstrahl-', W / 2, 64); ctx.fillText('rohr', W / 2, 76);
+
+  // Leitungen
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath();
+  ctx.moveTo(122, 42); ctx.lineTo(W / 2 - 46, 55);
+  ctx.moveTo(122, 94); ctx.lineTo(W / 2 - 46, 82);
+  ctx.moveTo(W - 122, 68); ctx.lineTo(W / 2 + 46, 68);
+  ctx.stroke();
+
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Die beiden Spulen liegen in Reihe, damit sie derselbe Strom gleichsinnig durchfließt.', W / 2, H - 8);
+}
+
+// ── Zeichnung Station 3 ────────────────────────────────
+function _fsrRenderSchraubeCv(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#0b1220'; ctx.fillRect(0, 0, W, H);
+
+  const cy = H / 2, x0 = 46, x1 = W - 24;
+
+  // Feldlinien längs der Achse
+  ctx.strokeStyle = 'rgba(56,189,248,.28)'; ctx.lineWidth = 1;
+  for (let i = -2; i <= 2; i++) {
+    const y = cy + i * 32;
+    ctx.beginPath(); ctx.moveTo(x0 - 24, y); ctx.lineTo(x1, y); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x1 - 8, y - 3.5); ctx.lineTo(x1, y); ctx.lineTo(x1 - 8, y + 3.5); ctx.stroke();
+  }
+  ctx.fillStyle = '#38bdf8'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Magnetfeld B', 10, 18);
+
+  const a = _fsrAlphaRad();
+  const rs = _fsrRSchraube(), h = _fsrGanghoehe();
+  const SK = 1500;
+  let rpx = Math.min(58, rs * SK);
+  let hpx = h * SK * 0.35;
+  if (!isFinite(hpx)) hpx = 0;
+
+  // Die Schraubenbahn: gleichförmig längs des Feldes, Kreis quer dazu
+  ctx.strokeStyle = '#7dd3fc'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  let gezeichnet = false;
+  for (let s = 0; s <= 900; s++) {
+    const u = s / 100;                                   // Umläufe
+    const px = x0 + u * hpx;
+    if (px > x1) break;
+    const py = cy - rpx * Math.cos(2 * Math.PI * u);
+    gezeichnet ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), gezeichnet = true);
+  }
+  ctx.stroke();
+
+  // Bei α = 0 bleibt nur die Gerade
+  if (_fsr.alpha === 0) {
+    ctx.strokeStyle = '#7dd3fc'; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.moveTo(x0, cy); ctx.lineTo(x1, cy); ctx.stroke();
+  }
+
+  // Laufendes Elektron
+  const u = (_fsr.t * 0.5) % 9;
+  const epx = x0 + u * hpx, epy = cy - rpx * Math.cos(2 * Math.PI * u);
+  if (epx <= x1) {
+    ctx.fillStyle = '#fff';
+    ctx.beginPath(); ctx.arc(epx, epy, 3.4, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  // Geschwindigkeitszerlegung an der Kanone
+  const vlen = 54;
+  const pfeil = (dx, dy, col, txt) => {
+    ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x0, cy); ctx.lineTo(x0 + dx, cy + dy); ctx.stroke();
+    const L = Math.hypot(dx, dy) || 1, ux = dx / L, uy = dy / L;
+    ctx.beginPath();
+    ctx.moveTo(x0 + dx, cy + dy);
+    ctx.lineTo(x0 + dx - 6 * ux + 3.5 * uy, cy + dy - 6 * uy - 3.5 * ux);
+    ctx.lineTo(x0 + dx - 6 * ux - 3.5 * uy, cy + dy - 6 * uy + 3.5 * ux);
+    ctx.closePath(); ctx.fill();
+    ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(txt, x0 + dx + 5, cy + dy + 3);
+  };
+  pfeil(vlen * Math.cos(a), -vlen * Math.sin(a), '#fbbf24', 'v');
+  if (_fsr.alpha > 2 && _fsr.alpha < 88) {
+    pfeil(vlen * Math.cos(a), 0, '#4ade80', 'v∥');
+    ctx.strokeStyle = 'rgba(248,113,113,.9)'; ctx.lineWidth = 1.6;
+    ctx.beginPath();
+    ctx.moveTo(x0 + vlen * Math.cos(a), cy);
+    ctx.lineTo(x0 + vlen * Math.cos(a), cy - vlen * Math.sin(a));
+    ctx.stroke();
+    ctx.fillStyle = '#f87171'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('v⊥', x0 + vlen * Math.cos(a) + 4, cy - vlen * Math.sin(a) / 2);
+  }
+
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('α = ' + Math.round(_fsr.alpha) + '°', 10, H - 10);
+  ctx.textAlign = 'right';
+  ctx.fillText(_fsr.alpha === 0 ? 'keine Ablenkung'
+             : _fsr.alpha === 90 ? 'geschlossener Kreis'
+             : 'Ganghöhe ' + _fpmNum(h * 100, 1) + ' cm', W - 10, H - 10);
+  ctx.textAlign = 'left';
+}
+
+// ── Takt ───────────────────────────────────────────────
+function _fsrTakt(dt) {
+  if (!_fsr) return;
+  _fsr.t += dt;
+  if (_fsr.station === 0) {
+    if (_fsr.elektronen.length < 14) _fsr.elektronen.push(Math.random());
+    // Nicht die echte Umlauffrequenz von 33 MHz – die waere unsichtbar.
+    // Die Anzeige laeuft langsamer, aber im richtigen Verhaeltnis: schnellere
+    // Elektronen auf groesseren Kreisen brauchen gleich lang.
+    for (let i = 0; i < _fsr.elektronen.length; i++) {
+      _fsr.elektronen[i] = (_fsr.elektronen[i] + dt * 0.45) % 1;
+    }
+  }
+}
+
+function _fsrRender() {
+  if (!_fsr) return;
+  if (_fsr.station === 0) {
+    const a = document.getElementById('fsrRohr');
+    if (a) _fsrRenderRohr(a.getContext('2d'), a);
+    const b = document.getElementById('fsrSchalt');
+    if (b) _fsrRenderSchalt(b.getContext('2d'), b);
+  } else if (_fsr.station === 2) {
+    const c = document.getElementById('fsrSchraube');
+    if (c) _fsrRenderSchraubeCv(c.getContext('2d'), c);
+  }
+}
+
+// ── Zusätzliche Styles ─────────────────────────────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .fsr-quellen { display: flex; gap: 5px; }
+    .fsr-quelle { flex: 1 1 0; display: flex; flex-direction: column; gap: 2px; align-items: flex-start;
+      padding: 6px 8px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 9px; cursor: pointer; }
+    .fsr-quelle:hover { border-color: #cbd5e1; }
+    .fsr-quelle.on { border-color: #0369a1; background: #f0f9ff; }
+    .fsr-quelle-n { font-size: .74rem; font-weight: 800; color: #475569; }
+    .fsr-quelle.on .fsr-quelle-n { color: #075985; }
+    .fsr-quelle-k { font-size: .64rem; color: #94a3b8; }
+    .fsr-bvergleich { display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+      font-size: .72rem; color: #64748b; margin: 7px 0; }
+    .fsr-bv { display: flex; flex-direction: column; }
+    .fsr-bv span { font-size: .62rem; text-transform: uppercase; letter-spacing: .05em;
+      font-weight: 800; color: #94a3b8; }
+    .fsr-bv b { font-size: .82rem; color: #0369a1; font-variant-numeric: tabular-nums; }
+    .fsr-bv-ab { margin-left: auto; font-size: .7rem; color: #94a3b8; }
+    .fsr-hall { font-size: .58rem; font-weight: 800; color: #fff; background: #0369a1;
+      border-radius: 4px; padding: 0 3px; }
+    .fsr-zustand { font-size: .78rem; color: #64748b; background: #f8fafc; border: 1px solid #e2e8f0;
+      border-radius: 9px; padding: 8px 11px; margin: 8px 0; line-height: 1.5; }
+    .fsr-zustand.ok { background: #f0f9ff; border-color: #bae6fd; color: #075985; }
+    .fsr-zustand.aus { background: #fffbeb; border-color: #fde68a; color: #b45309; }
+    .fsr-rechnung { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 4px 11px; }
+    .fsr-drei { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-top: 12px; }
+    .fsr-drei-text { font-size: .79rem; color: #475569; line-height: 1.65; margin-top: 4px; }
+    .fsr-drei-jetzt { font-size: .78rem; color: #075985; background: #f0f9ff; border: 1px solid #bae6fd;
+      border-radius: 8px; padding: 8px 10px; margin-top: 8px; line-height: 1.55; }
+    .fsr-stat { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 12px; }
+    .fsr-stat-reihe { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 8px; }
+    .fsr-kachel { flex: 1 1 92px; display: flex; flex-direction: column; gap: 2px;
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 7px 9px; }
+    .fsr-kachel span { font-size: .62rem; text-transform: uppercase; letter-spacing: .04em;
+      font-weight: 800; color: #94a3b8; }
+    .fsr-kachel b { font-size: .92rem; color: #1e293b; font-variant-numeric: tabular-nums; }
+    .fsr-kachel.gross { flex: 2 1 180px; }
+    .fsr-kachel.gross b { color: #0369a1; }
+    .fsr-kachel.ok b { color: #15803d; }
+    .fsr-kachel.mid b { color: #b45309; }
+    .fsr-kachel.no b { color: #b91c1c; }
+    .fsr-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
