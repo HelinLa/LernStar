@@ -2059,7 +2059,7 @@ function _fpmHTML() {
 
   return `<div class="sim-box sim-box-wide fpm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
-    <h3 class="sim-h3">🌀 Federpendel – Messreihe &amp; Linearisierung</h3>
+    <h3 class="sim-h3">🌀 Federpendel – Messreihe &amp; Linearisierung <span class="sim-schluessel">Schlüsselexperiment</span></h3>
 
     <div class="fpm-grid">
       <div>
@@ -3094,7 +3094,7 @@ function _wwHTML() {
 
   return `<div class="sim-box sim-box-wide ww-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
-    <h3 class="sim-h3">🌊 Wellenwanne – Kreiswellen, Beugung, Interferenz, Reflexion, Brechung</h3>
+    <h3 class="sim-h3">🌊 Wellenwanne – Kreiswellen, Beugung, Interferenz, Reflexion, Brechung <span class="sim-schluessel">Schlüsselexperiment</span></h3>
 
     <div class="ww-tabs">${tabs}</div>
 
@@ -3227,6 +3227,10 @@ function _wwInfo() {
     .ww-erkl-kurz { font-size: .76rem; color: #0369a1; margin-top: 2px; font-weight: 600; }
     .ww-erkl-text { font-size: .74rem; color: #475569; line-height: 1.5; margin-top: 5px; }
     .ww-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+    .sim-schluessel { display: inline-block; vertical-align: 2px; margin-left: 6px;
+      background: #fef3c7; color: #92400e; border: 1px solid #fde68a; border-radius: 999px;
+      padding: 2px 9px; font-size: .62rem; font-weight: 800; letter-spacing: .04em;
+      text-transform: uppercase; white-space: nowrap; }
   `;
   document.head.appendChild(s);
 })();
