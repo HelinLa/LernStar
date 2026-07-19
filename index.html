@@ -16,8 +16,8 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=42" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=43" />
   <link rel="stylesheet" href="quiz-game.css?v=1" />
 <!-- Markdown + Mathe-Rendering für Chat -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
@@ -640,11 +640,29 @@
   </div>
 </div>
 
+<!-- TAFEL (MATHE ERKLÄRSCHRITTE) -->
+<div id="tafelOverlay" class="tafel-overlay hidden" onclick="_tafelBgClick(event)">
+  <div class="tafel-board">
+    <div class="tafel-topbar">
+      <div class="tafel-title" id="tafelTitle">📐 Tafel</div>
+      <button class="tafel-close-btn" onclick="closeTafel()">✕</button>
+    </div>
+    <div class="tafel-frame">
+      <div class="tafel-content" id="tafelContent"></div>
+    </div>
+    <div class="tafel-controls">
+      <button class="tafel-ctrl-btn" id="tafelPrevBtn" onclick="_tafelPrev()">◀ Zurück</button>
+      <div class="tafel-progress-dots" id="tafelDots"></div>
+      <button class="tafel-ctrl-btn tafel-ctrl-btn-primary" id="tafelNextBtn" onclick="_tafelNext()">Weiter ▶</button>
+    </div>
+  </div>
+</div>
+
 <script src="gs-content.js?v=1"></script>
 <script src="content.js?v=39"></script>
 <script src="js/ai_engine.js?v=1"></script>
 <script src="physics-sim.js?v=2"></script>
-<script src="app.js?v=94"></script>
+<script src="app.js?v=95"></script>
 <script src="quiz-game.js?v=1"></script>
 <!-- ── Animated Explainer Modal ─────────────────────────────── -->
 <div id="explainerModal" role="dialog" aria-modal="true" aria-labelledby="explainerTitle">

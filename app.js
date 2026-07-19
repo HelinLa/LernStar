@@ -1299,7 +1299,7 @@ function renderSubject() {
     <h1>${subject.icon} ${subject.name}</h1>
     <p>${subject.desc}</p>`;
 
-  const hasVideo = subject.id === 'mathe' || subject.id === 'physik';
+  const hasVideo = subject.id === 'physik';
   document.querySelector('.video-section').style.display = 'none';
 
   if (hasVideo) {
@@ -1347,7 +1347,8 @@ function renderSubject() {
         </div>
         ${t.kompetenz ? `<button class="modul-start-btn" onclick="startModul('${state.gradeId}','${state.subjectId}',${topicNum-1})">&#127775; Lernmodul</button>` : ''}
         ${(hasVideo && !t.explanation && !t.kompetenz) ? `<button class="topic-play-btn" id="topicBtn${i}" onclick="playTopic(${i})">Erklärvideo</button>` : ''}
-        ${((EV_SCENES[t.name] || t.explanation) && !t.kompetenz) ? `<button class="ev-topic-btn" onclick="openErklaerVideo('${t.name.replace(/'/g,"\\'")}')">🎬 Erklärvideo</button>` : ''}
+        ${(subject.id === 'mathe' && (EV_SCENES[t.name] || t.explanation) && !t.kompetenz) ? `<button class="tafel-topic-btn" onclick="openTafel('${t.name.replace(/'/g,"\\'")}')">🖍️ Tafel</button>` : ''}
+        ${(subject.id !== 'mathe' && (EV_SCENES[t.name] || t.explanation) && !t.kompetenz) ? `<button class="ev-topic-btn" onclick="openErklaerVideo('${t.name.replace(/'/g,"\\'")}')">🎬 Erklärvideo</button>` : ''}
       </div>`;
     topicsList.appendChild(item);
   });
@@ -12064,6 +12065,83 @@ function _evTogglePause(){
   }
 }
 function _evSkipScene(){clearTimeout(_evTimer);_evPlayScene(_evSceneIdx+1);}
+
+// ============================================================
+// TAFEL – Schrittweise Erklärung für Mathe (ersetzt Erklärvideo)
+// ============================================================
+let _tafelSteps = [];
+let _tafelIdx = 0;
+
+function _tafelGetSteps(topicName){
+  const grade = CONTENT[state.gradeId];
+  const subject = grade && grade.subjects.find(function(s){return s.id===state.subjectId;});
+  const topic = subject && subject.topics.find(function(t){return t.name===topicName;});
+  let text = (topic && topic.explanation) || '';
+  if (!text && EV_SCENES[topicName]) {
+    text = EV_SCENES[topicName].map(function(sc){return sc.speech||'';}).join(' ');
+  }
+  text = text.replace(/<[^>]*>/g,'').trim();
+  if (!text) return ['Für dieses Thema gibt es noch keine Tafel-Erklärung.'];
+  const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+  return sentences.map(function(s){return s.trim();}).filter(Boolean);
+}
+
+function openTafel(topicName){
+  _tafelSteps = _tafelGetSteps(topicName);
+  _tafelIdx = 0;
+  const title = document.getElementById('tafelTitle');
+  if (title) title.textContent = '📐 ' + topicName;
+  const overlay = document.getElementById('tafelOverlay');
+  if (overlay) overlay.classList.remove('hidden');
+  _tafelBuildDots();
+  _tafelRender();
+}
+function closeTafel(){
+  const overlay = document.getElementById('tafelOverlay');
+  if (overlay) overlay.classList.add('hidden');
+}
+function _tafelBgClick(e){
+  if (e.target === document.getElementById('tafelOverlay')) closeTafel();
+}
+function _tafelBuildDots(){
+  const c = document.getElementById('tafelDots');
+  if (!c) return;
+  c.innerHTML = '';
+  for (let i = 0; i < _tafelSteps.length; i++){
+    const d = document.createElement('div');
+    d.className = 'tafel-dot' + (i <= _tafelIdx ? ' active' : '');
+    c.appendChild(d);
+  }
+}
+function _tafelRender(){
+  const content = document.getElementById('tafelContent');
+  if (!content) return;
+  content.innerHTML = '';
+  for (let i = 0; i <= _tafelIdx; i++){
+    const step = document.createElement('div');
+    step.className = 'tafel-step';
+    step.innerHTML = '<div class="tafel-step-num">' + (i+1) + '</div><div class="tafel-step-text">' + _tafelSteps[i] + '</div>';
+    content.appendChild(step);
+  }
+  const frame = document.querySelector('.tafel-frame');
+  if (frame) frame.scrollTop = frame.scrollHeight;
+
+  const prevBtn = document.getElementById('tafelPrevBtn');
+  const nextBtn = document.getElementById('tafelNextBtn');
+  if (prevBtn) prevBtn.disabled = _tafelIdx === 0;
+  if (nextBtn) nextBtn.textContent = (_tafelIdx >= _tafelSteps.length - 1) ? '✓ Fertig' : 'Weiter ▶';
+  _tafelBuildDots();
+}
+function _tafelNext(){
+  if (_tafelIdx >= _tafelSteps.length - 1) { closeTafel(); return; }
+  _tafelIdx++;
+  _tafelRender();
+}
+function _tafelPrev(){
+  if (_tafelIdx === 0) return;
+  _tafelIdx--;
+  _tafelRender();
+}
 
 
 
