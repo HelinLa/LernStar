@@ -1889,6 +1889,7 @@ const _physSimDefs = {
     _fpmRenderTable();
     _pSim = new PhysicsSimEngine('fpmAnim', 'fpmPlot');
     _pSim.start(dt => _fpmUpdate(dt), (ctx, cv) => _fpmDrawApparatus(ctx, cv), []);
+    _fpmRenderTheorie(false);
     _fpmDrawPlot();
   },
 };
@@ -2022,7 +2023,7 @@ function _fpmInit() {
     D: 10.1, m: 0.250, amp: 0.05,
     t: 0, phase: 0, speed: 1, topFlash: 0,
     springMass: false, showTheory: false, origin: true, reveal: false,
-    trace: [], rows: [], nextId: 1, preset: 1, fn: null,
+    trace: [], rows: [], nextId: 1, preset: 1, fn: null, fnAuto: false,
     sw: { state: 'idle', t0: 0, n: 0, elapsed: 0, result: null }
   };
 }
@@ -2109,6 +2110,11 @@ function _fpmHTML() {
         <input type="text" id="fpmFn" class="fpm-input" placeholder="z. B. 39.478*x" spellcheck="false"
           oninput="_fpmSetFn(this.value)">
         <div class="fpm-err" id="fpmFnErr"></div>
+        <div class="sim-btn-row" style="padding:2px 0 4px">
+          <button class="sim-btn primary" onclick="_fpmTheorieFn()">ƒ Theoriefunktion</button>
+          <button class="sim-btn" onclick="_fpmClearFn()">Feld leeren</button>
+        </div>
+        <div class="fpm-theo" id="fpmTheo"></div>
         <div class="fpm-note">Erlaubt: x, pi, + − * / ^, sqrt(), sin(), cos(), abs(), exp(), ln(). Malpunkt immer schreiben.</div>
         <label class="fpm-check"><input type="checkbox" checked onchange="_fpmSet('origin',this.checked)">
           Ausgleichsgerade durch den Ursprung</label>
@@ -2127,10 +2133,12 @@ function _fpmSet(key, val) { _fpm[key] = val; if (key === 'springMass') _fpmRese
 function _fpmSetSpring(D) {
   _fpm.D = D; _fpm.trace = []; _fpmResetSW();
   _FPM_SPRINGS.forEach(s => document.getElementById('fpmSp' + s.n)?.classList.toggle('on', s.D === D));
+  _fpmRefreshTheorie();
 }
 function _fpmSetM(v) {
   _fpm.m = +v / 1000; _fpm.trace = []; _fpmResetSW();
   const el = document.getElementById('fpmMLbl'); if (el) el.textContent = Math.round(+v) + ' g';
+  _fpmRefreshTheorie();
 }
 function _fpmSetAmp(v) {
   _fpm.amp = +v / 100;
@@ -2139,6 +2147,7 @@ function _fpmSetAmp(v) {
 function _fpmSetPreset(i) {
   _fpm.preset = i;
   for (let k = 0; k < 4; k++) document.getElementById('fpmTab' + k)?.classList.toggle('on', k === i);
+  _fpmRefreshTheorie();
   _fpmDrawPlot();
 }
 
@@ -2448,7 +2457,49 @@ function _fpmMakeFn(src) {
     return st[0];
   };
 }
+// Setzt den theoretisch erwarteten Term ein und benennt den Funktionstyp
+function _fpmTheorieFn() {
+  const P = _FPM_PRESETS[_fpm.preset];
+  const term = P.term();
+  const inp = document.getElementById('fpmFn');
+  if (inp) inp.value = term;
+  _fpmSetFn(term);
+  _fpm.fnAuto = true;
+  _fpmRenderTheorie(true);
+}
+function _fpmClearFn() {
+  const inp = document.getElementById('fpmFn');
+  if (inp) inp.value = '';
+  _fpmSetFn('');
+  _fpmRenderTheorie(false);
+}
+// Haelt einen eingesetzten Theorieterm aktuell, wenn Feder, Masse oder Auftragung wechseln
+function _fpmRefreshTheorie() {
+  if (_fpm.fnAuto) {
+    const term = _FPM_PRESETS[_fpm.preset].term();
+    const inp = document.getElementById('fpmFn');
+    if (inp) inp.value = term;
+    _fpmSetFn(term);
+    _fpm.fnAuto = true;
+  }
+  _fpmRenderTheorie(_fpm.fnAuto);
+}
+// Zeigt an, WELCHE Art von Funktion in der aktuellen Auftragung zu erwarten ist
+function _fpmRenderTheorie(eingesetzt) {
+  const el = document.getElementById('fpmTheo');
+  if (!el) return;
+  const P = _FPM_PRESETS[_fpm.preset];
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">${P.typ}</div>
+     <div class="fpm-theo-form">${P.form}</div>
+     <div class="fpm-theo-par">${P.param()}</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${P.term()}</div>` : ''}
+     <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+
 function _fpmSetFn(str) {
+  _fpm.fnAuto = false;
   const err = document.getElementById('fpmFnErr');
   const v = (str || '').trim();
   if (!v) { _fpm.fn = null; if (err) err.textContent = ''; _fpmDrawPlot(); return; }
@@ -2464,16 +2515,32 @@ function _fpmSetFn(str) {
 const _FPM_PRESETS = [
   { xl: 'm in kg', yl: 'T in s', x: r => r.m, y: r => r.T, grp: r => r.D,
     gl: k => 'D = ' + _fpmNum(+k, 1) + ' N/m', curve: true,
-    note: 'Die Punkte liegen auf einer Kurve – kein linearer Zusammenhang. Quadriere T und wechsle zur Auftragung m → T².' },
+    note: 'Die Punkte liegen auf einer Kurve – kein linearer Zusammenhang. Quadriere T und wechsle zur Auftragung m → T².',
+    typ: 'Wurzelfunktion', form: 'T(m) = 2π · √( m / D )',
+    term: () => '2*pi*sqrt(x/' + _fpm.D + ')',
+    param: () => 'D = ' + _fpmNum(_fpm.D, 1) + ' N/m (gewählte Feder)',
+    deutung: 'Keine Gerade, sondern eine Wurzelkurve: vervierfachst du die Masse, verdoppelt sich T. Aus einer Kurve lässt sich schlecht etwas ablesen – deshalb linearisiert man.' },
   { xl: 'm in kg', yl: 'T² in s²', x: r => r.m, y: r => r.T * r.T, grp: r => r.D,
     gl: k => 'D = ' + _fpmNum(+k, 1) + ' N/m', slope: k => _FPM_K / +k,
-    note: 'Ursprungsgerade ⇒ T² ~ m. Erwartete Steigung: 4π²/D.' },
+    note: 'Ursprungsgerade ⇒ T² ~ m. Erwartete Steigung: 4π²/D.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'T²(m) = (4π² / D) · m',
+    term: () => '4*pi^2/' + _fpm.D + '*x',
+    param: () => 'Steigung 4π²/D = ' + _fpmNum(_FPM_K / _fpm.D, 3) + ' s²/kg',
+    deutung: 'Durch das Quadrieren wird aus der Wurzelkurve eine Gerade durch den Ursprung: T² ist proportional zu m.' },
   { xl: '1/D in m/N', yl: 'T² in s²', x: r => 1 / r.D, y: r => r.T * r.T, grp: r => r.m,
     gl: k => 'm = ' + _fpmNum(+k, 3) + ' kg', slope: k => _FPM_K * +k,
-    note: 'Ursprungsgerade ⇒ T² ~ 1/D. Erwartete Steigung: 4π²·m.' },
+    note: 'Ursprungsgerade ⇒ T² ~ 1/D. Erwartete Steigung: 4π²·m.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'T²(1/D) = 4π² · m · (1/D)',
+    term: () => '4*pi^2*' + _fpm.m + '*x',
+    param: () => 'Steigung 4π²·m = ' + _fpmNum(_FPM_K * _fpm.m, 3) + ' s²·N/(kg·m) bei m = ' + _fpmNum(_fpm.m, 3) + ' kg',
+    deutung: 'Nicht D selbst, sondern der Kehrwert 1/D liefert die Gerade: T² ist umgekehrt proportional zu D. Steifere Feder, kürzere Periode.' },
   { xl: 'm/D in kg·m/N', yl: 'T² in s²', x: r => r.m / r.D, y: r => r.T * r.T, grp: null,
     slope: () => _FPM_K,
-    note: 'Alle Messwerte zusammen. Die Steigung ist der gesuchte Proportionalitätsfaktor k ≈ 4π².' }
+    note: 'Alle Messwerte zusammen. Die Steigung ist der gesuchte Proportionalitätsfaktor k ≈ 4π².',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'T²(m/D) = 4π² · (m/D)',
+    term: () => '4*pi^2*x',
+    param: () => 'Steigung 4π² = 39,478 – unabhängig von Feder und Masse',
+    deutung: 'Beide Abhängigkeiten in einem Diagramm. Die Steigung ist eine reine Zahl: 4π². Nach T aufgelöst steht da T = 2π·√(m/D).' }
 ];
 
 function _fpmTicks(max, count) {
@@ -2706,6 +2773,15 @@ function _fpmRenderFit(groups, P) {
     .fpm-input:focus { outline: 2px solid #7c3aed; outline-offset: 1px; border-color: #7c3aed; }
     .fpm-err { color: #dc2626; font-size: .7rem; min-height: 13px; margin-top: 2px; }
     .fpm-note { font-size: .72rem; color: #64748b; line-height: 1.45; }
+    .fpm-theo { background: #f5f3ff; border: 1px solid #ddd6fe; border-left: 3px solid #7c3aed;
+      border-radius: 8px; padding: 8px 10px; margin: 2px 0 6px; }
+    .fpm-theo-kopf { font-size: .62rem; font-weight: 800; color: #7c3aed; text-transform: uppercase;
+      letter-spacing: .06em; margin-bottom: 3px; }
+    .fpm-theo-typ { font-size: .82rem; font-weight: 800; color: #1e293b; }
+    .fpm-theo-form { font-family: ui-monospace, monospace; font-size: .82rem; color: #5b21b6; margin-top: 2px; }
+    .fpm-theo-par { font-size: .7rem; color: #64748b; margin-top: 2px; font-variant-numeric: tabular-nums; }
+    .fpm-theo-term { font-family: ui-monospace, monospace; font-size: .7rem; color: #db2777; margin-top: 3px; }
+    .fpm-theo-deutung { font-size: .71rem; color: #475569; line-height: 1.45; margin-top: 4px; }
     /* Gesperrte Knoepfe muessen gesperrt AUSSEHEN – sonst klickt man ins Leere */
     .fpm-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
     .fpm-sim .sim-btn:disabled:hover { background: #f1f5f9; color: #475569; }
