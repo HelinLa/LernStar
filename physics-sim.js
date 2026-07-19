@@ -2065,6 +2065,23 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('thrTakt', 'thrKeinChart');
     _pSim.start(dt => _thrTakt(dt), () => _thrRender(), []);
   },
+
+  // Schluesselexperiment 11 des KLP: die beiden Ursachen der Induktion,
+  // dazu die Abituraufgabe 2013 und Faradays Ringkern von 1831
+  'leiterschleife': modal => {
+    _lsfInit();
+    modal.innerHTML = _lsfHTML();
+    const erkl = document.getElementById('lsfErkl');
+    if (erkl) erkl.innerHTML = _lsfErklHTML();
+    _lsfSetStation(0);
+    _lsfSetTeil('feld');
+    _lsfRenderTable();
+    _lsfRenderTheorie(false);
+    _lsfUpdate();
+    _lsfDrawPlot();
+    _pSim = new PhysicsSimEngine('lsfTakt', 'lsfKeinChart');
+    _pSim.start(dt => _lsfTakt(dt), () => _lsfRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -15196,6 +15213,1616 @@ function _thrRender() {
     .thr-anw-k { font-size: .78rem; font-weight: 800; color: #334155; margin-bottom: 4px; }
     .thr-anw-t { font-size: .77rem; color: #475569; line-height: 1.65; }
     .thr-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+// ═══════════════════════════════════════════════════════
+// DIE LEITERSCHLEIFE
+// Schluesselexperiment 11 der NRW-Handreichung.
+// Kernkompetenz des KLP: Induktionserscheinungen an einer Leiterschleife auf
+// die beiden grundlegenden Ursachen zurueckfuehren – "zeitlich veraenderliches
+// Magnetfeld" und "zeitlich veraenderliche (effektive) Flaeche" (UF3, UF4).
+// Dazu E2/E5 (Oszillogramme auswerten), K2 (historische Recherche) und K3.
+// ═══════════════════════════════════════════════════════
+
+const _LSF_MU0 = 4e-7 * Math.PI;
+
+// Grundversuch: Leiterschleife auf der Rastersteckplatte, Neodym-Magnet daueber
+const _LSF_M_DIPOL = 1.0;        // magnetisches Moment des Neodym-Magneten in A·m²
+const _LSF_VERST   = 1e4;        // Verstaerkung des Messverstaerkers
+
+// Quantitative Vertiefung nach der Abituraufgabe GK NRW 2013
+const _LSF_N_IND   = 10;         // Windungen der kleinen Induktionsspule
+const _LSF_A0      = 0.0050;     // ihre Querschnittsflaeche in m² (7 cm x 7 cm)
+const _LSF_N_FELD  = 240;        // Windungen der langen Feldspule
+const _LSF_B0      = 0.001;      // Scheitelwert der Feldstaerke in T
+const _LSF_T       = 2.4;        // Periodendauer in s
+// Oszilloskopeinstellungen aus der Handreichung
+const _LSF_TDIV    = 0.5;        // s je Kaestchen
+const _LSF_BDIV    = 0.5e-3;     // T je Kaestchen auf Kanal 1
+const _LSF_UDIV    = 0.4;        // V je Kaestchen auf Kanal 2 (nach der Verstaerkung)
+const _LSF_XDIV = 10, _LSF_YDIV = 8;
+
+// Induktionsschlitten
+const _LSF_FELDLAENGE = 0.30;    // Laenge des Feldbereichs in m
+// Ausdehnung der Schleife LAENGS der Fahrtrichtung. Sie bestimmt nur, wie lange
+// das Ein- und Ausfahren dauert. Fuer die Spannung zaehlt allein die Breite b
+// QUER zur Fahrt – das ist die Leiterlaenge, die Feldlinien schneidet.
+const _LSF_SCHLEIFE_L = 0.10;
+
+let _lsf = null;
+
+function _lsfInit() {
+  _lsf = {
+    station: 0,
+    // Station 1
+    teil: 'feld',            // 'feld' | 'flaeche'
+    h: 0.06, hZiel: 0.06, vHand: 0,
+    pendel: false, pt: 0,
+    rSchleife: 0.05, rZiel: 0.05,
+    umgepolt: false, laeuft: true, t: 0, zeiger: 0, spur1: [],
+    // Station 2
+    nWdg: 10, flA: 0.005, flAp: 0, feB: 0.001, feBp: 0,
+    // Station 3
+    form: 'dreieck', leseT: '', leseB: '', geprueft: null, tOszi: 0,
+    // Station 4
+    sB: 0.10, sb: 0.04, sv: 0.30, sx: -0.10, sLaeuft: false,
+    rows: [], nextId: 1, preset: 0, fn: null, fnAuto: false, reveal: false, spurS: [],
+    // Station 5
+    fSchalter: false, fT: 0, fZeiger: 0, fSpur: []
+  };
+}
+
+// ── Grundversuch: Fluss eines Magneten durch die Schleife ──
+// Fuer einen punktfoermigen Dipol auf der Achse einer Leiterschleife vom
+// Radius R gilt exakt: Φ(h) = µ₀·m·R² / (2·(R²+h²)^(3/2)).
+function _lsfFluss(h, R) {
+  return _LSF_MU0 * _LSF_M_DIPOL * R * R / (2 * Math.pow(R * R + h * h, 1.5));
+}
+// Ableitung nach der Hoehe – daraus folgt die Spannung beim Bewegen
+function _lsfdFdh(h, R) {
+  return -3 * _LSF_MU0 * _LSF_M_DIPOL * R * R * h / (2 * Math.pow(R * R + h * h, 2.5));
+}
+// Ableitung nach dem Schleifenradius – daraus folgt die Spannung beim
+// Veraendern der Flaeche. Bemerkenswert ist das Vorzeichen: Der Ausdruck
+// (2h² − R²) wird fuer R > h·√2 negativ. Eine Schleife, die im Vergleich zur
+// Magnethoehe sehr gross ist, faengt naemlich auch schon einen Teil des
+// zurueckfliessenden Feldes ein – dann nimmt der Fluss beim Vergroessern
+// wieder ab. Das ist keine Modellschwaeche, sondern echte Dipolphysik.
+function _lsfdFdR(h, R) {
+  const s = R * R + h * h;
+  return _LSF_MU0 * _LSF_M_DIPOL * R * (2 * h * h - R * R) / (2 * Math.pow(s, 2.5));
+}
+// Bei diesem Radius ist der Fluss am groessten
+function _lsfRMax(h) { return h * Math.SQRT2; }
+// Die Induktionsspannung im Grundversuch. Beide Ursachen koennen auftreten:
+// der Magnet bewegt sich (dh/dt) oder die Schleife wird groesser (dR/dt).
+function _lsfUGrund(h, R, dh, dR) {
+  const u = -(_lsfdFdh(h, R) * dh + _lsfdFdR(h, R) * dR);
+  return _lsf.umgepolt ? -u : u;
+}
+
+// ── Station 2: das Induktionsgesetz in zwei Summanden ──
+// U = −n · d(A·B)/dt = −n · (Ȧ·B + A·Ḃ)
+function _lsfTermFlaeche(n, Ap, B) { return -n * Ap * B; }
+function _lsfTermFeld(n, A, Bp) { return -n * A * Bp; }
+function _lsfUGesamt(n, A, Ap, B, Bp) {
+  return _lsfTermFlaeche(n, Ap, B) + _lsfTermFeld(n, A, Bp);
+}
+
+// ── Station 3: die Abituraufgabe ───────────────────────
+// B(t) nach der gewaehlten Kurvenform, Scheitelwert B0, Periodendauer T.
+function _lsfBt(t) {
+  const p = (t / _LSF_T) % 1;
+  switch (_lsf.form) {
+    case 'sinus':    return _LSF_B0 * Math.sin(2 * Math.PI * p);
+    // Dreieck: die "lineare Aenderung" des ersten Versuchsteils
+    case 'dreieck':  return _LSF_B0 * (p < 0.25 ? 4 * p : p < 0.75 ? 2 - 4 * p : 4 * p - 4);
+    case 'rechteck': return _LSF_B0 * (p < 0.5 ? 1 : -1);
+    default:         return 0;
+  }
+}
+// Ḃ(t) – beim Dreieck stueckweise konstant, beim Sinus wieder ein Kosinus
+function _lsfBpunkt(t) {
+  const p = (t / _LSF_T) % 1;
+  const w = 2 * Math.PI / _LSF_T;
+  switch (_lsf.form) {
+    case 'sinus':   return _LSF_B0 * w * Math.cos(2 * Math.PI * p);
+    case 'dreieck': return _LSF_B0 * 4 / _LSF_T * (p < 0.25 ? 1 : p < 0.75 ? -1 : 1);
+    // Beim Rechteck springt B – die Aenderungsrate waere unendlich. Real
+    // entstehen kurze, hohe Spitzen; hier auf einen Anzeigewert begrenzt.
+    case 'rechteck': return 0;
+    default: return 0;
+  }
+}
+function _lsfUind(t) { return -_LSF_N_IND * _LSF_A0 * _lsfBpunkt(t); }
+// Die Steigung der fallenden Dreiecksflanke – so rechnet die Handreichung
+function _lsfFlankeSteigung() { return -2 * _LSF_B0 / (_LSF_T / 2); }
+// Der Scheitelwert der Induktionsspannung beim Sinus
+function _lsfUSinusScheitel() {
+  return _LSF_N_IND * _LSF_A0 * _LSF_B0 * 2 * Math.PI / _LSF_T;
+}
+// Was auf dem Oszilloskop in Kaestchen erscheint
+function _lsfBKaestchen(B) { return B / _LSF_BDIV; }
+function _lsfUKaestchen(U) { return U * _LSF_VERST / _LSF_UDIV; }
+
+// ── Station 4: Induktionsschlitten ─────────────────────
+// Solange die Schleife in das Feld einfaehrt, waechst die wirksame Flaeche mit
+// Ȧ = b·v; ist sie ganz drin, aendert sich nichts mehr; beim Ausfahren
+// schrumpft sie wieder. Daraus U = −B·b·v, 0, +B·b·v.
+function _lsfSchlittenU(x, b, v, B) {
+  // x ist die Lage der VORDEREN Leiterseite, gemessen ab dem Feldanfang
+  const hinten = x - _LSF_SCHLEIFE_L;
+  const vornDrin = x > 0 && x < _LSF_FELDLAENGE;
+  const hintenDrin = hinten > 0 && hinten < _LSF_FELDLAENGE;
+  let Ap = 0;
+  if (vornDrin && !hintenDrin) Ap = b * v;        // faehrt ein
+  else if (!vornDrin && hintenDrin) Ap = -b * v;  // faehrt aus
+  // Beide drin oder beide draussen: die wirksame Flaeche aendert sich nicht
+  return -B * Ap;
+}
+function _lsfSchlittenUMax(b, v, B) { return B * b * v; }
+
+// ── Station 5: Faradays Ringkern von 1831 ──────────────
+// Faraday sah nur beim Ein- und Ausschalten einen Ausschlag – nie waehrend
+// der Strom konstant floss. Genau das ist die Entdeckung.
+const _LSF_F_TAU = 0.12;
+function _lsfFaradayAusschlag(t, an, tSchalt) {
+  const dt = t - tSchalt;
+  if (dt < 0) return 0;
+  const v = Math.exp(-dt / _LSF_F_TAU) * (1 - Math.exp(-dt / (_LSF_F_TAU / 6)));
+  return (an ? 1 : -1) * v * 3.2;
+}
+
+// ── Oberfläche ─────────────────────────────────────────
+function _lsfHTML() {
+  const stationen = ['1 · Der Grundversuch', '2 · Die beiden Ursachen',
+                     '3 · Feld ändern – gemessen', '4 · Fläche ändern – gemessen',
+                     '5 · Faraday 1831']
+    .map((s, i) => `<button class="fpm-tab${i === _lsf.station ? ' on' : ''}" id="lsfSt${i}" onclick="_lsfSetStation(${i})">${s}</button>`).join('');
+
+  const presets = ['v → U', 'B → U', 'b → U'].map((p, i) =>
+    `<button class="fpm-tab${i === _lsf.preset ? ' on' : ''}" id="lsfTab${i}" onclick="_lsfSetPreset(${i})">${p}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim lsf-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔁 Die Leiterschleife: das Schlüsselexperiment</h3>
+    <canvas id="lsfTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="lsfS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="lsfGrund" width="440" height="270" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Leiterschleife auf der Rastersteckplatte, darüber der Neodym-Magnet</div>
+          <canvas id="lsfZeiger" width="440" height="150" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Messverstärker (×${_LSF_VERST}) und Drehspulinstrument</div>
+        </div>
+        <div>
+          <div class="fpm-tabs">
+            <button class="fpm-tab on" id="lsfTeil0" onclick="_lsfSetTeil('feld')">Versuchsteil 1 · Magnet bewegen</button>
+            <button class="fpm-tab" id="lsfTeil1" onclick="_lsfSetTeil('flaeche')">Versuchsteil 2 · Fläche ändern</button>
+          </div>
+          <div id="lsfSteuerFeld">
+            <div class="phys-ctrl">
+              <span class="phys-ctrl-label">Höhe des Magneten: <b id="lsfHLbl">6,0 cm</b></span>
+              <input type="range" id="lsfH" min="2" max="16" step="0.1" value="6"
+                oninput="_lsfSetH(this.value)" style="width:100%;accent-color:#dc2626">
+            </div>
+            <div class="sim-btn-row">
+              <button class="sim-btn" onclick="_lsfStoss(-1)">↓ schnell annähern</button>
+              <button class="sim-btn" onclick="_lsfStoss(1)">↑ schnell entfernen</button>
+              <button class="sim-btn" id="lsfPendelBtn" onclick="_lsfPendel()">🪀 Federpendel</button>
+            </div>
+          </div>
+          <div id="lsfSteuerFlaeche" style="display:none">
+            <div class="phys-ctrl">
+              <span class="phys-ctrl-label">Radius der Leiterschleife: <b id="lsfRLbl">5,0 cm</b></span>
+              <input type="range" id="lsfR" min="1.5" max="9" step="0.1" value="5"
+                oninput="_lsfSetR(this.value)" style="width:100%;accent-color:#0369a1">
+            </div>
+            <div class="sim-btn-row">
+              <button class="sim-btn" onclick="_lsfZieh(1)">⤢ schnell vergrößern</button>
+              <button class="sim-btn" onclick="_lsfZieh(-1)">⤡ schnell verkleinern</button>
+            </div>
+            <div class="fpm-note">Das lange Experimentierkabel wird durch die Brückenstecker der
+              Rastersteckplatte geführt – so lässt sich die von der Schleife umschlossene Fläche
+              leicht verändern. Der Magnet bleibt dabei in Ruhe.</div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_lsfUmpolen()">🔄 Magnet umdrehen</button>
+          </div>
+          <div class="lsf-beob" id="lsfBeob"></div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Fluss durch die Schleife</span><span class="fpm-ro-v" id="lsfPhiA">—</span><span class="fpm-ro-u">µWb</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Änderungsrate</span><span class="fpm-ro-v" id="lsfPhipA">—</span><span class="fpm-ro-u">µWb/s</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Induktionsspannung</span><span class="fpm-ro-v" id="lsfUA">—</span><span class="fpm-ro-u">µV</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Zeigerausschlag</span><span class="fpm-ro-v" id="lsfZA">—</span><span class="fpm-ro-u">Skalenteile</span></div>
+          </div>
+          <div class="ebr-rechnung" id="lsfGrundRechnung"></div>
+        </div>
+      </div>
+      <div class="lsf-k3" id="lsfK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="lsfS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="lsfZerlegung" width="440" height="240" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Die beiden Summanden im Vergleich</div>
+          <div class="osz-gruppe">
+            <div class="osz-gruppe-k">Die vier Größen frei einstellen</div>
+            <div class="osz-zeile"><span>Windungen n</span>
+              <input type="range" id="lsfN" min="1" max="500" step="1" value="10"
+                oninput="_lsfSetZ('nWdg',this.value)"><b id="lsfNLbl">10</b></div>
+            <div class="osz-zeile"><span>Fläche A</span>
+              <input type="range" id="lsfA" min="0.001" max="0.02" step="0.0005" value="0.005"
+                oninput="_lsfSetZ('flA',this.value)"><b id="lsfALbl">50 cm²</b></div>
+            <div class="osz-zeile"><span>Ȧ</span>
+              <input type="range" id="lsfAp" min="-0.02" max="0.02" step="0.0005" value="0"
+                oninput="_lsfSetZ('flAp',this.value)"><b id="lsfApLbl">0</b></div>
+            <div class="osz-zeile"><span>Feld B</span>
+              <input type="range" id="lsfB" min="0" max="0.005" step="0.0001" value="0.001"
+                oninput="_lsfSetZ('feB',this.value)"><b id="lsfBLbl">1,0 mT</b></div>
+            <div class="osz-zeile"><span>Ḃ</span>
+              <input type="range" id="lsfBp" min="-0.005" max="0.005" step="0.0001" value="0"
+                oninput="_lsfSetZ('feBp',this.value)"><b id="lsfBpLbl">0</b></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_lsfFall(1)">1. Spezialfall: A konstant</button>
+            <button class="sim-btn" onclick="_lsfFall(2)">2. Spezialfall: B konstant</button>
+            <button class="sim-btn" onclick="_lsfFall(0)">beides ändern</button>
+          </div>
+        </div>
+        <div>
+          <div class="lsf-gesetz" id="lsfGesetz"></div>
+          <div class="ebr-rechnung" id="lsfZerlRechnung"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="lsfS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="lsfOszi" width="440" height="330" class="phys-anim-cv"></canvas>
+          <div class="osz-status" id="lsfOsziStatus"></div>
+          <div class="fpm-label">Kanal 1: B(t) über die Hallsonde · Kanal 2: U<sub>ind</sub>(t)</div>
+          <div class="fpm-tabs">
+            <button class="fpm-tab on" id="lsfForm0" onclick="_lsfSetForm('dreieck')">Dreieck – lineare Änderung</button>
+            <button class="fpm-tab" id="lsfForm1" onclick="_lsfSetForm('sinus')">Sinus</button>
+            <button class="fpm-tab" id="lsfForm2" onclick="_lsfSetForm('rechteck')">Rechteck</button>
+          </div>
+          <div class="fpm-note">Aufbau nach Abbildung 3: Eine kleine Induktionsspule mit
+            ${_LSF_N_IND} Windungen und ${_fpmNum(_LSF_A0 * 1e4, 0)} cm² Querschnitt ruht in einer
+            langen Feldspule mit ${_LSF_N_FELD} Windungen. Diese Aufgabe stand so im
+            <b>Zentralabitur 2013</b>, Grundkurs NRW.</div>
+        </div>
+        <div>
+          <div class="fpm-label">Am Oszillogramm ablesen</div>
+          <div class="osz-lese">
+            <div class="osz-lese-z"><span>Periodendauer T =</span>
+              <input type="text" class="fpm-input osz-inp" id="lsfLeseT" placeholder="?"
+                spellcheck="false" oninput="_lsfSetLese('leseT',this.value)"><span>Kästchen</span></div>
+            <div class="osz-lese-z"><span>Scheitelwert B₀ =</span>
+              <input type="text" class="fpm-input osz-inp" id="lsfLeseB" placeholder="?"
+                spellcheck="false" oninput="_lsfSetLese('leseB',this.value)"><span>Kästchen</span></div>
+          </div>
+          <div class="ebr-rechnung" id="lsfOsziRechnung"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_lsfPruefen()">✓ Ablesung prüfen</button>
+          </div>
+          <div class="lsk-zustand" id="lsfOsziPruef"></div>
+          <div class="lsf-vergleich" id="lsfVergleich"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="lsfS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="lsfSchlitten" width="440" height="210" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Induktionsschlitten: die Schleife wird durch das Feld gezogen</div>
+          <canvas id="lsfSchlittenU" width="440" height="180" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Induktionsspannung über der Zeit</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Geschwindigkeit v</span>
+              <input type="range" id="lsfSv" min="0.05" max="0.8" step="0.01" value="0.3"
+                oninput="_lsfSetS('sv',this.value)"><b id="lsfSvLbl">0,30 m/s</b></div>
+            <div class="osz-zeile"><span>Feld B</span>
+              <input type="range" id="lsfSB" min="0.02" max="0.25" step="0.005" value="0.1"
+                oninput="_lsfSetS('sB',this.value)"><b id="lsfSBLbl">100 mT</b></div>
+            <div class="osz-zeile"><span>Breite b</span>
+              <input type="range" id="lsfSb" min="0.01" max="0.08" step="0.005" value="0.04"
+                oninput="_lsfSetS('sb',this.value)"><b id="lsfSbLbl">4,0 cm</b></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="lsfSchlittenBtn" onclick="_lsfSchlittenStart()">▶ Schlitten fahren lassen</button>
+            <button class="sim-btn" onclick="_lsfTakeS()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_lsfDemoS()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_lsfClearS()">🗑 leeren</button>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="lsfSchlittenRechnung"></div>
+          <div class="fpm-tabs" style="margin-top:8px">${presets}</div>
+          <canvas id="lsfPlot" width="440" height="270" class="phys-chart-cv"></canvas>
+          <div class="fpm-fit" id="lsfFitBox"></div>
+          <input type="text" id="lsfFn" class="fpm-input" placeholder="z. B. 4*x" spellcheck="false"
+            oninput="_lsfSetFn(this.value)" style="margin-top:8px">
+          <div class="fpm-err" id="lsfFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_lsfTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_lsfClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="lsfTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_lsfSet('reveal',this.checked)">
+            Sollwert anzeigen</label>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Nr.</th><th>v (m/s)</th><th>B (mT)</th><th>b (cm)</th><th>U (mV)</th><th></th></tr></thead>
+              <tbody id="lsfTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="lsfEmpty">Noch keine Messwerte.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="lsfS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="lsfFaraday" width="440" height="290" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Faradays Ringkernanordnung von 1831</div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="lsfFSchalterBtn" onclick="_lsfFSchalter()">⏻ Strom einschalten</button>
+          </div>
+          <div class="lsf-beob" id="lsfFBeob"></div>
+        </div>
+        <div>
+          <div class="lsf-hist" id="lsfHist"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="lsfErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Φ = A · B</b> &nbsp;|&nbsp; <b>U<sub>ind</sub> = −n · Φ̇ = −n · (Ȧ·B + A·Ḃ)</b>
+      &nbsp;|&nbsp; A konstant: <b>U = −n·A·Ḃ</b> &nbsp;|&nbsp; B konstant: <b>U = −n·Ȧ·B</b>
+    </p>
+  </div>`;
+}
+
+function _lsfErklHTML() {
+  return `<div class="dsp-erkl-kopf">Zwei Ursachen – mehr gibt es nicht</div>
+    <div class="dsp-erkl-text">
+      Der ganze Sinn dieses Versuchs steckt in einem einzigen Satz des Kernlehrplans: Man soll
+      Induktionserscheinungen an einer Leiterschleife auf die <b>beiden grundlegenden Ursachen</b>
+      zurückführen können – ein <b>zeitlich veränderliches Magnetfeld</b> oder eine <b>zeitlich
+      veränderliche wirksame Fläche</b>. Alles, was danach kommt – Transformator, Generator,
+      Wirbelströme –, ist eine dieser beiden Ursachen oder eine Kombination aus beiden. Wer hier
+      sauber unterscheiden kann, muss sich später kein einziges neues Gesetz merken.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum genau zwei</div>
+    <div class="dsp-erkl-text">
+      Der magnetische Fluss ist das Produkt Φ = A · B. Ein Produkt kann sich nur ändern, wenn sich
+      einer seiner beiden Faktoren ändert – oder beide. Genau das steht in der Produktregel:
+      U<sub>ind</sub> = −n · Φ̇ = −n · (Ȧ·B + A·Ḃ). Der erste Summand ist die Flächenänderung, der
+      zweite die Feldänderung. Setzt man einen von beiden null, bleiben die zwei Spezialfälle
+      übrig, um die es in diesem Versuch geht. Der Kernlehrplan verlangt den Begriff des
+      magnetischen Flusses im Grundkurs übrigens gar nicht mehr – die beiden Spezialfälle genügen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Was man im Grundversuch sieht</div>
+    <div class="dsp-erkl-text">
+      Im <b>ersten Teil</b> liegt die Leiterschleife still, ein starker Magnet wird darüber bewegt.
+      Ergebnis: Eine Spannung entsteht <i>nur während der Bewegung</i>. Hält man den Magneten an –
+      egal ob nah oder fern –, zeigt das Instrument null, obwohl ein kräftiges Feld vorhanden ist.
+      Und die Polung kehrt sich um, je nachdem ob man sich nähert oder entfernt.
+      Im <b>zweiten Teil</b> bleibt der Magnet in Ruhe, und stattdessen wird die von der Schleife
+      umschlossene Fläche verändert. Auch hier: Spannung nur während der Änderung, und die Polung
+      hängt davon ab, ob die Fläche wächst oder schrumpft. Beide Male gilt dieselbe Aussage –
+      <b>nicht der Zustand zählt, sondern seine Änderung</b>.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die wirksame Fläche</div>
+    <div class="dsp-erkl-text">
+      Wichtig ist das Wort <b>wirksam</b>. Gemeint ist nicht die Fläche der Schleife schlechthin,
+      sondern derjenige Anteil, der vom Feld auch tatsächlich senkrecht durchsetzt wird. Kippt man
+      eine Schleife im Feld, ohne ihre Größe zu ändern, so ändert sich trotzdem die wirksame Fläche
+      – und es wird induziert. Genau darauf beruht der Generator.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Faraday, 1831</b></div>
+    <div class="dsp-erkl-text">
+      Entdeckt hat das <b>Michael Faraday</b> im Jahr 1831 mit einer Ringkernanordnung: zwei
+      Spulen auf demselben Eisenring, die eine an einer Batterie, die andere an einem
+      Galvanometer. Faraday erwartete, dass ein <i>fließender</i> Strom in der ersten Spule auch in
+      der zweiten einen Strom hervorruft – und war zunächst enttäuscht, denn nichts geschah.
+      Der Zeiger schlug nur im <b>Augenblick des Ein- und Ausschaltens</b> aus, und zwar in
+      entgegengesetzte Richtungen. Diese scheinbare Fehlanzeige war die Entdeckung. Bemerkenswert:
+      Faraday hat bei all seinen Untersuchungen zur Induktion <b>keine einzige Formel</b>
+      hergeleitet oder aufgeschrieben. Die mathematische Fassung kam erst später durch Maxwell.
+      Ohne diese Entdeckung gäbe es weder Generatoren noch Transformatoren – und damit keine
+      elektrische Energieversorgung.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Vom Versuch zur Maxwell-Gleichung</div>
+    <div class="dsp-erkl-text">
+      In ihrer allgemeinsten Form steht die Aussage dieses Versuchs als <b>zweite
+      Maxwell-Gleichung</b> da: ∇ × E = −∂B/∂t. Sie besagt, dass ein sich zeitlich änderndes
+      Magnetfeld ein elektrisches Wirbelfeld erzeugt – ganz ohne Leiterschleife, die Schleife macht
+      es nur sichtbar. Der Formalismus übersteigt das Schulniveau deutlich, aber es lohnt zu
+      wissen, dass die schlichte Beobachtung „Zeiger schlägt nur beim Bewegen aus" und eine der
+      berühmtesten Gleichungen der Physik dieselbe Sache sind.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Größenordnungen</div>
+    <div class="dsp-erkl-text">
+      Die Spannungen sind klein. Bewegt man einen Neodym-Magneten von Hand über eine Leiterschleife,
+      entstehen einige <b>Mikrovolt bis Millivolt</b> – deshalb braucht der Grundversuch einen
+      Messverstärker vor dem Drehspulinstrument. Auch in der quantitativen Vertiefung liegen die
+      Werte bei etwa 0,1 mV und werden zehntausendfach verstärkt, bevor sie ans Oszilloskop gehen.
+      Wer eine abgelesene Spannung nicht durch die Verstärkung teilt, liegt um vier Zehnerpotenzen
+      daneben.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Neodym-Magnete haben eine sehr starke Anziehungskraft. Finger oder
+      Haut können zwischen zwei Magneten oder zwischen Magnet und Massestück eingeklemmt werden –
+      das führt zu Quetschungen und Blutergüssen.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _lsfSetStation(i) {
+  _lsf.station = i;
+  for (let k = 0; k < 5; k++) {
+    document.getElementById('lsfSt' + k)?.classList.toggle('on', k === i);
+    const d = document.getElementById('lsfS' + k);
+    if (d) d.style.display = k === i ? 'block' : 'none';
+  }
+  _lsfUpdate();
+  if (i === 3) _lsfDrawPlot();
+}
+function _lsfSet(key, val) { _lsf[key] = val; _lsfDrawPlot(); }
+
+// ── Station 1 ──────────────────────────────────────────
+function _lsfSetTeil(t) {
+  _lsf.teil = t;
+  document.getElementById('lsfTeil0')?.classList.toggle('on', t === 'feld');
+  document.getElementById('lsfTeil1')?.classList.toggle('on', t === 'flaeche');
+  const a = document.getElementById('lsfSteuerFeld');
+  const b = document.getElementById('lsfSteuerFlaeche');
+  if (a) a.style.display = t === 'feld' ? 'block' : 'none';
+  if (b) b.style.display = t === 'flaeche' ? 'block' : 'none';
+  _lsf.pendel = false;
+  const pb = document.getElementById('lsfPendelBtn');
+  if (pb) pb.textContent = '🪀 Federpendel';
+  _lsfUpdate();
+}
+function _lsfSetH(v) {
+  _lsf.hZiel = Math.max(0.02, Math.min(0.16, +v / 100));
+  _lsf.pendel = false;
+  const el = document.getElementById('lsfHLbl');
+  if (el) el.textContent = _fpmNum(_lsf.hZiel * 100, 1) + ' cm';
+  _lsfUpdate();
+}
+function _lsfSetR(v) {
+  _lsf.rZiel = Math.max(0.015, Math.min(0.09, +v / 100));
+  const el = document.getElementById('lsfRLbl');
+  if (el) el.textContent = _fpmNum(_lsf.rZiel * 100, 1) + ' cm';
+  _lsfUpdate();
+}
+// Eine rasche Handbewegung – so wie es die Handreichung im Schuelerversuch vorsieht
+function _lsfStoss(richtung) {
+  _lsf.pendel = false;
+  _lsf.hZiel = richtung > 0 ? 0.16 : 0.025;
+  const sl = document.getElementById('lsfH'); if (sl) sl.value = String(_lsf.hZiel * 100);
+  const el = document.getElementById('lsfHLbl');
+  if (el) el.textContent = _fpmNum(_lsf.hZiel * 100, 1) + ' cm';
+}
+function _lsfZieh(richtung) {
+  _lsf.rZiel = richtung > 0 ? 0.09 : 0.015;
+  const sl = document.getElementById('lsfR'); if (sl) sl.value = String(_lsf.rZiel * 100);
+  const el = document.getElementById('lsfRLbl');
+  if (el) el.textContent = _fpmNum(_lsf.rZiel * 100, 1) + ' cm';
+}
+function _lsfPendel() {
+  _lsf.pendel = !_lsf.pendel;
+  if (_lsf.pendel) _lsf.pt = 0;
+  const b = document.getElementById('lsfPendelBtn');
+  if (b) b.textContent = _lsf.pendel ? '⏸ Pendel anhalten' : '🪀 Federpendel';
+}
+function _lsfUmpolen() { _lsf.umgepolt = !_lsf.umgepolt; _lsfUpdate(); }
+
+function _lsfUpdate() {
+  if (!_lsf) return;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  const s = _lsf;
+  const dh = s.vHand, dR = s.dR || 0;
+  const phi = _lsfFluss(s.h, s.rSchleife);
+  const phip = _lsfdFdh(s.h, s.rSchleife) * dh + _lsfdFdR(s.h, s.rSchleife) * dR;
+  const U = _lsfUGrund(s.h, s.rSchleife, dh, dR);
+  set('lsfPhiA', _fpmNum(phi * 1e6, 3));
+  set('lsfPhipA', _fpmNum(phip * 1e6, 2));
+  set('lsfUA', _fpmNum(U * 1e6, 1));
+  set('lsfZA', _fpmNum(s.zeiger, 2));
+  set('lsfHLbl', _fpmNum(s.hZiel * 100, 1) + ' cm');
+  set('lsfRLbl', _fpmNum(s.rZiel * 100, 1) + ' cm');
+
+  const b = document.getElementById('lsfBeob');
+  if (b) {
+    const bewegt = Math.abs(dh) > 1e-4 || Math.abs(dR) > 1e-4;
+    if (!bewegt) {
+      b.className = 'lsf-beob still';
+      b.innerHTML = '<b>Nichts bewegt sich – der Zeiger steht auf null.</b> '
+        + (s.teil === 'feld'
+          ? 'Und zwar unabhängig davon, wie nah der Magnet ist. Das Feld allein bewirkt nichts, '
+            + 'auch ein sehr starkes nicht. Nur seine <b>Änderung</b> zählt.'
+          : 'Auch eine große Schleife im Feld erzeugt für sich genommen keine Spannung. Nur die '
+            + '<b>Änderung</b> der wirksamen Fläche zählt.');
+    } else {
+      // Nicht annehmen, sondern an der tatsaechlichen Aenderungsrate ablesen
+      const rein = phip > 0;
+      b.className = 'lsf-beob ' + (U > 0 ? 'plus' : 'minus');
+      b.innerHTML = '<b>' + (s.teil === 'feld'
+        ? (dh < 0 ? 'Der Magnet nähert sich' : 'Der Magnet entfernt sich')
+        : (dR > 0 ? 'Die Fläche wird größer' : 'Die Fläche wird kleiner'))
+        + '.</b> Der Fluss ' + (rein ? 'nimmt zu' : 'nimmt ab')
+        + ', der Zeiger schlägt nach <b>' + (U > 0 ? 'rechts' : 'links') + '</b> aus. '
+        + 'Kehrt man die Bewegungsrichtung um, kehrt sich auch der Ausschlag um.'
+        + (s.teil === 'flaeche' && s.rSchleife > _lsfRMax(s.h)
+          ? '<div class="lsf-fein">Achtung, hier wird es fein: Die Schleife ist mit '
+            + _fpmNum(s.rSchleife * 100, 1) + ' cm bereits <b>größer</b> als der Radius '
+            + _fpmNum(_lsfRMax(s.h) * 100, 1) + ' cm, bei dem der Fluss am größten ist. '
+            + 'Vergrößert man sie noch weiter, nimmt der Fluss wieder <b>ab</b> – eine so große '
+            + 'Schleife fängt nämlich auch schon einen Teil des zurücklaufenden Feldes ein, das '
+            + 'in die Gegenrichtung zeigt. Der Ausschlag kehrt sich deshalb um. Für den '
+            + 'Grundversuch hält man die Schleife am besten kleiner als '
+            + _fpmNum(_lsfRMax(s.h) * 100, 1) + ' cm.</div>'
+          : '');
+    }
+  }
+
+  const r = document.getElementById('lsfGrundRechnung');
+  if (r) {
+    r.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">Fluss des Magneten durch die Schleife</span>
+        <span class="pho-rz-f">Φ = µ₀·m·R² / (2·(R²+h²)<sup>3/2</sup>)</span>
+        <span class="pho-rz-v">${_fpmNum(phi * 1e6, 3)} µWb</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">${s.teil === 'feld'
+        ? 'Änderung durch die Bewegung des Magneten' : 'Änderung durch die Flächenänderung'}</span>
+        <span class="pho-rz-f">Φ̇</span>
+        <span class="pho-rz-v">${_fpmNum(phip * 1e6, 2)} µWb/s</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Induktionsspannung</span>
+        <span class="pho-rz-f">U<sub>ind</sub> = −Φ̇</span>
+        <span class="pho-rz-v">${_fpmNum(U * 1e6, 1)} µV</span></div>
+      <div class="fpm-note">Die Spannung liegt im Bereich von Mikrovolt – ohne den
+        Messverstärker mit dem Faktor ${_LSF_VERST} würde das Drehspulinstrument nichts anzeigen.
+        Der Magnet ist hier als punktförmiger Dipol mit dem Moment
+        ${_fpmNum(_LSF_M_DIPOL, 1)} A·m² gerechnet.</div>`;
+  }
+
+  _lsfRenderK3();
+  _lsfRenderZerlegung();
+  _lsfRenderOszi();
+  _lsfRenderSchlitten();
+  _lsfRenderHist();
+}
+
+function _lsfRenderK3() {
+  const el = document.getElementById('lsfK3'); if (!el) return;
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du diesen Versuch jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Wir wollen zeigen, dass es genau <b>zwei</b> Wege gibt, eine Spannung zu induzieren – und
+        dass beide dasselbe gemeinsam haben.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Eine Leiterschleife aus Experimentierkabel auf einer Rastersteckplatte, darüber ein
+        Neodym-Magnet an einer Feder. Die Schleife führt über einen Messverstärker an ein
+        Drehspulinstrument.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Erst den Magneten bei fester Schleife bewegen, dann bei ruhendem Magneten die Schleife
+        vergrößern und verkleinern.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        Beide Male schlägt der Zeiger nur <b>während</b> der Änderung aus, und die Richtung des
+        Ausschlags kehrt sich um, wenn man die Änderung umkehrt. Steht alles still, zeigt das
+        Instrument null – auch bei starkem Feld und großer Fläche.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Der Fluss Φ = A·B kann sich nur ändern, wenn sich A oder B ändert. Deshalb gibt es genau
+        zwei Ursachen – und in beiden Fällen gilt <b>U = −n·Φ̇</b>.</div>
+    </div>`;
+}
+
+// ── Station 2 ──────────────────────────────────────────
+function _lsfSetZ(feld, v) {
+  const gr = { nWdg: [1, 500], flA: [0.001, 0.02], flAp: [-0.02, 0.02],
+               feB: [0, 0.005], feBp: [-0.005, 0.005] };
+  _lsf[feld] = Math.max(gr[feld][0], Math.min(gr[feld][1], +v));
+  _lsfRenderZerlegung();
+}
+function _lsfFall(nr) {
+  if (nr === 1) { _lsf.flAp = 0; _lsf.feBp = 0.002; }
+  else if (nr === 2) { _lsf.feBp = 0; _lsf.flAp = 0.008; }
+  else { _lsf.flAp = 0.008; _lsf.feBp = 0.002; }
+  ['flAp', 'feBp'].forEach(function (f) {
+    const sl = document.getElementById(f === 'flAp' ? 'lsfAp' : 'lsfBp');
+    if (sl) sl.value = String(_lsf[f]);
+  });
+  _lsfRenderZerlegung();
+}
+function _lsfRenderZerlegung() {
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  const s = _lsf;
+  set('lsfNLbl', String(Math.round(s.nWdg)));
+  set('lsfALbl', _fpmNum(s.flA * 1e4, 0) + ' cm²');
+  set('lsfApLbl', _fpmNum(s.flAp * 1e4, 0) + ' cm²/s');
+  set('lsfBLbl', _fpmNum(s.feB * 1000, 2) + ' mT');
+  set('lsfBpLbl', _fpmNum(s.feBp * 1000, 2) + ' mT/s');
+
+  const tA = _lsfTermFlaeche(s.nWdg, s.flAp, s.feB);
+  const tB = _lsfTermFeld(s.nWdg, s.flA, s.feBp);
+  const g = document.getElementById('lsfGesetz');
+  if (g) {
+    const nurA = Math.abs(s.feBp) < 1e-9, nurB = Math.abs(s.flAp) < 1e-9;
+    g.innerHTML = `<div class="git-sch-kopf">Das Induktionsgesetz und seine zwei Spezialfälle</div>
+      <div class="lsf-formel">U<sub>ind</sub> = −n · Φ̇ = −n · (A·B)˙ = −n · ( Ȧ·B + A·Ḃ )</div>
+      <div class="lsf-faelle">
+        <div class="lsf-fall${nurB && !nurA ? ' an' : ''}">
+          <span>1. Spezialfall</span>
+          <b>A konstant ⇒ Ȧ = 0</b>
+          <div>U<sub>ind</sub> = −n · A · Ḃ</div>
+          Durch eine zeitliche Veränderung der <b>Feldstärke</b> wird eine Spannung induziert.
+          Das ist der erste Versuchsteil: Der Magnet bewegt sich, die Schleife bleibt.
+        </div>
+        <div class="lsf-fall${nurA && !nurB ? ' an' : ''}">
+          <span>2. Spezialfall</span>
+          <b>B konstant ⇒ Ḃ = 0</b>
+          <div>U<sub>ind</sub> = −n · Ȧ · B</div>
+          Durch eine zeitliche Veränderung der <b>wirksamen Fläche</b> wird eine Spannung
+          induziert. Das ist der zweite Versuchsteil: Der Magnet ruht, die Schleife ändert sich.
+        </div>
+      </div>
+      <div class="fpm-note">Beide Fälle folgen aus der Produktregel. Ein Produkt ändert sich genau
+        dann, wenn sich einer seiner Faktoren ändert – deshalb gibt es <b>genau zwei</b> Ursachen
+        und keine dritte. Ändern sich beide gleichzeitig, addieren sich die Beiträge; sie können
+        sich dabei sogar gegenseitig aufheben.</div>`;
+  }
+  const r = document.getElementById('lsfZerlRechnung');
+  if (r) {
+    const ges = tA + tB;
+    r.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">Beitrag der Flächenänderung</span>
+        <span class="pho-rz-f">−n · Ȧ · B</span>
+        <span class="pho-rz-v">${_fpmNum(tA * 1e6, 2)} µV</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">Beitrag der Feldänderung</span>
+        <span class="pho-rz-f">−n · A · Ḃ</span>
+        <span class="pho-rz-v">${_fpmNum(tB * 1e6, 2)} µV</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Induktionsspannung insgesamt</span>
+        <span class="pho-rz-f">U<sub>ind</sub></span>
+        <span class="pho-rz-v">${_fpmNum(ges * 1e6, 2)} µV</span></div>
+      ${Math.abs(ges) < 1e-9 && (Math.abs(tA) > 1e-9)
+        ? '<div class="fpm-note">Beide Beiträge sind gerade entgegengesetzt gleich groß und heben '
+          + 'sich auf. Der Fluss bleibt konstant, obwohl sich sowohl Fläche als auch Feld ändern – '
+          + 'und deshalb wird <b>nichts</b> induziert. Ein schönes Beispiel dafür, dass es wirklich '
+          + 'nur auf Φ̇ ankommt.</div>' : ''}`;
+  }
+}
+
+// ── Station 3: die Abituraufgabe ───────────────────────
+function _lsfSetForm(f) {
+  _lsf.form = f;
+  ['dreieck', 'sinus', 'rechteck'].forEach((k, i) =>
+    document.getElementById('lsfForm' + i)?.classList.toggle('on', k === f));
+  _lsf.geprueft = null;
+  _lsfRenderOszi();
+}
+function _lsfSetLese(feld, v) { _lsf[feld] = v; _lsfRenderOszi(); }
+function _lsfLeseAus() {
+  const dt = parseFloat(String(_lsf.leseT).replace(',', '.'));
+  const db = parseFloat(String(_lsf.leseB).replace(',', '.'));
+  const r = {};
+  if (isFinite(dt) && dt > 0) r.T = dt * _LSF_TDIV;
+  if (isFinite(db) && db > 0) r.B0 = db * _LSF_BDIV;
+  if (r.T !== undefined && r.B0 !== undefined) {
+    // Die Steigung der fallenden Dreiecksflanke
+    r.Bp = -2 * r.B0 / (r.T / 2);
+    r.U = -_LSF_N_IND * _LSF_A0 * r.Bp;
+    r.USinus = _LSF_N_IND * _LSF_A0 * r.B0 * 2 * Math.PI / r.T;
+  }
+  return r;
+}
+function _lsfPruefen() {
+  const r = _lsfLeseAus();
+  _lsf.geprueft = {
+    gT: r.T !== undefined ? Math.abs(r.T - _LSF_T) / _LSF_T * 100 : null,
+    gB: r.B0 !== undefined ? Math.abs(r.B0 - _LSF_B0) / _LSF_B0 * 100 : null
+  };
+  _lsfRenderOszi();
+}
+function _lsfRenderOszi() {
+  const st = document.getElementById('lsfOsziStatus');
+  if (st) {
+    st.innerHTML = `<span class="osz-st-k">Zeit</span><b>${_fpmNum(_LSF_TDIV, 1)} s/Kästchen</b>
+      <span class="osz-st-k">CH1</span><b style="color:#facc15">${_fpmNum(_LSF_BDIV * 1000, 1)} mT/Kästchen</b>
+      <span class="osz-st-k">CH2</span><b style="color:#38bdf8">${_fpmNum(_LSF_UDIV, 1)} V/Kästchen · ×${_LSF_VERST}</b>`;
+  }
+  const el = document.getElementById('lsfOsziRechnung');
+  if (el) {
+    const r = _lsfLeseAus();
+    if (r.T === undefined && r.B0 === undefined) {
+      el.innerHTML = '<div class="fpm-note">Lies am Oszillogramm ab, über wie viele Kästchen sich '
+        + 'eine <b>volle Periode</b> erstreckt und wie viele Kästchen der <b>Scheitelwert</b> von '
+        + 'B beträgt. Daraus lässt sich die Induktionsspannung vorhersagen – und mit der '
+        + 'gemessenen Kurve auf Kanal 2 vergleichen.</div>';
+    } else {
+      let h = '';
+      if (r.T !== undefined) h += `<div class="pho-rz"><span class="pho-rz-t">Periodendauer</span>
+        <span class="pho-rz-f">T = n · ${_fpmNum(_LSF_TDIV, 1)} s/Kästchen</span>
+        <span class="pho-rz-v">${_fpmNum(r.T, 2)} s</span></div>`;
+      if (r.B0 !== undefined) h += `<div class="pho-rz"><span class="pho-rz-t">Scheitelwert des Feldes</span>
+        <span class="pho-rz-f">B₀ = n · ${_fpmNum(_LSF_BDIV * 1000, 1)} mT/Kästchen</span>
+        <span class="pho-rz-v">${_ebrExp(r.B0, 2)} T</span></div>`;
+      if (r.Bp !== undefined) {
+        if (_lsf.form === 'dreieck') {
+          h += `<div class="pho-rz"><span class="pho-rz-t">Steigung der fallenden Flanke</span>
+            <span class="pho-rz-f">Ḃ = −2·B₀ / (T/2)</span>
+            <span class="pho-rz-v">${_fpmNum(r.Bp, 5)} T/s</span></div>
+            <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">daraus die Induktionsspannung</span>
+            <span class="pho-rz-f">U = −n · A₀ · Ḃ</span>
+            <span class="pho-rz-v">${_ebrExp(r.U, 3)} V</span></div>`;
+        } else if (_lsf.form === 'sinus') {
+          h += `<div class="pho-rz"><span class="pho-rz-t">Ansatz</span>
+            <span class="pho-rz-f">B(t) = B₀ · sin(2π/T · t)</span><span class="pho-rz-v">—</span></div>
+            <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Scheitelwert der Induktionsspannung</span>
+            <span class="pho-rz-f">U₀ = n·A₀·B₀·2π/T</span>
+            <span class="pho-rz-v">${_ebrExp(r.USinus, 3)} V</span></div>`;
+        }
+      }
+      h += `<div class="fpm-note">Mit n = ${_LSF_N_IND} Windungen und
+        A₀ = ${_fpmNum(_LSF_A0, 4)} m². ${_lsf.form === 'sinus'
+        ? 'Aus B(t) = B₀·sin(2π/T·t) folgt Ḃ(t) = B₀·(2π/T)·cos(2π/T·t) und damit '
+          + 'U(t) = −n·A₀·B₀·(2π/T)·cos(2π/T·t).'
+        : _lsf.form === 'rechteck'
+        ? 'Beim Rechteck springt B in praktisch null Zeit – die Änderungsrate wäre unendlich. '
+          + 'Real entstehen sehr kurze, sehr hohe Spannungsspitzen. Für eine quantitative '
+          + 'Auswertung taugt diese Kurvenform deshalb nicht.'
+        : 'Beim Dreieck ist Ḃ abschnittsweise konstant – und damit auch die Induktionsspannung. '
+          + 'Genau deshalb wählt die Handreichung diese Kurvenform für den ersten Versuchsteil.'}</div>`;
+      el.innerHTML = h;
+    }
+  }
+
+  const pr = document.getElementById('lsfOsziPruef');
+  if (pr) {
+    const g = _lsf.geprueft;
+    if (!g) { pr.className = 'lsk-zustand'; pr.innerHTML = 'Trage deine Ablesung ein und prüfe sie.'; }
+    else {
+      const gut = (g.gT === null || g.gT < 6) && (g.gB === null || g.gB < 6) && (g.gT !== null || g.gB !== null);
+      pr.className = 'lsk-zustand ' + (gut ? 'ok' : 'no');
+      pr.innerHTML = (gut ? '<b>Gut abgelesen.</b> ' : '<b>Da stimmt etwas nicht.</b> ')
+        + 'Sollwerte: T = ' + _fpmNum(_LSF_T, 1) + ' s (das sind '
+        + _fpmNum(_LSF_T / _LSF_TDIV, 1) + ' Kästchen) und B₀ = ' + _ebrExp(_LSF_B0, 1)
+        + ' T (' + _fpmNum(_LSF_B0 / _LSF_BDIV, 1) + ' Kästchen).'
+        + (g.gT !== null ? ' Deine Periodendauer weicht um ' + _fpmNum(g.gT, 1) + ' % ab.' : '')
+        + (g.gB !== null ? ' Dein Scheitelwert um ' + _fpmNum(g.gB, 1) + ' %.' : '');
+    }
+  }
+
+  // Der Vergleich Rechnung / Messung, wie ihn die Abituraufgabe verlangt
+  const v = document.getElementById('lsfVergleich');
+  if (v) {
+    if (_lsf.form === 'dreieck') {
+      const Ber = -_LSF_N_IND * _LSF_A0 * _lsfFlankeSteigung();
+      const Gem = 0.5 * 4.2 * _LSF_UDIV / _LSF_VERST;
+      v.innerHTML = `<div class="git-sch-kopf">Rechnung und Messung vergleichen</div>
+        <div class="lsf-verg-z"><span>berechnet</span><b>${_ebrExp(Ber, 3)} V</b>
+          <i>U = −n·A₀·Ḃ mit Ḃ = ${_fpmNum(_lsfFlankeSteigung(), 5)} T/s</i></div>
+        <div class="lsf-verg-z"><span>am Oszilloskop gemessen</span><b>${_ebrExp(Gem, 3)} V</b>
+          <i>½ · 4,2 Kästchen · ${_fpmNum(_LSF_UDIV, 1)} V/Kästchen ÷ ${_LSF_VERST}</i></div>
+        <div class="lsf-verg-z ok"><span>Unterschied</span>
+          <b>${_fpmNum(Math.abs(Ber - Gem) / Gem * 100, 1)} %</b>
+          <i>im Rahmen der Messgenauigkeit</i></div>
+        <div class="fpm-note">Ein Hinweis zur Sorgfalt: Die Handreichung gibt den berechneten Wert
+          mit 8,5 · 10⁻⁵ V an. Rechnet man exakt nach, kommt
+          ${_ebrExp(Ber, 3)} V heraus – dort ist beim Runden etwas verrutscht. Die
+          Übereinstimmung mit der Messung ist also sogar noch etwas <b>besser</b>, als das Handbuch
+          selbst angibt.</div>`;
+    } else if (_lsf.form === 'sinus') {
+      const U0 = _lsfUSinusScheitel();
+      v.innerHTML = `<div class="git-sch-kopf">Werte zu bestimmten Zeitpunkten</div>
+        <div class="lsf-verg-z"><span>t = 0 s</span>
+          <b>${_ebrExp(-U0 * Math.cos(0), 3)} V</b><i>cos(0) = 1</i></div>
+        <div class="lsf-verg-z"><span>t = 1,5 s</span>
+          <b>${_ebrExp(-U0 * Math.cos(2 * Math.PI / _LSF_T * 1.5), 3)} V</b>
+          <i>cos(2π·1,5/2,4) = ${_fpmNum(Math.cos(2 * Math.PI / _LSF_T * 1.5), 4)}</i></div>
+        <div class="fpm-note">Genau diese beiden Zeitpunkte fragt die Abituraufgabe ab. Beachte:
+          Beim Sinus ist die Induktionsspannung ein <b>Kosinus</b> – sie ist am größten, wenn B
+          gerade null ist und am schnellsten wächst, und null in den Scheitelpunkten von B.</div>`;
+    } else {
+      v.innerHTML = `<div class="git-sch-kopf">Warum das Rechteck hier nicht taugt</div>
+        <div class="fpm-note">Ein Rechtecksignal springt in praktisch null Zeit. Ḃ wäre dabei
+          unendlich groß, real entstehen sehr kurze und sehr hohe Spannungsspitzen, die sich weder
+          sauber ablesen noch sinnvoll berechnen lassen. Für den quantitativen Teil wählt man
+          deshalb Dreieck oder Sinus. Zum Zeigen des <i>Prinzips</i> ist das Rechteck aber
+          durchaus eindrucksvoll – man sieht sofort, dass nur die Sprünge etwas bewirken und die
+          konstanten Abschnitte gar nichts.</div>`;
+    }
+  }
+}
+
+// ── Station 4: Induktionsschlitten ─────────────────────
+function _lsfSetS(feld, v) {
+  const gr = { sv: [0.05, 0.8], sB: [0.02, 0.25], sb: [0.01, 0.08] };
+  _lsf[feld] = Math.max(gr[feld][0], Math.min(gr[feld][1], +v));
+  _lsfRenderSchlitten();
+}
+function _lsfSchlittenStart() {
+  _lsf.sLaeuft = true; _lsf.sx = -_LSF_SCHLEIFE_L - 0.05; _lsf.spurS = [];
+  const b = document.getElementById('lsfSchlittenBtn');
+  if (b) b.textContent = '▶ noch einmal';
+  _lsfRenderSchlitten();
+}
+function _lsfTakeS() {
+  _lsf.rows.push({ id: _lsf.nextId++, v: _lsf.sv, B: _lsf.sB, b: _lsf.sb,
+                   U: _lsfSchlittenUMax(_lsf.sb, _lsf.sv, _lsf.sB) });
+  _lsfRenderTable(); _lsfDrawPlot();
+}
+function _lsfDelRowS(id) { _lsf.rows = _lsf.rows.filter(r => r.id !== id); _lsfRenderTable(); _lsfDrawPlot(); }
+function _lsfClearS() {
+  if (_lsf.rows.length && !confirm('Alle ' + _lsf.rows.length + ' Messwerte löschen?')) return;
+  _lsf.rows = []; _lsfRenderTable(); _lsfDrawPlot();
+}
+function _lsfDemoS() {
+  const nimm = (v, B, b) => _lsf.rows.push({ id: _lsf.nextId++, v, B, b, U: _lsfSchlittenUMax(b, v, B) });
+  [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7].forEach(v => nimm(v, 0.10, 0.04));
+  [0.03, 0.06, 0.10, 0.15, 0.20, 0.25].forEach(B => nimm(0.30, B, 0.04));
+  [0.01, 0.02, 0.03, 0.05, 0.07, 0.08].forEach(b => nimm(0.30, 0.10, b));
+  _lsfRenderTable(); _lsfDrawPlot();
+}
+function _lsfRenderTable() {
+  const tb = document.getElementById('lsfTbody'); if (!tb) return;
+  const leer = document.getElementById('lsfEmpty');
+  if (leer) leer.style.display = _lsf.rows.length ? 'none' : 'block';
+  tb.innerHTML = _lsf.rows.map((r, i) =>
+    `<tr><td>${i + 1}</td><td>${_fpmNum(r.v, 2)}</td><td>${_fpmNum(r.B * 1000, 0)}</td>
+       <td>${_fpmNum(r.b * 100, 1)}</td><td><b>${_fpmNum(r.U * 1000, 3)}</b></td>
+       <td class="fpm-del" onclick="_lsfDelRowS(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _lsfRenderSchlitten() {
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  set('lsfSvLbl', _fpmNum(_lsf.sv, 2) + ' m/s');
+  set('lsfSBLbl', _fpmNum(_lsf.sB * 1000, 0) + ' mT');
+  set('lsfSbLbl', _fpmNum(_lsf.sb * 100, 1) + ' cm');
+  const el = document.getElementById('lsfSchlittenRechnung'); if (!el) return;
+  const U = _lsfSchlittenUMax(_lsf.sb, _lsf.sv, _lsf.sB);
+  const tEin = _LSF_SCHLEIFE_L / _lsf.sv;
+  const tDrin = Math.max(0, (_LSF_FELDLAENGE - _LSF_SCHLEIFE_L) / _lsf.sv);
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Änderung der wirksamen Fläche beim Einfahren</span>
+      <span class="pho-rz-f">Ȧ = b · v</span>
+      <span class="pho-rz-v">${_fpmNum(_lsf.sb * _lsf.sv * 1e4, 1)} cm²/s</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Induktionsspannung</span>
+      <span class="pho-rz-f">|U| = B · b · v</span>
+      <span class="pho-rz-v">${_fpmNum(U * 1000, 3)} mV</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Dauer des Einfahrens</span>
+      <span class="pho-rz-f">ℓ / v</span>
+      <span class="pho-rz-v">${_fpmNum(tEin, 3)} s</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Dauer ganz im Feld – hier U = 0</span>
+      <span class="pho-rz-f">(L − ℓ) / v</span>
+      <span class="pho-rz-v">${_fpmNum(tDrin, 3)} s</span></div>
+    <div class="fpm-note">Die Kurve hat drei Abschnitte: Beim <b>Einfahren</b> wächst die wirksame
+      Fläche, es wird induziert. Ist die Schleife <b>ganz im Feld</b>, ändert sich nichts mehr –
+      obwohl sie sich bewegt und obwohl ein starkes Feld da ist, ist U = 0. Beim <b>Ausfahren</b>
+      schrumpft die Fläche wieder, die Spannung hat das umgekehrte Vorzeichen. Der mittlere
+      Abschnitt ist der lehrreichste: Bewegung allein genügt nicht.</div>`;
+}
+
+const _LSF_PRESETS = [
+  { xl: 'Geschwindigkeit v in m/s', yl: 'Induktionsspannung U in mV',
+    x: r => r.v, y: r => r.U * 1000,
+    fest: r => Math.abs(r.B - _lsf.sB) < 1e-9 && Math.abs(r.b - _lsf.sb) < 1e-9,
+    k: () => _lsf.sB * _lsf.sb * 1000, ktxt: 'B · b',
+    note: 'Nur Messwerte mit demselben Feld und derselben Breite gehören auf diese Gerade.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'U = (B · b) · v',
+    deutung: 'Je schneller die Schleife durch das Feld gezogen wird, desto schneller ändert sich die wirksame Fläche – und desto größer ist die Spannung. Am Induktionsschlitten stellt man die Geschwindigkeit über den Experimentiermotor ein.' },
+  { xl: 'Magnetfeld B in mT', yl: 'Induktionsspannung U in mV',
+    x: r => r.B * 1000, y: r => r.U * 1000,
+    fest: r => Math.abs(r.v - _lsf.sv) < 1e-9 && Math.abs(r.b - _lsf.sb) < 1e-9,
+    k: () => _lsf.sv * _lsf.sb, ktxt: 'b · v',
+    note: 'Nur Messwerte mit derselben Geschwindigkeit und Breite gehören auf diese Gerade.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'U = (b · v) · B',
+    deutung: 'Am Induktionsschlitten lässt sich die Feldstärke über die Anzahl der eingesetzten Permanentmagnete verändern. Die Polschuhe zwischen den beiden Eisenplatten sorgen dafür, dass das Feld dabei hinreichend homogen bleibt.' },
+  { xl: 'Breite der Schleife b in cm', yl: 'Induktionsspannung U in mV',
+    x: r => r.b * 100, y: r => r.U * 1000,
+    fest: r => Math.abs(r.v - _lsf.sv) < 1e-9 && Math.abs(r.B - _lsf.sB) < 1e-9,
+    k: () => _lsf.sB * _lsf.sv * 10, ktxt: 'B · v',
+    note: 'Nur Messwerte mit derselben Geschwindigkeit und demselben Feld gehören auf diese Gerade.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'U = (B · v) · b',
+    deutung: 'Auf dem Schlitten sitzen Leiterschleifen unterschiedlicher Breite – genau dafür. Wichtig ist die Breite quer zur Fahrtrichtung, denn sie bestimmt zusammen mit v, wie schnell die wirksame Fläche wächst: Ȧ = b · v.' }
+];
+function _lsfSetPreset(i) {
+  _lsf.preset = i;
+  for (let k = 0; k < 3; k++) document.getElementById('lsfTab' + k)?.classList.toggle('on', k === i);
+  if (_lsf.fnAuto) _lsfTheorieFn(); else _lsfRenderTheorie(false);
+  _lsfDrawPlot();
+}
+function _lsfTheorieFn() {
+  const term = _dspZahl(_LSF_PRESETS[_lsf.preset].k()) + '*x';
+  const inp = document.getElementById('lsfFn'); if (inp) inp.value = term;
+  _lsfSetFn(term); _lsf.fnAuto = true; _lsfRenderTheorie(true);
+}
+function _lsfClearFn() {
+  const inp = document.getElementById('lsfFn'); if (inp) inp.value = '';
+  _lsfSetFn(''); _lsfRenderTheorie(false);
+}
+function _lsfRenderTheorie(eingesetzt) {
+  const el = document.getElementById('lsfTheo'); if (!el) return;
+  const P = _LSF_PRESETS[_lsf.preset];
+  el.innerHTML = `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+    <div class="fpm-theo-typ">${P.typ}</div>
+    <div class="fpm-theo-form">${P.form}</div>
+    <div class="fpm-theo-par">gesucht: die Steigung ${P.ktxt}</div>
+    ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${_dspZahl(P.k())}*x</div>` : ''}
+    <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+function _lsfSetFn(str) {
+  _lsf.fnAuto = false;
+  const err = document.getElementById('lsfFnErr');
+  const v = (str || '').trim();
+  if (!v) { _lsf.fn = null; if (err) err.textContent = ''; _lsfDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _lsf.fn = f; if (err) err.textContent = '';
+  } catch (e) { _lsf.fn = null; if (err) err.textContent = e.message; }
+  _lsfDrawPlot();
+}
+function _lsfDrawPlot() {
+  const cv = document.getElementById('lsfPlot');
+  if (!cv || !_lsf) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = _LSF_PRESETS[_lsf.preset];
+  const padL = 56, padR = 12, padT = 12, padB = 38;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const alle = _lsf.rows.map(r => ({ x: P.x(r), y: P.y(r), passt: P.fest(r) }))
+    .filter(p => isFinite(p.x) && isFinite(p.y));
+  const pts = alle.filter(p => p.passt);
+  const xmax = Math.max(1e-9, alle.length ? Math.max(...alle.map(p => p.x)) * 1.12 : 1);
+  const ymax = Math.max(1e-9, alle.length ? Math.max(...alle.map(p => p.y)) * 1.15 : 1);
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+
+  const xt = _fpmTicks(xmax, 5);
+  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  xt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 13);
+  });
+  const yt = _fpmTicks(ymax, 4);
+  yt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(P.xl, x1, y0 + 27);
+  ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText(P.yl, 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+
+  if (!alle.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2);
+    ctx.textAlign = 'left';
+    const fo = document.getElementById('lsfFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + P.note + '</div>';
+    return;
+  }
+  if (_lsf.fn) {
+    ctx.strokeStyle = '#db2777'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    let beg = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _lsf.fn((px - x0) / (x1 - x0) * xmax); } catch (e) { yv = NaN; }
+      if (!isFinite(yv)) { beg = false; continue; }
+      const py = Y(yv);
+      if (py < y1 - 30 || py > y0 + 30) { beg = false; continue; }
+      beg ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), beg = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  let fit = null;
+  if (pts.length >= 2) {
+    fit = _fpmFitOrigin(pts);
+    if (fit) {
+      ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.7;
+      ctx.beginPath(); ctx.moveTo(X(0), Y(0)); ctx.lineTo(X(xmax), Y(fit.k * xmax)); ctx.stroke();
+    }
+  }
+  alle.forEach(p => {
+    ctx.fillStyle = p.passt ? '#0369a1' : '#e2e8f0';
+    ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), p.passt ? 4 : 3, 0, 2 * Math.PI); ctx.fill();
+    if (p.passt) { ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke(); }
+  });
+
+  const fo = document.getElementById('lsfFitBox');
+  if (fo) {
+    const soll = P.k();
+    if (!fit) {
+      fo.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte nötig, bei denen die '
+        + 'übrigen Größen <b>gleich</b> sind.<br>' + P.note + '</div>';
+    } else {
+      const abw = Math.abs(fit.k - soll) / Math.abs(soll) * 100;
+      const cls = abw < 1 ? 'ok' : abw < 5 ? 'mid' : 'no';
+      fo.innerHTML = `<div class="fpm-fitline">
+        <span class="fpm-fitmeta">${pts.length} passende Messwerte${
+          alle.length > pts.length ? ', ' + (alle.length - pts.length) + ' andere blass' : ''}</span>
+        <span class="fpm-fiteq">y = ${_fpmNum(fit.k, 5)}·x</span>
+        <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 5)}</span>
+        <span class="fpm-fiteq" style="color:#075985">Steigung = ${P.ktxt} = ${_fpmNum(soll, 5)}</span>
+        ${_lsf.reveal ? `<span class="fpm-badge ${cls}">Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+      </div><div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">${P.note}</div>`;
+    }
+  }
+}
+
+// ── Station 5: Faraday ─────────────────────────────────
+function _lsfFSchalter() {
+  _lsf.fSchalter = !_lsf.fSchalter;
+  _lsf.fT = 0;
+  const b = document.getElementById('lsfFSchalterBtn');
+  if (b) b.textContent = _lsf.fSchalter ? '⏻ Strom ausschalten' : '⏻ Strom einschalten';
+  _lsfRenderHist();
+}
+function _lsfRenderHist() {
+  const b = document.getElementById('lsfFBeob');
+  if (b) {
+    const z = Math.abs(_lsf.fZeiger);
+    if (z > 0.3) {
+      b.className = 'lsf-beob ' + (_lsf.fZeiger > 0 ? 'plus' : 'minus');
+      b.innerHTML = '<b>Der Zeiger schlägt aus – aber nur einen Augenblick lang.</b> '
+        + (_lsf.fSchatterTxt || (_lsf.fSchalter
+          ? 'Beim <b>Einschalten</b> wächst das Feld im Eisenring, der Fluss durch die zweite Spule nimmt zu.'
+          : 'Beim <b>Ausschalten</b> bricht das Feld zusammen, der Fluss nimmt ab – der Ausschlag geht in die andere Richtung.'));
+    } else if (_lsf.fSchalter) {
+      b.className = 'lsf-beob still';
+      b.innerHTML = '<b>Der Strom fließt, der Zeiger steht auf null.</b> Genau das hat Faraday '
+        + 'zunächst enttäuscht: Ein kräftiges, aber <i>konstantes</i> Feld bewirkt in der zweiten '
+        + 'Spule gar nichts. Schalte den Strom wieder aus.';
+    } else {
+      b.className = 'lsf-beob still';
+      b.innerHTML = 'Kein Strom, kein Feld, kein Ausschlag. Schalte ein und achte genau auf den '
+        + 'Zeiger – der Ausschlag dauert nur den Bruchteil einer Sekunde.';
+    }
+  }
+  const h = document.getElementById('lsfHist');
+  if (h) {
+    h.innerHTML = `<div class="git-sch-kopf">Die Entdeckung vom 29. August 1831</div>
+      <div class="lsf-hist-t">
+        <b>Michael Faraday</b> wickelte zwei voneinander getrennte Drahtspulen auf einen
+        Eisenring. Die eine verband er mit einer Batterie, die andere mit einem Galvanometer.
+        Seine Erwartung: Ein Strom in der ersten Spule müsse auch in der zweiten einen Strom
+        hervorrufen. Das Ergebnis war zunächst eine Enttäuschung – solange der Strom floss,
+        rührte sich der Zeiger nicht.
+      </div>
+      <div class="lsf-hist-t" style="margin-top:6px">
+        Der Zeiger schlug nur im <b>Augenblick des Einschaltens</b> aus – und beim Ausschalten
+        noch einmal, in die <b>andere Richtung</b>. Was wie eine Fehlanzeige aussah, war die
+        Entdeckung: Nicht das Feld erzeugt eine Spannung, sondern <b>seine Änderung</b>.
+      </div>
+      <div class="lsf-hist-t" style="margin-top:6px">
+        Bemerkenswert ist, wie Faraday gearbeitet hat: In seinen gesamten Untersuchungen zur
+        Induktion hat er <b>keine einzige Formel</b> hergeleitet oder aufgeschrieben. Er dachte in
+        Bildern – die Vorstellung von <b>Feldlinien</b> geht auf ihn zurück. Die mathematische
+        Fassung lieferte erst James Clerk Maxwell rund dreißig Jahre später.
+      </div>
+      <div class="lsf-hist-t" style="margin-top:6px">
+        Die Tragweite ist schwer zu überschätzen: Ohne diese Entdeckung gäbe es keine Generatoren
+        und keine Transformatoren – und damit keine elektrische Energieversorgung. Faradays
+        Ringkern war zugleich der erste <b>Transformator</b> der Geschichte, auch wenn er ihn nicht
+        so nannte.
+      </div>
+      <div class="lsf-hist-frage">
+        <b>Zum Weiterdenken.</b> Faraday suchte nach einem Dauerstrom und fand einen Stromstoß.
+        Wie viele Entdeckungen mögen daran gescheitert sein, dass jemand nur nach dem gesucht hat,
+        was er erwartete? Der Kernlehrplan sieht hier ausdrücklich eine <b>Recherche zu
+        historischen Vorstellungen und Experimenten</b> vor – Faradays Tagebücher sind dafür eine
+        ergiebige Quelle, er hat sie über Jahrzehnte lückenlos geführt.
+      </div>`;
+  }
+}
+
+// ── Zeichnungen ────────────────────────────────────────
+function _lsfRenderGrund(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f1f5f9'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2, tischY = H - 54, SK = 900;
+
+  // Rastersteckplatte mit weissem Papier
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(40, tischY, W - 80, 30);
+  ctx.fillStyle = '#fff'; ctx.fillRect(48, tischY + 3, W - 96, 24);
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  for (let i = 0; i < 12; i++) {
+    ctx.beginPath(); ctx.arc(60 + i * 30, tischY + 15, 2, 0, 2 * Math.PI); ctx.stroke();
+  }
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Rastersteckplatte mit weißem Papier', 44, H - 8);
+
+  // Die Leiterschleife in perspektivischer Aufsicht
+  const rpx = _lsf.rSchleife * SK;
+  ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.ellipse(cx, tischY + 15, rpx, rpx * 0.28, 0, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#0369a1'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Leiterschleife  r = ' + _fpmNum(_lsf.rSchleife * 100, 1) + ' cm', cx, tischY - 6);
+
+  // Der Magnet
+  const my = tischY + 15 - _lsf.h * SK;
+  ctx.fillStyle = _lsf.umgepolt ? '#2563eb' : '#dc2626';
+  ctx.fillRect(cx - 13, my - 16, 26, 16);
+  ctx.fillStyle = _lsf.umgepolt ? '#dc2626' : '#2563eb';
+  ctx.fillRect(cx - 13, my, 26, 16);
+  ctx.fillStyle = '#fff'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_lsf.umgepolt ? 'S' : 'N', cx, my - 4);
+  ctx.fillText(_lsf.umgepolt ? 'N' : 'S', cx, my + 12);
+  // Feder oder Kordel
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  for (let i = 0; i <= 16; i++) {
+    const y = 10 + i * (my - 26) / 16;
+    i === 0 ? ctx.moveTo(cx, y) : ctx.lineTo(cx + (i % 2 ? 5 : -5), y);
+  }
+  ctx.stroke();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(cx - 40, 10); ctx.lineTo(cx + 40, 10); ctx.stroke();
+
+  // Hoehenmass
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath();
+  ctx.moveTo(cx + 40, my + 16); ctx.lineTo(W - 30, my + 16);
+  ctx.moveTo(cx + rpx, tischY + 15); ctx.lineTo(W - 30, tischY + 15);
+  ctx.stroke(); ctx.setLineDash([]);
+  ctx.strokeStyle = '#64748b';
+  ctx.beginPath(); ctx.moveTo(W - 34, my + 16); ctx.lineTo(W - 34, tischY + 15); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('h = ' + _fpmNum(_lsf.h * 100, 1) + ' cm', W - 38, (my + tischY) / 2);
+
+  // Feldlinien andeuten
+  ctx.strokeStyle = 'rgba(220,38,38,0.30)'; ctx.lineWidth = 1;
+  for (let i = 1; i <= 3; i++) {
+    ctx.beginPath();
+    ctx.ellipse(cx, my + 8, i * 18, i * 14, 0, 0.2, Math.PI - 0.2);
+    ctx.stroke();
+  }
+
+  // Bewegungspfeil
+  const dh = _lsf.vHand;
+  if (Math.abs(dh) > 1e-4) {
+    const len = Math.max(-46, Math.min(46, -dh * 130));
+    ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.moveTo(cx - 34, my); ctx.lineTo(cx - 34, my - len); ctx.stroke();
+    ctx.fillStyle = '#16a34a';
+    const sg = Math.sign(len);
+    ctx.beginPath();
+    ctx.moveTo(cx - 34, my - len - sg * 8);
+    ctx.lineTo(cx - 39, my - len); ctx.lineTo(cx - 29, my - len);
+    ctx.closePath(); ctx.fill();
+  }
+  ctx.textAlign = 'left';
+}
+
+function _lsfRenderZeigerCv(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  // Messverstaerker
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.fillRect(16, 44, 96, 40); ctx.strokeRect(16, 44, 96, 40);
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Messverstärker', 64, 62);
+  ctx.font = '700 11px sans-serif';
+  ctx.fillText('× ' + _LSF_VERST, 64, 76);
+  ctx.strokeStyle = '#64748b';
+  ctx.beginPath(); ctx.moveTo(112, 64); ctx.lineTo(150, 64); ctx.stroke();
+
+  // Drehspulinstrument
+  const mx = 290, my = 116, R = 76;
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.arc(mx, my, R, Math.PI, 2 * Math.PI); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  for (let i = -5; i <= 5; i++) {
+    const a = Math.PI + (i / 5 + 1) / 2 * Math.PI;
+    ctx.beginPath();
+    ctx.moveTo(mx + Math.cos(a) * (R - 4), my + Math.sin(a) * (R - 4));
+    ctx.lineTo(mx + Math.cos(a) * (R - (i % 5 === 0 ? 14 : 9)), my + Math.sin(a) * (R - (i % 5 === 0 ? 14 : 9)));
+    ctx.stroke();
+  }
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('−', mx - R + 12, my - 8);
+  ctx.fillText('0', mx, my - R + 14);
+  ctx.fillText('+', mx + R - 12, my - 8);
+
+  // Zeiger
+  const z = Math.max(-1, Math.min(1, _lsf.zeiger / 5));
+  const a = Math.PI + (z + 1) / 2 * Math.PI;
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(mx, my);
+  ctx.lineTo(mx + Math.cos(a) * (R - 12), my + Math.sin(a) * (R - 12));
+  ctx.stroke();
+  ctx.fillStyle = '#334155';
+  ctx.beginPath(); ctx.arc(mx, my, 4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Drehspulinstrument', mx, my + 18);
+  ctx.font = '700 12px sans-serif';
+  ctx.fillStyle = Math.abs(_lsf.zeiger) < 0.05 ? '#94a3b8' : '#dc2626';
+  ctx.fillText(_fpmNum(_lsf.zeiger, 2), mx, my + 34);
+  ctx.textAlign = 'left';
+}
+
+function _lsfRenderZerlegungCv(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const s = _lsf;
+  const tA = _lsfTermFlaeche(s.nWdg, s.flAp, s.feB) * 1e6;
+  const tB = _lsfTermFeld(s.nWdg, s.flA, s.feBp) * 1e6;
+  const ges = tA + tB;
+  const m = Math.max(1e-9, Math.abs(tA), Math.abs(tB), Math.abs(ges)) * 1.2;
+  const x0 = 90, x1 = W - 20, mitte = (x0 + x1) / 2;
+  const skal = (x1 - x0) / 2 / m;
+
+  const zeile = (y, wert, farbe, name, formel) => {
+    ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(name, x0 - 8, y + 4);
+    ctx.font = '9px sans-serif'; ctx.fillStyle = '#94a3b8';
+    ctx.fillText(formel, x0 - 8, y + 15);
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke();
+    ctx.fillStyle = farbe;
+    const w = wert * skal;
+    ctx.fillRect(Math.min(mitte, mitte + w), y - 9, Math.abs(w), 18);
+    ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif';
+    ctx.textAlign = w >= 0 ? 'left' : 'right';
+    ctx.fillText(_fpmNum(wert, 2) + ' µV', mitte + w + (w >= 0 ? 5 : -5), y + 4);
+  };
+  zeile(46, tA, '#f59e0b', 'Fläche', '−n·Ȧ·B');
+  zeile(110, tB, '#2563eb', 'Feld', '−n·A·Ḃ');
+  zeile(180, ges, '#16a34a', 'Summe', 'U_ind');
+
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(mitte, 22); ctx.lineTo(mitte, H - 14); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('0', mitte, H - 4);
+  ctx.textAlign = 'left';
+}
+
+function _lsfRenderOsziCv(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0a0f0a'; ctx.fillRect(0, 0, W, H);
+  const gw = _LSF_XDIV * 40, gh = _LSF_YDIV * 34;
+  const gx = (W - gw) / 2, gy = 12;
+  ctx.fillStyle = '#0d1a12'; ctx.fillRect(gx, gy, gw, gh);
+  ctx.strokeStyle = '#1c3a29'; ctx.lineWidth = 1;
+  for (let i = 0; i <= _LSF_XDIV; i++) {
+    ctx.beginPath(); ctx.moveTo(gx + i * 40, gy); ctx.lineTo(gx + i * 40, gy + gh); ctx.stroke();
+  }
+  for (let j = 0; j <= _LSF_YDIV; j++) {
+    ctx.beginPath(); ctx.moveTo(gx, gy + j * 34); ctx.lineTo(gx + gw, gy + j * 34); ctx.stroke();
+  }
+  const my = gy + gh / 2;
+  ctx.strokeStyle = '#2d5c42'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(gx, my); ctx.lineTo(gx + gw, my);
+  ctx.moveTo(gx + gw / 2, gy); ctx.lineTo(gx + gw / 2, gy + gh); ctx.stroke();
+
+  const spanne = _LSF_TDIV * _LSF_XDIV;
+  // Kanal 1: B(t)
+  ctx.strokeStyle = '#facc15'; ctx.lineWidth = 1.8;
+  ctx.setLineDash([5, 3]);
+  ctx.beginPath();
+  for (let px = 0; px <= gw; px++) {
+    const t = px / gw * spanne;
+    const y = my - _lsfBKaestchen(_lsfBt(t)) * 34;
+    px ? ctx.lineTo(gx + px, y) : ctx.moveTo(gx + px, y);
+  }
+  ctx.stroke(); ctx.setLineDash([]);
+  // Kanal 2: U_ind(t)
+  ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.8;
+  ctx.beginPath();
+  let beg = false;
+  for (let px = 0; px <= gw; px++) {
+    const t = px / gw * spanne;
+    const y = my - _lsfUKaestchen(_lsfUind(t)) * 34;
+    if (y < gy || y > gy + gh) { beg = false; continue; }
+    beg ? ctx.lineTo(gx + px, y) : (ctx.moveTo(gx + px, y), beg = true);
+  }
+  ctx.stroke();
+  if (_lsf.form === 'rechteck') {
+    ctx.fillStyle = '#f87171'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Beim Rechteck springt B – die Spitzen sind zu kurz und zu hoch zum Ablesen.',
+      gx + gw / 2, my + 28);
+    ctx.textAlign = 'left';
+  }
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillStyle = '#facc15'; ctx.fillText('▬ CH1  B(t)', gx + 4, gy + 12);
+  ctx.fillStyle = '#38bdf8'; ctx.fillText('▬ CH2  U_ind(t)', gx + 84, gy + 12);
+  ctx.fillStyle = '#4b7a63'; ctx.textAlign = 'center';
+  ctx.fillText(_fpmNum(_LSF_TDIV, 1) + ' s je Kästchen', gx + gw / 2, gy + gh + 14);
+  ctx.textAlign = 'left';
+}
+
+function _lsfRenderSchlittenCv(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const my = 100, SK = (W - 80) / (_LSF_FELDLAENGE + 0.26);
+  const fx0 = 40 + 0.13 * SK, fx1 = fx0 + _LSF_FELDLAENGE * SK;
+
+  // Feldbereich zwischen den Polschuhen
+  ctx.fillStyle = 'rgba(56,189,248,0.22)';
+  ctx.fillRect(fx0, my - 42, fx1 - fx0, 84);
+  ctx.fillStyle = '#64748b';
+  ctx.fillRect(fx0, my - 54, fx1 - fx0, 12);
+  ctx.fillRect(fx0, my + 42, fx1 - fx0, 12);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Permanentmagnete zwischen Eisenplatten, Polschuhe für ein homogenes Feld',
+    (fx0 + fx1) / 2, my - 60);
+  // Feldsymbole
+  ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1;
+  for (let x = fx0 + 14; x < fx1; x += 26) {
+    for (let y = my - 28; y <= my + 28; y += 28) {
+      ctx.beginPath();
+      ctx.moveTo(x - 4, y - 4); ctx.lineTo(x + 4, y + 4);
+      ctx.moveTo(x + 4, y - 4); ctx.lineTo(x - 4, y + 4); ctx.stroke();
+    }
+  }
+
+  // Die Leiterschleife auf dem Schlitten
+  const vorn = 40 + (0.13 + _lsf.sx) * SK;
+  const hinten = vorn - _LSF_SCHLEIFE_L * SK;
+  const halb = Math.max(8, _lsf.sb * SK * 0.8);
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 3;
+  ctx.strokeRect(hinten, my - halb, Math.max(2, vorn - hinten), 2 * halb);
+  ctx.fillStyle = '#dc2626'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('b = ' + _fpmNum(_lsf.sb * 100, 1) + ' cm quer', (vorn + hinten) / 2, my + halb + 12);
+  // Schnur zum Motor
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(vorn, my); ctx.lineTo(W - 16, my); ctx.stroke();
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(W - 34, my - 12, 24, 24);
+  ctx.strokeStyle = '#94a3b8'; ctx.strokeRect(W - 34, my - 12, 24, 24);
+  ctx.fillStyle = '#475569'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('M', W - 22, my + 3);
+
+  const U = _lsfSchlittenU(_lsf.sx, _lsf.sb, _lsf.sv, _lsf.sB);
+  ctx.fillStyle = Math.abs(U) > 1e-9 ? '#dc2626' : '#94a3b8';
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(Math.abs(U) > 1e-9
+    ? 'U = ' + _fpmNum(U * 1000, 3) + ' mV – die wirksame Fläche ändert sich'
+    : 'U = 0 – die wirksame Fläche ändert sich nicht', 12, H - 10);
+}
+
+function _lsfRenderSchlittenU(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const x0 = 46, x1 = W - 12, yo = 16, yu = H - 26;
+  const mitte = (yo + yu) / 2;
+  const gesamt = (_LSF_FELDLAENGE + 2 * _LSF_SCHLEIFE_L + 0.10) / _lsf.sv;
+  const umax = Math.max(1e-9, _lsfSchlittenUMax(_lsf.sb, _lsf.sv, _lsf.sB));
+
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x0, mitte); ctx.lineTo(x1, mitte); ctx.stroke();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(x0, yo); ctx.lineTo(x0, yu); ctx.stroke();
+
+  // Der theoretische Verlauf
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  for (let px = 0; px <= x1 - x0; px++) {
+    const t = px / (x1 - x0) * gesamt;
+    const x = -_LSF_SCHLEIFE_L - 0.05 + _lsf.sv * t;
+    const u = _lsfSchlittenU(x, _lsf.sb, _lsf.sv, _lsf.sB);
+    const y = mitte - u / umax * (mitte - yo - 4);
+    px ? ctx.lineTo(x0 + px, y) : ctx.moveTo(x0 + px, y);
+  }
+  ctx.stroke();
+  // Die tatsaechlich gefahrene Spur
+  if (_lsf.spurS.length > 1) {
+    ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 2;
+    ctx.beginPath();
+    _lsf.spurS.forEach((p, i) => {
+      const x = x0 + Math.min(1, p.t / gesamt) * (x1 - x0);
+      const y = mitte - p.u / umax * (mitte - yo - 4);
+      i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+    });
+    ctx.stroke();
+  }
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('+' + _fpmNum(umax * 1000, 2) + ' mV', x0 - 4, yo + 12);
+  ctx.fillText('0', x0 - 4, mitte + 3);
+  ctx.fillText('−' + _fpmNum(umax * 1000, 2), x0 - 4, yu - 4);
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#64748b';
+  ctx.fillText('einfahren', x0 + (x1 - x0) * 0.13, yu + 14);
+  ctx.fillText('ganz im Feld – U = 0', (x0 + x1) / 2, yu + 14);
+  ctx.fillText('ausfahren', x0 + (x1 - x0) * 0.87, yu + 14);
+  ctx.textAlign = 'left';
+}
+
+function _lsfRenderFaraday(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#faf8f3'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2, cy = 116, R = 66;
+
+  // Eisenring
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 16;
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Eisenring', cx, cy + 4);
+
+  // Zwei Wicklungen
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = 2.6;
+  for (let i = -3; i <= 3; i++) {
+    const a = Math.PI + i * 0.16;
+    ctx.beginPath();
+    ctx.arc(cx + Math.cos(a) * R, cy + Math.sin(a) * R, 12, 0, 2 * Math.PI);
+    ctx.stroke();
+  }
+  ctx.strokeStyle = '#0369a1';
+  for (let i = -3; i <= 3; i++) {
+    const a = i * 0.16;
+    ctx.beginPath();
+    ctx.arc(cx + Math.cos(a) * R, cy + Math.sin(a) * R, 12, 0, 2 * Math.PI);
+    ctx.stroke();
+  }
+  ctx.fillStyle = '#b45309'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Spule 1 · Batterie', cx - R - 18, cy - 26);
+  ctx.fillStyle = '#0369a1'; ctx.textAlign = 'left';
+  ctx.fillText('Spule 2 · Galvanometer', cx + R + 18, cy - 26);
+
+  // Batterie und Schalter
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(cx - R - 14, cy); ctx.lineTo(24, cy); ctx.lineTo(24, H - 26);
+  ctx.lineTo(90, H - 26); ctx.stroke();
+  ctx.fillStyle = _lsf.fSchalter ? '#16a34a' : '#cbd5e1';
+  ctx.fillRect(56, H - 34, 26, 16);
+  ctx.fillStyle = '#fff'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_lsf.fSchalter ? 'EIN' : 'AUS', 69, H - 23);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Batterie und Schalter', 92, H - 22);
+
+  // Galvanometer
+  const gx = W - 66, gy = H - 48;
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.arc(gx, gy, 30, Math.PI, 2 * Math.PI); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  const z = Math.max(-1, Math.min(1, _lsf.fZeiger / 3.2));
+  const a = Math.PI + (z + 1) / 2 * Math.PI;
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(gx, gy);
+  ctx.lineTo(gx + Math.cos(a) * 24, gy + Math.sin(a) * 24); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Galvanometer', gx, gy + 14);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(cx + R + 14, cy); ctx.lineTo(W - 24, cy); ctx.lineTo(W - 24, gy - 32); ctx.stroke();
+
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Faraday, 29. August 1831', cx, 16);
+  ctx.textAlign = 'left';
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _lsfTakt(dt) {
+  if (!_lsf) return;
+  const s = _lsf;
+  const d = Math.min(0.05, dt);
+  s.t += d;
+
+  // Station 1: der Magnet folgt dem Regler bzw. dem Pendel
+  const hAlt = s.h, rAlt = s.rSchleife;
+  if (s.pendel) {
+    s.pt += d;
+    s.h = 0.075 + 0.045 * Math.cos(2 * Math.PI * s.pt / 1.1);
+  } else {
+    s.h += (s.hZiel - s.h) * Math.min(1, d * 7);
+  }
+  s.rSchleife += (s.rZiel - s.rSchleife) * Math.min(1, d * 7);
+  s.vHand = d > 0 ? (s.h - hAlt) / d : 0;
+  s.dR = d > 0 ? (s.rSchleife - rAlt) / d : 0;
+  // Der Zeiger eines Drehspulinstruments folgt traege
+  const U = _lsfUGrund(s.h, s.rSchleife, s.vHand, s.dR);
+  const ziel = Math.max(-5, Math.min(5, U * 1e6 / 14));
+  s.zeiger += (ziel - s.zeiger) * Math.min(1, d * 9);
+
+  // Station 4: der Schlitten faehrt
+  if (s.sLaeuft) {
+    s.sx += s.sv * d;
+    s.spurS.push({ t: s.spurS.length ? s.spurS[s.spurS.length - 1].t + d : 0,
+                   u: _lsfSchlittenU(s.sx, s.sb, s.sv, s.sB) });
+    if (s.sx > _LSF_FELDLAENGE + _LSF_SCHLEIFE_L + 0.05) s.sLaeuft = false;
+  }
+
+  // Station 5: Faradays Galvanometer
+  s.fT += d;
+  const ausschlag = _lsfFaradayAusschlag(s.fT, s.fSchalter, 0);
+  s.fZeiger += (ausschlag - s.fZeiger) * Math.min(1, d * 12);
+}
+function _lsfRender() {
+  if (!_lsf) return;
+  const st = _lsf.station;
+  if (st === 0) {
+    const cg = document.getElementById('lsfGrund');
+    if (cg) _lsfRenderGrund(cg.getContext('2d'), cg);
+    const cz = document.getElementById('lsfZeiger');
+    if (cz) _lsfRenderZeigerCv(cz.getContext('2d'), cz);
+    _lsfUpdate();
+  } else if (st === 1) {
+    const cv = document.getElementById('lsfZerlegung');
+    if (cv) _lsfRenderZerlegungCv(cv.getContext('2d'), cv);
+  } else if (st === 2) {
+    const co = document.getElementById('lsfOszi');
+    if (co) _lsfRenderOsziCv(co.getContext('2d'), co);
+  } else if (st === 3) {
+    const cs = document.getElementById('lsfSchlitten');
+    if (cs) _lsfRenderSchlittenCv(cs.getContext('2d'), cs);
+    const cu = document.getElementById('lsfSchlittenU');
+    if (cu) _lsfRenderSchlittenU(cu.getContext('2d'), cu);
+  } else if (st === 4) {
+    const cf = document.getElementById('lsfFaraday');
+    if (cf) _lsfRenderFaraday(cf.getContext('2d'), cf);
+    _lsfRenderHist();
+  }
+}
+
+// ── Zusätzliche Styles für die Leiterschleife ──────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .lsf-beob { font-size: .78rem; border-radius: 9px; padding: 9px 11px; margin: 8px 0;
+      line-height: 1.55; border: 1px solid #e2e8f0; background: #f8fafc; color: #64748b; }
+    .lsf-beob.still { background: #f8fafc; border-color: #e2e8f0; color: #64748b; }
+    .lsf-beob.plus { background: #f0fdf4; border-color: #bbf7d0; color: #15803d; }
+    .lsf-beob.minus { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
+    .lsf-fein { margin-top: 7px; padding-top: 7px; border-top: 1px solid rgba(0,0,0,.08);
+      font-size: .74rem; }
+    .lsf-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-top: 12px; }
+    .lsf-gesetz { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; }
+    .lsf-formel { font-size: .88rem; color: #075985; background: #f0f9ff; border: 1px solid #bae6fd;
+      border-radius: 8px; padding: 10px 12px; margin: 7px 0; text-align: center;
+      font-variant-numeric: tabular-nums; }
+    .lsf-faelle { display: flex; gap: 8px; flex-wrap: wrap; }
+    .lsf-fall { flex: 1 1 190px; background: #fff; border: 2px solid #e2e8f0; border-radius: 8px;
+      padding: 9px 11px; font-size: .76rem; color: #475569; line-height: 1.55; }
+    .lsf-fall.an { border-color: #0369a1; background: #f0f9ff; }
+    .lsf-fall span { display: block; font-size: .6rem; text-transform: uppercase;
+      letter-spacing: .05em; font-weight: 800; color: #94a3b8; margin-bottom: 3px; }
+    .lsf-fall b { display: block; color: #334155; margin-bottom: 3px; }
+    .lsf-fall div { font-size: .84rem; color: #075985; font-weight: 700; margin: 4px 0 6px;
+      font-variant-numeric: tabular-nums; }
+    .lsf-vergleich { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; margin-top: 10px; }
+    .lsf-verg-z { display: flex; align-items: baseline; gap: 8px; font-size: .77rem;
+      color: #475569; padding: 4px 0; border-bottom: 1px solid #eef2f7; }
+    .lsf-verg-z:last-of-type { border-bottom: none; }
+    .lsf-verg-z span { flex: 0 0 130px; font-size: .68rem; text-transform: uppercase;
+      letter-spacing: .04em; font-weight: 800; color: #94a3b8; }
+    .lsf-verg-z b { color: #075985; font-variant-numeric: tabular-nums; }
+    .lsf-verg-z i { color: #94a3b8; font-size: .7rem; font-style: normal; margin-left: auto; }
+    .lsf-verg-z.ok b { color: #15803d; }
+    .lsf-hist { background: #faf8f3; border: 1px solid #e7e2d6; border-radius: 9px;
+      padding: 11px 13px; }
+    .lsf-hist-t { font-size: .79rem; color: #4b4438; line-height: 1.7; }
+    .lsf-hist-frage { font-size: .77rem; color: #6b5b3e; background: #fdf9ee;
+      border: 1px solid #e7dcc0; border-radius: 8px; padding: 9px 11px; margin-top: 9px;
+      line-height: 1.6; }
+    .lsf-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
