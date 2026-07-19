@@ -2210,6 +2210,20 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('gmzTakt', 'gmzKeinChart');
     _pSim.start(dt => _gmzTakt(dt), () => _gmzRender(), []);
   },
+
+  // Versuch 20 des KLP (Q2.1): charakteristische Roentgenstrahlung.
+  // Roentgenspektrum, Entstehung in der Anode, Bragg-Drehkristallmethode,
+  // Grenzwellenlaenge/Planck-h und das Moseley-Gesetz.
+  'roentgen-charakteristisch': modal => {
+    _rtgInit();
+    modal.innerHTML = _rtgHTML();
+    const erkl = document.getElementById('rtgErkl');
+    if (erkl) erkl.innerHTML = _rtgErklHTML();
+    _rtgSetStation(0);
+    _rtgUpdate();
+    _pSim = new PhysicsSimEngine('rtgTakt', 'rtgKeinChart');
+    _pSim.start(dt => _rtgTakt(dt), () => _rtgRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -26018,6 +26032,824 @@ function _gmzRender() {
       border: 1px solid #ddd6fe; border-radius: 8px; padding: 8px 10px; margin: 6px 0;
       font-variant-numeric: tabular-nums; }
     .gmz-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// CHARAKTERISTISCHE RÖNTGENSTRAHLUNG – Versuch 20 (angehaengt)
+// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// CHARAKTERISTISCHE RÖNTGENSTRAHLUNG
+// Versuch 20 der NRW-Handreichung (Q2.1). Baut auf dem Geiger-Müller-Zählrohr
+// (V19) und den Linienspektren (V16) auf.
+// Kernkompetenzen des KLP: die charakteristischen Röntgenspektren fuer Modelle
+// diskreter Energiezustaende deuten (E2,E5,E6,E7); die Energie emittierter
+// Photonen mit den Energieniveaus erklaeren (UF1,E6); Wirkungen ionisierender
+// Strahlung beschreiben und bewerten (UF1, B3, B4).
+// ═══════════════════════════════════════════════════════
+
+const _RTG_HC = 1239.84;        // h·c in eV·nm
+const _RTG_FR = 3.29e15;        // Rydbergfrequenz f_R = R·c in Hz
+const _RTG_H = 6.62607015e-34;  // Planck-Konstante in Js
+const _RTG_E = 1.602176634e-19; // Elementarladung in C
+const _RTG_C = 2.99792458e8;    // Lichtgeschwindigkeit in m/s
+const _RTG_D_NACL = 282;        // Netzebenenabstand NaCl in pm
+const _RTG_D_LIF = 201;         // Netzebenenabstand LiF in pm
+
+// Anodenmaterialien (Z = Kernladungszahl, EK = K-Kante in keV, die
+// Mindest-Anregungsenergie, um ein K-Elektron zu entfernen).
+const _RTG_ANODEN = [
+  { id: 'mo', n: 'Molybdän', sym: 'Mo', Z: 42, EK: 20.0, farbe: '#7c3aed' },
+  { id: 'cu', n: 'Kupfer', sym: 'Cu', Z: 29, EK: 8.98, farbe: '#ea580c' }
+];
+
+// Elemente fuer das Moseley-Diagramm
+const _RTG_ELEMENTE = [
+  { n: 'Calcium', sym: 'Ca', Z: 20 }, { n: 'Eisen', sym: 'Fe', Z: 26 },
+  { n: 'Kupfer', sym: 'Cu', Z: 29 }, { n: 'Molybdän', sym: 'Mo', Z: 42 },
+  { n: 'Silber', sym: 'Ag', Z: 47 }, { n: 'Wolfram', sym: 'W', Z: 74 }
+];
+
+let _rtg = null;
+
+function _rtgInit() {
+  _rtg = {
+    station: 0,
+    // Station 1
+    anode: 0, UA: 30, t: 0,
+    // Station 3
+    d: _RTG_D_NACL, theta: 7.4, k: 1,
+    // Station 4
+    UA4: 30,
+    // Station 5
+    elem: 2, linie: 'ka'
+  };
+}
+
+// ── Zahlformat ──────────────────────────────────────────
+function _rtgZahl(v) {
+  if (!isFinite(v) || v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const dez = Math.max(0, Math.min(20, 5 - ex));
+  const s = v.toFixed(dez);
+  return s.indexOf('.') >= 0 ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
+}
+
+// ── Physik ──────────────────────────────────────────────
+// Grenzwellenlaenge (Duane-Hunt): e·U = h·f_max, λ_min = h·c/(e·U)
+function _rtgLambdaMin(U_V) { return _RTG_HC / U_V * 1000; }   // pm (U in V)
+// und der Rueckweg: aus λ_min die Planck-Konstante bestimmen
+function _rtgHausLambda(lam_pm, U_V) {
+  const fMax = _RTG_C / (lam_pm * 1e-12);
+  return _RTG_E * U_V / fMax;
+}
+function _rtgFrequenz(lam_pm) { return _RTG_C / (lam_pm * 1e-12); }
+
+// Moseley: f = f_R·(Z−a)²·(1/m² − 1/n²)
+function _rtgMoseley(Z, a, m, n) {
+  return _RTG_FR * (Z - a) * (Z - a) * (1 / (m * m) - 1 / (n * n));
+}
+// Kα (L→K, a=1) und Kβ (M→K, a=1,8)
+function _rtgFKa(Z) { return _rtgMoseley(Z, 1, 1, 2); }
+function _rtgFKb(Z) { return _rtgMoseley(Z, 1.8, 1, 3); }
+function _rtgLambdaVonF(f) { return _RTG_C / f * 1e12; }   // pm
+function _rtgEkeV(f) { return _RTG_H * f / _RTG_E / 1000; }
+
+// Bragg: k·λ = 2d·sinϑ
+function _rtgBragg(d_pm, theta_deg, k) {
+  return 2 * d_pm * Math.sin(theta_deg * Math.PI / 180) / k;
+}
+
+// Spektrum: kontinuierliche Bremsstrahlung (Kramers) + charakteristische Linien
+// Intensitaet bei Wellenlaenge λ (pm), Anode A, Spannung U (kV).
+function _rtgIntensitaet(lam, A, U_kV) {
+  const lamMin = _rtgLambdaMin(U_kV * 1000);
+  let I = 0;
+  // Bremsstrahlung nach Kramers: I ∝ (λ/λ_min − 1)/λ² fuer λ > λ_min
+  if (lam > lamMin) I = (lam / lamMin - 1) / (lam * lam) * 3e6;
+  // charakteristische Linien, nur wenn U (in keV) > K-Kante
+  if (U_kV > A.EK) {
+    const kraft = (U_kV - A.EK) / A.EK;   // Ueberschussfaktor
+    const lka = _rtgLambdaVonF(_rtgFKa(A.Z));
+    const lkb = _rtgLambdaVonF(_rtgFKb(A.Z));
+    if (lka > lamMin) I += 1.0 * kraft * Math.exp(-Math.pow((lam - lka) / 1.6, 2));
+    if (lkb > lamMin) I += 0.45 * kraft * Math.exp(-Math.pow((lam - lkb) / 1.6, 2));
+  }
+  return I;
+}
+
+// ── Oberflaeche ─────────────────────────────────────────
+function _rtgHTML() {
+  const stationen = ['1 · Das Röntgenspektrum', '2 · Entstehung in der Anode',
+                     '3 · Bragg & Drehkristall', '4 · Grenzwellenlänge & Planck-h',
+                     '5 · Das Moseley-Gesetz']
+    .map((s, i) => `<button class="fpm-tab${i === _rtg.station ? ' on' : ''}" id="rtgSt${i}" onclick="_rtgSetStation(${i})">${s}</button>`).join('');
+
+  const anodewahl = _RTG_ANODEN.map((c, i) =>
+    `<button class="osz-segb" id="rtgAn${i}" onclick="_rtgSetAnode(${i})">${c.n}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim rtg-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🩻 Charakteristische Röntgenstrahlung</h3>
+    <canvas id="rtgTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="rtgS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="rtgSpektrum" width="440" height="290" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Intensität über der Wellenlänge – Bremsstrahlung und Linien</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Anodenmaterial</span><span class="osz-seg">${anodewahl}</span></div>
+            <div class="osz-zeile"><span>Beschleunigung U<sub>A</sub></span>
+              <input type="range" id="rtgUA" min="10" max="40" step="1" value="30"
+                oninput="_rtgSetUA(this.value)"><b id="rtgUALbl">30 kV</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="rtg-beob" id="rtgBeob"></div>
+        </div>
+      </div>
+      <div class="rtg-k3" id="rtgK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="rtgS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="rtgSchalen" width="440" height="280" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">K-Elektron herausgeschlagen, Lücke wird von oben gefüllt → Photon</div>
+        </div>
+        <div>
+          <div class="rtg-anode-t" id="rtgAnodeText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="rtgS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="rtgBragg" width="440" height="250" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Reflexion an den Netzebenen (Gangunterschied 2d·sinϑ)</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Kristall</span>
+              <span class="osz-seg">
+                <button class="osz-segb" id="rtgKn" onclick="_rtgSetD(${_RTG_D_NACL})">NaCl (d=282 pm)</button>
+                <button class="osz-segb" id="rtgKl" onclick="_rtgSetD(${_RTG_D_LIF})">LiF (d=201 pm)</button>
+              </span></div>
+            <div class="osz-zeile"><span>Glanzwinkel ϑ</span>
+              <input type="range" id="rtgTh" min="2" max="30" step="0.1" value="7.4"
+                oninput="_rtgSetTheta(this.value)"><b id="rtgThLbl">7,4°</b></div>
+            <div class="osz-zeile"><span>Ordnung k</span>
+              <span class="osz-seg">
+                <button class="osz-segb" id="rtgK1" onclick="_rtgSetK(1)">1</button>
+                <button class="osz-segb" id="rtgK2" onclick="_rtgSetK(2)">2</button></span></div>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="rtgBraggRechnung"></div>
+          <div class="rtg-bragg-t" id="rtgBraggText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="rtgS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="rtgGrenz" width="440" height="270" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Beschleunigungsspannung über der Grenzfrequenz</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Beschleunigung U<sub>A</sub></span>
+              <input type="range" id="rtgUA4" min="15" max="40" step="1" value="30"
+                oninput="_rtgSetUA4(this.value)"><b id="rtgUA4Lbl">30 kV</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="rtgGrenzRechnung"></div>
+          <div class="rtg-grenz-t" id="rtgGrenzText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="rtgS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="rtgMoseley" width="440" height="270" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Moseley-Gerade: √f über der Ordnungszahl Z</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Element</span><span class="osz-seg" id="rtgElemWahl"></span></div>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="rtgMoseleyRechnung"></div>
+          <div class="rtg-mos-t" id="rtgMoseleyText"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="rtgErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>k·λ = 2d·sinϑ</b> &nbsp;|&nbsp; <b>λ<sub>min</sub> = h·c/(e·U<sub>A</sub>)</b>
+      &nbsp;|&nbsp; <b>ΔE = h·f</b> &nbsp;|&nbsp; <b>f<sub>Kα</sub> = ¾·f<sub>R</sub>·(Z−1)²</b>
+    </p>
+  </div>`;
+}
+
+function _rtgErklHTML() {
+  return `<div class="dsp-erkl-kopf">Woraus das Röntgenspektrum besteht</div>
+    <div class="dsp-erkl-text">
+      In einer Röntgenröhre werden Elektronen mit einigen 10 kV auf eine Metallanode (z. B.
+      Molybdän oder Kupfer) geschossen. Ihr Spektrum, aufgenommen mit der Drehkristallmethode und
+      einem Geiger-Müller-Zählrohr, zeigt drei Auffälligkeiten: einen breiten
+      <b>kontinuierlichen</b> Untergrund, darüber zwei scharfe <b>Maxima</b>, und – ganz wichtig –
+      eine <b>kleinste Wellenlänge</b>, unterhalb derer nichts mehr kommt.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die drei Energiewege in der Anode</div>
+    <div class="dsp-erkl-text">
+      Die auftreffenden Elektronen geben ihre Energie auf dreierlei Art ab. <b>Erstens</b> als
+      Schwingungsenergie an die Gitteratome – die Anode wird heiß und muss gekühlt werden.
+      <b>Zweitens</b> wird ein Teil von den Atomen aufgenommen und als Strahlung <b>diskreter</b>
+      Wellenlängen wieder abgegeben: die <b>charakteristische</b> Röntgenstrahlung, typisch für das
+      Anodenmaterial (die zwei scharfen Linien). <b>Drittens</b> entsteht beim Abbremsen im Feld
+      der Atomkerne die kontinuierliche <b>Bremsstrahlung</b> – der Untergrund.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Wie die charakteristischen Linien entstehen</div>
+    <div class="dsp-erkl-text">
+      Ist die Elektronenenergie hoch genug, kann ein Elektron aus der innersten <b>K-Schale</b>
+      herausgeschlagen werden. Die Lücke füllt ein Elektron aus einer höheren Schale (L, M, …) und
+      sendet dabei ein Röntgenquant der Energie <b>ΔE = E<sub>n</sub> − E<sub>m</sub> = h·f</b> aus.
+      Springt es von L nach K, heißt die Linie <b>Kα</b>, von M nach K <b>Kβ</b>. Weil die
+      Übergänge auf sehr kernnahe Schalen erfolgen, sind die Energien – und damit die Frequenzen –
+      viel größer als bei den optischen Spektren. Wie beim Wasserstoff ordnet man die Linien nach
+      der Zielschale zu <b>Serien</b> (K-, L-, M-Serie).
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Bragg: so wird gemessen</div>
+    <div class="dsp-erkl-text">
+      Die Wellenlänge misst man über die <b>Bragg-Reflexion</b> an einem Einkristall. Die
+      Netzebenen wirken wie halbdurchlässige Spiegel; nur wenn der Gangunterschied 2d·sinϑ ein
+      ganzzahliges Vielfaches von λ ist, verstärken sich die Wellen: <b>k·λ = 2d·sinϑ</b>. Weil die
+      Röhre feststeht, dreht man Kristall und Zählrohr gemeinsam (Drehkristallmethode). Aus dem
+      Glanzwinkel jedes Maximums folgt so seine Wellenlänge. Mit einem Zirkonfilter liefert eine
+      Molybdänanode nahezu einheitliches Röntgenlicht von λ = 72 pm, eine Kupferanode mit
+      Nickelfilter von 154 pm.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die Grenzwellenlänge und das Plancksche h</div>
+    <div class="dsp-erkl-text">
+      Die kleinste Wellenlänge verstand man erst mit der <b>Lichtquantenhypothese</b>: Ein Elektron
+      kann höchstens seine ganze kinetische Energie e·U<sub>A</sub> in einem <b>einzigen</b>
+      Bremsvorgang in ein Photon umwandeln. Dann ist e·U<sub>A</sub> = h·f<sub>max</sub>, und mit
+      λ·f = c folgt <b>λ<sub>min</sub> = h·c/(e·U<sub>A</sub>)</b>. Je höher die Spannung, desto
+      kleiner λ<sub>min</sub>. Umgekehrt lässt sich daraus das <b>Plancksche Wirkungsquantum</b>
+      bestimmen – trägt man U<sub>A</sub> über der Grenzfrequenz auf, ist die Steigung h/e.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Moseley und das Periodensystem</div>
+    <div class="dsp-erkl-text">
+      Henry Moseley maß um 1913 die charakteristischen Linien von rund 40 Elementen und fand einen
+      verblüffend einfachen Zusammenhang: Die Frequenz wächst mit dem <b>Quadrat der
+      Ordnungszahl</b>, <b>f<sub>Kα</sub> = ¾·f<sub>R</sub>·(Z−1)²</b>. Das (Z−1) statt Z kommt von
+      der <b>Abschirmung</b> durch das zweite K-Elektron. Trägt man √f über Z auf, ergibt sich eine
+      Gerade. Moseley zeigte damit, dass das Ordnungsprinzip des Periodensystems die
+      <b>Kernladungszahl</b> ist, nicht die Atommasse. Er füllte Lücken, sagte noch unbekannte
+      Elemente voraus (Hafnium, Z = 72, 1923 gefunden) und bewies, dass es von Wasserstoff bis Uran
+      genau 92 Elemente gibt.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Röntgenstrahlung ist ionisierend und für lebendes Gewebe
+      schädlich. Schulröntgengeräte sind vollständig abgeschirmte Vollschutzgeräte; ihr Betrieb ist
+      nur durch die Lehrkraft und nach den geltenden Vorschriften zulässig.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _rtgSetStation(i) {
+  _rtg.station = Math.max(0, Math.min(4, i));
+  for (let k = 0; k < 5; k++) {
+    document.getElementById('rtgSt' + k)?.classList.toggle('on', k === _rtg.station);
+    const d = document.getElementById('rtgS' + k);
+    if (d) d.style.display = k === _rtg.station ? 'block' : 'none';
+  }
+  _rtgUpdate();
+}
+function _rtgSetAnode(i) { _rtg.anode = Math.max(0, Math.min(1, i)); _rtgUpdate(); }
+function _rtgSetUA(v) {
+  _rtg.UA = Math.max(10, Math.min(40, +v));
+  const el = document.getElementById('rtgUALbl'); if (el) el.textContent = Math.round(_rtg.UA) + ' kV';
+  _rtgUpdate();
+}
+function _rtgSetD(d) { _rtg.d = d; _rtgRenderBragg(); }
+function _rtgSetTheta(v) {
+  _rtg.theta = Math.max(2, Math.min(30, +v));
+  const el = document.getElementById('rtgThLbl'); if (el) el.textContent = _fpmNum(_rtg.theta, 1) + '°';
+  _rtgRenderBragg();
+}
+function _rtgSetK(k) { _rtg.k = k; _rtgRenderBragg(); }
+function _rtgSetUA4(v) {
+  _rtg.UA4 = Math.max(15, Math.min(40, +v));
+  const el = document.getElementById('rtgUA4Lbl'); if (el) el.textContent = Math.round(_rtg.UA4) + ' kV';
+  _rtgRenderGrenz();
+}
+function _rtgSetElem(i) { _rtg.elem = i; _rtgRenderMoseley(); }
+
+function _rtgUpdate() {
+  if (!_rtg) return;
+  const A = _RTG_ANODEN[_rtg.anode];
+  _RTG_ANODEN.forEach((c, i) => document.getElementById('rtgAn' + i)?.classList.toggle('on', i === _rtg.anode));
+
+  const b = document.getElementById('rtgBeob');
+  if (b) {
+    const lamMin = _rtgLambdaMin(_rtg.UA * 1000);
+    const zeigt = _rtg.UA > A.EK;
+    b.innerHTML = `<div class="git-sch-kopf">Was das Spektrum zeigt</div>
+      <div class="rtg-beob-z"><span>①</span>Ein breiter <b>kontinuierlicher</b> Untergrund –
+        die Bremsstrahlung.</div>
+      <div class="rtg-beob-z"><span>②</span>${zeigt
+        ? 'Zwei scharfe <b>Maxima</b> (Kα und Kβ) – die charakteristische Strahlung des '
+          + A.n + '.'
+        : 'Noch <b>keine</b> charakteristischen Linien: Bei ' + _fpmNum(_rtg.UA, 0) + ' kV reicht die '
+          + 'Energie nicht, um ein K-Elektron des ' + A.n + ' (K-Kante ' + _fpmNum(A.EK, 1)
+          + ' keV) herauszuschlagen.'}</div>
+      <div class="rtg-beob-z"><span>③</span>Eine <b>kleinste Wellenlänge</b> λ<sub>min</sub> =
+        <b>${_fpmNum(lamMin, 1)} pm</b>, unterhalb derer nichts mehr kommt.</div>
+      <div class="rtg-mess-box">
+        <div class="rtg-mess-z"><span>Anode</span><b>${A.n} (Z = ${A.Z})</b></div>
+        <div class="rtg-mess-z"><span>Kα-Linie</span><b>${_fpmNum(_rtgLambdaVonF(_rtgFKa(A.Z)), 0)} pm
+          (${_fpmNum(_rtgEkeV(_rtgFKa(A.Z)), 1)} keV)</b></div>
+        <div class="rtg-mess-z"><span>Kβ-Linie</span><b>${_fpmNum(_rtgLambdaVonF(_rtgFKb(A.Z)), 0)} pm
+          (${_fpmNum(_rtgEkeV(_rtgFKb(A.Z)), 1)} keV)</b></div>
+        <div class="rtg-mess-z"><span>Grenzwellenlänge</span><b>${_fpmNum(lamMin, 1)} pm</b></div>
+      </div>
+      <div class="fpm-note">Steigere die Spannung: Der Untergrund wächst, und die
+        Grenzwellenlänge wandert zu <b>kleineren</b> Werten – die charakteristischen Linien
+        bleiben dagegen an ihrem Ort, denn ihre Lage hängt nur vom Anodenmaterial ab.</div>`;
+  }
+
+  const ew = document.getElementById('rtgElemWahl');
+  if (ew) {
+    ew.innerHTML = _RTG_ELEMENTE.map((e, i) =>
+      `<button class="osz-segb${i === _rtg.elem ? ' on' : ''}" onclick="_rtgSetElem(${i})">${e.sym}</button>`).join('');
+  }
+
+  _rtgRenderK3();
+  _rtgRenderAnode();
+  _rtgRenderBragg();
+  _rtgRenderGrenz();
+  _rtgRenderMoseley();
+}
+
+function _rtgRenderK3() {
+  const el = document.getElementById('rtgK3'); if (!el) return;
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du diesen Versuch jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Wir wollen zeigen, dass jedes Anodenmaterial ein charakteristisches Röntgenspektrum hat,
+        und daraus auf die Energiestufen im Atom schließen.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Ein Schulröntgengerät mit Molybdänanode, ein NaCl-Einkristall auf dem Goniometer und ein
+        Geiger-Müller-Zählrohr als Empfänger (Drehkristallmethode).</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Kristall und Zählrohr werden gedreht; für jeden Winkel wird die Zählrate gemessen und über
+        die Bragg-Gleichung in eine Wellenlänge umgerechnet.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        Ein kontinuierlicher Untergrund mit zwei scharfen Linien und einer kleinsten
+        Wellenlänge.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Die Linien entstehen durch Übergänge auf die K-Schale (ΔE = h·f), die Grenzwellenlänge aus
+        e·U<sub>A</sub> = h·f<sub>max</sub>. Beides zeigt die Quantennatur des Lichts.</div>
+    </div>`;
+}
+
+// ── Station 2: Schalen ─────────────────────────────────
+function _rtgRenderAnode() {
+  const el = document.getElementById('rtgAnodeText'); if (!el) return;
+  const A = _RTG_ANODEN[_rtg.anode];
+  el.innerHTML = `<div class="git-sch-kopf">Die drei Energiewege in der Anode</div>
+    <div class="rtg-weg-z waerme"><b>1. Wärme (der Löwenanteil)</b> Die meisten Elektronen geben
+      ihre Energie als Schwingung an die Gitteratome ab. Die Anode wird sehr heiß und muss gekühlt
+      werden.</div>
+    <div class="rtg-weg-z charak"><b>2. Charakteristische Strahlung</b> Ein K-Elektron wird
+      herausgeschlagen; beim Auffüllen der Lücke aus einer höheren Schale entsteht ein Röntgenquant
+      fester Energie – die scharfen Linien, typisch für das Material.</div>
+    <div class="rtg-weg-z brems"><b>3. Bremsstrahlung</b> Elektronen, die im Feld der Atomkerne
+      abgebremst werden, senden ein kontinuierliches Spektrum aus – den Untergrund.</div>
+    <div class="git-sch-kopf" style="margin-top:8px">Die K-Serie des ${A.n}</div>
+    <div class="rtg-serie">
+      <div class="rtg-serie-z"><span class="rtg-serie-l">Kα</span> L → K
+        <b>${_fpmNum(_rtgEkeV(_rtgFKa(A.Z)), 1)} keV, ${_fpmNum(_rtgLambdaVonF(_rtgFKa(A.Z)), 0)} pm</b></div>
+      <div class="rtg-serie-z"><span class="rtg-serie-l">Kβ</span> M → K
+        <b>${_fpmNum(_rtgEkeV(_rtgFKb(A.Z)), 1)} keV, ${_fpmNum(_rtgLambdaVonF(_rtgFKb(A.Z)), 0)} pm</b></div>
+    </div>
+    <div class="fpm-note">Nachdem ein Elektron die K-Lücke gefüllt hat, bleibt eine Lücke in der
+      L-Schale, die wiederum von oben gefüllt wird – eine ganze Kaskade. Man ordnet die Linien nach
+      der Schale, auf die zurückgesprungen wird: K-, L- und M-Serie, ganz wie beim Wasserstoff.</div>`;
+}
+
+// ── Station 3: Bragg ───────────────────────────────────
+function _rtgRenderBragg() {
+  document.getElementById('rtgKn')?.classList.toggle('on', _rtg.d === _RTG_D_NACL);
+  document.getElementById('rtgKl')?.classList.toggle('on', _rtg.d === _RTG_D_LIF);
+  document.getElementById('rtgK1')?.classList.toggle('on', _rtg.k === 1);
+  document.getElementById('rtgK2')?.classList.toggle('on', _rtg.k === 2);
+  const el = document.getElementById('rtgBraggRechnung'); if (!el) return;
+  const lam = _rtgBragg(_rtg.d, _rtg.theta, _rtg.k);
+  const f = _rtgFrequenz(lam);
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Gangunterschied</span>
+      <span class="pho-rz-f">Δs = 2d·sinϑ</span>
+      <span class="pho-rz-v">${_fpmNum(2 * _rtg.d * Math.sin(_rtg.theta * Math.PI / 180), 0)} pm</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Ordnung</span>
+      <span class="pho-rz-f">k</span><span class="pho-rz-v">${_rtg.k}</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Wellenlänge</span>
+      <span class="pho-rz-f">λ = 2d·sinϑ / k</span>
+      <span class="pho-rz-v">${_fpmNum(lam, 1)} pm</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Frequenz</span>
+      <span class="pho-rz-f">f = c/λ</span>
+      <span class="pho-rz-v">${_fpmNum(f / 1e18, 2)}·10¹⁸ Hz</span></div>`;
+  const t = document.getElementById('rtgBraggText');
+  if (t) {
+    t.innerHTML = `<div class="fpm-note">Weil die Röntgenröhre feststeht, dreht man <b>Kristall und
+      Zählrohr</b> gemeinsam (Drehkristallmethode): Dreht sich der Kristall um ϑ, so muss das
+      Zählrohr um 2ϑ mitgeführt werden. Jedes Zählraten-Maximum gehört zu einem Winkel, aus dem
+      über k·λ = 2d·sinϑ die Wellenlänge folgt. Aus der Tabelle der Wellenlängen lässt sich dann
+      das <b>Anodenmaterial</b> bestimmen.</div>`;
+  }
+}
+
+// ── Station 4: Grenzwellenlänge & h ────────────────────
+function _rtgRenderGrenz() {
+  const el = document.getElementById('rtgGrenzRechnung'); if (!el) return;
+  const U = _rtg.UA4 * 1000;
+  const lamMin = _rtgLambdaMin(U);
+  const fMax = _rtgFrequenz(lamMin);
+  const h = _rtgHausLambda(lamMin, U);
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Beschleunigungsspannung</span>
+      <span class="pho-rz-f">U<sub>A</sub></span><span class="pho-rz-v">${_fpmNum(_rtg.UA4, 0)} kV</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Energie eines Elektrons</span>
+      <span class="pho-rz-f">e·U<sub>A</sub></span><span class="pho-rz-v">${_fpmNum(_rtg.UA4, 0)} keV</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Grenzwellenlänge</span>
+      <span class="pho-rz-f">λ<sub>min</sub> = h·c/(e·U<sub>A</sub>)</span>
+      <span class="pho-rz-v">${_fpmNum(lamMin, 1)} pm</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Grenzfrequenz</span>
+      <span class="pho-rz-f">f<sub>max</sub> = c/λ<sub>min</sub></span>
+      <span class="pho-rz-v">${_fpmNum(fMax / 1e18, 2)}·10¹⁸ Hz</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">daraus das Planck-h</span>
+      <span class="pho-rz-f">h = e·U<sub>A</sub>/f<sub>max</sub></span>
+      <span class="pho-rz-v">${_fpmNum(h * 1e34, 2)}·10⁻³⁴ Js</span></div>`;
+  const t = document.getElementById('rtgGrenzText');
+  if (t) {
+    t.innerHTML = `<div class="fpm-note"><b>Das Rechenbeispiel der Handreichung:</b> Bei einem
+      Glanzwinkel von ϑ = 5,5° am NaCl-Kristall ist λ<sub>min</sub> = 2·282 pm·sin 5,5° = 54 pm,
+      also f = 5,5·10¹⁸ Hz. Mit U<sub>A</sub> = 20 kV folgt h = e·U/f ≈ 5,8·10⁻³⁴ Js – nahe am
+      Literaturwert 6,63·10⁻³⁴ Js. <b>Grafisch:</b> Trägt man U<sub>A</sub> über der Grenzfrequenz
+      auf, liegen die Punkte auf einer Geraden durch den Ursprung mit der Steigung h/e – die
+      genauere Methode. Erst die Lichtquantenhypothese erklärt, warum es überhaupt eine kleinste
+      Wellenlänge gibt: Ein Elektron kann höchstens seine <b>ganze</b> Energie in <b>ein</b> Photon
+      stecken.</div>`;
+  }
+}
+
+// ── Station 5: Moseley ─────────────────────────────────
+function _rtgRenderMoseley() {
+  const el = document.getElementById('rtgMoseleyRechnung'); if (!el) return;
+  const E = _RTG_ELEMENTE[_rtg.elem];
+  const f = _rtgFKa(E.Z);
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Element</span>
+      <span class="pho-rz-f">${E.n}</span><span class="pho-rz-v">Z = ${E.Z}</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Abschirmung (K-Schale)</span>
+      <span class="pho-rz-f">Z − 1</span><span class="pho-rz-v">${E.Z - 1}</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Kα-Frequenz</span>
+      <span class="pho-rz-f">f = ¾·f<sub>R</sub>·(Z−1)²</span>
+      <span class="pho-rz-v">${_fpmNum(f / 1e18, 2)}·10¹⁸ Hz</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Wellenlänge</span>
+      <span class="pho-rz-f">λ = c/f</span><span class="pho-rz-v">${_fpmNum(_rtgLambdaVonF(f), 0)} pm</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Photonenenergie</span>
+      <span class="pho-rz-f">E = h·f</span><span class="pho-rz-v">${_fpmNum(_rtgEkeV(f), 1)} keV</span></div>`;
+  const t = document.getElementById('rtgMoseleyText');
+  if (t) {
+    t.innerHTML = `<div class="fpm-note">Moseley trug <b>√f über Z</b> auf und erhielt eine
+      <b>Gerade</b> – ein verblüffend einfaches Gesetz, das die optischen Spektren nie zeigten.
+      Das (Z − 1) statt Z stammt von der <b>Abschirmung</b>: Das zweite K-Elektron schirmt eine
+      Kernladung ab, sodass das springende Elektron nur (Z − 1) Protonen „sieht“. Damit ließ sich
+      erstmals die <b>Kernladungszahl</b> rein physikalisch messen. Moseley bewies so, dass das
+      Periodensystem nach Z geordnet ist (nicht nach der Atommasse), füllte Lücken und sagte
+      unentdeckte Elemente voraus – etwa Hafnium (Z = 72), 1923 gefunden. Von Wasserstoff (Z = 1)
+      bis Uran (Z = 92) gibt es genau 92 Elemente.</div>`;
+  }
+}
+
+// ── Zeichnungen ────────────────────────────────────────
+function _rtgDrawSpektrum(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  const padL = 42, padR = 12, padT = 16, padB = 38;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const A = _RTG_ANODEN[_rtg.anode];
+  const lamMax = 200;
+  const X = l => x0 + l / lamMax * (x1 - x0);
+  // ymax bestimmen
+  let ymax = 0.001;
+  for (let l = 10; l <= lamMax; l += 1) ymax = Math.max(ymax, _rtgIntensitaet(l, A, _rtg.UA));
+  ymax *= 1.12;
+  const Y = v => y0 - v / ymax * (y0 - y1);
+  // Raster
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
+  [0, 50, 100, 150, 200].forEach(l => {
+    ctx.beginPath(); ctx.moveTo(X(l), y0); ctx.lineTo(X(l), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(l + '', X(l), y0 + 12);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Wellenlänge λ / pm', x1, y0 + 24);
+  ctx.save(); ctx.translate(12, y1 + 4); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Intensität', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+  // Fuellkurve
+  ctx.beginPath();
+  ctx.moveTo(X(0), Y(0));
+  for (let l = 0; l <= lamMax; l += 0.5) ctx.lineTo(X(l), Y(Math.min(ymax, _rtgIntensitaet(l, A, _rtg.UA))));
+  ctx.lineTo(X(lamMax), Y(0)); ctx.closePath();
+  ctx.fillStyle = A.farbe + '22'; ctx.fill();
+  ctx.strokeStyle = A.farbe; ctx.lineWidth = 2;
+  ctx.beginPath();
+  let first = true;
+  for (let l = 0; l <= lamMax; l += 0.5) {
+    const py = Y(Math.min(ymax, _rtgIntensitaet(l, A, _rtg.UA)));
+    first ? (ctx.moveTo(X(l), py), first = false) : ctx.lineTo(X(l), py);
+  }
+  ctx.stroke();
+  // Grenzwellenlaenge markieren
+  const lamMin = _rtgLambdaMin(_rtg.UA * 1000);
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 1.4; ctx.setLineDash([4, 3]);
+  ctx.beginPath(); ctx.moveTo(X(lamMin), y0); ctx.lineTo(X(lamMin), y1); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#dc2626'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('λ_min = ' + _fpmNum(lamMin, 0) + ' pm', X(lamMin) + 3, y1 + 8);
+  // Linien beschriften
+  if (_rtg.UA > A.EK) {
+    [['Kα', _rtgLambdaVonF(_rtgFKa(A.Z))], ['Kβ', _rtgLambdaVonF(_rtgFKb(A.Z))]].forEach(p => {
+      if (p[1] > lamMin && p[1] < lamMax) {
+        ctx.fillStyle = '#334155'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(p[0], X(p[1]), Y(Math.min(ymax, _rtgIntensitaet(p[1], A, _rtg.UA))) - 5);
+      }
+    });
+  }
+}
+
+function _rtgDrawSchalen(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const A = _RTG_ANODEN[_rtg.anode];
+  const cx = 150, cy = H / 2;
+  // Kern
+  ctx.fillStyle = '#f87171';
+  ctx.beginPath(); ctx.arc(cx, cy, 8, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#fca5a5'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('+' + A.Z, cx, cy + 3);
+  // Schalen K L M N
+  const schalen = [{ n: 'K', r: 26 }, { n: 'L', r: 52 }, { n: 'M', r: 80 }, { n: 'N', r: 108 }];
+  schalen.forEach(s => {
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(cx, cy, s.r, 0, 2 * Math.PI); ctx.stroke();
+    ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(s.n, cx, cy - s.r - 3);
+  });
+  // Phase je nach Zeit: 0 einfallendes e-, 1 Luecke, 2 Uebergang+Photon
+  const phase = Math.floor(_rtg.t * 0.7) % 3;
+  // einfallendes Elektron
+  if (phase === 0) {
+    const p = (_rtg.t * 0.7) % 1;
+    const ex = 20 + p * (cx - 46), ey = cy - 40 + p * 34;
+    ctx.fillStyle = '#38bdf8';
+    ctx.beginPath(); ctx.arc(ex, ey, 3, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = 'rgba(56,189,248,0.4)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(ex, ey); ctx.lineTo(ex - 10, ey - 6); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('schnelles Elektron', 20, cy - 50);
+  }
+  // K-Elektronen (eines fehlt bei phase>=1)
+  const kEl = phase >= 1 ? 1 : 2;
+  for (let i = 0; i < kEl; i++) {
+    const a = i * Math.PI + _rtg.t;
+    ctx.fillStyle = '#fbbf24';
+    ctx.beginPath(); ctx.arc(cx + Math.cos(a) * 26, cy + Math.sin(a) * 26, 3, 0, 2 * Math.PI); ctx.fill();
+  }
+  if (phase >= 1) {
+    // Luecke markieren
+    ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(cx - 26, cy, 4, 0, 2 * Math.PI); ctx.stroke();
+    ctx.fillStyle = '#f87171'; ctx.font = '8px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText('Lücke', cx - 34, cy - 6);
+  }
+  // Uebergang L->K + Photon
+  if (phase === 2) {
+    ctx.strokeStyle = '#a78bfa'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(cx - 52, cy); ctx.lineTo(cx - 26, cy); ctx.stroke();
+    ctx.fillStyle = '#a78bfa';
+    ctx.beginPath(); ctx.moveTo(cx - 26, cy); ctx.lineTo(cx - 33, cy - 4); ctx.lineTo(cx - 33, cy + 4); ctx.closePath(); ctx.fill();
+    // Photon (Wellenlinie nach rechts)
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    for (let s = 0; s <= 60; s++) ctx.lineTo(cx + 30 + s, cy - 30 + Math.sin(s * 0.5) * 5);
+    ctx.stroke();
+    ctx.fillStyle = '#7c3aed'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Kα-Photon: ΔE = h·f', cx + 34, cy - 36);
+    ctx.font = '9px sans-serif';
+    ctx.fillText(_fpmNum(_rtgEkeV(_rtgFKa(A.Z)), 1) + ' keV', cx + 34, cy - 22);
+  }
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(A.n + '-Atom', cx, H - 12);
+  ctx.textAlign = 'left';
+}
+
+function _rtgDrawBragg(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const th = _rtg.theta * Math.PI / 180;
+  const cx = W / 2, cy = H - 60;
+  // Netzebenen
+  const ebenen = 4, abst = 20;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  for (let i = 0; i < ebenen; i++) {
+    const y = cy + i * abst;
+    ctx.beginPath(); ctx.moveTo(40, y); ctx.lineTo(W - 40, y); ctx.stroke();
+    // Atome
+    ctx.fillStyle = '#475569';
+    for (let x = 55; x < W - 40; x += 26) { ctx.beginPath(); ctx.arc(x, y, 2.5, 0, 2 * Math.PI); ctx.fill(); }
+  }
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Netzebenen, Abstand d = ' + _rtg.d + ' pm', 44, cy + ebenen * abst + 14);
+  // einfallender und reflektierter Strahl (an erster Ebene)
+  const len = 120;
+  const px = cx, py = cy;
+  ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(px - Math.cos(th) * len, py - Math.sin(th) * len); ctx.lineTo(px, py); ctx.stroke();
+  ctx.strokeStyle = '#fbbf24';
+  ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(px + Math.cos(th) * len, py - Math.sin(th) * len); ctx.stroke();
+  // Winkel ϑ
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(px, py, 30, Math.PI, Math.PI + th); ctx.stroke();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('ϑ', px - 40, py - 6);
+  ctx.fillStyle = '#38bdf8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('einfallend', px - Math.cos(th) * len + 4, py - Math.sin(th) * len - 4);
+  ctx.fillStyle = '#fbbf24'; ctx.textAlign = 'left';
+  ctx.fillText('reflektiert', px + Math.cos(th) * len - 4, py - Math.sin(th) * len - 4);
+  // zweiter Strahl zur zweiten Ebene (Gangunterschied)
+  ctx.strokeStyle = 'rgba(56,189,248,0.5)'; ctx.lineWidth = 1.4;
+  ctx.beginPath();
+  ctx.moveTo(px + 40 - Math.cos(th) * len, py + abst - Math.sin(th) * len);
+  ctx.lineTo(px + 40, py + abst);
+  ctx.lineTo(px + 40 + Math.cos(th) * len, py + abst - Math.sin(th) * len);
+  ctx.stroke();
+  const lam = _rtgBragg(_rtg.d, _rtg.theta, _rtg.k);
+  ctx.fillStyle = '#a7f3d0'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Gangunterschied 2d·sinϑ = ' + _fpmNum(2 * _rtg.d * Math.sin(th), 0) + ' pm = '
+    + _rtg.k + '·λ', W / 2, 24);
+  ctx.fillText('→ λ = ' + _fpmNum(lam, 0) + ' pm', W / 2, 40);
+  ctx.textAlign = 'left';
+}
+
+function _rtgDrawGrenz(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  const padL = 46, padR = 12, padT = 14, padB = 38;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  // U_A ueber f_max: Gerade durch Ursprung, Steigung h/e
+  const fMaxOf = U => _rtgFrequenz(_rtgLambdaMin(U * 1000));   // U in kV -> f
+  const fmax = fMaxOf(40), umax = 42;
+  const X = f => x0 + f / fmax * (x1 - x0);
+  const Y = U => y0 - U / umax * (y0 - y1);
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
+  [0, 2e18, 4e18, 6e18, 8e18].forEach(f => {
+    ctx.beginPath(); ctx.moveTo(X(f), y0); ctx.lineTo(X(f), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText((f / 1e18) + '', X(f), y0 + 12);
+  });
+  [0, 10, 20, 30, 40].forEach(U => {
+    ctx.strokeStyle = '#eef2f7'; ctx.beginPath(); ctx.moveTo(x0, Y(U)); ctx.lineTo(x1, Y(U)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(U + '', x0 - 4, Y(U) + 3);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Grenzfrequenz /10¹⁸ Hz', x1, y0 + 24);
+  ctx.save(); ctx.translate(12, y1 + 4); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('U_A / kV', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+  // Gerade
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(X(0), Y(0)); ctx.lineTo(X(fMaxOf(umax)), Y(umax)); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif';
+  ctx.fillText('Steigung = h/e', X(fMaxOf(30)) - 40, Y(34));
+  // aktueller Punkt
+  const fc = fMaxOf(_rtg.UA4);
+  ctx.fillStyle = '#db2777';
+  ctx.beginPath(); ctx.arc(X(fc), Y(_rtg.UA4), 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(X(fc), Y(_rtg.UA4)); ctx.lineTo(X(fc), y0); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(X(fc), Y(_rtg.UA4)); ctx.lineTo(x0, Y(_rtg.UA4)); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.textAlign = 'left';
+}
+
+function _rtgDrawMoseley(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  const padL = 40, padR = 12, padT = 14, padB = 38;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const Zmax = 80;
+  const sqrtFmax = Math.sqrt(_rtgFKa(Zmax));
+  const X = Z => x0 + Z / Zmax * (x1 - x0);
+  const Y = sf => y0 - sf / sqrtFmax * (y0 - y1);
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
+  [0, 20, 40, 60, 80].forEach(Z => {
+    ctx.beginPath(); ctx.moveTo(X(Z), y0); ctx.lineTo(X(Z), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(Z + '', X(Z), y0 + 12);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Ordnungszahl Z', x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 4); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('√f (Kα)', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+  // Moseley-Gerade (sqrt(f) ist linear in (Z-1))
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let Z = 1; Z <= Zmax; Z += 1) {
+    const sf = Math.sqrt(_rtgFKa(Z));
+    Z === 1 ? ctx.moveTo(X(Z), Y(sf)) : ctx.lineTo(X(Z), Y(sf));
+  }
+  ctx.stroke();
+  // Elementpunkte
+  _RTG_ELEMENTE.forEach((e, i) => {
+    const sf = Math.sqrt(_rtgFKa(e.Z));
+    ctx.fillStyle = i === _rtg.elem ? '#db2777' : '#94a3b8';
+    ctx.beginPath(); ctx.arc(X(e.Z), Y(sf), i === _rtg.elem ? 5 : 3, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = i === _rtg.elem ? '#be185d' : '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(e.sym, X(e.Z), Y(sf) - 7);
+  });
+  ctx.textAlign = 'left';
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _rtgTakt(dt) { if (_rtg) _rtg.t += Math.min(0.05, dt); }
+function _rtgRender() {
+  if (!_rtg) return;
+  const st = _rtg.station;
+  if (st === 0) {
+    const c = document.getElementById('rtgSpektrum');
+    if (c) _rtgDrawSpektrum(c.getContext('2d'), c);
+  } else if (st === 1) {
+    const c = document.getElementById('rtgSchalen');
+    if (c) _rtgDrawSchalen(c.getContext('2d'), c);
+  } else if (st === 2) {
+    const c = document.getElementById('rtgBragg');
+    if (c) _rtgDrawBragg(c.getContext('2d'), c);
+  } else if (st === 3) {
+    const c = document.getElementById('rtgGrenz');
+    if (c) _rtgDrawGrenz(c.getContext('2d'), c);
+  } else if (st === 4) {
+    const c = document.getElementById('rtgMoseley');
+    if (c) _rtgDrawMoseley(c.getContext('2d'), c);
+  }
+}
+
+// ── Zusätzliche Styles für die Röntgenstrahlung ────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .rtg-beob { display: flex; flex-direction: column; gap: 7px; }
+    .rtg-beob-z { display: flex; gap: 8px; align-items: flex-start; font-size: .78rem; color: #475569;
+      line-height: 1.5; }
+    .rtg-beob-z span { flex: 0 0 20px; height: 20px; border-radius: 50%; background: #0284c7; color: #fff;
+      font-size: .74rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+    .rtg-beob-z b { color: #334155; }
+    .rtg-mess-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; }
+    .rtg-mess-z { display: flex; justify-content: space-between; align-items: baseline; font-size: .77rem;
+      color: #475569; padding: 2px 0; }
+    .rtg-mess-z span { font-size: .72rem; color: #94a3b8; }
+    .rtg-mess-z b { color: #334155; font-variant-numeric: tabular-nums; }
+    .rtg-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 13px; margin-top: 12px; }
+    .rtg-anode-t { display: flex; flex-direction: column; gap: 7px; }
+    .rtg-weg-z { font-size: .77rem; color: #475569; line-height: 1.55; border-radius: 8px; padding: 8px 10px;
+      border: 1px solid #e2e8f0; background: #f8fafc; }
+    .rtg-weg-z b { color: #334155; }
+    .rtg-weg-z.waerme { background: #fef2f2; border-color: #fecaca; }
+    .rtg-weg-z.charak { background: #f5f3ff; border-color: #ddd6fe; }
+    .rtg-weg-z.brems { background: #eff6ff; border-color: #bfdbfe; }
+    .rtg-serie { display: flex; flex-direction: column; gap: 4px; }
+    .rtg-serie-z { display: flex; align-items: center; gap: 8px; font-size: .78rem; color: #475569;
+      background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 6px 9px; }
+    .rtg-serie-l { flex: 0 0 30px; font-weight: 800; color: #7c3aed; }
+    .rtg-serie-z b { margin-left: auto; color: #334155; font-variant-numeric: tabular-nums; }
+    .rtg-bragg-t, .rtg-grenz-t, .rtg-mos-t { margin-top: 8px; }
+    .rtg-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
