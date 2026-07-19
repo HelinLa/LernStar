@@ -2030,6 +2030,24 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('oszTakt', 'oszKeinChart');
     _pSim.start(dt => _oszTakt(dt), () => _oszRender(), []);
   },
+
+  // Schluesselexperiment 09 des KLP: Induktion aus der Lorentzkraft,
+  // U = L·v·B, Hypothesenpruefung, Ringversuch und inhomogenes Feld
+  'leiterschaukel': modal => {
+    _lskInit();
+    modal.innerHTML = _lskHTML();
+    const erkl = document.getElementById('lskErkl');
+    if (erkl) erkl.innerHTML = _lskErklHTML();
+    _lskSetStation(0);
+    _lskSetKoerper(_lsk.objekt);
+    _lskSetUrsache(_lsk.ursache);
+    _lskRenderTable();
+    _lskRenderTheorie(false);
+    _lskUpdate();
+    _lskDrawPlot();
+    _pSim = new PhysicsSimEngine('lskTakt', 'lskKeinChart');
+    _pSim.start(dt => _lskTakt(dt), () => _lskRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -11692,6 +11710,1935 @@ function _oszRender() {
     .osz-nyquist.ok { background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d; }
     .osz-nyquist.no { background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; }
     .osz-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+// ═══════════════════════════════════════════════════════
+// SCHWINGENDE LEITERSCHAUKEL IM MAGNETFELD
+// Schluesselexperiment 09 der NRW-Handreichung.
+// Deckt die sechs Kompetenzen des KLP ab:
+//   1 Induktionsspannung aus der Lorentzkraft erklaeren       -> Station 2
+//   2 Spannung als Energie je Ladung definieren               -> Station 2
+//   3 Drei-Finger-Regel anwenden                              -> Station 2
+//   4 Oszillogramme nach Zeiten, Frequenzen, Spannungen lesen -> Station 1
+//   5 Aufbau und Ergebnis adressatenbezogen erlaeutern        -> Station 1
+//   6 die beiden Induktionsursachen unterscheiden             -> Station 5
+// ═══════════════════════════════════════════════════════
+
+const _LSK_G = 9.81;
+const _LSK_MU0 = 4e-7 * Math.PI;
+const _LSK_K = 8 / (5 * Math.sqrt(5));   // Helmholtz-Vorfaktor ≈ 0,7155
+
+// Helmholtzspulen des Bestaetigungsversuchs. Aus der Messtabelle der
+// Handreichung zurueckgerechnet: es sind dieselben Spulen wie beim
+// Fadenstrahlrohr, n = 130 Windungen bei R = 0,15 m.
+const _LSK_HN = 130;
+const _LSK_HR = 0.150;
+const _LSK_SCHLEIFEN = 15;      // flache Spule des Bestaetigungsversuchs
+const _LSK_SCHLEIFE_L = 0.10;   // Breite einer Schleife in m
+
+// Messverstaerker und Oszilloskop nach den Angaben der Handreichung
+const _LSK_VORV = 10000;        // Vorverstaerkung des Mikrovoltverstaerkers
+const _LSK_VDIV = 2;            // Volt je Kaestchen am Oszilloskop
+const _LSK_ZEITEN = [0.2, 0.5, 1, 2, 5];   // Sekunden je Kaestchen
+const _LSK_XDIV = 10, _LSK_YDIV = 8;
+
+// Hufeisenmagnet: nur der Teil des Stabes zwischen den Polschuhen liegt im
+// Feld. Deshalb zaehlt hier die Polschuhbreite als wirksame Leiterlaenge.
+const _LSK_POL = 0.04;
+
+let _lsk = null;
+
+function _lskInit() {
+  _lsk = {
+    station: 0,
+    // Pendel
+    pl: 0.75,          // Laenge der Aufhaengung in m (2 x 75 cm Kabel)
+    phi0: 0.20,        // Anfangsauslenkung in rad
+    stabL: 0.12,       // Laenge des Metallstabes in m
+    B: 0.025,          // Feld zwischen den Polschuhen in T
+    fahnen: false,     // Papierfahnen zur Verstaerkung der Daempfung
+    laeuft: false, t: 0, spur: [],
+    zeitI: 0,          // Index in _LSK_ZEITEN
+    leseA: '', leseT: '', geprueft: null,
+    // Station 2
+    vRichtung: 1, bRichtung: 1, schritt: 0,
+    // Station 3
+    hv: 0.40, hB: 0.0020, hL: 1.50, halpha: 90,
+    rows: [], nextId: 1, preset: 0, fn: null, fnAuto: false, reveal: false,
+    // Station 4
+    hI: 2.00, hallAn: true, versatz: 0,
+    // Station 5
+    objekt: 'ring',    // 'ring' | 'stab-offen' | 'stab-kurz'
+    magnetAn: true, magnetUm: false,
+    rlaeuft: false, rphi0: 0.30, rt: 0,
+    ursache: 'flaeche',
+    // Station 6
+    ruhelage: 0.0,     // Verschiebung der Ruhelage aus der Feldmitte in m
+    ilaeuft: false, it: 0, ispur: []
+  };
+}
+
+// ── Pendelbewegung ─────────────────────────────────────
+// Gedaempfte harmonische Schwingung. Die Handreichung zeigt genau das:
+// bei kurzer Messzeit nahezu sinusfoermig, ueber 20 bis 30 Perioden wird
+// die exponentielle Abnahme der Amplituden sichtbar.
+function _lskOmega0(l) { return Math.sqrt(_LSK_G / l); }
+function _lskDelta() {
+  // Luftwiderstand und Lager; die Papierfahnen erhoehen die Daempfung deutlich
+  return _lsk.fahnen ? 0.15 : 0.02;
+}
+function _lskPeriode(l) {
+  const w0 = _lskOmega0(l), d = _lskDelta();
+  const w = Math.sqrt(Math.max(1e-9, w0 * w0 - d * d));
+  return 2 * Math.PI / w;
+}
+function _lskPhi(t) {
+  const w0 = _lskOmega0(_lsk.pl), d = _lskDelta();
+  const w = Math.sqrt(Math.max(1e-9, w0 * w0 - d * d));
+  return _lsk.phi0 * Math.exp(-d * t) * Math.cos(w * t);
+}
+// Geschwindigkeit des Stabes: v = l · dφ/dt
+function _lskV(t) {
+  const w0 = _lskOmega0(_lsk.pl), d = _lskDelta();
+  const w = Math.sqrt(Math.max(1e-9, w0 * w0 - d * d));
+  const e = Math.exp(-d * t);
+  return _lsk.pl * _lsk.phi0 * e * (-d * Math.cos(w * t) - w * Math.sin(w * t));
+}
+function _lskVMax() { return _lsk.pl * _lsk.phi0 * _lskOmega0(_lsk.pl); }
+
+// ── Die Grundbeziehung ─────────────────────────────────
+// U = L · v · B, hergeleitet aus dem Kraftansatz mit der Lorentzkraft.
+function _lskU(L, v, B, alphaGrad) {
+  const a = alphaGrad === undefined ? 90 : alphaGrad;
+  return L * v * B * Math.sin(a * Math.PI / 180);
+}
+// Wirksame Leiterlaenge am Hufeisenmagneten: nur der Teil zwischen den
+// Polschuhen liegt im Feld.
+function _lskLWirk() { return Math.min(_lsk.stabL, _LSK_POL); }
+function _lskUt(t) { return _lskU(_lskLWirk(), _lskV(t), _lsk.B); }
+
+// Was das Oszilloskop nach dem Verstaerker anzeigt
+function _lskAnzeige(u) { return u * _LSK_VORV; }
+function _lskKaestchen(u) { return _lskAnzeige(u) / _LSK_VDIV; }
+function _lskZeit() { return _LSK_ZEITEN[_lsk.zeitI]; }
+
+// ── Spannung als Energie je Ladung (Kompetenz UF2) ─────
+// Die Lorentzkraft schiebt eine Ladung e ueber die Leiterlaenge L.
+// Die dabei verrichtete Arbeit je Ladung ist gerade die Spannung.
+const _LSK_E = 1.602e-19;
+function _lskArbeit(L, v, B) { return _LSK_E * v * B * L; }
+function _lskUAusArbeit(L, v, B) { return _lskArbeit(L, v, B) / _LSK_E; }
+
+// ── Helmholtzfeld des Bestaetigungsversuchs ────────────
+function _lskBHelm(I) { return _LSK_K * _LSK_MU0 * _LSK_HN * I / _LSK_HR; }
+// Die Hallsonde zeigt auf 0,1 mT gerundet an – wie in der Messtabelle
+function _lskBHall(I) { return Math.round(_lskBHelm(I) / 1e-4) * 1e-4; }
+function _lskBMess() { return _lsk.hallAn ? _lskBHall(_lsk.hI) : _lskBHelm(_lsk.hI); }
+function _lskLEff() { return _LSK_SCHLEIFEN * _LSK_SCHLEIFE_L; }
+
+// Die fuenf Messungen aus Abbildung 10 der Handreichung
+const _LSK_ORIGINAL = [
+  { I: 2.57, Bg: 2.1,   v: 0.34, Ug: 1.04, Ub: 1.07 },
+  { I: 2.00, Bg: 1.6,   v: 0.41, Ug: 0.95, Ub: 0.98 },
+  { I: 1.00, Bg: 0.796, v: 0.40, Ug: 0.46, Ub: 0.48 },
+  { I: 1.50, Bg: 1.2,   v: 0.46, Ug: 0.78, Ub: 0.83 },
+  { I: 2.50, Bg: 2.0,   v: 0.34, Ug: 0.97, Ub: 1.02 }
+];
+
+// ── Ringversuch: die bremsende Kraft ───────────────────
+// Fliesst der induzierte Strom wirklich, wird der Leiter selbst zum
+// stromdurchflossenen Leiter im Magnetfeld: F = I·L·B = L²·B²·v / R.
+const _LSK_KOERPER = {
+  'ring':       { n: 'Aluminiumring', m: 0.0254, R: 6.24e-4, L: _LSK_POL,
+                  txt: 'Ein geschlossener Aluminiumring hat einen sehr kleinen Widerstand. Der induzierte Strom wird dadurch groß – und mit ihm die bremsende Kraft.' },
+  'stab-kurz':  { n: 'Leiterschaukel, kurzgeschlossen', m: 0.0041, R: 0.05, L: _LSK_POL,
+                  txt: 'Verbindet man die beiden Aufhängungsdrähte mit einem Kabel, kann ein Strom fließen. Der Widerstand ist aber viel größer und die Masse kleiner als beim Ring – die Bremswirkung bleibt gering.' },
+  'stab-offen': { n: 'Leiterschaukel am Voltmeter', m: 0.0041, R: 1e7, L: _LSK_POL,
+                  txt: 'Ein Spannungsmessgerät hat einen sehr hohen Eingangswiderstand. Es fließt praktisch kein Strom, also wirkt auch keine bremsende Kraft. Die Schaukel schwingt so lange wie ohne Magnet.' }
+};
+function _lskKoerper() { return _LSK_KOERPER[_lsk.objekt]; }
+// F = L²B²v/R  ⇒  m·dv/dt = -L²B²/R · v  ⇒  Abklingkonstante L²B²/(2mR)
+function _lskDeltaEM(B) {
+  const k = _lskKoerper();
+  if (!_lsk.magnetAn) return 0;
+  return k.L * k.L * B * B / (2 * k.m * k.R);
+}
+function _lskBremsKraft(B, v) {
+  const k = _lskKoerper();
+  return _lsk.magnetAn ? k.L * k.L * B * B * v / k.R : 0;
+}
+const _LSK_RING_B = 0.15;      // Feld dicht am Polschuh
+const _LSK_RING_L = 0.20;      // Pendellaenge des Ringversuchs
+function _lskRingDelta() { return 0.05 + _lskDeltaEM(_LSK_RING_B); }
+function _lskRingPhi(t) {
+  const w0 = Math.sqrt(_LSK_G / _LSK_RING_L), d = _lskRingDelta();
+  const w = Math.sqrt(Math.max(1e-9, w0 * w0 - d * d));
+  return _lsk.rphi0 * Math.exp(-d * t) * Math.cos(w * t);
+}
+
+// ── Inhomogenes Feld ───────────────────────────────────
+// Zwischen den Schenkeln ist das Feld nahezu konstant, ausserhalb faellt es
+// schnell ab. Genau daher stammt die Verzerrung im zweiten Oszillogramm der
+// Handreichung.
+const _LSK_HALBBREITE = 0.045;   // halbe Breite des homogenen Bereichs in m
+function _lskBOrt(x) {
+  const a = Math.abs(x);
+  if (a <= _LSK_HALBBREITE) return _lsk.B;
+  // ausserhalb faellt das Streufeld naeherungsweise exponentiell ab
+  return _lsk.B * Math.exp(-(a - _LSK_HALBBREITE) / 0.022);
+}
+function _lskInhomX(t) {
+  const w0 = _lskOmega0(_lsk.pl), d = _lskDelta();
+  const w = Math.sqrt(Math.max(1e-9, w0 * w0 - d * d));
+  return _lsk.ruhelage + _lsk.pl * _lsk.phi0 * Math.exp(-d * t) * Math.cos(w * t);
+}
+function _lskInhomU(t) {
+  return _lskLWirk() * _lskV(t) * _lskBOrt(_lskInhomX(t));
+}
+
+// ── Zahlformat ─────────────────────────────────────────
+function _lskMV(u) { return _fpmNum(u * 1000, 3); }
+
+// ── Oberfläche ─────────────────────────────────────────
+function _lskHTML() {
+  const stationen = ['1 · Versuch & Oszillogramm', '2 · Warum entsteht U?',
+                     '3 · Hypothesen prüfen', '4 · Bestätigungsversuch',
+                     '5 · Ringversuch & Dämpfung', '6 · Inhomogenes Feld']
+    .map((s, i) => `<button class="fpm-tab${i === _lsk.station ? ' on' : ''}" id="lskSt${i}" onclick="_lskSetStation(${i})">${s}</button>`).join('');
+
+  const presets = ['v → U', 'B → U', 'L → U', 'sin α → U'].map((p, i) =>
+    `<button class="fpm-tab${i === _lsk.preset ? ' on' : ''}" id="lskTab${i}" onclick="_lskSetPreset(${i})">${p}</button>`).join('');
+
+  const koerper = Object.keys(_LSK_KOERPER).map(k =>
+    `<button class="ebr-obj${k === _lsk.objekt ? ' on' : ''}" id="lskK_${k}" onclick="_lskSetKoerper('${k}')">
+       <span class="ebr-obj-n">${_LSK_KOERPER[k].n}</span>
+       <span class="ebr-obj-k">R = ${_LSK_KOERPER[k].R >= 1000 ? '10 MΩ' : _fpmNum(_LSK_KOERPER[k].R * 1000, 2) + ' mΩ'} · m = ${_fpmNum(_LSK_KOERPER[k].m * 1000, 1)} g</span></button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim lsk-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🧲 Leiterschaukel: das Schlüsselexperiment</h3>
+    <canvas id="lskTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="lskS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="lskAufbau" width="440" height="264" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Der Stab schwingt zwischen den Polschuhen des Hufeisenmagneten</div>
+          <canvas id="lskOszi" width="440" height="300" class="phys-anim-cv"></canvas>
+          <div class="osz-status" id="lskOsziStatus"></div>
+          <div class="fpm-note">Einstellungen wie in der Handreichung: Verstärkung
+            ${_LSK_VDIV} V je Kästchen, Vorverstärkung ${_LSK_VORV}. Ein Kästchen entspricht
+            am Eingang also nur ${_fpmNum(_LSK_VDIV / _LSK_VORV * 1000, 2)} mV.</div>
+        </div>
+        <div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="lskStartBtn" onclick="_lskToggle()">▶ Auslenken und loslassen</button>
+            <button class="sim-btn" onclick="_lskReset()">↺ Zurücksetzen</button>
+          </div>
+          <div class="osz-gruppe">
+            <div class="osz-gruppe-k">Zeitablenkung des Speicheroszilloskops</div>
+            <div class="osz-zeile"><span>s je Kästchen</span>
+              <button class="osz-knopf" onclick="_lskStepZeit(-1)">◀</button>
+              <b id="lskZeitLbl">0,2 s</b>
+              <button class="osz-knopf" onclick="_lskStepZeit(1)">▶</button></div>
+            <div class="fpm-note" style="margin-top:4px">Die Handreichung zeigt genau zwei
+              Einstellungen: 0,2 s je Kästchen für den Verlauf einer einzelnen Schwingung und
+              5 s je Kästchen, um die Abnahme der Amplituden über 20 bis 30 Perioden zu sehen.</div>
+          </div>
+          <div class="osz-gruppe">
+            <div class="osz-gruppe-k">Versuchsaufbau</div>
+            <div class="osz-zeile"><span>Aufhängung l</span>
+              <input type="range" id="lskPl" min="0.4" max="1" step="0.05" value="0.75"
+                oninput="_lskSetPl(this.value)"><b id="lskPlLbl">75 cm</b></div>
+            <div class="osz-zeile"><span>Stablänge</span>
+              <input type="range" id="lskStabL" min="0.10" max="0.15" step="0.005" value="0.12"
+                oninput="_lskSetStabL(this.value)"><b id="lskStabLLbl">12 cm</b></div>
+            <div class="osz-zeile"><span>Auslenkung</span>
+              <input type="range" id="lskPhi0" min="0.05" max="0.30" step="0.01" value="0.20"
+                oninput="_lskSetPhi0(this.value)"><b id="lskPhi0Lbl">11°</b></div>
+            <div class="osz-zeile"><span>Magnetfeld B</span>
+              <input type="range" id="lskB" min="0.005" max="0.05" step="0.001" value="0.025"
+                oninput="_lskSetB(this.value)"><b id="lskBLbl">25 mT</b></div>
+            <label class="fpm-check"><input type="checkbox" id="lskFahnen"
+              onchange="_lskSetFahnen(this.checked)"> Papierfahnen an den Leiterenden
+              (verstärken die Dämpfung)</label>
+          </div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Geschwindigkeit v</span><span class="fpm-ro-v" id="lskVA">—</span><span class="fpm-ro-u">m/s</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Induktionsspannung U</span><span class="fpm-ro-v" id="lskUA">—</span><span class="fpm-ro-u">mV</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Periodendauer T</span><span class="fpm-ro-v" id="lskTA">—</span><span class="fpm-ro-u">s</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Frequenz f</span><span class="fpm-ro-v" id="lskFA">—</span><span class="fpm-ro-u">Hz</span></div>
+          </div>
+          <div class="fpm-label">Ablesen am Oszillogramm</div>
+          <div class="osz-lese">
+            <div class="osz-lese-z"><span>Größter Ausschlag</span>
+              <input type="text" class="fpm-input osz-inp" id="lskLeseA" placeholder="?"
+                spellcheck="false" oninput="_lskSetLese('leseA',this.value)"><span>Kästchen</span></div>
+            <div class="osz-lese-z"><span>Eine Periode</span>
+              <input type="text" class="fpm-input osz-inp" id="lskLeseT" placeholder="?"
+                spellcheck="false" oninput="_lskSetLese('leseT',this.value)"><span>Kästchen</span></div>
+          </div>
+          <div class="ebr-rechnung" id="lskLeseAus"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_lskPruefen()">✓ Ablesung prüfen</button>
+          </div>
+          <div class="lsk-zustand" id="lskLesePruef"></div>
+        </div>
+      </div>
+      <div class="lsk-k3" id="lskK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="lskS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="lskHerleitung" width="440" height="330" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Aufsicht auf den bewegten Leiter – wie in Abbildung 7</div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_lskUmkehr('vRichtung')">🔄 Bewegungsrichtung umkehren</button>
+            <button class="sim-btn" onclick="_lskUmkehr('bRichtung')">🔄 Feldrichtung umkehren</button>
+          </div>
+          <div class="lsk-drei" id="lskDrei"></div>
+        </div>
+        <div>
+          <div class="fpm-label">Die Herleitung Schritt für Schritt</div>
+          <div class="lsk-schritte" id="lskSchritte"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_lskSchritt(-1)">◀ zurück</button>
+            <button class="sim-btn primary" onclick="_lskSchritt(1)">weiter ▶</button>
+            <button class="sim-btn" onclick="_lskSchritt(99)">alle zeigen</button>
+          </div>
+          <div class="fpm-label" style="margin-top:10px">Zweiter Weg: Spannung als Energie je Ladung</div>
+          <div class="ebr-rechnung" id="lskEnergie"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="lskS2" style="display:none">
+      <div class="lsk-hypo" id="lskHypo"></div>
+      <div class="fpm-grid">
+        <div>
+          <div class="fpm-label">Im homogenen Feld messen – ein Parameter nach dem anderen</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Geschwindigkeit v</span>
+              <input type="range" id="lskHv" min="0.05" max="0.8" step="0.01" value="0.4"
+                oninput="_lskSetH('hv',this.value)"><b id="lskHvLbl">0,40 m/s</b></div>
+            <div class="osz-zeile"><span>Magnetfeld B</span>
+              <input type="range" id="lskHB" min="0.0002" max="0.004" step="0.0001" value="0.002"
+                oninput="_lskSetH('hB',this.value)"><b id="lskHBLbl">2,00 mT</b></div>
+            <div class="osz-zeile"><span>Leiterlänge L</span>
+              <input type="range" id="lskHL" min="0.1" max="3" step="0.1" value="1.5"
+                oninput="_lskSetH('hL',this.value)"><b id="lskHLLbl">1,50 m</b></div>
+            <div class="osz-zeile"><span>Winkel α (v, B)</span>
+              <input type="range" id="lskHalpha" min="0" max="90" step="1" value="90"
+                oninput="_lskSetH('halpha',this.value)"><b id="lskHalphaLbl">90°</b></div>
+          </div>
+          <div class="ebr-rechnung" id="lskHRechnung"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_lskTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_lskDemo()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_lskClear()">🗑 Tabelle leeren</button>
+          </div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Nr.</th><th>v (m/s)</th><th>B (mT)</th><th>L (m)</th><th>α</th><th>U (mV)</th><th></th></tr></thead>
+              <tbody id="lskTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="lskEmpty">Noch keine Messwerte.<br>Immer nur eine Größe verändern – so prüft man eine Hypothese.</div>
+          </div>
+        </div>
+        <div>
+          <div class="fpm-tabs">${presets}</div>
+          <canvas id="lskPlot" width="440" height="320" class="phys-chart-cv"></canvas>
+          <div class="fpm-fit" id="lskFitBox"></div>
+          <div class="fpm-label" style="margin-top:10px">Funktion plotten</div>
+          <input type="text" id="lskFn" class="fpm-input" placeholder="z. B. 3*x" spellcheck="false"
+            oninput="_lskSetFn(this.value)">
+          <div class="fpm-err" id="lskFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_lskTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_lskClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="lskTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_lskSet('reveal',this.checked)">
+            Sollwert anzeigen</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="lskS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="lskHelm" width="440" height="290" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">15 Leiterschleifen im Helmholtzfeld – Aufbau nach Abbildung 8</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Spulenstrom I</span>
+              <input type="range" id="lskHI" min="0.5" max="3" step="0.01" value="2"
+                oninput="_lskSetHI(this.value)"><b id="lskHILbl">2,00 A</b></div>
+            <label class="fpm-check"><input type="checkbox" id="lskHall" checked
+              onchange="_lskSetHall(this.checked)"> B mit der Hallsonde messen statt berechnen</label>
+            <div class="osz-zeile"><span>Zeitversatz</span>
+              <input type="range" id="lskVersatz" min="-0.4" max="0.4" step="0.01" value="0"
+                oninput="_lskSetVersatz(this.value)"><b id="lskVersatzLbl">0,00 s</b></div>
+          </div>
+          <div class="lsk-zustand" id="lskSync"></div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="lskHelmRechnung"></div>
+          <div class="fpm-label" style="margin-top:10px">Die Messwerte der Handreichung (Abbildung 10)</div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>I (A)</th><th>B gem. (mT)</th><th>B ber. (mT)</th><th>v (m/s)</th><th>U gem. (mV)</th><th>U ber. (mV)</th></tr></thead>
+              <tbody id="lskOrigTbody"></tbody>
+            </table>
+          </div>
+          <div class="fpm-note" id="lskOrigNote"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="lskS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="lskRing" width="440" height="300" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Was pendelt am Magneten vorbei?</div>
+          <div class="ebr-objs">${koerper}</div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="lskRingBtn" onclick="_lskRingToggle()">▶ Anstoßen</button>
+            <button class="sim-btn" id="lskMagnetBtn" onclick="_lskMagnetToggle()">Magnet entfernen</button>
+            <button class="sim-btn" onclick="_lskMagnetUm()">🔄 Magnet umdrehen</button>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="lskRingRechnung"></div>
+          <div class="lsk-zustand" id="lskRingDeutung"></div>
+          <div class="fpm-label" style="margin-top:10px">Die beiden Ursachen der Induktion</div>
+          <div class="fsr-quellen">
+            <button class="fsr-quelle on" id="lskUr0" onclick="_lskSetUrsache('flaeche')">
+              <span class="fsr-quelle-n">veränderliche Fläche</span>
+              <span class="fsr-quelle-k">Leiter bewegt sich, B bleibt</span></button>
+            <button class="fsr-quelle" id="lskUr1" onclick="_lskSetUrsache('feld')">
+              <span class="fsr-quelle-n">veränderliches Feld</span>
+              <span class="fsr-quelle-k">Leiter ruht, B ändert sich</span></button>
+          </div>
+          <div class="lsk-ursache" id="lskUrsache"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 6 ══ -->
+    <div id="lskS5" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="lskInhomAufbau" width="440" height="240" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Ruhelage verschieben – der Stab schwingt teils aus dem Feld heraus</div>
+          <canvas id="lskInhomOszi" width="440" height="280" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Zeit-Spannungs-Diagramm</div>
+        </div>
+        <div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Ruhelage</span>
+              <input type="range" id="lskRuhelage" min="-0.10" max="0.10" step="0.005" value="0"
+                oninput="_lskSetRuhelage(this.value)"><b id="lskRuhelageLbl">0,0 cm</b></div>
+            <div class="fpm-note" style="margin-top:4px">Bei 0 cm liegt die Ruhelage in der Mitte
+              zwischen den Schenkeln – wie in Abbildung 13. Verschiebt man sie, schwingt der Stab
+              zeitweise aus dem Feld heraus, wie in Abbildung 14.</div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="lskInhomBtn" onclick="_lskInhomToggle()">▶ Auslenken und loslassen</button>
+            <button class="sim-btn" onclick="_lskInhomReset()">↺ Zurücksetzen</button>
+          </div>
+          <div class="lsk-zustand" id="lskInhomDeutung"></div>
+          <div class="ebr-rechnung" id="lskInhomRechnung"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="lskErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>F<sub>L</sub> = e · v · B</b> &nbsp;|&nbsp; <b>U = W / Q</b>
+      &nbsp;|&nbsp; <b>U = L · v · B</b> &nbsp;|&nbsp; <b>F<sub>magn</sub> = L²·B²·v / R</b>
+    </p>
+  </div>`;
+}
+
+function _lskErklHTML() {
+  return `<div class="dsp-erkl-kopf">Der Versuch in einem Satz</div>
+    <div class="dsp-erkl-text">
+      Ein Metallstab hängt an zwei dünnen Drähten und schwingt wie eine Schaukel zwischen den
+      Schenkeln eines Hufeisenmagneten. An seinen Enden misst man eine Spannung, die dem
+      Augenschein nach sinusförmig verläuft und deren Amplitude über viele Perioden hinweg
+      abnimmt. Weil die Spannung nur einige Zehntel Millivolt beträgt, braucht man einen
+      Mikrovoltverstärker mit etwa 10 000-facher Vorverstärkung, bevor ein Speicheroszilloskop
+      oder ein Messwerterfassungssystem etwas anzeigen kann.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum überhaupt eine Spannung entsteht</div>
+    <div class="dsp-erkl-text">
+      Der entscheidende Gedanke: Bewegt sich der Stab, dann bewegen sich <b>seine Leitungselektronen
+      mit</b>. Auf eine bewegte Ladung im Magnetfeld wirkt die <b>Lorentzkraft</b>
+      F<sub>L</sub> = e · v × B. Sie steht senkrecht auf v und auf B, zeigt hier also
+      <i>längs des Stabes</i> und schiebt die Elektronen zu einem Ende. Dort sammelt sich negative
+      Ladung, am anderen Ende bleibt positive zurück – im Stab entsteht ein <b>elektrisches Feld</b>,
+      das die Elektronen zurücktreibt. Die Ladungstrennung wächst so lange, bis sich beide Kräfte
+      aufheben: F<sub>el</sub> = F<sub>L</sub>, also e · E = e · v · B, und mit E = U/L folgt
+      unmittelbar <b>U = L · v · B</b>. Das ist keine neue Naturkonstante und kein neues Gesetz –
+      es folgt allein aus der Lorentzkraft.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Spannung ist Energie je Ladung</div>
+    <div class="dsp-erkl-text">
+      Dasselbe Ergebnis erhält man über die Energie, und dieser Weg macht deutlich, was eine
+      Spannung überhaupt ist. Die Lorentzkraft schiebt eine Ladung Q über die Länge L des Stabes
+      und verrichtet dabei die Arbeit W = F<sub>L</sub> · L = Q · v · B · L. Definiert man die
+      Spannung als <b>Arbeit je Ladung</b>, U = W/Q, so kürzt sich die Ladung heraus und es bleibt
+      wieder U = L · v · B. Die Spannung sagt also, wie viel Energie eine Ladung beim Durchlaufen
+      des Leiters gewinnt – unabhängig davon, wie groß diese Ladung ist. Genau deshalb misst man
+      Spannungen in Volt = Joule je Coulomb.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die Drei-Finger-Regel</div>
+    <div class="dsp-erkl-text">
+      Die Richtungen bekommt man mit der <b>rechten Hand</b>: Der <b>Daumen</b> zeigt in die
+      technische Stromrichtung, also <i>entgegen</i> der Bewegungsrichtung der Elektronen, weil
+      diese negativ geladen sind. Der <b>Zeigefinger</b> zeigt in Richtung des Magnetfeldes, der
+      <b>Mittelfinger</b> dann in Richtung der Kraft. Kehrt man die Bewegungsrichtung um, kehrt
+      sich die Polung der Spannung um; kehrt man zusätzlich die Feldrichtung um, ist man wieder
+      beim Ausgangszustand. Deshalb wechselt die Induktionsspannung bei jeder Halbschwingung ihr
+      Vorzeichen – und deshalb ist das Oszillogramm eine Wechselspannung.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Was die Kurve verrät</div>
+    <div class="dsp-erkl-text">
+      Die Spannung ist der Geschwindigkeit proportional, nicht der Auslenkung. Deshalb ist sie
+      <b>null in den Umkehrpunkten</b>, wo das Pendel steht, und <b>am größten beim Durchgang durch
+      die Ruhelage</b>, wo es am schnellsten ist. Das Oszillogramm ist also gegenüber der
+      Ortskurve um eine Viertelperiode verschoben. Die Abnahme der Amplituden über viele Perioden
+      zeigt die Dämpfung durch Luftwiderstand und Aufhängung; kleine Papierfahnen an den
+      Leiterenden verstärken sie deutlich.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die beiden Ursachen der Induktion</div>
+    <div class="dsp-erkl-text">
+      Alle Induktionserscheinungen lassen sich auf zwei Ursachen zurückführen: ein <b>zeitlich
+      veränderliches Magnetfeld</b> oder eine <b>zeitlich veränderliche wirksame Fläche</b>. Die
+      Leiterschaukel ist der Musterfall der zweiten Ursache: Schließt man den Stromkreis, so
+      umschließt die Leiterschleife eine Fläche, die sich beim Schwingen ändert. Beide Fälle fasst
+      dasselbe Gesetz zusammen, U = −dΦ/dt mit Φ = B · A. Rechnet man es für den bewegten Stab
+      aus, so ist Φ = B · L · x und damit U = B · L · dx/dt = <b>B · L · v</b> – exakt dasselbe
+      Ergebnis wie aus dem Kraftansatz. Zwei völlig verschiedene Überlegungen, ein Ergebnis.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Der Ringversuch</div>
+    <div class="dsp-erkl-text">
+      Lässt man statt des Stabes einen geschlossenen Aluminiumring am Magneten vorbeipendeln, wird
+      die Schwingung auffällig stark gebremst – und zwar <b>unabhängig davon, wie herum</b> der
+      Magnet steht. Der Grund: Im Ring fließt jetzt wirklich ein Strom I = U/R. Damit ist der Ring
+      ein <b>stromdurchflossener Leiter im Magnetfeld</b>, auf den die Kraft F = I · L × B wirkt.
+      Setzt man I = U/R und U = L·v·B ein, folgt <b>F = L²·B²·v / R</b>. Diese Kraft ist der
+      Geschwindigkeit proportional und ihr stets entgegengerichtet – sie wirkt wie eine Reibung.
+      Dass B quadratisch eingeht, erklärt die Unabhängigkeit von der Feldrichtung: Beim Umdrehen
+      des Magneten wechseln Strom und Kraftrichtung gemeinsam das Vorzeichen. Am Voltmeter, das
+      einen sehr hohen Eingangswiderstand hat, fließt dagegen fast kein Strom – dort bleibt die
+      Bremswirkung aus.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Wenn das Feld nicht homogen ist</div>
+    <div class="dsp-erkl-text">
+      Bleibt der Stab immer zwischen den Schenkeln, ist B nahezu konstant und die Kurve nahezu
+      sinusförmig. Verschiebt man die Ruhelage so, dass er zeitweise aus dem Feld herausschwingt,
+      wird das Oszillogramm sichtbar <b>verzerrt</b>: Dort, wo der Stab im schwachen Streufeld
+      läuft, ist die Spannung kleiner, als seine Geschwindigkeit erwarten ließe. Genauer hinsehen
+      lohnt sich hier. Verzerrt wird die <b>Form</b> der Halbwellen – sie werden schief, steigen
+      steil an und fallen flach ab. Ihr <b>Größtwert bleibt gleich</b>, denn Hin- und Rückweg
+      überstreichen dieselben Orte und damit dieselben Feldstärken. Was wandert, ist die
+      <b>Lage</b> des Größtwerts: Er liegt nicht mehr in der Ruhelage, sondern dort, wo das
+      Produkt aus Geschwindigkeit und Feldstärke am größten wird. Die Handreichung formuliert das
+      genau so vorsichtig – sie schreibt, das Maximum werde <i>in der Nähe</i> der Ruhelage
+      erreicht. Die Nulldurchgänge dagegen bleiben, wo sie waren: Sie liegen immer in den
+      <b>Umkehrpunkten</b>, wo v = 0 ist, ganz gleich wie stark das Feld dort ist.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Wozu die Vorverstärkung</div>
+    <div class="dsp-erkl-text">
+      Beim Ablesen darf man den Verstärker nicht vergessen. Steht das Oszilloskop auf
+      2 V je Kästchen und beträgt die Vorverstärkung 10 000, dann entspricht ein Kästchen am
+      <i>Eingang</i> nur 2 V / 10 000 = <b>0,2 mV</b>. Wer das übersieht, liest Spannungen um den
+      Faktor 10 000 zu groß ab. Für die Zeitachse gilt das nicht – der Verstärker ändert nur die
+      Höhe der Kurve, nicht ihren zeitlichen Verlauf. Periodendauer und Frequenz liest man also
+      direkt ab.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Im echten Versuch: Der Aufbau ist ungefährlich, die Bestimmungen
+      der RiSU sind dennoch einzuhalten. Der Metallstab muss <b>nicht ferromagnetisch</b> sein –
+      sonst würde er vom Magneten angezogen statt frei zu schwingen.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _lskSetStation(i) {
+  _lsk.station = i;
+  for (let k = 0; k < 6; k++) {
+    document.getElementById('lskSt' + k)?.classList.toggle('on', k === i);
+    const d = document.getElementById('lskS' + k);
+    if (d) d.style.display = k === i ? 'block' : 'none';
+  }
+  _lskUpdate();
+  if (i === 2) _lskDrawPlot();
+}
+function _lskSet(key, val) { _lsk[key] = val; _lskDrawPlot(); }
+
+// ── Station 1 ──────────────────────────────────────────
+function _lskToggle() {
+  _lsk.laeuft = !_lsk.laeuft;
+  if (_lsk.laeuft && _lsk.t === 0) _lsk.spur = [];
+  const b = document.getElementById('lskStartBtn');
+  if (b) b.textContent = _lsk.laeuft ? '⏸ Anhalten' : '▶ Auslenken und loslassen';
+  _lskUpdate();
+}
+function _lskReset() {
+  _lsk.laeuft = false; _lsk.t = 0; _lsk.spur = []; _lsk.geprueft = null;
+  const b = document.getElementById('lskStartBtn');
+  if (b) b.textContent = '▶ Auslenken und loslassen';
+  _lskUpdate();
+}
+function _lskStepZeit(d) {
+  _lsk.zeitI = Math.max(0, Math.min(_LSK_ZEITEN.length - 1, _lsk.zeitI + d));
+  _lskUpdate();
+}
+function _lskSetPl(v) { _lsk.pl = Math.max(0.4, Math.min(1, +v)); _lskReset(); }
+function _lskSetStabL(v) { _lsk.stabL = Math.max(0.10, Math.min(0.15, +v)); _lskUpdate(); }
+function _lskSetPhi0(v) { _lsk.phi0 = Math.max(0.05, Math.min(0.30, +v)); _lskUpdate(); }
+function _lskSetB(v) { _lsk.B = Math.max(0.005, Math.min(0.05, +v)); _lskUpdate(); }
+function _lskSetFahnen(v) { _lsk.fahnen = !!v; _lskReset(); }
+function _lskSetLese(f, v) { _lsk[f] = v; _lskRenderLese(); }
+
+function _lskLeseAus() {
+  const a = parseFloat(String(_lsk.leseA).replace(',', '.'));
+  const t = parseFloat(String(_lsk.leseT).replace(',', '.'));
+  const r = {};
+  if (isFinite(a) && a > 0) {
+    r.anzeige = a * _LSK_VDIV;             // Volt am Oszilloskop
+    r.U = r.anzeige / _LSK_VORV;           // echte Induktionsspannung
+  }
+  if (isFinite(t) && t > 0) {
+    r.T = t * _lskZeit();
+    r.f = 1 / r.T;
+  }
+  return r;
+}
+function _lskPruefen() {
+  const r = _lskLeseAus();
+  const sollU = _lskU(_lskLWirk(), _lskVMax(), _lsk.B);
+  const sollT = _lskPeriode(_lsk.pl);
+  _lsk.geprueft = {
+    gU: r.U !== undefined ? Math.abs(r.U - sollU) / sollU * 100 : null,
+    gT: r.T !== undefined ? Math.abs(r.T - sollT) / sollT * 100 : null,
+    sollU, sollT
+  };
+  _lskUpdate();
+}
+
+function _lskUpdate() {
+  if (!_lsk) return;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  set('lskZeitLbl', _fpmNum(_lskZeit(), 1) + ' s');
+  set('lskPlLbl', Math.round(_lsk.pl * 100) + ' cm');
+  set('lskStabLLbl', _fpmNum(_lsk.stabL * 100, 1) + ' cm');
+  set('lskPhi0Lbl', Math.round(_lsk.phi0 * 180 / Math.PI) + '°');
+  set('lskBLbl', Math.round(_lsk.B * 1000) + ' mT');
+  set('lskVA', _fpmNum(_lskV(_lsk.t), 3));
+  set('lskUA', _lskMV(_lskUt(_lsk.t)));
+  set('lskTA', _fpmNum(_lskPeriode(_lsk.pl), 3));
+  set('lskFA', _fpmNum(1 / _lskPeriode(_lsk.pl), 3));
+
+  const st = document.getElementById('lskOsziStatus');
+  if (st) {
+    st.innerHTML = `<span class="osz-st-k">Zeit</span><b>${_fpmNum(_lskZeit(), 1)} s/Kästchen</b>
+      <span class="osz-st-k">Verstärkung</span><b>${_LSK_VDIV} V/Kästchen</b>
+      <span class="osz-st-k">Vorverstärkung</span><b>${_LSK_VORV}</b>
+      <span class="osz-st-k">Aufzeichnung</span><b style="color:${_lsk.laeuft ? '#4ade80' : '#94a3b8'}">${
+        _fpmNum(_lsk.t, 1)} s</b>`;
+  }
+
+  _lskRenderLese();
+  _lskRenderK3();
+  _lskRenderHerleitung();
+  _lskRenderHypo();
+  _lskRenderHelm();
+  _lskRenderRing();
+  _lskRenderInhom();
+}
+
+function _lskRenderLese() {
+  const el = document.getElementById('lskLeseAus'); if (!el) return;
+  const r = _lskLeseAus();
+  let html = '';
+  if (r.U !== undefined) {
+    html += `<div class="pho-rz"><span class="pho-rz-t">am Oszilloskop abgelesen</span>
+      <span class="pho-rz-f">n · ${_LSK_VDIV} V/Kästchen</span>
+      <span class="pho-rz-v">${_fpmNum(r.anzeige, 2)} V</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">geteilt durch die Vorverstärkung</span>
+      <span class="pho-rz-f">U = Anzeige / ${_LSK_VORV}</span>
+      <span class="pho-rz-v">${_lskMV(r.U)} mV</span></div>`;
+  }
+  if (r.T !== undefined) {
+    html += `<div class="pho-rz"><span class="pho-rz-t">Periodendauer</span>
+      <span class="pho-rz-f">T = n · ${_fpmNum(_lskZeit(), 1)} s/Kästchen</span>
+      <span class="pho-rz-v">${_fpmNum(r.T, 3)} s</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Frequenz</span>
+      <span class="pho-rz-f">f = 1 / T</span>
+      <span class="pho-rz-v">${_fpmNum(r.f, 3)} Hz</span></div>`;
+  }
+  if (!html) {
+    html = `<div class="fpm-note">Zähle am Oszillogramm ab, wie viele Kästchen der größte
+      Ausschlag hoch ist und über wie viele Kästchen sich eine volle Periode erstreckt.
+      <b>Denk an die Vorverstärkung</b> – sonst liest du die Spannung um den Faktor
+      ${_LSK_VORV} zu groß ab.</div>`;
+  }
+  el.innerHTML = html;
+
+  const pr = document.getElementById('lskLesePruef');
+  if (pr) {
+    const g = _lsk.geprueft;
+    if (!g) { pr.className = 'lsk-zustand'; pr.innerHTML = 'Trage deine Ablesung ein und prüfe sie.'; return; }
+    const gut = (g.gU === null || g.gU < 8) && (g.gT === null || g.gT < 8) && (g.gU !== null || g.gT !== null);
+    pr.className = 'lsk-zustand ' + (gut ? 'ok' : 'no');
+    pr.innerHTML = (gut ? '<b>Gut abgelesen.</b> ' : '<b>Da stimmt etwas nicht.</b> ')
+      + 'Der Sollwert ist U<sub>max</sub> = ' + _lskMV(g.sollU) + ' mV bei T = '
+      + _fpmNum(g.sollT, 3) + ' s.'
+      + (g.gU !== null ? ' Deine Spannung weicht um ' + _fpmNum(g.gU, 1) + ' % ab.' : ' Keine Spannung abgelesen.')
+      + (g.gT !== null ? ' Deine Periodendauer um ' + _fpmNum(g.gT, 1) + ' %.' : ' Keine Zeit abgelesen.')
+      + (gut ? '' : ' Prüfe, ob du durch die Vorverstärkung geteilt hast.');
+  }
+}
+
+// Kompetenz K3: den Versuch adressatenbezogen erlaeutern
+function _lskRenderK3() {
+  const el = document.getElementById('lskK3'); if (!el) return;
+  const U = _lskU(_lskLWirk(), _lskVMax(), _lsk.B);
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du diesen Versuch jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Wir wollen zeigen, dass allein die <b>Bewegung</b> eines Leiters im Magnetfeld eine
+        Spannung erzeugt – ohne Batterie, ohne Stromquelle. Und wir wollen herausfinden, wovon
+        diese Spannung abhängt.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Ein Metallstab von ${_fpmNum(_lsk.stabL * 100, 1)} cm Länge hängt an zwei dünnen,
+        sehr flexiblen Kabeln von ${Math.round(_lsk.pl * 100)} cm Länge und schwingt zwischen den
+        Schenkeln eines Hufeisenmagneten. Seine Enden führen über einen Mikrovoltverstärker
+        (Vorverstärkung ${_LSK_VORV}) an ein Speicheroszilloskop.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Der Stab wird von Hand ausgelenkt und losgelassen. Das Oszilloskop zeichnet die Spannung
+        über der Zeit auf.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        Es entsteht eine <b>Wechselspannung</b> von hier höchstens ${_lskMV(U)} mV mit der
+        Periodendauer ${_fpmNum(_lskPeriode(_lsk.pl), 2)} s. Sie ist null, wenn das Pendel in den
+        Umkehrpunkten steht, und am größten beim Durchgang durch die Ruhelage – sie folgt also der
+        <b>Geschwindigkeit</b>, nicht der Auslenkung. Über viele Perioden nimmt ihre Amplitude ab,
+        weil die Schwingung gedämpft ist.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Mit dem Stab bewegen sich seine Leitungselektronen. Auf sie wirkt die Lorentzkraft und
+        schiebt sie zu einem Ende – zwischen den Enden entsteht dadurch die Spannung
+        <b>U = L · v · B</b>.</div>
+    </div>`;
+}
+
+// ── Station 2: Herleitung ──────────────────────────────
+function _lskUmkehr(feld) { _lsk[feld] = -_lsk[feld]; _lskRenderHerleitung(); }
+function _lskSchritt(d) {
+  _lsk.schritt = d === 99 ? 5 : Math.max(0, Math.min(5, _lsk.schritt + d));
+  _lskRenderHerleitung();
+}
+const _LSK_SCHRITTE = [
+  { k: 'Ausgangslage',
+    t: 'Der Stab bewegt sich mit der Geschwindigkeit v durch das Magnetfeld B. Beide stehen senkrecht aufeinander, und die Stabachse steht senkrecht auf beiden. Wichtig: Mit dem Stab bewegen sich auch <b>seine Leitungselektronen</b>.',
+    f: '' },
+  { k: 'Die Lorentzkraft wirkt',
+    t: 'Auf jedes mitbewegte Elektron wirkt die Lorentzkraft. Sie steht senkrecht auf v und auf B – zeigt also <b>längs des Stabes</b>. Mit v ⊥ B ist sin 90° = 1, der Betrag also einfach e·v·B.',
+    f: 'F<sub>L</sub> = e · v × B = e · v · B · sin 90° = e · v · B' },
+  { k: 'Ladungen werden getrennt',
+    t: 'Die Elektronen werden zu einem Ende des Stabes verschoben. Dort herrscht Elektronenüberschuss, am anderen Ende Elektronenmangel. Zwischen den Enden entsteht dadurch ein <b>elektrisches Feld</b> im Stab.',
+    f: '' },
+  { k: 'Das Gegenfeld bremst',
+    t: 'Dieses elektrische Feld übt selbst eine Kraft auf die Elektronen aus – und zwar <b>entgegen</b> der Lorentzkraft. Je mehr Ladung getrennt ist, desto stärker wirkt es zurück.',
+    f: 'F<sub>el</sub> = e · E' },
+  { k: 'Gleichgewicht',
+    t: 'Die Ladungstrennung wächst so lange, bis sich beide Kräfte genau aufheben. Ab da fließt keine Ladung mehr, der Zustand ist stationär.',
+    f: 'F<sub>el</sub> = F<sub>L</sub>  ⇒  e · E = e · v · B  ⇒  E = v · B' },
+  { k: 'Das Ergebnis',
+    t: 'Für ein homogenes Feld im Stab gilt E = U/L. Einsetzen liefert unmittelbar die gesuchte Beziehung. Sie enthält nur Messbares: Leiterlänge, Geschwindigkeit und Feldstärke.',
+    f: 'E = U / L  ⇒  <b>U = L · v · B</b>' }
+];
+function _lskRenderHerleitung() {
+  const el = document.getElementById('lskSchritte');
+  if (el) {
+    el.innerHTML = _LSK_SCHRITTE.map((s, i) => {
+      const aktiv = i <= _lsk.schritt;
+      return `<div class="lsk-schritt${aktiv ? ' an' : ''}${i === _lsk.schritt ? ' jetzt' : ''}">
+        <span class="lsk-schritt-n">${i + 1}</span>
+        <div><div class="lsk-schritt-k">${s.k}</div>
+        ${aktiv ? '<div class="lsk-schritt-t">' + s.t + '</div>' : ''}
+        ${aktiv && s.f ? '<div class="lsk-schritt-f">' + s.f + '</div>' : ''}</div></div>`;
+    }).join('');
+  }
+
+  // Kompetenz UF2: Spannung als Energie je Ladung
+  const en = document.getElementById('lskEnergie');
+  if (en) {
+    const L = 0.12, v = 0.5, B = 0.02;
+    const F = _LSK_E * v * B, W = _lskArbeit(L, v, B), U = _lskUAusArbeit(L, v, B);
+    en.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">Kraft auf ein Elektron</span>
+        <span class="pho-rz-f">F<sub>L</sub> = e · v · B</span>
+        <span class="pho-rz-v">${_ebrExp(F, 3)} N</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">Arbeit längs des Stabes</span>
+        <span class="pho-rz-f">W = F<sub>L</sub> · L</span>
+        <span class="pho-rz-v">${_ebrExp(W, 3)} J</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Spannung ist Arbeit je Ladung</span>
+        <span class="pho-rz-f">U = W / Q</span>
+        <span class="pho-rz-v">${_lskMV(U)} mV</span></div>
+      <div class="fpm-note">Beispiel mit L = 12 cm, v = 0,5 m/s und B = 20 mT. Die Ladung kürzt
+        sich heraus: W/Q = (Q·v·B·L)/Q = L·v·B. Deshalb ist die Spannung <b>unabhängig davon,
+        wie groß die bewegte Ladung ist</b> – sie sagt nur, wie viel Energie <i>je</i> Coulomb
+        umgesetzt wird. 1 Volt ist genau 1 Joule je Coulomb. Beide Wege, der Kraftansatz und der
+        Energieansatz, führen auf dasselbe Ergebnis.</div>`;
+  }
+
+  const dr = document.getElementById('lskDrei');
+  if (dr) {
+    const v = _lsk.vRichtung > 0, b = _lsk.bRichtung > 0;
+    // Elektronen werden bei v>0, B>0 nach der einen Seite geschoben; jede
+    // Umkehr dreht die Polung, zwei Umkehrungen heben sich auf.
+    const oben = (_lsk.vRichtung * _lsk.bRichtung) > 0;
+    dr.innerHTML = `<div class="git-sch-kopf">Drei-Finger-Regel – welches Ende wird negativ?</div>
+      <div class="lsk-drei-text">
+        Nimm die <b>rechte Hand</b>. Der <b>Daumen</b> zeigt in die technische Stromrichtung, also
+        <i>entgegen</i> der Bewegungsrichtung der Elektronen, denn sie sind negativ geladen. Der
+        <b>Zeigefinger</b> zeigt in Richtung des Magnetfeldes, der <b>Mittelfinger</b> dann in
+        Richtung der Lorentzkraft auf die Ladungsträger.
+      </div>
+      <div class="lsk-drei-jetzt">
+        Der Stab bewegt sich gerade nach <b>${v ? 'rechts' : 'links'}</b>, das Feld zeigt
+        <b>${b ? 'in die Zeichenebene hinein' : 'aus der Zeichenebene heraus'}</b>.
+        Die Lorentzkraft schiebt die Elektronen damit nach <b>${oben ? 'oben' : 'unten'}</b> –
+        das <b>${oben ? 'obere' : 'untere'}</b> Ende wird negativ, das
+        ${oben ? 'untere' : 'obere'} positiv.
+        Kehrt man <i>eine</i> der beiden Richtungen um, dreht sich die Polung. Kehrt man
+        <i>beide</i> um, bleibt sie gleich – das ist die Probe auf die Regel.
+      </div>`;
+  }
+}
+
+// ── Station 3: Hypothesen ──────────────────────────────
+function _lskSetH(feld, v) {
+  const gr = { hv: [0.05, 0.8], hB: [0.0002, 0.004], hL: [0.1, 3], halpha: [0, 90] };
+  _lsk[feld] = Math.max(gr[feld][0], Math.min(gr[feld][1], +v));
+  _lskRenderHypo();
+}
+function _lskHU() { return _lskU(_lsk.hL, _lsk.hv, _lsk.hB, _lsk.halpha); }
+function _lskTake() {
+  _lsk.rows.push({ id: _lsk.nextId++, v: _lsk.hv, B: _lsk.hB, L: _lsk.hL,
+                   alpha: _lsk.halpha, U: _lskHU() });
+  _lskRenderTable(); _lskDrawPlot();
+}
+function _lskDelRow(id) { _lsk.rows = _lsk.rows.filter(r => r.id !== id); _lskRenderTable(); _lskDrawPlot(); }
+function _lskClear() {
+  if (_lsk.rows.length && !confirm('Alle ' + _lsk.rows.length + ' Messwerte löschen?')) return;
+  _lsk.rows = []; _lskRenderTable(); _lskDrawPlot();
+}
+// Eine Messreihe, wie sie eine Lerngruppe arbeitsteilig aufnimmt: immer nur
+// eine Groesse veraendern, die uebrigen festhalten.
+function _lskDemo() {
+  const nimm = (v, B, L, a) => _lsk.rows.push({ id: _lsk.nextId++, v, B, L, alpha: a, U: _lskU(L, v, B, a) });
+  [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7].forEach(v => nimm(v, 0.002, 1.5, 90));
+  [0.0005, 0.001, 0.0015, 0.002, 0.003, 0.0035].forEach(B => nimm(0.4, B, 1.5, 90));
+  [0.3, 0.6, 0.9, 1.5, 2.1, 2.7].forEach(L => nimm(0.4, 0.002, L, 90));
+  [0, 15, 30, 45, 60, 75, 90].forEach(a => nimm(0.4, 0.002, 1.5, a));
+  _lskRenderTable(); _lskDrawPlot();
+}
+function _lskRenderTable() {
+  const tb = document.getElementById('lskTbody'); if (!tb) return;
+  const leer = document.getElementById('lskEmpty');
+  if (leer) leer.style.display = _lsk.rows.length ? 'none' : 'block';
+  tb.innerHTML = _lsk.rows.map((r, i) =>
+    `<tr><td>${i + 1}</td><td>${_fpmNum(r.v, 2)}</td><td>${_fpmNum(r.B * 1000, 2)}</td>
+       <td>${_fpmNum(r.L, 2)}</td><td>${Math.round(r.alpha)}°</td>
+       <td><b>${_lskMV(r.U)}</b></td>
+       <td class="fpm-del" onclick="_lskDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+// Die sechs Hypothesen der Handreichung, Seite 5
+function _lskRenderHypo() {
+  const el = document.getElementById('lskHypo'); if (!el) return;
+  const U = _lskHU();
+  const bewegt = _lsk.hv > 0.001;
+  const H = [
+    { t: 'Eine Induktionsspannung tritt nur auf, wenn sich der Leiter bewegt und v <b>nicht parallel</b> zu B verläuft.',
+      ok: bewegt && _lsk.halpha > 0,
+      jetzt: !bewegt ? 'v ist null – keine Spannung' : _lsk.halpha === 0 ? 'α = 0°, v ∥ B – keine Spannung' : 'erfüllt' },
+    { t: 'Die Induktionsspannung nimmt mit dem <b>Betrag der Geschwindigkeit</b> zu.', ok: true,
+      jetzt: 'U ∝ v, geprüft im Diagramm v → U' },
+    { t: 'Sie ist bei gleicher Geschwindigkeit <b>größer, wenn das Magnetfeld stärker</b> ist.', ok: true,
+      jetzt: 'U ∝ B, geprüft im Diagramm B → U' },
+    { t: 'Sie wächst mit dem <b>Winkel zwischen v und B</b> von 0° bis 90°.', ok: true,
+      jetzt: 'U ∝ sin α, bei α = ' + Math.round(_lsk.halpha) + '° ist sin α = ' + _fpmNum(Math.sin(_lsk.halpha * Math.PI / 180), 3) },
+    { t: 'Die <b>Polung</b> lässt sich mit einer Drei-Finger-Regel vorhersagen.', ok: true,
+      jetzt: 'siehe Station 2' },
+    { t: 'Sie wächst mit der <b>Länge des bewegten Leiters</b>.', ok: true,
+      jetzt: 'U ∝ L, geprüft im Diagramm L → U' }
+  ];
+  el.innerHTML = `<div class="git-sch-kopf">Die sechs Hypothesen aus den Freihandversuchen</div>
+    <div class="lsk-hypo-liste">${H.map((h, i) =>
+      `<div class="lsk-hypo-z"><span class="lsk-hypo-n">${i + 1}</span>
+         <div><div class="lsk-hypo-t">${h.t}</div>
+         <div class="lsk-hypo-j">${h.jetzt}</div></div></div>`).join('')}</div>
+    <div class="fpm-note">Alle sechs stecken in der einen Beziehung
+      <b>U = L · v · B · sin α</b>. Prüfe sie, indem du <b>immer nur eine Größe veränderst</b> und
+      die anderen festhältst – anders lässt sich kein Zusammenhang belegen.</div>`;
+
+  const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  set('lskHvLbl', _fpmNum(_lsk.hv, 2) + ' m/s');
+  set('lskHBLbl', _fpmNum(_lsk.hB * 1000, 2) + ' mT');
+  set('lskHLLbl', _fpmNum(_lsk.hL, 2) + ' m');
+  set('lskHalphaLbl', Math.round(_lsk.halpha) + '°');
+
+  const r = document.getElementById('lskHRechnung');
+  if (r) {
+    r.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">wirksame Geschwindigkeit quer zum Feld</span>
+        <span class="pho-rz-f">v<sub>⊥</sub> = v · sin α</span>
+        <span class="pho-rz-v">${_fpmNum(_lsk.hv * Math.sin(_lsk.halpha * Math.PI / 180), 3)} m/s</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Induktionsspannung</span>
+        <span class="pho-rz-f">U = L · v · B · sin α</span>
+        <span class="pho-rz-v">${_lskMV(U)} mV</span></div>
+      ${_lsk.halpha === 0 ? '<div class="fpm-note">Bei α = 0° bewegt sich der Leiter <b>längs</b> der Feldlinien. Die Lorentzkraft verschwindet, es wird keine Spannung induziert – genau die erste Hypothese.</div>' : ''}`;
+  }
+}
+
+const _LSK_PRESETS = [
+  { xl: 'Geschwindigkeit v in m/s', yl: 'Induktionsspannung U in mV',
+    x: r => r.v, y: r => r.U * 1000,
+    fest: r => Math.abs(r.B - _lsk.hB) < 1e-9 && Math.abs(r.L - _lsk.hL) < 1e-9 && r.alpha === _lsk.halpha,
+    k: () => _lsk.hL * _lsk.hB * Math.sin(_lsk.halpha * Math.PI / 180) * 1000,
+    ktxt: 'L · B · sin α',
+    note: 'Nur Messwerte mit denselben Werten für B, L und α gehören auf diese Gerade – sonst vergleicht man Verschiedenes.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)',
+    form: 'U = (L · B · sin α) · v',
+    deutung: 'Die zweite Hypothese: Die Induktionsspannung nimmt mit der Geschwindigkeit zu – und zwar proportional. Das ist der Kern des Bestätigungsversuchs der Handreichung, bei dem Geschwindigkeit und Spannung gleichzeitig aufgezeichnet und einander zugeordnet werden.' },
+
+  { xl: 'Magnetfeld B in mT', yl: 'Induktionsspannung U in mV',
+    x: r => r.B * 1000, y: r => r.U * 1000,
+    fest: r => Math.abs(r.v - _lsk.hv) < 1e-9 && Math.abs(r.L - _lsk.hL) < 1e-9 && r.alpha === _lsk.halpha,
+    k: () => _lsk.hL * _lsk.hv * Math.sin(_lsk.halpha * Math.PI / 180),
+    ktxt: 'L · v · sin α',
+    note: 'Nur Messwerte mit derselben Geschwindigkeit, Länge und demselben Winkel gehören auf diese Gerade.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)',
+    form: 'U = (L · v · sin α) · B',
+    deutung: 'Die dritte Hypothese: Bei gleicher Geschwindigkeit ist die Spannung größer, wenn das Feld stärker ist. Im Bestätigungsversuch verändert man dazu den Strom durch die Helmholtzspulen und misst B mit einer Hallsonde mit.' },
+
+  { xl: 'Leiterlänge L in m', yl: 'Induktionsspannung U in mV',
+    x: r => r.L, y: r => r.U * 1000,
+    fest: r => Math.abs(r.v - _lsk.hv) < 1e-9 && Math.abs(r.B - _lsk.hB) < 1e-9 && r.alpha === _lsk.halpha,
+    k: () => _lsk.hv * _lsk.hB * Math.sin(_lsk.halpha * Math.PI / 180) * 1000,
+    ktxt: 'v · B · sin α',
+    note: 'Nur Messwerte mit derselben Geschwindigkeit, demselben Feld und Winkel gehören auf diese Gerade.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)',
+    form: 'U = (v · B · sin α) · L',
+    deutung: 'Die sechste Hypothese: Die Spannung wächst mit der Länge des bewegten Leiters. Genau deshalb verwendet die Handreichung im Bestätigungsversuch nicht einen einzelnen Stab, sondern 15 Leiterschleifen von je 10 cm – so wird aus 0,1 m wirksamer Länge 1,5 m, und die Spannung ist trotz des schwachen Helmholtzfeldes noch gut messbar.' },
+
+  { xl: 'sin α', yl: 'Induktionsspannung U in mV',
+    x: r => Math.sin(r.alpha * Math.PI / 180), y: r => r.U * 1000,
+    fest: r => Math.abs(r.v - _lsk.hv) < 1e-9 && Math.abs(r.B - _lsk.hB) < 1e-9 && Math.abs(r.L - _lsk.hL) < 1e-9,
+    k: () => _lsk.hL * _lsk.hv * _lsk.hB * 1000,
+    ktxt: 'L · v · B',
+    note: 'Nicht der Winkel selbst, sondern sein Sinus ist die richtige Auftragung – nur so wird eine Gerade daraus.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)',
+    form: 'U = (L · v · B) · sin α',
+    deutung: 'Die vierte Hypothese sagt nur, dass die Spannung von 0° bis 90° wächst. Wie genau, verrät erst diese Auftragung: proportional zu sin α, nicht zum Winkel. Trägt man U über α selbst auf, bekommt man eine gekrümmte Kurve – ein gutes Beispiel dafür, dass die Wahl der Achsen über die Aussagekraft entscheidet.' }
+];
+
+function _lskSetPreset(i) {
+  _lsk.preset = i;
+  for (let k = 0; k < 4; k++) document.getElementById('lskTab' + k)?.classList.toggle('on', k === i);
+  if (_lsk.fnAuto) _lskTheorieFn(); else _lskRenderTheorie(false);
+  _lskDrawPlot();
+}
+function _lskTheorieFn() {
+  const term = _dspZahl(_LSK_PRESETS[_lsk.preset].k()) + '*x';
+  const inp = document.getElementById('lskFn');
+  if (inp) inp.value = term;
+  _lskSetFn(term);
+  _lsk.fnAuto = true;
+  _lskRenderTheorie(true);
+}
+function _lskClearFn() {
+  const inp = document.getElementById('lskFn');
+  if (inp) inp.value = '';
+  _lskSetFn(''); _lskRenderTheorie(false);
+}
+function _lskRenderTheorie(eingesetzt) {
+  const el = document.getElementById('lskTheo'); if (!el) return;
+  const P = _LSK_PRESETS[_lsk.preset];
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">${P.typ}</div>
+     <div class="fpm-theo-form">${P.form}</div>
+     <div class="fpm-theo-par">gesucht: die Steigung ${P.ktxt}</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${_dspZahl(P.k())}*x</div>` : ''}
+     <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+function _lskSetFn(str) {
+  _lsk.fnAuto = false;
+  const err = document.getElementById('lskFnErr');
+  const v = (str || '').trim();
+  if (!v) { _lsk.fn = null; if (err) err.textContent = ''; _lskDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _lsk.fn = f; if (err) err.textContent = '';
+  } catch (e) { _lsk.fn = null; if (err) err.textContent = e.message; }
+  _lskDrawPlot();
+}
+
+function _lskDrawPlot() {
+  const cv = document.getElementById('lskPlot');
+  if (!cv || !_lsk) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = _LSK_PRESETS[_lsk.preset];
+  const padL = 58, padR = 14, padT = 14, padB = 40;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  // Nur die Messwerte, bei denen die uebrigen Groessen festgehalten wurden
+  const alle = _lsk.rows.map(r => ({ x: P.x(r), y: P.y(r), passt: P.fest(r) }))
+    .filter(p => isFinite(p.x) && isFinite(p.y));
+  const pts = alle.filter(p => p.passt);
+  const xmax = Math.max(1e-9, alle.length ? Math.max(...alle.map(p => p.x)) * 1.12 : 1);
+  const ymax = Math.max(1e-9, alle.length ? Math.max(...alle.map(p => p.y)) * 1.15 : 1);
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+
+  const xt = _fpmTicks(xmax, 6);
+  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  xt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
+  });
+  const yt = _fpmTicks(ymax, 5);
+  yt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(P.xl, x1, y0 + 29);
+  ctx.save(); ctx.translate(14, y1 + 2); ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+
+  if (!alle.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2);
+    ctx.textAlign = 'left';
+    const fo = document.getElementById('lskFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + P.note + '</div>';
+    return;
+  }
+
+  if (_lsk.fn) {
+    ctx.strokeStyle = '#db2777'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    let begonnen = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _lsk.fn((px - x0) / (x1 - x0) * xmax); } catch (e) { yv = NaN; }
+      if (!isFinite(yv)) { begonnen = false; continue; }
+      const py = Y(yv);
+      if (py < y1 - 30 || py > y0 + 30) { begonnen = false; continue; }
+      begonnen ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), begonnen = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+
+  let fit = null;
+  if (pts.length >= 2) {
+    fit = _fpmFitOrigin(pts);
+    if (fit) {
+      ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.7;
+      ctx.beginPath(); ctx.moveTo(X(0), Y(0)); ctx.lineTo(X(xmax), Y(fit.k * xmax)); ctx.stroke();
+    }
+  }
+  // Nicht passende Messwerte blass – sie gehoeren zu anderen Einstellungen
+  alle.forEach(p => {
+    ctx.fillStyle = p.passt ? '#0369a1' : '#e2e8f0';
+    ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), p.passt ? 4 : 3, 0, 2 * Math.PI); ctx.fill();
+    if (p.passt) { ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke(); }
+  });
+
+  const fo = document.getElementById('lskFitBox');
+  if (fo) {
+    const soll = P.k();
+    if (!fit) {
+      fo.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte nötig, bei denen die '
+        + 'übrigen Größen <b>gleich</b> sind.<br>' + P.note + '</div>';
+    } else {
+      const abw = Math.abs(fit.k - soll) / Math.abs(soll) * 100;
+      const cls = abw < 1 ? 'ok' : abw < 5 ? 'mid' : 'no';
+      fo.innerHTML = `<div class="fpm-fitline">
+          <span class="fpm-fitmeta">${pts.length} passende Messwerte${
+            alle.length > pts.length ? ', ' + (alle.length - pts.length) + ' andere blass dargestellt' : ''}</span>
+          <span class="fpm-fiteq">y = ${_fpmNum(fit.k, 5)}·x</span>
+          <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 5)}</span>
+          <span class="fpm-fiteq" style="color:#075985">Steigung = ${P.ktxt} = ${_fpmNum(soll, 5)}</span>
+          ${_lsk.reveal ? `<span class="fpm-badge ${cls}">Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+        </div><div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">${P.note}</div>`;
+    }
+  }
+}
+
+// ── Station 4: Bestätigungsversuch ─────────────────────
+function _lskSetHI(v) { _lsk.hI = Math.max(0.5, Math.min(3, +v)); _lskRenderHelm(); }
+function _lskSetHall(v) { _lsk.hallAn = !!v; _lskRenderHelm(); }
+function _lskSetVersatz(v) { _lsk.versatz = Math.max(-0.4, Math.min(0.4, +v)); _lskRenderHelm(); }
+function _lskRenderHelm() {
+  const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  set('lskHILbl', _fpmNum(_lsk.hI, 2) + ' A');
+  set('lskVersatzLbl', _fpmNum(_lsk.versatz, 2) + ' s');
+
+  const el = document.getElementById('lskHelmRechnung');
+  if (el) {
+    const B = _lskBMess(), L = _lskLEff();
+    const v = 0.40;
+    const U = _lskU(L, v, B);
+    el.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">Feld der Helmholtzspulen, n = ${_LSK_HN}, R = ${_fpmNum(_LSK_HR * 100, 0)} cm</span>
+        <span class="pho-rz-f">B = 0,7155 · µ₀ · n · I / R</span>
+        <span class="pho-rz-v">${_fpmNum(_lskBHelm(_lsk.hI) * 1000, 3)} mT</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">${_lsk.hallAn ? 'mit der Hallsonde gemessen' : 'Hallsonde ausgeschaltet'}</span>
+        <span class="pho-rz-f">Anzeige auf 0,1 mT</span>
+        <span class="pho-rz-v">${_lsk.hallAn ? _fpmNum(_lskBHall(_lsk.hI) * 1000, 3) + ' mT' : '—'}</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">wirksame Leiterlänge, ${_LSK_SCHLEIFEN} Schleifen à ${_fpmNum(_LSK_SCHLEIFE_L * 100, 0)} cm</span>
+        <span class="pho-rz-f">L = ${_LSK_SCHLEIFEN} · ${_fpmNum(_LSK_SCHLEIFE_L, 2)} m</span>
+        <span class="pho-rz-v">${_fpmNum(L, 2)} m</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">erwartete Spannung bei v = ${_fpmNum(v, 2)} m/s</span>
+        <span class="pho-rz-f">U = L · v · B</span>
+        <span class="pho-rz-v">${_lskMV(U)} mV</span></div>
+      <div class="fpm-note">Ein einzelner Stab von 10 cm Länge käme im Helmholtzfeld nur auf
+        ${_lskMV(_lskU(_LSK_SCHLEIFE_L, v, B))} mV – zu wenig für die schulüblichen Messverstärker.
+        Deshalb verwendet die Handreichung eine flache Spule mit ${_LSK_SCHLEIFEN} Schleifen:
+        Nach der sechsten Hypothese wächst U mit der Leiterlänge, also wird die Spannung
+        ${_LSK_SCHLEIFEN}-mal so groß.</div>`;
+  }
+
+  const tb = document.getElementById('lskOrigTbody');
+  if (tb) {
+    tb.innerHTML = _LSK_ORIGINAL.map(o => {
+      const eigen = _lskU(_lskLEff(), o.v, o.Bg * 1e-3) * 1000;
+      const Bber = _lskBHelm(o.I) * 1000;
+      return `<tr><td>${_fpmNum(o.I, 2)}</td><td>${_fpmNum(o.Bg, 3)}</td>
+        <td>${_fpmNum(Bber, 2)}</td><td>${_fpmNum(o.v, 2)}</td>
+        <td>${_fpmNum(o.Ug, 2)}</td><td><b>${_fpmNum(eigen, 2)}</b></td></tr>`;
+    }).join('');
+  }
+  const nt = document.getElementById('lskOrigNote');
+  if (nt) {
+    let maxAbw = 0;
+    _LSK_ORIGINAL.forEach(o => {
+      const eigen = _lskU(_lskLEff(), o.v, o.Bg * 1e-3) * 1000;
+      maxAbw = Math.max(maxAbw, Math.abs(eigen - o.Ub));
+    });
+    nt.innerHTML = `Die Spalte <b>U ber.</b> ist hier nicht abgeschrieben, sondern aus
+      U = L · v · B mit L = ${_fpmNum(_lskLEff(), 2)} m und dem <i>gemessenen</i> B neu gerechnet.
+      Sie trifft die Werte der Handreichung auf ${_fpmNum(maxAbw, 3)} mV genau. Auch die Spalte
+      <b>B ber.</b> stammt aus der Helmholtzformel – daraus lässt sich zurückrechnen, dass es
+      dieselben Spulen sind wie beim Fadenstrahlrohr: ${_LSK_HN} Windungen bei
+      ${_fpmNum(_LSK_HR * 100, 0)} cm Radius. Gemessene und berechnete Spannungen weichen um
+      wenige Prozent voneinander ab – für einen Schulversuch mit Spannungen unter einem Millivolt
+      ist das eine sehr gute Übereinstimmung.`;
+  }
+
+  const sy = document.getElementById('lskSync');
+  if (sy) {
+    const v = Math.abs(_lsk.versatz);
+    if (v < 0.02) {
+      sy.className = 'lsk-zustand ok';
+      sy.innerHTML = '<b>Beide Kurven sind synchron.</b> Jeder Geschwindigkeit lässt sich die '
+        + 'zugehörige Spannung eindeutig zuordnen – so entsteht das v-U-Diagramm.';
+    } else {
+      sy.className = 'lsk-zustand no';
+      sy.innerHTML = '<b>Die Kurven sind um ' + _fpmNum(_lsk.versatz, 2) + ' s gegeneinander '
+        + 'verschoben.</b> Das ist kein Rechenfehler, sondern ein Geräteproblem: Preisgünstige '
+        + 'Messwerterfassungssysteme haben oft nur <b>einen einzigen Analog-Digital-Wandler</b> '
+        + 'für mehrere Kanäle und müssen die Signale nacheinander verarbeiten. Der '
+        + 'Ultraschall-Bewegungsmesswandler hängt zudem an einer digitalen Schnittstelle mit '
+        + 'eigener Wandlungszeit. Man darf die Kurven dann softwareseitig gegeneinander '
+        + 'verschieben – muss das aber offenlegen und begründen.';
+    }
+  }
+}
+
+// ── Station 5: Ringversuch ─────────────────────────────
+function _lskSetKoerper(k) {
+  _lsk.objekt = k;
+  Object.keys(_LSK_KOERPER).forEach(j =>
+    document.getElementById('lskK_' + j)?.classList.toggle('on', j === k));
+  _lsk.rt = 0; _lskRenderRing();
+}
+function _lskRingToggle() {
+  _lsk.rlaeuft = !_lsk.rlaeuft;
+  if (_lsk.rlaeuft && _lsk.rt === 0) _lsk.rt = 0;
+  const b = document.getElementById('lskRingBtn');
+  if (b) b.textContent = _lsk.rlaeuft ? '⏸ Anhalten' : '▶ Anstoßen';
+  _lskRenderRing();
+}
+function _lskMagnetToggle() {
+  _lsk.magnetAn = !_lsk.magnetAn;
+  const b = document.getElementById('lskMagnetBtn');
+  if (b) b.textContent = _lsk.magnetAn ? 'Magnet entfernen' : 'Magnet aufstellen';
+  _lsk.rt = 0; _lskRenderRing();
+}
+function _lskMagnetUm() { _lsk.magnetUm = !_lsk.magnetUm; _lsk.rt = 0; _lskRenderRing(); }
+function _lskSetUrsache(u) {
+  _lsk.ursache = u;
+  document.getElementById('lskUr0')?.classList.toggle('on', u === 'flaeche');
+  document.getElementById('lskUr1')?.classList.toggle('on', u === 'feld');
+  _lskRenderRing();
+}
+function _lskRenderRing() {
+  const k = _lskKoerper();
+  const el = document.getElementById('lskRingRechnung');
+  if (el) {
+    const B = _lsk.magnetAn ? _LSK_RING_B : 0;
+    const v = 0.5;
+    const U = _lskU(k.L, v, B), I = U / k.R, F = _lskBremsKraft(B, v);
+    const d = _lskDeltaEM(B);
+    el.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">induzierte Spannung bei v = ${_fpmNum(v, 1)} m/s</span>
+        <span class="pho-rz-f">U = L · v · B</span>
+        <span class="pho-rz-v">${_lskMV(U)} mV</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">Strom im Leiter</span>
+        <span class="pho-rz-f">I = U / R</span>
+        <span class="pho-rz-v">${I < 0.001 ? _ebrExp(I, 2) + ' A' : _fpmNum(I, 3) + ' A'}</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">Kraft auf den stromdurchflossenen Leiter</span>
+        <span class="pho-rz-f">F = I · L · B = L²·B²·v / R</span>
+        <span class="pho-rz-v">${F < 0.001 ? _ebrExp(F, 2) + ' N' : _fpmNum(F, 4) + ' N'}</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">daraus die Abklingkonstante</span>
+        <span class="pho-rz-f">δ = L²·B² / (2·m·R)</span>
+        <span class="pho-rz-v">${_fpmNum(d, 3)} 1/s</span></div>
+      <div class="fpm-note">${k.txt}</div>`;
+  }
+
+  const dt = document.getElementById('lskRingDeutung');
+  if (dt) {
+    const d = _lskDeltaEM(_LSK_RING_B);
+    if (!_lsk.magnetAn) {
+      dt.className = 'lsk-zustand';
+      dt.innerHTML = '<b>Ohne Magnet</b> schwingt der Körper lange nach – gebremst nur durch '
+        + 'Luftwiderstand und Aufhängung.';
+    } else if (d > 0.3) {
+      dt.className = 'lsk-zustand ok';
+      dt.innerHTML = '<b>Sehr deutliche Dämpfung.</b> Der induzierte Strom ist groß, also auch '
+        + 'die bremsende Kraft. Die Amplitude sinkt in einer Sekunde auf '
+        + Math.round(Math.exp(-d) * 100) + ' %. '
+        + 'Und das <b>unabhängig davon, wie herum der Magnet steht</b>: In F = L²·B²·v/R geht B '
+        + 'quadratisch ein. Dreht man den Magneten um, wechseln Strom <i>und</i> Kraftrichtung '
+        + 'gemeinsam das Vorzeichen – die Bremswirkung bleibt dieselbe. Sie ist immer der '
+        + 'Bewegung entgegengerichtet, wirkt also wie eine Reibung.';
+    } else if (d > 0.01) {
+      dt.className = 'lsk-zustand mid';
+      dt.innerHTML = '<b>Spürbare, aber schwächere Dämpfung.</b> Auch hier fließt ein Strom und '
+        + 'wirkt eine bremsende Kraft – die Abklingkonstante steigt von 0,05 auf '
+        + _fpmNum(0.05 + d, 3) + ' 1/s, die Schwingung klingt also rund '
+        + _fpmNum((0.05 + d) / 0.05, 1) + '-mal so schnell ab wie ohne Magnet. Gegenüber dem '
+        + 'Aluminiumring bleibt der Effekt aber klein: Dessen Widerstand ist rund achtzigmal '
+        + 'kleiner, und in δ = L²·B²/(2·m·R) steht R im Nenner. Dass der Ring dafür schwerer ist, '
+        + 'gleicht das nur teilweise aus – unterm Strich wird er etwa dreizehnmal stärker gebremst.';
+    } else {
+      dt.className = 'lsk-zustand no';
+      dt.innerHTML = '<b>Praktisch keine zusätzliche Dämpfung.</b> Das Spannungsmessgerät hat '
+        + 'einen sehr hohen Eingangswiderstand, es fließt also so gut wie kein Strom – und ohne '
+        + 'Strom keine Kraft. Genau deshalb stört das Messen den Versuch nicht: Man kann die '
+        + 'Induktionsspannung beobachten, ohne die Schwingung merklich zu beeinflussen.';
+    }
+  }
+
+  const ur = document.getElementById('lskUrsache');
+  if (ur) {
+    if (_lsk.ursache === 'flaeche') {
+      ur.innerHTML = `<div class="lsk-ur-t">
+        Schließt man den Stromkreis, so umschließt die Leiterschleife eine Fläche A. Bewegt sich
+        der Stab, so <b>ändert sich diese Fläche</b>, während B konstant bleibt. Das ist die
+        erste der beiden Induktionsursachen – und die Leiterschaukel ist ihr Musterfall.
+      </div>
+      <div class="pho-rz"><span class="pho-rz-t">magnetischer Fluss</span>
+        <span class="pho-rz-f">Φ = B · A = B · L · x</span><span class="pho-rz-v">B, L fest</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Induktionsgesetz</span>
+        <span class="pho-rz-f">U = −dΦ/dt = B · L · dx/dt</span>
+        <span class="pho-rz-v">= B · L · v</span></div>
+      <div class="fpm-note">Bemerkenswert: Das ist <b>exakt dasselbe Ergebnis</b> wie aus dem
+        Kraftansatz mit der Lorentzkraft in Station 2. Zwei völlig verschiedene Überlegungen –
+        die eine über Kräfte auf einzelne Elektronen, die andere über den Fluss durch eine
+        Fläche – führen auf dieselbe Formel. Das ist ein starkes Argument dafür, dass beide
+        richtig sind.</div>`;
+    } else {
+      ur.innerHTML = `<div class="lsk-ur-t">
+        Die zweite Ursache: Die Leiterschleife <b>ruht</b>, aber das Magnetfeld ändert sich mit
+        der Zeit – etwa weil der Strom durch eine benachbarte Spule verändert wird. Auch dann
+        wird eine Spannung induziert, obwohl sich kein Leiter bewegt und deshalb auch keine
+        Lorentzkraft auf mitbewegte Elektronen wirken kann.
+      </div>
+      <div class="pho-rz"><span class="pho-rz-t">magnetischer Fluss</span>
+        <span class="pho-rz-f">Φ = B(t) · A</span><span class="pho-rz-v">A fest</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Induktionsgesetz</span>
+        <span class="pho-rz-f">U = −dΦ/dt = −A · dB/dt</span>
+        <span class="pho-rz-v">A · Änderungsrate</span></div>
+      <div class="fpm-note">Beide Ursachen fasst dasselbe Gesetz zusammen: <b>U = −dΦ/dt</b> mit
+        Φ = B · A. Ändert sich A, hat man den Fall der Leiterschaukel; ändert sich B, den Fall
+        des Transformators. Das ist der Sinn der KLP-Forderung, alle Induktionserscheinungen auf
+        diese <b>zwei</b> Ursachen zurückzuführen – man muss sich nicht für jeden Aufbau ein
+        neues Gesetz merken.</div>`;
+    }
+  }
+}
+
+// ── Station 6: inhomogenes Feld ────────────────────────
+function _lskSetRuhelage(v) {
+  _lsk.ruhelage = Math.max(-0.10, Math.min(0.10, +v));
+  const e = document.getElementById('lskRuhelageLbl');
+  if (e) e.textContent = _fpmNum(_lsk.ruhelage * 100, 1) + ' cm';
+  _lskInhomReset();
+}
+function _lskInhomToggle() {
+  _lsk.ilaeuft = !_lsk.ilaeuft;
+  if (_lsk.ilaeuft && _lsk.it === 0) _lsk.ispur = [];
+  const b = document.getElementById('lskInhomBtn');
+  if (b) b.textContent = _lsk.ilaeuft ? '⏸ Anhalten' : '▶ Auslenken und loslassen';
+  _lskRenderInhom();
+}
+function _lskInhomReset() {
+  _lsk.ilaeuft = false; _lsk.it = 0; _lsk.ispur = [];
+  const b = document.getElementById('lskInhomBtn');
+  if (b) b.textContent = '▶ Auslenken und loslassen';
+  _lskRenderInhom();
+}
+// Verlaesst der Stab den homogenen Bereich?
+function _lskVerlaesstFeld() {
+  const a = _lsk.pl * _lsk.phi0;
+  return Math.abs(_lsk.ruhelage) + a > _LSK_HALBBREITE;
+}
+function _lskRenderInhom() {
+  const el = document.getElementById('lskInhomDeutung'); if (!el) return;
+  if (!_lskVerlaesstFeld()) {
+    el.className = 'lsk-zustand ok';
+    el.innerHTML = '<b>Der Stab bleibt immer zwischen den Schenkeln.</b> Dort ist das Feld nahezu '
+      + 'konstant, die Spannung folgt deshalb sauber der Geschwindigkeit und die Kurve ist nahezu '
+      + 'sinusförmig – das ist der Fall aus Abbildung 13 der Handreichung.';
+  } else {
+    el.className = 'lsk-zustand no';
+    el.innerHTML = '<b>Der Stab schwingt zeitweise aus dem Feld heraus.</b> Im Streufeld außerhalb '
+      + 'der Schenkel ist B viel kleiner, die Spannung dort also kleiner, als die Geschwindigkeit '
+      + 'erwarten ließe. Die Halbwellen werden dadurch <b>schief</b>: Sie steigen steil an und '
+      + 'fallen flach ab, statt symmetrisch zu verlaufen – das ist die Verzerrung aus Abbildung 14. '
+      + 'Ihr <b>Größtwert bleibt aber gleich</b>, denn hin- und Rückweg überstreichen dieselben '
+      + 'Orte und damit dieselben Feldstärken. Was sich verschiebt, ist die <b>Lage</b> des '
+      + 'Größtwerts: Er liegt nicht mehr in der Ruhelage, sondern dort, wo das Produkt aus '
+      + 'Geschwindigkeit und Feldstärke am größten wird – hier am Rand des homogenen Bereichs.';
+  }
+  const r = document.getElementById('lskInhomRechnung');
+  if (r) {
+    const x = _lskInhomX(_lsk.it);
+    const umkehr = _lsk.ruhelage + _lsk.pl * _lsk.phi0;
+    r.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">Ort des Stabes</span>
+        <span class="pho-rz-f">x(t)</span><span class="pho-rz-v">${_fpmNum(x * 100, 2)} cm</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">Feld an diesem Ort</span>
+        <span class="pho-rz-f">B(x)</span><span class="pho-rz-v">${_fpmNum(_lskBOrt(x) * 1000, 2)} mT</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">Geschwindigkeit</span>
+        <span class="pho-rz-f">v(t)</span><span class="pho-rz-v">${_fpmNum(_lskV(_lsk.it), 3)} m/s</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Induktionsspannung</span>
+        <span class="pho-rz-f">U = L · v · B(x)</span>
+        <span class="pho-rz-v">${_lskMV(_lskInhomU(_lsk.it))} mV</span></div>
+      <div class="fpm-note"><b>Die Aufgaben der Handreichung dazu.</b>
+        Die <b>Nulldurchgänge</b> der Spannung liegen dort, wo v = 0 ist – also in den
+        <b>Umkehrpunkten</b> der Bewegung, hier bei ${_fpmNum(umkehr * 100, 1)} cm und
+        ${_fpmNum((_lsk.ruhelage - _lsk.pl * _lsk.phi0) * 100, 1)} cm. Das gilt unabhängig davon,
+        wie stark das Feld dort ist: Ohne Bewegung keine Lorentzkraft, ohne Lorentzkraft keine
+        Spannung. Ein <b>verzerrter</b> Kurvenabschnitt gehört zu einer Halbschwingung im
+        Streufeld außerhalb der Schenkel, ein <b>unverzerrter</b> zu einer Halbschwingung
+        zwischen ihnen.</div>`;
+  }
+}
+
+// ── Zeichnung: Aufbau Station 1 ────────────────────────
+function _lskRenderAufbau(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const ax = W / 2, ay = 26;                 // Aufhaengepunkt
+  const SK = 150;                            // Bildpunkte je Meter
+  const lpx = Math.min(_lsk.pl * SK, H - ay - 60);
+  const phi = _lskPhi(_lsk.t);
+  const sx = ax + Math.sin(phi) * lpx, sy = ay + Math.cos(phi) * lpx;
+
+  // Stativ
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(ax - 70, ay - 8); ctx.lineTo(ax + 70, ay - 8); ctx.stroke();
+
+  // Polschuhe des Hufeisenmagneten, von der Seite gesehen
+  const pw = _LSK_POL * SK;
+  ctx.fillStyle = _lsk.magnetUm ? '#38bdf8' : '#f87171';
+  ctx.fillRect(ax - pw / 2 - 26, sy - 34, 26, 68);
+  ctx.fillStyle = _lsk.magnetUm ? '#f87171' : '#38bdf8';
+  ctx.fillRect(ax + pw / 2, sy - 34, 26, 68);
+  ctx.fillStyle = '#fff'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_lsk.magnetUm ? 'S' : 'N', ax - pw / 2 - 13, sy + 5);
+  ctx.fillText(_lsk.magnetUm ? 'N' : 'S', ax + pw / 2 + 13, sy + 5);
+  // Feldlinien zwischen den Polen
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  for (let i = -2; i <= 2; i++) {
+    const y = sy + i * 13;
+    ctx.beginPath(); ctx.moveTo(ax - pw / 2, y); ctx.lineTo(ax + pw / 2, y); ctx.stroke();
+  }
+
+  // Aufhaengedraehte und Stab
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(ax - 26, ay); ctx.lineTo(sx - 12, sy);
+  ctx.moveTo(ax + 26, ay); ctx.lineTo(sx + 12, sy); ctx.stroke();
+  const stabPx = _lsk.stabL * SK;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(sx - stabPx / 2, sy); ctx.lineTo(sx + stabPx / 2, sy); ctx.stroke();
+  ctx.lineCap = 'butt';
+
+  // Papierfahnen
+  if (_lsk.fahnen) {
+    ctx.fillStyle = '#fef3c7'; ctx.strokeStyle = '#d97706'; ctx.lineWidth = 1;
+    [-1, 1].forEach(s => {
+      const x = sx + s * stabPx / 2;
+      ctx.fillRect(x - 7, sy + 3, 14, 12); ctx.strokeRect(x - 7, sy + 3, 14, 12);
+    });
+  }
+
+  // Geschwindigkeitspfeil
+  const v = _lskV(_lsk.t);
+  if (Math.abs(v) > 0.01) {
+    const len = Math.max(-60, Math.min(60, v * 90));
+    ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(sx, sy - 22); ctx.lineTo(sx + len, sy - 22); ctx.stroke();
+    ctx.fillStyle = '#16a34a';
+    ctx.beginPath();
+    const s = Math.sign(len);
+    ctx.moveTo(sx + len + s * 7, sy - 22);
+    ctx.lineTo(sx + len, sy - 27); ctx.lineTo(sx + len, sy - 17);
+    ctx.closePath(); ctx.fill();
+    ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('v', sx + len / 2, sy - 26);
+  }
+
+  // Anschluss an den Verstaerker
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(ax - 26, ay); ctx.lineTo(24, ay); ctx.lineTo(24, H - 26);
+  ctx.moveTo(ax + 26, ay); ctx.lineTo(W - 24, ay); ctx.lineTo(W - 24, H - 26);
+  ctx.stroke();
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(W / 2 - 62, H - 34, 124, 22);
+  ctx.strokeStyle = '#94a3b8'; ctx.strokeRect(W / 2 - 62, H - 34, 124, 22);
+  ctx.beginPath(); ctx.moveTo(24, H - 26); ctx.lineTo(W / 2 - 62, H - 26);
+  ctx.moveTo(W - 24, H - 26); ctx.lineTo(W / 2 + 62, H - 26); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('µV-Verstärker  ×' + _LSK_VORV, W / 2, H - 20);
+
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('wirksame Länge = Polschuhbreite ' + _fpmNum(_LSK_POL * 100, 0) + ' cm', 8, 14);
+}
+
+// ── Zeichnung: Oszilloskop Station 1 ───────────────────
+function _lskOsziGeo(cv) {
+  const gw = _LSK_XDIV * 40, gh = _LSK_YDIV * 30;
+  return { gx: (cv.width - gw) / 2, gy: 12, gw, gh, dx: 40, dy: 30 };
+}
+function _lskRenderOszi(ctx, cv, spur, tJetzt) {
+  const W = cv.width, H = cv.height;
+  const G = _lskOsziGeo(cv);
+  ctx.fillStyle = '#0a0f0a'; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#0d1a12'; ctx.fillRect(G.gx, G.gy, G.gw, G.gh);
+  ctx.strokeStyle = '#1c3a29'; ctx.lineWidth = 1;
+  for (let i = 0; i <= _LSK_XDIV; i++) {
+    ctx.beginPath(); ctx.moveTo(G.gx + i * G.dx, G.gy); ctx.lineTo(G.gx + i * G.dx, G.gy + G.gh); ctx.stroke();
+  }
+  for (let j = 0; j <= _LSK_YDIV; j++) {
+    ctx.beginPath(); ctx.moveTo(G.gx, G.gy + j * G.dy); ctx.lineTo(G.gx + G.gw, G.gy + j * G.dy); ctx.stroke();
+  }
+  const my = G.gy + G.gh / 2;
+  ctx.strokeStyle = '#2d5c42'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(G.gx, my); ctx.lineTo(G.gx + G.gw, my);
+  ctx.moveTo(G.gx + G.gw / 2, G.gy); ctx.lineTo(G.gx + G.gw / 2, G.gy + G.gh); ctx.stroke();
+
+  const spanne = _lskZeit() * _LSK_XDIV;
+  // Der Schirm laeuft mit, sobald die Aufzeichnung ueber den Rand hinausgeht
+  const t0 = Math.max(0, tJetzt - spanne);
+  ctx.strokeStyle = '#4ade80'; ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  let begonnen = false;
+  spur.forEach(p => {
+    if (p.t < t0) { begonnen = false; return; }
+    const x = G.gx + (p.t - t0) / spanne * G.gw;
+    const y = my - _lskKaestchen(p.u) * G.dy;
+    if (y < G.gy || y > G.gy + G.gh) { begonnen = false; return; }
+    begonnen ? ctx.lineTo(x, y) : (ctx.moveTo(x, y), begonnen = true);
+  });
+  ctx.stroke();
+
+  if (!spur.length) {
+    ctx.fillStyle = '#4b7a63'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Auslenken und loslassen – dann zeichnet das Speicheroszilloskop auf.',
+      G.gx + G.gw / 2, my);
+    ctx.textAlign = 'left';
+  }
+  ctx.fillStyle = '#4b7a63'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_fpmNum(_lskZeit(), 1) + ' s je Kästchen  ·  ' + _LSK_VDIV
+    + ' V je Kästchen nach ' + _LSK_VORV + '-facher Verstärkung', G.gx + G.gw / 2, G.gy + G.gh + 14);
+  ctx.textAlign = 'left';
+}
+
+// ── Zeichnung: Herleitung Station 2 ────────────────────
+function _lskRenderHerleitungCv(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2, cy = H / 2 - 10;
+  const halb = 92;
+
+  // Feldsymbole: Kreuze (hinein) oder Punkte (heraus)
+  ctx.strokeStyle = '#94a3b8'; ctx.fillStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  for (let ix = -3; ix <= 3; ix++) {
+    for (let iy = -2; iy <= 2; iy++) {
+      const x = cx + ix * 56, y = cy + iy * 46;
+      if (Math.abs(x - cx) < 26 && Math.abs(y - cy) < halb) continue;
+      if (_lsk.bRichtung > 0) {
+        ctx.beginPath();
+        ctx.moveTo(x - 4, y - 4); ctx.lineTo(x + 4, y + 4);
+        ctx.moveTo(x + 4, y - 4); ctx.lineTo(x - 4, y + 4); ctx.stroke();
+      } else {
+        ctx.beginPath(); ctx.arc(x, y, 2.6, 0, 2 * Math.PI); ctx.fill();
+      }
+    }
+  }
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_lsk.bRichtung > 0 ? 'B in die Zeichenebene hinein' : 'B aus der Zeichenebene heraus', 8, 14);
+
+  // Der Leiter
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 16; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(cx, cy - halb); ctx.lineTo(cx, cy + halb); ctx.stroke();
+  ctx.lineCap = 'butt';
+
+  const oben = (_lsk.vRichtung * _lsk.bRichtung) > 0;
+
+  // Ladungstrennung ab Schritt 3
+  if (_lsk.schritt >= 2) {
+    const negY = oben ? cy - halb + 18 : cy + halb - 18;
+    const posY = oben ? cy + halb - 18 : cy - halb + 18;
+    ctx.fillStyle = '#2563eb';
+    ctx.beginPath(); ctx.arc(cx, negY, 13, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('−', cx, negY + 5);
+    ctx.fillStyle = '#dc2626';
+    ctx.beginPath(); ctx.arc(cx, posY, 13, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.fillText('+', cx, posY + 5);
+  }
+
+  // Elektronen im Leiter
+  ctx.fillStyle = '#60a5fa';
+  for (let i = -2; i <= 2; i++) {
+    ctx.beginPath(); ctx.arc(cx, cy + i * 26, 4.5, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  // Bewegungspfeil
+  const vr = _lsk.vRichtung > 0 ? 1 : -1;
+  ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2.4;
+  ctx.beginPath(); ctx.moveTo(cx, cy + halb + 26); ctx.lineTo(cx + vr * 62, cy + halb + 26); ctx.stroke();
+  ctx.fillStyle = '#16a34a';
+  ctx.beginPath();
+  ctx.moveTo(cx + vr * 72, cy + halb + 26);
+  ctx.lineTo(cx + vr * 62, cy + halb + 21); ctx.lineTo(cx + vr * 62, cy + halb + 31);
+  ctx.closePath(); ctx.fill();
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('v', cx + vr * 40, cy + halb + 20);
+
+  // Lorentzkraft ab Schritt 2
+  if (_lsk.schritt >= 1) {
+    const fr = oben ? -1 : 1;
+    ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.moveTo(cx + 40, cy); ctx.lineTo(cx + 40, cy + fr * 54); ctx.stroke();
+    ctx.fillStyle = '#dc2626';
+    ctx.beginPath();
+    ctx.moveTo(cx + 40, cy + fr * 64);
+    ctx.lineTo(cx + 35, cy + fr * 54); ctx.lineTo(cx + 45, cy + fr * 54);
+    ctx.closePath(); ctx.fill();
+    ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('F_L', cx + 48, cy + fr * 34);
+  }
+
+  // Elektrische Gegenkraft ab Schritt 4
+  if (_lsk.schritt >= 3) {
+    const fr = oben ? 1 : -1;
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.moveTo(cx - 40, cy); ctx.lineTo(cx - 40, cy + fr * 54); ctx.stroke();
+    ctx.fillStyle = '#7c3aed';
+    ctx.beginPath();
+    ctx.moveTo(cx - 40, cy + fr * 64);
+    ctx.lineTo(cx - 45, cy + fr * 54); ctx.lineTo(cx - 35, cy + fr * 54);
+    ctx.closePath(); ctx.fill();
+    ctx.font = '700 11px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText('F_el', cx - 48, cy + fr * 34);
+  }
+
+  // Spannung ab Schritt 6
+  if (_lsk.schritt >= 5) {
+    ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.4; ctx.setLineDash([4, 3]);
+    ctx.beginPath();
+    ctx.moveTo(cx + 100, cy - halb); ctx.lineTo(cx + 100, cy + halb);
+    ctx.moveTo(cx + 95, cy - halb); ctx.lineTo(cx + 105, cy - halb);
+    ctx.moveTo(cx + 95, cy + halb); ctx.lineTo(cx + 105, cy + halb);
+    ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#0369a1'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('U = L·v·B', cx + 108, cy + 4);
+    ctx.font = '9px sans-serif'; ctx.fillStyle = '#64748b';
+    ctx.fillText('L', cx + 108, cy - 12);
+  }
+}
+
+// ── Zeichnung: Helmholtz Station 4 ─────────────────────
+function _lskRenderHelmCv(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2, cy = 118;
+
+  // Helmholtzspulen von der Seite
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = 7;
+  [-58, 58].forEach(dx => {
+    ctx.beginPath(); ctx.moveTo(cx + dx, cy - 74); ctx.lineTo(cx + dx, cy + 74); ctx.stroke();
+  });
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Helmholtzspulen  n = ' + _LSK_HN + ', R = ' + _fpmNum(_LSK_HR * 100, 0) + ' cm', cx, 16);
+  // Feldlinien
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  for (let i = -3; i <= 3; i++) {
+    const y = cy + i * 20;
+    ctx.beginPath(); ctx.moveTo(cx - 54, y); ctx.lineTo(cx + 54, y); ctx.stroke();
+  }
+
+  // Die flache Spule mit 15 Schleifen als Pendel
+  const phi = _lskPhi(_lsk.t) * 0.6;
+  const ax = cx, ay = 34, lpx = 118;
+  const sx = ax + Math.sin(phi) * lpx, sy = ay + Math.cos(phi) * lpx;
+  ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1;
+  for (let i = 0; i < 6; i++) {
+    const o = (i - 2.5) * 2.2;
+    ctx.beginPath();
+    ctx.moveTo(ax - 30 + o, ay); ctx.lineTo(sx - 30 + o, sy);
+    ctx.lineTo(sx + 30 + o, sy); ctx.lineTo(ax + 30 + o, ay);
+    ctx.stroke();
+  }
+  ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(sx - 30, sy); ctx.lineTo(sx + 30, sy); ctx.stroke();
+  ctx.fillStyle = '#0369a1'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_LSK_SCHLEIFEN + ' Schleifen à ' + _fpmNum(_LSK_SCHLEIFE_L * 100, 0) + ' cm', sx, sy + 16);
+
+  // Schneidlager
+  ctx.fillStyle = '#64748b';
+  ctx.beginPath(); ctx.moveTo(ax - 8, ay - 10); ctx.lineTo(ax + 8, ay - 10); ctx.lineTo(ax, ay); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Schneidlager', 8, 30);
+
+  // Sensoren
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.fillRect(8, H - 56, 96, 20); ctx.strokeRect(8, H - 56, 96, 20);
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Ultraschallsensor', 56, H - 42);
+  ctx.fillStyle = '#e2e8f0';
+  ctx.fillRect(W - 104, H - 56, 96, 20); ctx.strokeRect(W - 104, H - 56, 96, 20);
+  ctx.fillStyle = '#475569';
+  ctx.fillText('Hallsonde', W - 56, H - 42);
+  ctx.fillStyle = '#e2e8f0';
+  ctx.fillRect(cx - 52, H - 28, 104, 20); ctx.strokeRect(cx - 52, H - 28, 104, 20);
+  ctx.fillStyle = '#475569';
+  ctx.fillText('µV-Verstärker + Interface', cx, H - 14);
+
+  // v(t) und U(t) mit dem einstellbaren Zeitversatz
+  ctx.fillStyle = '#16a34a'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('v(t)', 8, H - 62);
+  ctx.fillStyle = '#0369a1';
+  ctx.fillText('U(t)', 40, H - 62);
+}
+
+// ── Zeichnung: Ringversuch Station 5 ───────────────────
+function _lskRenderRingCv(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const ax = W / 2, ay = 24, lpx = 150;
+  const phi = _lskRingPhi(_lsk.rt);
+  const sx = ax + Math.sin(phi) * lpx, sy = ay + Math.cos(phi) * lpx;
+
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(ax - 70, ay - 6); ctx.lineTo(ax + 70, ay - 6); ctx.stroke();
+
+  if (_lsk.magnetAn) {
+    ctx.fillStyle = _lsk.magnetUm ? '#38bdf8' : '#f87171';
+    ctx.fillRect(ax - 46, sy - 30, 24, 60);
+    ctx.fillStyle = _lsk.magnetUm ? '#f87171' : '#38bdf8';
+    ctx.fillRect(ax + 22, sy - 30, 24, 60);
+    ctx.fillStyle = '#fff'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(_lsk.magnetUm ? 'S' : 'N', ax - 34, sy + 5);
+    ctx.fillText(_lsk.magnetUm ? 'N' : 'S', ax + 34, sy + 5);
+  }
+
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(sx, sy - 26); ctx.stroke();
+
+  if (_lsk.objekt === 'ring') {
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 5;
+    ctx.beginPath(); ctx.ellipse(sx, sy, 34, 26, 0, 0, 2 * Math.PI); ctx.stroke();
+  } else {
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(sx - 30, sy); ctx.lineTo(sx + 30, sy); ctx.stroke();
+    ctx.lineCap = 'butt';
+    // Anschluss: kurzgeschlossen oder am Voltmeter
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(sx - 30, sy); ctx.lineTo(sx - 30, sy + 34); ctx.lineTo(sx + 30, sy + 34);
+    ctx.lineTo(sx + 30, sy); ctx.stroke();
+    ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#94a3b8';
+    ctx.fillRect(sx - 18, sy + 26, 36, 16); ctx.strokeRect(sx - 18, sy + 26, 36, 16);
+    ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(_lsk.objekt === 'stab-kurz' ? 'Kabel' : 'V', sx, sy + 38);
+  }
+
+  // Bremskraft
+  const v = Math.abs(_lsk.rt > 0 ? 0.5 : 0);
+  if (_lsk.magnetAn && _lskDeltaEM(_LSK_RING_B) > 0.05 && _lsk.rlaeuft) {
+    ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2;
+    const r = Math.sign(-Math.sin(phi)) || 1;
+    ctx.beginPath(); ctx.moveTo(sx, sy - 44); ctx.lineTo(sx + r * 40, sy - 44); ctx.stroke();
+    ctx.fillStyle = '#dc2626';
+    ctx.beginPath();
+    ctx.moveTo(sx + r * 48, sy - 44);
+    ctx.lineTo(sx + r * 40, sy - 48); ctx.lineTo(sx + r * 40, sy - 40);
+    ctx.closePath(); ctx.fill();
+    ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('F', sx + r * 24, sy - 48);
+  }
+
+  // Amplitudenverlauf als kleine Kurve
+  const gx = 12, gy = H - 46, gw = W - 24, gh = 34;
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  ctx.strokeRect(gx, gy, gw, gh);
+  ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.4;
+  ctx.beginPath();
+  for (let i = 0; i <= gw; i++) {
+    const t = i / gw * 8;
+    const y = gy + gh / 2 - _lskRingPhi(t) / Math.max(0.01, _lsk.rphi0) * (gh / 2 - 2);
+    i ? ctx.lineTo(gx + i, y) : ctx.moveTo(gx + i, y);
+  }
+  ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Auslenkung über 8 s', gx + 3, gy - 3);
+  // Marke fuer den aktuellen Zeitpunkt
+  if (_lsk.rt <= 8) {
+    ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 1;
+    const mx = gx + _lsk.rt / 8 * gw;
+    ctx.beginPath(); ctx.moveTo(mx, gy); ctx.lineTo(mx, gy + gh); ctx.stroke();
+  }
+}
+
+// ── Zeichnung: inhomogenes Feld Station 6 ──────────────
+function _lskRenderInhomAufbau(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2, cy = H / 2 + 20;
+  const SK = 900;   // Bildpunkte je Meter
+
+  // Feldstaerkeprofil als Hintergrund
+  for (let px = 0; px < W; px++) {
+    const x = (px - cx) / SK;
+    const b = _lskBOrt(x) / Math.max(1e-9, _lsk.B);
+    if (b < 0.02) continue;
+    ctx.fillStyle = 'rgba(56,189,248,' + (0.30 * b) + ')';
+    ctx.fillRect(px, cy - 46, 1, 92);
+  }
+  // Polschuhe
+  const pw = _LSK_HALBBREITE * SK;
+  ctx.fillStyle = '#f87171'; ctx.fillRect(cx - pw - 22, cy - 46, 22, 92);
+  ctx.fillStyle = '#38bdf8'; ctx.fillRect(cx + pw, cy - 46, 22, 92);
+  ctx.fillStyle = '#fff'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('N', cx - pw - 11, cy + 5);
+  ctx.fillText('S', cx + pw + 11, cy + 5);
+
+  // Bahn und Umkehrpunkte
+  const amp = _lsk.pl * _lsk.phi0;
+  const x1 = _lsk.ruhelage - amp, x2 = _lsk.ruhelage + amp;
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath();
+  ctx.moveTo(cx + x1 * SK, cy - 60); ctx.lineTo(cx + x1 * SK, cy + 60);
+  ctx.moveTo(cx + x2 * SK, cy - 60); ctx.lineTo(cx + x2 * SK, cy + 60);
+  ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Umkehrpunkt', cx + x1 * SK, cy + 72);
+  ctx.fillText('Umkehrpunkt', cx + x2 * SK, cy + 72);
+
+  // Ruhelage
+  ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(cx + _lsk.ruhelage * SK, cy - 62); ctx.lineTo(cx + _lsk.ruhelage * SK, cy - 50); ctx.stroke();
+  ctx.fillStyle = '#16a34a';
+  ctx.fillText('Ruhelage', cx + _lsk.ruhelage * SK, cy - 66);
+
+  // Der Stab
+  const x = _lskInhomX(_lsk.it);
+  const sx = cx + x * SK;
+  ctx.fillStyle = '#334155';
+  ctx.beginPath(); ctx.arc(sx, cy, 7, 0, 2 * Math.PI); ctx.fill();
+
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Feldstärke als Helligkeit – außerhalb der Schenkel fällt B rasch ab', 8, 14);
+}
+function _lskRenderInhomOszi(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0a0f0a'; ctx.fillRect(0, 0, W, H);
+  const gx = 30, gy = 14, gw = W - 44, gh = H - 44;
+  ctx.fillStyle = '#0d1a12'; ctx.fillRect(gx, gy, gw, gh);
+  ctx.strokeStyle = '#1c3a29'; ctx.lineWidth = 1;
+  for (let i = 0; i <= 10; i++) {
+    ctx.beginPath(); ctx.moveTo(gx + i * gw / 10, gy); ctx.lineTo(gx + i * gw / 10, gy + gh); ctx.stroke();
+  }
+  for (let j = 0; j <= 8; j++) {
+    ctx.beginPath(); ctx.moveTo(gx, gy + j * gh / 8); ctx.lineTo(gx + gw, gy + j * gh / 8); ctx.stroke();
+  }
+  const my = gy + gh / 2;
+  ctx.strokeStyle = '#2d5c42'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(gx, my); ctx.lineTo(gx + gw, my); ctx.stroke();
+
+  // Massstab so waehlen, dass die ungestoerte Kurve gut passt
+  const umax = Math.max(1e-9, _lskLWirk() * _lskVMax() * _lsk.B);
+  const spanne = 8;
+  ctx.strokeStyle = '#4ade80'; ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  let begonnen = false;
+  _lsk.ispur.forEach(p => {
+    if (p.t > spanne) return;
+    const x = gx + p.t / spanne * gw;
+    const y = my - p.u / umax * (gh / 2 - 6);
+    if (y < gy || y > gy + gh) { begonnen = false; return; }
+    begonnen ? ctx.lineTo(x, y) : (ctx.moveTo(x, y), begonnen = true);
+  });
+  ctx.stroke();
+
+  if (!_lsk.ispur.length) {
+    ctx.fillStyle = '#4b7a63'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Auslenken und loslassen', gx + gw / 2, my);
+    ctx.textAlign = 'left';
+  }
+  ctx.fillStyle = '#4b7a63'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('8 s', gx + gw / 2, gy + gh + 14);
+  ctx.save(); ctx.translate(14, my); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('U', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _lskTakt(dt) {
+  if (!_lsk) return;
+  const d = Math.min(0.05, dt);
+  if (_lsk.laeuft) {
+    _lsk.t += d;
+    _lsk.spur.push({ t: _lsk.t, u: _lskUt(_lsk.t) });
+    if (_lsk.spur.length > 6000) _lsk.spur.shift();
+    if (_lsk.t > 120) _lsk.laeuft = false;
+  }
+  if (_lsk.rlaeuft) {
+    _lsk.rt += d;
+    if (_lsk.rt > 8) { _lsk.rt = 0; }
+  }
+  if (_lsk.ilaeuft) {
+    _lsk.it += d;
+    _lsk.ispur.push({ t: _lsk.it, u: _lskInhomU(_lsk.it) });
+    if (_lsk.it > 8) { _lsk.ilaeuft = false;
+      const b = document.getElementById('lskInhomBtn');
+      if (b) b.textContent = '▶ Auslenken und loslassen'; }
+  }
+}
+function _lskRender() {
+  if (!_lsk) return;
+  const s = _lsk.station;
+  if (s === 0) {
+    const ca = document.getElementById('lskAufbau');
+    if (ca) _lskRenderAufbau(ca.getContext('2d'), ca);
+    const co = document.getElementById('lskOszi');
+    if (co) _lskRenderOszi(co.getContext('2d'), co, _lsk.spur, _lsk.t);
+    if (_lsk.laeuft) _lskUpdate();
+  } else if (s === 1) {
+    const ch = document.getElementById('lskHerleitung');
+    if (ch) _lskRenderHerleitungCv(ch.getContext('2d'), ch);
+  } else if (s === 3) {
+    const chm = document.getElementById('lskHelm');
+    if (chm) _lskRenderHelmCv(chm.getContext('2d'), chm);
+  } else if (s === 4) {
+    const cr = document.getElementById('lskRing');
+    if (cr) _lskRenderRingCv(cr.getContext('2d'), cr);
+  } else if (s === 5) {
+    const cia = document.getElementById('lskInhomAufbau');
+    if (cia) _lskRenderInhomAufbau(cia.getContext('2d'), cia);
+    const cio = document.getElementById('lskInhomOszi');
+    if (cio) _lskRenderInhomOszi(cio.getContext('2d'), cio);
+    if (_lsk.ilaeuft) _lskRenderInhom();
+  }
+}
+
+// ── Zusätzliche Styles für die Leiterschaukel ──────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .lsk-zustand { font-size: .78rem; color: #64748b; background: #f8fafc; border: 1px solid #e2e8f0;
+      border-radius: 9px; padding: 9px 11px; margin: 8px 0; line-height: 1.55; }
+    .lsk-zustand.ok { background: #f0fdf4; border-color: #bbf7d0; color: #15803d; }
+    .lsk-zustand.mid { background: #fffbeb; border-color: #fde68a; color: #b45309; }
+    .lsk-zustand.no { background: #fef2f2; border-color: #fecaca; color: #b91c1c; }
+    .lsk-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-top: 12px; }
+    .lsk-k3-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+    .lsk-k3-teil { flex: 1 1 190px; background: #fff; border: 1px solid #e2e8f0;
+      border-radius: 8px; padding: 8px 10px; font-size: .77rem; color: #475569; line-height: 1.55; }
+    .lsk-k3-teil span { display: block; font-size: .6rem; text-transform: uppercase;
+      letter-spacing: .05em; font-weight: 800; color: #94a3b8; margin-bottom: 3px; }
+    .lsk-schritte { display: flex; flex-direction: column; gap: 5px; }
+    .lsk-schritt { display: flex; gap: 8px; align-items: flex-start; padding: 7px 9px;
+      background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; opacity: .45; }
+    .lsk-schritt.an { opacity: 1; }
+    .lsk-schritt.jetzt { border-color: #0369a1; background: #f0f9ff; }
+    .lsk-schritt-n { flex: 0 0 20px; height: 20px; border-radius: 50%; background: #cbd5e1;
+      color: #fff; font-size: .68rem; font-weight: 800; text-align: center; line-height: 20px; }
+    .lsk-schritt.an .lsk-schritt-n { background: #0369a1; }
+    .lsk-schritt-k { font-size: .76rem; font-weight: 800; color: #334155; }
+    .lsk-schritt-t { font-size: .76rem; color: #475569; line-height: 1.6; margin-top: 3px; }
+    .lsk-schritt-f { font-size: .8rem; color: #075985; background: #fff; border: 1px solid #bae6fd;
+      border-radius: 6px; padding: 4px 8px; margin-top: 5px; font-variant-numeric: tabular-nums; }
+    .lsk-drei { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-top: 10px; }
+    .lsk-drei-text { font-size: .78rem; color: #475569; line-height: 1.65; margin-top: 4px; }
+    .lsk-drei-jetzt { font-size: .78rem; color: #075985; background: #f0f9ff; border: 1px solid #bae6fd;
+      border-radius: 8px; padding: 8px 10px; margin-top: 8px; line-height: 1.55; }
+    .lsk-hypo { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-bottom: 12px; }
+    .lsk-hypo-liste { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+    .lsk-hypo-z { flex: 1 1 250px; display: flex; gap: 7px; align-items: flex-start;
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 7px 9px; }
+    .lsk-hypo-n { flex: 0 0 18px; height: 18px; border-radius: 50%; background: #0369a1;
+      color: #fff; font-size: .64rem; font-weight: 800; text-align: center; line-height: 18px; }
+    .lsk-hypo-t { font-size: .75rem; color: #475569; line-height: 1.5; }
+    .lsk-hypo-j { font-size: .68rem; color: #94a3b8; margin-top: 2px; }
+    .lsk-ursache { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 8px 11px; margin-top: 8px; }
+    .lsk-ur-t { font-size: .78rem; color: #475569; line-height: 1.6; margin-bottom: 6px; }
+    .lsk-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
