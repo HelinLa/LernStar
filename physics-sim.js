@@ -2016,6 +2016,20 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('ebrTakt', 'ebrKeinChart');
     _pSim.start(dt => _ebrTakt(dt), () => _ebrRender(), []);
   },
+
+  // Schluesselexperiment 08 des KLP: kein eigener Versuch, sondern die
+  // Messmethode. Geuebt wird das Auswerten nach Zeiten, Frequenzen und Spannungen.
+  'oszilloskop': modal => {
+    _oszInit();
+    modal.innerHTML = _oszHTML();
+    const erkl = document.getElementById('oszErkl');
+    if (erkl) erkl.innerHTML = _oszErklHTML();
+    _oszSetStation(0);
+    _oszSetSensor(_osz.sensor);
+    _oszUpdate();
+    _pSim = new PhysicsSimEngine('oszTakt', 'oszKeinChart');
+    _pSim.start(dt => _oszTakt(dt), () => _oszRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -10383,6 +10397,1301 @@ function _ebrRender() {
     .ebr-obj.on .ebr-obj-n { color: #5b21b6; }
     .ebr-obj-k { font-size: .66rem; color: #94a3b8; font-variant-numeric: tabular-nums; }
     .ebr-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+// ═══════════════════════════════════════════════════════
+// MESSWERTERFASSUNG UND OSZILLOSKOP
+// Schluesselexperiment 08 der NRW-Handreichung.
+// Anders als die uebrigen sieben ist dies kein eigenstaendiger Versuch,
+// sondern eine Messmethode. Der KLP nennt dazu genau eine Kompetenz:
+// Messdaten aus Oszilloskop bzw. Messwerterfassungssystem im Hinblick auf
+// Zeiten, Frequenzen und Spannungen auswerten. Genau das wird hier geuebt –
+// der Lernende liest am Raster ab, die Simulation prueft.
+// ═══════════════════════════════════════════════════════
+
+// Bildschirm: 10 Kaestchen waagerecht, 8 senkrecht – wie beim echten Geraet
+const _OSZ_XDIV = 10;
+const _OSZ_YDIV = 8;
+const _OSZ_PX   = 40;               // Bildpunkte je Kaestchen
+
+// Einstellknoepfe rasten in der 1-2-5-Folge ein, wie an echten Geraeten
+const _OSZ_TDIV = [0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50];   // ms je Kaestchen
+const _OSZ_VDIV = [0.1, 0.2, 0.5, 1, 2, 5];                     // V je Kaestchen
+
+const _OSZ_FORMEN = [
+  { id: 'sinus',    n: 'Sinus',     eff: 1 / Math.SQRT2 },
+  { id: 'rechteck', n: 'Rechteck',  eff: 1 },
+  { id: 'dreieck',  n: 'Dreieck',   eff: 1 / Math.sqrt(3) },
+  { id: 'saege',    n: 'Sägezahn',  eff: 1 / Math.sqrt(3) }
+];
+
+let _osz = null;
+
+function _oszInit() {
+  _osz = {
+    station: 0,
+    tdivI: 5,               // 2 ms/DIV
+    betrieb: 'ty',
+    kanal: [
+      { an: true,  vdivI: 3, pos:  0, kopp: 'DC', form: 'sinus', f: 250, amp: 3, off: 0, ph: 0 },
+      { an: false, vdivI: 3, pos: -2, kopp: 'DC', form: 'rechteck', f: 250, amp: 2, off: 0, ph: 90 }
+    ],
+    trigQ: 0, trigLvl: 0, trigFlanke: 1, trigAuto: true,
+    // Aufgabenmodus: die Generatoreinstellung von Kanal 1 wird verdeckt
+    aufgabe: null, geprueft: null, protokoll: [],
+    leseT: '', leseU: '',
+    // Station 2
+    lisA: 1, lisB: 2, lisPhi: 30, lisAufg: null,
+    // Station 3
+    sensor: 0, rate: 200, sigF: 40, dauer: 0.25,
+    // Station 4
+    stiftU: 0, laeuft: false, spur: [],
+    t: 0
+  };
+}
+
+// ── Signalerzeugung ────────────────────────────────────
+// x ist die Phase in Perioden. Alle Kurven laufen zwischen -1 und +1.
+function _oszWelle(form, x) {
+  const p = x - Math.floor(x);
+  switch (form) {
+    case 'rechteck': return p < 0.5 ? 1 : -1;
+    case 'dreieck':  return p < 0.25 ? 4 * p : p < 0.75 ? 2 - 4 * p : 4 * p - 4;
+    case 'saege':    return 2 * p - 1;
+    default:         return Math.sin(2 * Math.PI * p);
+  }
+}
+function _oszEffFaktor(form) {
+  const f = _OSZ_FORMEN.filter(o => o.id === form)[0];
+  return f ? f.eff : 1 / Math.SQRT2;
+}
+function _oszFormName(form) {
+  const f = _OSZ_FORMEN.filter(o => o.id === form)[0];
+  return f ? f.n : form;
+}
+// Spannung an Kanal k zur Zeit t (in Sekunden)
+function _oszSpannung(k, t) {
+  const c = _osz.kanal[k];
+  if (c.kopp === 'GND') return 0;
+  const roh = c.amp * _oszWelle(c.form, c.f * t + c.ph / 360);
+  return c.kopp === 'AC' ? roh : roh + c.off;
+}
+function _oszTdiv() { return _OSZ_TDIV[_osz.tdivI] / 1000; }   // in Sekunden
+function _oszVdiv(k) { return _OSZ_VDIV[_osz.kanal[k].vdivI]; }
+
+// Was das Gerät tatsächlich anzeigt – daraus rechnet der Lernende zurück
+function _oszPeriodeDiv(k) { return 1 / _osz.kanal[k].f / _oszTdiv(); }
+function _oszSsDiv(k) {
+  const c = _osz.kanal[k];
+  if (c.kopp === 'GND') return 0;
+  // Spitze-Spitze ist bei allen vier Formen die doppelte Amplitude
+  return 2 * c.amp / _oszVdiv(k);
+}
+
+// ── Triggerung ─────────────────────────────────────────
+// Gesucht ist der Zeitpunkt innerhalb einer Periode, an dem das Signal den
+// Triggerpegel in der gewaehlten Flankenrichtung schneidet. Findet sich keiner,
+// verhaelt sich das Geraet wie ein echtes: im Automatikbetrieb laeuft das Bild
+// frei durch, im Normalbetrieb bleibt der Schirm leer.
+function _oszTriggerZeit() {
+  const k = _osz.trigQ;
+  const c = _osz.kanal[k];
+  if (c.kopp === 'GND') return null;
+  const T = 1 / c.f;
+  const N = 2000;
+  let prev = _oszSpannung(k, 0);
+  for (let i = 1; i <= N; i++) {
+    const t = i / N * T;
+    const v = _oszSpannung(k, t);
+    const steigend = prev < _osz.trigLvl && v >= _osz.trigLvl;
+    const fallend  = prev > _osz.trigLvl && v <= _osz.trigLvl;
+    if ((_osz.trigFlanke > 0 && steigend) || (_osz.trigFlanke < 0 && fallend)) {
+      // linear zwischen den beiden Stuetzstellen interpolieren
+      const t0 = (i - 1) / N * T;
+      const a = (_osz.trigLvl - prev) / (v - prev);
+      return t0 + a * (t - t0);
+    }
+    prev = v;
+  }
+  return null;
+}
+function _oszTriggert() { return _oszTriggerZeit() !== null; }
+// Zeitpunkt am linken Bildrand
+function _oszStartZeit() {
+  const tt = _oszTriggerZeit();
+  if (tt !== null) return tt;
+  return _osz.trigAuto ? _osz.t : null;
+}
+
+// ── Aufgabenmodus ──────────────────────────────────────
+// Die Generatoreinstellung von Kanal 1 wird verdeckt; der Lernende muss
+// Frequenz und Effektivwert allein vom Bildschirm ablesen.
+function _oszNeueAufgabe() {
+  const formen = ['sinus', 'sinus', 'rechteck', 'dreieck'];
+  const form = formen[Math.floor(Math.random() * formen.length)];
+  // Frequenz so waehlen, dass sie mit einer der Zeitbasen gut ablesbar ist
+  const tdivI = 3 + Math.floor(Math.random() * 5);
+  const perDiv = 1 + Math.floor(Math.random() * 3);      // 1 bis 3 Kaestchen je Periode
+  const f = 1 / (perDiv * _OSZ_TDIV[tdivI] / 1000);
+  const vdivI = 1 + Math.floor(Math.random() * 4);
+  const ssDiv = 2 + Math.floor(Math.random() * 5);        // 2 bis 6 Kaestchen Spitze-Spitze
+  const amp = ssDiv * _OSZ_VDIV[vdivI] / 2;
+
+  const c = _osz.kanal[0];
+  c.an = true; c.form = form; c.f = f; c.amp = amp; c.off = 0; c.ph = 0;
+  c.kopp = 'DC'; c.vdivI = vdivI; c.pos = 0;
+  _osz.kanal[1].an = false;
+  _osz.tdivI = tdivI;
+  _osz.trigQ = 0; _osz.trigLvl = 0; _osz.trigFlanke = 1; _osz.trigAuto = true;
+  _osz.aufgabe = { form, f, amp, ueff: amp * _oszEffFaktor(form) };
+  _osz.geprueft = null;
+  _osz.leseT = ''; _osz.leseU = '';
+  _oszUpdate();
+}
+function _oszAufgabeEnde() {
+  _osz.aufgabe = null; _osz.geprueft = null;
+  _oszUpdate();
+}
+function _oszSetLese(feld, v) { _osz[feld] = v; _oszRenderAuswertung(); }
+
+// Aus den abgelesenen Kaestchen die physikalischen Groessen bestimmen
+function _oszAusLesung() {
+  const dT = parseFloat(String(_osz.leseT).replace(',', '.'));
+  const dU = parseFloat(String(_osz.leseU).replace(',', '.'));
+  const r = {};
+  if (isFinite(dT) && dT > 0) {
+    r.T = dT * _oszTdiv();
+    r.f = 1 / r.T;
+  }
+  if (isFinite(dU) && dU > 0) {
+    r.uss = dU * _oszVdiv(0);
+    r.us = r.uss / 2;
+    r.ueff = r.us * _oszEffFaktor(_osz.kanal[0].form);
+  }
+  return r;
+}
+function _oszPruefen() {
+  const r = _oszAusLesung();
+  const soll = _osz.aufgabe;
+  if (!soll) return;
+  const gT = r.f !== undefined ? Math.abs(r.f - soll.f) / soll.f * 100 : null;
+  const gU = r.ueff !== undefined ? Math.abs(r.ueff - soll.ueff) / soll.ueff * 100 : null;
+  _osz.geprueft = { gT, gU, r };
+  if (gT !== null && gU !== null && gT < 5 && gU < 5) {
+    _osz.protokoll.push({ form: soll.form, f: soll.f, ueff: soll.ueff, gT, gU });
+  }
+  _oszUpdate();
+}
+
+// ── Lissajous ──────────────────────────────────────────
+// Bei x = sin(a·ωt + φ) und y = sin(b·ωt) beruehrt die Kurve den oberen Rand
+// b-mal und den rechten Rand a-mal. Das Verhaeltnis der Beruehrpunkte ist
+// also f_y : f_x – so bestimmt man am Oszilloskop eine unbekannte Frequenz.
+const _OSZ_LIS = [[1, 1], [1, 2], [2, 3], [3, 4], [4, 5], [3, 2], [1, 3], [5, 4]];
+function _oszLisPunkte(a, b, phiGrad, n) {
+  const pts = [];
+  const phi = phiGrad * Math.PI / 180;
+  for (let i = 0; i <= n; i++) {
+    const s = i / n;
+    pts.push({ x: Math.sin(2 * Math.PI * a * s + phi), y: Math.sin(2 * Math.PI * b * s) });
+  }
+  return pts;
+}
+function _oszSetLis(a, b) { _osz.lisA = a; _osz.lisB = b; _osz.lisAufg = null; _oszRenderLis(); }
+function _oszSetLisPhi(v) {
+  _osz.lisPhi = Math.max(0, Math.min(180, +v));
+  const sl = document.getElementById('oszLisPhi'); if (sl) sl.value = String(_osz.lisPhi);
+  const el = document.getElementById('oszLisPhiLbl'); if (el) el.textContent = Math.round(_osz.lisPhi) + '°';
+  _oszRenderLis();
+}
+function _oszLisAufgabe() {
+  const p = _OSZ_LIS[Math.floor(Math.random() * _OSZ_LIS.length)];
+  _osz.lisA = p[0]; _osz.lisB = p[1];
+  _osz.lisPhi = Math.floor(Math.random() * 7) * 15 + 15;
+  _osz.lisAufg = { fx: 500, loesung: 500 * p[1] / p[0] };
+  const sl = document.getElementById('oszLisPhi'); if (sl) sl.value = String(_osz.lisPhi);
+  _oszRenderLis();
+}
+
+// ── Messwerterfassung: die Messwandler ─────────────────
+// Kern der Handreichung: Fast jede Messgroesse laesst sich ueber einen
+// Messwandler in eine Spannung umsetzen, die in einem definierten
+// Zusammenhang zur Messgroesse steht. Erst diese Spannung wird registriert.
+const _OSZ_SENSOREN = [
+  { n: 'Kraftsensor', gr: 'Kraft F', eh: 'N', max: 50, prinzip: 'Piezoelektrizität',
+    kennlinie: 'U = 0,08 V/N · F', u: F => 0.08 * F, art: 'proportional',
+    txt: 'Ein Piezokristall gibt bei Verformung eine Spannung ab, die proportional zur einwirkenden Kraft ist. Damit lassen sich Kraftstöße erfassen, die für eine Federwaage viel zu kurz sind.' },
+  { n: 'Temperaturfühler', gr: 'Temperatur ϑ', eh: '°C', max: 100, prinzip: 'temperaturabhängiger Widerstand',
+    kennlinie: 'U = 0,5 V + 0,02 V/°C · ϑ', u: T => 0.5 + 0.02 * T, art: 'linear, mit Achsenabschnitt',
+    txt: 'Der Widerstand eines Halbleiterfühlers hängt von der Temperatur ab. In einer Brückenschaltung wird daraus eine Spannung. Sie ist hier linear, aber nicht proportional – bei 0 °C liegen bereits 0,5 V an.' },
+  { n: 'Hallsonde', gr: 'Magnetfeld B', eh: 'mT', max: 20, prinzip: 'Lorentzkraft',
+    kennlinie: 'U = 0,15 V/mT · B', u: B => 0.15 * B, art: 'proportional',
+    txt: 'In einem stromdurchflossenen Plättchen lenkt die Lorentzkraft die Ladungsträger quer ab. Die entstehende Hallspannung ist der Flussdichte proportional – dieselbe Sonde steckt im Fadenstrahlrohr-Versuch.' },
+  { n: 'Lichtsensor', gr: 'Beleuchtungsstärke E', eh: 'lx', max: 1000, prinzip: 'innerer Photoeffekt',
+    kennlinie: 'U = 2,5 V · √(E / 1000 lx)', u: E => 2.5 * Math.sqrt(E / 1000), art: 'nicht proportional',
+    txt: 'Eine Photodiode liefert hier keine proportionale, sondern eine gekrümmte Kennlinie. Auch das ist zulässig – die Handreichung verlangt nur einen definierten funktionalen Zusammenhang. Man muss ihn dann aber kennen und beim Auswerten umkehren.' }
+];
+function _oszSetSensor(i) {
+  _osz.sensor = Math.max(0, Math.min(_OSZ_SENSOREN.length - 1, i));
+  for (let k = 0; k < _OSZ_SENSOREN.length; k++)
+    document.getElementById('oszSen' + k)?.classList.toggle('on', k === _osz.sensor);
+  _oszRenderSensor();
+}
+function _oszSetRate(v) {
+  _osz.rate = Math.max(5, Math.min(500, +v));
+  const sl = document.getElementById('oszRate'); if (sl) sl.value = String(_osz.rate);
+  const el = document.getElementById('oszRateLbl'); if (el) el.textContent = Math.round(_osz.rate) + ' Hz';
+  _oszRenderSensor();
+}
+function _oszSetSigF(v) {
+  _osz.sigF = Math.max(1, Math.min(120, +v));
+  const sl = document.getElementById('oszSigF'); if (sl) sl.value = String(_osz.sigF);
+  const el = document.getElementById('oszSigFLbl'); if (el) el.textContent = Math.round(_osz.sigF) + ' Hz';
+  _oszRenderSensor();
+}
+// Welche Frequenz taeuscht die zu langsame Abtastung vor?
+function _oszScheinF() {
+  const k = Math.round(_osz.sigF / _osz.rate);
+  return Math.abs(_osz.sigF - k * _osz.rate);
+}
+function _oszNyquistOk() { return _osz.rate >= 2 * _osz.sigF; }
+
+// ── Station 4: Franck-Hertz am x-y-Schreiber ───────────
+// Die Handreichung nennt genau diese Anwendung zweimal. Die Kurve ist
+// nachgebildet; ihr physikalischer Gehalt ist der Abstand der Maxima von
+// 4,9 V – die Anregungsenergie des Quecksilberatoms.
+const _OSZ_FH_DU = 4.9;
+const _OSZ_FH_UMAX = 30;
+function _oszFHStrom(U) {
+  if (U <= 0) return 0;
+  // Grundanstieg wie bei einer Raumladungskennlinie
+  let I = Math.pow(U, 1.5) * 0.055;
+  // Jedes Vielfache der Anregungsenergie erzeugt einen Einbruch
+  let d = 0;
+  for (let n = 1; n * _OSZ_FH_DU <= _OSZ_FH_UMAX + _OSZ_FH_DU; n++) {
+    const x = (U - (n * _OSZ_FH_DU + 0.7)) / 1.15;
+    d += Math.exp(-x * x) * (0.42 + 0.05 * n);
+  }
+  return Math.max(0, I * (1 - Math.min(0.85, d)));
+}
+function _oszSchreiberStart() {
+  _osz.laeuft = true; _osz.stiftU = 0; _osz.spur = [];
+  const b = document.getElementById('oszSchrBtn');
+  if (b) b.textContent = '⏸ Anhalten';
+}
+function _oszSchreiberToggle() {
+  if (_osz.laeuft) {
+    _osz.laeuft = false;
+    const b = document.getElementById('oszSchrBtn');
+    if (b) b.textContent = '▶ Schreiber starten';
+  } else _oszSchreiberStart();
+}
+function _oszSchreiberReset() {
+  _osz.laeuft = false; _osz.stiftU = 0; _osz.spur = [];
+  const b = document.getElementById('oszSchrBtn');
+  if (b) b.textContent = '▶ Schreiber starten';
+  _oszRenderSchreiber();
+}
+
+// ── Zahlformat ─────────────────────────────────────────
+function _oszZeit(s) {
+  if (!isFinite(s)) return '—';
+  if (s >= 1) return _fpmNum(s, 3) + ' s';
+  if (s >= 1e-3) return _fpmNum(s * 1e3, 3) + ' ms';
+  return _fpmNum(s * 1e6, 3) + ' µs';
+}
+function _oszFreq(f) {
+  if (!isFinite(f)) return '—';
+  return f >= 1000 ? _fpmNum(f / 1000, 3) + ' kHz' : _fpmNum(f, 3) + ' Hz';
+}
+
+// ── Oberfläche ─────────────────────────────────────────
+function _oszHTML() {
+  const stationen = ['1 · Oszilloskop', '2 · x-y-Betrieb & Lissajous',
+                     '3 · Messwerterfassung', '4 · x-y-Schreiber']
+    .map((s, i) => `<button class="fpm-tab${i === _osz.station ? ' on' : ''}" id="oszSt${i}" onclick="_oszSetStation(${i})">${s}</button>`).join('');
+
+  const kanal = k => `
+    <div class="osz-gruppe">
+      <div class="osz-gruppe-k">Instrumentengruppe · Eingang Kanal ${k + 1}</div>
+      <label class="fpm-check"><input type="checkbox" id="oszAn${k}" ${_osz.kanal[k].an ? 'checked' : ''}
+        onchange="_oszSetAn(${k},this.checked)"> Kanal ${k + 1} anzeigen</label>
+      <div class="osz-zeile"><span>VOLTS/DIV</span>
+        <button class="osz-knopf" onclick="_oszStepV(${k},-1)">◀</button>
+        <b id="oszVdiv${k}">1 V</b>
+        <button class="osz-knopf" onclick="_oszStepV(${k},1)">▶</button></div>
+      <div class="osz-zeile"><span>Y-Position</span>
+        <input type="range" id="oszPos${k}" min="-3" max="3" step="0.5" value="${_osz.kanal[k].pos}"
+          oninput="_oszSetPos(${k},this.value)"></div>
+      <div class="osz-zeile"><span>Kopplung</span>
+        <span class="osz-seg">
+          ${['DC', 'AC', 'GND'].map(m => `<button class="osz-segb" id="oszK${k}${m}" onclick="_oszSetKopp(${k},'${m}')">${m}</button>`).join('')}
+        </span></div>
+      <div class="osz-gen-k">Funktionsgenerator ${k + 1}</div>
+      <div class="osz-zeile"><span>Kurvenform</span>
+        <select class="osz-sel" id="oszForm${k}" onchange="_oszSetForm(${k},this.value)">
+          ${_OSZ_FORMEN.map(f => `<option value="${f.id}">${f.n}</option>`).join('')}
+        </select></div>
+      <div class="osz-zeile"><span>Frequenz</span>
+        <input type="range" id="oszF${k}" min="10" max="5000" step="10" value="${_osz.kanal[k].f}"
+          oninput="_oszSetF(${k},this.value)"><b id="oszFLbl${k}">250 Hz</b></div>
+      <div class="osz-zeile"><span>Amplitude</span>
+        <input type="range" id="oszAmp${k}" min="0.1" max="10" step="0.1" value="${_osz.kanal[k].amp}"
+          oninput="_oszSetAmp(${k},this.value)"><b id="oszAmpLbl${k}">3,0 V</b></div>
+      <div class="osz-zeile"><span>Gleichanteil</span>
+        <input type="range" id="oszOff${k}" min="-5" max="5" step="0.1" value="${_osz.kanal[k].off}"
+          oninput="_oszSetOff(${k},this.value)"><b id="oszOffLbl${k}">0,0 V</b></div>
+      ${k === 1 ? `<div class="osz-zeile"><span>Phase</span>
+        <input type="range" id="oszPh1" min="0" max="360" step="5" value="${_osz.kanal[1].ph}"
+          oninput="_oszSetPh(1,this.value)"><b id="oszPhLbl1">90°</b></div>` : ''}
+    </div>`;
+
+  const sensoren = _OSZ_SENSOREN.map((s, i) =>
+    `<button class="ebr-obj${i === _osz.sensor ? ' on' : ''}" id="oszSen${i}" onclick="_oszSetSensor(${i})">
+       <span class="ebr-obj-n">${s.n}</span><span class="ebr-obj-k">${s.prinzip} · ${s.kennlinie}</span></button>`).join('');
+
+  const lisKnoepfe = _OSZ_LIS.map(p =>
+    `<button class="sim-btn" onclick="_oszSetLis(${p[0]},${p[1]})">${p[0]} : ${p[1]}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim osz-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📟 Messwerterfassung und Oszilloskop</h3>
+    <canvas id="oszTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="oszS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="oszSchirm" width="440" height="384" class="phys-anim-cv"></canvas>
+          <div class="osz-status" id="oszStatus"></div>
+          <div class="osz-gruppe">
+            <div class="osz-gruppe-k">Instrumentengruppe · Zeitablenkung</div>
+            <div class="osz-zeile"><span>TIME/DIV</span>
+              <button class="osz-knopf" onclick="_oszStepT(-1)">◀</button>
+              <b id="oszTdiv">2 ms</b>
+              <button class="osz-knopf" onclick="_oszStepT(1)">▶</button></div>
+          </div>
+          <div class="osz-gruppe">
+            <div class="osz-gruppe-k">Instrumentengruppe · Triggerung</div>
+            <div class="osz-zeile"><span>Quelle</span>
+              <span class="osz-seg">
+                <button class="osz-segb" id="oszTQ0" onclick="_oszSetTrigQ(0)">Kanal 1</button>
+                <button class="osz-segb" id="oszTQ1" onclick="_oszSetTrigQ(1)">Kanal 2</button>
+              </span></div>
+            <div class="osz-zeile"><span>Pegel</span>
+              <input type="range" id="oszTrigLvl" min="-5" max="5" step="0.1" value="0"
+                oninput="_oszSetTrigLvl(this.value)"><b id="oszTrigLvlLbl">0,0 V</b></div>
+            <div class="osz-zeile"><span>Flanke</span>
+              <span class="osz-seg">
+                <button class="osz-segb" id="oszFl1" onclick="_oszSetFlanke(1)">↗ steigend</button>
+                <button class="osz-segb" id="oszFl0" onclick="_oszSetFlanke(-1)">↘ fallend</button>
+              </span></div>
+            <div class="osz-zeile"><span>Betriebsart</span>
+              <span class="osz-seg">
+                <button class="osz-segb" id="oszTA1" onclick="_oszSetTrigAuto(true)">Auto</button>
+                <button class="osz-segb" id="oszTA0" onclick="_oszSetTrigAuto(false)">Normal</button>
+              </span></div>
+          </div>
+        </div>
+        <div>
+          <div class="osz-aufgabe" id="oszAufgabe"></div>
+          <div class="fpm-label">Ablesen am Raster</div>
+          <div class="osz-lese">
+            <div class="osz-lese-z"><span>Eine Periode überstreicht</span>
+              <input type="text" class="fpm-input osz-inp" id="oszLeseT" placeholder="?"
+                spellcheck="false" oninput="_oszSetLese('leseT',this.value)"><span>Kästchen</span></div>
+            <div class="osz-lese-z"><span>Spitze&#8209;Spitze misst</span>
+              <input type="text" class="fpm-input osz-inp" id="oszLeseU" placeholder="?"
+                spellcheck="false" oninput="_oszSetLese('leseU',this.value)"><span>Kästchen</span></div>
+          </div>
+          <div class="ebr-rechnung" id="oszAuswertung"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_oszNeueAufgabe()">🎲 Unbekanntes Signal</button>
+            <button class="sim-btn" id="oszPruefBtn" onclick="_oszPruefen()">✓ Ablesung prüfen</button>
+            <button class="sim-btn" onclick="_oszAufgabeEnde()">Generator zeigen</button>
+          </div>
+          <div id="oszKanaele">${kanal(0)}${kanal(1)}</div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Nr.</th><th>Form</th><th>f (soll)</th><th>U<sub>eff</sub> (soll)</th><th>Fehler f</th><th>Fehler U</th></tr></thead>
+              <tbody id="oszProtokoll"></tbody>
+            </table>
+            <div class="fpm-empty" id="oszProtLeer">Noch keine gelöste Aufgabe.<br>Unbekanntes Signal erzeugen, ablesen, prüfen.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="oszS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="oszLis" width="440" height="384" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">x-y-Betrieb: Kanal 1 lenkt waagerecht ab, Kanal 2 senkrecht</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Phasenverschiebung φ: <b id="oszLisPhiLbl">30°</b></span>
+            <input type="range" id="oszLisPhi" min="0" max="180" step="1" value="30"
+              oninput="_oszSetLisPhi(this.value)" style="width:100%;accent-color:#16a34a">
+          </div>
+          <div class="fpm-label">Frequenzverhältnis f<sub>x</sub> : f<sub>y</sub></div>
+          <div class="sim-btn-row">${lisKnoepfe}</div>
+        </div>
+        <div>
+          <div class="osz-lisinfo" id="oszLisInfo"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_oszLisAufgabe()">🎲 Unbekannte Frequenz</button>
+          </div>
+          <div class="dsp-erkl" style="margin-top:10px">
+            <div class="dsp-erkl-kopf">Wozu das gut ist</div>
+            <div class="dsp-erkl-text">
+              Legt man zwei Wechselspannungen gleichzeitig an die waagerechte und die senkrechte
+              Ablenkung, so zeichnet der Elektronenstrahl eine <b>Lissajous-Figur</b>. Ihre Form
+              hängt allein vom Frequenzverhältnis und von der Phasenverschiebung ab. Damit lässt
+              sich eine <b>unbekannte Frequenz bestimmen</b>: Man legt eine bekannte Frequenz an
+              den einen Eingang und verändert sie, bis eine stehende, einfache Figur erscheint.
+              Dann zählt man die Berührpunkte an den Rändern ab.
+            </div>
+            <div class="dsp-erkl-text" style="margin-top:6px">
+              Genau nach diesem Prinzip arbeiten <b>Lasershows</b>: Zwei senkrecht zueinander
+              schwingende Spiegel lenken den Strahl ab, und aus dem Zusammenspiel ihrer Frequenzen
+              entstehen die Figuren an der Wand.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="oszS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="oszWandler" width="440" height="200" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Kennlinie des Messwandlers</div>
+          <canvas id="oszAbtast" width="440" height="230" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Was das System tatsächlich speichert</div>
+        </div>
+        <div>
+          <div class="fpm-label">Messwandler wählen</div>
+          <div class="ebr-objs">${sensoren}</div>
+          <div class="ebr-rechnung" id="oszSensorInfo"></div>
+          <div class="fpm-label" style="margin-top:10px">Abtastung</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Messrate: <b id="oszRateLbl">200 Hz</b></span>
+            <input type="range" id="oszRate" min="5" max="500" step="5" value="200"
+              oninput="_oszSetRate(this.value)" style="width:100%;accent-color:#0369a1">
+          </div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Frequenz des Vorgangs: <b id="oszSigFLbl">40 Hz</b></span>
+            <input type="range" id="oszSigF" min="1" max="120" step="1" value="40"
+              oninput="_oszSetSigF(this.value)" style="width:100%;accent-color:#dc2626">
+          </div>
+          <div class="osz-nyquist" id="oszNyquist"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="oszS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="oszSchreiber" width="440" height="330" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">x-y-Schreiber: die Kurve entsteht direkt auf dem Papier</div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="oszSchrBtn" onclick="_oszSchreiberToggle()">▶ Schreiber starten</button>
+            <button class="sim-btn" onclick="_oszSchreiberReset()">↺ Neues Blatt</button>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="oszSchreiberInfo"></div>
+          <div class="dsp-erkl" style="margin-top:10px">
+            <div class="dsp-erkl-kopf">Ein mechanisches Oszilloskop</div>
+            <div class="dsp-erkl-text">
+              Der x-y-Schreiber führt einen Stift über ein Blatt Papier: Die eine Spannung steuert
+              die Bewegung nach rechts, die andere die nach oben. Er leistet damit im Grunde
+              dasselbe wie ein Oszilloskop im x-y-Betrieb – nur langsam, mechanisch und mit dem
+              Ergebnis sofort auf Papier. Vollständig ersetzbar ist er längst; die Handreichung
+              nennt ihn trotzdem, weil das sichtbare Entstehen der Kurve viele Lernende fasziniert.
+              Seine klassische Anwendung ist die Aufnahme der <b>Franck-Hertz-Kurve</b>.
+            </div>
+            <div class="dsp-erkl-text" style="margin-top:6px">
+              Der physikalische Gehalt der Kurve steckt im <b>Abstand der Einbrüche</b>: Er beträgt
+              stets 4,9 V. So viel Energie braucht ein Quecksilberatom, um in seinen ersten
+              angeregten Zustand zu gelangen. Hat ein Elektron diese Energie erreicht, gibt es sie
+              bei einem Stoß vollständig ab und kann die Gegenspannung nicht mehr überwinden – der
+              Strom bricht ein. Bei doppelter Energie passiert dasselbe zweimal hintereinander.
+              Dass Atome Energie nur in festen Portionen aufnehmen, wird hier unmittelbar sichtbar.
+            </div>
+            <div class="fpm-note" style="margin-top:6px">Die hier gezeichnete Kurve ist
+              nachgebildet, nicht gemessen. Ihr Aussagegehalt ist der Abstand der Maxima von
+              4,9 V – nicht die genaue Höhe der einzelnen Spitzen.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="oszErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>T = Kästchen · TIME/DIV</b> &nbsp;|&nbsp; <b>f = 1 / T</b>
+      &nbsp;|&nbsp; <b>U<sub>SS</sub> = Kästchen · VOLTS/DIV</b>
+      &nbsp;|&nbsp; <b>U<sub>eff</sub> = Û / √2</b> (nur beim Sinus)
+    </p>
+  </div>`;
+}
+
+function _oszErklHTML() {
+  return `<div class="dsp-erkl-kopf">Warum das ein Schlüsselexperiment ist – und warum es keines ist</div>
+    <div class="dsp-erkl-text">
+      Die Handreichung stellt das gleich zu Beginn klar: Messwerterfassungssystem und Oszilloskop
+      sind <b>keine eigenständigen Experimente</b> wie der Franck-Hertz-Versuch oder die
+      Elektronenbeugung. Es sind <b>Methoden der Messwertaufnahme</b>, die quer durch alle
+      Jahrgangsstufen gebraucht werden. Der Kernlehrplan nennt dazu genau eine Kompetenz: Man soll
+      Messdaten, die mit einem Oszilloskop oder einem Messwerterfassungssystem gewonnen wurden,
+      <b>im Hinblick auf Zeiten, Frequenzen und Spannungen auswerten</b> können. Genau das wird
+      hier geübt.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Wie man ein Oszilloskop liest</div>
+    <div class="dsp-erkl-text">
+      Der Bildschirm ist ein Raster aus 10 mal 8 Kästchen. Zwei Knöpfe legen fest, was ein Kästchen
+      bedeutet: <b>TIME/DIV</b> die Zeit in waagerechter Richtung, <b>VOLTS/DIV</b> die Spannung in
+      senkrechter. Alles Weitere ist Zählen. Man zählt ab, über wie viele Kästchen sich eine volle
+      Periode erstreckt, und rechnet T = Kästchen · TIME/DIV; daraus folgt f = 1/T. Ebenso zählt
+      man die Kästchen von der tiefsten bis zur höchsten Stelle der Kurve und erhält
+      U<sub>SS</sub> = Kästchen · VOLTS/DIV, den <b>Spitze-Spitze-Wert</b>. Die Hälfte davon ist der
+      Scheitelwert Û.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Scheitelwert und Effektivwert</div>
+    <div class="dsp-erkl-text">
+      Das Oszilloskop zeigt immer den <b>Momentanwert</b>, ein Vielfachmessgerät dagegen den
+      <b>Effektivwert</b> – also diejenige Gleichspannung, die an einem Widerstand dieselbe
+      Leistung umsetzen würde. Bei einer Sinusspannung gilt U<sub>eff</sub> = Û/√2 ≈ 0,71 · Û.
+      Das ist die Umrechnung hinter den 230 V aus der Steckdose: Ihr Scheitelwert beträgt
+      etwa 325 V. Wichtig ist, dass dieser Faktor <b>nur für den Sinus</b> gilt. Bei einer
+      Rechteckspannung ist U<sub>eff</sub> = Û, beim Dreieck Û/√3. Wer blind durch √2 teilt, rechnet
+      bei jeder anderen Kurvenform falsch.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Wozu die Triggerung</div>
+    <div class="dsp-erkl-text">
+      Ohne Triggerung beginnt jeder Bilddurchlauf an einer anderen Stelle des Signals, und das Bild
+      läuft davon. Die Triggerung sorgt dafür, dass jeder Durchlauf an <i>derselben</i> Stelle
+      startet: bei einem einstellbaren <b>Pegel</b> und in einer bestimmten <b>Flankenrichtung</b>.
+      Dann liegen alle Durchläufe deckungsgleich übereinander und das Bild steht still. Setzt man
+      den Pegel höher als die Amplitude, findet das Gerät keinen Schnittpunkt mehr – im
+      Automatikbetrieb läuft das Bild dann frei durch, im Normalbetrieb bleibt der Schirm leer.
+      Das ist keine Störung, sondern die häufigste Ursache dafür, dass ein Oszilloskop scheinbar
+      nichts anzeigt.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Das Messwerterfassungssystem</div>
+    <div class="dsp-erkl-text">
+      Der Grundgedanke ist einfach und weitreichend: Fast jede physikalische Größe lässt sich über
+      einen geeigneten <b>Messwandler</b> in eine elektrische Spannung umsetzen – über
+      Piezoelektrizität, über temperaturabhängige Widerstände, über die Lorentzkraft. Diese
+      Spannung steht in einem <b>definierten funktionalen Zusammenhang</b> zur Messgröße, meistens
+      sogar proportional. Registriert wird dann nur noch die Spannung. Weil das für nahezu jede
+      Größe funktioniert, sind solche Systeme universell einsetzbar und ersetzen Speicheroszilloskop,
+      x-y-Schreiber und Digitalzähler zugleich.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Was daran gefährlich ist</div>
+    <div class="dsp-erkl-text">
+      Die Handreichung ist an dieser Stelle bemerkenswert selbstkritisch. Sie nennt die Vorteile –
+      viele Messwerte, schnelle Vorgänge, Messungen über eine Schulstunde hinaus, mehr Zeit für die
+      Deutung statt fürs Zeichnen – benennt aber ebenso deutlich die Gefahren: Die Datenmenge kann
+      den Überblick kosten. Die Messung läuft schnell und <b>verdeckt</b> ab, sodass die Transparenz
+      verloren geht. Und die Fülle der Darstellungsmöglichkeiten verführt dazu, unreflektiert
+      irgendeine auszuwählen. Ihre Forderung: Man muss jederzeit Auskunft über die eigene Messung
+      geben können, begründen, warum man ein Verfahren gewählt hat – und die Darstellung
+      grundsätzlich auch <b>von Hand</b> erzeugen können. Wörtlich: Man muss nicht mit Kanonen auf
+      Spatzen schießen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum das Oszilloskop trotzdem bleibt</div>
+    <div class="dsp-erkl-text">
+      In der Schule ist das Oszilloskop weitgehend durch Messwerterfassungssysteme ersetzt worden.
+      Die Handreichung hält trotzdem daran fest – mit dem Argument, dass es in der modernen Technik
+      und besonders im <b>medizinischen Bereich</b> sehr häufig anzutreffen ist. Wer einmal ein
+      EKG gesehen hat, hat ein Oszilloskop gesehen. Und anders als beim Messwerterfassungssystem,
+      das man als black box benutzen darf, lohnt beim Oszilloskop der Blick ins Innere: Sein
+      Funktionsprinzip ist die Ablenkung von Elektronen durch elektrische Felder – dieselbe Physik
+      wie im Fadenstrahlrohr und in der Elektronenbeugungsröhre.
+    </div>
+    <div class="dsp-erkl-warn">💡 Die Handreichung empfiehlt ausdrücklich, den Umgang mit einem
+      virtuellen Oszilloskop auch zu Hause zu üben – Zusehen allein reicht bei diesem Gerät nicht.
+      Genau dafür ist diese Station gedacht.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _oszSetStation(i) {
+  _osz.station = i;
+  for (let k = 0; k < 4; k++) {
+    document.getElementById('oszSt' + k)?.classList.toggle('on', k === i);
+    const d = document.getElementById('osz' + 'S' + k);
+    if (d) d.style.display = k === i ? 'block' : 'none';
+  }
+  _oszUpdate();
+}
+
+// ── Bedienung Station 1 ────────────────────────────────
+function _oszStepT(d) {
+  _osz.tdivI = Math.max(0, Math.min(_OSZ_TDIV.length - 1, _osz.tdivI + d));
+  _oszUpdate();
+}
+function _oszStepV(k, d) {
+  _osz.kanal[k].vdivI = Math.max(0, Math.min(_OSZ_VDIV.length - 1, _osz.kanal[k].vdivI + d));
+  _oszUpdate();
+}
+function _oszSetAn(k, v) { _osz.kanal[k].an = !!v; _oszUpdate(); }
+function _oszSetPos(k, v) { _osz.kanal[k].pos = +v; _oszUpdate(); }
+function _oszSetKopp(k, m) { _osz.kanal[k].kopp = m; _oszUpdate(); }
+function _oszSetForm(k, v) { _osz.kanal[k].form = v; _oszUpdate(); }
+function _oszSetF(k, v) { _osz.kanal[k].f = Math.max(10, Math.min(5000, +v)); _oszUpdate(); }
+function _oszSetAmp(k, v) { _osz.kanal[k].amp = Math.max(0.1, Math.min(10, +v)); _oszUpdate(); }
+function _oszSetOff(k, v) { _osz.kanal[k].off = Math.max(-5, Math.min(5, +v)); _oszUpdate(); }
+function _oszSetPh(k, v) { _osz.kanal[k].ph = Math.max(0, Math.min(360, +v)); _oszUpdate(); }
+function _oszSetTrigQ(k) { _osz.trigQ = k; _oszUpdate(); }
+function _oszSetTrigLvl(v) { _osz.trigLvl = Math.max(-5, Math.min(5, +v)); _oszUpdate(); }
+function _oszSetFlanke(f) { _osz.trigFlanke = f; _oszUpdate(); }
+function _oszSetTrigAuto(a) { _osz.trigAuto = !!a; _oszUpdate(); }
+
+function _oszUpdate() {
+  if (!_osz) return;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  const td = _OSZ_TDIV[_osz.tdivI];
+  set('oszTdiv', td >= 1 ? _fpmNum(td, 0) + ' ms' : _fpmNum(td * 1000, 0) + ' µs');
+  for (let k = 0; k < 2; k++) {
+    const c = _osz.kanal[k];
+    const vd = _OSZ_VDIV[c.vdivI];
+    set('oszVdiv' + k, vd >= 1 ? _fpmNum(vd, 0) + ' V' : _fpmNum(vd * 1000, 0) + ' mV');
+    set('oszFLbl' + k, _oszFreq(c.f));
+    set('oszAmpLbl' + k, _fpmNum(c.amp, 1) + ' V');
+    set('oszOffLbl' + k, _fpmNum(c.off, 1) + ' V');
+    if (k === 1) set('oszPhLbl1', Math.round(c.ph) + '°');
+    const sel = document.getElementById('oszForm' + k); if (sel) sel.value = c.form;
+    const an = document.getElementById('oszAn' + k); if (an) an.checked = c.an;
+    ['DC', 'AC', 'GND'].forEach(m =>
+      document.getElementById('oszK' + k + m)?.classList.toggle('on', c.kopp === m));
+  }
+  set('oszTrigLvlLbl', _fpmNum(_osz.trigLvl, 1) + ' V');
+  document.getElementById('oszTQ0')?.classList.toggle('on', _osz.trigQ === 0);
+  document.getElementById('oszTQ1')?.classList.toggle('on', _osz.trigQ === 1);
+  document.getElementById('oszFl1')?.classList.toggle('on', _osz.trigFlanke > 0);
+  document.getElementById('oszFl0')?.classList.toggle('on', _osz.trigFlanke < 0);
+  document.getElementById('oszTA1')?.classList.toggle('on', _osz.trigAuto);
+  document.getElementById('oszTA0')?.classList.toggle('on', !_osz.trigAuto);
+
+  // Im Aufgabenmodus bleibt der Generator verdeckt
+  const kan = document.getElementById('oszKanaele');
+  if (kan) kan.style.display = _osz.aufgabe ? 'none' : 'block';
+
+  _oszRenderStatus();
+  _oszRenderAufgabe();
+  _oszRenderAuswertung();
+  _oszRenderProtokoll();
+  _oszRenderLis();
+  _oszRenderSensor();
+  _oszRenderSchreiber();
+}
+
+function _oszRenderStatus() {
+  const el = document.getElementById('oszStatus'); if (!el) return;
+  const td = _OSZ_TDIV[_osz.tdivI];
+  const trig = _oszTriggert();
+  let s = `<span class="osz-st-k">TIME/DIV</span><b>${td >= 1 ? _fpmNum(td, 0) + ' ms' : _fpmNum(td * 1000, 0) + ' µs'}</b>`;
+  for (let k = 0; k < 2; k++) {
+    if (!_osz.kanal[k].an) continue;
+    const vd = _OSZ_VDIV[_osz.kanal[k].vdivI];
+    s += `<span class="osz-st-k">CH${k + 1}</span><b style="color:${k === 0 ? '#facc15' : '#38bdf8'}">${
+      vd >= 1 ? _fpmNum(vd, 0) + ' V' : _fpmNum(vd * 1000, 0) + ' mV'}/DIV · ${_osz.kanal[k].kopp}</b>`;
+  }
+  s += `<span class="osz-st-k">Trigger</span><b style="color:${trig ? '#4ade80' : '#f87171'}">${
+    trig ? 'CH' + (_osz.trigQ + 1) + ' ' + (_osz.trigFlanke > 0 ? '↗' : '↘')
+         : (_osz.trigAuto ? 'AUTO – kein Trigger' : 'kein Trigger')}</b>`;
+  el.innerHTML = s;
+}
+
+function _oszRenderAufgabe() {
+  const el = document.getElementById('oszAufgabe'); if (!el) return;
+  const pb = document.getElementById('oszPruefBtn');
+  if (pb) pb.disabled = !_osz.aufgabe;
+  if (!_osz.aufgabe) {
+    el.className = 'osz-aufgabe';
+    el.innerHTML = 'Stelle den Generator unten selbst ein und übe das Ablesen – oder lass dir ein '
+      + '<b>unbekanntes Signal</b> geben. Dann wird die Generatoreinstellung verdeckt und du musst '
+      + 'Frequenz und Effektivwert allein vom Bildschirm bestimmen.';
+    return;
+  }
+  const a = _osz.aufgabe;
+  const g = _osz.geprueft;
+  if (!g) {
+    el.className = 'osz-aufgabe an';
+    el.innerHTML = '<b>Aufgabe.</b> Am Kanal 1 liegt ein unbekanntes Signal der Kurvenform <b>'
+      + _oszFormName(a.form) + '</b>. Bestimme seine Frequenz und seinen Effektivwert. '
+      + 'Zeitbasis und Empfindlichkeit darfst du dabei verstellen.';
+    return;
+  }
+  const gut = g.gT !== null && g.gU !== null && g.gT < 5 && g.gU < 5;
+  el.className = 'osz-aufgabe ' + (gut ? 'ok' : 'no');
+  el.innerHTML = (gut ? '<b>Richtig abgelesen.</b> ' : '<b>Noch nicht.</b> ')
+    + 'Der Generator stand auf <b>' + _oszFreq(a.f) + '</b> und <b>' + _fpmNum(a.ueff, 2)
+    + ' V</b> Effektivwert (Scheitelwert ' + _fpmNum(a.amp, 2) + ' V).'
+    + (g.gT !== null ? ' Deine Frequenz weicht um ' + _fpmNum(g.gT, 1) + ' % ab.' : ' Du hast keine Zeit abgelesen.')
+    + (g.gU !== null ? ' Dein Effektivwert um ' + _fpmNum(g.gU, 1) + ' %.' : ' Du hast keine Spannung abgelesen.')
+    + (gut ? '' : ' Zähle die Kästchen noch einmal nach – und prüfe, ob du beim Effektivwert den '
+      + 'richtigen Faktor für die Kurvenform benutzt hast.');
+}
+
+function _oszRenderAuswertung() {
+  const el = document.getElementById('oszAuswertung'); if (!el) return;
+  const r = _oszAusLesung();
+  const form = _osz.kanal[0].form;
+  const fak = _oszEffFaktor(form);
+  const fakTxt = form === 'sinus' ? 'Û/√2' : form === 'rechteck' ? 'Û' : 'Û/√3';
+  let html = '';
+  if (r.T !== undefined) {
+    html += `<div class="pho-rz"><span class="pho-rz-t">aus den Kästchen die Zeit</span>
+      <span class="pho-rz-f">T = n · TIME/DIV</span>
+      <span class="pho-rz-v">${_oszZeit(r.T)}</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">daraus die Frequenz</span>
+      <span class="pho-rz-f">f = 1 / T</span>
+      <span class="pho-rz-v">${_oszFreq(r.f)}</span></div>`;
+  }
+  if (r.uss !== undefined) {
+    html += `<div class="pho-rz"><span class="pho-rz-t">Spitze-Spitze-Wert</span>
+      <span class="pho-rz-f">U<sub>SS</sub> = n · VOLTS/DIV</span>
+      <span class="pho-rz-v">${_fpmNum(r.uss, 2)} V</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">Scheitelwert</span>
+      <span class="pho-rz-f">Û = U<sub>SS</sub> / 2</span>
+      <span class="pho-rz-v">${_fpmNum(r.us, 2)} V</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Effektivwert bei ${_oszFormName(form)}</span>
+      <span class="pho-rz-f">U<sub>eff</sub> = ${fakTxt}</span>
+      <span class="pho-rz-v">${_fpmNum(r.us * fak, 2)} V</span></div>`;
+  }
+  if (!html) {
+    html = '<div class="fpm-note">Zähle am Raster ab, über wie viele Kästchen sich eine volle '
+      + 'Periode erstreckt und wie viele Kästchen zwischen tiefstem und höchstem Punkt der Kurve '
+      + 'liegen. Trage beides oben ein – Zwischenwerte wie 2,5 sind erlaubt.</div>';
+  } else if (r.uss !== undefined) {
+    html += `<div class="fpm-note">Der Faktor für den Effektivwert hängt von der Kurvenform ab:
+      Sinus Û/√2 ≈ 0,71·Û, Rechteck Û, Dreieck und Sägezahn Û/√3 ≈ 0,58·Û.</div>`;
+  }
+  el.innerHTML = html;
+}
+
+function _oszRenderProtokoll() {
+  const tb = document.getElementById('oszProtokoll'); if (!tb) return;
+  const leer = document.getElementById('oszProtLeer');
+  if (leer) leer.style.display = _osz.protokoll.length ? 'none' : 'block';
+  tb.innerHTML = _osz.protokoll.map((p, i) =>
+    `<tr><td>${i + 1}</td><td>${_oszFormName(p.form)}</td><td>${_oszFreq(p.f)}</td>
+       <td>${_fpmNum(p.ueff, 2)} V</td>
+       <td>${_fpmNum(p.gT, 1)} %</td><td>${_fpmNum(p.gU, 1)} %</td></tr>`).join('');
+}
+
+// ── Station 2 ──────────────────────────────────────────
+function _oszRenderLis() {
+  const el = document.getElementById('oszLisInfo'); if (!el) return;
+  const a = _osz.lisA, b = _osz.lisB;
+  const g = (x, y) => y ? g(y, x % y) : x;
+  const t = g(a, b);
+  if (_osz.lisAufg) {
+    el.className = 'osz-lisinfo an';
+    el.innerHTML = `<div class="osz-lis-kopf">Aufgabe</div>
+      <div class="osz-lis-txt">An der waagerechten Ablenkung liegt eine bekannte Frequenz von
+        <b>500 Hz</b>. Zähle die Berührpunkte der Figur am <b>oberen</b> und am <b>rechten</b> Rand
+        und bestimme daraus die unbekannte Frequenz am senkrechten Eingang.</div>
+      <div class="osz-lis-txt" style="margin-top:6px">Es gilt
+        <b>Berührpunkte oben : Berührpunkte rechts = f<sub>y</sub> : f<sub>x</sub></b>.</div>
+      <button class="sim-btn" style="margin-top:8px" onclick="_oszLisLoesung()">Lösung zeigen</button>
+      <div id="oszLisLsg"></div>`;
+    return;
+  }
+  el.className = 'osz-lisinfo';
+  el.innerHTML = `<div class="osz-lis-kopf">Die Figur ablesen</div>
+    <div class="osz-lis-txt">
+      Eingestellt ist f<sub>x</sub> : f<sub>y</sub> = <b>${a} : ${b}</b> bei einer
+      Phasenverschiebung von <b>${Math.round(_osz.lisPhi)}°</b>.
+      Die Kurve berührt den <b>oberen</b> Rand ${b}-mal und den <b>rechten</b> Rand ${a}-mal.
+      Das Verhältnis dieser Berührpunkte ist gerade f<sub>y</sub> : f<sub>x</sub> = ${b} : ${a}.
+      ${t > 1 ? 'Beide Zahlen haben den gemeinsamen Teiler ' + t
+        + ' – gekürzt ergibt das ' + (b / t) + ' : ' + (a / t) + '.' : ''}
+    </div>
+    <div class="osz-lis-txt" style="margin-top:6px">
+      Läge f<sub>x</sub> bei 500 Hz, so wäre f<sub>y</sub> = 500 Hz · ${b}/${a} =
+      <b>${_oszFreq(500 * b / a)}</b>.
+    </div>
+    <div class="fpm-note" style="margin-top:6px">Die Phasenverschiebung verändert nur die
+      <i>Form</i> der Figur, nicht die Zahl der Berührpunkte. Bei 1 : 1 wandelt sie den Kreis über
+      Ellipsen bis zur Geraden – daran erkennt man am Oszilloskop, ob zwei Spannungen in Phase sind.</div>`;
+}
+function _oszLisLoesung() {
+  const el = document.getElementById('oszLisLsg'); if (!el || !_osz.lisAufg) return;
+  el.innerHTML = `<div class="osz-lis-txt" style="margin-top:8px">Die Figur berührt oben
+    <b>${_osz.lisB}-mal</b> und rechts <b>${_osz.lisA}-mal</b>. Also ist
+    f<sub>y</sub> = 500 Hz · ${_osz.lisB}/${_osz.lisA} =
+    <b>${_oszFreq(_osz.lisAufg.loesung)}</b>.</div>`;
+}
+
+// ── Station 3 ──────────────────────────────────────────
+function _oszRenderSensor() {
+  const el = document.getElementById('oszSensorInfo');
+  const s = _OSZ_SENSOREN[_osz.sensor];
+  if (el) {
+    const halb = s.max / 2;
+    el.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">Messgröße</span>
+        <span class="pho-rz-f">${s.gr}</span><span class="pho-rz-v">0 … ${s.max} ${s.eh}</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">genutztes Phänomen</span>
+        <span class="pho-rz-f">Messwandler</span><span class="pho-rz-v">${s.prinzip}</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">Zusammenhang</span>
+        <span class="pho-rz-f">${s.kennlinie}</span><span class="pho-rz-v">${s.art}</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">bei ${_fpmNum(halb, 0)} ${s.eh}</span>
+        <span class="pho-rz-f">registrierte Spannung</span>
+        <span class="pho-rz-v">${_fpmNum(s.u(halb), 3)} V</span></div>
+      <div class="fpm-note">${s.txt}</div>`;
+  }
+  const ny = document.getElementById('oszNyquist');
+  if (ny) {
+    const ok = _oszNyquistOk();
+    ny.className = 'osz-nyquist ' + (ok ? 'ok' : 'no');
+    ny.innerHTML = ok
+      ? `<b>Die Messrate reicht.</b> Mit ${Math.round(_osz.rate)} Messungen je Sekunde werden von
+         jeder Schwingung des ${Math.round(_osz.sigF)}-Hz-Vorgangs etwa
+         ${_fpmNum(_osz.rate / _osz.sigF, 1)} Punkte aufgenommen. Der Verlauf bleibt erkennbar.`
+      : `<b>Die Messrate ist zu klein.</b> Bei ${Math.round(_osz.rate)} Hz Messrate und
+         ${Math.round(_osz.sigF)} Hz Signal fällt auf jede Schwingung weniger als ein halber
+         Messpunkt. Das System speichert brav Zahlen – aber sie zeigen einen Vorgang mit
+         scheinbar <b>${_fpmNum(_oszScheinF(), 1)} Hz</b>, den es gar nicht gibt.
+         Genau davor warnt die Handreichung: Die Messung läuft schnell und verdeckt ab, und wer
+         nicht weiß, was er misst, merkt den Fehler nicht. Als Faustregel muss die Messrate
+         <b>mindestens doppelt so groß</b> sein wie die höchste vorkommende Frequenz –
+         hier also über ${Math.round(2 * _osz.sigF)} Hz.`;
+  }
+}
+
+// ── Station 4 ──────────────────────────────────────────
+function _oszRenderSchreiber() {
+  const el = document.getElementById('oszSchreiberInfo'); if (!el) return;
+  const U = _osz.stiftU;
+  const maxima = [];
+  for (let n = 1; n * _OSZ_FH_DU <= _OSZ_FH_UMAX; n++) maxima.push(_fpmNum(n * _OSZ_FH_DU, 1));
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Stellung des Stiftes – x-Richtung</span>
+      <span class="pho-rz-f">Beschleunigungsspannung U</span>
+      <span class="pho-rz-v">${_fpmNum(U, 1)} V</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Stellung des Stiftes – y-Richtung</span>
+      <span class="pho-rz-f">Auffängerstrom I</span>
+      <span class="pho-rz-v">${_fpmNum(_oszFHStrom(U), 2)} nA</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Abstand der Einbrüche</span>
+      <span class="pho-rz-f">ΔU = E<sub>Anregung</sub> / e</span>
+      <span class="pho-rz-v">${_fpmNum(_OSZ_FH_DU, 1)} V</span></div>
+    <div class="fpm-note">Die Einbrüche liegen bei ${maxima.join(' V, ')} V. Ihr gleichmäßiger
+      Abstand von ${_fpmNum(_OSZ_FH_DU, 1)} V ist die Anregungsenergie des Quecksilberatoms in
+      Elektronenvolt – gemessen mit nichts als einem Voltmeter und einem Stift auf Papier.</div>`;
+}
+
+// ── Zeichnung: Oszilloskopschirm ───────────────────────
+function _oszSchirmGeo(cv) {
+  const gw = _OSZ_XDIV * _OSZ_PX, gh = _OSZ_YDIV * _OSZ_PX;
+  return { gx: (cv.width - gw) / 2, gy: 14, gw, gh };
+}
+function _oszRenderSchirm(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  const G = _oszSchirmGeo(cv);
+  ctx.fillStyle = '#0a0f0a'; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#0d1a12'; ctx.fillRect(G.gx, G.gy, G.gw, G.gh);
+
+  // Raster
+  ctx.strokeStyle = '#1c3a29'; ctx.lineWidth = 1;
+  for (let i = 0; i <= _OSZ_XDIV; i++) {
+    ctx.beginPath(); ctx.moveTo(G.gx + i * _OSZ_PX, G.gy); ctx.lineTo(G.gx + i * _OSZ_PX, G.gy + G.gh); ctx.stroke();
+  }
+  for (let j = 0; j <= _OSZ_YDIV; j++) {
+    ctx.beginPath(); ctx.moveTo(G.gx, G.gy + j * _OSZ_PX); ctx.lineTo(G.gx + G.gw, G.gy + j * _OSZ_PX); ctx.stroke();
+  }
+  // Mittelachsen mit Feinteilung, wie am echten Geraet
+  const mx = G.gx + G.gw / 2, my = G.gy + G.gh / 2;
+  ctx.strokeStyle = '#2d5c42'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(mx, G.gy); ctx.lineTo(mx, G.gy + G.gh);
+  ctx.moveTo(G.gx, my); ctx.lineTo(G.gx + G.gw, my); ctx.stroke();
+  ctx.strokeStyle = '#2d5c42'; ctx.lineWidth = 1;
+  for (let i = 0; i <= _OSZ_XDIV * 5; i++) {
+    const x = G.gx + i * _OSZ_PX / 5;
+    ctx.beginPath(); ctx.moveTo(x, my - 3); ctx.lineTo(x, my + 3); ctx.stroke();
+  }
+  for (let j = 0; j <= _OSZ_YDIV * 5; j++) {
+    const y = G.gy + j * _OSZ_PX / 5;
+    ctx.beginPath(); ctx.moveTo(mx - 3, y); ctx.lineTo(mx + 3, y); ctx.stroke();
+  }
+
+  const start = _oszStartZeit();
+  const kein = start === null;
+
+  if (kein) {
+    ctx.fillStyle = '#f87171'; ctx.font = '13px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Kein Triggersignal – der Schirm bleibt leer.', mx, my - 8);
+    ctx.font = '11px sans-serif'; ctx.fillStyle = '#94a3b8';
+    ctx.fillText('Der Triggerpegel liegt außerhalb des Signals. Pegel verkleinern oder auf Auto stellen.', mx, my + 12);
+    ctx.textAlign = 'left';
+  } else {
+    const farben = ['#facc15', '#38bdf8'];
+    for (let k = 0; k < 2; k++) {
+      const c = _osz.kanal[k];
+      if (!c.an) continue;
+      const vd = _oszVdiv(k);
+      ctx.strokeStyle = farben[k]; ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      let begonnen = false;
+      for (let px = 0; px <= G.gw; px++) {
+        const t = start + px / _OSZ_PX * _oszTdiv();
+        const u = _oszSpannung(k, t);
+        const y = my - (u / vd + c.pos) * _OSZ_PX;
+        if (y < G.gy - 60 || y > G.gy + G.gh + 60) { begonnen = false; continue; }
+        const yy = Math.max(G.gy, Math.min(G.gy + G.gh, y));
+        const xx = G.gx + px;
+        begonnen ? ctx.lineTo(xx, yy) : (ctx.moveTo(xx, yy), begonnen = true);
+      }
+      ctx.stroke();
+      // Nullmarke am linken Rand
+      ctx.fillStyle = farben[k]; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+      const y0 = my - c.pos * _OSZ_PX;
+      if (y0 > G.gy && y0 < G.gy + G.gh) {
+        ctx.fillText(String(k + 1) + '▸', G.gx + 3, y0 - 3);
+      }
+    }
+    // Triggermarke
+    const tq = _osz.kanal[_osz.trigQ];
+    if (tq.an && _oszTriggert()) {
+      const yt = my - (_osz.trigLvl / _oszVdiv(_osz.trigQ) + tq.pos) * _OSZ_PX;
+      if (yt > G.gy && yt < G.gy + G.gh) {
+        ctx.strokeStyle = '#4ade80'; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+        ctx.beginPath(); ctx.moveTo(G.gx, yt); ctx.lineTo(G.gx + G.gw, yt); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#4ade80'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+        ctx.fillText('Trigger', G.gx + G.gw - 3, yt - 4);
+      }
+    }
+  }
+
+  // Randbeschriftung
+  ctx.fillStyle = '#4b7a63'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('10 Kästchen  ·  TIME/DIV', mx, G.gy + G.gh + 13);
+  ctx.save(); ctx.translate(G.gx - 5, my); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('8 Kästchen · VOLTS/DIV', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+}
+
+// ── Zeichnung: Lissajous ───────────────────────────────
+function _oszRenderLisCv(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  const G = _oszSchirmGeo(cv);
+  ctx.fillStyle = '#0a0f0a'; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#0d1a12'; ctx.fillRect(G.gx, G.gy, G.gw, G.gh);
+  ctx.strokeStyle = '#1c3a29'; ctx.lineWidth = 1;
+  for (let i = 0; i <= _OSZ_XDIV; i++) {
+    ctx.beginPath(); ctx.moveTo(G.gx + i * _OSZ_PX, G.gy); ctx.lineTo(G.gx + i * _OSZ_PX, G.gy + G.gh); ctx.stroke();
+  }
+  for (let j = 0; j <= _OSZ_YDIV; j++) {
+    ctx.beginPath(); ctx.moveTo(G.gx, G.gy + j * _OSZ_PX); ctx.lineTo(G.gx + G.gw, G.gy + j * _OSZ_PX); ctx.stroke();
+  }
+  const mx = G.gx + G.gw / 2, my = G.gy + G.gh / 2;
+  const rx = 3.2 * _OSZ_PX, ry = 3.2 * _OSZ_PX;
+
+  const pts = _oszLisPunkte(_osz.lisA, _osz.lisB, _osz.lisPhi, 1400);
+  ctx.strokeStyle = '#4ade80'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  pts.forEach((p, i) => {
+    const x = mx + p.x * rx, y = my - p.y * ry;
+    i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+  });
+  ctx.stroke();
+
+  // Beruehrpunkte hervorheben – sie sind das Messinstrument
+  ctx.fillStyle = '#fbbf24';
+  for (let i = 0; i < _osz.lisB; i++) {
+    const s = (0.25 + i) / _osz.lisB;
+    const x = mx + Math.sin(2 * Math.PI * _osz.lisA * s + _osz.lisPhi * Math.PI / 180) * rx;
+    ctx.beginPath(); ctx.arc(x, my - ry, 4, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#f472b6';
+  for (let i = 0; i < _osz.lisA; i++) {
+    const s = (0.25 - _osz.lisPhi / 360 + i) / _osz.lisA;
+    const y = my - Math.sin(2 * Math.PI * _osz.lisB * s) * ry;
+    ctx.beginPath(); ctx.arc(mx + rx, y, 4, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  ctx.fillStyle = '#fbbf24'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_osz.lisB + ' Berührpunkte oben', mx, G.gy + 12);
+  ctx.fillStyle = '#f472b6'; ctx.textAlign = 'right';
+  ctx.fillText(_osz.lisA + ' rechts', G.gx + G.gw - 6, my + 40);
+  ctx.fillStyle = '#4b7a63'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_osz.lisAufg ? 'unbekanntes Verhältnis'
+    : 'f_x : f_y = ' + _osz.lisA + ' : ' + _osz.lisB + '   ·   φ = ' + Math.round(_osz.lisPhi) + '°',
+    mx, G.gy + G.gh + 13);
+  ctx.textAlign = 'left';
+}
+
+// ── Zeichnung: Wandlerkennlinie ────────────────────────
+function _oszRenderWandler(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const s = _OSZ_SENSOREN[_osz.sensor];
+  const padL = 52, padR = 14, padT = 30, padB = 34;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  const umax = Math.max(s.u(s.max) * 1.15, 0.1);
+
+  const X = v => x0 + v / s.max * (x1 - x0);
+  const Y = v => y0 - v / umax * (y0 - y1);
+
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  const xt = _fpmTicks(s.max, 5);
+  ctx.font = '9px sans-serif';
+  xt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 13);
+  });
+  const yt = _fpmTicks(umax, 4);
+  yt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+
+  ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let i = 0; i <= 200; i++) {
+    const g = i / 200 * s.max;
+    const x = X(g), y = Y(s.u(g));
+    i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+  }
+  ctx.stroke();
+
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(s.gr + ' in ' + s.eh, x1, y0 + 27);
+  ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('registrierte Spannung in V', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#0369a1'; ctx.font = '700 10px sans-serif';
+  ctx.fillText(s.n + ': ' + s.kennlinie, x0, 16);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.fillText(s.art, x0, 26);
+}
+
+// ── Zeichnung: Abtastung ───────────────────────────────
+function _oszRenderAbtast(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const padL = 52, padR = 14, padT = 26, padB = 32;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  const my = (y0 + y1) / 2, amp = (y0 - y1) / 2 * 0.82;
+  const T = _osz.dauer;
+
+  const X = t => x0 + t / T * (x1 - x0);
+
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x0, my); ctx.lineTo(x1, my); ctx.stroke();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+
+  // Der wahre Verlauf
+  ctx.strokeStyle = '#fca5a5'; ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  for (let px = 0; px <= x1 - x0; px++) {
+    const t = px / (x1 - x0) * T;
+    const y = my - Math.sin(2 * Math.PI * _osz.sigF * t) * amp;
+    px ? ctx.lineTo(x0 + px, y) : ctx.moveTo(x0 + px, y);
+  }
+  ctx.stroke();
+
+  // Die tatsaechlich aufgenommenen Punkte
+  const n = Math.min(400, Math.floor(T * _osz.rate));
+  const pts = [];
+  for (let i = 0; i <= n; i++) {
+    const t = i / _osz.rate;
+    if (t > T) break;
+    pts.push({ x: X(t), y: my - Math.sin(2 * Math.PI * _osz.sigF * t) * amp });
+  }
+  ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  pts.forEach((p, i) => { i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); });
+  ctx.stroke();
+  ctx.fillStyle = '#0369a1';
+  if (pts.length <= 120) pts.forEach(p => {
+    ctx.beginPath(); ctx.arc(p.x, p.y, 2.6, 0, 2 * Math.PI); ctx.fill();
+  });
+
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillStyle = '#fca5a5';
+  ctx.fillText('■ wahrer Verlauf: ' + Math.round(_osz.sigF) + ' Hz', x0, 12);
+  ctx.fillStyle = '#0369a1';
+  ctx.fillText('■ aufgenommen: ' + pts.length + ' Messpunkte bei ' + Math.round(_osz.rate) + ' Hz', x0, 22);
+  ctx.fillStyle = '#475569'; ctx.textAlign = 'right';
+  ctx.fillText('Zeit in s', x1, y0 + 22);
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#94a3b8';
+  ctx.fillText('0', x0, y0 + 22);
+  ctx.fillText(_fpmNum(T, 2), x1 - 24, y0 + 22);
+  ctx.textAlign = 'left';
+}
+
+// ── Zeichnung: x-y-Schreiber ───────────────────────────
+function _oszRenderSchreiberCv(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f1f5f9'; ctx.fillRect(0, 0, W, H);
+  // Papier
+  const px0 = 46, py0 = H - 44, px1 = W - 20, py1 = 26;
+  ctx.fillStyle = '#fffdf7'; ctx.fillRect(px0, py1, px1 - px0, py0 - py1);
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  ctx.strokeRect(px0, py1, px1 - px0, py0 - py1);
+
+  // Millimeterartiges Papierraster
+  const imax = 3.6;
+  ctx.strokeStyle = '#f0e9d8';
+  for (let u = 0; u <= _OSZ_FH_UMAX; u += 2) {
+    const x = px0 + u / _OSZ_FH_UMAX * (px1 - px0);
+    ctx.beginPath(); ctx.moveTo(x, py1); ctx.lineTo(x, py0); ctx.stroke();
+  }
+  for (let i = 0; i <= imax; i += 0.5) {
+    const y = py0 - i / imax * (py0 - py1);
+    ctx.beginPath(); ctx.moveTo(px0, y); ctx.lineTo(px1, y); ctx.stroke();
+  }
+
+  const X = u => px0 + u / _OSZ_FH_UMAX * (px1 - px0);
+  const Y = i => py0 - Math.min(i, imax) / imax * (py0 - py1);
+
+  // Achsen
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(px0, py1); ctx.lineTo(px0, py0); ctx.lineTo(px1, py0); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  for (let u = 0; u <= _OSZ_FH_UMAX; u += 5) {
+    ctx.beginPath(); ctx.moveTo(X(u), py0); ctx.lineTo(X(u), py0 + 4); ctx.stroke();
+    ctx.fillText(String(u), X(u), py0 + 14);
+  }
+  ctx.fillText('Beschleunigungsspannung U in V', (px0 + px1) / 2, py0 + 28);
+  ctx.save(); ctx.translate(14, (py0 + py1) / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Auffängerstrom I', 0, 0); ctx.restore();
+
+  // Die bereits gezogene Spur
+  if (_osz.spur.length > 1) {
+    ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    _osz.spur.forEach((p, i) => {
+      const x = X(p.u), y = Y(p.i);
+      i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+    });
+    ctx.stroke();
+  }
+
+  // Abstandsmarken zwischen den Einbruechen
+  if (_osz.stiftU >= _OSZ_FH_DU * 2) {
+    ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 1;
+    ctx.setLineDash([3, 3]);
+    for (let n = 1; n * _OSZ_FH_DU + 0.7 <= Math.min(_osz.stiftU, _OSZ_FH_UMAX); n++) {
+      const u = n * _OSZ_FH_DU + 0.7;
+      ctx.beginPath(); ctx.moveTo(X(u), py1); ctx.lineTo(X(u), py0); ctx.stroke();
+    }
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#dc2626'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Abstand 4,9 V', X(_OSZ_FH_DU * 1.5 + 0.7), py1 + 10);
+  }
+
+  // Der Stift
+  const sx = X(Math.min(_osz.stiftU, _OSZ_FH_UMAX));
+  const sy = Y(_oszFHStrom(_osz.stiftU));
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(sx, py1 - 12); ctx.lineTo(sx, sy); ctx.stroke();
+  ctx.fillStyle = '#334155';
+  ctx.beginPath(); ctx.arc(sx, sy, 3.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Stift', sx, py1 - 16);
+  ctx.textAlign = 'left';
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _oszTakt(dt) {
+  if (!_osz) return;
+  const d = Math.min(0.05, dt);
+  _osz.t += d;
+  if (_osz.laeuft) {
+    _osz.stiftU += d * 6;
+    if (_osz.stiftU >= _OSZ_FH_UMAX) {
+      _osz.stiftU = _OSZ_FH_UMAX;
+      _osz.laeuft = false;
+      const b = document.getElementById('oszSchrBtn');
+      if (b) b.textContent = '▶ Schreiber starten';
+    }
+    _osz.spur.push({ u: _osz.stiftU, i: _oszFHStrom(_osz.stiftU) });
+  }
+}
+function _oszRender() {
+  if (!_osz) return;
+  if (_osz.station === 0) {
+    const cv = document.getElementById('oszSchirm');
+    if (cv) _oszRenderSchirm(cv.getContext('2d'), cv);
+  } else if (_osz.station === 1) {
+    const cv = document.getElementById('oszLis');
+    if (cv) _oszRenderLisCv(cv.getContext('2d'), cv);
+  } else if (_osz.station === 2) {
+    const cw = document.getElementById('oszWandler');
+    if (cw) _oszRenderWandler(cw.getContext('2d'), cw);
+    const ca = document.getElementById('oszAbtast');
+    if (ca) _oszRenderAbtast(ca.getContext('2d'), ca);
+  } else if (_osz.station === 3) {
+    const cs = document.getElementById('oszSchreiber');
+    if (cs) _oszRenderSchreiberCv(cs.getContext('2d'), cs);
+    if (_osz.laeuft) _oszRenderSchreiber();
+  }
+}
+
+// ── Zusätzliche Styles für Oszilloskop und Messwerterfassung ──
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .osz-gruppe { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 8px 11px; margin: 8px 0; }
+    .osz-gruppe-k { font-size: .62rem; text-transform: uppercase; letter-spacing: .05em;
+      font-weight: 800; color: #94a3b8; margin-bottom: 5px; }
+    .osz-gen-k { font-size: .62rem; text-transform: uppercase; letter-spacing: .05em;
+      font-weight: 800; color: #94a3b8; margin: 8px 0 4px;
+      border-top: 1px solid #e2e8f0; padding-top: 7px; }
+    .osz-zeile { display: flex; align-items: center; gap: 6px; margin: 4px 0; font-size: .74rem; }
+    .osz-zeile > span:first-child { color: #64748b; font-weight: 700; flex: 0 0 84px; }
+    .osz-zeile > b { color: #1e293b; font-variant-numeric: tabular-nums; min-width: 54px; }
+    .osz-zeile input[type=range] { flex: 1 1 auto; min-width: 60px; accent-color: #475569; }
+    .osz-knopf { background: #fff; border: 1px solid #cbd5e1; border-radius: 6px;
+      padding: 1px 7px; cursor: pointer; color: #475569; font-size: .74rem; }
+    .osz-knopf:hover { background: #f1f5f9; }
+    .osz-seg { display: flex; gap: 3px; }
+    .osz-segb { background: #fff; border: 1px solid #cbd5e1; border-radius: 6px;
+      padding: 2px 7px; cursor: pointer; color: #64748b; font-size: .68rem; font-weight: 700; }
+    .osz-segb.on { background: #1e293b; border-color: #1e293b; color: #fff; }
+    .osz-sel { flex: 1 1 auto; border: 1px solid #cbd5e1; border-radius: 6px;
+      padding: 2px 5px; font-size: .72rem; color: #475569; background: #fff; }
+    .osz-status { display: flex; gap: 5px; align-items: baseline; flex-wrap: wrap;
+      background: #0a0f0a; border-radius: 0 0 9px 9px; margin-top: -4px;
+      padding: 5px 10px 7px; font-size: .7rem; }
+    .osz-st-k { font-size: .58rem; text-transform: uppercase; letter-spacing: .05em;
+      font-weight: 800; color: #4b7a63; }
+    .osz-status b { color: #e2e8f0; font-variant-numeric: tabular-nums; margin-right: 6px; }
+    .osz-aufgabe { font-size: .78rem; color: #64748b; background: #f8fafc; border: 1px solid #e2e8f0;
+      border-radius: 9px; padding: 9px 11px; margin-bottom: 8px; line-height: 1.55; }
+    .osz-aufgabe.an { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
+    .osz-aufgabe.ok { background: #f0fdf4; border-color: #bbf7d0; color: #15803d; }
+    .osz-aufgabe.no { background: #fffbeb; border-color: #fde68a; color: #b45309; }
+    .osz-lese { display: flex; flex-direction: column; gap: 5px; margin-bottom: 8px; }
+    .osz-lese-z { display: flex; align-items: center; gap: 7px; font-size: .76rem; color: #475569; }
+    .osz-inp { width: 64px; text-align: center; font-variant-numeric: tabular-nums; }
+    .osz-lisinfo { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 12px; }
+    .osz-lisinfo.an { background: #eff6ff; border-color: #bfdbfe; }
+    .osz-lis-kopf { font-size: .62rem; text-transform: uppercase; letter-spacing: .05em;
+      font-weight: 800; color: #94a3b8; margin-bottom: 4px; }
+    .osz-lis-txt { font-size: .79rem; color: #475569; line-height: 1.6; }
+    .osz-nyquist { font-size: .78rem; border-radius: 9px; padding: 9px 11px;
+      margin-top: 8px; line-height: 1.55; }
+    .osz-nyquist.ok { background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d; }
+    .osz-nyquist.no { background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; }
+    .osz-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
