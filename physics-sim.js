@@ -1940,6 +1940,28 @@ const _physSimDefs = {
       _gitRenderBank(ctx, cv); _gitRenderScreen(); _gitRenderZeiger();
     }, []);
   },
+
+  // ── 34. PHOTOEFFEKT ────────────────────────────────────
+  // Schluesselexperiment 04 des KLP: Hallwachsversuch, Widerspruch zum
+  // Wellenmodell und Vakuumphotozelle mit Einsteingerade
+  'photoeffekt': modal => {
+    _phoInit();
+    modal.innerHTML = _phoHTML();
+    const erkl = document.getElementById('phoErkl');
+    if (erkl) erkl.innerHTML = _phoErklHTML();
+    _phoSetStation(0);
+    _phoSetFilter(0);
+    _phoSetHwMat(_pho.hwMat);
+    _phoSetLicht(_pho.li);
+    _phoSetZMat(_pho.mi);
+    _phoRenderProt();
+    _phoRenderTable();
+    _phoRenderTheorie(false);
+    _phoUpdate();
+    _phoDrawPlot();
+    _pSim = new PhysicsSimEngine('phoTakt', 'phoKeinChart');
+    _pSim.start(dt => _phoTakt(dt), () => _phoRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -5354,6 +5376,1262 @@ function _gitBind() {
     .git-sch-text { font-size: .73rem; color: #64748b; line-height: 1.5; margin-top: 7px; }
     .git-warn { font-size: .73rem; color: #b45309; background: #fffbeb; border: 1px solid #fde68a;
       border-radius: 7px; padding: 6px 9px; margin: 6px 0; line-height: 1.45; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// PHOTOEFFEKT – Schluesselexperiment 04 des KLP
+// Grundlage: Handreichung "Versuch 4: Photoeffekt" (NRW)
+//
+// Drei Stationen entlang des Unterrichtsgangs der Handreichung:
+//   1. Hallwachsversuch – der kognitive Konflikt
+//   2. Abschaetzung der Ausloesezeit nach dem Wellenmodell
+//   3. Vakuumphotozelle – Einsteingerade, h und W_A messen
+//
+//   E_Photon = h·f = h·c/λ        W_kin(max) = h·f − W_A        W_kin = e·U_g
+//
+// Nichts davon ist mit Wenn-Dann-Regeln nachgebaut: Der Hallwachsversuch
+// rechnet das Linienspektrum der Hg-Lampe gegen die Austrittsarbeit des
+// Plattenmaterials. Dass die Glasplatte den Strom abschaltet, folgt daraus,
+// dass Zink erst unterhalb von 286 nm ausloest und Glas die 254-nm-Linie
+// zurueckhaelt – nicht daraus, dass es so einprogrammiert waere.
+// ═══════════════════════════════════════════════════════
+
+const _PHO_H = 6.626e-34;      // Planck'sches Wirkungsquantum in J·s
+const _PHO_E = 1.602e-19;      // Elementarladung in C
+const _PHO_C = 2.998e8;        // Lichtgeschwindigkeit in m/s
+
+// Linienspektrum einer Quecksilberhochdruckdampflampe (relative Anteile)
+const _PHO_HG = [
+  { lam: 254, p: 0.30, art: 'UV-C' },
+  { lam: 313, p: 0.12, art: 'UV-B' },
+  { lam: 365, p: 0.20, art: 'UV-A' },
+  { lam: 405, p: 0.10, art: 'violett' },
+  { lam: 436, p: 0.12, art: 'blau' },
+  { lam: 546, p: 0.10, art: 'grün' },
+  { lam: 578, p: 0.06, art: 'gelb' }
+];
+
+const _PHO_FILTER = [
+  { n: 'ohne Filter', durch: () => true,        kurz: 'volles Spektrum der Hg-Lampe, sichtbar und unsichtbar' },
+  { n: 'Glasplatte',  durch: l => l >= 330,     kurz: 'Glas ist für UV unterhalb 330 nm undurchlässig' },
+  { n: 'UV-Filter',   durch: l => l <= 400,     kurz: 'lässt nur UV durch und blockt das sichtbare Licht' },
+  { n: 'Rotfilter',   durch: l => l >= 570,     kurz: 'lässt nur langwelliges Licht durch' }
+];
+
+// Austrittsarbeiten in eV
+const _PHO_MAT = [
+  { n: 'Photozelle (K-Schicht)', WA: 2.00, col: '#7c3aed' },
+  { n: 'Cäsium',                 WA: 2.14, col: '#f97316' },
+  { n: 'Kalium',                 WA: 2.30, col: '#0284c7' },
+  { n: 'Natrium',                WA: 2.36, col: '#16a34a' },
+  { n: 'Zink',                   WA: 4.34, col: '#db2777' },
+  { n: 'Platin',                 WA: 5.65, col: '#0f766e' }
+];
+
+// Monochromatische Buendel fuer die Photozelle. Die fuenf mittleren sind
+// genau die Interferenzfilter aus der Messtabelle der Handreichung.
+const _PHO_LICHT = [
+  { n: 'UV 365',   lam: 365, col: '#8b5cf6' },
+  { n: 'violett',  lam: 405, col: '#7c3aed' },
+  { n: 'blau',     lam: 472, col: '#3b82f6' },
+  { n: 'türkis',   lam: 505, col: '#06b6d4' },
+  { n: 'grün',     lam: 525, col: '#22c55e' },
+  { n: 'gelb',     lam: 588, col: '#eab308' },
+  { n: 'orange',   lam: 611, col: '#f97316' },
+  { n: 'rot',      lam: 700, col: '#ef4444' }
+];
+
+let _pho = null;
+
+function _phoInit() {
+  _pho = {
+    station: 0, t: 0, teilchen: [],
+    // Station 1 – Hallwachs
+    hwMat: 4, hwLampe: true, hwInt: 100, hwFilter: 0, hwPol: 'neg',
+    gesehen: { mitUV: false, mitGlas: false, umgepolt: false, schwach: false },
+    prot: [], protId: 1,
+    // Station 2 – Wellenmodell
+    wmP: 20, wmRefl: 80, wmR: 1.0, wmD: 1.0,
+    // Station 3 – Photozelle
+    li: 4, mi: 0, int: 60, U: 0,
+    rows: [], nextId: 1,
+    preset: 0, fn: null, fnAuto: false, origin: false, reveal: false
+  };
+}
+
+// ── Physik ─────────────────────────────────────────────
+function _phoF(lam)       { return _PHO_C / (lam * 1e-9); }              // Hz
+function _phoEPhoton(lam) { return _PHO_H * _phoF(lam); }                // J
+function _phoLamGrenz(WA) { return _PHO_H * _PHO_C / (WA * _PHO_E) * 1e9; }   // nm
+function _phoFGrenz(WA)   { return WA * _PHO_E / _PHO_H; }              // Hz
+// W_kin(max) = h·f − W_A, negativ bedeutet: kein Elektron tritt aus
+function _phoWkin(lam, WA) { return _phoEPhoton(lam) - WA * _PHO_E; }
+function _phoUg(lam, WA)   { return _phoWkin(lam, WA) / _PHO_E; }
+
+// ── Station 1: Hallwachsversuch ────────────────────────
+function _phoFilterDurch(lam) { return _PHO_FILTER[_pho.hwFilter].durch(lam); }
+
+// Photostrom aus dem Linienspektrum: es zaehlt nur, was den Filter passiert
+// UND energiereich genug ist, die Austrittsarbeit zu ueberwinden.
+function _phoHWLinien() {
+  const WA = _PHO_MAT[_pho.hwMat].WA;
+  return _PHO_HG.map(L => ({
+    lam: L.lam, p: L.p, art: L.art,
+    durch: _phoFilterDurch(L.lam),
+    loest: _phoEPhoton(L.lam) > WA * _PHO_E
+  }));
+}
+function _phoHWStrom() {
+  if (!_pho.hwLampe) return 0;
+  // Positiv geladene Platte: ausgeloeste Elektronen werden zurueckgezogen
+  if (_pho.hwPol === 'pos') return 0;
+  let p = 0;
+  _phoHWLinien().forEach(L => { if (L.durch && L.loest) p += L.p; });
+  return p * (_pho.hwInt / 100) * 400;      // in pA
+}
+function _phoHWMerken() {
+  const I = _phoHWStrom(), g = _pho.gesehen;
+  if (I > 0) {
+    g.mitUV = true;
+    if (_pho.hwInt <= 20) g.schwach = true;
+  }
+  if (_pho.hwLampe && _pho.hwPol === 'neg' && _pho.hwFilter === 1 && I === 0) g.mitGlas = true;
+  if (_pho.hwLampe && _pho.hwPol === 'pos') g.umgepolt = true;
+}
+
+// ── Station 2: Abschaetzung nach dem Wellenmodell ──────
+// Genau die Annahmen der Handreichung, Seite 7.
+function _phoWM() {
+  const P = _pho.wmP;                       // abgestrahlte UV-Leistung in W
+  const d = _pho.wmD;                       // Abstand in m
+  const r = _pho.wmR * 1e-10;               // Atomradius in m
+  const WA = _PHO_MAT[_pho.hwMat].WA * _PHO_E;
+  const I = P / (4 * Math.PI * d * d);      // Bestrahlungsstärke in W/m²
+  const Inr = I * (1 - _pho.wmRefl / 100);  // nicht reflektierter Anteil
+  const A = Math.PI * r * r;                // Querschnitt eines Atoms
+  const Pat = Inr * A;                      // Leistung auf ein Atom
+  return { I, Inr, A, Pat, WA, t: Pat > 0 ? WA / Pat : Infinity };
+}
+
+// ── Station 3: Vakuumphotozelle ────────────────────────
+function _phoZelleUg() { return _phoUg(_PHO_LICHT[_pho.li].lam, _PHO_MAT[_pho.mi].WA); }
+// Kennlinie: Bei Gegenspannung U erreichen nur noch die Elektronen die
+// Ringelektrode, deren kinetische Energie groesser als e·U ist.
+function _phoZelleI(U) {
+  const Ug = _phoZelleUg();
+  if (Ug <= 0) return 0;                    // unterhalb der Grenzfrequenz
+  const Isat = _pho.int / 100 * 12;         // Saettigungsstrom in nA
+  if (U <= 0) return Isat;
+  if (U >= Ug) return 0;
+  return Isat * Math.pow(1 - U / Ug, 2);
+}
+function _phoAnzeige(I) { return I < 0.005 ? 0 : I; }   // Auflösung des Messgeräts
+
+// ── Formatierung ───────────────────────────────────────
+const _PHO_HOCH = { '-': '⁻', '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹' };
+function _phoExp(v, d) {
+  if (!isFinite(v)) return '∞';
+  if (v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const m = v / Math.pow(10, ex);
+  const hoch = String(ex).split('').map(c => _PHO_HOCH[c] || c).join('');
+  return _fpmNum(m, d) + ' · 10' + hoch;
+}
+function _phoZeit(t) {
+  if (!isFinite(t)) return 'nie';
+  if (t < 1) return _fpmNum(t, 2) + ' s';
+  if (t < 90) return _fpmNum(t, 1) + ' s';
+  return _fpmNum(t / 60, 1) + ' min';
+}
+
+// ── Oberflaeche ────────────────────────────────────────
+function _phoHTML() {
+  const stationen = ['1 · Hallwachsversuch', '2 · Widerspruch zum Wellenmodell', '3 · Vakuumphotozelle']
+    .map((s, i) => `<button class="fpm-tab${i === _pho.station ? ' on' : ''}" id="phoSt${i}" onclick="_phoSetStation(${i})">${s}</button>`).join('');
+
+  const matBtn = (prefix, aktiv, fn) => _PHO_MAT.map((M, i) =>
+    `<button class="pho-mat${i === aktiv ? ' on' : ''}" id="${prefix}${i}" onclick="${fn}(${i})">
+       <span class="pho-mat-n">${M.n}</span><span class="pho-mat-w">${_fpmNum(M.WA, 2)} eV</span>
+     </button>`).join('');
+
+  const filter = _PHO_FILTER.map((F, i) =>
+    `<button class="pho-fil${i === _pho.hwFilter ? ' on' : ''}" id="phoF${i}" onclick="_phoSetFilter(${i})">${F.n}</button>`).join('');
+
+  const licht = _PHO_LICHT.map((L, i) =>
+    `<button class="pho-licht${i === _pho.li ? ' on' : ''}" id="phoL${i}" onclick="_phoSetLicht(${i})">
+       <span class="pho-licht-p" style="background:${L.col}"></span>
+       <span class="pho-licht-n">${L.n}</span><span class="pho-licht-l">${L.lam} nm</span>
+     </button>`).join('');
+
+  const presets = ['f → W_kin (Einsteingerade)', 'f → U_g', '1/λ → U_g'].map((p, i) =>
+    `<button class="fpm-tab${i === _pho.preset ? ' on' : ''}" id="phoTab${i}" onclick="_phoSetPreset(${i})">${p}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim pho-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">💡 Photoeffekt: das Schlüsselexperiment</h3>
+    <canvas id="phoTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="phoS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="phoHW" width="420" height="270" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Platte aus</div>
+          <div class="pho-mats">${matBtn('phoM', _pho.hwMat, '_phoSetHwMat')}</div>
+          <div class="pho-grenz" id="phoGrenz"></div>
+        </div>
+        <div>
+          <div class="fpm-label">Versuchsvariationen</div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="phoLampeBtn" onclick="_phoToggleLampe()">Lampe ausschalten</button>
+            <button class="sim-btn" id="phoPolBtn" onclick="_phoTogglePol()">Polung tauschen</button>
+          </div>
+          <div class="pho-fils">${filter}</div>
+          <div class="pho-filkurz" id="phoFilKurz"></div>
+          <div class="phys-ctrl" style="margin-top:8px">
+            <span class="phys-ctrl-label">Intensität der Lampe: <b id="phoIntLbl">100 %</b></span>
+            <input type="range" id="phoInt" min="2" max="100" step="1" value="100"
+              oninput="_phoSetInt(this.value)" style="width:100%;accent-color:#7c3aed">
+          </div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Photostrom</span><span class="fpm-ro-v" id="phoIA">—</span><span class="fpm-ro-u">pA</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Ladung der Platte</span><span class="fpm-ro-v" id="phoPolA" style="font-size:.95rem">negativ</span><span class="fpm-ro-u">gegenüber der Elektrode</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Zeit bis zum Strom</span><span class="fpm-ro-v" id="phoSofort" style="font-size:.95rem">—</span><span class="fpm-ro-u">nach Beginn</span></div>
+          </div>
+          <div class="fpm-label">Spektrum der Hg-Lampe</div>
+          <div class="pho-spektrum" id="phoSpek"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_phoProt()">📝 Beobachtung notieren</button>
+            <button class="sim-btn" onclick="_phoProtClear()">🗑 Protokoll leeren</button>
+          </div>
+          <div class="pho-protwrap">
+            <table class="sim-table">
+              <thead><tr><th>Platte</th><th>Filter</th><th>Polung</th><th>Int.</th><th>Strom</th><th></th></tr></thead>
+              <tbody id="phoProtBody"></tbody>
+            </table>
+            <div class="fpm-empty" id="phoProtEmpty">Noch nichts notiert.</div>
+          </div>
+        </div>
+      </div>
+      <div class="pho-befunde" id="phoBefunde"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="phoS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <div class="dsp-erkl" style="margin-top:0">
+            <div class="dsp-erkl-kopf">Die Frage</div>
+            <div class="dsp-erkl-text">
+              Nach dem Wellenmodell verteilt sich die Energie des Lichts gleichmäßig über die
+              Wellenfront. Ein einzelnes Elektron müsste also erst nach und nach genug Energie
+              aufsammeln, um die Austrittsarbeit zu überwinden. <b>Wie lange dauert das?</b>
+              Rechne es mit den Annahmen der Handreichung selbst nach.
+            </div>
+          </div>
+          <div class="fpm-label">Annahmen</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">abgestrahlte UV-Leistung P: <b id="phoWmPLbl">20 W</b></span>
+            <input type="range" id="phoWmP" min="1" max="60" step="1" value="20"
+              oninput="_phoSetWm('wmP',this.value)" style="width:100%;accent-color:#7c3aed">
+          </div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">reflektierter Anteil: <b id="phoWmRLbl">80 %</b></span>
+            <input type="range" id="phoWmR" min="0" max="99" step="1" value="80"
+              oninput="_phoSetWm('wmRefl',this.value)" style="width:100%;accent-color:#7c3aed">
+          </div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Abstand Lampe – Platte d: <b id="phoWmDLbl">1,00 m</b></span>
+            <input type="range" id="phoWmD" min="0.1" max="3" step="0.05" value="1"
+              oninput="_phoSetWm('wmD',this.value)" style="width:100%;accent-color:#7c3aed">
+          </div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Atomradius r: <b id="phoWmRadLbl">1,0 · 10⁻¹⁰ m</b></span>
+            <input type="range" id="phoWmRad" min="0.5" max="3" step="0.1" value="1"
+              oninput="_phoSetWm('wmR',this.value)" style="width:100%;accent-color:#7c3aed">
+          </div>
+          <div class="fpm-note" style="margin-top:8px">Die Austrittsarbeit stammt aus dem Plattenmaterial,
+            das in Station 1 gewählt ist.</div>
+        </div>
+        <div>
+          <div class="fpm-label">Rechnung Schritt für Schritt</div>
+          <div class="pho-rechnung" id="phoRechnung"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="phoS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="phoZelle" width="420" height="250" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Monochromatisches Lichtbündel</div>
+          <div class="pho-lichter">${licht}</div>
+          <div class="fpm-label">Photokathode</div>
+          <div class="pho-mats">${matBtn('phoZM', _pho.mi, '_phoSetZMat')}</div>
+          <div class="phys-ctrl" style="margin-top:8px">
+            <span class="phys-ctrl-label">Intensität: <b id="phoZIntLbl">60 %</b></span>
+            <input type="range" id="phoZInt" min="5" max="100" step="1" value="60"
+              oninput="_phoSetZInt(this.value)" style="width:100%;accent-color:#7c3aed">
+          </div>
+        </div>
+        <div>
+          <div class="fpm-label">Gegenspannung regeln, bis der Strom gerade verschwindet</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Gegenspannung U: <b id="phoULbl">0,00 V</b></span>
+            <input type="range" id="phoU" min="-0.5" max="2.5" step="0.01" value="0"
+              oninput="_phoSetU(this.value)" style="width:100%;accent-color:#7c3aed">
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_phoUStep(-0.01)">◀ 0,01 V</button>
+            <button class="sim-btn" onclick="_phoUStep(0.01)">0,01 V ▶</button>
+            <button class="sim-btn" onclick="_phoSetU(0)">U = 0</button>
+          </div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Photostrom</span><span class="fpm-ro-v" id="phoZI">—</span><span class="fpm-ro-u">nA</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Frequenz f</span><span class="fpm-ro-v" id="phoZF">—</span><span class="fpm-ro-u">10¹⁴ Hz</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">W = e·U</span><span class="fpm-ro-v" id="phoZW">—</span><span class="fpm-ro-u">10⁻²⁰ J</span></div>
+          </div>
+          <canvas id="phoKennlinie" width="420" height="180" class="phys-chart-cv" style="margin-top:8px"></canvas>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="phoTakeBtn" onclick="_phoTake()">✓ U als Gegenspannung übernehmen</button>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_phoKond()">⚡ Kondensatormethode</button>
+            <button class="sim-btn" onclick="_phoDemo()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_phoClear()">🗑 Tabelle leeren</button>
+          </div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Kathode</th><th>Farbe</th><th>λ (nm)</th><th>f (10¹⁴ Hz)</th><th>U_g (V)</th><th>W (10⁻²⁰ J)</th><th></th></tr></thead>
+              <tbody id="phoTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="phoEmpty">Noch keine Messwerte.<br>Gegenspannung erhöhen, bis der Strom null ist → übernehmen.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fpm-label" style="margin-top:12px">Auswertung – die Einsteingerade</div>
+      <div class="fpm-tabs">${presets}</div>
+      <div class="fpm-grid2">
+        <canvas id="phoPlot" width="470" height="330" class="phys-chart-cv"></canvas>
+        <div>
+          <div class="fpm-fit" id="phoFitBox"></div>
+          <div class="fpm-label" style="margin-top:10px">Funktion plotten</div>
+          <input type="text" id="phoFn" class="fpm-input" placeholder="z. B. 6.626*x-32.04" spellcheck="false"
+            oninput="_phoSetFn(this.value)">
+          <div class="fpm-err" id="phoFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_phoTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_phoClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="phoTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_phoSet('origin',this.checked)">
+            Ausgleichsgerade durch den Ursprung zwingen (hier bewusst falsch)</label>
+          <label class="fpm-check"><input type="checkbox" onchange="_phoSet('reveal',this.checked)">
+            Sollwerte anzeigen</label>
+        </div>
+      </div>
+    </div>
+
+    <div id="phoErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>E = h · f</b> &nbsp;|&nbsp; <b>W<sub>kin</sub>(max) = h · f − W<sub>A</sub></b>
+      &nbsp;|&nbsp; <b>W<sub>kin</sub>(max) = e · U<sub>g</sub></b>
+    </p>
+  </div>`;
+}
+
+function _phoErklHTML() {
+  return `<div class="dsp-erkl-kopf">Der Widerspruch und seine Auflösung</div>
+    <div class="dsp-erkl-text">
+      Der Hallwachsversuch liefert drei Befunde, die dem Wellenmodell widersprechen:
+      Es treten <b>nur Elektronen</b> aus, es wirkt <b>nur kurzwelliges Licht</b> – sichtbares Licht
+      versagt selbst bei größter Intensität – und die Elektronen kommen <b>sofort</b>, auch bei
+      winziger Intensität. Nach dem Wellenmodell müsste man dagegen mit heller Beleuchtung immer
+      zum Ziel kommen, nur eben langsamer. Station 2 zeigt, wie langsam: über eine Minute.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Einsteins Lichtquantenhypothese (1905, Nobelpreis 1921)</div>
+    <div class="dsp-erkl-text">
+      Licht besteht aus Photonen, jedes trägt die Energie <b>E = h·f</b>. Ein Photon gibt seine Energie
+      <b>vollständig an ein einziges Elektron</b> ab und verschwindet dabei. Ein Teil dieser Energie wird
+      als Austrittsarbeit W<sub>A</sub> gebraucht, der Rest bleibt als kinetische Energie:
+      <b>W<sub>kin</sub> ≤ h·f − W<sub>A</sub></b>.
+      Damit erklärt sich alles auf einen Schlag. Mehr Intensität heißt <i>mehr</i> Photonen, nicht
+      <i>energiereichere</i> – also fließt mehr Strom, aber die Elektronen werden nicht schneller.
+      Und unterhalb der Grenzfrequenz reicht die Energie eines einzelnen Photons nicht aus, egal wie
+      viele davon ankommen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum die Gegenspannung die Energie misst</div>
+    <div class="dsp-erkl-text">
+      Die austretenden Elektronen fliegen gegen ein elektrisches Feld an. Ein Elektron, das die
+      Gegenspannung U durchläuft, verliert die Energie e·U. Erhöht man U so weit, dass selbst die
+      schnellsten Elektronen die Ringelektrode nicht mehr erreichen und der Strom gerade auf null geht,
+      dann gilt <b>W<sub>kin</sub>(max) = e·U<sub>g</sub></b>. Trägt man W<sub>kin</sub> gegen f auf,
+      ergibt sich eine Gerade: Ihre <b>Steigung ist h</b>, ihr <b>Achsenabschnitt −W<sub>A</sub></b>
+      und ihre Nullstelle die Grenzfrequenz. Wechsle das Kathodenmaterial – die Geraden verschieben
+      sich, bleiben aber <b>parallel</b>. h ist eine Naturkonstante, W<sub>A</sub> eine Materialeigenschaft.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Im echten Versuch: Hochspannung und UV-Strahlung. Warnschilder aufstellen,
+      nicht in die Hg-Lampe blicken, Bestimmungen der RiSU einhalten.</div>`;
+}
+
+// ── Bedienung: Stationen ───────────────────────────────
+function _phoSetStation(i) {
+  _pho.station = i;
+  for (let k = 0; k < 3; k++) {
+    document.getElementById('phoSt' + k)?.classList.toggle('on', k === i);
+    const d = document.getElementById('phoS' + k);
+    if (d) d.style.display = k === i ? 'block' : 'none';
+  }
+  _phoUpdate();
+}
+function _phoSet(key, val) { _pho[key] = val; _phoDrawPlot(); }
+
+// ── Bedienung: Station 1 ───────────────────────────────
+function _phoSetHwMat(i) {
+  _pho.hwMat = i;
+  _PHO_MAT.forEach((M, k) => document.getElementById('phoM' + k)?.classList.toggle('on', k === i));
+  _phoUpdate();
+}
+function _phoSetFilter(i) {
+  _pho.hwFilter = i;
+  _PHO_FILTER.forEach((F, k) => document.getElementById('phoF' + k)?.classList.toggle('on', k === i));
+  const el = document.getElementById('phoFilKurz'); if (el) el.textContent = _PHO_FILTER[i].kurz;
+  _phoUpdate();
+}
+function _phoSetInt(v) {
+  _pho.hwInt = +v;
+  const el = document.getElementById('phoIntLbl'); if (el) el.textContent = Math.round(+v) + ' %';
+  _phoUpdate();
+}
+function _phoToggleLampe() {
+  _pho.hwLampe = !_pho.hwLampe;
+  const b = document.getElementById('phoLampeBtn');
+  if (b) { b.textContent = _pho.hwLampe ? 'Lampe ausschalten' : 'Lampe einschalten'; b.classList.toggle('primary', _pho.hwLampe); }
+  _phoUpdate();
+}
+function _phoTogglePol() {
+  _pho.hwPol = _pho.hwPol === 'neg' ? 'pos' : 'neg';
+  _phoUpdate();
+}
+function _phoProt() {
+  const I = _phoHWStrom();
+  _pho.prot.push({
+    id: _pho.protId++, mat: _PHO_MAT[_pho.hwMat].n, fil: _PHO_FILTER[_pho.hwFilter].n,
+    pol: _pho.hwLampe ? (_pho.hwPol === 'neg' ? 'negativ' : 'positiv') : 'Lampe aus',
+    int: _pho.hwLampe ? _pho.hwInt + ' %' : '—', I
+  });
+  _phoRenderProt();
+}
+function _phoProtDel(id) { _pho.prot = _pho.prot.filter(p => p.id !== id); _phoRenderProt(); }
+function _phoProtClear() {
+  if (_pho.prot.length && !confirm('Protokoll mit ' + _pho.prot.length + ' Einträgen löschen?')) return;
+  _pho.prot = []; _phoRenderProt();
+}
+function _phoRenderProt() {
+  const tb = document.getElementById('phoProtBody'); if (!tb) return;
+  const empty = document.getElementById('phoProtEmpty');
+  if (empty) empty.style.display = _pho.prot.length ? 'none' : 'block';
+  tb.innerHTML = _pho.prot.map(p =>
+    `<tr>
+       <td>${p.mat}</td><td>${p.fil}</td><td>${p.pol}</td><td>${p.int}</td>
+       <td><b style="color:${p.I > 0 ? '#16a34a' : '#dc2626'}">${p.I > 0 ? _fpmNum(p.I, 1) + ' pA' : 'kein Strom'}</b></td>
+       <td class="fpm-del" onclick="_phoProtDel(${p.id})" title="löschen">✕</td>
+     </tr>`).join('');
+}
+
+// ── Bedienung: Station 2 ───────────────────────────────
+function _phoSetWm(key, v) {
+  _pho[key] = +v;
+  const lbl = { wmP: ['phoWmPLbl', v => Math.round(v) + ' W'],
+                wmRefl: ['phoWmRLbl', v => Math.round(v) + ' %'],
+                wmD: ['phoWmDLbl', v => _fpmNum(+v, 2) + ' m'],
+                wmR: ['phoWmRadLbl', v => _fpmNum(+v, 1) + ' · 10⁻¹⁰ m'] }[key];
+  if (lbl) { const el = document.getElementById(lbl[0]); if (el) el.textContent = lbl[1](v); }
+  _phoRenderWM();
+}
+function _phoRenderWM() {
+  const el = document.getElementById('phoRechnung'); if (!el) return;
+  const w = _phoWM(), M = _PHO_MAT[_pho.hwMat];
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Bestrahlungsstärke im Abstand d</span>
+      <span class="pho-rz-f">I = P / (4π·d²)</span>
+      <span class="pho-rz-v">${_phoExp(w.I, 3)} W/m²</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">davon nicht reflektiert</span>
+      <span class="pho-rz-f">I' = I · (1 − ${_fpmNum(_pho.wmRefl, 0)} %)</span>
+      <span class="pho-rz-v">${_phoExp(w.Inr, 3)} W/m²</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Querschnitt eines Atoms</span>
+      <span class="pho-rz-f">A = π·r²</span>
+      <span class="pho-rz-v">${_phoExp(w.A, 3)} m²</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Leistung auf ein Atom</span>
+      <span class="pho-rz-f">P<sub>Atom</sub> = I' · A</span>
+      <span class="pho-rz-v">${_phoExp(w.Pat, 3)} W</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">nötige Energie (${M.n})</span>
+      <span class="pho-rz-f">W<sub>A</sub> = ${_fpmNum(M.WA, 2)} eV</span>
+      <span class="pho-rz-v">${_phoExp(w.WA, 3)} J</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Wartezeit nach dem Wellenmodell</span>
+      <span class="pho-rz-f">t = W<sub>A</sub> / P<sub>Atom</sub></span>
+      <span class="pho-rz-v">${_phoZeit(w.t)}</span></div>
+    <div class="pho-vergleich">
+      <div class="pho-vs"><span>Wellenmodell sagt</span><b>${_phoZeit(w.t)}</b></div>
+      <div class="pho-vs-op">gegen</div>
+      <div class="pho-vs pho-vs-mess"><span>Experiment zeigt</span><b>sofort</b></div>
+    </div>
+    <div class="fpm-note" style="margin-top:8px">
+      Das sind ${isFinite(w.t) ? _phoExp(w.t / 1e-9, 0) : '∞'} Nanosekunden Unterschied zur Beobachtung.
+      Auch mit sehr wohlwollenden Annahmen – schiebe die Regler ruhig in die günstigste Stellung –
+      lässt sich diese Lücke nicht schließen. Das Wellenmodell ist hier am Ende.
+    </div>`;
+}
+
+// ── Bedienung: Station 3 ───────────────────────────────
+function _phoSetLicht(i) {
+  _pho.li = i;
+  _PHO_LICHT.forEach((L, k) => document.getElementById('phoL' + k)?.classList.toggle('on', k === i));
+  _phoUpdate(); _phoRefreshTheorie();
+}
+function _phoSetZMat(i) {
+  _pho.mi = i;
+  _PHO_MAT.forEach((M, k) => document.getElementById('phoZM' + k)?.classList.toggle('on', k === i));
+  _phoUpdate(); _phoRefreshTheorie();
+}
+function _phoSetZInt(v) {
+  _pho.int = +v;
+  const el = document.getElementById('phoZIntLbl'); if (el) el.textContent = Math.round(+v) + ' %';
+  _phoUpdate();
+}
+function _phoSetU(v) {
+  _pho.U = Math.max(-0.5, Math.min(2.5, +v));
+  const sl = document.getElementById('phoU'); if (sl) sl.value = String(_pho.U);
+  const el = document.getElementById('phoULbl'); if (el) el.textContent = _fpmNum(_pho.U, 2) + ' V';
+  _phoUpdate();
+}
+function _phoUStep(d) { _phoSetU(Math.round((_pho.U + d) * 100) / 100); }
+function _phoTake() {
+  const Ug = _pho.U;
+  if (Ug <= 0) return;
+  const L = _PHO_LICHT[_pho.li];
+  _pho.rows.push({ id: _pho.nextId++, li: _pho.li, mi: _pho.mi, lam: L.lam,
+                   f: _phoF(L.lam), Ug, W: Ug * _PHO_E });
+  _phoRenderTable(); _phoDrawPlot();
+}
+// Kondensatormethode der Handreichung: der Photostrom laedt den Kondensator,
+// bis die Gegenspannung selbst die schnellsten Elektronen aufhaelt.
+function _phoKond() {
+  const Ug = _phoZelleUg();
+  if (Ug <= 0) return;
+  _phoSetU(Math.round(Ug * (1 + (Math.random() - 0.5) * 0.02) * 100) / 100);
+  _phoTake();
+}
+function _phoDelRow(id) { _pho.rows = _pho.rows.filter(r => r.id !== id); _phoRenderTable(); _phoDrawPlot(); }
+function _phoClear() {
+  if (_pho.rows.length && !confirm('Alle ' + _pho.rows.length + ' Messwerte löschen?')) return;
+  _pho.rows = []; _phoRenderTable(); _phoDrawPlot();
+}
+// Erzeugt genau die Messreihe der Handreichung plus eine zweite Kathode
+function _phoDemo() {
+  const nimm = (mi, li) => {
+    const L = _PHO_LICHT[li], Ug = _phoUg(L.lam, _PHO_MAT[mi].WA);
+    if (Ug <= 0.005) return;
+    const g = Math.round(Ug * 100) / 100;          // Ablesegenauigkeit 0,01 V
+    _pho.rows.push({ id: _pho.nextId++, li, mi, lam: L.lam, f: _phoF(L.lam), Ug: g, W: g * _PHO_E });
+  };
+  [0, 1, 2, 3, 4, 5, 6].forEach(li => nimm(0, li));   // K-Schicht
+  [0, 1, 2, 3, 4].forEach(li => nimm(1, li));         // Cäsium
+  _phoRenderTable(); _phoDrawPlot();
+}
+function _phoRenderTable() {
+  const tb = document.getElementById('phoTbody'); if (!tb) return;
+  const empty = document.getElementById('phoEmpty');
+  if (empty) empty.style.display = _pho.rows.length ? 'none' : 'block';
+  tb.innerHTML = _pho.rows.map(r =>
+    `<tr>
+       <td><span class="fpm-dot" style="background:${_PHO_MAT[r.mi].col}"></span>${_PHO_MAT[r.mi].n}</td>
+       <td><span class="fpm-dot" style="background:${_PHO_LICHT[r.li].col}"></span>${_PHO_LICHT[r.li].n}</td>
+       <td>${r.lam}</td><td>${_fpmNum(r.f / 1e14, 2)}</td>
+       <td><b>${_fpmNum(r.Ug, 2)}</b></td><td>${_fpmNum(r.W / 1e-20, 2)}</td>
+       <td class="fpm-del" onclick="_phoDelRow(${r.id})" title="löschen">✕</td>
+     </tr>`).join('');
+}
+
+// ── Gemeinsame Aktualisierung ──────────────────────────
+function _phoUpdate() {
+  if (!_pho) return;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+
+  // Station 1
+  _phoHWMerken();
+  const I = _phoHWStrom();
+  set('phoIA', _pho.hwLampe ? _fpmNum(I, 1) : '0,0');
+  set('phoPolA', _pho.hwPol === 'neg' ? 'negativ' : 'positiv');
+  set('phoSofort', I > 0 ? 'sofort (< 1 ns)' : '—');
+  const pb = document.getElementById('phoPolBtn');
+  if (pb) pb.textContent = _pho.hwPol === 'neg' ? 'Platte positiv laden' : 'Platte negativ laden';
+  const gz = document.getElementById('phoGrenz');
+  if (gz) {
+    const M = _PHO_MAT[_pho.hwMat];
+    gz.innerHTML = 'W<sub>A</sub> = ' + _fpmNum(M.WA, 2) + ' eV &nbsp;⇒&nbsp; Grenzwellenlänge ' +
+      _fpmNum(_phoLamGrenz(M.WA), 0) + ' nm, Grenzfrequenz ' + _fpmNum(_phoFGrenz(M.WA) / 1e14, 2) + ' · 10¹⁴ Hz';
+  }
+  _phoSpektrum();
+  _phoBefunde();
+  _phoRenderWM();
+
+  // Station 3
+  const L = _PHO_LICHT[_pho.li], M2 = _PHO_MAT[_pho.mi];
+  const Istrom = _phoAnzeige(_phoZelleI(_pho.U));
+  set('phoZI', _fpmNum(Istrom, 2));
+  set('phoZF', _fpmNum(_phoF(L.lam) / 1e14, 2));
+  set('phoZW', _pho.U > 0 ? _fpmNum(_pho.U * _PHO_E / 1e-20, 2) : '—');
+  const tb = document.getElementById('phoTakeBtn');
+  if (tb) tb.disabled = !(_pho.U > 0);
+}
+
+function _phoSpektrum() {
+  const el = document.getElementById('phoSpek'); if (!el) return;
+  const M = _PHO_MAT[_pho.hwMat];
+  el.innerHTML = _phoHWLinien().map(L => {
+    const cls = !L.durch ? 'aus' : (L.loest ? 'loest' : 'zuschwach');
+    const titel = !L.durch ? 'vom Filter zurückgehalten'
+                : L.loest ? 'löst Elektronen aus'
+                : 'kommt durch, aber die Energie reicht nicht';
+    return `<div class="pho-lin ${cls}" title="${titel}">
+       <span class="pho-lin-l">${L.lam}</span><span class="pho-lin-a">${L.art}</span></div>`;
+  }).join('') +
+  `<div class="fpm-note" style="flex-basis:100%;margin-top:5px">
+     Grün = löst aus, grau = kommt durch, reicht aber nicht (E &lt; W<sub>A</sub> = ${_fpmNum(M.WA, 2)} eV),
+     durchgestrichen = vom Filter geblockt.</div>`;
+}
+
+function _phoBefunde() {
+  const el = document.getElementById('phoBefunde'); if (!el) return;
+  const g = _pho.gesehen;
+  const z = (ok, txt, wie) =>
+    `<div class="pho-bef ${ok ? 'ok' : ''}"><span class="pho-bef-h">${ok ? '✓' : '○'}</span>
+       <span><b>${txt}</b>${ok ? '' : '<br><span class="pho-bef-wie">' + wie + '</span>'}</span></div>`;
+  el.innerHTML =
+    `<div class="git-sch-kopf">Experimentelle Befunde – finde sie durch Versuchsvariationen</div>` +
+    z(g.umgepolt, 'Nur negative Ladungsträger werden herausgelöst.',
+      'Tausche die Polung: Ist die Platte positiv, fließt kein Strom – die Elektronen werden zurückgezogen.') +
+    z(g.mitUV && g.mitGlas, 'Nur kurzwelliges UV-Licht löst Elektronen aus.',
+      'Halte die Glasplatte davor, bis der Strom versiegt – und finde die Kombination, bei der er wieder fließt.') +
+    z(g.schwach, 'Auch bei kleiner Intensität fließt der Strom sofort.',
+      'Verringere die Intensität auf 20 % oder weniger, während Strom fließt.') +
+    (g.umgepolt && g.mitUV && g.mitGlas && g.schwach
+      ? `<div class="pho-bef-fertig">Alle drei Befunde gefunden. Zwei davon widersprechen dem Wellenmodell:
+         Nach ihm müsste helles sichtbares Licht ebenso wirken wie schwaches UV, und die Elektronen
+         müssten erst nach einiger Zeit kommen. Weiter zu Station 2.</div>` : '');
+}
+
+// ── Zeichnungen ────────────────────────────────────────
+function _phoTeilchen(dt, aktiv, x0, y0, x1, y1) {
+  const T = _pho.teilchen;
+  if (aktiv && T.length < 26 && Math.random() < 0.5) {
+    T.push({ p: 0, y: y0 + (Math.random() - 0.5) * 60, v: 0.5 + Math.random() * 0.5 });
+  }
+  for (let i = T.length - 1; i >= 0; i--) {
+    T[i].p += T[i].v * dt * 1.6;
+    if (T[i].p > 1) T.splice(i, 1);
+  }
+}
+function _phoDrawTeilchen(ctx, x0, x1, ziel) {
+  _pho.teilchen.forEach(t => {
+    const x = x0 + (x1 - x0) * t.p;
+    const y = t.y + (ziel - t.y) * t.p;
+    ctx.fillStyle = '#0284c7';
+    ctx.beginPath(); ctx.arc(x, y, 2.6, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = '700 7px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('−', x, y + 2.5);
+  });
+  ctx.textAlign = 'left';
+}
+
+function _phoRenderHW(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  const I = _phoHWStrom();
+  const yM = 118;
+  const xL = 44, xF = 128, xE = 196, xP = 286;
+
+  // Hg-Lampe
+  ctx.fillStyle = '#334155'; ctx.fillRect(xL - 24, yM - 26, 30, 52);
+  if (_pho.hwLampe) {
+    const a = 0.25 + 0.75 * _pho.hwInt / 100;
+    ctx.globalAlpha = a;
+    ctx.fillStyle = '#a5b4fc';
+    ctx.beginPath(); ctx.moveTo(xL + 6, yM - 24); ctx.lineTo(xP, yM - 46);
+    ctx.lineTo(xP, yM + 46); ctx.lineTo(xL + 6, yM + 24); ctx.closePath(); ctx.fill();
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = '#e0e7ff'; ctx.fillRect(xL + 2, yM - 12, 6, 24);
+  }
+  ctx.fillStyle = '#fff'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Hg', xL - 9, yM - 2); ctx.fillText('Lampe', xL - 9, yM + 8);
+
+  // Filter
+  if (_pho.hwFilter > 0) {
+    ctx.fillStyle = _pho.hwFilter === 1 ? 'rgba(148,197,255,.55)'
+                  : _pho.hwFilter === 2 ? 'rgba(139,92,246,.45)' : 'rgba(239,68,68,.4)';
+    ctx.fillRect(xF - 5, yM - 44, 10, 88);
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.strokeRect(xF - 5.5, yM - 44.5, 11, 89);
+    ctx.fillStyle = '#475569'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'center';
+    ctx.save(); ctx.translate(xF, yM + 60); ctx.rotate(-Math.PI / 2);
+    ctx.fillText(_PHO_FILTER[_pho.hwFilter].n, 0, 0); ctx.restore();
+  }
+
+  // Spiralelektrode
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  for (let i = 0; i < 7; i++) {
+    ctx.beginPath(); ctx.arc(xE, yM, 6 + i * 5.5, -Math.PI / 2, Math.PI / 2); ctx.stroke();
+  }
+  ctx.beginPath(); ctx.moveTo(xE, yM - 40); ctx.lineTo(xE, yM - 62); ctx.stroke();
+
+  // Zinkplatte
+  const platteNeg = _pho.hwPol === 'neg';
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(xP, yM - 46, 11, 92);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.2; ctx.strokeRect(xP + 0.5, yM - 46.5, 11, 92);
+  ctx.fillStyle = platteNeg ? '#0284c7' : '#dc2626';
+  ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  for (let i = -1; i <= 1; i++) ctx.fillText(platteNeg ? '−' : '+', xP + 22, yM + i * 22 + 4);
+  ctx.fillStyle = '#334155'; ctx.font = '700 9px sans-serif';
+  ctx.fillText(_PHO_MAT[_pho.hwMat].n, xP + 6, yM + 62);
+
+  // Elektronen
+  _phoDrawTeilchen(ctx, xP - 2, xE, yM);
+
+  // Stromkreis
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  ctx.moveTo(xP + 6, yM - 46); ctx.lineTo(xP + 6, 28); ctx.lineTo(W - 46, 28);
+  ctx.lineTo(W - 46, H - 34); ctx.lineTo(xE, H - 34); ctx.lineTo(xE, yM + 40);
+  ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xE, yM - 62); ctx.lineTo(xE, 28); ctx.stroke();
+
+  // Piko-Amperemeter
+  const mx = W - 46, my = 74;
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.arc(mx, my, 24, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  const voll = 130, zeig = Math.min(1, I / voll);
+  const wk = -Math.PI * 0.75 + zeig * Math.PI * 1.5;
+  ctx.strokeStyle = I > 0 ? '#dc2626' : '#94a3b8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(mx, my); ctx.lineTo(mx + 17 * Math.cos(wk - Math.PI / 2), my + 17 * Math.sin(wk - Math.PI / 2)); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('pA', mx, my + 18);
+  ctx.fillStyle = I > 0 ? '#16a34a' : '#94a3b8'; ctx.font = '700 10px sans-serif';
+  ctx.fillText(_fpmNum(I, 1) + ' pA', mx, my + 38);
+
+  // Hochspannungsquelle
+  const hx = W - 46, hy = H - 34;
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.arc(hx, hy, 15, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('HV', hx, hy + 3);
+
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Spiralelektrode', xE - 34, H - 12);
+  ctx.textAlign = 'right';
+  ctx.fillStyle = '#94a3b8';
+  ctx.fillText(_pho.hwLampe ? 'Lampe an · ' + Math.round(_pho.hwInt) + ' %' : 'Lampe aus', W - 8, 14);
+  ctx.textAlign = 'left';
+}
+
+function _phoRenderZelle(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  const L = _PHO_LICHT[_pho.li], M = _PHO_MAT[_pho.mi];
+  const Ug = _phoZelleUg(), I = _phoAnzeige(_phoZelleI(_pho.U));
+  const yM = 104, kx = 236, ax = 168;
+
+  // Gehaeuse
+  ctx.fillStyle = '#1e293b'; ctx.fillRect(96, 26, 200, 156);
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(100, 30, 192, 148);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('lichtdichtes Gehäuse', 102, 40);
+
+  // Glaskolben
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.ellipse(196, yM, 78, 54, 0, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = 'rgba(148,163,184,.10)'; ctx.fill();
+
+  // Lichtbuendel
+  ctx.globalAlpha = 0.28 + 0.5 * _pho.int / 100;
+  ctx.fillStyle = L.col;
+  ctx.beginPath(); ctx.moveTo(8, yM - 9); ctx.lineTo(kx, yM - 16);
+  ctx.lineTo(kx, yM + 16); ctx.lineTo(8, yM + 9); ctx.closePath(); ctx.fill();
+  ctx.globalAlpha = 1;
+  ctx.fillStyle = '#334155'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(L.n + ' · ' + L.lam + ' nm', 10, yM - 20);
+
+  // Photokathode
+  ctx.fillStyle = M.col; ctx.fillRect(kx, yM - 34, 8, 68);
+  ctx.fillStyle = '#334155'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'center';
+  ctx.save(); ctx.translate(kx + 20, yM); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Photokathode', 0, 0); ctx.restore();
+
+  // Ringelektrode
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.ellipse(ax, yM, 7, 30, 0, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Ring', ax, yM + 46);
+
+  // Elektronen fliegen von der Kathode zum Ring – nur wenn welche ankommen
+  if (I > 0) _phoDrawTeilchen(ctx, kx, ax, yM);
+
+  // Ergebnisanzeige
+  ctx.textAlign = 'left';
+  ctx.font = '700 10px sans-serif';
+  if (Ug <= 0) {
+    ctx.fillStyle = '#dc2626';
+    ctx.fillText('kein Photoeffekt: E = ' + _fpmNum(_phoEPhoton(L.lam) / _PHO_E, 2) +
+                 ' eV < W_A = ' + _fpmNum(M.WA, 2) + ' eV', 10, H - 26);
+    ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif';
+    ctx.fillText('Auch mehr Intensität hilft nicht – es fehlt Energie pro Photon.', 10, H - 12);
+  } else {
+    ctx.fillStyle = '#334155';
+    ctx.fillText('E = ' + _fpmNum(_phoEPhoton(L.lam) / _PHO_E, 2) + ' eV', 10, H - 26);
+    ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif';
+    ctx.fillText('W_A = ' + _fpmNum(M.WA, 2) + ' eV  →  W_kin(max) = ' +
+                 _fpmNum(_phoWkin(L.lam, M.WA) / _PHO_E, 3) + ' eV', 10, H - 12);
+  }
+  ctx.textAlign = 'right';
+  ctx.fillStyle = I > 0 ? '#16a34a' : '#94a3b8'; ctx.font = '700 11px sans-serif';
+  ctx.fillText(_fpmNum(I, 2) + ' nA', W - 10, H - 26);
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif';
+  ctx.fillText('U = ' + _fpmNum(_pho.U, 2) + ' V', W - 10, H - 12);
+  ctx.textAlign = 'left';
+}
+
+// Live-Kennlinie I(U) – das, was man am Messplatz tatsaechlich aufnimmt
+function _phoRenderKennlinie() {
+  const cv = document.getElementById('phoKennlinie');
+  if (!cv || !_pho) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const padL = 46, padR = 12, padT = 16, padB = 30;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const Ug = _phoZelleUg();
+  const uMin = -0.5, uMax = Math.max(0.8, Ug * 1.35);
+  const iMax = Math.max(1, _pho.int / 100 * 12) * 1.15;
+  const X = u => x0 + (u - uMin) / (uMax - uMin) * (x1 - x0);
+  const Y = i => y0 - i / iMax * (y0 - y1);
+
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const gy = y1 + (y0 - y1) * i / 4;
+    ctx.beginPath(); ctx.moveTo(x0, gy); ctx.lineTo(x1, gy); ctx.stroke();
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  // Nulllinie der Spannung
+  ctx.strokeStyle = '#cbd5e1'; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(X(0), y0); ctx.lineTo(X(0), y1); ctx.stroke();
+  ctx.setLineDash([]);
+
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  [-0.5, 0, 0.5, 1, 1.5, 2].forEach(u => {
+    if (u < uMin || u > uMax) return;
+    ctx.fillText(_fpmNum(u, 1), X(u), y0 + 12);
+  });
+  ctx.textAlign = 'right';
+  ctx.fillText(_fpmNum(iMax, 0), x0 - 4, y1 + 8);
+  ctx.fillText('0', x0 - 4, y0 + 3);
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif';
+  ctx.fillText('U in V', x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 4); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('I in nA', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+
+  if (Ug <= 0) {
+    ctx.fillStyle = '#dc2626'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('kein Photostrom – unterhalb der Grenzfrequenz', (x0 + x1) / 2, (y0 + y1) / 2);
+    ctx.textAlign = 'left';
+    return;
+  }
+
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let px = x0; px <= x1; px++) {
+    const u = uMin + (px - x0) / (x1 - x0) * (uMax - uMin);
+    const py = Y(_phoZelleI(u));
+    px === x0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+  }
+  ctx.stroke();
+
+  // Gegenspannung markieren
+  ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1.3; ctx.setLineDash([4, 3]);
+  ctx.beginPath(); ctx.moveTo(X(Ug), y0); ctx.lineTo(X(Ug), y1); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#16a34a'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('U_g', X(Ug), y1 + 8);
+
+  // Arbeitspunkt
+  const py = Y(_phoZelleI(_pho.U));
+  ctx.fillStyle = '#db2777';
+  ctx.beginPath(); ctx.arc(X(_pho.U), py, 4.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.textAlign = 'left';
+}
+
+// ── Auswertungsdiagramm ────────────────────────────────
+const _PHO_PRESETS = [
+  { xl: 'f in 10¹⁴ Hz', yl: 'W_kin in 10⁻²⁰ J',
+    x: r => r.f / 1e14, y: r => r.W / 1e-20,
+    hAus: k => k * 1e-34,
+    wAus: b => -b * 1e-20 / _PHO_E,
+    slope: () => _PHO_H / 1e-34,
+    achse: mi => -_PHO_MAT[mi].WA * _PHO_E / 1e-20,
+    note: 'Die Einsteingerade. Steigung = h, Achsenabschnitt = −W_A, Nullstelle = Grenzfrequenz.',
+    typ: 'lineare Funktion mit negativem Achsenabschnitt',
+    form: 'W_kin(f) = h · f − W_A',
+    term: () => _dspZahl(_PHO_H / 1e-34) + '*x-' + _dspZahl(_PHO_MAT[_pho.mi].WA * _PHO_E / 1e-20),
+    param: () => 'h = 6,626 · 10⁻³⁴ J·s, W_A = ' + _fpmNum(_PHO_MAT[_pho.mi].WA, 2) + ' eV',
+    deutung: 'Keine Ursprungsgerade – und genau darin steckt die Austrittsarbeit. Die Steigung ist für jedes Material dieselbe: h ist eine Naturkonstante, W_A eine Materialeigenschaft.' },
+
+  { xl: 'f in 10¹⁴ Hz', yl: 'U_g in V',
+    x: r => r.f / 1e14, y: r => r.Ug,
+    hAus: k => k * _PHO_E * 1e-14,
+    wAus: b => -b,
+    slope: () => _PHO_H / _PHO_E * 1e14,
+    achse: mi => -_PHO_MAT[mi].WA,
+    note: 'Dieselbe Gerade, nur durch e geteilt. Steigung = h/e, Achsenabschnitt = −W_A/e.',
+    typ: 'lineare Funktion mit negativem Achsenabschnitt',
+    form: 'U_g(f) = (h/e) · f − W_A/e',
+    term: () => _dspZahl(_PHO_H / _PHO_E * 1e14) + '*x-' + _dspZahl(_PHO_MAT[_pho.mi].WA),
+    param: () => 'h/e = ' + _fpmNum(_PHO_H / _PHO_E * 1e14, 5) + ' V pro 10¹⁴ Hz',
+    deutung: 'Man kann direkt die gemessene Gegenspannung auftragen, ohne vorher in Joule umzurechnen. Aus der Steigung folgt h = Steigung · e.' },
+
+  { xl: '1/λ in 1/µm', yl: 'U_g in V',
+    x: r => 1000 / r.lam, y: r => r.Ug,
+    hAus: k => k * 1e-6 * _PHO_E / _PHO_C,
+    wAus: b => -b,
+    slope: () => _PHO_H * _PHO_C / _PHO_E * 1e6,
+    achse: mi => -_PHO_MAT[mi].WA,
+    note: 'Auch über den Kehrwert der Wellenlänge wird es linear, denn f = c/λ.',
+    typ: 'lineare Funktion mit negativem Achsenabschnitt',
+    form: 'U_g(1/λ) = (h·c/e) · (1/λ) − W_A/e',
+    term: () => _dspZahl(_PHO_H * _PHO_C / _PHO_E * 1e6) + '*x-' + _dspZahl(_PHO_MAT[_pho.mi].WA),
+    param: () => 'h·c/e = ' + _fpmNum(_PHO_H * _PHO_C / _PHO_E * 1e6, 4) + ' V·µm',
+    deutung: 'Wer die Wellenlänge misst statt der Frequenz, trägt 1/λ auf. Aus der Steigung folgt h = Steigung · e / c.' }
+];
+
+function _phoDrawPlot() {
+  const cv = document.getElementById('phoPlot');
+  if (!cv || !_pho) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = _PHO_PRESETS[_pho.preset];
+  const padL = 66, padR = 14, padT = 14, padB = 42;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const pts = _pho.rows.map(r => ({ x: P.x(r), y: P.y(r) })).filter(p => isFinite(p.x) && isFinite(p.y));
+  const xmax = pts.length ? Math.max(...pts.map(p => p.x)) * 1.12 : 10;
+  const ymax = pts.length ? Math.max(...pts.map(p => p.y)) * 1.25 : 1;
+  // Die Gerade schneidet die y-Achse unterhalb von null – der Bereich muss sichtbar sein
+  let ymin = 0;
+  const map = new Map();
+  _pho.rows.forEach(r => { if (!map.has(r.mi)) map.set(r.mi, []); map.get(r.mi).push(r); });
+  map.forEach((rows, mi) => {
+    const gp = rows.map(r => ({ x: P.x(r), y: P.y(r) }));
+    if (gp.length >= 2) {
+      const f = _fpmFitLinear(gp);
+      if (f && f.b < ymin) ymin = f.b * 1.15;
+    }
+  });
+  if (ymin === 0 && pts.length) ymin = -ymax * 0.35;
+  if (!pts.length) ymin = -1;
+
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - (v - ymin) / (ymax - ymin) * (y0 - y1);
+
+  const xt = _fpmTicks(xmax, 6);
+  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  xt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
+  });
+  // y-Teilung symmetrisch um null
+  const yspan = ymax - ymin;
+  const yt = _fpmTicks(Math.max(Math.abs(ymin), ymax), 4);
+  ctx.strokeStyle = '#eef2f7';
+  yt.ticks.forEach(v => {
+    [v, -v].forEach(vv => {
+      if (vv < ymin || vv > ymax) return;
+      ctx.beginPath(); ctx.moveTo(x0, Y(vv)); ctx.lineTo(x1, Y(vv)); ctx.stroke();
+      ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+      ctx.fillText(_fpmTickLbl(vv, yt.step), x0 - 6, Y(vv) + 3);
+    });
+  });
+
+  // Achsen; die x-Achse liegt bei y = 0, nicht am unteren Rand
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x0, Y(0)); ctx.lineTo(x1, Y(0)); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(P.xl, x1, y0 + 30);
+  ctx.save(); ctx.translate(15, y1 + 2); ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillText('Noch keine Messwerte aufgenommen', (x0 + x1) / 2, (y0 + y1) / 2);
+    ctx.textAlign = 'left';
+    const fo = document.getElementById('phoFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + P.note + '</div>';
+    return;
+  }
+
+  if (_pho.fn) {
+    ctx.strokeStyle = '#db2777'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _pho.fn((px - x0) / (x1 - x0) * xmax); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv);
+      if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+
+  const info = [];
+  [...map.keys()].sort((a, b) => a - b).forEach(mi => {
+    const rows = map.get(mi);
+    const col = _PHO_MAT[mi].col;
+    const gp = rows.map(r => ({ x: P.x(r), y: P.y(r) })).filter(p => isFinite(p.x) && isFinite(p.y));
+    let fit = null;
+    if (gp.length >= 2) {
+      fit = _pho.origin ? _fpmFitOrigin(gp) : _fpmFitLinear(gp);
+      if (fit) {
+        ctx.strokeStyle = col; ctx.lineWidth = 1.7;
+        ctx.beginPath(); ctx.moveTo(X(0), Y(fit.b)); ctx.lineTo(X(xmax), Y(fit.k * xmax + fit.b)); ctx.stroke();
+        // Grenzfrequenz markieren
+        if (!_pho.origin && fit.k > 0) {
+          const xg = -fit.b / fit.k;
+          if (xg > 0 && xg < xmax) {
+            ctx.fillStyle = col;
+            ctx.beginPath(); ctx.arc(X(xg), Y(0), 3.5, 0, 2 * Math.PI); ctx.fill();
+          }
+        }
+      }
+    }
+    gp.forEach(p => {
+      ctx.fillStyle = col;
+      ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke();
+    });
+    info.push({ mi, col, fit, n: gp.length });
+  });
+
+  _phoRenderFit(info, P);
+}
+
+function _phoRenderFit(groups, P) {
+  const el = document.getElementById('phoFitBox');
+  if (!el) return;
+  let html = '';
+  groups.forEach(g => {
+    if (!g.fit) return;
+    const M = _PHO_MAT[g.mi];
+    const h = P.hAus(g.fit.k);
+    const WA = _pho.origin ? NaN : P.wAus(g.fit.b);
+    const fG = _pho.origin ? NaN : -g.fit.b / g.fit.k;
+    const abwH = Math.abs(h - _PHO_H) / _PHO_H * 100;
+    const clsH = abwH < 1 ? 'ok' : abwH < 5 ? 'mid' : 'no';
+    html += `<div class="fpm-fitline">
+       <span class="fpm-fitmeta"><span class="fpm-dot" style="background:${g.col}"></span>${M.n} · ${g.n} Messwerte</span>
+       <span class="fpm-fiteq">y = ${_fpmNum(g.fit.k, 4)}·x ${g.fit.b >= 0 ? '+' : '−'} ${_fpmNum(Math.abs(g.fit.b), 3)}</span>
+       <span class="fpm-fitmeta">R² = ${_fpmNum(g.fit.r2, 5)}</span>
+       <span class="fpm-fiteq" style="color:#5b21b6">h = ${_phoExp(h, 3)} J·s</span>
+       ${isFinite(WA) ? `<span class="fpm-fiteq" style="color:#5b21b6">W<sub>A</sub> = ${_fpmNum(WA, 3)} eV</span>` : ''}
+       ${isFinite(fG) ? `<span class="fpm-fitmeta">Grenzfrequenz ${_fpmNum(P.xl.indexOf('λ') >= 0 ? fG : fG, 3)} ${P.xl.indexOf('λ') >= 0 ? '1/µm (λ = ' + _fpmNum(1000 / fG, 0) + ' nm)' : '· 10¹⁴ Hz'}</span>` : ''}
+       ${_pho.reveal ? `<span class="fpm-badge ${clsH}">h-Sollwert 6,626 · 10⁻³⁴ · Abweichung ${_fpmNum(abwH, 2)} %${isFinite(WA) ? ' · W_A soll ' + _fpmNum(M.WA, 2) + ' eV' : ''}</span>` : ''}
+     </div>`;
+  });
+  if (!html) {
+    el.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte je Kathodenmaterial nötig.<br>' + P.note + '</div>';
+    return;
+  }
+  if (_pho.origin) {
+    html += `<div class="fpm-note" style="color:#b45309;border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">
+      <b>Die Ursprungsgerade ist erzwungen.</b> Sieh dir R² an: Sie passt nicht zu den Messwerten.
+      Genau der Achsenabschnitt, den sie unterdrückt, ist die Austrittsarbeit.</div>`;
+  }
+  if (groups.filter(g => g.fit).length >= 2) {
+    const ks = groups.filter(g => g.fit).map(g => g.fit.k);
+    const spanne = (Math.max(...ks) - Math.min(...ks)) / Math.max(...ks) * 100;
+    html += `<div class="fpm-fitline" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">
+       <span class="fpm-fitmeta">Die Geraden verschiedener Materialien sind <b>parallel</b>:
+         die Steigungen unterscheiden sich um ${_fpmNum(spanne, 2)} %.</span>
+       <span class="fpm-fitmeta">h ist eine Naturkonstante, W<sub>A</sub> hängt vom Material ab.</span>
+     </div>`;
+  }
+  el.innerHTML = html + '<div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">' + P.note + '</div>';
+}
+
+function _phoSetPreset(i) {
+  _pho.preset = i;
+  for (let k = 0; k < 3; k++) document.getElementById('phoTab' + k)?.classList.toggle('on', k === i);
+  _phoRefreshTheorie();
+  _phoDrawPlot();
+}
+function _phoTheorieFn() {
+  const term = _PHO_PRESETS[_pho.preset].term();
+  const inp = document.getElementById('phoFn');
+  if (inp) inp.value = term;
+  _phoSetFn(term);
+  _pho.fnAuto = true;
+  _phoRenderTheorie(true);
+}
+function _phoClearFn() {
+  const inp = document.getElementById('phoFn');
+  if (inp) inp.value = '';
+  _phoSetFn('');
+  _phoRenderTheorie(false);
+}
+function _phoRefreshTheorie() {
+  if (_pho.fnAuto) {
+    const term = _PHO_PRESETS[_pho.preset].term();
+    const inp = document.getElementById('phoFn');
+    if (inp) inp.value = term;
+    _phoSetFn(term);
+    _pho.fnAuto = true;
+  }
+  _phoRenderTheorie(_pho.fnAuto);
+}
+function _phoRenderTheorie(eingesetzt) {
+  const el = document.getElementById('phoTheo');
+  if (!el) return;
+  const P = _PHO_PRESETS[_pho.preset];
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">${P.typ}</div>
+     <div class="fpm-theo-form">${P.form}</div>
+     <div class="fpm-theo-par">${P.param()}</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${P.term()}</div>` : ''}
+     <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+function _phoSetFn(str) {
+  _pho.fnAuto = false;
+  const err = document.getElementById('phoFnErr');
+  const v = (str || '').trim();
+  if (!v) { _pho.fn = null; if (err) err.textContent = ''; _phoDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _pho.fn = f; if (err) err.textContent = '';
+  } catch (e) { _pho.fn = null; if (err) err.textContent = e.message; }
+  _phoDrawPlot();
+}
+
+// ── Takt ───────────────────────────────────────────────
+function _phoTakt(dt) {
+  if (!_pho) return;
+  _pho.t += dt;
+  if (_pho.station === 0) {
+    _phoTeilchen(dt, _phoHWStrom() > 0, 286, 118, 196, 118);
+  } else if (_pho.station === 2) {
+    _phoTeilchen(dt, _phoAnzeige(_phoZelleI(_pho.U)) > 0, 236, 104, 168, 104);
+  } else {
+    _pho.teilchen.length = 0;
+  }
+}
+function _phoRender() {
+  if (!_pho) return;
+  if (_pho.station === 0) {
+    const cv = document.getElementById('phoHW');
+    if (cv) _phoRenderHW(cv.getContext('2d'), cv);
+  } else if (_pho.station === 2) {
+    const cv = document.getElementById('phoZelle');
+    if (cv) _phoRenderZelle(cv.getContext('2d'), cv);
+    _phoRenderKennlinie();
+  }
+}
+
+// ── Zusaetzliche Styles ────────────────────────────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .pho-mats { display: flex; gap: 5px; flex-wrap: wrap; }
+    .pho-mat { flex: 1 1 84px; display: flex; flex-direction: column; gap: 1px; align-items: flex-start;
+      padding: 5px 7px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 9px; cursor: pointer; }
+    .pho-mat:hover { border-color: #cbd5e1; }
+    .pho-mat.on { border-color: #7c3aed; background: #f5f3ff; }
+    .pho-mat-n { font-size: .7rem; font-weight: 800; color: #475569; }
+    .pho-mat.on .pho-mat-n { color: #5b21b6; }
+    .pho-mat-w { font-size: .66rem; color: #94a3b8; font-variant-numeric: tabular-nums; }
+    .pho-grenz { font-size: .72rem; color: #64748b; margin-top: 6px; line-height: 1.5; }
+    .pho-fils { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
+    .pho-fil { flex: 1 1 76px; padding: 6px 6px; background: #f8fafc; border: 2px solid #e2e8f0;
+      border-radius: 9px; cursor: pointer; font-size: .74rem; font-weight: 700; color: #475569; }
+    .pho-fil:hover { border-color: #cbd5e1; }
+    .pho-fil.on { border-color: #7c3aed; background: #f5f3ff; color: #5b21b6; }
+    .pho-filkurz { font-size: .72rem; color: #64748b; margin-top: 5px; min-height: 15px; }
+    .pho-spektrum { display: flex; gap: 4px; flex-wrap: wrap; }
+    .pho-lin { display: flex; flex-direction: column; align-items: center; padding: 4px 6px;
+      border-radius: 7px; border: 1px solid #e2e8f0; background: #f8fafc; min-width: 44px; }
+    .pho-lin-l { font-size: .72rem; font-weight: 800; color: #475569; font-variant-numeric: tabular-nums; }
+    .pho-lin-a { font-size: .6rem; color: #94a3b8; }
+    .pho-lin.loest { border-color: #86efac; background: #f0fdf4; }
+    .pho-lin.loest .pho-lin-l { color: #15803d; }
+    .pho-lin.aus { opacity: .45; text-decoration: line-through; }
+    .pho-protwrap { max-height: 150px; overflow: auto; border: 1px solid #e2e8f0;
+      border-radius: 9px; margin-top: 6px; }
+    .pho-protwrap .sim-table { margin-top: 0; font-size: .74rem; }
+    .pho-protwrap .sim-table th { position: sticky; top: 0; z-index: 1; font-size: .68rem; }
+    .pho-befunde { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; margin-top: 12px; }
+    .pho-bef { display: flex; gap: 8px; align-items: flex-start; font-size: .78rem; color: #64748b;
+      padding: 5px 0; border-bottom: 1px solid #eef2f7; }
+    .pho-bef b { color: #94a3b8; font-weight: 700; }
+    .pho-bef.ok b { color: #15803d; }
+    .pho-bef-h { font-weight: 800; color: #cbd5e1; }
+    .pho-bef.ok .pho-bef-h { color: #16a34a; }
+    .pho-bef-wie { font-size: .72rem; color: #94a3b8; }
+    .pho-bef-fertig { font-size: .76rem; color: #15803d; background: #f0fdf4; border: 1px solid #bbf7d0;
+      border-radius: 8px; padding: 8px 10px; margin-top: 8px; line-height: 1.5; }
+    .pho-rechnung { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 4px 11px; }
+    .pho-rz { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; padding: 7px 0;
+      border-bottom: 1px solid #eef2f7; }
+    .pho-rz-t { font-size: .76rem; color: #475569; }
+    .pho-rz-f { font-size: .72rem; color: #94a3b8; font-family: ui-monospace, monospace; grid-column: 1; }
+    .pho-rz-v { font-size: .84rem; font-weight: 800; color: #1e293b; grid-column: 2; grid-row: 1 / span 2;
+      align-self: center; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .pho-rz-erg .pho-rz-v { color: #7c3aed; font-size: 1rem; }
+    .pho-vergleich { display: flex; align-items: stretch; gap: 8px; margin: 10px 0 4px; }
+    .pho-vs { flex: 1; display: flex; flex-direction: column; gap: 2px; padding: 8px 10px;
+      background: #fef2f2; border: 1px solid #fecaca; border-radius: 9px; }
+    .pho-vs span { font-size: .68rem; color: #94a3b8; text-transform: uppercase; letter-spacing: .05em; font-weight: 800; }
+    .pho-vs b { font-size: 1.05rem; color: #b91c1c; font-variant-numeric: tabular-nums; }
+    .pho-vs-mess { background: #f0fdf4; border-color: #bbf7d0; }
+    .pho-vs-mess b { color: #15803d; }
+    .pho-vs-op { align-self: center; font-size: .74rem; font-weight: 800; color: #94a3b8; }
+    .pho-lichter { display: flex; gap: 5px; flex-wrap: wrap; }
+    .pho-licht { flex: 1 1 74px; display: flex; align-items: center; gap: 5px; padding: 5px 7px;
+      background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 9px; cursor: pointer; }
+    .pho-licht:hover { border-color: #cbd5e1; }
+    .pho-licht.on { border-color: #7c3aed; background: #f5f3ff; }
+    .pho-licht-p { width: 10px; height: 10px; border-radius: 50%; flex: 0 0 auto; }
+    .pho-licht-n { font-size: .72rem; font-weight: 800; color: #475569; }
+    .pho-licht-l { font-size: .64rem; color: #94a3b8; margin-left: auto; font-variant-numeric: tabular-nums; }
+    .pho-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
