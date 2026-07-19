@@ -1962,6 +1962,25 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('phoTakt', 'phoKeinChart');
     _pSim.start(dt => _phoTakt(dt), () => _phoRender(), []);
   },
+
+  // ── 35. MILLIKANVERSUCH ────────────────────────────────
+  // Schluesselexperiment 05 des KLP: Wattebausch-Modellversuch,
+  // vereinfachter Millikanversuch und Auswertung zur Elementarladung
+  'millikan': modal => {
+    _milInit();
+    modal.innerHTML = _milHTML();
+    const erkl = document.getElementById('milErkl');
+    if (erkl) erkl.innerHTML = _milErklHTML();
+    _milSetStation(0);
+    _milWbLaden();
+    _milWbRenderTable();
+    _milRenderTable();
+    _milRenderTheorie(false);
+    _milUpdate();
+    _milDrawPlot();
+    _pSim = new PhysicsSimEngine('milTakt', 'milKeinChart');
+    _pSim.start(dt => _milTakt(dt), () => _milRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -6632,6 +6651,1303 @@ function _phoRender() {
     .pho-licht-n { font-size: .72rem; font-weight: 800; color: #475569; }
     .pho-licht-l { font-size: .64rem; color: #94a3b8; margin-left: auto; font-variant-numeric: tabular-nums; }
     .pho-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════════════
+//  MILLIKANVERSUCH – das Schlüsselexperiment
+//  Nach der Handreichung "Versuch 5: Der Millikanversuch" (NRW).
+//  Drei Stationen: Wattebausch-Modellversuch → vereinfachter
+//  Millikanversuch → Auswertung im Hinblick auf die Elementarladung.
+// ═══════════════════════════════════════════════════════════════
+
+const _MIL_G   = 9.81;        // m/s²
+const _MIL_RHO = 886;         // Dichte des Öls in kg/m³
+const _MIL_ETA = 1.81e-5;     // dynamische Zähigkeit der Luft in Pa·s
+const _MIL_E   = 1.602e-19;   // Elementarladung in C (Sollwert)
+
+// Auflösung der Mikrometerskala im Okular: 0,01 mm sind gerade noch schätzbar
+const _MIL_ABLESUNG = 0.01;
+
+let _mil = null;
+
+function _milInit() {
+  _mil = {
+    station: 0, t: 0,
+    // ── Station 1: Wattebauschversuch ──
+    wbM: 20, wbD: 8, wbU: 0, wbQ: 1e-8, wbY: 0, wbV: 0,
+    wbRows: [], wbNextId: 1, hilfe: 0,
+    // ── Station 2: Millikanversuch ──
+    d: 6.0,                       // Plattenabstand in mm
+    U: 0, feld: false,
+    tropfen: null, y: 0.2, phase: 'leer',
+    uhrLauf: false, uhrT: 0, uhrY0: 0, uhrS: 0, uhrFertig: false,
+    rGem: null, vGem: null, uSchweb: null,
+    rVorgeben: false, rVor: 1.0, rausch: false,
+    rows: [], nextId: 1,
+    // ── Station 3: Auswertung ──
+    eProbe: 1.60, preset: 0, fn: null, fnAuto: false, reveal: false
+  };
+}
+
+// ── Physik ─────────────────────────────────────────────
+// Kugelvolumen mal Dichte – der Auftrieb in Luft bleibt bewusst
+// unberücksichtigt (didaktische Reduktion der Handreichung, S. 6).
+function _milMasse(r) { return 4 / 3 * Math.PI * r * r * r * _MIL_RHO; }
+
+// Schwebebedingung: F_elektrisch = F_Gravitation  ⇒  q·U/d = m·g
+function _milLadung(m, d, U) { return U > 0 ? m * _MIL_G * d / U : NaN; }
+function _milUSchweb(m, d, q) { return q > 0 ? m * _MIL_G * d / q : NaN; }
+
+// Stokes: bei U = 0 hält die Reibungskraft 6πηrv der Gewichtskraft
+// die Waage  ⇒  v = 2·r²·ρ·g / (9·η)
+function _milSinkV(r) { return 2 * r * r * _MIL_RHO * _MIL_G / (9 * _MIL_ETA); }
+function _milRausV(v) { return Math.sqrt(9 * _MIL_ETA * v / (2 * _MIL_RHO * _MIL_G)); }
+
+// Bewegung im Feld: die Endgeschwindigkeit stellt sich praktisch sofort ein,
+// weil die Reibung bei diesen Größen alles in Sekundenbruchteilen abbremst.
+// v > 0 bedeutet Steigen.
+function _milVFeld(r, q, U, d) {
+  const F = q * U / d - _milMasse(r) * _MIL_G;
+  return F / (6 * Math.PI * _MIL_ETA * r);
+}
+
+function _milDm() { return _mil.d / 1000; }      // Plattenabstand in m
+
+// ── Station 1 ──────────────────────────────────────────
+function _milWbMasse() { return _mil.wbM * 1e-6; }        // mg → kg
+function _milWbD() { return _mil.wbD / 100; }             // cm → m
+function _milWbUSchweb() { return _milUSchweb(_milWbMasse(), _milWbD(), _mil.wbQ); }
+// Beschleunigung des Wattebauschs: die Luftreibung ist hier so klein,
+// dass sie nur als schwache Dämpfung der Anzeige dient.
+function _milWbA() {
+  return (_mil.wbQ * _mil.wbU / _milWbD() - _milWbMasse() * _MIL_G) / _milWbMasse();
+}
+function _milWbSchwebt() { return Math.abs(_milWbA()) < 0.10; }
+
+// Erzeugt eine Ladung, deren Schwebespannung im Bereich des
+// Hochspannungsnetzgeräts liegt.
+function _milWbLaden() {
+  const m = _milWbMasse(), d = _milWbD();
+  const Uziel = 900 + Math.random() * 3400;
+  _mil.wbQ = m * _MIL_G * d / Uziel;
+  _mil.wbY = 0; _mil.wbV = 0;
+  _milWbUpdate();
+}
+
+// ── Station 2 ──────────────────────────────────────────
+// Zerstäuber: erzeugt ein Tröpfchen, dessen Schwebespannung mit dem
+// vorhandenen Netzgerät (bis 600 V) tatsächlich erreichbar ist.
+function _milZerstaeuber() {
+  const d = _milDm();
+  for (let i = 0; i < 500; i++) {
+    const r = (0.50 + Math.random() * 0.60) * 1e-6;
+    const n = 1 + Math.floor(Math.random() * 8);
+    const q = n * _MIL_E;
+    const U = _milUSchweb(_milMasse(r), d, q);
+    if (U >= 120 && U <= 520) {
+      _mil.tropfen = { r, n, q, U };
+      _mil.y = 0.10; _mil.phase = 'fall'; _mil.U = 0; _mil.feld = false;
+      _mil.uhrLauf = false; _mil.uhrT = 0; _mil.uhrS = 0; _mil.uhrFertig = false;
+      _mil.rGem = null; _mil.vGem = null; _mil.uSchweb = null;
+      _milSetU(0);
+      _milUpdate();
+      return;
+    }
+  }
+}
+
+// Schwebespannung des aktuellen Troepfchens beim aktuellen Plattenabstand.
+// Nicht den beim Zerstaeuben gespeicherten Wert verwenden: d ist verstellbar.
+function _milUTropfen() {
+  const T = _mil.tropfen;
+  return T ? _milUSchweb(_milMasse(T.r), _milDm(), T.q) : NaN;
+}
+function _milErreichbar() {
+  const U = _milUTropfen();
+  return isFinite(U) && U <= 600;
+}
+
+function _milTropfenV() {
+  const T = _mil.tropfen;
+  if (!T) return 0;
+  if (!_mil.feld) return -_milSinkV(T.r);            // negativ = sinkt
+  return _milVFeld(T.r, T.q, _mil.U, _milDm());
+}
+// Schwebt: die Restdrift ist im Mikroskop nicht mehr auszumachen
+function _milSchwebt() {
+  return _mil.feld && Math.abs(_milTropfenV()) < 6e-7;
+}
+
+function _milRadius() {
+  if (_mil.rVorgeben) return _mil.rVor * 1e-6;
+  return _mil.rGem;
+}
+
+// ── Formatierung ───────────────────────────────────────
+const _MIL_HOCH = { '-': '⁻', '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+                    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹' };
+function _milExp(v, d) {
+  if (!isFinite(v)) return '—';
+  if (v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const m = v / Math.pow(10, ex);
+  const hoch = String(ex).split('').map(c => _MIL_HOCH[c] || c).join('');
+  return _fpmNum(m, d) + ' · 10' + hoch;
+}
+
+// ── Oberfläche ─────────────────────────────────────────
+function _milHTML() {
+  const stationen = ['1 · Wattebausch-Modellversuch', '2 · Millikanversuch', '3 · Die Elementarladung']
+    .map((s, i) => `<button class="fpm-tab${i === _mil.station ? ' on' : ''}" id="milSt${i}" onclick="_milSetStation(${i})">${s}</button>`).join('');
+
+  const presets = ['Nr. → q', 'n → q (Ursprungsgerade)', 'r³ → q'].map((p, i) =>
+    `<button class="fpm-tab${i === _mil.preset ? ' on' : ''}" id="milTab${i}" onclick="_milSetPreset(${i})">${p}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim mil-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔬 Millikanversuch: das Schlüsselexperiment</h3>
+    <canvas id="milTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 – Wattebauschversuch ══ -->
+    <div id="milS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="milWB" width="420" height="300" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Aufbau</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Masse des Wattebauschs m: <b id="milWbMLbl">20 mg</b></span>
+            <input type="range" id="milWbM" min="8" max="40" step="1" value="20"
+              oninput="_milSetWbM(this.value)" style="width:100%;accent-color:#0f766e">
+          </div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Plattenabstand d: <b id="milWbDLbl">8,0 cm</b></span>
+            <input type="range" id="milWbD" min="5" max="12" step="0.5" value="8"
+              oninput="_milSetWbD(this.value)" style="width:100%;accent-color:#0f766e">
+          </div>
+          <div class="fpm-note">Die Masse wird vorher mit einer Feinwaage bestimmt,
+            der Plattenabstand mit dem Lineal.</div>
+        </div>
+        <div>
+          <div class="fpm-label">Hochspannung regeln, bis der Wattebausch schwebt</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Spannung U: <b id="milWbULbl">0 V</b></span>
+            <input type="range" id="milWbU" min="0" max="5000" step="5" value="0"
+              oninput="_milSetWbU(this.value)" style="width:100%;accent-color:#0f766e">
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_milWbStep(-100)">◀ 100 V</button>
+            <button class="sim-btn" onclick="_milWbStep(100)">100 V ▶</button>
+            <button class="sim-btn" onclick="_milWbStep(-5)">◀ 5 V</button>
+            <button class="sim-btn" onclick="_milWbStep(5)">5 V ▶</button>
+            <button class="sim-btn" onclick="_milWbAuto()">einregeln</button>
+          </div>
+          <div class="mil-zustand" id="milWbZustand"></div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Spannung U</span><span class="fpm-ro-v" id="milWbUA">0</span><span class="fpm-ro-u">V</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Hubarbeit m·g·d</span><span class="fpm-ro-v" id="milWbWA">—</span><span class="fpm-ro-u">10⁻⁵ J</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Ladung q = m·g·d/U</span><span class="fpm-ro-v" id="milWbQA">—</span><span class="fpm-ro-u">nC</span></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_milWbTake()" id="milWbTakeBtn">✓ Messung übernehmen</button>
+            <button class="sim-btn" onclick="_milWbLaden()">🧽 Neu aufladen</button>
+            <button class="sim-btn" onclick="_milWbClear()">🗑 Leeren</button>
+          </div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>m (mg)</th><th>d (cm)</th><th>U (V)</th><th>q (nC)</th><th></th></tr></thead>
+              <tbody id="milWbTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="milWbEmpty">Noch keine Messung.<br>Spannung erhöhen, bis der Bausch schwebt.</div>
+          </div>
+        </div>
+      </div>
+      <div class="fpm-label" style="margin-top:12px">Wie kommt man auf q = m·g·d/U? – abgestufte Hilfen</div>
+      <div class="sim-btn-row">
+        <button class="sim-btn" onclick="_milHilfe(1)">Hilfe 1</button>
+        <button class="sim-btn" onclick="_milHilfe(2)">Hilfe 2</button>
+        <button class="sim-btn" onclick="_milHilfe(3)">Hilfe 3</button>
+        <button class="sim-btn" onclick="_milHilfe(4)">Lösung</button>
+        <button class="sim-btn" onclick="_milHilfe(0)">zuklappen</button>
+      </div>
+      <div class="mil-hilfe" id="milHilfeBox"></div>
+    </div>
+
+    <!-- ══ Station 2 – Millikanversuch ══ -->
+    <div id="milS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="milMik" width="420" height="300" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Blick durch das Beobachtungsmikroskop</div>
+          <canvas id="milAuf" width="420" height="132" class="phys-anim-cv"></canvas>
+          <div class="phys-ctrl" style="margin-top:8px">
+            <span class="phys-ctrl-label">Plattenabstand d: <b id="milDLbl">6,00 mm</b></span>
+            <input type="range" id="milD" min="4" max="8" step="0.25" value="6"
+              oninput="_milSetD(this.value)" style="width:100%;accent-color:#0f766e">
+          </div>
+        </div>
+        <div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_milZerstaeuber()">💨 Zerstäuber betätigen</button>
+            <button class="sim-btn" onclick="_milFeldAus()">Feld aus (Tröpfchen sinkt)</button>
+          </div>
+
+          <div class="mil-schritt"><span class="mil-schritt-n">1</span>
+            <b>Radius bestimmen</b> – bei U = 0 sinkt das Tröpfchen gleichförmig.
+            Miss die Fallzeit über eine Strecke der Mikrometerskala.</div>
+          <label class="fpm-check"><input type="checkbox" id="milRVorCb" onchange="_milSetRVorgeben(this.checked)">
+            Radius vorgeben statt messen (ohne Stokes'sches Gesetz)</label>
+          <div class="phys-ctrl" id="milRVorWrap" style="display:none">
+            <span class="phys-ctrl-label">vorgegebener Radius r: <b id="milRVorLbl">1,00 µm</b></span>
+            <input type="range" id="milRVor" min="0.3" max="1.5" step="0.01" value="1"
+              oninput="_milSetRVor(this.value)" style="width:100%;accent-color:#0f766e">
+          </div>
+          <div class="sim-btn-row" id="milUhrRow">
+            <button class="sim-btn primary" id="milUhrBtn" onclick="_milUhr()">⏱ Stoppuhr starten</button>
+            <button class="sim-btn" onclick="_milAutoFall()">automatisch messen</button>
+          </div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Stoppuhr</span><span class="fpm-ro-v" id="milUhrA">0,00</span><span class="fpm-ro-u">s</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Fallstrecke s</span><span class="fpm-ro-v" id="milSA">—</span><span class="fpm-ro-u">mm</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Sinkgeschw. v = s/t</span><span class="fpm-ro-v" id="milVA">—</span><span class="fpm-ro-u">mm/s</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Radius r</span><span class="fpm-ro-v" id="milRA">—</span><span class="fpm-ro-u">µm</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Masse m</span><span class="fpm-ro-v" id="milMA">—</span><span class="fpm-ro-u">10⁻¹⁵ kg</span></div>
+          </div>
+
+          <div class="mil-schritt"><span class="mil-schritt-n">2</span>
+            <b>Schwebespannung suchen</b> – Feld einschalten und U so regeln,
+            dass das Tröpfchen stehen bleibt.</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Spannung U: <b id="milULbl">0 V</b></span>
+            <input type="range" id="milU" min="0" max="600" step="1" value="0"
+              oninput="_milSetU(this.value)" style="width:100%;accent-color:#0f766e">
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_milUStep(-10)">◀ 10 V</button>
+            <button class="sim-btn" onclick="_milUStep(10)">10 V ▶</button>
+            <button class="sim-btn" onclick="_milUStep(-1)">◀ 1 V</button>
+            <button class="sim-btn" onclick="_milUStep(1)">1 V ▶</button>
+            <button class="sim-btn" onclick="_milAutoSchweb()">einregeln</button>
+          </div>
+          <div class="mil-zustand" id="milZustand"></div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Ladung q = 4/3·π·r³·ρ·g·d/U</span><span class="fpm-ro-v" id="milQA">—</span><span class="fpm-ro-u">10⁻¹⁹ C</span></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="milTakeBtn" onclick="_milTake()">✓ Tröpfchen übernehmen</button>
+            <button class="sim-btn" onclick="_milDemo()">📋 Beispielmessreihe (20 Tröpfchen)</button>
+            <button class="sim-btn" onclick="_milClear()">🗑 Tabelle leeren</button>
+          </div>
+          <label class="fpm-check"><input type="checkbox" onchange="_milSetRausch(this.checked)">
+            Ablesefehler simulieren (so streuen echte Messwerte)</label>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Nr.</th><th>r (µm)</th><th>m (10⁻¹⁵ kg)</th><th>U (V)</th><th>q (10⁻¹⁹ C)</th><th></th></tr></thead>
+              <tbody id="milTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="milEmpty">Noch keine Tröpfchen vermessen.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 – Auswertung ══ -->
+    <div id="milS2" style="display:none">
+      <div class="fpm-label">Alle gemessenen Ladungen zusammen betrachten</div>
+      <div class="fpm-tabs">${presets}</div>
+      <div class="fpm-grid2">
+        <canvas id="milPlot" width="470" height="340" class="phys-chart-cv"></canvas>
+        <div>
+          <div class="fpm-label" style="margin-top:0">Probierwert für die kleinste Ladung</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">e<sub>Probe</sub>: <b id="milEProbeLbl">1,600 · 10⁻¹⁹ C</b></span>
+            <input type="range" id="milEProbe" min="1" max="3" step="0.001" value="1.6"
+              oninput="_milSetEProbe(this.value)" style="width:100%;accent-color:#0f766e">
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_milSuche()">🔍 besten Wert suchen</button>
+          </div>
+          <div class="mil-teiler" id="milTeiler"></div>
+          <div class="fpm-fit" id="milFitBox"></div>
+          <div class="fpm-label" style="margin-top:10px">Funktion plotten</div>
+          <input type="text" id="milFn" class="fpm-input" placeholder="z. B. 1.602*x" spellcheck="false"
+            oninput="_milSetFn(this.value)">
+          <div class="fpm-err" id="milFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_milTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_milClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="milTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_milSet('reveal',this.checked)">
+            Sollwert anzeigen</label>
+        </div>
+      </div>
+      <div class="mil-fazit" id="milFazit"></div>
+    </div>
+
+    <div id="milErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>m · g · d = q · U</b> &nbsp;|&nbsp; <b>q = 4/3 · π · r³ · ρ · g · d / U</b>
+      &nbsp;|&nbsp; <b>v = 2 · r² · ρ · g / (9 · η)</b>
+    </p>
+  </div>`;
+}
+
+function _milErklHTML() {
+  return `<div class="dsp-erkl-kopf">Die Versuchsidee</div>
+    <div class="dsp-erkl-text">
+      Ein Elektron ist unvorstellbar winzig – wie soll man seine Ladung messen? Der Trick besteht darin,
+      die Ladung <b>nicht direkt</b> zu messen, sondern über eine Kraft, die man sehr genau einstellen kann.
+      Zwischen zwei waagerechten Platten wirkt auf einen geladenen Körper außer der Gewichtskraft noch eine
+      elektrische Kraft. Regelt man die Spannung so, dass der Körper gerade <b>schwebt</b>, sind beide Kräfte
+      gleich groß – und aus Masse, Plattenabstand und Spannung folgt die Ladung.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Vom Wattebausch zum Öltröpfchen</div>
+    <div class="dsp-erkl-text">
+      Am Wattebausch lässt sich das Verfahren gut sehen: Er ist groß genug, um ihn zu beobachten, und trägt
+      eine Ladung im Nanocoulomb-Bereich – das sind noch Milliarden von Elementarladungen. Erst wenn man auf
+      <b>winzige Öltröpfchen</b> übergeht, sinkt die Ladung so weit, dass nur noch <i>einige wenige</i>
+      Elementarladungen auf dem Tröpfchen sitzen. Genau dann wird sichtbar, dass die Ladung nicht beliebige
+      Werte annimmt.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum der Radius das Problem ist</div>
+    <div class="dsp-erkl-text">
+      Masse, Plattenabstand und Spannung sind leicht messbar – der Tröpfchenradius nicht. Im Mikroskop sieht
+      man nämlich <b>nicht das Tröpfchen selbst</b>, sondern nur ein „Streuscheibchen“ seines Lichts; eine
+      Mikrometerskala nützt hier nichts. Der Ausweg: Schaltet man das Feld ab, fällt das Tröpfchen und wird
+      dabei sofort so stark von der Luft gebremst, dass es <b>gleichförmig</b> sinkt. Aus dieser Sinkgeschwindigkeit
+      folgt mit dem Stokes'schen Reibungsgesetz F<sub>R</sub> = 6·π·η·r·v der Radius:
+      <b>v = 2·r²·ρ·g / (9·η)</b>. Wer das Stokes'sche Gesetz nicht voraussetzen will, kann den Radius auch
+      vorgeben lassen – der Kernlehrplan verlangt es nicht.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Das Ergebnis</div>
+    <div class="dsp-erkl-text">
+      Vermisst man viele Tröpfchen, liegen die Ladungen nicht regellos verstreut, sondern <b>auf Stufen</b>.
+      Jede gemessene Ladung ist ein ganzzahliges Vielfaches ein und desselben kleinsten Betrages
+      <b>e ≈ 1,602 · 10⁻¹⁹ C</b>. Elektrische Ladung ist also <b>gequantelt</b>. Robert A. Millikan erhielt
+      dafür 1923 den Nobelpreis. Beachte: Der Auftrieb des Tröpfchens in der Luft bleibt hier bewusst
+      unberücksichtigt – das ist eine zulässige Vereinfachung, weil Öl rund 700-mal dichter als Luft ist.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Im echten Versuch: Hochspannung. Warnschild aufstellen, Platten nur bei
+      abgeschalteter Spannung berühren, Bestimmungen der RiSU einhalten.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _milSetStation(i) {
+  _mil.station = i;
+  for (let k = 0; k < 3; k++) {
+    document.getElementById('milSt' + k)?.classList.toggle('on', k === i);
+    const d = document.getElementById('milS' + k);
+    if (d) d.style.display = k === i ? 'block' : 'none';
+  }
+  _milUpdate();
+  if (i === 2) _milDrawPlot();
+}
+function _milSet(key, val) { _mil[key] = val; _milDrawPlot(); }
+
+// ── Bedienung Station 1 ────────────────────────────────
+function _milSetWbM(v) {
+  _mil.wbM = +v;
+  const el = document.getElementById('milWbMLbl'); if (el) el.textContent = Math.round(+v) + ' mg';
+  _milWbUpdate();
+}
+function _milSetWbD(v) {
+  _mil.wbD = +v;
+  const el = document.getElementById('milWbDLbl'); if (el) el.textContent = _fpmNum(+v, 1) + ' cm';
+  _milWbUpdate();
+}
+function _milSetWbU(v) {
+  _mil.wbU = Math.max(0, Math.min(5000, +v));
+  const sl = document.getElementById('milWbU'); if (sl) sl.value = String(_mil.wbU);
+  const el = document.getElementById('milWbULbl'); if (el) el.textContent = Math.round(_mil.wbU) + ' V';
+  _milWbUpdate();
+}
+function _milWbStep(dv) { _milSetWbU(Math.round(_mil.wbU + dv)); }
+// Regelt die Hochspannung so ein, wie es ein geduldiger Experimentator taete
+function _milWbAuto() { _milSetWbU(Math.round(_milWbUSchweb() / 5) * 5); }
+
+function _milWbUpdate() {
+  if (!_mil) return;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  const m = _milWbMasse(), d = _milWbD(), U = _mil.wbU;
+  const W = m * _MIL_G * d;
+  set('milWbUA', String(Math.round(U)));
+  set('milWbWA', _fpmNum(W / 1e-5, 3));
+  set('milWbQA', U > 0 ? _fpmNum(_milLadung(m, d, U) / 1e-9, 2) : '—');
+
+  const z = document.getElementById('milWbZustand');
+  const schwebt = _milWbSchwebt();
+  if (z) {
+    const a = _milWbA();
+    z.className = 'mil-zustand ' + (U === 0 ? '' : schwebt ? 'ok' : 'aus');
+    z.innerHTML = U === 0
+      ? 'Ohne Feld liegt der Wattebausch unten auf der Platte.'
+      : schwebt
+        ? '<b>Der Wattebausch schwebt.</b> Jetzt ist die elektrische Kraft genauso groß wie die Gewichtskraft.'
+        : a > 0
+          ? 'Der Wattebausch <b>steigt</b> – die elektrische Kraft ist zu groß. Spannung verringern.'
+          : 'Der Wattebausch <b>sinkt</b> – die elektrische Kraft ist zu klein. Spannung erhöhen.';
+  }
+  const tb = document.getElementById('milWbTakeBtn');
+  if (tb) tb.disabled = !schwebt;
+}
+
+function _milWbTake() {
+  if (!_milWbSchwebt()) return;
+  const m = _milWbMasse(), d = _milWbD();
+  _mil.wbRows.push({ id: _mil.wbNextId++, m: _mil.wbM, d: _mil.wbD, U: Math.round(_mil.wbU),
+                     q: _milLadung(m, d, _mil.wbU) });
+  _milWbRenderTable();
+}
+function _milWbDelRow(id) { _mil.wbRows = _mil.wbRows.filter(r => r.id !== id); _milWbRenderTable(); }
+function _milWbClear() {
+  if (_mil.wbRows.length && !confirm('Alle ' + _mil.wbRows.length + ' Messungen löschen?')) return;
+  _mil.wbRows = []; _milWbRenderTable();
+}
+function _milWbRenderTable() {
+  const tb = document.getElementById('milWbTbody'); if (!tb) return;
+  const empty = document.getElementById('milWbEmpty');
+  if (empty) empty.style.display = _mil.wbRows.length ? 'none' : 'block';
+  tb.innerHTML = _mil.wbRows.map(r =>
+    `<tr><td>${r.m}</td><td>${_fpmNum(r.d, 1)}</td><td>${r.U}</td>
+       <td><b>${_fpmNum(r.q / 1e-9, 2)}</b></td>
+       <td class="fpm-del" onclick="_milWbDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+
+// Die abgestuften Hilfen der Handreichung (Seite 6)
+function _milHilfe(n) {
+  _mil.hilfe = n;
+  const el = document.getElementById('milHilfeBox'); if (!el) return;
+  const texte = {
+    0: '',
+    1: `<b>Hilfe 1:</b> Im Schwebezustand heben sich die beiden Kräfte auf:
+        F<sub>elektrisch</sub> = F<sub>Gravitation</sub>. Du kennst die Gewichtskraft
+        F<sub>G</sub> = m·g. Über die elektrische Kraft weißt du zunächst nur, dass sie von
+        der Ladung q und von der Spannung U abhängt. Versuche deshalb, nicht mit Kräften,
+        sondern mit <b>Energien</b> weiterzukommen.`,
+    2: `<b>Hilfe 2:</b> Der Term <b>m · g · d</b> entspricht der Hubarbeit, die nötig wäre,
+        um den Wattebausch der Masse m (ohne ihn zu beschleunigen) um die Höhe d – also von der
+        unteren zur oberen Platte – anzuheben.`,
+    3: `<b>Hilfe 3:</b> Überlege, wer oder was in diesem Versuch diese Hubarbeit aufbringen könnte,
+        ohne den Wattebausch mit der eigenen Muskelkraft anzuheben. Erinnere dich daran, wie die
+        elektrische Spannung definiert ist: als Energie pro Ladung, U = W/q.`,
+    4: `<b>Lösung:</b> Die Spannungsquelle verrichtet die Arbeit. Läuft die Ladung q durch die
+        Spannung U, wird dabei die Energie <b>W = q · U</b> umgesetzt. Genau diese Energie wird
+        gebraucht, um den Bausch von der unteren zur oberen Platte zu heben – also
+        <b>m · g · d = q · U</b> und damit <b>q = m · g · d / U</b>.
+        Beachte: Wir sind ohne die Feldstärke E und ohne die Beziehung E = U/d ausgekommen.`
+  };
+  el.innerHTML = texte[n] || '';
+  el.style.display = n ? 'block' : 'none';
+}
+
+// ── Bedienung Station 2 ────────────────────────────────
+function _milSetD(v) {
+  _mil.d = +v;
+  const el = document.getElementById('milDLbl'); if (el) el.textContent = _fpmNum(+v, 2) + ' mm';
+  _milUpdate();
+}
+function _milSetU(v) {
+  _mil.U = Math.max(0, Math.min(600, +v));
+  _mil.feld = _mil.U > 0;
+  const sl = document.getElementById('milU'); if (sl) sl.value = String(_mil.U);
+  const el = document.getElementById('milULbl'); if (el) el.textContent = Math.round(_mil.U) + ' V';
+  _milUpdate();
+}
+function _milUStep(dv) { _milSetU(Math.round(_mil.U + dv)); }
+function _milFeldAus() { _milSetU(0); }
+function _milSetRausch(b) { _mil.rausch = b; }
+function _milSetRVorgeben(b) {
+  _mil.rVorgeben = b;
+  const w = document.getElementById('milRVorWrap'); if (w) w.style.display = b ? 'block' : 'none';
+  const u = document.getElementById('milUhrRow'); if (u) u.style.display = b ? 'none' : 'flex';
+  _milUpdate();
+}
+function _milSetRVor(v) {
+  _mil.rVor = +v;
+  const el = document.getElementById('milRVorLbl'); if (el) el.textContent = _fpmNum(+v, 2) + ' µm';
+  _milUpdate();
+}
+
+// Stoppuhr: misst die Zeit zwischen zwei selbst gewählten Marken.
+// Die Fallstrecke ist das, was auf der Mikrometerskala tatsächlich abzulesen ist.
+function _milUhr() {
+  if (!_mil.tropfen || _mil.feld) return;
+  if (!_mil.uhrLauf) {
+    _mil.uhrLauf = true; _mil.uhrT = 0; _mil.uhrY0 = _mil.y; _mil.uhrFertig = false;
+  } else {
+    _mil.uhrLauf = false;
+    const s = Math.abs(_mil.y - _mil.uhrY0);
+    _milAusFall(Math.round(s / _MIL_ABLESUNG) * _MIL_ABLESUNG, _mil.uhrT);
+  }
+  const b = document.getElementById('milUhrBtn');
+  if (b) b.textContent = _mil.uhrLauf ? '⏱ Stoppuhr anhalten' : '⏱ Stoppuhr starten';
+  _milUpdate();
+}
+// Saubere Messung über eine feste Strecke – ohne Reaktionszeit des Beobachters
+function _milAutoFall() {
+  const T = _mil.tropfen; if (!T) return;
+  _milSetU(0);
+  const s = 0.60;                                   // mm
+  let t = s / (_milSinkV(T.r) * 1000);
+  if (_mil.rausch) t *= 1 + (Math.random() - 0.5) * 0.05;
+  _mil.uhrLauf = false;
+  const b = document.getElementById('milUhrBtn'); if (b) b.textContent = '⏱ Stoppuhr starten';
+  _milAusFall(s, Math.round(t * 100) / 100);
+  _mil.y = 0.10;
+  _milUpdate();
+}
+function _milAusFall(s, t) {
+  if (!(s > 0) || !(t > 0)) return;
+  _mil.uhrS = s; _mil.uhrT = t; _mil.uhrFertig = true;
+  const v = s / 1000 / t;                            // m/s
+  _mil.vGem = v;
+  _mil.rGem = _milRausV(v);
+}
+
+// Regelt die Spannung so ein, wie es ein geduldiger Experimentator täte
+function _milAutoSchweb() {
+  if (!_mil.tropfen) return;
+  // Nicht heimlich auf 600 V begrenzen und so eine falsche Ladung aufnehmen
+  if (!_milErreichbar()) { _milUpdate(); return; }
+  let U = _milUTropfen();
+  if (_mil.rausch) U *= 1 + (Math.random() - 0.5) * 0.02;
+  _milSetU(Math.round(U));
+}
+
+function _milQGemessen() {
+  const r = _milRadius();
+  if (!r || !(_mil.U > 0) || !_milSchwebt()) return NaN;
+  return _milMasse(r) * _MIL_G * _milDm() / _mil.U;
+}
+
+function _milTake() {
+  const q = _milQGemessen();
+  if (!isFinite(q)) return;
+  const r = _milRadius();
+  _mil.rows.push({ id: _mil.nextId++, r, m: _milMasse(r), U: _mil.U, q, d: _mil.d });
+  _milRenderTable();
+  _milDrawPlot();
+  _mil.tropfen = null; _mil.phase = 'leer';
+  _milSetU(0);
+}
+function _milDelRow(id) { _mil.rows = _mil.rows.filter(r => r.id !== id); _milRenderTable(); _milDrawPlot(); }
+function _milClear() {
+  if (_mil.rows.length && !confirm('Alle ' + _mil.rows.length + ' Messwerte löschen?')) return;
+  _mil.rows = []; _milRenderTable(); _milDrawPlot();
+}
+// Arbeitsteilige Messreihe, wie sie eine ganze Lerngruppe zusammenträgt
+function _milDemo() {
+  const d = _milDm();
+  let versuche = 0;
+  while (_mil.rows.length < 20 && versuche < 4000) {
+    versuche++;
+    const r = (0.50 + Math.random() * 0.60) * 1e-6;
+    const n = 1 + Math.floor(Math.random() * 8);
+    const q = n * _MIL_E;
+    const U = _milUSchweb(_milMasse(r), d, q);
+    if (U < 120 || U > 520) continue;
+    // So, wie es eine Gruppe wirklich abliest: Spannung ganzzahlig, Fallzeit auf 1/100 s
+    const Ug = Math.round(_mil.rausch ? U * (1 + (Math.random() - 0.5) * 0.02) : U);
+    const s = 0.60;
+    let t = s / (_milSinkV(r) * 1000);
+    if (_mil.rausch) t *= 1 + (Math.random() - 0.5) * 0.05;
+    t = Math.round(t * 100) / 100;
+    const rg = _milRausV(s / 1000 / t);
+    _mil.rows.push({ id: _mil.nextId++, r: rg, m: _milMasse(rg), U: Ug,
+                     q: _milMasse(rg) * _MIL_G * d / Ug, d: _mil.d });
+  }
+  _milRenderTable();
+  _milDrawPlot();
+}
+function _milRenderTable() {
+  const tb = document.getElementById('milTbody'); if (!tb) return;
+  const empty = document.getElementById('milEmpty');
+  if (empty) empty.style.display = _mil.rows.length ? 'none' : 'block';
+  tb.innerHTML = _mil.rows.map((r, i) =>
+    `<tr><td>${i + 1}</td><td>${_fpmNum(r.r * 1e6, 3)}</td><td>${_fpmNum(r.m / 1e-15, 3)}</td>
+       <td>${r.U}</td><td><b>${_fpmNum(r.q / 1e-19, 3)}</b></td>
+       <td class="fpm-del" onclick="_milDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+
+// ── Gemeinsame Aktualisierung ──────────────────────────
+function _milUpdate() {
+  if (!_mil) return;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  _milWbUpdate();
+
+  set('milUhrA', _fpmNum(_mil.uhrT, 2));
+  set('milSA', _mil.uhrFertig ? _fpmNum(_mil.uhrS, 2) : '—');
+  set('milVA', _mil.vGem ? _fpmNum(_mil.vGem * 1000, 4) : '—');
+  const r = _milRadius();
+  set('milRA', r ? _fpmNum(r * 1e6, 3) : '—');
+  set('milMA', r ? _fpmNum(_milMasse(r) / 1e-15, 3) : '—');
+
+  const q = _milQGemessen();
+  set('milQA', isFinite(q) ? _fpmNum(q / 1e-19, 3) : '—');
+
+  const z = document.getElementById('milZustand');
+  if (z) {
+    const T = _mil.tropfen;
+    if (!T) {
+      z.className = 'mil-zustand';
+      z.innerHTML = 'Kein Tröpfchen im Blickfeld. Betätige den Zerstäuber.';
+    } else if (!_milErreichbar()) {
+      z.className = 'mil-zustand aus';
+      z.innerHTML = 'Dieses Tröpfchen ist zu schwer für die verfügbare Spannung: Zum Schweben wären '
+        + Math.round(_milUTropfen()) + ' V nötig, das Netzgerät liefert nur 600 V. '
+        + '<b>Verkleinere den Plattenabstand</b> oder nimm ein anderes Tröpfchen.';
+    } else if (!_mil.feld) {
+      z.className = 'mil-zustand';
+      z.innerHTML = 'Ohne Feld sinkt das Tröpfchen gleichförmig – der Radius lässt sich messen.';
+    } else if (_milSchwebt()) {
+      z.className = 'mil-zustand ok';
+      z.innerHTML = r
+        ? '<b>Das Tröpfchen schwebt.</b> Jetzt kannst du die Ladung berechnen und übernehmen.'
+        : '<b>Das Tröpfchen schwebt</b> – aber der Radius fehlt noch. Schalte das Feld ab und miss die Fallzeit.';
+    } else {
+      z.className = 'mil-zustand aus';
+      z.innerHTML = _milTropfenV() > 0
+        ? 'Das Tröpfchen <b>steigt</b> – Spannung verringern.'
+        : 'Das Tröpfchen <b>sinkt</b> – Spannung erhöhen.';
+    }
+  }
+  const tb = document.getElementById('milTakeBtn');
+  if (tb) tb.disabled = !isFinite(q);
+}
+
+// ── Zeichnung Station 1 ────────────────────────────────
+function _milRenderWB(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  const xL = 62, xR = 300;                  // Plattenränder
+  const yO = 54, yU = 244;                  // obere/untere Platte
+
+  // Platten
+  ctx.fillStyle = '#94a3b8';
+  ctx.fillRect(xL, yO - 8, xR - xL, 8);
+  ctx.fillRect(xL, yU, xR - xL, 8);
+  ctx.fillStyle = '#dc2626'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  for (let i = 0; i < 5; i++) ctx.fillText('+', xL + 24 + i * 48, yO - 12);
+  ctx.fillStyle = '#0284c7';
+  for (let i = 0; i < 5; i++) ctx.fillText('−', xL + 24 + i * 48, yU + 20);
+
+  // Feldlinien nur, wenn Spannung anliegt
+  if (_mil.wbU > 0) {
+    ctx.strokeStyle = 'rgba(15,118,110,.28)'; ctx.lineWidth = 1;
+    for (let i = 0; i < 6; i++) {
+      const x = xL + 20 + i * 43;
+      ctx.beginPath(); ctx.moveTo(x, yO); ctx.lineTo(x, yU); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x - 4, yU - 16); ctx.lineTo(x, yU - 8); ctx.lineTo(x + 4, yU - 16); ctx.stroke();
+    }
+  }
+
+  // Wattebausch: wbY ist die Auslenkung nach oben in Anteilen des Plattenabstands
+  const yB = yU - 18 - _mil.wbY * (yU - yO - 36);
+  const xB = (xL + xR) / 2;
+  ctx.fillStyle = '#f1f5f9';
+  ctx.beginPath(); ctx.arc(xB, yB, 15, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.4; ctx.stroke();
+  ctx.fillStyle = '#e2e8f0';
+  for (let i = 0; i < 5; i++) {
+    const a = i * 1.257;
+    ctx.beginPath(); ctx.arc(xB + 8 * Math.cos(a), yB + 8 * Math.sin(a), 6, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#0284c7'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('−q', xB, yB + 3);
+
+  // Haltefaden
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 0.8;
+  ctx.beginPath(); ctx.moveTo(xB, yB - 15); ctx.lineTo(xB, yO); ctx.stroke();
+
+  // Kräftepfeile
+  const pfeil = (x, y, len, col, txt) => {
+    ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + len); ctx.stroke();
+    const s = Math.sign(len);
+    ctx.beginPath();
+    ctx.moveTo(x, y + len); ctx.lineTo(x - 4, y + len - s * 6); ctx.lineTo(x + 4, y + len - s * 6);
+    ctx.closePath(); ctx.fill();
+    ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(txt, x + 7, y + len / 2 + 3);
+  };
+  const m = _milWbMasse(), d = _milWbD();
+  const FG = m * _MIL_G, FE = _mil.wbQ * _mil.wbU / d;
+  const skala = 46 / Math.max(FG, 1e-12);
+  pfeil(xB + 22, yB, Math.min(60, FG * skala), '#dc2626', 'F_G');
+  if (_mil.wbU > 0) pfeil(xB - 22, yB, -Math.min(60, FE * skala), '#0f766e', 'F_el');
+
+  // Plattenabstand bemaßen
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(xL - 16, yO); ctx.lineTo(xL - 16, yU); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.save(); ctx.translate(xL - 26, (yO + yU) / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('d = ' + _fpmNum(_mil.wbD, 1) + ' cm', 0, 0); ctx.restore();
+
+  // Hochspannungsquelle und Voltmeter
+  const hx = 356;
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(xR, yO - 4); ctx.lineTo(hx, yO - 4); ctx.lineTo(hx, 108); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xR, yU + 4); ctx.lineTo(hx, yU + 4); ctx.lineTo(hx, 152); ctx.stroke();
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(hx, 130, 22, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('HV', hx, 126);
+  ctx.fillStyle = '#0f766e'; ctx.font = '700 11px sans-serif';
+  ctx.fillText(Math.round(_mil.wbU) + ' V', hx, 140);
+
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Wattebausch, m = ' + Math.round(_mil.wbM) + ' mg', 10, H - 10);
+  ctx.textAlign = 'right';
+  const s = _milWbSchwebt() && _mil.wbU > 0;
+  ctx.fillStyle = s ? '#16a34a' : '#94a3b8'; ctx.font = '700 10px sans-serif';
+  ctx.fillText(s ? 'schwebt' : (_mil.wbU === 0 ? 'liegt unten' : (_milWbA() > 0 ? 'steigt' : 'sinkt')), W - 10, H - 10);
+  ctx.textAlign = 'left';
+}
+
+// ── Zeichnung Station 2 ────────────────────────────────
+const _MIL_SKALA = 1.40;      // sichtbarer Bereich der Mikrometerskala in mm
+
+function _milRenderMik(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+
+  // Dunkelfeld – im Mikroskop sieht man nur die Streuscheibchen
+  ctx.fillStyle = '#0b1220'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2, cy = H / 2, R = Math.min(W, H) / 2 - 6;
+  ctx.save();
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.clip();
+  ctx.fillStyle = '#111c30'; ctx.fillRect(0, 0, W, H);
+
+  const yTop = 24, yBot = H - 24;
+  const Y = mm => yTop + mm / _MIL_SKALA * (yBot - yTop);
+
+  // Mikrometerskala im Okular
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(120, yTop); ctx.lineTo(120, yBot); ctx.stroke();
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+  for (let k = 0; k <= 14; k++) {
+    const mm = k * 0.1, y = Y(mm);
+    const lang = k % 5 === 0;
+    ctx.strokeStyle = lang ? '#94a3b8' : '#475569';
+    ctx.lineWidth = lang ? 1.4 : 1;
+    ctx.beginPath(); ctx.moveTo(120, y); ctx.lineTo(120 + (lang ? 16 : 9), y); ctx.stroke();
+    if (lang) {
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillText(_fpmNum(mm, 1), 116, y + 3);
+    }
+  }
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif';
+  ctx.fillText('Mikrometerskala in mm', 128, yTop - 8);
+
+  // Startmarke der Stoppuhr
+  if (_mil.uhrLauf) {
+    ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+    ctx.beginPath(); ctx.moveTo(120, Y(_mil.uhrY0)); ctx.lineTo(W - 20, Y(_mil.uhrY0)); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#22c55e'; ctx.font = '700 8px sans-serif';
+    ctx.fillText('Start', W - 46, Y(_mil.uhrY0) - 4);
+  }
+
+  // Das Tröpfchen – ein helles Streuscheibchen, nicht das Tröpfchen selbst
+  const T = _mil.tropfen;
+  if (T) {
+    const y = Y(_mil.y), x = 236;
+    const g = ctx.createRadialGradient(x, y, 0, x, y, 13);
+    g.addColorStop(0, 'rgba(255,255,255,.95)');
+    g.addColorStop(0.35, 'rgba(186,230,253,.55)');
+    g.addColorStop(1, 'rgba(186,230,253,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(x, y, 13, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 2 * Math.PI); ctx.fill();
+
+    // Bewegungsrichtung andeuten
+    const v = _milTropfenV();
+    if (Math.abs(v) > 6e-7) {
+      const auf = v > 0;
+      ctx.strokeStyle = auf ? '#38bdf8' : '#fbbf24'; ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(x + 26, y); ctx.lineTo(x + 26, y + (auf ? -16 : 16)); ctx.stroke();
+      ctx.fillStyle = auf ? '#38bdf8' : '#fbbf24';
+      ctx.beginPath();
+      const ye = y + (auf ? -16 : 16), s = auf ? -1 : 1;
+      ctx.moveTo(x + 26, ye); ctx.lineTo(x + 22, ye - s * 5); ctx.lineTo(x + 30, ye - s * 5);
+      ctx.closePath(); ctx.fill();
+    }
+  } else {
+    ctx.fillStyle = '#475569'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Blickfeld leer – Zerstäuber betätigen', cx, cy);
+    ctx.textAlign = 'left';
+  }
+  ctx.restore();
+
+  // Okularrand
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 8;
+  ctx.beginPath(); ctx.arc(cx, cy, R + 3, 0, 2 * Math.PI); ctx.stroke();
+
+  // Stoppuhr
+  ctx.fillStyle = _mil.uhrLauf ? '#22c55e' : '#94a3b8';
+  ctx.font = '700 15px ui-monospace, monospace'; ctx.textAlign = 'left';
+  ctx.fillText(_fpmNum(_mil.uhrT, 2) + ' s', 12, 22);
+  ctx.font = '700 10px sans-serif'; ctx.fillStyle = '#64748b';
+  ctx.textAlign = 'right';
+  ctx.fillText(_mil.feld ? 'Feld an · ' + Math.round(_mil.U) + ' V' : 'Feld aus', W - 12, 22);
+  ctx.textAlign = 'left';
+}
+
+function _milRenderAuf(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  const xL = 108, xR = 262, yO = 44, yU = 92;
+
+  // Platten mit Bohrung in der oberen
+  ctx.fillStyle = '#94a3b8';
+  ctx.fillRect(xL, yO - 6, 62, 6);
+  ctx.fillRect(xL + 80, yO - 6, xR - xL - 80, 6);
+  ctx.fillRect(xL, yU, xR - xL, 6);
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Bohrung', xL + 71, yO - 10);
+
+  // Zerstäuber
+  ctx.fillStyle = '#475569';
+  ctx.fillRect(xL + 56, 12, 30, 14);
+  ctx.beginPath(); ctx.moveTo(xL + 66, 26); ctx.lineTo(xL + 76, 26); ctx.lineTo(xL + 73, yO - 8);
+  ctx.lineTo(xL + 69, yO - 8); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Zerstäuber', xL + 52, 22);
+
+  // Tröpfchen zwischen den Platten
+  ctx.fillStyle = '#e0f2fe';
+  for (let i = 0; i < 5; i++) {
+    ctx.beginPath();
+    ctx.arc(xL + 30 + i * 28, yO + 14 + (i % 3) * 12, 1.8, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  // Lampe links
+  ctx.fillStyle = '#334155'; ctx.fillRect(18, yO + 8, 22, 30);
+  ctx.fillStyle = '#fde68a'; ctx.globalAlpha = 0.5;
+  ctx.beginPath(); ctx.moveTo(40, yO + 12); ctx.lineTo(xL, yO + 2);
+  ctx.lineTo(xL, yU - 2); ctx.lineTo(40, yO + 34); ctx.closePath(); ctx.fill();
+  ctx.globalAlpha = 1;
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Lampe', 29, yU + 18);
+
+  // Mikroskop rechts
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(xR + 12, yO + 10); ctx.lineTo(W - 30, yO + 2);
+  ctx.lineTo(W - 30, yU + 6); ctx.lineTo(xR + 12, yU - 2); ctx.closePath(); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Beobachtungs-', W - 55, yU + 18);
+  ctx.fillText('mikroskop', W - 55, yU + 28);
+
+  // Bemaßung des Plattenabstands
+  ctx.strokeStyle = '#0f766e'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(xL - 14, yO); ctx.lineTo(xL - 14, yU); ctx.stroke();
+  ctx.fillStyle = '#0f766e'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('d = ' + _fpmNum(_mil.d, 2) + ' mm', xL + 44, yU + 20);
+
+  // Polung
+  ctx.fillStyle = '#dc2626'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('+', xR + 4, yO - 1);
+  ctx.fillStyle = '#0284c7';
+  ctx.fillText('−', xR + 4, yU + 12);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Die Tröpfchen sind negativ geladen und werden nach oben gezogen.', 10, H - 8);
+}
+
+// ── Auswertungsdiagramm ────────────────────────────────
+const _MIL_PRESETS = [
+  { xl: 'Nummer der Messung', yl: 'q in 10⁻¹⁹ C',
+    x: (r, i) => i + 1, y: r => r.q / 1e-19,
+    keinFit: true, stufen: true,
+    note: 'Die Ladungen liegen nicht regellos verstreut, sondern auf waagerechten Stufen. Der Abstand zwischen zwei Stufen ist die gesuchte Elementarladung.',
+    typ: 'keine Funktion – ein Streudiagramm',
+    form: 'q = n · e   mit n = 1, 2, 3, …',
+    param: () => 'Stufenabstand e_Probe = ' + _fpmNum(_mil.eProbe, 3) + ' · 10⁻¹⁹ C',
+    term: () => _dspZahl(_mil.eProbe),
+    deutung: 'Die Reihenfolge der Messungen ist physikalisch bedeutungslos – wichtig ist allein, welche Werte überhaupt vorkommen und welche nicht. Zwischen den Stufen liegt nichts.' },
+
+  { xl: 'n (Ladungszahl)', yl: 'q in 10⁻¹⁹ C',
+    x: r => Math.round(r.q / (_mil.eProbe * 1e-19)), y: r => r.q / 1e-19,
+    origin: true,
+    note: 'Trägt man jede Ladung über ihrer Ladungszahl n auf, liegen alle Punkte auf einer Ursprungsgeraden. Ihre Steigung ist die Elementarladung.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)',
+    form: 'q(n) = e · n',
+    param: () => 'gesucht: die Steigung e',
+    term: () => _dspZahl(_mil.eProbe) + '*x',
+    deutung: 'Das n bekommst du nicht geschenkt – es folgt aus dem Probierwert e_Probe. Ist der falsch gewählt, werden die n falsch zugeordnet und die Punkte liegen nicht mehr auf einer Geraden. Genau daran erkennst du den richtigen Wert.' },
+
+  { xl: 'r³ in 10⁻¹⁸ m³', yl: 'q in 10⁻¹⁹ C',
+    x: r => r.r * r.r * r.r / 1e-18, y: r => r.q / 1e-19,
+    gegenprobe: true,
+    note: 'Gegenprobe: Hängt die Ladung von der Größe des Tröpfchens ab? Die Punkte streuen breit – und liegen bei jedem Radius auf denselben Stufen.',
+    typ: 'allenfalls ein schwacher Trend, kein Gesetz',
+    form: 'q = n · e   – unabhängig von r',
+    param: () => 'r³ ist proportional zur Masse des Tröpfchens',
+    term: () => _dspZahl(_mil.eProbe) + '*x',
+    deutung: 'Ein schwacher Trend nach oben ist zu sehen, aber er ist kein Naturgesetz, sondern eine Folge der Auswahl: Ein großes Tröpfchen mit nur einer Elementarladung ließe sich mit 600 V gar nicht zum Schweben bringen, es taucht in der Messreihe deshalb nie auf. Entscheidend ist etwas anderes: Bei jedem Radius kommen immer nur dieselben gestuften Ladungswerte vor. Die Ladung ist also keine Eigenschaft der Tröpfchengröße.' }
+];
+
+function _milDrawPlot() {
+  const cv = document.getElementById('milPlot');
+  if (!cv || !_mil) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = _MIL_PRESETS[_mil.preset];
+  const padL = 58, padR = 16, padT = 14, padB = 42;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const pts = _mil.rows.map((r, i) => ({ x: P.x(r, i), y: P.y(r, i), r }))
+    .filter(p => isFinite(p.x) && isFinite(p.y));
+  const xmax = Math.max(1e-9, pts.length ? Math.max(...pts.map(p => p.x)) * 1.12 : 10);
+  const ymax = Math.max(1e-9, pts.length ? Math.max(...pts.map(p => p.y)) * 1.15 : 14);
+
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+
+  const xt = _fpmTicks(xmax, 6);
+  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  xt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
+  });
+  const yt = _fpmTicks(ymax, 5);
+  yt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
+  });
+
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(P.xl, x1, y0 + 30);
+  ctx.save(); ctx.translate(14, y1 + 2); ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+
+  // Vielfachenlinien des Probierwerts
+  if (P.stufen) {
+    for (let n = 1; n * _mil.eProbe <= ymax; n++) {
+      const yv = n * _mil.eProbe;
+      ctx.strokeStyle = 'rgba(15,118,110,.35)'; ctx.lineWidth = 1; ctx.setLineDash([5, 4]);
+      ctx.beginPath(); ctx.moveTo(x0, Y(yv)); ctx.lineTo(x1, Y(yv)); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#0f766e'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+      ctx.fillText(n + '·e', x1 - 22, Y(yv) - 3);
+    }
+  }
+
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillText('Noch keine Messwerte – vermiss zuerst Tröpfchen in Station 2', (x0 + x1) / 2, (y0 + y1) / 2);
+    ctx.textAlign = 'left';
+    const fo = document.getElementById('milFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + P.note + '</div>';
+    _milRenderTeiler(); _milRenderFazit();
+    return;
+  }
+
+  if (_mil.fn) {
+    ctx.strokeStyle = '#db2777'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _mil.fn((px - x0) / (x1 - x0) * xmax); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv);
+      if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+
+  let fit = null;
+  if (!P.keinFit && pts.length >= 2) {
+    fit = P.origin ? _fpmFitOrigin(pts) : _fpmFitLinear(pts);
+    if (fit) {
+      ctx.strokeStyle = P.gegenprobe ? '#db2777' : '#0f766e'; ctx.lineWidth = 1.7;
+      ctx.beginPath();
+      ctx.moveTo(X(0), Y(fit.b || 0));
+      ctx.lineTo(X(xmax), Y(fit.k * xmax + (fit.b || 0)));
+      ctx.stroke();
+    }
+  }
+
+  // Messpunkte – Farbe nach Abstand vom nächsten Vielfachen des Probierwerts
+  pts.forEach(p => {
+    const nn = p.r.q / (_mil.eProbe * 1e-19);
+    const ab = Math.abs(nn - Math.round(nn));
+    ctx.fillStyle = ab < 0.12 ? '#0f766e' : ab < 0.25 ? '#f59e0b' : '#db2777';
+    ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke();
+  });
+
+  _milRenderFit(fit, P, pts.length);
+  _milRenderTeiler();
+  _milRenderFazit();
+}
+
+function _milRenderFit(fit, P, n) {
+  const el = document.getElementById('milFitBox'); if (!el) return;
+  if (P.keinFit) {
+    el.innerHTML = '<div class="fpm-note">' + P.note + '</div>';
+    return;
+  }
+  if (!fit) {
+    el.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte nötig.<br>' + P.note + '</div>';
+    return;
+  }
+  const e = fit.k * 1e-19;
+  const abw = Math.abs(e - _MIL_E) / _MIL_E * 100;
+  const cls = abw < 1 ? 'ok' : abw < 5 ? 'mid' : 'no';
+  let html = `<div class="fpm-fitline">
+     <span class="fpm-fitmeta">${n} Messwerte</span>
+     <span class="fpm-fiteq">y = ${_fpmNum(fit.k, 4)}·x${P.origin ? '' : (fit.b >= 0 ? ' + ' : ' − ') + _fpmNum(Math.abs(fit.b), 3)}</span>
+     <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 5)}</span>`;
+  if (!P.gegenprobe) {
+    html += `<span class="fpm-fiteq" style="color:#0f766e">e = ${_milExp(e, 4)} C</span>`;
+    if (_mil.reveal) html += `<span class="fpm-badge ${cls}">Sollwert 1,602 · 10⁻¹⁹ C · Abweichung ${_fpmNum(abw, 2)} %</span>`;
+  }
+  html += '</div>';
+  if (P.gegenprobe) {
+    html += `<div class="fpm-note" style="color:#b45309;border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">
+      <b>Vorsicht mit dieser Geraden.</b> R² liegt meist um 0,5 – die Punkte streuen viel zu breit für einen
+      echten Zusammenhang. Der schwache Anstieg entsteht dadurch, dass sich große Tröpfchen mit sehr
+      kleiner Ladung überhaupt nicht zum Schweben bringen lassen und deshalb in keiner Messreihe auftauchen.
+      Ein schöner Anlass, über Auswahleffekte in Messreihen zu sprechen.</div>`;
+  }
+  el.innerHTML = html + '<div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">' + P.note + '</div>';
+}
+
+// ── Probierwert und Teilbarkeit ────────────────────────
+function _milSetEProbe(v) {
+  _mil.eProbe = +v;
+  const el = document.getElementById('milEProbeLbl');
+  if (el) el.innerHTML = _fpmNum(+v, 3) + ' · 10⁻¹⁹ C';
+  _milRefreshTheorie();
+  _milDrawPlot();
+}
+// Mittlerer quadratischer Abstand der Quotienten q/e von ganzen Zahlen
+function _milGuete(e19) {
+  if (!_mil.rows.length) return NaN;
+  let s = 0;
+  _mil.rows.forEach(r => {
+    const x = r.q / (e19 * 1e-19);
+    const d = x - Math.round(x);
+    s += d * d;
+  });
+  return Math.sqrt(s / _mil.rows.length);
+}
+// Sucht den Probierwert mit der besten Teilbarkeit. Die Suche startet erst
+// bei 1,0 · 10⁻¹⁹ C: jeder genuegend kleine Wert teilt trivialerweise alles.
+function _milSuche() {
+  if (_mil.rows.length < 5) {
+    const t = document.getElementById('milTeiler');
+    if (t) t.innerHTML = '<div class="mil-teiler-warn">Für eine sinnvolle Suche brauchst du mindestens 5 vermessene Tröpfchen. Nimm weitere auf oder lade die Beispielmessreihe.</div>';
+    return;
+  }
+  let best = null;
+  for (let e = 1.000; e <= 3.000; e += 0.0005) {
+    const g = _milGuete(e);
+    if (best === null || g < best.g) best = { e, g };
+  }
+  const sl = document.getElementById('milEProbe');
+  if (sl) sl.value = String(Math.round(best.e * 1000) / 1000);
+  _milSetEProbe(Math.round(best.e * 1000) / 1000);
+}
+function _milRenderTeiler() {
+  const el = document.getElementById('milTeiler'); if (!el) return;
+  if (!_mil.rows.length) {
+    el.innerHTML = '<div class="fpm-note">Noch keine Messwerte zum Teilen.</div>';
+    return;
+  }
+  const g = _milGuete(_mil.eProbe);
+  const cls = g < 0.05 ? 'ok' : g < 0.15 ? 'mid' : 'no';
+  const chips = _mil.rows.slice(0, 24).map(r => {
+    const x = r.q / (_mil.eProbe * 1e-19);
+    const ab = Math.abs(x - Math.round(x));
+    return `<span class="mil-chip ${ab < 0.12 ? 'ok' : ab < 0.25 ? 'mid' : 'no'}"
+       title="q = ${_fpmNum(r.q / 1e-19, 3)} · 10⁻¹⁹ C">${_fpmNum(x, 2)}</span>`;
+  }).join('');
+  const kleinste = Math.min(..._mil.rows.map(r => r.q));
+  el.innerHTML =
+    `<div class="git-sch-kopf">q geteilt durch e<sub>Probe</sub> – wie nah an ganzen Zahlen?</div>
+     <div class="mil-chips">${chips}${_mil.rows.length > 24 ? '<span class="mil-chip">…</span>' : ''}</div>
+     <div class="mil-guete ${cls}">mittlere Abweichung von ganzen Zahlen: <b>${_fpmNum(g, 4)}</b>
+       ${g < 0.05 ? ' – das passt sehr gut' : g < 0.15 ? ' – geht in die richtige Richtung' : ' – so geht es nicht auf'}</div>
+     <div class="fpm-note">Die kleinste gemessene Ladung beträgt ${_fpmNum(kleinste / 1e-19, 3)} · 10⁻¹⁹ C.
+       Größer als dieser Wert kann e nicht sein. Nach unten hilft die Rechnung allein nicht weiter:
+       Auch die Hälfte oder ein Drittel des richtigen Wertes teilt alle Messwerte glatt.
+       Deshalb sucht man den <b>größten</b> Wert, der noch aufgeht.</div>`;
+}
+
+function _milRenderFazit() {
+  const el = document.getElementById('milFazit'); if (!el) return;
+  if (_mil.rows.length < 5) { el.innerHTML = ''; return; }
+  const pts = _mil.rows.map(r => ({ x: Math.round(r.q / (_mil.eProbe * 1e-19)), y: r.q / 1e-19 }))
+    .filter(p => p.x > 0);
+  const fit = pts.length >= 2 ? _fpmFitOrigin(pts) : null;
+  if (!fit) { el.innerHTML = ''; return; }
+  const nmax = Math.max(...pts.map(p => p.x));
+  el.innerHTML =
+    `<div class="git-sch-kopf">Was die Messreihe zeigt</div>
+     <div class="mil-fazit-text">
+       Aus ${_mil.rows.length} vermessenen Tröpfchen ergibt sich mit dem eingestellten Probierwert eine
+       Elementarladung von <b>${_milExp(fit.k * 1e-19, 4)} C</b> (R² = ${_fpmNum(fit.r2, 5)}).
+       Die größte vorkommende Ladungszahl ist n = ${nmax}; auf keinem Tröpfchen sitzt also mehr als eine
+       Handvoll Elektronen. Entscheidend ist nicht der Zahlenwert allein, sondern dass sich <b>überhaupt</b>
+       ein gemeinsamer Teiler finden lässt: Elektrische Ladung tritt nur in ganzzahligen Vielfachen einer
+       kleinsten Portion auf.
+     </div>`;
+}
+
+// ── Theoriefunktion ────────────────────────────────────
+function _milSetPreset(i) {
+  _mil.preset = i;
+  for (let k = 0; k < 3; k++) document.getElementById('milTab' + k)?.classList.toggle('on', k === i);
+  _milRefreshTheorie();
+  _milDrawPlot();
+}
+function _milTheorieFn() {
+  const term = _MIL_PRESETS[_mil.preset].term();
+  const inp = document.getElementById('milFn');
+  if (inp) inp.value = term;
+  _milSetFn(term);
+  _mil.fnAuto = true;
+  _milRenderTheorie(true);
+}
+function _milClearFn() {
+  const inp = document.getElementById('milFn');
+  if (inp) inp.value = '';
+  _milSetFn('');
+  _milRenderTheorie(false);
+}
+function _milRefreshTheorie() {
+  if (_mil.fnAuto) {
+    const term = _MIL_PRESETS[_mil.preset].term();
+    const inp = document.getElementById('milFn');
+    if (inp) inp.value = term;
+    _milSetFn(term);
+    _mil.fnAuto = true;
+  }
+  _milRenderTheorie(_mil.fnAuto);
+}
+function _milRenderTheorie(eingesetzt) {
+  const el = document.getElementById('milTheo'); if (!el) return;
+  const P = _MIL_PRESETS[_mil.preset];
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">${P.typ}</div>
+     <div class="fpm-theo-form">${P.form}</div>
+     <div class="fpm-theo-par">${P.param()}</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${P.term()}</div>` : ''}
+     <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+function _milSetFn(str) {
+  _mil.fnAuto = false;
+  const err = document.getElementById('milFnErr');
+  const v = (str || '').trim();
+  if (!v) { _mil.fn = null; if (err) err.textContent = ''; _milDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _mil.fn = f; if (err) err.textContent = '';
+  } catch (e) { _mil.fn = null; if (err) err.textContent = e.message; }
+  _milDrawPlot();
+}
+
+// ── Takt ───────────────────────────────────────────────
+function _milTakt(dt) {
+  if (!_mil) return;
+  _mil.t += dt;
+
+  // Station 1: der Wattebausch reagiert traege auf die Kraftdifferenz
+  if (_mil.station === 0) {
+    const a = _milWbA() / _MIL_G;          // normiert: 0 heisst Schweben
+    _mil.wbV = (_mil.wbV + a * dt * 1.2) * 0.90;
+    _mil.wbY = Math.max(0, Math.min(1, _mil.wbY + _mil.wbV * dt));
+    if (_mil.wbY <= 0 && _mil.wbV < 0) _mil.wbV = 0;
+    if (_mil.wbY >= 1 && _mil.wbV > 0) _mil.wbV = 0;
+  }
+
+  // Station 2: das Troepfchen bewegt sich mit seiner Endgeschwindigkeit
+  if (_mil.station === 1 && _mil.tropfen) {
+    const v = _milTropfenV() * 1000;                 // mm/s
+    _mil.y = _mil.y - v * dt;                        // y waechst nach unten
+    if (_mil.y > _MIL_SKALA) { _mil.y = _MIL_SKALA; }
+    if (_mil.y < 0) { _mil.y = 0; }
+    if (_mil.uhrLauf) {
+      _mil.uhrT += dt;
+      // Am Rand des Blickfelds endet die Messung von selbst
+      if (_mil.y >= _MIL_SKALA || _mil.y <= 0) _milUhr();
+    }
+  }
+}
+
+function _milRender() {
+  if (!_mil) return;
+  if (_mil.station === 0) {
+    const cv = document.getElementById('milWB');
+    if (cv) _milRenderWB(cv.getContext('2d'), cv);
+  } else if (_mil.station === 1) {
+    const a = document.getElementById('milMik');
+    if (a) _milRenderMik(a.getContext('2d'), a);
+    const b = document.getElementById('milAuf');
+    if (b) _milRenderAuf(b.getContext('2d'), b);
+    const u = document.getElementById('milUhrA');
+    if (u) u.textContent = _fpmNum(_mil.uhrT, 2);
+  }
+}
+
+// ── Zusätzliche Styles ─────────────────────────────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .mil-zustand { font-size: .78rem; color: #64748b; background: #f8fafc; border: 1px solid #e2e8f0;
+      border-radius: 9px; padding: 8px 11px; margin: 8px 0; line-height: 1.5; }
+    .mil-zustand.ok { background: #f0fdf4; border-color: #bbf7d0; color: #15803d; }
+    .mil-zustand.aus { background: #fffbeb; border-color: #fde68a; color: #b45309; }
+    .mil-schritt { display: flex; gap: 8px; align-items: flex-start; font-size: .78rem; color: #475569;
+      background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 8px 11px;
+      margin: 10px 0 6px; line-height: 1.5; }
+    .mil-schritt-n { flex: 0 0 20px; height: 20px; border-radius: 50%; background: #0f766e; color: #fff;
+      font-size: .72rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+    .mil-hilfe { display: none; font-size: .8rem; color: #475569; line-height: 1.6;
+      background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 9px; padding: 10px 13px; margin-top: 8px; }
+    .mil-hilfe b { color: #0f766e; }
+    .mil-teiler { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 9px 11px; margin-top: 10px; }
+    .mil-teiler-warn { font-size: .78rem; color: #b45309; }
+    .mil-chips { display: flex; flex-wrap: wrap; gap: 4px; margin: 7px 0; }
+    .mil-chip { font-size: .7rem; font-weight: 700; padding: 2px 6px; border-radius: 6px;
+      background: #f1f5f9; color: #64748b; font-variant-numeric: tabular-nums; }
+    .mil-chip.ok { background: #f0fdf4; color: #15803d; }
+    .mil-chip.mid { background: #fffbeb; color: #b45309; }
+    .mil-chip.no { background: #fef2f2; color: #b91c1c; }
+    .mil-guete { font-size: .78rem; color: #64748b; margin: 6px 0; }
+    .mil-guete b { font-variant-numeric: tabular-nums; }
+    .mil-guete.ok b { color: #15803d; }
+    .mil-guete.mid b { color: #b45309; }
+    .mil-guete.no b { color: #b91c1c; }
+    .mil-fazit { background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 9px;
+      padding: 10px 13px; margin-top: 12px; }
+    .mil-fazit-text { font-size: .8rem; color: #475569; line-height: 1.65; margin-top: 4px; }
+    .mil-fazit-text b { color: #0f766e; }
+    .mil-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
