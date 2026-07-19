@@ -2082,6 +2082,24 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('lsfTakt', 'lsfKeinChart');
     _pSim.start(dt => _lsfTakt(dt), () => _lsfRender(), []);
   },
+
+  // Schluesselexperiment 12 des KLP: das Entstehen sinusfoermiger
+  // Wechselspannungen, dazu der Erdinduktor von Gauss und Weber
+  'generator': modal => {
+    _genInit();
+    modal.innerHTML = _genHTML();
+    const erkl = document.getElementById('genErkl');
+    if (erkl) erkl.innerHTML = _genErklHTML();
+    _genSetStation(0);
+    _genSetZeitlupe(4);
+    _genSetEpoche(0);
+    _genRenderTable();
+    _genRenderTheorie(false);
+    _genUpdate();
+    _genDrawPlot();
+    _pSim = new PhysicsSimEngine('genTakt', 'genKeinChart');
+    _pSim.start(dt => _genTakt(dt), () => _genRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -16823,6 +16841,1396 @@ function _lsfRender() {
       border: 1px solid #e7dcc0; border-radius: 8px; padding: 9px 11px; margin-top: 9px;
       line-height: 1.6; }
     .lsf-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+// ═══════════════════════════════════════════════════════
+// DER GENERATOR
+// Schluesselexperiment 12 der NRW-Handreichung.
+// Kernkompetenz des KLP: das Entstehen sinusfoermiger Wechselspannungen in
+// Generatoren erlaeutern (E2, E6). Dazu UF3/UF4 (die beiden Induktions-
+// ursachen), E2/E5 (Oszillogramme auswerten), K2 (Recherche) und K3.
+// ═══════════════════════════════════════════════════════
+
+const _GEN_MU0 = 4e-7 * Math.PI;
+const _GEN_K   = 8 / (5 * Math.sqrt(5));   // Helmholtz-Vorfaktor ≈ 0,7155
+const _GEN_HN  = 130;                      // Windungen je Feldspule
+const _GEN_HR  = 0.150;                    // Spulenradius in m
+
+// Die drehbare Spule des Grundversuchs. Die Handreichung nennt ausdruecklich
+// n = 8000 Windungen und – beim Erdinduktor – A = 42 cm².
+const _GEN_N0 = 8000;
+const _GEN_A0 = 42e-4;
+
+// Erdinduktor nach Gauss und Weber
+const _GEN_BH = 20.3e-6;      // Horizontalkomponente des Erdfeldes in T
+const _GEN_BV = 43.5e-6;      // Vertikalkomponente
+const _GEN_VERST = 10;        // Verstaerkungsfaktor des Messverstaerkers
+
+let _gen = null;
+
+function _genInit() {
+  _gen = {
+    station: 0,
+    // Station 1
+    f: 2.0, hI: 2.0, n: _GEN_N0, A: _GEN_A0,
+    laeuft: true, t: 0, zeitlupe: 1, schatten: true, spur: [],
+    // Station 2
+    schritt: 0, phiGrad: 0,
+    // Station 3
+    rows: [], nextId: 1, preset: 0, fn: null, fnAuto: false, reveal: false,
+    // Station 4
+    eT: 0.5, eLaeuft: true, et: 0, eSpur: [], eLeseU: '', eLeseT: '', eGeprueft: null,
+    eVerstaerkt: true,
+    // Station 5
+    epoche: 0
+  };
+}
+
+// ── Feld und Spule ─────────────────────────────────────
+function _genB(I) { return _GEN_K * _GEN_MU0 * _GEN_HN * I / _GEN_HR; }
+function _genOmega(f) { return 2 * Math.PI * f; }
+
+// Der Drehwinkel zwischen Flaechennormale und Feldrichtung
+function _genPhi(t, f) { return _genOmega(f) * t; }
+// Die effektiv vom Feld durchsetzte Flaeche – die Projektion der Spulenflaeche.
+// Genau diese macht die Beleuchtung laengs der Feldlinien als Schatten sichtbar.
+function _genAeff(t, f, A) { return A * Math.cos(_genPhi(t, f)); }
+// Magnetischer Fluss durch eine Windung
+function _genFluss(t, f, A, B) { return B * _genAeff(t, f, A); }
+// Scheitelwert: Û = n · B · A · ω
+function _genUmax(n, B, A, f) { return n * B * A * _genOmega(f); }
+// Und der zeitliche Verlauf. Aus U = −n·dΦ/dt mit Φ = B·A·cos(ωt) folgt
+// U = n·B·A·ω·sin(ωt) – der Sinus entsteht durch das Ableiten des Kosinus.
+function _genU(t, n, B, A, f) { return _genUmax(n, B, A, f) * Math.sin(_genPhi(t, f)); }
+// Effektivwert einer sinusfoermigen Wechselspannung
+function _genUeff(Umax) { return Umax / Math.SQRT2; }
+
+// ── Erdinduktor ────────────────────────────────────────
+// Die Spule dreht sich um eine senkrechte Achse. Dann steht ihre Normale
+// immer waagerecht – und nur die WAAGERECHTE Feldkomponente kann den
+// Fluss ueberhaupt beeinflussen. Die senkrechte steht dauerhaft in der
+// Spulenebene und traegt nichts bei.
+function _genErdUmax(T) { return _GEN_N0 * _GEN_BH * _GEN_A0 * (2 * Math.PI / T); }
+function _genErdU(t, T) { return _genErdUmax(T) * Math.sin(2 * Math.PI / T * t); }
+function _genErdAnzeige(t, T) {
+  return _genErdU(t, T) * (_gen.eVerstaerkt ? _GEN_VERST : 1);
+}
+// Rueckweg: aus der abgelesenen Amplitude und Periodendauer auf B_H schliessen
+function _genBHAus(UanzeigeV, T, verstaerkt) {
+  const U = UanzeigeV / (verstaerkt ? _GEN_VERST : 1);
+  return U / (_GEN_N0 * _GEN_A0 * (2 * Math.PI / T));
+}
+// Inklination aus beiden Komponenten
+function _genInklination() { return Math.atan2(_GEN_BV, _GEN_BH) * 180 / Math.PI; }
+function _genBGesamt() { return Math.sqrt(_GEN_BH * _GEN_BH + _GEN_BV * _GEN_BV); }
+
+// ── Historische Marken ─────────────────────────────────
+const _GEN_EPOCHEN = [
+  { j: '1831', n: 'Faraday entdeckt die Induktion',
+    t: 'Michael Faraday zeigt mit seiner Ringkernanordnung, dass eine <b>Änderung</b> des magnetischen Flusses eine Spannung erzeugt. Er formuliert dabei keine einzige Gleichung – er denkt in Feldlinien. Damit ist die Grundlage für jeden Generator gelegt, aber noch keiner gebaut.' },
+  { j: '1832', n: 'Pixii baut die erste Maschine',
+    t: 'Hippolyte Pixii dreht mit einer Handkurbel einen Hufeisenmagneten vor zwei feststehenden Spulen. Das Ergebnis ist eine <b>Wechselspannung</b> – die damals als Nachteil galt, weil man mit Gleichstrom umzugehen wusste. Pixii baute deshalb einen Kommutator ein, um sie gleichzurichten.' },
+  { j: '1866', n: 'Siemens und das dynamoelektrische Prinzip',
+    t: 'Werner von Siemens erkennt, dass man auf Dauermagnete ganz verzichten kann: Der <b>Restmagnetismus</b> des Eisens genügt, um einen ersten schwachen Strom zu erzeugen, mit dem sich das Feld selbst verstärkt. Erst dadurch werden Generatoren groß und leistungsfähig – der Beginn der Elektrotechnik als Industrie.' },
+  { j: 'heute', n: 'Drehstrom im Kraftwerk',
+    t: 'Praktisch die gesamte elektrische Energie wird heute in Generatoren erzeugt, die mechanische in elektrische Energie umwandeln – mit einem <b>Wirkungsgrad von häufig über 90 %</b>. Ob Dampf, Wind oder Wasser die Turbine antreibt, ändert daran nichts. Einphasige Wechselstromgeneratoren wie im Schulversuch spielen dabei kaum noch eine Rolle; im Kraftwerk arbeitet man mit <b>Drehstrom</b>, also drei um je 120° versetzten Wicklungen.' }
+];
+
+// ── Zahlformat für die Theoriefunktion ─────────────────
+// Die gemeinsame Hilfsfunktion _dspZahl rundet auf sechs NACHKOMMAstellen.
+// Die Steigungen sind hier teilweise sehr klein – bei n → Û etwa 8·10⁻⁵ –,
+// da bleiben davon kaum gültige Ziffern übrig, im Extremfall gar keine.
+// Deshalb hier ein Formatierer mit sechs GÜLTIGEN Ziffern. Er darf nicht in
+// die Exponentialschreibweise rutschen, die der Termparser nicht versteht.
+function _genZahl(v) {
+  if (!isFinite(v) || v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const dez = Math.max(0, Math.min(20, 5 - ex));
+  const s = v.toFixed(dez);
+  return s.indexOf('.') >= 0 ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
+}
+
+// ── Oberfläche ─────────────────────────────────────────
+function _genHTML() {
+  const stationen = ['1 · Der Grundversuch', '2 · Warum ein Sinus?',
+                     '3 · Wovon hängt Û ab?', '4 · Erdinduktor',
+                     '5 · Vom Modell zum Kraftwerk']
+    .map((s, i) => `<button class="fpm-tab${i === _gen.station ? ' on' : ''}" id="genSt${i}" onclick="_genSetStation(${i})">${s}</button>`).join('');
+
+  const presets = ['f → Û', 'B → Û', 'A → Û', 'n → Û'].map((p, i) =>
+    `<button class="fpm-tab${i === _gen.preset ? ' on' : ''}" id="genTab${i}" onclick="_genSetPreset(${i})">${p}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim gen-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">⚡ Der Generator: das Schlüsselexperiment</h3>
+    <canvas id="genTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="genS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="genAufbau" width="440" height="280" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Drehbare Spule im Helmholtzfeld, beleuchtet längs der Feldlinien</div>
+          <canvas id="genOszi" width="440" height="250" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Oben die Projektionsfläche, unten die Induktionsspannung</div>
+        </div>
+        <div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="genLaufBtn" onclick="_genToggle()">⏸ Anhalten</button>
+            <button class="sim-btn" onclick="_genReset()">↺ Zurücksetzen</button>
+          </div>
+          <div class="osz-gruppe">
+            <div class="osz-gruppe-k">Ablauf</div>
+            <div class="osz-zeile"><span>Zeitlupe</span>
+              <span class="osz-seg">
+                <button class="osz-segb" id="genZl1" onclick="_genSetZeitlupe(1)">1 : 1</button>
+                <button class="osz-segb" id="genZl4" onclick="_genSetZeitlupe(4)">1 : 4</button>
+                <button class="osz-segb" id="genZl12" onclick="_genSetZeitlupe(12)">1 : 12</button>
+              </span></div>
+            <label class="fpm-check"><input type="checkbox" id="genSchatten" checked
+              onchange="_genSetSchatten(this.checked)"> Projektionsfläche als Schatten zeigen</label>
+          </div>
+          <div class="osz-gruppe">
+            <div class="osz-gruppe-k">Generator einstellen</div>
+            <div class="osz-zeile"><span>Drehfrequenz f</span>
+              <input type="range" id="genF" min="0.2" max="8" step="0.1" value="2"
+                oninput="_genSetF(this.value)"><b id="genFLbl">2,0 Hz</b></div>
+            <div class="osz-zeile"><span>Spulenstrom I</span>
+              <input type="range" id="genI" min="0.2" max="3" step="0.05" value="2"
+                oninput="_genSetI(this.value)"><b id="genILbl">2,00 A</b></div>
+            <div class="osz-zeile"><span>Windungen n</span>
+              <input type="range" id="genN" min="500" max="12000" step="100" value="8000"
+                oninput="_genSetN(this.value)"><b id="genNLbl">8000</b></div>
+            <div class="osz-zeile"><span>Fläche A</span>
+              <input type="range" id="genA" min="10" max="80" step="1" value="42"
+                oninput="_genSetA(this.value)"><b id="genALbl">42 cm²</b></div>
+          </div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Drehwinkel φ</span><span class="fpm-ro-v" id="genPhiA">—</span><span class="fpm-ro-u">°</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Magnetfeld B</span><span class="fpm-ro-v" id="genBA">—</span><span class="fpm-ro-u">mT</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">wirksame Fläche A′</span><span class="fpm-ro-v" id="genAeffA">—</span><span class="fpm-ro-u">cm²</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Spannung U</span><span class="fpm-ro-v" id="genUA">—</span><span class="fpm-ro-u">V</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Scheitelwert Û</span><span class="fpm-ro-v" id="genUmaxA">—</span><span class="fpm-ro-u">V</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Effektivwert</span><span class="fpm-ro-v" id="genUeffA">—</span><span class="fpm-ro-u">V</span></div>
+          </div>
+          <div class="gen-lage" id="genLage"></div>
+          <div class="ebr-rechnung" id="genRechnung"></div>
+        </div>
+      </div>
+      <div class="gen-k3" id="genK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="genS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="genNormale" width="440" height="250" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Die Flächennormale und ihr Winkel zum Feld</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Drehwinkel φ: <b id="genPhiLbl">0°</b></span>
+            <input type="range" id="genPhiSl" min="0" max="360" step="1" value="0"
+              oninput="_genSetPhiGrad(this.value)" style="width:100%;accent-color:#7c3aed">
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_genSetPhiGrad(0)">φ = 0°</button>
+            <button class="sim-btn" onclick="_genSetPhiGrad(90)">φ = 90°</button>
+            <button class="sim-btn" onclick="_genSetPhiGrad(180)">φ = 180°</button>
+            <button class="sim-btn" onclick="_genSetPhiGrad(270)">φ = 270°</button>
+          </div>
+          <div class="gen-phase" id="genPhase"></div>
+        </div>
+        <div>
+          <div class="fpm-label">Die Herleitung Schritt für Schritt</div>
+          <div class="lsk-schritte" id="genSchritte"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_genSchritt(-1)">◀ zurück</button>
+            <button class="sim-btn primary" onclick="_genSchritt(1)">weiter ▶</button>
+            <button class="sim-btn" onclick="_genSchritt(99)">alle zeigen</button>
+          </div>
+          <div class="gen-tabelle" id="genTabelle"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="genS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <div class="fpm-label">Einstellen und Messwert übernehmen</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Drehfrequenz f</span>
+              <input type="range" id="genF2" min="0.2" max="8" step="0.1" value="2"
+                oninput="_genSetF(this.value)"><b id="genFLbl2">2,0 Hz</b></div>
+            <div class="osz-zeile"><span>Spulenstrom I</span>
+              <input type="range" id="genI2" min="0.2" max="3" step="0.05" value="2"
+                oninput="_genSetI(this.value)"><b id="genILbl2">2,00 A</b></div>
+            <div class="osz-zeile"><span>Windungen n</span>
+              <input type="range" id="genN2" min="500" max="12000" step="100" value="8000"
+                oninput="_genSetN(this.value)"><b id="genNLbl2">8000</b></div>
+            <div class="osz-zeile"><span>Fläche A</span>
+              <input type="range" id="genA2" min="10" max="80" step="1" value="42"
+                oninput="_genSetA(this.value)"><b id="genALbl2">42 cm²</b></div>
+          </div>
+          <div class="ebr-rechnung" id="genMessRechnung"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_genTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_genDemo()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_genClear()">🗑 leeren</button>
+          </div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Nr.</th><th>f (Hz)</th><th>B (mT)</th><th>A (cm²)</th><th>n</th><th>Û (V)</th><th></th></tr></thead>
+              <tbody id="genTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="genEmpty">Noch keine Messwerte.<br>Immer nur eine Größe verändern.</div>
+          </div>
+        </div>
+        <div>
+          <div class="fpm-tabs">${presets}</div>
+          <canvas id="genPlot" width="440" height="300" class="phys-chart-cv"></canvas>
+          <div class="fpm-fit" id="genFitBox"></div>
+          <input type="text" id="genFn" class="fpm-input" placeholder="z. B. 0,33*x" spellcheck="false"
+            oninput="_genSetFn(this.value)" style="margin-top:8px">
+          <div class="fpm-err" id="genFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_genTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_genClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="genTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_genSet('reveal',this.checked)">
+            Sollwert anzeigen</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="genS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="genErde" width="440" height="250" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Die Spule dreht sich um eine senkrechte Achse im Erdfeld</div>
+          <canvas id="genErdOszi" width="440" height="230" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Gemessene Spannung über der Zeit</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Umlaufdauer T</span>
+              <input type="range" id="genET" min="0.25" max="1.2" step="0.01" value="0.5"
+                oninput="_genSetET(this.value)"><b id="genETLbl">0,50 s</b></div>
+            <label class="fpm-check"><input type="checkbox" id="genVerst" checked
+              onchange="_genSetVerst(this.checked)"> Messverstärker × ${_GEN_VERST} eingeschaltet</label>
+          </div>
+        </div>
+        <div>
+          <div class="gen-erd-auf" id="genErdAufgabe"></div>
+          <div class="fpm-label">Am Diagramm ablesen</div>
+          <div class="osz-lese">
+            <div class="osz-lese-z"><span>Scheitelwert Û =</span>
+              <input type="text" class="fpm-input osz-inp" id="genLeseU" placeholder="?"
+                spellcheck="false" oninput="_genSetLese('eLeseU',this.value)"><span>mV</span></div>
+            <div class="osz-lese-z"><span>Periodendauer T =</span>
+              <input type="text" class="fpm-input osz-inp" id="genLeseT" placeholder="?"
+                spellcheck="false" oninput="_genSetLese('eLeseT',this.value)"><span>s</span></div>
+          </div>
+          <div class="ebr-rechnung" id="genErdRechnung"></div>
+          <div class="sim-btn-row">
+            <button class="sim-btn" onclick="_genErdPruefen()">✓ Ergebnis prüfen</button>
+          </div>
+          <div class="lsk-zustand" id="genErdPruef"></div>
+          <div class="gen-erd-vert" id="genErdVertikal"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="genS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="genKraftwerk" width="440" height="260" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Von der Turbine zur Steckdose</div>
+          <div class="gen-zeit" id="genZeitleiste"></div>
+        </div>
+        <div>
+          <div class="gen-hist" id="genHist"></div>
+          <div class="fpm-label" style="margin-top:10px">Wohin es von hier aus weitergeht</div>
+          <div class="gen-aus" id="genAusblick"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="genErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>A′ = A · cos(ω·t)</b> &nbsp;|&nbsp; <b>U = −n · Φ̇ = −n · B · Ȧ′</b>
+      &nbsp;|&nbsp; <b>U(t) = Û · sin(ω·t)</b> &nbsp;|&nbsp; <b>Û = n · B · A · ω</b>
+    </p>
+  </div>`;
+}
+
+function _genErklHTML() {
+  return `<div class="dsp-erkl-kopf">Warum ausgerechnet ein Sinus?</div>
+    <div class="dsp-erkl-text">
+      Dreht sich eine Spule gleichmäßig in einem homogenen Magnetfeld, so entsteht an ihren Enden
+      eine <b>sinusförmige Wechselspannung</b>. Das ist keine Willkür der Natur, sondern folgt in
+      drei Schritten aus dem Induktionsgesetz. <b>Erstens</b>: Das Feld bleibt konstant, es wird ja
+      nicht verändert – also ist Ḃ = 0, und von den beiden Induktionsursachen bleibt nur die
+      <b>zeitlich veränderliche wirksame Fläche</b> übrig. <b>Zweitens</b>: Die wirksame Fläche ist
+      die <i>Projektion</i> der Spulenfläche auf die Ebene senkrecht zum Feld, also
+      A′ = A · cos φ. <b>Drittens</b>: Bei gleichmäßiger Drehung ist φ = ω·t, und beim Ableiten des
+      Kosinus nach der Zeit entsteht – Kettenregel – ein Sinus, multipliziert mit ω. Damit ist
+      U(t) = n·B·A·ω·sin(ω·t). Der Sinus stammt also nicht aus der Geometrie, sondern <b>aus dem
+      Ableiten</b>.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Der Schattenwurf</div>
+    <div class="dsp-erkl-text">
+      Der Aufbau der Handreichung hat einen schönen Kunstgriff: Die drehbare Spule wird <b>längs
+      der Feldlinien beleuchtet</b>. Ihr Schatten ist dann genau die Projektionsfläche A′ – man
+      sieht die Größe, um die es geht, unmittelbar. Und weil daneben das Oszilloskop mitläuft,
+      lässt sich beides direkt vergleichen. Das Ergebnis überrascht viele: Die Spannung ist
+      <b>null</b>, wenn der Schatten am <b>größten</b> ist, und <b>größt</b>, wenn der Schatten zu
+      einem Strich zusammengeschrumpft ist. Denn nicht die Fläche selbst erzeugt die Spannung,
+      sondern ihre <b>Änderungsrate</b> – und die ist gerade dort am größten, wo die Fläche durch
+      null geht.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die Phasenlage</div>
+    <div class="dsp-erkl-text">
+      Mathematisch steckt dahinter die Beziehung sin φ = cos(φ + π/2): Spannung und Fläche sind um
+      eine <b>Viertelperiode</b> gegeneinander verschoben. Wer den Versuch in Zeitlupe betrachtet,
+      kann das an den Extrem- und Nullstellen direkt ablesen – und hat damit einen experimentellen
+      Beleg dafür, dass die Ableitung eines Kosinus ein Sinus ist.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Wovon der Scheitelwert abhängt</div>
+    <div class="dsp-erkl-text">
+      In Û = n · B · A · ω stecken vier Größen, und alle gehen <b>proportional</b> ein: doppelte
+      Windungszahl, doppelte Spannung; doppeltes Feld, doppelte Spannung; und so fort. Besonders
+      wichtig ist die Kreisfrequenz ω = 2π·f: Ein Generator liefert nicht nur eine höhere
+      <i>Frequenz</i>, wenn man ihn schneller dreht, sondern auch eine höhere <b>Spannung</b>.
+      Deshalb müssen Kraftwerksgeneratoren sehr genau auf ihrer Drehzahl gehalten werden – die
+      Netzfrequenz von 50 Hz ist keine Einstellung, sondern eine <b>Drehzahl</b>.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Aufbauhinweise aus der Handreichung</div>
+    <div class="dsp-erkl-text">
+      Für das Helmholtzfeld sollte ein <b>stabilisiertes Netzteil</b> verwendet werden – schwankt
+      der Spulenstrom, so ändert sich auch B, und man misst eine unerwünschte Induktionsspannung
+      aus der falschen Ursache. Auf die zulässige Höchststromstärke der Feldspulen ist zu achten.
+      Das Kabel zum Abgreifen der Induktionsspannung sollte <b>geschirmt</b> sein, sonst fängt man
+      sich Störungen ein. Und wenn die drehbare Spule zu wenige Windungen hat, braucht es einen
+      Messverstärker; die Handreichung verwendet eine Spule mit n = 8000.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Der Erdinduktor von Gauß und Weber</div>
+    <div class="dsp-erkl-text">
+      Dasselbe Prinzip lässt sich benutzen, um das <b>Erdmagnetfeld</b> zu vermessen – so haben es
+      Carl Friedrich Gauß und Wilhelm Weber vor über 150 Jahren getan. Webers Erdinduktor war eine
+      große Spule, die im Erdfeld um 180° gedreht wurde. Dreht man eine Spule mit n = 8000 und
+      A = 42 cm² um eine <b>senkrechte</b> Achse, so steht ihre Flächennormale immer waagerecht.
+      Dann kann nur die <b>waagerechte</b> Komponente B<sub>H</sub> des Erdfeldes den Fluss
+      beeinflussen – die senkrechte liegt dauerhaft in der Spulenebene und trägt gar nichts bei.
+      Aus dem gemessenen Scheitelwert und der Umlaufdauer folgt B<sub>H</sub> = Û/(n·A·ω). Wer
+      dabei den Verstärkungsfaktor vergisst, landet um genau diesen Faktor daneben.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum das technisch zählt</div>
+    <div class="dsp-erkl-text">
+      Praktisch die gesamte elektrische Energie unserer Gesellschaft entsteht in Generatoren –
+      gleich, ob eine Turbine von Dampf, Wind oder Wasser angetrieben wird. Die Umwandlung von
+      mechanischer in elektrische Energie gelingt dabei mit einem <b>Wirkungsgrad von häufig über
+      90 %</b>, was für eine Energiewandlung außergewöhnlich gut ist. Der einphasige
+      Wechselstromgenerator des Schulversuchs ist dafür heute allerdings nur noch ein Modell: Im
+      Kraftwerk arbeitet man mit <b>Drehstrom</b>, also drei um je 120° versetzten Wicklungen.
+      Am Modell lassen sich die Grundlagen aber ohne großen mathematischen Aufwand verstehen.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Beim Aufbau auf die zulässige Stromstärke der Feldspulen achten
+      und ein stabilisiertes Netzteil verwenden.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _genSetStation(i) {
+  _gen.station = i;
+  for (let k = 0; k < 5; k++) {
+    document.getElementById('genSt' + k)?.classList.toggle('on', k === i);
+    const d = document.getElementById('genS' + k);
+    if (d) d.style.display = k === i ? 'block' : 'none';
+  }
+  _genUpdate();
+  if (i === 2) _genDrawPlot();
+}
+function _genSet(key, val) { _gen[key] = val; _genDrawPlot(); }
+
+// ── Station 1 ──────────────────────────────────────────
+function _genToggle() {
+  _gen.laeuft = !_gen.laeuft;
+  const b = document.getElementById('genLaufBtn');
+  if (b) b.textContent = _gen.laeuft ? '⏸ Anhalten' : '▶ Weiterdrehen';
+  _genUpdate();
+}
+function _genReset() {
+  _gen.t = 0; _gen.spur = [];
+  _genUpdate();
+}
+function _genSetZeitlupe(z) {
+  _gen.zeitlupe = z;
+  [1, 4, 12].forEach(k => document.getElementById('genZl' + k)?.classList.toggle('on', k === z));
+  _genUpdate();
+}
+function _genSetSchatten(v) { _gen.schatten = !!v; }
+function _genSetF(v) { _gen.f = Math.max(0.2, Math.min(8, +v)); _genUpdate(); }
+function _genSetI(v) { _gen.hI = Math.max(0.2, Math.min(3, +v)); _genUpdate(); }
+function _genSetN(v) { _gen.n = Math.max(500, Math.min(12000, +v)); _genUpdate(); }
+function _genSetA(v) { _gen.A = Math.max(10, Math.min(80, +v)) * 1e-4; _genUpdate(); }
+
+function _genUpdate() {
+  if (!_gen) return;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  const s = _gen;
+  const B = _genB(s.hI);
+  const phi = _genPhi(s.t, s.f);
+  const grad = ((phi * 180 / Math.PI) % 360 + 360) % 360;
+  const Aeff = _genAeff(s.t, s.f, s.A);
+  const U = _genU(s.t, s.n, B, s.A, s.f);
+  const Um = _genUmax(s.n, B, s.A, s.f);
+
+  ['', '2'].forEach(function (suf) {
+    set('genFLbl' + suf, _fpmNum(s.f, 1) + ' Hz');
+    set('genILbl' + suf, _fpmNum(s.hI, 2) + ' A');
+    set('genNLbl' + suf, String(Math.round(s.n)));
+    set('genALbl' + suf, _fpmNum(s.A * 1e4, 0) + ' cm²');
+  });
+  set('genPhiA', _fpmNum(grad, 0));
+  set('genBA', _fpmNum(B * 1000, 3));
+  set('genAeffA', _fpmNum(Aeff * 1e4, 1));
+  set('genUA', _fpmNum(U, 3));
+  set('genUmaxA', _fpmNum(Um, 3));
+  set('genUeffA', _fpmNum(_genUeff(Um), 3));
+  [1, 4, 12].forEach(k => document.getElementById('genZl' + k)?.classList.toggle('on', k === s.zeitlupe));
+
+  // Die Phasenlage in Worten – das ist die Kernbeobachtung
+  const el = document.getElementById('genLage');
+  if (el) {
+    const c = Math.abs(Math.cos(phi)), si = Math.abs(Math.sin(phi));
+    if (c > 0.94) {
+      el.className = 'gen-lage flach';
+      el.innerHTML = '<b>Die Spulenfläche steht senkrecht zum Feld.</b> Der Schatten ist jetzt am '
+        + '<b>größten</b>, der Fluss maximal – und die Spannung ist gerade <b>null</b>. '
+        + 'Denn hier ändert sich die Projektionsfläche für einen Augenblick gar nicht.';
+    } else if (si > 0.94) {
+      el.className = 'gen-lage kant';
+      el.innerHTML = '<b>Die Spule steht auf der Kante, parallel zum Feld.</b> Der Schatten ist zu '
+        + 'einem <b>Strich</b> geschrumpft, der Fluss ist null – und die Spannung ist gerade am '
+        + '<b>größten</b>. Hier ändert sich die Projektionsfläche am schnellsten.';
+    } else {
+      el.className = 'gen-lage';
+      el.innerHTML = 'Dazwischen: Der Schatten schrumpft oder wächst gerade, und die Spannung '
+        + 'liegt zwischen null und ihrem Scheitelwert. Achte auf die beiden Extremlagen – dort '
+        + 'wird der Zusammenhang am deutlichsten.';
+    }
+  }
+
+  const r = document.getElementById('genRechnung');
+  if (r) {
+    r.innerHTML = `
+      <div class="pho-rz"><span class="pho-rz-t">Feld der Helmholtzspulen</span>
+        <span class="pho-rz-f">B = 0,7155·µ₀·n<sub>H</sub>·I/R</span>
+        <span class="pho-rz-v">${_fpmNum(B * 1000, 3)} mT</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">Kreisfrequenz</span>
+        <span class="pho-rz-f">ω = 2π·f</span>
+        <span class="pho-rz-v">${_fpmNum(_genOmega(s.f), 2)} 1/s</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">wirksame Fläche gerade jetzt</span>
+        <span class="pho-rz-f">A′ = A · cos(ω·t)</span>
+        <span class="pho-rz-v">${_fpmNum(Aeff * 1e4, 1)} cm²</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Scheitelwert der Spannung</span>
+        <span class="pho-rz-f">Û = n · B · A · ω</span>
+        <span class="pho-rz-v">${_fpmNum(Um, 3)} V</span></div>
+      <div class="fpm-note">Der Effektivwert einer Sinusspannung ist Û/√2 =
+        ${_fpmNum(_genUeff(Um), 3)} V – das ist die Spannung, die ein Vielfachmessgerät anzeigen
+        würde und die an einem Widerstand dieselbe Leistung umsetzt wie eine Gleichspannung
+        gleicher Höhe.</div>`;
+  }
+
+  _genRenderK3();
+  _genRenderHerleitung();
+  _genRenderMess();
+  _genRenderErde();
+  _genRenderHist();
+}
+
+function _genRenderK3() {
+  const el = document.getElementById('genK3'); if (!el) return;
+  const B = _genB(_gen.hI);
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du diesen Versuch jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Wir wollen verstehen, warum ein Generator ausgerechnet eine <b>sinusförmige</b>
+        Wechselspannung liefert – und wovon deren Höhe abhängt.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Eine Spule mit ${Math.round(_gen.n)} Windungen und ${_fpmNum(_gen.A * 1e4, 0)} cm² Fläche
+        dreht sich im homogenen Feld eines Helmholtzspulenpaars. Schleifkontakte greifen die
+        Spannung ab, ein Messwerterfassungssystem zeichnet sie auf. Eine Lampe beleuchtet die
+        Spule längs der Feldlinien.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Die Spule gleichmäßig drehen und gleichzeitig den Schatten und die aufgezeichnete Spannung
+        beobachten.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        Es entsteht eine Wechselspannung mit dem Scheitelwert ${_fpmNum(_genUmax(_gen.n, B, _gen.A, _gen.f), 3)} V.
+        Sie ist <b>null</b>, wenn der Schatten am größten ist, und am größten, wenn der Schatten
+        zum Strich geschrumpft ist.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Das Feld ist konstant, also zählt allein die Änderung der <b>wirksamen Fläche</b>
+        A′ = A·cos(ω·t). Ihre Ableitung ist ein Sinus – daher die Kurvenform.</div>
+    </div>`;
+}
+
+// ── Station 2 ──────────────────────────────────────────
+function _genSetPhiGrad(v) {
+  _gen.phiGrad = ((+v % 360) + 360) % 360;
+  const sl = document.getElementById('genPhiSl'); if (sl) sl.value = String(_gen.phiGrad);
+  _genRenderHerleitung();
+}
+function _genSchritt(d) {
+  _gen.schritt = d === 99 ? 4 : Math.max(0, Math.min(4, _gen.schritt + d));
+  _genRenderHerleitung();
+}
+const _GEN_SCHRITTE = [
+  { k: 'Was sich hier ändert – und was nicht',
+    t: 'Das Magnetfeld der Helmholtzspulen wird während des Versuchs <b>nicht verändert</b>. Also ist Ḃ = 0. Von den beiden Induktionsursachen bleibt damit nur eine übrig: die zeitlich veränderliche wirksame Fläche.',
+    f: 'U<sub>ind</sub> = −n · (Ȧ′·B + A′·Ḃ) = −n · B · Ȧ′' },
+  { k: 'Die wirksame Fläche ist eine Projektion',
+    t: 'Wirksam ist nur der Anteil der Spulenfläche, der vom Feld <b>senkrecht</b> durchsetzt wird. Kippt man die Spule um den Winkel φ, so erscheint eine ihrer Seiten verkürzt: b′ = b·cos φ. Genau diese Projektion macht der Schattenwurf sichtbar.',
+    f: 'A′ = a · b · cos φ = A · cos φ' },
+  { k: 'Gleichmäßige Drehung',
+    t: 'Die Spule wird mit konstanter Winkelgeschwindigkeit gedreht. Dann wächst der Drehwinkel gleichmäßig mit der Zeit.',
+    f: 'φ = ω · t   mit   ω = 2π · f' },
+  { k: 'Einsetzen und ableiten',
+    t: 'Jetzt steht alles beisammen. Beim Ableiten des Kosinus nach der Zeit entsteht nach der <b>Kettenregel</b> ein Sinus – und der Faktor ω fällt dabei mit heraus. Das ist der eigentliche Grund für die Kurvenform.',
+    f: 'U = −n · B · d(A·cos(ω·t))/dt = n · B · A · ω · sin(ω·t)' },
+  { k: 'Das Ergebnis',
+    t: 'Die induzierte Spannung ist sinusförmig, ihr Scheitelwert ist das Produkt der vier Größen Windungszahl, Feldstärke, Fläche und Kreisfrequenz. Alle vier gehen <b>proportional</b> ein.',
+    f: 'U(t) = Û · sin(ω·t)   mit   <b>Û = n · B · A · ω</b>' }
+];
+function _genRenderHerleitung() {
+  const el = document.getElementById('genSchritte');
+  if (el) {
+    el.innerHTML = _GEN_SCHRITTE.map((sc, i) => {
+      const aktiv = i <= _gen.schritt;
+      return `<div class="lsk-schritt${aktiv ? ' an' : ''}${i === _gen.schritt ? ' jetzt' : ''}">
+        <span class="lsk-schritt-n">${i + 1}</span>
+        <div><div class="lsk-schritt-k">${sc.k}</div>
+        ${aktiv ? '<div class="lsk-schritt-t">' + sc.t + '</div>' : ''}
+        ${aktiv ? '<div class="lsk-schritt-f">' + sc.f + '</div>' : ''}</div></div>`;
+    }).join('');
+  }
+  const lbl = document.getElementById('genPhiLbl');
+  if (lbl) lbl.textContent = Math.round(_gen.phiGrad) + '°';
+
+  const ph = _gen.phiGrad * Math.PI / 180;
+  const p = document.getElementById('genPhase');
+  if (p) {
+    const c = Math.cos(ph), si = Math.sin(ph);
+    p.innerHTML = `<div class="git-sch-kopf">Fläche und Spannung an dieser Stelle</div>
+      <div class="gen-phase-z"><span>Projektionsfläche</span>
+        <b>A′ / A = cos φ = ${_fpmNum(c, 3)}</b></div>
+      <div class="gen-phase-z"><span>Spannung</span>
+        <b>U / Û = sin φ = ${_fpmNum(si, 3)}</b></div>
+      <div class="gen-phase-h">${Math.abs(c) > 0.99
+        ? 'Fläche <b>maximal</b>, Spannung <b>null</b>.'
+        : Math.abs(si) > 0.99
+        ? 'Fläche <b>null</b>, Spannung <b>maximal</b>.'
+        : 'Beide Größen liegen dazwischen.'}</div>
+      <div class="fpm-note">Die beiden Kurven sind um eine <b>Viertelperiode</b> gegeneinander
+        verschoben: sin φ = cos(φ + 90°). Genau das kann man im Zeitlupenvideo des Versuchs
+        beobachten, indem man die Extrem- und Nullstellen von Schatten und Spannungskurve
+        miteinander vergleicht.</div>`;
+  }
+  const t = document.getElementById('genTabelle');
+  if (t) {
+    const zeilen = [0, 90, 180, 270, 360].map(function (g) {
+      const r = g * Math.PI / 180;
+      const jetzt = Math.abs(((_gen.phiGrad - g) % 360 + 360) % 360) < 8;
+      return `<tr class="${jetzt ? 'hell' : ''}"><td>${g}°</td>
+        <td>${_fpmNum(Math.cos(r), 2)}</td>
+        <td>${Math.abs(Math.cos(r)) > 0.99 ? '<b>maximal</b>' : Math.abs(Math.cos(r)) < 0.01 ? 'null' : '—'}</td>
+        <td>${_fpmNum(Math.sin(r), 2)}</td>
+        <td>${Math.abs(Math.sin(r)) > 0.99 ? '<b>maximal</b>' : Math.abs(Math.sin(r)) < 0.01 ? 'null' : '—'}</td></tr>`;
+    }).join('');
+    t.innerHTML = `<div class="git-sch-kopf">Die vier ausgezeichneten Lagen</div>
+      <table class="sim-table thr-tab">
+        <thead><tr><th>φ</th><th>cos φ</th><th>Fläche A′</th><th>sin φ</th><th>Spannung U</th></tr></thead>
+        <tbody>${zeilen}</tbody></table>
+      <div class="fpm-note">Wo die eine Größe einen Extremwert hat, hat die andere eine
+        Nullstelle – und umgekehrt. Das ist der experimentelle Beleg dafür, dass die Ableitung
+        eines Kosinus ein Sinus ist.</div>`;
+  }
+}
+
+// ── Station 3: Messreihe ───────────────────────────────
+function _genTake() {
+  const B = _genB(_gen.hI);
+  _gen.rows.push({ id: _gen.nextId++, f: _gen.f, I: _gen.hI, B, A: _gen.A, n: _gen.n,
+                   U: _genUmax(_gen.n, B, _gen.A, _gen.f) });
+  _genRenderTable(); _genDrawPlot();
+}
+function _genDelRow(id) { _gen.rows = _gen.rows.filter(r => r.id !== id); _genRenderTable(); _genDrawPlot(); }
+function _genClear() {
+  if (_gen.rows.length && !confirm('Alle ' + _gen.rows.length + ' Messwerte löschen?')) return;
+  _gen.rows = []; _genRenderTable(); _genDrawPlot();
+}
+function _genDemo() {
+  const nimm = (f, I, A, n) => {
+    const B = _genB(I);
+    _gen.rows.push({ id: _gen.nextId++, f, I, B, A, n, U: _genUmax(n, B, A, f) });
+  };
+  [0.5, 1, 2, 3, 4, 5, 6].forEach(f => nimm(f, 2.0, _GEN_A0, _GEN_N0));
+  [0.5, 1.0, 1.5, 2.0, 2.5, 3.0].forEach(I => nimm(2.0, I, _GEN_A0, _GEN_N0));
+  [15, 25, 42, 55, 70, 80].forEach(a => nimm(2.0, 2.0, a * 1e-4, _GEN_N0));
+  [1000, 2500, 4000, 8000, 10000, 12000].forEach(n => nimm(2.0, 2.0, _GEN_A0, n));
+  _genRenderTable(); _genDrawPlot();
+}
+function _genRenderTable() {
+  const tb = document.getElementById('genTbody'); if (!tb) return;
+  const leer = document.getElementById('genEmpty');
+  if (leer) leer.style.display = _gen.rows.length ? 'none' : 'block';
+  tb.innerHTML = _gen.rows.map((r, i) =>
+    `<tr><td>${i + 1}</td><td>${_fpmNum(r.f, 1)}</td><td>${_fpmNum(r.B * 1000, 3)}</td>
+       <td>${_fpmNum(r.A * 1e4, 0)}</td><td>${Math.round(r.n)}</td>
+       <td><b>${_fpmNum(r.U, 3)}</b></td>
+       <td class="fpm-del" onclick="_genDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _genRenderMess() {
+  const el = document.getElementById('genMessRechnung'); if (!el) return;
+  const B = _genB(_gen.hI);
+  const Um = _genUmax(_gen.n, B, _gen.A, _gen.f);
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Kreisfrequenz</span>
+      <span class="pho-rz-f">ω = 2π·f</span><span class="pho-rz-v">${_fpmNum(_genOmega(_gen.f), 2)} 1/s</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Magnetfeld</span>
+      <span class="pho-rz-f">B</span><span class="pho-rz-v">${_fpmNum(B * 1000, 3)} mT</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Scheitelwert</span>
+      <span class="pho-rz-f">Û = n · B · A · ω</span><span class="pho-rz-v">${_fpmNum(Um, 3)} V</span></div>
+    <div class="fpm-note">Verändere <b>immer nur eine</b> der vier Größen und halte die anderen
+      fest – anders lässt sich keine der vier Proportionalitäten belegen.</div>`;
+}
+
+const _GEN_PRESETS = [
+  { xl: 'Drehfrequenz f in Hz', yl: 'Scheitelwert Û in V',
+    x: r => r.f, y: r => r.U,
+    fest: r => Math.abs(r.I - _gen.hI) < 1e-9 && Math.abs(r.A - _gen.A) < 1e-12 && r.n === _gen.n,
+    k: () => _gen.n * _genB(_gen.hI) * _gen.A * 2 * Math.PI, ktxt: 'n · B · A · 2π',
+    note: 'Nur Messwerte mit demselben Feld, derselben Fläche und Windungszahl gehören auf diese Gerade.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'Û = (n·B·A·2π) · f',
+    deutung: 'Wegen ω = 2π·f wächst der Scheitelwert proportional zur Drehfrequenz. Das ist der praktisch wichtigste Zusammenhang: Ein Generator liefert beim schnelleren Drehen nicht nur eine höhere Frequenz, sondern auch eine höhere Spannung. Deshalb muss die Drehzahl im Kraftwerk sehr genau gehalten werden.' },
+  { xl: 'Magnetfeld B in mT', yl: 'Scheitelwert Û in V',
+    x: r => r.B * 1000, y: r => r.U,
+    fest: r => Math.abs(r.f - _gen.f) < 1e-9 && Math.abs(r.A - _gen.A) < 1e-12 && r.n === _gen.n,
+    k: () => _gen.n * _gen.A * _genOmega(_gen.f) / 1000, ktxt: 'n · A · ω',
+    note: 'Nur Messwerte mit derselben Drehfrequenz, Fläche und Windungszahl gehören auf diese Gerade.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'Û = (n·A·ω) · B',
+    deutung: 'Das Feld verändert man über den Strom durch die Helmholtzspulen. Wichtig ist dabei ein stabilisiertes Netzteil: Schwankt der Strom, so ändert sich B mit der Zeit – und man misst eine zusätzliche Induktionsspannung aus der falschen Ursache.' },
+  { xl: 'Spulenfläche A in cm²', yl: 'Scheitelwert Û in V',
+    x: r => r.A * 1e4, y: r => r.U,
+    fest: r => Math.abs(r.f - _gen.f) < 1e-9 && Math.abs(r.I - _gen.hI) < 1e-9 && r.n === _gen.n,
+    k: () => _gen.n * _genB(_gen.hI) * _genOmega(_gen.f) * 1e-4, ktxt: 'n · B · ω',
+    note: 'Nur Messwerte mit derselben Drehfrequenz, demselben Feld und derselben Windungszahl gehören auf diese Gerade.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'Û = (n·B·ω) · A',
+    deutung: 'Je größer die Spulenfläche, desto mehr Fluss wird umgeschlossen und desto größer ist seine Änderungsrate. Diese Proportionalität lässt sich nur prüfen, wenn man Spulen verschiedener Geometrie zur Verfügung hat – die Handreichung nennt das ausdrücklich als Möglichkeit.' },
+  { xl: 'Windungszahl n', yl: 'Scheitelwert Û in V',
+    x: r => r.n, y: r => r.U,
+    fest: r => Math.abs(r.f - _gen.f) < 1e-9 && Math.abs(r.I - _gen.hI) < 1e-9 && Math.abs(r.A - _gen.A) < 1e-12,
+    k: () => _genB(_gen.hI) * _gen.A * _genOmega(_gen.f), ktxt: 'B · A · ω',
+    note: 'Nur Messwerte mit derselben Drehfrequenz, demselben Feld und derselben Fläche gehören auf diese Gerade.',
+    typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'Û = (B·A·ω) · n',
+    deutung: 'Jede Windung liefert denselben Beitrag, und alle liegen in Reihe – deshalb addieren sich ihre Spannungen. Genau darum verwendet die Handreichung eine Spule mit 8000 Windungen: So wird die Spannung ohne Messverstärker gut messbar.' }
+];
+function _genSetPreset(i) {
+  _gen.preset = i;
+  for (let k = 0; k < 4; k++) document.getElementById('genTab' + k)?.classList.toggle('on', k === i);
+  if (_gen.fnAuto) _genTheorieFn(); else _genRenderTheorie(false);
+  _genDrawPlot();
+}
+function _genTheorieFn() {
+  const term = _genZahl(_GEN_PRESETS[_gen.preset].k()) + '*x';
+  const inp = document.getElementById('genFn'); if (inp) inp.value = term;
+  _genSetFn(term); _gen.fnAuto = true; _genRenderTheorie(true);
+}
+function _genClearFn() {
+  const inp = document.getElementById('genFn'); if (inp) inp.value = '';
+  _genSetFn(''); _genRenderTheorie(false);
+}
+function _genRenderTheorie(eingesetzt) {
+  const el = document.getElementById('genTheo'); if (!el) return;
+  const P = _GEN_PRESETS[_gen.preset];
+  el.innerHTML = `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+    <div class="fpm-theo-typ">${P.typ}</div>
+    <div class="fpm-theo-form">${P.form}</div>
+    <div class="fpm-theo-par">gesucht: die Steigung ${P.ktxt}</div>
+    ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${_genZahl(P.k())}*x</div>` : ''}
+    <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+function _genSetFn(str) {
+  _gen.fnAuto = false;
+  const err = document.getElementById('genFnErr');
+  const v = (str || '').trim();
+  if (!v) { _gen.fn = null; if (err) err.textContent = ''; _genDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _gen.fn = f; if (err) err.textContent = '';
+  } catch (e) { _gen.fn = null; if (err) err.textContent = e.message; }
+  _genDrawPlot();
+}
+function _genDrawPlot() {
+  const cv = document.getElementById('genPlot');
+  if (!cv || !_gen) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = _GEN_PRESETS[_gen.preset];
+  const padL = 58, padR = 12, padT = 12, padB = 38;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const alle = _gen.rows.map(r => ({ x: P.x(r), y: P.y(r), passt: P.fest(r) }))
+    .filter(p => isFinite(p.x) && isFinite(p.y));
+  const pts = alle.filter(p => p.passt);
+  const xmax = Math.max(1e-9, alle.length ? Math.max(...alle.map(p => p.x)) * 1.12 : 1);
+  const ymax = Math.max(1e-9, alle.length ? Math.max(...alle.map(p => p.y)) * 1.15 : 1);
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+
+  const xt = _fpmTicks(xmax, 5);
+  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  xt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 13);
+  });
+  const yt = _fpmTicks(ymax, 4);
+  yt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(P.xl, x1, y0 + 27);
+  ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText(P.yl, 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+
+  if (!alle.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2);
+    ctx.textAlign = 'left';
+    const fo = document.getElementById('genFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + P.note + '</div>';
+    return;
+  }
+  if (_gen.fn) {
+    ctx.strokeStyle = '#db2777'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    let beg = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _gen.fn((px - x0) / (x1 - x0) * xmax); } catch (e) { yv = NaN; }
+      if (!isFinite(yv)) { beg = false; continue; }
+      const py = Y(yv);
+      if (py < y1 - 30 || py > y0 + 30) { beg = false; continue; }
+      beg ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), beg = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  let fit = null;
+  if (pts.length >= 2) {
+    fit = _fpmFitOrigin(pts);
+    if (fit) {
+      ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.7;
+      ctx.beginPath(); ctx.moveTo(X(0), Y(0)); ctx.lineTo(X(xmax), Y(fit.k * xmax)); ctx.stroke();
+    }
+  }
+  alle.forEach(p => {
+    ctx.fillStyle = p.passt ? '#7c3aed' : '#e2e8f0';
+    ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), p.passt ? 4 : 3, 0, 2 * Math.PI); ctx.fill();
+    if (p.passt) { ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke(); }
+  });
+
+  const fo = document.getElementById('genFitBox');
+  if (fo) {
+    const soll = P.k();
+    if (!fit) {
+      fo.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte nötig, bei denen die '
+        + 'übrigen Größen <b>gleich</b> sind.<br>' + P.note + '</div>';
+    } else {
+      const abw = Math.abs(fit.k - soll) / Math.abs(soll) * 100;
+      const cls = abw < 1 ? 'ok' : abw < 5 ? 'mid' : 'no';
+      fo.innerHTML = `<div class="fpm-fitline">
+        <span class="fpm-fitmeta">${pts.length} passende Messwerte${
+          alle.length > pts.length ? ', ' + (alle.length - pts.length) + ' andere blass' : ''}</span>
+        <span class="fpm-fiteq">y = ${_fpmNum(fit.k, 5)}·x</span>
+        <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 5)}</span>
+        <span class="fpm-fiteq" style="color:#5b21b6">Steigung = ${P.ktxt} = ${_fpmNum(soll, 5)}</span>
+        ${_gen.reveal ? `<span class="fpm-badge ${cls}">Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+      </div><div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">${P.note}</div>`;
+    }
+  }
+}
+
+// ── Station 4: Erdinduktor ─────────────────────────────
+function _genSetET(v) {
+  _gen.eT = Math.max(0.25, Math.min(1.2, +v));
+  const el = document.getElementById('genETLbl');
+  if (el) el.textContent = _fpmNum(_gen.eT, 2) + ' s';
+  _gen.eSpur = []; _gen.et = 0; _gen.eGeprueft = null;
+  _genRenderErde();
+}
+function _genSetVerst(v) { _gen.eVerstaerkt = !!v; _gen.eSpur = []; _gen.et = 0; _genRenderErde(); }
+function _genSetLese(feld, v) { _gen[feld] = v; _genRenderErde(); }
+function _genErdLeseAus() {
+  const u = parseFloat(String(_gen.eLeseU).replace(',', '.'));
+  const t = parseFloat(String(_gen.eLeseT).replace(',', '.'));
+  const r = {};
+  if (isFinite(u) && u > 0) r.Uanzeige = u / 1000;
+  if (isFinite(t) && t > 0) { r.T = t; r.omega = 2 * Math.PI / t; }
+  if (r.Uanzeige !== undefined && r.T !== undefined) {
+    r.U = r.Uanzeige / (_gen.eVerstaerkt ? _GEN_VERST : 1);
+    r.BH = _genBHAus(r.Uanzeige, r.T, _gen.eVerstaerkt);
+  }
+  return r;
+}
+function _genErdPruefen() {
+  const r = _genErdLeseAus();
+  _gen.eGeprueft = r.BH !== undefined
+    ? { BH: r.BH, abw: Math.abs(r.BH - _GEN_BH) / _GEN_BH * 100 } : { BH: NaN };
+  _genRenderErde();
+}
+function _genRenderErde() {
+  const a = document.getElementById('genErdAufgabe');
+  if (a) {
+    a.innerHTML = `<div class="git-sch-kopf">Das Erdmagnetfeld messen – nach Gauß und Weber</div>
+      <div class="gen-erd-t">
+        Eine Spule mit n = ${_GEN_N0} Windungen und A = ${_fpmNum(_GEN_A0 * 1e4, 0)} cm² wird von
+        einem Motor um eine <b>senkrechte</b> Achse gedreht. Ihre Flächennormale bleibt dabei
+        immer waagerecht – deshalb kann nur die <b>waagerechte</b> Komponente
+        B<sub>H</sub> des Erdfeldes den Fluss beeinflussen. Die senkrechte Komponente liegt
+        dauerhaft in der Spulenebene und trägt gar nichts bei.
+      </div>
+      <div class="gen-erd-t" style="margin-top:6px">
+        Lies aus dem Diagramm den Scheitelwert und die Periodendauer ab und berechne daraus
+        B<sub>H</sub>. <b>Achte auf den Messverstärker</b> – die angezeigte Spannung ist um den
+        Faktor ${_GEN_VERST} zu groß.
+      </div>`;
+  }
+  const el = document.getElementById('genErdRechnung');
+  if (el) {
+    const r = _genErdLeseAus();
+    if (r.BH === undefined) {
+      el.innerHTML = '<div class="fpm-note">Trage Scheitelwert und Periodendauer ein. Aus '
+        + 'Û = n·B<sub>H</sub>·A·ω folgt umgestellt B<sub>H</sub> = Û/(n·A·ω).</div>';
+    } else {
+      el.innerHTML = `
+        <div class="pho-rz"><span class="pho-rz-t">abgelesener Scheitelwert</span>
+          <span class="pho-rz-f">Anzeige</span>
+          <span class="pho-rz-v">${_fpmNum(r.Uanzeige * 1000, 2)} mV</span></div>
+        <div class="pho-rz"><span class="pho-rz-t">${_gen.eVerstaerkt
+          ? 'geteilt durch die Verstärkung' : 'ohne Verstärker – unverändert'}</span>
+          <span class="pho-rz-f">Û = Anzeige / ${_gen.eVerstaerkt ? _GEN_VERST : 1}</span>
+          <span class="pho-rz-v">${_fpmNum(r.U * 1000, 3)} mV</span></div>
+        <div class="pho-rz"><span class="pho-rz-t">Kreisfrequenz</span>
+          <span class="pho-rz-f">ω = 2π/T</span>
+          <span class="pho-rz-v">${_fpmNum(r.omega, 2)} 1/s</span></div>
+        <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">waagerechte Feldkomponente</span>
+          <span class="pho-rz-f">B<sub>H</sub> = Û / (n·A·ω)</span>
+          <span class="pho-rz-v">${_fpmNum(r.BH * 1e6, 2)} µT</span></div>`;
+    }
+  }
+  const pr = document.getElementById('genErdPruef');
+  if (pr) {
+    const g = _gen.eGeprueft;
+    if (!g) { pr.className = 'lsk-zustand'; pr.innerHTML = 'Trage deine Ablesung ein und prüfe sie.'; }
+    else if (!isFinite(g.BH)) { pr.className = 'lsk-zustand no'; pr.innerHTML = 'Es fehlt noch eine Angabe.'; }
+    else {
+      const gut = g.abw < 10;
+      const faktor10 = g.abw > 700;
+      pr.className = 'lsk-zustand ' + (gut ? 'ok' : 'no');
+      pr.innerHTML = (gut ? '<b>Das passt.</b> ' : '<b>Da stimmt etwas nicht.</b> ')
+        + 'Der Sollwert ist B<sub>H</sub> = ' + _fpmNum(_GEN_BH * 1e6, 1)
+        + ' µT, du erhältst ' + _fpmNum(g.BH * 1e6, 1) + ' µT – '
+        + _fpmNum(g.abw, 1) + ' % daneben.'
+        + (faktor10 ? ' Das sieht nach dem <b>Verstärkungsfaktor ' + _GEN_VERST
+          + '</b> aus: Die angezeigte Spannung muss erst durch ihn geteilt werden.' : '')
+        + (gut ? ' Zum Vergleich: Das gesamte Erdfeld beträgt hier rund '
+          + _fpmNum(_genBGesamt() * 1e6, 0) + ' µT.' : '');
+    }
+  }
+  const v = document.getElementById('genErdVertikal');
+  if (v) {
+    v.innerHTML = `<div class="git-sch-kopf">Und die senkrechte Komponente?</div>
+      <div class="gen-erd-t">
+        Die Handreichung stellt genau diese Anschlussfrage. Die Antwort ist naheliegend: Man
+        <b>kippt die Drehachse um 90°</b>, sodass sie waagerecht liegt. Dann steht die
+        Flächennormale immer senkrecht, und nur noch die <b>Vertikalkomponente</b>
+        B<sub>V</sub> beeinflusst den Fluss. Aus beiden Messungen zusammen erhält man das
+        gesamte Erdfeld und seine Richtung:
+      </div>
+      <div class="gen-erd-z"><span>Betrag</span>
+        <b>B = √(B<sub>H</sub>² + B<sub>V</sub>²) = ${_fpmNum(_genBGesamt() * 1e6, 1)} µT</b></div>
+      <div class="gen-erd-z"><span>Inklination</span>
+        <b>tan α = B<sub>V</sub>/B<sub>H</sub> → α = ${_fpmNum(_genInklination(), 1)}°</b></div>
+      <div class="fpm-note">Der Inklinationswinkel gibt an, wie steil die Feldlinien in den Boden
+        eintauchen – in Mitteleuropa recht steil. Deshalb ist die senkrechte Komponente hier
+        deutlich größer als die waagerechte, obwohl eine Kompassnadel nur die waagerechte anzeigt.</div>`;
+  }
+}
+
+// ── Station 5 ──────────────────────────────────────────
+function _genSetEpoche(i) {
+  _gen.epoche = Math.max(0, Math.min(_GEN_EPOCHEN.length - 1, i));
+  _genRenderHist();
+}
+function _genRenderHist() {
+  const z = document.getElementById('genZeitleiste');
+  if (z) {
+    z.innerHTML = `<div class="git-sch-kopf">Vier Schritte bis zur Steckdose</div>
+      <div class="gen-zeit-reihe">${_GEN_EPOCHEN.map((e, i) =>
+        `<button class="gen-zeit-p${i === _gen.epoche ? ' on' : ''}" onclick="_genSetEpoche(${i})">
+           <span>${e.j}</span>${e.n}</button>`).join('')}</div>`;
+  }
+  const h = document.getElementById('genHist');
+  if (h) {
+    const e = _GEN_EPOCHEN[_gen.epoche];
+    h.innerHTML = `<div class="gen-hist-j">${e.j}</div>
+      <div class="gen-hist-n">${e.n}</div>
+      <div class="gen-hist-t">${e.t}</div>
+      <div class="fpm-note">Die Handreichung schlägt die „Historische Entwicklung der
+        Generatortechnik" ausdrücklich als Rechercheaufgabe vor – die Sammlung des Deutschen
+        Museums zur Dynamomaschine ist dafür ein guter Ausgangspunkt.</div>`;
+  }
+  const a = document.getElementById('genAusblick');
+  if (a) {
+    a.innerHTML = `<div class="gen-aus-z"><b>Gleichstromgenerator</b> Ein <i>Kommutator</i>
+        – ein geteilter Schleifring – polt die Spule bei jedem Nulldurchgang um. Aus der
+        Wechselspannung wird dadurch eine pulsierende Gleichspannung.</div>
+      <div class="gen-aus-z"><b>Drehstrom</b> Drei um je 120° versetzte Wicklungen liefern drei
+        Wechselspannungen mit derselben Verschiebung. So arbeitet jedes Kraftwerk – und so
+        entsteht ein Drehfeld, mit dem sich Motoren antreiben lassen.</div>
+      <div class="gen-aus-z"><b>Phasenlage und Wechselstromwiderstände</b> Spulen und
+        Kondensatoren verschieben Strom und Spannung gegeneinander. Daraus folgt der Begriff der
+        <i>Blindleistung</i> – und die Frage, welche Leistung im Wechselstromkreis tatsächlich
+        umgesetzt wird.</div>
+      <div class="fpm-note">Alle drei stehen in der Handreichung als fakultative Vertiefungen –
+        sie gehören nicht zur Obligatorik des Grundkurses, eignen sich aber gut für Facharbeiten.</div>`;
+  }
+}
+
+// ── Zeichnungen ────────────────────────────────────────
+function _genRenderAufbau(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const cx = 210, cy = 118;
+  const phi = _genPhi(_gen.t, _gen.f);
+
+  // Helmholtzspulen von der Seite
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = 8;
+  [-96, 96].forEach(dx => {
+    ctx.beginPath(); ctx.moveTo(cx + dx, cy - 76); ctx.lineTo(cx + dx, cy + 76); ctx.stroke();
+  });
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Helmholtzspulen', cx, 16);
+  // Feldlinien
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  for (let i = -3; i <= 3; i++) {
+    const y = cy + i * 22;
+    ctx.beginPath(); ctx.moveTo(cx - 90, y); ctx.lineTo(cx + 90, y); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx + 84, y - 3); ctx.lineTo(cx + 90, y); ctx.lineTo(cx + 84, y + 3); ctx.stroke();
+  }
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('B', cx + 94, cy - 62);
+
+  // Die drehbare Spule, in Aufsicht als Ellipse mit der Breite A·|cos φ|
+  const halbBreit = Math.abs(Math.cos(phi)) * 46 + 2;
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.ellipse(cx, cy, halbBreit, 44, 0, 0, 2 * Math.PI); ctx.stroke();
+  // Drehachse
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(cx, cy - 62); ctx.lineTo(cx, cy + 62); ctx.stroke();
+  // Flaechennormale
+  const nx = Math.cos(phi), nl = 40;
+  ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + nx * nl, cy); ctx.stroke();
+  ctx.fillStyle = '#16a34a';
+  const sg = nx >= 0 ? 1 : -1;
+  ctx.beginPath();
+  ctx.moveTo(cx + nx * nl + sg * 7, cy);
+  ctx.lineTo(cx + nx * nl, cy - 4); ctx.lineTo(cx + nx * nl, cy + 4);
+  ctx.closePath(); ctx.fill();
+  ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('n⃗', cx + nx * nl / 2, cy - 7);
+
+  // Lampe und Schattenwurf
+  if (_gen.schatten) {
+    ctx.fillStyle = '#fde68a'; ctx.strokeStyle = '#d97706'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(20, cy, 11, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Lampe', 20, cy + 24);
+    // Der Schatten auf einem Schirm rechts
+    const sx = W - 26;
+    ctx.fillStyle = '#e2e8f0'; ctx.fillRect(sx - 4, cy - 62, 8, 124);
+    const sh = Math.abs(Math.cos(phi)) * 44;
+    ctx.fillStyle = 'rgba(88,28,135,0.55)';
+    ctx.fillRect(sx - 3, cy - sh, 6, 2 * sh);
+    ctx.fillStyle = '#5b21b6'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText('Schatten = A′', sx - 10, cy - 66);
+    ctx.fillText(_fpmNum(_genAeff(_gen.t, _gen.f, _gen.A) * 1e4, 1) + ' cm²', sx - 10, cy + 76);
+  }
+
+  // Schleifkontakte
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(cx - 6, cy + 62); ctx.lineTo(cx - 6, H - 20); ctx.lineTo(cx - 60, H - 20);
+  ctx.moveTo(cx + 6, cy + 62); ctx.lineTo(cx + 6, H - 12); ctx.lineTo(cx - 60, H - 12);
+  ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Schleifkontakte', cx + 12, H - 14);
+  ctx.textAlign = 'left';
+}
+
+function _genRenderOszi(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const x0 = 46, x1 = W - 12;
+  const spanne = 3 / Math.max(0.2, _gen.f);   // etwa drei Perioden
+  const B = _genB(_gen.hI);
+  const Um = Math.max(1e-12, _genUmax(_gen.n, B, _gen.A, _gen.f));
+
+  const band = (yo, yu, farbe, fn, name, einheit, max) => {
+    const my = (yo + yu) / 2;
+    ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0, my); ctx.lineTo(x1, my); ctx.stroke();
+    ctx.strokeStyle = '#cbd5e1';
+    ctx.beginPath(); ctx.moveTo(x0, yo); ctx.lineTo(x0, yu); ctx.stroke();
+    ctx.strokeStyle = farbe; ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    for (let px = 0; px <= x1 - x0; px++) {
+      const t = _gen.t - spanne + px / (x1 - x0) * spanne;
+      const y = my - fn(t) / max * (my - yo - 3);
+      px ? ctx.lineTo(x0 + px, y) : ctx.moveTo(x0 + px, y);
+    }
+    ctx.stroke();
+    // Marke fuer den aktuellen Wert
+    ctx.fillStyle = farbe;
+    const yj = my - fn(_gen.t) / max * (my - yo - 3);
+    ctx.beginPath(); ctx.arc(x1, yj, 3.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(name, x0 + 3, yo + 10);
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(_fpmNum(max, 2) + ' ' + einheit, x0 - 4, yo + 10);
+    ctx.fillText('0', x0 - 4, my + 3);
+    ctx.fillText('−' + _fpmNum(max, 2), x0 - 4, yu - 2);
+  };
+  band(14, 108, '#5b21b6', t => _genAeff(t, _gen.f, _gen.A) * 1e4,
+       'Projektionsfläche A′ = A·cos(ω·t)', 'cm²', _gen.A * 1e4);
+  band(128, 222, '#0369a1', t => _genU(t, _gen.n, B, _gen.A, _gen.f),
+       'Induktionsspannung U = Û·sin(ω·t)', 'V', Um);
+
+  // Die Viertelperiode zwischen den Kurven markieren
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(x1, 14); ctx.lineTo(x1, 222); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('um eine Viertelperiode gegeneinander verschoben', (x0 + x1) / 2, 120);
+  ctx.textAlign = 'left';
+}
+
+function _genRenderNormale(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const cx = 150, cy = 120;
+  const phi = _gen.phiGrad * Math.PI / 180;
+
+  // Feld
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  for (let i = -3; i <= 3; i++) {
+    const y = cy + i * 24;
+    ctx.beginPath(); ctx.moveTo(20, y); ctx.lineTo(280, y); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(274, y - 3); ctx.lineTo(280, y); ctx.lineTo(274, y + 3); ctx.stroke();
+  }
+  ctx.fillStyle = '#64748b'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('B', 284, cy - 66);
+
+  // Die Spulenflaeche als Ellipse
+  const halb = Math.abs(Math.cos(phi)) * 52 + 2;
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.ellipse(cx, cy, halb, 50, 0, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = 'rgba(124,58,237,0.12)'; ctx.fill();
+
+  // Normale
+  const nl = 62, nx = Math.cos(phi), ny = -Math.sin(phi) * 0.35;
+  ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2.4;
+  ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + nx * nl, cy + ny * nl); ctx.stroke();
+  ctx.fillStyle = '#16a34a';
+  const ex = cx + nx * nl, ey = cy + ny * nl;
+  const l = Math.hypot(nx, ny) || 1;
+  ctx.beginPath();
+  ctx.moveTo(ex + nx / l * 8, ey + ny / l * 8);
+  ctx.lineTo(ex - ny / l * 4 - nx / l * 2, ey + nx / l * 4 - ny / l * 2);
+  ctx.lineTo(ex + ny / l * 4 - nx / l * 2, ey - nx / l * 4 - ny / l * 2);
+  ctx.closePath(); ctx.fill();
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Normale n⃗', ex + 22, ey - 8);
+
+  // Winkel
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.arc(cx, cy, 26, 0, -phi, phi > 0);
+  ctx.stroke();
+  ctx.fillStyle = '#7c3aed'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('φ = ' + Math.round(_gen.phiGrad) + '°', cx + 30, cy - 12);
+
+  // Balken fuer cos und sin
+  const bx = 320, bw = 96;
+  ['cos φ  →  A′', 'sin φ  →  U'].forEach(function (name, i) {
+    const by = 60 + i * 76;
+    const wert = i === 0 ? Math.cos(phi) : Math.sin(phi);
+    ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(name, bx, by - 8);
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+    ctx.strokeRect(bx, by, bw, 16);
+    ctx.strokeStyle = '#cbd5e1';
+    ctx.beginPath(); ctx.moveTo(bx + bw / 2, by - 3); ctx.lineTo(bx + bw / 2, by + 19); ctx.stroke();
+    ctx.fillStyle = i === 0 ? '#7c3aed' : '#0369a1';
+    const w = wert * bw / 2;
+    ctx.fillRect(Math.min(bx + bw / 2, bx + bw / 2 + w), by + 1, Math.abs(w), 14);
+    ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmNum(wert, 3), bx + bw / 2, by + 32);
+  });
+  ctx.textAlign = 'left';
+}
+
+function _genRenderErdeCv(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const cx = 150, cy = 122;
+  const phi = 2 * Math.PI / _gen.eT * _gen.et;
+
+  // Erdfeld: von Sued nach Nord, geneigt
+  const ink = _genInklination() * Math.PI / 180;
+  ctx.strokeStyle = '#93c5fd'; ctx.lineWidth = 1.4;
+  for (let i = -2; i <= 2; i++) {
+    const y0 = cy + i * 30 - 60;
+    ctx.beginPath();
+    ctx.moveTo(20, y0);
+    ctx.lineTo(280, y0 + Math.tan(ink) * 100);
+    ctx.stroke();
+  }
+  ctx.fillStyle = '#3b82f6'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Erdfeld, Inklination ' + _fpmNum(_genInklination(), 0) + '°', 20, 16);
+  ctx.fillText('Süden', 20, H - 8);
+  ctx.textAlign = 'right';
+  ctx.fillText('Norden', 280, H - 8);
+  ctx.textAlign = 'left';
+
+  // Senkrechte Drehachse
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(cx, cy - 70); ctx.lineTo(cx, cy + 70); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('senkrechte Drehachse', cx, cy + 84);
+
+  // Die Spule
+  const halb = Math.abs(Math.cos(phi)) * 44 + 2;
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.ellipse(cx, cy, halb, 46, 0, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#5b21b6'; ctx.font = '9px sans-serif';
+  ctx.fillText('n = ' + _GEN_N0 + ', A = ' + _fpmNum(_GEN_A0 * 1e4, 0) + ' cm²', cx, cy - 82);
+
+  // Die beiden Komponenten
+  const kx = 330, ky = 90;
+  ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(kx, ky); ctx.lineTo(kx + 60, ky); ctx.stroke();
+  ctx.fillStyle = '#16a34a'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('B_H  ' + _fpmNum(_GEN_BH * 1e6, 1) + ' µT', kx, ky - 6);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(kx, ky); ctx.lineTo(kx, ky + 66); ctx.stroke();
+  ctx.fillStyle = '#94a3b8';
+  ctx.fillText('B_V  ' + _fpmNum(_GEN_BV * 1e6, 1) + ' µT', kx + 4, ky + 60);
+  ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(kx, ky); ctx.lineTo(kx + 60, ky + 66); ctx.stroke();
+  ctx.fillStyle = '#3b82f6'; ctx.font = '700 9px sans-serif';
+  ctx.fillText('B = ' + _fpmNum(_genBGesamt() * 1e6, 0) + ' µT', kx + 22, ky + 40);
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif';
+  ctx.fillText('nur B_H wirkt hier', kx, ky + 84);
+  ctx.textAlign = 'left';
+}
+
+function _genRenderErdOszi(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const x0 = 50, x1 = W - 12, yo = 16, yu = H - 30;
+  const my = (yo + yu) / 2;
+  const spanne = 2.5;
+  const Umax = _genErdUmax(_gen.eT) * (_gen.eVerstaerkt ? _GEN_VERST : 1);
+  const skal = Math.max(1e-9, Umax * 1.25);
+
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  for (let i = 0; i <= 5; i++) {
+    const x = x0 + i / 5 * (x1 - x0);
+    ctx.beginPath(); ctx.moveTo(x, yo); ctx.lineTo(x, yu); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmNum(i / 5 * spanne, 1), x, yu + 13);
+  }
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x0, my); ctx.lineTo(x1, my); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x0, yo); ctx.lineTo(x0, yu); ctx.stroke();
+
+  ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.8;
+  ctx.beginPath();
+  for (let px = 0; px <= x1 - x0; px++) {
+    const t = px / (x1 - x0) * spanne;
+    const y = my - _genErdAnzeige(t, _gen.eT) / skal * (my - yo - 3);
+    px ? ctx.lineTo(x0 + px, y) : ctx.moveTo(x0 + px, y);
+  }
+  ctx.stroke();
+
+  // Hilfslinien fuer Scheitelwert und Periodendauer
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+  const yS = my - Umax / skal * (my - yo - 3);
+  ctx.beginPath(); ctx.moveTo(x0, yS); ctx.lineTo(x1, yS); ctx.stroke();
+  const xT = x0 + _gen.eT / spanne * (x1 - x0);
+  ctx.beginPath(); ctx.moveTo(xT, yo); ctx.lineTo(xT, yu); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#b45309'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Û', x0 + 3, yS - 4);
+  ctx.fillText('T', xT + 3, yo + 10);
+
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(_fpmNum(skal * 1000, 0) + ' mV', x0 - 4, yo + 10);
+  ctx.fillText('0', x0 - 4, my + 3);
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#64748b';
+  ctx.fillText('t in s', (x0 + x1) / 2, yu + 25);
+  ctx.textAlign = 'left';
+  ctx.fillStyle = _gen.eVerstaerkt ? '#dc2626' : '#16a34a'; ctx.font = '700 9px sans-serif';
+  ctx.fillText(_gen.eVerstaerkt ? 'Anzeige nach dem Verstärker ×' + _GEN_VERST
+    : 'ohne Verstärker – Anzeige gleich der Induktionsspannung', x0 + 3, yu - 4);
+}
+
+function _genRenderKraftwerk(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const my = 108;
+  const stufen = [
+    { x: 46, n: 'Turbine', u: 'Dampf · Wind · Wasser', f: '#0ea5e9' },
+    { x: 158, n: 'Generator', u: 'η oft über 90 %', f: '#7c3aed' },
+    { x: 274, n: 'Transformator', u: 'hochspannen', f: '#f59e0b' },
+    { x: 390, n: 'Netz', u: '50 Hz', f: '#16a34a' }
+  ];
+  stufen.forEach((s, i) => {
+    ctx.fillStyle = s.f;
+    ctx.beginPath(); ctx.arc(s.x, my, 26, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(String(i + 1), s.x, my + 4);
+    ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif';
+    ctx.fillText(s.n, s.x, my + 44);
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+    ctx.fillText(s.u, s.x, my + 57);
+    if (i < stufen.length - 1) {
+      ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(s.x + 28, my); ctx.lineTo(stufen[i + 1].x - 34, my); ctx.stroke();
+      ctx.fillStyle = '#cbd5e1';
+      ctx.beginPath();
+      ctx.moveTo(stufen[i + 1].x - 26, my);
+      ctx.lineTo(stufen[i + 1].x - 34, my - 5); ctx.lineTo(stufen[i + 1].x - 34, my + 5);
+      ctx.closePath(); ctx.fill();
+    }
+  });
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('mechanische Energie', 102, my - 40);
+  ctx.fillText('elektrische Energie', 332, my - 40);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.fillText('Der Generator ist der Wandler – überall dasselbe Prinzip, gleich womit die Turbine angetrieben wird.',
+    W / 2, H - 14);
+  ctx.textAlign = 'left';
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _genTakt(dt) {
+  if (!_gen) return;
+  const d = Math.min(0.05, dt) / _gen.zeitlupe;
+  if (_gen.laeuft) _gen.t += d;
+  if (_gen.eLaeuft) _gen.et += Math.min(0.05, dt);
+  if (_gen.et > 100) _gen.et = 0;
+}
+function _genRender() {
+  if (!_gen) return;
+  const st = _gen.station;
+  if (st === 0) {
+    const ca = document.getElementById('genAufbau');
+    if (ca) _genRenderAufbau(ca.getContext('2d'), ca);
+    const co = document.getElementById('genOszi');
+    if (co) _genRenderOszi(co.getContext('2d'), co);
+    if (_gen.laeuft) _genUpdate();
+  } else if (st === 1) {
+    const cn = document.getElementById('genNormale');
+    if (cn) _genRenderNormale(cn.getContext('2d'), cn);
+  } else if (st === 3) {
+    const ce = document.getElementById('genErde');
+    if (ce) _genRenderErdeCv(ce.getContext('2d'), ce);
+    const cz = document.getElementById('genErdOszi');
+    if (cz) _genRenderErdOszi(cz.getContext('2d'), cz);
+  } else if (st === 4) {
+    const ck = document.getElementById('genKraftwerk');
+    if (ck) _genRenderKraftwerk(ck.getContext('2d'), ck);
+  }
+}
+
+// ── Zusätzliche Styles für den Generator ───────────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .gen-lage { font-size: .78rem; border-radius: 9px; padding: 9px 11px; margin: 8px 0;
+      line-height: 1.55; border: 1px solid #e2e8f0; background: #f8fafc; color: #64748b; }
+    .gen-lage.flach { background: #f5f3ff; border-color: #ddd6fe; color: #5b21b6; }
+    .gen-lage.kant { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
+    .gen-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 13px; margin-top: 12px; }
+    .gen-phase { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; margin-top: 10px; }
+    .gen-phase-z { display: flex; align-items: baseline; gap: 8px; font-size: .78rem;
+      color: #475569; padding: 3px 0; }
+    .gen-phase-z span { flex: 0 0 132px; font-size: .66rem; text-transform: uppercase;
+      letter-spacing: .04em; font-weight: 800; color: #94a3b8; }
+    .gen-phase-z b { color: #5b21b6; font-variant-numeric: tabular-nums; }
+    .gen-phase-h { font-size: .78rem; color: #075985; background: #f0f9ff;
+      border: 1px solid #bae6fd; border-radius: 7px; padding: 6px 9px; margin: 6px 0; }
+    .gen-tabelle { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; margin-top: 10px; }
+    .gen-erd-auf { background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 9px;
+      padding: 10px 12px; margin-bottom: 8px; }
+    .gen-erd-t { font-size: .78rem; color: #475569; line-height: 1.65; }
+    .gen-erd-vert { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; margin-top: 10px; }
+    .gen-erd-z { display: flex; align-items: baseline; gap: 8px; font-size: .78rem;
+      color: #475569; padding: 4px 0; }
+    .gen-erd-z span { flex: 0 0 92px; font-size: .66rem; text-transform: uppercase;
+      letter-spacing: .04em; font-weight: 800; color: #94a3b8; }
+    .gen-erd-z b { color: #075985; font-variant-numeric: tabular-nums; }
+    .gen-zeit { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 10px 12px; margin-top: 10px; }
+    .gen-zeit-reihe { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+    .gen-zeit-p { flex: 1 1 92px; display: flex; flex-direction: column; gap: 2px;
+      align-items: flex-start; text-align: left; padding: 7px 9px; background: #fff;
+      border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer;
+      font-size: .7rem; color: #475569; line-height: 1.35; }
+    .gen-zeit-p:hover { border-color: #cbd5e1; }
+    .gen-zeit-p.on { border-color: #7c3aed; background: #f5f3ff; color: #5b21b6; }
+    .gen-zeit-p span { font-size: .8rem; font-weight: 800; color: #94a3b8; }
+    .gen-zeit-p.on span { color: #7c3aed; }
+    .gen-hist { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px;
+      padding: 11px 13px; }
+    .gen-hist-j { font-size: 1.3rem; font-weight: 800; color: #7c3aed; line-height: 1; }
+    .gen-hist-n { font-size: .86rem; font-weight: 800; color: #334155; margin: 3px 0 6px; }
+    .gen-hist-t { font-size: .79rem; color: #475569; line-height: 1.7; }
+    .gen-aus { display: flex; flex-direction: column; gap: 6px; }
+    .gen-aus-z { font-size: .77rem; color: #475569; line-height: 1.6; background: #f8fafc;
+      border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; }
+    .gen-aus-z b { color: #334155; }
+    .gen-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
