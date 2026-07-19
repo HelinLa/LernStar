@@ -27,6 +27,8 @@ Every JS and CSS file uses a `?v=N` query string in `index.html`. **Always incre
 <script src="quiz-game.js?v=1"></script>
 ```
 
+**Service Worker caveat:** `sw.js` serves `index.html` **network-first** — cache-first there would pin an old `index.html` with stale `?v=` numbers, silently defeating all cache busting. Everything else stays cache-first (safe, because `?v=N` makes each version a new URL). Bump `CACHE` in `sw.js` whenever you change that file.
+
 ## Architecture
 
 All logic runs in the browser. Script load order in `index.html` is critical (each depends on the previous):
