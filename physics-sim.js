@@ -10708,6 +10708,8 @@ function _oszInit() {
     sensor: 0, rate: 200, sigF: 40, dauer: 0.25,
     // Station 4
     stiftU: 0, laeuft: false, spur: [],
+    // Station 5 – Frequenz messen (handlungsorientiert)
+    mF: 250, mTdivI: 5, rows: [], nextId: 1, preset: 0, fn: null, fnAuto: false, reveal: false,
     t: 0
   };
 }
@@ -10970,7 +10972,7 @@ function _oszFreq(f) {
 // ── Oberfläche ─────────────────────────────────────────
 function _oszHTML() {
   const stationen = ['1 · Oszilloskop', '2 · x-y-Betrieb & Lissajous',
-                     '3 · Messwerterfassung', '4 · x-y-Schreiber']
+                     '3 · Messwerterfassung', '4 · x-y-Schreiber', '5 · Frequenz messen']
     .map((s, i) => `<button class="fpm-tab${i === _osz.station ? ' on' : ''}" id="oszSt${i}" onclick="_oszSetStation(${i})">${s}</button>`).join('');
 
   const kanal = k => `
@@ -11192,6 +11194,66 @@ function _oszHTML() {
       </div>
     </div>
 
+    <!-- ══ Station 5: Frequenz messen ══ -->
+    <div id="oszS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="oszMSchirm" width="440" height="300" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Lies die Periode am Schirm ab: Kästchen pro Periode × TIME/DIV</div>
+          <div class="fpm-tabs" style="margin-top:6px">
+            <button class="fpm-tab on" id="oszMTab0" onclick="_oszMSetPreset(0)">1/f → T</button>
+            <button class="fpm-tab" id="oszMTab1" onclick="_oszMSetPreset(1)">f → f<sub>gemessen</sub></button>
+          </div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Generatorfrequenz f: <b id="oszMFLbl">250 Hz</b></span>
+            <input type="range" id="oszMF" min="50" max="2000" step="10" value="250"
+              oninput="_oszMSetF(this.value)" style="width:100%;accent-color:#0369a1">
+          </div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Zeitbasis TIME/DIV: <b id="oszMTLbl">2 ms</b></span>
+            <input type="range" id="oszMT" min="0" max="9" step="1" value="5"
+              oninput="_oszMSetTdiv(this.value)" style="width:100%;accent-color:#0369a1">
+          </div>
+          <div class="sim-btn-row" style="padding-top:2px">
+            <button class="sim-btn" onclick="_oszMAuto()">🎯 Zeitbasis passend wählen</button>
+          </div>
+        </div>
+        <div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Generatorfrequenz f</span><span class="fpm-ro-v" id="oszMFA">—</span><span class="fpm-ro-u">Hz</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">abgelesene Kästchen/Periode</span><span class="fpm-ro-v" id="oszMDA">—</span><span class="fpm-ro-u">DIV</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">T = DIV · TIME/DIV</span><span class="fpm-ro-v" id="oszMTA">—</span><span class="fpm-ro-u">ms</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">f<sub>gemessen</sub> = 1/T</span><span class="fpm-ro-v" id="oszMFmA">—</span><span class="fpm-ro-u">Hz</span></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_oszMTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_oszMDemo()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_oszMClear()">🗑 Tabelle leeren</button>
+          </div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Nr.</th><th>f (Hz)</th><th>DIV</th><th>T (ms)</th><th></th></tr></thead>
+              <tbody id="oszMTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="oszMEmpty">Noch keine Messwerte.<br>Frequenz einstellen → Periode ablesen → übernehmen.</div>
+          </div>
+          <div class="fpm-fit" id="oszMFitBox"></div>
+          <div class="fpm-label" style="margin-top:8px">Funktion plotten</div>
+          <input type="text" id="oszMFn" class="fpm-input" placeholder="z. B. 1*x" spellcheck="false"
+            oninput="_oszMSetFn(this.value)">
+          <div class="fpm-err" id="oszMFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_oszMTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_oszMClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="oszMTheo"></div>
+          <canvas id="oszMPlot" width="440" height="210" class="phys-chart-cv"></canvas>
+          <label class="fpm-check"><input type="checkbox" onchange="_oszMSetReveal(this.checked)">
+            erwartete Steigung anzeigen</label>
+        </div>
+      </div>
+    </div>
+
     <div id="oszErkl" class="dsp-erkl"></div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
       <b>T = Kästchen · TIME/DIV</b> &nbsp;|&nbsp; <b>f = 1 / T</b>
@@ -11283,12 +11345,13 @@ function _oszErklHTML() {
 // ── Stationen ──────────────────────────────────────────
 function _oszSetStation(i) {
   _osz.station = i;
-  for (let k = 0; k < 4; k++) {
+  for (let k = 0; k < 5; k++) {
     document.getElementById('oszSt' + k)?.classList.toggle('on', k === i);
     const d = document.getElementById('osz' + 'S' + k);
     if (d) d.style.display = k === i ? 'block' : 'none';
   }
   _oszUpdate();
+  if (i === 4) _oszMRender();
 }
 
 // ── Bedienung Station 1 ────────────────────────────────
@@ -11885,6 +11948,260 @@ function _oszTakt(dt) {
     _osz.spur.push({ u: _osz.stiftU, i: _oszFHStrom(_osz.stiftU) });
   }
 }
+// ══ Station 5: Frequenz messen (handlungsorientiert) ══
+// Die SuS lesen die Periode am Schirm ab (Kästchen × TIME/DIV) und bestätigen
+// für viele Frequenzen den Kehrwertzusammenhang T = 1/f.
+function _oszMFmt(v) {
+  if (!isFinite(v)) return '0';
+  const a = Math.abs(v);
+  const d = a >= 100 ? 2 : a >= 1 ? 3 : a >= 0.01 ? 5 : 8;
+  let s = v.toFixed(d);
+  if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, '');
+  return s;
+}
+function _oszMTdivMs() { return _OSZ_TDIV[_osz.mTdivI]; }              // ms je Kästchen
+function _oszMDivProP() { return (1000 / _osz.mF) / _oszMTdivMs(); }   // Kästchen pro Periode (exakt)
+function _oszMDivRead() { return Math.round(_oszMDivProP() / 0.1) * 0.1; } // Ablesung: 0,1 Kästchen
+function _oszMTreadMs() { return _oszMDivRead() * _oszMTdivMs(); }     // abgelesene Periode in ms
+function _oszMFmeas() { const T = _oszMTreadMs(); return T > 0 ? 1000 / T : 0; }
+function _oszMBestTdivI(f) {
+  let best = 0, bd = 1e9;
+  for (let i = 0; i < _OSZ_TDIV.length; i++) {
+    const dpp = (1000 / f) / _OSZ_TDIV[i];
+    const d = Math.abs(dpp - 5);
+    if (dpp >= 1 && dpp <= 10 && d < bd) { bd = d; best = i; }
+  }
+  return best;
+}
+const _OSZM_PRESETS = [
+  { xl: '1/f in ms', yl: 'T in ms', x: r => 1000 / r.f, y: r => r.T, origin: true,
+    typ: 'Ursprungsgerade mit Steigung 1',
+    form: 'T = 1 · (1/f)',
+    param: () => 'erwartete Steigung = 1 (T = 1/f)',
+    term: () => '1*x',
+    deutung: 'Trägt man die abgelesene Periode T über 1/f auf, entsteht eine Ursprungsgerade mit Steigung 1: Das ist der experimentelle Beweis, dass Periodendauer und Frequenz Kehrwerte sind (T = 1/f). Die kleine Streuung stammt vom Ablesen auf 0,1 Kästchen genau.' },
+  { xl: 'f in Hz', yl: 'f_gemessen in Hz', x: r => r.f, y: r => 1000 / r.T, origin: true,
+    typ: 'Ursprungsgerade mit Steigung 1',
+    form: 'f_gemessen = 1 · f',
+    param: () => 'erwartete Steigung = 1 (richtig abgelesen)',
+    term: () => '1*x',
+    deutung: 'Die aus der Schirmablesung zurückgerechnete Frequenz f_gemessen = 1/T stimmt mit der eingestellten Generatorfrequenz überein – die Ursprungsgerade der Steigung 1 zeigt, dass das Ablesen (Kästchen × TIME/DIV) korrekt funktioniert.' }
+];
+function _oszMSetF(v) {
+  _osz.mF = Math.max(50, Math.min(2000, +v));
+  const el = document.getElementById('oszMFLbl'); if (el) el.textContent = _fpmNum(_osz.mF, 0) + ' Hz';
+  _oszMRender();
+}
+function _oszMSetTdiv(v) {
+  _osz.mTdivI = Math.max(0, Math.min(_OSZ_TDIV.length - 1, Math.round(+v)));
+  const el = document.getElementById('oszMTLbl');
+  if (el) el.textContent = _oszMTdivMs() >= 1 ? _fpmNum(_oszMTdivMs(), 0) + ' ms' : _fpmNum(_oszMTdivMs() * 1000, 0) + ' µs';
+  _oszMRender();
+}
+function _oszMAuto() {
+  _osz.mTdivI = _oszMBestTdivI(_osz.mF);
+  const sl = document.getElementById('oszMT'); if (sl) sl.value = String(_osz.mTdivI);
+  _oszMSetTdiv(_osz.mTdivI);
+}
+function _oszMRender() {
+  const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  set('oszMFA', _fpmNum(_osz.mF, 0));
+  set('oszMDA', _fpmNum(_oszMDivRead(), 1));
+  set('oszMTA', _fpmNum(_oszMTreadMs(), 3));
+  set('oszMFmA', _fpmNum(_oszMFmeas(), 0));
+  _oszMRenderTable(); _oszMDrawPlot();
+  const c = document.getElementById('oszMSchirm'); if (c) _oszMDrawSchirm(c.getContext('2d'), c);
+}
+function _oszMTake() {
+  const dpp = _oszMDivProP();
+  if (dpp < 0.5 || dpp > 40) return;        // unlesbare Zeitbasis: nichts uebernehmen
+  _osz.rows.push({ id: _osz.nextId++, f: _osz.mF, div: _oszMDivRead(), T: _oszMTreadMs() });
+  _oszMRenderTable(); _oszMDrawPlot();
+}
+function _oszMDelRow(id) { _osz.rows = _osz.rows.filter(r => r.id !== id); _oszMRenderTable(); _oszMDrawPlot(); }
+function _oszMClear() {
+  if (_osz.rows.length && !confirm('Alle ' + _osz.rows.length + ' Messwerte löschen?')) return;
+  _osz.rows = []; _oszMRenderTable(); _oszMDrawPlot();
+}
+function _oszMDemo() {
+  [80, 120, 200, 350, 600, 1000, 1600].forEach(f => {
+    const i = _oszMBestTdivI(f), Tdiv = _OSZ_TDIV[i];
+    const div = Math.round((1000 / f) / Tdiv / 0.1) * 0.1;
+    _osz.rows.push({ id: _osz.nextId++, f, div, T: div * Tdiv });
+  });
+  _oszMRenderTable(); _oszMDrawPlot();
+}
+function _oszMRenderTable() {
+  const tb = document.getElementById('oszMTbody'); if (!tb) return;
+  const empty = document.getElementById('oszMEmpty');
+  if (empty) empty.style.display = _osz.rows.length ? 'none' : 'block';
+  tb.innerHTML = _osz.rows.map((r, i) =>
+    `<tr><td>${i + 1}</td><td>${_fpmNum(r.f, 0)}</td><td>${_fpmNum(r.div, 1)}</td>
+       <td><b>${_fpmNum(r.T, 3)}</b></td>
+       <td class="fpm-del" onclick="_oszMDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _oszMSetPreset(i) {
+  _osz.preset = Math.max(0, Math.min(1, i));
+  for (let k = 0; k < 2; k++) document.getElementById('oszMTab' + k)?.classList.toggle('on', k === _osz.preset);
+  _oszMRefreshTheorie();
+  _oszMDrawPlot();
+}
+function _oszMSetReveal(on) { _osz.reveal = !!on; _oszMDrawPlot(); }
+function _oszMTheorieFn() {
+  const term = _OSZM_PRESETS[_osz.preset].term();
+  const inp = document.getElementById('oszMFn'); if (inp) inp.value = term;
+  _oszMSetFn(term); _osz.fnAuto = true; _oszMRenderTheorie(true);
+}
+function _oszMClearFn() {
+  const inp = document.getElementById('oszMFn'); if (inp) inp.value = '';
+  _oszMSetFn(''); _oszMRenderTheorie(false);
+}
+function _oszMRefreshTheorie() {
+  if (_osz.fnAuto) {
+    const term = _OSZM_PRESETS[_osz.preset].term();
+    const inp = document.getElementById('oszMFn'); if (inp) inp.value = term;
+    _oszMSetFn(term); _osz.fnAuto = true;
+  }
+  _oszMRenderTheorie(_osz.fnAuto);
+}
+function _oszMRenderTheorie(eingesetzt) {
+  const el = document.getElementById('oszMTheo'); if (!el) return;
+  const P = _OSZM_PRESETS[_osz.preset];
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">${P.typ}</div>
+     <div class="fpm-theo-form">${P.form}</div>
+     <div class="fpm-theo-par">${P.param()}</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${P.term()}</div>` : ''}
+     <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+function _oszMSetFn(str) {
+  _osz.fnAuto = false;
+  const err = document.getElementById('oszMFnErr');
+  const v = (str || '').trim();
+  if (!v) { _osz.fn = null; if (err) err.textContent = ''; _oszMDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _osz.fn = f; if (err) err.textContent = '';
+  } catch (e) { _osz.fn = null; if (err) err.textContent = e.message; }
+  _oszMDrawPlot();
+}
+function _oszMDrawSchirm(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const m = 16, gw = W - 2 * m, gh = H - 2 * m, nx = 10, ny = 8;
+  // Raster
+  ctx.strokeStyle = 'rgba(56,189,248,0.18)'; ctx.lineWidth = 1;
+  for (let i = 0; i <= nx; i++) { const x = m + i * gw / nx; ctx.beginPath(); ctx.moveTo(x, m); ctx.lineTo(x, H - m); ctx.stroke(); }
+  for (let j = 0; j <= ny; j++) { const y = m + j * gh / ny; ctx.beginPath(); ctx.moveTo(m, y); ctx.lineTo(W - m, y); ctx.stroke(); }
+  // Mittelachsen
+  ctx.strokeStyle = 'rgba(148,163,184,0.5)'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(m, H / 2); ctx.lineTo(W - m, H / 2); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(W / 2, m); ctx.lineTo(W / 2, H - m); ctx.stroke();
+  // Sinus: eine Periode = divProP Kästchen
+  const dpp = _oszMDivProP(), pxPerDiv = gw / nx;
+  const amp = 2.4 * gh / ny;
+  ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let px = 0; px <= gw; px += 1.5) {
+    const divs = px / pxPerDiv;                 // Kästchen ab links
+    const phase = divs / dpp * 2 * Math.PI + _osz.t * 2;
+    const y = H / 2 - amp * Math.sin(phase);
+    px === 0 ? ctx.moveTo(m + px, y) : ctx.lineTo(m + px, y);
+  }
+  ctx.stroke();
+  // eine Periode markieren (Klammer unten)
+  const perPx = Math.min(gw, dpp * pxPerDiv);
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.5;
+  const by = H - m - 6;
+  ctx.beginPath(); ctx.moveTo(m, by); ctx.lineTo(m + perPx, by); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(m, by - 5); ctx.lineTo(m, by + 5); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(m + perPx, by - 5); ctx.lineTo(m + perPx, by + 5); ctx.stroke();
+  ctx.fillStyle = '#fbbf24'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('1 Periode ≈ ' + _fpmNum(_oszMDivRead(), 1) + ' DIV', m + perPx / 2, by - 8);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('TIME/DIV = ' + (_oszMTdivMs() >= 1 ? _fpmNum(_oszMTdivMs(), 0) + ' ms' : _fpmNum(_oszMTdivMs() * 1000, 0) + ' µs'), m + 2, m + 12);
+}
+function _oszMDrawPlot() {
+  const cv = document.getElementById('oszMPlot'); if (!cv || !_osz) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = _OSZM_PRESETS[_osz.preset];
+  const padL = 46, padR = 14, padT = 10, padB = 30;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const pts = _osz.rows.map(r => ({ x: P.x(r), y: P.y(r), r })).filter(p => isFinite(p.x) && isFinite(p.y));
+  const xmax = Math.max(1e-9, pts.length ? Math.max(...pts.map(p => p.x)) * 1.1 : 20);
+  const ymax = Math.max(1e-9, pts.length ? Math.max(...pts.map(p => p.y)) * 1.12 : 20);
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+  ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  const xt = _fpmTicks(xmax, 5);
+  xt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 12);
+  });
+  const yt = _fpmTicks(ymax, 5);
+  yt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(P.xl, x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText(P.yl, 0, 0); ctx.restore(); ctx.textAlign = 'left';
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
+    const fo = document.getElementById('oszMFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + P.deutung + '</div>';
+    return;
+  }
+  if (_osz.fn) {
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _osz.fn((px - x0) / (x1 - x0) * xmax); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv);
+      if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  let fit = null;
+  if (pts.length >= 2) {
+    fit = _fpmFitOrigin(pts);
+    if (fit) {
+      ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.7;
+      ctx.beginPath(); ctx.moveTo(X(0), Y(0)); ctx.lineTo(X(xmax), Y(fit.k * xmax)); ctx.stroke();
+    }
+  }
+  pts.forEach(p => {
+    ctx.fillStyle = '#0369a1'; ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke();
+  });
+  const el = document.getElementById('oszMFitBox');
+  if (el) {
+    if (!fit) { el.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte nötig.<br>' + P.deutung + '</div>'; }
+    else {
+      const abw = Math.abs(fit.k - 1) * 100;
+      const cls = abw < 3 ? 'ok' : abw < 8 ? 'mid' : 'no';
+      el.innerHTML = `<div class="fpm-fitline">
+         <span class="fpm-fitmeta">${_osz.rows.length} Messwerte</span>
+         <span class="fpm-fiteq">y = ${_fpmNum(fit.k, 4)}·x</span>
+         <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 4)}</span>
+         ${_osz.reveal ? `<span class="fpm-badge ${cls}">erwartete Steigung 1 · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+       </div>
+       <div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">${P.deutung}</div>`;
+    }
+  }
+}
+
 function _oszRender() {
   if (!_osz) return;
   if (_osz.station === 0) {
@@ -11902,6 +12219,9 @@ function _oszRender() {
     const cs = document.getElementById('oszSchreiber');
     if (cs) _oszRenderSchreiberCv(cs.getContext('2d'), cs);
     if (_osz.laeuft) _oszRenderSchreiber();
+  } else if (_osz.station === 4) {
+    const cm = document.getElementById('oszMSchirm');
+    if (cm) _oszMDrawSchirm(cm.getContext('2d'), cm);
   }
 }
 
