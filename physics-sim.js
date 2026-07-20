@@ -26977,7 +26977,9 @@ function _gmzInit() {
     // Station 4
     zTrue: 2000, tau: 100,   // wahre Rate in 1/s, Totzeit in µs
     // Station 5
-    quelle: 'am'
+    quelle: 'am',
+    // Station 6 – Totzeit bestimmen (handlungsorientiert)
+    mZtrue: 2000, mZmess: 0, rows: [], nextId: 1, fn: null, fnAuto: false, reveal: false
   };
 }
 
@@ -27021,6 +27023,172 @@ function _gmzVerlust(zTrue, tauS) {
   return (zTrue - zm) / zTrue * 100;
 }
 
+// ══ Station 6: Totzeit bestimmen (handlungsorientiert) ══
+// Z_mess = Z_wahr/(1 + Z_wahr·τ)  ->  1/Z_mess = 1/Z_wahr + τ.
+// Traegt man 1/Z_mess ueber 1/Z_wahr auf, ist der Achsenabschnitt die Totzeit τ.
+function _gmzMTauS() { return _gmz.tau * 1e-6; }         // Totzeit in s
+function _gmzMZmessTrue(zTrue) { return _gmzZMess(zTrue, _gmzMTauS()); }
+function _gmzMSample(zTrue) { return Math.round(_gmzMZmessTrue(zTrue) * (1 + (Math.random() - 0.5) * 0.004)); }
+function _gmzMSetZ(v) {
+  _gmz.mZtrue = Math.max(200, Math.min(20000, Math.round(+v / 100) * 100));
+  _gmz.mZmess = _gmzMSample(_gmz.mZtrue);
+  const el = document.getElementById('gmzMZLbl'); if (el) el.textContent = _fpmNum(_gmz.mZtrue, 0) + ' 1/s';
+  _gmzMRender();
+}
+function _gmzMRender() {
+  if (!_gmz.mZmess) _gmz.mZmess = _gmzMSample(_gmz.mZtrue);
+  const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  set('gmzMZtA', _fpmNum(_gmz.mZtrue, 0));
+  set('gmzMZmA', _fpmNum(_gmz.mZmess, 0));
+  set('gmzMVA', _fpmNum((_gmz.mZtrue - _gmz.mZmess) / _gmz.mZtrue * 100, 1));
+  _gmzMRenderTable(); _gmzMDrawPlot();
+  const c = document.getElementById('gmzMAufbau'); if (c) _gmzMDrawAufbau(c.getContext('2d'), c);
+}
+function _gmzMTake() {
+  _gmz.rows.push({ id: _gmz.nextId++, zt: _gmz.mZtrue, zm: _gmz.mZmess });
+  _gmz.rows.sort((a, b) => a.zt - b.zt);
+  _gmzMRender();
+}
+function _gmzMDelRow(id) { _gmz.rows = _gmz.rows.filter(r => r.id !== id); _gmzMRender(); }
+function _gmzMClear() {
+  if (_gmz.rows.length && !confirm('Alle ' + _gmz.rows.length + ' Messwerte löschen?')) return;
+  _gmz.rows = []; _gmzMRender();
+}
+function _gmzMDemo() {
+  _gmz.rows = [];
+  [500, 1000, 2000, 4000, 7000, 11000, 16000, 20000].forEach(zt =>
+    _gmz.rows.push({ id: _gmz.nextId++, zt, zm: Math.round(_gmzMZmessTrue(zt)) }));
+  _gmzMRender();
+}
+function _gmzMX(r) { return 1000 / r.zt; }   // 1/Z_wahr in ms
+function _gmzMY(r) { return 1000 / r.zm; }   // 1/Z_mess in ms
+function _gmzMRenderTable() {
+  const tb = document.getElementById('gmzMTbody'); if (!tb) return;
+  const empty = document.getElementById('gmzMEmpty');
+  if (empty) empty.style.display = _gmz.rows.length ? 'none' : 'block';
+  tb.innerHTML = _gmz.rows.map(r =>
+    `<tr><td>${_fpmNum(r.zt, 0)}</td><td>${_fpmNum(r.zm, 0)}</td><td><b>${_fpmNum(_gmzMY(r), 4)}</b></td>
+       <td class="fpm-del" onclick="_gmzMDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _gmzMSetReveal(on) { _gmz.reveal = !!on; _gmzMDrawPlot(); }
+function _gmzMFmt(v) { let s = v.toFixed(4); if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, ''); return s; }
+function _gmzMTheorieTerm() { return '1*x+' + _gmzMFmt(_gmz.tau * 1e-3); }
+function _gmzMTheorieFn() {
+  const term = _gmzMTheorieTerm();
+  const inp = document.getElementById('gmzMFn'); if (inp) inp.value = term;
+  _gmzMSetFn(term); _gmz.fnAuto = true; _gmzMRenderTheorie(true);
+}
+function _gmzMClearFn() {
+  const inp = document.getElementById('gmzMFn'); if (inp) inp.value = '';
+  _gmzMSetFn(''); _gmzMRenderTheorie(false);
+}
+function _gmzMRenderTheorie(eingesetzt) {
+  const el = document.getElementById('gmzMTheo'); if (!el) return;
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">Gerade mit Steigung 1</div>
+     <div class="fpm-theo-form">1/Z<sub>mess</sub> = 1/Z<sub>wahr</sub> + τ</div>
+     <div class="fpm-theo-par">Achsenabschnitt = Totzeit τ (in ms), Steigung = 1</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${_gmzMTheorieTerm()}</div>` : ''}
+     <div class="fpm-theo-deutung">Das Zählrohr ist nach jedem Impuls für die Totzeit τ „blind" und verpasst Teilchen. Deshalb ist die gemessene Rate kleiner als die wahre: Z_mess = Z_wahr/(1 + Z_wahr·τ). Bildet man die Kehrwerte, wird daraus 1/Z_mess = 1/Z_wahr + τ – eine Gerade der Steigung 1, deren Achsenabschnitt unmittelbar die Totzeit τ liefert. Bei hohen Raten wird der Verlust erheblich, weshalb man die gemessene Rate stets korrigieren muss.</div>`;
+}
+function _gmzMSetFn(str) {
+  _gmz.fnAuto = false;
+  const err = document.getElementById('gmzMFnErr');
+  const v = (str || '').trim();
+  if (!v) { _gmz.fn = null; if (err) err.textContent = ''; _gmzMDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _gmz.fn = f; if (err) err.textContent = '';
+  } catch (e) { _gmz.fn = null; if (err) err.textContent = e.message; }
+  _gmzMDrawPlot();
+}
+function _gmzMDrawAufbau(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const cy = H / 2;
+  const frac = _gmz.mZtrue / 20000;
+  // Quelle (Abstand ~ 1/rate)
+  const sx = 30 + (1 - frac) * 90;
+  ctx.fillStyle = '#22c55e'; ctx.beginPath(); ctx.arc(sx, cy, 10, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Quelle', sx, cy + 26);
+  // Teilchen
+  ctx.strokeStyle = 'rgba(34,197,94,0.5)'; ctx.lineWidth = 1;
+  for (let i = 0; i < Math.round(4 + frac * 10); i++) { const y = cy - 20 + (i * 37) % 40; ctx.beginPath(); ctx.moveTo(sx + 12, y); ctx.lineTo(W - 90, y); ctx.stroke(); }
+  // Zählrohr
+  ctx.fillStyle = '#334155'; ctx.fillRect(W - 84, cy - 22, 54, 44);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.strokeRect(W - 84, cy - 22, 54, 44);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(_fpmNum(_gmz.mZmess || 0, 0), W - 57, cy + 2);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.fillText('Imp/s', W - 57, cy + 32);
+  ctx.fillStyle = '#f87171'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Verlust ' + _fpmNum((_gmz.mZtrue - (_gmz.mZmess || 0)) / _gmz.mZtrue * 100, 1) + ' %', 10, 14);
+}
+function _gmzMDrawPlot() {
+  const cv = document.getElementById('gmzMPlot'); if (!cv || !_gmz) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const padL = 48, padR = 14, padT = 10, padB = 30;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const pts = _gmz.rows.map(r => ({ x: _gmzMX(r), y: _gmzMY(r) }));
+  const xmax = Math.max(0.5, pts.length ? Math.max(...pts.map(p => p.x)) * 1.1 : 5.5);
+  const ymax = Math.max(0.5, pts.length ? Math.max(...pts.map(p => p.y)) * 1.1 : 5.5);
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+  ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  const xt = _fpmTicks(xmax, 5);
+  xt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 12); });
+  const yt = _fpmTicks(ymax, 5);
+  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('1/Z_wahr in ms', x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('1/Z_mess in ms', 0, 0); ctx.restore(); ctx.textAlign = 'left';
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
+    const fo = document.getElementById('gmzMFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">Nimm bei verschiedenen wahren Raten die gemessene Rate auf. Der Achsenabschnitt der Geraden ist die Totzeit τ.</div>';
+    return;
+  }
+  if (_gmz.fn) {
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _gmz.fn((px - x0) / (x1 - x0) * xmax); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv); if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  let fit = null;
+  if (pts.length >= 2) {
+    fit = _fpmFitLinear(pts);
+    if (fit) { ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.7; ctx.beginPath(); ctx.moveTo(X(0), Y(fit.b)); ctx.lineTo(X(xmax), Y(fit.k * xmax + fit.b)); ctx.stroke();
+      // Achsenabschnitt markieren
+      ctx.fillStyle = '#0369a1'; ctx.beginPath(); ctx.arc(X(0), Y(fit.b), 3.5, 0, 2 * Math.PI); ctx.fill(); }
+  }
+  pts.forEach(p => { ctx.fillStyle = '#7c3aed'; ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke(); });
+  const el = document.getElementById('gmzMFitBox');
+  if (el) {
+    if (!fit) { el.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte nötig.</div>'; }
+    else {
+      const tau = fit.b * 1000;             // Achsenabschnitt (ms) -> µs
+      const abw = Math.abs(tau - _gmz.tau) / _gmz.tau * 100;
+      const cls = abw < 6 ? 'ok' : abw < 15 ? 'mid' : 'no';
+      el.innerHTML = `<div class="fpm-fitline">
+         <span class="fpm-fitmeta">${_gmz.rows.length} Messwerte</span>
+         <span class="fpm-fiteq">y = ${_fpmNum(fit.k, 3)}·x ${fit.b >= 0 ? '+ ' + _fpmNum(fit.b, 3) : '− ' + _fpmNum(-fit.b, 3)}</span>
+         <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 4)}</span>
+         <span class="fpm-fiteq" style="color:#075985">τ = ${_fpmNum(tau, 1)} µs</span>
+         ${_gmz.reveal ? `<span class="fpm-badge ${cls}">wahre Totzeit ${_fpmNum(_gmz.tau, 0)} µs · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+       </div>`;
+    }
+  }
+}
+
 // Radioaktive Quellen fuer Station 5 (typische Naeherungswerte)
 const _GMZ_QUELLEN = [
   { id: 'null', n: 'ohne Präparat (Nullrate)', rate: 0.4, art: 'Höhen- und Umgebungsstrahlung', natur: true },
@@ -27033,7 +27201,7 @@ const _GMZ_QUELLEN = [
 function _gmzHTML() {
   const stationen = ['1 · Aufbau & Funktion', '2 · Die Kennlinie',
                      '3 · Proportional- oder Auslösebereich', '4 · Totzeit & wahre Zählrate',
-                     '5 · Nullrate, Statistik & Geschichte']
+                     '5 · Nullrate, Statistik & Geschichte', '6 · Totzeit bestimmen']
     .map((s, i) => `<button class="fpm-tab${i === _gmz.station ? ' on' : ''}" id="gmzSt${i}" onclick="_gmzSetStation(${i})">${s}</button>`).join('');
 
   return `<div class="sim-box sim-box-wide fpm-sim gmz-sim">
@@ -27140,6 +27308,54 @@ function _gmzHTML() {
       </div>
     </div>
 
+    <!-- ══ Station 6: Totzeit bestimmen ══ -->
+    <div id="gmzS5" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="gmzMAufbau" width="440" height="170" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Erhöhe die wahre Rate (Quelle näher) und lies die gemessene Rate ab</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">wahre Zählrate Z<sub>wahr</sub>: <b id="gmzMZLbl">2000 1/s</b></span>
+            <input type="range" id="gmzMZ" min="200" max="20000" step="100" value="2000"
+              oninput="_gmzMSetZ(this.value)" style="width:100%;accent-color:#7c3aed">
+          </div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">wahre Rate Z<sub>wahr</sub></span><span class="fpm-ro-v" id="gmzMZtA">—</span><span class="fpm-ro-u">1/s</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">gemessene Rate Z<sub>mess</sub></span><span class="fpm-ro-v" id="gmzMZmA">—</span><span class="fpm-ro-u">1/s</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Zählverlust</span><span class="fpm-ro-v" id="gmzMVA">—</span><span class="fpm-ro-u">%</span></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_gmzMTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_gmzMDemo()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_gmzMClear()">🗑 Tabelle leeren</button>
+          </div>
+        </div>
+        <div>
+          <canvas id="gmzMPlot" width="440" height="220" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">1/Z<sub>mess</sub> über 1/Z<sub>wahr</sub>: Achsenabschnitt = Totzeit τ</div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Z<sub>wahr</sub></th><th>Z<sub>mess</sub></th><th>1/Z<sub>mess</sub> (ms)</th><th></th></tr></thead>
+              <tbody id="gmzMTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="gmzMEmpty">Noch keine Messwerte.<br>Rate einstellen → gemessene Rate übernehmen.</div>
+          </div>
+          <div class="fpm-fit" id="gmzMFitBox"></div>
+          <div class="fpm-label" style="margin-top:8px">Funktion plotten</div>
+          <input type="text" id="gmzMFn" class="fpm-input" placeholder="z. B. 1*x+0.1" spellcheck="false"
+            oninput="_gmzMSetFn(this.value)">
+          <div class="fpm-err" id="gmzMFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_gmzMTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_gmzMClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="gmzMTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_gmzMSetReveal(this.checked)">
+            wahre Totzeit anzeigen</label>
+        </div>
+      </div>
+    </div>
+
     <div id="gmzErkl" class="dsp-erkl"></div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
       <b>Ionisation → Lawine → Impuls</b> &nbsp;|&nbsp; <b>Z = N·z</b>
@@ -27207,13 +27423,14 @@ function _gmzErklHTML() {
 
 // ── Stationen ──────────────────────────────────────────
 function _gmzSetStation(i) {
-  _gmz.station = Math.max(0, Math.min(4, i));
-  for (let k = 0; k < 5; k++) {
+  _gmz.station = Math.max(0, Math.min(5, i));
+  for (let k = 0; k < 6; k++) {
     document.getElementById('gmzSt' + k)?.classList.toggle('on', k === _gmz.station);
     const d = document.getElementById('gmzS' + k);
     if (d) d.style.display = k === _gmz.station ? 'block' : 'none';
   }
   _gmzUpdate();
+  if (_gmz.station === 5) _gmzMRender();
 }
 function _gmzSet(key, val) { _gmz[key] = val; _gmzUpdate(); }
 function _gmzToggle() {
@@ -27724,6 +27941,9 @@ function _gmzRender() {
   } else if (st === 4) {
     const c = document.getElementById('gmzStat');
     if (c) _gmzDrawStat(c.getContext('2d'), c);
+  } else if (st === 5) {
+    const c = document.getElementById('gmzMAufbau');
+    if (c) _gmzMDrawAufbau(c.getContext('2d'), c);
   }
 }
 
