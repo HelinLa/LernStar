@@ -2280,6 +2280,17 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('luTakt', 'luKeinChart');
     _pSim.start(dt => _luTakt(dt), () => _luRender(), []);
   },
+
+  'zyklotron': modal => {
+    _zykInit();
+    modal.innerHTML = _zykHTML();
+    const erkl = document.getElementById('zykErkl');
+    if (erkl) erkl.innerHTML = _zykErklHTML();
+    _zykSetStation(0);
+    _zykUpdate();
+    _pSim = new PhysicsSimEngine('zykTakt', 'zykKeinChart');
+    _pSim.start(dt => _zykTakt(dt), () => _zykRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -29819,6 +29830,780 @@ function _luRender() {
     .lu-anw-z b { color: #334155; }
     .lu-anw-z.med { background: #f5f3ff; border-color: #ddd6fe; }
     .lu-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+
+
+// ═══════════════════════════════════════════════════════
+// DAS ZYKLOTRON
+// Schluesselexperiment 25 der NRW-Handreichung (Grundkurs Q2). Der erste
+// Teilchenbeschleuniger (Lawrence 1930). Zeigt das Beschleunigerprinzip und –
+// als Bezug zum Inhaltsfeld "Relativitaet von Raum und Zeit" – die Grenze durch
+// die relativistische Massenzunahme.
+// KLP-Kompetenz: die Funktionsweise eines Zyklotrons erlaeutern und zu den
+// Grenzen der Verwendung bei relativistischen Effekten argumentieren (K4, UF4).
+// Kernidee: In beiden Duanten ist die Lorentzkraft die Zentripetalkraft, daraus
+// folgt die geschwindigkeitsUNABHAENGIGE Halbumlaufdauer T = pi*m/(q*B).
+// ═══════════════════════════════════════════════════════
+
+const _ZYK_E = 1.602176634e-19;   // Elementarladung in C
+const _ZYK_C = 2.99792458e8;      // Lichtgeschwindigkeit in m/s
+
+// Teilchensorten: Masse in kg, Ladung als Vielfaches von e
+const _ZYK_TEILCHEN = [
+  { name: 'Proton',        sym: 'p',    m: 1.67262192e-27, z: 1 },
+  { name: 'Deuteron',      sym: 'd',    m: 3.343583e-27,   z: 1 },
+  { name: 'Alphateilchen', sym: 'α',    m: 6.644657e-27,   z: 2 }
+];
+
+let _zyk = null;
+
+function _zykInit() {
+  _zyk = {
+    station: 0,
+    teil: 0,          // Index der Teilchensorte
+    B: 0.9,           // magnetische Flussdichte in T
+    U: 20,            // Beschleunigungsspannung in kV
+    R: 4.5,           // Duantenradius in cm
+    vDemo: 0.5,       // Station 2: Regler fuer die Zwei-Kreis-Demo
+    ekin: 10,         // Station 4: kinetische Energie in MeV
+    laeuft: true, t: 0
+  };
+}
+
+// ── aktuelle Teilchengroessen ───────────────────────────
+function _zykM() { return _ZYK_TEILCHEN[_zyk.teil].m; }
+function _zykQ() { return _ZYK_TEILCHEN[_zyk.teil].z * _ZYK_E; }
+
+// ── Zahlformat ──────────────────────────────────────────
+function _zykZahl(v) {
+  if (!isFinite(v) || v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const dez = Math.max(0, Math.min(20, 4 - ex));
+  const s = v.toFixed(dez);
+  return s.indexOf('.') >= 0 ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
+}
+
+// ═══════════════════════════════════════════════════════
+// PHYSIK  (alle Formeln aus der Handreichung, in SI-Einheiten)
+// ═══════════════════════════════════════════════════════
+// Bahnradius aus Lorentz = Zentripetalkraft:  m*v²/r = q*v*B  ->  r = m*v/(q*B)
+function _zykRadiusV(m, q, B, v) { return m * v / (q * B); }
+// Halbumlaufdauer im Duanten:  T = pi*r/v = pi*m/(q*B)   – UNABHAENGIG von v und r!
+function _zykThalb(m, q, B) { return Math.PI * m / (q * B); }
+// Umlaufdauer (voller Kreis) = 2*T
+function _zykTumlauf(m, q, B) { return 2 * Math.PI * m / (q * B); }
+// Zyklotronfrequenz der Beschleunigungsspannung:  f = 1/T_umlauf = q*B/(2*pi*m)
+function _zykFreq(m, q, B) { return q * B / (2 * Math.PI * m); }
+// Endgeschwindigkeit am Duantenrand R:  v_max = q*B*R/m
+function _zykVmax(m, q, B, R) { return q * B * R / m; }
+// Endenergie:  E_max = 1/2*m*v_max² = q²*B²*R²/(2*m)
+function _zykEmax(m, q, B, R) { return q * q * B * B * R * R / (2 * m); }
+// kinetische Energie nach n Spaltdurchgaengen:  E_n = n*q*U
+function _zykEn(n, q, U) { return n * q * U; }
+// Bahnradius nach n Spaltdurchgaengen:  r_n = sqrt(2*m*E_n)/(q*B)
+function _zykRadiusN(n, m, q, B, U) { return Math.sqrt(2 * m * n * q * U) / (q * B); }
+// Anzahl der Spaltdurchgaenge bis zum Rand:  N = E_max/(q*U)
+function _zykNMax(m, q, B, R, U) { return _zykEmax(m, q, B, R) / (q * U); }
+// relativistischer Lorentzfaktor
+function _zykGamma(v) { return 1 / Math.sqrt(1 - (v / _ZYK_C) * (v / _ZYK_C)); }
+// gamma aus kinetischer Energie:  gamma = 1 + E_kin/(m*c²)
+function _zykGammaE(m, Ekin) { return 1 + Ekin / (m * _ZYK_C * _ZYK_C); }
+// relativistische Umlaufdauer:  T = 2*pi*gamma*m/(q*B)  – waechst mit gamma!
+function _zykTrel(m, q, B, gamma) { return 2 * Math.PI * gamma * m / (q * B); }
+
+// ═══════════════════════════════════════════════════════
+// OBERFLAECHE
+// ═══════════════════════════════════════════════════════
+function _zykHTML() {
+  const stationen = ['1 · Das Prinzip', '2 · Warum konstante Frequenz?',
+                     '3 · Energie & Endgeschwindigkeit', '4 · Die relativistische Grenze',
+                     '5 · Wo es zählt']
+    .map((s, i) => `<button class="fpm-tab${i === _zyk.station ? ' on' : ''}" id="zykSt${i}" onclick="_zykSetStation(${i})">${s}</button>`).join('');
+
+  const teilOpt = _ZYK_TEILCHEN.map((t, i) =>
+    `<option value="${i}"${i === _zyk.teil ? ' selected' : ''}>${t.name}</option>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim zyk-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌀 Das Zyklotron</h3>
+    <canvas id="zykTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1: Prinzip ══ -->
+    <div id="zykS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="zykPrinzip" width="440" height="330" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Das Teilchen spiralt nach außen und wird in jedem Spalt beschleunigt</div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="zykLaufBtn" onclick="_zykToggle()">⏸ Anhalten</button>
+          </div>
+        </div>
+        <div>
+          <div class="zyk-erkl" id="zykPrinzipText"></div>
+        </div>
+      </div>
+      <div class="zyk-k3" id="zykK3"></div>
+    </div>
+
+    <!-- ══ Station 2: konstante Frequenz ══ -->
+    <div id="zykS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="zykFreq" width="440" height="300" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Zwei Teilchen, kleiner und großer Radius – gleiche Halbumlaufdauer</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Geschwindigkeit (→ Radius)</span>
+              <input type="range" id="zykVDemo" min="0.25" max="1" step="0.01" value="0.5"
+                oninput="_zykSetVDemo(this.value)"><b id="zykVDemoLbl">mittel</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="zyk-herleitung" id="zykHerleitung"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3: Energie ══ -->
+    <div id="zykS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="zykEnergie" width="440" height="320" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Die Spiralbahn – jede Windung trägt Energie q·U bei</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Teilchen</span>
+              <select id="zykTeil" onchange="_zykSetTeil(this.value)" class="zyk-select">${teilOpt}</select>
+              <button class="sim-btn" onclick="_zykPreset()">↺ Lawrence 1930</button></div>
+            <div class="osz-zeile"><span>Flussdichte B</span>
+              <input type="range" id="zykB" min="0.2" max="2" step="0.05" value="0.9"
+                oninput="_zykSetB(this.value)"><b id="zykBLbl">0,90 T</b></div>
+            <div class="osz-zeile"><span>Spannung U</span>
+              <input type="range" id="zykU" min="5" max="100" step="5" value="20"
+                oninput="_zykSetU(this.value)"><b id="zykULbl">20 kV</b></div>
+            <div class="osz-zeile"><span>Duantenradius R</span>
+              <input type="range" id="zykR" min="4" max="50" step="1" value="4.5"
+                oninput="_zykSetR(this.value)"><b id="zykRLbl">4,5 cm</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="zykEnergieRechnung"></div>
+          <div class="zyk-energie-t" id="zykEnergieText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4: relativistische Grenze ══ -->
+    <div id="zykS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="zykRelativ" width="440" height="300" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Mit wachsender Energie fällt die nötige Umlauffrequenz</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>kinetische Energie (Proton)</span>
+              <input type="range" id="zykEkin" min="0.1" max="250" step="0.1" value="10"
+                oninput="_zykSetEkin(this.value)"><b id="zykEkinLbl">10 MeV</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="zyk-relativ-t" id="zykRelativText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5: Anwendung ══ -->
+    <div id="zykS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="zykAnwendung" width="440" height="240" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Von Lawrences 9-cm-Gerät zum medizinischen Kompaktzyklotron</div>
+        </div>
+        <div>
+          <div class="zyk-anw-t" id="zykAnwText"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="zykErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>r = m·v / (q·B)</b> &nbsp;|&nbsp; <b>T<sub>½</sub> = π·m / (q·B)</b> (unabhängig von v)
+      &nbsp;|&nbsp; <b>f = q·B / (2π·m)</b> &nbsp;|&nbsp; <b>E<sub>max</sub> = q²·B²·R² / (2m)</b>
+    </p>
+  </div>`;
+}
+
+function _zykErklHTML() {
+  return `<div class="dsp-erkl-kopf">Was ein Zyklotron ist</div>
+    <div class="dsp-erkl-text">
+      Das Zyklotron ist der erste Teilchenbeschleuniger der Geschichte, 1930 von
+      <b>Ernest O. Lawrence</b> gebaut – sein erstes Gerät hatte nur rund 9 cm Durchmesser und
+      beschleunigte Protonen auf 80 keV. Es besteht aus zwei flachen, halbrunden Hohldosen, den
+      <b>Duanten</b>, die ein starkes <b>Magnetfeld</b> senkrecht durchsetzt. Zwischen den Duanten
+      liegt eine hochfrequente <b>Wechselspannung</b>. Ein geladenes Teilchen startet in der Mitte,
+      wird im Spalt zwischen den Duanten beschleunigt und im Inneren jedes Duanten durch das
+      Magnetfeld auf eine <b>Kreisbahn</b> gezwungen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Beschleunigen auf engem Raum</div>
+    <div class="dsp-erkl-text">
+      Anders als beim Linearbeschleuniger, der immer länger werden muss, nutzt das Zyklotron
+      denselben Beschleunigungsspalt <b>immer wieder</b>: Das Magnetfeld faltet die Bahn zu einer
+      Spirale zusammen. Bei jedem der zwei Spaltdurchgänge pro Umlauf gewinnt das Teilchen die
+      Energie <b>q·U</b>. Weil es dadurch schneller wird, wird sein Bahnradius r = m·v/(q·B) mit
+      jedem Umlauf größer – das Teilchen läuft <b>nach außen</b>, bis es am Duantenrand
+      herausgeführt wird.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Der Schlüssel: konstante Frequenz</div>
+    <div class="dsp-erkl-text">
+      In beiden Duanten ist die <b>Lorentzkraft die Zentripetalkraft</b>: m·v²/r = q·v·B. Daraus
+      folgt für die Zeit eines Halbumlaufs T<sub>½</sub> = π·r/v = <b>π·m/(q·B)</b> – Radius und
+      Geschwindigkeit kürzen sich vollständig heraus! Die Verweildauer im Duanten hängt <b>nicht von
+      der Geschwindigkeit</b> ab. Deshalb genügt eine <b>konstante</b> Wechselspannungsfrequenz, die
+      Zyklotronfrequenz f = q·B/(2π·m), damit das Feld bei jedem Spaltdurchgang „passt".
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die Lorentzkraft beschleunigt nicht</div>
+    <div class="dsp-erkl-text">
+      Wichtig: Im Duanten ändert die Lorentzkraft <b>nur die Richtung</b> der Geschwindigkeit, nicht
+      ihren Betrag – sie steht stets senkrecht zur Bewegung und verrichtet keine Arbeit. Der Betrag
+      der Geschwindigkeit wächst <b>ausschließlich</b> im elektrischen Feld des Spalts.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die relativistische Grenze</div>
+    <div class="dsp-erkl-text">
+      Die Masse m steckt in der Umlaufdauer. Werden die Teilchen so schnell, dass ihre Masse
+      <b>relativistisch zunimmt</b> (m = γ·m₀), wächst die Umlaufdauer, und die Teilchen geraten
+      gegenüber der festen Frequenz <b>außer Takt</b> – die Beschleunigung kommt zum Erliegen. Genau
+      hier verbindet das Zyklotron die Mechanik geladener Teilchen mit der <b>speziellen
+      Relativitätstheorie</b>. Das <b>Synchrozyklotron</b> senkt die Frequenz mit steigender Energie
+      passend ab und umgeht so die Grenze.</div>
+    <div class="dsp-erkl-note">💡 Zyklotrons erzeugen heute radioaktive Präparate für die
+      <b>PET-Diagnostik</b>, liefern Protonen für die <b>Tumortherapie</b> und dienen in der
+      Forschung als Vorbeschleuniger großer Anlagen.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _zykSetStation(i) {
+  _zyk.station = Math.max(0, Math.min(4, i));
+  for (let k = 0; k < 5; k++) {
+    document.getElementById('zykSt' + k)?.classList.toggle('on', k === _zyk.station);
+    const d = document.getElementById('zykS' + k);
+    if (d) d.style.display = k === _zyk.station ? 'block' : 'none';
+  }
+  _zykUpdate();
+}
+function _zykToggle() {
+  _zyk.laeuft = !_zyk.laeuft;
+  const b = document.getElementById('zykLaufBtn');
+  if (b) b.textContent = _zyk.laeuft ? '⏸ Anhalten' : '▶ Weiter';
+}
+function _zykSetVDemo(v) {
+  _zyk.vDemo = Math.max(0.25, Math.min(1, +v));
+  const el = document.getElementById('zykVDemoLbl');
+  if (el) el.textContent = _zyk.vDemo < 0.45 ? 'langsam' : (_zyk.vDemo < 0.75 ? 'mittel' : 'schnell');
+  _zykRenderHerleitung();
+}
+function _zykSetTeil(v) { _zyk.teil = Math.max(0, Math.min(2, +v)); _zykRenderEnergie(); }
+function _zykSetB(v) {
+  _zyk.B = +v;
+  const el = document.getElementById('zykBLbl'); if (el) el.textContent = _fpmNum(_zyk.B, 2) + ' T';
+  _zykRenderEnergie();
+}
+function _zykSetU(v) {
+  _zyk.U = +v;
+  const el = document.getElementById('zykULbl'); if (el) el.textContent = _fpmNum(_zyk.U, 0) + ' kV';
+  _zykRenderEnergie();
+}
+function _zykSetR(v) {
+  _zyk.R = +v;
+  const el = document.getElementById('zykRLbl'); if (el) el.textContent = _fpmNum(_zyk.R, 1) + ' cm';
+  _zykRenderEnergie();
+}
+function _zykSetEkin(v) {
+  _zyk.ekin = +v;
+  const el = document.getElementById('zykEkinLbl'); if (el) el.textContent = _fpmNum(_zyk.ekin, 1) + ' MeV';
+  _zykRenderRelativ();
+}
+function _zykPreset() {
+  _zyk.teil = 0; _zyk.B = 0.9; _zyk.U = 20; _zyk.R = 4.5;
+  const set = (id, v) => { const e = document.getElementById(id); if (e) e.value = v; };
+  set('zykTeil', 0); set('zykB', 0.9); set('zykU', 20); set('zykR', 4.5);
+  const lb = (id, t) => { const e = document.getElementById(id); if (e) e.textContent = t; };
+  lb('zykBLbl', '0,90 T'); lb('zykULbl', '20 kV'); lb('zykRLbl', '4,5 cm');
+  _zykRenderEnergie();
+}
+
+function _zykUpdate() {
+  if (!_zyk) return;
+  const et = document.getElementById('zykPrinzipText');
+  if (et) {
+    et.innerHTML = `<div class="git-sch-kopf">So läuft die Beschleunigung ab</div>
+      <div class="zyk-erkl-z"><span>①</span>In der <b>Mitte</b> startet ein geladenes Teilchen
+        (z. B. ein Proton) nahezu in Ruhe.</div>
+      <div class="zyk-erkl-z"><span>②</span>Im <b>Spalt</b> zwischen den Duanten beschleunigt die
+        Spannung U das Teilchen – es gewinnt die Energie q·U.</div>
+      <div class="zyk-erkl-z"><span>③</span>Im <b>Duanten</b> zwingt die Lorentzkraft es auf einen
+        Halbkreis (kein Energiegewinn, nur Richtungsänderung).</div>
+      <div class="zyk-erkl-z"><span>④</span>Die Spannung hat <b>umgepolt</b>, sodass der nächste
+        Spaltdurchgang wieder beschleunigt – schneller ⇒ <b>größerer Radius</b>.</div>
+      <div class="zyk-erkl-z"><span>⑤</span>So spiralt das Teilchen nach außen und wird am Rand mit
+        hoher Energie <b>herausgeführt</b>.</div>
+      <div class="zyk-erkl-note">Der Trick: <b>ein</b> Beschleunigungsspalt wird durch das Magnetfeld
+        immer wieder benutzt – viel platzsparender als ein Linearbeschleuniger.</div>`;
+  }
+  _zykRenderK3();
+  _zykRenderHerleitung();
+  _zykRenderEnergie();
+  _zykRenderRelativ();
+  _zykRenderAnw();
+}
+
+function _zykRenderK3() {
+  const el = document.getElementById('zykK3'); if (!el) return;
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du das Zyklotron jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Geladene Teilchen platzsparend auf hohe Energien beschleunigen.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Zwei Duanten im senkrechten Magnetfeld, dazwischen eine hochfrequente Wechselspannung.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Ein Teilchen startet in der Mitte, wird im Spalt beschleunigt und im Duanten auf einen
+        Halbkreis gelenkt – Umlauf für Umlauf.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        Die Halbumlaufdauer T = π·m/(q·B) ist von v unabhängig, deshalb reicht eine feste Frequenz;
+        das Teilchen spiralt mit wachsendem Radius nach außen.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Nimmt die Masse relativistisch zu, wächst die Umlaufdauer und das Teilchen gerät außer Takt –
+        die Grenze des klassischen Zyklotrons.</div>
+    </div>`;
+}
+
+// ── Station 2: Herleitung der konstanten Frequenz ──────
+function _zykRenderHerleitung() {
+  const el = document.getElementById('zykHerleitung'); if (!el) return;
+  // zwei Beispielgeschwindigkeiten fuer die Demo (Proton, B=1 T)
+  const m = _ZYK_TEILCHEN[0].m, q = _ZYK_E, B = 1;
+  const vKlein = 1.0e6, vGross = 3.0e6;
+  const rKlein = _zykRadiusV(m, q, B, vKlein), rGross = _zykRadiusV(m, q, B, vGross);
+  const Tk = Math.PI * rKlein / vKlein, Tg = Math.PI * rGross / vGross;
+  const Tf = _zykThalb(m, q, B);
+  el.innerHTML = `<div class="git-sch-kopf">Warum eine feste Frequenz genügt</div>
+    <div class="zyk-herl-schritt"><span>1</span>Im Duanten ist die <b>Lorentzkraft die
+      Zentripetalkraft</b>:
+      <div class="zyk-herl-form">m·v²/r = q·v·B</div></div>
+    <div class="zyk-herl-schritt"><span>2</span>Nach dem Radius auflösen – er wächst mit v:
+      <div class="zyk-herl-form">r = m·v / (q·B)</div></div>
+    <div class="zyk-herl-schritt"><span>3</span>Die Halbumlaufdauer ist Weg (Halbkreis) durch
+      Geschwindigkeit:
+      <div class="zyk-herl-form">T<sub>½</sub> = π·r / v = π·m·v / (q·B·v)</div></div>
+    <div class="zyk-herl-schritt erg"><span>4</span>v <b>kürzt sich heraus</b> – T hängt nicht von
+      der Geschwindigkeit ab:
+      <div class="zyk-herl-form erg">T<sub>½</sub> = π·m / (q·B)</div></div>
+    <div class="zyk-herl-vgl">
+      <div class="zyk-herl-vgl-kopf">Zahlenprobe (Proton, B = 1 T):</div>
+      <div class="zyk-herl-vgl-z"><b>langsam</b> v = 1,0·10⁶ m/s → r = ${_fpmNum(rKlein * 100, 2)} cm,
+        T<sub>½</sub> = <b>${_fpmNum(Tk * 1e9, 1)} ns</b></div>
+      <div class="zyk-herl-vgl-z"><b>schnell</b> v = 3,0·10⁶ m/s → r = ${_fpmNum(rGross * 100, 2)} cm,
+        T<sub>½</sub> = <b>${_fpmNum(Tg * 1e9, 1)} ns</b></div>
+      <div class="zyk-herl-vgl-erg">Der Radius verdreifacht sich, die Zeit bleibt bei
+        <b>${_fpmNum(Tf * 1e9, 1)} ns</b> – exakt gleich!</div>
+    </div>
+    <div class="fpm-note">Damit kann das Zyklotron mit einer <b>konstanten</b> Frequenz
+      f = q·B/(2π·m) betrieben werden. Genau das machte den Beschleuniger so kompakt und
+      praktikabel.</div>`;
+}
+
+// ── Station 3: Energie & Endwerte ──────────────────────
+function _zykRenderEnergie() {
+  const el = document.getElementById('zykEnergieRechnung'); if (!el) return;
+  const m = _zykM(), q = _zykQ(), B = _zyk.B, R = _zyk.R / 100, U = _zyk.U * 1000;
+  const f = _zykFreq(m, q, B), Th = _zykThalb(m, q, B);
+  const vmax = _zykVmax(m, q, B, R), Emax = _zykEmax(m, q, B, R);
+  const N = _zykNMax(m, q, B, R, U);
+  const betaMax = vmax / _ZYK_C;
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Zyklotronfrequenz</span>
+      <span class="pho-rz-f">f = q·B/(2π·m)</span><span class="pho-rz-v">${_fpmNum(f / 1e6, 2)} MHz</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Halbumlaufdauer</span>
+      <span class="pho-rz-f">T<sub>½</sub> = π·m/(q·B)</span><span class="pho-rz-v">${_fpmNum(Th * 1e9, 1)} ns</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Endgeschwindigkeit</span>
+      <span class="pho-rz-f">v<sub>max</sub> = q·B·R/m</span><span class="pho-rz-v">${_fpmNum(vmax / 1e6, 2)}·10⁶ m/s</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Endenergie</span>
+      <span class="pho-rz-f">E<sub>max</sub> = q²B²R²/(2m)</span><span class="pho-rz-v">${_zykEnergieLbl(Emax, q)}</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Spaltdurchgänge</span>
+      <span class="pho-rz-f">N = E<sub>max</sub>/(q·U)</span><span class="pho-rz-v">${_fpmNum(N, 0)}</span></div>`;
+  const t = document.getElementById('zykEnergieText');
+  if (t) {
+    const relHinweis = betaMax > 0.1
+      ? `<b>Achtung:</b> Mit ${_fpmNum(betaMax * 100, 1)} % der Lichtgeschwindigkeit macht sich hier
+         bereits die relativistische Massenzunahme bemerkbar (siehe Station 4).`
+      : `Bei ${_fpmNum(betaMax * 100, 2)} % der Lichtgeschwindigkeit sind relativistische Effekte noch
+         vernachlässigbar – das klassische Zyklotron arbeitet sauber.`;
+    t.innerHTML = `<div class="fpm-note">Das Teilchen durchläuft <b>${_fpmNum(N, 0)} Spalte</b>
+      (${_fpmNum(N / 2, 0)} volle Umläufe) und gewinnt dabei jedes Mal q·U =
+      ${_fpmNum(_zyk.U * _ZYK_TEILCHEN[_zyk.teil].z, 0)} keV. Der Radius wächst dabei wie
+      r<sub>n</sub> = √(2m·n·qU)/(qB) – anfangs schnell, dann immer enger (∝ √n). ${relHinweis}</div>`;
+  }
+}
+function _zykEnergieLbl(E, q) {
+  const eV = E / _ZYK_E;
+  if (eV >= 1e6) return _fpmNum(eV / 1e6, 2) + ' MeV';
+  return _fpmNum(eV / 1e3, 1) + ' keV';
+}
+
+// ── Station 4: relativistische Grenze ──────────────────
+function _zykRenderRelativ() {
+  const el = document.getElementById('zykRelativText'); if (!el) return;
+  const m = _ZYK_TEILCHEN[0].m, q = _ZYK_E, B = 1.2;   // Proton, festes B
+  const Ekin = _zyk.ekin * 1e6 * _ZYK_E;
+  const gamma = _zykGammaE(m, Ekin);
+  const f0 = _zykFreq(m, q, B);                 // klassische Frequenz
+  const fRel = f0 / gamma;                       // relativistisch gesenkte Frequenz
+  const abfall = (1 - fRel / f0) * 100;
+  const v = _ZYK_C * Math.sqrt(1 - 1 / (gamma * gamma));
+  el.innerHTML = `<div class="git-sch-kopf">Wenn die Masse relativistisch wird</div>
+    <div class="ebr-rechnung" style="margin-bottom:8px">
+      <div class="pho-rz"><span class="pho-rz-t">kinetische Energie</span>
+        <span class="pho-rz-f">E<sub>kin</sub></span><span class="pho-rz-v">${_fpmNum(_zyk.ekin, 1)} MeV</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">Geschwindigkeit</span>
+        <span class="pho-rz-f">v/c</span><span class="pho-rz-v">${_fpmNum(v / _ZYK_C, 4)}</span></div>
+      <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Lorentzfaktor</span>
+        <span class="pho-rz-f">γ = 1 + E<sub>kin</sub>/(m·c²)</span><span class="pho-rz-v">${_fpmNum(gamma, 4)}</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">nötige Frequenz</span>
+        <span class="pho-rz-f">f = q·B/(2π·γ·m)</span><span class="pho-rz-v">${_fpmNum(fRel / 1e6, 3)} MHz</span></div>
+      <div class="pho-rz"><span class="pho-rz-t">Abfall gegenüber f₀</span>
+        <span class="pho-rz-f">1 − f/f₀</span><span class="pho-rz-v">${_fpmNum(abfall, 2)} %</span></div>
+    </div>
+    <div class="zyk-relativ-z">Die Umlaufdauer T = 2π·γ·m/(q·B) wächst mit dem Lorentzfaktor γ.
+      Bei fester Frequenz kommt das Teilchen deshalb <b>zu spät</b> in den Spalt – es gerät
+      <b>außer Takt</b>, und die Beschleunigung bricht ab.</div>
+    <div class="zyk-relativ-z syn"><b>Synchrozyklotron:</b> Man senkt die Frequenz mit steigender
+      Energie genau um den Faktor 1/γ ab. So bleibt das Teilchen im Takt und lässt sich weit über
+      die klassische Grenze hinaus beschleunigen.</div>
+    <div class="fpm-note">Schon bei 10 MeV weicht die nötige Frequenz um rund 1 % ab, bei 200 MeV um
+      fast 18 %. Genau an dieser Stelle zwingt die Natur die Beschleunigertechnik, die <b>spezielle
+      Relativitätstheorie</b> ernst zu nehmen.</div>`;
+}
+
+// ── Station 5: Anwendung ───────────────────────────────
+function _zykRenderAnw() {
+  const el = document.getElementById('zykAnwText'); if (!el) return;
+  el.innerHTML = `<div class="git-sch-kopf">Wo Zyklotrons heute arbeiten</div>
+    <div class="zyk-anw-z med"><b>Medizin – Diagnostik</b> Kompaktzyklotrons erzeugen kurzlebige
+      radioaktive Präparate (z. B. Fluor-18) für die <b>PET</b>-Bildgebung. Weil diese Isotope nur
+      Minuten bis Stunden leben, stehen die Beschleuniger oft direkt in der Klinik.</div>
+    <div class="zyk-anw-z med"><b>Medizin – Therapie</b> Größere Zyklotrons liefern Protonen von
+      einigen hundert MeV für die <b>Protonen- und Ionentherapie</b> gegen Tumoren: Die Teilchen
+      geben ihre Energie punktgenau in der Tiefe ab und schonen das umliegende Gewebe.</div>
+    <div class="zyk-anw-z"><b>Forschung</b> Zyklotrons dienen als <b>Vorbeschleuniger</b> großer
+      Anlagen und zur Erzeugung exotischer Kerne. In Ringbeschleunigern (Synchrotrons) wird das
+      Prinzip zu höchsten Energien weitergetrieben.</div>
+    <div class="zyk-anw-z hist"><b>Geschichte</b> 1930 baute Ernest O. Lawrence das erste Zyklotron
+      – ganze 9 cm groß, Protonen auf 80 keV. Er erhielt dafür 1939 den <b>Nobelpreis</b>. Heute
+      reichen Zyklotrons von tischgroßen Medizingeräten bis zu Anlagen mit vielen Metern
+      Durchmesser.</div>`;
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _zykTakt(dt) {
+  if (!_zyk) return;
+  if (_zyk.laeuft) _zyk.t += Math.min(0.05, dt);
+}
+function _zykRender() {
+  if (!_zyk) return;
+  const st = _zyk.station;
+  if (st === 0) { const c = document.getElementById('zykPrinzip'); if (c) _zykDrawPrinzip(c.getContext('2d'), c); }
+  else if (st === 1) { const c = document.getElementById('zykFreq'); if (c) _zykDrawFreq(c.getContext('2d'), c); }
+  else if (st === 2) { const c = document.getElementById('zykEnergie'); if (c) _zykDrawEnergie(c.getContext('2d'), c); }
+  else if (st === 3) { const c = document.getElementById('zykRelativ'); if (c) _zykDrawRelativ(c.getContext('2d'), c); }
+  else if (st === 4) { const c = document.getElementById('zykAnwendung'); if (c) _zykDrawAnwendung(c.getContext('2d'), c); }
+}
+
+// ── Hilfszeichnung: die zwei Duanten mit Spalt ─────────
+function _zykDuanten(ctx, cx, cy, rad, gap, polLinks) {
+  // linker Duant (Halbkreis links), rechter Duant (rechts), Spalt in der Mitte
+  ctx.fillStyle = '#1e293b';
+  ctx.beginPath(); ctx.arc(cx - gap, cy, rad, Math.PI / 2, 3 * Math.PI / 2); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.arc(cx + gap, cy, rad, -Math.PI / 2, Math.PI / 2); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(cx - gap, cy, rad, Math.PI / 2, 3 * Math.PI / 2); ctx.stroke();
+  ctx.beginPath(); ctx.arc(cx + gap, cy, rad, -Math.PI / 2, Math.PI / 2); ctx.stroke();
+  // Vorzeichen der Spannung
+  ctx.font = '700 16px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillStyle = polLinks ? '#f87171' : '#60a5fa';
+  ctx.fillText(polLinks ? '+' : '−', cx - gap - rad / 2, cy);
+  ctx.fillStyle = polLinks ? '#60a5fa' : '#f87171';
+  ctx.fillText(polLinks ? '−' : '+', cx + gap + rad / 2, cy);
+  ctx.textBaseline = 'alphabetic';
+}
+
+function _zykDrawPrinzip(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2, cy = H / 2 + 6, rad = 120, gap = 7;
+  // Polung wechselt mit der Zyklotronfrequenz (hier fest getaktet zur Anschauung)
+  const takt = Math.floor(_zyk.t * 1.5) % 2 === 0;
+  _zykDuanten(ctx, cx, cy, rad, gap, takt);
+  // Spiralbahn: r waechst wie sqrt(Windungszahl); Winkel laeuft
+  const wind = 7;                    // Windungen
+  const phi = _zyk.t * 2.2;          // Position des Teilchens
+  // gezeichnete Spirale
+  ctx.strokeStyle = 'rgba(56,189,248,0.35)'; ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  for (let a = 0; a <= wind * Math.PI; a += 0.08) {
+    const rr = (rad - 8) * Math.sqrt(a / (wind * Math.PI));
+    const x = cx + rr * Math.cos(a), y = cy + rr * Math.sin(a);
+    if (a === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  // Teilchen auf der Spirale
+  const amax = wind * Math.PI;
+  const a = phi % amax;
+  const rr = (rad - 8) * Math.sqrt(a / amax);
+  const px = cx + rr * Math.cos(a), py = cy + rr * Math.sin(a);
+  // Beschleunigungs-Blitz am Spalt (wenn nahe der Mitte, cos(a)~0 bei a=pi/2,3pi/2...)
+  const nahSpalt = Math.abs(Math.cos(a)) < 0.18;
+  if (nahSpalt) {
+    ctx.strokeStyle = 'rgba(251,191,36,0.8)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(cx, py - 10); ctx.lineTo(cx, py + 10); ctx.stroke();
+  }
+  ctx.fillStyle = '#fbbf24';
+  ctx.beginPath(); ctx.arc(px, py, 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = 'rgba(251,191,36,0.4)';
+  ctx.beginPath(); ctx.arc(px, py, 9, 0, 2 * Math.PI); ctx.fill();
+  // Magnetfeld-Symbole (aus der Ebene: Punkte)
+  ctx.fillStyle = 'rgba(148,163,184,0.4)';
+  for (let gx = 40; gx < W - 20; gx += 60) for (let gy = 30; gy < H - 20; gy += 60) {
+    ctx.beginPath(); ctx.arc(gx, gy, 1.6, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Beschriftung
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Duant', 8, 16);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.fillText('B senkrecht aus der Ebene ⊙', 8, H - 8);
+  ctx.textAlign = 'right';
+  ctx.fillStyle = '#fbbf24'; ctx.fillText('Beschleunigung im Spalt', W - 8, 16);
+  ctx.textAlign = 'left';
+}
+
+function _zykDrawFreq(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  // zwei Kreise: klein (links) und gross (rechts), beide durchlaufen gleichen Winkel in gleicher Zeit
+  const cyc = (_zyk.t * 0.5) % 1;             // 0..1 = Halbumlauf-Phase, GEMEINSAM
+  const winkel = Math.PI * cyc;               // beide gleich weit!
+  const conf = [
+    { cx: W * 0.28, cy: H / 2 + 10, r: 38, lbl: 'kleiner Radius', v: 'v klein' },
+    { cx: W * 0.72, cy: H / 2 + 10, r: 92 * _zyk.vDemo + 20, lbl: 'großer Radius', v: 'v groß' }
+  ];
+  conf.forEach((c, i) => {
+    // Kreisbahn
+    ctx.strokeStyle = 'rgba(56,189,248,0.4)'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.arc(c.cx, c.cy, c.r, 0, 2 * Math.PI); ctx.stroke();
+    // durchlaufener Bogen (Halbkreis-Anteil)
+    ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.arc(c.cx, c.cy, c.r, -Math.PI / 2, -Math.PI / 2 + winkel); ctx.stroke();
+    // Teilchen
+    const a = -Math.PI / 2 + winkel;
+    const px = c.cx + c.r * Math.cos(a), py = c.cy + c.r * Math.sin(a);
+    ctx.fillStyle = '#fbbf24'; ctx.beginPath(); ctx.arc(px, py, 5, 0, 2 * Math.PI); ctx.fill();
+    // Zentrum
+    ctx.fillStyle = '#475569'; ctx.beginPath(); ctx.arc(c.cx, c.cy, 2, 0, 2 * Math.PI); ctx.fill();
+    // Labels
+    ctx.fillStyle = '#cbd5e1'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(c.lbl, c.cx, c.cy + c.r + 20);
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+    ctx.fillText(c.v, c.cx, c.cy - c.r - 8);
+  });
+  // gemeinsame Uhr / Fortschrittsbalken
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Beide durchlaufen ihren Halbkreis in GENAU derselben Zeit', W / 2, 20);
+  // Balken
+  const bx = W / 2 - 90, bw = 180, by = H - 20;
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1; ctx.strokeRect(bx, by, bw, 8);
+  ctx.fillStyle = '#4ade80'; ctx.fillRect(bx, by, bw * cyc, 8);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.fillText('T½ = π·m/(q·B) – für beide gleich', W / 2, by - 4);
+  ctx.textAlign = 'left';
+}
+
+function _zykDrawEnergie(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2, cy = H / 2, gap = 5;
+  const m = _zykM(), q = _zykQ(), B = _zyk.B, R = _zyk.R / 100, U = _zyk.U * 1000;
+  const N = Math.max(1, Math.min(400, _zykNMax(m, q, B, R, U)));   // Spaltdurchgaenge
+  const maxPix = Math.min(W, H) / 2 - 16;
+  const rad = maxPix;
+  _zykDuanten(ctx, cx, cy, rad, gap, true);
+  // Spiralbahn nach Radiengesetz r_n ∝ sqrt(n); auf Pixel skaliert (r_N = maxPix)
+  ctx.strokeStyle = 'rgba(251,191,36,0.7)'; ctx.lineWidth = 1.3;
+  ctx.beginPath();
+  const steps = Math.floor(N);
+  let started = false;
+  for (let n = 0.02; n <= N; n += Math.max(0.02, N / 400)) {
+    const rr = maxPix * Math.sqrt(n / N);
+    const ang = Math.PI * n;                  // jeder Spaltdurchgang = Halbumlauf
+    const x = cx + rr * Math.cos(ang), y = cy + rr * Math.sin(ang);
+    if (!started) { ctx.moveTo(x, y); started = true; } else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  // laufendes Teilchen
+  const amax = Math.PI * N;
+  const a = (_zyk.t * 3) % amax;
+  const nNow = a / Math.PI;
+  const rrNow = maxPix * Math.sqrt(Math.max(0, nNow) / N);
+  const px = cx + rrNow * Math.cos(a), py = cy + rrNow * Math.sin(a);
+  ctx.fillStyle = '#fde047'; ctx.beginPath(); ctx.arc(px, py, 4, 0, 2 * Math.PI); ctx.fill();
+  // Beschriftung: Endwerte
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_ZYK_TEILCHEN[_zyk.teil].name, 8, 16);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.fillText(_fpmNum(N, 0) + ' Spaltdurchgänge', 8, 30);
+  ctx.textAlign = 'right';
+  ctx.fillStyle = '#fbbf24';
+  ctx.fillText('E_max = ' + _zykEnergieLbl(_zykEmax(m, q, B, R), q), W - 8, 16);
+  ctx.textAlign = 'left';
+}
+
+function _zykDrawRelativ(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  // Diagramm: relative Frequenz f/f0 ueber E_kin (0..250 MeV)
+  const padL = 44, padR = 14, padT = 24, padB = 34;
+  const x0 = padL, x1 = W - padR, y0 = H - padB, y1 = padT;
+  const Emax = 250;                          // MeV
+  const m = _ZYK_TEILCHEN[0].m;
+  // Achsen
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  // Gitter y (f/f0 von 0.8 bis 1.0)
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'right';
+  for (let fr = 0.8; fr <= 1.001; fr += 0.05) {
+    const y = y0 - (fr - 0.8) / 0.2 * (y0 - y1);
+    ctx.strokeStyle = 'rgba(51,65,85,0.5)'; ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke();
+    ctx.fillText(_fpmNum(fr, 2), x0 - 4, y + 3);
+  }
+  // x-Beschriftung
+  ctx.textAlign = 'center';
+  for (let E = 0; E <= Emax; E += 50) {
+    const x = x0 + E / Emax * (x1 - x0);
+    ctx.fillText(E + '', x, y0 + 12);
+  }
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.fillText('kinetische Energie / MeV', (x0 + x1) / 2, H - 6);
+  ctx.save(); ctx.translate(12, (y0 + y1) / 2); ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = 'center'; ctx.fillText('f / f₀', 0, 0); ctx.restore();
+  // Kurve f/f0 = 1/gamma
+  ctx.strokeStyle = '#f87171'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let E = 0; E <= Emax; E += 2) {
+    const g = _zykGammaE(m, E * 1e6 * _ZYK_E);
+    const fr = 1 / g;
+    const x = x0 + E / Emax * (x1 - x0);
+    const y = y0 - (fr - 0.8) / 0.2 * (y0 - y1);
+    if (E === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  // aktueller Punkt
+  const g = _zykGammaE(m, _zyk.ekin * 1e6 * _ZYK_E);
+  const frn = 1 / g;
+  const xn = x0 + Math.min(_zyk.ekin, Emax) / Emax * (x1 - x0);
+  const yn = y0 - (Math.max(0.8, frn) - 0.8) / 0.2 * (y0 - y1);
+  ctx.fillStyle = '#fbbf24'; ctx.beginPath(); ctx.arc(xn, yn, 4, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = 'rgba(251,191,36,0.4)'; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+  ctx.beginPath(); ctx.moveTo(xn, y0); ctx.lineTo(xn, yn); ctx.stroke(); ctx.setLineDash([]);
+  // Titel
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('nötige Umlauffrequenz fällt mit γ (Proton, B = 1,2 T)', x0, 14);
+}
+
+function _zykDrawAnwendung(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  // schematisches Kompaktzyklotron mit Strahlaustritt zum Target
+  const cx = W * 0.38, cy = H / 2, rad = 70, gap = 5;
+  _zykDuanten(ctx, cx, cy, rad, gap, true);
+  // Spirale
+  ctx.strokeStyle = 'rgba(251,191,36,0.6)'; ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  for (let a = 0.1; a <= 6 * Math.PI; a += 0.1) {
+    const rr = (rad - 6) * Math.sqrt(a / (6 * Math.PI));
+    const x = cx + rr * Math.cos(a), y = cy + rr * Math.sin(a);
+    if (a === 0.1) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  // Strahlaustritt nach rechts
+  const bx = cx + rad, by = cy;
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(W - 70, by); ctx.stroke();
+  // bewegte Strahlpunkte
+  ctx.fillStyle = '#fde047';
+  for (let k = 0; k < 4; k++) {
+    const px = bx + ((_zyk.t * 60 + k * 30) % (W - 70 - bx));
+    ctx.beginPath(); ctx.arc(px, by, 2.5, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Target
+  ctx.fillStyle = '#334155'; ctx.fillRect(W - 66, by - 26, 22, 52);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.strokeRect(W - 66, by - 26, 22, 52);
+  ctx.fillStyle = '#cbd5e1'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Target', W - 55, by + 42);
+  ctx.fillText('Isotope', W - 55, by + 53);
+  // Labels
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Kompaktzyklotron', 8, 16);
+  ctx.fillStyle = '#fbbf24'; ctx.font = '9px sans-serif';
+  ctx.fillText('Protonenstrahl', bx + 20, by - 8);
+  ctx.textAlign = 'left';
+}
+
+// ── Zusätzliche Styles für das Zyklotron ───────────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .zyk-erkl { display: flex; flex-direction: column; gap: 5px; background: #f8fafc;
+      border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 12px; }
+    .zyk-erkl-z { display: flex; gap: 8px; align-items: flex-start; font-size: .77rem; color: #475569;
+      line-height: 1.5; }
+    .zyk-erkl-z span { flex: 0 0 20px; height: 20px; border-radius: 50%; background: #0ea5e9; color: #fff;
+      font-size: .72rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .zyk-erkl-z b { color: #334155; }
+    .zyk-erkl-note { font-size: .75rem; color: #7c2d12; background: #fff7ed; border: 1px solid #fed7aa;
+      border-radius: 7px; padding: 6px 9px; margin-top: 4px; }
+    .zyk-erkl-note b { color: #9a3412; }
+    .zyk-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 13px; margin-top: 12px; }
+    .zyk-herleitung { display: flex; flex-direction: column; gap: 6px; }
+    .zyk-herl-schritt { display: flex; gap: 8px; align-items: flex-start; font-size: .77rem; color: #475569;
+      line-height: 1.5; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 7px 9px; }
+    .zyk-herl-schritt span { flex: 0 0 18px; height: 18px; border-radius: 50%; background: #0284c7; color: #fff;
+      font-size: .7rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .zyk-herl-schritt.erg { background: #ecfeff; border-color: #a5f3fc; }
+    .zyk-herl-schritt b { color: #334155; }
+    .zyk-herl-form { font-size: .82rem; text-align: center; color: #0e7490; background: #fff;
+      border: 1px solid #e2e8f0; border-radius: 6px; padding: 4px 8px; margin-top: 4px; font-variant-numeric: tabular-nums; }
+    .zyk-herl-form.erg { color: #164e63; font-weight: 700; background: #cffafe; border-color: #67e8f9; }
+    .zyk-herl-vgl { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 8px 10px;
+      display: flex; flex-direction: column; gap: 3px; }
+    .zyk-herl-vgl-kopf { font-size: .74rem; font-weight: 700; color: #0369a1; }
+    .zyk-herl-vgl-z { font-size: .75rem; color: #475569; }
+    .zyk-herl-vgl-z b { color: #334155; }
+    .zyk-herl-vgl-erg { font-size: .76rem; color: #047857; font-weight: 700; margin-top: 2px; }
+    .zyk-energie-t { margin-top: 8px; }
+    .zyk-relativ-t { display: flex; flex-direction: column; gap: 6px; }
+    .zyk-relativ-z { font-size: .77rem; color: #475569; line-height: 1.6; background: #f8fafc;
+      border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; }
+    .zyk-relativ-z b { color: #334155; }
+    .zyk-relativ-z.syn { background: #ecfeff; border-color: #a5f3fc; }
+    .zyk-relativ-z.syn b { color: #0e7490; }
+    .zyk-anw-t { display: flex; flex-direction: column; gap: 6px; }
+    .zyk-anw-z { font-size: .77rem; color: #475569; line-height: 1.6; background: #f8fafc;
+      border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; }
+    .zyk-anw-z b { color: #334155; }
+    .zyk-anw-z.med { background: #fef2f2; border-color: #fecaca; }
+    .zyk-anw-z.med b { color: #b91c1c; }
+    .zyk-anw-z.hist { background: #fff7ed; border-color: #fed7aa; }
+    .zyk-anw-z.hist b { color: #9a3412; }
+    .zyk-select { padding: 3px 6px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: .75rem;
+      background: #fff; color: #334155; }
   `;
   document.head.appendChild(s);
 })();
