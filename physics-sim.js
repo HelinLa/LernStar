@@ -25728,7 +25728,9 @@ function _flmInit() {
     // Station 3
     skt: 7.6, kalibriert: true,
     // Station 4
-    probe: 0, tipp: null, aufgedeckt: false
+    probe: 0, tipp: null, aufgedeckt: false,
+    // Station 6 – Dispersion vermessen (handlungsorientiert)
+    mEl: 0, rows: [], nextId: 1, fn: null, fnAuto: false, reveal: false
   };
 }
 
@@ -25745,6 +25747,174 @@ function _flmZahl(v) {
 function _flmEnergie(nm) { return _FLM_HC / nm; }
 // Der Smartphone-Spektrograf: aus dem Skalenteil die Wellenlaenge
 function _flmLambda(skt) { return _FLM_NM_PRO_SKT * skt + _FLM_NULL_NM; }
+
+// ══ Station 6: Dispersion vermessen (handlungsorientiert) ══
+// Skala des Spektroskops ist linear: λ = _FLM_NM_PRO_SKT·Skt + _FLM_NULL_NM.
+// Die SuS lesen die Skalenposition der hellsten Linie jedes Elements ab und
+// bestaetigen die lineare Dispersion (Steigung = nm je Skalenteil).
+function _flmMHellste(el) {
+  const eigene = el.linien.filter(l => !l.na);
+  const liste = eigene.length ? eigene : el.linien;
+  return liste.reduce((a, b) => (b.i > a.i ? b : a), liste[0]);
+}
+function _flmMSktRead(nm) { return Math.round(_flmSkt(nm) / 0.1) * 0.1; }
+function _flmMSetEl(i) { _flm.mEl = Math.max(0, Math.min(_FLM_ELEMENTE.length - 1, i)); _flmMRender(); }
+function _flmMRender() {
+  const w = document.getElementById('flmMWahl');
+  if (w) {
+    w.innerHTML = _FLM_ELEMENTE.map((el, i) =>
+      `<button class="lsp-lw-b${i === _flm.mEl ? ' on' : ''}" onclick="_flmMSetEl(${i})"
+         style="${i === _flm.mEl ? 'border-color:' + el.rgb : ''}">
+         <span class="lsp-lw-farbe" style="background:${el.rgb}"></span>${el.sym}</button>`).join('');
+  }
+  const el = _FLM_ELEMENTE[_flm.mEl], lin = _flmMHellste(el);
+  const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  set('flmMEA', el.n + ' (' + el.sym + ')');
+  set('flmMLA', _fpmNum(lin.nm, 1));
+  set('flmMSA', _fpmNum(_flmMSktRead(lin.nm), 1));
+  _flmMRenderTable(); _flmMDrawPlot();
+  const c = document.getElementById('flmMSkala'); if (c) _flmMDrawSkala(c.getContext('2d'), c);
+}
+function _flmMTake() {
+  const el = _FLM_ELEMENTE[_flm.mEl], lin = _flmMHellste(el);
+  if (_flm.rows.some(r => r.sym === el.sym)) return;
+  _flm.rows.push({ id: _flm.nextId++, sym: el.sym, rgb: el.rgb, skt: _flmMSktRead(lin.nm), nm: lin.nm });
+  _flm.rows.sort((a, b) => a.skt - b.skt);
+  _flmMRender();
+}
+function _flmMDelRow(id) { _flm.rows = _flm.rows.filter(r => r.id !== id); _flmMRender(); }
+function _flmMClear() {
+  if (_flm.rows.length && !confirm('Alle ' + _flm.rows.length + ' Messwerte löschen?')) return;
+  _flm.rows = []; _flmMRender();
+}
+function _flmMDemo() {
+  _flm.rows = [];
+  _FLM_ELEMENTE.forEach(el => { const lin = _flmMHellste(el); _flm.rows.push({ id: _flm.nextId++, sym: el.sym, rgb: el.rgb, skt: _flmMSktRead(lin.nm), nm: lin.nm }); });
+  _flm.rows.sort((a, b) => a.skt - b.skt);
+  _flmMRender();
+}
+function _flmMRenderTable() {
+  const tb = document.getElementById('flmMTbody'); if (!tb) return;
+  const empty = document.getElementById('flmMEmpty');
+  if (empty) empty.style.display = _flm.rows.length ? 'none' : 'block';
+  tb.innerHTML = _flm.rows.map(r =>
+    `<tr><td><span class="fpm-dot" style="background:${r.rgb}"></span>${r.sym}</td>
+       <td>${_fpmNum(r.skt, 1)}</td><td><b>${_fpmNum(r.nm, 1)}</b></td>
+       <td class="fpm-del" onclick="_flmMDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _flmMSetReveal(on) { _flm.reveal = !!on; _flmMDrawPlot(); }
+function _flmMFmt(v) { let s = v.toFixed(3); if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, ''); return s; }
+function _flmMTheorieTerm() { return _flmMFmt(_FLM_NM_PRO_SKT) + '*x+' + _flmMFmt(_FLM_NULL_NM); }
+function _flmMTheorieFn() {
+  const term = _flmMTheorieTerm();
+  const inp = document.getElementById('flmMFn'); if (inp) inp.value = term;
+  _flmMSetFn(term); _flm.fnAuto = true; _flmMRenderTheorie(true);
+}
+function _flmMClearFn() {
+  const inp = document.getElementById('flmMFn'); if (inp) inp.value = '';
+  _flmMSetFn(''); _flmMRenderTheorie(false);
+}
+function _flmMRenderTheorie(eingesetzt) {
+  const el = document.getElementById('flmMTheo'); if (!el) return;
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">Gerade mit Achsenabschnitt</div>
+     <div class="fpm-theo-form">λ = (nm/Skt) · Skt + λ₀</div>
+     <div class="fpm-theo-par">Steigung = Dispersion in nm je Skalenteil, Achsenabschnitt = Nullpunkt-Wellenlänge</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${_flmMTheorieTerm()}</div>` : ''}
+     <div class="fpm-theo-deutung">Die Skala des Handspektroskops ist linear mit der Wellenlänge verknüpft. Trägt man die bekannten Wellenlängen der Elementlinien über ihren abgelesenen Skalenpositionen auf, ergibt sich eine Gerade. Ihre Steigung ist die Dispersion (nm je Skalenteil), ihr Achsenabschnitt die Nullpunkt-Wellenlänge – damit ist das Spektroskop kalibriert und kann die Linien unbekannter Proben in Wellenlängen umrechnen.</div>`;
+}
+function _flmMSetFn(str) {
+  _flm.fnAuto = false;
+  const err = document.getElementById('flmMFnErr');
+  const v = (str || '').trim();
+  if (!v) { _flm.fn = null; if (err) err.textContent = ''; _flmMDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _flm.fn = f; if (err) err.textContent = '';
+  } catch (e) { _flm.fn = null; if (err) err.textContent = e.message; }
+  _flmMDrawPlot();
+}
+function _flmMDrawSkala(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const x0 = 20, x1 = W - 20, sMin = -2, sMax = 12;
+  const X = s => x0 + (s - sMin) / (sMax - sMin) * (x1 - x0);
+  // Skala
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1; ctx.font = '9px sans-serif';
+  ctx.beginPath(); ctx.moveTo(x0, H - 26); ctx.lineTo(x1, H - 26); ctx.stroke();
+  for (let s = sMin; s <= sMax; s += 2) { ctx.beginPath(); ctx.moveTo(X(s), H - 26); ctx.lineTo(X(s), H - 22); ctx.stroke(); ctx.fillStyle = '#64748b'; ctx.textAlign = 'center'; ctx.fillText(s + '', X(s), H - 10); }
+  ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'left'; ctx.fillText('Skalenteile', x0, H - 10);
+  // aktuelle Element-Linien
+  const el = _FLM_ELEMENTE[_flm.mEl];
+  el.linien.forEach(l => {
+    const s = _flmSkt(l.nm), sel = l === _flmMHellste(el);
+    ctx.strokeStyle = el.rgb; ctx.lineWidth = sel ? 3 : 1.4; ctx.globalAlpha = l.na ? 0.35 : 1;
+    ctx.beginPath(); ctx.moveTo(X(s), 18); ctx.lineTo(X(s), H - 26); ctx.stroke(); ctx.globalAlpha = 1;
+    if (sel) { ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(_fpmNum(l.nm, 0) + ' nm', X(s), 13); }
+  });
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(el.n + ' (' + el.sym + ')', x0, 12);
+}
+function _flmMDrawPlot() {
+  const cv = document.getElementById('flmMPlot'); if (!cv || !_flm) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const padL = 46, padR = 14, padT = 10, padB = 30;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const pts = _flm.rows.map(r => ({ x: r.skt, y: r.nm, rgb: r.rgb }));
+  const xmin = -2, xmax = 13, ymax = 800;
+  const X = v => x0 + (v - xmin) / (xmax - xmin) * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+  ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  for (let s = 0; s <= 12; s += 3) { ctx.beginPath(); ctx.moveTo(X(s), y0); ctx.lineTo(X(s), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(s + '', X(s), y0 + 12); }
+  const yt = _fpmTicks(ymax, 5);
+  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('Skalenteil', x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('λ in nm', 0, 0); ctx.restore(); ctx.textAlign = 'left';
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
+    const fo = document.getElementById('flmMFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">Miss die Skalenpositionen der Elementlinien. Die Steigung der Geraden ist die Dispersion des Spektroskops.</div>';
+    return;
+  }
+  if (_flm.fn) {
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _flm.fn(xmin + (px - x0) / (x1 - x0) * (xmax - xmin)); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv); if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  let fit = null;
+  if (pts.length >= 2) {
+    fit = _fpmFitLinear(pts);
+    if (fit) { ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.7; ctx.beginPath(); ctx.moveTo(X(xmin), Y(fit.k * xmin + fit.b)); ctx.lineTo(X(xmax), Y(fit.k * xmax + fit.b)); ctx.stroke(); }
+  }
+  pts.forEach(p => { ctx.fillStyle = p.rgb; ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4.5, 0, 2 * Math.PI); ctx.fill(); ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.2; ctx.stroke(); });
+  const el = document.getElementById('flmMFitBox');
+  if (el) {
+    if (!fit) { el.innerHTML = '<div class="fpm-note">Mindestens zwei Elemente nötig.</div>'; }
+    else {
+      const abw = Math.abs(fit.k - _FLM_NM_PRO_SKT) / _FLM_NM_PRO_SKT * 100;
+      const cls = abw < 4 ? 'ok' : abw < 10 ? 'mid' : 'no';
+      el.innerHTML = `<div class="fpm-fitline">
+         <span class="fpm-fitmeta">${_flm.rows.length} Elemente</span>
+         <span class="fpm-fiteq">λ = ${_fpmNum(fit.k, 2)}·Skt ${fit.b >= 0 ? '+ ' + _fpmNum(fit.b, 1) : '− ' + _fpmNum(-fit.b, 1)}</span>
+         <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 4)}</span>
+         <span class="fpm-fiteq" style="color:#075985">${_fpmNum(fit.k, 1)} nm/Skt</span>
+         ${_flm.reveal ? `<span class="fpm-badge ${cls}">Kalibrierung 20,2 nm/Skt · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+       </div>`;
+    }
+  }
+}
 // und der Rueckweg: aus der Wellenlaenge das Skalenteil
 function _flmSkt(nm) { return (nm - _FLM_NULL_NM) / _FLM_NM_PRO_SKT; }
 
@@ -25780,7 +25950,7 @@ function _flmFarbe(nm) {
 function _flmHTML() {
   const stationen = ['1 · Die Flammenfärbung', '2 · Der Fingerabdruck',
                      '3 · Kalibrieren & Messen', '4 · Unbekannte Probe',
-                     '5 · Emission, Feuerwerk & Geschichte']
+                     '5 · Emission, Feuerwerk & Geschichte', '6 · Dispersion vermessen']
     .map((s, i) => `<button class="fpm-tab${i === _flm.station ? ' on' : ''}" id="flmSt${i}" onclick="_flmSetStation(${i})">${s}</button>`).join('');
 
   const salzwahl = _FLM_ELEMENTE.map((c, i) =>
@@ -25879,6 +26049,50 @@ function _flmHTML() {
       </div>
     </div>
 
+    <!-- ══ Station 6: Dispersion vermessen ══ -->
+    <div id="flmS5" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="flmMSkala" width="440" height="150" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Lies die Skalenposition der hellsten Linie jedes Elements ab</div>
+          <div class="flm-elwahl" id="flmMWahl"></div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Element</span><span class="fpm-ro-v" id="flmMEA" style="font-size:.85rem">—</span><span class="fpm-ro-u"></span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Wellenlänge λ (bekannt)</span><span class="fpm-ro-v" id="flmMLA">—</span><span class="fpm-ro-u">nm</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">abgelesene Skalenposition</span><span class="fpm-ro-v" id="flmMSA">—</span><span class="fpm-ro-u">Skt</span></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_flmMTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_flmMDemo()">📋 Alle Elemente</button>
+            <button class="sim-btn" onclick="_flmMClear()">🗑 Tabelle leeren</button>
+          </div>
+        </div>
+        <div>
+          <canvas id="flmMPlot" width="440" height="220" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Wellenlänge λ über Skalenteil: Steigung = Dispersion des Spektroskops</div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Element</th><th>Skt</th><th>λ (nm)</th><th></th></tr></thead>
+              <tbody id="flmMTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="flmMEmpty">Noch keine Messwerte.<br>Element wählen → Skalenposition übernehmen.</div>
+          </div>
+          <div class="fpm-fit" id="flmMFitBox"></div>
+          <div class="fpm-label" style="margin-top:8px">Funktion plotten</div>
+          <input type="text" id="flmMFn" class="fpm-input" placeholder="z. B. 20.2*x+434" spellcheck="false"
+            oninput="_flmMSetFn(this.value)">
+          <div class="fpm-err" id="flmMFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_flmMTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_flmMClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="flmMTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_flmMSetReveal(this.checked)">
+            Kalibrierwerte (20,2 nm/Skt, Nullpunkt 434 nm) anzeigen</label>
+        </div>
+      </div>
+    </div>
+
     <div id="flmErkl" class="dsp-erkl"></div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
       <b>Anregung → Rücksprung → Photon</b> &nbsp;|&nbsp; <b>E = h·c/λ</b>
@@ -25948,13 +26162,14 @@ function _flmErklHTML() {
 
 // ── Stationen ──────────────────────────────────────────
 function _flmSetStation(i) {
-  _flm.station = Math.max(0, Math.min(4, i));
-  for (let k = 0; k < 5; k++) {
+  _flm.station = Math.max(0, Math.min(5, i));
+  for (let k = 0; k < 6; k++) {
     document.getElementById('flmSt' + k)?.classList.toggle('on', k === _flm.station);
     const d = document.getElementById('flmS' + k);
     if (d) d.style.display = k === _flm.station ? 'block' : 'none';
   }
   _flmUpdate();
+  if (_flm.station === 5) _flmMRender();
 }
 function _flmSet(key, val) { _flm[key] = val; _flmUpdate(); }
 function _flmSetElement(i) { _flm.element = Math.max(0, Math.min(_FLM_ELEMENTE.length - 1, i)); _flmUpdate(); }
@@ -26435,6 +26650,9 @@ function _flmRender() {
     if (c) _flmDrawFeuer(c.getContext('2d'), c);
     const cv = document.getElementById('flmVergleich');
     if (cv) _flmDrawVergleich(cv.getContext('2d'), cv);
+  } else if (st === 5) {
+    const cm = document.getElementById('flmMSkala');
+    if (cm) _flmMDrawSkala(cm.getContext('2d'), cm);
   }
 }
 
