@@ -22500,8 +22500,9 @@ function _fhInit() {
     elektronen: [], atome: [],
     // Station 2
     UA2: 16, schritt: 0,
-    // Station 3
+    // Station 3 – Anregungsenergie MESSEN (handlungsorientiert)
     peaksMarkiert: false,
+    mCursor: 6.0, rows: [], nextId: 1, fn: null, fnAuto: false, reveal: false,
     // Station 4
     zeigeKalt: true,
     // Station 5
@@ -22644,15 +22645,46 @@ function _fhHTML() {
       <div class="fpm-grid">
         <div>
           <canvas id="fhKennlinie3" width="440" height="260" class="phys-chart-cv"></canvas>
-          <div class="fpm-label">Abstand benachbarter Maxima ablesen</div>
-          <div class="sim-btn-row">
-            <button class="sim-btn primary" onclick="_fhMarkiere()">✓ Maxima markieren</button>
-            <button class="sim-btn" onclick="_fhSet('peaksMarkiert',false)">zurücksetzen</button>
+          <div class="fpm-label">Schiebe den Messcursor auf ein Strom-Maximum und lies seine Spannung ab</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Messcursor U<sub>A</sub>: <b id="fhMCurLbl">6,0 V</b></span>
+            <input type="range" id="fhMCur" min="0" max="30" step="0.1" value="6"
+              oninput="_fhMSetCursor(this.value)" style="width:100%;accent-color:#7c3aed">
           </div>
-          <div class="ebr-rechnung" id="fhSpacingRechnung"></div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Cursorspannung U<sub>A</sub></span><span class="fpm-ro-v" id="fhMUA">—</span><span class="fpm-ro-u">V</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Auffängerstrom I</span><span class="fpm-ro-v" id="fhMIA">—</span><span class="fpm-ro-u">rel.</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Lage</span><span class="fpm-ro-v" id="fhMLage" style="font-size:.8rem">—</span><span class="fpm-ro-u"></span></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_fhMTake()">✓ Maximum übernehmen</button>
+            <button class="sim-btn" onclick="_fhMDemo()">📋 Alle Maxima</button>
+            <button class="sim-btn" onclick="_fhMClear()">🗑 Tabelle leeren</button>
+          </div>
         </div>
         <div>
-          <div class="fh-auswert" id="fhAuswert"></div>
+          <canvas id="fhMPlot" width="440" height="220" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Maximumspannung U<sub>n</sub> über der Ordnungszahl n</div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>n</th><th>U<sub>n</sub> (V)</th><th></th></tr></thead>
+              <tbody id="fhMTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="fhMEmpty">Noch keine Messwerte.<br>Cursor auf einen Gipfel → übernehmen.</div>
+          </div>
+          <div class="fpm-fit" id="fhMFitBox"></div>
+          <div class="fpm-label" style="margin-top:8px">Funktion plotten</div>
+          <input type="text" id="fhMFn" class="fpm-input" placeholder="z. B. 4.9*x+1.3" spellcheck="false"
+            oninput="_fhMSetFn(this.value)">
+          <div class="fpm-err" id="fhMFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_fhMTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_fhMClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="fhMTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_fhMSetReveal(this.checked)">
+            Literaturwert ΔE = 4,9 eV anzeigen</label>
+          <div class="fh-auswert" id="fhAuswert" style="margin-top:8px"></div>
         </div>
       </div>
     </div>
@@ -22774,7 +22806,7 @@ function _fhSetStation(i) {
     if (d) d.style.display = k === _fh.station ? 'block' : 'none';
   }
   _fhUpdate();
-  if (_fh.station === 2) _fhDrawKennlinie3();
+  if (_fh.station === 2) _fhMRender();
   if (_fh.station === 3) _fhDrawVergleich();
 }
 function _fhSet(key, val) {
@@ -22923,6 +22955,168 @@ function _fhRenderSchritte() {
 
 // ── Station 3: Anregungsenergie bestimmen ──────────────
 function _fhMarkiere() { _fh.peaksMarkiert = true; _fhDrawKennlinie3(); _fhRenderAuswert(); }
+
+// ══ Station 3: Anregungsenergie MESSEN (handlungsorientiert) ══
+// Die Maxima liegen bei U_n = U_kont + n·ΔE. Traegt man U_n ueber n auf,
+// ist die Steigung die Anregungsenergie ΔE, der Achsenabschnitt U_kont.
+function _fhMFmt(v) {
+  if (!isFinite(v)) return '0';
+  const a = Math.abs(v);
+  const d = a >= 100 ? 2 : a >= 1 ? 3 : a >= 0.01 ? 5 : 8;
+  let s = v.toFixed(d);
+  if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, '');
+  return s;
+}
+function _fhMMaxima() { return _fhMaxima(_FH_DE, _fh.Ukont, _FH_UAMAX); }
+function _fhMStromMax() {
+  let mx = 1e-9;
+  for (let U = 0; U <= _FH_UAMAX; U += 0.1) mx = Math.max(mx, _fhStromAkt(U));
+  return mx;
+}
+// naechstes Maximum zum Cursor; liefert {U, n} oder null
+function _fhMNearest() {
+  const maxima = _fhMMaxima();
+  let best = null, bd = 1e9;
+  maxima.forEach((U, i) => { const d = Math.abs(_fh.mCursor - U); if (d < bd) { bd = d; best = { U, n: i + 1, d }; } });
+  return best && best.d < _FH_DE / 3 ? best : null;
+}
+function _fhMSetCursor(v) {
+  _fh.mCursor = Math.max(0, Math.min(_FH_UAMAX, +v));
+  const el = document.getElementById('fhMCurLbl'); if (el) el.textContent = _fpmNum(_fh.mCursor, 1) + ' V';
+  _fhMRender();
+}
+function _fhMRender() {
+  const I = _fhStromAkt(_fh.mCursor), Imax = _fhMStromMax();
+  const nb = _fhMNearest();
+  const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  set('fhMUA', _fpmNum(_fh.mCursor, 1));
+  set('fhMIA', _fpmNum(I / Imax, 2));
+  const lage = document.getElementById('fhMLage');
+  if (lage) lage.textContent = nb ? '✓ nahe Maximum n = ' + nb.n : 'kein Maximum in der Nähe';
+  if (_fh.rows.length >= 2) { _fh.peaksMarkiert = true; _fhRenderAuswert(); }
+  _fhMRenderTable(); _fhMDrawPlot();
+  const c = document.getElementById('fhKennlinie3'); if (c) _fhDrawKennlinie3();
+}
+function _fhMTake() {
+  const nb = _fhMNearest();
+  if (!nb) return;
+  if (_fh.rows.some(r => r.n === nb.n)) return;   // dieses Maximum schon erfasst
+  _fh.rows.push({ id: _fh.nextId++, n: nb.n, U: Math.round(nb.U / 0.1) * 0.1 });
+  _fh.rows.sort((a, b) => a.n - b.n);
+  _fhMRender();
+}
+function _fhMDelRow(id) { _fh.rows = _fh.rows.filter(r => r.id !== id); _fhMRender(); }
+function _fhMClear() {
+  if (_fh.rows.length && !confirm('Alle ' + _fh.rows.length + ' Messwerte löschen?')) return;
+  _fh.rows = []; _fh.peaksMarkiert = false; _fhMRender();
+}
+function _fhMDemo() {
+  _fh.rows = [];
+  _fhMMaxima().forEach((U, i) => _fh.rows.push({ id: _fh.nextId++, n: i + 1, U: Math.round(U / 0.1) * 0.1 }));
+  _fh.peaksMarkiert = true;
+  _fhMRender();
+}
+function _fhMRenderTable() {
+  const tb = document.getElementById('fhMTbody'); if (!tb) return;
+  const empty = document.getElementById('fhMEmpty');
+  if (empty) empty.style.display = _fh.rows.length ? 'none' : 'block';
+  tb.innerHTML = _fh.rows.map(r =>
+    `<tr><td>${r.n}</td><td><b>${_fpmNum(r.U, 1)}</b></td>
+       <td class="fpm-del" onclick="_fhMDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _fhMSetReveal(on) { _fh.reveal = !!on; _fhMDrawPlot(); }
+function _fhMTheorieTerm() { return _fhMFmt(_FH_DE) + '*x+' + _fhMFmt(_fh.Ukont); }
+function _fhMTheorieFn() {
+  const term = _fhMTheorieTerm();
+  const inp = document.getElementById('fhMFn'); if (inp) inp.value = term;
+  _fhMSetFn(term); _fh.fnAuto = true; _fhMRenderTheorie(true);
+}
+function _fhMClearFn() {
+  const inp = document.getElementById('fhMFn'); if (inp) inp.value = '';
+  _fhMSetFn(''); _fhMRenderTheorie(false);
+}
+function _fhMRenderTheorie(eingesetzt) {
+  const el = document.getElementById('fhMTheo'); if (!el) return;
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">Gerade mit Achsenabschnitt</div>
+     <div class="fpm-theo-form">U<sub>n</sub> = ΔE · n + U<sub>kont</sub></div>
+     <div class="fpm-theo-par">Steigung = ΔE (Anregungsenergie), Achsenabschnitt = Kontaktpotential</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${_fhMTheorieTerm()}</div>` : ''}
+     <div class="fpm-theo-deutung">Die Maxima des Auffängerstroms liegen bei U<sub>n</sub> = U<sub>kont</sub> + n·ΔE. Trägt man die abgelesene Maximumspannung über der Ordnungszahl n auf, ergibt sich eine Gerade: Ihre Steigung ist unmittelbar die Anregungsenergie ΔE des Atoms (für Quecksilber 4,9 eV), ihr Achsenabschnitt das Kontaktpotential. So wird die diskrete Energiestufe aus einfachen Spannungsablesungen gewonnen.</div>`;
+}
+function _fhMSetFn(str) {
+  _fh.fnAuto = false;
+  const err = document.getElementById('fhMFnErr');
+  const v = (str || '').trim();
+  if (!v) { _fh.fn = null; if (err) err.textContent = ''; _fhMDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _fh.fn = f; if (err) err.textContent = '';
+  } catch (e) { _fh.fn = null; if (err) err.textContent = e.message; }
+  _fhMDrawPlot();
+}
+function _fhMDrawPlot() {
+  const cv = document.getElementById('fhMPlot'); if (!cv || !_fh) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const padL = 42, padR = 14, padT = 10, padB = 28;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const pts = _fh.rows.map(r => ({ x: r.n, y: r.U }));
+  const xmax = Math.max(2, pts.length ? Math.max(...pts.map(p => p.x)) + 0.6 : 6);
+  const ymax = Math.max(1e-9, pts.length ? Math.max(...pts.map(p => p.y)) * 1.12 : _FH_UAMAX);
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+  ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  for (let n = 0; n <= xmax; n++) { ctx.beginPath(); ctx.moveTo(X(n), y0); ctx.lineTo(X(n), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(n + '', X(n), y0 + 12); }
+  const yt = _fpmTicks(ymax, 5);
+  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('n', x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('U_n in V', 0, 0); ctx.restore(); ctx.textAlign = 'left';
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillText('Noch keine Maxima übernommen', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
+    const fo = document.getElementById('fhMFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">Schiebe den Cursor auf die Strom-Maxima und übernimm ihre Spannungen. Die Steigung der Geraden U_n über n ist die Anregungsenergie.</div>';
+    return;
+  }
+  if (_fh.fn) {
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _fh.fn((px - x0) / (x1 - x0) * xmax); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv); if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  let fit = null;
+  if (pts.length >= 2) {
+    fit = _fpmFitLinear(pts);
+    if (fit) { ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.7; ctx.beginPath(); ctx.moveTo(X(0), Y(fit.b)); ctx.lineTo(X(xmax), Y(fit.k * xmax + fit.b)); ctx.stroke(); }
+  }
+  pts.forEach(p => { ctx.fillStyle = '#0369a1'; ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke(); });
+  const el = document.getElementById('fhMFitBox');
+  if (el) {
+    if (!fit) { el.innerHTML = '<div class="fpm-note">Mindestens zwei Maxima nötig.</div>'; }
+    else {
+      const abw = Math.abs(fit.k - _FH_DE) / _FH_DE * 100;
+      const cls = abw < 4 ? 'ok' : abw < 10 ? 'mid' : 'no';
+      el.innerHTML = `<div class="fpm-fitline">
+         <span class="fpm-fitmeta">${_fh.rows.length} Maxima</span>
+         <span class="fpm-fiteq">U_n = ${_fpmNum(fit.k, 3)}·n ${fit.b >= 0 ? '+ ' + _fpmNum(fit.b, 2) : '− ' + _fpmNum(-fit.b, 2)}</span>
+         <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 4)}</span>
+         <span class="fpm-fiteq" style="color:#075985">ΔE = ${_fpmNum(fit.k, 2)} eV · U_kont = ${_fpmNum(fit.b, 2)} V</span>
+         ${_fh.reveal ? `<span class="fpm-badge ${cls}">Literatur ΔE = 4,9 eV · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+       </div>`;
+    }
+  }
+}
 function _fhRenderAuswert() {
   const el = document.getElementById('fhAuswert'); if (!el) return;
   const maxima = _fhMaxima(_FH_DE, _fh.Ukont, _FH_UAMAX);
@@ -23171,8 +23365,38 @@ function _fhDrawKennlinie() {
   if (cv && _fh) _fhDrawKennlinieAuf(cv.getContext('2d'), cv, _fh.UA, false, false);
 }
 function _fhDrawKennlinie3() {
-  const cv = document.getElementById('fhKennlinie3');
-  if (cv && _fh) _fhDrawKennlinieAuf(cv.getContext('2d'), cv, _FH_UAMAX, _fh.peaksMarkiert, false);
+  const cv = document.getElementById('fhKennlinie3'); if (!cv || !_fh) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const padL = 40, padR = 12, padT = 12, padB = 26;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const umax = _FH_UAMAX, Imax = _fhMStromMax();
+  const X = u => x0 + u / umax * (x1 - x0);
+  const Y = i => y0 - i / (Imax * 1.08) * (y0 - y1);
+  // Raster
+  ctx.strokeStyle = 'rgba(51,65,85,0.6)'; ctx.lineWidth = 1; ctx.font = '9px sans-serif';
+  for (let u = 0; u <= umax; u += 5) { ctx.beginPath(); ctx.moveTo(X(u), y0); ctx.lineTo(X(u), y1); ctx.stroke(); ctx.fillStyle = '#64748b'; ctx.textAlign = 'center'; ctx.fillText(u + '', X(u), y0 + 12); }
+  ctx.strokeStyle = '#475569'; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  // Kennlinie
+  ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2; ctx.beginPath();
+  for (let u = 0; u <= umax; u += 0.1) { const y = Y(_fhStromAkt(u)); u === 0 ? ctx.moveTo(X(u), y) : ctx.lineTo(X(u), y); }
+  ctx.stroke();
+  // uebernommene Maxima
+  _fh.rows.forEach(r => {
+    ctx.strokeStyle = 'rgba(3,105,161,0.5)'; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+    ctx.beginPath(); ctx.moveTo(X(r.U), y0); ctx.lineTo(X(r.U), Y(_fhStromAkt(r.U))); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#38bdf8'; ctx.beginPath(); ctx.arc(X(r.U), Y(_fhStromAkt(r.U)), 4, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#7dd3fc'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('n=' + r.n, X(r.U), Y(_fhStromAkt(r.U)) - 8);
+  });
+  // Messcursor
+  const nb = _fhMNearest();
+  ctx.strokeStyle = nb ? '#fbbf24' : '#a78bfa'; ctx.lineWidth = 1.8;
+  ctx.beginPath(); ctx.moveTo(X(_fh.mCursor), y0); ctx.lineTo(X(_fh.mCursor), y1); ctx.stroke();
+  ctx.fillStyle = nb ? '#fbbf24' : '#a78bfa'; ctx.beginPath(); ctx.arc(X(_fh.mCursor), Y(_fhStromAkt(_fh.mCursor)), 4.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('U_A = ' + _fpmNum(_fh.mCursor, 1) + ' V', X(_fh.mCursor) + 6 > W - 90 ? W - 90 : X(_fh.mCursor) + 6, y1 + 10);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('I', x0 - 30, y1 + 6); ctx.textAlign = 'right'; ctx.fillText('U_A / V', x1, y0 + 22); ctx.textAlign = 'left';
 }
 function _fhDrawVergleich() {
   const cv = document.getElementById('fhVergleich');
