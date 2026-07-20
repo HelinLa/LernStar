@@ -24806,7 +24806,9 @@ function _sonInit() {
     // Station 4
     raten: 0, geraten: [], aufgedeckt: false,
     // Station 5
-    T: 5800
+    T: 5800,
+    // Station 6 – Fraunhoferlinien zuordnen (handlungsorientiert)
+    mLine: 0, rows: [], nextId: 1, fn: null, fnAuto: false, reveal: false
   };
 }
 
@@ -24869,7 +24871,7 @@ function _sonFarbe(nm) {
 function _sonHTML() {
   const stationen = ['1 · Kontinuum & Fraunhoferlinien', '2 · Der Natrium-Schatten',
                      '3 · Ein Stern im Labor', '4 · Welche Stoffe stecken drin?',
-                     '5 · Harvard-Klassen & Temperatur']
+                     '5 · Harvard-Klassen & Temperatur', '6 · Fraunhoferlinien zuordnen']
     .map((s, i) => `<button class="fpm-tab${i === _son.station ? ' on' : ''}" id="sonSt${i}" onclick="_sonSetStation(${i})">${s}</button>`).join('');
 
   return `<div class="sim-box sim-box-wide fpm-sim son-sim">
@@ -24979,6 +24981,50 @@ function _sonHTML() {
       </div>
     </div>
 
+    <!-- ══ Station 6: Fraunhoferlinien zuordnen ══ -->
+    <div id="sonS5" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="sonMSpektrum" width="440" height="150" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Wähle eine dunkle Fraunhoferlinie und lies ihre Wellenlänge ab</div>
+          <div class="lsp-linienwahl" id="sonMWahl"></div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Fraunhoferlinie</span><span class="fpm-ro-v" id="sonMLA" style="font-size:.85rem">—</span><span class="fpm-ro-u"></span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">λ in der Sonne (abgelesen)</span><span class="fpm-ro-v" id="sonMSA">—</span><span class="fpm-ro-u">nm</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">passendes Element (Labor)</span><span class="fpm-ro-v" id="sonMEA" style="font-size:.85rem">—</span><span class="fpm-ro-u"></span></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_sonMTake()">✓ Zuordnung übernehmen</button>
+            <button class="sim-btn" onclick="_sonMDemo()">📋 Alle Linien</button>
+            <button class="sim-btn" onclick="_sonMClear()">🗑 Tabelle leeren</button>
+          </div>
+        </div>
+        <div>
+          <canvas id="sonMPlot" width="440" height="220" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">λ in der Sonne über λ im Labor: Steigung 1 = die Linien fallen zusammen</div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Linie</th><th>Element</th><th>λ<sub>Sonne</sub></th><th>λ<sub>Labor</sub></th><th></th></tr></thead>
+              <tbody id="sonMTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="sonMEmpty">Noch keine Zuordnungen.<br>Linie wählen → übernehmen.</div>
+          </div>
+          <div class="fpm-fit" id="sonMFitBox"></div>
+          <div class="fpm-label" style="margin-top:8px">Funktion plotten</div>
+          <input type="text" id="sonMFn" class="fpm-input" placeholder="z. B. 1*x" spellcheck="false"
+            oninput="_sonMSetFn(this.value)">
+          <div class="fpm-err" id="sonMFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_sonMTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_sonMClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="sonMTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_sonMSetReveal(this.checked)">
+            erwartete Steigung anzeigen</label>
+        </div>
+      </div>
+    </div>
+
     <div id="sonErkl" class="dsp-erkl"></div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
       <b>Kontinuum + Absorptionslinien</b> &nbsp;|&nbsp; <b>λ<sub>max</sub> = 2,898·10⁶ nm·K / T</b>
@@ -25048,13 +25094,14 @@ function _sonErklHTML() {
 
 // ── Stationen ──────────────────────────────────────────
 function _sonSetStation(i) {
-  _son.station = Math.max(0, Math.min(4, i));
-  for (let k = 0; k < 5; k++) {
+  _son.station = Math.max(0, Math.min(5, i));
+  for (let k = 0; k < 6; k++) {
     document.getElementById('sonSt' + k)?.classList.toggle('on', k === _son.station);
     const d = document.getElementById('sonS' + k);
     if (d) d.style.display = k === _son.station ? 'block' : 'none';
   }
   _sonUpdate();
+  if (_son.station === 5) _sonMRender();
 }
 function _sonSet(key, val) { _son[key] = val; _sonUpdate(); }
 function _sonSetQuelle(q) { _son.quelle = q; _sonUpdate(); }
@@ -25581,6 +25628,171 @@ function _sonDrawStaerken(ctx, cv) {
 
 // ── Takt und Zeichnung ─────────────────────────────────
 function _sonTakt(dt) { if (_son) _son.t += Math.min(0.05, dt); }
+// ══ Station 6: Fraunhoferlinien zuordnen (handlungsorientiert) ══
+// Kirchhoff: Die dunklen Sonnenlinien fallen genau auf die hellen Laborlinien
+// der Elemente. Traegt man λ_Sonne ueber λ_Labor auf, ergibt sich die Gerade
+// der Steigung 1 – der Beweis, dass die Elemente in der Sonne vorkommen.
+const _SON_MLINIEN = _SON_FRAUNHOFER.filter(f => !f.atm);
+function _sonMSunRead(nm) { return Math.round(nm); }        // Ablesung auf 1 nm
+function _sonMSetLine(i) { _son.mLine = Math.max(0, Math.min(_SON_MLINIEN.length - 1, i)); _sonMRender(); }
+function _sonMRender() {
+  const w = document.getElementById('sonMWahl');
+  if (w) {
+    w.innerHTML = _SON_MLINIEN.map((l, i) =>
+      `<button class="lsp-lw-b${i === _son.mLine ? ' on' : ''}" onclick="_sonMSetLine(${i})"
+         style="${i === _son.mLine ? 'border-color:' + _sonFarbe(l.nm) : ''}">
+         <span class="lsp-lw-farbe" style="background:${_sonFarbe(l.nm)}"></span>${l.L}</button>`).join('');
+  }
+  const l = _SON_MLINIEN[_son.mLine];
+  const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  set('sonMLA', 'Linie ' + l.L);
+  set('sonMSA', _fpmNum(_sonMSunRead(l.nm), 0));
+  set('sonMEA', l.el);
+  _sonMRenderTable(); _sonMDrawPlot();
+  const c = document.getElementById('sonMSpektrum'); if (c) _sonMDrawSpektrum(c.getContext('2d'), c);
+}
+function _sonMTake() {
+  const l = _SON_MLINIEN[_son.mLine];
+  if (_son.rows.some(r => r.L === l.L)) return;
+  _son.rows.push({ id: _son.nextId++, L: l.L, el: l.el, sun: _sonMSunRead(l.nm), lab: l.nm });
+  _son.rows.sort((a, b) => a.lab - b.lab);
+  _sonMRender();
+}
+function _sonMDelRow(id) { _son.rows = _son.rows.filter(r => r.id !== id); _sonMRender(); }
+function _sonMClear() {
+  if (_son.rows.length && !confirm('Alle ' + _son.rows.length + ' Zuordnungen löschen?')) return;
+  _son.rows = []; _sonMRender();
+}
+function _sonMDemo() {
+  _son.rows = [];
+  _SON_MLINIEN.forEach(l => _son.rows.push({ id: _son.nextId++, L: l.L, el: l.el, sun: _sonMSunRead(l.nm), lab: l.nm }));
+  _son.rows.sort((a, b) => a.lab - b.lab);
+  _sonMRender();
+}
+function _sonMRenderTable() {
+  const tb = document.getElementById('sonMTbody'); if (!tb) return;
+  const empty = document.getElementById('sonMEmpty');
+  if (empty) empty.style.display = _son.rows.length ? 'none' : 'block';
+  tb.innerHTML = _son.rows.map(r =>
+    `<tr><td><b>${r.L}</b></td><td>${r.el}</td><td>${_fpmNum(r.sun, 0)}</td><td>${_fpmNum(r.lab, 1)}</td>
+       <td class="fpm-del" onclick="_sonMDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _sonMSetReveal(on) { _son.reveal = !!on; _sonMDrawPlot(); }
+function _sonMTheorieFn() {
+  const inp = document.getElementById('sonMFn'); if (inp) inp.value = '1*x';
+  _sonMSetFn('1*x'); _son.fnAuto = true; _sonMRenderTheorie(true);
+}
+function _sonMClearFn() {
+  const inp = document.getElementById('sonMFn'); if (inp) inp.value = '';
+  _sonMSetFn(''); _sonMRenderTheorie(false);
+}
+function _sonMRenderTheorie(eingesetzt) {
+  const el = document.getElementById('sonMTheo'); if (!el) return;
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">Ursprungsgerade mit Steigung 1</div>
+     <div class="fpm-theo-form">λ_Sonne = 1 · λ_Labor</div>
+     <div class="fpm-theo-par">erwartete Steigung = 1 (die Linien fallen zusammen)</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = 1*x</div>` : ''}
+     <div class="fpm-theo-deutung">Kirchhoff und Bunsen erkannten 1859: Jede dunkle Fraunhoferlinie im Sonnenspektrum liegt bei genau derselben Wellenlänge wie eine helle Emissionslinie eines chemischen Elements im Labor. Trägt man die abgelesenen Sonnen-Wellenlängen über den Labor-Wellenlängen auf, liegen alle Punkte auf der Geraden der Steigung 1 – der direkte Nachweis, dass Wasserstoff, Natrium, Magnesium, Calcium und Eisen in der Sonnenatmosphäre vorkommen. So wurde die Spektroskopie zum Fernrohr in die Stoffwelt der Sterne.</div>`;
+}
+function _sonMSetFn(str) {
+  _son.fnAuto = false;
+  const err = document.getElementById('sonMFnErr');
+  const v = (str || '').trim();
+  if (!v) { _son.fn = null; if (err) err.textContent = ''; _sonMDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _son.fn = f; if (err) err.textContent = '';
+  } catch (e) { _son.fn = null; if (err) err.textContent = e.message; }
+  _sonMDrawPlot();
+}
+function _sonMDrawSpektrum(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  // Kontinuum (Regenbogen)
+  const lo = 380, hi = 700;
+  for (let px = 0; px < W; px++) {
+    const nm = lo + px / W * (hi - lo);
+    ctx.fillStyle = _sonFarbe(nm); ctx.fillRect(px, 18, 1, H - 44);
+  }
+  // Fraunhoferlinien (dunkel)
+  const X = nm => (nm - lo) / (hi - lo) * W;
+  _SON_MLINIEN.forEach(l => {
+    const sel = l === _SON_MLINIEN[_son.mLine];
+    ctx.fillStyle = sel ? '#000' : 'rgba(15,23,42,0.75)';
+    ctx.fillRect(X(l.nm) - (sel ? 1.5 : 1), 18, sel ? 3 : 2, H - 44);
+    if (sel) { ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(l.L, X(l.nm), 13); }
+  });
+  // Skala
+  ctx.fillStyle = '#334155'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  for (let nm = 400; nm <= 700; nm += 50) ctx.fillText(nm + '', X(nm), H - 8);
+  ctx.textAlign = 'left';
+}
+function _sonMDrawPlot() {
+  const cv = document.getElementById('sonMPlot'); if (!cv || !_son) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const padL = 46, padR = 14, padT = 10, padB = 30;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const pts = _son.rows.map(r => ({ x: r.lab, y: r.sun, nm: r.lab }));
+  const lo = 360, hi = 700;
+  const X = v => x0 + (v - lo) / (hi - lo) * (x1 - x0);
+  const Y = v => y0 - (v - lo) / (hi - lo) * (y0 - y1);
+  ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  for (let nm = 400; nm <= 700; nm += 50) {
+    ctx.beginPath(); ctx.moveTo(X(nm), y0); ctx.lineTo(X(nm), y1); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x0, Y(nm)); ctx.lineTo(x1, Y(nm)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(nm + '', X(nm), y0 + 12);
+    ctx.textAlign = 'right'; ctx.fillText(nm + '', x0 - 5, Y(nm) + 3);
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('λ Labor / nm', x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('λ Sonne / nm', 0, 0); ctx.restore(); ctx.textAlign = 'left';
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillText('Noch keine Zuordnungen', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
+    const fo = document.getElementById('sonMFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">Ordne die Fraunhoferlinien den Elementen zu. Fallen Sonnen- und Laborwellenlänge zusammen, ergibt sich die Gerade der Steigung 1.</div>';
+    return;
+  }
+  if (_son.fn) {
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.6; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      const xv = lo + (px - x0) / (x1 - x0) * (hi - lo);
+      let yv; try { yv = _son.fn(xv); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv); if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  let fit = null;
+  if (pts.length >= 2) {
+    fit = _fpmFitOrigin(pts);
+    if (fit) { ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.7; ctx.beginPath(); ctx.moveTo(X(lo), Y(fit.k * lo)); ctx.lineTo(X(hi), Y(fit.k * hi)); ctx.stroke(); }
+  }
+  pts.forEach(p => { ctx.fillStyle = _sonFarbe(p.nm); ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4.5, 0, 2 * Math.PI); ctx.fill(); ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.2; ctx.stroke(); });
+  const el = document.getElementById('sonMFitBox');
+  if (el) {
+    if (!fit) { el.innerHTML = '<div class="fpm-note">Mindestens zwei Zuordnungen nötig.</div>'; }
+    else {
+      const abw = Math.abs(fit.k - 1) * 100;
+      const cls = abw < 1 ? 'ok' : abw < 3 ? 'mid' : 'no';
+      el.innerHTML = `<div class="fpm-fitline">
+         <span class="fpm-fitmeta">${_son.rows.length} Zuordnungen</span>
+         <span class="fpm-fiteq">λ_Sonne = ${_fpmNum(fit.k, 4)}·λ_Labor</span>
+         <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 5)}</span>
+         ${_son.reveal ? `<span class="fpm-badge ${cls}">erwartete Steigung 1 · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+       </div>
+       <div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">Alle Punkte liegen auf der Winkelhalbierenden: Die dunklen Sonnenlinien sitzen genau auf den hellen Laborlinien der Elemente – sie kommen also in der Sonne vor.</div>`;
+    }
+  }
+}
+
 function _sonRender() {
   if (!_son) return;
   const st = _son.station;
@@ -25605,6 +25817,9 @@ function _sonRender() {
     if (c) _sonDrawHarvard(c.getContext('2d'), c);
     const cs = document.getElementById('sonStaerken');
     if (cs) _sonDrawStaerken(cs.getContext('2d'), cs);
+  } else if (st === 5) {
+    const cm = document.getElementById('sonMSpektrum');
+    if (cm) _sonMDrawSpektrum(cm.getContext('2d'), cm);
   }
 }
 
