@@ -23742,6 +23742,8 @@ function _lspInit() {
     raten: 0, geraten: null, aufgedeckt: false,
     // Station 5
     epoche: 0,
+    // Station 6 – Balmer-Serie auswerten (handlungsorientiert)
+    mN: 3, rows: [], nextId: 1, fn: null, fnAuto: false, reveal: false,
     t: 0
   };
 }
@@ -23804,7 +23806,7 @@ function _lspFarbe(nm) {
 function _lspHTML() {
   const stationen = ['1 · Spektralröhre & Gitter', '2 · Wellenlänge messen',
                      '3 · Von der Linie zur Energiestufe', '4 · Jedes Gas ein Fingerabdruck',
-                     '5 · Geschichte & Modelle']
+                     '5 · Geschichte & Modelle', '6 · Balmer-Serie auswerten']
     .map((s, i) => `<button class="fpm-tab${i === _lsp.station ? ' on' : ''}" id="lspSt${i}" onclick="_lspSetStation(${i})">${s}</button>`).join('');
 
   const gaswahl = _LSP_GASE.map((c, i) =>
@@ -23905,6 +23907,49 @@ function _lspHTML() {
       </div>
     </div>
 
+    <!-- ══ Station 6: Balmer-Serie auswerten ══ -->
+    <div id="lspS5" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="lspMSpektrum" width="440" height="150" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Wähle eine Balmer-Linie und lies ihre Wellenlänge ab</div>
+          <div class="lsp-linienwahl" id="lspMWahl"></div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">gewählter Übergang</span><span class="fpm-ro-v" id="lspMNA">—</span><span class="fpm-ro-u">n→2</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">abgelesene Wellenlänge λ</span><span class="fpm-ro-v" id="lspMLA">—</span><span class="fpm-ro-u">nm</span></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_lspMTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_lspMDemo()">📋 Alle vier Linien</button>
+            <button class="sim-btn" onclick="_lspMClear()">🗑 Tabelle leeren</button>
+          </div>
+        </div>
+        <div>
+          <canvas id="lspMPlot" width="440" height="220" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">1/λ über (¼ − 1/n²): Steigung = Rydberg-Konstante</div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>n</th><th>λ (nm)</th><th>¼−1/n²</th><th>1/λ (1/µm)</th><th></th></tr></thead>
+              <tbody id="lspMTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="lspMEmpty">Noch keine Messwerte.<br>Linie wählen → übernehmen.</div>
+          </div>
+          <div class="fpm-fit" id="lspMFitBox"></div>
+          <div class="fpm-label" style="margin-top:8px">Funktion plotten</div>
+          <input type="text" id="lspMFn" class="fpm-input" placeholder="z. B. 10.97*x" spellcheck="false"
+            oninput="_lspMSetFn(this.value)">
+          <div class="fpm-err" id="lspMFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_lspMTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_lspMClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="lspMTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_lspMSetReveal(this.checked)">
+            Literaturwert R = 1,097·10⁷ 1/m anzeigen</label>
+        </div>
+      </div>
+    </div>
+
     <div id="lspErkl" class="dsp-erkl"></div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
       <b>g · sin α = k · λ</b> &nbsp;|&nbsp; <b>tan α = a / L</b>
@@ -23967,13 +24012,14 @@ function _lspErklHTML() {
 
 // ── Stationen ──────────────────────────────────────────
 function _lspSetStation(i) {
-  _lsp.station = Math.max(0, Math.min(4, i));
-  for (let k = 0; k < 5; k++) {
+  _lsp.station = Math.max(0, Math.min(5, i));
+  for (let k = 0; k < 6; k++) {
     document.getElementById('lspSt' + k)?.classList.toggle('on', k === _lsp.station);
     const d = document.getElementById('lspS' + k);
     if (d) d.style.display = k === _lsp.station ? 'block' : 'none';
   }
   _lspUpdate();
+  if (_lsp.station === 5) _lspMRender();
 }
 function _lspSet(key, val) { _lsp[key] = val; _lspUpdate(); }
 
@@ -23990,6 +24036,184 @@ function _lspSetL(v) {
 }
 function _lspSetK(k) { _lsp.k = k; _lspRenderMess(); }
 function _lspSetLinie(i) { _lsp.linie = i; _lspRenderMess(); }
+
+// ══ Station 6: Balmer-Serie auswerten (handlungsorientiert) ══
+// 1/λ = R·(1/4 − 1/n²). Traegt man 1/λ ueber (1/4 − 1/n²) auf, ist die
+// Steigung die Rydberg-Konstante R.
+const _LSP_BALMER_N = [3, 4, 5, 6];       // Hα, Hβ, Hγ, Hδ
+function _lspMFmt(v) {
+  if (!isFinite(v)) return '0';
+  const a = Math.abs(v);
+  const d = a >= 100 ? 2 : a >= 1 ? 4 : a >= 0.01 ? 6 : 8;
+  let s = v.toFixed(d);
+  if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, '');
+  return s;
+}
+function _lspMLambdaRead(n) { return Math.round(_lspBalmer(n)); }   // Ablesung auf 1 nm
+function _lspMSetN(n) {
+  _lsp.mN = Math.max(3, Math.min(6, n));
+  _lspMRender();
+}
+function _lspMRender() {
+  // Linienwahl-Buttons
+  const w = document.getElementById('lspMWahl');
+  if (w) {
+    const namen = { 3: 'Hα', 4: 'Hβ', 5: 'Hγ', 6: 'Hδ' };
+    w.innerHTML = _LSP_BALMER_N.map(n =>
+      `<button class="lsp-lw-b${n === _lsp.mN ? ' on' : ''}" onclick="_lspMSetN(${n})"
+         style="${n === _lsp.mN ? 'border-color:' + _lspFarbe(_lspBalmer(n)) : ''}">
+         <span class="lsp-lw-farbe" style="background:${_lspFarbe(_lspBalmer(n))}"></span>
+         ${namen[n]} (n=${n})</button>`).join('');
+  }
+  const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  set('lspMNA', _lsp.mN);
+  set('lspMLA', _fpmNum(_lspMLambdaRead(_lsp.mN), 0));
+  _lspMRenderTable(); _lspMDrawPlot();
+  const c = document.getElementById('lspMSpektrum'); if (c) _lspMDrawSpektrum(c.getContext('2d'), c);
+}
+function _lspMTake() {
+  const n = _lsp.mN;
+  if (_lsp.rows.some(r => r.n === n)) return;
+  _lsp.rows.push({ id: _lsp.nextId++, n, lam: _lspMLambdaRead(n) });
+  _lsp.rows.sort((a, b) => a.n - b.n);
+  _lspMRender();
+}
+function _lspMDelRow(id) { _lsp.rows = _lsp.rows.filter(r => r.id !== id); _lspMRender(); }
+function _lspMClear() {
+  if (_lsp.rows.length && !confirm('Alle ' + _lsp.rows.length + ' Messwerte löschen?')) return;
+  _lsp.rows = []; _lspMRender();
+}
+function _lspMDemo() {
+  _lsp.rows = [];
+  _LSP_BALMER_N.forEach(n => _lsp.rows.push({ id: _lsp.nextId++, n, lam: _lspMLambdaRead(n) }));
+  _lspMRender();
+}
+function _lspMX(n) { return 0.25 - 1 / (n * n); }        // 1/4 − 1/n²
+function _lspMY(lam) { return 1000 / lam; }              // 1/λ in 1/µm
+function _lspMRenderTable() {
+  const tb = document.getElementById('lspMTbody'); if (!tb) return;
+  const empty = document.getElementById('lspMEmpty');
+  if (empty) empty.style.display = _lsp.rows.length ? 'none' : 'block';
+  tb.innerHTML = _lsp.rows.map(r =>
+    `<tr><td>${r.n}</td><td>${_fpmNum(r.lam, 0)}</td><td>${_fpmNum(_lspMX(r.n), 4)}</td>
+       <td><b>${_fpmNum(_lspMY(r.lam), 4)}</b></td>
+       <td class="fpm-del" onclick="_lspMDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _lspMSetReveal(on) { _lsp.reveal = !!on; _lspMDrawPlot(); }
+function _lspMTheorieTerm() { return _lspMFmt(_LSP_RYD / 1e6) + '*x'; }
+function _lspMTheorieFn() {
+  const term = _lspMTheorieTerm();
+  const inp = document.getElementById('lspMFn'); if (inp) inp.value = term;
+  _lspMSetFn(term); _lsp.fnAuto = true; _lspMRenderTheorie(true);
+}
+function _lspMClearFn() {
+  const inp = document.getElementById('lspMFn'); if (inp) inp.value = '';
+  _lspMSetFn(''); _lspMRenderTheorie(false);
+}
+function _lspMRenderTheorie(eingesetzt) {
+  const el = document.getElementById('lspMTheo'); if (!el) return;
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">Ursprungsgerade</div>
+     <div class="fpm-theo-form">1/λ = R · (¼ − 1/n²)</div>
+     <div class="fpm-theo-par">Steigung = Rydberg-Konstante R (in 1/µm), also R = Steigung · 10⁶ 1/m</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${_lspMTheorieTerm()}</div>` : ''}
+     <div class="fpm-theo-deutung">Balmer fand 1885 seine Formel rein empirisch; erst Bohr deutete sie. Trägt man die Kehrwerte der gemessenen Wellenlängen über (¼ − 1/n²) auf, liegen alle vier sichtbaren Wasserstofflinien auf einer Ursprungsgeraden. Ihre Steigung ist die Rydberg-Konstante R ≈ 1,097·10⁷ 1/m – eine der am genauesten bekannten Naturkonstanten, hier aus vier Wellenlängen gewonnen.</div>`;
+}
+function _lspMSetFn(str) {
+  _lsp.fnAuto = false;
+  const err = document.getElementById('lspMFnErr');
+  const v = (str || '').trim();
+  if (!v) { _lsp.fn = null; if (err) err.textContent = ''; _lspMDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _lsp.fn = f; if (err) err.textContent = '';
+  } catch (e) { _lsp.fn = null; if (err) err.textContent = e.message; }
+  _lspMDrawPlot();
+}
+function _lspMDrawSpektrum(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const x0 = 40, x1 = W - 12, lo = 400, hi = 680;
+  const X = nm => x0 + (nm - lo) / (hi - lo) * (x1 - x0);
+  // Skala
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x0, H - 24); ctx.lineTo(x1, H - 24); ctx.stroke();
+  ctx.font = '9px sans-serif'; ctx.fillStyle = '#64748b'; ctx.textAlign = 'center';
+  for (let nm = 400; nm <= 680; nm += 40) { ctx.beginPath(); ctx.moveTo(X(nm), H - 24); ctx.lineTo(X(nm), H - 20); ctx.stroke(); ctx.fillText(nm + '', X(nm), H - 8); }
+  // Balmer-Linien
+  _LSP_BALMER_N.forEach(n => {
+    const nm = _lspBalmer(n), sel = n === _lsp.mN;
+    ctx.strokeStyle = _lspFarbe(nm); ctx.lineWidth = sel ? 3 : 1.5;
+    ctx.globalAlpha = sel ? 1 : 0.6;
+    ctx.beginPath(); ctx.moveTo(X(nm), 20); ctx.lineTo(X(nm), H - 24); ctx.stroke();
+    ctx.globalAlpha = 1;
+    if (sel) { ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(_fpmNum(nm, 0) + ' nm', X(nm), 14); }
+  });
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Wasserstoff · Balmer-Serie', x0, 12);
+}
+function _lspMDrawPlot() {
+  const cv = document.getElementById('lspMPlot'); if (!cv || !_lsp) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const padL = 46, padR = 14, padT = 10, padB = 30;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const pts = _lsp.rows.map(r => ({ x: _lspMX(r.n), y: _lspMY(r.lam) }));
+  const xmax = 0.26, ymax = 2.6;
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+  ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  const xt = _fpmTicks(xmax, 5);
+  xt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 12); });
+  const yt = _fpmTicks(ymax, 5);
+  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('¼ − 1/n²', x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('1/λ in 1/µm', 0, 0); ctx.restore(); ctx.textAlign = 'left';
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
+    const fo = document.getElementById('lspMFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">Miss die vier sichtbaren Balmer-Linien und übernimm sie. Die Steigung der Geraden liefert die Rydberg-Konstante.</div>';
+    return;
+  }
+  if (_lsp.fn) {
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _lsp.fn((px - x0) / (x1 - x0) * xmax); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv); if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  let fit = null;
+  if (pts.length >= 2) {
+    fit = _fpmFitOrigin(pts);
+    if (fit) { ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.7; ctx.beginPath(); ctx.moveTo(X(0), Y(0)); ctx.lineTo(X(xmax), Y(fit.k * xmax)); ctx.stroke(); }
+  }
+  pts.forEach((p, i) => { ctx.fillStyle = _lspFarbe(_lsp.rows[i].lam); ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4.5, 0, 2 * Math.PI); ctx.fill(); ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.2; ctx.stroke(); });
+  const el = document.getElementById('lspMFitBox');
+  if (el) {
+    if (!fit) { el.innerHTML = '<div class="fpm-note">Mindestens zwei Linien nötig.</div>'; }
+    else {
+      const R = fit.k * 1e6;
+      const abw = Math.abs(R - _LSP_RYD) / _LSP_RYD * 100;
+      const cls = abw < 2 ? 'ok' : abw < 6 ? 'mid' : 'no';
+      el.innerHTML = `<div class="fpm-fitline">
+         <span class="fpm-fitmeta">${_lsp.rows.length} Linien</span>
+         <span class="fpm-fiteq">1/λ = ${_fpmNum(fit.k, 3)}·x</span>
+         <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 5)}</span>
+         <span class="fpm-fiteq" style="color:#075985">R = ${_fpmNum(R / 1e7, 4)}·10⁷ 1/m</span>
+         ${_lsp.reveal ? `<span class="fpm-badge ${cls}">Literatur 1,097·10⁷ 1/m · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+       </div>`;
+    }
+  }
+}
 
 function _lspUpdate() {
   if (!_lsp) return;
@@ -24429,6 +24653,9 @@ function _lspRender() {
   } else if (st === 3) {
     const cv = document.getElementById('lspVergleich');
     if (cv) _lspDrawVergleich(cv.getContext('2d'), cv);
+  } else if (st === 5) {
+    const cm = document.getElementById('lspMSpektrum');
+    if (cm) _lspMDrawSpektrum(cm.getContext('2d'), cm);
   }
 }
 
