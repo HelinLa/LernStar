@@ -2238,6 +2238,20 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('absTakt', 'absKeinChart');
     _pSim.start(dt => _absTakt(dt), () => _absRender(), []);
   },
+
+  // Schluesselexperiment 22 des KLP (Q2.1): das Michelson-Morley-Experiment.
+  // Aetherwind, Interferometer, Laufzeitunterschiede, Streifenverschiebung,
+  // das Nullresultat, Laengenkontraktion und LIGO.
+  'michelson-morley': modal => {
+    _mmInit();
+    modal.innerHTML = _mmHTML();
+    const erkl = document.getElementById('mmErkl');
+    if (erkl) erkl.innerHTML = _mmErklHTML();
+    _mmSetStation(0);
+    _mmUpdate();
+    _pSim = new PhysicsSimEngine('mmTakt', 'mmKeinChart');
+    _pSim.start(dt => _mmTakt(dt), () => _mmRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -27752,6 +27766,731 @@ function _absRender() {
     .abs-bio-z b { color: #334155; }
     .abs-bio-z.med { background: #eff6ff; border-color: #bfdbfe; }
     .abs-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// MICHELSON-MORLEY-EXPERIMENT – Schluesselexperiment 22 (angehaengt)
+// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// DAS MICHELSON-MORLEY-EXPERIMENT
+// Schluesselexperiment 22 der NRW-Handreichung (Q2.1). Einstieg in die
+// spezielle Relativitaetstheorie.
+// Kernkompetenzen des KLP: das MM-Experiment als Indiz fuer die Konstanz der
+// Lichtgeschwindigkeit interpretieren (UF4); die Bedeutung der Konstanz von c
+// fuer die SRT erlaeutern (UF1); c als Obergrenze und die Grenzen der
+// additiven Geschwindigkeitsueberlagerung (UF2); die Laengenkontraktion
+// plausibel machen (K3); Schluesselexperimente bei Paradigmenwechseln (B4,E7).
+// ═══════════════════════════════════════════════════════
+
+const _MM_C = 2.99792458e8;     // Lichtgeschwindigkeit in m/s
+// Kenndaten des Experiments von 1887 (Handreichung)
+const _MM_L = 11;               // effektive Armlaenge in m
+const _MM_LAMBDA = 600e-9;      // mittlere Wellenlaenge (weisses Licht) in m
+const _MM_SREL_MESS = 0.02;     // gemessene relative Streifenverschiebung (Obergrenze)
+
+// Vergleichsgeschwindigkeiten
+const _MM_VERGLEICH = [
+  { n: 'Bahngeschwindigkeit der Erde', v: 30000, farbe: '#0284c7' },
+  { n: 'Sonnensystem um das Galaxienzentrum', v: 220000, farbe: '#7c3aed' },
+  { n: 'Erde relativ zum Mikrowellenhintergrund', v: 368000, farbe: '#db2777' }
+];
+
+let _mm = null;
+
+function _mmInit() {
+  _mm = {
+    station: 0,
+    // Station 1
+    winkel: 0, laeuft: true, t: 0,
+    // Station 2
+    beta: 0.4,   // stark uebertrieben zur Veranschaulichung
+    // Station 3
+    vKmS: 30,    // angenommene Aetherwindgeschwindigkeit in km/s (Regler)
+    gedreht: false,
+    // Station 4
+    // Station 5
+    ligoT: 0
+  };
+}
+
+// ── Zahlformat ──────────────────────────────────────────
+function _mmZahl(v) {
+  if (!isFinite(v) || v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const dez = Math.max(0, Math.min(20, 5 - ex));
+  const s = v.toFixed(dez);
+  return s.indexOf('.') >= 0 ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
+}
+
+// ── Physik ──────────────────────────────────────────────
+// Laufzeit im Arm parallel zum Aetherwind: t = (2L/c)/(1−β²)
+function _mmTPara(L, beta) { return 2 * L / _MM_C / (1 - beta * beta); }
+// Laufzeit im Arm orthogonal (wie bei der Lichtuhr): t = (2L/c)/√(1−β²)
+function _mmTOrtho(L, beta) { return 2 * L / _MM_C / Math.sqrt(1 - beta * beta); }
+// Zeitunterschied nach 90°-Drehung: 2·(t_para − t_ortho)
+function _mmDeltaT(L, beta) { return 2 * (_mmTPara(L, beta) - _mmTOrtho(L, beta)); }
+// Weglaengendifferenz d = c·2Δt ≈ 2L·β² (Naeherung der Handreichung)
+function _mmPfadDiff(L, beta) { return 2 * L * beta * beta; }
+// relative Streifenverschiebung s_rel = d/λ
+function _mmSrel(L, beta, lambda) { return _mmPfadDiff(L, beta) / lambda; }
+// aus der gemessenen Streifenverschiebung die Aetherwindgeschwindigkeit
+function _mmVausSrel(srel, lambda, L) { return _MM_C * Math.sqrt(srel * lambda / (2 * L)); }
+
+// ── Oberflaeche ─────────────────────────────────────────
+function _mmHTML() {
+  const stationen = ['1 · Äther & Interferometer', '2 · Zwei Lichtwege, zwei Laufzeiten',
+                     '3 · Die Streifenverschiebung', '4 · Das Nullresultat',
+                     '5 · Vom Äther zu LIGO']
+    .map((s, i) => `<button class="fpm-tab${i === _mm.station ? ' on' : ''}" id="mmSt${i}" onclick="_mmSetStation(${i})">${s}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim mm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔭 Das Michelson-Morley-Experiment</h3>
+    <canvas id="mmTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="mmS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="mmInterf" width="440" height="280" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Lichtquelle → Strahlteiler → zwei Spiegel → Interferenz</div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="mmLaufBtn" onclick="_mmToggle()">⏸ Anhalten</button>
+            <button class="sim-btn" onclick="_mmDreh()">↻ um 90° drehen</button>
+          </div>
+        </div>
+        <div>
+          <div class="mm-erkl" id="mmErklText"></div>
+        </div>
+      </div>
+      <div class="mm-k3" id="mmK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="mmS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="mmUhr" width="440" height="270" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Verwandt mit der Lichtuhr: der orthogonale Arm läuft schräg</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Ätherwind β = v/c (übertrieben!)</span>
+              <input type="range" id="mmBeta" min="0.05" max="0.7" step="0.01" value="0.4"
+                oninput="_mmSetBeta(this.value)"><b id="mmBetaLbl">0,40</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="mmUhrRechnung"></div>
+          <div class="mm-uhr-t" id="mmUhrText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="mmS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="mmStreifen" width="440" height="140" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Interferenzstreifen – vor und nach der Drehung</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>angenommener Ätherwind</span>
+              <input type="range" id="mmV" min="0" max="60" step="1" value="30"
+                oninput="_mmSetV(this.value)"><b id="mmVLbl">30 km/s</b></div>
+            <label class="fpm-check"><input type="checkbox" id="mmGedreht"
+              onchange="_mmSet('gedreht',this.checked)"> Apparatur um 90° gedreht</label>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="mmStreifenRechnung"></div>
+          <div class="mm-streifen-t" id="mmStreifenText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="mmS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="mmNull" width="440" height="230" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Erwartete gegen gemessene Streifenverschiebung</div>
+          <canvas id="mmKontr" width="440" height="110" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Längenkontraktion des parallelen Arms</div>
+        </div>
+        <div>
+          <div class="mm-null-t" id="mmNullText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="mmS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="mmLigo" width="440" height="230" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">LIGO 2015: das Signal zweier verschmelzender Schwarzer Löcher</div>
+        </div>
+        <div>
+          <div class="mm-ligo-t" id="mmLigoText"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mmErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>t<sub>∥</sub> = (2L/c)/(1−β²)</b> &nbsp;|&nbsp; <b>t<sub>⊥</sub> = (2L/c)/√(1−β²)</b>
+      &nbsp;|&nbsp; <b>s<sub>rel</sub> = d/λ = 2L·v²/(c²·λ)</b> &nbsp;|&nbsp; <b>c = const</b>
+    </p>
+  </div>`;
+}
+
+function _mmErklHTML() {
+  return `<div class="dsp-erkl-kopf">Die Idee: den Ätherwind messen</div>
+    <div class="dsp-erkl-text">
+      Vom 17. bis ins späte 19. Jahrhundert glaubte man, Licht brauche wie Wasser- oder
+      Schallwellen ein Trägermedium – den <b>Äther</b>, benannt nach dem fünften Element des
+      Aristoteles (die „Quintessenz“). Bewegt sich die Erde durch diesen ruhenden Äther, sollte
+      ein <b>Ätherwind</b> entstehen. Albert Michelson (1881) und später Michelson und Morley
+      (1887) wollten mit einem <b>Interferometer</b> die Geschwindigkeit der Erde gegenüber diesem
+      Ätherwind messen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Der Aufbau</div>
+    <div class="dsp-erkl-text">
+      Ein <b>Strahlteiler</b> – eine halbdurchlässige Glasplatte – zerlegt einen Lichtstrahl in
+      zwei, die in <b>zwei zueinander senkrechte Arme</b> laufen, dort an Spiegeln zurückgeworfen
+      werden und wieder zusammentreffen. Wo sie sich überlagern, entsteht ein
+      <b>Interferenzmuster</b> aus hellen und dunklen Streifen. Ein Streifenabstand entspricht
+      genau <b>einer Wellenlänge</b> Wegunterschied. Beim Experiment von 1887 schwamm der Aufbau
+      auf einem schweren Stein in einer Wanne mit Quecksilber, damit er beim Drehen erschütterungs-
+      frei blieb; durch Mehrfachreflexion wurde der Lichtweg auf 11 m verlängert.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Warum ein Unterschied erwartet wurde</div>
+    <div class="dsp-erkl-text">
+      Nimmt man an, dass sich die Geschwindigkeit des Lichts und die der Erde klassisch (nach
+      Galilei) addieren, so müsste das Licht im Arm <b>parallel</b> zum Ätherwind eine andere Zeit
+      brauchen als im Arm <b>senkrecht</b> dazu. Für den parallelen Arm gilt
+      t<sub>∥</sub> = (2L/c)/(1−β²), für den senkrechten – ganz wie bei der <b>Lichtuhr</b> mit
+      ihrem schrägen Lichtweg – t<sub>⊥</sub> = (2L/c)/√(1−β²). Die beiden Zeiten sind verschieden.
+      Dreht man die Apparatur um 90°, tauschen die Arme ihre Rollen, und das Interferenzmuster
+      sollte sich um Δs verschieben. Diese Streifenverschiebung wollte man messen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Das Nullresultat</div>
+    <div class="dsp-erkl-text">
+      Michelson und Morley maßen eine relative Streifenverschiebung von höchstens
+      <b>s<sub>rel</sub> ≤ 0,02</b>. Rechnet man daraus die Ätherwindgeschwindigkeit aus,
+      v = c·√(s<sub>rel</sub>·λ/(2L)), so ergeben sich nur etwa <b>7 km/s</b>. Das ist ein
+      <b>Nullresultat</b>: Schon die Bahngeschwindigkeit der Erde um die Sonne beträgt 30 km/s,
+      das Sonnensystem umkreist das Galaxienzentrum mit 220 km/s. Ein echter Ätherwind hätte eine
+      viel größere Verschiebung erzeugt – man sah aber praktisch keine. Der Äther existiert nicht.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die Deutung: c ist konstant</div>
+    <div class="dsp-erkl-text">
+      FitzGerald (1889) und Lorentz (1892) erkannten: Wenn sich der Raum in Bewegungsrichtung um
+      genau den Faktor √(1−β²) <b>zusammenzieht</b> (Längenkontraktion), heben sich die
+      Laufzeitunterschiede exakt auf – und man misst nichts. Die tiefere Einsicht lieferte
+      <b>Einstein 1905</b>: Die <b>Lichtgeschwindigkeit ist in jedem Bezugssystem gleich</b>, ganz
+      ohne Äther. Damit war das Michelson-Morley-Experiment nachträglich zum
+      <b>Schlüsselexperiment</b> der speziellen Relativitätstheorie geworden – ein Musterbeispiel
+      dafür, wie ein einziges Experiment ein ganzes Weltbild umstürzen kann. Aus der Konstanz von
+      c folgt auch, dass c eine <b>Obergrenze</b> für Geschwindigkeiten ist und sich
+      Geschwindigkeiten nur bei „kleinen“ Werten einfach addieren lassen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Bis heute: Gravitationswellen</div>
+    <div class="dsp-erkl-text">
+      Das Interferometer ist bis heute ein Präzisionsinstrument. 2015 wies <b>LIGO</b> erstmals
+      <b>Gravitationswellen</b> nach – winzige Verzerrungen der Raumzeit von der Verschmelzung
+      zweier Schwarzer Löcher (36 und 29 Sonnenmassen) in 1,3 Milliarden Lichtjahren Entfernung.
+      Die Armlängen von 4 km, durch Mehrfachreflexion auf 300 km verlängert, dehnten sich dabei um
+      weniger als ein Tausendstel Atomkerndurchmesser. Dasselbe Messprinzip wie bei Michelson –
+      nur unvorstellbar viel genauer.
+    </div>
+    <div class="dsp-erkl-note">💡 Weiter geht es mit den Schlüsselexperimenten <b>Lichtuhr</b> und
+      <b>Myonenzerfall</b>, die Zeitdilatation und Längenkontraktion vervollständigen.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _mmSetStation(i) {
+  _mm.station = Math.max(0, Math.min(4, i));
+  for (let k = 0; k < 5; k++) {
+    document.getElementById('mmSt' + k)?.classList.toggle('on', k === _mm.station);
+    const d = document.getElementById('mmS' + k);
+    if (d) d.style.display = k === _mm.station ? 'block' : 'none';
+  }
+  _mmUpdate();
+}
+function _mmSet(key, val) { _mm[key] = val; _mmUpdate(); }
+function _mmToggle() {
+  _mm.laeuft = !_mm.laeuft;
+  const b = document.getElementById('mmLaufBtn');
+  if (b) b.textContent = _mm.laeuft ? '⏸ Anhalten' : '▶ Weiter';
+}
+function _mmDreh() { _mm.winkel = _mm.winkel === 0 ? 90 : 0; _mmUpdate(); }
+function _mmSetBeta(v) {
+  _mm.beta = Math.max(0.05, Math.min(0.7, +v));
+  const el = document.getElementById('mmBetaLbl'); if (el) el.textContent = _fpmNum(_mm.beta, 2);
+  _mmRenderUhr();
+}
+function _mmSetV(v) {
+  _mm.vKmS = Math.max(0, Math.min(60, +v));
+  const el = document.getElementById('mmVLbl'); if (el) el.textContent = Math.round(_mm.vKmS) + ' km/s';
+  _mmRenderStreifen();
+}
+
+function _mmUpdate() {
+  if (!_mm) return;
+  const et = document.getElementById('mmErklText');
+  if (et) {
+    et.innerHTML = `<div class="git-sch-kopf">Der Weg des Lichts</div>
+      <div class="mm-erkl-z"><span>①</span>Die <b>Lichtquelle</b> (Natrium- oder weißes Licht) sendet
+        einen Strahl auf den Strahlteiler.</div>
+      <div class="mm-erkl-z"><span>②</span>Der <b>Strahlteiler</b> lässt die Hälfte durch und
+        reflektiert die Hälfte – zwei Strahlen laufen in <b>senkrechte Arme</b>.</div>
+      <div class="mm-erkl-z"><span>③</span>An den <b>Spiegeln</b> werden beide zurückgeworfen und
+        treffen am Strahlteiler wieder zusammen.</div>
+      <div class="mm-erkl-z"><span>④</span>In der <b>Messoptik</b> überlagern sie sich zum
+        <b>Interferenzmuster</b>. Ein Streifen = eine Wellenlänge Wegunterschied.</div>
+      <div class="mm-erkl-note">Ausrichtung gerade: <b>${_mm.winkel === 0 ? 'Arm 1 parallel zum Ätherwind' : 'um 90° gedreht – Arme vertauscht'}</b>.
+        Genau die Änderung beim Drehen wollte man messen.</div>`;
+  }
+  _mmRenderK3();
+  _mmRenderUhr();
+  _mmRenderStreifen();
+  _mmRenderNull();
+  _mmRenderLigo();
+}
+
+function _mmRenderK3() {
+  const el = document.getElementById('mmK3'); if (!el) return;
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du dieses Experiment jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Ursprünglich: die Geschwindigkeit der Erde gegenüber dem Lichtäther messen. Heute: die
+        Konstanz der Lichtgeschwindigkeit zeigen.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Ein Interferometer teilt einen Lichtstrahl in zwei senkrechte Arme und bringt sie wieder
+        zur Interferenz.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Man beobachtet das Streifenmuster und dreht die Apparatur um 90°, um eine Verschiebung zu
+        suchen.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        Es tritt <b>keine</b> nennenswerte Streifenverschiebung auf (s<sub>rel</sub> ≤ 0,02) – ein
+        Nullresultat.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Es gibt keinen Äther; die Lichtgeschwindigkeit ist in allen Bezugssystemen gleich. Das
+        führte zur speziellen Relativitätstheorie.</div>
+    </div>`;
+}
+
+// ── Station 2: Laufzeiten ──────────────────────────────
+function _mmRenderUhr() {
+  const el = document.getElementById('mmUhrRechnung'); if (!el) return;
+  const tp = _mmTPara(_MM_L, _mm.beta);
+  const to = _mmTOrtho(_MM_L, _mm.beta);
+  const t0 = 2 * _MM_L / _MM_C;
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">ohne Ätherwind (β = 0)</span>
+      <span class="pho-rz-f">t₀ = 2L/c</span>
+      <span class="pho-rz-v">${_fpmNum(t0 * 1e9, 1)} ns</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">paralleler Arm</span>
+      <span class="pho-rz-f">t<sub>∥</sub> = t₀/(1−β²)</span>
+      <span class="pho-rz-v">${_fpmNum(tp / t0, 4)}·t₀</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">orthogonaler Arm</span>
+      <span class="pho-rz-f">t<sub>⊥</sub> = t₀/√(1−β²)</span>
+      <span class="pho-rz-v">${_fpmNum(to / t0, 4)}·t₀</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">der parallele Arm braucht länger</span>
+      <span class="pho-rz-f">t<sub>∥</sub> − t<sub>⊥</sub></span>
+      <span class="pho-rz-v">${_fpmNum((tp - to) / t0 * 100, 2)} % von t₀</span></div>`;
+  const t = document.getElementById('mmUhrText');
+  if (t) {
+    t.innerHTML = `<div class="fpm-note">Das β ist hier stark <b>übertrieben</b> (${_fpmNum(_mm.beta, 2)}),
+      damit man den Effekt überhaupt sieht. In Wirklichkeit ist v/c für die Erdbewegung nur etwa
+      <b>0,0001</b> – der Zeitunterschied ist winzig, aber im Prinzip vorhanden. Der senkrechte
+      Arm läuft <b>schräg</b> mit (wie das Licht in der Lichtuhr), deshalb erscheint seine
+      Laufzeit um den Faktor √(1−β²) gedehnt; der parallele Arm dagegen um 1/(1−β²) – <b>stärker</b>.
+      Genau dieser Unterschied sollte die Streifen verschieben.</div>`;
+  }
+}
+
+// ── Station 3: Streifenverschiebung ────────────────────
+function _mmRenderStreifen() {
+  const el = document.getElementById('mmStreifenRechnung'); if (!el) return;
+  const v = _mm.vKmS * 1000;
+  const beta = v / _MM_C;
+  const d = _mmPfadDiff(_MM_L, beta);
+  const srel = d / _MM_LAMBDA;
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">angenommener Ätherwind</span>
+      <span class="pho-rz-f">v</span><span class="pho-rz-v">${_fpmNum(_mm.vKmS, 0)} km/s</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Weglängendifferenz nach 90°-Drehung</span>
+      <span class="pho-rz-f">d = 2L·v²/c²</span>
+      <span class="pho-rz-v">${_fpmNum(d * 1e9, 2)} nm</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Streifenverschiebung</span>
+      <span class="pho-rz-f">s<sub>rel</sub> = d/λ</span>
+      <span class="pho-rz-v">${_fpmNum(srel, 3)}</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">gemessen (Obergrenze)</span>
+      <span class="pho-rz-f">s<sub>rel,mess</sub></span>
+      <span class="pho-rz-v" style="color:#dc2626">≤ 0,02</span></div>`;
+  const t = document.getElementById('mmStreifenText');
+  if (t) {
+    const vmess = _mmVausSrel(_MM_SREL_MESS, _MM_LAMBDA, _MM_L);
+    t.innerHTML = `<div class="fpm-note">Ein Ätherwind von ${_fpmNum(_mm.vKmS, 0)} km/s würde die
+      Streifen um <b>${_fpmNum(srel, 2)}</b> Streifenabstände verschieben – ${srel > 0.05
+        ? 'das wäre <b>deutlich sichtbar</b>.' : 'kaum sichtbar.'} Gemessen wurde aber höchstens
+      <b>0,02</b>. Rechnet man umgekehrt aus dieser Obergrenze zurück,
+      v = c·√(s<sub>rel</sub>·λ/(2L)), erhält man nur <b>${_fpmNum(vmess / 1000, 1)} km/s</b> –
+      viel weniger als die 30 km/s der Erdbahn. Das ist das berühmte Nullresultat.</div>`;
+  }
+}
+
+// ── Station 4: Nullresultat ────────────────────────────
+function _mmRenderNull() {
+  const el = document.getElementById('mmNullText'); if (!el) return;
+  const zeilen = _MM_VERGLEICH.map(x => {
+    const beta = x.v / _MM_C;
+    const srel = _mmPfadDiff(_MM_L, beta) / _MM_LAMBDA;
+    return `<div class="mm-null-z"><span class="mm-null-n">${x.n}</span>
+      <b style="color:${x.farbe}">${_fpmNum(x.v / 1000, 0)} km/s → s<sub>rel</sub> = ${_fpmNum(srel, srel > 1 ? 0 : 2)}</b></div>`;
+  }).join('');
+  el.innerHTML = `<div class="git-sch-kopf">Warum das ein Nullresultat ist</div>
+    <div class="mm-null-t2">Man kannte Geschwindigkeiten, mit denen sich die Erde durch den
+      vermuteten Äther bewegen sollte. Jede hätte eine gut messbare Streifenverschiebung erzeugt:</div>
+    ${zeilen}
+    <div class="mm-null-t2">Gemessen wurde aber nur <b>s<sub>rel</sub> ≤ 0,02</b> – entsprechend
+      höchstens 7 km/s, später sogar unter 1,5 km/s. Es gibt also <b>keinen Ätherwind</b>.</div>
+    <div class="git-sch-kopf" style="margin-top:8px">Die Rettung: Längenkontraktion</div>
+    <div class="mm-null-t2">FitzGerald und Lorentz erkannten: Zieht sich der Arm <b>parallel</b>
+      zur Bewegung um genau den Faktor <b>√(1−β²)</b> zusammen, so wird seine Laufzeit kürzer und
+      gleicht die Differenz exakt aus – man misst nichts. Einstein deutete das 1905 tiefer: Die
+      <b>Lichtgeschwindigkeit ist konstant</b>, ein Äther ist überflüssig. Aus der Konstanz von c
+      folgt die ganze spezielle Relativitätstheorie.</div>`;
+}
+
+// ── Station 5: LIGO ────────────────────────────────────
+function _mmRenderLigo() {
+  const el = document.getElementById('mmLigoText'); if (!el) return;
+  el.innerHTML = `<div class="git-sch-kopf">GW150914 – der erste direkte Nachweis</div>
+    <div class="mm-ligo-z"><b>Was</b> Am 14. September 2015 registrierten die beiden LIGO-Detektoren
+      in Livingston und Hanford (USA) das Signal zweier <b>verschmelzender Schwarzer Löcher</b> in
+      1,3 Milliarden Lichtjahren Entfernung.</div>
+    <div class="mm-ligo-z"><b>Die Massen</b> 36 und 29 Sonnenmassen verschmolzen zu einem Schwarzen
+      Loch von 62 Sonnenmassen – <b>3 Sonnenmassen</b> wurden in Bruchteilen einer Sekunde in
+      Energie umgewandelt und als Gravitationswellen abgestrahlt. Kurzzeitig übertraf diese
+      Leistung die aller Sterne des sichtbaren Universums zusammen.</div>
+    <div class="mm-ligo-z"><b>Wie klein</b> Die Arme (4 km, durch 75-fache Reflexion auf 300 km
+      verlängert) dehnten sich um weniger als ein <b>Tausendstel Atomkerndurchmesser</b>. Nur weil
+      beide Detektoren dasselbe Signal mit 6,9 ms Versatz sahen, war es zweifelsfrei.</div>
+    <div class="mm-ligo-z med"><b>Dasselbe Prinzip</b> LIGO ist ein <b>Michelson-Interferometer</b>
+      – nur unvorstellbar viel genauer. Was 1887 den Äther widerlegte, öffnet heute ein ganz neues
+      Fenster ins Universum: die Gravitationswellen-Astronomie.</div>`;
+}
+
+// ── Zeichnungen ────────────────────────────────────────
+function _mmDrawInterf(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const bx = 200, by = 150;   // Strahlteiler
+  const armL = 110;
+  // Ätherwind-Pfeile im Hintergrund
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1;
+  for (let y = 20; y < H; y += 26) {
+    ctx.beginPath(); ctx.moveTo(10, y); ctx.lineTo(50, y); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(46, y - 3); ctx.lineTo(50, y); ctx.lineTo(46, y + 3); ctx.stroke();
+  }
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Ätherwind →', 10, 14);
+
+  // Lichtquelle links
+  ctx.fillStyle = '#fbbf24';
+  ctx.beginPath(); ctx.arc(40, by, 10, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Lichtquelle', 40, by + 24);
+
+  // je nach Winkel: welcher Arm ist horizontal (parallel)
+  const gedreht = _mm.winkel === 90;
+  // Strahlteiler (45°)
+  ctx.strokeStyle = '#93c5fd'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(bx - 12, by + 12); ctx.lineTo(bx + 12, by - 12); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Strahlteiler', bx + 8, by + 26);
+  // Spiegel rechts (Arm 1, horizontal) und oben (Arm 2, vertikal)
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(bx + armL, by - 14); ctx.lineTo(bx + armL, by + 14); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(bx - 14, by - armL); ctx.lineTo(bx + 14, by - armL); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+  ctx.fillText('Spiegel', bx + armL, by - 20);
+  ctx.fillText('Spiegel', bx, by - armL - 6);
+  // Messoptik unten
+  ctx.fillStyle = '#334155'; ctx.fillRect(bx - 12, by + armL - 10, 24, 20);
+  ctx.fillStyle = '#94a3b8'; ctx.fillText('Messoptik', bx, by + armL + 18);
+
+  // Lichtstrahlen
+  const puls = (_mm.t * 1.5) % 1;
+  // Quelle -> Strahlteiler
+  ctx.strokeStyle = '#fde047'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(50, by); ctx.lineTo(bx, by); ctx.stroke();
+  // Arm 1 (horizontal, parallel wenn nicht gedreht)
+  ctx.strokeStyle = gedreht ? '#a78bfa' : '#f87171'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(bx + armL, by); ctx.stroke();
+  // Arm 2 (vertikal, orthogonal wenn nicht gedreht)
+  ctx.strokeStyle = gedreht ? '#f87171' : '#a78bfa';
+  ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(bx, by - armL); ctx.stroke();
+  // -> Messoptik
+  ctx.strokeStyle = '#fde047';
+  ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(bx, by + armL - 10); ctx.stroke();
+  // Laufende Lichtpakete
+  ctx.fillStyle = '#fef08a';
+  const p1x = bx + puls * armL;
+  ctx.beginPath(); ctx.arc(p1x, by, 3, 0, 2 * Math.PI); ctx.fill();
+  const p2y = by - puls * armL;
+  ctx.beginPath(); ctx.arc(bx, p2y, 3, 0, 2 * Math.PI); ctx.fill();
+
+  ctx.fillStyle = gedreht ? '#a78bfa' : '#f87171'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(gedreht ? 'Arm 1 (jetzt ⊥)' : 'Arm 1 (∥ zum Wind)', bx + armL / 2, by - 6);
+  ctx.fillStyle = gedreht ? '#f87171' : '#a78bfa'; ctx.textAlign = 'right';
+  ctx.save(); ctx.translate(bx - 6, by - armL / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText(gedreht ? 'Arm 2 (jetzt ∥)' : 'Arm 2 (⊥)', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+}
+
+function _mmDrawUhr(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const beta = _mm.beta;
+  // Zwei Diagramme nebeneinander: parallel (horizontal hin/zurueck mit Drift)
+  // und orthogonal (schraeger Weg wie Lichtuhr)
+  const tp = _mmTPara(_MM_L, beta) / (2 * _MM_L / _MM_C);
+  const to = _mmTOrtho(_MM_L, beta) / (2 * _MM_L / _MM_C);
+
+  // linkes Bild: paralleler Arm
+  ctx.fillStyle = '#f87171'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('paralleler Arm', 110, 20);
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(40, 60); ctx.lineTo(180, 60); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif';
+  ctx.fillText('Strahlteiler', 40, 74); ctx.fillText('Spiegel', 180, 74);
+  // Lichtpaket hin/zurueck mit Aetherwind-Drift (illustrativ)
+  const cyc = (_mm.t * 0.5) % 1;
+  const px = cyc < 0.5 ? 40 + cyc * 2 * 140 : 180 - (cyc - 0.5) * 2 * 140;
+  ctx.fillStyle = '#fde047';
+  ctx.beginPath(); ctx.arc(px, 60, 4, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#f87171'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(40, 90); ctx.lineTo(40 + tp * 100, 90); ctx.stroke();
+  ctx.fillStyle = '#f87171'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('t∥ = ' + _fpmNum(tp, 3) + '·t₀', 40, 104);
+
+  // rechtes Bild: orthogonaler Arm (Lichtuhr, schraeg)
+  ctx.fillStyle = '#a78bfa'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('orthogonaler Arm (Lichtuhr)', 320, 20);
+  const ox = 320, oyb = 180, oyt = 90;
+  // Bewegung: der Spiegel wandert nach rechts, das Licht laeuft schraeg
+  const drift = beta * 50;
+  ctx.strokeStyle = '#a78bfa'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(ox - drift, oyb); ctx.lineTo(ox, oyt); ctx.lineTo(ox + drift, oyb); ctx.stroke();
+  // senkrechte Referenz
+  ctx.strokeStyle = '#334155'; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(ox, oyb); ctx.lineTo(ox, oyt); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Strahlteiler', ox, oyb + 14); ctx.fillText('Spiegel', ox, oyt - 6);
+  ctx.fillText('L', ox + 6, (oyb + oyt) / 2);
+  ctx.fillText('schräg: c·t⊥', ox - drift - 20, (oyb + oyt) / 2);
+  // Lichtpaket schraeg
+  const cyc2 = (_mm.t * 0.5) % 1;
+  const lx = cyc2 < 0.5 ? (ox - drift) + cyc2 * 2 * drift : ox + (cyc2 - 0.5) * 2 * drift;
+  const ly = cyc2 < 0.5 ? oyb - cyc2 * 2 * (oyb - oyt) : oyt + (cyc2 - 0.5) * 2 * (oyb - oyt);
+  ctx.fillStyle = '#fde047';
+  ctx.beginPath(); ctx.arc(lx, ly, 4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#a78bfa'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('t⊥ = ' + _fpmNum(to, 3) + '·t₀', ox - 40, oyb + 30);
+}
+
+function _mmStreifenMuster(ctx, y0, h, shift, W) {
+  // Interferenzstreifen als Sinus-Helligkeit, um shift (in Streifen) verschoben
+  const x0 = 20, x1 = W - 14, breite = 22;  // px je Streifen
+  for (let px = x0; px < x1; px++) {
+    const phase = (px - x0) / breite - shift;
+    const hell = 0.5 + 0.5 * Math.cos(phase * 2 * Math.PI);
+    const g = Math.round(hell * 220);
+    ctx.fillStyle = 'rgb(' + Math.round(g * 0.9) + ',' + Math.round(g * 0.95) + ',' + g + ')';
+    ctx.fillRect(px, y0, 1, h);
+  }
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1; ctx.strokeRect(x0, y0, x1 - x0, h);
+}
+function _mmDrawStreifen(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const v = _mm.vKmS * 1000, beta = v / _MM_C;
+  const srel = _mmPfadDiff(_MM_L, beta) / _MM_LAMBDA;
+  // oben: vor der Drehung; unten: nach der Drehung (verschoben um srel)
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('vor der Drehung', 20, 14);
+  _mmStreifenMuster(ctx, 20, 40, 0, W);
+  ctx.fillText('nach 90°-Drehung' + (_mm.gedreht ? ' (aktiv)' : ''), 20, 84);
+  _mmStreifenMuster(ctx, 90, 40, _mm.gedreht ? srel : 0, W);
+  // Verschiebungspfeil
+  if (_mm.gedreht && srel > 0.01) {
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5;
+    const px = 20 + 40;
+    ctx.beginPath(); ctx.moveTo(px, 132); ctx.lineTo(px + srel * 22, 132); ctx.stroke();
+    ctx.fillStyle = '#fbbf24'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Δs = ' + _fpmNum(srel, 2) + ' Streifen', px + 4, 128);
+  }
+}
+
+function _mmDrawNull(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  const padL = 40, padR = 12, padT = 24, padB = 34;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  // Balken: erwartete s_rel fuer die Vergleichsgeschwindigkeiten + gemessen
+  const daten = _MM_VERGLEICH.map(x => ({ n: x.n.split(' ')[0], v: x.v, farbe: x.farbe,
+    srel: _mmPfadDiff(_MM_L, x.v / _MM_C) / _MM_LAMBDA }));
+  daten.push({ n: 'gemessen', v: 7000, farbe: '#16a34a', srel: 0.02 });
+  const maxS = Math.max(...daten.map(d => d.srel));
+  // log-Skala, weil die Werte sehr verschieden sind
+  const Y = s => y0 - (Math.log10(Math.max(0.01, s)) - Math.log10(0.01)) / (Math.log10(maxS * 1.5) - Math.log10(0.01)) * (y0 - y1);
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('erwartete Streifenverschiebung (log) – und was man maß', W / 2, 14);
+  const bw = (x1 - x0) / daten.length * 0.6;
+  daten.forEach((d, i) => {
+    const cx = x0 + (i + 0.5) / daten.length * (x1 - x0);
+    ctx.fillStyle = d.farbe;
+    ctx.fillRect(cx - bw / 2, Y(d.srel), bw, y0 - Y(d.srel));
+    ctx.fillStyle = '#334155'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(d.n, cx, y0 + 12);
+    ctx.fillStyle = d.farbe; ctx.font = '700 8px sans-serif';
+    ctx.fillText(_fpmNum(d.srel, d.srel > 1 ? 0 : 2), cx, Y(d.srel) - 4);
+  });
+  // Linie bei gemessenem 0,02
+  ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+  ctx.beginPath(); ctx.moveTo(x0, Y(0.02)); ctx.lineTo(x1, Y(0.02)); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.textAlign = 'left';
+}
+
+function _mmDrawKontr(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const cy = H / 2;
+  // Arm ohne Kontraktion (Referenz)
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.strokeRect(30, cy - 12, 200, 24); ctx.setLineDash([]);
+  ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Ruhelänge L', 30, cy - 18);
+  // Kontrahierter Arm (√(1−β²)); nutze ein sichtbares β
+  const beta = 0.6, gamma = Math.sqrt(1 - beta * beta);
+  ctx.fillStyle = '#7c3aed'; ctx.globalAlpha = 0.7;
+  ctx.fillRect(30, cy - 8, 200 * gamma - 30 * (gamma - 1), 16);
+  ctx.fillRect(30, cy - 8, 200 * gamma, 16);
+  ctx.globalAlpha = 1;
+  ctx.fillStyle = '#c4b5fd'; ctx.font = '9px sans-serif';
+  ctx.fillText('kontrahiert: L·√(1−β²)', 30, cy + 22);
+  ctx.fillStyle = '#a78bfa'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('genau so viel, dass sich alles aufhebt → man misst nichts', W - 12, cy + 22);
+  ctx.textAlign = 'left';
+}
+
+function _mmDrawLigo(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  // Chirp-Signal: steigende Frequenz und Amplitude bis zum Merger, dann Ringdown
+  const x0 = 20, x1 = W - 14, cy = 70;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x0, cy); ctx.lineTo(x1, cy); ctx.stroke();
+  ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.8;
+  ctx.beginPath();
+  const merger = 0.75;
+  for (let px = 0; px <= x1 - x0; px++) {
+    const u = px / (x1 - x0);
+    let amp, freq;
+    if (u < merger) { amp = 8 + u / merger * 26; freq = 3 + u / merger * 14; }
+    else { const r = (u - merger) / (1 - merger); amp = 34 * Math.exp(-r * 4); freq = 17; }
+    const y = cy - amp * Math.sin((u * freq * 6) + _mm.ligoT * 0.5);
+    px === 0 ? ctx.moveTo(x0 + px, y) : ctx.lineTo(x0 + px, y);
+  }
+  ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('GW150914 – „Chirp": Frequenz und Amplitude steigen bis zur Verschmelzung', x0, 16);
+  ctx.fillStyle = '#f59e0b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Merger', x0 + merger * (x1 - x0), 130);
+  // zwei Schwarze Loecher, die einander umkreisen
+  const bcx = W / 2, bcy = 185, r = 22 * (1 - (_mm.ligoT * 0.3 % 1) * 0.5);
+  const a = _mm.ligoT * 3;
+  [0, Math.PI].forEach((ph, i) => {
+    ctx.fillStyle = i === 0 ? '#1e293b' : '#0f172a';
+    const bx = bcx + Math.cos(a + ph) * r, by = bcy + Math.sin(a + ph) * r * 0.4;
+    ctx.beginPath(); ctx.arc(bx, by, 8 - i, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1; ctx.stroke();
+  });
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('36 + 29 → 62 Sonnenmassen (3 als Gravitationswellen)', bcx, H - 6);
+  ctx.textAlign = 'left';
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _mmTakt(dt) {
+  if (!_mm) return;
+  const d = Math.min(0.05, dt);
+  if (_mm.laeuft) _mm.t += d;
+  _mm.ligoT += d;
+}
+function _mmRender() {
+  if (!_mm) return;
+  const st = _mm.station;
+  if (st === 0) {
+    const c = document.getElementById('mmInterf');
+    if (c) _mmDrawInterf(c.getContext('2d'), c);
+  } else if (st === 1) {
+    const c = document.getElementById('mmUhr');
+    if (c) _mmDrawUhr(c.getContext('2d'), c);
+  } else if (st === 2) {
+    const c = document.getElementById('mmStreifen');
+    if (c) _mmDrawStreifen(c.getContext('2d'), c);
+  } else if (st === 3) {
+    const c = document.getElementById('mmNull');
+    if (c) _mmDrawNull(c.getContext('2d'), c);
+    const ck = document.getElementById('mmKontr');
+    if (ck) _mmDrawKontr(ck.getContext('2d'), ck);
+  } else if (st === 4) {
+    const c = document.getElementById('mmLigo');
+    if (c) _mmDrawLigo(c.getContext('2d'), c);
+  }
+}
+
+// ── Zusätzliche Styles für das Michelson-Morley-Experiment ─
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .mm-erkl { display: flex; flex-direction: column; gap: 5px; background: #f8fafc;
+      border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 12px; }
+    .mm-erkl-z { display: flex; gap: 8px; align-items: flex-start; font-size: .77rem; color: #475569;
+      line-height: 1.5; }
+    .mm-erkl-z span { flex: 0 0 20px; height: 20px; border-radius: 50%; background: #0284c7; color: #fff;
+      font-size: .72rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .mm-erkl-z b { color: #334155; }
+    .mm-erkl-note { font-size: .75rem; color: #5b21b6; background: #f5f3ff; border: 1px solid #ddd6fe;
+      border-radius: 7px; padding: 6px 9px; margin-top: 4px; }
+    .mm-erkl-note b { color: #4c1d95; }
+    .mm-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 13px; margin-top: 12px; }
+    .mm-uhr-t, .mm-streifen-t { margin-top: 8px; }
+    .mm-null-t { display: flex; flex-direction: column; gap: 6px; }
+    .mm-null-t2 { font-size: .78rem; color: #475569; line-height: 1.6; }
+    .mm-null-t2 b { color: #334155; }
+    .mm-null-z { display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+      font-size: .76rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 6px 9px; }
+    .mm-null-n { color: #64748b; }
+    .mm-null-z b { font-variant-numeric: tabular-nums; }
+    .mm-ligo-t { display: flex; flex-direction: column; gap: 6px; }
+    .mm-ligo-z { font-size: .77rem; color: #475569; line-height: 1.6; background: #f8fafc;
+      border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; }
+    .mm-ligo-z b { color: #334155; }
+    .mm-ligo-z.med { background: #f5f3ff; border-color: #ddd6fe; }
+    .dsp-erkl-note { font-size: .8rem; color: #075985; background: #eff6ff; border: 1px solid #bfdbfe;
+      border-radius: 8px; padding: 8px 11px; margin-top: 8px; line-height: 1.55; }
+    .dsp-erkl-note b { color: #0c4a6e; }
+    .mm-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
