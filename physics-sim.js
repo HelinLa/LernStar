@@ -30223,7 +30223,9 @@ function _mmInit() {
     gedreht: false,
     // Station 4
     // Station 5
-    ligoT: 0
+    ligoT: 0,
+    // Station 6 – Wellenlänge messen (Streifenzählung, handlungsorientiert)
+    mN: 20, rows: [], nextId: 1, fn: null, fnAuto: false, reveal: false
   };
 }
 
@@ -30250,11 +30252,172 @@ function _mmSrel(L, beta, lambda) { return _mmPfadDiff(L, beta) / lambda; }
 // aus der gemessenen Streifenverschiebung die Aetherwindgeschwindigkeit
 function _mmVausSrel(srel, lambda, L) { return _MM_C * Math.sqrt(srel * lambda / (2 * L)); }
 
+// ══ Station 6: Wellenlänge messen (Streifenzählung) ══
+// Verschiebt man den Spiegel um Δd, laufen N = 2·Δd/λ Streifen durch. Traegt
+// man Δd ueber N auf, ist die Steigung λ/2, woraus sich λ ergibt.
+const _MM_MIKRO = 0.05;   // Mikrometer-Ableseraster in µm
+function _mmMDdTrue(N) { return N * _MM_LAMBDA / 2 * 1e6; }         // µm
+function _mmMDdRead(N) { return Math.round(_mmMDdTrue(N) / _MM_MIKRO) * _MM_MIKRO; }
+function _mmMSetN(v) {
+  _mm.mN = Math.max(5, Math.min(80, Math.round(+v)));
+  const el = document.getElementById('mmMNLbl'); if (el) el.textContent = String(_mm.mN);
+  _mmMRender();
+}
+function _mmMRender() {
+  const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  set('mmMNA', _mm.mN); set('mmMDA', _fpmNum(_mmMDdRead(_mm.mN), 2));
+  _mmMRenderTable(); _mmMDrawPlot();
+  const c = document.getElementById('mmMRing'); if (c) _mmMDrawRing(c.getContext('2d'), c);
+}
+function _mmMTake() {
+  if (_mm.rows.some(r => r.N === _mm.mN)) return;
+  _mm.rows.push({ id: _mm.nextId++, N: _mm.mN, dd: _mmMDdRead(_mm.mN) });
+  _mm.rows.sort((a, b) => a.N - b.N);
+  _mmMRender();
+}
+function _mmMDelRow(id) { _mm.rows = _mm.rows.filter(r => r.id !== id); _mmMRender(); }
+function _mmMClear() {
+  if (_mm.rows.length && !confirm('Alle ' + _mm.rows.length + ' Messwerte löschen?')) return;
+  _mm.rows = []; _mmMRender();
+}
+function _mmMDemo() {
+  _mm.rows = [];
+  [10, 20, 30, 40, 50, 65, 80].forEach(N => _mm.rows.push({ id: _mm.nextId++, N, dd: _mmMDdRead(N) }));
+  _mmMRender();
+}
+function _mmMRenderTable() {
+  const tb = document.getElementById('mmMTbody'); if (!tb) return;
+  const empty = document.getElementById('mmMEmpty');
+  if (empty) empty.style.display = _mm.rows.length ? 'none' : 'block';
+  tb.innerHTML = _mm.rows.map(r =>
+    `<tr><td>${r.N}</td><td><b>${_fpmNum(r.dd, 2)}</b></td>
+       <td class="fpm-del" onclick="_mmMDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _mmMSetReveal(on) { _mm.reveal = !!on; _mmMDrawPlot(); }
+function _mmMTheorieTerm() { let s = (_MM_LAMBDA / 2 * 1e6).toFixed(4); if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, ''); return s + '*x'; }
+function _mmMTheorieFn() {
+  const term = _mmMTheorieTerm();
+  const inp = document.getElementById('mmMFn'); if (inp) inp.value = term;
+  _mmMSetFn(term); _mm.fnAuto = true; _mmMRenderTheorie(true);
+}
+function _mmMClearFn() {
+  const inp = document.getElementById('mmMFn'); if (inp) inp.value = '';
+  _mmMSetFn(''); _mmMRenderTheorie(false);
+}
+function _mmMRenderTheorie(eingesetzt) {
+  const el = document.getElementById('mmMTheo'); if (!el) return;
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">Ursprungsgerade</div>
+     <div class="fpm-theo-form">Δd = (λ/2) · N</div>
+     <div class="fpm-theo-par">Steigung = λ/2, daraus λ = 2 · Steigung</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${_mmMTheorieTerm()}</div>` : ''}
+     <div class="fpm-theo-deutung">Bewegt sich der eine Spiegel des Interferometers um eine halbe Wellenlänge, so ändert sich der Lichtweg um eine ganze Wellenlänge und ein Streifen läuft durch. Zählt man N Streifen zu einem am Mikrometer gemessenen Spiegelweg Δd, so gilt Δd = N·λ/2. Die Steigung der Geraden liefert unmittelbar λ. So wird dasselbe Interferometer, mit dem Michelson den Äther suchte, zum Präzisionsmaßstab für Wellenlängen und Längen – bis hin zu LIGO.</div>`;
+}
+function _mmMSetFn(str) {
+  _mm.fnAuto = false;
+  const err = document.getElementById('mmMFnErr');
+  const v = (str || '').trim();
+  if (!v) { _mm.fn = null; if (err) err.textContent = ''; _mmMDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _mm.fn = f; if (err) err.textContent = '';
+  } catch (e) { _mm.fn = null; if (err) err.textContent = e.message; }
+  _mmMDrawPlot();
+}
+function _mmMDrawRing(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const cx = 100, cy = H / 2, phase = (_mm.t * 1.5) % 1;
+  // konzentrische Interferenzringe, die nach innen laufen
+  for (let r = 80; r > 3; r -= 8) {
+    const rr = r - phase * 8;
+    if (rr < 2) continue;
+    const hell = Math.cos((rr / 8) * 2 * Math.PI) > 0;
+    ctx.strokeStyle = hell ? 'rgba(167,139,250,0.85)' : 'rgba(30,41,59,0.6)';
+    ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(cx, cy, rr, 0, 2 * Math.PI); ctx.stroke();
+  }
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Interferenzringe', cx, H - 8);
+  // Mikrometer/Spiegel
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('bewegter Spiegel', 210, 26);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  ctx.strokeRect(210, 36, 180, 30);
+  const frac = (_mmMDdRead(_mm.mN) / _mmMDdTrue(80));
+  ctx.fillStyle = '#7c3aed'; ctx.fillRect(212, 38, 176 * Math.min(1, frac), 26);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('N = ' + _mm.mN + ' Streifen', 210, 90);
+  ctx.fillText('Δd = ' + _fpmNum(_mmMDdRead(_mm.mN), 2) + ' µm', 210, 108);
+}
+function _mmMDrawPlot() {
+  const cv = document.getElementById('mmMPlot'); if (!cv || !_mm) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const padL = 46, padR = 14, padT = 10, padB = 30;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const pts = _mm.rows.map(r => ({ x: r.N, y: r.dd }));
+  const xmax = 88, ymax = _mmMDdTrue(88);
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+  ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  for (let n = 0; n <= 80; n += 20) { ctx.beginPath(); ctx.moveTo(X(n), y0); ctx.lineTo(X(n), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(n + '', X(n), y0 + 12); }
+  const yt = _fpmTicks(ymax, 5);
+  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('Streifenzahl N', x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('Δd in µm', 0, 0); ctx.restore(); ctx.textAlign = 'left';
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
+    const fo = document.getElementById('mmMFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">Zähle zu verschiedenen Spiegelwegen die Streifen. Die Steigung der Geraden ist λ/2.</div>';
+    return;
+  }
+  if (_mm.fn) {
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _mm.fn((px - x0) / (x1 - x0) * xmax); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv); if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  let fit = null;
+  if (pts.length >= 2) {
+    fit = _fpmFitOrigin(pts);
+    if (fit) { ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.7; ctx.beginPath(); ctx.moveTo(X(0), Y(0)); ctx.lineTo(X(xmax), Y(fit.k * xmax)); ctx.stroke(); }
+  }
+  pts.forEach(p => { ctx.fillStyle = '#7c3aed'; ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke(); });
+  const el = document.getElementById('mmMFitBox');
+  if (el) {
+    if (!fit) { el.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte nötig.</div>'; }
+    else {
+      const lamNm = 2 * fit.k * 1000;   // Steigung µm -> λ in nm
+      const abw = Math.abs(lamNm - _MM_LAMBDA * 1e9) / (_MM_LAMBDA * 1e9) * 100;
+      const cls = abw < 2 ? 'ok' : abw < 6 ? 'mid' : 'no';
+      el.innerHTML = `<div class="fpm-fitline">
+         <span class="fpm-fitmeta">${_mm.rows.length} Messwerte</span>
+         <span class="fpm-fiteq">Δd = ${_fpmNum(fit.k, 4)}·N</span>
+         <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 5)}</span>
+         <span class="fpm-fiteq" style="color:#075985">λ = 2·Steigung = ${_fpmNum(lamNm, 0)} nm</span>
+         ${_mm.reveal ? `<span class="fpm-badge ${cls}">Literatur 600 nm · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+       </div>`;
+    }
+  }
+}
+
 // ── Oberflaeche ─────────────────────────────────────────
 function _mmHTML() {
   const stationen = ['1 · Äther & Interferometer', '2 · Zwei Lichtwege, zwei Laufzeiten',
                      '3 · Die Streifenverschiebung', '4 · Das Nullresultat',
-                     '5 · Vom Äther zu LIGO']
+                     '5 · Vom Äther zu LIGO', '6 · Wellenlänge messen']
     .map((s, i) => `<button class="fpm-tab${i === _mm.station ? ' on' : ''}" id="mmSt${i}" onclick="_mmSetStation(${i})">${s}</button>`).join('');
 
   return `<div class="sim-box sim-box-wide fpm-sim mm-sim">
@@ -30349,6 +30512,53 @@ function _mmHTML() {
       </div>
     </div>
 
+    <!-- ══ Station 6: Wellenlänge messen ══ -->
+    <div id="mmS5" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="mmMRing" width="440" height="200" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Verschiebe den Spiegel und zähle die durchlaufenden Ringe (Streifen)</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">gezählte Streifen N: <b id="mmMNLbl">20</b></span>
+            <input type="range" id="mmMN" min="5" max="80" step="1" value="20"
+              oninput="_mmMSetN(this.value)" style="width:100%;accent-color:#7c3aed">
+          </div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">gezählte Streifen N</span><span class="fpm-ro-v" id="mmMNA">—</span><span class="fpm-ro-u"></span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Spiegelweg am Mikrometer Δd</span><span class="fpm-ro-v" id="mmMDA">—</span><span class="fpm-ro-u">µm</span></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_mmMTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_mmMDemo()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_mmMClear()">🗑 Tabelle leeren</button>
+          </div>
+        </div>
+        <div>
+          <canvas id="mmMPlot" width="440" height="220" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Spiegelweg Δd über der Streifenzahl N: Steigung = λ/2</div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>N</th><th>Δd (µm)</th><th></th></tr></thead>
+              <tbody id="mmMTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="mmMEmpty">Noch keine Messwerte.<br>Streifen zählen → Spiegelweg übernehmen.</div>
+          </div>
+          <div class="fpm-fit" id="mmMFitBox"></div>
+          <div class="fpm-label" style="margin-top:8px">Funktion plotten</div>
+          <input type="text" id="mmMFn" class="fpm-input" placeholder="z. B. 0.3*x" spellcheck="false"
+            oninput="_mmMSetFn(this.value)">
+          <div class="fpm-err" id="mmMFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_mmMTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_mmMClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="mmMTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_mmMSetReveal(this.checked)">
+            Literaturwert λ = 600 nm anzeigen</label>
+        </div>
+      </div>
+    </div>
+
     <div id="mmErkl" class="dsp-erkl"></div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
       <b>t<sub>∥</sub> = (2L/c)/(1−β²)</b> &nbsp;|&nbsp; <b>t<sub>⊥</sub> = (2L/c)/√(1−β²)</b>
@@ -30423,13 +30633,14 @@ function _mmErklHTML() {
 
 // ── Stationen ──────────────────────────────────────────
 function _mmSetStation(i) {
-  _mm.station = Math.max(0, Math.min(4, i));
-  for (let k = 0; k < 5; k++) {
+  _mm.station = Math.max(0, Math.min(5, i));
+  for (let k = 0; k < 6; k++) {
     document.getElementById('mmSt' + k)?.classList.toggle('on', k === _mm.station);
     const d = document.getElementById('mmS' + k);
     if (d) d.style.display = k === _mm.station ? 'block' : 'none';
   }
   _mmUpdate();
+  if (_mm.station === 5) _mmMRender();
 }
 function _mmSet(key, val) { _mm[key] = val; _mmUpdate(); }
 function _mmToggle() {
@@ -30868,6 +31079,9 @@ function _mmRender() {
   } else if (st === 4) {
     const c = document.getElementById('mmLigo');
     if (c) _mmDrawLigo(c.getContext('2d'), c);
+  } else if (st === 5) {
+    const c = document.getElementById('mmMRing');
+    if (c) _mmMDrawRing(c.getContext('2d'), c);
   }
 }
 
