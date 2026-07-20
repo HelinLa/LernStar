@@ -2224,6 +2224,20 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('rtgTakt', 'rtgKeinChart');
     _pSim.start(dt => _rtgTakt(dt), () => _rtgRender(), []);
   },
+
+  // Schluesselexperiment 21 des KLP (Q2.1): Absorptionsexperimente. α-, β-
+  // und γ-Strahlung unterscheiden, das exponentielle Absorptionsgesetz mit
+  // Halbwertsdicke, die Wechselwirkungen und die biologische Wirkung.
+  'absorption-strahlung': modal => {
+    _absInit();
+    modal.innerHTML = _absHTML();
+    const erkl = document.getElementById('absErkl');
+    if (erkl) erkl.innerHTML = _absErklHTML();
+    _absSetStation(0);
+    _absUpdate();
+    _pSim = new PhysicsSimEngine('absTakt', 'absKeinChart');
+    _pSim.start(dt => _absTakt(dt), () => _absRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -26850,6 +26864,894 @@ function _rtgRender() {
     .rtg-serie-z b { margin-left: auto; color: #334155; font-variant-numeric: tabular-nums; }
     .rtg-bragg-t, .rtg-grenz-t, .rtg-mos-t { margin-top: 8px; }
     .rtg-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// ABSORPTIONSEXPERIMENTE – Schluesselexperiment 21 (angehaengt)
+// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// ABSORPTIONSEXPERIMENTE
+// Schluesselexperiment 21 der NRW-Handreichung (Q2.1). Baut auf dem
+// Geiger-Mueller-Zaehlrohr (V19) und der Roentgenstrahlung (V20) auf.
+// Kernkompetenzen des KLP: α-, β-, γ- und Roentgenstrahlung unterscheiden
+// (UF3); Wirkungen ionisierender Strahlung auf Materie und Organismen
+// beschreiben (UF1); den Nachweis der Strahlungsarten mit Absorptions-
+// experimenten erlaeutern (E4, E5).
+// ═══════════════════════════════════════════════════════
+
+// Strahlungsarten. reichweite/λ in mm im jeweiligen Absorber (vereinfachtes
+// Modell); Teilchenstrahlung hat eine feste Reichweite, γ faellt exponentiell.
+const _ABS_STRAHLUNG = [
+  { id: 'alpha', n: 'α-Strahlung', sym: 'α', farbe: '#dc2626',
+    art: 'Heliumkerne (2 p, 2 n)', typ: 'teilchen',
+    kurz: 'stark ionisierend, sehr kurze Reichweite – schon ein Blatt Papier stoppt sie' },
+  { id: 'beta', n: 'β-Strahlung', sym: 'β', farbe: '#16a34a',
+    art: 'schnelle Elektronen', typ: 'teilchen',
+    kurz: 'mittlere Reichweite – einige Millimeter Aluminium halten sie auf' },
+  { id: 'gamma', n: 'γ-Strahlung', sym: 'γ', farbe: '#7c3aed',
+    art: 'energiereiche Photonen', typ: 'em',
+    kurz: 'sehr durchdringend – wird nur exponentiell geschwächt, nie ganz gestoppt' }
+];
+
+// Absorber mit Reichweiten (Teilchen) und Schwaechungskoeffizient α_γ (γ) in 1/mm.
+// α_γ(Blei) = 0,115/mm stammt aus dem Cs-137-Messbeispiel der Handreichung.
+const _ABS_ABSORBER = [
+  { id: 'papier', n: 'Papier', dick: 0.5, farbe: '#fcd34d',
+    rAlpha: 0.05, rBeta: 1.0, agamma: 0.0006 },
+  { id: 'alu', n: 'Aluminium', dick: 3, farbe: '#94a3b8',
+    rAlpha: 0.02, rBeta: 3.0, agamma: 0.02 },
+  { id: 'blei', n: 'Blei', dick: 10, farbe: '#475569',
+    rAlpha: 0.01, rBeta: 1.2, agamma: 0.115 }
+];
+
+// Die Messreihe der Handreichung: Cs-137 (662 keV) in Blei
+const _ABS_CS = {
+  R0: 2462, alpha: 0.115, linie: 662,
+  d: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18],
+  R: [2467, 1987, 1549, 1232, 987, 773, 623, 480, 411, 312]
+};
+
+// Wechselwirkungen elektromagnetischer Strahlung (Energiebereiche)
+const _ABS_EFFEKTE = [
+  { id: 'photo', n: 'Photoeffekt', e0: 0.000005, e1: 0.1, ion: true, farbe: '#0284c7',
+    t: 'Ein Photon wird <b>vollständig absorbiert</b> und schlägt ein Hüllelektron heraus (Photoionisation). Seine Energie verteilt sich auf die Auslösearbeit und die Bewegungsenergie des Elektrons. Bei kleinen Energien der dominierende Effekt.' },
+  { id: 'compton', n: 'Compton-Effekt', e0: 0.05, e1: 1.0, ion: true, farbe: '#16a34a',
+    t: 'Ein Photon stößt ein schwach gebundenes, quasifreies Elektron und gibt ihm einen <b>Teil</b> seiner Energie ab. Es wird gestreut und läuft mit größerer Wellenlänge weiter. 1922 von Arthur Compton beschrieben – ein weiterer Beleg für den Teilchencharakter des Lichts.' },
+  { id: 'paar', n: 'Paarbildung', e0: 1.022, e1: 100, ion: true, farbe: '#dc2626',
+    t: 'Im Feld eines Atomkerns wird ein Photon in ein <b>Elektron-Positron-Paar</b> umgewandelt. Dazu muss seine Energie mindestens der Ruheenergie beider Teilchen entsprechen: 2·511 keV = <b>1,022 MeV</b>. Das Positron zerstrahlt später wieder mit einem Elektron.' }
+];
+
+let _abs = null;
+
+function _absInit() {
+  _abs = {
+    station: 0,
+    // Station 1
+    strahlung: 2, absorber: 2, dicke: 6, t: 0,
+    // Station 2
+    d2: 6,
+    // Station 3
+    methode: 'log',
+    // Station 4
+    energie: 0.5,   // MeV
+    // Station 5
+    biotab: 'dna'
+  };
+}
+
+// ── Zahlformat ──────────────────────────────────────────
+function _absZahl(v) {
+  if (!isFinite(v) || v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const dez = Math.max(0, Math.min(20, 5 - ex));
+  const s = v.toFixed(dez);
+  return s.indexOf('.') >= 0 ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
+}
+
+// ── Physik ──────────────────────────────────────────────
+// Exponentielles Absorptionsgesetz fuer γ: R = R0·e^(−α·d)
+function _absGamma(R0, alpha, d) { return R0 * Math.exp(-alpha * d); }
+// Halbwertsdicke d_1/2 = ln2/α
+function _absHalbwert(alpha) { return Math.log(2) / alpha; }
+// Linearisierung ln(R/R0)
+function _absLnRel(R, R0) { return Math.log(R / R0); }
+
+// Durchlassanteil (0..1) je nach Strahlungsart, Absorber und Dicke d (mm).
+function _absTransmission(strId, absId, d) {
+  const S = _ABS_STRAHLUNG.find(s => s.id === strId);
+  const A = _ABS_ABSORBER.find(a => a.id === absId);
+  if (d <= 0) return 1;
+  if (S.id === 'gamma') {
+    return Math.exp(-A.agamma * d);              // exponentiell, nie ganz null
+  }
+  if (S.id === 'alpha') {
+    return d < A.rAlpha ? 1 : 0;                 // feste, sehr kurze Reichweite
+  }
+  // beta: naeherungsweise linear abfallend bis zur Reichweite (kein echtes Exp.)
+  return Math.max(0, 1 - d / A.rBeta);
+}
+
+// Welcher Effekt dominiert bei einer Photonenenergie (MeV)?
+function _absDominant(E_MeV) {
+  if (E_MeV < 0.1) return _ABS_EFFEKTE[0];
+  if (E_MeV < 1.022) return _ABS_EFFEKTE[1];
+  return _ABS_EFFEKTE[2];
+}
+
+// ── Oberflaeche ─────────────────────────────────────────
+function _absHTML() {
+  const stationen = ['1 · Drei Strahlungsarten', '2 · Das Absorptionsgesetz',
+                     '3 · Halbwertsdicke bestimmen', '4 · Wie γ-Strahlung wechselwirkt',
+                     '5 · Biologische Wirkung & Medizin']
+    .map((s, i) => `<button class="fpm-tab${i === _abs.station ? ' on' : ''}" id="absSt${i}" onclick="_absSetStation(${i})">${s}</button>`).join('');
+
+  const strahlwahl = _ABS_STRAHLUNG.map((c, i) =>
+    `<button class="osz-segb" id="absStr${i}" onclick="_absSetStrahlung(${i})">${c.n}</button>`).join('');
+  const abswahl = _ABS_ABSORBER.map((c, i) =>
+    `<button class="osz-segb" id="absAbs${i}" onclick="_absSetAbsorber(${i})">${c.n}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim abs-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🛡️ Absorptionsexperimente: α-, β- und γ-Strahlung</h3>
+    <canvas id="absTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="absS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="absAufbau" width="440" height="220" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Strahler → Absorber → Geiger-Müller-Zählrohr</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Strahlungsart</span><span class="osz-seg">${strahlwahl}</span></div>
+            <div class="osz-zeile"><span>Absorber</span><span class="osz-seg">${abswahl}</span></div>
+            <div class="osz-zeile"><span>Dicke d</span>
+              <input type="range" id="absDicke" min="0" max="20" step="0.2" value="6"
+                oninput="_absSetDicke(this.value)"><b id="absDickeLbl">6,0 mm</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="abs-durch" id="absDurch"></div>
+          <div class="abs-tabelle" id="absTabelle"></div>
+        </div>
+      </div>
+      <div class="abs-k3" id="absK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="absS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="absKurve" width="440" height="290" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Zählrate über der Bleidicke – Cs-137 (662 keV)</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Bleidicke d</span>
+              <input type="range" id="absD2" min="0" max="20" step="0.5" value="6"
+                oninput="_absSetD2(this.value)"><b id="absD2Lbl">6,0 mm</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="absGesetzRechnung"></div>
+          <div class="abs-gesetz-t" id="absGesetzText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="absS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="absLinear" width="440" height="270" class="phys-chart-cv"></canvas>
+          <div class="fpm-label" id="absLinearLbl">—</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Auswertungsmethode</span>
+              <span class="osz-seg">
+                <button class="osz-segb" id="absMg" onclick="_absSetMethode('graph')">Halbwertsdicke</button>
+                <button class="osz-segb" id="absMl" onclick="_absSetMethode('log')">Logarithmieren</button>
+                <button class="osz-segb" id="absMq" onclick="_absSetMethode('quot')">Quotienten</button>
+              </span></div>
+          </div>
+        </div>
+        <div>
+          <div class="abs-auswert" id="absAuswertText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="absS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="absEffekt" width="440" height="230" class="phys-anim-cv"></canvas>
+          <div class="fpm-label" id="absEffektLbl">—</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Photonenenergie</span>
+              <input type="range" id="absEn" min="-2.3" max="1.7" step="0.02" value="-0.30"
+                oninput="_absSetEnergie(this.value)"><b id="absEnLbl">0,5 MeV</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="abs-effekt-t" id="absEffektText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="absS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="absTiefe" width="440" height="230" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Tiefendosiskurven – Grundlage der Strahlentherapie</div>
+        </div>
+        <div>
+          <div class="abs-bio" id="absBioText"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="absErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>R(d) = R₀ · e<sup>−α·d</sup></b> &nbsp;|&nbsp; <b>d<sub>½</sub> = ln2 / α</b>
+      &nbsp;|&nbsp; <b>ln(R/R₀) = −α·d</b> &nbsp;|&nbsp; <b>Teilchen: feste Reichweite</b>
+    </p>
+  </div>`;
+}
+
+function _absErklHTML() {
+  return `<div class="dsp-erkl-kopf">Die Grundidee</div>
+    <div class="dsp-erkl-text">
+      Man schiebt <b>Absorber</b> steigender Dicke zwischen einen Strahler und ein Geiger-Müller-
+      Zählrohr und misst, wie die Zählrate abnimmt. Daraus erkennt man, welche Strahlungsart
+      vorliegt und wie stark ein Material sie schwächt. Das Ergebnis hängt entscheidend davon ab,
+      ob es sich um <b>Teilchenstrahlung</b> (α, β) oder um <b>elektromagnetische Strahlung</b>
+      (γ, Röntgen) handelt.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Teilchen haben eine feste Reichweite</div>
+    <div class="dsp-erkl-text">
+      α- und β-Teilchen geben ihre Energie <b>schrittweise</b> ab, indem sie unterwegs viele Atome
+      ionisieren. Nach einer bestimmten Wegstrecke – ihrer <b>Reichweite</b> – sind sie gestoppt.
+      <b>α-Strahlung</b> (Heliumkerne) ionisiert sehr stark und hat deshalb eine winzige
+      Reichweite: schon ein Blatt Papier oder die Hautoberfläche hält sie auf. <b>β-Strahlung</b>
+      (schnelle Elektronen) dringt weiter ein, wird aber von einigen Millimetern Aluminium
+      gestoppt. Wichtig: Das β-Spektrum ist <b>kontinuierlich</b> (die Zerfallsenergie teilt sich
+      auf Elektron und Antineutrino), weshalb seine Absorptionskurve nur <b>zufällig</b>
+      exponentiell aussieht – für das Absorptionsgesetz ist sie nicht geeignet.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">γ-Strahlung fällt exponentiell ab</div>
+    <div class="dsp-erkl-text">
+      Ein γ-Quant wird bei einer Wechselwirkung meist <b>vollständig</b> absorbiert oder
+      weggestreut – es gibt keine feste Reichweite, sondern eine <b>Wahrscheinlichkeit</b> pro
+      Wegstück. Deshalb sinkt die Intensität <b>exponentiell</b> mit der Dicke:
+      <b>R(d) = R₀ · e<sup>−α·d</sup></b>. Der Absorptionskoeffizient α hängt vom Material ab
+      (Blei absorbiert viel stärker als Aluminium) und von der Energie. Für die Auswertung braucht
+      man einen möglichst <b>monochromatischen</b> γ-Strahler wie <b>Cs-137</b> mit seiner
+      scharfen Linie bei 662 keV.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die Halbwertsdicke</div>
+    <div class="dsp-erkl-text">
+      Die Dicke, nach der die Intensität auf die <b>Hälfte</b> gesunken ist, heißt
+      <b>Halbwertsdicke</b> d<sub>½</sub>. Setzt man R = R₀/2 in das Gesetz ein, folgt
+      <b>d<sub>½</sub> = ln2 / α</b>. Für Cs-137 in Blei ergibt die Messung α = 0,115/mm und damit
+      d<sub>½</sub> ≈ 6 mm: Alle 6 mm Blei halbieren die γ-Intensität. Bestimmen kann man α auf
+      vier Wegen: grafisch über die Halbwertsdicke, durch <b>Logarithmieren</b> (ln(R/R₀) = −α·d
+      ergibt eine Gerade mit der Steigung −α), durch <b>Quotienten</b> gleich dicker Schichten
+      (immer derselbe Faktor) oder durch exponentielle Regression.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Wie γ-Strahlung mit Materie wechselwirkt</div>
+    <div class="dsp-erkl-text">
+      Welcher Prozess ein γ-Quant absorbiert, hängt von seiner Energie ab. Bei niedriger Energie
+      dominiert der <b>Photoeffekt</b> (das Quant schlägt ein Elektron heraus), im mittleren
+      Bereich der <b>Compton-Effekt</b> (das Quant streut an einem Elektron und gibt einen Teil
+      seiner Energie ab), und oberhalb von <b>1,022 MeV</b> wird die <b>Paarbildung</b> möglich
+      (aus dem Quant entsteht ein Elektron-Positron-Paar). Genau diese Schwelle entspricht der
+      doppelten Ruheenergie eines Elektrons, 2·511 keV.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Wirkung auf lebendes Gewebe</div>
+    <div class="dsp-erkl-text">
+      Ionisierende Strahlung schädigt Zellen entweder <b>direkt</b> (ein Treffer bricht einen
+      DNA-Strang) oder – viel häufiger – <b>indirekt</b> über die <b>Radiolyse des Wassers</b>:
+      Dabei entstehen aggressive Sauerstoffradikale, die die DNA chemisch verändern. Weil α- und
+      Schwerionenstrahlung auf kurzer Strecke besonders viele Ionisationen auslösen, haben sie
+      eine höhere <b>biologische Wirksamkeit</b> als γ- oder β-Strahlung. In der
+      <b>Strahlentherapie</b> nutzt man die unterschiedlichen Tiefendosisverläufe gezielt, um die
+      Energie im Tumor abzugeben und gesundes Gewebe zu schonen.
+    </div>
+    <div class="dsp-erkl-warn">⚠ Beim Umgang mit radioaktiven Präparaten die Strahlenschutzregeln
+      beachten: Abstand halten, Aufenthaltszeit kurz halten, abschirmen und die Präparate nur mit
+      der Zange handhaben. Betrieb nur durch die Lehrkraft.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _absSetStation(i) {
+  _abs.station = Math.max(0, Math.min(4, i));
+  for (let k = 0; k < 5; k++) {
+    document.getElementById('absSt' + k)?.classList.toggle('on', k === _abs.station);
+    const d = document.getElementById('absS' + k);
+    if (d) d.style.display = k === _abs.station ? 'block' : 'none';
+  }
+  _absUpdate();
+}
+function _absSetStrahlung(i) { _abs.strahlung = Math.max(0, Math.min(2, i)); _absUpdate(); }
+function _absSetAbsorber(i) { _abs.absorber = Math.max(0, Math.min(2, i)); _absUpdate(); }
+function _absSetDicke(v) {
+  _abs.dicke = Math.max(0, Math.min(20, +v));
+  const el = document.getElementById('absDickeLbl'); if (el) el.textContent = _fpmNum(_abs.dicke, 1) + ' mm';
+  _absUpdate();
+}
+function _absSetD2(v) {
+  _abs.d2 = Math.max(0, Math.min(20, +v));
+  const el = document.getElementById('absD2Lbl'); if (el) el.textContent = _fpmNum(_abs.d2, 1) + ' mm';
+  _absRenderGesetz();
+}
+function _absSetMethode(m) { _abs.methode = m; _absRenderAuswert(); }
+function _absSetEnergie(vLog) {
+  _abs.energie = Math.pow(10, +vLog);   // log-Regler
+  const el = document.getElementById('absEnLbl');
+  if (el) el.textContent = _abs.energie < 0.001 ? _fpmNum(_abs.energie * 1e6, 0) + ' eV'
+    : _abs.energie < 1 ? _fpmNum(_abs.energie * 1000, 0) + ' keV'
+    : _fpmNum(_abs.energie, 2) + ' MeV';
+  _absRenderEffekt();
+}
+function _absSetBiotab(t) { _abs.biotab = t; _absRenderBio(); }
+
+function _absUpdate() {
+  if (!_abs) return;
+  const S = _ABS_STRAHLUNG[_abs.strahlung], A = _ABS_ABSORBER[_abs.absorber];
+  _ABS_STRAHLUNG.forEach((c, i) => document.getElementById('absStr' + i)?.classList.toggle('on', i === _abs.strahlung));
+  _ABS_ABSORBER.forEach((c, i) => document.getElementById('absAbs' + i)?.classList.toggle('on', i === _abs.absorber));
+
+  const T = _absTransmission(S.id, A.id, _abs.dicke);
+  const d = document.getElementById('absDurch');
+  if (d) {
+    const proz = T * 100;
+    const cls = proz > 60 ? 'hoch' : proz > 10 ? 'mittel' : 'niedrig';
+    d.innerHTML = `<div class="git-sch-kopf">${S.n} durch ${_fpmNum(_abs.dicke, 1)} mm ${A.n}</div>
+      <div class="abs-durch-bar"><div class="abs-durch-fill ${cls}" style="width:${_fpmNum(Math.max(1, proz), 0).replace(',', '.')}%"></div></div>
+      <div class="abs-durch-z"><b>${_fpmNum(proz, proz < 1 ? 2 : 0)} %</b> der Strahlung kommen durch</div>
+      <div class="abs-durch-erkl ${cls}">${
+        S.id === 'gamma'
+          ? 'γ-Strahlung wird <b>exponentiell</b> geschwächt (R = R₀·e<sup>−α·d</sup>, α = '
+            + _fpmNum(A.agamma, 3) + '/mm) – ein Rest kommt <b>immer</b> durch.'
+          : proz < 1
+          ? '<b>Vollständig gestoppt.</b> Die Reichweite der ' + S.n + ' in ' + A.n + ' ist überschritten.'
+          : 'Die Teilchen haben eine <b>feste Reichweite</b> – ab einer bestimmten Dicke kommt gar nichts mehr durch.'}</div>`;
+  }
+
+  const tab = document.getElementById('absTabelle');
+  if (tab) {
+    tab.innerHTML = '<div class="git-sch-kopf">Faustregel: Was hält was auf?</div>'
+      + '<table class="sim-table thr-tab"><thead><tr><th></th><th>Papier</th><th>Alu (mm)</th><th>Blei</th></tr></thead><tbody>'
+      + '<tr><td><b>α</b></td><td>✔ stoppt</td><td>✔</td><td>✔</td></tr>'
+      + '<tr><td><b>β</b></td><td>schwächt</td><td>✔ ~3 mm</td><td>✔</td></tr>'
+      + '<tr><td><b>γ</b></td><td>kaum</td><td>schwächt</td><td>schwächt (d½≈6 mm)</td></tr>'
+      + '</tbody></table>'
+      + '<div class="fpm-note">' + S.kurz + '</div>';
+  }
+
+  _absRenderK3();
+  _absRenderGesetz();
+  _absRenderAuswert();
+  _absRenderEffekt();
+  _absRenderBio();
+}
+
+function _absRenderK3() {
+  const el = document.getElementById('absK3'); if (!el) return;
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du diesen Versuch jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Wir wollen die Strahlungsarten unterscheiden und zeigen, dass γ-Strahlung exponentiell
+        absorbiert wird.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Ein Strahler, davor Absorberplatten wachsender Dicke (Papier, Aluminium, Blei), dahinter
+        ein Geiger-Müller-Zählrohr.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Für jede Absorberdicke wird die Zählrate über eine feste Torzeit (z. B. 60 s) gemessen und
+        die Nullrate abgezogen.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        α wird schon von Papier gestoppt, β von wenigen mm Aluminium, γ nur exponentiell
+        geschwächt.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Teilchen haben eine feste Reichweite; γ-Quanten werden mit einer Wahrscheinlichkeit pro
+        Wegstück absorbiert → R(d) = R₀·e<sup>−α·d</sup>.</div>
+    </div>`;
+}
+
+// ── Station 2: Absorptionsgesetz ───────────────────────
+function _absRenderGesetz() {
+  const el = document.getElementById('absGesetzRechnung'); if (!el) return;
+  const R = _absGamma(_ABS_CS.R0, _ABS_CS.alpha, _abs.d2);
+  const rel = R / _ABS_CS.R0 * 100;
+  const d12 = _absHalbwert(_ABS_CS.alpha);
+  const halbe = _abs.d2 / d12;
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Ausgangsrate (d = 0)</span>
+      <span class="pho-rz-f">R₀</span><span class="pho-rz-v">${_ABS_CS.R0} /10min</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Absorptionskoeffizient (Blei)</span>
+      <span class="pho-rz-f">α</span><span class="pho-rz-v">${_ABS_CS.alpha}/mm</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Zählrate bei d = ${_fpmNum(_abs.d2, 1)} mm</span>
+      <span class="pho-rz-f">R = R₀·e<sup>−α·d</sup></span>
+      <span class="pho-rz-v">${_fpmNum(R, 0)} /10min</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">das sind noch</span>
+      <span class="pho-rz-f">R/R₀</span><span class="pho-rz-v">${_fpmNum(rel, 1)} %</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Halbwertsdicke</span>
+      <span class="pho-rz-f">d<sub>½</sub> = ln2/α</span>
+      <span class="pho-rz-v">${_fpmNum(d12, 2)} mm</span></div>`;
+  const t = document.getElementById('absGesetzText');
+  if (t) {
+    t.innerHTML = `<div class="fpm-note">Bei d = ${_fpmNum(_abs.d2, 1)} mm sind das rund
+      <b>${_fpmNum(halbe, 1)} Halbwertsdicken</b> – die Rate ist auf etwa
+      (½)<sup>${_fpmNum(halbe, 1)}</sup> = ${_fpmNum(Math.pow(0.5, halbe) * 100, 1)} % gefallen.
+      Anders als bei Teilchenstrahlung kommt <b>immer ein Rest durch</b>: Die Exponentialfunktion
+      wird nie exakt null. Deshalb spricht man bei γ-Strahlung von <b>Schwächung</b>, nicht von
+      einer Reichweite. Der Strahler Cs-137 eignet sich, weil er mit seiner Linie bei
+      <b>662 keV</b> nahezu monochromatisch ist.</div>`;
+  }
+}
+
+// ── Station 3: Auswertung ──────────────────────────────
+function _absRenderAuswert() {
+  const el = document.getElementById('absAuswertText'); if (!el) return;
+  ['graph', 'log', 'quot'].forEach(m =>
+    document.getElementById('absM' + (m === 'graph' ? 'g' : m === 'log' ? 'l' : 'q'))?.classList.toggle('on', _abs.methode === m));
+  const lbl = document.getElementById('absLinearLbl');
+  const d12 = _absHalbwert(_ABS_CS.alpha);
+
+  if (_abs.methode === 'graph') {
+    if (lbl) lbl.textContent = 'Zählrate über der Dicke mit Hilfslinien zur Halbwertsdicke';
+    el.innerHTML = `<div class="git-sch-kopf">Grafisch: die Halbwertsdicke abzählen</div>
+      <div class="abs-aus-t">Man liest an der Kurve ab, nach welcher Dicke die Rate auf die
+        <b>Hälfte</b> gesunken ist. Von 2462 auf 1231 sind es rund <b>6 mm</b>; von 1231 auf 616
+        wieder etwa 6 mm. Dass dieser Abstand <b>gleich bleibt</b>, ist bereits der Beweis für den
+        exponentiellen Verlauf.</div>
+      <div class="abs-aus-form">d<sub>½</sub> ≈ 6 mm &nbsp;→&nbsp; α = ln2/d<sub>½</sub> =
+        <b>${_fpmNum(Math.log(2) / 6, 3)}/mm</b></div>`;
+  } else if (_abs.methode === 'log') {
+    if (lbl) lbl.textContent = 'ln(R/R₀) über der Dicke – eine Gerade mit der Steigung −α';
+    el.innerHTML = `<div class="git-sch-kopf">Logarithmieren: aus der Geraden das α ablesen</div>
+      <div class="abs-aus-t">Trägt man <b>ln(R/R₀)</b> gegen die Dicke auf, wird aus der
+        Exponentialkurve eine <b>Gerade</b>: ln(R/R₀) = −α·d. Ihre Steigung ist −α. Aus den
+        Messwerten der Handreichung ergibt sich die Regressionsgerade:</div>
+      <div class="abs-aus-form">ln(R/R₀) = −0,115/mm · d &nbsp;→&nbsp; α = <b>0,115/mm</b>,
+        d<sub>½</sub> = <b>${_fpmNum(d12, 2)} mm</b></div>
+      <div class="fpm-note">Besser teilt man R nicht durch R₀ (das man nur schätzen kann), sondern
+        durch die Einheit und trägt ln(R/(10min)⁻¹) auf – dieselbe Steigung −α, nur ein anderer
+        Achsenabschnitt (hier +7,81).</div>`;
+  } else {
+    if (lbl) lbl.textContent = 'Quotienten benachbarter Messwerte – konstant bei Exponentialabfall';
+    // Quotienten berechnen
+    const q = [];
+    for (let i = 1; i < _ABS_CS.R.length; i++) q.push(_ABS_CS.R[i] / _ABS_CS.R[i - 1]);
+    const mittel = q.reduce((a, b) => a + b, 0) / q.length;
+    el.innerHTML = `<div class="git-sch-kopf">Quotienten: konstanter Faktor je Schicht</div>
+      <div class="abs-aus-t">Bei gleich dicken Schichten (hier je Δd = 2 mm) muss der Quotient
+        benachbarter Messwerte <b>konstant</b> sein: R(d+Δd)/R(d) = e<sup>−α·Δd</sup>. Genau das
+        beweist den exponentiellen Verlauf, ganz ohne Logarithmus.</div>
+      <div class="abs-quot">${q.map((qq, i) =>
+        `<span>${_fpmNum(qq, 2)}</span>`).join('')}</div>
+      <div class="abs-aus-form">Mittel ≈ ${_fpmNum(mittel, 3)} = e<sup>−α·2mm</sup> &nbsp;→&nbsp;
+        α = <b>${_fpmNum(-Math.log(mittel) / 2, 3)}/mm</b></div>
+      <div class="fpm-note">Die kleinen Schwankungen der Quotienten sind der statistischen Natur
+        des Zerfalls geschuldet – über viele Werte mittelt sich das heraus.</div>`;
+  }
+}
+
+// ── Station 4: Effekte ─────────────────────────────────
+function _absRenderEffekt() {
+  const el = document.getElementById('absEffektText'); if (!el) return;
+  const dom = _absDominant(_abs.energie);
+  const lbl = document.getElementById('absEffektLbl');
+  if (lbl) lbl.textContent = 'Bei dieser Energie überwiegt: ' + dom.n;
+  el.innerHTML = `<div class="git-sch-kopf">Wie ein γ-Quant absorbiert wird</div>
+    <div class="abs-eff-liste">
+      ${_ABS_EFFEKTE.map(e => {
+        const aktiv = e.id === dom.id;
+        const range = e.id === 'photo' ? '5 eV – 100 keV' : e.id === 'compton' ? '50 keV – 1 MeV' : 'ab 1,022 MeV';
+        return `<div class="abs-eff-z${aktiv ? ' on' : ''}" style="${aktiv ? 'border-color:' + e.farbe : ''}">
+          <div class="abs-eff-k"><span style="background:${e.farbe}"></span><b>${e.n}</b>
+            <span class="abs-eff-r">${range}</span></div>
+          ${aktiv ? '<div class="abs-eff-t">' + e.t + '</div>' : ''}</div>`;
+      }).join('')}
+    </div>
+    <div class="fpm-note">Die Schwelle der Paarbildung von <b>1,022 MeV</b> ist kein Zufall: Sie
+      entspricht genau der Ruheenergie eines Elektron-Positron-Paares, 2·m<sub>e</sub>·c² =
+      2·511 keV. Darunter kann kein Paar entstehen. Welcher Effekt in welchem Material überwiegt,
+      hängt außerdem von der Ordnungszahl ab – in schwerem Blei setzt die Paarbildung früher ein
+      als in leichtem Wasser.</div>`;
+}
+
+// ── Station 5: Biologie & Medizin ──────────────────────
+function _absRenderBio() {
+  const el = document.getElementById('absBioText'); if (!el) return;
+  el.innerHTML = `<div class="git-sch-kopf">Wirkung ionisierender Strahlung auf Zellen</div>
+    <div class="abs-bio-z"><b>Direkter Weg</b> Ein Treffer bricht unmittelbar einen DNA-Strang oder
+      verändert eine Nucleotidbase. Weil die DNA ein Doppelstrang ist, kann ein Einzelstrangbruch
+      oft mit dem intakten Strang als Vorlage repariert werden.</div>
+    <div class="abs-bio-z"><b>Indirekter Weg (häufiger)</b> Meist trifft die Strahlung ein
+      Wassermolekül – die <b>Radiolyse des Wassers</b> erzeugt aggressive Sauerstoffradikale (etwa
+      das Hydroxyl-Radikal •OH), die die DNA chemisch verändern und Mutationen auslösen können.</div>
+    <div class="abs-bio-z"><b>Biologische Wirksamkeit</b> α- und Schwerionenstrahlung lösen auf
+      kurzer Strecke sehr viele Ionisationen aus und sind deshalb weit gefährlicher als γ- oder
+      β-Strahlung gleicher Energie – ausgedrückt im Strahlungswichtungsfaktor.</div>
+    <div class="abs-bio-z"><b>Deterministisch und stochastisch</b> Sterben viele Zellen, treten
+      Schäden sofort auf (deterministisch, z. B. Strahlenkrankheit). Überleben mutierte Zellen,
+      kann später Krebs entstehen (stochastisch) – erst nach Ansammlung weiterer Mutationen.</div>
+    <div class="abs-bio-z med"><b>Medizin</b> Die Strahlentherapie nutzt die unterschiedlichen
+      <b>Tiefendosisverläufe</b>: Schwere geladene Teilchen geben ihre Energie erst kurz vor dem
+      Stillstand ab (Bragg-Peak) und lassen sich so gezielt im Tumor platzieren, während γ-Strahlung
+      ihre Dosis schon an der Oberfläche abgibt. Bildgebend nutzt man Röntgenstrahlung in
+      Radiographie und Computertomographie.</div>`;
+}
+
+// ── Zeichnungen ────────────────────────────────────────
+function _absDrawAufbau(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const S = _ABS_STRAHLUNG[_abs.strahlung], A = _ABS_ABSORBER[_abs.absorber];
+  const cy = H / 2;
+  // Strahler links
+  ctx.fillStyle = '#fbbf24';
+  ctx.beginPath(); ctx.arc(35, cy, 12, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('☢', 35, cy + 4);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText('Strahler', 35, cy + 26);
+  // Absorber in der Mitte
+  const ax = 200, aw = Math.max(4, _abs.dicke / 20 * 90);
+  ctx.fillStyle = A.farbe; ctx.globalAlpha = 0.85;
+  ctx.fillRect(ax - aw / 2, cy - 55, aw, 110);
+  ctx.globalAlpha = 1;
+  ctx.strokeStyle = '#64748b'; ctx.strokeRect(ax - aw / 2, cy - 55, aw, 110);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(A.n, ax, cy - 62); ctx.fillText(_fpmNum(_abs.dicke, 1) + ' mm', ax, cy + 70);
+  // Zaehlrohr rechts
+  ctx.fillStyle = '#334155'; ctx.fillRect(W - 70, cy - 20, 44, 40);
+  ctx.fillStyle = '#38bdf8'; ctx.fillRect(W - 74, cy - 14, 4, 28);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Zählrohr', W - 48, cy + 32);
+
+  // Strahlteilchen: links viele, rechts entsprechend der Transmission
+  const T = _absTransmission(S.id, A.id, _abs.dicke);
+  const N = 14;
+  for (let i = 0; i < N; i++) {
+    const phase = (_abs.t * 0.6 + i / N) % 1;
+    const x = 50 + phase * (W - 120);
+    const durch = i / N < T;   // dieser "Strahl" kommt durch
+    const gestoppt = x > ax - aw / 2 && !durch && S.id !== 'gamma';
+    const geschwaecht = x > ax - aw / 2 && !durch && S.id === 'gamma';
+    if (gestoppt || geschwaecht) continue;
+    ctx.fillStyle = S.farbe; ctx.globalAlpha = x > ax ? (durch ? 1 : 0.3) : 0.85;
+    const y = cy - 30 + (i % 7) * 9;
+    if (S.id === 'gamma') {
+      // Wellenlinie
+      ctx.strokeStyle = S.farbe; ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      for (let s = 0; s < 12; s++) ctx.lineTo(x + s, y + Math.sin(s * 0.9) * 2.5);
+      ctx.stroke();
+    } else {
+      ctx.beginPath(); ctx.arc(x, y, 2.5, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+  ctx.fillStyle = S.farbe; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(S.sym + ' ' + S.art, 12, 16);
+  ctx.fillStyle = '#4ade80'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(_fpmNum(T * 100, T < 1 ? 1 : 0) + ' % kommen durch', W - 12, 16);
+  ctx.textAlign = 'left';
+}
+
+function _absDrawKurve(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  const padL = 48, padR = 12, padT = 14, padB = 38;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const dMax = 20, Rmax = 2600;
+  const X = d => x0 + d / dMax * (x1 - x0);
+  const Y = R => y0 - R / Rmax * (y0 - y1);
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
+  [0, 5, 10, 15, 20].forEach(d => {
+    ctx.beginPath(); ctx.moveTo(X(d), y0); ctx.lineTo(X(d), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(d + '', X(d), y0 + 12);
+  });
+  [0, 500, 1000, 1500, 2000, 2500].forEach(R => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(R)); ctx.lineTo(x1, Y(R)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(R + '', x0 - 4, Y(R) + 3);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Bleidicke d / mm', x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 4); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Zählrate R', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+  // Exponentialkurve
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let d = 0; d <= dMax; d += 0.2) {
+    const py = Y(_absGamma(_ABS_CS.R0, _ABS_CS.alpha, d));
+    d === 0 ? ctx.moveTo(X(d), py) : ctx.lineTo(X(d), py);
+  }
+  ctx.stroke();
+  // Messpunkte
+  _ABS_CS.d.forEach((dd, i) => {
+    ctx.fillStyle = '#0284c7';
+    ctx.beginPath(); ctx.arc(X(dd), Y(_ABS_CS.R[i]), 3, 0, 2 * Math.PI); ctx.fill();
+  });
+  // Halbwertsdicke einzeichnen
+  const d12 = _absHalbwert(_ABS_CS.alpha);
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  [1, 2, 3].forEach(k => {
+    const R = _ABS_CS.R0 * Math.pow(0.5, k), dk = d12 * k;
+    ctx.beginPath(); ctx.moveTo(x0, Y(R)); ctx.lineTo(X(dk), Y(R)); ctx.lineTo(X(dk), y0); ctx.stroke();
+  });
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#b45309'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('d½ = ' + _fpmNum(d12, 1) + ' mm', X(d12) + 2, Y(_ABS_CS.R0 / 2) - 3);
+  // aktueller Punkt
+  const Rc = _absGamma(_ABS_CS.R0, _ABS_CS.alpha, _abs.d2);
+  ctx.fillStyle = '#db2777';
+  ctx.beginPath(); ctx.arc(X(_abs.d2), Y(Rc), 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.textAlign = 'left';
+}
+
+function _absDrawLinear(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  const padL = 48, padR = 12, padT = 14, padB = 38;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const dMax = 20;
+  const X = d => x0 + d / dMax * (x1 - x0);
+
+  if (_abs.methode === 'log') {
+    // ln(R/R0) ueber d -> Gerade
+    const yMin = -2.4, yMax = 0.2;
+    const Y = v => y0 - (v - yMin) / (yMax - yMin) * (y0 - y1);
+    ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
+    [0, 5, 10, 15, 20].forEach(d => {
+      ctx.beginPath(); ctx.moveTo(X(d), y0); ctx.lineTo(X(d), y1); ctx.stroke();
+      ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(d + '', X(d), y0 + 12);
+    });
+    [-2, -1.5, -1, -0.5, 0].forEach(v => {
+      ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+      ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmNum(v, 1), x0 - 4, Y(v) + 3);
+    });
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+    ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+    // Gerade
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(X(0), Y(0)); ctx.lineTo(X(dMax), Y(-_ABS_CS.alpha * dMax)); ctx.stroke();
+    // Messpunkte ln(R/R0)
+    _ABS_CS.d.forEach((dd, i) => {
+      ctx.fillStyle = '#0284c7';
+      ctx.beginPath(); ctx.arc(X(dd), Y(_absLnRel(_ABS_CS.R[i], _ABS_CS.R[0])), 3, 0, 2 * Math.PI); ctx.fill();
+    });
+    ctx.fillStyle = '#5b21b6'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText('Steigung −α = −0,115/mm', x1 - 4, Y(-0.6));
+    ctx.save(); ctx.translate(11, y1 + 4); ctx.rotate(-Math.PI / 2);
+    ctx.fillText('ln(R/R₀)', 0, 0); ctx.restore();
+  } else {
+    // Halbwertsdicke oder Quotienten: die normale Kurve mit Markierungen
+    const Rmax = 2600;
+    const Y = R => y0 - R / Rmax * (y0 - y1);
+    ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
+    [0, 5, 10, 15, 20].forEach(d => {
+      ctx.beginPath(); ctx.moveTo(X(d), y0); ctx.lineTo(X(d), y1); ctx.stroke();
+      ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(d + '', X(d), y0 + 12);
+    });
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+    ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+    ctx.beginPath();
+    for (let d = 0; d <= dMax; d += 0.2) { const py = Y(_absGamma(_ABS_CS.R0, _ABS_CS.alpha, d)); d === 0 ? ctx.moveTo(X(d), py) : ctx.lineTo(X(d), py); }
+    ctx.stroke();
+    _ABS_CS.d.forEach((dd, i) => { ctx.fillStyle = '#0284c7'; ctx.beginPath(); ctx.arc(X(dd), Y(_ABS_CS.R[i]), 3, 0, 2 * Math.PI); ctx.fill(); });
+    const d12 = _absHalbwert(_ABS_CS.alpha);
+    if (_abs.methode === 'graph') {
+      ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.2; ctx.setLineDash([4, 3]);
+      [1, 2, 3].forEach(k => {
+        const R = _ABS_CS.R0 * Math.pow(0.5, k), dk = d12 * k;
+        ctx.beginPath(); ctx.moveTo(x0, Y(R)); ctx.lineTo(X(dk), Y(R)); ctx.lineTo(X(dk), y0); ctx.stroke();
+      });
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#b45309'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'center';
+      [1, 2, 3].forEach(k => ctx.fillText('d½', X(d12 * (k - 0.5)), Y(_ABS_CS.R0 * Math.pow(0.5, k)) + 12));
+    } else {
+      // Quotienten: gleiche Schichten markieren
+      ctx.fillStyle = '#16a34a'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+      for (let i = 1; i < _ABS_CS.d.length; i++) {
+        ctx.fillText('×' + _fpmNum(_ABS_CS.R[i] / _ABS_CS.R[i - 1], 2),
+          X((_ABS_CS.d[i] + _ABS_CS.d[i - 1]) / 2), Y(_ABS_CS.R[i]) - 6);
+      }
+    }
+    ctx.save(); ctx.translate(11, y1 + 4); ctx.rotate(-Math.PI / 2);
+    ctx.fillStyle = '#475569'; ctx.fillText('Zählrate R', 0, 0); ctx.restore();
+  }
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('d / mm', x1, y0 + 24);
+  ctx.textAlign = 'left';
+}
+
+function _absDrawEffekt(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const dom = _absDominant(_abs.energie);
+  const cx = 120, cy = H / 2;
+  // Atom
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(cx, cy, 45, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#f87171'; ctx.beginPath(); ctx.arc(cx, cy, 7, 0, 2 * Math.PI); ctx.fill();
+  // einfallendes Photon
+  ctx.strokeStyle = '#a78bfa'; ctx.lineWidth = 1.8;
+  ctx.beginPath();
+  for (let s = 0; s < 40; s++) ctx.lineTo(20 + s, cy - 40 + Math.sin(s * 0.6) * 4);
+  ctx.stroke();
+  ctx.fillStyle = '#a78bfa'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('γ-Quant', 20, cy - 50);
+
+  if (dom.id === 'photo') {
+    // Elektron fliegt raus
+    ctx.fillStyle = '#fbbf24';
+    ctx.beginPath(); ctx.arc(cx + 40, cy - 30, 4, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(cx + 12, cy - 12); ctx.lineTo(cx + 40, cy - 30); ctx.stroke();
+    ctx.fillStyle = '#fde047'; ctx.textAlign = 'left'; ctx.fillText('e⁻ herausgeschlagen', cx + 46, cy - 30);
+    ctx.fillStyle = '#94a3b8'; ctx.fillText('Photon vollständig absorbiert', cx - 20, cy + 70);
+  } else if (dom.id === 'compton') {
+    // gestreutes Photon + Elektron
+    ctx.fillStyle = '#fbbf24';
+    ctx.beginPath(); ctx.arc(cx + 42, cy + 20, 4, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + 42, cy + 20); ctx.stroke();
+    ctx.strokeStyle = '#c4b5fd'; ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    for (let s = 0; s < 30; s++) ctx.lineTo(cx + s, cy - 10 - s * 0.4 + Math.sin(s * 0.7) * 3);
+    ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('gestreutes Photon (größere λ)', cx + 20, cy - 30);
+    ctx.fillText('Rückstoßelektron', cx + 46, cy + 22);
+  } else {
+    // Paar
+    ctx.fillStyle = '#fbbf24'; ctx.beginPath(); ctx.arc(cx + 40, cy - 20, 4, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#38bdf8'; ctx.beginPath(); ctx.arc(cx + 40, cy + 20, 4, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + 40, cy - 20); ctx.moveTo(cx, cy); ctx.lineTo(cx + 40, cy + 20); ctx.stroke();
+    ctx.fillStyle = '#fde047'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('e⁻', cx + 48, cy - 18); ctx.fillStyle = '#93c5fd'; ctx.fillText('e⁺ (Positron)', cx + 48, cy + 22);
+    ctx.fillStyle = '#94a3b8'; ctx.fillText('ab 1,022 MeV', cx - 20, cy + 70);
+  }
+  // Energieskala rechts
+  const bx = 300, bw = 120, by = 40, bh = H - 80;
+  ctx.fillStyle = '#1e293b'; ctx.fillRect(bx, by, bw, bh);
+  const logMin = -2.3, logMax = 1.7;   // 5eV bis ~50MeV
+  const YE = E => by + bh - (Math.log10(E) - logMin) / (logMax - logMin) * bh;
+  // Bereiche
+  _ABS_EFFEKTE.forEach(e => {
+    const y1e = YE(Math.min(50, e.e1)), y0e = YE(Math.max(1e-3, e.e0));
+    ctx.fillStyle = e.farbe; ctx.globalAlpha = e.id === dom.id ? 0.6 : 0.22;
+    ctx.fillRect(bx, y1e, bw, y0e - y1e); ctx.globalAlpha = 1;
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(e.n, bx + 4, (y0e + y1e) / 2 + 3);
+  });
+  // aktuelle Energie
+  const ye = YE(_abs.energie);
+  ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(bx - 6, ye); ctx.lineTo(bx + bw, ye); ctx.stroke();
+  ctx.fillStyle = '#fff'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(_abs.energie < 1 ? _fpmNum(_abs.energie * 1000, 0) + ' keV' : _fpmNum(_abs.energie, 1) + ' MeV', bx - 8, ye + 3);
+  ctx.textAlign = 'left';
+}
+
+function _absDrawTiefe(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  const padL = 40, padR = 12, padT = 14, padB = 38;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const X = t => x0 + t / 30 * (x1 - x0);
+  const Y = v => y0 - v * (y0 - y1);
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
+  [0, 10, 20, 30].forEach(t => {
+    ctx.beginPath(); ctx.moveTo(X(t), y0); ctx.lineTo(X(t), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(t + '', X(t), y0 + 12);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Tiefe im Gewebe / cm', x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 4); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('relative Dosis', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+  // gamma: exponentiell abfallend (nach kurzem Aufbaubereich)
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let t = 0; t <= 30; t += 0.3) {
+    const aufbau = Math.min(1, t / 1.5);
+    const v = aufbau * Math.exp(-t / 12);
+    t === 0 ? ctx.moveTo(X(t), Y(v)) : ctx.lineTo(X(t), Y(v));
+  }
+  ctx.stroke();
+  // Protonen/Ionen: Bragg-Peak bei ~20 cm
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let t = 0; t <= 30; t += 0.2) {
+    const peak = 20, v = 0.25 + 0.75 * Math.exp(-Math.pow((t - peak) / 2.2, 2)) * (t < peak + 3 ? 1 : Math.max(0, 1 - (t - peak - 3)));
+    const vv = t > peak + 3 ? 0 : v;
+    t === 0 ? ctx.moveTo(X(t), Y(vv)) : ctx.lineTo(X(t), Y(vv));
+  }
+  ctx.stroke();
+  ctx.fillStyle = '#7c3aed'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('γ-Strahlung', X(4), Y(0.72));
+  ctx.fillStyle = '#dc2626'; ctx.textAlign = 'center';
+  ctx.fillText('Protonen (Bragg-Peak)', X(20), Y(1.05));
+  ctx.textAlign = 'left';
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _absTakt(dt) { if (_abs) _abs.t += Math.min(0.05, dt); }
+function _absRender() {
+  if (!_abs) return;
+  const st = _abs.station;
+  if (st === 0) {
+    const c = document.getElementById('absAufbau');
+    if (c) _absDrawAufbau(c.getContext('2d'), c);
+  } else if (st === 1) {
+    const c = document.getElementById('absKurve');
+    if (c) _absDrawKurve(c.getContext('2d'), c);
+  } else if (st === 2) {
+    const c = document.getElementById('absLinear');
+    if (c) _absDrawLinear(c.getContext('2d'), c);
+  } else if (st === 3) {
+    const c = document.getElementById('absEffekt');
+    if (c) _absDrawEffekt(c.getContext('2d'), c);
+  } else if (st === 4) {
+    const c = document.getElementById('absTiefe');
+    if (c) _absDrawTiefe(c.getContext('2d'), c);
+  }
+}
+
+// ── Zusätzliche Styles für die Absorptionsexperimente ──
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .abs-durch { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 12px; }
+    .abs-durch-bar { height: 16px; background: #eef2f7; border-radius: 8px; overflow: hidden; margin: 6px 0; }
+    .abs-durch-fill { height: 100%; border-radius: 8px; }
+    .abs-durch-fill.hoch { background: linear-gradient(90deg,#86efac,#22c55e); }
+    .abs-durch-fill.mittel { background: linear-gradient(90deg,#fde68a,#f59e0b); }
+    .abs-durch-fill.niedrig { background: linear-gradient(90deg,#fecaca,#dc2626); }
+    .abs-durch-z { font-size: .82rem; color: #475569; }
+    .abs-durch-z b { color: #334155; font-size: 1.05rem; }
+    .abs-durch-erkl { font-size: .77rem; line-height: 1.55; border-radius: 8px; padding: 8px 10px; margin-top: 6px;
+      background: #f1f5f9; border: 1px solid #e2e8f0; color: #475569; }
+    .abs-durch-erkl b { color: #334155; }
+    .abs-tabelle { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 12px; margin-top: 8px; }
+    .abs-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 13px; margin-top: 12px; }
+    .abs-gesetz-t, .abs-bragg-t { margin-top: 8px; }
+    .abs-auswert { display: flex; flex-direction: column; gap: 8px; }
+    .abs-aus-t { font-size: .78rem; color: #475569; line-height: 1.65; }
+    .abs-aus-t b { color: #334155; }
+    .abs-aus-form { font-size: .84rem; text-align: center; color: #5b21b6; background: #f5f3ff;
+      border: 1px solid #ddd6fe; border-radius: 8px; padding: 8px 10px; }
+    .abs-aus-form b { color: #4c1d95; }
+    .abs-quot { display: flex; gap: 5px; flex-wrap: wrap; margin: 6px 0; }
+    .abs-quot span { font-size: .74rem; background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534;
+      border-radius: 6px; padding: 3px 7px; font-variant-numeric: tabular-nums; }
+    .abs-effekt-t { display: flex; flex-direction: column; gap: 8px; }
+    .abs-eff-liste { display: flex; flex-direction: column; gap: 6px; }
+    .abs-eff-z { border: 2px solid #e2e8f0; border-radius: 9px; padding: 8px 10px; background: #f8fafc; }
+    .abs-eff-z.on { background: #fff; }
+    .abs-eff-k { display: flex; align-items: center; gap: 8px; font-size: .8rem; color: #334155; }
+    .abs-eff-k span:first-child { width: 12px; height: 12px; border-radius: 3px; }
+    .abs-eff-r { margin-left: auto; font-size: .72rem; color: #94a3b8; font-variant-numeric: tabular-nums; }
+    .abs-eff-t { font-size: .77rem; color: #475569; line-height: 1.55; margin-top: 5px; }
+    .abs-eff-t b { color: #334155; }
+    .abs-bio { display: flex; flex-direction: column; gap: 6px; }
+    .abs-bio-z { font-size: .77rem; color: #475569; line-height: 1.6; background: #f8fafc;
+      border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; }
+    .abs-bio-z b { color: #334155; }
+    .abs-bio-z.med { background: #eff6ff; border-color: #bfdbfe; }
+    .abs-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
