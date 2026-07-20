@@ -30937,9 +30937,12 @@ function _myoInit() {
     beta: 0.995,
     // Station 4 nutzt dasselbe beta
     // Station 5
-    ballBeta: 0.8
+    ballBeta: 0.8,
+    // Station 6 – Lebensdauer messen (handlungsorientiert)
+    mT: 0, mN: 0, rows: [], nextId: 1, preset: 1, fn: null, fnAuto: false, reveal: false
   };
 }
+const _MYO_N0 = 10000;   // Startzahl gestoppter Myonen fuer die Zerfallsmessung
 
 // ── Zahlformat ──────────────────────────────────────────
 function _myoZahl(v) {
@@ -30972,11 +30975,200 @@ function _myoKontrahiert(hoehe, beta) { return hoehe / _myoGamma(beta); }
 // Halbwertszeit T½ = ln2·τ
 function _myoT12(tau0) { return Math.log(2) * tau0; }
 
+// ══ Station 6: Lebensdauer messen (handlungsorientiert) ══
+// Ruhende (gestoppte) Myonen zerfallen: N(t) = N0·e^(−t/τ0). Traegt man ln N
+// ueber t auf, ist die Steigung −1/τ0 und die Halbwertszeit T½ = ln2·τ0.
+const _MYO_TAU0_US = _MYO_TAU0 * 1e6;   // Ruhelebensdauer in µs (= 2,2)
+function _myoMFmt(v) { let s = v.toFixed(4); if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, ''); return s; }
+function _myoMNtrue(t_us) { return _MYO_N0 * Math.exp(-t_us / _MYO_TAU0_US); }
+function _myoMSample(t_us) { const N = _myoMNtrue(t_us); return Math.max(1, Math.round(N + (Math.random() - 0.5) * 2 * Math.sqrt(N))); }
+const _MYO_M_PRESETS = [
+  { xl: 't in µs', yl: 'N', x: r => r.t, y: r => r.N, kurve: true,
+    plotLbl: 'N über t: der Zerfall ist exponentiell',
+    typ: 'fallende Exponentialkurve', form: 'N = N₀·e^(−t/τ₀)',
+    term: () => _myoMFmt(_MYO_N0) + '*exp(-' + _myoMFmt(1 / _MYO_TAU0_US) + '*x)',
+    deutung: 'Die Zahl der noch nicht zerfallenen Myonen nimmt exponentiell ab. Der Zusammenhang ist nicht linear – deshalb logarithmiert man die Anzahl.' },
+  { xl: 't in µs', yl: 'ln N', x: r => r.t, y: r => Math.log(r.N), origin: false,
+    plotLbl: 'ln N über t: die Steigung ist −1/τ₀',
+    typ: 'Gerade mit negativer Steigung', form: 'ln N = ln N₀ − t/τ₀',
+    term: () => _myoMFmt(Math.log(_MYO_N0)) + '-' + _myoMFmt(1 / _MYO_TAU0_US) + '*x',
+    deutung: 'Logarithmiert man die Überlebenden und trägt sie über der Zeit auf, ergibt sich eine Gerade. Ihre Steigung ist −1/τ₀; daraus folgen die mittlere Lebensdauer τ₀ ≈ 2,2 µs und die Halbwertszeit T½ = ln2·τ₀ ≈ 1,5 µs. Genau diese Ruhelebensdauer erscheint im Erdsystem um den Faktor γ gedehnt – das ist der Kern des Myonen-Nachweises der Zeitdilatation.' }
+];
+function _myoMSetT(v) {
+  _myo.mT = Math.max(0, Math.min(11, +v));
+  _myo.mN = _myoMSample(_myo.mT);
+  const el = document.getElementById('myoMTLbl'); if (el) el.textContent = _fpmNum(_myo.mT, 1) + ' µs';
+  _myoMRender();
+}
+function _myoMRender() {
+  if (!_myo.mN) _myo.mN = _myoMSample(_myo.mT);
+  const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  set('myoMTA', _fpmNum(_myo.mT, 1)); set('myoMNA', _fpmNum(_myo.mN, 0));
+  const lbl = document.getElementById('myoMPlotLbl'); if (lbl) lbl.textContent = _MYO_M_PRESETS[_myo.preset].plotLbl;
+  _myoMRenderTable(); _myoMDrawPlot();
+  const c = document.getElementById('myoMDet'); if (c) _myoMDrawDet(c.getContext('2d'), c);
+}
+function _myoMTake() {
+  if (_myo.rows.some(r => Math.abs(r.t - _myo.mT) < 1e-9)) return;
+  _myo.rows.push({ id: _myo.nextId++, t: _myo.mT, N: _myo.mN });
+  _myo.rows.sort((a, b) => a.t - b.t);
+  _myoMRender();
+}
+function _myoMDelRow(id) { _myo.rows = _myo.rows.filter(r => r.id !== id); _myoMRender(); }
+function _myoMClear() {
+  if (_myo.rows.length && !confirm('Alle ' + _myo.rows.length + ' Messwerte löschen?')) return;
+  _myo.rows = []; _myoMRender();
+}
+function _myoMDemo() {
+  _myo.rows = [];
+  [0, 1, 2, 3, 4, 5, 6, 8, 10].forEach(t => _myo.rows.push({ id: _myo.nextId++, t, N: Math.round(_myoMNtrue(t)) }));
+  _myoMRender();
+}
+function _myoMRenderTable() {
+  const tb = document.getElementById('myoMTbody'); if (!tb) return;
+  const empty = document.getElementById('myoMEmpty');
+  if (empty) empty.style.display = _myo.rows.length ? 'none' : 'block';
+  tb.innerHTML = _myo.rows.map(r =>
+    `<tr><td>${_fpmNum(r.t, 1)}</td><td>${_fpmNum(r.N, 0)}</td><td>${_fpmNum(Math.log(r.N), 3)}</td>
+       <td class="fpm-del" onclick="_myoMDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _myoMSetPreset(i) {
+  _myo.preset = Math.max(0, Math.min(1, i));
+  for (let k = 0; k < 2; k++) document.getElementById('myoMTab' + k)?.classList.toggle('on', k === _myo.preset);
+  _myoMRefreshTheorie();
+  _myoMRender();
+}
+function _myoMSetReveal(on) { _myo.reveal = !!on; _myoMDrawPlot(); }
+function _myoMTheorieFn() {
+  const term = _MYO_M_PRESETS[_myo.preset].term();
+  const inp = document.getElementById('myoMFn'); if (inp) inp.value = term;
+  _myoMSetFn(term); _myo.fnAuto = true; _myoMRenderTheorie(true);
+}
+function _myoMClearFn() {
+  const inp = document.getElementById('myoMFn'); if (inp) inp.value = '';
+  _myoMSetFn(''); _myoMRenderTheorie(false);
+}
+function _myoMRefreshTheorie() {
+  if (_myo.fnAuto) {
+    const term = _MYO_M_PRESETS[_myo.preset].term();
+    const inp = document.getElementById('myoMFn'); if (inp) inp.value = term;
+    _myoMSetFn(term); _myo.fnAuto = true;
+  }
+  _myoMRenderTheorie(_myo.fnAuto);
+}
+function _myoMRenderTheorie(eingesetzt) {
+  const el = document.getElementById('myoMTheo'); if (!el) return;
+  const P = _MYO_M_PRESETS[_myo.preset];
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">${P.typ}</div>
+     <div class="fpm-theo-form">${P.form}</div>
+     <div class="fpm-theo-par">${_myo.preset === 1 ? 'Steigung = −1/τ₀, daraus τ₀ und T½ = ln2·τ₀' : 'N₀ = Startzahl, τ₀ = mittlere Lebensdauer'}</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${P.term()}</div>` : ''}
+     <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+function _myoMSetFn(str) {
+  _myo.fnAuto = false;
+  const err = document.getElementById('myoMFnErr');
+  const v = (str || '').trim();
+  if (!v) { _myo.fn = null; if (err) err.textContent = ''; _myoMDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _myo.fn = f; if (err) err.textContent = '';
+  } catch (e) { _myo.fn = null; if (err) err.textContent = e.message; }
+  _myoMDrawPlot();
+}
+function _myoMDrawDet(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const frac = _myoMNtrue(_myo.mT) / _MYO_N0;
+  // Myonen-Punkte: überlebende hell, zerfallene dunkel
+  const nx = 20, ny = 6, total = nx * ny;
+  const leben = Math.round(total * frac);
+  for (let i = 0; i < total; i++) {
+    const x = 24 + (i % nx) * ((W - 60) / nx), y = 24 + Math.floor(i / nx) * ((H - 60) / ny);
+    ctx.fillStyle = i < leben ? '#a78bfa' : 'rgba(71,85,105,0.5)';
+    ctx.beginPath(); ctx.arc(x, y, 4, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('t = ' + _fpmNum(_myo.mT, 1) + ' µs', 12, 14);
+  ctx.textAlign = 'right';
+  ctx.fillText(_fpmNum(_myo.mN || 0, 0) + ' / ' + _MYO_N0 + ' übrig', W - 12, 14);
+  ctx.textAlign = 'left';
+}
+function _myoMDrawPlot() {
+  const cv = document.getElementById('myoMPlot'); if (!cv || !_myo) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = _MYO_M_PRESETS[_myo.preset];
+  const padL = 46, padR = 14, padT = 10, padB = 30;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const pts = _myo.rows.map(r => ({ x: P.x(r), y: P.y(r) })).filter(p => isFinite(p.x) && isFinite(p.y));
+  const xmax = 11.5;
+  const ys = pts.map(p => p.y);
+  const ymin = _myo.preset === 1 ? (ys.length ? Math.min(...ys) - 0.5 : 0) : 0;
+  const ymax = _myo.preset === 1 ? (ys.length ? Math.max(...ys) + 0.3 : 9.5) : (ys.length ? Math.max(...ys) * 1.1 : _MYO_N0);
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - (v - ymin) / (ymax - ymin) * (y0 - y1);
+  ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  for (let t = 0; t <= 11; t += 2) { ctx.beginPath(); ctx.moveTo(X(t), y0); ctx.lineTo(X(t), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(t + '', X(t), y0 + 12); }
+  const yticks = []; const span = ymax - ymin;
+  for (let i = 0; i <= 5; i++) yticks.push(ymin + i * span / 5);
+  yticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmNum(v, _myo.preset === 1 ? 2 : 0), x0 - 5, Y(v) + 3); });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText(P.xl, x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText(P.yl, 0, 0); ctx.restore(); ctx.textAlign = 'left';
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
+    const fo = document.getElementById('myoMFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + P.deutung + '</div>';
+    return;
+  }
+  if (_myo.fn) {
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _myo.fn((px - x0) / (x1 - x0) * xmax); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv); if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  let fit = null;
+  if (!P.kurve && pts.length >= 2) {
+    fit = _fpmFitLinear(pts);
+    if (fit) { ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.7; ctx.beginPath(); ctx.moveTo(X(0), Y(fit.b)); ctx.lineTo(X(xmax), Y(fit.k * xmax + fit.b)); ctx.stroke(); }
+  }
+  pts.forEach(p => { ctx.fillStyle = '#7c3aed'; ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke(); });
+  const el = document.getElementById('myoMFitBox');
+  if (el) {
+    if (P.kurve) { el.innerHTML = '<div class="fpm-note">Wechsle zu <b>ln N</b>, um aus der Steigung die Lebensdauer zu bestimmen.<br>' + P.deutung + '</div>'; }
+    else if (!fit) { el.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte nötig.</div>'; }
+    else {
+      const tau = -1 / fit.k, T12 = Math.log(2) * tau;
+      const abw = Math.abs(tau - _MYO_TAU0_US) / _MYO_TAU0_US * 100;
+      const cls = abw < 5 ? 'ok' : abw < 12 ? 'mid' : 'no';
+      el.innerHTML = `<div class="fpm-fitline">
+         <span class="fpm-fitmeta">${_myo.rows.length} Messwerte</span>
+         <span class="fpm-fiteq">ln N = ${_fpmNum(fit.b, 2)} ${fit.k >= 0 ? '+ ' + _fpmNum(fit.k, 4) : '− ' + _fpmNum(-fit.k, 4)}·t</span>
+         <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 4)}</span>
+         <span class="fpm-fiteq" style="color:#075985">τ₀ = ${_fpmNum(tau, 2)} µs · T½ = ${_fpmNum(T12, 2)} µs</span>
+         ${_myo.reveal ? `<span class="fpm-badge ${cls}">Literatur τ₀ = 2,2 µs · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+       </div>`;
+    }
+  }
+}
+
 // ── Oberflaeche ─────────────────────────────────────────
 function _myoHTML() {
   const stationen = ['1 · Steckbrief & kosmische Myonen', '2 · Das Paradoxon',
                      '3 · Zeitdilatation (Erdsystem)', '4 · Längenkontraktion (Myonsystem)',
-                     '5 · Zwei Beobachter, ein Ergebnis']
+                     '5 · Zwei Beobachter, ein Ergebnis', '6 · Lebensdauer messen']
     .map((s, i) => `<button class="fpm-tab${i === _myo.station ? ' on' : ''}" id="myoSt${i}" onclick="_myoSetStation(${i})">${s}</button>`).join('');
 
   return `<div class="sim-box sim-box-wide fpm-sim myo-sim">
@@ -31064,6 +31256,57 @@ function _myoHTML() {
       </div>
     </div>
 
+    <!-- ══ Station 6: Lebensdauer messen ══ -->
+    <div id="myoS5" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="myoMDet" width="440" height="170" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Gestoppte Myonen zerfallen – zähle die Überlebenden nach der Zeit t</div>
+          <div class="fpm-tabs" style="margin-top:6px">
+            <button class="fpm-tab" id="myoMTab0" onclick="_myoMSetPreset(0)">t → N</button>
+            <button class="fpm-tab on" id="myoMTab1" onclick="_myoMSetPreset(1)">t → ln N</button>
+          </div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Zeit t seit dem Stopp: <b id="myoMTLbl">0,0 µs</b></span>
+            <input type="range" id="myoMT" min="0" max="11" step="0.5" value="0"
+              oninput="_myoMSetT(this.value)" style="width:100%;accent-color:#7c3aed">
+          </div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Zeit t</span><span class="fpm-ro-v" id="myoMTA">—</span><span class="fpm-ro-u">µs</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">noch nicht zerfallen N</span><span class="fpm-ro-v" id="myoMNA">—</span><span class="fpm-ro-u"></span></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_myoMTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_myoMDemo()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_myoMClear()">🗑 Tabelle leeren</button>
+          </div>
+        </div>
+        <div>
+          <canvas id="myoMPlot" width="440" height="220" class="phys-chart-cv"></canvas>
+          <div class="fpm-label" id="myoMPlotLbl">ln N über t: die Steigung ist −1/τ₀</div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>t (µs)</th><th>N</th><th>ln N</th><th></th></tr></thead>
+              <tbody id="myoMTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="myoMEmpty">Noch keine Messwerte.<br>Zeit einstellen → Überlebende übernehmen.</div>
+          </div>
+          <div class="fpm-fit" id="myoMFitBox"></div>
+          <div class="fpm-label" style="margin-top:8px">Funktion plotten</div>
+          <input type="text" id="myoMFn" class="fpm-input" placeholder="z. B. 9.21-0.4545*x" spellcheck="false"
+            oninput="_myoMSetFn(this.value)">
+          <div class="fpm-err" id="myoMFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_myoMTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_myoMClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="myoMTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_myoMSetReveal(this.checked)">
+            Literaturwert τ₀ = 2,2 µs anzeigen</label>
+        </div>
+      </div>
+    </div>
+
     <div id="myoErkl" class="dsp-erkl"></div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
       <b>N(t) = N₀·e<sup>−t/τ</sup></b> &nbsp;|&nbsp; <b>Δt = γ·τ₀</b>
@@ -31131,13 +31374,14 @@ function _myoErklHTML() {
 
 // ── Stationen ──────────────────────────────────────────
 function _myoSetStation(i) {
-  _myo.station = Math.max(0, Math.min(4, i));
-  for (let k = 0; k < 5; k++) {
+  _myo.station = Math.max(0, Math.min(5, i));
+  for (let k = 0; k < 6; k++) {
     document.getElementById('myoSt' + k)?.classList.toggle('on', k === _myo.station);
     const d = document.getElementById('myoS' + k);
     if (d) d.style.display = k === _myo.station ? 'block' : 'none';
   }
   _myoUpdate();
+  if (_myo.station === 5) _myoMRender();
 }
 function _myoSetBeta(v) {
   _myo.beta = Math.max(0.9, Math.min(0.9999, +v));
@@ -31542,6 +31786,9 @@ function _myoRender() {
   } else if (st === 4) {
     const c = document.getElementById('myoBall');
     if (c) _myoDrawBall(c.getContext('2d'), c);
+  } else if (st === 5) {
+    const c = document.getElementById('myoMDet');
+    if (c) _myoMDrawDet(c.getContext('2d'), c);
   }
 }
 
