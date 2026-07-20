@@ -2266,6 +2266,20 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('myoTakt', 'myoKeinChart');
     _pSim.start(dt => _myoTakt(dt), () => _myoRender(), []);
   },
+
+  // Schluesselexperiment 24 des KLP (Q2.1): die Lichtuhr. Gedankenexperiment
+  // zur Herleitung der Zeitdilatation per Pythagoras; schliesst die Trilogie
+  // Michelson-Morley (V22) und Myonenzerfall (V23) ab.
+  'lichtuhr': modal => {
+    _luInit();
+    modal.innerHTML = _luHTML();
+    const erkl = document.getElementById('luErkl');
+    if (erkl) erkl.innerHTML = _luErklHTML();
+    _luSetStation(0);
+    _luUpdate();
+    _pSim = new PhysicsSimEngine('luTakt', 'luKeinChart');
+    _pSim.start(dt => _luTakt(dt), () => _luRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -29174,6 +29188,637 @@ function _myoRender() {
       border: 1px solid #bbf7d0; border-radius: 8px; padding: 8px 10px; }
     .myo-zwei-fazit b { color: #14532d; }
     .myo-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// DIE LICHTUHR – Schluesselexperiment 24 (angehaengt)
+// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// DIE LICHTUHR
+// Schluesselexperiment 24 der NRW-Handreichung (Q2.1). Das Gedankenexperiment,
+// mit dem sich die Zeitdilatation allein mit dem Satz des Pythagoras herleiten
+// laesst. Schliesst die Trilogie Michelson-Morley (V22) und Myonenzerfall
+// (V23) ab.
+// Kernkompetenz des KLP: mit der Lichtuhr grundlegende Prinzipien der SRT
+// erklaeren und die Formel fuer die Zeitdilatation quantitativ herleiten
+// (E6, E7).
+// ═══════════════════════════════════════════════════════
+
+const _LU_C = 2.99792458e8;     // Lichtgeschwindigkeit in m/s
+
+let _lu = null;
+
+function _luInit() {
+  _lu = {
+    station: 0,
+    beta: 0.6,     // Relativgeschwindigkeit v/c
+    laeuft: true, t: 0
+  };
+}
+
+// ── Zahlformat ──────────────────────────────────────────
+function _luZahl(v) {
+  if (!isFinite(v) || v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const dez = Math.max(0, Math.min(20, 5 - ex));
+  const s = v.toFixed(dez);
+  return s.indexOf('.') >= 0 ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
+}
+
+// ── Physik ──────────────────────────────────────────────
+// Der relativistische Faktor √(1−β²) (Konvention der Handreichung, ≤ 1)
+function _luFaktor(beta) { return Math.sqrt(1 - beta * beta); }
+// Lorentzfaktor γ = 1/√(1−β²)
+function _luGamma(beta) { return 1 / Math.sqrt(1 - beta * beta); }
+// Zeit im bewegten System B (Eigenzeit der Uhr, kuerzer): Δt_bew = Δt_Ruh·√(1−β²)
+function _luTBew(tRuh, beta) { return tRuh * _luFaktor(beta); }
+// Zeit im ruhenden System A (aus A gemessen, laenger): Δt_Ruh = Δt_bew/√(1−β²)
+function _luTRuh(tBew, beta) { return tBew / _luFaktor(beta); }
+
+// ── Oberflaeche ─────────────────────────────────────────
+function _luHTML() {
+  const stationen = ['1 · Die Lichtuhr', '2 · Die bewegte Lichtuhr',
+                     '3 · Herleitung mit Pythagoras', '4 · Der relativistische Faktor',
+                     '5 · Wo es zählt: GPS & Co.']
+    .map((s, i) => `<button class="fpm-tab${i === _lu.station ? ' on' : ''}" id="luSt${i}" onclick="_luSetStation(${i})">${s}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim lu-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">⏱️ Die Lichtuhr</h3>
+    <canvas id="luTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="luS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="luRuhe" width="440" height="280" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Ein Photon pendelt zwischen Boden und Spiegel – das ist der Takt</div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" id="luLaufBtn" onclick="_luToggle()">⏸ Anhalten</button>
+          </div>
+        </div>
+        <div>
+          <div class="lu-erkl" id="luErklText"></div>
+        </div>
+      </div>
+      <div class="lu-k3" id="luK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="luS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="luBewegt" width="440" height="300" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Oben im Ruhesystem B, unten wie System A es sieht</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Relativgeschwindigkeit v/c</span>
+              <input type="range" id="luBeta" min="0" max="0.95" step="0.01" value="0.6"
+                oninput="_luSetBeta(this.value)"><b id="luBetaLbl">0,60</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="lu-bew-t" id="luBewText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="luS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="luDreieck" width="440" height="280" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Das rechtwinklige Dreieck des Lichtwegs</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>v/c</span>
+              <input type="range" id="luBeta3" min="0" max="0.95" step="0.01" value="0.6"
+                oninput="_luSetBeta(this.value)"><b id="luBeta3Lbl">0,60</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="lu-herleitung" id="luHerleitung"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="luS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="luFaktor" width="440" height="270" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Der Faktor √(1−β²) über der Geschwindigkeit</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>v/c</span>
+              <input type="range" id="luBeta4" min="0" max="0.999" step="0.001" value="0.6"
+                oninput="_luSetBeta(this.value)"><b id="luBeta4Lbl">0,60</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="luFaktorRechnung"></div>
+          <div class="lu-faktor-t" id="luFaktorText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="luS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="luGps" width="440" height="200" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">GPS-Satelliten: ohne relativistische Korrektur läuft die Ortung weg</div>
+        </div>
+        <div>
+          <div class="lu-anw-t" id="luAnwText"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="luErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>(c·Δt<sub>Ruh</sub>)² = (v·Δt<sub>Ruh</sub>)² + (c·Δt<sub>bew</sub>)²</b>
+      &nbsp;|&nbsp; <b>Δt<sub>bew</sub> = Δt<sub>Ruh</sub>·√(1−v²/c²)</b> &nbsp;|&nbsp; <b>c = const</b>
+    </p>
+  </div>`;
+}
+
+function _luErklHTML() {
+  return `<div class="dsp-erkl-kopf">Was eine Lichtuhr ist</div>
+    <div class="dsp-erkl-text">
+      Die Lichtuhr ist ein <b>Gedankenexperiment</b> – kein reales Gerät, sondern ein
+      Denkwerkzeug. In einem Kasten sitzen unten eine Blitzlampe und oben ein Spiegel. Ein
+      <b>Photon</b> läuft nach oben, wird am Spiegel reflektiert und kehrt zum Boden zurück. Dieses
+      Hin und Her ist ein <b>Takt</b> – wie das Ticken einer Uhr. Weil das Photon sich immer mit
+      der Lichtgeschwindigkeit c bewegt, misst die Lichtuhr Zeit auf denkbar einfache Weise: über
+      eine Strecke geteilt durch c.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die bewegte Uhr</div>
+    <div class="dsp-erkl-text">
+      Jetzt bewegt sich die Lichtuhr (System <b>B</b>) an einem Beobachter vorbei, der in seinem
+      System <b>A</b> überall <b>synchronisierte Uhren</b> aufgestellt hat. Im Ruhesystem der Uhr
+      läuft das Photon einfach senkrecht auf und ab. Für den Beobachter in A aber bewegt sich die
+      Uhr währenddessen seitwärts – das Photon legt aus seiner Sicht einen <b>schrägen, längeren</b>
+      Weg zurück, ein Zickzack. Entscheidend: Das Photon ist auch auf diesem längeren Weg mit
+      <b>derselben</b> Lichtgeschwindigkeit c unterwegs (das hat das Michelson-Morley-Experiment
+      gezeigt). Ein längerer Weg bei gleicher Geschwindigkeit bedeutet aber eine <b>längere
+      Zeit</b>.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Die Herleitung mit Pythagoras</div>
+    <div class="dsp-erkl-text">
+      Der schräge Lichtweg bildet ein <b>rechtwinkliges Dreieck</b>. In der Zeit Δt<sub>Ruh</sub>,
+      die A misst, legt das Licht die <b>Diagonale</b> c·Δt<sub>Ruh</sub> zurück, während die Uhr um
+      v·Δt<sub>Ruh</sub> seitwärts wandert. Die <b>Höhe</b> des Kastens ist derselbe Weg, den das
+      Photon im Ruhesystem in der Eigenzeit Δt<sub>bew</sub> zurücklegt, also c·Δt<sub>bew</sub>.
+      Der Satz des Pythagoras liefert sofort
+      <b>(c·Δt<sub>Ruh</sub>)² = (v·Δt<sub>Ruh</sub>)² + (c·Δt<sub>bew</sub>)²</b>. Löst man nach
+      Δt<sub>bew</sub> auf, erhält man die <b>Zeitdilatation</b>:
+      Δt<sub>bew</sub> = Δt<sub>Ruh</sub>·√(1−v²/c²).
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Was das bedeutet</div>
+    <div class="dsp-erkl-text">
+      Der Faktor √(1−v²/c²) ist immer <b>kleiner oder gleich 1</b>. Also ist die im bewegten System
+      B ablaufende Zeitspanne Δt<sub>bew</sub> immer <b>kleiner</b> als die von A gemessene
+      Δt<sub>Ruh</sub>: Die bewegte Uhr <b>geht langsamer</b>, oder anders gesagt, die Zeit in A
+      läuft schneller. Bei v = 0,866·c ist der Faktor genau <b>0,5</b> – die bewegte Uhr tickt halb
+      so schnell. Man sollte dabei stets von <b>Zeitspannen</b> sprechen, nicht von „der Zeit“.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Kein Widerspruch: die Wechselseitigkeit</div>
+    <div class="dsp-erkl-text">
+      Verblüffend ist, dass auch der Beobachter in B die Uhren in A langsamer gehen sieht – beide
+      haben recht. Das ist <b>kein Widerspruch</b>: In A wird eine <b>einzelne</b> Uhr aus B an
+      <b>zwei synchronisierten</b> A-Uhren verglichen. Für B sind diese beiden A-Uhren aber gar
+      <b>nicht synchron</b>. Sobald man beide Systeme vollständig durchdenkt, landet man bei der
+      <b>Relativität der Gleichzeitigkeit</b> – dem eigentlichen Herzstück der Relativitätstheorie.
+    </div>
+    <div class="dsp-erkl-note">💡 Die Lichtuhr baut auf dem <b>Michelson-Morley-Experiment</b>
+      (Konstanz von c) auf und liefert die Formel, die der <b>Myonenzerfall</b> experimentell
+      bestätigt. Auch die Längenkontraktion, die Massenzunahme und E = m·c² schließen hier an.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _luSetStation(i) {
+  _lu.station = Math.max(0, Math.min(4, i));
+  for (let k = 0; k < 5; k++) {
+    document.getElementById('luSt' + k)?.classList.toggle('on', k === _lu.station);
+    const d = document.getElementById('luS' + k);
+    if (d) d.style.display = k === _lu.station ? 'block' : 'none';
+  }
+  _luUpdate();
+}
+function _luToggle() {
+  _lu.laeuft = !_lu.laeuft;
+  const b = document.getElementById('luLaufBtn');
+  if (b) b.textContent = _lu.laeuft ? '⏸ Anhalten' : '▶ Weiter';
+}
+function _luSetBeta(v) {
+  _lu.beta = Math.max(0, Math.min(0.999, +v));
+  ['', '3', '4'].forEach(suf => {
+    const el = document.getElementById('luBeta' + suf + 'Lbl');
+    if (el) el.textContent = _fpmNum(_lu.beta, suf === '4' ? 3 : 2);
+  });
+  _luRenderBew(); _luRenderHerleitung(); _luRenderFaktor();
+}
+
+function _luUpdate() {
+  if (!_lu) return;
+  const et = document.getElementById('luErklText');
+  if (et) {
+    et.innerHTML = `<div class="git-sch-kopf">So misst die Lichtuhr Zeit</div>
+      <div class="lu-erkl-z"><span>①</span>Eine <b>Blitzlampe</b> am Boden sendet ein Photon nach
+        oben.</div>
+      <div class="lu-erkl-z"><span>②</span>Am <b>Spiegel</b> unter der Decke wird es reflektiert.</div>
+      <div class="lu-erkl-z"><span>③</span>Es kehrt zum Boden zurück – ein voller <b>Takt</b>.</div>
+      <div class="lu-erkl-z"><span>④</span>Weil das Licht immer <b>gleich schnell</b> (c) ist, ist
+        der Takt eine feste Zeitspanne: Weg geteilt durch c.</div>
+      <div class="lu-erkl-note">Die Lichtuhr ist ein reines <b>Gedankenexperiment</b> – gerade
+        seine Einfachheit macht es zum idealen Werkzeug, um die Zeitdilatation herzuleiten.</div>`;
+  }
+  _luRenderK3();
+  _luRenderBew();
+  _luRenderHerleitung();
+  _luRenderFaktor();
+  _luRenderAnw();
+}
+
+function _luRenderK3() {
+  const el = document.getElementById('luK3'); if (!el) return;
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du dieses Gedankenexperiment jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Wir wollen verstehen und herleiten, warum bewegte Uhren langsamer gehen.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Eine gedachte Uhr, die Zeit über ein zwischen Spiegeln hin- und herlaufendes Photon
+        misst.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Man betrachtet den Lichtweg aus zwei Bezugssystemen: dem Ruhesystem der Uhr (B) und einem
+        System A mit synchronisierten Uhren, an dem die Uhr vorbeifährt.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        In A ist der Lichtweg schräg und länger, dauert bei gleichem c also länger.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Mit dem Satz des Pythagoras folgt Δt<sub>bew</sub> = Δt<sub>Ruh</sub>·√(1−v²/c²) – die
+        Zeitdilatation, allein aus der Konstanz von c.</div>
+    </div>`;
+}
+
+// ── Station 2: bewegte Uhr ─────────────────────────────
+function _luRenderBew() {
+  const el = document.getElementById('luBewText'); if (!el) return;
+  const beta = _lu.beta, f = _luFaktor(beta), g = _luGamma(beta);
+  el.innerHTML = `<div class="git-sch-kopf">Warum der Weg länger wird</div>
+    <div class="lu-bew-z">Im <b>Ruhesystem B</b> (oben) läuft das Photon <b>senkrecht</b> auf und
+      ab – der kürzestmögliche Weg. In <b>System A</b> (unten) bewegt sich die Uhr währenddessen
+      nach rechts, deshalb läuft das Photon aus A-Sicht <b>schräg</b>: ein längerer Zickzackweg.</div>
+    <div class="lu-bew-z">Beide Male hat das Licht dieselbe Geschwindigkeit c. Ein längerer Weg bei
+      gleicher Geschwindigkeit heißt: In A vergeht <b>mehr Zeit</b> für einen Takt als in B. Genau
+      das ist die <b>Zeitdilatation</b>.</div>
+    <div class="lu-bew-form">Bei v = ${_fpmNum(beta, 2)}·c ist der A-Takt um den Faktor
+      1/√(1−β²) = <b>${_fpmNum(g, 3)}</b> länger als der B-Takt.</div>
+    <div class="fpm-note">Je näher v an c kommt, desto flacher wird der Zickzack und desto länger
+      der Lichtweg in A – die Zeitdehnung wächst über alle Grenzen. Bei β = 0 fallen beide Wege
+      zusammen, und es gibt keine Dehnung.</div>`;
+}
+
+// ── Station 3: Herleitung ──────────────────────────────
+function _luRenderHerleitung() {
+  const el = document.getElementById('luHerleitung'); if (!el) return;
+  const beta = _lu.beta, f = _luFaktor(beta);
+  el.innerHTML = `<div class="git-sch-kopf">Die Herleitung Schritt für Schritt</div>
+    <div class="lu-herl-schritt"><span>1</span>Der Lichtweg in A bildet ein <b>rechtwinkliges
+      Dreieck</b>: Diagonale (Lichtweg), Horizontale (Bewegung der Uhr) und Höhe (Kastenhöhe).</div>
+    <div class="lu-herl-schritt"><span>2</span>Die drei Seiten sind:
+      <div class="lu-herl-seiten">
+        <div><b class="diag">Diagonale</b> = c·Δt<sub>Ruh</sub> (Licht in A-Zeit)</div>
+        <div><b class="hori">Horizontale</b> = v·Δt<sub>Ruh</sub> (Uhr bewegt sich)</div>
+        <div><b class="vert">Höhe</b> = c·Δt<sub>bew</sub> (Licht in B-Eigenzeit)</div>
+      </div></div>
+    <div class="lu-herl-schritt"><span>3</span>Satz des Pythagoras:
+      <div class="lu-herl-form">(c·Δt<sub>Ruh</sub>)² = (v·Δt<sub>Ruh</sub>)² + (c·Δt<sub>bew</sub>)²</div></div>
+    <div class="lu-herl-schritt"><span>4</span>Nach Δt<sub>bew</sub> auflösen:
+      <div class="lu-herl-form">c²·Δt<sub>bew</sub>² = (c²−v²)·Δt<sub>Ruh</sub>²</div></div>
+    <div class="lu-herl-schritt erg"><span>5</span>Die <b>Zeitdilatation</b>:
+      <div class="lu-herl-form erg">Δt<sub>bew</sub> = Δt<sub>Ruh</sub>·√(1−v²/c²) =
+        Δt<sub>Ruh</sub>·${_fpmNum(f, 3)}</div></div>
+    <div class="fpm-note">Es genügen der Satz des Pythagoras und die <b>Konstanz von c</b> – mehr
+      Mathematik braucht die berühmteste Formel der Zeit nicht. Bei v = ${_fpmNum(beta, 2)}·c ist
+      eine Zeitspanne in der bewegten Uhr nur ${_fpmNum(f * 100, 1)} % so lang wie die in A
+      gemessene.</div>`;
+}
+
+// ── Station 4: Faktor ──────────────────────────────────
+function _luRenderFaktor() {
+  const el = document.getElementById('luFaktorRechnung'); if (!el) return;
+  const beta = _lu.beta, f = _luFaktor(beta), g = _luGamma(beta);
+  // Beispiel: 1 Stunde im bewegten System
+  const tRuh = 1;  // Stunde in A
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Geschwindigkeit</span>
+      <span class="pho-rz-f">v/c</span><span class="pho-rz-v">${_fpmNum(beta, 3)}</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">relativistischer Faktor</span>
+      <span class="pho-rz-f">√(1−β²)</span><span class="pho-rz-v">${_fpmNum(f, 4)}</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Lorentzfaktor</span>
+      <span class="pho-rz-f">γ = 1/√(1−β²)</span><span class="pho-rz-v">${_fpmNum(g, 3)}</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">1 Stunde in A entspricht in B</span>
+      <span class="pho-rz-f">Δt<sub>bew</sub> = Δt<sub>Ruh</sub>·√(1−β²)</span>
+      <span class="pho-rz-v">${_fpmNum(f * 60, 1)} min</span></div>`;
+  const t = document.getElementById('luFaktorText');
+  if (t) {
+    t.innerHTML = `<div class="fpm-note">Während in A eine Stunde vergeht, tickt die mit
+      ${_fpmNum(beta, 3)}·c bewegte Uhr nur <b>${_fpmNum(f * 60, 1)} Minuten</b> weiter. Bei
+      <b>v = 0,866·c</b> ist der Faktor genau ½ – die bewegte Uhr läuft halb so schnell. Der Effekt
+      ist im Alltag unmerklich (bei 1000 km/h weicht der Faktor erst in der 13. Nachkommastelle von
+      1 ab), wächst aber nahe c dramatisch. <b>Wechselseitigkeit:</b> Auch B sieht die A-Uhren
+      langsamer – kein Widerspruch, denn A misst mit zwei Uhren, die für B nicht synchron sind.</div>`;
+  }
+}
+
+// ── Station 5: Anwendung ───────────────────────────────
+function _luRenderAnw() {
+  const el = document.getElementById('luAnwText'); if (!el) return;
+  el.innerHTML = `<div class="git-sch-kopf">Wo die Zeitdilatation wirklich zählt</div>
+    <div class="lu-anw-z"><b>GPS</b> Die Satelliten umkreisen die Erde mit rund 14 000 km/h. Ihre
+      Uhren gehen durch die Zeitdilatation langsamer – gleichzeitig aber wegen der schwächeren
+      Schwerkraft in der Höhe (allgemeine Relativitätstheorie) <b>schneller</b>. Unkorrigiert
+      liefen die Uhren pro Tag um etwa 38 µs falsch; die Ortsbestimmung würde binnen Minuten um
+      <b>Kilometer</b> abweichen. Ohne Einsteins Formeln funktionierte kein Navigationsgerät.</div>
+    <div class="lu-anw-z"><b>Myonen</b> Die kosmischen Myonen (Schlüsselexperiment 23) erreichen den
+      Erdboden nur, weil ihre schnell bewegte innere „Uhr“ langsamer läuft – der direkte
+      experimentelle Beleg der Lichtuhr-Rechnung.</div>
+    <div class="lu-anw-z"><b>Teilchenbeschleuniger</b> In Ringbeschleunigern leben instabile
+      Teilchen dank Zeitdilatation lange genug, um überhaupt untersucht werden zu können.</div>
+    <div class="lu-anw-z med"><b>Und weiter</b> An die Zeitdilatation schließen die
+      <b>Längenkontraktion</b>, die Zunahme der Masse mit der Geschwindigkeit und die berühmteste
+      Gleichung der Physik an: <b>E = m·c²</b>. Alles folgt aus der einen Tatsache, die das
+      Michelson-Morley-Experiment zeigte – dass die Lichtgeschwindigkeit in jedem Bezugssystem
+      gleich ist.</div>`;
+}
+
+// ── Zeichnungen ────────────────────────────────────────
+function _luDrawRuhe(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2, bodenY = H - 40, deckeY = 40;
+  // Kasten
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+  ctx.strokeRect(cx - 50, deckeY, 100, bodenY - deckeY);
+  // Spiegel oben, Lampe unten
+  ctx.fillStyle = '#38bdf8'; ctx.fillRect(cx - 40, deckeY - 2, 80, 4);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Spiegel', cx, deckeY - 8);
+  ctx.fillStyle = '#fbbf24'; ctx.fillRect(cx - 10, bodenY - 2, 20, 6);
+  ctx.fillText('Blitzlampe', cx, bodenY + 16);
+  // Photon pendelt
+  const per = 2, ph = (_lu.t * 0.6) % 1;
+  const py = ph < 0.5 ? bodenY - ph * 2 * (bodenY - deckeY) : deckeY + (ph - 0.5) * 2 * (bodenY - deckeY);
+  // Lichtweg
+  ctx.strokeStyle = 'rgba(253,224,71,0.3)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(cx, bodenY); ctx.lineTo(cx, deckeY); ctx.stroke();
+  ctx.fillStyle = '#fde047';
+  ctx.beginPath(); ctx.arc(cx, py, 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = 'rgba(253,224,71,0.5)';
+  ctx.beginPath(); ctx.arc(cx, py, 9, 0, 2 * Math.PI); ctx.fill();
+  // Hoehe beschriften
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+  ctx.beginPath(); ctx.moveTo(cx + 60, deckeY); ctx.lineTo(cx + 60, bodenY); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.save(); ctx.translate(cx + 74, (deckeY + bodenY) / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Höhe = c·Δt', 0, 0); ctx.restore();
+  ctx.fillStyle = '#cbd5e1'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Ruhesystem B: Photon senkrecht', cx, 20);
+}
+
+function _luDrawBewegt(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const beta = _lu.beta;
+  // oberes Panel: Ruhesystem (senkrecht)
+  const rcx = 80, rTop = 34, rBot = 120;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.2; ctx.strokeRect(rcx - 22, rTop, 44, rBot - rTop);
+  ctx.strokeStyle = 'rgba(253,224,71,0.4)'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(rcx, rBot); ctx.lineTo(rcx, rTop); ctx.stroke();
+  const ph = (_lu.t * 0.5) % 1;
+  const rpy = ph < 0.5 ? rBot - ph * 2 * (rBot - rTop) : rTop + (ph - 0.5) * 2 * (rBot - rTop);
+  ctx.fillStyle = '#fde047'; ctx.beginPath(); ctx.arc(rcx, rpy, 4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#cbd5e1'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Ruhesystem B: kurzer, senkrechter Weg', 8, 20);
+
+  // unteres Panel: System A (schraeg, Uhr bewegt sich)
+  const aTop = 180, aBot = 266, x0 = 40, x1 = W - 40;
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('System A: Uhr bewegt sich →, Photon läuft schräg (Zickzack)', 8, 158);
+  // synchronisierte Uhren am Boden
+  for (let x = x0; x <= x1; x += 40) {
+    ctx.fillStyle = '#475569'; ctx.beginPath(); ctx.arc(x, aBot + 12, 4, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Uhr-Position bewegt sich
+  const uhrX = x0 + ((_lu.t * beta * 60) % (x1 - x0 - 60));
+  // Zickzack-Lichtweg
+  const halfW = beta * (aBot - aTop);   // horizontale Verschiebung je Halbtakt
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  ctx.moveTo(uhrX, aBot); ctx.lineTo(uhrX + halfW, aTop); ctx.lineTo(uhrX + 2 * halfW, aBot);
+  ctx.stroke();
+  // Kasten (bewegt)
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.2;
+  ctx.strokeRect(uhrX - 20, aTop, 40, aBot - aTop);
+  // Photon auf dem Zickzack
+  const ap = (_lu.t * 0.5) % 1;
+  let apx, apy;
+  if (ap < 0.5) { apx = uhrX + ap * 2 * halfW; apy = aBot - ap * 2 * (aBot - aTop); }
+  else { apx = uhrX + halfW + (ap - 0.5) * 2 * halfW; apy = aTop + (ap - 0.5) * 2 * (aBot - aTop); }
+  ctx.fillStyle = '#fde047'; ctx.beginPath(); ctx.arc(apx, apy, 4, 0, 2 * Math.PI); ctx.fill();
+  // Diagonale beschriften
+  ctx.fillStyle = '#fbbf24'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('länger → mehr Zeit', uhrX + halfW + 6, (aTop + aBot) / 2);
+}
+
+function _luDrawDreieck(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const beta = _lu.beta;
+  // Dreieck: Basis unten (Horizontale v·Δt), Hoehe (c·Δt_bew), Diagonale (c·Δt_Ruh)
+  const bx = 90, by = H - 50;   // linke untere Ecke
+  const hoehe = 170;             // Hoehe = c·Δt_bew (fest gezeichnet)
+  const basis = beta / _luFaktor(beta) * hoehe;   // Horizontale = v/c · (Hoehe/faktor)... verhaeltnis v·t_Ruh
+  // eigentlich: hori/vert = (v·t_Ruh)/(c·t_bew). t_Ruh = t_bew/faktor. hori = v·t_bew/faktor.
+  // vert = c·t_bew. hori/vert = (v/c)/faktor = beta/sqrt(1-b^2). ok.
+  const topX = bx, topY = by - hoehe;         // oben links (Hoehe senkrecht)
+  const rightX = bx + basis, rightY = by;     // unten rechts
+  // Hoehe (senkrecht, gruen)
+  ctx.strokeStyle = '#4ade80'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(topX, topY); ctx.stroke();
+  // Horizontale (rot)
+  ctx.strokeStyle = '#f87171'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(rightX, rightY); ctx.stroke();
+  // Diagonale (gelb, Lichtweg)
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(topX, topY); ctx.lineTo(rightX, rightY); ctx.stroke();
+  // rechter Winkel
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  ctx.strokeRect(bx, by - 12, 12, 12);
+  // Beschriftungen
+  ctx.fillStyle = '#4ade80'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.save(); ctx.translate(bx - 8, by - hoehe / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('c·Δt_bew (Höhe)', 0, 0); ctx.restore();
+  ctx.fillStyle = '#f87171'; ctx.textAlign = 'center';
+  ctx.fillText('v·Δt_Ruh', bx + basis / 2, by + 16);
+  ctx.fillStyle = '#fbbf24'; ctx.textAlign = 'left';
+  ctx.fillText('c·Δt_Ruh (Lichtweg)', (topX + rightX) / 2 - 10, (topY + rightY) / 2 - 6);
+  // Photon auf der Diagonale
+  const ap = (_lu.t * 0.4) % 1;
+  const px = topX + ap * (rightX - topX), py = topY + ap * (rightY - topY);
+  ctx.fillStyle = '#fef08a'; ctx.beginPath(); ctx.arc(px, py, 4, 0, 2 * Math.PI); ctx.fill();
+  // Faktor
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('√(1−β²) = ' + _fpmNum(_luFaktor(beta), 3), W - 90, 30);
+  ctx.font = '9px sans-serif'; ctx.fillStyle = '#94a3b8';
+  ctx.fillText('v = ' + _fpmNum(beta, 2) + '·c', W - 90, 44);
+}
+
+function _luDrawFaktor(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  const padL = 40, padR = 12, padT = 14, padB = 34;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const X = b => x0 + b * (x1 - x0);
+  const Y = v => y0 - v * (y0 - y1);
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
+  [0, 0.25, 0.5, 0.75, 1].forEach(b => {
+    ctx.beginPath(); ctx.moveTo(X(b), y0); ctx.lineTo(X(b), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(_fpmNum(b, 2), X(b), y0 + 12);
+  });
+  [0, 0.5, 1].forEach(v => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmNum(v, 1), x0 - 4, Y(v) + 3);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('v/c', x1, y0 + 22);
+  ctx.save(); ctx.translate(11, y1 + 4); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('√(1−β²)', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+  // Kurve
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let b = 0; b <= 0.999; b += 0.005) { const py = Y(_luFaktor(b)); b === 0 ? ctx.moveTo(X(b), py) : ctx.lineTo(X(b), py); }
+  ctx.stroke();
+  // 0,866 -> 0,5 markieren
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(X(0.866), Y(0.5)); ctx.lineTo(X(0.866), y0); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(X(0.866), Y(0.5)); ctx.lineTo(x0, Y(0.5)); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#b45309'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('0,866c → ½', X(0.7), Y(0.5) - 4);
+  // aktueller Punkt
+  ctx.fillStyle = '#db2777';
+  ctx.beginPath(); ctx.arc(X(_lu.beta), Y(_luFaktor(_lu.beta)), 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.textAlign = 'left';
+}
+
+function _luDrawGps(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0b1120'; ctx.fillRect(0, 0, W, H);
+  // Erde
+  const ex = W / 2, ey = H - 10, er = 55;
+  const grad = ctx.createRadialGradient(ex - 15, ey - 15, 5, ex, ey, er);
+  grad.addColorStop(0, '#3b82f6'); grad.addColorStop(1, '#1e3a8a');
+  ctx.fillStyle = grad;
+  ctx.beginPath(); ctx.arc(ex, ey, er, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#93c5fd'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Erde', ex, ey - 20);
+  // Satellitenbahn
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.ellipse(ex, ey, 130, 95, 0, Math.PI, 2 * Math.PI); ctx.stroke();
+  // Satellit
+  const a = Math.PI + (_lu.t * 0.4 % 1) * Math.PI;
+  const sx = ex + Math.cos(a) * 130, sy = ey + Math.sin(a) * 95;
+  ctx.fillStyle = '#fbbf24'; ctx.fillRect(sx - 5, sy - 3, 10, 6);
+  ctx.strokeStyle = '#fde047'; ctx.lineWidth = 1;
+  ctx.strokeRect(sx - 9, sy - 2, 4, 4); ctx.strokeRect(sx + 5, sy - 2, 4, 4);
+  // Signal zur Erde
+  ctx.strokeStyle = 'rgba(96,165,250,0.5)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(ex, ey - er); ctx.stroke();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('GPS-Satellit', 10, 18);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif';
+  ctx.fillText('~14 000 km/h → Zeitdilatation', 10, 32);
+  ctx.fillStyle = '#f87171';
+  ctx.fillText('ohne Korrektur: ~38 µs/Tag, km-Fehler', 10, H - 8);
+  ctx.textAlign = 'left';
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _luTakt(dt) {
+  if (!_lu) return;
+  if (_lu.laeuft) _lu.t += Math.min(0.05, dt);
+  else _lu.t += 0;   // im Halt eingefroren
+}
+function _luRender() {
+  if (!_lu) return;
+  const st = _lu.station;
+  if (st === 0) {
+    const c = document.getElementById('luRuhe');
+    if (c) _luDrawRuhe(c.getContext('2d'), c);
+  } else if (st === 1) {
+    const c = document.getElementById('luBewegt');
+    if (c) _luDrawBewegt(c.getContext('2d'), c);
+  } else if (st === 2) {
+    const c = document.getElementById('luDreieck');
+    if (c) _luDrawDreieck(c.getContext('2d'), c);
+  } else if (st === 3) {
+    const c = document.getElementById('luFaktor');
+    if (c) _luDrawFaktor(c.getContext('2d'), c);
+  } else if (st === 4) {
+    const c = document.getElementById('luGps');
+    if (c) _luDrawGps(c.getContext('2d'), c);
+  }
+}
+
+// ── Zusätzliche Styles für die Lichtuhr ────────────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .lu-erkl { display: flex; flex-direction: column; gap: 5px; background: #f8fafc;
+      border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 12px; }
+    .lu-erkl-z { display: flex; gap: 8px; align-items: flex-start; font-size: .77rem; color: #475569;
+      line-height: 1.5; }
+    .lu-erkl-z span { flex: 0 0 20px; height: 20px; border-radius: 50%; background: #0284c7; color: #fff;
+      font-size: .72rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .lu-erkl-z b { color: #334155; }
+    .lu-erkl-note { font-size: .75rem; color: #5b21b6; background: #f5f3ff; border: 1px solid #ddd6fe;
+      border-radius: 7px; padding: 6px 9px; margin-top: 4px; }
+    .lu-erkl-note b { color: #4c1d95; }
+    .lu-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 13px; margin-top: 12px; }
+    .lu-bew-t { display: flex; flex-direction: column; gap: 7px; }
+    .lu-bew-z { font-size: .78rem; color: #475569; line-height: 1.6; }
+    .lu-bew-z b { color: #334155; }
+    .lu-bew-form { font-size: .84rem; text-align: center; color: #5b21b6; background: #f5f3ff;
+      border: 1px solid #ddd6fe; border-radius: 8px; padding: 8px 10px; }
+    .lu-bew-form b { color: #4c1d95; }
+    .lu-herleitung { display: flex; flex-direction: column; gap: 6px; }
+    .lu-herl-schritt { display: flex; gap: 8px; align-items: flex-start; font-size: .77rem; color: #475569;
+      line-height: 1.5; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 7px 9px; }
+    .lu-herl-schritt span { flex: 0 0 18px; height: 18px; border-radius: 50%; background: #7c3aed; color: #fff;
+      font-size: .7rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .lu-herl-schritt.erg { background: #f5f3ff; border-color: #ddd6fe; }
+    .lu-herl-schritt b { color: #334155; }
+    .lu-herl-seiten { display: flex; flex-direction: column; gap: 2px; margin-top: 4px; font-size: .73rem; }
+    .lu-herl-seiten b.diag { color: #b45309; }
+    .lu-herl-seiten b.hori { color: #dc2626; }
+    .lu-herl-seiten b.vert { color: #16a34a; }
+    .lu-herl-form { font-size: .82rem; text-align: center; color: #475569; background: #fff;
+      border: 1px solid #e2e8f0; border-radius: 6px; padding: 5px 8px; margin-top: 4px; font-variant-numeric: tabular-nums; }
+    .lu-herl-form.erg { color: #4c1d95; font-weight: 700; background: #ede9fe; border-color: #c4b5fd; }
+    .lu-faktor-t { margin-top: 8px; }
+    .lu-anw-t { display: flex; flex-direction: column; gap: 6px; }
+    .lu-anw-z { font-size: .77rem; color: #475569; line-height: 1.6; background: #f8fafc;
+      border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; }
+    .lu-anw-z b { color: #334155; }
+    .lu-anw-z.med { background: #f5f3ff; border-color: #ddd6fe; }
+    .lu-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
