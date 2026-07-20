@@ -13939,7 +13939,9 @@ function _thrInit() {
     // Station 4
     prognose: null, drehWinkel: 30, drehLaeuft: false, drehT: 0, drehPhi: 0, drehW: 6,
     // Station 5
-    uAc: 0, hRing: 0, gedrueckt: false, waerme: 20, kanone: false, kanoneT: 0
+    uAc: 0, hRing: 0, gedrueckt: false, waerme: 20, kanone: false, kanoneT: 0,
+    // Station 6 – Schwebehoehe messen (handlungsorientiert)
+    mUac: 20, rows: [], nextId: 1, preset: 0, fn: null, fnAuto: false, reveal: false
   };
 }
 
@@ -14116,7 +14118,7 @@ const _THR_ANWENDUNGEN = [
 function _thrHTML() {
   const stationen = ['1 · Der Grundversuch', '2 · Das Minuszeichen',
                      '3 · Wie schnell wächst das Feld?', '4 · Varianten & Gegenproben',
-                     '5 · Wechselfeld & Wirbelströme']
+                     '5 · Wechselfeld & Wirbelströme', '6 · Schwebehöhe messen']
     .map((s, i) => `<button class="fpm-tab${i === _thr.station ? ' on' : ''}" id="thrSt${i}" onclick="_thrSetStation(${i})">${s}</button>`).join('');
 
   const anwendungen = _THR_ANWENDUNGEN.map((a, i) =>
@@ -14282,6 +14284,56 @@ function _thrHTML() {
       </div>
     </div>
 
+    <!-- ══ Station 6: Schwebehöhe messen ══ -->
+    <div id="thrS5" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="thrMApp" width="440" height="300" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Wechselfeld-Schwebe: lies die Schwebehöhe am Maßstab ab</div>
+          <div class="fpm-tabs" style="margin-top:6px">
+            <button class="fpm-tab on" id="thrMTab0" onclick="_thrMSetPreset(0)">U → h</button>
+            <button class="fpm-tab" id="thrMTab1" onclick="_thrMSetPreset(1)">ln(U) → h</button>
+          </div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Wechselspannung U: <b id="thrMULbl">20,0 V</b></span>
+            <input type="range" id="thrMU" min="11" max="30" step="0.5" value="20"
+              oninput="_thrMSetU(this.value)" style="width:100%;accent-color:#dc2626">
+          </div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Wechselspannung U</span><span class="fpm-ro-v" id="thrMUA">—</span><span class="fpm-ro-u">V</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">abgelesene Schwebehöhe h</span><span class="fpm-ro-v" id="thrMHA">—</span><span class="fpm-ro-u">cm</span></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_thrMTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_thrMDemo()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_thrMClear()">🗑 Tabelle leeren</button>
+          </div>
+        </div>
+        <div>
+          <canvas id="thrMPlot" width="440" height="250" class="phys-chart-cv"></canvas>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Nr.</th><th>U (V)</th><th>h (cm)</th><th></th></tr></thead>
+              <tbody id="thrMTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="thrMEmpty">Noch keine Messwerte.<br>Spannung einstellen → Höhe ablesen → übernehmen.</div>
+          </div>
+          <div class="fpm-fit" id="thrMFitBox"></div>
+          <div class="fpm-label" style="margin-top:8px">Funktion plotten</div>
+          <input type="text" id="thrMFn" class="fpm-input" placeholder="z. B. 4.5*x-12" spellcheck="false"
+            oninput="_thrMSetFn(this.value)">
+          <div class="fpm-err" id="thrMFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_thrMTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_thrMClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="thrMTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_thrMSetReveal(this.checked)">
+            Theoriewert (Abklinglänge λ) anzeigen</label>
+        </div>
+      </div>
+    </div>
+
     <div id="thrErkl" class="dsp-erkl"></div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
       <b>U<sub>i</sub> = −dΦ/dt</b> &nbsp;|&nbsp; <b>Ḃ &gt; 0 ⇒ U<sub>i</sub> = −U</b>
@@ -14371,12 +14423,13 @@ function _thrErklHTML() {
 // ── Stationen ──────────────────────────────────────────
 function _thrSetStation(i) {
   _thr.station = i;
-  for (let k = 0; k < 5; k++) {
+  for (let k = 0; k < 6; k++) {
     document.getElementById('thrSt' + k)?.classList.toggle('on', k === i);
     const d = document.getElementById('thrS' + k);
     if (d) d.style.display = k === i ? 'block' : 'none';
   }
   _thrUpdate();
+  if (i === 5) _thrMRender();
 }
 
 // ── Station 1 ──────────────────────────────────────────
@@ -14770,6 +14823,252 @@ function _thrKanone() {
 function _thrHoehe() {
   const frei = _thrSchwebeHoehe(_thr.uAc);
   return _thr.gedrueckt ? Math.min(frei, 0.01) : frei;
+}
+
+// ══ Station 6: Schwebehoehe messen (handlungsorientiert) ══
+// Kraftgleichgewicht K·U²·e^(−2h/λ) = m·g liefert h = λ·ln(U) + const.
+// h ueber ln(U) aufgetragen ist eine Gerade mit Steigung λ (Abklinglaenge).
+function _thrFmt(v) {
+  if (!isFinite(v)) return '0';
+  const a = Math.abs(v);
+  const d = a >= 100 ? 2 : a >= 1 ? 3 : a >= 0.01 ? 5 : 8;
+  let s = v.toFixed(d);
+  if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, '');
+  return s;
+}
+// abgelesene Schwebehoehe in cm, auf 0,1 cm (1 mm) gerundet
+function _thrMHoeheRead(U) { return Math.round(_thrSchwebeHoehe(U) * 100 / 0.1) * 0.1; }
+
+const _THR_M_PRESETS = [
+  { xl: 'U in V', yl: 'h in cm', x: r => r.U, y: r => r.h, kurve: true,
+    typ: 'gekrümmt ansteigende Kurve (kein linearer Zusammenhang)',
+    form: 'h = (λ/2)·ln(K·U²/(m·g))',
+    param: () => 'wechsle zu ln(U), um eine Gerade zu erhalten',
+    term: () => _thrFmt(_THR_AC_LAMBDA * 100) + '*ln(' + _thrFmt(_THR_AC_K / _thrGewicht()) + '*x^2)',
+    deutung: 'Die Schwebehöhe wächst mit der Spannung, aber immer flacher – logarithmisch. Denn die Kraft steigt mit U², und der Ring muss nur so weit steigen, bis das mit der Höhe abklingende Feld die Kraft wieder auf sein Gewicht gedrückt hat. Über ln(U) aufgetragen wird daraus eine Gerade.' },
+  { xl: 'ln(U/V)', yl: 'h in cm', x: r => Math.log(r.U), y: r => r.h, origin: false,
+    typ: 'Gerade (mit Achsenabschnitt)',
+    form: 'h = λ·ln(U) + const',
+    param: () => 'Steigung = λ (Abklinglänge des Feldes)',
+    term: () => {
+      const slope = _THR_AC_LAMBDA * 100;
+      const inter = _THR_AC_LAMBDA / 2 * Math.log(_THR_AC_K / _thrGewicht()) * 100;
+      return _thrFmt(slope) + '*x' + (inter >= 0 ? '+' + _thrFmt(inter) : '-' + _thrFmt(-inter));
+    },
+    deutung: 'Über ln(U) aufgetragen liegen die Messpunkte auf einer Geraden. Ihre Steigung ist die Abklinglänge λ des Magnetfeldes: h = λ·ln(U) + const. Aus dem Kraftgleichgewicht K·U²·e^(−2h/λ) = m·g folgt genau dieser lineare Zusammenhang – so lässt sich λ aus einfachen Höhenmessungen bestimmen.' }
+];
+
+function _thrMSetU(v) {
+  _thr.mUac = Math.max(11, Math.min(30, +v));
+  const sl = document.getElementById('thrMU'); if (sl) sl.value = String(_thr.mUac);
+  const el = document.getElementById('thrMULbl'); if (el) el.textContent = _fpmNum(_thr.mUac, 1) + ' V';
+  _thrMRender();
+}
+function _thrMRender() {
+  const U = _thr.mUac, h = _thrMHoeheRead(U);
+  const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  set('thrMUA', _fpmNum(U, 1)); set('thrMHA', _fpmNum(h, 1));
+  _thrMRenderTable(); _thrMDrawPlot();
+  const c = document.getElementById('thrMApp'); if (c) _thrMDrawApp(c.getContext('2d'), c);
+}
+function _thrMTake() {
+  const U = _thr.mUac, h = _thrMHoeheRead(U);
+  if (h <= 0) return;                       // unterhalb der Abheb-Spannung nichts messbar
+  _thr.rows.push({ id: _thr.nextId++, U, h });
+  _thrMRenderTable(); _thrMDrawPlot();
+}
+function _thrMDelRow(id) { _thr.rows = _thr.rows.filter(r => r.id !== id); _thrMRenderTable(); _thrMDrawPlot(); }
+function _thrMClear() {
+  if (_thr.rows.length && !confirm('Alle ' + _thr.rows.length + ' Messwerte löschen?')) return;
+  _thr.rows = []; _thrMRenderTable(); _thrMDrawPlot();
+}
+function _thrMDemo() {
+  [12, 14, 16, 19, 22, 25, 28, 30].forEach(U => {
+    const h = _thrMHoeheRead(U);
+    if (h > 0) _thr.rows.push({ id: _thr.nextId++, U, h });
+  });
+  _thrMRenderTable(); _thrMDrawPlot();
+}
+function _thrMRenderTable() {
+  const tb = document.getElementById('thrMTbody'); if (!tb) return;
+  const empty = document.getElementById('thrMEmpty');
+  if (empty) empty.style.display = _thr.rows.length ? 'none' : 'block';
+  tb.innerHTML = _thr.rows.map((r, i) =>
+    `<tr><td>${i + 1}</td><td>${_fpmNum(r.U, 1)}</td><td><b>${_fpmNum(r.h, 1)}</b></td>
+       <td class="fpm-del" onclick="_thrMDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _thrMSetPreset(i) {
+  _thr.preset = Math.max(0, Math.min(1, i));
+  for (let k = 0; k < 2; k++) document.getElementById('thrMTab' + k)?.classList.toggle('on', k === _thr.preset);
+  _thrMRefreshTheorie();
+  _thrMDrawPlot();
+}
+function _thrMSetReveal(on) { _thr.reveal = !!on; _thrMDrawPlot(); }
+function _thrMTheorieFn() {
+  const term = _THR_M_PRESETS[_thr.preset].term();
+  const inp = document.getElementById('thrMFn'); if (inp) inp.value = term;
+  _thrMSetFn(term); _thr.fnAuto = true; _thrMRenderTheorie(true);
+}
+function _thrMClearFn() {
+  const inp = document.getElementById('thrMFn'); if (inp) inp.value = '';
+  _thrMSetFn(''); _thrMRenderTheorie(false);
+}
+function _thrMRefreshTheorie() {
+  if (_thr.fnAuto) {
+    const term = _THR_M_PRESETS[_thr.preset].term();
+    const inp = document.getElementById('thrMFn'); if (inp) inp.value = term;
+    _thrMSetFn(term); _thr.fnAuto = true;
+  }
+  _thrMRenderTheorie(_thr.fnAuto);
+}
+function _thrMRenderTheorie(eingesetzt) {
+  const el = document.getElementById('thrMTheo'); if (!el) return;
+  const P = _THR_M_PRESETS[_thr.preset];
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">${P.typ}</div>
+     <div class="fpm-theo-form">${P.form}</div>
+     <div class="fpm-theo-par">${P.param()}</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${P.term()}</div>` : ''}
+     <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+function _thrMSetFn(str) {
+  _thr.fnAuto = false;
+  const err = document.getElementById('thrMFnErr');
+  const v = (str || '').trim();
+  if (!v) { _thr.fn = null; if (err) err.textContent = ''; _thrMDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _thr.fn = f; if (err) err.textContent = '';
+  } catch (e) { _thr.fn = null; if (err) err.textContent = e.message; }
+  _thrMDrawPlot();
+}
+function _thrMDrawApp(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const cx = W * 0.42, coilY = H - 40, hcm = _thrMHoeheRead(_thr.mUac);
+  const pxPerCm = 16, ringY = coilY - hcm * pxPerCm;
+  // Maßstab links
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(70, coilY); ctx.lineTo(70, 20); ctx.stroke();
+  ctx.font = '8px sans-serif'; ctx.textAlign = 'right';
+  for (let c = 0; c <= 15; c++) {
+    const y = coilY - c * pxPerCm; if (y < 16) break;
+    const big = c % 5 === 0;
+    ctx.strokeStyle = big ? '#94a3b8' : '#475569';
+    ctx.beginPath(); ctx.moveTo(70, y); ctx.lineTo(70 + (big ? 8 : 4), y); ctx.stroke();
+    if (big) { ctx.fillStyle = '#94a3b8'; ctx.fillText(c + '', 66, y + 3); }
+  }
+  // Feldspule
+  ctx.fillStyle = '#334155'; ctx.fillRect(cx - 34, coilY, 68, 24);
+  ctx.fillStyle = '#f59e0b';
+  for (let i = 0; i < 5; i++) ctx.fillRect(cx - 30 + i * 13, coilY + 3, 6, 18);
+  // Eisenkern
+  ctx.fillStyle = '#64748b'; ctx.fillRect(cx - 6, 20, 12, coilY - 20);
+  // Ring (schwebend)
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.ellipse(cx, ringY, 30, 8, 0, 0, 2 * Math.PI); ctx.stroke();
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.ellipse(cx, ringY, 30, 8, 0, 0, 2 * Math.PI); ctx.stroke();
+  // Höhenlinie
+  ctx.strokeStyle = 'rgba(251,191,36,0.4)'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(70, ringY); ctx.lineTo(cx, ringY); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#fbbf24'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('h = ' + _fpmNum(hcm, 1) + ' cm', cx + 40, ringY + 4);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif';
+  ctx.fillText('U = ' + _fpmNum(_thr.mUac, 1) + ' V (~)', 8, 16);
+}
+function _thrMDrawPlot() {
+  const cv = document.getElementById('thrMPlot'); if (!cv || !_thr) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = _THR_M_PRESETS[_thr.preset];
+  const padL = 46, padR = 14, padT = 12, padB = 34;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const pts = _thr.rows.map(r => ({ x: P.x(r), y: P.y(r), r })).filter(p => isFinite(p.x) && isFinite(p.y));
+  const xsAll = pts.map(p => p.x);
+  const xmin = P.origin === false && !P.kurve ? Math.min(0, ...(xsAll.length ? xsAll : [0])) : 0;
+  const xmax = Math.max(xmin + 1e-9, pts.length ? Math.max(...xsAll) * 1.1 : (P.kurve ? 30 : 3.5));
+  const ymax = Math.max(1e-9, pts.length ? Math.max(...pts.map(p => p.y)) * 1.15 : 15);
+  const X = v => x0 + (v - xmin) / (xmax - xmin) * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+
+  ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  const xt = _fpmTicks(xmax, 5);
+  xt.ticks.forEach(v => {
+    if (v < xmin) return;
+    ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 13);
+  });
+  const yt = _fpmTicks(ymax, 5);
+  yt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(P.xl, x1, y0 + 26);
+  ctx.save(); ctx.translate(12, y1 + 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText(P.yl, 0, 0); ctx.restore(); ctx.textAlign = 'left';
+
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
+    const fo = document.getElementById('thrMFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + P.deutung + '</div>';
+    return;
+  }
+  if (_thr.fn) {
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _thr.fn(xmin + (px - x0) / (x1 - x0) * (xmax - xmin)); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv);
+      if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  let fit = null;
+  if (!P.kurve && pts.length >= 2) {
+    fit = _fpmFitLinear(pts);
+    if (fit) {
+      ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 1.7;
+      ctx.beginPath(); ctx.moveTo(X(xmin), Y(fit.k * xmin + fit.b)); ctx.lineTo(X(xmax), Y(fit.k * xmax + fit.b)); ctx.stroke();
+    }
+  }
+  pts.forEach(p => {
+    ctx.fillStyle = '#dc2626'; ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke();
+  });
+  _thrMRenderFit(fit, P);
+}
+function _thrMRenderFit(fit, P) {
+  const el = document.getElementById('thrMFitBox'); if (!el) return;
+  if (P.kurve) {
+    el.innerHTML = '<div class="fpm-note">Diese Auftragung ist gekrümmt – wechsle zu <b>ln(U)</b>, '
+      + 'um eine Gerade zu erhalten.<br>' + P.deutung + '</div>';
+    return;
+  }
+  if (!fit) { el.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte nötig.<br>' + P.deutung + '</div>'; return; }
+  const lam = fit.k / 100;                   // Steigung in cm -> λ in m
+  const theo = _THR_AC_LAMBDA;
+  const abw = Math.abs(lam - theo) / theo * 100;
+  const cls = abw < 5 ? 'ok' : abw < 12 ? 'mid' : 'no';
+  el.innerHTML = `<div class="fpm-fitline">
+     <span class="fpm-fitmeta">${_thr.rows.length} Messwerte</span>
+     <span class="fpm-fiteq">h = ${_fpmNum(fit.k, 3)}·ln(U) ${fit.b >= 0 ? '+ ' + _fpmNum(fit.b, 2) : '− ' + _fpmNum(-fit.b, 2)}</span>
+     <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 4)}</span>
+     <span class="fpm-fiteq" style="color:#075985">λ = ${_fpmNum(lam * 100, 2)} cm</span>
+     ${_thr.reveal ? `<span class="fpm-badge ${cls}">Modell λ = ${_fpmNum(theo * 100, 1)} cm · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+   </div>
+   <div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">${P.deutung}</div>`;
 }
 function _thrRenderSchweb() {
   const el = document.getElementById('thrSchwebRechnung'); if (!el) return;
@@ -15364,6 +15663,9 @@ function _thrRender() {
   } else if (st === 4) {
     const cw = document.getElementById('thrSchweb');
     if (cw) _thrRenderSchwebCv(cw.getContext('2d'), cw);
+  } else if (st === 5) {
+    const cm = document.getElementById('thrMApp');
+    if (cm) _thrMDrawApp(cm.getContext('2d'), cm);
   }
 }
 
