@@ -20467,8 +20467,8 @@ function _frlInit() {
     station: 0,
     // Station 1
     konz: 0, Us: 6.7, laeuft: true, t: 0,
-    // Station 2 – Energiebilanz / 1/U²
-    Utrans: 80, sweepRows: [],
+    // Station 2 – Messreihe zum Leitungsverlust (handlungsorientiert)
+    Utrans: 80, rows: [], nextId: 1, preset: 0, fn: null, fnAuto: false, reveal: false,
     // Station 3 – idealer Trafo
     trafoSeite: 0,   // 0 = rechter (A6), 1 = linker (A7)
     // Station 4 – Selbstinduktion
@@ -20609,16 +20609,48 @@ function _frlHTML() {
       <div class="fpm-grid">
         <div>
           <canvas id="frlSweep" width="440" height="300" class="phys-chart-cv"></canvas>
-          <div class="fpm-label">Leitungsverlust über der Übertragungsspannung (feste Nutzleistung)</div>
+          <div class="fpm-label" id="frlSweepLbl">Leitungsverlust über der Übertragungsspannung – nimm selbst Messpunkte auf</div>
+          <div class="fpm-tabs" style="margin-top:6px">
+            <button class="fpm-tab on" id="frlTab0" onclick="_frlSetPreset(0)">U → P<sub>Verlust</sub></button>
+            <button class="fpm-tab" id="frlTab1" onclick="_frlSetPreset(1)">1/U² → P<sub>Verlust</sub></button>
+          </div>
           <div class="osz-gruppe">
-            <div class="osz-zeile"><span>Übertragungsspannung</span>
+            <div class="osz-zeile"><span>Übertragungsspannung U</span>
               <input type="range" id="frlUtrans" min="10" max="400" step="1" value="80"
                 oninput="_frlSetUtrans(this.value)"><b id="frlUtransLbl">80 V</b></div>
           </div>
-          <div class="ebr-rechnung" id="frlSweepRechnung"></div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Übertragungsspannung U</span><span class="fpm-ro-v" id="frlUA">—</span><span class="fpm-ro-u">V</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Leitungsstrom I = P/U</span><span class="fpm-ro-v" id="frlIA">—</span><span class="fpm-ro-u">A</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">abgelesener Verlust P = R·I²</span><span class="fpm-ro-v" id="frlPA">—</span><span class="fpm-ro-u">W</span></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_frlTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_frlDemo()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_frlClear()">🗑 Tabelle leeren</button>
+          </div>
         </div>
         <div>
-          <div class="frl-bilanz" id="frlBilanz"></div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>Nr.</th><th>U (V)</th><th>I (A)</th><th>P<sub>Verlust</sub> (W)</th><th></th></tr></thead>
+              <tbody id="frlTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="frlEmpty">Noch keine Messwerte.<br>Spannung einstellen → Verlust ablesen → übernehmen.</div>
+          </div>
+          <div class="fpm-fit" id="frlFitBox"></div>
+          <div class="fpm-label" style="margin-top:8px">Funktion plotten</div>
+          <input type="text" id="frlFn" class="fpm-input" placeholder="z. B. 7045/x^2" spellcheck="false"
+            oninput="_frlSetFn(this.value)">
+          <div class="fpm-err" id="frlFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_frlTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_frlClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="frlTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_frlSetReveal(this.checked)">
+            Theoriewert anzeigen</label>
+          <div class="frl-bilanz" id="frlBilanz" style="margin-top:10px"></div>
         </div>
       </div>
     </div>
@@ -20762,7 +20794,7 @@ function _frlSetStation(i) {
     if (d) d.style.display = k === _frl.station ? 'block' : 'none';
   }
   _frlUpdate();
-  if (_frl.station === 1) _frlDrawSweep();
+  if (_frl.station === 1) { _frlRenderMess(); _frlRenderTheorie(_frl.fnAuto); }
 }
 
 function _frlSetKonz(i) {
@@ -20915,12 +20947,118 @@ function _frlRenderK3() {
     </div>`;
 }
 
-// ── Station 2: Energiebilanz ───────────────────────────
+// ── Station 2: Messreihe zum Leitungsverlust ───────────
+// Feste Nutzleistung P über der CrNi-Leitung. Bei Übertragungsspannung U ist
+// I = P/U und der Leitungsverlust P_V = R·I² = R·P²/U² – er fällt also mit 1/U².
+const _FRL_PMESS = () => _FRL_PNOM;
+const _FRL_RMESS = () => _frlRLeitung('CrNi');
+function _frlLoss(U) { const P = _FRL_PMESS(); return _FRL_RMESS() * (P / U) * (P / U); }
+// abgelesener Verlust: auf 0,01 W gerundet (echte Ablesestreuung am Messgerät)
+function _frlLossRead(U) { return Math.round(_frlLoss(U) / 0.01) * 0.01; }
+
+// Auswertungs-Auftragungen: die Linearisierung 1/U² beweist P_V ∝ 1/U².
+const _FRL_PRESETS = [
+  { xl: 'U in V', yl: 'P_Verlust in W', x: r => r.U, y: r => r.P, kurve: true,
+    typ: 'fallende Kurve (kein linearer Zusammenhang)',
+    form: 'P_V = R·P² / U²',
+    param: () => 'Theoriekurve R·P²/U² mit R·P² = ' + _fpmNum(_FRL_RMESS() * _FRL_PMESS() * _FRL_PMESS(), 0),
+    term: () => _frlZahl(_FRL_RMESS() * _FRL_PMESS() * _FRL_PMESS()) + '/x^2',
+    deutung: 'Trägt man den Verlust direkt über der Übertragungsspannung auf, ergibt sich eine stark fallende Kurve: Bei kleiner Spannung ist der Verlust riesig, bei großer Spannung winzig. Der Zusammenhang ist aber nicht linear – deshalb wechselt man die Achse zu 1/U².' },
+  { xl: '1/U² · 10⁴ in 1/V²', yl: 'P_Verlust in W', x: r => 1e4 / (r.U * r.U), y: r => r.P, origin: true,
+    typ: 'Ursprungsgerade (proportionale Zuordnung)',
+    form: 'P_V = (R·P²) · (1/U²)',
+    param: () => 'Steigung = R·P²/10⁴, also R·P² = Steigung · 10⁴',
+    term: () => _frlZahl(_FRL_RMESS() * _FRL_PMESS() * _FRL_PMESS() / 1e4) + '*x',
+    deutung: 'Über 1/U² (hier ×10⁴) aufgetragen liegen die Messpunkte auf einer Ursprungsgeraden – das beweist den quadratischen Zusammenhang P_V ∝ 1/U². Die Steigung ist R·P²; aus ihr lässt sich bei bekannter Nutzleistung der Leitungswiderstand R zurückrechnen. Genau das ist der Grund für die Hochspannungsübertragung.' }
+];
+
 function _frlSetUtrans(v) {
   _frl.Utrans = Math.max(10, Math.min(400, +v));
   const el = document.getElementById('frlUtransLbl');
   if (el) el.textContent = _fpmNum(_frl.Utrans, 0) + ' V';
-  _frlRenderBilanz(); _frlDrawSweep();
+  _frlRenderMess();
+}
+function _frlRenderMess() {
+  const U = _frl.Utrans, I = _FRL_PMESS() / U, P = _frlLossRead(U);
+  const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  set('frlUA', _fpmNum(U, 0)); set('frlIA', _fpmNum(I, 3)); set('frlPA', _fpmNum(P, 2));
+  _frlRenderBilanz(); _frlRenderTable(); _frlDrawSweep();
+}
+function _frlTake() {
+  const U = _frl.Utrans, I = _FRL_PMESS() / U, P = _frlLossRead(U);
+  _frl.rows.push({ id: _frl.nextId++, U, I, P });
+  _frlRenderTable(); _frlDrawSweep();
+}
+function _frlDelRow(id) { _frl.rows = _frl.rows.filter(r => r.id !== id); _frlRenderTable(); _frlDrawSweep(); }
+function _frlClear() {
+  if (_frl.rows.length && !confirm('Alle ' + _frl.rows.length + ' Messwerte löschen?')) return;
+  _frl.rows = []; _frlRenderTable(); _frlDrawSweep();
+}
+function _frlDemo() {
+  [20, 40, 60, 80, 120, 180, 250, 350].forEach(U => {
+    _frl.rows.push({ id: _frl.nextId++, U, I: _FRL_PMESS() / U, P: _frlLossRead(U) });
+  });
+  _frlRenderTable(); _frlDrawSweep();
+}
+function _frlRenderTable() {
+  const tb = document.getElementById('frlTbody'); if (!tb) return;
+  const empty = document.getElementById('frlEmpty');
+  if (empty) empty.style.display = _frl.rows.length ? 'none' : 'block';
+  tb.innerHTML = _frl.rows.map((r, i) =>
+    `<tr><td>${i + 1}</td><td>${_fpmNum(r.U, 0)}</td><td>${_fpmNum(r.I, 3)}</td>
+       <td><b>${_fpmNum(r.P, 2)}</b></td>
+       <td class="fpm-del" onclick="_frlDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _frlSetPreset(i) {
+  _frl.preset = Math.max(0, Math.min(1, i));
+  for (let k = 0; k < 2; k++) document.getElementById('frlTab' + k)?.classList.toggle('on', k === _frl.preset);
+  const lbl = document.getElementById('frlSweepLbl');
+  if (lbl) lbl.textContent = _frl.preset === 1
+    ? 'Über 1/U² aufgetragen: liegen die Punkte auf einer Ursprungsgeraden?'
+    : 'Leitungsverlust über der Übertragungsspannung – nimm selbst Messpunkte auf';
+  _frlRefreshTheorie();
+  _frlDrawSweep();
+}
+function _frlSetReveal(on) { _frl.reveal = !!on; _frlDrawSweep(); }
+function _frlTheorieFn() {
+  const term = _FRL_PRESETS[_frl.preset].term();
+  const inp = document.getElementById('frlFn'); if (inp) inp.value = term;
+  _frlSetFn(term); _frl.fnAuto = true; _frlRenderTheorie(true);
+}
+function _frlClearFn() {
+  const inp = document.getElementById('frlFn'); if (inp) inp.value = '';
+  _frlSetFn(''); _frlRenderTheorie(false);
+}
+function _frlRefreshTheorie() {
+  if (_frl.fnAuto) {
+    const term = _FRL_PRESETS[_frl.preset].term();
+    const inp = document.getElementById('frlFn'); if (inp) inp.value = term;
+    _frlSetFn(term); _frl.fnAuto = true;
+  }
+  _frlRenderTheorie(_frl.fnAuto);
+}
+function _frlRenderTheorie(eingesetzt) {
+  const el = document.getElementById('frlTheo'); if (!el) return;
+  const P = _FRL_PRESETS[_frl.preset];
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">${P.typ}</div>
+     <div class="fpm-theo-form">${P.form}</div>
+     <div class="fpm-theo-par">${P.param()}</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${P.term()}</div>` : ''}
+     <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+function _frlSetFn(str) {
+  _frl.fnAuto = false;
+  const err = document.getElementById('frlFnErr');
+  const v = (str || '').trim();
+  if (!v) { _frl.fn = null; if (err) err.textContent = ''; _frlDrawSweep(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _frl.fn = f; if (err) err.textContent = '';
+  } catch (e) { _frl.fn = null; if (err) err.textContent = e.message; }
+  _frlDrawSweep();
 }
 function _frlRenderBilanz() {
   const el = document.getElementById('frlBilanz'); if (!el) return;
@@ -20972,26 +21110,27 @@ function _frlDrawSweep() {
   if (!cv || !_frl) return;
   const ctx = cv.getContext('2d');
   const W = cv.width, H = cv.height;
+  const PR = _FRL_PRESETS[_frl.preset];
   const padL = 58, padR = 14, padT = 14, padB = 40;
   const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
   ctx.clearRect(0, 0, W, H);
   ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
 
-  const P = _FRL_PNOM, Rl = _frlRLeitung('CrNi');
-  const Umin = 10, Umax = 400;
-  const loss = U => Rl * (P / U) * (P / U);
-  const ymax = loss(Umin) * 1.05;
-  const X = u => x0 + (u - Umin) / (Umax - Umin) * (x1 - x0);
+  const pts = _frl.rows.map(r => ({ x: PR.x(r), y: PR.y(r), r }))
+    .filter(p => isFinite(p.x) && isFinite(p.y));
+  const xmax = Math.max(1e-9, pts.length ? Math.max(...pts.map(p => p.x)) * 1.12 : (PR.kurve ? 400 : 2));
+  const ymax = Math.max(1e-9, pts.length ? Math.max(...pts.map(p => p.y)) * 1.15 : _frlLoss(10) * 1.05);
+  const X = v => x0 + v / xmax * (x1 - x0);
   const Y = v => y0 - v / ymax * (y0 - y1);
 
-  // Raster
-  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '10px sans-serif';
-  [10, 100, 200, 300, 400].forEach(u => {
-    ctx.beginPath(); ctx.moveTo(X(u), y0); ctx.lineTo(X(u), y1); ctx.stroke();
+  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  const xt = _fpmTicks(xmax, 6);
+  xt.ticks.forEach(v => {
+    ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
     ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
-    ctx.fillText(u + ' V', X(u), y0 + 14);
+    ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
   });
-  const yt = _fpmTicks(ymax, 4);
+  const yt = _fpmTicks(ymax, 5);
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
     ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
@@ -21000,45 +21139,81 @@ function _frlDrawSweep() {
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
   ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
-  ctx.fillText('Übertragungsspannung U', x1, y0 + 28);
+  ctx.fillText(PR.xl, x1, y0 + 28);
   ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
-  ctx.fillText('Leitungsverlust in W', 0, 0); ctx.restore();
+  ctx.fillText(PR.yl, 0, 0); ctx.restore();
   ctx.textAlign = 'left';
 
-  // Die 1/U²-Kurve
-  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
-  ctx.beginPath();
-  for (let u = Umin; u <= Umax; u += 2) {
-    const py = Y(Math.min(ymax, loss(u)));
-    u === Umin ? ctx.moveTo(X(u), py) : ctx.lineTo(X(u), py);
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillText('Noch keine Messwerte – stelle U ein und übernimm den Verlust', (x0 + x1) / 2, (y0 + y1) / 2);
+    ctx.textAlign = 'left';
+    const fo = document.getElementById('frlFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + PR.deutung + '</div>';
+    return;
   }
-  ctx.stroke();
 
-  // aktueller Punkt
-  const uc = _frl.Utrans, lc = loss(uc);
-  ctx.fillStyle = '#db2777';
-  ctx.beginPath(); ctx.arc(X(uc), Y(Math.min(ymax, lc)), 5, 0, 2 * Math.PI); ctx.fill();
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
-  ctx.beginPath(); ctx.moveTo(X(uc), Y(Math.min(ymax, lc))); ctx.lineTo(X(uc), y0); ctx.stroke();
-  ctx.setLineDash([]);
-  ctx.fillStyle = '#be185d'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText(_fpmNum(uc, 0) + ' V → ' + _fpmNum(lc, 3) + ' W', X(uc), Y(Math.min(ymax, lc)) - 9);
+  // eingetippte Funktion
+  if (_frl.fn) {
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _frl.fn((px - x0) / (x1 - x0) * xmax); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv);
+      if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
 
-  // Markierung der drei Handreichungsfaelle (10 V und 80 V)
-  [[10, '#dc2626', 'LV'], [80, '#16a34a', 'HV']].forEach(m => {
-    const u = m[0];
-    ctx.fillStyle = m[1];
-    ctx.beginPath(); ctx.arc(X(u), Y(Math.min(ymax, loss(u))), 3, 0, 2 * Math.PI); ctx.fill();
+  // Ausgleichsgerade nur bei der linearisierten Auftragung
+  let fit = null;
+  if (!PR.kurve && pts.length >= 2) {
+    fit = PR.origin ? _fpmFitOrigin(pts) : _fpmFitLinear(pts);
+    if (fit) {
+      ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.7;
+      ctx.beginPath();
+      ctx.moveTo(X(0), Y(fit.b || 0));
+      ctx.lineTo(X(xmax), Y(fit.k * xmax + (fit.b || 0)));
+      ctx.stroke();
+    }
+  }
+
+  // Messpunkte
+  pts.forEach(p => {
+    ctx.fillStyle = '#db2777';
+    ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke();
   });
 
-  const rb = document.getElementById('frlSweepRechnung');
-  if (rb) {
-    rb.innerHTML = `<div class="fpm-note">Die Kurve zeigt den Leitungsverlust bei fester
-      Nutzleistung, aufgetragen über der Übertragungsspannung. Sie fällt mit <b>1/U²</b>: Der
-      Bereich links (Niederspannung) ist steil, rechts (Hochspannung) wird sie flach – dort holt
-      weiteres Hochspannen kaum noch etwas heraus. Genau deshalb gibt es Höchstspannungsnetze,
-      aber keine „Höchst-Höchstspannung".</div>`;
+  _frlRenderFit(fit, PR);
+}
+function _frlRenderFit(fit, PR) {
+  const el = document.getElementById('frlFitBox'); if (!el) return;
+  if (PR.kurve) {
+    el.innerHTML = '<div class="fpm-note">Diese Auftragung ist gekrümmt – wechsle zu <b>1/U²</b>, '
+      + 'um zu prüfen, ob eine Ursprungsgerade entsteht.<br>' + PR.deutung + '</div>';
+    return;
   }
+  if (!fit) {
+    el.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte nötig.<br>' + PR.deutung + '</div>';
+    return;
+  }
+  // Steigung k = R·P²/1e4  ->  R·P² = k·1e4
+  const RP2 = fit.k * 1e4;
+  const theoRP2 = _FRL_RMESS() * _FRL_PMESS() * _FRL_PMESS();
+  const abw = Math.abs(RP2 - theoRP2) / theoRP2 * 100;
+  const cls = abw < 4 ? 'ok' : abw < 10 ? 'mid' : 'no';
+  el.innerHTML = `<div class="fpm-fitline">
+     <span class="fpm-fitmeta">${_frl.rows.length} Messwerte</span>
+     <span class="fpm-fiteq">y = ${_fpmNum(fit.k, 4)}·x</span>
+     <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 4)}</span>
+     <span class="fpm-fiteq" style="color:#075985">R·P² = ${_fpmNum(RP2, 0)}</span>
+     ${_frl.reveal ? `<span class="fpm-badge ${cls}">Theorie R·P² = ${_fpmNum(theoRP2, 0)} · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+   </div>
+   <div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">${PR.deutung}</div>`;
 }
 
 // ── Station 3: idealer Trafo vs. Messung ───────────────
