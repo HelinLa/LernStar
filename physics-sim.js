@@ -32059,9 +32059,12 @@ function _luInit() {
   _lu = {
     station: 0,
     beta: 0.6,     // Relativgeschwindigkeit v/c
-    laeuft: true, t: 0
+    laeuft: true, t: 0,
+    // Station 6 – Zeitdehnung messen (handlungsorientiert)
+    mBeta: 0.6, rows: [], nextId: 1, fn: null, fnAuto: false, reveal: false
   };
 }
+const _LU_M = 200;   // Anzahl Ruhe-Ticks fuer die Faktormessung (Ablesegenauigkeit)
 
 // ── Zahlformat ──────────────────────────────────────────
 function _luZahl(v) {
@@ -32077,6 +32080,162 @@ function _luZahl(v) {
 function _luFaktor(beta) { return Math.sqrt(1 - beta * beta); }
 // Lorentzfaktor γ = 1/√(1−β²)
 function _luGamma(beta) { return 1 / Math.sqrt(1 - beta * beta); }
+
+// ══ Station 6: Zeitdehnung messen (handlungsorientiert) ══
+// Der Faktor f = Δt_bew/Δt_Ruh = √(1−β²). Traegt man f² ueber β² auf, ergibt
+// sich f² = 1 − β²: eine Gerade der Steigung −1 mit Achsenabschnitt 1.
+function _luMFaktorRead(beta) { return Math.round(_LU_M * _luFaktor(beta)) / _LU_M; }  // gemessen (Tick-Zaehlung)
+function _luMSetBeta(v) {
+  _lu.mBeta = Math.max(0.1, Math.min(0.95, +v));
+  const el = document.getElementById('luMBLbl'); if (el) el.textContent = _fpmNum(_lu.mBeta, 2);
+  _luMRender();
+}
+function _luMRender() {
+  const n = Math.round(_LU_M * _luFaktor(_lu.mBeta)), f = n / _LU_M;
+  const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  set('luMBA', _fpmNum(_lu.mBeta, 2)); set('luMnA', n); set('luMfA', _fpmNum(f, 3));
+  _luMRenderTable(); _luMDrawPlot();
+  const c = document.getElementById('luMVergleich'); if (c) _luMDrawVergleich(c.getContext('2d'), c);
+}
+function _luMTake() {
+  if (_lu.rows.some(r => Math.abs(r.beta - _lu.mBeta) < 1e-9)) return;
+  _lu.rows.push({ id: _lu.nextId++, beta: _lu.mBeta, f: _luMFaktorRead(_lu.mBeta) });
+  _lu.rows.sort((a, b) => a.beta - b.beta);
+  _luMRender();
+}
+function _luMDelRow(id) { _lu.rows = _lu.rows.filter(r => r.id !== id); _luMRender(); }
+function _luMClear() {
+  if (_lu.rows.length && !confirm('Alle ' + _lu.rows.length + ' Messwerte löschen?')) return;
+  _lu.rows = []; _luMRender();
+}
+function _luMDemo() {
+  _lu.rows = [];
+  [0.2, 0.35, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95].forEach(b => _lu.rows.push({ id: _lu.nextId++, beta: b, f: _luMFaktorRead(b) }));
+  _luMRender();
+}
+function _luMRenderTable() {
+  const tb = document.getElementById('luMTbody'); if (!tb) return;
+  const empty = document.getElementById('luMEmpty');
+  if (empty) empty.style.display = _lu.rows.length ? 'none' : 'block';
+  tb.innerHTML = _lu.rows.map(r =>
+    `<tr><td>${_fpmNum(r.beta, 2)}</td><td>${_fpmNum(r.f, 3)}</td><td>${_fpmNum(r.beta * r.beta, 3)}</td>
+       <td><b>${_fpmNum(r.f * r.f, 3)}</b></td>
+       <td class="fpm-del" onclick="_luMDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _luMSetReveal(on) { _lu.reveal = !!on; _luMDrawPlot(); }
+function _luMTheorieFn() {
+  const inp = document.getElementById('luMFn'); if (inp) inp.value = '1-1*x';
+  _luMSetFn('1-1*x'); _lu.fnAuto = true; _luMRenderTheorie(true);
+}
+function _luMClearFn() {
+  const inp = document.getElementById('luMFn'); if (inp) inp.value = '';
+  _luMSetFn(''); _luMRenderTheorie(false);
+}
+function _luMRenderTheorie(eingesetzt) {
+  const el = document.getElementById('luMTheo'); if (!el) return;
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">fallende Gerade (Steigung −1)</div>
+     <div class="fpm-theo-form">f² = 1 − β²</div>
+     <div class="fpm-theo-par">Achsenabschnitt = 1, Steigung = −1</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = 1-1*x</div>` : ''}
+     <div class="fpm-theo-deutung">Aus dem Satz des Pythagoras folgt für die bewegte Lichtuhr der Zeitdehnungsfaktor f = Δt_bew/Δt_Ruh = √(1−β²). Diese Wurzel lässt sich nicht direkt als Gerade prüfen – quadriert man aber beide Seiten, wird daraus f² = 1 − β². Trägt man also das Quadrat des gemessenen Faktors über β² auf, müssen die Punkte auf einer Geraden mit dem Achsenabschnitt 1 und der Steigung −1 liegen. Genau das bestätigt die Zeitdilatationsformel aus selbst „gemessenen" Tick-Verhältnissen.</div>`;
+}
+function _luMSetFn(str) {
+  _lu.fnAuto = false;
+  const err = document.getElementById('luMFnErr');
+  const v = (str || '').trim();
+  if (!v) { _lu.fn = null; if (err) err.textContent = ''; _luMDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _lu.fn = f; if (err) err.textContent = '';
+  } catch (e) { _lu.fn = null; if (err) err.textContent = e.message; }
+  _luMDrawPlot();
+}
+function _luMDrawVergleich(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const f = _luFaktor(_lu.mBeta);
+  // ruhende Uhr (links) und bewegte Uhr (rechts) mit Tick-Balken
+  const drawClock = (x, label, ticks, total, col) => {
+    ctx.fillStyle = '#cbd5e1'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(label, x, 20);
+    const phase = (_lu.t * 2) % 1;
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.2; ctx.strokeRect(x - 22, 30, 44, 90);
+    // Photon
+    const py = 30 + (phase < 0.5 ? phase * 2 : 2 - phase * 2) * 90;
+    ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x, py, 4, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '9px sans-serif';
+    ctx.fillText(ticks + ' Ticks', x, 138);
+  };
+  drawClock(W * 0.3, 'ruhende Uhr', _LU_M, _LU_M, '#38bdf8');
+  drawClock(W * 0.7, 'bewegte Uhr (v=' + _fpmNum(_lu.mBeta, 2) + 'c)', Math.round(_LU_M * f), _LU_M, '#fbbf24');
+  ctx.fillStyle = '#a78bfa'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('f = ' + Math.round(_LU_M * f) + '/' + _LU_M + ' = ' + _fpmNum(f, 3), W / 2, H - 10);
+}
+function _luMDrawPlot() {
+  const cv = document.getElementById('luMPlot'); if (!cv || !_lu) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const padL = 44, padR = 14, padT = 10, padB = 30;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const pts = _lu.rows.map(r => ({ x: r.beta * r.beta, y: r.f * r.f }));
+  const xmax = 1, ymax = 1.05;
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+  ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  for (let t = 0; t <= 1.001; t += 0.2) {
+    ctx.beginPath(); ctx.moveTo(X(t), y0); ctx.lineTo(X(t), y1); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x0, Y(t)); ctx.lineTo(x1, Y(t)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(_fpmNum(t, 1), X(t), y0 + 12);
+    ctx.textAlign = 'right'; ctx.fillText(_fpmNum(t, 1), x0 - 5, Y(t) + 3);
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('β²', x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('f²', 0, 0); ctx.restore(); ctx.textAlign = 'left';
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
+    const fo = document.getElementById('luMFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">Miss den Zeitdehnungsfaktor bei mehreren Geschwindigkeiten. Über β² aufgetragen ergibt f² eine Gerade der Steigung −1.</div>';
+    return;
+  }
+  if (_lu.fn) {
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _lu.fn((px - x0) / (x1 - x0) * xmax); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv); if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  let fit = null;
+  if (pts.length >= 2) {
+    fit = _fpmFitLinear(pts);
+    if (fit) { ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.7; ctx.beginPath(); ctx.moveTo(X(0), Y(fit.b)); ctx.lineTo(X(1), Y(fit.k * 1 + fit.b)); ctx.stroke(); }
+  }
+  pts.forEach(p => { ctx.fillStyle = '#7c3aed'; ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke(); });
+  const el = document.getElementById('luMFitBox');
+  if (el) {
+    if (!fit) { el.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte nötig.</div>'; }
+    else {
+      const abwK = Math.abs(fit.k + 1) * 100, abwB = Math.abs(fit.b - 1) * 100;
+      const cls = (abwK < 3 && abwB < 3) ? 'ok' : (abwK < 8 && abwB < 8) ? 'mid' : 'no';
+      el.innerHTML = `<div class="fpm-fitline">
+         <span class="fpm-fitmeta">${_lu.rows.length} Messwerte</span>
+         <span class="fpm-fiteq">f² = ${_fpmNum(fit.b, 3)} ${fit.k >= 0 ? '+ ' + _fpmNum(fit.k, 3) : '− ' + _fpmNum(-fit.k, 3)}·β²</span>
+         <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 5)}</span>
+         ${_lu.reveal ? `<span class="fpm-badge ${cls}">erwartet: Steigung −1, Achsenabschnitt 1 · Δ ${_fpmNum(Math.max(abwK, abwB), 2)} %</span>` : ''}
+       </div>
+       <div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">Steigung ≈ −1 und Achsenabschnitt ≈ 1 bestätigen f² = 1 − β², also f = √(1−β²) – die Zeitdilatation, aus gemessenen Tick-Verhältnissen gewonnen.</div>`;
+    }
+  }
+}
 // Zeit im bewegten System B (Eigenzeit der Uhr, kuerzer): Δt_bew = Δt_Ruh·√(1−β²)
 function _luTBew(tRuh, beta) { return tRuh * _luFaktor(beta); }
 // Zeit im ruhenden System A (aus A gemessen, laenger): Δt_Ruh = Δt_bew/√(1−β²)
@@ -32086,7 +32245,7 @@ function _luTRuh(tBew, beta) { return tBew / _luFaktor(beta); }
 function _luHTML() {
   const stationen = ['1 · Die Lichtuhr', '2 · Die bewegte Lichtuhr',
                      '3 · Herleitung mit Pythagoras', '4 · Der relativistische Faktor',
-                     '5 · Wo es zählt: GPS & Co.']
+                     '5 · Wo es zählt: GPS & Co.', '6 · Zeitdehnung messen']
     .map((s, i) => `<button class="fpm-tab${i === _lu.station ? ' on' : ''}" id="luSt${i}" onclick="_luSetStation(${i})">${s}</button>`).join('');
 
   return `<div class="sim-box sim-box-wide fpm-sim lu-sim">
@@ -32180,6 +32339,54 @@ function _luHTML() {
       </div>
     </div>
 
+    <!-- ══ Station 6: Zeitdehnung messen ══ -->
+    <div id="luS5" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="luMVergleich" width="440" height="190" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Zähle, wie oft die bewegte Uhr tickt, während die ruhende 200-mal tickt</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Geschwindigkeit v/c: <b id="luMBLbl">0,60</b></span>
+            <input type="range" id="luMB" min="0.1" max="0.95" step="0.01" value="0.6"
+              oninput="_luMSetBeta(this.value)" style="width:100%;accent-color:#7c3aed">
+          </div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Geschwindigkeit v/c</span><span class="fpm-ro-v" id="luMBA">—</span><span class="fpm-ro-u"></span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">bewegte Ticks je 200 ruhende</span><span class="fpm-ro-v" id="luMnA">—</span><span class="fpm-ro-u"></span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">gemessener Faktor f = n/200</span><span class="fpm-ro-v" id="luMfA">—</span><span class="fpm-ro-u"></span></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_luMTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_luMDemo()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_luMClear()">🗑 Tabelle leeren</button>
+          </div>
+        </div>
+        <div>
+          <canvas id="luMPlot" width="440" height="220" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">f² über β²: eine Gerade der Steigung −1 (f² = 1 − β²)</div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>v/c</th><th>f</th><th>β²</th><th>f²</th><th></th></tr></thead>
+              <tbody id="luMTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="luMEmpty">Noch keine Messwerte.<br>Geschwindigkeit wählen → Faktor übernehmen.</div>
+          </div>
+          <div class="fpm-fit" id="luMFitBox"></div>
+          <div class="fpm-label" style="margin-top:8px">Funktion plotten</div>
+          <input type="text" id="luMFn" class="fpm-input" placeholder="z. B. 1-1*x" spellcheck="false"
+            oninput="_luMSetFn(this.value)">
+          <div class="fpm-err" id="luMFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_luMTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_luMClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="luMTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_luMSetReveal(this.checked)">
+            erwartete Werte (Steigung −1, Achsenabschnitt 1) anzeigen</label>
+        </div>
+      </div>
+    </div>
+
     <div id="luErkl" class="dsp-erkl"></div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
       <b>(c·Δt<sub>Ruh</sub>)² = (v·Δt<sub>Ruh</sub>)² + (c·Δt<sub>bew</sub>)²</b>
@@ -32243,13 +32450,14 @@ function _luErklHTML() {
 
 // ── Stationen ──────────────────────────────────────────
 function _luSetStation(i) {
-  _lu.station = Math.max(0, Math.min(4, i));
-  for (let k = 0; k < 5; k++) {
+  _lu.station = Math.max(0, Math.min(5, i));
+  for (let k = 0; k < 6; k++) {
     document.getElementById('luSt' + k)?.classList.toggle('on', k === _lu.station);
     const d = document.getElementById('luS' + k);
     if (d) d.style.display = k === _lu.station ? 'block' : 'none';
   }
   _luUpdate();
+  if (_lu.station === 5) _luMRender();
 }
 function _luToggle() {
   _lu.laeuft = !_lu.laeuft;
@@ -32619,6 +32827,9 @@ function _luRender() {
   } else if (st === 4) {
     const c = document.getElementById('luGps');
     if (c) _luDrawGps(c.getContext('2d'), c);
+  } else if (st === 5) {
+    const c = document.getElementById('luMVergleich');
+    if (c) _luMDrawVergleich(c.getContext('2d'), c);
   }
 }
 
