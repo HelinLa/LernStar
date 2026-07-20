@@ -28051,7 +28051,9 @@ function _rtgInit() {
     // Station 4
     UA4: 30,
     // Station 5
-    elem: 2, linie: 'ka'
+    elem: 2, linie: 'ka',
+    // Station 6 – Planck-Konstante messen (Duane-Hunt, handlungsorientiert)
+    mU: 30, rows: [], nextId: 1, fn: null, fnAuto: false, reveal: false
   };
 }
 
@@ -28067,6 +28069,170 @@ function _rtgZahl(v) {
 // ── Physik ──────────────────────────────────────────────
 // Grenzwellenlaenge (Duane-Hunt): e·U = h·f_max, λ_min = h·c/(e·U)
 function _rtgLambdaMin(U_V) { return _RTG_HC / U_V * 1000; }   // pm (U in V)
+
+// ══ Station 6: Planck-Konstante messen (Duane-Hunt) ══
+// λ_min = h·c/(e·U). Traegt man λ_min ueber 1/U auf, ist die Steigung h·c/e,
+// woraus sich die Planck-Konstante h = Steigung·e/c ergibt.
+function _rtgMLamMin(U_kV) { return _rtgLambdaMin(U_kV * 1000); }        // pm
+function _rtgMLamRead(U_kV) { return Math.round(_rtgMLamMin(U_kV) / 0.5) * 0.5; }  // Ablesung 0,5 pm
+function _rtgMSetU(v) {
+  _rtg.mU = Math.max(15, Math.min(50, Math.round(+v)));
+  const el = document.getElementById('rtgMULbl'); if (el) el.textContent = _rtg.mU + ' kV';
+  _rtgMRender();
+}
+function _rtgMRender() {
+  const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  set('rtgMUA', _rtg.mU); set('rtgMLA', _fpmNum(_rtgMLamRead(_rtg.mU), 1));
+  _rtgMRenderTable(); _rtgMDrawPlot();
+  const c = document.getElementById('rtgMSpektrum'); if (c) _rtgMDrawSpektrum(c.getContext('2d'), c);
+}
+function _rtgMTake() {
+  if (_rtg.rows.some(r => r.U === _rtg.mU)) return;
+  _rtg.rows.push({ id: _rtg.nextId++, U: _rtg.mU, lam: _rtgMLamRead(_rtg.mU) });
+  _rtg.rows.sort((a, b) => a.U - b.U);
+  _rtgMRender();
+}
+function _rtgMDelRow(id) { _rtg.rows = _rtg.rows.filter(r => r.id !== id); _rtgMRender(); }
+function _rtgMClear() {
+  if (_rtg.rows.length && !confirm('Alle ' + _rtg.rows.length + ' Messwerte löschen?')) return;
+  _rtg.rows = []; _rtgMRender();
+}
+function _rtgMDemo() {
+  _rtg.rows = [];
+  [15, 20, 25, 30, 35, 40, 45, 50].forEach(U => _rtg.rows.push({ id: _rtg.nextId++, U, lam: _rtgMLamRead(U) }));
+  _rtgMRender();
+}
+function _rtgMX(r) { return 1 / r.U; }        // 1/U in 1/kV
+function _rtgMRenderTable() {
+  const tb = document.getElementById('rtgMTbody'); if (!tb) return;
+  const empty = document.getElementById('rtgMEmpty');
+  if (empty) empty.style.display = _rtg.rows.length ? 'none' : 'block';
+  tb.innerHTML = _rtg.rows.map(r =>
+    `<tr><td>${_fpmNum(r.U, 0)}</td><td>${_fpmNum(1 / r.U, 4)}</td><td><b>${_fpmNum(r.lam, 1)}</b></td>
+       <td class="fpm-del" onclick="_rtgMDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _rtgMSetReveal(on) { _rtg.reveal = !!on; _rtgMDrawPlot(); }
+function _rtgMTheorieFn() {
+  const term = _RTG_HC.toFixed(2) + '*x';
+  const inp = document.getElementById('rtgMFn'); if (inp) inp.value = term;
+  _rtgMSetFn(term); _rtg.fnAuto = true; _rtgMRenderTheorie(true);
+}
+function _rtgMClearFn() {
+  const inp = document.getElementById('rtgMFn'); if (inp) inp.value = '';
+  _rtgMSetFn(''); _rtgMRenderTheorie(false);
+}
+function _rtgMRenderTheorie(eingesetzt) {
+  const el = document.getElementById('rtgMTheo'); if (!el) return;
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">Ursprungsgerade</div>
+     <div class="fpm-theo-form">λ_min = (h·c/e) · (1/U)</div>
+     <div class="fpm-theo-par">Steigung = h·c/e, daraus h = Steigung · e/c</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${_RTG_HC.toFixed(2)}*x</div>` : ''}
+     <div class="fpm-theo-deutung">Ein Elektron gibt beim Abbremsen höchstens seine ganze Energie e·U als ein einziges Photon ab. Diese maximale Photonenenergie gehört zur kürzesten Wellenlänge des Bremsspektrums: e·U = h·c/λ_min. Trägt man die abgelesene Grenzwellenlänge über 1/U auf, ergibt sich eine Ursprungsgerade der Steigung h·c/e. Aus ihr lässt sich – ganz ohne Kenntnis der Elektronenmasse – die Planck-Konstante h bestimmen. Das ist eine der elegantesten Schulmethoden, h zu messen.</div>`;
+}
+function _rtgMSetFn(str) {
+  _rtg.fnAuto = false;
+  const err = document.getElementById('rtgMFnErr');
+  const v = (str || '').trim();
+  if (!v) { _rtg.fn = null; if (err) err.textContent = ''; _rtgMDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _rtg.fn = f; if (err) err.textContent = '';
+  } catch (e) { _rtg.fn = null; if (err) err.textContent = e.message; }
+  _rtgMDrawPlot();
+}
+function _rtgMDrawSpektrum(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const padL = 34, padB = 24;
+  const x0 = padL, y0 = H - padB, x1 = W - 12, y1 = 14;
+  const lamMax = 120, lamMin = _rtgMLamMin(_rtg.mU);
+  const X = lam => x0 + lam / lamMax * (x1 - x0);
+  const Y = v => y0 - v * (y0 - y1);
+  // Bremsspektrum: setzt bei λ_min ein, Maximum ~1,5·λ_min, faellt zu langen λ
+  ctx.strokeStyle = '#a78bfa'; ctx.lineWidth = 2; ctx.beginPath(); let started = false;
+  for (let lam = lamMin; lam <= lamMax; lam += 0.5) {
+    const rel = (lam - lamMin);
+    const inten = rel <= 0 ? 0 : (rel / (rel + 12)) * Math.exp(-lam / 90);
+    const py = Y(inten * 2.2);
+    started ? ctx.lineTo(X(lam), py) : (ctx.moveTo(X(lam), py), started = true);
+  }
+  ctx.stroke();
+  // λ_min-Marker
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
+  ctx.beginPath(); ctx.moveTo(X(lamMin), y0); ctx.lineTo(X(lamMin), y1); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#fbbf24'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('λ_min = ' + _fpmNum(_rtgMLamRead(_rtg.mU), 1) + ' pm', X(lamMin) + 4, y1 + 10);
+  // Achse
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  for (let lam = 0; lam <= lamMax; lam += 30) ctx.fillText(lam + '', X(lam), y0 + 12);
+  ctx.textAlign = 'right'; ctx.fillText('λ / pm', x1, y0 + 12); ctx.textAlign = 'left';
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.fillText('Bremsspektrum bei U = ' + _rtg.mU + ' kV', x0, 10);
+}
+function _rtgMDrawPlot() {
+  const cv = document.getElementById('rtgMPlot'); if (!cv || !_rtg) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const padL = 46, padR = 14, padT = 10, padB = 30;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const pts = _rtg.rows.map(r => ({ x: _rtgMX(r), y: r.lam }));
+  const xmax = 0.075, ymax = 90;
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - v / ymax * (y0 - y1);
+  ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  const xt = _fpmTicks(xmax, 5);
+  xt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 12); });
+  const yt = _fpmTicks(ymax, 5);
+  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('1/U in 1/kV', x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('λ_min in pm', 0, 0); ctx.restore(); ctx.textAlign = 'left';
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
+    const fo = document.getElementById('rtgMFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">Miss die Grenzwellenlänge bei mehreren Spannungen. Die Steigung der Geraden liefert die Planck-Konstante.</div>';
+    return;
+  }
+  if (_rtg.fn) {
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _rtg.fn((px - x0) / (x1 - x0) * xmax); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv); if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  let fit = null;
+  if (pts.length >= 2) {
+    fit = _fpmFitOrigin(pts);
+    if (fit) { ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.7; ctx.beginPath(); ctx.moveTo(X(0), Y(0)); ctx.lineTo(X(xmax), Y(fit.k * xmax)); ctx.stroke(); }
+  }
+  pts.forEach(p => { ctx.fillStyle = '#7c3aed'; ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke(); });
+  const el = document.getElementById('rtgMFitBox');
+  if (el) {
+    if (!fit) { el.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte nötig.</div>'; }
+    else {
+      const h = fit.k * 1e-9 * _RTG_E / _RTG_C;   // Steigung pm·kV -> h
+      const abw = Math.abs(h - _RTG_H) / _RTG_H * 100;
+      const cls = abw < 3 ? 'ok' : abw < 8 ? 'mid' : 'no';
+      el.innerHTML = `<div class="fpm-fitline">
+         <span class="fpm-fitmeta">${_rtg.rows.length} Messwerte</span>
+         <span class="fpm-fiteq">λ_min = ${_fpmNum(fit.k, 1)}·(1/U)</span>
+         <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 5)}</span>
+         <span class="fpm-fiteq" style="color:#075985">h = ${_fpmNum(h / 1e-34, 3)}·10⁻³⁴ Js</span>
+         ${_rtg.reveal ? `<span class="fpm-badge ${cls}">Literatur 6,626·10⁻³⁴ Js · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+       </div>`;
+    }
+  }
+}
 // und der Rueckweg: aus λ_min die Planck-Konstante bestimmen
 function _rtgHausLambda(lam_pm, U_V) {
   const fMax = _RTG_C / (lam_pm * 1e-12);
@@ -28111,7 +28277,7 @@ function _rtgIntensitaet(lam, A, U_kV) {
 function _rtgHTML() {
   const stationen = ['1 · Das Röntgenspektrum', '2 · Entstehung in der Anode',
                      '3 · Bragg & Drehkristall', '4 · Grenzwellenlänge & Planck-h',
-                     '5 · Das Moseley-Gesetz']
+                     '5 · Das Moseley-Gesetz', '6 · Planck-Konstante messen']
     .map((s, i) => `<button class="fpm-tab${i === _rtg.station ? ' on' : ''}" id="rtgSt${i}" onclick="_rtgSetStation(${i})">${s}</button>`).join('');
 
   const anodewahl = _RTG_ANODEN.map((c, i) =>
@@ -28220,6 +28386,53 @@ function _rtgHTML() {
       </div>
     </div>
 
+    <!-- ══ Station 6: Planck-Konstante messen (Duane-Hunt) ══ -->
+    <div id="rtgS5" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="rtgMSpektrum" width="440" height="200" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Grenzwellenlänge λ_min am kurzwelligen Ende des Bremsspektrums ablesen</div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Röhrenspannung U: <b id="rtgMULbl">30 kV</b></span>
+            <input type="range" id="rtgMU" min="15" max="50" step="1" value="30"
+              oninput="_rtgMSetU(this.value)" style="width:100%;accent-color:#7c3aed">
+          </div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Röhrenspannung U</span><span class="fpm-ro-v" id="rtgMUA">—</span><span class="fpm-ro-u">kV</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Grenzwellenlänge λ_min</span><span class="fpm-ro-v" id="rtgMLA">—</span><span class="fpm-ro-u">pm</span></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_rtgMTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_rtgMDemo()">📋 Beispielmessreihe</button>
+            <button class="sim-btn" onclick="_rtgMClear()">🗑 Tabelle leeren</button>
+          </div>
+        </div>
+        <div>
+          <canvas id="rtgMPlot" width="440" height="220" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">λ_min über 1/U: Steigung = h·c/e → daraus die Planck-Konstante</div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>U (kV)</th><th>1/U (1/kV)</th><th>λ_min (pm)</th><th></th></tr></thead>
+              <tbody id="rtgMTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="rtgMEmpty">Noch keine Messwerte.<br>Spannung einstellen → λ_min übernehmen.</div>
+          </div>
+          <div class="fpm-fit" id="rtgMFitBox"></div>
+          <div class="fpm-label" style="margin-top:8px">Funktion plotten</div>
+          <input type="text" id="rtgMFn" class="fpm-input" placeholder="z. B. 1239.84*x" spellcheck="false"
+            oninput="_rtgMSetFn(this.value)">
+          <div class="fpm-err" id="rtgMFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_rtgMTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_rtgMClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="rtgMTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_rtgMSetReveal(this.checked)">
+            Literaturwert h = 6,63·10⁻³⁴ Js anzeigen</label>
+        </div>
+      </div>
+    </div>
+
     <div id="rtgErkl" class="dsp-erkl"></div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
       <b>k·λ = 2d·sinϑ</b> &nbsp;|&nbsp; <b>λ<sub>min</sub> = h·c/(e·U<sub>A</sub>)</b>
@@ -28293,13 +28506,14 @@ function _rtgErklHTML() {
 
 // ── Stationen ──────────────────────────────────────────
 function _rtgSetStation(i) {
-  _rtg.station = Math.max(0, Math.min(4, i));
-  for (let k = 0; k < 5; k++) {
+  _rtg.station = Math.max(0, Math.min(5, i));
+  for (let k = 0; k < 6; k++) {
     document.getElementById('rtgSt' + k)?.classList.toggle('on', k === _rtg.station);
     const d = document.getElementById('rtgS' + k);
     if (d) d.style.display = k === _rtg.station ? 'block' : 'none';
   }
   _rtgUpdate();
+  if (_rtg.station === 5) _rtgMRender();
 }
 function _rtgSetAnode(i) { _rtg.anode = Math.max(0, Math.min(1, i)); _rtgUpdate(); }
 function _rtgSetUA(v) {
@@ -28785,6 +28999,9 @@ function _rtgRender() {
   } else if (st === 4) {
     const c = document.getElementById('rtgMoseley');
     if (c) _rtgDrawMoseley(c.getContext('2d'), c);
+  } else if (st === 5) {
+    const c = document.getElementById('rtgMSpektrum');
+    if (c) _rtgMDrawSpektrum(c.getContext('2d'), c);
   }
 }
 
