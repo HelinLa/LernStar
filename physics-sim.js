@@ -2252,6 +2252,20 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('mmTakt', 'mmKeinChart');
     _pSim.start(dt => _mmTakt(dt), () => _mmRender(), []);
   },
+
+  // Schluesselexperiment 23 des KLP (Q2.1): der Myonenzerfall. Experimenteller
+  // Beleg fuer Zeitdilatation und Laengenkontraktion – die Fortsetzung des
+  // Michelson-Morley-Experiments in der speziellen Relativitaetstheorie.
+  'myonenzerfall': modal => {
+    _myoInit();
+    modal.innerHTML = _myoHTML();
+    const erkl = document.getElementById('myoErkl');
+    if (erkl) erkl.innerHTML = _myoErklHTML();
+    _myoSetStation(0);
+    _myoUpdate();
+    _pSim = new PhysicsSimEngine('myoTakt', 'myoKeinChart');
+    _pSim.start(dt => _myoTakt(dt), () => _myoRender(), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -28491,6 +28505,675 @@ function _mmRender() {
       border-radius: 8px; padding: 8px 11px; margin-top: 8px; line-height: 1.55; }
     .dsp-erkl-note b { color: #0c4a6e; }
     .mm-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
+  `;
+  document.head.appendChild(s);
+})();
+
+// ═══════════════════════════════════════════════════════
+// DER MYONENZERFALL – Schluesselexperiment 23 (angehaengt)
+// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// DER MYONENZERFALL
+// Schluesselexperiment 23 der NRW-Handreichung (Q2.1). Direkte Fortsetzung
+// des Michelson-Morley-Experiments (V22): experimenteller Beleg fuer
+// Zeitdilatation und Laengenkontraktion.
+// Kernkompetenzen des KLP: den Myonenzerfall als Beleg fuer die Zeitdilatation
+// erlaeutern (E5, UF1); die Laengenkontraktion plausibel machen (K3);
+// Konsequenzen der relativistischen Einfluesse auf Raum und Zeit (K3).
+// ═══════════════════════════════════════════════════════
+
+const _MYO_C = 2.99792458e8;    // Lichtgeschwindigkeit in m/s
+const _MYO_TAU0 = 2.2e-6;       // mittlere Ruhelebensdauer in s
+const _MYO_HOEHE = 10000;       // Entstehungshoehe in m (obere Atmosphaere)
+const _MYO_MASSE = 106;         // Ruhemasse in MeV/c²
+const _MYO_MASSVERH = 200;      // etwa 200-mal schwerer als das Elektron
+
+let _myo = null;
+
+function _myoInit() {
+  _myo = {
+    station: 0,
+    // Station 1
+    t: 0, schauer: [],
+    // Station 3
+    beta: 0.995,
+    // Station 4 nutzt dasselbe beta
+    // Station 5
+    ballBeta: 0.8
+  };
+}
+
+// ── Zahlformat ──────────────────────────────────────────
+function _myoZahl(v) {
+  if (!isFinite(v) || v === 0) return '0';
+  const ex = Math.floor(Math.log10(Math.abs(v)));
+  const dez = Math.max(0, Math.min(20, 5 - ex));
+  const s = v.toFixed(dez);
+  return s.indexOf('.') >= 0 ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
+}
+
+// ── Physik ──────────────────────────────────────────────
+// Lorentzfaktor γ = 1/√(1−β²)
+function _myoGamma(beta) { return 1 / Math.sqrt(1 - beta * beta); }
+// klassische Reichweite v·τ₀ (ohne Zeitdilatation)
+function _myoReichweiteKlassisch(beta, tau0) { return beta * _MYO_C * tau0; }
+// Flugzeit fuer eine Hoehe im Erdsystem
+function _myoFlugzeit(hoehe, beta) { return hoehe / (beta * _MYO_C); }
+// gedehnte Lebensdauer im Erdsystem: Δt = γ·τ₀
+function _myoLebensdauerErde(beta, tau0) { return _myoGamma(beta) * tau0; }
+// klassischer Ueberlebensanteil: e^(−t_flug/τ₀)  (falsch, dient dem Vergleich)
+function _myoUeberlebtKlassisch(hoehe, beta, tau0) {
+  return Math.exp(-_myoFlugzeit(hoehe, beta) / tau0);
+}
+// relativistischer Ueberlebensanteil: e^(−(t_flug/γ)/τ₀)
+function _myoUeberlebtRelativ(hoehe, beta, tau0) {
+  return Math.exp(-(_myoFlugzeit(hoehe, beta) / _myoGamma(beta)) / tau0);
+}
+// kontrahierte Strecke im Myonsystem: Δs' = Δs·√(1−β²) = Δs/γ
+function _myoKontrahiert(hoehe, beta) { return hoehe / _myoGamma(beta); }
+// Halbwertszeit T½ = ln2·τ
+function _myoT12(tau0) { return Math.log(2) * tau0; }
+
+// ── Oberflaeche ─────────────────────────────────────────
+function _myoHTML() {
+  const stationen = ['1 · Steckbrief & kosmische Myonen', '2 · Das Paradoxon',
+                     '3 · Zeitdilatation (Erdsystem)', '4 · Längenkontraktion (Myonsystem)',
+                     '5 · Zwei Beobachter, ein Ergebnis']
+    .map((s, i) => `<button class="fpm-tab${i === _myo.station ? ' on' : ''}" id="myoSt${i}" onclick="_myoSetStation(${i})">${s}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim myo-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌠 Der Myonenzerfall</h3>
+    <canvas id="myoTakt" width="1" height="1" style="display:none"></canvas>
+    <div class="fpm-tabs">${stationen}</div>
+
+    <!-- ══ Station 1 ══ -->
+    <div id="myoS0">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="myoSchauer" width="440" height="290" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Kosmische Strahlung erzeugt in ~10 km Höhe Teilchenschauer</div>
+        </div>
+        <div>
+          <div class="myo-steck" id="myoSteckbrief"></div>
+        </div>
+      </div>
+      <div class="myo-k3" id="myoK3"></div>
+    </div>
+
+    <!-- ══ Station 2 ══ -->
+    <div id="myoS1" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="myoParadox" width="440" height="290" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Klassisch erwartet: die Myonen dürften den Boden gar nicht erreichen</div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="myoParadoxRechnung"></div>
+          <div class="myo-paradox-t" id="myoParadoxText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 3 ══ -->
+    <div id="myoS2" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="myoKurve" width="440" height="270" class="phys-chart-cv"></canvas>
+          <div class="fpm-label">Überlebende Myonen über der Höhe – klassisch gegen relativistisch</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Geschwindigkeit v/c</span>
+              <input type="range" id="myoBeta" min="0.9" max="0.9999" step="0.0001" value="0.995"
+                oninput="_myoSetBeta(this.value)"><b id="myoBetaLbl">0,995</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="myoZeitRechnung"></div>
+          <div class="myo-zeit-t" id="myoZeitText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 4 ══ -->
+    <div id="myoS3" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="myoKontr" width="440" height="290" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Aus Sicht des Myons: die Atmosphäre schrumpft</div>
+        </div>
+        <div>
+          <div class="ebr-rechnung" id="myoKontrRechnung"></div>
+          <div class="myo-kontr-t" id="myoKontrText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Station 5 ══ -->
+    <div id="myoS4" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="myoBall" width="440" height="180" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Ein schnell bewegter Ball erschiene in Flugrichtung gestaucht</div>
+          <div class="osz-gruppe">
+            <div class="osz-zeile"><span>Ballgeschwindigkeit v/c</span>
+              <input type="range" id="myoBallB" min="0" max="0.98" step="0.01" value="0.8"
+                oninput="_myoSetBallBeta(this.value)"><b id="myoBallBLbl">0,80</b></div>
+          </div>
+        </div>
+        <div>
+          <div class="myo-zwei-t" id="myoZweiText"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="myoErkl" class="dsp-erkl"></div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>N(t) = N₀·e<sup>−t/τ</sup></b> &nbsp;|&nbsp; <b>Δt = γ·τ₀</b>
+      &nbsp;|&nbsp; <b>Δs′ = Δs/γ</b> &nbsp;|&nbsp; <b>γ = 1/√(1−β²)</b>
+    </p>
+  </div>`;
+}
+
+function _myoErklHTML() {
+  return `<div class="dsp-erkl-kopf">Was Myonen sind</div>
+    <div class="dsp-erkl-text">
+      Myonen sind <b>Elementarteilchen</b> – Leptonen wie das Elektron, aber etwa <b>200-mal
+      schwerer</b> (Ruhemasse rund 106 MeV/c²). Sie tragen eine negative Ladung und sind
+      <b>instabil</b>: Nach einer mittleren Ruhelebensdauer von nur <b>τ₀ ≈ 2,2 µs</b> zerfallen
+      sie über die schwache Wechselwirkung in ein Elektron und zwei Neutrinos. Auf der Erde
+      entstehen sie nicht von selbst, sondern in <b>Teilchenschauern</b>: Trifft die kosmische
+      Strahlung (Protonen und Kerne aus dem All, 1912 von Victor Hess entdeckt) in etwa 10 km Höhe
+      auf die Atmosphäre, entstehen aus einem einzigen energiereichen Proton über eine Million
+      Sekundärteilchen – darunter die Myonen.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Das Paradoxon</div>
+    <div class="dsp-erkl-text">
+      Die Myonen entstehen in 10 km Höhe und rasen mit fast Lichtgeschwindigkeit nach unten.
+      Klassisch gerechnet könnten sie in ihrer kurzen Lebensdauer aber nur eine winzige Strecke
+      zurücklegen: Selbst bei <b>99,5 % der Lichtgeschwindigkeit</b> sind das nur
+      v·τ₀ ≈ <b>659 m</b> – viel zu wenig für die 10 km. Nach klassischer Rechnung dürfte
+      praktisch <b>kein einziges</b> Myon den Boden erreichen. Tatsächlich messen wir aber ständig
+      Myonen auf der Erdoberfläche. Etwas stimmt mit der klassischen Rechnung nicht.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Erdsystem: die Zeit dehnt sich</div>
+    <div class="dsp-erkl-text">
+      Aus Sicht eines Beobachters auf der Erde ist das Myon eine <b>schnell bewegte Uhr</b> – und
+      bewegte Uhren gehen langsamer (<b>Zeitdilatation</b>, bekannt von der Lichtuhr). Die
+      Lebensdauer im Erdsystem ist um den Lorentzfaktor γ = 1/√(1−β²) gedehnt:
+      <b>Δt = γ·τ₀</b>. Bei 99,5 % der Lichtgeschwindigkeit ist γ ≈ 10, die Lebensdauer also
+      etwa <b>22 µs</b> statt 2,2 µs. In dieser Zeit schafft das Myon rund <b>6,6 km</b> im Mittel –
+      und ein guter Teil erreicht so den Boden. Die relativistische Zerfallskurve ist deshalb viel
+      <b>flacher</b> als die klassische.
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Myonsystem: der Raum schrumpft</div>
+    <div class="dsp-erkl-text">
+      Ein mitreisender Beobachter im Myonsystem sieht seine eigene Uhr <b>normal</b> gehen – für
+      ihn dehnt sich nichts. Trotzdem kommt das Myon an. Aus seiner Sicht ist stattdessen die
+      <b>Strecke kontrahiert</b>: Die 10 km Atmosphäre schrumpfen auf Δs′ = Δs/γ ≈ <b>1 km</b>, und
+      die schafft er in seiner normalen Lebensdauer. Das ist die <b>Längenkontraktion</b>. Sie
+      folgt direkt aus der Zeitdilatation: Beide Beobachter messen dieselbe Geschwindigkeit
+      v = Δs/Δt = Δs′/Δt′; setzt man Δt = γ·Δt′ ein, folgt Δs′ = Δs·√(1−β²).
+    </div>
+    <div class="dsp-erkl-kopf" style="margin-top:8px">Zwei Sichtweisen, ein Ergebnis</div>
+    <div class="dsp-erkl-text">
+      Zeitdilatation und Längenkontraktion sind <b>komplementäre</b> Effekte – je nachdem, von
+      welchem System aus man schaut. Der Erdbeobachter erklärt die Ankunft durch die
+      <b>gedehnte Zeit</b> des Myons, der mitreisende Beobachter durch die <b>verkürzte Strecke</b>.
+      Beide messen dasselbe: Das Myon kommt an. Wichtig ist, dass der Raum <b>nur in
+      Flugrichtung</b> kontrahiert, nicht senkrecht dazu. Wäre das Myon kein punktförmiges
+      Teilchen, sondern ein Ball, erschiene er dem Erdbeobachter in Bewegungsrichtung gestaucht.
+      Der Myonenzerfall ist damit ein direkter <b>experimenteller Beleg</b> der speziellen
+      Relativitätstheorie – gemessen zuerst von Rossi und Hall in den 1940er Jahren, präzise von
+      Frisch und Smith 1963.
+    </div>
+    <div class="dsp-erkl-note">💡 Der Myonenzerfall schließt an das Michelson-Morley-Experiment und
+      das Gedankenexperiment der <b>Lichtuhr</b> an und macht Zeitdilatation und
+      Längenkontraktion an einem echten Naturphänomen greifbar.</div>`;
+}
+
+// ── Stationen ──────────────────────────────────────────
+function _myoSetStation(i) {
+  _myo.station = Math.max(0, Math.min(4, i));
+  for (let k = 0; k < 5; k++) {
+    document.getElementById('myoSt' + k)?.classList.toggle('on', k === _myo.station);
+    const d = document.getElementById('myoS' + k);
+    if (d) d.style.display = k === _myo.station ? 'block' : 'none';
+  }
+  _myoUpdate();
+}
+function _myoSetBeta(v) {
+  _myo.beta = Math.max(0.9, Math.min(0.9999, +v));
+  const el = document.getElementById('myoBetaLbl'); if (el) el.textContent = _fpmNum(_myo.beta, 4);
+  _myoRenderZeit(); _myoRenderKontr();
+}
+function _myoSetBallBeta(v) {
+  _myo.ballBeta = Math.max(0, Math.min(0.98, +v));
+  const el = document.getElementById('myoBallBLbl'); if (el) el.textContent = _fpmNum(_myo.ballBeta, 2);
+}
+
+function _myoUpdate() {
+  if (!_myo) return;
+  const st = document.getElementById('myoSteckbrief');
+  if (st) {
+    st.innerHTML = `<div class="git-sch-kopf">Steckbrief: das Myon (µ⁻)</div>
+      <div class="myo-steck-tab">
+        <div class="myo-steck-z"><span>Art</span><b>Elementarteilchen, Lepton</b></div>
+        <div class="myo-steck-z"><span>Ruhemasse</span><b>≈ 106 MeV/c² (~200× Elektron)</b></div>
+        <div class="myo-steck-z"><span>Ladung</span><b>−1 (Antimyon µ⁺: +1)</b></div>
+        <div class="myo-steck-z"><span>Spin</span><b>½</b></div>
+        <div class="myo-steck-z"><span>mittlere Lebensdauer</span><b>τ₀ ≈ 2,2 µs</b></div>
+        <div class="myo-steck-z"><span>Zerfall</span><b>µ⁻ → e⁻ + ν̄ₑ + ν<sub>µ</sub></b></div>
+        <div class="myo-steck-z"><span>Entstehung</span><b>Teilchenschauer in ~10 km Höhe</b></div>
+      </div>
+      <div class="fpm-note"><b>Nicht verwechseln:</b> Die <b>kosmische Strahlung</b> (energiereiche
+        Teilchen aus dem All, die die Myonen erzeugen) ist etwas ganz anderes als die
+        <b>kosmische Hintergrundstrahlung</b> (die 3-K-Mikrowellenstrahlung aus der Frühzeit des
+        Universums – viel zu energiearm, um Myonen zu erzeugen).</div>`;
+  }
+  _myoRenderK3();
+  _myoRenderParadox();
+  _myoRenderZeit();
+  _myoRenderKontr();
+  _myoRenderZwei();
+}
+
+function _myoRenderK3() {
+  const el = document.getElementById('myoK3'); if (!el) return;
+  el.innerHTML = `
+    <div class="git-sch-kopf">So erklärst du dieses Experiment jemandem anderen</div>
+    <div class="lsk-k3-grid">
+      <div class="lsk-k3-teil"><span>Zielsetzung</span>
+        Wir wollen die Zeitdilatation und die Längenkontraktion an einem echten Naturphänomen
+        nachweisen.</div>
+      <div class="lsk-k3-teil"><span>Aufbau</span>
+        Myonendetektoren auf verschiedenen Höhen (z. B. Bergspitze und Fuß) zählen die aus der
+        Atmosphäre ankommenden Myonen.</div>
+      <div class="lsk-k3-teil"><span>Durchführung</span>
+        Man vergleicht die Zählraten in verschiedenen Höhen – sie entsprechen der Myonenzahl zu
+        verschiedenen Flugzeiten.</div>
+      <div class="lsk-k3-teil"><span>Ergebnis</span>
+        Es erreichen <b>viel mehr</b> Myonen den Boden, als die klassische Rechnung erlaubt.</div>
+      <div class="lsk-k3-teil"><span>Deutung</span>
+        Die Lebensdauer der bewegten Myonen ist im Erdsystem gedehnt (Zeitdilatation) – oder
+        gleichwertig: die Flugstrecke ist im Myonsystem verkürzt (Längenkontraktion).</div>
+    </div>`;
+}
+
+// ── Station 2: Paradoxon ───────────────────────────────
+function _myoRenderParadox() {
+  const el = document.getElementById('myoParadoxRechnung'); if (!el) return;
+  const beta = 0.995;
+  const reich = _myoReichweiteKlassisch(beta, _MYO_TAU0);
+  const tflug = _myoFlugzeit(_MYO_HOEHE, beta);
+  const noetigeTau = tflug;   // damit klassisch ueberleben wuerde
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Ruhelebensdauer</span>
+      <span class="pho-rz-f">τ₀</span><span class="pho-rz-v">2,2 µs</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Geschwindigkeit</span>
+      <span class="pho-rz-f">v = 0,995·c</span><span class="pho-rz-v">${_fpmNum(beta * _MYO_C / 1000, 0)} km/s</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">klassische Reichweite</span>
+      <span class="pho-rz-f">Δs = v·τ₀</span><span class="pho-rz-v">${_fpmNum(reich, 0)} m</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Flugzeit von 10 km</span>
+      <span class="pho-rz-f">t = h/v</span><span class="pho-rz-v">${_fpmNum(tflug * 1e6, 1)} µs</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">dafür nötige Lebensdauer</span>
+      <span class="pho-rz-f">≈ 15× τ₀</span><span class="pho-rz-v">${_fpmNum(noetigeTau * 1e6, 0)} µs</span></div>`;
+  const t = document.getElementById('myoParadoxText');
+  if (t) {
+    const ueberK = _myoUeberlebtKlassisch(_MYO_HOEHE, beta, _MYO_TAU0);
+    t.innerHTML = `<div class="fpm-note">Die klassische Reichweite von nur <b>659 m</b> reicht bei
+      Weitem nicht für die 10 km. Von 10 km Höhe aus bräuchte das Myon rund <b>34 µs</b> – das sind
+      etwa <b>15 Lebensdauern</b>. Klassisch überlebte davon nur der Bruchteil
+      e<sup>−15</sup> ≈ <b>${_fpmNum(ueberK * 1e7, 1)}·10⁻⁷</b> – also praktisch <b>keins</b>. Und
+      doch werden die Myonen ständig am Boden gemessen. Genau dieser Widerspruch ist der Einstieg
+      in die Relativitätstheorie.</div>`;
+  }
+}
+
+// ── Station 3: Zeitdilatation ──────────────────────────
+function _myoRenderZeit() {
+  const el = document.getElementById('myoZeitRechnung'); if (!el) return;
+  const beta = _myo.beta;
+  const gamma = _myoGamma(beta);
+  const tau = _myoLebensdauerErde(beta, _MYO_TAU0);
+  const reich = beta * _MYO_C * tau;
+  const ueber = _myoUeberlebtRelativ(_MYO_HOEHE, beta, _MYO_TAU0);
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Lorentzfaktor</span>
+      <span class="pho-rz-f">γ = 1/√(1−β²)</span><span class="pho-rz-v">${_fpmNum(gamma, 2)}</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Lebensdauer im Erdsystem</span>
+      <span class="pho-rz-f">Δt = γ·τ₀</span><span class="pho-rz-v">${_fpmNum(tau * 1e6, 1)} µs</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">mittlere Flugstrecke</span>
+      <span class="pho-rz-f">v·Δt</span><span class="pho-rz-v">${_fpmNum(reich / 1000, 2)} km</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">erreichen den Boden (10 km)</span>
+      <span class="pho-rz-f">N/N₀</span><span class="pho-rz-v">${_fpmNum(ueber * 100, 1)} %</span></div>`;
+  const t = document.getElementById('myoZeitText');
+  if (t) {
+    t.innerHTML = `<div class="fpm-note">Bei v = ${_fpmNum(beta, 4)}·c ist γ = ${_fpmNum(gamma, 1)}:
+      Die im Erdsystem gemessene Lebensdauer der bewegten Myonen ist ${_fpmNum(gamma, 1)}-mal so
+      lang wie ihre Ruhelebensdauer. Damit reicht die Flugstrecke, und ein messbarer Anteil kommt
+      unten an. Schiebe die Geschwindigkeit höher: γ – und damit die Reichweite – <b>wächst
+      steil</b>, weil β sich der Lichtgeschwindigkeit nähert. Das ist der experimentelle Beleg der
+      <b>Zeitdilatation</b>: Bewegte Uhren gehen langsamer.</div>`;
+  }
+}
+
+// ── Station 4: Laengenkontraktion ──────────────────────
+function _myoRenderKontr() {
+  const el = document.getElementById('myoKontrRechnung'); if (!el) return;
+  const beta = _myo.beta;
+  const gamma = _myoGamma(beta);
+  const skontr = _myoKontrahiert(_MYO_HOEHE, beta);
+  const reichRuhe = beta * _MYO_C * _MYO_TAU0;
+  el.innerHTML = `
+    <div class="pho-rz"><span class="pho-rz-t">Strecke im Erdsystem</span>
+      <span class="pho-rz-f">Δs</span><span class="pho-rz-v">10 km</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Lorentzfaktor</span>
+      <span class="pho-rz-f">γ</span><span class="pho-rz-v">${_fpmNum(gamma, 2)}</span></div>
+    <div class="pho-rz pho-rz-erg"><span class="pho-rz-t">Strecke im Myonsystem</span>
+      <span class="pho-rz-f">Δs′ = Δs/γ = Δs·√(1−β²)</span>
+      <span class="pho-rz-v">${_fpmNum(skontr, 0)} m</span></div>
+    <div class="pho-rz"><span class="pho-rz-t">Reichweite mit Ruhelebensdauer</span>
+      <span class="pho-rz-f">v·τ₀</span><span class="pho-rz-v">${_fpmNum(reichRuhe, 0)} m</span></div>`;
+  const t = document.getElementById('myoKontrText');
+  if (t) {
+    t.innerHTML = `<div class="fpm-note">Im mitbewegten System läuft die Uhr des Myons <b>normal</b>
+      (τ₀ = 2,2 µs) – hier gibt es keine Zeitdilatation. Stattdessen ist die <b>Atmosphäre
+      verkürzt</b>: Aus 10 km werden nur ${_fpmNum(skontr, 0)} m. Diese kurze Strecke schafft das
+      Myon in seiner normalen Lebensdauer, denn v·τ₀ ist von derselben Größenordnung. So kommt es
+      an – ohne dass für das Myon irgendeine Zeit gedehnt wäre. <b>Herleitung:</b> Beide
+      Beobachter messen dieselbe Geschwindigkeit; mit Δt = γ·Δt′ folgt sofort Δs′ = Δs/γ. Der Raum
+      kontrahiert nur <b>in Flugrichtung</b>, nicht quer dazu.</div>`;
+  }
+}
+
+// ── Station 5: Zwei Beobachter ─────────────────────────
+function _myoRenderZwei() {
+  const el = document.getElementById('myoZweiText'); if (!el) return;
+  const gamma = _myoGamma(0.995);
+  el.innerHTML = `<div class="git-sch-kopf">Komplementäre Sichtweisen</div>
+    <div class="myo-zwei-grid">
+      <div class="myo-zwei-sp erde">
+        <div class="myo-zwei-k">👁 Beobachter auf der Erde</div>
+        <div class="myo-zwei-t2">Das Myon ist eine bewegte Uhr, die <b>langsamer geht</b>. Seine
+          Lebensdauer erscheint auf γ·τ₀ ≈ ${_fpmNum(gamma * _MYO_TAU0 * 1e6, 0)} µs gedehnt.
+          <b>Die Zeit dehnt sich</b> → das Myon lebt lange genug für die 10 km.</div>
+      </div>
+      <div class="myo-zwei-sp myon">
+        <div class="myo-zwei-k">🚀 Beobachter im Myon</div>
+        <div class="myo-zwei-t2">Die eigene Uhr läuft <b>normal</b> (2,2 µs). Aber die Atmosphäre
+          rast entgegen und ist auf ≈ 1 km <b>verkürzt</b>. <b>Der Raum schrumpft</b> → die kurze
+          Strecke reicht die eigene Lebensdauer.</div>
+      </div>
+    </div>
+    <div class="myo-zwei-fazit">Beide haben recht – und beide messen dasselbe Ergebnis: <b>Das Myon
+      kommt an.</b> Zeitdilatation und Längenkontraktion sind zwei Beschreibungen desselben
+      Sachverhalts, je nach Bezugssystem.</div>
+    <div class="fpm-note"><b>Der Ball:</b> Wäre das Myon kein Punkt, sondern ein ausgedehnter
+      Körper, so erschiene er dem Erdbeobachter in <b>Flugrichtung gestaucht</b> – genau um den
+      Faktor √(1−β²). Historisch: Bruno Rossi und David Hall maßen den Effekt Anfang der 1940er
+      Jahre, David Frisch und James Smith bestätigten ihn 1963 präzise mit Myonen am Mount
+      Washington.</div>`;
+}
+
+// ── Zeichnungen ────────────────────────────────────────
+function _myoDrawSchauer(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  // Himmel-Verlauf
+  const g = ctx.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, '#0f172a'); g.addColorStop(0.75, '#1e293b'); g.addColorStop(1, '#334155');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  // Boden
+  ctx.fillStyle = '#3f3f46'; ctx.fillRect(0, H - 18, W, 18);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Erdboden', 8, H - 6);
+  ctx.textAlign = 'right';
+  ctx.fillText('~10 km Höhe', W - 8, 14);
+  // primaeres Teilchen von oben
+  const px = 120 + 30 * Math.sin(_myo.t * 0.3);
+  ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(px - 30, 0); ctx.lineTo(px, 40); ctx.stroke();
+  ctx.fillStyle = '#38bdf8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('kosmisches Proton', 8, 34);
+  // Kollisionspunkt
+  ctx.fillStyle = '#fbbf24';
+  ctx.beginPath(); ctx.arc(px, 42, 4, 0, 2 * Math.PI); ctx.fill();
+  // Schauer: Faecher von Sekundaerteilchen
+  const arten = [{ f: '#a78bfa', n: 6 }, { f: '#f87171', n: 5 }, { f: '#4ade80', n: 5 }];
+  let ai = 0;
+  [-0.5, -0.25, 0, 0.25, 0.5].forEach((spread, k) => {
+    const prog = ((_myo.t * 0.5 + k * 0.13) % 1);
+    const ex = px + spread * 260 * prog;
+    const ey = 42 + prog * (H - 60);
+    const myon = k % 2 === 0;   // einige sind Myonen (kommen unten an)
+    ctx.strokeStyle = myon ? '#fbbf24' : '#7c3aed';
+    ctx.globalAlpha = 0.6;
+    ctx.lineWidth = myon ? 1.6 : 1;
+    ctx.beginPath(); ctx.moveTo(px, 42); ctx.lineTo(ex, ey); ctx.stroke();
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = myon ? '#fde047' : '#a78bfa';
+    ctx.beginPath(); ctx.arc(ex, ey, myon ? 3 : 2, 0, 2 * Math.PI); ctx.fill();
+    if (myon) { ctx.fillStyle = '#fde047'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('µ', ex + 6, ey); }
+  });
+  // Detektoren
+  ctx.fillStyle = '#0ea5e9'; ctx.fillRect(W - 90, 90, 40, 10);
+  ctx.fillRect(W - 90, H - 30, 40, 10);
+  ctx.fillStyle = '#7dd3fc'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Detektor (Berg)', W - 70, 86);
+  ctx.fillText('Detektor (Tal)', W - 70, H - 34);
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#cbd5e1'; ctx.font = '700 10px sans-serif';
+  ctx.fillText('Teilchenschauer: aus 1 Proton > 1 Mio. Sekundärteilchen', 8, H - 26);
+}
+
+function _myoDrawParadox(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  const g = ctx.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, '#0f172a'); g.addColorStop(1, '#334155');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  const topY = 24, botY = H - 24;
+  // Hoehenskala
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(50, topY); ctx.lineTo(50, botY); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('10 km', 46, topY + 4); ctx.fillText('0', 46, botY);
+  // Entstehungsort
+  ctx.fillStyle = '#fbbf24';
+  ctx.beginPath(); ctx.arc(50, topY, 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#fde047'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Entstehung (10 km)', 60, topY + 4);
+  // klassische Reichweite: nur 659 m -> winziges Stueck
+  const reichPx = (botY - topY) * (659 / 10000);
+  ctx.strokeStyle = '#f87171'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(50, topY); ctx.lineTo(50, topY + reichPx); ctx.stroke();
+  ctx.fillStyle = '#f87171'; ctx.textAlign = 'left';
+  ctx.fillText('klassisch: nur 659 m', 60, topY + reichPx + 10);
+  ctx.fillText('→ zerfallen hier', 60, topY + reichPx + 22);
+  // Boden
+  ctx.fillStyle = '#3f3f46'; ctx.fillRect(0, botY, W, H - botY);
+  ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'left'; ctx.font = '9px sans-serif';
+  ctx.fillText('Erdboden – hier werden Myonen gemessen!', 60, botY + 16);
+  // Fragezeichen
+  ctx.fillStyle = '#fbbf24'; ctx.font = '700 28px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('?', W - 60, (topY + botY) / 2);
+  ctx.font = '9px sans-serif'; ctx.fillStyle = '#94a3b8';
+  ctx.fillText('Wie kommen sie', W - 60, (topY + botY) / 2 + 20);
+  ctx.fillText('trotzdem an?', W - 60, (topY + botY) / 2 + 32);
+  ctx.textAlign = 'left';
+}
+
+function _myoDrawKurve(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  const padL = 44, padR = 12, padT = 14, padB = 34;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const hMax = 10000;
+  // x = Hoehe (0 unten links... eigentlich Flugstrecke), y = N/N0 (log)
+  const X = h => x0 + h / hMax * (x1 - x0);
+  const Y = n => y0 - (Math.log10(Math.max(1e-8, n)) - Math.log10(1e-8)) / (0 - Math.log10(1e-8)) * (y0 - y1);
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
+  [0, 2500, 5000, 7500, 10000].forEach(h => {
+    ctx.beginPath(); ctx.moveTo(X(h), y0); ctx.lineTo(X(h), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText((h / 1000) + '', X(h), y0 + 12);
+  });
+  [1, 0.1, 0.01, 0.001].forEach(n => {
+    ctx.beginPath(); ctx.moveTo(x0, Y(n)); ctx.lineTo(x1, Y(n)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillText(n >= 1 ? '1' : n.toString(), x0 - 4, Y(n) + 3);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('durchflogene Höhe / km', x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 4); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('N/N₀ (log)', 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+  const beta = _myo.beta;
+  // klassische Kurve (steil)
+  ctx.strokeStyle = '#f87171'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let h = 0; h <= hMax; h += 100) {
+    const n = _myoUeberlebtKlassisch(h, beta, _MYO_TAU0);
+    h === 0 ? ctx.moveTo(X(h), Y(n)) : ctx.lineTo(X(h), Y(n));
+  }
+  ctx.stroke();
+  // relativistische Kurve (flach)
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let h = 0; h <= hMax; h += 100) {
+    const n = _myoUeberlebtRelativ(h, beta, _MYO_TAU0);
+    h === 0 ? ctx.moveTo(X(h), Y(n)) : ctx.lineTo(X(h), Y(n));
+  }
+  ctx.stroke();
+  // Endpunkte bei 10 km
+  const nK = _myoUeberlebtKlassisch(hMax, beta, _MYO_TAU0);
+  const nR = _myoUeberlebtRelativ(hMax, beta, _MYO_TAU0);
+  ctx.fillStyle = '#7c3aed'; ctx.beginPath(); ctx.arc(X(hMax), Y(nR), 4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#f87171'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('klassisch (Zerfall)', X(2500), Y(_myoUeberlebtKlassisch(2500, beta, _MYO_TAU0)) - 6);
+  ctx.fillStyle = '#7c3aed';
+  ctx.fillText('relativistisch', X(6500), Y(_myoUeberlebtRelativ(6500, beta, _MYO_TAU0)) - 8);
+  ctx.textAlign = 'left';
+}
+
+function _myoDrawKontr(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const beta = _myo.beta, gamma = _myoGamma(beta);
+  const skontr = _myoKontrahiert(_MYO_HOEHE, beta);
+  // links: Erdsystem (volle 10 km)
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Erdsystem', 100, 18);
+  ctx.fillText('Myonsystem', 320, 18);
+  const topY = 34, botY = H - 40;
+  // Erdsystem: volle Atmosphaere
+  ctx.fillStyle = 'rgba(56,189,248,0.15)';
+  ctx.fillRect(70, topY, 60, botY - topY);
+  ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1; ctx.strokeRect(70, topY, 60, botY - topY);
+  ctx.fillStyle = '#7dd3fc'; ctx.font = '9px sans-serif';
+  ctx.fillText('10 km', 100, botY + 14);
+  // Myon oben
+  ctx.fillStyle = '#fde047'; ctx.beginPath(); ctx.arc(100, topY + 8, 4, 0, 2 * Math.PI); ctx.fill();
+
+  // Myonsystem: kontrahierte Atmosphaere
+  const hKontrPx = (botY - topY) * skontr / _MYO_HOEHE;
+  ctx.fillStyle = 'rgba(124,58,237,0.2)';
+  ctx.fillRect(290, topY, 60, hKontrPx);
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1; ctx.strokeRect(290, topY, 60, hKontrPx);
+  ctx.fillStyle = '#c4b5fd'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_fpmNum(skontr, 0) + ' m', 320, topY + hKontrPx + 14);
+  ctx.fillStyle = '#fde047'; ctx.beginPath(); ctx.arc(320, topY + 8, 4, 0, 2 * Math.PI); ctx.fill();
+  // Pfeil dazwischen mit gamma
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(160, H / 2); ctx.lineTo(270, H / 2); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(270, H / 2); ctx.lineTo(262, H / 2 - 4); ctx.lineTo(262, H / 2 + 4); ctx.closePath();
+  ctx.fillStyle = '#94a3b8'; ctx.fill();
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('÷ γ = ÷' + _fpmNum(gamma, 1), 215, H / 2 - 8);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif';
+  ctx.fillText('Δs′ = Δs·√(1−β²)', 215, H / 2 + 14);
+  ctx.fillStyle = '#e2e8f0'; ctx.textAlign = 'center';
+  ctx.fillText('kontrahiert nur in Flugrichtung', W / 2, H - 8);
+  ctx.textAlign = 'left';
+}
+
+function _myoDrawBall(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const beta = _myo.ballBeta, gamma = _myoGamma(Math.min(0.98, beta));
+  const cy = H / 2;
+  // ruhender Ball (Referenz)
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.ellipse(110, cy, 40, 40, 0, 0, 2 * Math.PI); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('in Ruhe: Kugel', 110, cy + 58);
+  // bewegter Ball: in x-Richtung gestaucht um 1/gamma
+  const bx = 320;
+  ctx.fillStyle = 'rgba(124,58,237,0.5)'; ctx.strokeStyle = '#a78bfa'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.ellipse(bx, cy, 40 / gamma, 40, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#c4b5fd'; ctx.font = '9px sans-serif';
+  ctx.fillText('bewegt: gestaucht', bx, cy + 58);
+  ctx.fillText('Breite × √(1−β²) = ' + _fpmNum(1 / gamma, 2), bx, cy + 70);
+  // Bewegungspfeil
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(bx - 60, cy - 55); ctx.lineTo(bx + 60, cy - 55); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(bx + 60, cy - 55); ctx.lineTo(bx + 52, cy - 59); ctx.lineTo(bx + 52, cy - 51); ctx.closePath();
+  ctx.fillStyle = '#fbbf24'; ctx.fill();
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('v = ' + _fpmNum(beta, 2) + '·c →', bx, cy - 60);
+  ctx.textAlign = 'left';
+}
+
+// ── Takt und Zeichnung ─────────────────────────────────
+function _myoTakt(dt) { if (_myo) _myo.t += Math.min(0.05, dt); }
+function _myoRender() {
+  if (!_myo) return;
+  const st = _myo.station;
+  if (st === 0) {
+    const c = document.getElementById('myoSchauer');
+    if (c) _myoDrawSchauer(c.getContext('2d'), c);
+  } else if (st === 1) {
+    const c = document.getElementById('myoParadox');
+    if (c) _myoDrawParadox(c.getContext('2d'), c);
+  } else if (st === 2) {
+    const c = document.getElementById('myoKurve');
+    if (c) _myoDrawKurve(c.getContext('2d'), c);
+  } else if (st === 3) {
+    const c = document.getElementById('myoKontr');
+    if (c) _myoDrawKontr(c.getContext('2d'), c);
+  } else if (st === 4) {
+    const c = document.getElementById('myoBall');
+    if (c) _myoDrawBall(c.getContext('2d'), c);
+  }
+}
+
+// ── Zusätzliche Styles für den Myonenzerfall ───────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .myo-steck { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 12px; }
+    .myo-steck-tab { display: flex; flex-direction: column; gap: 3px; margin-top: 5px; }
+    .myo-steck-z { display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+      font-size: .77rem; color: #475569; padding: 3px 0; border-bottom: 1px solid #eef2f7; }
+    .myo-steck-z:last-child { border-bottom: none; }
+    .myo-steck-z span { flex: 0 0 128px; font-size: .72rem; color: #94a3b8; }
+    .myo-steck-z b { color: #334155; text-align: right; }
+    .myo-k3 { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 9px; padding: 10px 13px; margin-top: 12px; }
+    .myo-paradox-t, .myo-zeit-t, .myo-kontr-t { margin-top: 8px; }
+    .myo-zwei-t { display: flex; flex-direction: column; gap: 8px; }
+    .myo-zwei-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .myo-zwei-sp { border-radius: 9px; padding: 9px 11px; }
+    .myo-zwei-sp.erde { background: #eff6ff; border: 1px solid #bfdbfe; }
+    .myo-zwei-sp.myon { background: #f5f3ff; border: 1px solid #ddd6fe; }
+    .myo-zwei-k { font-size: .78rem; font-weight: 800; margin-bottom: 5px; }
+    .myo-zwei-sp.erde .myo-zwei-k { color: #1e40af; }
+    .myo-zwei-sp.myon .myo-zwei-k { color: #5b21b6; }
+    .myo-zwei-t2 { font-size: .74rem; color: #475569; line-height: 1.5; }
+    .myo-zwei-t2 b { color: #334155; }
+    .myo-zwei-fazit { font-size: .8rem; text-align: center; color: #166534; background: #f0fdf4;
+      border: 1px solid #bbf7d0; border-radius: 8px; padding: 8px 10px; }
+    .myo-zwei-fazit b { color: #14532d; }
+    .myo-sim .sim-btn:disabled { opacity: .4; cursor: not-allowed; }
   `;
   document.head.appendChild(s);
 })();
