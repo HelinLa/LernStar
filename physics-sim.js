@@ -28671,7 +28671,9 @@ function _absInit() {
     // Station 4
     energie: 0.5,   // MeV
     // Station 5
-    biotab: 'dna'
+    biotab: 'dna',
+    // Station 6 – Messreihe selbst aufnehmen (handlungsorientiert)
+    mD: 0, rows: [], nextId: 1, preset: 1, fn: null, fnAuto: false, reveal: false
   };
 }
 
@@ -28691,6 +28693,204 @@ function _absGamma(R0, alpha, d) { return R0 * Math.exp(-alpha * d); }
 function _absHalbwert(alpha) { return Math.log(2) / alpha; }
 // Linearisierung ln(R/R0)
 function _absLnRel(R, R0) { return Math.log(R / R0); }
+
+// ══ Station 6: Messreihe selbst aufnehmen (handlungsorientiert) ══
+// γ-Strahlung von Cs-137 (662 keV) in Blei. R = R0·e^(−µ·d). Traegt man ln R
+// ueber d auf, ist die Steigung −µ und die Halbwertsdicke d½ = ln2/µ.
+function _absMFmt(v) { let s = v.toFixed(4); if (s.indexOf('.') >= 0) s = s.replace(/0+$/, '').replace(/\.$/, ''); return s; }
+function _absMRtrue(d) { return _absGamma(_ABS_CS.R0, _ABS_CS.alpha, d); }
+function _absMSample(d) {
+  // ein realistischer Zaehlrohr-Messwert mit Poisson-Streuung (σ ≈ √R)
+  const Rt = _absMRtrue(d);
+  return Math.max(1, Math.round(Rt + (Math.random() * 2 - 1) * Math.sqrt(Rt)));
+}
+const _ABS_M_PRESETS = [
+  { xl: 'd in mm', yl: 'R in 1/min', x: r => r.d, y: r => r.R, kurve: true,
+    plotLbl: 'R über d: die Zählrate fällt exponentiell',
+    typ: 'fallende Exponentialkurve', form: 'R = R₀·e^(−µ·d)',
+    term: () => _absMFmt(_ABS_CS.R0) + '*exp(-' + _absMFmt(_ABS_CS.alpha) + '*x)',
+    deutung: 'Die Zählrate fällt mit wachsender Bleidicke exponentiell – nie auf null, aber immer weiter. Der Zusammenhang ist nicht linear; deshalb logarithmiert man die Zählraten.' },
+  { xl: 'd in mm', yl: 'ln R', x: r => r.d, y: r => Math.log(r.R), origin: false,
+    plotLbl: 'ln R über d: die Steigung ist −µ',
+    typ: 'Gerade mit negativer Steigung', form: 'ln R = ln R₀ − µ·d',
+    term: () => _absMFmt(Math.log(_ABS_CS.R0)) + '-' + _absMFmt(_ABS_CS.alpha) + '*x',
+    deutung: 'Logarithmiert man die Zählraten und trägt sie über der Dicke auf, ergibt sich eine Gerade. Ihre Steigung ist der negative Schwächungskoeffizient −µ; daraus folgt die Halbwertsdicke d½ = ln2/µ. Für Cs-137-γ in Blei sind das µ ≈ 0,115/mm und d½ ≈ 6,0 mm – genau die Werte der Handreichung.' }
+];
+function _absMSetD(v) {
+  _abs.mD = Math.max(0, Math.min(20, Math.round(+v)));
+  _abs.mR = _absMSample(_abs.mD);
+  const el = document.getElementById('absMDLbl'); if (el) el.textContent = _abs.mD + ' mm';
+  _absMRender();
+}
+function _absMRender() {
+  if (_abs.mR == null) _abs.mR = _absMSample(_abs.mD);
+  const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  set('absMDA', _abs.mD); set('absMRA', _fpmNum(_abs.mR, 0));
+  const lbl = document.getElementById('absMPlotLbl'); if (lbl) lbl.textContent = _ABS_M_PRESETS[_abs.preset].plotLbl;
+  _absMRenderTable(); _absMDrawPlot();
+  const c = document.getElementById('absMAufbau'); if (c) _absMDrawAufbau(c.getContext('2d'), c);
+}
+function _absMTake() {
+  _abs.rows.push({ id: _abs.nextId++, d: _abs.mD, R: _abs.mR });
+  _abs.rows.sort((a, b) => a.d - b.d);
+  _absMRender();
+}
+function _absMDelRow(id) { _abs.rows = _abs.rows.filter(r => r.id !== id); _absMRender(); }
+function _absMClear() {
+  if (_abs.rows.length && !confirm('Alle ' + _abs.rows.length + ' Messwerte löschen?')) return;
+  _abs.rows = []; _absMRender();
+}
+function _absMDemo() {
+  _abs.rows = [];
+  _ABS_CS.d.forEach((d, i) => _abs.rows.push({ id: _abs.nextId++, d, R: _ABS_CS.R[i] }));
+  _absMRender();
+}
+function _absMRenderTable() {
+  const tb = document.getElementById('absMTbody'); if (!tb) return;
+  const empty = document.getElementById('absMEmpty');
+  if (empty) empty.style.display = _abs.rows.length ? 'none' : 'block';
+  tb.innerHTML = _abs.rows.map(r =>
+    `<tr><td>${_fpmNum(r.d, 0)}</td><td>${_fpmNum(r.R, 0)}</td><td>${_fpmNum(Math.log(r.R), 3)}</td>
+       <td class="fpm-del" onclick="_absMDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+function _absMSetPreset(i) {
+  _abs.preset = Math.max(0, Math.min(1, i));
+  for (let k = 0; k < 2; k++) document.getElementById('absMTab' + k)?.classList.toggle('on', k === _abs.preset);
+  _absMRefreshTheorie();
+  _absMRender();
+}
+function _absMSetReveal(on) { _abs.reveal = !!on; _absMDrawPlot(); }
+function _absMTheorieFn() {
+  const term = _ABS_M_PRESETS[_abs.preset].term();
+  const inp = document.getElementById('absMFn'); if (inp) inp.value = term;
+  _absMSetFn(term); _abs.fnAuto = true; _absMRenderTheorie(true);
+}
+function _absMClearFn() {
+  const inp = document.getElementById('absMFn'); if (inp) inp.value = '';
+  _absMSetFn(''); _absMRenderTheorie(false);
+}
+function _absMRefreshTheorie() {
+  if (_abs.fnAuto) {
+    const term = _ABS_M_PRESETS[_abs.preset].term();
+    const inp = document.getElementById('absMFn'); if (inp) inp.value = term;
+    _absMSetFn(term); _abs.fnAuto = true;
+  }
+  _absMRenderTheorie(_abs.fnAuto);
+}
+function _absMRenderTheorie(eingesetzt) {
+  const el = document.getElementById('absMTheo'); if (!el) return;
+  const P = _ABS_M_PRESETS[_abs.preset];
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">${P.typ}</div>
+     <div class="fpm-theo-form">${P.form}</div>
+     <div class="fpm-theo-par">${_abs.preset === 1 ? 'Steigung = −µ, daraus d½ = ln2/µ' : 'R₀ = Startzählrate, µ = Schwächungskoeffizient'}</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${P.term()}</div>` : ''}
+     <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+function _absMSetFn(str) {
+  _abs.fnAuto = false;
+  const err = document.getElementById('absMFnErr');
+  const v = (str || '').trim();
+  if (!v) { _abs.fn = null; if (err) err.textContent = ''; _absMDrawPlot(); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    _abs.fn = f; if (err) err.textContent = '';
+  } catch (e) { _abs.fn = null; if (err) err.textContent = e.message; }
+  _absMDrawPlot();
+}
+function _absMDrawAufbau(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const cy = H / 2;
+  // Quelle
+  ctx.fillStyle = '#fbbf24'; ctx.beginPath(); ctx.arc(40, cy, 12, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Cs', 40, cy + 3);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText('Cs-137', 40, cy + 28);
+  // Bleiplatten (Dicke ~ d)
+  const nPl = Math.round(_abs.mD / 2);
+  ctx.fillStyle = '#475569';
+  for (let i = 0; i < nPl; i++) ctx.fillRect(70 + i * 9, cy - 34, 7, 68);
+  ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText('Blei ' + _abs.mD + ' mm', 70 + nPl * 9 / 2, cy + 48);
+  // Strahl (Intensität ~ R)
+  const frac = _absMRtrue(_abs.mD) / _ABS_CS.R0;
+  ctx.strokeStyle = 'rgba(167,139,250,' + (0.25 + 0.65 * frac) + ')'; ctx.lineWidth = 2 + 4 * frac;
+  ctx.beginPath(); ctx.moveTo(52, cy); ctx.lineTo(W - 70, cy); ctx.stroke();
+  // Zählrohr
+  ctx.fillStyle = '#334155'; ctx.fillRect(W - 66, cy - 20, 40, 40);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.strokeRect(W - 66, cy - 20, 40, 40);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_fpmNum(_abs.mR || 0, 0), W - 46, cy + 2);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.fillText('Imp/min', W - 46, cy + 30);
+}
+function _absMDrawPlot() {
+  const cv = document.getElementById('absMPlot'); if (!cv || !_abs) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = _ABS_M_PRESETS[_abs.preset];
+  const padL = 46, padR = 14, padT = 10, padB = 30;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const pts = _abs.rows.map(r => ({ x: P.x(r), y: P.y(r) })).filter(p => isFinite(p.x) && isFinite(p.y));
+  const xmax = 21;
+  const ys = pts.map(p => p.y);
+  const ymin = _abs.preset === 1 ? (ys.length ? Math.min(...ys) - 0.4 : 5) : 0;
+  const ymax = _abs.preset === 1 ? (ys.length ? Math.max(...ys) + 0.3 : 8) : (ys.length ? Math.max(...ys) * 1.1 : _ABS_CS.R0);
+  const X = v => x0 + v / xmax * (x1 - x0);
+  const Y = v => y0 - (v - ymin) / (ymax - ymin) * (y0 - y1);
+  ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  for (let d = 0; d <= 20; d += 5) { ctx.beginPath(); ctx.moveTo(X(d), y0); ctx.lineTo(X(d), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(d + '', X(d), y0 + 12); }
+  const yticks = [];
+  const span = ymax - ymin; const step = span / 5;
+  for (let i = 0; i <= 5; i++) yticks.push(ymin + i * step);
+  yticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmNum(v, _abs.preset === 1 ? 2 : 0), x0 - 5, Y(v) + 3); });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText(P.xl, x1, y0 + 24);
+  ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText(P.yl, 0, 0); ctx.restore(); ctx.textAlign = 'left';
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
+    const fo = document.getElementById('absMFitBox');
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + P.deutung + '</div>';
+    return;
+  }
+  if (_abs.fn) {
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath(); let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = _abs.fn((px - x0) / (x1 - x0) * xmax); } catch (err) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv); if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  let fit = null;
+  if (!P.kurve && pts.length >= 2) {
+    fit = _fpmFitLinear(pts);
+    if (fit) { ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.7; ctx.beginPath(); ctx.moveTo(X(0), Y(fit.b)); ctx.lineTo(X(xmax), Y(fit.k * xmax + fit.b)); ctx.stroke(); }
+  }
+  pts.forEach(p => { ctx.fillStyle = '#7c3aed'; ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke(); });
+  const el = document.getElementById('absMFitBox');
+  if (el) {
+    if (P.kurve) { el.innerHTML = '<div class="fpm-note">Wechsle zu <b>ln R</b>, um die Halbwertsdicke aus der Steigung zu bestimmen.<br>' + P.deutung + '</div>'; }
+    else if (!fit) { el.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte nötig.</div>'; }
+    else {
+      const mu = -fit.k, d12 = Math.log(2) / mu;
+      const abw = Math.abs(mu - _ABS_CS.alpha) / _ABS_CS.alpha * 100;
+      const cls = abw < 5 ? 'ok' : abw < 12 ? 'mid' : 'no';
+      el.innerHTML = `<div class="fpm-fitline">
+         <span class="fpm-fitmeta">${_abs.rows.length} Messwerte</span>
+         <span class="fpm-fiteq">ln R = ${fit.b >= 0 ? _fpmNum(fit.b, 2) : '−' + _fpmNum(-fit.b, 2)} ${fit.k >= 0 ? '+ ' + _fpmNum(fit.k, 4) : '− ' + _fpmNum(-fit.k, 4)}·d</span>
+         <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 4)}</span>
+         <span class="fpm-fiteq" style="color:#075985">µ = ${_fpmNum(mu, 3)}/mm · d½ = ${_fpmNum(d12, 2)} mm</span>
+         ${_abs.reveal ? `<span class="fpm-badge ${cls}">Literatur µ = 0,115/mm, d½ = 6,0 mm · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+       </div>`;
+    }
+  }
+}
 
 // Durchlassanteil (0..1) je nach Strahlungsart, Absorber und Dicke d (mm).
 function _absTransmission(strId, absId, d) {
@@ -28718,7 +28918,7 @@ function _absDominant(E_MeV) {
 function _absHTML() {
   const stationen = ['1 · Drei Strahlungsarten', '2 · Das Absorptionsgesetz',
                      '3 · Halbwertsdicke bestimmen', '4 · Wie γ-Strahlung wechselwirkt',
-                     '5 · Biologische Wirkung & Medizin']
+                     '5 · Biologische Wirkung & Medizin', '6 · Messreihe aufnehmen']
     .map((s, i) => `<button class="fpm-tab${i === _abs.station ? ' on' : ''}" id="absSt${i}" onclick="_absSetStation(${i})">${s}</button>`).join('');
 
   const strahlwahl = _ABS_STRAHLUNG.map((c, i) =>
@@ -28825,6 +29025,57 @@ function _absHTML() {
       </div>
     </div>
 
+    <!-- ══ Station 6: Messreihe selbst aufnehmen ══ -->
+    <div id="absS5" style="display:none">
+      <div class="fpm-grid">
+        <div>
+          <canvas id="absMAufbau" width="440" height="180" class="phys-anim-cv"></canvas>
+          <div class="fpm-label">Cs-137 (662 keV) hinter Bleiplatten – lies die Zählrate am Zählrohr ab</div>
+          <div class="fpm-tabs" style="margin-top:6px">
+            <button class="fpm-tab" id="absMTab0" onclick="_absMSetPreset(0)">d → R</button>
+            <button class="fpm-tab on" id="absMTab1" onclick="_absMSetPreset(1)">d → ln R</button>
+          </div>
+          <div class="phys-ctrl">
+            <span class="phys-ctrl-label">Bleidicke d: <b id="absMDLbl">0 mm</b></span>
+            <input type="range" id="absMD" min="0" max="20" step="1" value="0"
+              oninput="_absMSetD(this.value)" style="width:100%;accent-color:#7c3aed">
+          </div>
+          <div class="fpm-readout">
+            <div class="fpm-ro"><span class="fpm-ro-k">Bleidicke d</span><span class="fpm-ro-v" id="absMDA">—</span><span class="fpm-ro-u">mm</span></div>
+            <div class="fpm-ro"><span class="fpm-ro-k">Zählrate R (Impulse/min)</span><span class="fpm-ro-v" id="absMRA">—</span><span class="fpm-ro-u">1/min</span></div>
+          </div>
+          <div class="sim-btn-row">
+            <button class="sim-btn primary" onclick="_absMTake()">✓ Messwert übernehmen</button>
+            <button class="sim-btn" onclick="_absMDemo()">📋 Handreichungs-Messreihe</button>
+            <button class="sim-btn" onclick="_absMClear()">🗑 Tabelle leeren</button>
+          </div>
+        </div>
+        <div>
+          <canvas id="absMPlot" width="440" height="220" class="phys-chart-cv"></canvas>
+          <div class="fpm-label" id="absMPlotLbl">ln R über d: die Steigung ist −µ</div>
+          <div class="fpm-tablewrap">
+            <table class="sim-table">
+              <thead><tr><th>d (mm)</th><th>R (1/min)</th><th>ln R</th><th></th></tr></thead>
+              <tbody id="absMTbody"></tbody>
+            </table>
+            <div class="fpm-empty" id="absMEmpty">Noch keine Messwerte.<br>Dicke einstellen → Zählrate übernehmen.</div>
+          </div>
+          <div class="fpm-fit" id="absMFitBox"></div>
+          <div class="fpm-label" style="margin-top:8px">Funktion plotten</div>
+          <input type="text" id="absMFn" class="fpm-input" placeholder="z. B. 7.81-0.115*x" spellcheck="false"
+            oninput="_absMSetFn(this.value)">
+          <div class="fpm-err" id="absMFnErr"></div>
+          <div class="sim-btn-row" style="padding:2px 0 4px">
+            <button class="sim-btn primary" onclick="_absMTheorieFn()">ƒ Theoriefunktion</button>
+            <button class="sim-btn" onclick="_absMClearFn()">Feld leeren</button>
+          </div>
+          <div class="fpm-theo" id="absMTheo"></div>
+          <label class="fpm-check"><input type="checkbox" onchange="_absMSetReveal(this.checked)">
+            Literaturwert (µ = 0,115/mm, d½ = 6,0 mm) anzeigen</label>
+        </div>
+      </div>
+    </div>
+
     <div id="absErkl" class="dsp-erkl"></div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
       <b>R(d) = R₀ · e<sup>−α·d</sup></b> &nbsp;|&nbsp; <b>d<sub>½</sub> = ln2 / α</b>
@@ -28899,13 +29150,14 @@ function _absErklHTML() {
 
 // ── Stationen ──────────────────────────────────────────
 function _absSetStation(i) {
-  _abs.station = Math.max(0, Math.min(4, i));
-  for (let k = 0; k < 5; k++) {
+  _abs.station = Math.max(0, Math.min(5, i));
+  for (let k = 0; k < 6; k++) {
     document.getElementById('absSt' + k)?.classList.toggle('on', k === _abs.station);
     const d = document.getElementById('absS' + k);
     if (d) d.style.display = k === _abs.station ? 'block' : 'none';
   }
   _absUpdate();
+  if (_abs.station === 5) _absMRender();
 }
 function _absSetStrahlung(i) { _abs.strahlung = Math.max(0, Math.min(2, i)); _absUpdate(); }
 function _absSetAbsorber(i) { _abs.absorber = Math.max(0, Math.min(2, i)); _absUpdate(); }
@@ -29441,6 +29693,9 @@ function _absRender() {
   } else if (st === 4) {
     const c = document.getElementById('absTiefe');
     if (c) _absDrawTiefe(c.getContext('2d'), c);
+  } else if (st === 5) {
+    const c = document.getElementById('absMAufbau');
+    if (c) _absMDrawAufbau(c.getContext('2d'), c);
   }
 }
 
