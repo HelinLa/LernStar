@@ -236,32 +236,15 @@ const _physSimDefs = {
   },
 
   // ── 2. BESCHLEUNIGTE BEWEGUNG ──────────────────────────
+  // ── 2. BESCHLEUNIGTE BEWEGUNG (handlungsorientiert) ────
   'beschleunigung': modal => {
-    modal.innerHTML = _simModalHTML('beschleunigung', '🚀 Beschleunigte Bewegung – v = v₀ + a·t',
-      _slider_html('baA', 'Beschleunigung a', 0, 10, 3, 0.5, 'm/s²') +
-      _slider_html('baV0', 'Anfangsgeschwindigkeit v₀', 0, 20, 0, 1, 'm/s'), true);
-    _pSim = new PhysicsSimEngine('physAnim', 'physChart');
-    _pSim.addSeries('s'); _pSim.addSeries('v'); _pSim.addSeries('a');
-    let s = 0, v = 0;
-    _pSim.start(
-      dt => {
-        const a = _slider('baA'), v0 = _slider('baV0');
-        if (_pSim.t < 0.05) { s = 0; v = v0; }
-        v += a * dt; s += v * dt;
-        _pSim.record('s', s); _pSim.record('v', v); _pSim.record('a', a);
-      },
-      (ctx, cv) => {
-        ctx.clearRect(0, 0, cv.width, cv.height);
-        _drawRoad(ctx, cv);
-        const x = (s * 3) % (cv.width + 80) - 40;
-        _drawCar(ctx, x, cv.height - 70, '#7c3aed');
-        _infoBox(ctx, cv, [`s = ${s.toFixed(1)} m`, `v = ${v.toFixed(1)} m/s`, `a = ${_slider('baA')} m/s²`]);
-      },
-      [
-        { series: 's', title: 's-t-Diagramm', label: 's', unit: 'm', color: '#7c3aed', yMin: 0 },
-        { series: 'v', title: 'v-t-Diagramm', label: 'v', unit: 'm/s', color: '#f97316', yMin: 0 }
-      ]
-    );
+    _bslInit();
+    modal.innerHTML = _bslHTML();
+    _bslRenderTable();
+    _pSim = new PhysicsSimEngine('bslAnim', 'bslPlot');
+    _pSim.start(dt => _bslUpdate(dt), (ctx, cv) => _bslDraw(ctx, cv), []);
+    _mlabRenderTheorie(_bsl, false);
+    _mlabDrawPlot('bslPlot', _bsl);
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -34054,8 +34037,9 @@ function _mlabRenderFit(st, groups, P) {
     return;
   }
   // Handlungsorientierter Abschluss: gesuchte Groesse aus der Steigung + Literaturvergleich
+  // ergebnis(g0, st) erhaelt die erste Gruppe { key, col, fit, n } und den State.
   if (P.ergebnis && groups[0] && groups[0].fit) {
-    html += P.ergebnis(groups[0].fit, st);
+    html += P.ergebnis(groups[0], st);
   }
   el.innerHTML = html + '<div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">' + P.note + '</div>';
 }
@@ -34184,8 +34168,8 @@ const _GLF_PRESETS = [
     param: () => 'Steigung = v = ' + _fpmNum(_glf.v, 1) + ' m/s (aktuell gewählt)',
     term: () => _glf.v.toString() + '*x',
     deutung: 'Weg proportional zur Zeit: In gleichen Zeiten wird immer die gleiche Strecke zurückgelegt. Die Steigung der Geraden ist die Geschwindigkeit.',
-    ergebnis: (fit) => _mlabErgebnis('Geschwindigkeit v = Steigung der Ausgleichsgeraden',
-      _fpmNum(fit.k, 2), 'm/s', _fpmNum(_glf.v, 2), 's = v·t  ⇒  v = s/t') }
+    ergebnis: (g0) => _mlabErgebnis('Geschwindigkeit v = Steigung der Ausgleichsgeraden',
+      _fpmNum(g0.fit.k, 2), 'm/s', _fpmNum(g0.key, 2), 's = v·t  ⇒  v = s/t') }
 ];
 
 function _glfInit() {
@@ -34321,4 +34305,182 @@ function _glfDraw(ctx, cv) {
   ctx.fillText('v = ' + _fpmNum(_glf.v, 1) + ' m/s  (konstant)', mL, 22);
   ctx.fillStyle = '#7c3aed'; ctx.font = '11px sans-serif';
   ctx.fillText('s = ' + _fpmNum(_glf.dispS, 2) + ' m', mL, 40);
+}
+
+// ═══════════════════════════════════════════════════════
+// 1.3 BESCHLEUNIGTE BEWEGUNG – handlungsorientiert
+// Wagen startet aus der Ruhe, konstante Beschleunigung a.
+// Lichtschranken messen an jeder Marke Zeit t und Momentan-
+// geschwindigkeit v.  v-t-Gerade: Steigung = a.  s-t²-Gerade:
+// Steigung = a/2.  Parabel s(t) linearisieren.
+// ═══════════════════════════════════════════════════════
+
+const _BSL_MARKS = [0.5, 1.0, 2.0, 3.0, 4.5, 6.0];   // Marken in m
+let _bsl = null;
+
+const _BSL_PRESETS = [
+  { tab: 't → v', xl: 't in s', yl: 'v in m/s', x: r => r.t, y: r => r.v, grp: r => r.a,
+    gl: k => 'a = ' + _fpmNum(+k, 1) + ' m/s²', slope: k => +k,
+    curveFn: (xv, k) => k * xv,
+    note: 'Ursprungsgerade ⇒ v ~ t. Die Steigung ist direkt die Beschleunigung a = Δv/Δt. Aus der Ruhe heraus gilt v = a·t.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'v(t) = a · t',
+    param: () => 'Steigung = a = ' + _fpmNum(_bsl.a, 1) + ' m/s² (aktuell gewählt)',
+    term: () => _bsl.a.toString() + '*x',
+    deutung: 'Die Geschwindigkeit wächst gleichmäßig mit der Zeit. Die Steigung der v-t-Geraden ist die Beschleunigung.',
+    ergebnis: (g0) => _mlabErgebnis('Beschleunigung a = Steigung der v-t-Geraden',
+      _fpmNum(g0.fit.k, 2), 'm/s²', _fpmNum(g0.key, 2), 'v = a·t  ⇒  a = Δv/Δt') },
+  { tab: 't → s', xl: 't in s', yl: 's in m', x: r => r.t, y: r => r.s, grp: r => r.a,
+    gl: k => 'a = ' + _fpmNum(+k, 1) + ' m/s²', curve: true, col: (k, i) => _MLAB_PALETTE[i % _MLAB_PALETTE.length],
+    curveFn: (xv, k) => 0.5 * k * xv * xv,
+    note: 'Keine Gerade, sondern eine Parabel: s ~ t². Verdoppelst du die Zeit, vervierfacht sich der Weg. Aus einer Kurve liest man schlecht ab – quadriere t und wechsle zur Auftragung t² → s.',
+    typ: 'quadratische Funktion (Parabel)', form: 's(t) = ½ · a · t²',
+    param: () => 'a = ' + _fpmNum(_bsl.a, 1) + ' m/s²',
+    term: () => '0.5*' + _bsl.a.toString() + '*x^2',
+    deutung: 'Der Weg wächst quadratisch mit der Zeit – typisch für gleichmäßige Beschleunigung.' },
+  { tab: 't² → s', xl: 't² in s²', yl: 's in m', x: r => r.t * r.t, y: r => r.s, grp: r => r.a,
+    gl: k => 'a = ' + _fpmNum(+k, 1) + ' m/s²', slope: k => +k / 2,
+    curveFn: (xv, k) => 0.5 * k * xv,
+    note: 'Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 's(t²) = (a/2) · t²',
+    param: () => 'Steigung = a/2 = ' + _fpmNum(_bsl.a / 2, 2) + ' m/s²',
+    term: () => (_bsl.a / 2).toString() + '*x',
+    deutung: 'Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.',
+    ergebnis: (g0) => _mlabErgebnis('Beschleunigung a = 2 × Steigung',
+      _fpmNum(2 * g0.fit.k, 2), 'm/s²', _fpmNum(g0.key, 2), 's = ½·a·t²  ⇒  a = 2·(s/t²)') }
+];
+
+function _bslInit() {
+  _bsl = {
+    a: 2.0, dispT: 0, flash: 0,
+    rows: [], nextId: 1, preset: 0, fn: null, fnAuto: false, origin: true, showTheory: false,
+    pre: 'bsl', plotId: 'bslPlot', fitId: 'bslFit', fnId: 'bslFn', fnErrId: 'bslErr', theoId: 'bslTheo',
+    presets: _BSL_PRESETS
+  };
+}
+
+function _bslHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim bsl-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🚀 Beschleunigte Bewegung – v = a·t und s = ½a·t² messen</h3>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="bslAnim" width="420" height="240" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Beschleunigung a: <b id="bslALbl">2,0 m/s²</b></span>
+          <input type="range" id="bslA" min="0.5" max="8" step="0.5" value="2"
+            oninput="_bslSetA(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="fpm-note" style="margin-top:6px">Der Wagen startet aus der Ruhe. Jede Lichtschranke misst die Zeit <b>und</b> die Momentangeschwindigkeit. Danach mit einer <b>anderen</b> Beschleunigung wiederholen.</div>
+      </div>
+      <div>
+        <div class="fpm-label">Messung</div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" onclick="_bslMessen()">⏱ Lichtschranken-Messfahrt</button>
+          <button class="sim-btn" onclick="_bslDemo()">📋 Beispielmessreihe</button>
+          <button class="sim-btn" onclick="_bslClear()">🗑 Tabelle leeren</button>
+        </div>
+        <div class="fpm-tablewrap">
+          <table class="sim-table">
+            <thead><tr><th>a (m/s²)</th><th>s (m)</th><th>t (s)</th><th>v (m/s)</th><th></th></tr></thead>
+            <tbody id="bslTbody"></tbody>
+          </table>
+          <div class="fpm-empty" id="bslEmpty">Noch keine Messwerte.<br>Beschleunigung wählen → Messfahrt starten.</div>
+        </div>
+      </div>
+    </div>
+    <div class="fpm-label" style="margin-top:12px">Auswertung – finde die Auftragung, bei der die Punkte auf einer Ursprungsgeraden liegen</div>
+    ${_mlabAuswertungHTML(_bsl, { preset: '_bslSetPreset', setfn: '_bslSetFn', theo: '_bslTheorieFn', clear: '_bslClearFn', bool: '_bslSetBool' })}
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>v = a·t</b> (Gerade, Steigung a) &nbsp;|&nbsp; <b>s = ½a·t²</b> (Parabel → Gerade nach t²)
+    </p>
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _bslSetA(v) {
+  _bsl.a = +v;
+  const el = document.getElementById('bslALbl'); if (el) el.textContent = _fpmNum(+v, 1) + ' m/s²';
+  _mlabRefreshTheorie(_bsl);
+}
+function _bslMessRow(a, s) {
+  const tTrue = Math.sqrt(2 * s / a), vTrue = a * tTrue;
+  const t = tTrue * (1 + (Math.random() - 0.5) * 0.012);
+  const v = vTrue * (1 + (Math.random() - 0.5) * 0.02);
+  return { a, s, t: Math.round(t * 100) / 100, v: Math.round(v * 10) / 10 };
+}
+function _bslMessen() {
+  _BSL_MARKS.forEach(s => { const r = _bslMessRow(_bsl.a, s); _bslAddRow(r.a, r.s, r.t, r.v); });
+  _bsl.flash = 1;
+}
+function _bslDemo() {
+  [1.0, 2.0, 4.0].forEach(a => _BSL_MARKS.forEach(s => {
+    const r = _bslMessRow(a, s); _bsl.rows.push({ id: _bsl.nextId++, a: r.a, s: r.s, t: r.t, v: r.v });
+  }));
+  _bslRenderTable(); _mlabDrawPlot('bslPlot', _bsl);
+}
+function _bslAddRow(a, s, t, v) {
+  _bsl.rows.push({ id: _bsl.nextId++, a, s, t, v });
+  _bslRenderTable(); _mlabDrawPlot('bslPlot', _bsl);
+}
+function _bslDelRow(id) { _bsl.rows = _bsl.rows.filter(r => r.id !== id); _bslRenderTable(); _mlabDrawPlot('bslPlot', _bsl); }
+function _bslClear() {
+  if (_bsl.rows.length && !confirm('Alle ' + _bsl.rows.length + ' Messwerte löschen?')) return;
+  _bsl.rows = []; _bslRenderTable(); _mlabDrawPlot('bslPlot', _bsl);
+}
+function _bslColA(a) { const i = [1, 2, 3, 4, 5, 6, 7, 8].indexOf(Math.round(a)); return _MLAB_PALETTE[(i < 0 ? 0 : i) % _MLAB_PALETTE.length]; }
+function _bslRenderTable() {
+  const tb = document.getElementById('bslTbody'); if (!tb) return;
+  const empty = document.getElementById('bslEmpty');
+  if (empty) empty.style.display = _bsl.rows.length ? 'none' : 'block';
+  tb.innerHTML = _bsl.rows.map(r =>
+    `<tr><td><span class="fpm-dot" style="background:${_bslColA(r.a)}"></span>${_fpmNum(r.a, 1)}</td>
+       <td>${_fpmNum(r.s, 1)}</td><td><b>${_fpmNum(r.t, 2)}</b></td><td>${_fpmNum(r.v, 1)}</td>
+       <td class="fpm-del" onclick="_bslDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+
+// ── Wiring ─────────────────────────────────────────────
+function _bslSetPreset(i) { _mlabSetPreset(_bsl, i); }
+function _bslSetFn(s) { _mlabSetFn(_bsl, s); }
+function _bslTheorieFn() { _mlabTheorieFn(_bsl); }
+function _bslClearFn() { _mlabClearFn(_bsl); }
+function _bslSetBool(k, v) { _bsl[k] = v; _mlabDrawPlot('bslPlot', _bsl); }
+
+// ── Animation ──────────────────────────────────────────
+function _bslUpdate(dt) {
+  if (!_bsl) return;
+  _bsl.dispT += dt;
+  const s = 0.5 * _bsl.a * _bsl.dispT * _bsl.dispT;
+  if (s > 6.5) _bsl.dispT = 0;
+  _bsl.flash = Math.max(0, _bsl.flash - dt * 1.5);
+}
+function _bslDraw(ctx, cv) {
+  if (!_bsl) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f0f9ff'; ctx.fillRect(0, 0, W, H);
+  const road = H - 60, mL = 30, mR = W - 20, span = mR - mL, SMAX = 6.5;
+  const sx = s => mL + s / SMAX * span;
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(mL, road, span, 8);
+  _BSL_MARKS.forEach(s => {
+    ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(sx(s), road - 46); ctx.lineTo(sx(s), road); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmNum(s, 1), sx(s), road + 22);
+  });
+  ctx.fillStyle = '#64748b'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Lichtschranken bei s (m):', mL, road + 40);
+  const sNow = 0.5 * _bsl.a * _bsl.dispT * _bsl.dispT, vNow = _bsl.a * _bsl.dispT;
+  const cx = sx(Math.min(sNow, SMAX));
+  ctx.fillStyle = _bsl.flash > 0.3 ? '#f97316' : '#7c3aed';
+  const bw = 34, bh = 18;
+  ctx.beginPath(); ctx.roundRect ? ctx.roundRect(cx - bw / 2, road - bh, bw, bh, 4) : ctx.rect(cx - bw / 2, road - bh, bw, bh); ctx.fill();
+  ctx.fillStyle = '#1e293b';
+  ctx.beginPath(); ctx.arc(cx - 9, road, 4, 0, 2 * Math.PI); ctx.arc(cx + 9, road, 4, 0, 2 * Math.PI); ctx.fill();
+  // Geschwindigkeitspfeil
+  ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(cx, road - bh - 6); ctx.lineTo(cx + Math.min(70, vNow * 8), road - bh - 6); ctx.stroke();
+  ctx.fillStyle = '#1e293b'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('a = ' + _fpmNum(_bsl.a, 1) + ' m/s²', mL, 22);
+  ctx.fillStyle = '#16a34a'; ctx.font = '11px sans-serif';
+  ctx.fillText('v = ' + _fpmNum(vNow, 1) + ' m/s', mL, 40);
 }
