@@ -302,7 +302,10 @@ const _physAbDefs = {
   'v-formel': { titel: 'Wie berechnet man eine Geschwindigkeit? (v = s / t)', ns: 'vformel', html: () => _vstArbeitsblattHTML() },
   'v-umrechnung': { titel: 'Wie werden m/s und km/h umgerechnet?', ns: 'umrechnung', html: () => _umrArbeitsblattHTML() },
   'gleichfoermig-rs': { titel: 'Was ist eine gleichförmige Bewegung?', ns: 'gleichfoermig-rs', html: () => _glmArbeitsblattHTML() },
-  'beschleunigung-rs': { titel: 'Was ist eine beschleunigte Bewegung?', ns: 'beschleunigung-rs', html: () => _bwgArbeitsblattHTML() }
+  'beschleunigung-rs': { titel: 'Was ist eine beschleunigte Bewegung?', ns: 'beschleunigung-rs', html: () => _bwgArbeitsblattHTML() },
+  'weg-zeit-diagramm': { titel: 'Das Weg-Zeit-Diagramm (s-t-Diagramm)', ns: 'stdiagramm', html: () => _stdArbeitsblattHTML() },
+  'v-zeit-diagramm': { titel: 'Das Geschwindigkeit-Zeit-Diagramm (v-t-Diagramm)', ns: 'vtdiagramm', html: () => _vtdArbeitsblattHTML() },
+  'verkehr-messung': { titel: 'Geschwindigkeitsmessung im Straßenverkehr', ns: 'verkehr', html: () => _radArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -1142,6 +1145,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('bwgAnim', 'bwgAnim');
     _pSim.start(dt => _bwgUpdate(dt), (ctx, cv) => _bwgDraw(ctx, cv), []);
     _abRestore('beschleunigung-rs');
+  },
+
+  // ── 8.4.7 WEG-ZEIT-DIAGRAMM ────────────────────────────────────
+  'weg-zeit-diagramm': modal => {
+    _stdInit();
+    modal.innerHTML = _stdHTML();
+    _stdStatus();
+    _pSim = new PhysicsSimEngine('stdAnim', 'stdAnim');
+    _pSim.start(dt => _stdUpdate(dt), (ctx, cv) => _stdDraw(ctx, cv), []);
+    _abRestore('stdiagramm');
+  },
+
+  // ── 8.4.8 GESCHWINDIGKEIT-ZEIT-DIAGRAMM ────────────────────────
+  'v-zeit-diagramm': modal => {
+    _vtdInit();
+    modal.innerHTML = _vtdHTML();
+    _vtdStatus();
+    _pSim = new PhysicsSimEngine('vtdAnim', 'vtdAnim');
+    _pSim.start(dt => _vtdUpdate(dt), (ctx, cv) => _vtdDraw(ctx, cv), []);
+    _abRestore('vtdiagramm');
+  },
+
+  // ── 8.4.9 GESCHWINDIGKEITSMESSUNG IM VERKEHR ───────────────────
+  'verkehr-messung': modal => {
+    _radInit();
+    modal.innerHTML = _radHTML();
+    _radStatus();
+    _pSim = new PhysicsSimEngine('radAnim', 'radAnim');
+    _pSim.start(dt => _radUpdate(dt), (ctx, cv) => _radDraw(ctx, cv), []);
+    _abRestore('verkehr');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -53072,5 +53105,631 @@ function _bwgAns(qi, oi) {
 function _bwgSelf(n) {
   const out = document.getElementById('bwgSelfOut'), val = document.getElementById('bwgSelfVal');
   if (val) { val.value = String(n); _abSave('beschleunigung-rs'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══ KAPITEL 8.4 GESCHWINDIGKEIT – Batch 3 (8.4.7/8.4.8/8.4.9) – Klasse 8 komplett ═══
+// ═══════════════════════════════════════════════════════
+// 8.4.7  DAS WEG-ZEIT-DIAGRAMM (s-t-DIAGRAMM)
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Bewegung"
+// Handlungsorientiert: Im s-t-Diagramm bedeutet eine steile Gerade
+// schnelle Fahrt, eine flache Gerade langsame Fahrt und eine
+// waagerechte Linie Stillstand. Der Wagen fährt passend dazu.
+// ═══════════════════════════════════════════════════════
+let _std = null;
+// Szenarien als Segmente: [dauer(s), v(px/s)] – s-t wird aufintegriert
+const _STD_SZEN = {
+  langsam: { name: 'langsam', segs: [[6, 22]] },
+  schnell: { name: 'schnell', segs: [[6, 55]] },
+  pause:   { name: 'mit Pause', segs: [[2, 55], [2, 0], [2, 55]] }
+};
+function _stdInit() { _std = { szen: 'schnell', t: 0, laufen: false }; }
+function _stdDauer() { return _STD_SZEN[_std.szen].segs.reduce((a, s) => a + s[0], 0); }
+function _stdSAt(tt) {
+  let s = 0; let rest = tt;
+  for (const seg of _STD_SZEN[_std.szen].segs) { const d = Math.min(rest, seg[0]); s += seg[1] * d; rest -= d; if (rest <= 0) break; }
+  return s;
+}
+
+function _stdHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim std-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📉 Das Weg-Zeit-Diagramm (s-t-Diagramm)</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle eine Fahrt und starte sie. Beobachte gleichzeitig den Wagen und die Linie im s-t-Diagramm. Was bedeutet eine steile, eine flache und eine waagerechte Linie?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="stdAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${Object.keys(_STD_SZEN).map(k => `<button class="sim-btn${_std.szen === k ? ' primary' : ''}" id="stdZ_${k}" onclick="_stdSet('${k}')">${_STD_SZEN[k].name}</button>`).join('')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" onclick="_stdStart()">▶ Fahren</button>
+          <button class="sim-btn" onclick="_stdReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">So liest man das s-t-Diagramm</div>
+        <div class="lmp-status" id="stdStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Im Weg-Zeit-Diagramm steht die <b>Zeit t</b> waagerecht und der <b>Weg s</b> senkrecht. Eine <b>steile</b> Linie = <b>schnell</b>, eine <b>flache</b> Linie = <b>langsam</b>, eine <b>waagerechte</b> Linie = der Körper <b>steht still</b>. Eine gleichförmige Bewegung ergibt eine <b>Gerade</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      steil = schnell &nbsp;·&nbsp; flach = langsam &nbsp;·&nbsp; waagerecht = Stillstand.
+    </p>
+    ${_stdArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _stdSet(k) { _std.szen = k; Object.keys(_STD_SZEN).forEach(x => document.getElementById('stdZ_' + x)?.classList.toggle('primary', x === k)); _stdReset2(); }
+function _stdReset2() { _std.t = 0; _std.laufen = false; _stdStatus(); }
+function _stdStart() { _std.t = 0; _std.laufen = true; _stdStatus(); }
+function _stdReset() { _stdInit(); _stdSet('schnell'); _stdReset2(); }
+function _stdStatus() {
+  const el = document.getElementById('stdStatus'); if (!el) return;
+  const txt = { langsam: 'Langsame Fahrt: flache Gerade – in gleicher Zeit wenig Weg.', schnell: 'Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.', pause: 'Mit Pause: erst steigt die Linie, dann waagerecht (Stillstand), dann steigt sie wieder.' }[_std.szen];
+  el.textContent = txt; el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _stdUpdate(dt) { if (_std && _std.laufen) { _std.t += dt; if (_std.t >= _stdDauer()) { _std.t = _stdDauer(); _std.laufen = false; } } }
+function _stdDraw(ctx, cv) {
+  if (!_std) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  // Diagramm links
+  const ox = 44, oy = 30, ow = 200, oh = 130;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(ox, oy + oh); ctx.lineTo(ox + ow, oy + oh); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('s (Weg)', ox - 2, oy - 10); ctx.textAlign = 'left'; ctx.fillText('t (Zeit)', ox + ow - 34, oy + oh + 14);
+  const dauer = _stdDauer(), sMax = 340;
+  const px = tt => ox + (tt / dauer) * ow;
+  const py = ss => oy + oh - Math.min(1, ss / sMax) * oh;
+  // ganze Kurve (blass)
+  ctx.strokeStyle = 'rgba(56,189,248,0.4)'; ctx.lineWidth = 2; ctx.beginPath();
+  for (let i = 0; i <= 60; i++) { const tt = dauer * i / 60; const x = px(tt), y = py(_stdSAt(tt)); if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
+  ctx.stroke();
+  // gefahrener Teil (kräftig) + Punkt
+  ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.5; ctx.beginPath();
+  const steps = Math.max(1, Math.floor(60 * _std.t / dauer));
+  for (let i = 0; i <= steps; i++) { const tt = _std.t * i / steps; const x = px(tt), y = py(_stdSAt(tt)); if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
+  ctx.stroke();
+  const cxD = px(_std.t), cyD = py(_stdSAt(_std.t));
+  ctx.fillStyle = '#fde047'; ctx.beginPath(); ctx.arc(cxD, cyD, 4, 0, 2 * Math.PI); ctx.fill();
+
+  // Fahrbahn rechts (vertikal-ish) – Wagen fährt
+  const tx0 = 280, tx1 = W - 20, ty = 190;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(ox, ty + 12); ctx.lineTo(W - 20, ty + 12); ctx.stroke();
+  const carx = ox + Math.min(1, _stdSAt(_std.t) / sMax) * (W - 40 - ox);
+  ctx.fillStyle = '#22c55e'; ctx.fillRect(carx - 15, ty - 6, 30, 15);
+  ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(carx - 8, ty + 11, 4, 0, 2 * Math.PI); ctx.arc(carx + 8, ty + 11, 4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Fahrbahn', ox, ty - 12);
+
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(_STD_SZEN[_std.szen].name, W - 20, 22);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.4.7  (ns = 'stdiagramm') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _stdArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('stdiagramm')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('stdiagramm')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was kann man aus einem Weg-Zeit-Diagramm über die Bewegung ablesen?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass eine steile Linie … bedeutet.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Starte die langsame und die schnelle Fahrt und vergleiche die Linien.</li>
+          <li>Starte die Fahrt „mit Pause" und achte auf den waagerechten Teil.</li>
+          <li>Ordne zu: steil / flach / waagerecht.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>steile Linie</td><td>${inp('b1', 'schnell/langsam/steht')}</td><td>flache Linie</td><td>${inp('b2', 'schnell/langsam/steht')}</td></tr>
+          <tr><td>waagerechte Linie</td><td>${inp('b3', 'schnell/langsam/steht')}</td><td>gleichförmig ergibt</td><td>${inp('c3', 'Gerade/Kurve')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne ein s-t-Diagramm (t waagerecht, s senkrecht) mit einer steilen und einer flachen Geraden. Beschrifte „schnell" und „langsam".</div>
+        <div class="ab-skizze">Platz für dein Diagramm</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was bedeutet eine steile Linie? ${inp('a1', '')}</li>
+          <li>Was bedeutet eine waagerechte Linie? ${inp('a2', '')}</li>
+          <li>Welche Achse zeigt die Zeit? ${inp('a3', 'die … Achse')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Im s-t-Diagramm bedeutet eine steile Linie ${inp('m1', 'was?')} und eine flache Linie ${inp('m2', 'was?')}.<br>
+        Eine waagerechte Linie bedeutet ${inp('m3', 'was?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Aufgabe)</div>
+        <div class="ab-t">Zwei Autos sind im s-t-Diagramm als Geraden eingezeichnet. Auto A hat eine steilere Linie als Auto B. Welches Auto ist schneller?</div>
+        ${ta('tr1', 'Auto … ist schneller, weil seine Linie …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="stdMini">${_stdMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_stdSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_stdSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_stdSelf(3)">😃 sicher</button>
+          <span id="stdSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="stdSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Steile Gerade = schnell, flache Gerade = langsam, waagerecht = Stillstand. Gleichförmige Bewegung ergibt eine Gerade; bei einer Pause bleibt s konstant (waagerechtes Stück).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Im s(t)-Diagramm ist die Steigung die Geschwindigkeit (v = Δs/Δt). Gerade → konstante Geschwindigkeit (gleichförmig); steilere Gerade → größeres v; waagerecht → v = 0 (Stillstand); gekrümmt → beschleunigt.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Kurve zeigt den Weg des Autos im Gelände (Berg)." (2) „Waagerecht heißt gleich schnell." (3) „Flach heißt rückwärts."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Achsen benennen (t waagerecht, s senkrecht); Steigung als Geschwindigkeit deuten; Diagramm mit realer Fahrt koppeln.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: schnell · langsam · steht · Gerade. 6.1 schnelle Fahrt · 6.2 Stillstand · 6.3 die waagerechte (t-)Achse. Merksatz: schnell · langsam · Stillstand. Transfer: Auto A ist schneller, weil seine Linie steiler ist. Minidiagnose: 1→Schnelle Fahrt · 2→Stillstand · 3→Eine Gerade.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('stdiagramm')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('stdiagramm', 'Das Weg-Zeit-Diagramm (s-t-Diagramm)', body);
+}
+
+const _STD_MINI = [
+  { q: '1. Was bedeutet eine steile Linie im s-t-Diagramm?',
+    opts: ['Langsame Fahrt', 'Schnelle Fahrt', 'Stillstand'], correct: 1,
+    fb: ['Flach wäre langsam.',
+         'Richtig! Steil = in gleicher Zeit viel Weg = schnell.',
+         'Stillstand wäre waagerecht.'] },
+  { q: '2. Was bedeutet eine waagerechte Linie?',
+    opts: ['Sehr schnell', 'Der Körper steht still', 'Er fährt rückwärts'], correct: 1,
+    fb: ['Waagerecht bedeutet kein Weg pro Zeit.',
+         'Richtig! Der Weg ändert sich nicht – Stillstand.',
+         'Rückwärts würde die Linie fallen.'] },
+  { q: '3. Welche Linie ergibt eine gleichförmige Bewegung?',
+    opts: ['Eine Gerade', 'Eine Kurve', 'Eine Zickzacklinie'], correct: 0,
+    fb: ['Richtig! Konstante Geschwindigkeit → Gerade.',
+         'Eine Kurve wäre beschleunigt.',
+         'Zickzack passt hier nicht.'] }
+];
+function _stdMiniHTML() {
+  return _STD_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_stdAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="stdFb${qi}"></div></div>`).join('');
+}
+function _stdAns(qi, oi) {
+  const m = _STD_MINI[qi], el = document.getElementById('stdFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _stdSelf(n) {
+  const out = document.getElementById('stdSelfOut'), val = document.getElementById('stdSelfVal');
+  if (val) { val.value = String(n); _abSave('stdiagramm'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.4.8  DAS GESCHWINDIGKEIT-ZEIT-DIAGRAMM (v-t-DIAGRAMM)
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Bewegung"
+// Handlungsorientiert: Im v-t-Diagramm bedeutet eine waagerechte
+// Linie konstante Geschwindigkeit, eine ansteigende Linie
+// Beschleunigen und eine fallende Linie Bremsen.
+// ═══════════════════════════════════════════════════════
+let _vtd = null;
+// v(t) linear: v = v0 + a*t
+const _VTD_SZEN = {
+  konstant:      { name: 'konstant', v0: 55, a: 0 },
+  beschleunigen: { name: 'beschleunigen', v0: 0, a: 16 },
+  bremsen:       { name: 'bremsen', v0: 96, a: -16 }
+};
+function _vtdInit() { _vtd = { szen: 'konstant', t: 0, laufen: false }; }
+function _vtdDauer() { return 6; }
+function _vtdVAt(tt) { const s = _VTD_SZEN[_vtd.szen]; return Math.max(0, s.v0 + s.a * tt); }
+
+function _vtdHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim vtd-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📈 Das Geschwindigkeit-Zeit-Diagramm (v-t-Diagramm)</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle eine Bewegung und starte sie. Achte auf die Linie im v-t-Diagramm und wie schnell der Wagen fährt. Was bedeutet waagerecht, steigend und fallend?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="vtdAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${Object.keys(_VTD_SZEN).map(k => `<button class="sim-btn${_vtd.szen === k ? ' primary' : ''}" id="vtdZ_${k}" onclick="_vtdSet('${k}')">${_VTD_SZEN[k].name}</button>`).join('')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" onclick="_vtdStart()">▶ Fahren</button>
+          <button class="sim-btn" onclick="_vtdReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">So liest man das v-t-Diagramm</div>
+        <div class="lmp-status" id="vtdStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Im v-t-Diagramm steht die <b>Zeit t</b> waagerecht und die <b>Geschwindigkeit v</b> senkrecht. Eine <b>waagerechte</b> Linie = <b>konstante</b> Geschwindigkeit (gleichförmig). Eine <b>ansteigende</b> Linie = <b>Beschleunigen</b>. Eine <b>fallende</b> Linie = <b>Bremsen</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      waagerecht = konstant &nbsp;·&nbsp; steigend = schneller werden &nbsp;·&nbsp; fallend = bremsen.
+    </p>
+    ${_vtdArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _vtdSet(k) { _vtd.szen = k; Object.keys(_VTD_SZEN).forEach(x => document.getElementById('vtdZ_' + x)?.classList.toggle('primary', x === k)); _vtdReset2(); }
+function _vtdReset2() { _vtd.t = 0; _vtd.laufen = false; _vtdStatus(); }
+function _vtdStart() { _vtd.t = 0; _vtd.laufen = true; _vtdStatus(); }
+function _vtdReset() { _vtdInit(); _vtdSet('konstant'); _vtdReset2(); }
+function _vtdStatus() {
+  const el = document.getElementById('vtdStatus'); if (!el) return;
+  const txt = { konstant: 'Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).', beschleunigen: 'Beschleunigen: ansteigende Linie – die Geschwindigkeit wird immer größer.', bremsen: 'Bremsen: fallende Linie – die Geschwindigkeit wird immer kleiner (bis der Wagen steht).' }[_vtd.szen];
+  el.textContent = txt; el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _vtdUpdate(dt) { if (_vtd && _vtd.laufen) { _vtd.t += dt; if (_vtd.t >= _vtdDauer()) { _vtd.t = _vtdDauer(); _vtd.laufen = false; } } }
+function _vtdDraw(ctx, cv) {
+  if (!_vtd) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const ox = 44, oy = 30, ow = 200, oh = 130, dauer = _vtdDauer(), vMax = 100;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(ox, oy + oh); ctx.lineTo(ox + ow, oy + oh); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('v', ox - 2, oy - 10); ctx.textAlign = 'left'; ctx.fillText('t (Zeit)', ox + ow - 34, oy + oh + 14);
+  const px = tt => ox + (tt / dauer) * ow;
+  const py = vv => oy + oh - Math.min(1, vv / vMax) * oh;
+  // ganze Linie blass
+  ctx.strokeStyle = 'rgba(251,191,36,0.4)'; ctx.lineWidth = 2; ctx.beginPath();
+  for (let i = 0; i <= 60; i++) { const tt = dauer * i / 60; const x = px(tt), y = py(_vtdVAt(tt)); if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
+  ctx.stroke();
+  // gefahrener Teil
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2.5; ctx.beginPath();
+  const steps = Math.max(1, Math.floor(60 * _vtd.t / dauer));
+  for (let i = 0; i <= steps; i++) { const tt = _vtd.t * i / steps; const x = px(tt), y = py(_vtdVAt(tt)); if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
+  ctx.stroke();
+  ctx.fillStyle = '#fde047'; ctx.beginPath(); ctx.arc(px(_vtd.t), py(_vtdVAt(_vtd.t)), 4, 0, 2 * Math.PI); ctx.fill();
+
+  // Tacho / Wagen rechts
+  const carY = 190, cx = ox + Math.min(1, _vtd.t / dauer) * (W - 40 - ox);
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(ox, carY + 12); ctx.lineTo(W - 20, carY + 12); ctx.stroke();
+  ctx.fillStyle = _vtd.szen === 'bremsen' ? '#ef4444' : (_vtd.szen === 'beschleunigen' ? '#22c55e' : '#38bdf8');
+  ctx.fillRect(cx - 15, carY - 6, 30, 15);
+  ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(cx - 8, carY + 11, 4, 0, 2 * Math.PI); ctx.arc(cx + 8, carY + 11, 4, 0, 2 * Math.PI); ctx.fill();
+  // aktuelle v-Anzeige
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('v jetzt: ' + Math.round(_vtdVAt(_vtd.t)), 280, 40);
+  ctx.textAlign = 'right'; ctx.fillText(_VTD_SZEN[_vtd.szen].name, W - 20, 22);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.4.8  (ns = 'vtdiagramm') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _vtdArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('vtdiagramm')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('vtdiagramm')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was verrät ein Geschwindigkeit-Zeit-Diagramm über eine Bewegung?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass eine ansteigende Linie … bedeutet.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Starte „konstant" und beobachte die waagerechte Linie.</li>
+          <li>Starte „beschleunigen" und „bremsen".</li>
+          <li>Ordne zu: waagerecht / ansteigend / fallend.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>waagerechte Linie</td><td>${inp('b1', 'konstant/schneller/langsamer')}</td><td>ansteigende Linie</td><td>${inp('b2', 'konstant/schneller/langsamer')}</td></tr>
+          <tr><td>fallende Linie</td><td>${inp('b3', 'konstant/schneller/langsamer')}</td><td>gleichförmig ist</td><td>${inp('c3', 'waagerecht/steigend')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne ein v-t-Diagramm mit einer waagerechten und einer ansteigenden Linie. Beschrifte „konstant" und „beschleunigen".</div>
+        <div class="ab-skizze">Platz für dein Diagramm</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was bedeutet eine waagerechte Linie im v-t-Diagramm? ${inp('a1', '')}</li>
+          <li>Was bedeutet eine ansteigende Linie? ${inp('a2', '')}</li>
+          <li>Was bedeutet eine fallende Linie? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Im v-t-Diagramm bedeutet eine waagerechte Linie ${inp('m1', 'was?')} Geschwindigkeit.<br>
+        Eine ansteigende Linie bedeutet ${inp('m2', 'was?')}, eine fallende Linie bedeutet ${inp('m3', 'was?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Achtung – Verwechslung!)</div>
+        <div class="ab-t">Im s-t-Diagramm bedeutet eine waagerechte Linie Stillstand. Im v-t-Diagramm bedeutet eine waagerechte Linie etwas anderes. Was?</div>
+        ${ta('tr1', 'Im v-t-Diagramm heißt waagerecht: die Geschwindigkeit …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="vtdMini">${_vtdMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_vtdSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_vtdSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_vtdSelf(3)">😃 sicher</button>
+          <span id="vtdSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="vtdSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Waagerecht = konstante Geschwindigkeit (gleichförmig); ansteigend = Beschleunigen (v wird größer); fallend = Bremsen (v wird kleiner).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Im v(t)-Diagramm ist die Steigung die Beschleunigung a. Waagerecht → a = 0 (gleichförmig); ansteigend → a > 0; fallend → a < 0 (Verzögerung). Die Fläche unter der Kurve entspricht der zurückgelegten Strecke (für später).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Waagerecht heißt Stillstand." (Verwechslung mit s-t!) (2) „Ansteigend heißt bergauf." (3) „Fallend heißt rückwärts."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> s-t- und v-t-Diagramm klar unterscheiden (Achsenbeschriftung!); waagerecht im v-t = konstante Geschwindigkeit, nicht Stillstand.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: konstant · schneller · langsamer · waagerecht. 6.1 konstante Geschwindigkeit · 6.2 Beschleunigen (schneller) · 6.3 Bremsen (langsamer). Merksatz: konstante · Beschleunigen · Bremsen. Transfer: Im v-t-Diagramm bedeutet waagerecht, dass die Geschwindigkeit gleich bleibt (nicht null). Minidiagnose: 1→Konstante Geschwindigkeit · 2→Beschleunigen · 3→Bremsen.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('vtdiagramm')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('vtdiagramm', 'Das Geschwindigkeit-Zeit-Diagramm (v-t-Diagramm)', body);
+}
+
+const _VTD_MINI = [
+  { q: '1. Was bedeutet eine waagerechte Linie im v-t-Diagramm?',
+    opts: ['Stillstand', 'Konstante Geschwindigkeit', 'Beschleunigen'], correct: 1,
+    fb: ['Achtung: Das gilt im s-t-Diagramm, nicht im v-t-Diagramm.',
+         'Richtig! Die Geschwindigkeit bleibt gleich (gleichförmig).',
+         'Beschleunigen wäre eine ansteigende Linie.'] },
+  { q: '2. Was bedeutet eine ansteigende Linie im v-t-Diagramm?',
+    opts: ['Der Körper wird schneller (beschleunigt)', 'Er wird langsamer', 'Er steht still'], correct: 0,
+    fb: ['Richtig! Die Geschwindigkeit nimmt zu.',
+         'Langsamer wäre eine fallende Linie.',
+         'Stillstand wäre die Linie ganz unten (v = 0).'] },
+  { q: '3. Was bedeutet eine fallende Linie im v-t-Diagramm?',
+    opts: ['Beschleunigen', 'Bremsen (langsamer werden)', 'Gleich schnell'], correct: 1,
+    fb: ['Beschleunigen wäre ansteigend.',
+         'Richtig! Die Geschwindigkeit nimmt ab – der Körper bremst.',
+         'Gleich schnell wäre waagerecht.'] }
+];
+function _vtdMiniHTML() {
+  return _VTD_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_vtdAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="vtdFb${qi}"></div></div>`).join('');
+}
+function _vtdAns(qi, oi) {
+  const m = _VTD_MINI[qi], el = document.getElementById('vtdFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _vtdSelf(n) {
+  const out = document.getElementById('vtdSelfOut'), val = document.getElementById('vtdSelfVal');
+  if (val) { val.value = String(n); _abSave('vtdiagramm'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.4.9  GESCHWINDIGKEITSMESSUNG IM STRASSENVERKEHR
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Bewegung"
+// Handlungsorientiert: Ein Blitzer misst die Geschwindigkeit eines
+// Autos und vergleicht sie mit dem Tempolimit. Bei der Abschnitts-
+// kontrolle wird über eine Strecke die Durchschnittsgeschw. v = s/t.
+// ═══════════════════════════════════════════════════════
+let _rad = null;
+const _RAD_SPEEDS = [30, 50, 70, 100];
+const _RAD_LIMITS = [30, 50, 70];
+function _radInit() { _rad = { speed: 70, limit: 50, t: 0, pos: 0, laufen: false, gemessen: false, blitz: 0 }; }
+function _radZuSchnell() { return _rad.speed > _rad.limit; }
+
+function _radHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim rad-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📸 Geschwindigkeitsmessung im Straßenverkehr</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Blitzer misst das Tempo eines Autos. Stelle die Geschwindigkeit und das erlaubte Tempo ein und lass das Auto fahren. Wird es geblitzt?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="radAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Auto:</span>
+          ${_RAD_SPEEDS.map(v => `<button class="sim-btn${_rad.speed === v ? ' primary' : ''}" id="radS_${v}" onclick="_radSetS(${v})">${v}</button>`).join('')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">erlaubt:</span>
+          ${_RAD_LIMITS.map(v => `<button class="sim-btn${_rad.limit === v ? ' primary' : ''}" id="radL_${v}" onclick="_radSetL(${v})">${v}</button>`).join('')}
+          <button class="sim-btn primary" onclick="_radStart()">▶ vorbeifahren</button>
+          <button class="sim-btn" onclick="_radReset()">↺</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Messung</div>
+        <div class="lmp-status" id="radStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Ein <b>Radar- oder Laserblitzer</b> misst die Geschwindigkeit sofort. Bei der <b>Abschnittskontrolle</b> misst man die Zeit über eine bekannte Strecke und rechnet die <b>Durchschnittsgeschwindigkeit v = s / t</b> aus. Ist das Auto schneller als erlaubt, gibt es ein Blitzerfoto.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      gemessene Geschwindigkeit vergleichen mit dem <b>Tempolimit</b>. &nbsp;|&nbsp; Abschnittskontrolle: <b>v = s / t</b>.
+    </p>
+    ${_radArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _radSetS(v) { _rad.speed = v; _RAD_SPEEDS.forEach(x => document.getElementById('radS_' + x)?.classList.toggle('primary', x === v)); _radReset2(); }
+function _radSetL(v) { _rad.limit = v; _RAD_LIMITS.forEach(x => document.getElementById('radL_' + x)?.classList.toggle('primary', x === v)); _radReset2(); }
+function _radReset2() { _rad.pos = 0; _rad.laufen = false; _rad.gemessen = false; _rad.blitz = 0; _radStatus(); }
+function _radStart() { _rad.pos = 0; _rad.laufen = true; _rad.gemessen = false; _rad.blitz = 0; _radStatus(); }
+function _radReset() { _radInit(); _radSetS(70); _radSetL(50); _radReset2(); }
+function _radStatus() {
+  const el = document.getElementById('radStatus'); if (!el) return;
+  if (!_rad.gemessen) {
+    el.textContent = `Bereit: Auto ${_rad.speed} km/h, erlaubt ${_rad.limit} km/h. Lass das Auto am Blitzer vorbeifahren.`;
+    el.className = 'lmp-status';
+  } else if (_radZuSchnell()) {
+    el.textContent = `📸 Geblitzt! Gemessen ${_rad.speed} km/h, erlaubt ${_rad.limit} km/h → ${_rad.speed - _rad.limit} km/h zu schnell.`;
+    el.className = 'lmp-status off';
+  } else {
+    el.textContent = `✓ Alles ok: ${_rad.speed} km/h, erlaubt ${_rad.limit} km/h. Kein Blitzerfoto.`;
+    el.className = 'lmp-status on';
+  }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _radUpdate(dt) {
+  if (!_rad) return;
+  _rad.t += dt;
+  if (_rad.laufen) {
+    _rad.pos += (30 + _rad.speed) * dt;
+    const blitzX = 220;
+    if (!_rad.gemessen && _rad.pos >= blitzX) { _rad.gemessen = true; if (_radZuSchnell()) _rad.blitz = 1; _radStatus(); }
+    if (_rad.pos >= 420) { _rad.pos = 420; _rad.laufen = false; }
+  }
+  if (_rad.blitz > 0) { _rad.blitz -= dt; if (_rad.blitz < 0) _rad.blitz = 0; }
+}
+function _radDraw(ctx, cv) {
+  if (!_rad) return;
+  const W = cv.width, H = cv.height, road = 150, x0 = 20;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  // Blitz-Aufhellung
+  if (_rad.blitz > 0) { ctx.fillStyle = `rgba(255,255,255,${0.5 * _rad.blitz})`; ctx.fillRect(0, 0, W, H); }
+  // Straße
+  ctx.fillStyle = '#1e293b'; ctx.fillRect(0, road, W, 40);
+  ctx.strokeStyle = '#facc15'; ctx.lineWidth = 2; ctx.setLineDash([12, 10]); ctx.beginPath(); ctx.moveTo(0, road + 20); ctx.lineTo(W, road + 20); ctx.stroke(); ctx.setLineDash([]);
+  // Tempolimit-Schild
+  const sx = 70, sy = 70;
+  ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(sx, sy, 20, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(sx, sy, 20, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#111'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(String(_rad.limit), sx, sy + 5);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText('erlaubt', sx, sy + 34);
+  // Blitzer
+  const bx = 220 + x0;
+  ctx.fillStyle = '#334155'; ctx.fillRect(bx - 12, road - 46, 24, 40); ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2; ctx.strokeRect(bx - 12, road - 46, 24, 40);
+  ctx.fillStyle = _rad.blitz > 0 ? '#fde047' : '#0ea5e9'; ctx.beginPath(); ctx.arc(bx, road - 30, 6, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Blitzer', bx, road - 52);
+  // Auto
+  const cx = x0 + _rad.pos;
+  ctx.fillStyle = _rad.gemessen ? (_radZuSchnell() ? '#ef4444' : '#22c55e') : '#e2e8f0';
+  ctx.fillRect(cx - 22, road + 6, 44, 18);
+  ctx.fillStyle = '#93c5fd'; ctx.fillRect(cx - 8, road + 2, 18, 8);
+  ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(cx - 12, road + 26, 6, 0, 2 * Math.PI); ctx.arc(cx + 12, road + 26, 6, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(_rad.speed + ' km/h', cx, road + 18);
+  // Ergebnis oben
+  if (_rad.gemessen) {
+    ctx.fillStyle = _radZuSchnell() ? '#fca5a5' : '#86efac'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(_radZuSchnell() ? ('📸 zu schnell: +' + (_rad.speed - _rad.limit) + ' km/h') : '✓ Tempo ok', W / 2 + 60, 26);
+  } else { ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('gemessen wird beim Blitzer', W / 2 + 60, 22); }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.4.9  (ns = 'verkehr') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _radArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('verkehr')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('verkehr')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie misst die Polizei die Geschwindigkeit von Autos – und wann ist ein Auto zu schnell?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass ein Auto geblitzt wird, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle das erlaubte Tempo (z. B. 50) ein.</li>
+          <li>Lass Autos mit verschiedenen Geschwindigkeiten vorbeifahren.</li>
+          <li>Notiere, welche geblitzt werden und um wie viel sie zu schnell sind.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle (erlaubt: 50 km/h)</div>
+        <table class="ab-table"><tbody>
+          <tr><td>30 km/h</td><td>${inp('b1', 'ok/geblitzt')}</td><td>50 km/h</td><td>${inp('b2', 'ok/geblitzt')}</td></tr>
+          <tr><td>70 km/h</td><td>${inp('b3', 'ok/geblitzt')}</td><td>zu schnell um</td><td>${inp('c3', '… km/h')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne eine Straße mit Tempolimit-Schild und Blitzer. Zeichne ein Auto, das geblitzt wird.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wann wird ein Auto geblitzt? ${inp('a1', 'wenn es … als erlaubt fährt')}</li>
+          <li>Wie misst eine Abschnittskontrolle die Geschwindigkeit? ${inp('a2', 'über eine Strecke mit v = …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ein Blitzer misst die Geschwindigkeit und vergleicht sie mit dem ${inp('m1', 'was?')}.<br>
+        Bei der Abschnittskontrolle misst man die Zeit über eine bekannte Strecke und rechnet v = ${inp('m2', 'Formel')}. Zu schnell = ${inp('m3', 'wann?')} als erlaubt.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Aufgabe)</div>
+        <div class="ab-t">Eine Abschnittskontrolle ist 2 km lang. Ein Auto braucht dafür 60 Sekunden. Wie schnell war es im Schnitt (in m/s und km/h)? (2 km = 2000 m)</div>
+        ${ta('tr1', 'v = s / t = 2000 m / 60 s = … m/s = … km/h', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="radMini">${_radMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_radSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_radSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_radSelf(3)">😃 sicher</button>
+          <span id="radSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="radSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Autos mit Tempo > Limit werden geblitzt, Autos ≤ Limit nicht. Bei erlaubten 50: 30 ok, 50 ok, 70 geblitzt (20 km/h zu schnell).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Radar/Laser messen die Momentangeschwindigkeit (Doppler bzw. Weg/Zeit über sehr kurze Strecke). Die Abschnittskontrolle (Section Control) misst die Zeit über eine feste Strecke und bildet die Durchschnittsgeschwindigkeit v = s/t. Vergleich mit dem Tempolimit → Verstoß, wenn v größer ist.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Blitzer bremst das Auto." (2) „Man wird immer geblitzt." (3) „Genau am Limit wird geblitzt."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Vergleich gemessen ↔ erlaubt; v = s/t bei der Abschnittskontrolle rechnen; Einheiten m/s ↔ km/h (×3,6).</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: ok · ok · geblitzt · 20 km/h. 6.1 „wenn es schneller als erlaubt fährt" · 6.2 über eine bekannte Strecke mit v = s/t. Merksatz: Tempolimit · s/t · schneller. Transfer: v = 2000 m / 60 s ≈ 33,3 m/s ≈ 120 km/h. Minidiagnose: 1→Schneller als erlaubt · 2→Über eine Strecke mit v = s/t · 3→Mit der Momentangeschwindigkeit.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('verkehr')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('verkehr', 'Geschwindigkeitsmessung im Straßenverkehr', body);
+}
+
+const _RAD_MINI = [
+  { q: '1. Wann wird ein Auto geblitzt?',
+    opts: ['Wenn es langsamer als erlaubt fährt', 'Wenn es schneller als erlaubt fährt', 'Immer'], correct: 1,
+    fb: ['Langsamer ist kein Problem.',
+         'Richtig! Nur wer schneller als das Tempolimit fährt, wird geblitzt.',
+         'Wer sich ans Limit hält, wird nicht geblitzt.'] },
+  { q: '2. Wie misst eine Abschnittskontrolle die Geschwindigkeit?',
+    opts: ['Über eine bekannte Strecke mit v = s/t', 'Mit einer Waage', 'Durch Schätzen'], correct: 0,
+    fb: ['Richtig! Zeit über eine feste Strecke → Durchschnittsgeschwindigkeit v = s/t.',
+         'Eine Waage misst die Masse, nicht die Geschwindigkeit.',
+         'Gemessen wird genau, nicht geschätzt.'] },
+  { q: '3. Erlaubt sind 50 km/h. Ein Auto fährt 70 km/h. Um wie viel ist es zu schnell?',
+    opts: ['20 km/h', '120 km/h', 'gar nicht'], correct: 0,
+    fb: ['Richtig! 70 − 50 = 20 km/h zu schnell.',
+         'Man addiert die Werte nicht.',
+         'Es ist zu schnell (über dem Limit).'] }
+];
+function _radMiniHTML() {
+  return _RAD_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_radAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="radFb${qi}"></div></div>`).join('');
+}
+function _radAns(qi, oi) {
+  const m = _RAD_MINI[qi], el = document.getElementById('radFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _radSelf(n) {
+  const out = document.getElementById('radSelfOut'), val = document.getElementById('radSelfVal');
+  if (val) { val.value = String(n); _abSave('verkehr'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
