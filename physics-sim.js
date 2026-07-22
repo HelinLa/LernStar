@@ -268,7 +268,10 @@ const _physAbDefs = {
   'spiegelbild': { titel: 'Wie entsteht ein Spiegelbild?', ns: 'spiegel', html: () => _spgArbeitsblattHTML() },
   'brechung': { titel: 'Warum erscheint ein Gegenstand im Wasser verschoben?', ns: 'brechung', html: () => _breArbeitsblattHTML() },
   'brechungswinkel': { titel: 'Wovon hängt die Stärke der Brechung ab?', ns: 'brechwinkel', html: () => _bwkArbeitsblattHTML() },
-  'totalreflexion': { titel: 'Wie funktioniert ein Lichtleiter?', ns: 'totalrefl', html: () => _totArbeitsblattHTML() }
+  'totalreflexion': { titel: 'Wie funktioniert ein Lichtleiter?', ns: 'totalrefl', html: () => _totArbeitsblattHTML() },
+  'prisma': { titel: 'Welche Farben stecken im weißen Licht?', ns: 'prisma', html: () => _priArbeitsblattHTML() },
+  'regenbogen': { titel: 'Wie entstehen die Farben eines Regenbogens?', ns: 'regenbogen', html: () => _regArbeitsblattHTML() },
+  'farbmischung-additiv': { titel: 'Wie entstehen Farben auf einem Bildschirm?', ns: 'farbadd', html: () => _admArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -769,6 +772,35 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('totAnim', 'totAnim');
     _pSim.start(dt => _totUpdate(dt), (ctx, cv) => _totDraw(ctx, cv), []);
     _abRestore('totalrefl');
+  },
+
+  // ── 7.2.5 PRISMA / SPEKTRALFARBEN ──────────────────────────────
+  'prisma': modal => {
+    _priInit();
+    modal.innerHTML = _priHTML();
+    _priStatus();
+    _pSim = new PhysicsSimEngine('priAnim', 'priAnim');
+    _pSim.start(dt => _priUpdate(dt), (ctx, cv) => _priDraw(ctx, cv), []);
+    _abRestore('prisma');
+  },
+
+  // ── 7.2.6 REGENBOGEN ───────────────────────────────────────────
+  'regenbogen': modal => {
+    _regInit();
+    modal.innerHTML = _regHTML();
+    _pSim = new PhysicsSimEngine('regAnim', 'regAnim');
+    _pSim.start(dt => _regUpdate(dt), (ctx, cv) => _regDraw(ctx, cv), []);
+    _abRestore('regenbogen');
+  },
+
+  // ── 7.2.7 ADDITIVE FARBMISCHUNG (RGB) ──────────────────────────
+  'farbmischung-additiv': modal => {
+    _admInit();
+    modal.innerHTML = _admHTML();
+    _admStatus();
+    _pSim = new PhysicsSimEngine('admAnim', 'admAnim');
+    _pSim.start(dt => _admUpdate(dt), (ctx, cv) => _admDraw(ctx, cv), []);
+    _abRestore('farbadd');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -45425,5 +45457,589 @@ function _totAns(qi, oi) {
 function _totSelf(n) {
   const out = document.getElementById('totSelfOut'), val = document.getElementById('totSelfVal');
   if (val) { val.value = String(n); _abSave('totalrefl'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.2.5  WELCHE FARBEN STECKEN IM WEISSEN LICHT?  (Prisma)
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Optische Instrumente"
+// Handlungsorientiert: Ein Prisma zerlegt weißes Licht in die
+// Spektralfarben (rot bis violett), weil die Farben unterschiedlich
+// stark gebrochen werden. Eine einzelne Farbe wird nicht weiter zerlegt.
+// ═══════════════════════════════════════════════════════
+
+const _PRI_COLS = [
+  { n: 'Rot', c: '#ef4444', b: 0 }, { n: 'Orange', c: '#f97316', b: 6 }, { n: 'Gelb', c: '#facc15', b: 12 },
+  { n: 'Grün', c: '#22c55e', b: 20 }, { n: 'Blau', c: '#3b82f6', b: 28 }, { n: 'Violett', c: '#8b5cf6', b: 36 }
+];
+let _pri = null;
+function _priInit() { _pri = { mode: 'weiss', t: 0 }; }
+
+function _priHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim pri-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌈 Welche Farben stecken im weißen Licht?</h3>
+    <div class="fpm-note" style="margin-top:2px">Schicke weißes Licht durch ein Prisma. Was passiert? Und was passiert, wenn du nur eine einzelne Farbe hindurchschickst?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="priAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_pri.mode === 'weiss' ? ' primary' : ''}" id="priMw" onclick="_priSet('weiss')">⬜ weißes Licht</button>
+          <button class="sim-btn${_pri.mode === 'rot' ? ' primary' : ''}" id="priMr" onclick="_priSet('rot')">🟥 nur Rot</button>
+          <button class="sim-btn${_pri.mode === 'blau' ? ' primary' : ''}" id="priMb" onclick="_priSet('blau')">🟦 nur Blau</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was passiert</div>
+        <div class="lmp-status" id="priStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Weißes Licht ist eine <b>Mischung</b> aller Spektralfarben. Das Prisma bricht jede Farbe unterschiedlich stark (Violett am meisten, Rot am wenigsten) → das Licht wird <b>zerlegt</b>. Eine einzelne Farbe kann nicht weiter zerlegt werden.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Prisma zerlegt Weiß in <b>Rot – Orange – Gelb – Grün – Blau – Violett</b>. &nbsp;|&nbsp; Weiß = Mischung aller Farben.
+    </p>
+    ${_priArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _priSet(m) { _pri.mode = m;['weiss', 'rot', 'blau'].forEach(k => document.getElementById('priM' + k[0])?.classList.toggle('primary', k === m)); _priStatus(); }
+function _priStatus() {
+  const el = document.getElementById('priStatus'); if (!el) return;
+  if (_pri.mode === 'weiss') { el.textContent = '🌈 Das weiße Licht wird in alle Spektralfarben zerlegt (Rot bis Violett).'; el.className = 'lmp-status on'; }
+  else { el.textContent = (_pri.mode === 'rot' ? '🟥 Rotes' : '🟦 Blaues') + ' Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig).'; el.className = 'lmp-status'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _priUpdate(dt) { if (_pri) _pri.t += dt; }
+function _priDraw(ctx, cv) {
+  if (!_pri) return;
+  const W = cv.width, H = cv.height, cy = H / 2;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  // Lichtquelle
+  ctx.fillStyle = _pri.mode === 'weiss' ? '#fff' : (_pri.mode === 'rot' ? '#ef4444' : '#3b82f6');
+  ctx.beginPath(); ctx.arc(20, cy, 8, 0, 2 * Math.PI); ctx.fill();
+  // Prisma (Dreieck)
+  const px = 180, py = cy;
+  ctx.fillStyle = 'rgba(191,219,254,0.25)'; ctx.strokeStyle = '#93c5fd'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(px, py - 44); ctx.lineTo(px + 44, py + 40); ctx.lineTo(px - 44, py + 40); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#93c5fd'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Prisma', px, py + 56);
+  // Eingangsstrahl
+  ctx.strokeStyle = _pri.mode === 'weiss' ? '#e2e8f0' : (_pri.mode === 'rot' ? '#ef4444' : '#3b82f6'); ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(28, cy); ctx.lineTo(px - 12, cy - 8); ctx.stroke();
+  // Ausgang
+  const ex = px + 12, ey = cy + 4, sx = W - 30;
+  if (_pri.mode === 'weiss') {
+    _PRI_COLS.forEach(col => {
+      ctx.strokeStyle = col.c; ctx.lineWidth = 2.4;
+      ctx.beginPath(); ctx.moveTo(ex, ey); ctx.lineTo(sx, ey + col.b - 2); ctx.stroke();
+      ctx.fillStyle = col.c; ctx.fillRect(sx, ey + col.b - 6, 10, 8);
+    });
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Rot', sx + 14, ey - 2); ctx.fillText('Violett', sx + 14, ey + 36);
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Spektrum: Weiß wird zerlegt', W / 2 + 40, 22);
+  } else {
+    const col = _pri.mode === 'rot' ? '#ef4444' : '#3b82f6';
+    ctx.strokeStyle = col; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(ex, ey); ctx.lineTo(sx, ey + (_pri.mode === 'blau' ? 26 : 6)); ctx.stroke();
+    ctx.fillStyle = col; ctx.fillRect(sx, ey + (_pri.mode === 'blau' ? 22 : 2), 10, 8);
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('einfarbig – wird nicht zerlegt', W / 2 + 40, 22);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.2.5  (ns = 'prisma') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _priArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('prisma')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('prisma')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Ist weißes Licht wirklich „farblos" – oder stecken Farben darin?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, wenn weißes Licht durch das Prisma geht, dann …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Schicke weißes Licht durch das Prisma. Welche Farben erscheinen?</li>
+          <li>Schicke nur Rot bzw. nur Blau hindurch. Wird es weiter zerlegt?</li>
+          <li>Achte darauf, welche Farbe am stärksten abgelenkt wird.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtung</div>
+        <ol class="ab-ol">
+          <li>Nenne die Spektralfarben von oben nach unten: ${inp('b1', 'Rot, …')}</li>
+          <li>Welche Farbe wird am stärksten gebrochen? ${inp('b2', '')}</li>
+          <li>Wird eine einzelne Farbe weiter zerlegt? ${inp('b3', 'ja/nein')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne das Prisma, den weißen Eingangsstrahl und das aufgefächerte Spektrum.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was ist weißes Licht in Wirklichkeit? ${inp('a1', 'eine …')}</li>
+          <li>Warum werden die Farben getrennt? ${inp('a2', 'weil sie …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Weißes Licht ist eine ${inp('m1', 'was?')} aller Spektralfarben.<br>
+        Das Prisma bricht die Farben ${inp('m2', 'gleich/unterschiedlich')} stark und ${inp('m3', 'zerlegt/mischt')} das Licht.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum schillert eine CD oder eine Seifenblase in Regenbogenfarben, obwohl weißes Licht darauf fällt?</div>
+        ${ta('tr1', 'Auf der CD/Seifenblase wird das weiße Licht …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="priMini">${_priMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_priSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_priSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_priSelf(3)">😃 sicher</button>
+          <span id="priSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="priSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Weiß wird in Rot, Orange, Gelb, Grün, Blau, Violett zerlegt (Spektrum). Violett wird am stärksten, Rot am wenigsten gebrochen. Eine einzelne Farbe wird nur gebrochen, nicht weiter zerlegt.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Dispersion: Die Brechzahl hängt von der Farbe (Wellenlänge) ab; kurzwelliges (violettes) Licht wird stärker gebrochen als langwelliges (rotes). Daher zerlegt ein Prisma weißes Licht in sein Spektrum.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Das Prisma färbt das Licht." (2) „Weiß ist eine einzelne Farbe." (3) „Auch einzelne Farben werden zerlegt."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Reihenfolge der Farben festhalten; einzelne Farbe zum Kontrast durchschicken; Realversuch mit Prisma/Sonnenlicht.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4.1 Rot, Orange, Gelb, Grün, Blau, Violett · 4.2 Violett · 4.3 nein. 6.1 „Mischung aller Farben" · 6.2 „unterschiedlich stark gebrochen werden". Merksatz: Mischung · unterschiedlich · zerlegt. Transfer: Feine Strukturen zerlegen das weiße Licht ebenfalls in seine Farben. Minidiagnose: 1→„zerlegt es in Farben" · 2→Violett · 3→„ja, eine Mischung".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('prisma')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('prisma', 'Welche Farben stecken im weißen Licht?', body);
+}
+
+const _PRI_MINI = [
+  { q: '1. Was macht ein Prisma mit weißem Licht?',
+    opts: ['Es färbt es rot', 'Es zerlegt es in die Spektralfarben', 'Es macht es dunkler'], correct: 1,
+    fb: ['Das Prisma färbt nicht, es zerlegt.',
+         'Richtig! Das Prisma zerlegt weißes Licht in seine Farben.',
+         'Dunkler wird es nicht.'] },
+  { q: '2. Welche Farbe wird am stärksten gebrochen?',
+    opts: ['Rot', 'Grün', 'Violett'], correct: 2,
+    fb: ['Rot wird am wenigsten gebrochen.',
+         'Grün liegt in der Mitte.',
+         'Richtig! Violett wird am stärksten abgelenkt.'] },
+  { q: '3. Was ist weißes Licht in Wirklichkeit?',
+    opts: ['Eine einzelne Farbe', 'Eine Mischung aller Spektralfarben', 'Gar keine Farbe'], correct: 1,
+    fb: ['Es ist keine einzelne Farbe.',
+         'Richtig! Weiß ist eine Mischung aller Spektralfarben.',
+         'Es enthält alle Farben zusammen.'] }
+];
+function _priMiniHTML() {
+  return _PRI_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_priAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="priFb${qi}"></div></div>`).join('');
+}
+function _priAns(qi, oi) {
+  const m = _PRI_MINI[qi], el = document.getElementById('priFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _priSelf(n) {
+  const out = document.getElementById('priSelfOut'), val = document.getElementById('priSelfVal');
+  if (val) { val.value = String(n); _abSave('prisma'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.2.6  WIE ENTSTEHEN DIE FARBEN EINES REGENBOGENS?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Optische Instrumente"
+// Handlungsorientiert: In einem Wassertropfen wird Sonnenlicht gebrochen,
+// im Inneren reflektiert und beim Austritt in seine Farben zerlegt. Viele
+// Tropfen zusammen bilden den farbigen Bogen. Die Sonne steht im Rücken.
+// ═══════════════════════════════════════════════════════
+
+const _REG_COLS = ['#ef4444', '#f97316', '#facc15', '#22c55e', '#3b82f6', '#8b5cf6'];
+let _reg = null;
+function _regInit() { _reg = { mode: 'tropfen', t: 0 }; }
+
+function _regHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim reg-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌈 Wie entstehen die Farben eines Regenbogens?</h3>
+    <div class="fpm-note" style="margin-top:2px">Schau dir an, was in einem einzelnen Regentropfen passiert – und wie viele Tropfen zusammen den Regenbogen bilden.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="regAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_reg.mode === 'tropfen' ? ' primary' : ''}" id="regM0" onclick="_regSet('tropfen')">💧 ein Tropfen</button>
+          <button class="sim-btn${_reg.mode === 'bogen' ? ' primary' : ''}" id="regM1" onclick="_regSet('bogen')">🌈 der ganze Bogen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Im Tropfen passiert:</div>
+        <ol class="ab-ol" style="margin-top:4px">
+          <li><b>Brechung</b> beim Eintritt (das Licht wird schon etwas zerlegt)</li>
+          <li><b>Reflexion</b> an der Rückwand des Tropfens</li>
+          <li><b>Brechung + Farbzerlegung</b> beim Austritt</li>
+        </ol>
+        <div class="fpm-note" style="margin-top:8px">Man sieht einen Regenbogen nur, wenn die <b>Sonne im Rücken</b> steht und vor einem <b>Regen</b> fällt. Rot liegt außen, Violett innen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Regenbogen = <b>Brechung + Reflexion + Farbzerlegung</b> in Wassertropfen. &nbsp;|&nbsp; Sonne hinten, Regen vorne.
+    </p>
+    ${_regArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _regSet(m) { _reg.mode = m; document.getElementById('regM0')?.classList.toggle('primary', m === 'tropfen'); document.getElementById('regM1')?.classList.toggle('primary', m === 'bogen'); }
+
+// ── Animation ──────────────────────────────────────────
+function _regUpdate(dt) { if (_reg) _reg.t += dt; }
+function _regDraw(ctx, cv) {
+  if (!_reg) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#1e293b'; ctx.fillRect(0, 0, W, H);
+  if (_reg.mode === 'tropfen') {
+    const cx = W / 2 + 30, cy = H / 2, R = 66;
+    // Tropfen
+    ctx.fillStyle = 'rgba(125,211,252,0.25)'; ctx.strokeStyle = '#7dd3fc'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#7dd3fc'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Wassertropfen', cx, cy + R + 16);
+    // 1 Eintritt (weißer Strahl von links oben)
+    const A = { x: cx - R * 0.9, y: cy - R * 0.45 };
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(20, cy - 70); ctx.lineTo(A.x, A.y); ctx.stroke();
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Sonnenlicht (weiß)', 20, cy - 76);
+    // Punkt B (Rückwand) und C (Austritt) – Farbfächer
+    const B = { x: cx + R * 0.85, y: cy + R * 0.2 }, C = { x: cx - R * 0.55, y: cy + R * 0.75 };
+    _REG_COLS.forEach((c, i) => {
+      const off = (i - 2.5) * 2;
+      ctx.strokeStyle = c; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y + off); ctx.lineTo(C.x, C.y + off); ctx.lineTo(C.x - 60, C.y + 40 + off * 3); ctx.stroke();
+    });
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '8px sans-serif';
+    ctx.fillText('1 Brechung', A.x - 4, A.y - 6); ctx.fillText('2 Reflexion', B.x - 30, B.y - 6); ctx.fillText('3 Brechung + Farben', C.x - 70, C.y + 60);
+  } else {
+    // Sonne hinten, Beobachter, farbiger Bogen vorne
+    ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(40, 40, 20, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fde047'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Sonne (im Rücken)', 66, 44);
+    // Beobachter
+    ctx.fillStyle = '#e2e8f0'; ctx.beginPath(); ctx.arc(70, H - 34, 8, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillText('Beobachter', 84, H - 30);
+    // Regenbogen (Bögen)
+    const bx = W / 2 + 40, by = H + 40;
+    _REG_COLS.forEach((c, i) => { ctx.strokeStyle = c; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(bx, by, 150 - i * 8, Math.PI, 2 * Math.PI); ctx.stroke(); });
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Rot außen · Violett innen', bx, by - 158);
+    ctx.fillStyle = '#93c5fd'; ctx.fillText('🌧 Regen vor dir', bx + 90, 40);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.2.6  (ns = 'regenbogen') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _regArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('regenbogen')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('regenbogen')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie kommen die vielen Farben in den Regenbogen – und wann kann man ihn sehen?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, der Regenbogen entsteht durch … Man sieht ihn, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Schau dir den einzelnen Tropfen an: Welche drei Schritte passieren dort?</li>
+          <li>Wechsle zum ganzen Bogen. Wo steht die Sonne, wo der Regen?</li>
+          <li>Achte auf die Reihenfolge der Farben (außen/innen).</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtung – die drei Schritte im Tropfen</div>
+        <table class="ab-table"><tbody>
+          <tr><td>1. beim Eintritt</td><td>${inp('t1', 'Brechung/Reflexion')}</td></tr>
+          <tr><td>2. an der Rückwand</td><td>${inp('t2', '')}</td></tr>
+          <tr><td>3. beim Austritt</td><td>${inp('t3', 'Brechung + …')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne einen Wassertropfen mit dem Weg des Lichts (Eintritt, Reflexion, Austritt mit Farben).</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Aus welchen drei Vorgängen entsteht der Regenbogen? ${inp('a1', 'Brechung, … , …')}</li>
+          <li>Wo muss die Sonne stehen, damit du einen Regenbogen siehst? ${inp('a2', '')}</li>
+          <li>Welche Farbe liegt außen? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Im Regentropfen wird das Sonnenlicht ${inp('m1', 'gebrochen/reflektiert')}, an der Rückwand ${inp('m2', 'gebrochen/reflektiert')} und beim Austritt in Farben zerlegt.<br>
+        Man sieht den Regenbogen, wenn die Sonne im ${inp('m3', 'Rücken/Gesicht')} steht.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Mit einem Gartenschlauch kannst du an sonnigen Tagen selbst einen kleinen Regenbogen machen. Wie musst du dich zur Sonne stellen?</div>
+        ${ta('tr1', 'Ich stelle mich so, dass die Sonne … und der Wassernebel …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="regMini">${_regMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_regSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_regSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_regSelf(3)">😃 sicher</button>
+          <span id="regSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="regSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Im Tropfen: Brechung (Eintritt) → Reflexion (Rückwand) → Brechung + Farbzerlegung (Austritt). Der Bogen entsteht aus vielen Tropfen; Rot außen, Violett innen; Sonne im Rücken.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Regenbogen: Dispersion in kugelförmigen Wassertropfen mit einer inneren Totalreflexion; der Hauptregenbogen erscheint unter ca. 42° zur Gegensonnenrichtung. Rot außen, Violett innen (Hauptbogen).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Regenbogen ist ein Gegenstand am Himmel." (2) „Die Sonne muss vor einem stehen." (3) „Nur ein Tropfen macht den ganzen Bogen."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Einzeltropfen und Bogen getrennt betrachten; Gartenschlauch-Versuch; Farbreihenfolge festhalten.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Schritte: Brechung / Reflexion / Brechung+Zerlegung. 6.1 „Brechung, Reflexion, Farbzerlegung" · 6.2 „im Rücken" · 6.3 „Rot". Merksatz: gebrochen · reflektiert · Rücken. Transfer: Sonne im Rücken, Wassernebel vor sich. Minidiagnose: 1→„Brechung, Reflexion, Zerlegung" · 2→„im Rücken" · 3→„Sonne und Regen".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('regenbogen')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('regenbogen', 'Wie entstehen die Farben eines Regenbogens?', body);
+}
+
+const _REG_MINI = [
+  { q: '1. Welche Vorgänge im Tropfen erzeugen den Regenbogen?',
+    opts: ['Nur Reflexion', 'Brechung, Reflexion und Farbzerlegung', 'Nur Verdunstung'], correct: 1,
+    fb: ['Reflexion allein reicht nicht.',
+         'Richtig! Brechung, innere Reflexion und Farbzerlegung wirken zusammen.',
+         'Verdunstung spielt keine Rolle.'] },
+  { q: '2. Wo muss die Sonne stehen, damit du einen Regenbogen siehst?',
+    opts: ['Vor dir', 'In deinem Rücken', 'Direkt über dir'], correct: 1,
+    fb: ['Dann siehst du keinen Regenbogen.',
+         'Richtig! Die Sonne steht im Rücken, der Regen vor dir.',
+         'Bei hoher Sonne ist kein Regenbogen sichtbar.'] },
+  { q: '3. Welche Farbe liegt beim Regenbogen außen?',
+    opts: ['Violett', 'Rot', 'Grün'], correct: 1,
+    fb: ['Violett liegt innen.',
+         'Richtig! Rot liegt außen, Violett innen.',
+         'Grün liegt in der Mitte.'] }
+];
+function _regMiniHTML() {
+  return _REG_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_regAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="regFb${qi}"></div></div>`).join('');
+}
+function _regAns(qi, oi) {
+  const m = _REG_MINI[qi], el = document.getElementById('regFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _regSelf(n) {
+  const out = document.getElementById('regSelfOut'), val = document.getElementById('regSelfVal');
+  if (val) { val.value = String(n); _abSave('regenbogen'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.2.7  WIE ENTSTEHEN FARBEN AUF EINEM BILDSCHIRM?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Optische Instrumente"
+// Handlungsorientiert: Additive Farbmischung mit Rot, Grün und Blau.
+// Rot+Grün=Gelb, Grün+Blau=Cyan, Rot+Blau=Magenta, alle drei = Weiß.
+// Bildschirme erzeugen alle Farben aus winzigen R-, G-, B-Lichtpunkten.
+// ═══════════════════════════════════════════════════════
+
+let _adm = null;
+function _admInit() { _adm = { r: 220, g: 60, b: 60, t: 0 }; }
+function _admName() {
+  const r = _adm.r, g = _adm.g, b = _adm.b, hi = 180, lo = 90;
+  const R = r > hi, G = g > hi, B = b > hi, r0 = r < lo, g0 = g < lo, b0 = b < lo;
+  if (R && G && B) return 'Weiß';
+  if (r0 && g0 && b0) return 'Schwarz (kein Licht)';
+  if (R && G && b0) return 'Gelb';
+  if (G && B && r0) return 'Cyan (Türkis)';
+  if (R && B && g0) return 'Magenta (Pink)';
+  if (R && g0 && b0) return 'Rot';
+  if (G && r0 && b0) return 'Grün';
+  if (B && r0 && g0) return 'Blau';
+  return 'Mischfarbe';
+}
+
+function _admHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim adm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🖥️ Wie entstehen Farben auf einem Bildschirm?</h3>
+    <div class="fpm-note" style="margin-top:2px">Mische die drei Grundfarben des Lichts – Rot, Grün und Blau. Welche Farbe entsteht? Was ergeben alle drei zusammen?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="admAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_admPreset(255,255,255)">⬜ Weiß</button>
+          <button class="sim-btn" onclick="_admPreset(255,255,0)">🟨 Gelb</button>
+          <button class="sim-btn" onclick="_admPreset(0,0,0)">⬛ aus</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl"><span class="phys-ctrl-label" style="color:#ef4444">Rot: <b id="admRLbl">220</b></span>
+          <input type="range" id="admR" min="0" max="255" step="15" value="220" oninput="_admSet('r',this.value)" style="width:100%;accent-color:#ef4444"></div>
+        <div class="phys-ctrl" style="margin-top:6px"><span class="phys-ctrl-label" style="color:#22c55e">Grün: <b id="admGLbl">60</b></span>
+          <input type="range" id="admG" min="0" max="255" step="15" value="60" oninput="_admSet('g',this.value)" style="width:100%;accent-color:#22c55e"></div>
+        <div class="phys-ctrl" style="margin-top:6px"><span class="phys-ctrl-label" style="color:#3b82f6">Blau: <b id="admBLbl">60</b></span>
+          <input type="range" id="admB" min="0" max="255" step="15" value="60" oninput="_admSet('b',this.value)" style="width:100%;accent-color:#3b82f6"></div>
+        <div class="lmp-status" id="admStatus" style="margin-top:8px"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Rot + Grün = Gelb</b>, Grün + Blau = Cyan, Rot + Blau = Magenta. &nbsp;|&nbsp; <b>Rot + Grün + Blau = Weiß.</b>
+    </p>
+    ${_admArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _admSet(k, v) { _adm[k] = +v; const e = document.getElementById('adm' + k.toUpperCase() + 'Lbl'); if (e) e.textContent = _fpmNum(+v, 0); _admStatus(); }
+function _admPreset(r, g, b) {
+  _adm.r = r; _adm.g = g; _adm.b = b;
+  [['R', r], ['G', g], ['B', b]].forEach(a => { const sl = document.getElementById('adm' + a[0]); if (sl) sl.value = a[1]; const l = document.getElementById('adm' + a[0] + 'Lbl'); if (l) l.textContent = _fpmNum(a[1], 0); });
+  _admStatus();
+}
+function _admStatus() { const el = document.getElementById('admStatus'); if (!el) return; el.textContent = '🎨 Ergebnisfarbe: ' + _admName() + ' (R ' + _adm.r + ', G ' + _adm.g + ', B ' + _adm.b + ').'; el.className = 'lmp-status on'; }
+
+// ── Animation ──────────────────────────────────────────
+function _admUpdate(dt) { if (_adm) _adm.t += dt; }
+function _admDraw(ctx, cv) {
+  if (!_adm) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+  // drei überlappende Lichtkreise (additiv)
+  const cx = 150, cy = H / 2, r = 52;
+  ctx.globalCompositeOperation = 'lighter';
+  ctx.fillStyle = `rgb(${_adm.r},0,0)`; ctx.beginPath(); ctx.arc(cx, cy - 30, r, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = `rgb(0,${_adm.g},0)`; ctx.beginPath(); ctx.arc(cx - 28, cy + 22, r, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = `rgb(0,0,${_adm.b})`; ctx.beginPath(); ctx.arc(cx + 28, cy + 22, r, 0, 2 * Math.PI); ctx.fill();
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('R', cx, cy - 66); ctx.fillText('G', cx - 62, cy + 44); ctx.fillText('B', cx + 62, cy + 44);
+  // Ergebnisfeld
+  ctx.fillStyle = `rgb(${_adm.r},${_adm.g},${_adm.b})`; ctx.fillRect(300, 50, 110, 80);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1; ctx.strokeRect(300, 50, 110, 80);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.fillText('Ergebnis', 355, 44);
+  ctx.fillText(_admName(), 355, 148);
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.fillText('so mischt ein Bildschirm', 355, 164);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.2.7  (ns = 'farbadd') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _admArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('farbadd')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('farbadd')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie kann ein Bildschirm aus nur drei Farben alle Farben erzeugen?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, wenn ich Rot, Grün und Blau mische, entsteht …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Mische je zwei Grundfarben (z. B. Rot + Grün). Welche Farbe entsteht?</li>
+          <li>Schalte alle drei voll ein. Welche Farbe entsteht?</li>
+          <li>Schalte alle aus. Was siehst du?</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Rot + Grün</td><td>${inp('t_rg', '')}</td><td>Grün + Blau</td><td>${inp('t_gb', '')}</td></tr>
+          <tr><td>Rot + Blau</td><td>${inp('t_rb', '')}</td><td>Rot+Grün+Blau</td><td>${inp('t_rgb', '')}</td></tr>
+          <tr><td>alle aus</td><td>${inp('t_0', '')}</td><td></td><td></td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne drei überlappende Kreise (Rot, Grün, Blau) und beschrifte die Mischfarben.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Welche drei Grundfarben nutzt der Bildschirm? ${inp('a1', '')}</li>
+          <li>Was ergeben alle drei zusammen? ${inp('a2', '')}</li>
+          <li>Warum heißt das „additive" Mischung? ${inp('a3', 'weil man Licht …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die Grundfarben des Lichts sind ${inp('m1', 'welche 3?')}.<br>
+        Rot + Grün + Blau ergibt ${inp('m2', 'welche Farbe?')}.<br>
+        Diese Mischung heißt <b>additiv</b>, weil man Lichtfarben ${inp('m3', 'addiert/wegnimmt')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Schau mit einer Lupe ganz nah auf einen eingeschalteten Bildschirm (Handy, Fernseher). Was siehst du dort – und wie entsteht ein weißer Punkt?</div>
+        ${ta('tr1', 'Ganz nah sehe ich … Ein weißer Punkt entsteht, wenn …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="admMini">${_admMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_admSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_admSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_admSelf(3)">😃 sicher</button>
+          <span id="admSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="admSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Rot+Grün=Gelb, Grün+Blau=Cyan, Rot+Blau=Magenta, Rot+Grün+Blau=Weiß, alle aus=Schwarz.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Additive Farbmischung mit den Lichtgrundfarben Rot, Grün, Blau (RGB). Bildschirme setzen jede Farbe aus winzigen R-, G-, B-Leuchtpunkten (Subpixeln) zusammen; das Auge mischt sie. Mehr Licht → heller (bis Weiß).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Rot+Grün=Braun" (das ist Malfarbe, subtraktiv). (2) „Weiß entsteht durch Weglassen." (3) „Bildschirme haben für jede Farbe eine eigene Lampe."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Licht (addieren) vs. Malfarbe (subtrahieren, 7.2.8) trennen; Lupe auf den Bildschirm.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Gelb / Cyan / Magenta / Weiß / Schwarz. 6.1 „Rot, Grün, Blau" · 6.2 „Weiß" · 6.3 „addiert (zusammenzählt)". Merksatz: Rot, Grün, Blau · Weiß · addiert. Transfer: Man sieht winzige rote, grüne, blaue Punkte; leuchten alle drei, wirkt der Punkt weiß. Minidiagnose: 1→Weiß · 2→RGB · 3→Gelb.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('farbadd')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('farbadd', 'Wie entstehen Farben auf einem Bildschirm?', body);
+}
+
+const _ADM_MINI = [
+  { q: '1. Welche Farbe ergeben Rot + Grün + Blau (volles Licht)?',
+    opts: ['Schwarz', 'Weiß', 'Braun'], correct: 1,
+    fb: ['Schwarz ist, wenn kein Licht leuchtet.',
+         'Richtig! Alle drei zusammen ergeben Weiß.',
+         'Braun entsteht beim Mischen von Malfarben, nicht von Licht.'] },
+  { q: '2. Welche drei Grundfarben nutzt ein Bildschirm?',
+    opts: ['Rot, Grün, Blau', 'Rot, Gelb, Blau', 'Schwarz, Weiß, Grau'], correct: 0,
+    fb: ['Richtig! Bildschirme arbeiten mit Rot, Grün und Blau (RGB).',
+         'Das sind eher Malfarben.',
+         'Das sind keine Lichtgrundfarben.'] },
+  { q: '3. Welche Farbe ergibt Rot + Grün (Licht)?',
+    opts: ['Gelb', 'Braun', 'Violett'], correct: 0,
+    fb: ['Richtig! Rot + Grün ergibt beim Licht Gelb.',
+         'Braun bekommt man mit Malfarben.',
+         'Violett entsteht aus Rot + Blau.'] }
+];
+function _admMiniHTML() {
+  return _ADM_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_admAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="admFb${qi}"></div></div>`).join('');
+}
+function _admAns(qi, oi) {
+  const m = _ADM_MINI[qi], el = document.getElementById('admFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _admSelf(n) {
+  const out = document.getElementById('admSelfOut'), val = document.getElementById('admSelfVal');
+  if (val) { val.value = String(n); _abSave('farbadd'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
