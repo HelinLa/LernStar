@@ -224,28 +224,15 @@ function openPhysicsSim(simId) {
 
 const _physSimDefs = {
 
-  // ── 1. GLEICHFÖRMIGE BEWEGUNG ──────────────────────────
+  // ── 1. GLEICHFÖRMIGE BEWEGUNG (handlungsorientiert) ────
   'gleichfoermig': modal => {
-    modal.innerHTML = _simModalHTML('gleichfoermig', '🚗 Gleichförmige Bewegung – s = v · t',
-      _slider_html('gfV', 'Geschwindigkeit v', 5, 40, 20, 1, 'm/s'), true);
-    _pSim = new PhysicsSimEngine('physAnim', 'physChart');
-    _pSim.addSeries('s'); _pSim.addSeries('v');
-    let s = 0;
-    _pSim.start(
-      dt => { const v = _slider('gfV'); s += v * dt; _pSim.record('s', s); _pSim.record('v', v); },
-      (ctx, cv) => {
-        const v = _slider('gfV');
-        ctx.clearRect(0, 0, cv.width, cv.height);
-        _drawRoad(ctx, cv);
-        const x = (s * 5) % (cv.width + 80) - 40;
-        _drawCar(ctx, x, cv.height - 70, '#7c3aed');
-        _infoBox(ctx, cv, [`s = ${s.toFixed(1)} m`, `v = ${v} m/s`, `t = ${_pSim.t.toFixed(1)} s`]);
-      },
-      [
-        { series: 's', title: 's-t-Diagramm', label: 's', unit: 'm', color: '#7c3aed', yMin: 0 },
-        { series: 'v', title: 'v-t-Diagramm', label: 'v', unit: 'm/s', color: '#f97316', yMin: 0, yMax: 45 }
-      ]
-    );
+    _glfInit();
+    modal.innerHTML = _glfHTML();
+    _glfRenderTable();
+    _pSim = new PhysicsSimEngine('glfAnim', 'glfPlot');
+    _pSim.start(dt => _glfUpdate(dt), (ctx, cv) => _glfDraw(ctx, cv), []);
+    _mlabRenderTheorie(_glf, false);
+    _mlabDrawPlot('glfPlot', _glf);
   },
 
   // ── 2. BESCHLEUNIGTE BEWEGUNG ──────────────────────────
@@ -33892,3 +33879,446 @@ function _zykDrawAnwendung(ctx, cv) {
   `;
   document.head.appendChild(s);
 })();
+
+
+// ═══════════════════════════════════════════════════════
+// _mlab – gemeinsames Mess-Framework fuer die Mechanik-Sims (Jg. 11)
+// Generische Ausgleichsrechnung + Plot + Funktionsplotter, analog zu
+// den _fpm*-Funktionen des Federpendels, aber parametrisiert ueber ein
+// uebergebenes State-Objekt st und seine Presets. Wiederverwendet die
+// bereits vorhandenen Helfer _fpmNum, _fpmFitOrigin, _fpmFitLinear,
+// _fpmMakeFn, _fpmTicks, _fpmTickLbl (global aus dem Federpendel-Modul).
+//
+// Preset-Objekt P:
+//   xl, yl                Achsenbeschriftung (Strings)
+//   x(r), y(r)            Zeile -> Diagrammkoordinate
+//   grp(r) | null         Gruppierung (z. B. je Objekt); null = eine Reihe
+//   gl(key)               Legendentext einer Gruppe
+//   slope(key) | undef    erwartete Steigung (fuer "erwartet:")
+//   curve  | undef        true = nichtlineare Auftragung (kein Fit)
+//   curveFn(xv,key)|undef  Theoriekurve (fuer curve bzw. showTheory)
+//   note                  Hinweistext unter dem Fit
+//   typ, form, param(), term(), deutung   Box "Erwarteter Funktionstyp"
+//   ergebnis(fit) | undef  HTML-Block: gesuchte Groesse + Literaturvergleich
+// ═══════════════════════════════════════════════════════
+
+const _MLAB_PALETTE = ['#7c3aed', '#f97316', '#0284c7', '#16a34a', '#db2777', '#0891b2'];
+
+// ── Ausgleichsrechnung + Plot ──────────────────────────
+function _mlabDrawPlot(cvId, st) {
+  const cv = document.getElementById(cvId);
+  if (!cv || !st) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const P = st.presets[st.preset];
+  const padL = 62, padR = 14, padT = 14, padB = 40;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const pts = st.rows.map(r => ({ x: P.x(r), y: P.y(r) })).filter(p => isFinite(p.x) && isFinite(p.y));
+  let xmax = pts.length ? Math.max(...pts.map(p => p.x)) * 1.15 : 1;
+  let ymax = pts.length ? Math.max(...pts.map(p => p.y)) * 1.15 : 1;
+  let xmin = pts.length ? Math.min(0, ...pts.map(p => p.x)) : 0;
+  let ymin = pts.length ? Math.min(0, ...pts.map(p => p.y)) : 0;
+  if (st.fn) for (let i = 0; i <= 20; i++) {
+    let v; try { v = st.fn(xmin + (xmax - xmin) * i / 20); } catch (e) { v = NaN; }
+    if (isFinite(v)) { if (v > ymax) ymax = v * 1.05; if (v < ymin) ymin = v * 1.05; }
+  }
+  if (!(xmax > xmin) || !isFinite(xmax)) xmax = xmin + 1;
+  if (!(ymax > ymin) || !isFinite(ymax)) ymax = ymin + 1;
+
+  const X = v => x0 + (v - xmin) / (xmax - xmin) * (x1 - x0);
+  const Y = v => y0 - (v - ymin) / (ymax - ymin) * (y0 - y1);
+
+  // Gitter & Achsen
+  const xt = _fpmTicks(xmax, 6), yt = _fpmTicks(ymax, 5);
+  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  xt.ticks.forEach(v => {
+    if (v < xmin) return;
+    ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
+  });
+  yt.ticks.forEach(v => {
+    if (v < ymin) return;
+    ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
+  });
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(P.xl, x1, y0 + 28);
+  ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
+  ctx.textAlign = 'left';
+
+  if (!pts.length) {
+    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillText('Noch keine Messwerte aufgenommen', (x0 + x1) / 2, (y0 + y1) / 2);
+    ctx.textAlign = 'left';
+    const fo = document.getElementById(st.fitId);
+    if (fo) fo.innerHTML = '<div class="fpm-note">' + P.note + '</div>';
+    return;
+  }
+
+  // Nutzerfunktion
+  if (st.fn) {
+    ctx.strokeStyle = '#db2777'; ctx.lineWidth = 1.8; ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    let started = false;
+    for (let px = x0; px <= x1; px += 2) {
+      let yv; try { yv = st.fn(xmin + (px - x0) / (x1 - x0) * (xmax - xmin)); } catch (e) { yv = NaN; }
+      if (!isFinite(yv)) { started = false; continue; }
+      const py = Y(yv);
+      if (py < y1 - 30 || py > y0 + 30) { started = false; continue; }
+      started ? ctx.lineTo(px, py) : (ctx.moveTo(px, py), started = true);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+
+  // Gruppen
+  const groups = [];
+  if (P.grp) {
+    const map = new Map();
+    st.rows.forEach(r => { const k = P.grp(r); if (!map.has(k)) map.set(k, []); map.get(k).push(r); });
+    [...map.keys()].sort((a, b) => a - b).forEach(k => groups.push({ key: k, rows: map.get(k) }));
+  } else groups.push({ key: null, rows: st.rows });
+
+  const info = [];
+  groups.forEach((g, gi) => {
+    const col = P.col ? P.col(g.key, gi) : _MLAB_PALETTE[gi % _MLAB_PALETTE.length];
+    const gp = g.rows.map(r => ({ x: P.x(r), y: P.y(r) })).filter(p => isFinite(p.x) && isFinite(p.y));
+
+    // Theoriekurve
+    if (st.showTheory && P.curveFn) {
+      ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
+      ctx.beginPath();
+      let first = true;
+      for (let px = x0; px <= x1; px += 3) {
+        const xv = xmin + (px - x0) / (x1 - x0) * (xmax - xmin);
+        let yv; try { yv = P.curveFn(xv, g.key); } catch (e) { yv = NaN; }
+        const py = Y(yv);
+        if (!isFinite(py) || py < y1 - 20 || py > y0 + 20) { first = true; continue; }
+        first ? (ctx.moveTo(px, py), first = false) : ctx.lineTo(px, py);
+      }
+      ctx.stroke(); ctx.setLineDash([]);
+    }
+
+    // Ausgleichsgerade
+    let fit = null;
+    if (!P.curve && gp.length >= 2) {
+      fit = st.origin ? _fpmFitOrigin(gp) : _fpmFitLinear(gp);
+      if (fit) {
+        ctx.strokeStyle = col; ctx.lineWidth = 1.6;
+        ctx.beginPath(); ctx.moveTo(X(xmin), Y(fit.k * xmin + fit.b)); ctx.lineTo(X(xmax), Y(fit.k * xmax + fit.b)); ctx.stroke();
+      }
+    }
+
+    // Messpunkte
+    gp.forEach(p => {
+      ctx.fillStyle = col;
+      ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.4; ctx.stroke();
+    });
+
+    info.push({ key: g.key, col, fit, n: gp.length });
+  });
+
+  _mlabRenderFit(st, info, P);
+}
+
+function _mlabRenderFit(st, groups, P) {
+  const el = document.getElementById(st.fitId);
+  if (!el) return;
+  if (P.curve) { el.innerHTML = '<div class="fpm-note">' + P.note + '</div>'; return; }
+
+  let html = '';
+  groups.forEach(g => {
+    if (!g.fit) return;
+    const name = g.key === null ? 'alle Messwerte' : P.gl(g.key);
+    const eq = 'y = ' + _fpmNum(g.fit.k, Math.abs(g.fit.k) < 1 ? 4 : 3) + '·x' +
+      (st.origin ? '' : (g.fit.b >= 0 ? ' + ' : ' − ') + _fpmNum(Math.abs(g.fit.b), 4));
+    const erw = P.slope ? ' · erwartet: ' + _fpmNum(P.slope(g.key), Math.abs(P.slope(g.key)) < 1 ? 4 : 3) : '';
+    html += `<div class="fpm-fitline">
+       <span class="fpm-fitmeta"><span class="fpm-dot" style="background:${g.col}"></span>${name} · ${g.n} Messwerte</span>
+       <span class="fpm-fiteq">${eq}</span>
+       <span class="fpm-fitmeta">R² = ${_fpmNum(g.fit.r2, 4)}${erw}</span>
+     </div>`;
+  });
+
+  if (!html) {
+    el.innerHTML = '<div class="fpm-note">Mindestens zwei Messwerte je Messreihe nötig.<br>' + P.note + '</div>';
+    return;
+  }
+  // Handlungsorientierter Abschluss: gesuchte Groesse aus der Steigung + Literaturvergleich
+  if (P.ergebnis && groups[0] && groups[0].fit) {
+    html += P.ergebnis(groups[0].fit, st);
+  }
+  el.innerHTML = html + '<div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">' + P.note + '</div>';
+}
+
+// kleine Helfer fuer den Abschluss-Block
+function _mlabBadge(dev) { return dev < 1 ? 'ok' : dev < 5 ? 'mid' : 'no'; }
+function _mlabErgebnis(label, wert, einheit, lit, formel) {
+  const dev = lit ? Math.abs(wert - lit) / Math.abs(lit) * 100 : null;
+  const cls = dev === null ? 'ok' : _mlabBadge(dev);
+  return `<div class="fpm-fitline" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">
+      <span class="fpm-fitmeta">${label}</span>
+      <span class="fpm-fiteq">${wert}${einheit ? ' ' + einheit : ''}${lit ? ' &nbsp;·&nbsp; Literatur: ' + lit : ''}</span>
+      ${dev !== null ? `<span class="fpm-badge ${cls}">Abweichung ${_fpmNum(dev, 2)} %</span>` : ''}
+      ${formel ? `<span class="fpm-fitmeta" style="margin-top:3px">${formel}</span>` : ''}
+    </div>`;
+}
+
+// ── Funktionsplotter (Theoriefunktion) ─────────────────
+function _mlabSetFn(st, str) {
+  st.fnAuto = false;
+  const err = document.getElementById(st.fnErrId);
+  const v = (str || '').trim();
+  if (!v) { st.fn = null; if (err) err.textContent = ''; _mlabDrawPlot(st.plotId, st); return; }
+  try {
+    const f = _fpmMakeFn(v);
+    if (typeof f(1) !== 'number') throw new Error('kein Zahlenwert');
+    st.fn = f; if (err) err.textContent = '';
+  } catch (e) { st.fn = null; if (err) err.textContent = e.message; }
+  _mlabDrawPlot(st.plotId, st);
+}
+function _mlabTheorieFn(st) {
+  const P = st.presets[st.preset];
+  const term = P.term();
+  const inp = document.getElementById(st.fnId);
+  if (inp) inp.value = term;
+  _mlabSetFn(st, term);
+  st.fnAuto = true;
+  _mlabRenderTheorie(st, true);
+}
+function _mlabClearFn(st) {
+  const inp = document.getElementById(st.fnId);
+  if (inp) inp.value = '';
+  _mlabSetFn(st, '');
+  _mlabRenderTheorie(st, false);
+}
+function _mlabRefreshTheorie(st) {
+  if (st.fnAuto) {
+    const term = st.presets[st.preset].term();
+    const inp = document.getElementById(st.fnId);
+    if (inp) inp.value = term;
+    _mlabSetFn(st, term);
+    st.fnAuto = true;
+  }
+  _mlabRenderTheorie(st, st.fnAuto);
+}
+function _mlabRenderTheorie(st, eingesetzt) {
+  const el = document.getElementById(st.theoId);
+  if (!el) return;
+  const P = st.presets[st.preset];
+  el.innerHTML =
+    `<div class="fpm-theo-kopf">Erwarteter Funktionstyp</div>
+     <div class="fpm-theo-typ">${P.typ}</div>
+     <div class="fpm-theo-form">${P.form}</div>
+     <div class="fpm-theo-par">${P.param()}</div>
+     ${eingesetzt ? `<div class="fpm-theo-term">eingesetzt: f(x) = ${P.term()}</div>` : ''}
+     <div class="fpm-theo-deutung">${P.deutung}</div>`;
+}
+
+// ── Standard-Bausteine der Auswertungs-Oberflaeche ─────
+// st.pre  = Praefix fuer Element-IDs (z. B. 'glf')
+// fns     = { preset, setfn, theo, clear, bool } – Namen der globalen Wiring-Funktionen
+// erzeugt die Tab-Leiste zum Umschalten der Achsen
+function _mlabTabsHTML(st, presetFnName) {
+  return st.presets.map((p, i) =>
+    `<button class="fpm-tab${i === st.preset ? ' on' : ''}" id="${st.pre}Tab${i}" onclick="${presetFnName}(${i})">${p.tab}</button>`).join('');
+}
+// schaltet Preset um (im konkreten Sim-Modul aufgerufen)
+function _mlabSetPreset(st, i) {
+  st.preset = i;
+  for (let k = 0; k < st.presets.length; k++) document.getElementById(st.pre + 'Tab' + k)?.classList.toggle('on', k === i);
+  _mlabRefreshTheorie(st);
+  _mlabDrawPlot(st.plotId, st);
+}
+// rechter Auswertungsblock (Fit + Funktionsplotter + Theoriebox)
+function _mlabAuswertungHTML(st, fns) {
+  return `<div class="fpm-tabs">${_mlabTabsHTML(st, fns.preset)}</div>
+    <div class="fpm-grid2">
+      <canvas id="${st.plotId}" width="470" height="330" class="phys-chart-cv"></canvas>
+      <div>
+        <div class="fpm-fit" id="${st.fitId}"></div>
+        <div class="fpm-label" style="margin-top:10px">Funktion plotten</div>
+        <input type="text" id="${st.fnId}" class="fpm-input" placeholder="z. B. 2*x" spellcheck="false"
+          oninput="${fns.setfn}(this.value)">
+        <div class="fpm-err" id="${st.fnErrId}"></div>
+        <div class="sim-btn-row" style="padding:2px 0 4px">
+          <button class="sim-btn primary" onclick="${fns.theo}()">ƒ Theoriefunktion</button>
+          <button class="sim-btn" onclick="${fns.clear}()">Feld leeren</button>
+        </div>
+        <div class="fpm-theo" id="${st.theoId}"></div>
+        <div class="fpm-note">Erlaubt: x, pi, + − * / ^, sqrt(), sin(), cos(), abs(), exp(), ln(). Malpunkt immer schreiben.</div>
+        <label class="fpm-check"><input type="checkbox"${st.origin ? ' checked' : ''} onchange="${fns.bool}('origin',this.checked)">
+          Ausgleichsgerade durch den Ursprung</label>
+        <label class="fpm-check"><input type="checkbox" onchange="${fns.bool}('showTheory',this.checked)">
+          Theoriekurve einblenden</label>
+      </div>
+    </div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// 1.2 GLEICHFOERMIGE BEWEGUNG – handlungsorientiert
+// Fahrbahn mit Lichtschranken. Schueler waehlt v, misst die
+// Durchgangszeiten -> Weg-Zeit-Tabelle -> Ursprungsgerade,
+// Steigung = gefahrene Geschwindigkeit. s ~ t.
+// ═══════════════════════════════════════════════════════
+
+const _GLF_MARKS = [1.5, 3.0, 4.5, 6.0, 7.5, 9.0];   // Lichtschranken in m (10-m-Fahrbahn)
+let _glf = null;
+
+const _GLF_PRESETS = [
+  { tab: 't → s', xl: 't in s', yl: 's in m', x: r => r.t, y: r => r.s, grp: r => r.v,
+    gl: k => 'v = ' + _fpmNum(+k, 1) + ' m/s', slope: k => +k,
+    col: (k, i) => _MLAB_PALETTE[i % _MLAB_PALETTE.length],
+    curveFn: (xv, k) => k * xv,
+    note: 'Ursprungsgerade ⇒ s ~ t. Die Steigung jeder Geraden ist die gefahrene Geschwindigkeit v = s/t. Steiler = schneller. Bei gleichförmiger Bewegung ist v konstant.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 's(t) = v · t',
+    param: () => 'Steigung = v = ' + _fpmNum(_glf.v, 1) + ' m/s (aktuell gewählt)',
+    term: () => _glf.v.toString() + '*x',
+    deutung: 'Weg proportional zur Zeit: In gleichen Zeiten wird immer die gleiche Strecke zurückgelegt. Die Steigung der Geraden ist die Geschwindigkeit.',
+    ergebnis: (fit) => _mlabErgebnis('Geschwindigkeit v = Steigung der Ausgleichsgeraden',
+      _fpmNum(fit.k, 2), 'm/s', _fpmNum(_glf.v, 2), 's = v·t  ⇒  v = s/t') }
+];
+
+function _glfInit() {
+  _glf = {
+    v: 4.0, dispS: 0, flash: 0,
+    rows: [], nextId: 1, preset: 0, fn: null, fnAuto: false, origin: true, showTheory: false,
+    pre: 'glf', plotId: 'glfPlot', fitId: 'glfFit', fnId: 'glfFn', fnErrId: 'glfErr', theoId: 'glfTheo',
+    presets: _GLF_PRESETS
+  };
+}
+
+function _glfHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim glf-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🚗 Gleichförmige Bewegung – das Weg-Zeit-Gesetz selbst messen</h3>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="glfAnim" width="420" height="240" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Geschwindigkeit v: <b id="glfVLbl">4,0 m/s</b></span>
+          <input type="range" id="glfV" min="1" max="9" step="0.5" value="4"
+            oninput="_glfSetV(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="fpm-note" style="margin-top:6px">Wähle eine Geschwindigkeit und schicke den Wagen durch die 6 Lichtschranken. Jede Schranke stoppt automatisch die Zeit. Danach eine <b>andere</b> Geschwindigkeit messen und vergleichen.</div>
+      </div>
+      <div>
+        <div class="fpm-label">Messung</div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" onclick="_glfMessen()">⏱ Lichtschranken-Messfahrt</button>
+          <button class="sim-btn" onclick="_glfDemo()">📋 Beispielmessreihe</button>
+          <button class="sim-btn" onclick="_glfClear()">🗑 Tabelle leeren</button>
+        </div>
+        <div class="fpm-tablewrap">
+          <table class="sim-table">
+            <thead><tr><th>v (m/s)</th><th>s (m)</th><th>t (s)</th><th></th></tr></thead>
+            <tbody id="glfTbody"></tbody>
+          </table>
+          <div class="fpm-empty" id="glfEmpty">Noch keine Messwerte.<br>Geschwindigkeit wählen → Messfahrt starten.</div>
+        </div>
+      </div>
+    </div>
+    <div class="fpm-label" style="margin-top:12px">Auswertung – trage s über t auf. Liegen die Punkte auf einer Ursprungsgeraden?</div>
+    ${_mlabAuswertungHTML(_glf, { preset: '_glfSetPreset', setfn: '_glfSetFn', theo: '_glfTheorieFn', clear: '_glfClearFn', bool: '_glfSetBool' })}
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>s = v · t</b> &nbsp;⇒&nbsp; die Steigung der s-t-Geraden <i>ist</i> die Geschwindigkeit &nbsp;|&nbsp; nur eine Größe verändern
+    </p>
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _glfSetV(v) {
+  _glf.v = +v;
+  const el = document.getElementById('glfVLbl'); if (el) el.textContent = _fpmNum(+v, 1) + ' m/s';
+  _mlabRefreshTheorie(_glf);
+}
+function _glfMessen() {
+  const v = _glf.v;
+  _GLF_MARKS.forEach(s => {
+    // Stoppuhr-Ablesung: wahre Zeit s/v, gerundet auf 0,01 s, mit kleiner Reaktionsstreuung
+    const t = (s / v) * (1 + (Math.random() - 0.5) * 0.012);
+    _glfAddRow(v, s, Math.round(t * 100) / 100);
+  });
+  _glf.flash = 1;
+}
+function _glfDemo() {
+  [3.0, 5.0, 7.0].forEach(v => _GLF_MARKS.forEach(s => {
+    const t = (s / v) * (1 + (Math.random() - 0.5) * 0.012);
+    _glf.rows.push({ id: _glf.nextId++, v, s, t: Math.round(t * 100) / 100 });
+  }));
+  _glfRenderTable(); _mlabDrawPlot('glfPlot', _glf);
+}
+function _glfAddRow(v, s, t) {
+  _glf.rows.push({ id: _glf.nextId++, v, s, t });
+  _glfRenderTable(); _mlabDrawPlot('glfPlot', _glf);
+}
+function _glfDelRow(id) { _glf.rows = _glf.rows.filter(r => r.id !== id); _glfRenderTable(); _mlabDrawPlot('glfPlot', _glf); }
+function _glfClear() {
+  if (_glf.rows.length && !confirm('Alle ' + _glf.rows.length + ' Messwerte löschen?')) return;
+  _glf.rows = []; _glfRenderTable(); _mlabDrawPlot('glfPlot', _glf);
+}
+function _glfColV(v) { const i = [3, 4, 5, 6, 7].indexOf(Math.round(v)); return _MLAB_PALETTE[(i < 0 ? Math.round(v) : i) % _MLAB_PALETTE.length]; }
+function _glfRenderTable() {
+  const tb = document.getElementById('glfTbody'); if (!tb) return;
+  const empty = document.getElementById('glfEmpty');
+  if (empty) empty.style.display = _glf.rows.length ? 'none' : 'block';
+  tb.innerHTML = _glf.rows.map(r =>
+    `<tr><td><span class="fpm-dot" style="background:${_glfColV(r.v)}"></span>${_fpmNum(r.v, 1)}</td>
+       <td>${_fpmNum(r.s, 1)}</td><td><b>${_fpmNum(r.t, 2)}</b></td>
+       <td class="fpm-del" onclick="_glfDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+
+// ── Wiring zum Framework ───────────────────────────────
+function _glfSetPreset(i) { _mlabSetPreset(_glf, i); }
+function _glfSetFn(s) { _mlabSetFn(_glf, s); }
+function _glfTheorieFn() { _mlabTheorieFn(_glf); }
+function _glfClearFn() { _mlabClearFn(_glf); }
+function _glfSetBool(k, v) { _glf[k] = v; _mlabDrawPlot('glfPlot', _glf); }
+
+// ── Animation ──────────────────────────────────────────
+function _glfUpdate(dt) {
+  if (!_glf) return;
+  _glf.dispS += _glf.v * dt;
+  if (_glf.dispS > 10) _glf.dispS -= 10;
+  _glf.flash = Math.max(0, _glf.flash - dt * 1.5);
+}
+function _glfDraw(ctx, cv) {
+  if (!_glf) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f0f9ff'; ctx.fillRect(0, 0, W, H);
+  const road = H - 60, mL = 30, mR = W - 20, span = mR - mL;
+  const sx = s => mL + s / 10 * span;
+  // Fahrbahn
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(mL, road, span, 8);
+  // Lichtschranken
+  _GLF_MARKS.forEach(s => {
+    ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(sx(s), road - 46); ctx.lineTo(sx(s), road); ctx.stroke();
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(_fpmNum(s, 1), sx(s), road + 22);
+  });
+  ctx.fillStyle = '#64748b'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Lichtschranken bei s (m):', mL, road + 40);
+  // Wagen
+  const cx = sx(_glf.dispS);
+  ctx.fillStyle = _glf.flash > 0.3 ? '#f97316' : '#7c3aed';
+  const bw = 34, bh = 18;
+  ctx.beginPath(); ctx.roundRect ? ctx.roundRect(cx - bw / 2, road - bh, bw, bh, 4) : ctx.rect(cx - bw / 2, road - bh, bw, bh); ctx.fill();
+  ctx.fillStyle = '#1e293b';
+  ctx.beginPath(); ctx.arc(cx - 9, road, 4, 0, 2 * Math.PI); ctx.arc(cx + 9, road, 4, 0, 2 * Math.PI); ctx.fill();
+  // Infozeile
+  ctx.fillStyle = '#1e293b'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('v = ' + _fpmNum(_glf.v, 1) + ' m/s  (konstant)', mL, 22);
+  ctx.fillStyle = '#7c3aed'; ctx.font = '11px sans-serif';
+  ctx.fillText('s = ' + _fpmNum(_glf.dispS, 2) + ' m', mL, 40);
+}
