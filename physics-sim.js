@@ -250,7 +250,10 @@ const _physAbDefs = {
   'ton-entsteht': { titel: 'Wie entsteht ein Ton?', ns: 'tonentsteht', html: () => _tonArbeitsblattHTML() },
   'lautstaerke': { titel: 'Wovon hängt die Lautstärke ab?', ns: 'lautstaerke', html: () => _lstArbeitsblattHTML() },
   'tonhoehe': { titel: 'Wovon hängt die Tonhöhe ab?', ns: 'tonhoehe', html: () => _thzArbeitsblattHTML() },
-  'schallausbreitung': { titel: 'Wie breitet sich Schall aus?', ns: 'schallausbr', html: () => _scaArbeitsblattHTML() }
+  'schallausbreitung': { titel: 'Wie breitet sich Schall aus?', ns: 'schallausbr', html: () => _scaArbeitsblattHTML() },
+  'ohr': { titel: 'Wie funktioniert das Ohr?', ns: 'ohr', html: () => _ohrArbeitsblattHTML() },
+  'laermschutz': { titel: 'Wie können wir uns vor Lärm schützen?', ns: 'laermschutz', html: () => _laeArbeitsblattHTML() },
+  'tag-nacht': { titel: 'Wie entstehen Tag und Nacht?', ns: 'tagnacht', html: () => _tagArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -572,6 +575,35 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('scaAnim', 'scaAnim');
     _pSim.start(dt => _scaUpdate(dt), (ctx, cv) => _scaDraw(ctx, cv), []);
     _abRestore('schallausbr');
+  },
+
+  // ── 6.2.5 WIE FUNKTIONIERT DAS OHR? ────────────────────────────
+  'ohr': modal => {
+    _ohrInit();
+    modal.innerHTML = _ohrHTML();
+    _pSim = new PhysicsSimEngine('ohrAnim', 'ohrAnim');
+    _pSim.start(dt => _ohrUpdate(dt), (ctx, cv) => _ohrDraw(ctx, cv), []);
+    _abRestore('ohr');
+  },
+
+  // ── 6.2.6 LÄRMSCHUTZ ───────────────────────────────────────────
+  'laermschutz': modal => {
+    _laeInit();
+    modal.innerHTML = _laeHTML();
+    _laeStatus();
+    _pSim = new PhysicsSimEngine('laeAnim', 'laeAnim');
+    _pSim.start(dt => _laeUpdate(dt), (ctx, cv) => _laeDraw(ctx, cv), []);
+    _abRestore('laermschutz');
+  },
+
+  // ── 6.3.1 TAG UND NACHT ────────────────────────────────────────
+  'tag-nacht': modal => {
+    _tagInit();
+    modal.innerHTML = _tagHTML();
+    _tagStatus();
+    _pSim = new PhysicsSimEngine('tagAnim', 'tagAnim');
+    _pSim.start(dt => _tagUpdate(dt), (ctx, cv) => _tagDraw(ctx, cv), []);
+    _abRestore('tagnacht');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -41587,5 +41619,624 @@ function _scaAns(qi, oi) {
 function _scaSelf(n) {
   const out = document.getElementById('scaSelfOut'), val = document.getElementById('scaSelfVal');
   if (val) { val.value = String(n); _abSave('schallausbr'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.2.5  WIE FUNKTIONIERT DAS OHR?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Licht und Schall"
+// Handlungsorientiert: Schallquelle – Übertragung – Empfänger. Der
+// Schall trifft auf das Ohr: Die Ohrmuschel sammelt ihn, das Trommel-
+// fell schwingt, die Gehörknöchelchen übertragen, die Schnecke wandelt
+// in Nervensignale um, der Hörnerv leitet sie zum Gehirn.
+// ═══════════════════════════════════════════════════════
+
+let _ohr = null;
+function _ohrInit() { _ohr = { amp: 0.6, t: 0 }; }
+
+function _ohrHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim ohr-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">👂 Wie funktioniert das Ohr?</h3>
+    <div class="fpm-note" style="margin-top:2px">Der Schall trifft auf das Ohr. Verändere die Lautstärke und beobachte, wie das Trommelfell schwingt und das Signal bis zum Gehirn wandert.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="ohrAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Lautstärke des Tons: <b id="ohrALbl">mittel</b></span>
+          <input type="range" id="ohrA" min="0.15" max="1" step="0.05" value="0.6"
+            oninput="_ohrSetA(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Der Weg des Schalls</div>
+        <ol class="ab-ol" style="margin-top:4px">
+          <li><b>Ohrmuschel</b> – sammelt den Schall</li>
+          <li><b>Gehörgang</b> – leitet ihn zum Trommelfell</li>
+          <li><b>Trommelfell</b> – schwingt im Takt des Schalls</li>
+          <li><b>Gehörknöchelchen</b> – übertragen die Schwingung</li>
+          <li><b>Schnecke</b> – wandelt sie in Nervensignale</li>
+          <li><b>Hörnerv</b> – leitet das Signal zum Gehirn</li>
+        </ol>
+        <div class="fpm-note" style="margin-top:6px">Das Ohr ist der <b>Empfänger</b> im Modell Sender–Gegenstand–Empfänger.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Schallquelle → Schall in der Luft → <b>Ohr</b> (Empfänger) → Gehirn. &nbsp;|&nbsp; Lauter Ton → Trommelfell schwingt stärker.
+    </p>
+    ${_ohrArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _ohrSetA(v) { _ohr.amp = +v; const el = document.getElementById('ohrALbl'); if (el) el.textContent = +v < 0.35 ? 'leise' : (+v < 0.7 ? 'mittel' : 'laut'); }
+
+// ── Animation ──────────────────────────────────────────
+function _ohrUpdate(dt) { if (_ohr) _ohr.t += dt; }
+function _ohrDraw(ctx, cv) {
+  if (!_ohr) return;
+  const W = cv.width, H = cv.height, cy = H / 2;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff7ed'; ctx.fillRect(0, 0, W, H);
+  // einfallende Schallwellen (links)
+  for (let k = 0; k < 4; k++) {
+    const rad = 20 + ((_ohr.t * 70 + k * 30) % 110);
+    ctx.strokeStyle = `rgba(124,58,237,${Math.max(0, (0.6 - rad / 130) * _ohr.amp)})`; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.arc(20, cy, rad, -0.8, 0.8); ctx.stroke();
+  }
+  // Ohrmuschel
+  ctx.fillStyle = '#fbcfe8'; ctx.strokeStyle = '#9d174d'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.ellipse(105, cy, 26, 40, -0.2, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.ellipse(105, cy, 12, 24, -0.2, 0, 2 * Math.PI); ctx.fill();
+  // Gehörgang
+  ctx.fillStyle = '#fde68a'; ctx.fillRect(120, cy - 10, 70, 20);
+  // Trommelfell (schwingt)
+  const tf = 195, off = 5 * _ohr.amp * Math.sin(_ohr.t * 12);
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(tf + off, cy - 16); ctx.lineTo(tf + off, cy + 16); ctx.stroke();
+  // Gehörknöchelchen
+  ctx.fillStyle = '#f59e0b'; [210, 224, 238].forEach((x, i) => { ctx.beginPath(); ctx.arc(x + off * 0.5, cy - 6 + i * 4, 5, 0, 2 * Math.PI); ctx.fill(); });
+  // Schnecke (Spirale)
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 3; ctx.beginPath();
+  for (let a = 0; a < 4 * Math.PI; a += 0.2) { const r = 4 + a * 3.2; const x = 285 + Math.cos(a) * r, y = cy + Math.sin(a) * r; a === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); }
+  ctx.stroke();
+  // Hörnerv zum Gehirn + wanderndes Signal
+  ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(320, cy); ctx.quadraticCurveTo(370, cy - 40, W - 40, 40); ctx.stroke();
+  const sp = (_ohr.t * 0.6) % 1; const sx = 320 + (W - 60) * sp, sy = cy - 80 * sp;
+  ctx.fillStyle = '#22c55e'; ctx.beginPath(); ctx.arc(sx, cy - (cy - 40) * sp, 4, 0, 2 * Math.PI); ctx.fill();
+  // Gehirn
+  ctx.fillStyle = '#f9a8d4'; ctx.beginPath(); ctx.arc(W - 35, 35, 18, 0, 2 * Math.PI); ctx.fill();
+  // Labels
+  ctx.fillStyle = '#334155'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Ohrmuschel', 105, cy + 54); ctx.fillText('Trommelfell', tf, cy + 30); ctx.fillText('Schnecke', 285, cy + 40); ctx.fillText('Gehirn', W - 35, 62);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.2.5  (ns = 'ohr') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _ohrArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('ohr')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('ohr')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie kommt ein Ton in unser Ohr – und was passiert dort, damit wir ihn hören?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, im Ohr passiert Folgendes: …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Verfolge in der Simulation den Weg des Schalls von der Ohrmuschel bis zum Gehirn.</li>
+          <li>Verändere die Lautstärke. Wie stark schwingt das Trommelfell?</li>
+          <li>Ordne die Bauteile in der richtigen Reihenfolge.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Weg des Schalls (nummeriere 1–6)</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Trommelfell</td><td>${inp('r_tf', 'Nr.')}</td><td>Ohrmuschel</td><td>${inp('r_om', 'Nr.')}</td></tr>
+          <tr><td>Hörnerv → Gehirn</td><td>${inp('r_hn', 'Nr.')}</td><td>Gehörgang</td><td>${inp('r_gg', 'Nr.')}</td></tr>
+          <tr><td>Schnecke</td><td>${inp('r_sc', 'Nr.')}</td><td>Gehörknöchelchen</td><td>${inp('r_gk', 'Nr.')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne ein einfaches Ohr und beschrifte Ohrmuschel, Trommelfell und Hörnerv.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was tut das Trommelfell, wenn Schall ankommt? ${inp('a1', 'es …')}</li>
+          <li>Was sammelt den Schall? ${inp('a2', '')}</li>
+          <li>Ist das Ohr Sender oder Empfänger? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die ${inp('m1', 'was?')} sammelt den Schall, das ${inp('m2', 'was?')} schwingt und gibt ihn weiter.<br>
+        Die Schnecke wandelt die Schwingung in Nervensignale um, der Hörnerv leitet sie zum ${inp('m3', 'wohin?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum hört man ein leises Geräusch besser, wenn man die Hand hinter das Ohr hält?</div>
+        ${ta('tr1', 'Mit der Hand hinter dem Ohr …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="ohrMini">${_ohrMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_ohrSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_ohrSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_ohrSelf(3)">😃 sicher</button>
+          <span id="ohrSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="ohrSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Reihenfolge: 1 Ohrmuschel, 2 Gehörgang, 3 Trommelfell, 4 Gehörknöchelchen, 5 Schnecke, 6 Hörnerv → Gehirn. Bei lautem Ton schwingt das Trommelfell stärker.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Das Ohr ist der Empfänger. Ohrmuschel/Gehörgang sammeln und leiten den Schall, das Trommelfell wird zum Schwingen angeregt, die Gehörknöchelchen übertragen und verstärken, in der Schnecke entstehen Nervensignale, der Hörnerv leitet sie zum Gehirn (dort wird „gehört").</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Das Ohr erzeugt den Ton." (2) „Man hört mit der Ohrmuschel." (3) „Das Trommelfell hört selbst."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Weg als Kette mit Pfeilen; Modell Sender–Übertragung–Empfänger; Hand-hinter-Ohr-Versuch.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Reihenfolge s. o. 6.1 „es schwingt" · 6.2 „die Ohrmuschel" · 6.3 „Empfänger". Merksatz: Ohrmuschel · Trommelfell · Gehirn. Transfer: Die Hand vergrößert die Ohrmuschel und sammelt mehr Schall. Minidiagnose: 1→Trommelfell · 2→Empfänger · 3→Ohrmuschel.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('ohr')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('ohr', 'Wie funktioniert das Ohr?', body);
+}
+
+const _OHR_MINI = [
+  { q: '1. Was passiert im Ohr, wenn Schall ankommt?',
+    opts: ['Die Ohrmuschel leuchtet', 'Das Trommelfell schwingt', 'Das Ohr erzeugt einen Ton'], correct: 1,
+    fb: ['Die Ohrmuschel leuchtet natürlich nicht.',
+         'Richtig! Der Schall bringt das Trommelfell zum Schwingen.',
+         'Das Ohr erzeugt keinen Ton – es empfängt ihn.'] },
+  { q: '2. Ist das Ohr Sender oder Empfänger des Schalls?',
+    opts: ['Sender', 'Empfänger', 'Beides'], correct: 1,
+    fb: ['Der Sender ist die Schallquelle.',
+         'Richtig! Das Ohr ist der Empfänger.',
+         'Es empfängt nur.'] },
+  { q: '3. Welcher Teil sammelt den Schall zuerst?',
+    opts: ['Die Ohrmuschel', 'Die Schnecke', 'Der Hörnerv'], correct: 0,
+    fb: ['Richtig! Die Ohrmuschel sammelt den Schall.',
+         'Die Schnecke kommt viel später.',
+         'Der Hörnerv leitet erst am Ende weiter.'] }
+];
+function _ohrMiniHTML() {
+  return _OHR_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_ohrAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="ohrFb${qi}"></div></div>`).join('');
+}
+function _ohrAns(qi, oi) {
+  const m = _OHR_MINI[qi], el = document.getElementById('ohrFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _ohrSelf(n) {
+  const out = document.getElementById('ohrSelfOut'), val = document.getElementById('ohrSelfVal');
+  if (val) { val.value = String(n); _abSave('ohr'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.2.6  WIE KÖNNEN WIR UNS VOR LÄRM SCHÜTZEN?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Licht und Schall"
+// Handlungsorientiert + Bewertung: Lautstärke und Einwirkungsdauer
+// gefährden das Gehör. Schutz durch Abstand, Gehörschutz und
+// schluckende (absorbierende) Materialien. Maßnahmen vergleichen.
+// ═══════════════════════════════════════════════════════
+
+let _lae = null;
+function _laeInit() { _lae = { srcDb: 100, dist: 2, schutz: false, absorb: false }; }
+function _laeEff() {
+  let d = _lae.srcDb - 6 * (Math.log(Math.max(1, _lae.dist)) / Math.log(2));
+  if (_lae.schutz) d -= 20;
+  if (_lae.absorb) d -= 8;
+  return Math.max(20, d);
+}
+function _laeSafeH() {
+  const e = _laeEff();
+  if (e < 85) return null;                          // ungefährlich
+  return 8 / Math.pow(2, (e - 85) / 3);             // erlaubte Zeit in Stunden
+}
+
+function _laeHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim lae-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🎧 Wie können wir uns vor Lärm schützen?</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine laute Maschine. Verändere Lautstärke und Abstand, setze Gehörschutz auf oder dämpfe den Raum. Wie viel Lärm kommt am Ohr an – und ist das gefährlich?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="laeAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_lae.schutz ? ' primary' : ''}" id="laeSc" onclick="_laeToggle('schutz')">🎧 Gehörschutz</button>
+          <button class="sim-btn${_lae.absorb ? ' primary' : ''}" id="laeAb" onclick="_laeToggle('absorb')">🧱 Schallschutz (Absorption)</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl"><span class="phys-ctrl-label">Lautstärke der Quelle: <b id="laeDLbl">100 dB</b></span>
+          <input type="range" id="laeD" min="70" max="120" step="5" value="100" oninput="_laeSet('srcDb',this.value)" style="width:100%;accent-color:#ef4444"></div>
+        <div class="phys-ctrl" style="margin-top:6px"><span class="phys-ctrl-label">Abstand zur Quelle: <b id="laeXLbl">2 m</b></span>
+          <input type="range" id="laeX" min="1" max="16" step="1" value="2" oninput="_laeSet('dist',this.value)" style="width:100%;accent-color:#7c3aed"></div>
+        <div class="lmp-status" id="laeStatus" style="margin-top:10px"></div>
+        <div class="fpm-note" style="margin-top:8px">Ab etwa <b>85 dB</b> kann Lärm auf Dauer das Gehör schädigen. Je lauter, desto kürzer darf man ihn ertragen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Schutz: <b>Abstand</b> vergrößern · <b>Gehörschutz</b> tragen · Räume <b>dämpfen</b> · <b>Zeit</b> verkürzen.
+    </p>
+    ${_laeArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _laeSet(k, v) {
+  _lae[k] = +v;
+  const l = document.getElementById(k === 'srcDb' ? 'laeDLbl' : 'laeXLbl');
+  if (l) l.textContent = k === 'srcDb' ? _fpmNum(+v, 0) + ' dB' : _fpmNum(+v, 0) + ' m';
+  _laeStatus();
+}
+function _laeToggle(k) { _lae[k] = !_lae[k]; document.getElementById(k === 'schutz' ? 'laeSc' : 'laeAb')?.classList.toggle('primary', _lae[k]); _laeStatus(); }
+function _laeStatus() {
+  const el = document.getElementById('laeStatus'); if (!el) return;
+  const e = _laeEff(), h = _laeSafeH();
+  if (h === null) { el.textContent = '✓ Am Ohr: ' + _fpmNum(e, 0) + ' dB – ungefährlich.'; el.className = 'lmp-status on'; }
+  else {
+    const txt = h >= 1 ? _fpmNum(h, 1) + ' Stunden' : _fpmNum(h * 60, 0) + ' Minuten';
+    el.textContent = '⚠️ Am Ohr: ' + _fpmNum(e, 0) + ' dB – gefährlich! Ohne Schutz nur ca. ' + txt + ' erträglich.';
+    el.className = 'lmp-status off';
+  }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _laeUpdate() {}
+function _laeDraw(ctx, cv) {
+  if (!_lae) return;
+  const W = cv.width, H = cv.height, cy = H / 2 - 10, e = _laeEff();
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  // Maschine links
+  ctx.fillStyle = '#475569'; ctx.fillRect(30, cy - 20, 44, 40);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Maschine', 52, cy + 34);
+  ctx.fillStyle = '#ef4444'; ctx.font = '700 11px sans-serif'; ctx.fillText(_fpmNum(_lae.srcDb, 0) + ' dB', 52, cy - 26);
+  // Schallwellen (bis zum Ohr, gedämpft durch Absorption)
+  const earX = 30 + 30 + _lae.dist * 20; const ex = Math.min(earX, W - 60);
+  for (let k = 0; k < 5; k++) {
+    const rad = 20 + k * 26;
+    const strong = Math.max(0, (e - 40) / 80) * (_lae.absorb ? 0.5 : 1);
+    ctx.strokeStyle = `rgba(${e >= 85 ? 239 : 34},${e >= 85 ? 68 : 197},${e >= 85 ? 68 : 94},${Math.max(0, strong - k * 0.12)})`;
+    ctx.lineWidth = 2.5; ctx.beginPath(); ctx.arc(74, cy, rad, -0.7, 0.7); ctx.stroke();
+  }
+  // Absorptionswand
+  if (_lae.absorb) { ctx.fillStyle = '#a3a3a3'; for (let y = cy - 40; y < cy + 40; y += 10) ctx.fillRect((74 + ex) / 2, y, 8, 6); ctx.fillStyle = '#525252'; ctx.font = '9px sans-serif'; ctx.fillText('Dämmung', (74 + ex) / 2 + 4, cy - 46); }
+  // Ohr / Kopf
+  ctx.fillStyle = '#fcd9b6'; ctx.beginPath(); ctx.arc(ex, cy, 22, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#fbcfe8'; ctx.beginPath(); ctx.ellipse(ex - 20, cy, 6, 12, 0, 0, 2 * Math.PI); ctx.fill();
+  if (_lae.schutz) { ctx.fillStyle = '#1e293b'; ctx.beginPath(); ctx.arc(ex - 20, cy, 12, 0, 2 * Math.PI); ctx.fill(); ctx.fillStyle = '#334155'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('🎧', ex - 20, cy + 3); }
+  ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Ohr (' + _fpmNum(_lae.dist, 0) + ' m)', ex, cy + 40);
+  // dB-Skala
+  const bx = 40, bw = W - 80, by = 20;
+  ['#22c55e', '#facc15', '#ef4444'].forEach((c, i) => { ctx.fillStyle = c; ctx.fillRect(bx + bw * i / 3, by, bw / 3, 8); });
+  const fr = (e - 40) / (120 - 40);
+  ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.moveTo(bx + bw * Math.max(0, Math.min(1, fr)), by + 12); ctx.lineTo(bx + bw * fr - 5, by + 20); ctx.lineTo(bx + bw * fr + 5, by + 20); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('am Ohr: ' + _fpmNum(e, 0) + ' dB', bx + bw / 2, by - 4);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.2.6  (ns = 'laermschutz') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _laeArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('laermschutz')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('laermschutz')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wann ist Lärm gefährlich, und wie kann man sich davor schützen?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, man kann sich vor Lärm schützen, indem man …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle eine laute Quelle ein (z. B. 110 dB). Ist das am Ohr gefährlich?</li>
+          <li>Vergrößere den Abstand, setze Gehörschutz auf, schalte die Dämmung ein.</li>
+          <li>Beobachte, wie sich die Dezibel am Ohr jeweils ändern.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle (Quelle 110 dB, 2 m)</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Maßnahme</td><td>dB am Ohr</td><td>gefährlich?</td></tr>
+          <tr><td>keine</td><td>${inp('t_0', 'dB')}</td><td>${inp('t_0g', 'ja/nein')}</td></tr>
+          <tr><td>Abstand 16 m</td><td>${inp('t_x', 'dB')}</td><td>${inp('t_xg', '')}</td></tr>
+          <tr><td>Gehörschutz</td><td>${inp('t_s', 'dB')}</td><td>${inp('t_sg', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Maschine, den Abstand und ein Ohr mit Gehörschutz.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung &amp; Bewertung</div>
+        <ol class="ab-ol">
+          <li>Wovon hängt die Gefahr für das Gehör ab? ${inp('a1', 'von … und …')}</li>
+          <li>Welche Maßnahme half am meisten? ${inp('a2', '')}</li>
+          <li>Welche Maßnahme ist im Alltag am einfachsten umzusetzen? Begründe. ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Lärm schadet dem Gehör, wenn er zu ${inp('m1', 'was?')} ist und zu ${inp('m2', 'was?')} dauert.<br>
+        Schützen kann man sich durch mehr Abstand, ${inp('m3', 'nenne eine Maßnahme')} und kürzere Einwirkzeit.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Bei einem lauten Konzert stehst du direkt vor der Box. Nenne drei Dinge, mit denen du dein Gehör schützen kannst.</div>
+        ${ta('tr1', '1. … 2. … 3. …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="laeMini">${_laeMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_laeSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_laeSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_laeSelf(3)">😃 sicher</button>
+          <span id="laeSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="laeSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> 110 dB / 2 m ≈ 104 dB am Ohr → gefährlich. Abstand 16 m: −18 dB → ~86 dB. Gehörschutz: −20 dB → ~84 dB (unter der Gefahrengrenze). Kombinationen wirken zusammen.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Gehörschädigung hängt von Lautstärke UND Einwirkungsdauer ab (Richtwert ~85 dB Dauerbelastung). Schutz: Abstand vergrößern (Schall nimmt mit Abstand ab), Schall absorbieren/abschirmen, Gehörschutz, Belastungszeit verkürzen. Bewertung: Maßnahmen nach Wirkung UND Umsetzbarkeit.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Kurzer Lärm ist nie gefährlich." (2) „Nur sehr hohe Töne schaden." (3) „Watte im Ohr hilft genauso viel wie Kapselgehörschutz."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> dB-Skala mit Alltagsbeispielen; Maßnahmen einzeln testen und vergleichen; Wirkung ↔ Aufwand abwägen (Bewertung).</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: keine ~104 dB ja; 16 m ~86 dB grenzwertig; Gehörschutz ~84 dB nein. 6.1 „von Lautstärke und Dauer" · 6.2 „Gehörschutz/Abstand" · 6.3 individuell (z. B. Gehörschutz = einfach & wirksam). Merksatz: laut · lange · Gehörschutz. Transfer: Abstand halten, Ohrstöpsel/Gehörschutz, Pausen/kürzere Zeit. Minidiagnose: 1→„Lautstärke und Dauer" · 2→„Gehörschutz" · 3→„der Schall wird mit dem Abstand leiser".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('laermschutz')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('laermschutz', 'Wie können wir uns vor Lärm schützen?', body);
+}
+
+const _LAE_MINI = [
+  { q: '1. Wovon hängt ab, ob Lärm das Gehör schädigt?',
+    opts: ['Nur von der Lautstärke', 'Von der Lautstärke UND der Dauer', 'Nur von der Tonhöhe'], correct: 1,
+    fb: ['Die Dauer zählt auch mit.',
+         'Richtig! Sowohl die Lautstärke als auch die Einwirkungsdauer sind entscheidend.',
+         'Die Tonhöhe ist nicht der Hauptpunkt.'] },
+  { q: '2. Womit schützt du dein Gehör bei sehr lautem Lärm am besten?',
+    opts: ['Mit Gehörschutz', 'Mit einer Sonnenbrille', 'Mit einem Schal'], correct: 0,
+    fb: ['Richtig! Gehörschutz (Kapsel oder Stöpsel) senkt die Lautstärke am Ohr deutlich.',
+         'Eine Sonnenbrille schützt die Augen, nicht die Ohren.',
+         'Ein Schal hilft gegen Kälte, nicht gegen Lärm.'] },
+  { q: '3. Warum hilft ein größerer Abstand zur Lärmquelle?',
+    opts: ['Weil der Schall mit dem Abstand leiser wird', 'Weil man dann wegläuft', 'Weil Abstand die Tonhöhe ändert'], correct: 0,
+    fb: ['Richtig! Mit größerem Abstand nimmt die Lautstärke ab.',
+         'Es geht nicht ums Weglaufen, sondern um die leiser werdende Lautstärke.',
+         'Die Tonhöhe ändert sich durch Abstand nicht.'] }
+];
+function _laeMiniHTML() {
+  return _LAE_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_laeAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="laeFb${qi}"></div></div>`).join('');
+}
+function _laeAns(qi, oi) {
+  const m = _LAE_MINI[qi], el = document.getElementById('laeFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _laeSelf(n) {
+  const out = document.getElementById('laeSelfOut'), val = document.getElementById('laeSelfVal');
+  if (val) { val.value = String(n); _abSave('laermschutz'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.3.1  WIE ENTSTEHEN TAG UND NACHT?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Sonnenenergie und Wärme /
+// Licht und Schall" (Sonne, Erde, Mond)
+// Handlungsorientiert: Die Erde dreht sich in 24 Stunden einmal um
+// sich selbst. Die der Sonne zugewandte Seite hat Tag, die abgewandte
+// Nacht. Erde drehen und den Standort durch Tag und Nacht wandern lassen.
+// ═══════════════════════════════════════════════════════
+
+let _tag = null;
+function _tagInit() { _tag = { angle: 30, t: 0, auto: true }; }
+function _tagIstTag() { return Math.cos(_tag.angle * Math.PI / 180) < 0; }   // Sonne links → linke Seite = Tag
+function _tagZeit() {
+  const c = Math.cos(_tag.angle * Math.PI / 180), s = Math.sin(_tag.angle * Math.PI / 180);
+  if (c < -0.7) return 'Mittag';
+  if (c > 0.7) return 'Mitternacht';
+  return s > 0 ? (c < 0 ? 'Vormittag' : 'Abend') : (c < 0 ? 'Morgen' : 'Nacht');
+}
+
+function _tagHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim tag-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌍 Wie entstehen Tag und Nacht?</h3>
+    <div class="fpm-note" style="margin-top:2px">Die Sonne steht links und leuchtet. Drehe die Erde und beobachte den roten Standort-Punkt: Wann hat er Tag, wann Nacht?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="tagAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="tagPlay" onclick="_tagAuto()">⏯ <span id="tagPlayT">Pause</span></button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Erde von Hand drehen</div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Drehung: <b id="tagDLbl">30°</b></span>
+          <input type="range" id="tagD" min="0" max="360" step="5" value="30"
+            oninput="_tagSetD(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="lmp-status" id="tagStatus"></div>
+        <div class="fpm-note" style="margin-top:10px">Die Erde dreht sich in <b>24 Stunden</b> einmal um sich selbst. Die der Sonne <b>zugewandte</b> Seite hat Tag, die <b>abgewandte</b> Seite Nacht.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Nicht die Sonne wandert – die <b>Erde dreht sich</b>. &nbsp;|&nbsp; Eine volle Drehung = ein Tag (24 Stunden).
+    </p>
+    ${_tagArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _tagSetD(v) { _tag.angle = +v; _tag.auto = false; _tagSyncPlay(); const el = document.getElementById('tagDLbl'); if (el) el.textContent = _fpmNum(+v, 0) + '°'; _tagStatus(); }
+function _tagAuto() { _tag.auto = !_tag.auto; _tagSyncPlay(); }
+function _tagSyncPlay() { const t = document.getElementById('tagPlayT'); if (t) t.textContent = _tag.auto ? 'Pause' : 'Abspielen'; document.getElementById('tagPlay')?.classList.toggle('primary', _tag.auto); }
+function _tagStatus() {
+  const el = document.getElementById('tagStatus'); if (!el) return;
+  el.textContent = _tagIstTag() ? ('☀️ Der Standort hat Tag (' + _tagZeit() + ').') : ('🌙 Der Standort hat Nacht (' + _tagZeit() + ').');
+  el.className = 'lmp-status ' + (_tagIstTag() ? 'on' : 'off');
+}
+
+// ── Animation ──────────────────────────────────────────
+function _tagUpdate(dt) {
+  if (!_tag) return; _tag.t += dt;
+  if (_tag.auto) {
+    _tag.angle = (_tag.angle + dt * 40) % 360;
+    const sl = document.getElementById('tagD'); if (sl) sl.value = _tag.angle;
+    const el = document.getElementById('tagDLbl'); if (el) el.textContent = _fpmNum(_tag.angle, 0) + '°';
+    _tagStatus();
+  }
+}
+function _tagDraw(ctx, cv) {
+  if (!_tag) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  // Sonne links
+  ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(52, H / 2, 34, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#fde047'; ctx.lineWidth = 2; for (let k = 0; k < 12; k++) { const a = k * Math.PI / 6; ctx.beginPath(); ctx.moveTo(52 + Math.cos(a) * 38, H / 2 + Math.sin(a) * 38); ctx.lineTo(52 + Math.cos(a) * 46, H / 2 + Math.sin(a) * 46); ctx.stroke(); }
+  ctx.fillStyle = '#fde047'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Sonne', 52, H / 2 + 60);
+  // Sonnenstrahlen zur Erde
+  const ex = 300, ey = H / 2, R = 68;
+  ctx.strokeStyle = 'rgba(250,204,21,0.35)'; ctx.lineWidth = 2; ctx.setLineDash([6, 6]);
+  for (let dy = -R; dy <= R; dy += 34) { ctx.beginPath(); ctx.moveTo(86, ey + dy * 0.5); ctx.lineTo(ex - R, ey + dy * 0.55); ctx.stroke(); }
+  ctx.setLineDash([]);
+  // Erde: Nachthälfte (ganz) + Taghälfte (links, zur Sonne)
+  ctx.fillStyle = '#1e293b'; ctx.beginPath(); ctx.arc(ex, ey, R, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#3b82f6'; ctx.beginPath(); ctx.arc(ex, ey, R, Math.PI / 2, 3 * Math.PI / 2, false); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#166534'; ctx.beginPath(); ctx.arc(ex, ey, R, Math.PI / 2, 3 * Math.PI / 2, false); ctx.closePath(); ctx.fill();  // Tag-Seite grünlich
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(ex, ey, R, 0, 2 * Math.PI); ctx.stroke();
+  // Terminator (Tag-Nacht-Grenze)
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(ex, ey - R); ctx.lineTo(ex, ey + R); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#93c5fd'; ctx.font = '10px sans-serif'; ctx.fillText('Tag', ex - R / 2, ey - R - 6); ctx.fillStyle = '#64748b'; ctx.fillText('Nacht', ex + R / 2, ey - R - 6);
+  // Standort-Punkt
+  const a = _tag.angle * Math.PI / 180, dx = ex + Math.cos(a) * R, dyv = ey + Math.sin(a) * R;
+  ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.arc(dx, dyv, 7, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+  ctx.fillStyle = '#fca5a5'; ctx.font = '10px sans-serif'; ctx.fillText('du bist hier', dx, dyv - 12);
+  // Drehpfeil
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(ex, ey, R + 14, -0.6, 0.6); ctx.stroke();
+  ctx.fillStyle = '#cbd5e1'; ctx.beginPath(); ctx.moveTo(ex + (R + 14) * Math.cos(0.6), ey + (R + 14) * Math.sin(0.6)); ctx.lineTo(ex + (R + 6) * Math.cos(0.55), ey + (R + 6) * Math.sin(0.75)); ctx.lineTo(ex + (R + 22) * Math.cos(0.5), ey + (R + 22) * Math.sin(0.62)); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_tagIstTag() ? '☀️ Tag' : '🌙 Nacht', ex, ey + R + 24);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.3.1  (ns = 'tagnacht') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _tagArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('tagnacht')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('tagnacht')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum wird es jeden Tag hell und jede Nacht dunkel?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, Tag und Nacht entstehen, weil …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Drehe die Erde langsam. Wann ist der rote Standort im Hellen, wann im Dunkeln?</li>
+          <li>Finde die Grenze zwischen Tag und Nacht (Morgen/Abend).</li>
+          <li>Überlege, wie lange eine volle Drehung dauert.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtung</div>
+        <ol class="ab-ol">
+          <li>Die zur Sonne zeigende Seite hat … ${inp('b1', 'Tag/Nacht')}</li>
+          <li>Die von der Sonne abgewandte Seite hat … ${inp('b2', 'Tag/Nacht')}</li>
+          <li>Eine volle Drehung der Erde dauert … ${inp('b3', 'Stunden')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Sonne, die Erde mit Tag- und Nachtseite und deinen Standort.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was bewegt sich wirklich – die Sonne oder die Erde? ${inp('a1', '')}</li>
+          <li>Warum „geht die Sonne auf und unter"? ${inp('a2', 'weil die Erde …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Tag und Nacht entstehen, weil sich die ${inp('m1', 'was?')} in ${inp('m2', 'wie lange?')} einmal um sich selbst dreht.<br>
+        Auf der der Sonne zugewandten Seite ist ${inp('m3', 'Tag/Nacht')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Wenn bei uns Mittag ist, ist es auf der anderen Seite der Erde (z. B. in Australien) Nacht. Erkläre, warum.</div>
+        ${ta('tr1', 'Bei uns Mittag, in Australien Nacht, weil …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="tagMini">${_tagMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_tagSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_tagSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_tagSelf(3)">😃 sicher</button>
+          <span id="tagSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="tagSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Die zur Sonne zeigende Seite hat Tag, die abgewandte Nacht. Am Terminator ist Morgen bzw. Abend. Eine volle Drehung dauert 24 Stunden.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Tag und Nacht entstehen durch die Erdrotation (nicht durch Bewegung der Sonne). Die Erde dreht sich in ~24 h einmal um ihre Achse; dabei wandert jeder Ort durch die beleuchtete und die unbeleuchtete Seite.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Sonne bewegt sich um die Erde." (2) „Die Sonne wird nachts abgeschaltet/verdeckt." (3) „Die Erde umkreist die Sonne in einem Tag" (das ist ein Jahr).</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Globus + Lampe im Realversuch; Standortpunkt verfolgen; scheinbare vs. tatsächliche Bewegung trennen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4.1 Tag · 4.2 Nacht · 4.3 24 Stunden. 6.1 „die Erde" · 6.2 „weil die Erde sich dreht". Merksatz: Erde · 24 Stunden · Tag. Transfer: Die Erde ist rund; wenn unsere Seite zur Sonne zeigt (Mittag), zeigt die Gegenseite von der Sonne weg (Nacht). Minidiagnose: 1→Erddrehung · 2→24 Stunden · 3→„die zur Sonne zugewandte".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('tagnacht')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('tagnacht', 'Wie entstehen Tag und Nacht?', body);
+}
+
+const _TAG_MINI = [
+  { q: '1. Wodurch entstehen Tag und Nacht?',
+    opts: ['Die Sonne bewegt sich um die Erde', 'Die Erde dreht sich um sich selbst', 'Die Sonne wird nachts ausgeschaltet'], correct: 1,
+    fb: ['Nicht die Sonne bewegt sich – die Erde dreht sich.',
+         'Richtig! Die Erddrehung bringt jeden Ort in Tag und Nacht.',
+         'Die Sonne leuchtet immer weiter.'] },
+  { q: '2. Wie lange dauert eine volle Drehung der Erde?',
+    opts: ['1 Stunde', '24 Stunden', '1 Jahr'], correct: 1,
+    fb: ['Das wäre viel zu schnell.',
+         'Richtig! Die Erde dreht sich in etwa 24 Stunden einmal.',
+         '1 Jahr braucht die Erde für den Weg um die Sonne.'] },
+  { q: '3. Welche Seite der Erde hat Tag?',
+    opts: ['Die der Sonne zugewandte Seite', 'Die von der Sonne abgewandte Seite', 'Beide Seiten gleichzeitig'], correct: 0,
+    fb: ['Richtig! Die zur Sonne zeigende Seite hat Tag.',
+         'Die abgewandte Seite hat Nacht.',
+         'Es ist nie überall gleichzeitig Tag.'] }
+];
+function _tagMiniHTML() {
+  return _TAG_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_tagAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="tagFb${qi}"></div></div>`).join('');
+}
+function _tagAns(qi, oi) {
+  const m = _TAG_MINI[qi], el = document.getElementById('tagFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _tagSelf(n) {
+  const out = document.getElementById('tagSelfOut'), val = document.getElementById('tagSelfVal');
+  if (val) { val.value = String(n); _abSave('tagnacht'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
