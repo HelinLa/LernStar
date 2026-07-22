@@ -277,7 +277,10 @@ const _physAbDefs = {
   'teleskop': { titel: 'Das Teleskop – wie holt man ferne Objekte näher?', ns: 'teleskop', html: () => _tskArbeitsblattHTML() },
   'spezialteleskop': { titel: 'Besondere Teleskope – unsichtbares Licht sehen', ns: 'spezialteleskop', html: () => _stlArbeitsblattHTML() },
   'entfernungen': { titel: 'Entfernungen im Weltall – wie weit ist das?', ns: 'entfernungen', html: () => _entArbeitsblattHTML() },
-  'weltall-aufbau': { titel: 'Planeten, Sterne und Galaxien – Aufbau des Weltalls', ns: 'weltallaufbau', html: () => _wabArbeitsblattHTML() }
+  'weltall-aufbau': { titel: 'Planeten, Sterne und Galaxien – Aufbau des Weltalls', ns: 'weltallaufbau', html: () => _wabArbeitsblattHTML() },
+  'schwarzes-loch': { titel: 'Schwarze Löcher – wenn die Gravitation extrem wird', ns: 'schwarzeloch', html: () => _sllArbeitsblattHTML() },
+  'weltbild': { titel: 'Wie hat sich die Vorstellung vom Weltall verändert?', ns: 'weltbild', html: () => _wblArbeitsblattHTML() },
+  'urknall': { titel: 'Die Urknalltheorie – wie ist das Weltall entstanden?', ns: 'urknall', html: () => _urkArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -867,6 +870,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('wabAnim', 'wabAnim');
     _pSim.start(dt => _wabUpdate(dt), (ctx, cv) => _wabDraw(ctx, cv), []);
     _abRestore('weltallaufbau');
+  },
+
+  // ── 7.3.8 SCHWARZE LÖCHER ──────────────────────────────────────
+  'schwarzes-loch': modal => {
+    _sllInit();
+    modal.innerHTML = _sllHTML();
+    _sllStatus();
+    _pSim = new PhysicsSimEngine('sllAnim', 'sllAnim');
+    _pSim.start(dt => _sllUpdate(dt), (ctx, cv) => _sllDraw(ctx, cv), []);
+    _abRestore('schwarzeloch');
+  },
+
+  // ── 7.3.9 VORSTELLUNGEN VOM WELTALL ────────────────────────────
+  'weltbild': modal => {
+    _wblInit();
+    modal.innerHTML = _wblHTML();
+    _wblStatus();
+    _pSim = new PhysicsSimEngine('wblAnim', 'wblAnim');
+    _pSim.start(dt => _wblUpdate(dt), (ctx, cv) => _wblDraw(ctx, cv), []);
+    _abRestore('weltbild');
+  },
+
+  // ── 7.3.10 URKNALLTHEORIE ──────────────────────────────────────
+  'urknall': modal => {
+    _urkInit();
+    modal.innerHTML = _urkHTML();
+    _urkStatus();
+    _pSim = new PhysicsSimEngine('urkAnim', 'urkAnim');
+    _pSim.start(dt => _urkUpdate(dt), (ctx, cv) => _urkDraw(ctx, cv), []);
+    _abRestore('urknall');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -47485,5 +47518,676 @@ function _wabAns(qi, oi) {
 function _wabSelf(n) {
   const out = document.getElementById('wabSelfOut'), val = document.getElementById('wabSelfVal');
   if (val) { val.value = String(n); _abSave('weltallaufbau'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══ 7.3 Blick ins Weltall – Batch 3 (7.3.8/7.3.9/7.3.10) ═══
+// ═══════════════════════════════════════════════════════
+// 7.3.8  SCHWARZE LÖCHER – WENN DIE GRAVITATION EXTREM WIRD
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Blick ins Weltall"
+// Handlungsorientiert: Schicke einen Lichtstrahl in verschiedenen
+// Abständen an einem schwarzen Loch vorbei. Zu nah → verschluckt
+// (nicht einmal Licht entkommt), weiter weg → abgelenkt.
+// ═══════════════════════════════════════════════════════
+let _sll = null;
+const _SLL_ABST = {
+  nah:    { name: 'sehr nah', y: 6,  fangen: true },
+  mittel: { name: 'mittel',   y: 34, fangen: false },
+  fern:   { name: 'weit weg', y: 66, fangen: false }
+};
+function _sllInit() { _sll = { abst: 'mittel', t: 0, prog: 0, laeuft: false, weg: [] }; }
+
+function _sllHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim sll-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🕳️ Schwarze Löcher – wenn die Gravitation extrem wird</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein schwarzes Loch zieht so stark an, dass nicht einmal Licht entkommt. Schicke einen Lichtstrahl in verschiedenen Abständen vorbei. Was passiert?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="sllAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_sll.abst === 'nah' ? ' primary' : ''}" id="sllAnah" onclick="_sllSet('nah')">➊ sehr nah</button>
+          <button class="sim-btn${_sll.abst === 'mittel' ? ' primary' : ''}" id="sllAmittel" onclick="_sllSet('mittel')">➋ mittel</button>
+          <button class="sim-btn${_sll.abst === 'fern' ? ' primary' : ''}" id="sllAfern" onclick="_sllSet('fern')">➌ weit weg</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" onclick="_sllStart()">💡 Lichtstrahl senden</button>
+          <button class="sim-btn" onclick="_sllReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was passiert mit dem Licht?</div>
+        <div class="lmp-status" id="sllStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Rund um ein schwarzes Loch gibt es eine Grenze, den <b>Ereignishorizont</b>. Was einmal darüber gerät, kommt nicht mehr heraus – auch <b>Licht nicht</b>. Deshalb ist es schwarz. Ein schwarzes Loch entsteht, wenn sehr viel Masse auf winzigem Raum zusammengedrückt wird.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Nah → verschluckt. &nbsp;|&nbsp; Weiter weg → nur abgelenkt. &nbsp;|&nbsp; Aus dem <b>Ereignishorizont</b> entkommt nichts.
+    </p>
+    ${_sllArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _sllSet(a) {
+  _sll.abst = a; _sll.prog = 0; _sll.laeuft = false; _sll.weg = [];
+  Object.keys(_SLL_ABST).forEach(k => document.getElementById('sllA' + k)?.classList.toggle('primary', k === a));
+  _sllStatus();
+}
+function _sllStart() { _sll.prog = 0; _sll.laeuft = true; _sll.weg = []; _sllStatus(); }
+function _sllReset() { _sllInit(); _sllSet('mittel'); _sllStatus(); }
+function _sllStatus() {
+  const el = document.getElementById('sllStatus'); if (!el) return;
+  const a = _SLL_ABST[_sll.abst];
+  if (a.fangen) {
+    el.textContent = 'Sehr nah: Der Lichtstrahl gerät über den Ereignishorizont und wird verschluckt – er kommt nicht mehr heraus.';
+    el.className = 'lmp-status';
+  } else if (_sll.abst === 'mittel') {
+    el.textContent = 'Mittlerer Abstand: Der Lichtstrahl wird stark abgelenkt (gebogen), entkommt aber noch.';
+    el.className = 'lmp-status on';
+  } else {
+    el.textContent = 'Weit weg: Der Lichtstrahl wird nur leicht abgelenkt und läuft fast gerade weiter.';
+    el.className = 'lmp-status on';
+  }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _sllUpdate(dt) {
+  if (!_sll) return;
+  _sll.t += dt;
+  if (_sll.laeuft) { _sll.prog += 0.5 * dt; if (_sll.prog >= 1) { _sll.prog = 1; _sll.laeuft = false; } }
+}
+function _sllDraw(ctx, cv) {
+  if (!_sll) return;
+  const W = cv.width, H = cv.height, bx = W / 2 + 20, by = H / 2, eh = 26;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#05070f'; ctx.fillRect(0, 0, W, H);
+  // Hintergrundsterne
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  for (let i = 0; i < 26; i++) { const x = (i * 89) % W, y = (i * 47) % H; ctx.beginPath(); ctx.arc(x, y, 0.9, 0, 2 * Math.PI); ctx.fill(); }
+  // Akkretions-/Verzerrungsring
+  const g = ctx.createRadialGradient(bx, by, eh, bx, by, eh + 40);
+  g.addColorStop(0, 'rgba(251,146,60,0.55)'); g.addColorStop(0.4, 'rgba(168,85,247,0.35)'); g.addColorStop(1, 'rgba(5,7,15,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(bx, by, eh + 40, 0, 2 * Math.PI); ctx.fill();
+  // Ereignishorizont (schwarze Scheibe)
+  ctx.fillStyle = '#000'; ctx.beginPath(); ctx.arc(bx, by, eh, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#a855f7'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.arc(bx, by, eh, 0, 2 * Math.PI); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#c4b5fd'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Ereignishorizont', bx, by + eh + 52);
+
+  // Lichtstrahl-Weg berechnen (von links nach rechts, Ablenkung nahe BH)
+  const a = _SLL_ABST[_sll.abst];
+  const startY = by - a.y;         // Anflughöhe über der Mittellinie
+  const N = 60;
+  const pts = [];
+  let captured = false;
+  for (let i = 0; i <= N; i++) {
+    const x = 20 + (bx + 120 - 20) * (i / N);
+    // Ablenkung nur in der Nähe des BH (x um bx)
+    const dx = x - bx;
+    const infl = Math.exp(-(dx * dx) / (2 * 40 * 40));   // Glockenkurve um bx
+    const pull = a.fangen ? 130 : (_sll.abst === 'mittel' ? 46 : 16);
+    const y = startY + pull * infl * (startY <= by ? 1 : -1);
+    pts.push([x, y]);
+    // Einfang, wenn Weg in Horizont eintritt
+    if (Math.hypot(x - bx, y - by) < eh) { captured = true; break; }
+  }
+  // sichtbaren Teil zeichnen bis prog
+  const show = Math.max(1, Math.floor(pts.length * _sll.prog));
+  ctx.strokeStyle = '#fde047'; ctx.lineWidth = 2.5; ctx.beginPath();
+  for (let i = 0; i < show; i++) { const p = pts[i]; if (i === 0) ctx.moveTo(p[0], p[1]); else ctx.lineTo(p[0], p[1]); }
+  ctx.stroke();
+  // Kopf des Strahls
+  if (_sll.prog > 0) {
+    const p = pts[Math.min(show - 1, pts.length - 1)];
+    ctx.fillStyle = '#fef08a'; ctx.beginPath(); ctx.arc(p[0], p[1], 4, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Ergebnis-Text
+  if (_sll.prog >= 1) {
+    if (a.fangen) { ctx.fillStyle = '#f87171'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('🚫 Licht verschluckt', W / 2 - 40, 22); }
+    else { ctx.fillStyle = '#86efac'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Licht ' + (_sll.abst === 'mittel' ? 'stark' : 'leicht') + ' abgelenkt', W / 2 - 40, 22); }
+  } else {
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '11px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Abstand: ' + a.name, 16, 20);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.3.8  (ns = 'schwarzeloch') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _sllArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('schwarzeloch')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('schwarzeloch')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was passiert, wenn die Anziehung eines Himmelskörpers so groß wird, dass sogar Licht gefangen bleibt?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass der Lichtstrahl in der Nähe eines schwarzen Lochs …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Schicke den Lichtstrahl weit weg am schwarzen Loch vorbei.</li>
+          <li>Wiederhole es mit mittlerem und mit sehr nahem Abstand.</li>
+          <li>Beobachte, wann der Strahl entkommt und wann er verschluckt wird.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>weit weg</td><td>${inp('b1', 'abgelenkt/verschluckt?')}</td><td>wie stark?</td><td>${inp('c1', 'leicht/stark')}</td></tr>
+          <tr><td>mittel</td><td>${inp('b2', 'abgelenkt/verschluckt?')}</td><td>wie stark?</td><td>${inp('c2', 'leicht/stark')}</td></tr>
+          <tr><td>sehr nah</td><td>${inp('b3', 'abgelenkt/verschluckt?')}</td><td>entkommt?</td><td>${inp('c3', 'ja/nein')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne das schwarze Loch mit seinem Ereignishorizont. Male drei Lichtstrahlen: einen geraden, einen gebogenen und einen, der verschluckt wird.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was ist der Ereignishorizont? ${inp('a1', 'die Grenze, ab der …')}</li>
+          <li>Warum ist ein schwarzes Loch „schwarz"? ${inp('a2', 'weil …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ein schwarzes Loch hat eine so starke ${inp('m1', 'was?')}, dass nicht einmal ${inp('m2', 'was?')} entkommt.<br>
+        Die Grenze, hinter der nichts mehr herauskommt, heißt ${inp('m3', 'was?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Man kann ein schwarzes Loch nicht direkt sehen. Wie könnten Forscher trotzdem herausfinden, dass dort eines ist?</div>
+        ${ta('tr1', 'Man erkennt es an seiner Wirkung auf die Umgebung, z. B. …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="sllMini">${_sllMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_sllSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_sllSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_sllSelf(3)">😃 sicher</button>
+          <span id="sllSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="sllSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Weit weg: leichte Ablenkung, entkommt. Mittel: starke Ablenkung, entkommt gerade noch. Sehr nah: über dem Ereignishorizont verschluckt, kommt nicht heraus.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Ein schwarzes Loch ist ein Objekt, in dem sehr viel Masse auf winzigem Raum konzentriert ist; die Gravitation ist so stark, dass innerhalb des Ereignishorizonts die Fluchtgeschwindigkeit größer als die Lichtgeschwindigkeit ist – nichts entkommt. Licht in der Nähe wird gekrümmt (Gravitationslinse). Stellare schwarze Löcher entstehen beim Kollaps sehr massereicher Sterne.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Ein schwarzes Loch saugt alles im ganzen Weltall an." (2) „Man kann es direkt sehen." (3) „Licht wird nie abgelenkt."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Ereignishorizont als „Punkt ohne Wiederkehr"; Fluchtgeschwindigkeit anschaulich (Rakete, die nicht schnell genug ist); nur nahes Licht wird stark beeinflusst.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: abgelenkt/leicht · abgelenkt/stark · verschluckt/nein. 6.1 „die Grenze, ab der nichts mehr entkommt" · 6.2 „weil kein Licht herauskommt". Merksatz: Gravitation/Anziehung · Licht · Ereignishorizont. Transfer: an seiner starken Anziehung auf umkreisende Sterne/Gas, an aufleuchtendem, hineinstürzendem Gas. Minidiagnose: 1→Nicht einmal Licht entkommt · 2→Der Ereignishorizont · 3→Weil kein Licht herauskommt.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('schwarzeloch')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('schwarzeloch', 'Schwarze Löcher – wenn die Gravitation extrem wird', body);
+}
+
+const _SLL_MINI = [
+  { q: '1. Was ist das Besondere an einem schwarzen Loch?',
+    opts: ['Es leuchtet sehr hell', 'Nicht einmal Licht kann ihm entkommen', 'Es ist ein sehr kalter Planet'], correct: 1,
+    fb: ['Es leuchtet gerade nicht – es ist schwarz.',
+         'Richtig! Die Anziehung ist so stark, dass sogar Licht gefangen bleibt.',
+         'Es ist kein Planet, sondern extrem zusammengedrückte Masse.'] },
+  { q: '2. Wie heißt die Grenze, hinter der nichts mehr entkommt?',
+    opts: ['Der Äquator', 'Der Ereignishorizont', 'Die Umlaufbahn'], correct: 1,
+    fb: ['Der Äquator gehört zu Planeten.',
+         'Richtig! Der Ereignishorizont ist der „Punkt ohne Wiederkehr".',
+         'Eine Umlaufbahn ist etwas anderes.'] },
+  { q: '3. Warum erscheint ein schwarzes Loch schwarz?',
+    opts: ['Weil kein Licht herauskommt', 'Weil es aus schwarzem Gestein ist', 'Weil es nachts ist'], correct: 0,
+    fb: ['Richtig! Da kein Licht entkommt, sehen wir nur Schwarz.',
+         'Es besteht nicht aus Gestein.',
+         'Mit Tag und Nacht hat es nichts zu tun.'] }
+];
+function _sllMiniHTML() {
+  return _SLL_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_sllAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="sllFb${qi}"></div></div>`).join('');
+}
+function _sllAns(qi, oi) {
+  const m = _SLL_MINI[qi], el = document.getElementById('sllFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _sllSelf(n) {
+  const out = document.getElementById('sllSelfOut'), val = document.getElementById('sllSelfVal');
+  if (val) { val.value = String(n); _abSave('schwarzeloch'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.3.9  DIE ENTWICKLUNG DER VORSTELLUNGEN VOM WELTALL
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Blick ins Weltall"
+// Handlungsorientiert: Vergleiche das alte geozentrische Weltbild
+// (Erde in der Mitte) mit dem heliozentrischen (Sonne in der Mitte).
+// Neue Beobachtungen (Teleskop) haben die Vorstellung verändert.
+// ═══════════════════════════════════════════════════════
+let _wbl = null;
+function _wblInit() { _wbl = { modell: 'geo', t: 0 }; }
+
+function _wblHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim wbl-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔭 Wie hat sich die Vorstellung vom Weltall verändert?</h3>
+    <div class="fpm-note" style="margin-top:2px">Früher dachten die Menschen, die Erde sei der Mittelpunkt von allem. Vergleiche das alte Bild (Erde in der Mitte) mit dem heutigen (Sonne in der Mitte).</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="wblAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_wbl.modell === 'geo' ? ' primary' : ''}" id="wblMgeo" onclick="_wblSet('geo')">🌍 Erde in der Mitte (alt)</button>
+          <button class="sim-btn${_wbl.modell === 'helio' ? ' primary' : ''}" id="wblMhelio" onclick="_wblSet('helio')">☀️ Sonne in der Mitte (heute)</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_wblReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Welches Weltbild?</div>
+        <div class="lmp-status" id="wblStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Das <b>geozentrische</b> Weltbild (Erde in der Mitte) galt sehr lange. Kopernikus, Galilei und Kepler zeigten mit neuen <b>Beobachtungen</b> (z. B. durch das Fernrohr): Die <b>Sonne</b> steht im Mittelpunkt – das <b>heliozentrische</b> Weltbild. So verändert die Wissenschaft ihre Vorstellungen, wenn neue Beweise auftauchen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Geozentrisch</b> (Erde Mitte, alt) &nbsp;→&nbsp; <b>heliozentrisch</b> (Sonne Mitte, heute gültig).
+    </p>
+    ${_wblArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _wblSet(m) {
+  _wbl.modell = m;
+  document.getElementById('wblMgeo')?.classList.toggle('primary', m === 'geo');
+  document.getElementById('wblMhelio')?.classList.toggle('primary', m === 'helio');
+  _wblStatus();
+}
+function _wblReset() { _wblInit(); _wblSet('geo'); _wblStatus(); }
+function _wblStatus() {
+  const el = document.getElementById('wblStatus'); if (!el) return;
+  if (_wbl.modell === 'geo') {
+    el.textContent = 'Geozentrisches Weltbild (Ptolemäus): Die Erde steht in der Mitte, Sonne, Mond und Planeten kreisen um sie. Lange geglaubt – aber falsch.';
+    el.className = 'lmp-status off';
+  } else {
+    el.textContent = 'Heliozentrisches Weltbild (Kopernikus): Die Sonne steht in der Mitte, die Erde und die anderen Planeten kreisen um sie. So ist es richtig.';
+    el.className = 'lmp-status on';
+  }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _wblUpdate(dt) { if (_wbl) _wbl.t += dt; }
+function _wblDraw(ctx, cv) {
+  if (!_wbl) return;
+  const W = cv.width, H = cv.height, cx = W / 2, cy = H / 2;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#05070f'; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  for (let i = 0; i < 24; i++) { const x = (i * 83) % W, y = (i * 61) % H; ctx.beginPath(); ctx.arc(x, y, 0.8, 0, 2 * Math.PI); ctx.fill(); }
+
+  const geo = _wbl.modell === 'geo';
+  // Zentralkörper
+  if (geo) {
+    ctx.fillStyle = '#3b82f6'; ctx.beginPath(); ctx.arc(cx, cy, 16, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#22c55e'; ctx.beginPath(); ctx.arc(cx - 5, cy - 3, 6, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#93c5fd'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Erde', cx, cy + 30);
+  } else {
+    const g = ctx.createRadialGradient(cx, cy, 3, cx, cy, 26); g.addColorStop(0, '#fff7cc'); g.addColorStop(1, 'rgba(251,191,36,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, 26, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fbbf24'; ctx.beginPath(); ctx.arc(cx, cy, 13, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Sonne', cx, cy + 32);
+  }
+  // Umlaufende Körper
+  const koerper = geo
+    ? [{ n: 'Mond', c: '#e5e7eb', r: 42, sp: 1.2 }, { n: 'Sonne', c: '#fbbf24', r: 70, sp: 0.7 }, { n: 'Mars', c: '#f87171', r: 96, sp: 0.45 }]
+    : [{ n: 'Merkur', c: '#cbd5e1', r: 40, sp: 1.1 }, { n: 'Erde', c: '#3b82f6', r: 66, sp: 0.7 }, { n: 'Mars', c: '#f87171', r: 92, sp: 0.5 }];
+  koerper.forEach((k, i) => {
+    ctx.strokeStyle = 'rgba(148,163,184,0.3)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(cx, cy, k.r, 0, 2 * Math.PI); ctx.stroke();
+    const ang = _wbl.t * k.sp + i * 2;
+    const px = cx + k.r * Math.cos(ang), py = cy + k.r * Math.sin(ang);
+    if (k.n === 'Sonne') { const g2 = ctx.createRadialGradient(px, py, 1, px, py, 12); g2.addColorStop(0, '#fff7cc'); g2.addColorStop(1, 'rgba(251,191,36,0)'); ctx.fillStyle = g2; ctx.beginPath(); ctx.arc(px, py, 12, 0, 2 * Math.PI); ctx.fill(); }
+    ctx.fillStyle = k.c; ctx.beginPath(); ctx.arc(px, py, 6, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#cbd5e1'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(k.n, px, py - 10);
+  });
+  // Titel
+  ctx.fillStyle = geo ? '#fca5a5' : '#86efac'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(geo ? 'geozentrisch (Erde Mitte) – altes Weltbild' : 'heliozentrisch (Sonne Mitte) – heute gültig', cx, 18);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.3.9  (ns = 'weltbild') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _wblArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('weltbild')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('weltbild')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Stand die Erde schon immer im Mittelpunkt des Weltbilds – oder hat sich die Vorstellung verändert?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass früher gedacht wurde, dass … in der Mitte steht.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Schau dir das geozentrische Modell an (Erde in der Mitte).</li>
+          <li>Wechsle zum heliozentrischen Modell (Sonne in der Mitte).</li>
+          <li>Vergleiche: Was steht jeweils im Mittelpunkt, was kreist herum?</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>geozentrisch</td><td>Mitte: ${inp('b1', '')}</td><td>heute gültig?</td><td>${inp('c1', 'ja/nein')}</td></tr>
+          <tr><td>heliozentrisch</td><td>Mitte: ${inp('b2', '')}</td><td>heute gültig?</td><td>${inp('c2', 'ja/nein')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne beide Weltbilder nebeneinander: links Erde in der Mitte, rechts Sonne in der Mitte. Beschrifte die kreisenden Körper.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Welches Weltbild ist richtig? ${inp('a1', '')}</li>
+          <li>Warum haben die Menschen ihre Meinung geändert? ${inp('a2', 'weil neue …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Früher galt das ${inp('m1', 'was?')} Weltbild: die Erde in der Mitte. Heute gilt das ${inp('m2', 'was?')} Weltbild: die Sonne in der Mitte.<br>
+        Die Wissenschaft ändert ihre Vorstellungen, wenn neue ${inp('m3', 'was?')} dazukommen.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Das Fernrohr von Galilei zeigte Monde um den Jupiter. Warum war das ein starkes Argument gegen „alles dreht sich um die Erde"?</div>
+        ${ta('tr1', 'Wenn Monde um den Jupiter kreisen, dann …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="wblMini">${_wblMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_wblSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_wblSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_wblSelf(3)">😃 sicher</button>
+          <span id="wblSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="wblSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Geozentrisch: Erde in der Mitte, alles kreist um sie – nicht mehr gültig. Heliozentrisch: Sonne in der Mitte, Planeten (auch die Erde) kreisen um sie – heute gültig.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Antikes/mittelalterliches geozentrisches Weltbild (Ptolemäus). Kopernikus (heliozentrisch, 1543), Galilei (Fernrohr: Jupitermonde, Venusphasen, Sonnenflecken) und Kepler (elliptische Bahnen) lieferten Beobachtungen für das heliozentrische Modell. Wissenschaft ist veränderlich: Modelle werden verworfen/verbessert, wenn neue Belege dagegensprechen.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die alten Menschen waren einfach dumm." (2) „Wissenschaftliche Erkenntnisse ändern sich nie." (3) „Die Sonne dreht sich um die Erde, weil sie am Himmel wandert."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Beide Modelle direkt vergleichen; Rolle der Beobachtung/des Fernrohrs betonen; scheinbare Sonnenbewegung durch Erddrehung erklären (Bezug 7.3.2).</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Erde / nein · Sonne / ja. 6.1 das heliozentrische · 6.2 „weil neue Beobachtungen (Fernrohr) dagegen sprachen". Merksatz: geozentrische · heliozentrische · Beobachtungen/Beweise. Transfer: Wenn Monde den Jupiter umkreisen, dreht sich nicht alles um die Erde – also kann die Erde nicht der Mittelpunkt von allem sein. Minidiagnose: 1→Die Erde · 2→Die Sonne · 3→Durch neue Beobachtungen.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('weltbild')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('weltbild', 'Wie hat sich die Vorstellung vom Weltall verändert?', body);
+}
+
+const _WBL_MINI = [
+  { q: '1. Was stand im alten (geozentrischen) Weltbild in der Mitte?',
+    opts: ['Die Sonne', 'Die Erde', 'Der Mond'], correct: 1,
+    fb: ['Die Sonne steht erst im heutigen Weltbild in der Mitte.',
+         'Richtig! Im geozentrischen Weltbild steht die Erde in der Mitte.',
+         'Der Mond stand in keinem der Modelle im Zentrum.'] },
+  { q: '2. Was steht im heutigen (heliozentrischen) Weltbild in der Mitte?',
+    opts: ['Die Erde', 'Die Sonne', 'Die Milchstraße'], correct: 1,
+    fb: ['Die Erde ist einer der Planeten, die kreisen.',
+         'Richtig! Die Sonne steht im Mittelpunkt, die Planeten kreisen um sie.',
+         'Es geht hier um unser Sonnensystem, nicht um die ganze Galaxie.'] },
+  { q: '3. Warum hat sich das Weltbild verändert?',
+    opts: ['Durch neue Beobachtungen (z. B. mit dem Fernrohr)', 'Durch einen Zufall', 'Weil ein König es befahl'], correct: 0,
+    fb: ['Richtig! Neue Beweise führten zum heliozentrischen Weltbild.',
+         'Es war kein Zufall, sondern das Ergebnis von Forschung.',
+         'Ein Befehl entscheidet nicht über wissenschaftliche Wahrheit.'] }
+];
+function _wblMiniHTML() {
+  return _WBL_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_wblAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="wblFb${qi}"></div></div>`).join('');
+}
+function _wblAns(qi, oi) {
+  const m = _WBL_MINI[qi], el = document.getElementById('wblFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _wblSelf(n) {
+  const out = document.getElementById('wblSelfOut'), val = document.getElementById('wblSelfVal');
+  if (val) { val.value = String(n); _abSave('weltbild'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.3.10  DIE URKNALLTHEORIE – WIE IST DAS WELTALL ENTSTANDEN?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Blick ins Weltall"
+// Handlungsorientiert: Starte die Zeit beim Urknall. Das Weltall
+// war heiß und dicht und dehnt sich seitdem aus – die Galaxien
+// entfernen sich voneinander (Luftballon-Analogie).
+// ═══════════════════════════════════════════════════════
+let _urk = null;
+const _URK_PHASEN = [
+  { bis: 0.08, name: 'Urknall', text: 'Ganz am Anfang war alles auf winzigem Raum – unvorstellbar heiß und dicht.' },
+  { bis: 0.35, name: 'Ausdehnung', text: 'Der Raum dehnt sich aus und kühlt ab. Aus der Strahlung entstehen die ersten Bausteine der Materie.' },
+  { bis: 0.7,  name: 'erste Sterne & Galaxien', text: 'Die Materie ballt sich zusammen: Es entstehen die ersten Sterne und Galaxien.' },
+  { bis: 1.01, name: 'heute', text: 'Nach rund 13,8 Milliarden Jahren sieht das Weltall aus wie heute – und es dehnt sich weiter aus.' }
+];
+function _urkInit() { _urk = { t: 0, prog: 0, laeuft: false, punkte: null }; }
+function _urkPhase() { const p = _urk.prog; for (let i = 0; i < _URK_PHASEN.length; i++) if (p < _URK_PHASEN[i].bis) return _URK_PHASEN[i]; return _URK_PHASEN[_URK_PHASEN.length - 1]; }
+
+function _urkHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim urk-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">💥 Die Urknalltheorie – wie ist das Weltall entstanden?</h3>
+    <div class="fpm-note" style="margin-top:2px">Starte die Zeit beim Urknall. Beobachte, wie sich das Weltall ausdehnt und die Galaxien sich voneinander entfernen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="urkAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_urkStart()">▶ Urknall starten</button>
+          <button class="sim-btn" onclick="_urkReset()">↺ zum Anfang</button>
+        </div>
+        <div class="fpm-note" id="urkZeit" style="margin-top:6px"></div>
+      </div>
+      <div>
+        <div class="fpm-label">Was passiert gerade?</div>
+        <div class="lmp-status" id="urkStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Nach der <b>Urknalltheorie</b> begann das Weltall vor etwa <b>13,8 Milliarden Jahren</b> in einem heißen, dichten Zustand und <b>dehnt sich seitdem aus</b>. Beweis: Fast alle Galaxien entfernen sich von uns – wie Punkte auf einem <b>Luftballon</b>, der aufgeblasen wird.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Heiß &amp; dicht → Ausdehnung → erste Sterne &amp; Galaxien → heute. &nbsp;|&nbsp; Das Weltall dehnt sich <b>weiter</b> aus.
+    </p>
+    ${_urkArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _urkStart() { if (_urk.prog >= 1) _urk.prog = 0; _urk.laeuft = true; _urkStatus(); }
+function _urkReset() { _urk.prog = 0; _urk.laeuft = false; _urkStatus(); }
+function _urkStatus() {
+  const el = document.getElementById('urkStatus'); const z = document.getElementById('urkZeit');
+  const ph = _urkPhase();
+  if (el) { el.textContent = `${ph.name}: ${ph.text}`; el.className = 'lmp-status on'; }
+  if (z) {
+    const jahre = Math.round(_urk.prog * 13.8 * 10) / 10;
+    z.innerHTML = `Zeit seit dem Urknall: <b>${String(jahre).replace('.', ',')} Milliarden Jahre</b>`;
+  }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _urkGalaxien() {
+  // feste Startrichtungen (deterministisch, kein Math.random)
+  if (_urk.punkte) return _urk.punkte;
+  const arr = [];
+  for (let i = 0; i < 16; i++) {
+    const ang = i * (Math.PI * 2 / 16) + (i % 3) * 0.3;
+    const base = 0.35 + (i % 5) * 0.13;
+    arr.push({ ang, base, col: ['#c4b5fd', '#93c5fd', '#fca5a5', '#fde68a'][i % 4], rot: i });
+  }
+  _urk.punkte = arr; return arr;
+}
+function _urkUpdate(dt) {
+  if (!_urk) return;
+  _urk.t += dt;
+  if (_urk.laeuft) { _urk.prog += 0.18 * dt; if (_urk.prog >= 1) { _urk.prog = 1; _urk.laeuft = false; _urkStatus(); } }
+  // Phasen-Statuswechsel live
+  if (_urk.laeuft && Math.floor(_urk.t * 3) % 2 === 0) _urkStatus();
+}
+function _urkDraw(ctx, cv) {
+  if (!_urk) return;
+  const W = cv.width, H = cv.height, cx = W / 2, cy = H / 2;
+  ctx.clearRect(0, 0, W, H);
+  // Hintergrund wird mit der Zeit dunkler/„weiter"
+  ctx.fillStyle = '#05070f'; ctx.fillRect(0, 0, W, H);
+  const p = _urk.prog;
+  const maxR = 108;
+
+  // früher Glutball
+  if (p < 0.15) {
+    const glow = 1 - p / 0.15;
+    const g = ctx.createRadialGradient(cx, cy, 2, cx, cy, 30 + 60 * p);
+    g.addColorStop(0, `rgba(255,255,255,${0.9 * glow + 0.1})`);
+    g.addColorStop(0.4, `rgba(251,146,60,${0.7 * glow})`);
+    g.addColorStop(1, 'rgba(168,85,247,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, 30 + 60 * p, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Galaxien fliegen auseinander
+  const gal = _urkGalaxien();
+  gal.forEach((gp, i) => {
+    const r = gp.base * maxR * p;
+    const x = cx + r * Math.cos(gp.ang), y = cy + r * Math.sin(gp.ang);
+    const showGal = p > 0.35;   // erst Sterne/Galaxien nach Phase 3
+    ctx.save(); ctx.translate(x, y); ctx.rotate(gp.rot + _urk.t * 0.04);
+    if (showGal) {
+      ctx.fillStyle = gp.col; ctx.globalAlpha = 0.85;
+      ctx.beginPath(); ctx.ellipse(0, 0, 8, 3.5, 0, 0, 2 * Math.PI); ctx.fill();
+      ctx.globalAlpha = 1; ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(0, 0, 1.8, 0, 2 * Math.PI); ctx.fill();
+    } else {
+      ctx.fillStyle = '#fde047'; ctx.globalAlpha = Math.min(1, p / 0.35 + 0.2);
+      ctx.beginPath(); ctx.arc(0, 0, 2.2, 0, 2 * Math.PI); ctx.fill(); ctx.globalAlpha = 1;
+    }
+    ctx.restore();
+  });
+
+  // Titel / Phase
+  const ph = _urkPhase();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(ph.name, cx, 18);
+  const jahre = Math.round(p * 13.8 * 10) / 10;
+  ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif';
+  ctx.fillText(String(jahre).replace('.', ',') + ' Mrd. Jahre', cx, H - 10);
+  if (p >= 1) { ctx.fillStyle = '#86efac'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('heute – dehnt sich weiter aus', W - 12, 18); }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.3.10  (ns = 'urknall') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _urkArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('urknall')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('urknall')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie ist das Weltall entstanden – und bleibt es immer gleich groß?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass das Weltall am Anfang … war und sich heute …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Starte die Zeit beim Urknall.</li>
+          <li>Beobachte, wie sich die Galaxien voneinander entfernen.</li>
+          <li>Achte auf die Phasen: heiß/dicht → Ausdehnung → erste Sterne → heute.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>ganz am Anfang</td><td>${inp('b1', 'heiß? dicht?')}</td><td>Größe</td><td>${inp('c1', 'klein/groß')}</td></tr>
+          <tr><td>mit der Zeit</td><td>${inp('b2', 'dehnt sich …')}</td><td>Temperatur</td><td>${inp('c2', 'wärmer/kühler')}</td></tr>
+          <tr><td>Galaxien zueinander</td><td>${inp('b3', 'näher/weiter')}</td><td>Alter heute</td><td>${inp('c3', 'ca. … Mrd. Jahre')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne einen kleinen und einen großen Luftballon mit aufgemalten Punkten (Galaxien). Zeige mit Pfeilen, wie die Punkte auseinanderrücken.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Woran erkennt man, dass sich das Weltall ausdehnt? ${inp('a1', 'weil die Galaxien …')}</li>
+          <li>Wie alt ist das Weltall ungefähr? ${inp('a2', 'ca. … Jahre')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Nach der Urknalltheorie begann das Weltall vor etwa ${inp('m1', 'wie lange?')} in einem ${inp('m2', 'wie?')} Zustand.<br>
+        Seitdem ${inp('m3', 'was tut es?')} es sich aus – die Galaxien entfernen sich voneinander.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Male Punkte auf einen Luftballon und blase ihn auf. Was passiert mit den Abständen zwischen den Punkten – und was hat das mit dem Weltall zu tun?</div>
+        ${ta('tr1', 'Beim Aufblasen werden die Abstände … , genau wie im Weltall …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="urkMini">${_urkMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_urkSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_urkSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_urkSelf(3)">😃 sicher</button>
+          <span id="urkSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="urkSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Am Anfang klein, heiß, dicht. Mit der Zeit dehnt sich das Weltall aus und kühlt ab; Sterne und Galaxien bilden sich; die Galaxien entfernen sich voneinander. Alter heute ≈ 13,8 Milliarden Jahre.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Urknall ist der Beginn von Raum und Zeit vor ca. 13,8 Mrd. Jahren; das Universum expandiert seither (Hubble: Rotverschiebung, kosmische Hintergrundstrahlung als „Nachglühen"). Wichtig: Der Raum selbst dehnt sich – es gibt keinen „Mittelpunkt" und keine „Explosion in vorhandenen Raum hinein". Luftballon-Modell veranschaulicht die Expansion.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Urknall war eine Explosion an einem Ort im Raum." (2) „Es gibt einen Mittelpunkt, von dem alles wegfliegt." (3) „Das Weltall ist fertig und ändert sich nicht mehr."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Luftballon-Analogie durchführen; „Raum dehnt sich" statt „Dinge fliegen durch den Raum"; Größenordnung der Zeit (13,8 Mrd. Jahre) einordnen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: heiß+dicht / klein · dehnt sich aus / kühler · weiter / ca. 13,8 Mrd. Jahre. 6.1 „weil sich die Galaxien voneinander entfernen" · 6.2 ca. 13,8 Milliarden Jahre. Merksatz: 13,8 Milliarden Jahren · heißen/dichten · dehnt. Transfer: Die Abstände zwischen den Punkten werden größer, obwohl die Punkte selbst bleiben – genau so dehnt sich der Raum im Weltall. Minidiagnose: 1→Heiß und dicht · 2→Sie dehnt sich aus · 3→Etwa 13,8 Milliarden Jahre.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('urknall')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('urknall', 'Die Urknalltheorie – wie ist das Weltall entstanden?', body);
+}
+
+const _URK_MINI = [
+  { q: '1. Wie war das Weltall ganz am Anfang?',
+    opts: ['Kalt und leer', 'Heiß und dicht', 'Genau wie heute'], correct: 1,
+    fb: ['Am Anfang war es nicht kalt.',
+         'Richtig! Am Anfang war alles unvorstellbar heiß und dicht.',
+         'Heute sieht es ganz anders aus als am Anfang.'] },
+  { q: '2. Was macht das Weltall seit dem Urknall?',
+    opts: ['Es schrumpft', 'Es dehnt sich aus', 'Es bleibt gleich'], correct: 1,
+    fb: ['Es wird nicht kleiner.',
+         'Richtig! Das Weltall dehnt sich seit dem Urknall aus.',
+         'Es verändert sich sehr wohl – es wird größer.'] },
+  { q: '3. Wie alt ist das Weltall ungefähr?',
+    opts: ['Etwa 13,8 Milliarden Jahre', 'Etwa 5 000 Jahre', 'Etwa 1 Million Jahre'], correct: 0,
+    fb: ['Richtig! Rund 13,8 Milliarden Jahre.',
+         'So jung ist das Weltall bei Weitem nicht.',
+         'Es ist viel, viel älter als eine Million Jahre.'] }
+];
+function _urkMiniHTML() {
+  return _URK_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_urkAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="urkFb${qi}"></div></div>`).join('');
+}
+function _urkAns(qi, oi) {
+  const m = _URK_MINI[qi], el = document.getElementById('urkFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _urkSelf(n) {
+  const out = document.getElementById('urkSelfOut'), val = document.getElementById('urkSelfVal');
+  if (val) { val.value = String(n); _abSave('urknall'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
