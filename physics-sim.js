@@ -280,7 +280,10 @@ const _physAbDefs = {
   'weltall-aufbau': { titel: 'Planeten, Sterne und Galaxien – Aufbau des Weltalls', ns: 'weltallaufbau', html: () => _wabArbeitsblattHTML() },
   'schwarzes-loch': { titel: 'Schwarze Löcher – wenn die Gravitation extrem wird', ns: 'schwarzeloch', html: () => _sllArbeitsblattHTML() },
   'weltbild': { titel: 'Wie hat sich die Vorstellung vom Weltall verändert?', ns: 'weltbild', html: () => _wblArbeitsblattHTML() },
-  'urknall': { titel: 'Die Urknalltheorie – wie ist das Weltall entstanden?', ns: 'urknall', html: () => _urkArbeitsblattHTML() }
+  'urknall': { titel: 'Die Urknalltheorie – wie ist das Weltall entstanden?', ns: 'urknall', html: () => _urkArbeitsblattHTML() },
+  'ladung': { titel: 'Was ist elektrische Ladung?', ns: 'ladung', html: () => _ladArbeitsblattHTML() },
+  'stromstaerke': { titel: 'Was ist der elektrische Strom (Stromstärke)?', ns: 'stromstaerke', html: () => _staArbeitsblattHTML() },
+  'spannung': { titel: 'Was ist die elektrische Spannung?', ns: 'spannung', html: () => _spnArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -900,6 +903,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('urkAnim', 'urkAnim');
     _pSim.start(dt => _urkUpdate(dt), (ctx, cv) => _urkDraw(ctx, cv), []);
     _abRestore('urknall');
+  },
+
+  // ── 8.1.1 ELEKTRISCHE LADUNG ───────────────────────────────────
+  'ladung': modal => {
+    _ladInit();
+    modal.innerHTML = _ladHTML();
+    _ladStatus();
+    _pSim = new PhysicsSimEngine('ladAnim', 'ladAnim');
+    _pSim.start(dt => _ladUpdate(dt), (ctx, cv) => _ladDraw(ctx, cv), []);
+    _abRestore('ladung');
+  },
+
+  // ── 8.1.2 STROMSTÄRKE ──────────────────────────────────────────
+  'stromstaerke': modal => {
+    _staInit();
+    modal.innerHTML = _staHTML();
+    _staStatus();
+    _pSim = new PhysicsSimEngine('staAnim', 'staAnim');
+    _pSim.start(dt => _staUpdate(dt), (ctx, cv) => _staDraw(ctx, cv), []);
+    _abRestore('stromstaerke');
+  },
+
+  // ── 8.1.3 SPANNUNG ─────────────────────────────────────────────
+  'spannung': modal => {
+    _spnInit();
+    modal.innerHTML = _spnHTML();
+    _spnStatus();
+    _pSim = new PhysicsSimEngine('spnAnim', 'spnAnim');
+    _pSim.start(dt => _spnUpdate(dt), (ctx, cv) => _spnDraw(ctx, cv), []);
+    _abRestore('spannung');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -48189,5 +48222,662 @@ function _urkAns(qi, oi) {
 function _urkSelf(n) {
   const out = document.getElementById('urkSelfOut'), val = document.getElementById('urkSelfVal');
   if (val) { val.value = String(n); _abSave('urknall'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══ KAPITEL 8.1 ELEKTRIZITÄT – Batch 1 (8.1.1/8.1.2/8.1.3) – Kleinspannung ═══
+// ═══════════════════════════════════════════════════════
+// 8.1.1  WAS IST ELEKTRISCHE LADUNG?
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: Es gibt zwei Ladungsarten (+ und −).
+// Gleiche Ladungen stoßen sich ab, ungleiche ziehen sich an.
+// ═══════════════════════════════════════════════════════
+let _lad = null;
+function _ladInit() { _lad = { q1: '+', q2: '-', t: 0, sep: 120 }; }
+
+function _ladHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim lad-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">⚡ Was ist elektrische Ladung?</h3>
+    <div class="fpm-note" style="margin-top:2px">Gib den beiden Kugeln eine Ladung (+ oder −). Beobachte, ob sie sich anziehen oder abstoßen. Verändere immer nur eine Ladung.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="ladAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Kugel A:</span>
+          <button class="sim-btn${_lad.q1 === '+' ? ' primary' : ''}" id="ladA1p" onclick="_ladSet(1,'+')">➕ positiv</button>
+          <button class="sim-btn${_lad.q1 === '-' ? ' primary' : ''}" id="ladA1m" onclick="_ladSet(1,'-')">➖ negativ</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">Kugel B:</span>
+          <button class="sim-btn${_lad.q2 === '+' ? ' primary' : ''}" id="ladA2p" onclick="_ladSet(2,'+')">➕ positiv</button>
+          <button class="sim-btn${_lad.q2 === '-' ? ' primary' : ''}" id="ladA2m" onclick="_ladSet(2,'-')">➖ negativ</button>
+          <button class="sim-btn" onclick="_ladReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anziehen oder abstoßen?</div>
+        <div class="lmp-status" id="ladStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Es gibt <b>zwei Ladungsarten</b>: positiv (+) und negativ (−). <b>Gleiche</b> Ladungen <b>stoßen sich ab</b>, <b>ungleiche</b> Ladungen <b>ziehen sich an</b>. Reibt man z. B. einen Luftballon an Haaren, wird er geladen und zieht kleine Papierstücke an.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Gleich + gleich → <b>abstoßen</b>. &nbsp;|&nbsp; Plus + minus → <b>anziehen</b>.
+    </p>
+    ${_ladArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _ladSet(k, q) {
+  if (k === 1) { _lad.q1 = q; document.getElementById('ladA1p')?.classList.toggle('primary', q === '+'); document.getElementById('ladA1m')?.classList.toggle('primary', q === '-'); }
+  else { _lad.q2 = q; document.getElementById('ladA2p')?.classList.toggle('primary', q === '+'); document.getElementById('ladA2m')?.classList.toggle('primary', q === '-'); }
+  _ladStatus();
+}
+function _ladReset() { _ladInit(); _ladSet(1, '+'); _ladSet(2, '-'); _ladStatus(); }
+function _ladGleich() { return _lad.q1 === _lad.q2; }
+function _ladStatus() {
+  const el = document.getElementById('ladStatus'); if (!el) return;
+  if (_ladGleich()) {
+    el.textContent = `Beide Kugeln sind ${_lad.q1 === '+' ? 'positiv (+)' : 'negativ (−)'} – gleiche Ladung. Sie stoßen sich ab.`;
+    el.className = 'lmp-status off';
+  } else {
+    el.textContent = 'Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.';
+    el.className = 'lmp-status on';
+  }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _ladUpdate(dt) {
+  if (!_lad) return;
+  _lad.t += dt;
+  const ziel = _ladGleich() ? 168 : 66;   // abstoßen = weit, anziehen = nah
+  _lad.sep += (ziel - _lad.sep) * Math.min(1, dt * 3);
+}
+function _ladDraw(ctx, cv) {
+  if (!_lad) return;
+  const W = cv.width, H = cv.height, cy = H / 2, cx = W / 2;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const half = _lad.sep / 2;
+  const ax = cx - half, bx = cx + half;
+  const gleich = _ladGleich();
+
+  // Kraftpfeile
+  ctx.strokeStyle = gleich ? '#f87171' : '#4ade80'; ctx.lineWidth = 3;
+  const drawArrow = (x, dir) => { const L = 26; ctx.beginPath(); ctx.moveTo(x, cy - 46); ctx.lineTo(x + dir * L, cy - 46); ctx.stroke(); ctx.beginPath(); ctx.moveTo(x + dir * L, cy - 46); ctx.lineTo(x + dir * (L - 6), cy - 51); ctx.lineTo(x + dir * (L - 6), cy - 41); ctx.closePath(); ctx.fillStyle = gleich ? '#f87171' : '#4ade80'; ctx.fill(); };
+  if (gleich) { drawArrow(ax - 6, -1); drawArrow(bx + 6, 1); }   // auseinander
+  else { drawArrow(ax + 6, 1); drawArrow(bx - 6, -1); }          // zueinander
+
+  // Kugeln
+  [[ax, _lad.q1], [bx, _lad.q2]].forEach(([x, q]) => {
+    const g = ctx.createRadialGradient(x - 6, cy - 6, 3, x, cy, 30);
+    g.addColorStop(0, q === '+' ? '#fca5a5' : '#93c5fd'); g.addColorStop(1, q === '+' ? '#dc2626' : '#2563eb');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, cy, 28, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 4; ctx.beginPath();
+    if (q === '+') { ctx.moveTo(x - 11, cy); ctx.lineTo(x + 11, cy); ctx.moveTo(x, cy - 11); ctx.lineTo(x, cy + 11); }
+    else { ctx.moveTo(x - 11, cy); ctx.lineTo(x + 11, cy); }
+    ctx.stroke();
+  });
+  ctx.fillStyle = '#94a3b8'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Kugel A', ax, cy + 46); ctx.fillText('Kugel B', bx, cy + 46);
+  // Titel
+  ctx.fillStyle = gleich ? '#fca5a5' : '#86efac'; ctx.font = '700 13px sans-serif';
+  ctx.fillText(gleich ? 'gleiche Ladung → abstoßen' : 'ungleiche Ladung → anziehen', cx, 22);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.1.1  (ns = 'ladung') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _ladArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('ladung')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('ladung')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum ziehen sich manche geladenen Dinge an und andere stoßen sich ab?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass sich zwei Kugeln … , wenn sie …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Gib beiden Kugeln zuerst die gleiche Ladung (beide + oder beide −).</li>
+          <li>Gib ihnen dann ungleiche Ladung (+ und −).</li>
+          <li>Beobachte jeweils, ob sie sich anziehen oder abstoßen.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>A: + &nbsp; B: +</td><td>${inp('b1', 'anziehen/abstoßen')}</td><td>A: − &nbsp; B: −</td><td>${inp('b2', 'anziehen/abstoßen')}</td></tr>
+          <tr><td>A: + &nbsp; B: −</td><td>${inp('b3', 'anziehen/abstoßen')}</td><td>A: − &nbsp; B: +</td><td>${inp('b4', 'anziehen/abstoßen')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne zwei Kugeln mit + und −. Male Pfeile, die zeigen, in welche Richtung die Kräfte wirken.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wann stoßen sich zwei Ladungen ab? ${inp('a1', 'wenn sie …')}</li>
+          <li>Wann ziehen sie sich an? ${inp('a2', 'wenn sie …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Es gibt zwei Ladungsarten: ${inp('m1', 'welche?')} und ${inp('m2', 'welche?')}.<br>
+        Gleiche Ladungen ${inp('m3', 'was tun sie?')} sich, ungleiche Ladungen ${inp('m4', 'was tun sie?')} sich.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein an den Haaren geriebener Luftballon bleibt an der Wand kleben und zieht Papierschnipsel an. Erkläre das mit Ladungen.</div>
+        ${ta('tr1', 'Durch das Reiben wird der Ballon geladen und …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="ladMini">${_ladMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_ladSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_ladSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_ladSelf(3)">😃 sicher</button>
+          <span id="ladSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="ladSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Gleiche Ladung (++ oder −−): Abstoßung. Ungleiche Ladung (+− oder −+): Anziehung.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Es gibt zwei Ladungsarten (positiv/negativ). Gleichnamige Ladungen stoßen sich ab, ungleichnamige ziehen sich an (Coulomb-Kraft; Betrag wächst mit der Ladung und nimmt mit dem Abstand ab). Reibungselektrizität: Elektronen wandern beim Reiben von einem Körper zum anderen.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Alle geladenen Dinge ziehen sich an." (2) „Es gibt nur eine Ladungsart." (3) „Ladung ist dasselbe wie Strom."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Regel „gleich – gleich – abstoßen" einprägen; Realversuch mit Luftballon/Folien; nur eine Ladung ändern.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: abstoßen · abstoßen · anziehen · anziehen. 6.1 „wenn sie gleich sind" · 6.2 „wenn sie ungleich sind". Merksatz: positiv · negativ · stoßen ab · ziehen an. Transfer: Beim Reiben nimmt der Ballon Ladung auf; die entgegengesetzte Ladung im Papier/der Wand wird angezogen. Minidiagnose: 1→Zwei (positiv und negativ) · 2→Sie stoßen sich ab · 3→Sie ziehen sich an.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('ladung')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('ladung', 'Was ist elektrische Ladung?', body);
+}
+
+const _LAD_MINI = [
+  { q: '1. Wie viele Ladungsarten gibt es?',
+    opts: ['Nur eine', 'Zwei (positiv und negativ)', 'Drei'], correct: 1,
+    fb: ['Es sind mehr als eine.',
+         'Richtig! Es gibt positive (+) und negative (−) Ladung.',
+         'Es sind genau zwei.'] },
+  { q: '2. Was machen zwei gleiche Ladungen (z. B. + und +)?',
+    opts: ['Sie ziehen sich an', 'Sie stoßen sich ab', 'Nichts'], correct: 1,
+    fb: ['Gleiche Ladungen ziehen sich nicht an.',
+         'Richtig! Gleiche Ladungen stoßen sich ab.',
+         'Es wirkt sehr wohl eine Kraft.'] },
+  { q: '3. Was machen zwei ungleiche Ladungen (+ und −)?',
+    opts: ['Sie stoßen sich ab', 'Sie ziehen sich an', 'Sie verschwinden'], correct: 1,
+    fb: ['Ungleiche Ladungen stoßen sich nicht ab.',
+         'Richtig! Plus und minus ziehen sich an.',
+         'Die Ladungen bleiben bestehen.'] }
+];
+function _ladMiniHTML() {
+  return _LAD_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_ladAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="ladFb${qi}"></div></div>`).join('');
+}
+function _ladAns(qi, oi) {
+  const m = _LAD_MINI[qi], el = document.getElementById('ladFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _ladSelf(n) {
+  const out = document.getElementById('ladSelfOut'), val = document.getElementById('ladSelfVal');
+  if (val) { val.value = String(n); _abSave('ladung'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.1.2  WAS IST DER ELEKTRISCHE STROM (STROMSTÄRKE)?
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: Im geschlossenen Stromkreis fließen Ladungen.
+// Stromstärke I = Ladung pro Zeit, gemessen mit dem Amperemeter
+// (in Reihe). Nur ungefährliche Kleinspannung (4,5-V-Batterie).
+// ═══════════════════════════════════════════════════════
+let _sta = null;
+const _STA_STUFEN = { schwach: { name: 'schwach', I: 0.10, v: 22, n: 6 }, mittel: { name: 'mittel', I: 0.30, v: 55, n: 12 }, stark: { name: 'stark', I: 0.60, v: 95, n: 20 } };
+function _staInit() { _sta = { stufe: 'mittel', offen: false, t: 0, phase: 0 }; }
+
+function _staHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim sta-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔋 Was ist der elektrische Strom (Stromstärke)?</h3>
+    <div class="fpm-note" style="margin-top:2px">Im geschlossenen Kreis fließen Ladungen. Verändere, wie viel fließt, und lies die Stromstärke am Amperemeter ab. Mit dem Schalter öffnest du den Kreis. (Nur ungefährliche Kleinspannung: 4,5-V-Batterie.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="staAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_sta.stufe === 'schwach' ? ' primary' : ''}" id="staSschwach" onclick="_staSet('schwach')">Strom schwach</button>
+          <button class="sim-btn${_sta.stufe === 'mittel' ? ' primary' : ''}" id="staSmittel" onclick="_staSet('mittel')">mittel</button>
+          <button class="sim-btn${_sta.stufe === 'stark' ? ' primary' : ''}" id="staSstark" onclick="_staSet('stark')">stark</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" id="staSchalter" onclick="_staSchalter()">🔘 Schalter: geschlossen</button>
+          <button class="sim-btn" onclick="_staReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Stromstärke am Amperemeter</div>
+        <div class="lmp-status" id="staStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Der elektrische Strom besteht aus <b>bewegten Ladungen</b>. Die <b>Stromstärke I</b> gibt an, wie viel Ladung pro Sekunde fließt. Je mehr Ladungen pro Sekunde, desto <b>größer</b> die Stromstärke – und desto heller die Lampe. Einheit: <b>Ampere (A)</b>. Gemessen wird mit dem <b>Amperemeter</b>, das <b>in Reihe</b> im Kreis liegt.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Kreis offen → <b>kein Strom (I = 0 A)</b>. &nbsp;|&nbsp; Amperemeter misst die Stromstärke <b>in Reihe</b>.
+    </p>
+    ${_staArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _staSet(s) {
+  _sta.stufe = s;
+  Object.keys(_STA_STUFEN).forEach(k => document.getElementById('staS' + k)?.classList.toggle('primary', k === s));
+  _staStatus();
+}
+function _staSchalter() {
+  _sta.offen = !_sta.offen;
+  const b = document.getElementById('staSchalter'); if (b) b.textContent = '🔘 Schalter: ' + (_sta.offen ? 'offen' : 'geschlossen');
+  _staStatus();
+}
+function _staReset() { _staInit(); _staSet('mittel'); const b = document.getElementById('staSchalter'); if (b) b.textContent = '🔘 Schalter: geschlossen'; _staStatus(); }
+function _staStatus() {
+  const el = document.getElementById('staStatus'); if (!el) return;
+  if (_sta.offen) { el.textContent = 'Der Kreis ist offen – es fließen keine Ladungen. Stromstärke I = 0 A, die Lampe bleibt dunkel.'; el.className = 'lmp-status off'; return; }
+  const s = _STA_STUFEN[_sta.stufe];
+  el.textContent = `Stromstärke I = ${s.I.toFixed(2).replace('.', ',')} A (${s.name}). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _staUpdate(dt) { if (_sta) { _sta.t += dt; if (!_sta.offen) _sta.phase += _STA_STUFEN[_sta.stufe].v * dt; } }
+function _staDraw(ctx, cv) {
+  if (!_sta) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  // Rechteck-Stromkreis
+  const L = 40, R = W - 40, T = 46, B = H - 40;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.rect(L, T, R - L, B - T); ctx.stroke();
+  const offen = _sta.offen;
+  const s = _STA_STUFEN[_sta.stufe];
+
+  // Batterie (unten links) – Kleinspannung
+  ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3;
+  const bxc = (L + R) / 2 - 40, byy = B;
+  ctx.beginPath(); ctx.moveTo(bxc - 14, byy - 9); ctx.lineTo(bxc - 14, byy + 9); ctx.moveTo(bxc, byy - 15); ctx.lineTo(bxc, byy + 15); ctx.stroke();
+  ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('4,5 V', bxc - 6, byy + 26);
+
+  // Schalter (oben)
+  const swx = (L + R) / 2, swy = T;
+  ctx.strokeStyle = offen ? '#f87171' : '#4ade80'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(swx - 16, swy, 3, 0, 2 * Math.PI); ctx.arc(swx + 16, swy, 3, 0, 2 * Math.PI); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(swx - 16, swy); ctx.lineTo(offen ? swx + 6 : swx + 16, offen ? swy - 16 : swy); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText('Schalter', swx, swy - 20);
+
+  // Amperemeter (rechts, in Reihe) – Kreis mit A
+  const amx = R, amy = (T + B) / 2;
+  ctx.fillStyle = '#0b1020'; ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(amx, amy, 16, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#38bdf8'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('A', amx, amy + 5);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif';
+  ctx.fillText(offen ? '0 A' : s.I.toFixed(2).replace('.', ',') + ' A', amx - 34, amy + 4);
+
+  // Lampe (oben rechts Bereich, links vom Amperemeter oben) – hier: linke Seite Mitte
+  const lax = L, lay = (T + B) / 2, br = offen ? 0 : (s.I / 0.6);
+  const g = ctx.createRadialGradient(lax, lay, 2, lax, lay, 20);
+  g.addColorStop(0, `rgba(255,240,150,${0.25 + 0.75 * br})`); g.addColorStop(1, 'rgba(255,240,150,0)');
+  if (!offen) { ctx.fillStyle = g; ctx.beginPath(); ctx.arc(lax, lay, 20, 0, 2 * Math.PI); ctx.fill(); }
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(lax, lay, 11, 0, 2 * Math.PI); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(lax - 8, lay - 8); ctx.lineTo(lax + 8, lay + 8); ctx.moveTo(lax + 8, lay - 8); ctx.lineTo(lax - 8, lay + 8); ctx.stroke();
+
+  // Elektronen (Ladungen) fließen im Rechteck, wenn geschlossen
+  if (!offen) {
+    const per = 2 * ((R - L) + (B - T));
+    for (let i = 0; i < s.n; i++) {
+      let d = (_sta.phase + i * per / s.n) % per;
+      let x, y;
+      // im Uhrzeigersinn: oben L→R, rechts T→B, unten R→L, links B→T
+      if (d < (R - L)) { x = L + d; y = T; }
+      else if (d < (R - L) + (B - T)) { x = R; y = T + (d - (R - L)); }
+      else if (d < 2 * (R - L) + (B - T)) { x = R - (d - (R - L) - (B - T)); y = B; }
+      else { x = L; y = B - (d - 2 * (R - L) - (B - T)); }
+      ctx.fillStyle = '#60a5fa'; ctx.beginPath(); ctx.arc(x, y, 3.4, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  // Titel
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(offen ? 'Kreis offen – kein Strom' : 'Strom ' + s.name + ' – I = ' + s.I.toFixed(2).replace('.', ',') + ' A', (L + R) / 2, 20);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.1.2  (ns = 'stromstaerke') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _staArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('stromstaerke')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('stromstaerke')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was fließt eigentlich in einem Stromkreis – und wie misst man, wie „stark" der Strom ist?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Lampe heller wird, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Schließe den Kreis und stelle den Strom auf schwach, mittel, stark.</li>
+          <li>Lies jedes Mal die Stromstärke am Amperemeter ab.</li>
+          <li>Öffne den Schalter und beobachte die Stromstärke.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>schwach</td><td>${inp('b1', 'I = … A')}</td><td>Lampe</td><td>${inp('c1', 'hell/dunkel')}</td></tr>
+          <tr><td>mittel</td><td>${inp('b2', 'I = … A')}</td><td>Lampe</td><td>${inp('c2', 'hell/dunkel')}</td></tr>
+          <tr><td>stark</td><td>${inp('b3', 'I = … A')}</td><td>Lampe</td><td>${inp('c3', 'hell/dunkel')}</td></tr>
+          <tr><td>Schalter offen</td><td>${inp('b4', 'I = … A')}</td><td>Lampe</td><td>${inp('c4', 'hell/dunkel')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne den Stromkreis mit Batterie, Lampe, Schalter und Amperemeter. Markiere, dass das Amperemeter in Reihe liegt.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was bedeutet eine größere Stromstärke? ${inp('a1', 'mehr Ladung pro …')}</li>
+          <li>Wie muss das Amperemeter eingebaut werden? ${inp('a2', 'in …')}</li>
+          <li>Welche Einheit hat die Stromstärke? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Der elektrische Strom besteht aus bewegten ${inp('m1', 'was?')}. Die Stromstärke I gibt an, wie viel Ladung pro ${inp('m2', 'was?')} fließt.<br>
+        Einheit: ${inp('m3', 'welche?')}. Gemessen wird sie mit dem Amperemeter, das ${inp('m4', 'wie?')} eingebaut wird.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Vergleiche den Strom mit fließendem Wasser in einem Rohr. Was entspricht der Stromstärke?</div>
+        ${ta('tr1', 'Die Stromstärke entspricht der Wassermenge, die pro Sekunde …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="staMini">${_staMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_staSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_staSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_staSelf(3)">😃 sicher</button>
+          <span id="staSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="staSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Größere Stromstärke → hellere Lampe. Schalter offen → I = 0 A, Lampe dunkel. Beispielwerte: schwach 0,10 A · mittel 0,30 A · stark 0,60 A.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Elektrischer Strom = gerichtete Bewegung von Ladungsträgern (im Metall: Elektronen). Stromstärke I = Ladung Q pro Zeit t (I = Q/t), Einheit Ampere (A). Das Amperemeter wird in Reihe geschaltet (kleiner Innenwiderstand). Sicherheitshinweis: im Unterricht nur ungefährliche Kleinspannung.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Strom wird in der Lampe verbraucht." (2) „Das Amperemeter kommt parallel." (3) „Ohne Schalter fließt auch Strom."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Wasserkreislauf-Analogie (Menge pro Zeit); Amperemeter „mitten im Weg" (Reihe); nur eine Größe verändern.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 0,10 A/hell(schwach) · 0,30 A/heller · 0,60 A/am hellsten · 0 A/dunkel. 6.1 „mehr Ladung pro Sekunde" · 6.2 „in Reihe" · 6.3 Ampere (A). Merksatz: Ladungen · Sekunde/Zeit · Ampere (A) · in Reihe. Transfer: Die Stromstärke entspricht der Wassermenge, die pro Sekunde durch das Rohr fließt. Minidiagnose: 1→Bewegte Ladungen · 2→In Reihe · 3→Kein Strom (0 A).</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('stromstaerke')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('stromstaerke', 'Was ist der elektrische Strom (Stromstärke)?', body);
+}
+
+const _STA_MINI = [
+  { q: '1. Woraus besteht der elektrische Strom?',
+    opts: ['Aus Wärme', 'Aus bewegten Ladungen', 'Aus Licht'], correct: 1,
+    fb: ['Wärme kann entstehen, ist aber nicht der Strom selbst.',
+         'Richtig! Strom ist die Bewegung von Ladungen.',
+         'Licht ist eine Wirkung, nicht der Strom selbst.'] },
+  { q: '2. Wie wird ein Amperemeter eingebaut?',
+    opts: ['Parallel zur Lampe', 'In Reihe in den Stromkreis', 'Außen ans Gehäuse'], correct: 1,
+    fb: ['Parallel wird das Voltmeter geschaltet.',
+         'Richtig! Das Amperemeter liegt in Reihe – der Strom fließt hindurch.',
+         'Es muss im Stromkreis liegen.'] },
+  { q: '3. Der Schalter wird geöffnet. Wie groß ist die Stromstärke?',
+    opts: ['0 A (kein Strom)', 'Genauso groß wie vorher', 'Doppelt so groß'], correct: 0,
+    fb: ['Richtig! Bei offenem Kreis fließt kein Strom.',
+         'Ohne geschlossenen Kreis fließt nichts.',
+         'Der Strom wird nicht größer, sondern null.'] }
+];
+function _staMiniHTML() {
+  return _STA_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_staAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="staFb${qi}"></div></div>`).join('');
+}
+function _staAns(qi, oi) {
+  const m = _STA_MINI[qi], el = document.getElementById('staFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _staSelf(n) {
+  const out = document.getElementById('staSelfOut'), val = document.getElementById('staSelfVal');
+  if (val) { val.value = String(n); _abSave('stromstaerke'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.1.3  WAS IST DIE ELEKTRISCHE SPANNUNG?
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: Die Spannung U ist der "Antrieb" der Quelle.
+// Mehr Batteriezellen → mehr Volt → stärkerer Antrieb → hellere Lampe.
+// Gemessen mit dem Voltmeter (parallel). Nur Kleinspannung (max 4,5 V).
+// ═══════════════════════════════════════════════════════
+let _spn = null;
+function _spnInit() { _spn = { zellen: 1, t: 0, phase: 0 }; }
+function _spnU() { return _spn.zellen * 1.5; }
+
+function _spnHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim spn-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔌 Was ist die elektrische Spannung?</h3>
+    <div class="fpm-note" style="margin-top:2px">Setze eine, zwei oder drei Batteriezellen ein (je 1,5&nbsp;V). Lies die Spannung am Voltmeter ab. Was passiert mit der Lampe? (Nur ungefährliche Kleinspannung.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="spnAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_spn.zellen === 1 ? ' primary' : ''}" id="spnZ1" onclick="_spnSet(1)">1 Zelle (1,5 V)</button>
+          <button class="sim-btn${_spn.zellen === 2 ? ' primary' : ''}" id="spnZ2" onclick="_spnSet(2)">2 Zellen (3 V)</button>
+          <button class="sim-btn${_spn.zellen === 3 ? ' primary' : ''}" id="spnZ3" onclick="_spnSet(3)">3 Zellen (4,5 V)</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_spnReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Spannung am Voltmeter</div>
+        <div class="lmp-status" id="spnStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Die <b>Spannung U</b> ist der „Antrieb" der Quelle: Sie treibt die Ladungen durch den Kreis. Mehr Zellen → mehr <b>Volt</b> → stärkerer Antrieb → mehr Strom → <b>hellere</b> Lampe. Einheit: <b>Volt (V)</b>. Gemessen wird mit dem <b>Voltmeter</b>, das <b>parallel</b> angeschlossen wird.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Mehr Volt → stärkerer Antrieb → hellere Lampe. &nbsp;|&nbsp; Voltmeter misst <b>parallel</b>. (Analogie: Spannung = Wasserdruck.)
+    </p>
+    ${_spnArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _spnSet(z) {
+  _spn.zellen = z;
+  [1, 2, 3].forEach(k => document.getElementById('spnZ' + k)?.classList.toggle('primary', k === z));
+  _spnStatus();
+}
+function _spnReset() { _spnInit(); _spnSet(1); _spnStatus(); }
+function _spnStatus() {
+  const el = document.getElementById('spnStatus'); if (!el) return;
+  const U = _spnU();
+  const hell = _spn.zellen === 1 ? 'schwach' : (_spn.zellen === 2 ? 'heller' : 'am hellsten');
+  el.textContent = `Spannung U = ${String(U).replace('.', ',')} V (${_spn.zellen} ${_spn.zellen === 1 ? 'Zelle' : 'Zellen'}). Stärkerer Antrieb → mehr Strom → Lampe ${hell}.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _spnUpdate(dt) { if (_spn) { _spn.t += dt; _spn.phase += (18 + _spn.zellen * 26) * dt; } }
+function _spnDraw(ctx, cv) {
+  if (!_spn) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const L = 40, R = W - 40, T = 50, B = H - 44;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4; ctx.beginPath(); ctx.rect(L, T, R - L, B - T); ctx.stroke();
+
+  // Batteriezellen (unten) – Kleinspannung, je 1,5 V
+  const cyB = B, startx = (L + R) / 2 - (_spn.zellen * 26) / 2;
+  for (let i = 0; i < _spn.zellen; i++) {
+    const x = startx + i * 26;
+    ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(x, cyB - 8); ctx.lineTo(x, cyB + 8); ctx.moveTo(x + 10, cyB - 14); ctx.lineTo(x + 10, cyB + 14); ctx.stroke();
+  }
+  ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(String(_spnU()).replace('.', ',') + ' V', (L + R) / 2, cyB + 28);
+
+  // Lampe (links Mitte), Helligkeit ~ U
+  const lax = L, lay = (T + B) / 2, br = _spnU() / 4.5;
+  const g = ctx.createRadialGradient(lax, lay, 2, lax, lay, 22);
+  g.addColorStop(0, `rgba(255,240,150,${0.2 + 0.8 * br})`); g.addColorStop(1, 'rgba(255,240,150,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(lax, lay, 22, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(lax, lay, 11, 0, 2 * Math.PI); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(lax - 8, lay - 8); ctx.lineTo(lax + 8, lay + 8); ctx.moveTo(lax + 8, lay - 8); ctx.lineTo(lax - 8, lay + 8); ctx.stroke();
+
+  // Voltmeter (parallel zur Lampe) – Abzweig nach innen
+  const vmx = lax + 70, vmy = lay;
+  ctx.strokeStyle = '#34d399'; ctx.lineWidth = 2; ctx.setLineDash([4, 3]);
+  ctx.beginPath(); ctx.moveTo(lax, T); ctx.lineTo(vmx, T); ctx.lineTo(vmx, vmy - 16); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(lax, B); ctx.lineTo(vmx, B); ctx.lineTo(vmx, vmy + 16); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#0b1020'; ctx.strokeStyle = '#34d399'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(vmx, vmy, 16, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#34d399'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('V', vmx, vmy + 5);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.fillText(String(_spnU()).replace('.', ',') + ' V', vmx, vmy + 30);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText('Voltmeter (parallel)', vmx + 4, vmy - 22);
+
+  // Ladungen fließen, Tempo ~ U
+  const n = 4 + _spn.zellen * 4, per = 2 * ((R - L) + (B - T));
+  for (let i = 0; i < n; i++) {
+    let d = (_spn.phase + i * per / n) % per, x, y;
+    if (d < (R - L)) { x = L + d; y = T; }
+    else if (d < (R - L) + (B - T)) { x = R; y = T + (d - (R - L)); }
+    else if (d < 2 * (R - L) + (B - T)) { x = R - (d - (R - L) - (B - T)); y = B; }
+    else { x = L; y = B - (d - 2 * (R - L) - (B - T)); }
+    ctx.fillStyle = '#60a5fa'; ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('U = ' + String(_spnU()).replace('.', ',') + ' V  (Kleinspannung)', (L + R) / 2, 22);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.1.3  (ns = 'spannung') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _spnArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('spannung')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('spannung')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was treibt die Ladungen durch den Stromkreis – und warum leuchtet die Lampe mit mehr Batterien heller?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Lampe heller wird, wenn ich …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Setze 1 Zelle ein und lies die Spannung ab.</li>
+          <li>Wiederhole es mit 2 und mit 3 Zellen.</li>
+          <li>Beobachte jedes Mal die Helligkeit der Lampe.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>1 Zelle</td><td>${inp('b1', 'U = … V')}</td><td>Lampe</td><td>${inp('c1', 'wie hell?')}</td></tr>
+          <tr><td>2 Zellen</td><td>${inp('b2', 'U = … V')}</td><td>Lampe</td><td>${inp('c2', 'wie hell?')}</td></tr>
+          <tr><td>3 Zellen</td><td>${inp('b3', 'U = … V')}</td><td>Lampe</td><td>${inp('c3', 'wie hell?')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne den Kreis mit Batterie und Lampe. Zeichne das Voltmeter parallel zur Lampe ein.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was passiert mit der Spannung, wenn du mehr Zellen einsetzt? ${inp('a1', 'sie wird …')}</li>
+          <li>Wie muss das Voltmeter angeschlossen werden? ${inp('a2', '')}</li>
+          <li>Welche Einheit hat die Spannung? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die Spannung U ist der ${inp('m1', 'was?')} der Quelle. Je größer die Spannung, desto ${inp('m2', 'wie?')} der Antrieb und desto heller die Lampe.<br>
+        Einheit: ${inp('m3', 'welche?')}. Das Voltmeter wird ${inp('m4', 'wie?')} angeschlossen.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Man vergleicht die Spannung mit dem Wasserdruck in einer Leitung. Erkläre, warum dieser Vergleich passt.</div>
+        ${ta('tr1', 'Wie ein höherer Wasserdruck mehr Wasser treibt, treibt eine höhere Spannung …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="spnMini">${_spnMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_spnSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_spnSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_spnSelf(3)">😃 sicher</button>
+          <span id="spnSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="spnSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Mehr Zellen → höhere Spannung → hellere Lampe. Werte: 1 Zelle 1,5 V · 2 Zellen 3 V · 3 Zellen 4,5 V (Reihenschaltung der Zellen). Sicherheit: nur Kleinspannung.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Die (Quellen-)Spannung U ist die Antriebsgröße; sie „treibt" die Ladungen. Einheit Volt (V). In Reihe geschaltete Zellen addieren ihre Spannungen. Das Voltmeter misst die Spannung zwischen zwei Punkten und wird parallel angeschlossen (großer Innenwiderstand). Bei fester Lampe steigt mit U auch der Strom (I = U/R) – daher heller.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Spannung fließt." (2) „Voltmeter kommt in Reihe." (3) „Spannung und Stromstärke sind dasselbe."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Wasserdruck-Analogie; Spannung „liegt an", fließt nicht; Voltmeter „danebengelegt" (parallel); Spannungen der Zellen addieren.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 1,5 V/schwach · 3 V/heller · 4,5 V/am hellsten. 6.1 „sie wird größer" · 6.2 parallel · 6.3 Volt (V). Merksatz: Antrieb · stärker · Volt (V) · parallel. Transfer: Höherer Wasserdruck treibt mehr Wasser durch das Rohr – höhere Spannung treibt mehr Ladung (Strom) durch den Kreis. Minidiagnose: 1→Der Antrieb der Quelle · 2→Parallel · 3→Sie wird größer (heller).</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('spannung')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('spannung', 'Was ist die elektrische Spannung?', body);
+}
+
+const _SPN_MINI = [
+  { q: '1. Was ist die elektrische Spannung?',
+    opts: ['Der Antrieb, der die Ladungen treibt', 'Die Menge der Ladungen', 'Die Wärme der Lampe'], correct: 0,
+    fb: ['Richtig! Die Spannung ist der Antrieb der Quelle.',
+         'Das wäre eher die Ladungsmenge/Stromstärke.',
+         'Wärme ist nur eine Wirkung.'] },
+  { q: '2. Wie wird ein Voltmeter angeschlossen?',
+    opts: ['In Reihe', 'Parallel zum Bauteil', 'Gar nicht'], correct: 1,
+    fb: ['In Reihe kommt das Amperemeter.',
+         'Richtig! Das Voltmeter wird parallel angeschlossen.',
+         'Man schließt es sehr wohl an – parallel.'] },
+  { q: '3. Du setzt statt 1 Zelle 3 Zellen ein. Was passiert?',
+    opts: ['Die Spannung wird kleiner', 'Die Spannung wird größer, die Lampe heller', 'Nichts ändert sich'], correct: 1,
+    fb: ['Mehr Zellen → mehr Spannung, nicht weniger.',
+         'Richtig! Mehr Volt → stärkerer Antrieb → hellere Lampe.',
+         'Die Helligkeit ändert sich deutlich.'] }
+];
+function _spnMiniHTML() {
+  return _SPN_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_spnAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="spnFb${qi}"></div></div>`).join('');
+}
+function _spnAns(qi, oi) {
+  const m = _SPN_MINI[qi], el = document.getElementById('spnFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _spnSelf(n) {
+  const out = document.getElementById('spnSelfOut'), val = document.getElementById('spnSelfVal');
+  if (val) { val.value = String(n); _abSave('spannung'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
