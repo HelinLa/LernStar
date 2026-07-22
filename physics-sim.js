@@ -253,7 +253,10 @@ const _physAbDefs = {
   'schallausbreitung': { titel: 'Wie breitet sich Schall aus?', ns: 'schallausbr', html: () => _scaArbeitsblattHTML() },
   'ohr': { titel: 'Wie funktioniert das Ohr?', ns: 'ohr', html: () => _ohrArbeitsblattHTML() },
   'laermschutz': { titel: 'Wie können wir uns vor Lärm schützen?', ns: 'laermschutz', html: () => _laeArbeitsblattHTML() },
-  'tag-nacht': { titel: 'Wie entstehen Tag und Nacht?', ns: 'tagnacht', html: () => _tagArbeitsblattHTML() }
+  'tag-nacht': { titel: 'Wie entstehen Tag und Nacht?', ns: 'tagnacht', html: () => _tagArbeitsblattHTML() },
+  'jahreszeiten': { titel: 'Wie entstehen die Jahreszeiten?', ns: 'jahreszeiten', html: () => _jhrArbeitsblattHTML() },
+  'mondphasen': { titel: 'Warum verändert der Mond sein Aussehen?', ns: 'mondphasen', html: () => _mphArbeitsblattHTML() },
+  'sonnenfinsternis': { titel: 'Wie entsteht eine Sonnenfinsternis?', ns: 'sonnenfins', html: () => _sofArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -604,6 +607,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('tagAnim', 'tagAnim');
     _pSim.start(dt => _tagUpdate(dt), (ctx, cv) => _tagDraw(ctx, cv), []);
     _abRestore('tagnacht');
+  },
+
+  // ── 6.3.2 JAHRESZEITEN ─────────────────────────────────────────
+  'jahreszeiten': modal => {
+    _jhrInit();
+    modal.innerHTML = _jhrHTML();
+    _jhrStatus();
+    _pSim = new PhysicsSimEngine('jhrAnim', 'jhrAnim');
+    _pSim.start(dt => _jhrUpdate(dt), (ctx, cv) => _jhrDraw(ctx, cv), []);
+    _abRestore('jahreszeiten');
+  },
+
+  // ── 6.3.3 MONDPHASEN ───────────────────────────────────────────
+  'mondphasen': modal => {
+    _mphInit();
+    modal.innerHTML = _mphHTML();
+    _mphStatus();
+    _pSim = new PhysicsSimEngine('mphAnim', 'mphAnim');
+    _pSim.start(dt => _mphUpdate(dt), (ctx, cv) => _mphDraw(ctx, cv), []);
+    _abRestore('mondphasen');
+  },
+
+  // ── 6.3.4 SONNENFINSTERNIS ─────────────────────────────────────
+  'sonnenfinsternis': modal => {
+    _sofInit();
+    modal.innerHTML = _sofHTML();
+    _sofStatus();
+    _pSim = new PhysicsSimEngine('sofAnim', 'sofAnim');
+    _pSim.start(dt => _sofUpdate(dt), (ctx, cv) => _sofDraw(ctx, cv), []);
+    _abRestore('sonnenfins');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -42238,5 +42271,634 @@ function _tagAns(qi, oi) {
 function _tagSelf(n) {
   const out = document.getElementById('tagSelfOut'), val = document.getElementById('tagSelfVal');
   if (val) { val.value = String(n); _abSave('tagnacht'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.3.2  WIE ENTSTEHEN DIE JAHRESZEITEN?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Sonne, Erde, Mond"
+// Handlungsorientiert: Die Erde umläuft die Sonne, ihre Achse ist
+// geneigt und zeigt immer in dieselbe Richtung. Dadurch trifft das
+// Sonnenlicht die Nordhalbkugel mal steil (Sommer), mal flach (Winter).
+// Nicht der Abstand zur Sonne macht die Jahreszeiten!
+// ═══════════════════════════════════════════════════════
+
+let _jhr = null;
+function _jhrInit() { _jhr = { pos: 180, t: 0 }; }   // 180° = Erde links → Nordsommer
+// Nordhalbkugel: Sommer, wenn die (nach +x geneigte) Achse zur Sonne zeigt (Erde links, pos≈180)
+function _jhrSaison() {
+  const c = Math.cos(_jhr.pos * Math.PI / 180);   // c<0 → Erde links → Achse zur Sonne → Sommer
+  if (c < -0.7) return { n: 'Sommer', ic: '☀️', winkel: 'steil', warm: true };
+  if (c > 0.7) return { n: 'Winter', ic: '❄️', winkel: 'flach', warm: false };
+  const s = Math.sin(_jhr.pos * Math.PI / 180);
+  return s > 0 ? { n: 'Frühling', ic: '🌱', winkel: 'mittel', warm: null } : { n: 'Herbst', ic: '🍂', winkel: 'mittel', warm: null };
+}
+
+function _jhrHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim jhr-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌍☀️ Wie entstehen die Jahreszeiten?</h3>
+    <div class="fpm-note" style="margin-top:2px">Bewege die Erde um die Sonne. Achte darauf: Die Erdachse ist geneigt und zeigt <b>immer in dieselbe Richtung</b>. Wie trifft das Sonnenlicht die Nordhalbkugel?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="jhrAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_jhrPos(180)">☀️ Sommer</button>
+          <button class="sim-btn" onclick="_jhrPos(270)">🍂 Herbst</button>
+          <button class="sim-btn" onclick="_jhrPos(0)">❄️ Winter</button>
+          <button class="sim-btn" onclick="_jhrPos(90)">🌱 Frühling</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Erde umlaufen lassen</div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Position im Jahr: <b id="jhrDLbl">180°</b></span>
+          <input type="range" id="jhrD" min="0" max="360" step="5" value="180"
+            oninput="_jhrSetD(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="lmp-status" id="jhrStatus"></div>
+        <div class="fpm-note" style="margin-top:10px">Nordhalbkugel-<b>Sommer</b>: Die Achse ist zur Sonne geneigt → das Licht trifft <b>steil</b> → es wird warm.<br>
+        <b>Winter</b>: Achse von der Sonne weg → Licht trifft <b>flach</b> → es bleibt kühl.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Ursache ist die <b>geneigte Erdachse</b> – nicht der Abstand zur Sonne! &nbsp;|&nbsp; Steiler Einfall = Sommer.
+    </p>
+    ${_jhrArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _jhrSetD(v) { _jhr.pos = +v; const el = document.getElementById('jhrDLbl'); if (el) el.textContent = _fpmNum(+v, 0) + '°'; _jhrStatus(); }
+function _jhrPos(p) { _jhr.pos = p; const sl = document.getElementById('jhrD'); if (sl) sl.value = p; _jhrSetD(p); }
+function _jhrStatus() {
+  const el = document.getElementById('jhrStatus'); if (!el) return;
+  const s = _jhrSaison();
+  el.textContent = s.ic + ' Nordhalbkugel: ' + s.n + ' – das Sonnenlicht trifft ' + s.winkel + ' auf.';
+  el.className = 'lmp-status ' + (s.warm === true ? 'on' : (s.warm === false ? 'off' : ''));
+}
+
+// ── Animation ──────────────────────────────────────────
+function _jhrUpdate(dt) { if (_jhr) _jhr.t += dt; }
+function _jhrDraw(ctx, cv) {
+  if (!_jhr) return;
+  const W = cv.width, H = cv.height, sx = 150, sy = H / 2;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  // Umlaufbahn
+  const A = 110, B = 78;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.ellipse(sx, sy, A, B, 0, 0, 2 * Math.PI); ctx.stroke(); ctx.setLineDash([]);
+  // Sonne
+  ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(sx, sy, 26, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#fde047'; ctx.lineWidth = 2; for (let k = 0; k < 12; k++) { const a = k * Math.PI / 6; ctx.beginPath(); ctx.moveTo(sx + Math.cos(a) * 29, sy + Math.sin(a) * 29); ctx.lineTo(sx + Math.cos(a) * 36, sy + Math.sin(a) * 36); ctx.stroke(); }
+  // Erde auf der Bahn
+  const a = _jhr.pos * Math.PI / 180, ex = sx + Math.cos(a) * A, ey = sy + Math.sin(a) * B, R = 22;
+  // Tag/Nacht der Erde (zur Sonne beleuchtet)
+  const toSun = Math.atan2(sy - ey, sx - ex);
+  ctx.fillStyle = '#1e293b'; ctx.beginPath(); ctx.arc(ex, ey, R, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#2563eb'; ctx.beginPath(); ctx.arc(ex, ey, R, toSun - Math.PI / 2, toSun + Math.PI / 2, false); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.arc(ex, ey, R, 0, 2 * Math.PI); ctx.stroke();
+  // geneigte Erdachse (immer gleiche Richtung: nach oben-rechts)
+  const tilt = -Math.PI / 2 + 0.4;   // konstante Neigung
+  ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(ex - Math.cos(tilt) * (R + 10), ey - Math.sin(tilt) * (R + 10)); ctx.lineTo(ex + Math.cos(tilt) * (R + 10), ey + Math.sin(tilt) * (R + 10)); ctx.stroke();
+  ctx.fillStyle = '#fca5a5'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('N', ex + Math.cos(tilt) * (R + 16), ey + Math.sin(tilt) * (R + 16));
+  // Jahreszeit-Label
+  const s = _jhrSaison();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 13px sans-serif'; ctx.fillText(s.ic + ' ' + s.n, ex, ey + R + 22);
+  // Einfallswinkel-Panel (rechts)
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(W - 120, 20, 100, 90);
+  ctx.strokeStyle = '#cbd5e1'; ctx.strokeRect(W - 120, 20, 100, 90);
+  ctx.fillStyle = '#334155'; ctx.font = '9px sans-serif'; ctx.fillText('Licht auf Nordhalbkugel', W - 70, 34);
+  const steil = s.winkel === 'steil', mid = s.winkel === 'mittel';
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2;
+  const ang = steil ? Math.PI / 2 : (mid ? Math.PI / 3 : Math.PI / 6);
+  for (let i = -1; i <= 1; i++) { ctx.beginPath(); ctx.moveTo(W - 90 + i * 16 - Math.cos(ang) * 30, 44); ctx.lineTo(W - 90 + i * 16, 44 + 44); ctx.stroke(); }
+  ctx.fillStyle = '#166534'; ctx.fillRect(W - 112, 88, 84, 8);
+  ctx.fillStyle = '#334155'; ctx.font = '700 9px sans-serif'; ctx.fillText(s.winkel === 'steil' ? 'steil → warm' : (s.winkel === 'flach' ? 'flach → kühl' : 'mittel'), W - 70, 106);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.3.2  (ns = 'jahreszeiten') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _jhrArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('jahreszeiten')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('jahreszeiten')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum ist es im Sommer warm und im Winter kalt?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, im Sommer ist es warm, weil …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Bewege die Erde zu den vier Jahreszeiten. Wohin zeigt die Erdachse jeweils?</li>
+          <li>Beobachte, wie steil oder flach das Licht die Nordhalbkugel trifft.</li>
+          <li>Achte darauf, ob sich der Abstand zur Sonne stark ändert.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle (Nordhalbkugel)</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Jahreszeit</td><td>Achse zur Sonne?</td><td>Lichteinfall</td></tr>
+          <tr><td>Sommer</td><td>${inp('t_sa', 'zu/weg')}</td><td>${inp('t_sl', 'steil/flach')}</td></tr>
+          <tr><td>Winter</td><td>${inp('t_wa', '')}</td><td>${inp('t_wl', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Sonne und die Erde im Sommer und im Winter. Zeichne die geneigte Erdachse ein.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wodurch entstehen die Jahreszeiten? ${inp('a1', 'durch die …')}</li>
+          <li>Warum ist es bei steilem Lichteinfall wärmer? ${inp('a2', 'weil das Licht …')}</li>
+          <li>Liegt es am Abstand zur Sonne? ${inp('a3', 'ja/nein')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die Jahreszeiten entstehen durch die ${inp('m1', 'was?')} Erdachse, die immer in dieselbe Richtung zeigt.<br>
+        Im Sommer trifft das Sonnenlicht ${inp('m2', 'steil/flach')} auf → es wird warm.<br>
+        Die Jahreszeiten liegen ${inp('m3', 'am Abstand / nicht am Abstand')} zur Sonne.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Wenn bei uns (Nordhalbkugel) Sommer ist, ist in Australien (Südhalbkugel) Winter. Erkläre, warum die Jahreszeiten dort umgekehrt sind.</div>
+        ${ta('tr1', 'In Australien ist es umgekehrt, weil …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="jhrMini">${_jhrMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_jhrSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_jhrSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_jhrSelf(3)">😃 sicher</button>
+          <span id="jhrSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="jhrSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Sommer: Achse zur Sonne geneigt → steiler Lichteinfall → warm. Winter: Achse von der Sonne weg → flacher Einfall → kühl. Der Abstand zur Sonne ändert sich kaum.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Die Erdachse ist um ~23,5° geneigt und behält ihre Richtung im Raum. Beim Umlauf um die Sonne wechselt dadurch der Einfallswinkel des Sonnenlichts. Steiler Einfall bündelt das Licht auf kleiner Fläche → stärkere Erwärmung; zusätzlich sind die Tage im Sommer länger.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Im Sommer ist die Erde näher an der Sonne." (2) „Die Achse kippt hin und her." (3) „Überall auf der Erde ist gleichzeitig Sommer."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Globus + Lampe umrunden lassen, Achse konstant halten; steiler vs. flacher Lichtfleck (Taschenlampe) zeigen; Nord-/Südhalbkugel gegenüberstellen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Sommer zu/steil, Winter weg/flach. 6.1 „geneigte Erdachse" · 6.2 „auf kleinerer Fläche gebündelt wird" · 6.3 „nein". Merksatz: geneigte · steil · nicht am Abstand. Transfer: Zeigt die Nordhalbkugel zur Sonne (Nordsommer), zeigt die Südhalbkugel weg (Südwinter). Minidiagnose: 1→„geneigte Erdachse" · 2→„steil" · 3→„nein, nicht der Abstand".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('jahreszeiten')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('jahreszeiten', 'Wie entstehen die Jahreszeiten?', body);
+}
+
+const _JHR_MINI = [
+  { q: '1. Wodurch entstehen die Jahreszeiten?',
+    opts: ['Durch den Abstand zur Sonne', 'Durch die geneigte Erdachse', 'Durch die Wolken'], correct: 1,
+    fb: ['Der Abstand ändert sich kaum – das ist nicht der Grund.',
+         'Richtig! Die geneigte Erdachse verändert den Lichteinfall.',
+         'Wolken machen keine Jahreszeiten.'] },
+  { q: '2. Wann ist auf der Nordhalbkugel Sommer?',
+    opts: ['Wenn die Achse zur Sonne geneigt ist', 'Wenn die Achse von der Sonne weg zeigt', 'Wenn die Erde am nächsten ist'], correct: 0,
+    fb: ['Richtig! Achse zur Sonne → steiler Einfall → Sommer.',
+         'Dann wäre Winter.',
+         'Am Abstand liegt es nicht.'] },
+  { q: '3. Warum wärmt steiler Lichteinfall stärker als flacher?',
+    opts: ['Weil das Licht auf eine kleinere Fläche gebündelt wird', 'Weil es heller ist', 'Weil die Sonne größer wird'], correct: 0,
+    fb: ['Richtig! Steiles Licht verteilt sich auf weniger Fläche → wärmer.',
+         'Nicht die Helligkeit, sondern die Fläche ist entscheidend.',
+         'Die Sonne ändert ihre Größe nicht.'] }
+];
+function _jhrMiniHTML() {
+  return _JHR_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_jhrAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="jhrFb${qi}"></div></div>`).join('');
+}
+function _jhrAns(qi, oi) {
+  const m = _JHR_MINI[qi], el = document.getElementById('jhrFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _jhrSelf(n) {
+  const out = document.getElementById('jhrSelfOut'), val = document.getElementById('jhrSelfVal');
+  if (val) { val.value = String(n); _abSave('jahreszeiten'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.3.3  WARUM VERÄNDERT DER MOND SEIN AUSSEHEN?  (Mondphasen)
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Sonne, Erde, Mond"
+// Handlungsorientiert: Der Mond umläuft die Erde. Die Sonne beleuchtet
+// immer eine Hälfte des Mondes. Je nach Stellung sehen wir von der Erde
+// unterschiedlich viel davon → Mondphasen (Neumond, zunehmend, Vollmond,
+// abnehmend). Der Mond leuchtet nicht selbst.
+// ═══════════════════════════════════════════════════════
+
+let _mph = null;
+function _mphInit() { _mph = { pos: 0, t: 0 }; }   // 0° = Mond rechts = Vollmond
+function _mphName() {
+  const a = _mph.pos, c = Math.cos(a * Math.PI / 180);
+  if (c > 0.85) return 'Vollmond';
+  if (c < -0.85) return 'Neumond';
+  const wax = a > 180;                              // 180→360: zunehmend
+  const half = Math.abs(c) < 0.28;
+  return (wax ? 'zunehmender ' : 'abnehmender ') + (half ? 'Halbmond' : (c > 0 ? 'Mond (fast voll)' : 'Sichel'));
+}
+
+function _mphHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim mph-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌙 Warum verändert der Mond sein Aussehen?</h3>
+    <div class="fpm-note" style="margin-top:2px">Die Sonne beleuchtet immer eine Hälfte des Mondes. Bewege den Mond um die Erde und beobachte im kleinen Fenster, wie viel von der hellen Hälfte du von der Erde aus siehst.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="mphAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_mphPos(180)">🌑 Neumond</button>
+          <button class="sim-btn" onclick="_mphPos(270)">🌓 zunehmend</button>
+          <button class="sim-btn" onclick="_mphPos(0)">🌕 Vollmond</button>
+          <button class="sim-btn" onclick="_mphPos(90)">🌗 abnehmend</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Mond um die Erde bewegen</div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Stellung des Mondes: <b id="mphDLbl">0°</b></span>
+          <input type="range" id="mphD" min="0" max="360" step="5" value="0"
+            oninput="_mphSetD(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="lmp-status" id="mphStatus"></div>
+        <div class="fpm-note" style="margin-top:10px">Der Mond leuchtet <b>nicht selbst</b> – er wirft Sonnenlicht zurück. <b>Neumond</b>: der Mond steht zwischen Sonne und Erde (dunkle Seite zu uns). <b>Vollmond</b>: der Mond steht der Sonne gegenüber.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Wir sehen mal mehr, mal weniger von der <b>beleuchteten Hälfte</b> des Mondes. &nbsp;|&nbsp; Ein voller Umlauf dauert ca. 4 Wochen.
+    </p>
+    ${_mphArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _mphSetD(v) { _mph.pos = +v; const el = document.getElementById('mphDLbl'); if (el) el.textContent = _fpmNum(+v, 0) + '°'; _mphStatus(); }
+function _mphPos(p) { _mph.pos = p; const sl = document.getElementById('mphD'); if (sl) sl.value = p; _mphSetD(p); }
+function _mphStatus() { const el = document.getElementById('mphStatus'); if (!el) return; el.textContent = '🌙 Du siehst: ' + _mphName() + '.'; el.className = 'lmp-status on'; }
+
+// ── Phase in ein kleines Rund zeichnen ─────────────────
+function _mphPhase(ctx, cx, cy, r, aDeg) {
+  const a = aDeg * Math.PI / 180, c = Math.cos(a);
+  ctx.save();
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.clip();
+  ctx.fillStyle = '#fde68a'; ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.fill();  // hell
+  const dx = r * (1 + c), sgn = Math.sin(a) >= 0 ? 1 : -1;
+  ctx.fillStyle = '#0b1020'; ctx.beginPath(); ctx.arc(cx + sgn * dx, cy, r, 0, 2 * Math.PI); ctx.fill();  // Schattenscheibe
+  ctx.restore();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.stroke();
+}
+
+// ── Animation ──────────────────────────────────────────
+function _mphUpdate(dt) { if (_mph) _mph.t += dt; }
+function _mphDraw(ctx, cv) {
+  if (!_mph) return;
+  const W = cv.width, H = cv.height, ex = 200, ey = H / 2 + 6;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  // Sonne links + Strahlen
+  ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(30, ey, 22, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = 'rgba(250,204,21,0.3)'; ctx.lineWidth = 2; ctx.setLineDash([6, 6]);
+  for (let dy = -70; dy <= 70; dy += 28) { ctx.beginPath(); ctx.moveTo(54, ey + dy * 0.4); ctx.lineTo(ex + 90, ey + dy * 0.6); ctx.stroke(); }
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#fde047'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Sonne', 30, ey + 38);
+  // Mondbahn
+  const Rorb = 78;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.arc(ex, ey, Rorb, 0, 2 * Math.PI); ctx.stroke(); ctx.setLineDash([]);
+  // Erde
+  ctx.fillStyle = '#2563eb'; ctx.beginPath(); ctx.arc(ex, ey, 20, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#1e293b'; ctx.beginPath(); ctx.arc(ex, ey, 20, -Math.PI / 2, Math.PI / 2, false); ctx.closePath(); ctx.fill();  // Nachtseite rechts
+  ctx.fillStyle = '#93c5fd'; ctx.font = '10px sans-serif'; ctx.fillText('Erde', ex, ey + 34);
+  // Mond mit beleuchteter (linker) Hälfte
+  const a = _mph.pos * Math.PI / 180, mx = ex + Math.cos(a) * Rorb, my = ey + Math.sin(a) * Rorb, mr = 12;
+  ctx.fillStyle = '#475569'; ctx.beginPath(); ctx.arc(mx, my, mr, 0, 2 * Math.PI); ctx.fill();       // dunkle Hälfte
+  ctx.fillStyle = '#fde68a'; ctx.beginPath(); ctx.arc(mx, my, mr, Math.PI / 2, 3 * Math.PI / 2, false); ctx.closePath(); ctx.fill();  // Sonnenseite (links) hell
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(mx, my, mr, 0, 2 * Math.PI); ctx.stroke();
+  // Blicklinie Erde → Mond
+  ctx.strokeStyle = 'rgba(148,163,184,0.5)'; ctx.setLineDash([2, 3]); ctx.beginPath(); ctx.moveTo(ex, ey); ctx.lineTo(mx, my); ctx.stroke(); ctx.setLineDash([]);
+  // Inset: „So siehst du den Mond"
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(W - 110, 16, 94, 96); ctx.strokeStyle = '#cbd5e1'; ctx.strokeRect(W - 110, 16, 94, 96);
+  ctx.fillStyle = '#334155'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('So siehst du ihn', W - 63, 30);
+  _mphPhase(ctx, W - 63, 66, 26, _mph.pos);
+  ctx.fillStyle = '#334155'; ctx.font = '700 9px sans-serif'; ctx.fillText(_mphName(), W - 63, 106);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.3.3  (ns = 'mondphasen') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _mphArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('mondphasen')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('mondphasen')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum sieht der Mond mal rund, mal als Sichel und mal gar nicht aus?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, der Mond verändert sein Aussehen, weil …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Bewege den Mond um die Erde. Welche Hälfte ist immer beleuchtet?</li>
+          <li>Beobachte im kleinen Fenster, wie viel du davon siehst.</li>
+          <li>Finde Neumond, Halbmond und Vollmond.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Stellung des Mondes</td><td>Was du siehst</td></tr>
+          <tr><td>zwischen Sonne und Erde</td><td>${inp('t_n', 'Phase?')}</td></tr>
+          <tr><td>der Sonne gegenüber</td><td>${inp('t_v', 'Phase?')}</td></tr>
+          <tr><td>seitlich (viertel Umlauf)</td><td>${inp('t_h', 'Phase?')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne Sonne, Erde und den Mond bei Neumond und bei Vollmond.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Leuchtet der Mond selbst? ${inp('a1', 'ja/nein')}</li>
+          <li>Warum sehen wir verschiedene Phasen? ${inp('a2', 'weil wir …')}</li>
+          <li>Wo steht der Mond bei Neumond? ${inp('a3', 'zwischen …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Der Mond leuchtet ${inp('m1', 'selbst / nicht selbst')} – er wirft Sonnenlicht zurück.<br>
+        Die Phasen entstehen, weil wir von der Erde unterschiedlich viel der ${inp('m2', 'welchen Hälfte?')} Hälfte sehen.<br>
+        Bei Neumond steht der Mond ${inp('m3', 'zwischen Sonne und Erde / der Sonne gegenüber')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Manchmal sieht man den Mond auch am Tag blass am Himmel. Wie passt das dazu, dass der Mond das Sonnenlicht nur zurückwirft?</div>
+        ${ta('tr1', 'Man sieht ihn auch tagsüber, weil …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="mphMini">${_mphMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_mphSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_mphSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_mphSelf(3)">😃 sicher</button>
+          <span id="mphSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="mphSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Zwischen Sonne und Erde → Neumond (dunkle Seite zu uns). Der Sonne gegenüber → Vollmond. Seitlich → Halbmond (zu-/abnehmend). Immer ist die der Sonne zugewandte Hälfte beleuchtet.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Der Mond ist ein beleuchteter Körper. Beim Umlauf um die Erde (ca. 29,5 Tage) ändert sich der Blickwinkel auf die beleuchtete Hälfte → Phasen. Es ist KEIN Erdschatten (das wäre die Mondfinsternis).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Phasen entstehen durch den Erdschatten." (2) „Der Mond leuchtet selbst." (3) „Bei Neumond ist der Mond weg."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Ball + Lampe im abgedunkelten Raum umrunden lassen; Blickrichtung Erde→Mond betonen; Neumond/Vollmond an den Extremstellungen zeigen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Neumond / Vollmond / Halbmond. 6.1 „nein" · 6.2 „von der beleuchteten Hälfte unterschiedlich viel sehen" · 6.3 „zwischen Sonne und Erde". Merksatz: nicht selbst · beleuchteten · zwischen Sonne und Erde. Transfer: Er wirft auch tagsüber Sonnenlicht zurück und ist dann hell genug, um am blauen Himmel sichtbar zu sein. Minidiagnose: 1→nein · 2→„zwischen Sonne und Erde" · 3→„der Sonne gegenüber".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('mondphasen')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('mondphasen', 'Warum verändert der Mond sein Aussehen?', body);
+}
+
+const _MPH_MINI = [
+  { q: '1. Leuchtet der Mond selbst?',
+    opts: ['Ja, er glüht', 'Nein, er wirft Sonnenlicht zurück', 'Nur bei Vollmond'], correct: 1,
+    fb: ['Der Mond glüht nicht.',
+         'Richtig! Der Mond ist ein beleuchteter Körper – er reflektiert Sonnenlicht.',
+         'Auch bei Vollmond reflektiert er nur.'] },
+  { q: '2. Wodurch entstehen die Mondphasen?',
+    opts: ['Durch den Schatten der Erde', 'Weil wir unterschiedlich viel der beleuchteten Hälfte sehen', 'Durch Wolken'], correct: 1,
+    fb: ['Der Erdschatten macht die Mondfinsternis, nicht die Phasen.',
+         'Richtig! Je nach Stellung sehen wir mehr oder weniger der hellen Hälfte.',
+         'Wolken verdecken den Mond nur.'] },
+  { q: '3. Wo steht der Mond bei Neumond?',
+    opts: ['Zwischen Sonne und Erde', 'Der Sonne gegenüber', 'Hinter der Sonne'], correct: 0,
+    fb: ['Richtig! Bei Neumond steht der Mond zwischen Sonne und Erde – die dunkle Seite zeigt zu uns.',
+         'Das wäre Vollmond.',
+         'Der Mond umläuft die Erde, nicht die Sonne dahinter.'] }
+];
+function _mphMiniHTML() {
+  return _MPH_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_mphAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="mphFb${qi}"></div></div>`).join('');
+}
+function _mphAns(qi, oi) {
+  const m = _MPH_MINI[qi], el = document.getElementById('mphFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _mphSelf(n) {
+  const out = document.getElementById('mphSelfOut'), val = document.getElementById('mphSelfVal');
+  if (val) { val.value = String(n); _abSave('mondphasen'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.3.4  WIE ENTSTEHT EINE SONNENFINSTERNIS?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Sonne, Erde, Mond"
+// Handlungsorientiert: Der Mond steht zwischen Sonne und Erde (Neumond).
+// Sein Schatten fällt auf die Erde. Wo der Kernschatten trifft, ist die
+// Sonne ganz verdeckt (totale Finsternis), im Halbschatten teilweise.
+// Mond ausrichten und den Schatten auf die Erde wandern lassen.
+// ═══════════════════════════════════════════════════════
+
+let _sof = null;
+const _SOF_SX = 40, _SOF_MX = 210, _SOF_EX = 380;   // x von Sonne, Mond, Erde
+function _sofInit() { _sof = { moonY: 40, t: 0 }; }
+function _sofShadowY(cy) { return cy + _sof.moonY * (_SOF_EX - _SOF_SX) / (_SOF_MX - _SOF_SX); }
+function _sofTrifft(cy, R) { return Math.abs(_sofShadowY(cy) - cy) < R; }
+
+function _sofHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim sof-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌑☀️ Wie entsteht eine Sonnenfinsternis?</h3>
+    <div class="fpm-note" style="margin-top:2px">Sonne – Mond – Erde in einer Reihe. Verschiebe den Mond, bis sein Schatten auf die Erde fällt. Wo der Kernschatten trifft, ist die Sonne verdeckt.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="sofAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_sofAlign()">🎯 Mond genau ausrichten</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Mond verschieben (Höhe)</div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Mondstellung: <b id="sofDLbl">40</b></span>
+          <input type="range" id="sofD" min="-60" max="60" step="4" value="40"
+            oninput="_sofSetD(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="lmp-status" id="sofStatus"></div>
+        <div class="fpm-note" style="margin-top:10px">Eine Sonnenfinsternis gibt es nur bei <b>Neumond</b>, wenn der Mond genau zwischen Sonne und Erde steht. Weil die Mondbahn leicht geneigt ist, passiert das nur selten.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Mond zwischen Sonne und Erde → <b>Mondschatten auf der Erde</b>. &nbsp;|&nbsp; Kernschatten = totale, Halbschatten = teilweise Finsternis.
+    </p>
+    ${_sofArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _sofSetD(v) { _sof.moonY = +v; const el = document.getElementById('sofDLbl'); if (el) el.textContent = _fpmNum(+v, 0); _sofStatus(); }
+function _sofAlign() { _sof.moonY = 0; const sl = document.getElementById('sofD'); if (sl) sl.value = 0; _sofSetD(0); }
+function _sofStatus() {
+  const el = document.getElementById('sofStatus'); if (!el) return;
+  const cy = 120, R = 30;
+  if (Math.abs(_sof.moonY) < 8) { el.textContent = '🌑 Totale Sonnenfinsternis – der Kernschatten trifft die Erde, die Sonne ist ganz verdeckt.'; el.className = 'lmp-status off'; }
+  else if (_sofTrifft(cy, R + 24)) { el.textContent = '🌗 Teilweise Sonnenfinsternis – nur der Halbschatten trifft die Erde.'; el.className = 'lmp-status'; }
+  else { el.textContent = '☀️ Keine Finsternis – der Mondschatten geht an der Erde vorbei.'; el.className = 'lmp-status on'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _sofUpdate(dt) { if (_sof) _sof.t += dt; }
+function _sofDraw(ctx, cv) {
+  if (!_sof) return;
+  const W = cv.width, H = cv.height, cy = H / 2 - 6, R = 30, mr = 9;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const my = cy + _sof.moonY;
+  // Sonne
+  ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(_SOF_SX, cy, 26, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#fde047'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Sonne', _SOF_SX, cy + 42);
+  // Lichtstrahlen (Sonne → an Mond vorbei)
+  ctx.strokeStyle = 'rgba(250,204,21,0.25)'; ctx.lineWidth = 1.5; ctx.setLineDash([5, 5]);
+  for (let dy = -R; dy <= R; dy += 15) { ctx.beginPath(); ctx.moveTo(_SOF_SX + 20, cy); ctx.lineTo(_SOF_EX, cy + dy); ctx.stroke(); }
+  ctx.setLineDash([]);
+  // Schattenkegel des Mondes (von Sonne durch Mondränder)
+  const topY = my - mr, botY = my + mr;
+  const yTopE = cy + (topY - cy) * (_SOF_EX - _SOF_SX) / (_SOF_MX - _SOF_SX);
+  const yBotE = cy + (botY - cy) * (_SOF_EX - _SOF_SX) / (_SOF_MX - _SOF_SX);
+  ctx.fillStyle = 'rgba(15,23,42,0.75)';
+  ctx.beginPath(); ctx.moveTo(_SOF_MX, topY); ctx.lineTo(_SOF_EX + 30, yTopE); ctx.lineTo(_SOF_EX + 30, yBotE); ctx.lineTo(_SOF_MX, botY); ctx.closePath(); ctx.fill();
+  // Erde
+  ctx.fillStyle = '#2563eb'; ctx.beginPath(); ctx.arc(_SOF_EX, cy, R, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#166534'; ctx.beginPath(); ctx.arc(_SOF_EX, cy, R, Math.PI / 2, 3 * Math.PI / 2, false); ctx.closePath(); ctx.fill();   // Tagseite (links)
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.arc(_SOF_EX, cy, R, 0, 2 * Math.PI); ctx.stroke();
+  // Schattenfleck auf der Erde
+  const sy = _sofShadowY(cy);
+  if (Math.abs(sy - cy) < R) { ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(_SOF_EX - 6, sy, 7, 0, 2 * Math.PI); ctx.fill(); ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5; ctx.stroke(); }
+  ctx.fillStyle = '#93c5fd'; ctx.font = '10px sans-serif'; ctx.fillText('Erde', _SOF_EX, cy + R + 16);
+  // Mond
+  ctx.fillStyle = '#94a3b8'; ctx.beginPath(); ctx.arc(_SOF_MX, my, mr, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '10px sans-serif'; ctx.fillText('Mond', _SOF_MX, my - mr - 6);
+  // Statuszeile
+  ctx.fillStyle = Math.abs(_sof.moonY) < 8 ? '#ef4444' : '#e2e8f0'; ctx.font = '700 12px sans-serif';
+  ctx.fillText(Math.abs(_sof.moonY) < 8 ? '🌑 totale Sonnenfinsternis' : (Math.abs(sy - cy) < R + 24 ? 'teilweise Finsternis' : 'keine Finsternis'), W / 2, 22);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.3.4  (ns = 'sonnenfins') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _sofArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('sonnenfins')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('sonnenfins')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie kann der Mond die Sonne verdecken – und wo passiert das?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, eine Sonnenfinsternis entsteht, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Verschiebe den Mond nach oben und unten. Wo trifft sein Schatten hin?</li>
+          <li>Richte den Mond genau aus. Was passiert auf der Erde?</li>
+          <li>Achte auf Kern- und Halbschatten.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtung</div>
+        <ol class="ab-ol">
+          <li>Bei welcher Stellung fällt der Schatten auf die Erde? ${inp('b1', 'wenn der Mond …')}</li>
+          <li>Im Kernschatten ist die Sonne … ${inp('b2', 'ganz/teilweise verdeckt')}</li>
+          <li>Welche Mondphase herrscht dabei? ${inp('b3', 'Neumond/Vollmond')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne Sonne, Mond und Erde in einer Reihe und den Schatten des Mondes auf der Erde.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>In welcher Reihenfolge stehen Sonne, Mond und Erde? ${inp('a1', 'Sonne – … – …')}</li>
+          <li>Was wird bei einer Sonnenfinsternis verdeckt? ${inp('a2', '')}</li>
+          <li>Warum gibt es nicht bei jedem Neumond eine Finsternis? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Bei einer Sonnenfinsternis steht der ${inp('m1', 'wer?')} zwischen Sonne und Erde.<br>
+        Sein Schatten fällt auf die ${inp('m2', 'was?')}. Im Kernschatten ist die Sonne ganz verdeckt.<br>
+        Das passiert nur bei ${inp('m3', 'welcher Mondphase?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum darf man niemals ohne spezielle Schutzbrille direkt in eine Sonnenfinsternis schauen?</div>
+        ${ta('tr1', 'Ohne Schutzbrille …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="sofMini">${_sofMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_sofSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_sofSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_sofSelf(3)">😃 sicher</button>
+          <span id="sofSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="sofSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Nur wenn der Mond genau in der Linie Sonne–Erde steht, trifft sein Schatten die Erde. Im schmalen Kernschatten totale, im Halbschatten teilweise Finsternis. Es herrscht Neumond.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Sonnenfinsternis: Reihenfolge Sonne – Mond – Erde (Neumond). Der Mond wirft einen Schatten auf die Erde; verdeckt wird die Sonne. Wegen der ~5° geneigten Mondbahn steht der Mond meist ober- oder unterhalb der Linie → nicht jeder Neumond bringt eine Finsternis.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Erdschatten verdeckt die Sonne." (2) „Bei Vollmond gibt es Sonnenfinsternis." (3) „Man kann gefahrlos hinsehen."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Drei Kugeln in einer Linie legen; Kern-/Halbschatten aus 5.3.5 aufgreifen; Sicherheitshinweis (Schutzbrille) betonen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4.1 „genau dazwischen steht" · 4.2 „ganz verdeckt" · 4.3 „Neumond". 6.1 „Sonne – Mond – Erde" · 6.2 „die Sonne" · 6.3 „weil die Mondbahn geneigt ist". Merksatz: Mond · Erde · Neumond. Transfer: Die Sonne ist trotz Verdeckung extrem hell und schädigt die Augen. Minidiagnose: 1→„Mond zwischen Sonne und Erde" · 2→Neumond · 3→„die Sonne".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('sonnenfins')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('sonnenfins', 'Wie entsteht eine Sonnenfinsternis?', body);
+}
+
+const _SOF_MINI = [
+  { q: '1. Wie entsteht eine Sonnenfinsternis?',
+    opts: ['Der Mond steht zwischen Sonne und Erde', 'Die Erde steht zwischen Sonne und Mond', 'Die Sonne wird ausgeschaltet'], correct: 0,
+    fb: ['Richtig! Der Mond schiebt sich vor die Sonne und wirft seinen Schatten auf die Erde.',
+         'Das wäre eine Mondfinsternis.',
+         'Die Sonne leuchtet weiter.'] },
+  { q: '2. Welche Mondphase herrscht bei einer Sonnenfinsternis?',
+    opts: ['Vollmond', 'Neumond', 'Halbmond'], correct: 1,
+    fb: ['Bei Vollmond steht der Mond der Sonne gegenüber.',
+         'Richtig! Nur bei Neumond kann der Mond vor der Sonne stehen.',
+         'Beim Halbmond steht der Mond seitlich.'] },
+  { q: '3. Was wird bei einer Sonnenfinsternis verdeckt?',
+    opts: ['Die Sonne', 'Der Mond', 'Die Erde'], correct: 0,
+    fb: ['Richtig! Der Mond verdeckt die Sonne.',
+         'Der Mond wirft den Schatten, er wird nicht verdeckt.',
+         'Die Erde bekommt den Schatten ab, wird aber nicht verdeckt.'] }
+];
+function _sofMiniHTML() {
+  return _SOF_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_sofAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="sofFb${qi}"></div></div>`).join('');
+}
+function _sofAns(qi, oi) {
+  const m = _SOF_MINI[qi], el = document.getElementById('sofFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _sofSelf(n) {
+  const out = document.getElementById('sofSelfOut'), val = document.getElementById('sofSelfVal');
+  if (val) { val.value = String(n); _abSave('sonnenfins'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
