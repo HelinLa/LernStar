@@ -265,7 +265,10 @@ const _physAbDefs = {
   'kamera': { titel: 'Wie funktioniert eine Kamera?', ns: 'kamera', html: () => _kamArbeitsblattHTML() },
   'auge': { titel: 'Wie funktioniert das Auge?', ns: 'auge', html: () => _augArbeitsblattHTML() },
   'brille': { titel: 'Wie korrigiert eine Brille Sehfehler?', ns: 'brille', html: () => _briArbeitsblattHTML() },
-  'spiegelbild': { titel: 'Wie entsteht ein Spiegelbild?', ns: 'spiegel', html: () => _spgArbeitsblattHTML() }
+  'spiegelbild': { titel: 'Wie entsteht ein Spiegelbild?', ns: 'spiegel', html: () => _spgArbeitsblattHTML() },
+  'brechung': { titel: 'Warum erscheint ein Gegenstand im Wasser verschoben?', ns: 'brechung', html: () => _breArbeitsblattHTML() },
+  'brechungswinkel': { titel: 'Wovon hängt die Stärke der Brechung ab?', ns: 'brechwinkel', html: () => _bwkArbeitsblattHTML() },
+  'totalreflexion': { titel: 'Wie funktioniert ein Lichtleiter?', ns: 'totalrefl', html: () => _totArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -736,6 +739,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('spgAnim', 'spgAnim');
     _pSim.start(dt => _spgUpdate(dt), (ctx, cv) => _spgDraw(ctx, cv), []);
     _abRestore('spiegel');
+  },
+
+  // ── 7.2.2 BRECHUNG / SCHEINBARE TIEFE ──────────────────────────
+  'brechung': modal => {
+    _breInit();
+    modal.innerHTML = _breHTML();
+    _breStatus();
+    _pSim = new PhysicsSimEngine('breAnim', 'breAnim');
+    _pSim.start(dt => _breUpdate(dt), (ctx, cv) => _breDraw(ctx, cv), []);
+    _abRestore('brechung');
+  },
+
+  // ── 7.2.3 BRECHUNGSWINKEL ──────────────────────────────────────
+  'brechungswinkel': modal => {
+    _bwkInit();
+    modal.innerHTML = _bwkHTML();
+    _bwkStatus();
+    _pSim = new PhysicsSimEngine('bwkAnim', 'bwkAnim');
+    _pSim.start(dt => _bwkUpdate(dt), (ctx, cv) => _bwkDraw(ctx, cv), []);
+    _abRestore('brechwinkel');
+  },
+
+  // ── 7.2.4 TOTALREFLEXION / LICHTLEITER ─────────────────────────
+  'totalreflexion': modal => {
+    _totInit();
+    modal.innerHTML = _totHTML();
+    _totStatus();
+    _pSim = new PhysicsSimEngine('totAnim', 'totAnim');
+    _pSim.start(dt => _totUpdate(dt), (ctx, cv) => _totDraw(ctx, cv), []);
+    _abRestore('totalrefl');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -44821,5 +44854,576 @@ function _spgAns(qi, oi) {
 function _spgSelf(n) {
   const out = document.getElementById('spgSelfOut'), val = document.getElementById('spgSelfVal');
   if (val) { val.value = String(n); _abSave('spiegel'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.2.2  WARUM ERSCHEINT EIN GEGENSTAND IM WASSER VERSCHOBEN?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Optische Instrumente"
+// Handlungsorientiert: Licht wird an der Grenzfläche Luft/Wasser
+// gebrochen. Ein Gegenstand unter Wasser erscheint höher (flacher)
+// als er wirklich ist – die scheinbare Tiefe ist kleiner.
+// ═══════════════════════════════════════════════════════
+
+let _bre = null;
+function _breInit() { _bre = { depth: 90, t: 0 }; }
+
+function _breHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim bre-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🐟 Warum erscheint ein Gegenstand im Wasser verschoben?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Stein liegt unter Wasser. Verändere die Tiefe und verfolge die Lichtstrahlen zum Auge. Wo scheint der Stein zu liegen?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="breAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Tiefe des Gegenstands: <b id="breDLbl">90</b></span>
+          <input type="range" id="breD" min="40" max="150" step="5" value="90"
+            oninput="_breSetD(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was du siehst</div>
+        <div class="lmp-status" id="breStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">An der Wasseroberfläche wird das Licht <b>gebrochen</b>. Dein Auge verlängert den Strahl geradlinig nach unten – deshalb erscheint der Gegenstand <b>höher</b> (die scheinbare Tiefe ist kleiner als die wahre).</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Lichtbrechung an der Grenzfläche → Gegenstand erscheint <b>flacher</b>. &nbsp;|&nbsp; Darum greift man im Wasser oft daneben.
+    </p>
+    ${_breArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _breSetD(v) { _bre.depth = +v; const el = document.getElementById('breDLbl'); if (el) el.textContent = _fpmNum(+v, 0); _breStatus(); }
+function _breStatus() { const el = document.getElementById('breStatus'); if (!el) return; el.textContent = '🐟 Der Gegenstand liegt bei Tiefe ' + _fpmNum(_bre.depth, 0) + ', erscheint aber nur bei ≈ ' + _fpmNum(_bre.depth * 0.75, 0) + ' (flacher).'; el.className = 'lmp-status on'; }
+
+// ── Animation ──────────────────────────────────────────
+function _breUpdate(dt) { if (_bre) _bre.t += dt; }
+function _breDraw(ctx, cv) {
+  if (!_bre) return;
+  const W = cv.width, H = cv.height, ySurf = 90;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#e0f2fe'; ctx.fillRect(0, 0, W, ySurf);            // Luft
+  ctx.fillStyle = '#7dd3fc'; ctx.fillRect(0, ySurf, W, H - ySurf);   // Wasser
+  ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, ySurf); ctx.lineTo(W, ySurf); ctx.stroke();
+  ctx.fillStyle = '#075985'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Luft', 10, 20); ctx.fillText('Wasser', 10, ySurf + 18);
+  const xObj = 250, yObj = ySurf + _bre.depth, eye = { x: 120, y: 40 };
+  const apparent = { x: xObj, y: ySurf + _bre.depth * 0.75 };
+  // Sichtlinie Auge → scheinbares Bild, Schnittpunkt M an der Oberfläche
+  const tM = (ySurf - eye.y) / (apparent.y - eye.y), M = { x: eye.x + tM * (apparent.x - eye.x), y: ySurf };
+  // realer Strahl: Gegenstand → M → Auge
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(xObj, yObj); ctx.lineTo(M.x, M.y); ctx.stroke();       // im Wasser
+  ctx.beginPath(); ctx.moveTo(M.x, M.y); ctx.lineTo(eye.x, eye.y); ctx.stroke();     // in der Luft (gebrochen)
+  // Rückverlängerung → scheinbares Bild
+  ctx.strokeStyle = 'rgba(148,163,184,0.8)'; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(M.x, M.y); ctx.lineTo(apparent.x, apparent.y); ctx.stroke(); ctx.setLineDash([]);
+  // Lot am Auftreffpunkt
+  ctx.strokeStyle = 'rgba(15,23,42,0.4)'; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.moveTo(M.x, ySurf - 24); ctx.lineTo(M.x, ySurf + 24); ctx.stroke(); ctx.setLineDash([]);
+  // wahrer Gegenstand (Stein)
+  ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.arc(xObj, yObj, 9, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#1e293b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('wahr', xObj + 26, yObj + 3);
+  // scheinbarer Gegenstand
+  ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.arc(apparent.x, apparent.y, 9, 0, 2 * Math.PI); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#dc2626'; ctx.fillText('scheinbar', apparent.x + 34, apparent.y + 3);
+  // Auge
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(eye.x, eye.y, 14, 8, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#1e40af'; ctx.beginPath(); ctx.arc(eye.x, eye.y, 4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#334155'; ctx.font = '9px sans-serif'; ctx.fillText('Auge', eye.x, eye.y - 12);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.fillText('Licht wird an der Oberfläche gebrochen', W / 2 + 40, ySurf - 4);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.2.2  (ns = 'brechung') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _breArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('brechung')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('brechung')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum sieht man einen Gegenstand im Wasser an einer anderen Stelle, als er wirklich ist?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, der Gegenstand erscheint … , weil das Licht …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Verändere die Tiefe des Gegenstands.</li>
+          <li>Verfolge den Lichtstrahl vom Gegenstand über die Oberfläche zum Auge.</li>
+          <li>Vergleiche die wahre und die scheinbare Lage.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtung</div>
+        <ol class="ab-ol">
+          <li>Wo wird das Licht gebrochen? An der … ${inp('b1', '')}</li>
+          <li>Erscheint der Gegenstand höher oder tiefer als er ist? ${inp('b2', '')}</li>
+          <li>Ist die scheinbare Tiefe größer oder kleiner als die wahre? ${inp('b3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne Wasseroberfläche, Gegenstand, den gebrochenen Strahl zum Auge und die Rückverlängerung zum scheinbaren Bild.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was passiert mit dem Licht beim Übergang Wasser → Luft? ${inp('a1', 'es wird …')}</li>
+          <li>Warum sieht das Auge den Gegenstand an der falschen Stelle? ${inp('a2', 'weil das Auge …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Beim Übergang zwischen Luft und Wasser wird das Licht ${inp('m1', 'was?')}.<br>
+        Dadurch erscheint ein Gegenstand im Wasser ${inp('m2', 'höher/tiefer')} – die scheinbare Tiefe ist ${inp('m3', 'kleiner/größer')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Strohhalm im Wasserglas sieht geknickt aus, und beim Greifen nach einem Stein im Bach greift man oft daneben. Erkläre beides mit der Lichtbrechung.</div>
+        ${ta('tr1', 'Der Strohhalm … Beim Greifen nach dem Stein …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="breMini">${_breMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_breSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_breSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_breSelf(3)">😃 sicher</button>
+          <span id="breSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="breSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Der Gegenstand erscheint höher (flacher) als er ist; die scheinbare Tiefe ist kleiner (grob ¾ der wahren). Das Auge verlängert den gebrochenen Strahl geradlinig.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Beim Übergang Wasser→Luft wird das Licht vom Lot weg gebrochen. Das Auge interpretiert den einfallenden Strahl geradlinig → virtuelles, gehobenes Bild (scheinbare Tiefe). Für Kl. 7 qualitativ.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Das Wasser vergrößert." (2) „Der Gegenstand bewegt sich." (3) „Licht geht immer geradeaus, auch durch Wasser."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Strahl mit Knick an der Oberfläche zeichnen; Rückverlängerung als gestrichelte Linie; Strohhalm-Realversuch.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4.1 „Wasseroberfläche" · 4.2 „höher" · 4.3 „kleiner". 6.1 „gebrochen" · 6.2 „den gebrochenen Strahl geradlinig verlängert". Merksatz: gebrochen · höher · kleiner. Transfer: Der Strohhalm wirkt geknickt, weil der Teil unter Wasser verschoben erscheint; deshalb greift man daneben. Minidiagnose: 1→Brechung · 2→„flacher/höher" · 3→„an der Grenzfläche".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('brechung')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('brechung', 'Warum erscheint ein Gegenstand im Wasser verschoben?', body);
+}
+
+const _BRE_MINI = [
+  { q: '1. Warum erscheint ein Stein im Wasser an der falschen Stelle?',
+    opts: ['Weil Wasser vergrößert', 'Weil das Licht an der Oberfläche gebrochen wird', 'Weil der Stein sich bewegt'], correct: 1,
+    fb: ['Es geht nicht um Vergrößerung.',
+         'Richtig! Die Lichtbrechung an der Grenzfläche verschiebt das Bild.',
+         'Der Stein liegt still.'] },
+  { q: '2. Wie erscheint ein Gegenstand unter Wasser?',
+    opts: ['tiefer als er ist', 'höher (flacher) als er ist', 'genau richtig'], correct: 1,
+    fb: ['Andersherum.',
+         'Richtig! Die scheinbare Tiefe ist kleiner – er wirkt flacher.',
+         'Durch die Brechung stimmt die Lage nicht.'] },
+  { q: '3. Wo wird das Licht gebrochen?',
+    opts: ['An der Grenzfläche zwischen Luft und Wasser', 'Tief im Wasser', 'Im Auge'], correct: 0,
+    fb: ['Richtig! An der Grenzfläche (Oberfläche) ändert das Licht die Richtung.',
+         'Im gleichmäßigen Wasser geht es geradeaus.',
+         'Die Brechung passiert an der Oberfläche, nicht erst im Auge.'] }
+];
+function _breMiniHTML() {
+  return _BRE_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_breAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="breFb${qi}"></div></div>`).join('');
+}
+function _breAns(qi, oi) {
+  const m = _BRE_MINI[qi], el = document.getElementById('breFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _breSelf(n) {
+  const out = document.getElementById('breSelfOut'), val = document.getElementById('breSelfVal');
+  if (val) { val.value = String(n); _abSave('brechung'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.2.3  WOVON HÄNGT DIE STÄRKE DER BRECHUNG AB?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Optische Instrumente"
+// Handlungsorientiert: Ein Lichtstrahl trifft schräg auf Wasser oder
+// Glas. Je größer der Einfallswinkel, desto größer der Brechungswinkel
+// (je-desto). Glas bricht stärker als Wasser (Strahl knickt mehr zum Lot).
+// ═══════════════════════════════════════════════════════
+
+const _BWK_N = { wasser: 1.33, glas: 1.50 };
+let _bwk = null;
+function _bwkInit() { _bwk = { theta: 45, medium: 'wasser', t: 0 }; }
+function _bwkPhi() { const s = Math.sin(_bwk.theta * Math.PI / 180) / _BWK_N[_bwk.medium]; return Math.asin(Math.min(1, s)) * 180 / Math.PI; }
+
+function _bwkHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim bwk-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📐 Wovon hängt die Stärke der Brechung ab?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Lichtstrahl trifft schräg auf Wasser oder Glas. Verändere den Einfallswinkel und den Stoff. Wie stark knickt der Strahl?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="bwkAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_bwk.medium === 'wasser' ? ' primary' : ''}" id="bwkM0" onclick="_bwkSetM('wasser')">💧 Wasser</button>
+          <button class="sim-btn${_bwk.medium === 'glas' ? ' primary' : ''}" id="bwkM1" onclick="_bwkSetM('glas')">🔷 Glas</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Einfallswinkel einstellen</div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Einfallswinkel θ: <b id="bwkTLbl">45°</b></span>
+          <input type="range" id="bwkT" min="5" max="80" step="5" value="45"
+            oninput="_bwkSetT(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="lmp-status" id="bwkStatus"></div>
+        <div class="fpm-note" style="margin-top:10px">Beim Übergang in einen dichteren Stoff wird der Strahl <b>zum Lot hin</b> gebrochen. Je größer der Einfallswinkel, desto größer der Brechungswinkel. <b>Glas</b> bricht stärker als Wasser.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Größerer Einfallswinkel → größerer Brechungswinkel. &nbsp;|&nbsp; Dichterer Stoff (Glas) → stärkere Brechung.
+    </p>
+    ${_bwkArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _bwkSetT(v) { _bwk.theta = +v; const el = document.getElementById('bwkTLbl'); if (el) el.textContent = _fpmNum(+v, 0) + '°'; _bwkStatus(); }
+function _bwkSetM(m) { _bwk.medium = m; document.getElementById('bwkM0')?.classList.toggle('primary', m === 'wasser'); document.getElementById('bwkM1')?.classList.toggle('primary', m === 'glas'); _bwkStatus(); }
+function _bwkStatus() { const el = document.getElementById('bwkStatus'); if (!el) return; el.textContent = '📐 Einfallswinkel θ = ' + _fpmNum(_bwk.theta, 0) + '°, Brechungswinkel φ = ' + _fpmNum(_bwkPhi(), 0) + '° (' + _bwk.medium + ').'; el.className = 'lmp-status on'; }
+
+// ── Animation ──────────────────────────────────────────
+function _bwkUpdate(dt) { if (_bwk) _bwk.t += dt; }
+function _bwkDraw(ctx, cv) {
+  if (!_bwk) return;
+  const W = cv.width, H = cv.height, ySurf = 100, ox = W / 2;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#e0f2fe'; ctx.fillRect(0, 0, W, ySurf);
+  ctx.fillStyle = _bwk.medium === 'glas' ? '#bae6fd' : '#7dd3fc'; ctx.fillRect(0, ySurf, W, H - ySurf);
+  ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, ySurf); ctx.lineTo(W, ySurf); ctx.stroke();
+  ctx.fillStyle = '#075985'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Luft', 10, 18); ctx.fillText(_bwk.medium === 'glas' ? 'Glas' : 'Wasser', 10, ySurf + 18);
+  // Lot
+  ctx.strokeStyle = 'rgba(15,23,42,0.4)'; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(ox, ySurf - 70); ctx.lineTo(ox, ySurf + 70); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Lot', ox + 14, ySurf - 62);
+  const th = _bwk.theta * Math.PI / 180, ph = _bwkPhi() * Math.PI / 180, L = 90;
+  // einfallender Strahl (von oben links)
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(ox - Math.sin(th) * L, ySurf - Math.cos(th) * L); ctx.lineTo(ox, ySurf); ctx.stroke();
+  // Pfeil
+  ctx.fillStyle = '#fbbf24'; ctx.beginPath(); ctx.arc(ox - Math.sin(th) * L * 0.5, ySurf - Math.cos(th) * L * 0.5, 2.5, 0, 2 * Math.PI); ctx.fill();
+  // gebrochener Strahl (nach unten, zum Lot)
+  ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(ox, ySurf); ctx.lineTo(ox + Math.sin(ph) * L, ySurf + Math.cos(ph) * L); ctx.stroke();
+  // Winkelbögen
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.arc(ox, ySurf, 26, -Math.PI / 2 - th, -Math.PI / 2); ctx.stroke();
+  ctx.strokeStyle = '#dc2626'; ctx.beginPath(); ctx.arc(ox, ySurf, 26, Math.PI / 2, Math.PI / 2 + ph); ctx.stroke();
+  ctx.fillStyle = '#b45309'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('θ=' + _fpmNum(_bwk.theta, 0) + '°', ox - 30, ySurf - 26);
+  ctx.fillStyle = '#dc2626'; ctx.textAlign = 'left'; ctx.fillText('φ=' + _fpmNum(_bwkPhi(), 0) + '°', ox + 30, ySurf + 34);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('zum Lot hin gebrochen', W / 2, H - 10);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.2.3  (ns = 'brechwinkel') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _bwkArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('brechwinkel')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('brechwinkel')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wovon hängt es ab, wie stark ein Lichtstrahl beim Eintritt gebrochen wird?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, der Strahl knickt stärker, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle verschiedene Einfallswinkel ein und lies den Brechungswinkel ab.</li>
+          <li>Wechsle zwischen Wasser und Glas beim gleichen Einfallswinkel.</li>
+          <li>Trage die Werte in die Tabelle ein.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Einfallswinkel θ</td><td>20°</td><td>45°</td><td>70°</td></tr>
+          <tr><td>Brechungswinkel φ (Wasser)</td><td>${inp('w20', '')}</td><td>${inp('w45', '')}</td><td>${inp('w70', '')}</td></tr>
+          <tr><td>Brechungswinkel φ (Glas)</td><td>${inp('g20', '')}</td><td>${inp('g45', '')}</td><td>${inp('g70', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Grenzfläche mit Lot, einfallendem und gebrochenem Strahl sowie θ und φ.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie ändert sich φ, wenn θ größer wird? ${inp('a1', '')}</li>
+          <li>Welcher Stoff bricht stärker – Wasser oder Glas? ${inp('a2', '')}</li>
+          <li>In welche Richtung knickt der Strahl beim Eintritt in Wasser/Glas? ${inp('a3', 'zum … / vom …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Je größer der Einfallswinkel, desto ${inp('m1', 'größer/kleiner')} der Brechungswinkel.<br>
+        Beim Eintritt in einen dichteren Stoff wird das Licht ${inp('m2', 'zum Lot / vom Lot')} gebrochen.<br>
+        ${inp('m3', 'Glas/Wasser')} bricht stärker als der andere Stoff.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum kann eine Glaslinse das Licht stärker bündeln als eine gleich geformte Linse aus dünnerem Material? Was hat das mit der Brechung zu tun?</div>
+        ${ta('tr1', 'Glas bricht das Licht stärker, deshalb …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="bwkMini">${_bwkMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_bwkSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_bwkSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_bwkSelf(3)">😃 sicher</button>
+          <span id="bwkSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="bwkSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Größerer Einfallswinkel → größerer Brechungswinkel (φ &lt; θ beim Eintritt in dichteren Stoff). Glas (n ≈ 1,5) bricht stärker als Wasser (n ≈ 1,33): bei gleichem θ ist φ in Glas kleiner. Richtwerte θ=45°: Wasser φ ≈ 32°, Glas φ ≈ 28°.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Beim Übergang in ein optisch dichteres Medium wird der Strahl zum Lot hin gebrochen; die Brechung nimmt mit dem Einfallswinkel zu (Snellius, in Kl. 7 qualitativ). Größere Brechzahl → stärkere Brechung.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Strahl knickt vom Lot weg (beim Eintritt)." (2) „Alle Stoffe brechen gleich." (3) „φ = θ."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Immer zum Lot messen; θ und φ getrennt untersuchen; Wasser/Glas direkt vergleichen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 „wird größer" · 6.2 „Glas" · 6.3 „zum Lot hin". Merksatz: größer · zum Lot · Glas. Transfer: Glas bricht stärker → bündelt bei gleicher Form kräftiger (kürzere Brennweite). Minidiagnose: 1→„größer" · 2→Glas · 3→„zum Lot hin".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('brechwinkel')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('brechwinkel', 'Wovon hängt die Stärke der Brechung ab?', body);
+}
+
+const _BWK_MINI = [
+  { q: '1. Wie ändert sich der Brechungswinkel, wenn der Einfallswinkel größer wird?',
+    opts: ['Er wird größer', 'Er wird kleiner', 'Er bleibt gleich'], correct: 0,
+    fb: ['Richtig! Größerer Einfallswinkel → größerer Brechungswinkel.',
+         'Andersherum.',
+         'Er ändert sich mit dem Einfallswinkel.'] },
+  { q: '2. Welcher Stoff bricht das Licht stärker?',
+    opts: ['Wasser', 'Glas', 'Beide gleich'], correct: 1,
+    fb: ['Wasser bricht schwächer als Glas.',
+         'Richtig! Glas (dichter) bricht das Licht stärker.',
+         'Die Stoffe brechen unterschiedlich.'] },
+  { q: '3. In welche Richtung knickt der Strahl beim Eintritt in Wasser?',
+    opts: ['Zum Lot hin', 'Vom Lot weg', 'Gar nicht'], correct: 0,
+    fb: ['Richtig! In den dichteren Stoff wird zum Lot hin gebrochen.',
+         'Das gilt beim Austritt in den dünneren Stoff.',
+         'Beim schrägen Eintritt knickt der Strahl sehr wohl.'] }
+];
+function _bwkMiniHTML() {
+  return _BWK_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_bwkAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="bwkFb${qi}"></div></div>`).join('');
+}
+function _bwkAns(qi, oi) {
+  const m = _BWK_MINI[qi], el = document.getElementById('bwkFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _bwkSelf(n) {
+  const out = document.getElementById('bwkSelfOut'), val = document.getElementById('bwkSelfVal');
+  if (val) { val.value = String(n); _abSave('brechwinkel'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.2.4  WIE FUNKTIONIERT EIN LICHTLEITER?  (Totalreflexion)
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Optische Instrumente"
+// Handlungsorientiert: Trifft Licht in einem dichten Stoff (Glas) sehr
+// schräg auf die Grenzfläche (Einfallswinkel ≥ Grenzwinkel), wird es
+// vollständig zurückgeworfen (Totalreflexion). So bleibt Licht in einem
+// Lichtleiter/Glasfaser gefangen und läuft im Zickzack hindurch.
+// ═══════════════════════════════════════════════════════
+
+const _TOT_N = 1.5, _TOT_C = Math.asin(1 / 1.5) * 180 / Math.PI;   // Grenzwinkel ≈ 41,8°
+let _tot = null;
+function _totInit() { _tot = { theta: 60, t: 0 }; }
+function _totTotal() { return _tot.theta >= _TOT_C; }
+
+function _totHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim tot-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔦 Wie funktioniert ein Lichtleiter?</h3>
+    <div class="fpm-note" style="margin-top:2px">Licht läuft in einem Glasstab. Verändere den Winkel, mit dem es auf die Wand trifft. Wann bleibt das Licht im Stab gefangen?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="totAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Einfallswinkel an der Wand θ: <b id="totTLbl">60°</b> &nbsp;(Grenzwinkel ≈ 42°)</span>
+          <input type="range" id="totT" min="20" max="85" step="1" value="60"
+            oninput="_totSetT(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was passiert</div>
+        <div class="lmp-status" id="totStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Ab dem <b>Grenzwinkel</b> (hier ≈ 42°) wird das Licht an der Wand <b>vollständig</b> zurückgeworfen – <b>Totalreflexion</b>. Es kann den Stab nicht mehr verlassen und läuft im Zickzack hindurch.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Sehr schräg (großer Winkel) → <b>Totalreflexion</b>: Licht bleibt drin. &nbsp;|&nbsp; Zu flach → Licht tritt aus.
+    </p>
+    ${_totArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _totSetT(v) { _tot.theta = +v; const el = document.getElementById('totTLbl'); if (el) el.textContent = _fpmNum(+v, 0) + '°'; _totStatus(); }
+function _totStatus() {
+  const el = document.getElementById('totStatus'); if (!el) return;
+  if (_totTotal()) { el.textContent = '🔦 θ ≥ Grenzwinkel → Totalreflexion! Das Licht bleibt im Lichtleiter und läuft hindurch.'; el.className = 'lmp-status on'; }
+  else { el.textContent = '💨 θ < Grenzwinkel → das Licht tritt an der Wand aus (geht verloren).'; el.className = 'lmp-status off'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _totUpdate(dt) { if (_tot) _tot.t += dt; }
+function _totDraw(ctx, cv) {
+  if (!_tot) return;
+  const W = cv.width, H = cv.height, yT = 70, yB = 170, x0 = 30, x1 = W - 20;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  // Glasstab (Lichtleiter)
+  ctx.fillStyle = 'rgba(96,165,250,0.18)'; ctx.fillRect(x0, yT, x1 - x0, yB - yT);
+  ctx.strokeStyle = '#60a5fa'; ctx.lineWidth = 2; ctx.strokeRect(x0, yT, x1 - x0, yB - yT);
+  ctx.fillStyle = '#93c5fd'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Lichtleiter (Glas)', x0 + 6, yT - 6);
+  // Zickzack-Weg
+  const th = _tot.theta * Math.PI / 180, span = yB - yT, dx = Math.tan(th) * span;
+  let x = x0, y = yB - 4, dir = -1;   // Start unten links, nach oben
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(x, y);
+  const total = _totTotal();
+  let bounces = 0, escaped = false;
+  while (x < x1 - 2 && bounces < 20) {
+    const nx = x + dx, ny = dir < 0 ? yT + 4 : yB - 4;
+    if (nx >= x1) { ctx.lineTo(x1 - 2, y + (dir < 0 ? -1 : 1) * (x1 - 2 - x) / dx * span); break; }
+    ctx.lineTo(nx, ny);
+    if (!total && bounces === 0) {  // tritt an der ersten Wand aus
+      ctx.stroke();
+      ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(nx, ny);
+      ctx.lineTo(nx + 30, ny - 40); ctx.stroke();
+      ctx.fillStyle = '#f87171'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('tritt aus', nx + 12, ny - 44);
+      escaped = true; break;
+    }
+    x = nx; y = ny; dir = -dir; bounces++;
+  }
+  if (!escaped) ctx.stroke();
+  // Lichtquelle links
+  ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(x0 - 4, yB - 4, 6, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#fde047'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Licht', x0 - 4, yB + 18);
+  // Grenzwinkel-Hinweis + Ausgang
+  if (total) { ctx.fillStyle = '#22c55e'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('Licht kommt an →', x1 - 4, yB + 22); }
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(total ? '🔦 Totalreflexion – Licht bleibt im Leiter' : '💨 Licht tritt aus', W / 2, 24);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.2.4  (ns = 'totalrefl') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _totArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('totalrefl')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('totalrefl')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie kann Licht in einem dünnen Glasfaden „um die Ecke" geleitet werden, ohne herauszukommen?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, das Licht bleibt im Stab, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle einen kleinen Winkel ein. Was passiert mit dem Licht an der Wand?</li>
+          <li>Vergrößere den Winkel über den Grenzwinkel hinaus.</li>
+          <li>Beobachte, wann das Licht im Stab bleibt und hindurchläuft.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Winkel θ</td><td>Licht bleibt im Stab?</td></tr>
+          <tr><td>klein (unter dem Grenzwinkel)</td><td>${inp('t1', 'ja/nein')}</td></tr>
+          <tr><td>groß (über dem Grenzwinkel)</td><td>${inp('t2', 'ja/nein')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne den Lichtleiter und den Zickzack-Weg des Lichts durch Totalreflexion.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Ab wann wird das Licht vollständig zurückgeworfen? ${inp('a1', 'ab dem …')}</li>
+          <li>Wie heißt dieser Effekt? ${inp('a2', '')}</li>
+          <li>Warum bleibt das Licht im Lichtleiter? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ab dem ${inp('m1', 'was?')} wird Licht an der Grenzfläche ${inp('m2', 'teilweise/vollständig')} zurückgeworfen – das nennt man ${inp('m3', 'was?')}.<br>
+        So bleibt Licht im Lichtleiter (Glasfaser) gefangen.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Das Internet kommt bei vielen über Glasfaserkabel. Ärzte schauen mit einem Endoskop in den Körper. Erkläre, was beide mit Totalreflexion zu tun haben.</div>
+        ${ta('tr1', 'Im Glasfaserkabel und im Endoskop …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="totMini">${_totMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_totSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_totSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_totSelf(3)">😃 sicher</button>
+          <span id="totSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="totSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Unter dem Grenzwinkel tritt das Licht aus (teils gebrochen). Ab dem Grenzwinkel (Glas ≈ 42°) wird es vollständig zurückgeworfen (Totalreflexion) und läuft im Zickzack durch den Leiter.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Totalreflexion tritt beim Übergang vom dichteren in den dünneren Stoff auf, wenn der Einfallswinkel den Grenzwinkel überschreitet (Glas ≈ 42°, Wasser ≈ 49°). Grundlage von Lichtleitern/Glasfasern.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Bei jedem Winkel bleibt das Licht drin." (2) „Totalreflexion braucht einen Spiegel." (3) „Licht geht durch die Faser geradeaus (nicht im Zickzack)."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Grenzwinkel markieren; klein/groß ausprobieren; Zickzack-Weg zeichnen; reale Glasfaser/Wasserstrahl-Versuch.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: klein nein, groß ja. 6.1 „ab dem Grenzwinkel" · 6.2 „Totalreflexion" · 6.3 „es wird an den Wänden vollständig zurückgeworfen". Merksatz: Grenzwinkel · vollständig · Totalreflexion. Transfer: In Glasfaser und Endoskop wird Licht (bzw. das Bild) durch fortlaufende Totalreflexion verlustarm geleitet. Minidiagnose: 1→„ab dem Grenzwinkel" · 2→Totalreflexion · 3→Glasfaser.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('totalrefl')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('totalrefl', 'Wie funktioniert ein Lichtleiter?', body);
+}
+
+const _TOT_MINI = [
+  { q: '1. Wann wird Licht an der Wand vollständig zurückgeworfen?',
+    opts: ['Bei jedem Winkel', 'Ab dem Grenzwinkel (sehr schräg)', 'Nur bei kleinem Winkel'], correct: 1,
+    fb: ['Nicht bei jedem Winkel.',
+         'Richtig! Ab dem Grenzwinkel tritt Totalreflexion auf.',
+         'Bei kleinem Winkel tritt das Licht aus.'] },
+  { q: '2. Wie heißt dieser Effekt?',
+    opts: ['Brechung', 'Totalreflexion', 'Streuung'], correct: 1,
+    fb: ['Brechung ist das Ablenken beim Durchgang.',
+         'Richtig! Es heißt Totalreflexion.',
+         'Streuung ist etwas anderes.'] },
+  { q: '3. Wo wird Totalreflexion genutzt?',
+    opts: ['In Glasfaserkabeln', 'In Fenstern', 'In Sonnenbrillen'], correct: 0,
+    fb: ['Richtig! Glasfaserkabel leiten Licht durch Totalreflexion.',
+         'Fenster lassen Licht gerade durch.',
+         'Sonnenbrillen filtern Licht, sie leiten es nicht.'] }
+];
+function _totMiniHTML() {
+  return _TOT_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_totAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="totFb${qi}"></div></div>`).join('');
+}
+function _totAns(qi, oi) {
+  const m = _TOT_MINI[qi], el = document.getElementById('totFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _totSelf(n) {
+  const out = document.getElementById('totSelfOut'), val = document.getElementById('totSelfVal');
+  if (val) { val.value = String(n); _abSave('totalrefl'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
