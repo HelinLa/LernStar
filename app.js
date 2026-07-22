@@ -1373,9 +1373,11 @@ function renderSubject() {
       const card = document.createElement('div');
       card.className = 'experiment-card';
       const pdf = expToPdf[t.exp];
-      const pdfBtn = pdf
-        ? `<a class="experiment-card-pdf" href="${pdf}" download>📄 Arbeitsblatt</a>`
-        : '';
+      // Interaktives Arbeitsblatt (direkt aus der Simulation) hat Vorrang vor dem PDF-Download
+      const hasInteractiveAb = typeof _physHatArbeitsblatt === 'function' && _physHatArbeitsblatt(t.exp);
+      const abBtn = hasInteractiveAb
+        ? `<button class="experiment-card-pdf" onclick="openArbeitsblatt('${t.exp}')">📝 Arbeitsblatt</button>`
+        : (pdf ? `<a class="experiment-card-pdf" href="${pdf}" download>📄 Arbeitsblatt</a>` : '');
       card.innerHTML = `
         <div class="experiment-card-icon">🧪</div>
         <div class="experiment-card-body">
@@ -1385,7 +1387,7 @@ function renderSubject() {
         </div>
         <div class="experiment-card-actions">
           <button class="experiment-card-btn" onclick="openExperiment('${t.exp}')">▶ Simulation<br>starten</button>
-          ${pdfBtn}
+          ${abBtn}
         </div>`;
       expList.appendChild(card);
     });

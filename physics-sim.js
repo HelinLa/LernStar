@@ -219,6 +219,32 @@ function openPhysicsSim(simId) {
 }
 
 // ═══════════════════════════════════════════════════════
+// INTERAKTIVE ARBEITSBLAETTER – direkt von der Themenseite oeffnen
+// Registry: exp-Kennung -> { titel, ns (localStorage-Namespace), html() }
+// ═══════════════════════════════════════════════════════
+const _physAbDefs = {
+  schwingung: { titel: 'Merkmale von Schwingungen', ns: 'schwingung', html: () => _swgArbeitsblattHTML() }
+};
+function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
+function openArbeitsblatt(exp) {
+  const def = _physAbDefs[exp];
+  if (!def) return;
+  closePhysicsSim();
+  const modal = document.createElement('div');
+  modal.id = 'physModal';
+  modal.className = 'sim-overlay';
+  document.body.appendChild(modal);
+  modal.innerHTML = `<div class="sim-box sim-box-wide fpm-sim">
+      <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+      <h3 class="sim-h3">📝 Arbeitsblatt – ${def.titel}</h3>
+      <div class="ab-open-hint">Tipp: Öffne parallel die passende Simulation und bearbeite das Arbeitsblatt Schritt für Schritt. Deine Eingaben werden im Browser gespeichert.</div>
+      <div class="sim-btn-row"><button class="sim-btn primary" onclick="openExperiment('${exp}')">▶ Passende Simulation öffnen</button></div>
+      ${def.html()}
+    </div>`;
+  _abRestore(def.ns);
+}
+
+// ═══════════════════════════════════════════════════════
 // SIMULATIONS-DEFINITIONEN
 // ═══════════════════════════════════════════════════════
 
@@ -34887,6 +34913,8 @@ function _abClear(ns) {
     .ab-table { width:100%; border-collapse:collapse; margin-top:4px; font-size:.8rem; }
     .ab-table td { border:1px solid #ede9fe; padding:5px 7px; color:#475569; }
     .ab-table td:nth-child(odd) { background:#faf5ff; font-weight:600; color:#334155; }
+    .ab-open-hint { font-size:.8rem; color:#6b21a8; background:#faf5ff; border:1px solid #ede9fe;
+      border-radius:9px; padding:8px 11px; margin:0 0 10px; line-height:1.5; }
   `;
   document.head.appendChild(s);
 })();
