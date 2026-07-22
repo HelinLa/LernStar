@@ -229,7 +229,10 @@ const _physAbDefs = {
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
   'magnetpole': { titel: 'Wie wirken Magnetpole aufeinander?', ns: 'magpole', html: () => _mpoArbeitsblattHTML() },
   'magnetfeld': { titel: 'Wie sieht ein Magnetfeld aus?', ns: 'magfeld', html: () => _mffArbeitsblattHTML() },
-  'kompass': { titel: 'Wie funktioniert ein Kompass?', ns: 'kompass', html: () => _komArbeitsblattHTML() }
+  'kompass': { titel: 'Wie funktioniert ein Kompass?', ns: 'kompass', html: () => _komArbeitsblattHTML() },
+  'stromkreis-lampe': { titel: 'Wann leuchtet eine Lampe?', ns: 'lampe', html: () => _lmpArbeitsblattHTML() },
+  'leiter-nichtleiter': { titel: 'Welche Stoffe leiten Strom?', ns: 'leiter', html: () => _leiArbeitsblattHTML() },
+  'schaltplan': { titel: 'Wie zeichnet man einen Stromkreis?', ns: 'schaltplan', html: () => _splArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -341,6 +344,35 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('komAnim', 'komAnim');
     _pSim.start(dt => _komUpdate(dt), (ctx, cv) => _komDraw(ctx, cv), []);
     _abRestore('kompass');
+  },
+
+  // ── 5.2.1 WANN LEUCHTET EINE LAMPE? ────────────────────────────
+  'stromkreis-lampe': modal => {
+    _lmpInit();
+    modal.innerHTML = _lmpHTML();
+    _lmpStatus();
+    _pSim = new PhysicsSimEngine('lmpAnim', 'lmpAnim');
+    _pSim.start(dt => _lmpUpdate(dt), (ctx, cv) => _lmpDraw(ctx, cv), []);
+    _abRestore('lampe');
+  },
+
+  // ── 5.2.2 WELCHE STOFFE LEITEN STROM? ──────────────────────────
+  'leiter-nichtleiter': modal => {
+    _leiInit();
+    modal.innerHTML = _leiHTML();
+    _leiRender();
+    _pSim = new PhysicsSimEngine('leiAnim', 'leiAnim');
+    _pSim.start(dt => _leiUpdate(dt), (ctx, cv) => _leiDraw(ctx, cv), []);
+    _abRestore('leiter');
+  },
+
+  // ── 5.2.3 WIE ZEICHNET MAN EINEN STROMKREIS? ───────────────────
+  'schaltplan': modal => {
+    _splInit();
+    modal.innerHTML = _splHTML();
+    _pSim = new PhysicsSimEngine('splAnim', 'splAnim');
+    _pSim.start(dt => _splUpdate(dt), (ctx, cv) => _splDraw(ctx, cv), []);
+    _abRestore('schaltplan');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -35062,6 +35094,13 @@ function _abClear(ns) {
     .msf-ja { color:#16a34a; } .msf-nein { color:#b45309; }
     .msf-regel { margin-top:10px; font-size:.8rem; line-height:1.5; color:#334155; background:#faf5ff;
       border:1px solid #ede9fe; border-radius:9px; padding:8px 11px; }
+    /* Stromkreis 5.2 */
+    .lmp-status { margin-top:10px; font-size:.82rem; font-weight:700; padding:8px 11px; border-radius:9px;
+      background:#f1f5f9; color:#475569; }
+    .lmp-status.on { background:#dcfce7; color:#15803d; }
+    .lmp-status.off { background:#fef3c7; color:#b45309; }
+    .spl-leg td { font-size:.8rem; }
+    .spl-leg td.spl-sym { text-align:center; font-weight:800; color:#7c3aed; font-size:1rem; letter-spacing:.06em; }
   `;
   document.head.appendChild(s);
 })();
@@ -36832,5 +36871,711 @@ function _komAns(qi, oi) {
 function _komSelf(n) {
   const out = document.getElementById('komSelfOut'), val = document.getElementById('komSelfVal');
   if (val) { val.value = String(n); _abSave('kompass'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 5.2.1  WANN LEUCHTET EINE LAMPE?
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Strom und Magnetismus"
+// Handlungsorientiert: einfacher Stromkreis (Batterie, Kabel,
+// Schalter, Lampe). Schalter öffnen/schließen und ein Kabel
+// unterbrechen. Die Lampe leuchtet nur, wenn der Stromkreis
+// vollständig geschlossen ist. Nur ungefährliche Kleinspannung.
+// ═══════════════════════════════════════════════════════
+
+let _lmp = null;
+function _lmpInit() { _lmp = { closed: true, wireOk: true, t: 0 }; }
+function _lmpOn() { return _lmp.closed && _lmp.wireOk; }
+
+function _lmpHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim lmp-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">💡 Wann leuchtet eine Lampe?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Stromkreis aus Batterie, Kabeln, Schalter und Lampe. Probiere aus: Wann leuchtet die Lampe – und wann nicht? (Nur ungefährliche Batterie-Kleinspannung.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="lmpAnim" width="440" height="260" class="phys-anim-cv"></canvas>
+      </div>
+      <div>
+        <div class="fpm-label">Probiere aus</div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="lmpSw" onclick="_lmpToggle('closed')">🔘 Schalter: <span id="lmpSwT">geschlossen</span></button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="lmpWi" onclick="_lmpToggle('wireOk')">🔌 Kabel: <span id="lmpWiT">heil</span></button>
+        </div>
+        <div class="lmp-status" id="lmpStatus"></div>
+        <div class="fpm-tablewrap" style="margin-top:10px">
+          <table class="sim-table">
+            <thead><tr><th>Schalter</th><th>Kabel</th><th>Lampe</th></tr></thead>
+            <tbody>
+              <tr><td>geschlossen</td><td>heil</td><td><b class="msf-ja">leuchtet</b></td></tr>
+              <tr><td>offen</td><td>heil</td><td><b class="msf-nein">aus</b></td></tr>
+              <tr><td>geschlossen</td><td>unterbrochen</td><td><b class="msf-nein">aus</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Die Lampe leuchtet nur im <b>geschlossenen Stromkreis</b>. &nbsp;|&nbsp; Schon eine einzige Unterbrechung stoppt den Strom.
+    </p>
+    ${_lmpArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _lmpToggle(k) {
+  _lmp[k] = !_lmp[k];
+  const on = _lmp.closed, wi = _lmp.wireOk;
+  const swT = document.getElementById('lmpSwT'); if (swT) swT.textContent = on ? 'geschlossen' : 'offen';
+  const wiT = document.getElementById('lmpWiT'); if (wiT) wiT.textContent = wi ? 'heil' : 'unterbrochen';
+  document.getElementById('lmpSw')?.classList.toggle('primary', on);
+  document.getElementById('lmpWi')?.classList.toggle('primary', wi);
+  _lmpStatus();
+}
+function _lmpStatus() {
+  const el = document.getElementById('lmpStatus'); if (!el) return;
+  if (_lmpOn()) { el.textContent = '✓ Stromkreis geschlossen → die Lampe leuchtet!'; el.className = 'lmp-status on'; }
+  else if (!_lmp.closed) { el.textContent = '✗ Schalter offen → kein Strom → Lampe aus.'; el.className = 'lmp-status off'; }
+  else { el.textContent = '✗ Kabel unterbrochen → kein Strom → Lampe aus.'; el.className = 'lmp-status off'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _lmpUpdate(dt) { if (_lmp) _lmp.t += dt; }
+function _lmpDraw(ctx, cv) {
+  if (!_lmp) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const L = 70, R = W - 70, T = 55, B = H - 55, on = _lmpOn();
+  // Leitung (Rechteck)
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4;
+  ctx.strokeRect(L, T, R - L, B - T);
+  // Stromfluss (animierte Striche) nur wenn geschlossen
+  if (on) {
+    ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3;
+    ctx.setLineDash([9, 9]); ctx.lineDashOffset = -(_lmp.t * 70) % 18;
+    ctx.strokeRect(L, T, R - L, B - T);
+    ctx.setLineDash([]); ctx.lineDashOffset = 0;
+  }
+  const cx = (L + R) / 2, cy = (T + B) / 2;
+  // Batterie (unten)
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(cx - 30, B - 12, 60, 24);
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(cx - 8, B - 14); ctx.lineTo(cx - 8, B + 14); ctx.stroke();  // langer Strich +
+  ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.moveTo(cx + 8, B - 8); ctx.lineTo(cx + 8, B + 8); ctx.stroke();     // kurzer Strich −
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Batterie', cx, B + 26);
+  // Schalter (rechts)
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(R - 10, cy - 22, 20, 44);
+  ctx.fillStyle = '#334155';
+  ctx.beginPath(); ctx.arc(R, cy + 18, 3, 0, 2 * Math.PI); ctx.arc(R, cy - 18, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = _lmp.closed ? '#16a34a' : '#dc2626'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(R, cy + 18);
+  if (_lmp.closed) ctx.lineTo(R, cy - 18); else ctx.lineTo(R + 16, cy - 12);
+  ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Schalter', R + 6, cy + 30);
+  // Kabel-Unterbrechung (links)
+  if (!_lmp.wireOk) {
+    ctx.fillStyle = '#f8fafc'; ctx.fillRect(L - 4, cy - 14, 8, 28);
+    ctx.fillStyle = '#dc2626';
+    ctx.beginPath(); ctx.arc(L, cy - 12, 3, 0, 2 * Math.PI); ctx.arc(L, cy + 12, 3, 0, 2 * Math.PI); ctx.fill();
+    ctx.font = '9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('Bruch', L - 6, cy);
+  }
+  // Lampe (oben)
+  const lr = 16;
+  if (on) {
+    ctx.fillStyle = 'rgba(250,204,21,0.35)';
+    ctx.beginPath(); ctx.arc(cx, T, lr + 12, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = on ? '#fde047' : '#e2e8f0';
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(cx, T, lr, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = on ? '#b45309' : '#94a3b8'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(cx - 8, T - 8); ctx.lineTo(cx + 8, T + 8); ctx.moveTo(cx + 8, T - 8); ctx.lineTo(cx - 8, T + 8); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Lampe', cx, T - lr - 16);
+  // Statuszeile
+  ctx.fillStyle = on ? '#16a34a' : '#b45309'; ctx.font = '700 13px sans-serif';
+  ctx.fillText(on ? 'Lampe leuchtet 💡' : 'Lampe aus', cx, cy + 5);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.2.1  (ns = 'lampe') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _lmpArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('lampe')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('lampe')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wann leuchtet eine Lampe im Stromkreis – und wann bleibt sie dunkel?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, die Lampe leuchtet, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Öffne und schließe den <b>Schalter</b>. Was macht die Lampe?</li>
+          <li>Schließe den Schalter und <b>unterbrich</b> dann das Kabel. Was passiert?</li>
+          <li>Trage deine Beobachtungen in die Tabelle ein.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Schalter geschlossen, Kabel heil</td><td>${inp('t1', 'leuchtet/aus')}</td></tr>
+          <tr><td>Schalter offen, Kabel heil</td><td>${inp('t2', 'leuchtet/aus')}</td></tr>
+          <tr><td>Schalter geschlossen, Kabel unterbrochen</td><td>${inp('t3', 'leuchtet/aus')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne den Stromkreis mit Batterie, Kabel, Schalter und Lampe.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was muss erfüllt sein, damit die Lampe leuchtet? ${inp('a1', 'der Stromkreis muss …')}</li>
+          <li>Reicht eine einzige Unterbrechung, damit die Lampe ausgeht? ${inp('a2', 'ja/nein')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ein Stromkreis braucht eine ${inp('m1', 'Energie…?')}, ${inp('m2', 'was zum Verbinden?')} und einen Verbraucher (die Lampe).<br>
+        Strom fließt nur, wenn der Stromkreis ${inp('m3', 'offen/geschlossen')} ist.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Wenn du zu Hause das Licht mit dem Lichtschalter ausmachst – was passiert dabei mit dem Stromkreis?</div>
+        ${ta('tr1', 'Der Lichtschalter …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="lmpMini">${_lmpMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_lmpSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_lmpSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_lmpSelf(3)">😃 sicher</button>
+          <span id="lmpSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="lmpSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Nur „Schalter geschlossen + Kabel heil" → Lampe leuchtet. Jede Unterbrechung (offener Schalter ODER Kabelbruch) → Lampe aus.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Strom fließt nur im geschlossenen Stromkreis: Energiequelle (Batterie) + Leiter (Kabel) + Verbraucher (Lampe), alles leitend verbunden. Ein Schalter unterbricht/schließt den Kreis gezielt.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Ein Kabel genügt" (Ein-Draht-Vorstellung). (2) „Strom wird in der Lampe verbraucht und kommt nicht zurück." (3) „Der Schalter erzeugt den Strom."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Kreis mit dem Finger „ablaufen" lassen; betonen: der Kreis muss ganz herum geschlossen sein; nur Kleinspannung (max. 9 V), nie Steckdose.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: leuchtet / aus / aus. 6.1 „ganz geschlossen sein" · 6.2 „ja". Merksatz: Energiequelle/Batterie · Kabel/Leiter · geschlossen. Transfer: Der Schalter unterbricht den Stromkreis → Lampe aus. Minidiagnose: 1→„im geschlossenen Kreis" · 2→„aus" · 3→„Quelle, Leiter, Verbraucher".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('lampe')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('lampe', 'Wann leuchtet eine Lampe?', body);
+}
+
+const _LMP_MINI = [
+  { q: '1. Wann fließt Strom durch die Lampe?',
+    opts: ['Immer', 'Nur im geschlossenen Stromkreis', 'Nur bei offenem Schalter'], correct: 1,
+    fb: ['Nicht immer – der Kreis muss geschlossen sein.',
+         'Richtig! Strom fließt nur im vollständig geschlossenen Stromkreis.',
+         'Bei offenem Schalter ist der Kreis unterbrochen – kein Strom.'] },
+  { q: '2. Der Schalter ist offen. Was macht die Lampe?',
+    opts: ['Sie leuchtet', 'Sie ist aus', 'Sie blinkt'], correct: 1,
+    fb: ['Offener Schalter unterbricht den Kreis.',
+         'Richtig! Offener Schalter → kein Strom → Lampe aus.',
+         'Sie blinkt nicht – sie bleibt einfach aus.'] },
+  { q: '3. Was gehört mindestens zu einem Stromkreis?',
+    opts: ['Nur eine Batterie', 'Batterie, Leiter und Verbraucher (geschlossen)', 'Nur ein Kabel'], correct: 1,
+    fb: ['Eine Batterie allein reicht nicht.',
+         'Richtig! Energiequelle, Leiter und Verbraucher – geschlossen verbunden.',
+         'Ein Kabel allein ist noch kein Stromkreis.'] }
+];
+function _lmpMiniHTML() {
+  return _LMP_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_lmpAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="lmpFb${qi}"></div></div>`).join('');
+}
+function _lmpAns(qi, oi) {
+  const m = _LMP_MINI[qi], el = document.getElementById('lmpFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _lmpSelf(n) {
+  const out = document.getElementById('lmpSelfOut'), val = document.getElementById('lmpSelfVal');
+  if (val) { val.value = String(n); _abSave('lampe'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 5.2.2  WELCHE STOFFE LEITEN ELEKTRISCHEN STROM?
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Strom und Magnetismus"
+// Handlungsorientiert: In eine Lücke des Stromkreises werden
+// nacheinander Materialien eingesetzt. Leitet der Stoff, leuchtet
+// die Lampe (Leiter); leitet er nicht, bleibt sie aus (Nichtleiter).
+// Sortieren + Regel. Nur ungefährliche Kleinspannung.
+// ═══════════════════════════════════════════════════════
+
+const _LEI_MAT = [
+  { k: 'kupfer',  name: 'Kupfer-Draht',    ic: '🧵', leit: true },
+  { k: 'eisen',   name: 'Eisen-Nagel',     ic: '🔩', leit: true },
+  { k: 'alu',     name: 'Alu-Löffel',      ic: '🥄', leit: true },
+  { k: 'graphit', name: 'Bleistiftmine',   ic: '✏️', leit: true },
+  { k: 'holz',    name: 'Holz-Stab',       ic: '🪵', leit: false },
+  { k: 'plastik', name: 'Plastik-Lineal',  ic: '📏', leit: false },
+  { k: 'glas',    name: 'Glas-Stab',       ic: '🔮', leit: false },
+  { k: 'gummi',   name: 'Radiergummi',     ic: '🧽', leit: false }
+];
+let _lei = null;
+function _leiInit() { _lei = { cur: 0, tested: {}, order: [], t: 0, flash: 0 }; }
+function _leiOn() { const m = _LEI_MAT[_lei.cur]; return _lei.tested[m.k] !== undefined && m.leit; }
+
+function _leiHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim lei-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔌 Welche Stoffe leiten elektrischen Strom?</h3>
+    <div class="fpm-note" style="margin-top:2px">Setze ein Material in die Lücke des Stromkreises. Leuchtet die Lampe? Dann leitet der Stoff (Leiter). Sortiere und finde die Regel. (Nur Batterie-Kleinspannung.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="leiAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="fpm-label" style="margin-top:8px">Klicke ein Material an – es wird in die Lücke gesetzt:</div>
+        <div class="msf-chips" id="leiChips">${_leiChipsHTML()}</div>
+        <div class="sim-btn-row" style="margin-top:6px"><button class="sim-btn" onclick="_leiReset()">🔄 Alles zurücksetzen</button></div>
+      </div>
+      <div>
+        <div class="fpm-label">Beobachtung – deine zwei Gruppen</div>
+        <div class="msf-sort">
+          <div class="msf-col msf-yes"><div class="msf-col-h">💡 Lampe leuchtet – Leiter</div><div id="leiYes"></div></div>
+          <div class="msf-col msf-no"><div class="msf-col-h">🚫 Lampe aus – Nichtleiter</div><div id="leiNo"></div></div>
+        </div>
+        <div class="fpm-tablewrap" style="margin-top:10px">
+          <table class="sim-table">
+            <thead><tr><th>Material</th><th>leitet Strom?</th></tr></thead>
+            <tbody id="leiTbody"></tbody>
+          </table>
+          <div class="fpm-empty" id="leiEmpty">Noch nichts getestet.<br>Klicke oben ein Material an.</div>
+        </div>
+        <div class="msf-regel" id="leiRegel"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Metalle leiten</b> (Kupfer, Eisen, Alu) – auch <b>Graphit</b>. &nbsp;|&nbsp; Holz, Plastik, Glas, Gummi leiten nicht (Nichtleiter/Isolatoren).
+    </p>
+    ${_leiArbeitsblattHTML()}
+  </div>`;
+}
+function _leiChipsHTML() {
+  return _LEI_MAT.map((m, i) => {
+    const t = _lei.tested[m.k];
+    const cls = t === undefined ? '' : (t ? ' yes' : ' no');
+    const mark = t === undefined ? '' : (t ? ' 💡' : ' ✗');
+    return `<button class="msf-chip${cls}${i === _lei.cur ? ' cur' : ''}" onclick="_leiTestMat(${i})">${m.ic} ${m.name}${mark}</button>`;
+  }).join('');
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _leiTestMat(i) {
+  _lei.cur = i; const m = _LEI_MAT[i];
+  if (_lei.tested[m.k] === undefined) _lei.order.push(m.k);
+  _lei.tested[m.k] = m.leit; _lei.flash = 1;
+  _leiRender();
+}
+function _leiReset() {
+  if (_lei.order.length && !confirm('Alle Testergebnisse zurücksetzen?')) return;
+  _lei.tested = {}; _lei.order = []; _leiRender();
+}
+function _leiRender() {
+  const chips = document.getElementById('leiChips'); if (chips) chips.innerHTML = _leiChipsHTML();
+  const yes = document.getElementById('leiYes'), no = document.getElementById('leiNo');
+  const mk = arr => arr.map(k => { const m = _LEI_MAT.find(x => x.k === k); return `<span class="msf-tag">${m.ic} ${m.name}</span>`; }).join('') || '<span class="msf-none">– noch leer –</span>';
+  if (yes) yes.innerHTML = mk(_lei.order.filter(k => _lei.tested[k]));
+  if (no) no.innerHTML = mk(_lei.order.filter(k => !_lei.tested[k]));
+  const tb = document.getElementById('leiTbody'), empty = document.getElementById('leiEmpty');
+  if (empty) empty.style.display = _lei.order.length ? 'none' : 'block';
+  if (tb) tb.innerHTML = _lei.order.map(k => { const m = _LEI_MAT.find(x => x.k === k); return `<tr><td>${m.ic} ${m.name}</td><td><b class="${m.leit ? 'msf-ja' : 'msf-nein'}">${m.leit ? 'Ja' : 'Nein'}</b></td></tr>`; }).join('');
+  const reg = document.getElementById('leiRegel');
+  if (reg) {
+    reg.style.display = 'block';
+    reg.innerHTML = _lei.order.length >= _LEI_MAT.length
+      ? '🎯 <b>Alle getestet!</b> Strom leiten die <b>Metalle</b> (Kupfer, Eisen, Aluminium) und <b>Graphit</b> (Bleistiftmine). Holz, Plastik, Glas und Gummi leiten <b>nicht</b> – das sind Nichtleiter (Isolatoren).'
+      : 'Getestet: ' + _lei.order.length + ' von ' + _LEI_MAT.length + '. Teste alle Materialien und finde die Regel!';
+  }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _leiUpdate(dt) { if (_lei) { _lei.t += dt; _lei.flash = Math.max(0, _lei.flash - dt * 2); } }
+function _leiDraw(ctx, cv) {
+  if (!_lei) return;
+  const W = cv.width, H = cv.height, on = _leiOn();
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const L = 60, R = W - 60, T = 45, B = H - 55;
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4; ctx.strokeRect(L, T, R - L, B - T);
+  if (on) { ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3; ctx.setLineDash([9, 9]); ctx.lineDashOffset = -(_lei.t * 70) % 18; ctx.strokeRect(L, T, R - L, B - T); ctx.setLineDash([]); ctx.lineDashOffset = 0; }
+  const cx = (L + R) / 2;
+  // Batterie unten
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx - 8, B - 14); ctx.lineTo(cx - 8, B + 14); ctx.stroke();
+  ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(cx + 8, B - 8); ctx.lineTo(cx + 8, B + 8); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', cx, B + 26);
+  // Lücke mit Klemmen (oben)
+  const gx1 = cx - 44, gx2 = cx + 44;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(gx1, T - 3, gx2 - gx1, 6);
+  ctx.fillStyle = '#f59e0b'; ctx.fillRect(gx1 - 6, T - 8, 8, 16); ctx.fillRect(gx2 - 2, T - 8, 8, 16);   // Klemmen
+  // Material in der Lücke
+  const m = _LEI_MAT[_lei.cur];
+  ctx.font = '26px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(m.ic, cx, T + 9);
+  ctx.fillStyle = '#334155'; ctx.font = '700 12px sans-serif'; ctx.fillText(m.name, cx, T - 16);
+  // Lampe (rechts)
+  const ly = (T + B) / 2, lx = R, lr = 15;
+  if (on) { ctx.fillStyle = 'rgba(250,204,21,0.35)'; ctx.beginPath(); ctx.arc(lx, ly, lr + 11, 0, 2 * Math.PI); ctx.fill(); }
+  ctx.fillStyle = on ? '#fde047' : '#e2e8f0'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(lx, ly, lr, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = on ? '#b45309' : '#94a3b8'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(lx - 7, ly - 7); ctx.lineTo(lx + 7, ly + 7); ctx.moveTo(lx + 7, ly - 7); ctx.lineTo(lx - 7, ly + 7); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.fillText('Lampe', lx, ly + lr + 16);
+  // Ergebnis
+  ctx.textAlign = 'left'; ctx.font = '700 13px sans-serif';
+  if (_lei.tested[m.k] === undefined) { ctx.fillStyle = '#94a3b8'; ctx.fillText('Klicke ein Material an', L, T - 20); }
+  else if (m.leit) { ctx.fillStyle = '#16a34a'; ctx.fillText('→ Lampe leuchtet: Leiter', L, T - 20); }
+  else { ctx.fillStyle = '#b45309'; ctx.fillText('→ Lampe aus: Nichtleiter', L, T - 20); }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.2.2  (ns = 'leiter') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _leiArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('leiter')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('leiter')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Welche Stoffe leiten elektrischen Strom – und welche nicht?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, Strom leiten: …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Setze nacheinander <b>jedes</b> Material in die Lücke des Stromkreises.</li>
+          <li>Beobachte: Leuchtet die Lampe (Leiter) oder nicht (Nichtleiter)?</li>
+          <li>Trage dein Ergebnis in die Tabelle ein.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Kupfer-Draht</td><td>${inp('e_kupfer', 'Ja/Nein')}</td><td>Holz-Stab</td><td>${inp('e_holz', 'Ja/Nein')}</td></tr>
+          <tr><td>Eisen-Nagel</td><td>${inp('e_eisen', 'Ja/Nein')}</td><td>Plastik-Lineal</td><td>${inp('e_plastik', 'Ja/Nein')}</td></tr>
+          <tr><td>Alu-Löffel</td><td>${inp('e_alu', 'Ja/Nein')}</td><td>Glas-Stab</td><td>${inp('e_glas', 'Ja/Nein')}</td></tr>
+          <tr><td>Bleistiftmine</td><td>${inp('e_graphit', 'Ja/Nein')}</td><td>Radiergummi</td><td>${inp('e_gummi', 'Ja/Nein')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne den Stromkreis mit der Lücke und einem Material, das die Lampe zum Leuchten bringt.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was haben die Leiter gemeinsam? ${inp('a1', 'sie sind meistens …')}</li>
+          <li>Die Bleistiftmine ist kein Metall. Leitet sie trotzdem? ${inp('a2', 'ja/nein')}</li>
+          <li>Warum ist ein Stromkabel innen aus Metall und außen aus Plastik? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t"><b>Leiter</b> lassen Strom durch – dazu gehören die ${inp('m1', 'welche Stoffgruppe?')} und Graphit.<br>
+        <b>Nichtleiter</b> (Isolatoren) lassen keinen Strom durch, z. B. ${inp('m2', 'nenne 2')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum sind Werkzeuge für Elektriker am Griff mit Kunststoff überzogen?</div>
+        ${ta('tr1', 'Der Kunststoffgriff …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="leiMini">${_leiMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_leiSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_leiSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_leiSelf(3)">😃 sicher</button>
+          <span id="leiSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="leiSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Leiter (Lampe an): Kupfer, Eisen, Alu, Graphit. Nichtleiter (Lampe aus): Holz, Plastik, Glas, Gummi.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Metalle leiten dank frei beweglicher Elektronen. Graphit (Kohlenstoff) leitet ebenfalls – wichtige nichtmetallische Ausnahme. Nichtleiter/Isolatoren haben kaum frei bewegliche Ladungsträger.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Alles Harte/Glänzende leitet." (2) „Nur Metalle leiten" (Graphit als Gegenbeispiel). (3) „Plastik leitet ein bisschen."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Erst vermuten, dann testen; Graphit gezielt thematisieren; Bezug Kabel = Leiter innen + Isolator außen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 „Metalle" · 6.2 „ja" · 6.3 „Metall leitet den Strom, Plastik isoliert und schützt". Merksatz: Metalle · z. B. Holz, Plastik. Transfer: Der Kunststoff isoliert und schützt vor Stromschlag. Minidiagnose: 1→Kupfer · 2→„weil Plastik nicht leitet (isoliert)" · 3→„ja".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('leiter')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('leiter', 'Welche Stoffe leiten Strom?', body);
+}
+
+const _LEI_MINI = [
+  { q: '1. Welches Material leitet den Strom?',
+    opts: ['Plastik', 'Kupfer', 'Glas'], correct: 1,
+    fb: ['Plastik leitet nicht – es ist ein Isolator.',
+         'Richtig! Kupfer ist ein Metall und leitet sehr gut.',
+         'Glas leitet keinen Strom.'] },
+  { q: '2. Warum ist die Isolierung eines Kabels aus Plastik?',
+    opts: ['Weil Plastik leitet', 'Weil Plastik nicht leitet und schützt', 'Weil es bunt ist'], correct: 1,
+    fb: ['Plastik leitet gerade nicht.',
+         'Richtig! Plastik isoliert – es schützt vor dem Strom.',
+         'Die Farbe ist nicht der Grund.'] },
+  { q: '3. Leitet eine Bleistiftmine (Graphit) den Strom?',
+    opts: ['Ja', 'Nein', 'Nur wenn sie nass ist'], correct: 0,
+    fb: ['Richtig! Graphit leitet – obwohl es kein Metall ist.',
+         'Doch, Graphit ist eine leitende Ausnahme.',
+         'Nass sein muss sie dafür nicht.'] }
+];
+function _leiMiniHTML() {
+  return _LEI_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_leiAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="leiFb${qi}"></div></div>`).join('');
+}
+function _leiAns(qi, oi) {
+  const m = _LEI_MINI[qi], el = document.getElementById('leiFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _leiSelf(n) {
+  const out = document.getElementById('leiSelfOut'), val = document.getElementById('leiSelfVal');
+  if (val) { val.value = String(n); _abSave('leiter'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 5.2.3  WIE ZEICHNET MAN EINEN STROMKREIS?  (Schaltzeichen)
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Strom und Magnetismus"
+// Handlungsorientiert: derselbe Stromkreis in zwei Ansichten –
+// echtes Bild (Aufbau) und Schaltplan. Umschalten, Schalter
+// betätigen (beide Ansichten reagieren gleich) und die
+// Schaltzeichen den Bauteilen zuordnen.
+// ═══════════════════════════════════════════════════════
+
+let _spl = null;
+function _splInit() { _spl = { view: 'real', closed: true, t: 0 }; }
+
+function _splHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim spl-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">✏️ Wie zeichnet man einen Stromkreis?</h3>
+    <div class="fpm-note" style="margin-top:2px">Derselbe Stromkreis – einmal als echtes Bild, einmal als <b>Schaltplan</b> mit Schaltzeichen. Schalte um und betätige den Schalter. Beide Ansichten reagieren gleich.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="splAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_spl.view === 'real' ? ' primary' : ''}" id="splVR" onclick="_splSetView('real')">📷 Aufbau (Bild)</button>
+          <button class="sim-btn${_spl.view === 'plan' ? ' primary' : ''}" id="splVP" onclick="_splSetView('plan')">📐 Schaltplan</button>
+          <button class="sim-btn primary" id="splSw" onclick="_splToggleSw()">🔘 Schalter</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Legende – die wichtigsten Schaltzeichen</div>
+        <table class="sim-table spl-leg"><tbody>
+          <tr><td>Batterie / Stromquelle</td><td class="spl-sym">⎓ ⊣⊢</td></tr>
+          <tr><td>Lampe</td><td class="spl-sym">⊗</td></tr>
+          <tr><td>Schalter</td><td class="spl-sym">╱</td></tr>
+          <tr><td>Leitung (Kabel)</td><td class="spl-sym">─────</td></tr>
+        </tbody></table>
+        <div class="fpm-label" style="margin-top:10px">Zuordnungsspiel – welches Zeichen gehört wozu?</div>
+        <div id="splZuo">${_splZuoHTML()}</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Ein <b>Schaltplan</b> zeigt jedes Bauteil als einfaches <b>Schaltzeichen</b> – so kann jeder den Stromkreis gleich verstehen und nachbauen.
+    </p>
+    ${_splArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _splSetView(v) {
+  _spl.view = v;
+  document.getElementById('splVR')?.classList.toggle('primary', v === 'real');
+  document.getElementById('splVP')?.classList.toggle('primary', v === 'plan');
+}
+function _splToggleSw() { _spl.closed = !_spl.closed; document.getElementById('splSw')?.classList.toggle('primary', _spl.closed); }
+
+// ── Zuordnungsspiel ────────────────────────────────────
+const _SPL_ZUO = [
+  { q: 'Die LAMPE zeichnet man als …', opts: ['Kreis mit Kreuz ⊗', 'langer + kurzer Strich', 'Linie mit Knick'], correct: 0,
+    fb: ['Richtig! Die Lampe ist ein Kreis mit einem Kreuz.', 'Das ist die Batterie.', 'Das ist der Schalter.'] },
+  { q: 'Die BATTERIE zeichnet man als …', opts: ['Kreis mit Kreuz', 'langer + kurzer Strich ⊣⊢', 'gerade Linie'], correct: 1,
+    fb: ['Das ist die Lampe.', 'Richtig! Ein langer und ein kurzer Strich sind die Batterie.', 'Das ist eine Leitung.'] },
+  { q: 'Der SCHALTER zeichnet man als …', opts: ['gerade Linie', 'Kreis mit Kreuz', 'Linie, die aufklappt ╱'], correct: 2,
+    fb: ['Das ist eine einfache Leitung.', 'Das ist die Lampe.', 'Richtig! Der Schalter ist eine Linie, die sich öffnen lässt.'] },
+  { q: 'Ein KABEL (Leitung) zeichnet man als …', opts: ['gerade Linie ─', 'Kreis mit Kreuz', 'langer + kurzer Strich'], correct: 0,
+    fb: ['Richtig! Eine Leitung ist einfach eine gerade Linie.', 'Das ist die Lampe.', 'Das ist die Batterie.'] }
+];
+function _splZuoHTML() {
+  return _SPL_ZUO.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_splAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="splFb${qi}"></div></div>`).join('');
+}
+function _splAns(qi, oi) {
+  const m = _SPL_ZUO[qi], el = document.getElementById('splFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+
+// ── Animation ──────────────────────────────────────────
+function _splUpdate(dt) { if (_spl) _spl.t += dt; }
+function _splDraw(ctx, cv) {
+  if (!_spl) return;
+  const W = cv.width, H = cv.height, on = _spl.closed;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const L = 80, R = W - 80, T = 55, B = H - 50, cx = (L + R) / 2, cy = (T + B) / 2;
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4; ctx.strokeRect(L, T, R - L, B - T);
+  if (on) { ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3; ctx.setLineDash([9, 9]); ctx.lineDashOffset = -(_spl.t * 70) % 18; ctx.strokeRect(L, T, R - L, B - T); ctx.setLineDash([]); ctx.lineDashOffset = 0; }
+  ctx.fillStyle = '#475569'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_spl.view === 'real' ? 'Aufbau (echtes Bild)' : 'Schaltplan', L, 24);
+
+  // Batterie unten
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(cx - 34, B - 16, 68, 32);
+  if (_spl.view === 'plan') {
+    ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx - 7, B - 14); ctx.lineTo(cx - 7, B + 14); ctx.stroke();
+    ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(cx + 7, B - 8); ctx.lineTo(cx + 7, B + 8); ctx.stroke();
+  } else {
+    ctx.fillStyle = '#334155'; ctx.fillRect(cx - 24, B - 11, 48, 22);
+    ctx.fillStyle = '#facc15'; ctx.fillRect(cx + 24, B - 4, 4, 8);
+    ctx.fillStyle = '#fff'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('+  −', cx, B + 4);
+  }
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', cx, B + 28);
+
+  // Lampe oben
+  const lr = 15;
+  if (on) { ctx.fillStyle = 'rgba(250,204,21,0.35)'; ctx.beginPath(); ctx.arc(cx, T, lr + 11, 0, 2 * Math.PI); ctx.fill(); }
+  ctx.fillStyle = on ? '#fde047' : '#e2e8f0'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(cx, T, lr, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  if (_spl.view === 'plan') {
+    ctx.strokeStyle = on ? '#b45309' : '#94a3b8'; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.moveTo(cx - 8, T - 8); ctx.lineTo(cx + 8, T + 8); ctx.moveTo(cx + 8, T - 8); ctx.lineTo(cx - 8, T + 8); ctx.stroke();
+  } else {
+    ctx.fillStyle = '#94a3b8'; ctx.fillRect(cx - 5, T + lr - 2, 10, 6);   // Sockel
+    ctx.strokeStyle = on ? '#b45309' : '#cbd5e1'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(cx - 5, T); ctx.lineTo(cx, T - 5); ctx.lineTo(cx + 5, T); ctx.stroke();  // Glühfaden
+  }
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.fillText('Lampe', cx, T - lr - 14);
+
+  // Schalter rechts
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(R - 10, cy - 22, 20, 44);
+  ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.arc(R, cy + 18, 3, 0, 2 * Math.PI); ctx.arc(R, cy - 18, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = on ? '#16a34a' : '#dc2626'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(R, cy + 18); if (on) ctx.lineTo(R, cy - 18); else ctx.lineTo(R + 16, cy - 12); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Schalter', R + 6, cy + 30);
+
+  ctx.fillStyle = on ? '#16a34a' : '#b45309'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(on ? 'geschlossen – Lampe leuchtet' : 'offen – Lampe aus', cx, cy + 4);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.2.3  (ns = 'schaltplan') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _splArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('schaltplan')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('schaltplan')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie kann man einen Stromkreis so aufzeichnen, dass ihn jeder versteht und nachbauen kann?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, im Schaltplan zeichnet man die Bauteile als …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Schalte zwischen <b>Aufbau</b> und <b>Schaltplan</b> um. Vergleiche die Bauteile.</li>
+          <li>Betätige den Schalter. Reagieren beide Ansichten gleich?</li>
+          <li>Ordne im Zuordnungsspiel die Schaltzeichen den Bauteilen zu.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Schaltzeichen eintragen</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Batterie</td><td>${inp('z_bat', 'Zeichen?')}</td><td>Lampe</td><td>${inp('z_lam', 'Zeichen?')}</td></tr>
+          <tr><td>Schalter</td><td>${inp('z_sch', 'Zeichen?')}</td><td>Leitung</td><td>${inp('z_lei', 'Zeichen?')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze – zeichne den Schaltplan</div>
+        <div class="ab-t">Zeichne den kompletten Stromkreis als Schaltplan: Batterie, Leitung, Schalter und Lampe – schön mit dem Lineal.</div>
+        <div class="ab-skizze">Platz für deinen Schaltplan</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Warum benutzt man Schaltzeichen statt echter Bilder? ${inp('a1', 'weil …')}</li>
+          <li>Reagieren Aufbau und Schaltplan beim Schalten gleich? ${inp('a2', 'ja/nein')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ein <b>Schaltplan</b> zeigt jedes Bauteil als einfaches ${inp('m1', 'was?')}.<br>
+        Die Lampe wird als ${inp('m2', 'Zeichen?')} gezeichnet, die Batterie als ${inp('m3', 'Zeichen?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum ist es praktisch, dass Schaltpläne auf der ganzen Welt die gleichen Zeichen benutzen?</div>
+        ${ta('tr1', 'Gleiche Zeichen sind praktisch, weil …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="splMini">${_splMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_splSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_splSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_splSelf(3)">😃 sicher</button>
+          <span id="splSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="splSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Beide Ansichten zeigen denselben Kreis; beim Öffnen des Schalters geht in beiden die Lampe aus. Zuordnung: Lampe ⊗, Batterie ⊣⊢ (langer/kurzer Strich), Schalter aufklappende Linie, Leitung gerade Linie.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Genormte Schaltzeichen (Batterie/Stromquelle, Lampe, Schalter, Leitung) machen Schaltpläne eindeutig und international lesbar. Der Schaltplan ist ein Modell des realen Aufbaus.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Schaltplan muss wie ein Foto aussehen." (2) Batterie- und Lampenzeichen werden verwechselt. (3) „Leitungen darf man kreuz und quer zeichnen" – besser rechtwinklig/ordentlich.</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Aufbau und Schaltplan direkt nebeneinander betrachten; Legende nutzen; mit Lineal zeichnen lassen; Bauteil für Bauteil zuordnen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Batterie ⊣⊢ · Lampe ⊗ · Schalter aufklappende Linie · Leitung gerade Linie. 6.1 „weil sie überall gleich und einfach sind" · 6.2 „ja". Merksatz: Schaltzeichen · ⊗ · ⊣⊢. Transfer: Jeder kann den Plan lesen und nachbauen, egal welche Sprache. Minidiagnose: 1→⊗ Lampe · 2→„beide gleich" · 3→„damit jeder ihn versteht/nachbauen kann".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('schaltplan')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('schaltplan', 'Wie zeichnet man einen Stromkreis?', body);
+}
+
+const _SPL_MINI = [
+  { q: '1. Ein Kreis mit einem Kreuz (⊗) – welches Bauteil ist das?',
+    opts: ['Die Lampe', 'Die Batterie', 'Der Schalter'], correct: 0,
+    fb: ['Richtig! ⊗ ist das Schaltzeichen der Lampe.', 'Die Batterie ist ein langer + kurzer Strich.', 'Der Schalter ist eine aufklappende Linie.'] },
+  { q: '2. Du schaltest von „Aufbau" auf „Schaltplan" um. Was ist gleich?',
+    opts: ['Es ist ein ganz anderer Stromkreis', 'Es ist derselbe Kreis, nur anders gezeichnet', 'Die Lampe fehlt im Schaltplan'], correct: 1,
+    fb: ['Nein, es ist derselbe Stromkreis.', 'Richtig! Gleicher Kreis, zwei Darstellungen.', 'Die Lampe ist in beiden Ansichten da.'] },
+  { q: '3. Warum benutzt man einen Schaltplan?',
+    opts: ['Damit es hübsch aussieht', 'Damit jeder den Kreis versteht und nachbauen kann', 'Weil man nicht malen kann'], correct: 1,
+    fb: ['Nicht nur wegen des Aussehens.', 'Richtig! Genormte Zeichen sind eindeutig und überall verständlich.', 'Es geht um Klarheit, nicht ums Malen.'] }
+];
+function _splMiniHTML() {
+  return _SPL_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_splMAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="splMFb${qi}"></div></div>`).join('');
+}
+function _splMAns(qi, oi) {
+  const m = _SPL_MINI[qi], el = document.getElementById('splMFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _splSelf(n) {
+  const out = document.getElementById('splSelfOut'), val = document.getElementById('splSelfVal');
+  if (val) { val.value = String(n); _abSave('schaltplan'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
