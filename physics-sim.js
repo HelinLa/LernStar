@@ -285,7 +285,10 @@ const _physAbDefs = {
   'stromstaerke': { titel: 'Was ist der elektrische Strom (Stromstärke)?', ns: 'stromstaerke', html: () => _staArbeitsblattHTML() },
   'spannung': { titel: 'Was ist die elektrische Spannung?', ns: 'spannung', html: () => _spnArbeitsblattHTML() },
   'messen': { titel: 'Wie misst man Stromstärke und Spannung?', ns: 'messen', html: () => _msnArbeitsblattHTML() },
-  'stromabhaengigkeit': { titel: 'Wovon hängt die Stromstärke ab?', ns: 'stromabh', html: () => _sabArbeitsblattHTML() }
+  'stromabhaengigkeit': { titel: 'Wovon hängt die Stromstärke ab?', ns: 'stromabh', html: () => _sabArbeitsblattHTML() },
+  'widerstand': { titel: 'Was ist ein elektrischer Widerstand?', ns: 'widerstand', html: () => _widArbeitsblattHTML() },
+  'ohm-kennlinie': { titel: 'Das Ohmsche Gesetz – die U-I-Kennlinie', ns: 'ohmgesetz', html: () => _ohgArbeitsblattHTML() },
+  'draht': { titel: 'Wovon hängt der Widerstand eines Drahtes ab?', ns: 'draht', html: () => _drtArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -955,6 +958,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('sabAnim', 'sabAnim');
     _pSim.start(dt => _sabUpdate(dt), (ctx, cv) => _sabDraw(ctx, cv), []);
     _abRestore('stromabh');
+  },
+
+  // ── 8.2.1 ELEKTRISCHER WIDERSTAND ──────────────────────────────
+  'widerstand': modal => {
+    _widInit();
+    modal.innerHTML = _widHTML();
+    _widStatus();
+    _pSim = new PhysicsSimEngine('widAnim', 'widAnim');
+    _pSim.start(dt => _widUpdate(dt), (ctx, cv) => _widDraw(ctx, cv), []);
+    _abRestore('widerstand');
+  },
+
+  // ── 8.2.2 OHMSCHES GESETZ (U-I-KENNLINIE) ──────────────────────
+  'ohm-kennlinie': modal => {
+    _ohgInit();
+    modal.innerHTML = _ohgHTML();
+    _ohgStatus();
+    _pSim = new PhysicsSimEngine('ohgAnim', 'ohgAnim');
+    _pSim.start(dt => _ohgUpdate(dt), (ctx, cv) => _ohgDraw(ctx, cv), []);
+    _abRestore('ohmgesetz');
+  },
+
+  // ── 8.2.3 WIDERSTAND EINES DRAHTES ─────────────────────────────
+  'draht': modal => {
+    _drtInit();
+    modal.innerHTML = _drtHTML();
+    _drtStatus();
+    _pSim = new PhysicsSimEngine('drtAnim', 'drtAnim');
+    _pSim.start(dt => _drtUpdate(dt), (ctx, cv) => _drtDraw(ctx, cv), []);
+    _abRestore('draht');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -49347,5 +49380,661 @@ function _sabAns(qi, oi) {
 function _sabSelf(n) {
   const out = document.getElementById('sabSelfOut'), val = document.getElementById('sabSelfVal');
   if (val) { val.value = String(n); _abSave('stromabh'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══ KAPITEL 8.2 WIDERSTAND – Batch 1 (8.2.1/8.2.2/8.2.3) – Kleinspannung ═══
+// ═══════════════════════════════════════════════════════
+// 8.2.1  WAS IST EIN ELEKTRISCHER WIDERSTAND?
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: Bei gleicher Spannung hemmt ein größerer
+// Widerstand den Strom. R = U/I, Einheit Ohm (Ω).
+// Nur ungefährliche Kleinspannung (4,5 V).
+// ═══════════════════════════════════════════════════════
+let _wid = null;
+const _WID_TEILE = {
+  klein: { name: 'dicker Kupferdraht', R: 3 },
+  mittel: { name: 'Glühdraht', R: 15 },
+  gross: { name: 'Widerstandsdraht', R: 45 }
+};
+const _WID_U = 4.5;
+function _widInit() { _wid = { teil: 'mittel', t: 0, phase: 0 }; }
+function _widI() { return _WID_U / _WID_TEILE[_wid.teil].R; }
+
+function _widHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim wid-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🚧 Was ist ein elektrischer Widerstand?</h3>
+    <div class="fpm-note" style="margin-top:2px">Die Spannung bleibt gleich (4,5&nbsp;V). Baue verschiedene Bauteile ein und beobachte den Strom. Was macht ein großer Widerstand mit dem Strom? (Nur ungefährliche Kleinspannung.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="widAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_wid.teil === 'klein' ? ' primary' : ''}" id="widTklein" onclick="_widSet('klein')">kleiner Widerstand</button>
+          <button class="sim-btn${_wid.teil === 'mittel' ? ' primary' : ''}" id="widTmittel" onclick="_widSet('mittel')">mittel</button>
+          <button class="sim-btn${_wid.teil === 'gross' ? ' primary' : ''}" id="widTgross" onclick="_widSet('gross')">großer Widerstand</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_widReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Widerstand &amp; Strom</div>
+        <div class="lmp-status" id="widStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Jedes Bauteil setzt dem Strom einen <b>Widerstand</b> entgegen. Bei gleicher Spannung gilt: <b>großer Widerstand → kleiner Strom</b>. Man berechnet ihn aus Spannung und Stromstärke: <b>R = U / I</b>. Einheit: <b>Ohm (Ω)</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Gleiche Spannung, größerer Widerstand → <b>weniger Strom</b>. &nbsp;|&nbsp; R = U/I, Einheit <b>Ohm (Ω)</b>.
+    </p>
+    ${_widArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _widSet(t) { _wid.teil = t; Object.keys(_WID_TEILE).forEach(k => document.getElementById('widT' + k)?.classList.toggle('primary', k === t)); _widStatus(); }
+function _widReset() { _widInit(); _widSet('mittel'); _widStatus(); }
+function _widStatus() {
+  const el = document.getElementById('widStatus'); if (!el) return;
+  const teil = _WID_TEILE[_wid.teil], I = _widI();
+  el.textContent = `${teil.name}: Widerstand R = ${teil.R} Ω. Bei U = 4,5 V fließt I = ${I.toFixed(2).replace('.', ',')} A. Größerer Widerstand → kleinerer Strom (R = U/I).`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _widUpdate(dt) { if (_wid) { _wid.t += dt; _wid.phase += (10 + _widI() * 60) * dt; } }
+function _widDraw(ctx, cv) {
+  if (!_wid) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const L = 40, R = W - 40, T = 50, B = H - 44;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4; ctx.beginPath(); ctx.rect(L, T, R - L, B - T); ctx.stroke();
+  const teil = _WID_TEILE[_wid.teil];
+
+  // Batterie unten
+  const bx = (L + R) / 2, by = B; ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(bx - 14, by - 8); ctx.lineTo(bx - 14, by + 8); ctx.moveTo(bx, by - 14); ctx.lineTo(bx, by + 14); ctx.stroke();
+  ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('4,5 V', bx - 7, by + 26);
+
+  // Widerstands-Bauteil oben (Rechteck, Dicke der Füllung ~ R)
+  const wx0 = (L + R) / 2 - 40, wy = T, ww = 80, wh = 16;
+  ctx.fillStyle = _wid.teil === 'klein' ? '#f59e0b' : (_wid.teil === 'mittel' ? '#fb923c' : '#ef4444');
+  ctx.fillRect(wx0, wy - wh / 2, ww, wh);
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.strokeRect(wx0, wy - wh / 2, ww, wh);
+  ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.fillText('R = ' + teil.R + ' Ω', (L + R) / 2, wy - 14);
+  ctx.fillStyle = '#cbd5e1'; ctx.font = '9px sans-serif'; ctx.fillText(teil.name, (L + R) / 2, wy + 20);
+
+  // Amperemeter rechts
+  const amx = R, amy = (T + B) / 2; ctx.fillStyle = '#0b1020'; ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(amx, amy, 16, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#38bdf8'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('A', amx, amy + 5);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.fillText(_widI().toFixed(2).replace('.', ',') + ' A', amx - 36, amy + 4);
+
+  // Ladungen, Tempo/Dichte ~ I
+  const n = Math.max(4, Math.round(_widI() * 14)), per = 2 * ((R - L) + (B - T));
+  for (let i = 0; i < n; i++) {
+    let d = (_wid.phase + i * per / n) % per, x, y;
+    if (d < (R - L)) { x = L + d; y = T; }
+    else if (d < (R - L) + (B - T)) { x = R; y = T + (d - (R - L)); }
+    else if (d < 2 * (R - L) + (B - T)) { x = R - (d - (R - L) - (B - T)); y = B; }
+    else { x = L; y = B - (d - 2 * (R - L) - (B - T)); }
+    ctx.fillStyle = '#60a5fa'; ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('R = ' + teil.R + ' Ω   →   I = ' + _widI().toFixed(2).replace('.', ',') + ' A', (L + R) / 2, 22);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.2.1  (ns = 'widerstand') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _widArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('widerstand')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('widerstand')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum fließt bei gleicher Spannung durch das eine Bauteil viel Strom und durch ein anderes wenig?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass der Strom kleiner wird, wenn das Bauteil …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Lass die Spannung bei 4,5 V.</li>
+          <li>Baue nacheinander die drei Bauteile ein.</li>
+          <li>Lies jedes Mal die Stromstärke ab und berechne R = U/I.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>kleiner Widerstand</td><td>${inp('b1', 'I = … A')}</td><td>R = U/I</td><td>${inp('c1', '… Ω')}</td></tr>
+          <tr><td>mittel</td><td>${inp('b2', 'I = … A')}</td><td>R = U/I</td><td>${inp('c2', '… Ω')}</td></tr>
+          <tr><td>großer Widerstand</td><td>${inp('b3', 'I = … A')}</td><td>R = U/I</td><td>${inp('c3', '… Ω')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne den Stromkreis mit Batterie, Bauteil (Widerstand) und Amperemeter. Beschrifte R und I.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie wirkt sich ein großer Widerstand auf den Strom aus? ${inp('a1', 'der Strom wird …')}</li>
+          <li>Wie berechnet man den Widerstand? ${inp('a2', 'R = …')}</li>
+          <li>Welche Einheit hat der Widerstand? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Der Widerstand hemmt den Strom. Bei gleicher Spannung gilt: großer Widerstand → ${inp('m1', 'viel/wenig')} Strom.<br>
+        Man berechnet ihn mit R = ${inp('m2', 'Formel')}. Einheit: ${inp('m3', 'welche?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum wird ein dünner Draht in einer Taschenlampe warm, ein dicker Kupferdraht aber kaum? Denke an den Widerstand.</div>
+        ${ta('tr1', 'Der dünne Draht hat einen … Widerstand, deshalb …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="widMini">${_widMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_widSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_widSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_widSelf(3)">😃 sicher</button>
+          <span id="widSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="widSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Bei fester Spannung (4,5 V): kleiner R → großer Strom, großer R → kleiner Strom. Werte: 3 Ω → 1,5 A · 15 Ω → 0,30 A · 45 Ω → 0,10 A. R = U/I ergibt jeweils den Bauteilwert.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Der elektrische Widerstand R ist das Verhältnis R = U/I (Einheit Ohm, Ω = V/A). Er beschreibt, wie stark ein Bauteil den Strom hemmt. Jedes reale Bauteil hat einen Widerstand. (Hier bei konstanter Temperatur betrachtet.)</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Widerstand verbraucht den Strom." (2) „Ein größerer Widerstand macht mehr Strom." (3) „Widerstand wird in Ampere gemessen."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> R = U/I gemeinsam ausrechnen; Einheit Ω = V/A festhalten; Wasser-Analogie (enges Rohr bremst); nur das Bauteil ändern.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 1,5 A/3 Ω · 0,30 A/15 Ω · 0,10 A/45 Ω. 6.1 „der Strom wird kleiner" · 6.2 R = U/I · 6.3 Ohm (Ω). Merksatz: wenig · U/I · Ohm (Ω). Transfer: Der dünne Draht hat einen großen Widerstand; dort wird viel elektrische Energie in Wärme umgewandelt, deshalb wird er warm. Minidiagnose: 1→Er hemmt den Strom · 2→Kleiner Strom · 3→Ohm (Ω).</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('widerstand')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('widerstand', 'Was ist ein elektrischer Widerstand?', body);
+}
+
+const _WID_MINI = [
+  { q: '1. Was macht ein elektrischer Widerstand?',
+    opts: ['Er verstärkt den Strom', 'Er hemmt den Strom', 'Er erzeugt Spannung'], correct: 1,
+    fb: ['Verstärken tut er den Strom nicht.',
+         'Richtig! Der Widerstand hemmt (bremst) den Strom.',
+         'Spannung erzeugt die Quelle, nicht der Widerstand.'] },
+  { q: '2. Gleiche Spannung, größerer Widerstand. Wie ist der Strom?',
+    opts: ['Größer', 'Kleiner', 'Gleich'], correct: 1,
+    fb: ['Ein größerer Widerstand macht den Strom nicht größer.',
+         'Richtig! Großer Widerstand → kleiner Strom.',
+         'Der Strom ändert sich sehr wohl.'] },
+  { q: '3. Welche Einheit hat der Widerstand?',
+    opts: ['Ampere (A)', 'Volt (V)', 'Ohm (Ω)'], correct: 2,
+    fb: ['Ampere ist die Einheit der Stromstärke.',
+         'Volt ist die Einheit der Spannung.',
+         'Richtig! Der Widerstand wird in Ohm (Ω) gemessen.'] }
+];
+function _widMiniHTML() {
+  return _WID_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_widAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="widFb${qi}"></div></div>`).join('');
+}
+function _widAns(qi, oi) {
+  const m = _WID_MINI[qi], el = document.getElementById('widFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _widSelf(n) {
+  const out = document.getElementById('widSelfOut'), val = document.getElementById('widSelfVal');
+  if (val) { val.value = String(n); _abSave('widerstand'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.2.2  DAS OHMSCHE GESETZ (U-I-KENNLINIE)
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: Miss bei festem Widerstand die Stromstärke
+// für verschiedene Spannungen. Die Punkte liegen auf einer Geraden
+// durch den Ursprung: I ist proportional zu U, R = U/I bleibt gleich.
+// Nur ungefährliche Kleinspannung.
+// ═══════════════════════════════════════════════════════
+let _ohg = null;
+const _OHG_UVALS = [0, 1.5, 3, 4.5, 6];
+const _OHG_R = { klein: 10, gross: 20 };
+function _ohgInit() { _ohg = { rGr: 'klein', uIdx: 2, rows: [], t: 0 }; }
+function _ohgR() { return _OHG_R[_ohg.rGr]; }
+function _ohgU() { return _OHG_UVALS[_ohg.uIdx]; }
+function _ohgI() { return _ohgU() / _ohgR(); }
+
+function _ohgHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim ohg-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📈 Das Ohmsche Gesetz – die U-I-Kennlinie</h3>
+    <div class="fpm-note" style="margin-top:2px">Stelle bei festem Widerstand verschiedene Spannungen ein und miss die Stromstärke. Trage die Messpunkte ein. Welche Form hat die Kurve? (Nur ungefährliche Kleinspannung.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="ohgAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Widerstand:</span>
+          <button class="sim-btn${_ohg.rGr === 'klein' ? ' primary' : ''}" id="ohgRklein" onclick="_ohgSetR('klein')">10 Ω</button>
+          <button class="sim-btn${_ohg.rGr === 'gross' ? ' primary' : ''}" id="ohgRgross" onclick="_ohgSetR('gross')">20 Ω</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">Spannung:</span>
+          <button class="sim-btn" onclick="_ohgU_(-1)">◀ weniger</button>
+          <button class="sim-btn" onclick="_ohgU_(1)">mehr ▶</button>
+          <button class="sim-btn primary" onclick="_ohgMessen()">📍 Messpunkt</button>
+          <button class="sim-btn" onclick="_ohgClear()">🗑 löschen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Messwerte</div>
+        <div class="lmp-status" id="ohgStatus" style="margin-top:6px"></div>
+        <div id="ohgTable" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:8px">Die Messpunkte liegen auf einer <b>Geraden durch den Ursprung</b>: I ist <b>proportional</b> zu U. Das Verhältnis <b>R = U/I</b> bleibt gleich – das ist das <b>Ohmsche Gesetz</b> (U = R · I).</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Doppelte Spannung → doppelter Strom. &nbsp;|&nbsp; <b>U = R · I</b> &nbsp;·&nbsp; R = U/I bleibt konstant.
+    </p>
+    ${_ohgArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _ohgSetR(r) {
+  _ohg.rGr = r; _ohg.rows = [];
+  document.getElementById('ohgRklein')?.classList.toggle('primary', r === 'klein');
+  document.getElementById('ohgRgross')?.classList.toggle('primary', r === 'gross');
+  _ohgStatus();
+}
+function _ohgU_(d) { _ohg.uIdx = Math.max(0, Math.min(_OHG_UVALS.length - 1, _ohg.uIdx + d)); _ohgStatus(); }
+function _ohgMessen() {
+  const U = _ohgU(), I = _ohgI();
+  if (!_ohg.rows.some(r => r.U === U)) { _ohg.rows.push({ U, I }); _ohg.rows.sort((a, b) => a.U - b.U); }
+  _ohgStatus();
+}
+function _ohgClear() { _ohg.rows = []; _ohgStatus(); }
+function _ohgStatus() {
+  const el = document.getElementById('ohgStatus');
+  if (el) {
+    const U = _ohgU(), I = _ohgI();
+    const rtxt = U > 0 ? ' · R = U/I = ' + _ohgR() + ' Ω' : '';
+    el.textContent = `Eingestellt: U = ${String(U).replace('.', ',')} V → I = ${I.toFixed(2).replace('.', ',')} A${rtxt}. Widerstand fest: ${_ohgR()} Ω.`;
+    el.className = 'lmp-status on';
+  }
+  const tb = document.getElementById('ohgTable');
+  if (tb) tb.innerHTML = _ohgTableHTML();
+}
+function _ohgTableHTML() {
+  if (!_ohg.rows.length) return '<div class="fpm-note" style="margin:0">Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt".</div>';
+  let rows = _ohg.rows.map(r => `<tr><td>${String(r.U).replace('.', ',')} V</td><td>${r.I.toFixed(2).replace('.', ',')} A</td><td>${r.U > 0 ? (r.U / r.I).toFixed(0) + ' Ω' : '—'}</td></tr>`).join('');
+  return `<table class="ab-table" style="margin:0"><tbody><tr><td>U</td><td>I</td><td>R = U/I</td></tr>${rows}</tbody></table>`;
+}
+
+// ── Animation (Plot der Kennlinie) ─────────────────────
+function _ohgUpdate(dt) { if (_ohg) _ohg.t += dt; }
+function _ohgDraw(ctx, cv) {
+  if (!_ohg) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const oxL = 46, oxR = W - 20, oyT = 24, oyB = H - 34;
+  const Umax = 6, Imax = 0.62;
+  const px = u => oxL + (u / Umax) * (oxR - oxL);
+  const py = i => oyB - (i / Imax) * (oyB - oyT);
+  // Achsen
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(oxL, oyT); ctx.lineTo(oxL, oyB); ctx.lineTo(oxR, oyB); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+  for (let u = 0; u <= 6; u += 1.5) { const x = px(u); ctx.strokeStyle = 'rgba(100,116,139,0.25)'; ctx.beginPath(); ctx.moveTo(x, oyT); ctx.lineTo(x, oyB); ctx.stroke(); ctx.fillText(String(u).replace('.', ','), x, oyB + 14); }
+  ctx.textAlign = 'right';
+  for (let i = 0; i <= 0.6; i += 0.2) { const y = py(i); ctx.strokeStyle = 'rgba(100,116,139,0.25)'; ctx.beginPath(); ctx.moveTo(oxL, y); ctx.lineTo(oxR, y); ctx.stroke(); ctx.fillText(i.toFixed(1).replace('.', ','), oxL - 4, y + 3); }
+  ctx.fillStyle = '#cbd5e1'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('U in V', (oxL + oxR) / 2, H - 4);
+  ctx.save(); ctx.translate(12, (oyT + oyB) / 2); ctx.rotate(-Math.PI / 2); ctx.fillText('I in A', 0, 0); ctx.restore();
+
+  // Ideale Kennlinie (Gerade durch Ursprung, Steigung 1/R)
+  const slope = 1 / _ohgR();
+  ctx.strokeStyle = 'rgba(74,222,128,0.55)'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+  ctx.beginPath(); ctx.moveTo(px(0), py(0)); ctx.lineTo(px(Umax), py(Math.min(Imax, Umax * slope))); ctx.stroke(); ctx.setLineDash([]);
+
+  // aktueller Einstellpunkt (offen)
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(px(_ohgU()), py(_ohgI()), 5, 0, 2 * Math.PI); ctx.stroke();
+
+  // Messpunkte
+  ctx.fillStyle = '#38bdf8';
+  _ohg.rows.forEach(r => { ctx.beginPath(); ctx.arc(px(r.U), py(r.I), 4.5, 0, 2 * Math.PI); ctx.fill(); });
+
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('R = ' + _ohgR() + ' Ω', oxR - 78, oyT + 10);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.2.2  (ns = 'ohmgesetz') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _ohgArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('ohmgesetz')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('ohmgesetz')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie hängen Spannung und Stromstärke bei einem festen Widerstand zusammen?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Stromstärke …, wenn ich die Spannung verdopple.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle einen festen Widerstand (z. B. 10 Ω).</li>
+          <li>Stelle nacheinander 1,5 V, 3 V, 4,5 V, 6 V ein und setze je einen Messpunkt.</li>
+          <li>Betrachte die Kennlinie und berechne R = U/I für jede Zeile.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>U = 1,5 V</td><td>${inp('b1', 'I = … A')}</td><td>R = U/I</td><td>${inp('c1', '… Ω')}</td></tr>
+          <tr><td>U = 3 V</td><td>${inp('b2', 'I = … A')}</td><td>R = U/I</td><td>${inp('c2', '… Ω')}</td></tr>
+          <tr><td>U = 4,5 V</td><td>${inp('b3', 'I = … A')}</td><td>R = U/I</td><td>${inp('c3', '… Ω')}</td></tr>
+          <tr><td>U = 6 V</td><td>${inp('b4', 'I = … A')}</td><td>R = U/I</td><td>${inp('c4', '… Ω')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne ein U-I-Diagramm (U waagerecht, I senkrecht) und trage deine Messpunkte ein. Verbinde sie.</div>
+        <div class="ab-skizze">Platz für dein Diagramm</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Welche Form hat die Kennlinie? ${inp('a1', 'eine …')}</li>
+          <li>Was passiert mit I, wenn du U verdoppelst? ${inp('a2', 'I wird …')}</li>
+          <li>Bleibt R = U/I gleich? ${inp('a3', 'ja/nein')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Bei festem Widerstand ist die Stromstärke ${inp('m1', 'wie?')} zur Spannung – die Kennlinie ist eine ${inp('m2', 'welche Linie?')} durch den Ursprung.<br>
+        Es gilt das Ohmsche Gesetz: U = ${inp('m3', 'Formel')}. Das Verhältnis R = U/I bleibt gleich.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Aufgabe)</div>
+        <div class="ab-t">An einem Widerstand liegen 6 V an, es fließen 0,3 A. Wie groß ist R? Und welcher Strom fließt bei 2 V?</div>
+        ${ta('tr1', 'R = U/I = … ; bei 2 V: I = U/R = …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="ohgMini">${_ohgMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_ohgSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_ohgSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_ohgSelf(3)">😃 sicher</button>
+          <span id="ohgSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="ohgSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Die Messpunkte liegen auf einer Ursprungsgeraden: I ~ U. Verdoppelt man U, verdoppelt sich I. R = U/I ist für alle Zeilen gleich (z. B. 10 Ω). Bei 10 Ω: 1,5 V→0,15 A · 3 V→0,30 A · 4,5 V→0,45 A · 6 V→0,60 A.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Ohmsches Gesetz (für ohmsche Widerstände bei konstanter Temperatur): U = R · I, also I = U/R und R = U/I. Die U-I-Kennlinie ist eine Ursprungsgerade; ihre Steigung ist 1/R. Ein größerer Widerstand ergibt eine flachere Gerade.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Kennlinie ist gekrümmt." (2) „R ändert sich mit der Spannung." (3) „Mehr Spannung ändert den Strom nicht proportional."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Proportionalität an der Wertetabelle zeigen (U verdoppeln → I verdoppeln); Steigung 1/R deuten; zweiten Widerstand (20 Ω) zum Vergleich messen (flachere Gerade).</div>
+        <div class="ab-t"><b>Musterlösung.</b> Bei 10 Ω: I = 0,15/0,30/0,45/0,60 A; R = U/I = 10 Ω (konstant). 6.1 eine Gerade durch den Ursprung · 6.2 „I wird doppelt so groß" · 6.3 ja. Merksatz: proportional · Gerade · R · I. Transfer: R = 6 V / 0,3 A = 20 Ω; bei 2 V: I = 2/20 = 0,1 A. Minidiagnose: 1→Eine Gerade durch den Ursprung · 2→Sie verdoppelt sich · 3→U = R · I.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('ohmgesetz')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('ohmgesetz', 'Das Ohmsche Gesetz – die U-I-Kennlinie', body);
+}
+
+const _OHG_MINI = [
+  { q: '1. Welche Form hat die U-I-Kennlinie eines festen Widerstands?',
+    opts: ['Eine Gerade durch den Ursprung', 'Eine gekrümmte Kurve', 'Eine waagerechte Linie'], correct: 0,
+    fb: ['Richtig! I ist proportional zu U – eine Ursprungsgerade.',
+         'Bei einem ohmschen Widerstand ist sie gerade, nicht gekrümmt.',
+         'Sie steigt an, ist also nicht waagerecht.'] },
+  { q: '2. Du verdoppelst die Spannung. Was passiert mit der Stromstärke?',
+    opts: ['Sie bleibt gleich', 'Sie verdoppelt sich', 'Sie halbiert sich'], correct: 1,
+    fb: ['Bei doppelter Spannung ändert sich der Strom.',
+         'Richtig! Doppelte Spannung → doppelter Strom (Proportionalität).',
+         'Sie wird größer, nicht kleiner.'] },
+  { q: '3. Wie lautet das Ohmsche Gesetz?',
+    opts: ['U = R · I', 'U = R + I', 'U = R / I'], correct: 0,
+    fb: ['Richtig! U = R · I (also R = U/I, I = U/R).',
+         'Addiert wird hier nichts.',
+         'Das ist nicht die richtige Verknüpfung.'] }
+];
+function _ohgMiniHTML() {
+  return _OHG_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_ohgAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="ohgFb${qi}"></div></div>`).join('');
+}
+function _ohgAns(qi, oi) {
+  const m = _OHG_MINI[qi], el = document.getElementById('ohgFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _ohgSelf(n) {
+  const out = document.getElementById('ohgSelfOut'), val = document.getElementById('ohgSelfVal');
+  if (val) { val.value = String(n); _abSave('ohmgesetz'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.2.3  WOVON HÄNGT DER WIDERSTAND EINES DRAHTES AB?
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: Der Widerstand eines Drahtes hängt ab von
+// Länge (länger → mehr R), Querschnitt (dicker → weniger R) und
+// Material. Immer nur eine Größe verändern. Kleinspannung.
+// ═══════════════════════════════════════════════════════
+let _drt = null;
+const _DRT_MAT = { kupfer: { name: 'Kupfer', basis: 5 }, eisen: { name: 'Eisen', basis: 15 }, konstantan: { name: 'Konstantan', basis: 45 } };
+const _DRT_U = 4.5;
+function _drtInit() { _drt = { laenge: 'kurz', dicke: 'dick', material: 'kupfer', t: 0, phase: 0 }; }
+function _drtR() { return _DRT_MAT[_drt.material].basis * (_drt.laenge === 'lang' ? 2 : 1) * (_drt.dicke === 'duenn' ? 2 : 1); }
+function _drtI() { return _DRT_U / _drtR(); }
+
+function _drtHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim drt-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🧵 Wovon hängt der Widerstand eines Drahtes ab?</h3>
+    <div class="fpm-note" style="margin-top:2px">Verändere Länge, Dicke und Material des Drahtes – immer nur eine Größe. Beobachte, wie sich der Widerstand und der Strom ändern. (Nur ungefährliche Kleinspannung.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="drtAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Länge:</span>
+          <button class="sim-btn${_drt.laenge === 'kurz' ? ' primary' : ''}" id="drtLkurz" onclick="_drtSet('laenge','kurz')">kurz</button>
+          <button class="sim-btn${_drt.laenge === 'lang' ? ' primary' : ''}" id="drtLlang" onclick="_drtSet('laenge','lang')">lang</button>
+          <span class="fpm-label" style="align-self:center">Dicke:</span>
+          <button class="sim-btn${_drt.dicke === 'dick' ? ' primary' : ''}" id="drtDdick" onclick="_drtSet('dicke','dick')">dick</button>
+          <button class="sim-btn${_drt.dicke === 'duenn' ? ' primary' : ''}" id="drtDduenn" onclick="_drtSet('dicke','duenn')">dünn</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">Material:</span>
+          <button class="sim-btn${_drt.material === 'kupfer' ? ' primary' : ''}" id="drtMkupfer" onclick="_drtSet('material','kupfer')">Kupfer</button>
+          <button class="sim-btn${_drt.material === 'eisen' ? ' primary' : ''}" id="drtMeisen" onclick="_drtSet('material','eisen')">Eisen</button>
+          <button class="sim-btn${_drt.material === 'konstantan' ? ' primary' : ''}" id="drtMkonstantan" onclick="_drtSet('material','konstantan')">Konstantan</button>
+          <button class="sim-btn" onclick="_drtReset()">↺</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Widerstand des Drahtes</div>
+        <div class="lmp-status" id="drtStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Der Widerstand eines Drahtes ist <b>größer</b>, wenn der Draht <b>länger</b> oder <b>dünner</b> ist. Er hängt außerdem vom <b>Material</b> ab: Kupfer leitet sehr gut (kleiner Widerstand), Konstantan schlecht (großer Widerstand).</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      länger → mehr R &nbsp;·&nbsp; dünner → mehr R &nbsp;·&nbsp; Material zählt. &nbsp;|&nbsp; Immer nur eine Größe ändern!
+    </p>
+    ${_drtArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _drtSet(feld, wert) {
+  _drt[feld] = wert;
+  const map = { laenge: { kurz: 'drtLkurz', lang: 'drtLlang' }, dicke: { dick: 'drtDdick', duenn: 'drtDduenn' }, material: { kupfer: 'drtMkupfer', eisen: 'drtMeisen', konstantan: 'drtMkonstantan' } };
+  Object.keys(map[feld]).forEach(k => document.getElementById(map[feld][k])?.classList.toggle('primary', k === wert));
+  _drtStatus();
+}
+function _drtReset() { _drtInit(); _drtSet('laenge', 'kurz'); _drtSet('dicke', 'dick'); _drtSet('material', 'kupfer'); _drtStatus(); }
+function _drtStatus() {
+  const el = document.getElementById('drtStatus'); if (!el) return;
+  el.textContent = `${_DRT_MAT[_drt.material].name}, ${_drt.laenge}, ${_drt.dicke === 'duenn' ? 'dünn' : 'dick'}: Widerstand R = ${_drtR()} Ω → bei 4,5 V fließt I = ${_drtI().toFixed(2).replace('.', ',')} A.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _drtUpdate(dt) { if (_drt) { _drt.t += dt; _drt.phase += (10 + _drtI() * 55) * dt; } }
+function _drtDraw(ctx, cv) {
+  if (!_drt) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const L = 40, R = W - 40, T = 54, B = H - 44;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4; ctx.beginPath(); ctx.rect(L, T, R - L, B - T); ctx.stroke();
+
+  // Batterie unten
+  const bx = (L + R) / 2, by = B; ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(bx - 14, by - 8); ctx.lineTo(bx - 14, by + 8); ctx.moveTo(bx, by - 14); ctx.lineTo(bx, by + 14); ctx.stroke();
+  ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('4,5 V', bx - 7, by + 26);
+
+  // Draht oben: Länge = Breite der gewellten Strecke, Dicke = Linienbreite, Material = Farbe
+  const matCol = { kupfer: '#f59e0b', eisen: '#94a3b8', konstantan: '#c084fc' }[_drt.material];
+  const dick = _drt.dicke === 'dick' ? 7 : 3;
+  const halb = _drt.laenge === 'lang' ? 90 : 50;
+  const dx0 = (L + R) / 2 - halb, dy = T;
+  ctx.strokeStyle = matCol; ctx.lineWidth = dick; ctx.beginPath();
+  const wig = _drt.laenge === 'lang' ? 14 : 8;
+  ctx.moveTo(dx0, dy);
+  for (let i = 0; i <= wig; i++) { const x = dx0 + (2 * halb) * i / wig; const y = dy + (i % 2 === 0 ? -6 : 6); ctx.lineTo(x, y); }
+  ctx.lineTo(dx0 + 2 * halb, dy); ctx.stroke();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '10px sans-serif'; ctx.fillText(_DRT_MAT[_drt.material].name + '-Draht', (L + R) / 2, dy - 16);
+
+  // Amperemeter rechts
+  const amx = R, amy = (T + B) / 2; ctx.fillStyle = '#0b1020'; ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(amx, amy, 16, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#38bdf8'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('A', amx, amy + 5);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.fillText(_drtI().toFixed(2).replace('.', ',') + ' A', amx - 36, amy + 4);
+
+  // Ladungen
+  const n = Math.max(4, Math.round(_drtI() * 14)), per = 2 * ((R - L) + (B - T));
+  for (let i = 0; i < n; i++) {
+    let d = (_drt.phase + i * per / n) % per, x, y;
+    if (d < (R - L)) { x = L + d; y = T; }
+    else if (d < (R - L) + (B - T)) { x = R; y = T + (d - (R - L)); }
+    else if (d < 2 * (R - L) + (B - T)) { x = R - (d - (R - L) - (B - T)); y = B; }
+    else { x = L; y = B - (d - 2 * (R - L) - (B - T)); }
+    ctx.fillStyle = '#60a5fa'; ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('R = ' + _drtR() + ' Ω', (L + R) / 2, 22);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.2.3  (ns = 'draht') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _drtArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('draht')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('draht')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was macht den Widerstand eines Drahtes größer oder kleiner?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass ein Draht mehr Widerstand hat, wenn er …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Ändere zuerst nur die Länge (kurz → lang).</li>
+          <li>Dann nur die Dicke (dick → dünn).</li>
+          <li>Dann nur das Material. Notiere jeweils R.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>kurz → lang</td><td>${inp('b1', 'R wird …')}</td><td>dick → dünn</td><td>${inp('b2', 'R wird …')}</td></tr>
+          <tr><td>Kupfer</td><td>${inp('b3', 'R = … Ω')}</td><td>Konstantan</td><td>${inp('b4', 'R = … Ω')}</td></tr>
+          <tr><td>bester Leiter?</td><td>${inp('b5', '')}</td><td>schlechtester Leiter?</td><td>${inp('b6', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne einen kurzen dicken und einen langen dünnen Draht. Welcher hat mehr Widerstand? Markiere ihn.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie ändert sich R mit der Länge? ${inp('a1', 'länger → …')}</li>
+          <li>Wie ändert sich R mit der Dicke? ${inp('a2', 'dünner → …')}</li>
+          <li>Welche Rolle spielt das Material? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ein Draht hat mehr Widerstand, wenn er ${inp('m1', 'wie?')} oder ${inp('m2', 'wie?')} ist.<br>
+        Auch das ${inp('m3', 'was?')} zählt: Kupfer leitet gut, Konstantan schlecht.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum benutzt man für Stromkabel dicke Kupferdrähte, für einen Heizdraht (der warm werden soll) aber dünnen Konstantandraht?</div>
+        ${ta('tr1', 'Kupfer (dick) hat wenig Widerstand → …; Konstantan (dünn) hat viel Widerstand → …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="drtMini">${_drtMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_drtSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_drtSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_drtSelf(3)">😃 sicher</button>
+          <span id="drtSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="drtSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Länger → größerer Widerstand. Dünner → größerer Widerstand. Material: Kupfer kleiner R (guter Leiter), Eisen mittel, Konstantan großer R (schlechter Leiter). Werte hier (kurz+dick): Kupfer 5 Ω · Eisen 15 Ω · Konstantan 45 Ω; lang verdoppelt, dünn verdoppelt.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> R = ρ · l / A: der Widerstand wächst mit der Länge l, sinkt mit dem Querschnitt A und hängt über den spezifischen Widerstand ρ vom Material ab. Kupfer/Silber haben kleines ρ (gute Leiter), Konstantan großes ρ (für Heizdrähte/Widerstände).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Dicker Draht = mehr Widerstand." (2) „Das Material ist egal." (3) „Länge ändert nichts."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Variablenkontrolle (nur eine Größe ändern); Wasser-Analogie (langes/enges Rohr bremst stärker); Materialien vergleichen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: größer · größer; Kupfer 5 Ω · Konstantan 45 Ω; bester Leiter Kupfer · schlechtester Konstantan. 6.1 „länger → mehr R" · 6.2 „dünner → mehr R" · 6.3 „Material bestimmt, wie gut es leitet". Merksatz: länger · dünner · Material. Transfer: Kupfer (dick) hat wenig Widerstand → wenig Wärmeverlust im Kabel; Konstantan (dünn) hat viel Widerstand → wird gewollt warm (Heizdraht). Minidiagnose: 1→Länger und dünner · 2→Kupfer · 3→Größer.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('draht')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('draht', 'Wovon hängt der Widerstand eines Drahtes ab?', body);
+}
+
+const _DRT_MINI = [
+  { q: '1. Wann hat ein Draht mehr Widerstand?',
+    opts: ['Wenn er kurz und dick ist', 'Wenn er lang und dünn ist', 'Wenn er kalt ist'], correct: 1,
+    fb: ['Kurz und dick bedeutet wenig Widerstand.',
+         'Richtig! Länger und dünner → mehr Widerstand.',
+         'Die Länge und Dicke sind hier entscheidend.'] },
+  { q: '2. Welches Material leitet am besten (kleinster Widerstand)?',
+    opts: ['Kupfer', 'Konstantan', 'Eisen'], correct: 0,
+    fb: ['Richtig! Kupfer ist ein sehr guter Leiter.',
+         'Konstantan leitet schlecht (großer Widerstand).',
+         'Eisen liegt dazwischen.'] },
+  { q: '3. Du machst denselben Draht doppelt so lang. Der Widerstand …',
+    opts: ['wird kleiner', 'wird größer', 'bleibt gleich'], correct: 1,
+    fb: ['Länger bedeutet nicht weniger Widerstand.',
+         'Richtig! Doppelte Länge → etwa doppelter Widerstand.',
+         'Die Länge verändert den Widerstand.'] }
+];
+function _drtMiniHTML() {
+  return _DRT_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_drtAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="drtFb${qi}"></div></div>`).join('');
+}
+function _drtAns(qi, oi) {
+  const m = _DRT_MINI[qi], el = document.getElementById('drtFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _drtSelf(n) {
+  const out = document.getElementById('drtSelfOut'), val = document.getElementById('drtSelfVal');
+  if (val) { val.value = String(n); _abSave('draht'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
