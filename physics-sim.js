@@ -283,7 +283,9 @@ const _physAbDefs = {
   'urknall': { titel: 'Die Urknalltheorie – wie ist das Weltall entstanden?', ns: 'urknall', html: () => _urkArbeitsblattHTML() },
   'ladung': { titel: 'Was ist elektrische Ladung?', ns: 'ladung', html: () => _ladArbeitsblattHTML() },
   'stromstaerke': { titel: 'Was ist der elektrische Strom (Stromstärke)?', ns: 'stromstaerke', html: () => _staArbeitsblattHTML() },
-  'spannung': { titel: 'Was ist die elektrische Spannung?', ns: 'spannung', html: () => _spnArbeitsblattHTML() }
+  'spannung': { titel: 'Was ist die elektrische Spannung?', ns: 'spannung', html: () => _spnArbeitsblattHTML() },
+  'messen': { titel: 'Wie misst man Stromstärke und Spannung?', ns: 'messen', html: () => _msnArbeitsblattHTML() },
+  'stromabhaengigkeit': { titel: 'Wovon hängt die Stromstärke ab?', ns: 'stromabh', html: () => _sabArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -933,6 +935,26 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('spnAnim', 'spnAnim');
     _pSim.start(dt => _spnUpdate(dt), (ctx, cv) => _spnDraw(ctx, cv), []);
     _abRestore('spannung');
+  },
+
+  // ── 8.1.4 STROMSTÄRKE & SPANNUNG MESSEN ────────────────────────
+  'messen': modal => {
+    _msnInit();
+    modal.innerHTML = _msnHTML();
+    _msnStatus();
+    _pSim = new PhysicsSimEngine('msnAnim', 'msnAnim');
+    _pSim.start(dt => _msnUpdate(dt), (ctx, cv) => _msnDraw(ctx, cv), []);
+    _abRestore('messen');
+  },
+
+  // ── 8.1.5 WOVON HÄNGT DIE STROMSTÄRKE AB ───────────────────────
+  'stromabhaengigkeit': modal => {
+    _sabInit();
+    modal.innerHTML = _sabHTML();
+    _sabStatus();
+    _pSim = new PhysicsSimEngine('sabAnim', 'sabAnim');
+    _pSim.start(dt => _sabUpdate(dt), (ctx, cv) => _sabDraw(ctx, cv), []);
+    _abRestore('stromabh');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -48879,5 +48901,451 @@ function _spnAns(qi, oi) {
 function _spnSelf(n) {
   const out = document.getElementById('spnSelfOut'), val = document.getElementById('spnSelfVal');
   if (val) { val.value = String(n); _abSave('spannung'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══ KAPITEL 8.1 ELEKTRIZITÄT – Batch 2 (8.1.4/8.1.5) – Kleinspannung ═══
+// ═══════════════════════════════════════════════════════
+// 8.1.4  WIE MISST MAN STROMSTÄRKE UND SPANNUNG?
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: Amperemeter gehört in Reihe, Voltmeter
+// parallel. Falsch angeschlossen → Kurzschluss bzw. kein Strom.
+// Nur ungefährliche Kleinspannung.
+// ═══════════════════════════════════════════════════════
+let _msn = null;
+function _msnInit() { _msn = { geraet: 'ampere', anschluss: 'reihe', t: 0, phase: 0 }; }
+function _msnRichtig() { return (_msn.geraet === 'ampere' && _msn.anschluss === 'reihe') || (_msn.geraet === 'volt' && _msn.anschluss === 'parallel'); }
+
+function _msnHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim msn-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📏 Wie misst man Stromstärke und Spannung?</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle ein Messgerät und schließe es an. Finde heraus: Wie muss ein Amperemeter, wie ein Voltmeter eingebaut werden? (Nur ungefährliche Kleinspannung.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="msnAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Gerät:</span>
+          <button class="sim-btn${_msn.geraet === 'ampere' ? ' primary' : ''}" id="msnGa" onclick="_msnGeraet('ampere')">Ⓐ Amperemeter</button>
+          <button class="sim-btn${_msn.geraet === 'volt' ? ' primary' : ''}" id="msnGv" onclick="_msnGeraet('volt')">Ⓥ Voltmeter</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">Anschluss:</span>
+          <button class="sim-btn${_msn.anschluss === 'reihe' ? ' primary' : ''}" id="msnAr" onclick="_msnAnschluss('reihe')">in Reihe</button>
+          <button class="sim-btn${_msn.anschluss === 'parallel' ? ' primary' : ''}" id="msnAp" onclick="_msnAnschluss('parallel')">parallel</button>
+          <button class="sim-btn" onclick="_msnReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Richtig angeschlossen?</div>
+        <div class="lmp-status" id="msnStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Das <b>Amperemeter</b> misst die Stromstärke – der Strom muss <b>hindurchfließen</b>, also wird es <b>in Reihe</b> eingebaut. Das <b>Voltmeter</b> misst die Spannung über einem Bauteil – es wird <b>parallel</b> (daneben) angeschlossen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Amperemeter → <b>in Reihe</b>. &nbsp;|&nbsp; Voltmeter → <b>parallel</b>. &nbsp;|&nbsp; Falsch = Kurzschluss oder kein Strom.
+    </p>
+    ${_msnArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _msnGeraet(g) { _msn.geraet = g; document.getElementById('msnGa')?.classList.toggle('primary', g === 'ampere'); document.getElementById('msnGv')?.classList.toggle('primary', g === 'volt'); _msnStatus(); }
+function _msnAnschluss(a) { _msn.anschluss = a; document.getElementById('msnAr')?.classList.toggle('primary', a === 'reihe'); document.getElementById('msnAp')?.classList.toggle('primary', a === 'parallel'); _msnStatus(); }
+function _msnReset() { _msnInit(); _msnGeraet('ampere'); _msnAnschluss('reihe'); _msnStatus(); }
+function _msnStatus() {
+  const el = document.getElementById('msnStatus'); if (!el) return;
+  const g = _msn.geraet, a = _msn.anschluss;
+  if (g === 'ampere' && a === 'reihe') { el.textContent = '✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).'; el.className = 'lmp-status on'; }
+  else if (g === 'ampere' && a === 'parallel') { el.textContent = '✗ Amperemeter parallel = Kurzschluss! Es fließt ein sehr großer Strom, das Gerät kann kaputtgehen. Amperemeter gehört in Reihe.'; el.className = 'lmp-status off'; }
+  else if (g === 'volt' && a === 'parallel') { el.textContent = '✓ Richtig! Das Voltmeter liegt parallel zur Lampe und misst die Spannung (z. B. 4,5 V).'; el.className = 'lmp-status on'; }
+  else { el.textContent = '✗ Voltmeter in Reihe: Es fließt fast kein Strom, die Lampe bleibt dunkel. Voltmeter gehört parallel.'; el.className = 'lmp-status off'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _msnUpdate(dt) { if (_msn) { _msn.t += dt; const fluss = (_msn.geraet === 'ampere' && _msn.anschluss === 'reihe') || (_msn.geraet === 'volt' && _msn.anschluss === 'parallel') || (_msn.geraet === 'ampere' && _msn.anschluss === 'parallel'); if (fluss) _msn.phase += (_msn.anschluss === 'parallel' && _msn.geraet === 'ampere' ? 130 : 50) * dt; } }
+function _msnDraw(ctx, cv) {
+  if (!_msn) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const L = 40, R = W - 60, T = 50, B = H - 44;
+  const richtig = _msnRichtig();
+  const g = _msn.geraet, a = _msn.anschluss;
+  const lampeAn = (g === 'ampere' && a === 'reihe') || (g === 'volt' && a === 'parallel');
+  const kurz = (g === 'ampere' && a === 'parallel');
+
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4; ctx.beginPath(); ctx.rect(L, T, R - L, B - T); ctx.stroke();
+  // Batterie unten
+  const bx = (L + R) / 2, by = B; ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(bx - 14, by - 8); ctx.lineTo(bx - 14, by + 8); ctx.moveTo(bx, by - 14); ctx.lineTo(bx, by + 14); ctx.stroke();
+  ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('4,5 V', bx - 7, by + 26);
+
+  // Lampe links Mitte
+  const lax = L, lay = (T + B) / 2, br = lampeAn ? 1 : 0;
+  if (lampeAn) { const gg = ctx.createRadialGradient(lax, lay, 2, lax, lay, 20); gg.addColorStop(0, 'rgba(255,240,150,0.9)'); gg.addColorStop(1, 'rgba(255,240,150,0)'); ctx.fillStyle = gg; ctx.beginPath(); ctx.arc(lax, lay, 20, 0, 2 * Math.PI); ctx.fill(); }
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(lax, lay, 11, 0, 2 * Math.PI); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(lax - 8, lay - 8); ctx.lineTo(lax + 8, lay + 8); ctx.moveTo(lax + 8, lay - 8); ctx.lineTo(lax - 8, lay + 8); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText('Lampe', lax, lay + 30);
+
+  // Messgerät zeichnen
+  const col = richtig ? '#4ade80' : '#f87171';
+  const label = g === 'ampere' ? 'A' : 'V';
+  const reading = g === 'ampere' ? (a === 'reihe' ? '0,3 A' : '⚡ zu groß') : (a === 'parallel' ? '4,5 V' : '~4,5 V');
+  if (a === 'reihe') {
+    // im oberen Leiter, in Reihe
+    const mx = (L + R) / 2 + 40, my = T;
+    ctx.fillStyle = '#0b1020'; ctx.strokeStyle = col; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(mx, my, 15, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = col; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(label, mx, my + 5);
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.fillText(reading, mx, my - 20);
+  } else {
+    // parallel als Abzweig neben der Lampe
+    const mx = lax + 62, my = lay;
+    ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.setLineDash([4, 3]);
+    ctx.beginPath(); ctx.moveTo(lax, T); ctx.lineTo(mx, T); ctx.lineTo(mx, my - 15); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(lax, B); ctx.lineTo(mx, B); ctx.lineTo(mx, my + 15); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#0b1020'; ctx.strokeStyle = col; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(mx, my, 15, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = col; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(label, mx, my + 5);
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.fillText(reading, mx, my + 30);
+  }
+
+  // Ladungen fließen (nur wenn Strom fließt)
+  if (lampeAn || kurz) {
+    const n = kurz ? 22 : 10, per = 2 * ((R - L) + (B - T));
+    for (let i = 0; i < n; i++) {
+      let d = (_msn.phase + i * per / n) % per, x, y;
+      if (d < (R - L)) { x = L + d; y = T; }
+      else if (d < (R - L) + (B - T)) { x = R; y = T + (d - (R - L)); }
+      else if (d < 2 * (R - L) + (B - T)) { x = R - (d - (R - L) - (B - T)); y = B; }
+      else { x = L; y = B - (d - 2 * (R - L) - (B - T)); }
+      ctx.fillStyle = kurz ? '#f87171' : '#60a5fa'; ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  // Titel
+  ctx.fillStyle = richtig ? '#86efac' : '#fca5a5'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText((g === 'ampere' ? 'Amperemeter' : 'Voltmeter') + ' ' + (a === 'reihe' ? 'in Reihe' : 'parallel') + (richtig ? ' ✓' : ' ✗'), (L + R) / 2, 22);
+  if (kurz) { ctx.fillStyle = '#fca5a5'; ctx.font = '700 11px sans-serif'; ctx.fillText('KURZSCHLUSS', (L + R) / 2, 36); }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.1.4  (ns = 'messen') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _msnArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('messen')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('messen')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie muss man ein Amperemeter und ein Voltmeter anschließen, damit sie richtig messen?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass das Amperemeter … und das Voltmeter … eingebaut wird.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Schließe das Amperemeter einmal in Reihe, einmal parallel an.</li>
+          <li>Schließe das Voltmeter einmal parallel, einmal in Reihe an.</li>
+          <li>Notiere jeweils, ob es richtig misst, die Lampe leuchtet oder ein Kurzschluss entsteht.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Amperemeter in Reihe</td><td>${inp('b1', 'richtig/falsch?')}</td><td>Lampe</td><td>${inp('c1', 'an/aus')}</td></tr>
+          <tr><td>Amperemeter parallel</td><td>${inp('b2', 'richtig/falsch?')}</td><td>was passiert?</td><td>${inp('c2', '')}</td></tr>
+          <tr><td>Voltmeter parallel</td><td>${inp('b3', 'richtig/falsch?')}</td><td>Lampe</td><td>${inp('c3', 'an/aus')}</td></tr>
+          <tr><td>Voltmeter in Reihe</td><td>${inp('b4', 'richtig/falsch?')}</td><td>Lampe</td><td>${inp('c4', 'an/aus')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne einen Stromkreis mit Lampe. Zeichne das Amperemeter (in Reihe) und das Voltmeter (parallel) richtig ein.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Warum muss das Amperemeter in Reihe liegen? ${inp('a1', 'weil der Strom …')}</li>
+          <li>Warum wird das Voltmeter parallel angeschlossen? ${inp('a2', 'weil es die Spannung …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Das Amperemeter wird ${inp('m1', 'wie?')} eingebaut, denn der Strom muss hindurchfließen.<br>
+        Das Voltmeter wird ${inp('m2', 'wie?')} angeschlossen, denn es misst die Spannung über einem Bauteil.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum ist es gefährlich für das Amperemeter, wenn man es aus Versehen parallel (direkt an die Batterie) anschließt?</div>
+        ${ta('tr1', 'Weil dann ein Kurzschluss entsteht und …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="msnMini">${_msnMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_msnSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_msnSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_msnSelf(3)">😃 sicher</button>
+          <span id="msnSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="msnSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Amperemeter in Reihe = richtig (misst I, Lampe an). Amperemeter parallel = Kurzschluss (sehr großer Strom, Gerät gefährdet). Voltmeter parallel = richtig (misst U, Lampe an). Voltmeter in Reihe = falsch (fast kein Strom, Lampe aus).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Amperemeter: kleiner Innenwiderstand, in Reihe (der zu messende Strom fließt hindurch). Voltmeter: großer Innenwiderstand, parallel zum Bauteil (misst die Spannung, entnimmt kaum Strom). Falsch angeschlossen: Amperemeter parallel überbrückt das Bauteil → Kurzschluss; Voltmeter in Reihe → hoher Widerstand unterbricht den Strom praktisch.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Es ist egal, wie man das Messgerät anschließt." (2) „Amperemeter und Voltmeter schließt man gleich an." (3) „Das Voltmeter unterbricht den Strom nie."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Merkbild: A = „mittendrin" (Reihe), V = „daneben" (parallel); Innenwiderstände nennen; nur eine Einstellung ändern; Sicherheitshinweis Kurzschluss.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: richtig/an · falsch/Kurzschluss · richtig/an · falsch/aus. 6.1 „weil der Strom durch es hindurchfließen muss" · 6.2 „weil es die Spannung über dem Bauteil misst". Merksatz: in Reihe · parallel. Transfer: Parallel an die Batterie fließt fast der gesamte Strom durch das niederohmige Amperemeter (Kurzschluss), es kann überhitzen/kaputtgehen. Minidiagnose: 1→In Reihe · 2→Parallel · 3→Kurzschluss.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('messen')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('messen', 'Wie misst man Stromstärke und Spannung?', body);
+}
+
+const _MSN_MINI = [
+  { q: '1. Wie wird ein Amperemeter angeschlossen?',
+    opts: ['Parallel zum Bauteil', 'In Reihe in den Stromkreis', 'Direkt an die Batteriepole'], correct: 1,
+    fb: ['Parallel gehört das Voltmeter.',
+         'Richtig! Das Amperemeter liegt in Reihe.',
+         'Direkt an die Pole wäre ein Kurzschluss.'] },
+  { q: '2. Wie wird ein Voltmeter angeschlossen?',
+    opts: ['In Reihe', 'Parallel zum Bauteil', 'Gar nicht'], correct: 1,
+    fb: ['In Reihe würde kaum Strom fließen.',
+         'Richtig! Das Voltmeter wird parallel angeschlossen.',
+         'Man schließt es parallel an.'] },
+  { q: '3. Was passiert, wenn man ein Amperemeter parallel an die Batterie hält?',
+    opts: ['Es entsteht ein Kurzschluss', 'Es misst genauer', 'Nichts'], correct: 0,
+    fb: ['Richtig! Ein sehr großer Strom fließt – Kurzschluss, Gerät in Gefahr.',
+         'Genauer wird es dadurch nicht – im Gegenteil.',
+         'Es passiert sehr wohl etwas: ein Kurzschluss.'] }
+];
+function _msnMiniHTML() {
+  return _MSN_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_msnAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="msnFb${qi}"></div></div>`).join('');
+}
+function _msnAns(qi, oi) {
+  const m = _MSN_MINI[qi], el = document.getElementById('msnFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _msnSelf(n) {
+  const out = document.getElementById('msnSelfOut'), val = document.getElementById('msnSelfVal');
+  if (val) { val.value = String(n); _abSave('messen'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.1.5  WOVON HÄNGT DIE STROMSTÄRKE AB?
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: Verändere Spannung (Zellen) ODER Widerstand
+// und beobachte die Stromstärke. Mehr Spannung → mehr Strom;
+// größerer Widerstand → weniger Strom. (Überleitung zum Ohm-Gesetz.)
+// Nur ungefährliche Kleinspannung.
+// ═══════════════════════════════════════════════════════
+let _sab = null;
+const _SAB_R = { klein: { name: 'klein', R: 5 }, mittel: { name: 'mittel', R: 15 }, gross: { name: 'groß', R: 45 } };
+function _sabInit() { _sab = { zellen: 2, r: 'mittel', t: 0, phase: 0 }; }
+function _sabU() { return _sab.zellen * 1.5; }
+function _sabI() { return _sabU() / _SAB_R[_sab.r].R; }
+
+function _sabHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim sab-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔎 Wovon hängt die Stromstärke ab?</h3>
+    <div class="fpm-note" style="margin-top:2px">Verändere immer nur eine Größe: einmal die Spannung (Zellen), einmal den Widerstand. Beobachte, wie sich die Stromstärke ändert. (Nur ungefährliche Kleinspannung.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="sabAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Spannung:</span>
+          <button class="sim-btn${_sab.zellen === 1 ? ' primary' : ''}" id="sabU1" onclick="_sabSetU(1)">1,5 V</button>
+          <button class="sim-btn${_sab.zellen === 2 ? ' primary' : ''}" id="sabU2" onclick="_sabSetU(2)">3 V</button>
+          <button class="sim-btn${_sab.zellen === 3 ? ' primary' : ''}" id="sabU3" onclick="_sabSetU(3)">4,5 V</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">Widerstand:</span>
+          <button class="sim-btn${_sab.r === 'klein' ? ' primary' : ''}" id="sabRklein" onclick="_sabSetR('klein')">klein</button>
+          <button class="sim-btn${_sab.r === 'mittel' ? ' primary' : ''}" id="sabRmittel" onclick="_sabSetR('mittel')">mittel</button>
+          <button class="sim-btn${_sab.r === 'gross' ? ' primary' : ''}" id="sabRgross" onclick="_sabSetR('gross')">groß</button>
+          <button class="sim-btn" onclick="_sabReset()">↺</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Stromstärke am Amperemeter</div>
+        <div class="lmp-status" id="sabStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Die Stromstärke hängt von <b>zwei</b> Dingen ab: von der <b>Spannung</b> (Antrieb) und vom <b>Widerstand</b> (Bremse). <b>Mehr Spannung → mehr Strom.</b> <b>Größerer Widerstand → weniger Strom.</b> Das führt später zum <b>Ohmschen Gesetz</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Verändere nur eine Größe! &nbsp;|&nbsp; Spannung ↑ → Strom ↑ &nbsp;·&nbsp; Widerstand ↑ → Strom ↓
+    </p>
+    ${_sabArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _sabSetU(z) { _sab.zellen = z;[1, 2, 3].forEach(k => document.getElementById('sabU' + k)?.classList.toggle('primary', k === z)); _sabStatus(); }
+function _sabSetR(r) { _sab.r = r; Object.keys(_SAB_R).forEach(k => document.getElementById('sabR' + k)?.classList.toggle('primary', k === r)); _sabStatus(); }
+function _sabReset() { _sabInit(); _sabSetU(2); _sabSetR('mittel'); _sabStatus(); }
+function _sabStatus() {
+  const el = document.getElementById('sabStatus'); if (!el) return;
+  const I = _sabI();
+  el.textContent = `U = ${String(_sabU()).replace('.', ',')} V, Widerstand ${_SAB_R[_sab.r].name} → Stromstärke I = ${I.toFixed(2).replace('.', ',')} A. Mehr Spannung → mehr Strom; größerer Widerstand → weniger Strom.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _sabUpdate(dt) { if (_sab) { _sab.t += dt; _sab.phase += (12 + _sabI() * 90) * dt; } }
+function _sabDraw(ctx, cv) {
+  if (!_sab) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const L = 40, R = W - 40, T = 50, B = H - 44;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4; ctx.beginPath(); ctx.rect(L, T, R - L, B - T); ctx.stroke();
+
+  // Batteriezellen unten
+  const cyB = B, sx = (L + R) / 2 - (_sab.zellen * 24) / 2;
+  for (let i = 0; i < _sab.zellen; i++) { const x = sx + i * 24; ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x, cyB - 8); ctx.lineTo(x, cyB + 8); ctx.moveTo(x + 9, cyB - 13); ctx.lineTo(x + 9, cyB + 13); ctx.stroke(); }
+  ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('U = ' + String(_sabU()).replace('.', ',') + ' V', (L + R) / 2, cyB + 26);
+
+  // Widerstand (Zickzack) oben – Länge/Zacken ~ R
+  const wy = T, wx0 = (L + R) / 2 - 44, wlen = 88, zack = _sab.r === 'klein' ? 4 : (_sab.r === 'mittel' ? 7 : 11);
+  ctx.strokeStyle = '#fb923c'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(wx0, wy);
+  for (let i = 0; i <= zack; i++) { const x = wx0 + (wlen * i / zack); const y = wy + (i % 2 === 0 ? -7 : 7); ctx.lineTo(x, y); }
+  ctx.lineTo(wx0 + wlen, wy); ctx.stroke();
+  ctx.fillStyle = '#fdba74'; ctx.font = '10px sans-serif'; ctx.fillText('Widerstand ' + _SAB_R[_sab.r].name, (L + R) / 2, wy - 14);
+
+  // Amperemeter rechts
+  const amx = R, amy = (T + B) / 2; ctx.fillStyle = '#0b1020'; ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(amx, amy, 16, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#38bdf8'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('A', amx, amy + 5);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.fillText(_sabI().toFixed(2).replace('.', ',') + ' A', amx - 36, amy + 4);
+
+  // Lampe links, Helligkeit ~ I (max 0,9)
+  const lax = L, lay = (T + B) / 2, br = Math.min(1, _sabI() / 0.9);
+  const g = ctx.createRadialGradient(lax, lay, 2, lax, lay, 20); g.addColorStop(0, `rgba(255,240,150,${0.15 + 0.85 * br})`); g.addColorStop(1, 'rgba(255,240,150,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(lax, lay, 20, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(lax, lay, 11, 0, 2 * Math.PI); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(lax - 8, lay - 8); ctx.lineTo(lax + 8, lay + 8); ctx.moveTo(lax + 8, lay - 8); ctx.lineTo(lax - 8, lay + 8); ctx.stroke();
+
+  // Ladungen, Tempo ~ I
+  const n = 10, per = 2 * ((R - L) + (B - T));
+  for (let i = 0; i < n; i++) {
+    let d = (_sab.phase + i * per / n) % per, x, y;
+    if (d < (R - L)) { x = L + d; y = T; }
+    else if (d < (R - L) + (B - T)) { x = R; y = T + (d - (R - L)); }
+    else if (d < 2 * (R - L) + (B - T)) { x = R - (d - (R - L) - (B - T)); y = B; }
+    else { x = L; y = B - (d - 2 * (R - L) - (B - T)); }
+    ctx.fillStyle = '#60a5fa'; ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('I = ' + _sabI().toFixed(2).replace('.', ',') + ' A', (L + R) / 2, 22);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.1.5  (ns = 'stromabh') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _sabArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('stromabh')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('stromabh')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was macht die Stromstärke in einem Kreis größer oder kleiner?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Stromstärke größer wird, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Halte den Widerstand fest (mittel) und erhöhe die Spannung Schritt für Schritt.</li>
+          <li>Halte dann die Spannung fest (3 V) und verändere den Widerstand.</li>
+          <li>Lies jedes Mal die Stromstärke ab. Ändere immer nur eine Größe!</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>1,5 V · mittel</td><td>${inp('b1', 'I = … A')}</td><td>3 V · mittel</td><td>${inp('b2', 'I = … A')}</td></tr>
+          <tr><td>4,5 V · mittel</td><td>${inp('b3', 'I = … A')}</td><td>3 V · klein</td><td>${inp('b4', 'I = … A')}</td></tr>
+          <tr><td>3 V · groß</td><td>${inp('b5', 'I = … A')}</td><td>Regel?</td><td>${inp('b6', 'U↑→I? R↑→I?')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne zwei Pfeile: einen für „Spannung hoch → Strom …" und einen für „Widerstand hoch → Strom …".</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was passiert mit dem Strom, wenn die Spannung steigt? ${inp('a1', 'er wird …')}</li>
+          <li>Was passiert, wenn der Widerstand größer wird? ${inp('a2', 'er wird …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die Stromstärke hängt von der Spannung und vom Widerstand ab.<br>
+        Mehr Spannung → ${inp('m1', 'mehr/weniger')} Strom. Größerer Widerstand → ${inp('m2', 'mehr/weniger')} Strom.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Vergleiche mit Wasser: Die Spannung ist der Druck, der Widerstand ist ein enges Rohr. Was bedeutet ein engeres Rohr für die Wassermenge?</div>
+        ${ta('tr1', 'Ein engeres Rohr (großer Widerstand) lässt … Wasser durch, also …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="sabMini">${_sabMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_sabSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_sabSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_sabSelf(3)">😃 sicher</button>
+          <span id="sabSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="sabSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Bei festem Widerstand steigt I mit U (proportional). Bei fester Spannung sinkt I, wenn R größer wird. Beispielwerte (I = U/R): 1,5 V·mittel(15 Ω)=0,10 A · 3 V·mittel=0,20 A · 4,5 V·mittel=0,30 A · 3 V·klein(5 Ω)=0,60 A · 3 V·groß(45 Ω)=0,07 A.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Die Stromstärke wird durch die antreibende Spannung erhöht und durch den Widerstand begrenzt: I = U/R (Ohmsches Gesetz, folgt in 8.2). Bei konstantem R ist I proportional zu U; bei konstantem U ist I umgekehrt proportional zu R. Nur eine Größe variieren (Variablenkontrolle).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Strom hängt nur von der Batterie ab." (2) „Ein größerer Widerstand macht den Strom stärker." (3) „Man darf mehrere Größen gleichzeitig ändern."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Variablenkontrolle betonen (nur eine Größe ändern); Wasser-Analogie (Druck = U, enges Rohr = R); Werte in eine Tabelle eintragen und Muster suchen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 0,10 · 0,20 · 0,30 · 0,60 · 0,07 A; Regel „U↑→I↑, R↑→I↓". 6.1 „größer/mehr" · 6.2 „kleiner/weniger". Merksatz: mehr · weniger. Transfer: Ein engeres Rohr (großer Widerstand) lässt weniger Wasser durch – also fließt weniger Strom. Minidiagnose: 1→Sie wird größer · 2→Sie wird kleiner · 3→Von Spannung und Widerstand.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('stromabh')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('stromabh', 'Wovon hängt die Stromstärke ab?', body);
+}
+
+const _SAB_MINI = [
+  { q: '1. Du erhöhst die Spannung (mehr Zellen). Was passiert mit der Stromstärke?',
+    opts: ['Sie wird größer', 'Sie wird kleiner', 'Sie bleibt gleich'], correct: 0,
+    fb: ['Richtig! Mehr Spannung (Antrieb) → mehr Strom.',
+         'Mehr Antrieb macht den Strom nicht kleiner.',
+         'Die Stromstärke ändert sich deutlich.'] },
+  { q: '2. Du baust einen größeren Widerstand ein (Spannung gleich). Was passiert?',
+    opts: ['Der Strom wird größer', 'Der Strom wird kleiner', 'Nichts'], correct: 1,
+    fb: ['Ein größerer Widerstand bremst den Strom.',
+         'Richtig! Größerer Widerstand → weniger Strom.',
+         'Der Strom ändert sich sehr wohl.'] },
+  { q: '3. Wovon hängt die Stromstärke ab?',
+    opts: ['Nur von der Batterie', 'Von Spannung und Widerstand', 'Nur von der Lampenfarbe'], correct: 1,
+    fb: ['Nicht nur – auch der Widerstand zählt.',
+         'Richtig! Von der Spannung (Antrieb) und vom Widerstand (Bremse).',
+         'Die Farbe spielt keine Rolle.'] }
+];
+function _sabMiniHTML() {
+  return _SAB_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_sabAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="sabFb${qi}"></div></div>`).join('');
+}
+function _sabAns(qi, oi) {
+  const m = _SAB_MINI[qi], el = document.getElementById('sabFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _sabSelf(n) {
+  const out = document.getElementById('sabSelfOut'), val = document.getElementById('sabSelfVal');
+  if (val) { val.value = String(n); _abSave('stromabh'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
