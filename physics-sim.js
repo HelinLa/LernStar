@@ -288,7 +288,10 @@ const _physAbDefs = {
   'stromabhaengigkeit': { titel: 'Wovon hängt die Stromstärke ab?', ns: 'stromabh', html: () => _sabArbeitsblattHTML() },
   'widerstand': { titel: 'Was ist ein elektrischer Widerstand?', ns: 'widerstand', html: () => _widArbeitsblattHTML() },
   'ohm-kennlinie': { titel: 'Das Ohmsche Gesetz – die U-I-Kennlinie', ns: 'ohmgesetz', html: () => _ohgArbeitsblattHTML() },
-  'draht': { titel: 'Wovon hängt der Widerstand eines Drahtes ab?', ns: 'draht', html: () => _drtArbeitsblattHTML() }
+  'draht': { titel: 'Wovon hängt der Widerstand eines Drahtes ab?', ns: 'draht', html: () => _drtArbeitsblattHTML() },
+  'reihe-widerstand': { titel: 'Reihenschaltung von Widerständen', ns: 'reihewid', html: () => _rwdArbeitsblattHTML() },
+  'parallel-widerstand': { titel: 'Parallelschaltung von Widerständen', ns: 'parallelwid', html: () => _pwdArbeitsblattHTML() },
+  'potentiometer': { titel: 'Das Potentiometer – ein veränderbarer Widerstand', ns: 'potentiometer', html: () => _potArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -988,6 +991,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('drtAnim', 'drtAnim');
     _pSim.start(dt => _drtUpdate(dt), (ctx, cv) => _drtDraw(ctx, cv), []);
     _abRestore('draht');
+  },
+
+  // ── 8.2.4 REIHENSCHALTUNG VON WIDERSTÄNDEN ─────────────────────
+  'reihe-widerstand': modal => {
+    _rwdInit();
+    modal.innerHTML = _rwdHTML();
+    _rwdStatus();
+    _pSim = new PhysicsSimEngine('rwdAnim', 'rwdAnim');
+    _pSim.start(dt => _rwdUpdate(dt), (ctx, cv) => _rwdDraw(ctx, cv), []);
+    _abRestore('reihewid');
+  },
+
+  // ── 8.2.5 PARALLELSCHALTUNG VON WIDERSTÄNDEN ───────────────────
+  'parallel-widerstand': modal => {
+    _pwdInit();
+    modal.innerHTML = _pwdHTML();
+    _pwdStatus();
+    _pSim = new PhysicsSimEngine('pwdAnim', 'pwdAnim');
+    _pSim.start(dt => _pwdUpdate(dt), (ctx, cv) => _pwdDraw(ctx, cv), []);
+    _abRestore('parallelwid');
+  },
+
+  // ── 8.2.6 POTENTIOMETER ────────────────────────────────────────
+  'potentiometer': modal => {
+    _potInit();
+    modal.innerHTML = _potHTML();
+    _potStatus();
+    _pSim = new PhysicsSimEngine('potAnim', 'potAnim');
+    _pSim.start(dt => _potUpdate(dt), (ctx, cv) => _potDraw(ctx, cv), []);
+    _abRestore('potentiometer');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -50036,5 +50069,640 @@ function _drtAns(qi, oi) {
 function _drtSelf(n) {
   const out = document.getElementById('drtSelfOut'), val = document.getElementById('drtSelfVal');
   if (val) { val.value = String(n); _abSave('draht'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══ KAPITEL 8.2 WIDERSTAND – Batch 2 (8.2.4/8.2.5/8.2.6) – Kleinspannung ═══
+// ═══════════════════════════════════════════════════════
+// 8.2.4  REIHENSCHALTUNG VON WIDERSTÄNDEN
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: In Reihe addieren sich die Widerstände
+// (R_ges = R1 + R2). Der Strom ist überall gleich, die Spannungen
+// addieren sich. Nur ungefährliche Kleinspannung (6 V).
+// ═══════════════════════════════════════════════════════
+let _rwd = null;
+const _RWD_WERTE = [10, 20, 30];
+const _RWD_U = 6;
+function _rwdInit() { _rwd = { r1: 10, r2: 20, t: 0, phase: 0 }; }
+function _rwdRges() { return _rwd.r1 + _rwd.r2; }
+function _rwdI() { return _RWD_U / _rwdRges(); }
+
+function _rwdHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim rwd-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">➕ Reihenschaltung von Widerständen</h3>
+    <div class="fpm-note" style="margin-top:2px">Schalte zwei Widerstände hintereinander (in Reihe). Verändere ihre Werte. Wie groß ist der Gesamtwiderstand und der Strom? (Nur ungefährliche Kleinspannung, 6&nbsp;V.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="rwdAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">R₁:</span>
+          ${_RWD_WERTE.map(w => `<button class="sim-btn${_rwd.r1 === w ? ' primary' : ''}" id="rwd1_${w}" onclick="_rwdSet(1,${w})">${w} Ω</button>`).join('')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">R₂:</span>
+          ${_RWD_WERTE.map(w => `<button class="sim-btn${_rwd.r2 === w ? ' primary' : ''}" id="rwd2_${w}" onclick="_rwdSet(2,${w})">${w} Ω</button>`).join('')}
+          <button class="sim-btn" onclick="_rwdReset()">↺</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Gesamtwiderstand &amp; Strom</div>
+        <div class="lmp-status" id="rwdStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">In der <b>Reihenschaltung</b> addieren sich die Widerstände: <b>R<sub>ges</sub> = R₁ + R₂</b>. Der <b>Strom ist überall gleich</b>. Die <b>Teilspannungen addieren sich</b> zur Gesamtspannung (U = U₁ + U₂). Mehr Widerstände in Reihe → größerer Gesamtwiderstand → kleinerer Strom.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>R<sub>ges</sub> = R₁ + R₂</b> &nbsp;·&nbsp; Strom überall gleich &nbsp;·&nbsp; U = U₁ + U₂.
+    </p>
+    ${_rwdArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _rwdSet(which, w) {
+  if (which === 1) _rwd.r1 = w; else _rwd.r2 = w;
+  _RWD_WERTE.forEach(v => { document.getElementById('rwd1_' + v)?.classList.toggle('primary', _rwd.r1 === v); document.getElementById('rwd2_' + v)?.classList.toggle('primary', _rwd.r2 === v); });
+  _rwdStatus();
+}
+function _rwdReset() { _rwdInit(); _rwdSet(1, 10); _rwdSet(2, 20); _rwdStatus(); }
+function _rwdStatus() {
+  const el = document.getElementById('rwdStatus'); if (!el) return;
+  const I = _rwdI(), u1 = _rwd.r1 * I, u2 = _rwd.r2 * I;
+  el.textContent = `R_ges = ${_rwd.r1} Ω + ${_rwd.r2} Ω = ${_rwdRges()} Ω. Strom (überall gleich) I = ${I.toFixed(2).replace('.', ',')} A. Teilspannungen: U₁ = ${u1.toFixed(1).replace('.', ',')} V, U₂ = ${u2.toFixed(1).replace('.', ',')} V (zusammen 6 V).`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _rwdUpdate(dt) { if (_rwd) { _rwd.t += dt; _rwd.phase += (10 + _rwdI() * 60) * dt; } }
+function _rwdDraw(ctx, cv) {
+  if (!_rwd) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const L = 40, R = W - 40, T = 54, B = H - 44;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4; ctx.beginPath(); ctx.rect(L, T, R - L, B - T); ctx.stroke();
+
+  // Batterie unten
+  const bx = (L + R) / 2, by = B; ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(bx - 14, by - 8); ctx.lineTo(bx - 14, by + 8); ctx.moveTo(bx, by - 14); ctx.lineTo(bx, by + 14); ctx.stroke();
+  ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('6 V', bx - 7, by + 26);
+
+  // R1 (oben links) und R2 (oben rechts) – hintereinander auf oberem Leiter
+  const wy = T, w = 60, h = 16;
+  const r1x = (L + R) / 2 - 90, r2x = (L + R) / 2 + 30;
+  [[r1x, _rwd.r1, 'R₁'], [r2x, _rwd.r2, 'R₂']].forEach(([x, r, lbl]) => {
+    ctx.fillStyle = '#fb923c'; ctx.fillRect(x, wy - h / 2, w, h); ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.strokeRect(x, wy - h / 2, w, h);
+    ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.fillText(lbl + ' = ' + r + ' Ω', x + w / 2, wy - 12);
+  });
+
+  // Amperemeter rechts
+  const amx = R, amy = (T + B) / 2; ctx.fillStyle = '#0b1020'; ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(amx, amy, 16, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#38bdf8'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('A', amx, amy + 5);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.fillText(_rwdI().toFixed(2).replace('.', ',') + ' A', amx - 36, amy + 4);
+
+  // Ladungen – gleiche Dichte überall (Reihe = gleicher Strom)
+  const n = Math.max(6, Math.round(_rwdI() * 16)), per = 2 * ((R - L) + (B - T));
+  for (let i = 0; i < n; i++) {
+    let d = (_rwd.phase + i * per / n) % per, x, y;
+    if (d < (R - L)) { x = L + d; y = T; }
+    else if (d < (R - L) + (B - T)) { x = R; y = T + (d - (R - L)); }
+    else if (d < 2 * (R - L) + (B - T)) { x = R - (d - (R - L) - (B - T)); y = B; }
+    else { x = L; y = B - (d - 2 * (R - L) - (B - T)); }
+    ctx.fillStyle = '#60a5fa'; ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('R_ges = ' + _rwd.r1 + ' + ' + _rwd.r2 + ' = ' + _rwdRges() + ' Ω', (L + R) / 2, 22);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.2.4  (ns = 'reihewid') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _rwdArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('reihewid')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('reihewid')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was ergibt sich, wenn man zwei Widerstände hintereinander (in Reihe) schaltet?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass der Gesamtwiderstand … ist als die einzelnen Widerstände.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle R₁ und R₂ ein und lies R_ges und den Strom ab.</li>
+          <li>Vergrößere einen Widerstand – was passiert mit dem Strom?</li>
+          <li>Vergleiche die Teilspannungen U₁ und U₂ mit der Gesamtspannung.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>R₁ = 10, R₂ = 20</td><td>R_ges = ${inp('b1', '… Ω')}</td><td>I</td><td>${inp('c1', '… A')}</td></tr>
+          <tr><td>R₁ = 30, R₂ = 30</td><td>R_ges = ${inp('b2', '… Ω')}</td><td>I</td><td>${inp('c2', '… A')}</td></tr>
+          <tr><td>U₁ + U₂</td><td>${inp('b3', '… V')}</td><td>= Gesamtspannung?</td><td>${inp('c3', 'ja/nein')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne zwei Widerstände hintereinander mit Batterie und Amperemeter. Zeige, dass der Strom überall gleich ist.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie berechnet man den Gesamtwiderstand in Reihe? ${inp('a1', 'R_ges = …')}</li>
+          <li>Wie ist der Strom in der Reihenschaltung? ${inp('a2', 'überall …')}</li>
+          <li>Was passiert mit dem Strom, wenn R_ges größer wird? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">In der Reihenschaltung ${inp('m1', 'was tun?')} sich die Widerstände: R_ges = R₁ + R₂.<br>
+        Der Strom ist ${inp('m2', 'wie?')}, die Teilspannungen ${inp('m3', 'was tun?')} sich zur Gesamtspannung.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Eine alte Lichterkette ist in Reihe geschaltet. Warum bleibt die ganze Kette dunkel, wenn ein einziges Lämpchen kaputtgeht?</div>
+        ${ta('tr1', 'Weil in der Reihe der Strom … , und wenn eine Stelle unterbrochen ist, …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="rwdMini">${_rwdMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_rwdSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_rwdSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_rwdSelf(3)">😃 sicher</button>
+          <span id="rwdSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="rwdSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> R_ges = R₁ + R₂ (immer größer als jeder Einzelwiderstand). Strom überall gleich. Teilspannungen addieren sich zur Quellenspannung. Beispiel: 10+20 = 30 Ω → I = 6 V/30 Ω = 0,20 A; U₁ = 2 V, U₂ = 4 V.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Reihenschaltung: gleicher Strom I durch alle Bauteile; R_ges = R₁ + R₂ + …; Spannungen teilen sich im Verhältnis der Widerstände (Spannungsteiler), U = U₁ + U₂. Größerer Gesamtwiderstand → kleinerer Strom.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Gesamtwiderstand ist kleiner als die Einzelwiderstände." (2) „Der Strom ist an verschiedenen Stellen unterschiedlich." (3) „Jeder Widerstand bekommt die volle Spannung."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> „hintereinander = addieren"; Strom als Wasserfluss in einem Rohr (überall gleich viel); Teilspannungen mit U = R·I nachrechnen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 30 Ω/0,20 A · 60 Ω/0,10 A · 6 V/ja. 6.1 R_ges = R₁ + R₂ · 6.2 überall gleich · 6.3 der Strom wird kleiner. Merksatz: addieren · überall gleich · addieren. Transfer: In Reihe fließt überall derselbe Strom; ist die Kette an einer Stelle unterbrochen, fließt nirgends mehr Strom → alle Lämpchen aus. Minidiagnose: 1→R₁ + R₂ · 2→Überall gleich · 3→Kleiner.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('reihewid')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('reihewid', 'Reihenschaltung von Widerständen', body);
+}
+
+const _RWD_MINI = [
+  { q: '1. Wie berechnet man den Gesamtwiderstand in einer Reihenschaltung?',
+    opts: ['R_ges = R₁ + R₂', 'R_ges = R₁ − R₂', 'R_ges kleiner als R₁'], correct: 0,
+    fb: ['Richtig! In Reihe addieren sich die Widerstände.',
+         'Subtrahiert wird nichts.',
+         'In Reihe ist R_ges immer größer, nicht kleiner.'] },
+  { q: '2. Wie groß ist der Strom in einer Reihenschaltung?',
+    opts: ['An jeder Stelle unterschiedlich', 'Überall gleich', 'Nur am ersten Widerstand'], correct: 1,
+    fb: ['In Reihe ist der Strom nicht unterschiedlich.',
+         'Richtig! Der Strom ist überall gleich groß.',
+         'Er fließt durch alle Bauteile gleich.'] },
+  { q: '3. Du fügst einen weiteren Widerstand in Reihe hinzu. Was passiert mit dem Strom?',
+    opts: ['Er wird größer', 'Er wird kleiner', 'Er bleibt gleich'], correct: 1,
+    fb: ['Mehr Widerstand macht den Strom nicht größer.',
+         'Richtig! Größerer Gesamtwiderstand → kleinerer Strom.',
+         'Der Strom ändert sich.'] }
+];
+function _rwdMiniHTML() {
+  return _RWD_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_rwdAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="rwdFb${qi}"></div></div>`).join('');
+}
+function _rwdAns(qi, oi) {
+  const m = _RWD_MINI[qi], el = document.getElementById('rwdFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _rwdSelf(n) {
+  const out = document.getElementById('rwdSelfOut'), val = document.getElementById('rwdSelfVal');
+  if (val) { val.value = String(n); _abSave('reihewid'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.2.5  PARALLELSCHALTUNG VON WIDERSTÄNDEN
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: Parallel geschaltete Widerstände liegen an
+// gleicher Spannung; die Ströme addieren sich (I = I1 + I2). Der
+// Gesamtwiderstand wird kleiner als der kleinste Einzelwiderstand.
+// Nur ungefährliche Kleinspannung (4,5 V).
+// ═══════════════════════════════════════════════════════
+let _pwd = null;
+const _PWD_WERTE = [10, 20, 30];
+const _PWD_U = 4.5;
+function _pwdInit() { _pwd = { r1: 10, r2: 20, t: 0, phase: 0 }; }
+function _pwdI1() { return _PWD_U / _pwd.r1; }
+function _pwdI2() { return _PWD_U / _pwd.r2; }
+function _pwdIges() { return _pwdI1() + _pwdI2(); }
+function _pwdRges() { return _PWD_U / _pwdIges(); }
+
+function _pwdHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim pwd-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">⑃ Parallelschaltung von Widerständen</h3>
+    <div class="fpm-note" style="margin-top:2px">Schalte zwei Widerstände nebeneinander (parallel). Verändere ihre Werte. Wie groß ist der Gesamtstrom und der Gesamtwiderstand? (Nur ungefährliche Kleinspannung, 4,5&nbsp;V.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="pwdAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">R₁:</span>
+          ${_PWD_WERTE.map(w => `<button class="sim-btn${_pwd.r1 === w ? ' primary' : ''}" id="pwd1_${w}" onclick="_pwdSet(1,${w})">${w} Ω</button>`).join('')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">R₂:</span>
+          ${_PWD_WERTE.map(w => `<button class="sim-btn${_pwd.r2 === w ? ' primary' : ''}" id="pwd2_${w}" onclick="_pwdSet(2,${w})">${w} Ω</button>`).join('')}
+          <button class="sim-btn" onclick="_pwdReset()">↺</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Ströme &amp; Gesamtwiderstand</div>
+        <div class="lmp-status" id="pwdStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">In der <b>Parallelschaltung</b> liegt an beiden Widerständen die <b>gleiche Spannung</b>. Die <b>Ströme addieren sich</b>: I = I₁ + I₂. Weil es mehr Wege für den Strom gibt, wird der <b>Gesamtwiderstand kleiner</b> als der kleinste Einzelwiderstand.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Gleiche Spannung an beiden &nbsp;·&nbsp; <b>I = I₁ + I₂</b> &nbsp;·&nbsp; R<sub>ges</sub> kleiner als jeder Einzelwiderstand.
+    </p>
+    ${_pwdArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _pwdSet(which, w) {
+  if (which === 1) _pwd.r1 = w; else _pwd.r2 = w;
+  _PWD_WERTE.forEach(v => { document.getElementById('pwd1_' + v)?.classList.toggle('primary', _pwd.r1 === v); document.getElementById('pwd2_' + v)?.classList.toggle('primary', _pwd.r2 === v); });
+  _pwdStatus();
+}
+function _pwdReset() { _pwdInit(); _pwdSet(1, 10); _pwdSet(2, 20); _pwdStatus(); }
+function _pwdStatus() {
+  const el = document.getElementById('pwdStatus'); if (!el) return;
+  el.textContent = `I₁ = ${_pwdI1().toFixed(2).replace('.', ',')} A, I₂ = ${_pwdI2().toFixed(2).replace('.', ',')} A → Gesamtstrom I = ${_pwdIges().toFixed(2).replace('.', ',')} A. Gesamtwiderstand R_ges = U/I = ${_pwdRges().toFixed(1).replace('.', ',')} Ω (kleiner als ${Math.min(_pwd.r1, _pwd.r2)} Ω).`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _pwdUpdate(dt) { if (_pwd) { _pwd.t += dt; _pwd.phase += 55 * dt; } }
+function _pwdDraw(ctx, cv) {
+  if (!_pwd) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const L = 40, R = W - 40, T = 40, B = H - 40;
+  // Außenrahmen (Hauptleitung)
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4; ctx.beginPath(); ctx.rect(L, T, R - L, B - T); ctx.stroke();
+
+  // Batterie unten
+  const bx = (L + R) / 2, by = B; ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(bx - 14, by - 8); ctx.lineTo(bx - 14, by + 8); ctx.moveTo(bx, by - 14); ctx.lineTo(bx, by + 14); ctx.stroke();
+  ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('4,5 V', bx - 7, by + 22);
+
+  // Zwei parallele Zweige in der Mitte (senkrecht), je mit Widerstand
+  const zx1 = (L + R) / 2 - 60, zx2 = (L + R) / 2 + 60, zTop = T, zBot = B;
+  [[zx1, _pwd.r1, 'R₁', _pwdI1()], [zx2, _pwd.r2, 'R₂', _pwdI2()]].forEach(([x, r, lbl, ii]) => {
+    ctx.strokeStyle = '#475569'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x, zTop); ctx.lineTo(x, zBot); ctx.stroke();
+    // Widerstands-Kästchen in der Mitte des Zweigs
+    const my = (zTop + zBot) / 2;
+    ctx.fillStyle = '#fb923c'; ctx.fillRect(x - 8, my - 20, 16, 40); ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.strokeRect(x - 8, my - 20, 16, 40);
+    ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(lbl + '=' + r + 'Ω', x, my - 26);
+    ctx.fillStyle = '#93c5fd'; ctx.font = '9px sans-serif'; ctx.fillText(ii.toFixed(2).replace('.', ',') + ' A', x, my + 34);
+  });
+
+  // Amperemeter im Hauptzweig (rechts) – Gesamtstrom
+  const amx = R, amy = (T + B) / 2; ctx.fillStyle = '#0b1020'; ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(amx, amy, 15, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#38bdf8'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('A', amx, amy + 5);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.fillText(_pwdIges().toFixed(2).replace('.', ',') + ' A', amx - 32, amy + 4);
+
+  // Ladungen: Hauptleitung dicht (Gesamtstrom), Zweige je nach Teilstrom
+  const ph = _pwd.phase;
+  // Hauptleitung oben (L→R) und unten – Dichte ~ Iges
+  const mainN = Math.max(6, Math.round(_pwdIges() * 12));
+  for (let i = 0; i < mainN; i++) {
+    let frac = ((ph * 0.02 + i / mainN) % 1);
+    // oben
+    ctx.fillStyle = '#60a5fa'; ctx.beginPath(); ctx.arc(L + frac * (R - L), T, 3, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(R - frac * (R - L), B, 3, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('I = I₁ + I₂ = ' + _pwdIges().toFixed(2).replace('.', ',') + ' A', (L + R) / 2, 20);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.2.5  (ns = 'parallelwid') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _pwdArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('parallelwid')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('parallelwid')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was passiert mit Strom und Gesamtwiderstand, wenn man zwei Widerstände nebeneinander (parallel) schaltet?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass der Gesamtwiderstand … wird und der Gesamtstrom …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle R₁ und R₂ ein und lies die Ströme I₁ und I₂ ab.</li>
+          <li>Bilde den Gesamtstrom I = I₁ + I₂.</li>
+          <li>Berechne R_ges = U/I und vergleiche mit den Einzelwiderständen.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>R₁ = 10 Ω</td><td>I₁ = ${inp('b1', '… A')}</td><td>R₂ = 20 Ω</td><td>I₂ = ${inp('b2', '… A')}</td></tr>
+          <tr><td>Gesamtstrom I</td><td>${inp('b3', '… A')}</td><td>R_ges = U/I</td><td>${inp('b4', '… Ω')}</td></tr>
+          <tr><td>R_ges kleiner als R₁?</td><td>${inp('b5', 'ja/nein')}</td><td>kleiner als R₂?</td><td>${inp('b6', 'ja/nein')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne zwei Widerstände nebeneinander (parallel) mit Batterie. Markiere, dass an beiden die gleiche Spannung liegt.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie ist die Spannung an parallelen Widerständen? ${inp('a1', 'an beiden …')}</li>
+          <li>Wie berechnet man den Gesamtstrom? ${inp('a2', 'I = …')}</li>
+          <li>Ist R_ges größer oder kleiner als die Einzelwiderstände? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">In der Parallelschaltung liegt an beiden Widerständen die ${inp('m1', 'wie?')} Spannung. Die Ströme ${inp('m2', 'was tun?')} sich: I = I₁ + I₂.<br>
+        Der Gesamtwiderstand wird ${inp('m3', 'größer/kleiner')} als der kleinste Einzelwiderstand.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Die Steckdosen und Lampen im Haus sind parallel geschaltet. Warum leuchten die anderen Lampen weiter, wenn eine kaputtgeht?</div>
+        ${ta('tr1', 'Weil jede Lampe einen eigenen Zweig hat und …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="pwdMini">${_pwdMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_pwdSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_pwdSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_pwdSelf(3)">😃 sicher</button>
+          <span id="pwdSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="pwdSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Gleiche Spannung an beiden Widerständen; Ströme addieren sich; R_ges kleiner als der kleinste Einzelwiderstand. Beispiel (10 Ω ∥ 20 Ω, 4,5 V): I₁ = 0,45 A, I₂ = 0,225 A, I = 0,675 A, R_ges = 4,5/0,675 ≈ 6,7 Ω.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Parallelschaltung: gleiche Spannung an allen Zweigen; Gesamtstrom = Summe der Zweigströme (Knotenregel); 1/R_ges = 1/R₁ + 1/R₂ + …, daher R_ges < kleinster Einzelwiderstand. Mehr parallele Wege → kleinerer Gesamtwiderstand → größerer Gesamtstrom.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Auch parallel addieren sich die Widerstände." (2) „Der Gesamtwiderstand ist größer." (3) „Fällt ein Zweig aus, ist alles aus."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Ströme (nicht Widerstände) addieren; Wasser-Analogie (mehrere Rohre nebeneinander lassen mehr durch); R_ges = U/I_ges berechnen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 0,45 A · 0,225 A · 0,675 A · ≈6,7 Ω · ja · ja. 6.1 „an beiden gleich" · 6.2 I = I₁ + I₂ · 6.3 kleiner. Merksatz: gleiche · addieren · kleiner. Transfer: Jede Lampe hat einen eigenen Zweig mit gleicher Spannung; fällt eine aus, funktionieren die anderen weiter. Minidiagnose: 1→An beiden gleich · 2→I₁ + I₂ · 3→Kleiner.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('parallelwid')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('parallelwid', 'Parallelschaltung von Widerständen', body);
+}
+
+const _PWD_MINI = [
+  { q: '1. Wie ist die Spannung an zwei parallelen Widerständen?',
+    opts: ['An beiden gleich', 'Sie teilt sich auf', 'Am ersten größer'], correct: 0,
+    fb: ['Richtig! In der Parallelschaltung liegt überall die gleiche Spannung an.',
+         'Das gilt für die Reihenschaltung.',
+         'Beide bekommen die gleiche Spannung.'] },
+  { q: '2. Wie berechnet man den Gesamtstrom in der Parallelschaltung?',
+    opts: ['I = I₁ − I₂', 'I = I₁ + I₂', 'I ist überall gleich'], correct: 1,
+    fb: ['Subtrahiert wird nichts.',
+         'Richtig! Die Zweigströme addieren sich.',
+         'Der Gesamtstrom ist die Summe der Zweigströme.'] },
+  { q: '3. Wie ist der Gesamtwiderstand im Vergleich zu den Einzelwiderständen?',
+    opts: ['Größer als beide', 'Kleiner als der kleinste', 'Genau dazwischen'], correct: 1,
+    fb: ['Parallel wird der Gesamtwiderstand nicht größer.',
+         'Richtig! R_ges ist kleiner als der kleinste Einzelwiderstand.',
+         'Er ist sogar kleiner als der kleinste Einzelwiderstand.'] }
+];
+function _pwdMiniHTML() {
+  return _PWD_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_pwdAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="pwdFb${qi}"></div></div>`).join('');
+}
+function _pwdAns(qi, oi) {
+  const m = _PWD_MINI[qi], el = document.getElementById('pwdFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _pwdSelf(n) {
+  const out = document.getElementById('pwdSelfOut'), val = document.getElementById('pwdSelfVal');
+  if (val) { val.value = String(n); _abSave('parallelwid'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.2.6  DAS POTENTIOMETER (VERÄNDERBARER WIDERSTAND)
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: Mit einem Schieberegler verändert man den
+// Widerstand stufenlos → der Strom (und die Helligkeit) ändert sich.
+// Anwendung: Dimmer, Lautstärkeregler. Kleinspannung (4,5 V).
+// ═══════════════════════════════════════════════════════
+let _pot = null;
+const _POT_U = 4.5, _POT_RMAX = 45, _POT_RLAMP = 5;
+function _potInit() { _pot = { pos: 5, t: 0, phase: 0 }; }   // pos 0..10
+function _potR() { return (_pot.pos / 10) * _POT_RMAX; }
+function _potI() { return _POT_U / (_potR() + _POT_RLAMP); }
+
+function _potHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim pot-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🎚️ Das Potentiometer – ein veränderbarer Widerstand</h3>
+    <div class="fpm-note" style="margin-top:2px">Schiebe den Regler und verändere den Widerstand stufenlos. Beobachte, wie sich Strom und Helligkeit ändern. (Nur ungefährliche Kleinspannung, 4,5&nbsp;V.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="potAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_potMove(-1)">◀ weniger Widerstand</button>
+          <button class="sim-btn" onclick="_potMove(1)">mehr Widerstand ▶</button>
+          <button class="sim-btn" onclick="_potReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Widerstand, Strom &amp; Helligkeit</div>
+        <div class="lmp-status" id="potStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Ein <b>Potentiometer</b> (Schiebe- oder Drehwiderstand) hat einen <b>stufenlos veränderbaren</b> Widerstand. Kleiner Widerstand → viel Strom → Lampe hell. Großer Widerstand → wenig Strom → Lampe dunkel. Anwendung: <b>Dimmer</b>, <b>Lautstärkeregler</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Regler stufenlos → Widerstand ändert sich → <b>Strom &amp; Helligkeit</b> ändern sich.
+    </p>
+    ${_potArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _potMove(d) { _pot.pos = Math.max(0, Math.min(10, _pot.pos + d)); _potStatus(); }
+function _potReset() { _potInit(); _potStatus(); }
+function _potStatus() {
+  const el = document.getElementById('potStatus'); if (!el) return;
+  const R = _potR(), I = _potI();
+  const hell = I > 0.5 ? 'sehr hell' : (I > 0.25 ? 'mittel hell' : (I > 0.12 ? 'schwach' : 'sehr dunkel'));
+  el.textContent = `Reglerwiderstand R = ${R.toFixed(0)} Ω → Strom I = ${I.toFixed(2).replace('.', ',')} A. Die Lampe leuchtet ${hell}. Kleiner Widerstand = viel Strom = hell.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _potUpdate(dt) { if (_pot) { _pot.t += dt; _pot.phase += (10 + _potI() * 60) * dt; } }
+function _potDraw(ctx, cv) {
+  if (!_pot) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const L = 40, R = W - 40, T = 54, B = H - 44;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4; ctx.beginPath(); ctx.rect(L, T, R - L, B - T); ctx.stroke();
+
+  // Batterie unten
+  const bx = (L + R) / 2, by = B; ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(bx - 14, by - 8); ctx.lineTo(bx - 14, by + 8); ctx.moveTo(bx, by - 14); ctx.lineTo(bx, by + 14); ctx.stroke();
+  ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('4,5 V', bx - 7, by + 26);
+
+  // Potentiometer oben: Widerstandsbahn + Schleifer
+  const barX = (L + R) / 2 - 70, barY = T, barW = 140;
+  ctx.strokeStyle = '#fb923c'; ctx.lineWidth = 8; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(barX, barY); ctx.lineTo(barX + barW, barY); ctx.stroke(); ctx.lineCap = 'butt';
+  // Schleifer (Position ~ pos)
+  const sx = barX + barW * (_pot.pos / 10);
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(sx, barY - 16); ctx.lineTo(sx, barY - 2); ctx.stroke();
+  ctx.fillStyle = '#e2e8f0'; ctx.beginPath(); ctx.moveTo(sx - 5, barY - 16); ctx.lineTo(sx + 5, barY - 16); ctx.lineTo(sx, barY - 8); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.fillText('R = ' + _potR().toFixed(0) + ' Ω', (L + R) / 2, barY - 22);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText('Potentiometer', (L + R) / 2, barY + 18);
+
+  // Lampe links, Helligkeit ~ I
+  const lax = L, lay = (T + B) / 2, br = Math.min(1, _potI() / 0.9);
+  const g = ctx.createRadialGradient(lax, lay, 2, lax, lay, 22); g.addColorStop(0, `rgba(255,240,150,${0.12 + 0.88 * br})`); g.addColorStop(1, 'rgba(255,240,150,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(lax, lay, 22, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(lax, lay, 11, 0, 2 * Math.PI); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(lax - 8, lay - 8); ctx.lineTo(lax + 8, lay + 8); ctx.moveTo(lax + 8, lay - 8); ctx.lineTo(lax - 8, lay + 8); ctx.stroke();
+
+  // Amperemeter rechts
+  const amx = R, amy = (T + B) / 2; ctx.fillStyle = '#0b1020'; ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(amx, amy, 15, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#38bdf8'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('A', amx, amy + 5);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.fillText(_potI().toFixed(2).replace('.', ',') + ' A', amx - 32, amy + 4);
+
+  // Ladungen
+  const n = Math.max(4, Math.round(_potI() * 14)), per = 2 * ((R - L) + (B - T));
+  for (let i = 0; i < n; i++) {
+    let d = (_pot.phase + i * per / n) % per, x, y;
+    if (d < (R - L)) { x = L + d; y = T; }
+    else if (d < (R - L) + (B - T)) { x = R; y = T + (d - (R - L)); }
+    else if (d < 2 * (R - L) + (B - T)) { x = R - (d - (R - L) - (B - T)); y = B; }
+    else { x = L; y = B - (d - 2 * (R - L) - (B - T)); }
+    ctx.fillStyle = '#60a5fa'; ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('R = ' + _potR().toFixed(0) + ' Ω   →   I = ' + _potI().toFixed(2).replace('.', ',') + ' A', (L + R) / 2, 20);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.2.6  (ns = 'potentiometer') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _potArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('potentiometer')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('potentiometer')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie kann man den Strom in einem Kreis stufenlos (langsam) verändern?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Lampe heller wird, wenn ich den Regler …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Schiebe den Regler ganz auf kleinen Widerstand.</li>
+          <li>Schiebe ihn langsam auf großen Widerstand.</li>
+          <li>Beobachte Strom und Helligkeit bei jeder Stellung.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>kleiner Widerstand</td><td>${inp('b1', 'I = … A')}</td><td>Lampe</td><td>${inp('c1', 'hell/dunkel')}</td></tr>
+          <tr><td>mittlerer Widerstand</td><td>${inp('b2', 'I = … A')}</td><td>Lampe</td><td>${inp('c2', 'hell/dunkel')}</td></tr>
+          <tr><td>großer Widerstand</td><td>${inp('b3', 'I = … A')}</td><td>Lampe</td><td>${inp('c3', 'hell/dunkel')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne ein Potentiometer mit Schieberegler im Stromkreis mit Lampe. Male einen Pfeil für „mehr Widerstand".</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was passiert mit dem Strom, wenn der Widerstand größer wird? ${inp('a1', '')}</li>
+          <li>Wozu benutzt man ein Potentiometer im Alltag? ${inp('a2', 'z. B. …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ein Potentiometer ist ein ${inp('m1', 'wie veränderbarer?')} veränderbarer Widerstand.<br>
+        Kleiner Widerstand → ${inp('m2', 'viel/wenig')} Strom → helle Lampe. Man nutzt es z. B. als ${inp('m3', 'wofür?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">An einem Radio drehst du am Lautstärkeknopf. Was verändert sich dabei im Inneren – und was hat das mit einem Potentiometer zu tun?</div>
+        ${ta('tr1', 'Beim Drehen verändert sich der Widerstand, dadurch …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="potMini">${_potMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_potSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_potSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_potSelf(3)">😃 sicher</button>
+          <span id="potSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="potSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Kleiner Reglerwiderstand → großer Strom → helle Lampe. Großer Reglerwiderstand → kleiner Strom → dunkle Lampe. Der Übergang ist stufenlos.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Ein Potentiometer ist ein stufenlos einstellbarer Widerstand (Schleifkontakt auf einer Widerstandsbahn). Als Vorwiderstand (Rheostat) in Reihe verändert er den Strom: I = U/(R_regler + R_last). Anwendungen: Dimmer, Lautstärke-/Helligkeitsregler, Sensoren.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Ein Potentiometer erzeugt Strom." (2) „Mehr Widerstand macht heller." (3) „Der Widerstand ändert sich nur in festen Stufen."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Regler = einstellbarer Widerstand; R und I gegenläufig (R↑ → I↓); Alltagsgeräte (Dimmer, Lautstärke) als Anker.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: großer Strom/hell · mittel · kleiner Strom/dunkel. 6.1 „er wird kleiner" · 6.2 Dimmer, Lautstärkeregler. Merksatz: stufenlos · viel · Dimmer/Lautstärkeregler. Transfer: Der Drehknopf verstellt einen Widerstand; dadurch ändert sich der Strom zum Lautsprecher und damit die Lautstärke. Minidiagnose: 1→Ein stufenlos veränderbarer Widerstand · 2→Kleiner Widerstand · 3→Als Dimmer/Lautstärkeregler.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('potentiometer')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('potentiometer', 'Das Potentiometer – ein veränderbarer Widerstand', body);
+}
+
+const _POT_MINI = [
+  { q: '1. Was ist ein Potentiometer?',
+    opts: ['Eine Stromquelle', 'Ein stufenlos veränderbarer Widerstand', 'Ein Messgerät für Spannung'], correct: 1,
+    fb: ['Es erzeugt keinen Strom.',
+         'Richtig! Ein Potentiometer ist ein einstellbarer Widerstand.',
+         'Das wäre ein Voltmeter.'] },
+  { q: '2. Du stellst einen kleineren Widerstand ein. Was passiert mit der Lampe?',
+    opts: ['Sie wird heller', 'Sie wird dunkler', 'Sie geht aus'], correct: 0,
+    fb: ['Richtig! Kleiner Widerstand → mehr Strom → heller.',
+         'Kleiner Widerstand macht die Lampe nicht dunkler.',
+         'Sie geht nicht aus, sondern wird heller.'] },
+  { q: '3. Wofür benutzt man ein Potentiometer im Alltag?',
+    opts: ['Als Dimmer oder Lautstärkeregler', 'Als Batterie', 'Als Sicherung'], correct: 0,
+    fb: ['Richtig! Zum stufenlosen Regeln, z. B. Dimmer oder Lautstärke.',
+         'Eine Batterie ist eine Stromquelle.',
+         'Eine Sicherung hat eine andere Aufgabe.'] }
+];
+function _potMiniHTML() {
+  return _POT_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_potAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="potFb${qi}"></div></div>`).join('');
+}
+function _potAns(qi, oi) {
+  const m = _POT_MINI[qi], el = document.getElementById('potFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _potSelf(n) {
+  const out = document.getElementById('potSelfOut'), val = document.getElementById('potSelfVal');
+  if (val) { val.value = String(n); _abSave('potentiometer'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
