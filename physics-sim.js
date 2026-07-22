@@ -299,7 +299,10 @@ const _physAbDefs = {
   'stromgefahren': { titel: 'Gefahren des elektrischen Stroms & Schutz', ns: 'stromgefahr', html: () => _gefArbeitsblattHTML() },
   'v-begriff': { titel: 'Was bedeutet Geschwindigkeit?', ns: 'vbegriff', html: () => _vbgArbeitsblattHTML() },
   'v-messen': { titel: 'Wie misst man eine Geschwindigkeit?', ns: 'vmessen', html: () => _vmsArbeitsblattHTML() },
-  'v-formel': { titel: 'Wie berechnet man eine Geschwindigkeit? (v = s / t)', ns: 'vformel', html: () => _vstArbeitsblattHTML() }
+  'v-formel': { titel: 'Wie berechnet man eine Geschwindigkeit? (v = s / t)', ns: 'vformel', html: () => _vstArbeitsblattHTML() },
+  'v-umrechnung': { titel: 'Wie werden m/s und km/h umgerechnet?', ns: 'umrechnung', html: () => _umrArbeitsblattHTML() },
+  'gleichfoermig-rs': { titel: 'Was ist eine gleichförmige Bewegung?', ns: 'gleichfoermig-rs', html: () => _glmArbeitsblattHTML() },
+  'beschleunigung-rs': { titel: 'Was ist eine beschleunigte Bewegung?', ns: 'beschleunigung-rs', html: () => _bwgArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -1109,6 +1112,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('vstAnim', 'vstAnim');
     _pSim.start(dt => _vstUpdate(dt), (ctx, cv) => _vstDraw(ctx, cv), []);
     _abRestore('vformel');
+  },
+
+  // ── 8.4.4 UMRECHNUNG m/s ↔ km/h ────────────────────────────────
+  'v-umrechnung': modal => {
+    _umrInit();
+    modal.innerHTML = _umrHTML();
+    _umrStatus();
+    _pSim = new PhysicsSimEngine('umrAnim', 'umrAnim');
+    _pSim.start(dt => _umrUpdate(dt), (ctx, cv) => _umrDraw(ctx, cv), []);
+    _abRestore('umrechnung');
+  },
+
+  // ── 8.4.5 GLEICHFÖRMIGE BEWEGUNG (RS) ──────────────────────────
+  'gleichfoermig-rs': modal => {
+    _glmInit();
+    modal.innerHTML = _glmHTML();
+    _glmStatus();
+    _pSim = new PhysicsSimEngine('glmAnim', 'glmAnim');
+    _pSim.start(dt => _glmUpdate(dt), (ctx, cv) => _glmDraw(ctx, cv), []);
+    _abRestore('gleichfoermig-rs');
+  },
+
+  // ── 8.4.6 BESCHLEUNIGTE BEWEGUNG (RS) ──────────────────────────
+  'beschleunigung-rs': modal => {
+    _bwgInit();
+    modal.innerHTML = _bwgHTML();
+    _bwgStatus();
+    _pSim = new PhysicsSimEngine('bwgAnim', 'bwgAnim');
+    _pSim.start(dt => _bwgUpdate(dt), (ctx, cv) => _bwgDraw(ctx, cv), []);
+    _abRestore('beschleunigung-rs');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -52446,5 +52479,598 @@ function _vstAns(qi, oi) {
 function _vstSelf(n) {
   const out = document.getElementById('vstSelfOut'), val = document.getElementById('vstSelfVal');
   if (val) { val.value = String(n); _abSave('vformel'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══ KAPITEL 8.4 GESCHWINDIGKEIT – Batch 2 (8.4.4/8.4.5/8.4.6) ═══
+// ═══════════════════════════════════════════════════════
+// 8.4.4  WIE WERDEN m/s UND km/h UMGERECHNET?
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Bewegung"
+// Handlungsorientiert: 1 m/s = 3,6 km/h. m/s → km/h: mal 3,6.
+// km/h → m/s: durch 3,6. Alltagsbeispiele vergleichen.
+// ═══════════════════════════════════════════════════════
+let _umr = null;
+const _UMR_BSP = [
+  { name: '🚶 Fußgänger', ms: 1.5 }, { name: '🚴 Radfahrer', ms: 5 },
+  { name: '🚗 Auto (Stadt)', ms: 14 }, { name: '🚄 ICE', ms: 83 }
+];
+function _umrInit() { _umr = { ms: 10, t: 0, anim: 0 }; }
+function _umrKmh() { return _umr.ms * 3.6; }
+function _umrN(v, d) { return v.toFixed(d == null ? 1 : d).replace('.', ','); }
+
+function _umrHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim umr-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔄 Wie werden m/s und km/h umgerechnet?</h3>
+    <div class="fpm-note" style="margin-top:2px">Stelle eine Geschwindigkeit ein und sieh dir beide Einheiten an. Merke: von m/s zu km/h mal 3,6 – von km/h zu m/s durch 3,6.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="umrAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_umrStep(-1)">◀ langsamer</button>
+          <button class="sim-btn" onclick="_umrStep(1)">schneller ▶</button>
+          <button class="sim-btn" onclick="_umrReset()">↺</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${_UMR_BSP.map((b, i) => `<button class="sim-btn" onclick="_umrBsp(${i})">${b.name}</button>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Umrechnung</div>
+        <div class="lmp-status" id="umrStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>1 m/s = 3,6 km/h.</b> Um von <b>m/s in km/h</b> umzurechnen, multipliziert man mit <b>3,6</b>. Um von <b>km/h in m/s</b> umzurechnen, teilt man durch <b>3,6</b>. So kann man Alltagsgeschwindigkeiten vergleichen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      m/s → km/h: <b>× 3,6</b> &nbsp;·&nbsp; km/h → m/s: <b>÷ 3,6</b> &nbsp;·&nbsp; 1 m/s = 3,6 km/h.
+    </p>
+    ${_umrArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _umrStep(d) { _umr.ms = Math.max(0, Math.min(90, Math.round((_umr.ms + d) * 10) / 10)); _umrStatus(); }
+function _umrBsp(i) { _umr.ms = _UMR_BSP[i].ms; _umrStatus(); }
+function _umrReset() { _umrInit(); _umrStatus(); }
+function _umrStatus() {
+  const el = document.getElementById('umrStatus'); if (!el) return;
+  el.textContent = `${_umrN(_umr.ms)} m/s · 3,6 = ${_umrN(_umrKmh())} km/h. (Rückwärts: ${_umrN(_umrKmh())} km/h ÷ 3,6 = ${_umrN(_umr.ms)} m/s.)`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _umrUpdate(dt) { if (_umr) { _umr.t += dt; _umr.anim += dt * (0.05 + _umr.ms / 120); if (_umr.anim > 1) _umr.anim -= 1; } }
+function _umrDraw(ctx, cv) {
+  if (!_umr) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+
+  // Zwei Anzeigeboxen
+  const boxes = [{ x: 70, lbl: 'm/s', val: _umrN(_umr.ms), col: '#38bdf8' }, { x: W - 190, lbl: 'km/h', val: _umrN(_umrKmh()), col: '#f59e0b' }];
+  boxes.forEach(b => {
+    ctx.fillStyle = '#0b1020'; ctx.strokeStyle = b.col; ctx.lineWidth = 2; ctx.beginPath(); ctx.rect(b.x, 40, 120, 44); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = b.col; ctx.font = '700 22px monospace'; ctx.textAlign = 'center'; ctx.fillText(b.val, b.x + 60, 70);
+    ctx.fillStyle = '#94a3b8'; ctx.font = '11px sans-serif'; ctx.fillText(b.lbl, b.x + 60, 98);
+  });
+  // Pfeil × 3,6
+  ctx.strokeStyle = '#86efac'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(198, 62); ctx.lineTo(W - 196, 62); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(W - 196, 62); ctx.lineTo(W - 204, 57); ctx.lineTo(W - 204, 67); ctx.closePath(); ctx.fillStyle = '#86efac'; ctx.fill();
+  ctx.fillStyle = '#86efac'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('× 3,6', W / 2, 54);
+  ctx.fillStyle = '#fca5a5'; ctx.font = '11px sans-serif'; ctx.fillText('÷ 3,6', W / 2, 80);
+
+  // Fahrbahn + Fahrzeug, Tempo ~ ms
+  const y = 170, x0 = 40, x1 = W - 40;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x0, y + 12); ctx.lineTo(x1, y + 12); ctx.stroke();
+  const cx = x0 + (x1 - x0) * _umr.anim;
+  ctx.fillStyle = '#22c55e'; ctx.fillRect(cx - 16, y - 6, 32, 15);
+  ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(cx - 8, y + 11, 4, 0, 2 * Math.PI); ctx.arc(cx + 8, y + 11, 4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_umrN(_umr.ms) + ' m/s  =  ' + _umrN(_umrKmh()) + ' km/h', W / 2, 210);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.4.4  (ns = 'umrechnung') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _umrArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('umrechnung')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('umrechnung')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie rechnet man Geschwindigkeiten von m/s in km/h um – und zurück?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass 10 m/s ungefähr … km/h sind.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle 10 m/s ein und lies die km/h ab.</li>
+          <li>Probiere die Beispiele (Fußgänger, Radfahrer, Auto, ICE).</li>
+          <li>Achte auf den Faktor zwischen den beiden Zahlen.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>1 m/s</td><td>= ${inp('b1', '… km/h')}</td><td>10 m/s</td><td>= ${inp('b2', '… km/h')}</td></tr>
+          <tr><td>5 m/s (Radfahrer)</td><td>= ${inp('b3', '… km/h')}</td><td>Auto 14 m/s</td><td>= ${inp('b4', '… km/h')}</td></tr>
+          <tr><td>36 km/h</td><td>= ${inp('b5', '… m/s')}</td><td>Faktor</td><td>${inp('b6', 'mal/durch …')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne zwei Kästchen (m/s und km/h) mit einem Pfeil „× 3,6" dazwischen und „÷ 3,6" zurück.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie rechnet man von m/s in km/h um? ${inp('a1', 'mal …')}</li>
+          <li>Wie rechnet man von km/h in m/s um? ${inp('a2', 'durch …')}</li>
+          <li>Wie viele km/h ist 1 m/s? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">1 m/s = ${inp('m1', 'Zahl')} km/h.<br>
+        Von m/s nach km/h: ${inp('m2', 'mal/durch')} 3,6. Von km/h nach m/s: ${inp('m3', 'mal/durch')} 3,6.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Aufgabe)</div>
+        <div class="ab-t">Ein Auto fährt 50 km/h. Wie viel m/s sind das? Und wie viel km/h sind 25 m/s?</div>
+        ${ta('tr1', '50 km/h ÷ 3,6 = … m/s ; 25 m/s · 3,6 = … km/h', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="umrMini">${_umrMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_umrSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_umrSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_umrSelf(3)">😃 sicher</button>
+          <span id="umrSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="umrSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> 1 m/s = 3,6 km/h. 10 m/s = 36 km/h · 5 m/s = 18 km/h · 14 m/s ≈ 50 km/h · 36 km/h = 10 m/s.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Umrechnung folgt aus 1 m/s = 1 m / 1 s = 0,001 km / (1/3600 h) = 3,6 km/h. Also m/s → km/h: · 3,6; km/h → m/s: ÷ 3,6.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „m/s und km/h sind gleich groß." (2) „Man rechnet mit 3,6 in beide Richtungen mal." (3) „Faktor ist 1000 oder 60."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Merksatz „mal 3,6 / durch 3,6"; Alltagsanker (50 km/h ≈ 14 m/s); Einheit mitschreiben.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 3,6 · 36 · 18 · ≈50 km/h; 10 m/s; „durch 3,6". 6.1 mal 3,6 · 6.2 durch 3,6 · 6.3 3,6 km/h. Merksatz: 3,6 · mal · durch. Transfer: 50 ÷ 3,6 ≈ 13,9 m/s ; 25 · 3,6 = 90 km/h. Minidiagnose: 1→3,6 km/h · 2→Mal 3,6 · 3→36 km/h.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('umrechnung')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('umrechnung', 'Wie werden m/s und km/h umgerechnet?', body);
+}
+
+const _UMR_MINI = [
+  { q: '1. Wie viele km/h ist 1 m/s?',
+    opts: ['1 km/h', '3,6 km/h', '60 km/h'], correct: 1,
+    fb: ['1 m/s ist mehr als 1 km/h.',
+         'Richtig! 1 m/s = 3,6 km/h.',
+         'So groß ist der Faktor nicht.'] },
+  { q: '2. Wie rechnet man von m/s in km/h um?',
+    opts: ['Mal 3,6', 'Durch 3,6', 'Mal 1000'], correct: 0,
+    fb: ['Richtig! m/s · 3,6 = km/h.',
+         'Das wäre der Weg zurück (km/h → m/s).',
+         'Mit 1000 rechnet man km ↔ m, nicht km/h ↔ m/s.'] },
+  { q: '3. Wie viel km/h sind 10 m/s?',
+    opts: ['3,6 km/h', '36 km/h', '360 km/h'], correct: 1,
+    fb: ['Das ist nur 1 m/s.',
+         'Richtig! 10 · 3,6 = 36 km/h.',
+         'Um den Faktor 10 zu groß.'] }
+];
+function _umrMiniHTML() {
+  return _UMR_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_umrAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="umrFb${qi}"></div></div>`).join('');
+}
+function _umrAns(qi, oi) {
+  const m = _UMR_MINI[qi], el = document.getElementById('umrFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _umrSelf(n) {
+  const out = document.getElementById('umrSelfOut'), val = document.getElementById('umrSelfVal');
+  if (val) { val.value = String(n); _abSave('umrechnung'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.4.5  WAS IST EINE GLEICHFÖRMIGE BEWEGUNG?
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Bewegung"
+// Handlungsorientiert: Bei gleichförmiger Bewegung ist die
+// Geschwindigkeit konstant – in gleichen Zeiten werden gleiche
+// Strecken zurückgelegt (gleichmäßige Markierungen).
+// ═══════════════════════════════════════════════════════
+let _glm = null;
+const _GLM_SPEED = { langsam: { name: 'langsam', v: 40 }, mittel: { name: 'mittel', v: 70 }, schnell: { name: 'schnell', v: 110 } };
+function _glmInit() { _glm = { speed: 'mittel', t: 0, pos: 0, laufen: false, marks: [], lastMark: 0 }; }
+function _glmV() { return _GLM_SPEED[_glm.speed].v; }
+
+function _glmHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim glm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">➡️ Was ist eine gleichförmige Bewegung?</h3>
+    <div class="fpm-note" style="margin-top:2px">Lass den Wagen mit gleichbleibender Geschwindigkeit fahren. Jede Sekunde wird eine Marke gesetzt. Wie sind die Abstände zwischen den Marken?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="glmAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Tempo:</span>
+          ${Object.keys(_GLM_SPEED).map(k => `<button class="sim-btn${_glm.speed === k ? ' primary' : ''}" id="glmS_${k}" onclick="_glmSet('${k}')">${_GLM_SPEED[k].name}</button>`).join('')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" onclick="_glmStart()">▶ Fahren</button>
+          <button class="sim-btn" onclick="_glmReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Beobachtung</div>
+        <div class="lmp-status" id="glmStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Bei einer <b>gleichförmigen Bewegung</b> bleibt die <b>Geschwindigkeit gleich</b> (konstant). In <b>gleichen Zeiten</b> legt der Körper <b>gleiche Strecken</b> zurück – deshalb sind die Sekunden-Marken <b>gleich weit</b> auseinander. Im Weg-Zeit-Diagramm ergibt das eine Gerade.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Konstante Geschwindigkeit → in gleichen Zeiten <b>gleiche Strecken</b> → gleiche Abstände.
+    </p>
+    ${_glmArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _glmSet(k) { _glm.speed = k; Object.keys(_GLM_SPEED).forEach(x => document.getElementById('glmS_' + x)?.classList.toggle('primary', x === k)); _glmReset2(); }
+function _glmReset2() { _glm.pos = 0; _glm.laufen = false; _glm.marks = []; _glm.lastMark = 0; _glm.t = 0; _glmStatus(); }
+function _glmStart() { _glm.pos = 0; _glm.marks = []; _glm.lastMark = 0; _glm.t = 0; _glm.laufen = true; _glmStatus(); }
+function _glmReset() { _glmInit(); _glmSet('mittel'); _glmReset2(); }
+function _glmStatus() {
+  const el = document.getElementById('glmStatus'); if (!el) return;
+  el.textContent = `Gleichförmige Bewegung mit v = ${_glmV()} (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _glmUpdate(dt) {
+  if (!_glm || !_glm.laufen) return;
+  _glm.t += dt;
+  _glm.pos += _glmV() * dt;
+  if (_glm.t - _glm.lastMark >= 1) { _glm.lastMark += 1; _glm.marks.push(_glmV() * _glm.lastMark); }
+  if (_glm.pos >= 360) { _glm.pos = 360; _glm.laufen = false; }
+}
+function _glmDraw(ctx, cv) {
+  if (!_glm) return;
+  const W = cv.width, H = cv.height, x0 = 40, cy = 150;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  // Bahn
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x0, cy + 14); ctx.lineTo(x0 + 370, cy + 14); ctx.stroke();
+  // Sekunden-Marken
+  _glm.marks.forEach((m, i) => {
+    const x = x0 + Math.min(m, 360);
+    ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x, cy - 20); ctx.lineTo(x, cy + 20); ctx.stroke();
+    ctx.fillStyle = '#93c5fd'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText((i + 1) + 's', x, cy - 26);
+  });
+  // Wagen
+  const cx = x0 + Math.min(_glm.pos, 360);
+  ctx.fillStyle = '#22c55e'; ctx.fillRect(cx - 16, cy - 6, 32, 16);
+  ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(cx - 9, cy + 12, 5, 0, 2 * Math.PI); ctx.arc(cx + 9, cy + 12, 5, 0, 2 * Math.PI); ctx.fill();
+
+  // Mini s-t-Diagramm oben rechts (Gerade)
+  const dgx = W - 150, dgy = 30, dgw = 120, dgh = 70;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(dgx, dgy); ctx.lineTo(dgx, dgy + dgh); ctx.lineTo(dgx + dgw, dgy + dgh); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('s', dgx - 8, dgy + 6); ctx.fillText('t', dgx + dgw, dgy + dgh + 8);
+  ctx.strokeStyle = '#4ade80'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(dgx, dgy + dgh); ctx.lineTo(dgx + dgw, dgy + dgh - (dgh * (_glmV() / 110))); ctx.stroke();
+  ctx.fillStyle = '#86efac'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('s-t: Gerade', dgx + dgw / 2, dgy - 4);
+
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('gleichförmig: v = konstant', x0, 22);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.4.5  (ns = 'gleichfoermig-rs') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _glmArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('gleichfoermig-rs')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('gleichfoermig-rs')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was ist das Besondere an einer Bewegung mit gleichbleibender Geschwindigkeit?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Abstände der Sekunden-Marken … sind.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Lass den Wagen mit konstantem Tempo fahren.</li>
+          <li>Beobachte die Marken, die jede Sekunde gesetzt werden.</li>
+          <li>Vergleiche die Abstände zwischen den Marken.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Abstände der Marken</td><td>${inp('b1', 'gleich/verschieden')}</td><td>Geschwindigkeit</td><td>${inp('c1', 'konstant/ändert sich')}</td></tr>
+          <tr><td>Strecke in gleicher Zeit</td><td>${inp('b2', 'gleich/verschieden')}</td><td>s-t-Diagramm</td><td>${inp('c2', 'Gerade/Kurve')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Bahn mit gleich weit entfernten Sekunden-Marken. Zeichne daneben das s-t-Diagramm (eine Gerade).</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie ist die Geschwindigkeit bei einer gleichförmigen Bewegung? ${inp('a1', '')}</li>
+          <li>Wie sehen die Marken-Abstände aus? ${inp('a2', '')}</li>
+          <li>Welche Form hat das s-t-Diagramm? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Bei einer gleichförmigen Bewegung ist die Geschwindigkeit ${inp('m1', 'wie?')}.<br>
+        In gleichen Zeiten werden ${inp('m2', 'wie?')} Strecken zurückgelegt. Das Weg-Zeit-Diagramm ist eine ${inp('m3', 'was?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Auto fährt mit Tempomat konstant 100 km/h auf der Autobahn. Warum ist das eine gleichförmige Bewegung?</div>
+        ${ta('tr1', 'Weil die Geschwindigkeit … , legt es in gleichen Zeiten …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="glmMini">${_glmMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_glmSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_glmSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_glmSelf(3)">😃 sicher</button>
+          <span id="glmSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="glmSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Die Sekunden-Marken haben gleiche Abstände → in gleichen Zeiten gleiche Strecken → konstante Geschwindigkeit. Das s-t-Diagramm ist eine Ursprungsgerade.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Gleichförmige (geradlinige) Bewegung: v = konstant, a = 0. Es gilt s = v·t; das Weg-Zeit-Diagramm ist eine Gerade (Steigung = v), das v-t-Diagramm eine waagerechte Linie.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Gleichförmig heißt langsam." (2) „Die Marken werden immer größer." (3) „s-t-Diagramm ist eine Kurve."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Gleiche Abstände = gleiche Strecke pro Zeit; „gleichförmig = gleichbleibende Geschwindigkeit"; Gerade im s-t-Diagramm.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: gleich · konstant · gleich · Gerade. 6.1 konstant/gleichbleibend · 6.2 alle gleich · 6.3 eine Gerade. Merksatz: konstant · gleiche · Gerade. Transfer: Weil die Geschwindigkeit konstant bleibt, legt das Auto in gleichen Zeiten gleiche Strecken zurück. Minidiagnose: 1→Konstant · 2→Gleich weit · 3→Eine Gerade.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('gleichfoermig-rs')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('gleichfoermig-rs', 'Was ist eine gleichförmige Bewegung?', body);
+}
+
+const _GLM_MINI = [
+  { q: '1. Wie ist die Geschwindigkeit bei einer gleichförmigen Bewegung?',
+    opts: ['Sie wird immer größer', 'Sie ist konstant (gleichbleibend)', 'Sie wird immer kleiner'], correct: 1,
+    fb: ['Dann wäre es eine beschleunigte Bewegung.',
+         'Richtig! Die Geschwindigkeit bleibt gleich.',
+         'Dann würde der Körper abbremsen.'] },
+  { q: '2. Wie sind die Sekunden-Marken bei gleichförmiger Bewegung?',
+    opts: ['Immer weiter auseinander', 'Gleich weit auseinander', 'Immer enger'], correct: 1,
+    fb: ['Das wäre beschleunigt.',
+         'Richtig! Gleiche Strecke pro Sekunde → gleiche Abstände.',
+         'Das wäre ein Abbremsen.'] },
+  { q: '3. Welche Form hat das Weg-Zeit-Diagramm?',
+    opts: ['Eine Gerade', 'Eine gebogene Kurve', 'Eine waagerechte Linie'], correct: 0,
+    fb: ['Richtig! Bei konstanter Geschwindigkeit eine (Ursprungs-)Gerade.',
+         'Gebogen wäre es bei beschleunigter Bewegung.',
+         'Waagerecht wäre das v-t-Diagramm, nicht das s-t-Diagramm.'] }
+];
+function _glmMiniHTML() {
+  return _GLM_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_glmAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="glmFb${qi}"></div></div>`).join('');
+}
+function _glmAns(qi, oi) {
+  const m = _GLM_MINI[qi], el = document.getElementById('glmFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _glmSelf(n) {
+  const out = document.getElementById('glmSelfOut'), val = document.getElementById('glmSelfVal');
+  if (val) { val.value = String(n); _abSave('gleichfoermig-rs'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.4.6  WAS IST EINE BESCHLEUNIGTE BEWEGUNG?
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Bewegung"
+// Handlungsorientiert: Bei einer beschleunigten Bewegung ändert sich
+// die Geschwindigkeit. Beim Beschleunigen werden die Sekunden-Marken
+// immer größer, beim Bremsen immer kleiner.
+// ═══════════════════════════════════════════════════════
+let _bwg = null;
+function _bwgInit() { _bwg = { modus: 'gas', t: 0, pos: 0, v: 0, laufen: false, marks: [], lastMark: 0 }; }
+function _bwgStartV() { return _bwg.modus === 'bremse' ? 130 : 0; }
+function _bwgA() { return _bwg.modus === 'bremse' ? -34 : 34; }
+
+function _bwgHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim bwg-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🚀 Was ist eine beschleunigte Bewegung?</h3>
+    <div class="fpm-note" style="margin-top:2px">Lass den Wagen beschleunigen (Gas geben) oder bremsen. Jede Sekunde wird eine Marke gesetzt. Wie verändern sich die Abstände?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="bwgAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_bwg.modus === 'gas' ? ' primary' : ''}" id="bwgMgas" onclick="_bwgSet('gas')">🚀 beschleunigen</button>
+          <button class="sim-btn${_bwg.modus === 'bremse' ? ' primary' : ''}" id="bwgMbremse" onclick="_bwgSet('bremse')">🛑 bremsen</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" onclick="_bwgStart()">▶ Fahren</button>
+          <button class="sim-btn" onclick="_bwgReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Beobachtung</div>
+        <div class="lmp-status" id="bwgStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Bei einer <b>beschleunigten Bewegung</b> <b>ändert sich die Geschwindigkeit</b>. Beim <b>Beschleunigen</b> wird der Wagen schneller → die Sekunden-Marken werden <b>immer größer</b>. Beim <b>Bremsen</b> wird er langsamer → die Marken werden <b>immer kleiner</b>. Das Weg-Zeit-Diagramm ist eine <b>Kurve</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Geschwindigkeit ändert sich → Marken-Abstände <b>verschieden groß</b> (größer beim Beschleunigen, kleiner beim Bremsen).
+    </p>
+    ${_bwgArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _bwgSet(m) { _bwg.modus = m; document.getElementById('bwgMgas')?.classList.toggle('primary', m === 'gas'); document.getElementById('bwgMbremse')?.classList.toggle('primary', m === 'bremse'); _bwgReset2(); }
+function _bwgReset2() { _bwg.pos = 0; _bwg.v = _bwgStartV(); _bwg.laufen = false; _bwg.marks = []; _bwg.lastMark = 0; _bwg.t = 0; _bwgStatus(); }
+function _bwgStart() { _bwg.pos = 0; _bwg.v = _bwgStartV(); _bwg.marks = []; _bwg.lastMark = 0; _bwg.t = 0; _bwg.laufen = true; _bwgStatus(); }
+function _bwgReset() { _bwgInit(); _bwgSet('gas'); _bwgReset2(); }
+function _bwgStatus() {
+  const el = document.getElementById('bwgStatus'); if (!el) return;
+  if (_bwg.modus === 'gas') { el.textContent = 'Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.'; }
+  else { el.textContent = 'Bremsen: Die Geschwindigkeit wird immer kleiner. Die Sekunden-Marken werden immer enger.'; }
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _bwgUpdate(dt) {
+  if (!_bwg || !_bwg.laufen) return;
+  _bwg.t += dt;
+  _bwg.v += _bwgA() * dt;
+  if (_bwg.v < 0) _bwg.v = 0;
+  _bwg.pos += _bwg.v * dt;
+  if (_bwg.t - _bwg.lastMark >= 1) { _bwg.lastMark += 1; _bwg.marks.push(_bwg.pos); }
+  if (_bwg.pos >= 360 || (_bwg.modus === 'bremse' && _bwg.v <= 0 && _bwg.t > 0.5) || _bwg.t > 6) { _bwg.pos = Math.min(_bwg.pos, 360); _bwg.laufen = false; }
+}
+function _bwgDraw(ctx, cv) {
+  if (!_bwg) return;
+  const W = cv.width, H = cv.height, x0 = 40, cy = 150;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x0, cy + 14); ctx.lineTo(x0 + 370, cy + 14); ctx.stroke();
+  // Sekunden-Marken
+  _bwg.marks.forEach((m, i) => {
+    const x = x0 + Math.min(m, 360);
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x, cy - 20); ctx.lineTo(x, cy + 20); ctx.stroke();
+    ctx.fillStyle = '#fdba74'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText((i + 1) + 's', x, cy - 26);
+  });
+  // Wagen
+  const cx = x0 + Math.min(_bwg.pos, 360);
+  ctx.fillStyle = _bwg.modus === 'bremse' ? '#ef4444' : '#22c55e'; ctx.fillRect(cx - 16, cy - 6, 32, 16);
+  ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(cx - 9, cy + 12, 5, 0, 2 * Math.PI); ctx.arc(cx + 9, cy + 12, 5, 0, 2 * Math.PI); ctx.fill();
+
+  // Mini s-t-Diagramm (Kurve)
+  const dgx = W - 150, dgy = 30, dgw = 120, dgh = 70;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(dgx, dgy); ctx.lineTo(dgx, dgy + dgh); ctx.lineTo(dgx + dgw, dgy + dgh); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('s', dgx - 8, dgy + 6); ctx.fillText('t', dgx + dgw, dgy + dgh + 8);
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2; ctx.beginPath();
+  for (let i = 0; i <= 20; i++) { const tt = i / 20; const x = dgx + dgw * tt; let sfrac = _bwg.modus === 'bremse' ? (1 - (1 - tt) * (1 - tt)) : (tt * tt); const y = dgy + dgh - dgh * sfrac; if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); }
+  ctx.stroke();
+  ctx.fillStyle = '#fde68a'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('s-t: Kurve', dgx + dgw / 2, dgy - 4);
+
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_bwg.modus === 'bremse' ? 'bremsen: v wird kleiner' : 'beschleunigen: v wird größer', x0, 22);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.4.6  (ns = 'beschleunigung-rs') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _bwgArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('beschleunigung-rs')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('beschleunigung-rs')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was passiert mit den Sekunden-Marken, wenn ein Fahrzeug schneller oder langsamer wird?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Marken beim Beschleunigen … werden.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Lass den Wagen beschleunigen und beobachte die Marken.</li>
+          <li>Lass ihn bremsen und beobachte die Marken.</li>
+          <li>Vergleiche mit einer gleichförmigen Bewegung.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Beschleunigen: Marken</td><td>${inp('b1', 'größer/kleiner')}</td><td>Geschwindigkeit</td><td>${inp('c1', 'steigt/sinkt')}</td></tr>
+          <tr><td>Bremsen: Marken</td><td>${inp('b2', 'größer/kleiner')}</td><td>Geschwindigkeit</td><td>${inp('c2', 'steigt/sinkt')}</td></tr>
+          <tr><td>s-t-Diagramm</td><td>${inp('b3', 'Gerade/Kurve')}</td><td>gleichförmig wäre</td><td>${inp('c3', 'Gerade/Kurve')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Bahn beim Beschleunigen mit immer größeren Marken-Abständen. Zeichne daneben das s-t-Diagramm (eine Kurve).</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was passiert mit der Geschwindigkeit bei einer beschleunigten Bewegung? ${inp('a1', 'sie …')}</li>
+          <li>Wie werden die Marken beim Beschleunigen? Und beim Bremsen? ${inp('a2', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Bei einer beschleunigten Bewegung ${inp('m1', 'was tut?')} sich die Geschwindigkeit.<br>
+        Beim Beschleunigen werden die Marken ${inp('m2', 'größer/kleiner')}, beim Bremsen ${inp('m3', 'größer/kleiner')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Auto fährt an einer Ampel los und wird schneller. Warum ist das eine beschleunigte Bewegung – und was passiert beim Anhalten an der nächsten Ampel?</div>
+        ${ta('tr1', 'Beim Losfahren wird das Auto … (beschleunigt), beim Anhalten …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="bwgMini">${_bwgMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_bwgSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_bwgSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_bwgSelf(3)">😃 sicher</button>
+          <span id="bwgSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="bwgSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Beschleunigen: Marken-Abstände werden größer (v steigt). Bremsen: Abstände werden kleiner (v sinkt). Das s-t-Diagramm ist gekrümmt (keine Gerade).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Beschleunigte Bewegung: die Geschwindigkeit ändert sich, die Beschleunigung a = Δv/Δt ≠ 0. Bei gleichmäßiger Beschleunigung aus der Ruhe gilt s = ½·a·t² (Parabel im s-t-Diagramm); das v-t-Diagramm ist eine ansteigende (bzw. fallende) Gerade. Bremsen = negative Beschleunigung (Verzögerung).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Beschleunigen heißt nur schneller werden." (Auch Bremsen ist beschleunigt.) (2) „Die Marken bleiben gleich." (3) „s-t-Diagramm ist immer eine Gerade."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Marken-Abstände direkt mit gleichförmig vergleichen; Bremsen als „negative Beschleunigung"; Kurve vs. Gerade im s-t-Diagramm.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: größer/steigt · kleiner/sinkt · Kurve/Gerade. 6.1 „sie ändert sich" · 6.2 beim Beschleunigen größer, beim Bremsen kleiner. Merksatz: ändert · größer · kleiner. Transfer: Beim Losfahren wird das Auto schneller (beschleunigt), beim Anhalten wird es langsamer (bremst) – beides sind beschleunigte Bewegungen. Minidiagnose: 1→Sie ändert sich · 2→Immer größer · 3→Eine Kurve.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('beschleunigung-rs')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('beschleunigung-rs', 'Was ist eine beschleunigte Bewegung?', body);
+}
+
+const _BWG_MINI = [
+  { q: '1. Was passiert bei einer beschleunigten Bewegung mit der Geschwindigkeit?',
+    opts: ['Sie bleibt gleich', 'Sie ändert sich', 'Sie ist immer null'], correct: 1,
+    fb: ['Das wäre eine gleichförmige Bewegung.',
+         'Richtig! Die Geschwindigkeit ändert sich (schneller oder langsamer).',
+         'Der Körper bewegt sich ja.'] },
+  { q: '2. Wie werden die Sekunden-Marken beim Beschleunigen?',
+    opts: ['Immer größer', 'Immer kleiner', 'Gleich groß'], correct: 0,
+    fb: ['Richtig! Weil der Wagen schneller wird, werden die Abstände größer.',
+         'Kleiner werden sie beim Bremsen.',
+         'Gleich groß wären sie bei gleichförmiger Bewegung.'] },
+  { q: '3. Welche Form hat das s-t-Diagramm einer beschleunigten Bewegung?',
+    opts: ['Eine Gerade', 'Eine Kurve', 'Eine waagerechte Linie'], correct: 1,
+    fb: ['Gerade ist es bei gleichförmiger Bewegung.',
+         'Richtig! Bei beschleunigter Bewegung ist es gekrümmt (Kurve).',
+         'Waagerecht wäre kein Weg-Zeit-Verlauf.'] }
+];
+function _bwgMiniHTML() {
+  return _BWG_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_bwgAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="bwgFb${qi}"></div></div>`).join('');
+}
+function _bwgAns(qi, oi) {
+  const m = _BWG_MINI[qi], el = document.getElementById('bwgFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _bwgSelf(n) {
+  const out = document.getElementById('bwgSelfOut'), val = document.getElementById('bwgSelfVal');
+  if (val) { val.value = String(n); _abSave('beschleunigung-rs'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
