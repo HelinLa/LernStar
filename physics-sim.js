@@ -223,7 +223,8 @@ function openPhysicsSim(simId) {
 // Registry: exp-Kennung -> { titel, ns (localStorage-Namespace), html() }
 // ═══════════════════════════════════════════════════════
 const _physAbDefs = {
-  schwingung: { titel: 'Merkmale von Schwingungen', ns: 'schwingung', html: () => _swgArbeitsblattHTML() }
+  schwingung: { titel: 'Merkmale von Schwingungen', ns: 'schwingung', html: () => _swgArbeitsblattHTML() },
+  'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -271,6 +272,18 @@ const _physSimDefs = {
     _pSim.start(dt => _bslUpdate(dt), (ctx, cv) => _bslDraw(ctx, cv), []);
     _mlabRenderTheorie(_bsl, false);
     _mlabDrawPlot('bslPlot', _bsl);
+  },
+
+  // ── 5.3.4 SCHATTENGRÖSSE (Realschule Kl. 5, handlungsorientiert) ─
+  'schatten-groesse': modal => {
+    _shaInit();
+    modal.innerHTML = _shaHTML();
+    _shaRenderTable();
+    _pSim = new PhysicsSimEngine('shaAnim', 'shaPlot');
+    _pSim.start(dt => _shaUpdate(dt), (ctx, cv) => _shaDraw(ctx, cv), []);
+    _mlabRenderTheorie(_sha, false);
+    _mlabDrawPlot('shaPlot', _sha);
+    _abRestore('schatten');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -34957,6 +34970,407 @@ function _abClear(ns) {
     .ab-table td:nth-child(odd) { background:#faf5ff; font-weight:600; color:#334155; }
     .ab-open-hint { font-size:.8rem; color:#6b21a8; background:#faf5ff; border:1px solid #ede9fe;
       border-radius:9px; padding:8px 11px; margin:0 0 10px; line-height:1.5; }
+    /* Schattengröße 5.3.4 */
+    .sha-var { font-weight:800; color:#6b21a8; background:#f3e8ff !important; }
+    .ab-skizze { margin-top:6px; height:120px; border:1px dashed #c4b5fd; border-radius:8px; background:#fdfcff;
+      display:flex; align-items:center; justify-content:center; color:#a78bfa; font-size:.78rem; }
+    .sha-q { border-top:1px solid #ede9fe; padding-top:8px; margin-top:8px; }
+    .sha-q:first-child { border-top:0; padding-top:0; margin-top:0; }
+    .sha-q-t { font-size:.82rem; font-weight:600; color:#334155; margin-bottom:6px; }
+    .sha-opts { display:flex; flex-wrap:wrap; gap:6px; }
+    .sha-fb { display:block; margin-top:6px; font-size:.8rem; font-weight:600; line-height:1.45; }
+    .sha-fb.ok { color:#15803d; }
+    .sha-fb.no { color:#b45309; }
+    .sha-self { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:4px; }
+    .sha-lehrer { margin-top:2px; border:1px solid #fecaca; border-radius:9px; background:#fef2f2; padding:2px 4px; }
+    .sha-lehrer > summary { cursor:pointer; padding:9px 11px; font-weight:800; color:#b91c1c; font-size:.82rem; list-style:none; }
+    .sha-lehrer > summary::-webkit-details-marker { display:none; }
+    .sha-lehrer[open] > summary { border-bottom:1px solid #fecaca; margin-bottom:6px; }
+    .sha-lehrer .ab-t { padding:4px 11px 6px; }
   `;
   document.head.appendChild(s);
 })();
+
+// ═══════════════════════════════════════════════════════
+// 5.3.4  WOVON HÄNGT DIE GRÖSSE DES SCHATTENS AB?
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Licht und Schall"
+// Handlungsorientiert: Punktlichtquelle (Lampe), Gegenstand, Schirm.
+// Schattengröße B = G · b / a  (Strahlensatz).
+//   • Schirm verschieben (a fest)     → B ~ b      (Ursprungsgerade)
+//   • Gegenstand verschieben (b fest)  → B ~ 1/a    (fallende Kurve)
+// Nur eine Größe verändern, die andere bleibt gleich.
+// Darunter: Arbeitsblatt (Realschule-Struktur) + Minidiagnose +
+// Lehrkraftbereich, geschützt durch das Passwort-Gate (0123).
+// ═══════════════════════════════════════════════════════
+
+const _SHA_G = 4;          // Gegenstandshöhe in cm (fest)
+const _SHA_A_FIX = 20;     // Abstand Lampe→Gegenstand, wenn der Schirm bewegt wird
+const _SHA_B_FIX = 60;     // Abstand Lampe→Schirm, wenn der Gegenstand bewegt wird
+let _sha = null;
+
+function _shaB(a, b) { return _SHA_G * b / a; }   // Strahlensatz
+
+const _SHA_CFG = {
+  schirm:     { min: 30, max: 90, step: 10, val: 60, lbl: 'Schirmabstand b', unit: 'cm', marks: [30, 40, 50, 60, 70, 80] },
+  gegenstand: { min: 10, max: 50, step: 5,  val: 20, lbl: 'Gegenstandsabstand a', unit: 'cm', marks: [10, 15, 20, 30, 40, 50] }
+};
+
+const _SHA_PRESETS = [
+  // Preset 0 – Schirm verschieben: B über b (Ursprungsgerade)
+  { tab: 'Schirm b → Schatten B',
+    xl: 'Schirmabstand b in cm', yl: 'Schattengröße B in cm',
+    x: r => r.mode === 'schirm' ? r.b : NaN, y: r => r.B, grp: r => r.a,
+    gl: k => 'Gegenstand fest bei a = ' + _fpmNum(+k, 0) + ' cm', slope: k => _SHA_G / +k,
+    col: (k, i) => _MLAB_PALETTE[i % _MLAB_PALETTE.length],
+    curveFn: (xv, k) => _SHA_G / +k * xv,
+    note: 'Ursprungsgerade ⇒ B ~ b. Je weiter der Schirm weg ist, desto größer der Schatten – und zwar: doppelter Abstand = doppelt so großer Schatten. Die Steigung der Geraden ist G/a.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'B = (G / a) · b',
+    param: () => 'Steigung = G/a = ' + _fpmNum(_SHA_G / _SHA_A_FIX, 2) + '  (G = ' + _SHA_G + ' cm, a = ' + _SHA_A_FIX + ' cm)',
+    term: () => (_SHA_G / _SHA_A_FIX).toString() + '*x',
+    deutung: 'Der Schatten wächst gleichmäßig mit dem Schirmabstand. Verdoppelst du b, verdoppelt sich B.',
+    ergebnis: (g0) => _mlabErgebnis('Steigung G/a aus der Ausgleichsgeraden',
+      _fpmNum(g0.fit.k, 3), '', _fpmNum(_SHA_G / (+g0.key), 3), 'B = G·b/a  ⇒  Steigung = G/a = ' + _SHA_G + '/' + _fpmNum(+g0.key, 0)) },
+  // Preset 1 – Gegenstand verschieben: B über a (fallende Kurve, qualitativ)
+  { tab: 'Gegenstand a → Schatten B',
+    xl: 'Gegenstandsabstand a in cm', yl: 'Schattengröße B in cm',
+    x: r => r.mode === 'gegenstand' ? r.a : NaN, y: r => r.B, grp: r => r.b,
+    gl: k => 'Schirm fest bei b = ' + _fpmNum(+k, 0) + ' cm', curve: true,
+    col: (k, i) => _MLAB_PALETTE[(i + 1) % _MLAB_PALETTE.length],
+    curveFn: (xv, k) => _SHA_G * (+k) / xv,
+    note: 'Keine Gerade, sondern eine fallende Kurve: B ~ 1/a. Je näher der Gegenstand an der Lampe steht (a klein), desto größer der Schatten. Ganz nah an der Lampe wird der Schatten riesig.',
+    typ: 'fallende Kurve (je näher, desto größer)', form: 'B = G · b / a',
+    param: () => 'b fest = ' + _SHA_B_FIX + ' cm,  G = ' + _SHA_G + ' cm',
+    term: () => (_SHA_G * _SHA_B_FIX).toString() + '/x',
+    deutung: 'Rückt der Gegenstand zur Lampe (a klein), wird der Schatten groß. Rückt er zum Schirm (a groß), wird der Schatten klein.' }
+];
+
+function _shaInit() {
+  _sha = {
+    mode: 'schirm', a: _SHA_A_FIX, b: _SHA_B_FIX, flash: 0,
+    rows: [], nextId: 1, preset: 0, fn: null, fnAuto: false, origin: true, showTheory: false,
+    pre: 'sha', plotId: 'shaPlot', fitId: 'shaFit', fnId: 'shaFn', fnErrId: 'shaErr', theoId: 'shaTheo',
+    presets: _SHA_PRESETS
+  };
+}
+
+function _shaHTML() {
+  const c = _SHA_CFG[_sha.mode];
+  const varVal = _sha.mode === 'schirm' ? _sha.b : _sha.a;
+  return `<div class="sim-box sim-box-wide fpm-sim sha-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔦 Wovon hängt die Größe des Schattens ab?</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine Lampe leuchtet auf einen Gegenstand. Dahinter entsteht ein Schatten auf dem Schirm. <b>Verändere nur einen Abstand</b> und beobachte, wie sich der Schatten ändert.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="shaAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_sha.mode === 'schirm' ? ' primary' : ''}" id="shaMode0" onclick="_shaSetMode('schirm')">🖥 Schirm verschieben</button>
+          <button class="sim-btn${_sha.mode === 'gegenstand' ? ' primary' : ''}" id="shaMode1" onclick="_shaSetMode('gegenstand')">🎯 Gegenstand verschieben</button>
+        </div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label"><b id="shaVarName">${c.lbl}</b>: <b id="shaVarLbl">${_fpmNum(varVal, 0)} cm</b></span>
+          <input type="range" id="shaVar" min="${c.min}" max="${c.max}" step="${c.step}" value="${varVal}"
+            oninput="_shaSetVar(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="fpm-note" style="margin-top:4px">Aktuelle Schattengröße: <b id="shaBLbl">B = ${_fpmNum(_shaB(_sha.a, _sha.b), 1)} cm</b> &nbsp;·&nbsp; Gegenstand G = ${_SHA_G} cm (immer gleich)</div>
+      </div>
+      <div>
+        <div class="fpm-label">Messung – Abstand einstellen, dann Messwert übernehmen</div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" onclick="_shaMessen()">＋ Messwert übernehmen</button>
+          <button class="sim-btn" onclick="_shaDemo()">📋 Beispielmessreihe</button>
+          <button class="sim-btn" onclick="_shaClear()">🗑 Tabelle leeren</button>
+        </div>
+        <div class="fpm-tablewrap">
+          <table class="sim-table">
+            <thead><tr><th>a (cm)</th><th>b (cm)</th><th>B (cm)</th><th></th></tr></thead>
+            <tbody id="shaTbody"></tbody>
+          </table>
+          <div class="fpm-empty" id="shaEmpty">Noch keine Messwerte.<br>Abstand einstellen → „Messwert übernehmen".</div>
+        </div>
+      </div>
+    </div>
+    <div class="fpm-label" style="margin-top:12px">Auswertung – trage die Schattengröße B über den veränderten Abstand auf</div>
+    ${_mlabAuswertungHTML(_sha, { preset: '_shaSetPreset', setfn: '_shaSetFn', theo: '_shaTheorieFn', clear: '_shaClearFn', bool: '_shaSetBool' })}
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>B = G · b / a</b> &nbsp;|&nbsp; Schirm weiter weg → größer &nbsp;|&nbsp; Gegenstand näher an der Lampe → größer
+    </p>
+    ${_shaArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _shaSetVar(v) {
+  if (_sha.mode === 'schirm') _sha.b = +v; else _sha.a = +v;
+  const el = document.getElementById('shaVarLbl'); if (el) el.textContent = _fpmNum(+v, 0) + ' cm';
+  const bl = document.getElementById('shaBLbl'); if (bl) bl.textContent = 'B = ' + _fpmNum(_shaB(_sha.a, _sha.b), 1) + ' cm';
+}
+function _shaSwitch(mode, preset) {
+  if (mode !== _sha.mode && _sha.rows.length &&
+      !confirm('Für eine neue Messreihe wird die Tabelle geleert. Fortfahren?')) {
+    // Ablehnung: Oberfläche auf aktuellen Modus zurücksetzen
+    for (let k = 0; k < _sha.presets.length; k++)
+      document.getElementById('shaTab' + k)?.classList.toggle('on', k === _sha.preset);
+    return;
+  }
+  if (mode !== _sha.mode) { _sha.rows = []; _shaRenderTable(); }
+  _sha.mode = mode;
+  const c = _SHA_CFG[mode];
+  _sha.a = mode === 'schirm' ? _SHA_A_FIX : c.val;
+  _sha.b = mode === 'schirm' ? c.val : _SHA_B_FIX;
+  document.getElementById('shaMode0')?.classList.toggle('primary', mode === 'schirm');
+  document.getElementById('shaMode1')?.classList.toggle('primary', mode === 'gegenstand');
+  const sl = document.getElementById('shaVar');
+  if (sl) { sl.min = c.min; sl.max = c.max; sl.step = c.step; sl.value = c.val; }
+  const nm = document.getElementById('shaVarName'); if (nm) nm.textContent = c.lbl;
+  const lb = document.getElementById('shaVarLbl'); if (lb) lb.textContent = _fpmNum(c.val, 0) + ' cm';
+  const bl = document.getElementById('shaBLbl'); if (bl) bl.textContent = 'B = ' + _fpmNum(_shaB(_sha.a, _sha.b), 1) + ' cm';
+  _mlabSetPreset(_sha, preset);
+}
+function _shaSetMode(m) { _shaSwitch(m, m === 'schirm' ? 0 : 1); }
+function _shaMessRow(mode, a, b) {
+  const Bt = _shaB(a, b) * (1 + (Math.random() - 0.5) * 0.02);   // kleine Ablese-Streuung
+  return { mode, a, b, B: Math.round(Bt * 10) / 10 };
+}
+function _shaMessen() {
+  const r = _shaMessRow(_sha.mode, _sha.a, _sha.b);
+  _shaAddRow(r); _sha.flash = 1;
+}
+function _shaDemo() {
+  const c = _SHA_CFG[_sha.mode];
+  c.marks.forEach(m => {
+    const a = _sha.mode === 'schirm' ? _SHA_A_FIX : m;
+    const b = _sha.mode === 'schirm' ? m : _SHA_B_FIX;
+    const r = _shaMessRow(_sha.mode, a, b);
+    _sha.rows.push({ id: _sha.nextId++, mode: r.mode, a: r.a, b: r.b, B: r.B });
+  });
+  _shaRenderTable(); _mlabDrawPlot('shaPlot', _sha);
+}
+function _shaAddRow(r) {
+  _sha.rows.push({ id: _sha.nextId++, mode: r.mode, a: r.a, b: r.b, B: r.B });
+  _shaRenderTable(); _mlabDrawPlot('shaPlot', _sha);
+}
+function _shaDelRow(id) { _sha.rows = _sha.rows.filter(r => r.id !== id); _shaRenderTable(); _mlabDrawPlot('shaPlot', _sha); }
+function _shaClear() {
+  if (_sha.rows.length && !confirm('Alle ' + _sha.rows.length + ' Messwerte löschen?')) return;
+  _sha.rows = []; _shaRenderTable(); _mlabDrawPlot('shaPlot', _sha);
+}
+function _shaRenderTable() {
+  const tb = document.getElementById('shaTbody'); if (!tb) return;
+  const empty = document.getElementById('shaEmpty');
+  if (empty) empty.style.display = _sha.rows.length ? 'none' : 'block';
+  tb.innerHTML = _sha.rows.map((r, i) => {
+    const col = _MLAB_PALETTE[(_sha.mode === 'schirm' ? 0 : 1)];
+    const varCell = r.mode === 'schirm' ? 'b' : 'a';
+    return `<tr>
+       <td${varCell === 'a' ? ' class="sha-var"' : ''}>${varCell === 'a' ? '<span class="fpm-dot" style="background:' + col + '"></span>' : ''}${_fpmNum(r.a, 0)}</td>
+       <td${varCell === 'b' ? ' class="sha-var"' : ''}>${varCell === 'b' ? '<span class="fpm-dot" style="background:' + col + '"></span>' : ''}${_fpmNum(r.b, 0)}</td>
+       <td><b>${_fpmNum(r.B, 1)}</b></td>
+       <td class="fpm-del" onclick="_shaDelRow(${r.id})" title="löschen">✕</td></tr>`;
+  }).join('');
+}
+
+// ── Wiring zum Framework ───────────────────────────────
+function _shaSetPreset(i) { _shaSwitch(i === 0 ? 'schirm' : 'gegenstand', i); }
+function _shaSetFn(s) { _mlabSetFn(_sha, s); }
+function _shaTheorieFn() { _mlabTheorieFn(_sha); }
+function _shaClearFn() { _mlabClearFn(_sha); }
+function _shaSetBool(k, v) { _sha[k] = v; _mlabDrawPlot('shaPlot', _sha); }
+
+// ── Animation ──────────────────────────────────────────
+function _shaUpdate(dt) { if (_sha) _sha.flash = Math.max(0, _sha.flash - dt * 1.5); }
+function _shaDraw(ctx, cv) {
+  if (!_sha) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);   // dunkler Raum
+  const axisY = H / 2 - 4;
+  const xL = 44;                       // Lampe (Punktlichtquelle)
+  const pxX = (W - 70) / 100;          // 100 cm passen in die Breite
+  const vs = 4.2;                      // px pro cm (senkrecht)
+  const a = _sha.a, b = _sha.b, B = _shaB(a, b);
+  const xObj = xL + a * pxX, xScr = xL + b * pxX;
+  const halfG = (_SHA_G / 2) * vs;
+  const halfB = Math.min((B / 2) * vs, H / 2 - 14);
+  const yTopO = axisY - halfG, yBotO = axisY + halfG;
+  const yTopS = axisY - halfB, yBotS = axisY + halfB;
+
+  // Lichtkegel (schwaches Gelb)
+  ctx.fillStyle = 'rgba(253,224,71,0.10)';
+  ctx.beginPath(); ctx.moveTo(xL, axisY);
+  ctx.lineTo(xScr, axisY - halfB * 2.4); ctx.lineTo(xScr, axisY + halfB * 2.4); ctx.closePath(); ctx.fill();
+
+  // Schattenkegel (hinter dem Gegenstand)
+  ctx.fillStyle = 'rgba(15,23,42,0.85)';
+  ctx.beginPath(); ctx.moveTo(xObj, yTopO); ctx.lineTo(xScr, yTopS);
+  ctx.lineTo(xScr, yBotS); ctx.lineTo(xObj, yBotO); ctx.closePath(); ctx.fill();
+
+  // Grenz-Lichtstrahlen (gelb)
+  ctx.strokeStyle = '#fde047'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(xL, axisY); ctx.lineTo(xScr, yTopS); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xL, axisY); ctx.lineTo(xScr, yBotS); ctx.stroke();
+
+  // Schirm
+  ctx.fillStyle = '#e2e8f0';
+  ctx.beginPath(); ctx.roundRect ? ctx.roundRect(xScr, axisY - 62, 8, 124, 3) : ctx.rect(xScr, axisY - 62, 8, 124); ctx.fill();
+  // Schatten auf dem Schirm
+  ctx.fillStyle = _sha.flash > 0.3 ? '#f97316' : '#1e293b';
+  ctx.fillRect(xScr, yTopS, 8, Math.max(2, yBotS - yTopS));
+
+  // Gegenstand (undurchsichtig)
+  ctx.fillStyle = '#7c3aed';
+  ctx.beginPath(); ctx.roundRect ? ctx.roundRect(xObj - 5, yTopO, 10, yBotO - yTopO, 2) : ctx.rect(xObj - 5, yTopO, 10, yBotO - yTopO); ctx.fill();
+
+  // Lampe
+  ctx.fillStyle = '#facc15';
+  ctx.beginPath(); ctx.arc(xL, axisY, 7, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#fde047'; ctx.lineWidth = 1.4;
+  for (let k = 0; k < 8; k++) { const an = k * Math.PI / 4; ctx.beginPath(); ctx.moveTo(xL + Math.cos(an) * 9, axisY + Math.sin(an) * 9); ctx.lineTo(xL + Math.cos(an) * 13, axisY + Math.sin(an) * 13); ctx.stroke(); }
+
+  // Beschriftung Abstände
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(xL, axisY + 66); ctx.lineTo(xObj, axisY + 66); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xL, axisY + 82); ctx.lineTo(xScr, axisY + 82); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#cbd5e1'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('a = ' + _fpmNum(a, 0) + ' cm', (xL + xObj) / 2, axisY + 63);
+  ctx.fillText('b = ' + _fpmNum(b, 0) + ' cm', (xL + xScr) / 2, axisY + 96);
+  // B-Label am Schirm
+  ctx.fillStyle = '#fca5a5'; ctx.textAlign = 'left';
+  ctx.fillText('B = ' + _fpmNum(B, 1) + ' cm', Math.min(xScr + 12, W - 70), axisY);
+  // Legende
+  ctx.fillStyle = '#facc15'; ctx.textAlign = 'left'; ctx.font = '700 10px sans-serif';
+  ctx.fillText('Lampe', xL - 16, axisY - 16);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.3.4 (Realschule-Struktur) + Minidiagnose + Lehrkraft
+// Alles im Passwort-Gate (0123). ns = 'schatten'.
+// ═══════════════════════════════════════════════════════
+function _shaArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('schatten')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('schatten')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wovon hängt die Größe eines Schattens ab?</b> Du hast eine Lampe, einen Gegenstand und einen Schirm. Finde durch Ausprobieren heraus, wann der Schatten groß und wann er klein wird.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        <div class="ab-t">Kreuze an oder schreibe auf: Was glaubst du, macht den Schatten <b>größer</b>?</div>
+        ${ta('v1', 'Ich vermute: Der Schatten wird größer, wenn …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung (Versuch 1: Schirm verschieben)</div>
+        <ol class="ab-ol">
+          <li>Stelle oben den Modus <b>„Schirm verschieben"</b> ein.</li>
+          <li>Schiebe den Schirm auf <b>30 cm</b>. Lies die Schattengröße <b>B</b> ab und drücke <b>„Messwert übernehmen"</b>.</li>
+          <li>Wiederhole das für <b>40, 50, 60, 70, 80 cm</b>. Der Gegenstand bleibt die ganze Zeit <b>gleich</b> (a = 20 cm).</li>
+          <li>Öffne unten die Auswertung und trage <b>B über b</b> auf.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle (Versuch 1)</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Schirmabstand b (cm)</td><td>30</td><td>40</td><td>50</td><td>60</td><td>70</td><td>80</td></tr>
+          <tr><td>Schattengröße B (cm)</td><td>${inp('t1_1', '')}</td><td>${inp('t1_2', '')}</td><td>${inp('t1_3', '')}</td><td>${inp('t1_4', '')}</td><td>${inp('t1_5', '')}</td><td>${inp('t1_6', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Durchführung (Versuch 2: Gegenstand verschieben)</div>
+        <ol class="ab-ol">
+          <li>Stelle den Modus <b>„Gegenstand verschieben"</b> ein (der Schirm bleibt jetzt fest bei b = 60 cm).</li>
+          <li>Schiebe den Gegenstand auf <b>10, 20, 30, 40, 50 cm</b> und übernimm jeweils den Messwert.</li>
+        </ol>
+        <table class="ab-table"><tbody>
+          <tr><td>Gegenstandsabstand a (cm)</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td></tr>
+          <tr><td>Schattengröße B (cm)</td><td>${inp('t2_1', '')}</td><td>${inp('t2_2', '')}</td><td>${inp('t2_3', '')}</td><td>${inp('t2_4', '')}</td><td>${inp('t2_5', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Skizze</div>
+        <div class="ab-t">Zeichne Lampe, Gegenstand, Schirm und den Schatten. Zeichne auch die beiden Lichtstrahlen ein, die den Schatten begrenzen.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Versuch 1: Wie liegen die Punkte im Diagramm? ${inp('a1', 'z. B. auf einer Geraden …')}</li>
+          <li>Was passiert mit B, wenn du den Schirmabstand b <b>verdoppelst</b> (z. B. von 40 auf 80 cm)? ${inp('a2', '')}</li>
+          <li>Versuch 2: Wird der Schatten größer, wenn der Gegenstand <b>näher an die Lampe</b> rückt? ${inp('a3', 'ja / nein, weil …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Der Schatten wird <b>größer</b>, wenn der Schirm ${inp('m1', 'näher / weiter …')} von der Lampe entfernt ist.<br>
+        Der Schatten wird auch größer, wenn der Gegenstand ${inp('m2', 'näher / weiter …')} an der Lampe steht.<br>
+        Verdoppelt man den Schirmabstand, so wird der Schatten ${inp('m3', 'wie groß?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">9 · Transfer (Alltag)</div>
+        <div class="ab-t">Beim Schattentheater willst du eine <b>riesige</b> Figur an die Wand werfen. Wo stellst du die Figur hin – nah an die Lampe oder nah an die Wand? Begründe.</div>
+        ${ta('tr1', 'Ich stelle die Figur … , weil …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="shaMini">${_shaMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich? Klicke an:</div>
+        <div class="sha-self" id="shaSelf">
+          <button class="sim-btn" onclick="_shaSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_shaSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_shaSelf(3)">😃 sicher</button>
+          <span id="shaSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="shaSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Versuch 1 (a = 20 cm): B = 6 · b/30-Werte → 6; 8; 10; 12; 14; 16 cm. Die Punkte liegen auf einer <b>Ursprungsgeraden</b> (kleine Messstreuung). Versuch 2 (b = 60 cm): a = 10→24; 20→12; 30→8; 40→6; 50→4,8 cm → <b>fallende Kurve</b>.</div>
+        <div class="ab-t"><b>Fachlich richtige Auswertung.</b> Strahlensatz: B = G · b/a mit G = 4 cm. Versuch 1: B ∝ b (Steigung G/a = 4/20 = 0,2) → doppelter Schirmabstand = doppelte Schattengröße. Versuch 2: B ∝ 1/a → je näher der Gegenstand an der Lampe, desto größer der Schatten.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Schatten ist genauso groß wie der Gegenstand." (2) „Ein größerer Abstand macht den Schatten kleiner." (3) Verwechslung: näher zum Schirm ↔ näher zur Lampe. (4) „Bei Sonne (großer Abstand) gäbe es keinen Halbschatten" – hier bewusst Punktlichtquelle.</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Zwei Grenzstrahlen von der Lampe über Ober- und Unterkante des Gegenstands einzeichnen lassen; Strahlensatz als „Fächer" veranschaulichen; erst nur EINEN Abstand verändern lassen.</div>
+        <div class="ab-t"><b>Musterlösung Merksatz.</b> weiter · näher · doppelt so groß. <b>Transfer:</b> Figur nah an die Lampe (kleines a) → größter Schatten. <b>Minidiagnose:</b> 1 → „wird größer"; 2 → „24 cm"; 3 → „nah an die Lampe".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('schatten')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('schatten', 'Wovon hängt die Größe des Schattens ab?', body);
+}
+
+// ── Minidiagnose (3 Aufgaben mit Rückmeldung) ──────────
+const _SHA_MINI = [
+  { q: '1. Du schiebst den Schirm weiter von der Lampe weg. Was passiert mit dem Schatten?',
+    opts: ['Er wird kleiner', 'Er bleibt gleich', 'Er wird größer'],
+    correct: 2,
+    fb: ['Fast! Probiere es in der Simulation: Schieb den Schirm nach rechts – der Schatten wird tatsächlich größer.',
+         'Schau genau hin: Der Schatten ändert sich sehr wohl, wenn du den Schirm verschiebst.',
+         'Richtig! Schirm weiter weg = größerer Schatten.'] },
+  { q: '2. Der Schirm ist 60 cm weg, der Schatten ist 12 cm groß. Du schiebst den Schirm auf 120 cm (doppelt so weit). Wie groß ist der Schatten dann etwa?',
+    opts: ['6 cm', '12 cm', '24 cm'],
+    correct: 2,
+    fb: ['Andersherum: Bei größerem Abstand wird der Schatten größer, nicht kleiner.',
+         'Der Abstand ändert sich ja – dann bleibt der Schatten nicht gleich.',
+         'Richtig! Doppelter Abstand → doppelt so großer Schatten: 24 cm.'] },
+  { q: '3. Du willst mit einer Taschenlampe einen möglichst großen Schatten deiner Hand an die Wand werfen. Was tust du?',
+    opts: ['Hand nah an die Wand halten', 'Hand nah an die Lampe halten', 'Die Lampe ausschalten'],
+    correct: 1,
+    fb: ['Nah an der Wand wird der Schatten klein (fast so groß wie die Hand). Versuch das Gegenteil.',
+         'Richtig! Nah an der Lampe (kleines a) → riesiger Schatten.',
+         'Ohne Licht gibt es gar keinen Schatten 🙂'] }
+];
+function _shaMiniHTML() {
+  return _SHA_MINI.map((m, qi) =>
+    `<div class="sha-q">
+       <div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_shaAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="shaFb${qi}"></div>
+     </div>`).join('');
+}
+function _shaAns(qi, oi) {
+  const m = _SHA_MINI[qi];
+  const el = document.getElementById('shaFb' + qi);
+  if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi];
+  el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _shaSelf(n) {
+  const out = document.getElementById('shaSelfOut');
+  const val = document.getElementById('shaSelfVal');
+  if (val) { val.value = String(n); _abSave('schatten'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen weiter.' : 'Frag deine Lehrkraft um Hilfe – das schaffst du!');
+}

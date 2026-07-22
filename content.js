@@ -3243,6 +3243,7 @@ const CONTENT = { ...(typeof GS_CONTENT !== 'undefined' ? GS_CONTENT : {}),
         topics:[
           { isChapter:true, name:'💡 Licht & Schatten' },
           { name:'Lichtquellen, Lichtausbreitung & Schatten', diff:1, explanation:'Lichtquellen senden Licht aus (Sonne, Glühlampe, Kerze). Licht breitet sich geradlinig aus. Trifft es auf ein undurchsichtiges Objekt, entsteht ein Schatten. Kernschatten: kein Licht. Halbschatten: nur Teillicht.' },
+          { name:'Wovon hängt die Größe des Schattens ab?', diff:1, exp:'schatten-groesse', explanation:'Die Größe eines Schattens hängt von zwei Abständen ab: Je weiter der Schirm von der Lampe entfernt ist, desto größer der Schatten. Und je näher der Gegenstand an der Lampe steht, desto größer der Schatten. In der Simulation veränderst du nur einen Abstand, misst die Schattengröße und findest die Regel selbst heraus.' },
           { isChapter:true, name:'🧲 Magnetismus' },
           { name:'Magnete & magnetische Felder', diff:1, explanation:'Magnete haben einen Nord- und einen Südpol. Gleiche Pole stoßen sich ab, ungleiche ziehen sich an. Magnetische Feldlinien verlaufen vom Nordpol zum Südpol. Eisen, Nickel und Kobalt sind magnetisch. Ein Kompass zeigt zum Erdmagnetpol (geografischer Südpol = magnetischer Nordpol).' },
           { isChapter:true, name:'⚡ Einfacher Stromkreis' },
