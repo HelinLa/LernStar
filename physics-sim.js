@@ -235,7 +235,10 @@ const _physAbDefs = {
   'schaltplan': { titel: 'Wie zeichnet man einen Stromkreis?', ns: 'schaltplan', html: () => _splArbeitsblattHTML() },
   'reihenschaltung-rs': { titel: 'Was geschieht bei einer Reihenschaltung?', ns: 'reihe', html: () => _reiArbeitsblattHTML() },
   'parallelschaltung-rs': { titel: 'Was geschieht bei einer Parallelschaltung?', ns: 'parallel', html: () => _parArbeitsblattHTML() },
-  'stromwirkungen': { titel: 'Welche Wirkungen kann elektrischer Strom haben?', ns: 'wirkung', html: () => _wirArbeitsblattHTML() }
+  'stromwirkungen': { titel: 'Welche Wirkungen kann elektrischer Strom haben?', ns: 'wirkung', html: () => _wirArbeitsblattHTML() },
+  'sehen': { titel: 'Wie können wir einen Gegenstand sehen?', ns: 'sehen', html: () => _sehArbeitsblattHTML() },
+  'lichtausbreitung': { titel: 'Wie breitet sich Licht aus?', ns: 'ausbreitung', html: () => _lauArbeitsblattHTML() },
+  'schatten-entstehung': { titel: 'Wie entsteht ein Schatten?', ns: 'schatten3', html: () => _sctArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -406,6 +409,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('wirAnim', 'wirAnim');
     _pSim.start(dt => _wirUpdate(dt), (ctx, cv) => _wirDraw(ctx, cv), []);
     _abRestore('wirkung');
+  },
+
+  // ── 5.3.1 WIE KÖNNEN WIR SEHEN? ────────────────────────────────
+  'sehen': modal => {
+    _sehInit();
+    modal.innerHTML = _sehHTML();
+    _sehStatus();
+    _pSim = new PhysicsSimEngine('sehAnim', 'sehAnim');
+    _pSim.start(dt => _sehUpdate(dt), (ctx, cv) => _sehDraw(ctx, cv), []);
+    _abRestore('sehen');
+  },
+
+  // ── 5.3.2 WIE BREITET SICH LICHT AUS? ──────────────────────────
+  'lichtausbreitung': modal => {
+    _lauInit();
+    modal.innerHTML = _lauHTML();
+    _lauStatus();
+    _pSim = new PhysicsSimEngine('lauAnim', 'lauAnim');
+    _pSim.start(dt => _lauUpdate(dt), (ctx, cv) => _lauDraw(ctx, cv), []);
+    _abRestore('ausbreitung');
+  },
+
+  // ── 5.3.3 WIE ENTSTEHT EIN SCHATTEN? ───────────────────────────
+  'schatten-entstehung': modal => {
+    _sctInit();
+    modal.innerHTML = _sctHTML();
+    _sctStatus();
+    _pSim = new PhysicsSimEngine('sctAnim', 'sctAnim');
+    _pSim.start(dt => _sctUpdate(dt), (ctx, cv) => _sctDraw(ctx, cv), []);
+    _abRestore('schatten3');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -38278,5 +38311,646 @@ function _wirAns(qi, oi) {
 function _wirSelf(n) {
   const out = document.getElementById('wirSelfOut'), val = document.getElementById('wirSelfVal');
   if (val) { val.value = String(n); _abSave('wirkung'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 5.3.1  WIE KÖNNEN WIR EINEN GEGENSTAND SEHEN?
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Licht und Schall"
+// Handlungsorientiert: Sender–Gegenstand–Empfänger-Modell. Lampe,
+// Gegenstand, Auge. Wir sehen einen Gegenstand nur, wenn Licht von
+// ihm ins Auge gelangt. Leuchtende Körper senden eigenes Licht,
+// beleuchtete werfen fremdes Licht zurück (z. B. der Mond).
+// ═══════════════════════════════════════════════════════
+
+const _SEH_OBJ = [
+  { k: 'lampe', name: 'Lampe',  ic: '💡', leucht: true },
+  { k: 'kerze', name: 'Kerze',  ic: '🕯️', leucht: true },
+  { k: 'sonne', name: 'Sonne',  ic: '☀️', leucht: true },
+  { k: 'buch',  name: 'Buch',   ic: '📕', leucht: false },
+  { k: 'apfel', name: 'Apfel',  ic: '🍎', leucht: false },
+  { k: 'mond',  name: 'Mond',   ic: '🌙', leucht: false }
+];
+let _seh = null;
+function _sehInit() { _seh = { lampOn: true, obj: 'buch', t: 0 }; }
+function _sehCur() { return _SEH_OBJ.find(o => o.k === _seh.obj); }
+function _sehSieht() { const o = _sehCur(); return o.leucht || _seh.lampOn; }
+
+function _sehHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim seh-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">👁️ Wie können wir einen Gegenstand sehen?</h3>
+    <div class="fpm-note" style="margin-top:2px">Lampe – Gegenstand – Auge. Schalte das Licht an und aus und wähle verschiedene Gegenstände. Wann kannst du etwas sehen – und warum?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="sehAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="sehL" onclick="_sehToggle()">💡 Zimmerlicht: <span id="sehLT">an</span></button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Gegenstand wählen</div>
+        <div class="msf-chips" id="sehChips">${_sehChipsHTML()}</div>
+        <div class="lmp-status" id="sehStatus"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>Leuchtende</b> Körper senden eigenes Licht (Lampe, Kerze, Sonne). <b>Beleuchtete</b> Körper werfen nur fremdes Licht zurück (Buch, Apfel, Mond) – im Dunkeln sieht man sie nicht.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Wir sehen einen Gegenstand nur, wenn <b>Licht von ihm ins Auge</b> gelangt. &nbsp;|&nbsp; Der Mond leuchtet nicht selbst – er wirft Sonnenlicht zurück.
+    </p>
+    ${_sehArbeitsblattHTML()}
+  </div>`;
+}
+function _sehChipsHTML() {
+  return _SEH_OBJ.map(o => `<button class="msf-chip${o.k === _seh.obj ? ' cur' : ''}" onclick="_sehSetObj('${o.k}')">${o.ic} ${o.name}</button>`).join('');
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _sehToggle() {
+  _seh.lampOn = !_seh.lampOn;
+  const t = document.getElementById('sehLT'); if (t) t.textContent = _seh.lampOn ? 'an' : 'aus';
+  document.getElementById('sehL')?.classList.toggle('primary', _seh.lampOn);
+  _sehStatus();
+}
+function _sehSetObj(k) {
+  _seh.obj = k;
+  const chips = document.getElementById('sehChips'); if (chips) chips.innerHTML = _sehChipsHTML();
+  _sehStatus();
+}
+function _sehStatus() {
+  const el = document.getElementById('sehStatus'); if (!el) return;
+  const o = _sehCur();
+  if (o.leucht) { el.textContent = '✓ ' + o.name + ' leuchtet selbst → du siehst sie/es (auch im Dunkeln).'; el.className = 'lmp-status on'; }
+  else if (_seh.lampOn) { el.textContent = '✓ Das Zimmerlicht beleuchtet den ' + o.name + ' → das Licht gelangt ins Auge → du siehst ihn.'; el.className = 'lmp-status on'; }
+  else { el.textContent = '✗ Licht aus → kein Licht vom ' + o.name + ' → du siehst nichts.'; el.className = 'lmp-status off'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _sehUpdate(dt) { if (_seh) _seh.t += dt; }
+function _sehRay(ctx, x1, y1, x2, y2, col) {
+  ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.setLineDash([7, 5]); ctx.lineDashOffset = -(_seh.t * 40) % 12;
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke(); ctx.setLineDash([]); ctx.lineDashOffset = 0;
+  // Pfeilspitze
+  const a = Math.atan2(y2 - y1, x2 - x1); ctx.fillStyle = col;
+  ctx.beginPath(); ctx.moveTo(x2, y2); ctx.lineTo(x2 - Math.cos(a - 0.4) * 8, y2 - Math.sin(a - 0.4) * 8); ctx.lineTo(x2 - Math.cos(a + 0.4) * 8, y2 - Math.sin(a + 0.4) * 8); ctx.closePath(); ctx.fill();
+}
+function _sehDraw(ctx, cv) {
+  if (!_seh) return;
+  const W = cv.width, H = cv.height, o = _sehCur(), sieht = _sehSieht();
+  ctx.fillStyle = sieht ? '#eff6ff' : '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const lampX = 60, lampY = 50, objX = W / 2, objY = H / 2 + 10, eyeX = W - 55, eyeY = H / 2 + 10;
+  // Lampe (Zimmerlicht)
+  ctx.fillStyle = _seh.lampOn ? '#facc15' : '#475569';
+  ctx.beginPath(); ctx.arc(lampX, lampY, 12, 0, 2 * Math.PI); ctx.fill();
+  if (_seh.lampOn) { ctx.strokeStyle = '#fde047'; ctx.lineWidth = 1.4; for (let k = 0; k < 8; k++) { const an = k * Math.PI / 4; ctx.beginPath(); ctx.moveTo(lampX + Math.cos(an) * 14, lampY + Math.sin(an) * 14); ctx.lineTo(lampX + Math.cos(an) * 19, lampY + Math.sin(an) * 19); ctx.stroke(); } }
+  ctx.fillStyle = _seh.lampOn ? '#92400e' : '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Zimmerlicht', lampX, lampY + 30);
+  // Gegenstand
+  ctx.font = '34px sans-serif'; ctx.textAlign = 'center';
+  if (sieht) ctx.fillText(o.ic, objX, objY + 12);
+  else { ctx.globalAlpha = 0.18; ctx.fillText(o.ic, objX, objY + 12); ctx.globalAlpha = 1; }
+  ctx.fillStyle = sieht ? '#334155' : '#64748b'; ctx.font = '700 12px sans-serif'; ctx.fillText(o.name, objX, objY - 26);
+  // Auge
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = sieht ? '#334155' : '#64748b'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.ellipse(eyeX, eyeY, 18, 11, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = sieht ? '#1e40af' : '#64748b'; ctx.beginPath(); ctx.arc(eyeX, eyeY, 6, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(eyeX, eyeY, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = sieht ? '#334155' : '#94a3b8'; ctx.font = '10px sans-serif'; ctx.fillText('Auge', eyeX, eyeY + 26);
+  // Lichtstrahlen
+  if (o.leucht) {
+    _sehRay(ctx, objX + 16, objY, eyeX - 20, eyeY, '#f59e0b');   // Gegenstand → Auge
+  } else if (_seh.lampOn) {
+    _sehRay(ctx, lampX + 12, lampY + 6, objX - 14, objY - 6, '#f59e0b');   // Lampe → Gegenstand
+    _sehRay(ctx, objX + 16, objY, eyeX - 20, eyeY, '#f59e0b');             // Gegenstand → Auge
+  } else {
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('🌑 zu dunkel – du siehst nichts', W / 2, 30);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.3.1  (ns = 'sehen') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _sehArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('sehen')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('sehen')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum können wir einen Gegenstand sehen – und warum im Dunkeln nicht?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, wir sehen einen Gegenstand, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle einen <b>beleuchteten</b> Gegenstand (Buch, Apfel, Mond) und schalte das Licht aus. Was passiert?</li>
+          <li>Wähle einen <b>leuchtenden</b> Gegenstand (Lampe, Kerze, Sonne). Siehst du ihn auch im Dunkeln?</li>
+          <li>Achte auf die Lichtstrahlen: Woher kommen sie, wohin gehen sie?</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Gegenstand</td><td>leuchtet selbst?</td><td>im Dunkeln sichtbar?</td></tr>
+          <tr><td>Lampe / Kerze / Sonne</td><td>${inp('t1a', 'ja/nein')}</td><td>${inp('t1b', 'ja/nein')}</td></tr>
+          <tr><td>Buch / Apfel / Mond</td><td>${inp('t2a', 'ja/nein')}</td><td>${inp('t2b', 'ja/nein')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne Lampe, Gegenstand und Auge. Zeichne mit Pfeilen ein, wie das Licht ins Auge gelangt.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was muss ins Auge gelangen, damit wir etwas sehen? ${inp('a1', '…')}</li>
+          <li>Leuchtet der Mond selbst? Wenn nein – woher kommt sein Licht? ${inp('a2', '')}</li>
+          <li>Warum sieht man in einem völlig dunklen Raum gar nichts? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Wir sehen einen Gegenstand nur, wenn ${inp('m1', 'was?')} von ihm in unser ${inp('m2', 'wohin?')} gelangt.<br>
+        <b>Leuchtende</b> Körper senden eigenes Licht; <b>beleuchtete</b> Körper werfen ${inp('m3', 'welches Licht?')} Licht zurück.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Katzenauge (Reflektor) am Fahrrad leuchtet nachts hell auf, wenn ein Auto kommt. Erkläre, warum – obwohl der Reflektor selbst kein Licht macht.</div>
+        ${ta('tr1', 'Der Reflektor …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="sehMini">${_sehMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_sehSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_sehSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_sehSelf(3)">😃 sicher</button>
+          <span id="sehSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="sehSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Leuchtende Körper (Lampe, Kerze, Sonne) sieht man auch im Dunkeln. Beleuchtete Körper (Buch, Apfel, Mond) verschwinden, sobald das Licht aus ist.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Sehen = Sender–Gegenstand–Empfänger: Licht geht von einer Quelle zum Gegenstand, wird zurückgeworfen und gelangt ins Auge. Nur so entsteht ein Seheindruck. Der Mond ist ein beleuchteter Körper.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Das Auge sendet Sehstrahlen aus." (2) „Man sieht Gegenstände auch ohne Licht." (3) „Der Mond leuchtet selbst."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Pfeilrichtung Quelle→Gegenstand→Auge betonen; leuchtende vs. beleuchtete Körper sortieren lassen; völlige Dunkelheit als Gegenprobe.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: leuchtend ja/ja; beleuchtet nein/nein. 6.1 „Licht" · 6.2 „nein, vom Sonnenlicht" · 6.3 „kein Licht gelangt ins Auge". Merksatz: Licht · Auge · fremdes. Transfer: Der Reflektor wirft das Autoscheinwerferlicht zurück ins Auge des Fahrers. Minidiagnose: 1→„Licht ins Auge" · 2→„nein, reflektiert" · 3→„es fehlt Licht".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('sehen')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('sehen', 'Wie können wir einen Gegenstand sehen?', body);
+}
+
+const _SEH_MINI = [
+  { q: '1. Was muss passieren, damit du einen Gegenstand siehst?',
+    opts: ['Dein Auge sendet Strahlen aus', 'Licht vom Gegenstand gelangt in dein Auge', 'Du musst ihn anfassen'], correct: 1,
+    fb: ['Das Auge sendet kein Licht aus – es empfängt nur.',
+         'Richtig! Sehen heißt: Licht vom Gegenstand kommt ins Auge.',
+         'Anfassen ist nicht nötig – Licht genügt.'] },
+  { q: '2. Leuchtet der Mond selbst?',
+    opts: ['Ja', 'Nein, er wirft Sonnenlicht zurück', 'Nur bei Vollmond'], correct: 1,
+    fb: ['Der Mond ist keine eigene Lichtquelle.',
+         'Richtig! Der Mond ist ein beleuchteter Körper – er reflektiert Sonnenlicht.',
+         'Auch bei Vollmond reflektiert er nur.'] },
+  { q: '3. Warum siehst du in einem völlig dunklen Raum gar nichts?',
+    opts: ['Weil die Augen schlafen', 'Weil kein Licht ins Auge gelangt', 'Weil alles schwarz gestrichen ist'], correct: 1,
+    fb: ['An den Augen liegt es nicht.',
+         'Richtig! Ohne Licht kann nichts ins Auge gelangen.',
+         'Auch weiße Wände sieht man ohne Licht nicht.'] }
+];
+function _sehMiniHTML() {
+  return _SEH_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_sehAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="sehFb${qi}"></div></div>`).join('');
+}
+function _sehAns(qi, oi) {
+  const m = _SEH_MINI[qi], el = document.getElementById('sehFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _sehSelf(n) {
+  const out = document.getElementById('sehSelfOut'), val = document.getElementById('sehSelfVal');
+  if (val) { val.value = String(n); _abSave('sehen'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 5.3.2  WIE BREITET SICH LICHT AUS?
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Licht und Schall"
+// Handlungsorientiert: Lampe, zwei Blenden mit Loch, Schirm. Das
+// Licht kommt nur durch, wenn die beiden Löcher mit der Lampe auf
+// einer GERADEN Linie liegen. So entdecken die Lernenden die
+// geradlinige Lichtausbreitung (Lichtstrahl als Modell).
+// ═══════════════════════════════════════════════════════
+
+let _lau = null;
+// Geometrie: Lampe x0, Blende1 x1, Blende2 x2, Schirm xS
+const _LAU_X0 = 50, _LAU_X1 = 170, _LAU_X2 = 290, _LAU_XS = 402;
+const _LAU_RATIO = (_LAU_X2 - _LAU_X0) / (_LAU_X1 - _LAU_X0);   // = 2
+
+function _lauInit() { _lau = { h1: 18, h2: 0, t: 0 }; }
+function _lauNeed2() { return _LAU_RATIO * _lau.h1; }            // Soll-Lage Loch 2
+function _lauDurch() { return Math.abs(_lau.h2 - _lauNeed2()) < 11; }
+
+function _lauHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim lau-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📏 Wie breitet sich Licht aus?</h3>
+    <div class="fpm-note" style="margin-top:2px">Zwischen Lampe und Schirm stehen zwei Blenden mit einem Loch. Verschiebe die Löcher, bis das Licht durchkommt. Was fällt dir über den Weg des Lichts auf?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="lauAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="lmp-status" id="lauStatus" style="margin-top:6px"></div>
+      </div>
+      <div>
+        <div class="fpm-label">Löcher verschieben</div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Loch der 1. Blende: <b id="lauH1Lbl">+18</b></span>
+          <input type="range" id="lauH1" min="-50" max="50" step="2" value="18"
+            oninput="_lauSetH(1,this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Loch der 2. Blende: <b id="lauH2Lbl">0</b></span>
+          <input type="range" id="lauH2" min="-50" max="50" step="2" value="0"
+            oninput="_lauSetH(2,this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Tipp: Das Licht läuft immer <b>geradeaus</b>. Es kommt nur durch, wenn Lampe und beide Löcher auf <b>einer geraden Linie</b> liegen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Licht breitet sich <b>geradlinig</b> aus. &nbsp;|&nbsp; Wir zeichnen den Weg des Lichts als geraden <b>Lichtstrahl</b>.
+    </p>
+    ${_lauArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _lauSetH(n, v) {
+  _lau['h' + n] = +v;
+  const el = document.getElementById('lauH' + n + 'Lbl'); if (el) el.textContent = (+v > 0 ? '+' : '') + _fpmNum(+v, 0);
+  _lauStatus();
+}
+function _lauStatus() {
+  const el = document.getElementById('lauStatus'); if (!el) return;
+  if (_lauDurch()) { el.textContent = '✓ Das Licht kommt durch! Lampe und beide Löcher liegen auf einer geraden Linie.'; el.className = 'lmp-status on'; }
+  else { el.textContent = '✗ Das Licht wird an einer Blende gestoppt – die Löcher liegen noch nicht auf einer Linie.'; el.className = 'lmp-status off'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _lauUpdate(dt) { if (_lau) _lau.t += dt; }
+function _lauBlende(ctx, x, cy, holeY, H) {
+  ctx.fillStyle = '#475569';
+  ctx.fillRect(x - 5, 20, 10, (cy + holeY - 11) - 20);
+  ctx.fillRect(x - 5, cy + holeY + 11, 10, (H - 20) - (cy + holeY + 11));
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(x - 5, cy + holeY - 11, 10, 22);   // Loch
+}
+function _lauDraw(ctx, cv) {
+  if (!_lau) return;
+  const W = cv.width, H = cv.height, cy = H / 2, durch = _lauDurch();
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  // Lampe
+  ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(_LAU_X0, cy, 12, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#fde047'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Lampe', _LAU_X0, cy + 28);
+  // Blenden
+  _lauBlende(ctx, _LAU_X1, cy, _lau.h1, H);
+  _lauBlende(ctx, _LAU_X2, cy, _lau.h2, H);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText('Blende 1', _LAU_X1, H - 8); ctx.fillText('Blende 2', _LAU_X2, H - 8);
+  // Schirm
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(_LAU_XS, 24, 8, H - 48);
+  ctx.fillStyle = '#94a3b8'; ctx.fillText('Schirm', _LAU_XS + 4, H - 8);
+  // Lichtstrahl
+  const y1 = cy + _lau.h1;
+  if (durch) {
+    const yS = cy + _lau.h1 * (_LAU_XS - _LAU_X0) / (_LAU_X1 - _LAU_X0);
+    ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2.5; ctx.setLineDash([8, 6]); ctx.lineDashOffset = -(_lau.t * 60) % 14;
+    ctx.beginPath(); ctx.moveTo(_LAU_X0 + 10, cy); ctx.lineTo(_LAU_XS, yS); ctx.stroke(); ctx.setLineDash([]); ctx.lineDashOffset = 0;
+    // Lichtfleck
+    ctx.fillStyle = 'rgba(250,204,21,0.5)'; ctx.beginPath(); ctx.arc(_LAU_XS + 4, yS, 9, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fde047'; ctx.beginPath(); ctx.arc(_LAU_XS + 4, yS, 4, 0, 2 * Math.PI); ctx.fill();
+  } else {
+    // bis zur 2. Blende, dort gestoppt
+    ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2.5; ctx.setLineDash([8, 6]); ctx.lineDashOffset = -(_lau.t * 60) % 14;
+    ctx.beginPath(); ctx.moveTo(_LAU_X0 + 10, cy); ctx.lineTo(_LAU_X2, cy + _lau.h1 * (_LAU_X2 - _LAU_X0) / (_LAU_X1 - _LAU_X0)); ctx.stroke(); ctx.setLineDash([]); ctx.lineDashOffset = 0;
+    ctx.fillStyle = '#ef4444'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('✗ gestoppt', _LAU_X2, 18);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.3.2  (ns = 'ausbreitung') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _lauArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('ausbreitung')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('ausbreitung')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Auf welchem Weg breitet sich Licht aus – gerade oder um die Ecke?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, das Licht kommt durch beide Löcher, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Verschiebe das Loch der 1. Blende. Kommt das Licht durch?</li>
+          <li>Verschiebe nun das Loch der 2. Blende, bis das Licht auf dem Schirm ankommt.</li>
+          <li>Achte darauf, wie Lampe und beide Löcher zueinander liegen, wenn das Licht durchkommt.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtung</div>
+        <ol class="ab-ol">
+          <li>Kommt das Licht durch, wenn die Löcher versetzt sind? ${inp('b1', 'ja/nein')}</li>
+          <li>Wie müssen Lampe und Löcher liegen, damit das Licht durchkommt? ${inp('b2', 'auf einer …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne Lampe, beide Löcher und den Schirm. Zeichne den Lichtstrahl als gerade Linie ein.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Auf welchem Weg breitet sich Licht aus? ${inp('a1', '…')}</li>
+          <li>Wie nennt man den geraden Weg des Lichts im Modell? ${inp('a2', 'Licht…')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Licht breitet sich ${inp('m1', 'wie?')} aus.<br>
+        Den geraden Weg des Lichts stellt man im Modell als ${inp('m2', 'Licht…?')} dar.<br>
+        Das Licht kommt nur durch, wenn die Löcher auf ${inp('m3', 'wie vielen Linien?')} Linie liegen.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum kannst du um eine Hausecke herum nicht sehen, was dahinter passiert – obwohl es dort hell ist?</div>
+        ${ta('tr1', 'Ich kann nicht um die Ecke sehen, weil das Licht …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="lauMini">${_lauMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_lauSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_lauSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_lauSelf(3)">😃 sicher</button>
+          <span id="lauSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="lauSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Nur wenn Lampe und beide Löcher auf einer Geraden liegen, erscheint ein Lichtfleck auf dem Schirm. Sind die Löcher versetzt, wird das Licht an einer Blende gestoppt. (Da Blende 2 doppelt so weit weg ist, muss ihr Loch doppelt so weit aus der Mitte liegen.)</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> In einem klaren, gleichmäßigen Stoff (Luft, Vakuum) breitet sich Licht geradlinig aus. Der gerade Weg wird als Lichtstrahl modelliert. Das erklärt auch Schatten und die Lochkamera.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Licht biegt um Ecken." (2) „Licht sucht sich den kürzesten Weg durch die Löcher (auch wenn krumm)." (3) „Licht ist überall, deshalb kommt es immer durch."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Gerade Linie mit dem Lineal anlegen; drei-Karten-Realversuch nachstellen; Lichtstrahl als Pfeil zeichnen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4.1 „nein" · 4.2 „auf einer geraden Linie". 6.1 „geradlinig" · 6.2 „Lichtstrahl". Merksatz: geradlinig · Lichtstrahl · einer. Transfer: Licht geht nur geradeaus und nicht um die Ecke. Minidiagnose: 1→„geradlinig" · 2→„auf einer Linie" · 3→„weil Licht nicht um die Ecke geht".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('ausbreitung')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('ausbreitung', 'Wie breitet sich Licht aus?', body);
+}
+
+const _LAU_MINI = [
+  { q: '1. Auf welchem Weg breitet sich Licht aus?',
+    opts: ['In Kurven', 'Geradlinig', 'Im Zickzack'], correct: 1,
+    fb: ['Licht macht keine Kurven.',
+         'Richtig! Licht breitet sich geradlinig aus.',
+         'Es läuft schnurgerade, nicht im Zickzack.'] },
+  { q: '2. Warum kommt das Licht nur durch, wenn die Löcher richtig stehen?',
+    opts: ['Weil sie auf einer geraden Linie liegen müssen', 'Weil sie gleich groß sein müssen', 'Weil sie bunt sein müssen'], correct: 0,
+    fb: ['Richtig! Nur auf einer geraden Linie kommt das Licht durch.',
+         'Die Größe ist nicht entscheidend.',
+         'Die Farbe spielt keine Rolle.'] },
+  { q: '3. Warum kannst du nicht um eine Ecke sehen?',
+    opts: ['Weil Ecken dunkel sind', 'Weil Licht nicht um die Ecke geht', 'Weil die Augen zu schwach sind'], correct: 1,
+    fb: ['An der Dunkelheit liegt es nicht.',
+         'Richtig! Licht geht geradeaus und nicht um die Ecke.',
+         'Mit der Sehstärke hat es nichts zu tun.'] }
+];
+function _lauMiniHTML() {
+  return _LAU_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_lauAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="lauFb${qi}"></div></div>`).join('');
+}
+function _lauAns(qi, oi) {
+  const m = _LAU_MINI[qi], el = document.getElementById('lauFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _lauSelf(n) {
+  const out = document.getElementById('lauSelfOut'), val = document.getElementById('lauSelfVal');
+  if (val) { val.value = String(n); _abSave('ausbreitung'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 5.3.3  WIE ENTSTEHT EIN SCHATTEN?
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Licht und Schall"
+// Handlungsorientiert: Punktlichtquelle, undurchsichtiger Gegenstand,
+// Schirm. Bewege die Lampe (nach oben/unten) und entferne den
+// Gegenstand. Entdecke: Der Schatten entsteht, weil Licht geradlinig
+// ist und der Körper es blockiert – er liegt der Lampe GEGENÜBER.
+// ═══════════════════════════════════════════════════════
+
+let _sct = null;
+function _sctInit() { _sct = { lampY: -20, objOn: true, t: 0 }; }
+
+function _sctHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim sct-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌑 Wie entsteht ein Schatten?</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine Lampe, ein undurchsichtiger Gegenstand und ein Schirm. Bewege die Lampe und entferne den Gegenstand. Wann entsteht ein Schatten – und wo liegt er?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="sctAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="sctObj" onclick="_sctToggle()">🧱 Gegenstand: <span id="sctObjT">da</span></button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Lampe bewegen</div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Lampe (Höhe): <b id="sctLLbl">oben</b></span>
+          <input type="range" id="sctL" min="-60" max="60" step="4" value="-20"
+            oninput="_sctSetL(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="lmp-status" id="sctStatus"></div>
+        <div class="fpm-note" style="margin-top:10px">Achte darauf: Bewegst du die Lampe nach <b>oben</b>, wandert der Schatten nach <b>unten</b> – er liegt immer der Lampe <b>gegenüber</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Ein Schatten entsteht, weil Licht <b>geradlinig</b> ist und ein undurchsichtiger Körper es <b>blockiert</b>. &nbsp;|&nbsp; Der Schatten hat den <b>Umriss</b> des Körpers.
+    </p>
+    ${_sctArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _sctSetL(v) {
+  _sct.lampY = +v;
+  const el = document.getElementById('sctLLbl'); if (el) el.textContent = +v < -12 ? 'oben' : (+v > 12 ? 'unten' : 'Mitte');
+  _sctStatus();
+}
+function _sctToggle() {
+  _sct.objOn = !_sct.objOn;
+  const t = document.getElementById('sctObjT'); if (t) t.textContent = _sct.objOn ? 'da' : 'entfernt';
+  document.getElementById('sctObj')?.classList.toggle('primary', _sct.objOn);
+  _sctStatus();
+}
+function _sctStatus() {
+  const el = document.getElementById('sctStatus'); if (!el) return;
+  if (!_sct.objOn) { el.textContent = '✗ Kein Gegenstand → nichts blockiert das Licht → kein Schatten.'; el.className = 'lmp-status off'; }
+  else { el.textContent = '✓ Der Gegenstand blockiert das Licht → dahinter entsteht ein Schatten (auf der lichtabgewandten Seite).'; el.className = 'lmp-status on'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _sctUpdate(dt) { if (_sct) _sct.t += dt; }
+function _sctDraw(ctx, cv) {
+  if (!_sct) return;
+  const W = cv.width, H = cv.height, cy = H / 2;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fef9c3'; ctx.fillRect(0, 0, W, H);   // hell (beleuchtet)
+  const x0 = 55, yL = cy + _sct.lampY, xO = W / 2 - 6, hO = 34, xS = W - 46;
+  const yTopO = cy - hO, yBotO = cy + hO;
+  // Schirm
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(xS, 20, 8, H - 40);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Schirm', xS + 4, H - 8);
+
+  if (_sct.objOn) {
+    // Schattenstrahlen: Lampe über Ober-/Unterkante
+    const yTopS = yL + (yTopO - yL) * (xS - x0) / (xO - x0);
+    const yBotS = yL + (yBotO - yL) * (xS - x0) / (xO - x0);
+    // Schattenraum (Kegel hinter dem Gegenstand)
+    ctx.fillStyle = 'rgba(30,41,59,0.72)';
+    ctx.beginPath(); ctx.moveTo(xO, yTopO); ctx.lineTo(xS, yTopS); ctx.lineTo(xS, yBotS); ctx.lineTo(xO, yBotO); ctx.closePath(); ctx.fill();
+    // Grenzstrahlen
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.6; ctx.setLineDash([6, 4]); ctx.lineDashOffset = -(_sct.t * 40) % 10;
+    ctx.beginPath(); ctx.moveTo(x0, yL); ctx.lineTo(xS, yTopS); ctx.moveTo(x0, yL); ctx.lineTo(xS, yBotS); ctx.stroke();
+    ctx.setLineDash([]); ctx.lineDashOffset = 0;
+    // Schattenbild auf dem Schirm
+    ctx.fillStyle = '#1e293b'; ctx.fillRect(xS, Math.min(yTopS, yBotS), 8, Math.abs(yBotS - yTopS));
+    ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Schatten', xS + 12, (yTopS + yBotS) / 2);
+    // Gegenstand
+    ctx.fillStyle = '#7c3aed'; ctx.fillRect(xO - 6, yTopO, 12, yBotO - yTopO);
+    ctx.fillStyle = '#334155'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Gegenstand', xO, yTopO - 8);
+  } else {
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.4; ctx.setLineDash([6, 4]); ctx.lineDashOffset = -(_sct.t * 40) % 10;
+    for (let k = -2; k <= 2; k++) { ctx.beginPath(); ctx.moveTo(x0, yL); ctx.lineTo(xS, cy + k * 26); ctx.stroke(); }
+    ctx.setLineDash([]); ctx.lineDashOffset = 0;
+  }
+  // Lampe (Punktlichtquelle)
+  ctx.fillStyle = '#f59e0b'; ctx.beginPath(); ctx.arc(x0, yL, 10, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.4; for (let k = 0; k < 8; k++) { const an = k * Math.PI / 4; ctx.beginPath(); ctx.moveTo(x0 + Math.cos(an) * 12, yL + Math.sin(an) * 12); ctx.lineTo(x0 + Math.cos(an) * 16, yL + Math.sin(an) * 16); ctx.stroke(); }
+  ctx.fillStyle = '#92400e'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Lampe', x0, yL - 18);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.3.3  (ns = 'schatten3') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _sctArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('schatten3')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('schatten3')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie und wo entsteht ein Schatten?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, ein Schatten entsteht, wenn … Er liegt …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Entferne den Gegenstand. Gibt es einen Schatten?</li>
+          <li>Setze den Gegenstand wieder ein. Wo liegt der Schatten – zur Lampe hin oder von ihr weg?</li>
+          <li>Bewege die Lampe nach oben und unten. Wohin wandert der Schatten?</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtung</div>
+        <ol class="ab-ol">
+          <li>Ohne Gegenstand: Schatten? ${inp('b1', 'ja/nein')}</li>
+          <li>Der Schatten liegt der Lampe … ${inp('b2', 'zugewandt/gegenüber')}</li>
+          <li>Lampe nach oben → Schatten wandert nach … ${inp('b3', 'oben/unten')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne Lampe, Gegenstand und Schirm. Zeichne die zwei Randstrahlen und den Schatten ein.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Warum entsteht überhaupt ein Schatten? ${inp('a1', 'weil das Licht … und der Körper …')}</li>
+          <li>Welche Form hat der Schatten im Vergleich zum Gegenstand? ${inp('a2', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ein Schatten entsteht, weil Licht ${inp('m1', 'wie?')} verläuft und ein ${inp('m2', 'was für ein?')} Körper es blockiert.<br>
+        Der Schatten liegt immer der Lichtquelle ${inp('m3', 'zugewandt/gegenüber')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Am Morgen ist dein Schatten lang und zeigt nach Westen, am Abend nach Osten. Erkläre mithilfe der wandernden Sonne, warum sich dein Schatten im Lauf des Tages bewegt.</div>
+        ${ta('tr1', 'Mein Schatten wandert, weil die Sonne …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="sctMini">${_sctMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_sctSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_sctSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_sctSelf(3)">😃 sicher</button>
+          <span id="sctSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="sctSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Ohne Gegenstand kein Schatten. Mit Gegenstand: Schatten hinter dem Körper, der Lampe gegenüber. Lampe nach oben → Schatten nach unten (und umgekehrt). Schattenform = Umriss des Körpers.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Schatten entsteht durch geradlinige Lichtausbreitung + undurchsichtigen Körper. Bei einer Punktlichtquelle entsteht ein scharf begrenzter Kernschatten; der Schattenraum ist der Bereich hinter dem Körper, das Schattenbild seine Abbildung auf dem Schirm.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Schatten klebt am Gegenstand fest." (2) „Der Schatten liegt zur Lampe hin." (3) „Ohne Bewegung des Körpers ändert sich der Schatten nie."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Randstrahlen mit dem Lineal ziehen; Lampe langsam bewegen und Schatten verfolgen; Bezug zur geradlinigen Ausbreitung (5.3.2).</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4.1 „nein" · 4.2 „gegenüber" · 4.3 „unten". 6.1 „Licht geradlinig, Körper blockiert" · 6.2 „gleicher Umriss". Merksatz: geradlinig · undurchsichtigen · gegenüber. Transfer: Die Sonne wandert über den Himmel, deshalb ändert sich die Richtung des Schattens. Minidiagnose: 1→„Licht wird blockiert" · 2→„gegenüber der Lampe" · 3→„nach unten".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('schatten3')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('schatten3', 'Wie entsteht ein Schatten?', body);
+}
+
+const _SCT_MINI = [
+  { q: '1. Warum entsteht ein Schatten?',
+    opts: ['Weil Licht um die Ecke geht', 'Weil ein Körper das geradlinige Licht blockiert', 'Weil es dunkel ist'], correct: 1,
+    fb: ['Licht geht nicht um die Ecke.',
+         'Richtig! Der undurchsichtige Körper blockiert das geradlinige Licht.',
+         'Der Schatten entsteht durch das Blockieren, nicht durch Dunkelheit allein.'] },
+  { q: '2. Auf welcher Seite des Gegenstands liegt der Schatten?',
+    opts: ['Auf der Seite zur Lampe hin', 'Auf der Seite von der Lampe weg', 'Rundherum'], correct: 1,
+    fb: ['Zur Lampe hin ist es hell.',
+         'Richtig! Der Schatten liegt der Lampe gegenüber.',
+         'Nur auf der lichtabgewandten Seite.'] },
+  { q: '3. Du schiebst die Lampe nach oben. Wohin wandert der Schatten?',
+    opts: ['Nach oben', 'Nach unten', 'Er bleibt gleich'], correct: 1,
+    fb: ['Andersherum – der Schatten liegt gegenüber.',
+         'Richtig! Lampe nach oben → Schatten nach unten.',
+         'Er bewegt sich sehr wohl.'] }
+];
+function _sctMiniHTML() {
+  return _SCT_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_sctAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="sctFb${qi}"></div></div>`).join('');
+}
+function _sctAns(qi, oi) {
+  const m = _SCT_MINI[qi], el = document.getElementById('sctFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _sctSelf(n) {
+  const out = document.getElementById('sctSelfOut'), val = document.getElementById('sctSelfVal');
+  if (val) { val.value = String(n); _abSave('schatten3'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
