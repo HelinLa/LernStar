@@ -244,7 +244,10 @@ const _physAbDefs = {
   'thermometer': { titel: 'Wie funktioniert ein Thermometer?', ns: 'thermometer', html: () => _thmArbeitsblattHTML() },
   'waermeausdehnung': { titel: 'Was geschieht beim Erwärmen von Stoffen?', ns: 'ausdehnung', html: () => _wauArbeitsblattHTML() },
   'aggregatzustaende': { titel: 'Wie verändern sich Aggregatzustände?', ns: 'aggregat', html: () => _aggArbeitsblattHTML() },
-  'waermeuebertragung': { titel: 'Wie wird Wärme übertragen?', ns: 'waermeueb', html: () => _wueArbeitsblattHTML() }
+  'waermeuebertragung': { titel: 'Wie wird Wärme übertragen?', ns: 'waermeueb', html: () => _wueArbeitsblattHTML() },
+  'daemmung': { titel: 'Welches Material dämmt am besten?', ns: 'daemmung', html: () => _daeArbeitsblattHTML() },
+  'dunkle-flaechen': { titel: 'Warum erwärmen sich dunkle Flächen stärker?', ns: 'dunkleflaechen', html: () => _dflArbeitsblattHTML() },
+  'ton-entsteht': { titel: 'Wie entsteht ein Ton?', ns: 'tonentsteht', html: () => _tonArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -504,6 +507,38 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('wueAnim', 'wueAnim');
     _pSim.start(dt => _wueUpdate(dt), (ctx, cv) => _wueDraw(ctx, cv), []);
     _abRestore('waermeueb');
+  },
+
+  // ── 6.1.6 DÄMMUNG (Messlabor) ──────────────────────────────────
+  'daemmung': modal => {
+    _daeInit();
+    modal.innerHTML = _daeHTML();
+    _daeRenderTable();
+    _pSim = new PhysicsSimEngine('daeAnim', 'daeAnim');
+    _pSim.start(dt => _daeUpdate(dt), (ctx, cv) => _daeDraw(ctx, cv), []);
+    _mlabRenderTheorie(_dae, false);
+    _mlabDrawPlot('daePlot', _dae);
+    _abRestore('daemmung');
+  },
+
+  // ── 6.1.7 DUNKLE FLÄCHEN (Absorption) ──────────────────────────
+  'dunkle-flaechen': modal => {
+    _dflInit();
+    modal.innerHTML = _dflHTML();
+    _dflComp();
+    _pSim = new PhysicsSimEngine('dflAnim', 'dflAnim');
+    _pSim.start(dt => _dflUpdate(dt), (ctx, cv) => _dflDraw(ctx, cv), []);
+    _abRestore('dunkleflaechen');
+  },
+
+  // ── 6.2.1 WIE ENTSTEHT EIN TON? ────────────────────────────────
+  'ton-entsteht': modal => {
+    _tonInit();
+    modal.innerHTML = _tonHTML();
+    _tonStatus();
+    _pSim = new PhysicsSimEngine('tonAnim', 'tonAnim');
+    _pSim.start(dt => _tonUpdate(dt), (ctx, cv) => _tonDraw(ctx, cv), []);
+    _abRestore('tonentsteht');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -40302,5 +40337,649 @@ function _wueAns(qi, oi) {
 function _wueSelf(n) {
   const out = document.getElementById('wueSelfOut'), val = document.getElementById('wueSelfVal');
   if (val) { val.value = String(n); _abSave('waermeueb'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.1.6  WELCHES MATERIAL DÄMMT AM BESTEN?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Sonnenenergie und Wärme"
+// Handlungsorientiert: heißes Wasser (80 °C) in verschiedenen Dämm-
+// stoffen. Temperatur über die Zeit messen → Abkühlkurven vergleichen.
+// Der beste Dämmstoff hält die Wärme am längsten (flachste Kurve).
+// Nutzt das _mlab-Messframework (t → T, fallende Kurve je Material).
+// ═══════════════════════════════════════════════════════
+
+const _DAE_T0 = 80, _DAE_TU = 20;                 // Start- und Umgebungstemperatur
+const _DAE_MAT = {
+  ohne:   { n: 'ohne Dämmung', kc: 0.160 },
+  alu:    { n: 'Alufolie',     kc: 0.115 },
+  papier: { n: 'Papier',       kc: 0.085 },
+  watte:  { n: 'Watte/Wolle',  kc: 0.045 },
+  styro:  { n: 'Styropor',     kc: 0.028 }
+};
+const _DAE_KEYS = ['ohne', 'alu', 'papier', 'watte', 'styro'];
+const _DAE_MARKS = [0, 2, 4, 6, 8, 10];           // Messzeiten in Minuten
+let _dae = null;
+function _daeT(kc, t) { return _DAE_TU + (_DAE_T0 - _DAE_TU) * Math.exp(-kc * t); }
+
+const _DAE_PRESETS = [
+  { tab: 'Zeit t → Temperatur T', xl: 't in min', yl: 'T in °C',
+    x: r => r.t, y: r => r.T, grp: r => r.matIdx,
+    gl: k => _DAE_MAT[_DAE_KEYS[+k]].n, curve: true,
+    col: (k, i) => _MLAB_PALETTE[(+k) % _MLAB_PALETTE.length],
+    curveFn: (xv, k) => _daeT(_DAE_MAT[_DAE_KEYS[+k]].kc, xv),
+    note: 'Fallende Abkühlkurven: Warmes Wasser kühlt ab. Der beste Dämmstoff (Styropor) hält die Wärme am längsten – seine Kurve fällt am flachsten. „Ohne Dämmung" kühlt am schnellsten ab.',
+    typ: 'fallende Kurve (Abkühlung)', form: 'T sinkt mit der Zeit Richtung Zimmertemperatur',
+    param: () => 'Start 80 °C, Zimmer 20 °C',
+    term: () => '20+60*exp(-' + _DAE_MAT[_dae.mat].kc + '*x)',
+    deutung: 'Ein guter Dämmstoff verlangsamt den Wärmefluss nach außen – das Wasser bleibt länger warm.' }
+];
+
+function _daeInit() {
+  _dae = {
+    mat: 'styro', t: 0,
+    rows: [], nextId: 1, preset: 0, fn: null, fnAuto: false, origin: false, showTheory: false,
+    pre: 'dae', plotId: 'daePlot', fitId: 'daeFit', fnId: 'daeFn', fnErrId: 'daeErr', theoId: 'daeTheo',
+    presets: _DAE_PRESETS
+  };
+}
+
+function _daeHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim dae-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🧣 Welches Material dämmt am besten?</h3>
+    <div class="fpm-note" style="margin-top:2px">Heißes Wasser (80 °C) steht in verschiedenen Dämmstoffen. Miss die Temperatur über 10 Minuten und vergleiche die Abkühlkurven. Welcher Stoff hält die Wärme am längsten?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="daeAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="fpm-label" style="margin-top:8px">Dämmstoff wählen</div>
+        <div class="msf-chips" id="daeChips">${_daeChipsHTML()}</div>
+      </div>
+      <div>
+        <div class="fpm-label">Messung</div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" onclick="_daeMessen()">⏱ Messreihe (0–10 min)</button>
+          <button class="sim-btn" onclick="_daeAll()">📋 Alle Materialien</button>
+          <button class="sim-btn" onclick="_daeClear()">🗑 Tabelle leeren</button>
+        </div>
+        <div class="fpm-tablewrap">
+          <table class="sim-table">
+            <thead><tr><th>Material</th><th>t (min)</th><th>T (°C)</th><th></th></tr></thead>
+            <tbody id="daeTbody"></tbody>
+          </table>
+          <div class="fpm-empty" id="daeEmpty">Noch keine Messwerte.<br>Dämmstoff wählen → Messreihe starten.</div>
+        </div>
+      </div>
+    </div>
+    <div class="fpm-label" style="margin-top:12px">Auswertung – trage die Temperatur T über die Zeit t auf</div>
+    ${_mlabAuswertungHTML(_dae, { preset: '_daeSetPreset', setfn: '_daeSetFn', theo: '_daeTheorieFn', clear: '_daeClearFn', bool: '_daeSetBool' })}
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Bester Dämmstoff = <b>flachste Abkühlkurve</b> (bleibt am längsten warm). &nbsp;|&nbsp; ohne Dämmung → kühlt am schnellsten.
+    </p>
+    ${_daeArbeitsblattHTML()}
+  </div>`;
+}
+function _daeChipsHTML() {
+  return _DAE_KEYS.map(k => `<button class="msf-chip${k === _dae.mat ? ' cur' : ''}" onclick="_daeSetMat('${k}')">${_DAE_MAT[k].n}</button>`).join('');
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _daeSetMat(k) { _dae.mat = k; const c = document.getElementById('daeChips'); if (c) c.innerHTML = _daeChipsHTML(); _mlabRefreshTheorie(_dae); }
+function _daeMessRow(mat, t) {
+  const Tt = _daeT(_DAE_MAT[mat].kc, t) * (1 + (Math.random() - 0.5) * 0.015);
+  return { mat, matIdx: _DAE_KEYS.indexOf(mat), t, T: Math.round(Tt * 10) / 10 };
+}
+function _daeMessen() {
+  if (_dae.rows.some(r => r.mat === _dae.mat)) { /* schon vorhanden -> trotzdem erneut moeglich */ }
+  _DAE_MARKS.forEach(t => { const r = _daeMessRow(_dae.mat, t); _dae.rows.push({ id: _dae.nextId++, mat: r.mat, matIdx: r.matIdx, t: r.t, T: r.T }); });
+  _daeRenderTable(); _mlabDrawPlot('daePlot', _dae);
+}
+function _daeAll() {
+  _dae.rows = [];
+  _DAE_KEYS.forEach(mat => _DAE_MARKS.forEach(t => { const r = _daeMessRow(mat, t); _dae.rows.push({ id: _dae.nextId++, mat: r.mat, matIdx: r.matIdx, t: r.t, T: r.T }); }));
+  _daeRenderTable(); _mlabDrawPlot('daePlot', _dae);
+}
+function _daeDelRow(id) { _dae.rows = _dae.rows.filter(r => r.id !== id); _daeRenderTable(); _mlabDrawPlot('daePlot', _dae); }
+function _daeClear() {
+  if (_dae.rows.length && !confirm('Alle ' + _dae.rows.length + ' Messwerte löschen?')) return;
+  _dae.rows = []; _daeRenderTable(); _mlabDrawPlot('daePlot', _dae);
+}
+function _daeRenderTable() {
+  const tb = document.getElementById('daeTbody'); if (!tb) return;
+  const empty = document.getElementById('daeEmpty');
+  if (empty) empty.style.display = _dae.rows.length ? 'none' : 'block';
+  tb.innerHTML = _dae.rows.map(r =>
+    `<tr><td><span class="fpm-dot" style="background:${_MLAB_PALETTE[r.matIdx % _MLAB_PALETTE.length]}"></span>${_DAE_MAT[r.mat].n}</td>
+       <td>${_fpmNum(r.t, 0)}</td><td><b>${_fpmNum(r.T, 1)}</b></td>
+       <td class="fpm-del" onclick="_daeDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+
+// ── Wiring ─────────────────────────────────────────────
+function _daeSetPreset(i) { _mlabSetPreset(_dae, i); }
+function _daeSetFn(s) { _mlabSetFn(_dae, s); }
+function _daeTheorieFn() { _mlabTheorieFn(_dae); }
+function _daeClearFn() { _mlabClearFn(_dae); }
+function _daeSetBool(k, v) { _dae[k] = v; _mlabDrawPlot('daePlot', _dae); }
+
+// ── Animation (Abkühl-Demo des gewählten Materials) ────
+function _daeUpdate(dt) { if (_dae) _dae.t += dt; }
+function _daeDraw(ctx, cv) {
+  if (!_dae) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const loopT = (_dae.t % 12) * (10 / 12);          // 0..10 min in 12 s
+  const Tnow = _daeT(_DAE_MAT[_dae.mat].kc, loopT);
+  const cx = 120, by = 190, bw = 70, bh = 110;
+  // Dämmschicht
+  ctx.fillStyle = '#e9d5ff'; ctx.fillRect(cx - bw / 2 - 12, by - bh - 12, bw + 24, bh + 20);
+  ctx.fillStyle = '#7c3aed'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(_DAE_MAT[_dae.mat].n, cx, by - bh - 18);
+  // Becher
+  ctx.fillStyle = '#dbeafe'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  ctx.fillRect(cx - bw / 2, by - bh, bw, bh); ctx.strokeRect(cx - bw / 2, by - bh, bw, bh);
+  // Wasser (Farbe ~ Temperatur)
+  const hot = (Tnow - _DAE_TU) / (_DAE_T0 - _DAE_TU);
+  ctx.fillStyle = `rgb(${Math.round(120 + 135 * hot)},${Math.round(120 - 40 * hot)},${Math.round(200 - 150 * hot)})`;
+  ctx.fillRect(cx - bw / 2 + 3, by - bh + 12, bw - 6, bh - 15);
+  // Dampf (mehr, wenn heiß)
+  ctx.strokeStyle = `rgba(148,163,184,${0.3 + 0.5 * hot})`; ctx.lineWidth = 2;
+  for (let i = 0; i < 3; i++) { const wy = by - bh - 8 - ((_dae.t * 25 + i * 16) % 30); ctx.beginPath(); ctx.moveTo(cx - 14 + i * 14, wy); ctx.quadraticCurveTo(cx - 8 + i * 14, wy - 8, cx - 14 + i * 14, wy - 16); ctx.stroke(); }
+  // Thermometer-Anzeige
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 22px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(_fpmNum(Tnow, 0) + ' °C', 240, 90);
+  ctx.fillStyle = '#64748b'; ctx.font = '11px sans-serif'; ctx.fillText('nach ' + _fpmNum(loopT, 1) + ' min', 240, 110);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.fillText('(Demo läuft in Zeitraffer)', 240, 128);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.1.6  (ns = 'daemmung') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _daeArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('daemmung')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('daemmung')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Welcher Stoff hält warmes Wasser am längsten warm – welches Material dämmt am besten?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, am besten dämmt … , am schlechtesten …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle einen Dämmstoff und starte die <b>Messreihe</b> (0–10 min).</li>
+          <li>Wiederhole das für die anderen Materialien (oder nutze „Alle Materialien").</li>
+          <li>Trage die Temperaturen über die Zeit auf und vergleiche die Kurven.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle (Temperatur nach 10 min)</div>
+        <table class="ab-table"><tbody>
+          <tr><td>ohne Dämmung</td><td>${inp('t_ohne', '°C')}</td><td>Alufolie</td><td>${inp('t_alu', '°C')}</td></tr>
+          <tr><td>Papier</td><td>${inp('t_pap', '°C')}</td><td>Watte/Wolle</td><td>${inp('t_wat', '°C')}</td></tr>
+          <tr><td>Styropor</td><td>${inp('t_sty', '°C')}</td><td></td><td></td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Diagramm</div>
+        <div class="ab-t">Skizziere die Abkühlkurven (T über t) für den besten und den schlechtesten Dämmstoff.</div>
+        <div class="ab-skizze">Platz für dein Diagramm</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Welcher Stoff hält die Wärme am längsten? ${inp('a1', '')}</li>
+          <li>Wie sieht seine Kurve im Vergleich aus – steil oder flach? ${inp('a2', '')}</li>
+          <li>Warum kühlt „ohne Dämmung" am schnellsten ab? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ein guter Dämmstoff ${inp('m1', 'verlangsamt/beschleunigt')} den Wärmefluss nach außen.<br>
+        Am besten dämmen leichte, lufthaltige Stoffe wie ${inp('m2', 'Beispiel')}.<br>
+        Je ${inp('m3', 'flacher/steiler')} die Abkühlkurve, desto besser die Dämmung.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum trägt man im Winter eine dicke Jacke, und warum haben Thermoskannen und Hauswände eine Dämmschicht?</div>
+        ${ta('tr1', 'Die dicke Jacke … , Thermoskannen und Hauswände …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="daeMini">${_daeMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_daeSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_daeSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_daeSelf(3)">😃 sicher</button>
+          <span id="daeSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="daeSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Messwerte (nach 10 min).</b> ohne ≈ 32 °C, Alufolie ≈ 39 °C, Papier ≈ 46 °C, Watte/Wolle ≈ 58 °C, Styropor ≈ 65 °C. Styropor hält am längsten warm (flachste Kurve), „ohne" kühlt am schnellsten.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Gute Dämmstoffe enthalten viel eingeschlossene Luft (schlechter Wärmeleiter) → verlangsamter Wärmefluss. Die Abkühlung folgt einer fallenden Kurve Richtung Umgebungstemperatur.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Dämmung erzeugt Wärme." (2) „Metall (Alu) dämmt gut, weil dick." (3) „Dicke allein zählt, nicht das Material."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Nur einen Stoff nach dem anderen messen; Kurven vergleichen (flach = gut); Bezug Jacke/Thermoskanne; eingeschlossene Luft betonen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 „Styropor" · 6.2 „flach" · 6.3 „nichts hält die Wärme zurück". Merksatz: verlangsamt · Styropor/Wolle · flacher. Transfer: Alle halten die Wärme durch eingeschlossene Luft im Inneren. Minidiagnose: 1→Styropor · 2→„flach" · 3→„eingeschlossene Luft".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('daemmung')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('daemmung', 'Welches Material dämmt am besten?', body);
+}
+
+const _DAE_MINI = [
+  { q: '1. Welches Material hält warmes Wasser am längsten warm?',
+    opts: ['Alufolie', 'Styropor', 'ohne Dämmung'], correct: 1,
+    fb: ['Metall leitet Wärme eher gut.',
+         'Richtig! Styropor (viel eingeschlossene Luft) dämmt am besten.',
+         'Ohne Dämmung kühlt es am schnellsten ab.'] },
+  { q: '2. Wie sieht die Abkühlkurve eines guten Dämmstoffs aus?',
+    opts: ['Sehr steil (schnell kalt)', 'Flach (bleibt lange warm)', 'Sie steigt an'], correct: 1,
+    fb: ['Steil bedeutet schnelle Abkühlung – das ist schlechte Dämmung.',
+         'Richtig! Flache Kurve = die Wärme bleibt lange erhalten.',
+         'Warmes Wasser wird nicht wärmer.'] },
+  { q: '3. Warum wärmt eine dicke Winterjacke?',
+    opts: ['Sie erzeugt Wärme', 'Sie hält (mit eingeschlossener Luft) die Körperwärme zurück', 'Sie ist aus Metall'], correct: 1,
+    fb: ['Die Jacke erzeugt keine Wärme.',
+         'Richtig! Die Jacke dämmt und hält deine Körperwärme zurück.',
+         'Metall würde die Wärme sogar ableiten.'] }
+];
+function _daeMiniHTML() {
+  return _DAE_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_daeAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="daeFb${qi}"></div></div>`).join('');
+}
+function _daeAns(qi, oi) {
+  const m = _DAE_MINI[qi], el = document.getElementById('daeFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _daeSelf(n) {
+  const out = document.getElementById('daeSelfOut'), val = document.getElementById('daeSelfVal');
+  if (val) { val.value = String(n); _abSave('daemmung'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.1.7  WARUM ERWÄRMEN SICH DUNKLE FLÄCHEN STÄRKER?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Sonnenenergie und Wärme"
+// Handlungsorientiert: gleiche Sonne auf verschieden gefärbte Flächen.
+// Dunkle Flächen schlucken (absorbieren) viel Strahlung → werden warm.
+// Helle/blanke Flächen werfen viel zurück (reflektieren) → bleiben kühl.
+// ═══════════════════════════════════════════════════════
+
+let _dfl = null;
+const _DFL_COL = [
+  { k: 'schwarz', n: 'schwarz',        a: 0.92, c: '#1e293b' },
+  { k: 'dunkel',  n: 'dunkelrot',      a: 0.70, c: '#991b1b' },
+  { k: 'weiss',   n: 'weiß',           a: 0.30, c: '#e5e7eb' },
+  { k: 'silber',  n: 'silber (blank)', a: 0.12, c: '#cbd5e1' }
+];
+function _dflInit() { _dfl = { color: 'schwarz', t: 0 }; }
+function _dflCur() { return _DFL_COL.find(c => c.k === _dfl.color); }
+function _dflTemp(a, t) { return 20 + a * 48 * (1 - Math.exp(-0.35 * t)); }   // Endtemperatur ~ Absorption
+
+function _dflHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim dfl-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌞⬛ Warum erwärmen sich dunkle Flächen stärker?</h3>
+    <div class="fpm-note" style="margin-top:2px">Dieselbe Sonne scheint auf verschieden gefärbte Flächen. Wähle eine Farbe und beobachte, wie warm die Fläche wird und wie viel Licht sie zurückwirft.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="dflAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="fpm-label" style="margin-top:8px">Farbe der Fläche wählen</div>
+        <div class="msf-chips" id="dflChips">${_dflChipsHTML()}</div>
+      </div>
+      <div>
+        <div class="fpm-label">Endtemperatur im Vergleich (gleiche Sonne, gleiche Zeit)</div>
+        <div id="dflComp" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>Absorption:</b> Dunkle Flächen schlucken viel Strahlung → sie werden warm. <b>Reflexion:</b> Helle und blanke Flächen werfen viel Strahlung zurück → sie bleiben kühl.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Dunkel</b> = viel absorbieren → heiß. &nbsp;|&nbsp; <b>Hell/blank</b> = viel reflektieren → kühl.
+    </p>
+    ${_dflArbeitsblattHTML()}
+  </div>`;
+}
+function _dflChipsHTML() {
+  return _DFL_COL.map(c => `<button class="msf-chip${c.k === _dfl.color ? ' cur' : ''}" onclick="_dflSet('${c.k}')">${c.n}</button>`).join('');
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _dflSet(k) { _dfl.color = k; const c = document.getElementById('dflChips'); if (c) c.innerHTML = _dflChipsHTML(); _dflComp(); }
+function _dflComp() {
+  const el = document.getElementById('dflComp'); if (!el) return;
+  el.innerHTML = _DFL_COL.map(c => {
+    const T = _dflTemp(c.a, 10);
+    return `<div class="wir-row ${c.k === _dfl.color ? 'on' : 'off'}" style="display:flex;justify-content:space-between">
+       <span>${c.n}</span><span>${_fpmNum(T, 0)} °C</span></div>`;
+  }).join('');
+}
+
+// ── Animation ──────────────────────────────────────────
+function _dflUpdate(dt) { if (_dfl) _dfl.t += dt; }
+function _dflDraw(ctx, cv) {
+  if (!_dfl) return;
+  const W = cv.width, H = cv.height, col = _dflCur();
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#eff6ff'; ctx.fillRect(0, 0, W, H);
+  const loopT = _dfl.t % 11, Tnow = _dflTemp(col.a, loopT);
+  // Sonne oben links
+  ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(60, 45, 24, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#fde047'; ctx.lineWidth = 2; for (let k = 0; k < 12; k++) { const an = k * Math.PI / 6; ctx.beginPath(); ctx.moveTo(60 + Math.cos(an) * 27, 45 + Math.sin(an) * 27); ctx.lineTo(60 + Math.cos(an) * 34, 45 + Math.sin(an) * 34); ctx.stroke(); }
+  ctx.fillStyle = '#92400e'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Sonne', 60, 82);
+  // Fläche (Platte) unten rechts
+  const px = 230, py = 150, pw = 150, ph = 26;
+  ctx.fillStyle = col.c; ctx.strokeStyle = '#334155'; ctx.lineWidth = 2;
+  ctx.fillRect(px, py, pw, ph); ctx.strokeRect(px, py, pw, ph);
+  ctx.fillStyle = col.k === 'weiss' || col.k === 'silber' ? '#334155' : '#fff'; ctx.font = '700 11px sans-serif'; ctx.fillText(col.n, px + pw / 2, py + 17);
+  // einfallende Strahlen (gelb) zur Platte
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2; ctx.setLineDash([6, 5]); ctx.lineDashOffset = -(_dfl.t * 60) % 11;
+  for (let i = 0; i < 4; i++) { const tx = px + 20 + i * 35; ctx.beginPath(); ctx.moveTo(78, 60); ctx.lineTo(tx, py); ctx.stroke(); }
+  ctx.setLineDash([]);
+  // reflektierte Strahlen ~ (1-a)
+  const refl = Math.round((1 - col.a) * 4 + 0.5);
+  ctx.strokeStyle = '#38bdf8'; ctx.fillStyle = '#38bdf8'; ctx.lineWidth = 2;
+  for (let i = 0; i < refl; i++) { const tx = px + 25 + i * 30; ctx.beginPath(); ctx.moveTo(tx, py); ctx.lineTo(tx + 20, py - 45); ctx.stroke(); ctx.beginPath(); ctx.arc(tx + 20, py - 45, 3, 0, 2 * Math.PI); ctx.fill(); }
+  ctx.fillStyle = '#0ea5e9'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left'; if (refl > 0) ctx.fillText('reflektiert', px + 55, py - 46);
+  // Temperatur der Platte
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 20px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(_fpmNum(Tnow, 0) + ' °C', px + pw + 4, py + 6);
+  ctx.fillStyle = Tnow > 45 ? '#dc2626' : '#64748b'; ctx.font = '10px sans-serif';
+  ctx.fillText(col.a > 0.6 ? 'wird heiß' : (col.a > 0.4 ? 'wird warm' : 'bleibt kühl'), px + pw + 4, py + 20);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.1.7  (ns = 'dunkleflaechen') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _dflArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('dunkleflaechen')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('dunkleflaechen')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum wird eine schwarze Fläche in der Sonne heißer als eine weiße?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, am heißesten wird … , am kühlsten bleibt …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Bestrahle nacheinander die schwarze, dunkelrote, weiße und silberne Fläche.</li>
+          <li>Lies jeweils die Endtemperatur ab. Achte auf die zurückgeworfenen Strahlen.</li>
+          <li>Ordne von „am heißesten" bis „am kühlsten".</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>schwarz</td><td>${inp('t_s', '°C')}</td><td>dunkelrot</td><td>${inp('t_d', '°C')}</td></tr>
+          <tr><td>weiß</td><td>${inp('t_w', '°C')}</td><td>silber (blank)</td><td>${inp('t_si', '°C')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne eine schwarze und eine weiße Fläche in der Sonne. Zeichne die einfallenden und die zurückgeworfenen Strahlen.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Welche Fläche wird am heißesten? ${inp('a1', '')}</li>
+          <li>Was macht eine helle/blanke Fläche mit dem Licht? ${inp('a2', 'sie …')}</li>
+          <li>Was macht eine dunkle Fläche mit dem Licht? ${inp('a3', 'sie …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t"><b>Dunkle</b> Flächen ${inp('m1', 'absorbieren/reflektieren')} viel Strahlung → sie werden warm.<br>
+        <b>Helle und blanke</b> Flächen ${inp('m2', 'absorbieren/reflektieren')} viel Strahlung → sie bleiben kühl.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum trägt man im Sommer besser helle Kleidung, warum sind Häuser in heißen Ländern oft weiß, und warum sind Sonnenkollektoren schwarz?</div>
+        ${ta('tr1', 'Helle Kleidung … , weiße Häuser … , schwarze Kollektoren …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="dflMini">${_dflMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_dflSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_dflSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_dflSelf(3)">😃 sicher</button>
+          <span id="dflSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="dflSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> schwarz ≈ 64 °C, dunkelrot ≈ 54 °C, weiß ≈ 34 °C, silber ≈ 26 °C. Reihenfolge (heiß → kühl): schwarz, dunkelrot, weiß, silber. Dunkle Flächen werfen wenig zurück, blanke viel.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Dunkle, matte Flächen absorbieren einen großen Teil der Strahlung und wandeln ihn in Wärme um; helle und blanke Flächen reflektieren viel. Absorption und Reflexion ergänzen sich (mehr Reflexion → weniger Absorption).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Farbe hat mit Wärme nichts zu tun." (2) „Weiß ist am wärmsten, weil es hell ist." (3) „Metall ist immer heiß."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Zurückgeworfene Strahlen zählen lassen; Alltagsbeispiele (Kleidung, Auto, Kollektor); Absorption ↔ Reflexion als Gegenspieler.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 „schwarz" · 6.2 „reflektiert es" · 6.3 „absorbiert es". Merksatz: absorbieren · reflektieren. Transfer: helle Kleidung/weiße Häuser reflektieren (bleiben kühl), schwarze Kollektoren absorbieren viel Sonnenwärme. Minidiagnose: 1→schwarz · 2→„reflektiert das Licht" · 3→schwarz.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('dunkleflaechen')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('dunkleflaechen', 'Warum erwärmen sich dunkle Flächen stärker?', body);
+}
+
+const _DFL_MINI = [
+  { q: '1. Welche Fläche wird in der Sonne am heißesten?',
+    opts: ['weiß', 'schwarz', 'silber'], correct: 1,
+    fb: ['Weiß reflektiert viel und bleibt kühler.',
+         'Richtig! Schwarz absorbiert am meisten Strahlung und wird am heißesten.',
+         'Blankes Silber reflektiert am meisten – es bleibt am kühlsten.'] },
+  { q: '2. Warum trägt man im Sommer besser helle Kleidung?',
+    opts: ['Weil helle Kleidung Strahlung reflektiert', 'Weil helle Kleidung Wärme erzeugt', 'Weil sie dünner ist'], correct: 0,
+    fb: ['Richtig! Helle Kleidung reflektiert viel Sonnenlicht → man schwitzt weniger.',
+         'Kleidung erzeugt keine Wärme.',
+         'Es geht um die Farbe (Reflexion), nicht um die Dicke.'] },
+  { q: '3. Welche Farbe haben Sonnenkollektoren meist – und warum?',
+    opts: ['Weiß, damit sie sauffallen', 'Schwarz, damit sie viel Wärme absorbieren', 'Silber, damit sie glänzen'], correct: 1,
+    fb: ['Weiß würde die Wärme wegreflektieren.',
+         'Richtig! Schwarz absorbiert viel Sonnenstrahlung → viel Wärme.',
+         'Silber reflektiert – das wäre schlecht zum Sammeln von Wärme.'] }
+];
+function _dflMiniHTML() {
+  return _DFL_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_dflAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="dflFb${qi}"></div></div>`).join('');
+}
+function _dflAns(qi, oi) {
+  const m = _DFL_MINI[qi], el = document.getElementById('dflFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _dflSelf(n) {
+  const out = document.getElementById('dflSelfOut'), val = document.getElementById('dflSelfVal');
+  if (val) { val.value = String(n); _abSave('dunkleflaechen'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.2.1  WIE ENTSTEHT EIN TON?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Licht und Schall"
+// Handlungsorientiert: eine gespannte Saite anschlagen. Sie schwingt
+// und sendet Schall aus (ein Ton). Hält man sie fest, hört der Ton
+// sofort auf. Schwingende Gegenstände sind Schallquellen.
+// ═══════════════════════════════════════════════════════
+
+let _ton = null;
+function _tonInit() { _ton = { amp: 0, t: 0 }; }
+function _tonKlingt() { return _ton.amp > 0.06; }
+
+function _tonHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim ton-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🎵 Wie entsteht ein Ton?</h3>
+    <div class="fpm-note" style="margin-top:2px">Schlage die Saite an und beobachte. Wann hörst du einen Ton – und was passiert, wenn du die Saite festhältst?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="tonAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_tonPluck()">🔨 Saite anschlagen</button>
+          <button class="sim-btn" onclick="_tonStop()">✋ festhalten (stoppen)</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Zustand</div>
+        <div class="lmp-status" id="tonStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Eine <b>Schallquelle</b> ist immer etwas, das <b>schwingt</b>: eine Saite, eine Stimmgabel, eine Lautsprechermembran oder deine Stimmbänder.</div>
+        <div class="fpm-note" style="margin-top:8px">Tipp: Streut man Reiskörner auf einen Lautsprecher, hüpfen sie – so wird die Schwingung sichtbar.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Kein Schwingen → kein Ton.</b> &nbsp;|&nbsp; Ein Ton entsteht durch eine schwingende Schallquelle.
+    </p>
+    ${_tonArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _tonPluck() { _ton.amp = 1; _tonStatus(); }
+function _tonStop() { _ton.amp = 0; _tonStatus(); }
+function _tonStatus() {
+  const el = document.getElementById('tonStatus'); if (!el) return;
+  if (_tonKlingt()) { el.textContent = '🔊 Die Saite schwingt → du hörst einen Ton.'; el.className = 'lmp-status on'; }
+  else { el.textContent = '🔇 Die Saite schwingt nicht → kein Ton (Stille).'; el.className = 'lmp-status off'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _tonUpdate(dt) { if (_ton) { _ton.t += dt; _ton.amp = Math.max(0, _ton.amp - dt * 0.18); } }
+function _tonDraw(ctx, cv) {
+  if (!_ton) return;
+  const W = cv.width, H = cv.height, cy = H / 2, klingt = _tonKlingt();
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const x1 = 60, x2 = 300, Amax = 46, f = 3.2;
+  // Halterungen
+  ctx.fillStyle = '#64748b'; ctx.fillRect(x1 - 10, cy - 30, 10, 60); ctx.fillRect(x2, cy - 30, 10, 60);
+  // Schallwellen (nur wenn es klingt)
+  if (klingt) {
+    for (let k = 0; k < 4; k++) {
+      const rad = 20 + ((_ton.t * 90 + k * 40) % 150);
+      ctx.strokeStyle = `rgba(124,58,237,${Math.max(0, (0.55 - rad / 170) * _ton.amp)})`; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.arc((x1 + x2) / 2, cy, rad, -0.9, 0.9); ctx.stroke();
+      ctx.beginPath(); ctx.arc((x1 + x2) / 2, cy, rad, Math.PI - 0.9, Math.PI + 0.9); ctx.stroke();
+    }
+  }
+  // Saite (stehende Welle)
+  ctx.strokeStyle = klingt ? '#7c3aed' : '#94a3b8'; ctx.lineWidth = 3; ctx.beginPath();
+  for (let x = x1; x <= x2; x += 3) {
+    const env = Math.sin(Math.PI * (x - x1) / (x2 - x1));
+    const y = cy + _ton.amp * Amax * env * Math.cos(2 * Math.PI * f * _ton.t);
+    x === x1 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  // Schallquelle-Label + Ton-Symbol
+  ctx.fillStyle = '#334155'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('gespannte Saite (Schallquelle)', (x1 + x2) / 2, cy + 80);
+  ctx.font = '700 20px sans-serif'; ctx.fillStyle = klingt ? '#7c3aed' : '#cbd5e1'; ctx.textAlign = 'left';
+  ctx.fillText(klingt ? '🔊 Ton' : '🔇 Stille', x2 + 40, cy - 30);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.2.1  (ns = 'tonentsteht') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _tonArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('tonentsteht')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('tonentsteht')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wodurch entsteht ein Ton?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, ein Ton entsteht, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Schlage die Saite an. Was macht sie – und was hörst du?</li>
+          <li>Halte die Saite fest (stoppen). Was passiert mit dem Ton?</li>
+          <li>Beobachte die Schallwellen, während die Saite schwingt.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Saite schwingt</td><td>${inp('t1', 'Ton/Stille')}</td></tr>
+          <tr><td>Saite festgehalten (steht still)</td><td>${inp('t2', 'Ton/Stille')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die schwingende Saite und die Schallwellen, die von ihr ausgehen.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was muss ein Gegenstand tun, damit ein Ton entsteht? ${inp('a1', 'er muss …')}</li>
+          <li>Was passiert mit dem Ton, wenn die Schwingung stoppt? ${inp('a2', '')}</li>
+          <li>Nenne drei weitere Schallquellen. ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ein Ton entsteht, wenn ein Gegenstand ${inp('m1', 'was tut?')}.<br>
+        Man nennt einen schwingenden Gegenstand eine ${inp('m2', 'was?')}.<br>
+        Stoppt die Schwingung, ${inp('m3', 'hört der Ton auf / wird lauter')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Wenn du sprichst, kannst du am Hals eine Schwingung fühlen. Was schwingt da, und warum entsteht dabei deine Stimme?</div>
+        ${ta('tr1', 'Am Hals schwingen … , dadurch …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="tonMini">${_tonMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_tonSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_tonSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_tonSelf(3)">😃 sicher</button>
+          <span id="tonSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="tonSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Schwingende Saite → Ton; festgehaltene (ruhende) Saite → Stille. Von der Schallquelle gehen Schwingungen/Schallwellen aus.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Töne entstehen durch schwingende Körper (Schallquellen). Die Schwingung wird an das umgebende Medium (Luft) weitergegeben. Ohne Schwingung kein Schall. Lautstärke/Tonhöhe folgen in 6.2.2/6.2.3.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Schall entsteht aus dem Nichts." (2) „Nur laute Dinge schwingen." (3) „Die Luft macht den Ton, nicht der Gegenstand."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Schwingung sichtbar machen (Reis auf Lautsprecher, Lineal an der Tischkante, Stimmgabel im Wasser); Hals beim Sprechen fühlen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Ton / Stille. 6.1 „schwingen" · 6.2 „der Ton hört auf" · 6.3 z. B. Gitarre, Stimmgabel, Lautsprecher. Merksatz: schwingt · Schallquelle · hört der Ton auf. Transfer: Die Stimmbänder schwingen und erzeugen die Stimme. Minidiagnose: 1→„etwas schwingt" · 2→„der Ton hört auf" · 3→„die Saite schwingt".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('tonentsteht')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('tonentsteht', 'Wie entsteht ein Ton?', body);
+}
+
+const _TON_MINI = [
+  { q: '1. Was muss ein Gegenstand tun, damit ein Ton entsteht?',
+    opts: ['leuchten', 'schwingen', 'warm werden'], correct: 1,
+    fb: ['Licht hat mit Ton nichts zu tun.',
+         'Richtig! Nur ein schwingender Gegenstand erzeugt einen Ton.',
+         'Wärme erzeugt keinen Ton.'] },
+  { q: '2. Du hältst eine klingende Saite fest. Was passiert?',
+    opts: ['Der Ton wird lauter', 'Der Ton hört auf', 'Der Ton wird höher'], correct: 1,
+    fb: ['Festhalten macht ihn nicht lauter.',
+         'Richtig! Ohne Schwingung hört der Ton sofort auf.',
+         'Höher wird er nicht – er verstummt.'] },
+  { q: '3. Welches ist eine Schallquelle?',
+    opts: ['Eine ruhende Mauer', 'Eine schwingende Gitarrensaite', 'Ein kalter Stein'], correct: 1,
+    fb: ['Eine ruhende Mauer schwingt nicht.',
+         'Richtig! Die schwingende Saite ist eine Schallquelle.',
+         'Ein Stein macht von allein keinen Ton.'] }
+];
+function _tonMiniHTML() {
+  return _TON_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_tonAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="tonFb${qi}"></div></div>`).join('');
+}
+function _tonAns(qi, oi) {
+  const m = _TON_MINI[qi], el = document.getElementById('tonFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _tonSelf(n) {
+  const out = document.getElementById('tonSelfOut'), val = document.getElementById('tonSelfVal');
+  if (val) { val.value = String(n); _abSave('tonentsteht'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
