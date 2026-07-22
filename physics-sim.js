@@ -689,47 +689,18 @@ const _physSimDefs = {
   },
 
   // ── 13. SCHWINGUNG ─────────────────────────────────────
+  // ── 13. SCHWINGUNGEN (handlungsorientiert + Arbeitsblatt) ──
   'schwingung': modal => {
-    modal.innerHTML = _simModalHTML('schwingung', '〰️ Harmonische Schwingung',
-      _slider_html('shA', 'Amplitude A', 10, 80, 50, 5, 'px') +
-      _slider_html('shF', 'Frequenz f', 1, 6, 2, 0.5, 'Hz'), true);
-    _pSim = new PhysicsSimEngine('physAnim', 'physChart');
-    _pSim.addSeries('y'); _pSim.addSeries('vy');
-    _pSim.start(
-      dt => {
-        const A = _slider('shA'), f = _slider('shF');
-        const y  =  A * Math.sin(2 * Math.PI * f * _pSim.t);
-        const vy = A * 2 * Math.PI * f * Math.cos(2 * Math.PI * f * _pSim.t);
-        _pSim.record('y', y); _pSim.record('vy', vy);
-      },
-      (ctx, cv) => {
-        const A = _slider('shA'), f = _slider('shF');
-        const y = A * Math.sin(2 * Math.PI * f * _pSim.t);
-        const T = (1 / f).toFixed(2);
-        ctx.clearRect(0, 0, cv.width, cv.height);
-        ctx.fillStyle = '#e0f2fe'; ctx.fillRect(0, 0, cv.width, cv.height);
-        const cy = cv.height / 2;
-        // Gleichgewichtslinie
-        ctx.strokeStyle = '#94a3b8'; ctx.setLineDash([4, 4]); ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(cv.width, cy); ctx.stroke(); ctx.setLineDash([]);
-        // Pendelaufhängung & Faden
-        const bx = cv.width / 2 + y, by = cy;
-        ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.moveTo(cv.width / 2, 20); ctx.lineTo(bx, by); ctx.stroke();
-        ctx.fillStyle = '#475569'; ctx.fillRect(cv.width / 2 - 20, 10, 40, 10);
-        ctx.fillStyle = '#f97316'; ctx.beginPath(); ctx.arc(bx, by, 14, 0, Math.PI * 2); ctx.fill();
-        // Amplitudenmarkierungen
-        ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
-        ctx.beginPath(); ctx.moveTo(cv.width / 2 + A, cy - 30); ctx.lineTo(cv.width / 2 + A, cy + 30); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(cv.width / 2 - A, cy - 30); ctx.lineTo(cv.width / 2 - A, cy + 30); ctx.stroke();
-        ctx.setLineDash([]);
-        _infoBox(ctx, cv, [`y = ${y.toFixed(1)} px`, `f = ${f} Hz`, `T = ${T} s`]);
-      },
-      [
-        { series: 'y',  title: 'Auslenkung y(t)',        label: 'y',  unit: 'px',    color: '#7c3aed' },
-        { series: 'vy', title: 'Geschwindigkeit vy(t)', label: 'vy', unit: 'px/s',  color: '#f97316' }
-      ]
-    );
+    _swgInit();
+    modal.innerHTML = _swgHTML();
+    _swgRenderTable();
+    _swgSWRender();
+    _swgSetCursor(_swg.cursor);
+    _pSim = new PhysicsSimEngine('swgAnim', 'swgAnim');
+    _pSim.start(dt => _swgUpdate(dt), (ctx, cv) => _swgDraw(ctx, cv), []);
+    _mlabRenderTheorie(_swg, false);
+    _mlabDrawPlot('swgPlot', _swg);
+    _abRestore('schwingung');
   },
 
   // ── 14. ELEKTRISCHES FELD ──────────────────────────────
@@ -34484,3 +34455,438 @@ function _bslDraw(ctx, cv) {
   ctx.fillStyle = '#16a34a'; ctx.font = '11px sans-serif';
   ctx.fillText('v = ' + _fpmNum(vNow, 1) + ' m/s', mL, 40);
 }
+
+// ═══════════════════════════════════════════════════════
+// 1.1 MERKMALE VON SCHWINGUNGEN – handlungsorientiert
+// Grundlage: Handreichung "Schwingungen" (Jg. 12), Abschnitt 1.1.1
+// Oszillator waehlen, y-t-Diagramm aufnehmen, T = Δt/n messen,
+// Amplitude/Elongation ablesen, ungedaempft vs. gedaempft,
+// Scheitelwerte -> ln(ŷ)-Gerade -> Daempfung δ + Halbwertszeit.
+// Darunter ein Arbeitsblatt (10-teilige Struktur) zum Ausfuellen.
+// ═══════════════════════════════════════════════════════
+
+const _SWG_WIN = 12;                       // Zeitfenster des Diagramms in s
+const _SWG_DELTA = { aus: 0, schwach: 0.12, stark: 0.30 };  // Daempfungskonstante δ in 1/s
+const _SWG_OSZ = [
+  { k: 'fed',  n: 'Federpendel',   ic: '🪀' },
+  { k: 'fad',  n: 'Fadenpendel',   ic: '🕰' },
+  { k: 'rohr', n: 'Wassersäule (U-Rohr)', ic: '🧪' },
+  { k: 'hem',  n: 'Hemmungspendel', ic: '⚙️' }
+];
+let _swg = null;
+
+const _SWG_PRESETS = [
+  { tab: 't → ŷ', xl: 't in s', yl: 'ŷ in cm', x: r => r.t, y: r => r.yhat, grp: null,
+    curve: true, col: () => '#7c3aed',
+    curveFn: (t) => _swg.amp0 * Math.exp(-_swgDelta() * t),
+    note: 'Trägst du die Scheitelwerte (Amplituden) gegen die Zeit auf, liegen sie bei Dämpfung auf einer fallenden Kurve – der Einhüllenden ŷ(t) = ŷ₀·e^(−δ·t). Ohne Dämpfung bleibt ŷ konstant (waagerecht). Aus einer Kurve liest man δ schlecht ab – logarithmiere ŷ und wechsle zur Auftragung t → ln(ŷ).',
+    typ: 'Exponentialfunktion (Einhüllende)', form: 'ŷ(t) = ŷ₀ · e^(−δ·t)',
+    param: () => 'ŷ₀ = ' + _fpmNum(_swg.amp0, 1) + ' cm, δ = ' + _fpmNum(_swgDelta(), 2) + ' 1/s',
+    term: () => _swg.amp0.toString() + '*exp(-' + _swgDelta() + '*x)',
+    deutung: 'Die Amplitude nimmt bei Dämpfung exponentiell ab. Die grüne Einhüllende verbindet die Scheitel.' },
+  { tab: 't → ln(ŷ)', xl: 't in s', yl: 'ln(ŷ / cm)', x: r => r.t, y: r => Math.log(r.yhat), grp: null,
+    slope: () => -_swgDelta(), col: () => '#0284c7',
+    curveFn: (t) => Math.log(_swg.amp0) - _swgDelta() * t,
+    note: 'Jetzt liegen die Punkte auf einer Geraden ⇒ ln(ŷ) = ln(ŷ₀) − δ·t. Die Steigung ist −δ. Bei einer ungedämpften Schwingung ist die Gerade waagerecht (δ ≈ 0).',
+    typ: 'lineare Funktion', form: 'ln(ŷ) = ln(ŷ₀) − δ · t',
+    param: () => 'Steigung = −δ = ' + _fpmNum(-_swgDelta(), 2) + ' 1/s',
+    term: () => Math.log(_swg.amp0).toFixed(3) + '-' + _swgDelta() + '*x',
+    deutung: 'Durch das Logarithmieren wird aus der Exponentialkurve eine Gerade. Die Steigung liefert die Dämpfungskonstante δ.',
+    ergebnis: (g0) => {
+      const d = -g0.fit.k;
+      if (d < 0.01) return _mlabErgebnis('Dämpfungskonstante δ = −Steigung', '≈ 0  (ungedämpft)', '', null,
+        'Die Amplitude bleibt konstant – keine Dämpfung.');
+      const th = Math.log(2) / d;
+      return _mlabErgebnis('Dämpfungskonstante δ = −Steigung', _fpmNum(d, 3), '1/s', _fpmNum(_swgDelta(), 3),
+        'ŷ(t) = ŷ₀·e^(−δt)  ⇒  ln ŷ = ln ŷ₀ − δ·t') +
+        _mlabErgebnis('Halbwertszeit t½ = ln 2 / δ', _fpmNum(th, 2), 's', null, 'Nach t½ ist die Amplitude halbiert.');
+    } }
+];
+
+function _swgInit() {
+  _swg = {
+    osz: 'fed', amp0: 6, T: 2.0, daempf: 'schwach',
+    t: 0, running: true, cursor: 3.0,
+    sw: { state: 'idle', t0: 0, n: 0, elapsed: 0, T: null },
+    rows: [], nextId: 1,
+    preset: 0, fn: null, fnAuto: false, origin: false, showTheory: false,
+    pre: 'swg', plotId: 'swgPlot', fitId: 'swgFit', fnId: 'swgFn', fnErrId: 'swgErr', theoId: 'swgTheo',
+    presets: _SWG_PRESETS
+  };
+}
+
+// ── Physik ─────────────────────────────────────────────
+function _swgDelta() { return _SWG_DELTA[_swg.daempf]; }
+function _swgYmax(t) { return _swg.amp0 * Math.exp(-_swgDelta() * t); }
+function _swgY(t) {
+  let y = _swgYmax(t) * Math.cos(2 * Math.PI * t / _swg.T);
+  if (_swg.osz === 'hem' && y < 0) y *= 0.6;   // Unsymmetrie des Hemmungspendels (Abb. 5)
+  return y;
+}
+function _swgPeaks(n) {
+  const out = [];
+  for (let k = 0; k < n; k++) { const t = k * _swg.T; if (t > _SWG_WIN) break; out.push({ t, yhat: _swgYmax(t) }); }
+  return out;
+}
+
+// ── Oberflaeche ────────────────────────────────────────
+function _swgHTML() {
+  const oszBtns = _SWG_OSZ.map(o =>
+    `<button class="fpm-spring${o.k === _swg.osz ? ' on' : ''}" id="swgOsz_${o.k}" onclick="_swgSetOsz('${o.k}')" style="flex:1 1 60px">
+       <span class="fpm-spring-n">${o.ic} ${o.n}</span></button>`).join('');
+  const dmpBtns = [['aus', 'ungedämpft'], ['schwach', 'schwach gedämpft'], ['stark', 'stark gedämpft']].map(d =>
+    `<button class="fpm-tab${d[0] === _swg.daempf ? ' on' : ''}" id="swgDmp_${d[0]}" onclick="_swgSetDmp('${d[0]}')">${d[1]}</button>`).join('');
+
+  return `<div class="sim-box sim-box-wide fpm-sim swg-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">〰️ Merkmale von Schwingungen – T, f, Amplitude und Dämpfung selbst messen</h3>
+
+    <div class="fpm-grid">
+      <div>
+        <canvas id="swgAnim" width="420" height="200" class="phys-anim-cv"></canvas>
+        <div class="fpm-label">Oszillator wählen (schwingungsfähiges System)</div>
+        <div class="fpm-springs">${oszBtns}</div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Amplitude ŷ₀: <b id="swgALbl">6,0 cm</b></span>
+          <input type="range" id="swgA" min="2" max="9" step="0.5" value="6" oninput="_swgSetA(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Periodendauer T (Einstellung): <b id="swgTLbl">2,0 s</b></span>
+          <input type="range" id="swgT" min="1" max="4" step="0.25" value="2" oninput="_swgSetT(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="fpm-label" style="margin-top:8px">Dämpfung</div>
+        <div class="fpm-tabs">${dmpBtns}</div>
+      </div>
+
+      <div>
+        <canvas id="swgGraph" width="420" height="210" class="phys-chart-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Ablese-Cursor bei t = <b id="swgCurLbl">3,00 s</b> → y = <b id="swgCurY" style="color:#db2777">—</b></span>
+          <input type="range" id="swgCur" min="0" max="12" step="0.05" value="3" oninput="_swgSetCursor(this.value)" style="width:100%;accent-color:#db2777">
+        </div>
+        <div class="fpm-label" style="margin-top:6px">Periodendauer messen:  T = Δt / n</div>
+        <div class="fpm-readout">
+          <div class="fpm-ro"><span class="fpm-ro-k">Perioden n</span><span class="fpm-ro-v" id="swgN">0</span><span class="fpm-ro-u">gezählt</span></div>
+          <div class="fpm-ro"><span class="fpm-ro-k">Zeit Δt</span><span class="fpm-ro-v" id="swgDt">0,00</span><span class="fpm-ro-u">s</span></div>
+          <div class="fpm-ro"><span class="fpm-ro-k">T = Δt/n · f = 1/T</span><span class="fpm-ro-v" id="swgTf">—</span><span class="fpm-ro-u"></span></div>
+        </div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" id="swgStartBtn" onclick="_swgSWStart()">▶ Stoppuhr start</button>
+          <button class="sim-btn" id="swgStopBtn" onclick="_swgSWStop()" disabled>■ Stopp</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="fpm-label" style="margin-top:12px">Scheitelwerte (Amplituden) aufnehmen – zum Untersuchen der Dämpfung</div>
+    <div class="sim-btn-row">
+      <button class="sim-btn primary" onclick="_swgScheitelAuto()">📈 Scheitelwerte aufnehmen</button>
+      <button class="sim-btn" onclick="_swgClear()">🗑 Tabelle leeren</button>
+    </div>
+    <div class="fpm-grid2" style="margin-top:8px">
+      <div class="fpm-tablewrap" style="max-height:150px">
+        <table class="sim-table">
+          <thead><tr><th>k</th><th>t (s)</th><th>ŷ (cm)</th><th>ln(ŷ)</th><th></th></tr></thead>
+          <tbody id="swgTbody"></tbody>
+        </table>
+        <div class="fpm-empty" id="swgEmpty">Noch keine Scheitelwerte.<br>Erst Dämpfung wählen, dann „Scheitelwerte aufnehmen".</div>
+      </div>
+      <div class="fpm-note">Ein <b>Scheitelwert</b> ist die größte Auslenkung einer Schwingung (die Amplitude). Bei Dämpfung wird jeder Scheitel kleiner als der vorige. Nimm die Werte auf und finde unten heraus, <b>wie</b> die Amplitude abnimmt.</div>
+    </div>
+
+    <div class="fpm-label" style="margin-top:12px">Auswertung – wie hängt die Amplitude ŷ von der Zeit ab?</div>
+    ${_mlabAuswertungHTML(_swg, { preset: '_swgSetPreset', setfn: '_swgSetFn', theo: '_swgTheorieFn', clear: '_swgClearFn', bool: '_swgSetBool' })}
+
+    ${_swgArbeitsblattHTML()}
+
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>T = Δt/n</b>, <b>f = 1/T</b> (1 Hz = 1 s⁻¹) &nbsp;|&nbsp; ungedämpft: ŷ konstant &nbsp;·&nbsp; gedämpft: ŷ = ŷ₀·e^(−δt)
+    </p>
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _swgSetOsz(k) {
+  _swg.osz = k;
+  _SWG_OSZ.forEach(o => document.getElementById('swgOsz_' + o.k)?.classList.toggle('on', o.k === k));
+  _swgSWReset();
+}
+function _swgSetDmp(d) {
+  _swg.daempf = d;
+  ['aus', 'schwach', 'stark'].forEach(x => document.getElementById('swgDmp_' + x)?.classList.toggle('on', x === d));
+  _mlabRefreshTheorie(_swg); _mlabDrawPlot('swgPlot', _swg);
+}
+function _swgSetA(v) { _swg.amp0 = +v; const el = document.getElementById('swgALbl'); if (el) el.textContent = _fpmNum(+v, 1) + ' cm'; _mlabRefreshTheorie(_swg); }
+function _swgSetT(v) { _swg.T = +v; const el = document.getElementById('swgTLbl'); if (el) el.textContent = _fpmNum(+v, 2) + ' s'; _swgSWReset(); }
+function _swgSetCursor(v) {
+  _swg.cursor = +v;
+  const l = document.getElementById('swgCurLbl'); if (l) l.textContent = _fpmNum(+v, 2) + ' s';
+  const y = document.getElementById('swgCurY'); if (y) y.textContent = _fpmNum(_swgY(+v), 2) + ' cm';
+}
+
+// Stoppuhr
+function _swgSWReset() {
+  _swg.sw = { state: 'idle', t0: 0, n: 0, elapsed: 0, T: null };
+  _swgSWRender();
+}
+function _swgSWStart() { _swg.sw = { state: 'running', t0: _swg.t, n: 0, elapsed: 0, T: null }; _swgSWRender(); }
+function _swgSWStop() {
+  const sw = _swg.sw; if (sw.state !== 'running') return;
+  sw.state = 'stopped';
+  sw.elapsed = Math.round((_swg.t - sw.t0) * 100) / 100;
+  sw.n = Math.floor((_swg.t - sw.t0) / _swg.T + 1e-9);
+  sw.T = sw.n > 0 ? sw.elapsed / sw.n : null;
+  _swgSWRender();
+}
+function _swgSWRender() {
+  const sw = _swg.sw;
+  const running = sw.state === 'running';
+  if (running) { sw.elapsed = _swg.t - sw.t0; sw.n = Math.floor(sw.elapsed / _swg.T + 1e-9); }
+  const nEl = document.getElementById('swgN'); if (nEl) nEl.textContent = sw.n;
+  const dtEl = document.getElementById('swgDt'); if (dtEl) dtEl.textContent = _fpmNum(sw.elapsed, 2);
+  const tfEl = document.getElementById('swgTf');
+  if (tfEl) tfEl.textContent = sw.T ? _fpmNum(sw.T, 2) + ' s · ' + _fpmNum(1 / sw.T, 2) + ' Hz' : '—';
+  const sb = document.getElementById('swgStartBtn'), pb = document.getElementById('swgStopBtn');
+  if (sb) sb.disabled = running; if (pb) pb.disabled = !running;
+}
+
+// Scheitelwerte
+function _swgScheitelAuto() {
+  _swg.rows = [];
+  _swgPeaks(9).forEach(p => {
+    const yhat = p.yhat * (1 + (Math.random() - 0.5) * 0.02);   // kleine Ablesestreuung
+    _swg.rows.push({ id: _swg.nextId++, t: Math.round(p.t * 100) / 100, yhat: Math.round(yhat * 100) / 100 });
+  });
+  _swgRenderTable(); _mlabDrawPlot('swgPlot', _swg);
+}
+function _swgDelRow(id) { _swg.rows = _swg.rows.filter(r => r.id !== id); _swgRenderTable(); _mlabDrawPlot('swgPlot', _swg); }
+function _swgClear() {
+  if (_swg.rows.length && !confirm('Alle ' + _swg.rows.length + ' Scheitelwerte löschen?')) return;
+  _swg.rows = []; _swgRenderTable(); _mlabDrawPlot('swgPlot', _swg);
+}
+function _swgRenderTable() {
+  const tb = document.getElementById('swgTbody'); if (!tb) return;
+  const empty = document.getElementById('swgEmpty');
+  if (empty) empty.style.display = _swg.rows.length ? 'none' : 'block';
+  tb.innerHTML = _swg.rows.map((r, i) =>
+    `<tr><td>${i}</td><td>${_fpmNum(r.t, 2)}</td><td><b>${_fpmNum(r.yhat, 2)}</b></td>
+       <td>${_fpmNum(Math.log(r.yhat), 3)}</td>
+       <td class="fpm-del" onclick="_swgDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+
+// Wiring
+function _swgSetPreset(i) { _mlabSetPreset(_swg, i); }
+function _swgSetFn(s) { _mlabSetFn(_swg, s); }
+function _swgTheorieFn() { _mlabTheorieFn(_swg); }
+function _swgClearFn() { _mlabClearFn(_swg); }
+function _swgSetBool(k, v) { _swg[k] = v; _mlabDrawPlot('swgPlot', _swg); }
+
+// ── Animation + y-t-Diagramm ───────────────────────────
+function _swgUpdate(dt) {
+  if (!_swg || !_swg.running) return;
+  _swg.t += dt;
+  if (_swg.sw.state === 'running') _swgSWRender();
+}
+function _swgDraw(ctx, cv) {
+  if (!_swg) return;
+  _swgDrawOsz(ctx, cv);
+  const g = document.getElementById('swgGraph');
+  if (g && g.getContext) _swgDrawGraph(g.getContext('2d'), g);
+}
+function _swgDrawOsz(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f0f9ff'; ctx.fillRect(0, 0, W, H);
+  const tNow = _swg.t % _SWG_WIN;
+  const y = _swgY(tNow);              // aktuelle Elongation in cm
+  const cx = W / 2, top = 24, PX = 12;   // 12 px pro cm
+  // Ruhelage
+  ctx.strokeStyle = '#94a3b8'; ctx.setLineDash([4, 4]); ctx.lineWidth = 1;
+  const zeroY = H / 2 + 10;
+  if (_swg.osz === 'fad') { ctx.beginPath(); ctx.moveTo(20, top + 8); ctx.lineTo(W - 20, top + 8); ctx.stroke(); }
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#1e293b'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  const oszName = (_SWG_OSZ.find(o => o.k === _swg.osz) || {}).n || '';
+  ctx.fillText(oszName, 10, 16);
+  ctx.fillStyle = '#7c3aed'; ctx.font = '11px sans-serif';
+  ctx.fillText('y = ' + _fpmNum(y, 2) + ' cm', 10, H - 8);
+
+  if (_swg.osz === 'fad' || _swg.osz === 'hem') {
+    // Pendel: horizontale Auslenkung
+    const L = H - top - 44, ang = (y / _swg.amp0) * 0.5;   // Winkel ~ Auslenkung
+    const bx = cx + Math.sin(ang) * L, by = top + 8 + Math.cos(ang) * L;
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(cx - 30, top + 8); ctx.lineTo(cx + 30, top + 8); ctx.stroke();
+    ctx.strokeStyle = '#475569'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(cx, top + 8); ctx.lineTo(bx, by); ctx.stroke();
+    ctx.fillStyle = _swg.osz === 'hem' ? '#b45309' : '#f97316'; ctx.beginPath(); ctx.arc(bx, by, 13, 0, 2 * Math.PI); ctx.fill();
+  } else if (_swg.osz === 'rohr') {
+    // U-Rohr: Wasserspiegel links/rechts gegenphasig
+    const lx = cx - 55, rx = cx + 55, wBase = H - 30, uw = 26;
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(lx - uw / 2, top + 6); ctx.lineTo(lx - uw / 2, wBase); ctx.arc(cx, wBase, cx - (lx - uw / 2), Math.PI, 0, true);
+    ctx.lineTo(rx + uw / 2, top + 6); ctx.stroke();
+    ctx.fillStyle = '#38bdf8';
+    const lvl = y * PX;
+    ctx.fillRect(lx - uw / 2 + 2, (H / 2) - lvl, uw - 3, wBase - ((H / 2) - lvl));
+    ctx.fillRect(rx - uw / 2 + 2, (H / 2) + lvl, uw - 3, wBase - ((H / 2) + lvl));
+  } else {
+    // Federpendel: vertikale Masse
+    const massY = zeroY + y * PX;
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(cx - 40, top); ctx.lineTo(cx + 40, top); ctx.stroke();
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2; ctx.beginPath();
+    const N = 16, len = massY - top;
+    for (let i = 0; i <= N; i++) { const u = i / N; ctx.lineTo(cx + Math.sin(u * N * Math.PI) * 10 * Math.min(1, Math.min(u, 1 - u) * 6), top + u * len); }
+    ctx.stroke();
+    ctx.fillStyle = '#475569'; ctx.beginPath(); ctx.roundRect ? ctx.roundRect(cx - 22, massY, 44, 24, 4) : ctx.rect(cx - 22, massY, 44, 24); ctx.fill();
+  }
+}
+function _swgDrawGraph(ctx, cv) {
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+  const padL = 34, padB = 22, padT = 10, padR = 10;
+  const x0 = padL, y0 = H - padB, x1 = W - padR, y1 = padT;
+  const A = _swg.amp0 * 1.1;
+  const X = t => x0 + t / _SWG_WIN * (x1 - x0);
+  const Y = v => (y0 + y1) / 2 - v / A * ((y0 - y1) / 2);
+  // Gitter (Sekunden)
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '9px sans-serif';
+  for (let t = 0; t <= _SWG_WIN; t += 1) {
+    ctx.beginPath(); ctx.moveTo(X(t), y1); ctx.lineTo(X(t), y0); ctx.stroke();
+    if (t % 2 === 0) { ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(t, X(t), y0 + 12); }
+  }
+  // Nulllinie (Ruhelage)
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(x0, Y(0)); ctx.lineTo(x1, Y(0)); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText('0', x0 - 3, Y(0) + 3);
+  ctx.fillText('+ŷ', x0 - 3, Y(_swg.amp0) + 3); ctx.fillText('−ŷ', x0 - 3, Y(-_swg.amp0) + 3);
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('y in cm', x0, y1 + 8); ctx.textAlign = 'right'; ctx.fillText('t in s', x1, y0 + 12);
+  // Einhuellende bei Daempfung
+  if (_swgDelta() > 0) {
+    ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+    [1, -1].forEach(s => { ctx.beginPath(); for (let t = 0; t <= _SWG_WIN; t += 0.1) { const yy = Y(s * _swgYmax(t)); t === 0 ? ctx.moveTo(X(t), yy) : ctx.lineTo(X(t), yy); } ctx.stroke(); });
+    ctx.setLineDash([]);
+  }
+  // y-t-Kurve
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.8; ctx.beginPath();
+  for (let t = 0; t <= _SWG_WIN; t += 0.03) { const yy = Y(_swgY(t)); t === 0 ? ctx.moveTo(X(t), yy) : ctx.lineTo(X(t), yy); }
+  ctx.stroke();
+  // Ablese-Cursor
+  const ct = _swg.cursor;
+  ctx.strokeStyle = '#db2777'; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+  ctx.beginPath(); ctx.moveTo(X(ct), y1); ctx.lineTo(X(ct), y0); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#db2777'; ctx.beginPath(); ctx.arc(X(ct), Y(_swgY(ct)), 4, 0, 2 * Math.PI); ctx.fill();
+  // "Jetzt"-Punkt
+  const tn = _swg.t % _SWG_WIN;
+  ctx.fillStyle = '#f97316'; ctx.beginPath(); ctx.arc(X(tn), Y(_swgY(tn)), 3.5, 0, 2 * Math.PI); ctx.fill();
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT (10-teilige Struktur) – Felder lokal gespeichert
+// ═══════════════════════════════════════════════════════
+function _swgArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('schwingung')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('schwingung')">`;
+  return `<details class="ab-wrap"><summary class="ab-summary">📝 Arbeitsblatt – Merkmale von Schwingungen <span class="ab-hint">(anklicken zum Öffnen · deine Eingaben werden im Browser gespeichert)</span></summary>
+    <div class="ab-body">
+      <div class="ab-sec"><div class="ab-h">1 · Titel</div><div class="ab-t"><b>Merkmale von Schwingungen</b> – Periodendauer, Frequenz, Amplitude und Dämpfung</div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Kurze Beschreibung</div>
+        <div class="ab-t">Ein schwingungsfähiges System (ein <b>Oszillator</b>) bewegt sich immer wieder hin und her – zum Beispiel ein Federpendel, ein Fadenpendel oder eine Wassersäule im U-Rohr. Die Simulation zeichnet die Bewegung als <b>y-t-Diagramm</b> auf. Du kannst Werte ablesen und messen.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Ziel / Fragestellung</div>
+        <div class="ab-t">Wie beschreibt man eine Schwingung mit Zahlen? Und was ändert sich, wenn eine Schwingung <b>gedämpft</b> ist?</div></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Benötigte Einstellungen</div>
+        <div class="ab-t">In der Simulation oben: <b>Oszillator</b>, Regler <b>Amplitude ŷ₀</b> und <b>Periodendauer T</b>, die Schalter <b>ungedämpft / schwach / stark gedämpft</b>, die <b>Stoppuhr</b> und der rosa <b>Ablese-Cursor</b>.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Schritt-für-Schritt-Anleitung</div>
+        <ol class="ab-ol">
+          <li>Wähle den Oszillator <b>Federpendel</b> und stelle <b>ungedämpft</b> ein.</li>
+          <li>Starte die <b>Stoppuhr</b>, lass genau <b>n = 5</b> Perioden zählen, drücke <b>Stopp</b>. Notiere Δt, T und f.</li>
+          <li>Lies mit dem <b>Ablese-Cursor</b> die Elongation y zu drei Zeitpunkten ab.</li>
+          <li>Schalte auf <b>schwach gedämpft</b> und drücke <b>„Scheitelwerte aufnehmen"</b>.</li>
+          <li>Öffne unten die Auswertung, schalte auf <b>t → ln(ŷ)</b> und lege die <b>Ausgleichsgerade</b> an.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Vermutung (vor der Messung)</div>
+        <div class="ab-t">Was passiert mit der Amplitude, wenn eine Schwingung gedämpft ist? Und ändert sich dabei die Periodendauer T? Schreibe deine Vermutung auf:</div>
+        ${ta('v1', 'Meine Vermutung: …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Beobachtungen & Messwerte</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Perioden n</td><td>${inp('m_n', 'n')}</td><td>Zeit Δt (s)</td><td>${inp('m_dt', 's')}</td></tr>
+          <tr><td>T = Δt/n (s)</td><td>${inp('m_T', 's')}</td><td>f = 1/T (Hz)</td><td>${inp('m_f', 'Hz')}</td></tr>
+          <tr><td>y bei t₁ = ____ s</td><td>${inp('m_y1', 'cm')}</td><td>y bei t₂ = ____ s</td><td>${inp('m_y2', 'cm')}</td></tr>
+        </tbody></table>
+        <div class="ab-t" style="margin-top:6px">Trage 3 Scheitelwerte aus der Tabelle ab:</div>
+        <table class="ab-table"><tbody>
+          <tr><td>ŷ₀ (cm)</td><td>${inp('s_y0', 'cm')}</td><td>ŷ nach 1 Periode</td><td>${inp('s_y1', 'cm')}</td><td>ŷ nach 3 Perioden</td><td>${inp('s_y3', 'cm')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Auswertung</div>
+        <div class="ab-t">Welche Auftragung ergibt eine <b>Gerade</b>? Was bedeutet ihre Steigung? Wie groß sind Dämpfung δ und Halbwertszeit t½?</div>
+        ${ta('a1', 'δ = … ,  t½ = … ,  Begründung: …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">9 · Erklärung in eigenen Worten</div>
+        <div class="ab-t">Erkläre mit eigenen Worten, was „gedämpft" bedeutet und warum die Periodendauer dabei (fast) gleich bleibt.</div>
+        ${ta('e1', 'Meine Erklärung: …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">10 · Transfer / Vertiefung</div>
+        <div class="ab-t">Wähle das <b>Hemmungspendel</b> und beobachte die Kurve genau. Die Schwingung ist leicht <b>unsymmetrisch</b> (die Ausschläge nach oben und unten sind unterschiedlich groß). Stelle eine <b>Vermutung</b> auf, woran das liegen könnte.</div>
+        ${ta('t1', 'Meine Vermutung zum Hemmungspendel: …', 3)}</div>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('schwingung')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>
+    </div></details>`;
+}
+
+// ── Arbeitsblatt-Persistenz (wiederverwendbar) ─────────
+function _abSave(ns) {
+  try {
+    if (typeof localStorage === 'undefined') return;
+    const data = {};
+    document.querySelectorAll('[data-abk]').forEach(el => { data[el.getAttribute('data-abk')] = el.value; });
+    localStorage.setItem('ls_ab_' + ns, JSON.stringify(data));
+  } catch (e) { }
+}
+function _abRestore(ns) {
+  try {
+    if (typeof localStorage === 'undefined') return;
+    const raw = localStorage.getItem('ls_ab_' + ns); if (!raw) return;
+    const data = JSON.parse(raw);
+    document.querySelectorAll('[data-abk]').forEach(el => { const k = el.getAttribute('data-abk'); if (k in data) el.value = data[k]; });
+  } catch (e) { }
+}
+function _abClear(ns) {
+  if (!confirm('Alle Eingaben im Arbeitsblatt löschen?')) return;
+  try { if (typeof localStorage !== 'undefined') localStorage.removeItem('ls_ab_' + ns); } catch (e) { }
+  document.querySelectorAll('[data-abk]').forEach(el => { el.value = ''; });
+}
+
+// ── Styles fuer Schwingungs-Sim + Arbeitsblatt ─────────
+(function () {
+  const s = document.createElement('style');
+  s.textContent = `
+    .swg-sim .fpm-spring.on { border-color:#7c3aed; background:#f5f3ff; }
+    .ab-wrap { margin-top:16px; border:1px solid #ddd6fe; border-radius:12px; background:#faf5ff; overflow:hidden; }
+    .ab-summary { cursor:pointer; padding:11px 14px; font-weight:800; color:#6b21a8; font-size:.92rem;
+      background:#f3e8ff; list-style:none; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .ab-summary::-webkit-details-marker { display:none; }
+    .ab-summary::before { content:'▸'; color:#a855f7; font-weight:800; }
+    details[open] .ab-summary::before { content:'▾'; }
+    .ab-hint { font-weight:500; font-size:.72rem; color:#9333ea; }
+    .ab-body { padding:12px 14px; display:flex; flex-direction:column; gap:11px; }
+    .ab-sec { background:#fff; border:1px solid #ede9fe; border-radius:9px; padding:9px 12px; }
+    .ab-h { font-size:.7rem; font-weight:800; color:#7c3aed; text-transform:uppercase; letter-spacing:.05em; margin-bottom:5px; }
+    .ab-t { font-size:.82rem; color:#334155; line-height:1.5; }
+    .ab-ol { margin:2px 0 0; padding-left:20px; font-size:.82rem; color:#334155; line-height:1.6; }
+    .ab-ol li { margin-bottom:3px; }
+    .ab-field { width:100%; margin-top:6px; padding:7px 9px; border:1px solid #ddd6fe; border-radius:8px;
+      font-family:inherit; font-size:.82rem; color:#1e293b; resize:vertical; background:#fdfcff; }
+    .ab-field:focus { outline:2px solid #a855f7; outline-offset:1px; border-color:#a855f7; }
+    .ab-inline { width:auto; min-width:70px; margin-top:0; padding:4px 7px; text-align:center; }
+    .ab-table { width:100%; border-collapse:collapse; margin-top:4px; font-size:.8rem; }
+    .ab-table td { border:1px solid #ede9fe; padding:5px 7px; color:#475569; }
+    .ab-table td:nth-child(odd) { background:#faf5ff; font-weight:600; color:#334155; }
+  `;
+  document.head.appendChild(s);
+})();
