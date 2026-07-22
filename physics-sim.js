@@ -274,7 +274,10 @@ const _physAbDefs = {
   'farbmischung-additiv': { titel: 'Wie entstehen Farben auf einem Bildschirm?', ns: 'farbadd', html: () => _admArbeitsblattHTML() },
   'himmelskoerper': { titel: 'Sonne, Mond und Sterne – was leuchtet am Himmel?', ns: 'himmel', html: () => _hksArbeitsblattHTML() },
   'gravitation': { titel: 'Die Gravitation – warum fällt alles nach unten?', ns: 'gravitation', html: () => _grvArbeitsblattHTML() },
-  'teleskop': { titel: 'Das Teleskop – wie holt man ferne Objekte näher?', ns: 'teleskop', html: () => _tskArbeitsblattHTML() }
+  'teleskop': { titel: 'Das Teleskop – wie holt man ferne Objekte näher?', ns: 'teleskop', html: () => _tskArbeitsblattHTML() },
+  'spezialteleskop': { titel: 'Besondere Teleskope – unsichtbares Licht sehen', ns: 'spezialteleskop', html: () => _stlArbeitsblattHTML() },
+  'entfernungen': { titel: 'Entfernungen im Weltall – wie weit ist das?', ns: 'entfernungen', html: () => _entArbeitsblattHTML() },
+  'weltall-aufbau': { titel: 'Planeten, Sterne und Galaxien – Aufbau des Weltalls', ns: 'weltallaufbau', html: () => _wabArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -834,6 +837,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('tskAnim', 'tskAnim');
     _pSim.start(dt => _tskUpdate(dt), (ctx, cv) => _tskDraw(ctx, cv), []);
     _abRestore('teleskop');
+  },
+
+  // ── 7.3.5 BESONDERE TELESKOPE ──────────────────────────────────
+  'spezialteleskop': modal => {
+    _stlInit();
+    modal.innerHTML = _stlHTML();
+    _stlStatus();
+    _pSim = new PhysicsSimEngine('stlAnim', 'stlAnim');
+    _pSim.start(dt => _stlUpdate(dt), (ctx, cv) => _stlDraw(ctx, cv), []);
+    _abRestore('spezialteleskop');
+  },
+
+  // ── 7.3.6 ENTFERNUNGEN IM WELTALL ──────────────────────────────
+  'entfernungen': modal => {
+    _entInit();
+    modal.innerHTML = _entHTML();
+    _entStatus();
+    _pSim = new PhysicsSimEngine('entAnim', 'entAnim');
+    _pSim.start(dt => _entUpdate(dt), (ctx, cv) => _entDraw(ctx, cv), []);
+    _abRestore('entfernungen');
+  },
+
+  // ── 7.3.7 AUFBAU DES WELTALLS ──────────────────────────────────
+  'weltall-aufbau': modal => {
+    _wabInit();
+    modal.innerHTML = _wabHTML();
+    _wabStatus();
+    _pSim = new PhysicsSimEngine('wabAnim', 'wabAnim');
+    _pSim.start(dt => _wabUpdate(dt), (ctx, cv) => _wabDraw(ctx, cv), []);
+    _abRestore('weltallaufbau');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -35560,6 +35593,9 @@ function _abClear(ns) {
       background:#f1f5f9; color:#475569; }
     .lmp-status.on { background:#dcfce7; color:#15803d; }
     .lmp-status.off { background:#fef3c7; color:#b45309; }
+    .wab-stufen { font-size:.72rem; color:#64748b; line-height:1.9; }
+    .wab-chip { display:inline-block; padding:2px 7px; border-radius:8px; background:#f1f5f9; color:#475569; font-weight:600; }
+    .wab-chip.akt { background:#4338ca; color:#fff; }
     .spl-leg td { font-size:.8rem; }
     .spl-leg td.spl-sym { text-align:center; font-weight:800; color:#7c3aed; font-size:1rem; letter-spacing:.06em; }
     .wir-row { font-size:.82rem; padding:4px 8px; border-radius:6px; margin-bottom:4px; }
@@ -46769,5 +46805,685 @@ function _tskAns(qi, oi) {
 function _tskSelf(n) {
   const out = document.getElementById('tskSelfOut'), val = document.getElementById('tskSelfVal');
   if (val) { val.value = String(n); _abSave('teleskop'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══ 7.3 Blick ins Weltall – Batch 2 (7.3.5/7.3.6/7.3.7) ═══
+// ═══════════════════════════════════════════════════════
+// 7.3.5  BESONDERE TELESKOPE – UNSICHTBARES LICHT SEHEN
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Blick ins Weltall"
+// Handlungsorientiert: Dasselbe Objekt sieht in verschiedenen
+// Strahlungsarten (Licht, Infrarot, Radio, Röntgen) ganz anders aus.
+// Manche Strahlung hält die Luft zurück → Weltraumteleskop nötig.
+// ═══════════════════════════════════════════════════════
+let _stl = null;
+const _STL_ARTEN = {
+  optisch:  { name: 'Lichtteleskop (optisch)', farbe: '#e2e8f0', boden: true,  zeigt: 'Sterne, wie wir sie mit dem Auge sehen' },
+  infrarot: { name: 'Infrarot-Teleskop',        farbe: '#f97316', boden: false, zeigt: 'warme Staubwolken, in denen neue Sterne entstehen' },
+  radio:    { name: 'Radioteleskop',            farbe: '#22d3ee', boden: true,  zeigt: 'kalte Gaswolken und ferne Galaxien' },
+  roentgen: { name: 'Röntgen-Teleskop',         farbe: '#a78bfa', boden: false, zeigt: 'sehr heiße, energiereiche Orte (z. B. um schwarze Löcher)' }
+};
+function _stlInit() { _stl = { art: 'optisch', ort: 'boden', t: 0 }; }
+
+function _stlHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim stl-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📡 Besondere Teleskope – unsichtbares Licht sehen</h3>
+    <div class="fpm-note" style="margin-top:2px">Betrachte dieselbe Himmelsregion mit verschiedenen Teleskopen. Jede Strahlungsart zeigt etwas anderes. Und: Steht das Teleskop am Boden oder im Weltraum?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="stlAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_stl.art === 'optisch' ? ' primary' : ''}" id="stlAoptisch" onclick="_stlArt('optisch')">💡 Licht</button>
+          <button class="sim-btn${_stl.art === 'infrarot' ? ' primary' : ''}" id="stlAinfrarot" onclick="_stlArt('infrarot')">🔥 Infrarot</button>
+          <button class="sim-btn${_stl.art === 'radio' ? ' primary' : ''}" id="stlAradio" onclick="_stlArt('radio')">📻 Radio</button>
+          <button class="sim-btn${_stl.art === 'roentgen' ? ' primary' : ''}" id="stlAroentgen" onclick="_stlArt('roentgen')">☢️ Röntgen</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn${_stl.ort === 'boden' ? ' primary' : ''}" id="stlOboden" onclick="_stlOrt('boden')">🏔 am Boden</button>
+          <button class="sim-btn${_stl.ort === 'weltraum' ? ' primary' : ''}" id="stlOweltraum" onclick="_stlOrt('weltraum')">🛰 im Weltraum</button>
+          <button class="sim-btn" onclick="_stlReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was zeigt dieses Teleskop?</div>
+        <div class="lmp-status" id="stlStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Objekte senden nicht nur sichtbares Licht aus, sondern auch <b>unsichtbare Strahlung</b> (Infrarot, Radio, Röntgen). Verschiedene Teleskope machen Verschiedenes sichtbar. <b>Infrarot und Röntgen</b> werden von der Luft zurückgehalten → man braucht ein <b>Weltraumteleskop</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Ein Objekt, viele „Farben" von Strahlung. &nbsp;|&nbsp; Manche Strahlung sieht man nur <b>vom Weltraum aus</b>.
+    </p>
+    ${_stlArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _stlArt(a) {
+  _stl.art = a;
+  Object.keys(_STL_ARTEN).forEach(k => document.getElementById('stlA' + k)?.classList.toggle('primary', k === a));
+  _stlStatus();
+}
+function _stlOrt(o) {
+  _stl.ort = o;
+  document.getElementById('stlOboden')?.classList.toggle('primary', o === 'boden');
+  document.getElementById('stlOweltraum')?.classList.toggle('primary', o === 'weltraum');
+  _stlStatus();
+}
+function _stlReset() { _stlInit(); _stlArt('optisch'); _stlOrt('boden'); _stlStatus(); }
+function _stlSichtbar() {
+  // Am Boden nur optisch + radio; im Weltraum alles
+  const a = _STL_ARTEN[_stl.art];
+  return _stl.ort === 'weltraum' || a.boden;
+}
+function _stlStatus() {
+  const el = document.getElementById('stlStatus'); if (!el) return;
+  const a = _STL_ARTEN[_stl.art];
+  if (_stlSichtbar()) {
+    el.textContent = `${a.name}: zeigt ${a.zeigt}.`;
+    el.className = 'lmp-status on';
+  } else {
+    el.textContent = `${a.name}: Diese Strahlung wird von der Luft geschluckt. Am Boden sieht man fast nichts – du brauchst ein Weltraumteleskop.`;
+    el.className = 'lmp-status';
+  }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _stlUpdate(dt) { if (_stl) _stl.t += dt; }
+function _stlDraw(ctx, cv) {
+  if (!_stl) return;
+  const W = cv.width, H = cv.height, cx = W / 2 - 30, cy = H / 2;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#05070f'; ctx.fillRect(0, 0, W, H);
+  const sichtbar = _stlSichtbar();
+  const a = _STL_ARTEN[_stl.art];
+
+  if (!sichtbar) {
+    // Luft blockt: graue "Wolkendecke"
+    ctx.fillStyle = 'rgba(148,163,184,0.15)'; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#94a3b8'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('🚫 Strahlung von der Luft geschluckt', W / 2, cy - 10);
+    ctx.font = '11px sans-serif'; ctx.fillText('→ Weltraumteleskop nötig', W / 2, cy + 12);
+  } else {
+    if (_stl.art === 'optisch') {
+      ctx.fillStyle = '#fff';
+      const stars = [[-40, -30], [30, 10], [-10, 40], [50, -20], [10, -40], [-50, 20], [0, 0], [40, 40]];
+      stars.forEach(s => { const r = 1.5 + 1.5 * Math.abs(Math.sin(_stl.t + s[0])); ctx.beginPath(); ctx.arc(cx + s[0], cy + s[1], r, 0, 2 * Math.PI); ctx.fill(); });
+    } else if (_stl.art === 'infrarot') {
+      const g = ctx.createRadialGradient(cx, cy, 4, cx, cy, 70);
+      g.addColorStop(0, 'rgba(254,215,170,0.9)'); g.addColorStop(0.5, 'rgba(249,115,22,0.6)'); g.addColorStop(1, 'rgba(153,27,27,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, 70, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = '#fed7aa'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('warme Staubwolke', cx, cy + 84);
+    } else if (_stl.art === 'radio') {
+      ctx.strokeStyle = a.farbe; ctx.lineWidth = 2;
+      for (let i = 1; i <= 3; i++) { const rr = 20 * i + 6 * Math.sin(_stl.t * 2); ctx.globalAlpha = 0.7 - i * 0.15; ctx.beginPath(); ctx.ellipse(cx, cy, rr * 1.4, rr, 0, 0, 2 * Math.PI); ctx.stroke(); }
+      ctx.globalAlpha = 1; ctx.fillStyle = a.farbe; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Gaswolken / Galaxie', cx, cy + 84);
+    } else { // roentgen
+      ctx.fillStyle = a.farbe;
+      const pts = [[0, 0], [-25, -15], [22, 12], [12, -22]];
+      pts.forEach(p => { const r = 3 + 2 * Math.abs(Math.sin(_stl.t * 3 + p[0])); ctx.beginPath(); ctx.arc(cx + p[0], cy + p[1], r, 0, 2 * Math.PI); ctx.fill(); });
+      ctx.strokeStyle = 'rgba(167,139,250,0.5)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(cx, cy, 40, 0, 2 * Math.PI); ctx.stroke();
+      ctx.fillStyle = a.farbe; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('heiße, energiereiche Orte', cx, cy + 84);
+    }
+  }
+
+  // Teleskop-/Ort-Symbol unten
+  ctx.fillStyle = '#cbd5e1'; ctx.font = '11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_stl.ort === 'boden' ? '🏔 Teleskop am Boden' : '🛰 Teleskop im Weltraum', 12, H - 12);
+  // Titel
+  ctx.fillStyle = a.farbe; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(a.name, W / 2, 20);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.3.5  (ns = 'spezialteleskop') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _stlArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('spezialteleskop')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('spezialteleskop')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Kann man Dinge im Weltall sehen, die kein sichtbares Licht aussenden?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass verschiedene Teleskope …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Schau die Region mit Licht-, Infrarot-, Radio- und Röntgen-Teleskop an.</li>
+          <li>Notiere, was jede Strahlungsart zeigt.</li>
+          <li>Stelle jedes Teleskop einmal an den Boden, einmal in den Weltraum.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Licht (optisch)</td><td>${inp('b1', 'zeigt …')}</td><td>am Boden?</td><td>${inp('c1', 'ja/nein')}</td></tr>
+          <tr><td>Infrarot</td><td>${inp('b2', 'zeigt …')}</td><td>am Boden?</td><td>${inp('c2', 'ja/nein')}</td></tr>
+          <tr><td>Radio</td><td>${inp('b3', 'zeigt …')}</td><td>am Boden?</td><td>${inp('c3', 'ja/nein')}</td></tr>
+          <tr><td>Röntgen</td><td>${inp('b4', 'zeigt …')}</td><td>am Boden?</td><td>${inp('c4', 'ja/nein')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne ein Weltraumteleskop über der Erde. Male Pfeile für Strahlung, die die Luft durchlässt, und für Strahlung, die zurückgehalten wird.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Warum baut man verschiedene Teleskop-Arten? ${inp('a1', 'weil …')}</li>
+          <li>Warum stellt man manche Teleskope in den Weltraum? ${inp('a2', 'weil die Luft …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Objekte senden nicht nur sichtbares Licht, sondern auch ${inp('m1', 'was?')} Strahlung aus.<br>
+        Infrarot- und Röntgenstrahlung werden von der Luft ${inp('m2', 'was?')}; solche Teleskope müssen daher in den ${inp('m3', 'wohin?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Eine Wärmebildkamera zeigt Menschen im Dunkeln, obwohl kein Licht da ist. Welche Strahlung nutzt sie – und was hat das mit einem Infrarot-Teleskop zu tun?</div>
+        ${ta('tr1', 'Die Wärmebildkamera nutzt … , genau wie …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="stlMini">${_stlMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_stlSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_stlSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_stlSelf(3)">😃 sicher</button>
+          <span id="stlSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="stlSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Optisch: Sterne. Infrarot: warme Staubwolken (Sternentstehung). Radio: kalte Gaswolken/Galaxien. Röntgen: heiße, energiereiche Orte. Am Boden funktionieren optisch und Radio gut; Infrarot und Röntgen werden von der Luft weitgehend geschluckt.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Das elektromagnetische Spektrum reicht von Radiowellen über Infrarot, sichtbares Licht, Ultraviolett bis Röntgen und Gamma. Die Erdatmosphäre besitzt nur „Fenster" für sichtbares Licht und Radiowellen; große Teile von IR, UV, Röntgen werden absorbiert. Deshalb Weltraumteleskope (z. B. Hubble, James-Webb für IR, Chandra für Röntgen).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Man sieht immer nur mit sichtbarem Licht." (2) „Ein Teleskop im Weltraum ist einfach nur näher dran." (3) „Radiowellen kann man nicht am Boden empfangen."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Spektrum als Streifen zeigen; Atmosphäre als Fenster/Barriere; Alltagsbezug Wärmebildkamera und Radioempfang.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Sterne / ja · warme Staubwolken / nein · Gaswolken, Galaxien / ja · heiße Orte / nein. 6.1 „weil Objekte verschiedene Strahlung aussenden" · 6.2 „weil die Luft manche Strahlung schluckt". Merksatz: unsichtbare · geschluckt/zurückgehalten · Weltraum. Transfer: Wärmebildkamera nutzt Infrarot (Wärmestrahlung), genau wie ein Infrarot-Teleskop. Minidiagnose: 1→Auch unsichtbare Strahlung · 2→Infrarot · 3→Weil die Luft die Strahlung schluckt.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('spezialteleskop')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('spezialteleskop', 'Besondere Teleskope – unsichtbares Licht sehen', body);
+}
+
+const _STL_MINI = [
+  { q: '1. Womit kann man Objekte im Weltall beobachten?',
+    opts: ['Nur mit sichtbarem Licht', 'Auch mit unsichtbarer Strahlung (Infrarot, Radio, Röntgen)', 'Nur mit Radiowellen'], correct: 1,
+    fb: ['Es geht auch mit unsichtbarer Strahlung.',
+         'Richtig! Verschiedene Teleskope nutzen verschiedene Strahlung.',
+         'Radio ist nur eine von mehreren Möglichkeiten.'] },
+  { q: '2. Welches Teleskop zeigt warme Staubwolken, in denen Sterne entstehen?',
+    opts: ['Röntgen-Teleskop', 'Infrarot-Teleskop', 'Lichtteleskop'], correct: 1,
+    fb: ['Röntgen zeigt sehr heiße, energiereiche Orte.',
+         'Richtig! Infrarot ist Wärmestrahlung und zeigt warmen Staub.',
+         'Optisch zeigt nur das sichtbare Licht der Sterne.'] },
+  { q: '3. Warum stellt man manche Teleskope in den Weltraum?',
+    opts: ['Weil sie dort näher dran sind', 'Weil die Luft manche Strahlung schluckt', 'Weil es dort heller ist'], correct: 1,
+    fb: ['Der kleine Höhenunterschied bringt kaum etwas.',
+         'Richtig! Infrarot und Röntgen kommen am Boden kaum an.',
+         'Heller ist es dort nicht – es geht um die Strahlung.'] }
+];
+function _stlMiniHTML() {
+  return _STL_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_stlAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="stlFb${qi}"></div></div>`).join('');
+}
+function _stlAns(qi, oi) {
+  const m = _STL_MINI[qi], el = document.getElementById('stlFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _stlSelf(n) {
+  const out = document.getElementById('stlSelfOut'), val = document.getElementById('stlSelfVal');
+  if (val) { val.value = String(n); _abSave('spezialteleskop'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.3.6  ENTFERNUNGEN IM WELTALL – WIE WEIT IST DAS?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Blick ins Weltall"
+// Handlungsorientiert: Das Licht ist superschnell, braucht aber
+// trotzdem lange. Man misst Entfernungen in Lichtzeit/Lichtjahren.
+// Wir sehen ferne Objekte so, wie sie früher waren.
+// ═══════════════════════════════════════════════════════
+let _ent = null;
+const _ENT_ZIELE = [
+  { key: 'mond',      name: 'Mond',                  zeit: '1,3 Sekunden',   entf: '≈ 384 000 km',            past: 'gut 1 Sekunde' },
+  { key: 'sonne',     name: 'Sonne',                 zeit: '8,3 Minuten',    entf: '≈ 150 Mio. km',           past: '8 Minuten' },
+  { key: 'stern',     name: 'nächster Stern',        zeit: '4,2 Lichtjahre', entf: '≈ 40 Billionen km',       past: 'gut 4 Jahren' },
+  { key: 'zentrum',   name: 'Mitte der Milchstraße', zeit: '27 000 Lichtjahre', entf: 'unvorstellbar weit',    past: '27 000 Jahren' },
+  { key: 'andromeda', name: 'Andromeda-Galaxie',     zeit: '2,5 Mio. Lichtjahre', entf: 'noch viel weiter',    past: '2,5 Millionen Jahren' }
+];
+function _entInit() { _ent = { idx: 0, t: 0, prog: 0, laeuft: false }; }
+function _entZiel() { return _ENT_ZIELE[_ent.idx]; }
+
+function _entHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim ent-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📏 Entfernungen im Weltall – wie weit ist das?</h3>
+    <div class="fpm-note" style="margin-top:2px">Licht ist das Schnellste, was es gibt (rund 300 000 km pro Sekunde). Schicke einen Lichtblitz von der Erde los. Wie lange braucht er bis zum Ziel?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="entAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_entPrev()">◀ näher</button>
+          <button class="sim-btn primary" onclick="_entStart()">💡 Lichtblitz senden</button>
+          <button class="sim-btn" onclick="_entNext()">weiter ▶</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_entReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Wie lange braucht das Licht?</div>
+        <div class="lmp-status" id="entStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Ein <b>Lichtjahr</b> ist keine Zeit, sondern eine <b>Entfernung</b>: die Strecke, die das Licht in einem ganzen <b>Jahr</b> zurücklegt. Weil das Licht so lange unterwegs ist, sehen wir ferne Objekte so, wie sie <b>früher</b> waren – wir blicken in die Vergangenheit.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Je weiter weg, desto länger ist das Licht unterwegs. &nbsp;|&nbsp; <b>1 Lichtjahr = Strecke, die Licht in 1 Jahr zurücklegt.</b>
+    </p>
+    ${_entArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _entNext() { _ent.idx = Math.min(_ENT_ZIELE.length - 1, _ent.idx + 1); _ent.prog = 0; _ent.laeuft = false; _entStatus(); }
+function _entPrev() { _ent.idx = Math.max(0, _ent.idx - 1); _ent.prog = 0; _ent.laeuft = false; _entStatus(); }
+function _entStart() { _ent.prog = 0; _ent.laeuft = true; _entStatus(); }
+function _entReset() { _entInit(); _entStatus(); }
+function _entStatus() {
+  const el = document.getElementById('entStatus'); if (!el) return;
+  const z = _entZiel();
+  el.textContent = `Erde → ${z.name}: Entfernung ${z.entf}. Das Licht braucht ${z.zeit}. Wir sehen ${z.name} so, wie ${z.key === 'mond' ? 'er/sie vor' : 'es vor'} etwa ${z.past} war.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _entUpdate(dt) {
+  if (!_ent) return;
+  _ent.t += dt;
+  if (_ent.laeuft) {
+    // weiter entfernte Ziele → langsamerer Fortschritt (länger unterwegs)
+    const speed = 0.9 / (1 + _ent.idx * 0.7);
+    _ent.prog += speed * dt;
+    if (_ent.prog >= 1) { _ent.prog = 1; _ent.laeuft = false; }
+  }
+}
+function _entDraw(ctx, cv) {
+  if (!_ent) return;
+  const W = cv.width, H = cv.height, cy = H / 2;
+  const z = _entZiel();
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#05070f'; ctx.fillRect(0, 0, W, H);
+  // Sterne im Hintergrund
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  for (let i = 0; i < 30; i++) { const x = (i * 97) % W, y = (i * 53) % H; ctx.beginPath(); ctx.arc(x, y, 0.8, 0, 2 * Math.PI); ctx.fill(); }
+  const x0 = 40, x1 = W - 40;
+  // Strecke
+  ctx.strokeStyle = 'rgba(148,163,184,0.4)'; ctx.lineWidth = 2; ctx.setLineDash([6, 6]);
+  ctx.beginPath(); ctx.moveTo(x0, cy); ctx.lineTo(x1, cy); ctx.stroke(); ctx.setLineDash([]);
+  // Erde links
+  ctx.fillStyle = '#3b82f6'; ctx.beginPath(); ctx.arc(x0, cy, 14, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#93c5fd'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Erde', x0, cy + 28);
+  // Ziel rechts
+  const zcol = ['#e2e8f0', '#fbbf24', '#fde68a', '#c4b5fd', '#f9a8d4'][_ent.idx];
+  const zr = [10, 18, 8, 16, 20][_ent.idx];
+  if (z.key === 'sonne') { const g = ctx.createRadialGradient(x1, cy, 3, x1, cy, zr + 10); g.addColorStop(0, '#fff7cc'); g.addColorStop(1, 'rgba(251,191,36,0)'); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x1, cy, zr + 10, 0, 2 * Math.PI); ctx.fill(); }
+  ctx.fillStyle = zcol; ctx.beginPath(); ctx.arc(x1, cy, zr, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(z.name, x1, cy + zr + 16);
+  // Lichtblitz
+  const px = x0 + (x1 - x0) * _ent.prog;
+  if (_ent.prog > 0) {
+    ctx.fillStyle = '#fde047'; ctx.beginPath(); ctx.arc(px, cy, 6, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = 'rgba(253,224,71,0.6)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(Math.max(x0, px - 30), cy); ctx.lineTo(px, cy); ctx.stroke();
+  }
+  // Anzeige der Lichtzeit
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Licht braucht: ' + z.zeit, W / 2, 24);
+  if (_ent.prog >= 1) { ctx.fillStyle = '#86efac'; ctx.font = '700 11px sans-serif'; ctx.fillText('angekommen ✓', W / 2, H - 12); }
+  else if (_ent.laeuft) { ctx.fillStyle = '#fde047'; ctx.font = '11px sans-serif'; ctx.fillText('Licht unterwegs …', W / 2, H - 12); }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.3.6  (ns = 'entfernungen') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _entArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('entfernungen')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('entfernungen')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie beschreibt man Entfernungen, die so riesig sind wie im Weltall?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass das Licht bis zum nächsten Stern … braucht.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle nacheinander Mond, Sonne, nächsten Stern, Milchstraßen-Mitte, Andromeda.</li>
+          <li>Sende jeweils den Lichtblitz und lies die Lichtzeit ab.</li>
+          <li>Achte darauf, wie die Zeit immer größer wird.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Mond</td><td>${inp('b1', 'Lichtzeit')}</td><td>Sonne</td><td>${inp('b2', 'Lichtzeit')}</td></tr>
+          <tr><td>nächster Stern</td><td>${inp('b3', 'Lichtzeit')}</td><td>Milchstraßen-Mitte</td><td>${inp('b4', 'Lichtzeit')}</td></tr>
+          <tr><td>Andromeda-Galaxie</td><td>${inp('b5', 'Lichtzeit')}</td><td>Je weiter, desto …</td><td>${inp('b6', 'länger/kürzer')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Erde und ein weit entferntes Ziel. Male den Weg des Lichts als Pfeil und schreibe die Lichtzeit dazu.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was ist ein Lichtjahr – eine Zeit oder eine Entfernung? ${inp('a1', '')}</li>
+          <li>Warum sagt man, wir blicken in die Vergangenheit? ${inp('a2', 'weil das Licht …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ein Lichtjahr ist die ${inp('m1', 'was?')}, die das Licht in einem ${inp('m2', 'was?')} zurücklegt.<br>
+        Weil das Licht ferner Objekte lange unterwegs ist, sehen wir sie so, wie sie ${inp('m3', 'wann?')} waren.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Die Sonne könnte gerade jetzt „ausgehen" – wir würden es erst 8 Minuten später merken. Erkläre, warum.</div>
+        ${ta('tr1', 'Weil das Licht der Sonne … braucht, um bei uns anzukommen.', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="entMini">${_entMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_entSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_entSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_entSelf(3)">😃 sicher</button>
+          <span id="entSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="entSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Lichtzeit: Mond ≈ 1,3 s · Sonne ≈ 8,3 min · nächster Stern ≈ 4,2 Lichtjahre · Milchstraßen-Mitte ≈ 27 000 Lichtjahre · Andromeda ≈ 2,5 Mio. Lichtjahre. Je weiter das Ziel, desto länger ist das Licht unterwegs.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Lichtgeschwindigkeit c ≈ 300 000 km/s. Ein Lichtjahr ist eine Entfernung (≈ 9,46 · 10¹² km). Da das Licht endlich schnell ist, zeigt jeder Blick in den Himmel einen früheren Zustand (Lichtlaufzeit) – „Blick in die Vergangenheit". Auch Lichtsekunde/Lichtminute sind Entfernungen.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Ein Lichtjahr ist eine Zeit." (2) „Licht kommt sofort an." (3) „Wir sehen alles so, wie es jetzt gerade ist."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Lichtjahr klar als Strecke einordnen (Analogie „Tagesreise" = Strecke); Lichtlaufzeit an Sonne (8 min) veranschaulichen; Zahlen vorgeben.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle wie oben; „länger". 6.1 eine Entfernung · 6.2 „weil das Licht lange bis zu uns braucht". Merksatz: Entfernung/Strecke · Jahr · früher/in der Vergangenheit. Transfer: Das Sonnenlicht braucht rund 8 Minuten bis zur Erde; wir sehen die Sonne mit 8 Minuten Verzögerung. Minidiagnose: 1→Eine Entfernung · 2→Andromeda-Galaxie · 3→Weil das Licht lange unterwegs ist.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('entfernungen')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('entfernungen', 'Entfernungen im Weltall – wie weit ist das?', body);
+}
+
+const _ENT_MINI = [
+  { q: '1. Was ist ein Lichtjahr?',
+    opts: ['Eine Zeit von einem Jahr', 'Eine Entfernung (Strecke, die Licht in 1 Jahr zurücklegt)', 'Das Alter eines Sterns'], correct: 1,
+    fb: ['Ein Lichtjahr ist keine Zeit.',
+         'Richtig! Ein Lichtjahr ist eine Entfernung.',
+         'Mit dem Alter hat es nichts zu tun.'] },
+  { q: '2. Welches Ziel ist am weitesten von der Erde entfernt?',
+    opts: ['Die Sonne', 'Der nächste Stern', 'Die Andromeda-Galaxie'], correct: 2,
+    fb: ['Die Sonne ist nur 8 Lichtminuten weit weg.',
+         'Der nächste Stern ist gut 4 Lichtjahre entfernt – die Galaxie viel weiter.',
+         'Richtig! Andromeda ist etwa 2,5 Millionen Lichtjahre entfernt.'] },
+  { q: '3. Warum sagt man, wir blicken ins Weltall wie in die Vergangenheit?',
+    opts: ['Weil das Licht lange bis zu uns unterwegs ist', 'Weil die Sterne alt sind', 'Weil wir uns das nur einbilden'], correct: 0,
+    fb: ['Richtig! Das Licht war viele Jahre unterwegs – wir sehen einen früheren Zustand.',
+         'Das Alter der Sterne ist nicht der Grund.',
+         'Es ist echt: die Lichtlaufzeit macht es aus.'] }
+];
+function _entMiniHTML() {
+  return _ENT_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_entAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="entFb${qi}"></div></div>`).join('');
+}
+function _entAns(qi, oi) {
+  const m = _ENT_MINI[qi], el = document.getElementById('entFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _entSelf(n) {
+  const out = document.getElementById('entSelfOut'), val = document.getElementById('entSelfVal');
+  if (val) { val.value = String(n); _abSave('entfernungen'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.3.7  PLANETEN, STERNE UND GALAXIEN – AUFBAU DES WELTALLS
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Blick ins Weltall"
+// Handlungsorientiert: Herauszoomen in Stufen: Planet → Sonnensystem
+// → Galaxie (Milchstraße) → Universum (viele Galaxien).
+// ═══════════════════════════════════════════════════════
+let _wab = null;
+const _WAB_STUFEN = [
+  { name: 'Planet (Erde)', frage: 'Ein Planet', text: 'Ein Planet leuchtet nicht selbst und umkreist einen Stern. Die Erde ist unser Heimatplanet.' },
+  { name: 'Sonnensystem', frage: 'Ein Stern mit Planeten', text: 'Um unseren Stern, die Sonne, kreisen 8 Planeten – das ist unser Sonnensystem. Die Sonne ist ein Selbstleuchter.' },
+  { name: 'Galaxie (Milchstraße)', frage: 'Milliarden Sterne', text: 'Unsere Sonne ist nur einer von über 100 Milliarden Sternen in der Milchstraße. So viele Sterne bilden zusammen eine Galaxie.' },
+  { name: 'Universum', frage: 'Milliarden Galaxien', text: 'Die Milchstraße ist nur eine von vielen Milliarden Galaxien. Alle zusammen bilden das Universum (Weltall).' }
+];
+function _wabInit() { _wab = { stufe: 0, t: 0 }; }
+
+function _wabHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim wab-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌌 Planeten, Sterne und Galaxien – wie ist das Weltall aufgebaut?</h3>
+    <div class="fpm-note" style="margin-top:2px">Zoome Schritt für Schritt heraus: vom Planeten zum Sonnensystem, weiter zur Galaxie und schließlich zum ganzen Universum. Was kommt jeweils dazu?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="wabAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_wabZoom(-1)">🔍 hineinzoomen</button>
+          <button class="sim-btn primary" onclick="_wabZoom(1)">🔎 herauszoomen</button>
+          <button class="sim-btn" onclick="_wabReset()">↺ Zurücksetzen</button>
+        </div>
+        <div class="wab-stufen" id="wabStufen" style="margin-top:6px"></div>
+      </div>
+      <div>
+        <div class="fpm-label">Stufe im Aufbau</div>
+        <div class="lmp-status" id="wabStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Das Weltall ist <b>gestuft</b> aufgebaut: <b>Planeten</b> kreisen um <b>Sterne</b> (Sonnensystem), viele Milliarden Sterne bilden eine <b>Galaxie</b>, und viele Milliarden Galaxien bilden das <b>Universum</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Planet → Sonnensystem → Galaxie → Universum. &nbsp;|&nbsp; Jede Stufe ist viel, viel größer als die vorige.
+    </p>
+    ${_wabArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _wabZoom(d) {
+  _wab.stufe = Math.max(0, Math.min(_WAB_STUFEN.length - 1, _wab.stufe + d));
+  _wabStatus();
+}
+function _wabReset() { _wabInit(); _wabStatus(); }
+function _wabStatus() {
+  const el = document.getElementById('wabStatus');
+  const st = document.getElementById('wabStufen');
+  const s = _WAB_STUFEN[_wab.stufe];
+  if (el) { el.textContent = `${s.name}: ${s.text}`; el.className = 'lmp-status on'; }
+  if (st) {
+    st.innerHTML = _WAB_STUFEN.map((x, i) =>
+      `<span class="wab-chip${i === _wab.stufe ? ' akt' : ''}">${i + 1}. ${x.name}</span>`).join(' → ');
+  }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _wabUpdate(dt) { if (_wab) _wab.t += dt; }
+function _wabDraw(ctx, cv) {
+  if (!_wab) return;
+  const W = cv.width, H = cv.height, cx = W / 2, cy = H / 2;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#05070f'; ctx.fillRect(0, 0, W, H);
+  const s = _wab.stufe;
+
+  if (s === 0) {
+    // Planet Erde
+    ctx.fillStyle = '#3b82f6'; ctx.beginPath(); ctx.arc(cx, cy, 46, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#22c55e'; ctx.beginPath(); ctx.arc(cx - 14, cy - 8, 16, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(cx + 18, cy + 14, 12, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#93c5fd'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Erde – ein Planet', cx, cy + 68);
+  } else if (s === 1) {
+    // Sonnensystem: Sonne + Bahnen
+    const g = ctx.createRadialGradient(cx, cy, 3, cx, cy, 26); g.addColorStop(0, '#fff7cc'); g.addColorStop(1, 'rgba(251,191,36,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, 26, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fbbf24'; ctx.beginPath(); ctx.arc(cx, cy, 12, 0, 2 * Math.PI); ctx.fill();
+    for (let i = 1; i <= 4; i++) {
+      const rr = 24 + i * 22;
+      ctx.strokeStyle = 'rgba(148,163,184,0.35)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(cx, cy, rr, 0, 2 * Math.PI); ctx.stroke();
+      const ang = _wab.t * (0.6 / i) + i;
+      const px = cx + rr * Math.cos(ang), py = cy + rr * Math.sin(ang);
+      ctx.fillStyle = ['#60a5fa', '#f87171', '#34d399', '#c084fc'][i - 1];
+      ctx.beginPath(); ctx.arc(px, py, 4, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.fillStyle = '#fde68a'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Sonnensystem – Planeten um die Sonne', cx, H - 12);
+  } else if (s === 2) {
+    // Galaxie: Spirale aus vielen Sternen
+    ctx.fillStyle = '#fff';
+    for (let i = 0; i < 240; i++) {
+      const arm = i % 2; const t = i / 240 * 6.5;
+      const rad = t * 12; const ang = t + arm * Math.PI + _wab.t * 0.1;
+      const x = cx + rad * Math.cos(ang) + (i * 7 % 9 - 4);
+      const y = cy + rad * Math.sin(ang) * 0.6 + (i * 5 % 9 - 4);
+      ctx.globalAlpha = 0.5 + 0.5 * (1 - t / 6.5);
+      ctx.beginPath(); ctx.arc(x, y, 1.1, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    const g = ctx.createRadialGradient(cx, cy, 2, cx, cy, 24); g.addColorStop(0, '#fff7cc'); g.addColorStop(1, 'rgba(251,191,36,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, 24, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fde68a'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Milchstraße – Milliarden Sterne', cx, H - 12);
+  } else {
+    // Universum: viele Galaxien
+    const gx = [[80, 60], [200, 40], [330, 80], [120, 150], [260, 170], [380, 150], [60, 200], [200, 210], [330, 200], [160, 90], [300, 120]];
+    gx.forEach((p, i) => {
+      ctx.save(); ctx.translate(p[0], p[1]); ctx.rotate(i + _wab.t * 0.05);
+      ctx.fillStyle = ['#c4b5fd', '#93c5fd', '#fca5a5', '#fde68a'][i % 4];
+      ctx.globalAlpha = 0.85; ctx.beginPath(); ctx.ellipse(0, 0, 14, 6, 0, 0, 2 * Math.PI); ctx.fill();
+      ctx.globalAlpha = 1; ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(0, 0, 2.5, 0, 2 * Math.PI); ctx.fill();
+      ctx.restore();
+    });
+    ctx.fillStyle = '#e9d5ff'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Universum – Milliarden Galaxien', cx, H - 12);
+  }
+  // Titel
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Stufe ' + (s + 1) + ' von 4: ' + _WAB_STUFEN[s].frage, cx, 20);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.3.7  (ns = 'weltallaufbau') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _wabArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('weltallaufbau')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('weltallaufbau')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie ist das Weltall aufgebaut – und was ist größer: ein Stern, ein Sonnensystem oder eine Galaxie?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Reihenfolge vom Kleinen zum Großen so ist: …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Starte beim Planeten Erde.</li>
+          <li>Zoome Schritt für Schritt heraus (Sonnensystem, Galaxie, Universum).</li>
+          <li>Notiere bei jeder Stufe, was neu dazukommt.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>1. Planet</td><td>${inp('b1', 'Beispiel?')}</td><td>umkreist einen …</td><td>${inp('c1', '')}</td></tr>
+          <tr><td>2. Sonnensystem</td><td>${inp('b2', 'wie viele Planeten?')}</td><td>Mittelpunkt?</td><td>${inp('c2', '')}</td></tr>
+          <tr><td>3. Galaxie</td><td>${inp('b3', 'Name unserer?')}</td><td>enthält …</td><td>${inp('c3', 'wie viele Sterne?')}</td></tr>
+          <tr><td>4. Universum</td><td>${inp('b4', 'enthält …')}</td><td>wie viele Galaxien?</td><td>${inp('c4', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die vier Stufen als Kästchen ineinander (das Kleinste innen). Beschrifte sie.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Ordne vom Kleinen zum Großen: ${inp('a1', 'Planet, …')}</li>
+          <li>Was ist die Sonne – ein Planet oder ein Stern? ${inp('a2', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Planeten kreisen um einen ${inp('m1', 'was?')}. Viele Milliarden Sterne bilden eine ${inp('m2', 'was?')}.<br>
+        Viele Milliarden Galaxien bilden das ${inp('m3', 'was?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Manche sagen „Die Sonne ist ein besonderer Stern." Stimmt das? Und welche Rolle spielt die Erde dabei?</div>
+        ${ta('tr1', 'Die Sonne ist … , und die Erde ist …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="wabMini">${_wabMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_wabSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_wabSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_wabSelf(3)">😃 sicher</button>
+          <span id="wabSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="wabSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Reihenfolge vom Kleinen zum Großen: Planet → Sonnensystem (Stern mit Planeten) → Galaxie (Milliarden Sterne) → Universum (Milliarden Galaxien). Die Sonne ist ein Stern, die Erde ein Planet.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Hierarchische Struktur: Planeten/Monde umkreisen Sterne; Sterne (10¹¹ in der Milchstraße) bilden Galaxien; Galaxien gruppieren sich zu Galaxienhaufen und bilden das beobachtbare Universum. Größenordnungen wachsen enorm (Sonnensystem ~Lichtstunden, Galaxie ~100 000 Lichtjahre).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Sonne ist ein Planet." (2) „Sterne und Planeten sind dasselbe." (3) „Die Milchstraße ist das ganze Universum."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Stufen als ineinander geschachtelte Kästchen; klare Begriffe Planet/Stern/Galaxie/Universum; herauszoomen als Bild für „größer werden".</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Erde / Stern (Sonne) · 8 Planeten / Sonne · Milchstraße / über 100 Milliarden Sterne · Galaxien / Milliarden. 6.1 Planet, Sonnensystem, Galaxie, Universum · 6.2 ein Stern. Merksatz: Stern · Galaxie · Universum. Transfer: Die Sonne ist ein ganz normaler Stern (uns nur nah); die Erde ist einer der Planeten, die sie umkreisen. Minidiagnose: 1→Planet, Sonnensystem, Galaxie, Universum · 2→Ein Stern · 3→Milliarden von Galaxien.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('weltallaufbau')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('weltallaufbau', 'Planeten, Sterne und Galaxien – Aufbau des Weltalls', body);
+}
+
+const _WAB_MINI = [
+  { q: '1. Wie ist die Reihenfolge vom Kleinen zum Großen?',
+    opts: ['Galaxie, Universum, Planet, Sonnensystem', 'Planet, Sonnensystem, Galaxie, Universum', 'Universum, Galaxie, Sonnensystem, Planet'], correct: 1,
+    fb: ['Das ist durcheinander.',
+         'Richtig! Planet → Sonnensystem → Galaxie → Universum.',
+         'Das ist genau die umgekehrte Reihenfolge.'] },
+  { q: '2. Was ist die Sonne?',
+    opts: ['Ein Planet', 'Ein Stern', 'Eine Galaxie'], correct: 1,
+    fb: ['Die Sonne ist kein Planet.',
+         'Richtig! Die Sonne ist ein Stern (ein Selbstleuchter).',
+         'Eine Galaxie besteht aus Milliarden Sternen wie der Sonne.'] },
+  { q: '3. Woraus besteht das Universum?',
+    opts: ['Nur aus unserer Milchstraße', 'Aus Milliarden von Galaxien', 'Nur aus unserem Sonnensystem'], correct: 1,
+    fb: ['Die Milchstraße ist nur eine Galaxie von vielen.',
+         'Richtig! Es gibt Milliarden Galaxien im Universum.',
+         'Unser Sonnensystem ist nur ein winziger Teil.'] }
+];
+function _wabMiniHTML() {
+  return _WAB_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_wabAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="wabFb${qi}"></div></div>`).join('');
+}
+function _wabAns(qi, oi) {
+  const m = _WAB_MINI[qi], el = document.getElementById('wabFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _wabSelf(n) {
+  const out = document.getElementById('wabSelfOut'), val = document.getElementById('wabSelfVal');
+  if (val) { val.value = String(n); _abSave('weltallaufbau'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
