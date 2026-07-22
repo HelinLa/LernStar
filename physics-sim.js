@@ -238,7 +238,10 @@ const _physAbDefs = {
   'stromwirkungen': { titel: 'Welche Wirkungen kann elektrischer Strom haben?', ns: 'wirkung', html: () => _wirArbeitsblattHTML() },
   'sehen': { titel: 'Wie können wir einen Gegenstand sehen?', ns: 'sehen', html: () => _sehArbeitsblattHTML() },
   'lichtausbreitung': { titel: 'Wie breitet sich Licht aus?', ns: 'ausbreitung', html: () => _lauArbeitsblattHTML() },
-  'schatten-entstehung': { titel: 'Wie entsteht ein Schatten?', ns: 'schatten3', html: () => _sctArbeitsblattHTML() }
+  'schatten-entstehung': { titel: 'Wie entsteht ein Schatten?', ns: 'schatten3', html: () => _sctArbeitsblattHTML() },
+  'kern-halbschatten': { titel: 'Wie entstehen Kern- und Halbschatten?', ns: 'kernschatten', html: () => _khsArbeitsblattHTML() },
+  'temperatur-waerme': { titel: 'Sind Temperatur und Wärme das Gleiche?', ns: 'tempwaerme', html: () => _twArbeitsblattHTML() },
+  'thermometer': { titel: 'Wie funktioniert ein Thermometer?', ns: 'thermometer', html: () => _thmArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -439,6 +442,35 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('sctAnim', 'sctAnim');
     _pSim.start(dt => _sctUpdate(dt), (ctx, cv) => _sctDraw(ctx, cv), []);
     _abRestore('schatten3');
+  },
+
+  // ── 5.3.5 KERN- UND HALBSCHATTEN ───────────────────────────────
+  'kern-halbschatten': modal => {
+    _khsInit();
+    modal.innerHTML = _khsHTML();
+    _khsStatus();
+    _pSim = new PhysicsSimEngine('khsAnim', 'khsAnim');
+    _pSim.start(dt => _khsUpdate(dt), (ctx, cv) => _khsDraw(ctx, cv), []);
+    _abRestore('kernschatten');
+  },
+
+  // ── 6.1.1 TEMPERATUR UND WÄRME ─────────────────────────────────
+  'temperatur-waerme': modal => {
+    _twInit();
+    modal.innerHTML = _twHTML();
+    _twStatus();
+    _pSim = new PhysicsSimEngine('twAnim', 'twAnim');
+    _pSim.start(dt => _twUpdate(dt), (ctx, cv) => _twDraw(ctx, cv), []);
+    _abRestore('tempwaerme');
+  },
+
+  // ── 6.1.2 THERMOMETER ──────────────────────────────────────────
+  'thermometer': modal => {
+    _thmInit();
+    modal.innerHTML = _thmHTML();
+    _pSim = new PhysicsSimEngine('thmAnim', 'thmAnim');
+    _pSim.start(dt => _thmUpdate(dt), (ctx, cv) => _thmDraw(ctx, cv), []);
+    _abRestore('thermometer');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -38952,5 +38984,631 @@ function _sctAns(qi, oi) {
 function _sctSelf(n) {
   const out = document.getElementById('sctSelfOut'), val = document.getElementById('sctSelfVal');
   if (val) { val.value = String(n); _abSave('schatten3'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 5.3.5  WIE ENTSTEHEN KERN- UND HALBSCHATTEN?
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Licht und Schall"
+// Handlungsorientiert: Größe der Lichtquelle verändern. Punktquelle
+// → nur scharfer Kernschatten. Ausgedehnte Quelle → Kernschatten
+// (kein Licht) + Halbschatten (nur Teillicht) mit weichem Rand.
+// ═══════════════════════════════════════════════════════
+
+let _khs = null;
+function _khsInit() { _khs = { s: 0, t: 0 }; }   // s = halbe Höhe der Lichtquelle
+
+function _khsHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim khs-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌗 Wie entstehen Kern- und Halbschatten?</h3>
+    <div class="fpm-note" style="margin-top:2px">Verändere die <b>Größe der Lichtquelle</b>. Beobachte den Rand des Schattens auf dem Schirm. Was ändert sich?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="khsAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_khsPreset(0)">• Punktlichtquelle</button>
+          <button class="sim-btn" onclick="_khsPreset(32)">☀️ ausgedehnte Quelle</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Größe der Lichtquelle</div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Quelle: <b id="khsSLbl">punktförmig</b></span>
+          <input type="range" id="khsS" min="0" max="40" step="2" value="0"
+            oninput="_khsSetS(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="lmp-status" id="khsStatus"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>Kernschatten:</b> von keinem Punkt der Quelle Licht (ganz dunkel). <b>Halbschatten:</b> nur von einem Teil der Quelle Licht (halbdunkel).</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Punktquelle → nur scharfer <b>Kernschatten</b>. &nbsp;|&nbsp; Ausgedehnte Quelle → <b>Kern-</b> und <b>Halbschatten</b> mit weichem Rand.
+    </p>
+    ${_khsArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _khsSetS(v) {
+  _khs.s = +v;
+  const el = document.getElementById('khsSLbl'); if (el) el.textContent = +v < 4 ? 'punktförmig' : (+v < 22 ? 'klein ausgedehnt' : 'groß ausgedehnt');
+  _khsStatus();
+}
+function _khsPreset(v) { _khs.s = v; const sl = document.getElementById('khsS'); if (sl) sl.value = v; _khsSetS(v); }
+function _khsStatus() {
+  const el = document.getElementById('khsStatus'); if (!el) return;
+  if (_khs.s < 4) { el.textContent = '✓ Punktquelle → nur ein scharfer Kernschatten (kein Halbschatten).'; el.className = 'lmp-status on'; }
+  else { el.textContent = '✓ Ausgedehnte Quelle → in der Mitte Kernschatten, am Rand ein weicher Halbschatten.'; el.className = 'lmp-status on'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _khsUpdate(dt) { if (_khs) _khs.t += dt; }
+function _khsDraw(ctx, cv) {
+  if (!_khs) return;
+  const W = cv.width, H = cv.height, cy = H / 2;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#fef9c3'; ctx.fillRect(0, 0, W, H);
+  const x0 = 55, xO = W / 2 + 6, hO = 30, xS = W - 40, s = _khs.s;
+  const ratio = (xS - x0) / (xO - x0);
+  const yTopO = cy - hO, yBotO = cy + hO, yST = cy - s, ySB = cy + s;
+  const yPenTop = yST + (yTopO - yST) * ratio;
+  const yPenBot = ySB + (yBotO - ySB) * ratio;
+  const yUmbTop = ySB + (yTopO - ySB) * ratio;
+  const yUmbBot = yST + (yBotO - yST) * ratio;
+  // Schirm
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(xS, 16, 8, H - 32);
+  // Halbschatten-Band
+  ctx.fillStyle = 'rgba(71,85,105,0.4)'; ctx.fillRect(xS, yPenTop, 8, yPenBot - yPenTop);
+  // Kernschatten-Band (falls vorhanden)
+  const hasUmbra = yUmbTop <= yUmbBot;
+  if (hasUmbra) { ctx.fillStyle = '#1e293b'; ctx.fillRect(xS, yUmbTop, 8, yUmbBot - yUmbTop); }
+  // Randstrahlen
+  ctx.strokeStyle = 'rgba(245,158,11,0.55)'; ctx.lineWidth = 1.2; ctx.setLineDash([5, 4]); ctx.lineDashOffset = -(_khs.t * 35) % 9;
+  ctx.beginPath();
+  ctx.moveTo(x0, yST); ctx.lineTo(xS, yPenTop);
+  ctx.moveTo(x0, ySB); ctx.lineTo(xS, yPenBot);
+  ctx.moveTo(x0, ySB); ctx.lineTo(xS, yUmbTop);
+  ctx.moveTo(x0, yST); ctx.lineTo(xS, yUmbBot);
+  ctx.stroke(); ctx.setLineDash([]); ctx.lineDashOffset = 0;
+  // Gegenstand
+  ctx.fillStyle = '#7c3aed'; ctx.fillRect(xO - 6, yTopO, 12, yBotO - yTopO);
+  ctx.fillStyle = '#334155'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Gegenstand', xO, yTopO - 8);
+  // Lichtquelle
+  ctx.fillStyle = '#f59e0b';
+  if (s < 4) { ctx.beginPath(); ctx.arc(x0, cy, 9, 0, 2 * Math.PI); ctx.fill(); }
+  else { ctx.fillStyle = 'rgba(250,204,21,0.6)'; ctx.fillRect(x0 - 8, yST, 16, ySB - yST); ctx.fillStyle = '#f59e0b'; ctx.fillRect(x0 - 5, yST, 10, ySB - yST); }
+  ctx.fillStyle = '#92400e'; ctx.font = '10px sans-serif'; ctx.fillText(s < 4 ? 'Punktquelle' : 'Lichtquelle', x0, cy - Math.max(s, 9) - 8);
+  // Beschriftung der Bänder
+  ctx.textAlign = 'left'; ctx.font = '700 10px sans-serif';
+  if (hasUmbra) { ctx.fillStyle = '#1e293b'; ctx.fillText('Kernschatten', xS + 12, (yUmbTop + yUmbBot) / 2); }
+  if (s >= 4) { ctx.fillStyle = '#475569'; ctx.fillText('Halbschatten', xS + 12, yPenTop + 6); }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.3.5  (ns = 'kernschatten') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _khsArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('kernschatten')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('kernschatten')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum ist der Rand mancher Schatten scharf und der Rand anderer Schatten weich (verschwommen)?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, der Schattenrand wird weich, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle die <b>Punktlichtquelle</b> ein. Wie sieht der Schattenrand aus?</li>
+          <li>Vergrößere die Lichtquelle Schritt für Schritt. Was erscheint am Rand?</li>
+          <li>Stelle die <b>ausgedehnte Quelle</b> ein und finde Kern- und Halbschatten.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtung</div>
+        <ol class="ab-ol">
+          <li>Punktquelle: Schattenrand ${inp('b1', 'scharf/weich')}, Halbschatten? ${inp('b2', 'ja/nein')}</li>
+          <li>Ausgedehnte Quelle: Halbschatten? ${inp('b3', 'ja/nein')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne eine ausgedehnte Lichtquelle, den Gegenstand und auf dem Schirm Kern- und Halbschatten.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was ist der Unterschied zwischen Kern- und Halbschatten? ${inp('a1', 'Kern = … , Halb = …')}</li>
+          <li>Welche Quelle braucht man, damit ein Halbschatten entsteht? ${inp('a2', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Im <b>Kernschatten</b> kommt von der Lichtquelle ${inp('m1', 'wie viel Licht?')} an.<br>
+        Im <b>Halbschatten</b> kommt Licht von ${inp('m2', 'einem Teil / der ganzen')} Quelle an.<br>
+        Ein Halbschatten entsteht nur bei einer ${inp('m3', 'punktförmigen/ausgedehnten')} Lichtquelle.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Bei einer Sonnenfinsternis gibt es Orte, an denen die Sonne ganz verschwindet (Kernschatten), und Orte, an denen sie nur teilweise verdeckt ist (Halbschatten). Erkläre das mit deinem Wissen.</div>
+        ${ta('tr1', 'Bei der Sonnenfinsternis …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="khsMini">${_khsMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_khsSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_khsSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_khsSelf(3)">😃 sicher</button>
+          <span id="khsSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="khsSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Punktquelle → scharfer Rand, nur Kernschatten. Ausgedehnte Quelle → in der Mitte Kernschatten (ganz dunkel), außen ein weicher Halbschatten; je größer die Quelle, desto breiter der Halbschatten und desto kleiner der Kernschatten.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Kernschatten: kein Punkt der Quelle „sieht" den Schirmpunkt. Halbschatten: nur ein Teil der Quelle beleuchtet den Punkt. Nur ausgedehnte (oder mehrere) Lichtquellen erzeugen Halbschatten.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Halbschatten ist halb so groß." (2) „Auch eine Punktquelle macht Halbschatten." (3) „Kern- und Halbschatten sind gleich dunkel."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Randstrahlen von den Quellenrändern über die Gegenstandskanten ziehen; mit zwei Lampen als einfachem Modell einer ausgedehnten Quelle beginnen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4.1 „scharf / nein" · 4.3 „ja". 6.1 „Kern = kein Licht, Halb = Teillicht" · 6.2 „ausgedehnte Quelle". Merksatz: kein · einem Teil · ausgedehnten. Transfer: Der Mond wirft Kern- und Halbschatten auf die Erde, weil die Sonne eine ausgedehnte Lichtquelle ist. Minidiagnose: 1→„kein Licht" · 2→„ausgedehnte Quelle" · 3→„Teillicht".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('kernschatten')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('kernschatten', 'Wie entstehen Kern- und Halbschatten?', body);
+}
+
+const _KHS_MINI = [
+  { q: '1. Wie viel Licht kommt im Kernschatten an?',
+    opts: ['Das ganze Licht', 'Gar kein Licht', 'Nur die Hälfte'], correct: 1,
+    fb: ['Dann wäre es kein Schatten.',
+         'Richtig! Im Kernschatten kommt von der Quelle gar kein Licht an.',
+         'Das gilt für den Halbschatten.'] },
+  { q: '2. Welche Lichtquelle braucht man, damit ein Halbschatten entsteht?',
+    opts: ['Eine Punktquelle', 'Eine ausgedehnte (oder mehrere) Quelle(n)', 'Gar keine'], correct: 1,
+    fb: ['Eine Punktquelle macht nur einen scharfen Kernschatten.',
+         'Richtig! Nur ausgedehnte Quellen erzeugen einen Halbschatten.',
+         'Ohne Licht gibt es gar keinen Schatten.'] },
+  { q: '3. Was ist der Halbschatten?',
+    opts: ['Ein Bereich mit Teillicht', 'Ein völlig dunkler Bereich', 'Der hellste Bereich'], correct: 0,
+    fb: ['Richtig! Im Halbschatten kommt Licht von einem Teil der Quelle an.',
+         'Völlig dunkel ist der Kernschatten.',
+         'Der Halbschatten ist teilweise beleuchtet, nicht der hellste.'] }
+];
+function _khsMiniHTML() {
+  return _KHS_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_khsAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="khsFb${qi}"></div></div>`).join('');
+}
+function _khsAns(qi, oi) {
+  const m = _KHS_MINI[qi], el = document.getElementById('khsFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _khsSelf(n) {
+  const out = document.getElementById('khsSelfOut'), val = document.getElementById('khsSelfVal');
+  if (val) { val.value = String(n); _abSave('kernschatten'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.1.1  SIND TEMPERATUR UND WÄRME DAS GLEICHE?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Sonnenenergie und Wärme"
+// Handlungsorientiert: zwei Gefäße mit Wasser (Menge + Temperatur
+// einstellbar). Temperatur (°C) sagt, wie warm; die Wärmemenge
+// (Energie) hängt von Menge UND Temperatur ab. In Kontakt bringen:
+// Wärme fließt vom warmen zum kalten Wasser bis zur Mischtemperatur.
+// ═══════════════════════════════════════════════════════
+
+let _tw = null;
+function _twInit() { _tw = { m1: 1, T1: 80, m2: 2, T2: 20, mixed: false, a1: 80, a2: 20, t: 0 }; }
+function _twWaerme(m, T) { return m * T; }                       // relative Wärmemenge (Einheiten)
+function _twMix() { return (_tw.m1 * _tw.T1 + _tw.m2 * _tw.T2) / (_tw.m1 + _tw.m2); }
+
+function _twHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim tw-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌡️ Sind Temperatur und Wärme das Gleiche?</h3>
+    <div class="fpm-note" style="margin-top:2px">Zwei Gefäße mit Wasser. Stelle Menge und Temperatur ein. Vergleiche die <b>Temperatur</b> (wie warm) mit der <b>Wärmemenge</b> (Energie). Dann bring beide in Kontakt.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="twAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_twContact()">🔗 In Kontakt bringen</button>
+          <button class="sim-btn" onclick="_twReset()">🔄 Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Gefäß 1 (links)</div>
+        <div class="phys-ctrl"><span class="phys-ctrl-label">Menge: <b id="twM1L">1 L</b></span>
+          <input type="range" id="twM1" min="0.5" max="3" step="0.5" value="1" oninput="_twSet('m1',this.value)" style="width:100%;accent-color:#7c3aed"></div>
+        <div class="phys-ctrl" style="margin-top:4px"><span class="phys-ctrl-label">Temperatur: <b id="twT1L">80 °C</b></span>
+          <input type="range" id="twT1" min="0" max="100" step="5" value="80" oninput="_twSet('T1',this.value)" style="width:100%;accent-color:#ef4444"></div>
+        <div class="fpm-label" style="margin-top:8px">Gefäß 2 (rechts)</div>
+        <div class="phys-ctrl"><span class="phys-ctrl-label">Menge: <b id="twM2L">2 L</b></span>
+          <input type="range" id="twM2" min="0.5" max="3" step="0.5" value="2" oninput="_twSet('m2',this.value)" style="width:100%;accent-color:#7c3aed"></div>
+        <div class="phys-ctrl" style="margin-top:4px"><span class="phys-ctrl-label">Temperatur: <b id="twT2L">20 °C</b></span>
+          <input type="range" id="twT2" min="0" max="100" step="5" value="20" oninput="_twSet('T2',this.value)" style="width:100%;accent-color:#ef4444"></div>
+        <div class="lmp-status" id="twStatus" style="margin-top:8px"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Temperatur</b> (°C) = wie warm. &nbsp;|&nbsp; <b>Wärme</b> = übertragene Energie (hängt von Menge UND Temperatur ab). Wärme fließt vom Warmen zum Kalten.
+    </p>
+    ${_twArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _twSet(k, v) {
+  _tw[k] = +v;
+  const map = { m1: 'twM1L', T1: 'twT1L', m2: 'twM2L', T2: 'twT2L' };
+  const unit = (k[0] === 'm') ? ' L' : ' °C';
+  const el = document.getElementById(map[k]); if (el) el.textContent = _fpmNum(+v, k[0] === 'm' ? 1 : 0) + unit;
+  if (k === 'T1') _tw.a1 = +v; if (k === 'T2') _tw.a2 = +v;
+  _tw.mixed = false; _twStatus();
+}
+function _twContact() { _tw.mixed = true; _tw.a1 = _tw.T1; _tw.a2 = _tw.T2; _twStatus(); }
+function _twReset() { _twInit(); _twStatus(); for (const k of ['m1', 'T1', 'm2', 'T2']) { const sl = document.getElementById('tw' + (k[0] === 'm' ? 'M' + k[1] : 'T' + k[1])); } }
+function _twStatus() {
+  const el = document.getElementById('twStatus'); if (!el) return;
+  const W1 = _twWaerme(_tw.m1, _tw.T1), W2 = _twWaerme(_tw.m2, _tw.T2);
+  if (_tw.mixed) { el.textContent = '🔗 Wärme fließt vom Warmen zum Kalten → Mischtemperatur ≈ ' + _fpmNum(_twMix(), 0) + ' °C.'; el.className = 'lmp-status on'; }
+  else {
+    const more = W1 > W2 ? 'Gefäß 1' : (W2 > W1 ? 'Gefäß 2' : 'beide gleich');
+    el.textContent = 'Wärmemenge: Gefäß 1 = ' + _fpmNum(W1, 0) + ', Gefäß 2 = ' + _fpmNum(W2, 0) + ' Einheiten → mehr Wärme: ' + more + '.';
+    el.className = 'lmp-status';
+  }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _twUpdate(dt) {
+  if (!_tw) return; _tw.t += dt;
+  if (_tw.mixed) { const Tm = _twMix(); _tw.a1 += (Tm - _tw.a1) * Math.min(1, dt * 1.1); _tw.a2 += (Tm - _tw.a2) * Math.min(1, dt * 1.1); }
+}
+function _twCol(T) { const r = Math.round(60 + T * 1.9), b = Math.round(230 - T * 1.8); return `rgb(${r},${Math.round(120 - T * 0.3)},${b})`; }
+function _twBeaker(ctx, x, y, w, h, m, T, W, label) {
+  const fill = (m / 3) * h;
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.strokeRect(x, y, w, h);
+  ctx.fillStyle = _twCol(T); ctx.fillRect(x + 2, y + h - fill, w - 4, fill - 2);
+  ctx.fillStyle = '#334155'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(label, x + w / 2, y - 20);
+  ctx.fillText(_fpmNum(T, 0) + ' °C', x + w / 2, y - 6);
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.fillText(_fpmNum(m, 1) + ' L', x + w / 2, y + h + 14);
+  // Wärmemenge-Balken
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(x, y + h + 22, w, 8);
+  ctx.fillStyle = '#f97316'; ctx.fillRect(x, y + h + 22, w * Math.min(1, W / 300), 8);
+  ctx.fillStyle = '#92400e'; ctx.font = '9px sans-serif'; ctx.fillText('Wärme: ' + _fpmNum(W, 0), x + w / 2, y + h + 42);
+}
+function _twDraw(ctx, cv) {
+  if (!_tw) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const T1 = _tw.mixed ? _tw.a1 : _tw.T1, T2 = _tw.mixed ? _tw.a2 : _tw.T2;
+  _twBeaker(ctx, 70, 60, 90, 110, _tw.m1, T1, _twWaerme(_tw.m1, _tw.T1), 'Gefäß 1');
+  _twBeaker(ctx, 280, 60, 90, 110, _tw.m2, T2, _twWaerme(_tw.m2, _tw.T2), 'Gefäß 2');
+  if (_tw.mixed) {
+    const warmLeft = _tw.T1 > _tw.T2;
+    ctx.strokeStyle = '#f97316'; ctx.lineWidth = 3; ctx.setLineDash([7, 5]); ctx.lineDashOffset = -(_tw.t * 50) % 12;
+    ctx.beginPath(); ctx.moveTo(warmLeft ? 165 : 275, 115); ctx.lineTo(warmLeft ? 275 : 165, 115); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#ea580c'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Wärme fließt →', 220, 105);
+  } else {
+    ctx.fillStyle = '#94a3b8'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('getrennt', 220, 118);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.1.1  (ns = 'tempwaerme') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _twArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('tempwaerme')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('tempwaerme')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Sind Temperatur und Wärme dasselbe? Kann ein kleines heißes Gefäß weniger Wärme haben als ein großes warmes?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute: Temperatur und Wärme sind … Mehr Wärme hat …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle Gefäß 1 auf <b>1 L, 80 °C</b> und Gefäß 2 auf <b>2 L, 20 °C</b>. Vergleiche Temperatur und Wärmemenge.</li>
+          <li>Suche eine Einstellung, bei der das <b>kältere</b> Gefäß trotzdem <b>mehr Wärme</b> hat.</li>
+          <li>Bring beide in Kontakt. In welche Richtung fließt die Wärme?</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td></td><td>Menge</td><td>Temperatur</td><td>Wärmemenge</td></tr>
+          <tr><td>Gefäß 1</td><td>${inp('t1m', 'L')}</td><td>${inp('t1t', '°C')}</td><td>${inp('t1w', 'Einh.')}</td></tr>
+          <tr><td>Gefäß 2</td><td>${inp('t2m', 'L')}</td><td>${inp('t2t', '°C')}</td><td>${inp('t2w', 'Einh.')}</td></tr>
+          <tr><td>Nach Kontakt: Mischtemperatur</td><td colspan="3">${inp('tmix', '°C')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die beiden Gefäße und einen Pfeil, in welche Richtung die Wärme fließt.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wovon hängt die Wärmemenge ab? ${inp('a1', 'von … und …')}</li>
+          <li>In welche Richtung fließt Wärme immer? ${inp('a2', 'vom … zum …')}</li>
+          <li>Ist heißer immer gleich „mehr Wärme"? ${inp('a3', 'ja/nein, weil …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die <b>Temperatur</b> (in ${inp('m1', 'Einheit?')}) sagt, wie warm etwas ist.<br>
+        Die <b>Wärme</b> ist übertragene ${inp('m2', 'was?')} und hängt von Menge und Temperatur ab.<br>
+        Wärme fließt immer vom ${inp('m3', 'warmen/kalten')} zum kalten Körper.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Eine Wunderkerze sprüht Funken mit über 1000 °C – trotzdem tut ein Funke auf der Haut kaum weh. Eine Badewanne mit 40 °C wärmt dich dagegen lange. Erkläre den Unterschied.</div>
+        ${ta('tr1', 'Der Funke ist sehr heiß, aber … Die Badewanne …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="twMini">${_twMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_twSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_twSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_twSelf(3)">😃 sicher</button>
+          <span id="twSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="twSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> 1 L/80 °C hat Wärme 80 Einheiten, 2 L/20 °C hat 40 – hier ist das heißere Gefäß auch das energiereichere. Mit 3 L/40 °C (=120) gegen 1 L/90 °C (=90) hat das kältere Gefäß mehr Wärme. Bei Kontakt: Wärme fließt vom Warmen zum Kalten bis zur Mischtemperatur.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Temperatur ist eine Zustandsgröße (wie warm). Wärme ist übertragene Energie und hängt von Menge (Masse) und Temperatur ab. „Heiß" ≠ „viel Wärme". Wärme fließt stets vom wärmeren zum kälteren Körper.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Heißer = mehr Wärme, immer." (2) „Temperatur und Wärme sind dasselbe." (3) „Kälte fließt in den warmen Körper."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Wärmemenge-Balken (Menge × Temperatur) beobachten; Gegenbeispiel Badewanne vs. Funke; Fluss immer warm → kalt.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 „von Menge und Temperatur" · 6.2 „vom warmen zum kalten" · 6.3 „nein". Merksatz: °C · Energie · warmen. Transfer: Der Funke ist winzig → wenig Wärme trotz hoher Temperatur; die Badewanne enthält viel Wasser → viel Wärme trotz niedrigerer Temperatur. Minidiagnose: 1→°C · 2→„Menge und Temperatur" · 3→„vom warmen zum kalten".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('tempwaerme')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('tempwaerme', 'Sind Temperatur und Wärme das Gleiche?', body);
+}
+
+const _TW_MINI = [
+  { q: '1. In welcher Einheit misst man die Temperatur?',
+    opts: ['In Liter', 'In Grad Celsius (°C)', 'In Watt'], correct: 1,
+    fb: ['Liter ist eine Menge, keine Temperatur.',
+         'Richtig! Die Temperatur misst man in Grad Celsius.',
+         'Watt ist eine Leistung.'] },
+  { q: '2. Wovon hängt die Wärmemenge (Energie) ab?',
+    opts: ['Nur von der Temperatur', 'Von Menge UND Temperatur', 'Nur von der Farbe'], correct: 1,
+    fb: ['Die Menge zählt auch mit.',
+         'Richtig! Die Wärmemenge hängt von Menge und Temperatur ab.',
+         'Die Farbe spielt keine Rolle.'] },
+  { q: '3. In welche Richtung fließt Wärme?',
+    opts: ['Vom kalten zum warmen Körper', 'Vom warmen zum kalten Körper', 'Immer nach oben'], correct: 1,
+    fb: ['Andersherum.',
+         'Richtig! Wärme fließt immer vom warmen zum kalten Körper.',
+         'Die Richtung hängt von der Temperatur ab, nicht von oben/unten.'] }
+];
+function _twMiniHTML() {
+  return _TW_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_twAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="twFb${qi}"></div></div>`).join('');
+}
+function _twAns(qi, oi) {
+  const m = _TW_MINI[qi], el = document.getElementById('twFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _twSelf(n) {
+  const out = document.getElementById('twSelfOut'), val = document.getElementById('twSelfVal');
+  if (val) { val.value = String(n); _abSave('tempwaerme'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.1.2  WIE FUNKTIONIERT EIN THERMOMETER?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Sonnenenergie und Wärme"
+// Handlungsorientiert: Die Flüssigkeit im Thermometer dehnt sich beim
+// Erwärmen aus und steigt in der Röhre. Temperatur einstellen (oder
+// Probe wählen), Flüssigkeitssäule beobachten, Wert an der Skala
+// ablesen. Fixpunkte: 0 °C (Eiswasser), 100 °C (kochendes Wasser).
+// ═══════════════════════════════════════════════════════
+
+let _thm = null;
+const _THM_MIN = -10, _THM_MAX = 110;
+function _thmInit() { _thm = { T: 20, t: 0 }; }
+const _THM_PROBEN = [
+  { n: 'Eiswasser', T: 0, ic: '🧊' },
+  { n: 'Zimmer', T: 21, ic: '🏠' },
+  { n: 'handwarm', T: 37, ic: '✋' },
+  { n: 'heißer Tee', T: 70, ic: '🍵' },
+  { n: 'kochendes Wasser', T: 100, ic: '♨️' }
+];
+
+function _thmHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim thm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌡️ Wie funktioniert ein Thermometer?</h3>
+    <div class="fpm-note" style="margin-top:2px">Die Flüssigkeit im Thermometer dehnt sich beim Erwärmen aus und steigt. Verändere die Temperatur oder tauche das Thermometer in eine Probe – und lies den Wert an der Skala ab.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="thmAnim" width="440" height="260" class="phys-anim-cv"></canvas>
+      </div>
+      <div>
+        <div class="fpm-label">Temperatur einstellen</div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Temperatur: <b id="thmTLbl">20 °C</b></span>
+          <input type="range" id="thmT" min="-10" max="110" step="1" value="20"
+            oninput="_thmSetT(this.value)" style="width:100%;accent-color:#ef4444">
+        </div>
+        <div class="fpm-label" style="margin-top:10px">Oder Thermometer eintauchen in:</div>
+        <div class="msf-chips" id="thmChips">${_thmChipsHTML()}</div>
+        <div class="fpm-note" style="margin-top:10px">Lies immer auf <b>Augenhöhe</b> ab. Die Skala ist mit zwei Fixpunkten geeicht: <b>0 °C</b> (Eiswasser) und <b>100 °C</b> (kochendes Wasser).</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Warm → Flüssigkeit <b>dehnt sich aus</b> → steigt. &nbsp;|&nbsp; Kalt → Flüssigkeit zieht sich zusammen → fällt.
+    </p>
+    ${_thmArbeitsblattHTML()}
+  </div>`;
+}
+function _thmChipsHTML() {
+  return _THM_PROBEN.map((p, i) => `<button class="msf-chip" onclick="_thmProbe(${i})">${p.ic} ${p.n}</button>`).join('');
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _thmSetT(v) { _thm.T = +v; const el = document.getElementById('thmTLbl'); if (el) el.textContent = _fpmNum(+v, 0) + ' °C'; }
+function _thmProbe(i) { const p = _THM_PROBEN[i]; _thmSetT(p.T); const sl = document.getElementById('thmT'); if (sl) sl.value = p.T; }
+
+// ── Animation ──────────────────────────────────────────
+function _thmUpdate(dt) { if (_thm) _thm.t += dt; }
+function _thmDraw(ctx, cv) {
+  if (!_thm) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const tx = 120, bulbY = H - 40, topY = 30, tubeW = 14;
+  // Röhre
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.roundRect ? ctx.roundRect(tx - tubeW / 2, topY, tubeW, bulbY - topY, 7) : ctx.rect(tx - tubeW / 2, topY, tubeW, bulbY - topY); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(tx, bulbY, 18, 0, 2 * Math.PI); ctx.fillStyle = '#e2e8f0'; ctx.fill(); ctx.stroke();
+  // Flüssigkeitssäule (Ausdehnung ~ Temperatur)
+  const frac = (_thm.T - _THM_MIN) / (_THM_MAX - _THM_MIN);
+  const levelY = bulbY - frac * (bulbY - topY - 6);
+  ctx.fillStyle = '#ef4444';
+  ctx.beginPath(); ctx.arc(tx, bulbY, 13, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillRect(tx - 4, levelY, 8, bulbY - levelY);
+  // Skala
+  ctx.strokeStyle = '#334155'; ctx.fillStyle = '#334155'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.lineWidth = 1;
+  for (let T = 0; T <= 100; T += 10) {
+    const y = bulbY - ((T - _THM_MIN) / (_THM_MAX - _THM_MIN)) * (bulbY - topY - 6);
+    const long = (T % 20 === 0);
+    ctx.beginPath(); ctx.moveTo(tx + 10, y); ctx.lineTo(tx + 10 + (long ? 12 : 6), y); ctx.stroke();
+    if (long) ctx.fillText(T + '', tx + 26, y + 3);
+  }
+  // Fixpunkte markieren
+  ctx.fillStyle = '#2563eb'; ctx.font = '9px sans-serif';
+  const y0 = bulbY - ((0 - _THM_MIN) / (_THM_MAX - _THM_MIN)) * (bulbY - topY - 6);
+  ctx.fillText('0 °C Eiswasser', tx + 44, y0 + 3);
+  ctx.fillStyle = '#dc2626';
+  const y100 = bulbY - ((100 - _THM_MIN) / (_THM_MAX - _THM_MIN)) * (bulbY - topY - 6);
+  ctx.fillText('100 °C kochend', tx + 44, y100 + 3);
+  // Anzeige
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 20px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_fpmNum(_thm.T, 0) + ' °C', W - 90, 60);
+  ctx.fillStyle = '#64748b'; ctx.font = '11px sans-serif';
+  ctx.fillText(_thm.T > 30 ? 'Säule steigt (Ausdehnung)' : (_thm.T < 5 ? 'Säule fällt (Zusammenziehen)' : 'gemäßigt'), W - 90, 80);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.1.2  (ns = 'thermometer') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _thmArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('thermometer')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('thermometer')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie zeigt ein Thermometer die Temperatur an?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, die Flüssigkeit im Thermometer steigt, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Erhöhe die Temperatur langsam. Was macht die Flüssigkeitssäule?</li>
+          <li>Senke die Temperatur unter 0 °C. Was passiert jetzt?</li>
+          <li>Tauche das Thermometer in verschiedene Proben und lies jeweils ab.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Eiswasser</td><td>${inp('t_eis', '°C')}</td><td>Zimmer</td><td>${inp('t_zim', '°C')}</td></tr>
+          <tr><td>handwarm</td><td>${inp('t_hand', '°C')}</td><td>kochendes Wasser</td><td>${inp('t_koch', '°C')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne ein Thermometer bei niedriger und bei hoher Temperatur. Zeige die unterschiedliche Höhe der Säule.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Warum steigt die Flüssigkeit beim Erwärmen? ${inp('a1', 'weil sie sich …')}</li>
+          <li>Was bedeuten die Fixpunkte 0 °C und 100 °C? ${inp('a2', '')}</li>
+          <li>Wie liest man richtig ab? ${inp('a3', 'auf …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Beim Erwärmen ${inp('m1', 'dehnt sich aus / zieht sich zusammen')} die Flüssigkeit und steigt in der Röhre.<br>
+        Die Temperatur liest man an der ${inp('m2', 'was?')} in ${inp('m3', 'Einheit?')} ab.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Fieberthermometer misst nur zwischen etwa 35 °C und 42 °C, dafür sehr genau. Warum braucht man beim Fiebermessen keinen großen Bereich wie 0–100 °C?</div>
+        ${ta('tr1', 'Beim Fieber reicht ein kleiner Bereich, weil …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="thmMini">${_thmMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_thmSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_thmSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_thmSelf(3)">😃 sicher</button>
+          <span id="thmSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="thmSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Steigende Temperatur → Säule steigt; unter 0 °C → Säule fällt. Ablesewerte: Eiswasser 0 °C, Zimmer ~21 °C, handwarm ~37 °C, kochend 100 °C.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Thermometer nutzen die Wärmeausdehnung einer Flüssigkeit (früher Quecksilber, heute meist gefärbter Alkohol). Geeicht wird an zwei Fixpunkten (0 °C Eis, 100 °C siedendes Wasser bei Normaldruck). Ablesen auf Augenhöhe vermeidet Parallaxenfehler.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Flüssigkeit wird mehr." (Es dehnt sich nur aus, die Menge bleibt gleich.) (2) „Das Thermometer erzeugt Wärme." (3) Ablesen schräg von oben.</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Ausdehnung als „mehr Platz je Teilchen" veranschaulichen; Fixpunkte betonen; Augenhöhe demonstrieren.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 „ausdehnt" · 6.2 „geeichte Fixpunkte Eis/kochend" · 6.3 „auf Augenhöhe". Merksatz: dehnt sich aus · Skala · °C. Transfer: Die Körpertemperatur liegt immer nahe 37 °C, ein kleiner, feiner Bereich genügt. Minidiagnose: 1→„sie dehnt sich aus" · 2→°C · 3→„auf Augenhöhe".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('thermometer')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('thermometer', 'Wie funktioniert ein Thermometer?', body);
+}
+
+const _THM_MINI = [
+  { q: '1. Warum steigt die Flüssigkeit im Thermometer beim Erwärmen?',
+    opts: ['Weil sie sich ausdehnt', 'Weil mehr Flüssigkeit entsteht', 'Weil sie leichter wird'], correct: 0,
+    fb: ['Richtig! Beim Erwärmen dehnt sich die Flüssigkeit aus und steigt.',
+         'Die Menge bleibt gleich – sie dehnt sich nur aus.',
+         'Am Gewicht liegt es nicht.'] },
+  { q: '2. In welcher Einheit liest man die Temperatur ab?',
+    opts: ['In Grad Celsius (°C)', 'In Zentimeter', 'In Liter'], correct: 0,
+    fb: ['Richtig! Die Temperatur misst man in Grad Celsius.',
+         'Zentimeter misst Längen.',
+         'Liter misst Mengen.'] },
+  { q: '3. Wie liest man ein Thermometer richtig ab?',
+    opts: ['Schräg von oben', 'Auf Augenhöhe', 'Von unten'], correct: 1,
+    fb: ['Schräg liest man falsch ab.',
+         'Richtig! Auf Augenhöhe liest man genau ab.',
+         'Von unten verschätzt man sich.'] }
+];
+function _thmMiniHTML() {
+  return _THM_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_thmAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="thmFb${qi}"></div></div>`).join('');
+}
+function _thmAns(qi, oi) {
+  const m = _THM_MINI[qi], el = document.getElementById('thmFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _thmSelf(n) {
+  const out = document.getElementById('thmSelfOut'), val = document.getElementById('thmSelfVal');
+  if (val) { val.value = String(n); _abSave('thermometer'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
