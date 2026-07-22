@@ -262,7 +262,10 @@ const _physAbDefs = {
   'sammellinse': { titel: 'Wie bündelt eine Sammellinse das Licht?', ns: 'sammellinse', html: () => _sliArbeitsblattHTML() },
   'bild-linse': { titel: 'Wann entsteht ein vergrößertes oder verkleinertes Bild?', ns: 'bildlinse', html: () => _bldArbeitsblattHTML() },
   'lupe': { titel: 'Wie funktioniert eine Lupe?', ns: 'lupe', html: () => _lupArbeitsblattHTML() },
-  'kamera': { titel: 'Wie funktioniert eine Kamera?', ns: 'kamera', html: () => _kamArbeitsblattHTML() }
+  'kamera': { titel: 'Wie funktioniert eine Kamera?', ns: 'kamera', html: () => _kamArbeitsblattHTML() },
+  'auge': { titel: 'Wie funktioniert das Auge?', ns: 'auge', html: () => _augArbeitsblattHTML() },
+  'brille': { titel: 'Wie korrigiert eine Brille Sehfehler?', ns: 'brille', html: () => _briArbeitsblattHTML() },
+  'spiegelbild': { titel: 'Wie entsteht ein Spiegelbild?', ns: 'spiegel', html: () => _spgArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -703,6 +706,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('kamAnim', 'kamAnim');
     _pSim.start(dt => _kamUpdate(dt), (ctx, cv) => _kamDraw(ctx, cv), []);
     _abRestore('kamera');
+  },
+
+  // ── 7.1.6 DAS AUGE ─────────────────────────────────────────────
+  'auge': modal => {
+    _augInit();
+    modal.innerHTML = _augHTML();
+    _augStatus();
+    _pSim = new PhysicsSimEngine('augAnim', 'augAnim');
+    _pSim.start(dt => _augUpdate(dt), (ctx, cv) => _augDraw(ctx, cv), []);
+    _abRestore('auge');
+  },
+
+  // ── 7.1.7 BRILLE / SEHFEHLER ───────────────────────────────────
+  'brille': modal => {
+    _briInit();
+    modal.innerHTML = _briHTML();
+    _briStatus();
+    _pSim = new PhysicsSimEngine('briAnim', 'briAnim');
+    _pSim.start(dt => _briUpdate(dt), (ctx, cv) => _briDraw(ctx, cv), []);
+    _abRestore('brille');
+  },
+
+  // ── 7.2.1 SPIEGELBILD ──────────────────────────────────────────
+  'spiegelbild': modal => {
+    _spgInit();
+    modal.innerHTML = _spgHTML();
+    _spgStatus();
+    _pSim = new PhysicsSimEngine('spgAnim', 'spgAnim');
+    _pSim.start(dt => _spgUpdate(dt), (ctx, cv) => _spgDraw(ctx, cv), []);
+    _abRestore('spiegel');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -44184,5 +44217,609 @@ function _kamAns(qi, oi) {
 function _kamSelf(n) {
   const out = document.getElementById('kamSelfOut'), val = document.getElementById('kamSelfVal');
   if (val) { val.value = String(n); _abSave('kamera'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.1.6  WIE FUNKTIONIERT DAS AUGE?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Optische Instrumente"
+// Handlungsorientiert: Das Auge ist wie eine Kamera – Linse, Pupille
+// (Blende) und Netzhaut (Sensor). Es entsteht ein umgekehrtes Bild auf
+// der Netzhaut. Die Linse verformt sich (Akkommodation), um nah und fern
+// scharf zu sehen; die Pupille regelt die Lichtmenge. Das Gehirn dreht um.
+// ═══════════════════════════════════════════════════════
+
+let _aug = null;
+function _augInit() { _aug = { g: 150, pupil: 3, t: 0 }; }
+
+function _augHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim aug-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">👁️ Wie funktioniert das Auge?</h3>
+    <div class="fpm-note" style="margin-top:2px">Das Auge arbeitet wie eine Kamera. Verändere den Abstand des Gegenstands und die Pupille. Wo entsteht das Bild – und wie stellt das Auge scharf?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="augAnim" width="440" height="232" class="phys-anim-cv"></canvas>
+        <div class="lmp-status" id="augStatus" style="margin-top:6px"></div>
+      </div>
+      <div>
+        <div class="phys-ctrl"><span class="phys-ctrl-label">Abstand des Gegenstands: <b id="augGLbl">weit</b></span>
+          <input type="range" id="augG" min="60" max="220" step="5" value="150" oninput="_augSet('g',this.value)" style="width:100%;accent-color:#7c3aed"></div>
+        <div class="phys-ctrl" style="margin-top:8px"><span class="phys-ctrl-label">Pupille (Helligkeit): <b id="augPLbl">mittel</b></span>
+          <input type="range" id="augP" min="1" max="6" step="1" value="3" oninput="_augSet('pupil',this.value)" style="width:100%;accent-color:#ef4444"></div>
+        <div class="fpm-note" style="margin-top:10px">Auf der <b>Netzhaut</b> entsteht ein <b>umgekehrtes</b> Bild (das Gehirn dreht es um). Zum Scharfstellen verformt sich die <b>Linse</b> (Akkommodation): nah = stärker gewölbt. Die <b>Pupille</b> regelt wie eine Blende die Lichtmenge.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Auge = Linse + Pupille (Blende) + Netzhaut (Sensor). &nbsp;|&nbsp; Bild auf der Netzhaut: umgekehrt und verkleinert.
+    </p>
+    ${_augArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _augSet(k, v) {
+  _aug[k] = +v;
+  if (k === 'g') { const e = document.getElementById('augGLbl'); if (e) e.textContent = +v < 100 ? 'nah' : (+v > 180 ? 'weit' : 'mittel'); }
+  if (k === 'pupil') { const e = document.getElementById('augPLbl'); if (e) e.textContent = +v <= 2 ? 'eng (dunkel)' : (+v >= 5 ? 'weit (hell)' : 'mittel'); }
+  _augStatus();
+}
+function _augStatus() {
+  const el = document.getElementById('augStatus'); if (!el) return;
+  el.textContent = '👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse ' + (_aug.g < 100 ? 'stark gewölbt (nah)' : 'flacher (fern)') + ', Pupille ' + (_aug.pupil <= 2 ? 'eng' : (_aug.pupil >= 5 ? 'weit' : 'mittel')) + '.';
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _augUpdate(dt) { if (_aug) _aug.t += dt; }
+function _augDraw(ctx, cv) {
+  if (!_aug) return;
+  const W = cv.width, H = cv.height, cy = H / 2 - 4;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const G = 40, xObj = Math.max(20, 250 - _aug.g), objTop = cy - G;
+  ctx.strokeStyle = '#e2e8f0'; ctx.beginPath(); ctx.moveTo(10, cy); ctx.lineTo(W - 10, cy); ctx.stroke();
+  // Gegenstand
+  ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(xObj, cy); ctx.lineTo(xObj, objTop); ctx.stroke();
+  ctx.fillStyle = '#22c55e'; ctx.beginPath(); ctx.moveTo(xObj, objTop - 7); ctx.lineTo(xObj - 4, objTop); ctx.lineTo(xObj + 4, objTop); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#166534'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Gegenstand', xObj, cy + 20);
+  // Augapfel
+  const xE = 340, eR = 62;
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(xE, cy, eR, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Netzhaut (hinten)
+  ctx.strokeStyle = '#f472b6'; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(xE, cy, eR - 3, -0.9, 0.9); ctx.stroke();
+  ctx.fillStyle = '#9d174d'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Netzhaut', xE + eR - 30, cy - eR + 18);
+  // Linse (vorne, Wölbung ~ nah/fern), Pupille
+  const xLens = xE - eR + 14, thick = 10 + (220 - _aug.g) / 12;
+  ctx.fillStyle = 'rgba(96,165,250,0.4)'; ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.ellipse(xLens, cy, thick, 26, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#1e293b'; ctx.fillRect(xLens - 3, cy - 26 - (6 - _aug.pupil) * 2, 6, 4);  // Pupillenrand oben (Andeutung)
+  ctx.fillStyle = '#334155'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Linse', xLens, cy + 40);
+  // Strahlen → Netzhaut (umgekehrt)
+  const xRet = xE + eR - 6, B = 20, imgTop = cy + B;
+  const alpha = 0.3 + _aug.pupil / 10;
+  ctx.strokeStyle = `rgba(245,158,11,${alpha})`; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(xObj, objTop); ctx.lineTo(xLens, objTop * 0.5 + cy * 0.5); ctx.lineTo(xRet, imgTop); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xObj, objTop); ctx.lineTo(xLens, cy); ctx.lineTo(xRet, imgTop); ctx.stroke();
+  // Bild auf Netzhaut (umgekehrt)
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(xRet, cy); ctx.lineTo(xRet, imgTop); ctx.stroke();
+  ctx.fillStyle = '#dc2626'; ctx.beginPath(); ctx.moveTo(xRet, imgTop + 6); ctx.lineTo(xRet - 3, imgTop); ctx.lineTo(xRet + 3, imgTop); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('umgekehrtes Bild auf der Netzhaut', W / 2, 18);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.1.6  (ns = 'auge') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _augArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('auge')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('auge')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie entsteht im Auge ein Bild – und wie stellt das Auge nah und fern scharf?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, im Auge entsteht das Bild auf der … und es ist …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Verschiebe den Gegenstand von weit nach nah. Wie verändert sich die Linse?</li>
+          <li>Verändere die Pupille. Was passiert mit der Helligkeit?</li>
+          <li>Achte auf die Lage des Bildes auf der Netzhaut.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Bauteile zuordnen</div>
+        <table class="ab-table"><tbody>
+          <tr><td>bündelt das Licht</td><td>${inp('t_l', 'welches Teil?')}</td><td>regelt die Lichtmenge</td><td>${inp('t_p', '')}</td></tr>
+          <tr><td>hier entsteht das Bild</td><td>${inp('t_n', '')}</td><td>verarbeitet das Bild</td><td>${inp('t_g', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne ein Auge mit Linse, Pupille und Netzhaut und das umgekehrte Bild.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie ist das Bild auf der Netzhaut? ${inp('a1', 'umgekehrt/aufrecht')}</li>
+          <li>Wie stellt das Auge nah scharf? ${inp('a2', 'die Linse …')}</li>
+          <li>Welchem Kamerateil entspricht die Pupille? ${inp('a3', 'der …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Im Auge entsteht auf der ${inp('m1', 'wo?')} ein umgekehrtes, verkleinertes Bild.<br>
+        Zum Scharfstellen ${inp('m2', 'verformt sich / bewegt sich')} die Linse (Akkommodation).<br>
+        Die Pupille wirkt wie eine ${inp('m3', 'was?')} und regelt die Lichtmenge.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum wird die Pupille bei hellem Sonnenlicht klein und im Dunkeln groß? Und warum strengt langes Lesen aus der Nähe die Augen an?</div>
+        ${ta('tr1', 'Die Pupille … Beim Lesen aus der Nähe muss sich die Linse …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="augMini">${_augMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_augSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_augSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_augSelf(3)">😃 sicher</button>
+          <span id="augSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="augSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Auf der Netzhaut entsteht ein umgekehrtes, verkleinertes Bild. Bei nahen Objekten wölbt sich die Linse stärker; eine weite Pupille lässt mehr Licht ein.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Das Auge ist ein optisches System aus Hornhaut, Linse (Akkommodation durch Verformung), Pupille (Blende) und Netzhaut (Empfänger). Reelles, umgekehrtes, verkleinertes Bild; das Gehirn interpretiert es aufrecht.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Das Bild im Auge steht richtig herum." (2) „Die Linse bewegt sich vor und zurück wie in der Kamera" (sie verformt sich). (3) „Die Pupille macht das Bild scharf."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Vergleich mit Kamera (7.1.5); Akkommodation vs. Fokussieren durch Verschieben; Pupille = Blende.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Zuordnung: Linse bündelt, Pupille = Lichtmenge, Netzhaut = Bild, Gehirn = Verarbeitung. 6.1 „umgekehrt" · 6.2 „die Linse wölbt sich stärker" · 6.3 „der Blende". Merksatz: Netzhaut · verformt sich · Blende. Transfer: Bei Helligkeit wird die Pupille eng (Schutz), im Dunkeln weit; nahes Lesen fordert dauerhafte starke Wölbung → Anstrengung. Minidiagnose: 1→umgekehrt · 2→„die Linse verformt sich" · 3→„die Lichtmenge".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('auge')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('auge', 'Wie funktioniert das Auge?', body);
+}
+
+const _AUG_MINI = [
+  { q: '1. Wie ist das Bild auf der Netzhaut?',
+    opts: ['aufrecht und vergrößert', 'umgekehrt und verkleinert', 'virtuell'], correct: 1,
+    fb: ['Nein – es ist umgekehrt.',
+         'Richtig! Auf der Netzhaut entsteht ein umgekehrtes, verkleinertes, reelles Bild.',
+         'Es ist reell (auffangbar), nicht virtuell.'] },
+  { q: '2. Wie stellt das Auge nah und fern scharf?',
+    opts: ['Die Linse verformt sich (Akkommodation)', 'Die Netzhaut bewegt sich', 'Die Pupille wird größer'], correct: 0,
+    fb: ['Richtig! Die Augenlinse verformt sich zum Scharfstellen.',
+         'Die Netzhaut sitzt fest.',
+         'Die Pupille regelt nur die Helligkeit.'] },
+  { q: '3. Welchem Kamerateil entspricht die Pupille?',
+    opts: ['Dem Sensor', 'Der Blende', 'Der Brennweite'], correct: 1,
+    fb: ['Der Sensor entspricht der Netzhaut.',
+         'Richtig! Die Pupille ist die Blende des Auges.',
+         'Die Brennweite ist keine Bauteil-Öffnung.'] }
+];
+function _augMiniHTML() {
+  return _AUG_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_augAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="augFb${qi}"></div></div>`).join('');
+}
+function _augAns(qi, oi) {
+  const m = _AUG_MINI[qi], el = document.getElementById('augFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _augSelf(n) {
+  const out = document.getElementById('augSelfOut'), val = document.getElementById('augSelfVal');
+  if (val) { val.value = String(n); _abSave('auge'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.1.7  WIE KORRIGIERT EINE BRILLE SEHFEHLER?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Optische Instrumente"
+// Handlungsorientiert: Bei Kurzsichtigkeit liegt der Brennpunkt VOR der
+// Netzhaut → eine Zerstreuungslinse korrigiert. Bei Weitsichtigkeit
+// liegt er HINTER der Netzhaut → eine Sammellinse korrigiert.
+// Sehfehler wählen, Brille auf/ab, scharf/unscharf beobachten.
+// ═══════════════════════════════════════════════════════
+
+let _bri = null;
+function _briInit() { _bri = { fehler: 'kurz', brille: false, t: 0 }; }
+function _briScharf() { return _bri.brille; }
+function _briLinse() { return _bri.fehler === 'kurz' ? 'Zerstreuungslinse' : 'Sammellinse'; }
+
+function _briHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim bri-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">👓 Wie korrigiert eine Brille Sehfehler?</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle einen Sehfehler und beobachte, wo das Bild landet. Setze dann die richtige Brille auf und schau, ob das Bild scharf wird.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="briAnim" width="440" height="232" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_bri.fehler === 'kurz' ? ' primary' : ''}" id="briF0" onclick="_briSetF('kurz')">🔭 kurzsichtig</button>
+          <button class="sim-btn${_bri.fehler === 'weit' ? ' primary' : ''}" id="briF1" onclick="_briSetF('weit')">📖 weitsichtig</button>
+          <button class="sim-btn${_bri.brille ? ' primary' : ''}" id="briB" onclick="_briToggle()">👓 Brille</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was passiert</div>
+        <div class="lmp-status" id="briStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">
+          <b>Kurzsichtig:</b> Bild liegt <b>vor</b> der Netzhaut → <b>Zerstreuungslinse</b> (zerstreut das Licht etwas).<br>
+          <b>Weitsichtig:</b> Bild liegt <b>hinter</b> der Netzhaut → <b>Sammellinse</b> (bündelt zusätzlich).
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Kurzsichtig → Zerstreuungslinse. &nbsp;|&nbsp; Weitsichtig → Sammellinse. &nbsp;|&nbsp; Ziel: Bild genau auf die Netzhaut.
+    </p>
+    ${_briArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _briSetF(f) {
+  _bri.fehler = f;
+  document.getElementById('briF0')?.classList.toggle('primary', f === 'kurz');
+  document.getElementById('briF1')?.classList.toggle('primary', f === 'weit');
+  _briStatus();
+}
+function _briToggle() { _bri.brille = !_bri.brille; document.getElementById('briB')?.classList.toggle('primary', _bri.brille); _briStatus(); }
+function _briStatus() {
+  const el = document.getElementById('briStatus'); if (!el) return;
+  if (_briScharf()) { el.textContent = '✓ Mit ' + _briLinse() + ' liegt das Bild genau auf der Netzhaut → scharf!'; el.className = 'lmp-status on'; }
+  else { el.textContent = '🌫 Ohne Brille: Bild liegt ' + (_bri.fehler === 'kurz' ? 'vor' : 'hinter') + ' der Netzhaut → unscharf. Nötig: ' + _briLinse() + '.'; el.className = 'lmp-status off'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _briUpdate(dt) { if (_bri) _bri.t += dt; }
+function _briDraw(ctx, cv) {
+  if (!_bri) return;
+  const W = cv.width, H = cv.height, cy = H / 2 - 4;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = '#e2e8f0'; ctx.beginPath(); ctx.moveTo(10, cy); ctx.lineTo(W - 10, cy); ctx.stroke();
+  const xE = 330, eR = 66, retinaX = xE + eR - 8, xLens = xE - eR + 16;
+  // Augapfel + Netzhaut + Linse
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(xE, cy, eR, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#f472b6'; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(xE, cy, eR - 3, -0.85, 0.85); ctx.stroke();
+  ctx.fillStyle = 'rgba(96,165,250,0.4)'; ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(xLens, cy, 12, 30, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#9d174d'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Netzhaut', retinaX - 40, cy - eR + 20);
+  // Brille (vor dem Auge)
+  const xG = xE - eR - 24;
+  if (_bri.brille) {
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2.5; ctx.fillStyle = 'rgba(124,58,237,0.15)';
+    if (_bri.fehler === 'kurz') { // Zerstreuungslinse (konkav)
+      ctx.beginPath(); ctx.moveTo(xG - 8, cy - 34); ctx.quadraticCurveTo(xG + 2, cy, xG - 8, cy + 34);
+      ctx.lineTo(xG + 8, cy + 34); ctx.quadraticCurveTo(xG - 2, cy, xG + 8, cy - 34); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#7c3aed'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Zerstreuungslinse', xG, cy + 48);
+    } else { // Sammellinse (konvex)
+      ctx.beginPath(); ctx.moveTo(xG, cy - 34); ctx.quadraticCurveTo(xG + 12, cy, xG, cy + 34); ctx.quadraticCurveTo(xG - 12, cy, xG, cy - 34); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#7c3aed'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Sammellinse', xG, cy + 48);
+    }
+  }
+  // Strahlen: von links parallel, Brennpunkt je nach Fehler/Brille
+  let focusX;
+  if (_bri.brille) focusX = retinaX;
+  else focusX = _bri.fehler === 'kurz' ? retinaX - 34 : retinaX + 40;
+  const yIn = 26;
+  [-1, 1].forEach(s => {
+    ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.moveTo(20, cy + s * yIn); ctx.lineTo(xLens, cy + s * yIn * 0.8); ctx.lineTo(focusX, cy); ctx.stroke();
+    // hinter dem Brennpunkt divergierend (nur wenn focus vor Netzhaut)
+    if (focusX < retinaX) { ctx.strokeStyle = 'rgba(251,191,36,0.5)'; ctx.beginPath(); ctx.moveTo(focusX, cy); ctx.lineTo(retinaX, cy + s * (retinaX - focusX) * 0.5); ctx.stroke(); }
+  });
+  // Brennpunkt / Bildfleck
+  ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.arc(focusX, cy, 5, 0, 2 * Math.PI); ctx.fill();
+  if (!_briScharf()) {
+    const spread = Math.abs(retinaX - focusX) * 0.5;
+    ctx.strokeStyle = 'rgba(239,68,68,0.5)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(retinaX, cy - spread); ctx.lineTo(retinaX, cy + spread); ctx.stroke();
+  }
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_briScharf() ? '✓ scharf – Bild auf der Netzhaut' : '🌫 unscharf – Bild ' + (_bri.fehler === 'kurz' ? 'vor' : 'hinter') + ' der Netzhaut', W / 2, 18);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.1.7  (ns = 'brille') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _briArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('brille')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('brille')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie hilft eine Brille bei Kurz- und Weitsichtigkeit?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, eine Brille verschiebt das Bild …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle „kurzsichtig" ein. Wo liegt das Bild – vor oder hinter der Netzhaut?</li>
+          <li>Setze die Brille auf. Welche Linse wird verwendet? Wird es scharf?</li>
+          <li>Wiederhole alles für „weitsichtig".</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Sehfehler</td><td>Bild ohne Brille</td><td>nötige Linse</td></tr>
+          <tr><td>kurzsichtig</td><td>${inp('t_k', 'vor/hinter der Netzhaut')}</td><td>${inp('t_kl', '')}</td></tr>
+          <tr><td>weitsichtig</td><td>${inp('t_w', '')}</td><td>${inp('t_wl', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne ein kurzsichtiges Auge mit und ohne Brille (Brennpunkt vor/auf der Netzhaut).</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Welche Linse braucht ein Kurzsichtiger? ${inp('a1', '')}</li>
+          <li>Welche Linse braucht ein Weitsichtiger? ${inp('a2', '')}</li>
+          <li>Was ist bei beiden das Ziel? ${inp('a3', 'das Bild soll …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Bei Kurzsichtigkeit liegt das Bild ${inp('m1', 'vor/hinter')} der Netzhaut → eine ${inp('m2', 'welche Linse?')} korrigiert.<br>
+        Bei Weitsichtigkeit hilft eine ${inp('m3', 'welche Linse?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Manche Brillengläser sind am Rand dicker (nach innen gewölbt), andere in der Mitte dicker. Welche gehören zu Kurz-, welche zu Weitsichtigkeit?</div>
+        ${ta('tr1', 'Am Rand dick (Zerstreuung) → … , in der Mitte dick (Sammel) → …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="briMini">${_briMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_briSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_briSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_briSelf(3)">😃 sicher</button>
+          <span id="briSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="briSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Kurzsichtig: Brennpunkt vor der Netzhaut → unscharf; Zerstreuungslinse verschiebt ihn auf die Netzhaut. Weitsichtig: Brennpunkt hinter der Netzhaut → Sammellinse zieht ihn nach vorne.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Kurzsichtigkeit (Myopie): Auge zu lang / Brechkraft zu groß → Zerstreuungslinse (negativ). Weitsichtigkeit (Hyperopie): Auge zu kurz / Brechkraft zu klein → Sammellinse (positiv). Ziel: scharfes Bild auf der Netzhaut.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Jede Brille sammelt Licht." (2) „Kurzsichtige brauchen eine Sammellinse." (3) „Die Brille macht einfach alles größer."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Brennpunkt relativ zur Netzhaut einzeichnen; Zerstreuungs- vs. Sammellinse an der Glasform erkennen; Bezug zu 7.1.2 (Bündelung).</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: kurz vor / Zerstreuungslinse; weit hinter / Sammellinse. 6.1 „Zerstreuungslinse" · 6.2 „Sammellinse" · 6.3 „genau auf der Netzhaut liegen". Merksatz: vor · Zerstreuungslinse · Sammellinse. Transfer: Am Rand dick = Zerstreuungslinse (kurzsichtig), in der Mitte dick = Sammellinse (weitsichtig). Minidiagnose: 1→Zerstreuungslinse · 2→Sammellinse · 3→„vor der Netzhaut".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('brille')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('brille', 'Wie korrigiert eine Brille Sehfehler?', body);
+}
+
+const _BRI_MINI = [
+  { q: '1. Welche Linse braucht ein Kurzsichtiger?',
+    opts: ['Eine Sammellinse', 'Eine Zerstreuungslinse', 'Gar keine'], correct: 1,
+    fb: ['Die Sammellinse ist für Weitsichtige.',
+         'Richtig! Bei Kurzsichtigkeit hilft eine Zerstreuungslinse.',
+         'Ohne Korrektur bleibt das Bild unscharf.'] },
+  { q: '2. Welche Linse braucht ein Weitsichtiger?',
+    opts: ['Eine Sammellinse', 'Eine Zerstreuungslinse', 'Einen Spiegel'], correct: 0,
+    fb: ['Richtig! Bei Weitsichtigkeit hilft eine Sammellinse.',
+         'Die Zerstreuungslinse ist für Kurzsichtige.',
+         'Ein Spiegel korrigiert keinen Sehfehler.'] },
+  { q: '3. Wo liegt das Bild bei einem Kurzsichtigen ohne Brille?',
+    opts: ['Genau auf der Netzhaut', 'Vor der Netzhaut', 'Hinter der Netzhaut'], correct: 1,
+    fb: ['Dann bräuchte er keine Brille.',
+         'Richtig! Bei Kurzsichtigkeit liegt das Bild vor der Netzhaut.',
+         'Hinter der Netzhaut liegt es bei Weitsichtigkeit.'] }
+];
+function _briMiniHTML() {
+  return _BRI_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_briAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="briFb${qi}"></div></div>`).join('');
+}
+function _briAns(qi, oi) {
+  const m = _BRI_MINI[qi], el = document.getElementById('briFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _briSelf(n) {
+  const out = document.getElementById('briSelfOut'), val = document.getElementById('briSelfVal');
+  if (val) { val.value = String(n); _abSave('brille'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.2.1  WIE ENTSTEHT EIN SPIEGELBILD?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Optische Instrumente"
+// Handlungsorientiert: Ebener Spiegel. Das Bild ist virtuell, aufrecht,
+// seitenverkehrt und liegt genau so weit hinter dem Spiegel wie der
+// Gegenstand davor. Reflexionsgesetz: Einfallswinkel = Reflexionswinkel.
+// ═══════════════════════════════════════════════════════
+
+const _SPG_XM = 250, _SPG_CY = 116;
+let _spg = null;
+function _spgInit() { _spg = { g: 110, t: 0 }; }
+
+function _spgHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim spg-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🪞 Wie entsteht ein Spiegelbild?</h3>
+    <div class="fpm-note" style="margin-top:2px">Vor dem Spiegel steht ein Gegenstand. Verschiebe ihn und beobachte, wo das Spiegelbild liegt und wie die Lichtstrahlen verlaufen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="spgAnim" width="440" height="232" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Abstand Gegenstand–Spiegel g: <b id="spgGLbl">110</b></span>
+          <input type="range" id="spgG" min="40" max="200" step="5" value="110"
+            oninput="_spgSetG(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Das Spiegelbild</div>
+        <div class="lmp-status" id="spgStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Das Bild ist <b>virtuell</b> (hinter dem Spiegel), <b>aufrecht</b> und <b>seitenverkehrt</b>. Es liegt genauso weit hinter dem Spiegel wie der Gegenstand davor.</div>
+        <div class="fpm-note" style="margin-top:8px">Reflexionsgesetz: <b>Einfallswinkel = Reflexionswinkel</b> (beide zum Lot gemessen).</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Bild gleich weit hinter dem Spiegel. &nbsp;|&nbsp; Einfallswinkel = Reflexionswinkel.
+    </p>
+    ${_spgArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _spgSetG(v) { _spg.g = +v; const el = document.getElementById('spgGLbl'); if (el) el.textContent = _fpmNum(+v, 0); _spgStatus(); }
+function _spgStatus() { const el = document.getElementById('spgStatus'); if (!el) return; el.textContent = '🪞 Bild virtuell & aufrecht, ' + _fpmNum(_spg.g, 0) + ' hinter dem Spiegel (genauso weit wie davor).'; el.className = 'lmp-status on'; }
+
+// ── Animation ──────────────────────────────────────────
+function _spgUpdate(dt) { if (_spg) _spg.t += dt; }
+function _spgDraw(ctx, cv) {
+  if (!_spg) return;
+  const W = cv.width, H = cv.height, cy = _SPG_CY, xM = _SPG_XM, G = 44;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  // Spiegel (vertikale Linie + Schraffur hinten)
+  ctx.strokeStyle = '#93c5fd'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(xM, 16); ctx.lineTo(xM, H - 16); ctx.stroke();
+  ctx.strokeStyle = 'rgba(148,163,184,0.6)'; ctx.lineWidth = 1; for (let y = 20; y < H - 16; y += 12) { ctx.beginPath(); ctx.moveTo(xM, y); ctx.lineTo(xM + 8, y + 8); ctx.stroke(); }
+  ctx.fillStyle = '#93c5fd'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Spiegel', xM, H - 4);
+  // Gegenstand (Pfeil hoch, grün)
+  const xObj = xM - _spg.g, objTop = cy - G;
+  ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(xObj, cy); ctx.lineTo(xObj, objTop); ctx.stroke();
+  ctx.fillStyle = '#22c55e'; ctx.beginPath(); ctx.moveTo(xObj, objTop - 7); ctx.lineTo(xObj - 4, objTop); ctx.lineTo(xObj + 4, objTop); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#86efac'; ctx.font = '9px sans-serif'; ctx.fillText('Gegenstand', xObj, cy + 18);
+  // virtuelles Bild (gestrichelt, gleiche Entfernung hinter dem Spiegel)
+  const xImg = Math.min(W - 14, xM + _spg.g);
+  ctx.strokeStyle = 'rgba(245,158,11,0.85)'; ctx.lineWidth = 3; ctx.setLineDash([5, 4]);
+  ctx.beginPath(); ctx.moveTo(xImg, cy); ctx.lineTo(xImg, objTop); ctx.stroke();
+  ctx.setLineDash([]); ctx.fillStyle = 'rgba(245,158,11,0.85)'; ctx.beginPath(); ctx.moveTo(xImg, objTop - 7); ctx.lineTo(xImg - 4, objTop); ctx.lineTo(xImg + 4, objTop); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#fcd34d'; ctx.font = '9px sans-serif'; ctx.fillText('virtuelles Bild', xImg, cy + 18);
+  // Auge (vor dem Spiegel, unten)
+  const eye = { x: xM - 70, y: cy + 62 };
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(eye.x, eye.y, 13, 8, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#1e40af'; ctx.beginPath(); ctx.arc(eye.x, eye.y, 4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText('Auge', eye.x, eye.y + 20);
+  // Strahl: Bildspitze (hinter Spiegel) → Auge, Schnittpunkt am Spiegel = M
+  const It = { x: xImg, y: objTop }, Tt = { x: xObj, y: objTop };
+  const tM = (xM - It.x) / (eye.x - It.x), My = It.y + tM * (eye.y - It.y);
+  const M = { x: xM, y: My };
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.8;
+  ctx.beginPath(); ctx.moveTo(Tt.x, Tt.y); ctx.lineTo(M.x, M.y); ctx.stroke();   // einfallend
+  ctx.beginPath(); ctx.moveTo(M.x, M.y); ctx.lineTo(eye.x, eye.y); ctx.stroke(); // reflektiert
+  ctx.strokeStyle = 'rgba(148,163,184,0.6)'; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(M.x, M.y); ctx.lineTo(It.x, It.y); ctx.stroke(); ctx.setLineDash([]);   // Rückverlängerung
+  // Lot (Normale) am Auftreffpunkt
+  ctx.strokeStyle = 'rgba(226,232,240,0.7)'; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.moveTo(M.x - 28, M.y); ctx.lineTo(M.x + 8, M.y); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '8px sans-serif'; ctx.fillText('Lot', M.x - 26, M.y - 4);
+  ctx.fillStyle = '#fde047'; ctx.font = '8px sans-serif'; ctx.fillText('α', M.x - 14, M.y - 8); ctx.fillText('β', M.x - 14, M.y + 14);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Einfallswinkel α = Reflexionswinkel β', W / 2, 16);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.2.1  (ns = 'spiegel') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _spgArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('spiegel')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('spiegel')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wo entsteht das Spiegelbild – und nach welcher Regel wird das Licht reflektiert?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, das Spiegelbild liegt … und ist …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Verschiebe den Gegenstand. Wie weit liegt das Bild jeweils hinter dem Spiegel?</li>
+          <li>Verfolge den Lichtstrahl vom Gegenstand über den Spiegel zum Auge.</li>
+          <li>Vergleiche Einfallswinkel und Reflexionswinkel (zum Lot).</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Abstand Gegenstand–Spiegel</td><td>Abstand Bild–Spiegel</td></tr>
+          <tr><td>klein</td><td>${inp('t1', '')}</td></tr>
+          <tr><td>groß</td><td>${inp('t2', '')}</td></tr>
+          <tr><td>Einfallswinkel = ? Reflexionswinkel</td><td>${inp('t3', 'gleich/verschieden')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne Gegenstand, Spiegel und das virtuelle Bild. Zeichne einen Lichtstrahl mit Lot, Einfalls- und Reflexionswinkel.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wo liegt das Bild und wie weit? ${inp('a1', 'gleich weit …')}</li>
+          <li>Ist das Bild reell oder virtuell? ${inp('a2', '')}</li>
+          <li>Wie lautet das Reflexionsgesetz? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Das Spiegelbild ist ${inp('m1', 'reell/virtuell')} und liegt ${inp('m2', 'wie weit?')} hinter dem Spiegel wie der Gegenstand davor.<br>
+        Reflexionsgesetz: Einfallswinkel ${inp('m3', '= / ≠')} Reflexionswinkel.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Auf der Vorderseite von Krankenwagen steht „ECNALUBMA". Erkläre, warum – und was das mit dem Spiegel im Auto davor zu tun hat.</div>
+        ${ta('tr1', 'Die gespiegelte Schrift …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="spgMini">${_spgMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_spgSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_spgSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_spgSelf(3)">😃 sicher</button>
+          <span id="spgSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="spgSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Das Bild liegt immer gleich weit hinter dem Spiegel wie der Gegenstand davor; es ist virtuell, aufrecht und gleich groß. Einfallswinkel = Reflexionswinkel.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Am ebenen Spiegel entsteht ein virtuelles, aufrechtes, gleich großes, seitenverkehrtes Bild in gleicher Entfernung hinter dem Spiegel. Reflexionsgesetz: Einfalls- und Reflexionswinkel (zum Lot) sind gleich; einfallender Strahl, reflektierter Strahl und Lot liegen in einer Ebene.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Das Bild liegt auf dem Spiegel." (2) „Das Bild ist reell/auffangbar." (3) „Oben und unten werden vertauscht" (es ist links–rechts bzw. Tiefenumkehr).</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Winkel zum Lot messen; Bildabstand mit Lineal prüfen; Rückverlängerung der reflektierten Strahlen zum virtuellen Bild.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Bildabstand = Gegenstandsabstand; Winkel gleich. 6.1 „gleich weit hinter dem Spiegel" · 6.2 „virtuell" · 6.3 „Einfallswinkel = Reflexionswinkel". Merksatz: virtuell · gleich weit · =. Transfer: Im Rückspiegel erscheint die gespiegelte Schrift wieder richtig lesbar. Minidiagnose: 1→„gleich weit hinter" · 2→virtuell · 3→„gleich".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('spiegel')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('spiegel', 'Wie entsteht ein Spiegelbild?', body);
+}
+
+const _SPG_MINI = [
+  { q: '1. Wo liegt das Bild in einem ebenen Spiegel?',
+    opts: ['Auf dem Spiegel', 'Gleich weit hinter dem Spiegel wie der Gegenstand davor', 'Direkt vor dem Spiegel'], correct: 1,
+    fb: ['Das Bild liegt nicht auf dem Spiegel.',
+         'Richtig! Es liegt genauso weit hinter dem Spiegel wie der Gegenstand davor.',
+         'Das Bild liegt hinter dem Spiegel.'] },
+  { q: '2. Ist das Spiegelbild reell oder virtuell?',
+    opts: ['reell (auffangbar)', 'virtuell', 'mal so, mal so'], correct: 1,
+    fb: ['Man kann es nicht auf einem Schirm auffangen.',
+         'Richtig! Das Spiegelbild ist virtuell.',
+         'Am ebenen Spiegel ist es immer virtuell.'] },
+  { q: '3. Wie verhalten sich Einfallswinkel und Reflexionswinkel?',
+    opts: ['Sie sind gleich groß', 'Der Reflexionswinkel ist größer', 'Sie haben nichts miteinander zu tun'], correct: 0,
+    fb: ['Richtig! Einfallswinkel = Reflexionswinkel (Reflexionsgesetz).',
+         'Sie sind gleich groß.',
+         'Sie sind durch das Reflexionsgesetz verbunden.'] }
+];
+function _spgMiniHTML() {
+  return _SPG_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_spgAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="spgFb${qi}"></div></div>`).join('');
+}
+function _spgAns(qi, oi) {
+  const m = _SPG_MINI[qi], el = document.getElementById('spgFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _spgSelf(n) {
+  const out = document.getElementById('spgSelfOut'), val = document.getElementById('spgSelfVal');
+  if (val) { val.value = String(n); _abSave('spiegel'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
