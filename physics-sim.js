@@ -224,7 +224,9 @@ function openPhysicsSim(simId) {
 // ═══════════════════════════════════════════════════════
 const _physAbDefs = {
   schwingung: { titel: 'Merkmale von Schwingungen', ns: 'schwingung', html: () => _swgArbeitsblattHTML() },
-  'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() }
+  'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
+  'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
+  'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -284,6 +286,28 @@ const _physSimDefs = {
     _mlabRenderTheorie(_sha, false);
     _mlabDrawPlot('shaPlot', _sha);
     _abRestore('schatten');
+  },
+
+  // ── 5.1.1 WELCHE STOFFE ZIEHT EIN MAGNET AN? (Realschule Kl. 5) ─
+  'magnet-stoffe': modal => {
+    _msfInit();
+    modal.innerHTML = _msfHTML();
+    _msfRender();
+    _pSim = new PhysicsSimEngine('msfAnim', 'msfAnim');
+    _pSim.start(dt => _msfUpdate(dt), (ctx, cv) => _msfDraw(ctx, cv), []);
+    _abRestore('magstoff');
+  },
+
+  // ── 5.1.5 ELEKTROMAGNET – TRAGKRAFT MESSEN (Realschule Kl. 5) ───
+  'elektromagnet': modal => {
+    _elmInit();
+    modal.innerHTML = _elmHTML();
+    _elmRenderTable();
+    _pSim = new PhysicsSimEngine('elmAnim', 'elmPlot');
+    _pSim.start(dt => _elmUpdate(dt), (ctx, cv) => _elmDraw(ctx, cv), []);
+    _mlabRenderTheorie(_elm, false);
+    _mlabDrawPlot('elmPlot', _elm);
+    _abRestore('elmag');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -34987,6 +35011,24 @@ function _abClear(ns) {
     .sha-lehrer > summary::-webkit-details-marker { display:none; }
     .sha-lehrer[open] > summary { border-bottom:1px solid #fecaca; margin-bottom:6px; }
     .sha-lehrer .ab-t { padding:4px 11px 6px; }
+    /* Magnetische Stoffe 5.1.1 */
+    .msf-chips { display:flex; flex-wrap:wrap; gap:6px; }
+    .msf-chip { padding:6px 10px; border:1px solid #ddd6fe; border-radius:8px; background:#fff; color:#334155;
+      font-family:inherit; font-size:.8rem; cursor:pointer; }
+    .msf-chip:hover { border-color:#a855f7; }
+    .msf-chip.cur { outline:2px solid #a855f7; outline-offset:1px; }
+    .msf-chip.yes { background:#dcfce7; border-color:#86efac; color:#15803d; font-weight:700; }
+    .msf-chip.no { background:#fef3c7; border-color:#fcd34d; color:#b45309; font-weight:700; }
+    .msf-sort { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+    .msf-col { border:1px solid #ede9fe; border-radius:9px; padding:7px; min-height:56px; }
+    .msf-yes { background:#f0fdf4; } .msf-no { background:#fffbeb; }
+    .msf-col-h { font-size:.72rem; font-weight:800; margin-bottom:5px; color:#475569; }
+    .msf-tag { display:inline-block; margin:2px; padding:3px 7px; border-radius:6px; background:#fff;
+      border:1px solid #e2e8f0; font-size:.76rem; }
+    .msf-none { font-size:.74rem; color:#cbd5e1; }
+    .msf-ja { color:#16a34a; } .msf-nein { color:#b45309; }
+    .msf-regel { margin-top:10px; font-size:.8rem; line-height:1.5; color:#334155; background:#faf5ff;
+      border:1px solid #ede9fe; border-radius:9px; padding:8px 11px; }
   `;
   document.head.appendChild(s);
 })();
@@ -35373,4 +35415,620 @@ function _shaSelf(n) {
   const val = document.getElementById('shaSelfVal');
   if (val) { val.value = String(n); _abSave('schatten'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen weiter.' : 'Frag deine Lehrkraft um Hilfe – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 5.1.1  WELCHE STOFFE WERDEN VON EINEM MAGNETEN ANGEZOGEN?
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Strom und Magnetismus"
+// Handlungsorientiert: der Schüler hält nacheinander verschiedene
+// Materialien an den Magneten, beobachtet, sortiert in zwei Gruppen
+// und findet die Regel selbst (nur Eisen, Nickel, Kobalt / Stahl).
+// Konfrontiert die Fehlvorstellung "alle Metalle sind magnetisch".
+// ═══════════════════════════════════════════════════════
+
+const _MSF_MAT = [
+  { k: 'eisen',   name: 'Eisen-Nagel',        ic: '🔩', mag: true,  hint: 'Eisen' },
+  { k: 'stahl',   name: 'Büroklammer (Stahl)', ic: '📎', mag: true,  hint: 'Stahl = viel Eisen' },
+  { k: 'nickel',  name: 'Nickel-Münze',       ic: '🪙', mag: true,  hint: 'Nickel' },
+  { k: 'alu',     name: 'Alu-Dose',           ic: '🥫', mag: false, hint: 'Aluminium (Metall!)' },
+  { k: 'kupfer',  name: 'Kupfer-Draht',       ic: '🧵', mag: false, hint: 'Kupfer (Metall!)' },
+  { k: 'holz',    name: 'Holz-Stab',          ic: '🪵', mag: false, hint: 'Holz' },
+  { k: 'plastik', name: 'Plastik-Stein',      ic: '🧱', mag: false, hint: 'Kunststoff' },
+  { k: 'glas',    name: 'Glas-Murmel',        ic: '🔮', mag: false, hint: 'Glas' }
+];
+let _msf = null;
+
+function _msfInit() {
+  _msf = { cur: 0, tested: {}, order: [], flash: 0, anim: 0, result: null };
+}
+
+function _msfHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim msf-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🧲 Welche Stoffe zieht ein Magnet an?</h3>
+    <div class="fpm-note" style="margin-top:2px">Halte jedes Material an den Magneten. Beobachte: Wird es <b>angezogen</b> oder nicht? Sortiere und finde die Regel.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="msfAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="fpm-label" style="margin-top:8px">Klicke ein Material an – es wird an den Magneten gehalten:</div>
+        <div class="msf-chips" id="msfChips">${_msfChipsHTML()}</div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_msfReset()">🔄 Alles zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Beobachtung – deine zwei Gruppen</div>
+        <div class="msf-sort">
+          <div class="msf-col msf-yes"><div class="msf-col-h">🧲 wird angezogen</div><div id="msfYes"></div></div>
+          <div class="msf-col msf-no"><div class="msf-col-h">🚫 wird nicht angezogen</div><div id="msfNo"></div></div>
+        </div>
+        <div class="fpm-tablewrap" style="margin-top:10px">
+          <table class="sim-table">
+            <thead><tr><th>Material</th><th>angezogen?</th></tr></thead>
+            <tbody id="msfTbody"></tbody>
+          </table>
+          <div class="fpm-empty" id="msfEmpty">Noch nichts getestet.<br>Klicke oben ein Material an.</div>
+        </div>
+        <div class="msf-regel" id="msfRegel"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Magnetisch sind nur <b>Eisen, Nickel und Kobalt</b> (und Stahl). &nbsp;|&nbsp; Achtung: Nicht jedes Metall ist magnetisch!
+    </p>
+    ${_msfArbeitsblattHTML()}
+  </div>`;
+}
+
+function _msfChipsHTML() {
+  return _MSF_MAT.map((m, i) => {
+    const t = _msf.tested[m.k];
+    const cls = t === undefined ? '' : (t ? ' yes' : ' no');
+    const mark = t === undefined ? '' : (t ? ' ✓' : ' ✗');
+    return `<button class="msf-chip${cls}${i === _msf.cur ? ' cur' : ''}" onclick="_msfTestMat(${i})">${m.ic} ${m.name}${mark}</button>`;
+  }).join('');
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _msfTestMat(i) {
+  _msf.cur = i;
+  const m = _MSF_MAT[i];
+  if (_msf.tested[m.k] === undefined) _msf.order.push(m.k);
+  _msf.tested[m.k] = m.mag;
+  _msf.result = m.mag; _msf.anim = 1; _msf.flash = 1;
+  _msfRender();
+}
+function _msfReset() {
+  if (_msf.order.length && !confirm('Alle Testergebnisse zurücksetzen?')) return;
+  _msf.tested = {}; _msf.order = []; _msf.result = null; _msf.anim = 0;
+  _msfRender();
+}
+function _msfRender() {
+  const chips = document.getElementById('msfChips'); if (chips) chips.innerHTML = _msfChipsHTML();
+  const yes = document.getElementById('msfYes'), no = document.getElementById('msfNo');
+  const mk = arr => arr.map(k => { const m = _MSF_MAT.find(x => x.k === k); return `<span class="msf-tag">${m.ic} ${m.name}</span>`; }).join('') || '<span class="msf-none">– noch leer –</span>';
+  if (yes) yes.innerHTML = mk(_msf.order.filter(k => _msf.tested[k]));
+  if (no) no.innerHTML = mk(_msf.order.filter(k => !_msf.tested[k]));
+  const tb = document.getElementById('msfTbody');
+  const empty = document.getElementById('msfEmpty');
+  if (empty) empty.style.display = _msf.order.length ? 'none' : 'block';
+  if (tb) tb.innerHTML = _msf.order.map(k => {
+    const m = _MSF_MAT.find(x => x.k === k);
+    return `<tr><td>${m.ic} ${m.name}</td><td><b class="${m.mag ? 'msf-ja' : 'msf-nein'}">${m.mag ? 'Ja' : 'Nein'}</b></td></tr>`;
+  }).join('');
+  const reg = document.getElementById('msfRegel');
+  if (reg) {
+    if (_msf.order.length >= _MSF_MAT.length) {
+      reg.innerHTML = '🎯 <b>Alle getestet!</b> Nur <b>Eisen, Nickel, Kobalt</b> (und Stahl, weil es viel Eisen enthält) werden angezogen. Kupfer und Aluminium sind zwar Metalle, aber <b>nicht</b> magnetisch.';
+      reg.style.display = 'block';
+    } else { reg.innerHTML = 'Getestet: ' + _msf.order.length + ' von ' + _MSF_MAT.length + '. Teste alle Materialien und finde die Regel!'; reg.style.display = 'block'; }
+  }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _msfUpdate(dt) { if (_msf) { _msf.anim = Math.max(0, _msf.anim - dt * 0.8); _msf.flash = Math.max(0, _msf.flash - dt * 2); } }
+function _msfDraw(ctx, cv) {
+  if (!_msf) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f0f9ff'; ctx.fillRect(0, 0, W, H);
+  const midY = H / 2 - 6;
+  // Stabmagnet links
+  const mx = 40, mw = 120, mh = 46;
+  ctx.fillStyle = '#dc2626'; ctx.fillRect(mx, midY - mh / 2, mw / 2, mh);
+  ctx.fillStyle = '#2563eb'; ctx.fillRect(mx + mw / 2, midY - mh / 2, mw / 2, mh);
+  ctx.fillStyle = '#fff'; ctx.font = '700 18px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('N', mx + mw / 4, midY); ctx.fillText('S', mx + 3 * mw / 4, midY);
+  ctx.textBaseline = 'alphabetic';
+  // aktuelles Material
+  const m = _MSF_MAT[_msf.cur];
+  const restX = W - 90;
+  const nearX = mx + mw + 26;
+  const p = 1 - _msf.anim;                 // 0 → 1
+  let itemX = restX, shake = 0;
+  if (m.mag) itemX = restX - p * (restX - nearX);
+  else shake = _msf.anim > 0 ? Math.sin(p * 40) * 4 : 0;
+  ctx.font = '34px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(m.ic, itemX + shake, midY + 12);
+  ctx.fillStyle = '#334155'; ctx.font = '700 13px sans-serif';
+  ctx.fillText(m.name, W / 2 + 30, 26);
+  // Ergebnistext
+  if (_msf.tested[m.k] !== undefined) {
+    ctx.font = '700 14px sans-serif';
+    if (m.mag) { ctx.fillStyle = '#16a34a'; ctx.fillText('→ wird angezogen!', W / 2 + 30, H - 22); }
+    else { ctx.fillStyle = '#b45309'; ctx.fillText('bleibt liegen – nicht magnetisch', W / 2 + 30, H - 22); }
+  } else {
+    ctx.fillStyle = '#94a3b8'; ctx.font = '12px sans-serif';
+    ctx.fillText('Klicke ein Material an', W / 2 + 30, H - 22);
+  }
+  // Anziehungspfeil
+  if (m.mag && _msf.anim > 0.02) {
+    ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(itemX - 18, midY); ctx.lineTo(nearX + 6, midY); ctx.stroke(); ctx.setLineDash([]);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.1.1  (ns = 'magstoff') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _msfArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('magstoff')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('magstoff')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Welche Stoffe zieht ein Magnet an – und welche nicht?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        <div class="ab-t">Welche Materialien werden deiner Meinung nach angezogen? Schreibe sie auf.</div>
+        ${ta('v1', 'Ich vermute, angezogen werden: …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Klicke oben nacheinander <b>jedes</b> Material an.</li>
+          <li>Beobachte genau: Wird es zum Magneten gezogen oder nicht?</li>
+          <li>Trage dein Ergebnis in die Tabelle ein (Ja / Nein).</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Eisen-Nagel</td><td>${inp('e_eisen', 'Ja/Nein')}</td><td>Alu-Dose</td><td>${inp('e_alu', 'Ja/Nein')}</td></tr>
+          <tr><td>Büroklammer (Stahl)</td><td>${inp('e_stahl', 'Ja/Nein')}</td><td>Kupfer-Draht</td><td>${inp('e_kupfer', 'Ja/Nein')}</td></tr>
+          <tr><td>Nickel-Münze</td><td>${inp('e_nickel', 'Ja/Nein')}</td><td>Holz-Stab</td><td>${inp('e_holz', 'Ja/Nein')}</td></tr>
+          <tr><td>Plastik-Stein</td><td>${inp('e_plastik', 'Ja/Nein')}</td><td>Glas-Murmel</td><td>${inp('e_glas', 'Ja/Nein')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne den Magneten und einen Eisen-Nagel, der angezogen wird. Zeichne einen Pfeil für die Anziehung.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Kupfer und Aluminium sind <b>Metalle</b> – werden sie angezogen? ${inp('a1', 'Ja/Nein')}</li>
+          <li>Was haben die angezogenen Materialien gemeinsam? ${inp('a2', 'sie enthalten …')}</li>
+          <li>Stimmt der Satz „Alle Metalle sind magnetisch"? ${inp('a3', 'Ja/Nein, weil …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ein Magnet zieht nur ${inp('m1', 'welche 3 Stoffe?')} an.<br>
+        Man nennt diese Stoffe <b>magnetisch</b> (Fachwort: ferromagnetisch).<br>
+        ${inp('m2', 'Alle / Nicht alle')} Metalle sind magnetisch – Kupfer und Alu zum Beispiel nicht.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Magnet hält an der <b>Kühlschranktür</b>, aber nicht an einer <b>Alu-Getränkedose</b>. Erkläre warum.</div>
+        ${ta('tr1', 'Der Magnet hält an der Kühlschranktür, weil … Die Alu-Dose …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="msfMini">${_msfMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_msfSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_msfSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_msfSelf(3)">😃 sicher</button>
+          <span id="msfSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="msfSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Angezogen: Eisen-Nagel, Büroklammer (Stahl), Nickel-Münze. Nicht angezogen: Alu-Dose, Kupfer-Draht, Holz, Plastik, Glas.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Ferromagnetisch sind nur Eisen (Fe), Nickel (Ni) und Kobalt (Co) sowie Legierungen wie Stahl (überwiegend Eisen). Magnetismus ist keine allgemeine Metalleigenschaft.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Alle Metalle sind magnetisch" – Gegenbeispiele Kupfer/Alu bewusst einbauen. (2) „Glänzendes/Silbernes ist magnetisch." (3) „Schwere Dinge werden angezogen."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Erst vermuten lassen, dann testen; Kupfer und Alu gezielt als Metalle benennen, die NICHT magnetisch sind; die drei magnetischen Stoffe farbig markieren.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 Nein · 6.2 „sie enthalten Eisen/Nickel" · 6.3 „Nein – Kupfer und Alu sind Metalle, aber nicht magnetisch". Merksatz: Eisen, Nickel, Kobalt · Nicht alle. Transfer: Kühlschranktür ist aus Stahl (Eisen) → magnetisch; Alu ist nicht magnetisch. Minidiagnose: 1→Eisen · 2→„nicht magnetisch" · 3→„nur Eisen, Nickel, Kobalt".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('magstoff')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('magstoff', 'Welche Stoffe zieht ein Magnet an?', body);
+}
+
+// ── Minidiagnose ───────────────────────────────────────
+const _MSF_MINI = [
+  { q: '1. Welches Material zieht ein Magnet an?',
+    opts: ['Kupfer', 'Eisen', 'Holz'], correct: 1,
+    fb: ['Kupfer ist ein Metall, aber nicht magnetisch. Probiere es in der Simulation.',
+         'Richtig! Eisen wird angezogen.',
+         'Holz ist nicht magnetisch. Denk an Nägel und Schrauben.'] },
+  { q: '2. Ein Magnet hält an einer Stahltür, aber nicht an einer Alu-Dose. Warum?',
+    opts: ['Alu ist zu leicht', 'Alu ist nicht magnetisch (kein Eisen/Nickel/Kobalt)', 'Alu ist zu glatt'], correct: 1,
+    fb: ['Am Gewicht liegt es nicht. Denk an das Material.',
+         'Richtig! Aluminium gehört nicht zu den magnetischen Stoffen.',
+         'Die Oberfläche ist egal – es kommt auf das Material an.'] },
+  { q: '3. Sind alle Metalle magnetisch?',
+    opts: ['Ja, alle Metalle', 'Nein, nur Eisen, Nickel und Kobalt', 'Nur Gold und Silber'], correct: 1,
+    fb: ['Kupfer und Alu sind Metalle und trotzdem nicht magnetisch.',
+         'Richtig! Nur Eisen, Nickel, Kobalt (und Stahl) sind magnetisch.',
+         'Gold und Silber sind gerade nicht magnetisch.'] }
+];
+function _msfMiniHTML() {
+  return _MSF_MINI.map((m, qi) =>
+    `<div class="sha-q">
+       <div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_msfAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="msfFb${qi}"></div>
+     </div>`).join('');
+}
+function _msfAns(qi, oi) {
+  const m = _MSF_MINI[qi];
+  const el = document.getElementById('msfFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi];
+  el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _msfSelf(n) {
+  const out = document.getElementById('msfSelfOut'), val = document.getElementById('msfSelfVal');
+  if (val) { val.value = String(n); _abSave('magstoff'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 5.1.5  WIE ENTSTEHT EIN ELEKTROMAGNET?  (Tragkraft messen)
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Strom und Magnetismus"
+// Handlungsorientiert: Spule mit Eisenkern + Batterie hebt Büro-
+// klammern. Zwei Messreihen (nur eine Größe verändern):
+//   • Windungszahl N verändern (I fest) → Tragkraft ~ N
+//   • Stromstärke I verändern (N fest)   → Tragkraft ~ I
+// Modell: Tragkraft T = k · N · I  (T in Anzahl Büroklammern).
+// ═══════════════════════════════════════════════════════
+
+const _ELM_K = 0.03;       // Modellkonstante
+const _ELM_I_FIX = 2;      // feste Stromstärke (A), wenn N verändert wird
+const _ELM_N_FIX = 150;    // feste Windungszahl, wenn I verändert wird
+let _elm = null;
+
+function _elmT(N, I) { return _ELM_K * N * I; }              // wahre Tragkraft
+function _elmClips(N, I) { return Math.round(_elmT(N, I)); }  // gemessene (ganze Klammern)
+
+const _ELM_CFG = {
+  windungen: { min: 50, max: 300, step: 50, val: 150, lbl: 'Windungszahl N', unit: '', marks: [50, 100, 150, 200, 250, 300] },
+  strom:     { min: 1,  max: 5,   step: 1,  val: 2,   lbl: 'Stromstärke I',  unit: 'A', marks: [1, 2, 3, 4, 5] }
+};
+
+const _ELM_PRESETS = [
+  // Preset 0 – Windungszahl verändern: T über N (Ursprungsgerade)
+  { tab: 'Windungen N → Tragkraft', xl: 'Windungszahl N', yl: 'Tragkraft (Büroklammern)',
+    x: r => r.mode === 'windungen' ? r.N : NaN, y: r => r.T, grp: r => r.I,
+    gl: k => 'Strom fest bei I = ' + _fpmNum(+k, 0) + ' A', slope: k => _ELM_K * (+k),
+    col: (k, i) => _MLAB_PALETTE[i % _MLAB_PALETTE.length],
+    curveFn: (xv, k) => _ELM_K * (+k) * xv,
+    note: 'Ursprungsgerade ⇒ Tragkraft ~ N. Je mehr Windungen, desto stärker der Magnet – doppelt so viele Windungen = doppelte Tragkraft.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'T = k · I · N',
+    param: () => 'I fest = ' + _ELM_I_FIX + ' A',
+    term: () => (_ELM_K * _ELM_I_FIX).toString() + '*x',
+    deutung: 'Mehr Windungen bündeln das Magnetfeld stärker. Die Tragkraft wächst gleichmäßig mit der Windungszahl.',
+    ergebnis: (g0) => _mlabErgebnis('Tragkraft pro Windung (Steigung)',
+      _fpmNum(g0.fit.k, 3), 'Klammern/Windung', _fpmNum(_ELM_K * (+g0.key), 3), 'T = k·I·N  ⇒  mehr Windungen = stärker') },
+  // Preset 1 – Stromstärke verändern: T über I (Ursprungsgerade)
+  { tab: 'Strom I → Tragkraft', xl: 'Stromstärke I in A', yl: 'Tragkraft (Büroklammern)',
+    x: r => r.mode === 'strom' ? r.I : NaN, y: r => r.T, grp: r => r.N,
+    gl: k => 'Windungen fest bei N = ' + _fpmNum(+k, 0), slope: k => _ELM_K * (+k),
+    col: (k, i) => _MLAB_PALETTE[(i + 2) % _MLAB_PALETTE.length],
+    curveFn: (xv, k) => _ELM_K * (+k) * xv,
+    note: 'Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'T = k · N · I',
+    param: () => 'N fest = ' + _ELM_N_FIX,
+    term: () => (_ELM_K * _ELM_N_FIX).toString() + '*x',
+    deutung: 'Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.',
+    ergebnis: (g0) => _mlabErgebnis('Tragkraft pro Ampere (Steigung)',
+      _fpmNum(g0.fit.k, 2), 'Klammern/A', _fpmNum(_ELM_K * (+g0.key), 2), 'T = k·N·I  ⇒  mehr Strom = stärker') }
+];
+
+function _elmInit() {
+  _elm = {
+    mode: 'windungen', N: _ELM_N_FIX, I: _ELM_I_FIX, flash: 0, t: 0,
+    rows: [], nextId: 1, preset: 0, fn: null, fnAuto: false, origin: true, showTheory: false,
+    pre: 'elm', plotId: 'elmPlot', fitId: 'elmFit', fnId: 'elmFn', fnErrId: 'elmErr', theoId: 'elmTheo',
+    presets: _ELM_PRESETS
+  };
+}
+
+function _elmHTML() {
+  const c = _ELM_CFG[_elm.mode];
+  const varVal = _elm.mode === 'windungen' ? _elm.N : _elm.I;
+  return `<div class="sim-box sim-box-wide fpm-sim elm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🧲⚡ Wie stark ist ein Elektromagnet?</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine Spule mit Eisenkern wird zum Magneten, sobald Strom fließt. Sie hebt Büroklammern. <b>Verändere nur eine Größe</b> und miss die Tragkraft.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="elmAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_elm.mode === 'windungen' ? ' primary' : ''}" id="elmMode0" onclick="_elmSetMode('windungen')">🌀 Windungszahl ändern</button>
+          <button class="sim-btn${_elm.mode === 'strom' ? ' primary' : ''}" id="elmMode1" onclick="_elmSetMode('strom')">⚡ Stromstärke ändern</button>
+        </div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label"><b id="elmVarName">${c.lbl}</b>: <b id="elmVarLbl">${_fpmNum(varVal, 0)}${c.unit ? ' ' + c.unit : ''}</b></span>
+          <input type="range" id="elmVar" min="${c.min}" max="${c.max}" step="${c.step}" value="${varVal}"
+            oninput="_elmSetVar(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="fpm-note" style="margin-top:4px">Tragkraft jetzt: <b id="elmTLbl">${_elmClips(_elm.N, _elm.I)} Büroklammern</b> &nbsp;·&nbsp; nur mit ungefährlicher Batterie-Kleinspannung!</div>
+      </div>
+      <div>
+        <div class="fpm-label">Messung – Wert einstellen, dann Messwert übernehmen</div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" onclick="_elmMessen()">＋ Messwert übernehmen</button>
+          <button class="sim-btn" onclick="_elmDemo()">📋 Beispielmessreihe</button>
+          <button class="sim-btn" onclick="_elmClear()">🗑 Tabelle leeren</button>
+        </div>
+        <div class="fpm-tablewrap">
+          <table class="sim-table">
+            <thead><tr><th>N</th><th>I (A)</th><th>Tragkraft</th><th></th></tr></thead>
+            <tbody id="elmTbody"></tbody>
+          </table>
+          <div class="fpm-empty" id="elmEmpty">Noch keine Messwerte.<br>Wert einstellen → „Messwert übernehmen".</div>
+        </div>
+      </div>
+    </div>
+    <div class="fpm-label" style="margin-top:12px">Auswertung – trage die Tragkraft über die veränderte Größe auf</div>
+    ${_mlabAuswertungHTML(_elm, { preset: '_elmSetPreset', setfn: '_elmSetFn', theo: '_elmTheorieFn', clear: '_elmClearFn', bool: '_elmSetBool' })}
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Mehr Windungen → stärker</b> &nbsp;|&nbsp; <b>Mehr Strom → stärker</b> &nbsp;|&nbsp; der Eisenkern verstärkt den Magneten
+    </p>
+    ${_elmArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _elmSetVar(v) {
+  if (_elm.mode === 'windungen') _elm.N = +v; else _elm.I = +v;
+  const c = _ELM_CFG[_elm.mode];
+  const el = document.getElementById('elmVarLbl'); if (el) el.textContent = _fpmNum(+v, 0) + (c.unit ? ' ' + c.unit : '');
+  const tl = document.getElementById('elmTLbl'); if (tl) tl.textContent = _elmClips(_elm.N, _elm.I) + ' Büroklammern';
+}
+function _elmSwitch(mode, preset) {
+  if (mode !== _elm.mode && _elm.rows.length &&
+      !confirm('Für eine neue Messreihe wird die Tabelle geleert. Fortfahren?')) {
+    for (let k = 0; k < _elm.presets.length; k++)
+      document.getElementById('elmTab' + k)?.classList.toggle('on', k === _elm.preset);
+    return;
+  }
+  if (mode !== _elm.mode) { _elm.rows = []; _elmRenderTable(); }
+  _elm.mode = mode;
+  const c = _ELM_CFG[mode];
+  _elm.N = mode === 'windungen' ? c.val : _ELM_N_FIX;
+  _elm.I = mode === 'windungen' ? _ELM_I_FIX : c.val;
+  document.getElementById('elmMode0')?.classList.toggle('primary', mode === 'windungen');
+  document.getElementById('elmMode1')?.classList.toggle('primary', mode === 'strom');
+  const sl = document.getElementById('elmVar');
+  if (sl) { sl.min = c.min; sl.max = c.max; sl.step = c.step; sl.value = c.val; }
+  const nm = document.getElementById('elmVarName'); if (nm) nm.textContent = c.lbl;
+  const lb = document.getElementById('elmVarLbl'); if (lb) lb.textContent = _fpmNum(c.val, 0) + (c.unit ? ' ' + c.unit : '');
+  const tl = document.getElementById('elmTLbl'); if (tl) tl.textContent = _elmClips(_elm.N, _elm.I) + ' Büroklammern';
+  _mlabSetPreset(_elm, preset);
+}
+function _elmSetMode(m) { _elmSwitch(m, m === 'windungen' ? 0 : 1); }
+function _elmMessRow(mode, N, I) {
+  const Tt = _elmT(N, I) * (1 + (Math.random() - 0.5) * 0.06);   // Ablese-Streuung
+  return { mode, N, I, T: Math.max(0, Math.round(Tt)) };
+}
+function _elmMessen() { const r = _elmMessRow(_elm.mode, _elm.N, _elm.I); _elmAddRow(r); _elm.flash = 1; }
+function _elmDemo() {
+  const c = _ELM_CFG[_elm.mode];
+  c.marks.forEach(m => {
+    const N = _elm.mode === 'windungen' ? m : _ELM_N_FIX;
+    const I = _elm.mode === 'windungen' ? _ELM_I_FIX : m;
+    const r = _elmMessRow(_elm.mode, N, I);
+    _elm.rows.push({ id: _elm.nextId++, mode: r.mode, N: r.N, I: r.I, T: r.T });
+  });
+  _elmRenderTable(); _mlabDrawPlot('elmPlot', _elm);
+}
+function _elmAddRow(r) { _elm.rows.push({ id: _elm.nextId++, mode: r.mode, N: r.N, I: r.I, T: r.T }); _elmRenderTable(); _mlabDrawPlot('elmPlot', _elm); }
+function _elmDelRow(id) { _elm.rows = _elm.rows.filter(r => r.id !== id); _elmRenderTable(); _mlabDrawPlot('elmPlot', _elm); }
+function _elmClear() {
+  if (_elm.rows.length && !confirm('Alle ' + _elm.rows.length + ' Messwerte löschen?')) return;
+  _elm.rows = []; _elmRenderTable(); _mlabDrawPlot('elmPlot', _elm);
+}
+function _elmRenderTable() {
+  const tb = document.getElementById('elmTbody'); if (!tb) return;
+  const empty = document.getElementById('elmEmpty');
+  if (empty) empty.style.display = _elm.rows.length ? 'none' : 'block';
+  const col = _MLAB_PALETTE[(_elm.mode === 'windungen' ? 0 : 2)];
+  tb.innerHTML = _elm.rows.map(r => {
+    const varN = r.mode === 'windungen';
+    return `<tr>
+       <td${varN ? ' class="sha-var"' : ''}>${varN ? '<span class="fpm-dot" style="background:' + col + '"></span>' : ''}${_fpmNum(r.N, 0)}</td>
+       <td${!varN ? ' class="sha-var"' : ''}>${!varN ? '<span class="fpm-dot" style="background:' + col + '"></span>' : ''}${_fpmNum(r.I, 0)}</td>
+       <td><b>${_fpmNum(r.T, 0)}</b></td>
+       <td class="fpm-del" onclick="_elmDelRow(${r.id})" title="löschen">✕</td></tr>`;
+  }).join('');
+}
+
+// ── Wiring ─────────────────────────────────────────────
+function _elmSetPreset(i) { _elmSwitch(i === 0 ? 'windungen' : 'strom', i); }
+function _elmSetFn(s) { _mlabSetFn(_elm, s); }
+function _elmTheorieFn() { _mlabTheorieFn(_elm); }
+function _elmClearFn() { _mlabClearFn(_elm); }
+function _elmSetBool(k, v) { _elm[k] = v; _mlabDrawPlot('elmPlot', _elm); }
+
+// ── Animation ──────────────────────────────────────────
+function _elmUpdate(dt) { if (_elm) { _elm.t += dt; _elm.flash = Math.max(0, _elm.flash - dt * 1.5); } }
+function _elmDraw(ctx, cv) {
+  if (!_elm) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f0f9ff'; ctx.fillRect(0, 0, W, H);
+  const cx = 150, coreTop = 30, coreBot = 170, coreW = 26;
+  // Eisenkern
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(cx - coreW / 2, coreTop, coreW, coreBot - coreTop);
+  ctx.fillStyle = '#64748b'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Eisenkern', cx, coreBot + 14);
+  // Wicklungen (Anzahl ~ N), Farbe/Dicke ~ I
+  const loops = Math.max(3, Math.round(_elm.N / 22));
+  const iShade = Math.min(1, _elm.I / 5);
+  ctx.strokeStyle = `rgba(${180 - Math.round(120 * iShade)},${60},${200},1)`;
+  ctx.lineWidth = 2 + iShade * 2;
+  for (let k = 0; k < loops; k++) {
+    const y = coreTop + 14 + k * ((coreBot - coreTop - 20) / loops);
+    ctx.beginPath(); ctx.ellipse(cx, y, coreW / 2 + 8, 5, 0, 0, Math.PI * 2); ctx.stroke();
+  }
+  ctx.fillStyle = '#7c3aed'; ctx.font = '700 10px sans-serif';
+  ctx.fillText(_elm.N + ' Windungen', cx, 20);
+  // Batterie + Strom
+  ctx.fillStyle = '#1e293b'; ctx.fillRect(cx + 70, 40, 30, 18);
+  ctx.fillStyle = '#facc15'; ctx.fillRect(cx + 100, 45, 4, 8);
+  ctx.fillStyle = '#334155'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('I = ' + _fpmNum(_elm.I, 0) + ' A', cx + 66, 34);
+  // Büroklammern hängen am unteren Pol (Anzahl = Tragkraft, Anzeige gedeckelt)
+  const clips = _elmClips(_elm.N, _elm.I);
+  const show = Math.min(clips, 24);
+  ctx.strokeStyle = _elm.flash > 0.3 ? '#f97316' : '#475569'; ctx.lineWidth = 2;
+  for (let k = 0; k < show; k++) {
+    const col = k % 6, row = Math.floor(k / 6);
+    const px = cx - 30 + col * 12, py = coreBot + 4 + row * 16;
+    ctx.beginPath();
+    ctx.moveTo(px, py); ctx.lineTo(px, py + 11);
+    ctx.arc(px + 4, py + 11, 4, Math.PI, 0, false);
+    ctx.lineTo(px + 8, py); ctx.stroke();
+  }
+  ctx.fillStyle = '#7c3aed'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Tragkraft: ' + clips + ' Büroklammern', W - 130, 40);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif';
+  ctx.fillText('(Anzeige bis 24 Stück)', W - 130, 56);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.1.5  (ns = 'elmag') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _elmArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('elmag')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('elmag')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wovon hängt die Stärke eines Elektromagneten ab?</b> Was macht ihn stärker – mehr Windungen oder mehr Strom?</div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, der Elektromagnet wird stärker, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung (Versuch 1: Windungszahl ändern)</div>
+        <ol class="ab-ol">
+          <li>Modus <b>„Windungszahl ändern"</b> wählen (Strom bleibt fest bei I = 2 A).</li>
+          <li>Stelle N = 50, 100, 150, 200, 250, 300 ein. Übernimm jeweils die Tragkraft.</li>
+          <li>Trage in der Auswertung <b>Tragkraft über N</b> auf.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle (Versuch 1)</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Windungen N</td><td>50</td><td>100</td><td>150</td><td>200</td><td>250</td><td>300</td></tr>
+          <tr><td>Tragkraft (Klammern)</td><td>${inp('t1_1', '')}</td><td>${inp('t1_2', '')}</td><td>${inp('t1_3', '')}</td><td>${inp('t1_4', '')}</td><td>${inp('t1_5', '')}</td><td>${inp('t1_6', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Durchführung (Versuch 2: Stromstärke ändern)</div>
+        <ol class="ab-ol">
+          <li>Modus <b>„Stromstärke ändern"</b> (Windungen bleiben fest bei N = 150).</li>
+          <li>Stelle I = 1, 2, 3, 4, 5 A ein und übernimm jeweils die Tragkraft.</li>
+        </ol>
+        <table class="ab-table"><tbody>
+          <tr><td>Stromstärke I (A)</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+          <tr><td>Tragkraft (Klammern)</td><td>${inp('t2_1', '')}</td><td>${inp('t2_2', '')}</td><td>${inp('t2_3', '')}</td><td>${inp('t2_4', '')}</td><td>${inp('t2_5', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Skizze</div>
+        <div class="ab-t">Zeichne die Spule mit Eisenkern und Batterie. Zeichne die hängenden Büroklammern.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie liegen die Punkte in beiden Diagrammen? ${inp('a1', 'z. B. auf einer Geraden …')}</li>
+          <li>Du verdoppelst die Windungszahl (100 → 200). Was passiert mit der Tragkraft? ${inp('a2', '')}</li>
+          <li>Was macht den Magneten stärker – mehr Windungen, mehr Strom, oder beides? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ein Elektromagnet wird stärker, wenn man die Windungszahl ${inp('m1', 'erhöht/senkt')}.<br>
+        Er wird auch stärker, wenn die Stromstärke ${inp('m2', 'größer/kleiner')} wird.<br>
+        Der ${inp('m3', 'welcher Kern?')} im Inneren verstärkt den Magneten zusätzlich.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">9 · Transfer (Alltag)</div>
+        <div class="ab-t">Auf dem Schrottplatz hebt ein <b>Kran mit Elektromagnet</b> ganze Autos. Warum benutzt man dort einen Elektromagneten und keinen normalen Dauermagneten? Nenne einen Vorteil.</div>
+        ${ta('tr1', 'Man benutzt einen Elektromagneten, weil …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="elmMini">${_elmMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_elmSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_elmSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_elmSelf(3)">😃 sicher</button>
+          <span id="elmSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="elmSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Messwerte.</b> Versuch 1 (I = 2 A): N = 50/100/150/200/250/300 → ≈ 3/6/9/12/15/18 Klammern (Ursprungsgerade). Versuch 2 (N = 150): I = 1..5 A → ≈ 5/9/14/18/23 Klammern (Ursprungsgerade). Kleine Messstreuung ist normal.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Modell T = k·N·I: Tragkraft proportional zur Windungszahl UND zur Stromstärke. Der weichmagnetische Eisenkern verstärkt das Feld deutlich (Verzicht auf Formel B = µ₀·µ_r·n·I in Kl. 5).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Batteriegröße allein zählt." (2) „Ein Elektromagnet ist immer magnetisch" – nein, nur bei Stromfluss. (3) „Der Eisenkern ist unwichtig."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Streng nur eine Größe verändern; Tragkraft = Anzahl Klammern zählen lassen; Diagramm mit Ausgleichsgerade anlegen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 7.2 „verdoppelt sich" · 7.3 „beides". Merksatz: erhöht · größer · Eisenkern. Transfer: an-/abschaltbar (Strom aus → Last fällt gezielt), Stärke regelbar. Minidiagnose: 1→„nur wenn Strom fließt" · 2→„doppelt so stark" · 3→„Eisenkern".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('elmag')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('elmag', 'Wie stark ist ein Elektromagnet?', body);
+}
+
+// ── Minidiagnose ───────────────────────────────────────
+const _ELM_MINI = [
+  { q: '1. Wann ist die Spule mit Eisenkern magnetisch?',
+    opts: ['Immer', 'Nur wenn Strom fließt', 'Nur nachts'], correct: 1,
+    fb: ['Ohne Strom ist die Spule kein Magnet. Schalte den Strom in Gedanken aus.',
+         'Richtig! Nur bei Stromfluss entsteht das Magnetfeld – das ist der Vorteil.',
+         'Mit der Uhrzeit hat es nichts zu tun 🙂'] },
+  { q: '2. Du verdoppelst die Windungszahl von 100 auf 200. Was passiert mit der Tragkraft?',
+    opts: ['Sie halbiert sich', 'Sie bleibt gleich', 'Sie verdoppelt sich'], correct: 2,
+    fb: ['Mehr Windungen machen den Magneten stärker, nicht schwächer.',
+         'Schau ins Diagramm – die Gerade steigt an.',
+         'Richtig! Doppelte Windungszahl → doppelte Tragkraft (Ursprungsgerade).'] },
+  { q: '3. Was verstärkt den Elektromagneten zusätzlich?',
+    opts: ['Ein Kupferkern', 'Ein Eisenkern', 'Ein Holzstab'], correct: 1,
+    fb: ['Kupfer ist nicht magnetisch – es verstärkt nichts.',
+         'Richtig! Der Eisenkern bündelt und verstärkt das Magnetfeld.',
+         'Holz hat keine Wirkung auf den Magneten.'] }
+];
+function _elmMiniHTML() {
+  return _ELM_MINI.map((m, qi) =>
+    `<div class="sha-q">
+       <div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_elmAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="elmFb${qi}"></div>
+     </div>`).join('');
+}
+function _elmAns(qi, oi) {
+  const m = _ELM_MINI[qi];
+  const el = document.getElementById('elmFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi];
+  el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _elmSelf(n) {
+  const out = document.getElementById('elmSelfOut'), val = document.getElementById('elmSelfVal');
+  if (val) { val.value = String(n); _abSave('elmag'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
