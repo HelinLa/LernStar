@@ -291,7 +291,10 @@ const _physAbDefs = {
   'draht': { titel: 'Wovon hängt der Widerstand eines Drahtes ab?', ns: 'draht', html: () => _drtArbeitsblattHTML() },
   'reihe-widerstand': { titel: 'Reihenschaltung von Widerständen', ns: 'reihewid', html: () => _rwdArbeitsblattHTML() },
   'parallel-widerstand': { titel: 'Parallelschaltung von Widerständen', ns: 'parallelwid', html: () => _pwdArbeitsblattHTML() },
-  'potentiometer': { titel: 'Das Potentiometer – ein veränderbarer Widerstand', ns: 'potentiometer', html: () => _potArbeitsblattHTML() }
+  'potentiometer': { titel: 'Das Potentiometer – ein veränderbarer Widerstand', ns: 'potentiometer', html: () => _potArbeitsblattHTML() },
+  'elektrische-leistung': { titel: 'Elektrische Leistung P = U · I', ns: 'leistung-rs', html: () => _elpArbeitsblattHTML() },
+  'elektrische-energie': { titel: 'Elektrische Energie E = P · t', ns: 'energie-rs', html: () => _eenArbeitsblattHTML() },
+  'stromkosten': { titel: 'Was kostet elektrische Energie?', ns: 'stromkosten', html: () => _kosArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -1021,6 +1024,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('potAnim', 'potAnim');
     _pSim.start(dt => _potUpdate(dt), (ctx, cv) => _potDraw(ctx, cv), []);
     _abRestore('potentiometer');
+  },
+
+  // ── 8.3.1 ELEKTRISCHE LEISTUNG P=U·I ───────────────────────────
+  'elektrische-leistung': modal => {
+    _elpInit();
+    modal.innerHTML = _elpHTML();
+    _elpStatus();
+    _pSim = new PhysicsSimEngine('elpAnim', 'elpAnim');
+    _pSim.start(dt => _elpUpdate(dt), (ctx, cv) => _elpDraw(ctx, cv), []);
+    _abRestore('leistung-rs');
+  },
+
+  // ── 8.3.2 ELEKTRISCHE ENERGIE E=P·t ────────────────────────────
+  'elektrische-energie': modal => {
+    _eenInit();
+    modal.innerHTML = _eenHTML();
+    _eenStatus();
+    _pSim = new PhysicsSimEngine('eenAnim', 'eenAnim');
+    _pSim.start(dt => _eenUpdate(dt), (ctx, cv) => _eenDraw(ctx, cv), []);
+    _abRestore('energie-rs');
+  },
+
+  // ── 8.3.3 STROMKOSTEN (kWh) ────────────────────────────────────
+  'stromkosten': modal => {
+    _kosInit();
+    modal.innerHTML = _kosHTML();
+    _kosStatus();
+    _pSim = new PhysicsSimEngine('kosAnim', 'kosAnim');
+    _pSim.start(dt => _kosUpdate(dt), (ctx, cv) => _kosDraw(ctx, cv), []);
+    _abRestore('stromkosten');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -50704,5 +50737,621 @@ function _potAns(qi, oi) {
 function _potSelf(n) {
   const out = document.getElementById('potSelfOut'), val = document.getElementById('potSelfVal');
   if (val) { val.value = String(n); _abSave('potentiometer'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══ KAPITEL 8.3 LEISTUNG & ENERGIE – Batch 1 (8.3.1/8.3.2/8.3.3) ═══
+// ═══════════════════════════════════════════════════════
+// 8.3.1  ELEKTRISCHE LEISTUNG P = U · I
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: Die Leistung P = U · I gibt an, wie viel
+// Energie pro Zeit umgesetzt wird. Mehr Spannung ODER mehr Strom
+// → mehr Leistung → hellere/wärmere Lampe. Kleinspannung (max 6 V).
+// ═══════════════════════════════════════════════════════
+let _elp = null;
+const _ELP_R = { klein: 5, mittel: 15, gross: 45 };
+function _elpInit() { _elp = { zellen: 2, r: 'mittel', t: 0, phase: 0 }; }
+function _elpU() { return _elp.zellen * 1.5; }
+function _elpI() { return _elpU() / _ELP_R[_elp.r]; }
+function _elpP() { return _elpU() * _elpI(); }
+
+function _elpHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim elp-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">💡 Elektrische Leistung P = U · I</h3>
+    <div class="fpm-note" style="margin-top:2px">Verändere Spannung und Verbraucher. Beobachte, wie sich die Leistung (in Watt) und die Helligkeit ändern. (Nur ungefährliche Kleinspannung.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="elpAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Spannung:</span>
+          <button class="sim-btn${_elp.zellen === 1 ? ' primary' : ''}" id="elpU1" onclick="_elpSetU(1)">1,5 V</button>
+          <button class="sim-btn${_elp.zellen === 2 ? ' primary' : ''}" id="elpU2" onclick="_elpSetU(2)">3 V</button>
+          <button class="sim-btn${_elp.zellen === 4 ? ' primary' : ''}" id="elpU4" onclick="_elpSetU(4)">6 V</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">Verbraucher:</span>
+          <button class="sim-btn${_elp.r === 'klein' ? ' primary' : ''}" id="elpRklein" onclick="_elpSetR('klein')">viel Strom</button>
+          <button class="sim-btn${_elp.r === 'mittel' ? ' primary' : ''}" id="elpRmittel" onclick="_elpSetR('mittel')">mittel</button>
+          <button class="sim-btn${_elp.r === 'gross' ? ' primary' : ''}" id="elpRgross" onclick="_elpSetR('gross')">wenig Strom</button>
+          <button class="sim-btn" onclick="_elpReset()">↺</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Leistung</div>
+        <div class="lmp-status" id="elpStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Die <b>elektrische Leistung P</b> gibt an, wie viel Energie pro Sekunde umgesetzt wird. Man berechnet sie aus Spannung und Stromstärke: <b>P = U · I</b>. Einheit: <b>Watt (W)</b>. Mehr Spannung <b>oder</b> mehr Strom → mehr Leistung.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>P = U · I</b> &nbsp;·&nbsp; Einheit <b>Watt (W)</b> &nbsp;·&nbsp; mehr Leistung → heller &amp; wärmer.
+    </p>
+    ${_elpArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _elpSetU(z) { _elp.zellen = z;[1, 2, 4].forEach(k => document.getElementById('elpU' + k)?.classList.toggle('primary', k === z)); _elpStatus(); }
+function _elpSetR(r) { _elp.r = r; Object.keys(_ELP_R).forEach(k => document.getElementById('elpR' + k)?.classList.toggle('primary', k === r)); _elpStatus(); }
+function _elpReset() { _elpInit(); _elpSetU(2); _elpSetR('mittel'); _elpStatus(); }
+function _elpStatus() {
+  const el = document.getElementById('elpStatus'); if (!el) return;
+  el.textContent = `U = ${String(_elpU()).replace('.', ',')} V, I = ${_elpI().toFixed(2).replace('.', ',')} A → Leistung P = U · I = ${_elpP().toFixed(2).replace('.', ',')} W. Mehr Spannung oder mehr Strom → mehr Leistung.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _elpUpdate(dt) { if (_elp) { _elp.t += dt; _elp.phase += (10 + _elpI() * 60) * dt; } }
+function _elpDraw(ctx, cv) {
+  if (!_elp) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const L = 40, R = W - 40, T = 52, B = H - 44;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4; ctx.beginPath(); ctx.rect(L, T, R - L, B - T); ctx.stroke();
+
+  // Batteriezellen unten
+  const cyB = B, sx = (L + R) / 2 - (_elp.zellen * 22) / 2;
+  for (let i = 0; i < _elp.zellen; i++) { const x = sx + i * 22; ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x, cyB - 8); ctx.lineTo(x, cyB + 8); ctx.moveTo(x + 8, cyB - 13); ctx.lineTo(x + 8, cyB + 13); ctx.stroke(); }
+  ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('U = ' + String(_elpU()).replace('.', ',') + ' V', (L + R) / 2, cyB + 24);
+
+  // Lampe oben Mitte, Helligkeit ~ P
+  const lax = (L + R) / 2, lay = T, br = Math.min(1, _elpP() / 7.2);
+  const g = ctx.createRadialGradient(lax, lay, 2, lax, lay, 30); g.addColorStop(0, `rgba(255,235,120,${0.12 + 0.88 * br})`); g.addColorStop(1, 'rgba(255,235,120,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(lax, lay, 30, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(lax, lay, 12, 0, 2 * Math.PI); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(lax - 9, lay - 9); ctx.lineTo(lax + 9, lay + 9); ctx.moveTo(lax + 9, lay - 9); ctx.lineTo(lax - 9, lay + 9); ctx.stroke();
+
+  // Amperemeter rechts
+  const amx = R, amy = (T + B) / 2; ctx.fillStyle = '#0b1020'; ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(amx, amy, 15, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#38bdf8'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('A', amx, amy + 5);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.fillText(_elpI().toFixed(2).replace('.', ',') + ' A', amx - 32, amy + 4);
+
+  // Ladungen
+  const n = Math.max(4, Math.round(_elpI() * 14)), per = 2 * ((R - L) + (B - T));
+  for (let i = 0; i < n; i++) {
+    let d = (_elp.phase + i * per / n) % per, x, y;
+    if (d < (R - L)) { x = L + d; y = T; }
+    else if (d < (R - L) + (B - T)) { x = R; y = T + (d - (R - L)); }
+    else if (d < 2 * (R - L) + (B - T)) { x = R - (d - (R - L) - (B - T)); y = B; }
+    else { x = L; y = B - (d - 2 * (R - L) - (B - T)); }
+    ctx.fillStyle = '#60a5fa'; ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Leistungsanzeige
+  ctx.fillStyle = '#fde047'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('P = ' + _elpP().toFixed(2).replace('.', ',') + ' W', (L + R) / 2, 22);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.3.1  (ns = 'leistung-rs') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _elpArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('leistung-rs')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('leistung-rs')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was gibt an, wie „stark" ein elektrisches Gerät arbeitet – und wie berechnet man das?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Leistung größer wird, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle eine Spannung ein und lies U, I und P ab.</li>
+          <li>Erhöhe die Spannung – was passiert mit P?</li>
+          <li>Ändere den Verbraucher (mehr/weniger Strom) – was passiert mit P?</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>U = 3 V, mittel</td><td>I = ${inp('b1', '… A')}</td><td>P = U·I</td><td>${inp('c1', '… W')}</td></tr>
+          <tr><td>U = 6 V, mittel</td><td>I = ${inp('b2', '… A')}</td><td>P = U·I</td><td>${inp('c2', '… W')}</td></tr>
+          <tr><td>U = 3 V, viel Strom</td><td>I = ${inp('b3', '… A')}</td><td>P = U·I</td><td>${inp('c3', '… W')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne den Stromkreis. Schreibe an die Lampe P = U · I und trage deine Werte ein.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie berechnet man die elektrische Leistung? ${inp('a1', 'P = …')}</li>
+          <li>Welche Einheit hat die Leistung? ${inp('a2', '')}</li>
+          <li>Was macht die Leistung größer? ${inp('a3', 'mehr … oder mehr …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die elektrische Leistung berechnet man mit P = ${inp('m1', 'Formel')}. Einheit: ${inp('m2', 'welche?')}.<br>
+        Mehr Spannung oder mehr Strom bedeutet ${inp('m3', 'mehr/weniger')} Leistung.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Aufgabe)</div>
+        <div class="ab-t">Ein Lämpchen arbeitet mit U = 6 V und I = 0,5 A. Wie groß ist seine Leistung? Und eines mit 12 V und 0,5 A?</div>
+        ${ta('tr1', 'P = U · I = … W ; bei 12 V: P = … W', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="elpMini">${_elpMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_elpSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_elpSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_elpSelf(3)">😃 sicher</button>
+          <span id="elpSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="elpSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> P steigt mit U und mit I. Beispiele (R mittel 15 Ω): 3 V→0,20 A→0,60 W · 6 V→0,40 A→2,40 W; 3 V/viel Strom (5 Ω)→0,60 A→1,80 W.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Elektrische Leistung P = U · I (Einheit Watt, W = V·A); sie ist die pro Zeit umgesetzte Energie. Bei ohmschen Verbrauchern auch P = U²/R = I²·R. Höhere Leistung → mehr Licht/Wärme.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Leistung = Spannung." (2) „Leistung wird in Ampere gemessen." (3) „Nur die Spannung zählt."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> P = U·I gemeinsam ausrechnen; Einheit W = V·A festhalten; beide Faktoren (U und I) betonen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 0,20 A/0,60 W · 0,40 A/2,40 W · 0,60 A/1,80 W. 6.1 P = U·I · 6.2 Watt (W) · 6.3 „mehr Spannung oder mehr Strom". Merksatz: U·I · Watt (W) · mehr. Transfer: P = 6·0,5 = 3 W; bei 12 V: 12·0,5 = 6 W. Minidiagnose: 1→P = U·I · 2→Watt (W) · 3→Sie wird größer.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('leistung-rs')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('leistung-rs', 'Elektrische Leistung P = U · I', body);
+}
+
+const _ELP_MINI = [
+  { q: '1. Wie berechnet man die elektrische Leistung?',
+    opts: ['P = U + I', 'P = U · I', 'P = U / I'], correct: 1,
+    fb: ['Addiert wird nichts.',
+         'Richtig! P = U · I (Spannung mal Stromstärke).',
+         'Geteilt wird hier nicht.'] },
+  { q: '2. Welche Einheit hat die elektrische Leistung?',
+    opts: ['Volt (V)', 'Watt (W)', 'Ohm (Ω)'], correct: 1,
+    fb: ['Volt ist die Einheit der Spannung.',
+         'Richtig! Die Leistung wird in Watt (W) gemessen.',
+         'Ohm ist die Einheit des Widerstands.'] },
+  { q: '3. Du erhöhst die Spannung (Strom bleibt). Was passiert mit der Leistung?',
+    opts: ['Sie wird größer', 'Sie wird kleiner', 'Sie bleibt gleich'], correct: 0,
+    fb: ['Richtig! Mehr Spannung → mehr Leistung (P = U·I).',
+         'Mehr Spannung macht die Leistung nicht kleiner.',
+         'Die Leistung ändert sich.'] }
+];
+function _elpMiniHTML() {
+  return _ELP_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_elpAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="elpFb${qi}"></div></div>`).join('');
+}
+function _elpAns(qi, oi) {
+  const m = _ELP_MINI[qi], el = document.getElementById('elpFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _elpSelf(n) {
+  const out = document.getElementById('elpSelfOut'), val = document.getElementById('elpSelfVal');
+  if (val) { val.value = String(n); _abSave('leistung-rs'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.3.2  ELEKTRISCHE ENERGIE E = P · t
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: Die umgesetzte Energie hängt von der Leistung
+// UND von der Zeit ab: E = P · t. Mehr Leistung oder längere Zeit
+// → mehr Energie. Einheit Wattstunde (Wh), 1 kWh = 1000 Wh.
+// ═══════════════════════════════════════════════════════
+let _een = null;
+const _EEN_GERAETE = { led: { name: 'LED-Lampe', P: 10 }, tv: { name: 'Fernseher', P: 100 }, kessel: { name: 'Wasserkocher', P: 2000 } };
+const _EEN_ZEIT = { kurz: { name: '1 Stunde', h: 1 }, mittel: { name: '3 Stunden', h: 3 }, lang: { name: '10 Stunden', h: 10 } };
+function _eenInit() { _een = { geraet: 'tv', zeit: 'mittel', t: 0 }; }
+function _eenP() { return _EEN_GERAETE[_een.geraet].P; }
+function _eenH() { return _EEN_ZEIT[_een.zeit].h; }
+function _eenWh() { return _eenP() * _eenH(); }               // Wh
+function _eenKWh() { return _eenWh() / 1000; }                 // kWh
+function _eenFmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }   // Tausenderpunkt
+
+function _eenHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim een-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔋 Elektrische Energie E = P · t</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle ein Gerät (Leistung) und eine Betriebszeit. Wie viel elektrische Energie wird umgesetzt? Verändere immer nur eine Größe.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="eenAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Gerät:</span>
+          <button class="sim-btn${_een.geraet === 'led' ? ' primary' : ''}" id="eenGled" onclick="_eenSetG('led')">LED 10 W</button>
+          <button class="sim-btn${_een.geraet === 'tv' ? ' primary' : ''}" id="eenGtv" onclick="_eenSetG('tv')">TV 100 W</button>
+          <button class="sim-btn${_een.geraet === 'kessel' ? ' primary' : ''}" id="eenGkessel" onclick="_eenSetG('kessel')">Wasserkocher 2000 W</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">Zeit:</span>
+          <button class="sim-btn${_een.zeit === 'kurz' ? ' primary' : ''}" id="eenZkurz" onclick="_eenSetZ('kurz')">1 h</button>
+          <button class="sim-btn${_een.zeit === 'mittel' ? ' primary' : ''}" id="eenZmittel" onclick="_eenSetZ('mittel')">3 h</button>
+          <button class="sim-btn${_een.zeit === 'lang' ? ' primary' : ''}" id="eenZlang" onclick="_eenSetZ('lang')">10 h</button>
+          <button class="sim-btn" onclick="_eenReset()">↺</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Umgesetzte Energie</div>
+        <div class="lmp-status" id="eenStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Die elektrische <b>Energie E</b> hängt von der <b>Leistung P</b> und der <b>Zeit t</b> ab: <b>E = P · t</b>. Einheit: <b>Wattstunde (Wh)</b>, oft <b>Kilowattstunde (kWh)</b>. <b>1 kWh = 1000 Wh.</b> Mehr Leistung oder längere Zeit → mehr Energie.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>E = P · t</b> &nbsp;·&nbsp; Einheit <b>Wh / kWh</b> &nbsp;·&nbsp; 1 kWh = 1000 Wh.
+    </p>
+    ${_eenArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _eenSetG(g) { _een.geraet = g; Object.keys(_EEN_GERAETE).forEach(k => document.getElementById('eenG' + k)?.classList.toggle('primary', k === g)); _eenStatus(); }
+function _eenSetZ(z) { _een.zeit = z; Object.keys(_EEN_ZEIT).forEach(k => document.getElementById('eenZ' + k)?.classList.toggle('primary', k === z)); _eenStatus(); }
+function _eenReset() { _eenInit(); _eenSetG('tv'); _eenSetZ('mittel'); _eenStatus(); }
+function _eenStatus() {
+  const el = document.getElementById('eenStatus'); if (!el) return;
+  const wh = _eenWh(), kwh = _eenKWh();
+  el.textContent = `${_EEN_GERAETE[_een.geraet].name}: P = ${_eenP()} W · t = ${_eenH()} h → E = P · t = ${_eenFmt(wh)} Wh = ${String(kwh).replace('.', ',')} kWh.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _eenUpdate(dt) { if (_een) _een.t += dt; }
+function _eenDraw(ctx, cv) {
+  if (!_een) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  // Balken: Energie (log-artig skaliert, damit alle passen)
+  const kwh = _eenKWh();
+  const maxKwh = 20; // Wasserkocher 10h = 20 kWh
+  const bx = 60, bw = W - 120, by = 150, bh = 30;
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2; ctx.strokeRect(bx, by, bw, bh);
+  const frac = Math.min(1, kwh / maxKwh);
+  const g = ctx.createLinearGradient(bx, 0, bx + bw, 0); g.addColorStop(0, '#22d3ee'); g.addColorStop(1, '#f59e0b');
+  ctx.fillStyle = g; ctx.fillRect(bx, by, bw * frac, bh);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('0 kWh', bx, by + bh + 14); ctx.textAlign = 'right'; ctx.fillText(maxKwh + ' kWh', bx + bw, by + bh + 14);
+
+  // Gerät-Symbol + P
+  ctx.fillStyle = '#fde68a'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_EEN_GERAETE[_een.geraet].name + '  (P = ' + _eenP() + ' W)', W / 2, 40);
+  // Zeit
+  ctx.fillStyle = '#93c5fd'; ctx.font = '12px sans-serif'; ctx.fillText('Betriebszeit t = ' + _eenH() + ' h', W / 2, 62);
+  // Formel + Ergebnis
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 15px sans-serif';
+  ctx.fillText('E = P · t = ' + _eenFmt(_eenWh()) + ' Wh', W / 2, 100);
+  ctx.fillStyle = '#86efac'; ctx.font = '700 18px sans-serif';
+  ctx.fillText('= ' + String(kwh).replace('.', ',') + ' kWh', W / 2, 128);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.3.2  (ns = 'energie-rs') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _eenArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('energie-rs')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('energie-rs')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wovon hängt es ab, wie viel elektrische Energie ein Gerät verbraucht?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass ein Gerät mehr Energie verbraucht, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle ein Gerät und eine Zeit, lies E ab.</li>
+          <li>Verlängere nur die Zeit – wie ändert sich E?</li>
+          <li>Wähle ein Gerät mit mehr Leistung – wie ändert sich E?</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>LED 10 W · 3 h</td><td>${inp('b1', 'E = … Wh')}</td><td>in kWh</td><td>${inp('c1', '… kWh')}</td></tr>
+          <tr><td>TV 100 W · 3 h</td><td>${inp('b2', 'E = … Wh')}</td><td>in kWh</td><td>${inp('c2', '… kWh')}</td></tr>
+          <tr><td>Wasserkocher 2000 W · 1 h</td><td>${inp('b3', 'E = … Wh')}</td><td>in kWh</td><td>${inp('c3', '… kWh')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne einen Energiebalken für ein kleines und ein großes Gerät. Welcher ist länger?</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie berechnet man die elektrische Energie? ${inp('a1', 'E = …')}</li>
+          <li>Wie viele Wattstunden sind 1 kWh? ${inp('a2', '… Wh')}</li>
+          <li>Was macht E größer? ${inp('a3', 'mehr … oder längere …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die elektrische Energie berechnet man mit E = ${inp('m1', 'Formel')}. Einheit: ${inp('m2', 'welche?')}.<br>
+        1 kWh = ${inp('m3', 'Zahl')} Wh. Mehr Leistung oder längere Zeit → mehr Energie.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Aufgabe)</div>
+        <div class="ab-t">Eine Heizung mit 1500 W läuft 4 Stunden. Wie viel Energie in Wh und in kWh verbraucht sie?</div>
+        ${ta('tr1', 'E = P · t = 1500 W · 4 h = … Wh = … kWh', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="eenMini">${_eenMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_eenSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_eenSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_eenSelf(3)">😃 sicher</button>
+          <span id="eenSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="eenSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> E wächst mit P und mit t. Beispiele: LED 10 W·3 h = 30 Wh = 0,03 kWh · TV 100 W·3 h = 300 Wh = 0,3 kWh · Wasserkocher 2000 W·1 h = 2000 Wh = 2 kWh.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Elektrische Energie E = P · t (Einheit Joule; im Alltag Wh bzw. kWh). 1 kWh = 1000 Wh = 3,6 MJ. Die Energie ist das Produkt aus Leistung und Zeit – wichtig für den Stromverbrauch.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Leistung und Energie sind dasselbe." (2) „Nur die Leistung zählt, nicht die Zeit." (3) „1 kWh = 100 Wh."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Leistung (momentan) vs. Energie (über Zeit) trennen; E = P·t rechnen; Einheiten Wh↔kWh (÷/×1000).</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 30 Wh/0,03 · 300 Wh/0,3 · 2000 Wh/2. 6.1 E = P·t · 6.2 1000 Wh · 6.3 „mehr Leistung oder längere Zeit". Merksatz: P·t · Wattstunde (Wh) · 1000. Transfer: E = 1500·4 = 6000 Wh = 6 kWh. Minidiagnose: 1→E = P·t · 2→1000 Wh · 3→Sie wird doppelt so groß.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('energie-rs')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('energie-rs', 'Elektrische Energie E = P · t', body);
+}
+
+const _EEN_MINI = [
+  { q: '1. Wie berechnet man die elektrische Energie?',
+    opts: ['E = P · t', 'E = P / t', 'E = U · I'], correct: 0,
+    fb: ['Richtig! Energie = Leistung mal Zeit.',
+         'Geteilt wird nicht.',
+         'Das ist die Formel für die Leistung.'] },
+  { q: '2. Wie viele Wattstunden sind 1 Kilowattstunde (kWh)?',
+    opts: ['100 Wh', '1000 Wh', '10 Wh'], correct: 1,
+    fb: ['Das „Kilo" steht für Tausend.',
+         'Richtig! 1 kWh = 1000 Wh.',
+         'Es sind mehr – nämlich 1000 Wh.'] },
+  { q: '3. Ein Gerät läuft doppelt so lange. Was passiert mit der Energie?',
+    opts: ['Sie bleibt gleich', 'Sie verdoppelt sich', 'Sie halbiert sich'], correct: 1,
+    fb: ['Die Zeit geht in die Energie ein.',
+         'Richtig! Doppelte Zeit → doppelte Energie (E = P·t).',
+         'Sie wird größer, nicht kleiner.'] }
+];
+function _eenMiniHTML() {
+  return _EEN_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_eenAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="eenFb${qi}"></div></div>`).join('');
+}
+function _eenAns(qi, oi) {
+  const m = _EEN_MINI[qi], el = document.getElementById('eenFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _eenSelf(n) {
+  const out = document.getElementById('eenSelfOut'), val = document.getElementById('eenSelfVal');
+  if (val) { val.value = String(n); _abSave('energie-rs'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.3.3  WAS KOSTET ELEKTRISCHE ENERGIE? (KILOWATTSTUNDE)
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: Der Stromzähler misst die Energie in kWh.
+// Kosten = Energie (kWh) · Preis pro kWh. Ein Gerät mit hoher
+// Leistung, das lange läuft, kostet viel. (Reine Rechnung.)
+// ═══════════════════════════════════════════════════════
+let _kos = null;
+const _KOS_GERAETE = { led: { name: 'LED-Lampe', P: 10 }, tv: { name: 'Fernseher', P: 100 }, kuehl: { name: 'Kühlschrank', P: 150 }, kessel: { name: 'Wasserkocher', P: 2000 } };
+const _KOS_STD = [1, 3, 8, 24];
+const _KOS_PREIS = 0.30;   // € pro kWh
+function _kosInit() { _kos = { geraet: 'tv', std: 3, t: 0 }; }
+function _kosP() { return _KOS_GERAETE[_kos.geraet].P; }
+function _kosKWhTag() { return (_kosP() / 1000) * _kos.std; }
+function _kosTag() { return _kosKWhTag() * _KOS_PREIS; }
+function _kosJahr() { return _kosTag() * 365; }
+function _kosEur(v) { return v.toFixed(2).replace('.', ','); }
+
+function _kosHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim kos-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">💶 Was kostet elektrische Energie?</h3>
+    <div class="fpm-note" style="margin-top:2px">Der Stromzähler zählt die Energie in Kilowattstunden (kWh). Wähle ein Gerät und wie lange es pro Tag läuft. Was kostet das im Jahr? (Preis: 0,30&nbsp;€ pro kWh.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="kosAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Gerät:</span>
+          <button class="sim-btn${_kos.geraet === 'led' ? ' primary' : ''}" id="kosGled" onclick="_kosSetG('led')">LED 10 W</button>
+          <button class="sim-btn${_kos.geraet === 'tv' ? ' primary' : ''}" id="kosGtv" onclick="_kosSetG('tv')">TV 100 W</button>
+          <button class="sim-btn${_kos.geraet === 'kuehl' ? ' primary' : ''}" id="kosGkuehl" onclick="_kosSetG('kuehl')">Kühlschrank 150 W</button>
+          <button class="sim-btn${_kos.geraet === 'kessel' ? ' primary' : ''}" id="kosGkessel" onclick="_kosSetG('kessel')">Wasserkocher 2000 W</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">pro Tag:</span>
+          ${_KOS_STD.map(h => `<button class="sim-btn${_kos.std === h ? ' primary' : ''}" id="kosH${h}" onclick="_kosSetH(${h})">${h} h</button>`).join('')}
+          <button class="sim-btn" onclick="_kosReset()">↺</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Energie &amp; Kosten</div>
+        <div class="lmp-status" id="kosStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Der Stromzähler misst die verbrauchte Energie in <b>Kilowattstunden (kWh)</b>. Die Kosten berechnet man so: <b>Kosten = Energie (kWh) · Preis pro kWh</b>. Geräte mit hoher Leistung oder langer Laufzeit kosten am meisten.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Kosten = Energie (kWh) · Preis</b> &nbsp;·&nbsp; 1 kWh kostet hier 0,30 €.
+    </p>
+    ${_kosArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _kosSetG(g) { _kos.geraet = g; Object.keys(_KOS_GERAETE).forEach(k => document.getElementById('kosG' + k)?.classList.toggle('primary', k === g)); _kosStatus(); }
+function _kosSetH(h) { _kos.std = h; _KOS_STD.forEach(x => document.getElementById('kosH' + x)?.classList.toggle('primary', x === h)); _kosStatus(); }
+function _kosReset() { _kosInit(); _kosSetG('tv'); _kosSetH(3); _kosStatus(); }
+function _kosStatus() {
+  const el = document.getElementById('kosStatus'); if (!el) return;
+  el.textContent = `${_KOS_GERAETE[_kos.geraet].name} (${_kosP()} W) · ${_kos.std} h/Tag → ${String(Math.round(_kosKWhTag() * 100) / 100).replace('.', ',')} kWh/Tag = ${_kosEur(_kosTag())} €/Tag. Im Jahr: ${_kosEur(_kosJahr())} €.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _kosUpdate(dt) { if (_kos) _kos.t += dt; }
+function _kosDraw(ctx, cv) {
+  if (!_kos) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+
+  // Stromzähler-Anzeige
+  const zx = W / 2, zy = 44;
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_KOS_GERAETE[_kos.geraet].name + ' · ' + _kosP() + ' W · ' + _kos.std + ' h/Tag', zx, 22);
+  // Zähler-Kästchen
+  const kwhTag = Math.round(_kosKWhTag() * 100) / 100;
+  ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2; ctx.strokeRect(zx - 90, zy, 180, 30);
+  ctx.fillStyle = '#0b1020'; ctx.fillRect(zx - 90, zy, 180, 30);
+  ctx.fillStyle = '#fde047'; ctx.font = '700 16px monospace'; ctx.fillText(String(kwhTag).replace('.', ',') + ' kWh/Tag', zx, zy + 21);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText('⚡ Stromzähler', zx, zy - 6);
+
+  // Kosten-Balken (Jahr) im Vergleich
+  const jahr = _kosJahr(), maxJahr = 220; // Wasserkocher 24h ~ 5256 €? cap; use log-ish
+  const bx = 50, bw = W - 100, by = 120, bh = 26;
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2; ctx.strokeRect(bx, by, bw, bh);
+  const frac = Math.min(1, jahr / maxJahr);
+  ctx.fillStyle = frac > 0.66 ? '#ef4444' : (frac > 0.33 ? '#f59e0b' : '#22c55e');
+  ctx.fillRect(bx, by, bw * frac, bh);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Kosten pro Jahr', bx, by - 6);
+
+  // Ergebnis-Text
+  ctx.fillStyle = '#86efac'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_kosEur(_kosTag()) + ' € pro Tag', W / 2, 180);
+  ctx.fillStyle = '#fde047'; ctx.font = '700 18px sans-serif';
+  ctx.fillText(_kosEur(_kosJahr()) + ' € pro Jahr', W / 2, 206);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.3.3  (ns = 'stromkosten') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _kosArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('stromkosten')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('stromkosten')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie berechnet man, was ein elektrisches Gerät an Strom kostet?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass am meisten kostet, wenn ein Gerät …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle ein Gerät und eine Betriebszeit pro Tag.</li>
+          <li>Lies die kWh pro Tag und die Kosten ab.</li>
+          <li>Vergleiche ein sparsames und ein „hungriges" Gerät.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle (Preis: 0,30 €/kWh)</div>
+        <table class="ab-table"><tbody>
+          <tr><td>LED 10 W · 3 h</td><td>${inp('b1', '… kWh')}</td><td>Kosten/Tag</td><td>${inp('c1', '… €')}</td></tr>
+          <tr><td>TV 100 W · 3 h</td><td>${inp('b2', '… kWh')}</td><td>Kosten/Tag</td><td>${inp('c2', '… €')}</td></tr>
+          <tr><td>Wasserkocher 2000 W · 1 h</td><td>${inp('b3', '… kWh')}</td><td>Kosten/Tag</td><td>${inp('c3', '… €')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne einen Stromzähler und schreibe daneben die Formel: Kosten = Energie (kWh) · Preis.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>In welcher Einheit misst der Stromzähler? ${inp('a1', '')}</li>
+          <li>Wie berechnet man die Stromkosten? ${inp('a2', 'Kosten = …')}</li>
+          <li>Welches Gerät kostet am meisten? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Der Stromzähler misst die Energie in ${inp('m1', 'welcher Einheit?')}.<br>
+        Die Kosten berechnet man mit: Kosten = ${inp('m2', 'was?')} · ${inp('m3', 'was?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Aufgabe)</div>
+        <div class="ab-t">Eine Familie verbraucht im Jahr 3000 kWh. Wie viel zahlt sie bei 0,30 € pro kWh?</div>
+        ${ta('tr1', 'Kosten = 3000 kWh · 0,30 €/kWh = … €', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="kosMini">${_kosMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_kosSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_kosSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_kosSelf(3)">😃 sicher</button>
+          <span id="kosSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="kosSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Hohe Leistung und/oder lange Laufzeit → hohe Kosten. Beispiele (0,30 €/kWh): LED 10 W·3 h = 0,03 kWh ≈ 0,01 € · TV 100 W·3 h = 0,3 kWh = 0,09 € · Wasserkocher 2000 W·1 h = 2 kWh = 0,60 €.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Der Energiezähler misst die elektrische Arbeit in kWh (1 kWh = 1000 Wh). Kosten = Energie (kWh) · Arbeitspreis (€/kWh). E (kWh) = P(kW) · t(h). Für den Jahreswert × 365 (bzw. Betriebstage).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Zähler misst in Watt." (2) „Kleine Geräte kosten nie viel." (3) „Die Zeit ist egal."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Erst kWh berechnen (P in kW × Stunden), dann × Preis; Einheiten sauber; Dauerläufer (Kühlschrank) vs. Kurzläufer vergleichen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 0,03 kWh/≈0,01 € · 0,3 kWh/0,09 € · 2 kWh/0,60 €. 6.1 Kilowattstunden (kWh) · 6.2 Kosten = Energie · Preis · 6.3 der Wasserkocher (bzw. Dauerläufer). Merksatz: kWh · Energie (kWh) · Preis pro kWh. Transfer: 3000 · 0,30 = 900 €. Minidiagnose: 1→In kWh · 2→Energie · Preis · 3→Der Wasserkocher.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('stromkosten')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('stromkosten', 'Was kostet elektrische Energie?', body);
+}
+
+const _KOS_MINI = [
+  { q: '1. In welcher Einheit misst der Stromzähler die Energie?',
+    opts: ['In Watt (W)', 'In Kilowattstunden (kWh)', 'In Ampere (A)'], correct: 1,
+    fb: ['Watt ist die Leistung, nicht die Energie.',
+         'Richtig! Der Zähler misst die Energie in kWh.',
+         'Ampere ist die Stromstärke.'] },
+  { q: '2. Wie berechnet man die Stromkosten?',
+    opts: ['Kosten = Energie (kWh) · Preis pro kWh', 'Kosten = Leistung · Spannung', 'Kosten = Preis / Energie'], correct: 0,
+    fb: ['Richtig! Energie in kWh mal Preis pro kWh.',
+         'Das ergibt nicht die Kosten.',
+         'So herum stimmt die Formel nicht.'] },
+  { q: '3. Welches Gerät verursacht am meisten Kosten?',
+    opts: ['Eine 10-W-LED (3 h/Tag)', 'Ein 2000-W-Wasserkocher (1 h/Tag)', 'Beide gleich'], correct: 1,
+    fb: ['Die LED verbraucht sehr wenig.',
+         'Richtig! Hohe Leistung → viel Energie → mehr Kosten.',
+         'Die Geräte unterscheiden sich stark.'] }
+];
+function _kosMiniHTML() {
+  return _KOS_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_kosAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="kosFb${qi}"></div></div>`).join('');
+}
+function _kosAns(qi, oi) {
+  const m = _KOS_MINI[qi], el = document.getElementById('kosFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _kosSelf(n) {
+  const out = document.getElementById('kosSelfOut'), val = document.getElementById('kosSelfVal');
+  if (val) { val.value = String(n); _abSave('stromkosten'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
