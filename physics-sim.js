@@ -271,7 +271,10 @@ const _physAbDefs = {
   'totalreflexion': { titel: 'Wie funktioniert ein Lichtleiter?', ns: 'totalrefl', html: () => _totArbeitsblattHTML() },
   'prisma': { titel: 'Welche Farben stecken im weißen Licht?', ns: 'prisma', html: () => _priArbeitsblattHTML() },
   'regenbogen': { titel: 'Wie entstehen die Farben eines Regenbogens?', ns: 'regenbogen', html: () => _regArbeitsblattHTML() },
-  'farbmischung-additiv': { titel: 'Wie entstehen Farben auf einem Bildschirm?', ns: 'farbadd', html: () => _admArbeitsblattHTML() }
+  'farbmischung-additiv': { titel: 'Wie entstehen Farben auf einem Bildschirm?', ns: 'farbadd', html: () => _admArbeitsblattHTML() },
+  'himmelskoerper': { titel: 'Sonne, Mond und Sterne – was leuchtet am Himmel?', ns: 'himmel', html: () => _hksArbeitsblattHTML() },
+  'gravitation': { titel: 'Die Gravitation – warum fällt alles nach unten?', ns: 'gravitation', html: () => _grvArbeitsblattHTML() },
+  'teleskop': { titel: 'Das Teleskop – wie holt man ferne Objekte näher?', ns: 'teleskop', html: () => _tskArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -801,6 +804,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('admAnim', 'admAnim');
     _pSim.start(dt => _admUpdate(dt), (ctx, cv) => _admDraw(ctx, cv), []);
     _abRestore('farbadd');
+  },
+
+  // ── 7.3.1 SONNE, MOND UND STERNE ───────────────────────────────
+  'himmelskoerper': modal => {
+    _hksInit();
+    modal.innerHTML = _hksHTML();
+    _hksStatus();
+    _pSim = new PhysicsSimEngine('hksAnim', 'hksAnim');
+    _pSim.start(dt => _hksUpdate(dt), (ctx, cv) => _hksDraw(ctx, cv), []);
+    _abRestore('himmel');
+  },
+
+  // ── 7.3.3 GRAVITATION ──────────────────────────────────────────
+  'gravitation': modal => {
+    _grvInit();
+    modal.innerHTML = _grvHTML();
+    _grvStatus();
+    _pSim = new PhysicsSimEngine('grvAnim', 'grvAnim');
+    _pSim.start(dt => _grvUpdate(dt), (ctx, cv) => _grvDraw(ctx, cv), []);
+    _abRestore('gravitation');
+  },
+
+  // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
+  'teleskop': modal => {
+    _tskInit();
+    modal.innerHTML = _tskHTML();
+    _tskStatus();
+    _pSim = new PhysicsSimEngine('tskAnim', 'tskAnim');
+    _pSim.start(dt => _tskUpdate(dt), (ctx, cv) => _tskDraw(ctx, cv), []);
+    _abRestore('teleskop');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -46041,5 +46074,700 @@ function _admAns(qi, oi) {
 function _admSelf(n) {
   const out = document.getElementById('admSelfOut'), val = document.getElementById('admSelfVal');
   if (val) { val.value = String(n); _abSave('farbadd'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// KAPITEL 7.3 – BLICK INS WELTALL (Realschule NRW Klasse 7)
+// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// 7.3.1  SONNE, MOND UND STERNE – WAS LEUCHTET AM HIMMEL?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Blick ins Weltall"
+// Handlungsorientiert: Selbstleuchter (Sonne, Sterne) vs.
+// beleuchtete Körper (Mond, Planeten). Sonnenlicht an/aus.
+// ═══════════════════════════════════════════════════════
+let _hks = null;
+function _hksInit() { _hks = { sel: 'sonne', licht: true, t: 0 }; }
+
+function _hksHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim hks-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">✨ Sonne, Mond und Sterne – was leuchtet am Himmel?</h3>
+    <div class="fpm-note" style="margin-top:2px">Tippe einen Himmelskörper an. Schalte dann das Sonnenlicht aus. Welche Körper leuchten weiter – und welche werden dunkel?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="hksAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_hks.sel === 'sonne' ? ' primary' : ''}" id="hksSsonne" onclick="_hksSel('sonne')">☀️ Sonne</button>
+          <button class="sim-btn${_hks.sel === 'stern' ? ' primary' : ''}" id="hksSstern" onclick="_hksSel('stern')">⭐ Stern</button>
+          <button class="sim-btn${_hks.sel === 'mond' ? ' primary' : ''}" id="hksSmond" onclick="_hksSel('mond')">🌙 Mond</button>
+          <button class="sim-btn${_hks.sel === 'planet' ? ' primary' : ''}" id="hksSplanet" onclick="_hksSel('planet')">🪐 Planet</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" id="hksLicht" onclick="_hksLicht()">💡 Sonnenlicht: an</button>
+          <button class="sim-btn" onclick="_hksReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was leuchtet selbst?</div>
+        <div class="lmp-status" id="hksStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>Selbstleuchter</b> geben eigenes Licht ab: die <b>Sonne</b> und alle <b>Sterne</b> (Sterne sind ferne Sonnen). <b>Mond</b> und <b>Planeten</b> leuchten nicht selbst – wir sehen sie nur, weil die Sonne sie <b>beleuchtet</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Sonnenlicht aus → nur <b>Sonne & Sterne</b> leuchten weiter, <b>Mond & Planet</b> werden dunkel.
+    </p>
+    ${_hksArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _hksSel(s) {
+  _hks.sel = s;
+  ['sonne', 'stern', 'mond', 'planet'].forEach(k => document.getElementById('hksS' + k)?.classList.toggle('primary', k === s));
+  _hksStatus();
+}
+function _hksLicht() {
+  _hks.licht = !_hks.licht;
+  const b = document.getElementById('hksLicht'); if (b) b.textContent = '💡 Sonnenlicht: ' + (_hks.licht ? 'an' : 'aus');
+  _hksStatus();
+}
+function _hksReset() { _hksInit(); _hksSel('sonne'); const b = document.getElementById('hksLicht'); if (b) b.textContent = '💡 Sonnenlicht: an'; _hksStatus(); }
+function _hksSelbst(s) { return s === 'sonne' || s === 'stern'; }
+function _hksStatus() {
+  const el = document.getElementById('hksStatus'); if (!el) return;
+  const txt = {
+    sonne: '☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie.',
+    stern: '⭐ Sterne sind ferne Sonnen – sie leuchten selbst (Selbstleuchter).',
+    mond: '🌙 Der Mond leuchtet nicht selbst. Wir sehen ihn nur, weil die Sonne ihn beleuchtet.',
+    planet: '🪐 Planeten leuchten nicht selbst. Sie werden von der Sonne beleuchtet.'
+  }[_hks.sel];
+  let extra = '';
+  if (!_hks.licht) extra = ' Sonnenlicht ist aus: ' + (_hksSelbst(_hks.sel) ? 'Dieser Körper leuchtet trotzdem weiter.' : 'Dieser Körper ist jetzt dunkel.');
+  el.textContent = txt + extra;
+  el.className = 'lmp-status' + (_hksSelbst(_hks.sel) ? ' on' : '');
+}
+
+// ── Animation ──────────────────────────────────────────
+function _hksUpdate(dt) { if (_hks) _hks.t += dt; }
+function _hksDraw(ctx, cv) {
+  if (!_hks) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  // Hintergrundsterne
+  ctx.fillStyle = 'rgba(255,255,255,0.6)';
+  const bg = [[40, 200], [110, 60], [210, 30], [270, 90], [400, 200], [360, 130], [90, 190], [430, 60]];
+  bg.forEach((p, i) => { const tw = 0.4 + 0.4 * Math.abs(Math.sin(_hks.t * 2 + i)); ctx.globalAlpha = tw; ctx.beginPath(); ctx.arc(p[0], p[1], 1.3, 0, 2 * Math.PI); ctx.fill(); });
+  ctx.globalAlpha = 1;
+
+  const licht = _hks.licht;
+  // Objekte: {key,x,y,r,label}
+  const objs = [
+    { key: 'sonne', x: 80, y: 62, r: 26, label: 'Sonne' },
+    { key: 'stern', x: 360, y: 48, r: 6, label: 'Stern' },
+    { key: 'mond', x: 155, y: 158, r: 20, label: 'Mond' },
+    { key: 'planet', x: 330, y: 168, r: 18, label: 'Planet' }
+  ];
+  objs.forEach(o => {
+    const selbst = _hksSelbst(o.key);
+    const leuchtet = selbst || licht;   // beleuchtete nur wenn Sonnenlicht an
+    if (o.key === 'sonne') {
+      // Glühen
+      const g = ctx.createRadialGradient(o.x, o.y, 2, o.x, o.y, o.r + 18);
+      g.addColorStop(0, '#fff7cc'); g.addColorStop(0.5, '#fbbf24'); g.addColorStop(1, 'rgba(251,191,36,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(o.x, o.y, o.r + 18, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = '#fde68a'; ctx.beginPath(); ctx.arc(o.x, o.y, o.r, 0, 2 * Math.PI); ctx.fill();
+    } else if (o.key === 'stern') {
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath(); ctx.arc(o.x, o.y, o.r, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(o.x - 12, o.y); ctx.lineTo(o.x + 12, o.y); ctx.moveTo(o.x, o.y - 12); ctx.lineTo(o.x, o.y + 12); ctx.stroke();
+    } else {
+      // Mond / Planet: hell wenn beleuchtet, sonst dunkelgrau
+      ctx.fillStyle = leuchtet ? (o.key === 'mond' ? '#e5e7eb' : '#f59e0b') : '#3a3f4b';
+      ctx.beginPath(); ctx.arc(o.x, o.y, o.r, 0, 2 * Math.PI); ctx.fill();
+      if (leuchtet) { // Schattenseite andeuten
+        ctx.fillStyle = 'rgba(0,0,0,0.35)';
+        ctx.beginPath(); ctx.arc(o.x + o.r * 0.5, o.y, o.r, 0, 2 * Math.PI); ctx.fill();
+      }
+    }
+    // Auswahl-Ring
+    if (_hks.sel === o.key) {
+      ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.arc(o.x, o.y, o.r + 6, 0, 2 * Math.PI); ctx.stroke();
+    }
+    // Label
+    ctx.fillStyle = leuchtet ? '#e2e8f0' : '#64748b';
+    ctx.font = (_hks.sel === o.key ? '700 ' : '') + '11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(o.label + (selbst ? ' ✨' : ''), o.x, o.y + o.r + 15);
+  });
+  // Sonnenlicht-Strahlen (wenn an) von Sonne zu Mond/Planet
+  if (licht) {
+    ctx.strokeStyle = 'rgba(251,191,36,0.35)'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]);
+    [[155, 158], [330, 168]].forEach(p => { ctx.beginPath(); ctx.moveTo(96, 74); ctx.lineTo(p[0], p[1]); ctx.stroke(); });
+    ctx.setLineDash([]);
+  }
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(licht ? 'Sonnenlicht scheint' : 'Sonnenlicht aus', W / 2, 20);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.3.1  (ns = 'himmel') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _hksArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('himmel')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('himmel')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Leuchten alle Himmelskörper selbst – oder werden manche nur beleuchtet?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass … selbst leuchten und … nur beleuchtet werden.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Tippe nacheinander Sonne, Stern, Mond und Planet an.</li>
+          <li>Schalte das Sonnenlicht aus.</li>
+          <li>Beobachte, welche Körper weiter leuchten und welche dunkel werden.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtung</div>
+        <ol class="ab-ol">
+          <li>Welche Körper leuchten auch ohne Sonnenlicht weiter? ${inp('b1', '')}</li>
+          <li>Welche Körper werden ohne Sonnenlicht dunkel? ${inp('b2', '')}</li>
+          <li>Was ist ein Stern eigentlich? ${inp('b3', 'eine …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne Sonne, Stern, Mond und Planet. Male Pfeile vom Sonnenlicht zu den Körpern, die beleuchtet werden.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Sortiere: Selbstleuchter = ${inp('a1', 'Sonne, …')}</li>
+          <li>Beleuchtete Körper = ${inp('a2', 'Mond, …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die Sonne und die Sterne sind ${inp('m1', 'was?')} – sie geben eigenes Licht ab.<br>
+        Der Mond und die Planeten leuchten ${inp('m2', 'selbst/nicht selbst')}; wir sehen sie nur, weil die Sonne sie ${inp('m3', 'was tut?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Eine Straßenlaterne und der Mond leuchten beide in der Nacht. Was ist der große Unterschied zwischen ihnen?</div>
+        ${ta('tr1', 'Die Laterne … , der Mond dagegen …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="hksMini">${_hksMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_hksSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_hksSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_hksSelf(3)">😃 sicher</button>
+          <span id="hksSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="hksSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Ohne Sonnenlicht leuchten Sonne und Sterne weiter (Selbstleuchter), Mond und Planet werden dunkel (sie reflektieren nur das Sonnenlicht).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Sonne und Sterne sind selbstleuchtende Gasbälle (Fusion). Der Mond und die Planeten leuchten nicht selbst; sie werfen einen Teil des auftreffenden Sonnenlichts zurück (Reflexion). Sterne sind sehr weit entfernte Sonnen.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Mond leuchtet selbst." (2) „Sterne sind kleine Lichter/Lampen." (3) „Planeten sind kleine Sterne."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Sonnenlicht aus-/anschalten und vergleichen; Pfeile vom Sonnenlicht zeichnen; Alltagsbeispiel Lampe (Selbstleuchter) vs. angestrahltes Buch.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4.1 Sonne, Sterne · 4.2 Mond, Planet · 4.3 eine (ferne) Sonne. 6.1 Sonne, Sterne · 6.2 Mond, Planeten. Merksatz: Selbstleuchter · nicht selbst · beleuchtet. Transfer: Die Laterne leuchtet selbst (Selbstleuchter), der Mond wird nur von der Sonne beleuchtet. Minidiagnose: 1→Sonne und Sterne · 2→Die Sonne beleuchtet ihn · 3→Eine ferne Sonne.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('himmel')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('himmel', 'Sonne, Mond und Sterne – was leuchtet am Himmel?', body);
+}
+
+const _HKS_MINI = [
+  { q: '1. Welche Himmelskörper leuchten selbst?',
+    opts: ['Mond und Planeten', 'Sonne und Sterne', 'Nur der Mond'], correct: 1,
+    fb: ['Diese leuchten nicht selbst – sie werden beleuchtet.',
+         'Richtig! Sonne und Sterne sind Selbstleuchter.',
+         'Der Mond leuchtet gerade nicht selbst.'] },
+  { q: '2. Warum können wir den Mond sehen?',
+    opts: ['Er leuchtet selbst', 'Die Sonne beleuchtet ihn', 'Er ist aus Feuer'], correct: 1,
+    fb: ['Der Mond leuchtet nicht selbst.',
+         'Richtig! Wir sehen das von ihm zurückgeworfene Sonnenlicht.',
+         'Der Mond besteht aus Gestein, nicht aus Feuer.'] },
+  { q: '3. Was ist ein Stern?',
+    opts: ['Eine ferne Sonne', 'Ein beleuchteter Felsen', 'Ein Planet'], correct: 0,
+    fb: ['Richtig! Sterne sind sehr weit entfernte Sonnen.',
+         'Ein beleuchteter Felsen leuchtet nicht selbst – ein Stern schon.',
+         'Ein Planet leuchtet nicht selbst, ein Stern schon.'] }
+];
+function _hksMiniHTML() {
+  return _HKS_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_hksAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="hksFb${qi}"></div></div>`).join('');
+}
+function _hksAns(qi, oi) {
+  const m = _HKS_MINI[qi], el = document.getElementById('hksFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _hksSelf(n) {
+  const out = document.getElementById('hksSelfOut'), val = document.getElementById('hksSelfVal');
+  if (val) { val.value = String(n); _abSave('himmel'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.3.3  DIE GRAVITATION – WARUM FÄLLT ALLES NACH UNTEN?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Blick ins Weltall"
+// Handlungsorientiert: Masse zieht Masse an. Auf verschiedenen
+// Himmelskörpern ist die Anziehung (g) verschieden groß.
+// Ein 1-kg-Stein fällt – auf dem Jupiter schneller, auf dem Mond langsamer.
+// ═══════════════════════════════════════════════════════
+let _grv = null;
+const _GRV_KOERPER = {
+  mond: { name: 'Mond', g: 1.6, farbe: '#cbd5e1' },
+  erde: { name: 'Erde', g: 9.8, farbe: '#3b82f6' },
+  jupiter: { name: 'Jupiter', g: 24.8, farbe: '#f59e0b' }
+};
+function _grvInit() { _grv = { koerper: 'erde', t: 0, y: 0, vy: 0, faellt: false, unten: false }; }
+
+function _grvHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim grv-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌍 Die Gravitation – warum fällt alles nach unten?</h3>
+    <div class="fpm-note" style="margin-top:2px">Lass den gleichen Stein (1&nbsp;kg) auf verschiedenen Himmelskörpern fallen. Wo fällt er schneller? Wo ist seine Gewichtskraft am größten?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="grvAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_grv.koerper === 'mond' ? ' primary' : ''}" id="grvKmond" onclick="_grvSet('mond')">🌙 Mond</button>
+          <button class="sim-btn${_grv.koerper === 'erde' ? ' primary' : ''}" id="grvKerde" onclick="_grvSet('erde')">🌍 Erde</button>
+          <button class="sim-btn${_grv.koerper === 'jupiter' ? ' primary' : ''}" id="grvKjupiter" onclick="_grvSet('jupiter')">🪐 Jupiter</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" onclick="_grvDrop()">⬇ Stein fallen lassen</button>
+          <button class="sim-btn" onclick="_grvReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anziehung &amp; Gewichtskraft</div>
+        <div class="lmp-status" id="grvStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Jede Masse zieht jede andere Masse an – das ist die <b>Gravitation</b>. Je größer die Masse eines Himmelskörpers, desto <b>stärker</b> zieht er. Die Gewichtskraft berechnet man mit <b>F = m · g</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Gleicher Stein, gleiche Masse – aber <b>verschieden schnell</b>. Die Gravitation der Sonne hält auch die Planeten auf ihrer Bahn.
+    </p>
+    ${_grvArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _grvSet(k) {
+  _grv.koerper = k;
+  ['mond', 'erde', 'jupiter'].forEach(x => document.getElementById('grvK' + x)?.classList.toggle('primary', x === k));
+  _grvReset();
+}
+function _grvDrop() { _grv.y = 0; _grv.vy = 0; _grv.faellt = true; _grv.unten = false; _grvStatus(); }
+function _grvReset() { _grv.y = 0; _grv.vy = 0; _grv.faellt = false; _grv.unten = false; _grvStatus(); }
+function _grvStatus() {
+  const el = document.getElementById('grvStatus'); if (!el) return;
+  const k = _GRV_KOERPER[_grv.koerper];
+  const F = (1 * k.g).toFixed(1).replace('.', ',');
+  let strk = _grv.koerper === 'mond' ? 'am schwächsten' : (_grv.koerper === 'jupiter' ? 'am stärksten' : 'mittel');
+  el.textContent = `${k.name}: Fallbeschleunigung g = ${String(k.g).replace('.', ',')} m/s² (Anziehung ${strk}). Gewichtskraft eines 1-kg-Steins: F = m · g = ${F} N.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _grvUpdate(dt) {
+  if (!_grv) return;
+  _grv.t += dt;
+  if (_grv.faellt) {
+    const g = _GRV_KOERPER[_grv.koerper].g;
+    _grv.vy += g * 12 * dt;          // Skalierung für die Anzeige
+    _grv.y += _grv.vy * dt;
+    if (_grv.y >= 150) { _grv.y = 150; _grv.faellt = false; _grv.unten = true; _grvStatus(); }
+  }
+}
+function _grvDraw(ctx, cv) {
+  if (!_grv) return;
+  const W = cv.width, H = cv.height;
+  const k = _GRV_KOERPER[_grv.koerper];
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  // Boden (Oberfläche des Himmelskörpers)
+  const groundY = 60 + 150 + 16;
+  ctx.fillStyle = k.farbe; ctx.globalAlpha = 0.35; ctx.fillRect(0, groundY, W, H - groundY); ctx.globalAlpha = 1;
+  ctx.strokeStyle = k.farbe; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(0, groundY); ctx.lineTo(W, groundY); ctx.stroke();
+  // Turm/Startposition links, Stein
+  const stx = 120;
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2; ctx.setLineDash([5, 5]);
+  ctx.beginPath(); ctx.moveTo(stx, 60); ctx.lineTo(stx, groundY); ctx.stroke(); ctx.setLineDash([]);
+  // Stein
+  const sy = 60 + _grv.y;
+  ctx.fillStyle = '#94a3b8'; ctx.beginPath(); ctx.arc(stx, sy, 12, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('1 kg', stx + 16, sy + 4);
+  // Kraftpfeil (nach unten) – Länge ~ g
+  const pl = 8 + k.g * 3.2;
+  ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(stx + 40, sy); ctx.lineTo(stx + 40, sy + pl); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(stx + 36, sy + pl - 5); ctx.lineTo(stx + 40, sy + pl); ctx.lineTo(stx + 44, sy + pl - 5); ctx.stroke();
+  ctx.fillStyle = '#fca5a5'; ctx.font = '10px sans-serif'; ctx.fillText('F = ' + (k.g).toString().replace('.', ',') + ' N', stx + 48, sy + pl / 2);
+  // Titel + g-Balkenvergleich rechts
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Auf dem ' + k.name, W / 2 + 40, 22);
+  // g-Vergleichsbalken
+  const bx = 300, bw = 100; let by = 44;
+  Object.keys(_GRV_KOERPER).forEach(key => {
+    const kk = _GRV_KOERPER[key]; const frac = kk.g / 24.8;
+    ctx.fillStyle = key === _grv.koerper ? kk.farbe : 'rgba(148,163,184,0.4)';
+    ctx.fillRect(bx, by, bw * frac, 12);
+    ctx.fillStyle = '#cbd5e1'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(kk.name + ' g=' + String(kk.g).replace('.', ','), bx, by - 2);
+    by += 26;
+  });
+  if (_grv.unten) { ctx.fillStyle = '#86efac'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('aufgeschlagen', stx, groundY + 20); }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.3.3  (ns = 'gravitation') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _grvArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('gravitation')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('gravitation')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum fallen Dinge nach unten – und warum fällt derselbe Stein woanders schneller oder langsamer?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass der Stein auf dem/der … am schnellsten fällt, weil …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle einen Himmelskörper (Mond, Erde, Jupiter).</li>
+          <li>Lass den 1-kg-Stein fallen und beobachte die Geschwindigkeit.</li>
+          <li>Vergleiche die Gewichtskraft F, die angezeigt wird.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Trage g (Fallbeschleunigung) und die Gewichtskraft F = m·g für einen Stein mit m = 1 kg ein.</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Mond · g</td><td>${inp('g1', 'm/s²')}</td><td>Mond · F</td><td>${inp('f1', 'N')}</td></tr>
+          <tr><td>Erde · g</td><td>${inp('g2', 'm/s²')}</td><td>Erde · F</td><td>${inp('f2', 'N')}</td></tr>
+          <tr><td>Jupiter · g</td><td>${inp('g3', 'm/s²')}</td><td>Jupiter · F</td><td>${inp('f3', 'N')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne den Stein und den Kraftpfeil (Gewichtskraft) auf dem Mond und auf dem Jupiter. Welcher Pfeil ist länger?</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wo ist die Anziehung am stärksten? ${inp('a1', '')}</li>
+          <li>Wovon hängt die Stärke der Gravitation ab? ${inp('a2', 'von der …')}</li>
+          <li>Bleibt die Masse des Steins überall gleich? ${inp('a3', 'ja/nein')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Jede Masse zieht jede andere Masse an. Diese Anziehung heißt ${inp('m1', 'was?')}.<br>
+        Je ${inp('m2', 'größer/kleiner')} die Masse eines Himmelskörpers, desto stärker zieht er. Die Gewichtskraft berechnet man mit F = ${inp('m3', 'Formel')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Die Erde zieht den Mond an – trotzdem fällt der Mond nicht auf die Erde. Und die Sonne hält alle Planeten. Wie passt das zusammen?</div>
+        ${ta('tr1', 'Die Gravitation der Sonne hält die Planeten … , weil sie sich gleichzeitig …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="grvMini">${_grvMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_grvSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_grvSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_grvSelf(3)">😃 sicher</button>
+          <span id="grvSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="grvSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Auf dem Jupiter fällt der Stein am schnellsten, auf dem Mond am langsamsten. g: Mond 1,6 · Erde 9,8 · Jupiter 24,8 m/s². Gewichtskraft (m = 1 kg): Mond 1,6 N · Erde 9,8 N · Jupiter 24,8 N.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Gravitation ist die gegenseitige Anziehung von Massen; sie wächst mit der Masse und nimmt mit dem Abstand ab. Die Masse eines Körpers ist überall gleich, seine Gewichtskraft (F = m·g) hängt vom Himmelskörper ab. Ein Planet fällt nicht in die Sonne, weil er sich seitlich (tangential) bewegt – Anziehung und Bewegung ergeben eine geschlossene Bahn.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Schwerere Dinge fallen schneller." (2) „Im Weltall gibt es keine Gravitation." (3) „Masse und Gewicht sind dasselbe."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> g-Werte vorgeben; F = m·g gemeinsam ausrechnen; Masse (bleibt gleich) und Gewichtskraft (ändert sich) klar trennen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 1,6 / 9,8 / 24,8 m/s²; 1,6 / 9,8 / 24,8 N. 6.1 Jupiter · 6.2 von der Masse (und dem Abstand) · 6.3 ja. Merksatz: Gravitation · größer · m · g. Transfer: Die Gravitation der Sonne hält die Planeten auf ihrer Bahn, weil sie sich gleichzeitig seitlich bewegen. Minidiagnose: 1→Die Gravitation · 2→Auf dem Jupiter · 3→Die Gravitation der Sonne hält ihn.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('gravitation')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('gravitation', 'Die Gravitation – warum fällt alles nach unten?', body);
+}
+
+const _GRV_MINI = [
+  { q: '1. Was zieht den Stein zum Boden?',
+    opts: ['Der Wind', 'Die Gravitation (Massenanziehung)', 'Der Luftdruck'], correct: 1,
+    fb: ['Der Wind schiebt nur zur Seite.',
+         'Richtig! Die Gravitation zieht Massen zueinander.',
+         'Der Luftdruck ist dafür nicht verantwortlich.'] },
+  { q: '2. Wo ist die Gewichtskraft eines 1-kg-Steins am größten?',
+    opts: ['Auf dem Mond', 'Auf der Erde', 'Auf dem Jupiter'], correct: 2,
+    fb: ['Auf dem Mond ist die Anziehung am schwächsten.',
+         'Die Erde liegt in der Mitte.',
+         'Richtig! Der Jupiter hat die stärkste Anziehung (g = 24,8 m/s²).'] },
+  { q: '3. Warum fällt ein Planet nicht von seiner Bahn weg?',
+    opts: ['Die Gravitation der Sonne hält ihn', 'Im Weltall gibt es keine Gravitation', 'Weil er sehr leicht ist'], correct: 0,
+    fb: ['Richtig! Die Anziehung der Sonne hält ihn auf der Bahn.',
+         'Doch – gerade die Gravitation der Sonne wirkt hier.',
+         'Auch schwere Planeten bleiben auf ihrer Bahn.'] }
+];
+function _grvMiniHTML() {
+  return _GRV_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_grvAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="grvFb${qi}"></div></div>`).join('');
+}
+function _grvAns(qi, oi) {
+  const m = _GRV_MINI[qi], el = document.getElementById('grvFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _grvSelf(n) {
+  const out = document.getElementById('grvSelfOut'), val = document.getElementById('grvSelfVal');
+  if (val) { val.value = String(n); _abSave('gravitation'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.3.4  DAS TELESKOP – WIE HOLT MAN FERNE OBJEKTE NÄHER?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Blick ins Weltall"
+// Handlungsorientiert: Bloßes Auge vs. Teleskop. Ein Teleskop
+// sammelt mit einer großen Öffnung mehr Licht (heller) und
+// vergrößert das Bild (mehr Einzelheiten sichtbar).
+// ═══════════════════════════════════════════════════════
+let _tsk = null;
+function _tskInit() { _tsk = { mit: false, oeffnung: 'gross', t: 0 }; }
+
+function _tskHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim tsk-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔭 Das Teleskop – wie holt man ferne Objekte näher heran?</h3>
+    <div class="fpm-note" style="margin-top:2px">Schau den Mond zuerst mit bloßem Auge an, dann durch das Teleskop. Verändere die Öffnung (das große Objektiv). Was wird größer, was wird heller?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="tskAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${!_tsk.mit ? ' primary' : ''}" id="tskMauge" onclick="_tskMit(false)">👁 bloßes Auge</button>
+          <button class="sim-btn${_tsk.mit ? ' primary' : ''}" id="tskMtel" onclick="_tskMit(true)">🔭 mit Teleskop</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn${_tsk.oeffnung === 'klein' ? ' primary' : ''}" id="tskOklein" onclick="_tskOeff('klein')">◦ kleine Öffnung</button>
+          <button class="sim-btn${_tsk.oeffnung === 'gross' ? ' primary' : ''}" id="tskOgross" onclick="_tskOeff('gross')">◯ große Öffnung</button>
+          <button class="sim-btn" onclick="_tskReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was verändert sich?</div>
+        <div class="lmp-status" id="tskStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Ein Teleskop <b>vergrößert</b> das Bild (du siehst mehr Einzelheiten) und <b>sammelt Licht</b>: Je größer die <b>Öffnung</b> (das Objektiv), desto <b>heller</b> und lichtstärker das Bild – auch sehr lichtschwache Objekte werden sichtbar.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Teleskop = <b>vergrößern</b> + <b>Licht sammeln</b>. &nbsp;|&nbsp; Große Öffnung → helleres Bild.
+    </p>
+    ${_tskArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _tskMit(v) {
+  _tsk.mit = v;
+  document.getElementById('tskMauge')?.classList.toggle('primary', !v);
+  document.getElementById('tskMtel')?.classList.toggle('primary', v);
+  _tskStatus();
+}
+function _tskOeff(o) {
+  _tsk.oeffnung = o;
+  document.getElementById('tskOklein')?.classList.toggle('primary', o === 'klein');
+  document.getElementById('tskOgross')?.classList.toggle('primary', o === 'gross');
+  _tskStatus();
+}
+function _tskReset() { _tskInit(); _tskMit(false); _tskOeff('gross'); _tskStatus(); }
+function _tskStatus() {
+  const el = document.getElementById('tskStatus'); if (!el) return;
+  if (!_tsk.mit) {
+    el.textContent = '👁 Mit bloßem Auge ist der Mond klein und du erkennst kaum Einzelheiten. Sehr lichtschwache Objekte bleiben unsichtbar.';
+    el.className = 'lmp-status';
+  } else {
+    const hell = _tsk.oeffnung === 'gross' ? 'hell und lichtstark' : 'nur mäßig hell';
+    el.textContent = `🔭 Mit Teleskop erscheint der Mond stark vergrößert – du siehst Krater. Öffnung ${_tsk.oeffnung}: Das Bild ist ${hell} (große Öffnung sammelt mehr Licht).`;
+    el.className = 'lmp-status on';
+  }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _tskUpdate(dt) { if (_tsk) _tsk.t += dt; }
+function _tskDraw(ctx, cv) {
+  if (!_tsk) return;
+  const W = cv.width, H = cv.height, cx = W / 2, cy = H / 2 - 6;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#05070f'; ctx.fillRect(0, 0, W, H);
+  // Hintergrundsterne
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  const bg = [[40, 40], [120, 200], [300, 30], [400, 120], [70, 150], [360, 190], [200, 210]];
+  bg.forEach((p, i) => { ctx.globalAlpha = 0.4 + 0.4 * Math.abs(Math.sin(_tsk.t * 2 + i)); ctx.beginPath(); ctx.arc(p[0], p[1], 1.2, 0, 2 * Math.PI); ctx.fill(); });
+  ctx.globalAlpha = 1;
+
+  // Sichtfeld-Kreis (Teleskop-Ansicht) bzw. weiter Himmel
+  const withTel = _tsk.mit;
+  const r = withTel ? 92 : 26;
+  const bright = withTel ? (_tsk.oeffnung === 'gross' ? 1 : 0.55) : 0.5;
+  // Mondscheibe
+  ctx.save();
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.clip();
+  const base = Math.round(120 + 110 * bright);
+  ctx.fillStyle = `rgb(${base},${base},${Math.round(base * 0.95)})`;
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.fill();
+  // Krater nur bei Teleskop sichtbar
+  if (withTel) {
+    const craters = [[-30, -20, 14], [25, 10, 20], [10, -35, 9], [-15, 30, 12], [40, -25, 8], [-45, 15, 7], [0, 5, 6]];
+    craters.forEach(c => {
+      ctx.fillStyle = `rgba(60,60,70,${0.35 * bright + 0.15})`;
+      ctx.beginPath(); ctx.arc(cx + c[0], cy + c[1], c[2], 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = `rgba(255,255,255,${0.25 * bright})`; ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.arc(cx + c[0], cy + c[1], c[2], 0, 2 * Math.PI); ctx.stroke();
+    });
+  }
+  ctx.restore();
+  // Rand des Sichtfelds
+  ctx.strokeStyle = withTel ? '#93c5fd' : 'rgba(148,163,184,0.5)'; ctx.lineWidth = withTel ? 3 : 1.5;
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.stroke();
+
+  // Teleskop-Symbol unten links + Öffnungs-Anzeige
+  if (withTel) {
+    const od = _tsk.oeffnung === 'gross' ? 26 : 13;
+    ctx.fillStyle = '#334155'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(20, H - 20); ctx.lineTo(70, H - 20); ctx.lineTo(70, H - 20 - od); ctx.lineTo(20, H - 20 - od * 0.5); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#bfdbfe'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Öffnung: ' + _tsk.oeffnung, 20, H - 24 - od);
+  }
+  // Titel
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(withTel ? 'Blick durch das Teleskop' : 'Blick mit bloßem Auge', cx, 20);
+  ctx.font = '10px sans-serif'; ctx.fillStyle = '#94a3b8';
+  ctx.fillText('Mond', cx, cy + r + 16);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.3.4  (ns = 'teleskop') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _tskArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('teleskop')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('teleskop')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie schafft es ein Teleskop, ferne Objekte größer und heller erscheinen zu lassen?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass ich mit dem Teleskop … sehe, weil …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Betrachte den Mond zuerst mit bloßem Auge.</li>
+          <li>Schalte auf Teleskop um – was ändert sich an Größe und Einzelheiten?</li>
+          <li>Vergleiche kleine und große Öffnung. Was passiert mit der Helligkeit?</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>bloßes Auge – Größe</td><td>${inp('b1', 'klein/groß')}</td><td>Einzelheiten?</td><td>${inp('b2', 'ja/nein')}</td></tr>
+          <tr><td>Teleskop – Größe</td><td>${inp('b3', 'klein/groß')}</td><td>Krater sichtbar?</td><td>${inp('b4', 'ja/nein')}</td></tr>
+          <tr><td>große Öffnung</td><td>${inp('b5', 'heller/dunkler')}</td><td>kleine Öffnung</td><td>${inp('b6', 'heller/dunkler')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne den Mond so, wie du ihn mit bloßem Auge siehst, und daneben so, wie du ihn durchs Teleskop siehst.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was macht ein Teleskop mit dem Bild? ${inp('a1', 'es …')}</li>
+          <li>Wozu dient eine große Öffnung? ${inp('a2', 'um … zu sammeln')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ein Teleskop ${inp('m1', 'was tut es?')} das Bild und sammelt ${inp('m2', 'was?')}.<br>
+        Je größer die ${inp('m3', 'was?')}, desto heller wird das Bild – auch lichtschwache Objekte werden sichtbar.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum baut man Sternwarten mit riesigen Spiegeln (mehrere Meter Durchmesser) und stellt sie auf hohe Berge?</div>
+        ${ta('tr1', 'Große Spiegel sammeln … , und auf hohen Bergen ist die Luft …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="tskMini">${_tskMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_tskSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_tskSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_tskSelf(3)">😃 sicher</button>
+          <span id="tskSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="tskSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Mit bloßem Auge ist der Mond klein, kaum Einzelheiten. Mit Teleskop stark vergrößert, Krater sichtbar. Große Öffnung → helleres Bild, kleine Öffnung → dunkler.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Ein Teleskop hat zwei Aufgaben: (1) Vergrößerung V = f(Objektiv) / f(Okular) – mehr Einzelheiten; (2) Lichtsammlung – die gesammelte Lichtmenge wächst mit der Fläche des Objektivs/Spiegels (∝ Durchmesser²), daher werden lichtschwache Objekte sichtbar. Es gibt Linsenteleskope (Refraktoren) und Spiegelteleskope (Reflektoren).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Das Teleskop bringt die Objekte wirklich näher." (2) „Ein Teleskop macht nur größer, nicht heller." (3) „Die Öffnung ist egal."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Vergrößern und Lichtsammeln als zwei getrennte Aufgaben benennen; Öffnung klein/groß direkt vergleichen; Alltagsbezug Fernglas.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4: klein / nein · groß / ja · heller / dunkler. 6.1 „vergrößert es und sammelt Licht" · 6.2 „um mehr Licht zu sammeln". Merksatz: vergrößert · Licht · Öffnung. Transfer: Große Spiegel sammeln sehr viel Licht (lichtschwache, ferne Objekte werden sichtbar); auf hohen Bergen ist die Luft klarer und ruhiger. Minidiagnose: 1→Es sammelt mehr Licht und vergrößert · 2→Es wird mehr Licht gesammelt (heller) · 3→Durch die Linsen/Spiegel.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('teleskop')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('teleskop', 'Das Teleskop – wie holt man ferne Objekte näher?', body);
+}
+
+const _TSK_MINI = [
+  { q: '1. Warum sieht man mit einem Teleskop mehr?',
+    opts: ['Es sammelt mehr Licht und vergrößert', 'Es bringt die Sterne wirklich näher', 'Es macht Sterne mit Strom heller'], correct: 0,
+    fb: ['Richtig! Ein Teleskop vergrößert und sammelt mehr Licht.',
+         'Die Objekte bleiben, wo sie sind – nur das Bild wird größer.',
+         'Ein Teleskop hat keinen Strom und erzeugt kein eigenes Licht.'] },
+  { q: '2. Was bewirkt eine größere Öffnung (Objektiv)?',
+    opts: ['Das Bild wird dunkler', 'Es wird mehr Licht gesammelt (heller)', 'Gar nichts'], correct: 1,
+    fb: ['Genau umgekehrt – größer heißt heller.',
+         'Richtig! Eine große Öffnung sammelt mehr Licht.',
+         'Die Öffnung ist entscheidend für die Helligkeit.'] },
+  { q: '3. Wodurch entsteht die Vergrößerung?',
+    opts: ['Durch die Linsen bzw. Spiegel des Teleskops', 'Durch die Erddrehung', 'Durch die Farbe des Glases'], correct: 0,
+    fb: ['Richtig! Linsen oder Spiegel erzeugen das vergrößerte Bild.',
+         'Die Erddrehung vergrößert nichts.',
+         'Die Farbe des Glases ist dafür nicht verantwortlich.'] }
+];
+function _tskMiniHTML() {
+  return _TSK_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_tskAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="tskFb${qi}"></div></div>`).join('');
+}
+function _tskAns(qi, oi) {
+  const m = _TSK_MINI[qi], el = document.getElementById('tskFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _tskSelf(n) {
+  const out = document.getElementById('tskSelfOut'), val = document.getElementById('tskSelfVal');
+  if (val) { val.value = String(n); _abSave('teleskop'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
