@@ -241,7 +241,10 @@ const _physAbDefs = {
   'schatten-entstehung': { titel: 'Wie entsteht ein Schatten?', ns: 'schatten3', html: () => _sctArbeitsblattHTML() },
   'kern-halbschatten': { titel: 'Wie entstehen Kern- und Halbschatten?', ns: 'kernschatten', html: () => _khsArbeitsblattHTML() },
   'temperatur-waerme': { titel: 'Sind Temperatur und Wärme das Gleiche?', ns: 'tempwaerme', html: () => _twArbeitsblattHTML() },
-  'thermometer': { titel: 'Wie funktioniert ein Thermometer?', ns: 'thermometer', html: () => _thmArbeitsblattHTML() }
+  'thermometer': { titel: 'Wie funktioniert ein Thermometer?', ns: 'thermometer', html: () => _thmArbeitsblattHTML() },
+  'waermeausdehnung': { titel: 'Was geschieht beim Erwärmen von Stoffen?', ns: 'ausdehnung', html: () => _wauArbeitsblattHTML() },
+  'aggregatzustaende': { titel: 'Wie verändern sich Aggregatzustände?', ns: 'aggregat', html: () => _aggArbeitsblattHTML() },
+  'waermeuebertragung': { titel: 'Wie wird Wärme übertragen?', ns: 'waermeueb', html: () => _wueArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -471,6 +474,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('thmAnim', 'thmAnim');
     _pSim.start(dt => _thmUpdate(dt), (ctx, cv) => _thmDraw(ctx, cv), []);
     _abRestore('thermometer');
+  },
+
+  // ── 6.1.3 WÄRMEAUSDEHNUNG ──────────────────────────────────────
+  'waermeausdehnung': modal => {
+    _wauInit();
+    modal.innerHTML = _wauHTML();
+    _wauStatus();
+    _pSim = new PhysicsSimEngine('wauAnim', 'wauAnim');
+    _pSim.start(dt => _wauUpdate(dt), (ctx, cv) => _wauDraw(ctx, cv), []);
+    _abRestore('ausdehnung');
+  },
+
+  // ── 6.1.4 AGGREGATZUSTÄNDE ─────────────────────────────────────
+  'aggregatzustaende': modal => {
+    _aggInit();
+    modal.innerHTML = _aggHTML();
+    _aggStatus();
+    _pSim = new PhysicsSimEngine('aggAnim', 'aggAnim');
+    _pSim.start(dt => _aggUpdate(dt), (ctx, cv) => _aggDraw(ctx, cv), []);
+    _abRestore('aggregat');
+  },
+
+  // ── 6.1.5 WÄRMEÜBERTRAGUNG ─────────────────────────────────────
+  'waermeuebertragung': modal => {
+    _wueInit();
+    modal.innerHTML = _wueHTML();
+    _wueSet('leitung');
+    _pSim = new PhysicsSimEngine('wueAnim', 'wueAnim');
+    _pSim.start(dt => _wueUpdate(dt), (ctx, cv) => _wueDraw(ctx, cv), []);
+    _abRestore('waermeueb');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -39610,5 +39643,664 @@ function _thmAns(qi, oi) {
 function _thmSelf(n) {
   const out = document.getElementById('thmSelfOut'), val = document.getElementById('thmSelfVal');
   if (val) { val.value = String(n); _abSave('thermometer'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.1.3  WAS GESCHIEHT BEIM ERWÄRMEN VON STOFFEN?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Sonnenenergie und Wärme"
+// Handlungsorientiert: Festkörper, Flüssigkeit und Gas erwärmen. Die
+// Teilchen bewegen sich schneller und brauchen mehr Platz → der Stoff
+// dehnt sich aus. Gase dehnen sich am stärksten aus. Teilchenmodell.
+// ═══════════════════════════════════════════════════════
+
+let _wau = null;
+const _WAU_STATE = {
+  fest:     { n: 'Festkörper (Metallstab)', coef: 0.12, cols: 6, rows: 4, jit: 3 },
+  fluessig: { n: 'Flüssigkeit (Wasser)',    coef: 0.30, cols: 5, rows: 4, jit: 6 },
+  gas:      { n: 'Gas (Luft)',              coef: 1.10, cols: 3, rows: 3, jit: 16 }
+};
+function _wauInit() { _wau = { state: 'fest', T: 20, t: 0 }; }
+function _wauCoef() { return _WAU_STATE[_wau.state].coef; }
+function _wauFactor() { return 1 + _wauCoef() * _wau.T / 100; }   // Ausdehnung (relativ)
+
+function _wauHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim wau-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌡️➡️ Was geschieht beim Erwärmen von Stoffen?</h3>
+    <div class="fpm-note" style="margin-top:2px">Erwärme einen Festkörper, eine Flüssigkeit und ein Gas. Beobachte die Teilchen und die Größe des Stoffs. Was passiert – und welcher Stoff dehnt sich am meisten aus?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="wauAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_wau.state === 'fest' ? ' primary' : ''}" id="wauS0" onclick="_wauSetState('fest')">🧱 fest</button>
+          <button class="sim-btn${_wau.state === 'fluessig' ? ' primary' : ''}" id="wauS1" onclick="_wauSetState('fluessig')">💧 flüssig</button>
+          <button class="sim-btn${_wau.state === 'gas' ? ' primary' : ''}" id="wauS2" onclick="_wauSetState('gas')">💨 Gas</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Temperatur einstellen</div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Temperatur: <b id="wauTLbl">20 °C</b></span>
+          <input type="range" id="wauT" min="0" max="100" step="5" value="20"
+            oninput="_wauSetT(this.value)" style="width:100%;accent-color:#ef4444">
+        </div>
+        <div class="lmp-status" id="wauStatus"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>Teilchenmodell:</b> Beim Erwärmen bewegen sich die Teilchen schneller und brauchen mehr Platz. Der Stoff dehnt sich aus. <b>Gase</b> dehnen sich am stärksten aus, Festkörper am wenigsten.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Warm → Teilchen schneller → mehr Platz → <b>Ausdehnung</b>. &nbsp;|&nbsp; Kalt → Teilchen langsamer → <b>Zusammenziehen</b>.
+    </p>
+    ${_wauArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _wauSetT(v) {
+  _wau.T = +v; const el = document.getElementById('wauTLbl'); if (el) el.textContent = _fpmNum(+v, 0) + ' °C'; _wauStatus();
+}
+function _wauSetState(s) {
+  _wau.state = s;
+  for (const [i, k] of ['fest', 'fluessig', 'gas'].entries()) document.getElementById('wauS' + i)?.classList.toggle('primary', k === s);
+  _wauStatus();
+}
+function _wauStatus() {
+  const el = document.getElementById('wauStatus'); if (!el) return;
+  const pct = (_wauFactor() - 1) * 100;
+  el.textContent = _WAU_STATE[_wau.state].n + ': Ausdehnung ≈ ' + _fpmNum(pct, 0) + ' % (bei ' + _fpmNum(_wau.T, 0) + ' °C).';
+  el.className = 'lmp-status ' + (_wau.T > 40 ? 'on' : '');
+}
+
+// ── Animation ──────────────────────────────────────────
+function _wauUpdate(dt) { if (_wau) _wau.t += dt; }
+function _wauDraw(ctx, cv) {
+  if (!_wau) return;
+  const W = cv.width, H = cv.height, cfg = _WAU_STATE[_wau.state], f = _wauFactor();
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  // Teilchenbox
+  const bx = 40, by = 40, bw = 180, bh = 160;
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.strokeRect(bx, by, bw, bh);
+  ctx.fillStyle = '#475569'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Teilchen', bx + bw / 2, by - 8);
+  const amp = cfg.jit * (0.3 + _wau.T / 100), spread = Math.min(1, 0.4 + _wau.T / 130);
+  const cols = cfg.cols, rows = cfg.rows;
+  const gw = (bw - 30) * (_wau.state === 'gas' ? spread + 0.3 : 1), gh = (bh - 30) * (_wau.state === 'gas' ? spread + 0.3 : 1);
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+    const idx = r * cols + c;
+    const baseX = bx + 15 + (cols > 1 ? gw * c / (cols - 1) : gw / 2);
+    const baseY = by + 15 + (rows > 1 ? gh * r / (rows - 1) : gh / 2);
+    const jx = Math.sin(_wau.t * (2 + _wau.T / 30) + idx * 1.3) * amp;
+    const jy = Math.cos(_wau.t * (2 + _wau.T / 25) + idx * 0.9) * amp;
+    ctx.fillStyle = _wau.T > 55 ? '#ef4444' : (_wau.T > 25 ? '#f97316' : '#3b82f6');
+    ctx.beginPath(); ctx.arc(baseX + jx, baseY + jy, 6, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Makroskopische Ausdehnung (Balken)
+  const mx = 260, my = 70, mw0 = 120, mh0 = 26;
+  ctx.fillStyle = '#475569'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Größe des Stoffs:', mx, my - 12);
+  ctx.strokeStyle = '#cbd5e1'; ctx.setLineDash([4, 3]); ctx.strokeRect(mx, my, mw0 * (1 + cfg.coef), mh0); ctx.setLineDash([]);
+  ctx.fillStyle = '#7c3aed'; ctx.fillRect(mx, my, mw0 * f, mh0);
+  ctx.fillStyle = '#fff'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('+' + _fpmNum((f - 1) * 100, 0) + ' %', mx + mw0 * f / 2, my + 17);
+  // Vergleichsbalken der drei Zustände bei aktueller Temperatur
+  ctx.textAlign = 'left'; ctx.font = '10px sans-serif';
+  const comp = [['fest', '#3b82f6'], ['fluessig', '#06b6d4'], ['gas', '#ef4444']];
+  comp.forEach((cc, i) => {
+    const cf = 1 + _WAU_STATE[cc[0]].coef * _wau.T / 100;
+    const yy = my + 60 + i * 24;
+    ctx.fillStyle = '#94a3b8'; ctx.fillText(_WAU_STATE[cc[0]].n.split(' ')[0], mx - 0, yy - 2);
+    ctx.fillStyle = cc[1]; ctx.fillRect(mx + 54, yy - 11, 90 * (cf - 1) / 1.1 + 4, 12);
+  });
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.fillText('Ausdehnung bei ' + _fpmNum(_wau.T, 0) + ' °C', mx, my + 60 + 3 * 24 + 4);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.1.3  (ns = 'ausdehnung') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _wauArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('ausdehnung')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('ausdehnung')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was passiert mit einem Stoff und seinen Teilchen, wenn man ihn erwärmt?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute: Beim Erwärmen wird der Stoff … und die Teilchen …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle den <b>Festkörper</b> und erhöhe die Temperatur. Beobachte Teilchen und Größe.</li>
+          <li>Wiederhole das mit <b>Flüssigkeit</b> und <b>Gas</b> bei gleicher Temperatur.</li>
+          <li>Vergleiche: Welcher Stoff dehnt sich am meisten aus?</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Stoff</td><td>Ausdehnung bei 100 °C</td></tr>
+          <tr><td>Festkörper</td><td>${inp('t_fest', 'wenig/mittel/viel')}</td></tr>
+          <tr><td>Flüssigkeit</td><td>${inp('t_fl', '')}</td></tr>
+          <tr><td>Gas</td><td>${inp('t_gas', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Teilchen bei niedriger und bei hoher Temperatur. Zeige, dass sie mehr Platz brauchen.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was machen die Teilchen beim Erwärmen? ${inp('a1', 'sie bewegen sich … und brauchen …')}</li>
+          <li>Welcher Stoff dehnt sich am stärksten aus? ${inp('a2', '')}</li>
+          <li>Was passiert beim Abkühlen? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Beim Erwärmen bewegen sich die Teilchen ${inp('m1', 'schneller/langsamer')} und brauchen mehr Platz → der Stoff ${inp('m2', 'dehnt sich aus / zieht sich zusammen')}.<br>
+        Am stärksten dehnen sich ${inp('m3', 'welche Stoffe?')} aus.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Brücken haben in der Fahrbahn kleine Lücken (Dehnungsfugen), und Stromleitungen hängen im Sommer stärker durch. Erkläre beides mit der Wärmeausdehnung.</div>
+        ${ta('tr1', 'Dehnungsfugen braucht man, weil … Stromleitungen …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="wauMini">${_wauMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_wauSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_wauSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_wauSelf(3)">😃 sicher</button>
+          <span id="wauSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="wauSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Alle drei Stoffe dehnen sich beim Erwärmen aus; die Teilchen bewegen sich schneller (größere Zappelbewegung) und rücken auseinander. Reihenfolge der Ausdehnung: Gas ≫ Flüssigkeit > Festkörper.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Wärme erhöht die Teilchenbewegung → mittlerer Abstand wächst → Volumen/Länge nimmt zu (Wärmeausdehnung). Gase dehnen sich am stärksten aus, weil ihre Teilchen ohnehin frei beweglich sind. Die Teilchenzahl bleibt konstant.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Teilchen selbst werden größer." (2) „Es kommen Teilchen dazu." (3) „Feste Stoffe dehnen sich gar nicht aus."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Betonen: nicht die Teilchen wachsen, sondern die Abstände; Gas/Flüssigkeit/Fest bei gleicher Temperatur vergleichen; Alltagsbeispiele (Bimetall, Dehnungsfuge).</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 „schneller / mehr Platz" · 6.2 „Gase" · 6.3 „zieht sich zusammen". Merksatz: schneller · dehnt sich aus · Gase. Transfer: Dehnungsfugen geben der sich ausdehnenden Fahrbahn Platz; warme Leitungen werden länger und hängen durch. Minidiagnose: 1→„schneller, mehr Platz" · 2→Gas · 3→„Dehnungsfuge/Ausdehnung".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('ausdehnung')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('ausdehnung', 'Was geschieht beim Erwärmen von Stoffen?', body);
+}
+
+const _WAU_MINI = [
+  { q: '1. Was machen die Teilchen, wenn man einen Stoff erwärmt?',
+    opts: ['Sie werden größer', 'Sie bewegen sich schneller und brauchen mehr Platz', 'Sie verschwinden'], correct: 1,
+    fb: ['Die Teilchen selbst werden nicht größer.',
+         'Richtig! Sie bewegen sich schneller und brauchen mehr Platz → Ausdehnung.',
+         'Sie bleiben erhalten, nur ihr Abstand wächst.'] },
+  { q: '2. Welcher Stoff dehnt sich beim Erwärmen am stärksten aus?',
+    opts: ['Festkörper', 'Flüssigkeit', 'Gas'], correct: 2,
+    fb: ['Festkörper dehnen sich am wenigsten aus.',
+         'Flüssigkeiten dehnen sich mittel aus.',
+         'Richtig! Gase dehnen sich am stärksten aus.'] },
+  { q: '3. Warum haben Brücken Dehnungsfugen (kleine Lücken)?',
+    opts: ['Zum Sparen von Material', 'Damit die Fahrbahn sich bei Wärme ausdehnen kann', 'Für den Wasserablauf'], correct: 1,
+    fb: ['Am Material sparen ist nicht der Grund.',
+         'Richtig! Die warme Fahrbahn dehnt sich aus und braucht Platz.',
+         'Es geht um die Wärmeausdehnung, nicht um Wasser.'] }
+];
+function _wauMiniHTML() {
+  return _WAU_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_wauAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="wauFb${qi}"></div></div>`).join('');
+}
+function _wauAns(qi, oi) {
+  const m = _WAU_MINI[qi], el = document.getElementById('wauFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _wauSelf(n) {
+  const out = document.getElementById('wauSelfOut'), val = document.getElementById('wauSelfVal');
+  if (val) { val.value = String(n); _abSave('ausdehnung'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.1.4  WIE VERÄNDERN SICH AGGREGATZUSTÄNDE?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Sonnenenergie und Wärme"
+// Handlungsorientiert: Wasser von −20 °C bis 120 °C erwärmen/abkühlen.
+// fest (Eis) – flüssig (Wasser) – gasförmig (Dampf). Übergänge:
+// Schmelzen/Erstarren bei 0 °C, Verdampfen/Kondensieren bei 100 °C.
+// Teilchenmodell: fest = geordnet, flüssig = dicht+beweglich, gas = frei.
+// ═══════════════════════════════════════════════════════
+
+let _agg = null;
+function _aggInit() { _agg = { T: 20, t: 0 }; }
+function _aggState() { return _agg.T <= 0 ? 'fest' : (_agg.T >= 100 ? 'gas' : 'fluessig'); }
+
+function _aggHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim agg-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🧊💧💨 Wie verändern sich Aggregatzustände?</h3>
+    <div class="fpm-note" style="margin-top:2px">Erwärme und kühle Wasser. Beobachte, wann es fest, flüssig oder gasförmig wird – und wie sich die Teilchen anordnen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="aggAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_aggStep(-15)">❄️ abkühlen</button>
+          <button class="sim-btn" onclick="_aggStep(15)">🔥 erwärmen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Temperatur einstellen</div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Temperatur: <b id="aggTLbl">20 °C</b></span>
+          <input type="range" id="aggT" min="-20" max="120" step="5" value="20"
+            oninput="_aggSetT(this.value)" style="width:100%;accent-color:#ef4444">
+        </div>
+        <div class="lmp-status" id="aggStatus"></div>
+        <div class="fpm-note" style="margin-top:10px">Bei <b>0 °C</b> schmilzt Eis (fest → flüssig) bzw. erstarrt Wasser (flüssig → fest). Bei <b>100 °C</b> verdampft Wasser (flüssig → gasförmig) bzw. kondensiert Dampf (gasförmig → flüssig).</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>fest</b> (Teilchen geordnet) → <b>flüssig</b> (dicht, beweglich) → <b>gasförmig</b> (frei, schnell)
+    </p>
+    ${_aggArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _aggSetT(v) { _agg.T = +v; const el = document.getElementById('aggTLbl'); if (el) el.textContent = _fpmNum(+v, 0) + ' °C'; _aggStatus(); }
+function _aggStep(d) {
+  _agg.T = Math.max(-20, Math.min(120, _agg.T + d));
+  const sl = document.getElementById('aggT'); if (sl) sl.value = _agg.T;
+  _aggSetT(_agg.T);
+}
+function _aggStatus() {
+  const el = document.getElementById('aggStatus'); if (!el) return;
+  const s = _aggState();
+  const txt = s === 'fest' ? '🧊 Eis – fest (Teilchen sitzen fest in einem Gitter).'
+    : s === 'gas' ? '💨 Wasserdampf – gasförmig (Teilchen fliegen frei und schnell).'
+      : '💧 Wasser – flüssig (Teilchen dicht beieinander, aber beweglich).';
+  el.textContent = txt; el.className = 'lmp-status ' + (s === 'gas' ? 'off' : 'on');
+}
+
+// ── Animation ──────────────────────────────────────────
+function _aggUpdate(dt) { if (_agg) _agg.t += dt; }
+function _aggDraw(ctx, cv) {
+  if (!_agg) return;
+  const W = cv.width, H = cv.height, s = _aggState();
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  // Teilchenbox
+  const bx = 40, by = 30, bw = 200, bh = 150;
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.strokeRect(bx, by, bw, bh);
+  const N = s === 'gas' ? 10 : 24;
+  const amp = s === 'fest' ? 2 : (s === 'fluessig' ? 6 : 20);
+  const spd = s === 'fest' ? 3 : (s === 'fluessig' ? 5 : 9);
+  for (let i = 0; i < N; i++) {
+    let baseX, baseY;
+    if (s === 'fest') { const c = i % 6, r = Math.floor(i / 6); baseX = bx + 26 + c * 30; baseY = by + 24 + r * 34; }
+    else if (s === 'fluessig') { const c = i % 6, r = Math.floor(i / 6); baseX = bx + 24 + c * 30 + (r % 2) * 8; baseY = by + bh - 90 + r * 26; }
+    else { baseX = bx + 20 + ((i * 53) % (bw - 40)); baseY = by + 20 + ((i * 37) % (bh - 40)); }
+    const jx = Math.sin(_agg.t * spd + i * 1.7) * amp, jy = Math.cos(_agg.t * spd + i * 1.1) * amp;
+    ctx.fillStyle = s === 'fest' ? '#3b82f6' : (s === 'fluessig' ? '#06b6d4' : '#ef4444');
+    ctx.beginPath(); ctx.arc(baseX + jx, baseY + jy, 6, 0, 2 * Math.PI); ctx.fill();
+    if (s === 'fest') { ctx.strokeStyle = 'rgba(59,130,246,0.3)'; ctx.lineWidth = 1; ctx.strokeRect(baseX - 12, baseY - 12, 24, 24); }
+  }
+  // Zustandsanzeige
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(s === 'fest' ? '🧊 fest (Eis)' : s === 'gas' ? '💨 gasförmig (Dampf)' : '💧 flüssig (Wasser)', 260, 44);
+  // Temperaturskala mit Übergängen
+  const sx = 260, sw = 150, sy = 90;
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(sx, sy, sw, 14);
+  const frac = (_agg.T + 20) / 140;
+  ctx.fillStyle = '#7c3aed'; ctx.fillRect(sx, sy, sw * frac, 14);
+  // Marker 0 und 100
+  [[0, 'Schmelzen 0°C'], [100, 'Sieden 100°C']].forEach(m => {
+    const fx = sx + sw * (m[0] + 20) / 140;
+    ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(fx, sy - 4); ctx.lineTo(fx, sy + 18); ctx.stroke();
+    ctx.fillStyle = '#334155'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(m[1], fx, sy + 30);
+  });
+  ctx.fillStyle = '#7c3aed'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(_fpmNum(_agg.T, 0) + ' °C', sx, sy - 8);
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif';
+  ctx.fillText('fest  ·  flüssig  ·  gasförmig', sx, sy + 46);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.1.4  (ns = 'aggregat') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _aggArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('aggregat')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('aggregat')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie wird aus Eis Wasser und aus Wasser Dampf – und was tun dabei die Teilchen?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute: Eis wird bei … °C zu Wasser, Wasser bei … °C zu Dampf.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Kühle das Wasser unter 0 °C. Welcher Zustand? Wie sitzen die Teilchen?</li>
+          <li>Erwärme langsam über 0 °C und dann über 100 °C. Beobachte die Übergänge.</li>
+          <li>Notiere, bei welcher Temperatur sich der Zustand ändert.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Temperatur</td><td>Zustand</td><td>Teilchen</td></tr>
+          <tr><td>−10 °C</td><td>${inp('t_a', 'fest/flüssig/gasförmig')}</td><td>${inp('t_at', 'geordnet/…')}</td></tr>
+          <tr><td>50 °C</td><td>${inp('t_b', '')}</td><td>${inp('t_bt', '')}</td></tr>
+          <tr><td>110 °C</td><td>${inp('t_c', '')}</td><td>${inp('t_ct', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Teilchen im festen, flüssigen und gasförmigen Zustand.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung – Übergänge benennen</div>
+        <ol class="ab-ol">
+          <li>fest → flüssig heißt ${inp('a1', '?')} (bei 0 °C).</li>
+          <li>flüssig → gasförmig heißt ${inp('a2', '?')} (bei 100 °C).</li>
+          <li>gasförmig → flüssig heißt ${inp('a3', '?')}, flüssig → fest heißt ${inp('a4', '?')}.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Im <b>festen</b> Zustand sitzen die Teilchen ${inp('m1', 'geordnet/frei')}, im <b>flüssigen</b> sind sie dicht, aber beweglich, im <b>gasförmigen</b> fliegen sie ${inp('m2', 'wie?')}.<br>
+        Wasser schmilzt bei ${inp('m3', '°C')} und siedet bei ${inp('m4', '°C')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Eine Pfütze trocknet in der Sonne, und eine kalte Brille beschlägt im warmen Raum. Welcher Übergang steckt jeweils dahinter?</div>
+        ${ta('tr1', 'Die Pfütze trocknet durch … , die Brille beschlägt durch …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="aggMini">${_aggMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_aggSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_aggSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_aggSelf(3)">😃 sicher</button>
+          <span id="aggSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="aggSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> −10 °C fest (Teilchen geordnet), 50 °C flüssig (dicht, beweglich), 110 °C gasförmig (frei, schnell). Übergänge bei 0 °C (Schmelzen/Erstarren) und 100 °C (Verdampfen/Kondensieren).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Aggregatzustände hängen von der Teilchenbewegung ab. Schmelzen/Verdampfen brauchen Energie, Erstarren/Kondensieren geben Energie ab (in Kl. 6 qualitativ). Fixpunkte für Wasser: 0 °C und 100 °C (Normaldruck).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Beim Schmelzen verschwinden Teilchen." (2) „Dampf ist die sichtbare Wolke" (der sichtbare Nebel ist bereits kondensiert). (3) „Erstarren = Verdampfen rückwärts."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Teilchenbilder der drei Zustände zeichnen lassen; Übergangsnamen paarweise (hin/zurück) lernen; Alltagsbezüge Pfütze/Brille.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 Schmelzen · 6.2 Verdampfen (Sieden) · 6.3 Kondensieren / Erstarren. Merksatz: geordnet · frei/schnell · 0 · 100. Transfer: Pfütze → Verdunsten/Verdampfen; Brille → Kondensieren. Minidiagnose: 1→Schmelzen · 2→Verdampfen · 3→„geordnet".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('aggregat')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('aggregat', 'Wie verändern sich Aggregatzustände?', body);
+}
+
+const _AGG_MINI = [
+  { q: '1. Wie heißt der Übergang von fest zu flüssig?',
+    opts: ['Schmelzen', 'Verdampfen', 'Erstarren'], correct: 0,
+    fb: ['Richtig! fest → flüssig heißt Schmelzen (bei 0 °C).',
+         'Verdampfen ist flüssig → gasförmig.',
+         'Erstarren ist genau andersherum (flüssig → fest).'] },
+  { q: '2. Wie heißt der Übergang von flüssig zu gasförmig?',
+    opts: ['Kondensieren', 'Verdampfen', 'Schmelzen'], correct: 1,
+    fb: ['Kondensieren ist andersherum.',
+         'Richtig! flüssig → gasförmig heißt Verdampfen (bei 100 °C).',
+         'Schmelzen betrifft festes Eis.'] },
+  { q: '3. Wie sind die Teilchen im festen Zustand angeordnet?',
+    opts: ['Frei und schnell', 'Geordnet und fest an ihrem Platz', 'Es gibt keine Teilchen'], correct: 1,
+    fb: ['Das gilt für Gase.',
+         'Richtig! Im Festkörper sitzen die Teilchen geordnet an ihrem Platz.',
+         'Teilchen gibt es in jedem Zustand.'] }
+];
+function _aggMiniHTML() {
+  return _AGG_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_aggAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="aggFb${qi}"></div></div>`).join('');
+}
+function _aggAns(qi, oi) {
+  const m = _AGG_MINI[qi], el = document.getElementById('aggFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _aggSelf(n) {
+  const out = document.getElementById('aggSelfOut'), val = document.getElementById('aggSelfVal');
+  if (val) { val.value = String(n); _abSave('aggregat'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.1.5  WIE WIRD WÄRME ÜBERTRAGEN?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Sonnenenergie und Wärme"
+// Handlungsorientiert: drei Arten der Wärmeübertragung wählen und
+// beobachten – Wärmeleitung (Kontakt, Metall), Wärmeströmung
+// (Konvektion, warme Flüssigkeit/Luft steigt auf) und Wärmestrahlung
+// (ohne Materie, z. B. Sonne).
+// ═══════════════════════════════════════════════════════
+
+let _wue = null;
+const _WUE_MODE = {
+  leitung:   { n: 'Wärmeleitung', ic: '🥄', d: 'Wärme wandert durch direkten Kontakt von Teilchen zu Teilchen – besonders gut in Metallen (z. B. der Löffel im heißen Tee).' },
+  stroemung: { n: 'Wärmeströmung (Konvektion)', ic: '♨️', d: 'In Flüssigkeiten und Gasen steigt das warme, leichtere Material auf, das kalte sinkt ab – es entsteht eine Strömung (z. B. Heizung erwärmt den Raum).' },
+  strahlung: { n: 'Wärmestrahlung', ic: '☀️', d: 'Wärme wird als Strahlung übertragen – ganz ohne Materie, sogar durch den leeren Raum (z. B. die Sonne wärmt die Erde).' }
+};
+function _wueInit() { _wue = { mode: 'leitung', t: 0 }; }
+
+function _wueHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim wue-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔥 Wie wird Wärme übertragen?</h3>
+    <div class="fpm-note" style="margin-top:2px">Es gibt drei Wege, wie Wärme von warm nach kalt gelangt. Wähle einen aus und beobachte, wie die Wärme sich bewegt.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="wueAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_wue.mode === 'leitung' ? ' primary' : ''}" id="wueM0" onclick="_wueSet('leitung')">🥄 Leitung</button>
+          <button class="sim-btn${_wue.mode === 'stroemung' ? ' primary' : ''}" id="wueM1" onclick="_wueSet('stroemung')">♨️ Strömung</button>
+          <button class="sim-btn${_wue.mode === 'strahlung' ? ' primary' : ''}" id="wueM2" onclick="_wueSet('strahlung')">☀️ Strahlung</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Das passiert gerade</div>
+        <div class="wir-um" id="wueDesc" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:12px">Beispiele</div>
+        <div class="fpm-note" style="margin-top:4px">
+          🥄 <b>Leitung:</b> Löffel im Tee, Bügeleisen, Kochtopf.<br>
+          ♨️ <b>Strömung:</b> Heizkörper, kochendes Wasser, Wind.<br>
+          ☀️ <b>Strahlung:</b> Sonne, Lagerfeuer, Grill, Heizstrahler.
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Leitung</b> (Kontakt) &nbsp;|&nbsp; <b>Strömung</b> (warm steigt auf) &nbsp;|&nbsp; <b>Strahlung</b> (ohne Materie)
+    </p>
+    ${_wueArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _wueSet(m) {
+  _wue.mode = m;
+  for (const [i, k] of ['leitung', 'stroemung', 'strahlung'].entries()) document.getElementById('wueM' + i)?.classList.toggle('primary', k === m);
+  const d = document.getElementById('wueDesc'); if (d) d.innerHTML = '<b>' + _WUE_MODE[m].ic + ' ' + _WUE_MODE[m].n + ':</b> ' + _WUE_MODE[m].d;
+}
+
+// ── Animation ──────────────────────────────────────────
+function _wueUpdate(dt) { if (_wue) _wue.t += dt; }
+function _wueDraw(ctx, cv) {
+  if (!_wue) return;
+  const W = cv.width, H = cv.height, m = _wue.mode, cy = H / 2;
+  ctx.clearRect(0, 0, W, H);
+  if (m === 'leitung') {
+    ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+    // Metallstab
+    const rx = 70, rw = 300, ry = cy - 16;
+    for (let i = 0; i < rw; i++) {
+      const pos = i / rw;                      // 0 links (heiß) .. 1 rechts (kalt)
+      const front = (_wue.t * 0.25) % 1.3;      // Wärmefront wandert
+      const hot = Math.max(0, 1 - Math.abs(pos - Math.min(front, 1)) * 3 - pos * 0.5);
+      const r = Math.round(120 + 135 * Math.min(1, hot + (1 - pos) * 0.6));
+      ctx.fillStyle = `rgb(${r},${Math.round(120 - hot * 60)},${Math.round(160 - hot * 120)})`;
+      ctx.fillRect(rx + i, ry, 1, 32);
+    }
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2; ctx.strokeRect(rx, ry, rw, 32);
+    // Flamme links
+    ctx.fillStyle = '#f97316'; ctx.beginPath(); ctx.moveTo(rx - 6, ry + 40); ctx.quadraticCurveTo(rx + 4, ry + 10, rx - 2, ry - 6); ctx.quadraticCurveTo(rx + 16, ry + 14, rx + 10, ry + 40); ctx.fill();
+    ctx.fillStyle = '#334155'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('heiß', rx + 20, ry - 12); ctx.fillText('kalt', rx + rw - 20, ry - 12);
+    ctx.fillText('Wärme wandert durch das Metall →', W / 2, ry + 60);
+  } else if (m === 'stroemung') {
+    ctx.fillStyle = '#eff6ff'; ctx.fillRect(0, 0, W, H);
+    // Topf mit Wasser
+    const px = 120, pw = 200, pt = 55, pb = H - 55;
+    ctx.fillStyle = '#dbeafe'; ctx.fillRect(px, pt, pw, pb - pt);
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 3; ctx.strokeRect(px, pt, pw, pb - pt);
+    // Flamme unten
+    ctx.fillStyle = '#f97316'; for (let k = 0; k < 5; k++) { const fx = px + 30 + k * 35; ctx.beginPath(); ctx.moveTo(fx - 7, pb + 20); ctx.quadraticCurveTo(fx, pb + 2, fx, pb + 22); ctx.quadraticCurveTo(fx + 7, pb + 2, fx + 7, pb + 20); ctx.fill(); }
+    // Konvektionspfeile (warm steigt Mitte, kalt sinkt außen)
+    ctx.lineWidth = 3; ctx.strokeStyle = '#ef4444';
+    const ph = ((_wue.t * 40) % (pb - pt - 20));
+    ctx.beginPath(); ctx.moveTo(px + pw / 2, pb - 10 - ph); ctx.lineTo(px + pw / 2, pb - 20 - ph + 14); ctx.stroke();  // warm hoch
+    ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.arc(px + pw / 2, pb - 10 - ph, 5, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#3b82f6'; ctx.fillStyle = '#3b82f6';
+    ctx.beginPath(); ctx.arc(px + 30, pt + 20 + ph, 5, 0, 2 * Math.PI); ctx.fill();       // kalt runter
+    ctx.beginPath(); ctx.arc(px + pw - 30, pt + 20 + ph, 5, 0, 2 * Math.PI); ctx.fill();
+    // Umlauf-Pfeile
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(px + pw / 2 - 45, cy, 40, -Math.PI / 2, Math.PI / 2, true); ctx.stroke();
+    ctx.beginPath(); ctx.arc(px + pw / 2 + 45, cy, 40, -Math.PI / 2, Math.PI / 2, false); ctx.stroke();
+    ctx.fillStyle = '#334155'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('warmes Wasser steigt auf, kaltes sinkt', W / 2, pt - 12);
+  } else {
+    ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('leerer Raum (keine Materie nötig)', W / 2, 24);
+    // Sonne links
+    ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(70, cy, 26, 0, 2 * Math.PI); ctx.fill();
+    // Strahlungswellen
+    for (let k = 0; k < 5; k++) {
+      const rad = 40 + ((_wue.t * 60 + k * 55) % 300);
+      ctx.strokeStyle = `rgba(251,191,36,${Math.max(0, 0.7 - rad / 320)})`; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.arc(70, cy, rad, -0.7, 0.7); ctx.stroke();
+    }
+    // Objekt rechts wird warm
+    ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.arc(W - 70, cy, 22, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fca5a5'; ctx.font = '11px sans-serif'; ctx.fillText('wird warm', W - 70, cy + 40);
+    ctx.fillStyle = '#fde047'; ctx.fillText('Sonne', 70, cy + 44);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.1.5  (ns = 'waermeueb') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _wueArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('waermeueb')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('waermeueb')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Auf welchen Wegen kann Wärme von einem warmen zu einem kalten Ort gelangen?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, Wärme kann auf diese Arten übertragen werden: …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle nacheinander <b>Leitung</b>, <b>Strömung</b> und <b>Strahlung</b>.</li>
+          <li>Beobachte, wie sich die Wärme jeweils bewegt.</li>
+          <li>Ordne den drei Arten passende Alltagsbeispiele zu.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Art</td><td>Wie wird Wärme übertragen?</td><td>Beispiel</td></tr>
+          <tr><td>Wärmeleitung</td><td>${inp('t_l', 'durch …')}</td><td>${inp('t_lb', '')}</td></tr>
+          <tr><td>Wärmeströmung</td><td>${inp('t_s', 'warmes … steigt')}</td><td>${inp('t_sb', '')}</td></tr>
+          <tr><td>Wärmestrahlung</td><td>${inp('t_r', 'ohne …')}</td><td>${inp('t_rb', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne zu einer Art (z. B. Strömung) eine kleine Skizze mit Pfeilen.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Welche Art braucht direkten Kontakt? ${inp('a1', '')}</li>
+          <li>Bei welcher Art steigt Warmes auf? ${inp('a2', '')}</li>
+          <li>Welche Art funktioniert auch ohne Materie (im Weltall)? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t"><b>Wärmeleitung:</b> Wärme wandert durch ${inp('m1', 'was?')} (gut in Metallen).<br>
+        <b>Wärmeströmung:</b> warmes Wasser oder warme Luft ${inp('m2', 'steigt auf / sinkt')}.<br>
+        <b>Wärmestrahlung:</b> Wärme kommt ${inp('m3', 'mit/ohne')} Materie an (z. B. von der Sonne).</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ordne zu: (a) Ein Metalllöffel im heißen Tee wird warm. (b) Du hältst die Hand über ein Lagerfeuer. (c) Die Heizung erwärmt das ganze Zimmer.</div>
+        ${ta('tr1', 'a = … , b = … , c = …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="wueMini">${_wueMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_wueSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_wueSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_wueSelf(3)">😃 sicher</button>
+          <span id="wueSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="wueSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Leitung: Wärme wandert durch den Metallstab (Kontakt). Strömung: warmes Wasser steigt in der Mitte auf, kaltes sinkt außen ab (Konvektionswalze). Strahlung: Wärme gelangt als Strahlung durch den leeren Raum zum Objekt.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Wärmeleitung: Energie über Teilchenstöße, v. a. in Festkörpern/Metallen. Konvektion: Materietransport in Flüssigkeiten/Gasen (warm = geringere Dichte → steigt). Strahlung: elektromagnetische Wärmestrahlung, kein Medium nötig.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Strahlung braucht Luft." (2) „Kälte wird übertragen." (3) „Metalle sind warm/kalt von sich aus" (sie leiten nur gut).</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Für jede Art ein Realexperiment/Beispiel; Pfeile für Strömung zeichnen; Weltall-Argument für Strahlung (Vakuum).</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 Leitung · 6.2 Strömung · 6.3 Strahlung. Merksatz: Kontakt/Teilchen · steigt auf · ohne. Transfer: a = Leitung, b = Strahlung, c = Strömung. Minidiagnose: 1→Strahlung · 2→Leitung · 3→Strömung.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('waermeueb')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('waermeueb', 'Wie wird Wärme übertragen?', body);
+}
+
+const _WUE_MINI = [
+  { q: '1. Du hältst die Hand über ein Lagerfeuer und spürst die Wärme. Welche Art ist das?',
+    opts: ['Wärmeleitung', 'Wärmestrahlung', 'Wärmeströmung'], correct: 1,
+    fb: ['Du berührst das Feuer ja nicht.',
+         'Richtig! Die Wärme kommt als Strahlung zu deiner Hand.',
+         'Die aufsteigende Luft geht am Feuer eher nach oben – die Wärme, die du spürst, ist Strahlung.'] },
+  { q: '2. Ein Metalllöffel im heißen Tee wird am Griff warm. Welche Art ist das?',
+    opts: ['Wärmeleitung', 'Wärmestrahlung', 'Wärmeströmung'], correct: 0,
+    fb: ['Richtig! Wärme wandert durch das Metall (Leitung).',
+         'Strahlung braucht keinen Kontakt – hier ist es Kontakt.',
+         'Im festen Löffel strömt nichts.'] },
+  { q: '3. Warme Luft der Heizung steigt nach oben und erwärmt den Raum. Welche Art ist das?',
+    opts: ['Wärmeleitung', 'Wärmeströmung', 'Wärmestrahlung'], correct: 1,
+    fb: ['Luft leitet Wärme schlecht.',
+         'Richtig! Aufsteigende warme Luft ist Wärmeströmung (Konvektion).',
+         'Strahlung erwärmt nicht durch aufsteigende Luft.'] }
+];
+function _wueMiniHTML() {
+  return _WUE_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_wueAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="wueFb${qi}"></div></div>`).join('');
+}
+function _wueAns(qi, oi) {
+  const m = _WUE_MINI[qi], el = document.getElementById('wueFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _wueSelf(n) {
+  const out = document.getElementById('wueSelfOut'), val = document.getElementById('wueSelfVal');
+  if (val) { val.value = String(n); _abSave('waermeueb'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
