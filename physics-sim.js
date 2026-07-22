@@ -226,7 +226,10 @@ const _physAbDefs = {
   schwingung: { titel: 'Merkmale von Schwingungen', ns: 'schwingung', html: () => _swgArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
-  'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() }
+  'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
+  'magnetpole': { titel: 'Wie wirken Magnetpole aufeinander?', ns: 'magpole', html: () => _mpoArbeitsblattHTML() },
+  'magnetfeld': { titel: 'Wie sieht ein Magnetfeld aus?', ns: 'magfeld', html: () => _mffArbeitsblattHTML() },
+  'kompass': { titel: 'Wie funktioniert ein Kompass?', ns: 'kompass', html: () => _komArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -308,6 +311,36 @@ const _physSimDefs = {
     _mlabRenderTheorie(_elm, false);
     _mlabDrawPlot('elmPlot', _elm);
     _abRestore('elmag');
+  },
+
+  // ── 5.1.2 MAGNETPOLE (Anziehung/Abstoßung + Abstand) ───────────
+  'magnetpole': modal => {
+    _mpoInit();
+    modal.innerHTML = _mpoHTML();
+    _mpoRenderTable();
+    _pSim = new PhysicsSimEngine('mpoAnim', 'mpoPlot');
+    _pSim.start(dt => _mpoUpdate(dt), (ctx, cv) => _mpoDraw(ctx, cv), []);
+    _mlabRenderTheorie(_mpo, false);
+    _mlabDrawPlot('mpoPlot', _mpo);
+    _abRestore('magpole');
+  },
+
+  // ── 5.1.3 MAGNETFELD / FELDLINIEN ──────────────────────────────
+  'magnetfeld': modal => {
+    _mffInit();
+    modal.innerHTML = _mffHTML();
+    _pSim = new PhysicsSimEngine('mffAnim', 'mffAnim');
+    _pSim.start(dt => {}, (ctx, cv) => _mffDraw(ctx, cv), []);
+    _abRestore('magfeld');
+  },
+
+  // ── 5.1.4 KOMPASS ──────────────────────────────────────────────
+  'kompass': modal => {
+    _komInit();
+    modal.innerHTML = _komHTML();
+    _pSim = new PhysicsSimEngine('komAnim', 'komAnim');
+    _pSim.start(dt => _komUpdate(dt), (ctx, cv) => _komDraw(ctx, cv), []);
+    _abRestore('kompass');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -36030,5 +36063,774 @@ function _elmAns(qi, oi) {
 function _elmSelf(n) {
   const out = document.getElementById('elmSelfOut'), val = document.getElementById('elmSelfVal');
   if (val) { val.value = String(n); _abSave('elmag'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 5.1.2  WIE WIRKEN MAGNETPOLE AUFEINANDER?
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Strom und Magnetismus"
+// Handlungsorientiert: zwei Stabmagnete. Umschalten zwischen
+// gleichen Polen (Abstoßung) und ungleichen Polen (Anziehung).
+// Abstand verändern → Kraftmesser messen → Kraft ~ 1/d² (fallende
+// Kurve): je kleiner der Abstand, desto größer die Kraft.
+// ═══════════════════════════════════════════════════════
+
+const _MPO_C = 60;         // Modellkonstante: F = C / d²
+let _mpo = null;
+
+function _mpoF(d) { return _MPO_C / (d * d); }
+
+const _MPO_PRESETS = [
+  { tab: 'Abstand d → Kraft F', xl: 'Abstand d in cm', yl: 'Kraft F (Skalenteile)',
+    x: r => r.d, y: r => r.F, grp: r => 0,
+    gl: () => 'Kraftmessung', curve: true,
+    col: () => _MLAB_PALETTE[4],
+    curveFn: (xv) => _MPO_C / (xv * xv),
+    note: 'Keine Gerade, sondern eine fallende Kurve: F ~ 1/d². Je kleiner der Abstand d, desto größer die Kraft. Ganz nah beieinander ziehen (oder stoßen) sich die Magnete sehr stark.',
+    typ: 'fallende Kurve (je näher, desto stärker)', form: 'F wird größer, wenn d kleiner wird',
+    param: () => 'Kraftmesser in Skalenteilen',
+    term: () => _MPO_C.toString() + '/(x*x)',
+    deutung: 'Die Kraft zwischen zwei Magneten nimmt mit größerem Abstand schnell ab – und bei kleinem Abstand stark zu.' }
+];
+
+function _mpoInit() {
+  _mpo = {
+    orient: 'anz', d: 5, flash: 0,
+    rows: [], nextId: 1, preset: 0, fn: null, fnAuto: false, origin: false, showTheory: false,
+    pre: 'mpo', plotId: 'mpoPlot', fitId: 'mpoFit', fnId: 'mpoFn', fnErrId: 'mpoErr', theoId: 'mpoTheo',
+    presets: _MPO_PRESETS, marks: [2, 3, 4, 5, 6, 8, 10]
+  };
+}
+
+function _mpoHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim mpo-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🧲🧲 Wie wirken Magnetpole aufeinander?</h3>
+    <div class="fpm-note" style="margin-top:2px">Zwei Stabmagnete. Schalte zwischen gleichen und ungleichen Polen um und verändere den Abstand. Beobachte Anziehung/Abstoßung und miss die Kraft.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="mpoAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_mpo.orient === 'anz' ? ' primary' : ''}" id="mpoO0" onclick="_mpoSetOrient('anz')">➡️⬅️ ungleiche Pole (N–S)</button>
+          <button class="sim-btn${_mpo.orient === 'abst' ? ' primary' : ''}" id="mpoO1" onclick="_mpoSetOrient('abst')">⬅️➡️ gleiche Pole (N–N)</button>
+        </div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Abstand d: <b id="mpoDLbl">5 cm</b></span>
+          <input type="range" id="mpoVar" min="2" max="12" step="1" value="5"
+            oninput="_mpoSetD(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="fpm-note" style="margin-top:4px">Kraftmesser zeigt: <b id="mpoFLbl">${_fpmNum(_mpoF(5), 1)} Skalenteile</b> &nbsp;·&nbsp; <b id="mpoWirk">Anziehung</b></div>
+      </div>
+      <div>
+        <div class="fpm-label">Messung – Abstand einstellen, dann Messwert übernehmen</div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" onclick="_mpoMessen()">＋ Messwert übernehmen</button>
+          <button class="sim-btn" onclick="_mpoDemo()">📋 Beispielmessreihe</button>
+          <button class="sim-btn" onclick="_mpoClear()">🗑 Tabelle leeren</button>
+        </div>
+        <div class="fpm-tablewrap">
+          <table class="sim-table">
+            <thead><tr><th>Abstand d (cm)</th><th>Kraft F</th><th></th></tr></thead>
+            <tbody id="mpoTbody"></tbody>
+          </table>
+          <div class="fpm-empty" id="mpoEmpty">Noch keine Messwerte.<br>Abstand einstellen → „Messwert übernehmen".</div>
+        </div>
+      </div>
+    </div>
+    <div class="fpm-label" style="margin-top:12px">Auswertung – trage die Kraft F über den Abstand d auf</div>
+    ${_mlabAuswertungHTML(_mpo, { preset: '_mpoSetPreset', setfn: '_mpoSetFn', theo: '_mpoTheorieFn', clear: '_mpoClearFn', bool: '_mpoSetBool' })}
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Gleiche Pole stoßen sich ab, ungleiche ziehen sich an.</b> &nbsp;|&nbsp; Je kleiner der Abstand, desto größer die Kraft.
+    </p>
+    ${_mpoArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _mpoSetD(v) {
+  _mpo.d = +v;
+  const el = document.getElementById('mpoDLbl'); if (el) el.textContent = _fpmNum(+v, 0) + ' cm';
+  const fl = document.getElementById('mpoFLbl'); if (fl) fl.textContent = _fpmNum(_mpoF(+v), 1) + ' Skalenteile';
+}
+function _mpoSetOrient(o) {
+  _mpo.orient = o;
+  document.getElementById('mpoO0')?.classList.toggle('primary', o === 'anz');
+  document.getElementById('mpoO1')?.classList.toggle('primary', o === 'abst');
+  const w = document.getElementById('mpoWirk'); if (w) w.textContent = o === 'anz' ? 'Anziehung' : 'Abstoßung';
+  _mpo.flash = 1;
+}
+function _mpoMessRow(d) {
+  const Ft = _mpoF(d) * (1 + (Math.random() - 0.5) * 0.04);
+  return { d, F: Math.round(Ft * 10) / 10 };
+}
+function _mpoMessen() { const r = _mpoMessRow(_mpo.d); _mpoAddRow(r); _mpo.flash = 1; }
+function _mpoDemo() {
+  _mpo.marks.forEach(d => { const r = _mpoMessRow(d); _mpo.rows.push({ id: _mpo.nextId++, d: r.d, F: r.F }); });
+  _mpoRenderTable(); _mlabDrawPlot('mpoPlot', _mpo);
+}
+function _mpoAddRow(r) { _mpo.rows.push({ id: _mpo.nextId++, d: r.d, F: r.F }); _mpoRenderTable(); _mlabDrawPlot('mpoPlot', _mpo); }
+function _mpoDelRow(id) { _mpo.rows = _mpo.rows.filter(r => r.id !== id); _mpoRenderTable(); _mlabDrawPlot('mpoPlot', _mpo); }
+function _mpoClear() {
+  if (_mpo.rows.length && !confirm('Alle ' + _mpo.rows.length + ' Messwerte löschen?')) return;
+  _mpo.rows = []; _mpoRenderTable(); _mlabDrawPlot('mpoPlot', _mpo);
+}
+function _mpoRenderTable() {
+  const tb = document.getElementById('mpoTbody'); if (!tb) return;
+  const empty = document.getElementById('mpoEmpty');
+  if (empty) empty.style.display = _mpo.rows.length ? 'none' : 'block';
+  tb.innerHTML = _mpo.rows.map(r =>
+    `<tr><td><span class="fpm-dot" style="background:${_MLAB_PALETTE[4]}"></span>${_fpmNum(r.d, 0)}</td>
+       <td><b>${_fpmNum(r.F, 1)}</b></td>
+       <td class="fpm-del" onclick="_mpoDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+
+// ── Wiring ─────────────────────────────────────────────
+function _mpoSetPreset(i) { _mlabSetPreset(_mpo, i); }
+function _mpoSetFn(s) { _mlabSetFn(_mpo, s); }
+function _mpoTheorieFn() { _mlabTheorieFn(_mpo); }
+function _mpoClearFn() { _mlabClearFn(_mpo); }
+function _mpoSetBool(k, v) { _mpo[k] = v; _mlabDrawPlot('mpoPlot', _mpo); }
+
+// ── Animation ──────────────────────────────────────────
+function _mpoUpdate(dt) { if (_mpo) _mpo.flash = Math.max(0, _mpo.flash - dt * 1.2); }
+function _mpoBar(ctx, x, y, w, h, leftLabel, leftCol, rightCol) {
+  ctx.fillStyle = leftCol; ctx.fillRect(x, y, w / 2, h);
+  ctx.fillStyle = rightCol; ctx.fillRect(x + w / 2, y, w / 2, h);
+  ctx.fillStyle = '#fff'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(leftLabel, x + w / 4, y + h / 2);
+  ctx.fillText(leftLabel === 'N' ? 'S' : 'N', x + 3 * w / 4, y + h / 2);
+  ctx.textBaseline = 'alphabetic';
+}
+function _mpoDraw(ctx, cv) {
+  if (!_mpo) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f0f9ff'; ctx.fillRect(0, 0, W, H);
+  const midY = H / 2 + 4, mw = 96, mh = 40;
+  const anz = _mpo.orient === 'anz';
+  // linker Magnet fest: N | S  (S zeigt nach rechts)
+  const lx = 60;
+  _mpoBar(ctx, lx, midY - mh / 2, mw, mh, 'N', '#dc2626', '#2563eb');
+  // rechter Magnet: Abstand skaliert
+  const gap = 20 + _mpo.d * 12;
+  const rx = lx + mw + gap;
+  // Anziehung: linke Seite des rechten Magneten = N (ungleich zu S) → N|S
+  // Abstoßung: linke Seite = S (gleich wie S) → S|N
+  if (anz) _mpoBar(ctx, rx, midY - mh / 2, mw, mh, 'N', '#dc2626', '#2563eb');
+  else _mpoBar(ctx, rx, midY - mh / 2, mw, mh, 'S', '#2563eb', '#dc2626');
+  // Kraftpfeile
+  const F = _mpoF(_mpo.d), aLen = Math.min(34, 8 + F * 1.6);
+  ctx.strokeStyle = _mpo.flash > 0.3 ? '#f97316' : '#16a34a'; ctx.fillStyle = ctx.strokeStyle; ctx.lineWidth = 3;
+  const arrY = midY - mh / 2 - 14;
+  const drawArrow = (x, dir) => {
+    ctx.beginPath(); ctx.moveTo(x, arrY); ctx.lineTo(x + dir * aLen, arrY); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x + dir * aLen, arrY); ctx.lineTo(x + dir * aLen - dir * 6, arrY - 4); ctx.lineTo(x + dir * aLen - dir * 6, arrY + 4); ctx.closePath(); ctx.fill();
+  };
+  if (anz) { drawArrow(lx + mw, 1); drawArrow(rx, -1); }      // zueinander
+  else { drawArrow(lx + mw, -1); drawArrow(rx, 1); }          // voneinander weg
+  // Abstandslinie
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(lx + mw, midY + mh / 2 + 12); ctx.lineTo(rx, midY + mh / 2 + 12); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#334155'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('d = ' + _fpmNum(_mpo.d, 0) + ' cm', (lx + mw + rx) / 2, midY + mh / 2 + 26);
+  // Kraftmesser oben
+  ctx.fillStyle = '#334155'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText((anz ? '↔ Anziehung' : '⇄ Abstoßung') + '  ·  Kraft F = ' + _fpmNum(F, 1), 20, 22);
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(20, 28, 180, 8);
+  ctx.fillStyle = '#7c3aed'; ctx.fillRect(20, 28, Math.min(180, F * 12), 8);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.1.2  (ns = 'magpole') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _mpoArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('magpole')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('magpole')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wann ziehen sich zwei Magnete an, wann stoßen sie sich ab? Und wie hängt die Kraft vom Abstand ab?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute: Zwei Magnete ziehen sich an, wenn … Die Kraft ist am größten, wenn …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle <b>ungleiche Pole (N–S)</b> ein. Was passiert? Und bei <b>gleichen Polen (N–N)</b>?</li>
+          <li>Stelle nun <b>Anziehung</b> ein und verändere nur den <b>Abstand d</b> (2, 3, 4, 5, 6, 8, 10 cm).</li>
+          <li>Lies jeweils die Kraft am Kraftmesser ab und übernimm den Messwert.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Pole</td><td>ungleich (N–S)</td><td>${inp('p_ns', 'anziehen/abstoßen')}</td><td>gleich (N–N)</td><td>${inp('p_nn', 'anziehen/abstoßen')}</td></tr>
+        </tbody></table>
+        <table class="ab-table" style="margin-top:6px"><tbody>
+          <tr><td>Abstand d (cm)</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>8</td><td>10</td></tr>
+          <tr><td>Kraft F</td><td>${inp('f2', '')}</td><td>${inp('f3', '')}</td><td>${inp('f4', '')}</td><td>${inp('f5', '')}</td><td>${inp('f6', '')}</td><td>${inp('f8', '')}</td><td>${inp('f10', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne zwei Magnete bei Anziehung und zwei bei Abstoßung. Zeichne die Kraftpfeile ein.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Ungleiche Pole (N–S): ${inp('a1', 'anziehen/abstoßen')} — gleiche Pole (N–N): ${inp('a2', 'anziehen/abstoßen')}</li>
+          <li>Wie ändert sich die Kraft, wenn der Abstand größer wird? ${inp('a3', '')}</li>
+          <li>Wo ist die Kraft am größten – bei großem oder kleinem Abstand? ${inp('a4', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t"><b>Gleiche</b> Pole ${inp('m1', 'ziehen sich an / stoßen sich ab')}.<br>
+        <b>Ungleiche</b> Pole ${inp('m2', 'ziehen sich an / stoßen sich ab')}.<br>
+        Je ${inp('m3', 'kleiner/größer')} der Abstand, desto größer die Kraft.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Magnetverschluss an einer Tasche schnappt erst ganz am Ende plötzlich kräftig zu. Erkläre mit dem, was du über Abstand und Kraft gelernt hast.</div>
+        ${ta('tr1', 'Der Verschluss schnappt zu, weil …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="mpoMini">${_mpoMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_mpoSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_mpoSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_mpoSelf(3)">😃 sicher</button>
+          <span id="mpoSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="mpoSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> N–S: Anziehung; N–N (bzw. S–S): Abstoßung. Kraft F fällt mit wachsendem Abstand stark ab (Modell F ~ 1/d²): d = 2/3/4/5/6/8/10 cm → ≈ 15 / 6,7 / 3,8 / 2,4 / 1,7 / 0,9 / 0,6 Skalenteile.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Ungleichnamige Pole ziehen sich an, gleichnamige stoßen sich ab. Die Kraft nimmt mit dem Abstand rasch ab (überproportional). Für Kl. 5 genügt „je näher, desto stärker" – keine Formel.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Magnete ziehen sich immer an." (2) „Die Kraft nimmt gleichmäßig (linear) ab." (3) „Nur der Nordpol ist stark."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Pole farbig (N rot, S blau); Kraftpfeile einzeichnen lassen; nur den Abstand verändern, Pole gleich lassen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 anziehen / abstoßen · 6.2 „wird kleiner" · 6.3 „bei kleinem Abstand". Merksatz: stoßen sich ab · ziehen sich an · kleiner. Transfer: Bei kleinem Abstand wird die Kraft plötzlich sehr groß → „schnappt" zu. Minidiagnose: 1→abstoßen · 2→anziehen · 3→„kleiner Abstand".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('magpole')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('magpole', 'Wie wirken Magnetpole aufeinander?', body);
+}
+
+const _MPO_MINI = [
+  { q: '1. Was passiert, wenn sich zwei Nordpole (N–N) begegnen?',
+    opts: ['Sie ziehen sich an', 'Sie stoßen sich ab', 'Nichts'], correct: 1,
+    fb: ['Gleiche Pole ziehen sich nicht an. Probiere N–N in der Simulation.',
+         'Richtig! Gleiche Pole stoßen sich ab.',
+         'Es passiert sehr wohl etwas – sie stoßen sich ab.'] },
+  { q: '2. Nord- und Südpol (N–S) zusammen:',
+    opts: ['ziehen sich an', 'stoßen sich ab', 'schmelzen'], correct: 0,
+    fb: ['Richtig! Ungleiche Pole ziehen sich an.',
+         'Ungleiche Pole stoßen sich nicht ab.',
+         'Magnete schmelzen dabei natürlich nicht 🙂'] },
+  { q: '3. Wann ist die Kraft zwischen zwei Magneten am größten?',
+    opts: ['Bei großem Abstand', 'Bei kleinem Abstand', 'Der Abstand ist egal'], correct: 1,
+    fb: ['Bei großem Abstand ist die Kraft klein.',
+         'Richtig! Je kleiner der Abstand, desto größer die Kraft.',
+         'Der Abstand ist entscheidend – schau ins Diagramm.'] }
+];
+function _mpoMiniHTML() {
+  return _MPO_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_mpoAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="mpoFb${qi}"></div></div>`).join('');
+}
+function _mpoAns(qi, oi) {
+  const m = _MPO_MINI[qi], el = document.getElementById('mpoFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _mpoSelf(n) {
+  const out = document.getElementById('mpoSelfOut'), val = document.getElementById('mpoSelfVal');
+  if (val) { val.value = String(n); _abSave('magpole'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 5.1.3  WIE SIEHT EIN MAGNETFELD AUS?
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Strom und Magnetismus"
+// Handlungsorientiert: Stabmagnet mit kleinen Kompassnadeln ringsum.
+// Der Schüler bewegt einen großen Prüfkompass (Winkel + Abstand) und
+// beobachtet, wie sich die Nadel immer entlang des Feldes ausrichtet.
+// Feldlinien vom Nordpol zum Südpol einblendbar; dicht = stark.
+// ═══════════════════════════════════════════════════════
+
+let _mff = null;
+
+// Feld eines Stabmagneten als Summe zweier Monopole (N: +, S: −)
+function _magFieldAt(px, py, xN, yN, xS, yS) {
+  const dxN = px - xN, dyN = py - yN, rN = Math.hypot(dxN, dyN) + 4;
+  const dxS = px - xS, dyS = py - yS, rS = Math.hypot(dxS, dyS) + 4;
+  const bx = dxN / (rN * rN * rN) - dxS / (rS * rS * rS);
+  const by = dyN / (rN * rN * rN) - dyS / (rS * rS * rS);
+  return { bx, by };
+}
+
+function _mffInit() {
+  _mff = { angle: 40, radius: 95, showLines: true, showGrid: true };
+}
+
+function _mffHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim mff-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🧭 Wie sieht ein Magnetfeld aus?</h3>
+    <div class="fpm-note" style="margin-top:2px">Rund um den Magneten stehen kleine Kompassnadeln. Bewege den großen <b>Prüfkompass</b> und beobachte, wie sich seine Nadel dreht. Blende die Feldlinien ein.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="mffAnim" width="440" height="300" class="phys-anim-cv"></canvas>
+      </div>
+      <div>
+        <div class="fpm-label">Prüfkompass bewegen</div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Position (Winkel): <b id="mffALbl">40°</b></span>
+          <input type="range" id="mffAngle" min="0" max="360" step="5" value="40"
+            oninput="_mffSetAngle(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Abstand vom Magneten: <b id="mffRLbl">95</b></span>
+          <input type="range" id="mffRadius" min="55" max="140" step="5" value="95"
+            oninput="_mffSetRadius(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="sim-btn-row" style="margin-top:10px">
+          <button class="sim-btn primary" id="mffTL" onclick="_mffToggle('showLines')">🧵 Feldlinien</button>
+          <button class="sim-btn primary" id="mffTG" onclick="_mffToggle('showGrid')">🧭 Kompass-Raster</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Die kleine <b style="color:#dc2626">rote</b> Nadelspitze zeigt in Feldrichtung. Außerhalb zeigen die Linien immer vom <b style="color:#dc2626">Nordpol (N)</b> zum <b style="color:#2563eb">Südpol (S)</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Feldlinien verlaufen <b>vom Nordpol zum Südpol</b>. &nbsp;|&nbsp; Wo die Linien dicht sind (nah an den Polen), ist das Feld am stärksten.
+    </p>
+    ${_mffArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _mffSetAngle(v) { _mff.angle = +v; const e = document.getElementById('mffALbl'); if (e) e.textContent = _fpmNum(+v, 0) + '°'; }
+function _mffSetRadius(v) { _mff.radius = +v; const e = document.getElementById('mffRLbl'); if (e) e.textContent = _fpmNum(+v, 0); }
+function _mffToggle(k) {
+  _mff[k] = !_mff[k];
+  const id = k === 'showLines' ? 'mffTL' : 'mffTG';
+  document.getElementById(id)?.classList.toggle('primary', _mff[k]);
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+function _mffNeedle(ctx, x, y, len, ang, big) {
+  const dx = Math.cos(ang) * len, dy = Math.sin(ang) * len;
+  ctx.lineWidth = big ? 4 : 2; ctx.lineCap = 'round';
+  ctx.strokeStyle = '#dc2626'; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + dx, y + dy); ctx.stroke();
+  ctx.strokeStyle = '#2563eb'; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - dx, y - dy); ctx.stroke();
+  if (big) { ctx.fillStyle = '#1e293b'; ctx.beginPath(); ctx.arc(x, y, 3, 0, 2 * Math.PI); ctx.fill(); }
+}
+function _mffDraw(ctx, cv) {
+  if (!_mff) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2, cy = H / 2, L = 46;             // halbe Magnetlänge
+  const xN = cx - L, xS = cx + L, yN = cy, yS = cy;
+
+  // Feldlinien
+  if (_mff.showLines) {
+    ctx.strokeStyle = 'rgba(124,58,237,0.5)'; ctx.lineWidth = 1.3;
+    const seeds = 7;
+    for (let s = 0; s < seeds; s++) {
+      const a0 = -Math.PI / 2 + Math.PI * (s + 0.5) / seeds;   // um den Nordpol
+      for (const sign of [1, -1]) {
+        let px = xN + Math.cos(a0) * 14, py = yN + sign * Math.abs(Math.sin(a0)) * 14;
+        ctx.beginPath(); ctx.moveTo(px, py);
+        for (let i = 0; i < 260; i++) {
+          const f = _magFieldAt(px, py, xN, yN, xS, yS);
+          const m = Math.hypot(f.bx, f.by) || 1;
+          px += (f.bx / m) * 3; py += (f.by / m) * 3;
+          if (px < 4 || px > W - 4 || py < 4 || py > H - 4) break;
+          if (Math.hypot(px - xS, py - yS) < 10) { ctx.lineTo(xS, yS); break; }
+          ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Kompass-Raster
+  if (_mff.showGrid) {
+    const step = 46;
+    for (let gx = step; gx < W; gx += step) for (let gy = step; gy < H; gy += step) {
+      if (Math.abs(gy - cy) < 24 && gx > cx - L - 10 && gx < cx + L + 10) continue; // nicht im Magneten
+      const f = _magFieldAt(gx, gy, xN, yN, xS, yS);
+      _mffNeedle(ctx, gx, gy, 9, Math.atan2(f.by, f.bx), false);
+    }
+  }
+
+  // Stabmagnet
+  const mh = 30;
+  ctx.fillStyle = '#dc2626'; ctx.fillRect(cx - L, cy - mh / 2, L, mh);
+  ctx.fillStyle = '#2563eb'; ctx.fillRect(cx, cy - mh / 2, L, mh);
+  ctx.fillStyle = '#fff'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('N', cx - L / 2, cy); ctx.fillText('S', cx + L / 2, cy);
+  ctx.textBaseline = 'alphabetic';
+
+  // Prüfkompass
+  const ar = _mff.angle * Math.PI / 180;
+  const pxc = cx + Math.cos(ar) * _mff.radius, pyc = cy + Math.sin(ar) * _mff.radius;
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2; ctx.fillStyle = '#fffbeb';
+  ctx.beginPath(); ctx.arc(pxc, pyc, 18, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  const f = _magFieldAt(pxc, pyc, xN, yN, xS, yS);
+  _mffNeedle(ctx, pxc, pyc, 13, Math.atan2(f.by, f.bx), true);
+  ctx.fillStyle = '#92400e'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Prüfkompass', pxc, pyc + 32);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.1.3  (ns = 'magfeld') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _mffArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('magfeld')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('magfeld')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie sieht der unsichtbare Bereich um einen Magneten aus – und wo ist er am stärksten?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, das Magnetfeld sieht so aus … Am stärksten ist es …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Bewege den <b>Prüfkompass</b> mit den Reglern rund um den Magneten.</li>
+          <li>Beobachte: In welche Richtung zeigt die rote Nadelspitze an verschiedenen Stellen?</li>
+          <li>Blende die <b>Feldlinien</b> und das <b>Kompass-Raster</b> ein.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtung</div>
+        <ol class="ab-ol">
+          <li>Wo beginnen die Feldlinien, wo enden sie? ${inp('b1', 'von … nach …')}</li>
+          <li>Wo stehen die Linien besonders dicht? ${inp('b2', 'nah an …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne den Magneten (N und S) und die Feldlinien mit Pfeilen ein.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Richtet sich die Kompassnadel immer entlang der Feldlinien aus? ${inp('a1', 'ja/nein')}</li>
+          <li>Wo ist das Magnetfeld am stärksten – nah an den Polen oder weit weg? ${inp('a2', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Der Bereich um einen Magneten heißt <b>Magnetfeld</b>. Man stellt es mit <b>Feldlinien</b> dar.<br>
+        Außerhalb des Magneten zeigen die Feldlinien vom ${inp('m1', 'welcher Pol?')} zum ${inp('m2', 'welcher Pol?')}.<br>
+        Wo die Linien ${inp('m3', 'dicht/locker')} sind, ist das Feld am stärksten.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Streut man Eisenfeilspäne auf ein Blatt Papier über einem Magneten, ordnen sie sich zu Linien. Erkläre, warum. Was haben die Eisenspäne mit den kleinen Kompassnadeln gemeinsam?</div>
+        ${ta('tr1', 'Die Eisenspäne …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="mffMini">${_mffMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_mffSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_mffSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_mffSelf(3)">😃 sicher</button>
+          <span id="mffSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="mffSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Die Kompassnadeln richten sich tangential zu den Feldlinien aus. Außerhalb verlaufen die Linien vom Nord- zum Südpol, gebündelt und dicht nahe den Polen (dort stärkstes Feld), weiter außen locker (schwächer).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Feldlinien sind ein Modell: Richtung = Richtung, in die ein Kompass-Nordpol zeigt (außen N→S). Liniendichte ~ Feldstärke. Linien schneiden sich nie.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Feldlinien sind echte Fäden." (2) „Das Feld ist überall gleich stark." (3) „Nur am Nordpol gibt es ein Feld."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Prüfkompass langsam bewegen lassen; Raster + Linien nacheinander einblenden; Bezug zu Eisenfeilspänen herstellen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4.1 „von N nach S" · 4.2 „nah an den Polen" · 6.1 „ja" · 6.2 „nah an den Polen". Merksatz: Nordpol · Südpol · dicht. Transfer: Eisenspäne werden selbst zu kleinen Magneten und richten sich wie Kompassnadeln entlang der Feldlinien aus. Minidiagnose: 1→„Feldlinien" · 2→„von Nord zu Süd" · 3→„nah an den Polen".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('magfeld')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('magfeld', 'Wie sieht ein Magnetfeld aus?', body);
+}
+
+const _MFF_MINI = [
+  { q: '1. Wie stellt man ein Magnetfeld sichtbar dar?',
+    opts: ['Mit Feldlinien', 'Mit Zahlen', 'Mit Farben allein'], correct: 0,
+    fb: ['Richtig! Feldlinien zeigen Richtung und Stärke des Feldes.',
+         'Zahlen allein zeigen die Form des Feldes nicht.',
+         'Man braucht Linien, die die Richtung zeigen.'] },
+  { q: '2. In welche Richtung verlaufen die Feldlinien außerhalb des Magneten?',
+    opts: ['Von Süd zu Nord', 'Von Nord zu Süd', 'Im Kreis um die Mitte'], correct: 1,
+    fb: ['Andersherum: außen von Nord nach Süd.',
+         'Richtig! Außerhalb zeigen die Linien vom Nordpol zum Südpol.',
+         'Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.'] },
+  { q: '3. Wo ist das Magnetfeld am stärksten?',
+    opts: ['Weit weg vom Magneten', 'Nah an den Polen', 'Überall gleich'], correct: 1,
+    fb: ['Weit weg wird das Feld schwächer.',
+         'Richtig! Nah an den Polen sind die Linien dicht – dort ist das Feld am stärksten.',
+         'Das Feld ist nicht überall gleich stark.'] }
+];
+function _mffMiniHTML() {
+  return _MFF_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_mffAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="mffFb${qi}"></div></div>`).join('');
+}
+function _mffAns(qi, oi) {
+  const m = _MFF_MINI[qi], el = document.getElementById('mffFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _mffSelf(n) {
+  const out = document.getElementById('mffSelfOut'), val = document.getElementById('mffSelfVal');
+  if (val) { val.value = String(n); _abSave('magfeld'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 5.1.4  WIE FUNKTIONIERT EIN KOMPASS?
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Strom und Magnetismus"
+// Handlungsorientiert: Kompassnadel im Erdmagnetfeld. Der Schüler
+// stößt die Nadel an (sie pendelt zurück nach Norden), bringt einen
+// Magneten heran (Nadel dreht sich zum Magneten) und schaltet das
+// Erdmagnetfeld aus. Nadel richtet sich immer nach dem Gesamtfeld.
+// (nutzt _magFieldAt aus dem Magnetfeld-Modul nicht – eigenes,
+//  schülergerechtes Vektor-Summenmodell.)
+// ═══════════════════════════════════════════════════════
+
+const _KOM_EARTH = 1;      // Stärke des Erdfeldes (Richtung Norden)
+const _KOM_MAG = 30;       // Magnetstärke: Einfluss = _KOM_MAG / d²
+const _KOM_SPRING = 34, _KOM_DAMP = 4.2;
+let _kom = null;
+
+function _komInit() {
+  _kom = { ang: -Math.PI / 2, vel: 0, earthOn: true, magnetOn: false, phi: 120, dist: 6 };
+}
+
+// Zielrichtung der Nadel = Richtung des Gesamtfeldes
+function _komTarget() {
+  let vx = 0, vy = 0;
+  if (_kom.earthOn) vy += -_KOM_EARTH;                 // Norden = oben
+  if (_kom.magnetOn) {
+    const s = _KOM_MAG / (_kom.dist * _kom.dist);
+    const a = _kom.phi * Math.PI / 180;
+    vx += Math.cos(a) * s; vy += Math.sin(a) * s;
+  }
+  if (vx === 0 && vy === 0) return _kom.ang;           // kein Feld: Nadel bleibt
+  return Math.atan2(vy, vx);
+}
+
+function _komHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim kom-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🧭 Wie funktioniert ein Kompass?</h3>
+    <div class="fpm-note" style="margin-top:2px">Die Kompassnadel ist ein kleiner drehbarer Magnet. Stoße sie an und beobachte, wie sie zurück nach Norden pendelt. Bringe dann einen Magneten heran.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="komAnim" width="440" height="280" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_komStoss()">👆 Nadel anstoßen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Einstellungen</div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="komEarth" onclick="_komToggle('earthOn')">🌍 Erdmagnetfeld</button>
+          <button class="sim-btn" id="komMag" onclick="_komToggle('magnetOn')">🧲 Magnet in der Nähe</button>
+        </div>
+        <div class="phys-ctrl" style="margin-top:10px">
+          <span class="phys-ctrl-label">Magnet – Richtung: <b id="komPhiLbl">120°</b></span>
+          <input type="range" id="komPhi" min="0" max="360" step="10" value="120"
+            oninput="_komSetPhi(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Magnet – Abstand: <b id="komDLbl">6 cm</b></span>
+          <input type="range" id="komDist" min="3" max="15" step="1" value="6"
+            oninput="_komSetDist(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Ohne Magnet zeigt die rote Nadelspitze immer nach <b>Norden</b>. Ein Magnet in der Nähe ist stärker als das Erdfeld – die Nadel dreht sich zu ihm.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Die Erde ist selbst ein großer Magnet. &nbsp;|&nbsp; Deshalb richtet sich die Nadel nach Norden – solange kein anderer Magnet stört.
+    </p>
+    ${_komArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _komStoss() { if (_kom) _kom.vel += 9; }
+function _komSetPhi(v) { _kom.phi = +v; const e = document.getElementById('komPhiLbl'); if (e) e.textContent = _fpmNum(+v, 0) + '°'; }
+function _komSetDist(v) { _kom.dist = +v; const e = document.getElementById('komDLbl'); if (e) e.textContent = _fpmNum(+v, 0) + ' cm'; }
+function _komToggle(k) {
+  _kom[k] = !_kom[k];
+  document.getElementById(k === 'earthOn' ? 'komEarth' : 'komMag')?.classList.toggle('primary', _kom[k]);
+}
+
+// ── Animation (gedämpfte Ausrichtung) ──────────────────
+function _komUpdate(dt) {
+  if (!_kom) return;
+  const t = _komTarget();
+  let d = t - _kom.ang; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI;
+  const acc = _KOM_SPRING * Math.sin(d) - _KOM_DAMP * _kom.vel;
+  _kom.vel += acc * dt; _kom.ang += _kom.vel * dt;
+}
+function _komDraw(ctx, cv) {
+  if (!_kom) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const cx = 150, cy = H / 2, R = 78;
+  // Erdfeld-Pfeil nach Norden
+  if (_kom.earthOn) {
+    ctx.strokeStyle = '#bfdbfe'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+    for (let x = 40; x < W - 20; x += 40) { ctx.beginPath(); ctx.moveTo(x, H - 20); ctx.lineTo(x, 20); ctx.stroke(); }
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#60a5fa'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Erdmagnetfeld → Norden', 40, 14);
+  }
+  // Kompassdose
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('N', cx, cy - R + 12); ctx.fillText('S', cx, cy + R - 12);
+  ctx.fillText('W', cx - R + 12, cy); ctx.fillText('O', cx + R - 12, cy);
+  ctx.textBaseline = 'alphabetic';
+  // Nadel
+  const len = R - 20, dx = Math.cos(_kom.ang) * len, dy = Math.sin(_kom.ang) * len;
+  ctx.lineWidth = 6; ctx.lineCap = 'round';
+  ctx.strokeStyle = '#dc2626'; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + dx, cy + dy); ctx.stroke();
+  ctx.strokeStyle = '#2563eb'; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx - dx, cy - dy); ctx.stroke();
+  ctx.fillStyle = '#1e293b'; ctx.beginPath(); ctx.arc(cx, cy, 5, 0, 2 * Math.PI); ctx.fill();
+  // Magnet
+  if (_kom.magnetOn) {
+    const a = _kom.phi * Math.PI / 180;
+    const mxc = cx + Math.cos(a) * (R + 8 + _kom.dist * 5), myc = cy + Math.sin(a) * (R + 8 + _kom.dist * 5);
+    const mw = 44, mh = 18;
+    ctx.save(); ctx.translate(mxc, myc); ctx.rotate(a);
+    ctx.fillStyle = '#2563eb'; ctx.fillRect(-mw / 2, -mh / 2, mw / 2, mh);
+    ctx.fillStyle = '#dc2626'; ctx.fillRect(0, -mh / 2, mw / 2, mh);
+    ctx.fillStyle = '#fff'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('S', -mw / 4, 0); ctx.fillText('N', mw / 4, 0);
+    ctx.restore(); ctx.textBaseline = 'alphabetic';
+    ctx.fillStyle = '#7c3aed'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Magnet', mxc, myc + 26);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.1.4  (ns = 'kompass') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _komArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('kompass')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('kompass')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum zeigt eine Kompassnadel immer nach Norden – und was bringt sie aus dem Takt?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, die Nadel zeigt nach Norden, weil … Aus dem Takt bringt sie …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Drücke <b>„Nadel anstoßen"</b>. Beobachte, wohin die Nadel nach dem Pendeln zeigt.</li>
+          <li>Schalte das <b>Erdmagnetfeld</b> aus und wieder ein. Was ändert sich?</li>
+          <li>Schalte <b>„Magnet in der Nähe"</b> ein und verändere Richtung und Abstand.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtung</div>
+        <ol class="ab-ol">
+          <li>Wohin zeigt die rote Spitze ohne Magnet? ${inp('b1', 'nach …')}</li>
+          <li>Was macht die Nadel, wenn ein Magnet nah ist? ${inp('b2', '')}</li>
+          <li>Wirkt der Magnet stärker bei kleinem oder großem Abstand? ${inp('b3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne den Kompass mit der Nadel, die nach Norden zeigt. Zeichne dann einen Magneten daneben und wohin sich die Nadel dreht.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Warum zeigt die Nadel ohne Störung nach Norden? ${inp('a1', 'weil die Erde …')}</li>
+          <li>Warum sollte man einen Kompass nicht neben Eisen oder Magnete legen? ${inp('a2', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die Kompassnadel ist ein kleiner drehbarer ${inp('m1', 'was?')}.<br>
+        Sie richtet sich nach dem ${inp('m2', 'welches Feld?')} der Erde aus und zeigt nach Norden.<br>
+        Ein Magnet in der Nähe ist ${inp('m3', 'stärker/schwächer')} und lenkt die Nadel ab.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Du wanderst und legst deinen Kompass aus Versehen auf die Motorhaube eines Autos (viel Eisen). Warum kann er jetzt falsch anzeigen? Was tust du besser?</div>
+        ${ta('tr1', 'Der Kompass zeigt falsch, weil … Besser ist …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="komMini">${_komMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_komSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_komSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_komSelf(3)">😃 sicher</button>
+          <span id="komSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="komSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Nach dem Anstoßen pendelt die Nadel und richtet sich wieder nach Norden. Erdfeld aus → Nadel bleibt beliebig stehen (kein Richtungsfeld). Magnet nah → Nadel dreht sich zum Magneten; Wirkung nimmt mit kleinerem Abstand stark zu.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Die Nadel ist ein Dauermagnet und richtet sich entlang des Gesamtfeldes aus. Das Erdmagnetfeld wirkt wie ein großer Stabmagnet (magnetischer Südpol nahe dem geografischen Nordpol). Ein nahes Magnetfeld/Eisen überlagert das schwache Erdfeld.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Nordstern zieht die Nadel an." (2) „Die Nadel zeigt immer exakt geografisch Nord" (Deklination – hier nicht vertiefen). (3) „Ein Kompass funktioniert überall gleich, egal was daneben liegt."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Erdfeldpfeile einblenden; erst ohne Magnet anstoßen lassen; dann Magnet nur langsam nähern; Bezug zu Eisen (Auto, Werkzeug).</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4.1 „Norden" · 4.2 „dreht sich zum Magneten" · 4.3 „kleiner Abstand". 6.1 „weil die Erde ein Magnet ist" · 6.2 „Eisen/Magnete lenken die Nadel ab". Merksatz: Magnet · Magnetfeld · stärker. Transfer: Das Eisen der Motorhaube lenkt die Nadel ab → weg vom Auto, in die Hand nehmen. Minidiagnose: 1→„weil die Erde ein Magnet ist" · 2→„dreht sich zum Magneten" · 3→„ein Magnet/Eisen in der Nähe".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('kompass')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('kompass', 'Wie funktioniert ein Kompass?', body);
+}
+
+const _KOM_MINI = [
+  { q: '1. Warum zeigt eine Kompassnadel nach Norden?',
+    opts: ['Weil Norden kälter ist', 'Weil die Erde selbst ein Magnet ist', 'Weil die Sonne dort steht'], correct: 1,
+    fb: ['Mit der Temperatur hat es nichts zu tun.',
+         'Richtig! Das Erdmagnetfeld richtet die Nadel nach Norden aus.',
+         'Die Sonne bewegt sich – der Kompass zeigt trotzdem konstant nach Norden.'] },
+  { q: '2. Was macht die Nadel, wenn ein starker Magnet direkt daneben liegt?',
+    opts: ['Sie zeigt weiter genau nach Norden', 'Sie dreht sich zum Magneten', 'Sie bleibt stehen'], correct: 1,
+    fb: ['Der nahe Magnet ist stärker als das Erdfeld.',
+         'Richtig! Der nahe Magnet ist stärker und lenkt die Nadel ab.',
+         'Sie bewegt sich – hin zum Magneten.'] },
+  { q: '3. Wann zeigt ein Kompass falsch?',
+    opts: ['Wenn es regnet', 'Wenn Eisen oder ein Magnet in der Nähe ist', 'Wenn es dunkel ist'], correct: 1,
+    fb: ['Regen stört den Kompass nicht.',
+         'Richtig! Eisen oder Magnete in der Nähe lenken die Nadel ab.',
+         'Dunkelheit hat keinen Einfluss.'] }
+];
+function _komMiniHTML() {
+  return _KOM_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_komAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="komFb${qi}"></div></div>`).join('');
+}
+function _komAns(qi, oi) {
+  const m = _KOM_MINI[qi], el = document.getElementById('komFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _komSelf(n) {
+  const out = document.getElementById('komSelfOut'), val = document.getElementById('komSelfVal');
+  if (val) { val.value = String(n); _abSave('kompass'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
