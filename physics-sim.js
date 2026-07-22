@@ -256,7 +256,10 @@ const _physAbDefs = {
   'tag-nacht': { titel: 'Wie entstehen Tag und Nacht?', ns: 'tagnacht', html: () => _tagArbeitsblattHTML() },
   'jahreszeiten': { titel: 'Wie entstehen die Jahreszeiten?', ns: 'jahreszeiten', html: () => _jhrArbeitsblattHTML() },
   'mondphasen': { titel: 'Warum verändert der Mond sein Aussehen?', ns: 'mondphasen', html: () => _mphArbeitsblattHTML() },
-  'sonnenfinsternis': { titel: 'Wie entsteht eine Sonnenfinsternis?', ns: 'sonnenfins', html: () => _sofArbeitsblattHTML() }
+  'sonnenfinsternis': { titel: 'Wie entsteht eine Sonnenfinsternis?', ns: 'sonnenfins', html: () => _sofArbeitsblattHTML() },
+  'mondfinsternis': { titel: 'Wie entsteht eine Mondfinsternis?', ns: 'mondfins', html: () => _mofArbeitsblattHTML() },
+  'lochkamera': { titel: 'Wie macht ein kleines Loch ein Bild?', ns: 'lochkamera', html: () => _locArbeitsblattHTML() },
+  'sammellinse': { titel: 'Wie bündelt eine Sammellinse das Licht?', ns: 'sammellinse', html: () => _sliArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -637,6 +640,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('sofAnim', 'sofAnim');
     _pSim.start(dt => _sofUpdate(dt), (ctx, cv) => _sofDraw(ctx, cv), []);
     _abRestore('sonnenfins');
+  },
+
+  // ── 6.3.5 MONDFINSTERNIS ───────────────────────────────────────
+  'mondfinsternis': modal => {
+    _mofInit();
+    modal.innerHTML = _mofHTML();
+    _mofStatus();
+    _pSim = new PhysicsSimEngine('mofAnim', 'mofAnim');
+    _pSim.start(dt => _mofUpdate(dt), (ctx, cv) => _mofDraw(ctx, cv), []);
+    _abRestore('mondfins');
+  },
+
+  // ── 7.1.1 LOCHKAMERA ───────────────────────────────────────────
+  'lochkamera': modal => {
+    _locInit();
+    modal.innerHTML = _locHTML();
+    _locStatus();
+    _pSim = new PhysicsSimEngine('locAnim', 'locAnim');
+    _pSim.start(dt => _locUpdate(dt), (ctx, cv) => _locDraw(ctx, cv), []);
+    _abRestore('lochkamera');
+  },
+
+  // ── 7.1.2 SAMMELLINSE ──────────────────────────────────────────
+  'sammellinse': modal => {
+    _sliInit();
+    modal.innerHTML = _sliHTML();
+    _sliStatus();
+    _pSim = new PhysicsSimEngine('sliAnim', 'sliAnim');
+    _pSim.start(dt => _sliUpdate(dt), (ctx, cv) => _sliDraw(ctx, cv), []);
+    _abRestore('sammellinse');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -42900,5 +42933,599 @@ function _sofAns(qi, oi) {
 function _sofSelf(n) {
   const out = document.getElementById('sofSelfOut'), val = document.getElementById('sofSelfVal');
   if (val) { val.value = String(n); _abSave('sonnenfins'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.3.5  WIE ENTSTEHT EINE MONDFINSTERNIS?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Sonne, Erde, Mond"
+// Handlungsorientiert: Die Erde steht zwischen Sonne und Mond (Vollmond).
+// Der Schatten der Erde fällt auf den Mond – er verdunkelt sich (rötlich).
+// Mond in den Erdschatten schieben und die Verfinsterung beobachten.
+// ═══════════════════════════════════════════════════════
+
+let _mof = null;
+const _MOF_SX = 40, _MOF_EX = 200, _MOF_MX = 380;   // Sonne, Erde, Mond (x)
+function _mofInit() { _mof = { moonY: 40, t: 0 }; }
+function _mofPhase() {
+  const y = Math.abs(_mof.moonY);
+  if (y < 8) return 'total';
+  if (y < 26) return 'teil';
+  return 'keine';
+}
+
+function _mofHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim mof-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌕🌑 Wie entsteht eine Mondfinsternis?</h3>
+    <div class="fpm-note" style="margin-top:2px">Sonne – Erde – Mond in einer Reihe. Schiebe den Mond in den Schatten der Erde und beobachte, wie er sich verdunkelt.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="mofAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_mofAlign()">🎯 Mond in den Schatten schieben</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Mond verschieben (Höhe)</div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Mondstellung: <b id="mofDLbl">40</b></span>
+          <input type="range" id="mofD" min="-60" max="60" step="4" value="40"
+            oninput="_mofSetD(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="lmp-status" id="mofStatus"></div>
+        <div class="fpm-note" style="margin-top:10px">Eine Mondfinsternis gibt es nur bei <b>Vollmond</b>, wenn die Erde genau zwischen Sonne und Mond steht. Der Mond wird dabei oft <b>rötlich</b> (Blutmond).</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Erde zwischen Sonne und Mond → <b>Erdschatten auf dem Mond</b>. &nbsp;|&nbsp; Anders als bei den Mondphasen ist hier wirklich ein Schatten im Spiel.
+    </p>
+    ${_mofArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _mofSetD(v) { _mof.moonY = +v; const el = document.getElementById('mofDLbl'); if (el) el.textContent = _fpmNum(+v, 0); _mofStatus(); }
+function _mofAlign() { _mof.moonY = 0; const sl = document.getElementById('mofD'); if (sl) sl.value = 0; _mofSetD(0); }
+function _mofStatus() {
+  const el = document.getElementById('mofStatus'); if (!el) return;
+  const p = _mofPhase();
+  if (p === 'total') { el.textContent = '🌑 Totale Mondfinsternis – der Mond steht ganz im Kernschatten der Erde und wird rötlich.'; el.className = 'lmp-status off'; }
+  else if (p === 'teil') { el.textContent = '🌗 Teilweise Mondfinsternis – nur ein Teil des Mondes liegt im Erdschatten.'; el.className = 'lmp-status'; }
+  else { el.textContent = '🌕 Keine Finsternis – der Mond geht am Erdschatten vorbei (normaler Vollmond).'; el.className = 'lmp-status on'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _mofUpdate(dt) { if (_mof) _mof.t += dt; }
+function _mofDraw(ctx, cv) {
+  if (!_mof) return;
+  const W = cv.width, H = cv.height, cy = H / 2 - 6, Re = 26, mr = 12;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const my = cy + _mof.moonY, p = _mofPhase();
+  // Sonne
+  ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(_MOF_SX, cy, 24, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#fde047'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Sonne', _MOF_SX, cy + 40);
+  // Sonnenstrahlen
+  ctx.strokeStyle = 'rgba(250,204,21,0.22)'; ctx.lineWidth = 1.5; ctx.setLineDash([5, 5]);
+  for (let dy = -Re; dy <= Re; dy += 13) { ctx.beginPath(); ctx.moveTo(_MOF_SX + 20, cy); ctx.lineTo(_MOF_MX + 30, cy + dy); ctx.stroke(); }
+  ctx.setLineDash([]);
+  // Erdschatten (konvergierender Kegel nach rechts)
+  ctx.fillStyle = 'rgba(15,23,42,0.8)';
+  ctx.beginPath(); ctx.moveTo(_MOF_EX, cy - Re); ctx.lineTo(_MOF_MX + 40, cy - 7); ctx.lineTo(_MOF_MX + 40, cy + 7); ctx.lineTo(_MOF_EX, cy + Re); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.fillText('Erdschatten', (_MOF_EX + _MOF_MX) / 2, cy - Re - 6);
+  // Erde
+  ctx.fillStyle = '#1e293b'; ctx.beginPath(); ctx.arc(_MOF_EX, cy, Re, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#2563eb'; ctx.beginPath(); ctx.arc(_MOF_EX, cy, Re, Math.PI / 2, 3 * Math.PI / 2, false); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#166534'; ctx.beginPath(); ctx.arc(_MOF_EX, cy, Re, Math.PI / 2, 3 * Math.PI / 2, false); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.arc(_MOF_EX, cy, Re, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#93c5fd'; ctx.font = '10px sans-serif'; ctx.fillText('Erde', _MOF_EX, cy + Re + 16);
+  // Mond (verdunkelt, wenn im Schatten)
+  if (p === 'total') ctx.fillStyle = '#7f1d1d';
+  else if (p === 'teil') ctx.fillStyle = '#b45309';
+  else ctx.fillStyle = '#fde68a';
+  ctx.beginPath(); ctx.arc(_MOF_MX, my, mr, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.stroke();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '10px sans-serif'; ctx.fillText('Mond', _MOF_MX, my - mr - 6);
+  // Statuszeile
+  ctx.fillStyle = p === 'total' ? '#ef4444' : '#e2e8f0'; ctx.font = '700 12px sans-serif';
+  ctx.fillText(p === 'total' ? '🌑 totale Mondfinsternis (Blutmond)' : (p === 'teil' ? 'teilweise Mondfinsternis' : 'keine Finsternis'), W / 2, 20);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.3.5  (ns = 'mondfins') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _mofArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('mondfins')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('mondfins')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie kann der Mond plötzlich dunkel (und rötlich) werden?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, eine Mondfinsternis entsteht, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Verschiebe den Mond nach oben und unten. Wann liegt er im Erdschatten?</li>
+          <li>Schiebe ihn ganz in den Schatten. Wie sieht er dann aus?</li>
+          <li>Vergleiche mit den Mondphasen: Ist das der gleiche Vorgang?</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtung</div>
+        <ol class="ab-ol">
+          <li>Was fällt bei einer Mondfinsternis auf den Mond? ${inp('b1', 'der … der Erde')}</li>
+          <li>Welche Farbe bekommt der Mond oft? ${inp('b2', '')}</li>
+          <li>Welche Mondphase herrscht dabei? ${inp('b3', 'Neumond/Vollmond')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne Sonne, Erde und Mond in einer Reihe und den Schatten der Erde auf dem Mond.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>In welcher Reihenfolge stehen Sonne, Erde und Mond? ${inp('a1', 'Sonne – … – …')}</li>
+          <li>Was ist der Unterschied zur Sonnenfinsternis? ${inp('a2', 'da steht … dazwischen')}</li>
+          <li>Warum sind Mondfinsternisse für viele Menschen sichtbar? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Bei einer Mondfinsternis steht die ${inp('m1', 'wer?')} zwischen Sonne und Mond.<br>
+        Der Schatten der Erde fällt auf den ${inp('m2', 'was?')}. Das passiert nur bei ${inp('m3', 'welcher Mondphase?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Eine Mondfinsternis kann man gefahrlos mit bloßem Auge anschauen, eine Sonnenfinsternis nicht. Erkläre den Unterschied.</div>
+        ${ta('tr1', 'Die Mondfinsternis ist ungefährlich, weil … Die Sonnenfinsternis …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="mofMini">${_mofMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_mofSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_mofSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_mofSelf(3)">😃 sicher</button>
+          <span id="mofSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="mofSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Nur wenn der Mond in den Erdschatten wandert, verdunkelt er sich (im Kernschatten total, oft rötlich). Es herrscht Vollmond. Der Mond wird nicht verdeckt, sondern liegt im Schatten.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Mondfinsternis: Reihenfolge Sonne – Erde – Mond (Vollmond). Der Erdschatten fällt auf den Mond. Die rötliche Färbung entsteht durch Sonnenlicht, das in der Erdatmosphäre gebrochen und gefiltert wird (Blutmond; in Kl. 6 nur benennen). Sichtbar für die gesamte Nachtseite der Erde.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Mond läuft in den Schatten der Sonne." (2) „Mondfinsternis = Neumond." (3) „Verwechslung mit den Mondphasen (kein Erdschatten)."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Drei Kugeln in einer Reihe; Erdschattenkegel zeigen; Abgrenzung Phasen (Blickwinkel) vs. Finsternis (Schatten); Sonnen- vs. Mondfinsternis gegenüberstellen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4.1 „Schatten der Erde" · 4.2 „rötlich" · 4.3 „Vollmond". 6.1 „Sonne – Erde – Mond" · 6.2 „bei der Sonnenfinsternis steht der Mond dazwischen" · 6.3 „man sieht sie von der ganzen Nachtseite". Merksatz: Erde · Mond · Vollmond. Transfer: Bei der Mondfinsternis schaut man auf den abgeschatteten Mond (harmlos), bei der Sonnenfinsternis in die grelle Sonne (gefährlich). Minidiagnose: 1→„Erde zwischen Sonne und Mond" · 2→Vollmond · 3→„der Erdschatten".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('mondfins')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('mondfins', 'Wie entsteht eine Mondfinsternis?', body);
+}
+
+const _MOF_MINI = [
+  { q: '1. Wie entsteht eine Mondfinsternis?',
+    opts: ['Der Mond steht zwischen Sonne und Erde', 'Die Erde steht zwischen Sonne und Mond', 'Der Mond leuchtet nicht mehr'], correct: 1,
+    fb: ['Das wäre eine Sonnenfinsternis.',
+         'Richtig! Die Erde wirft ihren Schatten auf den Mond.',
+         'Der Mond wird nur vom Erdschatten verdunkelt.'] },
+  { q: '2. Welche Mondphase herrscht bei einer Mondfinsternis?',
+    opts: ['Neumond', 'Vollmond', 'Halbmond'], correct: 1,
+    fb: ['Bei Neumond gibt es die Sonnenfinsternis.',
+         'Richtig! Nur bei Vollmond kann der Mond in den Erdschatten wandern.',
+         'Beim Halbmond steht der Mond seitlich.'] },
+  { q: '3. Was fällt bei einer Mondfinsternis auf den Mond?',
+    opts: ['Der Schatten der Erde', 'Der Schatten der Sonne', 'Der Schatten des Mondes selbst'], correct: 0,
+    fb: ['Richtig! Der Erdschatten verdunkelt den Mond.',
+         'Die Sonne wirft keinen Schatten – sie ist die Lichtquelle.',
+         'Der Mond wirft keinen Schatten auf sich selbst.'] }
+];
+function _mofMiniHTML() {
+  return _MOF_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_mofAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="mofFb${qi}"></div></div>`).join('');
+}
+function _mofAns(qi, oi) {
+  const m = _MOF_MINI[qi], el = document.getElementById('mofFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _mofSelf(n) {
+  const out = document.getElementById('mofSelfOut'), val = document.getElementById('mofSelfVal');
+  if (val) { val.value = String(n); _abSave('mondfins'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.1.1  WIE MACHT EIN KLEINES LOCH EIN BILD?  (Lochkamera)
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Optische Instrumente"
+// Handlungsorientiert: Gegenstand, Lochblende, Schirm. Durch das kleine
+// Loch entsteht ein umgekehrtes Bild. Bildgröße hängt von Bildweite und
+// Gegenstandsweite ab (B/G = b/g). Kleines Loch → scharf, aber dunkler.
+// ═══════════════════════════════════════════════════════
+
+let _loc = null;
+function _locInit() { _loc = { g: 40, b: 30, hole: 2, t: 0 }; }
+function _locB(Gpx) { return Gpx * _loc.b / _loc.g; }   // Bildgröße in px
+
+function _locHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim loc-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📷 Wie macht ein kleines Loch ein Bild?</h3>
+    <div class="fpm-note" style="margin-top:2px">Vor einer Lochblende steht ein leuchtender Pfeil, dahinter ein Schirm. Verändere die Abstände und die Lochgröße. Wie sieht das Bild aus?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="locAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="lmp-status" id="locStatus" style="margin-top:6px"></div>
+      </div>
+      <div>
+        <div class="phys-ctrl"><span class="phys-ctrl-label">Gegenstandsweite g: <b id="locGLbl">40 cm</b></span>
+          <input type="range" id="locG" min="20" max="60" step="2" value="40" oninput="_locSet('g',this.value)" style="width:100%;accent-color:#7c3aed"></div>
+        <div class="phys-ctrl" style="margin-top:6px"><span class="phys-ctrl-label">Bildweite b (Kameralänge): <b id="locBLbl">30 cm</b></span>
+          <input type="range" id="locB" min="15" max="55" step="2" value="30" oninput="_locSet('b',this.value)" style="width:100%;accent-color:#7c3aed"></div>
+        <div class="phys-ctrl" style="margin-top:6px"><span class="phys-ctrl-label">Lochgröße: <b id="locHLbl">klein</b></span>
+          <input type="range" id="locH" min="1" max="6" step="1" value="2" oninput="_locSet('hole',this.value)" style="width:100%;accent-color:#ef4444"></div>
+        <div class="fpm-note" style="margin-top:10px">Das Bild ist immer <b>umgekehrt</b> (steht auf dem Kopf). <b>Kleines Loch</b> → scharfes, aber dunkleres Bild. <b>Großes Loch</b> → heller, aber unscharf.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Licht breitet sich geradlinig aus → durch das Loch entsteht ein <b>umgekehrtes Bild</b>. &nbsp;|&nbsp; B/G = b/g
+    </p>
+    ${_locArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _locSet(k, v) {
+  _loc[k] = +v;
+  if (k === 'g') { const e = document.getElementById('locGLbl'); if (e) e.textContent = _fpmNum(+v, 0) + ' cm'; }
+  if (k === 'b') { const e = document.getElementById('locBLbl'); if (e) e.textContent = _fpmNum(+v, 0) + ' cm'; }
+  if (k === 'hole') { const e = document.getElementById('locHLbl'); if (e) e.textContent = +v <= 2 ? 'klein' : (+v <= 4 ? 'mittel' : 'groß'); }
+  _locStatus();
+}
+function _locStatus() {
+  const el = document.getElementById('locStatus'); if (!el) return;
+  const rel = _loc.b / _loc.g;
+  const groesse = rel > 1.15 ? 'größer als' : (rel < 0.85 ? 'kleiner als' : 'etwa so groß wie');
+  const schaerfe = _loc.hole <= 2 ? 'scharf' : (_loc.hole <= 4 ? 'etwas unscharf' : 'unscharf');
+  el.textContent = '📷 Bild: umgekehrt, ' + groesse + ' der Gegenstand, ' + schaerfe + '.';
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _locUpdate(dt) { if (_loc) _loc.t += dt; }
+function _locDraw(ctx, cv) {
+  if (!_loc) return;
+  const W = cv.width, H = cv.height, cy = H / 2;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const xHole = 250, sc = 2.0, Gpx = 46;
+  const xObj = xHole - _loc.g * sc, xScr = xHole + _loc.b * sc, Bpx = _locB(Gpx);
+  // optische Achse
+  ctx.strokeStyle = '#e2e8f0'; ctx.beginPath(); ctx.moveTo(20, cy); ctx.lineTo(W - 20, cy); ctx.stroke();
+  // Gegenstand (Pfeil nach oben)
+  ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(xObj, cy); ctx.lineTo(xObj, cy - Gpx); ctx.stroke();
+  ctx.fillStyle = '#16a34a'; ctx.beginPath(); ctx.moveTo(xObj, cy - Gpx - 8); ctx.lineTo(xObj - 5, cy - Gpx); ctx.lineTo(xObj + 5, cy - Gpx); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#334155'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Gegenstand', xObj, cy + 16);
+  // Lochblende (Wand mit Loch)
+  const gap = 3 + _loc.hole;
+  ctx.fillStyle = '#475569'; ctx.fillRect(xHole - 3, 20, 6, (cy - gap) - 20); ctx.fillRect(xHole - 3, cy + gap, 6, (H - 20) - (cy + gap));
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.fillText('Loch', xHole, 16);
+  // Schirm
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(xScr, 20, 6, H - 40);
+  ctx.fillStyle = '#94a3b8'; ctx.fillText('Schirm', xScr + 3, 16);
+  // Strahlen: oben → Loch → unten (invertiert)
+  ctx.strokeStyle = 'rgba(245,158,11,0.7)'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(xObj, cy - Gpx); ctx.lineTo(xHole, cy); ctx.lineTo(xScr, cy + Bpx); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xObj, cy); ctx.lineTo(xHole, cy); ctx.lineTo(xScr, cy - 0); ctx.stroke();
+  // Bild (Pfeil nach unten = umgekehrt), Dicke/Alpha ~ Lochgröße
+  const blur = _loc.hole;
+  ctx.strokeStyle = `rgba(220,38,38,${Math.max(0.25, 1 - blur * 0.11)})`; ctx.lineWidth = 1 + blur;
+  ctx.beginPath(); ctx.moveTo(xScr, cy); ctx.lineTo(xScr, cy + Bpx); ctx.stroke();
+  ctx.fillStyle = ctx.strokeStyle; ctx.beginPath(); ctx.moveTo(xScr, cy + Bpx + 8); ctx.lineTo(xScr - 5, cy + Bpx); ctx.lineTo(xScr + 5, cy + Bpx); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#334155'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Bild (umgekehrt)', xScr + 10, cy + Bpx / 2);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.1.1  (ns = 'lochkamera') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _locArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('lochkamera')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('lochkamera')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie kann ein einfaches kleines Loch ein Bild erzeugen – und wie sieht dieses Bild aus?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, das Bild auf dem Schirm ist …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Beobachte das Bild. Steht es richtig herum oder auf dem Kopf?</li>
+          <li>Vergrößere die Kameralänge (Bildweite b). Was macht das Bild?</li>
+          <li>Vergrößere das Loch. Wie ändert sich die Schärfe?</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>größere Bildweite b</td><td>Bild wird … ${inp('t_b', 'größer/kleiner')}</td></tr>
+          <tr><td>größere Gegenstandsweite g</td><td>Bild wird … ${inp('t_g', 'größer/kleiner')}</td></tr>
+          <tr><td>größeres Loch</td><td>Bild wird … ${inp('t_h', 'schärfer/unschärfer')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne Gegenstand, Loch und Schirm. Zeichne die zwei Strahlen ein, die durch das Loch das umgekehrte Bild erzeugen.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Warum steht das Bild auf dem Kopf? ${inp('a1', 'weil die Strahlen …')}</li>
+          <li>Wann wird das Bild größer? ${inp('a2', 'wenn b … oder g …')}</li>
+          <li>Warum ist ein kleines Loch besser für ein scharfes Bild? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Weil Licht sich ${inp('m1', 'wie?')} ausbreitet, entsteht durch das Loch ein ${inp('m2', 'wie stehendes?')} Bild.<br>
+        Ein kleines Loch macht das Bild ${inp('m3', 'schärfer/unschärfer')}, aber auch dunkler.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Unter einem Baum sieht man an sonnigen Tagen viele kleine helle Kreise auf dem Boden. Erkläre, was diese Lichtflecken mit der Lochkamera zu tun haben.</div>
+        ${ta('tr1', 'Die Lücken zwischen den Blättern wirken wie …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="locMini">${_locMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_locSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_locSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_locSelf(3)">😃 sicher</button>
+          <span id="locSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="locSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Das Bild steht auf dem Kopf (umgekehrt). Größere Bildweite b → größeres Bild; größere Gegenstandsweite g → kleineres Bild (B/G = b/g). Kleineres Loch → schärfer, aber dunkler.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Wegen der geradlinigen Lichtausbreitung kreuzen sich die Strahlen im Loch → umgekehrtes, seitenverkehrtes reelles Bild. Bildgröße: B/G = b/g. Kleine Öffnung = punktscharfe Zuordnung (scharf), aber wenig Licht (dunkel).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Das Bild steht richtig herum." (2) „Ein größeres Loch macht ein schärferes Bild." (3) „Ohne Linse kann kein Bild entstehen."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Zwei Randstrahlen durchs Loch zeichnen; Bezug zur geradlinigen Ausbreitung (5.3.2); reale Lochkamera basteln.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: b größer → größer; g größer → kleiner; Loch größer → unschärfer. 6.1 „sich im Loch kreuzen" · 6.2 „b größer oder g kleiner" · 6.3 „nur enge Strahlenbündel → scharf". Merksatz: geradlinig · umgekehrtes · schärfer. Transfer: Die kleinen Blattlücken wirken wie Lochkameras und bilden die (runde) Sonne ab. Minidiagnose: 1→umgekehrt · 2→„größer" · 3→„schärfer".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('lochkamera')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('lochkamera', 'Wie macht ein kleines Loch ein Bild?', body);
+}
+
+const _LOC_MINI = [
+  { q: '1. Wie steht das Bild in einer Lochkamera?',
+    opts: ['Richtig herum', 'Auf dem Kopf (umgekehrt)', 'Seitlich gekippt'], correct: 1,
+    fb: ['Schau in der Simulation – der Pfeil zeigt nach unten.',
+         'Richtig! Das Bild ist umgekehrt, weil sich die Strahlen im Loch kreuzen.',
+         'Es ist auf dem Kopf, nicht gekippt.'] },
+  { q: '2. Wann wird das Bild größer?',
+    opts: ['Wenn die Kamera (Bildweite b) länger ist', 'Wenn das Loch größer ist', 'Wenn es dunkler ist'], correct: 0,
+    fb: ['Richtig! Größere Bildweite b → größeres Bild (B/G = b/g).',
+         'Ein größeres Loch macht es nur unschärfer, nicht größer.',
+         'Die Helligkeit ändert die Größe nicht.'] },
+  { q: '3. Warum nimmt man ein kleines Loch?',
+    opts: ['Damit das Bild bunt wird', 'Damit das Bild scharf wird', 'Damit es heller wird'], correct: 1,
+    fb: ['Mit der Farbe hat es nichts zu tun.',
+         'Richtig! Ein kleines Loch gibt ein scharfes Bild (aber dunkler).',
+         'Ein kleines Loch macht es dunkler, nicht heller.'] }
+];
+function _locMiniHTML() {
+  return _LOC_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_locAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="locFb${qi}"></div></div>`).join('');
+}
+function _locAns(qi, oi) {
+  const m = _LOC_MINI[qi], el = document.getElementById('locFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _locSelf(n) {
+  const out = document.getElementById('locSelfOut'), val = document.getElementById('locSelfVal');
+  if (val) { val.value = String(n); _abSave('lochkamera'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.1.2  WIE ERZEUGT EINE SAMMELLINSE EIN SCHARFES BILD?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Optische Instrumente"
+// Handlungsorientiert: Parallel einfallendes Licht wird von einer
+// Sammellinse gebündelt und trifft sich im Brennpunkt. Der Abstand
+// Linse–Brennpunkt ist die Brennweite. Kürzere Brennweite = stärkere
+// Bündelung. (Lupe im Sonnenlicht → heißer Brennpunkt.)
+// ═══════════════════════════════════════════════════════
+
+let _sli = null;
+function _sliInit() { _sli = { f: 90, t: 0 }; }
+
+function _sliHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim sli-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔎 Wie bündelt eine Sammellinse das Licht?</h3>
+    <div class="fpm-note" style="margin-top:2px">Paralleles Licht (wie von der weit entfernten Sonne) fällt auf eine Sammellinse. Verändere die Linse und beobachte, wo sich das Licht sammelt.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="sliAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Brennweite f (Abstand Linse–Brennpunkt): <b id="sliFLbl">90</b></span>
+          <input type="range" id="sliF" min="45" max="160" step="5" value="90"
+            oninput="_sliSetF(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was passiert</div>
+        <div class="lmp-status" id="sliStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Alle parallelen Strahlen treffen sich in einem Punkt: dem <b>Brennpunkt</b> (F). Der Abstand von der Linse bis dorthin heißt <b>Brennweite</b> (f).</div>
+        <div class="fpm-note" style="margin-top:8px">Eine <b>stärker gewölbte</b> Linse bündelt das Licht kräftiger → <b>kürzere</b> Brennweite.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Sammellinse <b>bündelt</b> Licht im <b>Brennpunkt</b>. &nbsp;|&nbsp; Dort ist es am hellsten und heißesten (Brennglas).
+    </p>
+    ${_sliArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _sliSetF(v) { _sli.f = +v; const el = document.getElementById('sliFLbl'); if (el) el.textContent = _fpmNum(+v, 0); _sliStatus(); }
+function _sliStatus() {
+  const el = document.getElementById('sliStatus'); if (!el) return;
+  el.textContent = '🔆 Brennweite f = ' + _fpmNum(_sli.f, 0) + ' – ' + (_sli.f < 80 ? 'kurze Brennweite: stark gebündelt.' : (_sli.f > 130 ? 'lange Brennweite: schwach gebündelt.' : 'mittlere Bündelung.'));
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _sliUpdate(dt) { if (_sli) _sli.t += dt; }
+function _sliDraw(ctx, cv) {
+  if (!_sli) return;
+  const W = cv.width, H = cv.height, cy = H / 2;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const xLens = 150, F = Math.min(xLens + _sli.f, W - 20);
+  // optische Achse
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(10, cy); ctx.lineTo(W - 10, cy); ctx.stroke();
+  // Linse (bikonvex)
+  ctx.fillStyle = 'rgba(96,165,250,0.35)'; ctx.strokeStyle = '#60a5fa'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(xLens, cy - 55); ctx.quadraticCurveTo(xLens + 16, cy, xLens, cy + 55); ctx.quadraticCurveTo(xLens - 16, cy, xLens, cy - 55); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#93c5fd'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Sammellinse', xLens, cy + 72);
+  // Strahlen
+  const offs = [-44, -22, 0, 22, 44];
+  offs.forEach(o => {
+    ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.6;
+    // einfallend parallel
+    ctx.beginPath(); ctx.moveTo(10, cy + o); ctx.lineTo(xLens, cy + o); ctx.stroke();
+    // gebündelt zum Brennpunkt
+    ctx.beginPath(); ctx.moveTo(xLens, cy + o); ctx.lineTo(F, cy); ctx.stroke();
+    // hinter dem Brennpunkt divergierend
+    ctx.strokeStyle = 'rgba(251,191,36,0.5)';
+    ctx.beginPath(); ctx.moveTo(F, cy); ctx.lineTo(Math.min(W - 12, F + 90), cy - o * (90 / _sli.f)); ctx.stroke();
+  });
+  // Brennpunkt
+  ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.arc(F, cy, 6, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = 'rgba(239,68,68,0.3)'; ctx.beginPath(); ctx.arc(F, cy, 12, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#fca5a5'; ctx.font = '700 12px sans-serif'; ctx.fillText('Brennpunkt F', F, cy - 18);
+  // Brennweite markieren
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(xLens, cy + 62); ctx.lineTo(F, cy + 62); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '11px sans-serif'; ctx.fillText('Brennweite f = ' + _fpmNum(_sli.f, 0), (xLens + F) / 2, cy + 76);
+  ctx.fillStyle = '#fde047'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('paralleles Licht →', 12, cy - 60);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.1.2  (ns = 'sammellinse') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _sliArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('sammellinse')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('sammellinse')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was macht eine Sammellinse mit parallelem Licht?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, das parallele Licht wird von der Linse …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Beobachte, wo sich die parallelen Strahlen treffen.</li>
+          <li>Verändere die Brennweite. Wandert der Brennpunkt näher an die Linse oder weiter weg?</li>
+          <li>Überlege, wo das Licht am hellsten und heißesten ist.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtung</div>
+        <ol class="ab-ol">
+          <li>Wo treffen sich die parallelen Strahlen? Im … ${inp('b1', '')}</li>
+          <li>Wie heißt der Abstand Linse–Brennpunkt? ${inp('b2', '')}</li>
+          <li>Kurze Brennweite bedeutet: das Licht wird … ${inp('b3', 'stark/schwach gebündelt')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Sammellinse, drei parallele Strahlen und den Brennpunkt. Markiere die Brennweite f.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was macht eine Sammellinse mit dem Licht? ${inp('a1', 'sie …')}</li>
+          <li>Was ist die Brennweite? ${inp('a2', 'der Abstand …')}</li>
+          <li>Warum kann man mit einer Lupe Papier entzünden? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Eine Sammellinse ${inp('m1', 'bündelt/zerstreut')} paralleles Licht in einem Punkt, dem ${inp('m2', 'was?')}.<br>
+        Der Abstand von der Linse bis dorthin heißt ${inp('m3', 'was?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Mit einer Lupe kann man an einem sonnigen Tag ein Blatt Papier zum Glimmen bringen. Erkläre, warum genau im Brennpunkt.</div>
+        ${ta('tr1', 'Im Brennpunkt sammelt sich das Sonnenlicht, deshalb …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="sliMini">${_sliMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_sliSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_sliSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_sliSelf(3)">😃 sicher</button>
+          <span id="sliSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="sliSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Parallele Strahlen treffen sich im Brennpunkt. Kürzere Brennweite → Brennpunkt näher an der Linse, stärkere Bündelung. Im Brennpunkt ist das Licht am hellsten/heißesten.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Eine Sammellinse (Konvexlinse) bricht parallel einfallendes Licht so, dass es sich im Brennpunkt F trifft. Brennweite f = Abstand Linse–Brennpunkt; stärker gewölbte Linsen haben kleineres f. Für Bildentstehung (Gegenstand → reelles Bild) siehe 7.1.3.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Linse zerstreut das Licht." (2) „Der Brennpunkt liegt in der Linse." (3) „Alle Linsen sammeln Licht" (Zerstreuungslinsen nicht)." </div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Lupe + Sonne (mit Vorsicht) real zeigen; drei Parallelstrahlen zeichnen; Brennweite abmessen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4.1 „Brennpunkt" · 4.2 „Brennweite" · 4.3 „stark". 6.1 „bündelt es im Brennpunkt" · 6.2 „Abstand Linse–Brennpunkt" · 6.3 „dort ist die Energie auf einen Punkt konzentriert". Merksatz: bündelt · Brennpunkt · Brennweite. Transfer: Im Brennpunkt wird das Sonnenlicht auf einen winzigen Fleck konzentriert → sehr heiß. Minidiagnose: 1→Brennpunkt · 2→„Abstand Linse–Brennpunkt" · 3→„sie bündelt es".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('sammellinse')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('sammellinse', 'Wie bündelt eine Sammellinse das Licht?', body);
+}
+
+const _SLI_MINI = [
+  { q: '1. Wo treffen sich die parallelen Strahlen hinter einer Sammellinse?',
+    opts: ['Im Brennpunkt', 'In der Linse', 'Sie treffen sich nie'], correct: 0,
+    fb: ['Richtig! Alle parallelen Strahlen treffen sich im Brennpunkt.',
+         'Der Brennpunkt liegt hinter der Linse, nicht in ihr.',
+         'Doch – sie treffen sich im Brennpunkt.'] },
+  { q: '2. Was ist die Brennweite?',
+    opts: ['Die Dicke der Linse', 'Der Abstand von der Linse zum Brennpunkt', 'Die Helligkeit des Lichts'], correct: 1,
+    fb: ['Nicht die Dicke.',
+         'Richtig! Die Brennweite ist der Abstand Linse–Brennpunkt.',
+         'Die Helligkeit ist etwas anderes.'] },
+  { q: '3. Was macht eine Sammellinse mit dem Licht?',
+    opts: ['Sie zerstreut es', 'Sie bündelt es', 'Sie verschluckt es'], correct: 1,
+    fb: ['Das macht eine Zerstreuungslinse.',
+         'Richtig! Eine Sammellinse bündelt das Licht.',
+         'Die Linse ist durchsichtig – sie verschluckt das Licht nicht.'] }
+];
+function _sliMiniHTML() {
+  return _SLI_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_sliAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="sliFb${qi}"></div></div>`).join('');
+}
+function _sliAns(qi, oi) {
+  const m = _SLI_MINI[qi], el = document.getElementById('sliFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _sliSelf(n) {
+  const out = document.getElementById('sliSelfOut'), val = document.getElementById('sliSelfVal');
+  if (val) { val.value = String(n); _abSave('sammellinse'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
