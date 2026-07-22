@@ -232,7 +232,10 @@ const _physAbDefs = {
   'kompass': { titel: 'Wie funktioniert ein Kompass?', ns: 'kompass', html: () => _komArbeitsblattHTML() },
   'stromkreis-lampe': { titel: 'Wann leuchtet eine Lampe?', ns: 'lampe', html: () => _lmpArbeitsblattHTML() },
   'leiter-nichtleiter': { titel: 'Welche Stoffe leiten Strom?', ns: 'leiter', html: () => _leiArbeitsblattHTML() },
-  'schaltplan': { titel: 'Wie zeichnet man einen Stromkreis?', ns: 'schaltplan', html: () => _splArbeitsblattHTML() }
+  'schaltplan': { titel: 'Wie zeichnet man einen Stromkreis?', ns: 'schaltplan', html: () => _splArbeitsblattHTML() },
+  'reihenschaltung-rs': { titel: 'Was geschieht bei einer Reihenschaltung?', ns: 'reihe', html: () => _reiArbeitsblattHTML() },
+  'parallelschaltung-rs': { titel: 'Was geschieht bei einer Parallelschaltung?', ns: 'parallel', html: () => _parArbeitsblattHTML() },
+  'stromwirkungen': { titel: 'Welche Wirkungen kann elektrischer Strom haben?', ns: 'wirkung', html: () => _wirArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -373,6 +376,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('splAnim', 'splAnim');
     _pSim.start(dt => _splUpdate(dt), (ctx, cv) => _splDraw(ctx, cv), []);
     _abRestore('schaltplan');
+  },
+
+  // ── 5.2.4 REIHENSCHALTUNG ──────────────────────────────────────
+  'reihenschaltung-rs': modal => {
+    _reiInit();
+    modal.innerHTML = _reiHTML();
+    _reiStatus();
+    _pSim = new PhysicsSimEngine('reiAnim', 'reiAnim');
+    _pSim.start(dt => _reiUpdate(dt), (ctx, cv) => _reiDraw(ctx, cv), []);
+    _abRestore('reihe');
+  },
+
+  // ── 5.2.5 PARALLELSCHALTUNG ────────────────────────────────────
+  'parallelschaltung-rs': modal => {
+    _parInit();
+    modal.innerHTML = _parHTML();
+    _parStatus();
+    _pSim = new PhysicsSimEngine('parAnim', 'parAnim');
+    _pSim.start(dt => _parUpdate(dt), (ctx, cv) => _parDraw(ctx, cv), []);
+    _abRestore('parallel');
+  },
+
+  // ── 5.2.6 WIRKUNGEN DES STROMS ─────────────────────────────────
+  'stromwirkungen': modal => {
+    _wirInit();
+    modal.innerHTML = _wirHTML();
+    _wirSetDev('lampe');
+    _pSim = new PhysicsSimEngine('wirAnim', 'wirAnim');
+    _pSim.start(dt => _wirUpdate(dt), (ctx, cv) => _wirDraw(ctx, cv), []);
+    _abRestore('wirkung');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -35101,6 +35134,11 @@ function _abClear(ns) {
     .lmp-status.off { background:#fef3c7; color:#b45309; }
     .spl-leg td { font-size:.8rem; }
     .spl-leg td.spl-sym { text-align:center; font-weight:800; color:#7c3aed; font-size:1rem; letter-spacing:.06em; }
+    .wir-row { font-size:.82rem; padding:4px 8px; border-radius:6px; margin-bottom:4px; }
+    .wir-row.on { background:#dcfce7; color:#15803d; font-weight:700; }
+    .wir-row.off { background:#f1f5f9; color:#94a3b8; }
+    .wir-um { margin-top:10px; font-size:.8rem; color:#334155; background:#faf5ff; border:1px solid #ede9fe;
+      border-radius:9px; padding:8px 11px; line-height:1.5; }
   `;
   document.head.appendChild(s);
 })();
@@ -37577,5 +37615,668 @@ function _splMAns(qi, oi) {
 function _splSelf(n) {
   const out = document.getElementById('splSelfOut'), val = document.getElementById('splSelfVal');
   if (val) { val.value = String(n); _abSave('schaltplan'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 5.2.4  WAS GESCHIEHT BEI EINER REIHENSCHALTUNG?
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Strom und Magnetismus"
+// Handlungsorientiert: mehrere Lampen hintereinander (in Reihe).
+// Anzahl verändern (1–3): je mehr Lampen, desto schwächer leuchtet
+// jede. Eine Lampe herausdrehen → alle gehen aus (nur ein Weg).
+// Nur ungefährliche Kleinspannung.
+// ═══════════════════════════════════════════════════════
+
+let _rei = null;
+function _reiInit() { _rei = { n: 2, sw: true, broken: false, t: 0 }; }
+function _reiOn() { return _rei.sw && !_rei.broken; }
+function _reiBright() { return _reiOn() ? 1 / _rei.n : 0; }   // Helligkeit je Lampe
+
+function _reiHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim rei-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">💡➡️💡 Was geschieht bei einer Reihenschaltung?</h3>
+    <div class="fpm-note" style="margin-top:2px">Mehrere Lampen liegen <b>hintereinander</b> in einem einzigen Stromweg. Verändere die Anzahl und dreh eine Lampe heraus. Was passiert? (Nur Batterie-Kleinspannung.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="reiAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Anzahl Lampen in Reihe: <b id="reiNLbl">2</b></span>
+          <input type="range" id="reiN" min="1" max="3" step="1" value="2"
+            oninput="_reiSetN(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Probiere aus</div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="reiSw" onclick="_reiToggle('sw')">🔘 Schalter: <span id="reiSwT">geschlossen</span></button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" id="reiBr" onclick="_reiToggle('broken')">💡 Lampe 2: <span id="reiBrT">eingedreht</span></button>
+        </div>
+        <div class="lmp-status" id="reiStatus"></div>
+        <div class="fpm-note" style="margin-top:10px">Helligkeit je Lampe: <b id="reiHell">50 %</b><br>
+        <span style="color:#64748b">Je mehr Lampen in Reihe, desto schwächer leuchtet jede – sie teilen sich die Spannung.</span></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      In der <b>Reihenschaltung</b> gibt es nur <b>einen</b> Stromweg. &nbsp;|&nbsp; Eine Unterbrechung → alle Lampen aus.
+    </p>
+    ${_reiArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _reiSetN(v) { _rei.n = +v; const e = document.getElementById('reiNLbl'); if (e) e.textContent = _fpmNum(+v, 0); _reiStatus(); }
+function _reiToggle(k) {
+  _rei[k] = !_rei[k];
+  const swT = document.getElementById('reiSwT'); if (swT) swT.textContent = _rei.sw ? 'geschlossen' : 'offen';
+  const brT = document.getElementById('reiBrT'); if (brT) brT.textContent = _rei.broken ? 'herausgedreht' : 'eingedreht';
+  document.getElementById('reiSw')?.classList.toggle('primary', _rei.sw);
+  document.getElementById('reiBr')?.classList.toggle('primary', !_rei.broken);
+  _reiStatus();
+}
+function _reiStatus() {
+  const el = document.getElementById('reiStatus');
+  const h = document.getElementById('reiHell'); if (h) h.textContent = _fpmNum(_reiBright() * 100, 0) + ' %';
+  if (!el) return;
+  if (_reiOn()) { el.textContent = '✓ Alle ' + _rei.n + ' Lampen leuchten (schwächer, wenn es mehr sind).'; el.className = 'lmp-status on'; }
+  else if (!_rei.sw) { el.textContent = '✗ Schalter offen → alle Lampen aus.'; el.className = 'lmp-status off'; }
+  else { el.textContent = '✗ Eine Lampe herausgedreht → der Kreis ist unterbrochen → ALLE Lampen aus!'; el.className = 'lmp-status off'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _reiUpdate(dt) { if (_rei) _rei.t += dt; }
+function _reiLampe(ctx, x, y, r, bright) {
+  if (bright > 0) { ctx.fillStyle = 'rgba(250,204,21,' + (0.15 + 0.3 * bright) + ')'; ctx.beginPath(); ctx.arc(x, y, r + 10, 0, 2 * Math.PI); ctx.fill(); }
+  ctx.fillStyle = bright > 0 ? `rgba(253,224,71,${0.4 + 0.6 * bright})` : '#e2e8f0';
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = bright > 0 ? '#b45309' : '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(x - 6, y - 6); ctx.lineTo(x + 6, y + 6); ctx.moveTo(x + 6, y - 6); ctx.lineTo(x - 6, y + 6); ctx.stroke();
+}
+function _reiDraw(ctx, cv) {
+  if (!_rei) return;
+  const W = cv.width, H = cv.height, on = _reiOn(), b = _reiBright();
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const L = 55, R = W - 55, T = 60, B = H - 55, cx = (L + R) / 2;
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4; ctx.strokeRect(L, T, R - L, B - T);
+  if (on) { ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3; ctx.setLineDash([9, 9]); ctx.lineDashOffset = -(_rei.t * 70) % 18; ctx.strokeRect(L, T, R - L, B - T); ctx.setLineDash([]); ctx.lineDashOffset = 0; }
+  // Batterie unten
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx - 8, B - 14); ctx.lineTo(cx - 8, B + 14); ctx.stroke();
+  ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(cx + 8, B - 8); ctx.lineTo(cx + 8, B + 8); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', cx, B + 26);
+  // Lampen in Reihe (oben)
+  const span = R - L - 40, x0 = L + 20;
+  for (let i = 0; i < _rei.n; i++) {
+    const x = _rei.n === 1 ? cx : x0 + span * i / (_rei.n - 1);
+    const removed = (_rei.broken && i === 1 && _rei.n >= 2);
+    if (removed) {
+      ctx.fillStyle = '#f8fafc'; ctx.fillRect(x - 14, T - 12, 28, 24);
+      ctx.fillStyle = '#dc2626'; ctx.beginPath(); ctx.arc(x - 12, T, 3, 0, 2 * Math.PI); ctx.arc(x + 12, T, 3, 0, 2 * Math.PI); ctx.fill();
+      ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('raus', x, T - 16);
+    } else {
+      _reiLampe(ctx, x, T, 13, b);
+    }
+  }
+  // Schalter rechts
+  const cy = (T + B) / 2;
+  ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.arc(R, cy + 16, 3, 0, 2 * Math.PI); ctx.arc(R, cy - 16, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = _rei.sw ? '#16a34a' : '#dc2626'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(R, cy + 16); if (_rei.sw) ctx.lineTo(R, cy - 16); else ctx.lineTo(R + 15, cy - 10); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Schalter', R + 6, cy + 28);
+  ctx.fillStyle = on ? '#16a34a' : '#b45309'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(on ? _rei.n + ' Lampen in Reihe – leuchten' : 'alle aus', cx, cy + 4);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.2.4  (ns = 'reihe') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _reiArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('reihe')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('reihe')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was passiert, wenn mehrere Lampen hintereinander (in Reihe) geschaltet sind – und wenn eine ausfällt?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute: Wenn ich eine Lampe herausdrehe, dann … Mit mehr Lampen leuchten sie …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle nacheinander <b>1, 2 und 3</b> Lampen in Reihe ein. Beobachte die Helligkeit.</li>
+          <li>Dreh bei 2 oder 3 Lampen eine <b>heraus</b>. Was machen die anderen?</li>
+          <li>Trage deine Beobachtungen ein.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>1 Lampe – Helligkeit</td><td>${inp('t1', 'hell/mittel/schwach')}</td></tr>
+          <tr><td>2 Lampen – Helligkeit je Lampe</td><td>${inp('t2', '')}</td></tr>
+          <tr><td>3 Lampen – Helligkeit je Lampe</td><td>${inp('t3', '')}</td></tr>
+          <tr><td>Eine Lampe herausgedreht → die anderen</td><td>${inp('t4', 'leuchten/aus')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne einen Stromkreis mit zwei Lampen in Reihe.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie ändert sich die Helligkeit, wenn mehr Lampen in Reihe sind? ${inp('a1', '')}</li>
+          <li>Was passiert mit allen Lampen, wenn eine ausfällt? ${inp('a2', '')}</li>
+          <li>Wie viele Stromwege gibt es in der Reihenschaltung? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">In der Reihenschaltung liegen die Lampen ${inp('m1', 'nebeneinander/hintereinander')} in einem Stromweg.<br>
+        Fällt eine Lampe aus, gehen ${inp('m2', 'alle/keine')} aus.<br>
+        Je mehr Lampen in Reihe, desto ${inp('m3', 'heller/schwächer')} leuchtet jede.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Bei alten Lichterketten war der ganze Strang dunkel, wenn ein einziges Lämpchen kaputt war. Erkläre das mit der Reihenschaltung.</div>
+        ${ta('tr1', 'Bei der alten Lichterkette …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="reiMini">${_reiMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_reiSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_reiSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_reiSelf(3)">😃 sicher</button>
+          <span id="reiSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="reiSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> 1 Lampe hell; 2 Lampen schwächer; 3 Lampen noch schwächer. Eine Lampe heraus → alle aus (nur ein Stromweg).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> In Reihe fließt überall derselbe Strom; die Spannung teilt sich auf die Lampen auf → jede leuchtet schwächer. Jede Unterbrechung öffnet den einzigen Kreis → alles aus.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die erste Lampe bekommt mehr Strom als die zweite." (2) „Wenn eine ausfällt, leuchten die anderen weiter" (Parallel-Denken). (3) „Mehr Lampen = heller".</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Stromweg mit dem Finger nachfahren (nur ein Weg); Vergleich mit späterer Parallelschaltung ankündigen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 „wird schwächer" · 6.2 „alle gehen aus" · 6.3 „nur einer". Merksatz: hintereinander · alle · schwächer. Transfer: Alle Lämpchen in Reihe → ein kaputtes unterbricht den einzigen Kreis → alle dunkel. Minidiagnose: 1→„alle aus" · 2→„schwächer" · 3→„ein Weg".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('reihe')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('reihe', 'Was geschieht bei einer Reihenschaltung?', body);
+}
+
+const _REI_MINI = [
+  { q: '1. In einer Reihenschaltung fällt eine Lampe aus. Was machen die anderen?',
+    opts: ['Sie leuchten weiter', 'Sie gehen alle aus', 'Sie leuchten heller'], correct: 1,
+    fb: ['In Reihe gibt es nur einen Weg – der ist dann unterbrochen.',
+         'Richtig! Eine Unterbrechung → alle Lampen aus.',
+         'Heller werden sie sicher nicht.'] },
+  { q: '2. Was passiert mit der Helligkeit, wenn mehr Lampen in Reihe sind?',
+    opts: ['Jede leuchtet heller', 'Jede leuchtet schwächer', 'Bleibt gleich'], correct: 1,
+    fb: ['Andersherum – sie teilen sich die Spannung.',
+         'Richtig! Mehr Lampen in Reihe → jede leuchtet schwächer.',
+         'Die Helligkeit ändert sich sehr wohl.'] },
+  { q: '3. Wie viele Stromwege gibt es in einer Reihenschaltung?',
+    opts: ['Nur einen', 'Zwei getrennte', 'Für jede Lampe einen'], correct: 0,
+    fb: ['Richtig! Es gibt nur einen einzigen Stromweg.',
+         'Getrennte Wege hat die Parallelschaltung.',
+         'Das wäre eine Parallelschaltung.'] }
+];
+function _reiMiniHTML() {
+  return _REI_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_reiAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="reiFb${qi}"></div></div>`).join('');
+}
+function _reiAns(qi, oi) {
+  const m = _REI_MINI[qi], el = document.getElementById('reiFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _reiSelf(n) {
+  const out = document.getElementById('reiSelfOut'), val = document.getElementById('reiSelfVal');
+  if (val) { val.value = String(n); _abSave('reihe'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 5.2.5  WAS GESCHIEHT BEI EINER PARALLELSCHALTUNG?
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Strom und Magnetismus"
+// Handlungsorientiert: zwei Lampen auf getrennten Stromwegen, jede
+// mit eigenem Schalter. Jede Lampe lässt sich unabhängig ein- und
+// ausschalten; jede leuchtet mit voller Helligkeit.
+// Nur ungefährliche Kleinspannung.
+// ═══════════════════════════════════════════════════════
+
+let _par = null;
+function _parInit() { _par = { sw1: true, sw2: true, t: 0 }; }
+
+function _parHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim par-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">💡⇊💡 Was geschieht bei einer Parallelschaltung?</h3>
+    <div class="fpm-note" style="margin-top:2px">Zwei Lampen liegen auf <b>getrennten</b> Stromwegen – jede mit eigenem Schalter. Schalte einzeln und beobachte. (Nur Batterie-Kleinspannung.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="parAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+      </div>
+      <div>
+        <div class="fpm-label">Probiere aus</div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="parS1" onclick="_parToggle('sw1')">🔘 Lampe 1: <span id="parS1T">an</span></button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="parS2" onclick="_parToggle('sw2')">🔘 Lampe 2: <span id="parS2T">an</span></button>
+        </div>
+        <div class="lmp-status" id="parStatus"></div>
+        <div class="fpm-note" style="margin-top:10px">Jede Lampe hat ihren <b>eigenen</b> Weg zur Batterie. Deshalb leuchtet jede mit <b>voller</b> Helligkeit – und unabhängig von der anderen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      In der <b>Parallelschaltung</b> gibt es <b>mehrere</b> Stromwege. &nbsp;|&nbsp; Geht eine Lampe aus, leuchtet die andere weiter.
+    </p>
+    ${_parArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _parToggle(k) {
+  _par[k] = !_par[k];
+  const s1 = document.getElementById('parS1T'); if (s1) s1.textContent = _par.sw1 ? 'an' : 'aus';
+  const s2 = document.getElementById('parS2T'); if (s2) s2.textContent = _par.sw2 ? 'an' : 'aus';
+  document.getElementById('parS1')?.classList.toggle('primary', _par.sw1);
+  document.getElementById('parS2')?.classList.toggle('primary', _par.sw2);
+  _parStatus();
+}
+function _parStatus() {
+  const el = document.getElementById('parStatus'); if (!el) return;
+  const n = (_par.sw1 ? 1 : 0) + (_par.sw2 ? 1 : 0);
+  if (n === 2) { el.textContent = '✓ Beide Lampen leuchten – jede voll hell.'; el.className = 'lmp-status on'; }
+  else if (n === 1) { el.textContent = '✓ Eine Lampe aus – die andere leuchtet weiter (getrennte Wege).'; el.className = 'lmp-status on'; }
+  else { el.textContent = '✗ Beide Schalter offen → beide Lampen aus.'; el.className = 'lmp-status off'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _parUpdate(dt) { if (_par) _par.t += dt; }
+function _parLampe(ctx, x, y, r, on) {
+  if (on) { ctx.fillStyle = 'rgba(250,204,21,0.35)'; ctx.beginPath(); ctx.arc(x, y, r + 10, 0, 2 * Math.PI); ctx.fill(); }
+  ctx.fillStyle = on ? '#fde047' : '#e2e8f0'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = on ? '#b45309' : '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(x - 6, y - 6); ctx.lineTo(x + 6, y + 6); ctx.moveTo(x + 6, y - 6); ctx.lineTo(x - 6, y + 6); ctx.stroke();
+}
+function _parSwitch(ctx, x, y, on) {
+  ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.arc(x - 12, y, 3, 0, 2 * Math.PI); ctx.arc(x + 12, y, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = on ? '#16a34a' : '#dc2626'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(x - 12, y); if (on) ctx.lineTo(x + 12, y); else ctx.lineTo(x + 8, y - 12); ctx.stroke();
+}
+function _parDraw(ctx, cv) {
+  if (!_par) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const L = 60, Rr = W - 55, yTop = 70, yBot = H - 65, xB = L, cyB = (yTop + yBot) / 2;
+  // Sammelschienen (Rails) links & rechts
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(L, yTop); ctx.lineTo(L, yBot); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(Rr, yTop); ctx.lineTo(Rr, yBot); ctx.stroke();
+  // Batterie an linker Schiene
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(L - 14, cyB - 8); ctx.lineTo(L + 14, cyB - 8); ctx.stroke();
+  ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(L - 8, cyB + 8); ctx.lineTo(L + 8, cyB + 8); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Batterie', L - 26, cyB + 28);
+  // zwei Zweige
+  const branches = [{ y: yTop, on: _par.sw1, lbl: 'Lampe 1' }, { y: yBot, on: _par.sw2, lbl: 'Lampe 2' }];
+  branches.forEach(br => {
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.moveTo(L, br.y); ctx.lineTo(Rr, br.y); ctx.stroke();
+    if (br.on) {
+      ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3; ctx.setLineDash([9, 9]); ctx.lineDashOffset = -(_par.t * 70) % 18;
+      ctx.beginPath(); ctx.moveTo(L, br.y); ctx.lineTo(Rr, br.y); ctx.stroke(); ctx.setLineDash([]); ctx.lineDashOffset = 0;
+    }
+    _parSwitch(ctx, L + 70, br.y, br.on);
+    _parLampe(ctx, (L + Rr) / 2 + 40, br.y, 13, br.on);
+    ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(br.lbl, Rr - 60, br.y - 18);
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.2.5  (ns = 'parallel') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _parArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('parallel')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('parallel')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was passiert bei zwei Lampen auf getrennten Stromwegen (parallel), wenn ich nur eine ausschalte?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute: Wenn ich Lampe 1 ausschalte, dann macht Lampe 2 …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Schalte beide Lampen ein. Wie hell leuchten sie?</li>
+          <li>Schalte nur <b>Lampe 1</b> aus. Was macht Lampe 2?</li>
+          <li>Probiere alle Kombinationen aus und trage sie ein.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Schalter 1</td><td>Schalter 2</td><td>Lampe 1</td><td>Lampe 2</td></tr>
+          <tr><td>an</td><td>an</td><td>${inp('t1a', '')}</td><td>${inp('t1b', '')}</td></tr>
+          <tr><td>aus</td><td>an</td><td>${inp('t2a', '')}</td><td>${inp('t2b', '')}</td></tr>
+          <tr><td>an</td><td>aus</td><td>${inp('t3a', '')}</td><td>${inp('t3b', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne zwei Lampen parallel (auf zwei getrennten Wegen) mit der Batterie.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Sind die Lampen voneinander abhängig? ${inp('a1', 'ja/nein')}</li>
+          <li>Wie hell leuchtet jede Lampe im Vergleich zur Reihenschaltung? ${inp('a2', '')}</li>
+          <li>Wie viele Stromwege gibt es? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">In der Parallelschaltung hat jede Lampe einen ${inp('m1', 'eigenen/gemeinsamen')} Stromweg.<br>
+        Schaltet man eine Lampe aus, leuchtet die andere ${inp('m2', 'weiter/auch aus')}.<br>
+        Jede Lampe leuchtet mit ${inp('m3', 'voller/halber')} Helligkeit.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Zu Hause kannst du das Licht in der Küche anlassen und im Wohnzimmer ausschalten. Welche Schaltung wird deshalb im Haushalt benutzt? Begründe.</div>
+        ${ta('tr1', 'Im Haushalt benutzt man die … , weil …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="parMini">${_parMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_parSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_parSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_parSelf(3)">😃 sicher</button>
+          <span id="parSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="parSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> an/an → beide leuchten; aus/an → nur Lampe 2; an/aus → nur Lampe 1. Jede Lampe leuchtet unabhängig und mit voller Helligkeit.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Parallel = mehrere getrennte Stromwege; an jeder Lampe liegt die volle Spannung → volle Helligkeit; Ausfall/Abschalten eines Zweigs betrifft die anderen nicht.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Wenn eine aus ist, gehen beide aus" (Reihen-Denken). (2) „Parallel leuchten die Lampen schwächer." (3) „Es gibt nur einen Schalter für alles."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Beide getrennten Wege mit dem Finger nachfahren; direkter Vergleich zur Reihenschaltung (5.2.4).</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: an/an; aus→L1 aus,L2 an; an→L1 an,L2 aus. 6.1 „nein" · 6.2 „voll/heller" · 6.3 „mehrere". Merksatz: eigenen · weiter · voller. Transfer: Parallelschaltung, weil jedes Gerät unabhängig geschaltet werden kann. Minidiagnose: 1→„leuchtet weiter" · 2→„volle Helligkeit" · 3→„Parallelschaltung".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('parallel')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('parallel', 'Was geschieht bei einer Parallelschaltung?', body);
+}
+
+const _PAR_MINI = [
+  { q: '1. Zwei Lampen sind parallel geschaltet. Du schaltest Lampe 1 aus. Was macht Lampe 2?',
+    opts: ['Sie geht auch aus', 'Sie leuchtet weiter', 'Sie leuchtet schwächer'], correct: 1,
+    fb: ['Nein – die Wege sind getrennt.',
+         'Richtig! Lampe 2 hat einen eigenen Weg und leuchtet weiter.',
+         'Sie bleibt gleich hell.'] },
+  { q: '2. Wie hell leuchtet jede Lampe in der Parallelschaltung?',
+    opts: ['Halb so hell', 'Mit voller Helligkeit', 'Gar nicht'], correct: 1,
+    fb: ['Das wäre die Reihenschaltung.',
+         'Richtig! An jeder Lampe liegt die volle Spannung → volle Helligkeit.',
+         'Sie leuchten sehr wohl.'] },
+  { q: '3. Welche Schaltung benutzt man im Haushalt, damit jedes Licht einzeln geht?',
+    opts: ['Reihenschaltung', 'Parallelschaltung', 'Gar keine'], correct: 1,
+    fb: ['In Reihe würde ein Ausfall alles lahmlegen.',
+         'Richtig! Im Haushalt sind die Geräte parallel geschaltet.',
+         'Doch, man braucht die Parallelschaltung.'] }
+];
+function _parMiniHTML() {
+  return _PAR_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_parAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="parFb${qi}"></div></div>`).join('');
+}
+function _parAns(qi, oi) {
+  const m = _PAR_MINI[qi], el = document.getElementById('parFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _parSelf(n) {
+  const out = document.getElementById('parSelfOut'), val = document.getElementById('parSelfVal');
+  if (val) { val.value = String(n); _abSave('parallel'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 5.2.6  WELCHE WIRKUNGEN KANN ELEKTRISCHER STROM HABEN?
+// Realschule NRW – Klasse 5 · Inhaltsfeld "Strom und Magnetismus"
+// Handlungsorientiert: verschiedene Verbraucher an denselben
+// Stromkreis anschließen und die Wirkung beobachten – Licht-,
+// Wärme-, magnetische und Bewegungswirkung. Energieumwandlung.
+// Stromstärke verändern → Wirkung stärker. Nur Kleinspannung.
+// ═══════════════════════════════════════════════════════
+
+const _WIR_DEV = [
+  { k: 'lampe', name: 'Glühlampe', ic: '💡', wirk: ['licht', 'waerme'], um: 'elektrische Energie → Licht + Wärme' },
+  { k: 'heiz',  name: 'Heizdraht', ic: '🔥', wirk: ['waerme'],          um: 'elektrische Energie → Wärme' },
+  { k: 'spule', name: 'Spule (Elektromagnet)', ic: '🧲', wirk: ['magnet'], um: 'elektrische Energie → magnetische Wirkung' },
+  { k: 'motor', name: 'Elektromotor', ic: '⚙️', wirk: ['bewegung', 'waerme'], um: 'elektrische Energie → Bewegung (+ etwas Wärme)' }
+];
+const _WIR_ALL = [
+  { k: 'licht', n: 'Lichtwirkung', ic: '☀️' },
+  { k: 'waerme', n: 'Wärmewirkung', ic: '🔥' },
+  { k: 'magnet', n: 'magnetische Wirkung', ic: '🧲' },
+  { k: 'bewegung', n: 'Bewegungswirkung', ic: '🌀' }
+];
+let _wir = null;
+function _wirInit() { _wir = { dev: 'lampe', I: 3, rot: 0, t: 0 }; }
+function _wirCur() { return _WIR_DEV.find(d => d.k === _wir.dev); }
+
+function _wirHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim wir-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">⚡ Welche Wirkungen kann elektrischer Strom haben?</h3>
+    <div class="fpm-note" style="margin-top:2px">Schließe verschiedene Geräte an denselben Stromkreis an. Was bewirkt der Strom jeweils? Verändere die Stromstärke. (Nur Batterie-Kleinspannung.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="wirAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Stromstärke I: <b id="wirILbl">3 A</b></span>
+          <input type="range" id="wirI" min="1" max="5" step="1" value="3"
+            oninput="_wirSetI(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Gerät anschließen</div>
+        <div class="msf-chips" id="wirChips">${_wirChipsHTML()}</div>
+        <div class="fpm-label" style="margin-top:10px">Beobachtete Wirkung(en)</div>
+        <div id="wirWirk">${_wirWirkHTML()}</div>
+        <div class="wir-um" id="wirUm"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Strom kann <b>Licht</b>, <b>Wärme</b>, <b>Magnetismus</b> und <b>Bewegung</b> erzeugen. &nbsp;|&nbsp; Dabei wird elektrische Energie umgewandelt.
+    </p>
+    ${_wirArbeitsblattHTML()}
+  </div>`;
+}
+function _wirChipsHTML() {
+  return _WIR_DEV.map(d => `<button class="msf-chip${d.k === _wir.dev ? ' cur' : ''}" onclick="_wirSetDev('${d.k}')">${d.ic} ${d.name}</button>`).join('');
+}
+function _wirWirkHTML() {
+  const cur = _wirCur();
+  return _WIR_ALL.map(w => {
+    const on = cur.wirk.indexOf(w.k) >= 0;
+    return `<div class="wir-row ${on ? 'on' : 'off'}">${on ? '✓' : '—'} ${w.ic} ${w.n}</div>`;
+  }).join('');
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _wirSetI(v) { _wir.I = +v; const e = document.getElementById('wirILbl'); if (e) e.textContent = _fpmNum(+v, 0) + ' A'; }
+function _wirSetDev(k) {
+  _wir.dev = k;
+  const chips = document.getElementById('wirChips'); if (chips) chips.innerHTML = _wirChipsHTML();
+  const w = document.getElementById('wirWirk'); if (w) w.innerHTML = _wirWirkHTML();
+  const um = document.getElementById('wirUm'); if (um) um.innerHTML = '🔄 <b>Energieumwandlung:</b> ' + _wirCur().um;
+}
+
+// ── Animation ──────────────────────────────────────────
+function _wirUpdate(dt) { if (_wir) { _wir.t += dt; if (_wir.dev === 'motor') _wir.rot += _wir.I * dt * 1.4; } }
+function _wirDraw(ctx, cv) {
+  if (!_wir) return;
+  const W = cv.width, H = cv.height, I = _wir.I, k = _wir.dev;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2 + 30, cy = H / 2;
+  // Batterie links + Zuleitungen
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(40, cy - 12); ctx.lineTo(40, cy + 12); ctx.stroke();
+  ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(52, cy - 7); ctx.lineTo(52, cy + 7); ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', 46, cy + 28);
+  ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3; ctx.setLineDash([8, 8]); ctx.lineDashOffset = -(_wir.t * (40 + I * 20)) % 16;
+  ctx.beginPath(); ctx.moveTo(52, cy); ctx.lineTo(cx - 40, cy); ctx.stroke();
+  ctx.setLineDash([]); ctx.lineDashOffset = 0;
+  ctx.fillStyle = '#16a34a'; ctx.font = '11px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('I = ' + _fpmNum(I, 0) + ' A', 70, cy - 10);
+
+  if (k === 'lampe') {
+    const g = I / 5;
+    ctx.fillStyle = 'rgba(250,204,21,' + (0.1 + 0.35 * g) + ')'; ctx.beginPath(); ctx.arc(cx, cy, 26 + 24 * g, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fde047'; ctx.strokeStyle = '#b45309'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(cx, cy, 24, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.strokeStyle = '#b45309'; ctx.beginPath(); ctx.moveTo(cx - 8, cy + 6); ctx.lineTo(cx, cy - 6); ctx.lineTo(cx + 8, cy + 6); ctx.stroke();
+    ctx.fillStyle = '#334155'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Licht + Wärme', cx, cy + 56);
+  } else if (k === 'heiz') {
+    const hot = I / 5;
+    ctx.strokeStyle = `rgb(${200 + Math.round(55 * hot)},${Math.round(120 - 90 * hot)},40)`; ctx.lineWidth = 5; ctx.lineCap = 'round';
+    ctx.beginPath(); for (let i = 0; i <= 8; i++) { const x = cx - 40 + i * 10; const y = cy + (i % 2 ? 10 : -10); i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); } ctx.stroke();
+    for (let i = 0; i < 3; i++) { const wy = cy - 22 - ((_wir.t * 30 + i * 18) % 40); ctx.strokeStyle = 'rgba(239,68,68,' + (0.5 * hot) + ')'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(cx - 12 + i * 12, wy); ctx.quadraticCurveTo(cx - 6 + i * 12, wy - 6, cx - 12 + i * 12, wy - 12); ctx.stroke(); }
+    ctx.fillStyle = '#334155'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Wärme (Draht glüht)', cx, cy + 46);
+  } else if (k === 'spule') {
+    ctx.fillStyle = '#94a3b8'; ctx.fillRect(cx - 6, cy - 30, 12, 60);
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2 + I * 0.4;
+    for (let i = 0; i < 5; i++) { ctx.beginPath(); ctx.ellipse(cx, cy - 22 + i * 11, 12, 4, 0, 0, 2 * Math.PI); ctx.stroke(); }
+    // Kompassnadel darunter, Ausschlag ~ I
+    const ny = cy + 46, ang = -Math.PI / 2 + (I / 5) * 0.9;
+    ctx.strokeStyle = '#cbd5e1'; ctx.beginPath(); ctx.arc(cx, ny, 16, 0, 2 * Math.PI); ctx.stroke();
+    ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx, ny); ctx.lineTo(cx + Math.cos(ang) * 13, ny + Math.sin(ang) * 13); ctx.stroke();
+    ctx.fillStyle = '#334155'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Magnet lenkt Nadel ab', cx, ny + 34);
+  } else if (k === 'motor') {
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(cx, cy, 26, 0, 2 * Math.PI); ctx.stroke();
+    ctx.save(); ctx.translate(cx, cy); ctx.rotate(_wir.rot);
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(-22, 0); ctx.lineTo(22, 0); ctx.stroke();
+    ctx.fillStyle = '#7c3aed'; ctx.beginPath(); ctx.arc(0, 0, 5, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+    ctx.fillStyle = '#334155'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Bewegung (dreht sich)', cx, cy + 50);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 5.2.6  (ns = 'wirkung') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _wirArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('wirkung')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('wirkung')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was kann elektrischer Strom alles bewirken?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, elektrischer Strom kann … erzeugen.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Schließe nacheinander <b>jedes Gerät</b> an (Lampe, Heizdraht, Spule, Motor).</li>
+          <li>Beobachte, welche Wirkung entsteht. Verändere die Stromstärke.</li>
+          <li>Trage die Wirkung in die Tabelle ein.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Glühlampe</td><td>${inp('t_lampe', 'welche Wirkung?')}</td></tr>
+          <tr><td>Heizdraht</td><td>${inp('t_heiz', '')}</td></tr>
+          <tr><td>Spule (Elektromagnet)</td><td>${inp('t_spule', '')}</td></tr>
+          <tr><td>Elektromotor</td><td>${inp('t_motor', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne ein Gerät und male Symbole für seine Wirkung dazu (z. B. Strahlen für Licht, Wellen für Wärme).</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Nenne die vier Wirkungen des Stroms. ${inp('a1', '1. … 2. … 3. … 4. …')}</li>
+          <li>Was passiert mit der Wirkung, wenn die Stromstärke größer wird? ${inp('a2', '')}</li>
+          <li>Wozu wird die elektrische Energie im Motor umgewandelt? ${inp('a3', 'zu …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Elektrischer Strom kann eine ${inp('m1', 'Wirkung 1')}-, ${inp('m2', 'Wirkung 2')}-, magnetische und Bewegungs-Wirkung haben.<br>
+        Dabei wird ${inp('m3', 'welche Energie?')} Energie in andere Energieformen umgewandelt.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ordne zu, welche Wirkung diese Geräte nutzen: Föhn, Türklingel, Taschenlampe, Ventilator.</div>
+        ${ta('tr1', 'Föhn: … , Türklingel: … , Taschenlampe: … , Ventilator: …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="wirMini">${_wirMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_wirSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_wirSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_wirSelf(3)">😃 sicher</button>
+          <span id="wirSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="wirSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Lampe → Licht (und Wärme); Heizdraht → Wärme; Spule → magnetische Wirkung (Nadel schlägt aus); Motor → Bewegung. Größere Stromstärke → stärkere Wirkung.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Wirkungen des Stroms: Licht-, Wärme-, magnetische und Bewegungswirkung. In jedem Verbraucher wird elektrische Energie in andere Energieformen umgewandelt (z. B. elektrisch → Licht + Wärme).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Strom erzeugt nur Licht." (2) „Wärme ist kein Effekt des Stroms." (3) „Energie geht verloren" statt umgewandelt.</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Reale Geräte zuordnen (Föhn, Klingel, Lampe, Ventilator); Energieumwandlung sprachlich mit „→" fassen; nur Kleinspannung.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 Licht, Wärme, Magnetismus, Bewegung · 6.2 „stärker" · 6.3 „Bewegung". Merksatz: Licht · Wärme · elektrische. Transfer: Föhn = Wärme + Bewegung, Türklingel = Magnet, Taschenlampe = Licht, Ventilator = Bewegung. Minidiagnose: 1→Wärme · 2→magnetische Wirkung · 3→„Licht und Wärme".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('wirkung')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('wirkung', 'Welche Wirkungen kann elektrischer Strom haben?', body);
+}
+
+const _WIR_MINI = [
+  { q: '1. Welche Wirkung nutzt ein Heizdraht (z. B. im Toaster)?',
+    opts: ['Lichtwirkung', 'Wärmewirkung', 'Bewegungswirkung'], correct: 1,
+    fb: ['Ein wenig glüht er, aber der Zweck ist die Wärme.',
+         'Richtig! Der Heizdraht nutzt die Wärmewirkung.',
+         'Er bewegt sich nicht.'] },
+  { q: '2. Eine Spule mit Strom lenkt eine Kompassnadel ab. Welche Wirkung ist das?',
+    opts: ['Lichtwirkung', 'magnetische Wirkung', 'Wärmewirkung'], correct: 1,
+    fb: ['Licht entsteht dabei nicht.',
+         'Richtig! Das ist die magnetische Wirkung des Stroms.',
+         'Wärme ist hier nicht der Punkt.'] },
+  { q: '3. Wozu wird die elektrische Energie in einer Glühlampe umgewandelt?',
+    opts: ['Nur zu Bewegung', 'Zu Licht und Wärme', 'Zu Magnetismus'], correct: 1,
+    fb: ['Die Lampe bewegt sich nicht.',
+         'Richtig! Elektrische Energie → Licht und Wärme.',
+         'Eine Lampe ist kein Magnet.'] }
+];
+function _wirMiniHTML() {
+  return _WIR_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_wirAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="wirFb${qi}"></div></div>`).join('');
+}
+function _wirAns(qi, oi) {
+  const m = _WIR_MINI[qi], el = document.getElementById('wirFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _wirSelf(n) {
+  const out = document.getElementById('wirSelfOut'), val = document.getElementById('wirSelfVal');
+  if (val) { val.value = String(n); _abSave('wirkung'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
