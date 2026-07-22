@@ -296,7 +296,10 @@ const _physAbDefs = {
   'elektrische-energie': { titel: 'Elektrische Energie E = P · t', ns: 'energie-rs', html: () => _eenArbeitsblattHTML() },
   'stromkosten': { titel: 'Was kostet elektrische Energie?', ns: 'stromkosten', html: () => _kosArbeitsblattHTML() },
   'energiesparen': { titel: 'Energie sparen im Haushalt', ns: 'energiesparen', html: () => _sprArbeitsblattHTML() },
-  'stromgefahren': { titel: 'Gefahren des elektrischen Stroms & Schutz', ns: 'stromgefahr', html: () => _gefArbeitsblattHTML() }
+  'stromgefahren': { titel: 'Gefahren des elektrischen Stroms & Schutz', ns: 'stromgefahr', html: () => _gefArbeitsblattHTML() },
+  'v-begriff': { titel: 'Was bedeutet Geschwindigkeit?', ns: 'vbegriff', html: () => _vbgArbeitsblattHTML() },
+  'v-messen': { titel: 'Wie misst man eine Geschwindigkeit?', ns: 'vmessen', html: () => _vmsArbeitsblattHTML() },
+  'v-formel': { titel: 'Wie berechnet man eine Geschwindigkeit? (v = s / t)', ns: 'vformel', html: () => _vstArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -1076,6 +1079,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('gefAnim', 'gefAnim');
     _pSim.start(dt => _gefUpdate(dt), (ctx, cv) => _gefDraw(ctx, cv), []);
     _abRestore('stromgefahr');
+  },
+
+  // ── 8.4.1 WAS BEDEUTET GESCHWINDIGKEIT ─────────────────────────
+  'v-begriff': modal => {
+    _vbgInit();
+    modal.innerHTML = _vbgHTML();
+    _vbgStatus();
+    _pSim = new PhysicsSimEngine('vbgAnim', 'vbgAnim');
+    _pSim.start(dt => _vbgUpdate(dt), (ctx, cv) => _vbgDraw(ctx, cv), []);
+    _abRestore('vbegriff');
+  },
+
+  // ── 8.4.2 WIE MISST MAN EINE GESCHWINDIGKEIT ───────────────────
+  'v-messen': modal => {
+    _vmsInit();
+    modal.innerHTML = _vmsHTML();
+    _vmsStatus();
+    _pSim = new PhysicsSimEngine('vmsAnim', 'vmsAnim');
+    _pSim.start(dt => _vmsUpdate(dt), (ctx, cv) => _vmsDraw(ctx, cv), []);
+    _abRestore('vmessen');
+  },
+
+  // ── 8.4.3 v = s / t BERECHNEN ──────────────────────────────────
+  'v-formel': modal => {
+    _vstInit();
+    modal.innerHTML = _vstHTML();
+    _vstStatus();
+    _pSim = new PhysicsSimEngine('vstAnim', 'vstAnim');
+    _pSim.start(dt => _vstUpdate(dt), (ctx, cv) => _vstDraw(ctx, cv), []);
+    _abRestore('vformel');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -51798,5 +51831,620 @@ function _gefAns(qi, oi) {
 function _gefSelf(n) {
   const out = document.getElementById('gefSelfOut'), val = document.getElementById('gefSelfVal');
   if (val) { val.value = String(n); _abSave('stromgefahr'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══ KAPITEL 8.4 GESCHWINDIGKEIT – Batch 1 (8.4.1/8.4.2/8.4.3) ═══
+// ═══════════════════════════════════════════════════════
+// 8.4.1  WAS BEDEUTET GESCHWINDIGKEIT?
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Bewegung"
+// Handlungsorientiert: Zwei Fahrzeuge fahren um die Wette. Wer in
+// derselben Zeit mehr Strecke schafft, ist schneller. Geschwindigkeit
+// = Strecke pro Zeit.
+// ═══════════════════════════════════════════════════════
+let _vbg = null;
+const _VBG_SPEED = { langsam: { name: 'langsam', v: 34 }, mittel: { name: 'mittel', v: 62 }, schnell: { name: 'schnell', v: 100 } };
+function _vbgInit() { _vbg = { va: 'mittel', vb: 'schnell', t: 0, pa: 0, pb: 0, laufen: false, fertig: '' }; }
+
+function _vbgHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim vbg-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🏁 Was bedeutet Geschwindigkeit?</h3>
+    <div class="fpm-note" style="margin-top:2px">Lass zwei Fahrzeuge um die Wette fahren. Wer in der gleichen Zeit weiter kommt, ist schneller. Verändere die Geschwindigkeiten und starte das Rennen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="vbgAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">🔴 Auto A:</span>
+          ${Object.keys(_VBG_SPEED).map(k => `<button class="sim-btn${_vbg.va === k ? ' primary' : ''}" id="vbgA_${k}" onclick="_vbgSet('va','${k}')">${_VBG_SPEED[k].name}</button>`).join('')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">🔵 Auto B:</span>
+          ${Object.keys(_VBG_SPEED).map(k => `<button class="sim-btn${_vbg.vb === k ? ' primary' : ''}" id="vbgB_${k}" onclick="_vbgSet('vb','${k}')">${_VBG_SPEED[k].name}</button>`).join('')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" onclick="_vbgStart()">🏁 Rennen starten</button>
+          <button class="sim-btn" onclick="_vbgReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Wer ist schneller?</div>
+        <div class="lmp-status" id="vbgStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Die <b>Geschwindigkeit</b> sagt, wie schnell sich etwas bewegt. Ein Fahrzeug ist <b>schneller</b>, wenn es in der <b>gleichen Zeit</b> eine <b>größere Strecke</b> zurücklegt (oder eine Strecke in <b>kürzerer Zeit</b> schafft). Geschwindigkeit = Strecke pro Zeit.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Gleiche Zeit, mehr Strecke → <b>schneller</b>. &nbsp;|&nbsp; Geschwindigkeit = Strecke pro Zeit.
+    </p>
+    ${_vbgArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _vbgSet(which, k) {
+  _vbg[which] = k;
+  const pre = which === 'va' ? 'vbgA_' : 'vbgB_';
+  Object.keys(_VBG_SPEED).forEach(x => document.getElementById(pre + x)?.classList.toggle('primary', x === k));
+  _vbgStatus();
+}
+function _vbgStart() { _vbg.pa = 0; _vbg.pb = 0; _vbg.laufen = true; _vbg.fertig = ''; _vbgStatus(); }
+function _vbgReset() { _vbgInit(); _vbgSet('va', 'mittel'); _vbgSet('vb', 'schnell'); _vbgStatus(); }
+function _vbgStatus() {
+  const el = document.getElementById('vbgStatus'); if (!el) return;
+  const va = _VBG_SPEED[_vbg.va].v, vb = _VBG_SPEED[_vbg.vb].v;
+  let s;
+  if (va > vb) s = '🔴 Auto A ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.';
+  else if (vb > va) s = '🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.';
+  else s = 'Beide Autos sind gleich schnell – sie kommen gleich weit.';
+  el.textContent = s; el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _vbgUpdate(dt) {
+  if (!_vbg || !_vbg.laufen) return;
+  _vbg.t += dt;
+  _vbg.pa += _VBG_SPEED[_vbg.va].v * dt;
+  _vbg.pb += _VBG_SPEED[_vbg.vb].v * dt;
+  const ziel = 360;
+  if (_vbg.pa >= ziel || _vbg.pb >= ziel) {
+    _vbg.laufen = false;
+    _vbg.pa = Math.min(_vbg.pa, ziel); _vbg.pb = Math.min(_vbg.pb, ziel);
+    _vbg.fertig = _vbg.pa > _vbg.pb ? 'A' : (_vbg.pb > _vbg.pa ? 'B' : '=');
+  }
+}
+function _vbgDraw(ctx, cv) {
+  if (!_vbg) return;
+  const W = cv.width, H = cv.height, x0 = 40, ziel = 360;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  // Ziellinie
+  ctx.strokeStyle = '#e2e8f0'; ctx.setLineDash([4, 4]); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x0 + ziel, 40); ctx.lineTo(x0 + ziel, H - 30); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('🏁 Ziel', x0 + ziel, 30);
+  // zwei Bahnen
+  const lanes = [{ y: 90, p: _vbg.pa, col: '#ef4444', lbl: 'A' }, { y: 160, p: _vbg.pb, col: '#3b82f6', lbl: 'B' }];
+  lanes.forEach(ln => {
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x0, ln.y + 14); ctx.lineTo(x0 + ziel, ln.y + 14); ctx.stroke();
+    // Auto (Rechteck + Räder)
+    const cx = x0 + Math.min(ln.p, ziel);
+    ctx.fillStyle = ln.col; ctx.fillRect(cx - 18, ln.y - 6, 34, 16);
+    ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(cx - 10, ln.y + 12, 5, 0, 2 * Math.PI); ctx.arc(cx + 8, ln.y + 12, 5, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(ln.lbl, cx - 1, ln.y + 5);
+    // Strecken-Label
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('zurückgelegte Strecke', x0, ln.y - 14);
+  });
+  // Status oben
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  if (_vbg.fertig) ctx.fillText(_vbg.fertig === '=' ? 'Unentschieden!' : ('Auto ' + _vbg.fertig + ' ist im Ziel – es war schneller!'), W / 2, 20);
+  else if (_vbg.laufen) ctx.fillText('… und los!', W / 2, 20);
+  else ctx.fillText('Bereit – drücke „Rennen starten"', W / 2, 20);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.4.1  (ns = 'vbegriff') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _vbgArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('vbegriff')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('vbegriff')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was bedeutet es, dass etwas „schneller" ist als etwas anderes?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass ein Auto schneller ist, wenn es …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle beide Autos gleich schnell ein und starte – was passiert?</li>
+          <li>Mache ein Auto schneller und starte erneut.</li>
+          <li>Beobachte, wer nach der gleichen Zeit weiter gekommen ist.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>beide gleich schnell</td><td>${inp('b1', 'wer gewinnt?')}</td><td>A schnell, B langsam</td><td>${inp('b2', 'wer gewinnt?')}</td></tr>
+          <tr><td>Schnelleres Auto legt … Strecke zurück</td><td>${inp('b3', 'mehr/weniger')}</td><td>… in gleicher Zeit</td><td>${inp('c3', 'ja/nein')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne zwei Autos auf gleicher Strecke nach gleicher Zeit. Welches ist weiter? Markiere es als „schneller".</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wann ist ein Fahrzeug schneller? ${inp('a1', 'wenn es in gleicher Zeit …')}</li>
+          <li>Geschwindigkeit ist … pro … ? ${inp('a2', '… pro …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die Geschwindigkeit sagt, wie ${inp('m1', 'was?')} sich etwas bewegt.<br>
+        Schneller heißt: in gleicher Zeit ${inp('m2', 'mehr/weniger')} Strecke. Geschwindigkeit = ${inp('m3', 'was?')} pro Zeit.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Radfahrer und ein Fußgänger starten gleichzeitig. Nach 1 Minute ist der Radfahrer viel weiter. Was sagt das über die Geschwindigkeit?</div>
+        ${ta('tr1', 'Der Radfahrer ist schneller, weil er in derselben Zeit …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="vbgMini">${_vbgMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_vbgSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_vbgSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_vbgSelf(3)">😃 sicher</button>
+          <span id="vbgSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="vbgSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Gleich schnell → gleichauf (Unentschieden). Ein schnelleres Auto kommt in derselben Zeit weiter und erreicht das Ziel früher.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Geschwindigkeit ist ein Maß dafür, wie schnell sich ein Körper bewegt: zurückgelegte Strecke pro benötigter Zeit (v = s/t). Zwei Vergleichsmöglichkeiten: gleiche Zeit → mehr Strecke = schneller; gleiche Strecke → weniger Zeit = schneller.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Wer vorne startet, ist schneller." (2) „Geschwindigkeit ist nur die Strecke." (3) „Nur die Zeit zählt."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Strecke UND Zeit gemeinsam betrachten; „pro" betonen; Rennen mehrfach mit gleichen/verschiedenen Werten.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Unentschieden · A gewinnt · mehr/ja. 6.1 „wenn es in gleicher Zeit mehr Strecke schafft" · 6.2 Strecke pro Zeit. Merksatz: schnell · mehr · Strecke. Transfer: Der Radfahrer legt in derselben Zeit eine größere Strecke zurück, also ist er schneller. Minidiagnose: 1→Mehr Strecke in gleicher Zeit · 2→Strecke pro Zeit · 3→Beide gleich weit.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('vbegriff')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('vbegriff', 'Was bedeutet Geschwindigkeit?', body);
+}
+
+const _VBG_MINI = [
+  { q: '1. Wann ist ein Fahrzeug schneller als ein anderes?',
+    opts: ['Wenn es in gleicher Zeit mehr Strecke schafft', 'Wenn es größer ist', 'Wenn es später startet'], correct: 0,
+    fb: ['Richtig! Mehr Strecke in derselben Zeit bedeutet schneller.',
+         'Die Größe sagt nichts über die Geschwindigkeit.',
+         'Der Startzeitpunkt entscheidet nicht über die Geschwindigkeit.'] },
+  { q: '2. Geschwindigkeit ist …',
+    opts: ['Strecke pro Zeit', 'Zeit pro Strecke', 'nur die Strecke'], correct: 0,
+    fb: ['Richtig! Geschwindigkeit = Strecke pro Zeit.',
+         'So herum ist es nicht definiert.',
+         'Auch die Zeit gehört dazu.'] },
+  { q: '3. Zwei Autos fahren gleich schnell und starten zusammen. Wer ist im Ziel zuerst?',
+    opts: ['Auto A', 'Auto B', 'Beide gleichzeitig'], correct: 2,
+    fb: ['Bei gleicher Geschwindigkeit gewinnt keiner allein.',
+         'Bei gleicher Geschwindigkeit gewinnt keiner allein.',
+         'Richtig! Gleich schnell → gleichzeitig im Ziel.'] }
+];
+function _vbgMiniHTML() {
+  return _VBG_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_vbgAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="vbgFb${qi}"></div></div>`).join('');
+}
+function _vbgAns(qi, oi) {
+  const m = _VBG_MINI[qi], el = document.getElementById('vbgFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _vbgSelf(n) {
+  const out = document.getElementById('vbgSelfOut'), val = document.getElementById('vbgSelfVal');
+  if (val) { val.value = String(n); _abSave('vbegriff'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.4.2  WIE MISST MAN EINE GESCHWINDIGKEIT?
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Bewegung"
+// Handlungsorientiert: Man misst die Strecke s (Maßband) und die
+// Zeit t (Stoppuhr/Lichtschranke). Dann v = s / t. Ein Wagen fährt
+// eine Messstrecke, die Zeit wird gestoppt.
+// ═══════════════════════════════════════════════════════
+let _vms = null;
+const _VMS_SPEED = { langsam: { name: 'langsam', v: 1 }, mittel: { name: 'mittel', v: 2 }, schnell: { name: 'schnell', v: 5 } };
+const _VMS_S = 10;   // Messstrecke in m
+function _vmsInit() { _vms = { speed: 'mittel', t: 0, prog: 0, laufen: false, tMess: 0, fertig: false }; }
+function _vmsV() { return _VMS_SPEED[_vms.speed].v; }
+function _vmsTMess() { return _VMS_S / _vmsV(); }
+
+function _vmsHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim vms-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">⏱️ Wie misst man eine Geschwindigkeit?</h3>
+    <div class="fpm-note" style="margin-top:2px">Der Wagen fährt eine Messstrecke von 10&nbsp;m. Eine Lichtschranke stoppt die Zeit. Aus Strecke und Zeit berechnest du die Geschwindigkeit: v = s / t.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="vmsAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Tempo:</span>
+          ${Object.keys(_VMS_SPEED).map(k => `<button class="sim-btn${_vms.speed === k ? ' primary' : ''}" id="vmsS_${k}" onclick="_vmsSet('${k}')">${_VMS_SPEED[k].name}</button>`).join('')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" onclick="_vmsStart()">▶ Messung starten</button>
+          <button class="sim-btn" onclick="_vmsReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Messung</div>
+        <div class="lmp-status" id="vmsStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Zum Messen der Geschwindigkeit braucht man <b>zwei</b> Größen: die <b>Strecke s</b> (mit dem Maßband) und die <b>Zeit t</b> (mit Stoppuhr oder Lichtschranke). Daraus berechnet man <b>v = s / t</b>. Einheit: <b>Meter pro Sekunde (m/s)</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Strecke s messen + Zeit t stoppen → <b>v = s / t</b> &nbsp;·&nbsp; Einheit m/s.
+    </p>
+    ${_vmsArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _vmsSet(k) { _vms.speed = k; Object.keys(_VMS_SPEED).forEach(x => document.getElementById('vmsS_' + x)?.classList.toggle('primary', x === k)); _vmsReset2(); }
+function _vmsReset2() { _vms.prog = 0; _vms.laufen = false; _vms.tMess = 0; _vms.fertig = false; _vmsStatus(); }
+function _vmsStart() { _vms.prog = 0; _vms.laufen = true; _vms.tMess = 0; _vms.fertig = false; _vmsStatus(); }
+function _vmsReset() { _vmsInit(); _vmsSet('mittel'); _vmsReset2(); }
+function _vmsStatus() {
+  const el = document.getElementById('vmsStatus'); if (!el) return;
+  if (_vms.fertig) {
+    el.textContent = `Gemessen: s = ${_VMS_S} m, t = ${_vmsTMess().toFixed(1).replace('.', ',')} s → v = s / t = ${_vmsV().toFixed(1).replace('.', ',')} m/s.`;
+    el.className = 'lmp-status on';
+  } else if (_vms.laufen) {
+    el.textContent = `Der Wagen fährt … die Stoppuhr läuft. Strecke s = ${_VMS_S} m.`;
+    el.className = 'lmp-status';
+  } else {
+    el.textContent = `Bereit. Messstrecke s = ${_VMS_S} m. Drücke „Messung starten".`;
+    el.className = 'lmp-status';
+  }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _vmsUpdate(dt) {
+  if (!_vms || !_vms.laufen) return;
+  // Fahrt über ~2,5 s Wanduhr abspielen; die angezeigte Messzeit (tShow)
+  // wird im Draw aus prog · tMess berechnet, am Ende auf den echten Wert gesetzt.
+  _vms.prog += dt / 2.5;                    // 2,5 s Wanduhr für die Fahrt
+  if (_vms.prog >= 1) { _vms.prog = 1; _vms.laufen = false; _vms.fertig = true; _vms.tMess = _vmsTMess(); _vmsStatus(); }
+}
+function _vmsDraw(ctx, cv) {
+  if (!_vms) return;
+  const W = cv.width, H = cv.height, x0 = 44, x1 = W - 44, cy = 150;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+  // Messstrecke + Lichtschranken
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x0, cy + 16); ctx.lineTo(x1, cy + 16); ctx.stroke();
+  [x0, x1].forEach((x, i) => {
+    ctx.strokeStyle = '#f43f5e'; ctx.lineWidth = 2; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.moveTo(x, cy - 30); ctx.lineTo(x, cy + 20); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#fda4af'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(i === 0 ? 'Start' : 'Ziel', x, cy - 36);
+  });
+  // Strecken-Maß
+  ctx.fillStyle = '#94a3b8'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('s = ' + _VMS_S + ' m', (x0 + x1) / 2, cy + 40);
+  // Wagen
+  const cx = x0 + (x1 - x0) * _vms.prog;
+  ctx.fillStyle = '#22c55e'; ctx.fillRect(cx - 16, cy - 8, 32, 16);
+  ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(cx - 9, cy + 10, 5, 0, 2 * Math.PI); ctx.arc(cx + 9, cy + 10, 5, 0, 2 * Math.PI); ctx.fill();
+  // Stoppuhr-Anzeige
+  const tShow = _vms.fertig ? _vmsTMess() : (_vms.laufen ? _vms.prog * _vmsTMess() : 0);
+  ctx.fillStyle = '#0f172a'; ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(W / 2, 60, 26, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#fde047'; ctx.font = '700 14px monospace'; ctx.textAlign = 'center'; ctx.fillText(tShow.toFixed(1).replace('.', ',') + 's', W / 2, 65);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText('⏱ Stoppuhr', W / 2, 96);
+  // Ergebnis
+  if (_vms.fertig) {
+    ctx.fillStyle = '#86efac'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('v = s / t = ' + _VMS_S + ' m / ' + _vmsTMess().toFixed(1).replace('.', ',') + ' s = ' + _vmsV().toFixed(1).replace('.', ',') + ' m/s', W / 2, 22);
+  } else { ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Tempo: ' + _VMS_SPEED[_vms.speed].name, W / 2, 22); }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.4.2  (ns = 'vmessen') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _vmsArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('vmessen')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('vmessen')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Welche Größen muss man messen, um eine Geschwindigkeit zu bestimmen?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass man … und … messen muss.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Miss die Strecke s (hier 10 m).</li>
+          <li>Starte die Messung und stoppe die Zeit t.</li>
+          <li>Berechne v = s / t für verschiedene Tempos.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle (s = 10 m)</div>
+        <table class="ab-table"><tbody>
+          <tr><td>langsam</td><td>t = ${inp('b1', '… s')}</td><td>v = s/t</td><td>${inp('c1', '… m/s')}</td></tr>
+          <tr><td>mittel</td><td>t = ${inp('b2', '… s')}</td><td>v = s/t</td><td>${inp('c2', '… m/s')}</td></tr>
+          <tr><td>schnell</td><td>t = ${inp('b3', '… s')}</td><td>v = s/t</td><td>${inp('c3', '… m/s')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Messstrecke mit Start und Ziel (Lichtschranken) und dem Wagen. Beschrifte s und t.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Womit misst man die Strecke? ${inp('a1', '')}</li>
+          <li>Womit misst man die Zeit? ${inp('a2', '')}</li>
+          <li>Wie berechnet man daraus v? ${inp('a3', 'v = …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Zum Messen der Geschwindigkeit misst man die ${inp('m1', 'was?')} s und die ${inp('m2', 'was?')} t.<br>
+        Dann berechnet man v = ${inp('m3', 'Formel')}. Einheit: m/s.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Beim 100-Meter-Lauf misst man die Zeit mit der Stoppuhr. Wie berechnet man daraus die Geschwindigkeit des Läufers?</div>
+        ${ta('tr1', 'v = s / t = 100 m / (gemessene Zeit) = …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="vmsMini">${_vmsMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_vmsSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_vmsSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_vmsSelf(3)">😃 sicher</button>
+          <span id="vmsSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="vmsSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Bei s = 10 m: langsam t = 10 s → v = 1 m/s · mittel t = 5 s → v = 2 m/s · schnell t = 2 s → v = 5 m/s. Kürzere Zeit → größere Geschwindigkeit.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Zur Bestimmung der (Durchschnitts-)Geschwindigkeit misst man Strecke s (Maßband) und Zeit t (Stoppuhr/Lichtschranke) und rechnet v = s/t. Einheit m/s. Lichtschranken erhöhen die Messgenauigkeit gegenüber der Handstoppuhr.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Man braucht nur die Zeit." (2) „Man braucht nur die Strecke." (3) „Längere Zeit heißt schneller."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Beide Messgrößen benennen; Einheit m/s; v = s/t gemeinsam ausrechnen; kürzere Zeit ↔ schneller.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 10 s/1 m/s · 5 s/2 m/s · 2 s/5 m/s. 6.1 Maßband · 6.2 Stoppuhr/Lichtschranke · 6.3 v = s/t. Merksatz: Strecke · Zeit · s/t. Transfer: v = 100 m / gemessene Zeit (z. B. 100/10 = 10 m/s). Minidiagnose: 1→Strecke und Zeit · 2→v = s/t · 3→2 m/s.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('vmessen')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('vmessen', 'Wie misst man eine Geschwindigkeit?', body);
+}
+
+const _VMS_MINI = [
+  { q: '1. Welche zwei Größen muss man messen?',
+    opts: ['Nur die Zeit', 'Strecke und Zeit', 'Nur die Strecke'], correct: 1,
+    fb: ['Die Zeit allein reicht nicht.',
+         'Richtig! Man braucht die Strecke s und die Zeit t.',
+         'Die Strecke allein reicht nicht.'] },
+  { q: '2. Wie berechnet man die Geschwindigkeit?',
+    opts: ['v = s · t', 'v = s / t', 'v = t / s'], correct: 1,
+    fb: ['Multipliziert wird nicht.',
+         'Richtig! v = s / t (Strecke durch Zeit).',
+         'So herum ist es falsch.'] },
+  { q: '3. Ein Wagen fährt 10 m in 5 s. Wie schnell ist er?',
+    opts: ['0,5 m/s', '2 m/s', '50 m/s'], correct: 1,
+    fb: ['Das wäre t/s statt s/t.',
+         'Richtig! v = 10 m / 5 s = 2 m/s.',
+         'So groß ist die Geschwindigkeit nicht.'] }
+];
+function _vmsMiniHTML() {
+  return _VMS_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_vmsAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="vmsFb${qi}"></div></div>`).join('');
+}
+function _vmsAns(qi, oi) {
+  const m = _VMS_MINI[qi], el = document.getElementById('vmsFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _vmsSelf(n) {
+  const out = document.getElementById('vmsSelfOut'), val = document.getElementById('vmsSelfVal');
+  if (val) { val.value = String(n); _abSave('vmessen'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.4.3  WIE BERECHNET MAN EINE GESCHWINDIGKEIT? (v = s / t)
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Bewegung"
+// Handlungsorientiert: Setze Strecke s und Zeit t ein und berechne
+// v = s / t. Das Formeldreieck hilft beim Umstellen (s = v·t, t = s/v).
+// ═══════════════════════════════════════════════════════
+let _vst = null;
+const _VST_S = [50, 100, 200];
+const _VST_T = [5, 10, 20];
+function _vstInit() { _vst = { s: 100, t: 10, anim: 0 }; }
+function _vstV() { return _vst.s / _vst.t; }
+
+function _vstHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim vst-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🧮 Wie berechnet man eine Geschwindigkeit? (v = s / t)</h3>
+    <div class="fpm-note" style="margin-top:2px">Stelle Strecke s und Zeit t ein. Die Geschwindigkeit berechnet man mit v = s / t. Das Formeldreieck zeigt, wie man umstellt.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="vstAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Strecke s:</span>
+          ${_VST_S.map(v => `<button class="sim-btn${_vst.s === v ? ' primary' : ''}" id="vstS_${v}" onclick="_vstSetS(${v})">${v} m</button>`).join('')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">Zeit t:</span>
+          ${_VST_T.map(v => `<button class="sim-btn${_vst.t === v ? ' primary' : ''}" id="vstT_${v}" onclick="_vstSetT(${v})">${v} s</button>`).join('')}
+          <button class="sim-btn" onclick="_vstReset()">↺</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Berechnung</div>
+        <div class="lmp-status" id="vstStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Die Geschwindigkeit ist <b>v = s / t</b> (Strecke geteilt durch Zeit), Einheit <b>m/s</b>. Aus dem Formeldreieck folgt: Strecke <b>s = v · t</b> und Zeit <b>t = s / v</b>. So kann man jede der drei Größen berechnen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>v = s / t</b> &nbsp;·&nbsp; s = v · t &nbsp;·&nbsp; t = s / v &nbsp;·&nbsp; Einheit m/s.
+    </p>
+    ${_vstArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _vstSetS(v) { _vst.s = v; _VST_S.forEach(x => document.getElementById('vstS_' + x)?.classList.toggle('primary', x === v)); _vstStatus(); }
+function _vstSetT(v) { _vst.t = v; _VST_T.forEach(x => document.getElementById('vstT_' + x)?.classList.toggle('primary', x === v)); _vstStatus(); }
+function _vstReset() { _vstInit(); _vstSetS(100); _vstSetT(10); _vstStatus(); }
+function _vstStatus() {
+  const el = document.getElementById('vstStatus'); if (!el) return;
+  el.textContent = `v = s / t = ${_vst.s} m / ${_vst.t} s = ${_vstV().toFixed(1).replace('.', ',')} m/s. (Das sind ${(_vstV() * 3.6).toFixed(1).replace('.', ',')} km/h.)`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _vstUpdate(dt) { if (_vst) { _vst.anim += dt * (_vstV() / 20); if (_vst.anim > 1) _vst.anim -= 1; } }
+function _vstDraw(ctx, cv) {
+  if (!_vst) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
+
+  // Formeldreieck links (s oben, v·t unten)
+  const tx = 90, ty = 70, tw = 108, th = 92;
+  ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(tx, ty - th / 2); ctx.lineTo(tx - tw / 2, ty + th / 2); ctx.lineTo(tx + tw / 2, ty + th / 2); ctx.closePath(); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(tx - tw / 2 + 8, ty + 8); ctx.lineTo(tx + tw / 2 - 8, ty + 8); ctx.stroke();   // Trennlinie
+  ctx.fillStyle = '#fde047'; ctx.font = '700 20px serif'; ctx.textAlign = 'center';
+  ctx.fillText('s', tx, ty - 6);
+  ctx.fillStyle = '#93c5fd'; ctx.fillText('v', tx - 24, ty + 30); ctx.fillText('·', tx, ty + 30); ctx.fillText('t', tx + 24, ty + 30);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText('Formeldreieck', tx, ty + th / 2 + 20);
+
+  // Rechnung rechts
+  const rx = 240;
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('s = ' + _vst.s + ' m', rx, 50);
+  ctx.fillText('t = ' + _vst.t + ' s', rx, 76);
+  ctx.strokeStyle = '#475569'; ctx.beginPath(); ctx.moveTo(rx, 88); ctx.lineTo(rx + 150, 88); ctx.stroke();
+  ctx.fillStyle = '#86efac'; ctx.font = '700 18px sans-serif';
+  ctx.fillText('v = s/t = ' + _vstV().toFixed(1).replace('.', ',') + ' m/s', rx, 114);
+
+  // kleine Fahrt-Animation unten (Tempo ~ v)
+  const y = 180, x0 = 40, x1 = W - 40;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x0, y + 12); ctx.lineTo(x1, y + 12); ctx.stroke();
+  const cx = x0 + (x1 - x0) * _vst.anim;
+  ctx.fillStyle = '#22c55e'; ctx.fillRect(cx - 15, y - 6, 30, 15);
+  ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(cx - 8, y + 11, 4, 0, 2 * Math.PI); ctx.arc(cx + 8, y + 11, 4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('schneller v → schnellere Fahrt', W / 2, H - 8);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.4.3  (ns = 'vformel') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _vstArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('vformel')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('vformel')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie rechnet man aus Strecke und Zeit die Geschwindigkeit aus – und umgekehrt?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass v größer wird, wenn s … oder t …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle s und t ein und lies v ab.</li>
+          <li>Verdopple die Strecke – was passiert mit v?</li>
+          <li>Verdopple die Zeit – was passiert mit v?</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>s = 100 m, t = 10 s</td><td>v = ${inp('b1', '… m/s')}</td><td>s = 200 m, t = 10 s</td><td>v = ${inp('b2', '… m/s')}</td></tr>
+          <tr><td>s = 100 m, t = 20 s</td><td>v = ${inp('b3', '… m/s')}</td><td>s = 50 m, t = 5 s</td><td>v = ${inp('b4', '… m/s')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne das Formeldreieck mit s oben sowie v und t unten. Zeige, wie man v, s und t herausbekommt.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie berechnet man die Geschwindigkeit? ${inp('a1', 'v = …')}</li>
+          <li>Wie berechnet man die Strecke (nach v umgestellt)? ${inp('a2', 's = …')}</li>
+          <li>Wie berechnet man die Zeit? ${inp('a3', 't = …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Geschwindigkeit: v = ${inp('m1', 'Formel')}. Strecke: s = ${inp('m2', 'Formel')}. Zeit: t = ${inp('m3', 'Formel')}.<br>
+        Einheit der Geschwindigkeit: m/s.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Aufgabe)</div>
+        <div class="ab-t">Ein Auto fährt mit v = 15 m/s. Wie weit kommt es in 8 Sekunden? (Tipp: s = v · t)</div>
+        ${ta('tr1', 's = v · t = 15 m/s · 8 s = … m', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="vstMini">${_vstMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_vstSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_vstSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_vstSelf(3)">😃 sicher</button>
+          <span id="vstSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="vstSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> v = s/t. Beispiele: 100 m/10 s = 10 m/s · 200 m/10 s = 20 m/s (doppelte Strecke → doppeltes v) · 100 m/20 s = 5 m/s (doppelte Zeit → halbes v) · 50 m/5 s = 10 m/s.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> v = s/t; Umstellungen s = v·t und t = s/v (Formeldreieck: s oben, v·t unten). Einheit m/s. v proportional zu s (bei festem t), umgekehrt proportional zu t (bei festem s).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „v = s·t." (2) „Mehr Zeit heißt schneller." (3) „Man kann die Formel nicht umstellen."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Formeldreieck als Merkhilfe; Einheiten mitführen; je einzeln s bzw. t verdoppeln und v vergleichen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 10 · 20 · 5 · 10 m/s. 6.1 v = s/t · 6.2 s = v·t · 6.3 t = s/v. Merksatz: s/t · v·t · s/v. Transfer: s = 15·8 = 120 m. Minidiagnose: 1→v = s/t · 2→20 m/s · 3→s = v·t.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('vformel')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('vformel', 'Wie berechnet man eine Geschwindigkeit? (v = s / t)', body);
+}
+
+const _VST_MINI = [
+  { q: '1. Wie lautet die Formel für die Geschwindigkeit?',
+    opts: ['v = s · t', 'v = s / t', 'v = t / s'], correct: 1,
+    fb: ['Multipliziert wird nicht.',
+         'Richtig! v = s / t.',
+         'So herum ist es falsch.'] },
+  { q: '2. Ein Auto fährt 200 m in 10 s. Wie schnell ist es?',
+    opts: ['20 m/s', '2 m/s', '2000 m/s'], correct: 0,
+    fb: ['Richtig! v = 200 m / 10 s = 20 m/s.',
+         'Das wäre 10 s auf 200 m falsch gerechnet.',
+         'So groß ist die Geschwindigkeit nicht.'] },
+  { q: '3. Wie berechnet man die Strecke, wenn v und t bekannt sind?',
+    opts: ['s = v · t', 's = v / t', 's = t / v'], correct: 0,
+    fb: ['Richtig! s = v · t (aus dem Formeldreieck).',
+         'Geteilt wird hier nicht.',
+         'So herum stimmt es nicht.'] }
+];
+function _vstMiniHTML() {
+  return _VST_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_vstAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="vstFb${qi}"></div></div>`).join('');
+}
+function _vstAns(qi, oi) {
+  const m = _VST_MINI[qi], el = document.getElementById('vstFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _vstSelf(n) {
+  const out = document.getElementById('vstSelfOut'), val = document.getElementById('vstSelfVal');
+  if (val) { val.value = String(n); _abSave('vformel'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
