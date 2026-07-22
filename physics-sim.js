@@ -34810,8 +34810,7 @@ function _swgDrawGraph(ctx, cv) {
 function _swgArbeitsblattHTML() {
   const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('schwingung')"></textarea>`;
   const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('schwingung')">`;
-  return `<details open class="ab-wrap"><summary class="ab-summary">📝 Arbeitsblatt – Merkmale von Schwingungen <span class="ab-hint">(zum Zuklappen anklicken · deine Eingaben werden im Browser gespeichert)</span></summary>
-    <div class="ab-body">
+  const body = `
       <div class="ab-sec"><div class="ab-h">1 · Titel</div><div class="ab-t"><b>Merkmale von Schwingungen</b> – Periodendauer, Frequenz, Amplitude und Dämpfung</div></div>
 
       <div class="ab-sec"><div class="ab-h">2 · Kurze Beschreibung</div>
@@ -34861,8 +34860,47 @@ function _swgArbeitsblattHTML() {
 
       <div class="sim-btn-row" style="margin-top:8px">
         <button class="sim-btn" onclick="_abClear('schwingung')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('schwingung', 'Merkmale von Schwingungen', body);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT-GATE (wiederverwendbar) – Passwortschutz 0123
+// Einheitlich fuer alle Sims: das Arbeitsblatt ist erst nach Eingabe
+// des Passworts sichtbar. Einmal pro Sitzung freigeschaltet.
+// ═══════════════════════════════════════════════════════
+const _AB_PW = '0123';
+let _abUnlocked = false;
+function _abWrap(ns, titel, bodyHtml) {
+  const open = _abUnlocked;
+  return `<div class="ab-wrap">
+    <div class="ab-summary">📝 Arbeitsblatt – ${titel}
+      <span class="ab-hint" id="abHint_${ns}">${open ? '(freigeschaltet · Eingaben werden im Browser gespeichert)' : '🔒 durch Passwort geschützt'}</span></div>
+    <div class="ab-gate" id="abGate_${ns}" style="display:${open ? 'none' : 'flex'}">
+      <span class="ab-gate-t">🔒 Dieses Arbeitsblatt ist passwortgeschützt. Bitte das Passwort eingeben:</span>
+      <div class="ab-gate-row">
+        <input type="password" class="ab-pw" id="abPw_${ns}" placeholder="Passwort" autocomplete="off"
+          onkeydown="if(event.key==='Enter')_abUnlock('${ns}')">
+        <button class="sim-btn primary" onclick="_abUnlock('${ns}')">🔓 Öffnen</button>
+        <span class="ab-pw-err" id="abPwErr_${ns}"></span>
       </div>
-    </div></details>`;
+    </div>
+    <div class="ab-body" id="abBody_${ns}" style="display:${open ? 'block' : 'none'}">${bodyHtml}</div>
+  </div>`;
+}
+function _abUnlock(ns) {
+  const inp = document.getElementById('abPw_' + ns);
+  const err = document.getElementById('abPwErr_' + ns);
+  if (inp && String(inp.value).trim() === _AB_PW) {
+    _abUnlocked = true;
+    const g = document.getElementById('abGate_' + ns); if (g) g.style.display = 'none';
+    const b = document.getElementById('abBody_' + ns); if (b) b.style.display = 'block';
+    const h = document.getElementById('abHint_' + ns); if (h) h.textContent = '(freigeschaltet · Eingaben werden im Browser gespeichert)';
+    _abRestore(ns);
+  } else {
+    if (err) err.textContent = 'Falsches Passwort.';
+    if (inp) { inp.value = ''; }
+  }
 }
 
 // ── Arbeitsblatt-Persistenz (wiederverwendbar) ─────────
@@ -34894,12 +34932,16 @@ function _abClear(ns) {
   s.textContent = `
     .swg-sim .fpm-spring.on { border-color:#7c3aed; background:#f5f3ff; }
     .ab-wrap { margin-top:16px; border:1px solid #ddd6fe; border-radius:12px; background:#faf5ff; overflow:hidden; }
-    .ab-summary { cursor:pointer; padding:11px 14px; font-weight:800; color:#6b21a8; font-size:.92rem;
-      background:#f3e8ff; list-style:none; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-    .ab-summary::-webkit-details-marker { display:none; }
-    .ab-summary::before { content:'▸'; color:#a855f7; font-weight:800; }
-    details[open] .ab-summary::before { content:'▾'; }
+    .ab-summary { padding:11px 14px; font-weight:800; color:#6b21a8; font-size:.92rem;
+      background:#f3e8ff; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
     .ab-hint { font-weight:500; font-size:.72rem; color:#9333ea; }
+    .ab-gate { flex-direction:column; gap:8px; padding:14px; background:#faf5ff; }
+    .ab-gate-t { font-size:.82rem; color:#6b21a8; }
+    .ab-gate-row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    .ab-pw { padding:7px 11px; border:1px solid #ddd6fe; border-radius:8px; font-size:.85rem;
+      font-family:inherit; color:#1e293b; min-width:150px; }
+    .ab-pw:focus { outline:2px solid #a855f7; outline-offset:1px; border-color:#a855f7; }
+    .ab-pw-err { color:#dc2626; font-size:.78rem; font-weight:700; }
     .ab-body { padding:12px 14px; display:flex; flex-direction:column; gap:11px; }
     .ab-sec { background:#fff; border:1px solid #ede9fe; border-radius:9px; padding:9px 12px; }
     .ab-h { font-size:.7rem; font-weight:800; color:#7c3aed; text-transform:uppercase; letter-spacing:.05em; margin-bottom:5px; }
