@@ -259,7 +259,10 @@ const _physAbDefs = {
   'sonnenfinsternis': { titel: 'Wie entsteht eine Sonnenfinsternis?', ns: 'sonnenfins', html: () => _sofArbeitsblattHTML() },
   'mondfinsternis': { titel: 'Wie entsteht eine Mondfinsternis?', ns: 'mondfins', html: () => _mofArbeitsblattHTML() },
   'lochkamera': { titel: 'Wie macht ein kleines Loch ein Bild?', ns: 'lochkamera', html: () => _locArbeitsblattHTML() },
-  'sammellinse': { titel: 'Wie bündelt eine Sammellinse das Licht?', ns: 'sammellinse', html: () => _sliArbeitsblattHTML() }
+  'sammellinse': { titel: 'Wie bündelt eine Sammellinse das Licht?', ns: 'sammellinse', html: () => _sliArbeitsblattHTML() },
+  'bild-linse': { titel: 'Wann entsteht ein vergrößertes oder verkleinertes Bild?', ns: 'bildlinse', html: () => _bldArbeitsblattHTML() },
+  'lupe': { titel: 'Wie funktioniert eine Lupe?', ns: 'lupe', html: () => _lupArbeitsblattHTML() },
+  'kamera': { titel: 'Wie funktioniert eine Kamera?', ns: 'kamera', html: () => _kamArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -670,6 +673,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('sliAnim', 'sliAnim');
     _pSim.start(dt => _sliUpdate(dt), (ctx, cv) => _sliDraw(ctx, cv), []);
     _abRestore('sammellinse');
+  },
+
+  // ── 7.1.3 VERGRÖSSERTES / VERKLEINERTES BILD ───────────────────
+  'bild-linse': modal => {
+    _bldInit();
+    modal.innerHTML = _bldHTML();
+    _bldStatus();
+    _pSim = new PhysicsSimEngine('bldAnim', 'bldAnim');
+    _pSim.start(dt => _bldUpdate(dt), (ctx, cv) => _bldDraw(ctx, cv), []);
+    _abRestore('bildlinse');
+  },
+
+  // ── 7.1.4 LUPE ─────────────────────────────────────────────────
+  'lupe': modal => {
+    _lupInit();
+    modal.innerHTML = _lupHTML();
+    _lupStatus();
+    _pSim = new PhysicsSimEngine('lupAnim', 'lupAnim');
+    _pSim.start(dt => _lupUpdate(dt), (ctx, cv) => _lupDraw(ctx, cv), []);
+    _abRestore('lupe');
+  },
+
+  // ── 7.1.5 KAMERA ───────────────────────────────────────────────
+  'kamera': modal => {
+    _kamInit();
+    modal.innerHTML = _kamHTML();
+    _kamStatus();
+    _pSim = new PhysicsSimEngine('kamAnim', 'kamAnim');
+    _pSim.start(dt => _kamUpdate(dt), (ctx, cv) => _kamDraw(ctx, cv), []);
+    _abRestore('kamera');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -43527,5 +43560,629 @@ function _sliAns(qi, oi) {
 function _sliSelf(n) {
   const out = document.getElementById('sliSelfOut'), val = document.getElementById('sliSelfVal');
   if (val) { val.value = String(n); _abSave('sammellinse'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.1.3  WANN ENTSTEHT EIN VERGRÖSSERTES ODER VERKLEINERTES BILD?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Optische Instrumente"
+// Handlungsorientiert: Gegenstand vor einer Sammellinse verschieben.
+// Je nach Gegenstandsweite entsteht ein verkleinertes, gleich großes
+// oder vergrößertes Bild – umgekehrt & reell (g>f) oder aufrecht &
+// virtuell (g<f, Lupe). Bildkonstruktion mit zwei Strahlen.
+// ═══════════════════════════════════════════════════════
+
+const _BLD_F = 62, _BLD_XL = 255, _BLD_CY = 118, _BLD_G0 = 44;
+let _bld = null;
+function _bldInit() { _bld = { g: 170, t: 0 }; }
+function _bldB() { const g = _bld.g, f = _BLD_F; return Math.abs(g - f) < 3 ? Infinity : f * g / (g - f); }
+function _bldTyp() {
+  const g = _bld.g, f = _BLD_F;
+  if (Math.abs(g - f) < 3) return { t: 'Bild im Unendlichen (Strahlen parallel)', real: null };
+  if (g > 2 * f + 3) return { t: 'verkleinert · umgekehrt · reell', real: true };
+  if (Math.abs(g - 2 * f) <= 3) return { t: 'gleich groß · umgekehrt · reell', real: true };
+  if (g > f) return { t: 'vergrößert · umgekehrt · reell', real: true };
+  return { t: 'vergrößert · aufrecht · virtuell (Lupe)', real: false };
+}
+
+function _bldHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim bld-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔍 Wann entsteht ein vergrößertes oder verkleinertes Bild?</h3>
+    <div class="fpm-note" style="margin-top:2px">Verschiebe den Gegenstand vor der Sammellinse. Beobachte Größe, Lage und ob das Bild umgekehrt oder aufrecht ist. Die Brennpunkte F und 2F helfen dir.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="bldAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Gegenstandsweite g: <b id="bldGLbl">170</b> &nbsp;(f = 62, 2f = 124)</span>
+          <input type="range" id="bldG" min="25" max="200" step="3" value="170"
+            oninput="_bldSetG(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Das Bild ist …</div>
+        <div class="lmp-status" id="bldStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">
+          <b>g &gt; 2f:</b> verkleinert, umgekehrt, reell<br>
+          <b>g = 2f:</b> gleich groß, umgekehrt, reell<br>
+          <b>f &lt; g &lt; 2f:</b> vergrößert, umgekehrt, reell<br>
+          <b>g &lt; f:</b> vergrößert, aufrecht, virtuell (Lupe)
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Näher als die Brennweite → aufrechtes, vergrößertes <b>Lupenbild</b>. &nbsp;|&nbsp; Weiter weg → umgekehrtes, reelles Bild.
+    </p>
+    ${_bldArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _bldSetG(v) { _bld.g = +v; const el = document.getElementById('bldGLbl'); if (el) el.textContent = _fpmNum(+v, 0); _bldStatus(); }
+function _bldStatus() { const el = document.getElementById('bldStatus'); if (!el) return; const ty = _bldTyp(); el.textContent = '🖼 ' + ty.t; el.className = 'lmp-status ' + (ty.real === false ? 'on' : (ty.real === true ? '' : 'off')); }
+
+// ── Animation ──────────────────────────────────────────
+function _bldUpdate(dt) { if (_bld) _bld.t += dt; }
+function _bldTick(ctx, x, cy, lbl) { ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(x, cy - 5); ctx.lineTo(x, cy + 5); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(lbl, x, cy + 16); }
+function _bldDraw(ctx, cv) {
+  if (!_bld) return;
+  const W = cv.width, H = cv.height, cy = _BLD_CY, xL = _BLD_XL, f = _BLD_F, G = _BLD_G0;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(8, cy); ctx.lineTo(W - 8, cy); ctx.stroke();
+  // Linse
+  ctx.fillStyle = 'rgba(96,165,250,0.3)'; ctx.strokeStyle = '#60a5fa'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(xL, cy - 60); ctx.quadraticCurveTo(xL + 14, cy, xL, cy + 60); ctx.quadraticCurveTo(xL - 14, cy, xL, cy - 60); ctx.fill(); ctx.stroke();
+  // F und 2F
+  _bldTick(ctx, xL - f, cy, 'F'); _bldTick(ctx, xL + f, cy, 'F'); _bldTick(ctx, xL - 2 * f, cy, '2F'); _bldTick(ctx, xL + 2 * f, cy, '2F');
+  // Gegenstand
+  const xObj = xL - _bld.g, objTop = cy - G;
+  ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(xObj, cy); ctx.lineTo(xObj, objTop); ctx.stroke();
+  ctx.fillStyle = '#22c55e'; ctx.beginPath(); ctx.moveTo(xObj, objTop - 7); ctx.lineTo(xObj - 4, objTop); ctx.lineTo(xObj + 4, objTop); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#86efac'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Gegenstand', xObj, cy + 28);
+
+  const ty = _bldTyp();
+  if (ty.real === null) {
+    ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.moveTo(xObj, objTop); ctx.lineTo(xL, objTop); ctx.lineTo(W - 12, objTop + G); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(xObj, objTop); ctx.lineTo(xL, cy); ctx.lineTo(W - 12, cy + (cy - objTop) * (W - 12 - xL) / (xL - xObj)); ctx.stroke();
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.fillText('Strahlen parallel – Bild im Unendlichen', W / 2, 20); return;
+  }
+  const b = _bldB();
+  if (ty.real) {
+    const xImg = Math.min(W - 14, xL + b), B = G * b / _bld.g, imgTopY = cy + B;
+    ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.moveTo(xObj, objTop); ctx.lineTo(xL, objTop); ctx.lineTo(xImg, imgTopY); ctx.stroke();   // parallel → F
+    ctx.beginPath(); ctx.moveTo(xObj, objTop); ctx.lineTo(xImg, imgTopY); ctx.stroke();                            // durch die Mitte
+    ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(xImg, cy); ctx.lineTo(xImg, imgTopY); ctx.stroke();
+    ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.moveTo(xImg, imgTopY + 7); ctx.lineTo(xImg - 4, imgTopY); ctx.lineTo(xImg + 4, imgTopY); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#fca5a5'; ctx.font = '9px sans-serif'; ctx.fillText('Bild (reell)', xImg, cy - 8);
+  } else {
+    const bb = f * _bld.g / (f - _bld.g), xImg = Math.max(14, xL - bb), B = G * bb / _bld.g, imgTopY = cy - B;
+    // Strahlen nach der Linse (divergierend)
+    ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.moveTo(xObj, objTop); ctx.lineTo(xL, objTop); ctx.lineTo(W - 12, objTop + (G / f) * (W - 12 - xL)); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(xObj, objTop); ctx.lineTo(xL, cy); ctx.lineTo(W - 12, cy + (cy - objTop) / (xL - xObj) * (W - 12 - xL)); ctx.stroke();
+    // rückwärtige gedachte Verlängerungen zum virtuellen Bild
+    ctx.strokeStyle = 'rgba(148,163,184,0.7)'; ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(xL, objTop); ctx.lineTo(xImg, imgTopY); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(xL, cy); ctx.lineTo(xImg, imgTopY); ctx.stroke(); ctx.setLineDash([]);
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(xImg, cy); ctx.lineTo(xImg, imgTopY); ctx.stroke();
+    ctx.fillStyle = '#f59e0b'; ctx.beginPath(); ctx.moveTo(xImg, imgTopY - 7); ctx.lineTo(xImg - 4, imgTopY); ctx.lineTo(xImg + 4, imgTopY); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#fcd34d'; ctx.font = '9px sans-serif'; ctx.fillText('virtuelles Bild', xImg, imgTopY - 10);
+  }
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(ty.t, W / 2, 18);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.1.3  (ns = 'bildlinse') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _bldArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('bildlinse')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('bildlinse')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wann macht eine Sammellinse ein größeres, wann ein kleineres Bild – und wann steht es auf dem Kopf?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, das Bild wird größer, wenn der Gegenstand …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle den Gegenstand weit weg (g &gt; 2f). Wie ist das Bild?</li>
+          <li>Schiebe ihn zwischen 2F und F, dann näher als F.</li>
+          <li>Achte auf: größer/kleiner, umgekehrt/aufrecht, reell/virtuell.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Gegenstandsweite</td><td>Größe</td><td>Lage</td><td>Art</td></tr>
+          <tr><td>g &gt; 2f</td><td>${inp('t1', '')}</td><td>${inp('t1l', 'umgekehrt/aufrecht')}</td><td>${inp('t1a', 'reell/virtuell')}</td></tr>
+          <tr><td>f &lt; g &lt; 2f</td><td>${inp('t2', '')}</td><td>${inp('t2l', '')}</td><td>${inp('t2a', '')}</td></tr>
+          <tr><td>g &lt; f</td><td>${inp('t3', '')}</td><td>${inp('t3l', '')}</td><td>${inp('t3a', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Bildkonstruktion mit zwei Strahlen für einen Gegenstand zwischen F und 2F.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Bei welcher Stellung ist das Bild vergrößert und aufrecht? ${inp('a1', 'wenn g …')}</li>
+          <li>Wann steht das Bild auf dem Kopf? ${inp('a2', '')}</li>
+          <li>Was bedeutet „reell" und „virtuell"? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Steht der Gegenstand weiter weg als die doppelte Brennweite (g &gt; 2f), ist das Bild ${inp('m1', 'größer/kleiner')}, umgekehrt und reell.<br>
+        Steht er näher als die Brennweite (g &lt; f), ist das Bild vergrößert, ${inp('m2', 'aufrecht/umgekehrt')} und ${inp('m3', 'reell/virtuell')} – das ist die Lupe.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Beamer wirft ein großes Bild an die Wand, eine Kamera macht ein kleines Bild auf dem Sensor. Wo steht der Gegenstand jeweils ungefähr im Verhältnis zur Brennweite?</div>
+        ${ta('tr1', 'Beim Beamer … , bei der Kamera …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="bldMini">${_bldMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_bldSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_bldSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_bldSelf(3)">😃 sicher</button>
+          <span id="bldSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="bldSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> g &gt; 2f: verkleinert, umgekehrt, reell. g = 2f: gleich groß, umgekehrt, reell. f &lt; g &lt; 2f: vergrößert, umgekehrt, reell. g &lt; f: vergrößert, aufrecht, virtuell (Lupe). Bei g = f: kein Bild (Strahlen parallel).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Abbildung durch eine Sammellinse; Konstruktion mit Parallel- und Mittelpunktstrahl (ggf. Brennpunktstrahl). Reelles Bild: Strahlen schneiden sich wirklich (auffangbar); virtuelles Bild: nur die rückwärtigen Verlängerungen schneiden sich.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Das Bild ist immer umgekehrt." (2) „Virtuell = unsichtbar." (3) „Näher = immer kleiner."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Brennpunkte markieren; zwei Strahlen genügen; Lupe (g&lt;f) und Beamer (f&lt;g&lt;2f) als Beispiele.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle wie oben. 6.1 „g &lt; f" · 6.2 „wenn g &gt; f (reelles Bild)" · 6.3 „reell = auffangbar, virtuell = nur scheinbar hinter der Linse". Merksatz: kleiner · aufrecht · virtuell. Transfer: Beamer f&lt;g&lt;2f (vergrößert), Kamera g&gt;2f (verkleinert). Minidiagnose: 1→„g &lt; f" · 2→„umgekehrt" · 3→„virtuell".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('bildlinse')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('bildlinse', 'Wann entsteht ein vergrößertes oder verkleinertes Bild?', body);
+}
+
+const _BLD_MINI = [
+  { q: '1. Wann ist das Bild vergrößert und aufrecht (Lupe)?',
+    opts: ['Wenn der Gegenstand näher als die Brennweite ist (g < f)', 'Wenn er sehr weit weg ist', 'Immer'], correct: 0,
+    fb: ['Richtig! Innerhalb der Brennweite entsteht ein aufrechtes, vergrößertes, virtuelles Bild.',
+         'Weit weg wird das Bild klein und umgekehrt.',
+         'Nicht immer – es hängt von g ab.'] },
+  { q: '2. Wie ist das Bild, wenn der Gegenstand weiter weg als 2f steht?',
+    opts: ['vergrößert und aufrecht', 'verkleinert und umgekehrt', 'gleich groß und aufrecht'], correct: 1,
+    fb: ['Weit weg wird es kleiner, nicht größer.',
+         'Richtig! g > 2f → verkleinert, umgekehrt, reell.',
+         'Aufrecht ist es nur bei g < f.'] },
+  { q: '3. Was bedeutet ein „virtuelles" Bild?',
+    opts: ['Es ist unsichtbar', 'Es entsteht nur durch die gedachte Verlängerung der Strahlen', 'Es ist immer umgekehrt'], correct: 1,
+    fb: ['Man sieht es sehr wohl (z. B. durch die Lupe).',
+         'Richtig! Nur die rückwärtigen Verlängerungen der Strahlen treffen sich.',
+         'Virtuelle Bilder sind gerade aufrecht.'] }
+];
+function _bldMiniHTML() {
+  return _BLD_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_bldAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="bldFb${qi}"></div></div>`).join('');
+}
+function _bldAns(qi, oi) {
+  const m = _BLD_MINI[qi], el = document.getElementById('bldFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _bldSelf(n) {
+  const out = document.getElementById('bldSelfOut'), val = document.getElementById('bldSelfVal');
+  if (val) { val.value = String(n); _abSave('bildlinse'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.1.4  WIE FUNKTIONIERT EINE LUPE?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Optische Instrumente"
+// Handlungsorientiert: Eine Lupe ist eine Sammellinse. Steht der
+// Gegenstand näher als die Brennweite (g < f), entsteht ein
+// vergrößertes, aufrechtes, virtuelles Bild. Je näher an f, desto größer.
+// ═══════════════════════════════════════════════════════
+
+const _LUP_F = 58, _LUP_XL = 250, _LUP_CY = 118;
+let _lup = null;
+function _lupInit() { _lup = { g: 32, t: 0 }; }
+function _lupV() { return _lup.g < _LUP_F - 2 ? _LUP_F / (_LUP_F - _lup.g) : null; }   // Vergrößerung
+
+function _lupHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim lup-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔎 Wie funktioniert eine Lupe?</h3>
+    <div class="fpm-note" style="margin-top:2px">Halte den Gegenstand nah an die Lupe (näher als die Brennweite). Beobachte das vergrößerte, aufrechte Bild. Was passiert, wenn du weiter weggehst?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="lupAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Abstand Gegenstand–Lupe g: <b id="lupGLbl">32</b> &nbsp;(Brennweite f = 58)</span>
+          <input type="range" id="lupG" min="10" max="80" step="2" value="32"
+            oninput="_lupSetG(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Das Bild</div>
+        <div class="lmp-status" id="lupStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Eine Lupe ist eine <b>Sammellinse</b>. Nur wenn der Gegenstand <b>näher als die Brennweite</b> ist (g &lt; f), sieht man ein vergrößertes, aufrechtes, <b>virtuelles</b> Bild. Je näher an f, desto stärker die Vergrößerung.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Lupe: Gegenstand innerhalb der Brennweite → <b>vergrößert · aufrecht · virtuell</b>. &nbsp;|&nbsp; Weiter als f → kein Lupenbild.
+    </p>
+    ${_lupArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _lupSetG(v) { _lup.g = +v; const el = document.getElementById('lupGLbl'); if (el) el.textContent = _fpmNum(+v, 0); _lupStatus(); }
+function _lupStatus() {
+  const el = document.getElementById('lupStatus'); if (!el) return;
+  const V = _lupV();
+  if (V === null) { el.textContent = '⚠️ Gegenstand weiter als die Brennweite (g ≥ f) → kein Lupenbild (Bild kippt um).'; el.className = 'lmp-status off'; }
+  else { el.textContent = '🔎 vergrößert · aufrecht · virtuell – etwa ' + _fpmNum(V, 1) + '-fache Vergrößerung.'; el.className = 'lmp-status on'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _lupUpdate(dt) { if (_lup) _lup.t += dt; }
+function _lupLetter(ctx, x, y, size, col) { ctx.fillStyle = col; ctx.font = '700 ' + size + 'px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('A', x, y); ctx.textBaseline = 'alphabetic'; }
+function _lupDraw(ctx, cv) {
+  if (!_lup) return;
+  const W = cv.width, H = cv.height, cy = _LUP_CY, xL = _LUP_XL, f = _LUP_F, G = 26;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = '#334155'; ctx.beginPath(); ctx.moveTo(8, cy); ctx.lineTo(W - 8, cy); ctx.stroke();
+  // Brennpunkte
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;[xL - f, xL + f].forEach(fx => { ctx.beginPath(); ctx.moveTo(fx, cy - 5); ctx.lineTo(fx, cy + 5); ctx.stroke(); });
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('F', xL - f, cy + 16); ctx.fillText('F', xL + f, cy + 16);
+  // Lupe (Linse mit Griff)
+  ctx.fillStyle = 'rgba(96,165,250,0.28)'; ctx.strokeStyle = '#60a5fa'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.ellipse(xL, cy, 12, 58, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Gegenstand (kleines A)
+  const xObj = xL - _lup.g, objTop = cy - G;
+  _lupLetter(ctx, xObj, cy - G / 2, 22, '#22c55e');
+  ctx.fillStyle = '#86efac'; ctx.font = '9px sans-serif'; ctx.fillText('Gegenstand', xObj, cy + 18);
+  // Auge
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(W - 40, cy, 15, 9, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#1e40af'; ctx.beginPath(); ctx.arc(W - 40, cy, 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText('Auge', W - 40, cy + 24);
+
+  const V = _lupV();
+  if (V === null) {
+    ctx.fillStyle = '#f87171'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('g ≥ f: kein aufrechtes Lupenbild', W / 2, 20); return;
+  }
+  // virtuelles Bild (großes A, links, aufrecht)
+  const bb = f * _lup.g / (f - _lup.g), xImg = Math.max(30, xL - bb), B = G * bb / _lup.g, imgTop = cy - B;
+  // Strahlen: Gegenstandspitze parallel → durch F; und durch Mitte; ins Auge
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(xObj, objTop); ctx.lineTo(xL, objTop); ctx.lineTo(W - 52, objTop + (G / f) * (W - 52 - xL)); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xObj, objTop); ctx.lineTo(xL, cy); ctx.lineTo(W - 52, cy + (cy - objTop) / (xL - xObj) * (W - 52 - xL)); ctx.stroke();
+  // rückwärtige Verlängerungen
+  ctx.strokeStyle = 'rgba(148,163,184,0.7)'; ctx.setLineDash([4, 4]);
+  ctx.beginPath(); ctx.moveTo(xL, objTop); ctx.lineTo(xImg, imgTop); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xL, cy); ctx.lineTo(xImg, imgTop); ctx.stroke(); ctx.setLineDash([]);
+  _lupLetter(ctx, xImg, cy - B / 2, Math.min(70, 22 * V), 'rgba(245,158,11,0.9)');
+  ctx.fillStyle = '#fcd34d'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('virtuelles Bild (vergrößert)', xImg, cy + 18);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.fillText('vergrößert · aufrecht · virtuell', W / 2, 18);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.1.4  (ns = 'lupe') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _lupArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('lupe')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('lupe')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie macht eine Lupe die Schrift größer – und wann klappt das nicht mehr?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, das Bild wird am größten, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Halte den Gegenstand ganz nah an die Lupe. Wie sieht das Bild aus?</li>
+          <li>Vergrößere den Abstand langsam bis über die Brennweite hinaus.</li>
+          <li>Beobachte, ab wann das Bild kippt (kein Lupenbild mehr).</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Abstand g</td><td>Bild aufrecht?</td><td>Vergrößerung</td></tr>
+          <tr><td>klein (weit unter f)</td><td>${inp('t1', 'ja/nein')}</td><td>${inp('t1v', 'klein/groß')}</td></tr>
+          <tr><td>nahe an f</td><td>${inp('t2', '')}</td><td>${inp('t2v', '')}</td></tr>
+          <tr><td>größer als f</td><td>${inp('t3', '')}</td><td>${inp('t3v', 'kein Lupenbild')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Lupe, den nahen Gegenstand und das vergrößerte, aufrechte Bild.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Welche Linsenart ist eine Lupe? ${inp('a1', '')}</li>
+          <li>Wie muss der Gegenstand stehen, damit die Lupe wirkt? ${inp('a2', 'näher als …')}</li>
+          <li>Ist das Lupenbild reell oder virtuell? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Eine Lupe ist eine ${inp('m1', 'welche Linse?')}. Der Gegenstand muss ${inp('m2', 'näher/weiter')} als die Brennweite sein.<br>
+        Dann entsteht ein vergrößertes, ${inp('m3', 'aufrechtes/umgekehrtes')}, virtuelles Bild.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum halten Uhrmacher oder Briefmarkensammler die Lupe ganz nah an das Objekt und nicht weit weg?</div>
+        ${ta('tr1', 'Sie halten die Lupe nah, weil …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="lupMini">${_lupMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_lupSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_lupSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_lupSelf(3)">😃 sicher</button>
+          <span id="lupSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="lupSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Nur bei g &lt; f: vergrößertes, aufrechtes, virtuelles Bild; je näher an f, desto größer. Bei g ≥ f kippt das Bild (umgekehrt/reell) – kein Lupenbild.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Die Lupe ist eine Sammellinse; der Gegenstand steht innerhalb der Brennweite. Die rückwärtigen Verlängerungen der Strahlen liefern ein vergrößertes, aufrechtes, virtuelles Bild. Vergrößerung wächst, wenn g gegen f geht.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Weiter weg = größer." (2) „Das Lupenbild ist reell/auffangbar." (3) „Jede Linse vergrößert."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Brennpunkt markieren; nah/fern ausprobieren; Bezug zu 7.1.3 (g&lt;f-Fall).</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: nah ja/klein–mittel; nahe f ja/groß; über f kein Lupenbild. 6.1 „Sammellinse" · 6.2 „näher als die Brennweite" · 6.3 „virtuell". Merksatz: Sammellinse · näher · aufrechtes. Transfer: Nah am Objekt (g &lt; f) entsteht überhaupt erst das vergrößerte aufrechte Lupenbild. Minidiagnose: 1→Sammellinse · 2→„vergrößert, aufrecht, virtuell" · 3→„näher als die Brennweite".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('lupe')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('lupe', 'Wie funktioniert eine Lupe?', body);
+}
+
+const _LUP_MINI = [
+  { q: '1. Welche Linsenart ist eine Lupe?',
+    opts: ['Eine Zerstreuungslinse', 'Eine Sammellinse', 'Ein flacher Spiegel'], correct: 1,
+    fb: ['Eine Zerstreuungslinse verkleinert.',
+         'Richtig! Die Lupe ist eine Sammellinse.',
+         'Ein Spiegel ist keine Linse.'] },
+  { q: '2. Wie ist das Bild einer Lupe?',
+    opts: ['vergrößert, aufrecht, virtuell', 'verkleinert, umgekehrt, reell', 'gleich groß'], correct: 0,
+    fb: ['Richtig! Vergrößert, aufrecht und virtuell.',
+         'Das wäre die Kamera.',
+         'Die Lupe vergrößert.'] },
+  { q: '3. Wo muss der Gegenstand stehen, damit die Lupe wirkt?',
+    opts: ['Weiter weg als die Brennweite', 'Näher als die Brennweite (g < f)', 'Genau im Brennpunkt'], correct: 1,
+    fb: ['Dann kippt das Bild.',
+         'Richtig! Der Gegenstand muss innerhalb der Brennweite liegen.',
+         'Genau im Brennpunkt entsteht kein Bild.'] }
+];
+function _lupMiniHTML() {
+  return _LUP_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_lupAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="lupFb${qi}"></div></div>`).join('');
+}
+function _lupAns(qi, oi) {
+  const m = _LUP_MINI[qi], el = document.getElementById('lupFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _lupSelf(n) {
+  const out = document.getElementById('lupSelfOut'), val = document.getElementById('lupSelfVal');
+  if (val) { val.value = String(n); _abSave('lupe'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 7.1.5  WIE FUNKTIONIERT EINE KAMERA?
+// Realschule NRW – Klasse 7 · Inhaltsfeld "Optische Instrumente"
+// Handlungsorientiert: Linse, Blende und Sensor (Schirm). Ein weit
+// entfernter Gegenstand wird als reelles, umgekehrtes, verkleinertes
+// Bild auf dem Sensor abgebildet. Scharfstellen = richtiger Abstand
+// Linse–Sensor. Die Blende regelt die Helligkeit.
+// ═══════════════════════════════════════════════════════
+
+const _KAM_F = 50, _KAM_G = 200, _KAM_XL = 210, _KAM_CY = 116;
+const _KAM_B0 = _KAM_F * _KAM_G / (_KAM_G - _KAM_F);   // scharfe Bildweite ≈ 66,7
+let _kam = null;
+function _kamInit() { _kam = { bSensor: 90, blende: 3, t: 0 }; }
+function _kamScharf() { return Math.abs(_kam.bSensor - _KAM_B0) < 6; }
+
+function _kamHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim kam-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📸 Wie funktioniert eine Kamera?</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine Kamera hat Linse, Blende und Sensor. Stelle das Bild scharf (richtiger Abstand Linse–Sensor) und regle mit der Blende die Helligkeit.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="kamAnim" width="440" height="232" class="phys-anim-cv"></canvas>
+        <div class="lmp-status" id="kamStatus" style="margin-top:6px"></div>
+      </div>
+      <div>
+        <div class="phys-ctrl"><span class="phys-ctrl-label">Abstand Linse–Sensor (Bildweite): <b id="kamBLbl">90</b></span>
+          <input type="range" id="kamB" min="45" max="110" step="2" value="90" oninput="_kamSet('bSensor',this.value)" style="width:100%;accent-color:#7c3aed"></div>
+        <div class="phys-ctrl" style="margin-top:8px"><span class="phys-ctrl-label">Blende (Öffnung): <b id="kamBlLbl">mittel</b></span>
+          <input type="range" id="kamBl" min="1" max="6" step="1" value="3" oninput="_kamSet('blende',this.value)" style="width:100%;accent-color:#ef4444"></div>
+        <div class="fpm-note" style="margin-top:10px">Das Bild auf dem Sensor ist <b>umgekehrt, verkleinert und reell</b>. Scharf wird es nur bei der richtigen Bildweite. Eine <b>größere Blende</b> lässt mehr Licht durch → helleres Bild.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Scharfstellen = Abstand Linse–Sensor anpassen. &nbsp;|&nbsp; Blende auf → hell, Blende zu → dunkel.
+    </p>
+    ${_kamArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _kamSet(k, v) {
+  _kam[k] = +v;
+  if (k === 'bSensor') { const e = document.getElementById('kamBLbl'); if (e) e.textContent = _fpmNum(+v, 0); }
+  if (k === 'blende') { const e = document.getElementById('kamBlLbl'); if (e) e.textContent = +v <= 2 ? 'klein (dunkel)' : (+v >= 5 ? 'groß (hell)' : 'mittel'); }
+  _kamStatus();
+}
+function _kamStatus() {
+  const el = document.getElementById('kamStatus'); if (!el) return;
+  const hell = _kam.blende <= 2 ? 'dunkel' : (_kam.blende >= 5 ? 'hell' : 'gut belichtet');
+  if (_kamScharf()) { el.textContent = '📸 Bild scharf und ' + hell + ' – umgekehrt, verkleinert, reell.'; el.className = 'lmp-status on'; }
+  else { el.textContent = '🌫 Bild unscharf (' + hell + ') – Abstand Linse–Sensor anpassen.'; el.className = 'lmp-status off'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _kamUpdate(dt) { if (_kam) _kam.t += dt; }
+function _kamDraw(ctx, cv) {
+  if (!_kam) return;
+  const W = cv.width, H = cv.height, cy = _KAM_CY, xL = _KAM_XL, G = 46;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = '#334155'; ctx.beginPath(); ctx.moveTo(8, cy); ctx.lineTo(W - 8, cy); ctx.stroke();
+  // Gegenstand (weit weg, Pfeil hoch)
+  const xObj = 30, objTop = cy - G;
+  ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(xObj, cy); ctx.lineTo(xObj, objTop); ctx.stroke();
+  ctx.fillStyle = '#22c55e'; ctx.beginPath(); ctx.moveTo(xObj, objTop - 7); ctx.lineTo(xObj - 4, objTop); ctx.lineTo(xObj + 4, objTop); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#86efac'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Gegenstand', xObj + 6, cy + 18);
+  // Kamera-Gehäuse
+  const xSensor = xL + _kam.bSensor;
+  ctx.fillStyle = 'rgba(30,41,59,0.6)'; ctx.fillRect(xL - 6, cy - 66, xSensor - xL + 14, 132);
+  // Blende (Öffnung an der Linse)
+  const ap = 8 + _kam.blende * 6;
+  ctx.fillStyle = '#0b1020'; ctx.fillRect(xL - 5, cy - 62, 10, 124);
+  ctx.fillStyle = 'rgba(96,165,250,0.3)'; ctx.strokeStyle = '#60a5fa'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.ellipse(xL, cy, 9, ap, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#93c5fd'; ctx.font = '9px sans-serif'; ctx.fillText('Linse + Blende', xL, cy + 78);
+  // Strahlen zum Bildpunkt (bei b0)
+  const b0 = _KAM_B0, xImg0 = xL + b0, B = G * b0 / _KAM_G, imgY = cy + B;
+  const alpha = 0.3 + _kam.blende / 10;
+  ctx.strokeStyle = `rgba(251,191,36,${alpha})`; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(xObj, objTop); ctx.lineTo(xL, objTop); ctx.lineTo(xImg0, imgY); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xObj, objTop); ctx.lineTo(xImg0, imgY); ctx.stroke();
+  // Sensor
+  ctx.fillStyle = '#1e293b'; ctx.fillRect(xSensor, cy - 40, 6, 80);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText('Sensor', xSensor + 3, cy + 54);
+  // Bild auf dem Sensor
+  const off = Math.abs(_kam.bSensor - b0), blur = Math.min(18, off * 0.6);
+  ctx.strokeStyle = `rgba(239,68,68,${alpha})`; ctx.lineWidth = _kamScharf() ? 3 : 1 + blur * 0.4;
+  ctx.beginPath(); ctx.moveTo(xSensor + 3, cy); ctx.lineTo(xSensor + 3, imgY); ctx.stroke();
+  if (_kamScharf()) { ctx.fillStyle = `rgba(239,68,68,${alpha})`; ctx.beginPath(); ctx.moveTo(xSensor + 3, imgY + 6); ctx.lineTo(xSensor, imgY); ctx.lineTo(xSensor + 6, imgY); ctx.closePath(); ctx.fill(); }
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_kamScharf() ? '📸 scharf – umgekehrtes Bild' : '🌫 unscharf', W / 2, 18);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 7.1.5  (ns = 'kamera') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _kamArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('kamera')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('kamera')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie entsteht in einer Kamera ein scharfes Bild – und wie regelt man die Helligkeit?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, das Bild wird scharf, wenn … Die Blende sorgt für …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Verändere den Abstand Linse–Sensor, bis das Bild scharf ist.</li>
+          <li>Öffne und schließe die Blende. Was passiert mit der Helligkeit?</li>
+          <li>Achte auf Lage und Größe des Bildes auf dem Sensor.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>falscher Abstand Linse–Sensor</td><td>Bild ${inp('t1', 'scharf/unscharf')}</td></tr>
+          <tr><td>richtiger Abstand</td><td>Bild ${inp('t2', 'scharf/unscharf')}</td></tr>
+          <tr><td>Blende weit offen</td><td>Bild ${inp('t3', 'heller/dunkler')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne Gegenstand, Linse, Blende und Sensor mit dem umgekehrten Bild.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie ist das Bild auf dem Sensor (Lage, Größe, Art)? ${inp('a1', 'umgekehrt, …')}</li>
+          <li>Wie stellt man scharf? ${inp('a2', 'durch …')}</li>
+          <li>Wofür ist die Blende da? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die Kamera erzeugt auf dem Sensor ein ${inp('m1', 'umgekehrtes/aufrechtes')}, verkleinertes, reelles Bild.<br>
+        Scharf stellt man durch den ${inp('m2', 'was?')} zwischen Linse und Sensor.<br>
+        Die Blende regelt die ${inp('m3', 'was?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum öffnet eine Handykamera bei wenig Licht die Blende weit – und was hat das Scharfstellen mit dem menschlichen Auge gemeinsam?</div>
+        ${ta('tr1', 'Bei wenig Licht … Das Auge stellt scharf durch …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="kamMini">${_kamMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_kamSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_kamSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_kamSelf(3)">😃 sicher</button>
+          <span id="kamSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="kamSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Nur beim richtigen Abstand Linse–Sensor wird das Bild scharf. Eine weit geöffnete Blende macht das Bild heller, eine kleine Blende dunkler. Das Bild ist umgekehrt, verkleinert und reell.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Kamera: Sammellinse bildet einen (weit entfernten) Gegenstand als reelles, umgekehrtes, verkleinertes Bild auf dem Sensor ab. Scharfstellen = Bildweite an die Gegenstandsweite anpassen (Fokussieren). Blende steuert die Lichtmenge (Helligkeit) und die Schärfentiefe.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Das Kamerabild steht richtig herum." (2) „Die Blende stellt scharf." (3) „Mehr Licht = automatisch schärfer."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Fokussieren und Blende getrennt untersuchen; Bezug zum Auge (Linse verformt sich zum Scharfstellen, Pupille = Blende).</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: falscher Abstand unscharf; richtiger scharf; Blende offen heller. 6.1 „umgekehrt, verkleinert, reell" · 6.2 „Abstand Linse–Sensor anpassen" · 6.3 „regelt die Helligkeit". Merksatz: umgekehrtes · Abstand · Helligkeit. Transfer: Weit offene Blende lässt mehr Licht ein; das Auge stellt durch Verformen der Linse scharf. Minidiagnose: 1→„Abstand anpassen" · 2→„umgekehrt, verkleinert, reell" · 3→Helligkeit.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('kamera')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('kamera', 'Wie funktioniert eine Kamera?', body);
+}
+
+const _KAM_MINI = [
+  { q: '1. Wie stellt man bei einer Kamera scharf?',
+    opts: ['Man ändert den Abstand Linse–Sensor', 'Man öffnet die Blende', 'Man macht mehr Licht'], correct: 0,
+    fb: ['Richtig! Der richtige Abstand Linse–Sensor macht das Bild scharf.',
+         'Die Blende regelt die Helligkeit, nicht die Schärfe.',
+         'Mehr Licht macht heller, nicht schärfer.'] },
+  { q: '2. Wie ist das Bild auf dem Kamerasensor?',
+    opts: ['aufrecht und vergrößert', 'umgekehrt, verkleinert und reell', 'virtuell'], correct: 1,
+    fb: ['Aufrecht/vergrößert wäre die Lupe.',
+         'Richtig! Umgekehrt, verkleinert und reell.',
+         'Auf dem Sensor entsteht ein reelles Bild, kein virtuelles.'] },
+  { q: '3. Wofür ist die Blende da?',
+    opts: ['Zum Scharfstellen', 'Zum Regeln der Helligkeit', 'Zum Vergrößern'], correct: 1,
+    fb: ['Scharfstellen macht man mit dem Abstand.',
+         'Richtig! Die Blende regelt, wie viel Licht hereinkommt.',
+         'Vergrößern ist Aufgabe der Linse/Brennweite.'] }
+];
+function _kamMiniHTML() {
+  return _KAM_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_kamAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="kamFb${qi}"></div></div>`).join('');
+}
+function _kamAns(qi, oi) {
+  const m = _KAM_MINI[qi], el = document.getElementById('kamFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _kamSelf(n) {
+  const out = document.getElementById('kamSelfOut'), val = document.getElementById('kamSelfVal');
+  if (val) { val.value = String(n); _abSave('kamera'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
