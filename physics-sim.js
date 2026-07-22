@@ -294,7 +294,9 @@ const _physAbDefs = {
   'potentiometer': { titel: 'Das Potentiometer – ein veränderbarer Widerstand', ns: 'potentiometer', html: () => _potArbeitsblattHTML() },
   'elektrische-leistung': { titel: 'Elektrische Leistung P = U · I', ns: 'leistung-rs', html: () => _elpArbeitsblattHTML() },
   'elektrische-energie': { titel: 'Elektrische Energie E = P · t', ns: 'energie-rs', html: () => _eenArbeitsblattHTML() },
-  'stromkosten': { titel: 'Was kostet elektrische Energie?', ns: 'stromkosten', html: () => _kosArbeitsblattHTML() }
+  'stromkosten': { titel: 'Was kostet elektrische Energie?', ns: 'stromkosten', html: () => _kosArbeitsblattHTML() },
+  'energiesparen': { titel: 'Energie sparen im Haushalt', ns: 'energiesparen', html: () => _sprArbeitsblattHTML() },
+  'stromgefahren': { titel: 'Gefahren des elektrischen Stroms & Schutz', ns: 'stromgefahr', html: () => _gefArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -1054,6 +1056,26 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('kosAnim', 'kosAnim');
     _pSim.start(dt => _kosUpdate(dt), (ctx, cv) => _kosDraw(ctx, cv), []);
     _abRestore('stromkosten');
+  },
+
+  // ── 8.3.4 ENERGIE SPAREN IM HAUSHALT ───────────────────────────
+  'energiesparen': modal => {
+    _sprInit();
+    modal.innerHTML = _sprHTML();
+    _sprStatus();
+    _pSim = new PhysicsSimEngine('sprAnim', 'sprAnim');
+    _pSim.start(dt => _sprUpdate(dt), (ctx, cv) => _sprDraw(ctx, cv), []);
+    _abRestore('energiesparen');
+  },
+
+  // ── 8.3.5 GEFAHREN DES STROMS & SCHUTZ ─────────────────────────
+  'stromgefahren': modal => {
+    _gefInit();
+    modal.innerHTML = _gefHTML();
+    _gefStatus();
+    _pSim = new PhysicsSimEngine('gefAnim', 'gefAnim');
+    _pSim.start(dt => _gefUpdate(dt), (ctx, cv) => _gefDraw(ctx, cv), []);
+    _abRestore('stromgefahr');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -51353,5 +51375,428 @@ function _kosAns(qi, oi) {
 function _kosSelf(n) {
   const out = document.getElementById('kosSelfOut'), val = document.getElementById('kosSelfVal');
   if (val) { val.value = String(n); _abSave('stromkosten'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══ KAPITEL 8.3 LEISTUNG & ENERGIE – Batch 2 (8.3.4/8.3.5) ═══
+// ═══════════════════════════════════════════════════════
+// 8.3.4  ENERGIE SPAREN IM HAUSHALT
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: Wähle eine Sparmaßnahme und vergleiche den
+// Jahresverbrauch (kWh) und die Kosten vorher/nachher. Sparen spart
+// Energie UND Geld. (Reine Rechnung.)
+// ═══════════════════════════════════════════════════════
+let _spr = null;
+const _SPR_PREIS = 0.30;
+const _SPR_FAELLE = {
+  lampe:   { name: 'Glühlampe → LED', altL: 'Glühlampe 60 W', neuL: 'LED 8 W', altTag: 0.24, neuTag: 0.032 },   // 4 h/Tag
+  standby: { name: 'Standby → Stecker ziehen', altL: 'Standby 10 W (20 h)', neuL: 'ganz aus', altTag: 0.20, neuTag: 0.0 },
+  kuehl:   { name: 'alter → neuer Kühlschrank', altL: 'alt 0,55 kWh/Tag', neuL: 'neu 0,25 kWh/Tag', altTag: 0.55, neuTag: 0.25 }
+};
+function _sprInit() { _spr = { fall: 'lampe', t: 0 }; }
+function _sprF() { return _SPR_FAELLE[_spr.fall]; }
+function _sprAltJahr() { return _sprF().altTag * 365; }
+function _sprNeuJahr() { return _sprF().neuTag * 365; }
+function _sprSparKWh() { return _sprAltJahr() - _sprNeuJahr(); }
+function _sprSparEur() { return _sprSparKWh() * _SPR_PREIS; }
+function _sprN(v, d) { return v.toFixed(d == null ? 1 : d).replace('.', ','); }
+
+function _sprHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim spr-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌱 Energie sparen im Haushalt</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle eine Sparmaßnahme. Vergleiche den Verbrauch pro Jahr vorher und nachher. Wie viel Energie und Geld spart man? (Preis: 0,30&nbsp;€ pro kWh.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="sprAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_spr.fall === 'lampe' ? ' primary' : ''}" id="sprFlampe" onclick="_sprSet('lampe')">💡 Glühlampe→LED</button>
+          <button class="sim-btn${_spr.fall === 'standby' ? ' primary' : ''}" id="sprFstandby" onclick="_sprSet('standby')">🔌 Standby aus</button>
+          <button class="sim-btn${_spr.fall === 'kuehl' ? ' primary' : ''}" id="sprFkuehl" onclick="_sprSet('kuehl')">❄️ Kühlschrank</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_sprReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Ersparnis pro Jahr</div>
+        <div class="lmp-status" id="sprStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Man spart Energie, indem man <b>sparsame Geräte</b> nutzt (z. B. LED statt Glühlampe), Geräte <b>ganz ausschaltet</b> (Standby vermeiden) und sie <b>kürzer</b> laufen lässt. Weniger Energie (kWh) bedeutet auch <b>weniger Kosten</b> und schont die Umwelt.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Sparsame Geräte + kürzere Laufzeit → weniger <b>kWh</b> → weniger <b>Kosten</b>.
+    </p>
+    ${_sprArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _sprSet(f) { _spr.fall = f; Object.keys(_SPR_FAELLE).forEach(k => document.getElementById('sprF' + k)?.classList.toggle('primary', k === f)); _sprStatus(); }
+function _sprReset() { _sprInit(); _sprSet('lampe'); _sprStatus(); }
+function _sprStatus() {
+  const el = document.getElementById('sprStatus'); if (!el) return;
+  el.textContent = `${_sprF().name}: vorher ${_sprN(_sprAltJahr())} kWh/Jahr, nachher ${_sprN(_sprNeuJahr())} kWh/Jahr. Ersparnis: ${_sprN(_sprSparKWh())} kWh = ${_sprN(_sprSparEur(), 2)} € pro Jahr.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _sprUpdate(dt) { if (_spr) _spr.t += dt; }
+function _sprDraw(ctx, cv) {
+  if (!_spr) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_sprF().name, W / 2, 22);
+
+  // Zwei Balken: vorher (rot) und nachher (grün) – kWh/Jahr
+  const maxKwh = Math.max(_sprAltJahr(), 1);
+  const bx = 130, bw = 220, bhMax = 60;
+  const bars = [{ lbl: 'vorher: ' + _sprF().altL, v: _sprAltJahr(), y: 54, col: '#ef4444' },
+                { lbl: 'nachher: ' + _sprF().neuL, v: _sprNeuJahr(), y: 108, col: '#22c55e' }];
+  bars.forEach(b => {
+    ctx.fillStyle = '#cbd5e1'; ctx.font = '11px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(b.lbl, 20, b.y - 4);
+    ctx.strokeStyle = '#475569'; ctx.lineWidth = 1; ctx.strokeRect(bx, b.y, bw, 22);
+    ctx.fillStyle = b.col; ctx.fillRect(bx, b.y, bw * (b.v / maxKwh), 22);
+    ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(_sprN(b.v) + ' kWh/Jahr', bx + bw + 6, b.y + 15);
+  });
+
+  // Ersparnis groß
+  ctx.fillStyle = '#86efac'; ctx.font = '700 16px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Ersparnis: ' + _sprN(_sprSparKWh()) + ' kWh/Jahr', W / 2, 176);
+  ctx.fillStyle = '#fde047'; ctx.font = '700 18px sans-serif';
+  ctx.fillText('= ' + _sprN(_sprSparEur(), 2) + ' € pro Jahr', W / 2, 202);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.3.4  (ns = 'energiesparen') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _sprArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('energiesparen')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('energiesparen')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie kann man im Haushalt elektrische Energie – und damit Geld – sparen?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass man am meisten spart, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle die Maßnahme „Glühlampe → LED" und lies die Ersparnis ab.</li>
+          <li>Vergleiche „Standby aus" und „neuer Kühlschrank".</li>
+          <li>Überlege, welche Maßnahme am meisten bringt.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle (Ersparnis pro Jahr)</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Glühlampe → LED</td><td>${inp('b1', '… kWh')}</td><td>Ersparnis</td><td>${inp('c1', '… €')}</td></tr>
+          <tr><td>Standby aus</td><td>${inp('b2', '… kWh')}</td><td>Ersparnis</td><td>${inp('c2', '… €')}</td></tr>
+          <tr><td>neuer Kühlschrank</td><td>${inp('b3', '… kWh')}</td><td>Ersparnis</td><td>${inp('c3', '… €')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne zwei Balken: einen langen für „vorher" und einen kurzen für „nachher". Markiere die Ersparnis.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Nenne drei Möglichkeiten, Energie zu sparen. ${inp('a1', '1) … 2) … 3) …')}</li>
+          <li>Warum spart man mit weniger kWh auch Geld? ${inp('a2', 'weil …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Man spart Energie durch ${inp('m1', 'was?')} Geräte, durch ${inp('m2', 'was?')} statt Standby und durch ${inp('m3', 'was?')} Laufzeiten.<br>
+        Weniger kWh bedeutet weniger Kosten und schont die Umwelt.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Schau dich zu Hause um: Welche Geräte laufen unnötig (Standby, Licht in leeren Räumen)? Nenne zwei Dinge, die deine Familie ändern könnte.</div>
+        ${ta('tr1', '1) … 2) …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="sprMini">${_sprMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_sprSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_sprSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_sprSelf(3)">😃 sicher</button>
+          <span id="sprSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="sprSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Jede Maßnahme senkt den Jahresverbrauch. Beispiele (0,30 €/kWh): Glühlampe 60 W→LED 8 W (4 h/Tag): ~87,6 → ~11,7 kWh, Ersparnis ≈ 75,9 kWh ≈ 22,77 €. Standby 10 W (20 h)→aus: ~73 kWh ≈ 21,90 €. Kühlschrank alt 0,55→neu 0,25 kWh/Tag: ~109,5 kWh ≈ 32,85 €.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Energiesparen = weniger elektrische Energie (kWh) umsetzen: effizientere Geräte (Energielabel), Standby-Verluste vermeiden, Laufzeiten verkürzen, niedrigere Temperaturen (Waschen/Heizen). Weniger kWh → weniger Kosten (Kosten = kWh · Preis) und weniger CO₂.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Standby verbraucht nichts." (2) „Eine einzelne Lampe ist egal." (3) „Sparen bringt kaum Geld."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Ersparnis konkret in €/Jahr rechnen; Dauerläufer (Kühlschrank, Standby) betonen; Energielabel/LED als Anker.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle ≈ 76 kWh/22,77 € · 73 kWh/21,90 € · 109,5 kWh/32,85 €. 6.1 sparsame Geräte, Standby vermeiden, kürzer nutzen · 6.2 „weil Kosten = kWh · Preis". Merksatz: sparsame · Ausschalten · kürzere. Minidiagnose: 1→Weniger kWh · 2→Die LED · 3→Ja, deutlich.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('energiesparen')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('energiesparen', 'Energie sparen im Haushalt', body);
+}
+
+const _SPR_MINI = [
+  { q: '1. Was bedeutet Energie sparen für die Stromrechnung?',
+    opts: ['Mehr kWh, mehr Kosten', 'Weniger kWh, weniger Kosten', 'Es ändert nichts'], correct: 1,
+    fb: ['Sparen erhöht den Verbrauch nicht.',
+         'Richtig! Weniger Energie (kWh) → weniger Kosten.',
+         'Es macht sehr wohl einen Unterschied.'] },
+  { q: '2. Welche Lampe spart am meisten Energie?',
+    opts: ['Glühlampe (60 W)', 'LED (8 W)', 'Beide gleich'], correct: 1,
+    fb: ['Die Glühlampe verbraucht viel mehr.',
+         'Richtig! Die LED braucht viel weniger Leistung.',
+         'Die LED ist deutlich sparsamer.'] },
+  { q: '3. Bringt es etwas, Geräte ganz auszuschalten statt im Standby zu lassen?',
+    opts: ['Ja, das spart Energie', 'Nein, Standby verbraucht nichts', 'Nur bei Lampen'], correct: 0,
+    fb: ['Richtig! Standby verbraucht rund um die Uhr Energie.',
+         'Standby verbraucht durchaus Strom.',
+         'Es gilt für alle Geräte mit Standby.'] }
+];
+function _sprMiniHTML() {
+  return _SPR_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_sprAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="sprFb${qi}"></div></div>`).join('');
+}
+function _sprAns(qi, oi) {
+  const m = _SPR_MINI[qi], el = document.getElementById('sprFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _sprSelf(n) {
+  const out = document.getElementById('sprSelfOut'), val = document.getElementById('sprSelfVal');
+  if (val) { val.value = String(n); _abSave('energiesparen'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 8.3.5  GEFAHREN DES ELEKTRISCHEN STROMS & SCHUTZ
+// Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
+// Handlungsorientiert: Zu viele Geräte an einer Steckdose → zu großer
+// Strom → die Sicherung löst aus und unterbricht den Kreis (Schutz).
+// WICHTIG: Netzspannung ist gefährlich – Versuche nur mit Kleinspannung!
+// ═══════════════════════════════════════════════════════
+let _gef = null;
+const _GEF_PROGERAET = 6;   // A pro Gerät (Modell)
+const _GEF_LIMIT = 16;      // A – Sicherung
+function _gefInit() { _gef = { geraete: 1, t: 0, phase: 0 }; }
+function _gefStrom() { return _gef.geraete * _GEF_PROGERAET; }
+function _gefAusgeloest() { return _gefStrom() > _GEF_LIMIT; }
+
+function _gefHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim gef-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">⚠️ Gefahren des elektrischen Stroms &amp; Schutz</h3>
+    <div class="fpm-note" style="margin-top:2px">Schließe immer mehr Geräte an eine Steckdose an. Wann wird der Strom zu groß – und was macht dann die Sicherung? (Modell mit ungefährlicher Kleinspannung.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="gefAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_gefAdd(1)">➕ Gerät anschließen</button>
+          <button class="sim-btn" onclick="_gefAdd(-1)">➖ Gerät entfernen</button>
+          <button class="sim-btn" onclick="_gefReset()">↺ Sicherung zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Strom &amp; Sicherung</div>
+        <div class="lmp-status" id="gefStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Zu viele Geräte an einer Steckdose ziehen zu viel <b>Strom</b>. Die <b>Sicherung</b> unterbricht dann den Stromkreis und schützt vor Überhitzung und Brand. <b>Gefährlich</b> sind außerdem: blanke/defekte Kabel, Wasser an Geräten, Steckdosen mit nassen Händen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>⚠️ Nie mit der Netzspannung (230 V) experimentieren – nur mit ungefährlicher Kleinspannung!</b>
+    </p>
+    ${_gefArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _gefAdd(d) { _gef.geraete = Math.max(0, Math.min(5, _gef.geraete + d)); _gefStatus(); }
+function _gefReset() { _gefInit(); _gefStatus(); }
+function _gefStatus() {
+  const el = document.getElementById('gefStatus'); if (!el) return;
+  if (_gefAusgeloest()) {
+    el.textContent = `${_gef.geraete} Geräte → ${_gefStrom()} A. Das ist mehr als die Sicherung (${_GEF_LIMIT} A) erlaubt! Die Sicherung hat ausgelöst und den Kreis unterbrochen – so wird ein Brand verhindert.`;
+    el.className = 'lmp-status off';
+  } else {
+    el.textContent = `${_gef.geraete} ${_gef.geraete === 1 ? 'Gerät' : 'Geräte'} → ${_gefStrom()} A. Das ist unter der Sicherungsgrenze (${_GEF_LIMIT} A) – der Strom fließt sicher.`;
+    el.className = 'lmp-status on';
+  }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _gefUpdate(dt) { if (_gef) { _gef.t += dt; if (!_gefAusgeloest()) _gef.phase += 55 * dt; } }
+function _gefDraw(ctx, cv) {
+  if (!_gef) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const aus = _gefAusgeloest();
+  const L = 40, R = W - 40, T = 44, B = H - 44;
+
+  // Hauptleitung
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(L, B); ctx.lineTo(L, T); ctx.lineTo(R, T); ctx.lineTo(R, B); ctx.stroke();
+  // untere Leitung nur, wenn Sicherung hält (sonst Lücke = unterbrochen)
+  const midx = (L + R) / 2;
+  ctx.beginPath(); ctx.moveTo(L, B); ctx.lineTo(midx - 24, B); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(midx + 24, B); ctx.lineTo(R, B); ctx.stroke();
+
+  // Sicherung (unten Mitte)
+  ctx.fillStyle = aus ? '#7f1d1d' : '#14532d'; ctx.strokeStyle = aus ? '#f87171' : '#4ade80'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.rect(midx - 24, B - 10, 48, 20); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = aus ? '#fca5a5' : '#86efac'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(aus ? 'ausgelöst' : 'Sicherung', midx, B + 22);
+  if (aus) { // Lücke im Draht sichtbar
+    ctx.strokeStyle = '#f87171'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(midx - 6, B - 6); ctx.lineTo(midx + 6, B + 6); ctx.stroke();
+  } else { ctx.strokeStyle = '#4ade80'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(midx - 16, B); ctx.lineTo(midx + 16, B); ctx.stroke(); }
+
+  // Geräte an der oberen Leitung
+  for (let i = 0; i < _gef.geraete; i++) {
+    const gx = L + 60 + i * 66;
+    ctx.strokeStyle = '#475569'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(gx, T); ctx.lineTo(gx, T + 22); ctx.stroke();
+    ctx.fillStyle = aus ? '#334155' : '#f59e0b'; ctx.beginPath(); ctx.arc(gx, T + 32, 9, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1; ctx.stroke();
+  }
+
+  // Strom-Anzeige (Ampere-Balken)
+  const bx = 100, bw = W - 200, by = H / 2 + 6, bh = 20;
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1; ctx.strokeRect(bx, by, bw, bh);
+  const frac = Math.min(1.15, _gefStrom() / (_GEF_LIMIT * 1.15));
+  // Limit-Marke
+  const limX = bx + bw * (_GEF_LIMIT / (_GEF_LIMIT * 1.15));
+  ctx.fillStyle = _gefStrom() > _GEF_LIMIT ? '#ef4444' : '#22c55e'; ctx.fillRect(bx, by, Math.min(bw, bw * frac), bh);
+  ctx.strokeStyle = '#fde047'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(limX, by - 4); ctx.lineTo(limX, by + bh + 4); ctx.stroke();
+  ctx.fillStyle = '#fde047'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(_GEF_LIMIT + ' A', limX, by - 7);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Strom: ' + _gefStrom() + ' A', bx, by + bh + 16);
+
+  // Ladungen (nur wenn hält)
+  if (!aus) {
+    const n = Math.max(2, _gef.geraete * 2), peri = 2 * ((R - L) + (B - T));
+    for (let i = 0; i < n; i++) {
+      let d = (_gef.phase + i * peri / n) % peri, x, y;
+      if (d < (R - L)) { x = L + d; y = T; }
+      else if (d < (R - L) + (B - T)) { x = R; y = T + (d - (R - L)); }
+      else if (d < 2 * (R - L) + (B - T)) { x = R - (d - (R - L) - (B - T)); y = B; }
+      else { x = L; y = B - (d - 2 * (R - L) - (B - T)); }
+      ctx.fillStyle = '#60a5fa'; ctx.beginPath(); ctx.arc(x, y, 3, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  // Titel
+  ctx.fillStyle = aus ? '#fca5a5' : '#86efac'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(aus ? '⚠️ Sicherung ausgelöst – Kreis unterbrochen' : 'Strom fließt sicher', W / 2, 20);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 8.3.5  (ns = 'stromgefahr') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _gefArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('stromgefahr')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('stromgefahr')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum ist elektrischer Strom gefährlich – und wie schützt uns eine Sicherung?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Sicherung auslöst, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Schließe nacheinander mehr Geräte an und beobachte den Strom.</li>
+          <li>Finde heraus, ab wie viel Ampere die Sicherung auslöst.</li>
+          <li>Setze die Sicherung zurück und nimm ein Gerät weg.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>2 Geräte</td><td>${inp('b1', '… A')}</td><td>Sicherung?</td><td>${inp('c1', 'hält/löst aus')}</td></tr>
+          <tr><td>3 Geräte</td><td>${inp('b2', '… A')}</td><td>Sicherung?</td><td>${inp('c2', 'hält/löst aus')}</td></tr>
+          <tr><td>Grenze der Sicherung</td><td>${inp('b3', '… A')}</td><td>ab wann aus?</td><td>${inp('c3', 'über … A')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne eine Steckdose mit Sicherung. Male, wie die Sicherung den Kreis unterbricht, wenn der Strom zu groß wird.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was macht die Sicherung bei zu großem Strom? ${inp('a1', 'sie …')}</li>
+          <li>Nenne zwei weitere Gefahren mit Strom. ${inp('a2', '1) … 2) …')}</li>
+          <li>Mit welcher Spannung darf man experimentieren? ${inp('a3', 'nur …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Wird der Strom zu groß, ${inp('m1', 'was tut?')} die Sicherung den Stromkreis und schützt vor Brand.<br>
+        Die Netzspannung (230 V) ist ${inp('m2', 'wie?')}. Experimentieren darf man nur mit ${inp('m3', 'welcher Spannung?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum soll man niemals mit nassen Händen an Steckdosen oder Elektrogeräte fassen? Und warum ist ein Föhn in der Badewanne lebensgefährlich?</div>
+        ${ta('tr1', 'Wasser leitet den Strom, deshalb …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="gefMini">${_gefMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_gefSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_gefSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_gefSelf(3)">😃 sicher</button>
+          <span id="gefSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="gefSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Mit jedem Gerät steigt der Strom (Modell: 6 A/Gerät). Ab mehr als 16 A löst die Sicherung aus und unterbricht den Kreis. 2 Geräte = 12 A (hält), 3 Geräte = 18 A (löst aus).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Zu großer Strom erhitzt Leitungen (P = I²·R) → Brandgefahr. Schmelzsicherung/Leitungsschutzschalter unterbricht bei Überschreiten des Nennstroms. Weitere Gefahren: Berühren spannungsführender Teile (Stromschlag), Wasser (leitet), defekte Isolierung. Schutz: Sicherung, FI-Schutzschalter, Schutzleiter/Erdung, Isolierung. Sicherheit im Unterricht: nur ungefährliche Kleinspannung.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Sicherung macht den Strom nur kleiner." (2) „Man darf ruhig an der Steckdose experimentieren." (3) „Wasser ist beim Strom ungefährlich."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Sicherung = „Notaus" bei Überlast; klare Sicherheitsregeln (keine Netzspannung, keine nassen Hände, keine defekten Kabel); Kleinspannung als Schülerregel.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 12 A/hält · 18 A/löst aus · 16 A/über 16 A. 6.1 „sie unterbricht den Stromkreis" · 6.2 z. B. Stromschlag, Wasser, defekte Kabel · 6.3 nur mit ungefährlicher Kleinspannung. Merksatz: unterbricht · gefährlich · Kleinspannung. Transfer: Wasser (und feuchte Haut) leitet den Strom gut, dadurch kann Strom durch den Körper fließen – lebensgefährlich. Minidiagnose: 1→Sie unterbricht den Kreis · 2→Sie ist gefährlich (nie berühren) · 3→Nur mit Kleinspannung.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('stromgefahr')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('stromgefahr', 'Gefahren des elektrischen Stroms & Schutz', body);
+}
+
+const _GEF_MINI = [
+  { q: '1. Was macht die Sicherung, wenn der Strom zu groß wird?',
+    opts: ['Sie macht den Strom größer', 'Sie unterbricht den Stromkreis', 'Sie tut nichts'], correct: 1,
+    fb: ['Sie verstärkt den Strom nicht.',
+         'Richtig! Sie unterbricht den Kreis und schützt vor Brand.',
+         'Sie greift sehr wohl ein.'] },
+  { q: '2. Wie gefährlich ist die Netzspannung (230 V)?',
+    opts: ['Ungefährlich', 'Lebensgefährlich – nie berühren', 'Nur bei Kindern gefährlich'], correct: 1,
+    fb: ['230 V sind sehr gefährlich.',
+         'Richtig! Netzspannung ist lebensgefährlich – niemals damit experimentieren.',
+         'Sie ist für alle gefährlich.'] },
+  { q: '3. Mit welcher Spannung darf man Versuche machen?',
+    opts: ['Mit der Steckdose (230 V)', 'Nur mit ungefährlicher Kleinspannung', 'Mit beliebiger Spannung'], correct: 1,
+    fb: ['Niemals mit der Steckdose experimentieren!',
+         'Richtig! Nur ungefährliche Kleinspannung (z. B. Batterien).',
+         'Nein – nur Kleinspannung ist erlaubt.'] }
+];
+function _gefMiniHTML() {
+  return _GEF_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_gefAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="gefFb${qi}"></div></div>`).join('');
+}
+function _gefAns(qi, oi) {
+  const m = _GEF_MINI[qi], el = document.getElementById('gefFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _gefSelf(n) {
+  const out = document.getElementById('gefSelfOut'), val = document.getElementById('gefSelfVal');
+  if (val) { val.value = String(n); _abSave('stromgefahr'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
