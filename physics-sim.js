@@ -34784,7 +34784,7 @@ function _swgDrawGraph(ctx, cv) {
 function _swgArbeitsblattHTML() {
   const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('schwingung')"></textarea>`;
   const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('schwingung')">`;
-  return `<details class="ab-wrap"><summary class="ab-summary">📝 Arbeitsblatt – Merkmale von Schwingungen <span class="ab-hint">(anklicken zum Öffnen · deine Eingaben werden im Browser gespeichert)</span></summary>
+  return `<details open class="ab-wrap"><summary class="ab-summary">📝 Arbeitsblatt – Merkmale von Schwingungen <span class="ab-hint">(zum Zuklappen anklicken · deine Eingaben werden im Browser gespeichert)</span></summary>
     <div class="ab-body">
       <div class="ab-sec"><div class="ab-h">1 · Titel</div><div class="ab-t"><b>Merkmale von Schwingungen</b> – Periodendauer, Frequenz, Amplitude und Dämpfung</div></div>
 
