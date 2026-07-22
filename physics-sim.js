@@ -247,7 +247,10 @@ const _physAbDefs = {
   'waermeuebertragung': { titel: 'Wie wird Wärme übertragen?', ns: 'waermeueb', html: () => _wueArbeitsblattHTML() },
   'daemmung': { titel: 'Welches Material dämmt am besten?', ns: 'daemmung', html: () => _daeArbeitsblattHTML() },
   'dunkle-flaechen': { titel: 'Warum erwärmen sich dunkle Flächen stärker?', ns: 'dunkleflaechen', html: () => _dflArbeitsblattHTML() },
-  'ton-entsteht': { titel: 'Wie entsteht ein Ton?', ns: 'tonentsteht', html: () => _tonArbeitsblattHTML() }
+  'ton-entsteht': { titel: 'Wie entsteht ein Ton?', ns: 'tonentsteht', html: () => _tonArbeitsblattHTML() },
+  'lautstaerke': { titel: 'Wovon hängt die Lautstärke ab?', ns: 'lautstaerke', html: () => _lstArbeitsblattHTML() },
+  'tonhoehe': { titel: 'Wovon hängt die Tonhöhe ab?', ns: 'tonhoehe', html: () => _thzArbeitsblattHTML() },
+  'schallausbreitung': { titel: 'Wie breitet sich Schall aus?', ns: 'schallausbr', html: () => _scaArbeitsblattHTML() }
 };
 function _physHatArbeitsblatt(exp) { return !!_physAbDefs[exp]; }
 function openArbeitsblatt(exp) {
@@ -539,6 +542,36 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('tonAnim', 'tonAnim');
     _pSim.start(dt => _tonUpdate(dt), (ctx, cv) => _tonDraw(ctx, cv), []);
     _abRestore('tonentsteht');
+  },
+
+  // ── 6.2.2 LAUTSTÄRKE (Amplitude) ───────────────────────────────
+  'lautstaerke': modal => {
+    _lstInit();
+    modal.innerHTML = _lstHTML();
+    _lstStatus();
+    _pSim = new PhysicsSimEngine('lstAnim', 'lstAnim');
+    _pSim.start(dt => _lstUpdate(dt), (ctx, cv) => _lstDraw(ctx, cv), []);
+    _abRestore('lautstaerke');
+  },
+
+  // ── 6.2.3 TONHÖHE (Frequenz) ───────────────────────────────────
+  'tonhoehe': modal => {
+    _thzInit();
+    modal.innerHTML = _thzHTML();
+    _thzStatus();
+    _pSim = new PhysicsSimEngine('thzAnim', 'thzAnim');
+    _pSim.start(dt => _thzUpdate(dt), (ctx, cv) => _thzDraw(ctx, cv), []);
+    _abRestore('tonhoehe');
+  },
+
+  // ── 6.2.4 SCHALLAUSBREITUNG ────────────────────────────────────
+  'schallausbreitung': modal => {
+    _scaInit();
+    modal.innerHTML = _scaHTML();
+    _scaStatus();
+    _pSim = new PhysicsSimEngine('scaAnim', 'scaAnim');
+    _pSim.start(dt => _scaUpdate(dt), (ctx, cv) => _scaDraw(ctx, cv), []);
+    _abRestore('schallausbr');
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
@@ -40981,5 +41014,578 @@ function _tonAns(qi, oi) {
 function _tonSelf(n) {
   const out = document.getElementById('tonSelfOut'), val = document.getElementById('tonSelfVal');
   if (val) { val.value = String(n); _abSave('tonentsteht'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.2.2  WOVON HÄNGT DIE LAUTSTÄRKE AB?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Licht und Schall"
+// Handlungsorientiert: Amplitude (Stärke der Schwingung) verändern.
+// Große Amplitude = laut, kleine Amplitude = leise. Die Tonhöhe
+// bleibt dabei gleich (Frequenz konstant).
+// ═══════════════════════════════════════════════════════
+
+let _lst = null;
+function _lstInit() { _lst = { amp: 0.5, t: 0 }; }
+function _lstLaut() { return _lst.amp < 0.33 ? 'leise' : (_lst.amp < 0.7 ? 'mittel' : 'laut'); }
+
+function _lstHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim lst-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔊 Wovon hängt die Lautstärke ab?</h3>
+    <div class="fpm-note" style="margin-top:2px">Verändere die <b>Amplitude</b> – also wie stark die Schwingung ausschlägt. Beobachte die Schwingungskurve und die Lautstärke. (Die Tonhöhe bleibt gleich.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="lstAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Amplitude (Stärke der Schwingung): <b id="lstALbl">mittel</b></span>
+          <input type="range" id="lstA" min="0.1" max="1" step="0.05" value="0.5"
+            oninput="_lstSetA(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Lautstärke</div>
+        <div class="lmp-status" id="lstStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>Amplitude</b> = wie weit die Schwingung ausschlägt.<br>
+        Große Amplitude → <b>laut</b>. Kleine Amplitude → <b>leise</b>.<br>
+        Die Lautstärke misst man in <b>Dezibel (dB)</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Große Amplitude = laut</b>, kleine Amplitude = leise. &nbsp;|&nbsp; Die Tonhöhe ändert sich dabei nicht.
+    </p>
+    ${_lstArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _lstSetA(v) { _lst.amp = +v; const el = document.getElementById('lstALbl'); if (el) el.textContent = _lstLaut(); _lstStatus(); }
+function _lstStatus() {
+  const el = document.getElementById('lstStatus'); if (!el) return;
+  el.textContent = '🔊 ' + _lstLaut() + ' – Amplitude ' + (_lst.amp < 0.33 ? 'klein' : (_lst.amp < 0.7 ? 'mittel' : 'groß')) + '.';
+  el.className = 'lmp-status ' + (_lst.amp > 0.7 ? 'off' : 'on');
+}
+
+// ── Animation ──────────────────────────────────────────
+function _lstUpdate(dt) { if (_lst) _lst.t += dt; }
+function _lstDraw(ctx, cv) {
+  if (!_lst) return;
+  const W = cv.width, H = cv.height, cy = H / 2 - 10;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  // Nulllinie
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(30, cy); ctx.lineTo(W - 30, cy); ctx.stroke();
+  // Schwingungskurve
+  const Amax = 80, f = 3;
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2.5; ctx.beginPath();
+  for (let x = 40; x <= W - 40; x += 2) {
+    const y = cy + _lst.amp * Amax * Math.sin(2 * Math.PI * f * (x - 40) / (W - 80) - _lst.t * 4);
+    x === 40 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  // Amplituden-Pfeil
+  ctx.strokeStyle = '#f97316'; ctx.lineWidth = 2; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(60, cy); ctx.lineTo(60, cy - _lst.amp * Amax); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#ea580c'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Amplitude', 66, cy - _lst.amp * Amax / 2);
+  // Lautstärke-Balken
+  ctx.fillStyle = '#475569'; ctx.font = '700 11px sans-serif'; ctx.fillText('Lautstärke:', 40, H - 26);
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(120, H - 36, 200, 14);
+  ctx.fillStyle = _lst.amp > 0.7 ? '#ef4444' : '#22c55e'; ctx.fillRect(120, H - 36, 200 * _lst.amp, 14);
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.fillText(_lstLaut(), 330, H - 25);
+  // Lautsprecher-Symbol
+  ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.moveTo(W - 60, cy - 14); ctx.lineTo(W - 50, cy - 14); ctx.lineTo(W - 40 - _lst.amp * 6, cy - 22); ctx.lineTo(W - 40 - _lst.amp * 6, cy + 22); ctx.lineTo(W - 50, cy + 14); ctx.lineTo(W - 60, cy + 14); ctx.closePath(); ctx.fill();
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.2.2  (ns = 'lautstaerke') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _lstArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('lautstaerke')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('lautstaerke')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wodurch wird ein Ton lauter oder leiser?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, ein Ton wird lauter, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle die Amplitude klein. Wie sieht die Kurve aus, wie laut ist es?</li>
+          <li>Vergrößere die Amplitude Schritt für Schritt.</li>
+          <li>Achte darauf, ob sich die Tonhöhe (Dichte der Wellen) ändert.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Amplitude</td><td>Ausschlag der Kurve</td><td>Lautstärke</td></tr>
+          <tr><td>klein</td><td>${inp('t1', 'klein/groß')}</td><td>${inp('t1b', 'leise/laut')}</td></tr>
+          <tr><td>groß</td><td>${inp('t2', '')}</td><td>${inp('t2b', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne eine leise und eine laute Schwingung (kleine und große Amplitude).</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wovon hängt die Lautstärke ab? ${inp('a1', 'von der …')}</li>
+          <li>Große Amplitude bedeutet …? ${inp('a2', 'laut/leise')}</li>
+          <li>In welcher Einheit misst man die Lautstärke? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die Lautstärke hängt von der ${inp('m1', 'welchen Größe?')} ab.<br>
+        Große Amplitude → ${inp('m2', 'laut/leise')}, kleine Amplitude → leise.<br>
+        Man misst die Lautstärke in ${inp('m3', 'Einheit?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Wenn du eine Trommel fester schlägst, wird sie lauter. Erkläre das mit der Amplitude ihrer Schwingung.</div>
+        ${ta('tr1', 'Beim festeren Schlagen schwingt das Trommelfell … , deshalb …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="lstMini">${_lstMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_lstSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_lstSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_lstSelf(3)">😃 sicher</button>
+          <span id="lstSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="lstSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Kleine Amplitude → kleiner Ausschlag → leise. Große Amplitude → großer Ausschlag → laut. Die Wellenanzahl (Frequenz/Tonhöhe) bleibt gleich.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Die Lautstärke eines Tons wird durch die Amplitude der Schwingung bestimmt (größere Auslenkung = mehr Schallenergie). Gemessen wird der Schallpegel in Dezibel (dB). Amplitude ↔ Lautstärke, Frequenz ↔ Tonhöhe (getrennte Größen).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Lauter = höher." (Amplitude und Frequenz werden verwechselt.) (2) „Lautstärke hängt von der Frequenz ab." (3) „Nur schnelle Töne sind laut."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Amplitude als „Höhe des Ausschlags" zeigen; Frequenz bewusst konstant halten; Trommel-/Lautsprecherbezug.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 „von der Amplitude" · 6.2 „laut" · 6.3 „Dezibel (dB)". Merksatz: Amplitude · laut · Dezibel. Transfer: Festeres Schlagen → größere Amplitude des Trommelfells → lauter. Minidiagnose: 1→Amplitude · 2→„laut" · 3→„größere Amplitude".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('lautstaerke')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('lautstaerke', 'Wovon hängt die Lautstärke ab?', body);
+}
+
+const _LST_MINI = [
+  { q: '1. Wovon hängt die Lautstärke eines Tons ab?',
+    opts: ['Von der Frequenz', 'Von der Amplitude', 'Von der Farbe'], correct: 1,
+    fb: ['Die Frequenz bestimmt die Tonhöhe, nicht die Lautstärke.',
+         'Richtig! Die Amplitude (Stärke der Schwingung) bestimmt die Lautstärke.',
+         'Töne haben keine Farbe.'] },
+  { q: '2. Eine große Amplitude bedeutet …',
+    opts: ['einen lauten Ton', 'einen hohen Ton', 'einen leisen Ton'], correct: 0,
+    fb: ['Richtig! Große Amplitude = lauter Ton.',
+         'Hoch/tief ist die Tonhöhe (Frequenz).',
+         'Leise wäre eine kleine Amplitude.'] },
+  { q: '3. Du schlägst eine Trommel fester. Warum wird sie lauter?',
+    opts: ['Das Fell schwingt mit größerer Amplitude', 'Das Fell schwingt schneller', 'Das Fell wird kälter'], correct: 0,
+    fb: ['Richtig! Festeres Schlagen → größere Amplitude → lauter.',
+         'Schneller schwingen würde die Tonhöhe ändern, nicht die Lautstärke.',
+         'Mit Temperatur hat es nichts zu tun.'] }
+];
+function _lstMiniHTML() {
+  return _LST_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_lstAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="lstFb${qi}"></div></div>`).join('');
+}
+function _lstAns(qi, oi) {
+  const m = _LST_MINI[qi], el = document.getElementById('lstFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _lstSelf(n) {
+  const out = document.getElementById('lstSelfOut'), val = document.getElementById('lstSelfVal');
+  if (val) { val.value = String(n); _abSave('lautstaerke'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.2.3  WOVON HÄNGT DIE TONHÖHE AB?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Licht und Schall"
+// Handlungsorientiert: Frequenz (Schwingungen pro Sekunde) verändern.
+// Hohe Frequenz = hoher Ton, niedrige Frequenz = tiefer Ton. Die
+// Amplitude (Lautstärke) bleibt dabei gleich. Einheit: Hertz (Hz).
+// ═══════════════════════════════════════════════════════
+
+let _thz = null;
+function _thzInit() { _thz = { f: 300, t: 0 }; }
+function _thzHoch() { return _thz.f < 250 ? 'tief' : (_thz.f < 550 ? 'mittel' : 'hoch'); }
+
+function _thzHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim thz-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🎼 Wovon hängt die Tonhöhe ab?</h3>
+    <div class="fpm-note" style="margin-top:2px">Verändere die <b>Frequenz</b> – also wie oft die Schwingung pro Sekunde ist. Beobachte, wie dicht die Wellen liegen und ob der Ton hoch oder tief klingt. (Die Lautstärke bleibt gleich.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="thzAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Frequenz (Schwingungen pro Sekunde): <b id="thzFLbl">300 Hz</b></span>
+          <input type="range" id="thzF" min="100" max="800" step="20" value="300"
+            oninput="_thzSetF(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Tonhöhe</div>
+        <div class="lmp-status" id="thzStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>Frequenz</b> = Anzahl der Schwingungen pro Sekunde.<br>
+        Hohe Frequenz → <b>hoher</b> Ton. Niedrige Frequenz → <b>tiefer</b> Ton.<br>
+        Die Frequenz misst man in <b>Hertz (Hz)</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Hohe Frequenz = hoher Ton</b>, niedrige Frequenz = tiefer Ton. &nbsp;|&nbsp; Die Lautstärke ändert sich dabei nicht.
+    </p>
+    ${_thzArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _thzSetF(v) { _thz.f = +v; const el = document.getElementById('thzFLbl'); if (el) el.textContent = _fpmNum(+v, 0) + ' Hz'; _thzStatus(); }
+function _thzStatus() {
+  const el = document.getElementById('thzStatus'); if (!el) return;
+  el.textContent = (_thzHoch() === 'hoch' ? '🔺 hoher Ton' : _thzHoch() === 'tief' ? '🔻 tiefer Ton' : '➖ mittlerer Ton') + ' – ' + _fpmNum(_thz.f, 0) + ' Hz.';
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _thzUpdate(dt) { if (_thz) _thz.t += dt; }
+function _thzDraw(ctx, cv) {
+  if (!_thz) return;
+  const W = cv.width, H = cv.height, cy = H / 2 - 6;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(30, cy); ctx.lineTo(W - 30, cy); ctx.stroke();
+  const Amax = 60, cyc = _thz.f / 60;   // sichtbare Wellen ~ Frequenz
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2.5; ctx.beginPath();
+  for (let x = 40; x <= W - 40; x += 2) {
+    const y = cy + Amax * Math.sin(2 * Math.PI * cyc * (x - 40) / (W - 80) - _thz.t * 5);
+    x === 40 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  // tief/hoch Anzeige-Skala
+  ctx.fillStyle = '#475569'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('tief', 40, H - 24); ctx.textAlign = 'right'; ctx.fillText('hoch', W - 40, H - 24);
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(80, H - 34, W - 160, 12);
+  const fr = (_thz.f - 100) / 700;
+  ctx.fillStyle = '#7c3aed'; ctx.beginPath(); ctx.arc(80 + (W - 160) * fr, H - 28, 8, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(_fpmNum(_thz.f, 0) + ' Hz', 80 + (W - 160) * fr, H - 40);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.2.3  (ns = 'tonhoehe') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _thzArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('tonhoehe')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('tonhoehe')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wodurch wird ein Ton hoch oder tief?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, ein Ton wird höher, wenn …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle eine niedrige Frequenz ein. Wie dicht liegen die Wellen? Hoch oder tief?</li>
+          <li>Erhöhe die Frequenz Schritt für Schritt.</li>
+          <li>Achte darauf, ob sich die Lautstärke (Höhe der Wellen) ändert.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Frequenz</td><td>Wellen liegen …</td><td>Ton</td></tr>
+          <tr><td>niedrig (100 Hz)</td><td>${inp('t1', 'weit/dicht')}</td><td>${inp('t1b', 'hoch/tief')}</td></tr>
+          <tr><td>hoch (800 Hz)</td><td>${inp('t2', '')}</td><td>${inp('t2b', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne einen tiefen und einen hohen Ton (wenige und viele Wellen).</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wovon hängt die Tonhöhe ab? ${inp('a1', 'von der …')}</li>
+          <li>Hohe Frequenz bedeutet …? ${inp('a2', 'hoch/tief')}</li>
+          <li>In welcher Einheit misst man die Frequenz? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die Tonhöhe hängt von der ${inp('m1', 'welchen Größe?')} ab.<br>
+        Hohe Frequenz → ${inp('m2', 'hoher/tiefer')} Ton, niedrige Frequenz → tiefer Ton.<br>
+        Man misst die Frequenz in ${inp('m3', 'Einheit?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Eine dünne, kurze, stark gespannte Gitarrensaite klingt hoch, eine dicke, lange, locker gespannte tief. Was passiert dabei mit der Frequenz der Schwingung?</div>
+        ${ta('tr1', 'Die dünne, kurze Saite schwingt … , deshalb …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="thzMini">${_thzMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_thzSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_thzSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_thzSelf(3)">😃 sicher</button>
+          <span id="thzSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="thzSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Niedrige Frequenz → Wellen liegen weit auseinander → tiefer Ton. Hohe Frequenz → Wellen dicht → hoher Ton. Die Amplitude (Lautstärke) bleibt gleich.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Die Tonhöhe wird durch die Frequenz bestimmt (Schwingungen pro Sekunde, Einheit Hertz). Frequenz ↔ Tonhöhe, Amplitude ↔ Lautstärke sind zwei getrennte Größen. Menschen hören etwa 20 Hz–20 000 Hz.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Hoch = laut." (2) „Große Wellen = hoher Ton." (3) „Frequenz und Lautstärke sind dasselbe."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Wellenabstand mit Frequenz verknüpfen; Amplitude bewusst konstant halten; Saiten-/Pfeifenbeispiele; Hertz einführen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 „von der Frequenz" · 6.2 „hoher" · 6.3 „Hertz (Hz)". Merksatz: Frequenz · hoher · Hertz. Transfer: Dünne, kurze, straffe Saite schwingt schneller (höhere Frequenz) → höherer Ton. Minidiagnose: 1→Frequenz · 2→„hoch" · 3→„Hertz".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('tonhoehe')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('tonhoehe', 'Wovon hängt die Tonhöhe ab?', body);
+}
+
+const _THZ_MINI = [
+  { q: '1. Wovon hängt die Tonhöhe ab?',
+    opts: ['Von der Amplitude', 'Von der Frequenz', 'Von der Lautstärke'], correct: 1,
+    fb: ['Die Amplitude bestimmt die Lautstärke.',
+         'Richtig! Die Frequenz (Schwingungen pro Sekunde) bestimmt die Tonhöhe.',
+         'Lautstärke ist etwas anderes als Tonhöhe.'] },
+  { q: '2. Eine hohe Frequenz ergibt …',
+    opts: ['einen hohen Ton', 'einen lauten Ton', 'einen tiefen Ton'], correct: 0,
+    fb: ['Richtig! Hohe Frequenz = hoher Ton.',
+         'Laut/leise ist die Amplitude.',
+         'Tief wäre eine niedrige Frequenz.'] },
+  { q: '3. In welcher Einheit misst man die Frequenz?',
+    opts: ['Dezibel (dB)', 'Hertz (Hz)', 'Grad Celsius (°C)'], correct: 1,
+    fb: ['Dezibel misst die Lautstärke.',
+         'Richtig! Die Frequenz misst man in Hertz.',
+         '°C ist die Temperatur.'] }
+];
+function _thzMiniHTML() {
+  return _THZ_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_thzAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="thzFb${qi}"></div></div>`).join('');
+}
+function _thzAns(qi, oi) {
+  const m = _THZ_MINI[qi], el = document.getElementById('thzFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _thzSelf(n) {
+  const out = document.getElementById('thzSelfOut'), val = document.getElementById('thzSelfVal');
+  if (val) { val.value = String(n); _abSave('tonhoehe'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 6.2.4  WIE BREITET SICH SCHALL AUS?
+// Realschule NRW – Klasse 6 · Inhaltsfeld "Licht und Schall"
+// Handlungsorientiert: Schall braucht einen Stoff (Teilchen). In Luft,
+// Wasser und Metall wird die Schwingung von Teilchen zu Teilchen
+// weitergegeben – im Vakuum gibt es keine Teilchen, also keinen Schall.
+// Teilchenmodell (Verdichtungen), Ausbreitungsgeschwindigkeit.
+// ═══════════════════════════════════════════════════════
+
+let _sca = null;
+const _SCA_MED = [
+  { k: 'luft',   n: 'Luft',            v: '≈ 340 m/s',  spd: 1.0, hoer: true },
+  { k: 'wasser', n: 'Wasser',          v: '≈ 1500 m/s', spd: 2.0, hoer: true },
+  { k: 'metall', n: 'Metall (Stahl)',  v: '≈ 5000 m/s', spd: 3.4, hoer: true },
+  { k: 'vakuum', n: 'Vakuum (Weltall)', v: 'kein Schall', spd: 0, hoer: false }
+];
+function _scaInit() { _sca = { medium: 'luft', t: 0 }; }
+function _scaCur() { return _SCA_MED.find(m => m.k === _sca.medium); }
+
+function _scaHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim sca-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📢 Wie breitet sich Schall aus?</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine Glocke läutet. Wähle den Stoff zwischen Glocke und Ohr. Beobachte, wie die Teilchen die Schwingung weitergeben – und was im Vakuum passiert.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="scaAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="fpm-label" style="margin-top:8px">Stoff zwischen Glocke und Ohr</div>
+        <div class="msf-chips" id="scaChips">${_scaChipsHTML()}</div>
+      </div>
+      <div>
+        <div class="fpm-label">Ergebnis</div>
+        <div class="lmp-status" id="scaStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Schall braucht einen <b>Stoff</b> (Teilchen), um sich auszubreiten. Die Teilchen geben die Schwingung weiter. Im <b>Vakuum</b> gibt es keine Teilchen → <b>kein Schall</b>.</div>
+        <div class="fpm-note" style="margin-top:8px">In festen Stoffen und Flüssigkeiten ist Schall <b>schneller</b> als in Luft.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>Ohne Stoff kein Schall.</b> &nbsp;|&nbsp; Schnell in Metall &gt; Wasser &gt; Luft, gar nicht im Vakuum.
+    </p>
+    ${_scaArbeitsblattHTML()}
+  </div>`;
+}
+function _scaChipsHTML() {
+  return _SCA_MED.map(m => `<button class="msf-chip${m.k === _sca.medium ? ' cur' : ''}" onclick="_scaSet('${m.k}')">${m.n}</button>`).join('');
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _scaSet(k) { _sca.medium = k; const c = document.getElementById('scaChips'); if (c) c.innerHTML = _scaChipsHTML(); _scaStatus(); }
+function _scaStatus() {
+  const el = document.getElementById('scaStatus'); if (!el) return;
+  const m = _scaCur();
+  if (m.hoer) { el.textContent = '🔊 Der Schall breitet sich in ' + m.n + ' aus (' + m.v + '). Du hörst die Glocke.'; el.className = 'lmp-status on'; }
+  else { el.textContent = '🔇 Im Vakuum gibt es keine Teilchen → kein Schall. Du hörst nichts.'; el.className = 'lmp-status off'; }
+}
+
+// ── Animation ──────────────────────────────────────────
+function _scaUpdate(dt) { if (_sca) _sca.t += dt; }
+function _scaDraw(ctx, cv) {
+  if (!_sca) return;
+  const W = cv.width, H = cv.height, cy = H / 2, m = _scaCur();
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = m.hoer ? '#f8fafc' : '#0f172a'; ctx.fillRect(0, 0, W, H);
+  // Glocke links
+  ctx.fillStyle = '#f59e0b'; ctx.beginPath(); ctx.arc(48, cy, 16, Math.PI, 2 * Math.PI); ctx.lineTo(64, cy + 8); ctx.lineTo(32, cy + 8); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = m.hoer ? '#92400e' : '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Glocke', 48, cy + 30);
+  // Teilchen (Längswelle) oder Vakuum
+  const x0 = 80, x1 = W - 90;
+  if (m.hoer) {
+    const n = 26;
+    for (let i = 0; i < n; i++) {
+      const baseX = x0 + (x1 - x0) * i / (n - 1);
+      const off = 7 * Math.sin(2 * Math.PI * i / 5 - _sca.t * 4 * m.spd);
+      ctx.fillStyle = '#3b82f6'; ctx.beginPath(); ctx.arc(baseX + off, cy, 4.5, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.fillText('Teilchen geben die Schwingung weiter (Verdichtungen wandern →)', W / 2, cy + 60);
+  } else {
+    ctx.fillStyle = '#475569'; ctx.font = '700 13px sans-serif'; ctx.fillText('keine Teilchen – leerer Raum', W / 2, cy);
+    ctx.font = '11px sans-serif'; ctx.fillText('die Schwingung kann nicht weitergegeben werden', W / 2, cy + 22);
+  }
+  // Ohr rechts
+  ctx.fillStyle = m.hoer ? '#fbcfe8' : '#334155'; ctx.strokeStyle = m.hoer ? '#9d174d' : '#64748b'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(W - 55, cy, 15, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(W - 55, cy, 6, -0.4, Math.PI + 0.4); ctx.stroke();
+  ctx.fillStyle = m.hoer ? '#334155' : '#94a3b8'; ctx.font = '10px sans-serif'; ctx.fillText('Ohr', W - 55, cy + 30);
+  ctx.font = '700 16px sans-serif'; ctx.fillStyle = m.hoer ? '#7c3aed' : '#64748b';
+  ctx.fillText(m.hoer ? '🔊' : '🔇', W - 55, cy - 24);
+  // Medium-Label + Tempo
+  ctx.fillStyle = m.hoer ? '#334155' : '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(m.n + '  ·  ' + m.v, 20, 22);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 6.2.4  (ns = 'schallausbr') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _scaArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('schallausbr')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('schallausbr')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie und wodurch breitet sich Schall aus – und geht das auch im leeren Raum?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, Schall breitet sich aus durch … Im Vakuum …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle nacheinander Luft, Wasser und Metall. Hörst du die Glocke?</li>
+          <li>Stelle das Vakuum ein. Was passiert mit den Teilchen und dem Ton?</li>
+          <li>Vergleiche, in welchem Stoff der Schall am schnellsten ist.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Stoff</td><td>hörbar?</td><td>Geschwindigkeit</td></tr>
+          <tr><td>Luft</td><td>${inp('t_l', 'ja/nein')}</td><td>${inp('t_lv', 'm/s')}</td></tr>
+          <tr><td>Wasser</td><td>${inp('t_w', 'ja/nein')}</td><td>${inp('t_wv', 'm/s')}</td></tr>
+          <tr><td>Metall</td><td>${inp('t_m', 'ja/nein')}</td><td>${inp('t_mv', 'm/s')}</td></tr>
+          <tr><td>Vakuum</td><td>${inp('t_v', 'ja/nein')}</td><td>—</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne Glocke, Teilchen und Ohr. Zeige mit den Teilchen, wie die Schwingung weitergegeben wird.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was braucht Schall, um sich auszubreiten? ${inp('a1', 'einen …')}</li>
+          <li>Warum hört man im Vakuum nichts? ${inp('a2', 'weil …')}</li>
+          <li>In welchem Stoff ist Schall am schnellsten? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Schall breitet sich nur in einem ${inp('m1', 'was?')} aus (mit Teilchen).<br>
+        Im ${inp('m2', 'wo?')} gibt es keinen Schall.<br>
+        In Metall und Wasser ist Schall ${inp('m3', 'schneller/langsamer')} als in Luft.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Unter Wasser kannst du Geräusche hören, aber im Weltall herrscht Stille – Astronauten müssen funken. Erkläre beides mit der Schallausbreitung.</div>
+        ${ta('tr1', 'Unter Wasser … , im Weltall …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="scaMini">${_scaMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_scaSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_scaSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_scaSelf(3)">😃 sicher</button>
+          <span id="scaSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="scaSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> In Luft, Wasser und Metall ist die Glocke hörbar; im Vakuum nicht. Geschwindigkeit: Luft ≈ 340 m/s, Wasser ≈ 1500 m/s, Metall ≈ 5000 m/s.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Schall ist eine mechanische Welle: Teilchen geben die Schwingung als Verdichtungen/Verdünnungen weiter. Ohne Medium (Vakuum) keine Ausbreitung. In dichteren/festeren Stoffen breitet sich Schall schneller aus.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Schall geht auch durchs Vakuum (wie Licht)." (2) „In Luft ist Schall am schnellsten." (3) „Schall braucht kein Medium."</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Teilchenmodell (Kette, die anstößt); Vakuumglocken-Versuch beschreiben; Ohr-an-Schiene-Beispiel; Licht vs. Schall abgrenzen (Licht braucht kein Medium).</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Luft/Wasser/Metall ja, Vakuum nein; 340/1500/5000 m/s. 6.1 „einen Stoff/Teilchen" · 6.2 „keine Teilchen da sind" · 6.3 „Metall". Merksatz: Stoff · Vakuum · schneller. Transfer: Wasser hat Teilchen → hörbar; Weltall ist Vakuum → Stille, daher Funk. Minidiagnose: 1→nein · 2→Metall · 3→„einen Stoff".</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('schallausbr')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('schallausbr', 'Wie breitet sich Schall aus?', body);
+}
+
+const _SCA_MINI = [
+  { q: '1. Kann sich Schall im Vakuum (leerer Raum) ausbreiten?',
+    opts: ['Ja, wie Licht', 'Nein, es fehlen die Teilchen', 'Nur nachts'], correct: 1,
+    fb: ['Licht ja – Schall nicht.',
+         'Richtig! Ohne Teilchen kann sich Schall nicht ausbreiten.',
+         'Mit der Tageszeit hat es nichts zu tun.'] },
+  { q: '2. In welchem Stoff ist Schall am schnellsten?',
+    opts: ['In Luft', 'In Metall', 'Überall gleich'], correct: 1,
+    fb: ['In Luft ist Schall am langsamsten.',
+         'Richtig! In festem Metall ist Schall am schnellsten (~5000 m/s).',
+         'Die Geschwindigkeit hängt vom Stoff ab.'] },
+  { q: '3. Was braucht Schall, um sich auszubreiten?',
+    opts: ['Einen Stoff mit Teilchen', 'Licht', 'Wärme'], correct: 0,
+    fb: ['Richtig! Schall braucht einen Stoff (Teilchen) als Medium.',
+         'Licht ist nicht nötig – im Dunkeln hört man auch.',
+         'Wärme ist nicht der Grund.'] }
+];
+function _scaMiniHTML() {
+  return _SCA_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_scaAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="scaFb${qi}"></div></div>`).join('');
+}
+function _scaAns(qi, oi) {
+  const m = _SCA_MINI[qi], el = document.getElementById('scaFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _scaSelf(n) {
+  const out = document.getElementById('scaSelfOut'), val = document.getElementById('scaSelfVal');
+  if (val) { val.value = String(n); _abSave('schallausbr'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
