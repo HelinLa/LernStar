@@ -225,6 +225,7 @@ function openPhysicsSim(simId) {
 const _physAbDefs = {
   schwingung: { titel: 'Merkmale von Schwingungen', ns: 'schwingung', html: () => _swgArbeitsblattHTML() },
   'kraft-wirkung': { titel: 'Woran erkennt man, dass eine Kraft wirkt?', ns: 'kraftwirkung', html: () => _kwkArbeitsblattHTML() },
+  'kraft-wirkungen': { titel: 'Was kann eine Kraft alles bewirken?', ns: 'kraftwirkungen', html: () => _kwnArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -866,6 +867,16 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('kwkAnim', 'kwkAnim');
     _pSim.start(dt => _kwkUpdate(dt), (ctx, cv) => _kwkDraw(ctx, cv), []);
     _abRestore('kraftwirkung');
+  },
+
+  // ── 9.1.2 KRÄFTE: DREI WIRKUNGEN SORTIEREN ─────────────────────
+  'kraft-wirkungen': modal => {
+    _kwnInit();
+    modal.innerHTML = _kwnHTML();
+    _kwnRender();
+    _pSim = new PhysicsSimEngine('kwnAnim', 'kwnAnim');
+    _pSim.start(dt => _kwnUpdate(dt), (ctx, cv) => _kwnDraw(ctx, cv), []);
+    _abRestore('kraftwirkungen');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -54023,5 +54034,246 @@ function _kwkAns(qi, oi) {
 function _kwkSelf(n) {
   const out = document.getElementById('kwkSelfOut'), val = document.getElementById('kwkSelfVal');
   if (val) { val.value = String(n); _abSave('kraftwirkung'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.1.2  WAS KANN EINE KRAFT ALLES BEWIRKEN?
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Kräfte"
+// Sortier-Sim: Alltagssituationen den drei Wirkungen zuordnen
+// (verformen / Bewegung ändern / Richtung ändern).
+// ═══════════════════════════════════════════════════════
+let _kwn = null;
+const _KWN_SIT = [
+  { k: 'schwamm', name: 'Schwamm ausdrücken', ic: '🧽', cat: 'verform', why: 'Der Schwamm wird zusammengedrückt – seine Form ändert sich (Verformung).' },
+  { k: 'wagen', name: 'Einkaufswagen anschieben', ic: '🛒', cat: 'bewegen', why: 'Der ruhende Wagen kommt in Fahrt – sein Tempo ändert sich (Bewegungsänderung).' },
+  { k: 'tennis', name: 'Tennisball zurückschlagen', ic: '🎾', cat: 'richtung', why: 'Der ankommende Ball fliegt in eine andere Richtung zurück (Richtungsänderung).' },
+  { k: 'dose', name: 'Getränkedose eindrücken', ic: '🥫', cat: 'verform', why: 'Die Dose wird verbeult – ihre Form ändert sich (Verformung).' },
+  { k: 'bremsen', name: 'Fahrrad abbremsen', ic: '🚲', cat: 'bewegen', why: 'Das Rad wird langsamer – auch Abbremsen ist eine Bewegungsänderung.' },
+  { k: 'wand', name: 'Ball prallt an der Wand ab', ic: '⚽', cat: 'richtung', why: 'Der Ball läuft nach dem Aufprall in eine andere Richtung (Richtungsänderung).' }
+];
+const _KWN_CAT = { verform: { name: 'Verformen', ic: '🟢' }, bewegen: { name: 'Bewegen / Abbremsen', ic: '🛒' }, richtung: { name: 'Richtung ändern', ic: '↪️' } };
+function _kwnInit() { _kwn = { cur: 0, assigned: {}, order: [], t: 0, flash: 0 }; }
+
+function _kwnHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim kwn-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">💪 Was kann eine Kraft alles bewirken?</h3>
+    <div class="fpm-note" style="margin-top:2px">Nicht nur „schieben und ziehen“! Ordne jede Alltagssituation einer der drei Wirkungen zu und finde die Regel.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="kwnAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="fpm-label" style="margin-top:8px">Wähle die Wirkung für die angezeigte Situation:</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_kwnPick('verform')">🟢 Verformen</button>
+          <button class="sim-btn" onclick="_kwnPick('bewegen')">🛒 Bewegen</button>
+          <button class="sim-btn" onclick="_kwnPick('richtung')">↪️ Richtung</button>
+        </div>
+        <div class="fpm-label" style="margin-top:8px">Alle Situationen (klicke zum Auswählen):</div>
+        <div class="msf-chips" id="kwnChips">${_kwnChipsHTML()}</div>
+        <div class="sim-btn-row" style="margin-top:6px"><button class="sim-btn" onclick="_kwnReset()">🔄 Zurücksetzen</button></div>
+      </div>
+      <div>
+        <div class="fpm-label">Deine drei Gruppen</div>
+        <div class="msf-sort">
+          <div class="msf-col"><div class="msf-col-h" style="background:#065f46">🟢 Verformen</div><div id="kwnCol_verform"></div></div>
+          <div class="msf-col"><div class="msf-col-h" style="background:#1e40af">🛒 Bewegen</div><div id="kwnCol_bewegen"></div></div>
+          <div class="msf-col"><div class="msf-col-h" style="background:#92400e">↪️ Richtung</div><div id="kwnCol_richtung"></div></div>
+        </div>
+        <div class="msf-regel" id="kwnRegel"></div>
+        <div class="fpm-note" style="margin-top:10px">Eine Kraft kann einen Körper <b>verformen</b>, seine <b>Bewegung ändern</b> (schneller oder langsamer machen) oder seine <b>Richtung ändern</b>. Manchmal wirken mehrere davon gleichzeitig.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Auch <b>Abbremsen</b> ist eine Bewegungsänderung – und beim Zurückschlagen eines Balls ändert sich seine <b>Richtung</b>.
+    </p>
+    ${_kwnArbeitsblattHTML()}
+  </div>`;
+}
+function _kwnChipsHTML() {
+  return _KWN_SIT.map((s, i) => {
+    const a = _kwn.assigned[s.k];
+    const cls = a === undefined ? '' : (a === s.cat ? ' yes' : ' no');
+    const mark = a === undefined ? '' : (a === s.cat ? ' ✓' : ' ✗');
+    return `<button class="msf-chip${cls}${i === _kwn.cur ? ' cur' : ''}" onclick="_kwnSel(${i})">${s.ic} ${s.name}${mark}</button>`;
+  }).join('');
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _kwnSel(i) { if (_kwn) { _kwn.cur = i; _kwnRender(); } }
+function _kwnPick(cat) {
+  if (!_kwn) return;
+  const s = _KWN_SIT[_kwn.cur];
+  if (_kwn.assigned[s.k] === undefined) _kwn.order.push(s.k);
+  _kwn.assigned[s.k] = cat; _kwn.flash = 1;
+  _kwnRender();
+}
+function _kwnReset() {
+  if (!_kwn) return;
+  if (_kwn.order.length && !confirm('Alle Zuordnungen zurücksetzen?')) return;
+  _kwn.assigned = {}; _kwn.order = []; _kwnRender();
+}
+function _kwnRender() {
+  const chips = document.getElementById('kwnChips'); if (chips) chips.innerHTML = _kwnChipsHTML();
+  ['verform', 'bewegen', 'richtung'].forEach(cat => {
+    const el = document.getElementById('kwnCol_' + cat); if (!el) return;
+    const items = _kwn.order.filter(k => _kwn.assigned[k] === cat);
+    el.innerHTML = items.map(k => { const s = _KWN_SIT.find(x => x.k === k); const ok = s.cat === cat; return `<span class="msf-tag">${s.ic} ${s.name}${ok ? '' : ' ✗'}</span>`; }).join('') || '<span class="msf-none">– noch leer –</span>';
+  });
+  const done = _kwn.order.length;
+  const correct = _kwn.order.filter(k => { const s = _KWN_SIT.find(x => x.k === k); return _kwn.assigned[k] === s.cat; }).length;
+  const reg = document.getElementById('kwnRegel');
+  if (reg) {
+    reg.style.display = 'block';
+    reg.innerHTML = done >= _KWN_SIT.length
+      ? `🎯 <b>Alle ${_KWN_SIT.length} zugeordnet – ${correct} richtig.</b> Eine Kraft kann <b>verformen</b>, die <b>Bewegung ändern</b> (schneller/langsamer) oder die <b>Richtung ändern</b>. Oft treten sogar mehrere Wirkungen gleichzeitig auf.`
+      : `Zugeordnet: ${done} von ${_KWN_SIT.length} (${correct} richtig). Ordne alle Situationen einer Wirkung zu!`;
+  }
+}
+
+// ── Animation / Canvas ─────────────────────────────────
+function _kwnUpdate(dt) { if (_kwn) { _kwn.t += dt; _kwn.flash = Math.max(0, _kwn.flash - dt * 2); } }
+function _kwnRoundRect(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+function _kwnWrap(ctx, text, x, y, maxW, lh) {
+  const words = text.split(' '); let line = '', yy = y;
+  for (const w of words) { const t = line ? line + ' ' + w : w; if (ctx.measureText(t).width > maxW && line) { ctx.fillText(line, x, yy); line = w; yy += lh; } else line = t; }
+  if (line) ctx.fillText(line, x, yy);
+}
+function _kwnDraw(ctx, cv) {
+  if (!_kwn) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const s = _KWN_SIT[_kwn.cur], chosen = _kwn.assigned[s.k];
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2; _kwnRoundRect(ctx, 20, 16, W - 40, H - 32, 12); ctx.stroke();
+  // Emoji der Situation
+  ctx.textAlign = 'center'; ctx.font = '58px sans-serif'; ctx.fillText(s.ic, 88, 124);
+  // Titel
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(s.name, 150, 56);
+  if (chosen === undefined) {
+    ctx.fillStyle = '#64748b'; ctx.font = '13px sans-serif';
+    _kwnWrap(ctx, 'Welche Wirkung hat die Kraft hier? Wähle unten eine der drei Wirkungen.', 150, 82, W - 172, 18);
+  } else {
+    const ok = chosen === s.cat, cc = _KWN_CAT[s.cat];
+    ctx.fillStyle = ok ? '#16a34a' : '#dc2626'; ctx.font = '700 14px sans-serif';
+    ctx.fillText((ok ? '✓ Richtig' : '✗ Nicht ganz') + ': ' + cc.ic + ' ' + cc.name, 150, 84);
+    ctx.fillStyle = '#334155'; ctx.font = '13px sans-serif';
+    _kwnWrap(ctx, s.why, 150, 108, W - 172, 18);
+    if (!ok) { const wc = _KWN_CAT[chosen]; ctx.fillStyle = '#94a3b8'; ctx.font = '12px sans-serif'; ctx.fillText('Du hattest „' + wc.name + '“ gewählt.', 150, H - 32); }
+  }
+  if (_kwn.flash > 0 && chosen !== undefined) {
+    const ok = chosen === s.cat;
+    ctx.strokeStyle = (ok ? 'rgba(34,197,94,' : 'rgba(239,68,68,') + _kwn.flash + ')'; ctx.lineWidth = 4;
+    _kwnRoundRect(ctx, 20, 16, W - 40, H - 32, 12); ctx.stroke();
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.1.2  (ns = 'kraftwirkungen') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _kwnArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('kraftwirkungen')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('kraftwirkungen')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Kann eine Kraft nur schieben und ziehen – oder kann sie noch mehr bewirken?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass eine Kraft … bewirken kann, zum Beispiel …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle nacheinander jede Situation aus.</li>
+          <li>Überlege: Ändert sich die Form, das Tempo oder die Richtung?</li>
+          <li>Ordne sie der passenden Wirkung zu und prüfe die Rückmeldung.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Trage zu jeder Situation die Wirkung ein (verformen / Bewegung ändern / Richtung ändern).</div>
+        <table class="ab-table"><tbody>
+          <tr><td>🧽 Schwamm ausdrücken</td><td>${inp('b1', 'Wirkung?')}</td></tr>
+          <tr><td>🛒 Einkaufswagen anschieben</td><td>${inp('b2', 'Wirkung?')}</td></tr>
+          <tr><td>🎾 Tennisball zurückschlagen</td><td>${inp('b3', 'Wirkung?')}</td></tr>
+          <tr><td>🚲 Fahrrad abbremsen</td><td>${inp('b4', 'Wirkung?')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne eine eigene Situation und trage mit einem Pfeil ein, welche Wirkung die Kraft hat.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Welche drei Wirkungen kann eine Kraft haben? ${inp('a1', '1. …  2. …  3. …')}</li>
+          <li>Ist Abbremsen auch eine Kraftwirkung? Begründe. ${inp('a2', 'ja/nein, weil …')}</li>
+          <li>Nenne ein Beispiel, bei dem eine Kraft gleichzeitig zwei Wirkungen hat. ${inp('a3', 'z. B. …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Eine Kraft kann einen Körper ${inp('m1', '1. Wirkung')}, seine ${inp('m2', '2. Wirkung')} ändern oder seine ${inp('m3', '3. Wirkung')} ändern.<br>
+        Auch das ${inp('m4', 'was?')} eines Körpers ist eine Bewegungsänderung. Manchmal treten mehrere Wirkungen ${inp('m5', 'wann?')} auf.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Beim Tennis trifft der Schläger den Ball. Nenne <b>zwei</b> Wirkungen, die dabei gleichzeitig auftreten.</div>
+        ${ta('tr1', 'Der Ball wird … und außerdem …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="kwnMini">${_kwnMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_kwnSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_kwnSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_kwnSelf(3)">😃 sicher</button>
+          <span id="kwnSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="kwnSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Zuordnung.</b> Verformen: Schwamm ausdrücken, Dose eindrücken. Bewegen/Abbremsen: Einkaufswagen anschieben, Fahrrad abbremsen. Richtung ändern: Tennisball zurückschlagen, Ball an der Wand abprallen.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Kräfte wirken nicht nur als Schieben/Ziehen. Drei Grundwirkungen: (1) Verformung, (2) Änderung des Bewegungszustands – dazu gehört auch das Abbremsen, (3) Änderung der Bewegungsrichtung. Häufig treten mehrere zugleich auf (Tennisball: verformt sich UND ändert die Richtung).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Bremsen ist keine Kraftwirkung.“ (2) „Eine Kraft ist immer nur Schieben oder Ziehen.“ (3) „Eine Kraft hat immer genau eine Wirkung.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Leitfrage „Ändert sich Form, Tempo oder Richtung?“; Abbremsen als Tempo-Änderung deuten; beim Tennisball beide Wirkungen benennen lassen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 verformen · Bewegung/Tempo ändern · Richtung ändern. 6.2 ja, weil sich das Tempo ändert (Bewegungsänderung). 6.3 z. B. Tennisball: verformen + Richtung ändern. Merksatz: verformen · Bewegung/Tempo · Richtung · Abbremsen · gleichzeitig. Transfer: Der Ball wird verformt und ändert seine Richtung. Minidiagnose: 1→verformen, Bewegung ändern, Richtung ändern · 2→ja (Bewegungsänderung) · 3→Richtung ändern.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('kraftwirkungen')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('kraftwirkungen', 'Was kann eine Kraft alles bewirken?', body);
+}
+
+const _KWN_MINI = [
+  { q: '1. Welche drei Wirkungen kann eine Kraft haben?',
+    opts: ['Verformen, Bewegung ändern, Richtung ändern', 'Nur schieben und ziehen', 'Leuchten, Wärmen, Klingen'], correct: 0,
+    fb: ['Richtig! Das sind die drei Grundwirkungen einer Kraft.',
+         'Schieben und Ziehen sind nur zwei Beispiele – es gibt mehr Wirkungen.',
+         'Das sind Wirkungen des elektrischen Stroms, nicht die einer Kraft.'] },
+  { q: '2. Ein Fahrrad wird langsamer. Ist das eine Kraftwirkung?',
+    opts: ['Ja – Abbremsen ist eine Bewegungsänderung', 'Nein, nur schneller werden zählt', 'Nein, das passiert von allein'], correct: 0,
+    fb: ['Richtig! Auch das Abbremsen ändert den Bewegungszustand.',
+         'Doch – schneller UND langsamer werden sind Bewegungsänderungen.',
+         'Ohne Bremskraft würde das Rad weiterrollen.'] },
+  { q: '3. Ein Tennisball wird zurückgeschlagen. Welche Wirkung steht im Vordergrund?',
+    opts: ['Richtung ändern', 'nur Verformen', 'gar keine Kraft'], correct: 0,
+    fb: ['Richtig! Der Ball fliegt in eine andere Richtung (zusätzlich wird er kurz verformt).',
+         'Er wird zwar auch verformt, aber vor allem ändert sich die Richtung.',
+         'Ohne Kraft würde der Ball geradeaus weiterfliegen.'] }
+];
+function _kwnMiniHTML() {
+  return _KWN_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_kwnAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="kwnFb${qi}"></div></div>`).join('');
+}
+function _kwnAns(qi, oi) {
+  const m = _KWN_MINI[qi], el = document.getElementById('kwnFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _kwnSelf(n) {
+  const out = document.getElementById('kwnSelfOut'), val = document.getElementById('kwnSelfVal');
+  if (val) { val.value = String(n); _abSave('kraftwirkungen'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
