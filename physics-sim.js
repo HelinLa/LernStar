@@ -227,6 +227,7 @@ const _physAbDefs = {
   'kraft-wirkung': { titel: 'Woran erkennt man, dass eine Kraft wirkt?', ns: 'kraftwirkung', html: () => _kwkArbeitsblattHTML() },
   'kraft-wirkungen': { titel: 'Was kann eine Kraft alles bewirken?', ns: 'kraftwirkungen', html: () => _kwnArbeitsblattHTML() },
   'kraftmesser': { titel: 'Wie misst man eine Kraft, die man nicht anfassen kann?', ns: 'kraftmesser', html: () => _krmArbeitsblattHTML() },
+  'federgesetz': { titel: 'Warum wird eine Feder gleichmäßig länger?', ns: 'federgesetz', html: () => _fedArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -888,6 +889,16 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('krmAnim', 'krmAnim');
     _pSim.start(dt => _krmUpdate(dt), (ctx, cv) => _krmDraw(ctx, cv), []);
     _abRestore('kraftmesser');
+  },
+
+  // ── 9.1.4 KRÄFTE: HOOKE (FEDER-MESSREIHE) ──────────────────────
+  'federgesetz': modal => {
+    _fedInit();
+    modal.innerHTML = _fedHTML();
+    _fedStatus();
+    _pSim = new PhysicsSimEngine('fedAnim', 'fedAnim');
+    _pSim.start(dt => _fedUpdate(dt), (ctx, cv) => _fedDraw(ctx, cv), []);
+    _abRestore('federgesetz');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -54495,5 +54506,230 @@ function _krmAns(qi, oi) {
 function _krmSelf(n) {
   const out = document.getElementById('krmSelfOut'), val = document.getElementById('krmSelfVal');
   if (val) { val.value = String(n); _abSave('kraftmesser'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.1.4  WARUM WIRD EINE FEDER GLEICHMÄSSIG LÄNGER?
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Kräfte"
+// Hooke: Messreihe Kraft F → Dehnung s. Messpunkte liegen
+// auf einer Ursprungsgeraden (s proportional F). Federkonstante
+// D = F/s bleibt gleich. Zwei Federn (weich/hart) umschaltbar.
+// ═══════════════════════════════════════════════════════
+let _fed = null;
+const _FED_FVALS = [0, 1, 2, 3, 4, 5];            // Kraft in N
+const _FED_K = { weich: 2, hart: 1 };             // Dehnung in cm pro 1 N
+const _FED_SMAX = 10;
+function _fedInit() { _fed = { feder: 'weich', fIdx: 1, rows: [], t: 0 }; }
+function _fedF() { return _FED_FVALS[_fed.fIdx]; }
+function _fedS() { return _fedF() * _FED_K[_fed.feder]; }
+
+function _fedHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim fed-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📈 Warum wird eine Feder gleichmäßig länger?</h3>
+    <div class="fpm-note" style="margin-top:2px">Hänge verschiedene Kräfte an dieselbe Feder und miss die Dehnung. Nimm Messpunkte auf. Welche Form hat die Kurve?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="fedAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Feder:</span>
+          <button class="sim-btn${_fed.feder === 'weich' ? ' primary' : ''}" id="fedFweich" onclick="_fedSetFeder('weich')">weiche Feder</button>
+          <button class="sim-btn${_fed.feder === 'hart' ? ' primary' : ''}" id="fedFhart" onclick="_fedSetFeder('hart')">harte Feder</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">Kraft:</span>
+          <button class="sim-btn" onclick="_fedF_(-1)">◀ weniger</button>
+          <button class="sim-btn" onclick="_fedF_(1)">mehr ▶</button>
+          <button class="sim-btn primary" onclick="_fedMessen()">📍 Messpunkt</button>
+          <button class="sim-btn" onclick="_fedClear()">🗑 löschen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Messwerte</div>
+        <div class="lmp-status" id="fedStatus" style="margin-top:6px"></div>
+        <div id="fedTable" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:8px">Die Messpunkte liegen auf einer <b>Geraden durch den Ursprung</b>: Die Dehnung s ist <b>proportional</b> zur Kraft F. Das Verhältnis <b>D = F/s</b> bleibt gleich – das ist das <b>Hooke'sche Gesetz</b> (F = D · s).</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Doppelte Kraft → doppelte Dehnung. &nbsp;|&nbsp; <b>F = D · s</b> &nbsp;·&nbsp; D = F/s bleibt konstant (Federkonstante).
+    </p>
+    ${_fedArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _fedSetFeder(f) {
+  if (!_fed) return;
+  _fed.feder = f; _fed.rows = [];
+  document.getElementById('fedFweich')?.classList.toggle('primary', f === 'weich');
+  document.getElementById('fedFhart')?.classList.toggle('primary', f === 'hart');
+  _fedStatus();
+}
+function _fedF_(d) { if (_fed) { _fed.fIdx = Math.max(0, Math.min(_FED_FVALS.length - 1, _fed.fIdx + d)); _fedStatus(); } }
+function _fedMessen() {
+  if (!_fed) return;
+  const F = _fedF(), s = _fedS();
+  if (!_fed.rows.some(r => r.F === F)) { _fed.rows.push({ F, s }); _fed.rows.sort((a, b) => a.F - b.F); }
+  _fedStatus();
+}
+function _fedClear() { if (_fed) { _fed.rows = []; _fedStatus(); } }
+function _fedStatus() {
+  const el = document.getElementById('fedStatus');
+  if (el) {
+    const F = _fedF(), s = _fedS();
+    const dtxt = F > 0 ? ' · D = F/s = ' + (F / s).toFixed(1).replace('.', ',') + ' N/cm' : '';
+    el.innerHTML = `Eingestellt: <b>F = ${F} N</b> → Dehnung <b>s = ${String(s).replace('.', ',')} cm</b>${dtxt}.`;
+    el.className = 'lmp-status on';
+  }
+  const tb = document.getElementById('fedTable');
+  if (tb) tb.innerHTML = _fedTableHTML();
+}
+function _fedTableHTML() {
+  if (!_fed.rows.length) return '<div class="fpm-note" style="margin:0">Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt".</div>';
+  const rows = _fed.rows.map(r => `<tr><td>${r.F} N</td><td>${String(r.s).replace('.', ',')} cm</td><td>${r.F > 0 ? (r.F / r.s).toFixed(1).replace('.', ',') + ' N/cm' : '—'}</td></tr>`).join('');
+  return `<table class="ab-table" style="margin:0"><tbody><tr><td>F</td><td>s</td><td>D = F/s</td></tr>${rows}</tbody></table>`;
+}
+
+// ── Animation (Plot der Kennlinie) ─────────────────────
+function _fedUpdate(dt) { if (_fed) _fed.t += dt; }
+function _fedDraw(ctx, cv) {
+  if (!_fed) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const oxL = 46, oxR = W - 20, oyT = 24, oyB = H - 34;
+  const Fmax = 5, Smax = _FED_SMAX;
+  const px = f => oxL + (f / Fmax) * (oxR - oxL);
+  const py = s => oyB - (s / Smax) * (oyB - oyT);
+  // Achsen
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(oxL, oyT); ctx.lineTo(oxL, oyB); ctx.lineTo(oxR, oyB); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+  for (let f = 0; f <= 5; f += 1) { const x = px(f); ctx.strokeStyle = 'rgba(100,116,139,0.25)'; ctx.beginPath(); ctx.moveTo(x, oyT); ctx.lineTo(x, oyB); ctx.stroke(); ctx.fillText(String(f), x, oyB + 14); }
+  ctx.textAlign = 'right';
+  for (let s = 0; s <= 10; s += 2) { const y = py(s); ctx.strokeStyle = 'rgba(100,116,139,0.25)'; ctx.beginPath(); ctx.moveTo(oxL, y); ctx.lineTo(oxR, y); ctx.stroke(); ctx.fillText(String(s), oxL - 4, y + 3); }
+  ctx.fillStyle = '#cbd5e1'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('F in N', (oxL + oxR) / 2, H - 4);
+  ctx.save(); ctx.translate(12, (oyT + oyB) / 2); ctx.rotate(-Math.PI / 2); ctx.fillText('s in cm', 0, 0); ctx.restore();
+  // Ideale Gerade durch Ursprung, Steigung = K (cm pro N)
+  const K = _FED_K[_fed.feder];
+  ctx.strokeStyle = 'rgba(74,222,128,0.55)'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+  ctx.beginPath(); ctx.moveTo(px(0), py(0)); ctx.lineTo(px(Fmax), py(Math.min(Smax, Fmax * K))); ctx.stroke(); ctx.setLineDash([]);
+  // aktueller Einstellpunkt (offen)
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(px(_fedF()), py(_fedS()), 5, 0, 2 * Math.PI); ctx.stroke();
+  // Messpunkte
+  ctx.fillStyle = '#38bdf8';
+  _fed.rows.forEach(r => { ctx.beginPath(); ctx.arc(px(r.F), py(r.s), 4.5, 0, 2 * Math.PI); ctx.fill(); });
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_fed.feder === 'weich' ? 'weiche Feder' : 'harte Feder', oxR - 96, oyT + 10);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.1.4  (ns = 'federgesetz') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _fedArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('federgesetz')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('federgesetz')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum wird eine Feder immer gleichmäßig länger, wenn ich stärker ziehe?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Dehnung … , wenn die Kraft größer wird.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle die Kraft F der Reihe nach auf 1, 2, 3, 4, 5 N.</li>
+          <li>Nimm bei jeder Kraft einen Messpunkt (F, s) auf.</li>
+          <li>Betrachte die Kurve und berechne D = F/s.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Trage Kraft, Dehnung und das Verhältnis D = F/s ein (weiche Feder).</div>
+        <table class="ab-table"><tbody>
+          <tr><td>F = 1 N</td><td>s = ${inp('s1', 'cm')}</td><td>D = ${inp('dd1', 'N/cm')}</td></tr>
+          <tr><td>F = 2 N</td><td>s = ${inp('s2', 'cm')}</td><td>D = ${inp('dd2', 'N/cm')}</td></tr>
+          <tr><td>F = 3 N</td><td>s = ${inp('s3', 'cm')}</td><td>D = ${inp('dd3', 'N/cm')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze (Diagramm)</div>
+        <div class="ab-t">Zeichne die Messpunkte in ein Diagramm (F waagerecht, s senkrecht) und verbinde sie. Welche Form hat die Kurve?</div>
+        <div class="ab-skizze">Platz für dein Diagramm</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Welche Form hat die Kurve? ${inp('a1', 'eine … durch den …')}</li>
+          <li>Was passiert mit s, wenn F verdoppelt wird? ${inp('a2', '')}</li>
+          <li>Bleibt D = F/s bei jeder Messung gleich? ${inp('a3', 'ja/nein')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die Dehnung einer Feder ist ${inp('m1', 'wie zur Kraft?')} zur Kraft. Im Diagramm ergibt sich eine ${inp('m2', 'Form?')} durch den Ursprung.<br>
+        Das Verhältnis D = F/s heißt ${inp('m3', 'Name?')} und bleibt gleich. Es gilt das ${inp('m4', 'welches Gesetz?')} Gesetz: F = D · s.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Weil die Dehnung gleichmäßig zur Kraft passt, kann man an einer Feder eine gleichmäßige Skala anbringen (Kraftmesser). Was passiert aber, wenn man die Feder zu stark überdehnt?</div>
+        ${ta('tr1', 'Bei zu großer Kraft … die Feder … , dann gilt die Gerade nicht mehr.', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="fedMini">${_fedMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_fedSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_fedSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_fedSelf(3)">😃 sicher</button>
+          <span id="fedSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="fedSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Weiche Feder: 2 cm pro 1 N (F=1→s=2, F=2→s=4, F=3→s=6 …), D = F/s = 0,5 N/cm konstant. Harte Feder: 1 cm pro 1 N, D = 1 N/cm. Die Messpunkte liegen auf einer Geraden durch den Ursprung.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Im elastischen Bereich ist die Dehnung s proportional zur Kraft F: s ~ F. Das Verhältnis D = F/s (Federkonstante/Federhärte) ist für eine Feder konstant. Hooke'sches Gesetz: F = D · s. Eine harte Feder hat eine größere Federkonstante (steilere F/s), aber flachere s-über-F-Gerade.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Feder dehnt sich immer weiter proportional, egal wie stark.“ – nur im elastischen Bereich; danach bleibt sie überdehnt. (2) „D ändert sich mit der Kraft.“ (3) „Steile Gerade = harte Feder.“ (im s-über-F-Diagramm ist es umgekehrt).</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> D = F/s für jede Zeile gemeinsam ausrechnen und vergleichen; Proportionalität als „doppelt → doppelt“ verbalisieren; Ursprung (0,0) betonen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle (weich): s = 2/4/6 cm; D = 0,5 N/cm konstant. 6.1 eine Gerade durch den Ursprung. 6.2 s verdoppelt sich. 6.3 ja. Merksatz: proportional · Gerade · Federkonstante · Hooke'sche. Transfer: Bei Überdehnung verformt sich die Feder bleibend, die Proportionalität (Gerade) gilt dann nicht mehr. Minidiagnose: 1→Gerade durch den Ursprung · 2→doppelte Dehnung · 3→Hooke'sches Gesetz.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('federgesetz')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('federgesetz', 'Warum wird eine Feder gleichmäßig länger?', body);
+}
+
+const _FED_MINI = [
+  { q: '1. Welche Form hat die Kurve (Dehnung über Kraft)?',
+    opts: ['Eine Gerade durch den Ursprung', 'Eine gebogene Kurve', 'Eine waagerechte Linie'], correct: 0,
+    fb: ['Richtig! Dehnung und Kraft sind proportional – Gerade durch (0,0).',
+         'Im elastischen Bereich ist es eine Gerade, keine Kurve.',
+         'Dann würde sich die Feder gar nicht dehnen.'] },
+  { q: '2. Du verdoppelst die Kraft. Was passiert mit der Dehnung?',
+    opts: ['Sie verdoppelt sich', 'Sie bleibt gleich', 'Sie halbiert sich'], correct: 0,
+    fb: ['Richtig! Doppelte Kraft → doppelte Dehnung (Proportionalität).',
+         'Nein, größere Kraft dehnt die Feder mehr.',
+         'Umgekehrt: mehr Kraft bedeutet mehr Dehnung.'] },
+  { q: '3. Wie heißt der Zusammenhang F = D · s?',
+    opts: ['Hooke\'sches Gesetz', 'Ohmsches Gesetz', 'Newtonsches Gesetz'], correct: 0,
+    fb: ['Richtig! Das ist das Hooke\'sche Gesetz für Federn.',
+         'Das Ohmsche Gesetz gilt für Strom und Spannung.',
+         'Das passt hier nicht.'] }
+];
+function _fedMiniHTML() {
+  return _FED_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_fedAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="fedFb${qi}"></div></div>`).join('');
+}
+function _fedAns(qi, oi) {
+  const m = _FED_MINI[qi], el = document.getElementById('fedFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _fedSelf(n) {
+  const out = document.getElementById('fedSelfOut'), val = document.getElementById('fedSelfVal');
+  if (val) { val.value = String(n); _abSave('federgesetz'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
