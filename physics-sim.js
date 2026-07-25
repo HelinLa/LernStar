@@ -245,6 +245,7 @@ const _physAbDefs = {
   'verzoegerung-jg9': { titel: 'Verzögerung – schneller vs. langsamer werden', ns: 'verzoeg', html: () => _vzgArbeitsblattHTML() },
   'bremsweg-jg9': { titel: 'Anhalteweg – Reaktionsweg + Bremsweg (Bremsweg ∝ v²)', ns: 'bremsweg', html: () => _brwArbeitsblattHTML() },
   'freier-fall-jg9': { titel: 'Freier Fall – alle Körper fallen gleich schnell', ns: 'freifall', html: () => _fflArbeitsblattHTML() },
+  'luftwiderstand-jg9': { titel: 'Luftwiderstand – Feder vs. Stein', ns: 'luftwid', html: () => _lwdArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -1080,6 +1081,15 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('fflAnim', 'fflAnim');
     _pSim.start(dt => _fflUpdate(dt), (ctx, cv) => _fflDraw(ctx, cv), []);
     _abRestore('freifall');
+  },
+
+  'luftwiderstand-jg9': modal => {
+    _lwdInit();
+    modal.innerHTML = _lwdHTML();
+    _lwdStatus();
+    _pSim = new PhysicsSimEngine('lwdAnim', 'lwdAnim');
+    _pSim.start(dt => _lwdUpdate(dt), (ctx, cv) => _lwdDraw(ctx, cv), []);
+    _abRestore('luftwid');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -58658,5 +58668,239 @@ function _fflAns(qi, oi) {
 function _fflSelf(n) {
   const out = document.getElementById('fflSelfOut'), val = document.getElementById('fflSelfVal');
   if (val) { val.value = String(n); _abSave('freifall'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.2.10  LUFTWIDERSTAND – FEDER vs. STEIN (Vakuum-Schalter)
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Bewegung"
+// Mit Luft: Feder schwebt langsam, Stein fällt schnell.
+// Im Vakuum: beide fallen gleich schnell (freier Fall).
+// → Nicht das Gewicht bremst, sondern der Luftwiderstand.
+// ═══════════════════════════════════════════════════════
+let _lwd = null;
+const _LWD_G = 9.8, _LWD_H = 10, _LWD_VT = 2.5;   // m/s², m, Feder-Sinkgeschw. mit Luft
+function _lwdInit() { _lwd = { luft: true, running: false, t: 0 }; }
+function _lwdSteinFall(t) { return Math.min(_LWD_H, 0.5 * _LWD_G * t * t); }
+function _lwdFederFall(t) { return _lwd.luft ? Math.min(_LWD_H, _LWD_VT * t) : Math.min(_LWD_H, 0.5 * _LWD_G * t * t); }
+function _lwdTStein() { return Math.sqrt(2 * _LWD_H / _LWD_G); }
+function _lwdTFeder() { return _lwd.luft ? _LWD_H / _LWD_VT : _lwdTStein(); }
+function _lwdTEnd() { return Math.max(_lwdTStein(), _lwdTFeder()); }
+
+function _lwdHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim lwd-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🪶 Warum fällt eine Feder langsamer als ein Stein – liegt es wirklich am Gewicht?</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine Feder und ein Stein werden gleichzeitig losgelassen. Schalte die Luft an oder aus (Vakuum) und beobachte: Woran liegt es, dass die Feder in der Luft so langsam fällt?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="lwdAnim" width="440" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Umgebung:</span>
+          <button class="sim-btn primary" id="lwdluft" onclick="_lwdSet(true)">🌬 mit Luft</button>
+          <button class="sim-btn" id="lwdvak" onclick="_lwdSet(false)">🌑 Vakuum (keine Luft)</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" id="lwdPlay" onclick="_lwdToggle()">▶ Loslassen</button>
+          <button class="sim-btn" onclick="_lwdReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Luftwiderstand vs. freier Fall</div>
+        <div class="lmp-status" id="lwdStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>Mit Luft</b> fällt die Feder viel langsamer als der Stein – die Luft <b>bremst</b> sie. Der <b>Luftwiderstand</b> hängt von <b>Form und Fläche</b> ab, nicht vom Gewicht. <b>Im Vakuum</b> (ohne Luft) fallen beide <b>gleich schnell</b>. Also bremst nicht das kleine Gewicht die Feder, sondern die Luft.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Ein Fallschirm nutzt genau das: viel Fläche → großer Luftwiderstand → langsames Fallen.
+    </p>
+    ${_lwdArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _lwdSet(luft) {
+  if (!_lwd) return;
+  _lwd.luft = luft;
+  document.getElementById('lwdluft')?.classList.toggle('primary', luft);
+  document.getElementById('lwdvak')?.classList.toggle('primary', !luft);
+  _lwdReset();
+}
+function _lwdToggle() {
+  if (!_lwd) return;
+  if (_lwd.t >= _lwdTEnd()) _lwd.t = 0;
+  _lwd.running = !_lwd.running;
+  const b = document.getElementById('lwdPlay'); if (b) b.textContent = _lwd.running ? '⏸ Stopp' : '▶ Loslassen';
+  _lwdStatus();
+}
+function _lwdReset() {
+  if (!_lwd) return;
+  _lwd.running = false; _lwd.t = 0;
+  const b = document.getElementById('lwdPlay'); if (b) b.textContent = '▶ Loslassen';
+  _lwdStatus();
+}
+function _lwdStatus() {
+  const el = document.getElementById('lwdStatus'); if (!el) return;
+  if (_lwd.luft) {
+    el.innerHTML = `<b>🌬 Mit Luft:</b> Der Stein ist nach <b>${_lwdTStein().toFixed(1).replace('.', ',')} s</b> unten, die Feder erst nach <b>${_lwdTFeder().toFixed(1).replace('.', ',')} s</b>. Die Luft bremst die Feder.`;
+  } else {
+    el.innerHTML = `<b>🌑 Vakuum:</b> Beide sind nach <b>${_lwdTStein().toFixed(1).replace('.', ',')} s</b> gleichzeitig unten – ohne Luft fallen alle Körper gleich schnell.`;
+  }
+  el.innerHTML += `<br>Zeit: t = ${_lwd.t.toFixed(1).replace('.', ',')} s.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _lwdUpdate(dt) {
+  if (!_lwd || !_lwd.running) return;
+  _lwd.t += dt;
+  if (_lwd.t >= _lwdTEnd()) { _lwd.t = _lwdTEnd(); _lwd.running = false; const b = document.getElementById('lwdPlay'); if (b) b.textContent = '▶ Loslassen'; }
+  _lwdStatus();
+}
+function _lwdDraw(ctx, cv) {
+  if (!_lwd) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  // Hintergrund je nach Umgebung
+  ctx.fillStyle = _lwd.luft ? '#eff6ff' : '#0f172a'; ctx.fillRect(0, 0, W, H);
+  const topY = 42, groundY = H - 34;
+  const pyf = ss => topY + (ss / _LWD_H) * (groundY - topY);
+  const xFeder = 140, xStein = 300;
+  const textCol = _lwd.luft ? '#334155' : '#e2e8f0';
+  // Luft-Andeutung (Wind-Striche) nur mit Luft
+  if (_lwd.luft) {
+    ctx.strokeStyle = 'rgba(59,130,246,0.18)'; ctx.lineWidth = 1;
+    for (let i = 0; i < 6; i++) { const y = topY + 20 + i * 30; ctx.beginPath(); ctx.moveTo(60, y); ctx.lineTo(90, y - 6); ctx.stroke(); ctx.beginPath(); ctx.moveTo(360, y + 10); ctx.lineTo(390, y + 4); ctx.stroke(); }
+  }
+  // Boden
+  ctx.fillStyle = _lwd.luft ? '#94a3b8' : '#334155'; ctx.fillRect(0, groundY, W, 4);
+  ctx.fillStyle = textCol; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Boden (Höhe ' + _LWD_H + ' m)', W / 2, groundY + 18);
+  // Startlinie
+  ctx.strokeStyle = _lwd.luft ? '#cbd5e1' : '#475569'; ctx.beginPath(); ctx.moveTo(60, topY); ctx.lineTo(W - 40, topY); ctx.stroke();
+  // Feder
+  const yF = pyf(_lwdFederFall(_lwd.t));
+  ctx.font = '24px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('🪶', xFeder, yF);
+  ctx.fillStyle = textCol; ctx.font = '700 10px sans-serif'; ctx.fillText('Feder', xFeder, topY - 8);
+  // Stein
+  const yS = pyf(_lwdSteinFall(_lwd.t));
+  ctx.font = '22px sans-serif'; ctx.fillText('🪨', xStein, yS);
+  ctx.fillStyle = textCol; ctx.font = '700 10px sans-serif'; ctx.fillText('Stein', xStein, topY - 8);
+  // Kopfzeile
+  ctx.fillStyle = _lwd.luft ? '#1e3a8a' : '#93c5fd'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_lwd.luft ? '🌬 mit Luft – Luftwiderstand bremst' : '🌑 Vakuum – kein Luftwiderstand', 60, 24);
+  ctx.fillStyle = textCol; ctx.textAlign = 'right'; ctx.fillText('⏱ ' + _lwd.t.toFixed(1).replace('.', ',') + ' s', W - 40, 24);
+  // Landehinweise
+  ctx.textAlign = 'center'; ctx.font = '700 11px sans-serif';
+  if (_lwdSteinFall(_lwd.t) >= _LWD_H - 0.01) { ctx.fillStyle = '#f87171'; ctx.fillText('Stein ✅', xStein, groundY - 8); }
+  if (_lwdFederFall(_lwd.t) >= _LWD_H - 0.01) { ctx.fillStyle = '#4ade80'; ctx.fillText('Feder ✅', xFeder, groundY - 8); }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.2.10  (ns = 'luftwid') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _lwdArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('luftwid')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('luftwid')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum fällt eine Feder in der Luft viel langsamer als ein Stein – liegt es wirklich am geringen Gewicht?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Feder langsam fällt, weil …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Lass Feder und Stein „mit Luft“ fallen – wer ist zuerst unten?</li>
+          <li>Schalte auf „Vakuum“ und lass beide erneut fallen.</li>
+          <li>Vergleiche die Fallzeiten in beiden Umgebungen.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Trage ein, wer zuerst unten ist bzw. die Fallzeit.</div>
+        <table class="ab-table"><tbody>
+          <tr><td></td><td>Feder</td><td>Stein</td></tr>
+          <tr><td>mit Luft</td><td>${inp('f1', '?')}</td><td>${inp('s1', '?')}</td></tr>
+          <tr><td>Vakuum</td><td>${inp('f2', '?')}</td><td>${inp('s2', '?')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne Feder und Stein nach kurzer Zeit – einmal mit Luft, einmal im Vakuum.</div>
+        <div class="ab-skizze">Platz für deine Skizzen</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wer fällt mit Luft schneller – und warum? ${inp('a1', '')}</li>
+          <li>Was passiert im Vakuum mit beiden? ${inp('a2', '')}</li>
+          <li>Bremst das Gewicht die Feder – oder etwas anderes? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Nicht das geringe Gewicht bremst die Feder, sondern der ${inp('m1', 'Begriff?')}. Er hängt von ${inp('m2', 'wovon?')} ab.<br>
+        Im ${inp('m3', 'wo?')} fallen alle Körper gleich schnell, weil dort keine ${inp('m4', 'was?')} bremst.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Fallschirm ist groß und flach. Warum macht das den Fall langsam?</div>
+        ${ta('tr1', 'Weil die große Fläche einen großen … erzeugt, der den Fall …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="lwdMini">${_lwdMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_lwdSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_lwdSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_lwdSelf(3)">😃 sicher</button>
+          <span id="lwdSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="lwdSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Mit Luft: Der Stein ist schnell unten (≈ 1,4 s), die Feder schwebt langsam hinterher (≈ 4 s). Im Vakuum: Feder und Stein fallen synchron und kommen gleichzeitig an. Der einzige Unterschied ist die Luft.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Auf beide wirkt dieselbe Fallbeschleunigung g. Zusätzlich wirkt in Luft der Luftwiderstand (Reibungskraft der Luft), der von Form, Fläche und Geschwindigkeit abhängt – bei der leichten, großflächigen Feder relativ stark, sodass sie schnell eine kleine „Endgeschwindigkeit“ erreicht. Im Vakuum fehlt der Luftwiderstand → freier Fall, alle Körper gleich schnell.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Feder ist zu leicht, um schnell zu fallen.“ (nicht das Gewicht, sondern die Luft). (2) „Im Vakuum fällt die Feder gar nicht.“ (doch – genauso schnell wie der Stein). (3) „Luftwiderstand hängt vom Gewicht ab.“ (er hängt von Form/Fläche/Geschwindigkeit ab).</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Nur die Luft als Unterschied herausstellen; Vakuum-Schalter direkt vergleichen; Fläche der Feder betonen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: mit Luft → Feder langsam / Stein schnell · Vakuum → beide gleich schnell. 6.1 der Stein, weil die Luft die großflächige Feder stärker bremst. 6.2 sie fallen gleich schnell. 6.3 nicht das Gewicht, sondern der Luftwiderstand. Merksatz: Luftwiderstand · Form/Fläche · Vakuum · Luft. Transfer: großer Luftwiderstand, der den Fall bremst. Minidiagnose: 1→der Luftwiderstand · 2→gleich schnell · 3→von Form und Fläche.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('luftwid')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('luftwid', 'Luftwiderstand – Feder vs. Stein', body);
+}
+
+const _LWD_MINI = [
+  { q: '1. Was bremst die Feder in der Luft?',
+    opts: ['Der Luftwiderstand', 'Ihr geringes Gewicht', 'Die Erdanziehung'], correct: 0,
+    fb: ['Richtig! Die Luft bremst die großflächige Feder.',
+         'Nein, nicht das Gewicht – im Vakuum fällt sie ja schnell.',
+         'Die Erdanziehung zieht alle Körper gleich stark nach unten.'] },
+  { q: '2. Was passiert mit Feder und Stein im Vakuum?',
+    opts: ['Beide fallen gleich schnell', 'Der Stein fällt schneller', 'Die Feder fällt gar nicht'], correct: 0,
+    fb: ['Richtig! Ohne Luft gibt es keinen Luftwiderstand – freier Fall.',
+         'Nein, ohne Luft sind beide gleich schnell.',
+         'Doch, sie fällt genauso schnell wie der Stein.'] },
+  { q: '3. Wovon hängt der Luftwiderstand ab?',
+    opts: ['Von Form und Fläche', 'Nur vom Gewicht', 'Von der Farbe'], correct: 0,
+    fb: ['Richtig! Große, flache Körper haben mehr Luftwiderstand.',
+         'Nein, das Gewicht ist nicht entscheidend.',
+         'Die Farbe spielt keine Rolle.'] }
+];
+function _lwdMiniHTML() {
+  return _LWD_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_lwdAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="lwdFb${qi}"></div></div>`).join('');
+}
+function _lwdAns(qi, oi) {
+  const m = _LWD_MINI[qi], el = document.getElementById('lwdFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _lwdSelf(n) {
+  const out = document.getElementById('lwdSelfOut'), val = document.getElementById('lwdSelfVal');
+  if (val) { val.value = String(n); _abSave('luftwid'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
