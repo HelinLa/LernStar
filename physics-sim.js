@@ -236,6 +236,7 @@ const _physAbDefs = {
   'wechselwirkung': { titel: 'Kraft und Gegenkraft – warum drücke ich zurück?', ns: 'wechselwirkung', html: () => _wwkArbeitsblattHTML() },
   'schiefe-ebene': { titel: 'Warum geht ein Stein über eine Rampe leichter hoch?', ns: 'schiefeebene', html: () => _sieArbeitsblattHTML() },
   'reibung-rs': { titel: 'Warum bremst mich der Boden aus? (Reibung)', ns: 'reibungrs', html: () => _rbgArbeitsblattHTML() },
+  'bewegung-beschreiben': { titel: 'Wie kann ich eine Bewegung beschreiben?', ns: 'bewbeschr', html: () => _bwbArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -987,6 +988,16 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('rbgAnim', 'rbgAnim');
     _pSim.start(dt => _rbgUpdate(dt), (ctx, cv) => _rbgDraw(ctx, cv), []);
     _abRestore('reibungrs');
+  },
+
+  // ── 9.2.1 BEWEGUNG: WEG & ZEIT ─────────────────────────────────
+  'bewegung-beschreiben': modal => {
+    _bwbInit();
+    modal.innerHTML = _bwbHTML();
+    _bwbStatus();
+    _pSim = new PhysicsSimEngine('bwbAnim', 'bwbAnim');
+    _pSim.start(dt => _bwbUpdate(dt), (ctx, cv) => _bwbDraw(ctx, cv), []);
+    _abRestore('bewbeschr');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -56487,5 +56498,217 @@ function _rbgAns(qi, oi) {
 function _rbgSelf(n) {
   const out = document.getElementById('rbgSelfOut'), val = document.getElementById('rbgSelfVal');
   if (val) { val.value = String(n); _abSave('reibungrs'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.2.1  WIE KANN ICH EINE BEWEGUNG BESCHREIBEN?
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Bewegung"
+// Grundgrößen: Weg (m) und Zeit (s). Ein Auto fährt, man nimmt
+// Momentaufnahmen (Zeit, Weg) auf und beschreibt so die Bewegung.
+// ═══════════════════════════════════════════════════════
+let _bwb = null;
+const _BWB_V = 8;                                  // m/s (konstant)
+function _bwbInit() { _bwb = { running: false, t: 0, s: 0, snaps: [] }; }
+
+function _bwbHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim bwb-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🚗 Wie kann ich eine Bewegung beschreiben, ohne dabei zu sein?</h3>
+    <div class="fpm-note" style="margin-top:2px">Lass das Auto fahren. Mit welchen zwei Größen kannst du seine Bewegung genau beschreiben? Nimm Momentaufnahmen auf.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="bwbAnim" width="440" height="200" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="bwbPlay" onclick="_bwbToggle()">▶ Start</button>
+          <button class="sim-btn" onclick="_bwbSnap()">📸 Momentaufnahme</button>
+          <button class="sim-btn" onclick="_bwbReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Weg und Zeit</div>
+        <div class="lmp-status" id="bwbStatus" style="margin-top:6px"></div>
+        <div id="bwbTable" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:8px">Um eine Bewegung zu beschreiben, misst man zwei Größen: den zurückgelegten <b>Weg</b> (in Metern, m) und die dazu benötigte <b>Zeit</b> (in Sekunden, s). Aus beiden ergibt sich später die Geschwindigkeit.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Bewegung = <b>Weg</b> und <b>Zeit</b>. So funktioniert auch ein Fahrplan oder eine Sport-Zeitmessung.
+    </p>
+    ${_bwbArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _bwbToggle() {
+  if (!_bwb) return;
+  if (_bwb.s >= 100) { _bwb.s = 0; _bwb.t = 0; _bwb.snaps = []; }
+  _bwb.running = !_bwb.running;
+  const b = document.getElementById('bwbPlay'); if (b) b.textContent = _bwb.running ? '⏸ Stopp' : '▶ Start';
+  _bwbStatus();
+}
+function _bwbSnap() {
+  if (!_bwb) return;
+  _bwb.snaps.push({ t: _bwb.t, s: _bwb.s });
+  if (_bwb.snaps.length > 6) _bwb.snaps.shift();
+  _bwbStatus();
+}
+function _bwbReset() {
+  if (!_bwb) return;
+  _bwb.running = false; _bwb.t = 0; _bwb.s = 0; _bwb.snaps = [];
+  const b = document.getElementById('bwbPlay'); if (b) b.textContent = '▶ Start';
+  _bwbStatus();
+}
+function _bwbStatus() {
+  const el = document.getElementById('bwbStatus');
+  if (el) {
+    el.innerHTML = `Aktuell: Zeit <b>t = ${_bwb.t.toFixed(1).replace('.', ',')} s</b>, Weg <b>s = ${_bwb.s.toFixed(0)} m</b>.`;
+    el.className = 'lmp-status on';
+  }
+  const tb = document.getElementById('bwbTable');
+  if (tb) tb.innerHTML = _bwbTableHTML();
+}
+function _bwbTableHTML() {
+  if (!_bwb.snaps.length) return '<div class="fpm-note" style="margin:0">Noch keine Momentaufnahme – tippe während der Fahrt auf „Momentaufnahme".</div>';
+  const rows = _bwb.snaps.map((p, i) => `<tr><td>${i + 1}</td><td>${p.t.toFixed(1).replace('.', ',')} s</td><td>${p.s.toFixed(0)} m</td></tr>`).join('');
+  return `<table class="ab-table" style="margin:0"><tbody><tr><td>Nr.</td><td>Zeit</td><td>Weg</td></tr>${rows}</tbody></table>`;
+}
+
+// ── Animation ──────────────────────────────────────────
+function _bwbUpdate(dt) {
+  if (!_bwb || !_bwb.running) return;
+  _bwb.t += dt; _bwb.s += _BWB_V * dt;
+  if (_bwb.s >= 100) { _bwb.s = 100; _bwb.running = false; const b = document.getElementById('bwbPlay'); if (b) b.textContent = '▶ Start'; _bwbStatus(); }
+  else if (Math.floor(_bwb.t * 4) !== Math.floor((_bwb.t - dt) * 4)) _bwbStatus();
+}
+function _bwbDraw(ctx, cv) {
+  if (!_bwb) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const xL = 30, xR = 410, roadY = 120;
+  // Straße
+  ctx.fillStyle = '#334155'; ctx.fillRect(xL, roadY, xR - xL, 34);
+  // Meter-Marken
+  ctx.strokeStyle = '#94a3b8'; ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.lineWidth = 1;
+  for (let m = 0; m <= 100; m += 20) { const x = xL + (m / 100) * (xR - xL); ctx.beginPath(); ctx.moveTo(x, roadY - 6); ctx.lineTo(x, roadY); ctx.stroke(); ctx.fillText(m + ' m', x, roadY - 9); }
+  // Auto
+  const cx = xL + (_bwb.s / 100) * (xR - xL);
+  ctx.font = '26px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('🚗', cx, roadY + 24);
+  // Stoppuhr
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 16px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('⏱ ' + _bwb.t.toFixed(1).replace('.', ',') + ' s', 30, 40);
+  ctx.fillStyle = '#1d4ed8'; ctx.fillText('📏 ' + _bwb.s.toFixed(0) + ' m', 30, 66);
+  // Hinweis
+  ctx.fillStyle = '#64748b'; ctx.font = '11px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Weg (m) + Zeit (s) beschreiben die Bewegung', xR, 40);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.2.1  (ns = 'bewbeschr') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _bwbArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('bewbeschr')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('bewbeschr')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Mit welchen Größen kann man eine Bewegung genau beschreiben – auch wenn man selbst nicht dabei war?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass man zum Beschreiben einer Bewegung … braucht.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Starte das Auto und beobachte Uhr und Weg-Anzeige.</li>
+          <li>Nimm während der Fahrt mehrere Momentaufnahmen auf.</li>
+          <li>Notiere zu jeder Aufnahme die Zeit und den Weg.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Trage zu drei Momentaufnahmen die Zeit und den Weg ein.</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Aufnahme 1</td><td>Zeit = ${inp('t1', 's')}</td><td>Weg = ${inp('s1', 'm')}</td></tr>
+          <tr><td>Aufnahme 2</td><td>Zeit = ${inp('t2', 's')}</td><td>Weg = ${inp('s2', 'm')}</td></tr>
+          <tr><td>Aufnahme 3</td><td>Zeit = ${inp('t3', 's')}</td><td>Weg = ${inp('s3', 'm')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Straße mit Meter-Marken und dem Auto an zwei verschiedenen Zeitpunkten.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Welche zwei Größen hast du gemessen? ${inp('a1', '… und …')}</li>
+          <li>In welchen Einheiten? ${inp('a2', 'Weg: … · Zeit: …')}</li>
+          <li>Wird der Weg mit der Zeit größer oder kleiner? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Eine Bewegung beschreibt man mit dem ${inp('m1', 'was?')} (Einheit ${inp('m2', 'Einheit?')}) und der ${inp('m3', 'was?')} (Einheit ${inp('m4', 'Einheit?')}).<br>
+        Je länger die Zeit, desto ${inp('m5', 'größer/kleiner')} der zurückgelegte Weg.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Zugfahrplan zeigt Uhrzeiten und Bahnhöfe. Was hat das mit „Weg und Zeit“ zu tun?</div>
+        ${ta('tr1', 'Der Fahrplan gibt zu jeder … einen … an. So ist die Bewegung des Zuges beschrieben.', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="bwbMini">${_bwbMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_bwbSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_bwbSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_bwbSelf(3)">😃 sicher</button>
+          <span id="bwbSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="bwbSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Das Auto fährt gleichmäßig; mit fortschreitender Zeit wächst der zurückgelegte Weg. Zu jedem Zeitpunkt gehört ein bestimmter Weg (z. B. 4 s → 32 m, 8 s → 64 m bei v = 8 m/s).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Zur Beschreibung einer Bewegung dienen die Grundgrößen Weg s (Einheit Meter) und Zeit t (Einheit Sekunde). Ein Wertepaar (t, s) legt einen Bewegungszustand fest; mehrere Wertepaare beschreiben den Bewegungsverlauf. Aus s und t folgt später die Geschwindigkeit v = s/t (9.2.2).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Man braucht nur den Weg.“ (2) „Zeit ist keine Messgröße.“ (3) „Ohne dabei zu sein, kann man nichts sagen.“ – Doch, über gemessene Wertepaare.</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Weg und Zeit getrennt ablesen lassen; Wertepaare (t, s) sauber notieren; Alltag Fahrplan/Zeitmessung.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 Weg und Zeit. 6.2 Weg: Meter · Zeit: Sekunden. 6.3 größer. Merksatz: Weg · m · Zeit · s · größer. Minidiagnose: 1→Weg und Zeit · 2→Meter · 3→Stoppuhr (Sekunden).</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('bewbeschr')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('bewbeschr', 'Wie kann ich eine Bewegung beschreiben?', body);
+}
+
+const _BWB_MINI = [
+  { q: '1. Welche zwei Größen braucht man, um eine Bewegung zu beschreiben?',
+    opts: ['Weg und Zeit', 'Farbe und Form', 'Masse und Temperatur'], correct: 0,
+    fb: ['Richtig! Weg (m) und Zeit (s) beschreiben die Bewegung.',
+         'Farbe und Form sagen nichts über die Bewegung.',
+         'Masse und Temperatur gehören nicht zur Bewegungsbeschreibung.'] },
+  { q: '2. In welcher Einheit misst man den Weg?',
+    opts: ['Meter (m)', 'Sekunden (s)', 'Newton (N)'], correct: 0,
+    fb: ['Richtig! Der Weg wird in Metern gemessen.',
+         'Sekunden ist die Einheit der Zeit.',
+         'Newton ist die Einheit der Kraft.'] },
+  { q: '3. Womit misst man die Zeit?',
+    opts: ['Mit einer Stoppuhr (in Sekunden)', 'Mit einem Maßband', 'Mit einer Waage'], correct: 0,
+    fb: ['Richtig! Die Zeit misst man mit einer Uhr in Sekunden.',
+         'Ein Maßband misst den Weg, nicht die Zeit.',
+         'Eine Waage misst die Masse.'] }
+];
+function _bwbMiniHTML() {
+  return _BWB_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_bwbAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="bwbFb${qi}"></div></div>`).join('');
+}
+function _bwbAns(qi, oi) {
+  const m = _BWB_MINI[qi], el = document.getElementById('bwbFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _bwbSelf(n) {
+  const out = document.getElementById('bwbSelfOut'), val = document.getElementById('bwbSelfVal');
+  if (val) { val.value = String(n); _abSave('bewbeschr'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
