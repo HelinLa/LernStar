@@ -230,6 +230,7 @@ const _physAbDefs = {
   'federgesetz': { titel: 'Warum wird eine Feder gleichmäßig länger?', ns: 'federgesetz', html: () => _fedArbeitsblattHTML() },
   'masse-gewicht': { titel: 'Ist „schwer“ dasselbe wie „viel Masse“?', ns: 'massegewicht', html: () => _mgwArbeitsblattHTML() },
   'ortsfaktor': { titel: 'Wäre ich auf dem Mond wirklich leichter?', ns: 'ortsfaktor', html: () => _ortArbeitsblattHTML() },
+  'kraftpfeil': { titel: 'Hat eine Kraft nur eine Größe – oder auch eine Richtung?', ns: 'kraftpfeil', html: () => _kpfArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -921,6 +922,16 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('ortAnim', 'ortAnim');
     _pSim.start(dt => _ortUpdate(dt), (ctx, cv) => _ortDraw(ctx, cv), []);
     _abRestore('ortsfaktor');
+  },
+
+  // ── 9.1.7 KRÄFTE: KRAFTPFEIL (BETRAG + RICHTUNG) ───────────────
+  'kraftpfeil': modal => {
+    _kpfInit();
+    modal.innerHTML = _kpfHTML();
+    _kpfStatus();
+    _pSim = new PhysicsSimEngine('kpfAnim', 'kpfAnim');
+    _pSim.start(dt => _kpfUpdate(dt), (ctx, cv) => _kpfDraw(ctx, cv), []);
+    _abRestore('kraftpfeil');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -55153,5 +55164,214 @@ function _ortAns(qi, oi) {
 function _ortSelf(n) {
   const out = document.getElementById('ortSelfOut'), val = document.getElementById('ortSelfVal');
   if (val) { val.value = String(n); _abSave('ortsfaktor'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.1.7  HAT EINE KRAFT NUR EINE GRÖSSE – ODER AUCH EINE RICHTUNG?
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Kräfte"
+// Kraftpfeil: Länge = Betrag, Pfeilrichtung = Richtung,
+// Startpunkt = Angriffspunkt. Kraft ist eine gerichtete Größe.
+// ═══════════════════════════════════════════════════════
+let _kpf = null;
+const _KPF_DIRS = {
+  rechts: { v: [1, 0], name: 'nach rechts', wohin: 'nach rechts' },
+  links: { v: [-1, 0], name: 'nach links', wohin: 'nach links' },
+  oben: { v: [0, -1], name: 'nach oben', wohin: 'nach oben' },
+  unten: { v: [0, 1], name: 'nach unten', wohin: 'nach unten' },
+  schraeg: { v: [0.707, -0.707], name: 'schräg nach rechts oben', wohin: 'schräg nach rechts oben' }
+};
+const _KPF_BETRAEGE = [2, 4, 6];
+function _kpfInit() { _kpf = { betrag: 4, dir: 'rechts', t: 0 }; }
+
+function _kpfHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim kpf-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">➡️ Hat eine Kraft nur eine Größe – oder auch eine Richtung?</h3>
+    <div class="fpm-note" style="margin-top:2px">Stelle den <b>Betrag</b> (die Stärke) und die <b>Richtung</b> der Kraft ein. Beobachte den Kraftpfeil: Was verändert sich?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="kpfAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Betrag:</span>
+          ${_KPF_BETRAEGE.map(b => `<button class="sim-btn${b === 4 ? ' primary' : ''}" id="kpfB${b}" onclick="_kpfSetB(${b})">${b} N</button>`).join('')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">Richtung:</span>
+          <button class="sim-btn primary" id="kpfDrechts" onclick="_kpfSetD('rechts')">→</button>
+          <button class="sim-btn" id="kpfDlinks" onclick="_kpfSetD('links')">←</button>
+          <button class="sim-btn" id="kpfDoben" onclick="_kpfSetD('oben')">↑</button>
+          <button class="sim-btn" id="kpfDunten" onclick="_kpfSetD('unten')">↓</button>
+          <button class="sim-btn" id="kpfDschraeg" onclick="_kpfSetD('schraeg')">↗</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Der Kraftpfeil</div>
+        <div class="lmp-status" id="kpfStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Zu einer Kraft gehören immer <b>drei</b> Dinge: der <b>Betrag</b> (wie stark, in Newton) – das ist die <b>Länge</b> des Pfeils; die <b>Richtung</b> – das ist die <b>Pfeilrichtung</b>; und der <b>Angriffspunkt</b> – dort, wo die Kraft wirkt (Start des Pfeils). Eine Kraft ist eine <b>gerichtete Größe</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Gleicher Betrag, andere Richtung → <b>andere Wirkung</b>. Darum zeichnet man Kräfte als <b>Pfeile</b>.
+    </p>
+    ${_kpfArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _kpfSetB(b) {
+  if (!_kpf) return;
+  _kpf.betrag = b;
+  _KPF_BETRAEGE.forEach(x => document.getElementById('kpfB' + x)?.classList.toggle('primary', x === b));
+  _kpfStatus();
+}
+function _kpfSetD(d) {
+  if (!_kpf) return;
+  _kpf.dir = d;
+  Object.keys(_KPF_DIRS).forEach(x => document.getElementById('kpfD' + x)?.classList.toggle('primary', x === d));
+  _kpfStatus();
+}
+function _kpfStatus() {
+  const el = document.getElementById('kpfStatus'); if (!el) return;
+  const d = _KPF_DIRS[_kpf.dir];
+  el.innerHTML = `Kraft: <b>Betrag ${_kpf.betrag} N</b>, <b>Richtung ${d.name}</b>. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde ${d.wohin} gezogen.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation / Canvas ─────────────────────────────────
+function _kpfUpdate(dt) { if (_kpf) _kpf.t += dt; }
+function _kpfDraw(ctx, cv) {
+  if (!_kpf) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2 - 20, cy = H / 2, d = _KPF_DIRS[_kpf.dir], len = _kpf.betrag * 15;
+  const ex = cx + d.v[0] * len, ey = cy + d.v[1] * len;
+  // Ghost-Körper: wohin die Kraft zieht
+  ctx.fillStyle = 'rgba(59,130,246,0.16)';
+  _kwnRoundRect(ctx, cx + d.v[0] * 34 - 20, cy + d.v[1] * 34 - 20, 40, 40, 6); ctx.fill();
+  // Körper
+  ctx.fillStyle = '#3b82f6'; _kwnRoundRect(ctx, cx - 20, cy - 20, 40, 40, 6); ctx.fill();
+  ctx.strokeStyle = '#1e3a8a'; ctx.lineWidth = 2; ctx.stroke();
+  // Kraftpfeil
+  _kwkArrow(ctx, cx, cy, ex, ey, '#ef4444');
+  // Betrag-Label an der Pfeilmitte
+  ctx.fillStyle = '#dc2626'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_kpf.betrag + ' N', (cx + ex) / 2 + (d.v[1] !== 0 ? 22 : 0), (cy + ey) / 2 + (d.v[0] !== 0 ? -8 : 0));
+  // Angriffspunkt
+  ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(cx, cy, 4, 0, 2 * Math.PI); ctx.fill();
+  // Legende
+  ctx.textAlign = 'left'; ctx.font = '11px sans-serif';
+  ctx.fillStyle = '#ef4444'; ctx.fillText('Pfeil-Länge = Betrag (Stärke)', 12, H - 40);
+  ctx.fillStyle = '#b45309'; ctx.fillText('Pfeil-Richtung = Richtung der Kraft', 12, H - 24);
+  ctx.fillStyle = '#0f172a'; ctx.fillText('● = Angriffspunkt (wo die Kraft wirkt)', 12, H - 8);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.1.7  (ns = 'kraftpfeil') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _kpfArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('kraftpfeil')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('kraftpfeil')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Reicht es, nur zu sagen „wie stark“ eine Kraft ist – oder braucht man mehr, um sie genau zu beschreiben?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass man zu einer Kraft außer der Stärke noch … angeben muss.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle verschiedene Beträge (2, 4, 6 N) ein – was ändert sich am Pfeil?</li>
+          <li>Stelle verschiedene Richtungen ein – was ändert sich am Pfeil?</li>
+          <li>Achte auf den Startpunkt des Pfeils (Angriffspunkt).</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Was am Pfeil zeigt welche Eigenschaft der Kraft?</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Länge des Pfeils</td><td>zeigt: ${inp('b1', '?')}</td></tr>
+          <tr><td>Richtung des Pfeils</td><td>zeigt: ${inp('b2', '?')}</td></tr>
+          <tr><td>Start des Pfeils</td><td>zeigt: ${inp('b3', '?')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne zwei Kräfte mit gleichem Betrag, aber verschiedener Richtung. Beschrifte Betrag, Richtung und Angriffspunkt.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Welche drei Dinge gehören zu einer Kraft? ${inp('a1', '1. …  2. …  3. …')}</li>
+          <li>Wie zeichnet man eine Kraft? ${inp('a2', 'als …')}</li>
+          <li>Zwei gleich starke Kräfte in verschiedene Richtungen – gleiche Wirkung? ${inp('a3', 'ja/nein, weil …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Eine Kraft hat nicht nur einen ${inp('m1', 'was?')} (wie stark), sondern auch eine ${inp('m2', 'was?')}. Man zeichnet sie als ${inp('m3', 'was?')}.<br>
+        Die Länge zeigt den Betrag, die Pfeilrichtung die Richtung, der Start den ${inp('m4', 'was?')}. Eine Kraft ist eine ${inp('m5', 'welche Größe?')} Größe.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Beim Tauziehen ziehen beide Mannschaften gleich stark, aber in entgegengesetzte Richtungen. Warum ist die Richtung hier so wichtig?</div>
+        ${ta('tr1', 'Weil die Kräfte in verschiedene Richtungen zeigen, … . Nur mit der Richtung weiß man, wohin …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="kpfMini">${_kpfMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_kpfSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_kpfSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_kpfSelf(3)">😃 sicher</button>
+          <span id="kpfSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="kpfSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Größerer Betrag → längerer Pfeil (gleiche Richtung). Andere Richtung → Pfeil zeigt woanders hin (gleiche Länge). Der Startpunkt (Angriffspunkt) bleibt am Körper.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Eine Kraft ist eine gerichtete (vektorielle) Größe. Zu ihrer vollständigen Angabe gehören Betrag (Newton), Richtung und Angriffspunkt. Im Kraftpfeil: Länge ↔ Betrag, Pfeilrichtung ↔ Richtung, Startpunkt ↔ Angriffspunkt. Gleicher Betrag in verschiedene Richtungen ergibt verschiedene Wirkungen.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Eine Kraft ist nur eine Zahl.“ (2) „Die Richtung ist egal.“ (3) „Der Angriffspunkt spielt keine Rolle.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Betrag und Richtung getrennt variieren lassen; Pfeil als Bild für beide Angaben; Tauziehen/Segeln als Alltagsbezug.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4: Länge→Betrag · Richtung→Richtung · Start→Angriffspunkt. 6.1 Betrag, Richtung, Angriffspunkt. 6.2 als Pfeil. 6.3 nein, verschiedene Richtung → verschiedene Wirkung. Merksatz: Betrag · Richtung · Pfeil · Angriffspunkt · gerichtete. Minidiagnose: 1→Betrag und Richtung · 2→den Betrag (die Stärke) · 3→nein, verschiedene Wirkung.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('kraftpfeil')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('kraftpfeil', 'Hat eine Kraft nur eine Größe – oder auch eine Richtung?', body);
+}
+
+const _KPF_MINI = [
+  { q: '1. Was gehört alles zu einer Kraft?',
+    opts: ['Betrag und Richtung (und Angriffspunkt)', 'Nur der Betrag', 'Nur die Richtung'], correct: 0,
+    fb: ['Richtig! Eine Kraft hat Betrag, Richtung und Angriffspunkt.',
+         'Der Betrag allein reicht nicht – die Richtung fehlt.',
+         'Die Richtung allein reicht nicht – der Betrag fehlt.'] },
+  { q: '2. Was zeigt die Länge des Kraftpfeils?',
+    opts: ['Den Betrag (die Stärke)', 'Die Richtung', 'Den Angriffspunkt'], correct: 0,
+    fb: ['Richtig! Je länger der Pfeil, desto größer die Kraft.',
+         'Die Richtung zeigt die Pfeilrichtung, nicht die Länge.',
+         'Der Angriffspunkt ist der Startpunkt des Pfeils.'] },
+  { q: '3. Zwei gleich starke Kräfte zeigen in verschiedene Richtungen. Gleiche Wirkung?',
+    opts: ['Nein, verschiedene Wirkung', 'Ja, immer gleich', 'Nur bei großen Kräften verschieden'], correct: 0,
+    fb: ['Richtig! Die Richtung entscheidet mit über die Wirkung.',
+         'Nein, die Richtung macht einen Unterschied.',
+         'Die Richtung zählt bei jeder Kraft.'] }
+];
+function _kpfMiniHTML() {
+  return _KPF_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_kpfAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="kpfFb${qi}"></div></div>`).join('');
+}
+function _kpfAns(qi, oi) {
+  const m = _KPF_MINI[qi], el = document.getElementById('kpfFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _kpfSelf(n) {
+  const out = document.getElementById('kpfSelfOut'), val = document.getElementById('kpfSelfVal');
+  if (val) { val.value = String(n); _abSave('kraftpfeil'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
