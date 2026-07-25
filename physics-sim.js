@@ -238,6 +238,7 @@ const _physAbDefs = {
   'reibung-rs': { titel: 'Warum bremst mich der Boden aus? (Reibung)', ns: 'reibungrs', html: () => _rbgArbeitsblattHTML() },
   'bewegung-beschreiben': { titel: 'Wie kann ich eine Bewegung beschreiben?', ns: 'bewbeschr', html: () => _bwbArbeitsblattHTML() },
   'geschwindigkeit-rs': { titel: 'Was bedeutet „schnell“? (v = s/t)', ns: 'geschwrs', html: () => _gswArbeitsblattHTML() },
+  'gleichfoermige-bewegung': { titel: 'Gleichförmige Bewegung – gleiche Wege in gleichen Zeiten', ns: 'glbew', html: () => _glbArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -1009,6 +1010,16 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('gswAnim', 'gswAnim');
     _pSim.start(dt => _gswUpdate(dt), (ctx, cv) => _gswDraw(ctx, cv), []);
     _abRestore('geschwrs');
+  },
+
+  // ── 9.2.3 BEWEGUNG: GLEICHFÖRMIG (s ~ t) ───────────────────────
+  'gleichfoermige-bewegung': modal => {
+    _glbInit();
+    modal.innerHTML = _glbHTML();
+    _glbStatus();
+    _pSim = new PhysicsSimEngine('glbAnim', 'glbAnim');
+    _pSim.start(dt => _glbUpdate(dt), (ctx, cv) => _glbDraw(ctx, cv), []);
+    _abRestore('glbew');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -56927,5 +56938,229 @@ function _gswAns(qi, oi) {
 function _gswSelf(n) {
   const out = document.getElementById('gswSelfOut'), val = document.getElementById('gswSelfVal');
   if (val) { val.value = String(n); _abSave('geschwrs'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.2.3  GLEICHFÖRMIGE BEWEGUNG – GLEICHE WEGE IN GLEICHEN ZEITEN
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Bewegung"
+// Konstante Geschwindigkeit: jede Sekunde derselbe Weg → gleiche
+// Sekundenmarken; im s-t-Diagramm eine Ursprungsgerade (s ~ t).
+// ═══════════════════════════════════════════════════════
+let _glb = null;
+const _GLB_SPEED = { langsam: 6, mittel: 10, schnell: 15 };  // m/s
+const _GLB_SMAX = 100, _GLB_TMAX = 18;
+function _glbInit() { _glb = { speed: 'mittel', running: false, t: 0, s: 0, marks: [], lastSek: 0 }; }
+function _glbV() { return _GLB_SPEED[_glb.speed]; }
+
+function _glbHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim glb-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📏 Warum ist „gleich schnell“ nicht dasselbe wie „gleich weit“?</h3>
+    <div class="fpm-note" style="margin-top:2px">Der Wagen fährt mit gleichbleibendem Tempo. Jede Sekunde setzt er eine Marke. Wie groß sind die Abstände – und wie sieht das s-t-Diagramm aus?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="glbAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Tempo:</span>
+          <button class="sim-btn" id="glblangsam" onclick="_glbSet('langsam')">langsam</button>
+          <button class="sim-btn primary" id="glbmittel" onclick="_glbSet('mittel')">mittel</button>
+          <button class="sim-btn" id="glbschnell" onclick="_glbSet('schnell')">schnell</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" id="glbPlay" onclick="_glbToggle()">▶ Start</button>
+          <button class="sim-btn" onclick="_glbReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Gleichförmige Bewegung</div>
+        <div class="lmp-status" id="glbStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Bei einer <b>gleichförmigen Bewegung</b> ist die Geschwindigkeit <b>konstant</b>: In gleichen Zeiten werden <b>gleiche Wege</b> zurückgelegt (die Sekundenmarken haben gleiche Abstände). Im <b>s-t-Diagramm</b> ergibt sich eine <b>Gerade durch den Ursprung</b> – der Weg ist proportional zur Zeit.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Gleich schnell heißt: gleiche Wege pro Sekunde – der Wagen kommt aber trotzdem immer <b>weiter</b>.
+    </p>
+    ${_glbArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _glbSet(k) {
+  if (!_glb) return;
+  _glb.speed = k;
+  ['langsam', 'mittel', 'schnell'].forEach(x => document.getElementById('glb' + x)?.classList.toggle('primary', x === k));
+  _glbReset();
+}
+function _glbToggle() {
+  if (!_glb) return;
+  if (_glb.s >= _GLB_SMAX) _glbReset();
+  _glb.running = !_glb.running;
+  const b = document.getElementById('glbPlay'); if (b) b.textContent = _glb.running ? '⏸ Stopp' : '▶ Start';
+  _glbStatus();
+}
+function _glbReset() {
+  if (!_glb) return;
+  _glb.running = false; _glb.t = 0; _glb.s = 0; _glb.marks = []; _glb.lastSek = 0;
+  const b = document.getElementById('glbPlay'); if (b) b.textContent = '▶ Start';
+  _glbStatus();
+}
+function _glbStatus() {
+  const el = document.getElementById('glbStatus'); if (!el) return;
+  const v = _glbV();
+  el.innerHTML = `Tempo <b>v = ${v} m/s</b> (konstant). In jeder Sekunde <b>${v} m</b> → alle Marken gleich weit. Aktuell: t = ${_glb.t.toFixed(1).replace('.', ',')} s, s = ${_glb.s.toFixed(0)} m.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _glbUpdate(dt) {
+  if (!_glb || !_glb.running) return;
+  _glb.t += dt; _glb.s += _glbV() * dt;
+  const sek = Math.floor(_glb.t);
+  if (sek > _glb.lastSek && _glb.s <= _GLB_SMAX) { _glb.lastSek = sek; _glb.marks.push({ t: sek, s: _glbV() * sek }); }
+  if (_glb.s >= _GLB_SMAX) { _glb.s = _GLB_SMAX; _glb.running = false; const b = document.getElementById('glbPlay'); if (b) b.textContent = '▶ Start'; _glbStatus(); }
+}
+function _glbDraw(ctx, cv) {
+  if (!_glb) return;
+  const W = cv.width, H = cv.height, v = _glbV();
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  // ── Track oben ──
+  const xL = 34, xR = 410, roadY = 54;
+  const pxs = s => xL + (s / _GLB_SMAX) * (xR - xL);
+  ctx.fillStyle = '#334155'; ctx.fillRect(xL, roadY, xR - xL, 26);
+  // Sekundenmarken (gleiche Abstände)
+  _glb.marks.forEach(mk => {
+    const x = pxs(mk.s);
+    ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x, roadY - 8); ctx.lineTo(x, roadY + 26); ctx.stroke();
+    ctx.fillStyle = '#b45309'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(mk.t + 's', x, roadY - 10);
+  });
+  // Wagen
+  ctx.font = '22px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('🚗', pxs(_glb.s), roadY + 20);
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('v = ' + v + ' m/s', xL, 24);
+  ctx.textAlign = 'right'; ctx.fillText('⏱ ' + _glb.t.toFixed(1).replace('.', ',') + ' s', xR, 24);
+  // ── s-t-Diagramm unten ──
+  const oxL = 44, oxR = W - 18, oyT = 108, oyB = H - 24;
+  const px = t => oxL + (t / _GLB_TMAX) * (oxR - oxL);
+  const py = s => oyB - (s / _GLB_SMAX) * (oyB - oyT);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(oxL, oyT); ctx.lineTo(oxL, oyB); ctx.lineTo(oxR, oyB); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.textAlign = 'center'; for (let t = 0; t <= _GLB_TMAX; t += 3) { const x = px(t); ctx.strokeStyle = 'rgba(100,116,139,0.2)'; ctx.beginPath(); ctx.moveTo(x, oyT); ctx.lineTo(x, oyB); ctx.stroke(); ctx.fillText(t + '', x, oyB + 12); }
+  ctx.textAlign = 'right'; for (let s = 0; s <= 100; s += 50) { const y = py(s); ctx.fillText(s + '', oxL - 4, y + 3); }
+  ctx.fillStyle = '#cbd5e1'; ctx.textAlign = 'center'; ctx.fillText('t in s', (oxL + oxR) / 2, H - 10);
+  ctx.save(); ctx.translate(12, (oyT + oyB) / 2); ctx.rotate(-Math.PI / 2); ctx.fillText('s in m', 0, 0); ctx.restore();
+  // Gerade (Ursprung → aktueller Punkt)
+  ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(px(0), py(0)); ctx.lineTo(px(_glb.t), py(_glb.s)); ctx.stroke();
+  // Sekundenpunkte
+  ctx.fillStyle = '#f59e0b'; _glb.marks.forEach(mk => { ctx.beginPath(); ctx.arc(px(mk.t), py(mk.s), 3.5, 0, 2 * Math.PI); ctx.fill(); });
+  ctx.fillStyle = '#2563eb'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('s-t-Diagramm: Gerade', oxL + 6, oyT + 12);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.2.3  (ns = 'glbew') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _glbArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('glbew')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('glbew')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was bedeutet „gleich schnell“ genau – und warum bleibt der Wagen dabei nicht am selben Ort?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Sekundenmarken … Abstände haben.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle ein Tempo und starte den Wagen.</li>
+          <li>Beobachte die Abstände der Sekundenmarken.</li>
+          <li>Schau, welche Form das s-t-Diagramm annimmt.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Tempo mittel (10 m/s). Trage den Weg nach 1, 2 und 3 Sekunden ein.</div>
+        <table class="ab-table"><tbody>
+          <tr><td>nach 1 s</td><td>s = ${inp('s1', 'm')}</td></tr>
+          <tr><td>nach 2 s</td><td>s = ${inp('s2', 'm')}</td></tr>
+          <tr><td>nach 3 s</td><td>s = ${inp('s3', 'm')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne das s-t-Diagramm. Welche Form hat die Linie?</div>
+        <div class="ab-skizze">Platz für dein Diagramm</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie sind die Abstände der Sekundenmarken? ${inp('a1', '')}</li>
+          <li>Welche Form hat das s-t-Diagramm? ${inp('a2', 'eine … durch den …')}</li>
+          <li>Doppelte Zeit bedeutet welchen Weg? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Bei einer gleichförmigen Bewegung ist die Geschwindigkeit ${inp('m1', 'wie?')}. In gleichen Zeiten legt der Körper ${inp('m2', 'wie?')} Wege zurück.<br>
+        Im s-t-Diagramm entsteht eine ${inp('m3', 'Form?')} durch den Ursprung: Der Weg ist ${inp('m4', 'wie?')} zur Zeit.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Auto fährt mit Tempomat auf der Autobahn. Warum ist das eine gleichförmige Bewegung?</div>
+        ${ta('tr1', 'Weil die Geschwindigkeit … bleibt, legt es in jeder Sekunde … zurück.', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="glbMini">${_glbMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_glbSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_glbSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_glbSelf(3)">😃 sicher</button>
+          <span id="glbSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="glbSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Bei konstantem Tempo (z. B. 10 m/s) haben die Sekundenmarken gleiche Abstände (je 10 m). Weg nach 1/2/3 s = 10/20/30 m. Das s-t-Diagramm ist eine Gerade durch den Ursprung.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Gleichförmige Bewegung = konstante Geschwindigkeit. Es gilt s = v · t, also ist s proportional zu t (Ursprungsgerade im s-t-Diagramm; Steigung = Geschwindigkeit). „Gleich schnell“ meint konstantes v – der zurückgelegte Weg wächst dabei stetig weiter.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Gleich schnell heißt, der Wagen bleibt an einer Stelle.“ (2) „Die Marken werden immer größer.“ (das wäre beschleunigt). (3) „Das s-t-Diagramm ist eine Kurve.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Marken-Abstände direkt vergleichen; s = v · t für einzelne Sekunden ausrechnen; Steigung = Tempo.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 10/20/30 m. 6.1 alle gleich groß. 6.2 eine Gerade durch den Ursprung. 6.3 doppelten Weg. Merksatz: konstant · gleiche · Gerade · proportional. Minidiagnose: 1→konstante Geschwindigkeit, gleiche Wege · 2→Gerade durch den Ursprung · 3→doppelter Weg.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('glbew')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('glbew', 'Gleichförmige Bewegung – gleiche Wege in gleichen Zeiten', body);
+}
+
+const _GLB_MINI = [
+  { q: '1. Was bedeutet eine gleichförmige Bewegung?',
+    opts: ['Konstante Geschwindigkeit – gleiche Wege in gleichen Zeiten', 'Immer schneller werden', 'Stillstand'], correct: 0,
+    fb: ['Richtig! Das Tempo bleibt gleich, die Wege pro Sekunde sind gleich.',
+         'Das wäre eine beschleunigte Bewegung.',
+         'Bei Stillstand ändert sich der Weg gar nicht.'] },
+  { q: '2. Welche Form hat das s-t-Diagramm einer gleichförmigen Bewegung?',
+    opts: ['Eine Gerade durch den Ursprung', 'Eine gebogene Kurve', 'Eine waagerechte Linie'], correct: 0,
+    fb: ['Richtig! Weg proportional zur Zeit → Ursprungsgerade.',
+         'Eine Kurve gehört zur beschleunigten Bewegung.',
+         'Waagerecht wäre Stillstand.'] },
+  { q: '3. Doppelte Zeit bei gleichförmiger Bewegung bedeutet …',
+    opts: ['doppelter Weg', 'gleicher Weg', 'halber Weg'], correct: 0,
+    fb: ['Richtig! s ist proportional zu t.',
+         'Nein, der Weg wächst mit der Zeit.',
+         'Nein, mehr Zeit bedeutet mehr Weg.'] }
+];
+function _glbMiniHTML() {
+  return _GLB_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_glbAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="glbFb${qi}"></div></div>`).join('');
+}
+function _glbAns(qi, oi) {
+  const m = _GLB_MINI[qi], el = document.getElementById('glbFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _glbSelf(n) {
+  const out = document.getElementById('glbSelfOut'), val = document.getElementById('glbSelfVal');
+  if (val) { val.value = String(n); _abSave('glbew'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
