@@ -244,6 +244,7 @@ const _physAbDefs = {
   'beschleunigung-formel-jg9': { titel: 'Gleichmäßig beschleunigt – v = a · t', ns: 'vateq', html: () => _vatArbeitsblattHTML() },
   'verzoegerung-jg9': { titel: 'Verzögerung – schneller vs. langsamer werden', ns: 'verzoeg', html: () => _vzgArbeitsblattHTML() },
   'bremsweg-jg9': { titel: 'Anhalteweg – Reaktionsweg + Bremsweg (Bremsweg ∝ v²)', ns: 'bremsweg', html: () => _brwArbeitsblattHTML() },
+  'freier-fall-jg9': { titel: 'Freier Fall – alle Körper fallen gleich schnell', ns: 'freifall', html: () => _fflArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -1070,6 +1071,15 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('brwAnim', 'brwAnim');
     _pSim.start(dt => _brwUpdate(dt), (ctx, cv) => _brwDraw(ctx, cv), []);
     _abRestore('bremsweg');
+  },
+
+  'freier-fall-jg9': modal => {
+    _fflInit();
+    modal.innerHTML = _fflHTML();
+    _fflStatus();
+    _pSim = new PhysicsSimEngine('fflAnim', 'fflAnim');
+    _pSim.start(dt => _fflUpdate(dt), (ctx, cv) => _fflDraw(ctx, cv), []);
+    _abRestore('freifall');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -58423,5 +58433,230 @@ function _brwAns(qi, oi) {
 function _brwSelf(n) {
   const out = document.getElementById('brwSelfOut'), val = document.getElementById('brwSelfVal');
   if (val) { val.value = String(n); _abSave('bremsweg'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.2.9  FREIER FALL – ALLE KÖRPER FALLEN GLEICH SCHNELL
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Bewegung"
+// Ohne Luftwiderstand: leichte & schwere Kugel kommen
+// gleichzeitig an. Fallzeit unabhängig von der Masse.
+// Fallbeschleunigung g ≈ 9,8 m/s²; s = ½·g·t², v = g·t.
+// ═══════════════════════════════════════════════════════
+let _ffl = null;
+const _FFL_G = 9.8, _FFL_H = 20;           // m/s², Fallhöhe m
+function _fflInit() { _ffl = { masse: 5, running: false, t: 0 }; }
+function _fflTFall() { return Math.sqrt(2 * _FFL_H / _FFL_G); }
+function _fflFall(t) { return Math.min(_FFL_H, 0.5 * _FFL_G * t * t); }   // gefallener Weg
+function _fflV(t) { return Math.min(_FFL_G * _fflTFall(), _FFL_G * t); }
+
+function _fflHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim ffl-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🪨 Warum fällt ein schwerer Stein nicht schneller als ein leichter?</h3>
+    <div class="fpm-note" style="margin-top:2px">Links fällt eine leichte Kugel, rechts eine schwere – beide ohne Luftwiderstand, aus gleicher Höhe. Ändere die Masse der schweren Kugel: Kommt sie früher unten an?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="fflAnim" width="440" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">schwere Kugel:</span>
+          <button class="sim-btn" id="ffl1" onclick="_fflSet(1)">1 kg</button>
+          <button class="sim-btn primary" id="ffl5" onclick="_fflSet(5)">5 kg</button>
+          <button class="sim-btn" id="ffl10" onclick="_fflSet(10)">10 kg</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" id="fflPlay" onclick="_fflToggle()">▶ Loslassen</button>
+          <button class="sim-btn" onclick="_fflReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Freier Fall (ohne Luft)</div>
+        <div class="lmp-status" id="fflStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Ohne Luftwiderstand fallen <b>alle Körper gleich schnell</b> – die Fallzeit hängt <b>nicht von der Masse</b> ab. Beide Kugeln haben zu jedem Zeitpunkt dieselbe Geschwindigkeit und kommen <b>gleichzeitig</b> unten an. Die <b>Fallbeschleunigung</b> ist g ≈ <b>9,8 m/s²</b>: s = ½·g·t², v = g·t.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Im Vakuum fallen Hammer und Feder gleich schnell – das zeigte ein berühmtes Experiment auf dem Mond.
+    </p>
+    ${_fflArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _fflSet(m) {
+  if (!_ffl) return;
+  _ffl.masse = m;
+  [1, 5, 10].forEach(x => document.getElementById('ffl' + x)?.classList.toggle('primary', x === m));
+  _fflReset();
+}
+function _fflToggle() {
+  if (!_ffl) return;
+  if (_ffl.t >= _fflTFall()) _ffl.t = 0;
+  _ffl.running = !_ffl.running;
+  const b = document.getElementById('fflPlay'); if (b) b.textContent = _ffl.running ? '⏸ Stopp' : '▶ Loslassen';
+  _fflStatus();
+}
+function _fflReset() {
+  if (!_ffl) return;
+  _ffl.running = false; _ffl.t = 0;
+  const b = document.getElementById('fflPlay'); if (b) b.textContent = '▶ Loslassen';
+  _fflStatus();
+}
+function _fflStatus() {
+  const el = document.getElementById('fflStatus'); if (!el) return;
+  const t = _ffl.t, s = _fflFall(t), v = _fflV(t), unten = s >= _FFL_H - 0.01;
+  el.innerHTML = `<b>Beide Kugeln gleich schnell</b>, egal ob 0,1 kg oder ${_ffl.masse} kg.<br>`
+    + `Nach t = ${t.toFixed(2).replace('.', ',')} s: gefallen ${s.toFixed(1).replace('.', ',')} m, v = <b>${v.toFixed(1).replace('.', ',')} m/s</b>`
+    + (unten ? ` → <b>gleichzeitig unten!</b> (Fallzeit ${_fflTFall().toFixed(2).replace('.', ',')} s)` : '.');
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _fflUpdate(dt) {
+  if (!_ffl || !_ffl.running) return;
+  _ffl.t += dt;
+  if (_ffl.t >= _fflTFall()) { _ffl.t = _fflTFall(); _ffl.running = false; const b = document.getElementById('fflPlay'); if (b) b.textContent = '▶ Loslassen'; }
+  _fflStatus();
+}
+function _fflDraw(ctx, cv) {
+  if (!_ffl) return;
+  const W = cv.width, H = cv.height, t = _ffl.t, s = _fflFall(t);
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#eff6ff'; ctx.fillRect(0, 0, W, H);
+  const topY = 40, groundY = H - 34;
+  const pyf = ss => topY + (ss / _FFL_H) * (groundY - topY);
+  const xLeicht = 130, xSchwer = 300;
+  // Boden
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(0, groundY, W, 4);
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Boden (Fallhöhe ' + _FFL_H + ' m)', W / 2, groundY + 18);
+  // Höhen-Skala + gemeinsame Höhenlinie
+  ctx.strokeStyle = 'rgba(37,99,235,0.25)'; ctx.setLineDash([3, 3]); ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(40, pyf(s)); ctx.lineTo(W - 20, pyf(s)); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#2563eb'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('gleiche Höhe', 44, pyf(s) - 4);
+  // Startlinie
+  ctx.strokeStyle = '#cbd5e1'; ctx.beginPath(); ctx.moveTo(40, topY); ctx.lineTo(W - 20, topY); ctx.stroke();
+  // Leichte Kugel (klein, gelb)
+  const yL = pyf(s);
+  ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(xLeicht, yL, 9, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#ca8a04'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('leicht (0,1 kg)', xLeicht, topY - 8);
+  // Schwere Kugel (groß, dunkel) – Größe ~ Masse (nur visuell)
+  const rS = 10 + _ffl.masse; const yS = pyf(s);
+  ctx.fillStyle = '#475569'; ctx.beginPath(); ctx.arc(xSchwer, yS - (rS - 9), rS, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('schwer (' + _ffl.masse + ' kg)', xSchwer, topY - 8);
+  // Kopfzeile
+  ctx.fillStyle = '#1e3a8a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('freier Fall – ohne Luft, g = 9,8 m/s²', 40, 22);
+  ctx.fillStyle = '#334155'; ctx.textAlign = 'right'; ctx.fillText('⏱ ' + t.toFixed(2).replace('.', ',') + ' s   v = ' + _fflV(t).toFixed(1).replace('.', ',') + ' m/s', W - 20, 22);
+  // Landehinweis
+  if (s >= _FFL_H - 0.01) { ctx.fillStyle = '#16a34a'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('✅ gleichzeitig unten – gleiche Fallzeit!', W / 2, groundY - 10); }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.2.9  (ns = 'freifall') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _fflArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('freifall')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('freifall')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Kommt eine schwere Kugel früher unten an als eine leichte, wenn beide gleichzeitig losgelassen werden (ohne Luft)?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die … Kugel zuerst unten ist, weil …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Lass beide Kugeln fallen und achte auf die Ankunft.</li>
+          <li>Stelle die schwere Kugel auf 1 kg, 5 kg und 10 kg.</li>
+          <li>Beobachte, ob sich die Fallzeit ändert.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Fallhöhe 20 m. Trage die Fallzeit ein.</div>
+        <table class="ab-table"><tbody>
+          <tr><td>schwere Kugel 1 kg</td><td>Fallzeit = ${inp('t1', 's')}</td></tr>
+          <tr><td>schwere Kugel 5 kg</td><td>Fallzeit = ${inp('t5', 's')}</td></tr>
+          <tr><td>schwere Kugel 10 kg</td><td>Fallzeit = ${inp('t10', 's')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne beide Kugeln kurz vor dem Aufprall. Wo sind sie?</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Welche Kugel kommt zuerst unten an? ${inp('a1', '')}</li>
+          <li>Hängt die Fallzeit von der Masse ab? ${inp('a2', '')}</li>
+          <li>Wie groß ist die Fallbeschleunigung g auf der Erde? ${inp('a3', 'g ≈ … m/s²')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ohne Luftwiderstand fallen alle Körper ${inp('m1', 'wie?')} – die Fallzeit hängt ${inp('m2', 'wovon nicht?')} von der Masse ab.<br>
+        Alle Körper fallen mit der Fallbeschleunigung g ≈ ${inp('m3', 'Wert?')}. Man nennt das den ${inp('m4', 'Begriff?')} Fall.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Im Vakuum fallen eine Münze und eine Papierkugel gleich schnell. Warum ist das im Alltag (mit Luft) meist nicht so?</div>
+        ${ta('tr1', 'Weil im Alltag die … eine Rolle spielt, die … bremst.', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="fflMini">${_fflMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_fflSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_fflSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_fflSelf(3)">😃 sicher</button>
+          <span id="fflSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="fflSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Beide Kugeln fallen synchron und kommen gleichzeitig an – egal ob die schwere Kugel 1, 5 oder 10 kg wiegt. Die Fallzeit bleibt gleich (bei 20 m ≈ 2,0 s). Die häufige Vermutung „schwerer = schneller“ bestätigt sich nicht.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Ohne Luftwiderstand fallen alle Körper mit derselben Fallbeschleunigung g ≈ 9,8 m/s² (freier Fall). Die Fallzeit t = √(2h/g) hängt nur von der Höhe ab, nicht von der Masse. Es gilt s = ½·g·t² und v = g·t. (Die Gewichtskraft ist zwar größer, aber die größere Masse ist auch „träger“ – beides hebt sich auf.)</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Schwere Dinge fallen schneller.“ (gilt nur mit Luftwiderstand). (2) „Doppelte Masse = halbe Fallzeit.“ (3) „g hängt vom Gegenstand ab.“ (g ist für alle gleich).</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Fallzeit bei verschiedenen Massen direkt vergleichen; Höhe konstant halten; Vakuum-Idee betonen (Luft weglassen).</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: alle ≈ 2,0 s. 6.1 keine – beide gleichzeitig. 6.2 nein, sie hängt nicht von der Masse ab. 6.3 g ≈ 9,8 m/s². Merksatz: gleich schnell · nicht · 9,8 m/s² · freien. Transfer: der Luftwiderstand, der leichte/große Körper stärker bremst. Minidiagnose: 1→gleichzeitig · 2→nein, unabhängig von der Masse · 3→9,8 m/s².</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('freifall')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('freifall', 'Freier Fall – alle Körper fallen gleich schnell', body);
+}
+
+const _FFL_MINI = [
+  { q: '1. Zwei verschieden schwere Kugeln fallen ohne Luft aus gleicher Höhe. Was passiert?',
+    opts: ['Sie kommen gleichzeitig an', 'Die schwere ist zuerst unten', 'Die leichte ist zuerst unten'], correct: 0,
+    fb: ['Richtig! Ohne Luft fallen alle Körper gleich schnell.',
+         'Nein, das gilt nur mit Luftwiderstand.',
+         'Nein, die Masse spielt für die Fallzeit keine Rolle.'] },
+  { q: '2. Wovon hängt die Fallzeit im freien Fall ab?',
+    opts: ['Nur von der Höhe (nicht der Masse)', 'Nur von der Masse', 'Von der Farbe'], correct: 0,
+    fb: ['Richtig! t = √(2h/g) – nur die Höhe zählt.',
+         'Nein, die Masse spielt keine Rolle.',
+         'Die Farbe ist völlig egal.'] },
+  { q: '3. Wie groß ist die Fallbeschleunigung g auf der Erde?',
+    opts: ['≈ 9,8 m/s²', '≈ 1,6 m/s²', '≈ 100 m/s²'], correct: 0,
+    fb: ['Richtig! g ≈ 9,8 m/s² für alle Körper.',
+         '1,6 m/s² ist die Fallbeschleunigung auf dem Mond.',
+         'So groß ist g auf der Erde nicht.'] }
+];
+function _fflMiniHTML() {
+  return _FFL_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_fflAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="fflFb${qi}"></div></div>`).join('');
+}
+function _fflAns(qi, oi) {
+  const m = _FFL_MINI[qi], el = document.getElementById('fflFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _fflSelf(n) {
+  const out = document.getElementById('fflSelfOut'), val = document.getElementById('fflSelfVal');
+  if (val) { val.value = String(n); _abSave('freifall'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
