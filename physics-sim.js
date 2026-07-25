@@ -234,6 +234,7 @@ const _physAbDefs = {
   'kraefte-addieren': { titel: 'Was passiert, wenn zwei Kräfte gleichzeitig ziehen?', ns: 'kraefteadd', html: () => _kadArbeitsblattHTML() },
   'kraefte-gleichgewicht': { titel: 'Warum bleibt eine hängende Lampe hängen?', ns: 'kraeftegg', html: () => _kggArbeitsblattHTML() },
   'wechselwirkung': { titel: 'Kraft und Gegenkraft – warum drücke ich zurück?', ns: 'wechselwirkung', html: () => _wwkArbeitsblattHTML() },
+  'schiefe-ebene': { titel: 'Warum geht ein Stein über eine Rampe leichter hoch?', ns: 'schiefeebene', html: () => _sieArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -965,6 +966,16 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('wwkAnim', 'wwkAnim');
     _pSim.start(dt => _wwkUpdate(dt), (ctx, cv) => _wwkDraw(ctx, cv), []);
     _abRestore('wechselwirkung');
+  },
+
+  // ── 9.1.11 KRÄFTE: SCHIEFE EBENE (RAMPE) ───────────────────────
+  'schiefe-ebene': modal => {
+    _sieInit();
+    modal.innerHTML = _sieHTML();
+    _sieStatus();
+    _pSim = new PhysicsSimEngine('sieAnim', 'sieAnim');
+    _pSim.start(dt => _sieUpdate(dt), (ctx, cv) => _sieDraw(ctx, cv), []);
+    _abRestore('schiefeebene');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -56037,5 +56048,211 @@ function _wwkAns(qi, oi) {
 function _wwkSelf(n) {
   const out = document.getElementById('wwkSelfOut'), val = document.getElementById('wwkSelfVal');
   if (val) { val.value = String(n); _abSave('wechselwirkung'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.1.11  WARUM GEHT EIN SCHWERER STEIN ÜBER EINE RAMPE LEICHTER HOCH?
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Kräfte"
+// Schiefe Ebene: flachere Rampe → kleinere Zugkraft (F = G·sinα),
+// dafür längerer Weg. Kraft × Weg bleibt gleich (Vorbereitung Arbeit).
+// ═══════════════════════════════════════════════════════
+let _sie = null;
+const _SIE_G = 6;                                  // Gewichtskraft der Last (N)
+const _SIE_RAMPS = {
+  flach: { name: 'flache Rampe', sin: 0.25, cos: 0.968 },
+  mittel: { name: 'mittlere Rampe', sin: 0.5, cos: 0.866 },
+  steil: { name: 'steile Rampe', sin: 0.75, cos: 0.661 }
+};
+function _sieInit() { _sie = { ramp: 'mittel', t: 0 }; }
+function _sieF() { return _SIE_G * _SIE_RAMPS[_sie.ramp].sin; }        // Zugkraft
+function _sieWeg() { return 1 / _SIE_RAMPS[_sie.ramp].sin; }           // Weg in Vielfachen der Höhe
+
+function _sieHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim sie-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📐 Warum geht ein schwerer Stein über eine Rampe leichter hoch?</h3>
+    <div class="fpm-note" style="margin-top:2px">Die Last (6 N) soll auf dieselbe Höhe. Verändere die Steilheit der Rampe. Wie viel Zugkraft brauchst du – und wie lang ist der Weg?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="sieAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Rampe:</span>
+          <button class="sim-btn" id="sieRflach" onclick="_sieSet('flach')">flach</button>
+          <button class="sim-btn primary" id="sieRmittel" onclick="_sieSet('mittel')">mittel</button>
+          <button class="sim-btn" id="sieRsteil" onclick="_sieSet('steil')">steil</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Zugkraft und Weg</div>
+        <div class="lmp-status" id="sieStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Eine <b>schiefe Ebene</b> (Rampe) spart <b>Kraft</b>: Je flacher die Rampe, desto <b>kleiner</b> die Zugkraft. Dafür ist der <b>Weg länger</b>. <b>Kraft × Weg</b> bleibt aber gleich – so viel wie beim senkrechten Heben.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Weniger Kraft erkauft man mit <b>mehr Weg</b>. Senkrecht heben: 6 N. Über die Rampe: weniger, aber weiter.
+    </p>
+    ${_sieArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _sieSet(r) {
+  if (!_sie) return;
+  _sie.ramp = r;
+  Object.keys(_SIE_RAMPS).forEach(x => document.getElementById('sieR' + x)?.classList.toggle('primary', x === r));
+  _sieStatus();
+}
+function _sieStatus() {
+  const el = document.getElementById('sieStatus'); if (!el) return;
+  const F = _sieF(), w = _sieWeg();
+  el.innerHTML = `${_SIE_RAMPS[_sie.ramp].name}: Zugkraft <b>F = ${F.toFixed(1).replace('.', ',')} N</b> (statt 6 N senkrecht), Weg <b>${w.toFixed(1).replace('.', ',')} × so lang</b> wie die Höhe. Kraft × Weg = <b>${(F * w).toFixed(0)}</b> – genauso viel wie beim direkten Heben.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation / Canvas ─────────────────────────────────
+function _sieUpdate(dt) { if (_sie) _sie.t += dt; }
+function _sieDraw(ctx, cv) {
+  if (!_sie) return;
+  const W = cv.width, H = cv.height, r = _SIE_RAMPS[_sie.ramp];
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const x0 = 40, groundY = 196, Hpx = 84, base = Hpx * (r.cos / r.sin);
+  const p1x = x0 + base, p1y = groundY - Hpx;
+  // Boden
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(20, groundY); ctx.lineTo(W - 20, groundY); ctx.stroke();
+  // Rampendreieck
+  ctx.fillStyle = 'rgba(59,130,246,0.12)'; ctx.beginPath(); ctx.moveTo(x0, groundY); ctx.lineTo(p1x, p1y); ctx.lineTo(p1x, groundY); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(x0, groundY); ctx.lineTo(p1x, p1y); ctx.stroke();
+  // Höhen-Markierung (gestrichelt)
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(p1x, groundY); ctx.lineTo(p1x, p1y); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Höhe (gleich)', p1x + 6, (groundY + p1y) / 2);
+  // Block auf der Rampe (Mitte)
+  const t = 0.5, ux = (p1x - x0), uy = (p1y - groundY), L = Math.hypot(ux, uy), nx = ux / L, ny = uy / L;
+  const bx = x0 + ux * t, by = groundY + uy * t;
+  ctx.save(); ctx.translate(bx, by); ctx.rotate(Math.atan2(uy, ux));
+  ctx.fillStyle = '#f59e0b'; ctx.fillRect(-13, -20, 26, 20); ctx.strokeStyle = '#b45309'; ctx.lineWidth = 2; ctx.strokeRect(-13, -20, 26, 20);
+  ctx.fillStyle = '#fff'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('6 N', 0, -7);
+  ctx.restore();
+  // Zugkraft-Pfeil die Rampe hinauf (grün), Länge ~ F
+  const F = _sieF(), pl = 12 + F * 12;
+  _kwkArrow(ctx, bx - ny * 10, by - 10, bx - ny * 10 + nx * pl, by - 10 + ny * pl, '#22c55e');
+  ctx.fillStyle = '#15803d'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Zugkraft ' + F.toFixed(1).replace('.', ',') + ' N', bx + 40, by - 26);
+  // Vergleich: senkrecht heben (rechts)
+  const svx = W - 40;
+  _kwkArrow(ctx, svx, groundY, svx, groundY - _SIE_G * 12, '#ef4444');
+  ctx.fillStyle = '#b91c1c'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('senkrecht', svx, groundY + 14); ctx.fillText('6 N', svx, groundY - _SIE_G * 12 - 6);
+  // Weg-Angabe
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Weg = ' + _sieWeg().toFixed(1).replace('.', ',') + ' × Höhe', x0, 20);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.1.11  (ns = 'schiefeebene') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _sieArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('schiefeebene')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('schiefeebene')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum kann ich eine schwere Last über eine Rampe leichter nach oben bringen als beim senkrechten Heben?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass ich über eine Rampe … Kraft brauche, aber … .', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle die Rampe nacheinander auf flach, mittel und steil.</li>
+          <li>Lies die Zugkraft und die Weglänge ab.</li>
+          <li>Berechne Kraft × Weg und vergleiche.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Last = 6 N. Trage Zugkraft, Weg (× Höhe) und Kraft × Weg ein.</div>
+        <table class="ab-table"><tbody>
+          <tr><td>flache Rampe</td><td>F = ${inp('f1', 'N')}</td><td>Weg = ${inp('w1', '× Höhe')}</td><td>F·Weg = ${inp('p1', '')}</td></tr>
+          <tr><td>mittlere Rampe</td><td>F = ${inp('f2', 'N')}</td><td>Weg = ${inp('w2', '× Höhe')}</td><td>F·Weg = ${inp('p2', '')}</td></tr>
+          <tr><td>steile Rampe</td><td>F = ${inp('f3', 'N')}</td><td>Weg = ${inp('w3', '× Höhe')}</td><td>F·Weg = ${inp('p3', '')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne eine flache und eine steile Rampe auf dieselbe Höhe. Bei welcher ist der Zugkraft-Pfeil kürzer?</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wobei brauchst du am wenigsten Kraft? ${inp('a1', 'bei der … Rampe')}</li>
+          <li>Was passiert dabei mit dem Weg? ${inp('a2', '')}</li>
+          <li>Was bleibt bei allen Rampen gleich? ${inp('a3', 'Kraft × …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Eine Rampe (schiefe Ebene) spart ${inp('m1', 'was?')}: Je flacher die Rampe, desto ${inp('m2', 'weniger/mehr')} Kraft.<br>
+        Dafür wird der ${inp('m3', 'was?')} länger. Das Produkt Kraft × Weg bleibt ${inp('m4', 'wie?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum haben Rollstuhlrampen und Bergstraßen (Serpentinen) eine geringe Steigung?</div>
+        ${ta('tr1', 'Damit man/das Fahrzeug weniger Kraft braucht. Man nimmt dafür … in Kauf.', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="sieMini">${_sieMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_sieSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_sieSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_sieSelf(3)">😃 sicher</button>
+          <span id="sieSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="sieSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Last 6 N. Flach: F ≈ 1,5 N, Weg 4× Höhe. Mittel: F = 3 N, Weg 2× Höhe. Steil: F ≈ 4,5 N, Weg ≈ 1,3× Höhe. Kraft × Weg ≈ 6 in allen Fällen – so viel wie beim senkrechten Heben (6 N · 1 Höhe).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> An der reibungsfreien schiefen Ebene ist die Hangabtriebs-/Zugkraft F = G · sin α = G · (h/l). Flachere Rampe (kleineres h/l) → kleinere Kraft, aber größere Weglänge l. Das Produkt F · l = G · h ist die Hubarbeit und bleibt konstant („Goldene Regel der Mechanik": Was man an Kraft spart, muss man an Weg zusetzen). Vorbereitung auf 9.3 (Arbeit W = F · s).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Mit der Rampe spart man Arbeit/Energie.“ – Nein, nur Kraft. (2) „Flacher = anstrengender.“ (3) „Der Weg spielt keine Rolle.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Kraft und Weg getrennt betrachten; Kraft × Weg jeweils ausrechnen; Rampenlänge mit der Steilheit verbinden.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 1,5/3/4,5 N · 4/2/1,3 × Höhe · je ≈ 6. 6.1 bei der flachen Rampe. 6.2 der Weg wird länger. 6.3 Kraft × Weg (die Arbeit). Merksatz: Kraft · weniger · Weg · gleich. Transfer: weniger Kraft/Steigung, dafür längerer Weg. Minidiagnose: 1→Kraft · 2→weniger Kraft, längerer Weg · 3→Kraft × Weg (die Arbeit).</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('schiefeebene')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('schiefeebene', 'Warum geht ein Stein über eine Rampe leichter hoch?', body);
+}
+
+const _SIE_MINI = [
+  { q: '1. Was spart eine Rampe (schiefe Ebene)?',
+    opts: ['Kraft', 'Arbeit/Energie', 'Zeit'], correct: 0,
+    fb: ['Richtig! Man braucht weniger Kraft – dafür einen längeren Weg.',
+         'Nein, die Arbeit (Kraft × Weg) bleibt gleich.',
+         'Um Zeit geht es hier nicht.'] },
+  { q: '2. Eine flachere Rampe bedeutet …',
+    opts: ['weniger Kraft, aber längerer Weg', 'mehr Kraft und kürzerer Weg', 'gar keinen Unterschied'], correct: 0,
+    fb: ['Richtig! Flacher → kleinere Zugkraft, aber weiter.',
+         'Umgekehrt: flacher braucht weniger Kraft.',
+         'Doch, die nötige Kraft ändert sich.'] },
+  { q: '3. Was bleibt bei Rampe und senkrechtem Heben gleich?',
+    opts: ['Kraft × Weg (die Arbeit)', 'nur die Kraft', 'nur der Weg'], correct: 0,
+    fb: ['Richtig! Was man an Kraft spart, setzt man an Weg zu.',
+         'Die Kraft ist bei der Rampe kleiner.',
+         'Der Weg ist bei der Rampe länger.'] }
+];
+function _sieMiniHTML() {
+  return _SIE_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_sieAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="sieFb${qi}"></div></div>`).join('');
+}
+function _sieAns(qi, oi) {
+  const m = _SIE_MINI[qi], el = document.getElementById('sieFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _sieSelf(n) {
+  const out = document.getElementById('sieSelfOut'), val = document.getElementById('sieSelfVal');
+  if (val) { val.value = String(n); _abSave('schiefeebene'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
