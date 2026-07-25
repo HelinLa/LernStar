@@ -239,6 +239,7 @@ const _physAbDefs = {
   'bewegung-beschreiben': { titel: 'Wie kann ich eine Bewegung beschreiben?', ns: 'bewbeschr', html: () => _bwbArbeitsblattHTML() },
   'geschwindigkeit-rs': { titel: 'Was bedeutet „schnell“? (v = s/t)', ns: 'geschwrs', html: () => _gswArbeitsblattHTML() },
   'gleichfoermige-bewegung': { titel: 'Gleichförmige Bewegung – gleiche Wege in gleichen Zeiten', ns: 'glbew', html: () => _glbArbeitsblattHTML() },
+  's-t-diagramm-deuten': { titel: 'Das s-t-Diagramm deuten – steil, flach, waagerecht', ns: 'stgraph', html: () => _stgArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -1020,6 +1021,15 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('glbAnim', 'glbAnim');
     _pSim.start(dt => _glbUpdate(dt), (ctx, cv) => _glbDraw(ctx, cv), []);
     _abRestore('glbew');
+  },
+
+  's-t-diagramm-deuten': modal => {
+    _stgInit();
+    modal.innerHTML = _stgHTML();
+    _stgStatus();
+    _pSim = new PhysicsSimEngine('stgAnim', 'stgAnim');
+    _pSim.start(dt => _stgUpdate(dt), (ctx, cv) => _stgDraw(ctx, cv), []);
+    _abRestore('stgraph');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -57162,5 +57172,241 @@ function _glbAns(qi, oi) {
 function _glbSelf(n) {
   const out = document.getElementById('glbSelfOut'), val = document.getElementById('glbSelfVal');
   if (val) { val.value = String(n); _abSave('glbew'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.2.4  s-t-DIAGRAMM DEUTEN – STEIL, FLACH, WAAGERECHT
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Bewegung"
+// Aus der Steilheit der Linie lesen, was ein Körper tut:
+// steil = schnell, flach = langsam, waagerecht = Stillstand.
+// Steigung (Δs/Δt) im s-t-Diagramm = Geschwindigkeit.
+// ═══════════════════════════════════════════════════════
+let _stg = null;
+const _STG_SZEN = {
+  steil:      { v: 12, label: 'steil',      obj: '🏃', wort: 'schnell',    farbe: '#ef4444' },
+  flach:      { v: 4,  label: 'flach',      obj: '🚶', wort: 'langsam',    farbe: '#2563eb' },
+  waagerecht: { v: 0,  label: 'waagerecht', obj: '🧍', wort: 'in Ruhe',    farbe: '#64748b' }
+};
+const _STG_SMAX = 100, _STG_TMAX = 10;
+function _stgInit() { _stg = { szen: 'flach', running: false, t: 0 }; }
+function _stgV() { return _STG_SZEN[_stg.szen].v; }
+function _stgS(t) { return Math.min(_STG_SMAX, _stgV() * t); }
+
+function _stgHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim stg-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">📈 Was verrät die Steilheit einer Linie über die Bewegung?</h3>
+    <div class="fpm-note" style="margin-top:2px">Jede Linie im s-t-Diagramm erzählt eine Bewegung. Wähle eine Linie und beobachte, was der Körper oben tut. Wie hängen <b>Steilheit</b> und <b>Tempo</b> zusammen?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="stgAnim" width="440" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Linie:</span>
+          <button class="sim-btn" id="stgsteil" onclick="_stgSet('steil')">steil</button>
+          <button class="sim-btn primary" id="stgflach" onclick="_stgSet('flach')">flach</button>
+          <button class="sim-btn" id="stgwaagerecht" onclick="_stgSet('waagerecht')">waagerecht</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" id="stgPlay" onclick="_stgToggle()">▶ Bewegung zeigen</button>
+          <button class="sim-btn" onclick="_stgReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">s-t-Diagramm deuten</div>
+        <div class="lmp-status" id="stgStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Die <b>Steilheit</b> (Steigung) einer Linie im s-t-Diagramm ist die <b>Geschwindigkeit</b>: <b>steil = schnell</b>, <b>flach = langsam</b>, <b>waagerecht = Stillstand</b> (der Weg ändert sich nicht mehr). Man liest sie ab als Weg pro Zeit: v = Δs / Δt.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Ohne die Bewegung zu sehen, kannst du allein an der Linie erkennen, ob ein Körper schnell, langsam oder gar nicht fährt.
+    </p>
+    ${_stgArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _stgSet(k) {
+  if (!_stg) return;
+  _stg.szen = k;
+  ['steil', 'flach', 'waagerecht'].forEach(x => document.getElementById('stg' + x)?.classList.toggle('primary', x === k));
+  _stgReset();
+}
+function _stgToggle() {
+  if (!_stg) return;
+  if (_stg.t >= _STG_TMAX) _stg.t = 0;
+  _stg.running = !_stg.running;
+  const b = document.getElementById('stgPlay'); if (b) b.textContent = _stg.running ? '⏸ Stopp' : '▶ Bewegung zeigen';
+  _stgStatus();
+}
+function _stgReset() {
+  if (!_stg) return;
+  _stg.running = false; _stg.t = 0;
+  const b = document.getElementById('stgPlay'); if (b) b.textContent = '▶ Bewegung zeigen';
+  _stgStatus();
+}
+function _stgStatus() {
+  const el = document.getElementById('stgStatus'); if (!el) return;
+  const z = _STG_SZEN[_stg.szen], v = z.v;
+  const deut = v === 0
+    ? `Die Linie ist <b>waagerecht</b> → der Körper ist <b>in Ruhe</b> (v = 0 m/s). Der Weg bleibt gleich.`
+    : `Die Linie ist <b>${z.label}</b> → der Körper bewegt sich <b>${z.wort}</b>. Steigung ablesen: v = Δs/Δt = <b>${v} m/s</b>.`;
+  el.innerHTML = deut + ` <br>Aktuell: t = ${_stg.t.toFixed(1).replace('.', ',')} s, s = ${_stgS(_stg.t).toFixed(0)} m.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _stgUpdate(dt) {
+  if (!_stg || !_stg.running) return;
+  _stg.t += dt;
+  if (_stg.t >= _STG_TMAX) { _stg.t = _STG_TMAX; _stg.running = false; const b = document.getElementById('stgPlay'); if (b) b.textContent = '▶ Bewegung zeigen'; }
+  _stgStatus();
+}
+function _stgDraw(ctx, cv) {
+  if (!_stg) return;
+  const W = cv.width, H = cv.height, z = _STG_SZEN[_stg.szen], v = z.v;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  // ── Strecke oben ──
+  const xL = 34, xR = 410, roadY = 50;
+  const pxs = s => xL + (s / _STG_SMAX) * (xR - xL);
+  ctx.fillStyle = '#334155'; ctx.fillRect(xL, roadY, xR - xL, 22);
+  // Startlinie
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(xL, roadY - 6); ctx.lineTo(xL, roadY + 22); ctx.stroke();
+  // Objekt
+  ctx.font = '20px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(z.obj, pxs(_stgS(_stg.t)), roadY + 18);
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Bewegung: ' + z.wort, xL, 22);
+  ctx.textAlign = 'right'; ctx.fillText('⏱ ' + _stg.t.toFixed(1).replace('.', ',') + ' s', xR, 22);
+  // ── s-t-Diagramm unten ──
+  const oxL = 44, oxR = W - 18, oyT = 100, oyB = H - 24;
+  const px = t => oxL + (t / _STG_TMAX) * (oxR - oxL);
+  const py = s => oyB - (s / _STG_SMAX) * (oyB - oyT);
+  // Gitter
+  ctx.strokeStyle = 'rgba(100,116,139,0.18)'; ctx.lineWidth = 1;
+  for (let t = 0; t <= _STG_TMAX; t += 2) { const x = px(t); ctx.beginPath(); ctx.moveTo(x, oyT); ctx.lineTo(x, oyB); ctx.stroke(); }
+  for (let s = 0; s <= _STG_SMAX; s += 25) { const y = py(s); ctx.beginPath(); ctx.moveTo(oxL, y); ctx.lineTo(oxR, y); ctx.stroke(); }
+  // Achsen
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(oxL, oyT); ctx.lineTo(oxL, oyB); ctx.lineTo(oxR, oyB); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.textAlign = 'center'; for (let t = 0; t <= _STG_TMAX; t += 2) ctx.fillText(t + '', px(t), oyB + 12);
+  ctx.textAlign = 'right'; for (let s = 0; s <= _STG_SMAX; s += 50) ctx.fillText(s + '', oxL - 4, py(s) + 3);
+  ctx.fillStyle = '#cbd5e1'; ctx.textAlign = 'center'; ctx.fillText('t in s', (oxL + oxR) / 2, H - 9);
+  ctx.save(); ctx.translate(12, (oyT + oyB) / 2); ctx.rotate(-Math.PI / 2); ctx.fillText('s in m', 0, 0); ctx.restore();
+  // Volle Linie (Endpunkt bei tMax)
+  const sEnd = Math.min(_STG_SMAX, v * _STG_TMAX);
+  ctx.strokeStyle = z.farbe; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(px(0), py(0)); ctx.lineTo(px(_STG_TMAX), py(sEnd)); ctx.stroke();
+  // aktueller Punkt
+  ctx.fillStyle = z.farbe; ctx.beginPath(); ctx.arc(px(_stg.t), py(_stgS(_stg.t)), 4.5, 0, 2 * Math.PI); ctx.fill();
+  // Beschriftung an der Linie
+  ctx.fillStyle = z.farbe; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(z.label + ' → ' + (v === 0 ? 'v = 0' : 'v = ' + v + ' m/s'), oxL + 8, oyT + 12);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.2.4  (ns = 'stgraph') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _stgArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('stgraph')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('stgraph')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie lese ich aus einem s-t-Diagramm ab, ob ein Körper schnell, langsam oder gar nicht fährt?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass eine steile Linie … bedeutet.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle nacheinander „steil“, „flach“ und „waagerecht“.</li>
+          <li>Beobachte oben, was der Körper tut.</li>
+          <li>Lies unten die Steigung (Weg pro Zeit) ab.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Ordne jeder Linie die Bewegung und die Geschwindigkeit zu.</div>
+        <table class="ab-table"><tbody>
+          <tr><td>steile Linie</td><td>Bewegung: ${inp('b1', '?')}</td><td>v = ${inp('c1', 'm/s')}</td></tr>
+          <tr><td>flache Linie</td><td>Bewegung: ${inp('b2', '?')}</td><td>v = ${inp('c2', 'm/s')}</td></tr>
+          <tr><td>waagerechte Linie</td><td>Bewegung: ${inp('b3', '?')}</td><td>v = ${inp('c3', 'm/s')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne alle drei Linien in ein s-t-Diagramm. Welche ist am steilsten?</div>
+        <div class="ab-skizze">Platz für dein Diagramm</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was bedeutet eine steile Linie? ${inp('a1', '')}</li>
+          <li>Was bedeutet eine waagerechte Linie? ${inp('a2', '')}</li>
+          <li>Wie berechnest du die Steigung (= Geschwindigkeit)? ${inp('a3', 'v = … / …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die Steigung einer Linie im s-t-Diagramm ist die ${inp('m1', 'Größe?')}. Je ${inp('m2', 'wie?')} die Linie, desto schneller ist der Körper.<br>
+        Eine ${inp('m3', 'Form?')} Linie bedeutet Stillstand (v = 0). Man berechnet die Steigung mit v = ${inp('m4', 'Formel?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Eine Fitness-App zeichnet deine zurückgelegte Strecke über die Zeit. Woran erkennst du in dieser Kurve eine Pause?</div>
+        ${ta('tr1', 'An einer … Stelle in der Kurve, weil dort der Weg … bleibt.', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="stgMini">${_stgMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_stgSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_stgSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_stgSelf(3)">😃 sicher</button>
+          <span id="stgSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="stgSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Steile Linie → Körper bewegt sich schnell (großes v, hier 12 m/s). Flache Linie → langsam (4 m/s). Waagerechte Linie → Stillstand (v = 0, der Weg ändert sich nicht).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Die Steigung einer Linie im s-t-Diagramm entspricht der Geschwindigkeit: v = Δs/Δt. Je steiler die Linie, desto größer v. Eine waagerechte Linie hat die Steigung 0 → v = 0 → Ruhe. Bei gleichförmiger Bewegung ist die Linie eine Gerade (konstante Steigung).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Eine waagerechte Linie heißt, der Körper fährt gleichmäßig.“ (verwechselt mit konstantem Weg = Ruhe). (2) „Die Höhe des Punktes ist die Geschwindigkeit.“ (das ist der Weg, nicht v). (3) „Steil heißt langsam.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Zwei Gitterpunkte wählen und Δs/Δt ausrechnen; steil/flach direkt vergleichen; waagerecht = kein Weg-Zuwachs.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: steil→schnell→12 m/s · flach→langsam→4 m/s · waagerecht→Ruhe→0 m/s. 6.1 der Körper ist schnell. 6.2 der Körper ist in Ruhe (v = 0). 6.3 v = Δs/Δt. Merksatz: Geschwindigkeit · steiler · waagerechte · Δs/Δt. Minidiagnose: 1→je steiler, desto schneller · 2→Stillstand (v = 0) · 3→die Steigung Δs/Δt.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('stgraph')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('stgraph', 'Das s-t-Diagramm deuten – steil, flach, waagerecht', body);
+}
+
+const _STG_MINI = [
+  { q: '1. Was gilt für die Steilheit einer Linie im s-t-Diagramm?',
+    opts: ['Je steiler, desto schneller', 'Je steiler, desto langsamer', 'Die Steilheit sagt nichts über das Tempo'], correct: 0,
+    fb: ['Richtig! Die Steigung ist die Geschwindigkeit – steil = schnell.',
+         'Genau umgekehrt: steil bedeutet schnell.',
+         'Doch – die Steigung ist gerade die Geschwindigkeit.'] },
+  { q: '2. Was bedeutet eine waagerechte Linie im s-t-Diagramm?',
+    opts: ['Stillstand (v = 0)', 'Sehr schnelle Bewegung', 'Gleichmäßiges Langsamerwerden'], correct: 0,
+    fb: ['Richtig! Der Weg ändert sich nicht → der Körper ruht.',
+         'Nein, waagerecht heißt: kein Weg-Zuwachs.',
+         'Nein, das wäre eine sich verändernde Linie.'] },
+  { q: '3. Wie liest du die Geschwindigkeit aus dem Diagramm ab?',
+    opts: ['Als Steigung: v = Δs / Δt', 'Als Höhe des Punktes', 'Als Länge der Zeitachse'], correct: 0,
+    fb: ['Richtig! Geschwindigkeit = Weg-Zuwachs pro Zeit.',
+         'Die Höhe ist der zurückgelegte Weg, nicht die Geschwindigkeit.',
+         'Die Zeitachse allein sagt nichts über v.'] }
+];
+function _stgMiniHTML() {
+  return _STG_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_stgAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="stgFb${qi}"></div></div>`).join('');
+}
+function _stgAns(qi, oi) {
+  const m = _STG_MINI[qi], el = document.getElementById('stgFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _stgSelf(n) {
+  const out = document.getElementById('stgSelfOut'), val = document.getElementById('stgSelfVal');
+  if (val) { val.value = String(n); _abSave('stgraph'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
