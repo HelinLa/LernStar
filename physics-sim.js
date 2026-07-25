@@ -241,6 +241,7 @@ const _physAbDefs = {
   'gleichfoermige-bewegung': { titel: 'Gleichförmige Bewegung – gleiche Wege in gleichen Zeiten', ns: 'glbew', html: () => _glbArbeitsblattHTML() },
   's-t-diagramm-deuten': { titel: 'Das s-t-Diagramm deuten – steil, flach, waagerecht', ns: 'stgraph', html: () => _stgArbeitsblattHTML() },
   'beschleunigung-jg9': { titel: 'Beschleunigte Bewegung – immer schneller', ns: 'imschnell', html: () => _imsArbeitsblattHTML() },
+  'beschleunigung-formel-jg9': { titel: 'Gleichmäßig beschleunigt – v = a · t', ns: 'vateq', html: () => _vatArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -1040,6 +1041,15 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('imsAnim', 'imsAnim');
     _pSim.start(dt => _imsUpdate(dt), (ctx, cv) => _imsDraw(ctx, cv), []);
     _abRestore('imschnell');
+  },
+
+  'beschleunigung-formel-jg9': modal => {
+    _vatInit();
+    modal.innerHTML = _vatHTML();
+    _vatStatus();
+    _pSim = new PhysicsSimEngine('vatAnim', 'vatAnim');
+    _pSim.start(dt => _vatUpdate(dt), (ctx, cv) => _vatDraw(ctx, cv), []);
+    _abRestore('vateq');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -57668,5 +57678,236 @@ function _imsAns(qi, oi) {
 function _imsSelf(n) {
   const out = document.getElementById('imsSelfOut'), val = document.getElementById('imsSelfVal');
   if (val) { val.value = String(n); _abSave('imschnell'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.2.6  GLEICHMÄSSIG BESCHLEUNIGT – v = a · t
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Bewegung"
+// Konstante Beschleunigung a (m/s²): v wächst linear mit t.
+// v-t-Diagramm = Ursprungsgerade, Steigung = a. Große a →
+// steilere v-t-Gerade. Zahlenwerte über v = a · t.
+// ═══════════════════════════════════════════════════════
+let _vat = null;
+const _VAT_A = { klein: 1, mittel: 2, gross: 3 };   // m/s²
+const _VAT_TMAX = 10, _VAT_VMAX = 30;
+function _vatInit() { _vat = { stufe: 'mittel', running: false, t: 0 }; }
+function _vatA() { return _VAT_A[_vat.stufe]; }
+function _vatVt(t) { return Math.min(_VAT_VMAX, _vatA() * t); }
+
+function _vatHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim vat-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">⏱ Warum wird ein Auto gleichmäßig schneller – und was heißt das in Zahlen?</h3>
+    <div class="fpm-note" style="margin-top:2px">Das Auto beschleunigt aus dem Stand mit gleichbleibender Beschleunigung. Beobachte den Tacho: In jeder Sekunde kommt der gleiche Geschwindigkeitsbetrag dazu. Wie steht das im v-t-Diagramm?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="vatAnim" width="440" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Beschleunigung a:</span>
+          <button class="sim-btn" id="vatklein" onclick="_vatSet('klein')">1 m/s²</button>
+          <button class="sim-btn primary" id="vatmittel" onclick="_vatSet('mittel')">2 m/s²</button>
+          <button class="sim-btn" id="vatgross" onclick="_vatSet('gross')">3 m/s²</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" id="vatPlay" onclick="_vatToggle()">▶ Start</button>
+          <button class="sim-btn" onclick="_vatReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">v = a · t</div>
+        <div class="lmp-status" id="vatStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Bei <b>gleichmäßig beschleunigter</b> Bewegung wächst die Geschwindigkeit gleichmäßig: In gleichen Zeiten kommt immer <b>derselbe Betrag</b> dazu. Es gilt <b>v = a · t</b>. Die Beschleunigung <b>a</b> hat die Einheit <b>m/s²</b>. Im <b>v-t-Diagramm</b> ergibt sich eine <b>Gerade durch den Ursprung</b> – je größer a, desto <b>steiler</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      a sagt, wie viel m/s in jeder Sekunde dazukommen. Nach t Sekunden: v = a · t.
+    </p>
+    ${_vatArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _vatSet(k) {
+  if (!_vat) return;
+  _vat.stufe = k;
+  ['klein', 'mittel', 'gross'].forEach(x => document.getElementById('vat' + x)?.classList.toggle('primary', x === k));
+  _vatReset();
+}
+function _vatToggle() {
+  if (!_vat) return;
+  if (_vat.t >= _VAT_TMAX || _vatVt(_vat.t) >= _VAT_VMAX) _vat.t = 0;
+  _vat.running = !_vat.running;
+  const b = document.getElementById('vatPlay'); if (b) b.textContent = _vat.running ? '⏸ Stopp' : '▶ Start';
+  _vatStatus();
+}
+function _vatReset() {
+  if (!_vat) return;
+  _vat.running = false; _vat.t = 0;
+  const b = document.getElementById('vatPlay'); if (b) b.textContent = '▶ Start';
+  _vatStatus();
+}
+function _vatStatus() {
+  const el = document.getElementById('vatStatus'); if (!el) return;
+  const a = _vatA(), t = _vat.t, v = _vatVt(t);
+  el.innerHTML = `<b>a = ${a} m/s²</b> → in jeder Sekunde kommen <b>${a} m/s</b> dazu.<br>Nach t = ${t.toFixed(1).replace('.', ',')} s: v = a · t = ${a} · ${t.toFixed(1).replace('.', ',')} = <b>${v.toFixed(1).replace('.', ',')} m/s</b>.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _vatUpdate(dt) {
+  if (!_vat || !_vat.running) return;
+  _vat.t += dt;
+  if (_vat.t >= _VAT_TMAX || _vatVt(_vat.t) >= _VAT_VMAX) {
+    _vat.running = false; const b = document.getElementById('vatPlay'); if (b) b.textContent = '▶ Start';
+  }
+  _vatStatus();
+}
+function _vatDraw(ctx, cv) {
+  if (!_vat) return;
+  const W = cv.width, H = cv.height, a = _vatA(), t = _vat.t, v = _vatVt(t);
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  // ── Tacho oben ──
+  const cx = 70, cy = 54, R = 34;
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 8; ctx.beginPath(); ctx.arc(cx, cy, R, Math.PI, 2 * Math.PI); ctx.stroke();
+  const frac = Math.max(0, Math.min(1, v / _VAT_VMAX));
+  ctx.strokeStyle = '#dc2626'; ctx.beginPath(); ctx.arc(cx, cy, R, Math.PI, Math.PI + frac * Math.PI); ctx.stroke();
+  // Zeiger
+  const ang = Math.PI + frac * Math.PI;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + Math.cos(ang) * (R - 4), cy + Math.sin(ang) * (R - 4)); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(v.toFixed(0) + ' m/s', cx, cy + 20);
+  ctx.font = '9px sans-serif'; ctx.fillStyle = '#94a3b8'; ctx.fillText('Tacho', cx, cy - R - 4);
+  // Auto fährt (rein visuell)
+  const carX = 150 + (W - 190) * frac;
+  ctx.font = '26px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('🏎️', carX, cy + 12);
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('⏱ ' + t.toFixed(1).replace('.', ',') + ' s   a = ' + a + ' m/s²', W - 14, 22);
+  // ── v-t-Diagramm unten ──
+  const oxL = 44, oxR = W - 18, oyT = 108, oyB = H - 24;
+  const px = tt => oxL + (tt / _VAT_TMAX) * (oxR - oxL);
+  const py = vv => oyB - (vv / _VAT_VMAX) * (oyB - oyT);
+  ctx.strokeStyle = 'rgba(100,116,139,0.18)'; ctx.lineWidth = 1;
+  for (let tt = 0; tt <= _VAT_TMAX; tt += 2) { const x = px(tt); ctx.beginPath(); ctx.moveTo(x, oyT); ctx.lineTo(x, oyB); ctx.stroke(); }
+  for (let vv = 0; vv <= _VAT_VMAX; vv += 10) { const y = py(vv); ctx.beginPath(); ctx.moveTo(oxL, y); ctx.lineTo(oxR, y); ctx.stroke(); }
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(oxL, oyT); ctx.lineTo(oxL, oyB); ctx.lineTo(oxR, oyB); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.textAlign = 'center'; for (let tt = 0; tt <= _VAT_TMAX; tt += 2) ctx.fillText(tt + '', px(tt), oyB + 12);
+  ctx.textAlign = 'right'; for (let vv = 0; vv <= _VAT_VMAX; vv += 10) ctx.fillText(vv + '', oxL - 4, py(vv) + 3);
+  ctx.fillStyle = '#cbd5e1'; ctx.textAlign = 'center'; ctx.fillText('t in s', (oxL + oxR) / 2, H - 9);
+  ctx.save(); ctx.translate(12, (oyT + oyB) / 2); ctx.rotate(-Math.PI / 2); ctx.fillText('v in m/s', 0, 0); ctx.restore();
+  // v-t-Gerade bis zur aktuellen Zeit
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2.8; ctx.beginPath(); ctx.moveTo(px(0), py(0)); ctx.lineTo(px(t), py(v)); ctx.stroke();
+  // Sekundenpunkte (gleicher v-Zuwachs)
+  ctx.fillStyle = '#7c3aed';
+  for (let k = 1; k <= Math.floor(t); k++) { const vv = _vatA() * k; if (vv > _VAT_VMAX) break; ctx.beginPath(); ctx.arc(px(k), py(vv), 3.2, 0, 2 * Math.PI); ctx.fill(); }
+  ctx.fillStyle = '#7c3aed'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('v-t: Gerade, Steigung = a', oxL + 8, oyT + 12);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.2.6  (ns = 'vateq') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _vatArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('vateq')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('vateq')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wie hängt die Geschwindigkeit von der Zeit ab, wenn ein Körper gleichmäßig beschleunigt – und wie rechnet man das aus?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Geschwindigkeit in jeder Sekunde um … zunimmt.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle a = 2 m/s² und starte.</li>
+          <li>Lies am Tacho die Geschwindigkeit nach 1, 2 und 3 s ab.</li>
+          <li>Vergleiche mit größerer und kleinerer Beschleunigung.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Beschleunigung a = 2 m/s². Trage die Geschwindigkeit ein.</div>
+        <table class="ab-table"><tbody>
+          <tr><td>nach 1 s</td><td>v = ${inp('v1a', 'm/s')}</td></tr>
+          <tr><td>nach 2 s</td><td>v = ${inp('v2a', 'm/s')}</td></tr>
+          <tr><td>nach 3 s</td><td>v = ${inp('v3a', 'm/s')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne das v-t-Diagramm für a = 2 m/s². Welche Form hat die Linie?</div>
+        <div class="ab-skizze">Platz für dein Diagramm</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Um wie viel wächst v in jeder Sekunde (bei a = 2 m/s²)? ${inp('a1', '')}</li>
+          <li>Mit welcher Formel berechnest du v? ${inp('a2', 'v = …')}</li>
+          <li>Große Beschleunigung → wie sieht die v-t-Gerade aus? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Bei gleichmäßig beschleunigter Bewegung kommt in jeder Sekunde derselbe Geschwindigkeitsbetrag dazu. Die Beschleunigung a hat die Einheit ${inp('m1', 'Einheit?')}.<br>
+        Die Geschwindigkeit berechnet man mit v = ${inp('m2', 'Formel?')}. Im v-t-Diagramm ist das eine ${inp('m3', 'Form?')}; je größer a, desto ${inp('m4', 'wie?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Auto schafft „0 auf 100 km/h in 5 s". Was sagt diese Angabe über die Beschleunigung aus?</div>
+        ${ta('tr1', 'Je kürzer die Zeit für 0–100, desto … die Beschleunigung, weil …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="vatMini">${_vatMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_vatSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_vatSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_vatSelf(3)">😃 sicher</button>
+          <span id="vatSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="vatSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Bei a = 2 m/s² wächst v um 2 m/s pro Sekunde: nach 1/2/3 s = 2/4/6 m/s. Das v-t-Diagramm ist eine Gerade durch den Ursprung. Größeres a → steilere Gerade, kleineres a → flacher.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Gleichmäßig beschleunigte Bewegung aus dem Stand: v = a · t. Die Beschleunigung a = Δv/Δt hat die Einheit m/s² (Geschwindigkeitsänderung pro Sekunde). Im v-t-Diagramm ist a die Steigung der Geraden. (Der Weg wächst dabei quadratisch, s = ½·a·t² – s. 9.2.5.)</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „a ist dasselbe wie v.“ (2) „Einheit von a ist m/s.“ (richtig: m/s²). (3) „Die v-t-Linie ist eine Kurve.“ (bei konstantem a ist sie eine Gerade – die s-t-Linie ist die Kurve).</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> „pro Sekunde so viel dazu“ betonen; Einheit m/s² als „m/s pro s“ lesen; v = a·t für einzelne Sekunden ausrechnen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 2/4/6 m/s. 6.1 um 2 m/s. 6.2 v = a · t. 6.3 steiler. Merksatz: m/s² · a · t · Gerade · steiler. Transfer: desto größer die Beschleunigung, weil in kürzerer Zeit dieselbe Geschwindigkeit erreicht wird. Minidiagnose: 1→m/s² · 2→v = a · t · 3→eine steilere Gerade.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('vateq')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('vateq', 'Gleichmäßig beschleunigt – v = a · t', body);
+}
+
+const _VAT_MINI = [
+  { q: '1. Welche Einheit hat die Beschleunigung a?',
+    opts: ['m/s²', 'm/s', 'nur m'], correct: 0,
+    fb: ['Richtig! a gibt an, um wie viel m/s die Geschwindigkeit pro Sekunde wächst.',
+         'm/s ist die Geschwindigkeit, nicht die Beschleunigung.',
+         'Meter allein ist ein Weg.'] },
+  { q: '2. Mit welcher Formel berechnest du die Geschwindigkeit aus dem Stand?',
+    opts: ['v = a · t', 'v = a / t', 'v = t / a'], correct: 0,
+    fb: ['Richtig! Beschleunigung mal Zeit ergibt die Geschwindigkeit.',
+         'Nein, es wird multipliziert, nicht geteilt.',
+         'Nein, v = a · t.'] },
+  { q: '3. Wie sieht die v-t-Gerade bei großer Beschleunigung aus?',
+    opts: ['Steiler', 'Flacher', 'Waagerecht'], correct: 0,
+    fb: ['Richtig! Größere Beschleunigung = steilere v-t-Gerade.',
+         'Flacher wäre eine kleine Beschleunigung.',
+         'Waagerecht hieße: die Geschwindigkeit ändert sich nicht.'] }
+];
+function _vatMiniHTML() {
+  return _VAT_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_vatAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="vatFb${qi}"></div></div>`).join('');
+}
+function _vatAns(qi, oi) {
+  const m = _VAT_MINI[qi], el = document.getElementById('vatFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _vatSelf(n) {
+  const out = document.getElementById('vatSelfOut'), val = document.getElementById('vatSelfVal');
+  if (val) { val.value = String(n); _abSave('vateq'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
