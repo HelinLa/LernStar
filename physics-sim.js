@@ -229,6 +229,7 @@ const _physAbDefs = {
   'kraftmesser': { titel: 'Wie misst man eine Kraft, die man nicht anfassen kann?', ns: 'kraftmesser', html: () => _krmArbeitsblattHTML() },
   'federgesetz': { titel: 'Warum wird eine Feder gleichmäßig länger?', ns: 'federgesetz', html: () => _fedArbeitsblattHTML() },
   'masse-gewicht': { titel: 'Ist „schwer“ dasselbe wie „viel Masse“?', ns: 'massegewicht', html: () => _mgwArbeitsblattHTML() },
+  'ortsfaktor': { titel: 'Wäre ich auf dem Mond wirklich leichter?', ns: 'ortsfaktor', html: () => _ortArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -910,6 +911,16 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('mgwAnim', 'mgwAnim');
     _pSim.start(dt => _mgwUpdate(dt), (ctx, cv) => _mgwDraw(ctx, cv), []);
     _abRestore('massegewicht');
+  },
+
+  // ── 9.1.6 KRÄFTE: ORTSFAKTOR (MOND/ERDE/JUPITER) ───────────────
+  'ortsfaktor': modal => {
+    _ortInit();
+    modal.innerHTML = _ortHTML();
+    _ortStatus();
+    _pSim = new PhysicsSimEngine('ortAnim', 'ortAnim');
+    _pSim.start(dt => _ortUpdate(dt), (ctx, cv) => _ortDraw(ctx, cv), []);
+    _abRestore('ortsfaktor');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -54937,5 +54948,210 @@ function _mgwAns(qi, oi) {
 function _mgwSelf(n) {
   const out = document.getElementById('mgwSelfOut'), val = document.getElementById('mgwSelfVal');
   if (val) { val.value = String(n); _abSave('massegewicht'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.1.6  WÄRE ICH AUF DEM MOND WIRKLICH LEICHTER?
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Kräfte"
+// Ortsfaktor: gleiche Masse (bleibt überall gleich), aber die
+// Gewichtskraft F = m·g ändert sich mit dem Ort (Mond/Erde/Jupiter).
+// ═══════════════════════════════════════════════════════
+let _ort = null;
+const _ORT_M = 60;                                 // feste Masse (kg) – "ich"
+const _ORT_ORTE = {
+  mond: { name: 'Mond', g: 1.6, farbe: '#cbd5e1', emoji: '🌙' },
+  erde: { name: 'Erde', g: 9.8, farbe: '#3b82f6', emoji: '🌍' },
+  jupiter: { name: 'Jupiter', g: 24.8, farbe: '#f59e0b', emoji: '🪐' }
+};
+function _ortInit() { _ort = { ort: 'erde', t: 0 }; }
+function _ortF(k) { return _ORT_M * _ORT_ORTE[k || _ort.ort].g; }
+
+function _ortHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim ort-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🌙 Wäre ich auf dem Mond wirklich leichter?</h3>
+    <div class="fpm-note" style="margin-top:2px">Stell dir vor, du (Masse 60 kg) stehst auf verschiedenen Himmelskörpern. Was bleibt gleich – deine Masse oder deine Gewichtskraft?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="ortAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Ort:</span>
+          <button class="sim-btn" id="ortBmond" onclick="_ortSet('mond')">🌙 Mond</button>
+          <button class="sim-btn primary" id="ortBerde" onclick="_ortSet('erde')">🌍 Erde</button>
+          <button class="sim-btn" id="ortBjupiter" onclick="_ortSet('jupiter')">🪐 Jupiter</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Masse und Gewichtskraft</div>
+        <div class="lmp-status" id="ortStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Deine <b>Masse</b> (die Menge an Stoff) bleibt <b>überall gleich</b> – 60 kg. Nur die <b>Gewichtskraft F = m · g</b> ändert sich, weil der <b>Ortsfaktor g</b> woanders anders ist. Auf dem Mond bist du also nicht „weniger Masse“, sondern deine Gewichtskraft ist kleiner.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Masse bleibt gleich · Gewichtskraft ändert sich. &nbsp;|&nbsp; Auf dem Mond ≈ <b>1/6</b> der Erd-Gewichtskraft.
+    </p>
+    ${_ortArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _ortSet(k) {
+  if (!_ort) return;
+  _ort.ort = k;
+  Object.keys(_ORT_ORTE).forEach(x => document.getElementById('ortB' + x)?.classList.toggle('primary', x === k));
+  _ortStatus();
+}
+function _ortStatus() {
+  const el = document.getElementById('ortStatus'); if (!el) return;
+  const o = _ORT_ORTE[_ort.ort], F = _ortF();
+  const vgl = _ort.ort === 'mond' ? ' (etwa 1/6 der Erd-Gewichtskraft)' : (_ort.ort === 'jupiter' ? ' (viel mehr als auf der Erde)' : '');
+  el.innerHTML = `Auf dem/der <b>${o.name}</b>: g = ${String(o.g).replace('.', ',')} N/kg. Masse <b>m = 60 kg</b> (überall gleich). Gewichtskraft <b>F = m · g = ${F.toFixed(0)} N</b>${vgl}.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation / Canvas ─────────────────────────────────
+function _ortUpdate(dt) { if (_ort) _ort.t += dt; }
+function _ortDraw(ctx, cv) {
+  if (!_ort) return;
+  const W = cv.width, H = cv.height, o = _ORT_ORTE[_ort.ort], F = _ortF();
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  // Boden des Himmelskörpers
+  const groundY = 150;
+  ctx.fillStyle = o.farbe; ctx.globalAlpha = 0.30; ctx.fillRect(0, groundY, W, H - groundY); ctx.globalAlpha = 1;
+  ctx.strokeStyle = o.farbe; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(0, groundY); ctx.lineTo(W, groundY); ctx.stroke();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(o.emoji + ' ' + o.name + '  ·  g = ' + String(o.g).replace('.', ',') + ' N/kg', 14, 22);
+  // Person (fixe Masse)
+  const px = 90, feet = groundY;
+  ctx.strokeStyle = '#e2e8f0'; ctx.fillStyle = '#e2e8f0'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(px, feet - 54, 9, 0, 2 * Math.PI); ctx.stroke();       // Kopf
+  ctx.beginPath(); ctx.moveTo(px, feet - 45); ctx.lineTo(px, feet - 20); ctx.stroke(); // Rumpf
+  ctx.beginPath(); ctx.moveTo(px, feet - 40); ctx.lineTo(px - 12, feet - 30); ctx.moveTo(px, feet - 40); ctx.lineTo(px + 12, feet - 30); ctx.stroke(); // Arme
+  ctx.beginPath(); ctx.moveTo(px, feet - 20); ctx.lineTo(px - 10, feet); ctx.moveTo(px, feet - 20); ctx.lineTo(px + 10, feet); ctx.stroke(); // Beine
+  ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('m = 60 kg', px, feet - 66);
+  // Gewichtskraft-Pfeil
+  const ay = feet + 6, plen = 14 + (F / _ortF('jupiter')) * 74;
+  _kwkArrow(ctx, px, ay, px, ay + plen, '#ef4444');
+  ctx.fillStyle = '#fca5a5'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('F = ' + F.toFixed(0) + ' N', px, ay + plen + 14);
+  // Vergleichsbalken der Gewichtskraft
+  const bx = 250, bw = 150; let by = 44;
+  ctx.textAlign = 'left';
+  Object.keys(_ORT_ORTE).forEach(k => {
+    const kk = _ORT_ORTE[k], frac = _ortF(k) / _ortF('jupiter');
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText(kk.name + ': F = ' + _ortF(k).toFixed(0) + ' N', bx, by - 2);
+    ctx.fillStyle = k === _ort.ort ? kk.farbe : 'rgba(148,163,184,0.35)';
+    ctx.fillRect(bx, by, bw * frac, 13);
+    by += 30;
+  });
+  ctx.fillStyle = '#cbd5e1'; ctx.font = '9px sans-serif'; ctx.fillText('Gewichtskraft im Vergleich (Masse überall 60 kg)', bx, by + 2);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.1.6  (ns = 'ortsfaktor') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _ortArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('ortsfaktor')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('ortsfaktor')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Wäre ich auf dem Mond wirklich leichter – oder ändert sich nur meine Gewichtskraft?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass sich auf dem Mond … ändert und … gleich bleibt.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle nacheinander Mond, Erde und Jupiter.</li>
+          <li>Lies den Ortsfaktor g und die Gewichtskraft F ab.</li>
+          <li>Achte darauf, was mit der Masse (60 kg) passiert.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Masse überall 60 kg. Trage g und F = m · g ein.</div>
+        <table class="ab-table"><tbody>
+          <tr><td>🌙 Mond</td><td>g = ${inp('g1', 'N/kg')}</td><td>F = ${inp('f1', 'N')}</td></tr>
+          <tr><td>🌍 Erde</td><td>g = ${inp('g2', 'N/kg')}</td><td>F = ${inp('f2', 'N')}</td></tr>
+          <tr><td>🪐 Jupiter</td><td>g = ${inp('g3', 'N/kg')}</td><td>F = ${inp('f3', 'N')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne dich auf dem Mond und auf dem Jupiter mit dem Gewichtskraft-Pfeil. Welcher Pfeil ist länger?</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was bleibt an allen drei Orten gleich? ${inp('a1', '')}</li>
+          <li>Was ändert sich – und warum? ${inp('a2', 'die … , weil g …')}</li>
+          <li>Wo ist deine Gewichtskraft am kleinsten? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die ${inp('m1', 'was?')} eines Körpers ist überall gleich. Die ${inp('m2', 'was?')} hängt vom ${inp('m3', 'was?')} g ab: F = m · g.<br>
+        Auf dem Mond ist g kleiner, darum ist die Gewichtskraft nur etwa ${inp('m4', 'Bruchteil?')} so groß wie auf der Erde.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Astronauten können auf dem Mond riesige Sprünge machen. Erkläre das mit Masse und Gewichtskraft.</div>
+        ${ta('tr1', 'Ihre Masse ist gleich, aber die Gewichtskraft ist … , darum …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="ortMini">${_ortMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_ortSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_ortSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_ortSelf(3)">😃 sicher</button>
+          <span id="ortSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="ortSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> g: Mond 1,6 · Erde 9,8 · Jupiter 24,8 N/kg. Gewichtskraft (m = 60 kg): Mond 96 N · Erde 588 N · Jupiter 1488 N. Die Masse bleibt überall 60 kg, nur die Gewichtskraft ändert sich.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Die Masse ist ortsunabhängig (Materiemenge). Die Gewichtskraft F = m · g hängt vom Ortsfaktor g ab; auf dem Mond ist g ≈ 1/6 der Erde, daher ist die Gewichtskraft dort nur etwa ein Sechstel. „Leichter“ bezieht sich auf die Gewichtskraft, nicht auf die Masse.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Auf dem Mond hat man weniger Masse.“ (2) „Im Weltall/auf dem Mond gibt es keine Schwerkraft.“ (3) „Masse und Gewicht sind dasselbe.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Masse (bleibt) und Gewichtskraft (ändert sich) strikt trennen; F = m · g je Ort ausrechnen; Balkenwaage (vergleicht Masse, überall gleich) vs. Federwaage (misst Kraft, ortsabhängig) thematisieren.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: g 1,6/9,8/24,8; F 96/588/1488 N. 6.1 die Masse (60 kg). 6.2 die Gewichtskraft, weil g verschieden ist. 6.3 auf dem Mond. Merksatz: Masse · Gewichtskraft · Ortsfaktor · 1/6. Transfer: gleiche Masse, aber kleinere Gewichtskraft → man wird leichter angezogen und kann höher springen. Minidiagnose: 1→die Masse · 2→weil die Gewichtskraft kleiner ist · 3→von Masse und Ortsfaktor g.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('ortsfaktor')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('ortsfaktor', 'Wäre ich auf dem Mond wirklich leichter?', body);
+}
+
+const _ORT_MINI = [
+  { q: '1. Was bleibt auf dem Mond gleich – Masse oder Gewichtskraft?',
+    opts: ['Die Masse', 'Die Gewichtskraft', 'Beide ändern sich gleich'], correct: 0,
+    fb: ['Richtig! Die Masse (Materiemenge) ist überall gleich.',
+         'Die Gewichtskraft wird auf dem Mond kleiner.',
+         'Nein, die Masse bleibt gleich, nur die Gewichtskraft ändert sich.'] },
+  { q: '2. Warum kann ein Astronaut auf dem Mond so hoch springen?',
+    opts: ['Weil seine Gewichtskraft dort kleiner ist', 'Weil er weniger Masse hat', 'Weil es keine Schwerkraft gibt'], correct: 0,
+    fb: ['Richtig! Kleineres g → kleinere Gewichtskraft, er wird schwächer angezogen.',
+         'Seine Masse bleibt gleich.',
+         'Es gibt Schwerkraft – nur schwächer als auf der Erde.'] },
+  { q: '3. Wovon hängt die Gewichtskraft ab?',
+    opts: ['Von der Masse und dem Ortsfaktor g', 'Nur von der Farbe', 'Nur von der Temperatur'], correct: 0,
+    fb: ['Richtig! F = m · g.',
+         'Die Farbe spielt keine Rolle.',
+         'Die Temperatur spielt hier keine Rolle.'] }
+];
+function _ortMiniHTML() {
+  return _ORT_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_ortAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="ortFb${qi}"></div></div>`).join('');
+}
+function _ortAns(qi, oi) {
+  const m = _ORT_MINI[qi], el = document.getElementById('ortFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _ortSelf(n) {
+  const out = document.getElementById('ortSelfOut'), val = document.getElementById('ortSelfVal');
+  if (val) { val.value = String(n); _abSave('ortsfaktor'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
