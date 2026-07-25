@@ -233,6 +233,7 @@ const _physAbDefs = {
   'kraftpfeil': { titel: 'Hat eine Kraft nur eine Größe – oder auch eine Richtung?', ns: 'kraftpfeil', html: () => _kpfArbeitsblattHTML() },
   'kraefte-addieren': { titel: 'Was passiert, wenn zwei Kräfte gleichzeitig ziehen?', ns: 'kraefteadd', html: () => _kadArbeitsblattHTML() },
   'kraefte-gleichgewicht': { titel: 'Warum bleibt eine hängende Lampe hängen?', ns: 'kraeftegg', html: () => _kggArbeitsblattHTML() },
+  'wechselwirkung': { titel: 'Kraft und Gegenkraft – warum drücke ich zurück?', ns: 'wechselwirkung', html: () => _wwkArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -954,6 +955,16 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('kggAnim', 'kggAnim');
     _pSim.start(dt => _kggUpdate(dt), (ctx, cv) => _kggDraw(ctx, cv), []);
     _abRestore('kraeftegg');
+  },
+
+  // ── 9.1.10 KRÄFTE: WECHSELWIRKUNG (actio = reactio) ────────────
+  'wechselwirkung': modal => {
+    _wwkInit();
+    modal.innerHTML = _wwkHTML();
+    _wwkStatus();
+    _pSim = new PhysicsSimEngine('wwkAnim', 'wwkAnim');
+    _pSim.start(dt => _wwkUpdate(dt), (ctx, cv) => _wwkDraw(ctx, cv), []);
+    _abRestore('wechselwirkung');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -55810,5 +55821,221 @@ function _kggAns(qi, oi) {
 function _kggSelf(n) {
   const out = document.getElementById('kggSelfOut'), val = document.getElementById('kggSelfVal');
   if (val) { val.value = String(n); _abSave('kraeftegg'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.1.10  KRAFT UND GEGENKRAFT – DAS WECHSELWIRKUNGSPRINZIP
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Kräfte"
+// actio = reactio: Zu jeder Kraft gehört eine gleich große,
+// entgegengesetzte Gegenkraft – sie wirken auf ZWEI verschiedene
+// Körper (Unterschied zum Gleichgewicht 9.1.9!).
+// ═══════════════════════════════════════════════════════
+let _wwk = null;
+const _WWK_SZENEN = {
+  skater: { titel: 'Zwei Eisläufer stoßen sich ab', axis: 'h', aE: '⛸️', bE: '⛸️', aL: 'Läufer A', bL: 'Läufer B', note: 'Beide stoßen sich mit gleich großer Kraft ab und gleiten in entgegengesetzte Richtungen auseinander.' },
+  boot: { titel: 'Vom Boot auf den Steg springen', axis: 'h', aE: '⛵', bE: '🧍', aL: 'Boot', bL: 'Person', note: 'Die Person springt nach rechts – das Boot wird mit gleich großer Gegenkraft nach links geschoben.' },
+  rakete: { titel: 'Rakete stößt Gas aus', axis: 'v', aE: '🚀', bE: '💨', aL: 'Rakete', bL: 'Gas', note: 'Die Rakete drückt das Gas nach unten – das Gas drückt die Rakete mit gleich großer Kraft nach oben.' }
+};
+function _wwkInit() { _wwk = { szene: 'skater', ab: false, p: 0, t: 0 }; }
+
+function _wwkHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim wwk-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">↔️ Kraft und Gegenkraft – warum drücke ich zurück?</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle ein Beispiel und stoße ab. Achte auf die <b>zwei</b> Kräfte: Sie sind gleich groß, entgegengesetzt und wirken auf <b>zwei verschiedene</b> Körper.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="wwkAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="wwkSskater" onclick="_wwkSet('skater')">⛸️ Eisläufer</button>
+          <button class="sim-btn" id="wwkSboot" onclick="_wwkSet('boot')">⛵ Boot</button>
+          <button class="sim-btn" id="wwkSrakete" onclick="_wwkSet('rakete')">🚀 Rakete</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" onclick="_wwkGo()">▶ Abstoßen</button>
+          <button class="sim-btn" onclick="_wwkReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Kraft &amp; Gegenkraft</div>
+        <div class="lmp-status" id="wwkStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Das <b>Wechselwirkungsprinzip</b>: Übt ein Körper eine Kraft auf einen zweiten aus, so übt der zweite eine <b>gleich große, entgegengesetzte</b> Kraft zurück (<b>actio = reactio</b>). Die beiden Kräfte wirken auf <b>verschiedene</b> Körper – darum heben sie sich nicht auf.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Abstoßen an der Wand, Rückstoß beim Bootssprung, Rakete – überall gilt: <b>Kraft = Gegenkraft</b>.
+    </p>
+    ${_wwkArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _wwkSet(s) {
+  if (!_wwk) return;
+  _wwk.szene = s; _wwk.ab = false; _wwk.p = 0;
+  Object.keys(_WWK_SZENEN).forEach(x => document.getElementById('wwkS' + x)?.classList.toggle('primary', x === s));
+  _wwkStatus();
+}
+function _wwkGo() { if (_wwk) { _wwk.ab = true; _wwkStatus(); } }
+function _wwkReset() { if (_wwk) { _wwk.ab = false; _wwk.p = 0; _wwkStatus(); } }
+function _wwkStatus() {
+  const el = document.getElementById('wwkStatus'); if (!el) return;
+  const s = _WWK_SZENEN[_wwk.szene];
+  el.innerHTML = `<b>${s.titel}.</b> ${s.note} Beide Kräfte sind <b>gleich groß</b> (actio = reactio).`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation / Canvas ─────────────────────────────────
+function _wwkUpdate(dt) {
+  if (!_wwk) return;
+  _wwk.t += dt;
+  if (_wwk.ab && _wwk.p < 1) _wwk.p = Math.min(1, _wwk.p + dt * 0.6);
+}
+function _wwkDraw(ctx, cv) {
+  if (!_wwk) return;
+  const W = cv.width, H = cv.height, s = _WWK_SZENEN[_wwk.szene], off = 24 + _wwk.p * 108;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = _wwk.szene === 'rakete' ? '#0b1020' : '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const dark = _wwk.szene === 'rakete';
+  ctx.fillStyle = dark ? '#e2e8f0' : '#0f172a'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(s.titel, W / 2, 22);
+  const cx = W / 2, cy = 120;
+  ctx.font = '34px sans-serif'; ctx.textAlign = 'center';
+  if (s.axis === 'h') {
+    // Boden
+    ctx.strokeStyle = dark ? '#334155' : '#cbd5e1'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(20, cy + 34); ctx.lineTo(W - 20, cy + 34); ctx.stroke();
+    ctx.fillText(s.aE, cx - off, cy);
+    ctx.fillText(s.bE, cx + off, cy);
+    // Kraftpfeile am Kontakt: A nach links (Gegenkraft, rot), B nach rechts (Kraft, blau)
+    _kwkArrow(ctx, cx - 10, cy - 4, cx - 52, cy - 4, '#ef4444');
+    _kwkArrow(ctx, cx + 10, cy - 4, cx + 52, cy - 4, '#3b82f6');
+    ctx.font = '700 11px sans-serif';
+    ctx.fillStyle = '#ef4444'; ctx.fillText('Gegenkraft', cx - 34, cy - 14);
+    ctx.fillStyle = '#3b82f6'; ctx.fillText('Kraft', cx + 34, cy - 14);
+    ctx.fillStyle = dark ? '#94a3b8' : '#64748b'; ctx.font = '11px sans-serif';
+    ctx.fillText(s.aL, cx - off, cy + 30); ctx.fillText(s.bL, cx + off, cy + 30);
+  } else {
+    // vertikal: A (Rakete) oben, B (Gas) unten
+    ctx.fillText(s.aE, cx, cy - off + 10);
+    ctx.fillText(s.bE, cx, cy + off + 10);
+    _kwkArrow(ctx, cx + 30, cy - 6, cx + 30, cy - 48, '#3b82f6');   // Kraft auf Rakete nach oben
+    _kwkArrow(ctx, cx + 30, cy + 6, cx + 30, cy + 48, '#ef4444');   // Gegenkraft auf Gas nach unten
+    ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillStyle = '#3b82f6'; ctx.fillText('Kraft (Rakete hoch)', cx + 40, cy - 30);
+    ctx.fillStyle = '#ef4444'; ctx.fillText('Gegenkraft (Gas runter)', cx + 40, cy + 34);
+    ctx.textAlign = 'center'; ctx.fillStyle = dark ? '#94a3b8' : '#64748b'; ctx.font = '11px sans-serif';
+    ctx.fillText(s.aL, cx - 40, cy - off + 12); ctx.fillText(s.bL, cx - 40, cy + off + 12);
+  }
+  // Banner
+  ctx.textAlign = 'center'; ctx.font = '700 13px sans-serif'; ctx.fillStyle = dark ? '#86efac' : '#16a34a';
+  ctx.fillText('Kraft = Gegenkraft  ·  wirken auf zwei verschiedene Körper', W / 2, H - 12);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.1.10  (ns = 'wechselwirkung') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _wwkArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('wechselwirkung')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('wechselwirkung')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum werde ich selbst weggeschoben, wenn ich mich von einer Wand oder einem Boot abstoße?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass beim Abstoßen … , weil …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle ein Beispiel (Eisläufer, Boot, Rakete).</li>
+          <li>Drücke „Abstoßen“ und beobachte beide Körper.</li>
+          <li>Achte auf die zwei Kraftpfeile: Größe und Richtung.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Trage für jedes Beispiel ein, wohin sich die beiden Partner bewegen.</div>
+        <table class="ab-table"><tbody>
+          <tr><td>⛸️ Eisläufer A / B</td><td>${inp('b1', 'A: … · B: …')}</td></tr>
+          <tr><td>⛵ Person / Boot</td><td>${inp('b2', 'Person: … · Boot: …')}</td></tr>
+          <tr><td>🚀 Rakete / Gas</td><td>${inp('b3', 'Rakete: … · Gas: …')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die zwei Körper mit Kraft und Gegenkraft. Wie lang sind die beiden Pfeile im Vergleich?</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie groß ist die Gegenkraft im Vergleich zur Kraft? ${inp('a1', '')}</li>
+          <li>Auf wie viele Körper wirken die beiden Kräfte? ${inp('a2', '')}</li>
+          <li>Warum heben sie sich nicht auf (anders als beim Gleichgewicht)? ${inp('a3', 'weil sie auf …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Zu jeder Kraft gehört eine gleich große, ${inp('m1', 'wie gerichtete?')} ${inp('m2', 'was?')}. Das heißt ${inp('m3', 'lat. Satz?')}.<br>
+        Die beiden Kräfte wirken auf ${inp('m4', 'wie viele?')} verschiedene Körper – darum heben sie sich nicht auf.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Erkläre mit Kraft und Gegenkraft, warum eine Rakete auch im Weltall (ohne Luft) fliegen kann.</div>
+        ${ta('tr1', 'Die Rakete drückt das Gas nach … , das Gas drückt die Rakete nach … . Dafür braucht sie keine Luft, weil …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="wwkMini">${_wwkMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_wwkSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_wwkSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_wwkSelf(3)">😃 sicher</button>
+          <span id="wwkSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="wwkSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Eisläufer: gleiten in entgegengesetzte Richtungen auseinander. Person springt nach rechts → Boot nach links. Rakete nach oben → Gas nach unten. Die zwei Kraftpfeile sind gleich lang und entgegengesetzt.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Wechselwirkungsprinzip (3. Newtonsches Gesetz): Kräfte treten immer paarweise auf. Übt Körper 1 auf Körper 2 die Kraft F aus, so übt Körper 2 auf Körper 1 die gleich große, entgegengesetzte Kraft −F aus (actio = reactio). Wichtig: Die beiden Kräfte greifen an <i>verschiedenen</i> Körpern an – deshalb heben sie sich nicht auf (Unterschied zum Kräftegleichgewicht, wo beide Kräfte am <i>selben</i> Körper wirken).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die stärkere Kraft gewinnt.“ (2) „Kraft und Gegenkraft heben sich immer auf.“ (3) „Im Weltall kann eine Rakete nichts abstoßen.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Beide Pfeile gleich lang zeichnen; klar benennen, auf welchen Körper welche Kraft wirkt; Gleichgewicht (ein Körper) vs. Wechselwirkung (zwei Körper) gegenüberstellen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 gleich groß. 6.2 auf zwei (verschiedene) Körper. 6.3 weil jede Kraft auf einen anderen Körper wirkt. Merksatz: entgegengesetzte · Gegenkraft · actio = reactio · zwei. Transfer: Rakete drückt Gas nach unten, Gas drückt Rakete nach oben; sie braucht keine Luft, weil der Rückstoß aus der Gegenkraft entsteht. Minidiagnose: 1→eine gleich große Gegenkraft · 2→auf zwei verschiedene Körper · 3→wegen der Gegenkraft (Rückstoß).</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('wechselwirkung')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('wechselwirkung', 'Kraft und Gegenkraft – warum drücke ich zurück?', body);
+}
+
+const _WWK_MINI = [
+  { q: '1. Zu jeder Kraft gehört …',
+    opts: ['eine gleich große Gegenkraft', 'eine kleinere Gegenkraft', 'gar keine Gegenkraft'], correct: 0,
+    fb: ['Richtig! actio = reactio – gleich groß und entgegengesetzt.',
+         'Nein, die Gegenkraft ist genauso groß.',
+         'Doch, es gibt immer eine Gegenkraft.'] },
+  { q: '2. Auf wie viele Körper wirken Kraft und Gegenkraft?',
+    opts: ['Auf zwei verschiedene Körper', 'Auf denselben Körper', 'Auf keinen Körper'], correct: 0,
+    fb: ['Richtig! Darum heben sie sich nicht auf.',
+         'Nein – dann wäre es ein Gleichgewicht an einem Körper.',
+         'Sie wirken sehr wohl auf Körper.'] },
+  { q: '3. Warum bewegt sich das Boot rückwärts, wenn man nach vorn abspringt?',
+    opts: ['Wegen der Gegenkraft (Rückstoß)', 'Weil das Wasser schiebt', 'Das ist Zufall'], correct: 0,
+    fb: ['Richtig! Die Person drückt das Boot zurück – Gegenkraft.',
+         'Das Wasser ist nicht die Ursache.',
+         'Das ist kein Zufall, sondern actio = reactio.'] }
+];
+function _wwkMiniHTML() {
+  return _WWK_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_wwkAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="wwkFb${qi}"></div></div>`).join('');
+}
+function _wwkAns(qi, oi) {
+  const m = _WWK_MINI[qi], el = document.getElementById('wwkFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _wwkSelf(n) {
+  const out = document.getElementById('wwkSelfOut'), val = document.getElementById('wwkSelfVal');
+  if (val) { val.value = String(n); _abSave('wechselwirkung'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
