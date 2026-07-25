@@ -228,6 +228,7 @@ const _physAbDefs = {
   'kraft-wirkungen': { titel: 'Was kann eine Kraft alles bewirken?', ns: 'kraftwirkungen', html: () => _kwnArbeitsblattHTML() },
   'kraftmesser': { titel: 'Wie misst man eine Kraft, die man nicht anfassen kann?', ns: 'kraftmesser', html: () => _krmArbeitsblattHTML() },
   'federgesetz': { titel: 'Warum wird eine Feder gleichmäßig länger?', ns: 'federgesetz', html: () => _fedArbeitsblattHTML() },
+  'masse-gewicht': { titel: 'Ist „schwer“ dasselbe wie „viel Masse“?', ns: 'massegewicht', html: () => _mgwArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -899,6 +900,16 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('fedAnim', 'fedAnim');
     _pSim.start(dt => _fedUpdate(dt), (ctx, cv) => _fedDraw(ctx, cv), []);
     _abRestore('federgesetz');
+  },
+
+  // ── 9.1.5 KRÄFTE: MASSE vs. GEWICHTSKRAFT ──────────────────────
+  'masse-gewicht': modal => {
+    _mgwInit();
+    modal.innerHTML = _mgwHTML();
+    _mgwStatus();
+    _pSim = new PhysicsSimEngine('mgwAnim', 'mgwAnim');
+    _pSim.start(dt => _mgwUpdate(dt), (ctx, cv) => _mgwDraw(ctx, cv), []);
+    _abRestore('massegewicht');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -54731,5 +54742,200 @@ function _fedAns(qi, oi) {
 function _fedSelf(n) {
   const out = document.getElementById('fedSelfOut'), val = document.getElementById('fedSelfVal');
   if (val) { val.value = String(n); _abSave('federgesetz'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.1.5  WARUM IST "SCHWER" NICHT DASSELBE WIE "VIEL MASSE"?
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Kräfte"
+// Masse (Waage, kg/g – Materiemenge) vs. Gewichtskraft
+// (Kraftmesser, N – Anziehung der Erde). F = m · g, g = 9,8 N/kg.
+// ═══════════════════════════════════════════════════════
+let _mgw = null;
+const _MGW_G = 9.8;
+const _MGW = [
+  { short: '100 g', label: '100 g', m: 0.1 },
+  { short: '200 g', label: '200 g', m: 0.2 },
+  { short: '500 g', label: '500 g', m: 0.5 },
+  { short: '1 kg', label: '1 kg', m: 1 },
+  { short: '2 kg', label: '2 kg', m: 2 }
+];
+function _mgwInit() { _mgw = { idx: 3, t: 0 }; }
+function _mgwF() { return _MGW[_mgw.idx].m * _MGW_G; }
+
+function _mgwHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim mgw-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">⚖️ Ist „schwer“ dasselbe wie „viel Masse“?</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle einen Körper. Die Waage misst seine <b>Masse</b> (in Gramm/Kilogramm), der Kraftmesser seine <b>Gewichtskraft</b> (in Newton). Was ist der Unterschied?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="mgwAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Körper:</span>
+          ${_MGW.map((o, i) => `<button class="sim-btn${i === 3 ? ' primary' : ''}" id="mgwB${i}" onclick="_mgwSet(${i})">${o.short}</button>`).join('')}
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Masse und Gewichtskraft</div>
+        <div class="lmp-status" id="mgwStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Die <b>Masse</b> ist die Menge an Stoff im Körper (Einheit kg). Sie ändert sich nicht. Die <b>Gewichtskraft</b> ist die Kraft, mit der die Erde den Körper nach unten zieht (Einheit N). Man berechnet sie mit <b>F = m · g</b> (g = 9,8 N/kg).</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Masse misst man mit der <b>Waage (kg)</b>, Gewichtskraft mit dem <b>Kraftmesser (N)</b>. „Schwer“ meint eine große <b>Gewichtskraft</b>.
+    </p>
+    ${_mgwArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _mgwSet(i) {
+  if (!_mgw) return;
+  _mgw.idx = i;
+  _MGW.forEach((o, k) => document.getElementById('mgwB' + k)?.classList.toggle('primary', k === i));
+  _mgwStatus();
+}
+function _mgwStatus() {
+  const el = document.getElementById('mgwStatus'); if (!el) return;
+  const o = _MGW[_mgw.idx], F = _mgwF();
+  el.innerHTML = `Masse <b>m = ${o.label}</b> (bleibt gleich). Gewichtskraft <b>F = m · g = ${F.toFixed(1).replace('.', ',')} N</b>. Die Waage zeigt die Masse, der Kraftmesser die Kraft.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation / Canvas ─────────────────────────────────
+function _mgwUpdate(dt) { if (_mgw) _mgw.t += dt; }
+function _mgwPanel(ctx, x, y, w, h, bg, fg, title, val) {
+  ctx.fillStyle = bg; _kwnRoundRect(ctx, x, y, w, h, 8); ctx.fill();
+  ctx.fillStyle = fg; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(title, x + 10, y + 18);
+  ctx.font = '700 18px sans-serif'; ctx.fillText(val, x + 10, y + 42);
+}
+function _mgwDraw(ctx, cv) {
+  if (!_mgw) return;
+  const W = cv.width, H = cv.height, o = _MGW[_mgw.idx], F = _mgwF();
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  // Formel oben
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('F = m · g   (g = 9,8 N/kg)', W / 2, 20);
+  // Objekt
+  const size = 30 + ((o.m - 0.1) / 1.9) * 30, cx = W / 2, cy = 82;
+  ctx.fillStyle = '#3b82f6'; _kwnRoundRect(ctx, cx - size / 2, cy - size / 2, size, size, 6); ctx.fill();
+  ctx.strokeStyle = '#1e3a8a'; ctx.lineWidth = 2; ctx.stroke();
+  ctx.fillStyle = '#fff'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(o.short, cx, cy + 4);
+  // Gewichtskraft-Pfeil nach unten
+  const ay = cy + size / 2 + 4, plen = 18 + (F / (2 * _MGW_G)) * 70;
+  _kwkArrow(ctx, cx, ay, cx, ay + plen, '#ef4444');
+  ctx.fillStyle = '#dc2626'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('F = ' + F.toFixed(1).replace('.', ',') + ' N', cx + 10, ay + plen / 2);
+  // Panels
+  _mgwPanel(ctx, 24, H - 66, 176, 52, '#dbeafe', '#1e40af', '⚖️ Masse (Waage)', o.label);
+  _mgwPanel(ctx, W - 200, H - 66, 176, 52, '#fee2e2', '#b91c1c', '🪝 Gewichtskraft (Kraftmesser)', F.toFixed(1).replace('.', ',') + ' N');
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.1.5  (ns = 'massegewicht') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _mgwArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('massegewicht')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('massegewicht')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Ist „schwer“ dasselbe wie „viel Masse“ – oder sind das zwei verschiedene Dinge?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass Masse und Gewichtskraft … , weil …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle nacheinander verschiedene Körper.</li>
+          <li>Lies die Masse an der Waage (kg/g) ab.</li>
+          <li>Lies die Gewichtskraft am Kraftmesser (N) ab.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Trage Masse und Gewichtskraft ein (g = 9,8 N/kg, also F = m · 9,8).</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Masse = 0,5 kg</td><td>F = ${inp('f1', 'N')}</td></tr>
+          <tr><td>Masse = 1 kg</td><td>F = ${inp('f2', 'N')}</td></tr>
+          <tr><td>Masse = 2 kg</td><td>F = ${inp('f3', 'N')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne einen Körper mit dem Gewichtskraft-Pfeil. Schreibe daneben die Masse (kg) und die Gewichtskraft (N).</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Welches Gerät misst die Masse, welches die Gewichtskraft? ${inp('a1', 'Masse: … · Gewichtskraft: …')}</li>
+          <li>Welche Einheiten gehören zu Masse und Gewichtskraft? ${inp('a2', 'Masse: … · Kraft: …')}</li>
+          <li>Mit welcher Formel berechnet man die Gewichtskraft? ${inp('a3', 'F = …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die ${inp('m1', 'was?')} ist die Menge an Stoff in einem Körper (Einheit ${inp('m2', 'Einheit?')}). Sie bleibt immer gleich.<br>
+        Die ${inp('m3', 'was?')} ist die Kraft, mit der die Erde den Körper anzieht (Einheit ${inp('m4', 'Einheit?')}). Man berechnet sie mit F = ${inp('m5', 'Formel?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Im Supermarkt steht „1 kg Zucker“. Warum ist das genau genommen eine Masse und kein Gewicht? Und was meinen wir im Alltag mit „schwer“?</div>
+        ${ta('tr1', '„1 kg“ ist eine … . Mit „schwer“ meinen wir eine große … .', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="mgwMini">${_mgwMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_mgwSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_mgwSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_mgwSelf(3)">😃 sicher</button>
+          <span id="mgwSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="mgwSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Die Waage zeigt die Masse (g/kg), der Kraftmesser die Gewichtskraft (N). Mit g = 9,8 N/kg: 0,5 kg → 4,9 N · 1 kg → 9,8 N · 2 kg → 19,6 N. Größere Masse → größere Gewichtskraft (auf der Erde).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Masse (Formelzeichen m, Einheit kg) ist die orts­unabhängige Materiemenge und wird mit einer Waage bestimmt. Gewichtskraft (F, Einheit N) ist die Anziehungskraft der Erde und wird mit einem Kraftmesser bestimmt: F = m · g. Umgangssprachlich „schwer“ = große Gewichtskraft. (Dass die Gewichtskraft vom Ort abhängt, folgt in 9.1.6.)</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Masse und Gewicht sind dasselbe.“ (2) „Die Waage misst Newton.“ (3) „Kilogramm ist eine Krafteinheit.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Zwei Geräte, zwei Größen, zwei Einheiten klar gegenüberstellen; F = m · g gemeinsam ausrechnen; 100 g ≈ 1 N als Brücke zu 9.1.3.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 4,9 / 9,8 / 19,6 N. 6.1 Masse: Waage · Gewichtskraft: Kraftmesser. 6.2 Masse: kg · Kraft: N. 6.3 F = m · g. Merksatz: Masse · kg · Gewichtskraft · N · m · g. Transfer: „1 kg“ ist eine Masse; „schwer“ meint eine große Gewichtskraft. Minidiagnose: 1→Waage (kg) · 2→Anziehungskraft der Erde (N) · 3→F = m · g.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('massegewicht')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('massegewicht', 'Ist „schwer“ dasselbe wie „viel Masse“?', body);
+}
+
+const _MGW_MINI = [
+  { q: '1. Womit misst man die Masse eines Körpers?',
+    opts: ['Mit einer Waage (in kg)', 'Mit einem Kraftmesser (in N)', 'Mit einem Thermometer'], correct: 0,
+    fb: ['Richtig! Die Masse misst man mit einer Waage in kg/g.',
+         'Der Kraftmesser misst die Gewichtskraft in Newton.',
+         'Ein Thermometer misst die Temperatur.'] },
+  { q: '2. Was ist die Gewichtskraft?',
+    opts: ['Die Kraft, mit der die Erde den Körper anzieht', 'Die Menge an Stoff im Körper', 'Die Temperatur des Körpers'], correct: 0,
+    fb: ['Richtig! Sie wird in Newton gemessen: F = m · g.',
+         'Das ist die Masse (in kg), nicht die Gewichtskraft.',
+         'Das hat mit der Gewichtskraft nichts zu tun.'] },
+  { q: '3. Mit welcher Formel berechnet man die Gewichtskraft?',
+    opts: ['F = m · g', 'F = m / g', 'F = m + g'], correct: 0,
+    fb: ['Richtig! Gewichtskraft = Masse · Ortsfaktor.',
+         'Nein, es wird multipliziert, nicht geteilt.',
+         'Nein, es wird multipliziert, nicht addiert.'] }
+];
+function _mgwMiniHTML() {
+  return _MGW_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_mgwAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="mgwFb${qi}"></div></div>`).join('');
+}
+function _mgwAns(qi, oi) {
+  const m = _MGW_MINI[qi], el = document.getElementById('mgwFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _mgwSelf(n) {
+  const out = document.getElementById('mgwSelfOut'), val = document.getElementById('mgwSelfVal');
+  if (val) { val.value = String(n); _abSave('massegewicht'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
