@@ -237,6 +237,7 @@ const _physAbDefs = {
   'schiefe-ebene': { titel: 'Warum geht ein Stein über eine Rampe leichter hoch?', ns: 'schiefeebene', html: () => _sieArbeitsblattHTML() },
   'reibung-rs': { titel: 'Warum bremst mich der Boden aus? (Reibung)', ns: 'reibungrs', html: () => _rbgArbeitsblattHTML() },
   'bewegung-beschreiben': { titel: 'Wie kann ich eine Bewegung beschreiben?', ns: 'bewbeschr', html: () => _bwbArbeitsblattHTML() },
+  'geschwindigkeit-rs': { titel: 'Was bedeutet „schnell“? (v = s/t)', ns: 'geschwrs', html: () => _gswArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -998,6 +999,16 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('bwbAnim', 'bwbAnim');
     _pSim.start(dt => _bwbUpdate(dt), (ctx, cv) => _bwbDraw(ctx, cv), []);
     _abRestore('bewbeschr');
+  },
+
+  // ── 9.2.2 BEWEGUNG: GESCHWINDIGKEIT v = s/t ────────────────────
+  'geschwindigkeit-rs': modal => {
+    _gswInit();
+    modal.innerHTML = _gswHTML();
+    _gswStatus();
+    _pSim = new PhysicsSimEngine('gswAnim', 'gswAnim');
+    _pSim.start(dt => _gswUpdate(dt), (ctx, cv) => _gswDraw(ctx, cv), []);
+    _abRestore('geschwrs');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -56710,5 +56721,211 @@ function _bwbAns(qi, oi) {
 function _bwbSelf(n) {
   const out = document.getElementById('bwbSelfOut'), val = document.getElementById('bwbSelfVal');
   if (val) { val.value = String(n); _abSave('bewbeschr'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.2.2  WAS BEDEUTET "SCHNELL"?  (GESCHWINDIGKEIT v = s/t)
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Bewegung"
+// Rennen zweier Autos: schneller = mehr Weg in gleicher Zeit.
+// Geschwindigkeit v = s/t (Einheit m/s).
+// ═══════════════════════════════════════════════════════
+let _gsw = null;
+const _GSW_SPEED = { langsam: 6, mittel: 10, schnell: 16 };  // m/s
+const _GSW_ZIEL = 120;                                        // m
+function _gswInit() { _gsw = { a: 'mittel', b: 'langsam', running: false, t: 0, sa: 0, sb: 0, fertig: false }; }
+
+function _gswHTML() {
+  const spBtns = (auto) => ['langsam', 'mittel', 'schnell'].map(k =>
+    `<button class="sim-btn${_gsw[auto] === k ? ' primary' : ''}" id="gsw${auto}${k}" onclick="_gswSet('${auto}','${k}')">${k}</button>`).join('');
+  return `<div class="sim-box sim-box-wide fpm-sim gsw-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🏁 Was bedeutet es eigentlich, dass etwas „schnell“ ist?</h3>
+    <div class="fpm-note" style="margin-top:2px">Lass zwei Autos um die Wette fahren. Wer ist schneller – und warum? Berechne die Geschwindigkeit v = s / t.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="gswAnim" width="440" height="200" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center;color:#1d4ed8">🚗 Auto A:</span>${spBtns('a')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center;color:#b45309">🚙 Auto B:</span>${spBtns('b')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" onclick="_gswGo()">▶ Rennen starten</button>
+          <button class="sim-btn" onclick="_gswReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Geschwindigkeit v = s / t</div>
+        <div class="lmp-status" id="gswStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">„Schnell“ heißt: in <b>gleicher Zeit einen größeren Weg</b> (oder die gleiche Strecke in kürzerer Zeit). Die <b>Geschwindigkeit</b> berechnet man mit <b>v = s / t</b> (Weg geteilt durch Zeit), Einheit <b>m/s</b>. Mehr v = schneller.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Gleiche Zeit, mehr Weg → schneller. &nbsp;|&nbsp; <b>v = s / t</b>
+    </p>
+    ${_gswArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _gswSet(auto, k) {
+  if (!_gsw || _gsw.running) return;
+  _gsw[auto] = k;
+  ['langsam', 'mittel', 'schnell'].forEach(x => document.getElementById('gsw' + auto + x)?.classList.toggle('primary', x === k));
+  _gswReset();
+}
+function _gswGo() { if (_gsw) { _gsw.running = true; _gsw.fertig = false; _gsw.t = 0; _gsw.sa = 0; _gsw.sb = 0; _gswStatus(); } }
+function _gswReset() { if (_gsw) { _gsw.running = false; _gsw.fertig = false; _gsw.t = 0; _gsw.sa = 0; _gsw.sb = 0; _gswStatus(); } }
+function _gswStatus() {
+  const el = document.getElementById('gswStatus'); if (!el) return;
+  const va = _GSW_SPEED[_gsw.a], vb = _GSW_SPEED[_gsw.b];
+  if (_gsw.fertig) {
+    const t = _gsw.t, vaC = (_gsw.sa / t), vbC = (_gsw.sb / t);
+    const sieger = _gsw.sa > _gsw.sb ? 'Auto A' : (_gsw.sb > _gsw.sa ? 'Auto B' : 'unentschieden');
+    el.innerHTML = `Nach <b>t = ${t.toFixed(1).replace('.', ',')} s</b>: 🚗 A = ${_gsw.sa.toFixed(0)} m → v = ${vaC.toFixed(1).replace('.', ',')} m/s · 🚙 B = ${_gsw.sb.toFixed(0)} m → v = ${vbC.toFixed(1).replace('.', ',')} m/s. <b>Schneller: ${sieger}</b> (mehr Weg in gleicher Zeit).`;
+  } else {
+    el.innerHTML = `🚗 A = ${va} m/s, 🚙 B = ${vb} m/s eingestellt. Starte das Rennen und vergleiche Weg und Zeit.`;
+  }
+  el.className = 'lmp-status' + (_gsw.fertig ? ' on' : '');
+}
+
+// ── Animation ──────────────────────────────────────────
+function _gswUpdate(dt) {
+  if (!_gsw || !_gsw.running) return;
+  _gsw.t += dt;
+  _gsw.sa += _GSW_SPEED[_gsw.a] * dt;
+  _gsw.sb += _GSW_SPEED[_gsw.b] * dt;
+  if (_gsw.sa >= _GSW_ZIEL || _gsw.sb >= _GSW_ZIEL) {
+    _gsw.sa = Math.min(_gsw.sa, _GSW_ZIEL); _gsw.sb = Math.min(_gsw.sb, _GSW_ZIEL);
+    _gsw.running = false; _gsw.fertig = true; _gswStatus();
+  }
+}
+function _gswDraw(ctx, cv) {
+  if (!_gsw) return;
+  const W = cv.width, H = cv.height, xL = 34, xR = 406;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const px = s => xL + (s / _GSW_ZIEL) * (xR - xL);
+  // Ziellinie
+  ctx.strokeStyle = '#0f172a'; ctx.setLineDash([4, 4]); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(xR, 30); ctx.lineTo(xR, 170); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#0f172a'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('🏁 ' + _GSW_ZIEL + ' m', xR - 4, 24);
+  // Uhr
+  ctx.textAlign = 'left'; ctx.font = '700 14px sans-serif'; ctx.fillStyle = '#334155'; ctx.fillText('⏱ ' + _gsw.t.toFixed(1).replace('.', ',') + ' s', 34, 24);
+  // Bahn A
+  [['a', 70, '🚗', '#1d4ed8', _gsw.sa], ['b', 120, '🚙', '#b45309', _gsw.sb]].forEach(([auto, y, emo, col, s]) => {
+    ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(xL, y + 20); ctx.lineTo(xR, y + 20); ctx.stroke();
+    ctx.font = '24px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(emo, px(s), y + 16);
+    ctx.fillStyle = col; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(s.toFixed(0) + ' m', xL, y - 6);
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.2.2  (ns = 'geschwrs') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _gswArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('geschwrs')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('geschwrs')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was bedeutet es genau, dass ein Auto „schneller“ ist als ein anderes?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass ein Fahrzeug schneller ist, wenn es … .', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle für beide Autos eine Geschwindigkeit ein.</li>
+          <li>Starte das Rennen und beobachte Weg und Zeit.</li>
+          <li>Berechne für jedes Auto v = s / t.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Trage Weg, Zeit und die berechnete Geschwindigkeit ein.</div>
+        <table class="ab-table"><tbody>
+          <tr><td>🚗 Auto A</td><td>s = ${inp('sa', 'm')}</td><td>t = ${inp('ta', 's')}</td><td>v = s/t = ${inp('vaa', 'm/s')}</td></tr>
+          <tr><td>🚙 Auto B</td><td>s = ${inp('sb', 'm')}</td><td>t = ${inp('tb', 's')}</td><td>v = s/t = ${inp('vbb', 'm/s')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne beide Autos nach gleicher Zeit. Welches ist weiter gekommen?</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Woran erkennst du das schnellere Auto? ${inp('a1', '')}</li>
+          <li>Mit welcher Formel berechnet man die Geschwindigkeit? ${inp('a2', 'v = …')}</li>
+          <li>In welcher Einheit kommt die Geschwindigkeit heraus? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ein Körper ist schneller, wenn er in gleicher Zeit einen ${inp('m1', 'größeren/kleineren')} Weg zurücklegt.<br>
+        Die Geschwindigkeit berechnet man mit v = ${inp('m2', 'Formel?')}. Ihre Einheit ist ${inp('m3', 'Einheit?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Der Tacho im Auto zeigt die Geschwindigkeit an. Was misst er im Grunde ständig?</div>
+        ${ta('tr1', 'Der Tacho berechnet aus … und … ständig die Geschwindigkeit.', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="gswMini">${_gswMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_gswSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_gswSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_gswSelf(3)">😃 sicher</button>
+          <span id="gswSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="gswSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Beim Rennen legt das schnellere Auto in derselben Zeit einen größeren Weg zurück und erreicht das Ziel zuerst. Beispiel: A (10 m/s) und B (6 m/s): Erreicht A nach 12 s die 120 m, ist B erst bei 72 m; v_A = 120/12 = 10 m/s, v_B = 72/12 = 6 m/s.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Geschwindigkeit ist Weg pro Zeit: v = s/t, Einheit m/s (auch km/h). „Schneller“ = größere Geschwindigkeit = mehr Weg in gleicher Zeit bzw. gleiche Strecke in kürzerer Zeit. Bei gleichförmiger Bewegung ist v konstant.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Wer weiter vorn startet, ist schneller.“ (2) „Schnell hängt nur vom Weg ab.“ (3) „m/s und km/h sind dasselbe.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Gleiche Zeit betonen; v = s/t je Auto ausrechnen; Einheit mitschreiben.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 mehr Weg in gleicher Zeit (erreicht Ziel zuerst). 6.2 v = s/t. 6.3 m/s. Merksatz: größeren · s/t · m/s. Transfer: aus Weg und Zeit. Minidiagnose: 1→mehr Weg in gleicher Zeit · 2→v = s/t · 3→m/s (oder km/h).</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('geschwrs')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('geschwrs', 'Was bedeutet „schnell“? (v = s/t)', body);
+}
+
+const _GSW_MINI = [
+  { q: '1. Wann ist ein Auto schneller als ein anderes?',
+    opts: ['Wenn es in gleicher Zeit mehr Weg zurücklegt', 'Wenn es weiter vorne startet', 'Wenn es größer ist'], correct: 0,
+    fb: ['Richtig! Mehr Weg in gleicher Zeit bedeutet schneller.',
+         'Der Startplatz sagt nichts über die Geschwindigkeit.',
+         'Die Größe hat nichts mit der Geschwindigkeit zu tun.'] },
+  { q: '2. Mit welcher Formel berechnet man die Geschwindigkeit?',
+    opts: ['v = s / t', 'v = s · t', 'v = t / s'], correct: 0,
+    fb: ['Richtig! Geschwindigkeit = Weg geteilt durch Zeit.',
+         'Nein, es wird geteilt, nicht multipliziert.',
+         'Nein, Weg geteilt durch Zeit – nicht umgekehrt.'] },
+  { q: '3. In welcher Einheit gibt man die Geschwindigkeit oft an?',
+    opts: ['m/s (oder km/h)', 'nur in Metern', 'nur in Sekunden'], correct: 0,
+    fb: ['Richtig! Meter pro Sekunde oder Kilometer pro Stunde.',
+         'Meter allein ist der Weg.',
+         'Sekunden allein ist die Zeit.'] }
+];
+function _gswMiniHTML() {
+  return _GSW_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_gswAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="gswFb${qi}"></div></div>`).join('');
+}
+function _gswAns(qi, oi) {
+  const m = _GSW_MINI[qi], el = document.getElementById('gswFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _gswSelf(n) {
+  const out = document.getElementById('gswSelfOut'), val = document.getElementById('gswSelfVal');
+  if (val) { val.value = String(n); _abSave('geschwrs'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
