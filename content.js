@@ -3714,6 +3714,8 @@ const CONTENT = { ...(typeof GS_CONTENT !== 'undefined' ? GS_CONTENT : {}),
         color:'#7C3AED',
         intro:'Klasse 9 Physik – Schall, Druck und Optik! Drei spannende Themenfelder der Realschule.',
         topics:[
+          { isChapter:true, name:'💪 Kräfte – wenn etwas schiebt, zieht oder verformt' },
+          { name:'Woran erkennt man, dass eine Kraft wirkt?', diff:1, exp:'kraft-wirkung', explanation:'Kräfte kann man nicht sehen – aber man erkennt sie an ihrer Wirkung. Eine Kraft kann einen Körper verformen, ihn in Bewegung setzen oder abbremsen oder seine Richtung ändern. In der Simulation wählst du eine dieser drei Wirkungen und lässt eine Kraft wirken: Die Knete wird eingedrückt (verformt), der ruhende Wagen rollt los und wird schneller (Bewegung), der rollende Ball wird zur Seite gelenkt (Richtung). So lernst du: Immer wenn sich Form, Tempo oder Richtung ändern, hat eine Kraft gewirkt.' },
           { isChapter:true, name:'🔊 Schall' },
           { name:'Schall: Frequenz, Wellenlänge & Schallgeschwindigkeit', diff:2, explanation:'Schall ist eine mechanische Welle (braucht Medium). Frequenz f in Hertz (Hz): Anzahl Schwingungen pro Sekunde. Tonhöhe ~ Frequenz. Lautstärke ~ Amplitude. Schallgeschwindigkeit: v_Schall ≈ 343 m/s in Luft. v = f · λ (Wellenformel). Infra- (< 20 Hz) und Ultraschall (> 20 kHz) nicht hörbar.' },
           { isChapter:true, name:'🌊 Druck & Auftrieb' },

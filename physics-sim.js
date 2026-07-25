@@ -224,6 +224,7 @@ function openPhysicsSim(simId) {
 // ═══════════════════════════════════════════════════════
 const _physAbDefs = {
   schwingung: { titel: 'Merkmale von Schwingungen', ns: 'schwingung', html: () => _swgArbeitsblattHTML() },
+  'kraft-wirkung': { titel: 'Woran erkennt man, dass eine Kraft wirkt?', ns: 'kraftwirkung', html: () => _kwkArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -855,6 +856,16 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('grvAnim', 'grvAnim');
     _pSim.start(dt => _grvUpdate(dt), (ctx, cv) => _grvDraw(ctx, cv), []);
     _abRestore('gravitation');
+  },
+
+  // ── 9.1.1 KRÄFTE: WIRKUNG EINER KRAFT ──────────────────────────
+  'kraft-wirkung': modal => {
+    _kwkInit();
+    modal.innerHTML = _kwkHTML();
+    _kwkStatus();
+    _pSim = new PhysicsSimEngine('kwkAnim', 'kwkAnim');
+    _pSim.start(dt => _kwkUpdate(dt), (ctx, cv) => _kwkDraw(ctx, cv), []);
+    _abRestore('kraftwirkung');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -53731,5 +53742,286 @@ function _radAns(qi, oi) {
 function _radSelf(n) {
   const out = document.getElementById('radSelfOut'), val = document.getElementById('radSelfVal');
   if (val) { val.value = String(n); _abSave('verkehr'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.1.1  WORAN ERKENNT MAN, DASS EINE KRAFT WIRKT?
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Kräfte"
+// Handlungsorientiert: Kräfte sind unsichtbar, man erkennt
+// sie nur an ihrer Wirkung. Eine Kraft kann (1) verformen,
+// (2) die Bewegung ändern, (3) die Richtung ändern.
+// ═══════════════════════════════════════════════════════
+let _kwk = null;
+function _kwkInit() { _kwk = { modus: 'verform', wirkt: false, done: false, t: 0, squish: 0, wx: 0, wv: 0, bx: 0, by: 0, bvy: 0, trail: [] }; }
+
+function _kwkHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim kwk-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">💪 Woran erkennt man, dass eine Kraft wirkt?</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine Kraft sieht man nicht – aber man erkennt sie an ihrer <b>Wirkung</b>. Wähle eine Wirkung und lass die Kraft wirken.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="kwkAnim" width="440" height="236" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="kwkMverform" onclick="_kwkSet('verform')">🟢 Verformen</button>
+          <button class="sim-btn" id="kwkMbewegen" onclick="_kwkSet('bewegen')">🛒 Bewegen</button>
+          <button class="sim-btn" id="kwkMumlenken" onclick="_kwkSet('umlenken')">⚽ Richtung ändern</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" onclick="_kwkGo()">💥 Kraft wirken lassen</button>
+          <button class="sim-btn" onclick="_kwkReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was bewirkt die Kraft?</div>
+        <div class="lmp-status" id="kwkStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Eine Kraft kann einen Körper <b>verformen</b>, ihn <b>in Bewegung setzen oder abbremsen</b> oder seine <b>Richtung ändern</b>. Immer wenn sich Form, Tempo oder Richtung ändern, hat eine Kraft gewirkt.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Kräfte erkennt man nur an dem, was sie <b>bewirken</b> – nicht am Aussehen der Kraft selbst.
+    </p>
+    ${_kwkArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _kwkSet(m) {
+  if (!_kwk) return;
+  _kwk.modus = m;
+  ['verform', 'bewegen', 'umlenken'].forEach(x => document.getElementById('kwkM' + x)?.classList.toggle('primary', x === m));
+  _kwkReset();
+}
+function _kwkGo() {
+  if (!_kwk) return;
+  _kwk.wirkt = true; _kwk.done = false;
+  _kwk.squish = 0; _kwk.wx = 0; _kwk.wv = 0; _kwk.bx = 0; _kwk.by = 0; _kwk.bvy = 0; _kwk.trail = [];
+  _kwkStatus();
+}
+function _kwkReset() {
+  if (!_kwk) return;
+  _kwk.wirkt = false; _kwk.done = false;
+  _kwk.squish = 0; _kwk.wx = 0; _kwk.wv = 0; _kwk.bx = 0; _kwk.by = 0; _kwk.bvy = 0; _kwk.trail = [];
+  _kwkStatus();
+}
+function _kwkStatus() {
+  const el = document.getElementById('kwkStatus'); if (!el) return;
+  const map = {
+    verform: { icon: '🟢', name: 'Verformen', wirk: 'Die Kraft drückt die Knete zusammen – sie <b>verformt</b> den Körper.', pre: 'Drücke auf „Kraft wirken lassen“: Was passiert mit der weichen Knete?' },
+    bewegen: { icon: '🛒', name: 'Bewegen', wirk: 'Die Kraft setzt den ruhenden Wagen in Bewegung – er wird <b>schneller</b> (Bewegungsänderung).', pre: 'Drücke auf „Kraft wirken lassen“: Der ruhende Wagen bekommt einen Schubs.' },
+    umlenken: { icon: '⚽', name: 'Richtung ändern', wirk: 'Die Kraft von oben <b>lenkt</b> den rollenden Ball ab – seine <b>Richtung</b> ändert sich.', pre: 'Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß.' }
+  };
+  const m = map[_kwk.modus];
+  const aktiv = _kwk.done || _kwk.wirkt;
+  el.innerHTML = `${m.icon} <b>${m.name}:</b> ${aktiv ? m.wirk : m.pre}`;
+  el.className = 'lmp-status' + (aktiv ? ' on' : '');
+}
+
+// ── Animation ──────────────────────────────────────────
+function _kwkUpdate(dt) {
+  if (!_kwk || !_kwk.wirkt) return;
+  _kwk.t += dt;
+  if (_kwk.modus === 'verform') {
+    if (_kwk.squish < 1) _kwk.squish = Math.min(1, _kwk.squish + dt * 1.4);
+    else if (!_kwk.done) { _kwk.done = true; _kwkStatus(); }
+  } else if (_kwk.modus === 'bewegen') {
+    _kwk.wv += 70 * dt;
+    _kwk.wx += _kwk.wv * dt;
+    if (_kwk.wx >= 250) { _kwk.wx = 250; _kwk.wirkt = false; if (!_kwk.done) { _kwk.done = true; _kwkStatus(); } }
+  } else if (_kwk.modus === 'umlenken') {
+    _kwk.bx += 70 * dt;
+    if (_kwk.bx > 170) { _kwk.bvy += 90 * dt; _kwk.by += _kwk.bvy * dt; }
+    _kwk.trail.push({ x: 40 + _kwk.bx, y: 110 + _kwk.by });
+    if (_kwk.trail.length > 300) _kwk.trail.shift();
+    if (40 + _kwk.bx > 412 || 110 + _kwk.by > 196) { _kwk.wirkt = false; if (!_kwk.done) { _kwk.done = true; _kwkStatus(); } }
+  }
+}
+function _kwkArrow(ctx, x1, y1, x2, y2, col) {
+  ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+  const a = Math.atan2(y2 - y1, x2 - x1), h = 8;
+  ctx.beginPath(); ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - h * Math.cos(a - 0.5), y2 - h * Math.sin(a - 0.5));
+  ctx.lineTo(x2 - h * Math.cos(a + 0.5), y2 - h * Math.sin(a + 0.5));
+  ctx.closePath(); ctx.fill();
+}
+function _kwkDraw(ctx, cv) {
+  if (!_kwk) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+  const gy = 200;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+  ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#e2e8f0';
+
+  if (_kwk.modus === 'verform') {
+    ctx.fillText('Wirkung: verformen', W / 2, 22);
+    const cx = 210, cy = 148, s = _kwk.squish;
+    const rx = 46 * (1 - 0.45 * s), ry = 46 * (1 + 0.30 * s);
+    const ecx = cx + (46 - rx);                 // Mittelpunkt wandert nach rechts (gegen die Wand)
+    // Wand rechts
+    ctx.fillStyle = '#475569'; ctx.fillRect(cx + 46 + 6, cy - 54, 10, 108);
+    // Knete (grün)
+    ctx.fillStyle = '#34d399'; ctx.beginPath(); ctx.ellipse(ecx, cy, rx, ry, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#a7f3d0'; ctx.lineWidth = 2; ctx.stroke();
+    // Hand/Kolben links
+    const blobLeft = ecx - rx;
+    ctx.fillStyle = '#94a3b8'; ctx.fillRect(blobLeft - 40, cy - 16, 40, 32);
+    // Kraftpfeil nach rechts
+    _kwkArrow(ctx, blobLeft - 62, cy, blobLeft - 4, cy, '#ef4444');
+    ctx.fillStyle = '#fca5a5'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Kraft', blobLeft - 33, cy - 22);
+    if (_kwk.done) { ctx.fillStyle = '#86efac'; ctx.font = '700 12px sans-serif'; ctx.fillText('verformt!', ecx, cy + ry + 22); }
+  } else if (_kwk.modus === 'bewegen') {
+    ctx.fillText('Wirkung: bewegen', W / 2, 22);
+    const x0 = 90, wx = _kwk.wx, bw = 64, bh = 26, bodyX = x0 + wx, bodyY = gy - 34 - bh;
+    // Start-Markierung
+    ctx.strokeStyle = '#475569'; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(x0, gy - 60); ctx.lineTo(x0, gy); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Start', x0, gy - 64);
+    // Kraftpfeil hinter dem Wagen
+    if (_kwk.wirkt || wx > 0) {
+      _kwkArrow(ctx, bodyX - 40, bodyY + bh / 2, bodyX - 4, bodyY + bh / 2, '#ef4444');
+      ctx.fillStyle = '#fca5a5'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Kraft', bodyX - 22, bodyY - 4);
+      if (wx > 3) {
+        ctx.strokeStyle = 'rgba(148,163,184,0.6)'; ctx.lineWidth = 2;
+        for (let i = 0; i < 3; i++) { const ly = bodyY + 6 + i * 8; ctx.beginPath(); ctx.moveTo(bodyX - 16 - i * 6, ly); ctx.lineTo(bodyX - 4 - i * 6, ly); ctx.stroke(); }
+      }
+    }
+    // Wagen
+    ctx.fillStyle = '#3b82f6'; ctx.fillRect(bodyX, bodyY, bw, bh);
+    ctx.fillStyle = '#1e293b';
+    [14, bw - 14].forEach(dx => { ctx.beginPath(); ctx.arc(bodyX + dx, gy, 8, 0, 2 * Math.PI); ctx.fill(); });
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+    [14, bw - 14].forEach(dx => { ctx.beginPath(); ctx.arc(bodyX + dx, gy, 8, 0, 2 * Math.PI); ctx.stroke(); });
+    if (_kwk.done) { ctx.fillStyle = '#86efac'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('bewegt – und schneller geworden!', W / 2, gy + 24); }
+  } else {
+    ctx.fillText('Wirkung: Richtung ändern', W / 2, 22);
+    // gedachte gerade Bahn
+    ctx.strokeStyle = '#475569'; ctx.setLineDash([5, 5]); ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(40, 110); ctx.lineTo(412, 110); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('ohne Kraft: geradeaus', 250, 104);
+    // tatsächliche Bahn
+    if (_kwk.trail.length > 1) {
+      ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2; ctx.beginPath();
+      _kwk.trail.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)); ctx.stroke();
+    }
+    const ballX = 40 + _kwk.bx, ballY = 110 + _kwk.by;
+    if (_kwk.bx > 150) {
+      _kwkArrow(ctx, 220, 42, 220, 98, '#ef4444');
+      ctx.fillStyle = '#fca5a5'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Kraft', 244, 62);
+    }
+    ctx.fillStyle = '#fbbf24'; ctx.beginPath(); ctx.arc(ballX, ballY, 11, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#fde68a'; ctx.lineWidth = 1.5; ctx.stroke();
+    if (_kwk.done) { ctx.fillStyle = '#86efac'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Richtung geändert!', W / 2, gy + 24); }
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.1.1  (ns = 'kraftwirkung') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _kwkArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('kraftwirkung')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('kraftwirkung')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Kräfte kann man nicht sehen – woran erkennt man dann, dass eine Kraft gewirkt hat?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass man eine Kraft daran erkennt, dass …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle nacheinander die drei Wirkungen: Verformen, Bewegen, Richtung ändern.</li>
+          <li>Drücke jeweils auf „Kraft wirken lassen“ und beobachte genau.</li>
+          <li>Notiere, was sich am Körper verändert.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Was verändert die Kraft im jeweiligen Versuch?</div>
+        <table class="ab-table"><tbody>
+          <tr><td>🟢 Knete</td><td>${inp('b1', 'was ändert sich?')}</td></tr>
+          <tr><td>🛒 Wagen</td><td>${inp('b2', 'was ändert sich?')}</td></tr>
+          <tr><td>⚽ Ball</td><td>${inp('b3', 'was ändert sich?')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne einen der Versuche mit dem Kraftpfeil und trage ein, was sich verändert.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Welche drei Wirkungen kann eine Kraft haben? ${inp('a1', '1. …  2. …  3. …')}</li>
+          <li>Kann man die Kraft selbst sehen – oder nur ihre Wirkung? ${inp('a2', '')}</li>
+          <li>Ein Auto bremst an der Ampel. Welche Wirkung ist das? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Eine Kraft kann man nicht sehen, sondern nur an ihrer ${inp('m1', 'was?')} erkennen.<br>
+        Eine Kraft kann einen Körper ${inp('m2', '1. Wirkung')}, seine ${inp('m3', '2. Wirkung')} ändern oder seine ${inp('m4', '3. Wirkung')} ändern.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Suche für jede der drei Wirkungen ein Beispiel aus deinem Alltag (z. B. Fußball, Knetgummi, Fahrrad).</div>
+        ${ta('tr1', 'Verformen: …   ·   Bewegen/Abbremsen: …   ·   Richtung ändern: …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="kwkMini">${_kwkMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_kwkSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_kwkSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_kwkSelf(3)">😃 sicher</button>
+          <span id="kwkSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="kwkSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Knete: wird eingedrückt → <i>verformt</i>. Wagen: rollt aus der Ruhe los und wird schneller → <i>Bewegungsänderung</i>. Ball: rollt geradeaus, wird durch den Stoß von oben abgelenkt → <i>Richtungsänderung</i>.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Eine Kraft ist unsichtbar; erkennbar ist nur ihre Wirkung. Drei Grundwirkungen: (1) Verformung, (2) Änderung des Bewegungszustands (beschleunigen/abbremsen), (3) Änderung der Bewegungsrichtung. Kraft wird in Newton (N) gemessen und als Pfeil dargestellt (Betrag + Richtung).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Man kann eine Kraft direkt sehen.“ (2) „Nur ein Schieben/Ziehen ist eine Kraft.“ (3) „Bremsen ist keine Kraftwirkung.“ (4) „Bei gleichbleibender Richtung wirkt keine Kraft.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Fragen lenken auf „Was hat sich verändert – Form, Tempo oder Richtung?“; Kraftpfeil beachten; Alltagsbeispiele sammeln lassen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 verformen · Bewegung (Tempo) ändern · Richtung ändern. 6.2 nur ihre Wirkung. 6.3 Bewegungsänderung (Abbremsen). Merksatz: Wirkung · verformen · Bewegung/Tempo · Richtung. Minidiagnose: 1→an ihrer Wirkung · 2→Bewegungsänderung · 3→Verformung.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('kraftwirkung')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('kraftwirkung', 'Woran erkennt man, dass eine Kraft wirkt?', body);
+}
+
+const _KWK_MINI = [
+  { q: '1. Woran erkennt man, dass eine Kraft gewirkt hat?',
+    opts: ['An ihrer Wirkung (Form, Tempo oder Richtung ändern sich)', 'Man sieht die Kraft selbst', 'An ihrer Farbe'], correct: 0,
+    fb: ['Richtig! Kräfte sind unsichtbar – man erkennt sie nur an ihrer Wirkung.',
+         'Nein, eine Kraft selbst ist unsichtbar.',
+         'Kräfte haben keine Farbe.'] },
+  { q: '2. Ein Fußball wird beim Schuss aus der Ruhe schneller. Welche Wirkung ist das?',
+    opts: ['Verformung', 'Bewegungsänderung', 'gar keine Kraft'], correct: 1,
+    fb: ['Der Ball wird hier nicht platt gedrückt.',
+         'Richtig! Aus der Ruhe schneller werden ist eine Bewegungsänderung.',
+         'Doch – ohne Kraft würde er liegen bleiben.'] },
+  { q: '3. Du drückst einen Schwamm zusammen. Welche Wirkung ist das?',
+    opts: ['Verformung', 'Richtungsänderung', 'Bewegungsänderung'], correct: 0,
+    fb: ['Richtig! Der Schwamm wird verformt.',
+         'Er ändert dabei nicht die Richtung.',
+         'Er bewegt sich dabei nicht fort.'] }
+];
+function _kwkMiniHTML() {
+  return _KWK_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_kwkAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="kwkFb${qi}"></div></div>`).join('');
+}
+function _kwkAns(qi, oi) {
+  const m = _KWK_MINI[qi], el = document.getElementById('kwkFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _kwkSelf(n) {
+  const out = document.getElementById('kwkSelfOut'), val = document.getElementById('kwkSelfVal');
+  if (val) { val.value = String(n); _abSave('kraftwirkung'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
