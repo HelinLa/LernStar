@@ -232,6 +232,7 @@ const _physAbDefs = {
   'ortsfaktor': { titel: 'Wäre ich auf dem Mond wirklich leichter?', ns: 'ortsfaktor', html: () => _ortArbeitsblattHTML() },
   'kraftpfeil': { titel: 'Hat eine Kraft nur eine Größe – oder auch eine Richtung?', ns: 'kraftpfeil', html: () => _kpfArbeitsblattHTML() },
   'kraefte-addieren': { titel: 'Was passiert, wenn zwei Kräfte gleichzeitig ziehen?', ns: 'kraefteadd', html: () => _kadArbeitsblattHTML() },
+  'kraefte-gleichgewicht': { titel: 'Warum bleibt eine hängende Lampe hängen?', ns: 'kraeftegg', html: () => _kggArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -943,6 +944,16 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('kadAnim', 'kadAnim');
     _pSim.start(dt => _kadUpdate(dt), (ctx, cv) => _kadDraw(ctx, cv), []);
     _abRestore('kraefteadd');
+  },
+
+  // ── 9.1.9 KRÄFTE: KRÄFTEGLEICHGEWICHT ──────────────────────────
+  'kraefte-gleichgewicht': modal => {
+    _kggInit();
+    modal.innerHTML = _kggHTML();
+    _kggStatus();
+    _pSim = new PhysicsSimEngine('kggAnim', 'kggAnim');
+    _pSim.start(dt => _kggUpdate(dt), (ctx, cv) => _kggDraw(ctx, cv), []);
+    _abRestore('kraeftegg');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -55597,5 +55608,207 @@ function _kadAns(qi, oi) {
 function _kadSelf(n) {
   const out = document.getElementById('kadSelfOut'), val = document.getElementById('kadSelfVal');
   if (val) { val.value = String(n); _abSave('kraefteadd'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.1.9  WARUM BEWEGT SICH EIN GEGENSTAND NICHT, OBWOHL KRÄFTE ZIEHEN?
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Kräfte"
+// Kräftegleichgewicht: hängende Lampe. Haltekraft (Seil) nach oben,
+// Gewichtskraft nach unten. Gleich groß → Gesamtkraft 0 → bleibt in Ruhe.
+// Ungleich → Gesamtkraft ≠ 0 → Bewegung ändert sich.
+// ═══════════════════════════════════════════════════════
+let _kgg = null;
+const _KGG_G = 5;                                  // feste Gewichtskraft (N)
+function _kggInit() { _kgg = { halte: 5, y: 0, vy: 0, t: 0 }; }
+function _kggNet() { return _kgg.halte - _KGG_G; } // >0 = netto nach oben
+
+function _kggHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim kgg-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">⚖️ Warum bleibt eine hängende Lampe einfach hängen?</h3>
+    <div class="fpm-note" style="margin-top:2px">An der Lampe ziehen zwei Kräfte: die <b>Gewichtskraft</b> nach unten und die <b>Haltekraft</b> des Seils nach oben. Verändere die Haltekraft. Wann bleibt die Lampe in Ruhe?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="kggAnim" width="440" height="260" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center;color:#16a34a">Haltekraft (Seil):</span>
+          <button class="sim-btn" onclick="_kggB(-1)">– N</button>
+          <button class="sim-btn" onclick="_kggB(1)">+ N</button>
+          <button class="sim-btn" onclick="_kggReset()">↺ zurück in die Mitte</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Kräfte an der Lampe</div>
+        <div class="lmp-status" id="kggStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Sind die Kräfte <b>gleich groß und entgegengesetzt</b>, ist die <b>Gesamtkraft 0</b> – die Lampe bleibt in Ruhe. Das heißt <b>Kräftegleichgewicht</b>. Ist eine Kraft größer, ist die Gesamtkraft nicht null und die Bewegung ändert sich.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Ruhe bedeutet nicht „keine Kräfte“, sondern <b>Kräfte im Gleichgewicht</b> (Buch auf dem Tisch, hängende Lampe, Brücke).
+    </p>
+    ${_kggArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _kggB(d) { if (!_kgg) return; _kgg.halte = Math.max(1, Math.min(9, _kgg.halte + d)); _kggStatus(); }
+function _kggReset() { if (!_kgg) return; _kgg.y = 0; _kgg.vy = 0; _kgg.halte = _KGG_G; _kggStatus(); }
+function _kggStatus() {
+  const el = document.getElementById('kggStatus'); if (!el) return;
+  const net = _kggNet();
+  let t;
+  if (net === 0) t = `Haltekraft = Gewichtskraft = ${_KGG_G} N → <b>Gesamtkraft 0 N</b>. Gleichgewicht: Die Lampe bleibt in Ruhe.`;
+  else if (net > 0) t = `Haltekraft ${_kgg.halte} N > Gewichtskraft ${_KGG_G} N → Gesamtkraft ${net} N nach oben. Die Lampe wird nach <b>oben</b> gezogen.`;
+  else t = `Haltekraft ${_kgg.halte} N < Gewichtskraft ${_KGG_G} N → Gesamtkraft ${Math.abs(net)} N nach unten. Die Lampe sinkt nach <b>unten</b>.`;
+  el.innerHTML = t;
+  el.className = 'lmp-status' + (net === 0 ? ' on' : '');
+}
+
+// ── Animation / Canvas ─────────────────────────────────
+function _kggUpdate(dt) {
+  if (!_kgg) return;
+  _kgg.t += dt;
+  const net = _kggNet();
+  if (net === 0) return;                            // Gleichgewicht: keine Änderung
+  _kgg.vy += (-net) * 9 * dt;                        // net>0 → nach oben (y kleiner)
+  _kgg.y += _kgg.vy * dt;
+  if (_kgg.y > 70) { _kgg.y = 70; _kgg.vy = 0; }
+  if (_kgg.y < -70) { _kgg.y = -70; _kgg.vy = 0; }
+}
+function _kggDraw(ctx, cv) {
+  if (!_kgg) return;
+  const W = cv.width, H = cv.height, net = _kggNet();
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const cx = W / 2, topY = 24, baseY = 130, oy = baseY + _kgg.y;
+  // Decke
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(cx - 60, topY - 12, 120, 12);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  for (let i = 0; i < 12; i++) { ctx.beginPath(); ctx.moveTo(cx - 60 + i * 11, topY - 12); ctx.lineTo(cx - 60 + i * 11 - 6, topY); ctx.stroke(); }
+  // Seil
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(cx, topY); ctx.lineTo(cx, oy - 18); ctx.stroke();
+  // Lampe
+  ctx.fillStyle = '#fbbf24'; ctx.beginPath(); ctx.arc(cx, oy, 18, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = 2; ctx.stroke();
+  ctx.fillStyle = '#92400e'; ctx.font = '16px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('💡', cx, oy + 6);
+  // Haltekraft nach oben (grün)
+  _kwkArrow(ctx, cx - 46, oy, cx - 46, oy - _kgg.halte * 12, '#22c55e');
+  ctx.fillStyle = '#15803d'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Halte ' + _kgg.halte + ' N', cx - 46, oy - _kgg.halte * 12 - 6);
+  // Gewichtskraft nach unten (rot)
+  _kwkArrow(ctx, cx + 46, oy, cx + 46, oy + _KGG_G * 12, '#ef4444');
+  ctx.fillStyle = '#b91c1c'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Gewicht ' + _KGG_G + ' N', cx + 46, oy + _KGG_G * 12 + 14);
+  // Status-Banner
+  ctx.textAlign = 'center'; ctx.font = '700 14px sans-serif';
+  if (net === 0) { ctx.fillStyle = '#16a34a'; ctx.fillText('Gesamtkraft = 0 N  →  Gleichgewicht (bleibt in Ruhe)', cx, H - 14); }
+  else { ctx.fillStyle = '#dc2626'; ctx.fillText('Gesamtkraft = ' + Math.abs(net) + ' N nach ' + (net > 0 ? 'oben' : 'unten') + '  →  Bewegung!', cx, H - 14); }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.1.9  (ns = 'kraeftegg') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _kggArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('kraeftegg')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('kraeftegg')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum bewegt sich eine hängende Lampe nicht, obwohl an ihr Kräfte ziehen?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Lampe in Ruhe bleibt, wenn die Kräfte … .', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle die Haltekraft genauso groß wie die Gewichtskraft (5 N) ein.</li>
+          <li>Mache die Haltekraft größer und dann kleiner.</li>
+          <li>Beobachte jeweils die Gesamtkraft und ob sich die Lampe bewegt.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Gewichtskraft = 5 N. Trage Gesamtkraft und Verhalten ein.</div>
+        <table class="ab-table"><tbody>
+          <tr><td>Halte = 5 N</td><td>Gesamt = ${inp('b1', 'N')}</td><td>${inp('c1', 'bewegt/bleibt?')}</td></tr>
+          <tr><td>Halte = 7 N</td><td>Gesamt = ${inp('b2', 'N')}</td><td>${inp('c2', 'bewegt/bleibt?')}</td></tr>
+          <tr><td>Halte = 3 N</td><td>Gesamt = ${inp('b3', 'N')}</td><td>${inp('c3', 'bewegt/bleibt?')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Lampe mit beiden Kraftpfeilen im Gleichgewicht. Wie lang sind die Pfeile im Vergleich?</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wann bleibt die Lampe in Ruhe? ${inp('a1', 'wenn die Kräfte …')}</li>
+          <li>Wie groß ist dann die Gesamtkraft? ${inp('a2', 'N')}</li>
+          <li>Wirken bei der ruhenden Lampe überhaupt Kräfte? ${inp('a3', 'ja/nein')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Ein Körper bleibt in Ruhe, wenn die Kräfte an ihm im ${inp('m1', 'was?')} sind. Dann ist die Gesamtkraft ${inp('m2', 'wie viel?')} N.<br>
+        „In Ruhe“ bedeutet also nicht „keine Kräfte“, sondern Kräfte, die sich ${inp('m3', 'was tun?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Buch liegt ruhig auf dem Tisch. Welche zwei Kräfte sind hier im Gleichgewicht? Nenne noch ein weiteres Beispiel.</div>
+        ${ta('tr1', 'Am Buch wirken … nach unten und … nach oben. Sie sind gleich groß, darum … . Weiteres Beispiel: …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="kggMini">${_kggMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_kggSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_kggSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_kggSelf(3)">😃 sicher</button>
+          <span id="kggSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="kggSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Halte = 5 N: Gesamtkraft 0 N → bleibt in Ruhe (Gleichgewicht). Halte = 7 N: Gesamtkraft 2 N nach oben → Lampe steigt. Halte = 3 N: Gesamtkraft 2 N nach unten → Lampe sinkt.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Ein Körper ändert seinen Bewegungszustand nicht, wenn die resultierende Kraft (Gesamtkraft) null ist – Kräftegleichgewicht. An einer ruhenden hängenden Lampe sind Gewichtskraft (nach unten) und Seil-/Haltekraft (nach oben) gleich groß und entgegengesetzt. Ruhe ist kein kräftefreier Zustand.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Wo nichts passiert, wirken keine Kräfte.“ (2) „Die obere Kraft ‚gewinnt‘, sonst würde die Lampe fallen.“ (3) „Gleichgewicht heißt, es gibt nur eine Kraft.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Beide Pfeile gleich lang zeichnen; Gesamtkraft ausrechnen; Buch/Tisch als zweites Beispiel (Gewichtskraft ↔ Normalkraft).</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4: 0 N/bleibt · 2 N/bewegt · 2 N/bewegt. 6.1 wenn die Kräfte gleich groß und entgegengesetzt sind. 6.2 0 N. 6.3 ja. Merksatz: Gleichgewicht · 0 · aufheben/ausgleichen. Transfer: Gewichtskraft nach unten, Normalkraft (Tischkraft) nach oben; gleich groß → bleibt liegen. Minidiagnose: 1→weil die Kräfte gleich groß sind (Gesamtkraft 0) · 2→0 N · 3→ja, im Gleichgewicht.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('kraeftegg')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('kraeftegg', 'Warum bleibt eine hängende Lampe hängen?', body);
+}
+
+const _KGG_MINI = [
+  { q: '1. Warum bleibt eine hängende Lampe in Ruhe?',
+    opts: ['Weil Haltekraft und Gewichtskraft gleich groß sind (Gesamtkraft 0)', 'Weil keine Kräfte wirken', 'Weil die Gewichtskraft verschwindet'], correct: 0,
+    fb: ['Richtig! Die Kräfte sind im Gleichgewicht, die Gesamtkraft ist 0.',
+         'Doch, es wirken Kräfte – sie gleichen sich nur aus.',
+         'Die Gewichtskraft ist weiter da, sie wird vom Seil ausgeglichen.'] },
+  { q: '2. Wie groß ist die Gesamtkraft im Gleichgewicht?',
+    opts: ['0 N', '5 N', 'doppelt so groß'], correct: 0,
+    fb: ['Richtig! Im Gleichgewicht ist die Gesamtkraft null.',
+         'Nein, die Einzelkräfte heben sich auf.',
+         'Nein, sie heben sich gerade auf.'] },
+  { q: '3. Wirken bei einem ruhig auf dem Tisch liegenden Buch Kräfte?',
+    opts: ['Ja, sie sind im Gleichgewicht', 'Nein, gar keine', 'Nur wenn man es anstößt'], correct: 0,
+    fb: ['Richtig! Gewichtskraft und Tischkraft gleichen sich aus.',
+         'Doch – Gewichtskraft und Normalkraft wirken ständig.',
+         'Die Kräfte wirken auch im Ruhezustand.'] }
+];
+function _kggMiniHTML() {
+  return _KGG_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_kggAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="kggFb${qi}"></div></div>`).join('');
+}
+function _kggAns(qi, oi) {
+  const m = _KGG_MINI[qi], el = document.getElementById('kggFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _kggSelf(n) {
+  const out = document.getElementById('kggSelfOut'), val = document.getElementById('kggSelfVal');
+  if (val) { val.value = String(n); _abSave('kraeftegg'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
