@@ -226,6 +226,7 @@ const _physAbDefs = {
   schwingung: { titel: 'Merkmale von Schwingungen', ns: 'schwingung', html: () => _swgArbeitsblattHTML() },
   'kraft-wirkung': { titel: 'Woran erkennt man, dass eine Kraft wirkt?', ns: 'kraftwirkung', html: () => _kwkArbeitsblattHTML() },
   'kraft-wirkungen': { titel: 'Was kann eine Kraft alles bewirken?', ns: 'kraftwirkungen', html: () => _kwnArbeitsblattHTML() },
+  'kraftmesser': { titel: 'Wie misst man eine Kraft, die man nicht anfassen kann?', ns: 'kraftmesser', html: () => _krmArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -877,6 +878,16 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('kwnAnim', 'kwnAnim');
     _pSim.start(dt => _kwnUpdate(dt), (ctx, cv) => _kwnDraw(ctx, cv), []);
     _abRestore('kraftwirkungen');
+  },
+
+  // ── 9.1.3 KRÄFTE: FEDERKRAFTMESSER ─────────────────────────────
+  'kraftmesser': modal => {
+    _krmInit();
+    modal.innerHTML = _krmHTML();
+    _krmStatus();
+    _pSim = new PhysicsSimEngine('krmAnim', 'krmAnim');
+    _pSim.start(dt => _krmUpdate(dt), (ctx, cv) => _krmDraw(ctx, cv), []);
+    _abRestore('kraftmesser');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -54275,5 +54286,214 @@ function _kwnAns(qi, oi) {
 function _kwnSelf(n) {
   const out = document.getElementById('kwnSelfOut'), val = document.getElementById('kwnSelfVal');
   if (val) { val.value = String(n); _abSave('kraftwirkungen'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.1.3  WIE MISST MAN EINE KRAFT, DIE MAN NICHT ANFASSEN KANN?
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Kräfte"
+// Federkraftmesser: Last anhängen → Feder dehnt sich → am
+// Zeiger die Kraft in Newton ablesen. Die Dehnung ist das
+// Maß für die Kraft. (Systematische Messreihe: siehe 9.1.4.)
+// ═══════════════════════════════════════════════════════
+let _krm = null;
+const _KRM_MAXN = 5, _KRM_PERN = 22, _KRM_TOP = 28, _KRM_NAT = 55, _KRM_X = 150, _KRM_SCALE = 300, _KRM_AMP = 15;
+function _krmInit() { _krm = { n: 0, ext: 0, t: 0, flash: 0 }; }
+
+function _krmHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim krm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🪝 Wie misst man eine Kraft, die man nicht anfassen kann?</h3>
+    <div class="fpm-note" style="margin-top:2px">Hänge Gewichte an die Feder. Je größer die Kraft, desto länger wird die Feder – am Zeiger liest du die Kraft in Newton (N) ab.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="krmAnim" width="440" height="300" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_krmAdd(1)">➕ Gewicht anhängen (1 N)</button>
+          <button class="sim-btn" onclick="_krmAdd(-1)">➖ Gewicht abnehmen</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_krmReset()">↺ Feder leeren</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige des Kraftmessers</div>
+        <div class="lmp-status" id="krmStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Ein <b>Federkraftmesser</b> nutzt aus, dass sich eine Feder unter einer Kraft dehnt. Die <b>Dehnung</b> ist ein Maß für die <b>Kraft</b>. Kraft wird in <b>Newton (N)</b> gemessen. Ein Gewicht von etwa 100 g zieht mit rund 1 N nach unten.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Die Kraft selbst ist unsichtbar – die gedehnte Feder macht sie <b>messbar</b>.
+    </p>
+    ${_krmArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _krmAdd(d) { if (!_krm) return; _krm.n = Math.max(0, Math.min(_KRM_MAXN, _krm.n + d)); _krm.flash = 1; _krmStatus(); }
+function _krmReset() { if (!_krm) return; _krm.n = 0; _krmStatus(); }
+function _krmStatus() {
+  const el = document.getElementById('krmStatus'); if (!el) return;
+  const n = _krm.n;
+  if (n === 0) { el.innerHTML = 'Keine Last: <b>F = 0 N</b>. Die Feder ist entspannt. Hänge ein Gewicht an!'; el.className = 'lmp-status'; return; }
+  el.innerHTML = `Angehängte Kraft: <b>F = ${n} N</b>. Die Feder ist um <b>${n} cm</b> gedehnt (Masse ≈ ${n * 100} g). Am Zeiger liest du die Kraft direkt ab.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _krmUpdate(dt) {
+  if (!_krm) return;
+  _krm.t += dt; _krm.flash = Math.max(0, _krm.flash - dt * 2);
+  _krm.ext += (_krm.n - _krm.ext) * Math.min(1, dt * 7);
+}
+function _krmDraw(ctx, cv) {
+  if (!_krm) return;
+  const W = cv.width, H = cv.height, ext = _krm.ext;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const x = _KRM_X, springLen = _KRM_NAT + ext * _KRM_PERN, bottomY = _KRM_TOP + springLen;
+  const zeroY = _KRM_TOP + _KRM_NAT;
+  // Decke / Halterung
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(x - 55, _KRM_TOP - 12, 110, 12);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  for (let i = 0; i < 11; i++) { ctx.beginPath(); ctx.moveTo(x - 55 + i * 11, _KRM_TOP - 12); ctx.lineTo(x - 55 + i * 11 - 6, _KRM_TOP); ctx.stroke(); }
+  // Feder (Zickzack)
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(x, _KRM_TOP);
+  const coils = 10;
+  for (let i = 1; i < coils; i++) { const y = _KRM_TOP + springLen * (i / coils); const dx = (i % 2 ? _KRM_AMP : -_KRM_AMP); ctx.lineTo(x + dx, y); }
+  ctx.lineTo(x, bottomY); ctx.stroke();
+  // Haken
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, bottomY + 6, 6, Math.PI, 2 * Math.PI); ctx.stroke();
+  // Gewichtsscheiben
+  for (let i = 0; i < _krm.n; i++) {
+    const wy = bottomY + 12 + i * 15;
+    ctx.fillStyle = '#3b82f6'; ctx.fillRect(x - 26, wy, 52, 13);
+    ctx.strokeStyle = '#1e3a8a'; ctx.lineWidth = 1.5; ctx.strokeRect(x - 26, wy, 52, 13);
+    ctx.fillStyle = '#fff'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('1 N', x, wy + 10);
+  }
+  // Skala rechts
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(_KRM_SCALE, zeroY); ctx.lineTo(_KRM_SCALE, zeroY + _KRM_MAXN * _KRM_PERN); ctx.stroke();
+  for (let f = 0; f <= _KRM_MAXN; f++) {
+    const y = zeroY + f * _KRM_PERN;
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(_KRM_SCALE - 6, y); ctx.lineTo(_KRM_SCALE + 6, y); ctx.stroke();
+    ctx.fillStyle = '#475569'; ctx.font = '11px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(f + ' N', _KRM_SCALE + 12, y + 4);
+  }
+  // Zeiger (koppelt Federende an Skala)
+  const pY = zeroY + ext * _KRM_PERN;
+  ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x + _KRM_AMP + 4, pY); ctx.lineTo(_KRM_SCALE - 6, pY); ctx.stroke();
+  ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.moveTo(_KRM_SCALE - 6, pY); ctx.lineTo(_KRM_SCALE - 15, pY - 5); ctx.lineTo(_KRM_SCALE - 15, pY + 5); ctx.closePath(); ctx.fill();
+  // Ablesung
+  ctx.fillStyle = '#dc2626'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('F = ' + _krm.n + ' N', _KRM_SCALE + 12, zeroY - 12);
+  // Beschriftung
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Federkraftmesser', x, H - 8);
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.fillText('Skala in Newton', _KRM_SCALE + 30, zeroY + _KRM_MAXN * _KRM_PERN + 18);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.1.3  (ns = 'kraftmesser') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _krmArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('kraftmesser')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('kraftmesser')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Eine Kraft kann man nicht anfassen – wie kann man sie trotzdem messen?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass man eine Kraft messen kann, indem man …', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Hänge nacheinander 1, 2, 3 … Gewichte (je 1 N) an die Feder.</li>
+          <li>Beobachte, wie weit sich die Feder dehnt.</li>
+          <li>Lies die Kraft am Zeiger auf der Newton-Skala ab.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Trage die angezeigte Kraft und die Dehnung ein.</div>
+        <table class="ab-table"><tbody>
+          <tr><td>1 Gewicht</td><td>Anzeige: ${inp('f1', 'N')}</td><td>Dehnung: ${inp('d1', 'cm')}</td></tr>
+          <tr><td>2 Gewichte</td><td>Anzeige: ${inp('f2', 'N')}</td><td>Dehnung: ${inp('d2', 'cm')}</td></tr>
+          <tr><td>3 Gewichte</td><td>Anzeige: ${inp('f3', 'N')}</td><td>Dehnung: ${inp('d3', 'cm')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne die Feder ohne Last und mit 3 Gewichten. Welche ist länger?</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Was passiert mit der Feder, wenn die Kraft größer wird? ${inp('a1', '')}</li>
+          <li>Was ist am Kraftmesser das Maß für die Kraft? ${inp('a2', 'die … der Feder')}</li>
+          <li>In welcher Einheit misst man die Kraft? ${inp('a3', 'Zeichen: …')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Man misst eine Kraft mit einem ${inp('m1', 'Gerät?')}. Je größer die Kraft, desto ${inp('m2', 'mehr/weniger')} dehnt sich die Feder.<br>
+        Die ${inp('m3', 'was?')} der Feder ist das Maß für die Kraft. Die Einheit der Kraft ist das ${inp('m4', 'Einheit?')} (${inp('m5', 'Zeichen?')}).</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Auch eine Kofferwaage und eine Angelwaage haben innen eine Feder. Erkläre, wie sie funktionieren.</div>
+        ${ta('tr1', 'In der Waage ist eine Feder. Der Koffer zieht mit seiner Gewichtskraft und …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="krmMini">${_krmMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_krmSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_krmSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_krmSelf(3)">😃 sicher</button>
+          <span id="krmSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="krmSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Mit jedem zusätzlichen 1-N-Gewicht dehnt sich die Feder gleichmäßig weiter (hier ≈ 1 cm pro 1 N). Der Zeiger wandert auf der Newton-Skala nach unten und zeigt genau die angehängte Kraft an.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Ein Federkraftmesser misst Kräfte über die Dehnung einer Feder. Die Dehnung ist ein Maß für die Kraft. Kraft wird in Newton (N) gemessen; eine Masse von rund 100 g hat auf der Erde eine Gewichtskraft von etwa 1 N. Die genaue Proportionalität (Hooke) wird in 9.1.4 untersucht.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Kraftmesser misst die Masse (in Gramm).“ – Nein, er misst die Kraft (in Newton). (2) „Man kann eine Kraft direkt sehen.“ (3) „Die Feder dehnt sich zufällig.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Masse (Waage, kg/g) und Kraft (Kraftmesser, N) klar trennen; Zeiger und Skala gemeinsam ablesen; 100 g ≈ 1 N als Faustregel.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 Sie dehnt sich weiter (wird länger). 6.2 die Dehnung (Längenänderung) der Feder. 6.3 Newton, N. Merksatz: Federkraftmesser · mehr · Dehnung · Newton · N. Minidiagnose: 1→Federkraftmesser · 2→die Dehnung der Feder · 3→Newton (N).</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('kraftmesser')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('kraftmesser', 'Wie misst man eine Kraft, die man nicht anfassen kann?', body);
+}
+
+const _KRM_MINI = [
+  { q: '1. Womit misst man eine Kraft?',
+    opts: ['Mit einem Federkraftmesser', 'Mit einer Balkenwaage', 'Mit einem Thermometer'], correct: 0,
+    fb: ['Richtig! Der Federkraftmesser nutzt die Dehnung einer Feder.',
+         'Die Balkenwaage vergleicht Massen, nicht Kräfte.',
+         'Ein Thermometer misst die Temperatur.'] },
+  { q: '2. Was ist am Kraftmesser das Maß für die Kraft?',
+    opts: ['Die Dehnung der Feder', 'Die Farbe der Feder', 'Das Gewicht der Feder'], correct: 0,
+    fb: ['Richtig! Je größer die Kraft, desto größer die Dehnung.',
+         'Die Farbe hat nichts mit der Kraft zu tun.',
+         'Nicht die Feder selbst, sondern ihre Dehnung zählt.'] },
+  { q: '3. In welcher Einheit misst man eine Kraft?',
+    opts: ['Newton (N)', 'Gramm (g)', 'Meter (m)'], correct: 0,
+    fb: ['Richtig! Die Einheit der Kraft ist das Newton (N).',
+         'Gramm ist eine Einheit der Masse.',
+         'Meter ist eine Einheit der Länge.'] }
+];
+function _krmMiniHTML() {
+  return _KRM_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_krmAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="krmFb${qi}"></div></div>`).join('');
+}
+function _krmAns(qi, oi) {
+  const m = _KRM_MINI[qi], el = document.getElementById('krmFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _krmSelf(n) {
+  const out = document.getElementById('krmSelfOut'), val = document.getElementById('krmSelfVal');
+  if (val) { val.value = String(n); _abSave('kraftmesser'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
