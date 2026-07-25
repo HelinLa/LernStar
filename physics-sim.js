@@ -231,6 +231,7 @@ const _physAbDefs = {
   'masse-gewicht': { titel: 'Ist „schwer“ dasselbe wie „viel Masse“?', ns: 'massegewicht', html: () => _mgwArbeitsblattHTML() },
   'ortsfaktor': { titel: 'Wäre ich auf dem Mond wirklich leichter?', ns: 'ortsfaktor', html: () => _ortArbeitsblattHTML() },
   'kraftpfeil': { titel: 'Hat eine Kraft nur eine Größe – oder auch eine Richtung?', ns: 'kraftpfeil', html: () => _kpfArbeitsblattHTML() },
+  'kraefte-addieren': { titel: 'Was passiert, wenn zwei Kräfte gleichzeitig ziehen?', ns: 'kraefteadd', html: () => _kadArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -932,6 +933,16 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('kpfAnim', 'kpfAnim');
     _pSim.start(dt => _kpfUpdate(dt), (ctx, cv) => _kpfDraw(ctx, cv), []);
     _abRestore('kraftpfeil');
+  },
+
+  // ── 9.1.8 KRÄFTE: KRÄFTEADDITION ───────────────────────────────
+  'kraefte-addieren': modal => {
+    _kadInit();
+    modal.innerHTML = _kadHTML();
+    _kadStatus();
+    _pSim = new PhysicsSimEngine('kadAnim', 'kadAnim');
+    _pSim.start(dt => _kadUpdate(dt), (ctx, cv) => _kadDraw(ctx, cv), []);
+    _abRestore('kraefteadd');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -55373,5 +55384,218 @@ function _kpfAns(qi, oi) {
 function _kpfSelf(n) {
   const out = document.getElementById('kpfSelfOut'), val = document.getElementById('kpfSelfVal');
   if (val) { val.value = String(n); _abSave('kraftpfeil'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.1.8  WAS PASSIERT, WENN ZWEI KRÄFTE GLEICHZEITIG ZIEHEN?
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Kräfte"
+// Kräfteaddition längs einer Linie: gleiche Richtung → Summe,
+// Gegenrichtung → Differenz, gleich+entgegengesetzt → 0.
+// ═══════════════════════════════════════════════════════
+let _kad = null;
+function _kadInit() { _kad = { f1: 3, d1: 1, f2: 2, d2: 1, t: 0 }; }
+function _kadR() { return _kad.f1 * _kad.d1 + _kad.f2 * _kad.d2; }
+
+function _kadHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim kad-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">➕ Was passiert, wenn zwei Kräfte gleichzeitig ziehen?</h3>
+    <div class="fpm-note" style="margin-top:2px">Zwei Kräfte wirken an einem Körper. Stelle Betrag und Richtung ein. Welche <b>Gesamtkraft</b> ergibt sich?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="kadAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center;color:#dc2626">Kraft 1:</span>
+          <button class="sim-btn" onclick="_kadB(1,-1)">– N</button>
+          <button class="sim-btn" onclick="_kadB(1,1)">+ N</button>
+          <button class="sim-btn" onclick="_kadDir(1)">⇄ Richtung</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center;color:#b45309">Kraft 2:</span>
+          <button class="sim-btn" onclick="_kadB(2,-1)">– N</button>
+          <button class="sim-btn" onclick="_kadB(2,1)">+ N</button>
+          <button class="sim-btn" onclick="_kadDir(2)">⇄ Richtung</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Gesamtkraft (Resultierende)</div>
+        <div class="lmp-status" id="kadStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Wirken Kräfte längs einer Linie, so rechnet man sie zusammen: <b>gleiche Richtung → addieren</b>, <b>entgegengesetzt → subtrahieren</b>. Das Ergebnis ist die <b>Gesamtkraft</b> (Resultierende). Sind zwei gleich große Kräfte entgegengesetzt, ist die Gesamtkraft <b>0</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Zwei Schlepper in dieselbe Richtung ziehen stärker · beim Tauziehen zählt die <b>Differenz</b>.
+    </p>
+    ${_kadArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _kadB(which, d) {
+  if (!_kad) return;
+  const key = 'f' + which;
+  _kad[key] = Math.max(1, Math.min(4, _kad[key] + d));
+  _kadStatus();
+}
+function _kadDir(which) {
+  if (!_kad) return;
+  const key = 'd' + which;
+  _kad[key] = -_kad[key];
+  _kadStatus();
+}
+function _kadStatus() {
+  const el = document.getElementById('kadStatus'); if (!el) return;
+  const R = _kadR(), r1 = _kad.d1 > 0 ? 'rechts' : 'links', r2 = _kad.d2 > 0 ? 'rechts' : 'links';
+  let caseTxt;
+  if (_kad.d1 === _kad.d2) caseTxt = `Beide zeigen ${r1} → addieren: ${_kad.f1} N + ${_kad.f2} N = ${_kad.f1 + _kad.f2} N.`;
+  else if (R === 0) caseTxt = `Gleich groß, entgegengesetzt → sie heben sich auf: Gesamtkraft 0 N (Gleichgewicht).`;
+  else caseTxt = `Entgegengesetzt → subtrahieren: |${_kad.f1} N − ${_kad.f2} N| = ${Math.abs(R)} N nach ${R > 0 ? 'rechts' : 'links'}.`;
+  el.innerHTML = `F1 = ${_kad.f1} N (${r1}), F2 = ${_kad.f2} N (${r2}). <b>Gesamtkraft = ${Math.abs(R)} N${R !== 0 ? ' nach ' + (R > 0 ? 'rechts' : 'links') : ''}</b>. ${caseTxt}`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation / Canvas ─────────────────────────────────
+function _kadUpdate(dt) { if (_kad) _kad.t += dt; }
+function _kadArr2(ctx, x, y, dir, len, col, label) {
+  const ex = x + dir * len;
+  _kwkArrow(ctx, x, y, ex, y, col);
+  ctx.fillStyle = col; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(label, (x + ex) / 2, y - 8);
+}
+function _kadDraw(ctx, cv) {
+  if (!_kad) return;
+  const W = cv.width, H = cv.height, cx = W / 2, sc = 22;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  // Körper
+  ctx.fillStyle = '#3b82f6'; _kwnRoundRect(ctx, cx - 22, 74, 44, 44, 6); ctx.fill();
+  ctx.strokeStyle = '#1e3a8a'; ctx.lineWidth = 2; ctx.stroke();
+  // Einzelkräfte (leicht versetzt, damit beide sichtbar)
+  _kadArr2(ctx, cx, 86, _kad.d1, _kad.f1 * sc, '#ef4444', 'F1 = ' + _kad.f1 + ' N');
+  _kadArr2(ctx, cx, 106, _kad.d2, _kad.f2 * sc, '#f59e0b', 'F2 = ' + _kad.f2 + ' N');
+  // Trennlinie
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(20, 150); ctx.lineTo(W - 20, 150); ctx.stroke();
+  // Resultierende
+  const R = _kadR();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Gesamtkraft:', 24, 176);
+  if (R === 0) {
+    ctx.fillStyle = '#16a34a'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Gesamtkraft = 0 N  →  Gleichgewicht', cx, 200);
+    // zwei kleine Gegenpfeile
+    ctx.strokeStyle = '#94a3b8';
+  } else {
+    _kadArr2(ctx, cx, 200, R > 0 ? 1 : -1, Math.abs(R) * sc, '#22c55e', 'F = ' + Math.abs(R) + ' N');
+  }
+  // Bezugspunkt
+  ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(cx, 200, 3, 0, 2 * Math.PI); ctx.fill();
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.1.8  (ns = 'kraefteadd') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _kadArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('kraefteadd')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('kraefteadd')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was passiert, wenn zwei Kräfte gleichzeitig an einem Körper ziehen – werden sie einfach zusammengezählt?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass zwei Kräfte … , wenn sie in dieselbe / in verschiedene Richtungen zeigen.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Stelle beide Kräfte in dieselbe Richtung – lies die Gesamtkraft ab.</li>
+          <li>Stelle sie in entgegengesetzte Richtungen – lies die Gesamtkraft ab.</li>
+          <li>Mache beide gleich groß und entgegengesetzt – was ergibt sich?</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Trage die Gesamtkraft ein (Beispiel F1 = 3 N, F2 = 2 N).</div>
+        <table class="ab-table"><tbody>
+          <tr><td>gleiche Richtung</td><td>Gesamtkraft = ${inp('b1', 'N')}</td></tr>
+          <tr><td>entgegengesetzt (3 N / 2 N)</td><td>Gesamtkraft = ${inp('b2', 'N')}</td></tr>
+          <tr><td>gleich groß, entgegengesetzt</td><td>Gesamtkraft = ${inp('b3', 'N')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne zwei Kraftpfeile in dieselbe Richtung und darunter den Pfeil der Gesamtkraft.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie rechnet man Kräfte in gleicher Richtung zusammen? ${inp('a1', '')}</li>
+          <li>Wie bei entgegengesetzter Richtung? ${inp('a2', '')}</li>
+          <li>Was ergibt sich bei zwei gleich großen Gegenkräften? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Kräfte in gleicher Richtung werden ${inp('m1', 'wie gerechnet?')}, Kräfte in entgegengesetzter Richtung ${inp('m2', 'wie gerechnet?')}.<br>
+        Das Ergebnis heißt ${inp('m3', 'Name?')} (Gesamtkraft). Zwei gleich große Gegenkräfte ergeben ${inp('m4', 'wie viel?')} N.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Zwei Schlepper ziehen ein Schiff in dieselbe Richtung. Beim Tauziehen ziehen zwei Mannschaften in Gegenrichtung. Erkläre den Unterschied.</div>
+        ${ta('tr1', 'Bei den Schleppern … sich die Kräfte, beim Tauziehen zählt … .', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="kadMini">${_kadMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_kadSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_kadSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_kadSelf(3)">😃 sicher</button>
+          <span id="kadSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="kadSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Gleiche Richtung: Beträge addieren (3 N + 2 N = 5 N). Entgegengesetzt: kleineren vom größeren abziehen (3 N − 2 N = 1 N), Richtung der größeren Kraft. Gleich groß + entgegengesetzt: 0 N (Gleichgewicht).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Kräfte längs einer Wirkungslinie addieren sich vorzeichenrichtig zur resultierenden Kraft (Gesamtkraft). Gleiche Richtung → Summe; entgegengesetzt → Differenz mit Richtung der größeren Kraft; Betrag gleich und entgegengesetzt → resultierende Kraft null (Kräftegleichgewicht, siehe 9.1.9).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Kräfte werden immer addiert – auch bei Gegenrichtung.“ (2) „Zwei Kräfte ergeben immer eine größere Kraft.“ (3) „Bei Gleichgewicht wirken keine Kräfte.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Pfeile aneinanderlegen; Vorzeichen für Richtung nutzen; Alltag Tauziehen/Schlepper.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4: 5 N · 1 N · 0 N. 6.1 addieren. 6.2 subtrahieren (Richtung der größeren). 6.3 0 N (Gleichgewicht). Merksatz: addiert · subtrahiert · Resultierende/Gesamtkraft · 0. Minidiagnose: 1→5 N · 2→2 N · 3→0 N.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('kraefteadd')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('kraefteadd', 'Was passiert, wenn zwei Kräfte gleichzeitig ziehen?', body);
+}
+
+const _KAD_MINI = [
+  { q: '1. Zwei Kräfte 3 N und 2 N ziehen in dieselbe Richtung. Gesamtkraft?',
+    opts: ['5 N', '1 N', '6 N'], correct: 0,
+    fb: ['Richtig! Gleiche Richtung → addieren: 3 N + 2 N = 5 N.',
+         'Subtrahiert wird nur bei entgegengesetzter Richtung.',
+         'Es wird addiert, nicht multipliziert.'] },
+  { q: '2. Zwei Kräfte 5 N und 3 N ziehen in entgegengesetzte Richtungen. Gesamtkraft?',
+    opts: ['2 N', '8 N', '0 N'], correct: 0,
+    fb: ['Richtig! Entgegengesetzt → subtrahieren: 5 N − 3 N = 2 N.',
+         'Addiert wird nur bei gleicher Richtung.',
+         'Null wäre es nur bei gleich großen Kräften.'] },
+  { q: '3. Zwei gleich große Kräfte ziehen in entgegengesetzte Richtungen. Gesamtkraft?',
+    opts: ['0 N (Gleichgewicht)', 'doppelt so groß', 'die Hälfte'], correct: 0,
+    fb: ['Richtig! Sie heben sich auf – Gesamtkraft 0 N.',
+         'Nein, sie heben sich gegenseitig auf.',
+         'Nein, sie ergeben zusammen 0 N.'] }
+];
+function _kadMiniHTML() {
+  return _KAD_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_kadAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="kadFb${qi}"></div></div>`).join('');
+}
+function _kadAns(qi, oi) {
+  const m = _KAD_MINI[qi], el = document.getElementById('kadFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _kadSelf(n) {
+  const out = document.getElementById('kadSelfOut'), val = document.getElementById('kadSelfVal');
+  if (val) { val.value = String(n); _abSave('kraefteadd'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
