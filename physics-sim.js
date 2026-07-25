@@ -242,6 +242,7 @@ const _physAbDefs = {
   's-t-diagramm-deuten': { titel: 'Das s-t-Diagramm deuten – steil, flach, waagerecht', ns: 'stgraph', html: () => _stgArbeitsblattHTML() },
   'beschleunigung-jg9': { titel: 'Beschleunigte Bewegung – immer schneller', ns: 'imschnell', html: () => _imsArbeitsblattHTML() },
   'beschleunigung-formel-jg9': { titel: 'Gleichmäßig beschleunigt – v = a · t', ns: 'vateq', html: () => _vatArbeitsblattHTML() },
+  'verzoegerung-jg9': { titel: 'Verzögerung – schneller vs. langsamer werden', ns: 'verzoeg', html: () => _vzgArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -1050,6 +1051,15 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('vatAnim', 'vatAnim');
     _pSim.start(dt => _vatUpdate(dt), (ctx, cv) => _vatDraw(ctx, cv), []);
     _abRestore('vateq');
+  },
+
+  'verzoegerung-jg9': modal => {
+    _vzgInit();
+    modal.innerHTML = _vzgHTML();
+    _vzgStatus();
+    _pSim = new PhysicsSimEngine('vzgAnim', 'vzgAnim');
+    _pSim.start(dt => _vzgUpdate(dt), (ctx, cv) => _vzgDraw(ctx, cv), []);
+    _abRestore('verzoeg');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -57909,5 +57919,247 @@ function _vatAns(qi, oi) {
 function _vatSelf(n) {
   const out = document.getElementById('vatSelfOut'), val = document.getElementById('vatSelfVal');
   if (val) { val.value = String(n); _abSave('vateq'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.2.7  VERZÖGERUNG – SCHNELLER vs. LANGSAMER WERDEN
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Bewegung"
+// Gas (+a): v nimmt zu · Bremse (−a): v nimmt ab.
+// Verzögerung = negative Beschleunigung. v-t-Gerade steigt
+// bzw. fällt. Bremsen führt bis zum Stillstand (v = 0).
+// ═══════════════════════════════════════════════════════
+let _vzg = null;
+const _VZG_A = 2.5;                 // Betrag der Beschleunigung m/s²
+const _VZG_VMAX = 25, _VZG_TMAX = 12;
+function _vzgInit() { _vzg = { modus: 'gas', running: false, t: 0 }; }
+function _vzgVt(t) {
+  if (_vzg.modus === 'gas') return Math.min(_VZG_VMAX, _VZG_A * t);   // Gas: von 0 hoch
+  return Math.max(0, _VZG_VMAX - _VZG_A * t);                         // Bremsen: von vmax runter
+}
+
+function _vzgHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim vzg-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🛑 Was ist der Unterschied zwischen schneller und langsamer werden?</h3>
+    <div class="fpm-note" style="margin-top:2px">Beim „Gas geben" wird das Auto schneller, beim „Bremsen" langsamer. Beobachte den Tacho und die v-t-Linie: Was ändert sich beim Bremsen gegenüber dem Beschleunigen?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="vzgAnim" width="440" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Modus:</span>
+          <button class="sim-btn primary" id="vzggas" onclick="_vzgSet('gas')">🚀 Gas geben (+a)</button>
+          <button class="sim-btn" id="vzgbremse" onclick="_vzgSet('bremse')">🛑 Bremsen (−a)</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" id="vzgPlay" onclick="_vzgToggle()">▶ Start</button>
+          <button class="sim-btn" onclick="_vzgReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Beschleunigen &amp; Verzögern</div>
+        <div class="lmp-status" id="vzgStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Beim <b>Beschleunigen</b> (Gas) <b>nimmt v zu</b> – die v-t-Linie <b>steigt</b>. Beim <b>Bremsen</b> <b>nimmt v ab</b> – die v-t-Linie <b>fällt</b> bis auf 0. Das Bremsen ist eine <b>Verzögerung</b> = eine <b>negative Beschleunigung</b> (−a): dieselbe Idee, nur „andersherum".</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Beschleunigen = v wird größer · Verzögern (Bremsen) = v wird kleiner, bis der Körper steht.
+    </p>
+    ${_vzgArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _vzgSet(k) {
+  if (!_vzg) return;
+  _vzg.modus = k;
+  document.getElementById('vzggas')?.classList.toggle('primary', k === 'gas');
+  document.getElementById('vzgbremse')?.classList.toggle('primary', k === 'bremse');
+  _vzgReset();
+}
+function _vzgToggle() {
+  if (!_vzg) return;
+  const ende = _vzg.modus === 'gas' ? _vzgVt(_vzg.t) >= _VZG_VMAX : _vzgVt(_vzg.t) <= 0;
+  if (_vzg.t > 0 && ende) _vzg.t = 0;
+  _vzg.running = !_vzg.running;
+  const b = document.getElementById('vzgPlay'); if (b) b.textContent = _vzg.running ? '⏸ Stopp' : '▶ Start';
+  _vzgStatus();
+}
+function _vzgReset() {
+  if (!_vzg) return;
+  _vzg.running = false; _vzg.t = 0;
+  const b = document.getElementById('vzgPlay'); if (b) b.textContent = '▶ Start';
+  _vzgStatus();
+}
+function _vzgStatus() {
+  const el = document.getElementById('vzgStatus'); if (!el) return;
+  const t = _vzg.t, v = _vzgVt(t);
+  if (_vzg.modus === 'gas') {
+    el.innerHTML = `<b>Gas geben:</b> a = +${_VZG_A.toString().replace('.', ',')} m/s² → v <b>nimmt zu</b>.<br>Nach t = ${t.toFixed(1).replace('.', ',')} s: v = <b>${v.toFixed(1).replace('.', ',')} m/s</b>.`;
+  } else {
+    const steht = v <= 0.01;
+    el.innerHTML = `<b>Bremsen:</b> a = −${_VZG_A.toString().replace('.', ',')} m/s² (Verzögerung) → v <b>nimmt ab</b>.<br>Nach t = ${t.toFixed(1).replace('.', ',')} s: v = <b>${v.toFixed(1).replace('.', ',')} m/s</b>${steht ? ' → das Auto <b>steht</b>.' : '.'}`;
+  }
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _vzgUpdate(dt) {
+  if (!_vzg || !_vzg.running) return;
+  _vzg.t += dt;
+  const ende = _vzg.modus === 'gas' ? _vzgVt(_vzg.t) >= _VZG_VMAX : _vzgVt(_vzg.t) <= 0;
+  if (ende || _vzg.t >= _VZG_TMAX) {
+    _vzg.running = false; const b = document.getElementById('vzgPlay'); if (b) b.textContent = '▶ Start';
+  }
+  _vzgStatus();
+}
+function _vzgDraw(ctx, cv) {
+  if (!_vzg) return;
+  const W = cv.width, H = cv.height, gas = _vzg.modus === 'gas', t = _vzg.t, v = _vzgVt(t);
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  // ── Strecke + Auto oben ──
+  const xL = 34, xR = 410, roadY = 56;
+  ctx.fillStyle = '#334155'; ctx.fillRect(xL, roadY, xR - xL, 24);
+  // Auto-Position ~ zurückgelegter Weg (grob über Integral); wir nutzen Fortschritt als t-Anteil
+  const prog = Math.max(0, Math.min(1, t / _VZG_TMAX));
+  const carX = xL + 20 + (xR - xL - 40) * (gas ? prog * prog : (2 * prog - prog * prog));
+  ctx.font = '24px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('🚗', carX, roadY + 20);
+  // Modus-Icon + Tacho-Balken
+  ctx.fillStyle = gas ? '#16a34a' : '#dc2626'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(gas ? '🚀 beschleunigen: v ↑' : '🛑 bremsen: v ↓', xL, 24);
+  ctx.fillStyle = '#334155'; ctx.textAlign = 'right'; ctx.fillText('v = ' + v.toFixed(0) + ' m/s   ⏱ ' + t.toFixed(1).replace('.', ',') + ' s', xR, 24);
+  // Geschwindigkeits-Balken
+  const barY = 38, barW = (xR - xL) * (v / _VZG_VMAX);
+  ctx.fillStyle = 'rgba(148,163,184,0.35)'; ctx.fillRect(xL, barY, xR - xL, 6);
+  ctx.fillStyle = gas ? '#16a34a' : '#dc2626'; ctx.fillRect(xL, barY, barW, 6);
+  // ── v-t-Diagramm unten ──
+  const oxL = 44, oxR = W - 18, oyT = 108, oyB = H - 24;
+  const px = tt => oxL + (tt / _VZG_TMAX) * (oxR - oxL);
+  const py = vv => oyB - (vv / _VZG_VMAX) * (oyB - oyT);
+  ctx.strokeStyle = 'rgba(100,116,139,0.18)'; ctx.lineWidth = 1;
+  for (let tt = 0; tt <= _VZG_TMAX; tt += 2) { const x = px(tt); ctx.beginPath(); ctx.moveTo(x, oyT); ctx.lineTo(x, oyB); ctx.stroke(); }
+  for (let vv = 0; vv <= _VZG_VMAX; vv += 5) { const y = py(vv); ctx.beginPath(); ctx.moveTo(oxL, y); ctx.lineTo(oxR, y); ctx.stroke(); }
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(oxL, oyT); ctx.lineTo(oxL, oyB); ctx.lineTo(oxR, oyB); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.textAlign = 'center'; for (let tt = 0; tt <= _VZG_TMAX; tt += 2) ctx.fillText(tt + '', px(tt), oyB + 12);
+  ctx.textAlign = 'right'; for (let vv = 0; vv <= _VZG_VMAX; vv += 5) ctx.fillText(vv + '', oxL - 4, py(vv) + 3);
+  ctx.fillStyle = '#cbd5e1'; ctx.textAlign = 'center'; ctx.fillText('t in s', (oxL + oxR) / 2, H - 9);
+  ctx.save(); ctx.translate(12, (oyT + oyB) / 2); ctx.rotate(-Math.PI / 2); ctx.fillText('v in m/s', 0, 0); ctx.restore();
+  // v-t-Linie bis zur aktuellen Zeit
+  ctx.strokeStyle = gas ? '#16a34a' : '#dc2626'; ctx.lineWidth = 2.8; ctx.beginPath();
+  ctx.moveTo(px(0), py(_vzgVt(0)));
+  const tNow = Math.min(t, _VZG_TMAX);
+  ctx.lineTo(px(tNow), py(v)); ctx.stroke();
+  ctx.fillStyle = gas ? '#16a34a' : '#dc2626'; ctx.beginPath(); ctx.arc(px(tNow), py(v), 4.2, 0, 2 * Math.PI); ctx.fill();
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(gas ? 'v-t steigt (+a)' : 'v-t fällt (−a)', oxL + 8, oyT + 12);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.2.7  (ns = 'verzoeg') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _vzgArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('verzoeg')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('verzoeg')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was unterscheidet das Schneller­werden (Gas) vom Langsamer­werden (Bremsen) – und wie sieht man das im v-t-Diagramm?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die v-t-Linie beim Bremsen … verläuft.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Starte den Modus „Gas geben“ und beobachte die v-t-Linie.</li>
+          <li>Wechsle zu „Bremsen“ und starte erneut.</li>
+          <li>Vergleiche, wie die Geschwindigkeit sich jeweils ändert.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Beschreibe für beide Modi.</div>
+        <table class="ab-table"><tbody>
+          <tr><td></td><td>v ändert sich …</td><td>v-t-Linie</td></tr>
+          <tr><td>Gas geben</td><td>${inp('g1', '?')}</td><td>${inp('g2', '?')}</td></tr>
+          <tr><td>Bremsen</td><td>${inp('b1', '?')}</td><td>${inp('b2', '?')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne beide v-t-Linien in ein Diagramm (steigend / fallend).</div>
+        <div class="ab-skizze">Platz für dein Diagramm</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie verläuft die v-t-Linie beim Beschleunigen? ${inp('a1', '')}</li>
+          <li>Wie verläuft sie beim Bremsen – und wo endet sie? ${inp('a2', '')}</li>
+          <li>Wie nennt man eine „Beschleunigung, die bremst“? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Beim Beschleunigen ${inp('m1', 'wie?')} die Geschwindigkeit, beim Bremsen ${inp('m2', 'wie?')} sie.<br>
+        Das Bremsen ist eine ${inp('m3', 'Begriff?')} – also eine ${inp('m4', 'welche?')} Beschleunigung. Die v-t-Linie fällt dabei bis auf ${inp('m5', 'Wert?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Zug fährt in den Bahnhof ein und hält an. Beschreibe seine Geschwindigkeit von der Einfahrt bis zum Stillstand.</div>
+        ${ta('tr1', 'Zuerst … der Zug, dann … die Geschwindigkeit, bis sie … ist.', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="vzgMini">${_vzgMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_vzgSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_vzgSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_vzgSelf(3)">😃 sicher</button>
+          <span id="vzgSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="vzgSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Gas geben: v nimmt zu, die v-t-Linie steigt. Bremsen: v nimmt ab, die v-t-Linie fällt und endet bei v = 0 (das Auto steht). Beide Vorgänge sind gleichmäßig (konstanter Betrag von a).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Beschleunigen und Verzögern sind dasselbe Konzept mit anderem Vorzeichen: Beschleunigung a = Δv/Δt. Beim Bremsen ist Δv negativ → a < 0 (Verzögerung, „negative Beschleunigung“). Im v-t-Diagramm: steigende Gerade (+a) bzw. fallende Gerade (−a) bis v = 0.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Bremsen hat nichts mit Beschleunigung zu tun.“ (2) „Beim Bremsen wird v sofort 0.“ (nein: gleichmäßig abnehmend). (3) „Negative Beschleunigung heißt rückwärtsfahren.“ (nein: langsamer werden).</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Vorzeichen von Δv betrachten; v-t-Linien steigend vs. fallend gegenüberstellen; Endpunkt v = 0 markieren.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Gas → nimmt zu / steigt · Bremsen → nimmt ab / fällt. 6.1 sie steigt. 6.2 sie fällt und endet bei v = 0. 6.3 Verzögerung (negative Beschleunigung). Merksatz: nimmt zu · nimmt ab · Verzögerung · negative · 0. Minidiagnose: 1→sie nimmt ab · 2→eine fallende Linie · 3→negative Beschleunigung / Verzögerung.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('verzoeg')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('verzoeg', 'Verzögerung – schneller vs. langsamer werden', body);
+}
+
+const _VZG_MINI = [
+  { q: '1. Was passiert beim Bremsen mit der Geschwindigkeit?',
+    opts: ['Sie nimmt ab', 'Sie nimmt zu', 'Sie bleibt gleich'], correct: 0,
+    fb: ['Richtig! Bremsen bedeutet langsamer werden – v sinkt.',
+         'Zunehmen wäre Beschleunigen (Gas geben).',
+         'Gleich bleiben wäre eine gleichförmige Bewegung.'] },
+  { q: '2. Wie verläuft die v-t-Linie beim Bremsen?',
+    opts: ['Eine fallende Linie bis 0', 'Eine steigende Linie', 'Eine waagerechte Linie'], correct: 0,
+    fb: ['Richtig! v sinkt gleichmäßig bis zum Stillstand.',
+         'Steigend wäre Beschleunigen.',
+         'Waagerecht wäre konstante Geschwindigkeit.'] },
+  { q: '3. Wie nennt man eine Beschleunigung, die den Körper langsamer macht?',
+    opts: ['Verzögerung (negative Beschleunigung)', 'Doppelte Beschleunigung', 'Gleichförmige Bewegung'], correct: 0,
+    fb: ['Richtig! Verzögerung = negative Beschleunigung.',
+         'Nein, es geht um das Vorzeichen, nicht um „doppelt“.',
+         'Gleichförmig heißt: v ändert sich gar nicht.'] }
+];
+function _vzgMiniHTML() {
+  return _VZG_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_vzgAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="vzgFb${qi}"></div></div>`).join('');
+}
+function _vzgAns(qi, oi) {
+  const m = _VZG_MINI[qi], el = document.getElementById('vzgFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _vzgSelf(n) {
+  const out = document.getElementById('vzgSelfOut'), val = document.getElementById('vzgSelfVal');
+  if (val) { val.value = String(n); _abSave('verzoeg'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
