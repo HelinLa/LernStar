@@ -235,6 +235,7 @@ const _physAbDefs = {
   'kraefte-gleichgewicht': { titel: 'Warum bleibt eine hängende Lampe hängen?', ns: 'kraeftegg', html: () => _kggArbeitsblattHTML() },
   'wechselwirkung': { titel: 'Kraft und Gegenkraft – warum drücke ich zurück?', ns: 'wechselwirkung', html: () => _wwkArbeitsblattHTML() },
   'schiefe-ebene': { titel: 'Warum geht ein Stein über eine Rampe leichter hoch?', ns: 'schiefeebene', html: () => _sieArbeitsblattHTML() },
+  'reibung-rs': { titel: 'Warum bremst mich der Boden aus? (Reibung)', ns: 'reibungrs', html: () => _rbgArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -976,6 +977,16 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('sieAnim', 'sieAnim');
     _pSim.start(dt => _sieUpdate(dt), (ctx, cv) => _sieDraw(ctx, cv), []);
     _abRestore('schiefeebene');
+  },
+
+  // ── 9.1.12 KRÄFTE: REIBUNG (RS) ────────────────────────────────
+  'reibung-rs': modal => {
+    _rbgInit();
+    modal.innerHTML = _rbgHTML();
+    _rbgStatus();
+    _pSim = new PhysicsSimEngine('rbgAnim', 'rbgAnim');
+    _pSim.start(dt => _rbgUpdate(dt), (ctx, cv) => _rbgDraw(ctx, cv), []);
+    _abRestore('reibungrs');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -56254,5 +56265,227 @@ function _sieAns(qi, oi) {
 function _sieSelf(n) {
   const out = document.getElementById('sieSelfOut'), val = document.getElementById('sieSelfVal');
   if (val) { val.value = String(n); _abSave('schiefeebene'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.1.12  WARUM BREMST MICH DER BODEN AUS?  (REIBUNG)
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Kräfte"
+// Reibung wirkt der Bewegung entgegen. Rauer Untergrund →
+// größere Reibungskraft → kürzerer Auslaufweg.
+// ═══════════════════════════════════════════════════════
+let _rbg = null;
+const _RBG_UG = {
+  eis: { name: 'Eis', a: 48, farbe: '#bae6fd', reib: 'sehr wenig Reibung', emoji: '🧊' },
+  holz: { name: 'Holz', a: 110, farbe: '#d6a76a', reib: 'mittlere Reibung', emoji: '🪵' },
+  teppich: { name: 'Teppich', a: 210, farbe: '#fca5a5', reib: 'viel Reibung', emoji: '🧶' }
+};
+const _RBG_V0 = 180;
+function _rbgInit() { _rbg = { ug: 'holz', v: 0, x: 0, laeuft: false, auslauf: 0, t: 0 }; }
+
+function _rbgHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim rbg-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🛑 Warum bremst mich der Boden aus – obwohl er mich nicht festhält?</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle einen Untergrund und gib dem Wagen jedes Mal denselben Anstoß. Wie weit rollt er, bis er stehen bleibt?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="rbgAnim" width="440" height="200" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Untergrund:</span>
+          <button class="sim-btn" id="rbgUeis" onclick="_rbgSet('eis')">🧊 Eis</button>
+          <button class="sim-btn primary" id="rbgUholz" onclick="_rbgSet('holz')">🪵 Holz</button>
+          <button class="sim-btn" id="rbgUteppich" onclick="_rbgSet('teppich')">🧶 Teppich</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" onclick="_rbgGo()">▶ Anschieben</button>
+          <button class="sim-btn" onclick="_rbgReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Reibung und Auslaufweg</div>
+        <div class="lmp-status" id="rbgStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Die <b>Reibungskraft</b> wirkt immer <b>entgegen der Bewegung</b> und bremst den Wagen ab. Je <b>rauer</b> der Untergrund, desto <b>größer</b> die Reibung und desto <b>kürzer</b> der Auslaufweg. Ohne Reibung würde der Wagen immer weiterrollen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Reibung ist mal hinderlich (bremst), mal nützlich (Halt beim Gehen, Bremsen, Winterreifen).
+    </p>
+    ${_rbgArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _rbgSet(u) {
+  if (!_rbg) return;
+  _rbg.ug = u; _rbg.laeuft = false; _rbg.v = 0; _rbg.x = 0; _rbg.auslauf = 0;
+  Object.keys(_RBG_UG).forEach(x => document.getElementById('rbgU' + x)?.classList.toggle('primary', x === u));
+  _rbgStatus();
+}
+function _rbgGo() { if (_rbg) { _rbg.v = _RBG_V0; _rbg.x = 0; _rbg.laeuft = true; _rbg.auslauf = 0; _rbgStatus(); } }
+function _rbgReset() { if (_rbg) { _rbg.v = 0; _rbg.x = 0; _rbg.laeuft = false; _rbg.auslauf = 0; _rbgStatus(); } }
+function _rbgStatus() {
+  const el = document.getElementById('rbgStatus'); if (!el) return;
+  const u = _RBG_UG[_rbg.ug];
+  const cm = Math.round((_rbg.auslauf || (_rbg.laeuft ? _rbg.x : 0)) / 3);
+  let t = `Untergrund <b>${u.name}</b>: ${u.reib}. `;
+  if (_rbg.auslauf > 0 && !_rbg.laeuft) t += `Der Wagen ist <b>${cm} cm</b> gerollt und dann stehen geblieben.`;
+  else if (_rbg.laeuft) t += `Der Wagen rollt und wird durch die Reibung langsamer …`;
+  else t += `Drücke „Anschieben“ und beobachte den Auslaufweg.`;
+  el.innerHTML = t;
+  el.className = 'lmp-status' + (_rbg.auslauf > 0 && !_rbg.laeuft ? ' on' : '');
+}
+
+// ── Animation ──────────────────────────────────────────
+function _rbgUpdate(dt) {
+  if (!_rbg || !_rbg.laeuft) return;
+  _rbg.t += dt;
+  const a = _RBG_UG[_rbg.ug].a;
+  _rbg.v -= a * dt;
+  if (_rbg.v <= 0) { _rbg.v = 0; _rbg.laeuft = false; _rbg.auslauf = _rbg.x; _rbgStatus(); return; }
+  _rbg.x += _rbg.v * dt;
+}
+function _rbgDraw(ctx, cv) {
+  if (!_rbg) return;
+  const W = cv.width, H = cv.height, u = _RBG_UG[_rbg.ug];
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const groundY = 150, x0 = 40;
+  // Untergrund
+  ctx.fillStyle = u.farbe; ctx.fillRect(0, groundY, W, H - groundY);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, groundY); ctx.lineTo(W, groundY); ctx.stroke();
+  // Textur je Untergrund
+  ctx.strokeStyle = 'rgba(71,85,105,0.35)'; ctx.lineWidth = 1;
+  if (_rbg.ug === 'teppich') { for (let x = 6; x < W; x += 10) { ctx.beginPath(); ctx.moveTo(x, groundY + 4); ctx.lineTo(x + 4, groundY + 12); ctx.stroke(); } }
+  else if (_rbg.ug === 'holz') { for (let x = 0; x < W; x += 40) { ctx.beginPath(); ctx.moveTo(x, groundY); ctx.lineTo(x, H); ctx.stroke(); } }
+  ctx.fillStyle = '#334155'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(u.emoji + ' ' + u.name, 12, groundY + 26);
+  // Startmarke
+  ctx.strokeStyle = '#94a3b8'; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(x0, groundY - 40); ctx.lineTo(x0, groundY); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Start', x0, groundY - 44);
+  // Wagen
+  const wx = x0 + _rbg.x, bw = 44, bh = 22, by = groundY - 12 - bh;
+  ctx.fillStyle = '#3b82f6'; ctx.fillRect(wx, by, bw, bh);
+  ctx.fillStyle = '#1e293b';
+  [12, bw - 12].forEach(dx => { ctx.beginPath(); ctx.arc(wx + dx, groundY - 8, 8, 0, 2 * Math.PI); ctx.fill(); });
+  // Reibungspfeil (rot, entgegen der Bewegung) während der Fahrt
+  if (_rbg.laeuft) {
+    _kwkArrow(ctx, wx + 6, by + bh / 2, wx - 26, by + bh / 2, '#ef4444');
+    ctx.fillStyle = '#b91c1c'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Reibung', wx - 12, by - 4);
+  }
+  // Auslaufweg-Markierung, wenn gestoppt
+  if (_rbg.auslauf > 0 && !_rbg.laeuft) {
+    const ex = x0 + _rbg.auslauf;
+    ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x0, groundY - 30); ctx.lineTo(ex, groundY - 30); ctx.stroke();
+    ctx.fillStyle = '#16a34a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Auslaufweg ≈ ' + Math.round(_rbg.auslauf / 3) + ' cm', (x0 + ex) / 2, groundY - 34);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.1.12  (ns = 'reibungrs') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _rbgArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('reibungrs')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('reibungrs')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Warum bleibt ein rollender Wagen von selbst stehen, obwohl ihn niemand festhält?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass der Wagen stehen bleibt, weil … .', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle einen Untergrund (Eis, Holz, Teppich).</li>
+          <li>Schiebe den Wagen jedes Mal gleich stark an.</li>
+          <li>Miss den Auslaufweg, bis er stehen bleibt.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Trage ein, wie viel Reibung und wie lang der Auslaufweg ist.</div>
+        <table class="ab-table"><tbody>
+          <tr><td>🧊 Eis</td><td>Reibung: ${inp('r1', 'wenig/mittel/viel')}</td><td>Auslaufweg: ${inp('w1', 'cm')}</td></tr>
+          <tr><td>🪵 Holz</td><td>Reibung: ${inp('r2', 'wenig/mittel/viel')}</td><td>Auslaufweg: ${inp('w2', 'cm')}</td></tr>
+          <tr><td>🧶 Teppich</td><td>Reibung: ${inp('r3', 'wenig/mittel/viel')}</td><td>Auslaufweg: ${inp('w3', 'cm')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne den Wagen mit dem Reibungspfeil. In welche Richtung zeigt er im Vergleich zur Bewegung?</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Auf welchem Untergrund rollt der Wagen am weitesten? ${inp('a1', '')}</li>
+          <li>In welche Richtung wirkt die Reibungskraft? ${inp('a2', 'entgegen der …')}</li>
+          <li>Was würde ohne Reibung passieren? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Die Reibungskraft wirkt ${inp('m1', 'wie zur Bewegung?')} der Bewegung und ${inp('m2', 'was tut sie?')} den Körper.<br>
+        Je ${inp('m3', 'wie?')} der Untergrund, desto größer die Reibung und desto ${inp('m4', 'wie?')} der Auslaufweg.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Reibung ist nicht immer schlecht. Nenne ein Beispiel, wo sie hilft, und eines, wo sie stört.</div>
+        ${ta('tr1', 'Reibung hilft z. B. bei … (Halt/Bremsen). Sie stört z. B. bei … .', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="rbgMini">${_rbgMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_rbgSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_rbgSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_rbgSelf(3)">😃 sicher</button>
+          <span id="rbgSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="rbgSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Gleicher Anstoß, verschiedener Untergrund: Auf Eis (wenig Reibung) rollt der Wagen am weitesten, auf Holz mittel, auf Teppich (viel Reibung) am kürzesten. Der Reibungspfeil zeigt immer entgegen der Bewegungsrichtung.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Reibung entsteht an der Berührungsfläche zweier Körper und wirkt der Bewegung entgegen. Sie hängt von der Beschaffenheit der Flächen (rau/glatt) und der Anpresskraft ab. Sie wandelt Bewegungsenergie in Wärme um (Vorbereitung 9.3). Ohne Reibung bliebe der Körper in gleichförmiger Bewegung (Trägheit, 9.2).</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Wagen hört von allein auf, das ist keine Kraft.“ (2) „Reibung ist immer schädlich.“ (3) „Reibung wirkt in Bewegungsrichtung.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Reibungspfeil gegen die Fahrtrichtung zeichnen; rau/glatt vergleichen; nützliche Reibung (Gehen, Bremsen, Winterreifen) und störende (Verschleiß) sammeln.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 auf Eis. 6.2 entgegen der Bewegung. 6.3 Er würde immer weiterrollen. Merksatz: entgegen · bremst · rauer · kürzer. Transfer: hilft beim Gehen/Bremsen/Winterreifen; stört bei Verschleiß/Maschinen (Schmieröl). Minidiagnose: 1→entgegen der Bewegung · 2→viel Reibung, kurzer Weg · 3→weil die Reibung ihn bremst.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('reibungrs')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('reibungrs', 'Warum bremst mich der Boden aus? (Reibung)', body);
+}
+
+const _RBG_MINI = [
+  { q: '1. In welche Richtung wirkt die Reibungskraft?',
+    opts: ['Entgegen der Bewegung', 'In Bewegungsrichtung', 'Nach oben'], correct: 0,
+    fb: ['Richtig! Reibung bremst – sie wirkt gegen die Bewegung.',
+         'Nein, dann würde sie beschleunigen.',
+         'Reibung wirkt längs der Fläche, nicht nach oben.'] },
+  { q: '2. Was gilt für einen rauen Untergrund?',
+    opts: ['Viel Reibung → kurzer Auslaufweg', 'Wenig Reibung → langer Weg', 'Kein Unterschied'], correct: 0,
+    fb: ['Richtig! Rauer Untergrund bremst stärker.',
+         'Rau bedeutet mehr, nicht weniger Reibung.',
+         'Der Untergrund macht einen großen Unterschied.'] },
+  { q: '3. Warum bleibt ein rollender Ball irgendwann liegen?',
+    opts: ['Weil die Reibung ihn bremst', 'Weil die Kraft „aufgebraucht“ ist', 'Weil er müde wird'], correct: 0,
+    fb: ['Richtig! Die Reibung bremst ihn bis zum Stillstand.',
+         'Kräfte werden nicht „aufgebraucht“ – es ist die Reibung.',
+         'Gegenstände werden nicht müde. 🙂'] }
+];
+function _rbgMiniHTML() {
+  return _RBG_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_rbgAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="rbgFb${qi}"></div></div>`).join('');
+}
+function _rbgAns(qi, oi) {
+  const m = _RBG_MINI[qi], el = document.getElementById('rbgFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _rbgSelf(n) {
+  const out = document.getElementById('rbgSelfOut'), val = document.getElementById('rbgSelfVal');
+  if (val) { val.value = String(n); _abSave('reibungrs'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
