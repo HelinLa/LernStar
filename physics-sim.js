@@ -240,6 +240,7 @@ const _physAbDefs = {
   'geschwindigkeit-rs': { titel: 'Was bedeutet „schnell“? (v = s/t)', ns: 'geschwrs', html: () => _gswArbeitsblattHTML() },
   'gleichfoermige-bewegung': { titel: 'Gleichförmige Bewegung – gleiche Wege in gleichen Zeiten', ns: 'glbew', html: () => _glbArbeitsblattHTML() },
   's-t-diagramm-deuten': { titel: 'Das s-t-Diagramm deuten – steil, flach, waagerecht', ns: 'stgraph', html: () => _stgArbeitsblattHTML() },
+  'beschleunigung-jg9': { titel: 'Beschleunigte Bewegung – immer schneller', ns: 'imschnell', html: () => _imsArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -1030,6 +1031,15 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('stgAnim', 'stgAnim');
     _pSim.start(dt => _stgUpdate(dt), (ctx, cv) => _stgDraw(ctx, cv), []);
     _abRestore('stgraph');
+  },
+
+  'beschleunigung-jg9': modal => {
+    _imsInit();
+    modal.innerHTML = _imsHTML();
+    _imsStatus();
+    _pSim = new PhysicsSimEngine('imsAnim', 'imsAnim');
+    _pSim.start(dt => _imsUpdate(dt), (ctx, cv) => _imsDraw(ctx, cv), []);
+    _abRestore('imschnell');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -57408,5 +57418,255 @@ function _stgAns(qi, oi) {
 function _stgSelf(n) {
   const out = document.getElementById('stgSelfOut'), val = document.getElementById('stgSelfVal');
   if (val) { val.value = String(n); _abSave('stgraph'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.2.5  BESCHLEUNIGTE BEWEGUNG – IMMER SCHNELLER
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Bewegung"
+// Beim Anfahren: in gleichen Zeiten immer größere Wege →
+// Geschwindigkeit nimmt zu. Marken werden immer weiter.
+// Vergleich zur gleichförmigen Bewegung (gleiche Abstände).
+// ═══════════════════════════════════════════════════════
+let _ims = null;
+const _IMS_A = 1.2;                 // Beschleunigung m/s² (gaspedal)
+const _IMS_SMAX = 100, _IMS_TMAX = 13;
+function _imsInit() { _ims = { modus: 'beschl', running: false, t: 0 }; }
+function _imsV0() { return 8; }     // konstantes Vergleichstempo (gleichförmig)
+function _imsS(t) {
+  return _ims.modus === 'beschl'
+    ? Math.min(_IMS_SMAX, 0.5 * _IMS_A * t * t)
+    : Math.min(_IMS_SMAX, _imsV0() * t);
+}
+function _imsVt(t) { return _ims.modus === 'beschl' ? _IMS_A * t : _imsV0(); }
+
+function _imsHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim ims-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🚀 Was passiert, wenn ein Körper immer schneller wird?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Auto fährt an und „gibt Gas". Jede Sekunde setzt es eine Marke. Vergleiche mit einem Auto, das gleichförmig fährt: Wie verändern sich die Abstände der Marken?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="imsAnim" width="440" height="240" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Bewegung:</span>
+          <button class="sim-btn primary" id="imsbeschl" onclick="_imsSet('beschl')">Gas geben (beschleunigt)</button>
+          <button class="sim-btn" id="imsgleich" onclick="_imsSet('gleich')">gleichförmig</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" id="imsPlay" onclick="_imsToggle()">▶ Start</button>
+          <button class="sim-btn" onclick="_imsReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Beschleunigte Bewegung</div>
+        <div class="lmp-status" id="imsStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Bei einer <b>beschleunigten Bewegung</b> nimmt die Geschwindigkeit zu: In gleichen Zeiten werden <b>immer größere Wege</b> zurückgelegt – die Sekundenmarken werden <b>weiter auseinander</b>. Im s-t-Diagramm entsteht eine nach oben <b>gebogene Kurve</b> (keine Gerade mehr).</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Gleichförmig = gleiche Marken-Abstände · beschleunigt = immer größere Abstände.
+    </p>
+    ${_imsArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _imsSet(k) {
+  if (!_ims) return;
+  _ims.modus = k;
+  document.getElementById('imsbeschl')?.classList.toggle('primary', k === 'beschl');
+  document.getElementById('imsgleich')?.classList.toggle('primary', k === 'gleich');
+  _imsReset();
+}
+function _imsToggle() {
+  if (!_ims) return;
+  if (_imsS(_ims.t) >= _IMS_SMAX) _ims.t = 0;
+  _ims.running = !_ims.running;
+  const b = document.getElementById('imsPlay'); if (b) b.textContent = _ims.running ? '⏸ Stopp' : '▶ Start';
+  _imsStatus();
+}
+function _imsReset() {
+  if (!_ims) return;
+  _ims.running = false; _ims.t = 0;
+  const b = document.getElementById('imsPlay'); if (b) b.textContent = '▶ Start';
+  _imsStatus();
+}
+function _imsStatus() {
+  const el = document.getElementById('imsStatus'); if (!el) return;
+  const t = _ims.t, v = _imsVt(t), s = _imsS(t);
+  if (_ims.modus === 'beschl') {
+    el.innerHTML = `<b>Gas geben:</b> die Geschwindigkeit wächst gleichmäßig (a = ${_IMS_A.toString().replace('.', ',')} m/s²). Marken werden immer weiter.<br>Aktuell: t = ${t.toFixed(1).replace('.', ',')} s, v ≈ <b>${v.toFixed(1).replace('.', ',')} m/s</b>, s = ${s.toFixed(0)} m.`;
+  } else {
+    el.innerHTML = `<b>Gleichförmig:</b> die Geschwindigkeit bleibt konstant (v = ${_imsV0()} m/s). Marken alle gleich weit.<br>Aktuell: t = ${t.toFixed(1).replace('.', ',')} s, v = <b>${_imsV0()} m/s</b>, s = ${s.toFixed(0)} m.`;
+  }
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _imsUpdate(dt) {
+  if (!_ims || !_ims.running) return;
+  _ims.t += dt;
+  if (_imsS(_ims.t) >= _IMS_SMAX || _ims.t >= _IMS_TMAX) {
+    _ims.running = false; const b = document.getElementById('imsPlay'); if (b) b.textContent = '▶ Start';
+  }
+  _imsStatus();
+}
+function _imsDraw(ctx, cv) {
+  if (!_ims) return;
+  const W = cv.width, H = cv.height, beschl = _ims.modus === 'beschl';
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  // ── Strecke oben ──
+  const xL = 34, xR = 410, roadY = 54;
+  const pxs = s => xL + (s / _IMS_SMAX) * (xR - xL);
+  ctx.fillStyle = '#334155'; ctx.fillRect(xL, roadY, xR - xL, 26);
+  // Sekundenmarken bis zur aktuellen Zeit
+  const maxSek = Math.floor(_ims.t);
+  for (let k = 1; k <= maxSek; k++) {
+    const sMark = beschl ? 0.5 * _IMS_A * k * k : _imsV0() * k;
+    if (sMark > _IMS_SMAX) break;
+    const x = pxs(sMark);
+    ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x, roadY - 8); ctx.lineTo(x, roadY + 26); ctx.stroke();
+    ctx.fillStyle = '#b45309'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(k + 's', x, roadY - 10);
+  }
+  // Auto
+  ctx.font = '22px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('🚗', pxs(_imsS(_ims.t)), roadY + 21);
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(beschl ? 'beschleunigt (Gas geben)' : 'gleichförmig (konstant)', xL, 24);
+  ctx.textAlign = 'right'; ctx.fillText('⏱ ' + _ims.t.toFixed(1).replace('.', ',') + ' s', xR, 24);
+  // ── s-t-Diagramm unten ──
+  const oxL = 44, oxR = W - 18, oyT = 108, oyB = H - 24;
+  const px = t => oxL + (t / _IMS_TMAX) * (oxR - oxL);
+  const py = s => oyB - (s / _IMS_SMAX) * (oyB - oyT);
+  ctx.strokeStyle = 'rgba(100,116,139,0.18)'; ctx.lineWidth = 1;
+  for (let t = 0; t <= _IMS_TMAX; t += 2) { const x = px(t); ctx.beginPath(); ctx.moveTo(x, oyT); ctx.lineTo(x, oyB); ctx.stroke(); }
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(oxL, oyT); ctx.lineTo(oxL, oyB); ctx.lineTo(oxR, oyB); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.textAlign = 'center'; for (let t = 0; t <= _IMS_TMAX; t += 2) ctx.fillText(t + '', px(t), oyB + 12);
+  ctx.textAlign = 'right'; for (let s = 0; s <= 100; s += 50) ctx.fillText(s + '', oxL - 4, py(s) + 3);
+  ctx.fillStyle = '#cbd5e1'; ctx.textAlign = 'center'; ctx.fillText('t in s', (oxL + oxR) / 2, H - 9);
+  ctx.save(); ctx.translate(12, (oyT + oyB) / 2); ctx.rotate(-Math.PI / 2); ctx.fillText('s in m', 0, 0); ctx.restore();
+  // Kurve bzw. Gerade bis zur aktuellen Zeit
+  ctx.strokeStyle = beschl ? '#dc2626' : '#2563eb'; ctx.lineWidth = 2.5; ctx.beginPath();
+  const tNow = Math.min(_ims.t, _IMS_TMAX);
+  for (let i = 0; i <= 60; i++) {
+    const t = tNow * i / 60, s = beschl ? Math.min(_IMS_SMAX, 0.5 * _IMS_A * t * t) : Math.min(_IMS_SMAX, _imsV0() * t);
+    const X = px(t), Y = py(s); i === 0 ? ctx.moveTo(X, Y) : ctx.lineTo(X, Y);
+  }
+  ctx.stroke();
+  // Sekundenpunkte
+  ctx.fillStyle = beschl ? '#dc2626' : '#2563eb';
+  for (let k = 1; k <= maxSek; k++) { const s = beschl ? 0.5 * _IMS_A * k * k : _imsV0() * k; if (s > _IMS_SMAX) break; ctx.beginPath(); ctx.arc(px(k), py(s), 3.2, 0, 2 * Math.PI); ctx.fill(); }
+  ctx.fillStyle = beschl ? '#dc2626' : '#2563eb'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(beschl ? 's-t: gebogene Kurve' : 's-t: Gerade', oxL + 8, oyT + 12);
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.2.5  (ns = 'imschnell') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _imsArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('imschnell')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('imschnell')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Was passiert mit den Sekundenmarken und dem s-t-Diagramm, wenn ein Körper immer schneller wird?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass die Marken beim Gasgeben … werden.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Starte zuerst die gleichförmige Bewegung – achte auf die Marken.</li>
+          <li>Wechsle zu „Gas geben“ und starte erneut.</li>
+          <li>Vergleiche die Abstände der Marken und die Form der s-t-Linie.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Vergleiche die beiden Bewegungen.</div>
+        <table class="ab-table"><tbody>
+          <tr><td></td><td>Marken-Abstände</td><td>s-t-Linie</td></tr>
+          <tr><td>gleichförmig</td><td>${inp('g1', '?')}</td><td>${inp('g2', '?')}</td></tr>
+          <tr><td>beschleunigt</td><td>${inp('b1', '?')}</td><td>${inp('b2', '?')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne beide s-t-Linien in ein Diagramm. Wie unterscheiden sie sich?</div>
+        <div class="ab-skizze">Platz für deine Diagramme</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Wie verändern sich die Marken-Abstände beim Beschleunigen? ${inp('a1', '')}</li>
+          <li>Was passiert dabei mit der Geschwindigkeit? ${inp('a2', '')}</li>
+          <li>Welche Form hat die s-t-Linie einer beschleunigten Bewegung? ${inp('a3', '')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Bei einer beschleunigten Bewegung ${inp('m1', 'wie?')} die Geschwindigkeit. In gleichen Zeiten werden ${inp('m2', 'wie?')} Wege zurückgelegt.<br>
+        Die Sekundenmarken werden ${inp('m3', 'wie?')}, und das s-t-Diagramm ist eine ${inp('m4', 'Form?')}.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Ein Sprinter startet aus dem Startblock. Warum ist das eine beschleunigte Bewegung?</div>
+        ${ta('tr1', 'Weil seine Geschwindigkeit … und er in jeder Sekunde … zurücklegt.', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="imsMini">${_imsMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_imsSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_imsSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_imsSelf(3)">😃 sicher</button>
+          <span id="imsSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="imsSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Gleichförmig: alle Sekundenmarken gleich weit, s-t-Linie ist eine Gerade. Beschleunigt (Gas geben): die Marken werden von Sekunde zu Sekunde weiter, s-t-Linie ist eine nach oben gebogene Kurve. Die Geschwindigkeit steigt an.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Bei gleichmäßig beschleunigter Bewegung wächst v gleichmäßig (v = a·t), der Weg wächst quadratisch (s = ½·a·t²) → Parabel-Kurve im s-t-Diagramm. Größere Wege in gleichen Zeiten = zunehmende Geschwindigkeit. Bei gleichförmiger Bewegung ist v konstant, s = v·t → Gerade.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Beschleunigt heißt einfach schnell.“ (nein: die Geschwindigkeit ändert sich). (2) „Die Marken bleiben gleich, nur alles läuft schneller ab.“ (3) „Auch beschleunigt ist die s-t-Linie eine Gerade.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Marken-Abstände direkt nebeneinanderlegen; Geschwindigkeit zu zwei Zeitpunkten ablesen; Gerade vs. Kurve gegenüberstellen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: gleichförmig → gleich / Gerade · beschleunigt → immer größer / gebogene Kurve. 6.1 sie werden immer größer. 6.2 sie nimmt zu. 6.3 eine nach oben gebogene Kurve. Merksatz: nimmt zu · immer größere · weiter · Kurve. Minidiagnose: 1→immer größere Wege · 2→sie nimmt zu · 3→eine gebogene Kurve.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('imschnell')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('imschnell', 'Beschleunigte Bewegung – immer schneller', body);
+}
+
+const _IMS_MINI = [
+  { q: '1. Was ist typisch für eine beschleunigte Bewegung?',
+    opts: ['In gleichen Zeiten immer größere Wege', 'In gleichen Zeiten immer gleiche Wege', 'Gar keine Bewegung'], correct: 0,
+    fb: ['Richtig! Die Wege pro Sekunde werden größer – v nimmt zu.',
+         'Das wäre eine gleichförmige Bewegung.',
+         'Bei Beschleunigung bewegt sich der Körper und wird schneller.'] },
+  { q: '2. Was passiert mit der Geschwindigkeit beim Gasgeben?',
+    opts: ['Sie nimmt zu', 'Sie bleibt gleich', 'Sie wird null'], correct: 0,
+    fb: ['Richtig! Beschleunigen heißt: die Geschwindigkeit steigt.',
+         'Konstant wäre gleichförmig, nicht beschleunigt.',
+         'Null wäre Stillstand.'] },
+  { q: '3. Welche Form hat das s-t-Diagramm einer beschleunigten Bewegung?',
+    opts: ['Eine nach oben gebogene Kurve', 'Eine Gerade durch den Ursprung', 'Eine waagerechte Linie'], correct: 0,
+    fb: ['Richtig! Der Weg wächst immer stärker → gebogene Kurve.',
+         'Eine Gerade gehört zur gleichförmigen Bewegung.',
+         'Waagerecht wäre Stillstand.'] }
+];
+function _imsMiniHTML() {
+  return _IMS_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_imsAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="imsFb${qi}"></div></div>`).join('');
+}
+function _imsAns(qi, oi) {
+  const m = _IMS_MINI[qi], el = document.getElementById('imsFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _imsSelf(n) {
+  const out = document.getElementById('imsSelfOut'), val = document.getElementById('imsSelfVal');
+  if (val) { val.value = String(n); _abSave('imschnell'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
