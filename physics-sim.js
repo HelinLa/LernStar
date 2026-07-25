@@ -243,6 +243,7 @@ const _physAbDefs = {
   'beschleunigung-jg9': { titel: 'Beschleunigte Bewegung – immer schneller', ns: 'imschnell', html: () => _imsArbeitsblattHTML() },
   'beschleunigung-formel-jg9': { titel: 'Gleichmäßig beschleunigt – v = a · t', ns: 'vateq', html: () => _vatArbeitsblattHTML() },
   'verzoegerung-jg9': { titel: 'Verzögerung – schneller vs. langsamer werden', ns: 'verzoeg', html: () => _vzgArbeitsblattHTML() },
+  'bremsweg-jg9': { titel: 'Anhalteweg – Reaktionsweg + Bremsweg (Bremsweg ∝ v²)', ns: 'bremsweg', html: () => _brwArbeitsblattHTML() },
   'schatten-groesse': { titel: 'Wovon hängt die Größe des Schattens ab?', ns: 'schatten', html: () => _shaArbeitsblattHTML() },
   'magnet-stoffe': { titel: 'Welche Stoffe zieht ein Magnet an?', ns: 'magstoff', html: () => _msfArbeitsblattHTML() },
   'elektromagnet': { titel: 'Wie stark ist ein Elektromagnet?', ns: 'elmag', html: () => _elmArbeitsblattHTML() },
@@ -1060,6 +1061,15 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('vzgAnim', 'vzgAnim');
     _pSim.start(dt => _vzgUpdate(dt), (ctx, cv) => _vzgDraw(ctx, cv), []);
     _abRestore('verzoeg');
+  },
+
+  'bremsweg-jg9': modal => {
+    _brwInit();
+    modal.innerHTML = _brwHTML();
+    _brwStatus();
+    _pSim = new PhysicsSimEngine('brwAnim', 'brwAnim');
+    _pSim.start(dt => _brwUpdate(dt), (ctx, cv) => _brwDraw(ctx, cv), []);
+    _abRestore('bremsweg');
   },
 
   // ── 7.3.4 TELESKOP ─────────────────────────────────────────────
@@ -58161,5 +58171,257 @@ function _vzgAns(qi, oi) {
 function _vzgSelf(n) {
   const out = document.getElementById('vzgSelfOut'), val = document.getElementById('vzgSelfVal');
   if (val) { val.value = String(n); _abSave('verzoeg'); }
+  if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
+}
+
+// ═══════════════════════════════════════════════════════
+// 9.2.8  ANHALTEWEG – REAKTIONSWEG + BREMSWEG (Bremsweg ∝ v²)
+// Realschule NRW – Klasse 9 · Inhaltsfeld "Bewegung"
+// Faustformeln (v in km/h, vk = v/10):
+//   Reaktionsweg sR = vk·3   (∝ v)
+//   Bremsweg     sB = vk²     (∝ v²)  → doppelte v = 4× Bremsweg
+//   Anhalteweg   = sR + sB
+// ═══════════════════════════════════════════════════════
+let _brw = null;
+const _BRW_V = [30, 50, 100];              // km/h
+const _BRW_DSCALE = 140;                   // m, Skala der Strecke
+function _brwInit() { _brw = { v: 50, running: false, t: 0 }; }
+function _brwVk() { return _brw.v / 10; }
+function _brwSR() { return _brwVk() * 3; }          // Reaktionsweg (m)
+function _brwSB() { return _brwVk() * _brwVk(); }   // Bremsweg (m)
+function _brwSA() { return _brwSR() + _brwSB(); }   // Anhalteweg (m)
+function _brwVms() { return _brw.v / 3.6; }         // m/s
+function _brwTR() { return _brwSR() / _brwVms(); }  // Reaktionsdauer (s)
+function _brwTB() { return 2 * _brwSB() / _brwVms(); } // Bremsdauer (s)
+function _brwTEnd() { return _brwTR() + _brwTB(); }
+function _brwPos(t) {
+  const tR = _brwTR(), tB = _brwTB(), vms = _brwVms();
+  if (t <= tR) return vms * t;                              // Reaktionsphase (konstant)
+  if (t >= tR + tB) return _brwSA();
+  const a = vms / tB, dt = t - tR;                          // Bremsphase (Verzögerung)
+  return _brwSR() + vms * dt - 0.5 * a * dt * dt;
+}
+function _brwPhase(t) { return t <= _brwTR() ? 'reaktion' : (t < _brwTEnd() ? 'bremsen' : 'stopp'); }
+
+function _brwHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim brw-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🚦 Warum braucht ein Auto zum Bremsen viel mehr Platz, als man denkt?</h3>
+    <div class="fpm-note" style="margin-top:2px">Zwischen „Gefahr sehen" und „Stehen" vergeht überraschend viel Weg. Wähle ein Tempo und starte: Wie lang ist der Reaktions­weg, der Brems­weg – und was passiert bei doppelter Geschwindigkeit?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="brwAnim" width="440" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Tempo:</span>
+          <button class="sim-btn" id="brw30" onclick="_brwSet(30)">30 km/h</button>
+          <button class="sim-btn primary" id="brw50" onclick="_brwSet(50)">50 km/h</button>
+          <button class="sim-btn" id="brw100" onclick="_brwSet(100)">100 km/h</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" id="brwPlay" onclick="_brwToggle()">▶ Gefahr! (Start)</button>
+          <button class="sim-btn" onclick="_brwReset()">↺ Zurücksetzen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anhalteweg = Reaktionsweg + Bremsweg</div>
+        <div class="lmp-status" id="brwStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Der <b>Anhalteweg</b> besteht aus zwei Teilen: dem <b>Reaktionsweg</b> (du fährst noch mit vollem Tempo weiter, bis du reagierst – wächst mit v) und dem <b>Bremsweg</b> (bis zum Stillstand). Der Bremsweg wächst mit dem <b>Quadrat</b> der Geschwindigkeit: <b>doppeltes Tempo → vierfacher Bremsweg</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Faustformeln: Reaktionsweg = (v/10)·3 · Bremsweg = (v/10)² · Anhalteweg = beide zusammen.
+    </p>
+    ${_brwArbeitsblattHTML()}
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _brwSet(v) {
+  if (!_brw) return;
+  _brw.v = v;
+  _BRW_V.forEach(x => document.getElementById('brw' + x)?.classList.toggle('primary', x === v));
+  _brwReset();
+}
+function _brwToggle() {
+  if (!_brw) return;
+  if (_brw.t >= _brwTEnd()) _brw.t = 0;
+  _brw.running = !_brw.running;
+  const b = document.getElementById('brwPlay'); if (b) b.textContent = _brw.running ? '⏸ Stopp' : '▶ Gefahr! (Start)';
+  _brwStatus();
+}
+function _brwReset() {
+  if (!_brw) return;
+  _brw.running = false; _brw.t = 0;
+  const b = document.getElementById('brwPlay'); if (b) b.textContent = '▶ Gefahr! (Start)';
+  _brwStatus();
+}
+function _brwStatus() {
+  const el = document.getElementById('brwStatus'); if (!el) return;
+  const ph = _brwPhase(_brw.t);
+  const phTxt = ph === 'reaktion' ? '🟡 Reaktionsphase (noch volles Tempo)'
+    : ph === 'bremsen' ? '🔴 Bremsphase (wird langsamer)' : '✅ steht';
+  el.innerHTML = `Tempo <b>v = ${_brw.v} km/h</b>. Aktuell: ${phTxt}.<br>`
+    + `Reaktionsweg = <b>${_brwSR().toFixed(0)} m</b> · Bremsweg = <b>${_brwSB().toFixed(0)} m</b> · `
+    + `Anhalteweg = <b>${_brwSA().toFixed(0)} m</b>.`;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _brwUpdate(dt) {
+  if (!_brw || !_brw.running) return;
+  _brw.t += dt;
+  if (_brw.t >= _brwTEnd()) { _brw.t = _brwTEnd(); _brw.running = false; const b = document.getElementById('brwPlay'); if (b) b.textContent = '▶ Gefahr! (Start)'; }
+  _brwStatus();
+}
+function _brwDraw(ctx, cv) {
+  if (!_brw) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const xL = 30, xR = W - 16, roadY = 60, roadH = 30;
+  const pxd = d => xL + (d / _BRW_DSCALE) * (xR - xL);
+  // Straße
+  ctx.fillStyle = '#334155'; ctx.fillRect(xL, roadY, xR - xL, roadH);
+  // Reaktionsweg-Segment (gelb) + Bremsweg-Segment (rot) am Boden
+  const sR = _brwSR(), sB = _brwSB(), sA = _brwSA();
+  ctx.fillStyle = 'rgba(250,204,21,0.85)'; ctx.fillRect(pxd(0), roadY + roadH, pxd(sR) - pxd(0), 8);
+  ctx.fillStyle = 'rgba(239,68,68,0.85)'; ctx.fillRect(pxd(sR), roadY + roadH, pxd(sA) - pxd(sR), 8);
+  // Beschriftung der Segmente
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillStyle = '#b45309'; ctx.fillText('Reaktion ' + sR.toFixed(0) + ' m', (pxd(0) + pxd(sR)) / 2, roadY + roadH + 22);
+  ctx.fillStyle = '#b91c1c'; ctx.fillText('Bremsweg ' + sB.toFixed(0) + ' m', (pxd(sR) + pxd(sA)) / 2, roadY + roadH + 22);
+  // Gefahr-Linie am Anhaltepunkt (Kind/Hindernis)
+  ctx.strokeStyle = '#0f172a'; ctx.setLineDash([4, 3]); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(pxd(sA), roadY - 12); ctx.lineTo(pxd(sA), roadY + roadH); ctx.stroke(); ctx.setLineDash([]);
+  ctx.font = '16px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('🧒', pxd(sA), roadY - 16);
+  // Auto
+  const d = _brwPos(_brw.t), ph = _brwPhase(_brw.t);
+  ctx.font = '24px sans-serif'; ctx.fillText('🚗', pxd(d), roadY + 22);
+  // Kopfzeile
+  ctx.fillStyle = ph === 'reaktion' ? '#ca8a04' : (ph === 'bremsen' ? '#dc2626' : '#16a34a');
+  ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(ph === 'reaktion' ? '🟡 Reaktion – noch volles Tempo' : (ph === 'bremsen' ? '🔴 Bremsen …' : '✅ steht'), xL, 24);
+  ctx.fillStyle = '#334155'; ctx.textAlign = 'right'; ctx.fillText('v = ' + _brw.v + ' km/h   Anhalteweg ' + sA.toFixed(0) + ' m', xR, 24);
+  // ── Vergleichsbalken: Bremsweg bei 30/50/100 (∝ v²) ──
+  const by0 = 150, bh = 20, bgap = 8, blabW = 66;
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#475569';
+  ctx.fillText('Bremsweg im Vergleich (∝ v²):', xL, by0 - 8);
+  _BRW_V.forEach((vv, i) => {
+    const sb = (vv / 10) * (vv / 10);
+    const y = by0 + i * (bh + bgap);
+    ctx.fillStyle = '#475569'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(vv + ' km/h', xL, y + 14);
+    const bx = xL + blabW, bw = (sb / 100) * (xR - bx - 40);
+    ctx.fillStyle = vv === _brw.v ? '#dc2626' : 'rgba(239,68,68,0.4)';
+    _kwnRoundRect(ctx, bx, y, Math.max(2, bw), bh, 4); ctx.fill();
+    ctx.fillStyle = '#334155'; ctx.textAlign = 'left'; ctx.fillText(sb.toFixed(0) + ' m', bx + Math.max(2, bw) + 5, y + 14);
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// ARBEITSBLATT 9.2.8  (ns = 'bremsweg') – im 0123-Gate
+// ═══════════════════════════════════════════════════════
+function _brwArbeitsblattHTML() {
+  const ta = (k, ph, rows) => `<textarea class="ab-field" data-abk="${k}" rows="${rows || 2}" placeholder="${ph}" oninput="_abSave('bremsweg')"></textarea>`;
+  const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('bremsweg')">`;
+  const body = `
+      <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
+        <div class="ab-t"><b>Woraus setzt sich der Weg zusammen, bis ein Auto steht – und warum wird er bei höherem Tempo so viel länger?</b></div></div>
+
+      <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
+        ${ta('v1', 'Ich vermute, dass sich der Bremsweg bei doppeltem Tempo … ändert.', 2)}</div>
+
+      <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
+        <ol class="ab-ol">
+          <li>Wähle 30, 50 und 100 km/h und starte jeweils.</li>
+          <li>Lies Reaktionsweg, Bremsweg und Anhalteweg ab.</li>
+          <li>Achte auf die Vergleichsbalken für den Bremsweg.</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
+        <div class="ab-t">Trage die Wege ein (Faustformeln: Reaktionsweg = (v/10)·3, Bremsweg = (v/10)²).</div>
+        <table class="ab-table"><tbody>
+          <tr><td></td><td>Reaktionsweg</td><td>Bremsweg</td><td>Anhalteweg</td></tr>
+          <tr><td>30 km/h</td><td>${inp('r30', 'm')}</td><td>${inp('b30', 'm')}</td><td>${inp('a30', 'm')}</td></tr>
+          <tr><td>50 km/h</td><td>${inp('r50', 'm')}</td><td>${inp('b50', 'm')}</td><td>${inp('a50', 'm')}</td></tr>
+          <tr><td>100 km/h</td><td>${inp('r100', 'm')}</td><td>${inp('b100', 'm')}</td><td>${inp('a100', 'm')}</td></tr>
+        </tbody></table></div>
+
+      <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
+        <div class="ab-t">Zeichne eine Straße und markiere Reaktionsweg und Bremsweg für 50 km/h.</div>
+        <div class="ab-skizze">Platz für deine Skizze</div></div>
+
+      <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
+        <ol class="ab-ol">
+          <li>Aus welchen zwei Teilen besteht der Anhalteweg? ${inp('a1', '')}</li>
+          <li>Von 50 auf 100 km/h: Wie ändert sich der Bremsweg? ${inp('a2', '')}</li>
+          <li>Wovon hängt der Bremsweg besonders stark ab? ${inp('a3', 'vom … der Geschwindigkeit')}</li>
+        </ol></div>
+
+      <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
+        <div class="ab-t">Der Anhalteweg ist der ${inp('m1', '?')} plus der ${inp('m2', '?')}. Der Reaktionsweg wächst gleichmäßig mit der Geschwindigkeit.<br>
+        Der Bremsweg wächst mit dem ${inp('m3', '?')} der Geschwindigkeit: doppeltes Tempo bedeutet ${inp('m4', '?')} Bremsweg.</div></div>
+
+      <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
+        <div class="ab-t">Warum gilt vor Schulen und Kindergärten oft Tempo 30 statt 50?</div>
+        ${ta('tr1', 'Weil bei 30 km/h der Anhalteweg viel … ist, sodass …', 3)}</div>
+
+      <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
+        <div id="brwMini">${_brwMiniHTML()}</div></div>
+
+      <div class="ab-sec"><div class="ab-h">🙂 Selbsteinschätzung</div>
+        <div class="ab-t">Wie sicher fühlst du dich?</div>
+        <div class="sha-self">
+          <button class="sim-btn" onclick="_brwSelf(1)">😟 unsicher</button>
+          <button class="sim-btn" onclick="_brwSelf(2)">😐 geht so</button>
+          <button class="sim-btn" onclick="_brwSelf(3)">😃 sicher</button>
+          <span id="brwSelfOut" class="sha-fb"></span>
+        </div>
+        <input type="hidden" class="ab-field" data-abk="self" id="brwSelfVal">
+      </div>
+
+      <details class="sha-lehrer">
+        <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> 30 km/h: Reaktionsweg 9 m, Bremsweg 9 m, Anhalteweg 18 m. 50 km/h: 15 m + 25 m = 40 m. 100 km/h: 30 m + 100 m = 130 m. Der Bremsweg wächst viel stärker als der Reaktionsweg.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Anhalteweg = Reaktionsweg + Bremsweg. Reaktionsweg ∝ v (linear, gleichförmige Bewegung während der Reaktionszeit). Bremsweg ∝ v² (aus s = v²/(2a)) → doppelte Geschwindigkeit = vierfacher Bremsweg. Faustformeln mit vk = v/10: Reaktionsweg = vk·3, Bremsweg = vk².</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Doppeltes Tempo = doppelter Bremsweg.“ (tatsächlich vierfach). (2) „Sobald man bremst, steht das Auto sofort.“ (3) „Der Reaktionsweg ist unwichtig.“</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Bremsweg-Balken für 50 vs. 100 direkt vergleichen (25 → 100 m = 4×); Faustformeln je Tempo einsetzen; zwei Teile getrennt benennen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 30 → 9/9/18 · 50 → 15/25/40 · 100 → 30/100/130. 6.1 Reaktionsweg + Bremsweg. 6.2 er vervierfacht sich (25 → 100 m). 6.3 vom Quadrat der Geschwindigkeit. Merksatz: Reaktionsweg · Bremsweg · Quadrat · vierfachen. Transfer: viel kürzer, sodass man rechtzeitig anhalten kann. Minidiagnose: 1→Reaktionsweg + Bremsweg · 2→vierfacher Bremsweg · 3→mit dem Quadrat von v.</div>
+      </details>
+
+      <div class="sim-btn-row" style="margin-top:8px">
+        <button class="sim-btn" onclick="_abClear('bremsweg')">🗑 Arbeitsblatt zurücksetzen</button>
+      </div>`;
+  return _abWrap('bremsweg', 'Anhalteweg – Reaktionsweg + Bremsweg (Bremsweg ∝ v²)', body);
+}
+
+const _BRW_MINI = [
+  { q: '1. Woraus besteht der Anhalteweg?',
+    opts: ['Reaktionsweg + Bremsweg', 'Nur dem Bremsweg', 'Nur dem Reaktionsweg'], correct: 0,
+    fb: ['Richtig! Beide Teile zusammen ergeben den Anhalteweg.',
+         'Der Reaktionsweg gehört auch dazu.',
+         'Der Bremsweg gehört auch dazu.'] },
+  { q: '2. Was passiert mit dem Bremsweg bei doppelter Geschwindigkeit?',
+    opts: ['Er wird viermal so lang', 'Er wird doppelt so lang', 'Er bleibt gleich'], correct: 0,
+    fb: ['Richtig! Bremsweg ∝ v² – doppeltes Tempo = vierfacher Bremsweg.',
+         'Nur doppelt wäre er, wenn er linear von v abhinge – tut er aber nicht.',
+         'Nein, er hängt stark vom Tempo ab.'] },
+  { q: '3. Wovon hängt der Bremsweg besonders stark ab?',
+    opts: ['Vom Quadrat der Geschwindigkeit', 'Von der Farbe des Autos', 'Von der Uhrzeit'], correct: 0,
+    fb: ['Richtig! Der Bremsweg wächst mit v².',
+         'Die Farbe spielt keine Rolle.',
+         'Die Uhrzeit spielt keine Rolle.'] }
+];
+function _brwMiniHTML() {
+  return _BRW_MINI.map((m, qi) =>
+    `<div class="sha-q"><div class="sha-q-t">${m.q}</div>
+       <div class="sha-opts">${m.opts.map((o, oi) => `<button class="sim-btn" onclick="_brwAns(${qi},${oi})">${o}</button>`).join('')}</div>
+       <div class="sha-fb" id="brwFb${qi}"></div></div>`).join('');
+}
+function _brwAns(qi, oi) {
+  const m = _BRW_MINI[qi], el = document.getElementById('brwFb' + qi); if (!el) return;
+  const ok = oi === m.correct;
+  el.textContent = (ok ? '✓ ' : '✗ ') + m.fb[oi]; el.className = 'sha-fb ' + (ok ? 'ok' : 'no');
+}
+function _brwSelf(n) {
+  const out = document.getElementById('brwSelfOut'), val = document.getElementById('brwSelfVal');
+  if (val) { val.value = String(n); _abSave('bremsweg'); }
   if (out) out.textContent = n === 3 ? '✓ Super!' : (n === 2 ? 'Übe noch ein bisschen.' : 'Frag deine Lehrkraft – das schaffst du!');
 }
