@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie funktioniert eine Geschwindigkeitsmessung im Straßenverkehr? Blitzer sorgen dafür, dass sich alle ans Tempolimit halten. Aber wie messen sie überhaupt, wie schnell ein Auto fährt?" },
+  { "id": "blitzer", "text": "Der klassische Blitzer arbeitet mit Radar oder Laser. Er sendet Wellen aus, die vom fahrenden Auto zurückgeworfen werden. Aus der Veränderung der zurückkommenden Wellen berechnet das Gerät die Geschwindigkeit – und vergleicht sie mit dem erlaubten Tempo." },
+  { "id": "abschnitt", "text": "Eine zweite Methode ist die Abschnittskontrolle. Hier wird an zwei Punkten die Zeit gemessen, die ein Auto für eine bekannte Strecke braucht. Aus Strecke geteilt durch Zeit ergibt sich die Durchschnittsgeschwindigkeit über den ganzen Abschnitt." },
+  { "id": "formel", "text": "Bei der Abschnittskontrolle steckt also genau unsere Formel dahinter: v gleich s durch t. Die Strecke zwischen den Messpunkten ist bekannt, die Zeit wird gemessen – und schon kennt das System dein Durchschnittstempo." },
+  { "id": "merksatz", "text": "Merke: Ein Radar- oder Laserblitzer misst die Geschwindigkeit an einem Punkt. Die Abschnittskontrolle misst die Zeit über eine bekannte Strecke und berechnet v gleich s durch t." },
+  { "id": "transfer", "text": "Deshalb bringt es bei einer Abschnittskontrolle nichts, nur kurz zu bremsen: Gemessen wird der Durchschnitt über die ganze Strecke. Wer sich ans Tempolimit hält, hat nichts zu befürchten." },
+  { "id": "outro", "text": "Radar am Punkt, Abschnittskontrolle über die Strecke – Physik im Straßenverkehr. Physik verstehen, Schritt für Schritt." }
+]

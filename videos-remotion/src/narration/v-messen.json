@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie misst man eine Geschwindigkeit? Um zu berechnen, wie schnell etwas ist, brauchst du zwei Messwerte. Und für beide gibt es das passende Werkzeug." },
+  { "id": "strecke", "text": "Erstens die Strecke. Du legst eine feste Messstrecke fest und misst sie mit einem Maßband ab – zum Beispiel genau 10 Meter. Diese Strecke bleibt für die Messung immer gleich." },
+  { "id": "zeit", "text": "Zweitens die Zeit. Du stoppst mit einer Stoppuhr, wie lange der Wagen für die Messstrecke braucht. Noch genauer geht es mit einer Lichtschranke, die beim Durchfahren automatisch startet und stoppt." },
+  { "id": "rechnen", "text": "Aus beiden Werten berechnest du die Geschwindigkeit. Fährt der Wagen die 10 Meter in 2 Sekunden, ist die Geschwindigkeit 10 Meter durch 2 Sekunden, also 5 Meter pro Sekunde. Strecke und Zeit gemessen – Geschwindigkeit ausgerechnet." },
+  { "id": "merksatz", "text": "Merke: Zum Messen der Geschwindigkeit brauchst du die Strecke, gemessen mit dem Maßband, und die Zeit, gemessen mit Stoppuhr oder Lichtschranke." },
+  { "id": "transfer", "text": "Genau so misst man beim 100-Meter-Lauf: Die Strecke steht fest, die Uhr stoppt die Zeit. Und die Lichtschranke im Sport sorgt für Messungen auf die Hundertstelsekunde genau." },
+  { "id": "outro", "text": "Strecke mit dem Maßband, Zeit mit der Uhr – so misst man Geschwindigkeit. Physik verstehen, Schritt für Schritt." }
+]

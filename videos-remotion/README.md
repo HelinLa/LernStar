@@ -179,3 +179,9 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | ParallelWiderstand | Kl.8 Widerstand: Parallelschaltung | `src/videos/ParallelWiderstand.tsx` |
 | Potentiometer | Kl.8 Widerstand: Potentiometer | `src/videos/Potentiometer.tsx` |
 | RUI | Kl.8 Widerstand: R=U/I Formel-Dreieck | `src/videos/RUI.tsx` |
+| ElektrischeLeistung | Kl.8 Leistung: P = U·I (Watt) | `src/videos/ElektrischeLeistung.tsx` |
+| ElektrischeEnergie | Kl.8 Leistung: E = P·t (kWh) | `src/videos/ElektrischeEnergie.tsx` |
+| Stromkosten | Kl.8 Leistung: Stromkosten (kWh × Preis) | `src/videos/Stromkosten.tsx` |
+| Energiesparen | Kl.8 Leistung: Energie sparen | `src/videos/Energiesparen.tsx` |
+| Stromgefahren | Kl.8 Leistung: Gefahren & Sicherung | `src/videos/Stromgefahren.tsx` |
+| PUIEPt | Kl.8 Leistung: P=U·I & E=P·t zusammengefasst | `src/videos/PUIEPt.tsx` |

@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie liest man ein Geschwindigkeit-Zeit-Diagramm? Es sieht dem Weg-Zeit-Diagramm ähnlich – aber es sagt etwas ganz anderes. Genau hinschauen lohnt sich, denn hier passieren die häufigsten Fehler." },
+  { "id": "achsen", "text": "Im Geschwindigkeit-Zeit-Diagramm, kurz v-t-Diagramm, steht wieder die Zeit waagerecht. Aber senkrecht steht diesmal nicht der Weg, sondern die Geschwindigkeit v. Jeder Punkt sagt: Zu dieser Zeit war der Körper so schnell." },
+  { "id": "linien", "text": "Eine waagerechte Linie bedeutet hier konstante Geschwindigkeit – der Körper bewegt sich gleichförmig weiter. Eine ansteigende Linie bedeutet: die Geschwindigkeit wächst, der Körper beschleunigt. Eine fallende Linie bedeutet: die Geschwindigkeit sinkt, der Körper bremst." },
+  { "id": "achtung", "text": "Achtung, der wichtigste Unterschied: Eine waagerechte Linie im v-t-Diagramm bedeutet Fahren mit konstantem Tempo – nicht Stillstand. Nur wenn die Linie auf der Nulllinie liegt, steht der Körper. Verwechsle das nie mit dem Weg-Zeit-Diagramm." },
+  { "id": "merksatz", "text": "Merke: Im v-t-Diagramm steht die Geschwindigkeit senkrecht. Waagerecht heißt konstantes Tempo, ansteigend heißt beschleunigen, fallend heißt bremsen." },
+  { "id": "transfer", "text": "So erkennst du im Diagramm jede Fahrsituation: eine schräg ansteigende Linie an der Ampel beim Anfahren, eine waagerechte auf der Landstraße, eine fallende beim Bremsen vor der Kurve." },
+  { "id": "outro", "text": "Waagerecht ist konstant, steigend ist schneller, fallend ist langsamer. Physik verstehen, Schritt für Schritt." }
+]

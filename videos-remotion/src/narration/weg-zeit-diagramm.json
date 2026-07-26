@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie stellt man eine Bewegung im Weg-Zeit-Diagramm dar? Ein Diagramm zeigt auf einen Blick, was ein Körper gemacht hat – wann er schnell war, wann langsam, wann er stand. Lernen wir es zu lesen." },
+  { "id": "achsen", "text": "Im Weg-Zeit-Diagramm, kurz s-t-Diagramm, steht die Zeit t waagerecht auf der x-Achse und der zurückgelegte Weg s senkrecht auf der y-Achse. Jeder Punkt sagt: Zu dieser Zeit war der Körper an dieser Stelle." },
+  { "id": "steil", "text": "Und jetzt die wichtigste Regel: Eine steile Linie bedeutet schnelle Fahrt, denn in kurzer Zeit wird viel Weg zurückgelegt. Eine flache Linie bedeutet langsame Fahrt. Die Steigung der Linie ist die Geschwindigkeit." },
+  { "id": "waagerecht", "text": "Eine besondere Form ist die waagerechte Linie. Sie bedeutet: Der Weg ändert sich nicht mehr – der Körper steht still. Die Zeit läuft weiter, aber der Ort bleibt gleich." },
+  { "id": "merksatz", "text": "Merke: Im Weg-Zeit-Diagramm steht die Zeit waagerecht, der Weg senkrecht. Steile Linie heißt schnell, flache Linie langsam, waagerechte Linie Stillstand." },
+  { "id": "transfer", "text": "Mit so einem Diagramm kannst du eine ganze Autofahrt beschreiben: erst steil beim Anfahren, dann gleichmäßig auf der Autobahn, dann waagerecht an der roten Ampel." },
+  { "id": "outro", "text": "Steil ist schnell, flach ist langsam, waagerecht ist Stillstand. Physik verstehen, Schritt für Schritt." }
+]

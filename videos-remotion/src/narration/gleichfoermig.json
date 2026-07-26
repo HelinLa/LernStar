@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Was ist eine gleichförmige Bewegung? Es ist die einfachste Bewegung, die es gibt – und trotzdem steckt eine wichtige Idee dahinter. Schauen wir sie uns an." },
+  { "id": "konstant", "text": "Bei einer gleichförmigen Bewegung bleibt die Geschwindigkeit die ganze Zeit gleich. Der Körper wird weder schneller noch langsamer. Man sagt: Die Geschwindigkeit ist konstant." },
+  { "id": "strecken", "text": "Das erkennst du an den Streckenmarken. In gleichen Zeitabschnitten legt der Körper immer gleich große Strecken zurück. Jede Sekunde dieselbe Strecke – die Abstände sind alle gleich groß." },
+  { "id": "formel", "text": "Weil die Geschwindigkeit konstant ist, gilt einfach: Strecke gleich Geschwindigkeit mal Zeit, also s gleich v mal t. Nach doppelter Zeit die doppelte Strecke, nach dreifacher Zeit die dreifache Strecke." },
+  { "id": "merksatz", "text": "Merke: Bei der gleichförmigen Bewegung ist die Geschwindigkeit konstant. In gleichen Zeiten werden gleiche Strecken zurückgelegt. Es gilt s gleich v mal t." },
+  { "id": "transfer", "text": "Ein Auto mit eingeschaltetem Tempomat auf gerader Autobahn fährt gleichförmig. Und Licht im Weltall bewegt sich immer gleichförmig – mit konstanter Geschwindigkeit." },
+  { "id": "outro", "text": "Gleiche Zeiten, gleiche Strecken – das ist die gleichförmige Bewegung. Physik verstehen, Schritt für Schritt." }
+]

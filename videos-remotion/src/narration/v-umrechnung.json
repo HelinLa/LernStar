@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie rechnet man zwischen Meter pro Sekunde und Kilometer pro Stunde um? Beide Einheiten beschreiben dieselbe Geschwindigkeit – nur in anderen Zahlen. Mit einem einfachen Faktor kommst du von einer zur anderen." },
+  { "id": "faktor", "text": "Der Schlüssel ist die Zahl 3,6. Es gilt: Ein Meter pro Sekunde sind genau 3,6 Kilometer pro Stunde. Diese eine Beziehung musst du dir merken, alles andere folgt daraus." },
+  { "id": "mal", "text": "Von Meter pro Sekunde nach Kilometer pro Stunde rechnest du mal 3,6. Zum Beispiel: 10 Meter pro Sekunde mal 3,6 ergibt 36 Kilometer pro Stunde. Die Zahl wird also größer." },
+  { "id": "geteilt", "text": "Umgekehrt, von Kilometer pro Stunde nach Meter pro Sekunde, rechnest du durch 3,6. Zum Beispiel: 72 Kilometer pro Stunde geteilt durch 3,6 ergibt 20 Meter pro Sekunde. Die Zahl wird kleiner." },
+  { "id": "merksatz", "text": "Merke: Ein Meter pro Sekunde sind 3,6 Kilometer pro Stunde. Von Meter pro Sekunde nach Kilometer pro Stunde mal 3,6, umgekehrt durch 3,6." },
+  { "id": "transfer", "text": "So kannst du die Tempoangaben umrechnen: 50 Kilometer pro Stunde in der Stadt sind knapp 14 Meter pro Sekunde. Und ein Ball mit 30 Meter pro Sekunde fliegt mit über 100 Kilometer pro Stunde." },
+  { "id": "outro", "text": "Mal 3,6 hin, durch 3,6 zurück – so einfach ist die Umrechnung. Physik verstehen, Schritt für Schritt." }
+]

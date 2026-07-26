@@ -91,6 +91,12 @@ import { ReiheWiderstand, REIHE_WIDERSTAND_DURATION } from './videos/ReiheWiders
 import { ParallelWiderstand, PARALLEL_WIDERSTAND_DURATION } from './videos/ParallelWiderstand';
 import { Potentiometer, POTENTIOMETER_DURATION } from './videos/Potentiometer';
 import { RUI, R_U_I_DURATION } from './videos/RUI';
+import { ElektrischeLeistung, ELEKTRISCHE_LEISTUNG_DURATION } from './videos/ElektrischeLeistung';
+import { ElektrischeEnergie, ELEKTRISCHE_ENERGIE_DURATION } from './videos/ElektrischeEnergie';
+import { Stromkosten, STROMKOSTEN_DURATION } from './videos/Stromkosten';
+import { Energiesparen, ENERGIESPAREN_DURATION } from './videos/Energiesparen';
+import { Stromgefahren, STROMGEFAHREN_DURATION } from './videos/Stromgefahren';
+import { PUIEPt, P_U_I_E_P_T_DURATION } from './videos/PUIEPt';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -307,6 +313,12 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="ParallelWiderstand" component={ParallelWiderstand} durationInFrames={PARALLEL_WIDERSTAND_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Potentiometer" component={Potentiometer} durationInFrames={POTENTIOMETER_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="RUI" component={RUI} durationInFrames={R_U_I_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="ElektrischeLeistung" component={ElektrischeLeistung} durationInFrames={ELEKTRISCHE_LEISTUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="ElektrischeEnergie" component={ElektrischeEnergie} durationInFrames={ELEKTRISCHE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Stromkosten" component={Stromkosten} durationInFrames={STROMKOSTEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Energiesparen" component={Energiesparen} durationInFrames={ENERGIESPAREN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Stromgefahren" component={Stromgefahren} durationInFrames={STROMGEFAHREN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="PUIEPt" component={PUIEPt} durationInFrames={P_U_I_E_P_T_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

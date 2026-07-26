@@ -1,0 +1,8 @@
+[
+  { "id": "intro", "text": "Was bedeutet Geschwindigkeit? Jeder benutzt das Wort – das Auto ist schnell, die Schnecke langsam. Aber was heißt schnell in der Physik ganz genau?" },
+  { "id": "vergleich", "text": "Vergleiche zwei Fahrzeuge, die zur gleichen Zeit losfahren. Nach einer Sekunde ist das schnellere schon viel weiter vorne. Schneller heißt also: in der gleichen Zeit eine größere Strecke zurücklegen." },
+  { "id": "zwei", "text": "Zwei Dinge bestimmen die Geschwindigkeit: die zurückgelegte Strecke und die dafür gebrauchte Zeit. Viel Strecke in wenig Zeit bedeutet hohe Geschwindigkeit. Wenig Strecke in viel Zeit bedeutet niedrige Geschwindigkeit." },
+  { "id": "merksatz", "text": "Merke: Die Geschwindigkeit sagt, wie schnell sich etwas bewegt. Ein Körper ist schneller, wenn er in der gleichen Zeit eine größere Strecke zurücklegt." },
+  { "id": "transfer", "text": "Deshalb misst du beim Wettrennen, wer für dieselbe Strecke die kürzeste Zeit braucht – der ist am schnellsten. Und ein Sprinter ist über 100 Meter viel schneller als ein Spaziergänger." },
+  { "id": "outro", "text": "Schnell heißt: viel Strecke in wenig Zeit. Physik verstehen, Schritt für Schritt." }
+]
