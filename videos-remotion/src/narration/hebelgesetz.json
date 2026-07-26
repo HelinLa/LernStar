@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Das Hebelgesetz. Mit einer langen Stange hebst du mühelos einen schweren Felsen, den du mit bloßen Händen niemals bewegen könntest. Wie kann eine kleine Kraft so viel bewirken? Das erklärt das Hebelgesetz." },
+  { "id": "gesetz", "text": "Ein Hebel dreht sich um einen festen Punkt, den Drehpunkt. Auf der einen Seite wirkt deine Kraft im Abstand Kraftarm, auf der anderen die Last im Abstand Lastarm. Das Hebelgesetz sagt: Kraft mal Kraftarm gleich Last mal Lastarm. In Formelzeichen: F eins mal l eins gleich F zwei mal l zwei." },
+  { "id": "hebelarm", "text": "Der Trick ist der Abstand zum Drehpunkt. Machst du deinen Kraftarm lang, brauchst du nur wenig Kraft, um eine große Last zu heben. Ein langer Hebelarm gleicht eine kleine Kraft aus – so hebst du mit einer Brechstange tonnenschwere Steine." },
+  { "id": "arten", "text": "Es gibt zwei Arten von Hebeln. Beim zweiseitigen Hebel liegen Kraft und Last auf gegenüberliegenden Seiten des Drehpunkts – wie bei der Wippe. Beim einseitigen Hebel liegen beide auf derselben Seite – wie beim Nussknacker." },
+  { "id": "gleichgewicht", "text": "Ein schönes Beispiel ist die Wippe. Ein schweres Kind nah am Drehpunkt kann mit einem leichten Kind weit außen im Gleichgewicht sein. Kleine Kraft mal großer Arm gleicht große Kraft mal kleiner Arm aus." },
+  { "id": "merksatz", "text": "Merke: Am Hebel gilt Kraft mal Kraftarm gleich Last mal Lastarm, F eins mal l eins gleich F zwei mal l zwei. Ein langer Kraftarm spart Kraft." },
+  { "id": "transfer", "text": "Das Hebelgesetz steckt in unzähligen Werkzeugen: in der Schere, der Zange, dem Flaschenöffner und der Schubkarre. Überall verwandelt ein Hebel eine kleine Kraft in eine große Wirkung." },
+  { "id": "outro", "text": "Kraft mal Arm gleich Last mal Arm – das ist der Hebel. Physik verstehen, Schritt für Schritt." }
+]

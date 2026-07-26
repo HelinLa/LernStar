@@ -152,3 +152,13 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Prisma | Kl.7 Optik: Prisma & Spektrum | `src/videos/Prisma.tsx` |
 | Regenbogen | Kl.7 Optik: Regenbogen | `src/videos/Regenbogen.tsx` |
 | FarbmischungAdditiv | Kl.7 Optik: additive Farbmischung (RGB) | `src/videos/FarbmischungAdditiv.tsx` |
+| Himmelskoerper | Kl.7 Weltall: Selbstleuchter vs. beleuchtet | `src/videos/Himmelskoerper.tsx` |
+| Gravitation | Kl.7 Weltall: Gravitation | `src/videos/Gravitation.tsx` |
+| Teleskop | Kl.7 Weltall: Teleskop (vergrößern, sammeln) | `src/videos/Teleskop.tsx` |
+| Spezialteleskop | Kl.7 Weltall: unsichtbares Licht (IR/Radio/Röntgen) | `src/videos/Spezialteleskop.tsx` |
+| Entfernungen | Kl.7 Weltall: Lichtjahr | `src/videos/Entfernungen.tsx` |
+| WeltallAufbau | Kl.7 Weltall: Aufbau (Planet→Galaxie→Universum) | `src/videos/WeltallAufbau.tsx` |
+| SchwarzesLoch | Kl.7 Weltall: schwarzes Loch (Ereignishorizont) | `src/videos/SchwarzesLoch.tsx` |
+| Weltbild | Kl.7 Weltall: geo-/heliozentrisch | `src/videos/Weltbild.tsx` |
+| Urknall | Kl.7 Weltall: Urknall (Ausdehnung) | `src/videos/Urknall.tsx` |
+| (tag-nacht.mp4 aus Kl.6 wird in Kl.7 „Blick ins Weltall" wiederverwendet) | | |

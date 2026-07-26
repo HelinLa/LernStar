@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Beschleunigung. Ein Sportwagen wird an der Ampel blitzschnell schneller, ein schwerer Lastwagen nur langsam. Beide beschleunigen – aber unterschiedlich stark. Wie misst man das?" },
+  { "id": "formel", "text": "Beschleunigung ist die Geschwindigkeitsänderung geteilt durch die Zeit. In Formelzeichen: a gleich Delta v durch Delta t. Delta v ist, um wie viel sich die Geschwindigkeit ändert. Gemessen wird die Beschleunigung in Meter pro Sekunde zum Quadrat." },
+  { "id": "positiv", "text": "Wird ein Körper schneller, ist die Beschleunigung positiv. Ein Auto, das in 5 Sekunden von 0 auf 10 Meter pro Sekunde kommt, hat eine Beschleunigung von 2 Meter pro Sekunde zum Quadrat – es gewinnt jede Sekunde 2 Meter pro Sekunde dazu." },
+  { "id": "negativ", "text": "Wird ein Körper langsamer, ist die Beschleunigung negativ. Man spricht dann von Verzögerung oder Bremsen. Beim Bremsen nimmt die Geschwindigkeit ab, Delta v ist negativ – und damit auch a." },
+  { "id": "start", "text": "Startet ein Körper aus dem Stand, gelten einfache Formeln: Die Geschwindigkeit wächst mit v gleich a mal t, und die zurückgelegte Strecke mit s gleich ein halb mal a mal t zum Quadrat. Je länger beschleunigt wird, desto schneller und weiter." },
+  { "id": "merksatz", "text": "Merke: Beschleunigung ist Geschwindigkeitsänderung durch Zeit, a gleich Delta v durch Delta t. Einheit Meter pro Sekunde zum Quadrat. Positiv heißt schneller, negativ heißt bremsen." },
+  { "id": "transfer", "text": "Deshalb wirbt man bei Autos mit dem Wert von 0 auf 100 in wenigen Sekunden – das ist die Beschleunigung. Und im freien Fall beschleunigt die Schwerkraft jeden Körper gleich stark, mit etwa 10 Meter pro Sekunde zum Quadrat." },
+  { "id": "outro", "text": "Wie schnell sich das Tempo ändert – das ist die Beschleunigung. Physik verstehen, Schritt für Schritt." }
+]

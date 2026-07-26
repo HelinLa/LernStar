@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Kraft und das Gesetz von Newton. Eine Kraft kann Dinge verformen – oder ihre Bewegung ändern. Aber wie hängt die Kraft mit Masse und Beschleunigung zusammen? Das beschreibt Newtons berühmtes Gesetz." },
+  { "id": "formel", "text": "Das zweite Newtonsche Gesetz lautet: Kraft gleich Masse mal Beschleunigung. In Formelzeichen: F gleich m mal a. Je größer die Masse und je stärker sie beschleunigt wird, desto größer die nötige Kraft." },
+  { "id": "newton", "text": "Die Einheit der Kraft ist das Newton, abgekürzt großes N. Ein Newton ist die Kraft, die einen Körper von einem Kilogramm mit einem Meter pro Sekunde zum Quadrat beschleunigt. Kurz: ein Newton gleich ein Kilogramm mal Meter pro Sekunde zum Quadrat." },
+  { "id": "gewicht", "text": "Ein besonders wichtiger Fall ist die Gewichtskraft. Sie zieht jeden Körper zur Erde und berechnet sich als G gleich m mal g. Dabei ist g die Fallbeschleunigung, auf der Erde etwa 10 Meter pro Sekunde zum Quadrat. Ein Kilogramm wiegt also rund 10 Newton." },
+  { "id": "arten", "text": "Kräfte haben immer einen Betrag und eine Richtung – man nennt sie Vektoren und zeichnet sie als Pfeile. Und es gibt viele Arten: die Reibungskraft, die Federkraft und die Normalkraft, mit der eine Unterlage zurückdrückt." },
+  { "id": "merksatz", "text": "Merke: Kraft gleich Masse mal Beschleunigung, F gleich m mal a. Die Einheit ist das Newton. Die Gewichtskraft ist G gleich m mal g mit g etwa 10 Meter pro Sekunde zum Quadrat." },
+  { "id": "transfer", "text": "Deshalb braucht ein schwerer Einkaufswagen mehr Kraft, um in Schwung zu kommen, als ein leerer. Und dieselbe Formel erklärt, warum eine Rakete gewaltige Kräfte braucht, um ihre riesige Masse zu beschleunigen." },
+  { "id": "outro", "text": "Kraft gleich Masse mal Beschleunigung – Newtons Schlüsselgleichung. Physik verstehen, Schritt für Schritt." }
+]

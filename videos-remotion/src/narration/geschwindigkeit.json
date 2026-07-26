@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Geschwindigkeit. Wer ist schneller – der Radfahrer oder das Auto? Und wie misst man das überhaupt genau? Mit einer der wichtigsten Formeln der Physik." },
+  { "id": "formel", "text": "Die Geschwindigkeit berechnest du als Strecke geteilt durch Zeit. In Formelzeichen: v gleich s durch t. Legst du eine große Strecke in kurzer Zeit zurück, bist du schnell. Brauchst du für dieselbe Strecke lange, bist du langsam." },
+  { "id": "einheit", "text": "Gemessen wird die Geschwindigkeit in Meter pro Sekunde oder in Kilometer pro Stunde. Beide lassen sich umrechnen: Ein Meter pro Sekunde sind 3,6 Kilometer pro Stunde. Um von Meter pro Sekunde auf Kilometer pro Stunde zu kommen, mal 3,6." },
+  { "id": "beispiel", "text": "Ein Beispiel: Ein Auto fährt 100 Meter in 5 Sekunden. Dann ist v gleich 100 Meter durch 5 Sekunden – also 20 Meter pro Sekunde. Mal 3,6 ergibt das 72 Kilometer pro Stunde." },
+  { "id": "diagramm", "text": "Man kann eine Bewegung auch zeichnen: im Strecke-Zeit-Diagramm. Bei gleichbleibender Geschwindigkeit ist das eine gerade Linie. Und je steiler die Linie, desto schneller die Bewegung – die Steigung ist die Geschwindigkeit." },
+  { "id": "merksatz", "text": "Merke: Geschwindigkeit ist Strecke durch Zeit, v gleich s durch t. Einheit Meter pro Sekunde oder Kilometer pro Stunde. Ein Meter pro Sekunde sind 3,6 Kilometer pro Stunde." },
+  { "id": "transfer", "text": "Der Tacho im Auto zeigt genau diese Geschwindigkeit an. Und beim Sport misst die Stoppuhr die Zeit für eine feste Strecke – daraus berechnest du, wie schnell jemand gelaufen ist." },
+  { "id": "outro", "text": "Strecke durch Zeit – so einfach ist die Geschwindigkeit. Physik verstehen, Schritt für Schritt." }
+]

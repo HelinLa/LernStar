@@ -65,6 +65,19 @@ import { Totalreflexion, TOTALREFLEXION_DURATION } from './videos/Totalreflexion
 import { Prisma, PRISMA_DURATION } from './videos/Prisma';
 import { Regenbogen, REGENBOGEN_DURATION } from './videos/Regenbogen';
 import { FarbmischungAdditiv, FARBMISCHUNG_ADDITIV_DURATION } from './videos/FarbmischungAdditiv';
+import { Himmelskoerper, HIMMELSKOERPER_DURATION } from './videos/Himmelskoerper';
+import { Gravitation, GRAVITATION_DURATION } from './videos/Gravitation';
+import { Teleskop, TELESKOP_DURATION } from './videos/Teleskop';
+import { Spezialteleskop, SPEZIALTELESKOP_DURATION } from './videos/Spezialteleskop';
+import { Entfernungen, ENTFERNUNGEN_DURATION } from './videos/Entfernungen';
+import { WeltallAufbau, WELTALL_AUFBAU_DURATION } from './videos/WeltallAufbau';
+import { SchwarzesLoch, SCHWARZES_LOCH_DURATION } from './videos/SchwarzesLoch';
+import { Weltbild, WELTBILD_DURATION } from './videos/Weltbild';
+import { Urknall, URKNALL_DURATION } from './videos/Urknall';
+import { Geschwindigkeit, GESCHWINDIGKEIT_DURATION } from './videos/Geschwindigkeit';
+import { Beschleunigung, BESCHLEUNIGUNG_DURATION } from './videos/Beschleunigung';
+import { KraftNewton, KRAFT_NEWTON_DURATION } from './videos/KraftNewton';
+import { Hebelgesetz, HEBELGESETZ_DURATION } from './videos/Hebelgesetz';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -255,6 +268,19 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Prisma" component={Prisma} durationInFrames={PRISMA_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Regenbogen" component={Regenbogen} durationInFrames={REGENBOGEN_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="FarbmischungAdditiv" component={FarbmischungAdditiv} durationInFrames={FARBMISCHUNG_ADDITIV_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Himmelskoerper" component={Himmelskoerper} durationInFrames={HIMMELSKOERPER_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Gravitation" component={Gravitation} durationInFrames={GRAVITATION_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Teleskop" component={Teleskop} durationInFrames={TELESKOP_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Spezialteleskop" component={Spezialteleskop} durationInFrames={SPEZIALTELESKOP_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Entfernungen" component={Entfernungen} durationInFrames={ENTFERNUNGEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="WeltallAufbau" component={WeltallAufbau} durationInFrames={WELTALL_AUFBAU_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="SchwarzesLoch" component={SchwarzesLoch} durationInFrames={SCHWARZES_LOCH_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Weltbild" component={Weltbild} durationInFrames={WELTBILD_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Urknall" component={Urknall} durationInFrames={URKNALL_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Geschwindigkeit" component={Geschwindigkeit} durationInFrames={GESCHWINDIGKEIT_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Beschleunigung" component={Beschleunigung} durationInFrames={BESCHLEUNIGUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="KraftNewton" component={KraftNewton} durationInFrames={KRAFT_NEWTON_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Hebelgesetz" component={Hebelgesetz} durationInFrames={HEBELGESETZ_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );
