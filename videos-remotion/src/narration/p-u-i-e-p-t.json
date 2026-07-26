@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Leistung und Energie – die beiden Schlüsselformeln der Elektrizitätslehre. Fassen wir sie klar zusammen, damit du in jeder Aufgabe sicher rechnen kannst." },
+  { "id": "leistung", "text": "Die erste Formel ist die Leistung: P gleich U mal I. Spannung mal Stromstärke ergibt die Leistung. Ihre Einheit ist das Watt. Die Leistung sagt, wie viel Energie pro Sekunde umgesetzt wird." },
+  { "id": "energie", "text": "Die zweite Formel ist die Energie: E gleich P mal t. Leistung mal Zeit ergibt die verbrauchte Energie. Ihre Einheit ist die Wattstunde oder das Joule. Im Haushalt rechnet man in Kilowattstunden – eine Kilowattstunde sind tausend Wattstunden." },
+  { "id": "kette", "text": "Beide Formeln greifen ineinander. Aus U und I berechnest du die Leistung P. Aus P und der Zeit t die Energie E. Und aus der Energie in Kilowattstunden mal dem Preis die Stromkosten. Eine Kette von U und I bis zum Betrag auf deiner Rechnung." },
+  { "id": "merksatz", "text": "Merke: Leistung P gleich U mal I, Einheit Watt. Energie E gleich P mal t, Einheit Wattstunde. Und eine Kilowattstunde sind tausend Wattstunden." },
+  { "id": "transfer", "text": "Mit diesen zwei Formeln kannst du für jedes Gerät ausrechnen, wie viel Energie es verbraucht und was es kostet. Das ist das Handwerkszeug für den ganzen Bereich der elektrischen Leistung." },
+  { "id": "outro", "text": "P gleich U mal I, E gleich P mal t – von der Steckdose bis zur Rechnung. Physik verstehen, Schritt für Schritt." }
+]

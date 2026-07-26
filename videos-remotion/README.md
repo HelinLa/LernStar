@@ -172,3 +172,10 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Messen | Kl.8 Elektrik: Amperemeter/Voltmeter | `src/videos/Messen.tsx` |
 | Stromabhaengigkeit | Kl.8 Elektrik: wovon hängt I ab? | `src/videos/Stromabhaengigkeit.tsx` |
 | UIGroessen | Kl.8 Elektrik: U & I zusammengefasst | `src/videos/UIGroessen.tsx` |
+| Widerstand | Kl.8 Widerstand: R = U/I (Ohm) | `src/videos/Widerstand.tsx` |
+| OhmKennlinie | Kl.8 Widerstand: Ohmsches Gesetz (U-I-Kennlinie) | `src/videos/OhmKennlinie.tsx` |
+| Draht | Kl.8 Widerstand: Drahtwiderstand (Länge/Dicke/Material) | `src/videos/Draht.tsx` |
+| ReiheWiderstand | Kl.8 Widerstand: Reihenschaltung | `src/videos/ReiheWiderstand.tsx` |
+| ParallelWiderstand | Kl.8 Widerstand: Parallelschaltung | `src/videos/ParallelWiderstand.tsx` |
+| Potentiometer | Kl.8 Widerstand: Potentiometer | `src/videos/Potentiometer.tsx` |
+| RUI | Kl.8 Widerstand: R=U/I Formel-Dreieck | `src/videos/RUI.tsx` |

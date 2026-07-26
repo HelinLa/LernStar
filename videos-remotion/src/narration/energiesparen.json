@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Energie sparen im Haushalt. Strom kostet Geld und belastet die Umwelt. Zum Glück kannst du mit ein paar einfachen Tricks eine Menge Energie und damit Geld sparen. Schauen wir sie uns an." },
+  { "id": "geraete", "text": "Erster Trick: sparsame Geräte. Eine LED-Lampe braucht für dieselbe Helligkeit nur etwa ein Zehntel der Energie einer alten Glühlampe. Auch beim Kühlschrank und beim Fernseher lohnt sich der Blick auf die Energieeffizienzklasse." },
+  { "id": "standby", "text": "Zweiter Trick: ausschalten statt Standby. Viele Geräte verbrauchen auch im Bereitschaftsmodus ständig ein bisschen Strom – das rote Lämpchen am Fernseher zum Beispiel. Über das Jahr summiert sich das zu einer erstaunlich großen Menge." },
+  { "id": "laufzeit", "text": "Dritter Trick: kürzere Laufzeiten. Licht ausmachen, wenn du den Raum verlässt. Den Wasserkocher nur so voll machen, wie du wirklich brauchst. Weniger Zeit bei gleicher Leistung bedeutet weniger verbrauchte Energie." },
+  { "id": "merksatz", "text": "Merke: Energie sparst du durch sparsame Geräte wie LEDs, durch Ausschalten statt Standby und durch kürzere Laufzeiten. Weniger Leistung oder weniger Zeit heißt weniger Energie." },
+  { "id": "transfer", "text": "Rechne ruhig selbst nach: Tauschst du zehn Glühlampen gegen LEDs, sparst du im Jahr viele Kilowattstunden – und die Rechnung zeigt dir sofort, wie viele Euro das ausmacht." },
+  { "id": "outro", "text": "Sparsame Geräte, kein Standby, kurze Laufzeiten – so sparst du Energie. Physik verstehen, Schritt für Schritt." }
+]

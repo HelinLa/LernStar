@@ -84,6 +84,13 @@ import { Spannung, SPANNUNG_DURATION } from './videos/Spannung';
 import { Messen, MESSEN_DURATION } from './videos/Messen';
 import { Stromabhaengigkeit, STROMABHAENGIGKEIT_DURATION } from './videos/Stromabhaengigkeit';
 import { UIGroessen, U_I_GROESSEN_DURATION } from './videos/UIGroessen';
+import { Widerstand, WIDERSTAND_DURATION } from './videos/Widerstand';
+import { OhmKennlinie, OHM_KENNLINIE_DURATION } from './videos/OhmKennlinie';
+import { Draht, DRAHT_DURATION } from './videos/Draht';
+import { ReiheWiderstand, REIHE_WIDERSTAND_DURATION } from './videos/ReiheWiderstand';
+import { ParallelWiderstand, PARALLEL_WIDERSTAND_DURATION } from './videos/ParallelWiderstand';
+import { Potentiometer, POTENTIOMETER_DURATION } from './videos/Potentiometer';
+import { RUI, R_U_I_DURATION } from './videos/RUI';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -293,6 +300,13 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Messen" component={Messen} durationInFrames={MESSEN_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Stromabhaengigkeit" component={Stromabhaengigkeit} durationInFrames={STROMABHAENGIGKEIT_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="UIGroessen" component={UIGroessen} durationInFrames={U_I_GROESSEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Widerstand" component={Widerstand} durationInFrames={WIDERSTAND_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="OhmKennlinie" component={OhmKennlinie} durationInFrames={OHM_KENNLINIE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Draht" component={Draht} durationInFrames={DRAHT_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="ReiheWiderstand" component={ReiheWiderstand} durationInFrames={REIHE_WIDERSTAND_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="ParallelWiderstand" component={ParallelWiderstand} durationInFrames={PARALLEL_WIDERSTAND_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Potentiometer" component={Potentiometer} durationInFrames={POTENTIOMETER_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="RUI" component={RUI} durationInFrames={R_U_I_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

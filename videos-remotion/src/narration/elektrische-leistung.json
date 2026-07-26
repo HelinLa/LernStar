@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Elektrische Leistung. Auf jedem Gerät steht eine Watt-Zahl – 5 Watt bei der LED, 2000 Watt beim Wasserkocher. Was genau bedeutet diese Zahl? Sie sagt, wie viel Energie das Gerät pro Sekunde umsetzt." },
+  { "id": "formel", "text": "Berechnet wird die Leistung aus Spannung und Stromstärke: Die Leistung P ist Spannung U mal Stromstärke I. In Formelzeichen: P gleich U mal I. Ihre Einheit ist das Watt, abgekürzt großes W." },
+  { "id": "steigt", "text": "Beide Größen steigern die Leistung. Erhöhst du die Spannung, steigt die Leistung. Erhöhst du die Stromstärke, steigt sie ebenfalls. Mehr Spannung mal mehr Strom bedeutet viel mehr Leistung – und zum Beispiel eine deutlich hellere Lampe." },
+  { "id": "beispiel", "text": "Ein Beispiel: An einem Gerät liegen 230 Volt an, und es fließen 2 Ampere. Dann ist die Leistung P gleich 230 Volt mal 2 Ampere, also 460 Watt. Genau so viel Energie setzt das Gerät jede Sekunde um." },
+  { "id": "merksatz", "text": "Merke: Die elektrische Leistung P gibt an, wie viel Energie pro Sekunde umgesetzt wird. Sie berechnet sich als P gleich U mal I. Die Einheit ist das Watt." },
+  { "id": "transfer", "text": "Deshalb hat ein Wasserkocher eine hohe Wattzahl – er soll ja schnell viel Energie ins Wasser bringen. Eine LED-Lampe hat eine niedrige Wattzahl, weil sie mit wenig Energie viel Licht erzeugt." },
+  { "id": "outro", "text": "Leistung gleich Spannung mal Strom – Energie pro Sekunde, gemessen in Watt. Physik verstehen, Schritt für Schritt." }
+]

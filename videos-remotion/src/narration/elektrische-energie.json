@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Elektrische Energie. Die Leistung sagt, wie viel Energie pro Sekunde fließt. Aber wie viel Energie verbraucht ein Gerät insgesamt? Das hängt zusätzlich davon ab, wie lange es läuft." },
+  { "id": "formel", "text": "Die verbrauchte Energie berechnet sich als Leistung mal Zeit: Energie E gleich Leistung P mal Zeit t. Ein Gerät mit hoher Leistung, das lange läuft, verbraucht am meisten. Kurz und sparsam heißt wenig Energie." },
+  { "id": "einheit", "text": "Für kleine Mengen nimmt man die Wattstunde. Praktischer im Haushalt ist die Kilowattstunde, abgekürzt kWh. Eine Kilowattstunde sind tausend Wattstunden – die Energie, die ein 1000-Watt-Gerät in einer Stunde verbraucht." },
+  { "id": "beispiel", "text": "Ein Beispiel: Ein Wasserkocher mit 2000 Watt, also 2 Kilowatt, läuft eine halbe Stunde am Tag. Dann verbraucht er 2 Kilowatt mal 0,5 Stunden, also 1 Kilowattstunde. So rechnest du den Verbrauch jedes Geräts aus." },
+  { "id": "merksatz", "text": "Merke: Die verbrauchte Energie ist E gleich P mal t – Leistung mal Zeit. Einheit ist die Wattstunde oder Kilowattstunde. Eine Kilowattstunde sind tausend Wattstunden." },
+  { "id": "transfer", "text": "Deshalb verbraucht ein Gerät mit kleiner Leistung, das aber ständig läuft – wie ein Kühlschrank – am Ende oft mehr als ein starkes Gerät, das nur kurz an ist." },
+  { "id": "outro", "text": "Energie gleich Leistung mal Zeit – wie viel und wie lange. Physik verstehen, Schritt für Schritt." }
+]

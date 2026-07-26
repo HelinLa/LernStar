@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Gefahren des elektrischen Stroms und wie man sich schützt. Strom ist unglaublich nützlich – aber bei der hohen Spannung aus der Steckdose auch lebensgefährlich. Deshalb ist Sicherheit hier besonders wichtig." },
+  { "id": "gefahr", "text": "Die 230 Volt aus der Steckdose können durch deinen Körper einen Strom treiben, der Muskeln lähmt und das Herz aus dem Takt bringt. Deshalb gilt: niemals mit Steckdosen, blanken Drähten oder defekten Geräten experimentieren – und Wasser und Strom niemals zusammenbringen." },
+  { "id": "ueberlast", "text": "Eine weitere Gefahr ist die Überlastung. Schließt du zu viele Geräte an eine Steckdose an, addieren sich ihre Ströme. Die Leitung wird heiß – und im schlimmsten Fall kann ein Brand entstehen." },
+  { "id": "sicherung", "text": "Genau davor schützt die Sicherung. Wird der Strom zu groß, unterbricht sie sofort den Stromkreis, bevor die Leitung zu heiß wird. Auch der FI-Schutzschalter rettet Leben: Er schaltet in Sekundenbruchteilen ab, wenn Strom einen falschen Weg nimmt – zum Beispiel durch einen Menschen." },
+  { "id": "merksatz", "text": "Merke: Hohe Spannung ist lebensgefährlich. Zu viele Geräte überlasten die Leitung. Die Sicherung unterbricht bei zu großem Strom den Kreis und schützt vor Brand und Stromschlag." },
+  { "id": "transfer", "text": "Deshalb gehören Reparaturen an der Hausinstallation immer in die Hände einer Elektrofachkraft. Experimente machst du nur mit ungefährlicher Batterie-Kleinspannung – niemals an der Steckdose." },
+  { "id": "outro", "text": "Hohe Spannung ist gefährlich – Sicherungen und Vorsicht schützen dich. Physik verstehen, Schritt für Schritt." }
+]

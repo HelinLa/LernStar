@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Was kostet elektrische Energie? Jeden Monat kommt die Stromrechnung. Aber wie wird eigentlich berechnet, wie viel du bezahlst? Der Schlüssel ist die Kilowattstunde." },
+  { "id": "zaehler", "text": "In jedem Haushalt sitzt ein Stromzähler. Er misst ununterbrochen, wie viel elektrische Energie verbraucht wird – und zwar in Kilowattstunden. Je mehr Geräte laufen und je länger, desto weiter zählt er." },
+  { "id": "kosten", "text": "Die Kosten berechnest du ganz einfach: Kosten gleich verbrauchte Energie in Kilowattstunden mal Preis pro Kilowattstunde. Kostet eine Kilowattstunde zum Beispiel 40 Cent, dann kosten 10 Kilowattstunden 4 Euro." },
+  { "id": "vergleich", "text": "So kannst du Geräte vergleichen. Ein Gerät mit hoher Leistung, das lange läuft, verbraucht viele Kilowattstunden und kostet viel. Ein sparsames Gerät mit kurzer Laufzeit kostet fast nichts." },
+  { "id": "merksatz", "text": "Merke: Der Stromzähler misst die verbrauchte Energie in Kilowattstunden. Die Kosten sind Energie in Kilowattstunden mal Preis pro Kilowattstunde." },
+  { "id": "transfer", "text": "Deshalb lohnt es sich, bei großen Verbrauchern genau hinzuschauen: Heizung, Wäschetrockner und alte Kühlschränke treiben die Rechnung nach oben, weil sie viele Kilowattstunden verbrauchen." },
+  { "id": "outro", "text": "Kilowattstunden mal Preis – so entsteht die Stromrechnung. Physik verstehen, Schritt für Schritt." }
+]
