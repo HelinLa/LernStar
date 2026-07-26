@@ -130,3 +130,8 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Schallausbreitung | Kl.6 Schall: Ausbreitung (Teilchen, Vakuum) | `src/videos/Schallausbreitung.tsx` |
 | Ohr | Kl.6 Schall: Wie funktioniert das Ohr? | `src/videos/Ohr.tsx` |
 | Laermschutz | Kl.6 Schall: Lärmschutz (dB, Abstand, Gehörschutz) | `src/videos/Laermschutz.tsx` |
+| TagNacht | Kl.6 Astronomie: Tag & Nacht (Erddrehung) | `src/videos/TagNacht.tsx` |
+| Jahreszeiten | Kl.6 Astronomie: Jahreszeiten (geneigte Achse) | `src/videos/Jahreszeiten.tsx` |
+| Mondphasen | Kl.6 Astronomie: Mondphasen | `src/videos/Mondphasen.tsx` |
+| Sonnenfinsternis | Kl.6 Astronomie: Sonnenfinsternis | `src/videos/Sonnenfinsternis.tsx` |
+| Mondfinsternis | Kl.6 Astronomie: Mondfinsternis (Blutmond) | `src/videos/Mondfinsternis.tsx` |

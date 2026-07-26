@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Reflexion und ebene Spiegel. Wenn du in den Spiegel schaust, siehst du dich selbst. Aber was macht das Licht dabei genau – und warum ist dein Spiegelbild seitenverkehrt? Schauen wir es uns an." },
+  { "id": "gesetz", "text": "Trifft ein Lichtstrahl auf einen Spiegel, wird er zurückgeworfen – das nennt man Reflexion. Dabei gilt eine klare Regel: der Einfallswinkel ist genau gleich dem Reflexionswinkel. Beide Winkel misst man zur Normalen, einer gedachten Linie senkrecht zum Spiegel." },
+  { "id": "messen", "text": "Egal, wie flach oder steil der Strahl auftrifft: Kommt er in einem Winkel von 30 Grad herein, verlässt er den Spiegel auch mit 30 Grad. 50 Grad rein, 50 Grad raus. Einfallswinkel gleich Reflexionswinkel – immer." },
+  { "id": "bild", "text": "Beim ebenen Spiegel entsteht daraus dein Spiegelbild. Es steht aufrecht, ist genauso groß wie du und liegt scheinbar genau so weit hinter dem Spiegel, wie du davor stehst. Man nennt es ein virtuelles Bild – dort ist in Wirklichkeit gar nichts." },
+  { "id": "seitenverkehrt", "text": "Und es ist seitenverkehrt: Hebst du die rechte Hand, hebt dein Spiegelbild scheinbar die linke. Deshalb steht auf Rettungswagen das Wort Notarzt spiegelverkehrt geschrieben – damit du es im Rückspiegel richtig herum liest." },
+  { "id": "merksatz", "text": "Merke: Bei der Reflexion ist der Einfallswinkel gleich dem Reflexionswinkel, gemessen zur Normalen. Der ebene Spiegel erzeugt ein aufrechtes, seitenverkehrtes, virtuelles Bild – gleich weit hinter dem Spiegel." },
+  { "id": "transfer", "text": "Dieses Reflexionsgesetz steckt überall: im Badezimmerspiegel, im Rückspiegel des Autos und im Periskop des U-Boots, mit dem man über die Wasseroberfläche schauen kann." },
+  { "id": "outro", "text": "Einfallswinkel gleich Reflexionswinkel – so entsteht dein Spiegelbild. Physik verstehen, Schritt für Schritt." }
+]

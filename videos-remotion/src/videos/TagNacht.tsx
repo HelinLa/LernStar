@@ -26,8 +26,8 @@ const EarthDayNight: React.FC<{ x: number; y: number; r: number; spin: number; m
   <div style={{ position: 'absolute', left: x - r, top: y - r, width: r * 2, height: r * 2 }}>
     {/* Basis Erde */}
     <div style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: 'radial-gradient(circle at 30% 30%,#4ade80,#1d4ed8)', overflow: 'hidden' }}>
-      {/* Nachtseite: linke Hälfte dunkel (Sonne steht rechts) */}
-      <div style={{ position: 'absolute', left: 0, top: 0, width: '50%', height: '100%', background: 'rgba(2,6,23,0.72)' }} />
+      {/* Nachtseite: rechte Hälfte dunkel (Sonne steht links) */}
+      <div style={{ position: 'absolute', right: 0, top: 0, width: '50%', height: '100%', background: 'rgba(2,6,23,0.72)' }} />
     </div>
     {/* Standort-Marker rotiert mit */}
     {marker !== undefined ? (
@@ -82,8 +82,8 @@ const TagNachtScene: React.FC<SceneProps> = () => {
       <SceneTitle kicker="Zwei Seiten" title="Tag- und Nachtseite" />
       <Sun x={300} y={540} r={80} />
       <EarthDayNight x={1150} y={540} r={220} spin={0} />
-      <div style={{ position: 'absolute', left: 1230, top: 500, fontSize: 34, fontWeight: 900, color: COLORS.amber, opacity: lab }}>☀️ Tag</div>
-      <div style={{ position: 'absolute', left: 980, top: 500, fontSize: 34, fontWeight: 900, color: COLORS.sky, opacity: lab }}>🌙 Nacht</div>
+      <div style={{ position: 'absolute', left: 970, top: 500, fontSize: 34, fontWeight: 900, color: COLORS.amber, opacity: lab }}>☀️ Tag</div>
+      <div style={{ position: 'absolute', left: 1240, top: 500, fontSize: 34, fontWeight: 900, color: COLORS.sky, opacity: lab }}>🌙 Nacht</div>
       <Sfx sound="pling" at={20} volume={0.4} />
       <Caption delay={40}>Die zur Sonne zeigende Seite hat Tag, die abgewandte Nacht.</Caption>
     </AbsoluteFill>
@@ -94,7 +94,7 @@ const TagNachtScene: React.FC<SceneProps> = () => {
 const StandortScene: React.FC<SceneProps> = ({ dur }) => {
   const frame = useCurrentFrame();
   const spin = interpolate(frame, [10, dur - 10], [180, 540], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-  const onDay = Math.cos(spin * Math.PI / 180) > 0;
+  const onDay = Math.cos(spin * Math.PI / 180) < 0; // links = Tag (Sonne steht links)
   return (
     <AbsoluteFill>
       <SceneTitle kicker="Dein Standort" title="Vom Schatten ins Licht" />

@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Der Elektromagnet. Strom und Magnetismus hängen eng zusammen. Denn immer wenn Strom fließt, entsteht rundherum ein Magnetfeld. Genau das nutzt der Elektromagnet aus." },
+  { "id": "spule", "text": "Wickelt man einen Draht zu einer Spule mit vielen Windungen und lässt Strom hindurchfließen, verstärken sich die einzelnen Magnetfelder und bündeln sich. Die Spule wird zum Magneten – mit Nord- und Südpol wie ein Stabmagnet." },
+  { "id": "eisenkern", "text": "Schiebt man zusätzlich einen Eisenkern in die Spule, wird das Magnetfeld noch einmal viel stärker. Diese Kombination – stromdurchflossene Spule mit Eisenkern – nennt man Elektromagnet." },
+  { "id": "staerke", "text": "Wie stark er wird, kannst du steuern: Je mehr Windungen die Spule hat und je größer die Stromstärke ist, desto stärker das Magnetfeld. So lässt sich die Kraft gezielt einstellen." },
+  { "id": "abschaltbar", "text": "Der entscheidende Vorteil gegenüber einem Dauermagneten: Der Elektromagnet ist abschaltbar. Fließt Strom, ist er ein Magnet. Schaltest du den Strom aus, verschwindet das Magnetfeld sofort – und er hält nichts mehr." },
+  { "id": "merksatz", "text": "Merke: Eine stromdurchflossene Spule mit Eisenkern ist ein Elektromagnet. Mehr Windungen und mehr Strom machen ihn stärker. Sein Vorteil: Er ist abschaltbar." },
+  { "id": "transfer", "text": "Elektromagnete stecken in der Türklingel, im Lautsprecher und im riesigen Schrottkran, der Autos anhebt und per Knopfdruck wieder fallen lässt. Überall dort, wo Magnetismus an- und ausschaltbar sein soll." },
+  { "id": "outro", "text": "Strom an – Magnet an, Strom aus – Magnet aus. Das ist der Elektromagnet. Physik verstehen, Schritt für Schritt." }
+]

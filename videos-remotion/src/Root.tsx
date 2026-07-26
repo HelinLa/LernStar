@@ -43,6 +43,11 @@ import { Tonhoehe, TONHOEHE_DURATION } from './videos/Tonhoehe';
 import { Schallausbreitung, SCHALLAUSBREITUNG_DURATION } from './videos/Schallausbreitung';
 import { Ohr, OHR_DURATION } from './videos/Ohr';
 import { Laermschutz, LAERMSCHUTZ_DURATION } from './videos/Laermschutz';
+import { TagNacht, TAG_NACHT_DURATION } from './videos/TagNacht';
+import { Jahreszeiten, JAHRESZEITEN_DURATION } from './videos/Jahreszeiten';
+import { Mondphasen, MONDPHASEN_DURATION } from './videos/Mondphasen';
+import { Sonnenfinsternis, SONNENFINSTERNIS_DURATION } from './videos/Sonnenfinsternis';
+import { Mondfinsternis, MONDFINSTERNIS_DURATION } from './videos/Mondfinsternis';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -211,6 +216,11 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Schallausbreitung" component={Schallausbreitung} durationInFrames={SCHALLAUSBREITUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Ohr" component={Ohr} durationInFrames={OHR_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Laermschutz" component={Laermschutz} durationInFrames={LAERMSCHUTZ_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="TagNacht" component={TagNacht} durationInFrames={TAG_NACHT_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Jahreszeiten" component={Jahreszeiten} durationInFrames={JAHRESZEITEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Mondphasen" component={Mondphasen} durationInFrames={MONDPHASEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Sonnenfinsternis" component={Sonnenfinsternis} durationInFrames={SONNENFINSTERNIS_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Mondfinsternis" component={Mondfinsternis} durationInFrames={MONDFINSTERNIS_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

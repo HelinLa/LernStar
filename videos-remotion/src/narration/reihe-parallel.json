@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Reihenschaltung und Parallelschaltung. Es gibt zwei grundlegende Arten, mehrere Bauteile in einen Stromkreis zu bringen. Sie verhalten sich völlig unterschiedlich. Vergleichen wir sie direkt." },
+  { "id": "reihe", "text": "In der Reihenschaltung liegen alle Bauteile hintereinander in einem einzigen Stromweg. Durch jedes Bauteil fließt derselbe Strom. Die Spannungen der Bauteile addieren sich zur Gesamtspannung." },
+  { "id": "reiheaus", "text": "Der Nachteil der Reihe: Fällt ein einziges Bauteil aus oder wird herausgenommen, ist der Stromweg unterbrochen – und alles geht aus. Wie bei einer alten Lichterkette, bei der ein defektes Lämpchen die ganze Kette dunkel macht." },
+  { "id": "parallel", "text": "In der Parallelschaltung liegen die Bauteile nebeneinander, jedes in seinem eigenen Zweig. An jedem Bauteil liegt dieselbe Spannung an. Die einzelnen Ströme addieren sich zum Gesamtstrom." },
+  { "id": "parallelaus", "text": "Der große Vorteil der Parallelschaltung: Fällt ein Bauteil aus, funktionieren die anderen ungestört weiter – jeder Zweig hat ja seinen eigenen Weg. Genau deshalb ist im Haushalt alles parallel geschaltet." },
+  { "id": "merksatz", "text": "Merke: Reihe – ein Weg, gleicher Strom, Spannungen addieren sich, eine fällt aus, alle aus. Parallel – eigene Wege, gleiche Spannung, Ströme addieren sich, eine fällt aus, Rest läuft weiter." },
+  { "id": "transfer", "text": "Deshalb sind die Steckdosen und Lampen in deiner Wohnung parallel geschaltet – jedes Gerät für sich schaltbar. Reihenschaltungen nutzt man dort, wo wirklich alles gemeinsam an- und ausgehen soll." },
+  { "id": "outro", "text": "Reihe oder parallel – zwei Schaltungen, zwei ganz unterschiedliche Eigenschaften. Physik verstehen, Schritt für Schritt." }
+]
