@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Schatten. Warum hast du an einem sonnigen Tag immer einen dunklen Zwilling am Boden – und warum wird es bei einer Sonnenfinsternis mitten am Tag dunkel? Schauen wir es uns an." },
+  { "id": "beobachten", "text": "Eine Lampe leuchtet auf einen Ball. Hinter dem Ball, auf der Wand, erscheint ein dunkler Fleck: der Schatten. Er liegt immer auf der Seite, die von der Lampe weg zeigt." },
+  { "id": "zusammenhang", "text": "Der Grund: Licht läuft geradlinig. Der Ball ist undurchsichtig und blockiert die Strahlen, die auf ihn treffen. Dahinter kommt kein Licht an – dort ist es dunkel. Die Strahlen daneben laufen weiter und beleuchten die Wand." },
+  { "id": "variieren", "text": "Bewegst du die Lampe nach oben, wandert der Schatten nach unten – er liegt der Lampe immer gegenüber. Und ein durchsichtiger Körper wie Glas wirft kaum einen Schatten, weil das Licht hindurchgeht." },
+  { "id": "finsternis", "text": "Genau so entsteht eine Sonnenfinsternis. Der Mond schiebt sich zwischen Sonne und Erde und wirft seinen Schatten auf die Erde. Wer im Kernschatten steht, für den verdeckt der Mond die Sonne – mitten am Tag wird es dunkel." },
+  { "id": "merksatz", "text": "Merke: Ein Schatten entsteht, wo ein undurchsichtiger Körper das geradlinige Licht blockiert. Er liegt immer der Lichtquelle gegenüber." },
+  { "id": "transfer", "text": "Schatten begegnen dir überall: unter einem Baum, hinter einem Sonnenschirm, als Zeiger einer Sonnenuhr oder im Schattentheater an der Wand." },
+  { "id": "outro", "text": "Licht geradlinig, Körper undurchsichtig, dahinter Schatten. Physik verstehen, Schritt für Schritt." }
+]

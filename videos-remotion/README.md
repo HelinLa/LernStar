@@ -99,3 +99,4 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Bewegungsenergie | 9.3.5 Bewegungsenergie (E = ½·m·v²) | `src/videos/Bewegungsenergie.tsx` |
 | Reibungswaerme | 9.3.6 Energieumwandlung (Bewegung → Wärme) | `src/videos/Reibungswaerme.tsx` |
 | LichtUndSehen | Kl.5 Optik: Licht und Sehen (Selbstleuchter/beleuchtet) | `src/videos/LichtUndSehen.tsx` |
+| Schatten | Kl.5 Optik: Schatten (Schattenwurf, Sonnenfinsternis) | `src/videos/Schatten.tsx` |
