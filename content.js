@@ -1411,7 +1411,7 @@ const CONTENT = { ...(typeof GS_CONTENT !== 'undefined' ? GS_CONTENT : {}),
         intro:'Willkommen in Physik Klasse 5! Du entdeckst, wie Licht entsteht, warum Magnete anziehen, woher Energie kommt und was Wärme bedeutet. Physik erklärt, warum die Welt so funktioniert!',
         topics:[
           { isChapter:true, name:'💡 Licht & Schatten' },
-          { name:'Licht und Sehen', diff:1,
+          { name:'Licht und Sehen', diff:1, video:'licht-und-sehen.mp4',
             explanation:'Wie sehen wir? Unser Auge sieht Objekte, die Licht aussenden oder reflektieren. Lichtquellen (Sonne, Lampen, Feuer) strahlen selbst Licht aus. Der Mond leuchtet nicht selbst – er reflektiert Sonnenlicht. Licht breitet sich geradlinig aus mit 300.000 km/s – schnellste Geschwindigkeit im Universum! Trifft Licht auf undurchsichtige Körper, entsteht ein Schatten. Durchsichtige Körper (Glas) lassen Licht durch.' },
           { name:'Schatten', diff:1,
             explanation:'Schatten entstehen, wenn undurchsichtige Körper Licht blockieren. Bei einer Punktlichtquelle: gleichmäßiger Kernschatten (Umbra). Bei ausgedehnter Quelle (Sonne): Kern- und Halbschatten (Penumbra). Sonnenfinsternisse: Mond zwischen Sonne und Erde. Mondfinsternisse: Erde zwischen Sonne und Mond. Je größer der Abstand zur Lichtquelle, desto kleiner der Schatten.' },

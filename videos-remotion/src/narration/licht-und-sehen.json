@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Licht und Sehen. Warum können wir im Dunkeln nichts erkennen, und wieso leuchtet der Mond, obwohl er selbst kein Licht macht? Finden wir es heraus." },
+  { "id": "beobachten", "text": "Stell dir ein völlig dunkles Zimmer vor. Auf dem Tisch liegt ein Apfel, aber du siehst ihn nicht. Erst wenn du das Licht anschaltest, taucht der Apfel auf. Ohne Licht sehen wir nichts." },
+  { "id": "quellen", "text": "Manche Körper senden selbst Licht aus: die Sonne, eine Lampe, eine Kerze. Das sind Lichtquellen. Andere Körper leuchten nicht selbst, sie werfen nur Licht zurück, das auf sie fällt: ein Buch, ein Apfel, der Mond." },
+  { "id": "weg", "text": "Damit wir etwas sehen, muss Licht von dem Körper in unser Auge gelangen. Von der Lichtquelle zum Gegenstand, und vom Gegenstand ins Auge. Licht breitet sich dabei immer geradlinig aus, unglaublich schnell: dreihunderttausend Kilometer in jeder Sekunde." },
+  { "id": "mond", "text": "Deshalb leuchtet der Mond. Er ist kein Selbstleuchter. Das Sonnenlicht trifft ihn und wird zu unserem Auge zurückgeworfen. Wäre die Sonne aus, bliebe der Mond dunkel." },
+  { "id": "merksatz", "text": "Merke: Wir sehen einen Gegenstand nur, wenn Licht von ihm in unser Auge gelangt. Lichtquelle, Gegenstand, Auge – erst diese Kette macht das Sehen möglich." },
+  { "id": "transfer", "text": "Selbstleuchter sind zum Beispiel Sonne, Feuer und Bildschirm. Beleuchtete Körper sind Mond, Tafel und deine Kleidung. Sie alle sehen wir nur, weil sie Licht zurückwerfen." },
+  { "id": "outro", "text": "Licht breitet sich geradlinig aus, und Sehen ist Licht, das in unser Auge gelangt. Physik verstehen, Schritt für Schritt." }
+]
