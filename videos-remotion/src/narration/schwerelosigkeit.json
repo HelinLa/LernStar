@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Schwerelosigkeit. Warum fühlt man sich im freien Fall schwerelos, obwohl die Erde weiter zieht? Schauen wir genau hin." },
+  { "id": "stehen", "text": "Wenn du auf einer Waage stehst, zieht dich die Erde nach unten. Der Boden drückt mit gleicher Kraft zurück. Die Waage zeigt dein volles Gewicht." },
+  { "id": "fall", "text": "Fällt die ganze Kabine frei nach unten, fällt alles gemeinsam. Niemand drückt mehr auf die Waage. Sie zeigt null. Du fühlst dich schwerelos." },
+  { "id": "vergleich", "text": "Ganz wichtig: Die Erdanziehung wirkt die ganze Zeit weiter. Nur die Gegenkraft der Unterlage verschwindet beim Fallen. Deshalb zeigt die Waage null." },
+  { "id": "merksatz", "text": "Merke: Schwerelosigkeit bedeutet freier Fall ohne Stützkraft. Die Schwerkraft wirkt weiter, man spürt sie nur nicht mehr." },
+  { "id": "transfer", "text": "Genau das erlebst du im Freefall-Tower oder im Parabelflug. Für kurze Zeit schwebt alles." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
