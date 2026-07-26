@@ -5,6 +5,7 @@ import { TraegheitAlltag, TRAEGHEIT_ALLTAG_DURATION } from './videos/TraegheitAl
 import { Schwerelosigkeit, SCHWERELOSIGKEIT_DURATION } from './videos/Schwerelosigkeit';
 import { Orbit, ORBIT_DURATION } from './videos/Orbit';
 import { Rueckstoss, RUECKSTOSS_DURATION } from './videos/Rueckstoss';
+import { Energie, ENERGIE_DURATION } from './videos/Energie';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -47,6 +48,14 @@ export const RemotionRoot: React.FC = () => {
         id="Rueckstoss"
         component={Rueckstoss}
         durationInFrames={RUECKSTOSS_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Energie"
+        component={Energie}
+        durationInFrames={ENERGIE_DURATION}
         fps={30}
         width={1920}
         height={1080}
