@@ -15,8 +15,8 @@ const root = join(__dirname, '..');
 const narrDir = join(root, 'src', 'narration');
 const pubAudio = join(root, 'public', 'audio');
 
-const VOICE = 'Anna';
-const RATE = '178'; // Wörter pro Minute – ruhig & verständlich
+const VOICE = process.env.SAY_VOICE || 'Anna'; // z. B. SAY_VOICE=Reed (männlich)
+const RATE = process.env.SAY_RATE || '178'; // Wörter pro Minute – ruhig & verständlich
 
 const only = process.argv.slice(2);
 const files = readdirSync(narrDir)

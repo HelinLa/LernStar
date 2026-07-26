@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Die Hubarbeit. Warum ist Treppensteigen so viel anstrengender als der gleiche Weg geradeaus? Die Physik gibt darauf eine klare Antwort." },
+  { "id": "beobachten", "text": "Gehst du eben geradeaus, hältst du deinen Körper einfach auf gleicher Höhe. Steigst du dagegen eine Treppe hinauf, musst du dein ganzes Gewicht Stufe für Stufe nach oben heben – gegen die Schwerkraft. Genau das kostet zusätzliche Arbeit." },
+  { "id": "formel", "text": "Diese Arbeit nennt man Hubarbeit. Du hebst deine Gewichtskraft um die Höhe h nach oben. Man rechnet ganz einfach: Hubarbeit ist Masse mal Ortsfaktor mal Höhe. W gleich m mal g mal h." },
+  { "id": "variieren", "text": "Zwei Dinge machen die Hubarbeit größer: eine größere Masse und eine größere Höhe. Wichtig ist dabei nur die Höhe, die du überwindest – nicht der waagerechte Weg. Ob du die Treppe steil nimmst oder als lange Rampe, die Hubarbeit bleibt gleich." },
+  { "id": "beispiel", "text": "Ein Beispiel: Ein Kind mit sechzig Kilogramm steigt drei Meter hoch. Mit dem Ortsfaktor zehn ergibt das sechzig mal zehn mal drei – also eintausendachthundert Joule Hubarbeit." },
+  { "id": "merksatz", "text": "Merke: Hubarbeit ist Masse mal Ortsfaktor mal Höhe. Es zählt nur die überwundene Höhe." },
+  { "id": "transfer", "text": "Deshalb steckt Hubarbeit überall dort, wo etwas gehoben wird: im Aufzug, beim Bergwandern und beim Heben schwerer Lasten." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
