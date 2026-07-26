@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Die Lageenergie. Wo steckt eigentlich Energie in einem Gegenstand, der einfach nur ganz oben liegt und sich gar nicht bewegt?" },
+  { "id": "beobachten", "text": "Ein Stein, der hoch oben liegt, sieht ganz ruhig aus. Doch lässt man ihn fallen, trifft er mit Wucht auf und kann sogar einen Pfahl in den Boden treiben. Je höher er lag, desto größer die Wirkung. In der Höhe steckt also ein Energievorrat." },
+  { "id": "formel", "text": "Diese gespeicherte Energie nennt man Lageenergie, oder potenzielle Energie. Sie ist genau die Hubarbeit, die man vorher hineingesteckt hat. Man rechnet: Lageenergie ist Masse mal Ortsfaktor mal Höhe. E gleich m mal g mal h." },
+  { "id": "variieren", "text": "Zwei Dinge vergrößern die Lageenergie: eine größere Höhe und eine größere Masse. Ein schwerer Stein weit oben speichert am meisten Energie." },
+  { "id": "beispiel", "text": "Ein Beispiel: Ein Stein mit zwei Kilogramm liegt fünf Meter hoch. Mit dem Ortsfaktor zehn ergibt das zwei mal zehn mal fünf – also einhundert Joule Lageenergie." },
+  { "id": "merksatz", "text": "Merke: Lageenergie ist Masse mal Ortsfaktor mal Höhe. Es ist die Energie, die ein Körper durch seine Höhe besitzt." },
+  { "id": "transfer", "text": "Diese Energie nutzen wir überall: im Stausee eines Wasserkraftwerks, beim Skispringer am Start und im hoch gelegenen Wasserturm." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

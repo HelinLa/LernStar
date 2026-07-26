@@ -8,6 +8,7 @@ import { Rueckstoss, RUECKSTOSS_DURATION } from './videos/Rueckstoss';
 import { Energie, ENERGIE_DURATION } from './videos/Energie';
 import { Arbeit, ARBEIT_DURATION } from './videos/Arbeit';
 import { Hubarbeit, HUBARBEIT_DURATION } from './videos/Hubarbeit';
+import { Lageenergie, LAGEENERGIE_DURATION } from './videos/Lageenergie';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -74,6 +75,14 @@ export const RemotionRoot: React.FC = () => {
         id="Hubarbeit"
         component={Hubarbeit}
         durationInFrames={HUBARBEIT_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Lageenergie"
+        component={Lageenergie}
+        durationInFrames={LAGEENERGIE_DURATION}
         fps={30}
         width={1920}
         height={1080}
