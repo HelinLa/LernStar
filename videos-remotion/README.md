@@ -117,3 +117,10 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Reihenschaltung | Kl.5 Stromkreis: Reihenschaltung | `src/videos/Reihenschaltung.tsx` |
 | Parallelschaltung | Kl.5 Stromkreis: Parallelschaltung | `src/videos/Parallelschaltung.tsx` |
 | Stromwirkungen | Kl.5 Stromkreis: Wirkungen des Stroms (Licht/Wärme/Magnet/Bewegung) | `src/videos/Stromwirkungen.tsx` |
+| TemperaturWaerme | Kl.6 Wärme: Temperatur vs. Wärme | `src/videos/TemperaturWaerme.tsx` |
+| ThermometerVideo | Kl.6 Wärme: Wie funktioniert ein Thermometer? | `src/videos/ThermometerVideo.tsx` |
+| Waermeausdehnung | Kl.6 Wärme: Erwärmen von Stoffen (Teilchen, Ausdehnung) | `src/videos/Waermeausdehnung.tsx` |
+| Aggregatzustaende | Kl.6 Wärme: Aggregatzustände (fest/flüssig/gas) | `src/videos/Aggregatzustaende.tsx` |
+| Waermeuebertragung | Kl.6 Wärme: Leitung/Strömung/Strahlung | `src/videos/Waermeuebertragung.tsx` |
+| Daemmung | Kl.6 Wärme: Welches Material dämmt am besten? | `src/videos/Daemmung.tsx` |
+| DunkleFlaechen | Kl.6 Wärme: Warum werden dunkle Flächen heißer? | `src/videos/DunkleFlaechen.tsx` |

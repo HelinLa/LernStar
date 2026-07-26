@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie entsteht ein Ton? Ob Gitarre, Stimme oder Lautsprecher – jeder Ton hat denselben Ursprung. Und den kannst du sogar fühlen, wenn du genau hinschaust." },
+  { "id": "schwingen", "text": "Schlag eine Saite an: Sie beginnt sichtbar hin und her zu schwingen. Diese Schwingung ist der Ton. Ein Ton entsteht immer durch einen schwingenden Gegenstand – die Schallquelle." },
+  { "id": "stoppen", "text": "Der Beweis: Legst du den Finger auf die schwingende Saite, hört der Ton sofort auf. Keine Schwingung, kein Ton. Die Bewegung und der Klang gehören untrennbar zusammen." },
+  { "id": "quellen", "text": "Schallquellen gibt es viele: die Saite der Gitarre, eine Stimmgabel, die Membran im Lautsprecher – und deine eigenen Stimmbänder. Alle haben eines gemeinsam: Sie schwingen." },
+  { "id": "fuehlen", "text": "Du kannst die Schwingung sogar spüren. Leg die Hand an deinen Hals und summe – du fühlst, wie die Stimmbänder vibrieren. Genau diese Vibration wird zum Ton." },
+  { "id": "merksatz", "text": "Merke: Ein Ton entsteht durch einen schwingenden Gegenstand, die Schallquelle. Stoppt die Schwingung, stoppt der Ton." },
+  { "id": "transfer", "text": "Deshalb schwingt die Trommelfelloberfläche beim Trommeln, die Luftsäule in der Flöte und die Saite beim Klavier. Überall steckt eine Schwingung hinter dem Klang." },
+  { "id": "outro", "text": "Kein Ton ohne Schwingung – das ist die Grundregel des Schalls. Physik verstehen, Schritt für Schritt." }
+]

@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie verändern sich Aggregatzustände? Wasser kennst du als Eis, als Flüssigkeit und als Dampf. Es ist immer derselbe Stoff – nur in drei völlig verschiedenen Zuständen. Wie kommt das?" },
+  { "id": "drei", "text": "Schau auf die Teilchen. Im festen Eis sitzen sie dicht an dicht in einem festen Gitter und zittern nur. In der Flüssigkeit sind sie beweglich und gleiten aneinander vorbei. Im Gas fliegen sie frei und schnell durch den Raum." },
+  { "id": "schmelzen", "text": "Erwärmst du Eis, werden die Teilchen schneller. Bei genau 0 Grad bricht das feste Gitter auf – das Eis schmilzt zu Wasser. Kühlst du Wasser wieder unter 0 Grad, erstarrt es zurück zu Eis." },
+  { "id": "verdampfen", "text": "Erwärmst du das Wasser weiter, bei 100 Grad reißen sich die Teilchen ganz los – das Wasser verdampft zu Gas. Kühlt der Dampf ab, kondensiert er wieder zu flüssigem Wasser." },
+  { "id": "uebergaenge", "text": "Die vier Übergänge haben feste Namen: Schmelzen von fest zu flüssig, Erstarren zurück. Verdampfen von flüssig zu gasförmig, Kondensieren zurück. Immer entscheidet die Temperatur." },
+  { "id": "merksatz", "text": "Merke: Fest, flüssig, gasförmig – derselbe Stoff, andere Teilchenordnung. Bei 0 Grad schmilzt und erstarrt Wasser, bei 100 Grad verdampft und kondensiert es." },
+  { "id": "transfer", "text": "Deshalb beschlägt der Spiegel im Bad, wenn heißer Dampf kondensiert, und Pfützen trocknen, wenn Wasser verdunstet. Der Kreislauf des Wassers steckt voller Zustandsänderungen." },
+  { "id": "outro", "text": "Ein Stoff, drei Zustände, entschieden von der Temperatur. Physik verstehen, Schritt für Schritt." }
+]

@@ -30,6 +30,13 @@ import { Schaltplan, SCHALTPLAN_DURATION } from './videos/Schaltplan';
 import { Reihenschaltung, REIHENSCHALTUNG_DURATION } from './videos/Reihenschaltung';
 import { Parallelschaltung, PARALLELSCHALTUNG_DURATION } from './videos/Parallelschaltung';
 import { Stromwirkungen, STROMWIRKUNGEN_DURATION } from './videos/Stromwirkungen';
+import { TemperaturWaerme, TEMPERATUR_WAERME_DURATION } from './videos/TemperaturWaerme';
+import { ThermometerVideo, THERMOMETER_DURATION } from './videos/ThermometerVideo';
+import { Waermeausdehnung, WAERMEAUSDEHNUNG_DURATION } from './videos/Waermeausdehnung';
+import { Aggregatzustaende, AGGREGATZUSTAENDE_DURATION } from './videos/Aggregatzustaende';
+import { Waermeuebertragung, WAERMEUEBERTRAGUNG_DURATION } from './videos/Waermeuebertragung';
+import { Daemmung, DAEMMUNG_DURATION } from './videos/Daemmung';
+import { DunkleFlaechen, DUNKLE_FLAECHEN_DURATION } from './videos/DunkleFlaechen';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -185,6 +192,13 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Reihenschaltung" component={Reihenschaltung} durationInFrames={REIHENSCHALTUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Parallelschaltung" component={Parallelschaltung} durationInFrames={PARALLELSCHALTUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Stromwirkungen" component={Stromwirkungen} durationInFrames={STROMWIRKUNGEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="TemperaturWaerme" component={TemperaturWaerme} durationInFrames={TEMPERATUR_WAERME_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="ThermometerVideo" component={ThermometerVideo} durationInFrames={THERMOMETER_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Waermeausdehnung" component={Waermeausdehnung} durationInFrames={WAERMEAUSDEHNUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Aggregatzustaende" component={Aggregatzustaende} durationInFrames={AGGREGATZUSTAENDE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Waermeuebertragung" component={Waermeuebertragung} durationInFrames={WAERMEUEBERTRAGUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Daemmung" component={Daemmung} durationInFrames={DAEMMUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="DunkleFlaechen" component={DunkleFlaechen} durationInFrames={DUNKLE_FLAECHEN_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

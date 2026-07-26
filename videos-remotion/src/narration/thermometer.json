@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie funktioniert ein Thermometer? Es hat keine Elektronik und keine Batterie – und zeigt trotzdem ganz genau die Temperatur an. Das Geheimnis steckt in einer einfachen Flüssigkeit." },
+  { "id": "ausdehnung", "text": "Im Thermometer ist eine dünne Flüssigkeitssäule. Wird es wärmer, dehnt sich die Flüssigkeit aus und steigt in der engen Röhre nach oben. Wird es kälter, zieht sie sich zusammen und sinkt wieder." },
+  { "id": "ablesen", "text": "An der Säule steht eine Skala. Wo die Flüssigkeit endet, liest du die Temperatur ab. Schon eine winzige Ausdehnung wird in der dünnen Röhre zu einem gut sichtbaren Anstieg – so wird das Thermometer genau." },
+  { "id": "fixpunkte", "text": "Damit alle Thermometer gleich anzeigen, werden sie geeicht. Man nutzt zwei feste Punkte: Eiswasser ist genau 0 Grad, kochendes Wasser genau 100 Grad. Der Abstand dazwischen wird in gleiche Schritte geteilt." },
+  { "id": "proben", "text": "Tauchst du das Thermometer in verschiedene Proben, stellt sich die Säule jeweils auf deren Temperatur ein. So misst dasselbe Gerät zuverlässig, ob dein Badewasser, deine Suppe oder die Luft draußen gemeint ist." },
+  { "id": "merksatz", "text": "Merke: Im Thermometer dehnt sich die Flüssigkeit beim Erwärmen aus und steigt. An der Skala liest man die Temperatur ab – geeicht bei 0 und 100 Grad." },
+  { "id": "transfer", "text": "Nach demselben Prinzip arbeiten das Fieberthermometer, das Backofenthermometer und das Thermometer am Fenster – überall dehnt sich ein Stoff mit der Wärme aus." },
+  { "id": "outro", "text": "Flüssigkeit dehnt sich aus, Säule steigt, Skala zeigt an. Physik verstehen, Schritt für Schritt." }
+]

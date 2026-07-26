@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie funktioniert das Ohr? Der Schall kommt bei dir an – aber wie wird aus einer schwingenden Luft ein Klang, den du wirklich hörst? Verfolgen wir den Weg des Schalls durch dein Ohr." },
+  { "id": "sammeln", "text": "Zuerst fängt die Ohrmuschel den Schall ein, wie ein kleiner Trichter. Sie sammelt die Schallwellen und leitet sie in den Gehörgang hinein." },
+  { "id": "trommelfell", "text": "Am Ende des Gehörgangs sitzt das Trommelfell, eine dünne, straff gespannte Haut. Die ankommenden Schallwellen bringen es zum Schwingen – genau im Takt des Tons." },
+  { "id": "knoechelchen", "text": "Hinter dem Trommelfell liegen die drei kleinsten Knochen deines Körpers: die Gehörknöchelchen Hammer, Amboss und Steigbügel. Sie nehmen die Schwingung auf und verstärken sie auf dem Weg nach innen." },
+  { "id": "schnecke", "text": "In der Schnecke, einem mit Flüssigkeit gefüllten Hohlraum, wird die Schwingung schließlich in elektrische Nervensignale umgewandelt. Der Hörnerv leitet diese Signale zum Gehirn – und erst dort entsteht das, was du als Klang wahrnimmst." },
+  { "id": "merksatz", "text": "Merke: Ohrmuschel sammelt, Gehörgang leitet, Trommelfell schwingt, die Gehörknöchelchen übertragen, die Schnecke wandelt um, der Hörnerv meldet ans Gehirn." },
+  { "id": "transfer", "text": "Weil das Trommelfell so empfindlich ist, kann sehr lauter Schall es verletzen. Genau deshalb solltest du dein Gehör vor großer Lautstärke schützen." },
+  { "id": "outro", "text": "Vom Trichter bis zum Gehirn – eine erstaunliche Reise des Schalls. Physik verstehen, Schritt für Schritt." }
+]

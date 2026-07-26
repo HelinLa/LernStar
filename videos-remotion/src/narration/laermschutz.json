@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie können wir uns vor Lärm schützen? Zu lauter Schall ist nicht nur unangenehm – er kann dein Gehör dauerhaft schädigen. Wie schützt man sich richtig?" },
+  { "id": "gefahr", "text": "Gefährlich wird es, wenn der Lärm zu laut ist und zu lange dauert. Ab etwa 85 Dezibel kann dauerhafter Lärm das Gehör schädigen. Ein Konzert oder eine Kreissäge liegt schon deutlich darüber." },
+  { "id": "abstand", "text": "Der einfachste Schutz ist Abstand. Je weiter du von der Schallquelle weg bist, desto leiser kommt der Lärm bei dir an. Geh von der Box weg, und die Lautstärke am Ohr sinkt deutlich." },
+  { "id": "gehoerschutz", "text": "Reicht das nicht, hilft Gehörschutz: Ohrstöpsel oder Kapselgehörschützer dämpfen den Schall, bevor er das Trommelfell erreicht. So sinken die ankommenden Dezibel in einen sicheren Bereich." },
+  { "id": "raum", "text": "Auch der Raum hilft mit. Weiche Materialien wie Vorhänge, Teppiche und Schallschutzplatten schlucken den Schall, statt ihn hart zurückzuwerfen. Der Nachhall wird kleiner, es wird leiser." },
+  { "id": "merksatz", "text": "Merke: Lärm ab etwa 85 Dezibel schadet dem Gehör. Schütze dich durch Abstand, Gehörschutz und schalldämpfende Räume." },
+  { "id": "transfer", "text": "Deshalb tragen Bauarbeiter Kapselgehörschützer, Musiker spezielle Ohrstöpsel und Tonstudios kleiden ihre Wände mit Schaumstoff aus. Dein Gehör kann sich nicht erholen – schütze es rechtzeitig." },
+  { "id": "outro", "text": "Abstand, Gehörschutz, weicher Raum – so bleibt dein Gehör gesund. Physik verstehen, Schritt für Schritt." }
+]

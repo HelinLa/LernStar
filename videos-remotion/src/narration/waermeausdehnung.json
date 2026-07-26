@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Was geschieht beim Erwärmen von Stoffen? Fast alles wird beim Erwärmen ein kleines bisschen größer. Warum eigentlich? Der Blick auf die Teilchen verrät es." },
+  { "id": "teilchen", "text": "Jeder Stoff besteht aus winzigen Teilchen, die ständig in Bewegung sind. Erwärmst du den Stoff, bewegen sich die Teilchen schneller und heftiger. Dadurch brauchen sie mehr Platz und rücken auseinander." },
+  { "id": "ausdehnen", "text": "Genau das nennt man Wärmeausdehnung: Der ganze Stoff wird größer, obwohl kein einziges Teilchen dazukommt. Kühlt er wieder ab, werden die Teilchen langsamer und der Stoff zieht sich zusammen." },
+  { "id": "vergleich", "text": "Wie stark sich etwas ausdehnt, hängt vom Zustand ab. Festkörper dehnen sich nur wenig aus, Flüssigkeiten schon mehr, und Gase am allermeisten – ihre Teilchen haben am meisten Freiheit." },
+  { "id": "beispiel", "text": "Deshalb baut man in Brücken und Schienen Dehnungsfugen ein: kleine Lücken, in die sich das Material im Sommer ausdehnen kann, ohne dass etwas zerbricht." },
+  { "id": "merksatz", "text": "Merke: Beim Erwärmen bewegen sich die Teilchen schneller und brauchen mehr Platz – der Stoff dehnt sich aus. Gase am stärksten, Festkörper am wenigsten." },
+  { "id": "transfer", "text": "Auch Stromleitungen hängen im Sommer tiefer durch, und der Deckel im heißen Wasser lässt sich leichter öffnen – überall steckt die Wärmeausdehnung dahinter." },
+  { "id": "outro", "text": "Wärmer heißt schneller, schneller heißt mehr Platz. Physik verstehen, Schritt für Schritt." }
+]

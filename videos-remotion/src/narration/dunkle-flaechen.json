@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Warum erwärmen sich dunkle Flächen stärker? Im Sommer solltest du besser kein schwarzes T-Shirt tragen – da wird dir schnell zu heiß. Was passiert da mit dem Sonnenlicht?" },
+  { "id": "dunkel", "text": "Eine dunkle, schwarze Fläche schluckt fast das gesamte Sonnenlicht, das auf sie trifft. Das Licht wird nicht zurückgeworfen, sondern in Wärme umgewandelt. Deshalb wird die dunkle Fläche richtig heiß. Fachwort: sie absorbiert die Strahlung." },
+  { "id": "hell", "text": "Eine helle oder blanke Fläche macht das Gegenteil: Sie wirft einen großen Teil des Sonnenlichts wieder zurück – sie reflektiert. Weniger Licht wird geschluckt, also bleibt sie deutlich kühler." },
+  { "id": "vergleich", "text": "Stell dir zwei gleiche Bleche in die Sonne – eins schwarz, eins weiß. Nach kurzer Zeit ist das schwarze deutlich wärmer als das weiße. Gleiche Sonne, gleiche Zeit, aber ganz unterschiedliche Temperatur." },
+  { "id": "merksatz", "text": "Merke: Dunkle Flächen absorbieren viel Strahlung und werden warm. Helle und blanke Flächen reflektieren viel und bleiben kühl." },
+  { "id": "transfer", "text": "Darum sind Sommerhäuser in heißen Ländern weiß gestrichen, tragen wir helle Kleidung bei Hitze – und ein Sonnenkollektor auf dem Dach ist tiefschwarz, damit er möglichst viel Wärme einfängt." },
+  { "id": "outro", "text": "Dunkel schluckt und wird heiß, hell reflektiert und bleibt kühl. Physik verstehen, Schritt für Schritt." }
+]

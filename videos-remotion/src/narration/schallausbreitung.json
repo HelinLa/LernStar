@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie breitet sich Schall aus? Von der Schallquelle bis zu deinem Ohr muss der Ton ja irgendwie reisen. Aber wie – und braucht er dafür etwas?" },
+  { "id": "teilchen", "text": "Schall breitet sich durch Teilchen aus. Die schwingende Quelle stößt die Nachbarteilchen an, die stoßen die nächsten an – so wandert die Schwingung als Welle weiter, ein Teilchen gibt sie ans nächste ab." },
+  { "id": "medien", "text": "Das klappt in Luft, in Wasser und sogar in festen Stoffen wie Metall. Und hier eine Überraschung: In Wasser und in Metall ist der Schall sogar schneller als in Luft, weil die Teilchen enger beieinander sitzen." },
+  { "id": "vakuum", "text": "Aber ohne Teilchen geht gar nichts. Im Vakuum, zum Beispiel im Weltall, gibt es keine Teilchen, die die Schwingung weitergeben könnten. Deshalb ist es dort absolut still – eine Explosion im All würdest du nie hören." },
+  { "id": "beispiel", "text": "Leg dein Ohr an einen Tisch und klopfe leise am anderen Ende – du hörst es überraschend deutlich. Der Schall reist durch das feste Holz schneller und klarer als durch die Luft." },
+  { "id": "merksatz", "text": "Merke: Schall braucht Teilchen, um sich auszubreiten. In Flüssigkeiten und Festkörpern ist er schneller als in Luft. Im Vakuum gibt es keinen Schall." },
+  { "id": "transfer", "text": "Deshalb hören Wale einander über viele Kilometer durch das Wasser, und Indianer legten früher das Ohr auf die Erde, um ferne Pferde zu hören. Feste Stoffe leiten den Schall besonders gut." },
+  { "id": "outro", "text": "Kein Teilchen, kein Schall – deshalb schweigt das Weltall. Physik verstehen, Schritt für Schritt." }
+]

@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wovon hängt die Lautstärke ab? Warum ist ein Flüstern leise und ein Konzert laut – obwohl es derselbe Ton sein kann? Der Blick auf die Schallwelle verrät es." },
+  { "id": "amplitude", "text": "Jeder Ton ist eine Schwingung, die wir als Welle zeichnen können. Wie hoch die Welle ausschlägt, nennt man Amplitude. Und genau die Amplitude entscheidet über die Lautstärke." },
+  { "id": "laut", "text": "Schlägst du die Saite kräftig an, schwingt sie mit großem Ausschlag – die Amplitude ist groß, der Ton ist laut. Die Welle wird hoch." },
+  { "id": "leise", "text": "Zupfst du sie ganz sanft, schwingt sie nur wenig – die Amplitude ist klein, der Ton ist leise. Die Welle wird flach. Wichtig: Die Tonhöhe bleibt dabei völlig gleich." },
+  { "id": "dezibel", "text": "Die Lautstärke misst man in Dezibel. Ein Flüstern liegt bei etwa 30 Dezibel, ein normales Gespräch bei 60, und ein Presslufthammer bei über 100 Dezibel." },
+  { "id": "merksatz", "text": "Merke: Die Lautstärke hängt von der Amplitude ab – dem Ausschlag der Schwingung. Große Amplitude heißt laut, kleine Amplitude leise. Gemessen in Dezibel." },
+  { "id": "transfer", "text": "Deshalb wird die Musik lauter, wenn du am Regler drehst: Der Lautsprecher schwingt mit größerer Amplitude. Die Melodie – also die Tonhöhe – bleibt dieselbe." },
+  { "id": "outro", "text": "Großer Ausschlag, großer Klang: die Amplitude macht die Lautstärke. Physik verstehen, Schritt für Schritt." }
+]

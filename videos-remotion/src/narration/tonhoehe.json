@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wovon hängt die Tonhöhe ab? Warum piepst eine Maus hoch und brummt ein Bär tief? Auch das steckt in der Schwingung – aber diesmal in etwas anderem als bei der Lautstärke." },
+  { "id": "frequenz", "text": "Entscheidend ist die Frequenz: Sie sagt, wie oft die Schwingung pro Sekunde hin und her geht. Gemessen wird sie in Hertz. Ein Hertz bedeutet eine Schwingung pro Sekunde." },
+  { "id": "hoch", "text": "Schwingt etwas sehr schnell, ist die Frequenz hoch – wir hören einen hohen Ton. In der Welle liegen die Berge dann eng beieinander." },
+  { "id": "tief", "text": "Schwingt etwas langsam, ist die Frequenz niedrig – wir hören einen tiefen Ton. Die Wellenberge liegen weit auseinander. Die Lautstärke bleibt dabei gleich." },
+  { "id": "hertz", "text": "Der Mensch hört ungefähr von 20 Hertz, ganz tief, bis 20.000 Hertz, ganz hoch. Hunde und Fledermäuse hören sogar noch viel höhere Frequenzen, die für uns lautlos sind." },
+  { "id": "merksatz", "text": "Merke: Die Tonhöhe hängt von der Frequenz ab – wie oft die Schwingung pro Sekunde ist. Hohe Frequenz heißt hoher Ton, niedrige Frequenz tiefer Ton. Gemessen in Hertz." },
+  { "id": "transfer", "text": "Deshalb klingt die dünne, kurze Gitarrensaite hoch und die dicke, lange tief. Und beim Singen spannst du die Stimmbänder für hohe Töne stärker – sie schwingen schneller." },
+  { "id": "outro", "text": "Schnelle Schwingung, hoher Ton: die Frequenz macht die Tonhöhe. Physik verstehen, Schritt für Schritt." }
+]

@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Sind Temperatur und Wärme dasselbe? Im Alltag sagen wir oft beides durcheinander. In der Physik sind es aber zwei verschiedene Dinge. Schauen wir uns den Unterschied an." },
+  { "id": "temperatur", "text": "Die Temperatur sagt, wie warm etwas ist. Wir messen sie in Grad Celsius. Sie beschreibt, wie schnell sich die Teilchen im Stoff bewegen: heiß heißt schnell, kalt heißt langsam." },
+  { "id": "waerme", "text": "Die Wärme dagegen ist übertragene Energie. Und sie hängt nicht nur von der Temperatur ab, sondern auch von der Menge. Ein voller Topf enthält mehr Wärmeenergie als eine kleine Tasse mit derselben Temperatur." },
+  { "id": "vergleich", "text": "Ein Beispiel: Eine kleine Tasse mit heißem Wasser bei 90 Grad kann insgesamt weniger Wärme enthalten als eine große Badewanne mit nur 40 Grad. Die Badewanne ist kühler – hat aber wegen der riesigen Menge viel mehr Wärmeenergie." },
+  { "id": "fluss", "text": "Bringst du warm und kalt in Kontakt, fließt die Wärme immer vom Warmen zum Kalten – niemals umgekehrt. Das geht so lange, bis beide dieselbe Mischtemperatur haben." },
+  { "id": "merksatz", "text": "Merke: Die Temperatur sagt, wie warm es ist – in Grad Celsius. Die Wärme ist übertragene Energie und hängt von Temperatur und Menge ab. Wärme fließt von warm nach kalt." },
+  { "id": "transfer", "text": "Deshalb wärmt eine große Wärmflasche dein Bett länger als ein kleines Tässchen Tee – auch wenn beide gleich heiß starten. Es kommt auf die Menge an Energie an." },
+  { "id": "outro", "text": "Temperatur ist nicht Wärme: das eine misst, das andere fließt. Physik verstehen, Schritt für Schritt." }
+]

@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Welches Material dämmt am besten? Wir wollen heißes Wasser möglichst lange warm halten. Dafür machen wir ein faires Experiment mit verschiedenen Verpackungen." },
+  { "id": "aufbau", "text": "Wir füllen gleich viel heißes Wasser in mehrere gleiche Becher. Einer bleibt nackt, die anderen umhüllen wir mit Alufolie, Papier, Watte oder Styropor. Dann messen wir zehn Minuten lang die Temperatur." },
+  { "id": "kurven", "text": "Jetzt vergleichen wir die Abkühlkurven. Der nackte Becher verliert seine Wärme am schnellsten – seine Kurve fällt steil ab. Der gedämmte Becher bleibt länger warm – seine Kurve fällt viel flacher." },
+  { "id": "sieger", "text": "Am besten schneidet das Styropor ab. In seinen vielen winzigen Lufteinschlüssen sitzt die Wärme fest, denn Luft leitet Wärme sehr schlecht. Deshalb hält Styropor das Wasser am längsten warm." },
+  { "id": "warum", "text": "Das Geheimnis guter Dämmstoffe ist immer eingeschlossene, ruhende Luft: in der Watte, im Styropor, sogar im Fell der Tiere. Wo die Luft nicht strömen kann, kann sie kaum Wärme wegtragen." },
+  { "id": "merksatz", "text": "Merke: Gute Dämmstoffe wie Styropor und Watte schließen viel ruhende Luft ein. Sie bremsen die Wärme – ihre Abkühlkurve fällt am flachsten." },
+  { "id": "transfer", "text": "Genau darum wärmt eine dicke Daunenjacke, isoliert die Hauswand mit Dämmplatten und hält die Thermoskanne deinen Tee stundenlang heiß." },
+  { "id": "outro", "text": "Eingeschlossene Luft dämmt am besten – Styropor gewinnt. Physik verstehen, Schritt für Schritt." }
+]

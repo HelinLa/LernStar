@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie wird Wärme übertragen? Wärme wandert immer vom Warmen zum Kalten. Aber sie nimmt dafür drei ganz unterschiedliche Wege. Schauen wir sie uns nacheinander an." },
+  { "id": "leitung", "text": "Erster Weg: die Wärmeleitung. Berühren sich zwei Dinge, wandert die Wärme durch direkten Kontakt weiter. Metalle leiten Wärme besonders gut – deshalb wird der Metalllöffel im heißen Tee schnell heiß." },
+  { "id": "stroemung", "text": "Zweiter Weg: die Wärmeströmung, auch Konvektion genannt. Warme Flüssigkeit oder warme Luft ist leichter und steigt nach oben, kühlere sinkt nach unten. So entsteht ein Kreislauf, der die Wärme verteilt – zum Beispiel über der Heizung." },
+  { "id": "strahlung", "text": "Dritter Weg: die Wärmestrahlung. Sie braucht überhaupt keine Materie und durchquert sogar das leere Weltall. So kommt die Wärme der Sonne zu uns – und so spürst du die Hitze eines Lagerfeuers, ohne es zu berühren." },
+  { "id": "uebersicht", "text": "Drei Wege also: Leitung durch Kontakt, Strömung durch aufsteigende Luft oder Flüssigkeit, und Strahlung durch den leeren Raum. Oft wirken sogar mehrere gleichzeitig." },
+  { "id": "merksatz", "text": "Merke: Wärme wird auf drei Wegen übertragen – Wärmeleitung durch Kontakt, Wärmeströmung durch aufsteigende Stoffe und Wärmestrahlung ohne Materie." },
+  { "id": "transfer", "text": "Der Kochtopf leitet, die Heizung lässt die Luft strömen, und die Sonne strahlt. In deinem Alltag arbeiten alle drei Wärmewege ständig zusammen." },
+  { "id": "outro", "text": "Leitung, Strömung, Strahlung – drei Wege von warm nach kalt. Physik verstehen, Schritt für Schritt." }
+]
