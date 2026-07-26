@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Am Fahrrad gibt es einen kleinen Dynamo. Sobald sich das Rad dreht, leuchtet die Lampe – ganz ohne Batterie. Wie wird hier aus Bewegung nutzbarer Strom?" },
+  { "id": "beobachten", "text": "Beobachte: Steht das Rad still, bleibt die Lampe dunkel. Dreht es sich, leuchtet sie. Und je schneller du fährst, desto heller wird das Licht. Die Bewegung muss also etwas mit dem Strom zu tun haben." },
+  { "id": "prinzip", "text": "Das Bauteil dahinter heißt Generator. In ihm dreht sich ein Magnet an einer Spule aus Draht vorbei. Durch diese Bewegung entsteht in der Spule elektrischer Strom. Ein Generator wandelt also Bewegungsenergie in elektrische Energie um – genau umgekehrt wie ein Elektromotor." },
+  { "id": "ausprobieren", "text": "Wovon hängt der Strom ab? Von der Drehgeschwindigkeit. Dreht sich der Magnet langsam, entsteht wenig Strom und die Lampe glimmt nur. Dreht er sich schnell, entsteht mehr Strom und die Lampe leuchtet hell. Schneller drehen bedeutet mehr Strom." },
+  { "id": "vergleich", "text": "Dasselbe Prinzip steckt in ganz großen Anlagen. Beim Windrad drehen die Flügel den Generator. Im Kraftwerk treibt heißer Wasserdampf eine Turbine an, die den Generator dreht. Ob Fahrrad, Windrad oder Kraftwerk – überall wandelt ein Generator Drehbewegung in Strom um." },
+  { "id": "merksatz", "text": "Merke: Ein Generator wandelt Bewegungsenergie in elektrische Energie um. Ein Magnet dreht sich an einer Spule vorbei – je schneller die Drehung, desto mehr Strom." },
+  { "id": "transfer", "text": "Deshalb leuchtet der Fahrraddynamo beim Treten, deshalb liefern Windräder Strom, und deshalb steht in fast jedem Kraftwerk am Ende ein großer Generator." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
