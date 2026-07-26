@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Eine Solarzelle liefert Strom, sobald Licht auf sie fällt. Ein Windrad dreht sich im Wind und erzeugt Strom. Aber wie kann man Strom gewinnen, ohne überhaupt etwas zu verbrennen?" },
+  { "id": "beobachten", "text": "Beobachte: Scheint die Sonne auf die Solarzelle, fließt Strom und die Lampe leuchtet. Weht der Wind, drehen sich die Flügel des Windrads. Fließt Wasser, treibt es ein Wasserrad an. In allen Fällen entsteht Strom – ganz ohne Feuer und ohne Abgase." },
+  { "id": "prinzip", "text": "Der Trick: Sonne, Wind und Wasser liefern die Energie sozusagen frei Haus. Die Sonne strahlt, der Wind weht, das Wasser fließt – und wir müssen nichts verbrennen, um diese Energie zu nutzen. Deshalb entsteht dabei auch kein CO2." },
+  { "id": "ausprobieren", "text": "Wovon hängt es ab? Von der Quelle selbst. Ohne Licht liefert die Solarzelle nichts, bei Sonnenschein viel. Ohne Wind steht das Windrad still, bei kräftigem Wind dreht es schnell. Schaltet man die Quelle an, kommt Strom; fällt sie weg, versiegt er." },
+  { "id": "regenerativ", "text": "Das ist der große Unterschied zu Kohle und Öl. Fossile Energie wird verbraucht und ist irgendwann weg. Regenerative Quellen dagegen erneuern sich immer wieder: Morgen scheint die Sonne erneut, der Wind weht weiter, das Wasser fließt weiter. Deshalb heißen sie erneuerbare oder regenerative Energien." },
+  { "id": "merksatz", "text": "Merke: Regenerative Energien nutzen Sonne, Wind und Wasser. Sie erneuern sich laufend und erzeugen Strom ohne Verbrennung und ohne CO2." },
+  { "id": "transfer", "text": "Deshalb siehst du Solardächer auf Häusern, Windparks in der Landschaft und Wasserkraftwerke an Flüssen und Staudämmen – überall wird Energie genutzt, die immer wieder nachkommt." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
