@@ -28,7 +28,7 @@ const CO2 = Array.from({ length: 14 }, (_, i) => ({ x: 200 + ((i * 127) % 1500),
 const GreenhouseDiagram: React.FC<{ co2: number; w?: number }> = ({ co2, w = 1920 }) => {
   const frame = useCurrentFrame();
   const nCO2 = Math.round(co2 * CO2.length);
-  const escape = 1 - co2 * 0.7; // Anteil Wärme, die entweicht
+  const escape = 1 - co2 * 0.85; // Anteil Wärme, die entweicht
   return (
     <svg width={1920} height={620} viewBox="0 0 1920 620" style={{ position: 'absolute', left: 0, top: 300 }}>
       {/* Atmosphären-Band */}

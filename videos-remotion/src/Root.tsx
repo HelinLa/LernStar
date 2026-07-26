@@ -142,6 +142,7 @@ import { RegenerativeEnergie, REGENERATIVE_ENERGIE_DURATION } from './videos/Reg
 import { SonneWindWasser, SONNE_WIND_WASSER_DURATION } from './videos/SonneWindWasser';
 import { Volatilitaet, VOLATILITAET_DURATION } from './videos/Volatilitaet';
 import { Energiespeicher, ENERGIESPEICHER_DURATION } from './videos/Energiespeicher';
+import { Treibhauseffekt, TREIBHAUSEFFEKT_DURATION } from './videos/Treibhauseffekt';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -409,6 +410,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="SonneWindWasser" component={SonneWindWasser} durationInFrames={SONNE_WIND_WASSER_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Volatilitaet" component={Volatilitaet} durationInFrames={VOLATILITAET_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Energiespeicher" component={Energiespeicher} durationInFrames={ENERGIESPEICHER_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Treibhauseffekt" component={Treibhauseffekt} durationInFrames={TREIBHAUSEFFEKT_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

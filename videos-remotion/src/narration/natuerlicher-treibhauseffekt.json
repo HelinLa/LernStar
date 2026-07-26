@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Der Treibhauseffekt klingt erstmal schlecht. Aber ohne ihn gäbe es uns gar nicht: Ohne Atmosphäre wäre die Erde eine eisige, lebensfeindliche Kugel. Warum ist ein bisschen Treibhauseffekt lebenswichtig – und zu viel trotzdem gefährlich?" },
+  { "id": "ohne", "text": "Stell dir die Erde ganz ohne Treibhausgase vor. Das Sonnenlicht wärmt zwar tagsüber, doch die ganze Wärme strahlt sofort wieder ins All ab. Es bliebe im Mittel etwa minus achtzehn Grad kalt – überall Eis, kein flüssiges Wasser, kein Leben, wie wir es kennen." },
+  { "id": "natuerlich", "text": "Zum Glück hat unsere Atmosphäre von Natur aus Treibhausgase. Sie halten einen Teil der Wärme zurück und heben die Durchschnittstemperatur auf angenehme plus fünfzehn Grad. Dieser natürliche Treibhauseffekt macht die Erde erst bewohnbar." },
+  { "id": "verstaerkt", "text": "Jetzt kommt das Problem. Durch das Verbrennen von Kohle, Öl und Gas bringen wir Menschen zusätzliches CO2 in die Luft. Dadurch wird der natürliche Effekt verstärkt: Es wird noch mehr Wärme zurückgehalten, und die Erde erwärmt sich weiter. Diesen zusätzlichen Teil nennt man den menschengemachten Treibhauseffekt." },
+  { "id": "vergleich", "text": "Vergleiche die drei Fälle: ohne Atmosphäre eisige minus achtzehn Grad, mit natürlichem Effekt angenehme plus fünfzehn Grad – und mit dem verstärkten Effekt klettert die Temperatur immer weiter nach oben. Ein bisschen ist lebenswichtig, zu viel wird gefährlich." },
+  { "id": "merksatz", "text": "Merke: Der natürliche Treibhauseffekt macht die Erde bewohnbar, rund plus fünfzehn statt minus achtzehn Grad. Der Mensch verstärkt ihn durch zusätzliches CO2 – das führt zur Erwärmung." },
+  { "id": "transfer", "text": "Ohne Treibhauseffekt etwa minus achtzehn Grad, mit dem natürlichen etwa plus fünfzehn Grad – und jedes zusätzliche Grad durch uns bringt das Klima aus dem Gleichgewicht." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
