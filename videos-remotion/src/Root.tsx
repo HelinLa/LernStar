@@ -78,6 +78,12 @@ import { Geschwindigkeit, GESCHWINDIGKEIT_DURATION } from './videos/Geschwindigk
 import { Beschleunigung, BESCHLEUNIGUNG_DURATION } from './videos/Beschleunigung';
 import { KraftNewton, KRAFT_NEWTON_DURATION } from './videos/KraftNewton';
 import { Hebelgesetz, HEBELGESETZ_DURATION } from './videos/Hebelgesetz';
+import { Ladung, LADUNG_DURATION } from './videos/Ladung';
+import { Stromstaerke, STROMSTAERKE_DURATION } from './videos/Stromstaerke';
+import { Spannung, SPANNUNG_DURATION } from './videos/Spannung';
+import { Messen, MESSEN_DURATION } from './videos/Messen';
+import { Stromabhaengigkeit, STROMABHAENGIGKEIT_DURATION } from './videos/Stromabhaengigkeit';
+import { UIGroessen, U_I_GROESSEN_DURATION } from './videos/UIGroessen';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -281,6 +287,12 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Beschleunigung" component={Beschleunigung} durationInFrames={BESCHLEUNIGUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="KraftNewton" component={KraftNewton} durationInFrames={KRAFT_NEWTON_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Hebelgesetz" component={Hebelgesetz} durationInFrames={HEBELGESETZ_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Ladung" component={Ladung} durationInFrames={LADUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Stromstaerke" component={Stromstaerke} durationInFrames={STROMSTAERKE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Spannung" component={Spannung} durationInFrames={SPANNUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Messen" component={Messen} durationInFrames={MESSEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Stromabhaengigkeit" component={Stromabhaengigkeit} durationInFrames={STROMABHAENGIGKEIT_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="UIGroessen" component={UIGroessen} durationInFrames={U_I_GROESSEN_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

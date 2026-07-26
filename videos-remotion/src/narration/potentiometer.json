@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Das Potentiometer. Bisher hatten unsere Widerstände einen festen Wert. Aber es gibt auch Widerstände, die man stufenlos verstellen kann – und die sind unglaublich praktisch." },
+  { "id": "schieber", "text": "Ein Potentiometer ist ein einstellbarer Widerstand. Mit einem Schieber oder einem Drehknopf veränderst du, wie lang die Widerstandsstrecke ist, die der Strom durchlaufen muss. So stellst du den Widerstand stufenlos ein." },
+  { "id": "hell", "text": "Schiebst du den Regler so, dass die Widerstandsstrecke kurz ist, ist der Widerstand klein. Dann fließt viel Strom und die Lampe leuchtet hell." },
+  { "id": "dunkel", "text": "Schiebst du den Regler in die andere Richtung, wird die Widerstandsstrecke lang, der Widerstand groß. Jetzt fließt nur wenig Strom und die Lampe wird dunkel. Du regelst die Helligkeit also ganz gleichmäßig." },
+  { "id": "merksatz", "text": "Merke: Ein Potentiometer ist ein stufenlos einstellbarer Widerstand. Kleiner Widerstand bringt viel Strom und eine helle Lampe, großer Widerstand wenig Strom und eine dunkle Lampe." },
+  { "id": "transfer", "text": "Genau so funktioniert ein Dimmer für die Zimmerlampe und der Lautstärkeregler an der Stereoanlage. Überall dort, wo du etwas stufenlos einstellst, steckt oft ein Potentiometer dahinter." },
+  { "id": "outro", "text": "Schieber verstellen, Widerstand ändern, Strom regeln – das Potentiometer. Physik verstehen, Schritt für Schritt." }
+]

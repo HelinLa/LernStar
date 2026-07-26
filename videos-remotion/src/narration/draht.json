@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wovon hängt der Widerstand eines Drahtes ab? Nicht jeder Draht bremst den Strom gleich stark. Drei Dinge entscheiden über seinen Widerstand. Testen wir sie einzeln." },
+  { "id": "laenge", "text": "Erstens die Länge. Ein langer Draht hat einen größeren Widerstand als ein kurzer. Denn der Strom muss eine längere Strecke zurücklegen und wird auf dem ganzen Weg gebremst. Doppelte Länge bedeutet doppelter Widerstand." },
+  { "id": "dicke", "text": "Zweitens die Dicke. Ein dünner Draht hat einen größeren Widerstand als ein dicker. Ein dicker Draht bietet dem Strom mehr Platz – so wie durch ein breites Rohr mehr Wasser passt als durch ein enges." },
+  { "id": "material", "text": "Drittens das Material. Kupfer leitet den Strom hervorragend und hat einen kleinen Widerstand. Konstantan, eine spezielle Legierung, leitet schlecht und hat einen großen Widerstand. Deshalb macht man Kabel aus Kupfer und Heizdrähte aus Konstantan." },
+  { "id": "merksatz", "text": "Merke: Der Widerstand eines Drahtes ist größer, wenn er länger oder dünner ist. Außerdem hängt er vom Material ab – Kupfer leitet gut, Konstantan schlecht." },
+  { "id": "transfer", "text": "Deshalb sind Stromkabel aus dickem Kupfer, damit sie kaum Widerstand haben. Der Heizdraht im Toaster dagegen ist dünn und aus schlecht leitendem Material – damit er sich richtig aufheizt." },
+  { "id": "outro", "text": "Lang und dünn und schlecht leitend – dann bremst der Draht am stärksten. Physik verstehen, Schritt für Schritt." }
+]

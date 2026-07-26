@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Was ist der elektrische Strom? Wenn eine Lampe leuchtet, fließt etwas durch die Kabel. Aber was genau – und wie misst man, wie viel fließt?" },
+  { "id": "bewegte", "text": "Der elektrische Strom besteht aus bewegten Ladungen. Im Metalldraht wandern winzige negative Ladungsträger von der Quelle durch den ganzen Kreis. Solange sie sich bewegen, fließt Strom." },
+  { "id": "staerke", "text": "Wie viel fließt, sagt die Stromstärke, mit dem Formelzeichen großes I. Sie gibt an, wie viel Ladung pro Sekunde durch den Draht fließt. Viele Ladungen pro Sekunde bedeuten eine große Stromstärke." },
+  { "id": "ampere", "text": "Gemessen wird die Stromstärke in Ampere, abgekürzt großes A. Und weil der Strom durch das Messgerät hindurchfließen muss, baut man das Amperemeter immer in Reihe in den Stromkreis ein." },
+  { "id": "schalter", "text": "Öffnest du den Schalter, ist der Kreis unterbrochen: Keine Ladung fließt mehr, die Stromstärke ist null, die Lampe geht aus. Wir arbeiten dabei nur mit ungefährlicher Batterie-Kleinspannung." },
+  { "id": "merksatz", "text": "Merke: Elektrischer Strom besteht aus bewegten Ladungen. Die Stromstärke I gibt an, wie viel Ladung pro Sekunde fließt. Einheit Ampere, gemessen mit dem Amperemeter in Reihe." },
+  { "id": "transfer", "text": "Auf jedem Ladegerät steht ein Ampere-Wert – er sagt, wie viel Strom es liefert. Und eine Sicherung im Haus schaltet ab, wenn die Stromstärke gefährlich groß wird." },
+  { "id": "outro", "text": "Bewegte Ladungen, gemessen in Ampere – das ist der elektrische Strom. Physik verstehen, Schritt für Schritt." }
+]

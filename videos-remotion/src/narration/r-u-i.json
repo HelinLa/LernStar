@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "R gleich U durch I – das Ohmsche Gesetz. Fassen wir die wichtigste Formel der Elektrizitätslehre klar zusammen, damit du sie sicher anwenden kannst." },
+  { "id": "formel", "text": "Der Widerstand R ist die Spannung U geteilt durch die Stromstärke I. In Formelzeichen: R gleich U durch I. Die Einheit des Widerstands ist das Ohm, geschrieben mit dem Zeichen Omega." },
+  { "id": "umstellen", "text": "Aus dieser einen Formel kannst du jede Größe berechnen. Nach dem Strom umgestellt: I gleich U durch R. Nach der Spannung umgestellt: U gleich R mal I. Je nachdem, was du suchst, stellst du die Formel passend um." },
+  { "id": "dreieck", "text": "Eine Merkhilfe ist das Formel-Dreieck: oben U, unten R und I. Deckst du die gesuchte Größe zu, zeigt dir das Dreieck die Rechnung. Deckst du U zu, siehst du R mal I. Deckst du R zu, siehst du U durch I." },
+  { "id": "merksatz", "text": "Merke: Widerstand R gleich Spannung U durch Stromstärke I, Einheit Ohm. Umgestellt: I gleich U durch R und U gleich R mal I. Das ist das Ohmsche Gesetz." },
+  { "id": "transfer", "text": "Mit dieser Formel berechnest du in jeder Schaltung die fehlende Größe, wenn du die anderen beiden kennst. Sie ist der Schlüssel zu fast jeder Aufgabe der Elektrizitätslehre." },
+  { "id": "outro", "text": "R gleich U durch I – einmal verstanden, überall anwendbar. Physik verstehen, Schritt für Schritt." }
+]

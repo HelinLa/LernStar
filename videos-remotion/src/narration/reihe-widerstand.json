@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Die Reihenschaltung von Widerständen. Was passiert mit dem Gesamtwiderstand, wenn du zwei Widerstände hintereinander in den Stromkreis baust? Rechnen wir es aus." },
+  { "id": "addieren", "text": "In der Reihenschaltung liegen die Widerstände hintereinander in einem einzigen Stromweg. Und die Regel ist einfach: Ihre Werte addieren sich. Der Gesamtwiderstand ist R eins plus R zwei. Zwei Bremsen hintereinander bremsen zusammen stärker." },
+  { "id": "strom", "text": "Weil es nur einen einzigen Weg gibt, ist der Strom überall gleich groß. Durch beide Widerstände fließt dieselbe Stromstärke – der Strom kann ja nirgends abzweigen." },
+  { "id": "spannung", "text": "Die Spannung dagegen teilt sich auf. An jedem Widerstand fällt ein Teil der Spannung ab. Und die einzelnen Teilspannungen addieren sich genau zur Gesamtspannung der Quelle. Am größeren Widerstand fällt dabei mehr Spannung ab." },
+  { "id": "merksatz", "text": "Merke: In der Reihenschaltung addieren sich die Widerstände: R gesamt gleich R eins plus R zwei. Der Strom ist überall gleich, die Teilspannungen addieren sich zur Gesamtspannung." },
+  { "id": "transfer", "text": "Deshalb kann man mit einem zusätzlichen Widerstand in Reihe – einem Vorwiderstand – den Strom gezielt begrenzen, zum Beispiel um eine empfindliche LED zu schützen." },
+  { "id": "outro", "text": "Hintereinander bedeutet: Widerstände addieren sich, Strom bleibt gleich. Physik verstehen, Schritt für Schritt." }
+]

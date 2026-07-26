@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Das Ohmsche Gesetz. Es ist das wichtigste Gesetz der Elektrizitätslehre – und man kann es in einem einzigen Diagramm sehen. Schauen wir es uns an." },
+  { "id": "proportional", "text": "Nimm einen festen Widerstand und erhöhe die Spannung Schritt für Schritt. Du wirst sehen: Verdoppelst du die Spannung, verdoppelt sich auch die Stromstärke. Spannung und Stromstärke sind zueinander proportional." },
+  { "id": "kennlinie", "text": "Trägst du alle Messpunkte in ein Diagramm ein – Spannung nach rechts, Stromstärke nach oben – liegen sie alle auf einer geraden Linie, die durch den Ursprung geht. Diese Gerade nennt man die U-I-Kennlinie." },
+  { "id": "konstant", "text": "Und egal, welchen Punkt du herausgreifst: Teilst du dort die Spannung durch die Stromstärke, kommt immer derselbe Wert heraus – der Widerstand R. Er bleibt konstant. Das ist der Kern des Ohmschen Gesetzes: U gleich R mal I." },
+  { "id": "steigung", "text": "Die Steigung der Kennlinie verrät den Widerstand. Eine flache Gerade bedeutet großer Widerstand, denn bei viel Spannung fließt nur wenig Strom. Eine steile Gerade bedeutet kleiner Widerstand." },
+  { "id": "merksatz", "text": "Merke: Bei festem Widerstand ist die Stromstärke proportional zur Spannung. Die U-I-Kennlinie ist eine Gerade durch den Ursprung. Es gilt U gleich R mal I – der Widerstand bleibt konstant." },
+  { "id": "transfer", "text": "Nicht alle Bauteile sind ohmsch. Bei einer Glühlampe wird die Kennlinie zum Beispiel gekrümmt, weil der heiße Draht seinen Widerstand ändert. Das Ohmsche Gesetz gilt bei konstanter Temperatur." },
+  { "id": "outro", "text": "Doppelte Spannung, doppelter Strom – die Gerade zeigt das Ohmsche Gesetz. Physik verstehen, Schritt für Schritt." }
+]

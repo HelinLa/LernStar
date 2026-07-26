@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Was ist die elektrische Spannung? Der Strom fließt ja nicht von allein. Irgendetwas muss die Ladungen antreiben. Genau das ist die Aufgabe der Spannung." },
+  { "id": "antrieb", "text": "Die Spannung, mit dem Formelzeichen großes U, ist der Antrieb der Quelle. Sie drückt die Ladungen durch den ganzen Stromkreis – wie eine Pumpe, die das Wasser in Bewegung hält. Gemessen wird sie in Volt, abgekürzt großes V." },
+  { "id": "zellen", "text": "Mehr Spannung bedeutet mehr Antrieb. Setzt du eine Batteriezelle mit 1,5 Volt ein, leuchtet die Lampe schwach. Mit zwei Zellen hast du 3 Volt, mit drei Zellen 4,5 Volt – und die Lampe leuchtet immer heller." },
+  { "id": "voltmeter", "text": "Gemessen wird die Spannung mit dem Voltmeter. Anders als das Amperemeter wird es parallel zum Bauteil angeschlossen – also daneben, denn es misst den Antriebs-Unterschied zwischen zwei Punkten." },
+  { "id": "analogie", "text": "Eine gute Eselsbrücke: Stell dir Wasser vor. Die Spannung ist der Wasserdruck, der das Wasser antreibt. Die Stromstärke ist die Wassermenge, die tatsächlich fließt. Viel Druck treibt viel Wasser an – viel Spannung treibt viel Strom an." },
+  { "id": "merksatz", "text": "Merke: Die Spannung U ist der Antrieb der Quelle. Einheit Volt, gemessen mit dem Voltmeter parallel. Mehr Spannung heißt stärkerer Antrieb." },
+  { "id": "transfer", "text": "Eine Batterie hat 1,5 Volt, ein Handy-Akku etwa 4 Volt, die Steckdose zu Hause 230 Volt – lebensgefährlich. Je höher die Spannung, desto stärker der Antrieb und desto größer die Gefahr." },
+  { "id": "outro", "text": "Spannung ist der Antrieb – der Druck, der die Ladungen bewegt. Physik verstehen, Schritt für Schritt." }
+]

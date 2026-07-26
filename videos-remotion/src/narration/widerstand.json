@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Was ist ein elektrischer Widerstand? Der Strom fließt nicht überall gleich leicht. Jedes Bauteil bremst ihn ein bisschen. Diese Bremse nennt man den elektrischen Widerstand." },
+  { "id": "bremse", "text": "Der Widerstand, mit dem Formelzeichen großes R, setzt dem Strom etwas entgegen. Bei gleicher Spannung gilt: Ein großer Widerstand lässt nur wenig Strom durch, ein kleiner Widerstand lässt viel Strom durch." },
+  { "id": "formel", "text": "Berechnen kannst du ihn aus Spannung und Stromstärke: Der Widerstand R ist die Spannung U geteilt durch die Stromstärke I. In Formelzeichen: R gleich U durch I. Misst du also U und I, kennst du den Widerstand." },
+  { "id": "ohm", "text": "Die Einheit des Widerstands ist das Ohm, geschrieben mit dem griechischen Buchstaben Omega. Ein Bauteil hat einen Widerstand von einem Ohm, wenn bei einem Volt Spannung genau ein Ampere Strom fließt." },
+  { "id": "merksatz", "text": "Merke: Der elektrische Widerstand R bremst den Strom. Er berechnet sich als R gleich U durch I. Die Einheit ist das Ohm. Großer Widerstand heißt kleiner Strom." },
+  { "id": "transfer", "text": "Ein dünner Glühdraht hat einen großen Widerstand und wird deshalb heiß und leuchtet. Ein dicker Kupferdraht hat einen winzigen Widerstand und leitet den Strom fast verlustfrei weiter." },
+  { "id": "outro", "text": "Der Widerstand ist die Bremse für den Strom: R gleich U durch I. Physik verstehen, Schritt für Schritt." }
+]

@@ -166,3 +166,9 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Beschleunigung | Kl.7 Bewegung: a = Δv/Δt | `src/videos/Beschleunigung.tsx` |
 | KraftNewton | Kl.7 Kraft: F = m·a (Newton, Gewichtskraft) | `src/videos/KraftNewton.tsx` |
 | Hebelgesetz | Kl.7 Hebel: F₁·l₁ = F₂·l₂ | `src/videos/Hebelgesetz.tsx` |
+| Ladung | Kl.8 Elektrik: elektrische Ladung (+/−) | `src/videos/Ladung.tsx` |
+| Stromstaerke | Kl.8 Elektrik: Stromstärke I (Ampere) | `src/videos/Stromstaerke.tsx` |
+| Spannung | Kl.8 Elektrik: Spannung U (Volt) | `src/videos/Spannung.tsx` |
+| Messen | Kl.8 Elektrik: Amperemeter/Voltmeter | `src/videos/Messen.tsx` |
+| Stromabhaengigkeit | Kl.8 Elektrik: wovon hängt I ab? | `src/videos/Stromabhaengigkeit.tsx` |
+| UIGroessen | Kl.8 Elektrik: U & I zusammengefasst | `src/videos/UIGroessen.tsx` |

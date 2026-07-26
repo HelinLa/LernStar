@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Spannung und Stromstärke – die zwei wichtigsten Größen der Elektrizitätslehre. Fassen wir sie noch einmal klar zusammen, damit du sie nie verwechselst." },
+  { "id": "spannung", "text": "Die Spannung, Formelzeichen großes U, ist der Druck, der die Ladungen antreibt. Ihre Einheit ist das Volt. Gemessen wird sie mit dem Voltmeter, das parallel angeschlossen wird." },
+  { "id": "strom", "text": "Die Stromstärke, Formelzeichen großes I, ist die Menge der Ladungen, die pro Zeit fließt. Ihre Einheit ist das Ampere. Gemessen wird sie mit dem Amperemeter, das in Reihe eingebaut wird." },
+  { "id": "analogie", "text": "Merk dir die Wasser-Analogie: Die Spannung ist der Wasserdruck, die Stromstärke ist die Wassermenge, die fließt. Viel Druck kann viel Wasser antreiben – viel Spannung kann viel Strom antreiben." },
+  { "id": "merksatz", "text": "Merke: Spannung U in Volt ist der Antrieb, gemessen mit dem Voltmeter parallel. Stromstärke I in Ampere ist die Ladungsmenge pro Zeit, gemessen mit dem Amperemeter in Reihe." },
+  { "id": "transfer", "text": "Auf jedem Elektrogerät findest du beide Werte: Volt für die Spannung, Ampere für die Stromstärke. Wer diese zwei Größen versteht, versteht die halbe Elektrizitätslehre." },
+  { "id": "outro", "text": "Volt treibt an, Ampere fließt – Spannung und Stromstärke. Physik verstehen, Schritt für Schritt." }
+]

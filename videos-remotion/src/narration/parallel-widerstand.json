@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Die Parallelschaltung von Widerständen. Diesmal bauen wir die Widerstände nicht hintereinander, sondern nebeneinander. Und das Ergebnis überrascht viele." },
+  { "id": "wege", "text": "In der Parallelschaltung hat jeder Widerstand seinen eigenen Zweig. An allen liegt dieselbe Spannung an. Für den Strom gibt es jetzt mehrere Wege gleichzeitig – und die einzelnen Ströme addieren sich zum Gesamtstrom: I gleich I eins plus I zwei." },
+  { "id": "kleiner", "text": "Und jetzt das Überraschende: Der Gesamtwiderstand wird kleiner – sogar kleiner als der kleinste Einzelwiderstand. Warum? Weil es mehr Wege für den Strom gibt, fließt insgesamt mehr Strom. Und mehr Strom bei gleicher Spannung bedeutet weniger Widerstand." },
+  { "id": "analogie", "text": "Stell dir eine Menschenmenge vor, die durch Türen strömt. Öffnest du eine zweite Tür daneben, kommen alle schneller durch – der Gesamtwiderstand des Durchgangs sinkt. Genauso ist es bei parallelen Widerständen." },
+  { "id": "merksatz", "text": "Merke: In der Parallelschaltung liegt an allen Widerständen die gleiche Spannung, die Ströme addieren sich. Der Gesamtwiderstand wird kleiner als der kleinste Einzelwiderstand." },
+  { "id": "transfer", "text": "Deshalb sind die Geräte im Haushalt parallel geschaltet: Jedes bekommt die volle Spannung, und je mehr du einschaltest, desto mehr Gesamtstrom fließt. Zu viele Geräte gleichzeitig – und die Sicherung löst aus." },
+  { "id": "outro", "text": "Nebeneinander bedeutet: gleiche Spannung, Ströme addieren sich, Widerstand sinkt. Physik verstehen, Schritt für Schritt." }
+]

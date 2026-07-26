@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie misst man Stromstärke und Spannung? Für beide gibt es ein eigenes Messgerät – und jedes wird auf seine ganz eigene Art angeschlossen. Verwechselt man das, geht es schief." },
+  { "id": "amperemeter", "text": "Das Amperemeter misst die Stromstärke. Der Strom muss durch das Gerät hindurchfließen, damit es messen kann, wie viel fließt. Deshalb baut man es in Reihe ein – wie ein zusätzliches Bauteil mitten in den Stromkreis." },
+  { "id": "voltmeter", "text": "Das Voltmeter misst die Spannung. Spannung ist der Unterschied zwischen zwei Punkten. Deshalb schließt man das Voltmeter parallel an – also daneben, direkt an die beiden Enden des Bauteils, das man messen will." },
+  { "id": "fehler", "text": "Und was, wenn man es vertauscht? Ein Amperemeter parallel angeschlossen wirkt fast wie ein Kurzschluss – es kann kaputtgehen. Ein Voltmeter in Reihe dagegen bremst den Strom so stark, dass fast nichts mehr fließt. Also: Amperemeter in Reihe, Voltmeter parallel." },
+  { "id": "merksatz", "text": "Merke: Das Amperemeter misst die Stromstärke und wird in Reihe eingebaut. Das Voltmeter misst die Spannung und wird parallel angeschlossen." },
+  { "id": "transfer", "text": "Ein Multimeter kann beides – du stellst es einfach auf Ampere oder Volt um und schließt es entsprechend an. Elektriker prüfen damit ständig, ob Spannung anliegt und wie viel Strom fließt." },
+  { "id": "outro", "text": "Amperemeter in Reihe, Voltmeter parallel – so misst man richtig. Physik verstehen, Schritt für Schritt." }
+]

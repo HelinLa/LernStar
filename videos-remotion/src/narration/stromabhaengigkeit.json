@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wovon hängt die Stromstärke ab? Mal fließt viel Strom, mal wenig. Zwei Größen entscheiden darüber – und ihr Zusammenspiel führt direkt zum wichtigsten Gesetz der Elektrizitätslehre." },
+  { "id": "spannung", "text": "Die erste Größe ist die Spannung – der Antrieb. Erhöhst du die Spannung und lässt alles andere gleich, fließt mehr Strom. Mehr Antrieb bedeutet mehr Stromstärke. Spannung und Stromstärke wachsen zusammen." },
+  { "id": "widerstand", "text": "Die zweite Größe ist der Widerstand – die Bremse. Er behindert den Ladungsfluss. Erhöhst du den Widerstand, fließt weniger Strom. Ein großer Widerstand bremst den Strom, ein kleiner lässt ihn leicht durch." },
+  { "id": "zusammen", "text": "Beides zusammen: Mehr Spannung treibt an, mehr Widerstand bremst. Die Stromstärke ist also groß, wenn die Spannung hoch und der Widerstand klein ist. Genau das beschreibt später das Ohmsche Gesetz: I gleich U durch R." },
+  { "id": "merksatz", "text": "Merke: Die Stromstärke hängt von zwei Größen ab. Mehr Spannung bringt mehr Strom, mehr Widerstand bringt weniger Strom." },
+  { "id": "transfer", "text": "Deshalb fließt durch einen dünnen, langen Draht mit großem Widerstand nur wenig Strom, durch einen dicken Kupferdraht viel. Und mit einem Dimmer regelst du über den Widerstand, wie hell eine Lampe leuchtet." },
+  { "id": "outro", "text": "Spannung treibt an, Widerstand bremst – das steuert die Stromstärke. Physik verstehen, Schritt für Schritt." }
+]

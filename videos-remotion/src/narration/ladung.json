@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Was ist elektrische Ladung? Ein Luftballon, an den Haaren gerieben, zieht plötzlich deine Haare an und klebt an der Wand. Dahinter steckt die elektrische Ladung." },
+  { "id": "zwei", "text": "Es gibt genau zwei Arten von Ladung: positive Ladung, mit einem Plus, und negative Ladung, mit einem Minus. Jeder geladene Körper trägt einen Überschuss der einen oder anderen Sorte." },
+  { "id": "regel", "text": "Und es gilt dieselbe Regel wie bei den Magneten: Gleiche Ladungen stoßen sich ab – Plus und Plus drücken auseinander. Ungleiche Ladungen ziehen sich an – Plus und Minus springen zusammen." },
+  { "id": "reibung", "text": "Beim Reiben werden winzige negative Ladungen von einem Körper auf den anderen übertragen. Der Ballon wird negativ, deine Haare bleiben positiv – und weil ungleiche Ladungen sich anziehen, stellen sich die Haare auf. Das nennt man Reibungselektrizität." },
+  { "id": "merksatz", "text": "Merke: Es gibt positive und negative Ladung. Gleiche Ladungen stoßen sich ab, ungleiche ziehen sich an. Durch Reiben entsteht Reibungselektrizität." },
+  { "id": "transfer", "text": "Deshalb knistert es, wenn du einen Pullover ausziehst, und ein Blitz ist nichts anderes als ein gewaltiger Ladungsausgleich zwischen Wolke und Erde." },
+  { "id": "outro", "text": "Plus und Minus, anziehen und abstoßen – das ist die elektrische Ladung. Physik verstehen, Schritt für Schritt." }
+]
