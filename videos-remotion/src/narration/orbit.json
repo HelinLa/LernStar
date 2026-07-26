@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Die Raumstation. Warum schweben Astronauten in der ISS, obwohl sie ständig fallen? Das klingt seltsam – schauen wir genau hin." },
+  { "id": "schwerkraft", "text": "Erste Vermutung: Im All gibt es keine Schwerkraft. Das stimmt nicht. In der Höhe der ISS wirkt die Erdanziehung fast so stark wie am Boden. Warum schweben sie dann?" },
+  { "id": "kanone", "text": "Newtons Idee: Schießt man eine Kugel waagerecht ab, fällt sie zu Boden. Je schneller, desto weiter fliegt sie. Ist sie schnell genug, fällt sie zwar immer weiter, verfehlt aber die Erde und umkreist sie." },
+  { "id": "orbit", "text": "Genau das macht die ISS. Sie fällt ununterbrochen zur Erde, ist aber so schnell seitwärts unterwegs, dass sie immer daran vorbeifällt. Alles an Bord fällt gemeinsam – deshalb schwebt es." },
+  { "id": "merksatz", "text": "Merke: Eine Umlaufbahn ist ein ständiger freier Fall um die Erde. Die Schwerkraft wirkt weiter. Weil alles gemeinsam fällt, herrscht Schwerelosigkeit." },
+  { "id": "transfer", "text": "So bleiben auch Satelliten oben. Und der Mond fällt seit Milliarden Jahren um die Erde." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
