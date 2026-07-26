@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Was ist eine gleichförmige Bewegung? Stell dir ein Auto mit Tempomat auf gerader Strecke vor. Es fährt immer gleich schnell – nicht schneller, nicht langsamer. Genau das nennt man eine gleichförmige Bewegung." },
+  { "id": "definition", "text": "Bei einer gleichförmigen Bewegung bleibt die Geschwindigkeit die ganze Zeit gleich. Der Körper legt in gleichen Zeiten immer gleiche Strecken zurück. In jeder Sekunde kommt genau dasselbe Stück Weg dazu." },
+  { "id": "beispiel", "text": "Ein Beispiel: Ein Roboter fährt jede Sekunde genau 2 Meter. Nach einer Sekunde ist er bei 2 Metern, nach zwei Sekunden bei 4 Metern, nach drei Sekunden bei 6 Metern. Immer der gleiche Zuwachs – das ist gleichförmig." },
+  { "id": "diagramm", "text": "Im Weg-Zeit-Diagramm erkennst du die gleichförmige Bewegung sofort: Die Messpunkte liegen auf einer geraden Linie. Je steiler diese Gerade, desto größer die Geschwindigkeit. Die Steigung der Geraden ist genau die Geschwindigkeit v gleich s durch t." },
+  { "id": "merksatz", "text": "Merke: Bei einer gleichförmigen Bewegung ist die Geschwindigkeit konstant. Gleiche Strecken in gleichen Zeiten. Im Weg-Zeit-Diagramm ergibt das eine Gerade, und ihre Steigung ist die Geschwindigkeit." },
+  { "id": "transfer", "text": "Gleichförmig fährt zum Beispiel ein Zug mit Tempomat, eine Rolltreppe oder ein Förderband im Paketzentrum. Überall dort bewegt sich etwas mit gleichbleibendem Tempo geradeaus." },
+  { "id": "outro", "text": "Gleiche Strecke in gleicher Zeit – das ist die gleichförmige Bewegung. Physik verstehen, Schritt für Schritt." }
+]

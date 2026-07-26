@@ -116,6 +116,16 @@ import { KraefteGleichgewicht, KRAEFTE_GLEICHGEWICHT_DURATION } from './videos/K
 import { Wechselwirkung, WECHSELWIRKUNG_DURATION } from './videos/Wechselwirkung';
 import { SchiefeEbene, SCHIEFE_EBENE_DURATION } from './videos/SchiefeEbene';
 import { Reibung, REIBUNG_DURATION } from './videos/Reibung';
+import { BewegungBeschreiben, BEWEGUNG_BESCHREIBEN_DURATION } from './videos/BewegungBeschreiben';
+import { GeschwindigkeitRs, GESCHWINDIGKEIT_RS_DURATION } from './videos/GeschwindigkeitRs';
+import { GleichfoermigeBewegung, GLEICHFOERMIGE_BEWEGUNG_DURATION } from './videos/GleichfoermigeBewegung';
+import { StDiagrammDeuten, ST_DIAGRAMM_DEUTEN_DURATION } from './videos/StDiagrammDeuten';
+import { BeschleunigungJg9, BESCHLEUNIGUNG_JG9_DURATION } from './videos/BeschleunigungJg9';
+import { BeschleunigungFormelJg9, BESCHLEUNIGUNG_FORMEL_JG9_DURATION } from './videos/BeschleunigungFormelJg9';
+import { VerzoegerungJg9, VERZOEGERUNG_JG9_DURATION } from './videos/VerzoegerungJg9';
+import { BremswegJg9, BREMSWEG_JG9_DURATION } from './videos/BremswegJg9';
+import { FreierFallJg9, FREIER_FALL_JG9_DURATION } from './videos/FreierFallJg9';
+import { LuftwiderstandJg9, LUFTWIDERSTAND_JG9_DURATION } from './videos/LuftwiderstandJg9';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -357,6 +367,16 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Wechselwirkung" component={Wechselwirkung} durationInFrames={WECHSELWIRKUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="SchiefeEbene" component={SchiefeEbene} durationInFrames={SCHIEFE_EBENE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Reibung" component={Reibung} durationInFrames={REIBUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="BewegungBeschreiben" component={BewegungBeschreiben} durationInFrames={BEWEGUNG_BESCHREIBEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="GeschwindigkeitRs" component={GeschwindigkeitRs} durationInFrames={GESCHWINDIGKEIT_RS_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="GleichfoermigeBewegung" component={GleichfoermigeBewegung} durationInFrames={GLEICHFOERMIGE_BEWEGUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="StDiagrammDeuten" component={StDiagrammDeuten} durationInFrames={ST_DIAGRAMM_DEUTEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="BeschleunigungJg9" component={BeschleunigungJg9} durationInFrames={BESCHLEUNIGUNG_JG9_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="BeschleunigungFormelJg9" component={BeschleunigungFormelJg9} durationInFrames={BESCHLEUNIGUNG_FORMEL_JG9_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="VerzoegerungJg9" component={VerzoegerungJg9} durationInFrames={VERZOEGERUNG_JG9_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="BremswegJg9" component={BremswegJg9} durationInFrames={BREMSWEG_JG9_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="FreierFallJg9" component={FreierFallJg9} durationInFrames={FREIER_FALL_JG9_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="LuftwiderstandJg9" component={LuftwiderstandJg9} durationInFrames={LUFTWIDERSTAND_JG9_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

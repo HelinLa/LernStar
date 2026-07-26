@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Was passiert, wenn ein Körper immer schneller wird? Ein Auto an der Ampel steht zuerst still und wird dann Sekunde für Sekunde schneller. Diese Änderung der Geschwindigkeit nennt man Beschleunigung." },
+  { "id": "definition", "text": "Beschleunigung bedeutet: Die Geschwindigkeit ändert sich. Das kann heißen, ein Körper wird schneller, langsamer oder ändert seine Richtung. Immer wenn sich das Tempo ändert, wirkt eine Beschleunigung – und dahinter steckt immer eine Kraft." },
+  { "id": "beispiel", "text": "Schau auf den Tacho beim Anfahren: Nach einer Sekunde 3 Meter pro Sekunde, nach zwei Sekunden 6, nach drei Sekunden 9. In jeder Sekunde kommen 3 Meter pro Sekunde dazu. Die Geschwindigkeit wächst gleichmäßig." },
+  { "id": "diagramm", "text": "Im Weg-Zeit-Diagramm sieht eine beschleunigte Bewegung anders aus als eine gleichförmige: Die Linie ist keine Gerade mehr, sondern eine nach oben gekrümmte Kurve. In gleichen Zeiten legt der Körper immer größere Strecken zurück." },
+  { "id": "merksatz", "text": "Merke: Eine Beschleunigung ist jede Änderung der Geschwindigkeit – schneller werden, langsamer werden oder die Richtung ändern. Dafür braucht es immer eine Kraft. Im Weg-Zeit-Diagramm zeigt sich das als gekrümmte Kurve." },
+  { "id": "transfer", "text": "Beschleunigung spürst du überall: beim Anfahren des Busses, in der Achterbahn oder wenn ein Flugzeug auf der Startbahn Fahrt aufnimmt. Immer drückt es dich dabei in den Sitz." },
+  { "id": "outro", "text": "Ändert sich die Geschwindigkeit, wirkt eine Beschleunigung. Physik verstehen, Schritt für Schritt." }
+]

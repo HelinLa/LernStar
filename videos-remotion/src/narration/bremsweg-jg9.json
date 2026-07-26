@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Warum braucht ein Auto zum Anhalten viel mehr Platz, als man denkt? Wer die Gefahr unterschätzt, bremst zu spät. Der ganze Anhalteweg besteht aus zwei Teilen: dem Reaktionsweg und dem Bremsweg." },
+  { "id": "reaktion", "text": "Zuerst der Reaktionsweg: Vom Erkennen der Gefahr bis zum Treten der Bremse vergeht etwa eine Sekunde. In dieser Zeit fährt das Auto ungebremst weiter. Bei 50 Kilometern pro Stunde sind das schon rund 15 Meter." },
+  { "id": "brems", "text": "Dann kommt der Bremsweg: die Strecke, bis das Auto wirklich steht. Das Entscheidende ist: Verdoppelst du die Geschwindigkeit, wird der Bremsweg viermal so lang. Denn der Bremsweg wächst mit dem Quadrat der Geschwindigkeit." },
+  { "id": "vergleich", "text": "Ein Vergleich: Bei 50 Kilometern pro Stunde beträgt der Bremsweg etwa 25 Meter. Bei 100 Kilometern pro Stunde sind es nicht das Doppelte, sondern rund 100 Meter – viermal so viel. Deshalb ist Tempo im Verkehr so gefährlich." },
+  { "id": "merksatz", "text": "Merke: Anhalteweg gleich Reaktionsweg plus Bremsweg. Der Reaktionsweg wächst gleichmäßig mit dem Tempo, der Bremsweg aber mit dem Quadrat der Geschwindigkeit. Doppeltes Tempo heißt vierfacher Bremsweg." },
+  { "id": "transfer", "text": "Genau darum gibt es Tempolimits vor Schulen und in der Stadt. Und darum gilt die Faustregel: Halbe Tacho-Zahl als Meter Abstand zum Vordermann. Sicherheit beginnt beim Fuß vom Gas." },
+  { "id": "outro", "text": "Doppeltes Tempo, vierfacher Bremsweg – das solltest du nie vergessen. Physik verstehen, Schritt für Schritt." }
+]

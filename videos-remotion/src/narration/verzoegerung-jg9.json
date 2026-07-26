@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Was ist der Unterschied zwischen schneller werden und langsamer werden? Beides ist Beschleunigung – aber in verschiedene Richtungen. Das Abbremsen nennt man auch Verzögerung." },
+  { "id": "definition", "text": "Wird ein Körper schneller, zeigt die Beschleunigung in Bewegungsrichtung. Wird er langsamer, wirkt sie gegen die Bewegung. Man nennt das dann eine negative Beschleunigung oder Verzögerung – die Geschwindigkeit nimmt ab." },
+  { "id": "beispiel", "text": "Ein Beispiel: Ein Fahrrad fährt mit 8 Metern pro Sekunde und bremst in 4 Sekunden bis zum Stillstand. Die Geschwindigkeit ändert sich um minus 8 Meter pro Sekunde. Also a gleich minus 8 durch 4 – das sind minus 2 Meter pro Sekunde zum Quadrat." },
+  { "id": "kraft", "text": "Auch zum Abbremsen braucht es eine Kraft, die entgegen der Bewegung wirkt – zum Beispiel die Bremskraft oder die Reibung. Ohne solche Kraft würde der Körper einfach mit gleicher Geschwindigkeit weiterfahren." },
+  { "id": "merksatz", "text": "Merke: Schneller werden ist Beschleunigung in Bewegungsrichtung, langsamer werden ist Verzögerung – eine negative Beschleunigung gegen die Bewegung. Beides braucht eine Kraft, und beides berechnest du mit a gleich delta v durch delta t." },
+  { "id": "transfer", "text": "Verzögerung erlebst du beim Bremsen im Auto, wenn dich der Gurt hält, oder wenn ein Zug sanft in den Bahnhof rollt. Beim Sport bremst der Fallschirm den Springer stark ab." },
+  { "id": "outro", "text": "Bremsen ist Beschleunigung nach hinten – die Verzögerung. Physik verstehen, Schritt für Schritt." }
+]

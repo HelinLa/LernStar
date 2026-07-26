@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Warum wird ein Auto gleichmäßig schneller – und wie beschreibt man das in Zahlen? Dafür gibt es eine eigene Größe: die Beschleunigung a. Sie sagt dir, wie stark sich die Geschwindigkeit in jeder Sekunde ändert." },
+  { "id": "formel", "text": "Die Beschleunigung berechnest du als Geschwindigkeitsänderung geteilt durch die Zeit. In Formelzeichen: a gleich delta v durch delta t. Delta v ist der Unterschied zwischen Endgeschwindigkeit und Anfangsgeschwindigkeit." },
+  { "id": "einheit", "text": "Die Einheit der Beschleunigung ist Meter pro Sekunde pro Sekunde, kurz Meter pro Sekunde zum Quadrat. Eine Beschleunigung von 3 Metern pro Sekunde zum Quadrat bedeutet: In jeder Sekunde kommen 3 Meter pro Sekunde an Geschwindigkeit dazu." },
+  { "id": "beispiel", "text": "Ein Beispiel: Ein Auto wird in 5 Sekunden von null auf 20 Meter pro Sekunde schneller. Dann ist a gleich 20 Meter pro Sekunde geteilt durch 5 Sekunden – also 4 Meter pro Sekunde zum Quadrat." },
+  { "id": "merksatz", "text": "Merke: Die Beschleunigung ist a gleich delta v durch delta t – Geschwindigkeitsänderung durch Zeit. Die Einheit ist Meter pro Sekunde zum Quadrat. Sie sagt, wie viel Tempo pro Sekunde dazukommt." },
+  { "id": "transfer", "text": "Autohersteller geben genau das an, wenn sie sagen: von null auf hundert in wenigen Sekunden. Je kleiner diese Zeit, desto größer die Beschleunigung – und desto stärker drückt es dich in den Sitz." },
+  { "id": "outro", "text": "a gleich delta v durch delta t – so misst man, wie schnell das Tempo steigt. Physik verstehen, Schritt für Schritt." }
+]

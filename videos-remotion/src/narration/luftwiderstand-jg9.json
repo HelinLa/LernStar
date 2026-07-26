@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Warum fällt eine Feder langsamer als ein Stein? Liegt es wirklich am Gewicht? Im Alltag scheint es so – doch der wahre Grund ist ein anderer: der Luftwiderstand." },
+  { "id": "luft", "text": "Beim Fallen muss ein Körper die Luft vor sich wegschieben. Diese Luft bremst ihn – das ist der Luftwiderstand. Er wirkt immer gegen die Bewegung. Je größer die Fläche und je schneller der Körper, desto stärker bremst die Luft." },
+  { "id": "feder", "text": "Eine Feder hat eine große Fläche und sehr wenig Gewicht. Der Luftwiderstand bremst sie deshalb stark und sie schwebt langsam zu Boden. Der Stein ist klein und schwer – die Luft bremst ihn kaum, und er fällt schnell." },
+  { "id": "vakuum", "text": "Der Beweis: Nimmt man die Luft weg, im Vakuum, fallen Feder und Stein wieder gleich schnell und landen gemeinsam. Es lag also nie am Gewicht, sondern immer nur an der Luft." },
+  { "id": "merksatz", "text": "Merke: Der Luftwiderstand bremst jeden fallenden Körper und wirkt gegen die Bewegung. Er ist größer bei großer Fläche und hohem Tempo. Ohne Luft fallen alle Körper gleich schnell." },
+  { "id": "transfer", "text": "Genau das nutzt der Fallschirm: Seine große Fläche erzeugt viel Luftwiderstand und bremst den Springer sanft ab. Ein Rennwagen dagegen ist windschnittig geformt, damit ihn die Luft möglichst wenig bremst." },
+  { "id": "outro", "text": "Nicht das Gewicht bremst die Feder, sondern die Luft. Physik verstehen, Schritt für Schritt." }
+]

@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Warum fällt ein schwerer Stein nicht schneller als ein leichter? Das klingt erst einmal seltsam. Doch lässt man beide gleichzeitig los, treffen sie zusammen auf dem Boden auf. Das ist das Geheimnis des freien Falls." },
+  { "id": "idee", "text": "Beim freien Fall zieht nur die Schwerkraft am Körper – sonst nichts. Und die Erde beschleunigt alle Körper gleich stark, egal wie schwer sie sind. Ein schwerer Körper wird zwar stärker angezogen, ist aber auch träger. Beides gleicht sich genau aus." },
+  { "id": "g", "text": "Diese Beschleunigung heißt Fallbeschleunigung mit dem Formelzeichen g. Auf der Erde beträgt sie ungefähr 9,8 Meter pro Sekunde zum Quadrat. Das heißt: In jeder Sekunde wird der fallende Körper um etwa 10 Meter pro Sekunde schneller." },
+  { "id": "beispiel", "text": "Ein Beispiel: Nach einer Sekunde fällt der Körper mit etwa 10 Metern pro Sekunde, nach zwei Sekunden mit 20, nach drei Sekunden mit 30. Die Geschwindigkeit wächst gleichmäßig – der freie Fall ist eine beschleunigte Bewegung." },
+  { "id": "merksatz", "text": "Merke: Im freien Fall wirkt nur die Schwerkraft. Alle Körper fallen gleich schnell, unabhängig von ihrer Masse. Die Fallbeschleunigung g beträgt etwa 9,8 Meter pro Sekunde zum Quadrat." },
+  { "id": "transfer", "text": "Astronauten haben es bewiesen: Auf dem Mond, wo es keine Luft gibt, fallen eine Feder und ein Hammer tatsächlich gleich schnell und landen gemeinsam. Auch ein Bungee-Springer erlebt am Anfang den freien Fall." },
+  { "id": "outro", "text": "Ohne Luft fallen alle Körper gleich schnell. Physik verstehen, Schritt für Schritt." }
+]

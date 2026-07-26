@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie beschreibt man eine Bewegung? Ein Auto fährt los, ein Läufer rennt, ein Ball rollt. Um das genau zu erfassen, brauchst du in der Physik nur zwei Größen: den Weg und die Zeit." },
+  { "id": "bezug", "text": "Zuerst brauchst du einen festen Punkt, von dem aus du misst – den Bezugspunkt. Ein Körper bewegt sich immer nur in Bezug auf etwas. Sitzt du im Zug, ruhst du gegenüber deinem Sitz, bewegst dich aber gegenüber dem Bahnsteig." },
+  { "id": "weg", "text": "Der zurückgelegte Weg bekommt das Formelzeichen s und wird in Metern gemessen. Er sagt dir, wie weit sich der Körper vom Startpunkt entfernt hat. Aus einem Meter werden zwei, dann drei – der Körper bewegt sich." },
+  { "id": "zeit", "text": "Die zweite Größe ist die Zeit mit dem Formelzeichen t, gemessen in Sekunden. Du misst sie mit einer Stoppuhr. Zu jedem Zeitpunkt gehört ein bestimmter Weg – dieses Zusammenspiel beschreibt die ganze Bewegung." },
+  { "id": "tabelle", "text": "Am besten schreibst du beides in eine Weg-Zeit-Tabelle: In die eine Spalte die Zeit, in die andere den Weg. Nach einer Sekunde zwei Meter, nach zwei Sekunden vier Meter, nach drei Sekunden sechs Meter. So siehst du auf einen Blick, wie sich der Körper bewegt." },
+  { "id": "merksatz", "text": "Merke: Eine Bewegung beschreibst du mit Weg und Zeit, immer bezogen auf einen Bezugspunkt. Der Weg s in Metern, die Zeit t in Sekunden. Ein Körper bewegt sich, wenn sich sein Ort mit der Zeit ändert." },
+  { "id": "transfer", "text": "Genau so arbeiten auch Navi und Fitness-Uhr: Sie messen ständig Weg und Zeit und berechnen daraus alles Weitere. Auch ein Fahrplan ist nichts anderes als eine Weg-Zeit-Tabelle für den Zug." },
+  { "id": "outro", "text": "Weg und Zeit – mehr brauchst du nicht, um jede Bewegung zu beschreiben. Physik verstehen, Schritt für Schritt." }
+]

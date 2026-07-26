@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie liest du aus einem Diagramm heraus, was ein Körper gerade tut? Das Weg-Zeit-Diagramm ist wie ein Fingerabdruck der Bewegung. An der Form der Linie erkennst du sofort, ob ein Körper ruht, gleichmäßig fährt oder schneller wird." },
+  { "id": "achsen", "text": "Nach rechts trägst du die Zeit t auf, nach oben den zurückgelegten Weg s. Jeder Punkt der Linie sagt dir: Zu dieser Zeit war der Körper genau hier. So wird die ganze Bewegung zu einer einzigen Kurve." },
+  { "id": "waagerecht", "text": "Ist die Linie waagerecht, ändert sich der Weg nicht – der Körper steht still. Die Zeit läuft weiter, aber er bleibt am selben Ort. Eine flache Linie bedeutet immer: keine Bewegung." },
+  { "id": "gerade", "text": "Steigt die Linie als Gerade an, bewegt sich der Körper gleichförmig – mit konstanter Geschwindigkeit. Und je steiler die Gerade, desto schneller ist er. Eine steile Linie heißt viel Weg in wenig Zeit." },
+  { "id": "kurve", "text": "Wird die Linie immer steiler, also eine nach oben gekrümmte Kurve, dann wird der Körper immer schneller – er beschleunigt. In gleichen Zeiten kommen immer größere Wegstücke dazu." },
+  { "id": "merksatz", "text": "Merke: Waagerecht heißt Stillstand. Eine ansteigende Gerade heißt gleichförmig, und je steiler, desto schneller. Eine nach oben gekrümmte Kurve heißt: Der Körper beschleunigt." },
+  { "id": "transfer", "text": "So liest ein Verkehrsforscher Bewegungen von Autos, ein Trainer die Läufe seiner Sportler und ein Physiker jedes Experiment. Ein Blick auf die Kurve genügt, um zu sagen, was gerade passiert." },
+  { "id": "outro", "text": "Die Form der Linie verrät alles über die Bewegung. Physik verstehen, Schritt für Schritt." }
+]
