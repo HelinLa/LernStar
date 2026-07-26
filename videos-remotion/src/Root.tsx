@@ -97,6 +97,13 @@ import { Stromkosten, STROMKOSTEN_DURATION } from './videos/Stromkosten';
 import { Energiesparen, ENERGIESPAREN_DURATION } from './videos/Energiesparen';
 import { Stromgefahren, STROMGEFAHREN_DURATION } from './videos/Stromgefahren';
 import { PUIEPt, P_U_I_E_P_T_DURATION } from './videos/PUIEPt';
+import { VBegriff, V_BEGRIFF_DURATION } from './videos/VBegriff';
+import { VMessen, V_MESSEN_DURATION } from './videos/VMessen';
+import { VUmrechnung, V_UMRECHNUNG_DURATION } from './videos/VUmrechnung';
+import { Gleichfoermig, GLEICHFOERMIG_DURATION } from './videos/Gleichfoermig';
+import { WegZeitDiagramm, WEG_ZEIT_DIAGRAMM_DURATION } from './videos/WegZeitDiagramm';
+import { VZeitDiagramm, V_ZEIT_DIAGRAMM_DURATION } from './videos/VZeitDiagramm';
+import { VerkehrMessung, VERKEHR_MESSUNG_DURATION } from './videos/VerkehrMessung';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -319,6 +326,13 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Energiesparen" component={Energiesparen} durationInFrames={ENERGIESPAREN_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Stromgefahren" component={Stromgefahren} durationInFrames={STROMGEFAHREN_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="PUIEPt" component={PUIEPt} durationInFrames={P_U_I_E_P_T_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="VBegriff" component={VBegriff} durationInFrames={V_BEGRIFF_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="VMessen" component={VMessen} durationInFrames={V_MESSEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="VUmrechnung" component={VUmrechnung} durationInFrames={V_UMRECHNUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Gleichfoermig" component={Gleichfoermig} durationInFrames={GLEICHFOERMIG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="WegZeitDiagramm" component={WegZeitDiagramm} durationInFrames={WEG_ZEIT_DIAGRAMM_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="VZeitDiagramm" component={VZeitDiagramm} durationInFrames={V_ZEIT_DIAGRAMM_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="VerkehrMessung" component={VerkehrMessung} durationInFrames={VERKEHR_MESSUNG_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

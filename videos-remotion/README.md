@@ -185,3 +185,11 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Energiesparen | Kl.8 Leistung: Energie sparen | `src/videos/Energiesparen.tsx` |
 | Stromgefahren | Kl.8 Leistung: Gefahren & Sicherung | `src/videos/Stromgefahren.tsx` |
 | PUIEPt | Kl.8 Leistung: P=U·I & E=P·t zusammengefasst | `src/videos/PUIEPt.tsx` |
+| VBegriff | Kl.8 Bewegung: Was ist Geschwindigkeit? | `src/videos/VBegriff.tsx` |
+| VMessen | Kl.8 Bewegung: Geschwindigkeit messen | `src/videos/VMessen.tsx` |
+| VUmrechnung | Kl.8 Bewegung: m/s ⇄ km/h | `src/videos/VUmrechnung.tsx` |
+| Gleichfoermig | Kl.8 Bewegung: gleichförmige Bewegung | `src/videos/Gleichfoermig.tsx` |
+| WegZeitDiagramm | Kl.8 Bewegung: s-t-Diagramm | `src/videos/WegZeitDiagramm.tsx` |
+| VZeitDiagramm | Kl.8 Bewegung: v-t-Diagramm | `src/videos/VZeitDiagramm.tsx` |
+| VerkehrMessung | Kl.8 Bewegung: Blitzer & Abschnittskontrolle | `src/videos/VerkehrMessung.tsx` |
+| (v-formel → geschwindigkeit.mp4, beschleunigung-rs → beschleunigung.mp4 aus Kl.7 wiederverwendet) | | |
