@@ -11,7 +11,9 @@
     "still": "remotion still",
     "upgrade": "remotion upgrade",
     "audio": "node scripts/gen-audio.mjs",
-    "sfx": "node scripts/scan-sfx.mjs"
+    "sfx": "node scripts/scan-sfx.mjs",
+    "sfx:synth": "python3 scripts/gen-sfx-synth.py",
+    "sfx:eleven": "python3 scripts/gen-sfx-elevenlabs.py"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.0",

@@ -1,1 +1,6 @@
-{}
+{
+  "impact": "impact.wav",
+  "pling": "pling.wav",
+  "pop": "pop.wav",
+  "whoosh": "whoosh.wav"
+}
