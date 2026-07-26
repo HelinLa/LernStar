@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie entstehen die Farben eines Regenbogens? Nach einem Regenschauer, wenn die Sonne wieder scheint, spannt sich manchmal ein riesiger farbiger Bogen über den Himmel. Wie kommt er zustande?" },
+  { "id": "tropfen", "text": "Der Trick sind Millionen winziger Regentropfen in der Luft. Jeder einzelne Tropfen wirkt wie ein kleines Prisma. In ihm passiert dreierlei mit dem Sonnenlicht auf einmal." },
+  { "id": "weg", "text": "Erstens: Das Sonnenlicht tritt in den Tropfen ein und wird dabei gebrochen und in seine Farben zerlegt. Zweitens: An der Rückwand des Tropfens wird es reflektiert. Drittens: Beim Austritt wird es noch einmal gebrochen – und die Farben laufen endgültig auseinander." },
+  { "id": "bogen", "text": "Jeder Tropfen schickt dir nur eine Farbe direkt ins Auge. Weil aber unzählige Tropfen in verschiedenen Höhen hängen, siehst du alle Farben gleichzeitig – als Bogen. Rot liegt außen, Violett innen. Die Sonne steht dabei immer in deinem Rücken." },
+  { "id": "merksatz", "text": "Merke: Im Regentropfen wird Sonnenlicht gebrochen, an der Rückwand reflektiert und beim Austritt in seine Farben zerlegt. Viele Tropfen zusammen bilden den Bogen – Rot außen, Violett innen." },
+  { "id": "transfer", "text": "Deshalb siehst du einen Regenbogen nur, wenn die Sonne hinter dir steht und der Regen vor dir fällt. Denselben Effekt kannst du selbst mit dem Gartenschlauch erzeugen, wenn du gegen die Sonne sprühst." },
+  { "id": "outro", "text": "Jeder Tropfen ein kleines Prisma – zusammen der Regenbogen. Physik verstehen, Schritt für Schritt." }
+]

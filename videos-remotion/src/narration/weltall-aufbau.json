@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie ist das Weltall aufgebaut? Es ist unvorstellbar groß – aber nicht chaotisch. Das Universum ist in klaren Stufen geordnet. Zoomen wir Schritt für Schritt heraus." },
+  { "id": "sonnensystem", "text": "Wir starten in unserer Nachbarschaft: dem Sonnensystem. In seiner Mitte steht die Sonne, ein Stern. Um sie kreisen acht Planeten – darunter unsere Erde – mit ihren Monden. Das ist unsere kosmische Heimat." },
+  { "id": "galaxie", "text": "Jetzt zoomen wir weit heraus. Unsere Sonne ist nur einer von vielen Milliarden Sternen, die zusammen eine Galaxie bilden. Unsere Galaxie heißt Milchstraße. Sie sieht aus wie eine riesige, langsam rotierende Spirale aus Sternen." },
+  { "id": "universum", "text": "Und noch weiter: Unsere Milchstraße ist nur eine von vielen Milliarden Galaxien. Alle zusammen bilden das Universum. Zwischen den Galaxien liegen unvorstellbar weite, fast leere Räume." },
+  { "id": "merksatz", "text": "Merke: Das Weltall ist gestuft aufgebaut. Planeten kreisen um einen Stern – das Sonnensystem. Milliarden Sterne bilden eine Galaxie. Milliarden Galaxien bilden das Universum." },
+  { "id": "transfer", "text": "Diese Ordnung hilft dir, deinen Platz einzuordnen: Du lebst auf einem Planeten, der einen Stern umkreist, der in einer Galaxie liegt, die eine von unzähligen im Universum ist. Ein winziger Punkt in einem riesigen Ganzen." },
+  { "id": "outro", "text": "Planet, Stern, Galaxie, Universum – so ist das Weltall gestuft. Physik verstehen, Schritt für Schritt." }
+]

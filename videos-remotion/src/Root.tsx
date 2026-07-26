@@ -58,6 +58,13 @@ import { Lupe, LUPE_DURATION } from './videos/Lupe';
 import { Kamera, KAMERA_DURATION } from './videos/Kamera';
 import { Auge, AUGE_DURATION } from './videos/Auge';
 import { Brille, BRILLE_DURATION } from './videos/Brille';
+import { Spiegelbild, SPIEGELBILD_DURATION } from './videos/Spiegelbild';
+import { Brechung, BRECHUNG_DURATION } from './videos/Brechung';
+import { Brechungswinkel, BRECHUNGSWINKEL_DURATION } from './videos/Brechungswinkel';
+import { Totalreflexion, TOTALREFLEXION_DURATION } from './videos/Totalreflexion';
+import { Prisma, PRISMA_DURATION } from './videos/Prisma';
+import { Regenbogen, REGENBOGEN_DURATION } from './videos/Regenbogen';
+import { FarbmischungAdditiv, FARBMISCHUNG_ADDITIV_DURATION } from './videos/FarbmischungAdditiv';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -241,6 +248,13 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Kamera" component={Kamera} durationInFrames={KAMERA_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Auge" component={Auge} durationInFrames={AUGE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Brille" component={Brille} durationInFrames={BRILLE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Spiegelbild" component={Spiegelbild} durationInFrames={SPIEGELBILD_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Brechung" component={Brechung} durationInFrames={BRECHUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Brechungswinkel" component={Brechungswinkel} durationInFrames={BRECHUNGSWINKEL_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Totalreflexion" component={Totalreflexion} durationInFrames={TOTALREFLEXION_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Prisma" component={Prisma} durationInFrames={PRISMA_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Regenbogen" component={Regenbogen} durationInFrames={REGENBOGEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="FarbmischungAdditiv" component={FarbmischungAdditiv} durationInFrames={FARBMISCHUNG_ADDITIV_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

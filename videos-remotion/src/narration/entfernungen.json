@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie weit ist es im Weltall? Die Entfernungen dort sind so gewaltig, dass Kilometer als Einheit völlig versagen. Deshalb messen Astronomen anders: mit der Zeit, die das Licht unterwegs ist." },
+  { "id": "lichtjahr", "text": "Achtung, wichtig: Ein Lichtjahr ist keine Zeit, sondern eine Entfernung. Es ist die Strecke, die das Licht in einem ganzen Jahr zurücklegt. Und weil Licht 300.000 Kilometer pro Sekunde schafft, ist das eine unvorstellbar weite Strecke." },
+  { "id": "blitz", "text": "Schick einen Lichtblitz auf die Reise. Zum Mond braucht er nur gut eine Sekunde. Zur Sonne schon etwa acht Minuten – du siehst die Sonne also immer so, wie sie vor acht Minuten war." },
+  { "id": "sterne", "text": "Zu den nächsten Sternen braucht das Licht Jahre, zu fernen Galaxien Millionen von Jahren. Der Blick ins Weltall ist deshalb immer ein Blick in die Vergangenheit – du siehst die Sterne so, wie sie vor langer Zeit aussahen." },
+  { "id": "merksatz", "text": "Merke: Entfernungen im Weltall misst man in Lichtjahren. Ein Lichtjahr ist die Strecke, die das Licht in einem Jahr zurücklegt. Fernes Licht zeigt die Vergangenheit." },
+  { "id": "transfer", "text": "Deshalb könnte ein Stern, den du heute Nacht funkeln siehst, in Wirklichkeit längst erloschen sein – sein Licht ist nur noch Jahrtausende zu uns unterwegs gewesen." },
+  { "id": "outro", "text": "Ein Lichtjahr ist eine Strecke – und der Blick ins All ein Blick zurück. Physik verstehen, Schritt für Schritt." }
+]

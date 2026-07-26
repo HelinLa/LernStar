@@ -145,3 +145,10 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Kamera | Kl.7 Optik: Kamera (Linse/Blende/Sensor) | `src/videos/Kamera.tsx` |
 | Auge | Kl.7 Optik: Das Auge (Netzhaut) | `src/videos/Auge.tsx` |
 | Brille | Kl.7 Optik: Brille (Sehfehler korrigieren) | `src/videos/Brille.tsx` |
+| Spiegelbild | Kl.7 Optik: Spiegelbild (virtuell) | `src/videos/Spiegelbild.tsx` |
+| Brechung | Kl.7 Optik: Brechung (Gegenstand im Wasser) | `src/videos/Brechung.tsx` |
+| Brechungswinkel | Kl.7 Optik: Stärke der Brechung | `src/videos/Brechungswinkel.tsx` |
+| Totalreflexion | Kl.7 Optik: Lichtleiter (Totalreflexion) | `src/videos/Totalreflexion.tsx` |
+| Prisma | Kl.7 Optik: Prisma & Spektrum | `src/videos/Prisma.tsx` |
+| Regenbogen | Kl.7 Optik: Regenbogen | `src/videos/Regenbogen.tsx` |
+| FarbmischungAdditiv | Kl.7 Optik: additive Farbmischung (RGB) | `src/videos/FarbmischungAdditiv.tsx` |

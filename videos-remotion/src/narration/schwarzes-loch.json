@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Was passiert bei einem schwarzen Loch? Es ist eines der geheimnisvollsten Objekte im ganzen Universum – ein Ort, aus dem nicht einmal Licht entkommen kann. Wie entsteht so etwas?" },
+  { "id": "entstehung", "text": "Ein schwarzes Loch entsteht, wenn sehr viel Masse auf winzigem Raum zusammengedrückt wird. Am Ende ihres Lebens brechen manche riesige Sterne in sich zusammen. Ihre gesamte Masse stürzt auf einen unglaublich kleinen Punkt." },
+  { "id": "anziehung", "text": "Dadurch wird die Gravitation an dieser Stelle so extrem stark, dass alles hineingezogen wird, was zu nahe kommt. Und das Verblüffende: Sogar das Licht, das Schnellste, was es gibt, kann nicht mehr entkommen. Deshalb ist es schwarz – wir sehen nur ein Loch im Sternenhimmel." },
+  { "id": "horizont", "text": "Die Grenze, hinter der es kein Zurück mehr gibt, heißt Ereignishorizont. Alles, was diese Grenze überschreitet, ist für immer verloren. Von außen können wir nur beobachten, wie Materie kurz davor hell aufleuchtet, bevor sie verschwindet." },
+  { "id": "merksatz", "text": "Merke: Ein schwarzes Loch entsteht, wenn sehr viel Masse auf winzigem Raum konzentriert wird. Seine Anziehung ist so stark, dass nicht einmal Licht entkommt. Die Grenze heißt Ereignishorizont." },
+  { "id": "transfer", "text": "Sogar im Zentrum unserer Milchstraße sitzt ein gewaltiges schwarzes Loch, um das die inneren Sterne kreisen. Zum ersten Mal fotografiert wurde ein schwarzes Loch übrigens 2019 – als schwarzer Schatten vor glühender Materie." },
+  { "id": "outro", "text": "So viel Masse, dass selbst Licht gefangen bleibt – das schwarze Loch. Physik verstehen, Schritt für Schritt." }
+]

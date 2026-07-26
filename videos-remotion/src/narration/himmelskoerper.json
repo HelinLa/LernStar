@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Sonne, Mond und Sterne – was leuchtet eigentlich am Himmel? Alle sehen hell aus. Aber nur ein Teil davon leuchtet wirklich selbst. Sortieren wir den Nachthimmel." },
+  { "id": "selbstleuchter", "text": "Selbstleuchter erzeugen ihr Licht selbst. Dazu gehört unsere Sonne – und alle Sterne am Himmel. Denn Sterne sind nichts anderes als ferne Sonnen, riesige, glühende Gasbälle, nur unvorstellbar weit weg." },
+  { "id": "beleuchtet", "text": "Der Mond und die Planeten dagegen leuchten nicht selbst. Wir sehen sie nur, weil die Sonne sie anstrahlt und sie das Licht zurückwerfen. Der Mond ist im Grunde ein großer, von der Sonne beleuchteter Stein." },
+  { "id": "test", "text": "Der Test ist einfach: Schalte in Gedanken die Sonne aus. Sonne und Sterne würden weiterleuchten – sie sind Selbstleuchter. Mond und Planeten würden sofort dunkel, denn ohne Sonnenlicht haben sie nichts, was sie zurückwerfen könnten." },
+  { "id": "merksatz", "text": "Merke: Sonne und Sterne sind Selbstleuchter – Sterne sind ferne Sonnen. Mond und Planeten leuchten nicht selbst; wir sehen sie nur, weil die Sonne sie beleuchtet." },
+  { "id": "transfer", "text": "Deshalb funkeln Sterne die ganze Nacht, während der Mond seine Phasen durchläuft – je nachdem, wie viel von seiner beleuchteten Hälfte wir gerade sehen. Ein Planet wie die Venus leuchtet als heller Abendstern nur durch geliehenes Sonnenlicht." },
+  { "id": "outro", "text": "Selbstleuchter oder nur beleuchtet – so ordnest du den Himmel. Physik verstehen, Schritt für Schritt." }
+]

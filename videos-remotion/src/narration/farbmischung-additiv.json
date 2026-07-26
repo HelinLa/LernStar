@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie entstehen Farben auf einem Bildschirm? Dein Handy zeigt Millionen Farben – aber im Inneren nutzt es nur drei. Schaust du ganz nah hin, entdeckst du das Geheimnis." },
+  { "id": "rgb", "text": "Jeder Bildpunkt auf dem Bildschirm besteht aus drei winzigen Lichtern: einem roten, einem grünen und einem blauen. Das sind die drei Lichtgrundfarben. Aus ihnen wird jede andere Farbe gemischt." },
+  { "id": "mischen", "text": "Weil hier Licht zu Licht addiert wird, nennt man das additive Farbmischung. Rot und Grün zusammen ergeben Gelb. Grün und Blau ergeben Cyan, ein Türkis. Rot und Blau ergeben Magenta, ein Pink." },
+  { "id": "weiss", "text": "Und leuchten alle drei Farben zusammen mit voller Stärke, ergibt sich Weiß. Achtung: Bei Licht ist das anders als beim Malen mit Farbe – dort ergibt Mischen dunkle Töne. Beim Licht wird es heller, je mehr man dazugibt." },
+  { "id": "merksatz", "text": "Merke: Bildschirme mischen alle Farben additiv aus Rot, Grün und Blau. Rot plus Grün ist Gelb, Grün plus Blau ist Cyan, Rot plus Blau ist Magenta, und alle drei zusammen ergeben Weiß." },
+  { "id": "transfer", "text": "Nach diesem Prinzip arbeiten Fernseher, Handydisplays und die riesigen LED-Wände in Stadien. Aus nur drei Lichtfarben entsteht die ganze bunte Bilderwelt." },
+  { "id": "outro", "text": "Rot, Grün, Blau – daraus baut der Bildschirm jede Farbe. Physik verstehen, Schritt für Schritt." }
+]

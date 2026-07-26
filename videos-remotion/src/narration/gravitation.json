@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Die Gravitation – warum fällt eigentlich alles nach unten? Ein Apfel fällt vom Baum, aber der Mond fällt nicht auf die Erde. Dahinter steckt dieselbe Kraft: die Schwerkraft, die Gravitation." },
+  { "id": "anziehung", "text": "Die Grundregel lautet: Jede Masse zieht jede andere Masse an. Auch du ziehst diesen Tisch an – nur so winzig, dass man es nicht merkt. Erst bei riesigen Massen wie der Erde wird die Anziehung spürbar stark." },
+  { "id": "masse", "text": "Und je größer die Masse eines Körpers, desto stärker zieht er. Die Erde ist gewaltig – deshalb zieht sie alles kräftig zu ihrem Mittelpunkt. Das nennen wir unten. Deshalb fällt der Apfel zu Boden." },
+  { "id": "planeten", "text": "Vergleiche denselben Stein auf verschiedenen Himmelskörpern. Auf dem kleinen Mond ist die Anziehung schwach – der Stein fällt langsam und ist leicht. Auf der Erde stärker. Auf dem riesigen Jupiter zieht die Gravitation am kräftigsten – dort wäre der Stein am schwersten." },
+  { "id": "orbit", "text": "Und der Mond? Der fällt tatsächlich ständig zur Erde – aber er bewegt sich gleichzeitig so schnell zur Seite, dass er die Erde immer wieder verfehlt und sie in einer Kreisbahn umläuft. Dieses ewige Fallen ist seine Umlaufbahn." },
+  { "id": "merksatz", "text": "Merke: Jede Masse zieht jede andere an – das ist die Gravitation. Je größer die Masse, desto stärker die Anziehung. Sie hält Planeten auf ihren Bahnen." },
+  { "id": "transfer", "text": "Die Gravitation hält den Mond bei der Erde, die Erde bei der Sonne und alle Sterne in ihrer Galaxie. Sie ist die Kraft, die das ganze Weltall zusammenhält." },
+  { "id": "outro", "text": "Masse zieht Masse an – das ist die Schwerkraft. Physik verstehen, Schritt für Schritt." }
+]

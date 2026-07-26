@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Welche Farben stecken im weißen Licht? Weißes Licht sieht aus wie – nun ja, weiß. Aber schickt man es durch ein Prisma, geschieht etwas Wunderschönes: Es zerfällt in alle Farben des Regenbogens." },
+  { "id": "prisma", "text": "Ein Prisma ist ein Glaskörper mit dreieckigem Querschnitt. Trifft weißes Licht darauf, wird es beim Eintritt und beim Austritt gebrochen. Und dabei zeigt sich: Weiß ist gar keine eigene Farbe, sondern eine Mischung aus vielen." },
+  { "id": "spektrum", "text": "Das Prisma fächert das Licht in die Spektralfarben auf: Rot, Orange, Gelb, Grün, Blau und Violett. Diese Farbfolge nennt man das Spektrum. Sie steckt also die ganze Zeit im weißen Licht – das Prisma macht sie nur sichtbar." },
+  { "id": "warum", "text": "Warum trennen sich die Farben? Weil sie unterschiedlich stark gebrochen werden. Violettes Licht wird am stärksten abgelenkt, rotes am wenigsten. Dadurch laufen die Farben auseinander und erscheinen nebeneinander." },
+  { "id": "merksatz", "text": "Merke: Ein Prisma zerlegt weißes Licht in die Spektralfarben Rot bis Violett, weil die Farben unterschiedlich stark gebrochen werden – Violett am meisten, Rot am wenigsten. Weiß ist eine Mischung aller Farben." },
+  { "id": "transfer", "text": "Genau dieses Auffächern steckt hinter dem Regenbogen, hinter dem Farbschimmer auf einer CD und hinter den bunten Rändern, die manchmal in einer Lupe erscheinen." },
+  { "id": "outro", "text": "Weiß ist bunt – das Prisma verrät es. Physik verstehen, Schritt für Schritt." }
+]

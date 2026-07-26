@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie holt ein Teleskop ferne Objekte näher heran? Mit bloßem Auge ist der Mond eine kleine Scheibe. Durch ein Teleskop siehst du plötzlich Krater und Gebirge. Wie schafft das Gerät das?" },
+  { "id": "vergroessern", "text": "Die erste Aufgabe eines Teleskops ist das Vergrößern. Mit Linsen oder Spiegeln vergrößert es das Bild, sodass du viel mehr Einzelheiten erkennst – die Mondkrater, die Ringe des Saturn oder die Wolkenbänder des Jupiter." },
+  { "id": "sammeln", "text": "Die zweite, oft wichtigere Aufgabe ist das Lichtsammeln. Das Teleskop hat eine große Öffnung und fängt damit viel mehr Licht ein als dein winziges Auge. Dadurch werden auch lichtschwache Objekte sichtbar, die du sonst gar nicht sehen könntest." },
+  { "id": "groesser", "text": "Deshalb gilt bei Teleskopen: je größer die Öffnung, desto besser. Ein großer Spiegel sammelt mehr Licht und zeigt schwächere und fernere Sterne. Riesige Teleskope auf hohen Bergen haben Spiegel von vielen Metern Durchmesser." },
+  { "id": "merksatz", "text": "Merke: Ein Teleskop vergrößert das Bild und sammelt mit seiner großen Öffnung viel Licht. So werden ferne Details und lichtschwache Objekte sichtbar." },
+  { "id": "transfer", "text": "Vom kleinen Fernrohr im Garten bis zum riesigen Weltraumteleskop im All arbeiten alle nach diesem Prinzip: mehr Licht sammeln und das Bild vergrößern, um tiefer ins Weltall zu blicken." },
+  { "id": "outro", "text": "Licht sammeln und vergrößern – so holt das Teleskop den Himmel heran. Physik verstehen, Schritt für Schritt." }
+]

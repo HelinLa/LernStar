@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie sieht man mit besonderen Teleskopen unsichtbares Licht? Unsere Augen sehen nur einen winzigen Teil aller Strahlung. Objekte im Weltall senden aber viel mehr aus – und Spezialteleskope machen es sichtbar." },
+  { "id": "infrarot", "text": "Da ist zum Beispiel die Infrarotstrahlung – Wärmestrahlung. Sie kommt von warmem Staub und von Orten, an denen gerade neue Sterne entstehen. Infrarotteleskope können sogar durch dichte Staubwolken hindurchschauen." },
+  { "id": "radio", "text": "Dann gibt es Radiowellen. Mit riesigen Radioteleskopen, die wie große Schüsseln aussehen, empfängt man das schwache Funkeln von kalten Gaswolken und weit entfernten Galaxien." },
+  { "id": "roentgen", "text": "Und schließlich die Röntgenstrahlung. Sie stammt von den heißesten, energiereichsten Orten im All – von explodierenden Sternen oder der Umgebung schwarzer Löcher. Röntgenteleskope müssen dafür ins Weltall, weil die Erdatmosphäre diese Strahlung abfängt." },
+  { "id": "merksatz", "text": "Merke: Himmelsobjekte senden auch unsichtbare Strahlung aus. Infrarot zeigt warmen Staub, Radiowellen zeigen kalte Gaswolken, Röntgenstrahlung zeigt heiße, energiereiche Orte." },
+  { "id": "transfer", "text": "Erst durch diese verschiedenen Teleskope entsteht ein vollständiges Bild des Weltalls. Jede Strahlungsart erzählt einen anderen Teil der Geschichte – zusammen ergeben sie das große Ganze." },
+  { "id": "outro", "text": "Infrarot, Radio, Röntgen – unsichtbares Licht sichtbar gemacht. Physik verstehen, Schritt für Schritt." }
+]

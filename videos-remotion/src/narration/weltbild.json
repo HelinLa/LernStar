@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie hat sich die Vorstellung vom Weltall verändert? Was heute selbstverständlich klingt, war lange völlig anders. Die Geschichte des Weltbilds ist eine Geschichte mutiger Forscher." },
+  { "id": "geozentrisch", "text": "Über viele Jahrhunderte glaubten die Menschen: Die Erde steht fest im Mittelpunkt, und Sonne, Mond und Sterne kreisen um sie herum. Das nennt man das geozentrische Weltbild – Erde in der Mitte. Es passte gut zum täglichen Augenschein." },
+  { "id": "kopernikus", "text": "Dann kam Kopernikus mit einer kühnen Idee: Nicht die Erde, sondern die Sonne steht im Mittelpunkt. Die Erde ist selbst nur ein Planet, der um die Sonne läuft. Das heißt heliozentrisches Weltbild – Sonne in der Mitte." },
+  { "id": "galilei", "text": "Galilei richtete als einer der Ersten ein Fernrohr zum Himmel und lieferte Beweise: Er sah Monde um den Jupiter kreisen und die Phasen der Venus. Kepler beschrieb die Bahnen als Ellipsen. Neue Beobachtungen stürzten das alte Weltbild." },
+  { "id": "merksatz", "text": "Merke: Früher galt das geozentrische Weltbild – die Erde im Mittelpunkt. Kopernikus, Galilei und Kepler zeigten mit neuen Beobachtungen: Die Sonne steht im Mittelpunkt, die Erde ist ein Planet." },
+  { "id": "transfer", "text": "Diese Umwälzung zeigt, wie Wissenschaft arbeitet: Nicht der alte Glaube zählt, sondern die Beobachtung. Ein einziges gutes Instrument – das Fernrohr – veränderte das ganze Bild vom Kosmos." },
+  { "id": "outro", "text": "Von der Erde in der Mitte zur Sonne im Zentrum – Beobachtung schlägt Glaube. Physik verstehen, Schritt für Schritt." }
+]
