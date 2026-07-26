@@ -54,12 +54,12 @@ const DayChart: React.FC<{ showSolar?: boolean; showDemand?: boolean; marks?: bo
         </>}
         {showDemand && <polyline points={demandPts.join(' ')} fill="none" stroke={COLORS.ink} strokeWidth={5} strokeDasharray="12 8" />}
       </g>
-      {showSolar && <text x={px(12)} y={py(solarAt(12)) - 20} fontSize={26} fontWeight={800} fill={COLORS.amber} textAnchor="middle">☀️ Solar</text>}
-      {showDemand && <text x={px(21.5)} y={py(demandAt(21.5)) - 16} fontSize={26} fontWeight={800} fill={COLORS.ink}>Bedarf</text>}
+      {showSolar && <text x={px(12)} y={py(solarAt(12)) - 22} fontSize={26} fontWeight={800} fill={COLORS.amber} textAnchor="middle">☀️ Solar</text>}
+      {showDemand && <text x={px(15.7)} y={py(demandAt(15.7)) + 44} fontSize={26} fontWeight={800} fill={COLORS.ink} textAnchor="middle">Bedarf</text>}
       {marks && <>
-        <text x={px(12)} y={py(0.98)} fontSize={28} fontWeight={900} fill={COLORS.green} textAnchor="middle">Überschuss ↑</text>
-        <text x={px(2.5)} y={py(0.62)} fontSize={26} fontWeight={900} fill={COLORS.red} textAnchor="middle">Lücke</text>
-        <text x={px(23)} y={py(0.62)} fontSize={26} fontWeight={900} fill={COLORS.red} textAnchor="middle">Lücke</text>
+        <text x={px(12)} y={py(0.60)} fontSize={28} fontWeight={900} fill={COLORS.green} textAnchor="middle">Überschuss</text>
+        <text x={px(3)} y={py(0.28)} fontSize={26} fontWeight={900} fill={COLORS.red} textAnchor="middle">Lücke 🌙</text>
+        <text x={px(22.2)} y={py(0.28)} fontSize={26} fontWeight={900} fill={COLORS.red} textAnchor="middle">Lücke 🌙</text>
       </>}
     </svg>
   );

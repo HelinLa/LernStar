@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Manchmal gibt es zu viel Strom, manchmal zu wenig. Wäre es nicht praktisch, den Überschuss aufzuheben, bis man ihn wirklich braucht? Genau das machen Energiespeicher." },
+  { "id": "beobachten", "text": "Die Idee ist einfach. Gibt es einen Überschuss, wird er gespeichert. Fehlt später Strom, gibt der Speicher ihn wieder ab. So verschiebt man Energie von der Zeit, in der zu viel da ist, in die Zeit, in der zu wenig da ist." },
+  { "id": "pumpspeicher", "text": "Ein gutes Beispiel ist das Pumpspeicherwerk. Bei Überschuss wird Wasser mit dem Strom nach oben in einen hoch gelegenen See gepumpt. Dort wartet es als Lageenergie. Wird Strom gebraucht, lässt man das Wasser wieder nach unten stürzen, wo es eine Turbine und einen Generator antreibt." },
+  { "id": "arten", "text": "Es gibt verschiedene Speicher. Der Akku speichert Energie chemisch, das Pumpspeicherwerk als Lageenergie des Wassers, und beim Wasserstoff wird mit überschüssigem Strom Wasser aufgespalten und das Gas gespeichert. Alle machen dasselbe: Sie heben Energie für später auf." },
+  { "id": "verluste", "text": "Ganz umsonst ist das Speichern nicht. Bei jedem Laden und Entladen geht ein Teil der Energie verloren, meist als Wärme. Man bekommt also weniger heraus, als man hineingesteckt hat. Das beschreibt der Speicher-Wirkungsgrad – er ist immer kleiner als hundert Prozent." },
+  { "id": "merksatz", "text": "Merke: Energiespeicher nehmen Überschuss auf und geben ihn bei Bedarf wieder ab. Beispiele sind Akku, Pumpspeicher und Wasserstoff. Beim Speichern gibt es Verluste." },
+  { "id": "transfer", "text": "Deshalb gibt es den Hausakku zur Solaranlage, große Pumpspeicherwerke in den Bergen und die Idee, das E-Auto als Speicher fürs Stromnetz zu nutzen." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
