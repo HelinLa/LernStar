@@ -11,7 +11,7 @@ import {
   Easing,
 } from 'remotion';
 import { COLORS } from '../theme';
-import { Bg, SceneTitle, Caption, MerksatzBox, StarLogo } from '../components';
+import { Bg, SceneTitle, Caption, MerksatzBox, StarLogo, BackgroundMusic, Sfx } from '../components';
 import timings from '../narration/schwerelosigkeit.timings.json';
 
 const T = timings as Record<string, number>;
@@ -127,6 +127,7 @@ const StehenScene: React.FC<SceneProps> = ({ dur }) => {
       <Person cx={cx} feetY={platformTop} />
       <VArrow x={cx - 150} y={platformTop - 150} h={140} color={COLORS.red} label="Gewichtskraft" labelLeft />
       <VArrow x={cx + 150} y={platformTop} h={140} up color={COLORS.green} label="Auflagekraft" />
+      <Sfx sound="pop" at={Math.round(dur * 0.2)} volume={0.45} />
       <Caption>Die Erde zieht dich runter, der Boden drückt gleich stark zurück – die Waage zeigt dein Gewicht.</Caption>
     </AbsoluteFill>
   );
@@ -163,6 +164,7 @@ const FallScene: React.FC<SceneProps> = ({ dur }) => {
         {/* Auflagekraft verschwindet (grün, blasst aus) */}
         <VArrow x={localCx - 90} y={platformTop} h={70} up color={COLORS.green} opacity={support} />
       </div>
+      <Sfx sound="impact" at={2} volume={0.42} />
       <Caption color={COLORS.sky}>Niemand drückt mehr auf die Waage – sie zeigt 0 N. Du fühlst dich schwerelos.</Caption>
     </AbsoluteFill>
   );
@@ -198,6 +200,7 @@ const VergleichScene: React.FC<SceneProps> = () => {
 // ── Merksatz ───────────────────────────────────────────────────────────
 const MerksatzScene: React.FC<SceneProps> = () => (
   <AbsoluteFill>
+    <Sfx sound="pling" at={8} volume={0.55} />
     <MerksatzBox title="Schwerelosigkeit" footer="= freier Fall ohne Stützkraft">
       Im freien Fall fehlt die Gegenkraft der Unterlage.
       <br />
@@ -231,6 +234,8 @@ const TransferScene: React.FC<SceneProps> = () => (
         <InfoCard icon="✈️" title="Parabelflug" text="das Flugzeug fällt mit – alles schwebt" delay={40} />
       </div>
     </AbsoluteFill>
+    <Sfx sound="pop" at={12} volume={0.45} />
+    <Sfx sound="pop" at={40} volume={0.45} />
     <Caption delay={62}>Im Freefall-Tower oder im Parabelflug schwebt für kurze Zeit alles.</Caption>
   </AbsoluteFill>
 );
@@ -263,6 +268,7 @@ export const SCHWERELOSIGKEIT_DURATION = SCENES.reduce((sum, s) => sum + durOf(s
 export const Schwerelosigkeit: React.FC = () => {
   return (
     <Bg>
+      <BackgroundMusic total={SCHWERELOSIGKEIT_DURATION} />
       <Series>
         {SCENES.map((s) => {
           const d = durOf(s.id, s.min);
@@ -270,6 +276,7 @@ export const Schwerelosigkeit: React.FC = () => {
             <Series.Sequence key={s.id} durationInFrames={d}>
               <s.C dur={d} />
               <Audio src={staticFile(`audio/schwerelosigkeit/${s.id}.wav`)} />
+              <Sfx sound="whoosh" at={1} volume={0.4} />
             </Series.Sequence>
           );
         })}

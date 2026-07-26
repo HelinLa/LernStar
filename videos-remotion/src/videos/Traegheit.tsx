@@ -11,7 +11,7 @@ import {
   Easing,
 } from 'remotion';
 import { COLORS } from '../theme';
-import { Bg, SceneTitle, Caption, Arrow, Ball, MerksatzBox, StarLogo } from '../components';
+import { Bg, SceneTitle, Caption, Arrow, Ball, MerksatzBox, StarLogo, BackgroundMusic, Sfx } from '../components';
 import timings from '../narration/traegheit.timings.json';
 
 const T = timings as Record<string, number>;
@@ -96,6 +96,7 @@ const RuheScene: React.FC<SceneProps> = ({ dur }) => {
       <Ground />
       <Ball x={push ? x : 560} y={GROUND_Y - 46} color={COLORS.amber} />
       <Arrow x1={380} y1={GROUND_Y - 46} x2={500} y2={GROUND_Y - 46} color={COLORS.green} opacity={arrowOpacity} />
+      <Sfx sound="impact" at={pushStart} volume={0.5} />
       {frame < pushStart ? (
         <Caption>Von allein passiert nichts – die Kugel bleibt einfach liegen.</Caption>
       ) : (
@@ -150,6 +151,9 @@ const KraftScene: React.FC<SceneProps> = ({ dur }) => {
       <div style={{ position: 'absolute', left: cx + 130, top: cy - 40, fontSize: 30, fontWeight: 700, color: COLORS.green, opacity: a1 }}>schneller</div>
       <div style={{ position: 'absolute', left: cx - 290, top: cy - 40, fontSize: 30, fontWeight: 700, color: COLORS.red, opacity: a2 }}>langsamer</div>
       <div style={{ position: 'absolute', left: cx + 20, top: cy - 250, fontSize: 30, fontWeight: 700, color: COLORS.indigo, opacity: a3 }}>andere Richtung</div>
+      <Sfx sound="pop" at={Math.round(dur * 0.12)} volume={0.45} />
+      <Sfx sound="pop" at={Math.round(dur * 0.34)} volume={0.45} />
+      <Sfx sound="pop" at={Math.round(dur * 0.56)} volume={0.45} />
       <Caption>Schneller, langsamer oder abbiegen – für jede Änderung braucht es eine Kraft.</Caption>
     </AbsoluteFill>
   );
@@ -174,6 +178,7 @@ const BusScene: React.FC<SceneProps> = ({ dur }) => {
         <div style={{ position: 'absolute', bottom: -26, left: 90, width: 56, height: 56, borderRadius: '50%', background: '#0f172a', border: '4px solid #64748b' }} />
         <div style={{ position: 'absolute', bottom: -26, right: 90, width: 56, height: 56, borderRadius: '50%', background: '#0f172a', border: '4px solid #64748b' }} />
       </div>
+      <Sfx sound="impact" at={brakeStart} volume={0.5} />
       {frame < brakeStart + 24 ? (
         <Caption>Der Bus bremst plötzlich ab …</Caption>
       ) : (
@@ -186,6 +191,7 @@ const BusScene: React.FC<SceneProps> = ({ dur }) => {
 // ── Szene 6: Merksatz ──────────────────────────────────────────────────
 const MerksatzScene: React.FC<SceneProps> = () => (
   <AbsoluteFill>
+    <Sfx sound="pling" at={8} volume={0.55} />
     <MerksatzBox title="Trägheitsprinzip" footer="1. Newton'sches Gesetz">
       Ohne wirkende Kraft ändert ein Körper seinen
       <br />
@@ -225,6 +231,7 @@ export const TRAEGHEIT_DURATION = SCENES.reduce((sum, s) => sum + durOf(s.id, s.
 export const Traegheit: React.FC = () => {
   return (
     <Bg>
+      <BackgroundMusic total={TRAEGHEIT_DURATION} />
       <Series>
         {SCENES.map((s) => {
           const d = durOf(s.id, s.min);
@@ -232,6 +239,7 @@ export const Traegheit: React.FC = () => {
             <Series.Sequence key={s.id} durationInFrames={d}>
               <s.C dur={d} />
               <Audio src={staticFile(`audio/traegheit/${s.id}.wav`)} />
+              <Sfx sound="whoosh" at={1} volume={0.4} />
             </Series.Sequence>
           );
         })}

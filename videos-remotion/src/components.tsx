@@ -1,6 +1,9 @@
 import React from 'react';
 import {
   AbsoluteFill,
+  Audio,
+  Sequence,
+  staticFile,
   useCurrentFrame,
   useVideoConfig,
   interpolate,
@@ -8,6 +11,37 @@ import {
   Easing,
 } from 'remotion';
 import { COLORS, FONT, BRAND } from './theme';
+import { BG_MUSIC, BG_VOLUME } from './music';
+import sfxMap from './sfx.map.json';
+
+// ── Kurzer Sound-Effekt (One-Shot) ─────────────────────────────────────
+// Spielt public/sfx/<datei> `at` Frames nach Beginn der umgebenden Szene.
+// Rendert nichts, wenn kein passender Effekt vorhanden ist (Datei fehlt) –
+// so kann man Effekte großzügig platzieren; genutzt wird nur, was da ist.
+export const Sfx: React.FC<{ sound: string; at?: number; volume?: number }> = ({ sound, at = 0, volume = 0.5 }) => {
+  const file = (sfxMap as Record<string, string>)[sound];
+  if (!file) return null;
+  return (
+    <Sequence from={at} durationInFrames={240} name={`sfx:${sound}`} layout="none">
+      <Audio src={staticFile(`sfx/${file}`)} volume={volume} />
+    </Sequence>
+  );
+};
+
+// ── Hintergrundmusik: leise unter der Sprecherstimme, mit Fade in/out ──
+// `total` = Gesamtlänge der Komposition in Frames. Rendert nichts, wenn
+// keine Musikdatei konfiguriert ist (BG_MUSIC === null).
+export const BackgroundMusic: React.FC<{ total: number }> = ({ total }) => {
+  const frame = useCurrentFrame();
+  if (!BG_MUSIC) return null;
+  const vol = interpolate(
+    frame,
+    [0, 24, Math.max(25, total - 45), total],
+    [0, BG_VOLUME, BG_VOLUME, 0],
+    { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
+  );
+  return <Audio src={staticFile(`music/${BG_MUSIC}`)} volume={vol} loop />;
+};
 
 // ── Hintergrund: sanfter Verlauf + feines Raster ───────────────────────
 export const Bg: React.FC<{ children?: React.ReactNode }> = ({ children }) => {

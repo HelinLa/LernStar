@@ -11,7 +11,7 @@ import {
   Easing,
 } from 'remotion';
 import { COLORS } from '../theme';
-import { Bg, SceneTitle, Caption, MerksatzBox, StarLogo } from '../components';
+import { Bg, SceneTitle, Caption, MerksatzBox, StarLogo, BackgroundMusic, Sfx } from '../components';
 import timings from '../narration/traegheitAlltag.timings.json';
 
 const T = timings as Record<string, number>;
@@ -96,6 +96,7 @@ const BremsenScene: React.FC<SceneProps> = ({ dur }) => {
       <SceneTitle kicker="Bremsen" title="Du wirst nach vorn geworfen" />
       <Ground />
       <Car x={x} lean={lean} brake={braking} />
+      <Sfx sound="impact" at={brakeStart} volume={0.5} />
       {frame < brakeStart + 26 ? (
         <Caption>Das Auto bremst – dein Körper „will" mit dem alten Tempo weiterfahren.</Caption>
       ) : (
@@ -128,12 +129,16 @@ const SicherheitScene: React.FC<SceneProps> = () => (
         <InfoCard icon="↪️" title="Kurve" text="es zieht dich nach außen" delay={56} />
       </div>
     </AbsoluteFill>
+    <Sfx sound="pop" at={12} volume={0.45} />
+    <Sfx sound="pop" at={34} volume={0.45} />
+    <Sfx sound="pop" at={56} volume={0.45} />
     <Caption delay={70}>Gurt, Kopfstütze und das Ziehen in der Kurve – alles ist Trägheit.</Caption>
   </AbsoluteFill>
 );
 
 const MerksatzScene: React.FC<SceneProps> = () => (
   <AbsoluteFill>
+    <Sfx sound="pling" at={8} volume={0.55} />
     <MerksatzBox title="Trägheit im Alltag" footer="Deshalb: immer anschnallen!">
       Dein Körper behält seinen Bewegungszustand bei.
       <br />
@@ -170,6 +175,7 @@ export const TRAEGHEIT_ALLTAG_DURATION = SCENES.reduce((sum, s) => sum + durOf(s
 export const TraegheitAlltag: React.FC = () => {
   return (
     <Bg>
+      <BackgroundMusic total={TRAEGHEIT_ALLTAG_DURATION} />
       <Series>
         {SCENES.map((s) => {
           const d = durOf(s.id, s.min);
@@ -177,6 +183,7 @@ export const TraegheitAlltag: React.FC = () => {
             <Series.Sequence key={s.id} durationInFrames={d}>
               <s.C dur={d} />
               <Audio src={staticFile(`audio/traegheitAlltag/${s.id}.wav`)} />
+              <Sfx sound="whoosh" at={1} volume={0.4} />
             </Series.Sequence>
           );
         })}
