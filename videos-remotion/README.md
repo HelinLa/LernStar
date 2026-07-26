@@ -101,3 +101,6 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | LichtUndSehen | Kl.5 Optik: Licht und Sehen (Selbstleuchter/beleuchtet) | `src/videos/LichtUndSehen.tsx` |
 | Schatten | Kl.5 Optik: Schatten (Schattenwurf, Sonnenfinsternis) | `src/videos/Schatten.tsx` |
 | GegenstandSehen | Kl.5 Optik: Wie sehen wir? (Sender–Gegenstand–Empfänger) | `src/videos/GegenstandSehen.tsx` |
+| Lichtausbreitung | Kl.5 Optik: Wie breitet sich Licht aus? (geradlinig, Lichtstrahl, 300 000 km/s) | `src/videos/Lichtausbreitung.tsx` |
+| SchattenGroesse | Kl.5 Optik: Wovon hängt die Schattengröße ab? (Abstände) | `src/videos/SchattenGroesse.tsx` |
+| KernHalbschatten | Kl.5 Optik: Kern- und Halbschatten (ausgedehnte Lichtquelle) | `src/videos/KernHalbschatten.tsx` |

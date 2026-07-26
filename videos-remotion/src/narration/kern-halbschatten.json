@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Kern- und Halbschatten. Manche Schatten haben eine messerscharfe Kante, andere einen weichen, verwaschenen Rand. Woran liegt das? An der Lichtquelle." },
+  { "id": "beobachten", "text": "Eine ganz kleine, punktförmige Lampe wirft einen scharfen Schatten – innen ganz dunkel, mit klarer Grenze. Nimm stattdessen eine große, ausgedehnte Lampe: Jetzt bekommt der Schatten außen einen weichen grauen Saum." },
+  { "id": "zusammenhang", "text": "Der Grund: Eine große Lampe hat viele Leuchtpunkte. Hinter dem Körper gibt es einen Bereich, den kein einziger Punkt erreicht – das ist der Kernschatten, tiefschwarz. Daneben liegt ein Bereich, den nur ein Teil der Punkte trifft – der Halbschatten, halb hell." },
+  { "id": "variieren", "text": "Zwei Lampen zeigen es besonders schön. Jede Lampe wirft ihren eigenen Schatten. Wo sich beide Schatten überlappen, ist es am dunkelsten – der Kernschatten. Wo nur eine Lampe blockiert ist, bleibt es halb hell – der Halbschatten." },
+  { "id": "beispiel", "text": "Am Himmel siehst du das bei der Mondfinsternis. Die Erde wirft ihren Schatten auf den Mond. Im Kernschatten wird der Mond kupferrot, im Halbschatten nur ein wenig dunkler." },
+  { "id": "merksatz", "text": "Merke: Der Kernschatten bekommt gar kein Licht – er ist tiefschwarz. Der Halbschatten bekommt Licht von einem Teil der Quelle – er ist nur halb dunkel. Ausgedehnte Lichtquellen erzeugen beide." },
+  { "id": "transfer", "text": "Deshalb sind Schatten in der prallen Sonne innen scharf und am Rand weich – die Sonne ist eine große Scheibe, keine punktförmige Lampe. Auf dem Fußballfeld erzeugen vier Flutlichter sogar mehrere Schatten gleichzeitig." },
+  { "id": "outro", "text": "Kernschatten dunkel, Halbschatten halb hell. Es kommt auf die Größe der Lichtquelle an. Physik verstehen, Schritt für Schritt." }
+]

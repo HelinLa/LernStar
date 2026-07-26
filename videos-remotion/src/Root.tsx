@@ -14,6 +14,9 @@ import { Reibungswaerme, REIBUNGSWAERME_DURATION } from './videos/Reibungswaerme
 import { LichtUndSehen, LICHT_UND_SEHEN_DURATION } from './videos/LichtUndSehen';
 import { Schatten, SCHATTEN_DURATION } from './videos/Schatten';
 import { GegenstandSehen, GEGENSTAND_SEHEN_DURATION } from './videos/GegenstandSehen';
+import { Lichtausbreitung, LICHTAUSBREITUNG_DURATION } from './videos/Lichtausbreitung';
+import { SchattenGroesse, SCHATTEN_GROESSE_DURATION } from './videos/SchattenGroesse';
+import { KernHalbschatten, KERN_HALBSCHATTEN_DURATION } from './videos/KernHalbschatten';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -128,6 +131,30 @@ export const RemotionRoot: React.FC = () => {
         id="GegenstandSehen"
         component={GegenstandSehen}
         durationInFrames={GEGENSTAND_SEHEN_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Lichtausbreitung"
+        component={Lichtausbreitung}
+        durationInFrames={LICHTAUSBREITUNG_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="SchattenGroesse"
+        component={SchattenGroesse}
+        durationInFrames={SCHATTEN_GROESSE_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="KernHalbschatten"
+        component={KernHalbschatten}
+        durationInFrames={KERN_HALBSCHATTEN_DURATION}
         fps={30}
         width={1920}
         height={1080}

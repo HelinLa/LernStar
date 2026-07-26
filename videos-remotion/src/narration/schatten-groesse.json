@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wovon hängt die Größe eines Schattens ab? Mittags ist dein Schatten winzig, abends riesig lang. Und mit den Händen kannst du an der Wand einen kleinen oder einen riesigen Schatten machen. Warum?" },
+  { "id": "beobachten", "text": "Wir nehmen immer denselben Ball. Ist er nah an der Lampe, wird sein Schatten an der Wand groß. Schiebst du ihn weg von der Lampe, näher an die Wand, wird der Schatten kleiner. Der Ball ist gleich geblieben – nur sein Ort hat sich geändert." },
+  { "id": "zusammenhang", "text": "Der Grund liegt in den geraden Strahlen. Direkt neben der Lampe fächern sie stark auseinander – der Körper deckt einen breiten Bereich ab. Weiter weg laufen die Strahlen fast parallel, der abgedeckte Bereich wird schmaler." },
+  { "id": "variieren", "text": "Drei Dinge verändern die Schattengröße: der Abstand zur Lampe, der Abstand zur Wand und natürlich die Größe des Körpers selbst. Näher an der Lampe heißt: größerer Schatten." },
+  { "id": "beispiel", "text": "Genau das erlebst du mit der Sonne. Mittags steht sie hoch – dein Schatten ist kurz. Morgens und abends steht sie flach – und dein Schatten wird lang gezogen über den Boden." },
+  { "id": "merksatz", "text": "Merke: Je näher der Körper an der Lichtquelle ist, desto größer wird sein Schatten. Und je größer der Körper, desto größer der Schatten." },
+  { "id": "transfer", "text": "Probier es selbst: Halte deine Hand dicht an die Taschenlampe – ein riesiger Handschatten. Genauso vergrößert ein Diaprojektor ein kleines Bild zu einer großen Leinwand." },
+  { "id": "outro", "text": "Nah an der Lampe: großer Schatten. Weit weg: kleiner Schatten. Physik verstehen, Schritt für Schritt." }
+]

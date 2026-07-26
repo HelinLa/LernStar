@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie breitet sich Licht aus? Von der Lampe bis zu deinem Auge – läuft das Licht in Kurven, oder immer schön geradeaus? Finden wir es heraus." },
+  { "id": "beobachten", "text": "Schau dir einen Sonnenstrahl an, der durch die Wolken bricht, oder den Strahl einer Taschenlampe im Nebel. Du siehst es sofort: Das Licht läuft schnurgerade – nie um die Ecke." },
+  { "id": "modell", "text": "Deshalb zeichnen Physiker das Licht als Lichtstrahl: eine gerade Linie mit einem Pfeil, der die Richtung zeigt. Viele Strahlen zusammen bilden ein Lichtbündel." },
+  { "id": "blende", "text": "Ein schöner Beweis: drei Pappen mit je einem Loch. Nur wenn alle drei Löcher genau auf einer geraden Linie liegen, kommt das Licht hindurch. Verschiebst du eine Pappe, ist es dunkel – das Licht kann den Knick nicht machen." },
+  { "id": "tempo", "text": "Und wie schnell ist Licht? Unglaubliche 300.000 Kilometer pro Sekunde. In einer einzigen Sekunde umrundet es die Erde fast achtmal. Nichts ist schneller als das Licht." },
+  { "id": "merksatz", "text": "Merke: Licht breitet sich geradlinig aus – in alle Richtungen, immer in geraden Linien. Wir stellen es als Lichtstrahl dar." },
+  { "id": "transfer", "text": "Diese gerade Ausbreitung steckt überall: im scharfen Strahl eines Lasers, in den Sonnenstrahlen durch die Wolken und im Lichtkegel einer Taschenlampe." },
+  { "id": "outro", "text": "Licht läuft immer geradeaus – blitzschnell und in geraden Linien. Physik verstehen, Schritt für Schritt." }
+]
