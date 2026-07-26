@@ -162,3 +162,7 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Weltbild | Kl.7 Weltall: geo-/heliozentrisch | `src/videos/Weltbild.tsx` |
 | Urknall | Kl.7 Weltall: Urknall (Ausdehnung) | `src/videos/Urknall.tsx` |
 | (tag-nacht.mp4 aus Kl.6 wird in Kl.7 „Blick ins Weltall" wiederverwendet) | | |
+| Geschwindigkeit | Kl.7 Bewegung: v = s/t (s-t-Diagramm) | `src/videos/Geschwindigkeit.tsx` |
+| Beschleunigung | Kl.7 Bewegung: a = Δv/Δt | `src/videos/Beschleunigung.tsx` |
+| KraftNewton | Kl.7 Kraft: F = m·a (Newton, Gewichtskraft) | `src/videos/KraftNewton.tsx` |
+| Hebelgesetz | Kl.7 Hebel: F₁·l₁ = F₂·l₂ | `src/videos/Hebelgesetz.tsx` |
