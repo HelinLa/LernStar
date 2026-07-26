@@ -135,3 +135,6 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Mondphasen | Kl.6 Astronomie: Mondphasen | `src/videos/Mondphasen.tsx` |
 | Sonnenfinsternis | Kl.6 Astronomie: Sonnenfinsternis | `src/videos/Sonnenfinsternis.tsx` |
 | Mondfinsternis | Kl.6 Astronomie: Mondfinsternis (Blutmond) | `src/videos/Mondfinsternis.tsx` |
+| Reflexion | Kl.6 Optik: Reflexionsgesetz & ebener Spiegel | `src/videos/Reflexion.tsx` |
+| ReiheParallel | Kl.6 Strom: Reihen- & Parallelschaltung | `src/videos/ReiheParallel.tsx` |
+| Elektromagnet6 | Kl.6 Strom: Elektromagnet (Spule, abschaltbar) | `src/videos/Elektromagnet6.tsx` |

@@ -29,7 +29,8 @@ const MirrorDiagram: React.FC<{ a: number; progressIn?: number; progressOut?: nu
   // Normale zeigt nach oben. Einfallender Strahl kommt von oben-links, reflektierter geht oben-rechts.
   const inX = hitX - Math.sin(rad) * L, inY = hitY - Math.cos(rad) * L;
   const outX = hitX + Math.sin(rad) * L, outY = hitY - Math.cos(rad) * L;
-  const ix = hitX + (inX - hitX) * progressIn, iy = hitY + (inY - hitY) * progressIn;
+  // einfallender Strahl wächst von der Quelle (inX,inY) zum Auftreffpunkt
+  const ix = inX + (hitX - inX) * progressIn, iy = inY + (hitY - inY) * progressIn;
   const ox = hitX + (outX - hitX) * progressOut, oy = hitY + (outY - hitY) * progressOut;
   return (
     <svg style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%' }} viewBox="0 0 1920 1080">

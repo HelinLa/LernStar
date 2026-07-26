@@ -48,6 +48,9 @@ import { Jahreszeiten, JAHRESZEITEN_DURATION } from './videos/Jahreszeiten';
 import { Mondphasen, MONDPHASEN_DURATION } from './videos/Mondphasen';
 import { Sonnenfinsternis, SONNENFINSTERNIS_DURATION } from './videos/Sonnenfinsternis';
 import { Mondfinsternis, MONDFINSTERNIS_DURATION } from './videos/Mondfinsternis';
+import { Reflexion, REFLEXION_DURATION } from './videos/Reflexion';
+import { ReiheParallel, REIHE_PARALLEL_DURATION } from './videos/ReiheParallel';
+import { Elektromagnet6, ELEKTROMAGNET6_DURATION } from './videos/Elektromagnet6';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -221,6 +224,9 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Mondphasen" component={Mondphasen} durationInFrames={MONDPHASEN_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Sonnenfinsternis" component={Sonnenfinsternis} durationInFrames={SONNENFINSTERNIS_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Mondfinsternis" component={Mondfinsternis} durationInFrames={MONDFINSTERNIS_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Reflexion" component={Reflexion} durationInFrames={REFLEXION_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="ReiheParallel" component={ReiheParallel} durationInFrames={REIHE_PARALLEL_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Elektromagnet6" component={Elektromagnet6} durationInFrames={ELEKTROMAGNET6_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );
