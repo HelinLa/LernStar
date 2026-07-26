@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=43" />
+  <link rel="stylesheet" href="style.css?v=44" />
   <link rel="stylesheet" href="quiz-game.css?v=1" />
 <!-- Markdown + Mathe-Rendering für Chat -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
@@ -377,8 +377,15 @@
     </div>
 
     <!-- Topics Section -->
-    <div class="topics-section">
+    <div class="topics-section" id="topicsSection">
       <div class="topics-list" id="topicsList"></div>
+    </div>
+
+    <!-- Lernmodule Section (Physik Realschule: Video + Simulation + Arbeitsblatt + Aufgaben pro Thema) -->
+    <div class="lernmodule-section" id="lernmoduleSection" style="display:none">
+      <h2 class="section-heading">🌟 Lernmodule</h2>
+      <p class="lernmodule-intro">Arbeite jedes Thema Schritt für Schritt durch: erst das Video, dann die Simulation, danach das Arbeitsblatt und zum Schluss die Aufgaben.</p>
+      <div class="lernmodule-list" id="lernmoduleList"></div>
     </div>
 
     <!-- Experiments Section -->
@@ -662,7 +669,7 @@
 <script src="content.js?v=152"></script>
 <script src="js/ai_engine.js?v=1"></script>
 <script src="physics-sim.js?v=90"></script>
-<script src="app.js?v=101"></script>
+<script src="app.js?v=102"></script>
 <script src="quiz-game.js?v=1"></script>
 <!-- ── Animated Explainer Modal ─────────────────────────────── -->
 <div id="explainerModal" role="dialog" aria-modal="true" aria-labelledby="explainerTitle">

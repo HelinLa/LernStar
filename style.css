@@ -999,6 +999,116 @@ ul { list-style: none; }
 }
 
 /* ============================================================
+   LERNMODULE (Physik Realschule): Video → Sim → Arbeitsblatt → Aufgaben
+   ============================================================ */
+.lernmodule-section { padding:0 32px 60px; max-width:900px; }
+.lernmodule-intro {
+  text-align:center; color:var(--text-muted);
+  font-size:.98rem; line-height:1.5;
+  margin:-16px auto 28px; max-width:640px;
+}
+.lernmodule-list { display:flex; flex-direction:column; gap:22px; }
+.lm-chapter { margin-top:14px; font-size:1.15rem; }
+.lm-chapter:first-child { margin-top:0; }
+
+.lm-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-top:5px solid var(--gc,#7C3AED);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:22px 24px 24px;
+}
+.lm-card-head { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:14px; }
+.lm-num {
+  flex-shrink:0;
+  font-size:.72rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--gc,#7C3AED); background:var(--gl,#EDE9FE);
+  padding:5px 12px; border-radius:20px;
+}
+.lm-title {
+  flex:1 1 240px; min-width:0;
+  margin:0;
+  font-family:var(--font-head); font-size:1.25rem; font-weight:800; line-height:1.25;
+  word-break:break-word; overflow-wrap:anywhere;
+}
+
+.lm-progress { display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+.lm-progress-track { flex:1; height:8px; background:var(--border); border-radius:8px; overflow:hidden; }
+.lm-progress-fill {
+  display:block; height:100%; border-radius:8px;
+  background:linear-gradient(90deg,var(--gc,#7C3AED),var(--gc2,#A855F7));
+  transition:width .4s cubic-bezier(.4,0,.2,1);
+}
+.lm-progress-label { flex-shrink:0; font-size:.8rem; font-weight:700; color:var(--text-muted); white-space:nowrap; }
+
+.lm-steps { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
+.lm-step {
+  display:flex; gap:16px; padding:16px;
+  border-radius:var(--radius-sm);
+  background:var(--bg); border:1px solid var(--border);
+  transition:border-color var(--transition), background var(--transition);
+}
+.lm-step-rail { flex-shrink:0; }
+.lm-step-emoji {
+  width:46px; height:46px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem; background:var(--surface); border:2px solid var(--border);
+}
+.lm-step-main { flex:1; min-width:0; }
+.lm-step-top { display:flex; align-items:center; gap:10px; margin-bottom:4px; flex-wrap:wrap; }
+.lm-step-label { font-weight:800; font-size:1rem; }
+.lm-step-badge {
+  font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.04em;
+  padding:3px 9px; border-radius:20px;
+  background:var(--border); color:var(--text-muted);
+}
+.lm-step-desc { font-size:.9rem; color:var(--text-muted); line-height:1.5; margin:0 0 12px; }
+.lm-step-btn {
+  display:inline-flex; align-items:center; gap:9px;
+  min-height:46px; padding:11px 20px;
+  border-radius:12px; border:none; cursor:pointer;
+  font-family:var(--font-main); font-weight:800; font-size:.95rem;
+  background:var(--gc,#7C3AED); color:#fff;
+  transition:transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
+}
+.lm-step-btn:hover { transform:translateY(-2px); box-shadow:var(--shadow); }
+.lm-step-btn:focus-visible { outline:3px solid var(--gc,#7C3AED); outline-offset:2px; }
+.lm-step-btn-ico { font-size:1.05rem; }
+.lm-step-locked {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:.86rem; font-weight:700; font-style:italic; color:var(--text-muted);
+}
+
+/* Zustände: noch nicht begonnen / in Bearbeitung / abgeschlossen */
+.lm-step.lm-todo .lm-step-btn { background:var(--gl,#EDE9FE); color:var(--gc,#7C3AED); }
+.lm-step.lm-todo .lm-step-btn:hover { background:var(--gc,#7C3AED); color:#fff; }
+.lm-step.lm-current { background:var(--gl,#EDE9FE); border-color:var(--gc,#7C3AED); box-shadow:inset 0 0 0 1px var(--gc,#7C3AED); }
+.lm-step.lm-current .lm-step-emoji { border-color:var(--gc,#7C3AED); }
+.lm-step.lm-current .lm-step-badge { background:var(--gc,#7C3AED); color:#fff; }
+.lm-step.lm-done { background:#ecfdf5; border-color:#a7f3d0; }
+.lm-step.lm-done .lm-step-emoji { border-color:#10B981; background:#d1fae5; }
+.lm-step.lm-done .lm-step-badge { background:#d1fae5; color:#047857; }
+.lm-step.lm-done .lm-step-btn { background:#10B981; color:#fff; }
+.lm-step.lm-unavail { opacity:.72; }
+.lm-step.lm-unavail .lm-step-emoji { opacity:.5; }
+
+/* Responsiv: Tablet & Smartphone */
+@media (max-width:768px){
+  .lernmodule-section { padding:0 18px 48px; }
+}
+@media (max-width:600px){
+  .lernmodule-section { padding:0 14px 44px; }
+  .lm-card { padding:18px 16px 20px; border-radius:14px; }
+  .lm-title { font-size:1.12rem; }
+  .lm-step { padding:13px; gap:12px; }
+  .lm-step-emoji { width:40px; height:40px; font-size:1.2rem; }
+  .lm-step-btn { width:100%; justify-content:center; }
+  .lm-progress { flex-wrap:wrap; gap:8px; }
+  .lm-progress-label { font-size:.75rem; }
+}
+
+/* ============================================================
    EXERCISES SECTION
    ============================================================ */
 .exercises-section { padding:0 32px 60px; max-width:900px; }

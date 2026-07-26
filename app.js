@@ -1318,6 +1318,24 @@ function renderSubject() {
   // Gesprächsverlauf beim Fachwechsel zurücksetzen
   _chatHistory = [];
 
+  // ── Realschule-Physik: Themen als zusammenhängende Lernmodule darstellen ──
+  // (Lernvideo → Simulation → Arbeitsblatt → Vertiefende Aufgaben, alles pro Thema untereinander)
+  const lmSection      = document.getElementById('lernmoduleSection');
+  const topicsSectionEl = document.getElementById('topicsSection');
+  const isRsPhysik = activeSchoolType === 'realschule' && subject.id === 'physik';
+  if (isRsPhysik) {
+    if (topicsSectionEl) topicsSectionEl.style.display = 'none';
+    const es = document.getElementById('experimentsSection'); if (es) es.style.display = 'none';
+    const xs = document.getElementById('exercisesSection');   if (xs) xs.style.display = 'none';
+    if (lmSection) lmSection.style.display = '';
+    renderLernmodule(subject);
+    return;
+  }
+  // Andere Fächer/Schulformen: bestehende Darstellung, Lernmodul-Sektion aus
+  if (lmSection) lmSection.style.display = 'none';
+  if (topicsSectionEl) topicsSectionEl.style.display = '';
+  const _xs = document.getElementById('exercisesSection'); if (_xs) _xs.style.display = '';
+
   // Topics (mit Play-Button für Mathe/Physik)
   const topicsList = document.getElementById('topicsList');
   topicsList.innerHTML = '';
@@ -1437,6 +1455,185 @@ function renderExercises(subject, diffFilter) {
         ${isDone ? '🔄 Nochmal üben' : '▶ Aufgabe starten'}
       </button>`;
     list.appendChild(item);
+  });
+}
+
+// ============================================================
+// LERNMODULE – Physik Realschule: Video → Simulation → Arbeitsblatt → Aufgaben
+// Reine Darstellungsschicht: nutzt vorhandene Aktionen (playLernvideo,
+// openErklaerVideo, openExperiment, openArbeitsblatt, startExercise) weiter.
+// ============================================================
+
+// Fortschritt pro Schritt lokal merken (localStorage, wiederverwendbar)
+function _lmLoad() { try { return JSON.parse(localStorage.getItem('ls_lm') || '{}'); } catch (e) { return {}; } }
+function _lmSaveStore(o) { try { localStorage.setItem('ls_lm', JSON.stringify(o)); } catch (e) {} }
+function _lmStateKey(topicKey, step) { return state.gradeId + '|' + state.subjectId + '|' + topicKey + '|' + step; }
+function _lmStepDone(topicKey, step) { return !!_lmLoad()[_lmStateKey(topicKey, step)]; }
+function lmMark(topicKey, step) {
+  const o = _lmLoad();
+  o[_lmStateKey(topicKey, step)] = 1;
+  _lmSaveStore(o);
+  const grade = CONTENT[state.gradeId];
+  const subject = grade && grade.subjects.find(s => s.id === state.subjectId);
+  if (subject) renderLernmodule(subject);
+}
+
+function _lmJs(s) { return String(s || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"); }
+function _lmSlug(str) {
+  return String(str || '').toLowerCase()
+    .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'thema';
+}
+
+const _LM_STOP = new Set(['und','oder','eine','einen','einem','einer','der','die','das','den','dem','wie','was','wann','warum','wovon','wieso','ein','ist','sind','man','wir','auf','mit','von','fuer','als','sich','sein','seine','aus','hat','haben','kann','koennen','dass','sowie','welche','welcher','welches','ueber','unter','durch','zwei','drei','alles','mein','dein',
+  // generische Adjektive – zu unspezifisch für die Zuordnung (Kapitel-Fallback ist zuverlässiger)
+  'elektrische','elektrischen','elektrischer','elektrisches','elektrisch','berechnet','berechnen','misst','messen','funktioniert']);
+function _lmWords(str) {
+  return String(str || '').toLowerCase()
+    .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, ' ').split(' ')
+    .filter(w => w.length >= 4 && !_LM_STOP.has(w));
+}
+// Ordnet einem Thema die fachlich passende Vertiefungsaufgabe zu:
+// erst über den Thementitel, sonst über den Kapiteltitel. Kein Treffer → null.
+function _lmMatchExercise(topic, chapterName, exercises) {
+  if (!exercises || !exercises.length) return null;
+  const pick = (words) => {
+    const set = new Set(words);
+    let best = null, bestN = 0;
+    exercises.forEach(ex => {
+      let n = 0;
+      _lmWords(ex.title).forEach(w => { if (set.has(w)) n++; });
+      if (n > bestN) { bestN = n; best = ex; }
+    });
+    return bestN > 0 ? best : null;
+  };
+  return pick(_lmWords(topic.name)) || pick(_lmWords(chapterName));
+}
+
+const _LM_STEP_META = {
+  video: { icon: '🎥', title: 'Lernvideo',           desc: 'Schau dir zuerst das Lernvideo an und lerne die Grundlagen kennen.' },
+  sim:   { icon: '🧪', title: 'Simulation',          desc: 'Untersuche den Zusammenhang selbst und verändere die Parameter.' },
+  ab:    { icon: '📄', title: 'Arbeitsblatt',        desc: 'Bearbeite das Arbeitsblatt und sichere deine Ergebnisse.' },
+  ex:    { icon: '📝', title: 'Vertiefende Aufgaben', desc: 'Übe weiter und wende dein Wissen auf neue Aufgaben an.' },
+};
+
+function _lmBuildSteps(topic, chapterName, exercises) {
+  const tk = topic.exp || _lmSlug(topic.name);
+  const nameJs = _lmJs(topic.name);
+  const steps = [];
+
+  // 1. Lernvideo (echtes MP4 bevorzugt, sonst Erklärvideo)
+  if (topic.video) {
+    steps.push({ key: 'video', available: true, btn: 'Lernvideo starten',
+      action: `playLernvideo('${_lmJs(topic.video)}','${nameJs}')` });
+  } else if ((typeof EV_SCENES !== 'undefined' && EV_SCENES[topic.name]) || topic.explanation) {
+    steps.push({ key: 'video', available: true, btn: 'Erklärvideo starten',
+      action: `openErklaerVideo('${nameJs}')` });
+  } else {
+    steps.push({ key: 'video', available: false });
+  }
+
+  // 2. Simulation
+  if (topic.exp) {
+    steps.push({ key: 'sim', available: true, btn: 'Simulation starten',
+      action: `openExperiment('${_lmJs(topic.exp)}')` });
+  } else {
+    steps.push({ key: 'sim', available: false });
+  }
+
+  // 3. Arbeitsblatt (interaktiv aus der Simulation)
+  if (topic.exp && typeof _physHatArbeitsblatt === 'function' && _physHatArbeitsblatt(topic.exp)) {
+    steps.push({ key: 'ab', available: true, btn: 'Arbeitsblatt öffnen',
+      action: `openArbeitsblatt('${_lmJs(topic.exp)}')` });
+  } else {
+    steps.push({ key: 'ab', available: false });
+  }
+
+  // 4. Vertiefende Aufgaben (fachlich passende Aufgabe des Kapitels)
+  const ex = _lmMatchExercise(topic, chapterName, exercises);
+  if (ex) {
+    const realDone = state.progress && state.progress[`${state.gradeId}_${state.subjectId}_${ex.id}`] != null;
+    steps.push({ key: 'ex', available: true, btn: 'Aufgaben starten',
+      action: `startExercise('${_lmJs(ex.id)}')`, extraDone: realDone });
+  } else {
+    steps.push({ key: 'ex', available: false, unavailText: 'Für dieses Thema gibt es noch keine Aufgaben.' });
+  }
+
+  // Fortschritt bestimmen
+  steps.forEach(s => { s.done = s.available && (s.extraDone || _lmStepDone(tk, s.key)); });
+  const avail = steps.filter(s => s.available);
+  const doneCount = avail.filter(s => s.done).length;
+  const currentKey = (avail.find(s => !s.done) || {}).key;
+  steps.forEach(s => {
+    s.cls = !s.available ? 'lm-unavail' : (s.done ? 'lm-done' : (s.key === currentKey ? 'lm-current' : 'lm-todo'));
+  });
+  return { tk, steps, doneCount, total: avail.length };
+}
+
+function _lmStepHTML(step, tk, num) {
+  const meta = _LM_STEP_META[step.key];
+  const badge = step.done ? '✓ erledigt'
+    : (step.cls === 'lm-current' ? 'dran' : (!step.available ? 'bald' : ''));
+  let action;
+  if (step.available) {
+    action = `<button class="lm-step-btn" type="button" onclick="${step.action}; lmMark('${_lmJs(tk)}','${step.key}')">`
+      + `<span class="lm-step-btn-ico" aria-hidden="true">${meta.icon}</span>${step.btn}</button>`;
+  } else {
+    action = `<span class="lm-step-locked">🔒 ${step.unavailText || 'Für dieses Thema noch nicht verfügbar.'}</span>`;
+  }
+  return `
+    <li class="lm-step ${step.cls}">
+      <div class="lm-step-rail"><span class="lm-step-emoji" aria-hidden="true">${meta.icon}</span></div>
+      <div class="lm-step-main">
+        <div class="lm-step-top">
+          <span class="lm-step-label">${num}. ${meta.title}</span>
+          ${badge ? `<span class="lm-step-badge">${badge}</span>` : ''}
+        </div>
+        <p class="lm-step-desc">${meta.desc}</p>
+        ${action}
+      </div>
+    </li>`;
+}
+
+function _lmCardHTML(topic, modNum, chapterName, exercises) {
+  const built = _lmBuildSteps(topic, chapterName, exercises);
+  const { tk, steps, doneCount, total } = built;
+  const pct = total ? Math.round((doneCount / total) * 100) : 0;
+  const stepsHTML = steps.map((s, i) => _lmStepHTML(s, tk, i + 1)).join('');
+  return `
+    <div class="lm-card-head">
+      <span class="lm-num">Lernmodul ${modNum}</span>
+      <h4 class="lm-title">${topic.name}</h4>
+    </div>
+    <div class="lm-progress" role="group" aria-label="Fortschritt: ${doneCount} von ${total} Schritten abgeschlossen">
+      <div class="lm-progress-track"><span class="lm-progress-fill" style="width:${pct}%"></span></div>
+      <span class="lm-progress-label">${doneCount} von ${total} Schritten abgeschlossen</span>
+    </div>
+    <ol class="lm-steps">${stepsHTML}</ol>`;
+}
+
+function renderLernmodule(subject) {
+  const list = document.getElementById('lernmoduleList');
+  if (!list) return;
+  list.innerHTML = '';
+  const exercises = subject.exercises || [];
+  let modNum = 0;
+  let currentChapter = '';
+  subject.topics.forEach(t => {
+    if (t.isChapter) {
+      currentChapter = t.name;
+      const h = document.createElement('h3');
+      h.className = 'topic-chapter-header lm-chapter';
+      h.textContent = t.name;
+      list.appendChild(h);
+      return;
+    }
+    modNum++;
+    const card = document.createElement('article');
+    card.className = 'lm-card';
+    card.innerHTML = _lmCardHTML(t, modNum, currentChapter, exercises);
+    list.appendChild(card);
   });
 }
 
