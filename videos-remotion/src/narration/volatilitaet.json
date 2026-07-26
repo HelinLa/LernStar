@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Man könnte meinen: Bauen wir einfach ganz viele Windräder und Solaranlagen, dann ist das Stromproblem gelöst. Doch so einfach ist es leider nicht. Warum eigentlich?" },
+  { "id": "beobachten", "text": "Das Problem: Sonne und Wind liefern nicht immer gleich viel. Nachts scheint keine Sonne, bei Windstille steht das Windrad still. Die Erzeugung schwankt ständig – mal gibt es viel Strom, mal fast keinen." },
+  { "id": "diagramm", "text": "Schau dir einen Tag an. Die Solarerzeugung ist mittags am höchsten und nachts null. Der Strombedarf dagegen ist ziemlich gleichmäßig und hat abends sogar eine Spitze, wenn alle zu Hause sind. Erzeugung und Bedarf passen zeitlich oft nicht zusammen." },
+  { "id": "luecke", "text": "Dadurch entstehen zwei Situationen. Mittags liefert die Sonne mehr, als gerade gebraucht wird – es gibt einen Überschuss. Abends und nachts liefert sie zu wenig – dann entsteht eine Lücke. Der Strom kommt also oft zur falschen Zeit." },
+  { "id": "ausgleich", "text": "Deshalb reichen viele Windräder allein nicht. Man braucht einen Ausgleich: Speicher, die den Überschuss aufbewahren und ihn abgeben, wenn zu wenig erzeugt wird. So wird aus schwankender Erzeugung eine verlässliche Versorgung." },
+  { "id": "merksatz", "text": "Merke: Sonne und Wind erzeugen schwankend, mal viel, mal wenig. Erzeugung und Bedarf passen zeitlich nicht zusammen. Deshalb braucht man Ausgleich und Speicher." },
+  { "id": "transfer", "text": "So erklären sich die Mittags-Solarspitze, bei der zeitweise zu viel Strom da ist, und die gefürchtete Dunkelflaute, wenn tagelang wenig Wind und wenig Sonne zusammenkommen." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
