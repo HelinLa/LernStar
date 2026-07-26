@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Die Arbeit. Im Alltag ist Arbeit alles, was anstrengt. In der Physik ist das anders – hier zählt nur eine ganz bestimmte Sache." },
+  { "id": "beobachten", "text": "Stell dir vor, du hältst eine schwere Kiste einfach nur fest. Das strengt an – und trotzdem sagt die Physik: Du verrichtest keine Arbeit. Erst wenn du die Kiste ein Stück schiebst oder hochhebst, leistest du Arbeit." },
+  { "id": "formel", "text": "Warum? Physikalische Arbeit entsteht nur, wenn eine Kraft einen Körper ein Stück weit bewegt. Und man rechnet ganz einfach: Arbeit ist Kraft mal Weg. W gleich F mal s." },
+  { "id": "variieren", "text": "Zwei Dinge machen die Arbeit größer: eine größere Kraft und ein längerer Weg. Bewegt sich dagegen gar nichts, ist der Weg null – und damit auch die Arbeit null. Nur Halten ist keine Arbeit." },
+  { "id": "joule", "text": "Die Kraft misst man in Newton, den Weg in Metern. Beides zusammen ergibt die Arbeit in Joule. Schiebst du zum Beispiel mit zehn Newton über zwei Meter, dann leistest du zwanzig Joule Arbeit." },
+  { "id": "merksatz", "text": "Merke: Arbeit ist Kraft mal Weg. Sie entsteht nur, wenn sich der Körper in Richtung der Kraft bewegt." },
+  { "id": "transfer", "text": "Deshalb gilt: Eine Kiste hochheben oder schieben ist Arbeit. Sie nur festzuhalten ist keine – auch wenn die Arme mit der Zeit schwer werden." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

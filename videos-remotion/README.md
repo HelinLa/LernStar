@@ -87,3 +87,4 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Orbit      | 9.2.14 Orbit / ISS        | `src/videos/Orbit.tsx`      |
 | Rueckstoss | 9.2.15 Rückstoß / Rakete  | `src/videos/Rueckstoss.tsx` |
 | Energie    | 9.3.1 Energie (Formen, Joule) | `src/videos/Energie.tsx` |
+| Arbeit     | 9.3.2 Arbeit (W = F·s)    | `src/videos/Arbeit.tsx`     |
