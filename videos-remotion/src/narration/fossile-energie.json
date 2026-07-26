@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Kohle, Öl und Gas liefern uns viel Energie. Aber was passiert eigentlich mit diesem Brennstoff, wenn er einmal verbrannt ist? Ist er dann einfach weg?" },
+  { "id": "beobachten", "text": "Beim Verbrennen wird der Kohlehaufen immer kleiner, bis er verschwunden ist. Übrig bleiben nur Asche und Abgase, die in die Luft aufsteigen. Der Brennstoff selbst ist unwiederbringlich verbraucht." },
+  { "id": "endlich", "text": "Das ist das Problem fossiler Energieträger: Es gibt nur einen begrenzten Vorrat. Kohle, Öl und Gas sind über Millionen Jahre entstanden. Was wir heute verbrennen, wächst nicht nach. Je mehr wir nutzen, desto kleiner wird der Vorrat – irgendwann ist er erschöpft." },
+  { "id": "co2", "text": "Und beim Verbrennen entsteht ein wichtiges Abgas: Kohlenstoffdioxid, kurz CO2. Der Kohlenstoff aus dem Brennstoff verbindet sich mit dem Sauerstoff der Luft. Dieses CO2 steigt in die Atmosphäre – und das hat Folgen für unser Klima, wie du später noch sehen wirst." },
+  { "id": "vergleich", "text": "Stell dir zwei Arten von Energie vor. Fossile Energieträger sind endlich und setzen CO2 frei. Regenerative Quellen wie Sonne und Wind erneuern sich dagegen laufend und stoßen beim Betrieb kaum CO2 aus. Genau darum geht es beim Umstieg auf erneuerbare Energien." },
+  { "id": "merksatz", "text": "Merke: Fossile Energieträger wie Kohle, Öl und Gas sind begrenzt und wachsen nicht nach. Beim Verbrennen entsteht das Treibhausgas CO2." },
+  { "id": "transfer", "text": "Deshalb sprechen wir über knapper werdende Öl- und Gasreserven, über den Benzinverbrauch von Autos und über die CO2-Bilanz von allem, was wir tun." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
