@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Warum wird eine Feder gleichmäßig länger? Der Federkraftmesser funktioniert nur, weil die Feder einer schönen, einfachen Regel folgt. Diese Regel heißt Hookesches Gesetz." },
+  { "id": "messen", "text": "Häng an die Feder immer größere Kräfte und miss jedes Mal die Dehnung. Ein Newton dehnt sie um ein Stück, zwei Newton um das doppelte Stück, drei Newton um das dreifache. Immer der gleiche Zuwachs pro Newton." },
+  { "id": "gerade", "text": "Trägst du die Messpunkte in ein Diagramm ein – Kraft nach rechts, Dehnung nach oben – liegen sie alle auf einer geraden Linie durch den Ursprung. Die Dehnung ist proportional zur Kraft. Das ist das Hookesche Gesetz." },
+  { "id": "grenze", "text": "Aber Vorsicht: Das gilt nur bis zu einer bestimmten Grenze. Überdehnst du die Feder zu stark, wird sie bleibend verformt und federt nicht mehr zurück. Dann stimmt die schöne Gerade nicht mehr." },
+  { "id": "merksatz", "text": "Merke: Nach dem Hookeschen Gesetz ist die Dehnung einer Feder proportional zur Kraft – doppelte Kraft, doppelte Dehnung. Im Diagramm eine Gerade durch den Ursprung, aber nur bis zur Elastizitätsgrenze." },
+  { "id": "transfer", "text": "Genau diese Gleichmäßigkeit macht die Feder zum perfekten Messwerkzeug. Und sie steckt auch in der Autofederung, im Kugelschreiber und im Trampolin – überall arbeitet eine Feder nach Hooke." },
+  { "id": "outro", "text": "Doppelte Kraft, doppelte Dehnung – das ist Hookes Gesetz. Physik verstehen, Schritt für Schritt." }
+]

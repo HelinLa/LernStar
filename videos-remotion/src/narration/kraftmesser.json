@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie misst man eine Kraft? Eine Kraft ist unsichtbar – man kann sie nicht direkt sehen. Aber mit einem einfachen Gerät kann man sie trotzdem genau messen: dem Federkraftmesser." },
+  { "id": "prinzip", "text": "Der Trick steckt in einer Feder. Hängst du eine Kraft an die Feder, dehnt sie sich. Und je größer die Kraft, desto länger wird die Feder. Aus der Dehnung kann man also auf die Kraft zurückschließen." },
+  { "id": "skala", "text": "Neben der Feder sitzt eine Skala mit Werten in Newton. Ein Zeiger an der Feder zeigt auf die Skala. Hängst du eine Last an, dehnt sich die Feder und der Zeiger wandert nach unten zum passenden Wert." },
+  { "id": "ablesen", "text": "So liest du die Kraft direkt in Newton ab. Eine kleine Kraft dehnt die Feder wenig, der Zeiger bleibt oben. Eine große Kraft dehnt sie stark, der Zeiger wandert weit nach unten. Einfach und genau." },
+  { "id": "merksatz", "text": "Merke: Mit einem Federkraftmesser misst man Kräfte. Die Feder dehnt sich unter der Kraft – je größer die Kraft, desto länger die Feder. Abgelesen wird in Newton." },
+  { "id": "transfer", "text": "Nach demselben Prinzip arbeitet die Kofferwaage am Flughafen und die alte Zeigerwaage im Badezimmer. Überall dehnt oder staucht eine Feder – und zeigt die Kraft an." },
+  { "id": "outro", "text": "Feder dehnt sich, Zeiger zeigt die Kraft – das ist der Kraftmesser. Physik verstehen, Schritt für Schritt." }
+]

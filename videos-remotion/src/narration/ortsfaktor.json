@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wäre ich auf dem Mond wirklich leichter? Von den Mondlandungen kennst du die riesigen Sprünge der Astronauten. Aber sind sie dort wirklich leichter? Und was bleibt gleich?" },
+  { "id": "masse", "text": "Zuerst das Wichtige: Deine Masse ändert sich nicht. Du bestehst überall aus genau derselben Menge Stoff. Mit 60 Kilogramm auf der Erde hast du auch auf dem Mond und auf dem Jupiter 60 Kilogramm Masse." },
+  { "id": "ortsfaktor", "text": "Was sich ändert, ist der Ortsfaktor g – wie stark der Himmelskörper anzieht. Auf der Erde ist g etwa 10 Newton pro Kilogramm. Auf dem Mond nur rund 1,6, weil der Mond viel kleiner ist. Auf dem riesigen Jupiter dagegen etwa 25." },
+  { "id": "vergleich", "text": "Rechne es aus mit G gleich m mal g. Auf der Erde wiegen deine 60 Kilogramm rund 600 Newton. Auf dem Mond nur etwa 96 Newton – ein Sechstel. Auf dem Jupiter dagegen über 1500 Newton. Gleiche Masse, ganz unterschiedliche Gewichtskraft." },
+  { "id": "merksatz", "text": "Merke: Auf dem Mond bist du nicht weniger Masse – du wirst nur schwächer angezogen. Die Masse bleibt gleich, aber der Ortsfaktor g ist kleiner, also ist die Gewichtskraft kleiner." },
+  { "id": "transfer", "text": "Deshalb können die Astronauten auf dem Mond so hoch springen – die Anziehung ist nur ein Sechstel. Ihre Masse und damit ihre Trägheit bleibt aber gleich: Ein Stoß tut auch auf dem Mond genauso weh." },
+  { "id": "outro", "text": "Masse bleibt, Gewichtskraft ändert sich mit dem Ortsfaktor. Physik verstehen, Schritt für Schritt." }
+]

@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Hat eine Kraft auch eine Richtung? Bisher haben wir gefragt, wie stark eine Kraft ist. Aber das ist nur die halbe Wahrheit. Zu jeder Kraft gehört auch, wohin sie zieht oder drückt." },
+  { "id": "beides", "text": "Eine Kraft hat immer zwei Angaben: den Betrag, also wie stark sie ist – in Newton. Und die Richtung, also wohin sie wirkt. Erst beides zusammen beschreibt die Kraft vollständig. Man nennt so eine Größe einen Vektor." },
+  { "id": "pfeil", "text": "Deshalb zeichnet man Kräfte als Pfeile. Die Länge des Pfeils zeigt den Betrag – ein langer Pfeil, eine große Kraft. Und die Richtung des Pfeils zeigt, wohin die Kraft wirkt. Ein Pfeil sagt also beides auf einmal." },
+  { "id": "beispiel", "text": "Dieselben 6 Newton fühlen sich ganz anders an, je nach Richtung. Nach oben ziehen sie die Kiste hoch, nach unten drücken sie sie auf den Boden, zur Seite schieben sie sie weg. Gleicher Betrag, andere Wirkung – nur wegen der Richtung." },
+  { "id": "merksatz", "text": "Merke: Zu einer Kraft gehört der Betrag in Newton und die Richtung. Man zeichnet sie als Pfeil: Die Länge zeigt den Betrag, die Pfeilrichtung die Wirkrichtung. Kräfte sind Vektoren." },
+  { "id": "transfer", "text": "Deshalb musst du bei jeder Kraft immer beides angeben. Erst dann kannst du mehrere Kräfte richtig zusammenrechnen – und genau das machen wir als Nächstes." },
+  { "id": "outro", "text": "Betrag und Richtung, dargestellt als Pfeil – so beschreibt man eine Kraft. Physik verstehen, Schritt für Schritt." }
+]

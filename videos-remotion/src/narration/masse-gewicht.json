@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Ist schwer dasselbe wie viel Masse? Im Alltag sagen wir, etwas ist schwer, und meinen: Es hat viel Masse. In der Physik sind das aber zwei verschiedene Dinge. Trennen wir sie sauber." },
+  { "id": "masse", "text": "Die Masse ist die Menge an Stoff in einem Körper. Ihre Einheit ist das Kilogramm, gemessen mit einer Waage. Und ganz wichtig: Die Masse bleibt immer gleich – egal, wo du bist. Auf der Erde, auf dem Mond, im Weltall: dieselbe Masse." },
+  { "id": "gewicht", "text": "Die Gewichtskraft dagegen ist die Kraft, mit der ein Körper angezogen wird. Ihre Einheit ist das Newton, gemessen mit einem Kraftmesser. Sie entsteht durch die Anziehung des Himmelskörpers – und die ist nicht überall gleich." },
+  { "id": "formel", "text": "Beide hängen zusammen über die Formel: Gewichtskraft gleich Masse mal Ortsfaktor, G gleich m mal g. Auf der Erde ist der Ortsfaktor etwa 10 Newton pro Kilogramm. Ein Kilogramm Masse hat hier also eine Gewichtskraft von rund 10 Newton." },
+  { "id": "merksatz", "text": "Merke: Die Masse ist die Stoffmenge in Kilogramm, überall gleich, gemessen mit der Waage. Die Gewichtskraft ist die Anziehungskraft in Newton, gemessen mit dem Kraftmesser. G gleich m mal g." },
+  { "id": "transfer", "text": "Deshalb bleibt deine Masse überall im Universum gleich – aber wie schwer du dich anfühlst, hängt vom Himmelskörper ab. Das schauen wir uns gleich am Mond genauer an." },
+  { "id": "outro", "text": "Masse ist Stoffmenge, Gewichtskraft ist Anziehung – zwei verschiedene Dinge. Physik verstehen, Schritt für Schritt." }
+]

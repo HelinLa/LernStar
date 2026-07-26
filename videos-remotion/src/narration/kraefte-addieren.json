@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Was passiert, wenn zwei Kräfte gleichzeitig ziehen? Selten wirkt nur eine einzige Kraft. Meist ziehen und drücken mehrere zugleich. Wie fasst man sie zusammen?" },
+  { "id": "resultierende", "text": "Wirken mehrere Kräfte an einem Körper, rechnet man sie zu einer einzigen Gesamtkraft zusammen. Diese Gesamtkraft nennt man die Resultierende. Sie bewirkt genau dasselbe wie alle Einzelkräfte zusammen." },
+  { "id": "gleich", "text": "Zeigen zwei Kräfte in dieselbe Richtung, addieren sich ihre Beträge. Ziehen zwei Personen mit je 100 Newton in dieselbe Richtung, ergibt das eine Gesamtkraft von 200 Newton. Die Pfeile werden aneinandergehängt." },
+  { "id": "entgegen", "text": "Zeigen zwei Kräfte in entgegengesetzte Richtungen, ziehst du die Beträge voneinander ab. Beim Tauziehen mit 100 Newton gegen 120 Newton bleibt eine Gesamtkraft von 20 Newton – in Richtung der stärkeren Seite. Die gewinnt." },
+  { "id": "merksatz", "text": "Merke: Mehrere Kräfte fasst man zur Resultierenden zusammen. Gleiche Richtung: Beträge addieren. Entgegengesetzte Richtung: Beträge subtrahieren – die Resultierende zeigt zur stärkeren Seite." },
+  { "id": "transfer", "text": "Beim Tauziehen entscheidet also die Resultierende, wohin sich das Seil bewegt. Und ein Segelboot fährt in die Richtung, die sich aus Windkraft und Wasserwiderstand zusammen ergibt." },
+  { "id": "outro", "text": "Kräfte zusammenrechnen zur Resultierenden – gleiche Richtung addieren, Gegenrichtung abziehen. Physik verstehen, Schritt für Schritt." }
+]

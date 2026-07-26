@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Warum bremst mich der Boden aus? Ein rollender Wagen wird von selbst langsamer und bleibt stehen – obwohl ihn niemand anhält. Was bremst ihn? Die Antwort ist die Reibung." },
+  { "id": "reibung", "text": "Zwischen zwei Flächen, die aneinander vorbeigleiten, wirkt eine Kraft, die der Bewegung entgegengesetzt ist: die Reibungskraft. Sie zeigt immer gegen die Bewegungsrichtung und bremst deshalb. Sie entsteht durch die winzigen Unebenheiten der Oberflächen." },
+  { "id": "untergrund", "text": "Wie stark gebremst wird, hängt vom Untergrund ab. Gib demselben Wagen auf Eis, auf Holz und auf Teppich denselben Anstoß. Auf glattem Eis rollt er weit, weil die Reibung klein ist. Auf rauem Teppich stoppt er schnell, weil die Reibung groß ist." },
+  { "id": "zweiseitig", "text": "Reibung ist Fluch und Segen zugleich. Sie bremst und verschleißt – aber ohne sie ginge nichts. Ohne Reibung könntest du nicht laufen, das Auto nicht bremsen und kein Knoten würde halten. Auf Glatteis merkst du sofort, wie wichtig Reibung ist." },
+  { "id": "merksatz", "text": "Merke: Die Reibungskraft wirkt der Bewegung entgegen und bremst. Je rauer der Untergrund, desto größer die Reibung. Ohne Reibung könnten wir weder gehen noch bremsen." },
+  { "id": "transfer", "text": "Deshalb streut man Sand auf glatte Wege, macht man Reifen mit Profil und schmiert man Maschinen mit Öl, um die Reibung dort zu verringern, wo sie stört. Mal will man viel Reibung, mal wenig." },
+  { "id": "outro", "text": "Reibung wirkt gegen die Bewegung und hängt vom Untergrund ab. Physik verstehen, Schritt für Schritt." }
+]

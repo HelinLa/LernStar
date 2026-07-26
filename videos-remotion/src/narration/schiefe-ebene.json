@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Warum geht ein Stein über eine Rampe leichter hoch? Einen schweren Stein hebst du kaum senkrecht an. Über eine Rampe rollst du ihn dagegen mühelos nach oben. Wie kann das sein?" },
+  { "id": "kraftwandler", "text": "Eine Rampe, in der Physik schiefe Ebene genannt, ist ein Kraftwandler. Sie verringert die Kraft, die du zum Hochbringen brauchst. Dafür musst du allerdings einen längeren Weg zurücklegen. Kraft sparen, Weg verlängern." },
+  { "id": "flach", "text": "Und je flacher die Rampe, desto weniger Kraft brauchst du. Eine steile Rampe verlangt viel Kraft, aber nur einen kurzen Weg. Eine flache Rampe verlangt wenig Kraft, dafür einen langen Weg. Für dieselbe Höhe kannst du dir aussuchen: viel Kraft und kurz, oder wenig Kraft und lang." },
+  { "id": "arbeit", "text": "Was dabei immer gleich bleibt, ist die Arbeit. Kraft mal Weg ergibt am Ende denselben Wert – egal wie steil die Rampe ist. Die Rampe schenkt dir keine Energie, sie verteilt die Anstrengung nur auf einen längeren Weg." },
+  { "id": "merksatz", "text": "Merke: Die schiefe Ebene ist ein Kraftwandler. Je flacher die Rampe, desto weniger Kraft brauchst du – dafür einen längeren Weg. Die Arbeit bleibt gleich." },
+  { "id": "transfer", "text": "Deshalb hat jede Auffahrt für Rollstühle eine flache Rampe, Serpentinen führen in flachen Kurven den Berg hinauf, und mit einer Rampe schiebst du schwere Fässer bequem auf den Lastwagen." },
+  { "id": "outro", "text": "Flache Rampe, wenig Kraft, langer Weg – die schiefe Ebene spart Kraft. Physik verstehen, Schritt für Schritt." }
+]

@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Kraft und Gegenkraft: Warum drücke ich zurück? Drückst du mit der Hand gegen eine Wand, spürst du, dass die Wand zurückdrückt. Das ist kein Zufall – es ist ein Grundgesetz der Physik." },
+  { "id": "paar", "text": "Kräfte treten immer paarweise auf. Übt ein Körper eine Kraft auf einen anderen aus, so wirkt gleichzeitig eine gleich große Kraft zurück – in die entgegengesetzte Richtung. Das ist das Wechselwirkungsprinzip, oft actio gleich reactio genannt." },
+  { "id": "beispiel", "text": "Drückst du mit 50 Newton gegen die Wand, drückt die Wand mit genau 50 Newton zurück. Die beiden Kräfte sind immer gleich groß und entgegengesetzt – aber sie greifen an zwei verschiedenen Körpern an. Deshalb heben sie sich nicht auf." },
+  { "id": "rueckstoss", "text": "Genau das nutzt der Rückstoß. Lässt du einen aufgeblasenen Luftballon los, drückt er die Luft nach hinten – und die Luft drückt den Ballon mit gleicher Kraft nach vorne. Actio nach hinten, reactio nach vorne. So fliegt auch eine Rakete." },
+  { "id": "merksatz", "text": "Merke: Kräfte treten immer paarweise auf. Zu jeder Kraft gibt es eine gleich große Gegenkraft in entgegengesetzte Richtung – actio gleich reactio. Beide wirken an verschiedenen Körpern." },
+  { "id": "transfer", "text": "Deshalb bewegt sich das Boot nach hinten, wenn du vom Boot auf den Steg springst. Und beim Schwimmen drückst du das Wasser nach hinten – das Wasser drückt dich nach vorne." },
+  { "id": "outro", "text": "Jede Kraft hat eine gleich große Gegenkraft – actio gleich reactio. Physik verstehen, Schritt für Schritt." }
+]

@@ -104,6 +104,18 @@ import { Gleichfoermig, GLEICHFOERMIG_DURATION } from './videos/Gleichfoermig';
 import { WegZeitDiagramm, WEG_ZEIT_DIAGRAMM_DURATION } from './videos/WegZeitDiagramm';
 import { VZeitDiagramm, V_ZEIT_DIAGRAMM_DURATION } from './videos/VZeitDiagramm';
 import { VerkehrMessung, VERKEHR_MESSUNG_DURATION } from './videos/VerkehrMessung';
+import { KraftWirkung, KRAFT_WIRKUNG_DURATION } from './videos/KraftWirkung';
+import { KraftWirkungen, KRAFT_WIRKUNGEN_DURATION } from './videos/KraftWirkungen';
+import { Kraftmesser, KRAFTMESSER_DURATION } from './videos/Kraftmesser';
+import { Federgesetz, FEDERGESETZ_DURATION } from './videos/Federgesetz';
+import { MasseGewicht, MASSE_GEWICHT_DURATION } from './videos/MasseGewicht';
+import { Ortsfaktor, ORTSFAKTOR_DURATION } from './videos/Ortsfaktor';
+import { Kraftpfeil, KRAFTPFEIL_DURATION } from './videos/Kraftpfeil';
+import { KraefteAddieren, KRAEFTE_ADDIEREN_DURATION } from './videos/KraefteAddieren';
+import { KraefteGleichgewicht, KRAEFTE_GLEICHGEWICHT_DURATION } from './videos/KraefteGleichgewicht';
+import { Wechselwirkung, WECHSELWIRKUNG_DURATION } from './videos/Wechselwirkung';
+import { SchiefeEbene, SCHIEFE_EBENE_DURATION } from './videos/SchiefeEbene';
+import { Reibung, REIBUNG_DURATION } from './videos/Reibung';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -333,6 +345,18 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="WegZeitDiagramm" component={WegZeitDiagramm} durationInFrames={WEG_ZEIT_DIAGRAMM_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="VZeitDiagramm" component={VZeitDiagramm} durationInFrames={V_ZEIT_DIAGRAMM_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="VerkehrMessung" component={VerkehrMessung} durationInFrames={VERKEHR_MESSUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="KraftWirkung" component={KraftWirkung} durationInFrames={KRAFT_WIRKUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="KraftWirkungen" component={KraftWirkungen} durationInFrames={KRAFT_WIRKUNGEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Kraftmesser" component={Kraftmesser} durationInFrames={KRAFTMESSER_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Federgesetz" component={Federgesetz} durationInFrames={FEDERGESETZ_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="MasseGewicht" component={MasseGewicht} durationInFrames={MASSE_GEWICHT_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Ortsfaktor" component={Ortsfaktor} durationInFrames={ORTSFAKTOR_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Kraftpfeil" component={Kraftpfeil} durationInFrames={KRAFTPFEIL_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="KraefteAddieren" component={KraefteAddieren} durationInFrames={KRAEFTE_ADDIEREN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="KraefteGleichgewicht" component={KraefteGleichgewicht} durationInFrames={KRAEFTE_GLEICHGEWICHT_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Wechselwirkung" component={Wechselwirkung} durationInFrames={WECHSELWIRKUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="SchiefeEbene" component={SchiefeEbene} durationInFrames={SCHIEFE_EBENE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Reibung" component={Reibung} durationInFrames={REIBUNG_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

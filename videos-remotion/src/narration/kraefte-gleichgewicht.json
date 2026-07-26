@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Warum bewegt sich ein ruhender Körper nicht? Eine Lampe hängt seit Jahren an der Decke und bewegt sich keinen Millimeter. Dabei zieht die Schwerkraft doch ständig an ihr. Warum fällt sie nicht?" },
+  { "id": "zwei", "text": "An der Lampe wirken zwei Kräfte. Nach unten zieht die Gewichtskraft – die Anziehung der Erde. Nach oben zieht die Haltekraft des Seils. Zwei Kräfte, entgegengesetzte Richtungen." },
+  { "id": "gleich", "text": "Solange die Lampe hängt, sind beide Kräfte genau gleich groß. Die Haltekraft des Seils ist exakt so stark wie die Gewichtskraft. Sie ziehen mit gleichem Betrag in entgegengesetzte Richtungen." },
+  { "id": "null", "text": "Rechnet man sie zusammen, heben sie sich vollständig auf: Die Resultierende ist null. Und keine Gesamtkraft bedeutet: keine Bewegungsänderung. Deshalb bleibt die Lampe in Ruhe. Man sagt: Die Kräfte sind im Gleichgewicht." },
+  { "id": "merksatz", "text": "Merke: Ein ruhender Körper ist im Kräftegleichgewicht. Die wirkenden Kräfte heben sich auf, die Resultierende ist null – also ändert sich nichts an der Bewegung." },
+  { "id": "transfer", "text": "Deshalb liegt ein Buch ruhig auf dem Tisch: Die Gewichtskraft nach unten und die Kraft der Tischplatte nach oben sind gleich groß. Und ein Fallschirmspringer sinkt gleichmäßig, wenn Gewichtskraft und Luftwiderstand im Gleichgewicht sind." },
+  { "id": "outro", "text": "Kräfte im Gleichgewicht, Resultierende null – deshalb bleibt alles in Ruhe. Physik verstehen, Schritt für Schritt." }
+]
