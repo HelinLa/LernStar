@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Du drückst einen Schalter – und das Licht geht an. Ganz selbstverständlich. Aber woher kommt eigentlich der Strom, der die Lampe zum Leuchten bringt?" },
+  { "id": "beobachten", "text": "Der Strom kommt aus der Steckdose, das ist klar. Doch die Steckdose ist nicht der Anfang. Hinter ihr steckt ein langer Weg, den die Energie zurücklegt, bevor sie bei dir ankommt." },
+  { "id": "kette", "text": "Diesen Weg nennt man Energiekette. Sie beginnt bei einer Energiequelle, zum Beispiel Kohle, Wind oder Sonne. Im Kraftwerk wird daraus elektrische Energie. Über das Stromnetz und die Leitungen gelangt sie bis zu deiner Steckdose – und von dort in die Lampe." },
+  { "id": "umwandlung", "text": "Wichtig ist: In der Kette wird die Energie nur umgewandelt und transportiert, nicht erzeugt. Aus der Energie der Quelle wird elektrische Energie, aus elektrischer Energie am Ende Licht. Ein Kraftwerk erzeugt also keine Energie aus dem Nichts – es wandelt vorhandene Energie in nutzbaren Strom um." },
+  { "id": "quellen", "text": "Der Anfang kann verschieden sein: Kohle, Gas, Wind, Sonne oder Wasser. Doch der Rest der Kette bleibt gleich: Aus der Quelle wird im Kraftwerk elektrische Energie, die über das Netz zu dir kommt. Nur die Energiequelle am Anfang unterscheidet sich." },
+  { "id": "merksatz", "text": "Merke: Strom entsteht nicht in der Steckdose. Er durchläuft eine Energiekette: Quelle, Kraftwerk, Stromnetz, Steckdose. Energie wird dabei umgewandelt und transportiert, nicht erzeugt." },
+  { "id": "transfer", "text": "Das merkst du, wenn der Strom ausfällt: Dann ist die Kette unterbrochen. Und wenn du das nächste Mal eine Steckdose siehst, weißt du: Dahinter beginnt ein weiter Weg bis zum Kraftwerk." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

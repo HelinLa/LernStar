@@ -91,10 +91,10 @@ const EntwertungScene: React.FC<SceneProps> = () => {
   const frame = useCurrentFrame();
   const f = useFade(12);
   const steps = [
-    { l: 'Strom / Benzin', s: 'hochwertig, vielseitig', c: COLORS.green, w: 460 },
-    { l: 'Bewegung, Licht', s: 'noch gut nutzbar', c: COLORS.amber, w: 380 },
-    { l: 'Wärme im Gerät', s: 'kaum nutzbar', c: '#f97316', w: 300 },
-    { l: 'Umgebungswärme', s: 'entwertet – verteilt', c: COLORS.red, w: 220 },
+    { l: 'Strom / Benzin', s: 'hochwertig, vielseitig', c: COLORS.green, w: 520 },
+    { l: 'Bewegung, Licht', s: 'noch gut nutzbar', c: COLORS.amber, w: 450 },
+    { l: 'Wärme im Gerät', s: 'kaum nutzbar', c: '#f97316', w: 390 },
+    { l: 'Umgebungswärme', s: 'entwertet – verteilt', c: COLORS.red, w: 340 },
   ];
   const reveal = (i: number) => interpolate(frame, [20 + i * 22, 50 + i * 22], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
   return (

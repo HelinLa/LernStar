@@ -133,6 +133,7 @@ import { Wirkungsgrad, WIRKUNGSGRAD_DURATION } from './videos/Wirkungsgrad';
 import { WirkungsgradVerluste, WIRKUNGSGRAD_VERLUSTE_DURATION } from './videos/WirkungsgradVerluste';
 import { Leistung, LEISTUNG_DURATION } from './videos/Leistung';
 import { LeistungEinheiten, LEISTUNG_EINHEITEN_DURATION } from './videos/LeistungEinheiten';
+import { EnergieEntwerten, ENERGIE_ENTWERTEN_DURATION } from './videos/EnergieEntwerten';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -391,6 +392,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="WirkungsgradVerluste" component={WirkungsgradVerluste} durationInFrames={WIRKUNGSGRAD_VERLUSTE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Leistung" component={Leistung} durationInFrames={LEISTUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="LeistungEinheiten" component={LeistungEinheiten} durationInFrames={LEISTUNG_EINHEITEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="EnergieEntwerten" component={EnergieEntwerten} durationInFrames={ENERGIE_ENTWERTEN_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );
