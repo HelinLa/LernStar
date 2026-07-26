@@ -4,3 +4,9 @@ out/
 *.log
 public/music/
 public/sfx/
+# API-Keys / Secrets – niemals committen
+.env
+.env.local
+*.key
+.eleven.key
+secrets/

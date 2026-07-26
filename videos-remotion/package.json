@@ -11,6 +11,8 @@
     "still": "remotion still",
     "upgrade": "remotion upgrade",
     "audio": "node scripts/gen-audio.mjs",
+    "audio:eleven": "node scripts/gen-audio-elevenlabs.mjs",
+    "voices": "node scripts/list-voices-elevenlabs.mjs",
     "sfx": "node scripts/scan-sfx.mjs",
     "sfx:synth": "python3 scripts/gen-sfx-synth.py",
     "sfx:eleven": "python3 scripts/gen-sfx-elevenlabs.py"

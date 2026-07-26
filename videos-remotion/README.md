@@ -48,8 +48,14 @@ npx remotion render <Id> out/<name>.mp4
 
 ## Ton: Sprecherstimme, Musik & Sound-Effekte
 
-- **Sprecherstimme** (Narration): Text in `src/narration/<video>.json`, dann
-  `npm run audio` → erzeugt `public/audio/<video>/*.wav` + Timings (macOS `say`, dt. Stimme „Anna").
+- **Sprecherstimme** (Narration): Text in `src/narration/<video>.json`, dann eine der beiden Pipelines:
+  - `npm run audio` → macOS `say` (Stimme „Anna", offline, kein Key – klingt aber synthetisch).
+  - `npm run audio:eleven` → **ElevenLabs** (natürliche Stimme, empfohlen). Braucht einen Key:
+    entweder `ELEVENLABS_API_KEY` in der Umgebung **oder** Datei `~/.lernstar-eleven.key`
+    (liegt außerhalb des Repos, wird nie committet). Stimme wählen mit `npm run voices`
+    (listet alle Konto-Stimmen) und die gewünschte ID als `ELEVENLABS_VOICE_ID` setzen.
+    Standard-Stimme: „George" (ruhig, männlich). Beide Pipelines schreiben identische
+    `public/audio/<video>/*.wav` + Timings – die Videos bleiben unverändert.
 - **Sound-Effekte**: liegen in `public/sfx/` (whoosh/pling/pop/impact). Zwei Wege:
   - `npm run sfx:synth` – lokal synthetisiert (Python, kein Key). Standard.
   - `npm run sfx:eleven` – höherwertig via ElevenLabs (braucht `ELEVENLABS_API_KEY` in der Umgebung).
