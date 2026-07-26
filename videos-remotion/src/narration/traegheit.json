@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Trägheit. Warum bewegt sich nichts von allein schneller? Finden wir es heraus." },
+  { "id": "ruhe", "text": "Ein ruhender Körper bleibt in Ruhe. Von allein passiert nichts. Erst eine Kraft, zum Beispiel ein Schubs, setzt die Kugel in Bewegung." },
+  { "id": "bewegung", "text": "Ein angestoßener Körper bleibt in Bewegung. Auf glattem Eis gleitet der Puck gleich schnell und geradeaus weiter, solange keine Kraft ihn bremst." },
+  { "id": "kraft", "text": "Nur eine Kraft kann etwas ändern: schneller werden, langsamer werden oder die Richtung wechseln. Ohne Kraft bleibt alles, wie es ist." },
+  { "id": "bus", "text": "Das spürst du im Bus. Bremst er plötzlich, ruckst du nach vorn. Dein Körper will sich weiterbewegen. Das ist Trägheit." },
+  { "id": "merksatz", "text": "Merke: Ohne wirkende Kraft ändert ein Körper seinen Bewegungszustand nicht. Er bleibt in Ruhe oder bewegt sich gleichförmig weiter. Das ist das erste newtonsche Gesetz." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

@@ -9,7 +9,8 @@
     "render": "remotion render",
     "render:traegheit": "remotion render Traegheit out/traegheit.mp4",
     "still": "remotion still",
-    "upgrade": "remotion upgrade"
+    "upgrade": "remotion upgrade",
+    "audio": "node scripts/gen-audio.mjs"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.0",

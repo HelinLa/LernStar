@@ -1,0 +1,8 @@
+[
+  { "id": "intro", "text": "Trägheit im Alltag. Warum werde ich beim Anfahren in den Sitz gedrückt und beim Bremsen nach vorn geworfen?" },
+  { "id": "anfahren", "text": "Beim Anfahren will dein Körper zuerst in Ruhe bleiben. Der Sitz nimmt dich mit. Es fühlt sich an, als würdest du nach hinten gedrückt." },
+  { "id": "bremsen", "text": "Beim Bremsen will dein Körper mit dem alten Tempo weiterfahren. Deshalb wirst du nach vorn geworfen. Der Sicherheitsgurt hält dich zurück." },
+  { "id": "sicherheit", "text": "Auch der Sicherheitsgurt, die Kopfstütze und das Ziehen nach außen in der Kurve sind Trägheit." },
+  { "id": "merksatz", "text": "Merke: Dein Körper behält seinen Bewegungszustand bei. Beim Anfahren bleibst du zurück, beim Bremsen willst du weiter. Deshalb: immer anschnallen." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
