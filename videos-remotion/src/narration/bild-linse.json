@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wann entsteht ein vergrößertes oder ein verkleinertes Bild? Dieselbe Sammellinse kann beides: winzige Bilder und riesige. Es kommt nur darauf an, wie weit der Gegenstand von der Linse entfernt ist. Konstruieren wir das Bild." },
+  { "id": "konstruktion", "text": "Zum Konstruieren brauchst du zwei besondere Strahlen von der Spitze des Gegenstands. Erstens: der Parallelstrahl läuft waagerecht zur Linse und wird dann durch den Brennpunkt gebrochen. Zweitens: der Mittelpunktstrahl geht gerade durch die Linsenmitte. Wo sie sich treffen, entsteht die Bildspitze." },
+  { "id": "fern", "text": "Fall eins: Der Gegenstand ist weiter weg als die doppelte Brennweite. Dann entsteht ein verkleinertes, umgekehrtes Bild auf der anderen Seite der Linse. Es ist ein reelles Bild – man könnte es auf einem Schirm auffangen. So arbeitet die Kamera." },
+  { "id": "nah", "text": "Fall zwei: Der Gegenstand steht zwischen einfacher und doppelter Brennweite. Jetzt entsteht ein vergrößertes, umgekehrtes, reelles Bild. So funktioniert ein Projektor, der ein kleines Bild groß an die Wand wirft." },
+  { "id": "innerhalb", "text": "Fall drei: Der Gegenstand ist näher als die Brennweite. Jetzt treffen sich die gebrochenen Strahlen nicht mehr. Verlängert man sie nach hinten, entsteht ein vergrößertes, aufrechtes, virtuelles Bild auf derselben Seite. Genau das ist die Lupe." },
+  { "id": "merksatz", "text": "Merke: Weiter als die doppelte Brennweite gibt ein verkleinertes Bild, zwischen F und 2F ein vergrößertes – beide umgekehrt und reell. Näher als F entsteht ein vergrößertes, aufrechtes, virtuelles Bild: die Lupe." },
+  { "id": "transfer", "text": "Aus diesen drei Fällen ergeben sich fast alle optischen Geräte: die Kamera, der Projektor und die Lupe – alle mit derselben Sammellinse, nur mit anderem Abstand." },
+  { "id": "outro", "text": "Der Abstand entscheidet: verkleinert, vergrößert oder Lupe. Physik verstehen, Schritt für Schritt." }
+]

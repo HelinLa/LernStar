@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wovon hängt die Stärke der Brechung ab? Licht wird an der Grenzfläche gebrochen – aber mal stärker, mal schwächer. Zwei Dinge entscheiden darüber. Schauen wir sie uns an." },
+  { "id": "lot", "text": "Beim Übergang von Luft in einen dichteren Stoff wie Wasser oder Glas wird das Licht zum Lot hin gebrochen. Das Lot ist die Senkrechte auf der Grenzfläche. Der Strahl knickt also zur Senkrechten hin." },
+  { "id": "winkel", "text": "Der erste Faktor ist der Einfallswinkel. Je größer der Einfallswinkel, desto größer auch der Brechungswinkel. Trifft das Licht dagegen senkrecht auf, also mit Winkel null, wird es überhaupt nicht gebrochen und läuft gerade weiter." },
+  { "id": "stoff", "text": "Der zweite Faktor ist der Stoff. Je dichter der Stoff, desto stärker die Brechung. Glas bricht das Licht stärker als Wasser. Bei gleichem Einfallswinkel knickt der Strahl im Glas also deutlicher ab als im Wasser." },
+  { "id": "merksatz", "text": "Merke: Je größer der Einfallswinkel, desto größer der Brechungswinkel. Beim Eintritt in einen dichteren Stoff wird das Licht zum Lot hin gebrochen – und Glas bricht stärker als Wasser." },
+  { "id": "transfer", "text": "Genau diese unterschiedliche Brechung nutzt man in Linsen und Prismen gezielt aus, um Licht zu lenken und zu bündeln – vom Brillenglas bis zum Kameraobjektiv." },
+  { "id": "outro", "text": "Großer Winkel, dichter Stoff – dann bricht das Licht am stärksten. Physik verstehen, Schritt für Schritt." }
+]

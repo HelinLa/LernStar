@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie korrigiert eine Brille Sehfehler? Bei vielen Menschen entsteht das Bild nicht genau auf der Netzhaut, sondern davor oder dahinter – dann ist alles unscharf. Eine Brille rückt das Bild wieder an die richtige Stelle." },
+  { "id": "kurzsichtig", "text": "Bei Kurzsichtigkeit ist der Augapfel zu lang. Das Bild entsteht schon vor der Netzhaut, deshalb sieht man in die Ferne unscharf. Nahes dagegen wird gut erkannt." },
+  { "id": "zerstreuung", "text": "Die Lösung: eine Zerstreuungslinse. Sie ist am Rand dicker als in der Mitte und spreizt die Strahlen ein wenig auseinander, bevor sie ins Auge treffen. Dadurch rückt das Bild nach hinten – genau auf die Netzhaut. Jetzt ist die Ferne wieder scharf." },
+  { "id": "weitsichtig", "text": "Bei Weitsichtigkeit ist es umgekehrt: Der Augapfel ist zu kurz, das Bild entsteht erst hinter der Netzhaut. Nahes wird unscharf. Hier hilft eine Sammellinse: Sie bündelt die Strahlen etwas stärker und holt das Bild nach vorne auf die Netzhaut." },
+  { "id": "merksatz", "text": "Merke: Kurzsichtig heißt Bild vor der Netzhaut – eine Zerstreuungslinse korrigiert. Weitsichtig heißt Bild hinter der Netzhaut – eine Sammellinse korrigiert." },
+  { "id": "transfer", "text": "Nach genau demselben Prinzip arbeiten auch Kontaktlinsen. Und wenn du weißt, welche Linse jemand braucht, kannst du sogar aus der Brille ablesen, ob er kurz- oder weitsichtig ist." },
+  { "id": "outro", "text": "Die richtige Linse rückt das Bild auf die Netzhaut – so hilft die Brille. Physik verstehen, Schritt für Schritt." }
+]

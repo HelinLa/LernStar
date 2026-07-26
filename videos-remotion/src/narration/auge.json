@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie funktioniert das Auge? Dein Auge ist ein biologisches Wunderwerk – und arbeitet erstaunlich genau wie eine Kamera. Verfolgen wir den Weg des Lichts hinein." },
+  { "id": "linse", "text": "Vorne bündelt die Augenlinse das einfallende Licht, so wie die Linse einer Kamera. Sie wirft das Licht nach innen auf die Rückwand des Auges." },
+  { "id": "pupille", "text": "Die Pupille ist das schwarze Loch in der Mitte. Sie wirkt wie die Blende einer Kamera: Bei Dunkelheit wird sie groß und lässt mehr Licht herein, bei Helligkeit wird sie klein. So schützt sie das Auge und regelt die Lichtmenge." },
+  { "id": "netzhaut", "text": "Ganz hinten liegt die Netzhaut – der Sensor des Auges. Dort entsteht ein umgekehrtes Bild, genau wie auf dem Kamerasensor. Dass wir die Welt trotzdem richtig herum sehen, besorgt das Gehirn: Es dreht das Bild einfach wieder um." },
+  { "id": "akkommodation", "text": "Und wie stellt das Auge scharf? Nicht durch Verschieben wie die Kamera, sondern durch Verformen. Muskeln machen die Linse dicker oder dünner und ändern so ihre Brennweite. Das nennt man Akkommodation." },
+  { "id": "merksatz", "text": "Merke: Im Auge bündelt die Linse das Licht, die Pupille ist die Blende, auf der Netzhaut entsteht ein umgekehrtes Bild. Scharfgestellt wird durch Verformen der Linse." },
+  { "id": "transfer", "text": "Weil Auge und Kamera nach demselben Prinzip arbeiten, lassen sich Sehfehler auch mit den Mitteln der Optik korrigieren – zum Beispiel mit einer Brille." },
+  { "id": "outro", "text": "Linse, Pupille, Netzhaut – dein Auge ist eine lebende Kamera. Physik verstehen, Schritt für Schritt." }
+]

@@ -51,6 +51,13 @@ import { Mondfinsternis, MONDFINSTERNIS_DURATION } from './videos/Mondfinsternis
 import { Reflexion, REFLEXION_DURATION } from './videos/Reflexion';
 import { ReiheParallel, REIHE_PARALLEL_DURATION } from './videos/ReiheParallel';
 import { Elektromagnet6, ELEKTROMAGNET6_DURATION } from './videos/Elektromagnet6';
+import { BildLinse, BILD_LINSE_DURATION } from './videos/BildLinse';
+import { Lochkamera, LOCHKAMERA_DURATION } from './videos/Lochkamera';
+import { Sammellinse, SAMMELLINSE_DURATION } from './videos/Sammellinse';
+import { Lupe, LUPE_DURATION } from './videos/Lupe';
+import { Kamera, KAMERA_DURATION } from './videos/Kamera';
+import { Auge, AUGE_DURATION } from './videos/Auge';
+import { Brille, BRILLE_DURATION } from './videos/Brille';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -227,6 +234,13 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Reflexion" component={Reflexion} durationInFrames={REFLEXION_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="ReiheParallel" component={ReiheParallel} durationInFrames={REIHE_PARALLEL_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Elektromagnet6" component={Elektromagnet6} durationInFrames={ELEKTROMAGNET6_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="BildLinse" component={BildLinse} durationInFrames={BILD_LINSE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Lochkamera" component={Lochkamera} durationInFrames={LOCHKAMERA_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Sammellinse" component={Sammellinse} durationInFrames={SAMMELLINSE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Lupe" component={Lupe} durationInFrames={LUPE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Kamera" component={Kamera} durationInFrames={KAMERA_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Auge" component={Auge} durationInFrames={AUGE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Brille" component={Brille} durationInFrames={BRILLE_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

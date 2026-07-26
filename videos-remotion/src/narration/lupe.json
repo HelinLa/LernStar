@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie funktioniert eine Lupe? Du hältst sie über die Zeitung – und die Buchstaben werden groß. Aber wie macht eine einfache Linse ein Ding größer, als es wirklich ist?" },
+  { "id": "istlinse", "text": "Eine Lupe ist nichts anderes als eine Sammellinse mit kurzer Brennweite. Der entscheidende Trick: Du hältst den Gegenstand ganz nah heran – näher als die Brennweite der Linse." },
+  { "id": "virtuell", "text": "Weil der Gegenstand innerhalb der Brennweite steht, treffen sich die gebrochenen Strahlen hinter der Linse nicht mehr. Dein Auge sieht sie aber so, als kämen sie von einem viel größeren Gegenstand dahinter. So entsteht ein vergrößertes, aufrechtes, virtuelles Bild." },
+  { "id": "naeher", "text": "Wie stark vergrößert wird, hängt vom Abstand ab. Je näher du den Gegenstand an die Brennweite bringst, desto größer wird das Bild. Ziehst du die Lupe zu weit weg, über die Brennweite hinaus, kippt das Bild plötzlich um und wird unscharf – dann gibt es kein Lupenbild mehr." },
+  { "id": "merksatz", "text": "Merke: Eine Lupe ist eine Sammellinse. Steht der Gegenstand näher als die Brennweite, entsteht ein vergrößertes, aufrechtes, virtuelles Bild." },
+  { "id": "transfer", "text": "Dasselbe Lupenprinzip steckt im Mikroskop und im Fernglas – überall dort, wo kleine oder ferne Dinge größer erscheinen sollen. Auch der Briefmarkensammler und der Uhrmacher arbeiten damit." },
+  { "id": "outro", "text": "Nah an die Linse, und schon wird alles groß – das ist die Lupe. Physik verstehen, Schritt für Schritt." }
+]

@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie funktioniert eine Kamera? Sie fängt einen ganzen Moment auf einem kleinen Sensor ein. Dahinter steckt genau die Physik der Sammellinse, die du schon kennst." },
+  { "id": "aufbau", "text": "Eine Kamera hat drei wichtige Teile: eine Linse vorne, eine Blende, die das Loch größer oder kleiner macht, und hinten einen Sensor, der das Bild aufnimmt." },
+  { "id": "bild", "text": "Ein weit entfernter Gegenstand steht viel weiter weg als die doppelte Brennweite. Deshalb entsteht auf dem Sensor ein umgekehrtes, verkleinertes, reelles Bild. Das ganze Motiv passt so auf den winzigen Sensor." },
+  { "id": "scharf", "text": "Scharfgestellt wird über den Abstand zwischen Linse und Sensor. Stimmt der Abstand genau, treffen sich die Strahlen exakt auf dem Sensor – das Bild ist scharf. Ist er falsch, wird es unscharf." },
+  { "id": "blende", "text": "Die Blende regelt die Helligkeit. Ein großes Loch lässt viel Licht herein – gut bei Dunkelheit. Ein kleines Loch lässt wenig Licht durch – gut bei grellem Sonnenschein. Genau wie die Pupille in deinem Auge." },
+  { "id": "merksatz", "text": "Merke: Die Kamera bildet mit einer Linse einen fernen Gegenstand als umgekehrtes, verkleinertes, reelles Bild auf dem Sensor ab. Der Abstand stellt scharf, die Blende regelt die Helligkeit." },
+  { "id": "transfer", "text": "Ob Handykamera, Fotoapparat oder Filmkamera – alle arbeiten nach diesem Prinzip. Und dein Auge ist im Grunde nichts anderes als eine besonders raffinierte Kamera." },
+  { "id": "outro", "text": "Linse, Blende, Sensor – so fängt die Kamera das Licht ein. Physik verstehen, Schritt für Schritt." }
+]

@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie funktioniert ein Lichtleiter? Durch eine haarfeine Glasfaser schickt man Licht kilometerweit – und es kommt fast verlustfrei an. Das Geheimnis heißt Totalreflexion." },
+  { "id": "austritt", "text": "Normalerweise tritt Licht aus dem Glas wieder heraus und wird dabei vom Lot weg gebrochen. Je schräger es auf die Grenzfläche trifft, desto flacher tritt es aus – und ein Teil wird auch reflektiert." },
+  { "id": "grenzwinkel", "text": "Wird der Winkel immer größer, kommt ein besonderer Moment: der Grenzwinkel. Ab hier tritt gar kein Licht mehr aus. Das gesamte Licht wird an der Grenzfläche zurückgeworfen – man nennt das Totalreflexion." },
+  { "id": "lichtleiter", "text": "Genau das nutzt ein Lichtleiter aus. Das Licht trifft immer so schräg auf die Wand der Glasfaser, dass es total reflektiert wird. So läuft es im Zickzack durch die Faser, ohne herauszukommen – wie in einer Röhre gefangen." },
+  { "id": "merksatz", "text": "Merke: Trifft Licht im Glas ab dem Grenzwinkel sehr schräg auf die Grenzfläche, wird es vollständig zurückgeworfen – Totalreflexion. So bleibt es im Lichtleiter gefangen." },
+  { "id": "transfer", "text": "Auf dieser Totalreflexion beruht das ganze Internet: Glasfaserkabel übertragen Daten als Lichtblitze rund um die Welt. Auch Ärzte nutzen sie im Endoskop, um in den Körper zu schauen." },
+  { "id": "outro", "text": "Ab dem Grenzwinkel bleibt alles Licht drin – das ist der Lichtleiter. Physik verstehen, Schritt für Schritt." }
+]

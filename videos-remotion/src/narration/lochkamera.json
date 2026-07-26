@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie macht ein kleines Loch ein Bild? Man braucht keine einzige Linse – ein winziges Loch in einer dunklen Schachtel genügt, um ein echtes Bild zu erzeugen. Wie geht das?" },
+  { "id": "aufbau", "text": "Eine Lochkamera ist eine geschlossene, dunkle Schachtel. Vorne ist nur ein winziges Loch, hinten eine matte Scheibe als Bildschirm. Richtest du das Loch auf einen hellen Gegenstand, erscheint hinten ein Bild – und zwar auf dem Kopf." },
+  { "id": "warum", "text": "Der Grund ist die geradlinige Ausbreitung des Lichts. Von jedem Punkt des Gegenstands geht ein Strahl durch das kleine Loch. Strahlen von oben laufen durch das Loch nach unten, Strahlen von unten nach oben – sie kreuzen sich im Loch. Deshalb steht das Bild auf dem Kopf." },
+  { "id": "groesse", "text": "Die Bildgröße kannst du steuern. Machst du die Kamera länger, wird das Bild größer. Und es gilt: das Verhältnis von Bildgröße zu Gegenstandsgröße ist gleich dem Verhältnis von Bildweite zu Gegenstandsweite. Kurz: B durch G gleich b durch g." },
+  { "id": "loch", "text": "Und die Lochgröße? Ein kleines Loch macht das Bild scharf, aber dunkel. Ein großes Loch lässt mehr Licht durch – das Bild wird heller, aber unscharf. Man muss also einen guten Mittelweg finden." },
+  { "id": "merksatz", "text": "Merke: In der Lochkamera entsteht ein umgekehrtes Bild, weil sich das Licht geradlinig ausbreitet und die Strahlen sich im Loch kreuzen. Kleines Loch: scharf, aber dunkel." },
+  { "id": "transfer", "text": "Dieses Prinzip ist uralt: Schon vor Hunderten Jahren nutzten Künstler die Camera Obscura zum Zeichnen. Und bei einer Sonnenfinsternis kannst du durch die kleinen Lücken im Blätterdach viele winzige Sonnenbilder auf dem Boden sehen." },
+  { "id": "outro", "text": "Ein kleines Loch, geradliniges Licht, ein Bild auf dem Kopf. Physik verstehen, Schritt für Schritt." }
+]

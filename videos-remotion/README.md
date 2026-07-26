@@ -138,3 +138,10 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Reflexion | Kl.6 Optik: Reflexionsgesetz & ebener Spiegel | `src/videos/Reflexion.tsx` |
 | ReiheParallel | Kl.6 Strom: Reihen- & Parallelschaltung | `src/videos/ReiheParallel.tsx` |
 | Elektromagnet6 | Kl.6 Strom: Elektromagnet (Spule, abschaltbar) | `src/videos/Elektromagnet6.tsx` |
+| Lochkamera | Kl.7 Optik: Lochkamera (umgekehrtes Bild) | `src/videos/Lochkamera.tsx` |
+| Sammellinse | Kl.7 Optik: Sammellinse & Brennpunkt | `src/videos/Sammellinse.tsx` |
+| BildLinse | Kl.7 Optik: Bildkonstruktion (3 Fälle) | `src/videos/BildLinse.tsx` |
+| Lupe | Kl.7 Optik: Lupe (virtuelles Bild) | `src/videos/Lupe.tsx` |
+| Kamera | Kl.7 Optik: Kamera (Linse/Blende/Sensor) | `src/videos/Kamera.tsx` |
+| Auge | Kl.7 Optik: Das Auge (Netzhaut) | `src/videos/Auge.tsx` |
+| Brille | Kl.7 Optik: Brille (Sehfehler korrigieren) | `src/videos/Brille.tsx` |

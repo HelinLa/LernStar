@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie entsteht ein Spiegelbild? Du stehst vor dem Spiegel und siehst dich – scheinbar hinter dem Glas. Aber dort ist ja gar nichts. Wie kommt dieses Bild zustande?" },
+  { "id": "reflexion", "text": "Von jedem Punkt an dir geht Licht zum Spiegel und wird dort zurückgeworfen. Dabei gilt das Reflexionsgesetz: Einfallswinkel gleich Reflexionswinkel, beide zur Normalen gemessen. Dieses reflektierte Licht trifft dann in dein Auge." },
+  { "id": "virtuell", "text": "Dein Auge verlängert die ankommenden Strahlen einfach geradlinig nach hinten. Dort, wo sich diese gedachten Verlängerungen treffen, scheint der Gegenstand zu sein – hinter dem Spiegel. Da ist in Wirklichkeit nichts, deshalb nennt man es ein virtuelles Bild." },
+  { "id": "eigenschaften", "text": "Das Spiegelbild hat immer dieselben Eigenschaften: Es ist aufrecht, genauso groß wie du und liegt genau so weit hinter dem Spiegel, wie du davor stehst. Und es ist seitenverkehrt – links und rechts sind vertauscht." },
+  { "id": "merksatz", "text": "Merke: Am ebenen Spiegel entsteht ein virtuelles, aufrechtes, seitenverkehrtes Bild. Es liegt genauso weit hinter dem Spiegel wie der Gegenstand davor – nach dem Reflexionsgesetz." },
+  { "id": "transfer", "text": "Deshalb winkt dir dein Spiegelbild mit der anderen Hand zu, und die Schrift auf einem Rettungswagen ist gespiegelt gedruckt – damit du sie im Rückspiegel richtig herum lesen kannst." },
+  { "id": "outro", "text": "Reflektiertes Licht, rückwärts verlängert – so entsteht dein Spiegelbild. Physik verstehen, Schritt für Schritt." }
+]

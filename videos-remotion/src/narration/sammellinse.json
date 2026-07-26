@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie bündelt eine Sammellinse das Licht? Mit einer Lupe kannst du an einem sonnigen Tag sogar Papier entzünden. Woher kommt diese gebündelte Hitze? Die Antwort steckt in der Form der Linse." },
+  { "id": "buendeln", "text": "Eine Sammellinse ist in der Mitte dicker als am Rand. Trifft paralleles Licht auf sie – zum Beispiel von der weit entfernten Sonne – lenkt sie alle Strahlen zu einem einzigen Punkt zusammen. Dort bündelt sich das gesamte Licht." },
+  { "id": "brennpunkt", "text": "Diesen Punkt nennt man Brennpunkt, abgekürzt mit F. Der Abstand von der Linse bis zum Brennpunkt heißt Brennweite. Jede Linse hat auf beiden Seiten einen Brennpunkt im gleichen Abstand." },
+  { "id": "brennweite", "text": "Wie stark eine Linse bündelt, sagt ihre Brennweite. Eine stark gewölbte, dicke Linse hat eine kurze Brennweite und bündelt das Licht nah an sich. Eine flache Linse hat eine lange Brennweite." },
+  { "id": "hitze", "text": "Im Brennpunkt ist das Licht am hellsten – und am heißesten. Die gesamte Energie, die vorher auf die ganze Linsenfläche traf, sammelt sich jetzt auf einem winzigen Fleck. Genau deshalb kann eine Lupe im Brennpunkt Papier entzünden." },
+  { "id": "merksatz", "text": "Merke: Eine Sammellinse bündelt paralleles Licht im Brennpunkt F. Der Abstand Linse–Brennpunkt ist die Brennweite. Im Brennpunkt ist das Licht am hellsten und heißesten." },
+  { "id": "transfer", "text": "Sammellinsen stecken überall dort, wo Licht gebündelt werden soll: in der Lupe, in der Kamera, im Fernglas – und sogar in deinem eigenen Auge." },
+  { "id": "outro", "text": "Paralleles Licht rein, ein heißer Brennpunkt raus – das ist die Sammellinse. Physik verstehen, Schritt für Schritt." }
+]

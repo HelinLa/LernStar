@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Warum erscheint ein Gegenstand im Wasser verschoben? Wenn du einen Strohhalm ins Glas stellst, sieht er auf einmal geknickt aus. Und der Fisch im Teich ist nicht dort, wo er scheint. Was passiert mit dem Licht?" },
+  { "id": "brechung", "text": "Licht läuft in Luft und in Wasser unterschiedlich schnell. An der Grenzfläche zwischen den beiden Stoffen ändert es deshalb seine Richtung – es wird gebrochen, wie man sagt. Nur senkrecht einfallendes Licht läuft ungebrochen weiter." },
+  { "id": "auge", "text": "Und jetzt kommt der Trick: Dein Auge weiß nichts von der Brechung. Es verlängert den ankommenden Strahl einfach geradlinig nach hinten. Deshalb siehst du den Gegenstand nicht an seiner wahren Stelle, sondern dort, wo dieser gedachte gerade Strahl herzukommen scheint." },
+  { "id": "hoeher", "text": "Bei Wasser sieht es dadurch so aus, als läge der Gegenstand höher – das Wasser wirkt flacher, als es ist. Deshalb greifst du beim Fischen daneben und unterschätzt die Tiefe eines klaren Sees. Steig nie ahnungslos in unbekanntes Wasser!" },
+  { "id": "merksatz", "text": "Merke: An der Grenzfläche Luft–Wasser wird Licht gebrochen. Weil das Auge den Strahl geradlinig verlängert, erscheint ein Gegenstand im Wasser höher und näher, als er wirklich ist." },
+  { "id": "transfer", "text": "Genau deshalb wirkt der Strohhalm im Glas geknickt, erscheint der Löffel in der Wasserschüssel gebrochen und die Beine im Schwimmbecken kürzer. Überall verrät die Brechung das Wasser." },
+  { "id": "outro", "text": "Licht wird gebrochen, das Auge lässt sich täuschen – darum erscheint alles verschoben. Physik verstehen, Schritt für Schritt." }
+]
