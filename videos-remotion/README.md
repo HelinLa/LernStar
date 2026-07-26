@@ -100,3 +100,4 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Reibungswaerme | 9.3.6 Energieumwandlung (Bewegung → Wärme) | `src/videos/Reibungswaerme.tsx` |
 | LichtUndSehen | Kl.5 Optik: Licht und Sehen (Selbstleuchter/beleuchtet) | `src/videos/LichtUndSehen.tsx` |
 | Schatten | Kl.5 Optik: Schatten (Schattenwurf, Sonnenfinsternis) | `src/videos/Schatten.tsx` |
+| GegenstandSehen | Kl.5 Optik: Wie sehen wir? (Sender–Gegenstand–Empfänger) | `src/videos/GegenstandSehen.tsx` |

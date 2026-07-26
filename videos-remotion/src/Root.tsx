@@ -13,6 +13,7 @@ import { Bewegungsenergie, BEWEGUNGSENERGIE_DURATION } from './videos/Bewegungse
 import { Reibungswaerme, REIBUNGSWAERME_DURATION } from './videos/Reibungswaerme';
 import { LichtUndSehen, LICHT_UND_SEHEN_DURATION } from './videos/LichtUndSehen';
 import { Schatten, SCHATTEN_DURATION } from './videos/Schatten';
+import { GegenstandSehen, GEGENSTAND_SEHEN_DURATION } from './videos/GegenstandSehen';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -119,6 +120,14 @@ export const RemotionRoot: React.FC = () => {
         id="Schatten"
         component={Schatten}
         durationInFrames={SCHATTEN_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="GegenstandSehen"
+        component={GegenstandSehen}
+        durationInFrames={GEGENSTAND_SEHEN_DURATION}
         fps={30}
         width={1920}
         height={1080}

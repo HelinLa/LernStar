@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie können wir einen Gegenstand sehen? Du denkst vielleicht: Ich mache einfach die Augen auf. Aber das reicht nicht – wie du gleich siehst, gehört mehr dazu." },
+  { "id": "beobachten", "text": "In einem völlig dunklen Keller kannst du die Augen weit aufreißen, so sehr du willst. Trotzdem siehst du nichts. Das Auge allein macht kein Bild – es braucht Licht, das hineinfällt." },
+  { "id": "modell", "text": "Beim Sehen wirken immer drei Dinge zusammen. Der Sender: eine Lichtquelle. Der Gegenstand, den das Licht trifft. Und der Empfänger: dein Auge. Erst wenn Licht vom Gegenstand ins Auge gelangt, entsteht ein Bild." },
+  { "id": "selbstleuchter", "text": "Bei einer Lampe ist es einfach: Sie ist Sender und Gegenstand zugleich. Ihr Licht geht direkt in dein Auge. Solche Selbstleuchter siehst du auch im Dunkeln – zum Beispiel Sonne, Feuer oder Bildschirm." },
+  { "id": "experiment", "text": "Ein Apfel dagegen leuchtet nicht selbst. Licht an: Der Apfel wirft Licht zurück, du siehst ihn. Licht aus: Der Apfel ist noch da, aber ohne Licht schickt er nichts ins Auge – er verschwindet für dich in der Dunkelheit." },
+  { "id": "merksatz", "text": "Merke: Sehen heißt, Licht empfangen. Wir sehen einen Gegenstand nur, wenn Licht von ihm in unser Auge gelangt. Sender, Gegenstand, Empfänger – alle drei müssen zusammenspielen." },
+  { "id": "transfer", "text": "Dein Auge ist ein Lichtempfänger, ganz ähnlich wie eine Kamera. Deshalb siehst du im Kino die Leinwand, im dunklen Keller aber nichts, und ein Fotoapparat braucht bei Nacht einen Blitz." },
+  { "id": "outro", "text": "Augen auf reicht nicht – erst Licht im Auge macht das Sehen. Physik verstehen, Schritt für Schritt." }
+]
