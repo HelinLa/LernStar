@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Die Bewegungsenergie. Warum kann ein rollender Ball etwas umwerfen – woher nimmt er eigentlich die Kraft dafür?" },
+  { "id": "beobachten", "text": "Schau dir zwei Kugeln an. Die langsame Kugel stupst die Kegel nur leicht an – sie bleiben fast stehen. Die schnelle Kugel dagegen fegt alle Kegel weg. In der Bewegung selbst steckt also ein Energievorrat." },
+  { "id": "formel", "text": "Diese Energie nennt man Bewegungsenergie, oder kinetische Energie. Sie hängt von der Masse ab und ganz besonders von der Geschwindigkeit. Man rechnet: Bewegungsenergie ist ein halb mal Masse mal Geschwindigkeit im Quadrat. E gleich ein halb m mal v hoch zwei." },
+  { "id": "variieren", "text": "Zwei Dinge machen die Bewegungsenergie größer. Doppelte Masse bedeutet doppelte Energie. Doppelte Geschwindigkeit bedeutet aber vierfache Energie – denn die Geschwindigkeit zählt im Quadrat. Das Tempo ist der entscheidende Faktor." },
+  { "id": "beispiel", "text": "Ein Beispiel: Eine Kugel mit zwei Kilogramm rollt mit drei Metern pro Sekunde. Das ergibt ein halb mal zwei mal neun – also neun Joule. Jetzt verdoppeln wir nur das Tempo auf sechs. Sechs im Quadrat ist sechsunddreißig, das ergibt sechsunddreißig Joule. Aus neun werden sechsunddreißig – viermal so viel Energie, nur durch doppeltes Tempo." },
+  { "id": "merksatz", "text": "Merke: Bewegungsenergie ist ein halb mal Masse mal Geschwindigkeit im Quadrat. Doppeltes Tempo bedeutet vierfache Energie." },
+  { "id": "transfer", "text": "Deshalb ist Geschwindigkeit so gefährlich: Beim Auto-Aufprall wächst die Energie mit dem Quadrat des Tempos. Beim Bowling wirft die schnelle Kugel alle Kegel um, und ein Hammer treibt den Nagel nur, weil er sich schnell bewegt." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

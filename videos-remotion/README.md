@@ -96,3 +96,4 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Arbeit     | 9.3.2 Arbeit (W = F·s)    | `src/videos/Arbeit.tsx`     |
 | Hubarbeit  | 9.3.3 Hubarbeit (W = m·g·h) | `src/videos/Hubarbeit.tsx` |
 | Lageenergie | 9.3.4 Lageenergie (E = m·g·h) | `src/videos/Lageenergie.tsx` |
+| Bewegungsenergie | 9.3.5 Bewegungsenergie (E = ½·m·v²) | `src/videos/Bewegungsenergie.tsx` |
