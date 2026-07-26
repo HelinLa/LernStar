@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Zwei Personen tragen dieselbe Kiste die gleiche Treppe hinauf. Die eine rennt, die andere geht gemütlich. Warum ist schnelles Arbeiten anstrengender – obwohl am Ende die gleiche Arbeit verrichtet wurde?" },
+  { "id": "beobachten", "text": "Beide heben dieselbe Kiste auf dieselbe Höhe. Die verrichtete Arbeit ist also gleich groß: Kraft mal Weg ist bei beiden identisch. Trotzdem kommt einer außer Atem und der andere kaum. Irgendetwas muss sich unterscheiden." },
+  { "id": "zeit", "text": "Der Unterschied ist die Zeit. Die rennende Person schafft die gleiche Arbeit in viel kürzerer Zeit. Sie muss die Energie schneller umsetzen – und genau das strengt an. Nicht die Arbeit ist größer, sondern die Arbeit pro Zeit." },
+  { "id": "formel", "text": "Diese Arbeit pro Zeit nennt man Leistung. Leistung gleich Arbeit geteilt durch Zeit: P gleich W durch t. Ein Beispiel: Sechshundert Joule Arbeit in drei Sekunden ergeben zweihundert Watt. Dieselben sechshundert Joule in sechs Sekunden sind nur hundert Watt. Gleiche Arbeit, halbe Zeit, doppelte Leistung." },
+  { "id": "einheit", "text": "Die Einheit der Leistung ist das Watt. Ein Watt ist ein Joule pro Sekunde. Große Leistungen gibt man in Kilowatt an: Ein Kilowatt sind tausend Watt. Je mehr Watt, desto schneller wird Energie umgesetzt." },
+  { "id": "merksatz", "text": "Merke: Leistung ist Arbeit pro Zeit. P gleich W durch t, gemessen in Watt. Wer die gleiche Arbeit in kürzerer Zeit schafft, hat die größere Leistung." },
+  { "id": "transfer", "text": "Deshalb ist Treppenrennen anstrengender als gemütliches Steigen, und deshalb gibt man bei Motoren die Leistung an: Sie sagt, wie schnell ein Motor Energie in Bewegung umsetzen kann." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

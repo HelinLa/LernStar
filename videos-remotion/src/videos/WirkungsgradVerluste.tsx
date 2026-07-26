@@ -136,15 +136,14 @@ const VergleichScene: React.FC<SceneProps> = () => {
           <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 26 }}>
             <div style={{ width: 320, fontSize: 30, fontWeight: 800, textAlign: 'right' }}>{d.e} {d.name}</div>
             <div style={{ flex: 1, height: 44, borderRadius: 22, background: 'rgba(255,255,255,0.07)', border: `2px solid ${COLORS.border}`, overflow: 'hidden' }}>
-              <div style={{ width: `${d.eta * grow}%`, height: '100%', background: d.eta >= 80 ? COLORS.green : d.eta >= 30 ? COLORS.amber : COLORS.red, display: 'flex', alignItems: 'center', justifyContent: 'flex-end', paddingRight: 14 }}>
-                <span style={{ fontSize: 26, fontWeight: 900, color: '#0f172a' }}>{Math.round(d.eta * grow)} %</span>
-              </div>
+              <div style={{ width: `${d.eta * grow}%`, height: '100%', background: d.eta >= 80 ? COLORS.green : d.eta >= 30 ? COLORS.amber : COLORS.red }} />
             </div>
+            <div style={{ width: 110, fontSize: 30, fontWeight: 900, color: d.eta >= 80 ? COLORS.green : d.eta >= 30 ? COLORS.amber : COLORS.red }}>{Math.round(d.eta * grow)} %</div>
           </div>
         ))}
-        {/* 100%-Marke */}
-        <div style={{ position: 'absolute', right: 0, top: -40, bottom: -10, borderLeft: `3px dashed ${COLORS.muted}` }} />
-        <div style={{ position: 'absolute', right: -16, top: -74, fontSize: 24, fontWeight: 800, color: COLORS.muted }}>100 %</div>
+        {/* 100%-Marke – am rechten Ende der Balken (vor der Wert-Spalte) */}
+        <div style={{ position: 'absolute', right: 130, top: -40, bottom: 4, borderLeft: `3px dashed ${COLORS.muted}` }} />
+        <div style={{ position: 'absolute', right: 96, top: -74, fontSize: 24, fontWeight: 800, color: COLORS.muted }}>100 %</div>
       </div>
       <Sfx sound="pop" at={12} volume={0.3} />
       <Caption delay={40}>Ein Rest geht immer als Wärme verloren.</Caption>
