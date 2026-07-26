@@ -138,6 +138,7 @@ import { Energiekette, ENERGIEKETTE_DURATION } from './videos/Energiekette';
 import { Generator, GENERATOR_DURATION } from './videos/Generator';
 import { Waermekraftwerk, WAERMEKRAFTWERK_DURATION } from './videos/Waermekraftwerk';
 import { FossileEnergie, FOSSILE_ENERGIE_DURATION } from './videos/FossileEnergie';
+import { RegenerativeEnergie, REGENERATIVE_ENERGIE_DURATION } from './videos/RegenerativeEnergie';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -401,6 +402,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Generator" component={Generator} durationInFrames={GENERATOR_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Waermekraftwerk" component={Waermekraftwerk} durationInFrames={WAERMEKRAFTWERK_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="FossileEnergie" component={FossileEnergie} durationInFrames={FOSSILE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="RegenerativeEnergie" component={RegenerativeEnergie} durationInFrames={REGENERATIVE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Sonne, Wind und Wasser liefern erneuerbare Energie. Aber wie holt man den Strom da eigentlich heraus? Jede der drei Anlagen arbeitet nach einem eigenen Wirkprinzip." },
+  { "id": "photovoltaik", "text": "Die Photovoltaik nutzt die Sonne. In einer Solarzelle wird das Sonnenlicht direkt in elektrischen Strom umgewandelt – ganz ohne bewegliche Teile und ohne Generator. Je stärker das Licht, desto mehr Strom liefert die Zelle." },
+  { "id": "windkraft", "text": "Die Windkraft nutzt den Wind. Er trifft auf die großen Flügel und bringt sie zum Drehen. Diese Drehung treibt einen Generator an, der daraus Strom macht. Je kräftiger der Wind, desto schneller drehen die Flügel und desto mehr Strom entsteht." },
+  { "id": "wasserkraft", "text": "Die Wasserkraft nutzt fallendes oder strömendes Wasser. Das Wasser stürzt in die Tiefe und treibt eine Turbine an, die wiederum einen Generator dreht. Je größer die Fallhöhe, desto mehr Energie steckt im Wasser und desto mehr Strom kommt heraus." },
+  { "id": "vergleich", "text": "Vergleicht man die drei, fällt ein Unterschied auf. Bei der Photovoltaik wird Licht direkt in elektrische Energie umgewandelt. Bei Wind und Wasser dagegen entsteht zuerst eine Drehbewegung, die ein Generator in Strom verwandelt. Zwei Wege, ein Ziel: sauberer Strom." },
+  { "id": "merksatz", "text": "Merke: Photovoltaik wandelt Licht direkt in Strom um. Wind und Wasser erzeugen erst eine Drehbewegung, die ein Generator in Strom umwandelt." },
+  { "id": "transfer", "text": "Deshalb baut man Solaranlagen dorthin, wo viel Sonne scheint, Windräder an windige Orte und Wasserkraftwerke an Flüsse mit starkem Gefälle. Der richtige Standort entscheidet über den Ertrag." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
