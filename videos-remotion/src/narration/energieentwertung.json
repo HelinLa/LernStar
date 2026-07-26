@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Eine Bremsscheibe glüht, ein Bohrer wird heiß, und wenn du deine Hände aneinander reibst, werden sie warm. Warum wird beim Bremsen und Reiben eigentlich immer alles warm?" },
+  { "id": "beobachten", "text": "Schau dir drei Fälle an: Beim Bremsen wird die Bremse heiß. Der Bohrer glüht fast. Die geriebenen Hände wärmen sich. Überall, wo Reibung im Spiel ist, entsteht Wärme." },
+  { "id": "zusammenhang", "text": "Der Grund ist immer derselbe: Reibung wandelt Bewegungsenergie in Wärme um. Die Energie geht dabei nicht verloren – aber sie verändert ihre Form von gerichteter Bewegung hin zu Wärme." },
+  { "id": "entwertung", "text": "Und jetzt kommt das Entscheidende. Vorher war die Energie hochwertig und gebündelt: eine schnelle, geordnete Bewegung. Als Wärme verteilt sie sich ungeordnet in Bremse, Luft und Umgebung. Diese verteilte Wärme kannst du kaum noch nutzen. Die Energiemenge bleibt gleich – aber ihre Nutzbarkeit sinkt. Das nennt man Energieentwertung." },
+  { "id": "erklaeren", "text": "Man sagt: Die Energie wird entwertet. Sie ist nicht vernichtet, sondern nur in eine wenig nutzbare Form übergegangen – meist Wärme, die in die Umgebung entweicht. Genau deshalb wird bei jeder Reibung ein Teil der Energie für uns unbrauchbar." },
+  { "id": "merksatz", "text": "Merke: Reibung wandelt Bewegungsenergie in Wärme um. Die Energiemenge bleibt erhalten, aber die verteilte Wärme ist entwertet – kaum noch nutzbar." },
+  { "id": "transfer", "text": "Deshalb wird die Bremse heiß, ein Streichholz entzündet sich durch Reibung, und mit Schmieröl versucht man, Reibung und damit die Entwertung klein zu halten." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

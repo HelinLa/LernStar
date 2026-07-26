@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Auf der Achterbahn geht es am höchsten Punkt ganz gemächlich los – und im Tal rast der Wagen mit voller Wucht durch. Warum eigentlich oben langsam und unten schnell?" },
+  { "id": "beobachten", "text": "Beobachte den Wagen: Am höchsten Punkt kriecht er kaum vorwärts. Sobald es bergab geht, wird er immer schneller. Im tiefsten Tal ist er am schnellsten, und beim nächsten Berg wird er wieder langsamer." },
+  { "id": "umwandlung", "text": "Der Grund ist eine Energieumwandlung. Oben hat der Wagen wegen seiner Höhe viel Lageenergie. Beim Herabfahren wird diese Lageenergie in Bewegungsenergie umgewandelt – deshalb wird er schneller. Beim Hochfahren läuft es rückwärts: Bewegungsenergie wird wieder zu Lageenergie, der Wagen wird langsamer." },
+  { "id": "starthoehe", "text": "Entscheidend ist die Starthöhe. Startet der Wagen höher, hat er mehr Lageenergie zum Umwandeln – und ist im Tal deutlich schneller. Deshalb ist der erste Berg einer Achterbahn immer der höchste: Von dort holt sich der Wagen die Energie für die ganze Fahrt." },
+  { "id": "erhaltung", "text": "Die gesamte Energie bleibt dabei erhalten. Lageenergie und Bewegungsenergie tauschen sich entlang der Bahn ständig aus, ihre Summe bleibt gleich. Deshalb schafft der Wagen nie einen Berg, der höher ist als sein Start." },
+  { "id": "merksatz", "text": "Merke: Auf der Achterbahn wird Höhe in Tempo umgewandelt. Oben viel Lageenergie und wenig Tempo, unten wenig Höhe und viel Bewegungsenergie – die Summe bleibt gleich." },
+  { "id": "transfer", "text": "Dasselbe Prinzip steckt im Skispringer, der die Anlaufspur hinunterrast, und in der Halfpipe beim Skateboard: Höhe wird zu Tempo und Tempo wieder zu Höhe." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
