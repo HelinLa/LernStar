@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Du hast gelernt: Energie geht nie verloren, sie wandelt sich nur um. Aber warum sollen wir dann überhaupt Energie sparen, wenn sie doch gar nicht verschwinden kann?" },
+  { "id": "beobachten", "text": "Im Alltag sagen wir: Der Akku ist leer, der Tank ist leer, die Energie ist verbraucht. Es fühlt sich an, als wäre die Energie einfach weg. Aber stimmt das wirklich?" },
+  { "id": "widerspruch", "text": "Nach dem Energieerhaltungssatz ist die Energiemenge immer gleich geblieben. Aus dem Strom im Akku wurde Licht, Bewegung und Wärme. Kein einziges Joule ist verschwunden – die Energie hat nur ihre Form gewechselt und sich in der Umgebung verteilt." },
+  { "id": "entwertung", "text": "Der Haken ist die Nutzbarkeit. Hochwertige Energie wie Strom oder Benzin ist gebündelt und vielseitig einsetzbar. Bei jeder Umwandlung entsteht Wärme, die sich in der Umgebung verteilt. Diese entwertete Umgebungswärme ist zwar noch da, aber so dünn verteilt, dass wir sie nicht mehr nutzen können. Energie wird also nicht verbraucht, sondern entwertet." },
+  { "id": "pointe", "text": "Deshalb sparen wir Energie. Nicht die Menge wird knapp, sondern die hochwertige, nutzbare Energie. Unsere Vorräte an Strom, Benzin und Brennstoffen sind begrenzt – und einmal entwertete Wärme bekommen wir nicht zurück. Sparen heißt: die wertvolle, nutzbare Energie klug einsetzen." },
+  { "id": "merksatz", "text": "Merke: Energie geht nie verloren, aber sie wird entwertet. Verbrauch bedeutet Entwertung, nicht Vernichtung. Deshalb sparen wir die hochwertige, nutzbare Energie." },
+  { "id": "transfer", "text": "Genau darum geht es beim Energiesparen im Haushalt und in der Technik – und darum kümmert sich das nächste Kapitel: Woher kommt unsere Energie, und wie versorgen wir uns klimafreundlich?" },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
