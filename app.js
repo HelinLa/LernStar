@@ -1348,7 +1348,8 @@ function renderSubject() {
         ${t.kompetenz ? `<button class="modul-start-btn" onclick="startModul('${state.gradeId}','${state.subjectId}',${topicNum-1})">&#127775; Lernmodul</button>` : ''}
         ${(hasVideo && !t.explanation && !t.kompetenz) ? `<button class="topic-play-btn" id="topicBtn${i}" onclick="playTopic(${i})">Erklärvideo</button>` : ''}
         ${(subject.id === 'mathe' && (EV_SCENES[t.name] || t.explanation) && !t.kompetenz) ? `<button class="tafel-topic-btn" onclick="openTafel('${t.name.replace(/'/g,"\\'")}')">🖍️ Tafel</button>` : ''}
-        ${(subject.id !== 'mathe' && (EV_SCENES[t.name] || t.explanation) && !t.kompetenz) ? `<button class="ev-topic-btn" onclick="openErklaerVideo('${t.name.replace(/'/g,"\\'")}')">🎬 Erklärvideo</button>` : ''}
+        ${(subject.id !== 'mathe' && t.video && !t.kompetenz) ? `<button class="ev-topic-btn" onclick="playLernvideo('${t.video}','${t.name.replace(/'/g,"\\'")}')">🎬 Lernvideo</button>` : ''}
+        ${(subject.id !== 'mathe' && !t.video && (EV_SCENES[t.name] || t.explanation) && !t.kompetenz) ? `<button class="ev-topic-btn" onclick="openErklaerVideo('${t.name.replace(/'/g,"\\'")}')">🎬 Erklärvideo</button>` : ''}
       </div>`;
     topicsList.appendChild(item);
   });
@@ -3579,6 +3580,28 @@ document.addEventListener('keydown', e => {
 // ============================================================
 
 let _sim = null;
+
+// ── Lernvideo-Player (Remotion-MP4 aus videos/) ──────────────────────
+function playLernvideo(file, name) {
+  const ex = document.getElementById('lernvideoModal');
+  if (ex) ex.remove();
+  const modal = document.createElement('div');
+  modal.id = 'lernvideoModal';
+  modal.className = 'sim-overlay';
+  modal.innerHTML = `
+    <div class="sim-box sim-box-wide">
+      <button class="sim-x" onclick="closeLernvideo()">✕</button>
+      <h3 class="sim-h3">🎬 ${name}</h3>
+      <video src="videos/${file}" controls autoplay playsinline preload="metadata"
+        style="width:100%;border-radius:10px;display:block;background:#0f172a"></video>
+    </div>`;
+  modal.addEventListener('click', e => { if (e.target === modal) closeLernvideo(); });
+  document.body.appendChild(modal);
+}
+function closeLernvideo() {
+  const m = document.getElementById('lernvideoModal');
+  if (m) { const v = m.querySelector('video'); if (v) { v.pause(); } m.remove(); }
+}
 
 function openExperiment(expId) {
   const ex = document.getElementById('expModal');
