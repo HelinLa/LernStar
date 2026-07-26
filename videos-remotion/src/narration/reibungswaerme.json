@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wohin verschwindet die Energie, wenn ein rollender Ball einfach liegen bleibt? Sie kann doch nicht einfach weg sein." },
+  { "id": "beobachten", "text": "Schau: Der Ball rollt los, wird langsamer und langsamer – und bleibt schließlich liegen. Eben hatte er noch Bewegungsenergie, jetzt liegt er still. Wo ist die Energie nur hin?" },
+  { "id": "umwandlung", "text": "Die Antwort: Zwischen Ball und Boden wirkt Reibung. Und diese Reibung wandelt die Bewegungsenergie Stück für Stück in Wärme um. Der Boden und der Ball werden dabei ein winziges bisschen wärmer. Die Energie ist also nicht verschwunden – sie hat nur die Form gewechselt." },
+  { "id": "variieren", "text": "Wie stark das passiert, hängt vom Untergrund ab. Auf einer glatten Fläche rollt der Ball weit, es entsteht wenig Wärme. Auf einer rauen Fläche bleibt er schnell liegen – dann wird mehr Bewegungsenergie in Wärme umgewandelt." },
+  { "id": "erhaltung", "text": "Das ist eine wichtige Grundregel: Energie geht niemals verloren. Sie wird nur von einer Form in eine andere umgewandelt. Aus Bewegungsenergie wird hier Wärme – die Gesamtenergie bleibt gleich." },
+  { "id": "merksatz", "text": "Merke: Energie geht nie verloren. Reibung wandelt die Bewegungsenergie in Wärme um." },
+  { "id": "transfer", "text": "Das erlebst du überall: Die Bremse am Fahrrad wird heiß, deine Hände werden warm, wenn du sie aneinander reibst, und ein Streichholz entzündet sich allein durch Reibung." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
