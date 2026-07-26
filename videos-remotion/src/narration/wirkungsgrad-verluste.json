@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Dein Handy wird beim Laden warm, der Laptop brummt und heizt, das Ladegerät ist heiß. Warum ist eigentlich keine Maschine perfekt – wohin geht die Energie verloren?" },
+  { "id": "beobachten", "text": "Fass verschiedene Geräte im Betrieb an: fast alle geben Abwärme ab. Diese Wärme ist Energie, die du eigentlich nicht wolltest. Sie zeigt: Ein Teil der zugeführten Energie wird nicht zum Nutzen, sondern geht als Verlust weg." },
+  { "id": "verluste", "text": "Wo steckt der Verlust? Meist in Reibung, die Wärme erzeugt, manchmal auch in Geräusch oder Abstrahlung. Von der zugeführten Energie wird nur ein Teil zur Nutzenergie – der Rest verlässt das Gerät als entwertete Wärme. Deshalb erreicht kein Gerät hundert Prozent." },
+  { "id": "rechnen", "text": "Rechnen wir es aus. Ein Motor bekommt tausend Joule zugeführt und liefert davon zweihundertfünfzig Joule als nutzbare Bewegung. Der Wirkungsgrad ist nutzbar geteilt durch zugeführt: zweihundertfünfzig durch tausend, das sind null Komma fünfundzwanzig – also fünfundzwanzig Prozent. Die restlichen fünfundsiebzig Prozent gehen als Wärme verloren." },
+  { "id": "vergleich", "text": "Vergleicht man Geräte, sieht man große Unterschiede. Die Glühlampe schafft nur etwa fünf Prozent, ein Auto-Motor rund fünfundzwanzig, eine LED etwa vierzig, ein Elektromotor über neunzig Prozent. Aber keines erreicht hundert Prozent – ein Rest geht immer als Wärme verloren." },
+  { "id": "merksatz", "text": "Merke: Keine Maschine ist perfekt. Ihr Wirkungsgrad ist immer kleiner als hundert Prozent, denn ein Teil der Energie wird stets in Wärme entwertet." },
+  { "id": "transfer", "text": "Genau das zeigt das Energielabel von Geräten: Von A bis G verrät es, wie sparsam ein Gerät mit Energie umgeht – also wie hoch sein Wirkungsgrad ist." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

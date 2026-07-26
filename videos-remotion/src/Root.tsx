@@ -129,6 +129,7 @@ import { LuftwiderstandJg9, LUFTWIDERSTAND_JG9_DURATION } from './videos/Luftwid
 import { Energieerhaltung, ENERGIEERHALTUNG_DURATION } from './videos/Energieerhaltung';
 import { Achterbahn, ACHTERBAHN_DURATION } from './videos/Achterbahn';
 import { Energieentwertung, ENERGIEENTWERTUNG_DURATION } from './videos/Energieentwertung';
+import { Wirkungsgrad, WIRKUNGSGRAD_DURATION } from './videos/Wirkungsgrad';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -383,6 +384,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Energieerhaltung" component={Energieerhaltung} durationInFrames={ENERGIEERHALTUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Achterbahn" component={Achterbahn} durationInFrames={ACHTERBAHN_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Energieentwertung" component={Energieentwertung} durationInFrames={ENERGIEENTWERTUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Wirkungsgrad" component={Wirkungsgrad} durationInFrames={WIRKUNGSGRAD_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );
