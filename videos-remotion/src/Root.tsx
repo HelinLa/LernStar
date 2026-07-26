@@ -145,6 +145,7 @@ import { Energiespeicher, ENERGIESPEICHER_DURATION } from './videos/Energiespeic
 import { Treibhauseffekt, TREIBHAUSEFFEKT_DURATION } from './videos/Treibhauseffekt';
 import { NatuerlicherTreibhauseffekt, NATUERLICHER_TREIBHAUSEFFEKT_DURATION } from './videos/NatuerlicherTreibhauseffekt';
 import { WetterKlima, WETTER_KLIMA_DURATION } from './videos/WetterKlima';
+import { Nachhaltigkeit, NACHHALTIGKEIT_DURATION } from './videos/Nachhaltigkeit';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -415,6 +416,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Treibhauseffekt" component={Treibhauseffekt} durationInFrames={TREIBHAUSEFFEKT_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="NatuerlicherTreibhauseffekt" component={NatuerlicherTreibhauseffekt} durationInFrames={NATUERLICHER_TREIBHAUSEFFEKT_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="WetterKlima" component={WetterKlima} durationInFrames={WETTER_KLIMA_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Nachhaltigkeit" component={Nachhaltigkeit} durationInFrames={NACHHALTIGKEIT_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

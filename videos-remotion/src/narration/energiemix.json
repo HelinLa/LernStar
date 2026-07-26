@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Zum Abschluss ein Blick in die Zukunft: Wie könnte die Energieversorgung deiner Stadt in dreißig Jahren aussehen? Um das zu beantworten, musst du alles zusammenbringen, was du über Energie gelernt hast." },
+  { "id": "heute", "text": "So sieht der Strommix heute oft aus: ein großer Teil kommt noch aus Kohle und Gas, dazu etwas Kernkraft und ein wachsender Anteil aus Sonne, Wind und Wasser. Weil noch viel verbrannt wird, ist der CO2-Ausstoß hoch." },
+  { "id": "wandel", "text": "In den nächsten Jahrzehnten verschieben sich die Anteile. Kohle und Gas werden weniger, Sonne und Wind werden zur wichtigsten Quelle. Dazu kommen Speicher, die den schwankenden Strom ausgleichen. Mit jedem Schritt Richtung erneuerbar sinkt der CO2-Ausstoß." },
+  { "id": "mix", "text": "Stell dir vor, du planst den Mix selbst. Du wählst die Quellen und fügst Speicher hinzu. Zwei Dinge musst du im Blick behalten: Ist der Bedarf jederzeit gedeckt? Und wie hoch ist der CO2-Ausstoß? Ein guter Mix deckt den Bedarf sicher und stößt möglichst wenig CO2 aus." },
+  { "id": "zielkonflikt", "text": "Dabei gibt es einen Zielkonflikt. Die Versorgung muss immer sicher sein, auch bei Dunkelflaute – und gleichzeitig soll sie das Klima schützen. Beides zusammen zu schaffen, ist die große Aufgabe: Versorgungssicherheit und Klimaschutz gemeinsam denken." },
+  { "id": "merksatz", "text": "Merke: Eine nachhaltige Energieversorgung setzt vor allem auf erneuerbare Quellen und Speicher. Sie muss den Bedarf sicher decken und dabei möglichst wenig CO2 verursachen." },
+  { "id": "abschluss", "text": "Damit schließt sich der Kreis von Jahrgang neun: von Kräften über Bewegung und Energie bis zur Frage, wie wir die Energie der Zukunft klug und klimafreundlich nutzen. Jetzt kannst du selbst bewerten und mitentscheiden." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
