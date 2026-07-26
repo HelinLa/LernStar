@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie sieht ein Magnetfeld aus? Ein Magnet wirkt auch durch die Luft, ohne etwas zu berühren. Aber wie kann man etwas Unsichtbares sichtbar machen?" },
+  { "id": "spaene", "text": "Streu feine Eisenspäne auf ein Blatt über dem Magneten und klopf leicht dagegen. Die Späne ordnen sich wie von selbst zu geschwungenen Linien – sie machen das Magnetfeld sichtbar." },
+  { "id": "feldlinien", "text": "Diese Linien nennen wir Feldlinien. Außerhalb des Magneten laufen sie immer vom Nordpol zum Südpol. Sie zeigen die Richtung, in die eine Kompassnadel an dieser Stelle zeigen würde." },
+  { "id": "staerke", "text": "An der Dichte der Linien erkennst du die Stärke. Nah an den Polen liegen sie eng beieinander – dort ist das Feld am stärksten. Weiter weg werden die Abstände größer, das Feld schwächer." },
+  { "id": "pruefkompass", "text": "Bewegst du einen kleinen Prüfkompass um den Magneten, dreht sich seine Nadel immer entlang der Feldlinien. So kannst du das Feld Punkt für Punkt abtasten – auch dort, wo du keine Späne hast." },
+  { "id": "merksatz", "text": "Merke: Das Magnetfeld ist der Raum um einen Magneten. Feldlinien laufen außen vom Nord- zum Südpol. Wo sie dicht liegen, ist das Feld am stärksten." },
+  { "id": "transfer", "text": "Auch die Erde hat ein Magnetfeld, das bis weit ins All reicht. Es lenkt gefährliche Teilchen der Sonne ab und lässt am Himmel die Polarlichter leuchten." },
+  { "id": "outro", "text": "Eisenspäne zeigen es, Feldlinien beschreiben es: das unsichtbare Magnetfeld. Physik verstehen, Schritt für Schritt." }
+]

@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie funktioniert ein Kompass? Seit Jahrhunderten finden Seefahrer damit ihren Weg. Egal wie du ihn drehst – die Nadel zeigt am Ende immer nach Norden. Warum?" },
+  { "id": "nadel", "text": "Das Geheimnis: Die Kompassnadel ist selbst ein kleiner, drehbar gelagerter Magnet. Sie hat einen Nord- und einen Südpol und kann sich fast reibungsfrei drehen." },
+  { "id": "erde", "text": "Die Erde ist ein riesiger Magnet mit einem eigenen Magnetfeld. Die Nadel richtet sich an diesem Feld aus – ihr rotes Nordende zeigt zum magnetischen Norden. Stößt du die Nadel an, pendelt sie und kehrt von selbst nach Norden zurück." },
+  { "id": "stoerung", "text": "Aber Vorsicht: Bringst du einen Magneten oder ein Stück Eisen in die Nähe, folgt die Nadel dem stärkeren Feld und dreht sich zu ihm hin. Dann zeigt der Kompass falsch." },
+  { "id": "beispiel", "text": "Deshalb hält man auf dem Schiff Kompass und Eisenteile auseinander. Und im Gelände findest du mit Kompass und Karte zuverlässig die Himmelsrichtung – solange kein Magnet stört." },
+  { "id": "merksatz", "text": "Merke: Die Kompassnadel ist ein drehbarer Magnet. Sie richtet sich am Magnetfeld der Erde aus und zeigt nach Norden. Magnete und Eisen in der Nähe stören die Anzeige." },
+  { "id": "transfer", "text": "Auch dein Handy hat einen elektronischen Kompass für die Navigation. Und Zugvögel besitzen einen eingebauten Magnetsinn, mit dem sie tausende Kilometer weit den richtigen Weg finden." },
+  { "id": "outro", "text": "Ein kleiner Magnet, ausgerichtet am Feld der Erde – das ist der Kompass. Physik verstehen, Schritt für Schritt." }
+]

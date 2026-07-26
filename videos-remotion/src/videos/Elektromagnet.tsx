@@ -1,0 +1,246 @@
+import React from 'react';
+import {
+  AbsoluteFill,
+  Series,
+  Audio,
+  staticFile,
+  useCurrentFrame,
+  useVideoConfig,
+  interpolate,
+  spring,
+} from 'remotion';
+import { COLORS } from '../theme';
+import { Bg, SceneTitle, Caption, MerksatzBox, StarLogo, BackgroundMusic, Sfx } from '../components';
+import { Coil, useFade } from '../magnet';
+import timings from '../narration/elektromagnet.timings.json';
+
+const T = timings as Record<string, number>;
+const FPS = 30;
+const TAIL = 20;
+const durOf = (id: string, min: number) => Math.max(min, Math.round((T[id] ?? 0) * FPS) + TAIL);
+
+type SceneProps = { dur: number };
+
+// Batterie + Draht + Schalter
+const Circuit: React.FC<{ on: boolean; coilX?: number }> = ({ on }) => (
+  <svg style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%' }} viewBox="0 0 1920 1080">
+    <polyline points="700,760 700,880 1220,880 1220,760" fill="none" stroke={on ? COLORS.amber : COLORS.muted} strokeWidth={6} />
+    {/* Batterie */}
+    <rect x="920" y="856" width="80" height="48" rx="6" fill="#334155" stroke={COLORS.muted} strokeWidth={2} />
+    <text x="960" y="890" fontSize="30" fill="#fbbf24" textAnchor="middle" fontWeight="bold">⎓</text>
+    {/* Stromfluss-Punkte */}
+    {on ? [0, 0.33, 0.66].map((o, i) => <circle key={i} cx={720 + o * 480} cy={880} r={7} fill={COLORS.amber} />) : null}
+  </svg>
+);
+
+// Büroklammern, die (an)hängen
+const Clips: React.FC<{ count: number; on: boolean }> = ({ count, on }) => (
+  <>
+    {Array.from({ length: count }).map((_, i) => (
+      <div
+        key={i}
+        style={{
+          position: 'absolute',
+          left: 900 + (i % 5) * 30 - 60,
+          top: on ? 590 + Math.floor(i / 5) * 34 : 940 + i * 4,
+          fontSize: 40,
+          transition: 'none',
+          opacity: 1,
+        }}
+      >
+        📎
+      </div>
+    ))}
+  </>
+);
+
+// ── Intro ──────────────────────────────────────────────────────────────
+const Intro: React.FC<SceneProps> = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const t = spring({ frame: frame - 18, fps, config: { damping: 200 } });
+  const sub = spring({ frame: frame - 42, fps, config: { damping: 200 } });
+  const on = Math.floor(frame / 20) % 2 === 0;
+  return (
+    <AbsoluteFill style={{ justifyContent: 'center', alignItems: 'center' }}>
+      <div style={{ display: 'flex', gap: 40, marginBottom: 40, fontSize: 130 }}>
+        <div>🔌</div>
+        <div style={{ opacity: on ? 1 : 0.3 }}>🧲</div>
+        <div>📎</div>
+      </div>
+      <StarLogo size={84} />
+      <div style={{ marginTop: 26, fontSize: 84, fontWeight: 900, opacity: t, transform: `translateY(${interpolate(t, [0, 1], [40, 0])}px)` }}>
+        Der Elektromagnet
+      </div>
+      <div style={{ marginTop: 16, fontSize: 38, fontWeight: 600, color: COLORS.muted, maxWidth: 1350, textAlign: 'center', opacity: sub }}>
+        Ein Magnet zum Ein- und Ausschalten – wie geht das?
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// ── Aufbau: Spule + Kern, Strom an ─────────────────────────────────────
+const AufbauScene: React.FC<SceneProps> = ({ dur }) => {
+  const frame = useCurrentFrame();
+  const on = frame > dur * 0.45;
+  return (
+    <AbsoluteFill>
+      <SceneTitle kicker="Aufbau" title="Spule mit Eisenkern" />
+      <Coil cx={960} cy={430} w={340} h={150} windings={6} on={on} />
+      <Circuit on={on} />
+      <Clips count={on ? 8 : 0} on={on} />
+      <div style={{ position: 'absolute', left: 700, top: 300, fontSize: 30, fontWeight: 800, color: on ? COLORS.green : COLORS.muted }}>
+        {on ? 'Strom AN → Magnet! 🧲' : 'Strom aus → nichts passiert'}
+      </div>
+      <Sfx sound={on ? 'impact' : 'pop'} at={Math.round(dur * 0.45) + 2} volume={0.4} />
+      <Caption delay={Math.round(dur * 0.45) + 8}>Schließt du die Batterie, wird die Spule sofort zum Magneten.</Caption>
+    </AbsoluteFill>
+  );
+};
+
+// ── Schalten: an/aus, Klammern fallen ──────────────────────────────────
+const SchaltenScene: React.FC<SceneProps> = ({ dur }) => {
+  const frame = useCurrentFrame();
+  const on = frame < dur * 0.5;
+  return (
+    <AbsoluteFill>
+      <SceneTitle kicker="Das Besondere" title="Ein- und ausschaltbar" />
+      <Coil cx={960} cy={430} w={340} h={150} windings={6} on={on} />
+      <Circuit on={on} />
+      <Clips count={8} on={on} />
+      <div style={{ position: 'absolute', left: 700, top: 300, fontSize: 34, fontWeight: 800, color: on ? COLORS.green : COLORS.red }}>
+        {on ? 'Strom AN → hält 📎' : 'Strom AUS → Klammern fallen ⬇️'}
+      </div>
+      <Sfx sound={on ? 'pling' : 'impact'} at={Math.round(dur * 0.5)} volume={0.4} />
+      <Caption delay={Math.round(dur * 0.5) + 6}>Strom aus – und der Magnetismus verschwindet sofort.</Caption>
+    </AbsoluteFill>
+  );
+};
+
+// ── Stärker: mehr Windungen / mehr Strom ───────────────────────────────
+const StaerkerScene: React.FC<SceneProps> = ({ dur }) => {
+  const frame = useCurrentFrame();
+  const more = frame > dur * 0.5;
+  const windings = more ? 12 : 5;
+  const clips = more ? 12 : 4;
+  return (
+    <AbsoluteFill>
+      <SceneTitle kicker="Wie stark?" title={more ? 'Mehr Windungen & Strom' : 'Wenige Windungen'} />
+      <Coil cx={960} cy={430} w={360} h={150} windings={windings} on />
+      <Clips count={clips} on />
+      <div style={{ position: 'absolute', left: 700, top: 300, fontSize: 30, fontWeight: 800, color: COLORS.amber }}>
+        Windungen: {windings} · Tragkraft: {clips} 📎
+      </div>
+      {more ? <div style={{ position: 'absolute', left: 700, top: 250, fontSize: 44, color: COLORS.green }}>⬆️ stärker!</div> : null}
+      <Sfx sound="pling" at={Math.round(dur * 0.5)} volume={0.4} />
+      <Caption delay={Math.round(dur * 0.55)}>Mehr Windungen und mehr Stromstärke → mehr Büroklammern.</Caption>
+    </AbsoluteFill>
+  );
+};
+
+// ── Regel ──────────────────────────────────────────────────────────────
+const RegelScene: React.FC<SceneProps> = () => {
+  const f = useFade(14);
+  return (
+    <AbsoluteFill style={{ justifyContent: 'center', alignItems: 'center' }}>
+      <SceneTitle kicker="Die Regel" title="Was macht ihn stark?" />
+      <div style={{ display: 'flex', gap: 40, opacity: f }}>
+        {[['🌀', 'mehr Windungen'], ['⚡', 'mehr Stromstärke'], ['🧲', 'Eisenkern innen']].map(([ic, nm], i) => (
+          <div key={i} style={{ width: 300, padding: '30px 18px', borderRadius: 22, background: COLORS.panel, border: `2px solid ${COLORS.amber}`, textAlign: 'center' }}>
+            <div style={{ fontSize: 74 }}>{ic}</div>
+            <div style={{ fontSize: 26, fontWeight: 800, marginTop: 8 }}>{nm}</div>
+          </div>
+        ))}
+      </div>
+      <Sfx sound="pling" at={14} volume={0.45} />
+      <Caption delay={40}>Drei Stellschrauben – jede macht den Elektromagneten stärker.</Caption>
+    </AbsoluteFill>
+  );
+};
+
+// ── Merksatz ───────────────────────────────────────────────────────────
+const MerksatzScene: React.FC<SceneProps> = () => (
+  <AbsoluteFill>
+    <Sfx sound="pling" at={8} volume={0.55} />
+    <MerksatzBox title="Elektromagnet" footer="ein- und ausschaltbar per Strom">
+      Spule + Eisenkern + Strom = Magnet.
+      <br />
+      Mehr Windungen und mehr Strom
+      <br />
+      machen ihn stärker.
+    </MerksatzBox>
+  </AbsoluteFill>
+);
+
+// ── Transfer ───────────────────────────────────────────────────────────
+const TCard: React.FC<{ icon: string; title: string; delay: number }> = ({ icon, title, delay }) => {
+  const f = useFade(delay);
+  return (
+    <div style={{ width: 340, padding: '30px 18px', borderRadius: 22, background: COLORS.panel, border: `1px solid ${COLORS.border}`, textAlign: 'center', opacity: f, transform: `translateY(${(1 - f) * 34}px)` }}>
+      <div style={{ fontSize: 74 }}>{icon}</div>
+      <div style={{ fontSize: 28, fontWeight: 800, marginTop: 8 }}>{title}</div>
+    </div>
+  );
+};
+const TransferScene: React.FC<SceneProps> = () => (
+  <AbsoluteFill>
+    <SceneTitle kicker="Übertragen" title="Elektromagnete überall" />
+    <AbsoluteFill style={{ justifyContent: 'center', alignItems: 'center', top: 40 }}>
+      <div style={{ display: 'flex', gap: 34 }}>
+        <TCard icon="🏗️🚗" title="Schrottkran" delay={10} />
+        <TCard icon="🔔" title="Türklingel" delay={30} />
+        <TCard icon="⚙️" title="Elektromotor" delay={50} />
+      </div>
+    </AbsoluteFill>
+    <Sfx sound="pop" at={10} volume={0.36} />
+    <Caption delay={66}>Der Kran hebt Autos – und lässt sie per Knopfdruck wieder fallen.</Caption>
+  </AbsoluteFill>
+);
+
+// ── Outro ──────────────────────────────────────────────────────────────
+const Outro: React.FC<SceneProps> = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const s = spring({ frame: frame - 20, fps, config: { damping: 200 } });
+  return (
+    <AbsoluteFill style={{ justifyContent: 'center', alignItems: 'center' }}>
+      <StarLogo size={120} />
+      <div style={{ marginTop: 40, fontSize: 44, fontWeight: 700, color: COLORS.muted, opacity: s }}>
+        Physik verstehen – Schritt für Schritt.
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+const SCENES: { id: string; C: React.FC<SceneProps>; min: number }[] = [
+  { id: 'intro', C: Intro, min: 130 },
+  { id: 'aufbau', C: AufbauScene, min: 260 },
+  { id: 'schalten', C: SchaltenScene, min: 240 },
+  { id: 'staerker', C: StaerkerScene, min: 260 },
+  { id: 'regel', C: RegelScene, min: 220 },
+  { id: 'merksatz', C: MerksatzScene, min: 180 },
+  { id: 'transfer', C: TransferScene, min: 200 },
+  { id: 'outro', C: Outro, min: 110 },
+];
+
+export const ELEKTROMAGNET_DURATION = SCENES.reduce((sum, s) => sum + durOf(s.id, s.min), 0);
+
+export const Elektromagnet: React.FC = () => {
+  return (
+    <Bg>
+      <BackgroundMusic total={ELEKTROMAGNET_DURATION} />
+      <Series>
+        {SCENES.map((s) => {
+          const d = durOf(s.id, s.min);
+          return (
+            <Series.Sequence key={s.id} durationInFrames={d}>
+              <s.C dur={d} />
+              <Audio src={staticFile(`audio/elektromagnet/${s.id}.wav`)} />
+              <Sfx sound="whoosh" at={1} volume={0.4} />
+            </Series.Sequence>
+          );
+        })}
+      </Series>
+    </Bg>
+  );
+};

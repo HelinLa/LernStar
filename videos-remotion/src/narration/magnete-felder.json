@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Magnete. Sie halten Zettel an der Kühlschranktür, und ein Kompass zeigt mit ihnen immer nach Norden. Aber wie funktioniert das eigentlich? Schauen wir uns die Grundregeln an." },
+  { "id": "pole", "text": "Jeder Magnet hat zwei Pole: einen Nordpol, hier rot, und einen Südpol, hier blau. Egal wie oft du einen Magneten zerbrichst – es entstehen immer wieder neue Stäbchen mit Nord- und Südpol. Einen einzelnen Pol gibt es nicht." },
+  { "id": "kraft", "text": "Zwischen den Polen wirkt eine Kraft. Gleiche Pole stoßen sich ab: Nord und Nord drücken auseinander. Ungleiche Pole ziehen sich an: Nord und Süd springen zusammen. Diese Regel ist der Kern des Magnetismus." },
+  { "id": "feld", "text": "Um jeden Magneten liegt ein unsichtbares Magnetfeld. Wir zeichnen es mit Feldlinien: Außen laufen sie immer vom Nordpol zum Südpol. Wo die Linien dicht beieinander liegen – nah an den Polen – ist das Feld am stärksten." },
+  { "id": "stoffe", "text": "Ein Magnet zieht aber nicht alles an. Magnetisch sind nur drei Metalle: Eisen, Nickel und Kobalt – und Stahl, weil er Eisen enthält. Kupfer, Aluminium, Holz oder Plastik lässt der Magnet dagegen völlig kalt." },
+  { "id": "erde", "text": "Auch die Erde selbst ist ein riesiger Magnet. Deshalb dreht sich eine frei bewegliche Kompassnadel immer nach Norden – sie richtet sich am Magnetfeld der Erde aus." },
+  { "id": "merksatz", "text": "Merke: Jeder Magnet hat Nord- und Südpol. Gleiche Pole stoßen sich ab, ungleiche ziehen sich an. Die Feldlinien laufen außen vom Nord- zum Südpol." },
+  { "id": "outro", "text": "Zwei Pole, eine klare Regel, ein unsichtbares Feld. Physik verstehen, Schritt für Schritt." }
+]

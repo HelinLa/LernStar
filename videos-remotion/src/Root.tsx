@@ -17,6 +17,12 @@ import { GegenstandSehen, GEGENSTAND_SEHEN_DURATION } from './videos/GegenstandS
 import { Lichtausbreitung, LICHTAUSBREITUNG_DURATION } from './videos/Lichtausbreitung';
 import { SchattenGroesse, SCHATTEN_GROESSE_DURATION } from './videos/SchattenGroesse';
 import { KernHalbschatten, KERN_HALBSCHATTEN_DURATION } from './videos/KernHalbschatten';
+import { MagneteFelder, MAGNETE_FELDER_DURATION } from './videos/MagneteFelder';
+import { MagnetStoffe, MAGNET_STOFFE_DURATION } from './videos/MagnetStoffe';
+import { Magnetpole, MAGNETPOLE_DURATION } from './videos/Magnetpole';
+import { Magnetfeld, MAGNETFELD_DURATION } from './videos/Magnetfeld';
+import { Kompass, KOMPASS_DURATION } from './videos/Kompass';
+import { Elektromagnet, ELEKTROMAGNET_DURATION } from './videos/Elektromagnet';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -159,6 +165,12 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
       />
+      <Composition id="MagneteFelder" component={MagneteFelder} durationInFrames={MAGNETE_FELDER_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="MagnetStoffe" component={MagnetStoffe} durationInFrames={MAGNET_STOFFE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Magnetpole" component={Magnetpole} durationInFrames={MAGNETPOLE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Magnetfeld" component={Magnetfeld} durationInFrames={MAGNETFELD_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Kompass" component={Kompass} durationInFrames={KOMPASS_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Elektromagnet" component={Elektromagnet} durationInFrames={ELEKTROMAGNET_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

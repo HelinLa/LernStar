@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie wirken Magnetpole aufeinander? Zwei Stabmagnete – mal springen sie zusammen, mal kannst du sie kaum aneinander drücken. Was steckt dahinter?" },
+  { "id": "gleich", "text": "Halten wir zwei gleiche Pole gegeneinander: Nordpol gegen Nordpol. Du spürst einen unsichtbaren Widerstand, der die Magnete auseinanderdrückt. Gleiche Pole stoßen sich ab. Genauso ist es bei Südpol gegen Südpol." },
+  { "id": "ungleich", "text": "Jetzt drehen wir einen Magneten um: Nordpol gegen Südpol. Sofort ziehen sich die beiden an und schnappen zusammen. Ungleiche Pole ziehen sich an." },
+  { "id": "abstand", "text": "Und wie stark ist diese Kraft? Das hängt vom Abstand ab. Weit entfernt spürst du fast nichts. Je näher du die Pole zusammenbringst, desto stärker wird die Kraft – kurz vor dem Kontakt am allergrößten." },
+  { "id": "beispiel", "text": "Das nutzt du täglich. Ein Möbelmagnet hält die Schranktür, weil sich Magnet und Eisenplättchen anziehen. Und beim Magnetschwebe-Spielzeug schweben Ringe übereinander, weil gleiche Pole sich abstoßen." },
+  { "id": "merksatz", "text": "Merke: Gleiche Pole stoßen sich ab, ungleiche Pole ziehen sich an. Je kleiner der Abstand, desto größer die Kraft." },
+  { "id": "transfer", "text": "Diese Anziehung und Abstoßung ist das Herzstück von Elektromotoren, Lautsprechern und Magnetschwebebahnen – überall arbeiten Nord- und Südpol gegeneinander." },
+  { "id": "outro", "text": "Gleich stößt ab, ungleich zieht an – und nah ist stark. Physik verstehen, Schritt für Schritt." }
+]

@@ -104,3 +104,9 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Lichtausbreitung | Kl.5 Optik: Wie breitet sich Licht aus? (geradlinig, Lichtstrahl, 300 000 km/s) | `src/videos/Lichtausbreitung.tsx` |
 | SchattenGroesse | Kl.5 Optik: Wovon hängt die Schattengröße ab? (Abstände) | `src/videos/SchattenGroesse.tsx` |
 | KernHalbschatten | Kl.5 Optik: Kern- und Halbschatten (ausgedehnte Lichtquelle) | `src/videos/KernHalbschatten.tsx` |
+| MagneteFelder | Kl.5 Magnetismus: Magnete & Magnetfelder (Pole, Feldlinien) | `src/videos/MagneteFelder.tsx` |
+| MagnetStoffe | Kl.5 Magnetismus: Welche Stoffe zieht ein Magnet an? | `src/videos/MagnetStoffe.tsx` |
+| Magnetpole | Kl.5 Magnetismus: Wie wirken Magnetpole? (anziehen/abstoßen) | `src/videos/Magnetpole.tsx` |
+| Magnetfeld | Kl.5 Magnetismus: Wie sieht ein Magnetfeld aus? (Eisenspäne) | `src/videos/Magnetfeld.tsx` |
+| Kompass | Kl.5 Magnetismus: Wie funktioniert ein Kompass? | `src/videos/Kompass.tsx` |
+| Elektromagnet | Kl.5 Magnetismus: Der Elektromagnet (Spule, ein-/ausschaltbar) | `src/videos/Elektromagnet.tsx` |

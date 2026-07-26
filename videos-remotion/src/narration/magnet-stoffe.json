@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Welche Stoffe zieht ein Magnet an? Metall ist Metall – müsste ein Magnet dann nicht jedes Metall festhalten? Machen wir den Test." },
+  { "id": "beobachten", "text": "Wir halten einen Magneten nacheinander an acht Materialien: Eisen, Stahl, Nickel, Kupfer, Aluminium, Holz, Plastik und Glas. Bei manchen springt der Magnet sofort heran, bei anderen passiert – gar nichts." },
+  { "id": "sortieren", "text": "Sortieren wir das Ergebnis. Angezogen werden Eisen, Stahl und Nickel. Nicht angezogen werden Kupfer, Aluminium, Holz, Plastik und Glas. Überraschend: Kupfer und Aluminium sind Metalle – der Magnet lässt sie trotzdem los." },
+  { "id": "regel", "text": "Die Regel ist einfach: Magnetisch sind nur Eisen, Nickel und Kobalt. Stahl gehört dazu, weil er aus Eisen gemacht ist. Alle anderen Stoffe – auch viele Metalle – bleiben unmagnetisch." },
+  { "id": "beispiel", "text": "So kannst du selbst prüfen, woraus etwas ist. Bleibt ein Magnet an einer Büchse hängen, steckt Eisen oder Stahl darin. Fällt er ab, ist es zum Beispiel Aluminium. Genau so trennen Anlagen im Recycling Eisen vom Rest." },
+  { "id": "merksatz", "text": "Merke: Nur Eisen, Nickel und Kobalt – und Stahl – sind magnetisch. Kupfer, Aluminium, Holz, Plastik und Glas sind es nicht." },
+  { "id": "transfer", "text": "Deshalb funktioniert der Magnet am Kühlschrank, aber nicht an der Aludose. Und im Schrottplatz-Kran hebt ein starker Magnet nur die eisenhaltigen Teile heraus." },
+  { "id": "outro", "text": "Nicht jedes Metall ist magnetisch – nur Eisen, Nickel und Kobalt. Physik verstehen, Schritt für Schritt." }
+]

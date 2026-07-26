@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Der Elektromagnet. Ein Magnet, den du per Knopfdruck ein- und ausschalten kannst – wie soll das gehen? Das Geheimnis ist der elektrische Strom." },
+  { "id": "aufbau", "text": "Wir wickeln einen Draht viele Male um einen Eisenkern – das nennt man Spule. Solange kein Strom fließt, passiert nichts. Schließen wir die Batterie an, wird die Spule schlagartig zum Magneten und hält die Büroklammern fest." },
+  { "id": "schalten", "text": "Und genau das ist das Besondere: Schalten wir den Strom wieder aus, verschwindet der Magnetismus sofort – die Büroklammern fallen ab. Ein Elektromagnet lässt sich also beliebig ein- und ausschalten." },
+  { "id": "staerker", "text": "Wie stark er wird, kannst du selbst steuern. Mehr Windungen im Draht machen ihn stärker. Und mehr Stromstärke macht ihn ebenfalls stärker. Wir messen die Tragkraft an der Zahl der Büroklammern." },
+  { "id": "regel", "text": "Die Regel: Je mehr Windungen und je größer die Stromstärke, desto stärker der Elektromagnet. Mit einem Eisenkern innen wird die Wirkung noch einmal deutlich verstärkt." },
+  { "id": "merksatz", "text": "Merke: Eine stromdurchflossene Spule mit Eisenkern ist ein Elektromagnet. Man kann ihn ein- und ausschalten. Mehr Windungen und mehr Strom machen ihn stärker." },
+  { "id": "transfer", "text": "Elektromagnete stecken überall: im Schrottkran, der Autos hebt und wieder fallen lässt, in der elektrischen Türklingel und in jedem Elektromotor." },
+  { "id": "outro", "text": "Strom an – Magnet an, Strom aus – Magnet aus. Das ist der Elektromagnet. Physik verstehen, Schritt für Schritt." }
+]
