@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Kohlekraftwerk, Gaskraftwerk, Kernkraftwerk – von außen sehen sie verschieden aus. Aber von innen funktionieren erstaunlich viele Kraftwerke nach genau demselben Grundprinzip. Warum eigentlich?" },
+  { "id": "beobachten", "text": "Schaut man in diese Kraftwerke hinein, findet man fast immer dieselben Bauteile: einen Kessel, eine Turbine und einen Generator. Egal welcher Brennstoff verbrannt wird – der Weg zur Energie ist der gleiche." },
+  { "id": "kette", "text": "So läuft es ab: Im Kessel wird Wärme erzeugt und Wasser zu heißem Dampf. Der Dampf strömt mit hohem Druck auf eine Turbine und bringt sie zum Drehen. Die Turbine dreht den Generator, und der wandelt die Bewegung in elektrischen Strom um. Wärme wird zu Bewegung, Bewegung zu Strom." },
+  { "id": "brennstoff", "text": "Der einzige Unterschied ist, wie die Wärme entsteht. Kohle und Gas werden verbrannt, Biomasse ebenso, und im Kernkraftwerk liefert die Kernspaltung die Wärme. Doch ab dem heißen Dampf ist die Kette immer gleich: Dampf, Turbine, Generator, Strom." },
+  { "id": "wirkungsgrad", "text": "Perfekt ist das nicht. Ein großer Teil der Wärme wird nicht zu Strom, sondern entweicht als Abwärme – oft über die großen Kühltürme. Deshalb hat ein Wärmekraftwerk nur einen Wirkungsgrad von etwa vierzig Prozent." },
+  { "id": "merksatz", "text": "Merke: Ein Wärmekraftwerk wandelt Wärme in Bewegung und dann in Strom um. Wärme erhitzt Wasser zu Dampf, der Dampf treibt die Turbine, die Turbine dreht den Generator." },
+  { "id": "transfer", "text": "Deshalb funktionieren Kohle-, Gas-, Biomasse- und Kernkraftwerke im Kern gleich. Sie unterscheiden sich nur darin, woher die Wärme kommt." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
