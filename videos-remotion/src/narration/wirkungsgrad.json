@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Steck eine Glühlampe ein – und fass sie nach kurzer Zeit vorsichtig an: Sie ist heiß. Ein großer Teil der Energie wird gar nicht zu Licht. Bekomme ich aus einer Maschine je so viel heraus, wie ich hineinstecke?" },
+  { "id": "beobachten", "text": "Bei der alten Glühlampe steckst du elektrische Energie hinein. Heraus kommt ein bisschen Licht – und ganz viel Wärme. Nur ein kleiner Teil der zugeführten Energie wird wirklich zu dem, was du willst: zu Licht." },
+  { "id": "aufteilung", "text": "Man teilt die Energie deshalb in zwei Teile auf. Die zugeführte Energie fließt hinein. Ein Teil wird zur nutzbaren Energie – hier das Licht. Der Rest geht als Verlust verloren, meist als Wärme. Zusammen ergeben nutzbare Energie und Verlust wieder die ganze zugeführte Energie." },
+  { "id": "formel", "text": "Wie gut eine Maschine ist, beschreibt der Wirkungsgrad. Er ist das Verhältnis von nutzbarer zu zugeführter Energie: Wirkungsgrad gleich nutzbare Energie geteilt durch zugeführte Energie. Meist gibt man ihn in Prozent an. Bei der Glühlampe werden nur etwa fünf Prozent zu Licht – der Wirkungsgrad ist klein." },
+  { "id": "vergleich", "text": "Eine LED macht es viel besser: Aus derselben zugeführten Energie holt sie deutlich mehr Licht heraus und verliert weniger als Wärme. Ihr Wirkungsgrad ist also viel höher. Bei gleicher Helligkeit braucht sie viel weniger Strom." },
+  { "id": "merksatz", "text": "Merke: Der Wirkungsgrad sagt, welcher Anteil der zugeführten Energie nutzbar wird. Wirkungsgrad gleich nutzbare Energie geteilt durch zugeführte Energie." },
+  { "id": "transfer", "text": "Überall gibt es einen Wirkungsgrad: Die LED schlägt die Glühlampe, ein guter Motor holt mehr aus dem Kraftstoff, und ein Ladegerät wird warm, weil auch dort ein Teil der Energie verloren geht." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
