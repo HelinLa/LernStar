@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wirkungen des elektrischen Stroms. Strom selbst kannst du nicht sehen. Aber du erkennst ihn an dem, was er bewirkt. Und das sind gleich vier verschiedene Wirkungen." },
+  { "id": "licht", "text": "Erste Wirkung: das Licht. Schließt du eine Glühlampe an, beginnt der dünne Draht darin zu glühen und leuchtet hell. Das ist die Lichtwirkung des Stroms." },
+  { "id": "waerme", "text": "Zweite Wirkung: die Wärme. Ein Heizdraht wird heiß, sobald Strom fließt. Diese Wärmewirkung steckt im Toaster, im Föhn und in jeder Heizung." },
+  { "id": "magnet", "text": "Dritte Wirkung: der Magnetismus. Fließt Strom durch eine Spule, wird sie zum Magneten und zieht Eisen an. Das ist die magnetische Wirkung – die Grundlage des Elektromagneten." },
+  { "id": "bewegung", "text": "Vierte Wirkung: die Bewegung. Im Elektromotor bringt der Strom eine Achse zum Drehen. Diese Bewegungswirkung treibt Ventilatoren, Bohrmaschinen und E-Autos an." },
+  { "id": "energie", "text": "Bei allen vier Wirkungen passiert im Grunde dasselbe: Elektrische Energie wird in eine andere Energieform umgewandelt – in Licht, Wärme, Magnetismus oder Bewegung." },
+  { "id": "merksatz", "text": "Merke: Elektrischer Strom hat vier Wirkungen – Licht, Wärme, Magnetismus und Bewegung. Dabei wird elektrische Energie umgewandelt." },
+  { "id": "outro", "text": "Licht, Wärme, Magnet, Bewegung – daran erkennst du den Strom. Physik verstehen, Schritt für Schritt." }
+]

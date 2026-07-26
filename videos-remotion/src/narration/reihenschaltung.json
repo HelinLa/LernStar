@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Die Reihenschaltung. Was passiert, wenn mehrere Lampen hintereinander in einem einzigen Stromweg liegen? Probieren wir es aus." },
+  { "id": "aufbau", "text": "In der Reihenschaltung sind alle Lampen nacheinander an einem einzigen Draht aufgereiht. Der Strom hat nur einen Weg und muss durch jede Lampe hindurch." },
+  { "id": "heller", "text": "Jetzt fügen wir Lampen hinzu. Eine Lampe leuchtet hell. Zwei Lampen: beide leuchten schwächer. Drei Lampen: noch schwächer. Je mehr Lampen in Reihe, desto dunkler leuchtet jede einzelne." },
+  { "id": "unterbruch", "text": "Und jetzt das Entscheidende: Wir drehen eine Lampe heraus. Sofort gehen alle aus. Weil es nur einen einzigen Stromweg gibt, unterbricht eine kaputte Lampe gleich den ganzen Kreis." },
+  { "id": "beispiel", "text": "Genau dieses Verhalten kennst du von alten Lichterketten: Ist ein einziges Lämpchen defekt, bleibt die ganze Kette dunkel – und du musst suchen, welches es war." },
+  { "id": "merksatz", "text": "Merke: In der Reihenschaltung liegen alle Lampen in einem Stromweg. Mehr Lampen leuchten schwächer, und fällt eine aus, gehen alle aus." },
+  { "id": "transfer", "text": "Deshalb nutzt man Reihenschaltung nur selten für Beleuchtung. Praktisch ist sie aber, wenn ein einziger Schalter alles zusammen steuern soll." },
+  { "id": "outro", "text": "Ein Weg für alle – eine fällt aus, alle sind aus. Physik verstehen, Schritt für Schritt." }
+]

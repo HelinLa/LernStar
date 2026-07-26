@@ -110,3 +110,10 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Magnetfeld | Kl.5 Magnetismus: Wie sieht ein Magnetfeld aus? (Eisenspäne) | `src/videos/Magnetfeld.tsx` |
 | Kompass | Kl.5 Magnetismus: Wie funktioniert ein Kompass? | `src/videos/Kompass.tsx` |
 | Elektromagnet | Kl.5 Magnetismus: Der Elektromagnet (Spule, ein-/ausschaltbar) | `src/videos/Elektromagnet.tsx` |
+| StromkreisSchaltzeichen | Kl.5 Stromkreis: Aufbau & Schaltzeichen | `src/videos/StromkreisSchaltzeichen.tsx` |
+| StromkreisLampe | Kl.5 Stromkreis: Wann leuchtet eine Lampe? | `src/videos/StromkreisLampe.tsx` |
+| LeiterNichtleiter | Kl.5 Stromkreis: Welche Stoffe leiten Strom? | `src/videos/LeiterNichtleiter.tsx` |
+| Schaltplan | Kl.5 Stromkreis: Bild → Schaltplan | `src/videos/Schaltplan.tsx` |
+| Reihenschaltung | Kl.5 Stromkreis: Reihenschaltung | `src/videos/Reihenschaltung.tsx` |
+| Parallelschaltung | Kl.5 Stromkreis: Parallelschaltung | `src/videos/Parallelschaltung.tsx` |
+| Stromwirkungen | Kl.5 Stromkreis: Wirkungen des Stroms (Licht/Wärme/Magnet/Bewegung) | `src/videos/Stromwirkungen.tsx` |

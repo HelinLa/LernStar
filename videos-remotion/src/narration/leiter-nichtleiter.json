@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Welche Stoffe leiten den Strom? Wir bauen eine Lücke in den Stromkreis und setzen verschiedene Materialien hinein. Leuchtet die Lampe – oder bleibt sie dunkel?" },
+  { "id": "test", "text": "Der Trick: Leitet das Material den Strom, schließt es den Kreis und die Lampe leuchtet. Leitet es nicht, bleibt der Kreis offen und es bleibt dunkel. Ein einfacher Leuchttest." },
+  { "id": "leiter", "text": "Wir testen der Reihe nach. Kupfer: die Lampe leuchtet. Eisen: leuchtet. Aluminium: leuchtet. Und Graphit, die Mine im Bleistift: leuchtet ebenfalls. Das sind Leiter." },
+  { "id": "nichtleiter", "text": "Jetzt die anderen: Holz – dunkel. Plastik – dunkel. Glas – dunkel. Gummi – dunkel. Diese Stoffe leiten den Strom nicht, man nennt sie Nichtleiter oder Isolatoren." },
+  { "id": "regel", "text": "Die Regel ist klar: Metalle leiten den Strom – und auch Graphit. Holz, Plastik, Glas und Gummi leiten nicht. Deshalb sind Kabel innen aus Kupfer und außen von Kunststoff umhüllt." },
+  { "id": "merksatz", "text": "Merke: Metalle und Graphit sind Leiter. Holz, Plastik, Glas und Gummi sind Nichtleiter, also Isolatoren." },
+  { "id": "transfer", "text": "Darum ist der Draht in der Leitung aus Metall, der Griff der Zange aber aus Gummi. Der Isolator schützt dich, damit der Strom nur dort fließt, wo er soll." },
+  { "id": "outro", "text": "Metalle und Graphit leiten, Kunststoff isoliert. Physik verstehen, Schritt für Schritt." }
+]

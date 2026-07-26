@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie zeichnet man einen Stromkreis? Ein Foto mit Kabeln, Batterie und Lampe ist unübersichtlich. Techniker benutzen deshalb einen klaren Schaltplan. Wie geht der eine ins andere über?" },
+  { "id": "real", "text": "Links siehst du den echten Aufbau: eine Batterie, zwei Kabel, ein Schalter und eine Glühlampe. Alles bunt und dreidimensional – aber schwer sauber zu zeichnen." },
+  { "id": "wandeln", "text": "Jetzt ersetzen wir jedes Bauteil durch sein Schaltzeichen. Aus der Batterie werden zwei Striche, aus der Lampe ein Kreis mit Kreuz, aus dem Schalter ein kleiner Hebel. Die Kabel werden zu geraden Linien." },
+  { "id": "plan", "text": "Fertig ist der Schaltplan: einfach, eindeutig und schnell zu zeichnen. Betätigst du den Schalter, reagieren beide Darstellungen gleich – denn sie zeigen denselben Stromkreis." },
+  { "id": "zuordnen", "text": "Präg dir die wichtigsten Zeichen ein: Batterie – langer und kurzer Strich. Lampe – Kreis mit Kreuz. Schalter – Hebel. Leitung – gerade Linie. Damit versteht jeder deinen Plan." },
+  { "id": "merksatz", "text": "Merke: Ein Schaltplan zeigt denselben Stromkreis mit einheitlichen Schaltzeichen – klar und eindeutig statt als buntes Bild." },
+  { "id": "transfer", "text": "Nach diesen Plänen bauen Elektriker ganze Wohnungen auf. Und in jeder Bastelanleitung für Elektronik findest du genau solche Schaltpläne." },
+  { "id": "outro", "text": "Bild rein, Schaltplan raus – gleiche Schaltung, klare Zeichen. Physik verstehen, Schritt für Schritt." }
+]

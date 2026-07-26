@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Der einfache Stromkreis. Du drückst auf den Schalter und die Lampe leuchtet. Was muss dafür zusammenkommen? Schauen wir uns die Bausteine an." },
+  { "id": "teile", "text": "Ein Stromkreis braucht drei Dinge: eine Energiequelle wie die Batterie, Leiter, also Kabel, und einen Verbraucher wie die Lampe. Erst wenn alles verbunden ist, kann Strom fließen." },
+  { "id": "geschlossen", "text": "Ganz wichtig: Der Kreis muss geschlossen sein. Nur dann fließt der Strom im Ring von der Batterie durch die Lampe und zurück – und die Lampe leuchtet. Ist der Ring irgendwo offen, bleibt es dunkel." },
+  { "id": "schalter", "text": "Genau dafür ist der Schalter da. Er unterbricht den Stromkreis mit Absicht. Schalter zu: Der Kreis ist geschlossen, die Lampe leuchtet. Schalter auf: Der Kreis ist unterbrochen, die Lampe geht aus." },
+  { "id": "schaltzeichen", "text": "Damit nicht jeder die Bauteile abmalen muss, benutzt man einheitliche Schaltzeichen. Die Batterie: ein langer und ein kurzer Strich. Die Lampe: ein Kreis mit Kreuz. Der Schalter: ein kleiner Hebel." },
+  { "id": "merksatz", "text": "Merke: Ein Stromkreis braucht Energiequelle, Leiter und Verbraucher – und muss geschlossen sein. Nur im geschlossenen Kreis fließt Strom." },
+  { "id": "transfer", "text": "Diesen einfachen Stromkreis findest du überall: in der Taschenlampe, in der Fahrradbeleuchtung und in jedem Lichtschalter zu Hause." },
+  { "id": "outro", "text": "Quelle, Leiter, Verbraucher, geschlossen – fertig ist der Stromkreis. Physik verstehen, Schritt für Schritt." }
+]

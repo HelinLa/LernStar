@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wann leuchtet eine Lampe? Manchmal reicht schon eine winzige Lücke im Kabel, und das Licht bleibt aus. Woran liegt das? Machen wir den Test." },
+  { "id": "geschlossen", "text": "Hier ist ein geschlossener Stromkreis: Batterie, Kabel, Lampe – alles verbunden. Der Strom fließt im Ring, und die Lampe leuchtet hell." },
+  { "id": "schalter", "text": "Jetzt öffnen wir den Schalter. Sofort ist der Ring unterbrochen, kein Strom fließt mehr – die Lampe geht aus. Schalter wieder zu, und sie leuchtet erneut." },
+  { "id": "unterbrechung", "text": "Und wenn wir irgendwo anders das Kabel durchtrennen? Genau dasselbe: Schon eine einzige Unterbrechung an irgendeiner Stelle stoppt den ganzen Strom. Die Lampe bleibt dunkel." },
+  { "id": "sicher", "text": "Übrigens arbeiten wir hier nur mit einer ungefährlichen Batterie und kleiner Spannung. An der Steckdose zu Hause herrscht viel höhere Spannung – die ist lebensgefährlich und kein Versuchsobjekt." },
+  { "id": "merksatz", "text": "Merke: Eine Lampe leuchtet nur im geschlossenen Stromkreis. Eine einzige Unterbrechung an beliebiger Stelle lässt sie ausgehen." },
+  { "id": "transfer", "text": "Deshalb geht das Licht aus, wenn ein Kabel bricht oder ein Stecker herausrutscht. Der Schalter an der Wand macht genau dasselbe – nur mit Absicht." },
+  { "id": "outro", "text": "Geschlossen leuchtet, unterbrochen dunkel. Physik verstehen, Schritt für Schritt." }
+]

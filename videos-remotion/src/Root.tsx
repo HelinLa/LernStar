@@ -23,6 +23,13 @@ import { Magnetpole, MAGNETPOLE_DURATION } from './videos/Magnetpole';
 import { Magnetfeld, MAGNETFELD_DURATION } from './videos/Magnetfeld';
 import { Kompass, KOMPASS_DURATION } from './videos/Kompass';
 import { Elektromagnet, ELEKTROMAGNET_DURATION } from './videos/Elektromagnet';
+import { StromkreisSchaltzeichen, STROMKREIS_SCHALTZEICHEN_DURATION } from './videos/StromkreisSchaltzeichen';
+import { StromkreisLampe, STROMKREIS_LAMPE_DURATION } from './videos/StromkreisLampe';
+import { LeiterNichtleiter, LEITER_NICHTLEITER_DURATION } from './videos/LeiterNichtleiter';
+import { Schaltplan, SCHALTPLAN_DURATION } from './videos/Schaltplan';
+import { Reihenschaltung, REIHENSCHALTUNG_DURATION } from './videos/Reihenschaltung';
+import { Parallelschaltung, PARALLELSCHALTUNG_DURATION } from './videos/Parallelschaltung';
+import { Stromwirkungen, STROMWIRKUNGEN_DURATION } from './videos/Stromwirkungen';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -171,6 +178,13 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Magnetfeld" component={Magnetfeld} durationInFrames={MAGNETFELD_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Kompass" component={Kompass} durationInFrames={KOMPASS_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Elektromagnet" component={Elektromagnet} durationInFrames={ELEKTROMAGNET_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="StromkreisSchaltzeichen" component={StromkreisSchaltzeichen} durationInFrames={STROMKREIS_SCHALTZEICHEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="StromkreisLampe" component={StromkreisLampe} durationInFrames={STROMKREIS_LAMPE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="LeiterNichtleiter" component={LeiterNichtleiter} durationInFrames={LEITER_NICHTLEITER_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Schaltplan" component={Schaltplan} durationInFrames={SCHALTPLAN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Reihenschaltung" component={Reihenschaltung} durationInFrames={REIHENSCHALTUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Parallelschaltung" component={Parallelschaltung} durationInFrames={PARALLELSCHALTUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Stromwirkungen" component={Stromwirkungen} durationInFrames={STROMWIRKUNGEN_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

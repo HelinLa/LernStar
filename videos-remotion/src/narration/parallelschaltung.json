@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Die Parallelschaltung. Was, wenn jede Lampe ihren eigenen Weg bekommt? Dann verhält sich der Stromkreis ganz anders als in der Reihe." },
+  { "id": "aufbau", "text": "In der Parallelschaltung zweigt für jede Lampe ein eigener Stromweg ab. Jeder Zweig hat sogar seinen eigenen Schalter. Die Lampen liegen nebeneinander, nicht hintereinander." },
+  { "id": "unabhaengig", "text": "Das Schöne daran: Du kannst jede Lampe einzeln ein- und ausschalten. Schaltest du eine aus, leuchten die anderen ungestört weiter. Sie sind voneinander unabhängig." },
+  { "id": "helligkeit", "text": "Und noch ein Vorteil: Jede Lampe bekommt die volle Spannung und leuchtet mit voller Helligkeit – egal, wie viele Lampen parallel angeschlossen sind. Kein Abdunkeln wie in der Reihe." },
+  { "id": "haushalt", "text": "Genau deshalb sind alle Geräte im Haushalt parallel geschaltet. Du kannst das Licht in der Küche einschalten, ohne dass der Fernseher im Wohnzimmer ausgeht." },
+  { "id": "merksatz", "text": "Merke: In der Parallelschaltung hat jede Lampe einen eigenen Stromweg. Alle leuchten mit voller Helligkeit und lassen sich einzeln schalten." },
+  { "id": "transfer", "text": "Steckdosen, Deckenlampen, Küchengeräte – im ganzen Haus ist alles parallel verdrahtet. So arbeitet jedes Gerät für sich, unabhängig von den anderen." },
+  { "id": "outro", "text": "Eigener Weg für jede Lampe – volle Helligkeit, einzeln schaltbar. Physik verstehen, Schritt für Schritt." }
+]
