@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Die Rakete. Wie schafft es eine Rakete, sich im Weltall abzustoßen, wo doch gar nichts da ist? Die Antwort ist verblüffend einfach." },
+  { "id": "ballon", "text": "Denk an einen Luftballon. Lässt du ihn los, strömt die Luft hinten heraus und der Ballon zischt nach vorn. Die ausströmende Luft treibt ihn an." },
+  { "id": "actio", "text": "Dahinter steckt ein Grundgesetz: Zu jeder Kraft gehört eine gleich große Gegenkraft. Der Ballon drückt die Luft nach hinten, die Luft drückt den Ballon nach vorn. Actio gleich Reactio." },
+  { "id": "rakete", "text": "Eine Rakete macht genau das. Sie stößt heiße Gase nach unten aus, und die Gase stoßen die Rakete nach oben. Sie braucht keine Luft zum Abstoßen. Je mehr Masse sie ausstößt, desto größer der Schub." },
+  { "id": "merksatz", "text": "Merke: das Rückstoßprinzip. Stößt ein Körper Masse in eine Richtung aus, wird er selbst in die Gegenrichtung getrieben. Das ist das dritte newtonsche Gesetz." },
+  { "id": "transfer", "text": "So funktionieren Silvesterraketen, Düsentriebwerke und sogar der Tintenfisch." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
