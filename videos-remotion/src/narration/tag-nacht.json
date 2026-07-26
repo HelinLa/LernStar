@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie entstehen Tag und Nacht? Morgens geht die Sonne auf, abends unter – so sieht es jedenfalls aus. Aber wandert wirklich die Sonne? Schauen wir genauer hin." },
+  { "id": "drehung", "text": "In Wahrheit dreht sich die Erde. In etwa 24 Stunden dreht sie sich einmal um sich selbst, um ihre eigene Achse. Die Sonne steht dabei still – wir auf der Erde drehen uns an ihr vorbei." },
+  { "id": "tagnacht", "text": "Die Seite der Erde, die gerade zur Sonne zeigt, hat Tag. Auf der abgewandten Seite ist es dunkel – dort ist Nacht. Genau auf der Grenze liegen Sonnenaufgang und Sonnenuntergang." },
+  { "id": "standort", "text": "Verfolge deinen eigenen Standort: Durch die Drehung wanderst du von der Nachtseite auf die Tagseite – das ist der Sonnenaufgang. Am Abend drehst du dich wieder in den Schatten – Sonnenuntergang. Nicht die Sonne bewegt sich, sondern du." },
+  { "id": "merksatz", "text": "Merke: Tag und Nacht entstehen, weil sich die Erde in etwa 24 Stunden einmal um sich selbst dreht. Die zur Sonne zeigende Seite hat Tag, die abgewandte Nacht." },
+  { "id": "transfer", "text": "Deshalb ist es Mittag bei uns, während es in Amerika noch tiefe Nacht ist. Die Erde dreht sich – und immer nur die eine Hälfte schaut gerade zur Sonne." },
+  { "id": "outro", "text": "Nicht die Sonne wandert – die Erde dreht sich. Das macht Tag und Nacht. Physik verstehen, Schritt für Schritt." }
+]

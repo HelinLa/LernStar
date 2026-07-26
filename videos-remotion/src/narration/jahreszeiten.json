@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie entstehen die Jahreszeiten? Sommer heiß, Winter kalt – viele denken, im Sommer sei die Erde einfach näher an der Sonne. Aber das stimmt nicht. Der wahre Grund ist ein anderer." },
+  { "id": "achse", "text": "Das Geheimnis ist die Erdachse. Sie steht nicht gerade, sondern ist geneigt – und zeigt beim Umlauf um die Sonne immer in dieselbe Richtung. Diese Neigung bleibt das ganze Jahr gleich." },
+  { "id": "sommer", "text": "Im Sommer ist die Nordhalbkugel zur Sonne geneigt. Das Sonnenlicht trifft steil von oben auf und bündelt sich auf eine kleine Fläche – es wird richtig warm. Außerdem sind die Tage lang." },
+  { "id": "winter", "text": "Ein halbes Jahr später ist die Nordhalbkugel von der Sonne weggeneigt. Jetzt trifft das Licht flach auf und verteilt sich auf eine große Fläche – es bleibt kühl. Die Tage sind kurz. Das ist der Winter." },
+  { "id": "nichtabstand", "text": "Ganz wichtig: Nicht der Abstand zur Sonne macht die Jahreszeiten. Wenn bei uns Sommer ist, ist auf der Südhalbkugel Winter – bei genau demselben Abstand. Es liegt allein an der geneigten Achse." },
+  { "id": "merksatz", "text": "Merke: Die Jahreszeiten entstehen durch die geneigte Erdachse. Steiles Sonnenlicht bringt Sommer, flaches Sonnenlicht Winter – nicht der Abstand zur Sonne." },
+  { "id": "transfer", "text": "Deshalb ist Weihnachten in Australien mitten im Hochsommer. Nord- und Südhalbkugel haben immer gegensätzliche Jahreszeiten – eben weil die Achse geneigt ist." },
+  { "id": "outro", "text": "Nicht der Abstand, die Neigung zählt – so entstehen die Jahreszeiten. Physik verstehen, Schritt für Schritt." }
+]

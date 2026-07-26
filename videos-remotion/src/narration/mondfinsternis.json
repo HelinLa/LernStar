@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie entsteht eine Mondfinsternis? Manchmal verdunkelt sich der Vollmond langsam und färbt sich tiefrot – der berühmte Blutmond. Was steckt dahinter?" },
+  { "id": "stellung", "text": "Bei einer Mondfinsternis steht diesmal die Erde zwischen Sonne und Mond. Das passiert nur bei Vollmond. Sonne, Erde und Mond liegen fast genau auf einer Linie – in dieser Reihenfolge." },
+  { "id": "schatten", "text": "Jetzt wirft die Erde ihren eigenen Schatten in den Weltraum – und der Mond wandert hinein. Im Kernschatten der Erde bekommt der Mond kein direktes Sonnenlicht mehr und verdunkelt sich." },
+  { "id": "blutmond", "text": "Ganz schwarz wird er aber nicht. Ein wenig Sonnenlicht wird von der Erdatmosphäre um die Erde herumgebogen und trifft rötlich auf den Mond. Deshalb leuchtet er kupferrot – der Blutmond." },
+  { "id": "unterschied", "text": "Und der wichtige Unterschied zu den Mondphasen: Bei den Phasen sehen wir nur unterschiedlich viel der beleuchteten Hälfte. Bei der Mondfinsternis ist wirklich ein echter Schatten im Spiel – der Schatten der Erde." },
+  { "id": "merksatz", "text": "Merke: Bei einer Mondfinsternis steht die Erde bei Vollmond zwischen Sonne und Mond. Der Erdschatten fällt auf den Mond – er verdunkelt sich und wird oft rötlich." },
+  { "id": "transfer", "text": "Eine Mondfinsternis kannst du ganz gefahrlos beobachten – anders als eine Sonnenfinsternis. Und du kannst sie viel öfter sehen, weil der Erdschatten viel größer ist als der Mondschatten." },
+  { "id": "outro", "text": "Erde zwischen Sonne und Mond, Schatten auf den Mond – das ist die Mondfinsternis. Physik verstehen, Schritt für Schritt." }
+]

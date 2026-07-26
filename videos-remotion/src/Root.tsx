@@ -37,6 +37,12 @@ import { Aggregatzustaende, AGGREGATZUSTAENDE_DURATION } from './videos/Aggregat
 import { Waermeuebertragung, WAERMEUEBERTRAGUNG_DURATION } from './videos/Waermeuebertragung';
 import { Daemmung, DAEMMUNG_DURATION } from './videos/Daemmung';
 import { DunkleFlaechen, DUNKLE_FLAECHEN_DURATION } from './videos/DunkleFlaechen';
+import { TonEntsteht, TON_ENTSTEHT_DURATION } from './videos/TonEntsteht';
+import { Lautstaerke, LAUTSTAERKE_DURATION } from './videos/Lautstaerke';
+import { Tonhoehe, TONHOEHE_DURATION } from './videos/Tonhoehe';
+import { Schallausbreitung, SCHALLAUSBREITUNG_DURATION } from './videos/Schallausbreitung';
+import { Ohr, OHR_DURATION } from './videos/Ohr';
+import { Laermschutz, LAERMSCHUTZ_DURATION } from './videos/Laermschutz';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -199,6 +205,12 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Waermeuebertragung" component={Waermeuebertragung} durationInFrames={WAERMEUEBERTRAGUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Daemmung" component={Daemmung} durationInFrames={DAEMMUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="DunkleFlaechen" component={DunkleFlaechen} durationInFrames={DUNKLE_FLAECHEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="TonEntsteht" component={TonEntsteht} durationInFrames={TON_ENTSTEHT_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Lautstaerke" component={Lautstaerke} durationInFrames={LAUTSTAERKE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Tonhoehe" component={Tonhoehe} durationInFrames={TONHOEHE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Schallausbreitung" component={Schallausbreitung} durationInFrames={SCHALLAUSBREITUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Ohr" component={Ohr} durationInFrames={OHR_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Laermschutz" component={Laermschutz} durationInFrames={LAERMSCHUTZ_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );

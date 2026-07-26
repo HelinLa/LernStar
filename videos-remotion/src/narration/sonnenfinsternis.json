@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wie entsteht eine Sonnenfinsternis? Manchmal wird es mitten am Tag dunkel, und die Sonne verschwindet für kurze Zeit. Ein seltenes und beeindruckendes Schauspiel. Wie kommt es dazu?" },
+  { "id": "stellung", "text": "Bei einer Sonnenfinsternis steht der Mond genau zwischen Sonne und Erde. Das passiert nur bei Neumond. Der Mond schiebt sich dabei direkt vor die Sonne und verdeckt sie von uns aus gesehen." },
+  { "id": "schatten", "text": "Der Mond wirft dabei seinen Schatten auf die Erde. Im Kernschatten, dem dunkelsten Bereich, ist die Sonne ganz verdeckt – dort erlebt man eine totale Sonnenfinsternis. Im Halbschatten daneben ist sie nur teilweise verdeckt." },
+  { "id": "selten", "text": "Warum passiert das so selten? Weil die Mondbahn leicht geneigt ist. Meist zieht der Mond bei Neumond ein Stück über oder unter der Sonne vorbei. Nur wenn alles perfekt auf einer Linie liegt, trifft sein Schatten die Erde." },
+  { "id": "merksatz", "text": "Merke: Bei einer Sonnenfinsternis steht der Mond bei Neumond zwischen Sonne und Erde und wirft seinen Schatten auf die Erde. Im Kernschatten ist die Sonne ganz verdeckt." },
+  { "id": "transfer", "text": "Wichtig: Schau nie ohne spezielle Schutzbrille direkt in die Sonne – auch nicht während einer Finsternis. Das grelle Sonnenlicht kann deine Augen dauerhaft schädigen." },
+  { "id": "outro", "text": "Mond zwischen Sonne und Erde, Schatten auf uns – das ist die Sonnenfinsternis. Physik verstehen, Schritt für Schritt." }
+]

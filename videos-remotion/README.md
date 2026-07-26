@@ -124,3 +124,9 @@ Nach neuen/aktualisierten Effekten immer die betroffenen Videos neu rendern.
 | Waermeuebertragung | Kl.6 Wärme: Leitung/Strömung/Strahlung | `src/videos/Waermeuebertragung.tsx` |
 | Daemmung | Kl.6 Wärme: Welches Material dämmt am besten? | `src/videos/Daemmung.tsx` |
 | DunkleFlaechen | Kl.6 Wärme: Warum werden dunkle Flächen heißer? | `src/videos/DunkleFlaechen.tsx` |
+| TonEntsteht | Kl.6 Schall: Wie entsteht ein Ton? | `src/videos/TonEntsteht.tsx` |
+| Lautstaerke | Kl.6 Schall: Lautstärke (Amplitude, dB) | `src/videos/Lautstaerke.tsx` |
+| Tonhoehe | Kl.6 Schall: Tonhöhe (Frequenz, Hz) | `src/videos/Tonhoehe.tsx` |
+| Schallausbreitung | Kl.6 Schall: Ausbreitung (Teilchen, Vakuum) | `src/videos/Schallausbreitung.tsx` |
+| Ohr | Kl.6 Schall: Wie funktioniert das Ohr? | `src/videos/Ohr.tsx` |
+| Laermschutz | Kl.6 Schall: Lärmschutz (dB, Abstand, Gehörschutz) | `src/videos/Laermschutz.tsx` |

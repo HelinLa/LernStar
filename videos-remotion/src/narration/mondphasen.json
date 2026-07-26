@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Warum verändert der Mond sein Aussehen? Mal ist er eine schmale Sichel, mal eine runde Scheibe, mal ganz weg. Verändert sich der Mond wirklich? Nein – wir sehen ihn nur unterschiedlich." },
+  { "id": "leuchtet", "text": "Zuerst das Wichtigste: Der Mond leuchtet nicht selbst. Die Sonne beleuchtet immer genau eine Hälfte von ihm – so wie sie eine Hälfte der Erde beleuchtet. Die andere Hälfte bleibt dunkel." },
+  { "id": "umlauf", "text": "Der Mond läuft in etwa einem Monat um die Erde. Dabei schauen wir aus wechselnden Richtungen auf ihn – und sehen mal mehr, mal weniger von seiner beleuchteten Hälfte. Das sind die Mondphasen." },
+  { "id": "phasen", "text": "Steht der Mond zwischen uns und der Sonne, zeigt er uns seine dunkle Seite: Neumond, wir sehen fast nichts. Steht die Erde dazwischen, sehen wir die ganze helle Hälfte: Vollmond. Dazwischen liegen zunehmender und abnehmender Mond." },
+  { "id": "merksatz", "text": "Merke: Der Mond leuchtet nicht selbst. Die Sonne beleuchtet immer eine Hälfte. Beim Umlauf um die Erde sehen wir unterschiedlich viel davon – das sind die Mondphasen." },
+  { "id": "transfer", "text": "An der Sichel erkennst du sogar die Richtung: Nimmt der Mond zu, ist die rechte Seite hell. Nimmt er ab, die linke. So kannst du am Himmel ablesen, wo der Mond in seinem Umlauf gerade steht." },
+  { "id": "outro", "text": "Der Mond ändert sich nicht – nur unser Blick auf seine helle Hälfte. Physik verstehen, Schritt für Schritt." }
+]
