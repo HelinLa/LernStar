@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Ein Pendel schwingt hin und her, immer weiter. Oben wird es ganz langsam, unten saust es durch. Kann Energie einfach verschwinden – oder wandelt sie sich nur um?" },
+  { "id": "beobachten", "text": "Schau genau hin: Ganz oben, an den Umkehrpunkten, steht das Pendel für einen kurzen Moment fast still. Unten, am tiefsten Punkt, ist es am schnellsten. Oben langsam, unten schnell – und das immer wieder." },
+  { "id": "umwandlung", "text": "Dahinter steckt ein Tausch. Oben hat das Pendel viel Lageenergie, weil es hoch liegt, aber kaum Bewegungsenergie. Beim Herabschwingen wird die Lageenergie Stück für Stück in Bewegungsenergie umgewandelt. Unten ist es umgekehrt: kaum Höhe, aber volles Tempo." },
+  { "id": "punkte", "text": "Vergleichen wir drei Stellen. Links oben: fast alles ist Lageenergie. Unten in der Mitte: fast alles ist Bewegungsenergie. Rechts oben: wieder fast alles Lageenergie. Die eine Energieform wird groß, wenn die andere klein wird." },
+  { "id": "erhaltung", "text": "Und jetzt das Wichtigste: Zählt man beide zusammen, bleibt die Summe immer gleich. Ohne Reibung geht keine Energie verloren – sie wechselt nur ständig die Form. Das nennt man den Energieerhaltungssatz." },
+  { "id": "merksatz", "text": "Merke: Energie geht nie verloren. Sie wandelt sich nur um. Beim Pendel wechseln Lageenergie und Bewegungsenergie hin und her, ihre Summe bleibt gleich." },
+  { "id": "transfer", "text": "Genau das erlebst du auf der Schaukel, auf dem Trampolin und beim Flummi, der immer wieder hochspringt. Überall wird Höhe in Tempo umgewandelt und wieder zurück." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

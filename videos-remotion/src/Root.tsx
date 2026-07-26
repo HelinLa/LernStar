@@ -126,6 +126,7 @@ import { VerzoegerungJg9, VERZOEGERUNG_JG9_DURATION } from './videos/Verzoegerun
 import { BremswegJg9, BREMSWEG_JG9_DURATION } from './videos/BremswegJg9';
 import { FreierFallJg9, FREIER_FALL_JG9_DURATION } from './videos/FreierFallJg9';
 import { LuftwiderstandJg9, LUFTWIDERSTAND_JG9_DURATION } from './videos/LuftwiderstandJg9';
+import { Energieerhaltung, ENERGIEERHALTUNG_DURATION } from './videos/Energieerhaltung';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
@@ -377,6 +378,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="BremswegJg9" component={BremswegJg9} durationInFrames={BREMSWEG_JG9_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="FreierFallJg9" component={FreierFallJg9} durationInFrames={FREIER_FALL_JG9_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="LuftwiderstandJg9" component={LuftwiderstandJg9} durationInFrames={LUFTWIDERSTAND_JG9_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Energieerhaltung" component={Energieerhaltung} durationInFrames={ENERGIEERHALTUNG_DURATION} fps={30} width={1920} height={1080} />
       {/* Weitere Videos kommen hier dazu. */}
     </>
   );
