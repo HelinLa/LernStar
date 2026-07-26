@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Auf dem Föhn steht zweitausend Watt, das Auto hat hundert PS, die Bohrmaschine sechshundert Watt. Aber was bedeuten diese Zahlen eigentlich – und wie hängen Watt und PS zusammen?" },
+  { "id": "beobachten", "text": "Fast jedes Gerät trägt eine Leistungsangabe auf dem Typenschild. Mal steht dort Watt, mal Kilowatt, bei Autos oft PS. Alle diese Angaben beschreiben dasselbe: die Leistung, also wie schnell das Gerät Energie umsetzt." },
+  { "id": "bedeutung", "text": "Erinnere dich: Leistung ist Energie pro Zeit. Zweitausend Watt heißt, dass jede Sekunde zweitausend Joule umgesetzt werden. Je größer die Zahl, desto mehr Energie fließt pro Sekunde – desto kräftiger oder schneller arbeitet das Gerät." },
+  { "id": "umrechnen", "text": "Watt und Kilowatt sind leicht: Tausend Watt sind ein Kilowatt. PS ist eine ältere Einheit, die Pferdestärke. Ein PS sind ungefähr null Komma vierundsiebzig Kilowatt. Hundert PS sind also rund vierundsiebzig Kilowatt oder vierundsiebzigtausend Watt." },
+  { "id": "vergleich", "text": "So kann man alles vergleichen. Eine Bohrmaschine hat sechshundert Watt, ein Föhn zweitausend, ein Herd zweitausend. Ein Auto mit hundert PS bringt es dagegen auf rund vierundsiebzigtausend Watt – ein Vielfaches. Jetzt sieht man, wie stark sich die Leistungen unterscheiden." },
+  { "id": "merksatz", "text": "Merke: Watt, Kilowatt und PS sind Einheiten der Leistung. Tausend Watt sind ein Kilowatt, ein PS ist etwa null Komma vierundsiebzig Kilowatt. Die Leistung sagt, wie schnell Energie umgesetzt wird." },
+  { "id": "transfer", "text": "Deshalb steht auf jedem Typenschild eine Leistungsangabe, deshalb vergleicht man Motoren in PS oder Kilowatt, und deshalb muss eine Sicherung zur Leistung der angeschlossenen Geräte passen." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
