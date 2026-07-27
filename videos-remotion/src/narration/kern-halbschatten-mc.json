@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Nicht jeder Schatten hat einen scharfen Rand. Manche sind außen weich und verwaschen. Woran liegt das? Es hängt von der Größe der Lichtquelle ab." },
+  { "id": "punkt", "text": "Bei einer sehr kleinen, fast punktförmigen Lampe entsteht ein einziger, scharf begrenzter Schatten. Dahinter ist es überall gleich dunkel – das ist der Kernschatten." },
+  { "id": "ausdehnen", "text": "Jetzt machen wir die Lichtquelle größer, zum Beispiel eine lange Leuchtröhre. Schau, was mit den Rändern passiert: Rundherum entsteht ein weicher, halbdunkler Saum." },
+  { "id": "halbschatten", "text": "In der Mitte bleibt der Kernschatten – hierhin gelangt gar kein Licht. Außen herum liegt der Halbschatten: Hier kommt nur ein Teil des Lichts an, deshalb ist er heller und der Rand wird weich." },
+  { "id": "fehlvorstellung", "text": "Halbschatten heißt nicht halber Schatten und braucht keine zweite Lampe. Der Grund ist einfach: Vom Halbschatten aus kann man noch einen Teil der Lampe sehen, vom Kernschatten aus überhaupt keinen." },
+  { "id": "sonne", "text": "Deshalb sind Schatten in der Sonne meist weich – die Sonne ist eine große, ausgedehnte Lichtquelle. Eine winzige Lampe dagegen wirft scharfe Schatten." },
+  { "id": "merksatz", "text": "Merke: Nur eine ausgedehnte Lichtquelle erzeugt einen Halbschatten. Im Kernschatten kommt kein Licht an, im Halbschatten nur ein Teil." },
+  { "id": "outro", "text": "Große Lampe, weicher Rand – kleine Lampe, scharfer Rand. Physik verstehen, Schritt für Schritt." }
+]
