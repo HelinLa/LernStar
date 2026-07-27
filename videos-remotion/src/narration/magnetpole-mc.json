@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Ein Stabmagnet hat zwei Enden: einen Nordpol und einen Südpol. Was passiert, wenn wir zwei Magnete mit ihren Polen gegeneinander halten? Das kommt ganz darauf an, welche Pole sich gegenüberstehen." },
+  { "id": "ungleich", "text": "Stehen sich ungleiche Pole gegenüber – ein Nordpol und ein Südpol –, dann ziehen sich die Magnete an. Sie wandern von selbst aufeinander zu." },
+  { "id": "gleich", "text": "Jetzt drehen wir einen Magneten um. Nun stehen sich gleiche Pole gegenüber, zwei Nordpole. Und schau genau: Sie stoßen sich ab und werden auseinandergedrückt." },
+  { "id": "fehlvorstellung", "text": "Viele glauben, Magnete würden sich immer anziehen. Das stimmt nicht. Gleiche Pole stoßen sich ab, ungleiche ziehen sich an – beides gehört zum Magnetismus dazu." },
+  { "id": "regel", "text": "Merken wir uns die Regel: Ungleiche Pole ziehen sich an, gleiche Pole stoßen sich ab. Es kommt also immer darauf an, welche beiden Pole sich begegnen." },
+  { "id": "abstand", "text": "Wie stark die Kraft ist, hängt vom Abstand ab. Je näher wir die Magnete zusammenbringen, desto größer wird die Kraft. Mit größerem Abstand wird sie schnell wieder schwächer." },
+  { "id": "kontaktlos", "text": "Und das Besondere: Diese Kraft wirkt, ohne dass sich die Magnete berühren. Sie geht durch die Luft hindurch – der Magnet wirkt über den leeren Raum hinweg." },
+  { "id": "outro", "text": "Gleiche Pole stoßen sich ab, ungleiche ziehen sich an – und das ganz ohne Berührung. Physik verstehen, Schritt für Schritt." }
+]

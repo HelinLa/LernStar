@@ -133,6 +133,7 @@ import { StromkreisMC, STROMKREIS_MC_DURATION } from './videos/StromkreisMC';
 import { SchattenMC, SCHATTEN_MC_DURATION } from './videos/SchattenMC';
 import { SchattenGroesseMC, SCHATTEN_GROESSE_MC_DURATION } from './videos/SchattenGroesseMC';
 import { KernHalbschattenMC, KERN_HALBSCHATTEN_MC_DURATION } from './videos/KernHalbschattenMC';
+import { MagnetpoleMC, MAGNETPOLE_MC_DURATION } from './videos/MagnetpoleMC';
 import { Achterbahn, ACHTERBAHN_DURATION } from './videos/Achterbahn';
 import { Energieentwertung, ENERGIEENTWERTUNG_DURATION } from './videos/Energieentwertung';
 import { Wirkungsgrad, WIRKUNGSGRAD_DURATION } from './videos/Wirkungsgrad';
@@ -411,6 +412,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="SchattenMC" component={SchattenMC} durationInFrames={SCHATTEN_MC_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="SchattenGroesseMC" component={SchattenGroesseMC} durationInFrames={SCHATTEN_GROESSE_MC_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="KernHalbschattenMC" component={KernHalbschattenMC} durationInFrames={KERN_HALBSCHATTEN_MC_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="MagnetpoleMC" component={MagnetpoleMC} durationInFrames={MAGNETPOLE_MC_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Achterbahn" component={Achterbahn} durationInFrames={ACHTERBAHN_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Energieentwertung" component={Energieentwertung} durationInFrames={ENERGIEENTWERTUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Wirkungsgrad" component={Wirkungsgrad} durationInFrames={WIRKUNGSGRAD_DURATION} fps={30} width={1920} height={1080} />

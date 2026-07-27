@@ -8,6 +8,7 @@ import stromkreisClip from './scenes/stromkreis_clip?scene';
 import schattenClip from './scenes/schatten_clip?scene';
 import schattenGroesseClip from './scenes/schatten_groesse_clip?scene';
 import kernHalbschattenClip from './scenes/kern_halbschatten_clip?scene';
+import magnetpoleClip from './scenes/magnetpole_clip?scene';
 
 // LernStar-Motion-Canvas-Projekt. Weitere Szenen hier importieren und in
 // scenes:[] ergänzen (Reihenfolge = Abspielreihenfolge im Editor).
@@ -15,5 +16,5 @@ import kernHalbschattenClip from './scenes/kern_halbschatten_clip?scene';
 // Zum Einzel-Rendern kurzzeitig nur die gewünschte Szene aktiv lassen.
 export default makeProject({
   name: 'LernStar',
-  scenes: [kernHalbschattenClip],
+  scenes: [magnetpoleClip],
 });
