@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Ein Schatten ist mal groß, mal klein. Aber wovon hängt seine Größe eigentlich ab? Wir haben eine Lampe, einen Ball und einen Schirm – und messen den Schatten." },
+  { "id": "frage", "text": "Der Ball bleibt die ganze Zeit gleich groß. Trotzdem können wir die Größe seines Schattens verändern. Wie? Indem wir mit den Abständen spielen." },
+  { "id": "nah", "text": "Schieben wir den Ball nah an die Lampe, wird sein Schatten viel größer. Die geraden Strahlen laufen dann weiter auseinander, bevor sie den Schirm erreichen." },
+  { "id": "fern", "text": "Schieben wir den Ball dagegen nah an den Schirm, wird der Schatten klein – fast so groß wie der Ball selbst. Also: näher an der Lampe bedeutet größerer Schatten." },
+  { "id": "fehlvorstellung", "text": "Viele vermuten das Gegenteil und denken, näher an der Lampe müsste kleiner sein. Doch schau genau: Der Ball hat sich nie verändert, nur sein Abstand. Nicht die Größe des Balls entscheidet, sondern wo er steht." },
+  { "id": "schirm", "text": "Und der zweite Abstand? Schieben wir den Schirm weiter weg, wächst der Schatten ebenfalls, weil die Strahlen noch mehr Platz haben, um auseinanderzulaufen." },
+  { "id": "merksatz", "text": "Merke: Je näher der Gegenstand an der Lampe und je weiter der Schirm entfernt ist, desto größer wird der Schatten. Es zählen die Abstände, nicht die Größe des Körpers." },
+  { "id": "outro", "text": "Nicht die Größe – die Abstände machen den Schatten. Physik verstehen, Schritt für Schritt." }
+]
