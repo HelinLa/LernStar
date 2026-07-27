@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Immer wenn Licht auf einen Körper trifft, der es nicht durchlässt, entsteht dahinter ein Schatten. Aber warum eigentlich – und wo genau liegt er? Schauen wir es uns Schritt für Schritt an." },
+  { "id": "strahlen", "text": "Von der Lampe geht das Licht aus – und zwar geradlinig, in geraden Strahlen nach allen Seiten. Überall, wo diese Strahlen ungestört ankommen, ist es hell." },
+  { "id": "schatten", "text": "Jetzt stellen wir einen Ball in den Weg. Er ist undurchsichtig und hält die Strahlen auf, die ihn treffen. Genau hinter dem Ball kommt kein Licht mehr an – dieser dunkle Bereich ist der Schatten." },
+  { "id": "fehlvorstellung", "text": "Viele denken: Der Ball wirft den Schatten aus sich selbst heraus. Doch schalten wir das Licht aus – und der Schatten verschwindet sofort. Ein Schatten ist also kein Ding, das der Körper aussendet, sondern einfach der Ort, an dem Licht fehlt." },
+  { "id": "geradlinig", "text": "Und warum geht das Licht nicht einfach um den Ball herum? Weil Licht sich immer geradeaus bewegt. Es biegt nicht ab – und deshalb bleibt der Bereich direkt hinter dem Ball dunkel." },
+  { "id": "bewegen", "text": "Bewegen wir die Lampe nach oben, dann wandert der Schatten nach unten. Der Schatten liegt also immer auf der Seite, die der Lampe gegenüberliegt – genau dort, wohin die geraden Strahlen nicht gelangen." },
+  { "id": "merksatz", "text": "Merke: Ein Schatten entsteht hinter einem undurchsichtigen Körper, weil Licht geradlinig verläuft und der Körper es aufhält. Der Schatten ist der Bereich, den kein Lichtstrahl erreicht." },
+  { "id": "outro", "text": "Kein Licht, das fehlt – das ist der Schatten. Physik verstehen, Schritt für Schritt." }
+]

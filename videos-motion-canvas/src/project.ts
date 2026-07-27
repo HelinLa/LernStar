@@ -5,6 +5,7 @@ import energieerhaltung from './scenes/energieerhaltung?scene';
 import energieerhaltungClip from './scenes/energieerhaltung_clip?scene';
 import sehenClip from './scenes/sehen_clip?scene';
 import stromkreisClip from './scenes/stromkreis_clip?scene';
+import schattenClip from './scenes/schatten_clip?scene';
 
 // LernStar-Motion-Canvas-Projekt. Weitere Szenen hier importieren und in
 // scenes:[] ergänzen (Reihenfolge = Abspielreihenfolge im Editor).
@@ -12,5 +13,5 @@ import stromkreisClip from './scenes/stromkreis_clip?scene';
 // Zum Einzel-Rendern kurzzeitig nur die gewünschte Szene aktiv lassen.
 export default makeProject({
   name: 'LernStar',
-  scenes: [stromkreisClip],
+  scenes: [schattenClip],
 });

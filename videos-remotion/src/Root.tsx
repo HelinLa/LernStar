@@ -130,6 +130,7 @@ import { Energieerhaltung, ENERGIEERHALTUNG_DURATION } from './videos/Energieerh
 import { EnergieerhaltungMC, ENERGIEERHALTUNG_MC_DURATION } from './videos/EnergieerhaltungMC';
 import { SehenMC, SEHEN_MC_DURATION } from './videos/SehenMC';
 import { StromkreisMC, STROMKREIS_MC_DURATION } from './videos/StromkreisMC';
+import { SchattenMC, SCHATTEN_MC_DURATION } from './videos/SchattenMC';
 import { Achterbahn, ACHTERBAHN_DURATION } from './videos/Achterbahn';
 import { Energieentwertung, ENERGIEENTWERTUNG_DURATION } from './videos/Energieentwertung';
 import { Wirkungsgrad, WIRKUNGSGRAD_DURATION } from './videos/Wirkungsgrad';
@@ -405,6 +406,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="EnergieerhaltungMC" component={EnergieerhaltungMC} durationInFrames={ENERGIEERHALTUNG_MC_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="SehenMC" component={SehenMC} durationInFrames={SEHEN_MC_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="StromkreisMC" component={StromkreisMC} durationInFrames={STROMKREIS_MC_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="SchattenMC" component={SchattenMC} durationInFrames={SCHATTEN_MC_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Achterbahn" component={Achterbahn} durationInFrames={ACHTERBAHN_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Energieentwertung" component={Energieentwertung} durationInFrames={ENERGIEENTWERTUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Wirkungsgrad" component={Wirkungsgrad} durationInFrames={WIRKUNGSGRAD_DURATION} fps={30} width={1920} height={1080} />
