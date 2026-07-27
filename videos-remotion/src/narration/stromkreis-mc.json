@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Damit eine Lampe leuchtet, muss mehr passieren, als nur ein Kabel anzuschließen. Schauen wir genau hin, was in einem Stromkreis wirklich vor sich geht." },
+  { "id": "geschlossen", "text": "Erst wenn der Kreis vollständig geschlossen ist – von der Batterie durch die Leitung zur Lampe und wieder zurück – leuchtet sie. Das nennt man einen geschlossenen Stromkreis." },
+  { "id": "elektronen", "text": "Im Draht bewegen sich winzige Ladungen: die Elektronen. Sobald der Kreis geschlossen ist, wandern sie alle gleichzeitig los – wie eine Kette, die sich im Kreis dreht." },
+  { "id": "verbrauch", "text": "Viele denken: Hinter der Lampe müssten weniger Elektronen ankommen, weil die Lampe ja etwas verbraucht. Doch zähl genau nach – vor und hinter der Lampe fließen gleich viele." },
+  { "id": "energie", "text": "Verbraucht wird nicht der Strom, sondern Energie. Die Elektronen geben in der Lampe Energie ab – sie leuchtet – und fließen dann vollständig zur Batterie zurück." },
+  { "id": "offen", "text": "Und wenn wir den Kreis an einer einzigen Stelle öffnen? Dann stehen sofort alle Elektronen still – nicht nur an der Lücke. Ohne geschlossenen Kreis fließt nichts, und die Lampe bleibt dunkel." },
+  { "id": "merksatz", "text": "Merke: Nur ein geschlossener Stromkreis lässt die Lampe leuchten. Die Elektronen werden nicht verbraucht – nur ihre Energie." },
+  { "id": "outro", "text": "Ein Kabel reicht nicht – erst der geschlossene Kreis bringt Licht. Physik verstehen, Schritt für Schritt." }
+]
