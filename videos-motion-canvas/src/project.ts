@@ -1,10 +1,14 @@
 import {makeProject} from '@motion-canvas/core';
 
 import geschwindigkeit from './scenes/geschwindigkeit?scene';
+import energieerhaltung from './scenes/energieerhaltung?scene';
+import energieerhaltungClip from './scenes/energieerhaltung_clip?scene';
 
 // LernStar-Motion-Canvas-Projekt. Weitere Szenen hier importieren und in
 // scenes:[] ergänzen (Reihenfolge = Abspielreihenfolge im Editor).
+// Hinweis: Der Headless-Render rendert ALLE scenes[] hintereinander in eine MP4.
+// Zum Einzel-Rendern kurzzeitig nur die gewünschte Szene aktiv lassen.
 export default makeProject({
   name: 'LernStar',
-  scenes: [geschwindigkeit],
+  scenes: [energieerhaltungClip],
 });
