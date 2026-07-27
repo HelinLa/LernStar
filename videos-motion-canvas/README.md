@@ -10,7 +10,7 @@ ohne es zu ersetzen. Beide nutzen dieselbe **LernStar-Farbwelt** (`src/theme.ts`
 | | Remotion (`../videos-remotion`) | Motion Canvas (dieses Projekt) |
 |---|---|---|
 | Stärke | React/HTML-Layout, Emoji-Szenen, viele fertige Bausteine | flüssige gezeichnete Animationen, Formeln, Kurven, Morphing |
-| Rendern | Headless per CLI (`remotion render`) | im Editor per Klick (FFmpeg-Export) |
+| Rendern | Headless per CLI (`remotion render`) | Headless per CLI (`npm run render`) **oder** im Editor per Klick |
 | Gut für | erklärende Szenen mit Text/Icons/Karten | mathematische Herleitungen, animierte Graphen, Geometrie |
 
 Neue Videos können in **einem** der beiden Systeme entstehen – das fertige `.mp4` landet
@@ -35,8 +35,10 @@ immer gleich in `../videos/` und wird in `../content.js` per `video:'name.mp4'` 
 export PATH="$HOME/.local/node/bin:$PATH"
 cd videos-motion-canvas
 
-npm start        # Editor unter http://localhost:9000  (Vorschau, Timeline, Rendern)
-npm run build    # Produktions-Build (validiert alle Szenen/Imports)
+npm start                     # Editor unter http://localhost:9000 (Vorschau, Timeline)
+npm run build                 # Produktions-Build (validiert alle Szenen/Imports)
+npm run render                # HEADLESS rendern -> output/LernStar.mp4
+npm run render geschwindigkeit   # + kopiert Ergebnis nach ../videos/geschwindigkeit.mp4
 ```
 
 ## Neue Szene anlegen
@@ -62,15 +64,26 @@ npm run build    # Produktions-Build (validiert alle Szenen/Imports)
 
 ## Rendern → MP4 → in LernStar einbinden
 
-1. `npm start` → Editor öffnen.
-2. Oben rechts die **Video-Einstellungen** setzen: **1920 × 1080**, **30 fps** (passt zu den Remotion-Videos).
-3. Als Exporter **„FFmpeg"** wählen → **Render** klicken → MP4 landet in `output/`.
-4. `cp output/<name>.mp4 ../videos/<name>.mp4`
-5. In `../content.js` beim passenden Thema `video:'<name>.mp4'` setzen und `content.js?v=` in `../index.html` hochzählen (wie bei Remotion), dann committen/pushen.
+**Empfohlen: Headless per Terminal** (wie bei Remotion). `scripts/render.mjs` startet den Vite-Editor,
+steuert ihn per **chrome-headless-shell** (aus dem Remotion-Ordner wiederverwendet – kein extra Download),
+klickt „Render" und wartet auf die fertige MP4:
 
-> Rendern läuft bei Motion Canvas über den Editor (Browser) – anders als Remotions Headless-CLI.
-> Ein terminal-/CI-taugliches Headless-Rendering (Puppeteer, der den Editor steuert) lässt sich
-> bei Bedarf ergänzen.
+```bash
+export PATH="$HOME/.local/node/bin:$PATH"
+cd videos-motion-canvas
+npm run render                    # -> output/LernStar.mp4 (1920×1080, 30 fps)
+npm run render geschwindigkeit    # + cp nach ../videos/geschwindigkeit.mp4
+```
+
+Danach in `../content.js` beim passenden Thema `video:'<name>.mp4'` setzen und `content.js?v=` in
+`../index.html` hochzählen (wie bei Remotion), dann committen/pushen. Ein anderes Chrome lässt sich
+per `CHROME=/pfad/zu/chrome npm run render` erzwingen.
+
+**Alternativ im Editor** (interaktiv): `npm start` → Video-Einstellungen stehen bereits auf
+**1920 × 1080 / 30 fps / Exporter „Video (FFmpeg)"** (in `src/project.meta` gebacken) → **Render** → `output/`.
+
+> Beide Wege nutzen denselben `@motion-canvas/ffmpeg`-Exporter. Die Render-Voreinstellungen
+> (Auflösung, FPS, Exporter) liegen in `src/project.meta` – dort zentral änderbar.
 
 ## Beispielszene
 

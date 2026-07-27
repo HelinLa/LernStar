@@ -7,7 +7,8 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "render": "node scripts/render.mjs"
   },
   "dependencies": {
     "@motion-canvas/core": "^3.17.2"
@@ -17,6 +18,7 @@
     "@motion-canvas/ffmpeg": "^3.17.2",
     "@motion-canvas/ui": "^3.17.2",
     "@motion-canvas/vite-plugin": "^3.17.2",
+    "puppeteer-core": "^25.3.0",
     "typescript": "^5.5.4",
     "vite": "^5.4.2"
   }
