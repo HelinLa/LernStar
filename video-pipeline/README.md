@@ -7,6 +7,11 @@ Zentrale, **modulare** Pipeline für alle Mathe- & Physik-Lernvideos. Jedes Werk
 > **Grundregel:** Bestehende Videos bleiben unangetastet. Neue Werkzeuge dienen nur dazu,
 > **künftige** Videos besser zu machen oder – nach ausdrücklicher Freigabe – einzelne
 > vorhandene Videos gezielt zu optimieren. Nie automatisch überschreiben.
+>
+> **⚠️ VERBINDLICH für alle Physikvideos:** [`PHYSIK-DIDAKTIK.md`](PHYSIK-DIDAKTIK.md) –
+> „Was erklärt wird, muss gleichzeitig sichtbar werden." Animation ist Hauptbestandteil,
+> Ziel ist das Korrigieren von Fehlvorstellungen. Produktionsreihenfolge: Fehlvorstellung →
+> Animation → Storyboard → Animation bauen → **Sprechertext zuletzt**. 4-Fragen-Gate je Szene.
 
 ## Werkzeuge & Status
 
