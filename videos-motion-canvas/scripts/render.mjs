@@ -109,42 +109,90 @@ try {
     return false;
   });
   if (!clicked) throw new Error('Render-Button nicht gefunden.');
-  log('Render gestartet …');
+  log('Render angestoßen …');
 
-  // Fertig-Erkennung: neue/gewachsene MP4 + Größe stabil + Button wieder "Render"
-  const deadline = Date.now() + 8 * 60 * 1000; // 8 Min Hard-Timeout
+  // Button-Status robust lesen; bei detachtem Frame -> null (unbekannt).
+  const readButtonIdle = async () => {
+    try {
+      return await page.evaluate(() => {
+        const btns = [...document.querySelectorAll('button')];
+        const b = btns.find(x => /_main_/.test(x.className));
+        return b ? b.textContent?.trim() === 'Render' : true;
+      });
+    } catch {
+      return null; // Frame detached
+    }
+  };
+  const clickRender = async () => {
+    try {
+      return await page.evaluate(() => {
+        const btns = [...document.querySelectorAll('button')];
+        const b = btns.find(x => x.textContent?.trim() === 'Render' && /_main_/.test(x.className))
+          || btns.find(x => x.textContent?.trim() === 'Render');
+        if (b) { b.click(); return true; }
+        return false;
+      });
+    } catch { return null; }
+  };
+  const maxSize = () => Math.max(0, ...Object.values(listMp4s()), 0);
+
+  // ── Render-Start verifizieren: Datei muss wachsen ODER Button auf "aktiv".
+  // Der ffmpeg-Exporter schreibt inkrementell -> Wachstum ist das verlässlichste Signal.
+  const startBase = maxSize();
+  let started = false;
+  for (let tries = 0; tries < 2 && !started; tries++) {
+    const startDeadline = Date.now() + 45 * 1000;
+    while (Date.now() < startDeadline) {
+      await sleep(1500);
+      if (maxSize() > startBase + 20000) { started = true; break; } // Datei wächst -> läuft
+      if ((await readButtonIdle()) === false) { started = true; break; } // Button aktiv -> läuft
+    }
+    if (!started) { log(`Render-Start nicht erkannt – Klick #${tries + 2} …`); await clickRender(); }
+  }
+  if (started) log('Render läuft …');
+  else log('Render-Start unklar – warte trotzdem auf die Datei.');
+
+  // ── Fertig-Erkennung: gewachsene MP4 + danach stabil. Zwei Wege:
+  //   a) Button wieder idle (schnell, wenn Frame lesbar), oder
+  //   b) button-unabhängig: Datei groß genug + lange stabil (detachter Frame).
+  // Validierung: MP4 ist erst fertig, wenn ffprobe eine plausible Dauer liest
+  // (moov atom vorhanden). Ein gestockter Teil-Render hat KEIN moov -> nicht fertig.
+  const FFPROBE = path.resolve('node_modules/@ffprobe-installer/darwin-arm64/ffprobe');
+  const probeOk = (file) => {
+    try {
+      const r = spawnSync(FFPROBE, ['-v', 'error', '-show_entries', 'format=duration', '-of', 'default=nk=1:nw=1', file], {encoding: 'utf8'});
+      const d = parseFloat((r.stdout || '').trim());
+      return Number.isFinite(d) && d > 1;
+    } catch { return false; }
+  };
+
+  const deadline = Date.now() + 8 * 60 * 1000;
   let stable = 0;
-  let lastSizes = JSON.stringify(before);
-  let sawGrowth = false;
+  let prev = maxSize();
+  let peak = prev;
   while (Date.now() < deadline) {
     await sleep(1500);
-    const now = listMp4s();
-    const nowStr = JSON.stringify(now);
-
-    // gibt es eine neue oder gewachsene Datei ggü. Start?
-    for (const [f, size] of Object.entries(now)) {
-      if (before[f] === undefined || size !== before[f]) sawGrowth = true;
-    }
-
-    const buttonIdle = await page.evaluate(() => {
-      const btns = [...document.querySelectorAll('button')];
-      const b = btns.find(x => /_main_/.test(x.className));
-      // während des Renderns zeigt der Button Fortschritt/Prozent statt "Render"
-      return b ? b.textContent?.trim() === 'Render' : true;
-    });
-
-    if (nowStr === lastSizes) stable++;
+    const cur = maxSize();
+    if (cur > peak) peak = cur;
+    if (cur === prev) stable++;
     else stable = 0;
-    lastSizes = nowStr;
+    prev = cur;
 
-    if (sawGrowth && buttonIdle && stable >= 2 && Object.keys(now).length) {
-      // fertige Datei = die neueste mp4
+    const buttonIdle = await readButtonIdle();
+    const grew = peak > startBase + 20000;
+    // Kandidat für "fertig": Button idle ODER Datei lange stabil. Dann ffprobe-Gegencheck.
+    const candidate = grew && ((buttonIdle === true && stable >= 2) || stable >= 8);
+    if (candidate && Object.keys(listMp4s()).length) {
+      const now = listMp4s();
       const files = Object.keys(now)
-        .map(f => ({f, m: fs.statSync(path.join(OUTPUT_DIR, f)).mtimeMs, s: now[f]}))
+        .map(f => ({f, s: now[f], m: fs.statSync(path.join(OUTPUT_DIR, f)).mtimeMs}))
         .sort((a, b) => b.m - a.m);
-      producedFile = files[0].f;
-      ok = files[0].s > 10000; // > 10 KB = plausibel
-      break;
+      if (probeOk(path.join(OUTPUT_DIR, files[0].f))) {
+        producedFile = files[0].f;
+        ok = files[0].s > 10000;
+        break;
+      }
+      // sonst: unfertig (kein moov) -> weiter warten
     }
   }
 } finally {

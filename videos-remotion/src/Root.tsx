@@ -128,6 +128,7 @@ import { FreierFallJg9, FREIER_FALL_JG9_DURATION } from './videos/FreierFallJg9'
 import { LuftwiderstandJg9, LUFTWIDERSTAND_JG9_DURATION } from './videos/LuftwiderstandJg9';
 import { Energieerhaltung, ENERGIEERHALTUNG_DURATION } from './videos/Energieerhaltung';
 import { EnergieerhaltungMC, ENERGIEERHALTUNG_MC_DURATION } from './videos/EnergieerhaltungMC';
+import { SehenMC, SEHEN_MC_DURATION } from './videos/SehenMC';
 import { Achterbahn, ACHTERBAHN_DURATION } from './videos/Achterbahn';
 import { Energieentwertung, ENERGIEENTWERTUNG_DURATION } from './videos/Energieentwertung';
 import { Wirkungsgrad, WIRKUNGSGRAD_DURATION } from './videos/Wirkungsgrad';
@@ -401,6 +402,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="LuftwiderstandJg9" component={LuftwiderstandJg9} durationInFrames={LUFTWIDERSTAND_JG9_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Energieerhaltung" component={Energieerhaltung} durationInFrames={ENERGIEERHALTUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="EnergieerhaltungMC" component={EnergieerhaltungMC} durationInFrames={ENERGIEERHALTUNG_MC_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="SehenMC" component={SehenMC} durationInFrames={SEHEN_MC_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Achterbahn" component={Achterbahn} durationInFrames={ACHTERBAHN_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Energieentwertung" component={Energieentwertung} durationInFrames={ENERGIEENTWERTUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Wirkungsgrad" component={Wirkungsgrad} durationInFrames={WIRKUNGSGRAD_DURATION} fps={30} width={1920} height={1080} />

@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Vor dir liegt ein Apfel. Aber wie kommt sein Bild eigentlich in deine Augen? Die Antwort ist überraschender, als du denkst." },
+  { "id": "fehlvorstellung", "text": "Viele stellen es sich so vor: Mein Auge schickt einen Blick nach draußen und tastet den Apfel damit ab. Doch achte genau darauf, was im Dunkeln passiert – der Apfel bleibt unsichtbar." },
+  { "id": "umkehr", "text": "In Wahrheit läuft es genau andersherum. Nicht das Auge sendet etwas aus. Das Licht kommt von außen, trifft den Apfel und wird von ihm zurück in dein Auge geworfen." },
+  { "id": "modell", "text": "Beim Sehen wirken immer drei zusammen. Der Sender: eine Lichtquelle. Der Gegenstand, den das Licht trifft. Und der Empfänger: dein Auge." },
+  { "id": "selbstleuchter", "text": "Manche Dinge senden ihr Licht selbst aus: die Sonne, ein Feuer, ein Bildschirm. Solche Selbstleuchter schicken ihr Licht direkt in dein Auge – sie sind Sender und Gegenstand zugleich." },
+  { "id": "experiment", "text": "Der Apfel dagegen leuchtet nicht selbst. Schalten wir das Licht aus, wird es dunkel: Der Apfel schickt nichts mehr ins Auge und verschwindet für dich. Licht an – und sofort ist er wieder da." },
+  { "id": "merksatz", "text": "Merke: Sehen heißt Licht empfangen. Wir sehen einen Gegenstand nur, wenn Licht von ihm in unser Auge gelangt. Niemals umgekehrt." },
+  { "id": "outro", "text": "Augen auf allein reicht nicht – erst Licht im Auge lässt uns sehen. Physik verstehen, Schritt für Schritt." }
+]
