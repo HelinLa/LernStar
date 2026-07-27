@@ -1,0 +1,101 @@
+{
+  "_comment": "LernStar – kanonische Design-Tokens für ALLE Videowerkzeuge (Remotion, Motion Canvas, Manim, Blender). Single Source of Truth. Änderungen hier zuerst, dann in die werkzeugspezifischen theme-Dateien übernehmen (videos-remotion/src/theme.ts, videos-motion-canvas/src/theme.ts, videos-manim/lernstar_theme.py).",
+  "brand": "LernStar",
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "aspect": "16:9"
+  },
+  "colors": {
+    "bg0": "#0f172a",
+    "bg1": "#1e293b",
+    "ink": "#f8fafc",
+    "muted": "#cbd5e1",
+    "indigo": "#818cf8",
+    "indigoDeep": "#6366f1",
+    "amber": "#fbbf24",
+    "green": "#22c55e",
+    "red": "#ef4444",
+    "sky": "#38bdf8",
+    "ground": "#334155",
+    "ice": "#bae6fd",
+    "panel": "rgba(255,255,255,0.06)",
+    "panelSolid": "rgba(15,23,42,0.72)",
+    "border": "rgba(255,255,255,0.14)"
+  },
+  "semantic": {
+    "background": "bg0",
+    "text": "ink",
+    "textMuted": "muted",
+    "accent": "indigo",
+    "highlight": "amber",
+    "correct": "green",
+    "wrong": "red",
+    "physicsForce": "amber",
+    "physicsCold": "sky",
+    "physicsHeat": "red"
+  },
+  "typography": {
+    "fontFamily": "Inter, \"Segoe UI\", system-ui, -apple-system, Roboto, \"Helvetica Neue\", Arial, sans-serif",
+    "fontFamilyName": "Inter",
+    "weights": { "regular": 600, "bold": 800, "black": 900 },
+    "sizes": {
+      "kicker": 34,
+      "title": 78,
+      "subtitle": 38,
+      "body": 30,
+      "big": 62,
+      "huge": 90,
+      "caption": 40
+    },
+    "letterSpacingKicker": 4
+  },
+  "layout": {
+    "kicker": { "position": "top-left", "x": 90, "y": 90, "color": "indigo" },
+    "title": { "position": "top-left", "x": 90, "y": 150, "color": "ink" },
+    "caption": { "position": "bottom-center", "bottom": 90, "maxWidth": 1600, "color": "ink" },
+    "safeMargin": 90
+  },
+  "motion": {
+    "easing": {
+      "default": "easeInOutCubic",
+      "enter": "easeOutCubic",
+      "spring": { "damping": 200 }
+    },
+    "durationsFrames": {
+      "fadeIn": 16,
+      "titleIn": 24,
+      "captionDelay": 35,
+      "sceneTail": 20
+    },
+    "revealSpeed": "Werte/Balken über 4 s einblenden; Szenendauer an Sprechdauer koppeln (durOf-Muster)"
+  },
+  "transitions": {
+    "sceneChange": "whoosh-SFX bei jedem Szenenwechsel + kurzer Fade/Spring-Einzug",
+    "highlight": "pling-SFX beim Merksatz-/Formel-Reveal",
+    "appear": "pop-SFX für Karten/Pfeile",
+    "standardSequence": ["Intro", "Beobachten", "Zusammenhang/Umwandlung", "Ausprobieren", "Erklären", "Merksatz", "Transfer/Übertragen", "Outro"]
+  },
+  "audio": {
+    "voice": {
+      "primary": "macOS say -v Anna (weiblich, deutsch, offline)",
+      "upgrade": "ElevenLabs (eleven_multilingual_v2) – gleiche Dateipfade, nur Qualität besser; braucht API-Key",
+      "preference": "IMMER weibliche Anna-Stimme (User-Wunsch), keine männliche"
+    },
+    "sfx": ["whoosh", "pling", "pop", "impact"],
+    "music": "optional, dezent im Hintergrund"
+  },
+  "camera": {
+    "default": "statische Vollbild-Einstellung 1920x1080, kein Wackeln",
+    "movement": "sparsam; Kamerafahrten/Zooms nur wenn didaktisch begründet (Remotion-Ebene)"
+  },
+  "toolRouting": {
+    "math": ["Manim", "Remotion"],
+    "physics2D": ["MotionCanvas", "Remotion"],
+    "physics3D": ["Blender", "Remotion"],
+    "explainer": ["Remotion"],
+    "voice": ["ElevenLabs (optional)", "macOS say Anna (default)"],
+    "compositing_render_final": ["Remotion"]
+  }
+}
