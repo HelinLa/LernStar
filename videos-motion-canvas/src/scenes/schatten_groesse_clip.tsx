@@ -5,7 +5,8 @@ import {COLORS, FONT} from '../theme';
 // "Sauberer" Composite-Clip: Wovon hängt die Größe des Schattens ab? (Klasse 5 RS).
 // NUR Fachanimation (Strahlenfächer, beweglicher Ball + Schirm, Schattenkegel + grüne
 // Messklammer), kein Titel/Untertitel – das legt Remotion drüber. Segmentdauern framegenau
-// an die Anna-Audios (schatten-groesse-mc.timings.json → durOf).
+// an die Eva-Audios (Piper, schatten-groesse-mc.timings.json → durOf; siehe
+// scripts/print-durations.mjs).
 //
 // Didaktischer Kern: Der Ball bleibt IMMER gleich groß. Verändert werden nur die Abstände.
 // (1) Ball nah an die Lampe → Tangentenstrahlen laufen weit auseinander → Schatten wächst.
@@ -107,58 +108,58 @@ export default makeScene2D(function* (view) {
     </Node>,
   );
 
-  // ── 1 · intro (10.0333 s): alles + gemessener Schatten blenden ein ───
+  // ── 1 · intro (DUR_s 11.3): alles + gemessener Schatten blenden ein ──
   yield* all(objOp(1, 1.2), lampGlow(1, 1.2));
   yield* rayOp(1, 0.4);
   yield* rayGrow(1, 1.0);
   yield* shadowOp(1, 0.8);
   yield* labelOp(1, 0.5);
-  yield* waitFor(6.1333);
+  yield* waitFor(7.4);
 
-  // ── 2 · frage (9.2 s): Ball gleich, Schatten messbar ─────────────────
+  // ── 2 · frage (DUR_s 9.4667): Ball gleich, Schatten messbar ──────────
   yield* waitFor(2.2);
   yield* labelOp(0.5, 0.4);
   yield* labelOp(1, 0.4);
-  yield* waitFor(6.2);
+  yield* waitFor(6.4667);
 
-  // ── 3 · nah (9.4667 s): Ball an die Lampe → Schatten wächst ──────────
+  // ── 3 · nah (DUR_s 9.9667): Ball an die Lampe → Schatten wächst ─────
   yield* all(ballX(-460, 2.6), biggerOp(1, 1.0));
   yield* waitFor(2.4);
   yield* biggerOp(0, 0.6);
-  yield* waitFor(3.8667);
+  yield* waitFor(4.3667);
 
-  // ── 4 · fern (9.5333 s): Ball an den Schirm → Schatten ≈ Ball ────────
+  // ── 4 · fern (DUR_s 11.3333): Ball an den Schirm → Schatten ≈ Ball ──
   yield* all(ballX(330, 3.0), smallerOp(1, 1.0));
   yield* waitFor(2.2);
   yield* smallerOp(0, 0.6);
-  yield* waitFor(3.7333);
+  yield* waitFor(5.5333);
 
-  // ── 5 · fehlvorstellung (13.4333 s): Ball nie verändert, nur Abstand ─
+  // ── 5 · fehlvorstellung (DUR_s 13.9333): Ball nie verändert, nur Abstand
   yield* ballX(-40, 1.6);
   yield* waitFor(3.0);
   yield* all(ballX(-440, 2.4), biggerOp(1, 0.8));
   yield* biggerOp(0, 0.6);
   yield* ballX(-40, 2.2);
-  yield* waitFor(3.6333);
+  yield* waitFor(4.1333);
 
-  // ── 6 · schirm (9.8 s): Schirm weiter weg → Schatten wächst ──────────
+  // ── 6 · schirm (DUR_s 10.5333): Schirm weiter weg → Schatten wächst ─
   yield* all(screenX(860, 3.2), biggerOp(1, 1.0));
   yield* waitFor(2.2);
   yield* biggerOp(0, 0.6);
   yield* screenX(600, 1.6);
-  yield* waitFor(2.2);
+  yield* waitFor(2.9333);
 
-  // ── 7 · merksatz (10.5333 s): beide Abstände → sehr groß, dann ruhig ─
+  // ── 7 · merksatz (DUR_s 11.0): beide Abstände → sehr groß, dann ruhig ─
   yield* waitFor(1.0);
   yield* all(ballX(-440, 2.0), screenX(820, 2.0), biggerOp(1, 1.0));
   yield* waitFor(2.6);
   yield* biggerOp(0, 0.6);
   yield* all(ballX(-40, 1.6), screenX(600, 1.6));
-  yield* waitFor(2.7333);
+  yield* waitFor(3.2);
 
-  // ── 8 · outro (5.5 s) ────────────────────────────────────────────────
+  // ── 8 · outro (DUR_s 7.2) ────────────────────────────────────────────
   yield* all(rayGrow(1, 0.6), lampGlow(1, 0.6));
   yield* logoOp(1, 0.8);
-  yield* waitFor(3.8);
+  yield* waitFor(5.5);
   yield* waitFor(0.3);
 });
