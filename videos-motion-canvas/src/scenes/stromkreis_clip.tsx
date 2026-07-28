@@ -4,7 +4,8 @@ import {COLORS, FONT} from '../theme';
 
 // "Sauberer" Composite-Clip: einfacher Stromkreis mit umlaufenden Elektronen (Kl. 5).
 // Nur Fachanimation, kein Titel/Untertitel (das legt Remotion drüber). Segmentdauern
-// framegenau an die Anna-Audios (stromkreis-mc.timings.json) angepasst.
+// framegenau an die Eva-Audios (Piper, stromkreis-mc.timings.json → durOf,
+// siehe scripts/print-durations.mjs) angepasst. Füller sind hier run()-Aufrufe.
 //
 // Didaktischer Kern: Elektronen laufen als GLEICHMÄSSIGE Kette im geschlossenen Kreis
 // (Dichte überall gleich → "nichts wird verbraucht"). Öffnet der Schalter, stehen ALLE
@@ -112,41 +113,41 @@ export default makeScene2D(function* (view) {
     yield* all(flow(fv, secs, linear), ...extra);
   }
 
-  // ── 1 · intro (10.0667 s): Kreis offen, Lampe aus, nichts fließt ─────
+  // ── 1 · intro (DUR_s 9.6): Kreis offen, Lampe aus, nichts fließt ─────
   yield* objOp(1, 1.4);
-  yield* waitFor(8.6667);
+  yield* waitFor(8.2);
 
-  // ── 2 · geschlossen (10.2 s): Schalter zu → Fluss startet, Lampe an ──
+  // ── 2 · geschlossen (DUR_s 12.4): Schalter zu → Fluss startet, Lampe an
   yield* switchOpen(0, 0.8);
-  yield* run(9.4, lampOn(1, 0.6));
+  yield* run(11.6, lampOn(1, 0.6));
 
-  // ── 3 · elektronen (10.9 s): Kette dreht sich, Pfeile ───────────────
-  yield* run(10.9, arrowsOp(1, 0.8));
+  // ── 3 · elektronen (DUR_s 11.0): Kette dreht sich, Pfeile ───────────
+  yield* run(11.0, arrowsOp(1, 0.8));
 
-  // ── 4 · verbrauch (10.6667 s): Fehlvorstellung → gleich viele ───────
+  // ── 4 · verbrauch (DUR_s 12.1333): Fehlvorstellung → gleich viele ───
   yield* run(0.6, wrongOp(1, 0.6));
   yield* run(1.6);
   yield* run(0.5, wrongOp(0, 0.5));
   yield* run(0.6, countOp(1, 0.6));
-  yield* run(7.3667);
+  yield* run(8.8333);
 
-  // ── 5 · energie (9.7 s): Energie wird abgegeben, Elektronen kehren zurück
+  // ── 5 · energie (DUR_s 10.8): Energie wird abgegeben, Elektronen zurück
   yield* run(0.8, energyOp(1, 0.8));
-  yield* run(8.9);
+  yield* run(10.0);
 
-  // ── 6 · offen (11.4667 s): Schalter auf → ALLE stehen sofort still ──
+  // ── 6 · offen (DUR_s 12.7667): Schalter auf → ALLE stehen sofort still
   yield* run(2.0);
   yield* all(switchOpen(1, 0.5), lampOn(0, 0.4), gapOp(1, 0.4)); // Fluss friert ein (kein run!)
   yield* all(countOp(0, 0.5), energyOp(0, 0.5), arrowsOp(0.25, 0.5));
-  yield* waitFor(8.4667);
+  yield* waitFor(9.7667);
 
-  // ── 7 · merksatz (8.1333 s): wieder geschlossen, ruhiger Umlauf ─────
+  // ── 7 · merksatz (DUR_s 10.0333): wieder geschlossen, ruhiger Umlauf ─
   yield* all(switchOpen(0, 0.6), gapOp(0, 0.6), lampOn(1, 0.5), arrowsOp(1, 0.5));
-  yield* run(7.5333);
+  yield* run(9.4333);
 
-  // ── 8 · outro (6.5667 s) ────────────────────────────────────────────
+  // ── 8 · outro (DUR_s 7.7333) ────────────────────────────────────────
   yield* run(0.8, lampOn(1, 0.8));
   yield* run(0.8, logoOp(1, 0.8));
-  yield* run(4.9667);
+  yield* run(5.8333);
   yield* waitFor(0.3);
 });
