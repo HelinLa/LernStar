@@ -10,6 +10,8 @@ schon als Baustein existiert. Dies ist die praktische Ergänzung zu:
 
 > **Referenzstandard = Klasse 5 RS Physik** (klasse5_rs, 19/19 Videos, seit 28.07.2026
 > vollständig auf Stimme **Eva**). Jedes dieser Videos ist eine kopierbare Vorlage.
+> **Klasse 6 RS ist ebenfalls 100 % auf Eva** (klasse6_rs, 21/21, 28.07.2026, alle Weg A).
+> Fortschritt Nachvertonung Anna→Eva: **Kl.5 ✅ · Kl.6 ✅** · Kl.7–10 offen.
 
 ---
 
