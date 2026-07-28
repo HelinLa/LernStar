@@ -12,6 +12,11 @@ Zentrale, **modulare** Pipeline für alle Mathe- & Physik-Lernvideos. Jedes Werk
 > „Was erklärt wird, muss gleichzeitig sichtbar werden." Animation ist Hauptbestandteil,
 > Ziel ist das Korrigieren von Fehlvorstellungen. Produktionsreihenfolge: Fehlvorstellung →
 > Animation → Storyboard → Animation bauen → **Sprechertext zuletzt**. 4-Fragen-Gate je Szene.
+>
+> **📚 Bausteine & Kochbuch:** [`BIBLIOTHEKEN.md`](BIBLIOTHEKEN.md) – alle wiederverwendbaren
+> Bausteine (optik/magnet/circuit/electric/lens/…), die zwei Produktionswege (reines Remotion
+> vs. MC-Composite), die Eva-Sprecher-Pipeline und die harten Renderer-/JSX-Lehren.
+> **Referenzstandard = Klasse 5 RS Physik (19/19 Videos, komplett auf Eva).**
 
 ## Werkzeuge & Status
 
