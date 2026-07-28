@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wir kennen jetzt Alpha-, Beta- und Gammastrahlung. Sie unterscheiden sich vor allem darin, wie weit sie kommen und womit man sie aufhalten kann. Schauen wir uns das direkt im Vergleich an." },
+  { "id": "papier", "text": "Beginnen wir mit der Alphastrahlung. Sie hat die kürzeste Reichweite. Schon ein einfaches Blatt Papier hält sie vollständig auf – genauso wie unsere Haut. Alphastrahlung von außen kommt also nicht weit." },
+  { "id": "alu", "text": "Jetzt die Betastrahlung. Das Blatt Papier durchdringt sie locker. Erst wenn wir eine dünne Platte aus Aluminium in den Weg stellen, also einige Millimeter Metall, werden die schnellen Elektronen gestoppt. Betastrahlung braucht also schon mehr Schutz als Alpha." },
+  { "id": "blei", "text": "Und schließlich die Gammastrahlung. Papier und Aluminium durchdringt sie mühelos, als wären sie gar nicht da. Selbst dickes Blei oder eine Betonwand schwächen sie nur ab. Ganz aufhalten lässt sie sich kaum – man kann sie nur so weit dämpfen, dass sie ungefährlich wird." },
+  { "id": "uebersicht", "text": "Fassen wir zusammen. Alpha wird von Papier gestoppt, Beta von einigen Millimetern Aluminium, Gamma erst von dickem Blei oder Beton. Die Reichweite nimmt in dieser Reihenfolge zu: Alpha am kürzesten, Gamma am weitesten. Je durchdringender die Strahlung ist, desto mehr Abschirmung braucht man." },
+  { "id": "merksatz", "text": "Merke: Alphastrahlung stoppt ein Blatt Papier, Betastrahlung einige Millimeter Aluminium, Gammastrahlung erst dickes Blei oder Beton. Die Reichweite steigt von Alpha über Beta zu Gamma." },
+  { "id": "transfer", "text": "Genau deshalb trägt man beim Röntgen eine Bleischürze, schützt man Kernreaktoren mit dicken Betonwänden und transportiert man strahlende Stoffe in schweren Behältern aus Blei. Der Schutz richtet sich immer nach der Strahlungsart." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

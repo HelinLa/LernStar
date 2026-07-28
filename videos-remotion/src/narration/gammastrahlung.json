@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Die dritte Strahlungsart ist die Gammastrahlung. Sie ist die durchdringendste von allen – selbst dickes Blei hält sie kaum auf. Warum ist sie so schwer zu stoppen?" },
+  { "id": "wasist", "text": "Der große Unterschied: Gammastrahlung ist gar kein Teilchen. Sie ist eine energiereiche elektromagnetische Welle – eng verwandt mit dem Licht und der Röntgenstrahlung, nur mit noch viel mehr Energie. Sie hat weder Masse noch Ladung. Man kann sie sich wie extrem starkes, unsichtbares Licht vorstellen." },
+  { "id": "keineaenderung", "text": "Was passiert dabei mit dem Kern? Weil kein Teilchen abgestoßen wird, ändern sich weder die Ordnungszahl noch die Massenzahl. Der Kern bleibt dasselbe Element – er gibt nur überschüssige Energie ab und wird energieärmer. Meistens geschieht das direkt nach einem Alpha- oder Betazerfall, wenn der neue Kern noch zu viel Energie hat." },
+  { "id": "durchdringung", "text": "Und warum ist sie so durchdringend? Weil sie keine Masse und keine Ladung hat, stößt sie kaum mit der Materie zusammen, durch die sie fliegt. Papier und Aluminium durchdringt sie mühelos. Erst dicke Schichten aus Blei oder Beton können sie deutlich abschwächen. Ganz vollständig aufhalten kann man Gammastrahlung fast nie." },
+  { "id": "merksatz", "text": "Merke: Gammastrahlung ist eine energiereiche elektromagnetische Welle ohne Masse und Ladung. Ordnungszahl und Element bleiben gleich, nur Energie wird frei. Sie ist sehr durchdringend – erst dickes Blei oder Beton bremst sie." },
+  { "id": "transfer", "text": "Gerade weil sie so durchdringend ist, kann man Gammastrahlung gezielt einsetzen: in der Strahlentherapie, um tief liegende Tumorzellen zu zerstören, zum keimfrei machen von Instrumenten und in der Materialprüfung, um in Metall hineinzuschauen. Dafür braucht man aber immer einen guten Strahlenschutz." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

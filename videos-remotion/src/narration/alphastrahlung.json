@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wenn ein instabiler Kern zerfällt, kann er auf drei Arten strahlen. Die erste schauen wir uns jetzt an: die Alphastrahlung. Was genau schleudert der Kern dabei heraus?" },
+  { "id": "wasist", "text": "Bei der Alphastrahlung stößt ein schwerer Kern ein festes Paket ab: zwei Protonen und zwei Neutronen zusammen. Das ist genau ein Heliumkern. Man nennt es Alphateilchen. Es ist positiv geladen und im Vergleich zu anderen Strahlungsteilchen ziemlich groß und schwer." },
+  { "id": "zerfall", "text": "Was bedeutet das für den zurückbleibenden Kern? Er verliert zwei Protonen und zwei Neutronen. Deshalb sinkt seine Ordnungszahl um zwei und seine Massenzahl um vier. Es entsteht ein völlig neues Element, zwei Plätze weiter unten im Periodensystem. Aus Radium-226 wird zum Beispiel Radon-222." },
+  { "id": "reichweite", "text": "Weil Alphateilchen so groß und geladen sind, stoßen sie unterwegs ständig mit Luftteilchen zusammen. Dadurch kommen sie nur wenige Zentimeter weit. Schon ein einfaches Blatt Papier oder die oberste Hautschicht hält sie vollständig auf." },
+  { "id": "gefahr", "text": "Daraus entsteht leicht ein Denkfehler: Weil ein Blatt Papier genügt, hält man Alphastrahlung für harmlos. Von außen stimmt das auch – die Haut schützt uns. Gelangt der strahlende Stoff aber in den Körper, zum Beispiel durch Einatmen, wirkt die Strahlung direkt in den Zellen. Und dort ist sie besonders schädlich." },
+  { "id": "merksatz", "text": "Merke: Ein Alphateilchen ist ein Heliumkern aus zwei Protonen und zwei Neutronen. Beim Alphazerfall sinkt die Ordnungszahl um zwei und die Massenzahl um vier. Die Reichweite ist kurz, aber im Körper ist die Strahlung sehr gefährlich." },
+  { "id": "transfer", "text": "Alphastrahlung steckt zum Beispiel in manchen Rauchmeldern. Das Gas Radon im Keller ist ein Alphastrahler, den man nicht einatmen sollte. Und der Zerfall liefert Wärme, die man in Raumsonden als Energiequelle nutzt. Als Nächstes: die Betastrahlung, die weiter reicht als Alpha." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

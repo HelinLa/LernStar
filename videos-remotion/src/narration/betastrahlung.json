@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Die zweite Strahlungsart ist die Betastrahlung. Sie reicht deutlich weiter als die Alphastrahlung. Woran liegt das – und was schießt hier eigentlich aus dem Kern?" },
+  { "id": "wasist", "text": "Das Erstaunliche: Aus dem Kern kommt ein Elektron – obwohl im Kern normalerweise gar keine Elektronen sitzen. Der Grund ist eine Umwandlung. Ein Neutron im Kern verwandelt sich in ein Proton und ein Elektron. Das Proton bleibt im Kern, das Elektron aber schießt mit sehr hoher Geschwindigkeit heraus. Dieses schnelle Elektron ist die Betastrahlung." },
+  { "id": "zerfall", "text": "Was heißt das für den Kern? Aus einem Neutron ist ein Proton geworden. Die Zahl der Protonen steigt also um eins, die Ordnungszahl wird um eins größer. Die Massenzahl bleibt gleich, denn die Gesamtzahl der Kernbausteine ändert sich nicht. Aus Kohlenstoff-14 wird auf diese Weise Stickstoff-14." },
+  { "id": "reichweite", "text": "Warum kommt Betastrahlung weiter als Alpha? Ein Elektron ist viel leichter und kleiner als ein Alphateilchen, und es ist sehr schnell. Dadurch fliegt es weiter und durchdringt sogar ein Blatt Papier. Erst einige Millimeter Aluminium können die Betastrahlung stoppen." },
+  { "id": "merksatz", "text": "Merke: Bei der Betastrahlung wird ein Neutron zu einem Proton und einem Elektron. Das schnelle Elektron verlässt den Kern. Die Ordnungszahl steigt um eins, die Massenzahl bleibt gleich. Betastrahlung durchdringt Papier, wird aber von Aluminium gestoppt." },
+  { "id": "transfer", "text": "Betastrahlung nutzt man zum Beispiel, um in der Industrie die Dicke von Folien zu messen. In der Medizin dient sie zur Diagnose und Therapie. Und die berühmte C-14-Methode zur Altersbestimmung beruht auf dem Betazerfall. Als Nächstes: die Gammastrahlung, die durchdringendste von allen." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

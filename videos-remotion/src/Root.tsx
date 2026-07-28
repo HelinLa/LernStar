@@ -176,6 +176,11 @@ import { StabilInstabil, STABIL_INSTABIL_DURATION } from './videos/StabilInstabi
 import { NatuerlicheRadioaktivitaet, NATUERLICHE_RADIOAKTIVITAET_DURATION } from './videos/NatuerlicheRadioaktivitaet';
 import { IonisierendeStrahlung, IONISIERENDE_STRAHLUNG_DURATION } from './videos/IonisierendeStrahlung';
 import { StrahlungNachweisen, STRAHLUNG_NACHWEISEN_DURATION } from './videos/StrahlungNachweisen';
+import { Alphastrahlung, ALPHASTRAHLUNG_DURATION } from './videos/Alphastrahlung';
+import { Betastrahlung, BETASTRAHLUNG_DURATION } from './videos/Betastrahlung';
+import { Gammastrahlung, GAMMASTRAHLUNG_DURATION } from './videos/Gammastrahlung';
+import { Abschirmung, ABSCHIRMUNG_DURATION } from './videos/Abschirmung';
+import { AblenkungFeld, ABLENKUNG_FELD_DURATION } from './videos/AblenkungFeld';
 import { Waermekraftwerk, WAERMEKRAFTWERK_DURATION } from './videos/Waermekraftwerk';
 import { FossileEnergie, FOSSILE_ENERGIE_DURATION } from './videos/FossileEnergie';
 import { RegenerativeEnergie, REGENERATIVE_ENERGIE_DURATION } from './videos/RegenerativeEnergie';
@@ -488,6 +493,11 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="NatuerlicheRadioaktivitaet" component={NatuerlicheRadioaktivitaet} durationInFrames={NATUERLICHE_RADIOAKTIVITAET_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="IonisierendeStrahlung" component={IonisierendeStrahlung} durationInFrames={IONISIERENDE_STRAHLUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="StrahlungNachweisen" component={StrahlungNachweisen} durationInFrames={STRAHLUNG_NACHWEISEN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Alphastrahlung" component={Alphastrahlung} durationInFrames={ALPHASTRAHLUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Betastrahlung" component={Betastrahlung} durationInFrames={BETASTRAHLUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Gammastrahlung" component={Gammastrahlung} durationInFrames={GAMMASTRAHLUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Abschirmung" component={Abschirmung} durationInFrames={ABSCHIRMUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="AblenkungFeld" component={AblenkungFeld} durationInFrames={ABLENKUNG_FELD_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Waermekraftwerk" component={Waermekraftwerk} durationInFrames={WAERMEKRAFTWERK_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="FossileEnergie" component={FossileEnergie} durationInFrames={FOSSILE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="RegenerativeEnergie" component={RegenerativeEnergie} durationInFrames={REGENERATIVE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />

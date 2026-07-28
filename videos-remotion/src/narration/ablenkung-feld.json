@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Alpha, Beta und Gamma sehen alle gleich aus – man sieht ja gar nichts. Wie kann man trotzdem herausfinden, welche Strahlungsart man vor sich hat? Ein elektrisches oder magnetisches Feld verrät es." },
+  { "id": "aufbau", "text": "Der Aufbau ist einfach. Man schickt die Strahlung zwischen zwei geladene Platten hindurch. Die obere ist positiv geladen, die untere negativ. In diesem Feld wirkt auf jedes geladene Teilchen eine Kraft. Auf ungeladene Strahlung dagegen wirkt keine Kraft." },
+  { "id": "ablenkung", "text": "Und jetzt beobachten wir, was passiert. Die Strahlung teilt sich in drei Richtungen auf. Ein Anteil wird leicht zur einen Seite abgelenkt, ein anderer stärker zur anderen Seite, und ein dritter fliegt einfach geradeaus weiter. Aus einem Strahl werden drei getrennte Wege." },
+  { "id": "unterscheiden", "text": "Das erklärt sich durch Ladung und Masse. Alphateilchen sind positiv geladen und werden zur negativen Platte gezogen, aber nur leicht, weil sie schwer sind. Betateilchen sind negativ geladen, sie werden zur positiven Platte gezogen – und viel stärker, weil sie sehr leicht sind. Gammastrahlung hat keine Ladung, deshalb wird sie überhaupt nicht abgelenkt und fliegt gerade weiter." },
+  { "id": "merksatz", "text": "Merke: Im Feld wird Alphastrahlung als positive Ladung leicht abgelenkt, Betastrahlung als negative Ladung stark in die Gegenrichtung, und Gammastrahlung ohne Ladung gar nicht. So kann man die drei Strahlungsarten sicher unterscheiden." },
+  { "id": "transfer", "text": "Dieses Prinzip nutzt man, um in einer Probe die Strahlungsart zu bestimmen. Ein Magnetfeld lenkt die geladenen Teilchen übrigens genauso ab. In der Forschung sortiert man damit Teilchen. Damit sind die drei Strahlungsarten komplett – als Nächstes geht es um Zerfall und Zeit." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
