@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Radioaktive Strahlung ist unsichtbar – aber sie kann eine Menge anrichten. Was genau macht sie so besonders und zugleich gefährlich? Der Schlüssel steckt in einem einzigen Wort: ionisieren." },
+  { "id": "ionisation", "text": "Schauen wir uns an, was passiert, wenn die Strahlung auf ein Atom trifft. Sie trägt so viel Energie, dass sie ein Elektron aus der Hülle herausschlägt. Zurück bleibt ein Atom, dem ein Elektron fehlt – es ist jetzt elektrisch geladen, ein sogenanntes Ion. Weil die Strahlung Ionen erzeugt, nennt man sie ionisierende Strahlung." },
+  { "id": "zellen", "text": "Und genau das macht sie gefährlich. Trifft ionisierende Strahlung auf lebende Zellen, kann sie dort wichtige Moleküle zerstören und sogar das Erbgut, die DNA, beschädigen. Solche Schäden können eine Zelle krank machen oder absterben lassen. Bei sehr vielen geschädigten Zellen kann das dem Körper ernsthaft schaden." },
+  { "id": "menge", "text": "Aber Vorsicht vor Panik – es kommt auf die Menge an, also auf die Dosis. Die kleine natürliche Strahlung, eine Banane oder ein Flug sind völlig unbedenklich. Eine Röntgenaufnahme ist eine geringe, kontrollierte Dosis. Erst eine sehr hohe Dosis, etwa bei einem Unfall, wird wirklich gefährlich." },
+  { "id": "merksatz", "text": "Merke: Ionisierende Strahlung hat so viel Energie, dass sie Elektronen aus Atomen herausschlägt. In lebenden Zellen kann sie das Erbgut schädigen. Wie gefährlich sie ist, hängt von der Dosis ab." },
+  { "id": "transfer", "text": "Die Ionisation hat aber auch nützliche Seiten. Weil die Strahlung Gas ionisiert, kann man sie mit Geräten messen. In der Medizin nutzt man sie gezielt, um Tumorzellen zu zerstören. Und weil sie gefährlich sein kann, schützt man sich mit Abstand und Abschirmung." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

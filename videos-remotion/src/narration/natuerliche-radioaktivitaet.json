@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Es gibt eine Strahlung, die man mit keinem Sinn wahrnehmen kann – und die trotzdem überall um uns herum ist. Woher kommt sie, und wie hat man sie überhaupt entdeckt?" },
+  { "id": "becquerel", "text": "Die Entdeckung geschah 1896 fast zufällig. Henri Becquerel legte etwas Uransalz auf eine lichtdicht verpackte Fotoplatte und ließ beides in einer dunklen Schublade liegen. Als er die Platte später entwickelte, war sie an dieser Stelle geschwärzt – obwohl niemals Licht daran gekommen war. Das Uran musste also von ganz allein eine Strahlung aussenden." },
+  { "id": "unsichtbar", "text": "Das Tückische an dieser Strahlung: Man kann sie mit keinem einzigen Sinn wahrnehmen. Man sieht sie nicht, riecht sie nicht, schmeckt und fühlt sie nicht. Nur mit einem Messgerät lässt sie sich überhaupt nachweisen." },
+  { "id": "natuerlich", "text": "Und sie ist keineswegs selten. Diese natürliche Radioaktivität steckt im Gestein und im Boden, aus dem auch das Gas Radon aufsteigt. Sie kommt als Höhenstrahlung aus dem Weltall, sie ist in unserer Nahrung, etwa als Kalium-40 in Bananen, und sogar unser eigener Körper strahlt ganz schwach." },
+  { "id": "immerda", "text": "Ganz wichtig ist eine Sache: Der Mensch hat die Radioaktivität nicht erfunden. Sie ist so alt wie die Erde selbst. Schon lange bevor es Menschen gab, war diese Strahlung überall vorhanden. Wir haben sie nur erst 1896 bemerkt." },
+  { "id": "merksatz", "text": "Merke: Manche Stoffe senden von selbst eine unsichtbare Strahlung aus. Diese natürliche Radioaktivität ist überall um uns herum und war schon immer da. Nachweisen kann man sie nur mit Messgeräten." },
+  { "id": "transfer", "text": "An manchen Orten ist die natürliche Strahlung etwas höher – in Bergregionen, in schlecht belüfteten Kellern mit Radon oder für kurze Zeit im Flugzeug. Meist ist sie so gering, dass sie harmlos ist. Was diese Strahlung genau bewirkt, sehen wir als Nächstes." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

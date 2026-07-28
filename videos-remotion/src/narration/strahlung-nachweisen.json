@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Radioaktive Strahlung sieht man nicht. Wie kann man sie trotzdem sichtbar oder hörbar machen? Man nutzt einen Trick: die Ionisation, also genau die Eigenschaft, Atome zu laden." },
+  { "id": "geiger", "text": "Das bekannteste Gerät ist der Geigerzähler. In seinem Zählrohr steckt ein Gas. Trifft ein Strahlungsteilchen hinein, ionisiert es das Gas, und dadurch fließt kurz ein Strom. Das Gerät macht daraus ein hörbares Klick. Je mehr Strahlung ankommt, desto mehr Klicks pro Sekunde. Diese Zählrate ist ein Maß für die Aktivität, die man in Becquerel angibt." },
+  { "id": "nebelkammer", "text": "Noch eindrucksvoller ist die Nebelkammer. In ihr fliegt jedes Teilchen durch einen feinen Nebel und hinterlässt dabei eine sichtbare Spur, ähnlich einem Kondensstreifen am Himmel. An der Spur erkennt man sogar die Strahlungsart: Alphateilchen ziehen dicke, kurze Spuren, Betateilchen dünne, lange Spuren. So sieht man die einzelnen Teilchen tatsächlich fliegen." },
+  { "id": "weitere", "text": "Für den dauerhaften Schutz gibt es weitere Geräte. Menschen, die mit Strahlung arbeiten, tragen eine Filmplakette oder ein elektronisches Dosimeter. Diese messen nicht nur kurz, sondern sammeln die gesamte Strahlungsdosis, die jemand im Laufe der Zeit abbekommen hat." },
+  { "id": "merksatz", "text": "Merke: Weil Strahlung Atome ionisiert, kann man sie nachweisen. Der Geigerzähler klickt bei jedem Teilchen und misst die Zählrate. Die Nebelkammer macht die einzelnen Teilchenspuren sichtbar." },
+  { "id": "transfer", "text": "Solche Messgeräte braucht man an vielen Stellen: bei der Suche nach Rohstoffen, in der Sicherheit zum Aufspüren von Strahlenquellen und zur ständigen Überwachung in Kernkraftwerken. Als Nächstes schauen wir uns die drei Strahlungsarten genauer an." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
