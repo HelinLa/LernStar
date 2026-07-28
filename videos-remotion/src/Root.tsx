@@ -170,6 +170,9 @@ import { Uebersetzungsverhaeltnis, UEBERSETZUNGSVERHAELTNIS_DURATION } from './v
 import { Leitungsverluste, LEITUNGSVERLUSTE_DURATION } from './videos/Leitungsverluste';
 import { Hochspannung, HOCHSPANNUNG_DURATION } from './videos/Hochspannung';
 import { Stromnetz, STROMNETZ_DURATION } from './videos/Stromnetz';
+import { Atombau, ATOMBAU_DURATION } from './videos/Atombau';
+import { Kernaufbau, KERNAUFBAU_DURATION } from './videos/Kernaufbau';
+import { StabilInstabil, STABIL_INSTABIL_DURATION } from './videos/StabilInstabil';
 import { Waermekraftwerk, WAERMEKRAFTWERK_DURATION } from './videos/Waermekraftwerk';
 import { FossileEnergie, FOSSILE_ENERGIE_DURATION } from './videos/FossileEnergie';
 import { RegenerativeEnergie, REGENERATIVE_ENERGIE_DURATION } from './videos/RegenerativeEnergie';
@@ -476,6 +479,9 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Leitungsverluste" component={Leitungsverluste} durationInFrames={LEITUNGSVERLUSTE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Hochspannung" component={Hochspannung} durationInFrames={HOCHSPANNUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Stromnetz" component={Stromnetz} durationInFrames={STROMNETZ_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Atombau" component={Atombau} durationInFrames={ATOMBAU_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Kernaufbau" component={Kernaufbau} durationInFrames={KERNAUFBAU_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="StabilInstabil" component={StabilInstabil} durationInFrames={STABIL_INSTABIL_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Waermekraftwerk" component={Waermekraftwerk} durationInFrames={WAERMEKRAFTWERK_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="FossileEnergie" component={FossileEnergie} durationInFrames={FOSSILE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="RegenerativeEnergie" component={RegenerativeEnergie} durationInFrames={REGENERATIVE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />

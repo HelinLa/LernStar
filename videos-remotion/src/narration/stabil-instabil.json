@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Die meisten Atomkerne bleiben für immer, wie sie sind. Andere aber zerfallen ganz von selbst und senden dabei Strahlung aus. Warum ist der eine Kern stabil und der andere nicht?" },
+  { "id": "kraefte", "text": "Im Kern wirken zwei Kräfte gegeneinander. Alle Protonen sind positiv geladen, deshalb stoßen sie sich elektrisch ab. Dem wirkt die starke Kernkraft entgegen: Sie hält Protonen und Neutronen fest zusammen. Aber sie hat einen Haken – sie wirkt nur auf sehr kurze Entfernung, also nur zwischen direkten Nachbarn." },
+  { "id": "gleichgewicht", "text": "Bei kleineren Kernen mit einem passenden Verhältnis von Protonen und Neutronen ist die Kernkraft stark genug, um die Abstoßung zu besiegen. Ein solcher Kern ist im Gleichgewicht, also stabil. Er bleibt einfach, wie er ist, und ändert sich nie." },
+  { "id": "instabil", "text": "Anders sieht es aus, wenn ein Kern sehr groß wird oder das Verhältnis von Protonen und Neutronen nicht passt. Weil die Kernkraft nur kurz reicht, kann sie einen riesigen Kern nicht mehr überall zusammenhalten, während die elektrische Abstoßung durch den ganzen Kern wirkt. Der Kern ist überladen und gerät ins Wanken – er ist instabil." },
+  { "id": "zerfall", "text": "Ein instabiler Kern sucht einen stabileren Zustand. Dafür stößt er von selbst ein Teilchen oder Energie ab. Danach ist er kleiner und ausgewogener – also stabiler. Genau dieses Abstoßen ist die radioaktive Strahlung. Sie kommt also direkt aus dem Kern." },
+  { "id": "merksatz", "text": "Merke: Stimmt das Verhältnis von Protonen und Neutronen, ist ein Kern stabil. Ist er zu groß oder unausgewogen, wird er instabil und zerfällt von selbst – dabei sendet er radioaktive Strahlung aus." },
+  { "id": "transfer", "text": "Ein Urankern zum Beispiel ist riesig und daher instabil. C-14 zerfällt langsam. Kleine, ausgewogene Kerne wie C-12 oder Eisen dagegen sind stabil und zerfallen nie. Instabile Kerne sind die Quelle der Radioaktivität – die wir als Nächstes sichtbar machen." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

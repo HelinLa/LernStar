@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Alles um uns herum besteht aus winzigen Atomen. Aber woraus besteht eigentlich ein Atom selbst? Der Blick ins Innere hält eine große Überraschung bereit." },
+  { "id": "rutherford", "text": "Vor über hundert Jahren machte Ernest Rutherford einen berühmten Versuch. Er beschoss eine hauchdünne Goldfolie mit kleinen Teilchen. Fast alle flogen einfach ungehindert hindurch – das Atom muss also fast leer sein. Nur ganz wenige Teilchen prallten heftig zurück. Das bedeutet: In der Mitte sitzt etwas sehr Kleines und zugleich sehr Dichtes." },
+  { "id": "modell", "text": "So entstand das Atommodell. In der Mitte liegt ein winziger Atomkern, in dem fast die ganze Masse steckt. Um ihn herum, in einer weiten Hülle, bewegen sich die Elektronen. Zwischen dem Kern und den Elektronen ist fast nur leerer Raum." },
+  { "id": "groesse", "text": "Wie groß ist dieser leere Raum? Stell dir vor, ein Atom wäre so groß wie ein ganzes Fußballstadion. Dann wäre der Kern nur eine kleine Erbse, die genau in der Mitte liegt. Das Atom ist also rund hunderttausendmal größer als sein Kern." },
+  { "id": "bausteine", "text": "Schauen wir auf die Bausteine. Im Kern sitzen die Protonen, sie sind positiv geladen, und die Neutronen, die keine Ladung tragen. In der Hülle bewegen sich die Elektronen, sie sind negativ geladen und viel leichter. Ein neutrales Atom hat gleich viele Protonen wie Elektronen." },
+  { "id": "merksatz", "text": "Merke: Ein Atom besteht aus einem winzigen, schweren Kern mit Protonen und Neutronen und einer weiten Hülle aus Elektronen. Dazwischen ist fast nur leerer Raum." },
+  { "id": "transfer", "text": "Dieser Aufbau erklärt vieles: Die Elektronen der Hülle bestimmen, wie Stoffe chemisch reagieren. Und die Radioaktivität, um die es jetzt geht, entsteht tief im Atomkern." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

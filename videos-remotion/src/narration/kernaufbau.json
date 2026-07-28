@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Kohlenstoff ist immer Kohlenstoff – und trotzdem gibt es ihn in verschiedenen Sorten. Wie kann das sein? Die Antwort steckt im Aufbau des Atomkerns." },
+  { "id": "protonen", "text": "Entscheidend ist die Zahl der Protonen im Kern. Sie heißt Ordnungszahl. Ein Kern mit einem Proton ist immer Wasserstoff. Zwei Protonen ergeben Helium, drei Protonen Lithium. Die Protonenzahl legt also eindeutig fest, um welches Element es sich handelt." },
+  { "id": "massenzahl", "text": "Zählt man Protonen und Neutronen zusammen, erhält man die Massenzahl. Dieser Kohlenstoffkern hat sechs Protonen und sechs Neutronen – zusammen also die Massenzahl zwölf. Fast die ganze Masse des Atoms steckt in diesen Kernbausteinen, denn die Elektronen sind sehr viel leichter." },
+  { "id": "isotope", "text": "Und jetzt die Erklärung für die verschiedenen Sorten. Man kann die Zahl der Neutronen verändern, ohne dass sich das Element ändert. Kohlenstoff mit sechs Neutronen heißt C-12, Kohlenstoff mit acht Neutronen heißt C-14. Beide sind Kohlenstoff, weil sie sechs Protonen haben. Solche Varianten eines Elements nennt man Isotope." },
+  { "id": "schreibweise", "text": "Damit man ein Isotop eindeutig benennen kann, gibt es eine Schreibweise. Vor das Elementsymbol schreibt man oben die Massenzahl und unten die Ordnungszahl. Bei C-14 steht oben die vierzehn und unten die sechs. Die Neutronenzahl ergibt sich als Differenz: vierzehn minus sechs sind acht Neutronen." },
+  { "id": "merksatz", "text": "Merke: Die Protonenzahl, also die Ordnungszahl, bestimmt das Element. Isotope haben gleich viele Protonen, aber verschieden viele Neutronen. Die Neutronenzahl ist Massenzahl minus Ordnungszahl." },
+  { "id": "transfer", "text": "Viele Isotope haben besondere Aufgaben. C-14 dient zur Altersbestimmung, Iod-131 wird in der Medizin genutzt, und Uran-235 ist der Brennstoff für die Kernspaltung. Manche Isotope sind stabil, andere zerfallen und senden Strahlung aus." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
