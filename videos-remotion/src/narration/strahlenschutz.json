@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wer mit radioaktiven Stoffen arbeitet, muss sich schützen. Zum Glück gibt es dafür drei einfache und wirksame Regeln. Merken kann man sie sich als Zeit, Abstand und Abschirmung." },
+  { "id": "zeit", "text": "Die erste Regel ist die Aufenthaltszeit. Die Dosis summiert sich mit der Zeit auf: Je länger man in der Nähe einer Strahlenquelle bleibt, desto mehr bekommt man ab. Deshalb hält man sich immer so kurz wie möglich in der Nähe auf." },
+  { "id": "abstand", "text": "Die zweite Regel ist der Abstand, und sie ist besonders wirkungsvoll. Mit wachsendem Abstand verteilt sich die Strahlung auf eine immer größere Fläche. Verdoppelt man den Abstand, sinkt die Belastung nicht auf die Hälfte, sondern sogar auf ein Viertel. Ein paar Schritte zurück bringen also enorm viel." },
+  { "id": "abschirmung", "text": "Die dritte Regel ist die Abschirmung. Man bringt das passende Material zwischen die Quelle und den Körper. Gegen Alphastrahlung genügt schon Papier, gegen Betastrahlung braucht man Aluminium, und gegen die durchdringende Gammastrahlung dickes Blei oder Beton." },
+  { "id": "zusammen", "text": "Am besten kombiniert man alle drei Regeln: möglichst wenig Zeit, möglichst viel Abstand und eine gute Abschirmung. Und es gibt eine vierte, ganz wichtige Regel: Strahlende Stoffe dürfen niemals in den Körper gelangen, also nicht eingeatmet oder verschluckt werden. Von innen wirkt die Strahlung sonst ungebremst." },
+  { "id": "merksatz", "text": "Merke: Die drei Regeln des Strahlenschutzes sind wenig Zeit, großer Abstand und gute Abschirmung. Dazu kommt: strahlende Stoffe nie in den Körper gelangen lassen." },
+  { "id": "transfer", "text": "Diese Regeln gelten überall: im Beruf beim Röntgen oder im Kraftwerk, im Notfall durch Abstandhalten und Warnen, und sogar zu Hause, wenn man den Keller gegen Radon gut lüftet. Als Nächstes geht es um die gewaltige Energie, die im Atomkern steckt." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

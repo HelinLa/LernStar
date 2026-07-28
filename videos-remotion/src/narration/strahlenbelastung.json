@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wir sind ständig von Strahlung umgeben – aber wie viel ist das eigentlich, und ist das gefährlich? Um das zu beurteilen, braucht man ein passendes Maß." },
+  { "id": "dosis", "text": "Dieses Maß ist die Dosis, angegeben in Millisievert. Sie sagt nicht nur, wie viel Strahlung ankommt, sondern berücksichtigt auch, wie schädlich sie im Gewebe wirkt. So kann man ganz verschiedene Strahlungsarten vergleichbar machen." },
+  { "id": "quellen", "text": "Woher kommt die Strahlung, der wir ausgesetzt sind? Den größten Teil macht das natürliche Radon in der Atemluft aus. Etwa gleich viel kommt im Durchschnitt aus medizinischen Untersuchungen. Dazu kommen kleinere Beiträge aus dem Boden und den Baustoffen, aus der Höhenstrahlung des Weltalls und aus unserer Nahrung." },
+  { "id": "vergleich", "text": "Zum Vergleich ein paar Zahlen. Eine Banane liefert eine winzige Dosis. Ein langer Flug etwas mehr, weil man der Höhenstrahlung näher ist. Eine Röntgenaufnahme der Lunge ist eine kleine Dosis. Eine Computertomografie, kurz CT, liegt deutlich höher – deshalb macht man sie nur, wenn es medizinisch nötig ist." },
+  { "id": "merksatz", "text": "Merke: Die Strahlendosis misst man in Millisievert. Wir sind ständig einer kleinen, natürlichen Strahlung ausgesetzt, in Deutschland im Schnitt etwa zwei bis vier Millisievert pro Jahr. Gefährlich wird erst eine deutlich höhere Dosis." },
+  { "id": "transfer", "text": "Die eigene Belastung hängt vom Leben ab: vom Wohnort, etwa Radon im Keller oder Höhe im Gebirge, von Flugreisen und von medizinischen Untersuchungen. Die natürliche Belastung ist normal und unbedenklich – man versucht nur, unnötige zusätzliche Dosis zu vermeiden." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

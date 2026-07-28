@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Nicht nur in der Medizin ist Strahlung nützlich, auch in der Technik. Dort nutzt man je nach Aufgabe genau die passende Strahlungsart. Schauen wir uns drei typische Beispiele an." },
+  { "id": "material", "text": "Erstes Beispiel: die Materialprüfung. Man durchleuchtet ein Werkstück mit Gammastrahlung, ähnlich wie bei einer Röntgenaufnahme. An einer Stelle mit einem versteckten Riss oder Lufteinschluss kommt mehr Strahlung durch. Auf dem Film dahinter wird der Fehler sichtbar. So kann man Schweißnähte prüfen, ohne das Bauteil zu zerstören." },
+  { "id": "dicke", "text": "Zweites Beispiel: die Dickenmessung. Bei der Herstellung einer Folie sitzt über dem Material eine Betaquelle und darunter ein Detektor. Je dicker die Folie, desto weniger Betastrahlung kommt unten an. Aus dem Messwert regelt die Maschine sofort die Walzen nach, und das ganz ohne die Folie zu berühren." },
+  { "id": "rauchmelder", "text": "Drittes Beispiel: der Rauchmelder. Ältere Modelle enthalten eine winzige Alphaquelle. Sie ionisiert die Luft in einer kleinen Kammer, sodass ein schwacher Strom fließt. Dringt Rauch ein, lagern sich die Teilchen an die Ionen an und bremsen sie. Der Strom sinkt, und genau das löst den Alarm aus." },
+  { "id": "merksatz", "text": "Merke: In der Technik wählt man die Strahlung nach der Aufgabe. Gammastrahlung durchleuchtet Material, Betastrahlung misst Dicken, und eine Alphaquelle steckt im Rauchmelder." },
+  { "id": "transfer", "text": "Es gibt noch viele weitere Anwendungen: Man macht Lebensmittel mit Gammastrahlung länger haltbar, erforscht damit Pflanzen in der Landwirtschaft und misst den Füllstand in geschlossenen Tanks. Überall wird die Strahlung genau dosiert und gut abgeschirmt." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

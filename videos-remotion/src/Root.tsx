@@ -184,6 +184,10 @@ import { AblenkungFeld, ABLENKUNG_FELD_DURATION } from './videos/AblenkungFeld';
 import { Zerfallsgleichung, ZERFALLSGLEICHUNG_DURATION } from './videos/Zerfallsgleichung';
 import { Halbwertszeit, HALBWERTSZEIT_DURATION } from './videos/Halbwertszeit';
 import { C14Methode, C14_METHODE_DURATION } from './videos/C14Methode';
+import { MedizinStrahlung, MEDIZIN_STRAHLUNG_DURATION } from './videos/MedizinStrahlung';
+import { TechnikStrahlung, TECHNIK_STRAHLUNG_DURATION } from './videos/TechnikStrahlung';
+import { Strahlenbelastung, STRAHLENBELASTUNG_DURATION } from './videos/Strahlenbelastung';
+import { Strahlenschutz, STRAHLENSCHUTZ_DURATION } from './videos/Strahlenschutz';
 import { Waermekraftwerk, WAERMEKRAFTWERK_DURATION } from './videos/Waermekraftwerk';
 import { FossileEnergie, FOSSILE_ENERGIE_DURATION } from './videos/FossileEnergie';
 import { RegenerativeEnergie, REGENERATIVE_ENERGIE_DURATION } from './videos/RegenerativeEnergie';
@@ -504,6 +508,10 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Zerfallsgleichung" component={Zerfallsgleichung} durationInFrames={ZERFALLSGLEICHUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Halbwertszeit" component={Halbwertszeit} durationInFrames={HALBWERTSZEIT_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="C14Methode" component={C14Methode} durationInFrames={C14_METHODE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="MedizinStrahlung" component={MedizinStrahlung} durationInFrames={MEDIZIN_STRAHLUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="TechnikStrahlung" component={TechnikStrahlung} durationInFrames={TECHNIK_STRAHLUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Strahlenbelastung" component={Strahlenbelastung} durationInFrames={STRAHLENBELASTUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Strahlenschutz" component={Strahlenschutz} durationInFrames={STRAHLENSCHUTZ_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Waermekraftwerk" component={Waermekraftwerk} durationInFrames={WAERMEKRAFTWERK_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="FossileEnergie" component={FossileEnergie} durationInFrames={FOSSILE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="RegenerativeEnergie" component={RegenerativeEnergie} durationInFrames={REGENERATIVE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />

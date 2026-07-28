@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Radioaktive Strahlung kann Zellen schädigen. Aber genau diese Wirkung macht sie in der Medizin zu einem wertvollen Werkzeug. Wie hilft Strahlung Ärztinnen und Ärzten?" },
+  { "id": "diagnostik", "text": "Beginnen wir mit der Diagnose. Man spritzt dem Patienten einen schwach strahlenden Marker. Dieser Stoff sammelt sich an einer bestimmten Stelle im Körper an, zum Beispiel in einem Organ, und sendet von dort Gammastrahlung aus. Eine Gammakamera nimmt diese Strahlung von außen auf und macht so sichtbar, wie das Organ arbeitet, ganz ohne Operation." },
+  { "id": "therapie", "text": "Jetzt zur Therapie. Bei Krebs richtet man einen starken Strahl gezielt auf den Tumor. Der Trick: Der Strahl kommt aus vielen verschiedenen Richtungen und kreuzt sich genau im Tumor. Nur dort ist die Dosis hoch genug, um die kranken Zellen zu zerstören. Das gesunde Gewebe drumherum bekommt aus jeder Richtung nur wenig ab und wird so weit wie möglich geschont." },
+  { "id": "sterilisation", "text": "Strahlung kann noch mehr. Mit Gammastrahlung macht man Operationsbesteck und Verbandsmaterial keimfrei, denn sie tötet Bakterien ab. Und mit schwach strahlenden Stoffen verfolgen Ärzte, wie Stoffe durch den Körper wandern." },
+  { "id": "merksatz", "text": "Merke: In der Medizin hilft Strahlung doppelt. Zur Diagnose macht ein schwach dosierter Marker Vorgänge im Körper sichtbar. Zur Therapie zerstört gezielte, starke Strahlung Tumorzellen." },
+  { "id": "transfer", "text": "Aus diesen Anwendungen ist ein ganzes medizinisches Fachgebiet geworden, die Nuklearmedizin. Verfahren wie die Szintigrafie oder das PET machen Organe sichtbar, und die Strahlentherapie ist eine der wichtigsten Waffen gegen Krebs." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
