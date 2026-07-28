@@ -4,8 +4,8 @@ import {COLORS, FONT} from '../theme';
 
 // "Sauberer" Composite-Clip: Kern- und Halbschatten (Klasse 5 RS).
 // NUR Fachanimation (wachsende Lichtquelle, Ball, Schirm, Umbra/Penumbra-Kegel), kein
-// Titel/Untertitel – das legt Remotion drüber. Segmentdauern framegenau an die Anna-Audios
-// (kern-halbschatten-mc.timings.json → durOf).
+// Titel/Untertitel – das legt Remotion drüber. Segmentdauern framegenau an die Eva-Audios
+// (Piper, kern-halbschatten-mc.timings.json → durOf; siehe scripts/print-durations.mjs).
 //
 // Didaktischer Kern (EIN Steuersignal = Quellenhöhe srcHalf): Punktquelle → nur scharfer
 // Kernschatten. Wächst die Quelle, entsteht rundum ein weicher Halbschatten. Geometrie
@@ -133,49 +133,49 @@ export default makeScene2D(function* (view) {
     </Node>,
   );
 
-  // ── 1 · intro (9.0333 s): Punktquelle, scharfer Schatten ─────────────
+  // ── 1 · intro (DUR_s 9.2667): Punktquelle, scharfer Schatten ─────────
   yield* all(objOp(1, 1.2), glow(1, 1.2));
   yield* rayOp(1, 0.4);
   yield* rayGrow(1, 1.0);
   yield* shadowOp(1, 0.8);
-  yield* waitFor(5.6333);
+  yield* waitFor(5.8667);
 
-  // ── 2 · punkt (10.5667 s): scharfer Kernschatten benannt ─────────────
+  // ── 2 · punkt (DUR_s 11.0667): scharfer Kernschatten benannt ─────────
   yield* kernLabelOp(1, 0.6);
-  yield* waitFor(9.9667);
+  yield* waitFor(10.4667);
 
-  // ── 3 · ausdehnen (10.8667 s): Quelle wächst → Halbschatten ──────────
+  // ── 3 · ausdehnen (DUR_s 11.1333): Quelle wächst → Halbschatten ──────
   yield* srcHalf(95, 3.2);
   yield* halbLabelOp(1, 0.6);
-  yield* waitFor(7.0667);
+  yield* waitFor(7.3333);
 
-  // ── 4 · halbschatten (11.0333 s): Randstrahlen zeigen die Zonen ──────
+  // ── 4 · halbschatten (DUR_s 12.4667): Randstrahlen zeigen die Zonen ──
   yield* boundaryOp(1, 0.8);
   yield* waitFor(3.0);
   yield* boundaryOp(0.35, 0.8);
-  yield* waitFor(6.4333);
+  yield* waitFor(7.8667);
 
-  // ── 5 · fehlvorstellung (12.1667 s): Teil der Lampe sichtbar ─────────
+  // ── 5 · fehlvorstellung (DUR_s 12.2333): Teil der Lampe sichtbar ─────
   yield* teilOp(1, 0.8);
   yield* waitFor(4.0);
   yield* teilOp(0, 0.8);
-  yield* waitFor(6.5667);
+  yield* waitFor(6.6333);
 
-  // ── 6 · sonne (8.9 s): klein→scharf, groß→weich (Sonne) ──────────────
+  // ── 6 · sonne (DUR_s 9.2): klein→scharf, groß→weich (Sonne) ──────────
   yield* all(srcHalf(6, 1.6), boundaryOp(0, 0.4));
   yield* waitFor(1.6);
   yield* all(srcHalf(95, 2.0), sunOp(1, 1.0));
-  yield* waitFor(3.7);
+  yield* waitFor(4.0);
 
-  // ── 7 · merksatz (8.8 s): ruhig, beide Zonen ─────────────────────────
+  // ── 7 · merksatz (DUR_s 9.5333): ruhig, beide Zonen ──────────────────
   yield* sunOp(0, 0.6);
   yield* waitFor(1.0);
   yield* all(kernLabelOp(1, 0.4), halbLabelOp(1, 0.4));
-  yield* waitFor(6.8);
+  yield* waitFor(7.5333);
 
-  // ── 8 · outro (6.9667 s) ─────────────────────────────────────────────
+  // ── 8 · outro (DUR_s 8.8333) ─────────────────────────────────────────
   yield* all(glow(1, 0.6), rayGrow(1, 0.6));
   yield* logoOp(1, 0.8);
-  yield* waitFor(5.2667);
+  yield* waitFor(7.1333);
   yield* waitFor(0.3);
 });
