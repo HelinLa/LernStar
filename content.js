@@ -3836,6 +3836,8 @@ const CONTENT = { ...(typeof GS_CONTENT !== 'undefined' ? GS_CONTENT : {}),
         color:'#7C3AED',
         intro:'Klasse 10 Physik – Atomphysik, Radioaktivität und Energielehre! Prüfungsrelevante Themen der ZP10.',
         topics:[
+          { isChapter:true, name:'⚙️ Motoren, Generatoren & Transformatoren' },
+          { name:'Wie sieht das Unsichtbare rund um einen Magneten aus?', diff:2, video:'magnetfeld-jg10.mp4', explanation:'Ein Magnet wirkt auf Eisen, ohne es zu berühren – im Raum um ihn herum liegt ein Magnetfeld. Streut man Eisenspäne, ordnen sie sich in Bögen von Pol zu Pol: Der ganze Raum ist erfüllt. Ein Prüfkompass zeigt an jeder Stelle die Feldrichtung; außerhalb des Magneten verlaufen die Feldlinien vom Nordpol zum Südpol. Wo die Linien dicht liegen (an den Polen), ist das Feld stark. Wichtig: Feldlinien sind nur eine Zeichenhilfe – das Feld füllt den Raum lückenlos, auch zwischen den Linien. Dieses Feld ist die Grundlage für Motoren, Generatoren und Transformatoren.' },
           { isChapter:true, name:'⚛️ Atommodell & Aufbau' },
           { name:'Kern & Elektronenhülle', diff:2, explanation:'Atom: Kern (Protonen p⁺, Neutronen n⁰) + Elektronenhülle (e⁻). Protonenzahl = Ordnungszahl (bestimmt Element). Massenzahl = p + n. Isotope: gleiche Protonenzahl, verschiedene Neutronenzahl. Atomradius ≈ 10⁻¹⁰ m, Kernradius ≈ 10⁻¹⁵ m.' },
           { isChapter:true, name:'☢️ Radioaktivität' },

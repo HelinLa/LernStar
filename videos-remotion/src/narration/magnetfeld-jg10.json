@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Ein Magnet zieht Eisen an, ohne es zu berühren. Irgendetwas muss also im Raum um ihn herum wirken – auch wenn wir nichts sehen. Was ist das für ein unsichtbares Feld?" },
+  { "id": "beobachten", "text": "Streut man feine Eisenspäne rund um einen Magneten, ordnen sie sich von selbst. Es entstehen Bögen, die von einem Pol zum anderen laufen. Damit wird sichtbar: Der ganze Raum um den Magneten ist erfüllt. Diesen Bereich nennt man das Magnetfeld." },
+  { "id": "richtung", "text": "Das Feld hat an jeder Stelle eine Richtung. Führt man einen kleinen Prüfkompass um den Magneten, dreht sich seine rote Nadel immer mit. Außerhalb des Magneten zeigt sie vom Nordpol zum Südpol. Deshalb zeichnet man Feldlinien mit einem Pfeil in diese Richtung. Wichtig: Das Feld ist überall – nicht nur direkt am Magneten." },
+  { "id": "staerke", "text": "Das Feld ist nicht überall gleich stark. Bewegt man eine Sonde nah an einen Pol, ist die Wirkung groß. Weiter weg wird sie schnell schwächer. Man erkennt das an den Feldlinien: Wo sie dicht beieinander liegen, ist das Feld stark – an den Polen am stärksten. Wo sie weit auseinander laufen, ist es schwach." },
+  { "id": "modell", "text": "Ein häufiger Denkfehler: Feldlinien seien echte Fäden, und dazwischen wäre nichts. Das stimmt nicht. Setzt man eine Nadel genau zwischen zwei Linien, lenkt sie trotzdem aus. Die Linien sind nur eine Zeichenhilfe für Richtung und Stärke. Das Feld selbst füllt den Raum lückenlos." },
+  { "id": "merksatz", "text": "Merke: Um jeden Magneten liegt ein Magnetfeld. Feldlinien zeigen seine Richtung – außen vom Nordpol zum Südpol – und seine Stärke: dicht bedeutet stark." },
+  { "id": "transfer", "text": "Dieses Feld begegnet uns überall. Der Kompass nutzt es zum Zeigen der Richtung, ein Magnetresonanztomograf braucht ein sehr starkes Feld, und Motoren, Generatoren und Transformatoren bauen alle darauf auf. Genau darum geht es als Nächstes." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

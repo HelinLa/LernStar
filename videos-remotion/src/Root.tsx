@@ -148,6 +148,7 @@ import { LeistungEinheiten, LEISTUNG_EINHEITEN_DURATION } from './videos/Leistun
 import { EnergieEntwerten, ENERGIE_ENTWERTEN_DURATION } from './videos/EnergieEntwerten';
 import { Energiekette, ENERGIEKETTE_DURATION } from './videos/Energiekette';
 import { Generator, GENERATOR_DURATION } from './videos/Generator';
+import { MagnetfeldJg10, MAGNETFELD_JG10_DURATION } from './videos/MagnetfeldJg10';
 import { Waermekraftwerk, WAERMEKRAFTWERK_DURATION } from './videos/Waermekraftwerk';
 import { FossileEnergie, FOSSILE_ENERGIE_DURATION } from './videos/FossileEnergie';
 import { RegenerativeEnergie, REGENERATIVE_ENERGIE_DURATION } from './videos/RegenerativeEnergie';
@@ -432,6 +433,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="EnergieEntwerten" component={EnergieEntwerten} durationInFrames={ENERGIE_ENTWERTEN_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Energiekette" component={Energiekette} durationInFrames={ENERGIEKETTE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Generator" component={Generator} durationInFrames={GENERATOR_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="MagnetfeldJg10" component={MagnetfeldJg10} durationInFrames={MAGNETFELD_JG10_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Waermekraftwerk" component={Waermekraftwerk} durationInFrames={WAERMEKRAFTWERK_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="FossileEnergie" component={FossileEnergie} durationInFrames={FOSSILE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="RegenerativeEnergie" component={RegenerativeEnergie} durationInFrames={REGENERATIVE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />
