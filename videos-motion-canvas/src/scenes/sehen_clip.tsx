@@ -4,8 +4,8 @@ import {COLORS, FONT} from '../theme';
 
 // "Sauberer" Composite-Clip zum Sehvorgang (Klasse 5). NUR Fachanimation
 // (Strahlengang Lampe→Apfel→Auge), kein Titel/Untertitel — das legt Remotion drüber.
-// Segmentdauern sind framegenau an die Anna-Audios angepasst (sehen-mc.timings.json →
-// durOf), damit der Clip über alle 8 Szenen KONTINUIERLICH und synchron läuft.
+// Segmentdauern framegenau an die Eva-Audios (Piper) angepasst (sehen-mc.timings.json →
+// durOf; siehe scripts/print-durations.mjs), Clip läuft KONTINUIERLICH und synchron.
 //
 // Didaktischer Kern: erst das FALSCHE Sehstrahl-Modell (grüne Strahlen aus dem Auge,
 // Apfel bleibt unsichtbar), dann die UMKEHR der Pfeilrichtung (Licht kommt von außen
@@ -91,47 +91,47 @@ export default makeScene2D(function* (view) {
     </>,
   );
 
-  // ── Segment 1 · intro (8.000 s) ──────────────────────────────────────
+  // ── Segment 1 · intro (DUR_s 8.2333) ─────────────────────────────────
   yield* all(objOp(1, 1.4), appleLit(0, 0.01));
-  yield* waitFor(6.6);
+  yield* waitFor(6.8333);
 
-  // ── Segment 2 · fehlvorstellung (11.4333 s): falsche Sehstrahlen ─────
+  // ── Segment 2 · fehlvorstellung (DUR_s 12.4): falsche Sehstrahlen ────
   yield* eyeRayOp(1, 0.4);
   yield* eyeRay(1, 1.4);
   yield* crossOp(1, 0.6);
   yield* eyeRay(0.82, 0.5);
   yield* eyeRay(1, 0.5);
-  yield* waitFor(8.0333);
+  yield* waitFor(9.0);
 
-  // ── Segment 3 · umkehr (11.0333 s): Pfeilrichtung dreht sich um ──────
+  // ── Segment 3 · umkehr (DUR_s 11.8667): Pfeilrichtung dreht sich um ──
   yield* all(eyeRay(0, 1.0), eyeRayOp(0, 1.0), crossOp(0, 0.8), lampOp(1, 1.0), lampGlow(1, 1.0));
   yield* outRay(1, 1.1);
   yield* appleLit(1, 1.0);
   yield* inRay(1, 1.1);
   yield* seeing(1, 0.6);
-  yield* waitFor(6.2333);
+  yield* waitFor(7.0667);
 
-  // ── Segment 4 · modell (9.3333 s): Sender/Gegenstand/Empfänger ───────
+  // ── Segment 4 · modell (DUR_s 11.3): Sender/Gegenstand/Empfänger ─────
   yield* roleS(1, 0.7);
   yield* roleO(1, 0.7);
   yield* roleE(1, 0.7);
-  yield* waitFor(7.2333);
+  yield* waitFor(9.2);
 
-  // ── Segment 5 · selbstleuchter (11.2333 s): Lampe direkt ins Auge ────
+  // ── Segment 5 · selbstleuchter (DUR_s 11.4667): Lampe direkt ins Auge ─
   yield* selfOp(1, 0.8);
   yield* directRay(1, 1.2);
   yield* directRay(0.85, 0.5);
   yield* directRay(1, 0.5);
-  yield* waitFor(8.2333);
+  yield* waitFor(8.4667);
 
-  // ── Segment 6 · experiment (11.6333 s): Licht AUS → Apfel weg → AN ───
+  // ── Segment 6 · experiment (DUR_s 13.0333): Licht AUS → Apfel weg → AN
   yield* all(directRay(0, 0.8), selfOp(0, 0.8));
   yield* all(appleLit(0, 0.9), inRay(0, 0.9), outRay(0, 0.9), lampGlow(0, 0.9), lampOp(0.16, 0.9), seeing(0, 0.9)); // Licht AUS – alles dunkel
   yield* waitFor(1.6);
   yield* all(outRay(1, 0.9), appleLit(1, 0.9), inRay(1, 0.9), lampGlow(1, 0.9), lampOp(1, 0.9), seeing(1, 0.9)); // Licht AN
-  yield* waitFor(7.4333);
+  yield* waitFor(8.8333);
 
-  // ── Segment 7 · merksatz (9.0333 s): Apfel→Auge betont ──────────────
+  // ── Segment 7 · merksatz (DUR_s 9.4333): Apfel→Auge betont ──────────
   yield* waitFor(0.8); // volle Kette sichtbar lassen, nur den Apfel→Auge-Strahl betonen
   yield* inPulse(1, 0.5);
   yield* inPulse(0, 0.5);
@@ -139,12 +139,12 @@ export default makeScene2D(function* (view) {
   yield* inPulse(0, 0.5);
   yield* inPulse(1, 0.5);
   yield* inPulse(0, 0.5);
-  yield* waitFor(5.2333);
+  yield* waitFor(5.6333);
 
-  // ── Segment 8 · outro (6.700 s) ─────────────────────────────────────
+  // ── Segment 8 · outro (DUR_s 7.5333) ────────────────────────────────
   yield* all(outRay(1, 0.8), lampGlow(1, 0.8), appleLit(1, 0.8));
   yield* logoOp(1, 0.8);
-  yield* waitFor(5.1);
+  yield* waitFor(5.6333);
 
   yield* waitFor(0.3);
 });
