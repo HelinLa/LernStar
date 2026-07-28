@@ -4,8 +4,10 @@ import {COLORS, FONT} from '../theme';
 
 // "Sauberer" Composite-Clip: Wie wirken Magnetpole aufeinander? (Klasse 5 RS).
 // NUR Fachanimation (zwei Stabmagnete, Kraftpfeile, Kraftmesser), kein Titel/Untertitel –
-// das legt Remotion drüber. Segmentdauern framegenau an die Anna-Audios
-// (magnetpole-mc.timings.json → durOf).
+// das legt Remotion drüber. Segmentdauern framegenau an die Eva-Audios (Piper,
+// magnetpole-mc.timings.json → durOf; siehe scripts/print-durations.mjs). Nur die
+// Halte-waitFor am Segmentende sind auf Evas Sprechdauer getaktet – die Bewegungen selbst
+// sind unverändert.
 //
 // Didaktischer Kern: N (rot) und S (blau). Ungleiche Pole (N–S) → anziehen (grüne Pfeile,
 // Magnete wandern zueinander). Ein Magnet dreht sich → gleiche Pole (N–N) → abstoßen (rote
@@ -91,37 +93,40 @@ export default makeScene2D(function* (view) {
     </Node>,
   );
 
-  // ── 1 · intro (13.5333 s): zwei Magnete weit auseinander ─────────────
-  yield* objOp(1, 1.4);
-  yield* waitFor(12.1333);
+  // Fixe Aktionszeiten je Segment stehen im Code; das abschließende waitFor füllt auf
+  // die framegenaue Segmentdauer (DUR_s aus print-durations.mjs) auf.
 
-  // ── 2 · ungleich (9.1667 s): N–S → anziehen ─────────────────────────
+  // ── 1 · intro (DUR_s 13.3667): zwei Magnete weit auseinander ─────────
+  yield* objOp(1, 1.4);
+  yield* waitFor(11.9667);
+
+  // ── 2 · ungleich (DUR_s 9.7333): N–S → anziehen ─────────────────────
   yield* all(anzArrOp(1, 0.6), anzOp(1, 0.6), ungleichOp(1, 0.6));
   yield* gap(178, 2.4);
-  yield* waitFor(6.1667);
+  yield* waitFor(6.7333);
 
-  // ── 3 · gleich (10.7 s): Magnet umdrehen → N–N → abstoßen ────────────
+  // ── 3 · gleich (DUR_s 11.8667): Magnet umdrehen → N–N → abstoßen ─────
   yield* all(anzArrOp(0, 0.4), anzOp(0, 0.4), ungleichOp(0, 0.4));
   yield* rotB(180, 0.9);
   yield* all(absArrOp(1, 0.5), absOp(1, 0.5), gleichOp(1, 0.5));
   yield* gap(330, 1.6);
-  yield* waitFor(7.3);
+  yield* waitFor(8.4667);
 
-  // ── 4 · fehlvorstellung (10.8 s): nicht immer anziehen – beides ─────
+  // ── 4 · fehlvorstellung (DUR_s 11.9): nicht immer anziehen – beides ─
   yield* waitFor(2.5);
   yield* all(rotB(0, 0.9), absArrOp(0, 0.4), absOp(0, 0.4), gleichOp(0, 0.4));
   yield* all(anzArrOp(1, 0.5), anzOp(1, 0.5), ungleichOp(1, 0.5), gap(180, 1.4));
   yield* waitFor(1.4);
   yield* all(anzArrOp(0, 0.4), anzOp(0, 0.4), ungleichOp(0, 0.4), rotB(180, 0.9), gap(300, 1.2));
   yield* all(absArrOp(1, 0.4), absOp(1, 0.4), gleichOp(1, 0.4));
-  yield* waitFor(3.0);
+  yield* waitFor(4.1);
 
-  // ── 5 · regel (10.1333 s): Regel-Übersicht ──────────────────────────
+  // ── 5 · regel (DUR_s 10.7): Regel-Übersicht ─────────────────────────
   yield* all(absArrOp(0.3, 0.5), absOp(0, 0.5), gleichOp(0, 0.5));
   yield* regelOp(1, 0.8);
-  yield* waitFor(8.8333);
+  yield* waitFor(9.4);
 
-  // ── 6 · abstand (10.9 s): Kraft ↔ Abstand (Kraftmesser) ─────────────
+  // ── 6 · abstand (DUR_s 11.1333): Kraft ↔ Abstand (Kraftmesser) ──────
   yield* all(regelOp(0, 0.5), rotB(0, 0.9));
   yield* all(kraftOp(1, 0.6), anzArrOp(1, 0.5), ungleichOp(1, 0.5), absArrOp(0, 0.3));
   yield* gap(165, 1.8);
@@ -129,16 +134,15 @@ export default makeScene2D(function* (view) {
   yield* gap(320, 1.8);
   yield* waitFor(1.4);
   yield* gap(200, 1.4);
-  yield* waitFor(1.6);
+  yield* waitFor(1.8333);
 
-  // ── 7 · kontaktlos (9.3333 s): Kraft über den Spalt, ohne Berührung ─
+  // ── 7 · kontaktlos (DUR_s 11.4667): Kraft über den Spalt, ohne Berührung ─
   yield* all(gap(230, 1.2), ungleichOp(0, 0.8)); // Pol-Label ausblenden (Platz für Spalt-Text)
   yield* gapHiOp(1, 0.6);
-  yield* waitFor(7.5333);
+  yield* waitFor(9.6667);
 
-  // ── 8 · outro (7.9667 s) ─────────────────────────────────────────────
+  // ── 8 · outro (DUR_s 9.5) ────────────────────────────────────────────
   yield* all(kraftOp(0, 0.5), gapHiOp(0, 0.5), anzOp(0, 0.5), ungleichOp(0, 0.5));
   yield* logoOp(1, 0.8);
-  yield* waitFor(6.3667);
-  yield* waitFor(0.3);
+  yield* waitFor(7.9);
 });
