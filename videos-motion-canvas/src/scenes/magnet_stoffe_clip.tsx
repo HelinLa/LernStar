@@ -6,8 +6,8 @@ import {COLORS, FONT} from '../theme';
 // NUR Fachanimation (Prüfmagnet, Materialkarten, Sortieren, Schrottplatz-Kran).
 // Kern-Fehlvorstellung: „ein Magnet zieht jedes Metall an" → Kupfer/Alu bleiben liegen;
 // magnetisch sind nur Eisen, Nickel, Kobalt (und Stahl). Titel/Untertitel via Remotion.
-// Segmentdauern an magnet-stoffe-mc.timings.json → durOf (TAIL=20):
-// intro 403 · eisen 315 · fehlv. 405 · sortieren 421 · nurdrei 405 · regel 337 · anwendung 373 · outro 215.
+// Segmentdauern an magnet-stoffe-mc.timings.json (Eva/Piper) → durOf (TAIL=20;
+// siehe scripts/print-durations.mjs). Nur die Halte-waitFor sind getaktet.
 export default makeScene2D(function* (view) {
   view.fill(COLORS.bg0);
   const ink = COLORS.ink;
@@ -106,18 +106,18 @@ export default makeScene2D(function* (view) {
     </Node>,
   );
 
-  // ── 1 · intro (13.4333 s) ────────────────────────────────────────────
+  // ── 1 · intro (DUR_s 13.9333) ────────────────────────────────────────
   yield* all(itemsOp(1, 1.0), magOp(1, 1.0));
-  yield* waitFor(12.4333);
+  yield* waitFor(12.9333);
 
-  // ── 2 · eisen (10.5 s): Nagel & Stahl springen an den Magneten ───────
+  // ── 2 · eisen (DUR_s 11.3667): Nagel & Stahl springen an den Magneten ─
   yield* magPos([0, -150], 1.1);
   yield* all(nagelPos([-70, -60], 0.7), klammerPos([70, -60], 0.7), ironBadgeOp(1, 0.5));
   yield* waitFor(2.6);
   yield* all(magPos([0, -320], 1.0), nagelPos([-360, 130], 0.9), klammerPos([-240, 240], 0.9), ironBadgeOp(0, 0.4));
-  yield* waitFor(5.1);
+  yield* waitFor(5.9667);
 
-  // ── 3 · fehlvorstellung (13.5 s): Kupfer & Alu bleiben liegen ────────
+  // ── 3 · fehlvorstellung (DUR_s 14.5333): Kupfer & Alu bleiben liegen ─
   yield* magPos([-120, 10], 1.1);
   yield* cuBadgeOp(1, 0.5);
   yield* waitFor(1.8);
@@ -125,35 +125,35 @@ export default makeScene2D(function* (view) {
   yield* alBadgeOp(1, 0.5);
   yield* waitFor(1.8);
   yield* magPos([0, -320], 1.0);
-  yield* waitFor(5.7);
+  yield* waitFor(6.7333);
 
-  // ── 4 · sortieren (14.0333 s) ────────────────────────────────────────
+  // ── 4 · sortieren (DUR_s 14.4333) ────────────────────────────────────
   yield* all(cuBadgeOp(0, 0.4), alBadgeOp(0, 0.4));
   yield* colHdrOp(1, 0.6);
   yield* all(nagelPos([-380, -110], 1.2), klammerPos([-380, 10], 1.2));
   yield* all(kupferPos([180, -140], 1.2), aluPos([380, -140], 1.2), holzPos([180, -10], 1.2), plastikPos([380, -10], 1.2), glasPos([180, 120], 1.2));
-  yield* waitFor(10.6333);
+  yield* waitFor(11.0333);
 
-  // ── 5 · nurdrei (13.5 s): Eisen, Nickel, Kobalt ─────────────────────
+  // ── 5 · nurdrei (DUR_s 14.4): Eisen, Nickel, Kobalt ─────────────────
   yield* leftFrameOp(1, 0.6);
   yield* chipsOp(1, 0.8);
-  yield* waitFor(12.1);
+  yield* waitFor(13.0);
 
-  // ── 6 · regel (11.2333 s) ────────────────────────────────────────────
+  // ── 6 · regel (DUR_s 11.5667) ────────────────────────────────────────
   yield* magPos([0, -300], 0.9);
   yield* arrowsOp(1, 0.6);
-  yield* waitFor(9.7333);
+  yield* waitFor(10.0667);
 
-  // ── 7 · anwendung (12.4333 s): Magnetkran hebt nur Eisen heraus ──────
+  // ── 7 · anwendung (DUR_s 13.2): Magnetkran hebt nur Eisen heraus ─────
   yield* all(colHdrOp(0, 0.4), leftFrameOp(0, 0.4), chipsOp(0, 0.4), arrowsOp(0, 0.4), magOp(0, 0.4));
   yield* all(craneOp(1, 0.5), craneY(-140, 1.0));
   yield* all(nagelPos([-60, -40], 0.9), klammerPos([60, -40], 0.9));
   yield* liftBadgeOp(1, 0.4);
   yield* all(craneY(-330, 1.2), nagelPos([-60, -230], 1.2), klammerPos([60, -230], 1.2));
-  yield* waitFor(8.5333);
+  yield* waitFor(9.3);
 
-  // ── 8 · outro (7.1667 s) ─────────────────────────────────────────────
+  // ── 8 · outro (DUR_s 8.0667) ─────────────────────────────────────────
   yield* all(itemsOp(0, 0.5), craneOp(0, 0.5), liftBadgeOp(0, 0.5));
   yield* logoOp(1, 0.8);
-  yield* waitFor(5.8667);
+  yield* waitFor(6.7667);
 });

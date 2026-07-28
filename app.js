@@ -3789,7 +3789,7 @@ function playLernvideo(file, name) {
     <div class="sim-box sim-box-wide">
       <button class="sim-x" onclick="closeLernvideo()">✕</button>
       <h3 class="sim-h3">🎬 ${name}</h3>
-      <video src="videos/${file}?v=17" controls autoplay playsinline preload="metadata"
+      <video src="videos/${file}?v=18" controls autoplay playsinline preload="metadata"
         style="width:100%;border-radius:10px;display:block;background:#0f172a"></video>
     </div>`;
   modal.addEventListener('click', e => { if (e.target === modal) closeLernvideo(); });
