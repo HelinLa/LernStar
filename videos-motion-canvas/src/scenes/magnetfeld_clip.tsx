@@ -6,8 +6,8 @@ import {COLORS, FONT} from '../theme';
 // NUR Fachanimation (Stabmagnet, Feldlinien + Eisenspäne, laufender Richtungsmarker,
 // beweglicher Prüfkompass – Nadel steht IMMER tangential zum Dipolfeld –, Feldstärke-Gauge).
 // Kern-Fehlvorstellung: Feldlinien sind keine Fäden; auch ZWISCHEN ihnen ist das Feld da.
-// Titel/Untertitel via Remotion. durOf (TAIL=20):
-// intro 372 · feldlinien 386 · richtung 365 · pruefkompass 343 · staerke 375 · fehlv. 524 · merksatz 406 · outro 222.
+// Titel/Untertitel via Remotion. durOf an magnetfeld-mc.timings.json (Eva/Piper),
+// TAIL=20; siehe scripts/print-durations.mjs. Nur die Halte-waitFor sind getaktet.
 export default makeScene2D(function* (view) {
   view.fill(COLORS.bg0);
   const ink = COLORS.ink;
@@ -115,58 +115,58 @@ export default makeScene2D(function* (view) {
     </Node>,
   );
 
-  // ── 1 · intro (12.4 s) ───────────────────────────────────────────────
+  // ── 1 · intro (DUR_s 13.9333) ────────────────────────────────────────
   yield* magOp(1, 1.3);
-  yield* waitFor(11.1);
+  yield* waitFor(12.6333);
 
-  // ── 2 · feldlinien (12.8667 s) ───────────────────────────────────────
+  // ── 2 · feldlinien (DUR_s 13.0) ──────────────────────────────────────
   yield* fieldOp(1, 1.7);
   yield* filOp(1, 1.4);
-  yield* waitFor(9.7667);
+  yield* waitFor(9.9);
 
-  // ── 3 · richtung (12.1667 s): Marker läuft N→S ───────────────────────
+  // ── 3 · richtung (DUR_s 13.0667): Marker läuft N→S ───────────────────
   yield* markerOp(1, 0.4);
   yield* markerT(1, 2.3);
   yield* markerT(0, 0.01);
   yield* markerT(1, 2.3);
-  yield* waitFor(7.1567);
+  yield* waitFor(8.0567);
 
-  // ── 4 · pruefkompass (11.4333 s): Nadel folgt überall dem Feld ───────
+  // ── 4 · pruefkompass (DUR_s 12.8333): Nadel folgt überall dem Feld ───
   yield* all(compassOp(1, 0.5), markerOp(0, 0.4));
   yield* all(compassPos([250, -140], 1.3), gaugeOp(1, 0.5));
   yield* compassPos([-30, -250], 1.4);
   yield* compassPos([-260, 130], 1.4);
   yield* compassPos([70, 250], 1.3);
-  yield* waitFor(5.0333);
+  yield* waitFor(6.9333);
 
-  // ── 5 · staerke (12.5 s): nah am Pol stark, weit weg schwach ─────────
+  // ── 5 · staerke (DUR_s 14.6667): nah am Pol stark, weit weg schwach ──
   yield* compassPos([HALF + 74, 0], 1.4);
   yield* waitFor(1.7);
   yield* compassPos([430, 0], 1.5);
   yield* waitFor(1.7);
   yield* compassPos([-HALF - 74, 0], 1.5);
   yield* waitFor(1.4);
-  yield* waitFor(3.3);
+  yield* waitFor(5.4667);
 
-  // ── 6 · fehlvorstellung (17.4667 s): auch ZWISCHEN den Linien ist Feld
+  // ── 6 · fehlvorstellung (DUR_s 18.6667): auch ZWISCHEN den Linien ist Feld
   yield* compassPos([0, -178], 1.4);
   yield* betweenRingOp(1, 0.5);
   yield* waitFor(2.6);
   yield* compassPos([44, -190], 1.1);
   yield* compassPos([-44, -166], 1.1);
   yield* compassPos([0, -178], 1.1);
-  yield* waitFor(9.6667);
+  yield* waitFor(10.8667);
 
-  // ── 7 · merksatz (13.5333 s) ─────────────────────────────────────────
+  // ── 7 · merksatz (DUR_s 14.0) ────────────────────────────────────────
   yield* all(compassOp(0, 0.6), gaugeOp(0, 0.6), betweenRingOp(0, 0.6));
   yield* magY(-12, 2.0);
   yield* magY(0, 2.0);
   yield* magY(-12, 2.0);
   yield* magY(0, 2.0);
-  yield* waitFor(4.9333);
+  yield* waitFor(5.4);
 
-  // ── 8 · outro (7.4 s) ────────────────────────────────────────────────
+  // ── 8 · outro (DUR_s 8.3) ────────────────────────────────────────────
   yield* all(fieldOp(0, 0.5), filOp(0, 0.5), magOp(0, 0.5));
   yield* logoOp(1, 0.8);
-  yield* waitFor(6.1);
+  yield* waitFor(7.0);
 });
