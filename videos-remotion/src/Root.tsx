@@ -159,6 +159,10 @@ import { DreiFingerRegel, DREI_FINGER_REGEL_DURATION } from './videos/DreiFinger
 import { Elektromotor, ELEKTROMOTOR_DURATION } from './videos/Elektromotor';
 import { Kommutator, KOMMUTATOR_DURATION } from './videos/Kommutator';
 import { MotorOptimieren, MOTOR_OPTIMIEREN_DURATION } from './videos/MotorOptimieren';
+import { Induktion, INDUKTION_DURATION } from './videos/Induktion';
+import { Induktionsspannung, INDUKTIONSSPANNUNG_DURATION } from './videos/Induktionsspannung';
+import { LenzscheRegel, LENZSCHE_REGEL_DURATION } from './videos/LenzscheRegel';
+import { GeneratorJg10, GENERATOR_JG10_DURATION } from './videos/GeneratorJg10';
 import { Waermekraftwerk, WAERMEKRAFTWERK_DURATION } from './videos/Waermekraftwerk';
 import { FossileEnergie, FOSSILE_ENERGIE_DURATION } from './videos/FossileEnergie';
 import { RegenerativeEnergie, REGENERATIVE_ENERGIE_DURATION } from './videos/RegenerativeEnergie';
@@ -454,6 +458,10 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Elektromotor" component={Elektromotor} durationInFrames={ELEKTROMOTOR_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Kommutator" component={Kommutator} durationInFrames={KOMMUTATOR_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="MotorOptimieren" component={MotorOptimieren} durationInFrames={MOTOR_OPTIMIEREN_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Induktion" component={Induktion} durationInFrames={INDUKTION_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Induktionsspannung" component={Induktionsspannung} durationInFrames={INDUKTIONSSPANNUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="LenzscheRegel" component={LenzscheRegel} durationInFrames={LENZSCHE_REGEL_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="GeneratorJg10" component={GeneratorJg10} durationInFrames={GENERATOR_JG10_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Waermekraftwerk" component={Waermekraftwerk} durationInFrames={WAERMEKRAFTWERK_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="FossileEnergie" component={FossileEnergie} durationInFrames={FOSSILE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="RegenerativeEnergie" component={RegenerativeEnergie} durationInFrames={REGENERATIVE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />

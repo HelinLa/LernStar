@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Bisher haben wir aus Strom eine Bewegung gemacht. Jetzt drehen wir das Prinzip um. Kann ein bewegter Magnet Strom erzeugen – ganz ohne Batterie? Michael Faraday fand 1831 die Antwort." },
+  { "id": "beobachten", "text": "Eine Spule ist nur an ein Messgerät angeschlossen, sonst nichts. Schiebt man einen Magneten in die Spule hinein, schlägt der Zeiger aus – es fließt Strom. Es ist keine Batterie im Spiel. Allein die Bewegung des Magneten erzeugt eine Spannung. Das nennt man Induktion." },
+  { "id": "richtung", "text": "Die Richtung des Stroms hängt von der Bewegung ab. Schiebt man den Magneten hinein, schlägt der Zeiger zur einen Seite. Zieht man ihn wieder heraus, schlägt er zur anderen Seite. Die Stromrichtung kehrt sich also um." },
+  { "id": "aenderung", "text": "Und jetzt der wichtigste Punkt. Lässt man den Magneten einfach still in der Spule liegen, zeigt das Messgerät null – obwohl er mitten in der Spule steckt. Erst wenn man ihn wieder bewegt, schlägt der Zeiger aus. Nicht der Magnet an sich erzeugt den Strom, sondern die Änderung des Magnetfeldes." },
+  { "id": "merksatz", "text": "Merke: Ändert sich das Magnetfeld in einer Spule, wird eine Spannung induziert – auch ganz ohne Batterie. Je schneller die Änderung, desto größer die Spannung." },
+  { "id": "transfer", "text": "Dieses Prinzip steckt im Fahrraddynamo, im kabellosen Laden des Handys und vor allem im Generator. Tatsächlich entsteht fast unser gesamter Strom durch Induktion. Wie ein Generator das ausnutzt, sehen wir gleich." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

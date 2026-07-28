@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Steckdosen liefern rund um die Uhr Strom. Aber woher kommt er? In fast jedem Kraftwerk steht das gleiche Bauteil: der Generator. Wie erzeugt er ununterbrochen Strom?" },
+  { "id": "prinzip", "text": "Der Generator ist im Grunde ein umgekehrter Elektromotor. Beim Motor schickt man Strom hinein und bekommt eine Drehung heraus. Beim Generator dreht man die Spule im Magnetfeld – und heraus kommt Strom. Denn die drehende Spule ändert ständig das Feld, das durch sie hindurchgeht, und dadurch wird eine Spannung induziert." },
+  { "id": "wechsel", "text": "Schauen wir auf die Spannung. Während sich die Spule dreht, wächst die Spannung an, sinkt wieder, kehrt sich um und steigt in die andere Richtung. Bei jeder halben Umdrehung wechselt sie das Vorzeichen. Es entsteht eine Sinuskurve – eine Wechselspannung." },
+  { "id": "schleifringe", "text": "Wie greift man diesen Strom ab? Der Generator nutzt zwei durchgehende Schleifringe. Dadurch bleibt die Spannung eine echte Wechselspannung. Zum Vergleich: Ein geteilter Ring, der Kommutator des Motors, würde daraus pulsierenden Gleichstrom machen. Der Unterschied zwischen Motor und Generator steckt also vor allem im Abgriff." },
+  { "id": "einfluss", "text": "Wovon hängt die Spannung ab? Dreht man die Spule schneller, wird die Spannung größer und wechselt öfter pro Sekunde. Genau deshalb müssen Kraftwerke ihre Generatoren sehr genau auf Drehzahl halten – unser Stromnetz braucht konstant fünfzig Hertz." },
+  { "id": "merksatz", "text": "Merke: Im Generator dreht sich eine Spule im Magnetfeld. Dadurch wird laufend eine Wechselspannung induziert. Bewegungsenergie wird in elektrische Energie umgewandelt." },
+  { "id": "transfer", "text": "Ob im Kohlekraftwerk, im Windrad oder im Fahrraddynamo – überall dreht etwas eine Spule im Magnetfeld. Egal welche Energiequelle: Am Ende steht fast immer ein Generator." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

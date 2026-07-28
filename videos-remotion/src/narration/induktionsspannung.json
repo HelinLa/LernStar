@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Ein bewegter Magnet erzeugt in einer Spule eine Spannung. Aber wie groß ist diese Spannung? Drei Größen bestimmen, wie stark der Zeiger ausschlägt." },
+  { "id": "geschw", "text": "Erste Größe: die Geschwindigkeit. Bewegt man den Magneten langsam, schlägt der Zeiger nur wenig aus. Bewegt man ihn schnell, ändert sich das Feld rascher – und die induzierte Spannung wird deutlich größer." },
+  { "id": "windungen", "text": "Zweite Größe: die Windungszahl. Bei genau gleicher Bewegung erzeugt eine Spule mit wenigen Windungen nur eine kleine Spannung. Eine Spule mit vielen Windungen liefert eine viel größere Spannung." },
+  { "id": "staerke", "text": "Dritte Größe: die Stärke des Magneten. Ein schwacher Magnet induziert wenig Spannung. Ein starker Magnet mit dichterem Feld erzeugt bei derselben Bewegung eine höhere Spannung." },
+  { "id": "merksatz", "text": "Merke: Die induzierte Spannung ist umso größer, je schneller die Bewegung, je mehr Windungen die Spule hat und je stärker der Magnet ist." },
+  { "id": "transfer", "text": "Deshalb haben ein Fahrraddynamo und der Tonabnehmer einer E-Gitarre Spulen mit vielen Windungen und starke Magnete. Und ein Kraftwerksgenerator nutzt riesige Spulen, um hohe Spannungen zu erzeugen." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

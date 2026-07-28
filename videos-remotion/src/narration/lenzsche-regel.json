@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wer schon einmal einen Magneten schnell in eine Spule geschoben hat, merkt etwas Seltsames: Es geht schwerer als erwartet. Warum bremst der Magnet beim Bewegen?" },
+  { "id": "beobachten", "text": "Schiebt man den Magneten zur Spule, spürt man einen Widerstand, als würde etwas dagegenhalten. Und tatsächlich: Der induzierte Strom erzeugt an der nahen Seite der Spule einen gleichen Pol. Gleiche Pole stoßen sich ab – die Spule drückt den Magneten zurück." },
+  { "id": "gegenwirkung", "text": "Das ist die Lenzsche Regel. Nähert sich der Magnet, baut die Spule einen gleichen Pol auf und stößt ihn ab. Entfernt man den Magneten, bildet die Spule einen ungleichen Pol und zieht ihn zurück. Der induzierte Strom wirkt also immer der Änderung entgegen, die ihn erzeugt hat." },
+  { "id": "energie", "text": "Warum muss das so sein? Wegen der Energieerhaltung. Wenn du den Magneten gegen den Widerstand bewegst, leistest du Arbeit. Genau diese Arbeit wird in elektrische Energie umgewandelt. Gäbe es keinen Widerstand, bekäme man Strom aus dem Nichts – ein unmögliches Perpetuum mobile." },
+  { "id": "kupferrohr", "text": "Besonders eindrucksvoll zeigt sich das im Kupferrohr. Lässt man einen starken Magneten hineinfallen, rutscht er nicht durch, sondern schwebt langsam nach unten. Beim Fallen ändert sich das Feld ständig und erzeugt im Kupfer sogenannte Wirbelströme. Diese wirken der Bewegung entgegen und bremsen den Magneten wie eine berührungslose Bremse." },
+  { "id": "merksatz", "text": "Merke: Nach der Lenzschen Regel wirkt der induzierte Strom immer der Änderung entgegen, die ihn hervorruft. Das ist eine direkte Folge der Energieerhaltung." },
+  { "id": "transfer", "text": "Dieses Prinzip nutzt man in der Wirbelstrombremse von Zügen, im Induktionsherd, der Töpfe direkt erhitzt, und bei der Rekuperation im Elektroauto, wo das Bremsen den Akku wieder auflädt." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
