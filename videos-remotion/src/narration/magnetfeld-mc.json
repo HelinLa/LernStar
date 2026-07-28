@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Ein Magnet zieht Eisen an, ohne es zu berühren. Rund um ihn herum wirkt eine Kraft – wir nennen diesen Bereich das Magnetfeld. Aber wie sieht dieses Feld eigentlich aus? Sichtbar ist es ja nicht." },
+  { "id": "feldlinien", "text": "Streut man Eisenspäne um den Magneten, ordnen sie sich zu feinen Linien. Diese Linien nennen wir Feldlinien. Sie zeigen, wie das Magnetfeld verläuft: in weiten Bögen von einem Pol zum anderen." },
+  { "id": "richtung", "text": "Das Feld hat auch eine Richtung. Außerhalb des Magneten verlaufen die Feldlinien immer vom Nordpol zum Südpol. Deshalb zeichnen wir kleine Pfeile auf die Linien – sie zeigen von Nord nach Süd." },
+  { "id": "pruefkompass", "text": "Prüfen wir das mit einem kleinen Kompass. Wohin wir ihn auch halten – die Nadel stellt sich immer genau entlang der Feldlinie ein. So können wir an jeder Stelle die Richtung des Feldes ablesen." },
+  { "id": "staerke", "text": "Wie stark das Feld ist, verraten die Linien ebenfalls. Dicht an den Polen liegen sie eng beieinander – dort ist das Feld am stärksten. Weiter weg werden die Linien lockerer, und das Feld wird schwächer." },
+  { "id": "fehlvorstellung", "text": "Ein wichtiger Denkfehler: Feldlinien sind keine echten Fäden, und zwischen ihnen ist das Feld nicht etwa verschwunden. Halten wir den Kompass genau zwischen zwei Linien, schlägt die Nadel trotzdem aus. Das Feld ist überall rund um den Magneten – die Linien sind nur ein Bild dafür." },
+  { "id": "merksatz", "text": "Merken wir uns: Das Magnetfeld umgibt den ganzen Magneten. Feldlinien machen es sichtbar, verlaufen außen vom Nordpol zum Südpol und sind dort am dichtesten, wo das Feld am stärksten ist – an den Polen." },
+  { "id": "outro", "text": "Feldlinien zeigen Richtung und Stärke des unsichtbaren Magnetfeldes. Physik verstehen, Schritt für Schritt." }
+]

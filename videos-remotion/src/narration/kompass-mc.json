@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Ein Kompass zeigt zuverlässig nach Norden – seit Jahrhunderten hilft er beim Orientieren. Aber warum dreht sich die kleine Nadel eigentlich immer in dieselbe Richtung?" },
+  { "id": "nadel", "text": "Der Trick steckt in der Nadel selbst: Sie ist gar keine gewöhnliche Nadel, sondern ein winziger, frei drehbarer Stabmagnet. Ein Ende ist ihr Nordpol, hier rot, das andere ihr Südpol." },
+  { "id": "erdfeld", "text": "Und jetzt kommt das Entscheidende: Die ganze Erde ist ein riesiger Magnet und hat ein Magnetfeld. In diesem Feld dreht sich die Nadel so lange, bis ihr Nordpol nach Norden zeigt – genau wie sich zwei Magnete zueinander ausrichten." },
+  { "id": "anstoss", "text": "Stoßen wir die Nadel an. Schau: Sie pendelt hin und her und kommt von selbst wieder zur Ruhe – immer mit dem roten Ende nach Norden. Das Erdmagnetfeld zieht sie jedes Mal zurück." },
+  { "id": "magnetnah", "text": "Bringen wir aber einen richtigen Magneten in die Nähe, ist sein Feld viel stärker als das der Erde. Sofort dreht sich die Nadel weg vom Norden und richtet sich nach dem Magneten aus." },
+  { "id": "fehlvorstellung", "text": "Deshalb ein wichtiger Hinweis: Ein Kompass zeigt nicht überall verlässlich Norden. Liegt Eisen oder ein Magnet in der Nähe – etwa ein Handy oder ein Lautsprecher –, wird die Nadel abgelenkt und zeigt falsch. Für eine richtige Messung muss man solche Störer entfernen." },
+  { "id": "anwendung", "text": "Ohne Störung aber ist der Kompass verlässlich. Beim Wandern findet man mit ihm immer die Himmelsrichtung – Norden, Osten, Süden, Westen – und weiß so, wohin man gehen muss." },
+  { "id": "outro", "text": "Die Kompassnadel ist ein kleiner Magnet, der sich im Erdmagnetfeld nach Norden ausrichtet. Physik verstehen, Schritt für Schritt." }
+]

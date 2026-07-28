@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Hier liegen verschiedene Gegenstände: ein Eisennagel, eine Büroklammer, ein Kupferdraht, ein Stück Aluminium, dazu Holz, Plastik und Glas. Welche davon zieht ein Magnet an? Testen wir es." },
+  { "id": "eisen", "text": "Wir halten den Magneten an den Eisennagel. Schau: Der Nagel springt sofort an den Magneten und bleibt haften. Eisen wird also angezogen – es ist magnetisch." },
+  { "id": "fehlvorstellung", "text": "Jetzt der häufigste Denkfehler: Viele glauben, ein Magnet ziehe alle Metalle an. Wir probieren es mit Kupfer und Aluminium. Beides sind Metalle – aber schau: Nichts passiert. Sie bleiben einfach liegen." },
+  { "id": "sortieren", "text": "Sortieren wir alle Gegenstände. Nach links kommt, was der Magnet anzieht: Eisennagel und Büroklammer aus Stahl. Nach rechts kommt der Rest: Kupfer, Aluminium, Holz, Plastik und Glas – alles bleibt liegen." },
+  { "id": "nurdrei", "text": "Und was ist mit den angezogenen Stoffen gemeinsam? Magnetisch sind nur drei Metalle: Eisen, Nickel und Kobalt. Und Stahl, weil er hauptsächlich aus Eisen besteht. Alle anderen Stoffe sind es nicht." },
+  { "id": "regel", "text": "Die Regel lautet also: Ein Magnet zieht nicht jedes Metall an, sondern nur Eisen, Nickel und Kobalt. Kupfer und Aluminium sind zwar Metalle, aber nicht magnetisch." },
+  { "id": "anwendung", "text": "Das nutzt man auf dem Schrottplatz: Ein starker Magnet am Kran hebt allen Eisenschrott aus dem Müllberg heraus. Kupfer, Aluminium und Plastik bleiben liegen – so trennt man die Stoffe ganz einfach." },
+  { "id": "outro", "text": "Ein Magnet zieht nur Eisen, Nickel und Kobalt an – nicht jedes Metall. Physik verstehen, Schritt für Schritt." }
+]

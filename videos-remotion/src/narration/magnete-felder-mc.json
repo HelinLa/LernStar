@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Das hier ist ein Stabmagnet. Er sieht aus wie ein einfaches Metallstück – aber um ihn herum wirkt eine unsichtbare Kraft. Schauen wir uns an, was einen Magneten ausmacht." },
+  { "id": "pole", "text": "Jeder Magnet hat zwei Enden, die wir Pole nennen: einen Nordpol, hier rot, und einen Südpol, hier blau. Halten wir zwei Magnete zusammen, gilt: Gleiche Pole stoßen sich ab, ungleiche Pole ziehen sich an." },
+  { "id": "feld", "text": "Der Bereich um den Magneten heißt Magnetfeld. Wir können es nicht sehen – aber mit Eisenspänen wird es sichtbar. Die kleinen Späne ordnen sich zu Linien, den Feldlinien. Sie verlaufen außen vom Nordpol zum Südpol." },
+  { "id": "teilen", "text": "Ein häufiger Denkfehler: Man könnte einen Magneten in der Mitte durchbrechen und so einen einzelnen Pol bekommen. Das geht nicht. Zerbricht man einen Magneten, hat jedes Stück sofort wieder einen Nordpol und einen Südpol – zwei vollständige Magnete." },
+  { "id": "stoffe", "text": "Und noch ein Denkfehler: Ein Magnet ziehe jedes Metall an. Auch das stimmt nicht. Eisen wird angezogen, aber Kupfer und Aluminium bleiben liegen, obwohl sie Metalle sind. Magnetisch sind nur Eisen, Nickel und Kobalt." },
+  { "id": "erde", "text": "Das größte Magnetfeld hast du direkt unter den Füßen: Die Erde selbst ist ein riesiger Magnet. Deshalb richtet sich eine frei bewegliche Magnetnadel immer nach Norden aus – das ist das Geheimnis des Kompasses." },
+  { "id": "merksatz", "text": "Fassen wir zusammen: Jeder Magnet hat einen Nord- und einen Südpol. Gleiche Pole stoßen sich ab, ungleiche ziehen sich an. Um den Magneten liegt sein Magnetfeld, und magnetisch sind nur Eisen, Nickel und Kobalt." },
+  { "id": "outro", "text": "In den nächsten Videos schauen wir uns jeden dieser Punkte genau an. Physik verstehen, Schritt für Schritt." }
+]

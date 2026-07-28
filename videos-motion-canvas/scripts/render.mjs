@@ -93,7 +93,7 @@ try {
   page.on('pageerror', e => log('PAGEERROR:', e.message));
 
   const before = listMp4s();
-  await page.goto(url + '/', {waitUntil: 'networkidle2', timeout: 60000});
+  await page.goto(url + '/', {waitUntil: 'networkidle2', timeout: 180000});
   await sleep(3500); // Editor + erste Szene laden lassen
 
   // Render-Button (Text "Render", Klasse _main_) finden und klicken

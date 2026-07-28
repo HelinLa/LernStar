@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Ein Elektromagnet ist ein Magnet, den man ein- und ausschalten kann. Er besteht aus einer Spule – vielen Windungen Draht – meist um einen Eisenkern. Wie stark er ist, können wir sogar einstellen. Schauen wir, wie das geht." },
+  { "id": "stromfeld", "text": "Wir schließen den Schalter, sodass Strom durch die Spule fließt. Sofort entsteht rund um die Spule ein Magnetfeld – genau wie bei einem Stabmagneten. Der Elektromagnet zieht nun Büroklammern an und hält sie fest." },
+  { "id": "abschalten", "text": "Und jetzt der große Unterschied zum Dauermagneten – und ein häufiger Denkfehler: Ein Elektromagnet ist nicht immer magnetisch. Öffnen wir den Schalter, fließt kein Strom mehr. Das Magnetfeld verschwindet sofort, und alle Büroklammern fallen ab." },
+  { "id": "windungen", "text": "Wovon hängt die Stärke ab? Erstens von der Zahl der Windungen. Wickeln wir mehr Draht um den Kern, wird das Feld stärker – und der Elektromagnet trägt mehr Büroklammern." },
+  { "id": "strom", "text": "Zweitens von der Stromstärke. Drehen wir den Strom höher, wird der Elektromagnet ebenfalls stärker und hält noch mehr Klammern. Mehr Strom bedeutet mehr Kraft." },
+  { "id": "eisenkern", "text": "Und drittens der Eisenkern. Ohne Kern ist die Spule nur schwach magnetisch. Schieben wir einen Eisenkern hinein, verstärkt er das Feld enorm – die Tragkraft steigt sprunghaft an." },
+  { "id": "anwendung", "text": "Weil man ihn ein- und ausschalten kann, steckt der Elektromagnet überall: im Schrottplatz-Kran, der schwere Teile anhebt und wieder fallen lässt, in der Türklingel und im Lautsprecher." },
+  { "id": "outro", "text": "Ein Elektromagnet wirkt nur, wenn Strom fließt – und wird stärker mit mehr Windungen, mehr Strom und einem Eisenkern. Physik verstehen, Schritt für Schritt." }
+]
