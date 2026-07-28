@@ -4,9 +4,9 @@ import {COLORS, FONT} from '../theme';
 
 // "Sauberer" Composite-Clip: Wie entsteht ein Schatten? (Klasse 5 RS).
 // NUR Fachanimation (Strahlenfächer, Ball, Schirm, Schattenkegel), kein Titel/Untertitel –
-// das legt Remotion drüber. Segmentdauern framegenau an die Anna-Audios
-// (schatten-mc.timings.json → durOf) angepasst, damit der Clip über alle 8 Szenen
-// KONTINUIERLICH und synchron läuft.
+// das legt Remotion drüber. Segmentdauern framegenau an die Eva-Audios (Piper,
+// schatten-mc.timings.json → durOf; siehe scripts/print-durations.mjs), Clip läuft
+// über alle 8 Szenen KONTINUIERLICH und synchron.
 //
 // Didaktischer Kern: Licht läuft GERADLINIG. Ein undurchsichtiger Ball hält die Strahlen
 // auf → dahinter ein dunkler Kegel = Schatten (reaktiv aus den Tangenten an den Ball).
@@ -118,52 +118,52 @@ export default makeScene2D(function* (view) {
     </Node>,
   );
 
-  // ── 1 · intro (11.0667 s): Lampe + Schirm blenden ein ────────────────
+  // ── 1 · intro (DUR_s 13.2333): Lampe + Schirm blenden ein ────────────
   yield* all(objOp(1, 1.4), lampGlow(1, 1.4));
-  yield* waitFor(9.6667);
+  yield* waitFor(11.8333);
 
-  // ── 2 · strahlen (10.1 s): gerader Strahlenfächer zum Schirm ─────────
+  // ── 2 · strahlen (DUR_s 10.3333): gerader Strahlenfächer zum Schirm ──
   yield* rayOp(1, 0.5);
   yield* rayGrow(1, 1.3);
-  yield* waitFor(8.3);
+  yield* waitFor(8.5333);
 
-  // ── 3 · schatten (11.4 s): Ball in den Weg → Kegel + Label ───────────
+  // ── 3 · schatten (DUR_s 12.8667): Ball in den Weg → Kegel + Label ────
   yield* ballOp(1, 0.8);
   yield* waitFor(0.4);
   yield* shadowOp(1, 1.0);
   yield* labelOp(1, 0.6);
-  yield* waitFor(8.6);
+  yield* waitFor(10.0667);
 
-  // ── 4 · fehlvorstellung (14.7333 s): Licht AUS → Schatten weg → AN ───
+  // ── 4 · fehlvorstellung (DUR_s 16.1333): Licht AUS → Schatten weg → AN
   yield* waitFor(3.5);
   yield* all(lightOn(0, 0.9), lampGlow(0.12, 0.9), labelOp(0, 0.6)); // Licht AUS – Schatten verschwindet
   yield* waitFor(3.2);
   yield* all(lightOn(1, 0.9), lampGlow(1, 0.9), labelOp(1, 0.6));    // Licht AN
-  yield* waitFor(6.2333);
+  yield* waitFor(7.6333);
 
-  // ── 5 · geradlinig (10.7333 s): gekrümmter Strahl → rotes ✗ ──────────
+  // ── 5 · geradlinig (DUR_s 12.8): gekrümmter Strahl → rotes ✗ ─────────
   yield* bendOp(1, 0.8);
   yield* waitFor(3.0);
   yield* bendOp(0, 0.8);
-  yield* waitFor(6.1333);
+  yield* waitFor(8.2);
 
-  // ── 6 · bewegen (12.1333 s): Lampe wandert → Kegel schwenkt gegenüber ─
+  // ── 6 · bewegen (DUR_s 13.6667): Lampe wandert → Kegel schwenkt gegenüber
   yield* lampY(-320, 2.2);  // Lampe hoch → Schatten runter
   yield* waitFor(2.0);
   yield* lampY(140, 2.2);   // Lampe runter → Schatten hoch
   yield* waitFor(2.0);
   yield* lampY(-20, 1.4);   // zurück zur Mitte
-  yield* waitFor(2.3333);
+  yield* waitFor(3.8667);
 
-  // ── 7 · merksatz (12.0 s): ruhiges Standbild, kurzer Label-Blink ─────
+  // ── 7 · merksatz (DUR_s 12.7333): ruhiges Standbild, kurzer Label-Blink
   yield* waitFor(2.0);
   yield* labelOp(0.4, 0.5);
   yield* labelOp(1, 0.5);
-  yield* waitFor(9.0);
+  yield* waitFor(9.7333);
 
-  // ── 8 · outro (5.4333 s) ─────────────────────────────────────────────
+  // ── 8 · outro (DUR_s 7.2667) ─────────────────────────────────────────
   yield* all(rayGrow(1, 0.6), lampGlow(1, 0.6));
   yield* logoOp(1, 0.8);
-  yield* waitFor(3.7333);
+  yield* waitFor(5.5667);
   yield* waitFor(0.3);
 });
