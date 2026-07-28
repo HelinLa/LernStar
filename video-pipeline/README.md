@@ -20,11 +20,15 @@ Zentrale, **modulare** Pipeline für alle Mathe- & Physik-Lernvideos. Jedes Werk
 | **Remotion** | Compositing, Schnitt, Übergänge, Titel, Untertitel, Sprecher, Endrender, Animation bestehender Elemente | `videos-remotion/` | `remotion render <Id> out/x.mp4` | ✅ produktiv (150+ Videos) |
 | **Motion Canvas** | Physik-2D: Versuche, Kräfte, Strahlen, Schaltungen, Messgeräte, Bewegungen, technische Visualisierung | `videos-motion-canvas/` | `npm run render [ziel]` (headless) | ✅ installiert + getestet |
 | **Manim** | Mathe: Funktionen, Koordinatensysteme, Vektoren, Geometrie, Diagramme, Herleitungen | `videos-manim/` | `./render.sh <datei> <Klasse> [ziel]` | ✅ installiert + getestet |
-| **ElevenLabs** | hochwertige Sprecherstimme, SFX, Audio | `videos-remotion/scripts/*eleven*` | `npm run audio:eleven` | ⚠️ Scripts fertig, **braucht API-Key** |
+| **Piper TTS** | Standard-Sprecherstimme (weiblich „Eva"), kostenlos/offline/neuronal | `videos-remotion/scripts/gen-audio-piper.mjs` | `node scripts/gen-audio-piper.mjs [base]` | ✅ installiert + Standard (seit 28.07.) |
+| **ElevenLabs** | optionale Studio-Sprecherstimme, SFX | `videos-remotion/scripts/*eleven*` | `npm run audio:eleven` | ⚠️ Scripts fertig, **kostenpflichtig + API-Key** |
 | **Blender** | nur hochwertige 3D: Sonnensystem, Planeten, E-Motor, Generator, Moleküle, Magnetfelder | – | `blender -b -P script.py` | ⛔ noch nicht installiert (Plan unten) |
 
-Standard-Sprecher bleibt bis zum ElevenLabs-Key **macOS `say -v Anna`** (weiblich, offline) –
-klare User-Präferenz.
+**Standard-Sprecher: Piper TTS, Stimme „Eva"** (`de_DE-eva_k`, weiblich, neuronal, kostenlos,
+offline, ohne Limit) – seit 28.07.2026. Erzeugen: `node scripts/gen-audio-piper.mjs <base>`
+(gleiche Dateipfade/Timings wie die alte say-Pipeline → Composites unverändert).
+Installation: eigenständiges venv unter `~/.local/piper` (piper-tts 1.6.0 pip-Wheel + Modelle
+Kerstin/Eva). Fallback bleibt `say -v Anna`; Studio-Upgrade wäre ElevenLabs (kostenpflichtig).
 
 ## Automatische Werkzeugwahl (Router)
 
@@ -36,7 +40,7 @@ Vor jedem neuen Video: Inhalt analysieren → Werkzeug wählen:
 | **Physik 2D** (Versuch, Kräfte, Optik-Strahlen, Schaltung, Messgerät, Bewegung) | **Motion Canvas** (Visual) + Remotion |
 | **Physik 3D** (Raum, Planeten, Motor/Generator, Feldlinien im Raum, Moleküle) | **Blender** (3D-Clip) + Remotion |
 | **Erklärvideo** (Text, Icons, Karten, Ablauf) | **Remotion** allein |
-| **Sprecher** (immer) | ElevenLabs (falls Key) → sonst `say -v Anna` |
+| **Sprecher** (immer) | **Piper „Eva"** (Standard) → Fallback `say -v Anna` → optional ElevenLabs |
 
 Nie ein zusätzliches Werkzeug ohne fachlichen Mehrwert. Bei Erklärvideos mit Emoji/Karten
 bleibt Remotion allein das Richtige (schnell, bewährt).
@@ -65,7 +69,7 @@ Single Source of Truth: **`design-tokens.json`**. Alle Werkzeuge spiegeln diesel
 - **Aufbau:** Kicker oben links → Titel → Inhalt → Merksatz/Caption unten. Szenenfolge
   Intro→Beobachten→…→Merksatz→Transfer→Outro.
 - **Übergänge/SFX:** whoosh (Szenenwechsel), pling (Merksatz/Formel), pop (Karten/Pfeile).
-- **Sprecher:** weibliche Anna-Stimme (bzw. ElevenLabs, eine feste Stimme), gleiches Tempo.
+- **Sprecher:** weibliche Piper-Stimme „Eva" (fest), gleiches Tempo; Fallback Anna.
 - **Kamera:** statische Vollbild-Einstellung; Kamerafahrten nur didaktisch begründet (Remotion).
 
 Design-Änderung? Zuerst `design-tokens.json`, dann in die drei theme-Dateien übernehmen.

@@ -79,9 +79,10 @@
   },
   "audio": {
     "voice": {
-      "primary": "macOS say -v Anna (weiblich, deutsch, offline)",
-      "upgrade": "ElevenLabs (eleven_multilingual_v2) – gleiche Dateipfade, nur Qualität besser; braucht API-Key",
-      "preference": "IMMER weibliche Anna-Stimme (User-Wunsch), keine männliche"
+      "primary": "Piper TTS – Stimme Eva (de_DE-eva_k), weiblich, neuronal, kostenlos/offline. Script: videos-remotion/scripts/gen-audio-piper.mjs. Binär: ~/.local/piper/venv/bin/piper, Modelle: ~/.local/piper/voices/",
+      "fallback": "macOS say -v Anna (weiblich, offline) – nur falls Piper nicht verfügbar; Script gen-audio.mjs",
+      "upgrade": "ElevenLabs (eleven_multilingual_v2) – gleiche Dateipfade, Studioqualität; kostenpflichtig, braucht API-Key",
+      "preference": "IMMER weibliche Stimme (User-Wunsch), keine männliche. Standard seit 2026-07-28: Piper Eva."
     },
     "sfx": ["whoosh", "pling", "pop", "impact"],
     "music": "optional, dezent im Hintergrund"
