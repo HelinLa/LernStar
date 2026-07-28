@@ -181,6 +181,9 @@ import { Betastrahlung, BETASTRAHLUNG_DURATION } from './videos/Betastrahlung';
 import { Gammastrahlung, GAMMASTRAHLUNG_DURATION } from './videos/Gammastrahlung';
 import { Abschirmung, ABSCHIRMUNG_DURATION } from './videos/Abschirmung';
 import { AblenkungFeld, ABLENKUNG_FELD_DURATION } from './videos/AblenkungFeld';
+import { Zerfallsgleichung, ZERFALLSGLEICHUNG_DURATION } from './videos/Zerfallsgleichung';
+import { Halbwertszeit, HALBWERTSZEIT_DURATION } from './videos/Halbwertszeit';
+import { C14Methode, C14_METHODE_DURATION } from './videos/C14Methode';
 import { Waermekraftwerk, WAERMEKRAFTWERK_DURATION } from './videos/Waermekraftwerk';
 import { FossileEnergie, FOSSILE_ENERGIE_DURATION } from './videos/FossileEnergie';
 import { RegenerativeEnergie, REGENERATIVE_ENERGIE_DURATION } from './videos/RegenerativeEnergie';
@@ -498,6 +501,9 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Gammastrahlung" component={Gammastrahlung} durationInFrames={GAMMASTRAHLUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Abschirmung" component={Abschirmung} durationInFrames={ABSCHIRMUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="AblenkungFeld" component={AblenkungFeld} durationInFrames={ABLENKUNG_FELD_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Zerfallsgleichung" component={Zerfallsgleichung} durationInFrames={ZERFALLSGLEICHUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Halbwertszeit" component={Halbwertszeit} durationInFrames={HALBWERTSZEIT_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="C14Methode" component={C14Methode} durationInFrames={C14_METHODE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Waermekraftwerk" component={Waermekraftwerk} durationInFrames={WAERMEKRAFTWERK_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="FossileEnergie" component={FossileEnergie} durationInFrames={FOSSILE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="RegenerativeEnergie" component={RegenerativeEnergie} durationInFrames={REGENERATIVE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />

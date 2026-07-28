@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wenn ein Kern zerfällt und ein Teilchen abstößt, verschwindet er nicht einfach. Er wird zu einem neuen Kern. Wie schreibt man auf, was dabei genau passiert?" },
+  { "id": "regel", "text": "Dafür gibt es eine einfache Buchhaltungsregel. In der Schreibweise steht oben die Massenzahl und unten die Ordnungszahl. Und es gilt: Die Summe der Massenzahlen muss links und rechts vom Pfeil gleich sein. Genauso die Summe der Ordnungszahlen. Nichts geht verloren, alles wird nur umverteilt." },
+  { "id": "alpha", "text": "Nehmen wir den Alphazerfall von Radium-226. Es zerfällt zu Radon-222 und einem Heliumkern. Prüfen wir die Buchhaltung: Oben ist 226 gleich 222 plus 4. Und unten ist 88 gleich 86 plus 2. Beides stimmt. Deshalb sinkt die Ordnungszahl um zwei und die Massenzahl um vier." },
+  { "id": "beta", "text": "Und der Betazerfall von Kohlenstoff-14. Er zerfällt zu Stickstoff-14 und einem Elektron. Oben ist 14 gleich 14 plus 0, denn das Elektron hat fast keine Masse. Unten ist 6 gleich 7 plus minus eins. Das Elektron trägt die Ladung minus eins, deshalb geht die Rechnung auf. Die Ordnungszahl steigt um eins." },
+  { "id": "reihe", "text": "Oft ist der neue Kern selbst noch instabil. Dann zerfällt er weiter, und wieder, und wieder. So entsteht eine ganze Zerfallsreihe. Uran-238 zum Beispiel durchläuft viele Schritte mit Alpha- und Betazerfällen, bis am Ende ein stabiler Kern übrig bleibt: Blei-206. Dort endet die Reihe, denn Blei-206 zerfällt nicht mehr." },
+  { "id": "merksatz", "text": "Merke: Beim Zerfall wird aus einem Kern ein neues Element. Massenzahl und Ordnungszahl bleiben in der Summe erhalten. Häufig folgt eine ganze Zerfallsreihe, bis ein stabiler Kern entsteht." },
+  { "id": "transfer", "text": "Die berühmteste natürliche Zerfallsreihe führt von Uran über viele Zwischenstufen, darunter das Gas Radon, bis zum Blei. Aus dem Verhältnis von Uran zu Blei in einem Gestein kann man sogar dessen Alter bestimmen. Wie schnell so ein Zerfall abläuft, verrät die Halbwertszeit." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

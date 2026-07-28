@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wie kann man wissen, dass die Gletschermumie Ötzi über fünftausend Jahre alt ist? Radioaktivität liefert die Antwort – mit der berühmten C-14-Methode." },
+  { "id": "lebend", "text": "In der Luft gibt es neben normalem Kohlenstoff auch etwas radioaktives C-14. Jede Pflanze nimmt es beim Wachsen auf, jedes Tier über die Nahrung. Solange ein Lebewesen lebt, wird das zerfallende C-14 ständig durch frisches ersetzt. Der Anteil im Körper bleibt darum konstant." },
+  { "id": "tod", "text": "Mit dem Tod ändert sich das schlagartig. Es wird kein neues C-14 mehr aufgenommen. Das vorhandene aber zerfällt unaufhaltsam weiter, mit einer Halbwertszeit von 5730 Jahren. Der C-14-Anteil im toten Gewebe sinkt also mit der Zeit immer weiter ab." },
+  { "id": "messen", "text": "Und das kann man messen. Man vergleicht, wie viel C-14 noch übrig ist, mit dem Wert eines lebenden Organismus. Sind noch fünfzig Prozent da, ist genau eine Halbwertszeit vergangen, also rund 5730 Jahre. Bei fünfundzwanzig Prozent sind es zwei Halbwertszeiten. So rechnet man aus dem Rest das Alter aus." },
+  { "id": "beispiel", "text": "Bei Ötzi war noch etwa die Hälfte des ursprünglichen C-14 vorhanden. Das bedeutet: ungefähr eine Halbwertszeit ist vergangen. Daraus ergibt sich, dass er vor rund fünftausenddreihundert Jahren gelebt hat." },
+  { "id": "merksatz", "text": "Merke: Lebewesen nehmen ständig C-14 auf, solange sie leben. Nach dem Tod zerfällt es ohne Nachschub. Aus dem verbliebenen Anteil und der Halbwertszeit von 5730 Jahren berechnet man das Alter." },
+  { "id": "transfer", "text": "Die C-14-Methode datiert Funde bis etwa fünfzigtausend Jahre. Archäologen bestimmen damit das Alter von Knochen und Werkzeugen, man entlarvt gefälschte Gemälde, und die Klimaforschung untersucht alte Hölzer. Für noch ältere Funde oder Gestein nutzt man Isotope mit sehr viel längerer Halbwertszeit." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
