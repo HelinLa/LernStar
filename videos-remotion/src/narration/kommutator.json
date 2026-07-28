@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Die Spule im Motor dreht sich – aber an der senkrechten Stelle bleibt sie stecken. Wie schafft man es, dass sich der Motor immer weiter dreht?" },
+  { "id": "problem", "text": "Schauen wir auf das Problem. Bliebe die Stromrichtung immer gleich, würden die Kräfte die Spule nach der Senkrechten wieder zurückdrücken. Die Spule käme nie herum – sie würde nur hin und her pendeln." },
+  { "id": "kommutator", "text": "Die Lösung ist ein geteilter Ring am Ende der Spule, der Kommutator oder Polwender. Zwei feste Schleifkontakte, die Bürsten, liefern den Strom von der Batterie. Der Ring dreht sich mit der Spule. Bei jeder halben Umdrehung wechseln die beiden Ringhälften die Bürsten – und dadurch kehrt sich der Strom in der Spule um." },
+  { "id": "loesung", "text": "Und jetzt geschieht das Entscheidende: Genau wenn die Spule an der Senkrechten vorbeikommt, klappt der Strom um. Die Kraft treibt die Spule dadurch immer in dieselbe Drehrichtung weiter. Aus dem Wackeln ist eine gleichmäßige Drehung geworden – der Motor läuft rund." },
+  { "id": "merksatz", "text": "Merke: Der Kommutator ist ein geteilter Ring, der die Stromrichtung bei jeder halben Umdrehung umkehrt. So treibt die Kraft die Spule immer weiter, und der Motor dreht sich gleichmäßig." },
+  { "id": "transfer", "text": "Diesen Aufbau nennt man Gleichstrommotor. Er steckt im Akkuschrauber, in der Modelleisenbahn und im einfachen Spielzeugmotor. Ohne den Kommutator gäbe es keine runde Drehung." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

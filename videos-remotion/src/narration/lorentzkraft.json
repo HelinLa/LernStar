@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Legt man einen Draht zwischen die Pole eines Magneten und schaltet Strom ein, geschieht etwas Erstaunliches: Der Draht bewegt sich von selbst. Woher kommt diese Kraft?" },
+  { "id": "beobachten", "text": "Der Draht liegt ruhig im Magnetfeld. Sobald der Strom fließt, springt er zur Seite – hier nach oben aus dem Feld heraus. Eine Kraft schiebt ihn. Man nennt sie die Kraft auf den stromdurchflossenen Leiter, oder Lorentzkraft." },
+  { "id": "ursache", "text": "Warum entsteht diese Kraft? Der Strom erzeugt ein eigenes ringförmiges Feld um den Draht. Dieses überlagert sich mit dem Magnetfeld. Auf einer Seite verstärken sich beide Felder, dort liegen die Linien dicht. Auf der anderen Seite schwächen sie sich. Wie bei einem gespannten Katapult wird der Draht von der starken zur schwachen Seite gedrückt." },
+  { "id": "richtung", "text": "Die Kraftrichtung lässt sich umkehren. Dreht man die Stromrichtung um, kippt die Kraft in die Gegenrichtung – der Draht wird nun nach unten geschoben. Dasselbe passiert, wenn man Nordpol und Südpol vertauscht. Strom, Feld und Kraft hängen fest zusammen." },
+  { "id": "bedingung", "text": "Eine wichtige Bedingung: Der Draht muss das Feld kreuzen. Läuft der Strom parallel zu den Feldlinien, wirkt keine Kraft. Die Kraft steht nämlich immer senkrecht auf Strom und Feld zugleich." },
+  { "id": "merksatz", "text": "Merke: Auf einen stromdurchflossenen Draht im Magnetfeld wirkt eine Kraft. Sie steht senkrecht auf Strom und Feld. Kehrt man den Strom oder die Pole um, kehrt sich die Kraft um." },
+  { "id": "transfer", "text": "Diese Kraft steckt in vielen Geräten. Im Elektromotor wird aus ihr eine Drehbewegung, im Lautsprecher bewegt sie die Membran, und in manchen Messgeräten lenkt sie einen Zeiger aus. Als Nächstes bauen wir daraus einen Motor." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

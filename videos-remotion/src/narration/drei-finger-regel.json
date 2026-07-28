@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Wir wissen: Auf einen Draht im Magnetfeld wirkt eine Kraft. Aber in welche Richtung genau? Dafür gibt es eine einfache Handregel." },
+  { "id": "regel", "text": "Nimm die rechte Hand und spreize Daumen, Zeigefinger und Mittelfinger rechtwinklig ab. Jeder Finger steht für eine Richtung: Der Daumen zeigt in Richtung des Stroms. Der Zeigefinger zeigt in Richtung des Magnetfeldes, also von Nord nach Süd. Und der Mittelfinger zeigt dann die Richtung der Kraft." },
+  { "id": "uvw", "text": "Damit man die Reihenfolge nicht verwechselt, hilft die Eselsbrücke U-V-W. U steht für Ursache, das ist der Strom am Daumen. V steht für Vermittlung, das ist das Magnetfeld am Zeigefinger. W steht für Wirkung, das ist die Kraft am Mittelfinger." },
+  { "id": "anwenden", "text": "So wendet man die Regel an: Der Strom zeigt nach rechts, also legt man den Daumen nach rechts. Das Feld zeigt nach oben, also den Zeigefinger nach oben. Ganz von selbst steht der Mittelfinger jetzt in Kraftrichtung. So findet man in jedem Aufbau die Kraft." },
+  { "id": "umkehren", "text": "Ein kurzer Gegencheck: Kehrt sich der Strom um, muss sich auch der Daumen umdrehen. Dadurch zeigt der Mittelfinger in die Gegenrichtung – die Kraft wirkt genau andersherum. Genau das haben wir vorhin schon beobachtet." },
+  { "id": "merksatz", "text": "Merke: Mit der rechten Hand gilt: Daumen ist der Strom, Zeigefinger das Feld, Mittelfinger die Kraft. Kurz gesagt U-V-W: Ursache, Vermittlung, Wirkung." },
+  { "id": "transfer", "text": "Mit dieser Regel bestimmst du die Drehrichtung eines Motors, die Bewegung einer Lautsprechermembran oder die Richtung, in die eine Leiterschaukel ausschlägt. Zwei Größen einstellen, die dritte ablesen." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

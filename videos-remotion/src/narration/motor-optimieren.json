@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Ein kleiner Spielzeugmotor und der kräftige Antrieb eines Elektroautos arbeiten nach demselben Prinzip. Was macht einen Motor stärker und schneller? Es gibt vier Stellschrauben." },
+  { "id": "strom", "text": "Erste Stellschraube: die Stromstärke. Je mehr Strom durch die Spule fließt, desto größer sind die Kräfte auf sie. Der Motor dreht schneller und kräftiger. Alles andere lassen wir dabei gleich." },
+  { "id": "windungen", "text": "Zweite Stellschraube: die Windungszahl. Wickelt man mehr Windungen zur Spule, wirkt die Kraft auf jede einzelne – und alle addieren sich. Mehr Windungen bedeuten mehr Drehmoment." },
+  { "id": "feld", "text": "Dritte Stellschraube: das Magnetfeld. Nimmt man einen stärkeren Magneten, wird das Feld dichter. Dadurch werden die Kräfte auf die Spule größer, und der Motor läuft kräftiger." },
+  { "id": "anker", "text": "Vierte Stellschraube: der Aufbau der Spule. Ein Eisenkern im Inneren, der Anker, bündelt das Feld und verstärkt die Kräfte. Und mehrere versetzt angeordnete Spulen sorgen dafür, dass der Motor ohne Totpunkt gleichmäßig und kräftig läuft." },
+  { "id": "merksatz", "text": "Merke: Ein Motor wird stärker durch mehr Stromstärke, mehr Windungen, ein stärkeres Magnetfeld und einen Eisenkern. Meist kombiniert man mehrere dieser Faktoren." },
+  { "id": "transfer", "text": "So entsteht vom Spielzeug bis zum Elektroauto die passende Leistung. Ein Zug braucht sehr große Kräfte, ein Aufzug viel Drehmoment. Ingenieure wählen die Faktoren je nach Aufgabe." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

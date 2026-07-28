@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Ein Draht im Magnetfeld wird zur Seite geschoben. Aber wie wird aus dieser geradlinigen Kraft eine Drehbewegung, die einen Motor antreibt?" },
+  { "id": "aufbau", "text": "Der Trick ist eine drehbare Spule. Sie liegt zwischen den Polen eines Magneten, im Feld von Nord nach Süd, und wird vom Strom durchflossen. Die Spule kann sich um ihre Achse drehen." },
+  { "id": "kraefte", "text": "Jetzt kommt der entscheidende Gedanke. In den beiden Seiten der Spule fließt der Strom in entgegengesetzte Richtung. Deshalb wirkt die Lorentzkraft auf die eine Seite nach oben und auf die andere nach unten. Zwei gleich große Kräfte in Gegenrichtung – das ergibt ein Drehmoment, ein Kräftepaar, das die Spule dreht." },
+  { "id": "drehung", "text": "Und genau das passiert: Das Kräftepaar dreht die Spule um ihre Achse. Aus der Kraft auf den Leiter ist eine Drehbewegung geworden. Der Motor läuft." },
+  { "id": "totpunkt", "text": "Doch es gibt ein Problem. Steht die Spule genau senkrecht, ziehen die Kräfte nur noch am Bügel entlang und drehen nicht mehr weiter. An dieser Stelle bliebe der Motor hängen. Wie man das löst, zeigt der nächste Schritt: der Kommutator." },
+  { "id": "merksatz", "text": "Merke: Im Elektromotor wirken auf die beiden Seiten der Spule entgegengesetzte Kräfte. Dieses Drehmoment dreht die Spule im Magnetfeld. Elektrische Energie wird in Bewegungsenergie umgewandelt." },
+  { "id": "transfer", "text": "Elektromotoren stecken im Elektroauto, im Ventilator, in der Bohrmaschine und in unzähligen weiteren Geräten. Alle wandeln elektrische Energie in Drehbewegung um." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
