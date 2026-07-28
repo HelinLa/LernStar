@@ -6,7 +6,7 @@ import {COLORS, FONT} from '../theme';
 // NUR Fachanimation (Kompass mit drehbarer Magnetnadel, Erdmagnetfeld-Pfeile,
 // Anstoßen/Zurückpendeln, Störung durch nahen Magneten/Handy). Titel via Remotion.
 // Kern: Nadel = kleiner Magnet, richtet sich im Erdfeld nach Norden; Eisen/Magnet stört.
-// durOf (TAIL=20): intro 306 · nadel 377 · erdfeld 433 · anstoss 335 · magnetnah 332 · fehlv. 503 · anwendung 335 · outro 268.
+// durOf an kompass-mc.timings.json (Eva/Piper), TAIL=20; siehe scripts/print-durations.mjs.
 export default makeScene2D(function* (view) {
   view.fill(COLORS.bg0);
   const ink = COLORS.ink;
@@ -93,52 +93,52 @@ export default makeScene2D(function* (view) {
     </Node>,
   );
 
-  // ── 1 · intro (10.2 s) ───────────────────────────────────────────────
+  // ── 1 · intro (DUR_s 12.2333) ────────────────────────────────────────
   yield* compassOp(1, 1.2);
-  yield* waitFor(9.0);
+  yield* waitFor(11.0333);
 
-  // ── 2 · nadel (12.5667 s): die Nadel ist ein kleiner Magnet ──────────
+  // ── 2 · nadel (DUR_s 12.9): die Nadel ist ein kleiner Magnet ─────────
   yield* needleScale(1.28, 0.8);
   yield* all(needleHiOp(1, 0.6), needleScale(1, 0.8));
-  yield* waitFor(10.9667);
+  yield* waitFor(11.3);
 
-  // ── 3 · erdfeld (14.4333 s): richtet sich im Erdfeld nach Norden ─────
+  // ── 3 · erdfeld (DUR_s 14.5667): richtet sich im Erdfeld nach Norden ─
   yield* needleRot(36, 0.7);
   yield* fieldOp(1, 1.1);
   yield* needleRot(0, 1.5);
-  yield* waitFor(11.1333);
+  yield* waitFor(11.2667);
 
-  // ── 4 · anstoss (11.1667 s): anstoßen → pendelt zurück nach Norden ──
+  // ── 4 · anstoss (DUR_s 11.4667): anstoßen → pendelt zurück nach Norden
   yield* needleRot(72, 0.4);
   yield* needleRot(-42, 0.7);
   yield* needleRot(26, 0.6);
   yield* needleRot(-15, 0.5);
   yield* needleRot(0, 0.5);
-  yield* waitFor(8.4667);
+  yield* waitFor(8.7667);
 
-  // ── 5 · magnetnah (11.0667 s): starker Magnet zieht Nadel weg ───────
+  // ── 5 · magnetnah (DUR_s 12.1): starker Magnet zieht Nadel weg ──────
   yield* magOp2(1, 0.5);
   yield* all(magX2(340, 1.4), needleRot(90, 1.4));
   yield* waitFor(1.6);
   yield* all(magY2(-150, 1.2), needleRot(66, 1.2));
-  yield* waitFor(4.7667);
+  yield* waitFor(7.4);
 
-  // ── 6 · fehlvorstellung (16.7667 s): Eisen/Handy stört → falsch ─────
+  // ── 6 · fehlvorstellung (DUR_s 18.6333): Eisen/Handy stört → falsch ─
   yield* all(magOp2(0, 0.5), magX2(700, 0.8), magY2(0, 0.4), needleRot(0, 1.0));
   yield* waitFor(1.0);
   yield* all(phoneOp(1, 0.5), phoneX(-300, 1.2), needleRot(-36, 1.2));
   yield* refNorthOp(1, 0.5);
   yield* waitFor(2.6);
   yield* all(phoneOp(0, 0.6), phoneX(-560, 1.0), needleRot(0, 1.2), refNorthOp(0, 0.6));
-  yield* waitFor(9.0667);
+  yield* waitFor(11.1333);
 
-  // ── 7 · anwendung (11.1667 s): Himmelsrichtungen → Ziel finden ──────
+  // ── 7 · anwendung (DUR_s 12.2333): Himmelsrichtungen → Ziel finden ──
   yield* goalOp(1, 0.6);
   yield* routeArrOp(1, 0.6);
-  yield* waitFor(9.9667);
+  yield* waitFor(11.0333);
 
-  // ── 8 · outro (8.9333 s) ─────────────────────────────────────────────
+  // ── 8 · outro (DUR_s 8.2667) ─────────────────────────────────────────
   yield* all(compassOp(0, 0.5), goalOp(0, 0.5), routeArrOp(0, 0.5), fieldOp(0, 0.5));
   yield* logoOp(1, 0.8);
-  yield* waitFor(7.6333);
+  yield* waitFor(6.9667);
 });
