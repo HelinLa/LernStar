@@ -6,7 +6,8 @@ import {COLORS, FONT} from '../theme';
 // NUR Fachanimation (Spule um Eisenkern, Stromkreis mit Schalter + fließendem Strom,
 // Feldlinien an/aus, Büroklammer-Kette = Tragkraft, Windungen/Strom/Kern verändern die Stärke).
 // Kern-Fehlvorstellung: Elektromagnet ist NICHT immer magnetisch – nur mit Strom.
-// durOf (TAIL=20): intro 451 · stromfeld 407 · abschalten 466 · windungen 314 · strom 308 · eisenkern 337 · anwendung 348 · outro 299.
+// durOf an elektromagnet-mc.timings.json (Eva/Piper), TAIL=20; siehe scripts/print-durations.mjs.
+// Achtung: „Füller" sind hier teils flow()-Tweens (Elektronenfluss), nicht waitFor.
 export default makeScene2D(function* (view) {
   view.fill(COLORS.bg0);
   const ink = COLORS.ink;
@@ -113,47 +114,47 @@ export default makeScene2D(function* (view) {
     <Txt position={[0, 250]} text="★ LernStar" fill={COLORS.indigo} fontFamily={FONT} fontSize={44} fontWeight={900} opacity={() => logoOp()} letterSpacing={3} />,
   );
 
-  // ── 1 · intro (15.0333 s): Aufbau, Schalter offen, kein Feld ─────────
+  // ── 1 · intro (DUR_s 16.6333): Aufbau, Schalter offen, kein Feld ─────
   yield* apparatusOp(1, 1.3);
-  yield* waitFor(13.7333);
+  yield* waitFor(15.3333);
 
-  // ── 2 · stromfeld (13.5667 s): Schalter zu → Strom → Feld → Klammern ─
+  // ── 2 · stromfeld (DUR_s 13.8667): Schalter zu → Strom → Feld → Klammern
   yield* all(switchAngle(0, 0.6), onOp(1, 0.6));
   yield* all(fieldOp(1, 1.0), lift(6, 1.4), flow(30, 1.4, linear));
-  yield* flow(330, 11.5667, linear);
+  yield* flow(330, 11.8667, linear);
 
-  // ── 3 · abschalten (15.5333 s): Schalter auf → Feld weg → fallen ────
+  // ── 3 · abschalten (DUR_s 17.2667): Schalter auf → Feld weg → fallen ─
   yield* all(switchAngle(-34, 0.6), onOp(0, 0.5));
   yield* all(fieldOp(0, 0.7), lift(0, 0.9));
-  yield* waitFor(14.0333);
+  yield* waitFor(15.7667);
 
-  // ── 4 · windungen (10.4667 s): mehr Windungen → mehr Klammern ───────
+  // ── 4 · windungen (DUR_s 11.6667): mehr Windungen → mehr Klammern ───
   yield* all(switchAngle(0, 0.5), onOp(1, 0.5));
   yield* all(fieldOp(1, 0.6), lift(4, 0.8), flow(flow() + 30, 0.8, linear));
   yield* all(windExtraOp(1, 0.8), wind(11, 0.8), lift(7, 0.8));
-  yield* flow(flow() + 260, 8.3667, linear);
+  yield* flow(flow() + 260, 9.5667, linear);
 
-  // ── 5 · strom (10.2667 s): mehr Strom → mehr Klammern ───────────────
+  // ── 5 · strom (DUR_s 10.5667): mehr Strom → mehr Klammern ───────────
   yield* all(stromPct(100, 1.0), lift(9, 1.0), flow(flow() + 40, 1.0, linear));
-  yield* flow(flow() + 280, 9.2667, linear);
+  yield* flow(flow() + 280, 9.5667, linear);
 
-  // ── 6 · eisenkern (11.2333 s): ohne Kern schwach, mit Kern stark ────
+  // ── 6 · eisenkern (DUR_s 12.4667): ohne Kern schwach, mit Kern stark ─
   yield* all(coreX(-560, 1.0), lift(3, 1.0), fieldOp(0.32, 1.0));
   yield* flow(flow() + 50, 1.6, linear);
   yield* all(coreX(0, 1.1), lift(9, 1.1), fieldOp(1, 1.1));
-  yield* flow(flow() + 230, 7.5333, linear);
+  yield* flow(flow() + 230, 8.7667, linear);
 
-  // ── 7 · anwendung (11.6 s): abschaltbar → Last halten & fallen lassen ─
+  // ── 7 · anwendung (DUR_s 11.9333): abschaltbar → Last halten & fallen ─
   yield* all(lift(0, 0.5), loadOp(1, 0.6), loadY(70, 0.9));
   yield* waitFor(2.0);
   yield* all(switchAngle(-34, 0.5), onOp(0, 0.4), fieldOp(0, 0.5), loadY(380, 1.0));
   yield* waitFor(1.4);
   yield* all(switchAngle(0, 0.5), onOp(1, 0.5));
   yield* all(fieldOp(1, 0.5), loadOp(0, 0.5), appLabelOp(1, 0.7));
-  yield* waitFor(5.1);
+  yield* waitFor(5.4333);
 
-  // ── 8 · outro (9.9667 s) ─────────────────────────────────────────────
+  // ── 8 · outro (DUR_s 10.7) ───────────────────────────────────────────
   yield* all(apparatusOp(0, 0.6), fieldOp(0, 0.5));
   yield* logoOp(1, 0.8);
-  yield* waitFor(8.5667);
+  yield* waitFor(9.3);
 });
