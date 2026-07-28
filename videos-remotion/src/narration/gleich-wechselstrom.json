@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Es gibt zwei Arten von Strom: Gleichstrom und Wechselstrom. Wann braucht man welchen? Beide haben ihre klaren Aufgaben." },
+  { "id": "gleich", "text": "Gleichstrom fließt immer in dieselbe Richtung, die Spannung bleibt konstant. Batterien und Akkus liefern ihn. Und fast alle elektronischen Geräte brauchen ihn: das Handy, eine LED, jeder Computerchip. Sie arbeiten nur mit konstanter Gleichspannung." },
+  { "id": "wechsel", "text": "Wechselstrom wechselt ständig die Richtung. Generatoren liefern ihn, und er kommt aus jeder Steckdose. Sein großer Vorteil: Man kann seine Spannung mit einem Transformator ganz leicht ändern. Deshalb transportiert man Strom über weite Strecken immer als Wechselstrom." },
+  { "id": "netzteil", "text": "Aber wie bekommt das Handy dann seinen Gleichstrom? Dafür sorgt das Netzteil oder Ladegerät. Es nimmt den Wechselstrom aus der Steckdose und wandelt ihn in Gleichstrom um. Deshalb steckt in jedem Ladegerät ein kleiner Gleichrichter." },
+  { "id": "merksatz", "text": "Merke: Gleichstrom aus Batterien treibt die Elektronik an. Wechselstrom aus dem Netz lässt sich leicht umwandeln und transportieren. Ein Netzteil macht aus Wechselstrom wieder Gleichstrom." },
+  { "id": "transfer", "text": "Handy, LED und Auto arbeiten mit Gleichstrom, Steckdose und Stromnetz mit Wechselstrom. Übrigens: Eine Solaranlage liefert Gleichstrom – ein Wechselrichter macht daraus netztauglichen Wechselstrom." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

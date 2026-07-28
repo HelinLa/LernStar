@@ -82,3 +82,86 @@ export const Solenoid: React.FC<{ cx: number; cy: number; w?: number; h?: number
 
 // wandelt eine Geschwindigkeit (px/frame) in einen Zeigerwert um (weiches Clampen)
 export const toNeedle = (v: number, scale = 0.09) => interpolate(v, [-14, 14], [-1, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }) * 1 + 0 * scale;
+
+// ── Transformator: Eisenkern-Rahmen + zwei Spulen ──────────────────────
+// n1 = Primärwindungen (links, amber), n2 = Sekundär (rechts, sky).
+// flow: animierter Feldfluss im Kern (nur wenn Wechselstrom); frame kommt von außen.
+export const TransformerCore: React.FC<{
+  cx: number;
+  cy: number;
+  n1?: number;
+  n2?: number;
+  flow?: boolean;
+  frame?: number;
+  secLive?: boolean;
+}> = ({ cx, cy, n1 = 5, n2 = 5, flow = false, frame = 0, secLive = true }) => {
+  const w = 380;
+  const h = 320;
+  const x0 = cx - w / 2;
+  const y0 = cy - h / 2;
+  const t = 46; // Kern-Dicke
+  const legL = x0 + t / 2;
+  const legR = x0 + w - t / 2;
+  const coil = (legX: number, count: number, color: string) => {
+    const span = h - 130;
+    const gap = span / (count + 1);
+    return Array.from({ length: count }).map((_, i) => (
+      <ellipse key={i} cx={legX} cy={y0 + 65 + gap * (i + 1)} rx={62} ry={gap * 0.42} fill="none" stroke={color} strokeWidth={7} />
+    ));
+  };
+  const dash = -(frame * 6) % 40;
+  return (
+    <svg style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%' }} viewBox="0 0 1920 1080">
+      {/* Eisenkern-Rahmen */}
+      <rect x={x0} y={y0} width={w} height={h} rx={12} fill="none" stroke="#94a3b8" strokeWidth={t} />
+      {/* Feldfluss im Kern (Mittellinie) */}
+      {flow && (
+        <rect
+          x={x0}
+          y={y0}
+          width={w}
+          height={h}
+          rx={12}
+          fill="none"
+          stroke={COLORS.amber}
+          strokeWidth={6}
+          strokeDasharray="14 26"
+          strokeDashoffset={dash}
+          opacity={0.8}
+        />
+      )}
+      {coil(legL, n1, COLORS.amber)}
+      {coil(legR, n2, secLive ? COLORS.sky : '#475569')}
+      <text x={legL} y={y0 - 16} fontSize={24} fontWeight="800" fill={COLORS.amber} textAnchor="middle">Primär · {n1}</text>
+      <text x={legR} y={y0 - 16} fontSize={24} fontWeight="800" fill={secLive ? COLORS.sky : COLORS.muted} textAnchor="middle">Sekundär · {n2}</text>
+    </svg>
+  );
+};
+
+// ── Kleine Spannungs-Kurve (Sinus/konstant) über die Zeit ──────────────
+export const Wave: React.FC<{ x0: number; y0: number; w: number; h: number; omega: number; amp: number; frame: number; dc?: boolean; color?: string }> = ({
+  x0,
+  y0,
+  w,
+  h,
+  omega,
+  amp,
+  frame,
+  dc = false,
+  color = COLORS.green,
+}) => {
+  const pxPerFrame = 3;
+  const pts: string[] = [];
+  for (let px = 0; px <= w; px += 4) {
+    const tt = frame - (w - px) / pxPerFrame;
+    const y = dc ? y0 - amp * (h / 2) : y0 - amp * (h / 2) * Math.sin(tt * omega);
+    pts.push(`${x0 + px},${y}`);
+  }
+  return (
+    <svg style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%' }} viewBox="0 0 1920 1080">
+      <line x1={x0} y1={y0} x2={x0 + w} y2={y0} stroke={COLORS.border} strokeWidth={2} />
+      <line x1={x0} y1={y0 - h / 2} x2={x0} y2={y0 + h / 2} stroke={COLORS.border} strokeWidth={2} />
+      <polyline points={pts.join(' ')} fill="none" stroke={color} strokeWidth={4} />
+    </svg>
+  );
+};

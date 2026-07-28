@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Manchmal braucht man aus 230 Volt eine kleine, ungefährliche Spannung – und manchmal eine sehr hohe. Wie ändert man eine Spannung, ohne dabei viel Energie zu verschwenden? Das leistet der Transformator." },
+  { "id": "aufbau", "text": "Ein Transformator besteht aus zwei Spulen, die auf einem gemeinsamen Eisenkern sitzen. Die linke heißt Primärspule, die rechte Sekundärspule. Wichtig: Die beiden Spulen berühren sich elektrisch nicht. Verbunden sind sie allein durch das Magnetfeld im Eisenkern." },
+  { "id": "prinzip", "text": "So funktioniert es. Durch die Primärspule fließt Wechselstrom. Er erzeugt im Eisenkern ein ständig wechselndes Magnetfeld. Der Kern leitet dieses Feld zur Sekundärspule. Weil sich das Feld dort dauernd ändert, wird in der Sekundärspule eine Spannung induziert. Die Energie springt also berührungslos von der einen zur anderen Spule." },
+  { "id": "nurwechsel", "text": "Daraus folgt etwas Wichtiges: Ein Transformator funktioniert nur mit Wechselstrom. Schließt man Gleichstrom an, baut sich zwar ein Feld auf, aber es bleibt danach konstant. Und ein konstantes Feld ändert sich nicht – ohne Änderung wird keine Spannung induziert. Die Sekundärspule bleibt stromlos." },
+  { "id": "merksatz", "text": "Merke: Im Transformator erzeugt der Wechselstrom der Primärspule ein Wechselfeld im Eisenkern. Dieses induziert in der Sekundärspule eine Spannung. Das klappt nur mit Wechselstrom." },
+  { "id": "transfer", "text": "Transformatoren stecken in jedem Netzteil, in den Umspannwerken des Stromnetzes und im kleinen Klingeltrafo. Wie stark sie die Spannung ändern, hängt von den Windungszahlen ab – das sehen wir uns als Nächstes an." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

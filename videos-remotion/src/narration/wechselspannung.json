@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Aus der Steckdose kommt kein gewöhnlicher Strom wie aus einer Batterie. Der Strom hier wechselt ständig die Richtung. Warum eigentlich?" },
+  { "id": "vergleich", "text": "Vergleichen wir zwei Quellen. Eine Batterie liefert eine gleichbleibende Spannung – immer gleich hoch und immer in eine Richtung. Die Steckdose dagegen liefert eine Spannung, die ständig ansteigt, wieder fällt und die Richtung wechselt. Das nennt man Wechselspannung." },
+  { "id": "elektronen", "text": "Ein häufiger Denkfehler: Man stellt sich vor, die Elektronen rasen von der Steckdose bis ins Gerät. Bei Wechselstrom stimmt das nicht. Die Elektronen wandern nicht davon – sie zittern nur ein winziges Stück vor und zurück, im Takt der Wechselspannung. Trotzdem wird dabei Energie übertragen." },
+  { "id": "frequenz", "text": "Wie schnell wechselt die Spannung? In Europa genau fünfzig Mal in jeder Sekunde. Das nennt man eine Frequenz von fünfzig Hertz. Das ist so schnell, dass wir das Flackern einer Lampe gar nicht bemerken." },
+  { "id": "merksatz", "text": "Merke: Wechselspannung ändert ständig ihre Höhe und Richtung. Die Elektronen schwingen dabei nur hin und her. In Europa sind es 230 Volt bei einer Frequenz von 50 Hertz." },
+  { "id": "transfer", "text": "Warum nutzt man überhaupt Wechselstrom und nicht einfach Gleichstrom? Der große Vorteil: Nur eine Wechselspannung lässt sich mit einem Transformator einfach hoch- und heruntersetzen. Genau das braucht man, um Strom über weite Strecken zu transportieren." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

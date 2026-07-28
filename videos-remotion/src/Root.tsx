@@ -163,6 +163,10 @@ import { Induktion, INDUKTION_DURATION } from './videos/Induktion';
 import { Induktionsspannung, INDUKTIONSSPANNUNG_DURATION } from './videos/Induktionsspannung';
 import { LenzscheRegel, LENZSCHE_REGEL_DURATION } from './videos/LenzscheRegel';
 import { GeneratorJg10, GENERATOR_JG10_DURATION } from './videos/GeneratorJg10';
+import { Wechselspannung, WECHSELSPANNUNG_DURATION } from './videos/Wechselspannung';
+import { GleichWechselstrom, GLEICH_WECHSELSTROM_DURATION } from './videos/GleichWechselstrom';
+import { Transformator, TRANSFORMATOR_DURATION } from './videos/Transformator';
+import { Uebersetzungsverhaeltnis, UEBERSETZUNGSVERHAELTNIS_DURATION } from './videos/Uebersetzungsverhaeltnis';
 import { Waermekraftwerk, WAERMEKRAFTWERK_DURATION } from './videos/Waermekraftwerk';
 import { FossileEnergie, FOSSILE_ENERGIE_DURATION } from './videos/FossileEnergie';
 import { RegenerativeEnergie, REGENERATIVE_ENERGIE_DURATION } from './videos/RegenerativeEnergie';
@@ -462,6 +466,10 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Induktionsspannung" component={Induktionsspannung} durationInFrames={INDUKTIONSSPANNUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="LenzscheRegel" component={LenzscheRegel} durationInFrames={LENZSCHE_REGEL_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="GeneratorJg10" component={GeneratorJg10} durationInFrames={GENERATOR_JG10_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Wechselspannung" component={Wechselspannung} durationInFrames={WECHSELSPANNUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="GleichWechselstrom" component={GleichWechselstrom} durationInFrames={GLEICH_WECHSELSTROM_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Transformator" component={Transformator} durationInFrames={TRANSFORMATOR_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Uebersetzungsverhaeltnis" component={Uebersetzungsverhaeltnis} durationInFrames={UEBERSETZUNGSVERHAELTNIS_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Waermekraftwerk" component={Waermekraftwerk} durationInFrames={WAERMEKRAFTWERK_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="FossileEnergie" component={FossileEnergie} durationInFrames={FOSSILE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="RegenerativeEnergie" component={RegenerativeEnergie} durationInFrames={REGENERATIVE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />

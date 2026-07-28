@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Ein Transformator kann eine Spannung erhöhen oder senken. Aber um wie viel? Das bestimmen die Windungszahlen der beiden Spulen." },
+  { "id": "verhaeltnis", "text": "Es gilt eine einfache Regel: Die beiden Spannungen verhalten sich genau wie die Windungszahlen. U eins geteilt durch U zwei ist gleich N eins geteilt durch N zwei. Ein Beispiel: Hat die Sekundärspule doppelt so viele Windungen wie die Primärspule, ist auch die Spannung doppelt so hoch. Aus 230 Volt werden 460 Volt." },
+  { "id": "hoch", "text": "Hat die Sekundärspule mehr Windungen als die Primärspule, wird die Spannung heraufgesetzt. Das nennt man Hochtransformieren. Solche hohen Spannungen braucht man, um Strom über lange Überlandleitungen zu schicken." },
+  { "id": "runter", "text": "Hat die Sekundärspule weniger Windungen, wird die Spannung gesenkt – das Heruntertransformieren. So macht ein Netzteil aus den 230 Volt der Steckdose zum Beispiel ungefährliche 12 Volt für ein Gerät." },
+  { "id": "leistung", "text": "Aber Vorsicht: Ein Transformator schenkt keine Energie. Setzt man die Spannung hoch, sinkt im gleichen Maß die Stromstärke. Denn die Leistung ist Spannung mal Stromstärke, und sie bleibt nahezu gleich. Was man an Spannung gewinnt, verliert man an Strom." },
+  { "id": "merksatz", "text": "Merke: Die Spannungen verhalten sich wie die Windungszahlen – U eins zu U zwei wie N eins zu N zwei. Mehr Windungen bedeuten mehr Spannung. Die Leistung bleibt dabei erhalten." },
+  { "id": "transfer", "text": "So arbeitet jedes Netzteil, das 230 Volt auf wenige Volt senkt, und so hebt ein Kraftwerk die Spannung für den Transport an. Warum das so wichtig ist, klärt der nächste Baustein." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
