@@ -11,7 +11,9 @@ schon als Baustein existiert. Dies ist die praktische Ergänzung zu:
 > **Referenzstandard = Klasse 5 RS Physik** (klasse5_rs, 19/19 Videos, seit 28.07.2026
 > vollständig auf Stimme **Eva**). Jedes dieser Videos ist eine kopierbare Vorlage.
 > **Klasse 6 RS ist ebenfalls 100 % auf Eva** (klasse6_rs, 21/21, 28.07.2026, alle Weg A).
-> Fortschritt Nachvertonung Anna→Eva: **Kl.5 ✅ · Kl.6 ✅** · Kl.7–10 offen.
+> **Klasse 7/8/9 RS sind ebenfalls 100 % auf Eva** (28.07.2026, 107 Videos: 106 Weg A +
+> energieerhaltung Weg B; Commit 600a49d, Cache Video ?v=29 / app.js ?v=126).
+> Fortschritt Nachvertonung Anna→Eva: **Kl.5 ✅ · Kl.6 ✅ · Kl.7 ✅ · Kl.8 ✅ · Kl.9 ✅** · Kl.10 offen.
 
 ---
 
