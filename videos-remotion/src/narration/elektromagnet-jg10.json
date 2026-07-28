@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Ein gewöhnlicher Magnet ist immer magnetisch – man kann ihn nicht abschalten. Was aber, wenn man einen Magneten bräuchte, den man nach Belieben ein- und ausschalten kann? Genau das leistet der Elektromagnet." },
+  { "id": "beobachten", "text": "Eine Spule aus Draht mit einem Eisenkern ist an einen Stromkreis angeschlossen. Schließt man den Schalter, zieht sie sofort Büroklammern an und hält sie fest. Öffnet man den Schalter, fallen die Klammern augenblicklich ab. Der Magnetismus ist also nur da, solange Strom fließt." },
+  { "id": "spule", "text": "Warum wird die Spule zum Magneten? Jede einzelne Drahtwindung erzeugt beim Stromfluss ein kleines Magnetfeld. Legt man viele Windungen hintereinander, addieren sich diese kleinen Felder zu einem starken Gesamtfeld. Die Spule verhält sich dann wie ein Stabmagnet, mit einem Nordpol und einem Südpol." },
+  { "id": "kern", "text": "Jetzt der entscheidende Trick. Ohne Kern trägt die Spule nur wenige Klammern. Schiebt man einen Eisenkern hinein, bündelt das Eisen das Magnetfeld – und die Tragkraft steigt sprunghaft an. Deshalb hat fast jeder Elektromagnet einen Eisenkern." },
+  { "id": "pole", "text": "Ein Elektromagnet lässt sich sogar noch mehr steuern. Kehrt man die Stromrichtung um, tauschen Nordpol und Südpol die Plätze. Man kann ihn also an- und ausschalten, stärker machen und umpolen – all das kann ein gewöhnlicher Magnet nicht." },
+  { "id": "merksatz", "text": "Merke: Eine stromdurchflossene Spule ist ein Magnet, aber nur solange Strom fließt. Ein Eisenkern verstärkt das Feld deutlich. Der Elektromagnet ist an- und ausschaltbar und umpolbar." },
+  { "id": "transfer", "text": "Weil er sich steuern lässt, ist der Elektromagnet überall im Einsatz. Der Schrottkran hebt Autos und lässt sie fallen, Klingel und Relais schalten Kontakte, und ein Magnetresonanztomograf nutzt riesige Spulen für sehr starke Felder." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

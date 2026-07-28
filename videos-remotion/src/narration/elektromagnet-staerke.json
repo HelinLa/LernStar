@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Ein Elektromagnet kann ein paar Büroklammern halten – oder ein ganzes Auto. Wovon hängt seine Stärke ab? Es gibt drei Stellschrauben, an denen man drehen kann." },
+  { "id": "windungen", "text": "Erste Stellschraube: die Windungszahl. Wir verändern nur sie und lassen alles andere gleich. Je mehr Windungen wir um den Kern wickeln, desto stärker wird das Feld – und desto mehr Klammern hält der Magnet. Mehr Windungen bedeuten mehr Kraft." },
+  { "id": "strom", "text": "Zweite Stellschraube: die Stromstärke. Jetzt bleibt die Windungszahl gleich, und wir drehen den Strom hoch. Auch dann steigt die Tragkraft. Man merkt sich: Die Kraft wächst mit der Windungszahl mal der Stromstärke." },
+  { "id": "kern", "text": "Dritte Stellschraube: der Kern. Ist im Inneren nur Luft, ist der Magnet eher schwach. Schiebt man einen weichen Eisenkern hinein, bündelt er das Feld – und die Tragkraft springt nach oben, oft um ein Vielfaches. Das ist meist der größte Effekt." },
+  { "id": "vergleich", "text": "Fassen wir zusammen. Mehr Windungen, mehr Strom und ein Eisenkern – alle drei machen den Elektromagneten stärker. Am wirkungsvollsten ist in der Regel der Eisenkern." },
+  { "id": "merksatz", "text": "Merke: Ein Elektromagnet wird stärker durch mehr Windungen, mehr Stromstärke und einen Eisenkern. Die Tragkraft wächst mit der Windungszahl und der Stromstärke." },
+  { "id": "transfer", "text": "Je nach Aufgabe kombiniert man diese Faktoren. Ein Schrottkran braucht viele Windungen und viel Strom. Ein Magnetresonanztomograf nutzt riesige gekühlte Spulen, und eine Magnetschwebebahn schwebt auf besonders starken Elektromagneten." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

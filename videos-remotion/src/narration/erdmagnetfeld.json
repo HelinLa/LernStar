@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Egal, wohin du gehst: Die Nadel eines Kompasses zeigt fast immer nach Norden. Aber warum eigentlich? Was zieht diese kleine Nadel dorthin?" },
+  { "id": "beobachten", "text": "Beobachte einen Kompass genau. Stößt man die Nadel an, dreht sie sich kurz weg – und pendelt dann wieder zurück nach Norden. Ganz gleich, wie du den Kompass drehst: Die rote Spitze findet immer dieselbe Richtung. Etwas Unsichtbares muss die Nadel ausrichten." },
+  { "id": "modell", "text": "Dieses Etwas ist das Magnetfeld der Erde. Man kann sich vorstellen, dass tief im Inneren der Erde ein riesiger Stabmagnet steckt. Seine Feldlinien reichen weit in den Raum hinaus und laufen von einem Pol zum anderen. In diesem Feld richtet sich jede frei bewegliche Kompassnadel aus." },
+  { "id": "pole", "text": "Jetzt kommt ein häufiger Denkfehler. Der Punkt, zu dem die Nadel zeigt, ist zwar in der Nähe des geografischen Nordpols – aber er liegt nicht genau dort, sondern etwa elf Grad daneben. Und physikalisch ist das dort ein magnetischer Südpol. Deshalb wird die Nordspitze der Nadel angezogen, denn ungleiche Pole ziehen sich an. Die kleine Abweichung zwischen magnetischem und geografischem Pol nennt man Missweisung." },
+  { "id": "stoer", "text": "Das Erdfeld ist ziemlich schwach. Bringt man ein Stück Eisen oder einen Magneten in die Nähe, ist dessen Feld stärker – und die Nadel dreht sich zu ihm statt nach Norden. Genau deshalb kann ein Kompass in der Nähe von Eisen oder Elektronik falsch anzeigen." },
+  { "id": "merksatz", "text": "Merke: Die Erde ist ein riesiger Magnet. Die Kompassnadel richtet sich in ihrem Magnetfeld aus und zeigt nach Norden. Magnetischer und geografischer Pol liegen dabei nicht genau übereinander." },
+  { "id": "transfer", "text": "Ohne das Erdmagnetfeld gäbe es keinen Kompass zum Wandern und keine einfache Navigation. Sogar Zugvögel nutzen das Feld, um ihren Weg zu finden. Und ganz nebenbei schützt es die Erde vor geladenen Teilchen aus dem Weltall." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

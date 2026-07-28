@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Lange dachte man, Elektrizität und Magnetismus hätten nichts miteinander zu tun. Im Jahr 1820 machte Hans Christian Oersted eine überraschende Entdeckung. Kann ein einfacher elektrischer Strom eine Kompassnadel bewegen?" },
+  { "id": "beobachten", "text": "Über einer Kompassnadel liegt ein Draht. Ist der Stromkreis offen, zeigt die Nadel ganz normal nach Norden. Doch sobald man den Schalter schließt und Strom fließt, springt die Nadel sofort zur Seite und stellt sich quer zum Draht. Öffnet man wieder, dreht sie zurück." },
+  { "id": "feld", "text": "Woher kommt das? Der fließende Strom erzeugt selbst ein Magnetfeld. Schaut man auf den Draht von vorn, während der Strom in die Ebene hineinfließt, erkennt man: Das Feld bildet Kreise rund um den Draht. Genau dieses Feld lenkt die Kompassnadel ab." },
+  { "id": "richtung", "text": "Die Richtung des Feldes hängt von der Stromrichtung ab. Kehrt man die Stromrichtung um, dreht sich auch das Magnetfeld herum – und die Nadel kippt zur anderen Seite. Strom und Feldrichtung gehören also fest zusammen." },
+  { "id": "staerke", "text": "Auch die Stärke lässt sich beeinflussen. Je größer die Stromstärke, desto stärker das Magnetfeld und desto weiter dreht sich die Nadel. Wenig Strom bedeutet ein schwaches Feld, viel Strom ein starkes." },
+  { "id": "merksatz", "text": "Merke: Jeder elektrische Strom erzeugt rund um seinen Leiter ein Magnetfeld. Kehrt man die Stromrichtung um, kehrt sich die Feldrichtung um. Das nennt man Elektromagnetismus." },
+  { "id": "transfer", "text": "Diese Entdeckung ist der Anfang von allem. Wickelt man den Draht zu einer Spule, entsteht ein Elektromagnet. Nutzt man die Kraft des Feldes, baut man einen Elektromotor oder einen Lautsprecher. Strom und Magnetismus sind zwei Seiten derselben Sache." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

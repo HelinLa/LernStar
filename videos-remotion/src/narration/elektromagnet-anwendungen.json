@@ -1,0 +1,10 @@
+[
+  { "id": "intro", "text": "Weil man einen Elektromagneten an- und ausschalten kann, steckt er in erstaunlich vielen Geräten. Schauen wir uns vier Beispiele an, in denen genau diese Schaltbarkeit gebraucht wird." },
+  { "id": "kran", "text": "Auf dem Schrottplatz hebt ein Kran schwere Autos. An seinem Arm sitzt eine große Elektromagnet-Scheibe. Fließt Strom, hält sie das Auto fest. Schaltet man den Strom aus, fällt das Auto sofort ab. Ein normaler Dauermagnet würde die Last nie wieder loslassen – hier ist das Ausschalten der ganze Trick." },
+  { "id": "relais", "text": "Ein Relais ist ein magnetischer Schalter. Ein schwacher Steuerstrom macht einen kleinen Elektromagneten an. Dieser zieht einen Hebel an und schließt damit einen zweiten, viel stärkeren Stromkreis. So kann ein winziger Strom eine große Maschine einschalten – ohne dass sich die beiden Kreise berühren." },
+  { "id": "klingel", "text": "Die elektrische Klingel schaltet sich sogar selbst. Der Elektromagnet zieht den Klöppel gegen die Glocke. Genau dabei öffnet der Klöppel einen Kontakt – der Strom wird unterbrochen, der Magnet lässt los, und eine Feder zieht den Klöppel zurück. Dann schließt der Kontakt wieder, und alles beginnt von vorn. So entsteht das schnelle Rasseln." },
+  { "id": "lautsprecher", "text": "Auch im Lautsprecher arbeitet ein Elektromagnet. Eine Spule sitzt an einem Dauermagneten und ist mit der Membran verbunden. Der wechselnde Tonstrom stößt die Spule vor und zurück. Die Membran zittert im Takt der Musik und erzeugt Schallwellen." },
+  { "id": "merksatz", "text": "Merke: Weil man ihn schalten, verstärken und umpolen kann, steckt der Elektromagnet in Kran, Relais, Klingel und Lautsprecher – und in vielen weiteren Geräten." },
+  { "id": "transfer", "text": "Achte einmal darauf: Ein Türöffner summt und entriegelt, in der Festplatte bewegt ein Elektromagnet den Schreibkopf, und im Auto schaltet der Anlasser über einen Magnetschalter. Überall, wo per Strom etwas bewegt oder geschaltet wird, hilft ein Elektromagnet." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
