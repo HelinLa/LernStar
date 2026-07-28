@@ -21,5 +21,5 @@ import elektromagnetClip from './scenes/elektromagnet_clip?scene';
 // Zum Einzel-Rendern kurzzeitig nur die gewünschte Szene aktiv lassen.
 export default makeProject({
   name: 'LernStar',
-  scenes: [magnetpoleClip],
+  scenes: [magneteFelderClip],
 });

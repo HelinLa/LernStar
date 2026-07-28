@@ -5,8 +5,8 @@ import {COLORS, FONT} from '../theme';
 // "Sauberer" Composite-Clip: Magnete & magnetische Felder (Klasse 5 RS, Kapitel-Auftakt).
 // NUR Fachanimation (Stabmagnet, Pole, Feldlinien mit Eisenspänen, Zerbrechen,
 // Stoffe, Erde/Kompass) – Titel/Untertitel legt Remotion drüber.
-// Segmentdauern framegenau an magnete-felder-mc.timings.json → durOf (TAIL=20):
-// intro 340 · pole 424 · feld 425 · teilen 474 · stoffe 439 · erde 400 · merksatz 423 · outro 205.
+// Segmentdauern framegenau an magnete-felder-mc.timings.json (Eva/Piper) → durOf
+// (TAIL=20; siehe scripts/print-durations.mjs). Nur die Halte-waitFor sind getaktet.
 export default makeScene2D(function* (view) {
   view.fill(COLORS.bg0);
 
@@ -175,11 +175,11 @@ export default makeScene2D(function* (view) {
     </Node>,
   );
 
-  // ── 1 · intro (11.3333 s) ────────────────────────────────────────────
+  // ── 1 · intro (DUR_s 12.2667) ────────────────────────────────────────
   yield* magOp(1, 1.4);
-  yield* waitFor(9.9333);
+  yield* waitFor(10.8667);
 
-  // ── 2 · pole (14.1333 s) ─────────────────────────────────────────────
+  // ── 2 · pole (DUR_s 13.5) ────────────────────────────────────────────
   yield* poleHiOp(1, 0.6);
   yield* mag2Op(1, 0.5);
   yield* all(mag2X(300, 1.6), attractArrOp(1, 0.5));
@@ -188,14 +188,14 @@ export default makeScene2D(function* (view) {
   yield* all(repelArrOp(1, 0.5), mag2X(560, 1.4));
   yield* waitFor(1.6);
   yield* all(mag2Op(0, 0.5), repelArrOp(0, 0.4), poleHiOp(0, 0.4));
-  yield* waitFor(5.4333);
+  yield* waitFor(4.8);
 
-  // ── 3 · feld (14.1667 s) ─────────────────────────────────────────────
+  // ── 3 · feld (DUR_s 15.8667) ─────────────────────────────────────────
   yield* fieldOp(1, 1.6);
   yield* filOp(1, 1.4);
-  yield* waitFor(11.1667);
+  yield* waitFor(12.8667);
 
-  // ── 4 · teilen (15.8 s) ──────────────────────────────────────────────
+  // ── 4 · teilen (DUR_s 17.2) ──────────────────────────────────────────
   yield* all(fieldOp(0, 0.6), filOp(0, 0.6));
   yield* cutOp(1, 0.5);
   yield* waitFor(1.4);
@@ -204,9 +204,9 @@ export default makeScene2D(function* (view) {
   yield* newFlashOp(0.3, 0.6);
   yield* newFlashOp(1, 0.5);
   yield* newFlashOp(0.3, 0.5);
-  yield* waitFor(9.7);
+  yield* waitFor(10.8);
 
-  // ── 5 · stoffe (14.6333 s) ───────────────────────────────────────────
+  // ── 5 · stoffe (DUR_s 14.9667) ───────────────────────────────────────
   yield* all(splitOp(0, 0.5), magOp(1, 0.5), magX(-430, 0.9));
   yield* stoffOp(1, 0.6);
   yield* waitFor(1.4);
@@ -214,18 +214,18 @@ export default makeScene2D(function* (view) {
   yield* ironCheckOp(1, 0.4);
   yield* waitFor(1.4);
   yield* cuAlDashOp(1, 0.5);
-  yield* waitFor(7.9333);
+  yield* waitFor(8.2667);
 
-  // ── 6 · erde (13.3333 s) ─────────────────────────────────────────────
+  // ── 6 · erde (DUR_s 13.6667) ─────────────────────────────────────────
   yield* all(stoffOp(0, 0.6), magOp(0, 0.6), cuAlDashOp(0, 0.4), ironCheckOp(0, 0.4));
   yield* earthOp(1, 1.2);
   yield* waitFor(1.2);
   yield* needleRot(-14, 1.2);
   yield* needleRot(7, 0.9);
   yield* needleRot(0, 0.7);
-  yield* waitFor(7.5333);
+  yield* waitFor(7.8667);
 
-  // ── 7 · merksatz (14.1 s) ────────────────────────────────────────────
+  // ── 7 · merksatz (DUR_s 15.4) ────────────────────────────────────────
   yield* earthOp(0, 0.6);
   yield* all(magOp(1, 0.6), fieldOp(1, 1.2), magX(0, 0.4));
   yield* filOp(1, 1.0);
@@ -233,10 +233,10 @@ export default makeScene2D(function* (view) {
   yield* magY(0, 2.0);
   yield* magY(-12, 2.0);
   yield* magY(0, 2.0);
-  yield* waitFor(1.3);
+  yield* waitFor(4.6);
 
-  // ── 8 · outro (6.8333 s) ─────────────────────────────────────────────
+  // ── 8 · outro (DUR_s 7.7) ────────────────────────────────────────────
   yield* all(magOp(0, 0.5), fieldOp(0, 0.5), filOp(0, 0.5));
   yield* logoOp(1, 0.8);
-  yield* waitFor(5.5333);
+  yield* waitFor(6.4);
 });
