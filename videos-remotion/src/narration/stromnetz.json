@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Wenn du zuhause einen Stecker einsteckst, ist sofort Strom da. Doch dahinter steckt eine weite Reise. Wie kommt der Strom vom Kraftwerk bis in deine Steckdose?" },
+  { "id": "kette", "text": "Verfolgen wir den Weg. Im Kraftwerk erzeugt ein Generator den Strom bei etwa 25 000 Volt. Ein Hochtransformator setzt die Spannung auf 380 000 Volt hoch. So reist der Strom über riesige Überlandleitungen. Danach senken mehrere Umspannwerke die Spannung schrittweise – auf 110 000, dann 20 000 Volt – bis schließlich der Ortsnetztransformator daraus die 230 Volt für dein Zuhause macht." },
+  { "id": "ebenen", "text": "Man spricht von Spannungsebenen. Ganz oben das Übertragungsnetz mit 380 000 Volt für die langen Strecken. Darunter 110 000 Volt für ganze Regionen und große Industrie. Dann 20 000 Volt für Stadtteile und Betriebe. Und ganz unten die 230 Volt, die aus deiner Steckdose kommen." },
+  { "id": "warum", "text": "Warum dieser Aufwand mit so vielen Stufen? Weil beide Anforderungen zusammenkommen müssen. Für den Transport über weite Strecken braucht man hohe Spannung und wenig Strom, damit kaum Energie verloren geht. Für die Nutzung zuhause braucht man niedrige Spannung, damit der Strom für Menschen und Geräte ungefährlich ist." },
+  { "id": "merksatz", "text": "Merke: Der Strom wird im Kraftwerk erzeugt, hochtransformiert, verlustarm über Hochspannungsleitungen transportiert und in mehreren Umspannwerken wieder heruntergesetzt – bis er als 230 Volt in der Steckdose ankommt." },
+  { "id": "transfer", "text": "Dieses Netz gilt als eines der größten Bauwerke der Technik. Es liefert rund um die Uhr Strom, nimmt heute auch Solar- und Windenergie auf und wird mit Speichern und smarter Steuerung fit für die Zukunft gemacht." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

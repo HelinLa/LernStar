@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Auf den großen Überlandmasten liegt eine gewaltige Spannung – oft mehrere hunderttausend Volt. Das klingt gefährlich und verschwenderisch. Warum macht man das trotzdem?" },
+  { "id": "trick", "text": "Der Trick steckt in einer einfachen Formel. Die Leistung ist Spannung mal Stromstärke. Ein Transformator setzt vor der langen Leitung die Spannung stark hoch. Weil die übertragene Leistung gleich bleiben soll, muss dabei die Stromstärke im gleichen Maß kleiner werden. Und genau die Stromstärke war ja die Ursache der Verluste." },
+  { "id": "vergleich", "text": "Vergleichen wir zwei Leitungen. Bei niedriger Spannung braucht man für dieselbe Leistung viel Strom – die Leitung wird heiß und verliert viel Energie. Bei Hochspannung genügt ein kleiner Strom, die Leitung bleibt kühl, und fast nichts geht verloren. Deshalb transportiert man Strom immer mit möglichst hoher Spannung." },
+  { "id": "rueck", "text": "So hohe Spannung darf natürlich nicht in die Steckdose – sie wäre viel zu gefährlich. Deshalb wird sie kurz vor dem Haushalt in Umspannwerken wieder heruntertransformiert, bis auf die sicheren 230 Volt." },
+  { "id": "merksatz", "text": "Merke: Hohe Spannung bedeutet kleine Stromstärke, und kleine Stromstärke bedeutet wenig Verlust. Darum transportiert man Strom mit Hochspannung und senkt sie erst vor dem Haushalt wieder." },
+  { "id": "transfer", "text": "Genau dafür stehen die riesigen Strommasten in der Landschaft. Sie führen Höchstspannung von über 200 000 Volt, damit der Strom verlustarm über weite Strecken zu uns gelangt." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Ein Kraftwerk steht oft hunderte Kilometer von den Städten entfernt. Auf dem langen Weg durch die Leitungen geht ein Teil der Energie verloren. Aber warum eigentlich?" },
+  { "id": "beobachten", "text": "Beobachte die Leitung, während Strom fließt. Sie bleibt nicht kalt – sie erwärmt sich. Und diese Wärme ist verlorene Energie. Sie strahlt einfach in die Luft ab und kommt niemals in der Stadt an." },
+  { "id": "warum", "text": "Der Grund ist der Widerstand der Leitung. Auch ein gutes Kupferkabel hat einen kleinen Widerstand, und an ihm wird elektrische Energie in Wärme umgewandelt. Es gilt die Formel: Verlustleistung ist gleich Widerstand mal Stromstärke zum Quadrat. Je länger und dünner das Kabel, desto größer der Widerstand und desto mehr Verlust." },
+  { "id": "strom", "text": "Jetzt der entscheidende Punkt. Weil in der Formel die Stromstärke im Quadrat steht, wirkt sie besonders stark. Verdoppelt man den Strom, verdoppelt sich der Verlust nicht – er wird viermal so groß. Die Stromstärke ist also die wichtigste Größe, wenn man Verluste vermeiden will." },
+  { "id": "merksatz", "text": "Merke: An jedem Leitungswiderstand geht Energie als Wärme verloren. Die Verlustleistung ist Widerstand mal Stromstärke zum Quadrat. Viel Strom bedeutet sehr viel Verlust." },
+  { "id": "transfer", "text": "Wie lässt sich der Verlust vermeiden? Der Schlüssel ist, die Stromstärke möglichst klein zu halten. Wie man das schafft, ohne weniger Energie zu übertragen, zeigt der nächste Schritt: die Hochspannung." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
