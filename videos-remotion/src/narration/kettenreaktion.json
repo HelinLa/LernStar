@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Eine einzelne Kernspaltung liefert Energie – aber erst viele nacheinander machen sie nutzbar. Genau da lauert aber auch die Gefahr. Wie hält man das Ganze unter Kontrolle?" },
+  { "id": "kette", "text": "Bei jeder Spaltung entstehen neue Neutronen. Treffen die wieder auf Urankerne, spalten die sich ebenfalls und setzen erneut Neutronen frei. So löst eine Spaltung mehrere weitere aus. Aus einer werden zwei, aus zwei vier, aus vier acht – eine Kettenreaktion, die sich immer weiter verdoppelt." },
+  { "id": "unkontrolliert", "text": "Bleibt diese Kettenreaktion ungebremst, verdoppelt sie sich in Sekundenbruchteilen unzählige Male. Die Energie wird auf einen Schlag frei. In einem Reaktor wäre das eine Katastrophe – und in einer Atombombe ist genau diese ungebremste Kettenreaktion das Ziel." },
+  { "id": "steuern", "text": "Im Reaktor sorgt man deshalb für Kontrolle. Zwischen die Brennstäbe schiebt man Steuerstäbe, zum Beispiel aus Bor. Sie fangen die überzähligen Neutronen einfach ab. So bleibt von jeder Spaltung genau ein Neutron übrig, das die nächste auslöst. Die Kettenreaktion läuft dann ruhig und gleichmäßig immer weiter, ohne zu explodieren." },
+  { "id": "merksatz", "text": "Merke: Neutronen aus einer Spaltung lösen weitere Spaltungen aus – eine Kettenreaktion. Steuerstäbe fangen überzählige Neutronen ab, sodass im Reaktor genau eine neue Spaltung folgt. So bleibt alles kontrolliert." },
+  { "id": "transfer", "text": "Über die Steuerstäbe regelt man den Reaktor: Schiebt man sie tiefer hinein, läuft die Reaktion langsamer; zieht man sie heraus, schneller. Ein Moderator bremst außerdem die Neutronen ab, damit sie überhaupt spalten. Und im Notfall fahren die Stäbe ganz hinein und stoppen alles. Wie daraus Strom wird, sehen wir als Nächstes." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

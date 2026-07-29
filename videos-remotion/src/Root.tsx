@@ -188,6 +188,12 @@ import { MedizinStrahlung, MEDIZIN_STRAHLUNG_DURATION } from './videos/MedizinSt
 import { TechnikStrahlung, TECHNIK_STRAHLUNG_DURATION } from './videos/TechnikStrahlung';
 import { Strahlenbelastung, STRAHLENBELASTUNG_DURATION } from './videos/Strahlenbelastung';
 import { Strahlenschutz, STRAHLENSCHUTZ_DURATION } from './videos/Strahlenschutz';
+import { Kernspaltung, KERNSPALTUNG_DURATION } from './videos/Kernspaltung';
+import { Kettenreaktion, KETTENREAKTION_DURATION } from './videos/Kettenreaktion';
+import { Kernkraftwerk, KERNKRAFTWERK_DURATION } from './videos/Kernkraftwerk';
+import { Reaktorunfaelle, REAKTORUNFAELLE_DURATION } from './videos/Reaktorunfaelle';
+import { Endlagerung, ENDLAGERUNG_DURATION } from './videos/Endlagerung';
+import { Kernfusion, KERNFUSION_DURATION } from './videos/Kernfusion';
 import { Waermekraftwerk, WAERMEKRAFTWERK_DURATION } from './videos/Waermekraftwerk';
 import { FossileEnergie, FOSSILE_ENERGIE_DURATION } from './videos/FossileEnergie';
 import { RegenerativeEnergie, REGENERATIVE_ENERGIE_DURATION } from './videos/RegenerativeEnergie';
@@ -512,6 +518,12 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="TechnikStrahlung" component={TechnikStrahlung} durationInFrames={TECHNIK_STRAHLUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Strahlenbelastung" component={Strahlenbelastung} durationInFrames={STRAHLENBELASTUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Strahlenschutz" component={Strahlenschutz} durationInFrames={STRAHLENSCHUTZ_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Kernspaltung" component={Kernspaltung} durationInFrames={KERNSPALTUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Kettenreaktion" component={Kettenreaktion} durationInFrames={KETTENREAKTION_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Kernkraftwerk" component={Kernkraftwerk} durationInFrames={KERNKRAFTWERK_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Reaktorunfaelle" component={Reaktorunfaelle} durationInFrames={REAKTORUNFAELLE_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Endlagerung" component={Endlagerung} durationInFrames={ENDLAGERUNG_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="Kernfusion" component={Kernfusion} durationInFrames={KERNFUSION_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Waermekraftwerk" component={Waermekraftwerk} durationInFrames={WAERMEKRAFTWERK_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="FossileEnergie" component={FossileEnergie} durationInFrames={FOSSILE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="RegenerativeEnergie" component={RegenerativeEnergie} durationInFrames={REGENERATIVE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />

@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Im Reaktor entsteht durch die Kernspaltung enorme Wärme. Aber wie wird daraus der Strom, der aus deiner Steckdose kommt? Der Weg ist überraschend bodenständig." },
+  { "id": "reaktor", "text": "Alles beginnt im Reaktor. Zwischen den Brennstäben läuft die kontrollierte Kettenreaktion und erzeugt sehr viel Wärme. Steuerstäbe regeln, wie schnell die Reaktion abläuft. Der Reaktor ist also im Grunde nur eine sehr starke Wärmequelle." },
+  { "id": "dampf", "text": "Diese Wärme verdampft Wasser. Der heiße Dampf strömt mit hohem Druck auf eine Turbine und bringt sie zum Drehen. Die Turbine ist mit einem Generator verbunden. Und der Generator wandelt die Drehbewegung durch elektromagnetische Induktion in elektrischen Strom um. Genau dieses Prinzip kennen wir schon vom Generator." },
+  { "id": "vergleich", "text": "Und jetzt der wichtigste Punkt gegen einen häufigen Denkfehler: Ein Kernkraftwerk erzeugt den Strom nicht direkt aus der Kernspaltung. Es funktioniert im Prinzip genau wie ein Kohlekraftwerk – mit Dampf, Turbine und Generator. Der einzige Unterschied ist die Wärmequelle: Statt Kohle zu verbrennen, nutzt man die Kernspaltung." },
+  { "id": "merksatz", "text": "Merke: Im Kernkraftwerk erzeugt die Kernspaltung Wärme. Diese verdampft Wasser, der Dampf treibt eine Turbine, und die dreht den Generator. So entsteht der Strom – wie in einem Kohlekraftwerk, nur mit anderer Wärmequelle." },
+  { "id": "transfer", "text": "Rund um den Reaktor gibt es noch mehr: Ein Kühlturm gibt die Restwärme als Wasserdampf ab, eine dicke Betonhülle schirmt die Strahlung ab, und das Kraftwerk liefert zuverlässig Grundlaststrom, rund um die Uhr und ohne CO₂. Doch was passiert, wenn die Kühlung ausfällt? Das klärt der nächste Schritt." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

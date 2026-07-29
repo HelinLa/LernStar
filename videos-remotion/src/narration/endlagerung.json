@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Ein Kernkraftwerk hinterlässt ein Problem, das noch lange nach seiner Abschaltung bleibt: den radioaktiven Abfall. Wohin mit dem Müll, der noch Tausende von Jahren strahlt?" },
+  { "id": "problem", "text": "Verbrauchte Brennstäbe sind hochradioaktiv. In ihnen stecken Stoffe mit sehr langen Halbwertszeiten – manche strahlen noch Zehntausende bis Hunderttausende Jahre gefährlich. So lange muss dieser Müll zuverlässig von Menschen und Umwelt getrennt bleiben." },
+  { "id": "endlager", "text": "Die geplante Lösung ist ein Endlager tief unter der Erde. Man sucht dafür eine besonders stabile Gesteinsschicht, zum Beispiel aus Salz, Ton oder Granit, die sich über Millionen Jahre kaum verändert hat. In speziellen Behältern soll der Müll dort eingeschlossen und so von der Umwelt ferngehalten werden." },
+  { "id": "herausforderung", "text": "Die eigentliche Schwierigkeit ist die Zeit. Der Müll muss länger sicher bleiben, als es überhaupt Schrift auf der Erde gibt. Schrift kennen wir seit etwa fünftausend Jahren – sicher lagern muss man den Abfall aber vielleicht eine Million Jahre. Wie warnt man Menschen in so ferner Zukunft, die unsere Sprache und Zeichen längst nicht mehr verstehen?" },
+  { "id": "merksatz", "text": "Merke: Hochradioaktiver Müll strahlt über sehr lange Zeit. Er soll tief in einer stabilen Gesteinsschicht sicher eingeschlossen werden. Ein geeignetes Endlager zu finden, ist eine der größten ungelösten Aufgaben der Kernenergie." },
+  { "id": "transfer", "text": "Die Suche nach einem sicheren Standort läuft in vielen Ländern seit Jahren. Bis ein Endlager bereitsteht, wird der Müll in oberirdischen Zwischenlagern aufbewahrt und gekühlt. Die Verantwortung dafür tragen wir gegenüber vielen künftigen Generationen." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

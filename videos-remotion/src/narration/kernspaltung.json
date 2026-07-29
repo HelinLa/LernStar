@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "In einem winzigen Atomkern steckt unvorstellbar viel Energie. Wie holt man sie heraus? Der Schlüssel ist die Kernspaltung." },
+  { "id": "spaltung", "text": "Man schießt ein langsames Neutron auf einen Uran-235-Kern. Der Kern nimmt das Neutron auf, wird dadurch instabil und zerplatzt. Es entstehen zwei kleinere Kerne, dazu zwei bis drei neue Neutronen – und dabei wird eine Menge Energie frei." },
+  { "id": "energie", "text": "Aber woher kommt diese Energie? Wenn man alle Bruchstücke nach der Spaltung zusammen wiegt, wiegen sie ein winziges bisschen weniger als der ursprüngliche Kern. Diese kleine fehlende Masse verwandelt sich in Energie, nach Einsteins berühmter Formel E gleich m mal c-Quadrat. Weil das c, die Lichtgeschwindigkeit, im Quadrat steht, wird aus wenig Masse sehr viel Energie." },
+  { "id": "vergleich", "text": "Wie gewaltig das ist, zeigt ein Vergleich. Die Spaltung von nur einem Gramm Uran liefert ungefähr so viel Energie wie das Verbrennen von rund drei Tonnen Kohle. Ein winziges Stück Uran ersetzt also einen ganzen Kohlelaster." },
+  { "id": "merksatz", "text": "Merke: Bei der Kernspaltung spaltet ein Neutron einen Uran-235-Kern in zwei kleinere Kerne, neue Neutronen und viel Energie. Die Energie stammt aus der fehlenden Masse, umgewandelt nach E gleich m mal c-Quadrat." },
+  { "id": "transfer", "text": "Diese Energie nutzt man im Kernkraftwerk zur Stromerzeugung und für den Antrieb von U-Booten. Leider wird sie auch für Kernwaffen missbraucht. Damit man die Energie sinnvoll nutzen kann, muss die Spaltung eine kontrollierte Kettenreaktion auslösen." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]

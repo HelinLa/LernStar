@@ -1,0 +1,9 @@
+[
+  { "id": "intro", "text": "Ein Kernkraftwerk liefert viel Energie – aber es birgt auch ein großes Risiko. Was passiert eigentlich, wenn ein Reaktor außer Kontrolle gerät?" },
+  { "id": "kernschmelze", "text": "Ein Reaktor muss ständig gekühlt werden, denn die Kernspaltung erzeugt weiter Wärme, auch wenn man sie herunterregelt. Fällt die Kühlung aus, wird der Reaktor immer heißer. Die Brennstäbe können schmelzen – das nennt man eine Kernschmelze. Dabei kann radioaktives Material aus dem Reaktor entweichen." },
+  { "id": "ereignisse", "text": "Genau das ist zweimal im großen Stil passiert. 1986 lief bei einem Test im Kernkraftwerk Tschernobyl die Reaktion außer Kontrolle. Der Reaktor explodierte und setzte enorme Mengen Radioaktivität frei. 2011 zerstörten ein schweres Erdbeben und ein Tsunami die Kühlung im japanischen Fukushima. Es kam zu mehreren Kernschmelzen." },
+  { "id": "folgen", "text": "Die Folgen sind weiträumig und langfristig. Die freigesetzte Strahlung verteilt sich mit dem Wind über große Gebiete und bleibt dort lange. Rund um die Reaktoren entstanden Sperrzonen, die bis heute nicht bewohnbar sind. Viele tausend Menschen mussten ihre Heimat für immer verlassen." },
+  { "id": "merksatz", "text": "Merke: Fällt die Kühlung eines Reaktors aus, droht eine Kernschmelze mit Freisetzung von Radioaktivität. Die Unfälle von Tschernobyl und Fukushima haben gezeigt, wie weitreichend und langanhaltend die Folgen sein können." },
+  { "id": "transfer", "text": "Nach diesen Unfällen wurden die Sicherheitsvorkehrungen stark verschärft: mehrfache Schutzhüllen und redundante Notkühlsysteme sollen eine Kernschmelze verhindern. Trotzdem prägen die Risiken bis heute die Diskussion über die Kernenergie. Ein weiteres ungelöstes Problem ist der radioaktive Müll." },
+  { "id": "outro", "text": "LernStar. Physik verstehen, Schritt für Schritt." }
+]
