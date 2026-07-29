@@ -194,6 +194,7 @@ import { Kernkraftwerk, KERNKRAFTWERK_DURATION } from './videos/Kernkraftwerk';
 import { Reaktorunfaelle, REAKTORUNFAELLE_DURATION } from './videos/Reaktorunfaelle';
 import { Endlagerung, ENDLAGERUNG_DURATION } from './videos/Endlagerung';
 import { Kernfusion, KERNFUSION_DURATION } from './videos/Kernfusion';
+import { BewertungKernenergie, BEWERTUNG_KERNENERGIE_DURATION } from './videos/BewertungKernenergie';
 import { Waermekraftwerk, WAERMEKRAFTWERK_DURATION } from './videos/Waermekraftwerk';
 import { FossileEnergie, FOSSILE_ENERGIE_DURATION } from './videos/FossileEnergie';
 import { RegenerativeEnergie, REGENERATIVE_ENERGIE_DURATION } from './videos/RegenerativeEnergie';
@@ -524,6 +525,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="Reaktorunfaelle" component={Reaktorunfaelle} durationInFrames={REAKTORUNFAELLE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Endlagerung" component={Endlagerung} durationInFrames={ENDLAGERUNG_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Kernfusion" component={Kernfusion} durationInFrames={KERNFUSION_DURATION} fps={30} width={1920} height={1080} />
+      <Composition id="BewertungKernenergie" component={BewertungKernenergie} durationInFrames={BEWERTUNG_KERNENERGIE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="Waermekraftwerk" component={Waermekraftwerk} durationInFrames={WAERMEKRAFTWERK_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="FossileEnergie" component={FossileEnergie} durationInFrames={FOSSILE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />
       <Composition id="RegenerativeEnergie" component={RegenerativeEnergie} durationInFrames={REGENERATIVE_ENERGIE_DURATION} fps={30} width={1920} height={1080} />
