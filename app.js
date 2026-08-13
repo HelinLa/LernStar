@@ -1617,26 +1617,182 @@ function _lmCardHTML(topic, modNum, chapterName, exercises) {
 function _lmDiagnostikCardHTML(ex) {
   const done = state.progress && state.progress[`${state.gradeId}_${state.subjectId}_${ex.id}`] != null;
   const cleanTitle = String(ex.title || '').replace(/^\s*🆕\s*NEUES KONZEPT\s*·\s*/i, '');
+  const start = ex.diagnose
+    ? `startDiagnose('${_lmJs(ex.id)}')`
+    : `startExercise('${_lmJs(ex.id)}')`;
   return `
     <div class="lm-card-head lm-diag-head">
       <span class="lm-num">🆕 Neues Konzept · Diagnose-Lernzyklus</span>
       <h4 class="lm-title">${cleanTitle}</h4>
     </div>
     ${ex.desc ? `<p class="lm-diag-desc">${ex.desc}</p>` : ''}
-    <ol class="lm-steps">
-      <li class="lm-step ${done ? 'lm-done' : 'lm-current'}">
-        <div class="lm-step-rail"><span class="lm-step-emoji" aria-hidden="true">🔎</span></div>
-        <div class="lm-step-main">
-          <div class="lm-step-top">
-            <span class="lm-step-label">Erst vorhersagen, dann beobachten</span>
-            <span class="lm-step-badge">${done ? '✓ erledigt' : 'dran'}</span>
-          </div>
-          <p class="lm-step-desc">Diese Aufgabe deckt typische Denkfehler auf: Sag zuerst eine Vorhersage – dann prüfst du sie durch Beobachten.</p>
-          <button class="lm-step-btn" type="button" onclick="startExercise('${_lmJs(ex.id)}')">
-            <span class="lm-step-btn-ico" aria-hidden="true">🔎</span>Diagnose starten</button>
-        </div>
-      </li>
-    </ol>`;
+    <div class="diag-flow" aria-hidden="true">
+      <span class="diag-flow-step"><b>🔮</b> Vermutung</span>
+      <span class="diag-flow-arrow">→</span>
+      <span class="diag-flow-step"><b>🧲</b> Experiment</span>
+      <span class="diag-flow-arrow">→</span>
+      <span class="diag-flow-step"><b>💡</b> Aha-Erlebnis</span>
+    </div>
+    <button class="lm-step-btn diag-start-btn" type="button" onclick="${start}">
+      <span class="lm-step-btn-ico" aria-hidden="true">🔮</span>${done ? 'Diagnose wiederholen' : 'Diagnose starten'}</button>`;
+}
+
+// ============================================================
+// DIAGNOSE-LERNZYKLUS  (Predict → Observe → Explain)
+// Vermutung → echtes Experiment (Simulation) → Vergleich/Aha.
+// Kein „richtig/falsch": das Experiment ist der Schiedsrichter.
+// ============================================================
+let _diag = null;
+
+function _diagMaterials() {
+  // Single Source of Truth: exakt dieselben Materialien wie die Simulation
+  return (typeof _MSF_MAT !== 'undefined' && Array.isArray(_MSF_MAT)) ? _MSF_MAT : [];
+}
+
+function startDiagnose(exId) {
+  const grade = CONTENT[state.gradeId];
+  const subject = grade?.subjects.find(s => s.id === state.subjectId);
+  const ex = subject?.exercises.find(e => e.id === exId);
+  if (!ex || !ex.diagnose) { startExercise(exId); return; }
+
+  document.getElementById('diagOverlay')?.remove();
+  _diag = { exId, cfg: ex.diagnose, pred: {}, opened: false };
+  const ov = document.createElement('div');
+  ov.id = 'diagOverlay';
+  ov.className = 'sim-overlay diag-overlay';
+  document.body.appendChild(ov);
+  _diagRenderVermutung();
+}
+
+function closeDiagnose() {
+  document.getElementById('diagOverlay')?.remove();
+  _diag = null;
+}
+
+function _diagBox(inner) {
+  const ov = document.getElementById('diagOverlay');
+  if (ov) ov.innerHTML = `<div class="sim-box diag-box">
+      <button class="sim-x" onclick="closeDiagnose()">✕</button>${inner}</div>`;
+}
+
+// ── Schritt 1: Vermutung (ohne richtig/falsch) ──────────────
+function _diagRenderVermutung() {
+  const c = _diag.cfg;
+  const chips = _diagMaterials().map(m =>
+    `<button type="button" class="diag-chip${_diag.pred[m.k] ? ' picked' : ''}" data-k="${m.k}"
+       onclick="_diagTogglePred('${m.k}')">${m.ic} ${m.name}</button>`).join('');
+  _diagBox(`
+    <div class="diag-steps-head">
+      <span class="diag-step-pill active">1 · 🔮 Vermutung</span>
+      <span class="diag-step-pill">2 · 🧲 Experiment</span>
+      <span class="diag-step-pill">3 · 💡 Aha</span>
+    </div>
+    <h3 class="sim-h3">🔮 Deine Vermutung</h3>
+    <p class="diag-intro">${c.intro || ''}</p>
+    <div class="diag-q">${c.frage || ''}</div>
+    <p class="diag-hint">${c.hinweis || ''}</p>
+    <div class="diag-chips">${chips}</div>
+    <div class="diag-actions">
+      <button class="sim-btn primary" type="button" onclick="_diagGoExperiment()">Weiter zum Experiment →</button>
+    </div>`);
+}
+function _diagTogglePred(k) {
+  _diag.pred[k] = !_diag.pred[k];
+  const btn = document.querySelector(`#diagOverlay .diag-chip[data-k="${k}"]`);
+  if (btn) btn.classList.toggle('picked', !!_diag.pred[k]);
+}
+
+// ── Schritt 2: Experiment (die Simulation ist der Schiedsrichter) ─
+function _diagGoExperiment() { _diagRenderExperiment(); }
+function _diagRenderExperiment() {
+  const c = _diag.cfg;
+  _diagBox(`
+    <div class="diag-steps-head">
+      <span class="diag-step-pill done">1 · 🔮 Vermutung</span>
+      <span class="diag-step-pill active">2 · 🧲 Experiment</span>
+      <span class="diag-step-pill">3 · 💡 Aha</span>
+    </div>
+    <h3 class="sim-h3">🧲 Jetzt prüfst du es selbst</h3>
+    <p class="diag-intro">Öffne das Experiment und halte <b>jedes</b> Ding an den Magneten. Beobachte genau:
+      Wird es angezogen oder nicht? Teste ruhig <b>alle</b> Materialien – komm dann hierher zurück.</p>
+    <div class="diag-exp-cta">
+      <button class="sim-btn primary diag-exp-btn" type="button" onclick="_diagOpenExperiment()">🧲 Experiment öffnen</button>
+    </div>
+    <p class="diag-hint" id="diagExpNote">Tipp: Im Experiment tippst du oben ein Material an – du siehst sofort, ob der Magnet es anzieht.</p>
+    <div class="diag-actions">
+      <button class="sim-btn" type="button" onclick="_diagRenderVermutung()">← zurück</button>
+      <button class="sim-btn primary" type="button" id="diagToReflect" onclick="_diagRenderVergleich()">Ich habe getestet → vergleichen</button>
+    </div>`);
+  _diagSyncExpBtn();
+}
+function _diagOpenExperiment() {
+  _diag.opened = true;
+  if (typeof openPhysicsSim === 'function') openPhysicsSim(_diag.cfg.experiment);
+  else if (typeof openExperiment === 'function') openExperiment(_diag.cfg.experiment);
+  _diagSyncExpBtn();
+}
+function _diagSyncExpBtn() {
+  const note = document.getElementById('diagExpNote');
+  if (_diag.opened && note) {
+    note.innerHTML = '✅ Gut – wenn du alle Materialien getestet hast, geht es unten weiter zum Vergleich.';
+  }
+}
+
+// ── Schritt 3: Vergleich Vermutung ↔ Experiment → Aha ───────
+function _diagRenderVergleich() {
+  const c = _diag.cfg;
+  const mats = _diagMaterials();
+  let surprises = 0, metalSurprise = false;
+  const rows = mats.map(m => {
+    const guessed = !!_diag.pred[m.k];      // hat Kind Anziehung vermutet?
+    const real = !!m.mag;                    // Experiment-Ergebnis (das Kind hat es gesehen)
+    const match = guessed === real;
+    if (!match) { surprises++; if (!real && (m.k === 'alu' || m.k === 'kupfer')) metalSurprise = true; }
+    const guessTxt = guessed ? 'wird angezogen' : 'wird nicht angezogen';
+    const realTxt = real ? '🧲 angezogen' : '🚫 nicht angezogen';
+    return `<tr class="${match ? 'diag-match' : 'diag-surprise'}">
+        <td class="diag-mat">${m.ic} ${m.name}</td>
+        <td class="diag-guess">${guessTxt}</td>
+        <td class="diag-real">${realTxt}</td>
+        <td class="diag-verdict">${match ? '✓ passt zu deiner Vermutung' : '💡 Überraschung!'}</td>
+      </tr>`;
+  }).join('');
+
+  const ahaLine = surprises === 0
+    ? 'Stark – deine Vermutungen haben alle zum Experiment gepasst! 🎯'
+    : (metalSurprise
+        ? c.ahaMetall
+        : `Du hattest bei <b>${surprises}</b> ${surprises === 1 ? 'Ding' : 'Dingen'} eine Überraschung – genau so lernt man in den Naturwissenschaften: am Experiment.`);
+
+  _diagBox(`
+    <div class="diag-steps-head">
+      <span class="diag-step-pill done">1 · 🔮 Vermutung</span>
+      <span class="diag-step-pill done">2 · 🧲 Experiment</span>
+      <span class="diag-step-pill active">3 · 💡 Aha</span>
+    </div>
+    <h3 class="sim-h3">🔎 Vermutung ↔ Experiment</h3>
+    <p class="diag-intro">Vergleiche, was du <b>vermutet</b> hast, mit dem, was du im <b>Experiment</b> beobachtet hast.</p>
+    <div class="diag-table-wrap">
+      <table class="diag-table">
+        <thead><tr><th>Ding</th><th>🔮 deine Vermutung</th><th>🧲 im Experiment</th><th></th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    <div class="diag-aha">💡 <b>Aha-Erlebnis:</b> ${ahaLine}</div>
+    <div class="diag-regel"><b>Das steckt dahinter:</b><br>${c.grundvorstellung || ''}</div>
+    <div class="diag-actions">
+      <button class="sim-btn" type="button" onclick="_diagOpenExperiment()">🧲 nochmal experimentieren</button>
+      <button class="sim-btn primary" type="button" onclick="_diagFinish()">Fertig ✓</button>
+    </div>`);
+}
+function _diagFinish() {
+  const key = `${state.gradeId}_${state.subjectId}_${_diag.exId}`;
+  state.progress[key] = Math.max(state.progress[key] || 0, 100);
+  localStorage.setItem('ls_progress', JSON.stringify(state.progress));
+  closeDiagnose();
+  const grade = CONTENT[state.gradeId];
+  const subject = grade?.subjects.find(s => s.id === state.subjectId);
+  if (subject) renderLernmodule(subject);
 }
 
 function renderLernmodule(subject) {

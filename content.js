@@ -3266,7 +3266,15 @@ const CONTENT = { ...(typeof GS_CONTENT !== 'undefined' ? GS_CONTENT : {}),
         ],
         exercises:[
           { id:'e_diag_magnet', type:'Magnetismus', diff:1, diagnostik:true, title:'🆕 NEUES KONZEPT · Lernzyklus-Diagnose (Magnet)',
-            desc:'★ Beispiel für das neue diagnostische Konzept (Klasse 5): Sag zuerst eine Vorhersage – dann beobachte. Die falschen Antworten sind hier die typischen Denkfehler.',
+            desc:'★ Beispiel für das neue diagnostische Konzept (Klasse 5): Erst vermuten – dann im Experiment selbst überprüfen. Kein „richtig/falsch", sondern ein echtes Aha-Erlebnis.',
+            diagnose:{
+              experiment:'magnet-stoffe',
+              intro:'So läuft es ab: Zuerst stellst du eine Vermutung auf – ganz ohne richtig oder falsch. Danach prüfst du sie <b>selbst im Experiment</b>. Am Ende vergleichst du: Hattest du recht – oder gab es eine Überraschung?',
+              frage:'Welche dieser Dinge zieht ein Magnet an?',
+              hinweis:'Tippe alle an, von denen du <b>glaubst</b>, dass der Magnet sie anzieht. Du kannst dich nicht vertun – es ist nur deine Vermutung.',
+              grundvorstellung:'Nur <b>Eisen, Nickel und Kobalt</b> (und <b>Stahl</b>, weil er viel Eisen enthält) sind magnetisch. „Metall" und „magnetisch" sind <b>nicht</b> dasselbe: Aluminium, Kupfer, Gold und Silber sind zwar Metalle – der Magnet zieht sie aber <b>nicht</b> an.',
+              ahaMetall:'Viele denken: „Metall = magnetisch." Das Experiment zeigt: Auch glänzende Metalle wie Aluminium und Kupfer werden <b>nicht</b> angezogen.'
+            },
             questions:[
               { q:'Du hältst einen Magneten an eine leere Getränkedose aus Aluminium. Was beobachtest du?', hint:'Aluminium ist ein Metall – aber sind wirklich alle Metalle magnetisch?', options:['Die Dose haftet fest am Magneten','Die Dose haftet gar nicht','Die Dose haftet nur an einem Pol','Die Dose wird selbst zum Magneten'], correct:1, explanation:'Aluminium ist zwar ein Metall, aber nicht magnetisch. Nur Eisen, Nickel und Kobalt (und Stahl) werden angezogen. Typischer Denkfehler: „alle Metalle sind magnetisch".' },
               { q:'Welche Gruppe enthält nur magnetische Stoffe?', hint:'Merke dir die drei – der Rest ist meist nicht magnetisch.', options:['Eisen, Nickel, Kobalt','Kupfer, Aluminium, Gold','Holz, Plastik, Glas','Silber, Zinn, Blei'], correct:0, explanation:'Magnetisch (ferromagnetisch) sind Eisen, Nickel und Kobalt – und Stahl, weil er Eisen enthält. Kupfer, Aluminium und Gold sind nicht magnetisch.' },

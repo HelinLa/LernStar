@@ -1026,6 +1026,59 @@ ul { list-style: none; }
 }
 .lm-card-diag .lm-num { color:#047857; background:#d1fae5; }
 .lm-diag-desc { margin:2px 0 14px; color:var(--text-soft,#475569); font-size:.95rem; line-height:1.5; }
+
+/* ── Diagnose-Karte: Ablauf-Vorschau + Start ── */
+.diag-flow { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:2px 0 16px; }
+.diag-flow-step { display:inline-flex; align-items:center; gap:6px; font-weight:700; font-size:.9rem;
+  color:#065f46; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:999px; padding:6px 13px; }
+.diag-flow-step b { font-size:1.05rem; font-weight:400; }
+.diag-flow-arrow { color:#10b981; font-weight:800; }
+.diag-start-btn { background:#10b981; }
+.diag-start-btn:hover { background:#059669; }
+
+/* ── Diagnose-Overlay (Predict → Observe → Explain) ── */
+.diag-box { max-width:820px !important; }
+.diag-steps-head { display:flex; flex-wrap:wrap; gap:8px; margin:2px 0 14px; }
+.diag-step-pill { font-size:.8rem; font-weight:700; color:#94a3b8; background:#f1f5f9;
+  border:1px solid #e2e8f0; border-radius:999px; padding:5px 12px; }
+.diag-step-pill.active { color:#065f46; background:#d1fae5; border-color:#6ee7b7; }
+.diag-step-pill.done   { color:#0f766e; background:#f0fdfa; border-color:#99f6e4; }
+.diag-intro { color:#475569; line-height:1.55; margin:4px 0 12px; }
+.diag-q { font-size:1.18rem; font-weight:800; color:#0f172a; margin:6px 0 4px; }
+.diag-hint { color:#64748b; font-size:.92rem; margin:0 0 14px; }
+.diag-chips { display:flex; flex-wrap:wrap; gap:10px; margin:6px 0 8px; }
+.diag-chip { font-size:1rem; font-weight:700; color:#334155; background:#fff;
+  border:2px solid #e2e8f0; border-radius:14px; padding:11px 16px; cursor:pointer; transition:.14s; }
+.diag-chip:hover { border-color:#6ee7b7; }
+.diag-chip.picked { color:#065f46; background:#d1fae5; border-color:#10b981;
+  box-shadow:0 2px 8px rgba(16,185,129,.22); }
+.diag-chip.picked::after { content:' 🧲'; }
+.diag-actions { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-top:20px; }
+.diag-actions .primary { margin-left:auto; }
+.diag-exp-cta { text-align:center; margin:16px 0 6px; }
+.diag-exp-btn { font-size:1.08rem; padding:14px 26px; }
+
+/* ── Vergleich Vermutung ↔ Experiment ── */
+.diag-table-wrap { overflow-x:auto; margin:8px 0 14px; }
+.diag-table { width:100%; border-collapse:collapse; font-size:.94rem; }
+.diag-table th { text-align:left; font-size:.82rem; color:#64748b; font-weight:700;
+  padding:8px 10px; border-bottom:2px solid #e2e8f0; }
+.diag-table td { padding:9px 10px; border-bottom:1px solid #eef2f6; vertical-align:middle; }
+.diag-mat { font-weight:700; color:#0f172a; white-space:nowrap; }
+.diag-guess { color:#64748b; }
+.diag-real { font-weight:700; color:#0f172a; white-space:nowrap; }
+.diag-verdict { font-weight:700; white-space:nowrap; }
+.diag-match   .diag-verdict { color:#059669; }
+.diag-surprise { background:#fffbeb; }
+.diag-surprise .diag-verdict { color:#b45309; }
+.diag-aha { background:#ecfdf5; border:1px solid #a7f3d0; border-radius:12px;
+  padding:14px 16px; color:#065f46; line-height:1.55; margin:6px 0 12px; }
+.diag-regel { background:#f8fafc; border-left:4px solid #10b981; border-radius:8px;
+  padding:13px 16px; color:#334155; line-height:1.6; }
+@media (max-width:560px){
+  .diag-flow-arrow { display:none; }
+  .diag-q { font-size:1.06rem; }
+}
 .lm-card-head { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:14px; }
 .lm-num {
   flex-shrink:0;
