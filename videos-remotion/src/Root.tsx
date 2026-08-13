@@ -15,10 +15,13 @@ import { LichtUndSehen, LICHT_UND_SEHEN_DURATION } from './videos/LichtUndSehen'
 import { Schatten, SCHATTEN_DURATION } from './videos/Schatten';
 import { GegenstandSehen, GEGENSTAND_SEHEN_DURATION } from './videos/GegenstandSehen';
 import { Lichtausbreitung, LICHTAUSBREITUNG_DURATION } from './videos/Lichtausbreitung';
+import { Magnetismus, MAGNETISMUS_DURATION } from './videos/Magnetismus';
+import { Stromkreis, STROMKREIS_DURATION } from './videos/Stromkreis';
 import { SchattenGroesse, SCHATTEN_GROESSE_DURATION } from './videos/SchattenGroesse';
 import { KernHalbschatten, KERN_HALBSCHATTEN_DURATION } from './videos/KernHalbschatten';
 import { MagneteFelder, MAGNETE_FELDER_DURATION } from './videos/MagneteFelder';
 import { MagnetStoffe, MAGNET_STOFFE_DURATION } from './videos/MagnetStoffe';
+import { MagnetProblem, MAGNET_PROBLEM_DURATION } from './videos/MagnetProblem';
 import { Magnetpole, MAGNETPOLE_DURATION } from './videos/Magnetpole';
 import { Magnetfeld, MAGNETFELD_DURATION } from './videos/Magnetfeld';
 import { Kompass, KOMPASS_DURATION } from './videos/Kompass';
@@ -213,6 +216,14 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Composition
+        id="MagnetProblem"
+        component={MagnetProblem}
+        durationInFrames={MAGNET_PROBLEM_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
         id="Traegheit"
         component={Traegheit}
         durationInFrames={TRAEGHEIT_DURATION}
@@ -328,6 +339,22 @@ export const RemotionRoot: React.FC = () => {
         id="Lichtausbreitung"
         component={Lichtausbreitung}
         durationInFrames={LICHTAUSBREITUNG_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Magnetismus"
+        component={Magnetismus}
+        durationInFrames={MAGNETISMUS_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="Stromkreis"
+        component={Stromkreis}
+        durationInFrames={STROMKREIS_DURATION}
         fps={30}
         width={1920}
         height={1080}

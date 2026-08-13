@@ -2145,7 +2145,7 @@ function _fkAct(i) {
   if (a.type === 'diag') { startDiagnose(a.id); return; }
   if (a.type === 'protokoll') { openArbeitsblatt(a.exp); return; }
   if (a.type === 'ueben') { startExercise(a.id); return; }
-  if (a.type === 'problemvideo') { _fkPlayProblem(); return; }
+  if (a.type === 'problemvideo') { playLernvideo('magnet-problem.mp4', '🎬 Das Problem: Auf dem Schrottplatz'); return; }
   if (a.type === 'abschluss') { _fkAbschluss(); return; }
   // info: Modal zeigen und Kreis auffrischen (Schritt gilt als besucht)
   _fkInfo(`${s.ic} ${s.t}`, a.body);
