@@ -1886,8 +1886,7 @@ function _fkStepsFor(subject) {
   };
   const steps = [
     { n: 1, ic: '🎯', t: 'Problem & Frage', d: 'Ein echtes Problem aus dem Alltag – daraus wird unsere Forscherfrage.',
-      act: { type: 'info',
-        body: _fkSceneHTML() + '<div class="fk-problem">' + T.problem + '</div><p class="fk-quote">🔍 Unsere Forscherfrage:<br>„' + T.leitfrage + '"</p><p>Diese Frage beantwortest du am Ende selbst – Schritt für Schritt.</p>' } },
+      act: { type: 'problemvideo' } },
     { n: 2, ic: '🔎', t: 'Vorwissen & Ideen', d: 'Was weißt du schon – und was glaubst du? Deine ersten Vermutungen zählen.',
       act: { type: 'info', body: '<p>Bevor du forschst, sammelst du, was du schon weißt – und was du <b>glaubst</b>:</p><ul class="fk-ul"><li>Ein Magnet hat einen <b>Nordpol</b> und einen <b>Südpol</b>.</li><li>Er zieht manche Dinge an, ohne sie zu berühren.</li><li>Aber: Zieht er <b>alle</b> Metalle an? Was glaubst du?</li></ul><p>Diese Vermutung prüfst du gleich im Experiment – nicht raten lassen, sondern <b>testen</b>.</p>' } },
     { n: 3, ic: '🔮', t: 'Vermuten & Forschen', d: 'Stelle eine Hypothese auf und prüfe sie im Experiment – so gewinnt man Erkenntnisse.', heart: true,
@@ -1924,10 +1923,9 @@ function _fkMarkVisited(n) {
   try { localStorage.setItem(`ls_fk_${state.gradeId}_${state.subjectId}`, JSON.stringify(v)); } catch (e) { }
 }
 
-// Animierte Schrottplatz-Szene (SVG, läuft in Schleife) – zeigt das Alltagsproblem
-function _fkSceneHTML() {
+// Schrottplatz-Szene als reines SVG (Bewegung wird über Beat-Klassen gesteuert)
+function _fkSceneSVG() {
   return `
-  <div class="fk-scene">
     <svg class="fk-scene-svg" viewBox="0 0 420 210" role="img"
       aria-label="Schrottplatz: der Kran-Magnet hebt Eisen und Stahl, Aluminium und Kupfer bleiben liegen">
       <defs>
@@ -1958,12 +1956,87 @@ function _fkSceneHTML() {
       <g class="fk-non fk-non-a"><text x="300" y="174" text-anchor="middle" font-size="28">🥫</text></g>
       <g class="fk-non fk-non-b"><text x="342" y="172" text-anchor="middle" font-size="24">🧵</text></g>
       <text class="fk-x" x="321" y="140" text-anchor="middle" font-size="16">🚫</text>
-    </svg>
-    <div class="fk-scene-caps">
-      <span class="fk-cap-yes">🧲 Eisen &amp; Stahl → werden gehoben</span>
-      <span class="fk-cap-no">🚫 Alu &amp; Kupfer → bleiben liegen</span>
-    </div>
-  </div>`;
+    </svg>`;
+}
+
+// ── Gesprochenes Kurz-„Video" des Alltagsproblems ─────────────
+let _fkVoice = null;
+function _fkPickVoice() {
+  const vs = (window.speechSynthesis && window.speechSynthesis.getVoices()) || [];
+  const de = vs.filter(v => v.lang === 'de-DE' || (v.lang || '').startsWith('de'));
+  if (!de.length) return null;
+  const fem = /katja|hedda|anna|petra|sabine|marie|klara|julia|amala|female/i;
+  const male = /stefan|conrad|markus|yannick|hans|karl|georg|male/i;
+  return de.find(v => fem.test(v.name) && /(natural|neural|online)/i.test(v.name))
+    || de.find(v => fem.test(v.name))
+    || de.find(v => /(natural|neural|online)/i.test(v.name) && !male.test(v.name))
+    || de.find(v => !male.test(v.name))
+    || de[0] || null;
+}
+function _fkSpeak(text, onend) {
+  if (!('speechSynthesis' in window)) { setTimeout(onend, 2000); return; }
+  if (!_fkVoice) _fkVoice = _fkPickVoice();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'de-DE'; u.rate = 1.0; u.pitch = 1.05;
+  if (_fkVoice) u.voice = _fkVoice;
+  u.onend = onend; u.onerror = onend;
+  speechSynthesis.speak(u);
+}
+function _fkPlayProblem() {
+  document.getElementById('fkProblemVideo')?.remove();
+  const m = document.createElement('div');
+  m.id = 'fkProblemVideo'; m.className = 'sim-overlay';
+  m.innerHTML = `<div class="sim-box diag-box fk-vid-box">
+      <button class="sim-x" onclick="_fkCloseProblem()">✕</button>
+      <h3 class="sim-h3">🎬 Das Problem</h3>
+      <div id="fkVidScene" class="fk-scene fk-vid">
+        <div class="fk-vid-stage">
+          ${_fkSceneSVG()}
+          <div class="fk-vid-frage" id="fkVidFrage">🔍 Welche Stoffe zieht ein Magnet an – und welche nicht?</div>
+        </div>
+      </div>
+      <div id="fkVidCap" class="fk-vid-cap">🔊 Ton an – die Szene wird dir gleich vorgelesen…</div>
+      <div class="fk-vid-controls">
+        <button class="sim-btn primary" id="fkVidPlay" onclick="_fkRunProblem()">▶ Abspielen</button>
+      </div>
+    </div>`;
+  document.body.appendChild(m);
+  _fkRunProblem();
+}
+function _fkCloseProblem() {
+  try { speechSynthesis.cancel(); } catch (e) { }
+  document.getElementById('fkProblemVideo')?.remove();
+}
+function _fkRunProblem() {
+  const scene = document.getElementById('fkVidScene');
+  const cap = document.getElementById('fkVidCap');
+  const play = document.getElementById('fkVidPlay');
+  if (!scene) return;
+  try { speechSynthesis.cancel(); } catch (e) { }
+  scene.className = 'fk-scene fk-vid';           // zurücksetzen
+  if (play) { play.disabled = true; play.textContent = '⏵ läuft…'; }
+  const segs = [
+    { cls: 'beat-power', cap: '🏗️ Ein Kran mit einem starken Magneten fährt über den Schrottplatz.',
+      text: 'Schau mal auf den Schrottplatz. Ein riesiger Kran hat einen starken Magneten.' },
+    { cls: 'beat-lift', cap: '🧲 Eisen und Stahl werden nach oben gezogen.',
+      text: 'Er fährt über den Schrott und zieht die schweren Eisen- und Stahlteile einfach nach oben.' },
+    { cls: 'beat-stay', cap: '🚫 Alu-Dose und Kupferkabel bleiben liegen.',
+      text: 'Aber die Alu-Dose und das Kupferkabel bleiben einfach liegen. Die zieht der Magnet nicht an.' },
+    { cls: 'beat-frage', cap: '🔍 Welche Stoffe zieht ein Magnet an – und welche nicht?',
+      text: 'Und darum geht es in unserer Forscherfrage: Welche Stoffe zieht ein Magnet an, und welche nicht?' }
+  ];
+  let i = 0;
+  (function next() {
+    if (i >= segs.length) { _fkVidDone(); return; }
+    const s = segs[i++];
+    scene.classList.add(s.cls);
+    if (cap) cap.innerHTML = s.cap;
+    _fkSpeak(s.text, next);
+  })();
+}
+function _fkVidDone() {
+  const play = document.getElementById('fkVidPlay');
+  if (play) { play.disabled = false; play.textContent = '↻ Nochmal abspielen'; }
 }
 
 function renderForscherkreis(subject) {
@@ -2072,6 +2145,7 @@ function _fkAct(i) {
   if (a.type === 'diag') { startDiagnose(a.id); return; }
   if (a.type === 'protokoll') { openArbeitsblatt(a.exp); return; }
   if (a.type === 'ueben') { startExercise(a.id); return; }
+  if (a.type === 'problemvideo') { _fkPlayProblem(); return; }
   if (a.type === 'abschluss') { _fkAbschluss(); return; }
   // info: Modal zeigen und Kreis auffrischen (Schritt gilt als besucht)
   _fkInfo(`${s.ic} ${s.t}`, a.body);
