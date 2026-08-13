@@ -1328,7 +1328,7 @@ function renderSubject() {
     const es = document.getElementById('experimentsSection'); if (es) es.style.display = 'none';
     const xs = document.getElementById('exercisesSection');   if (xs) xs.style.display = 'none';
     if (lmSection) lmSection.style.display = '';
-    renderLernmodule(subject);
+    renderPhysikZyklus(subject);
     return;
   }
   // Andere Fächer/Schulformen: bestehende Darstellung, Lernmodul-Sektion aus
@@ -1475,7 +1475,7 @@ function lmMark(topicKey, step) {
   _lmSaveStore(o);
   const grade = CONTENT[state.gradeId];
   const subject = grade && grade.subjects.find(s => s.id === state.subjectId);
-  if (subject) renderLernmodule(subject);
+  if (subject) renderPhysikZyklus(subject);
 }
 
 function _lmJs(s) { return String(s || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"); }
@@ -1793,7 +1793,7 @@ function _diagFinish() {
   closeDiagnose();
   const grade = CONTENT[state.gradeId];
   const subject = grade?.subjects.find(s => s.id === state.subjectId);
-  if (subject) renderLernmodule(subject);
+  if (subject) renderPhysikZyklus(subject);
 }
 
 function renderLernmodule(subject) {
@@ -1827,6 +1827,215 @@ function renderLernmodule(subject) {
     card.innerHTML = _lmCardHTML(t, modNum, currentChapter, exercises);
     list.appendChild(card);
   });
+}
+
+// ============================================================
+// FORSCHERKREIS – Lernzyklus für Physik (Naturwissenschaften)
+// Die 7 Prozessfunktionen als klickbarer Kreis. Schritt 3 ist das
+// Herzstück: Vermuten → Experiment → Beobachten (Diagnose-Flow).
+// ============================================================
+let _fkSteps = [];
+
+function renderPhysikZyklus(subject) {
+  const sec = document.getElementById('lernmoduleSection');
+  if (!sec) return;
+  const view = state._physView || 'zyklus';
+  sec.innerHTML = `
+    <div class="pz-head">
+      <div class="pz-head-txt">
+        <h2 class="section-heading" style="margin:0">🔬 Dein Forscherkreis</h2>
+        <p class="lernmodule-intro" style="margin:4px 0 0">Du forschst aktiv: erst vermuten, dann am Experiment prüfen. Die App passt sich dir an – du bleibst im Mittelpunkt.</p>
+      </div>
+      <div class="pz-toggle" role="tablist">
+        <button class="pz-tab ${view === 'zyklus' ? 'active' : ''}" role="tab" onclick="setPhysView('zyklus')">🔄 Zyklusansicht</button>
+        <button class="pz-tab ${view === 'liste' ? 'active' : ''}" role="tab" onclick="setPhysView('liste')">☰ Listenansicht</button>
+      </div>
+    </div>
+    <div id="fkWheelWrap" style="display:${view === 'zyklus' ? 'block' : 'none'}"></div>
+    <div id="lmListWrap" style="display:${view === 'liste' ? 'block' : 'none'}">
+      <div class="lernmodule-list" id="lernmoduleList"></div>
+    </div>`;
+  if (view === 'zyklus') renderForscherkreis(subject);
+  else renderLernmodule(subject);
+}
+function setPhysView(v) {
+  state._physView = v;
+  const g = CONTENT[state.gradeId];
+  const s = g && g.subjects.find(x => x.id === state.subjectId);
+  if (s) renderPhysikZyklus(s);
+}
+
+// Beispiel-Thema (Magnetismus). Später pro Thema konfigurierbar.
+function _fkStepsFor(subject) {
+  const key = id => `${state.gradeId}_${state.subjectId}_${id}`;
+  const p = state.progress || {};
+  const visited = _fkVisited();
+  const T = {
+    theme: 'Magnetismus · Welche Stoffe zieht ein Magnet an?',
+    diagId: 'e_diag_magnet', exp: 'magnet-stoffe', uebenId: 'e2'
+  };
+  const steps = [
+    { n: 1, ic: '🎯', t: 'Orientieren & Fokus', d: 'Worum geht es? Du findest heraus, welche Dinge ein Magnet anzieht – und welche nicht.',
+      act: { type: 'info', body: '<p>In diesem Thema klärst du eine echte Forscherfrage:</p><p class="fk-quote">„Welche Stoffe zieht ein Magnet an – und welche nicht?"</p><p>Am Ende kannst du erklären, warum ein Magnet an der Kühlschranktür hält, aber nicht an einer Alu-Dose.</p>' } },
+    { n: 2, ic: '🔎', t: 'Voraussetzungen klären', d: 'Was weißt du schon? Ein Magnet hat zwei Pole und zieht manche Dinge an.',
+      act: { type: 'info', body: '<p>Das brauchst du für den Start:</p><ul class="fk-ul"><li>Ein Magnet hat einen <b>Nordpol</b> und einen <b>Südpol</b>.</li><li>Magnete ziehen manche Dinge an, ohne sie zu berühren.</li><li>Du kennst Materialien wie Eisen, Aluminium, Kupfer, Holz, Plastik, Glas.</li></ul><p>Alles dabei? Dann kann es losgehen!</p>' } },
+    { n: 3, ic: '🔮', t: 'Vermuten & Erforschen', d: 'Stelle eine Vermutung auf und prüfe sie im Experiment – das Herz der Naturwissenschaft.', heart: true,
+      act: { type: 'diag', id: T.diagId },
+      done: p[key(T.diagId)] != null },
+    { n: 4, ic: '📄', t: 'Sichern (Protokoll)', d: 'Halte deine Beobachtung im Protokoll fest und formuliere die Regel.',
+      act: { type: 'protokoll', exp: T.exp } },
+    { n: 5, ic: '✏️', t: 'Üben', d: 'Übe mit Aufgaben – die Hilfen werden Schritt für Schritt weniger.',
+      act: { type: 'ueben', id: T.uebenId },
+      done: p[key(T.uebenId)] != null },
+    { n: 6, ic: '🧩', t: 'Anwenden & Vernetzen', d: 'Wo begegnet dir das im Alltag? Kühlschrankmagnet, Kompass, Schrott-Trennung.',
+      act: { type: 'info', body: '<p>Dein Wissen im Alltag:</p><ul class="fk-ul"><li><b>Kühlschrankmagnet:</b> Die Tür ist aus Stahl (enthält Eisen) → der Magnet hält.</li><li><b>Kompass:</b> Eine kleine Magnetnadel richtet sich im Erdmagnetfeld aus.</li><li><b>Schrott-Trennung:</b> Ein großer Magnet zieht Eisen aus dem Müll – Alu und Kupfer bleiben liegen.</li></ul>' } },
+    { n: 7, ic: '✅', t: 'Lernstand & Weiterplanen', d: 'Wie sicher fühlst du dich? Plane deinen nächsten Schritt.',
+      act: { type: 'selbst' } }
+  ];
+  // done/visited/current bestimmen
+  steps.forEach(s => {
+    if (s.done === undefined) s.done = !!visited['s' + s.n];
+    s.act._id = s.n;
+  });
+  const cur = steps.find(s => !s.done);
+  if (cur) cur.current = true;
+  subject_fkTheme = T.theme;
+  return steps;
+}
+let subject_fkTheme = '';
+
+function _fkVisited() {
+  try { return JSON.parse(localStorage.getItem(`ls_fk_${state.gradeId}_${state.subjectId}`) || '{}'); }
+  catch (e) { return {}; }
+}
+function _fkMarkVisited(n) {
+  const v = _fkVisited(); v['s' + n] = 1;
+  try { localStorage.setItem(`ls_fk_${state.gradeId}_${state.subjectId}`, JSON.stringify(v)); } catch (e) { }
+}
+
+function renderForscherkreis(subject) {
+  const wrap = document.getElementById('fkWheelWrap');
+  if (!wrap) return;
+  const steps = _fkStepsFor(subject);
+  _fkSteps = steps;
+  const doneCount = steps.filter(s => s.done).length;
+  const pct = Math.round((doneCount / steps.length) * 100);
+  const N = steps.length, R = 40;
+  const nodes = steps.map((s, i) => {
+    const ang = (-90 + i * (360 / N)) * Math.PI / 180;
+    const x = 50 + R * Math.cos(ang), y = 50 + R * Math.sin(ang);
+    const st = s.done ? 'fk-done' : (s.current ? 'fk-current' : 'fk-todo');
+    return `<button class="fk-node ${st}${s.heart ? ' fk-heart' : ''}" style="left:${x}%;top:${y}%"
+        onclick="_fkAct(${i})" title="${_lmJs(s.t)}">
+        <span class="fk-node-badge">${s.done ? '✓' : s.n}</span>
+        <span class="fk-node-ic">${s.ic}</span>
+        <span class="fk-node-t">${s.t}</span>
+      </button>`;
+  }).join('');
+  const mrows = steps.map((s, i) =>
+    `<button class="fk-mrow ${s.done ? 'fk-done' : (s.current ? 'fk-current' : '')}" onclick="_fkAct(${i})">
+       <span class="fk-mrow-badge">${s.done ? '✓' : s.n}</span>
+       <span class="fk-mrow-ic">${s.ic}</span>
+       <span class="fk-mrow-txt"><b>${s.t}</b><small>${s.d}</small></span>
+     </button>`).join('');
+  wrap.innerHTML = `
+    <div class="fk-theme">🧲 Thema: <b>${subject_fkTheme}</b></div>
+    <div class="fk-layout">
+      <div class="fk-wheel">
+        <svg class="fk-ring" viewBox="0 0 100 100" aria-hidden="true">
+          <defs><linearGradient id="fkGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#38bdf8"/><stop offset="0.5" stop-color="#34d399"/>
+            <stop offset="1" stop-color="#fb7185"/></linearGradient></defs>
+          <circle cx="50" cy="50" r="40" fill="none" stroke="url(#fkGrad)" stroke-width="2.4"
+            stroke-linecap="round" stroke-dasharray="3.2 3.4"/>
+        </svg>
+        ${nodes}
+        <div class="fk-center">
+          <div class="fk-center-ava">🧑‍🔬</div>
+          <div class="fk-center-t">Dein Forscherweg</div>
+          <div class="fk-center-s">Du entscheidest mit &amp; prüfst am Experiment</div>
+        </div>
+      </div>
+      <aside class="fk-rail">
+        <div class="fk-card">
+          <div class="fk-card-h">Dein Forscher-Fortschritt</div>
+          <div class="fk-prog"><div class="fk-prog-fill" style="width:${pct}%"></div></div>
+          <div class="fk-prog-l">${doneCount} von ${steps.length} Schritten</div>
+        </div>
+        <div class="fk-card fk-card-diag">
+          <div class="fk-card-h">🔎 Diagnose &amp; Selbsteinschätzung</div>
+          <p class="fk-diag-t">Der naturwissenschaftliche Weg: erst vermuten, dann am Experiment prüfen – kein „richtig/falsch".</p>
+          <button class="sim-btn primary" style="width:100%" onclick="_fkAct(2)">🔮 Diagnose starten</button>
+        </div>
+        <div class="fk-card">
+          <div class="fk-card-h">Nächster Schritt</div>
+          <div class="fk-next">${_fkNextHTML(steps)}</div>
+        </div>
+      </aside>
+    </div>
+    <div class="fk-list-mobile">${mrows}</div>
+    <div class="fk-legend">
+      <span><i class="fk-dot fk-done"></i> erledigt</span>
+      <span><i class="fk-dot fk-current"></i> dran</span>
+      <span><i class="fk-dot fk-todo"></i> geplant</span>
+    </div>`;
+}
+function _fkNextHTML(steps) {
+  const nx = steps.find(s => !s.done);
+  if (!nx) return '<p class="fk-next-done">🎉 Alle Schritte geschafft! Zeig deiner Lehrkraft deinen Forscherweg.</p>';
+  const i = steps.indexOf(nx);
+  return `<button class="fk-next-btn" onclick="_fkAct(${i})">${nx.ic} <b>${nx.t}</b><span>${nx.d}</span></button>`;
+}
+function _fkAct(i) {
+  const s = _fkSteps[i];
+  if (!s) return;
+  _fkMarkVisited(s.n);
+  const a = s.act;
+  if (a.type === 'diag') { startDiagnose(a.id); return; }
+  if (a.type === 'protokoll') { openArbeitsblatt(a.exp); return; }
+  if (a.type === 'ueben') { startExercise(a.id); return; }
+  if (a.type === 'selbst') { _fkSelbst(); return; }
+  // info: Modal zeigen und Kreis auffrischen (Schritt gilt als besucht)
+  _fkInfo(`${s.ic} ${s.t}`, a.body);
+  const g = CONTENT[state.gradeId];
+  const sub = g && g.subjects.find(x => x.id === state.subjectId);
+  if (sub && (state._physView || 'zyklus') === 'zyklus') renderForscherkreis(sub);
+}
+function _fkInfo(title, body) {
+  document.getElementById('fkInfoModal')?.remove();
+  const m = document.createElement('div');
+  m.id = 'fkInfoModal'; m.className = 'sim-overlay';
+  m.innerHTML = `<div class="sim-box diag-box">
+      <button class="sim-x" onclick="document.getElementById('fkInfoModal').remove()">✕</button>
+      <h3 class="sim-h3">${title}</h3>
+      <div class="fk-info-body">${body}</div>
+      <div class="diag-actions"><button class="sim-btn primary" onclick="document.getElementById('fkInfoModal').remove()">Verstanden ✓</button></div>
+    </div>`;
+  document.body.appendChild(m);
+}
+function _fkSelbst() {
+  document.getElementById('fkInfoModal')?.remove();
+  const m = document.createElement('div');
+  m.id = 'fkInfoModal'; m.className = 'sim-overlay';
+  m.innerHTML = `<div class="sim-box diag-box">
+      <button class="sim-x" onclick="document.getElementById('fkInfoModal').remove()">✕</button>
+      <h3 class="sim-h3">✅ Wie sicher fühlst du dich?</h3>
+      <p class="fk-info-body">Ganz ehrlich – das hilft nur dir. Niemand bekommt eine Note.</p>
+      <div class="fk-self">
+        <button class="fk-self-b" onclick="_fkSelfPick('😟 Ich brauche das nochmal.')">😟<span>unsicher</span></button>
+        <button class="fk-self-b" onclick="_fkSelfPick('😐 Fast – eine Übung noch.')">😐<span>geht so</span></button>
+        <button class="fk-self-b" onclick="_fkSelfPick('😃 Ich kann es erklären!')">😃<span>sicher</span></button>
+      </div>
+      <div id="fkSelfOut" class="fk-self-out"></div>
+    </div>`;
+  document.body.appendChild(m);
+}
+function _fkSelfPick(msg) {
+  const out = document.getElementById('fkSelfOut');
+  if (out) out.innerHTML = `<div class="fk-self-msg">${msg} <br><small>Tipp: Schritt 5 „Üben" oder Schritt 3 „Vermuten &amp; Erforschen" bringen dich weiter.</small></div>`;
+  const g = CONTENT[state.gradeId];
+  const sub = g && g.subjects.find(x => x.id === state.subjectId);
+  if (sub && (state._physView || 'zyklus') === 'zyklus') renderForscherkreis(sub);
 }
 
 // ============================================================
