@@ -1887,7 +1887,7 @@ function _fkStepsFor(subject) {
   const steps = [
     { n: 1, ic: '🎯', t: 'Problem & Frage', d: 'Ein echtes Problem aus dem Alltag – daraus wird unsere Forscherfrage.',
       act: { type: 'info',
-        body: '<div class="fk-problem">' + T.problem + '</div><p class="fk-quote">🔍 Unsere Forscherfrage:<br>„' + T.leitfrage + '"</p><p>Diese Frage beantwortest du am Ende selbst – Schritt für Schritt.</p>' } },
+        body: _fkSceneHTML() + '<div class="fk-problem">' + T.problem + '</div><p class="fk-quote">🔍 Unsere Forscherfrage:<br>„' + T.leitfrage + '"</p><p>Diese Frage beantwortest du am Ende selbst – Schritt für Schritt.</p>' } },
     { n: 2, ic: '🔎', t: 'Vorwissen & Ideen', d: 'Was weißt du schon – und was glaubst du? Deine ersten Vermutungen zählen.',
       act: { type: 'info', body: '<p>Bevor du forschst, sammelst du, was du schon weißt – und was du <b>glaubst</b>:</p><ul class="fk-ul"><li>Ein Magnet hat einen <b>Nordpol</b> und einen <b>Südpol</b>.</li><li>Er zieht manche Dinge an, ohne sie zu berühren.</li><li>Aber: Zieht er <b>alle</b> Metalle an? Was glaubst du?</li></ul><p>Diese Vermutung prüfst du gleich im Experiment – nicht raten lassen, sondern <b>testen</b>.</p>' } },
     { n: 3, ic: '🔮', t: 'Vermuten & Forschen', d: 'Stelle eine Hypothese auf und prüfe sie im Experiment – so gewinnt man Erkenntnisse.', heart: true,
@@ -1922,6 +1922,48 @@ function _fkVisited() {
 function _fkMarkVisited(n) {
   const v = _fkVisited(); v['s' + n] = 1;
   try { localStorage.setItem(`ls_fk_${state.gradeId}_${state.subjectId}`, JSON.stringify(v)); } catch (e) { }
+}
+
+// Animierte Schrottplatz-Szene (SVG, läuft in Schleife) – zeigt das Alltagsproblem
+function _fkSceneHTML() {
+  return `
+  <div class="fk-scene">
+    <svg class="fk-scene-svg" viewBox="0 0 420 210" role="img"
+      aria-label="Schrottplatz: der Kran-Magnet hebt Eisen und Stahl, Aluminium und Kupfer bleiben liegen">
+      <defs>
+        <linearGradient id="fkSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#dbeafe"/><stop offset="1" stop-color="#eff6ff"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="420" height="210" fill="url(#fkSky)"/>
+      <rect x="0" y="176" width="420" height="34" fill="#d6c7a1"/>
+      <rect x="0" y="173" width="420" height="4" fill="#b8a678"/>
+      <rect x="40" y="12" width="330" height="12" rx="3" fill="#facc15" stroke="#ca8a04" stroke-width="1.5"/>
+      <rect x="150" y="4" width="18" height="10" fill="#ca8a04"/>
+      <line x1="159" y1="24" x2="159" y2="38" stroke="#475569" stroke-width="2"/>
+      <g class="fk-mag">
+        <rect x="112" y="36" width="94" height="24" rx="5" fill="#334155"/>
+        <rect x="112" y="55" width="94" height="9" rx="3" fill="#1e293b"/>
+        <text x="159" y="54" text-anchor="middle" font-size="15">⚡</text>
+      </g>
+      <ellipse class="fk-mag-glow" cx="159" cy="64" rx="60" ry="12" fill="#38bdf8"/>
+      <g class="fk-arrows" stroke="#16a34a" stroke-width="2.4" stroke-dasharray="4 4" stroke-linecap="round" fill="none">
+        <path d="M134,150 L148,74"/>
+        <path d="M178,150 L170,74"/>
+      </g>
+      <g class="fk-iron">
+        <text x="134" y="172" text-anchor="middle" font-size="30">🔩</text>
+        <text x="176" y="174" text-anchor="middle" font-size="34">🚗</text>
+      </g>
+      <g class="fk-non fk-non-a"><text x="300" y="174" text-anchor="middle" font-size="28">🥫</text></g>
+      <g class="fk-non fk-non-b"><text x="342" y="172" text-anchor="middle" font-size="24">🧵</text></g>
+      <text class="fk-x" x="321" y="140" text-anchor="middle" font-size="16">🚫</text>
+    </svg>
+    <div class="fk-scene-caps">
+      <span class="fk-cap-yes">🧲 Eisen &amp; Stahl → werden gehoben</span>
+      <span class="fk-cap-no">🚫 Alu &amp; Kupfer → bleiben liegen</span>
+    </div>
+  </div>`;
 }
 
 function renderForscherkreis(subject) {
