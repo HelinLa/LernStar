@@ -1870,27 +1870,38 @@ function _fkStepsFor(subject) {
   const key = id => `${state.gradeId}_${state.subjectId}_${id}`;
   const p = state.progress || {};
   const visited = _fkVisited();
+  // Kontextorientiert nach Kircher: echtes Alltagsproblem → Forscherfrage → am Ende beantwortet.
   const T = {
     theme: 'Magnetismus · Welche Stoffe zieht ein Magnet an?',
+    leitfrage: 'Welche Stoffe zieht ein Magnet an – und welche nicht?',
+    problem: '<p>🏗️ Auf dem <b>Schrottplatz</b> hebt ein riesiger Elektromagnet alte Autos in die Luft. '
+      + 'Eisen und Stahl bleiben am Magneten kleben – aber die <b>Alu-Felgen</b> und <b>Kupferkabel</b> fallen einfach runter.</p>'
+      + '<p>🧲 Und zu Hause: Der Magnet hält an der <b>Kühlschranktür</b> – doch an einer <b>Cola-Dose aus Aluminium</b> rutscht er ab.</p>'
+      + '<p>Wie macht der Schrott-Magnet das? Warum das eine, aber nicht das andere?</p>',
+    loesung: '<p>Nur <b>Eisen, Nickel und Kobalt</b> (und <b>Stahl</b>, weil er viel Eisen enthält) sind magnetisch.</p>'
+      + '<ul class="fk-ul"><li>Der Schrott-Magnet zieht <b>Eisen und Stahl</b> aus dem Müll – <b>Alu und Kupfer bleiben liegen</b>.</li>'
+      + '<li>Die Kühlschranktür ist aus <b>Stahl</b> → der Magnet hält. Die <b>Alu</b>-Dose ist nicht magnetisch → er rutscht ab.</li></ul>'
+      + '<p><b>Merke:</b> „Metall" und „magnetisch" sind <b>nicht</b> dasselbe!</p>',
     diagId: 'e_diag_magnet', exp: 'magnet-stoffe', uebenId: 'e2'
   };
   const steps = [
-    { n: 1, ic: '🎯', t: 'Orientieren & Fokus', d: 'Worum geht es? Du findest heraus, welche Dinge ein Magnet anzieht – und welche nicht.',
-      act: { type: 'info', body: '<p>In diesem Thema klärst du eine echte Forscherfrage:</p><p class="fk-quote">„Welche Stoffe zieht ein Magnet an – und welche nicht?"</p><p>Am Ende kannst du erklären, warum ein Magnet an der Kühlschranktür hält, aber nicht an einer Alu-Dose.</p>' } },
-    { n: 2, ic: '🔎', t: 'Voraussetzungen klären', d: 'Was weißt du schon? Ein Magnet hat zwei Pole und zieht manche Dinge an.',
-      act: { type: 'info', body: '<p>Das brauchst du für den Start:</p><ul class="fk-ul"><li>Ein Magnet hat einen <b>Nordpol</b> und einen <b>Südpol</b>.</li><li>Magnete ziehen manche Dinge an, ohne sie zu berühren.</li><li>Du kennst Materialien wie Eisen, Aluminium, Kupfer, Holz, Plastik, Glas.</li></ul><p>Alles dabei? Dann kann es losgehen!</p>' } },
-    { n: 3, ic: '🔮', t: 'Vermuten & Erforschen', d: 'Stelle eine Vermutung auf und prüfe sie im Experiment – das Herz der Naturwissenschaft.', heart: true,
+    { n: 1, ic: '🎯', t: 'Problem & Frage', d: 'Ein echtes Problem aus dem Alltag – daraus wird unsere Forscherfrage.',
+      act: { type: 'info',
+        body: '<div class="fk-problem">' + T.problem + '</div><p class="fk-quote">🔍 Unsere Forscherfrage:<br>„' + T.leitfrage + '"</p><p>Diese Frage beantwortest du am Ende selbst – Schritt für Schritt.</p>' } },
+    { n: 2, ic: '🔎', t: 'Vorwissen & Ideen', d: 'Was weißt du schon – und was glaubst du? Deine ersten Vermutungen zählen.',
+      act: { type: 'info', body: '<p>Bevor du forschst, sammelst du, was du schon weißt – und was du <b>glaubst</b>:</p><ul class="fk-ul"><li>Ein Magnet hat einen <b>Nordpol</b> und einen <b>Südpol</b>.</li><li>Er zieht manche Dinge an, ohne sie zu berühren.</li><li>Aber: Zieht er <b>alle</b> Metalle an? Was glaubst du?</li></ul><p>Diese Vermutung prüfst du gleich im Experiment – nicht raten lassen, sondern <b>testen</b>.</p>' } },
+    { n: 3, ic: '🔮', t: 'Vermuten & Forschen', d: 'Stelle eine Hypothese auf und prüfe sie im Experiment – so gewinnt man Erkenntnisse.', heart: true,
       act: { type: 'diag', id: T.diagId },
       done: p[key(T.diagId)] != null },
-    { n: 4, ic: '📄', t: 'Sichern (Protokoll)', d: 'Halte deine Beobachtung im Protokoll fest und formuliere die Regel.',
+    { n: 4, ic: '📄', t: 'Ordnen & Sichern', d: 'Halte deine Beobachtung im Protokoll fest und formuliere die Regel.',
       act: { type: 'protokoll', exp: T.exp } },
-    { n: 5, ic: '✏️', t: 'Üben', d: 'Übe mit Aufgaben – die Hilfen werden Schritt für Schritt weniger.',
+    { n: 5, ic: '✏️', t: 'Üben & Festigen', d: 'Übe mit Aufgaben – die Hilfen werden Schritt für Schritt weniger.',
       act: { type: 'ueben', id: T.uebenId },
       done: p[key(T.uebenId)] != null },
-    { n: 6, ic: '🧩', t: 'Anwenden & Vernetzen', d: 'Wo begegnet dir das im Alltag? Kühlschrankmagnet, Kompass, Schrott-Trennung.',
-      act: { type: 'info', body: '<p>Dein Wissen im Alltag:</p><ul class="fk-ul"><li><b>Kühlschrankmagnet:</b> Die Tür ist aus Stahl (enthält Eisen) → der Magnet hält.</li><li><b>Kompass:</b> Eine kleine Magnetnadel richtet sich im Erdmagnetfeld aus.</li><li><b>Schrott-Trennung:</b> Ein großer Magnet zieht Eisen aus dem Müll – Alu und Kupfer bleiben liegen.</li></ul>' } },
-    { n: 7, ic: '✅', t: 'Lernstand & Weiterplanen', d: 'Wie sicher fühlst du dich? Plane deinen nächsten Schritt.',
-      act: { type: 'selbst' } }
+    { n: 6, ic: '🧩', t: 'Anwenden', d: 'Erkläre mit deinem Wissen neue Situationen aus dem Alltag.',
+      act: { type: 'info', body: '<p>Erkläre jetzt selbst:</p><ul class="fk-ul"><li><b>Kühlschrankmagnet:</b> Warum hält er? (Tür aus Stahl = Eisen)</li><li><b>Kompass:</b> Eine kleine Magnetnadel richtet sich im Erdmagnetfeld aus.</li><li><b>Schrott-Trennung:</b> Warum bleiben Alu und Kupfer liegen?</li></ul><p>Wer das erklären kann, hat das Prinzip verstanden – nicht nur auswendig gelernt.</p>' } },
+    { n: 7, ic: '✅', t: 'Frage geklärt?', d: 'Löse das Anfangsproblem und schätze dich selbst ein.',
+      act: { type: 'abschluss' } }
   ];
   // done/visited/current bestimmen
   steps.forEach(s => {
@@ -1899,10 +1910,10 @@ function _fkStepsFor(subject) {
   });
   const cur = steps.find(s => !s.done);
   if (cur) cur.current = true;
-  subject_fkTheme = T.theme;
+  _fkThemeObj = T;
   return steps;
 }
-let subject_fkTheme = '';
+let _fkThemeObj = null;
 
 function _fkVisited() {
   try { return JSON.parse(localStorage.getItem(`ls_fk_${state.gradeId}_${state.subjectId}`) || '{}'); }
@@ -1938,15 +1949,24 @@ function renderForscherkreis(subject) {
        <span class="fk-mrow-ic">${s.ic}</span>
        <span class="fk-mrow-txt"><b>${s.t}</b><small>${s.d}</small></span>
      </button>`).join('');
+  const T = _fkThemeObj || {};
+  const solved = !!(steps[2] && steps[2].done);
   wrap.innerHTML = `
-    <div class="fk-theme">🧲 Thema: <b>${subject_fkTheme}</b></div>
+    <div class="fk-theme">🧲 Thema: <b>${T.theme || ''}</b></div>
+    <div class="fk-leitfrage${solved ? ' solved' : ''}">
+      <div class="fk-leitfrage-ic">${solved ? '✅' : '🔍'}</div>
+      <div class="fk-leitfrage-txt"><span>${solved ? 'Forscherfrage – kurz vor der Antwort' : 'Unsere Forscherfrage (echtes Alltagsproblem)'}</span><b>${T.leitfrage || ''}</b></div>
+      ${solved
+        ? `<button class="fk-leitfrage-btn" onclick="_fkAct(6)">💡 Antwort ansehen</button>`
+        : `<button class="fk-leitfrage-btn" onclick="_fkAct(0)">📖 Problem ansehen</button>`}
+    </div>
     <div class="fk-layout">
       <div class="fk-wheel">
         <svg class="fk-ring" viewBox="0 0 100 100" aria-hidden="true">
           <defs><linearGradient id="fkGrad" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stop-color="#38bdf8"/><stop offset="0.5" stop-color="#34d399"/>
             <stop offset="1" stop-color="#fb7185"/></linearGradient></defs>
-          <circle cx="50" cy="50" r="40" fill="none" stroke="url(#fkGrad)" stroke-width="2.4"
+          <circle class="fk-ring-c" cx="50" cy="50" r="40" fill="none" stroke="url(#fkGrad)" stroke-width="2.6"
             stroke-linecap="round" stroke-dasharray="3.2 3.4"/>
         </svg>
         ${nodes}
@@ -1973,12 +1993,28 @@ function renderForscherkreis(subject) {
         </div>
       </aside>
     </div>
-    <div class="fk-list-mobile">${mrows}</div>
+    <div class="fk-list-mobile">
+      <div class="fk-mobile-hint">Tippe auf einen Schritt – Schritt 3 ist das Herzstück.</div>
+      ${mrows}
+    </div>
     <div class="fk-legend">
       <span><i class="fk-dot fk-done"></i> erledigt</span>
       <span><i class="fk-dot fk-current"></i> dran</span>
       <span><i class="fk-dot fk-todo"></i> geplant</span>
-    </div>`;
+    </div>
+    <details class="fk-teacher">
+      <summary>ℹ️ Für Lehrkräfte: die didaktische Grundlage (nach Kircher)</summary>
+      <div class="fk-teacher-body">
+        Der Forscherkreis folgt der Physikdidaktik nach <b>Kircher / Girwidz / Häußler</b>:
+        <ul class="fk-ul">
+          <li><b>Kontextorientierung:</b> Start mit einem echten Alltagsproblem, das am Ende beantwortet wird.</li>
+          <li><b>Schülervorstellungen ernst nehmen:</b> Erst vermuten – die typische Fehlvorstellung „alle Metalle sind magnetisch" wird sichtbar.</li>
+          <li><b>Erkenntnisgewinnung:</b> Hypothese → Experiment → Beobachtung; das Experiment entscheidet, nicht die App.</li>
+          <li><b>Conceptual Change:</b> Der Widerspruch Vermutung ↔ Beobachtung erzeugt das „Aha" und trägt die Umstrukturierung.</li>
+          <li><b>Sichern &amp; Transfer:</b> Protokoll, Regel und Anwendung auf neue Kontexte.</li>
+        </ul>
+      </div>
+    </details>`;
 }
 function _fkNextHTML(steps) {
   const nx = steps.find(s => !s.done);
@@ -1994,7 +2030,7 @@ function _fkAct(i) {
   if (a.type === 'diag') { startDiagnose(a.id); return; }
   if (a.type === 'protokoll') { openArbeitsblatt(a.exp); return; }
   if (a.type === 'ueben') { startExercise(a.id); return; }
-  if (a.type === 'selbst') { _fkSelbst(); return; }
+  if (a.type === 'abschluss') { _fkAbschluss(); return; }
   // info: Modal zeigen und Kreis auffrischen (Schritt gilt als besucht)
   _fkInfo(`${s.ic} ${s.t}`, a.body);
   const g = CONTENT[state.gradeId];
@@ -2013,13 +2049,18 @@ function _fkInfo(title, body) {
     </div>`;
   document.body.appendChild(m);
 }
-function _fkSelbst() {
+// Abschluss: Anfangsproblem lösen (Forscherfrage beantworten) + Selbsteinschätzung
+function _fkAbschluss() {
+  const T = _fkThemeObj || {};
   document.getElementById('fkInfoModal')?.remove();
   const m = document.createElement('div');
   m.id = 'fkInfoModal'; m.className = 'sim-overlay';
   m.innerHTML = `<div class="sim-box diag-box">
       <button class="sim-x" onclick="document.getElementById('fkInfoModal').remove()">✕</button>
-      <h3 class="sim-h3">✅ Wie sicher fühlst du dich?</h3>
+      <h3 class="sim-h3">💡 Frage geklärt!</h3>
+      <p class="fk-quote">🔍 ${T.leitfrage || ''}</p>
+      <div class="fk-info-body fk-loesung">${T.loesung || ''}</div>
+      <h3 class="sim-h3" style="margin-top:6px">✅ Wie sicher fühlst du dich?</h3>
       <p class="fk-info-body">Ganz ehrlich – das hilft nur dir. Niemand bekommt eine Note.</p>
       <div class="fk-self">
         <button class="fk-self-b" onclick="_fkSelfPick('😟 Ich brauche das nochmal.')">😟<span>unsicher</span></button>
