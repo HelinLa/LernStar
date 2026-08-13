@@ -340,8 +340,8 @@ function openArbeitsblatt(exp) {
   document.body.appendChild(modal);
   modal.innerHTML = `<div class="sim-box sim-box-wide fpm-sim">
       <button class="sim-x" onclick="closePhysicsSim()">✕</button>
-      <h3 class="sim-h3">📝 Arbeitsblatt – ${def.titel}</h3>
-      <div class="ab-open-hint">Tipp: Öffne parallel die passende Simulation und bearbeite das Arbeitsblatt Schritt für Schritt. Deine Eingaben werden im Browser gespeichert.</div>
+      <h3 class="sim-h3">📝 Protokoll – ${def.titel}</h3>
+      <div class="ab-open-hint">Tipp: Öffne parallel die passende Simulation und führe das Protokoll Schritt für Schritt. Deine Eingaben werden im Browser gespeichert.</div>
       <div class="sim-btn-row"><button class="sim-btn primary" onclick="openExperiment('${exp}')">▶ Passende Simulation öffnen</button></div>
       ${def.html()}
     </div>`;
@@ -35998,7 +35998,7 @@ function _swgArbeitsblattHTML() {
         ${ta('t1', 'Meine Vermutung zum Hemmungspendel: …', 3)}</div>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('schwingung')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('schwingung')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('schwingung', 'Merkmale von Schwingungen', body);
 }
@@ -36013,10 +36013,10 @@ let _abUnlocked = false;
 function _abWrap(ns, titel, bodyHtml) {
   const open = _abUnlocked;
   return `<div class="ab-wrap">
-    <div class="ab-summary">📝 Arbeitsblatt – ${titel}
+    <div class="ab-summary">📝 Protokoll – ${titel}
       <span class="ab-hint" id="abHint_${ns}">${open ? '(freigeschaltet · Eingaben werden im Browser gespeichert)' : '🔒 durch Passwort geschützt'}</span></div>
     <div class="ab-gate" id="abGate_${ns}" style="display:${open ? 'none' : 'flex'}">
-      <span class="ab-gate-t">🔒 Dieses Arbeitsblatt ist passwortgeschützt. Bitte das Passwort eingeben:</span>
+      <span class="ab-gate-t">🔒 Dieses Protokoll ist passwortgeschützt. Bitte das Passwort eingeben:</span>
       <div class="ab-gate-row">
         <input type="password" class="ab-pw" id="abPw_${ns}" placeholder="Passwort" autocomplete="off"
           onkeydown="if(event.key==='Enter')_abUnlock('${ns}')">
@@ -36060,7 +36060,7 @@ function _abRestore(ns) {
   } catch (e) { }
 }
 function _abClear(ns) {
-  if (!confirm('Alle Eingaben im Arbeitsblatt löschen?')) return;
+  if (!confirm('Alle Eingaben im Protokoll löschen?')) return;
   try { if (typeof localStorage !== 'undefined') localStorage.removeItem('ls_ab_' + ns); } catch (e) { }
   document.querySelectorAll('[data-abk]').forEach(el => { el.value = ''; });
 }
@@ -36485,7 +36485,7 @@ function _shaArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('schatten')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('schatten')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('schatten', 'Wovon hängt die Größe des Schattens ab?', body);
 }
@@ -36554,6 +36554,10 @@ const _MSF_MAT = [
   { k: 'glas',    name: 'Glas-Murmel',        ic: '🔮', mag: false, hint: 'Glas' }
 ];
 let _msf = null;
+// Diagnose-Modus (Lernzyklus): trägt die Schüler-Vermutungen in die Simulation,
+// damit direkt am Experiment verglichen werden kann. null = normale Simulation.
+let _msfDiag = null;
+function _msfSetDiagnose(cfg) { _msfDiag = cfg || null; }
 
 function _msfInit() {
   _msf = { cur: 0, tested: {}, order: [], flash: 0, anim: 0, result: null };
@@ -36563,7 +36567,7 @@ function _msfHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim msf-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🧲 Welche Stoffe zieht ein Magnet an?</h3>
-    <div class="fpm-note" style="margin-top:2px">Halte jedes Material an den Magneten. Beobachte: Wird es <b>angezogen</b> oder nicht? Sortiere und finde die Regel.</div>
+    <div class="fpm-note" style="margin-top:2px">Halte jedes Material an den Magneten. Beobachte: Wird es <b>angezogen</b> oder nicht?${_msfDiag ? ' Vergleiche direkt mit deiner <b>Vermutung</b> in der Tabelle!' : ' Sortiere und finde die Regel.'}</div>
     <div class="fpm-grid">
       <div>
         <canvas id="msfAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -36581,12 +36585,15 @@ function _msfHTML() {
         </div>
         <div class="fpm-tablewrap" style="margin-top:10px">
           <table class="sim-table">
-            <thead><tr><th>Material</th><th>angezogen?</th></tr></thead>
+            <thead>${_msfDiag
+              ? '<tr><th>Material</th><th>🔮 deine Vermutung</th><th>🧲 Experiment</th></tr>'
+              : '<tr><th>Material</th><th>angezogen?</th></tr>'}</thead>
             <tbody id="msfTbody"></tbody>
           </table>
           <div class="fpm-empty" id="msfEmpty">Noch nichts getestet.<br>Klicke oben ein Material an.</div>
         </div>
         <div class="msf-regel" id="msfRegel"></div>
+        ${_msfDiag ? '<div class="msf-diag-eval" id="msfDiagEval" style="display:none"></div>' : ''}
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
@@ -36630,6 +36637,15 @@ function _msfRender() {
   if (empty) empty.style.display = _msf.order.length ? 'none' : 'block';
   if (tb) tb.innerHTML = _msf.order.map(k => {
     const m = _MSF_MAT.find(x => x.k === k);
+    if (_msfDiag) {
+      const guessed = !!_msfDiag.pred[k];
+      const real = !!m.mag;
+      const match = guessed === real;
+      return `<tr class="${match ? 'msf-diag-match' : 'msf-diag-surprise'}">
+        <td>${m.ic} ${m.name}</td>
+        <td class="msf-guess">${guessed ? 'angezogen' : 'nicht'}</td>
+        <td><b class="${real ? 'msf-ja' : 'msf-nein'}">${real ? 'Ja' : 'Nein'}</b> ${match ? '<span class="msf-ok">✓</span>' : '<span class="msf-sp">💡</span>'}</td></tr>`;
+    }
     return `<tr><td>${m.ic} ${m.name}</td><td><b class="${m.mag ? 'msf-ja' : 'msf-nein'}">${m.mag ? 'Ja' : 'Nein'}</b></td></tr>`;
   }).join('');
   const reg = document.getElementById('msfRegel');
@@ -36639,6 +36655,29 @@ function _msfRender() {
       reg.style.display = 'block';
     } else { reg.innerHTML = 'Getestet: ' + _msf.order.length + ' von ' + _MSF_MAT.length + '. Teste alle Materialien und finde die Regel!'; reg.style.display = 'block'; }
   }
+  // Diagnose-Modus: Auswertung erst freigeben, wenn ALLE Materialien getestet sind
+  if (_msfDiag) {
+    const evalEl = document.getElementById('msfDiagEval');
+    if (evalEl) {
+      if (_msf.order.length >= _MSF_MAT.length) {
+        let surprises = 0;
+        _MSF_MAT.forEach(m => { if ((!!_msfDiag.pred[m.k]) !== !!m.mag) surprises++; });
+        const line = surprises === 0
+          ? 'Stark – alle deine Vermutungen haben zum Experiment gepasst! 🎯'
+          : `Du hattest bei <b>${surprises}</b> ${surprises === 1 ? 'Material' : 'Materialien'} eine <b>Überraschung</b>. Genau deshalb prüft man in der Naturwissenschaft am Experiment.`;
+        evalEl.innerHTML = `<div class="msf-diag-done">✅ <b>Alle Materialien getestet!</b><br>${line}</div>
+          <button class="sim-btn primary" style="margin-top:8px" onclick="_msfDiagToAuswertung()">🔎 Zur Auswertung →</button>`;
+        evalEl.style.display = 'block';
+      } else {
+        evalEl.innerHTML = `<div class="msf-diag-progress">Noch <b>${_MSF_MAT.length - _msf.order.length}</b> von ${_MSF_MAT.length} Materialien testen – dann kannst du auswerten.</div>`;
+        evalEl.style.display = 'block';
+      }
+    }
+  }
+}
+function _msfDiagToAuswertung() {
+  closePhysicsSim();
+  if (typeof _diagShowAuswertung === 'function') _diagShowAuswertung();
 }
 
 // ── Animation ──────────────────────────────────────────
@@ -36757,7 +36796,7 @@ function _msfArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('magstoff')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('magstoff')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('magstoff', 'Welche Stoffe zieht ein Magnet an?', body);
 }
@@ -37106,7 +37145,7 @@ function _elmArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('elmag')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('elmag')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('elmag', 'Wie stark ist ein Elektromagnet?', body);
 }
@@ -37397,7 +37436,7 @@ function _mpoArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('magpole')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('magpole')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('magpole', 'Wie wirken Magnetpole aufeinander?', body);
 }
@@ -37640,7 +37679,7 @@ function _mffArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('magfeld')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('magfeld')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('magfeld', 'Wie sieht ein Magnetfeld aus?', body);
 }
@@ -37880,7 +37919,7 @@ function _komArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('kompass')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('kompass')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('kompass', 'Wie funktioniert ein Kompass?', body);
 }
@@ -38117,7 +38156,7 @@ function _lmpArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('lampe')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('lampe')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('lampe', 'Wann leuchtet eine Lampe?', body);
 }
@@ -38359,7 +38398,7 @@ function _leiArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('leiter')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('leiter')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('leiter', 'Welche Stoffe leiten Strom?', body);
 }
@@ -38592,7 +38631,7 @@ function _splArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('schaltplan')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('schaltplan')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('schaltplan', 'Wie zeichnet man einen Stromkreis?', body);
 }
@@ -38808,7 +38847,7 @@ function _reiArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('reihe')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('reihe')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('reihe', 'Was geschieht bei einer Reihenschaltung?', body);
 }
@@ -39018,7 +39057,7 @@ function _parArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('parallel')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('parallel')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('parallel', 'Was geschieht bei einer Parallelschaltung?', body);
 }
@@ -39249,7 +39288,7 @@ function _wirArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('wirkung')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('wirkung')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('wirkung', 'Welche Wirkungen kann elektrischer Strom haben?', body);
 }
@@ -39471,7 +39510,7 @@ function _sehArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('sehen')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('sehen')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('sehen', 'Wie können wir einen Gegenstand sehen?', body);
 }
@@ -39681,7 +39720,7 @@ function _lauArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('ausbreitung')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('ausbreitung')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('ausbreitung', 'Wie breitet sich Licht aus?', body);
 }
@@ -39890,7 +39929,7 @@ function _sctArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('schatten3')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('schatten3')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('schatten3', 'Wie entsteht ein Schatten?', body);
 }
@@ -40095,7 +40134,7 @@ function _khsArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('kernschatten')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('kernschatten')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('kernschatten', 'Wie entstehen Kern- und Halbschatten?', body);
 }
@@ -40314,7 +40353,7 @@ function _twArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('tempwaerme')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('tempwaerme')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('tempwaerme', 'Sind Temperatur und Wärme das Gleiche?', body);
 }
@@ -40516,7 +40555,7 @@ function _thmArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('thermometer')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('thermometer')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('thermometer', 'Wie funktioniert ein Thermometer?', body);
 }
@@ -40733,7 +40772,7 @@ function _wauArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('ausdehnung')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('ausdehnung')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('ausdehnung', 'Was geschieht beim Erwärmen von Stoffen?', body);
 }
@@ -40944,7 +40983,7 @@ function _aggArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('aggregat')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('aggregat')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('aggregat', 'Wie verändern sich Aggregatzustände?', body);
 }
@@ -41175,7 +41214,7 @@ function _wueArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('waermeueb')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('waermeueb')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('waermeueb', 'Wie wird Wärme übertragen?', body);
 }
@@ -41434,7 +41473,7 @@ function _daeArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('daemmung')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('daemmung')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('daemmung', 'Welches Material dämmt am besten?', body);
 }
@@ -41630,7 +41669,7 @@ function _dflArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('dunkleflaechen')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('dunkleflaechen')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('dunkleflaechen', 'Warum erwärmen sich dunkle Flächen stärker?', body);
 }
@@ -41819,7 +41858,7 @@ function _tonArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('tonentsteht')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('tonentsteht')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('tonentsteht', 'Wie entsteht ein Ton?', body);
 }
@@ -42007,7 +42046,7 @@ function _lstArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('lautstaerke')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('lautstaerke')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('lautstaerke', 'Wovon hängt die Lautstärke ab?', body);
 }
@@ -42189,7 +42228,7 @@ function _thzArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('tonhoehe')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('tonhoehe')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('tonhoehe', 'Wovon hängt die Tonhöhe ab?', body);
 }
@@ -42392,7 +42431,7 @@ function _scaArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('schallausbr')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('schallausbr')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('schallausbr', 'Wie breitet sich Schall aus?', body);
 }
@@ -42588,7 +42627,7 @@ function _ohrArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('ohr')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('ohr')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('ohr', 'Wie funktioniert das Ohr?', body);
 }
@@ -42801,7 +42840,7 @@ function _laeArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('laermschutz')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('laermschutz')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('laermschutz', 'Wie können wir uns vor Lärm schützen?', body);
 }
@@ -43011,7 +43050,7 @@ function _tagArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('tagnacht')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('tagnacht')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('tagnacht', 'Wie entstehen Tag und Nacht?', body);
 }
@@ -43224,7 +43263,7 @@ function _jhrArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('jahreszeiten')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('jahreszeiten')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('jahreszeiten', 'Wie entstehen die Jahreszeiten?', body);
 }
@@ -43438,7 +43477,7 @@ function _mphArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('mondphasen')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('mondphasen')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('mondphasen', 'Warum verändert der Mond sein Aussehen?', body);
 }
@@ -43640,7 +43679,7 @@ function _sofArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('sonnenfins')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('sonnenfins')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('sonnenfins', 'Wie entsteht eine Sonnenfinsternis?', body);
 }
@@ -43844,7 +43883,7 @@ function _mofArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('mondfins')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('mondfins')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('mondfins', 'Wie entsteht eine Mondfinsternis?', body);
 }
@@ -44042,7 +44081,7 @@ function _locArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('lochkamera')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('lochkamera')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('lochkamera', 'Wie macht ein kleines Loch ein Bild?', body);
 }
@@ -44234,7 +44273,7 @@ function _sliArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('sammellinse')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('sammellinse')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('sammellinse', 'Wie bündelt eine Sammellinse das Licht?', body);
 }
@@ -44454,7 +44493,7 @@ function _bldArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('bildlinse')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('bildlinse')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('bildlinse', 'Wann entsteht ein vergrößertes oder verkleinertes Bild?', body);
 }
@@ -44655,7 +44694,7 @@ function _lupArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('lupe')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('lupe')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('lupe', 'Wie funktioniert eine Lupe?', body);
 }
@@ -44858,7 +44897,7 @@ function _kamArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('kamera')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('kamera')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('kamera', 'Wie funktioniert eine Kamera?', body);
 }
@@ -45053,7 +45092,7 @@ function _augArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('auge')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('auge')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('auge', 'Wie funktioniert das Auge?', body);
 }
@@ -45267,7 +45306,7 @@ function _briArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('brille')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('brille')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('brille', 'Wie korrigiert eine Brille Sehfehler?', body);
 }
@@ -45462,7 +45501,7 @@ function _spgArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('spiegel')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('spiegel')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('spiegel', 'Wie entsteht ein Spiegelbild?', body);
 }
@@ -45647,7 +45686,7 @@ function _breArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('brechung')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('brechung')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('brechung', 'Warum erscheint ein Gegenstand im Wasser verschoben?', body);
 }
@@ -45836,7 +45875,7 @@ function _bwkArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('brechwinkel')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('brechwinkel')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('brechwinkel', 'Wovon hängt die Stärke der Brechung ab?', body);
 }
@@ -46033,7 +46072,7 @@ function _totArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('totalrefl')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('totalrefl')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('totalrefl', 'Wie funktioniert ein Lichtleiter?', body);
 }
@@ -46226,7 +46265,7 @@ function _priArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('prisma')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('prisma')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('prisma', 'Welche Farben stecken im weißen Licht?', body);
 }
@@ -46420,7 +46459,7 @@ function _regArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('regenbogen')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('regenbogen')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('regenbogen', 'Wie entstehen die Farben eines Regenbogens?', body);
 }
@@ -46617,7 +46656,7 @@ function _admArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('farbadd')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('farbadd')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('farbadd', 'Wie entstehen Farben auf einem Bildschirm?', body);
 }
@@ -46860,7 +46899,7 @@ function _hksArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('himmel')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('himmel')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('himmel', 'Sonne, Mond und Sterne – was leuchtet am Himmel?', body);
 }
@@ -47084,7 +47123,7 @@ function _grvArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('gravitation')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('gravitation')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('gravitation', 'Die Gravitation – warum fällt alles nach unten?', body);
 }
@@ -47312,7 +47351,7 @@ function _tskArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('teleskop')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('teleskop')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('teleskop', 'Das Teleskop – wie holt man ferne Objekte näher?', body);
 }
@@ -47548,7 +47587,7 @@ function _stlArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('spezialteleskop')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('spezialteleskop')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('spezialteleskop', 'Besondere Teleskope – unsichtbares Licht sehen', body);
 }
@@ -47762,7 +47801,7 @@ function _entArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('entfernungen')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('entfernungen')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('entfernungen', 'Entfernungen im Weltall – wie weit ist das?', body);
 }
@@ -47992,7 +48031,7 @@ function _wabArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('weltallaufbau')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('weltallaufbau')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('weltallaufbau', 'Planeten, Sterne und Galaxien – Aufbau des Weltalls', body);
 }
@@ -48229,7 +48268,7 @@ function _sllArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('schwarzeloch')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('schwarzeloch')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('schwarzeloch', 'Schwarze Löcher – wenn die Gravitation extrem wird', body);
 }
@@ -48433,7 +48472,7 @@ function _wblArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('weltbild')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('weltbild')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('weltbild', 'Wie hat sich die Vorstellung vom Weltall verändert?', body);
 }
@@ -48663,7 +48702,7 @@ function _urkArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('urknall')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('urknall')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('urknall', 'Die Urknalltheorie – wie ist das Weltall entstanden?', body);
 }
@@ -48871,7 +48910,7 @@ function _ladArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('ladung')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('ladung')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('ladung', 'Was ist elektrische Ladung?', body);
 }
@@ -49104,7 +49143,7 @@ function _staArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('stromstaerke')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('stromstaerke')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('stromstaerke', 'Was ist der elektrische Strom (Stromstärke)?', body);
 }
@@ -49320,7 +49359,7 @@ function _spnArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('spannung')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('spannung')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('spannung', 'Was ist die elektrische Spannung?', body);
 }
@@ -49551,7 +49590,7 @@ function _msnArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('messen')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('messen')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('messen', 'Wie misst man Stromstärke und Spannung?', body);
 }
@@ -49766,7 +49805,7 @@ function _sabArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('stromabh')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('stromabh')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('stromabh', 'Wovon hängt die Stromstärke ab?', body);
 }
@@ -49975,7 +50014,7 @@ function _widArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('widerstand')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('widerstand')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('widerstand', 'Was ist ein elektrischer Widerstand?', body);
 }
@@ -50203,7 +50242,7 @@ function _ohgArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('ohmgesetz')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('ohmgesetz')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('ohmgesetz', 'Das Ohmsche Gesetz – die U-I-Kennlinie', body);
 }
@@ -50422,7 +50461,7 @@ function _drtArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('draht')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('draht')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('draht', 'Wovon hängt der Widerstand eines Drahtes ab?', body);
 }
@@ -50632,7 +50671,7 @@ function _rwdArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('reihewid')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('reihewid')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('reihewid', 'Reihenschaltung von Widerständen', body);
 }
@@ -50847,7 +50886,7 @@ function _pwdArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('parallelwid')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('parallelwid')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('parallelwid', 'Parallelschaltung von Widerständen', body);
 }
@@ -51057,7 +51096,7 @@ function _potArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('potentiometer')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('potentiometer')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('potentiometer', 'Das Potentiometer – ein veränderbarer Widerstand', body);
 }
@@ -51267,7 +51306,7 @@ function _elpArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('leistung-rs')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('leistung-rs')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('leistung-rs', 'Elektrische Leistung P = U · I', body);
 }
@@ -51468,7 +51507,7 @@ function _eenArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('energie-rs')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('energie-rs')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('energie-rs', 'Elektrische Energie E = P · t', body);
 }
@@ -51673,7 +51712,7 @@ function _kosArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('stromkosten')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('stromkosten')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('stromkosten', 'Was kostet elektrische Energie?', body);
 }
@@ -51871,7 +51910,7 @@ function _sprArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('energiesparen')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('energiesparen')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('energiesparen', 'Energie sparen im Haushalt', body);
 }
@@ -52096,7 +52135,7 @@ function _gefArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('stromgefahr')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('stromgefahr')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('stromgefahr', 'Gefahren des elektrischen Stroms & Schutz', body);
 }
@@ -52307,7 +52346,7 @@ function _vbgArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('vbegriff')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('vbegriff')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('vbegriff', 'Was bedeutet Geschwindigkeit?', body);
 }
@@ -52515,7 +52554,7 @@ function _vmsArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('vmessen')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('vmessen')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('vmessen', 'Wie misst man eine Geschwindigkeit?', body);
 }
@@ -52711,7 +52750,7 @@ function _vstArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('vformel')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('vformel')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('vformel', 'Wie berechnet man eine Geschwindigkeit? (v = s / t)', body);
 }
@@ -52906,7 +52945,7 @@ function _umrArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('umrechnung')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('umrechnung')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('umrechnung', 'Wie werden m/s und km/h umgerechnet?', body);
 }
@@ -53103,7 +53142,7 @@ function _glmArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('gleichfoermig-rs')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('gleichfoermig-rs')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('gleichfoermig-rs', 'Was ist eine gleichförmige Bewegung?', body);
 }
@@ -53304,7 +53343,7 @@ function _bwgArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('beschleunigung-rs')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('beschleunigung-rs')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('beschleunigung-rs', 'Was ist eine beschleunigte Bewegung?', body);
 }
@@ -53513,7 +53552,7 @@ function _stdArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('stdiagramm')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('stdiagramm')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('stdiagramm', 'Das Weg-Zeit-Diagramm (s-t-Diagramm)', body);
 }
@@ -53712,7 +53751,7 @@ function _vtdArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('vtdiagramm')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('vtdiagramm')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('vtdiagramm', 'Das Geschwindigkeit-Zeit-Diagramm (v-t-Diagramm)', body);
 }
@@ -53930,7 +53969,7 @@ function _radArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('verkehr')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('verkehr')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('verkehr', 'Geschwindigkeitsmessung im Straßenverkehr', body);
 }
@@ -54211,7 +54250,7 @@ function _kwkArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('kraftwirkung')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('kraftwirkung')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('kraftwirkung', 'Woran erkennt man, dass eine Kraft wirkt?', body);
 }
@@ -54452,7 +54491,7 @@ function _kwnArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('kraftwirkungen')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('kraftwirkungen')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('kraftwirkungen', 'Was kann eine Kraft alles bewirken?', body);
 }
@@ -54661,7 +54700,7 @@ function _krmArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('kraftmesser')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('kraftmesser')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('kraftmesser', 'Wie misst man eine Kraft, die man nicht anfassen kann?', body);
 }
@@ -54886,7 +54925,7 @@ function _fedArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('federgesetz')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('federgesetz')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('federgesetz', 'Warum wird eine Feder gleichmäßig länger?', body);
 }
@@ -55081,7 +55120,7 @@ function _mgwArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('massegewicht')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('massegewicht')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('massegewicht', 'Ist „schwer“ dasselbe wie „viel Masse“?', body);
 }
@@ -55286,7 +55325,7 @@ function _ortArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('ortsfaktor')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('ortsfaktor')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('ortsfaktor', 'Wäre ich auf dem Mond wirklich leichter?', body);
 }
@@ -55495,7 +55534,7 @@ function _kpfArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('kraftpfeil')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('kraftpfeil')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('kraftpfeil', 'Hat eine Kraft nur eine Größe – oder auch eine Richtung?', body);
 }
@@ -55708,7 +55747,7 @@ function _kadArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('kraefteadd')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('kraefteadd')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('kraefteadd', 'Was passiert, wenn zwei Kräfte gleichzeitig ziehen?', body);
 }
@@ -55910,7 +55949,7 @@ function _kggArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('kraeftegg')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('kraeftegg')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('kraeftegg', 'Warum bleibt eine hängende Lampe hängen?', body);
 }
@@ -56126,7 +56165,7 @@ function _wwkArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('wechselwirkung')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('wechselwirkung')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('wechselwirkung', 'Kraft und Gegenkraft – warum drücke ich zurück?', body);
 }
@@ -56332,7 +56371,7 @@ function _sieArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('schiefeebene')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('schiefeebene')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('schiefeebene', 'Warum geht ein Stein über eine Rampe leichter hoch?', body);
 }
@@ -56554,7 +56593,7 @@ function _rbgArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('reibungrs')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('reibungrs')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('reibungrs', 'Warum bremst mich der Boden aus? (Reibung)', body);
 }
@@ -56766,7 +56805,7 @@ function _bwbArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('bewbeschr')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('bewbeschr')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('bewbeschr', 'Wie kann ich eine Bewegung beschreiben?', body);
 }
@@ -56972,7 +57011,7 @@ function _gswArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('geschwrs')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('geschwrs')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('geschwrs', 'Was bedeutet „schnell“? (v = s/t)', body);
 }
@@ -57196,7 +57235,7 @@ function _glbArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('glbew')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('glbew')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('glbew', 'Gleichförmige Bewegung – gleiche Wege in gleichen Zeiten', body);
 }
@@ -57432,7 +57471,7 @@ function _stgArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('stgraph')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('stgraph')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('stgraph', 'Das s-t-Diagramm deuten – steil, flach, waagerecht', body);
 }
@@ -57682,7 +57721,7 @@ function _imsArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('imschnell')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('imschnell')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('imschnell', 'Beschleunigte Bewegung – immer schneller', body);
 }
@@ -57913,7 +57952,7 @@ function _vatArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('vateq')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('vateq')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('vateq', 'Gleichmäßig beschleunigt – v = a · t', body);
 }
@@ -58155,7 +58194,7 @@ function _vzgArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('verzoeg')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('verzoeg')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('verzoeg', 'Verzögerung – schneller vs. langsamer werden', body);
 }
@@ -58407,7 +58446,7 @@ function _brwArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('bremsweg')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('bremsweg')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('bremsweg', 'Anhalteweg – Reaktionsweg + Bremsweg (Bremsweg ∝ v²)', body);
 }
@@ -58632,7 +58671,7 @@ function _fflArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('freifall')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('freifall')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('freifall', 'Freier Fall – alle Körper fallen gleich schnell', body);
 }
@@ -58866,7 +58905,7 @@ function _lwdArbeitsblattHTML() {
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
-        <button class="sim-btn" onclick="_abClear('luftwid')">🗑 Arbeitsblatt zurücksetzen</button>
+        <button class="sim-btn" onclick="_abClear('luftwid')">🗑 Protokoll zurücksetzen</button>
       </div>`;
   return _abWrap('luftwid', 'Luftwiderstand – Feder vs. Stein', body);
 }

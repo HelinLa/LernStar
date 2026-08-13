@@ -1079,6 +1079,17 @@ ul { list-style: none; }
   .diag-flow-arrow { display:none; }
   .diag-q { font-size:1.06rem; }
 }
+
+/* ── Diagnose-Modus IN der Magnet-Simulation (Vermutungs-Spalte) ── */
+.msf-guess { color:#64748b; font-size:.9rem; }
+.msf-ok { color:#059669; font-weight:800; }
+.msf-sp { color:#b45309; font-weight:800; }
+tr.msf-diag-surprise { background:#fffbeb; }
+.msf-diag-eval { margin-top:12px; }
+.msf-diag-done { background:#ecfdf5; border:1px solid #a7f3d0; border-radius:10px;
+  padding:11px 14px; color:#065f46; line-height:1.5; }
+.msf-diag-progress { background:#f1f5f9; border:1px dashed #cbd5e1; border-radius:10px;
+  padding:10px 14px; color:#475569; font-size:.92rem; }
 .lm-card-head { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:14px; }
 .lm-num {
   flex-shrink:0;

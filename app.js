@@ -1395,7 +1395,7 @@ function renderSubject() {
       // Interaktives Arbeitsblatt (direkt aus der Simulation) hat Vorrang vor dem PDF-Download
       const hasInteractiveAb = typeof _physHatArbeitsblatt === 'function' && _physHatArbeitsblatt(t.exp);
       const abBtn = hasInteractiveAb
-        ? `<button class="experiment-card-pdf" onclick="openArbeitsblatt('${t.exp}')">📝 Arbeitsblatt</button>`
+        ? `<button class="experiment-card-pdf" onclick="openArbeitsblatt('${t.exp}')">📝 Protokoll</button>`
         : (pdf ? `<a class="experiment-card-pdf" href="${pdf}" download>📄 Arbeitsblatt</a>` : '');
       card.innerHTML = `
         <div class="experiment-card-icon">🧪</div>
@@ -1514,7 +1514,7 @@ function _lmMatchExercise(topic, chapterName, exercises) {
 const _LM_STEP_META = {
   video: { icon: '🎥', title: 'Lernvideo',           desc: 'Schau dir zuerst das Lernvideo an und lerne die Grundlagen kennen.' },
   sim:   { icon: '🧪', title: 'Simulation',          desc: 'Untersuche den Zusammenhang selbst und verändere die Parameter.' },
-  ab:    { icon: '📄', title: 'Arbeitsblatt',        desc: 'Bearbeite das Arbeitsblatt und sichere deine Ergebnisse.' },
+  ab:    { icon: '📄', title: 'Protokoll',           desc: 'Führe das Protokoll und sichere deine Beobachtungen – der naturwissenschaftliche Weg.' },
   ex:    { icon: '📝', title: 'Vertiefende Aufgaben', desc: 'Übe weiter und wende dein Wissen auf neue Aufgaben an.' },
 };
 
@@ -1544,7 +1544,7 @@ function _lmBuildSteps(topic, chapterName, exercises) {
 
   // 3. Arbeitsblatt (interaktiv aus der Simulation)
   if (topic.exp && typeof _physHatArbeitsblatt === 'function' && _physHatArbeitsblatt(topic.exp)) {
-    steps.push({ key: 'ab', available: true, btn: 'Arbeitsblatt öffnen',
+    steps.push({ key: 'ab', available: true, btn: 'Protokoll öffnen',
       action: `openArbeitsblatt('${_lmJs(topic.exp)}')` });
   } else {
     steps.push({ key: 'ab', available: false });
@@ -1667,6 +1667,7 @@ function startDiagnose(exId) {
 function closeDiagnose() {
   document.getElementById('diagOverlay')?.remove();
   _diag = null;
+  if (typeof _msfSetDiagnose === 'function') _msfSetDiagnose(null);
 }
 
 function _diagBox(inner) {
@@ -1703,9 +1704,11 @@ function _diagTogglePred(k) {
 }
 
 // ── Schritt 2: Experiment (die Simulation ist der Schiedsrichter) ─
-function _diagGoExperiment() { _diagRenderExperiment(); }
+// Öffnet direkt die Simulation im Diagnose-Modus. Es gibt KEINEN
+// „ich habe getestet"-Knopf – weiter geht es erst aus dem Experiment,
+// wenn wirklich alle Materialien getestet wurden.
+function _diagGoExperiment() { _diagRenderExperiment(); _diagOpenExperiment(); }
 function _diagRenderExperiment() {
-  const c = _diag.cfg;
   _diagBox(`
     <div class="diag-steps-head">
       <span class="diag-step-pill done">1 · 🔮 Vermutung</span>
@@ -1713,30 +1716,28 @@ function _diagRenderExperiment() {
       <span class="diag-step-pill">3 · 💡 Aha</span>
     </div>
     <h3 class="sim-h3">🧲 Jetzt prüfst du es selbst</h3>
-    <p class="diag-intro">Öffne das Experiment und halte <b>jedes</b> Ding an den Magneten. Beobachte genau:
-      Wird es angezogen oder nicht? Teste ruhig <b>alle</b> Materialien – komm dann hierher zurück.</p>
-    <div class="diag-exp-cta">
-      <button class="sim-btn primary diag-exp-btn" type="button" onclick="_diagOpenExperiment()">🧲 Experiment öffnen</button>
-    </div>
-    <p class="diag-hint" id="diagExpNote">Tipp: Im Experiment tippst du oben ein Material an – du siehst sofort, ob der Magnet es anzieht.</p>
+    <p class="diag-intro">Das Experiment ist geöffnet. Halte <b>jedes</b> Material an den Magneten und
+      beobachte genau. Deine Vermutungen stehen dort in einer <b>eigenen Spalte</b> – so vergleichst du direkt.</p>
+    <p class="diag-hint">Wenn du <b>alle</b> Materialien getestet hast, tippst du im Experiment auf
+      „<b>🔎 Zur Auswertung</b>". Erst dann geht es weiter – Naturwissenschaft heißt: erst prüfen, dann urteilen.</p>
     <div class="diag-actions">
-      <button class="sim-btn" type="button" onclick="_diagRenderVermutung()">← zurück</button>
-      <button class="sim-btn primary" type="button" id="diagToReflect" onclick="_diagRenderVergleich()">Ich habe getestet → vergleichen</button>
+      <button class="sim-btn" type="button" onclick="_diagRenderVermutung()">← Vermutung ändern</button>
+      <button class="sim-btn primary" type="button" onclick="_diagOpenExperiment()">🧲 Experiment erneut öffnen</button>
     </div>`);
-  _diagSyncExpBtn();
 }
 function _diagOpenExperiment() {
-  _diag.opened = true;
+  // Vermutungen + Auswertungstexte an die Simulation übergeben
+  const cfg = {
+    pred: _diag.pred, exId: _diag.exId,
+    grundvorstellung: _diag.cfg.grundvorstellung || '',
+    ahaMetall: _diag.cfg.ahaMetall || ''
+  };
+  if (typeof _msfSetDiagnose === 'function') _msfSetDiagnose(cfg);
   if (typeof openPhysicsSim === 'function') openPhysicsSim(_diag.cfg.experiment);
   else if (typeof openExperiment === 'function') openExperiment(_diag.cfg.experiment);
-  _diagSyncExpBtn();
 }
-function _diagSyncExpBtn() {
-  const note = document.getElementById('diagExpNote');
-  if (_diag.opened && note) {
-    note.innerHTML = '✅ Gut – wenn du alle Materialien getestet hast, geht es unten weiter zum Vergleich.';
-  }
-}
+// Wird aus der Simulation aufgerufen, sobald alle Materialien getestet sind
+function _diagShowAuswertung() { if (_diag) _diagRenderVergleich(); }
 
 // ── Schritt 3: Vergleich Vermutung ↔ Experiment → Aha ───────
 function _diagRenderVergleich() {
@@ -3992,6 +3993,8 @@ function closeLernvideo() {
 }
 
 function openExperiment(expId) {
+  // Standalone-Öffnen (nicht aus dem Diagnose-Flow): Diagnose-Modus der Sim zurücksetzen
+  if (typeof _msfSetDiagnose === 'function') _msfSetDiagnose(null);
   const ex = document.getElementById('expModal');
   if (ex) { ex.remove(); if (_sim) _sim.stop(); }
 
