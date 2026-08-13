@@ -1613,11 +1613,46 @@ function _lmCardHTML(topic, modNum, chapterName, exercises) {
     <ol class="lm-steps">${stepsHTML}</ol>`;
 }
 
+// Dedizierte Karte für Diagnose-/„Neues Konzept"-Aufgaben (ganz oben, klar erkennbar)
+function _lmDiagnostikCardHTML(ex) {
+  const done = state.progress && state.progress[`${state.gradeId}_${state.subjectId}_${ex.id}`] != null;
+  const cleanTitle = String(ex.title || '').replace(/^\s*🆕\s*NEUES KONZEPT\s*·\s*/i, '');
+  return `
+    <div class="lm-card-head lm-diag-head">
+      <span class="lm-num">🆕 Neues Konzept · Diagnose-Lernzyklus</span>
+      <h4 class="lm-title">${cleanTitle}</h4>
+    </div>
+    ${ex.desc ? `<p class="lm-diag-desc">${ex.desc}</p>` : ''}
+    <ol class="lm-steps">
+      <li class="lm-step ${done ? 'lm-done' : 'lm-current'}">
+        <div class="lm-step-rail"><span class="lm-step-emoji" aria-hidden="true">🔎</span></div>
+        <div class="lm-step-main">
+          <div class="lm-step-top">
+            <span class="lm-step-label">Erst vorhersagen, dann beobachten</span>
+            <span class="lm-step-badge">${done ? '✓ erledigt' : 'dran'}</span>
+          </div>
+          <p class="lm-step-desc">Diese Aufgabe deckt typische Denkfehler auf: Sag zuerst eine Vorhersage – dann prüfst du sie durch Beobachten.</p>
+          <button class="lm-step-btn" type="button" onclick="startExercise('${_lmJs(ex.id)}')">
+            <span class="lm-step-btn-ico" aria-hidden="true">🔎</span>Diagnose starten</button>
+        </div>
+      </li>
+    </ol>`;
+}
+
 function renderLernmodule(subject) {
   const list = document.getElementById('lernmoduleList');
   if (!list) return;
   list.innerHTML = '';
-  const exercises = subject.exercises || [];
+  const allExercises = subject.exercises || [];
+  // Diagnose-Aufgaben oben als eigene Karten – und aus der Themen-Zuordnung heraushalten
+  const diagExercises = allExercises.filter(e => e.diagnostik);
+  const exercises = allExercises.filter(e => !e.diagnostik);
+  diagExercises.forEach(ex => {
+    const card = document.createElement('article');
+    card.className = 'lm-card lm-card-diag';
+    card.innerHTML = _lmDiagnostikCardHTML(ex);
+    list.appendChild(card);
+  });
   let modNum = 0;
   let currentChapter = '';
   subject.topics.forEach(t => {

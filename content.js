@@ -3265,7 +3265,7 @@ const CONTENT = { ...(typeof GS_CONTENT !== 'undefined' ? GS_CONTENT : {}),
           { name:'Wirkungen des elektrischen Stroms', diff:2, exp:'stromwirkungen', video:'stromwirkungen.mp4', explanation:'Elektrischer Strom kann eine Licht-, Wärme-, magnetische und Bewegungswirkung haben. In der Simulation schließt du Glühlampe, Heizdraht, Spule und Motor an und beobachtest die jeweilige Wirkung. Dabei wird elektrische Energie in andere Energieformen umgewandelt.' },
         ],
         exercises:[
-          { id:'e_diag_magnet', type:'Magnetismus', diff:1, title:'🆕 NEUES KONZEPT · Lernzyklus-Diagnose (Magnet)',
+          { id:'e_diag_magnet', type:'Magnetismus', diff:1, diagnostik:true, title:'🆕 NEUES KONZEPT · Lernzyklus-Diagnose (Magnet)',
             desc:'★ Beispiel für das neue diagnostische Konzept (Klasse 5): Sag zuerst eine Vorhersage – dann beobachte. Die falschen Antworten sind hier die typischen Denkfehler.',
             questions:[
               { q:'Du hältst einen Magneten an eine leere Getränkedose aus Aluminium. Was beobachtest du?', hint:'Aluminium ist ein Metall – aber sind wirklich alle Metalle magnetisch?', options:['Die Dose haftet fest am Magneten','Die Dose haftet gar nicht','Die Dose haftet nur an einem Pol','Die Dose wird selbst zum Magneten'], correct:1, explanation:'Aluminium ist zwar ein Metall, aber nicht magnetisch. Nur Eisen, Nickel und Kobalt (und Stahl) werden angezogen. Typischer Denkfehler: „alle Metalle sind magnetisch".' },
