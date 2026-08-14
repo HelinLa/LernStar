@@ -1950,8 +1950,7 @@ function renderForscherkreis(subject) {
     <div class="fk-theme">🧲 Thema: <b>${T.theme || ''}</b></div>
     <div class="fk-leitfrage">
       <div class="fk-leitfrage-ic">🔍</div>
-      <div class="fk-leitfrage-txt"><span>Unsere Forscherfrage (echtes Alltagsproblem)</span><b>${T.leitfrage || ''}</b></div>
-      <button class="fk-leitfrage-btn" onclick="_fkAct(0)">📖 Problem ansehen</button>
+      <div class="fk-leitfrage-txt"><span>Unsere Forscherfrage</span><b>${T.leitfrage || ''}</b></div>
     </div>
     <div class="fk-layout">
       <div class="fk-wheel">
