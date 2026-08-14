@@ -1874,10 +1874,6 @@ function _fkStepsFor(subject) {
   const T = {
     theme: 'Magnetismus · Welche Stoffe zieht ein Magnet an?',
     leitfrage: 'Welche Stoffe zieht ein Magnet an – und welche nicht?',
-    problem: '<p>🏗️ Auf dem <b>Schrottplatz</b> hebt ein riesiger Elektromagnet alte Autos in die Luft. '
-      + 'Eisen und Stahl bleiben am Magneten kleben – aber die <b>Alu-Felgen</b> und <b>Kupferkabel</b> fallen einfach runter.</p>'
-      + '<p>🧲 Und zu Hause: Der Magnet hält an der <b>Kühlschranktür</b> – doch an einer <b>Cola-Dose aus Aluminium</b> rutscht er ab.</p>'
-      + '<p>Wie macht der Schrott-Magnet das? Warum das eine, aber nicht das andere?</p>',
     loesung: '<p>Nur <b>Eisen, Nickel und Kobalt</b> (und <b>Stahl</b>, weil er viel Eisen enthält) sind magnetisch.</p>'
       + '<ul class="fk-ul"><li>Der Schrott-Magnet zieht <b>Eisen und Stahl</b> aus dem Müll – <b>Alu und Kupfer bleiben liegen</b>.</li>'
       + '<li>Die Kühlschranktür ist aus <b>Stahl</b> → der Magnet hält. Die <b>Alu</b>-Dose ist nicht magnetisch → er rutscht ab.</li></ul>'
@@ -1923,121 +1919,6 @@ function _fkMarkVisited(n) {
   try { localStorage.setItem(`ls_fk_${state.gradeId}_${state.subjectId}`, JSON.stringify(v)); } catch (e) { }
 }
 
-// Schrottplatz-Szene als reines SVG (Bewegung wird über Beat-Klassen gesteuert)
-function _fkSceneSVG() {
-  return `
-    <svg class="fk-scene-svg" viewBox="0 0 420 210" role="img"
-      aria-label="Schrottplatz: der Kran-Magnet hebt Eisen und Stahl, Aluminium und Kupfer bleiben liegen">
-      <defs>
-        <linearGradient id="fkSky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#dbeafe"/><stop offset="1" stop-color="#eff6ff"/>
-        </linearGradient>
-      </defs>
-      <rect x="0" y="0" width="420" height="210" fill="url(#fkSky)"/>
-      <rect x="0" y="176" width="420" height="34" fill="#d6c7a1"/>
-      <rect x="0" y="173" width="420" height="4" fill="#b8a678"/>
-      <rect x="40" y="12" width="330" height="12" rx="3" fill="#facc15" stroke="#ca8a04" stroke-width="1.5"/>
-      <rect x="150" y="4" width="18" height="10" fill="#ca8a04"/>
-      <line x1="159" y1="24" x2="159" y2="38" stroke="#475569" stroke-width="2"/>
-      <g class="fk-mag">
-        <rect x="112" y="36" width="94" height="24" rx="5" fill="#334155"/>
-        <rect x="112" y="55" width="94" height="9" rx="3" fill="#1e293b"/>
-        <text x="159" y="54" text-anchor="middle" font-size="15">⚡</text>
-      </g>
-      <ellipse class="fk-mag-glow" cx="159" cy="64" rx="60" ry="12" fill="#38bdf8"/>
-      <g class="fk-arrows" stroke="#16a34a" stroke-width="2.4" stroke-dasharray="4 4" stroke-linecap="round" fill="none">
-        <path d="M134,150 L148,74"/>
-        <path d="M178,150 L170,74"/>
-      </g>
-      <g class="fk-iron">
-        <text x="134" y="172" text-anchor="middle" font-size="30">🔩</text>
-        <text x="176" y="174" text-anchor="middle" font-size="34">🚗</text>
-      </g>
-      <g class="fk-non fk-non-a"><text x="300" y="174" text-anchor="middle" font-size="28">🥫</text></g>
-      <g class="fk-non fk-non-b"><text x="342" y="172" text-anchor="middle" font-size="24">🧵</text></g>
-      <text class="fk-x" x="321" y="140" text-anchor="middle" font-size="16">🚫</text>
-    </svg>`;
-}
-
-// ── Gesprochenes Kurz-„Video" des Alltagsproblems ─────────────
-let _fkVoice = null;
-function _fkPickVoice() {
-  const vs = (window.speechSynthesis && window.speechSynthesis.getVoices()) || [];
-  const de = vs.filter(v => v.lang === 'de-DE' || (v.lang || '').startsWith('de'));
-  if (!de.length) return null;
-  const fem = /katja|hedda|anna|petra|sabine|marie|klara|julia|amala|female/i;
-  const male = /stefan|conrad|markus|yannick|hans|karl|georg|male/i;
-  return de.find(v => fem.test(v.name) && /(natural|neural|online)/i.test(v.name))
-    || de.find(v => fem.test(v.name))
-    || de.find(v => /(natural|neural|online)/i.test(v.name) && !male.test(v.name))
-    || de.find(v => !male.test(v.name))
-    || de[0] || null;
-}
-function _fkSpeak(text, onend) {
-  if (!('speechSynthesis' in window)) { setTimeout(onend, 2000); return; }
-  if (!_fkVoice) _fkVoice = _fkPickVoice();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'de-DE'; u.rate = 1.0; u.pitch = 1.05;
-  if (_fkVoice) u.voice = _fkVoice;
-  u.onend = onend; u.onerror = onend;
-  speechSynthesis.speak(u);
-}
-function _fkPlayProblem() {
-  document.getElementById('fkProblemVideo')?.remove();
-  const m = document.createElement('div');
-  m.id = 'fkProblemVideo'; m.className = 'sim-overlay';
-  m.innerHTML = `<div class="sim-box diag-box fk-vid-box">
-      <button class="sim-x" onclick="_fkCloseProblem()">✕</button>
-      <h3 class="sim-h3">🎬 Das Problem</h3>
-      <div id="fkVidScene" class="fk-scene fk-vid">
-        <div class="fk-vid-stage">
-          ${_fkSceneSVG()}
-          <div class="fk-vid-frage" id="fkVidFrage">🔍 Welche Stoffe zieht ein Magnet an – und welche nicht?</div>
-        </div>
-      </div>
-      <div id="fkVidCap" class="fk-vid-cap">🔊 Ton an – die Szene wird dir gleich vorgelesen…</div>
-      <div class="fk-vid-controls">
-        <button class="sim-btn primary" id="fkVidPlay" onclick="_fkRunProblem()">▶ Abspielen</button>
-      </div>
-    </div>`;
-  document.body.appendChild(m);
-  _fkRunProblem();
-}
-function _fkCloseProblem() {
-  try { speechSynthesis.cancel(); } catch (e) { }
-  document.getElementById('fkProblemVideo')?.remove();
-}
-function _fkRunProblem() {
-  const scene = document.getElementById('fkVidScene');
-  const cap = document.getElementById('fkVidCap');
-  const play = document.getElementById('fkVidPlay');
-  if (!scene) return;
-  try { speechSynthesis.cancel(); } catch (e) { }
-  scene.className = 'fk-scene fk-vid';           // zurücksetzen
-  if (play) { play.disabled = true; play.textContent = '⏵ läuft…'; }
-  const segs = [
-    { cls: 'beat-power', cap: '🏗️ Ein Kran mit einem starken Magneten fährt über den Schrottplatz.',
-      text: 'Schau mal auf den Schrottplatz. Ein riesiger Kran hat einen starken Magneten.' },
-    { cls: 'beat-lift', cap: '🧲 Eisen und Stahl werden nach oben gezogen.',
-      text: 'Er fährt über den Schrott und zieht die schweren Eisen- und Stahlteile einfach nach oben.' },
-    { cls: 'beat-stay', cap: '🚫 Alu-Dose und Kupferkabel bleiben liegen.',
-      text: 'Aber die Alu-Dose und das Kupferkabel bleiben einfach liegen. Die zieht der Magnet nicht an.' },
-    { cls: 'beat-frage', cap: '🔍 Welche Stoffe zieht ein Magnet an – und welche nicht?',
-      text: 'Und darum geht es in unserer Forscherfrage: Welche Stoffe zieht ein Magnet an, und welche nicht?' }
-  ];
-  let i = 0;
-  (function next() {
-    if (i >= segs.length) { _fkVidDone(); return; }
-    const s = segs[i++];
-    scene.classList.add(s.cls);
-    if (cap) cap.innerHTML = s.cap;
-    _fkSpeak(s.text, next);
-  })();
-}
-function _fkVidDone() {
-  const play = document.getElementById('fkVidPlay');
-  if (play) { play.disabled = false; play.textContent = '↻ Nochmal abspielen'; }
-}
 
 function renderForscherkreis(subject) {
   const wrap = document.getElementById('fkWheelWrap');

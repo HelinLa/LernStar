@@ -1194,44 +1194,6 @@ ul { list-style: none; }
   .fk-node.fk-current, .fk-ring-c { animation:none; }
 }
 
-/* Gesprochenes Problem-„Video" (Beat-gesteuerte SVG-Szene) */
-.fk-vid-box { max-width:560px !important; }
-.fk-scene { margin:0 0 12px; }
-.fk-vid-stage { position:relative; }
-.fk-scene-svg { width:100%; display:block; border-radius:14px; border:1px solid #cbd5e1; }
-/* Grundzustand */
-.fk-vid .fk-iron { transform:translateY(0); transition:transform 1.1s ease-in-out; }
-.fk-vid .fk-arrows { opacity:0; transition:opacity .5s; }
-.fk-vid .fk-mag-glow { opacity:0; transition:opacity .5s; }
-.fk-vid .fk-x { opacity:0; transition:opacity .4s; }
-/* Beats */
-.fk-vid.beat-power .fk-mag-glow { opacity:.55; animation:fkGlowPulse 1.4s ease-in-out infinite; }
-.fk-vid.beat-lift  .fk-iron { transform:translateY(-112px); }
-.fk-vid.beat-lift  .fk-arrows { opacity:1; }
-.fk-vid.beat-stay  .fk-x { opacity:1; }
-.fk-vid.beat-stay  .fk-non-a { animation:fkShakeOnce .6s ease-in-out; }
-.fk-vid.beat-stay  .fk-non-b { animation:fkShakeOnce .6s ease-in-out .1s; }
-@keyframes fkGlowPulse { 0%,100%{opacity:.35} 50%{opacity:.7} }
-@keyframes fkShakeOnce { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-3px)} 45%{transform:translateX(3px)} 70%{transform:translateX(-2px)} }
-/* Forscherfrage-Overlay (erscheint im letzten Beat) */
-.fk-vid-frage { position:absolute; left:50%; bottom:14px; transform:translate(-50%,10px);
-  background:rgba(2,132,199,.94); color:#fff; font-weight:800; font-size:1rem; line-height:1.35;
-  padding:12px 18px; border-radius:12px; max-width:90%; text-align:center; box-shadow:0 8px 24px rgba(2,132,199,.4);
-  opacity:0; transition:opacity .5s, transform .5s; pointer-events:none; }
-.fk-vid.beat-frage .fk-vid-frage { opacity:1; transform:translate(-50%,0); }
-/* Untertitel-Zeile */
-.fk-vid-cap { min-height:44px; display:flex; align-items:center; justify-content:center; text-align:center;
-  background:#f1f5f9; border-radius:10px; padding:10px 14px; color:#334155; font-weight:600; font-size:.95rem; margin-bottom:12px; }
-.fk-vid-controls { display:flex; justify-content:center; }
-.fk-vid-controls .sim-btn { min-width:200px; }
-@media (prefers-reduced-motion: reduce){
-  .fk-vid .fk-iron, .fk-vid-frage { transition:none; }
-  .fk-vid.beat-power .fk-mag-glow, .fk-vid.beat-stay .fk-non-a, .fk-vid.beat-stay .fk-non-b { animation:none; }
-}
-
-/* Problem-/Lösungs-Texte in den Info-Fenstern */
-.fk-problem { background:#fff7ed; border:1px solid #fed7aa; border-radius:12px; padding:12px 16px; margin-bottom:12px; }
-.fk-problem p:last-child { margin-bottom:0; }
 .fk-loesung { background:#ecfdf5; border:1px solid #a7f3d0; border-radius:12px; padding:12px 16px; }
 .fk-mobile-hint { font-size:.85rem; color:#64748b; text-align:center; margin-bottom:4px; }
 
