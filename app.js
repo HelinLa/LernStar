@@ -13129,3 +13129,23 @@ function _modulStep10Result() {
 function modulNext() { if (state.modulStep < 10) { state.modulStep++; renderModul(); } }
 function modulAbschliessen() { navigate('subject', state.modulGradeId, state.modulSubjectId); }
 
+// ── QR-Deep-Links (aus dem gedruckten Heft) ─────────────────────────
+//  #experiment=magnet-stoffe  → öffnet direkt die Simulation
+//  #video=magnet-problem      → spielt direkt das Lernvideo
+window.addEventListener('load', function () {
+  try {
+    var h = decodeURIComponent(location.hash || '');
+    var mv = h.match(/video=([a-z0-9_\-\.]+)/i);
+    var ms = h.match(/experiment=([a-z0-9_\-]+)/i);
+    if (mv || ms) {
+      var ob = document.getElementById('onboardingOverlay'); if (ob) ob.classList.add('hidden');
+    }
+    if (mv && typeof playLernvideo === 'function') {
+      var f = mv[1]; if (!/\.mp4$/i.test(f)) f += '.mp4';
+      setTimeout(function () { playLernvideo(f, '🎬 Das Problem'); }, 450);
+    } else if (ms && typeof openPhysicsSim === 'function') {
+      setTimeout(function () { openPhysicsSim(ms[1]); }, 450);
+    }
+  } catch (e) { }
+});
+
