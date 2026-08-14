@@ -1883,9 +1883,9 @@ function _fkStepsFor(subject) {
   const steps = [
     { n: 1, ic: '🎯', t: 'Problem & Frage', d: 'Ein echtes Problem aus dem Alltag – daraus wird unsere Forscherfrage.',
       act: { type: 'problemvideo' } },
-    { n: 2, ic: '🔎', t: 'Vorwissen & Ideen', d: 'Was weißt du schon – und was glaubst du? Deine ersten Vermutungen zählen.',
+    { n: 2, ic: '🔎', t: 'Was kennst du schon bereits?', d: 'Was weißt du schon – und was glaubst du? Deine ersten Vermutungen zählen.',
       act: { type: 'info', body: '<p>Bevor du forschst, sammelst du, was du schon weißt – und was du <b>glaubst</b>:</p><ul class="fk-ul"><li>Ein Magnet hat einen <b>Nordpol</b> und einen <b>Südpol</b>.</li><li>Er zieht manche Dinge an, ohne sie zu berühren.</li><li>Aber: Zieht er <b>alle</b> Metalle an? Was glaubst du?</li></ul><p>Diese Vermutung prüfst du gleich im Experiment – nicht raten lassen, sondern <b>testen</b>.</p>' } },
-    { n: 3, ic: '🔮', t: 'Vermuten & Forschen', d: 'Stelle eine Hypothese auf und prüfe sie im Experiment – so gewinnt man Erkenntnisse.', heart: true,
+    { n: 3, ic: '🔮', t: 'Was glaubst du? Probier aus!', d: 'Stelle eine Hypothese auf und prüfe sie im Experiment – so gewinnt man Erkenntnisse.', heart: true,
       act: { type: 'diag', id: T.diagId },
       done: p[key(T.diagId)] != null },
     { n: 4, ic: '📄', t: 'Ordnen & Sichern', d: 'Halte deine Beobachtung im Protokoll fest und formuliere die Regel.',
@@ -2070,7 +2070,7 @@ function _fkAbschluss() {
 }
 function _fkSelfPick(msg) {
   const out = document.getElementById('fkSelfOut');
-  if (out) out.innerHTML = `<div class="fk-self-msg">${msg} <br><small>Tipp: Schritt 5 „Üben" oder Schritt 3 „Vermuten &amp; Erforschen" bringen dich weiter.</small></div>`;
+  if (out) out.innerHTML = `<div class="fk-self-msg">${msg} <br><small>Tipp: Schritt 5 „Üben &amp; Festigen" oder Schritt 3 „Was glaubst du? Probier aus!" bringen dich weiter.</small></div>`;
   const g = CONTENT[state.gradeId];
   const sub = g && g.subjects.find(x => x.id === state.subjectId);
   if (sub && (state._physView || 'zyklus') === 'zyklus') renderForscherkreis(sub);
