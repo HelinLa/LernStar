@@ -1865,66 +1865,75 @@ function setPhysView(v) {
   if (s) renderPhysikZyklus(s);
 }
 
-// Beispiel-Thema (Magnetismus). Später pro Thema konfigurierbar.
-function _fkStepsFor(subject) {
+// Aktuelles Thema aus FK_MAGNET (Datenmodell, in fk-magnet.js).
+function _fkTopic() {
+  const T = (typeof window !== 'undefined' && window.FK_MAGNET) || [];
+  let i = state._fkTopicIdx | 0;
+  if (i < 0 || i >= T.length) i = 0;
+  return T[i] || null;
+}
+
+// Baut die 7 Forscherkreis-Schritte für das aktuell gewählte Thema.
+function _fkStepsFor() {
+  const cfg = _fkTopic();
+  if (!cfg) return [];
   const key = id => `${state.gradeId}_${state.subjectId}_${id}`;
   const p = state.progress || {};
   const visited = _fkVisited();
-  // Kontextorientiert nach Kircher: echtes Alltagsproblem → Forscherfrage → am Ende beantwortet.
-  const T = {
-    theme: 'Magnetismus · Welche Stoffe zieht ein Magnet an?',
-    leitfrage: 'Welche Stoffe zieht ein Magnet an – und welche nicht?',
-    loesung: '<p>Nur <b>Eisen, Nickel und Kobalt</b> (und <b>Stahl</b>, weil er viel Eisen enthält) sind magnetisch.</p>'
-      + '<ul class="fk-ul"><li>Der Schrott-Magnet zieht <b>Eisen und Stahl</b> aus dem Müll – <b>Alu und Kupfer bleiben liegen</b>.</li>'
-      + '<li>Die Kühlschranktür ist aus <b>Stahl</b> → der Magnet hält. Die <b>Alu</b>-Dose ist nicht magnetisch → er rutscht ab.</li></ul>'
-      + '<p><b>Merke:</b> „Metall" und „magnetisch" sind <b>nicht</b> dasselbe!</p>',
-    diagId: 'e_diag_magnet', exp: 'magnet-stoffe', uebenId: 'e2'
-  };
   const steps = [
     { n: 1, ic: '🎯', t: 'Problem & Frage', d: 'Ein echtes Problem aus dem Alltag – daraus wird unsere Forscherfrage.',
-      act: { type: 'problemvideo' } },
+      act: { type: 'problem' } },
     { n: 2, ic: '🔎', t: 'Was kennst du schon bereits?', d: 'Was weißt du schon – und was glaubst du? Deine ersten Vermutungen zählen.',
-      act: { type: 'info', body: '<p>Bevor du forschst, sammelst du, was du schon weißt – und was du <b>glaubst</b>:</p><ul class="fk-ul"><li>Ein Magnet hat einen <b>Nordpol</b> und einen <b>Südpol</b>.</li><li>Er zieht manche Dinge an, ohne sie zu berühren.</li><li>Aber: Zieht er <b>alle</b> Metalle an? Was glaubst du?</li></ul><p>Diese Vermutung prüfst du gleich im Experiment – nicht raten lassen, sondern <b>testen</b>.</p>' } },
+      act: { type: 'info', body: cfg.vorwissen || '' } },
     { n: 3, ic: '🔮', t: 'Was glaubst du? Probier aus!', d: 'Stelle eine Hypothese auf und prüfe sie im Experiment – so gewinnt man Erkenntnisse.', heart: true,
-      act: { type: 'diag', id: T.diagId },
-      done: p[key(T.diagId)] != null },
-    { n: 4, ic: '📄', t: 'Ordnen & Sichern', d: 'Halte deine Beobachtung im Protokoll fest und formuliere die Regel.',
-      act: { type: 'protokoll', exp: T.exp } },
-    { n: 5, ic: '✏️', t: 'Üben & Festigen', d: 'Übe mit Aufgaben – die Hilfen werden Schritt für Schritt weniger.',
-      act: { type: 'ueben', id: T.uebenId },
-      done: p[key(T.uebenId)] != null },
+      act: cfg.integrated ? { type: 'diag', id: cfg.diagId } : { type: 'predict' },
+      done: cfg.integrated ? (p[key(cfg.diagId)] != null) : undefined },
+    { n: 4, ic: '📓', t: 'Ordnen & Sichern', d: 'Regel, Fachbegriff und – wo nötig – ein Modell.',
+      act: { type: 'sichern' } },
+    { n: 5, ic: '✏️', t: 'Üben & Festigen', d: 'Übe mit Aufgaben zu diesem Thema.',
+      act: { type: 'ueben' } },
     { n: 6, ic: '🧩', t: 'Anwenden', d: 'Erkläre mit deinem Wissen neue Situationen aus dem Alltag.',
-      act: { type: 'info', body: '<p>Erkläre jetzt selbst:</p><ul class="fk-ul"><li><b>Kühlschrankmagnet:</b> Warum hält er? (Tür aus Stahl = Eisen)</li><li><b>Kompass:</b> Eine kleine Magnetnadel richtet sich im Erdmagnetfeld aus.</li><li><b>Schrott-Trennung:</b> Warum bleiben Alu und Kupfer liegen?</li></ul><p>Wer das erklären kann, hat das Prinzip verstanden – nicht nur auswendig gelernt.</p>' } },
+      act: { type: 'info', body: cfg.anwenden || '' } },
     { n: 7, ic: '✅', t: 'Frage geklärt?', d: 'Löse das Anfangsproblem und schätze dich selbst ein.',
       act: { type: 'abschluss' } }
   ];
-  // done/visited/current bestimmen
-  steps.forEach(s => {
-    if (s.done === undefined) s.done = !!visited['s' + s.n];
-    s.act._id = s.n;
-  });
+  steps.forEach(s => { if (s.done === undefined) s.done = !!visited['s' + s.n]; });
   const cur = steps.find(s => !s.done);
   if (cur) cur.current = true;
-  _fkThemeObj = T;
+  _fkThemeObj = cfg;
   return steps;
 }
 let _fkThemeObj = null;
 
+function _fkVisitedKey() {
+  const cfg = _fkTopic();
+  return `ls_fk_${state.gradeId}_${state.subjectId}_${cfg ? cfg.id : 'x'}`;
+}
 function _fkVisited() {
-  try { return JSON.parse(localStorage.getItem(`ls_fk_${state.gradeId}_${state.subjectId}`) || '{}'); }
+  try { return JSON.parse(localStorage.getItem(_fkVisitedKey()) || '{}'); }
   catch (e) { return {}; }
 }
 function _fkMarkVisited(n) {
   const v = _fkVisited(); v['s' + n] = 1;
-  try { localStorage.setItem(`ls_fk_${state.gradeId}_${state.subjectId}`, JSON.stringify(v)); } catch (e) { }
+  try { localStorage.setItem(_fkVisitedKey(), JSON.stringify(v)); } catch (e) { }
 }
 
 
+function setFkTopic(i) {
+  state._fkTopicIdx = i;
+  const g = CONTENT[state.gradeId];
+  const s = g && g.subjects.find(x => x.id === state.subjectId);
+  if (s) renderForscherkreis(s);
+}
 function renderForscherkreis(subject) {
   const wrap = document.getElementById('fkWheelWrap');
   if (!wrap) return;
-  const steps = _fkStepsFor(subject);
+  const steps = _fkStepsFor();
   _fkSteps = steps;
+  const _topics = (typeof window !== 'undefined' && window.FK_MAGNET) || [];
+  const _tidx = state._fkTopicIdx | 0;
+  const _topicbar = _topics.length ? `<div class="fk-topicbar">${_topics.map((t, i) =>
+    `<button class="fk-topicchip${i === _tidx ? ' active' : ''}" onclick="setFkTopic(${i})">${t.shortName}</button>`).join('')}</div>` : '';
   const doneCount = steps.filter(s => s.done).length;
   const pct = Math.round((doneCount / steps.length) * 100);
   const N = steps.length, R = 40;
@@ -1947,6 +1956,7 @@ function renderForscherkreis(subject) {
      </button>`).join('');
   const T = _fkThemeObj || {};
   wrap.innerHTML = `
+    ${_topicbar}
     <div class="fk-theme">🧲 Thema: <b>${T.theme || ''}</b></div>
     <div class="fk-leitfrage">
       <div class="fk-leitfrage-ic">🔍</div>
@@ -2017,21 +2027,58 @@ function _fkNextHTML(steps) {
   const i = steps.indexOf(nx);
   return `<button class="fk-next-btn" onclick="_fkAct(${i})">${nx.ic} <b>${nx.t}</b><span>${nx.d}</span></button>`;
 }
+function _fkRefresh() {
+  const g = CONTENT[state.gradeId];
+  const sub = g && g.subjects.find(x => x.id === state.subjectId);
+  if (sub && (state._physView || 'zyklus') === 'zyklus') renderForscherkreis(sub);
+}
 function _fkAct(i) {
   const s = _fkSteps[i];
   if (!s) return;
   _fkMarkVisited(s.n);
   const a = s.act;
+  const cfg = _fkTopic();
   if (a.type === 'diag') { startDiagnose(a.id); return; }
-  if (a.type === 'protokoll') { openArbeitsblatt(a.exp); return; }
-  if (a.type === 'ueben') { startExercise(a.id); return; }
-  if (a.type === 'problemvideo') { playLernvideo('magnet-problem.mp4', '🎬 Das Problem: Auf dem Schrottplatz'); return; }
+  if (a.type === 'predict') { _fkPredict(); return; }
+  if (a.type === 'problem') { _fkShowProblem(cfg); return; }
+  if (a.type === 'sichern') { _fkShowSichern(cfg); return; }
+  if (a.type === 'ueben') { _fkShowUeben(cfg); return; }
   if (a.type === 'abschluss') { _fkAbschluss(); return; }
   // info: Modal zeigen und Kreis auffrischen (Schritt gilt als besucht)
   _fkInfo(`${s.ic} ${s.t}`, a.body);
-  const g = CONTENT[state.gradeId];
-  const sub = g && g.subjects.find(x => x.id === state.subjectId);
-  if (sub && (state._physView || 'zyklus') === 'zyklus') renderForscherkreis(sub);
+  _fkRefresh();
+}
+// Schritt 1: Problem & Frage (Alltag) + Video-Option
+function _fkShowProblem(cfg) {
+  if (!cfg) return;
+  const vid = cfg.video
+    ? `<div class="diag-actions"><button class="sim-btn primary" onclick="playLernvideo('${_lmJs(cfg.video)}','🎬 ${_lmJs(cfg.theme || 'Video')}')">🎬 Video ansehen</button></div>`
+    : '';
+  _fkInfo('🎯 Problem & Frage',
+    `<div class="fk-problem">${cfg.problem || ''}</div>`
+    + `<p class="fk-quote">🔍 Unsere Forscherfrage:<br>„${cfg.leitfrage || ''}"</p>`
+    + `<p style="color:#64748b">Diese Frage beantwortest du am Ende selbst – Schritt für Schritt.</p>`
+    + vid);
+  _fkRefresh();
+}
+// Schritt 4: Ordnen & Sichern (Merksatz, Fachbegriff, ggf. Modell, Protokoll)
+function _fkShowSichern(cfg) {
+  if (!cfg) return;
+  let body = `<div class="diag-regel"><b>⭐ Merksatz</b><br>${cfg.merksatz || ''}</div>`;
+  if (cfg.fachbegriff) body += `<div class="fk-info-body" style="background:#f1f5f9;border-radius:10px;padding:12px 14px;margin-top:10px"><b>🔤 Fachbegriff</b><br>${cfg.fachbegriff}</div>`;
+  if (cfg.modell) body += `<div class="fk-info-body" style="background:#f1ecfc;border-radius:10px;padding:12px 14px;margin-top:10px"><b>🧩 Modell</b><br>${cfg.modell}</div>`;
+  if (cfg.exp) body += `<div class="diag-actions"><button class="sim-btn" onclick="openArbeitsblatt('${_lmJs(cfg.exp)}')">📄 Protokoll öffnen</button></div>`;
+  _fkInfo('📓 Ordnen & Sichern', body);
+  _fkRefresh();
+}
+// Schritt 5: Üben (Aufgaben mit Kompetenz-Kennung)
+function _fkShowUeben(cfg) {
+  if (!cfg) return;
+  const items = (cfg.aufgaben || []).map(a =>
+    `<li style="margin:8px 0"><span class="fk-comp-tag">${a.comp}</span> ${a.prompt}</li>`).join('');
+  _fkInfo('✏️ Üben & Festigen',
+    `<p>Übe zu diesem Thema – jede Aufgabe fördert eine Kompetenz:</p><ul class="fk-ul">${items}</ul>`);
+  _fkRefresh();
 }
 function _fkInfo(title, body) {
   document.getElementById('fkInfoModal')?.remove();
@@ -2047,7 +2094,7 @@ function _fkInfo(title, body) {
 }
 // Abschluss: Anfangsproblem lösen (Forscherfrage beantworten) + Selbsteinschätzung
 function _fkAbschluss() {
-  const T = _fkThemeObj || {};
+  const T = _fkTopic() || {};
   document.getElementById('fkInfoModal')?.remove();
   const m = document.createElement('div');
   m.id = 'fkInfoModal'; m.className = 'sim-overlay';
@@ -2070,10 +2117,91 @@ function _fkAbschluss() {
 function _fkSelfPick(msg) {
   const out = document.getElementById('fkSelfOut');
   if (out) out.innerHTML = `<div class="fk-self-msg">${msg} <br><small>Tipp: Schritt 5 „Üben &amp; Festigen" oder Schritt 3 „Was glaubst du? Probier aus!" bringen dich weiter.</small></div>`;
-  const g = CONTENT[state.gradeId];
-  const sub = g && g.subjects.find(x => x.id === state.subjectId);
-  if (sub && (state._physView || 'zyklus') === 'zyklus') renderForscherkreis(sub);
+  _fkRefresh();
 }
+
+// ── Generischer Vermutungs-Flow (Themen ohne integrierte Sim-Diagnose) ──
+// Vermutung (Auswahl) → Experiment (Simulation) → Auswertung/Aha.
+let _fkPred = null;
+function _fkPredict() {
+  const cfg = _fkTopic();
+  if (!cfg) return;
+  if (cfg.integrated) { startDiagnose(cfg.diagId); return; }
+  document.getElementById('fkPredictOverlay')?.remove();
+  _fkPred = { cfg, choice: null };
+  const ov = document.createElement('div');
+  ov.id = 'fkPredictOverlay'; ov.className = 'sim-overlay diag-overlay';
+  document.body.appendChild(ov);
+  _fkPredVermutung();
+}
+function _fkPredBox(inner) {
+  const ov = document.getElementById('fkPredictOverlay');
+  if (ov) ov.innerHTML = `<div class="sim-box diag-box"><button class="sim-x" onclick="_fkPredClose()">✕</button>${inner}</div>`;
+}
+function _fkPredClose() { document.getElementById('fkPredictOverlay')?.remove(); _fkPred = null; }
+function _fkPredHead(active) {
+  const p = ['🔮 Vermutung', '🧲 Experiment', '💡 Aha'];
+  return `<div class="diag-steps-head">${p.map((t, i) =>
+    `<span class="diag-step-pill ${i < active ? 'done' : (i === active ? 'active' : '')}">${i + 1} · ${t}</span>`).join('')}</div>`;
+}
+function _fkPredVermutung() {
+  const c = _fkPred.cfg;
+  const opts = (c.predictOptions || []).map((o, i) =>
+    `<button type="button" class="diag-optbtn${_fkPred.choice === i ? ' picked' : ''}" onclick="_fkPredPick(${i})">${o.label}</button>`).join('');
+  _fkPredBox(`${_fkPredHead(0)}
+    <h3 class="sim-h3">🔮 Deine Vermutung</h3>
+    <div class="diag-q">${c.predictFrage || ''}</div>
+    <p class="diag-hint">${c.predictHinweis || ''}</p>
+    <div class="fk-optlist">${opts}</div>
+    <div class="diag-actions">
+      <button class="sim-btn primary" type="button" ${_fkPred.choice == null ? 'disabled' : ''} onclick="_fkPredGoExp()">${c.exp ? 'Weiter zum Experiment →' : 'Weiter →'}</button>
+    </div>`);
+}
+function _fkPredPick(i) { _fkPred.choice = i; _fkPredVermutung(); }
+function _fkPredGoExp() {
+  const c = _fkPred.cfg;
+  if (c.exp) {
+    _fkPredExp();
+    if (typeof openPhysicsSim === 'function') openPhysicsSim(c.exp);
+  } else {
+    _fkPredAuswertung();
+  }
+}
+function _fkPredExp() {
+  const c = _fkPred.cfg;
+  _fkPredBox(`${_fkPredHead(1)}
+    <h3 class="sim-h3">🧲 Jetzt prüfst du es selbst</h3>
+    <p class="diag-intro">Das Experiment ist geöffnet. Probiere es aus und <b>beobachte genau</b>. Komm dann zurück und tippe auf „Zur Auswertung".</p>
+    <div class="diag-actions">
+      <button class="sim-btn" type="button" onclick="_fkPredVermutung()">← Vermutung ändern</button>
+      <button class="sim-btn primary" type="button" onclick="_fkPredAuswertung()">Zur Auswertung →</button>
+    </div>`);
+}
+function _fkPredAuswertung() {
+  const c = _fkPred.cfg, ci = _fkPred.choice;
+  const opts = c.predictOptions || [];
+  const correctIdx = opts.findIndex(o => o.correct);
+  const wasRight = ci === correctIdx;
+  const picked = opts[ci] || {};
+  const aha = wasRight
+    ? 'Stark – deine Vermutung hat zum Experiment gepasst! 🎯'
+    : (picked.aha || 'Das Experiment zeigt es anders – genau so lernt man in der Naturwissenschaft: am Experiment.');
+  const rows = opts.map((o, i) => {
+    const cls = o.correct ? 'correct' : (i === ci ? 'chosen-wrong' : '');
+    const mark = o.correct ? '✅' : (i === ci ? '💡' : '▫️');
+    return `<div class="fk-optrow ${cls}">${mark} ${o.label}</div>`;
+  }).join('');
+  _fkPredBox(`${_fkPredHead(2)}
+    <h3 class="sim-h3">🔎 Vermutung ↔ Experiment</h3>
+    <div class="fk-optresult">${rows}</div>
+    <div class="diag-aha">💡 <b>Aha-Erlebnis:</b> ${aha}</div>
+    <div class="diag-regel"><b>Das steckt dahinter:</b><br>${c.merksatz || ''}</div>
+    <div class="diag-actions">
+      <button class="sim-btn" type="button" onclick="${c.exp ? '_fkPredExp()' : '_fkPredVermutung()'}">${c.exp ? '🧲 nochmal experimentieren' : '← zurück'}</button>
+      <button class="sim-btn primary" type="button" onclick="_fkPredFinish()">Fertig ✓</button>
+    </div>`);
+}
+function _fkPredFinish() { _fkMarkVisited(3); _fkPredClose(); _fkRefresh(); }
 
 // ============================================================
 // INTRO VIDEO – Themen erklären mit Microsoft Hedda
