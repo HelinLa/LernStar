@@ -1946,15 +1946,12 @@ function renderForscherkreis(subject) {
        <span class="fk-mrow-txt"><b>${s.t}</b><small>${s.d}</small></span>
      </button>`).join('');
   const T = _fkThemeObj || {};
-  const solved = !!(steps[2] && steps[2].done);
   wrap.innerHTML = `
     <div class="fk-theme">🧲 Thema: <b>${T.theme || ''}</b></div>
-    <div class="fk-leitfrage${solved ? ' solved' : ''}">
-      <div class="fk-leitfrage-ic">${solved ? '✅' : '🔍'}</div>
-      <div class="fk-leitfrage-txt"><span>${solved ? 'Forscherfrage – kurz vor der Antwort' : 'Unsere Forscherfrage (echtes Alltagsproblem)'}</span><b>${T.leitfrage || ''}</b></div>
-      ${solved
-        ? `<button class="fk-leitfrage-btn" onclick="_fkAct(6)">💡 Antwort ansehen</button>`
-        : `<button class="fk-leitfrage-btn" onclick="_fkAct(0)">📖 Problem ansehen</button>`}
+    <div class="fk-leitfrage">
+      <div class="fk-leitfrage-ic">🔍</div>
+      <div class="fk-leitfrage-txt"><span>Unsere Forscherfrage (echtes Alltagsproblem)</span><b>${T.leitfrage || ''}</b></div>
+      <button class="fk-leitfrage-btn" onclick="_fkAct(0)">📖 Problem ansehen</button>
     </div>
     <div class="fk-layout">
       <div class="fk-wheel">
@@ -1974,7 +1971,10 @@ function renderForscherkreis(subject) {
       </div>
       <aside class="fk-rail">
         <div class="fk-card">
-          <div class="fk-card-h">Dein Forscher-Fortschritt</div>
+          <div class="fk-prog-head">
+            <span class="fk-card-h" style="margin:0">Dein Forscher-Fortschritt</span>
+            <span class="fk-prog-pct">${pct}%</span>
+          </div>
           <div class="fk-prog"><div class="fk-prog-fill" style="width:${pct}%"></div></div>
           <div class="fk-prog-l">${doneCount} von ${steps.length} Schritten</div>
         </div>
