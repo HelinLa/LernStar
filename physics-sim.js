@@ -38752,10 +38752,10 @@ function _reiDraw(ctx, cv) {
   ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx - 8, B - 14); ctx.lineTo(cx - 8, B + 14); ctx.stroke();
   ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(cx + 8, B - 8); ctx.lineTo(cx + 8, B + 8); ctx.stroke();
   ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', cx, B + 26);
-  // Lampen in Reihe (oben)
-  const span = R - L - 40, x0 = L + 20;
+  // Lampen in Reihe – zentriert auf dem geraden oberen Draht, klar von den Ecken entfernt
+  const gap = 84;
   for (let i = 0; i < _rei.n; i++) {
-    const x = _rei.n === 1 ? cx : x0 + span * i / (_rei.n - 1);
+    const x = cx + (i - (_rei.n - 1) / 2) * gap;
     const removed = (_rei.broken && i === 1 && _rei.n >= 2);
     if (removed) {
       ctx.fillStyle = '#f8fafc'; ctx.fillRect(x - 14, T - 12, 28, 24);
@@ -38979,9 +38979,11 @@ function _parDraw(ctx, cv) {
       ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3; ctx.setLineDash([9, 9]); ctx.lineDashOffset = -(_par.t * 70) % 18;
       ctx.beginPath(); ctx.moveTo(L, br.y); ctx.lineTo(Rr, br.y); ctx.stroke(); ctx.setLineDash([]); ctx.lineDashOffset = 0;
     }
-    _parSwitch(ctx, L + 70, br.y, br.on);
-    _parLampe(ctx, (L + Rr) / 2 + 40, br.y, 13, br.on);
-    ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(br.lbl, Rr - 60, br.y - 18);
+    // Schaltsymbole mittig auf dem Zweig, symmetrisch um die Mitte – nie in die Ecken
+    const cxZ = (L + Rr) / 2, dZ = 60;
+    _parSwitch(ctx, cxZ - dZ, br.y, br.on);
+    _parLampe(ctx, cxZ + dZ, br.y, 13, br.on);
+    ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(br.lbl, cxZ + dZ, br.y - 30);
   });
 }
 
