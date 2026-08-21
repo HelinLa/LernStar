@@ -38027,6 +38027,56 @@ function _lmpStatus() {
 
 // ── Animation ──────────────────────────────────────────
 function _lmpUpdate(dt) { if (_lmp) _lmp.t += dt; }
+// ═══════════════════════════════════════════════════════
+// ELEKTRONEN IM STROMKREIS  (gemeinsam fuer alle Stromkreis-Sims)
+// ═══════════════════════════════════════════════════════
+// Elektronen sind negativ geladen. Im aeusseren Stromkreis fliessen sie vom
+// MINUS-Pol durch die Leitung zum PLUS-Pol - nicht umgekehrt. Jeder Pfad wird
+// deshalb am Minus-Pol begonnen und am Plus-Pol beendet, damit die Animation
+// die Richtung zeigt, die die Schueler sich merken sollen.
+// In der Batterie-Zeichnung dieses Projekts gilt durchgehend:
+// langer duenner Strich = PLUS, kurzer dicker Strich = MINUS.
+function _elLaenge(p) { let g = 0; for (let i = 1; i < p.length; i++) g += Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]); return g; }
+function _elPunkt(p, d) {
+  for (let i = 1; i < p.length; i++) {
+    const dx = p[i][0] - p[i - 1][0], dy = p[i][1] - p[i - 1][1], sg = Math.hypot(dx, dy);
+    if (d <= sg) { const f = sg ? d / sg : 0; return { x: p[i - 1][0] + dx * f, y: p[i - 1][1] + dy * f, a: Math.atan2(dy, dx) }; }
+    d -= sg;
+  }
+  const n = p.length - 1;
+  return { x: p[n][0], y: p[n][1], a: Math.atan2(p[n][1] - p[n - 1][1], p[n][0] - p[n - 1][0]) };
+}
+function _elPfeil(ctx, x, y, a, col) {
+  const c = Math.cos(a), si = Math.sin(a);
+  ctx.strokeStyle = col; ctx.lineWidth = 2.4; ctx.lineCap = 'round'; ctx.beginPath();
+  ctx.moveTo(x - 7 * c - 5 * si, y - 7 * si + 5 * c); ctx.lineTo(x, y); ctx.lineTo(x - 7 * c + 5 * si, y - 7 * si - 5 * c);
+  ctx.stroke(); ctx.lineCap = 'butt';
+}
+function _elKugel(ctx, x, y, r) {
+  ctx.fillStyle = '#1d4ed8'; ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#eff6ff'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x - r * 0.45, y); ctx.lineTo(x + r * 0.45, y); ctx.stroke();
+}
+// pfad: Polygonzug, der am MINUS-Pol beginnt und am PLUS-Pol endet.
+function _elektronen(ctx, pfad, t, abstand) {
+  const ges = _elLaenge(pfad); if (!(ges > 0)) return;
+  for (let k = 0; k < 4; k++) { const q = _elPunkt(pfad, ges * (0.13 + k * 0.25)); _elPfeil(ctx, q.x, q.y, q.a, '#93c5fd'); }
+  const n = Math.max(3, Math.round(ges / (abstand || 48))), schritt = ges / n, off = (t * 54) % schritt;
+  for (let i = 0; i < n; i++) { const q = _elPunkt(pfad, (off + i * schritt) % ges); _elKugel(ctx, q.x, q.y, 6); }
+}
+function _elLegende(ctx, x, y) {
+  _elKugel(ctx, x + 6, y - 4, 6);
+  ctx.fillStyle = '#1e40af'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Elektronen fließen von \u2212 nach +', x + 17, y);
+}
+// Weg im liegenden Rechteck-Stromkreis: vom Minus-Pol rechts der Batterie
+// ueber die rechte Seite, oben herum und links hinunter zum Plus-Pol.
+function _elRing(L, R, T, B, cx, d) { return [[cx + d, B], [R, B], [R, T], [L, T], [L, B], [cx - d, B]]; }
+function _elPole(ctx, cx, B, d) {
+  ctx.fillStyle = '#334155'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('+', cx - d, B - 20); ctx.fillText('\u2212', cx + d, B - 20);
+}
+
 function _lmpDraw(ctx, cv) {
   if (!_lmp) return;
   const W = cv.width, H = cv.height;
@@ -38052,6 +38102,7 @@ function _lmpDraw(ctx, cv) {
   ctx.beginPath(); ctx.moveTo(cx + 8, B - 8); ctx.lineTo(cx + 8, B + 8); ctx.stroke();     // kurzer Strich −
   ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
   ctx.fillText('Batterie', cx, B + 26);
+  _elPole(ctx, cx, B, 8);
   // Schalter (rechts)
   ctx.fillStyle = '#f8fafc'; ctx.fillRect(R - 10, cy - 22, 20, 44);
   ctx.fillStyle = '#334155';
@@ -38062,6 +38113,7 @@ function _lmpDraw(ctx, cv) {
   ctx.stroke();
   ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
   ctx.fillText('Schalter', R + 6, cy + 30);
+  if (on) { _elektronen(ctx, _elRing(L, R, T, B, cx, 8), _lmp.t); _elLegende(ctx, L, H - 8); }
   // Kabel-Unterbrechung (links)
   if (!_lmp.wireOk) {
     ctx.fillStyle = '#f8fafc'; ctx.fillRect(L - 4, cy - 14, 8, 28);
@@ -38304,6 +38356,8 @@ function _leiDraw(ctx, cv) {
   ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx - 8, B - 14); ctx.lineTo(cx - 8, B + 14); ctx.stroke();
   ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(cx + 8, B - 8); ctx.lineTo(cx + 8, B + 8); ctx.stroke();
   ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', cx, B + 26);
+  _elPole(ctx, cx, B, 8);
+  if (on) { _elektronen(ctx, _elRing(L, R, T, B, cx, 8), _lei.t); _elLegende(ctx, L, H - 8); }
   // Lücke mit Klemmen (oben)
   const gx1 = cx - 44, gx2 = cx + 44;
   ctx.fillStyle = '#f8fafc'; ctx.fillRect(gx1, T - 3, gx2 - gx1, 6);
@@ -38536,6 +38590,8 @@ function _splDraw(ctx, cv) {
     ctx.fillStyle = '#fff'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('+  −', cx, B + 4);
   }
   ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', cx, B + 28);
+  if (_spl.view === 'plan') _elPole(ctx, cx, B, 7);
+  if (on) { _elektronen(ctx, _elRing(L, R, T, B, cx, 7), _spl.t); _elLegende(ctx, L, H - 6); }
 
   // Lampe oben
   const lr = 15;
@@ -38752,6 +38808,7 @@ function _reiDraw(ctx, cv) {
   ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx - 8, B - 14); ctx.lineTo(cx - 8, B + 14); ctx.stroke();
   ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(cx + 8, B - 8); ctx.lineTo(cx + 8, B + 8); ctx.stroke();
   ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', cx, B + 26);
+  _elPole(ctx, cx, B, 8);
   // Lampen in Reihe – enge Gruppe mittig auf dem oberen Draht; der Clamp haelt
   // auch bei mehr Lampen mindestens 60 px Abstand zu beiden Ecken frei.
   const gap = Math.min(58, (R - L - 120) / Math.max(1, _rei.n - 1));
@@ -38772,6 +38829,7 @@ function _reiDraw(ctx, cv) {
   ctx.strokeStyle = _rei.sw ? '#16a34a' : '#dc2626'; ctx.lineWidth = 3;
   ctx.beginPath(); ctx.moveTo(R, cy + 16); if (_rei.sw) ctx.lineTo(R, cy - 16); else ctx.lineTo(R + 15, cy - 10); ctx.stroke();
   ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Schalter', R + 6, cy + 28);
+  if (on) { _elektronen(ctx, _elRing(L, R, T, B, cx, 8), _rei.t); _elLegende(ctx, L, H - 8); }
   ctx.fillStyle = on ? '#16a34a' : '#b45309'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
   ctx.fillText(on ? _rei.n + ' Lampen in Reihe – leuchten' : 'alle aus', cx, cy + 4);
 }
@@ -39005,6 +39063,13 @@ function _parDraw(ctx, cv) {
     _parLampe(ctx, x, yLp, 14, on);
     ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(lbl, x, yT - 10);
   });
+
+  // Elektronen: vom Minus-Pol (untere Platte) nach unten, ueber die untere
+  // Schiene in den Zweig, oben herum und zurueck zum Plus-Pol.
+  const _parWeg = x => [[L, cyB + 8], [L, yB], [x, yB], [x, yT], [L, yT], [L, cyB - 8]];
+  if (_par.sw1) _elektronen(ctx, _parWeg(x1), _par.t);
+  if (_par.sw2) _elektronen(ctx, _parWeg(x2), _par.t);
+  if (_par.sw1 || _par.sw2) _elLegende(ctx, L + 96, H - 8);
 }
 
 // ═══════════════════════════════════════════════════════
