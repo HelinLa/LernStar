@@ -38373,12 +38373,14 @@ function _leiDraw(ctx, cv) {
   ctx.beginPath(); ctx.arc(lx, ly, lr, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
   ctx.strokeStyle = on ? '#b45309' : '#94a3b8'; ctx.lineWidth = 1.5;
   ctx.beginPath(); ctx.moveTo(lx - 7, ly - 7); ctx.lineTo(lx + 7, ly + 7); ctx.moveTo(lx + 7, ly - 7); ctx.lineTo(lx - 7, ly + 7); ctx.stroke();
-  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.fillText('Lampe', lx, ly + lr + 16);
-  // Ergebnis
-  ctx.textAlign = 'left'; ctx.font = '700 13px sans-serif';
-  if (_lei.tested[m.k] === undefined) { ctx.fillStyle = '#94a3b8'; ctx.fillText('Klicke ein Material an', L, T - 20); }
-  else if (m.leit) { ctx.fillStyle = '#16a34a'; ctx.fillText('→ Lampe leuchtet: Leiter', L, T - 20); }
-  else { ctx.fillStyle = '#b45309'; ctx.fillText('→ Lampe aus: Nichtleiter', L, T - 20); }
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.fillText('Lampe', lx, ly + lr + 24);
+  // Ergebnis – mittig in den leeren Kreis statt links oben: dort lief der Text
+  // in den zentrierten Materialnamen. Gleiche Stelle wie in den anderen Sims.
+  const ry = (T + B) / 2 + 5;
+  ctx.textAlign = 'center'; ctx.font = '700 13px sans-serif';
+  if (_lei.tested[m.k] === undefined) { ctx.fillStyle = '#94a3b8'; ctx.fillText('Klicke ein Material an', cx, ry); }
+  else if (m.leit) { ctx.fillStyle = '#16a34a'; ctx.fillText('Lampe leuchtet: Leiter', cx, ry); }
+  else { ctx.fillStyle = '#b45309'; ctx.fillText('Lampe aus: Nichtleiter', cx, ry); }
 }
 
 // ═══════════════════════════════════════════════════════
