@@ -38954,55 +38954,56 @@ function _parLampe(ctx, x, y, r, on) {
   ctx.beginPath(); ctx.moveTo(x - 6, y - 6); ctx.lineTo(x + 6, y + 6); ctx.moveTo(x + 6, y - 6); ctx.lineTo(x - 6, y + 6); ctx.stroke();
 }
 function _parSwitch(ctx, x, y, on) {
-  // Erst den Draht wegnehmen: ein offener Schalter muss den Zweig sichtbar
-  // unterbrechen. Liegt das Symbol nur auf einer durchgehenden Leitung, sieht
-  // der Kreis auch im offenen Zustand geschlossen aus.
-  ctx.fillStyle = '#f8fafc'; ctx.fillRect(x - 15, y - 17, 30, 34);
-  ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.arc(x - 12, y, 3, 0, 2 * Math.PI); ctx.arc(x + 12, y, 3, 0, 2 * Math.PI); ctx.fill();
+  // Schalter im SENKRECHTEN Zweig. Erst den Draht wegnehmen: ein offener Schalter
+  // muss den Zweig sichtbar unterbrechen, sonst sieht der Kreis auch offen
+  // geschlossen aus.
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(x - 17, y - 17, 34, 34);
+  ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.arc(x, y - 12, 3, 0, 2 * Math.PI); ctx.arc(x, y + 12, 3, 0, 2 * Math.PI); ctx.fill();
   ctx.strokeStyle = on ? '#16a34a' : '#dc2626'; ctx.lineWidth = 3;
-  ctx.beginPath(); ctx.moveTo(x - 12, y); if (on) ctx.lineTo(x + 12, y); else ctx.lineTo(x + 8, y - 12); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x, y + 12); if (on) ctx.lineTo(x, y - 12); else ctx.lineTo(x + 13, y - 6); ctx.stroke();
 }
 function _parDraw(ctx, cv) {
   if (!_par) return;
   const W = cv.width, H = cv.height;
   ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
-  // Kanonische Parallelschaltung: zwei durchgehende Schienen = die beiden Pole,
-  // dazwischen DREI Zweige - Batterie, Lampe 1, Lampe 2. Die Batterie darf nicht
-  // in einer Schiene liegen: dann haengen die Lampen hintereinander in einer
-  // einzigen Masche und der Kreis waere eine Reihenschaltung.
-  const L = 60, Rr = W - 60, cx = (L + Rr) / 2;
-  const yB = 52, y1 = 118, y2 = 184;            // Batteriezweig oben, darunter die Lampen
-  const xS = cx - 62, xL = cx + 62;             // Schalter links, Lampe rechts im Zweig
+  // Uebliche Schulbuch-Orientierung: waagerechte Sammelschienen oben und unten,
+  // senkrechte Zweige dazwischen - links die Batterie, rechts die beiden Lampen
+  // nebeneinander. Alle drei Zweige haengen an denselben zwei Schienen, deshalb
+  // hat jede Lampe ihre eigene geschlossene Masche mit der Batterie.
+  const L = 58, x1 = 250, x2 = 372, yT = 46, yB = 196;
+  const cyB = (yT + yB) / 2, ySw = 92, yLp = 148;
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4;
-  ctx.beginPath(); ctx.moveTo(L, yB); ctx.lineTo(L, y2); ctx.moveTo(Rr, yB); ctx.lineTo(Rr, y2); ctx.stroke();
-  [yB, y1, y2].forEach(y => { ctx.beginPath(); ctx.moveTo(L, y); ctx.lineTo(Rr, y); ctx.stroke(); });
+  ctx.beginPath(); ctx.moveTo(L, yT); ctx.lineTo(x2, yT); ctx.moveTo(L, yB); ctx.lineTo(x2, yB); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(L, yT); ctx.lineTo(L, yB); ctx.stroke();
+  [x1, x2].forEach(x => { ctx.beginPath(); ctx.moveTo(x, yT); ctx.lineTo(x, yB); ctx.stroke(); });
 
-  // Stromweg je eingeschalteter Lampe: Batteriezweig -> Schiene -> Lampenzweig
-  // -> Schiene zurueck. Der Weg wird als geschlossener Ring animiert, damit
-  // sichtbar ist, dass der Kreis fuer diese Lampe wirklich geschlossen ist.
-  const _parFluss = y => {
+  // Stromweg je eingeschalteter Lampe als geschlossener Ring: Batteriezweig,
+  // obere Schiene, Lampenzweig, untere Schiene zurueck.
+  const _parFluss = x => {
     ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3;
     ctx.setLineDash([9, 9]); ctx.lineDashOffset = -(_par.t * 70) % 18;
     ctx.beginPath();
-    ctx.moveTo(L, yB); ctx.lineTo(Rr, yB);
-    ctx.moveTo(L, yB); ctx.lineTo(L, y);
-    ctx.moveTo(Rr, yB); ctx.lineTo(Rr, y);
-    ctx.moveTo(L, y); ctx.lineTo(Rr, y);
+    ctx.moveTo(L, yT); ctx.lineTo(L, yB);
+    ctx.moveTo(L, yT); ctx.lineTo(x, yT);
+    ctx.moveTo(L, yB); ctx.lineTo(x, yB);
+    ctx.moveTo(x, yT); ctx.lineTo(x, yB);
     ctx.stroke(); ctx.setLineDash([]); ctx.lineDashOffset = 0;
   };
-  if (_par.sw1) _parFluss(y1);
-  if (_par.sw2) _parFluss(y2);
+  if (_par.sw1) _parFluss(x1);
+  if (_par.sw2) _parFluss(x2);
 
-  // Batterie im eigenen Zweig, mit Luecke im Draht
-  ctx.fillStyle = '#f8fafc'; ctx.fillRect(cx - 21, yB - 17, 42, 34);
-  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx - 8, yB - 15); ctx.lineTo(cx - 8, yB + 15); ctx.stroke();
-  ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(cx + 8, yB - 8); ctx.lineTo(cx + 8, yB + 8); ctx.stroke();
-  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', cx, yB - 24);
+  // Batterie im linken Zweig, mit Luecke im Draht
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(L - 20, cyB - 21, 40, 42);
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(L - 16, cyB - 8); ctx.lineTo(L + 16, cyB - 8); ctx.stroke();
+  ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(L - 9, cyB + 8); ctx.lineTo(L + 9, cyB + 8); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('+', L + 22, cyB - 3); ctx.fillText('\u2212', L + 22, cyB + 20);
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', L, yB + 18);
 
-  [[y1, _par.sw1, 'Lampe 1'], [y2, _par.sw2, 'Lampe 2']].forEach(([y, on, lbl]) => {
-    _parSwitch(ctx, xS, y, on);
-    _parLampe(ctx, xL, y, 13, on);
-    ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(lbl, xL, y - 24);
+  [[x1, _par.sw1, 'Lampe 1'], [x2, _par.sw2, 'Lampe 2']].forEach(([x, on, lbl]) => {
+    _parSwitch(ctx, x, ySw, on);
+    _parLampe(ctx, x, yLp, 14, on);
+    ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(lbl, x, yT - 10);
   });
 }
 
