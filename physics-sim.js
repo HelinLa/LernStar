@@ -38752,8 +38752,9 @@ function _reiDraw(ctx, cv) {
   ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx - 8, B - 14); ctx.lineTo(cx - 8, B + 14); ctx.stroke();
   ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(cx + 8, B - 8); ctx.lineTo(cx + 8, B + 8); ctx.stroke();
   ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', cx, B + 26);
-  // Lampen in Reihe – zentriert auf dem geraden oberen Draht, klar von den Ecken entfernt
-  const gap = 84;
+  // Lampen in Reihe – enge Gruppe mittig auf dem oberen Draht; der Clamp haelt
+  // auch bei mehr Lampen mindestens 60 px Abstand zu beiden Ecken frei.
+  const gap = Math.min(58, (R - L - 120) / Math.max(1, _rei.n - 1));
   for (let i = 0; i < _rei.n; i++) {
     const x = cx + (i - (_rei.n - 1) / 2) * gap;
     const removed = (_rei.broken && i === 1 && _rei.n >= 2);
