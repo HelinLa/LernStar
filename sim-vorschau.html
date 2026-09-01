@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulation ansehen · LernStar</title>
+<!--
+  Werkstattseite: oeffnet EINE Simulation sofort, ohne den Umweg ueber die App.
+  Welche, steht hinter dem #, zum Beispiel  sim-vorschau.html#schwarzes-loch
+  Ohne Angabe kommt eine Liste aller Weltall-Simulationen zum Durchklicken.
+-->
+<link rel="stylesheet" href="style.css?v=39">
+<style>
+  body { margin:0; background:#0b1020; color:#e8eaf2;
+         font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .leiste { display:flex; flex-wrap:wrap; gap:8px; align-items:center;
+            padding:12px 16px; background:#121a33; border-bottom:1px solid #24304f; }
+  .leiste b { font-size:14px; letter-spacing:.04em; margin-right:8px; color:#c9d2ea; }
+  .leiste a { font-size:13px; padding:6px 12px; border-radius:99px; text-decoration:none;
+              color:#dbe4ff; background:#1d2949; border:1px solid #2f3d63; }
+  .leiste a:hover { background:#28365e; }
+  .leiste a.an { background:#3b5bdb; border-color:#5b7cfa; color:#fff; font-weight:600; }
+  .hinweis { padding:24px 16px; color:#8f9ab8; font-size:14px; }
+</style>
+</head>
+<body>
+
+<div class="leiste" id="leiste"><b>Simulation</b></div>
+<div class="hinweis" id="hinweis">Simulation wird geladen …</div>
+
+<script src="physics-sim.js?v=124"></script>
+<script>
+  const ENERGIE = [
+    ['energieformen',    'Energieformen'],
+    ['arbeit',           'Arbeit W = F·s'],
+    ['lageenergie',      'Lageenergie'],
+    ['bewegungsenergie', 'Bewegungsenergie'],
+    ['reibungswaerme',   'Reibungswärme'],
+    ['achterbahn',       'Achterbahn'],
+    ['wirkungsgrad',     'Wirkungsgrad'],
+    ['leistung-rs',      'Leistung P = W/t'],
+    ['energie-entwerten','Energie entwerten'],
+  ];
+  const WELTALL = [
+    ['planetenbahn',    'Planetenbahn'],
+    ['sternleben',      'Sternleben'],
+    ['sternspektrum',   'Sternspektrum'],
+    ['milchstrasse',    'Milchstraße'],
+    ['gravitation-abstand','Masse & Abstand'],
+    ['gezeiten',        'Ebbe und Flut'],
+    ['licht-oberflaeche','Licht auf Oberfläche'],
+    ['reflexionsgesetz', 'Reflexionsgesetz'],
+    ['brechung-eintritt','Luft → Glas'],
+    ['brechung-austritt','Glas → Luft'],
+    ['sammellinse',     'Linsen'],
+    ['sonnensystem',    'Acht Planeten'],
+    ['schwarzes-loch',  'Schwarzes Loch'],
+    ['urknall',         'Urknall'],
+    ['weltall-aufbau',  'Aufbau des Weltalls'],
+    ['entfernungen',    'Lichtjahr'],
+    ['himmelskoerper',  'Himmelskörper'],
+    ['tag-nacht',       'Tag und Nacht'],
+    ['jahreszeiten',    'Jahreszeiten'],
+    ['mondphasen',      'Mondphasen'],
+    ['sonnenfinsternis','Sonnenfinsternis'],
+    ['mondfinsternis',  'Mondfinsternis'],
+    ['gravitation',     'Gravitation'],
+    ['teleskop',        'Teleskop'],
+    ['spezialteleskop', 'Spezialteleskope'],
+    ['weltbild',        'Weltbild'],
+  ];
+
+  // Die dreizehn Simulationen, die fuer die Gesamtschulhefte neu gebaut wurden.
+  // Reihenfolge wie im Heft: Klasse 7, dann 8, dann 9.
+  const GESAMTSCHULE = [
+    ['spektrum-unsichtbar', '7 · Unsichtbares Licht'],
+    ['sternparallaxe',      '7 · Sternparallaxe'],
+    ['ladungen-kraft',      '8 · Ladungen'],
+    ['elektronen-drift',    '8 · Was im Draht wandert'],
+    ['blitz',               '8 · Blitz und Donner'],
+    ['druck-flaeche',       '9 · Druck p = F/A'],
+    ['schweredruck',        '9 · Schweredruck'],
+    ['dichte',              '9 · Dichte'],
+    ['auftrieb',            '9 · Auftrieb'],
+    ['hebel',               '9 · Hebel'],
+    ['feste-rolle',         '9 · Feste und lose Rolle'],
+    ['flaschenzug',         '9 · Flaschenzug'],
+    ['zahnrad',             '9 · Zahnräder'],
+  ];
+
+  const leiste = document.getElementById('leiste');
+  const hinweis = document.getElementById('hinweis');
+
+  function zeigen(id) {
+    document.querySelectorAll('#leiste a').forEach(a =>
+      a.classList.toggle('an', a.dataset.id === id));
+    hinweis.style.display = 'none';
+    try {
+      openPhysicsSim(id);
+      // Das Schliesskreuz der Simulation soll hier nicht die Seite leeren,
+      // sondern einfach zurueck zur Auswahl fuehren.
+      const x = document.querySelector('#physModal .sim-x');
+      if (x) x.onclick = () => { closePhysicsSim(); hinweis.style.display = '';
+                                 hinweis.textContent = 'Oben eine Simulation auswählen.'; };
+    } catch (e) {
+      hinweis.style.display = '';
+      hinweis.textContent = 'Fehler beim Öffnen: ' + e.message;
+    }
+  }
+
+  GESAMTSCHULE.concat(ENERGIE, WELTALL).forEach(([id, name]) => {
+    const a = document.createElement('a');
+    a.href = '#' + id; a.textContent = name; a.dataset.id = id;
+    a.onclick = e => { e.preventDefault(); location.hash = id; zeigen(id); };
+    leiste.appendChild(a);
+  });
+
+  function ausHash() {
+    const id = decodeURIComponent(location.hash.replace(/^#/, '')) || 'spektrum-unsichtbar';
+    zeigen(id);
+  }
+  window.addEventListener('hashchange', ausHash);
+  ausHash();
+</script>
+
+</body>
+</html>

@@ -20,12 +20,24 @@ Every JS and CSS file uses a `?v=N` query string in `index.html`. **Always incre
 
 ```html
 <link rel="stylesheet" href="style.css?v=39" />
-<script src="content.js?v=37"></script>
+<script src="content.js?v=192"></script>
 <script src="js/ai_engine.js?v=1"></script>
-<script src="physics-sim.js?v=2"></script>
-<script src="app.js?v=84"></script>
+<script src="js/sim-lader.js?v=1"></script>
+<script src="app.js?v=141"></script>
+<script src="js/heft-bruecke.js?v=1"></script>
+<script src="js/heft-banner.js?v=2"></script>
 <script src="quiz-game.js?v=1"></script>
 ```
+
+**`physics-sim.js` wird NICHT mehr per `<script>` eingebunden.** Die Datei ist 3,3 MB
+gross und muesste sonst bei jedem Start geparst werden. `js/sim-lader.js` legt
+Platzhalter fuer `openPhysicsSim` und `openArbeitsblatt` an, laedt die Datei beim
+ersten Aufruf nach und holt sie ausserdem im Leerlauf vor — der erste Klick sitzt
+also trotzdem sofort, und offline bleibt sie im Cache.
+
+**Achtung bei neuen Versionen:** Die `?v=`-Nummer von `physics-sim.js` steht in
+`js/sim-lader.js` (Konstante `QUELLE`), nicht in `index.html`. Wer sie dort vergisst,
+umgeht das Cache-Busting fuer die groesste Datei des Projekts.
 
 **Service Worker caveat:** `sw.js` serves `index.html` **network-first** — cache-first there would pin an old `index.html` with stale `?v=` numbers, silently defeating all cache busting. Everything else stays cache-first (safe, because `?v=N` makes each version a new URL). Bump `CACHE` in `sw.js` whenever you change that file.
 
@@ -34,7 +46,13 @@ Every JS and CSS file uses a `?v=N` query string in `index.html`. **Always incre
 All logic runs in the browser. Script load order in `index.html` is critical (each depends on the previous):
 
 ```
-content.js → js/ai_engine.js → physics-sim.js → app.js → quiz-game.js
+gs-content.js → content.js → fk-magnet.js → js/ai_engine.js → js/sim-lader.js
+ → app.js → js/heft-bruecke.js → js/heft-banner.js → quiz-game.js
+
+physics-sim.js haengt nicht in dieser Kette: js/sim-lader.js holt sie bei Bedarf nach.
+js/heft-bruecke.js und js/heft-banner.js verbinden das gedruckte Forscherheft mit den
+Simulationen (QR-Link #experiment=<sim>&heft=<seite>); heft-bruecke.js wird aus den
+forscherseiten.json aller drei Hefte erzeugt (python3 arbeitsheft/bruecke_alle.py).
 ```
 
 ### content.js — Content Database
@@ -126,6 +144,164 @@ The chat widget uses the **Groq API** (primary), with fallback to any OpenAI-com
 5. Add the school form button to `index.html` with `.sf-card-xx` class
 6. Add `.sf-card-xx` color styles to `style.css`
 7. Bump all version numbers in `index.html`
+
+## Arbeitshefte – Reihe FELO (`arbeitsheft/` = Klasse 5/6, `arbeitsheft7/`, `arbeitsheft8/`, `arbeitsheft9/`, `arbeitsheft10/`)
+
+Die Reihe heisst **FELO** (Forschen · Eigeninitiative · Lernen · Organisieren); die Baende
+heissen FELO PHYSIK 5/6, 7, 8, 9 und 10, Schulform REALSCHULE NRW steht auf jedem Cover. Die QR-Adresse
+bleibt `https://helinla.github.io/LernStar/` – dorthin zeigen alle gedruckten Codes.
+Kennungen: Kl.5/6 `m l s w sc h` · Kl.7 `o f g t` · Kl.8 `sp wd lt bg` · Kl.9 `kr bw en kw` · Kl.10 `mo ge ak ke`.
+
+**QR-Codes werden gegengelesen – bei fuenf Vergroesserungen.** `make_qr.py` erzeugt jeden
+Code, schickt ihn durch dieselben zwei Verkleinerungen wie die Seite und entziffert ihn danach
+mit OpenCV bei 3-, 4-, 5-, 6- und 8-facher Vergroesserung (`arbeitsheft/qr_lesbar.py`). Nur wenn
+ALLE fuenf denselben Text liefern, gilt der Code als sicher; sonst wird er mit einer anderen
+Maske neu gesetzt, bei gleicher Groesse und Fehlerkorrektur. Ein einzelner Lesedurchgang genuegt
+nicht: `mo10` las sich bei 4x, 6x und 8x tadellos, bei 10x gar nicht. Der Pruefbereich ist
+gemessen – bei 12x versagt JEDER Code, bei 10x 62 %; das ist eine Eigenart des Decoders, keine
+Schwaeche der Codes. Unter diesem Maszstab brauchten **93 von 174 Codes** eine andere Maske.
+
+Alle vier Hefte teilen sich EINEN Satzmotor: `arbeitsheft/build_final.py` (Seitenraster, Schriften,
+Zeichenhilfen), `arbeitsheft/textschicht.py` (unsichtbare, durchsuchbare Textebene ueber den
+Seitenbildern). Die `build_book.py` der Klassen 7, 8 und 9 importieren ihn ueber `sys.path`,
+kopieren ihn nicht. `build_final.py` wird nie geaendert – Klasse 5/6 ist gedruckt.
+Klassenspezifisch ist allein `plan.py` je Heft: Kapitel, Themen, Videos, Simulationen.
+
+**Falle 1 – `HERE` wird vom Stern-Import ueberschrieben.** `build_final.py` definiert selbst ein
+`HERE` (Ordner von Klasse 5). Wer in einem anderen Heft `HERE` VOR `from build_final import *`
+setzt, verliert es wieder und schreibt seine Dateien in den falschen Ordner. `HERE` muss immer
+DANACH gesetzt werden.
+
+**Falle 2 – Heft-Kennungen sind klassenuebergreifend eindeutig.** Der QR-Link traegt
+`#experiment=<simId>&heft=<topicId>`, und `js/heft-banner.js` sucht `topicId` in
+`js/heft-bruecke.js` ohne zu wissen, aus welchem Heft sie stammt. Klasse 5 belegt `m`, `l`, `s`,
+`w`, `sc`, `h`; Klasse 7 nutzt deshalb `o`, `f`, `g`, `t`. Eine doppelte Kennung blendet in der
+Simulation die Forscherfrage des falschen Hefts ein.
+
+**Seitenzahlen werden GEMESSEN, nicht gerechnet.** `export_bruecke.py` hat die Seitenlogik
+frueher nachgebaut und geriet aus dem Tritt, als je Kapitel eine Weiterdenken-Seite dazukam –
+124 von 173 Seitenzahlen in der App waren falsch, bei Klasse 9 teils um 30 Seiten. Gemessen
+wird mit **`python3 simcheck/seitenzahlen.py <heftordner>`**: Der Durchgang liest die QR-Codes
+aus `build/book_p*.png` (Ausschnitt x = 1050…1176, y = 53…179) und schreibt
+`<heft>/build/seiten.json`; `export_bruecke.py` zieht diese Datei dem Zaehler vor.
+
+> **Falle:** Fehlt `seiten.json`, faellt `export_bruecke.py` STILL auf den gerechneten Zaehler
+> zurueck – ohne Warnung. Nach jedem `build_book.py` also `simcheck/seitenzahlen.py` laufen
+> lassen, BEVOR die Bruecke gebaut wird. Das Werkzeug ist geeicht: Es reproduziert alle 39
+> bekannten Seitenzahlen von Klasse 10 exakt.
+
+**Bruecke neu erzeugen** nach jeder Inhaltsaenderung: `python3 arbeitsheft/bruecke_alle.py`
+(schreibt `js/heft-bruecke.js` aus ALLEN NEUN Heften – fuenf Realschule, vier Gesamtschule),
+danach die `?v=`-Nummer in `index.html` hochzaehlen. Baende ohne `content/forscherseiten.json`
+werden uebersprungen, nicht als Fehler behandelt.
+
+Jeder Bruecken-Eintrag traegt neben `klasse` auch **`schulform`**: Klasse 7 gibt es zweimal,
+als Realschul- und als Gesamtschulheft. Ohne die Schulform koennte die App die beiden nicht
+auseinanderhalten. **Nicht** `arbeitsheft/export_bruecke.py` allein
+aufrufen: das schreibt dieselbe Datei mit nur den Seiten von Klasse 5/6 und loescht die
+anderen Hefte daraus.
+
+**Falle 3 – `sys.path.insert` holt das falsche `build_book`.** Jedes Heft hat ein Modul
+dieses Namens. Wer in `make_qr.py` einen anderen Heftordner vorne in `sys.path` schiebt,
+laesst alle Hefte das `build_book` von Klasse 5/6 importieren und schreibt die QR-Codes
+aller Klassen in denselben Ordner. Gemeinsame Hilfsmodule deshalb ueber
+`importlib.util.spec_from_file_location` laden, nicht ueber `sys.path`.
+
+## Arbeitshefte – Reihe FELO Gesamtschule (`arbeitsheft_gts7/`, `_gts8/`, `_gts9/`, `_gts10/`)
+
+Zweite Reihe derselben Marke, Schulform **GESAMTSCHULE NRW** auf dem Cover. Grundlage ist der
+Kernlehrplan Naturwissenschaften fuer die Gesamtschule (Heft 3108, 2. Auflage 2013), Abschnitt D
+"Fachunterricht Physik". Die Inhaltsfelder sind anders geschnitten und anders nummeriert als in
+der Realschule – deshalb liegt die Zuordnung in `arbeitsheft/lehrplan_gts.py`, getrennt von
+`lehrplan.py`. **An der Realschulreihe wird nichts geaendert; sie ist gedruckt.**
+
+Kennungen: Kl.7 `oi ew` · Kl.8 `st be` · Kl.9 `kf el` · Kl.10 `ev rk`.
+Alle gegen die vergebenen Kennungen der Realschulreihe geprueft und kollisionsfrei.
+
+**Eine Datei fuer alle vier Baende.** Anders als in der Realschulreihe sind `build_book.py`,
+`bilder.py`, `bildauftraege.py`, `make_qr.py`, `export_bruecke.py` und `uebernehmen.py` in allen
+vier Ordnern IDENTISCH. Klasse, Schulform, Kapiteltitel, Betreff und Dateinamen zieht
+`build_book.py` aus `plan.py` (`KLASSE`, `SCHULFORM`, `ALLE_KAPITEL`). Beim naechsten Band also
+nur `plan.py` schreiben und die Skripte kopieren – nichts von Hand anpassen.
+
+**G/E-Differenzierung ab Jahrgang 9** (APO-SI). Themen, die nur der E-Kurs bearbeitet, tragen im
+Bauplan `"kurs": "E"`; `uebernehmen.py` reicht das durch und `topic_page()` setzt ein Abzeichen
+"E-KURS" in die Kopfzeile. In den Jahrgaengen 7 und 8 wird klassenweise unterrichtet (`KURSE = False`).
+
+**Themennamen tragen echte Umlaute.** Sie werden GEDRUCKT (Trennseite, Lesezeichen,
+Uebungsseite). In `plan.py` gilt die ASCII-Konvention deshalb nur fuer Kommentare und Docstrings,
+NICHT fuer `RAHMEN`, `titel`, `vorhaben`, `inhaltsfeld` und `name` – dort stehen ä, ö, ü, ß.
+Beim Anlegen der vier Baende waren 75 Stellen betroffen ("Oberflaeche" statt "Oberfläche").
+
+## Datenblaetter (Seiten ohne Simulation)
+
+Themen ohne Simulation tragen im Inhalt ein Feld **`daten`** mit `spalten`, `zeilen`,
+optional `quelle` und `merke`. `build_book.datenblatt()` setzt daraus die gedruckte
+Tabelle rechts neben den Arbeitsschritten; Abschnitt 3 heisst dann "AUSWERTEN &
+BEURTEILEN" statt "FORSCHEN AM BILDSCHIRM", und der QR-Code entfaellt.
+
+> **Fehlt `daten`, verweist die Seite ins Leere.** Die Arbeitsschritte sagen "Lies im
+> Datenblatt ..." – gedruckt wird dann aber keine Tabelle. Bei den fuenf Datenblatt-Themen
+> von FELO 10 Gesamtschule war das zunaechst so.
+
+**Zellen werden UMGEBROCHEN, nicht verkleinert** (Stand 01.09.2026). Vorher schrumpfte
+`_fitfont` nur bis 9 pt und liess den Text danach in die Nachbarspalte laufen. Bei drei
+Spalten (400 pt breit, Anteile 0,36/0,34/0,30) passen einzeilig nur **24, 22 und 19
+Zeichen** – gemessen, nicht geschaetzt. Betroffen waren **28 Zellen in Heft 10** und
+**8 in Heft 9** der Realschulreihe; auf Seite 121 stand gedruckt
+"liefert Strom unabhaengig vom WetterUran muss eingefuehrt werden".
+
+Ein Wort ohne Leerzeichen laesst sich nicht umbrechen ("Gas-und-Dampf-Kraftwerk").
+Dafuer gibt es ein Sicherheitsnetz: passt eine Zeile auch umgebrochen nicht, wird NUR
+diese Zelle verkleinert (11,5 → 8,5 pt). Besser ist trotzdem, im Text zu trennen.
+
+Ein hoeheres Datenblatt kann dazu fuehren, dass Abschnitt 4 und 5 auf eine **zweite
+Seite** rutschen (`sichern_aufgaben_seite`). Das ist so gewollt – lieber eine zweite
+Seite als weniger Schreiblinien. Dadurch wuchs Heft 9 von 255 auf 257, Heft 10 von 179
+auf 186 und FELO 10 Gesamtschule von 121 auf 126 Seiten.
+
+## simcheck/ – Pruefwerkzeuge
+
+Sieben Werkzeuge, alle an bekannten Faellen geeicht. Ausfuehrlich in `simcheck/README.md`.
+
+| Werkzeug | Zweck |
+|---|---|
+| `rauchtest.js` | Simulation in einer Mini-DOM oeffnen, jedes Bedienelement betaetigen, Bild gegen Bild vergleichen |
+| `simfakten.js` | auslesen, WAS eine Simulation wirklich anzeigt – Grundlage jeder Heftseite |
+| `werte.js` | eine Simulation einstellen und eine bestimmte Anzeige ausgeben (Rechentest) |
+| `einbaupruefung.py` | neue Simulationsdatei vor dem Einbau pruefen (Namens- und DOM-Kollisionen) |
+| `einbau.py` | Registry-Eintrag und Implementierung in `physics-sim.js` einsetzen |
+| `heft_gegen_sim.py` | prueft, ob eine Heftseite nur Werte verlangt, die am Bildschirm stehen |
+| `seitenzahlen.py` | liest die Seitenzahlen aus den gesetzten Seiten (siehe oben) |
+
+Dazu `arbeitsheft/formregeln.py` – die Formregeln der Forscherseiten, geeicht an den 162
+abgenommenen Seiten der Realschulreihe (0 Fehlalarme). `seiten_nachbereiten.py` streut ausserdem
+die Antwortpositionen: Beim Schreiben steht die richtige Vermutung immer an Stelle 2, danach
+wird je Kapitel gleichmaessig verteilt.
+
+**Drei Zustaende, nicht zwei.** Der Rauchtest unterscheidet *animiert* (das Bild laeuft von
+selbst), *reagiert* (es aendert sich auf Bedienung) und *tot* (auch nach Betaetigen aller
+Bedienelemente aendert sich nichts). Nur "tot" ist ein Mangel: Die meisten Simulationen dieses
+Projekts sind **Messgeraete, keine Filme**, und stehen zu Recht still, bis man etwas verstellt.
+Von den 132 in Heften benutzten Simulationen sind 67 animiert, 58 reagieren, **0 sind tot**.
+
+**Werkzeuge haben eigene Fehler.** Beim Bau am 31.08.2026 hatte jedes einzelne mindestens einen –
+zehn insgesamt, darunter ein Vergleich unterschiedlich langer Frame-Listen (jede stehende
+Simulation galt als lebendig) und eine Handler-Liste, die WAEHREND der Schleife wuchs
+(Endlosschleife, sechs Simulationen sprengten den Speicher). Kein Pruefer darf urteilen, bevor er
+an einer laufenden, einer stehenden und einer abstuerzenden Probe bestanden hat.
+
+## Ablauf beim Bau eines Hefts
+
+```
+cd <heftordner>
+python3 uebernehmen.py <seiten.json>          # Formregeln + Reihenfolge
+python3 make_qr.py                            # QR-Codes, bei 5 Vergroesserungen gegengelesen
+python3 build_book.py                         # Satz -> build/*.pdf und build/book_p*.png
+cd .. && python3 simcheck/seitenzahlen.py <heftordner>   # NICHT vergessen
+python3 arbeitsheft/bruecke_alle.py           # js/heft-bruecke.js aus allen neun Heften
+```
+Danach die `?v=`-Nummer von `js/heft-bruecke.js` in `index.html` hochzaehlen.
 
 ## localStorage Keys
 

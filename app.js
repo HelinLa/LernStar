@@ -1732,9 +1732,18 @@ function _diagOpenExperiment() {
     grundvorstellung: _diag.cfg.grundvorstellung || '',
     ahaMetall: _diag.cfg.ahaMetall || ''
   };
-  if (typeof _msfSetDiagnose === 'function') _msfSetDiagnose(cfg);
-  if (typeof openPhysicsSim === 'function') openPhysicsSim(_diag.cfg.experiment);
-  else if (typeof openExperiment === 'function') openExperiment(_diag.cfg.experiment);
+  // physics-sim.js wird seit dem Umbau erst bei Bedarf geladen (js/sim-lader.js).
+  // _msfSetDiagnose lebt dort. Ohne das Warten wurde der Aufruf still uebersprungen,
+  // solange die Datei noch unterwegs war - die Simulation ging dann ohne die
+  // Vermutungen des Kindes auf, und der Vergleich am Ende blieb leer.
+  var _diagStarten = function () {
+    if (typeof _msfSetDiagnose === 'function') _msfSetDiagnose(cfg);
+    if (typeof openPhysicsSim === 'function') openPhysicsSim(_diag.cfg.experiment);
+    else if (typeof openExperiment === 'function') openExperiment(_diag.cfg.experiment);
+  };
+  if (typeof window.physicsSimLaden === 'function')
+    window.physicsSimLaden().then(_diagStarten, _diagStarten);
+  else _diagStarten();
 }
 // Wird aus der Simulation aufgerufen, sobald alle Materialien getestet sind
 function _diagShowAuswertung() { if (_diag) _diagRenderVergleich(); }
@@ -4456,13 +4465,13 @@ function openExperiment(expId) {
           <div style="background:#fef9c3;border-radius:8px;padding:8px 10px">
             <div style="font-size:.82rem;color:#854D0E;font-weight:700;margin-bottom:4px">Last F₂ (10–100 N)</div>
             <input type="range" id="hebF2Slider" min="10" max="100" step="1" value="50"
-              oninput="_hebSet('f2',this.value)" style="width:100%;accent-color:#CA8A04">
+              oninput="_hebgSet('f2',this.value)" style="width:100%;accent-color:#CA8A04">
             <div style="text-align:center;font-weight:800;color:#854D0E"><span id="hebF2Label">50</span> N</div>
           </div>
           <div style="background:#fff7ed;border-radius:8px;padding:8px 10px">
             <div style="font-size:.82rem;color:#9A3412;font-weight:700;margin-bottom:4px">Lastarm l₂ (0,5–3 m)</div>
             <input type="range" id="hebL2Slider" min="0.5" max="3" step="0.1" value="1.5"
-              oninput="_hebSet('l2',this.value)" style="width:100%;accent-color:#EA580C">
+              oninput="_hebgSet('l2',this.value)" style="width:100%;accent-color:#EA580C">
             <div style="text-align:center;font-weight:800;color:#9A3412"><span id="hebL2Label">1,5</span> m</div>
           </div>
         </div>
@@ -7483,7 +7492,7 @@ function _newMeasure() { if (_sim) _sim.measure(); }
 function _penMeasure() { if (_sim) _sim.measure(); }
 function _kreiMeasure() { if (_sim) _sim.measure(); }
 function _zentriMeasure() { if (_sim) _sim.measure(); }
-function _hebSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
+function _hebgSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
 function _ohmSet(k,v){ if (_sim) _sim.set(k,parseFloat(v)); }
 function _schSetMode(m){ if (_sim) _sim.setMode(m); }
 function _beschSetA(v){ if (_sim) { _sim.setA(parseFloat(v)); _sim.reset(); } }
@@ -13259,21 +13268,53 @@ function modulAbschliessen() { navigate('subject', state.modulGradeId, state.mod
 
 // ── QR-Deep-Links (aus dem gedruckten Heft) ─────────────────────────
 //  #experiment=magnet-stoffe  → öffnet direkt die Simulation
+//  #heft=kr1                  → dasselbe, kurz: welche Simulation zu einer
+//                               Heftseite gehoert, steht in js/heft-bruecke.js.
+//                               Kuerzere Adresse = weniger Punkte im QR-Code =
+//                               groessere Module auf dem gedruckten Blatt.
 //  #video=magnet-problem      → spielt direkt das Lernvideo
-window.addEventListener('load', function () {
+function _heftLinkOeffnen(verzoegerung) {
   try {
     var h = decodeURIComponent(location.hash || '');
     var mv = h.match(/video=([a-z0-9_\-\.]+)/i);
     var ms = h.match(/experiment=([a-z0-9_\-]+)/i);
-    if (mv || ms) {
+    var sim = ms ? ms[1] : null;
+    if (!sim) {
+      var mh = h.match(/heft=([a-z0-9]+)/i);
+      if (mh) {
+        if (typeof HEFT_SEITEN !== 'object' || !HEFT_SEITEN) {
+          // Ohne js/heft-bruecke.js kann die Kurzform nicht aufgeloest werden.
+          // Frueher schwieg die App hier vollstaendig - der Grund war nicht auffindbar.
+          console.warn('Heft-Link ' + mh[1] + ': js/heft-bruecke.js fehlt, die Simulation '
+                     + 'laesst sich nicht zuordnen.');
+        } else if (!HEFT_SEITEN[mh[1]]) {
+          console.warn('Heft-Link ' + mh[1] + ': diese Kennung steht nicht in js/heft-bruecke.js.');
+        } else if (!HEFT_SEITEN[mh[1]].sim) {
+          // Heftseiten ohne Simulation (z. B. s6, die Kraftwerks-Datenblaetter) tragen
+          // keinen QR-Code. Ein von Hand getippter Link soll trotzdem kein leeres
+          // Fenster mit dem Titel "null" oeffnen.
+          console.info('Heft-Link ' + mh[1] + ': diese Seite wird ohne Simulation bearbeitet.');
+        } else {
+          sim = HEFT_SEITEN[mh[1]].sim;
+        }
+      }
+    }
+    if (mv || sim) {
       var ob = document.getElementById('onboardingOverlay'); if (ob) ob.classList.add('hidden');
     }
     if (mv && typeof playLernvideo === 'function') {
       var f = mv[1]; if (!/\.mp4$/i.test(f)) f += '.mp4';
-      setTimeout(function () { playLernvideo(f, '🎬 Das Problem'); }, 450);
-    } else if (ms && typeof openPhysicsSim === 'function') {
-      setTimeout(function () { openPhysicsSim(ms[1]); }, 450);
+      setTimeout(function () { playLernvideo(f, '🎬 Das Problem'); }, verzoegerung);
+    } else if (sim && typeof openPhysicsSim === 'function') {
+      setTimeout(function () { openPhysicsSim(sim); }, verzoegerung);
     }
-  } catch (e) { }
-});
+  } catch (e) { console.warn('Heft-Link:', e); }
+}
+
+// Beim Start: 450 ms Vorlauf, damit die Oberflaeche zuerst steht.
+window.addEventListener('load', function () { _heftLinkOeffnen(450); });
+
+// Zweiter Scan bei schon offener App: Der Browser wechselt dann nur den Hash und
+// laedt die Seite NICHT neu - ohne dies passierte beim naechsten QR-Code nichts.
+window.addEventListener('hashchange', function () { _heftLinkOeffnen(0); });
 

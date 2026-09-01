@@ -7,8 +7,8 @@ window.FK_MAGNET = [
   "exp": null,
   "integrated": false,
   "leitfrage": "Wie schaffen es zwei Magnete, sich anzuziehen oder wegzudrücken – schon bevor sie sich überhaupt berühren?",
-  "problem": "<p>Du baust mit Magnet-Bausteinen. Zwei Steine schnappen mit einem lauten Klack zusammen, sobald sie sich nahe kommen – ganz von allein, obwohl du sie noch gar nicht zusammengedrückt hast. Drehst du einen Stein um, drücken sie sich weg, egal wie fest du schiebst. Zwischen ihnen fühlt sich die Luft an wie ein unsichtbares Kissen. Aber wie kann ein Magnet einen anderen wegdrücken oder anziehen, ohne ihn zu berühren?</p>",
-  "loesung": "<p>Jeder Magnet hat zwei Enden, die man <b>Pole</b> nennt: einen <b>Nordpol</b> und einen <b>Südpol</b>. An den Polen wirkt die magnetische Kraft am stärksten.</p><p>Rund um jeden Magneten liegt ein unsichtbarer Bereich: das <b>Magnetfeld</b>. Es ist die <b>Ursache</b> der magnetischen Kraft. Dieses Feld reicht auch durch Luft, Papier und viele andere Stoffe hindurch. Deshalb wirkt ein Magnet schon, <b>bevor</b> er etwas berührt – das nennt man <b>Fernwirkung</b>.</p><p>Hältst du zwei Magnete nah zusammen, merkst du: Gleiche Pole stoßen sich ab, verschiedene Pole ziehen sich an. Beides spürst du schon durch die Luft, ganz ohne Berührung.</p>",
+  "problem": "<p>Du baust mit Magnet-Bausteinen. Zwei Steine schnappen mit einem lauten Klack zusammen – ganz von allein, noch bevor du sie zusammendrückst. Drehst du einen um, drücken sie sich weg. Wie kann ein Magnet einen anderen anziehen oder wegdrücken, ohne ihn zu berühren?</p>",
+  "loesung": "<p>Rund um jeden Magneten liegt ein unsichtbares <b>Magnetfeld</b> – die <b>Ursache</b> der magnetischen Kraft. Es reicht durch Luft und Papier, darum wirkt der Magnet schon <b>vor</b> der Berührung. Dabei gilt: gleiche Pole stoßen sich ab, verschiedene ziehen sich an.</p>",
   "misconception": "Eine magnetische Kraft spürt man erst, wenn sich die Magnete berühren.",
   "primaryArea": "UF",
   "competences": [
@@ -17,7 +17,7 @@ window.FK_MAGNET = [
    "UF1"
   ],
   "moduleType": "B",
-  "vorwissen": "<p>Das kennst du schon:</p><ul><li>Ein Magnet zieht Dinge aus Eisen an – deshalb hält ein Magnet an der Kühlschranktür.</li><li>Ein Magnet hat zwei Enden: einen Nordpol (oft rot) und einen Südpol (oft grün oder blau).</li><li>Magnete stecken in vielen Alltagsdingen, zum Beispiel im Verschluss einer Tasche oder in Kopfhörern.</li></ul>",
+  "vorwissen": "<p>Das kennst du schon: Ein Magnet zieht Dinge aus Eisen an (z.&nbsp;B. am Kühlschrank) und hat zwei Enden – einen <b>Nordpol</b> (oft rot) und einen <b>Südpol</b> (oft blau).</p>",
   "predictFrage": "Du hältst zwei Stabmagnete so, dass sich zwei gleiche Pole gegenüberstehen (Nordpol gegen Nordpol), und schiebst sie langsam zusammen. Wann spürst du zum ersten Mal eine Kraft?",
   "predictHinweis": "Achte genau darauf, was deine Hand fühlt – schon ein Stück bevor sich die Magnete berühren.",
   "predictOptions": [
@@ -75,8 +75,8 @@ window.FK_MAGNET = [
   "integrated": true,
   "diagId": "e_diag_magnet",
   "leitfrage": "Welche Stoffe zieht ein Magnet an – und welche nicht?",
-  "problem": "<p>Auf dem Schrottplatz schwebt ein alter Kühlschrank an einem riesigen Elektromagneten durch die Luft. Daneben liegen Alufelgen und Kupferkabel – die bleiben liegen, egal wie nah der Magnet kommt. Zu Hause ist es genauso: Ein Magnet klebt an der Kühlschranktür fest, aber an einer Getränkedose aus Aluminium rutscht er einfach ab. Beides sind Metalle und glänzen silbrig. Warum zieht der Magnet das eine an und das andere nicht?</p>",
-  "loesung": "<p>Ein Magnet zieht nicht alle Metalle an, sondern nur ganz bestimmte: <b>Eisen, Nickel und Kobalt</b> – und <b>Stahl</b>, weil Stahl vor allem aus Eisen besteht. Die Kühlschranktür ist aus Stahl, deshalb hält der Magnet. Aluminium (die Dose), Kupfer (die Kabel) und Gold gehören nicht dazu – an ihnen rutscht der Magnet ab, obwohl es Metalle sind. <b>Metall und magnetisch sind also nicht dasselbe.</b></p>",
+  "problem": "<p>Auf dem Schrottplatz hebt ein riesiger Magnet einen alten Kühlschrank hoch – die Alufelgen daneben bleiben liegen. Zu Hause hält der Magnet an der Kühlschranktür, an einer Aludose aber nicht. Beides ist Metall. Warum zieht der Magnet das eine an und das andere nicht?</p>",
+  "loesung": "<p>Ein Magnet zieht nur bestimmte Stoffe an: <b>Eisen, Nickel, Kobalt</b> – und <b>Stahl</b>, weil Stahl aus Eisen besteht. Aluminium, Kupfer und Gold gehören nicht dazu, obwohl es Metalle sind. <b>Metall und magnetisch sind also nicht dasselbe.</b></p>",
   "misconception": "Alle Metalle sind magnetisch (werden vom Magneten angezogen).",
   "primaryArea": "E",
   "competences": [
@@ -87,7 +87,7 @@ window.FK_MAGNET = [
    "UF3"
   ],
   "moduleType": "A",
-  "vorwissen": "<p>Du weißt schon: Ein Magnet zieht manche Dinge an, ohne sie zu berühren – eine Büroklammer springt ihm sogar entgegen. Klammer, Nagel, Schere, Dose: das sind alles Metalle und glänzen ähnlich. Da liegt die Vermutung nahe, dass ein Magnet einfach alles Metallische anzieht. Genau das prüfen wir jetzt nach.</p>",
+  "vorwissen": "<p>Du weißt schon: Ein Magnet zieht manche Dinge an, ohne sie zu berühren. Aber zieht er wirklich <b>alle</b> Metalle an?</p>",
   "predictFrage": "Welche dieser Dinge zieht ein Magnet an?",
   "predictHinweis": "Tippe alle an, von denen du glaubst, dass der Magnet sie anzieht – zum Beispiel Eisennagel, Alu-Dose, Kupferdraht, Büroklammer, Münze, Glas. Danach probierst du es im Experiment aus und vergleichst mit deiner Vermutung.",
   "predictOptions": [],
@@ -123,8 +123,8 @@ window.FK_MAGNET = [
   "exp": "magnetpole",
   "integrated": false,
   "leitfrage": "Wie wirken zwei Magnetpole aufeinander – ziehen sie sich immer an?",
-  "problem": "<p>Am Verschluss deiner Tasche halten zwei kleine Magnete den Deckel zu: Du klappst ihn zu und er schnappt fest. Beim Zusammenbauen deiner Magnet-Bausteine dagegen wehrt sich manchmal ein Baustein – er drückt gegen deine Hand und will einfach nicht andocken. Drehst du ihn um, saugt er sich sofort fest. Es ist derselbe Magnet: Wie kann er einmal ziehen und einmal drücken?</p>",
-  "loesung": "<p>Ob zwei Magnete sich anziehen oder wegdrücken, hängt davon ab, welche <b>Pole</b> sich gegenüberstehen:</p><ul><li><b>Ungleiche</b> Pole (Nord und Süd) ziehen sich an – der Taschenverschluss hält.</li><li><b>Gleiche</b> Pole (Nord und Nord oder Süd und Süd) stoßen sich ab – der Baustein wehrt sich.</li></ul><p>Es ziehen sich also nicht immer alle Magnete an. Beides – Anziehen und Abstoßen – ist eine echte <b>magnetische Kraft</b>. Außerdem gilt: Je kleiner der Abstand, desto stärker die Kraft. Ganz nah schnappt der Verschluss regelrecht zu, aus ein paar Zentimetern spürst du fast nichts mehr.</p>",
+  "problem": "<p>Am Verschluss deiner Tasche halten zwei kleine Magnete den Deckel zu. Baust du einen Baustein falsch herum ein, drückt er plötzlich weg statt zu halten. Es ist derselbe Magnet – wie kann er einmal ziehen und einmal drücken?</p>",
+  "loesung": "<p>Was passiert, hängt von den Polen ab, die sich gegenüberstehen:</p><ul><li><b>Ungleiche</b> Pole (Nord–Süd) ziehen sich an.</li><li><b>Gleiche</b> Pole (Nord–Nord oder Süd–Süd) stoßen sich ab.</li></ul><p>Und: Je kleiner der Abstand, desto stärker die Kraft.</p>",
   "misconception": "Zwei Magnete ziehen sich immer an – egal, wie man sie zueinander hält.",
   "primaryArea": "E",
   "competences": [
@@ -134,7 +134,7 @@ window.FK_MAGNET = [
    "E"
   ],
   "moduleType": "A",
-  "vorwissen": "<p>Aus dem letzten Kapitel weißt du: Jeder Magnet hat einen <b>Nordpol</b> und einen <b>Südpol</b>, und er zieht Eisen an, ohne es zu berühren – so wie der Magnet an der Kühlschranktür hält. Neu ist hier: Was passiert, wenn <b>zwei Magnete</b> aufeinandertreffen?</p>",
+  "vorwissen": "<p>Du weißt schon: Ein Magnet hat einen <b>Nordpol</b> und einen <b>Südpol</b> und zieht Eisen an, ohne es zu berühren.</p>",
   "predictFrage": "Du hältst den Nordpol des einen Magneten genau an den Nordpol des anderen. Was passiert?",
   "predictHinweis": "Hier stehen sich zwei GLEICHE Pole gegenüber (Nord und Nord). Achte darauf, ob sie sich anziehen oder wegdrücken – und ob du überhaupt eine Kraft spürst.",
   "predictOptions": [
@@ -190,8 +190,8 @@ window.FK_MAGNET = [
   "exp": "magnetfeld",
   "integrated": false,
   "leitfrage": "Wie sieht das unsichtbare Magnetfeld aus – und wie weit reicht es in den Raum hinaus?",
-  "problem": "<p>Du willst einen Zettel mit einem Magneten an die Kühlschranktür heften. Kurz bevor der Magnet die Tür berührt, spürst du plötzlich, wie er von allein an die Tür gezogen wird – ein kleiner Ruck durch die Luft. Genauso springt eine Büroklammer an einen Magneten, obwohl du ihn noch gar nicht berührt hast.</p><p>Wie kann etwas durch die leere Luft ziehen? Und wie weit reicht diese unsichtbare Kraft?</p>",
-  "loesung": "<p>Um jeden Magneten liegt ein <b>Magnetfeld</b>: der Raum, in dem die magnetische Kraft wirkt. Man sieht es nicht, aber Eisen spürt es schon aus der Ferne.</p><ul><li>Mit <b>Eisenspänen</b> machst du die <b>Form</b> des Feldes sichtbar: Sie ordnen sich zu Bögen zwischen den Polen. Eine <b>Kompassnadel</b> zeigt zusätzlich die <b>Richtung</b> an – außen läuft das Feld vom Nordpol zum Südpol.</li><li>Wo diese Bögen <b>dicht</b> beieinander liegen – an den Polen –, ist das Feld <b>stark</b>. Weiter weg liegen sie weit auseinander: dort ist das Feld schwach.</li><li>Die Bögen sind nur ein <b>Bild</b>. In Wahrheit ist das Feld überall im Raum um den Magneten – auch in den Lücken zwischen den Linien.</li></ul>",
+  "problem": "<p>Du hältst eine Büroklammer langsam an einen Magneten – und plötzlich springt sie von allein heran, obwohl du ihn noch gar nicht berührt hast. Was zieht sie an, und wie weit reicht diese unsichtbare Kraft?</p>",
+  "loesung": "<p>Um jeden Magneten liegt ein <b>Magnetfeld</b> – der Raum, in dem seine Kraft wirkt. Mit <b>Eisenspänen</b> siehst du seine Form (Bögen), mit einer <b>Kompassnadel</b> die Richtung: außen vom <b>Nordpol zum Südpol</b>. Wo die Bögen dicht liegen, ist das Feld stark. Es wirkt <b>überall</b> – auch zwischen den Linien.</p>",
   "misconception": "Zwischen den Feldlinien ist nichts – das Magnetfeld wirkt nur genau auf den gezeichneten Linien.",
   "primaryArea": "E",
   "competences": [
@@ -199,7 +199,7 @@ window.FK_MAGNET = [
    "E7"
   ],
   "moduleType": "E",
-  "vorwissen": "<p>Das weißt du schon: Ein Kühlschrankmagnet hält, ohne dass du ihn festdrücken musst. Ein Magnet zieht Eisen an, <b>ohne es zu berühren</b>. An den beiden <b>Polen</b> ist die Kraft am stärksten.</p>",
+  "vorwissen": "<p>Du weißt schon: Ein Magnet zieht Eisen an, ohne es zu berühren – an den <b>Polen</b> am stärksten.</p>",
   "predictFrage": "Du legst eine winzige Kompassnadel genau in eine Lücke zwischen zwei Eisenspäne-Bögen, dicht am Magneten. Was macht die Nadel dort?",
   "predictHinweis": "Überleg: Ist die Stelle zwischen den Späne-Bögen wirklich leer – oder sieht sie nur leer aus?",
   "predictOptions": [
@@ -251,8 +251,8 @@ window.FK_MAGNET = [
   "exp": "kompass",
   "integrated": false,
   "leitfrage": "Wie funktioniert ein Kompass – warum zeigt seine Nadel fast immer in dieselbe Richtung?",
-  "problem": "<p>Stell dir vor, du wanderst durch einen dichten Wald. Der Pfad ist verschwunden, alle Bäume sehen gleich aus – und dein Handy hat keinen Empfang mehr. Zum Glück hast du einen kleinen Kompass in der Tasche. Die Nadel zittert kurz, dreht sich hin und her und bleibt dann ganz ruhig stehen. Egal, wie du dich selbst drehst: Die farbige Spitze zeigt immer wieder in dieselbe Richtung. Woher weiß diese winzige Nadel, wo Norden ist?</p><p>Genau darauf verlassen sich Seeleute auf dem offenen Meer, Bergwanderer im Nebel und sogar Zugvögel auf ihrem langen Flug. Finden wir heraus, was die Nadel lenkt.</p>",
-  "loesung": "<p>Die Kompassnadel ist selbst ein <b>kleiner, frei drehbarer Magnet</b> – mit einem Nordpol und einem Südpol. Die ganze Erde wirkt wie ein riesiger Magnet und ist von einem <b>Erdmagnetfeld</b> umgeben.</p><ul><li>Die Nadel richtet sich im Erdmagnetfeld aus, so wie sich eine kleine Magnetnadel neben einem Stabmagneten ausrichtet.</li><li>Deshalb zeigt ihre farbige Spitze (der Nordpol der Nadel) nach Norden – egal, wohin du dich drehst.</li><li>Mit der Sonne hat das nichts zu tun: Der Kompass funktioniert auch im tiefen Schatten, bei Nebel und mitten in der Nacht.</li></ul>",
+  "problem": "<p>Du wanderst durch einen dichten Wald – der Weg ist weg, das Handy hat keinen Empfang. Zum Glück hast du einen Kompass: Die Nadel pendelt kurz und zeigt dann in eine feste Richtung. Woher „weiß“ diese kleine Nadel, wo Norden ist?</p>",
+  "loesung": "<p>Die <b>Erde</b> wirkt wie ein riesiger Magnet mit einem <b>Erdmagnetfeld</b>. Die Kompassnadel richtet sich darin aus und zeigt nach <b>Norden</b> – egal, wie du dich drehst. Mit der <b>Sonne</b> hat das nichts zu tun: Der Kompass funktioniert auch im Schatten und nachts.</p>",
   "misconception": "Die Kompassnadel zeigt zur Sonne, weil die Sonne sie anzieht.",
   "primaryArea": "UF",
   "competences": [
@@ -263,7 +263,7 @@ window.FK_MAGNET = [
    "B"
   ],
   "moduleType": "A",
-  "vorwissen": "<p>Das weißt du schon: Ein Magnet hat einen <b>Nordpol</b> und einen <b>Südpol</b>. Gleiche Pole stoßen sich ab, ungleiche Pole ziehen sich an. Um jeden Magneten herum ist ein <b>Magnetfeld</b> – der Bereich, in dem seine Kraft wirkt.</p><p>Halte dir das vor Augen: Wenn du zwei Magnete nebeneinander legst, dreht sich der eine so lange, bis Nordpol und Südpol zueinander passen. Genau das macht auch die Kompassnadel – nur mit dem Erdmagnetfeld.</p>",
+  "vorwissen": "<p>Du weißt schon: Ein Magnet hat Nord- und Südpol, und um jeden Magneten liegt ein Magnetfeld. Die Kompassnadel ist selbst ein kleiner, frei drehbarer Magnet.</p>",
   "predictFrage": "Du hältst den Kompass flach in der Hand und drehst dich langsam einmal im Kreis. Wohin zeigt die farbige Nadelspitze, wenn du wieder stehen bleibst?",
   "predictHinweis": "Probier es an einem sonnigen Tag aus: Halte den Kompass einmal in die pralle Sonne und einmal in den Schatten eines Baumes. Achte genau darauf, ob die Spitze der Sonne folgt – oder ob sie jedes Mal in dieselbe Richtung zurückkehrt.",
   "predictOptions": [
