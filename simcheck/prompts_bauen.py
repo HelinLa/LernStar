@@ -22,7 +22,9 @@ def lade(pfad, name):
 def kopf(plan, anzahl):
     kl = plan.KLASSE
     sf = getattr(plan, "SCHULFORM", "Realschule NRW")
+    kl_o = str(kl).replace("/", "-")
     ablage = (f"FELO-Bilder Gesamtschule {kl}" if "Gesamtschule" in sf
+              else f"FELO-Bilder Gymnasium {kl_o}" if "Gymnasium" in sf
               else f"Arbeitsheft-Bilder {kl} Klasse")
     return f"""# Einstiegsbilder · FELO Physik {kl} · {sf}
 

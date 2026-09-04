@@ -315,3 +315,35 @@ Danach die `?v=`-Nummer von `js/heft-bruecke.js` in `index.html` hochzaehlen.
 | `ls_exercises` | AI-generated exercises (LernStarAI) |
 | `ls_groq_key` | User's Groq API key |
 | `ls_ai_providers` | Custom AI provider configs |
+
+## Gymnasialreihe (G9) — seit 02.09.2026
+
+- Kernlehrplan: Heft 3411 (2019), abgelegt in `kernlehrplan/` (PDF, Volltext,
+  Auswertung). Codes **UF1–UF4, E1–E7, K1–K4, B1–B4** — anders als Realschule
+  (B4 existiert nur hier); je Kompetenz zwei amtliche Formulierungen
+  (Erprobungsstufe / Sek I). Anforderungsbereiche stehen NICHT im KLP.
+- Fünf Bände: `arbeitsheft_gym56` `_gym7` `_gym8` `_gym9` `_gym10`
+  (Infrastruktur aus `arbeitsheft_gts7` abgeleitet, `plan.py` je Band).
+  Gemeinsames Lehrplanmodul: `arbeitsheft/lehrplan_gym.py`.
+- Kennungen: wm sm sl li · op wa · me da · la wi ep · kp eg.
+- KLASSE von gym56 ist der String "5/6" — Dateinamen ersetzen `/` durch `_`,
+  Bilderordner durch `-`; `formregeln.pruefe_seite(..., klasse=5)` und
+  `seiten_nachbereiten.py --klasse=5` beim 5/6-Band nicht vergessen.
+- Rahmen 5/6: Lina & Aras, Forscher-AG bei Herrn Weber.
+- **Figurenkanon der Gym-Bildaufträge** (verbindlich, wortgleich in Prompts):
+  Lina (11): schulterlanges dunkelbraunes Haar, kleine blaue Haarspange,
+  senfgelber Pullover, Jeans. Aras (11): kurze schwarze Locken, grünes
+  Sweatshirt, graue Hose. Mira (13): kastanienbrauner Zopf, dunkelrote
+  Strickjacke über weißem T-Shirt, Jeans. Jonas (13): glattes dunkelblondes
+  Haar, blaues Kapuzensweatshirt, schwarze Jeans, KEINE Brille.
+  Ela (14): dunkelbraune Haare im hohen Dutt, olivgrüne Bomberjacke über
+  schwarzem Shirt, Jeans. Tom (14): kurze braune Haare, kariertes Flanellhemd
+  über grauem Shirt, Cargohose.
+  Sina (15): schwarze Haare in zwei Zöpfen, bordeauxroter Kapuzenpulli, dunkle
+  Jeans. David (15): hellbraunes welliges Haar, olivgrünes Langarmshirt, beige
+  Chinohose.
+  Aylin (16): dunkelbraunes Haar zum seitlichen Zopf, senfgelber Cardigan über
+  weißer Bluse, dunkelblaue Jeans. Leon (16): kurzes schwarzes Haar, marineblaues
+  Poloshirt, graue Jeans.
+  Bei weiteren Bänden Figuren ebenso einmal kanonisch festlegen,
+  BEVOR die Bildaufträge geschrieben werden.

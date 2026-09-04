@@ -5114,7 +5114,7 @@ const _physSimDefs = {
           x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
         }
         ctx.stroke();
-        _infoBox(ctx, cv, [`f=${f}Hz`, `λ=${lambda.toFixed(2)}m`, `c=343m/s`]);
+        _infoBox(ctx, cv, [`f = ${f} Hz`, `λ = ${lambda.toFixed(2).replace('.', ',')} m`, `c = 343 m/s`]);  // Hausformat: Dezimalkomma wie im Heft
       },
       [
         { series: 'druck', title: 'Schalldruck p(t)', label: 'p', unit: 'Pa', color: '#1d4ed8' },
@@ -6468,6 +6468,13 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('aufAnim', 'aufAnim');
     _pSim.start(dt => _aufUpdate(dt), (ctx, cv) => _aufDraw(ctx, cv), []);
   },
+  'anomalie-wasser': modal => { _anwInit(); modal.innerHTML = _anwHTML(); _anwStatus(); _pSim = new PhysicsSimEngine('anwAnim','anwAnim'); _pSim.start(dt => _anwUpdate(dt), (ctx,cv) => _anwDraw(ctx,cv), []); },
+  'und-oder-schaltung': modal => { _uosInit(); modal.innerHTML = _uosHTML(); _uosStatus(); _pSim = new PhysicsSimEngine('uosAnim','uosAnim'); _pSim.start(dt => _uosUpdate(dt), (ctx,cv) => _uosDraw(ctx,cv), []); },
+  'elementarmagnete': modal => { _emgInit(); modal.innerHTML = _emgHTML(); _emgStatus(); _pSim = new PhysicsSimEngine('emgAnim','emgAnim'); _pSim.start(dt => _emgUpdate(dt), (ctx,cv) => _emgDraw(ctx,cv), []); },
+  'farbmischung-subtraktiv': modal => { _fmsInit(); modal.innerHTML = _fmsHTML(); _fmsStatus(); _pSim = new PhysicsSimEngine('fmsAnim','fmsAnim'); _pSim.start(dt => _fmsUpdate(dt), (ctx,cv) => _fmsDraw(ctx,cv), []); },
+  'luftdruck-hoehe': modal => { _ldhInit(); modal.innerHTML = _ldhHTML(); _ldhStatus(); _pSim = new PhysicsSimEngine('ldhAnim','ldhAnim'); _pSim.start(dt => _ldhUpdate(dt), (ctx,cv) => _ldhDraw(ctx,cv), []); },
+  'elektroskop': modal => { _eskInit(); modal.innerHTML = _eskHTML(); _eskStatus(); _pSim = new PhysicsSimEngine('eskAnim','eskAnim'); _pSim.start(dt => _eskUpdate(dt), (ctx,cv) => _eskDraw(ctx,cv), []); },
+  'lorentzkraft': modal => { _lozInit(); modal.innerHTML = _lozHTML(); _lozStatus(); _pSim = new PhysicsSimEngine('lozAnim','lozAnim'); _pSim.start(dt => _lozUpdate(dt), (ctx,cv) => _lozDraw(ctx,cv), []); },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -45365,7 +45372,7 @@ const _SEH_OBJ = [
   { k: 'lampe', name: 'Taschenlampe', ic: '🔦', leucht: true },
   { k: 'kerze', name: 'Kerze',        ic: '🕯️', leucht: true },
   { k: 'sonne', name: 'Sonne',        ic: '☀️', leucht: true },
-  { k: 'buch',  name: 'Tuete Gummibaerchen', ic: '🍬', leucht: false },
+  { k: 'buch',  name: 'Tüte Gummibärchen', ic: '🍬', leucht: false },
   { k: 'apfel', name: 'Katzenauge',   ic: '🔴', leucht: false },
   { k: 'mond',  name: 'Mond',         ic: '🌙', leucht: false }
 ];
@@ -46063,11 +46070,11 @@ function _khsDraw(ctx, cv) {
   const yUmbBot = yST + (yBotO - yST) * ratio;
   // Schirm
   ctx.fillStyle = '#e2e8f0'; ctx.fillRect(xS, 16, 8, H - 32);
-  // Halbschatten-Band
-  ctx.fillStyle = 'rgba(71,85,105,0.4)'; ctx.fillRect(xS, yPenTop, 8, yPenBot - yPenTop);
-  // Kernschatten-Band (falls vorhanden)
-  const hasUmbra = yUmbTop <= yUmbBot;
-  if (hasUmbra) { ctx.fillStyle = '#1e293b'; ctx.fillRect(xS, yUmbTop, 8, yUmbBot - yUmbTop); }
+  // Halbschatten-Band (volle Schattenbreite - sichtbar bleibt davon der graue Saum)
+  ctx.fillStyle = 'rgba(71,85,105,0.4)'; ctx.fillRect(xS, yUmbTop, 8, yUmbBot - yUmbTop);
+  // Kernschatten-Band (falls vorhanden) - innen, dunkel darueber
+  const hasUmbra = yPenTop <= yPenBot;
+  if (hasUmbra) { ctx.fillStyle = '#1e293b'; ctx.fillRect(xS, yPenTop, 8, yPenBot - yPenTop); }
   // Randstrahlen
   ctx.strokeStyle = 'rgba(245,158,11,0.55)'; ctx.lineWidth = 1.2; ctx.setLineDash([5, 4]); ctx.lineDashOffset = -(_khs.t * 35) % 9;
   ctx.beginPath();
@@ -46086,8 +46093,8 @@ function _khsDraw(ctx, cv) {
   ctx.fillStyle = '#92400e'; ctx.font = '10px sans-serif'; ctx.fillText(s < 4 ? 'Punktquelle' : 'Lichtquelle', x0, cy - Math.max(s, 9) - 8);
   // Beschriftung der Bänder
   ctx.textAlign = 'left'; ctx.font = '700 10px sans-serif';
-  if (hasUmbra) { ctx.fillStyle = '#1e293b'; ctx.fillText('Kernschatten', xS + 12, (yUmbTop + yUmbBot) / 2); }
-  if (s >= 4) { ctx.fillStyle = '#475569'; ctx.fillText('Halbschatten', xS + 12, yPenTop + 6); }
+  if (hasUmbra) { ctx.fillStyle = '#1e293b'; ctx.fillText('Kernschatten', xS + 12, (yPenTop + yPenBot) / 2); }
+  if (s >= 4) { ctx.fillStyle = '#475569'; ctx.fillText('Halbschatten', xS + 12, yUmbTop + 6); }
 }
 
 // ═══════════════════════════════════════════════════════
@@ -52052,7 +52059,7 @@ function _lupSetG(v) { _lup.g = +v; const el = document.getElementById('lupGLbl'
 function _lupStatus() {
   const el = document.getElementById('lupStatus'); if (!el) return;
   const V = _lupV();
-  if (V === null) { el.textContent = '⚠️ Gegenstand weiter als die Brennweite (g ≥ f) → kein Lupenbild (Bild kippt um).'; el.className = 'lmp-status off'; }
+  if (V === null) { el.textContent = '⚠️ Zu nah an der Brennweite oder darüber hinaus – kein brauchbares Lupenbild mehr (ab g > f kippt das Bild um).'; el.className = 'lmp-status off'; }
   else { el.textContent = '🔎 vergrößert · aufrecht · virtuell – etwa ' + _fpmNum(V, 1) + '-fache Vergrößerung.'; el.className = 'lmp-status on'; }
 }
 
@@ -52235,7 +52242,7 @@ function _kamHTML() {
       </div>
       <div>
         <div class="phys-ctrl"><span class="phys-ctrl-label">Abstand Linse–Sensor (Bildweite): <b id="kamBLbl">90</b></span>
-          <input type="range" id="kamB" min="45" max="110" step="2" value="90" oninput="_kamSet('bSensor',this.value)" style="width:100%;accent-color:#7c3aed"></div>
+          <input type="range" id="kamB" min="44" max="110" step="2" value="90" oninput="_kamSet('bSensor',this.value)" style="width:100%;accent-color:#7c3aed"></div>
         <div class="phys-ctrl" style="margin-top:8px"><span class="phys-ctrl-label">Blende (Öffnung): <b id="kamBlLbl">mittel</b></span>
           <input type="range" id="kamBl" min="1" max="6" step="1" value="3" oninput="_kamSet('blende',this.value)" style="width:100%;accent-color:#ef4444"></div>
         <div class="fpm-note" style="margin-top:10px">Das Bild auf dem Sensor ist <b>umgekehrt, verkleinert und reell</b>. Scharf wird es nur bei der richtigen Bildweite. Eine <b>größere Blende</b> lässt mehr Licht durch → helleres Bild.</div>
@@ -75973,4 +75980,2577 @@ function _aufArbeitsblattHTML() {
       <div class="ab-sec"><div class="ab-h">6 · Merksatz</div>
         <div class="ab-t">Ein Körper schwimmt, wenn seine ${inp('m1', 'welche Größe?')} kleiner ist als die der Flüssigkeit. Der Auftrieb ist so groß wie die Gewichtskraft des ${inp('m2', 'wovon?')} Wassers.</div></div>`;
   return _abWrap('auftrieb', 'Auftrieb – warum ein Schiff aus Eisen schwimmt', body);
+}
+// ═══════════════════════════════════════════════════════
+// GYM 5/6 · DIE ANOMALIE DES WASSERS - WARUM DER SEE VON OBEN ZUFRIERT
+// Gymnasium NRW - Klasse 5/6 - Temperatur und Zustandsaenderungen
+//
+// Dichte von Wasser zwischen 0 und 10 Grad C mit dem Maximum bei 4 Grad.
+// Messwerte (kg/m3): 0° 999,84 · 1° 999,90 · 2° 999,94 · 3° 999,96 ·
+// 4° 999,97 · 5° 999,96 · 6° 999,94 · 7° 999,90 · 8° 999,85 ·
+// 9° 999,78 · 10° 999,70 · Eis: 917.
+//
+// Gerechnet wird immer direkt mit dem Tabellenwert: V = m : rho fuer
+// m = 1 kg, angezeigt in Litern mit 5 Nachkommastellen, damit die
+// winzige Aenderung ueberhaupt sichtbar wird. Die Bilder (Fuellhoehe,
+// Balken, Teilchenabstand) sind bewusst stark ueberhoeht gezeichnet -
+// alle ZAHLEN stammen aber aus genau dieser Rechnung.
+// ═══════════════════════════════════════════════════════
+let _anw = null;
+
+const _ANW_RHO = [999.84, 999.90, 999.94, 999.96, 999.97, 999.96, 999.94, 999.90, 999.85, 999.78, 999.70];
+const _ANW_RHO_EIS = 917;      // Dichte von Eis in kg/m3
+const _ANW_UEB = 180000;       // Ueberhoehung im Bild: Pixel je Liter oberhalb der 1-L-Marke
+
+// ── Zustand ────────────────────────────────────────────
+function _anwInit() {
+  _anw = { T: 4, ansicht: 'dichte', t: 0 };
+}
+
+// ── kleine Rechenhelfer ────────────────────────────────
+function _anwRho() { return _ANW_RHO[_anw.T]; }          // Dichte in kg/m3 (Tabellenwert)
+function _anwVL() { return 1000 / _ANW_RHO[_anw.T]; }    // Volumen von 1 kg Wasser in Litern
+
+// ── Stellfunktionen ────────────────────────────────────
+function _anwSet(w, v) {
+  if (!_anw) _anwInit();
+  if (w === 'T') {
+    let T = Math.round(+v);
+    if (!(T >= 0)) T = 0;
+    if (T > 10) T = 10;
+    _anw.T = T;
+    const e = document.getElementById('anwWertT');
+    if (e) e.textContent = _fpmNum(T, 0);
+  }
+  _anwStatus();
+}
+
+// Sprungmarke: Temperatur samt Regler auf einmal setzen.
+function _anwMarke(T) {
+  if (!_anw) _anwInit();
+  const sl = document.getElementById('anwT');
+  if (sl) sl.value = T;
+  _anwSet('T', T);
+}
+
+// Umschalter zwischen den beiden Ansichten.
+function _anwAnsicht(a) {
+  if (!_anw) _anwInit();
+  _anw.ansicht = a;
+  const bd = document.getElementById('anwBdichte');
+  const bs = document.getElementById('anwBsee');
+  if (bd) bd.className = 'sim-btn' + (a === 'dichte' ? ' primary' : '');
+  if (bs) bs.className = 'sim-btn' + (a === 'see' ? ' primary' : '');
+  _anwStatus();
+}
+
+// ── Bewegung ───────────────────────────────────────────
+function _anwUpdate(dt) {
+  if (!_anw) return;
+  _anw.t += dt;
+  if (_anw.t > 3600) _anw.t -= 3600;
+}
+
+// ── Die Rechnung ───────────────────────────────────────
+function _anwStatus() {
+  const el = document.getElementById('anwStatus');
+  if (!el || !_anw) return;
+  const T = _anw.T, rho = _anwRho(), vm = 1 / rho, vl = _anwVL();
+  const vl4 = 1000 / _ANW_RHO[4];
+  const vlEis = 1000 / _ANW_RHO_EIS;
+
+  let t = '<b>1 · Die Dichte aus der Messtabelle</b><br>';
+  t += `Wasser bei ${_fpmNum(T, 0)} °C: ρ = <b>${_fpmNum(rho, 2)} kg/m³</b><br><br>`;
+
+  t += '<b>2 · Wie viel Platz braucht 1 kg Wasser?</b><br>';
+  t += 'V = m : ρ<br>';
+  t += `V = 1 kg : ${_fpmNum(rho, 2)} kg/m³<br>`;
+  t += `V = ${_fpmNum(vm, 8)} m³ = <b>${_fpmNum(vl, 5)} L</b><br><br>`;
+
+  t += '<b>3 · Der Vergleich mit 4 °C</b><br>';
+  if (T === 4) {
+    t += 'Bei 4 °C ist die Dichte am größten – 1 kg Wasser braucht hier so wenig Platz wie sonst nie.<br>';
+  } else {
+    const dv = (vl - vl4) * 1000;
+    t += `Bei 4 °C wären es nur ${_fpmNum(vl4, 5)} L.<br>`;
+    t += `Unterschied: <b>${_fpmNum(dv, 2)} mL</b> – winzig, aber entscheidend!<br>`;
+  }
+
+  t += '<br><b>4 · Und Eis?</b><br>';
+  t += `Eis hat nur ρ = ${_fpmNum(_ANW_RHO_EIS, 0)} kg/m³. 1 kg Eis braucht<br>`;
+  t += `V = 1 kg : 917 kg/m³ = <b>${_fpmNum(vlEis, 5)} L</b> –<br>`;
+  t += 'viel mehr Platz als Wasser. Darum schwimmt Eis oben.';
+
+  if (_anw.ansicht === 'see') {
+    t += '<br><br><b>5 · Im See</b><br>';
+    if (T <= 4) {
+      const wo = T === 4 ? 'ganz unten am Grund' : (T === 0 ? 'direkt unter dem Eis' : 'mitten im See');
+      t += `Wasser mit ${_fpmNum(T, 0)} °C findet der Messfühler ${wo}.`;
+    } else {
+      t += `Wasser mit ${_fpmNum(T, 0)} °C gibt es im zugefrorenen See nicht – am Grund sind es höchstens 4 °C.`;
+    }
+  }
+  el.innerHTML = t;
+}
+
+// ── Zeichenhelfer ──────────────────────────────────────
+function _anwRR(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+// ── Das Bild ───────────────────────────────────────────
+function _anwDraw(ctx, cv) {
+  if (!_anw) return;
+  const zeit = _anw.t;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, cv.width, cv.height);
+  if (_anw.ansicht === 'see') _anwSeeBild(ctx, cv.width, cv.height, zeit);
+  else _anwDichteBild(ctx, cv.width, cv.height, zeit);
+}
+
+// Ansicht 1: Messzylinder, Dichtekurve und ueberhoehte Balken.
+function _anwDichteBild(ctx, W, H, zeit) {
+  const T = _anw.T, rho = _anwRho(), vl = _anwVL();
+
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12.5px system-ui';
+  ctx.fillText('Wasser tanzt aus der Reihe: am dichtesten ist es bei 4 °C', W / 2, 16);
+  ctx.fillStyle = '#475569'; ctx.font = '10px system-ui';
+  ctx.fillText('Links: 1 kg Wasser im Messzylinder · rechts: die Dichte-Kurve', W / 2, 31);
+
+  // ── links: der Messzylinder mit genau 1 kg Wasser ──
+  const zx0 = 24, zx1 = 104, zBoden = 298, y1L = 118;
+  const extra = (vl - 1) * _ANW_UEB;      // ueberhoehter Teil oberhalb der 1-L-Marke
+  const ys = y1L - extra;
+
+  // Wasser mit leicht schwappender Oberflaeche
+  ctx.fillStyle = '#7dd3fc';
+  ctx.beginPath();
+  ctx.moveTo(zx0, zBoden);
+  ctx.lineTo(zx0, ys);
+  for (let x = zx0; x <= zx1; x += 4) {
+    ctx.lineTo(x, ys + Math.sin(zeit * 2 + x * 0.15) * 1.2);
+  }
+  ctx.lineTo(zx1, zBoden);
+  ctx.closePath(); ctx.fill();
+
+  // Teilchen: Abstand passt (stark uebertrieben) zur Dichte
+  const sp = 15 + (vl - 1) * 30000;
+  ctx.fillStyle = 'rgba(3,105,161,0.75)';
+  for (let j = 0; ; j++) {
+    const py = ys + 14 + j * sp;
+    if (py > zBoden - 8) break;
+    for (let i = 0; ; i++) {
+      const px = zx0 + 9 + i * sp;
+      if (px > zx1 - 8) break;
+      const dx = Math.sin(zeit * 2.2 + i * 1.3 + j * 2.1) * 1.4;
+      const dy = Math.cos(zeit * 1.9 + i * 2.0 + j * 1.1) * 1.4;
+      ctx.beginPath(); ctx.arc(px + dx, py + dy, 2.2, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+
+  // Volumen-Anzeige mitten im Wasser
+  ctx.textAlign = 'center'; ctx.font = 'bold 9.5px system-ui'; ctx.fillStyle = '#075985';
+  ctx.fillText(_fpmNum(vl, 5) + ' L', (zx0 + zx1) / 2, ys + (ys < 100 ? 30 : 45));
+
+  // Glas
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(zx0, 58); ctx.lineTo(zx0, zBoden); ctx.lineTo(zx1, zBoden); ctx.lineTo(zx1, 58);
+  ctx.stroke();
+
+  // 1-Liter-Marke
+  ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 1;
+  ctx.setLineDash([4, 3]);
+  ctx.beginPath(); ctx.moveTo(zx0, y1L); ctx.lineTo(zx1 + 6, y1L); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.textAlign = 'left'; ctx.font = 'bold 8.5px system-ui'; ctx.fillStyle = '#0f172a';
+  ctx.fillText('1 L', zx0 + 4, y1L + 11);
+
+  ctx.textAlign = 'center'; ctx.font = 'bold 9.5px system-ui'; ctx.fillStyle = '#0f172a';
+  ctx.fillText('1 kg Wasser', (zx0 + zx1) / 2, 50);
+  ctx.font = '8px system-ui'; ctx.fillStyle = '#64748b';
+  ctx.fillText('bei ' + _fpmNum(T, 0) + ' °C', (zx0 + zx1) / 2, 310);
+
+  // ── rechts oben: die Dichtekurve 0 bis 10 °C ──
+  const px0 = 180, px1 = 425, py0 = 62, py1 = 180;
+  const xT = tt => px0 + tt / 10 * (px1 - px0);
+  const yR = r => py1 - (r - 999.65) / 0.35 * (py1 - py0);
+
+  const raster = [999.70, 999.80, 999.90, 1000.00];
+  ctx.font = '7.5px system-ui';
+  for (let k = 0; k < raster.length; k++) {
+    const yy = yR(raster[k]);
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(px0, yy); ctx.lineTo(px1, yy); ctx.stroke();
+    ctx.textAlign = 'right'; ctx.fillStyle = '#64748b';
+    ctx.fillText(_fpmNum(raster[k], 2), px0 - 4, yy + 2.5);
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(px0, py1); ctx.lineTo(px1, py1); ctx.stroke();
+  ctx.textAlign = 'center'; ctx.fillStyle = '#64748b';
+  for (let tt = 0; tt <= 10; tt += 2) ctx.fillText(_fpmNum(tt, 0), xT(tt), 190);
+  ctx.font = '8.5px system-ui'; ctx.fillStyle = '#334155';
+  ctx.fillText('Temperatur in °C', (px0 + px1) / 2, 201);
+  ctx.textAlign = 'left'; ctx.font = '7.5px system-ui'; ctx.fillStyle = '#64748b';
+  ctx.fillText('ρ in kg/m³', px0 + 4, py0 + 8);
+
+  // die Kurve selbst
+  ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let tt = 0; tt <= 10; tt++) {
+    const xx = xT(tt), yy = yR(_ANW_RHO[tt]);
+    if (tt === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy);
+  }
+  ctx.stroke();
+
+  // Maximum bei 4 °C
+  ctx.fillStyle = '#f59e0b';
+  ctx.beginPath(); ctx.arc(xT(4), yR(_ANW_RHO[4]), 3.5, 0, Math.PI * 2); ctx.fill();
+  ctx.textAlign = 'left'; ctx.font = 'bold 8px system-ui'; ctx.fillStyle = '#b45309';
+  ctx.fillText('Maximum: ' + _fpmNum(_ANW_RHO[4], 2) + ' kg/m³', xT(4) + 9, yR(_ANW_RHO[4]) + 1);
+
+  // aktuelle Temperatur: Lot und pulsierender Punkt
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 1;
+  ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(xT(T), py1); ctx.lineTo(xT(T), yR(rho)); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#dc2626';
+  ctx.beginPath(); ctx.arc(xT(T), yR(rho), 4 + Math.sin(zeit * 4) * 1.5, 0, Math.PI * 2); ctx.fill();
+
+  // ── rechts unten: der ueberhoehte Balkenvergleich ──
+  const by = 298, bw = 16;
+  const bX = tt => 180 + tt * 23;
+  ctx.textAlign = 'center'; ctx.font = 'bold 8.5px system-ui'; ctx.fillStyle = '#334155';
+  ctx.fillText('So viel ragt 1 kg Wasser über die 1-L-Marke (stark überhöht)', 300, 216);
+  for (let tt = 0; tt <= 10; tt++) {
+    const vli = 1000 / _ANW_RHO[tt];
+    const hi = (vli - 1) * _ANW_UEB;
+    ctx.fillStyle = tt === T ? '#f59e0b' : '#7dd3fc';
+    ctx.fillRect(bX(tt), by - hi, bw, hi);
+    if (tt === 4) {
+      ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 1.5;
+      ctx.strokeRect(bX(tt) + 0.5, by - hi + 0.5, bw - 1, hi - 1);
+    }
+  }
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(176, by); ctx.lineTo(428, by); ctx.stroke();
+  ctx.textAlign = 'right'; ctx.font = '7.5px system-ui'; ctx.fillStyle = '#64748b';
+  ctx.fillText('1 L', 172, by + 2.5);
+  ctx.textAlign = 'center';
+  for (let tt = 0; tt <= 10; tt += 2) ctx.fillText(_fpmNum(tt, 0) + '°', bX(tt) + bw / 2, by + 10);
+  // der Wert am aktuellen Balken - aus derselben Rechnung
+  const hAkt = (vl - 1) * _ANW_UEB;
+  ctx.font = 'bold 8.5px system-ui'; ctx.fillStyle = '#b45309';
+  ctx.fillText('+' + _fpmNum((vl - 1) * 1000, 2) + ' mL', bX(T) + bw / 2, by - hAkt - 5);
+
+  ctx.font = '8px system-ui'; ctx.fillStyle = '#64748b';
+  ctx.fillText('Füllhöhe, Balken und Teilchenabstand sind stark überhöht – in echt wäre der Unterschied unsichtbar klein.', W / 2, 324);
+}
+
+// Ansicht 2: der zugefrorene See im Querschnitt.
+function _anwSeeBild(ctx, W, H, zeit) {
+  const T = _anw.T;
+
+  // Himmel mit fallenden Schneeflocken
+  ctx.fillStyle = '#dbeafe'; ctx.fillRect(0, 0, W, 46);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#bfdbfe'; ctx.lineWidth = 0.8;
+  for (let i = 0; i < 12; i++) {
+    const fx = (i * 53 + zeit * (8 + (i % 3) * 5)) % W;
+    const fy = (i * 19 + zeit * (12 + (i % 5) * 5)) % 46;
+    ctx.beginPath(); ctx.arc(fx, fy, 1.8, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  }
+  ctx.textAlign = 'left'; ctx.font = 'bold 9px system-ui'; ctx.fillStyle = '#334155';
+  ctx.fillText('Winterluft: −10 °C', 10, 14);
+  ctx.textAlign = 'center'; ctx.font = 'bold 10.5px system-ui'; ctx.fillStyle = '#0f172a';
+  ctx.fillText('Der zugefrorene See im Querschnitt', W / 2 + 20, 30);
+
+  // Eisdecke mit weit auseinanderliegenden Gitterteilchen
+  const ey0 = 46, ey1 = 90;
+  const eg = ctx.createLinearGradient(0, ey0, 0, ey1);
+  eg.addColorStop(0, '#f0f9ff'); eg.addColorStop(1, '#bae6fd');
+  ctx.fillStyle = eg; ctx.fillRect(0, ey0, W, ey1 - ey0);
+  ctx.strokeStyle = 'rgba(14,165,233,0.55)'; ctx.lineWidth = 1;
+  for (let k = 0; k < 2; k++) {
+    for (let i = 0; i < 17; i++) {
+      const gx = 14 + i * 26 + (k % 2) * 13;
+      const gy = 58 + k * 18;
+      const dx = Math.sin(zeit * 6 + i * 2.3 + k * 1.7) * 0.7;
+      const dy = Math.cos(zeit * 5 + i * 1.9 + k) * 0.7;
+      ctx.beginPath(); ctx.arc(gx + dx, gy + dy, 3, 0, Math.PI * 2);
+      ctx.fillStyle = '#e0f2fe'; ctx.fill(); ctx.stroke();
+    }
+  }
+  ctx.fillStyle = 'rgba(255,255,255,0.88)';
+  _anwRR(ctx, 294, 50, 142, 34, 5); ctx.fill();
+  ctx.textAlign = 'left'; ctx.fillStyle = '#0c4a6e'; ctx.font = 'bold 9px system-ui';
+  ctx.fillText('Eis: ' + _fpmNum(_ANW_RHO_EIS, 0) + ' kg/m³', 302, 63);
+  ctx.font = '8.5px system-ui';
+  ctx.fillText('leichter → schwimmt oben', 302, 77);
+
+  // Wasser: oben 0 °C, unten 4 °C
+  const wy0 = 90, wy1 = 282;
+  const wg = ctx.createLinearGradient(0, wy0, 0, wy1);
+  wg.addColorStop(0, '#93c5fd'); wg.addColorStop(1, '#1e40af');
+  ctx.fillStyle = wg; ctx.fillRect(0, wy0, W, wy1 - wy0);
+
+  const yD = tt => wy0 + 8 + (tt / 4) * (wy1 - wy0 - 30);
+
+  // Temperatur-Leiter am linken Rand
+  ctx.font = 'bold 8.5px system-ui';
+  for (let tt = 0; tt <= 4; tt++) {
+    const yy = yD(tt);
+    ctx.strokeStyle = 'rgba(255,255,255,0.6)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(0, yy); ctx.lineTo(6, yy); ctx.stroke();
+    ctx.textAlign = 'left';
+    ctx.fillStyle = tt < 2 ? '#1e3a8a' : '#e0f2fe';
+    ctx.fillText(_fpmNum(tt, 0) + ' °C', 9, yy + 3);
+  }
+
+  // Teilchenreihen: je waermer (und dichter), desto enger
+  for (let tt = 0; tt <= 4; tt++) {
+    const rr = _ANW_RHO[tt];
+    const rsp = 14 + (999.97 - rr) * 55;
+    const yy = yD(tt);
+    const amp = 1 + tt * 0.35;
+    ctx.fillStyle = 'rgba(224,242,254,0.8)';
+    for (let i = 0; ; i++) {
+      const xx = 52 + i * rsp;
+      if (xx > 300) break;
+      const dx = Math.sin(zeit * (1.5 + tt * 0.4) + i * 1.7 + tt) * amp;
+      const dy = Math.cos(zeit * (1.3 + tt * 0.3) + i * 2.2 + tt * 1.4) * amp;
+      ctx.beginPath(); ctx.arc(xx + dx, yy + dy, 2, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+
+  // Drei Schichten-Schilder am rechten Rand
+  ctx.font = 'bold 8.5px system-ui';
+  ctx.fillStyle = 'rgba(15,23,42,0.55)';
+  _anwRR(ctx, 300, yD(0) - 8, 136, 13, 3); ctx.fill();
+  _anwRR(ctx, 330, yD(2) - 8, 106, 13, 3); ctx.fill();
+  _anwRR(ctx, 258, yD(4) - 8, 178, 13, 3); ctx.fill();
+  ctx.textAlign = 'right'; ctx.fillStyle = '#e0f2fe';
+  ctx.fillText('0 °C · ρ = ' + _fpmNum(_ANW_RHO[0], 2) + ' · bleibt oben', 432, yD(0) + 2.5);
+  ctx.fillText('2 °C · ρ = ' + _fpmNum(_ANW_RHO[2], 2) + ' kg/m³', 432, yD(2) + 2.5);
+  ctx.fillText('4 °C · ρ = ' + _fpmNum(_ANW_RHO[4], 2) + ' · am schwersten, sinkt', 432, yD(4) + 2.5);
+
+  // Fische am warmen Grund
+  for (let k = 0; k < 3; k++) {
+    const fx = 90 + k * 125 + Math.sin(zeit * 0.5 + k * 2.1) * 48;
+    const fy = 234 + k * 11 + Math.sin(zeit * 1.3 + k) * 3;
+    const dir = Math.cos(zeit * 0.5 + k * 2.1) >= 0 ? 1 : -1;
+    ctx.fillStyle = '#fbbf24';
+    ctx.beginPath(); ctx.ellipse(fx, fy, 11, 4.5, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(fx - dir * 10, fy);
+    ctx.lineTo(fx - dir * 17, fy - 4);
+    ctx.lineTo(fx - dir * 17, fy + 4);
+    ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#1f2937';
+    ctx.beginPath(); ctx.arc(fx + dir * 6, fy - 1, 1.1, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.textAlign = 'center'; ctx.font = 'bold 8.5px system-ui'; ctx.fillStyle = '#fde68a';
+  ctx.fillText('Hier unten bleibt es 4 °C – die Fische überwintern am Grund', W / 2, 276);
+
+  // Grund mit schwingenden Wasserpflanzen
+  ctx.fillStyle = '#78716c'; ctx.fillRect(0, wy1, W, 22);
+  ctx.fillStyle = '#57534e';
+  for (let k = 0; k < 6; k++) {
+    ctx.beginPath(); ctx.arc(30 + k * 78, wy1 + 12, 4 + (k % 3), 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.strokeStyle = '#4ade80'; ctx.lineWidth = 2;
+  for (let k = 0; k < 4; k++) {
+    const px = 45 + k * 115;
+    const sw = Math.sin(zeit * 1.1 + k * 1.9);
+    ctx.beginPath(); ctx.moveTo(px, wy1 + 2);
+    ctx.quadraticCurveTo(px + sw * 6, wy1 - 12, px + sw * 10, wy1 - 24);
+    ctx.stroke();
+  }
+
+  // Der Messfuehler folgt dem Temperaturregler
+  if (T <= 4) {
+    const yp = yD(T);
+    ctx.setLineDash([5, 4]);
+    ctx.strokeStyle = 'rgba(254,240,138,0.9)'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(30, yp); ctx.lineTo(435, yp); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.strokeStyle = '#fde047'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(38, yp, 5 + Math.sin(zeit * 4) * 2, 0, Math.PI * 2); ctx.stroke();
+    ctx.fillStyle = 'rgba(15,23,42,0.78)';
+    _anwRR(ctx, 48, yp - 9, 122, 15, 4); ctx.fill();
+    ctx.textAlign = 'left'; ctx.fillStyle = '#fef9c3'; ctx.font = 'bold 8.5px system-ui';
+    ctx.fillText('Messfühler: hier ' + _fpmNum(T, 0) + ' °C', 53, yp + 2);
+  } else {
+    ctx.fillStyle = 'rgba(255,251,235,0.95)';
+    _anwRR(ctx, 90, 148, 260, 36, 6); ctx.fill();
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.textAlign = 'center'; ctx.fillStyle = '#78350f'; ctx.font = 'bold 9px system-ui';
+    ctx.fillText(_fpmNum(T, 0) + ' °C gibt es im Wintersee nirgends –', 220, 163);
+    ctx.fillText('wärmer als 4 °C wird es unten nie!', 220, 177);
+  }
+
+  // Merkzeile
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, wy1 + 22, W, H - wy1 - 22);
+  ctx.textAlign = 'center'; ctx.fillStyle = '#0f172a'; ctx.font = 'bold 9.5px system-ui';
+  ctx.fillText('Eis ist LEICHTER als Wasser: 917 statt rund 1000 kg/m³.', W / 2, 316);
+  ctx.fillStyle = '#475569'; ctx.font = '9px system-ui';
+  ctx.fillText('Darum schwimmt es oben – und unter dem Eis überleben die Fische.', W / 2, 328);
+}
+
+// ── Die Seite ──────────────────────────────────────────
+function _anwHTML() {
+  if (!_anw) _anwInit();
+  const ab = (id, txt) => `<button class="sim-btn${_anw.ansicht === id ? ' primary' : ''}" id="anwB${id}" onclick="_anwAnsicht('${id}')">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">❄️ Die Anomalie des Wassers – warum friert der See von oben zu?</h3>
+    <div class="fpm-note" style="margin-top:2px">Fast alle Stoffe ziehen sich beim Abkühlen immer weiter zusammen. Wasser nicht: Unter 4 °C dehnt es sich wieder aus! Schiebe den Temperaturregler und beobachte, wie viel Platz 1 kg Wasser braucht. Tippe danach auf „Der See im Winter“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="anwAnim" width="440" height="330" class="phys-anim-cv"></canvas>
+        <div style="margin-top:6px">
+          <label class="fpm-label" for="anwT">Wassertemperatur: <b id="anwWertT">4</b> °C</label>
+          <input type="range" id="anwT" min="0" max="10" value="4" step="1"
+                 oninput="_anwSet('T', this.value)" style="width:100%">
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${ab('dichte', '🌡️ Dichte und Volumen')}
+          ${ab('see', '🧊 Der See im Winter')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_anwMarke(0)">0 °C · eiskalt</button>
+          <button class="sim-btn" onclick="_anwMarke(4)">4 °C · am dichtesten</button>
+          <button class="sim-btn" onclick="_anwMarke(10)">10 °C · kühl</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Nachgerechnet</div>
+        <div class="lmp-status" id="anwStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>Worauf es ankommt:</b> Zwischen 0 °C und 10 °C ändert sich die Dichte von Wasser nur winzig – aber genau dieses Winzige rettet im Winter die Fische. Das schwerste Wasser (4 °C) sinkt zum Grund, das kälteste (0 °C) bleibt direkt unter dem Eis. Der See friert deshalb von <u>oben</u> zu, und am Grund bleibt es bei 4 °C.</div>
+        <div class="fpm-note" style="margin-top:8px"><b>Modellgrenze:</b> Die Dichtewerte sind Tabellenwerte für reines, ruhiges Wasser – Salz, Druck und Strömungen verändern sie. Füllhöhe, Balken und Teilchenabstände sind stark überhöht gezeichnet, sonst wäre nichts zu sehen. Die Zahlen daneben sind echt.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Eis schwimmt, weil es <b>leichter</b> ist als Wasser: 917 kg/m³ statt rund 1000 kg/m³.
+    </p>
+  </div>`;
+}
+// ═══════════════════════════════════════════════════════
+// UND- UND ODER-SCHALTUNG  (Klasse 5/6)
+// Zwei Schalter S1 und S2, eine Lampe. Im UND-Modus liegen beide
+// Schalter hintereinander im einzigen Stromweg (Reihe): Die Lampe
+// leuchtet nur, wenn BEIDE geschlossen sind. Im ODER-Modus liegen
+// die Schalter in zwei Zweigen nebeneinander (parallel): Ein
+// geschlossener Schalter genuegt. Der gezeichnete Stromkreis baut
+// sich beim Umschalten sichtbar um; bei geschlossenem Weg wandern
+// Elektronenpunkte durch den Kreis. Nur ungefaehrliche Kleinspannung.
+// ═══════════════════════════════════════════════════════
+
+let _uos = null;
+function _uosInit() { _uos = { modus: 'und', s1: true, s2: false, t: 0 }; }
+
+// Die eine Logikrechnung, aus der ALLE Anzeigen gespeist werden:
+// Lampenbild, Wahrheitstabelle und Statuszeile.
+function _uosLogik(m, a, b) { return m === 'und' ? (a && b ? 1 : 0) : (a || b ? 1 : 0); }
+function _uosAn() { return _uosLogik(_uos.modus, _uos.s1 ? 1 : 0, _uos.s2 ? 1 : 0) === 1; }
+
+// ── Bedienung ──────────────────────────────────────────
+function _uosSet(w, v) {
+  if (!_uos) _uosInit();
+  if (w === 'modus') _uos.modus = (v === 'oder') ? 'oder' : 'und';
+  else if (w === 's1') _uos.s1 = !!(+v);
+  else if (w === 's2') _uos.s2 = !!(+v);
+  _uosKnoepfe();
+  _uosStatus();
+}
+function _uosToggle(k) { if (!_uos) _uosInit(); _uosSet(k, _uos[k] ? 0 : 1); }
+
+function _uosKnoepfe() {
+  const und = _uos.modus === 'und';
+  const mu = document.getElementById('uosMUnd');
+  if (mu) mu.className = 'sim-btn' + (und ? ' primary' : '');
+  const mo = document.getElementById('uosMOder');
+  if (mo) mo.className = 'sim-btn' + (und ? '' : ' primary');
+  const b1 = document.getElementById('uosS1');
+  if (b1) b1.className = 'sim-btn' + (_uos.s1 ? ' primary' : '');
+  const b2 = document.getElementById('uosS2');
+  if (b2) b2.className = 'sim-btn' + (_uos.s2 ? ' primary' : '');
+  const t1 = document.getElementById('uosS1T');
+  if (t1) t1.textContent = _uos.s1 ? 'geschlossen' : 'offen';
+  const t2 = document.getElementById('uosS2T');
+  if (t2) t2.textContent = _uos.s2 ? 'geschlossen' : 'offen';
+}
+
+// ── Die Rechnung ───────────────────────────────────────
+function _uosStatus() {
+  const el = document.getElementById('uosStatus');
+  if (!el || !_uos) return;
+  const a = _uos.s1 ? 1 : 0, b = _uos.s2 ? 1 : 0;
+  const l = _uosLogik(_uos.modus, a, b);
+  const zu = a + b;
+  let t = (_uos.modus === 'und' ? 'UND (Reihe): ' : 'ODER (parallel): ');
+  t += 'S1 = ' + _fpmNum(a, 0) + ' · S2 = ' + _fpmNum(b, 0) + ' → Lampe = ' + _fpmNum(l, 0) + (l ? ' (leuchtet). ' : ' (aus). ');
+  t += 'Geschlossen sind ' + _fpmNum(zu, 0) + ' von 2 Schaltern – ';
+  t += _uos.modus === 'und' ? 'bei UND müssen es 2 sein.' : 'bei ODER genügt schon 1.';
+  el.textContent = (l ? '✓ ' : '✗ ') + t;
+  el.className = 'lmp-status ' + (l ? 'on' : 'off');
+  const bsp = document.getElementById('uosBeispiel');
+  if (bsp) bsp.innerHTML = _uos.modus === 'und'
+    ? '🛗 <b>Alltag UND:</b> Der Aufzug fährt nur, wenn die Tür geschlossen ist <b>und</b> der Startknopf gedrückt wird. Beide Bedingungen liegen wie zwei Schalter hintereinander.'
+    : '🚪 <b>Alltag ODER:</b> Im Flur hängt die Lampe an zwei Schaltern: der an der Haustür <b>oder</b> der an der Treppe genügt – zwei Wege zum selben Licht.';
+}
+
+// ── Animation ──────────────────────────────────────────
+function _uosUpdate(dt) { if (_uos) _uos.t += dt; }
+
+function _uosLampe(ctx, x, y, r, an, t) {
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(x - 17, y - 17, 34, 34);
+  if (an) {
+    ctx.fillStyle = 'rgba(250,204,21,0.35)';
+    ctx.beginPath(); ctx.arc(x, y, r + 9 + 1.6 * Math.sin(6 * t), 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = an ? '#fde047' : '#e2e8f0'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = an ? '#b45309' : '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(x - 6, y - 6); ctx.lineTo(x + 6, y + 6);
+  ctx.moveTo(x + 6, y - 6); ctx.lineTo(x - 6, y + 6); ctx.stroke();
+}
+
+// Schalter im WAAGERECHTEN Draht. Erst die Luecke freilegen: ein offener
+// Schalter muss den Weg sichtbar unterbrechen.
+function _uosSchalter(ctx, x, y, zu, name, ly) {
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(x - 16, y - 18, 32, 22);
+  ctx.fillStyle = '#334155';
+  ctx.beginPath(); ctx.arc(x - 13, y, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.arc(x + 13, y, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = zu ? '#16a34a' : '#dc2626'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(x - 13, y);
+  if (zu) ctx.lineTo(x + 13, y); else ctx.lineTo(x + 8, y - 15);
+  ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(name, x, y + ly);
+}
+
+function _uosDraw(ctx, cv) {
+  if (!_uos) return;
+  const W = cv.width, H = cv.height, t = _uos.t;
+  const a = _uos.s1 ? 1 : 0, b = _uos.s2 ? 1 : 0;
+  const und = _uos.modus === 'und';
+  const lampe = _uosLogik(_uos.modus, a, b);
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  // Kopfzeile: sagt, wie der Kreis gerade gebaut ist
+  ctx.textAlign = 'center'; ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12px system-ui';
+  ctx.fillText(und ? 'UND: beide Schalter hintereinander im einzigen Weg'
+                   : 'ODER: zwei Zweige – ein geschlossener genügt', W / 2, 16);
+
+  const L = 40, R = 268, T = 70, B = 240, cx = (L + R) / 2, cy = (T + B) / 2;
+  const xN1 = 96, xN2 = 212, dY = 24;
+
+  // Grundgeruest des Kreises – baut sich beim Modus sichtbar um
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4;
+  if (und) {
+    ctx.strokeRect(L, T, R - L, B - T);
+  } else {
+    ctx.beginPath();
+    ctx.moveTo(xN1, T); ctx.lineTo(L, T); ctx.lineTo(L, B); ctx.lineTo(R, B); ctx.lineTo(R, T); ctx.lineTo(xN2, T);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(xN1, T); ctx.lineTo(xN1, T - dY); ctx.lineTo(xN2, T - dY); ctx.lineTo(xN2, T);
+    ctx.moveTo(xN1, T); ctx.lineTo(xN1, T + dY); ctx.lineTo(xN2, T + dY); ctx.lineTo(xN2, T);
+    ctx.stroke();
+    ctx.fillStyle = '#475569';
+    ctx.beginPath(); ctx.arc(xN1, T, 4, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(xN2, T, 4, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  // Stromwege (beginnen am Minus-Pol, enden am Plus-Pol)
+  const wegUnd = [[cx + 8, B], [R, B], [R, T], [L, T], [L, B], [cx - 8, B]];
+  const wegOben = [[cx + 8, B], [R, B], [R, T], [xN2, T], [xN2, T - dY], [xN1, T - dY], [xN1, T], [L, T], [L, B], [cx - 8, B]];
+  const wegUnten = [[cx + 8, B], [R, B], [R, T], [xN2, T], [xN2, T + dY], [xN1, T + dY], [xN1, T], [L, T], [L, B], [cx - 8, B]];
+  const fluss = p => {
+    ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3;
+    ctx.setLineDash([9, 9]); ctx.lineDashOffset = -(t * 70) % 18;
+    ctx.beginPath(); ctx.moveTo(p[0][0], p[0][1]);
+    for (let i = 1; i < p.length; i++) ctx.lineTo(p[i][0], p[i][1]);
+    ctx.stroke(); ctx.setLineDash([]); ctx.lineDashOffset = 0;
+  };
+  if (und) { if (lampe) fluss(wegUnd); }
+  else { if (a) fluss(wegOben); if (b) fluss(wegUnten); }
+
+  // Batterie unten (langer duenner Strich = Plus, kurzer dicker = Minus)
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(cx - 8, B - 14); ctx.lineTo(cx - 8, B + 14); ctx.stroke();
+  ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(cx + 8, B - 8); ctx.lineTo(cx + 8, B + 8); ctx.stroke();
+  _elPole(ctx, cx, B, 8);
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Batterie', cx, B + 26);
+
+  // Schalter: in Reihe nebeneinander im oberen Draht, sonst je einer pro Zweig
+  if (und) {
+    _uosSchalter(ctx, 118, T, _uos.s1, 'S1', 22);
+    _uosSchalter(ctx, 190, T, _uos.s2, 'S2', 22);
+  } else {
+    _uosSchalter(ctx, (xN1 + xN2) / 2, T - dY, _uos.s1, 'S1', -10);
+    _uosSchalter(ctx, (xN1 + xN2) / 2, T + dY, _uos.s2, 'S2', 22);
+  }
+
+  // Lampe im linken Draht
+  _uosLampe(ctx, L, cy, 13, lampe === 1, t);
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Lampe', L + 20, cy + 4);
+
+  // Elektronen wandern nur durch geschlossene Wege
+  let strom = false;
+  if (und) { if (lampe) { _elektronen(ctx, wegUnd, t); strom = true; } }
+  else {
+    if (a) { _elektronen(ctx, wegOben, t); strom = true; }
+    if (b) { _elektronen(ctx, wegUnten, t); strom = true; }
+  }
+  if (strom) _elLegende(ctx, 10, H - 6);
+
+  // ── Wahrheitstabelle rechts, aktuelle Zeile pulsiert ──
+  const tx = 282, tw = 152;
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+  ctx.fillText('Wahrheitstabelle', tx + tw / 2, 46);
+  const cS1 = tx + 24, cS2 = tx + 60, cL = tx + 112;
+  ctx.font = 'bold 10px system-ui'; ctx.fillStyle = '#334155';
+  ctx.fillText('S1', cS1, 66); ctx.fillText('S2', cS2, 66); ctx.fillText('Lampe', cL, 66);
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(tx + 6, 72); ctx.lineTo(tx + tw - 6, 72); ctx.stroke();
+  const zeilen = [[0, 0], [0, 1], [1, 0], [1, 1]];
+  const aktuell = a * 2 + b;
+  for (let i = 0; i < 4; i++) {
+    const ra = zeilen[i][0], rb = zeilen[i][1];
+    const rl = _uosLogik(_uos.modus, ra, rb);
+    const y = 90 + i * 24;
+    if (i === aktuell) {
+      ctx.fillStyle = 'rgba(56,189,248,' + (0.25 + 0.12 * Math.sin(3 * t)).toFixed(3) + ')';
+      ctx.fillRect(tx + 4, y - 15, tw - 8, 21);
+      ctx.fillStyle = '#0369a1'; ctx.font = 'bold 10px system-ui'; ctx.textAlign = 'left';
+      ctx.fillText('▶', tx - 6, y);
+    }
+    ctx.textAlign = 'center';
+    ctx.font = (i === aktuell ? 'bold ' : '') + '11px system-ui';
+    ctx.fillStyle = i === aktuell ? '#0c4a6e' : '#475569';
+    ctx.fillText(_fpmNum(ra, 0), cS1, y);
+    ctx.fillText(_fpmNum(rb, 0), cS2, y);
+    ctx.fillStyle = rl ? '#b45309' : (i === aktuell ? '#0c4a6e' : '#94a3b8');
+    ctx.fillText(rl ? _fpmNum(rl, 0) + ' · an' : _fpmNum(rl, 0) + ' · aus', cL, y);
+  }
+  ctx.fillStyle = '#334155'; ctx.font = 'bold 10px system-ui'; ctx.textAlign = 'center';
+  ctx.fillText(und ? 'Lampe = S1 UND S2' : 'Lampe = S1 ODER S2', tx + tw / 2, 202);
+  ctx.fillStyle = '#64748b'; ctx.font = '9px system-ui';
+  ctx.fillText('0 = offen · 1 = geschlossen', tx + tw / 2, 218);
+}
+
+// ── HTML ───────────────────────────────────────────────
+function _uosHTML() {
+  if (!_uos) _uosInit();
+  const und = _uos.modus === 'und';
+  return `<div class="sim-box sim-box-wide fpm-sim uos-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🔀💡 UND oder ODER: Wann leuchtet die Lampe?</h3>
+    <div class="fpm-note" style="margin-top:2px">Zwei Schalter, eine Lampe – aber zwei ganz verschiedene Schaltungen. Wähle UND oder ODER, lege S1 und S2 einzeln um und beobachte, wann die Lampe leuchtet. (Nur ungefährliche Batterie-Kleinspannung.)</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="uosAnim" width="440" height="300" class="phys-anim-cv"></canvas>
+      </div>
+      <div>
+        <div class="fpm-label">Schaltung wählen</div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${und ? ' primary' : ''}" id="uosMUnd" onclick="_uosSet('modus','und')">UND · in Reihe</button>
+          <button class="sim-btn${und ? '' : ' primary'}" id="uosMOder" onclick="_uosSet('modus','oder')">ODER · parallel</button>
+        </div>
+        <div class="fpm-label" style="margin-top:10px">Schalter umlegen</div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_uos.s1 ? ' primary' : ''}" id="uosS1" onclick="_uosToggle('s1')">🔘 Schalter S1: <span id="uosS1T">${_uos.s1 ? 'geschlossen' : 'offen'}</span></button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn${_uos.s2 ? ' primary' : ''}" id="uosS2" onclick="_uosToggle('s2')">🔘 Schalter S2: <span id="uosS2T">${_uos.s2 ? 'geschlossen' : 'offen'}</span></button>
+        </div>
+        <div class="lmp-status" id="uosStatus"></div>
+        <div class="fpm-note" style="margin-top:10px" id="uosBeispiel"></div>
+        <div class="fpm-note" style="margin-top:8px"><b>Modellgrenze:</b> Im echten Flur hängt das Licht meist an einer <i>Wechselschaltung</i>: Jedes Umlegen ändert den Zustand. Die ODER-Idee dahinter bleibt sichtbar – es gibt zwei Stellen, von denen aus Strom zur Lampe kommt.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>UND</b> (Reihe): Lampe nur, wenn <b>beide</b> Schalter geschlossen sind. &nbsp;|&nbsp; <b>ODER</b> (parallel): <b>mindestens einer</b> genügt.
+    </p>
+  </div>`;
+}
+// ═══════════════════════════════════════════════════════
+// ELEMENTARMAGNETE - MAGNETISIEREN UND ENTMAGNETISIEREN
+// Klasse 5/6 - Inhaltsfeld "Magnetismus"
+// Modell: Ein Eisennagel besteht aus vielen Elementarmagneten (kleine
+// Pfeile). Zeigen sie in dieselbe Richtung, wirkt der Nagel als Magnet.
+// Streichen ordnet, Erschuettern und Erhitzen zerstoeren die Ordnung,
+// Durchsaegen liefert ZWEI Magnete - Pole treten immer paarweise auf.
+// ═══════════════════════════════════════════════════════
+let _emg = null;
+
+const _EMG_COLS = 16;                 // Pfeile je Reihe
+const _EMG_ROWS = 4;                  // Reihen
+const _EMG_N = _EMG_COLS * _EMG_ROWS; // 64 Elementarmagnete
+const _EMG_STRDAUER = 2.2;            // Dauer eines Streichvorgangs in s
+const _EMG_X0 = 52;                   // linke Kante des Schafts (am Kopf)
+const _EMG_X1 = 352;                  // rechte Kante des Schafts (vor der Spitze)
+const _EMG_XS = 396;                  // Spitze des Nagels
+const _EMG_YM = 150;                  // Mittellinie des Nagels
+const _EMG_H2 = 24;                   // halbe Schafthoehe
+const _EMG_CUTX = 202;                // Saegestelle (zwischen Spalte 8 und 9)
+
+function _emgInit() {
+  const pf = [];
+  for (let r = 0; r < _EMG_ROWS; r++)
+    for (let c = 0; c < _EMG_COLS; c++) {
+      const w = Math.random() * 2 * Math.PI;
+      pf.push({ x: 66 + c * 18.2, y: 133 + r * 11, ang: w, ziel: w, ausg: false });
+    }
+  _emg = { pf: pf, t: 0, staerke: 30, streich: null, wackel: 0, glut: 0, gesaegt: false, sag: 0 };
+}
+
+// ── kleine Rechenhelfer ────────────────────────────────
+// Wie viele Bueroklammern haelt ein Stueck mit diesem Ausrichtungsgrad?
+// Unter 20 % keine, ab 20 % eine, je volle weitere 16 % eine dazu, hoechstens 6.
+function _emgKlammern(grad) {
+  return grad < 20 ? 0 : Math.min(6, 1 + Math.floor((grad - 20) / 16));
+}
+
+// Zaehlt die ausgerichteten Pfeile (auf Wunsch nur einen Teil des Nagels)
+// und liefert daraus Grad und Klammerzahl - EINE Rechnung fuer Statuszeile
+// UND Bild, damit Anzeige und Zeichnung nie auseinanderlaufen.
+function _emgMess(filter) {
+  let k = 0, n = 0;
+  for (const p of _emg.pf) {
+    if (filter && !filter(p)) continue;
+    n++;
+    if (p.ausg) k++;
+  }
+  const grad = n ? Math.round(100 * k / n) : 0;
+  return { k: k, n: n, grad: grad, kl: _emgKlammern(grad), exakt: n ? (100 * k) % n === 0 : true };
+}
+
+function _emgMagnetX(u) {
+  const v = Math.min(1, Math.max(0, u));
+  return 30 + 380 * v;
+}
+
+// ── Stell- und Tastenfunktionen ────────────────────────
+function _emgSet(w, v) {
+  if (!_emg) _emgInit();
+  if (w === 'staerke') {
+    _emg.staerke = +v;
+    const e = document.getElementById('emgWertStaerke');
+    if (e) e.textContent = _fpmNum(_emg.staerke, 0);
+  } else if (w === 'anteil') {
+    // Rechentest-Sonde: richtet genau round(N*anteil) Pfeile aus.
+    const k = Math.round(_EMG_N * +v);
+    _emg.pf.forEach((p, i) => {
+      if (i < k) { p.ausg = true; p.ziel = 0; p.ang = 0; }
+      else {
+        p.ausg = false;
+        p.ziel = Math.random() * 2 * Math.PI;
+        p.ang = p.ziel;
+      }
+    });
+    _emg.streich = null; _emg.wackel = 0; _emg.glut = 0;
+    _emg.gesaegt = false; _emg.sag = 0;
+    _emgKnoepfe();
+  } else if (w === 'saege') {
+    _emg.gesaegt = !!+v;
+    _emg.streich = null;
+    _emgKnoepfe();
+  }
+  _emgStatus();
+}
+
+function _emgStreichen() {
+  if (!_emg) _emgInit();
+  if (_emg.gesaegt || _emg.streich) return;
+  const offen = [];
+  _emg.pf.forEach((p, i) => { if (!p.ausg) offen.push(i); });
+  // Fisher-Yates: zufaellige Auswahl von staerke % der noch ungeordneten Pfeile
+  for (let i = offen.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const h = offen[i]; offen[i] = offen[j]; offen[j] = h;
+  }
+  const nWahl = Math.round(offen.length * _emg.staerke / 100);
+  _emg.streich = { u: 0, set: offen.slice(0, nWahl) };
+}
+
+function _emgHammer() {
+  if (!_emg) _emgInit();
+  if (_emg.streich) return;
+  _emg.wackel = 0.8;
+  // Erschuetterung: etwa die Haelfte der ausgerichteten verliert die Richtung.
+  for (const p of _emg.pf) {
+    if (p.ausg && Math.random() < 0.5) {
+      p.ausg = false;
+      p.ziel = Math.random() * 2 * Math.PI;
+    }
+  }
+  _emgStatus();
+}
+
+function _emgHitze() {
+  if (!_emg) _emgInit();
+  if (_emg.streich) return;
+  _emg.glut = 1.4;
+  // Waerme wirbelt ALLE Elementarmagnete durcheinander.
+  for (const p of _emg.pf) {
+    p.ausg = false;
+    p.ziel = Math.random() * 2 * Math.PI;
+  }
+  _emgStatus();
+}
+
+function _emgSaege() {
+  if (!_emg) _emgInit();
+  if (_emg.streich) return;
+  _emg.gesaegt = !_emg.gesaegt;
+  _emgKnoepfe();
+  _emgStatus();
+}
+
+function _emgKnoepfe() {
+  const bS = document.getElementById('emgBtnSaege');
+  if (bS) bS.textContent = _emg.gesaegt ? 'Wieder ganz' : 'Nagel durchsägen';
+  const bStr = document.getElementById('emgBtnStreich');
+  if (bStr) bStr.disabled = _emg.gesaegt;
+}
+
+// ── Bewegung ───────────────────────────────────────────
+function _emgUpdate(dt) {
+  if (!_emg) return;
+  _emg.t += dt;
+
+  // Der gezeichnete Magnet wandert ueber den Nagel; jeder ausgewaehlte
+  // Pfeil klappt um, sobald der Magnet ihn erreicht hat.
+  if (_emg.streich) {
+    _emg.streich.u += dt / _EMG_STRDAUER;
+    const mx = _emgMagnetX(_emg.streich.u);
+    let neu = false;
+    for (const i of _emg.streich.set) {
+      const p = _emg.pf[i];
+      if (!p.ausg && p.x <= mx) { p.ausg = true; p.ziel = 0; neu = true; }
+    }
+    if (_emg.streich.u >= 1) {
+      for (const i of _emg.streich.set) {
+        const p = _emg.pf[i];
+        if (!p.ausg) { p.ausg = true; p.ziel = 0; }
+      }
+      _emg.streich = null;
+      neu = true;
+    }
+    if (neu) _emgStatus();
+  }
+
+  if (_emg.wackel > 0) _emg.wackel -= dt;
+  if (_emg.glut > 0) _emg.glut -= dt;
+
+  // Saegespalt oeffnet und schliesst sich weich
+  const zielSag = _emg.gesaegt ? 1 : 0;
+  _emg.sag += (zielSag - _emg.sag) * Math.min(1, dt * 6);
+
+  // Pfeile drehen sich weich auf ihre Zielrichtung
+  for (const p of _emg.pf) {
+    let d = p.ziel - p.ang;
+    while (d > Math.PI) d -= 2 * Math.PI;
+    while (d < -Math.PI) d += 2 * Math.PI;
+    p.ang += d * Math.min(1, dt * 5);
+  }
+}
+
+// ── Die Rechnung ───────────────────────────────────────
+function _emgStatus() {
+  const el = document.getElementById('emgStatus');
+  if (!el || !_emg) return;
+  let t = '';
+  if (!_emg.gesaegt) {
+    const m = _emgMess();
+    t += '<b>1 · Ordnung der Elementarmagnete</b><br>';
+    t += `Ausgerichtet: <b>${m.k} von ${m.n}</b> Pfeilen<br>`;
+    t += `Ausrichtungsgrad: ${m.k} · 100 : ${m.n} ${m.exakt ? '=' : '≈'} <b>${_fpmNum(m.grad, 0)} %</b><br><br>`;
+    t += '<b>2 · Tragkraft</b><br>';
+    if (m.grad < 20) {
+      t += `Unter 20 % heben sich die vielen kleinen Magnete gegenseitig auf – der Nagel trägt <b>0 Büroklammern</b>.<br>`;
+    } else {
+      t += `Ab 20 % wirkt der Nagel selbst als Magnet: er trägt <b>${m.kl} ${m.kl === 1 ? 'Büroklammer' : 'Büroklammern'}</b> (eine ab 20 %, je volle weitere 16 % eine dazu, höchstens 6).<br>`;
+    }
+    if (m.grad >= 20) {
+      t += '<br><b>3 · Die Pole</b><br>';
+      t += 'Die Pfeile zeigen zur Spitze: dort sitzt der <b>Nordpol</b>, am Kopf der <b>Südpol</b>.';
+    }
+  } else {
+    const L = _emgMess(p => p.x < _EMG_CUTX);
+    const R = _emgMess(p => p.x >= _EMG_CUTX);
+    t += '<b>Durchgesägt: aus 1 Nagel werden 2 Magnete</b><br>';
+    t += 'Jedes Stück hat wieder einen Nordpol UND einen Südpol – ein einzelner Pol lässt sich nicht absägen.<br><br>';
+    t += `Linkes Stück: <b>${L.k} von ${L.n}</b> ausgerichtet ${L.exakt ? '=' : '≈'} <b>${_fpmNum(L.grad, 0)} %</b> → trägt <b>${L.kl} ${L.kl === 1 ? 'Büroklammer' : 'Büroklammern'}</b><br>`;
+    t += `Rechtes Stück: <b>${R.k} von ${R.n}</b> ausgerichtet ${R.exakt ? '=' : '≈'} <b>${_fpmNum(R.grad, 0)} %</b> → trägt <b>${R.kl} ${R.kl === 1 ? 'Büroklammer' : 'Büroklammern'}</b><br>`;
+    t += '<br>Tippe auf „Wieder ganz", um den Nagel zusammenzusetzen.';
+  }
+  el.innerHTML = t;
+}
+
+// ── Zeichenhelfer ──────────────────────────────────────
+function _emgRR(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function _emgPfeil(ctx, x, y, a, ausg) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(a);
+  const farbe = ausg ? '#b91c1c' : '#64748b';
+  ctx.strokeStyle = farbe; ctx.fillStyle = farbe; ctx.lineWidth = 1.8;
+  ctx.beginPath(); ctx.moveTo(-6, 0); ctx.lineTo(2.5, 0); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(6.5, 0); ctx.lineTo(1, -3.2); ctx.lineTo(1, 3.2); ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function _emgKlammer(ctx, x, y) {
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.7;
+  _emgRR(ctx, x - 4, y - 8, 8, 16, 4);
+  ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x, y - 4); ctx.lineTo(x, y + 5); ctx.stroke();
+}
+
+function _emgKette(ctx, x, y0, anzahl) {
+  for (let j = 0; j < anzahl; j++) {
+    const sway = Math.sin(_emg.t * 2.1 + j * 0.9) * (1.5 + j * 0.6);
+    _emgKlammer(ctx, x + sway, y0 + j * 13);
+  }
+}
+
+// ── Das Bild ───────────────────────────────────────────
+function _emgDraw(ctx, cv) {
+  if (!_emg) return;
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  const sag = _emg.sag;
+  const offs = sag * 16;                       // halber Saegespalt
+  const dW = _emg.wackel > 0 ? _emg.wackel / 0.8 : 0;
+  const wy = dW ? Math.sin(_emg.t * 45) * 5 * dW : 0;   // Wackeln nach Haemmern
+  const wx = dW ? Math.sin(_emg.t * 53) * 3 * dW : 0;
+  const gl = _emg.glut > 0 ? _emg.glut / 1.4 : 0;       // Rotgluehen nach Erhitzen
+
+  // Kopfzeile - EINE Messung fuer Bild und Text
+  const mAll = _emgMess();
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12.5px system-ui';
+  ctx.fillText(_emg.gesaegt ? 'Zwei Nägel – und jeder hat beide Pole' : 'Die Elementarmagnete im Eisennagel', W / 2, 16);
+  ctx.fillStyle = '#475569'; ctx.font = '10px system-ui';
+  ctx.fillText(`Ausrichtung insgesamt: ${_fpmNum(mAll.grad, 0)} %`, W / 2, 31);
+
+  ctx.save();
+  ctx.translate(wx, wy);
+
+  // ── Nagelkoerper (ganz oder in zwei Stuecken) ──
+  const y0 = _EMG_YM - _EMG_H2, y1 = _EMG_YM + _EMG_H2;
+  const metall = gl > 0
+    ? `rgb(${Math.round(198 + 55 * gl)},${Math.round(204 - 90 * gl)},${Math.round(212 - 150 * gl)})`
+    : '#c6ccd4';
+
+  ctx.lineWidth = 1.6; ctx.strokeStyle = '#5a636e';
+  if (gl > 0.05) { ctx.shadowColor = 'rgba(255,90,20,0.8)'; ctx.shadowBlur = 26 * gl; }
+
+  // linkes Stueck: Kopfplatte + Schaft bis zur Saegestelle
+  ctx.fillStyle = metall;
+  ctx.beginPath();
+  ctx.rect(_EMG_X0 - 10 - offs, _EMG_YM - 34, 10, 68);          // Kopf
+  ctx.rect(_EMG_X0 - offs, y0, _EMG_CUTX - _EMG_X0, 2 * _EMG_H2); // Schaft links
+  ctx.fill(); ctx.stroke();
+
+  // rechtes Stueck: Schaft ab Saegestelle + Spitze
+  ctx.beginPath();
+  ctx.rect(_EMG_CUTX + offs, y0, _EMG_X1 - _EMG_CUTX, 2 * _EMG_H2);
+  ctx.moveTo(_EMG_X1 + offs, y0);
+  ctx.lineTo(_EMG_XS + offs, _EMG_YM);
+  ctx.lineTo(_EMG_X1 + offs, y1);
+  ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.shadowBlur = 0;
+
+  // Hitzeflimmern ueber dem Nagel
+  if (gl > 0.05) {
+    ctx.strokeStyle = `rgba(239,108,44,${(0.6 * gl).toFixed(3)})`;
+    ctx.lineWidth = 1.4;
+    for (let q = 0; q < 3; q++) {
+      const bx = 120 + q * 90;
+      ctx.beginPath();
+      for (let s = 0; s <= 20; s++) {
+        const yy = y0 - 8 - s * 1.6;
+        const xx = bx + Math.sin(_emg.t * 7 + s * 0.55 + q * 2) * 5;
+        if (s === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy);
+      }
+      ctx.stroke();
+    }
+  }
+
+  // ── Elementarmagnete: zitternde Pfeile ──
+  _emg.pf.forEach((p, i) => {
+    const dx = p.x < _EMG_CUTX ? -offs : offs;
+    const zit = (p.ausg ? 0.05 : 0.14) * Math.sin(_emg.t * 6.3 + i * 2.17);
+    _emgPfeil(ctx, p.x + dx, p.y, p.ang + zit, p.ausg);
+  });
+
+  // ── Pole: farbige Endzonen + Buchstaben (erst ab 20 %) ──
+  ctx.textAlign = 'center'; ctx.font = 'bold 15px system-ui';
+  if (!_emg.gesaegt || sag < 0.5) {
+    if (mAll.grad >= 20 && sag < 0.5) {
+      const al = 0.25 + 0.55 * mAll.grad / 100;
+      ctx.fillStyle = `rgba(198,40,40,${al.toFixed(3)})`;
+      ctx.beginPath();
+      ctx.moveTo(_EMG_X1, y0); ctx.lineTo(_EMG_XS, _EMG_YM); ctx.lineTo(_EMG_X1, y1);
+      ctx.closePath(); ctx.fill();
+      ctx.fillStyle = `rgba(34,139,84,${al.toFixed(3)})`;
+      ctx.fillRect(_EMG_X0 - 10, _EMG_YM - 34, 10, 68);
+      ctx.fillStyle = '#b91c1c';
+      ctx.fillText('N', _EMG_X1 + 18, y0 - 8);
+      ctx.fillStyle = '#1f7a46';
+      ctx.fillText('S', _EMG_X0 - 5, y0 - 12);
+    }
+  } else {
+    const L = _emgMess(p => p.x < _EMG_CUTX);
+    const R = _emgMess(p => p.x >= _EMG_CUTX);
+    if (L.grad >= 20) {
+      const al = 0.25 + 0.55 * L.grad / 100;
+      ctx.fillStyle = `rgba(198,40,40,${al.toFixed(3)})`;
+      ctx.fillRect(_EMG_CUTX - 12 - offs, y0, 12, 2 * _EMG_H2);
+      ctx.fillStyle = `rgba(34,139,84,${al.toFixed(3)})`;
+      ctx.fillRect(_EMG_X0 - 10 - offs, _EMG_YM - 34, 10, 68);
+      ctx.fillStyle = '#b91c1c'; ctx.fillText('N', _EMG_CUTX - 8 - offs, y0 - 8);
+      ctx.fillStyle = '#1f7a46'; ctx.fillText('S', _EMG_X0 - 5 - offs, y0 - 12);
+    }
+    if (R.grad >= 20) {
+      const al = 0.25 + 0.55 * R.grad / 100;
+      ctx.fillStyle = `rgba(34,139,84,${al.toFixed(3)})`;
+      ctx.fillRect(_EMG_CUTX + offs, y0, 12, 2 * _EMG_H2);
+      ctx.fillStyle = `rgba(198,40,40,${al.toFixed(3)})`;
+      ctx.beginPath();
+      ctx.moveTo(_EMG_X1 + offs, y0); ctx.lineTo(_EMG_XS + offs, _EMG_YM); ctx.lineTo(_EMG_X1 + offs, y1);
+      ctx.closePath(); ctx.fill();
+      ctx.fillStyle = '#1f7a46'; ctx.fillText('S', _EMG_CUTX + 8 + offs, y0 - 8);
+      ctx.fillStyle = '#b91c1c'; ctx.fillText('N', _EMG_X1 + 18 + offs, y0 - 8);
+    }
+  }
+
+  // ── Bueroklammern haengen am Nordpol-Ende ──
+  if (!_emg.gesaegt && sag < 0.5) {
+    if (mAll.kl > 0) _emgKette(ctx, _EMG_X1 + 6, _EMG_YM + 34, mAll.kl);
+  } else if (_emg.gesaegt && sag >= 0.5) {
+    const L = _emgMess(p => p.x < _EMG_CUTX);
+    const R = _emgMess(p => p.x >= _EMG_CUTX);
+    if (L.kl > 0) _emgKette(ctx, _EMG_CUTX - 8 - offs, _EMG_YM + 34, L.kl);
+    if (R.kl > 0) _emgKette(ctx, _EMG_X1 + 6 + offs, _EMG_YM + 34, R.kl);
+  }
+
+  ctx.restore();
+
+  // ── der streichende Magnet ──
+  if (_emg.streich) {
+    const u = Math.min(1, _emg.streich.u);
+    const mx = _emgMagnetX(u);
+    const my = 88 + 14 * Math.sin(Math.PI * u);
+    ctx.save();
+    ctx.translate(mx, my);
+    ctx.rotate(-0.22);
+    ctx.fillStyle = '#2e8b57'; ctx.fillRect(-36, -14, 36, 28);
+    ctx.fillStyle = '#c62828'; ctx.fillRect(0, -14, 36, 28);
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+    ctx.strokeRect(-36, -14, 72, 28);
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center';
+    ctx.fillText('S', -18, 5); ctx.fillText('N', 18, 5);
+    ctx.restore();
+    // Wirkungslinien vom Magnet zum Nagel
+    ctx.strokeStyle = 'rgba(59,130,246,0.55)'; ctx.lineWidth = 1.2;
+    for (let q = -1; q <= 1; q++) {
+      ctx.beginPath();
+      ctx.moveTo(mx + q * 12, my + 16);
+      ctx.quadraticCurveTo(mx + q * 16, (my + _EMG_YM - _EMG_H2) / 2, mx + q * 20, _EMG_YM - _EMG_H2 - 3);
+      ctx.stroke();
+    }
+    ctx.fillStyle = '#475569'; ctx.font = '10px system-ui'; ctx.textAlign = 'center';
+    ctx.fillText('immer in DIESELBE Richtung streichen', W / 2, 52);
+  }
+
+  // Beschriftung unten
+  ctx.fillStyle = '#64748b'; ctx.font = '10px system-ui';
+  ctx.textAlign = 'left'; ctx.fillText('Kopf', _EMG_X0 - 10 - offs, _EMG_YM + 48);
+  ctx.textAlign = 'right'; ctx.fillText('Spitze', _EMG_XS + offs, _EMG_YM + 48);
+  ctx.textAlign = 'left';
+  _emgPfeil(ctx, 18, H - 16, 0, true);
+  ctx.fillStyle = '#475569';
+  ctx.fillText('= ein Elementarmagnet (Pfeilspitze = Nordpol)', 30, H - 12);
+}
+
+// ── Aufbau der Oberflaeche ─────────────────────────────
+function _emgHTML() {
+  if (!_emg) _emgInit();
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🧲 Wie wird ein Eisennagel magnetisch – und wieder unmagnetisch?</h3>
+    <div class="fpm-note" style="margin-top:2px">Im Nagel stecken viele winzige <b>Elementarmagnete</b> (die kleinen Pfeile). Anfangs zeigen sie kreuz und quer – der Nagel ist unmagnetisch. Probiere alle vier Tasten aus und beobachte, was mit den Pfeilen und den Büroklammern passiert.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="emgAnim" width="440" height="330" class="phys-anim-cv"></canvas>
+        <div style="margin-top:6px">
+          <label class="fpm-label" for="emgStaerke">Streichwirkung: <b id="emgWertStaerke">30</b> % der ungeordneten Pfeile je Strich</label>
+          <input type="range" id="emgStaerke" min="10" max="60" value="30" step="5"
+                 oninput="_emgSet('staerke', this.value)" style="width:100%">
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="emgBtnStreich" onclick="_emgStreichen()">Mit Magnet streichen</button>
+          <button class="sim-btn" id="emgBtnHammer" onclick="_emgHammer()">Fallen lassen / Hämmern</button>
+          <button class="sim-btn" id="emgBtnHitze" onclick="_emgHitze()">Erhitzen</button>
+          <button class="sim-btn" id="emgBtnSaege" onclick="_emgSaege()">Nagel durchsägen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Nachgerechnet</div>
+        <div class="lmp-status" id="emgStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>Worauf es ankommt:</b> Magnetisieren heißt <u>ordnen</u>, nicht erschaffen: Die Elementarmagnete sind immer schon da. Streichen mit einem Magneten dreht sie nach und nach in dieselbe Richtung. Erschüttern und Erhitzen bringen die Ordnung durcheinander – deshalb verliert ein Magnet seine Kraft, wenn er herunterfällt oder heiß wird. Und beim Durchsägen entsteht <u>nie</u> ein einzelner Pol: Jedes Stück hat sofort wieder Nord- und Südpol.</div>
+        <div class="fpm-note" style="margin-top:8px"><b>Modellgrenze:</b> Echte Elementarmagnete sind unvorstellbar klein – in einem Nagel stecken nicht 64, sondern viele Billionen. Sie ordnen sich in ganzen Bezirken gemeinsam, und wie viele Büroklammern ein Nagel wirklich trägt, hängt auch von seiner Form und Größe ab. Die Stufen hier (eine Klammer je 16 %) sind eine vereinfachte Modellrechnung.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Magnetisieren heißt ordnen · Erschüttern und Erhitzen zerstören die Ordnung · Pole treten immer <b>paarweise</b> auf
+    </p>
+  </div>`;
+}
+// ═══════════════════════════════════════════════════════
+// FARBMISCHUNG SUBTRAKTIV – FARBEN WEGNEHMEN (CMYK) · Klasse 7
+// Drei Farbfilter (Cyan, Magenta, Gelb) liegen auf weißem Papier.
+// Jeder Filter schluckt genau eine Lichtfarbe: Cyan schluckt Rot,
+// Magenta schluckt Grün, Gelb schluckt Blau. Jede Teilfläche wird
+// kanalweise GERECHNET: aus Weiß (255,255,255) je Filter mit (1−a)
+// multiplizieren. Volle Deckkraft: C+M = Blau, C+Y = Grün,
+// M+Y = Rot, C+M+Y = Schwarz.
+// ═══════════════════════════════════════════════════════
+
+let _fms = null;
+
+const _FMS_ZYKLUS = 6.0;      // ein Lauf des Lichtpakets in Sekunden
+
+function _fmsInit() { _fms = { c: 100, m: 100, y: 100, t: 0 }; }
+
+// ── Die Rechnung: kanalweise multiplizieren ────────────
+// Farbe einer Teilfläche als [R, G, B]. mitC/mitM/mitY sagen, welche
+// Filter über der Fläche liegen. GENAU diese gerundeten Werte werden
+// gezeichnet UND in Status/Legende angezeigt – nie zweierlei Zahlen.
+function _fmsFarbe(mitC, mitM, mitY) {
+  let r = 255, g = 255, b = 255;
+  if (mitC) r = r * (1 - _fms.c / 100);   // Cyan schluckt Rot
+  if (mitM) g = g * (1 - _fms.m / 100);   // Magenta schluckt Grün
+  if (mitY) b = b * (1 - _fms.y / 100);   // Gelb schluckt Blau
+  return [Math.round(r), Math.round(g), Math.round(b)];
+}
+
+function _fmsCss(f) { return 'rgb(' + f[0] + ',' + f[1] + ',' + f[2] + ')'; }
+function _fmsRGB(f) { return 'R ' + f[0] + ' · G ' + f[1] + ' · B ' + f[2]; }
+
+// Farbname aus den berechneten Werten – gleiche Schwellen wie bei der
+// additiven Schwester-Simulation.
+function _fmsName(f) {
+  const hi = 180, lo = 90;
+  const R = f[0] > hi, G = f[1] > hi, B = f[2] > hi;
+  const r0 = f[0] < lo, g0 = f[1] < lo, b0 = f[2] < lo;
+  if (R && G && B) return 'Weiß';
+  if (r0 && g0 && b0) return 'Schwarz';
+  if (R && G && b0) return 'Gelb';
+  if (G && B && r0) return 'Cyan (Türkis)';
+  if (R && B && g0) return 'Magenta (Pink)';
+  if (R && g0 && b0) return 'Rot';
+  if (G && r0 && b0) return 'Grün';
+  if (B && r0 && g0) return 'Blau';
+  return 'Mischton';
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _fmsSet(k, v) {
+  if (!_fms) _fmsInit();
+  _fms[k] = +v;
+  const e = document.getElementById('fms' + k.toUpperCase() + 'Lbl');
+  if (e) e.textContent = _fpmNum(+v, 0);
+  _fmsStatus();
+}
+
+function _fmsPreset(c, m, y) {
+  if (!_fms) _fmsInit();
+  _fms.c = c; _fms.m = m; _fms.y = y;
+  [['C', c], ['M', m], ['Y', y]].forEach(p => {
+    const sl = document.getElementById('fms' + p[0]);
+    if (sl) sl.value = p[1];
+    const l = document.getElementById('fms' + p[0] + 'Lbl');
+    if (l) l.textContent = _fpmNum(p[1], 0);
+  });
+  _fmsStatus();
+}
+
+// ── Status + Legende ───────────────────────────────────
+function _fmsStatus() {
+  if (!_fms) return;
+  const alle = _fmsFarbe(true, true, true);
+  const el = document.getElementById('fmsStatus');
+  if (el) {
+    el.innerHTML = '🖨️ Fläche unter allen drei Filtern: <b>' + _fmsRGB(alle) + '</b> – ' + _fmsName(alle) + '.';
+    el.className = 'lmp-status on';
+  }
+  const lg = document.getElementById('fmsLegende');
+  if (lg) lg.innerHTML = _fmsLegendeHTML();
+}
+
+function _fmsLegendeHTML() {
+  const teile = [
+    ['Papier ohne Filter', _fmsFarbe(false, false, false)],
+    ['nur Cyan',           _fmsFarbe(true,  false, false)],
+    ['nur Magenta',        _fmsFarbe(false, true,  false)],
+    ['nur Gelb',           _fmsFarbe(false, false, true)],
+    ['Cyan + Magenta',     _fmsFarbe(true,  true,  false)],
+    ['Cyan + Gelb',        _fmsFarbe(true,  false, true)],
+    ['Magenta + Gelb',     _fmsFarbe(false, true,  true)],
+    ['alle drei',          _fmsFarbe(true,  true,  true)],
+  ];
+  return teile.map(z =>
+    '<div style="display:flex;align-items:center;gap:6px;margin-top:3px">' +
+    '<span style="flex:0 0 auto;width:15px;height:15px;border:1px solid #94a3b8;border-radius:3px;background:' + _fmsCss(z[1]) + '"></span>' +
+    '<span style="font-size:.85em">' + z[0] + ': <b>' + _fmsRGB(z[1]) + '</b> – ' + _fmsName(z[1]) + '</span></div>'
+  ).join('');
+}
+
+// ── Bewegung ───────────────────────────────────────────
+// Das Lichtpaket läuft immer wieder von der Lampe zum Auge.
+function _fmsUpdate(dt) {
+  if (!_fms) return;
+  _fms.t += dt;
+  while (_fms.t > _FMS_ZYKLUS) _fms.t -= _FMS_ZYKLUS;
+}
+
+// ── Das Bild ───────────────────────────────────────────
+function _fmsRR(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function _fmsKreis(ctx, k) { ctx.beginPath(); ctx.arc(k[0], k[1], k[2], 0, 2 * Math.PI); }
+
+function _fmsDraw(ctx, cv) {
+  if (!_fms) return;
+  const W = cv.width, H = cv.height;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  // Kopfzeile
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12.5px system-ui';
+  ctx.fillText('Weißes Papier – jeder Filter nimmt eine Lichtfarbe weg', W / 2, 16);
+  ctx.fillStyle = '#475569'; ctx.font = '10px system-ui';
+  ctx.fillText('Cyan schluckt Rot · Magenta schluckt Grün · Gelb schluckt Blau', W / 2, 31);
+
+  // Alle Teilflächen aus der EINEN Rechnung
+  const fC   = _fmsFarbe(true,  false, false);
+  const fM   = _fmsFarbe(false, true,  false);
+  const fY   = _fmsFarbe(false, false, true);
+  const fCM  = _fmsFarbe(true,  true,  false);
+  const fCY  = _fmsFarbe(true,  false, true);
+  const fMY  = _fmsFarbe(false, true,  true);
+  const fAll = _fmsFarbe(true,  true,  true);
+
+  // ── links: das Papier mit den drei Filterkreisen ──
+  const pX = 12, pY = 40, pW = 256, pH = 186;
+  ctx.fillStyle = '#ffffff';
+  _fmsRR(ctx, pX, pY, pW, pH, 8); ctx.fill();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.stroke();
+
+  const kC = [112, 118, 52], kM = [168, 118, 52], kY = [140, 166, 52];
+
+  // Malerprinzip: erst die Einzelflächen, dann die Zweier-Schnitte,
+  // zuletzt der Dreier-Schnitt – jede Fläche mit ihrer gerechneten Farbe.
+  ctx.save();
+  _fmsRR(ctx, pX, pY, pW, pH, 8); ctx.clip();
+  ctx.fillStyle = _fmsCss(fC); _fmsKreis(ctx, kC); ctx.fill();
+  ctx.fillStyle = _fmsCss(fM); _fmsKreis(ctx, kM); ctx.fill();
+  ctx.fillStyle = _fmsCss(fY); _fmsKreis(ctx, kY); ctx.fill();
+  const paare = [[kC, kM, fCM], [kC, kY, fCY], [kM, kY, fMY]];
+  for (const p of paare) {
+    ctx.save();
+    _fmsKreis(ctx, p[0]); ctx.clip();
+    _fmsKreis(ctx, p[1]); ctx.clip();
+    ctx.fillStyle = _fmsCss(p[2]);
+    ctx.fillRect(pX, pY, pW, pH);
+    ctx.restore();
+  }
+  ctx.save();
+  _fmsKreis(ctx, kC); ctx.clip();
+  _fmsKreis(ctx, kM); ctx.clip();
+  _fmsKreis(ctx, kY); ctx.clip();
+  ctx.fillStyle = _fmsCss(fAll);
+  ctx.fillRect(pX, pY, pW, pH);
+  ctx.restore();
+  // feine Ränder, damit man die Filter auch bei 0 % Deckkraft sieht
+  ctx.strokeStyle = 'rgba(100,116,139,0.5)'; ctx.lineWidth = 0.8;
+  _fmsKreis(ctx, kC); ctx.stroke();
+  _fmsKreis(ctx, kM); ctx.stroke();
+  _fmsKreis(ctx, kY); ctx.stroke();
+  ctx.restore();
+
+  // Beschriftung der Filter mit aktueller Deckkraft
+  ctx.font = 'bold 9px system-ui';
+  ctx.textAlign = 'left';  ctx.fillStyle = '#0e7490';
+  ctx.fillText('Cyan ' + _fpmNum(_fms.c, 0) + ' %', pX + 8, pY + 14);
+  ctx.textAlign = 'right'; ctx.fillStyle = '#a21caf';
+  ctx.fillText('Magenta ' + _fpmNum(_fms.m, 0) + ' %', pX + pW - 8, pY + 14);
+  ctx.textAlign = 'center'; ctx.fillStyle = '#a16207';
+  ctx.fillText('Gelb ' + _fpmNum(_fms.y, 0) + ' %', kY[0], pY + pH - 8);
+
+  // ── rechts: das Ergebnis unter allen drei Filtern ──
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#334155'; ctx.font = 'bold 9.5px system-ui';
+  ctx.fillText('Unter allen drei Filtern', 355, 58);
+  ctx.fillStyle = _fmsCss(fAll);
+  _fmsRR(ctx, 305, 66, 100, 54, 6); ctx.fill();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '9px system-ui';
+  ctx.fillText(_fmsRGB(fAll), 355, 134);
+  ctx.font = 'bold 9.5px system-ui';
+  ctx.fillText(_fmsName(fAll), 355, 147);
+  ctx.fillStyle = '#64748b'; ctx.font = '8.5px system-ui';
+  ctx.fillText('So druckt ein Drucker:', 355, 172);
+  ctx.fillText('C, M und Y als Tinten –', 355, 184);
+  ctx.fillText('dazu K (Schwarz), weil', 355, 196);
+  ctx.fillText('C+M+Y nur fast Schwarz gibt.', 355, 208);
+
+  // ── unten: das Lichtpaket von der Lampe zum Auge ──
+  const bX = 12, bY = 232, bW = 416, bH = 88;
+  ctx.fillStyle = '#0f172a';
+  _fmsRR(ctx, bX, bY, bW, bH, 8); ctx.fill();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8.5px system-ui'; ctx.textAlign = 'center';
+  ctx.fillText('Das Licht der Lampe trägt Rot, Grün und Blau – was bleibt nach den Filtern übrig?', bX + bW / 2, bY + 11);
+
+  // Lampe
+  ctx.fillStyle = '#fde68a';
+  ctx.beginPath(); ctx.arc(40, 272, 11, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.2;
+  for (let i = 0; i < 8; i++) {
+    const w = i * Math.PI / 4;
+    ctx.beginPath();
+    ctx.moveTo(40 + Math.cos(w) * 14, 272 + Math.sin(w) * 14);
+    ctx.lineTo(40 + Math.cos(w) * 18, 272 + Math.sin(w) * 18);
+    ctx.stroke();
+  }
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px system-ui';
+  ctx.fillText('Lampe', 40, 314);
+
+  // die drei Filterscheiben im Strahlengang
+  const scheiben = [[150, fC, 'C', _fms.c, '#67e8f9'], [215, fM, 'M', _fms.m, '#f0abfc'], [280, fY, 'Y', _fms.y, '#fde047']];
+  for (const s of scheiben) {
+    ctx.globalAlpha = 0.85;
+    ctx.fillStyle = _fmsCss(s[1]);
+    _fmsRR(ctx, s[0], 242, 20, 58, 3); ctx.fill();
+    ctx.globalAlpha = 1;
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 0.8; ctx.stroke();
+    ctx.fillStyle = s[4]; ctx.font = 'bold 8.5px system-ui';
+    ctx.fillText(s[2] + ' ' + _fpmNum(s[3], 0) + ' %', s[0] + 10, 314);
+  }
+
+  // das wandernde Lichtpaket: drei Bänder, die hinter den Filtern verblassen
+  const x0 = 62, x1 = 376;
+  const px = x0 + (x1 - x0) * (_fms.t / _FMS_ZYKLUS);
+  const durch = sx => Math.max(0, Math.min(1, (px - sx) / 20));
+  const ir = 255 * (1 - (_fms.c / 100) * durch(150));
+  const ig = 255 * (1 - (_fms.m / 100) * durch(215));
+  const ib = 255 * (1 - (_fms.y / 100) * durch(280));
+  const baender = [[ir, '255,60,60', 254], [ig, '70,220,90', 268], [ib, '90,130,255', 282]];
+  for (const bd of baender) {
+    const a = bd[0] / 255;
+    if (a < 0.03) continue;
+    ctx.fillStyle = 'rgba(' + bd[1] + ',' + a.toFixed(3) + ')';
+    _fmsRR(ctx, px - 30, bd[2], 30, 7, 3); ctx.fill();
+    ctx.beginPath(); ctx.arc(px, bd[2] + 3.5, 4.5, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  // Auge – die Iris zeigt die ankommende Farbe (= alle drei Filter)
+  ctx.fillStyle = '#f8fafc';
+  ctx.beginPath(); ctx.ellipse(400, 271, 16, 10, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1; ctx.stroke();
+  ctx.fillStyle = _fmsCss(fAll);
+  ctx.beginPath(); ctx.arc(400, 271, 6, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 0.8; ctx.stroke();
+  ctx.fillStyle = '#0f172a';
+  ctx.beginPath(); ctx.arc(400, 271, 2.4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px system-ui';
+  ctx.fillText('Auge', 400, 314);
+}
+
+// ── Aufbau ─────────────────────────────────────────────
+function _fmsHTML() {
+  if (!_fms) _fmsInit();
+  return `<div class="sim-box sim-box-wide fpm-sim fms-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🖨️ Farben wegnehmen – wie ein Drucker mischt</h3>
+    <div class="fpm-note" style="margin-top:2px">Drei Farbfilter liegen auf weißem Papier. Schiebe die Deckkraft der Filter und beobachte, welche Farben in den Überlappungen entstehen. Jede Teilfläche wird kanalweise nachgerechnet.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="fmsAnim" width="440" height="330" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_fmsPreset(100,100,100)">⬛ C+M+Y voll</button>
+          <button class="sim-btn" onclick="_fmsPreset(100,100,0)">🟦 Blau: C+M</button>
+          <button class="sim-btn" onclick="_fmsPreset(100,0,100)">🟩 Grün: C+Y</button>
+          <button class="sim-btn" onclick="_fmsPreset(0,100,100)">🟥 Rot: M+Y</button>
+          <button class="sim-btn" onclick="_fmsPreset(0,0,0)">⬜ ohne Filter</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl"><span class="phys-ctrl-label" style="color:#0e7490">Deckkraft Cyan (schluckt Rot): <b id="fmsCLbl">100</b> %</span>
+          <input type="range" id="fmsC" min="0" max="100" step="5" value="100" oninput="_fmsSet('c',this.value)" style="width:100%;accent-color:#06b6d4"></div>
+        <div class="phys-ctrl" style="margin-top:6px"><span class="phys-ctrl-label" style="color:#a21caf">Deckkraft Magenta (schluckt Grün): <b id="fmsMLbl">100</b> %</span>
+          <input type="range" id="fmsM" min="0" max="100" step="5" value="100" oninput="_fmsSet('m',this.value)" style="width:100%;accent-color:#d946ef"></div>
+        <div class="phys-ctrl" style="margin-top:6px"><span class="phys-ctrl-label" style="color:#a16207">Deckkraft Gelb (schluckt Blau): <b id="fmsYLbl">100</b> %</span>
+          <input type="range" id="fmsY" min="0" max="100" step="5" value="100" oninput="_fmsSet('y',this.value)" style="width:100%;accent-color:#eab308"></div>
+        <div class="lmp-status" id="fmsStatus" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:8px">Alle Teilflächen nachgerechnet</div>
+        <div id="fmsLegende" style="margin-top:4px"></div>
+        <div class="fpm-note" style="margin-top:8px"><b>Merke:</b> Ein Bildschirm mischt <b>additiv</b> (RGB): Er sendet Licht aus, und jede Lichtfarbe kommt dazu. Ein Drucker mischt <b>subtraktiv</b> (CMY): Tinte auf weißem Papier nimmt Licht weg. Deshalb haben die beiden ganz verschiedene Grundfarben.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Volle Deckkraft: <b>C + M = Blau</b> · <b>C + Y = Grün</b> · <b>M + Y = Rot</b> · <b>C + M + Y = Schwarz</b>
+    </p>
+  </div>`;
+}
+// ═══════════════════════════════════════════════════════
+// LUFTDRUCK UND HOEHE - Klasse 8, Gymnasium
+// Forscherfrage: Wie schnell wird die Luft nach oben duenner?
+//
+// Fachlicher Kern: barometrische Hoehenformel in isothermer Naeherung
+//   p(h) = 1013,25 hPa * exp(-h / 7990 m)
+// JEDE angezeigte Zahl kommt aus genau dieser Funktion _ldhP(h) -
+// die Marken im Bild, die Statuszeile, das Manometer und die Kurve.
+//
+// Nachgerechnete Bezugswerte (Python, dieselbe Formel):
+//   h =    0 m  ->  p = 1013,25 hPa  (Anzeige 1013)   100 %
+//   h = 2962 m  ->  p =  699,39 hPa  (Zugspitze)       69 %
+//   h = 4810 m  ->  p =  554,97 hPa  (Mont Blanc)      55 %
+//   h = 5538 m  ->  p =  506,64 hPa  (halber Druck)    50 %
+//   h = 9000 m  ->  p =  328,49 hPa                    32 %
+// Halbierungshoehe: 7990 m * ln 2 = 5538,2 m - der Druck halbiert sich
+// also je ~5,5 km. Der Abfall ist exponentiell, NICHT linear.
+//
+// Bewegung: Der Ballon schwebt zur eingestellten Hoehe (hA laeuft h nach),
+// die Teilchen der Luftsaeule schwirren, der Kurvenpunkt pulsiert.
+// ═══════════════════════════════════════════════════════
+let _ldh = null;
+
+const _LDH_P0   = 1013.25;  // Bodendruck in hPa (Normatmosphaere)
+const _LDH_H0   = 7990;     // Skalenhoehe in m (isotherme Naeherung)
+const _LDH_HMAX = 9000;     // Reglerbereich in m
+const _LDH_ZUG  = 2962;     // Zugspitze in m
+const _LDH_MB   = 4810;     // Mont Blanc in m
+
+// ── Physik: die eine Formel, aus der alles kommt ──────
+function _ldhP(h) { return _LDH_P0 * Math.exp(-h / _LDH_H0); }
+function _ldhHalb() { return Math.round(_LDH_H0 * Math.LN2); }   // 5538 m
+
+// ── Teilchen der Luftsaeule ───────────────────────────
+// Dichte der Punkte proportional zu p(h): Ziehung ueber die Umkehrfunktion
+// der Verteilung, mit festem Startwert - das Bild ist bei jedem Start gleich.
+function _ldhTeilchen() {
+  const arr = [];
+  let s = 987654321;
+  const rnd = () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
+  const cmax = 1 - Math.exp(-_LDH_HMAX / _LDH_H0);
+  for (let i = 0; i < 160; i++) {
+    arr.push({
+      h: -_LDH_H0 * Math.log(1 - rnd() * cmax),   // Hoehe, exponentiell verteilt
+      xf: rnd(),
+      ph: rnd() * 6.2832, ph2: rnd() * 6.2832,
+      sp: 0.6 + rnd() * 1.4,
+      amp: 1 + rnd() * 1.6
+    });
+  }
+  return arr;
+}
+
+function _ldhInit() {
+  _ldh = { h: _LDH_ZUG, hA: _LDH_ZUG, t: 0, pkt: _ldhTeilchen() };
+}
+
+// ── Stellfunktion ─────────────────────────────────────
+function _ldhSet(w, v) {
+  if (!_ldh) _ldhInit();
+  if (w === 'h') {
+    _ldh.h = Math.max(0, Math.min(_LDH_HMAX, +v));
+    const e = document.getElementById('ldhWertH');
+    if (e) e.textContent = _fpmNum(_ldh.h, 0);
+    const sl = document.getElementById('ldhH');
+    if (sl && +sl.value !== _ldh.h) sl.value = _ldh.h;
+  }
+  _ldhStatus();
+}
+
+// ── Bewegung ──────────────────────────────────────────
+function _ldhUpdate(dt) {
+  if (!_ldh) return;
+  _ldh.t += dt;
+  _ldh.hA += (_ldh.h - _ldh.hA) * Math.min(1, dt * 3);  // Ballon schwebt nach
+}
+
+// ── Die Rechnung (Statuszeile) ────────────────────────
+function _ldhStatus() {
+  const el = document.getElementById('ldhStatus');
+  if (!el || !_ldh) return;
+  const h = _ldh.h;
+  const p = _ldhP(h);
+  const p0 = _ldhP(0);
+  const proz = 100 * p / p0;
+  const hb = _ldhHalb();
+
+  let t = '<b>1 · Die Formel (isotherme Näherung)</b><br>';
+  t += `p(h) = ${_fpmNum(_LDH_P0, 2)} hPa · e<sup>−h / ${_fpmNum(_LDH_H0, 0)} m</sup><br><br>`;
+
+  t += '<b>2 · Eingesetzt für deine Höhe</b><br>';
+  t += `p(${_fpmNum(h, 0)} m) = ${_fpmNum(_LDH_P0, 2)} hPa · e<sup>−${_fpmNum(h, 0)} m / ${_fpmNum(_LDH_H0, 0)} m</sup><br>`;
+  t += `p = <b>${_fpmNum(p, 0)} hPa</b><br><br>`;
+
+  t += '<b>3 · Der Vergleich mit unten</b><br>';
+  t += `Das sind <b>${_fpmNum(proz, 0)} %</b> des Drucks auf Meereshöhe (${_fpmNum(p0, 0)} hPa).<br>`;
+  if (h < 10) {
+    t += 'Hier unten drückt die ganze Luftsäule – über jedem Quadratmeter lastet die gesamte Luft.<br>';
+  } else {
+    t += `Nur noch ${_fpmNum(proz, 0)} % der Luft liegen über dir – der Rest ist schon unter dir.<br>`;
+  }
+  t += '<br><b>4 · Merke</b><br>';
+  t += `Nach je etwa <b>${_fpmNum(_LDH_H0 * Math.LN2 / 1000, 1)} km</b> halbiert sich der Druck: `;
+  t += `von ${_fpmNum(p0, 0)} hPa auf ${_fpmNum(_ldhP(hb), 0)} hPa auf ${_fpmNum(_ldhP(2 * hb), 0)} hPa … `;
+  t += 'Der Abfall ist <b>nicht linear</b> – unten dicht, oben dünn.';
+  el.innerHTML = t;
+}
+
+// ── Zeichenhelfer ─────────────────────────────────────
+function _ldhRR(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+// ── Das Bild ──────────────────────────────────────────
+function _ldhDraw(ctx, cv) {
+  if (!_ldh) return;
+  const W = cv.width, H = cv.height;
+  const t = _ldh.t, hA = _ldh.hA;
+  const pA = _ldhP(hA);
+  const hb = _ldhHalb();
+
+  // Geometrie
+  const yB = 314, yT = 46;
+  const yOf = hh => yB - hh / _LDH_HMAX * (yB - yT);
+  const bx0 = 10, bx1 = 144;          // Bergprofil
+  const cx0 = 152, cx1 = 202;         // Luftsaeule
+  const gx = 324, gy = 112, gr = 54;  // Manometer
+  const px0 = 224, px1 = 430, py0 = 210, py1 = 306;  // Kurve
+  const yOfP = pp => py1 - pp / 1100 * (py1 - py0);
+  const xOfH = hh => px0 + hh / _LDH_HMAX * (px1 - px0);
+
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  // Kopfzeile
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12.5px system-ui';
+  ctx.fillText('Je höher du steigst, desto weniger Luft liegt über dir', W / 2, 16);
+  ctx.fillStyle = '#475569'; ctx.font = '10px system-ui';
+  ctx.fillText('p(h) = ' + _fpmNum(_LDH_P0, 2) + ' hPa · e^(−h / ' + _fpmNum(_LDH_H0, 0) + ' m)', W / 2, 31);
+
+  // ── Himmel hinter Berg und Luftsaeule ──
+  const himmel = ctx.createLinearGradient(0, yB, 0, yT);
+  himmel.addColorStop(0, '#d9ecff');
+  himmel.addColorStop(1, '#7fa7e0');
+  ctx.fillStyle = himmel; ctx.fillRect(bx0, yT, cx1 - bx0, yB - yT);
+
+  // ── Bergprofil ──
+  ctx.fillStyle = '#64748b';
+  ctx.beginPath();
+  ctx.moveTo(bx0, yB);
+  ctx.lineTo(30, yOf(900)); ctx.lineTo(44, yOf(600));
+  ctx.lineTo(62, yOf(_LDH_ZUG));                      // Zugspitze
+  ctx.lineTo(76, yOf(1200)); ctx.lineTo(88, yOf(1900));
+  ctx.lineTo(108, yOf(_LDH_MB));                      // Mont Blanc
+  ctx.lineTo(122, yOf(2200)); ctx.lineTo(134, yOf(700));
+  ctx.lineTo(bx1, yB);
+  ctx.closePath(); ctx.fill();
+  // Schneekappen
+  ctx.fillStyle = '#e2e8f0';
+  ctx.beginPath(); ctx.moveTo(56, yOf(2450)); ctx.lineTo(62, yOf(_LDH_ZUG)); ctx.lineTo(67, yOf(2400)); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(101, yOf(3900)); ctx.lineTo(108, yOf(_LDH_MB)); ctx.lineTo(114, yOf(4000)); ctx.closePath(); ctx.fill();
+  // Boden
+  ctx.fillStyle = '#65a30d'; ctx.fillRect(bx0, yB, cx1 - bx0, 5);
+
+  // ── Luftsaeule mit schwirrenden Teilchen ──
+  ctx.save();
+  ctx.beginPath(); ctx.rect(cx0, yT, cx1 - cx0, yB - yT); ctx.clip();
+  ctx.fillStyle = 'rgba(15,23,42,0.7)';
+  for (const pk of _ldh.pkt) {
+    const x = cx0 + 3 + pk.xf * (cx1 - cx0 - 6) + pk.amp * Math.sin(t * pk.sp + pk.ph);
+    const y = yOf(pk.h) + pk.amp * Math.cos(t * pk.sp * 0.8 + pk.ph2);
+    ctx.beginPath(); ctx.arc(x, y, 1.25, 0, 6.2832); ctx.fill();
+  }
+  ctx.restore();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.strokeRect(cx0 + 0.5, yT + 0.5, cx1 - cx0 - 1, yB - yT - 1);
+  _wrText(ctx, (cx0 + cx1) / 2, yT - 4, 'Luftsäule', { font: '8px system-ui', farbe: '#475569' });
+
+  // ── Marken: alles aus p(h) gerechnet ──
+  const marken = [
+    { h: _LDH_MB,  txt: 'Mont Blanc ' + _fpmNum(_LDH_MB, 0) + ' m · ' + _fpmNum(_ldhP(_LDH_MB), 0) + ' hPa' },
+    { h: _LDH_ZUG, txt: 'Zugspitze ' + _fpmNum(_LDH_ZUG, 0) + ' m · ' + _fpmNum(_ldhP(_LDH_ZUG), 0) + ' hPa' },
+    { h: hb,       txt: 'halber Druck ' + _fpmNum(hb, 0) + ' m · ' + _fpmNum(_ldhP(hb), 0) + ' hPa' }
+  ];
+  ctx.setLineDash([3, 3]); ctx.lineWidth = 1;
+  for (const mk of marken) {
+    const y = yOf(mk.h);
+    ctx.strokeStyle = 'rgba(15,23,42,0.45)';
+    ctx.beginPath(); ctx.moveTo(bx0 + 2, y); ctx.lineTo(cx1 - 2, y); ctx.stroke();
+    _wrText(ctx, bx0 + 4, y - 3, mk.txt, { font: '7.5px system-ui', align: 'left' });
+  }
+  ctx.setLineDash([]);
+  _wrText(ctx, bx0 + 4, yB - 3, 'Meereshöhe · ' + _fpmNum(_ldhP(0), 0) + ' hPa', { font: '7.5px system-ui', align: 'left' });
+
+  // ── Ballon auf aktueller Hoehe ──
+  const bxx = 130 + 3 * Math.sin(t * 0.7);
+  const byy = yOf(hA) - 1.5 * Math.sin(t * 1.9);
+  ctx.strokeStyle = '#78350f'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(bxx - 5, byy - 8); ctx.lineTo(bxx - 3, byy - 1); ctx.moveTo(bxx + 5, byy - 8); ctx.lineTo(bxx + 3, byy - 1); ctx.stroke();
+  ctx.fillStyle = '#f59e0b';
+  ctx.beginPath(); ctx.arc(bxx, byy - 15, 9, 0, 6.2832); ctx.fill();
+  ctx.fillStyle = '#dc2626';
+  ctx.beginPath(); ctx.arc(bxx, byy - 15, 9, Math.PI * 0.25, Math.PI * 0.75); ctx.lineTo(bxx, byy - 15); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#78350f'; ctx.fillRect(bxx - 3.5, byy - 2, 7, 5);
+  // Zeiger an der Luftsaeule
+  ctx.fillStyle = '#dc2626';
+  ctx.beginPath(); ctx.moveTo(cx1 + 7, yOf(hA)); ctx.lineTo(cx1 + 1, yOf(hA) - 4); ctx.lineTo(cx1 + 1, yOf(hA) + 4); ctx.closePath(); ctx.fill();
+
+  // ── Manometer ──
+  ctx.fillStyle = '#f1f5f9';
+  ctx.beginPath(); ctx.arc(gx, gy, gr, 0, 6.2832); ctx.fill();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.stroke();
+  const a0 = Math.PI * 0.75, spann = Math.PI * 1.5, pmax = 1100;
+  ctx.lineWidth = 1;
+  for (let v = 0; v <= pmax; v += 100) {
+    const wk = a0 + spann * v / pmax;
+    const gross = v % 200 === 0;
+    const r1 = gr - 4, r2 = gross ? gr - 12 : gr - 8;
+    ctx.strokeStyle = '#475569';
+    ctx.beginPath();
+    ctx.moveTo(gx + r1 * Math.cos(wk), gy + r1 * Math.sin(wk));
+    ctx.lineTo(gx + r2 * Math.cos(wk), gy + r2 * Math.sin(wk));
+    ctx.stroke();
+    if (gross) {
+      ctx.fillStyle = '#334155'; ctx.font = '6.5px system-ui'; ctx.textAlign = 'center';
+      ctx.fillText(String(v), gx + (gr - 20) * Math.cos(wk), gy + (gr - 20) * Math.sin(wk) + 2);
+    }
+  }
+  ctx.fillStyle = '#64748b'; ctx.font = '8px system-ui'; ctx.textAlign = 'center';
+  ctx.fillText('hPa', gx, gy - 14);
+  // Zeiger aus der Rechnung
+  const wz = a0 + spann * pA / pmax;
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(gx - 8 * Math.cos(wz), gy - 8 * Math.sin(wz));
+  ctx.lineTo(gx + (gr - 14) * Math.cos(wz), gy + (gr - 14) * Math.sin(wz)); ctx.stroke();
+  ctx.fillStyle = '#334155';
+  ctx.beginPath(); ctx.arc(gx, gy, 4, 0, 6.2832); ctx.fill();
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12px system-ui';
+  ctx.fillText(_fpmNum(pA, 0) + ' hPa', gx, gy + 30);
+  ctx.fillStyle = '#475569'; ctx.font = '9px system-ui';
+  ctx.fillText('in h = ' + _fpmNum(hA, 0) + ' m', gx, gy + gr + 14);
+
+  // ── Kurve p(h) ──
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(px0, py0 - 4); ctx.lineTo(px0, py1); ctx.lineTo(px1 + 4, py1); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = 'bold 8.5px system-ui'; ctx.textAlign = 'left';
+  ctx.fillText('p(h): erst steil, dann flach', px0, py0 - 8);
+  ctx.font = '7px system-ui'; ctx.fillStyle = '#64748b'; ctx.textAlign = 'center';
+  for (const km of [0, 3000, 6000, 9000]) ctx.fillText(String(km / 1000), xOfH(km), py1 + 9);
+  ctx.fillText('h in km', (px0 + px1) / 2, py1 + 18);
+  ctx.textAlign = 'right';
+  for (const pv of [0, 500, 1000]) ctx.fillText(String(pv), px0 - 3, yOfP(pv) + 2);
+  // Vergleich: so saehe linear aus (Anfangsgefaelle beibehalten)
+  ctx.setLineDash([2, 3]); ctx.strokeStyle = '#94a3b8';
+  ctx.beginPath(); ctx.moveTo(xOfH(0), yOfP(_ldhP(0))); ctx.lineTo(xOfH(_LDH_H0), yOfP(0)); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.textAlign = 'left'; ctx.fillStyle = '#94a3b8';
+  ctx.fillText('wäre es linear', xOfH(2300), yOfP(_ldhP(0) * (1 - 2300 / _LDH_H0)) - 5);
+  // die echte Kurve - Punkt fuer Punkt aus _ldhP
+  ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 1.8;
+  ctx.beginPath();
+  for (let i = 0; i <= 84; i++) {
+    const hh = i / 84 * _LDH_HMAX;
+    const x = xOfH(hh), y = yOfP(_ldhP(hh));
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  // Halbierungsmarke in der Kurve
+  ctx.setLineDash([3, 3]); ctx.strokeStyle = 'rgba(220,38,38,0.5)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(xOfH(hb), py1); ctx.lineTo(xOfH(hb), yOfP(_ldhP(hb))); ctx.lineTo(px0, yOfP(_ldhP(hb))); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#b91c1c'; ctx.font = '7px system-ui'; ctx.textAlign = 'left';
+  ctx.fillText('½ · ' + _fpmNum(_ldhP(hb), 0) + ' hPa', xOfH(hb) + 3, yOfP(_ldhP(hb)) + 8);
+  // aktueller Punkt wandert und pulsiert
+  const kx = xOfH(hA), ky = yOfP(pA);
+  ctx.fillStyle = '#dc2626';
+  ctx.beginPath(); ctx.arc(kx, ky, 3 + 1.1 * Math.sin(t * 3), 0, 6.2832); ctx.fill();
+}
+
+// ── Aufbau ────────────────────────────────────────────
+function _ldhHTML() {
+  if (!_ldh) _ldhInit();
+  const hb = _ldhHalb();
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🎈 Luftdruck und Höhe – wie schnell wird die Luft dünner?</h3>
+    <div class="fpm-note" style="margin-top:2px">Nimm den Ballon mit nach oben: Schiebe den Höhenregler und beobachte, wie Manometer, Luftsäule und Kurve reagieren. Die Marken an Bergen und Kurve sind mit derselben Formel gerechnet wie die Anzeige.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="ldhAnim" width="440" height="330" class="phys-anim-cv"></canvas>
+        <div style="margin-top:6px">
+          <label class="fpm-label" for="ldhH">Höhe h: <b id="ldhWertH">${_fpmNum(_ldh.h, 0)}</b> m</label>
+          <input type="range" id="ldhH" min="0" max="${_LDH_HMAX}" value="${_ldh.h}" step="10"
+                 oninput="_ldhSet('h', this.value)" style="width:100%">
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_ldhSet('h', 0)">Meereshöhe · 0 m</button>
+          <button class="sim-btn" onclick="_ldhSet('h', ${_LDH_ZUG})">Zugspitze · ${_LDH_ZUG} m</button>
+          <button class="sim-btn" onclick="_ldhSet('h', ${_LDH_MB})">Mont Blanc · ${_LDH_MB} m</button>
+          <button class="sim-btn" onclick="_ldhSet('h', ${hb})">halber Druck · ${hb} m</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Nachgerechnet</div>
+        <div class="lmp-status" id="ldhStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>Worauf es ankommt:</b> Der Luftdruck kommt vom Gewicht der Luft <u>über</u> dir. Steigst du, lässt du einen Teil der Luft unter dir – der Druck sinkt. Aber nicht gleichmäßig: Weil Luft zusammendrückbar ist, liegt unten die dichteste Luft. Darum fällt p anfangs steil und oben immer flacher – nach je etwa ${_fpmNum(_LDH_H0 * Math.LN2 / 1000, 1)} km nur noch die Hälfte.</div>
+        <div class="fpm-note" style="margin-top:8px"><b>Modellgrenze:</b> Gerechnet wird isotherm, also mit überall gleicher Temperatur. In Wirklichkeit wird es nach oben kälter, und das Wetter verschiebt den Bodendruck um einige hPa. Für Schulhöhen bis etwa 10 km stimmt die Näherung trotzdem gut – Wetterdienste rechnen mit feineren Formeln.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Pro etwa ${_fpmNum(_LDH_H0 * Math.LN2 / 1000, 1)} km halbiert sich der Druck · <b>exponentiell, nicht linear</b>
+    </p>
+  </div>`;
+}
+// ═══════════════════════════════════════════════════════
+// ELEKTROSKOP - WIE MACHT EIN ELEKTROSKOP LADUNG SICHTBAR?
+// Realschule NRW - Klasse 9 - Elektrizitaet / elektrische Ladung
+// Forscherfrage: Wie macht ein Elektroskop Ladung sichtbar?
+//
+// Fachlicher Kern: Ein negativ geriebener Kunststoffstab wird dem Teller
+// GENAEHERT (Influenz: Elektronen im Metall weichen nach unten aus, der Zeiger
+// spreizt sich, obwohl keine Ladung uebertragen wurde; Stab weg -> alles
+// zurueck), dann BERUEHRT (die Haelfte der Stabladung geht ueber, der
+// Ausschlag bleibt auch ohne Stab) und schliesslich GEERDET (die Elektronen
+// fliessen ueber den Finger ab, der Zeiger faellt auf 0).
+//
+// Modell in relativen Ladungseinheiten:
+//   Naehe-Faktor        k = ((30 - d) : 28)²        (d = Abstand in cm, 2..30)
+//   Influenz-Anteil     I = q_Stab · k              (auf 0,1 gerundet)
+//   wirksame Ladung     Q = q_Elektroskop + I       (auf 0,1 gerundet)
+//   Zeigerwinkel        α = 70° · Q : (Q + 30)      (auf 0,1° gerundet)
+// Der Zeiger laeuft gedaempft schwingend auf α zu; die Ladungsverteilung im
+// Bild folgt einer geglaetteten Groesse qAnim, waehrend sie sich aendert,
+// wandern Minuspunkte sichtbar den Stab hinauf oder hinunter.
+//
+// Nachgerechnete Bezugswerte:
+//   Stab 60, Abstand  2 cm, unberuehrt: k = 1,000 -> Q = 60,0 -> α = 46,7°
+//   Stab 60, Abstand 16 cm, unberuehrt: k = 0,250 -> Q = 15,0 -> α = 23,3°
+//   Stab 40, Abstand 12 cm, unberuehrt: k = 0,413 -> Q = 16,5 -> α = 24,8°
+//   Stab 80, beruehrt (Uebertrag 40), Stab weit weg: Q = 40,0 -> α = 40,0°
+//   geerdet: Q = 0 -> α = 0,0°
+// ═══════════════════════════════════════════════════════
+let _esk = null;
+
+const _ESK_DMIN = 2;       // kleinster Abstand Stab-Teller in cm
+const _ESK_DMAX = 30;      // groesster Abstand - hier wirkt der Stab nicht mehr
+const _ESK_AMAX = 70;      // Vollausschlag des Zeigers in Grad
+const _ESK_Q0 = 30;        // Formkonstante der Winkelformel in Einheiten
+const _ESK_STABNEU = 80;   // Ladung eines frisch geriebenen Stabs
+
+function _eskInit() {
+  _esk = { q: 60, d: 30, qE: 0, w: 0, wv: 0, qAnim: 0, t: 0, akt: null };
+}
+
+// ── Rechenhelfer ───────────────────────────────────────
+// Es wird IMMER erst gerundet und dann mit dem gerundeten Wert weitergerechnet:
+// jede angezeigte Zahl ist exakt die Zahl, mit der auch der Zeiger rechnet.
+function _eskR1(v) { return Math.round(v * 10) / 10; }
+function _eskR3(v) { return Math.round(v * 1000) / 1000; }
+function _eskK() {
+  const r = (_ESK_DMAX - _esk.d) / (_ESK_DMAX - _ESK_DMIN);
+  const k = Math.max(0, Math.min(1, r));
+  return _eskR3(k * k);
+}
+function _eskInfl() { return _eskR1(_esk.q * _eskK()); }
+function _eskQwirk() { return _eskR1(_esk.qE + _eskInfl()); }
+function _eskAlpha() {
+  const Q = _eskQwirk();
+  return Q > 0 ? _eskR1(_ESK_AMAX * Q / (Q + _ESK_Q0)) : 0;
+}
+
+// ── Stellfunktionen ────────────────────────────────────
+function _eskSync() {
+  const sq = document.getElementById('eskQ');
+  if (sq) sq.value = _esk.q;
+  const lq = document.getElementById('eskWertQ');
+  if (lq) lq.textContent = _fpmNum(_esk.q, 0);
+  const sd = document.getElementById('eskD');
+  if (sd) sd.value = _esk.d;
+  const ld = document.getElementById('eskWertD');
+  if (ld) ld.textContent = _fpmNum(_esk.d, 0);
+}
+
+function _eskSet(w, v) {
+  if (!_esk) _eskInit();
+  if (w === 'q') _esk.q = Math.max(0, Math.min(100, Math.round(+v)));
+  if (w === 'd') _esk.d = Math.max(_ESK_DMIN, Math.min(_ESK_DMAX, Math.round(+v)));
+  _eskSync();
+  _eskStatus();
+}
+
+// Sprungmarke: Stabladung, Abstand und Elektroskop-Ladung auf einmal setzen.
+function _eskMarke(q, d, qE) {
+  if (!_esk) _eskInit();
+  _esk.q = Math.max(0, Math.min(100, Math.round(+q)));
+  _esk.d = Math.max(_ESK_DMIN, Math.min(_ESK_DMAX, Math.round(+d)));
+  _esk.qE = Math.max(0, Math.round(+qE));
+  _esk.akt = null;
+  _eskSync();
+  _eskStatus();
+}
+
+// Beruehren: die Haelfte der Stabladung geht aufs Elektroskop ueber.
+// Die Buchfuehrung passiert sofort, nur das Bild spielt den Weg des Stabs nach.
+function _eskBeruehren() {
+  if (!_esk) _eskInit();
+  const ueber = Math.round(_esk.q / 2);
+  _esk.qE += ueber;
+  _esk.q -= ueber;
+  _esk.akt = { art: 'tippen', t0: _esk.t, dauer: 1.6 };
+  _eskSync();
+  _eskStatus();
+}
+
+// Erden: Finger an den Teller, alle ueberschuessigen Elektronen fliessen ab.
+function _eskErden() {
+  if (!_esk) _eskInit();
+  _esk.akt = { art: 'erden', t0: _esk.t, dauer: 1.4,
+               dots: Math.max(2, Math.min(5, Math.round(_eskQwirk() / 12))) };
+  _esk.qE = 0;
+  _eskStatus();
+}
+
+function _eskNeuerStab() {
+  if (!_esk) _eskInit();
+  _esk.q = _ESK_STABNEU;
+  _esk.akt = { art: 'reiben', t0: _esk.t, dauer: 1.0 };
+  _eskSync();
+  _eskStatus();
+}
+
+// ── Bewegung ───────────────────────────────────────────
+// Der Zeiger ist ein gedaempft schwingender Drehpendel-Zeiger: er ueberschwingt
+// ein wenig und pendelt sich dann GENAU auf den berechneten Winkel ein.
+function _eskUpdate(dt) {
+  if (!_esk) return;
+  _esk.t += dt;
+  const ziel = _eskAlpha();
+  _esk.wv += ((ziel - _esk.w) * 34 - _esk.wv * 8) * dt;
+  _esk.w += _esk.wv * dt;
+  if (_esk.w < 0) { _esk.w = 0; _esk.wv *= -0.4; }
+  if (Math.abs(_esk.w - ziel) < 0.05 && Math.abs(_esk.wv) < 0.12) {
+    _esk.w = ziel; _esk.wv = 0;
+  }
+  const Q = _eskQwirk();
+  _esk.qAnim += (Q - _esk.qAnim) * Math.min(1, 2.5 * dt);
+  if (Math.abs(_esk.qAnim - Q) < 0.05) _esk.qAnim = Q;
+}
+
+// ── Die Rechnung ───────────────────────────────────────
+function _eskStatus() {
+  const el = document.getElementById('eskStatus');
+  if (!el || !_esk) return;
+  const q = _esk.q, d = _esk.d, qE = _esk.qE;
+  const k = _eskK(), I = _eskInfl(), Q = _eskQwirk(), a = _eskAlpha();
+
+  let t = '<b>1 · Wie stark wirkt der Stab herüber?</b><br>';
+  t += `Stab: ${_fpmNum(q, 0)} Einheiten (negativ) · Abstand: ${_fpmNum(d, 0)} cm<br>`;
+  t += `Nähe-Faktor: k = ((30 − ${_fpmNum(d, 0)}) : 28)² = ${_fpmNum(k, 3)}<br>`;
+  t += `Influenz-Anteil: ${_fpmNum(q, 0)} · ${_fpmNum(k, 3)} = <b>${_fpmNum(I, 1)} Einheiten</b><br><br>`;
+
+  t += '<b>2 · Ladung, die den Zeiger spreizt</b><br>';
+  t += 'Q = Ladung des Elektroskops + Influenz-Anteil<br>';
+  t += `Q = ${_fpmNum(qE, 0)} + ${_fpmNum(I, 1)} = <b>${_fpmNum(Q, 1)} Einheiten</b><br><br>`;
+
+  t += '<b>3 · Der Zeigerwinkel</b><br>';
+  t += 'α = 70° · Q : (Q + 30)<br>';
+  t += `α = 70° · ${_fpmNum(Q, 1)} : ${_fpmNum(Q + 30, 1)} = <b>${_fpmNum(a, 1)}°</b><br><br>`;
+
+  t += `Ladung auf dem Elektroskop: <b>${_fpmNum(qE, 0)} Einheiten</b> · `;
+  t += `der Zeiger pendelt sich auf <b>${_fpmNum(a, 1)}°</b> ein.<br>`;
+  if (qE === 0 && I > 0) {
+    t += '<i>Ausschlag ganz ohne Berührung – das ist Influenz. Nimm den Stab weg, und der Zeiger fällt zurück auf 0°.</i>';
+  } else if (qE > 0 && I === 0) {
+    t += '<i>Der Stab ist weit weg, der Ausschlag bleibt: Diese Ladung sitzt jetzt wirklich auf dem Elektroskop.</i>';
+  } else if (qE === 0 && I === 0) {
+    t += '<i>Alles neutral – der Zeiger hängt senkrecht.</i>';
+  } else {
+    t += '<i>Eigene Ladung und Influenz wirken hier zusammen auf den Zeiger.</i>';
+  }
+  el.innerHTML = t;
+}
+
+// ── Das Bild ───────────────────────────────────────────
+function _eskMinus(ctx, x, y) {
+  ctx.fillStyle = '#1d4ed8';
+  ctx.beginPath(); ctx.arc(x, y, 4.5, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(x - 2.3, y); ctx.lineTo(x + 2.3, y); ctx.stroke();
+}
+function _eskPlus(ctx, x, y) {
+  ctx.fillStyle = '#dc2626';
+  ctx.beginPath(); ctx.arc(x, y, 4.5, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(x - 2.3, y); ctx.lineTo(x + 2.3, y);
+  ctx.moveTo(x, y - 2.3); ctx.lineTo(x, y + 2.3); ctx.stroke();
+}
+
+function _eskDraw(ctx, cv) {
+  if (!_esk) return;
+  const W = cv.width, H = cv.height, t = _esk.t;
+  const q = _esk.q, d = _esk.d, qE = _esk.qE;
+  const I = _eskInfl(), Q = _eskQwirk();
+  const wr = _esk.w * Math.PI / 180;
+
+  ctx.fillStyle = '#f1f5f9'; ctx.fillRect(0, 0, W, H);
+
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
+  ctx.fillText('Gleichnamige Ladungen stoßen sich ab – der Zeiger spreizt sich', W / 2, 16);
+
+  // laufende Aktion (Beruehren / Erden / Reiben)
+  let akt = _esk.akt, u = -1;
+  if (akt) {
+    u = (t - akt.t0) / akt.dauer;
+    if (u >= 1 || u < 0) { _esk.akt = null; akt = null; u = -1; }
+  }
+
+  // sichtbarer Abstand des Stabs (beim Beruehren faehrt er kurz an den Teller)
+  let dVis = d, kontakt = false;
+  if (akt && akt.art === 'tippen') {
+    if (u < 0.35) dVis = d * (1 - u / 0.35);
+    else if (u < 0.7) { dVis = 0; kontakt = true; }
+    else dVis = d * ((u - 0.7) / 0.3);
+  }
+
+  const cx = 152, cy = 212, r = 92;      // Gehaeuse
+  const pvx = 152, pvy = 200, L = 66;    // Zeiger: Drehpunkt und Laenge
+  const plY = 70, plL = 100, plR = 204;  // Teller
+
+  // Fuss und Gehaeusering
+  ctx.fillStyle = '#475569'; ctx.fillRect(cx - 40, cy + r, 80, 10);
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.fillStyle = '#ffffff'; ctx.fill();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 6; ctx.stroke();
+
+  // Skala
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  for (let g = 0; g <= 70; g += 10) {
+    const s = Math.sin(g * Math.PI / 180), c = Math.cos(g * Math.PI / 180);
+    ctx.beginPath();
+    ctx.moveTo(pvx + 74 * s, pvy + 74 * c);
+    ctx.lineTo(pvx + 82 * s, pvy + 82 * c); ctx.stroke();
+  }
+  ctx.fillStyle = '#94a3b8'; ctx.font = '8px system-ui'; ctx.textAlign = 'center';
+  for (const g of [0, 35, 70]) {
+    const s = Math.sin(g * Math.PI / 180), c = Math.cos(g * Math.PI / 180);
+    ctx.fillText(g + '°', pvx + 90 * s, pvy + 90 * c + 3);
+  }
+
+  // Nulllage gestrichelt
+  ctx.setLineDash([3, 3]); ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(pvx, pvy); ctx.lineTo(pvx, pvy + L); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Stiel, Isolierstopfen, Teller, innerer Stab
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.moveTo(152, plY + 2); ctx.lineTo(152, pvy - 4); ctx.stroke();
+  ctx.fillStyle = '#b45309'; ctx.fillRect(144, cy - r - 7, 16, 14);
+  ctx.fillStyle = '#94a3b8'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  ctx.fillRect(plL, plY - 5, plR - plL, 9); ctx.strokeRect(plL, plY - 5, plR - plL, 9);
+
+  // Zeiger
+  ctx.strokeStyle = '#b91c1c'; ctx.lineWidth = 3.5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(pvx, pvy);
+  ctx.lineTo(pvx + L * Math.sin(wr), pvy + L * Math.cos(wr)); ctx.stroke();
+  ctx.lineCap = 'butt';
+  ctx.fillStyle = '#0f172a';
+  ctx.beginPath(); ctx.arc(pvx, pvy, 4, 0, Math.PI * 2); ctx.fill();
+
+  // Ladungsbild unten: Minuspunkte auf Stab und Zeiger, sie zittern leicht
+  const nB = Math.min(12, Math.round(_esk.qAnim / 8));
+  for (let i = 0; i < nB; i++) {
+    const jx = Math.sin(t * 2.2 + i * 2.1) * 1.4, jy = Math.cos(t * 1.9 + i) * 1.2;
+    let x, y;
+    if (i % 2 === 0) {
+      const j = i >> 1;
+      x = 152 + (j % 2 ? 9 : -9); y = 186 - j * 12;
+    } else {
+      const j = i >> 1, f = 0.30 + j * 0.11;
+      x = pvx + Math.sin(wr) * L * f + Math.cos(wr) * 8;
+      y = pvy + Math.cos(wr) * L * f - Math.sin(wr) * 8;
+    }
+    _eskMinus(ctx, x + jx, y + jy);
+  }
+
+  // Teller: bei Influenz fehlen oben Elektronen (+), nach Beruehrung sitzen dort welche (−)
+  const pNet = qE * 0.5 - I;
+  if (pNet <= -3) {
+    const nP = Math.min(8, Math.round(-pNet / 12) + 1);
+    for (let i = 0; i < nP; i++) {
+      const x = 112 + i * (80 / Math.max(1, nP - 1));
+      _eskPlus(ctx, x + Math.sin(t * 2.4 + i) * 1.2, plY - 12);
+    }
+  } else if (pNet >= 3) {
+    const nM = Math.min(8, Math.round(pNet / 12) + 1);
+    for (let i = 0; i < nM; i++) {
+      const x = 112 + i * (80 / Math.max(1, nM - 1));
+      _eskMinus(ctx, x + Math.sin(t * 2.4 + i) * 1.2, plY - 12);
+    }
+  }
+
+  // Waehrend sich die wirksame Ladung aendert, wandern Elektronen sichtbar
+  // den inneren Stab entlang (nach unten beim Aufbau, nach oben beim Abbau).
+  const dq = Q - _esk.qAnim;
+  if (Math.abs(dq) > 1.5) {
+    for (let i = 0; i < 3; i++) {
+      const p = (t * 1.2 + i / 3) % 1;
+      const y = dq > 0 ? 124 + 68 * p : 192 - 68 * p;
+      _eskMinus(ctx, 152 + Math.sin(t * 6 + i) * 2, y);
+    }
+  }
+
+  // Der geriebene Kunststoffstab rechts
+  const dpx = 3.6 * Math.max(0, dVis);
+  const tx = 206 + dpx, ty = 66;
+  const ux = 0.971, uy = -0.24;
+  const rx = tx + 118 * ux, ry = ty + 118 * uy;
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = '#92400e'; ctx.lineWidth = 15;
+  ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(rx, ry); ctx.stroke();
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 11;
+  ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(rx, ry); ctx.stroke();
+  ctx.lineCap = 'butt';
+  const nS = Math.max(0, Math.min(10, Math.round(q / 10)));
+  for (let i = 0; i < nS; i++) {
+    const s = 12 + i * 10.5;
+    _eskMinus(ctx, tx + ux * s, ty + uy * s + Math.sin(t * 2.5 + i * 1.7) * 1.2);
+  }
+  ctx.fillStyle = '#64748b'; ctx.font = '9px system-ui'; ctx.textAlign = 'center';
+  ctx.fillText('Kunststoffstab (−)', (tx + rx) / 2, Math.min(ty, ry) - 12);
+
+  // Beruehrung: Elektronen springen vom Stab auf den Teller
+  if (kontakt) {
+    for (let i = 0; i < 3; i++) {
+      const p = (t * 1.6 + i / 3) % 1;
+      const ax = tx + ux * 46, ay = ty + uy * 46;
+      _eskMinus(ctx, ax + (plR - 2 - ax) * p, ay + (plY - 2 - ay) * p);
+    }
+  }
+
+  // Erden: eine Hand beruehrt den Teller, die Elektronen fliessen hinauf und ab
+  if (akt && akt.art === 'erden') {
+    let fx;
+    if (u < 0.25) fx = -10 + (u / 0.25) * 106;
+    else if (u < 0.8) fx = 96;
+    else fx = 96 - ((u - 0.8) / 0.2) * 106;
+    ctx.fillStyle = '#fbbf24'; ctx.strokeStyle = '#b45309'; ctx.lineWidth = 1.5;
+    ctx.fillRect(fx - 120, 56, 120, 24); ctx.strokeRect(fx - 120, 56, 120, 24);
+    ctx.beginPath(); ctx.arc(fx, 68, 12, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    if (u >= 0.2 && u < 0.85) {
+      const n = akt.dots || 4;
+      for (let i = 0; i < n; i++) {
+        const p = (t * 1.5 + i / n) % 1;
+        let x, y;
+        if (p < 0.7) { const s = p / 0.7; x = 152; y = 192 - 116 * s; }
+        else { const s = (p - 0.7) / 0.3; x = 152 - 44 * s; y = 76 - 8 * s; }
+        _eskMinus(ctx, x, y);
+      }
+    }
+    ctx.fillStyle = '#475569'; ctx.font = '9px system-ui'; ctx.textAlign = 'left';
+    ctx.fillText('zur Erde …', 6, 96);
+  }
+
+  // Neuen Stab reiben: ein Wolltuch fahrt sichtbar am Stab entlang
+  if (akt && akt.art === 'reiben') {
+    const s = 55 + 30 * Math.sin(t * 14);
+    const mx = tx + ux * s, my = ty + uy * s;
+    ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+    ctx.fillRect(mx - 14, my - 12, 28, 24); ctx.strokeRect(mx - 14, my - 12, 28, 24);
+    ctx.fillStyle = '#475569'; ctx.font = '9px system-ui'; ctx.textAlign = 'center';
+    ctx.fillText('Wolltuch', mx, my - 17);
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5;
+    for (let i = 0; i < 3; i++) {
+      if (Math.sin(t * 18 + i * 2.6) > 0) {
+        const px = tx + ux * (20 + i * 34), py = ty + uy * (20 + i * 34) - 14;
+        ctx.beginPath();
+        ctx.moveTo(px - 4, py); ctx.lineTo(px + 4, py);
+        ctx.moveTo(px, py - 4); ctx.lineTo(px, py + 4); ctx.stroke();
+      }
+    }
+  }
+
+  // Beschriftung
+  ctx.fillStyle = '#64748b'; ctx.font = '9px system-ui';
+  ctx.textAlign = 'right'; ctx.fillText('Teller', plL - 8, plY + 2);
+  ctx.textAlign = 'left'; ctx.fillText('Zeiger', pvx + 52, pvy + L + 14);
+
+  // Ablesekasten
+  ctx.fillStyle = 'rgba(15,23,42,0.82)'; ctx.fillRect(300, 232, 134, 66);
+  ctx.fillStyle = '#fff'; ctx.font = 'bold 10px system-ui'; ctx.textAlign = 'left';
+  ctx.fillText('Stab: ' + _fpmNum(q, 0) + ' Einh. (−)', 308, 248);
+  ctx.fillText('Abstand: ' + _fpmNum(d, 0) + ' cm', 308, 262);
+  ctx.fillText('Elektroskop: ' + _fpmNum(qE, 0) + ' Einh.', 308, 276);
+  ctx.fillStyle = '#7dd3fc'; ctx.font = '10px system-ui';
+  ctx.fillText(I > 0 ? 'Influenz wirkt' : 'keine Influenz', 308, 291);
+
+  // Fusszeile: der Zeiger laeuft live auf den berechneten Winkel zu
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+  ctx.fillText('Zeiger: ' + _fpmNum(_esk.w, 1) + '°  ·  wirksame Ladung am Zeiger: ' +
+               _fpmNum(_esk.qAnim, 1) + ' Einheiten', W / 2, 326);
+}
+
+// ── Oberflaeche ────────────────────────────────────────
+function _eskHTML() {
+  if (!_esk) _eskInit();
+  return `<div class="sim-box sim-box-wide fpm-sim esk-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">⚡ Wie macht ein Elektroskop Ladung sichtbar?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein geriebener Kunststoffstab trägt zu viele Elektronen. Schiebe ihn an den Teller heran – erst ohne Berührung, dann mit. Beobachte den Zeiger und die Ladungssymbole.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="eskAnim" width="440" height="330" class="phys-anim-cv"></canvas>
+        <div style="margin-top:6px">
+          <label class="fpm-label" for="eskQ">Ladung auf dem Stab: <b id="eskWertQ">${_fpmNum(_esk.q, 0)}</b> Einheiten (negativ)</label>
+          <input type="range" id="eskQ" min="0" max="100" value="${_esk.q}" step="1"
+                 oninput="_eskSet('q', this.value)" style="width:100%">
+        </div>
+        <div style="margin-top:6px">
+          <label class="fpm-label" for="eskD">Abstand Stab – Teller: <b id="eskWertD">${_fpmNum(_esk.d, 0)}</b> cm (30 cm = weit weg)</label>
+          <input type="range" id="eskD" min="2" max="30" value="${_esk.d}" step="1"
+                 oninput="_eskSet('d', this.value)" style="width:100%">
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_eskBeruehren()">Teller berühren</button>
+          <button class="sim-btn" onclick="_eskErden()">Erden – Finger an den Teller</button>
+          <button class="sim-btn" onclick="_eskNeuerStab()">Neuen Stab reiben</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_eskMarke(60, 4, 0)">Nur nähern – Influenz</button>
+          <button class="sim-btn" onclick="_eskMarke(40, 30, 40)">Berührt, Stab wieder weg</button>
+          <button class="sim-btn" onclick="_eskMarke(80, 2, 0)">Volle Ladung, ganz nah</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Nachgerechnet</div>
+        <div class="lmp-status" id="eskStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>Worauf es ankommt:</b> Beim bloßen Nähern wird keine Ladung übertragen. Die frei beweglichen Elektronen im Metall weichen vor dem negativen Stab nach unten aus (<b>Influenz</b>): unten sitzen zu viele, oben am Teller fehlen welche. Stab und Zeiger unten sind beide negativ und stoßen sich ab. Nimmst du den Stab weg, verteilen sich die Elektronen wieder – der Ausschlag verschwindet. Erst die <b>Berührung</b> lädt das Elektroskop dauerhaft: Dann bleibt der Zeiger auch ohne Stab gespreizt, bis du erdest.</div>
+        <div class="fpm-note" style="margin-top:8px"><b>Modellgrenze:</b> Die Ladung wird in relativen Einheiten gezählt, nicht in Coulomb, und die Winkelformel α = 70° · Q : (Q + 30) ist ein einfaches Modell des echten, nicht linearen Ausschlags. Beim Berühren geht hier immer genau die Hälfte der Stabladung über. Das Umladen durch Influenz (erden, solange der Stab nah ist, dann erst den Finger, dann den Stab wegnehmen) kann dieses Modell nicht: Nach dem Erden ist das Elektroskop hier immer neutral. Auch das langsame Entladen über feuchte Luft fehlt.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Nähern zeigt Ladung nur an – erst <b>Berühren</b> lädt das Elektroskop wirklich auf</p>
+  </div>`;
+}
+// ═══════════════════════════════════════════════════════
+// LORENTZKRAFT - GELADENE TEILCHEN IM MAGNETFELD (Klasse 10)
+// Ein Teilchen fliegt von links in ein homogenes B-Feld (senkrecht zur
+// Zeichenebene). Im Feld: Kreisbahn mit r = m·v : (|q|·B). Gerechnet wird in
+// relativen Einheiten mit m = 1 und |q| = 1, also r = v : B.
+// ═══════════════════════════════════════════════════════
+let _loz = null;
+
+const _LOZ_K = 34;        // Pixel je relativer Einheit des Bahnradius
+const _LOZ_VPX = 20;      // Pixel je Sekunde und Geschwindigkeitseinheit
+const _LOZ_GRENZE = 64;   // x-Wert der Feldgrenze im Bild
+const _LOZ_START_X = 8;   // Startpunkt des Einschusses
+const _LOZ_YM = 183;      // Hoehe der Einschusslinie
+const _LOZ_SPUR = 1.3;    // Lebensdauer der Leuchtspur in Sekunden
+
+function _lozInit() {
+  _loz = {
+    v: 5, B: 5, q: 1, feld: 1,      // feld: +1 = heraus (Punkte), -1 = hinein (Kreuze)
+    phase: 'gerade', x: _LOZ_START_X, y: _LOZ_YM, theta: 0,
+    zeit: 0, spur: []
+  };
+}
+
+// ── kleine Rechenhelfer ────────────────────────────────
+function _lozR() { return _loz.v / _loz.B; }                    // r = m·v/(|q|·B) mit m=1, |q|=1
+function _lozRpx() { return _LOZ_K * _lozR(); }
+function _lozSense() { return _loz.q * _loz.feld; }             // +1: im Uhrzeigersinn (Bildschirm)
+function _lozMitte() {
+  const s = _lozSense();
+  return { x: _LOZ_GRENZE, y: _LOZ_YM + s * _lozRpx() };
+}
+
+// Nach jeder Verstellung beginnt der Einschuss von vorn - so sieht man sofort,
+// wie die neue Bahn aussieht.
+function _lozNeustart() {
+  _loz.phase = 'gerade';
+  _loz.x = _LOZ_START_X;
+  _loz.y = _LOZ_YM;
+  _loz.spur = [];
+}
+
+// ── Stellfunktionen ────────────────────────────────────
+function _lozSet(w, wert) {
+  if (!_loz) _lozInit();
+  if (w === 'v') {
+    _loz.v = +wert;
+    const e = document.getElementById('lozWertV');
+    if (e) e.textContent = _fpmNum(_loz.v, 0);
+    const sl = document.getElementById('lozV');
+    if (sl && +sl.value !== _loz.v) sl.value = _loz.v;
+  } else if (w === 'B') {
+    _loz.B = +wert;
+    const e = document.getElementById('lozWertB');
+    if (e) e.textContent = _fpmNum(_loz.B, 0);
+    const sl = document.getElementById('lozB');
+    if (sl && +sl.value !== _loz.B) sl.value = _loz.B;
+  }
+  _lozNeustart();
+  _lozStatus();
+}
+
+function _lozQ(s) {
+  if (!_loz) _lozInit();
+  _loz.q = s > 0 ? 1 : -1;
+  _lozKnoepfe();
+  _lozNeustart();
+  _lozStatus();
+}
+
+function _lozFeld(s) {
+  if (!_loz) _lozInit();
+  _loz.feld = s > 0 ? 1 : -1;
+  _lozKnoepfe();
+  _lozNeustart();
+  _lozStatus();
+}
+
+// Sprungmarke: alles auf einmal einstellen.
+function _lozMarke(v, B, q, feld) {
+  if (!_loz) _lozInit();
+  _loz.q = q; _loz.feld = feld;
+  _lozKnoepfe();
+  _lozSet('v', v);
+  _lozSet('B', B);
+}
+
+function _lozKnoepfe() {
+  const setz = (id, an) => {
+    const b = document.getElementById(id);
+    if (b) b.className = 'sim-btn' + (an ? ' primary' : '');
+  };
+  setz('lozQplus', _loz.q > 0);
+  setz('lozQminus', _loz.q < 0);
+  setz('lozFheraus', _loz.feld > 0);
+  setz('lozFhinein', _loz.feld < 0);
+}
+
+// ── Bewegung ───────────────────────────────────────────
+function _lozUpdate(dt) {
+  if (!_loz) return;
+  _loz.zeit += dt;
+
+  // Leuchtspur altern lassen
+  for (const p of _loz.spur) p.alter += dt;
+  while (_loz.spur.length && _loz.spur[0].alter > _LOZ_SPUR) _loz.spur.shift();
+
+  const vpx = _LOZ_VPX * _loz.v;
+  if (_loz.phase === 'gerade') {
+    // vor der Feldgrenze: kraeftefrei, also geradeaus
+    _loz.x += vpx * dt;
+    if (_loz.x >= _LOZ_GRENZE) {
+      _loz.x = _LOZ_GRENZE;
+      _loz.y = _LOZ_YM;
+      _loz.phase = 'kreis';
+      _loz.theta = -_lozSense() * Math.PI / 2;   // Startwinkel um die Kreismitte
+    }
+  } else if (_loz.phase === 'kreis') {
+    // im Feld: Kreisbahn um M, Winkelgeschwindigkeit v/r, Drehsinn aus q·B-Richtung
+    const rpx = _lozRpx();
+    const M = _lozMitte();
+    const s = _lozSense();
+    _loz.theta += s * (vpx / rpx) * dt;
+    if (s * _loz.theta >= Math.PI / 2) {
+      // Halbkreis geschafft: das Teilchen tritt wieder ueber die Feldgrenze.
+      // Links davon gibt es kein Feld, also auch keine Lorentzkraft mehr -
+      // ab hier geht es kraeftefrei geradeaus nach links.
+      _loz.phase = 'raus';
+      _loz.x = _LOZ_GRENZE;
+      _loz.y = _LOZ_YM + s * 2 * rpx;
+    } else {
+      _loz.x = M.x + rpx * Math.cos(_loz.theta);
+      _loz.y = M.y + rpx * Math.sin(_loz.theta);
+    }
+  } else {
+    // feldfreier Rueckweg nach dem Halbkreis: geradeaus nach links
+    _loz.x -= vpx * dt;
+  }
+  // verlaesst das Teilchen das Bild, beginnt der Einschuss von vorn
+  if (_loz.x < -30 || _loz.x > 470 || _loz.y < -30 || _loz.y > 360) {
+    _loz.phase = 'gerade';
+    _loz.x = _LOZ_START_X;
+    _loz.y = _LOZ_YM;
+  }
+  _loz.spur.push({ x: _loz.x, y: _loz.y, alter: 0 });
+}
+
+// ── Die Rechnung ───────────────────────────────────────
+function _lozStatus() {
+  const el = document.getElementById('lozStatus');
+  if (!el || !_loz) return;
+  const r = _lozR();
+  const sinn = _lozSense() > 0 ? 'im Uhrzeigersinn' : 'gegen den Uhrzeigersinn';
+  const qTxt = _loz.q > 0 ? 'positiv (+)' : 'negativ (−)';
+  const fTxt = _loz.feld > 0 ? 'heraus (⊙)' : 'hinein (✕)';
+
+  let t = '<b>1 · Der Bahnradius</b><br>';
+  t += 'r = m · v : (|q| · B)<br>';
+  t += `r = 1 · ${_fpmNum(_loz.v, 0)} : (1 · ${_fpmNum(_loz.B, 0)})<br>`;
+  t += `r = <b>${_fpmNum(r, 2)}</b> (relative Einheiten)<br><br>`;
+
+  t += '<b>2 · Der Umlaufsinn</b><br>';
+  t += `Ladung ${qTxt}, Feld ${fTxt}: Die Lorentzkraft zieht das Teilchen ständig zur Kreismitte M – `;
+  t += `die Bahn läuft <b>${sinn}</b>.<br><br>`;
+
+  t += '<b>3 · Auf einen Blick</b><br>';
+  t += `v = ${_fpmNum(_loz.v, 0)} · B = ${_fpmNum(_loz.B, 0)} · Ladung: ${qTxt} · Feld: ${fTxt} · `;
+  t += `r = ${_fpmNum(r, 2)} · Umlauf: ${sinn}`;
+  el.innerHTML = t;
+}
+
+// ── Das Bild ───────────────────────────────────────────
+function _lozPfeil(ctx, x1, y1, x2, y2, farbe, dicke) {
+  const dx = x2 - x1, dy = y2 - y1;
+  const l = Math.hypot(dx, dy);
+  if (l < 1) return;
+  const ux = dx / l, uy = dy / l;
+  ctx.strokeStyle = farbe; ctx.fillStyle = farbe; ctx.lineWidth = dicke;
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2 - 7 * ux, y2 - 7 * uy);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - 8 * ux - 3.5 * uy, y2 - 8 * uy + 3.5 * ux);
+  ctx.lineTo(x2 - 8 * ux + 3.5 * uy, y2 - 8 * uy - 3.5 * ux);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function _lozRund(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function _lozDraw(ctx, cv) {
+  if (!_loz) return;
+  const W = cv.width, H = cv.height;
+  const rpx = _lozRpx();
+  const M = _lozMitte();
+  const s = _lozSense();
+  const farbe = _loz.q > 0 ? '#dc2626' : '#2563eb';
+
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  // Kopfzeile
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12.5px system-ui';
+  ctx.fillText('Kreisbahn im Magnetfeld', W / 2, 16);
+  ctx.fillStyle = '#475569'; ctx.font = '10px system-ui';
+  ctx.fillText('Die Lorentzkraft F steht immer senkrecht auf v – sie lenkt nur ab, macht aber nicht schneller.', W / 2, 31);
+
+  // feldfreier Streifen links
+  ctx.fillStyle = '#eef2f6';
+  ctx.fillRect(0, 40, _LOZ_GRENZE, H - 40);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.setLineDash([4, 4]);
+  ctx.beginPath(); ctx.moveTo(_LOZ_GRENZE, 42); ctx.lineTo(_LOZ_GRENZE, H - 6); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#64748b'; ctx.font = '8px system-ui'; ctx.textAlign = 'center';
+  ctx.fillText('ohne', _LOZ_GRENZE / 2, 52);
+  ctx.fillText('Feld', _LOZ_GRENZE / 2, 62);
+
+  // Feldsymbole: Punkte = heraus, Kreuze = hinein
+  ctx.strokeStyle = '#b6c2d1'; ctx.fillStyle = '#b6c2d1'; ctx.lineWidth = 1.1;
+  for (let gx = _LOZ_GRENZE + 26; gx < W - 10; gx += 36) {
+    for (let gy = 56; gy < H - 12; gy += 36) {
+      ctx.beginPath(); ctx.arc(gx, gy, 4.5, 0, 2 * Math.PI); ctx.stroke();
+      if (_loz.feld > 0) {
+        ctx.beginPath(); ctx.arc(gx, gy, 1.4, 0, 2 * Math.PI); ctx.fill();
+      } else {
+        ctx.beginPath();
+        ctx.moveTo(gx - 2.8, gy - 2.8); ctx.lineTo(gx + 2.8, gy + 2.8);
+        ctx.moveTo(gx + 2.8, gy - 2.8); ctx.lineTo(gx - 2.8, gy + 2.8);
+        ctx.stroke();
+      }
+    }
+  }
+
+  // vorausberechnete Kreisbahn (gestrichelt) samt Mittelpunkt M und Radiuslinie
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.setLineDash([5, 5]);
+  ctx.beginPath(); ctx.arc(M.x, M.y, rpx, 0, 2 * Math.PI); ctx.stroke();
+  ctx.setLineDash([]);
+  if (M.y > 46 && M.y < H - 8) {
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.moveTo(M.x - 5, M.y); ctx.lineTo(M.x + 5, M.y);
+    ctx.moveTo(M.x, M.y - 5); ctx.lineTo(M.x, M.y + 5);
+    ctx.stroke();
+    ctx.fillStyle = '#475569'; ctx.font = 'bold 9px system-ui'; ctx.textAlign = 'left';
+    ctx.fillText('M', M.x + 7, M.y + 3);
+  }
+  if (_loz.phase === 'kreis' && M.y > 46 && M.y < H - 8) {
+    ctx.strokeStyle = 'rgba(100,116,139,0.7)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(M.x, M.y); ctx.lineTo(_loz.x, _loz.y); ctx.stroke();
+    ctx.fillStyle = '#475569'; ctx.font = 'italic 9px system-ui'; ctx.textAlign = 'center';
+    ctx.fillText('r', (M.x + _loz.x) / 2 + 6, (M.y + _loz.y) / 2 - 4);
+  }
+
+  // Einschusslinie
+  ctx.strokeStyle = 'rgba(148,163,184,0.6)'; ctx.lineWidth = 1;
+  ctx.setLineDash([2, 4]);
+  ctx.beginPath(); ctx.moveTo(2, _LOZ_YM); ctx.lineTo(_LOZ_GRENZE, _LOZ_YM); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Leuchtspur: je juenger, desto kraeftiger und dicker
+  for (const p of _loz.spur) {
+    const a = Math.max(0, 1 - p.alter / _LOZ_SPUR);
+    ctx.fillStyle = (_loz.q > 0 ? 'rgba(220,38,38,' : 'rgba(37,99,235,') + (0.45 * a) + ')';
+    ctx.beginPath(); ctx.arc(p.x, p.y, 1.2 + 2.6 * a, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  // Geschwindigkeitspfeil (tangential)
+  let tx, ty;
+  if (_loz.phase === 'gerade') { tx = 1; ty = 0; }
+  else if (_loz.phase === 'raus') { tx = -1; ty = 0; }
+  else { tx = -s * Math.sin(_loz.theta); ty = s * Math.cos(_loz.theta); }
+  const vl = 10 + 3.2 * _loz.v;
+  _lozPfeil(ctx, _loz.x, _loz.y, _loz.x + vl * tx, _loz.y + vl * ty, '#d97706', 2);
+  ctx.fillStyle = '#b45309'; ctx.font = 'bold 10px system-ui'; ctx.textAlign = 'center';
+  ctx.fillText('v', _loz.x + (vl + 10) * tx, _loz.y + (vl + 10) * ty + 3);
+
+  // Kraftpfeil: im Feld stets zur Kreismitte, Laenge waechst mit v·B
+  if (_loz.phase === 'kreis') {
+    const dx = M.x - _loz.x, dy = M.y - _loz.y;
+    const dl = Math.hypot(dx, dy) || 1;
+    const fl = 14 + 46 * (_loz.v * _loz.B) / 100;
+    _lozPfeil(ctx, _loz.x, _loz.y, _loz.x + fl * dx / dl, _loz.y + fl * dy / dl, '#16a34a', 2.4);
+    ctx.fillStyle = '#15803d'; ctx.font = 'bold 10px system-ui'; ctx.textAlign = 'center';
+    ctx.fillText('F', _loz.x + (fl + 11) * dx / dl, _loz.y + (fl + 11) * dy / dl + 3);
+  }
+
+  // das Teilchen selbst, mit pulsierendem Leuchten und Ladungszeichen
+  const puls = 9 + 1.8 * Math.sin(6 * _loz.zeit);
+  ctx.fillStyle = (_loz.q > 0 ? 'rgba(220,38,38,0.20)' : 'rgba(37,99,235,0.20)');
+  ctx.beginPath(); ctx.arc(_loz.x, _loz.y, puls, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = farbe;
+  ctx.beginPath(); ctx.arc(_loz.x, _loz.y, 6.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#ffffff'; ctx.font = 'bold 10px system-ui'; ctx.textAlign = 'center';
+  ctx.fillText(_loz.q > 0 ? '+' : '−', _loz.x, _loz.y + 3.5);
+
+  // Ablesekasten rechts oben - alle Zahlen stammen aus derselben Rechnung
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  _lozRund(ctx, W - 152, 44, 144, 60, 6); ctx.fill();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.stroke();
+  ctx.textAlign = 'left'; ctx.font = '9px system-ui'; ctx.fillStyle = '#334155';
+  ctx.fillText('Feld: ' + (_loz.feld > 0 ? 'heraus ⊙' : 'hinein ✕'), W - 144, 58);
+  ctx.fillText('Ladung: ' + (_loz.q > 0 ? 'positiv (+)' : 'negativ (−)'), W - 144, 72);
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 10px system-ui';
+  ctx.fillText('r = ' + _fpmNum(_lozR(), 2) + ' (rel. Einh.)', W - 144, 90);
+
+  // Fusszeile im Bild
+  ctx.fillStyle = '#64748b'; ctx.font = '9px system-ui'; ctx.textAlign = 'center';
+  ctx.fillText('F ⊥ v: Die Kraft ändert nur die Richtung – darum ist die Bahn ein Kreis.', W / 2, H - 8);
+}
+
+// ── Aufbau der Oberfläche ──────────────────────────────
+function _lozHTML() {
+  if (!_loz) _lozInit();
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🧲 Die Lorentzkraft – geladene Teilchen im Magnetfeld</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein geladenes Teilchen fliegt von links in ein homogenes Magnetfeld. Punkte ⊙ heißen: Das Feld zeigt aus dem Bildschirm heraus. Kreuze ✕ heißen: Das Feld zeigt hinein. Stelle v und B ein, wähle Ladung und Feldrichtung – und beobachte Bahn und Kraftpfeil.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="lozAnim" width="440" height="330" class="phys-anim-cv"></canvas>
+        <div style="margin-top:6px">
+          <label class="fpm-label" for="lozV">Geschwindigkeit v: <b id="lozWertV">5</b> (relative Einheiten)</label>
+          <input type="range" id="lozV" min="1" max="10" value="5" step="1"
+                 oninput="_lozSet('v', this.value)" style="width:100%">
+        </div>
+        <div style="margin-top:6px">
+          <label class="fpm-label" for="lozB">Feldstärke B: <b id="lozWertB">5</b> (relative Einheiten)</label>
+          <input type="range" id="lozB" min="1" max="10" value="5" step="1"
+                 oninput="_lozSet('B', this.value)" style="width:100%">
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="lozQplus" onclick="_lozQ(1)">Ladung + (positiv)</button>
+          <button class="sim-btn" id="lozQminus" onclick="_lozQ(-1)">Ladung − (negativ)</button>
+          <button class="sim-btn primary" id="lozFheraus" onclick="_lozFeld(1)">Feld ⊙ heraus</button>
+          <button class="sim-btn" id="lozFhinein" onclick="_lozFeld(-1)">Feld ✕ hinein</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_lozMarke(5, 5, 1, 1)">Start · v = 5, B = 5</button>
+          <button class="sim-btn" onclick="_lozMarke(2, 8, 1, 1)">Enge Kurve · v = 2, B = 8</button>
+          <button class="sim-btn" onclick="_lozMarke(9, 1, 1, 1)">Weite Bahn · v = 9, B = 1</button>
+          <button class="sim-btn" onclick="_lozMarke(5, 5, -1, 1)">Elektron · negativ, Feld ⊙</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Nachgerechnet</div>
+        <div class="lmp-status" id="lozStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>Merkregel – die Drei-Finger-Regel (rechte Hand, für positive Ladung):</b> Spreize Daumen, Zeigefinger und Mittelfinger senkrecht zueinander. Der Daumen zeigt in die Bewegungsrichtung der Ladung, der Zeigefinger in die Richtung des Magnetfelds – dann zeigt der Mittelfinger in die Richtung der Lorentzkraft. Für eine negative Ladung nimmst du die linke Hand: Die Kraft zeigt genau andersherum, darum dreht auch der Kreis andersherum.</div>
+        <div class="fpm-note" style="margin-top:8px"><b>Worauf es ankommt:</b> Verdoppelst du v, verdoppelt sich r – schnelle Teilchen fliegen weite Bögen. Verdoppelst du B, halbiert sich r – ein starkes Feld zwingt auf enge Kreise. Wechselst du das Vorzeichen der Ladung <u>oder</u> die Feldrichtung, dreht der Umlaufsinn um. Wechselst du beides zugleich, bleibt der Umlaufsinn gleich.</div>
+        <div class="fpm-note" style="margin-top:8px"><b>Modellgrenze:</b> Gerechnet wird in relativen Einheiten mit m = 1 und |q| = 1; die Formel r = m·v : (|q|·B) gilt aber allgemein. Das Feld ist homogen, die Bewegung liegt genau in der Zeichenebene, Reibung und Abstrahlung fehlen. Und weil die Lorentzkraft immer senkrecht zur Bewegung steht, ändert sie nur die Richtung, nie den Betrag von v.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      Die Lorentzkraft steht senkrecht auf v und B · Kreisbahn mit <b>r = m·v : (|q|·B)</b>
+    </p>
+  </div>`;
 }

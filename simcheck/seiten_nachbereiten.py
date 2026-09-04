@@ -43,7 +43,13 @@ def streuen(seiten, kapitel_von):
     return getauscht
 
 
+KLASSE = None   # None = Regel ab Klasse 7 (42-59 Woerter); 5 = Erprobungsstufe (34-52)
+
 def main():
+    global KLASSE
+    for a in list(sys.argv[1:]):
+        if a.startswith('--klasse='):
+            KLASSE = int(a.split('=')[1]); sys.argv.remove(a)
     quelle, planpfad = sys.argv[1], sys.argv[2]
     seiten = json.load(open(quelle, encoding='utf-8'))
     if isinstance(seiten, dict):
@@ -71,7 +77,7 @@ def main():
 
     fehler = []
     for s in seiten:
-        fehler += [f"{t[0]}: [{t[1]}] {t[2]}" for t in formregeln.pruefe_seite(s)]
+        fehler += [f"{t[0]}: [{t[1]}] {t[2]}" for t in formregeln.pruefe_seite(s, klasse=KLASSE)]
     fehler += [f"{t[0]}: [{t[1]}] {t[2]}" for t in
                formregeln.pruefe_verteilung(seiten, plan.KAPITEL_VON)]
     print(f'{len(fehler)} Beanstandungen der Formregeln')

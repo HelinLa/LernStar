@@ -1,0 +1,1627 @@
+
+════════ PDF-SEITE 1 ════════
+Kernlehrplan 
+für die Sekundarstufe I 
+Gymnasium 
+in Nordrhein-Westfalen 
+Physik 
+Die Online-Fassung des Kernlehrplans, ein Umsetzungsbeispiel für einen schuleigenen Lehrplan sowie weitere 
+Unterstützungsmaterialien können unter www.lehrplannavigator.nrw.de abgerufen werden. 
+  
+
+════════ PDF-SEITE 2 ════════
+Herausgeber:  
+Ministerium für Schule und Bildung  
+des Landes Nordrhein-Westfalen 
+ Völklinger Straße 49, 40221 Düsseldorf 
+Telefon 0211-5867-40 
+Telefax 02011-5867-3220 
+poststelle@schulministerium.nrw.de 
+www.schulministerium.nrw.de 
+Heft 3411 
+1. Auflage 2019 
+
+════════ PDF-SEITE 3 ════════
+Vorwort 
+Die Lehrpläne und Richtlinien bilden die Basis für den Auftrag der Schule, 
+Schülerinnen und Schüler erfolgreich zur Teilhabe und zur selbstbestimmten 
+Gestaltung ihrer Zukunft zu befähigen. Der gesellschaftliche und technologische 
+Wandel sowie die Weiterentwicklung der Fächer erfordern, die Bildungsziele und 
+Bildungsinhalte immer wieder zeitgemäß zu fassen. Rund zehn Jahre nach der 
+letzten Lehrplanrevision liegen anlässlich der Einführung des neuen G9 nun 
+Neufassungen der Kernlehrpläne für die Sekundarstufe I des Gymnasium s vor. Sie 
+tragen der Neuregelung der Dauer des Bildungsgangs im Gymnasium Rechnung 
+und bilden die curriculare Grundlage für eine fortschrittliche gymnasiale Bildung.  
+Im Gymnasium  haben Fachlichkeit und Wissenschaftspropädeutik einen 
+besonderen Stellenwert. Die neuen Kernlehrpläne stärken und schärfen diesen 
+gymnasialen Bildungsauftrag, indem obligatorische Wissensbestände, Fähigkeiten 
+und Fertigkeiten konkreter und klarer als bislang ausgewiesen werden. Mit Blick 
+auf die Bildung in einer zunehm end digitalen Welt greifen die Kernlehrpläne aller 
+Fächer daher auch die Ziele des Medienkom petenzrahmens NRW fachlich auf. 
+Mit diesen Kernlehrplänen und dem Medienkompetenzrahmen NRW ist somit die 
+verbindliche Grundlage dafür geschaffen, dass das Lernen und Leben mit 
+digitalen Medien zur Selbstverständlichkeit im Unterricht aller Fächer wird und alle 
+Fächer ihren spezifischen Beitrag zur Entwicklung der geforderten Kompetenzen 
+liefern. 
+Kernlehrpläne setzen landesweite Standards. Sie konzentrieren sich auf die im 
+Bildungsgang von den Schülerinnen und Schülern zu erwartenden Lernergebnisse, 
+die Wissen und Können gleichermaßen umfassen. Die Festlegung von Wegen zu 
+deren Erreichung legen die Kernlehrpläne in die Hände der Verantwortlichen vor 
+Ort. Auf Schulebene müssen die curricularen Vorgaben in schulinternen 
+Lehrplänen konkretisiert werden. In ihnen verschränken sich Vorgaben des 
+Kernlehrplanes m
+it den konkreten Rahmenbedingungen der Schule, den 
+Lernvoraussetzungen und Lernmöglichkeiten der Schülerinnen und Schüler sowie 
+mit der Einbindung außerschulischer Partner und Lernorte. In diesem Rahmen 
+geben die schulinternen Lehrpläne zudem Auskunft über Vorstellungen und 
+Entscheidungen der Schule für das Lernen in einer digitalisierten Welt.  
+
+════════ PDF-SEITE 4 ════════
+Zur Unterstützung der Schulen bei dieser wichtigen Aufgabe werden von der 
+Qualitäts- und UnterstützungsAgentur – Landesinstitut für Schule NRW Beispiele 
+für schulinterne Lehrpläne sowie weitere Unterstützungsangebote bereitgestellt. 
+ 
+Ich danke allen, die an der Entwicklung der Kernlehrpläne mitgewirkt haben und 
+insbesondere all denjenigen, die sie in den Schulen umsetzen. Und dies sind vor 
+allem
+ die Lehrerinnen und Lehrer, die sich tagtäglich verantwortungsvoll unseren 
+Kindern und Jugendlichen widmen. 
+Yvonne Gebauer 
+Ministerin für Schule und Bildung 
+des Landes Nordrhein-Westfalen 
+
+
+════════ PDF-SEITE 5 ════════
+Auszug aus dem Amtsblatt 
+des Ministeriums für Schule und Bildung 
+des Landes Nordrhein-Westfalen 
+Nr. 07-08/19 
+Sekundarstufe l - Gymnasium;  
+Richtlinien und Lehrpläne;  
+17 Kernlehrpläne für die Pflichtfächer 
+RdErl. d. Ministeriums für Schule und Bildung  
+v. 23.06.2019 - 526-6.03.13.02-143664 
+Für die Sekundarstufe l der Gymnasien werden hiermit Kernlehrpläne gemäß § 29 SchulG 
+(BASS 1-1) festgesetzt. 
+Sie treten zum 01.08.2019 für die Klassen 5 und 6 aufsteigend in Kraft. 
+Die Richtlinien für das Gymnasium in der Sekundarstufe I, RdErl. d. KM v. 08.02.1993 
+(GABI. NW. 1 S. 62) veröffentlicht online unter: https://www.schulentwicklung.nrw.de/ gelten 
+unverändert fort. 
+Die Veröffentlichung der Kernlehrpläne erfolgt in der Schriftenreihe „Schule in NRW“. 
+Heft-Nr. Fach Bezeichnung
+3413 Biologie Kernlehrplan 
+3415 Chemie Kernlehrplan 
+3409 Deutsch Kernlehrplan 
+3417 Englisch Kernlehrplan 
+3414 Evangelische Religionslehre Kernlehrplan 
+3408 Erdkunde Kernlehrplan 
+3410 Französisch Kernlehrplan 
+3407 Geschichte Kernlehrplan 
+3403 Katholische Religionslehre Kernlehrplan 
+3405 Kunst Kernlehrplan 
+3402 Latein Kernlehrplan 
+3401 Mathematik Kernlehrplan 
+3406 Musik Kernlehrplan 
+3411 Physik Kernlehrplan 
+3416 Spanisch Kernlehrplan 
+3426 Sport Kernlehrplan 
+3429 Wirtschaft-Politik Kernlehrplan 
+Die übersandten Hefte sind in die Schulbibliothek einzustellen und dort auch für die Mitwir-
+kungsberechtigten zur Einsichtnahme bzw. zur Ausleihe verfügbar zu halten. 
+Zum 31.07.2022 treten die nachstehenden Unterrichtsvorgaben für die Sekundarstufe l au-
+ßer Kraft: 
+(BASS 15-25) Gymnasium bis Klasse 9 (G8 - verkürzt), Nr. 01 Kapitel Lehrpläne und Heft-
+nummern 3401 bis 3411, 3413 bis 3420, 3426, 3429, 3430, 3432, 3434, 3435; 
+(BASS 15-25) Gymnasium bis Klasse 10 (G9 - unverkürzt), Nr. 01 Kapitel Lehrpläne und  
+Nr. 03. 
+
+════════ PDF-SEITE 6 ════════
+Inhalt 
+ Seite 
+Vorbemerkungen: Kernlehrpläne als kompetenzorientierte    
+Unterrichtsvorgaben 7 
+1 Aufgaben und Ziele des Faches 8
+2 Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 12 
+2.1 Kompetenzbereiche und Inhaltsfelder des Faches 14
+2.2 Kompetenzerwartungen und inhaltliche Schwerpunkte bis zum Ende der 
+Erprobungsstufe 20 
+2.3 Kompetenzerwartungen und inhaltliche Schwerpunkte bis zum Ende der 
+Sekundarstufe I 30
+
+3 Lernerfolgsüberprüfung und Leistungsbewertung 46
+
+════════ PDF-SEITE 7 ════════
+  7 
+Vorbemerkungen: Kernlehrpläne als kompetenzorientierte    
+Unterrichtsvorgaben  
+Kernlehrpläne leisten einen wichtigen Beitrag zur Sicherung des Anspruchsniveaus 
+an der Einzelschule sowie im ganzen Land und schaffen notwendige Voraussetzun-
+gen für die Vergleichbarkeit von Lernergebnissen. 
+Kernlehrpläne 
+• bieten allen an Schule Beteiligten Orient ierung über die Au fgaben und Ziele der 
+Fächer, 
+• geben eine curriculare Stufung vor und legen fest, welche fachbezogenen Kompe-
+tenzen einschließlich zugrundeliegender Wissensbestände Schülerinnen und 
+Schüler am Ende der Stufen erworben haben sollen, 
+• stellen eine landesweite Obligatorik strukturiert in fachspezifische Inhalte und da-
+rauf bezogene fachliche Kompetenzen dar,  
+• sind Grundlage für die Überprüfung von Lernergebnissen und Leistungsständen, 
+• fokussieren auf überprüfbares fachliches Wissen und Können. Aussagen zu all-
+gemeinen, fächerübergreifend relevanten Bildungs- und Erziehungszielen werden 
+im Wesentlichen außerhalb der Kernlehrpläne, u.a. in Richtlinien und Rahmenvor-
+gaben getroffen. Sie sind neben den fachspezifischen Vorgaben der Kernlehrplä-
+ne bei der Entwicklung von schuleigenen Vorgaben und bei der Gestaltung des 
+Unterrichts zu berücksichtigen. 
+• bilden die curriculare Grundlage für die Entwicklung schuleigener Unterrichtsvor-
+gaben beziehungsweise schulinterner Lehrpläne (§ 29 sowie § 70 SchulG NRW). 
+Da sich Kernlehrpläne auf zentrale fachliche Fertigkeiten und Wissensbestände 
+beschränken, erhalten Schulen die Möglichkeit, aber auch die Aufgabe, gegebene 
+Freiräume schul- und lerngruppenbezogen auszugestalten. In Verbindung mit dem 
+Schulprogramm erfolgen Schwerpunktsetzungen im Unterricht in inhaltlicher, di-
+daktischer und methodischer Hinsicht. 
+
+════════ PDF-SEITE 8 ════════
+8 
+1 Aufgaben und Ziele des Faches 
+Gegenstand der naturwissenschaftlichen Fächer ist die empirisch erfassbare, in for-
+malen Strukturen beschreibbare und durch Technik gestaltbare Wirklichkeit sowie die 
+Verfahrens- und Erkenntnisweisen, die ihrer Erschließung und Gestaltung dienen. 
+Naturwissenschaften und Technik prägen unsere Gesellschaft in allen Bereichen und 
+bilden einen bedeutenden Teil unserer kulturellen Identität. Sie bestimmen maßgeb-
+lich unser Weltbild, das schneller als in der Vergangenheit Veränderungen erfährt. 
+Das Wechselspiel zwischen naturwissenschaftlicher Erkenntnis und technischer An-
+wendung bewirkt Fortschritte auf vielen Gebieten, vor allem auch bei der Entwicklung 
+und Anwendung von neuen Technologien und Produktionsverfahren. Andererseits 
+birgt das Streben nach Fortschritt auch Risiken, die bewertet und beherrscht werden 
+müssen. Naturwissenschaftlich-technische Erkenntnisse und Innovationen stehen 
+damit zunehmend im Fokus gesellschaftlicher Diskussionen und Auseinandersetzun-
+gen. Eine vertiefte naturwissenschaftliche Grundbildung bietet die Grundlage für fun-
+dierte Urteile in Entscheidungsprozessen über erwünschte oder unerwünschte 
+Entwicklungen. 
+Die Physik verfolgt das Ziel, grundlegende Gesetzmäßigkeiten der Natur zu erken-
+nen und zu erklären. Dazu ist es notwendig, Wirkungszusammenhänge in natürlichen 
+und technischen Phänomenen präzise zu mode llieren, um auf dieser Basis Vorher-
+sagen zu treffen. Empirische Überprüfungen der Modelle und ihrer Vorhersagen 
+durch Experimente und Messungen sind charakteristische Bestandteile einer spezi-
+fisch physikalischen Erkenntnismethode und einer besonderen Weltsicht.  
+Das Fach Physik leistet gemeinsam mit den anderen naturwissenschaftlichen Fä-
+chern einen Beitrag zum Bildungsziel einer vertieften naturwissenschaftlichen 
+Grundbildung. Gemäß den für alle Bundesländer verbindlichen Bildungsstandards 
+beinhaltet naturwissenschaftliche Grundbildung, Phänomene erfahrbar zu machen, 
+die Sprache und Geschichte der Naturwissenschaften zu verstehen, ihre Erkenntnis-
+se zu kommunizieren sowie sich mit ihren spezifischen Methoden der Erkenntnisge-
+winnung und deren Grenzen auseinanderzusetzen. Typische theorie- und 
+hypothesengeleitete Denk- und Arbeitsweisen ermöglichen eine analytische und rati-
+onale Betrachtung der Welt. Naturwissenschaftliche Bildung ermöglicht eine aktive 
+Teilhabe an gesellschaftlicher Kommunikation und Meinungsbildung über technische 
+Entwicklungen und naturwissenschaftliche Forschung und ist deshalb wesentlicher 
+Bestandteil von Allgemeinbildung. 
+Eine vertiefte naturwissenschaftliche Grundbildung sichert darüber hinaus Qualifika-
+tionen, die auf die Anforderungen der gymnasialen Oberstufe und die dort zuneh-
+mend erforderlichen wissenschaftsorientierten Arbeitshaltungen vorbereiten. Dazu 
+werden insbesondere Fähigkeiten der Lerne nden zur reflektierten und eigenständi-
+
+════════ PDF-SEITE 9 ════════
+  9 
+gen Nutzung wesentlicher physikalischer Denk- und Arbeitsweisen auf der Basis ei-
+nes gut strukturierten und sicher verfügbaren Fachwissens systematisch angelegt 
+und weiterentwickelt.  
+Im Physikunterricht der Sekundarstufe I finden die Schülerinnen und Schüler vielfälti-
+ge Anlässe, natürliche und technische Phänomene unter eigenen Fragestellungen – 
+insbesondere auch experimentell – zu erkunden und sich auf der Basis physikali-
+scher Modelle Erklärungen zu erarbeiten. Sie erwerben ein vertieftes und reflektiertes 
+Wissen und Können bezüglich physikalischer Konzepte, Denk- und Arbeitsweisen 
+und erkennen, wie Ergebnisse der Physik ihre Lebenswelt formen und verändern. Sie 
+strukturieren und systematisieren ihr physikalisches Wissen, um Erkenntnisse auf 
+zunehmend komplexe und anspruchsvolle Fragestellungen übertragen zu können, 
+insbesondere auch zur Bewältigung technischer Probleme. 
+In Anlehnung an die Bildungsstandards für den Mittleren Schulabschluss werden im 
+Fach Physik Inhalte durch die Basiskonzepte Energie, Struktur der Materie, Wech-
+selwirkung und System strukturiert und weiter ausdifferenziert. Basiskonzepte bein-
+halten zentrale, aufeinander bezogene Begriffe, Modellvorstellungen und Prozesse. 
+Sie eignen sich besonders gut zur Vernetzung des Wissens in unterschiedlichen In-
+haltsfeldern der Physik. Sie ermöglichen außerdem, situationsübergreifend Frage-
+stellungen aus bestimmten Perspektiven zu entwickeln. Somit bilden sie 
+übergeordnete Strukturen im Entstehungsprozess eines verknüpften Wissensnetzes.  
+Das Lernen in Kontexten , die durch die Lehrkräfte vor Ort festgelegt werden, ist 
+verbindlich. Lernen in Kontexten bedeutet, dass Fragestellungen aus der Lebenswelt 
+der Schülerinnen und Schüler sowie gesellschaftliche und technische Fragestellun-
+gen den Rahmen für Unterricht und Lernprozesse bilden. Dafür geeignete Kontexte 
+beschreiben reale Situationen mit authentischen Problemen, deren Relevanz gleich-
+ermaßen für Schülerinnen und Schüler erkennbar ist und die mit den zu erwerbenden 
+Kompetenzen gelöst werden können. 
+Experimente besitzen für physikalische Er kenntnisprozesse und damit auch für den 
+Physikunterricht eine entscheidende Bedeutung. Der Erwerb experimenteller Kompe-
+tenzen setzt voraus, dass Schülerinnen und Schüler zunehmend eigenständig und 
+planvoll in Schülerversuchen experimentieren und dabei ihre Kenntnisse über den 
+Gebrauch physikalischer Geräte und über experimentelle Vorgehensweisen schritt-
+weise erweitern. 
+Unterricht in Physik muss Mädchen ebenso wie Jungen dazu ermutigen, ihr Interesse 
+an naturwissenschaftlichen Zusammenhängen selbstbewusst zu verfolgen und so ih-
+re Fähigkeiten und Entwicklungspotenziale zu nutzen. Er sollte außerdem aufzeigen, 
+dass naturwissenschaftliche Kenntnisse sowohl für Frauen als auch Männer attrakti-
+ve berufliche Perspektiven eröffnen. 
+
+════════ PDF-SEITE 10 ════════
+10 
+Gemäß dem Bildungsauftrag des Gymnasiums leistet das Fach Physik einen Beitrag 
+dazu, den Schülerinnen und Schülern eine vertiefte Allgemeinbildung zu vermitteln 
+und sie entsprechend ihren Leistungen und Neigungen zu befähigen, nach Maßgabe 
+der Abschlüsse in der Sekundarstufe II ihren Bildungsweg an einer Hochschule oder 
+in berufsqualifizierenden Bildungsgängen fortzusetzen. 
+Im Rahmen des allgemeinen Bildungs- und Erziehungsauftrags der Schule unter-
+stützt der Unterricht im Fach Physik die Entwicklung einer mündigen und sozial ver-
+antwortlichen Persönlichkeit und leistet weitere Beiträge zu fachübergreifenden 
+Querschnittsaufgaben in Schule und Unterricht, hierzu zählen u.a.  
+• Menschenrechtsbildung, 
+• Werteerziehung, 
+• politische Bildung und Demokratieerziehung, 
+• Bildung für die digitale Welt und Medienbildung,  
+• Bildung für nachhaltige Entwicklung,  
+• geschlechtersensible Bildung, 
+• kulturelle und interkulturelle Bildung. 
+Sprache ist ein notwendiges Hilfsmittel bei der Entwicklung von Kompetenzen und 
+besitzt deshalb für den Erwerb einer vertieften naturwissenschaftlichen Grundbildung 
+eine besondere Bedeutung. Kognitive Prozesse des Umgangs mit Fachwissen, der 
+Erkenntnisgewinnung, der Kommunikation und der Bewertung sind ebenso sprach-
+lich vermittelt wie der kommunikative Austausch darüber und die Präsentation von 
+Lernergebnissen. In der aktiven Auseinandersetzung mit fachlichen Inhalten, Pro-
+zessen und Ideen erweitert sich der vorhandene Wortschatz, und es entwickelt sich 
+ein zunehmend differenzierter und bewusster Einsatz von Sprache. Dadurch entste-
+hen Möglichkeiten, Konzepte sowie eigene Wahrnehmungen, Gedanken und Inte-
+ressen angemessen darzustellen.  
+Die interdisziplinäre Verknüpfung von Schritten einer kumulativen Kompetenzent-
+wicklung, inhaltliche Kooperationen mit anderen Fächern und Lernbereichen sowie 
+außerschulisches Lernen und Kooperationen mit außerschulischen Partnern können 
+sowohl zum Erreichen und zur Vertiefung der jeweils fachlichen Ziele als auch zur Er-
+füllung übergreifender Aufgaben beitragen. 
+Im Lernbereich Naturwissenschaften besteht in der Erprobungsstufe die Möglichkeit 
+für besondere Angebote. Die Fächer können in den Klassen 5 und 6 auch integriert 
+unterrichtet werden, wenn die vollständige Erfüllung der Stundentafel sowie die Er-
+reichung aller in den Kernlehrplänen Biologie und Physik sowie ggf. Chemie ausge-
+wiesenen Kompetenzen sichergestellt ist. Hierzu erarbeitet die Schule ein fachliches 
+und organisatorisches Konzept für die unterrichtliche Umsetzung, das nach Ent-
+
+════════ PDF-SEITE 11 ════════
+  11 
+scheidung der betroffenen Fachkonferenzen sowie der Lehrer- und Schulkonferenz 
+der Schulaufsichtsbehörde zur Genehmigung vorgelegt wird. 
+Der vorliegende Kernlehrplan ist so gestaltet, dass er Freiräume für Vertiefung, 
+schuleigene Projekte und aktuelle Entwicklungen lässt. Die Umsetzung der verbindli-
+chen curricularen Vorgaben in schuleigene Vorgaben liegt in der Gestaltungsfreiheit 
+– und Gestaltungspflicht – der Fachkonferenzen sowie in der pädagogischen Ver-
+antwortung der Lehrerinnen und Lehrer. Damit ist der Rahmen geschaffen, gezielt 
+Kompetenzen und Interessen der Schülerinnen und Schüler aufzugreifen und zu för-
+dern bzw. Ergänzungen der jeweiligen Schule in sinnvoller Erweiterung der Kompe-
+tenzen und Inhalte zu ermöglichen. 
+
+════════ PDF-SEITE 12 ════════
+12 
+2 Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartun-
+gen 
+Im Kapitel „Aufgaben und Ziele“ der Kernlehrpläne werden u.a. die Ziele des Faches 
+sowie die allgemeinen Kompetenzen, die Schülerinnen und Schüler im jeweiligen 
+Fach entwickeln sollen (übergreifende fachliche Kompetenz) beschrieben.  
+Sie werden ausdifferenziert, indem fachspezifische Kompetenzbereiche und Inhalts-
+felder identifiziert und ausgewiesen werden. Dieses analytische Vorgehen erfolgt, um 
+die Strukturierung der fachrelevanten Prozesse einerseits sowie der Gegenstände 
+andererseits transparent zu machen. In Kompetenzerwartungen werden beide Seiten 
+miteinander verknüpft. Damit wird der Tatsache Rechnung getragen, dass der 
+gleichzeitige Einsatz von Können und Wissen bei der Bewältigung von Anforde-
+rungssituationen eine zentrale Rolle spielt. 
+Kompetenzbereiche repräsentieren die Grunddimensionen des fachlichen Handelns. 
+Sie dienen dazu, die einzelnen Teiloperationen entlang der fachlichen Kerne zu 
+strukturieren und den Zugriff für die am Lehr-Lernprozess Beteiligten zu verdeutli-
+chen. 
+Inhaltsfelder systematisieren mit ihren jeweilig en inhaltlichen Schw erpunkten die im 
+Unterricht verbindlichen und unverzichtbaren Gegenstände und liefern Hinweise für 
+die inhaltliche Ausrichtung des Lehrens und Lernens. 
+Kompetenzerwartungen führen Prozesse und Gegenstände zusammen und be-
+schreiben die fachlichen Anforderungen und intendierten Lernergebnisse.
+Ziele des Faches/
+Übergreifende fachliche Kompetenz 
+Kapitel 1
+Kompetenzbereiche
+(Prozesse) 
+Kapitel 2.1 
+Inhaltsfelder
+(Gegenstände) 
+Kapitel 2.1 
+Kompetenzerwartungen
+(Verknüpfung von Prozessen und Gegenständen) 
+Kapitel 2.2 und 2.3 
+
+════════ PDF-SEITE 13 ════════
+  13 
+Kompetenzerwartungen 
+• beziehen sich auf beobachtbare Handlungen und sind auf die Bewältigung von 
+Anforderungssituationen ausgerichtet, 
+• stellen im Sinne von Regelstandards die erwarteten Kenntnisse, Fähigkeiten 
+und Fertigkeiten auf einem mittleren Abstraktionsgrad dar, 
+• beschreiben Ergebnisse eines kumulativen, systematisch vernetzten Lernens, 
+• können in Aufgabenstellungen umgesetzt und überprüft werden. 
+Insgesamt ist der Unterricht in der Sekundarstufe I nicht allein auf das Erreichen der 
+aufgeführten Kompetenzerwartungen beschränkt, sondern soll es Schülerinnen und 
+Schülern ermöglichen, diese weiter auszubauen und darüber hinausgehendes Wis-
+sen und Können zu erwerben. 
+Die im Kernlehrplan für das Ende der Sekundarstufe I beschriebenen Kompetenzer-
+wartungen und verpflichtenden Inhalte haben gleichermaßen Gültigkeit für den ver-
+kürzten (G8) wie für den neunjährigen Bildungsgang (G9) der Sekundarstufe I am 
+Gymnasium. Dem geringeren Unterrichtsvolumen des achtjährigen Bildungsgangs 
+wird im Rahmen des schulinternen Lehrplans unter anderem durch Festlegungen zur 
+curricularen Progression und zur Art des didaktisch-methodischen Zugriffs Rechnung 
+getragen. 
+
+════════ PDF-SEITE 14 ════════
+14 
+2.1 Kompetenzbereiche und Inhaltsfelder des Faches 
+Die Entwicklung der für das Fach Physik angestrebten vertieften naturwissenschaftli-
+chen Grundbildung erfolgt durch die Vermittlung grundlegender fachlicher Kompe-
+tenzen, die den untereinander vernetzten Kompetenzbereichen zugeordnet werden 
+können. 
+Kompetenzbereiche 
+Der Kompetenzbereich Umgang mit Fachwissen bezieht sich auf die Fähigkeit, zur 
+Lösung von Aufgaben und Problemen auf Fachwissen der Physik zurückzugreifen. 
+Ein Verständnis physikalischer Phänomene, Konzepte und Prinzipien sowie ihre Ein-
+ordnung in einen größeren, zunehmend systematischen Zusammenhang sind not-
+wendig, um erforderliches Fachwissen in variablen Situationen sicher und 
+zuverlässig auswählen sowie anwenden zu können. Im Rahmen fachlicher Problem-
+stellungen gelingt der Zugriff auf Fachwissen besser, wenn dieses angemessen or-
+ganisiert und strukturiert vorliegt. Gut strukturierte Wissensbestände erleichtern 
+ebenfalls die Integration und Vernetzung von neuen Erkenntnissen mit schon beste-
+hendem Wissen. 
+Der Kompetenzbereich Erkenntnisgewinnung  beinhaltet die Fähigkeiten und me-
+thodischen Fertigkeiten, physikalische Fragestellungen zu erkennen, diese mit Expe-
+rimenten und anderen fachspezifischen Methoden hypothesengeleitet zu 
+untersuchen, daraus Schlussfolgerungen zu ziehen und Ergebnisse zu verallgemei-
+nern. Naturwissenschaftliche Erkenntnis basiert im Wesentlichen auf einer Modellie-
+rung der Wirklichkeit. Modelle, von einfachen Analogien bis hin zu mathematisch-
+formalen Modellen, dienen dabei zur Veranschaulichung, Erklärung und Vorhersage. 
+Mathematische Repräsentationen physikalischer Größen und Zusammenhänge spie-
+len eine wichtige Rolle bei der präzisen Definition fachlicher Begriffe. Sie dienen der 
+Exaktheit bei der Beschreibung physikalischer Vorgänge und bieten Ansätze zur 
+Problemlösung, aber auch zur Herleitung neuer Hypothesen. Eine Reflexion der Er-
+kenntnismethoden verdeutlicht den besonderen Charakter der Physik als Teil der Na-
+turwissenschaften mit ihren spezifischen Denk- und Arbeitsweisen und grenzt sie von 
+anderen Möglichkeiten der Weltbegegnung ab. 
+Der Kompetenzbereich Kommunikation beschreibt erforderliche Fähigkeiten für ei-
+nen sachgerechten und adressatengerechten fachlichen Austausch, in dem Bil-
+dungs- und Fachsprache im notwendigen Umfang verwendet werden. 
+Kennzeichnend dafür ist, mit digital und analog verfügbaren Daten und Informations-
+quellen sachgerecht und kritisch umzugehen, dabei Informationen gezielt zu ent-
+nehmen sowie fachliche Ausführungen unter Verwendung unterstützender Medien 
+selbst erstellen und präsentieren zu können. Dazu gehört es, für die Physik wichtige 
+Darstellungsformen wie Tabellen, Grafiken und Diagramme variabel einzusetzen und 
+
+════════ PDF-SEITE 15 ════════
+  15 
+zwischen Darstellungsformen wechseln zu können. Wesentlich für die Physik als Na-
+turwissenschaft ist die Fähigkeit zum rationalen, faktenbasierten Argumentieren bei 
+der Darstellung eigener Überlegungen, der Diskussion und Reflexion von Ideen und 
+Untersuchungsergebnissen sowie divergierender Positionen.  
+Der Kompetenzbereich Bewertung bezieht sich auf die Fähigkeit, in Problemsituati-
+onen, in denen es mehrere denkbare Lösungen ohne ein klares Richtig oder Falsch 
+gibt, sachlich fundiert und wertebasiert zu begründeten Entscheidungen zu kommen. 
+Dazu gehört, die Faktenlage einschließlich der Interessen der Handelnden und Be-
+troffenen sorgfältig zu analysieren sowie Handlungsmöglichkeiten zu entwickeln und 
+auf der Grundlage von Kriterien gegeneinander abzuwägen. Auf dieser Grundlage ist 
+es möglich, Entscheidungen zu finden, deren Tragweite zu reflektieren sowie zielfüh-
+rend zu argumentieren und Positionen darzustellen. Für gesellschaftliche und per-
+sönliche Entscheidungen in ethischen Konfliktfeldern der Physik sind diesbezüglich 
+die Kenntnis und Berücksichtigung von Bewertungsmaßstäben bedeutsam, nach de-
+nen Interessen und Folgen naturwissenschaftlich-technischer Forschung und Ent-
+wicklung beurteilt werden können. 
+Inhaltsfelder
+Kompetenzen sind immer an fachliche Inhalte gebunden. Eine vertiefte naturwissen-
+schaftliche Grundbildung soll deshalb mit Blick auf die nachfolgenden Inhaltsfelder 
+bis zum Ende der Sekundarstufe I entwickelt werden.
+Inhaltsfeld 1: Temperatur und Wärme 
+Erfahrungen mit Wärme gehören zu den elementaren Begegn ungen mit der natürli-
+chen Welt und machen eine besondere Energieform, die thermische Energie, auch 
+körperlich spürbar. Temperaturen verändern sich durch verschiedene Mechanismen 
+des Wärmetransports. Stoffe verändern Eigenschaften wie Volumen und Aggregat-
+zustand durch die Wirkung von Wärme. Derartige Phänomene können mit einfachen 
+Teilchenmodellen beschrieben und erklärt werden. 
+Bedeutsam sind Kenntnisse dieses Inhaltsfeldes für ein Verständnis von Vorgängen 
+beim Heizen, Kühlen und Kochen sowie von natürlichen Phänomenen im Bereich 
+Wetter, Klima und Jahreszeiten. 
+Inhaltsfeld 2: Elektrischer Strom und Magnetismus 
+Die Funktion elektrischer Geräte und Schaltungen beruht auf den unterschiedlichen 
+Wirkungen des elektrischen Stroms. Diese können jedoch auch Gefahrenquellen o-
+der eine Ursache für Energieentwertung darstellen. Beides macht einen informierten 
+und sachgerechten Umgang mit Elektrizität zwingend notwendig. Dazu gehören u. a. 
+Kenntnisse über das Zusammenwirken verschiedener Bauelemente in unterschiedli-
+
+════════ PDF-SEITE 16 ════════
+16 
+chen Arten von el ektrischen Stromkreisen. Mode lle zum Ladungst ransport machen 
+physikalische Zusammenhänge anschaulich. 
+Magnetische Kräfte sind wegen ihrer Fernwirkung über den (auch leeren) Raum be-
+sonders eindrucksvoll. Richtung  und Stärke dieser Felder lassen sich bei Elektro- 
+und Permanentmagneten über das Modell der Feldlinien darstellen. Weitere Eigen-
+schaften von Permanentmagneten können mithilfe des Modells der Elementarmag-
+nete erklärt werden. 
+Besonders bedeutungsvoll sind Kenntnisse zur Elektrizität bezüglich des Verständ-
+nisses ausgewählter Stromkreise sowie der Funktionsweise einfacher Elektrogeräte 
+in alltäglichen Zusammenhängen. Kenntnisse über Magnetismus helfen, Alltagsan-
+wendungen wie z.B. Schließmechanismen und Magnettafeln zu verstehen. 
+Inhaltsfeld 3: Schall 
+Schall ermöglicht es den Menschen, das Geschehen in ihrer Umgebung wahrzu-
+nehmen und miteinander zu kommunizieren. Das Wissen um die Entstehung und 
+Ausbreitung von Schall hilft auch zu verstehen, unter welchen Bedingungen Hören 
+funktioniert und wie mehr oder weniger angenehme Klangeindrücke, aber auch Ge-
+fährdungen für die menschlichen Hörorgane entstehen. Während Menschen Schall 
+nur in einem bestimmten Frequenzbereich w ahrnehmen, reichen Sinnesleistungen 
+mancher Tiere weit über diesen Bereich hinaus.  
+Besondere Relevanz besitzt dieses Inhaltsfeld zur Erklärung von Hör- und Orientie-
+rungsvorgängen, beim Erleben von Musik sowie zum Verständnis ausgewählter 
+technischer und medizinischer Anwendungen. 
+Inhaltsfeld 4: Licht 
+Licht vermittelt wesentliche Informationen aus unserer Umwelt und ist damit eine der 
+Grundlagen, um sich sicher in der Welt zu orientieren. In diesem Inhaltsfeld geht es 
+um Phänomene, die charakteristisch für besondere Eigenschaften und Wirkungen 
+des Lichts sind. Das Aussehen von Gegenständen hängt davon ab, welchen Einfluss 
+sie auf auftreffendes Licht nehmen. Sie können z.B. durchsichtig oder farbig, matt 
+oder glänzend erscheinen. Die Ausbreitung von Licht und die Entstehung von einfa-
+chen Abbildungen bzw. von Schatten kann mit dem Strahlenmodell erklärt und vor-
+hergesagt werden. 
+Bedeutsam ist dieses Inhaltsfeld für ein grundlegendes Verständnis des Sehens und 
+zur Erklärung des Zustandekommens von Abbildungen, die etwa im Auge oder in der 
+Lochkamera entstehen. Besondere Relevanz besitzen die Inhalte für sicheres Ver-
+halten im Straßenverkehr. 
+
+════════ PDF-SEITE 17 ════════
+  17 
+Inhaltsfeld 5: Optische Instrumente 
+Optische Instrumente wie Teleskop oder Mikroskop ermöglichen einen tieferen Ein-
+blick in Dinge, die mit unserem ureigenen Instrument, dem Auge, nicht sichtbar sind, 
+z.B. einen Einblick in den Aufbau des Universums oder in die Struktur pflanzlicher 
+und tierischer Zellen. Für das Verständnis der Funktion dieser optischen Instrumente 
+sind Kenntnisse der Lichtbrechung und ein elementares Verständnis der Strahlen-
+gänge bei Abbildungen erforderlich. Weitere Schwerpunkte des Inhaltsfeldes sind die 
+Spektralzerlegung des Lichts, dessen Wechselwirkung mit Materie und die damit zu-
+sammenhängende Farbwahrnehmung. 
+Besondere Bedeutung hat dieses Inhaltsfeld für das Verständnis diverser Geräte des 
+täglichen Gebrauchs, insbesondere von Kameras sowie Displays bei modernen 
+Kommunikationsgeräten. 
+Inhaltsfeld 6: Sterne und Weltall 
+Himmelserscheinungen wie Planeten, Sterne, Sternschnuppen oder Finsternisse ha-
+ben zu allen Zeiten eine große Faszination auf Menschen ausgeübt und zum Nach-
+denken über den Aufbau und die Entwicklung des Sonnensystems und des 
+Universums angeregt. Himmelsobjekte lassen sich nach ihren Eigenschaften klassifi-
+zieren. Aus Beobachtungen können Schlussfolgerungen über die Entstehung der 
+Mondphasen, der Jahreszeiten, der Sterne oder des Universums gezogen werden. 
+Beim Vergleich von helio- und geozentrischem Weltbild werden Rahmenbedingun-
+gen, Grenzen und Veränderungen naturwissenschaftlicher Vorstellungen und die 
+Rolle der Physik besonders deutlich. 
+Von besonderer Relevanz sind hier unterschiedliche Phänomene, die am Himmel 
+beobachtet werden können, aber auch Möglichkeiten zur Informationsgewinnung 
+über Objekte, die einer unmittelbaren Untersuchung nicht zugänglich sind.  
+Inhaltsfeld 7: Bewegung, Kraft und Energie 
+In diesem Inhaltsfeld geht es um die Beschreibung von Bewegungen mit den Begrif-
+fen Geschwindigkeit und Beschleunigung. Für Änderungen des Bewegungszustan-
+des wie auch für Verformungen sind Kräfte verantwortlich. Durch einfache Maschinen 
+können Kräfte mit Blick auf besondere Anforderungen gewandelt werden. Die Golde-
+ne Regel der Mechanik als Grundlage für die Funktion einfacher Maschinen lässt 
+sich physikalisch auf das Prinzip der Energieerhaltung zurückführen. Mechanische 
+Prozesse lassen sich über das Energiekonzept analysieren und bilanzieren. An die-
+sen Prozessen ist die Eigenschaft von Energie als Fähigkeit eines Systems, Wirkun-
+gen zu entfalten, besonders gut sichtbar. Mit dem Begriff der Leistung werden 
+zeitabhängige energetische Vorgänge fassbar und berechenbar gemacht. 
+
+════════ PDF-SEITE 18 ════════
+18 
+Besondere Bedeutung besitzen diese Inhalte in allen Lebensbereichen, insbesonde-
+re bei der Ernährung, beim Verkehr, beim Sport, der Architektur und dem Einsatz von 
+Maschinen. 
+Inhaltsfeld 8: Druck und Auftrieb 
+Erfahrungen mit Druck und Auftrieb sind ständig in unserem Alltag präsent, wie bei-
+spielsweise beim Schwimmen, Tauchen oder bei Veränderungen des Luftdrucks. 
+Diese Phänomene, aber auch weitergehende technische Anwendungen lassen sich 
+auf der Grundlage eines Verständnisses der Entstehung und der Wirkung von Druck 
+erklären. 
+Besonders bedeutsam sind die Zusammenhänge dieses Inhaltsfeldes für ein Ver-
+ständnis von körperlichen Erfahrungen mit Druck und Auftrieb sowie zur Erklärung 
+von technischen Anwendungen des Drucks und für das Verhalten von Körpern in 
+Flüssigkeiten und Gasen. 
+Inhaltsfeld 9: Elektrizität 
+Elektrische Geräte spielen eine wichtige Rolle in unserem Alltag. Auch wenn sich die 
+Funktionsweise der meisten Geräte für ihre Benutzerinnen und Benutzer nicht mehr 
+im Detail nachvollziehen lässt, ist ein grundlegendes Verständnis elektrischer Vor-
+gänge wichtig, um die Geräte sinnvoll und sicher einsetzen zu können. Dazu sind 
+Kenntnisse über Grundlagen der Leitungsvorgänge sowie über elektrische Grund-
+größen ebenso notwendig wie über ihr Zusammenwirken in unterschiedlichen Schal-
+tungen, einschließlich dabei auftretender energetischer Veränderungen. 
+Modellvorstellungen von Ladungen, Feldern und Strömen vermitteln dafür notwendi-
+ge Einsichten in elektrische Vorgänge. 
+Besonders bedeutsam sind Kenntnisse dieses Inhaltsfeldes für ein Verständnis elek-
+trostatischer Vorgänge und der Elektroinstallation im Haushalt. Sie ermöglichen ei-
+nen sicheren und ökonomischen Umgang mit Elektrizität und erleichtern das Ver-
+ständnis der Stromrechnung oder Kaufentscheidungen bei Elektrogeräten. 
+Inhaltsfeld 10: Ionisierende Strahlung und Kernenergie 
+In unserer Gesellschaft gibt es kontroverse Ansichten zur Anwendung von Röntgen-
+strahlung, Radioaktivität und Kernenergie. Einerseits gibt es zahlreiche Situationen, 
+in denen ionisierende Strahlungsarten als nützlich und positiv bewertet werden, etwa 
+bei diagnostischen und therapeutischen Verfahren in der Medizin. Andererseits wer-
+den die Nutzung der Kernenergie und die fehlende Entsorgungsmöglichkeit von radi-
+oaktiven Abfällen aufgrund der damit verbundenen Gefahren kritisch gesehen.  
+Kenntnisse über den Atom- und Kernaufbau, die Auswirkungen der radioaktiven 
+Strahlungen auf Mensch und Umwelt und über die Kernspaltung mit allen Konse-
+quenzen ermöglichen, Nutzen und Risiken der Kernenergie einzuschätzen und be-
+
+════════ PDF-SEITE 19 ════════
+  19 
+werten zu können. So wird es möglich, eine fundierte sachliche Position zur Kern-
+energie zu vertreten. 
+Inhaltsfeld 11: Energieversorgung 
+Die gesicherte Versorgung der Welt mit Energie ist in den letzten Jahren zu einem 
+zentralen Thema geworden. Die weltweit gestiegene Nachfrage vor allem nach 
+elektrischer Energie zwingt dazu, gerade mit Blick auf den Klimawandel, nach rege-
+nerativen Energiequellen zu suchen. Durch eine Betrachtung der elektromagneti-
+schen Induktion, der Erzeugung von Wechselspannungen im Generator und der 
+Funktion von Transformatoren beim Transportieren von elektrischer Energie werden 
+Schritte der Bereitstellung elektrischer Energie deutlich, auch bei Geräten des alltäg-
+lichen Gebrauchs.  
+Die Notwendigkeit des nachhaltigen Umgangs mit Energie, ebenso wie eine Abwä-
+gung von Vor- und Nachteilen erneuerbarer Energiequellen im Vergleich zu Res-
+sourcen verbrauchenden Anlagen unterstreichen die Bedeutung dieses Inhaltsfeldes.  
+
+════════ PDF-SEITE 20 ════════
+20 
+2.2 Kompetenzerwartungen und inhaltliche Schwerpunkte bis zum 
+Ende der Erprobungsstufe 
+Am Ende der Erprobungsstufe sollen die Schülerinnen und Schüler – aufbauend auf 
+der Kompetenzentwicklung in der Primarstufe – über die im Folgenden genannten 
+Kompetenzen bezüglich der obligatorischen Inhalte verfügen. Dabei werden zu-
+nächst übergeordnete Kompetenzerwartungen zu allen Kompetenzbereichen auf-
+geführt. Während der Kompetenzbereich Kommunikation  ausschließlich 
+inhaltsfeldübergreifend angelegt ist, werden in den Bereichen Umgang mit Fachwis-
+sen, Erkenntnisgewinnung und Bewertung anschließend inhaltsfeldbezogen konkre-
+tisierte Kompetenzerwartungen  formuliert. Hinter den konkretisierten 
+Kompetenzerwartungen ist jeweils in Klammern angegeben, auf welche übergeord-
+neten Kompetenzerwartungen aus allen Bereichen sich diese beziehen. 
+Umgang mit Fachwissen 
+Die Schülerinnen und Schüler können 
+UF1  
+Wiedergabe und 
+Erläuterung 
+erworbenes Wissen über physikalische Phänomene unter Ver-
+wendung einfacher Konzepte nachvollziehbar darstellen und 
+Zusammenhänge erläutern. 
+UF2  
+Auswahl und An-
+wendung  
+das zur Lösung einfacher vorgegebener Aufgaben und Prob-
+lemstellungen erforderliche physikalische Fachwissen auswäh-
+len und anwenden. 
+UF3  
+Ordnung und Sys-
+tematisierung  
+physikalische Sachverhalte bzw. Objekte nach vorgegebenen 
+Kriterien ordnen. 
+UF4  
+Übertragung und 
+Vernetzung  
+neu erworbene physikalische Konzepte in vorhandenes Wissen 
+eingliedern und Alltagsvorstellungen hinterfragen. 
+Erkenntnisgewinnung 
+Die Schülerinnen und Schüler können 
+E1  
+Problem und Fra-
+gestellung  
+in einfachen Zusammenhängen Probleme erkennen und Fra-
+gen formulieren, die sich mit physikalischen Methoden klären 
+lassen. 
+E2  
+Beobachtung und 
+Wahrnehmung 
+Phänomene aus physikalischer Perspektive bewusst wahr-
+nehmen und beschreiben. 
+
+════════ PDF-SEITE 21 ════════
+  21 
+E3  
+Vermutung und 
+Hypothese 
+Vermutungen zu physikalischen Fragestellungen auf der 
+Grundlage von Alltagswissen und einfachen fachlichen Kon-
+zepten formulieren. 
+E4  
+Untersuchung und 
+Experiment 
+bei angeleiteten oder einfachen selbst entwickelten Untersu-
+chungen und Experimenten Handlungsschritte unter Beach-
+tung von Sicherheitsaspekten planen und durchführen sowie 
+Daten gemäß der Planung erheben und aufzeichnen. 
+E5  
+Auswertung und 
+Schlussfolgerung 
+Beobachtungen und Messdaten ordnen sowie mit Bezug auf 
+die zugrundeliegende Fragestellung oder Vermutung auswer-
+ten und daraus Schlüsse ziehen. 
+E6  
+Modell und Realität 
+mit vorgegebenen Modellen ausgewählte physikalische Vor-
+gänge und Phänomene veranschaulichen, erklären und vor-
+hersagen sowie Modelle von der Realität unterscheiden. 
+E7 
+Naturwissenschaft-
+liches Denken und 
+Arbeiten 
+in einfachen physikalischen Zusammenhängen Schritte der na-
+turwissenschaftlichen Erkenntnisgewinnung nachvollziehen 
+und Aussagen konstruktiv kritisch hinterfragen. 
+Kommunikation 
+Die Schülerinnen und Schüler können 
+K1 
+Dokumentation 
+das Vorgehen und wesentliche Ergebnisse bei Untersuchun-
+gen und Experimenten in vorgegebenen Formaten (Protokolle, 
+Tabellen, Skizzen, Diagramme) dokumentieren. 
+K2 
+Informationsverar-
+beitung 
+nach Anleitung physikalisch-technische Informationen und Da-
+ten aus analogen und digitalen Medienangeboten (Fachtexte, 
+Filme, Tabellen, Diagramme, Abbildungen, Schemata) ent-
+nehmen sowie deren Kernaussagen wiedergeben und die 
+Quelle notieren. 
+K3 
+Präsentation 
+eingegrenzte physikalische Sachverhalte, Überlegungen und 
+Arbeitsergebnisse - auch mithilfe digitaler Medien - bildungs-
+sprachlich angemessen und unter Verwendung einfacher Ele-
+mente der Fachsprache in geeigneten Darstellungsformen 
+(Redebeitrag, kurze kontinuierliche und diskontinuierliche Tex-
+te) sachgerecht vorstellen. 
+K4 
+Argumentation 
+eigene Aussagen fachlich sinnvoll begründen, faktenbasierte 
+Gründe von intuitiven Meinungen unterscheiden sowie bei Un-
+klarheiten sachlich nachfragen. 
+
+════════ PDF-SEITE 22 ════════
+22 
+Bewertung 
+Die Schülerinnen und Schüler können 
+B1 
+Fakten- und Situa-
+tionsanalyse 
+in einer einfachen Bewertungssituation physikalisch-technische 
+Fakten nennen sowie die Interessen der Handelnden und Be-
+troffenen beschreiben. 
+B2 
+Bewertungskriterien 
+und Handlungsop-
+tionen  
+Bewertungskriterien und Handlungsoptionen benennen.
+B3 
+Abwägung und 
+Entscheidung  
+kriteriengeleitet eine Entscheidung für eine Handlungsoption 
+treffen. 
+B4 
+Stellungnahme und 
+Reflexion 
+Bewertungen und Entscheidungen begründen. 
+Die Kompetenzen der Schülerinnen und Schüler sollen im Rahmen der Behandlung 
+der nachfolgenden, für diese Stufe obligatorischen Inhaltsfelder entwickelt werden: 
+1.) Temperatur und Wärme 
+2.) Elektrischer Strom und Magnetismus 
+3.) Schall 
+4.) Licht 
+Bezieht man übergeordnete Kompetenzerwartungen sowie die unten aufgeführten 
+inhaltlichen Schwerpunkte  aufeinander, so ergeben sich die nachfolgenden kon-
+kretisierten Kompetenzerwartungen: 
+  
+
+════════ PDF-SEITE 23 ════════
+  23 
+Inhaltsfeld 1: Temperatur und Wärme 
+Inhaltliche Schwerpunkte: 
+– thermische Energie: Wärme, Temperatur und Temperaturmessung 
+– Wärmetransport: Wärmemitführung, Wärmeleitung, Wärmestrahlung; 
+Temperaturausgleich; Wärmedämmung 
+– Wirkungen von Wärme: Veränderung von Aggregatzuständen und 
+Wärmeausdehnung 
+Umgang mit Fachwissen
+Die Schülerinnen und Schüler können 
+à die Veränderung der thermischen Energie unterschiedlicher Körper sowie den 
+Temperaturausgleich zwischen Körpern durch Zuführung oder Abgabe von 
+Wärme an alltäglichen Beispielen beschreiben (UF1),
+à die Begriffe Temperatur und Wärme unterscheiden und sachgerecht verwen-
+den (UF1, UF2), 
+à an Beispielen aus Alltag und Technik Auswirkungen der Wärmeausdehnung 
+von Körpern und Stoffen beschreiben (UF1, UF4), 
+à die Auswirkungen der Anomalie des Wassers und deren Bedeutung für natür-
+liche Vorgänge beschreiben (UF4, UF1),  
+à die Definition der Celsiusskala zur Temperaturmessung erläutern (UF1), 
+à Verfahren der Wärmedämmung anhand der jeweils relevanten Formen des 
+Wärmetransports (Mitführung, Leitung, Strahlung) erklären (UF3, UF2, UF1, 
+UF4, E6). 
+Erkenntnisgewinnung 
+Die Schülerinnen und Schüler können 
+à Temperaturen mit analogen und digitalen Instrumenten messen (E2, E1), 
+à erhobene Messdaten zu Temperaturentwicklungen nach Anleitung in Tabellen 
+und Diagramme übertragen sowie Daten aus Diagrammen entnehmen (E4, 
+E5, K1), 
+à aus Beobachtungen und Versuchen zu Wärmephänomenen (u.a. Wärmeaus-
+dehnung, Wärmetransport, Änderung von Aggregatzuständen) einfache 
+Schlussfolgerungen ziehen und diese nachvollziehbar darstellen (E3, E5, K3), 
+à Aggregatzustände, Übergänge zwischen ihnen sowie die Wärmeausdehnung 
+von Stoffen mit einem einfachen Teilchenmodell erklären (E6, UF1, UF3). 
+
+════════ PDF-SEITE 24 ════════
+24 
+Bewertung 
+Die Schülerinnen und Schüler können 
+à reflektiert und verantwortungsvoll Schutzmaßnahmen gegen Gefahren durch 
+Verbrennung und Unterkühlung begründen (B1, B2, B3, B4). 
+Beiträge zu den Basiskonzepten 
+Energie:  
+Einfache energetische Vorgänge können mithilfe der thermischen Energie als einer 
+ersten Energieform beschrieben werden. 
+Struktur der Materie: 
+Der Aufbau von Stoffen und die Änderung von Aggregatzuständen lassen sich mit 
+einem einfachen Teilchenmodell erklären. 
+Wechselwirkung: 
+Körper wechselwirken über Wärmetransportarten miteinander. 
+System: 
+Temperaturunterschiede stellen ein systemisches Ungleichgewicht dar, welches 
+durch Wärmetransport in ein Gleichgewicht gebracht wird. 
+Inhaltsfeld 2: Elektrischer Strom und Magnetismus 
+Inhaltliche Schwerpunkte: 
+– Stromkreise und Schaltungen: Spannungsquellen, Leiter und Nichtleiter, 
+verzweigte Stromkreise, Elektronen in Leitern 
+– Wirkungen des elektrischen Stroms: Wärmewirkung, magnetische Wirkung, 
+Gefahren durch Elektrizität  
+– magnetische Kräfte und Felder: anziehende und abstoßende Kräfte, Magnetpole, 
+magnetische Felder, Feldlinienmodell, Magnetfeld der Erde 
+– Magnetisierung: magnetisierbare Stoffe, Modell der Elementarmagnete 
+Umgang mit Fachwissen 
+Die Schülerinnen und Schüler können 
+à den Aufbau einfacher elektrischer Stromkreise und die Funktion ihrer Bestand-
+teile erläutern und die Verwendung von Reihen- und Parallelschaltungen be-
+gründen (UF2, UF3, K4), 
+
+════════ PDF-SEITE 25 ════════
+  25 
+à Stromwirkungen (Wärme, Licht, Magn etismus) fachsprachlich angemessen 
+beschreiben und Beispiele für ihre Nutzung in elektrischen Geräten angeben 
+(K3, UF1, UF4), 
+à die Funktion von elektrischen Sicherungseinrichtungen (Schmelzsicherung, 
+Sicherungsautomat) in Grundzügen erklären (UF1, UF4), 
+à an Beispielen von elektrischen Stromkreisen den Energiefluss sowie die Um-
+wandlung und Entwertung von Energie darstellen (UF1, UF3, UF4), 
+à ausgewählte Stoffe anhand ihrer elektrischen und magnetischen Eigenschaf-
+ten (elektrische Leitfähigkeit, Ferromagnetismus) klassifizieren (UF1), 
+à Kräfte zwischen Magneten sowie zwischen Magneten und magnetisierbaren 
+Stoffen über magnetische Felder erklären (UF1, E6),
+à in Grundzügen Eigenschaften des Magnetfeldes der Erde beschreiben und die 
+Funktionsweise eines Kompasses erklären (UF3, UF4).
+Erkenntnisgewinnung 
+Die Schülerinnen und Schüler können 
+à zweckgerichtet einfache elektrische Schaltungen planen und aufbauen, auch 
+als Parallel- und Reihenschaltung sowie UND- bzw. ODER-Schaltung (E1, E4, 
+K1), 
+à Stromkreise durch Schaltsymbole und Schaltpläne darstellen und einfache 
+Schaltungen nach Schaltplänen aufbauen (E4, K3),  
+à in eigenständig geplanten Versuchen die Leitungseigenschaften verschiede-
+ner Stoffe ermitteln und daraus Schlüsse zu ihrer Verwendbarkeit auch unter 
+Sicherheitsaspekten ziehen (E4, E5, K1), 
+à den Stromfluss in einem geschlossenen Stromkreis mittels eines Modells frei 
+beweglicher Elektronen in einem Leiter erläutern (E6),  
+à durch systematisches Probieren einfache magnetische Phänomene erkunden 
+(E3, E4, K1),  
+à die Magnetisierung bzw. Entmagnetisierung von Stoffen sowie die Untrenn-
+barkeit der Pole mithilfe eines einfachen Modells veranschaulichen (E6, K3, 
+UF1), 
+à die Struktur von Magnetfeldern mit geeigneten Hilfsmitteln sichtbar machen 
+und untersuchen (E5, K3). 
+
+════════ PDF-SEITE 26 ════════
+26 
+Bewertung 
+Die Schülerinnen und Schüler können 
+à auf einem grundlegenden Niveau (Sichtung mit Blick auf Nennspannung, of-
+fensichtliche Beschädigungen, Isolierung) über die gefahrlose Nutzbarkeit von 
+elektrischen Geräten entscheiden (B1, B2, B3), 
+à Risiken und Sicherheitsmaßnahmen beim Experimentieren mit elektrischen 
+Geräten benennen und bewerten (B1, B3), 
+à Möglichkeiten zur sparsamen Nutzung elektrischer Energie im Haushalt nen-
+nen und diese unter verschiedenen Kriterien bewerten (B1, B2, B3). 
+Beiträge zu den Basiskonzepten 
+Energie:  
+In Stromkreisen wird elektrische Energie transportiert, umgewandelt und entwertet; 
+Batterien und Akkumulatoren speichern Energie. 
+Struktur der Materie:  
+Elektrischer Strom kann mithilfe eines Modells frei beweglicher Elektronen in einem 
+Leiter beschrieben werden. Magnetisierbarkeit ist eine charakteristische 
+Stoffeigenschaft und kann mithilfe eines Modells ausgerichteter magnetischer 
+Bereiche erklärt werden. 
+Wechselwirkung:  
+Erwärmung ist eine Folge der Wechselwirkung zwischen Teilchen beim Stromfluss.  
+Magnete wechselwirken mit anderen Magneten und Körpern aus ferromagnetischen 
+Stoffen; diese Fernwirkungskräfte lassen sich durch Felder beschreiben. 
+System:  
+Ein elektrischer Stromkreis stellt ein geschlossenes System dar. Das 
+Zusammenwirken seiner Komponenten bestimmt die Funktion einfacher elektrischer 
+Geräte. 
+
+════════ PDF-SEITE 27 ════════
+  27 
+Inhaltsfeld 3: Schall  
+Inhaltliche Schwerpunkte: 
+– Schwingungen und Schallwellen: Tonhöhe und Lautstärke, Schallausbreitung, 
+Absorption, Reflexion 
+– Schallquellen und Schallempfänger: Sender-Empfängermodell; Ultraschall in 
+Tierwelt, Medizin und Technik; Lärm und Lärmschutz 
+Umgang mit Fachwissen 
+Die Schülerinnen und Schüler können 
+à die Entstehung und Wahrnehmung von Schall durch Schwingungen von Ge-
+genständen mit den bestimmenden Gru ndgrößen Tonh öhe und Lautstärke 
+beschreiben (UF1, UF4), 
+à Eigenschaften von hörbarem Schall, Ultraschall und Infraschall unterscheiden 
+und dazu Beispiele aus Natur, Medizin und Technik nennen (UF1, UF3, UF4), 
+à Reflexion und Absorption von Schall anhand von Beispielen erläutern (UF1), 
+à Lautstärken den Skalenwerten des Schalldruckpegels zuordnen und Auswir-
+kungen von Schall und Lärm auf die menschliche Gesundheit erläutern (UF1, 
+UF4). 
+Erkenntnisgewinnung 
+Die Schülerinnen und Schüler können 
+à die Ausbreitung von Schall in verschiedenen Medien mithilfe eines Teilchen-
+modells erklären (E6, UF1), 
+à an ausgewählten Musikinstrumenten (Saiteninstrumente, Blasinstrumente) 
+Möglichkeiten der Veränderung von Tonhöhe und Lautstärke zeigen und er-
+läutern (E3, E4, E5), 
+à mittels in digitalen Alltagsgeräten verfügbarer Sensoren Schallpegelmessun-
+gen durchführen und diese interpretieren (E4, E5), 
+à Schallschwingungen und deren Darstellungen auf digitalen Geräten in Grund-
+zügen analysieren (E5, UF3). 
+Bewertung 
+Die Schülerinnen und Schüler können 
+à Maßnahmen benennen und beurteilen, die in verschiedenen Alltagssituationen 
+zur Vermeidung von und zum Schutz vor Lärm ergriffen werden können (B1, 
+B3), 
+à Lärmbelastungen bewerten und daraus begründete Konsequenzen ziehen 
+(B1, B2, B3, B4). 
+
+════════ PDF-SEITE 28 ════════
+28 
+Beiträge zu den Basiskonzepten 
+Energie: 
+Schallwellen transportieren Energie. 
+Struktur der Materie: 
+Schall wird durch schwingende Teilchen transportiert und benötigt somit ein Medium 
+zur Ausbreitung. 
+Wechselwirkung: 
+Schall bringt Körper zum Schwingen, schwingende Körper erzeugen Schall, Schall 
+kann absorbiert oder reflektiert werden. 
+System: 
+Schallquelle, Transportmedium und Schallempfänger bilden ein System zur 
+Übertragung von Informationen. 
+Inhaltsfeld 4: Licht 
+Inhaltliche Schwerpunkte: 
+– Ausbreitung von Licht: Lichtquellen und Lichtempfänger, Modell des Lichtstrahls, 
+Abbildungen  
+– Sichtbarkeit und die Erscheinung von Gegenständen: Streuung, Reflexion, 
+Transmission, Absorption, Schattenbildung 
+Umgang mit Fachwissen 
+Die Schülerinnen und Schüler können 
+à die Sichtbarkeit und die Erscheinung von Gegenständen mit der Streuung, der 
+gerichteten Reflexion und der Absorption von Licht an ihren Oberflächen erklä-
+ren (UF1, K1, K3), 
+à die Entstehung von Abbildungen bei einer Lochkamera und Möglichkeiten zu 
+deren Veränderung erläutern (UF1, UF3), 
+à Infrarotstrahlung, sichtbares Licht und Ultraviolettstrahlung unterscheiden und 
+an Beispielen ihre Wirkungen beschreiben (UF3), 
+à an Beispielen aus Technik und Alltag die Umwandlung von Lichtenergie in an-
+dere Energieformen beschreiben (UF1). 
+
+════════ PDF-SEITE 29 ════════
+  29 
+Erkenntnisgewinnung 
+Die Schülerinnen und Schüler können 
+à die Ausbreitung des Lichts untersuchen und mit dem Strahlenmodell erklären 
+(E4, E5, E6), 
+à Vorstellungen zum Sehen kritisch vergleichen und das Sehen mit dem Strah-
+lenmodell des Lichts und dem Sender-Empfänger-Modell erklären (E6, K2), 
+à Abbildungen an einer Lochkamera sowie Schattenphänomene zeichnerisch 
+konstruieren (E6, K1, K3). 
+Bewertung 
+Die Schülerinnen und Schüler können 
+à geeignete Schutzmaßnahmen gegen die Gefährdungen durch helles Licht, Inf-
+rarotstrahlung und UV-Strahlung auswählen (B1, B2, B3), 
+à mithilfe optischer Phänomene die Schutz- bzw. Signalwirkung von Alltagsge-
+genständen begründen (B1, B4). 
+Beiträge zu den Basiskonzepten 
+Energie: 
+Lichtquellen sind Energiewandler. Licht transportiert Energie. 
+Struktur der Materie: 
+Das Verhalten von Licht an Körperoberflächen hängt vom Material des Körpers und 
+der Beschaffenheit der Oberfläche ab. 
+System: 
+Mit einem System aus Lochblende und Schirm lassen sich bereits einfache 
+Abbildungen erzeugen und verändern. 
+
+════════ PDF-SEITE 30 ════════
+30 
+2.3 Kompetenzerwartungen und inhaltliche Schwerpunkte bis zum 
+Ende der Sekundarstufe I 
+Am Ende der Sekundarstufe I sollen die Schülerinnen und Schüler über die im Fol-
+genden genannten Kompetenzen bezüglich der obligatorischen Inhalte verfügen. 
+Dabei werden zunächst übergeordnete Kompetenzerwartungen  zu allen Kompe-
+tenzbereichen aufgeführt. Während der Kompetenzbereich Kommunikation aus-
+schließlich inhaltsfeldübergreifend angelegt ist, werden in den Bereichen Umgang mit 
+Fachwissen, Erkenntnisgewinnung und Bewertung anschließend inhaltsfeldbezogen 
+konkretisierte Kompetenzerwartungen formuliert. Hinter den konkretisierten Kom-
+petenzerwartungen ist jeweils in Klammern angegeben, auf welche übergeordneten 
+Kompetenzerwartungen aus allen Bereichen sich diese beziehen. 
+Umgang mit Fachwissen 
+Die Schülerinnen und Schüler können 
+UF1  
+Wiedergabe und Er-
+läuterung 
+physikalisches Wissen strukturiert sowie bildungs- und fach-
+sprachlich angemessen darstellen und Bezüge zu zentralen 
+Konzepten und übergeordneten Regeln, Modellen und Prinzi-
+pien herstellen. 
+UF2  
+Auswahl und An-
+wendung  
+Konzepte zur Analyse und Lösung von Problemen begründet 
+auswählen und physikalisches Fachwissen zielgerichtet an-
+wenden. 
+UF3  
+Ordnung und Sys-
+tematisierung  
+physikalische Sachverhalte nach fachlichen Strukturen syste-
+matisieren und zentralen physikalischen Konzepten zuordnen. 
+UF4  
+Übertragung und 
+Vernetzung  
+naturwissenschaftliche Konzepte sachlogisch vernetzen und 
+auf variable Problemsituationen übertragen. 
+Erkenntnisgewinnung 
+Die Schülerinnen und Schüler können 
+E1  
+Problem und Fra-
+gestellung  
+Fragestellungen, die physikalischen Erklärungen bzw. Er-
+kenntnisprozessen zugrunde liegen, identifizieren und formu-
+lieren. 
+E2  
+Beobachtung und 
+Wahrnehmung 
+bei kriteriengeleiteten Beobachtungen die Beschreibung von 
+der Deutung klar trennen. 
+E3  zur Klärung physikalischer Fragestellungen überprüfbare Hy-
+
+════════ PDF-SEITE 31 ════════
+  31 
+Vermutung und Hy-
+pothese 
+pothesen formulieren und Möglichkeiten zur Überprüfung von 
+Hypothesen angeben. 
+E4  
+Untersuchung und 
+Experiment 
+Untersuchungen und Experimente systematisch unter Beach-
+tung von Sicherheitsvorschriften planen, dabei zu verändernde 
+bzw. konstant zu haltende Variablen identifizieren sowie die 
+Untersuchungen und Experimente zielorientiert durchführen 
+und protokollieren. 
+E5  
+Auswertung und 
+Schlussfolgerung 
+Beobachtungs- und Messdaten mit Bezug auf zugrunde lie-
+gende Fragestellungen und Hypothesen darstellen, interpretie-
+ren und daraus qualitative und einfache quantitative 
+Zusammenhänge bzw. funktionale Beziehungen zwischen 
+Größen ableiten und mögliche Fehler reflektieren. 
+E6  
+Modell und Realität 
+mit Modellen, auch in formalisierter oder mathematischer 
+Form, Phänomene und Zusammenhänge beschreiben, erklä-
+ren und vorhersagen sowie den Gültigkeitsbereich und die 
+Grenzen kritisch reflektieren. 
+E7  
+Naturwissenschaft-
+liches Denken und 
+Arbeiten 
+anhand von Beispielen die Entstehung, Bedeutung und Wei-
+terentwicklung physikalischer Erkenntnisse, insbesondere von 
+Regeln, Gesetzen und Modellen beschreiben. 
+Kommunikation 
+Die Schülerinnen und Schüler können 
+K1 
+Dokumentation 
+Arbeitsprozesse und Ergebnisse in strukturierter Form mithilfe 
+analoger Medien und digitaler Werkzeuge, vornehmlich Tabel-
+lenkalkulation, nachvollziehbar dokumentieren und dabei Bil-
+dungs- und Fachsprache sowie fachtypische 
+Darstellungsformen verwenden. 
+K2 
+Informations-
+verarbeitung 
+selbstständig physikalisch-technische Informationen und Daten 
+aus analogen und digitalen Medienangeboten filtern, sie in Be-
+zug auf ihre Relevanz, ihre Qualität, ihren Nutzen und ihre In-
+tention analysieren, sie aufbereiten und deren Quellen korrekt 
+belegen. 
+K3 
+Präsentation 
+physikalische Sachverhalte, Überlegungen und Arbeitsergeb-
+nisse unter Verwendung der Fachsprache sowie fachtypischer 
+Sprachstrukturen und Darstellungsformen sachgerecht, adres-
+satengerecht und situationsbezogen in Form von kurzen Vor-
+trägen und schriftlichen Ausarbeitungen präsentieren und 
+dafür digitale Medien reflektiert und sinnvoll verwenden. 
+K4 auf der Grundlage physikalischer Erkenntnisse und naturwis-
+
+════════ PDF-SEITE 32 ════════
+32 
+Argumentation senschaftlicher Denkweisen faktenbasiert, rational und schlüs-
+sig argumentieren sowie zu Beiträgen anderer respektvolle, 
+konstruktiv-kritische Rückmeldungen geben. 
+Bewertung 
+Die Schülerinnen und Schüler können 
+B1 
+Fakten- und Situati-
+onsanalyse 
+in einer Bewertungssituation relevante physikalische und naturwis-
+senschaftlich-technische Sachverhalte und Zusammenhänge iden-
+tifizieren, fehlende Informationen beschaffen sowie ggf. 
+gesellschaftliche Bezüge beschreiben. 
+B2 
+Bewertungskriterien 
+und Handlungsopti-
+onen  
+Bewertungskriterien festlegen und Handlungsoptionen erarbeiten. 
+B3 
+Abwägung und Ent-
+scheidung  
+Handlungsoptionen durch Gewichten und Abwägen von Kriterien 
+und nach Abschätzung der Folgen für die Natur, das Individuum 
+und die Gesellschaft auswählen. 
+B4 
+Stellungnahme und 
+Reflexion 
+Bewertungen und Entscheidungen argumentativ vertreten und re-
+flektieren. 
+Die Kompetenzen der Schülerinnen und Schüler sollen im Rahmen der Behandlung 
+der nachfolgenden, für diese Stufe obligatorischen Inhaltsfelder entwickelt werden: 
+5.) Optische Instrumente  
+6.) Sterne und Weltall 
+7.) Bewegung, Kraft und Energie 
+8.) Druck und Auftrieb 
+9.) Elektrizität 
+10.) Ionisierende Strahlung und Kernenergie 
+11.) Energieversorgung 
+Bezieht man übergeordnete Kompetenzerwartungen sowie die unten aufgeführten 
+inhaltlichen Schwerpunkte  aufeinander, so ergeben sich die nachfolgenden kon-
+kretisierten Kompetenzerwartungen: 
+
+════════ PDF-SEITE 33 ════════
+  33 
+Inhaltsfeld 5: Optische Instrumente 
+Inhaltliche Schwerpunkte: 
+– Spiegelungen: Reflexionsgesetz, Bildentstehung am Planspiegel 
+– Lichtbrechung: Brechung an Grenzflächen, Totalreflexion, Lichtleiter, 
+Bildentstehung bei Sammellinsen, Auge und optischen Instrumenten 
+– Licht und Farben: Spektralzerlegung, Absorption, Farbmischung 
+Umgang mit Fachwissen 
+Die Schülerinnen und Schüler können 
+à die Eigenschaften und die Entstehung des Spiegelbildes mithilfe des Reflexi-
+onsgesetzes und der geradlinigen Ausbreitung des Lichts erklären (UF1, E6), 
+à die Abhängigkeit der Brechung bzw. Totalreflexion des Lichts von den Para-
+metern Einfallswinkel und optische Dichte qualitativ erläutern (UF1, UF2, E5, 
+E6), 
+à die Funktion von Linsen für die Bilderzeugung im Auge und für den Aufbau 
+einfacher optischer Systeme beschreiben (UF2, UF4, K3), 
+à die Funktionsweise von Endoskop und Glasfaserkabel mithilfe der Totalrefle-
+xion erklären (UF1, UF2, UF4, K3), 
+à die Entstehung eines Spektrums durch die Farbzerlegung von Licht am Pris-
+ma darstellen und infrarotes, sichtbares und ultraviolettes Licht einem Spekt-
+ralbereich zuordnen (UF1, UF3, UF4, K3), 
+Erkenntnisgewinnung 
+Die Schülerinnen und Schüler können 
+à anhand einfacher Handexperimente die charakteristischen Eigenschaften ver-
+schiedener Linsentypen bestimmen (E2, E5), 
+à für Versuche zu optischen Abbildungen geeignete Linsen auswählen und die-
+se sachgerecht anordnen und kombinieren (E4, E1), 
+à unter Verwendung eines Lichtstrahlmodells die Bildentstehung bei Sammellin-
+sen sowie den Einfluss der Veränderung von Parametern mittels digitaler 
+Werkzeuge erläutern (Geometrie-Software, Simulationen) (E4, E5, UF3, UF1), 
+à digitale Farbmodelle (RGB, CMYK) mithilfe der Farbmischung von Licht erläu-
+tern und diese zur Erzeugung von digitalen Produkten verwenden (E6, E4, E5, 
+UF1). 
+  
+
+════════ PDF-SEITE 34 ════════
+34 
+Bewertung 
+Die Schülerinnen und Schüler können 
+à Gefahren beim Experimentieren mit intensiven Lichtquellen (Sonnenlicht, La-
+serstrahlung) einschätzen und Schutzmaßnahmen vornehmen (B1, B2), 
+à optische Geräte hinsichtlich ihres Nutzens für sich selbst, für die Forschung 
+und für die Gesellschaft beurteilen (B1, B4, K2, E7). 
+Beiträge zu den Basiskonzepten 
+Energie:  
+Durch Licht wird Energie transportiert.  
+Struktur der Materie: 
+Die Reflexion, Absorption und Brechung von Licht ist materialspezifisch. 
+Wechselwirkung: 
+Licht wird an Grenzflächen reflektiert, absorbiert und/oder bei Transmission 
+gebrochen. 
+System:  
+Systeme aus Linsen erzeugen je nach Anordnung unterschiedliche Abbildungen. 
+Inhaltsfeld 6: Sterne und Weltall 
+Inhaltliche Schwerpunkte: 
+– Sonnensystem: Mondphasen, Mond- und Sonnenfinsternisse, Jahreszeiten, 
+Planeten 
+– Universum: Himmelsobjekte, Sternentwicklung 
+Umgang mit Fachwissen 
+Die Schülerinnen und Schüler können 
+à den Aufbau des Sonnensystems sowie wesentliche Eigenschaften der Him-
+melsobjekte Sterne, Planeten, Monde und Kometen erläutern (UF1, UF3), 
+à den Wechsel der Jahreszeiten als Folge der Neigung der Erdachse erklären 
+(UF1), 
+à mit dem Maß Lichtjahr Entfernungen im Weltall angeben und vergleichen 
+(UF2), 
+à typische Stadien der Sternentwicklung in Grundzügen darstellen (UF1, UF3, 
+UF4, K3),  
+
+════════ PDF-SEITE 35 ════════
+  35 
+à mithilfe von Beispielen Auswirkungen der Gravitation sowie das Phänomen 
+der Schwerelosigkeit erläutern (UF1, UF4). 
+Erkenntnisgewinnung 
+Die Schülerinnen und Schüler können 
+à den Ablauf und die Entstehung von Mondphasen sowie von Sonnen- und 
+Mondfinsternissen modellhaft erklären (E2, E6, UF1, UF3, K3), 
+à die Bedeutung der Erfindung des Fernrohrs für die Entwicklung des Weltbildes 
+und der Astronomie erläutern (E7, UF1), 
+à an anschaulichen Beispielen qualitativ demonstrieren, wie Informationen über 
+das Universum gewonnen werden können (Parallaxen, Spektren) (E5, E1, 
+UF1, K3).  
+Bewertung 
+Die Schülerinnen und Schüler können 
+à wissenschaftliche und andere Vorstellungen über die Welt und ihre Entste-
+hung kritisch vergleichen und begründet bewerten (B1, B2, B4, K2, K4), 
+à auf der Grundlage von Informationen zu aktuellen Projekten der Raumfahrt die 
+wissenschaftliche und gesellschaftliche Bedeutung dieser Projekte nach aus-
+gewählten Kriterien beurteilen (B1, B3, K2). 
+Beiträge zu den Basiskonzepten 
+Energie:  
+Sterne setzen im Laufe ihrer Entwicklung Energie frei. 
+Struktur der Materie: 
+Mithilfe von Spektren lassen sich Informationen über die Zusammensetzung von 
+Sternen gewinnen. 
+Wechselwirkung: 
+Die Gravitation ist die wesentliche Wechselwirkung zwischen Himmelskörpern.  
+System: 
+Unser Sonnensystem besteht aus verschiedenen Körpern, die sich gegenseitig 
+beeinflussen. 
+
+════════ PDF-SEITE 36 ════════
+36 
+Inhaltsfeld 7: Bewegung, Kraft und Energie 
+Inhaltliche Schwerpunkte: 
+– Bewegungen: Geschwindigkeit, Beschleunigung 
+– Kraft: Bewegungsänderung, Verformung, Wechselwirkungsprinzip, Gewichtskraft 
+und Masse, Kräfteaddition, Reibung  
+– Goldene Regel der Mechanik: einfache Maschinen 
+– Energieformen: Lageenergie, Bewegungsenergie, Spannenergie  
+– Energieumwandlung: Energieerhaltung, Leistung 
+Umgang mit Fachwissen 
+Die Schülerinnen und Schüler können 
+à verschiedene Arten von Bewegungen mithilfe der Begriffe Geschwindigkeit 
+und Beschleunigung analysieren und beschreiben (UF1, UF3), 
+à mittlere und momentane Geschwindigkeiten unterscheiden und Geschwindig-
+keiten bei gleichförmigen Bewegungen berechnen (UF1, UF2),  
+à Kräfte als vektorielle Größen beschreiben und einfache Kräfteadditionen gra-
+fisch durchführen (UF1, UF2), 
+à die Konzepte Kraft und Gegenkraft sowie Kräfte im Gleichgewicht  unterschei-
+den und an Beispielen erläutern (UF3, UF1), 
+à die Goldene Regel anhand der Kraftwandl ung an einfachen Maschinen erläu-
+tern (UF1, UF3, UF4), 
+à Spannenergie, Bewegungsenergie und Lageenergie sowie andere Energie-
+formen bei physikalischen Vorgängen identifizieren (UF2, UF3), 
+à Energieumwandlungsketten aufstellen und daran das Prinzip der Energieer-
+haltung erläutern (UF1, UF3), 
+à mithilfe der Definitionsgleichung für Lageenergie einfache Energieumwand-
+lungsvorgänge berechnen (UF1, UF3), 
+à den Zusammenhang zwischen Energie und Leistung erläutern und formal be-
+schreiben (UF1, UF3), 
+à an Beispielen Leistungen berechnen und Leistungswerte mit Werten der eige-
+nen Körperleistung vergleichen (UF2, UF4).  
+  
+
+════════ PDF-SEITE 37 ════════
+  37 
+Erkenntnisgewinnung 
+Die Schülerinnen und Schüler können 
+à Kurvenverläufe in Orts-Zeit-Diagrammen interpretieren (E5, K3), 
+à Messdaten zu Bewegungen oder Kraftwirkungen in einer Tabellenkalkulation 
+mit einer angemessenen Stellenzahl aufzeichnen, mithilfe von Formeln und 
+Berechnungen auswerten sowie gewonnene Daten in sinnvollen, digital er-
+stellten Diagrammformen darstellen (E4, E5, E6, K1), 
+à Kräfte identifizieren, die zu einer Änderung des Bewegungszustands oder ei-
+ner Verformung von Körpern führen (E2), 
+à Massen und Kräfte messen sowie Gewichtskräfte berechnen (E4, E5, UF1, 
+UF2),  
+à die Goldene Regel der Mechanik mit dem Energieerhaltungssatz begründen 
+(E1, E2, E7, K4). 
+Bewertung 
+Die Schülerinnen und Schüler können 
+à Einsatzmöglichkeiten und den Nutzen von einfachen Maschinen und Werk-
+zeugen zur Bewältigung von praktischen Problemen aus einer physikalischen 
+Sichtweise bewerten (B1, B2, B3), 
+à Zugänge zu Gebäuden unter dem Gesichtspunkt Barrierefreiheit beurteilen 
+(B1, B4), 
+à Nahrungsmittel auf Grundlage ihres Energiegehalts bedarfsangemessen be-
+werten (B1, K2, K4). 
+Beiträge zu den Basiskonzepten 
+Energie: 
+Die Goldene Regel der Mechanik beschreibt einen Aspekt der Energieerhaltung; 
+Energie kann zwischen diversen Formen umgewandelt werden. 
+Wechselwirkung: 
+Durch die Einwirkung von Kräften ändern Körper ihre Bewegungszustände oder 
+verformen sich. 
+System: 
+Bei einem Kräftegleichgewicht ändert sich der Bewegungszustand eines Körpers 
+nicht; in geschlossenen Systemen bleibt die Energie erhalten. 
+
+════════ PDF-SEITE 38 ════════
+38 
+Inhaltsfeld 8: Druck und Auftrieb 
+Inhaltliche Schwerpunkte: 
+– Druck in Flüssigkeiten und Gasen: Dichte, Schweredruck, Auftrieb, 
+Archimedisches Prinzip, Luftdruck 
+– Druckmessung: Druck und Kraftwirkungen  
+Umgang mit Fachwissen 
+Die Schülerinnen und Schüler können 
+à bei Flüssigkeiten und Gasen die Größen Druck und Dichte mithilfe des Teil-
+chenmodells erläutern (UF1, E6), 
+à die Formelgleichungen für Druck und Dichte physikalisch erläutern und daraus 
+Verfahren zur Messung dieser Größen ableiten (UF1, E4, E5), 
+à den Druck bei unterschiedlichen Flächeneinheiten in der Einheit Pascal ange-
+ben (UF1), 
+à Auftriebskräfte unter Verwendung des Archimedischen Prinzips berechnen 
+(UF1, UF2, UF4). 
+Erkenntnisgewinnung 
+Die Schülerinnen und Schüler können 
+à den Schweredruck in einer Flüssigkeit in Abhängigkeit von der Tiefe bestim-
+men (E5, E6, UF2), 
+à die Entstehung der Auftriebskraft auf Körper in Flüssigkeiten mithilfe des 
+Schweredrucks erkl ären und in einem mathematischen Modell beschreiben 
+(E5, E6, UF2), 
+à die Nichtlinearität des Luftdrucks in Abhängigkeit von der Höhe mithilfe des 
+Teilchenmodells qualitativ erklären (E6, K4), 
+à anhand physikalischer Faktoren begründen, ob ein Körper in einer Flüssigkeit 
+oder einem Gas steigt, sinkt oder schwebt (E3, K4).
+Bewertung 
+Die Schülerinnen und Schüler können 
+à Angaben und Messdaten von Druckwerten in verschiedenen Alltagssituatio-
+nen auch unter dem Aspekt der Sicherheit sachgerecht interpretieren und be-
+werten (B1, B2, B3, K2). 
+
+════════ PDF-SEITE 39 ════════
+  39 
+Beiträge zu den Basiskonzepten 
+Struktur der Materie:  
+Der Druck in Flüssigkeiten und Gasen bestimmt den Abstand ihrer Teilchen. 
+Wechselwirkung:  
+In Flüssigkeiten und Gasen lassen sich Kraftwirkungen auf Flächen auf Stöße von 
+Teilchen zurückführen; Auftrieb entsteht durch Kraftdifferenzen an Flächen eines 
+Körpers. 
+System:  
+Druck- bzw. Dichteunterschiede können Bewegungen verursachen. 
+Inhaltsfeld 9: Elektrizität 
+Inhaltliche Schwerpunkte: 
+– Elektrostatik: elektrische Ladungen und Felder, Spannung 
+– elektrische Stromkreise: Elektronen-Atomrumpf-Modell, Ladungstransport und 
+elektrischer Strom, elektrischer Widerstand, Reihen- und Parallelschaltung, 
+Sicherheitsvorrichtungen 
+– elektrische Energie und Leistung 
+Umgang mit Fachwissen 
+Die Schülerinnen und Schüler können 
+à die Funktionsweise eines Elektroskops erläutern (UF1, E5, UF4, K3), 
+à die Entstehung einer elektrischen Spannung durch den erforderlichen Ener-
+gieaufwand bei der Ladungstrennung qualitativ erläutern (UF1, UF2), 
+à zwischen der Definition des elektrischen Widerstands und dem Ohm`schen 
+Gesetz unterscheiden (UF1), 
+à die Beziehung von Spannung, Stromstärke und Widerstand in Reihen- und 
+Parallelschaltungen mathematisch beschreiben und an konkreten Beispielen 
+plausibel machen (UF1, UF4, E6), 
+à Wirkungen von Elektrizität auf den menschlichen Körper in Abhängigkeit von 
+der Stromstärke und Spannung erläutern (UF1), 
+à den prinzipiellen Aufbau einer elektrischen Hausinstallation einschließlich der 
+Sicherheitsvorrichtungen darstellen (UF1, UF4), 
+
+════════ PDF-SEITE 40 ════════
+40 
+à die Definitionsgleichungen für elektrische Energie und elektrische Leistung er-
+läutern und auf ihrer Grundlage Berechnungen durchführen (UF1), 
+à Energiebedarf und Leistung von elektrischen Haushaltsgeräten ermitteln und 
+die entsprechenden Energiekosten berechnen (UF2, UF4). 
+Erkenntnisgewinnung 
+Die Schülerinnen und Schüler können 
+à Wechselwirkungen zwischen geladenen Körpern durch elektrische Felder be-
+schreiben (E6, UF1, K4), 
+à elektrische Aufladung und Leitungseigenschaften von Stoffen mithilfe eines 
+einfachen Elektronen-Atomrumpf-Modells erklären (E6, UF1),  
+à elektrische Schaltungen sachgerecht entwerfen, in Schaltplänen darstellen 
+und anhand von Schaltplänen aufbauen, (E4, K1), 
+à Spannungen und Stromstärken messen und elektrische Widerstände ermitteln 
+(E2, E5), 
+à die mathematische Modellierung von Me ssdaten in Form ei ner Gleichung un-
+ter Angabe von ab hängigen und unabhängigen Variablen er läutern und dabei 
+auftretende Konstanten interpretieren (E5, E6, E7),
+à Versuche zu Einflussgrößen auf den elektrischen Widerstand unter Berück-
+sichtigung des Prinzips der Variablenkontrolle planen und durchführen (E2, 
+E4, E5, K1). 
+Bewertung 
+Die Schülerinnen und Schüler können 
+à Gefahren und Sicherheitsmaßnahmen beim Umgang mit elektrischem Strom 
+und elektrischen Geräten beurteilen (B1, B2, B3, B4), 
+à Kaufentscheidungen für elektrische Geräte unter Abwägung physikalischer 
+und außerphysikalischer Kriterien treffen (B1, B3, B4, K2). 
+
+════════ PDF-SEITE 41 ════════
+  41 
+Beiträge zu den Basiskonzepten 
+Energie: 
+Elektrische Energie entsteht durch Trennung von Ladungen. Energie wird im 
+Stromkreis übertragen, umgewandelt und entwertet.  
+Struktur der Materie: 
+Das Elektronen-Atomrumpf-Modell erklärt Leitungseigenschaften verschiedener 
+Stoffe.  
+Wechselwirkung: 
+Elektrische Felder vermitteln Kräfte zwischen elektrischen Ladungen. 
+System: 
+Der elektrische Stromkreis ist in Bezug auf Ladungen ein geschlossenes System, 
+energetisch jedoch ein offenes System. Die elektrische Spannung beschreibt ein 
+Ungleichgewicht, das zu einem Fluss von Ladungsträgern führen kann. 
+Inhaltsfeld 10: Ionisierende Strahlung und Kernenergie  
+Inhaltliche Schwerpunkte: 
+– Atomaufbau und ionisierende Strahlung: Alpha-, Beta-, Gamma- Strahlung, 
+radioaktiver Zerfall, Halbwertszeit, Röntgenstrahlung 
+– Wechselwirkung von Strahlung mit Materie: Nachweismethoden, Absorption, 
+biologische Wirkungen, medizinische Anwendung, Schutzmaßnahmen 
+– Kernenergie: Kernspaltung, Kernfusion, Kernkraftwerke, Endlagerung 
+Umgang mit Fachwissen 
+Die Schülerinnen und Schüler können 
+à Eigenschaften verschiedener Arten ionisierender Strahlung (Alpha-, Beta-, 
+Gammastrahlung sowie Röntgenstrahlung) beschreiben (UF1, E4), 
+à mit Wirkungen der Lorentzkraft Bewegungen geladener Teilchen in einem 
+Magnetfeld qualitativ beschreiben (UF1), 
+à verschiedene Nachweismöglichkeiten ionisierender Strahlung beschreiben 
+und erläutern (UF1, UF4, K2, K3), 
+à Quellen und die Entstehung von Alpha-, Beta- und Gammastrahlung be-
+schreiben (UF1), 
+à die Wechselwirkung ionisierender Strahlung mit Materie erläutern sowie Ge-
+fährdungen und Schutzmaßnahmen erklären (UF1, UF2, E1),  
+
+════════ PDF-SEITE 42 ════════
+42 
+à die kontrollierte Kettenreaktion in einem Kernreaktor erläutern sowie den Auf-
+bau und die Sicherheitseinrichtungen von Reaktoren erklären (UF1, UF4, E1, 
+K4),  
+à medizinische und technische Anwendungen ionisierender Strahlung sowie zu-
+gehörige Berufsfelder darstellen (UF4, E1, K2, K3).
+Erkenntnisgewinnung 
+Die Schülerinnen und Schüler können 
+à die Aktivität radioaktiver Stoffe messen (Einheit Bq) und dabei den Einfluss 
+der natürlichen Radioaktivität berücksichtigen (E4), 
+à den Aufbau von Atomen, Atomkernen und Isotopen sowie die Kernspaltung 
+und Kernfusion mit einem passenden Modell beschreiben (E6, UF1), 
+à mit dem zufälligen Prozess des radioaktiven Zerfalls von Atomkernen das Zer-
+fallsgesetz und die Bedeutung von Halbwertszeiten erklären (E5, E4, E6), 
+à die Entwicklung und das Wirken von Forscherinnen und Forschern im Span-
+nungsfeld von Individualität, Wissenschaft, Politik und Gesellschaft darstellen 
+(E7, K2, K3). 
+Bewertung 
+Die Schülerinnen und Schüler können 
+à Daten zu Gefährdungen durch Radioaktivität anhand der effektiven Dosis 
+(Einheit Sv) unter Berücksichtigung der  Aussagekraft von Grenzwerten beur-
+teilen (B2, B3, B4, E1, K2, K3), 
+à Nutzen und Risiken radioaktiver Strahlung und Röntgenstrahlung auf der 
+Grundlage physikalischer und biologischer Erkenntnisse begründet abwägen 
+(K4, B1, B2, B3), 
+à Maßnahmen zum persönlichen Strahlenschutz begründen (B1, B4), 
+à Informationen verschiedener Interessengruppen zur Kernenergienutzung aus 
+digitalen und gedruckten Quellen beurteilen und eine eigene Position dazu 
+vertreten (B1, B2, B3, B4, K2, K4). 
+
+════════ PDF-SEITE 43 ════════
+  43 
+Beiträge zu den Basiskonzepten 
+Energie: 
+Durch Kernspaltung und Kernfusion kann nutzbare Energie gewonnen werden. 
+Struktur der Materie: 
+Mit einem erweiterten Modell des Atoms und des Atomkerns können Arten und 
+Eigenschaften von ionisierender Strahlung sowie von Isotopen erklärt werden. 
+Wechselwirkung: 
+Radioaktive Strahlung und Röntgenstrahlung können Atome und Moleküle ionisieren. 
+System: 
+Die Rückkopplung zwischen technischen Komponenten in einem Kernkraftwerk 
+erfolgt mit dem Ziel eines stabilen Gleichgewichts bei Kettenreaktionen der 
+Kernspaltung. Bei Systemen, die durch Zufallsprozesse bestimmt sind, sind 
+Vorhersagen auf der Grundlage einer stochastischen Beschreibung möglich. 
+Inhaltsfeld 11: Energieversorgung 
+Inhaltliche Schwerpunkte: 
+– Induktion und Elektromagnetismus: Elektromotor, Generator, Wechselspannung, 
+Transformator 
+– Bereitstellung und Nutzung von Energie: Kraftwerke, regenerative 
+Energieanlagen, Energieübertragung, Energieentwertung, Wirkungsgrad, 
+Nachhaltigkeit 
+Umgang mit Fachwissen 
+Die Schülerinnen und Schüler können 
+à Einflussfaktoren für die Entstehung und Größe einer Induktionsspannung er-
+läutern (UF1, UF3), 
+à den Aufbau und die Funktion von Generator und Transformator beschreiben 
+und die Erzeugung und Wandlung von Wechselspannung mithilfe der elektro-
+magnetischen Induktion erklären (UF1), 
+à Energieumwandlungen vom Kraftwerk bis zum Haushalt unter Berücksichti-
+gung von Energieentwertungen beschreiben und dabei die Verwendung von 
+Hochspannung zur Übertragung elektrischer Energie in Grundzügen begrün-
+den (UF1),  
+
+════════ PDF-SEITE 44 ════════
+44 
+à an Beispielen aus dem Alltag die technische Anwendung der elektromagneti-
+schen Induktion beschreiben (UF1, UF4), 
+à den Aufbau und die Funktionsweise einfacher Elektromotoren anhand von 
+Skizzen beschreiben (UF1), 
+à Beispiele für konventionelle und regenerative Energiequellen angeben und 
+diese unter verschiedenen Kriterien vergleichen (UF4, UF1, K2, K3, B1, B2), 
+à Probleme der schwankenden Verfügbarkeit von Energie und aktuelle Möglich-
+keiten zur Energiespeicherung erläutern (UF2, UF3, UF4, E1, K4).  
+Erkenntnisgewinnung 
+Die Schülerinnen und Schüler können 
+à magnetische Felder stromdurchflossener Leiter mithilfe von Feldlinien darstel-
+len und die Felder von Spulen mit deren Überlagerung erklären (E6), 
+à den Wirkungsgrad eines Energiewandlers berechnen und damit die Qualität 
+des Energiewandlers beurteilen (E4, E5, B1, B2, B4, UF1), 
+à Daten zur eigenen Nutzung von Elektrogeräten (u.a. Stromrechnungen, Pro-
+duktinformationen, Angaben zur Energieeffizienz) auswerten (E1, E4, E5, K2). 
+Bewertung 
+Die Schülerinnen und Schüler können 
+à die Notwendigkeit eines verantwortungsvollen Umgangs mit (elektrischer) 
+Energie argumentativ beurteilen (K4, B3, B4),  
+à Vor- und Nachteile erneuerbarer und nicht erneuerbarer Energiequellen mit 
+Bezug zum Klimawandel begründet gegeneinander abwägen und bewerten 
+(B3, B4, K2, K3), 
+à Chancen und Grenzen  physikalischer Sichtweisen bei Entscheidungen für die 
+Nutzung von Energieträgern aufzeigen (B1, B2), 
+à im Internet verfügbare Informationen und Daten zur Energieversorgung sowie 
+ihre Quellen und dahinterliegende mögliche Strategien kritisch bewerten (B1, 
+B2, B3, B4, K2). 
+
+════════ PDF-SEITE 45 ════════
+  45 
+Beiträge zu den Basiskonzepten 
+Energie: 
+Energie wird auf dem Weg zum Verbraucher in verschiedenen Umwandlungs-
+schritten nutzbar gemacht. 
+Wechselwirkung:  
+Kräfte auf bewegte Ladungsträger im Magnetfeld haben Bewegungsänderungen 
+bzw. Induktionsspannungen zur Folge. 
+System: 
+Elektrische Energie wird im Versorgungsnetz vom Kraftwerk zum Verbraucher 
+transportiert. 
+
+════════ PDF-SEITE 46 ════════
+46 
+3 Lernerfolgsüberprüfung und Leistungsbewertung  
+Die rechtlich verbindlichen Grundsätze der Leistungsbewertung sind im Schulgesetz 
+(§ 48 SchulG) sowie in der Ausbildungs- und Prüfungsordnung für die Sekundarstufe 
+I (§ 6 APO-SI) dargestellt. Demgemäß sind bei der Leistungsbewertung von Schüle-
+rinnen und Schülern im Fach Physik erbrachte Leistungen im Beurteilungsbereich 
+„Sonstige Leistungen im Unterricht“ zu berücksichtigen. Die Leistungsbewertung ins-
+gesamt bezieht sich auf die im Zusammenhang mit dem Unterricht erworbenen 
+Kompetenzen und setzt voraus, dass die Schülerinnen und Schüler hinreichend Ge-
+legenheit hatten, die in Kapitel 2 ausgewiesenen Kompetenzen zu erwerben. 
+Erfolgreiches Lernen ist kumulativ. Dies erfordert, dass Unterricht und Lernerfolgs-
+überprüfungen darauf ausgerichtet sein müssen, Schülerinnen und Schülern Gele-
+genheit zu geben, Kompetenzen wiederholt und in wechselnden Zusammenhängen 
+unter Beweis zu stellen. Für Lehrerinnen und Lehrer sind die Ergebnisse der Lerner-
+folgsüberprüfungen Anlass, die Zielsetzungen und die Methoden ihres Unterrichts zu 
+überprüfen und ggf. zu modifizieren. Für die Schülerinnen und Schüler sollen ein den 
+Lernprozess begleitendes Feedback sowie Rückmeldungen zu den erreichten Lern-
+ständen eine Hilfe für die Selbsteinschätzung sowie eine Ermutigung für das weitere 
+Lernen darstellen. Dies kann auch in Phasen des Unterrichts erfolgen, in denen kei-
+ne Leistungsbeurteilung durchgeführt wird. Die Beurteilung von Leistungen soll eben-
+falls grundsätzlich mit der Diagnose des erreichten Lernstandes und Hinweisen zum 
+individuellen Lernfortschritt verknüpft sein. 
+Die Leistungsbewertung ist so anzulegen, dass sie den in den Fachkonferenzen ge-
+mäß Schulgesetz (§ 70 Abs. 4 SchulG) beschlossenen Grundsätzen entspricht, dass 
+die Kriterien für die Notengebung den Schülerinnen und Schülern transparent sind 
+und die Korrekturen sowie die Kommentierungen den Lernenden auch Erkenntnisse 
+über die individuelle Lernentwicklung ermöglichen. Dazu gehören – neben der Etab-
+lierung eines angemessenen Umgangs mit eigenen Stärken, Entwicklungsnotwen-
+digkeiten und Fehlern – insbesondere auch Hinweise zu individuell Erfolg 
+versprechenden allgemeinen und fachmethodischen Lernstrategien. 
+Im Sinne der Orientierung an den zuvor formulierten Anforderungen sind grundsätz-
+lich alle in Kapitel 2 des Kernlehrplans ausgewiesenen Kompetenzbereiche bei der 
+Leistungsbewertung angemessen zu berücksichtigen. Überprüfungsformen schriftli-
+cher, mündlicher und praktischer Art sollen deshalb darauf ausgerichtet sein, die Er-
+reichung der dort aufgeführten Kompetenzerwartungen zu überprüfen. Ein isoliertes, 
+lediglich auf Reproduktion angelegtes Abfragen einzelner Daten und Sachverhalte al-
+lein kann dabei den zuvor formulierten Ansprüchen an die Leistungsfeststellung nicht 
+gerecht werden. Durch di e zunehmende Komplexität der Ler nerfolgsüberprüfungen 
+
+════════ PDF-SEITE 47 ════════
+  47 
+im Verlauf der Sekundarstufe I werden die Schülerinnen und Schüler auf die Anfor-
+derungen der nachfolgenden schulischen und beruflichen Ausbildung vorbereitet. 
+Beurteilungsbereich „Sonstige Leistungen im Unterricht“ 
+Der Beurteilungsbereich „Sonstige Leistungen im Unterricht“ erfasst die im Unter-
+richtsgeschehen durch mündliche, schriftliche und praktische Beiträge erkennbare 
+Kompetenzentwicklung der Schülerinnen und Schüler. Bei der Bewertung berück-
+sichtigt werden die Qualität, die Quantität und die Kontinuität der Beiträge. Die Kom-
+petenzentwicklung im Beurteilungsbereich „Sonstige Leistungen im Unterricht“ wird 
+sowohl durch kontinuierliche Beobachtung während des Schuljahres (Prozess der 
+Kompetenzentwicklung) als auch durch punktuelle Überprüfungen (Stand der Kom-
+petenzentwicklung) festgestellt. Bei der Bewertung von Leistungen, die die Schüle-
+rinnen und Schüler im Rahmen von Partner- oder Gruppenarbeiten erbringen, kann 
+der individuelle Beitrag zum Ergebnis der Partner- bzw. Gruppenarbeit einbezogen 
+werden. 
+Zum Beurteilungsbereich „Sonstige Leistungen im Unterricht“ – ggf. auch auf der 
+Grundlage der außerschulischen Vor- und Nachbereitung von Unterricht – zählen 
+u.a. unterschiedliche Formen der selbstständigen und kooperativen Aufgabenerfül-
+lung, mündliche, praktische und schriftliche Beiträge zum Unterricht, von der Lehr-
+kraft abgerufene Leistungsnachweise wie z.B. die schriftliche Übung, von der 
+Schülerin oder dem Schüler vorbereitete, in abgeschlossener Form eingebrachte 
+Elemente zur Unterrichtsarbeit, die z.B. in Form von Präsentationen, Protokollen, Re-
+feraten und Portfolios möglich werden. 
+Mögliche Überprüfungsformen 
+Die Kompetenzerwartungen des Kernlehrplans ermöglichen eine Vielzahl von Über-
+prüfungsformen. Im Verlauf der Sekundarstufe I soll ein möglichst breites Spektrum 
+der im Folgenden aufgeführten Überprüfungsformen in schriftlichen, mündlichen oder 
+praktischen Kontexten zum Einsatz gebracht werden. Darüber hinaus können weitere 
+Überprüfungsformen nach Entscheidung der Lehrkraft eingesetzt werden. 
+Darstellungsaufgaben 
+− Beschreibung und Erläuterung eines naturwissenschaftlichen Phänomens, 
+Konzepts oder Sachverhalts 
+− Darstellung eines naturwissenschaftlichen Zusammenhangs 
+Experimentelle Aufgaben 
+− Planung, Durchführung und Auswertung von Experimenten 
+− Finden und Formulieren von Gesetzmäßigkeiten 
+− Überprüfung von Vermutungen und Hypothesen 
+
+════════ PDF-SEITE 48 ════════
+48 
+− Interpretation, fachspezifische Bewertung und Präsentation experimenteller 
+Ergebnisse 
+Aufgaben zu Messreihen und Daten 
+− Dokumentation und Strukturierung von Daten 
+− Auswertung und Bewertung von Daten 
+− Prüfung von Daten auf Zusammenhänge und Gesetzmäßigkeiten  
+Aufgaben zu Modellen 
+− Erklärung eines Zusammenhangs oder Überprüfung einer Aussage mit einem 
+Modell 
+− Anwendung eines Modells auf einen konkreten Sachverhalt 
+− Übertragung eines Modells auf einen anderen Zusammenhang 
+− Aufzeigen der Grenzen eines Modells 
+Rechercheaufgaben 
+− Erarbeitung von Phänomenen und Sachverhalten aus Texten, Darstellungen 
+und Stellungnahmen 
+− Analyse, Vergleich und Strukturierung recherchierter Informationen 
+Dokumentationsaufgaben 
+− Protokollieren von Untersuchungen und Experimenten 
+− Dokumentation von Projekten 
+− Portfolio 
+Präsentationsaufgaben 
+− Vorführung/Demonstration eines Experimentes 
+− Kurzvortrag, Referat 
+− Aufbereitung eines Fachtextes  
+− Medienbeitrag (z.B. Film) 
+Bewertungsaufgaben 
+− Analyse und Deutung von Phänomenen und Sachverhalten 
+− Stellungnahme zu Texten und Medienbeiträgen 
+− Abwägen zwischen alternativen Lösungswegen 
+− Argumentation und Entscheidungsfindung in Konflikt- oder Dilemma-
+Situationen 
