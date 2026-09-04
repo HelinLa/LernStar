@@ -3072,7 +3072,7 @@ const HEFT_SEITEN = {
     schritte: ["Lies ab, welche Angaben im Datenblatt stehen, und unterstreiche darin jede Zahl.", "Vergleiche die Spalten des Datenblatts und markiere, wo die Unterschiede am größten sind.", "Wähle vier Angaben aus, die für dich am schwersten wiegen, und trage sie in die Tabelle ein."]
   },
   "wm1": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "thermometer", seite: 5,
     kapitel: "Temperatur und Wärme",
     name: "Wie misst man, wie warm etwas ist?",
@@ -3082,7 +3082,7 @@ const HEFT_SEITEN = {
     schritte: ["Schiebe den Regler Temperatur langsam nach oben und beobachte, wie die rote Säule in der Röhre mitwandert.", "Tippe nacheinander auf Eiswasser, Bens Faust, warmes Wasser und kochendes Wasser und lies jedes Mal den angezeigten Wert in °C ab.", "Stelle den Regler Temperatur auf -10 °C und beobachte, wie tief die Säule jetzt fällt."]
   },
   "wm2": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "temperatur-waerme", seite: 7,
     kapitel: "Temperatur und Wärme",
     name: "Sind Temperatur und Wärme dasselbe?",
@@ -3092,7 +3092,7 @@ const HEFT_SEITEN = {
     schritte: ["Schiebe die Temperatur von Gefäß 2 auf 80 °C, lies in der Statuszeile die Wärmemenge beider Gefäße ab und tippe dann auf In Kontakt bringen.", "Stelle die Temperatur von Gefäß 2 zurück auf 20 °C, notiere erst beide Wärmemengen und lies nach dem Tippen auf In Kontakt bringen die Mischtemperatur ab.", "Schiebe die Menge von Gefäß 2 auf 1 L, notiere die Wärmemengen, tippe noch einmal auf In Kontakt bringen und vergleiche die neue Mischtemperatur mit vorher."]
   },
   "wm3": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "waermeuebertragung", seite: 10,
     kapitel: "Temperatur und Wärme",
     name: "Auf welchen Wegen wandert Wärme?",
@@ -3102,7 +3102,7 @@ const HEFT_SEITEN = {
     schritte: ["Wähle Leitung und verfolge im Bild, wie die Wärme von der Flamme durch den Metallstab vom heißen zum kalten Ende wandert.", "Wähle Strömung und beobachte im Topf, wie das warme Wasser in der Mitte aufsteigt und das kalte außen absinkt.", "Wähle Strahlung und lies im Feld Das passiert gerade nach, wie die Wärme der Sonne durch den leeren Raum kommt."]
   },
   "wm4": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "daemmung", seite: 12,
     kapitel: "Temperatur und Wärme",
     name: "Wie hält man Wärme auf?",
@@ -3112,7 +3112,7 @@ const HEFT_SEITEN = {
     schritte: ["Wähle den Dämmstoff ohne Dämmung und starte mit Messreihe (0–10 min) die erste Messung.", "Tippe auf Alle Materialien und lies für jede Hülle in der Spalte T (°C) die Temperatur nach 10 min ab.", "Vergleiche im Diagramm der Auswertung, welche Abkühlkurve am flachsten verläuft."]
   },
   "wm5": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "waermeausdehnung", seite: 14,
     kapitel: "Temperatur und Wärme",
     name: "Warum passt der heiße Deckel nicht mehr?",
@@ -3122,7 +3122,7 @@ const HEFT_SEITEN = {
     schritte: ["Wähle die Taste fest und schiebe den Regler Temperatur von 20 °C auf 100 °C – beobachte die Teilchen und den Balken Größe des Stoffs.", "Stelle nacheinander flüssig und Gas ein und lies jeweils in der Statuszeile die Ausdehnung bei 100 °C ab.", "Schiebe den Regler zurück auf 20 °C und beobachte, was mit der Größe des Stoffs passiert."]
   },
   "wm6": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "aggregatzustaende", seite: 16,
     kapitel: "Temperatur und Wärme",
     name: "Fest, flüssig, gasförmig - was passiert beim Wechsel?",
@@ -3132,7 +3132,7 @@ const HEFT_SEITEN = {
     schritte: ["Schiebe den Regler Temperatur ganz nach links auf −20 °C und lies in der Statuszeile ab, wie die Teilchen im Eis sitzen.", "Erwärme das Eis Schritt für Schritt mit der Taste erwärmen oder dem Regler und beobachte, kurz nach welcher Marke der Skala die Statuszeile auf Wasser – flüssig umspringt.", "Stelle 100 °C ein und vergleiche die Teilchen des Wasserdampfs mit denen im Eisgitter."]
   },
   "wm7": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "anomalie-wasser", seite: 18,
     kapitel: "Temperatur und Wärme",
     name: "Warum schwimmt Eis oben?",
@@ -3142,7 +3142,7 @@ const HEFT_SEITEN = {
     schritte: ["Schiebe den Regler Wassertemperatur langsam von 10 °C auf 0 °C und beobachte im Feld Nachgerechnet, wie sich Dichte und Volumen von 1 kg Wasser verändern.", "Tippe auf 4 °C · am dichtesten und lies unter Nachgerechnet ab, wie viele Liter 1 kg Wasser jetzt braucht – vergleiche mit dem Eis-Wert unter der Überschrift 4 · Und Eis?", "Tippe auf Der See im Winter und stelle den Regler nacheinander auf 0 °C, 2 °C und 4 °C – der Messfühler zeigt dir, in welcher Tiefe er dieses Wasser findet."]
   },
   "sm1": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "stromkreis-lampe", seite: 29,
     kapitel: "Strom und Magnete",
     name: "Wann leuchtet das Lämpchen?",
@@ -3152,7 +3152,7 @@ const HEFT_SEITEN = {
     schritte: ["Sieh dir den Anfangszustand an: Die Taste Schalter steht auf geschlossen, die Taste Kabel auf heil. Lies die Statuszeile ab.", "Tippe auf die Taste Schalter, sodass dort offen steht, und beobachte Lämpchen und Statuszeile.", "Stelle den Schalter wieder auf geschlossen und tippe dann auf die Taste Kabel, sodass dort unterbrochen steht. Probiere zum Schluss beide Störungen gleichzeitig aus."]
   },
   "sm2": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "schaltplan", seite: 31,
     kapitel: "Strom und Magnete",
     name: "Wie zeichnet man einen Stromkreis?",
@@ -3162,7 +3162,7 @@ const HEFT_SEITEN = {
     schritte: ["Wähle die Ansicht Aufbau (Bild) und tippe auf die Taste Schalter: Im Bild steht dann offen – Lampe aus oder geschlossen – Lampe leuchtet.", "Wechsle zur Ansicht Schaltplan und finde Batterie, Lampe und Schalter in der Zeichnung wieder; der Zettel aus der Kiste hilft dir dabei.", "Bearbeite das Zuordnungsspiel, bis unter allen vier Fragen Richtig! steht."]
   },
   "sm3": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "leiter-nichtleiter", seite: 33,
     kapitel: "Strom und Magnete",
     name: "Welche Stoffe lassen Strom hindurch?",
@@ -3172,7 +3172,7 @@ const HEFT_SEITEN = {
     schritte: ["Tippe nacheinander alle neun Materialien an, von der Büroklammer bis zum Radiergummi – jedes wird in die Lücke gesetzt.", "Beobachte bei jedem Material das Lämpchen und die Meldung im Bild: Lampe leuchtet: Leiter oder Lampe aus: Nichtleiter.", "Lies zum Schluss die Regel ab, die nach Alle getestet! erscheint, und vergleiche sie mit deinen zwei Gruppen."]
   },
   "sm4": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "reihenschaltung-rs", seite: 35,
     kapitel: "Strom und Magnete",
     name: "Was ändert sich, wenn Lampen hintereinander hängen?",
@@ -3182,7 +3182,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle mit dem Schieberegler Anzahl Lampen in Reihe nacheinander 1, 2 und 3 ein und lies jedes Mal die Angabe Helligkeit je Lampe ab.", "Beobachte dabei die Lampen im Bild und die Statuszeile: Sie meldet, ob alle Lampen leuchten.", "Tippe bei 2 Lampen auf die Taste Lampe 2, sodass dort herausgedreht steht, und beobachte, was mit der anderen Lampe und der Helligkeit passiert."]
   },
   "sm5": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "parallelschaltung-rs", seite: 37,
     kapitel: "Strom und Magnete",
     name: "Was ändert sich, wenn jede Lampe ihren eigenen Weg hat?",
@@ -3192,7 +3192,7 @@ const HEFT_SEITEN = {
     schritte: ["Beobachte den Anfangszustand: Beide Tasten stehen auf an, die Statuszeile meldet: Beide Lampen leuchten – jede voll hell.", "Tippe auf die Taste Bens Schalter (Lampe 1), sodass dort aus steht, und beobachte Lampe 2 und die Statuszeile.", "Stelle nacheinander alle vier Stellungen der beiden Schalter ein und trage jedes Mal ein, welche Lampe leuchtet."]
   },
   "sm6": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "und-oder-schaltung", seite: 39,
     kapitel: "Strom und Magnete",
     name: "UND oder ODER - wie schalten zwei Schalter zusammen?",
@@ -3202,7 +3202,7 @@ const HEFT_SEITEN = {
     schritte: ["Wähle UND · in Reihe und stelle mit den Knöpfen Schalter S1 und Schalter S2 nacheinander alle vier Stellungen aus offen und geschlossen ein; lies jedes Mal ab, ob darunter Lampe = 1 (leuchtet) oder Lampe = 0 (aus) steht.", "Wähle ODER · parallel und stelle dieselben vier Stellungen noch einmal ein; beobachte, wie sich der Stromkreis in zwei Zweige umbaut und die grün gestrichelten Stromwege nur durch geschlossene Zweige laufen.", "Lies in der Wahrheitstabelle ab, in wie vielen der vier Zeilen die Lampe bei UND an ist und in wie vielen bei ODER; trage deine Ergebnisse mit 0 = offen und 1 = geschlossen in die Tabelle ein."]
   },
   "sm7": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "stromwirkungen", seite: 42,
     kapitel: "Strom und Magnete",
     name: "Was kann der Strom alles bewirken?",
@@ -3212,7 +3212,7 @@ const HEFT_SEITEN = {
     schritte: ["Wähle unter Gerät anschließen nacheinander Glühlampe, Heizdraht, Spule (Elektromagnet) und Elektromotor.", "Lies in der Liste Beobachtete Wirkung(en) ab, welche Wirkungen einen Haken bekommen, und trage sie in die Tabelle ein.", "Schiebe den Regler Stromstärke I von 1 A auf 5 A und beobachte, wie sich Lampe, Draht und Motor im Bild verändern."]
   },
   "sm8": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "elektronen-drift", seite: 44,
     kapitel: "Strom und Magnete",
     name: "Was fließt da eigentlich im Draht?",
@@ -3222,7 +3222,7 @@ const HEFT_SEITEN = {
     schritte: ["Tippe auf die Taste Leselampe und lies im Feld Nachgerechnet ab, wie viele Millimeter je Sekunde die Elektronen wandern und wie lange sie für einen Meter Kabel brauchen.", "Wähle danach Handy-Ladegerät und Wasserkocher und trage die Werte in die Tabelle ein.", "Schiebe den Regler Stromstärke langsam nach rechts und beobachte, wie sich die Zeile Wandern unter dem Draht verändert."]
   },
   "sm9": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "stromgefahren", seite: 47,
     kapitel: "Strom und Magnete",
     name: "Wozu gibt es Sicherungen?",
@@ -3232,7 +3232,7 @@ const HEFT_SEITEN = {
     schritte: ["Lies im Feld Strom & Sicherung ab, wie viel Ampere ein einzelnes Gerät zieht, und trage den Wert in die Tabelle ein.", "Tippe dreimal auf Gerät anschließen und notiere nach jedem neuen Gerät die Ampere-Zahl und ob die Sicherung hält oder auslöst.", "Drücke Sicherung zurücksetzen und finde mit Gerät anschließen und Gerät entfernen heraus, wie viele Geräte gerade noch sicher laufen."]
   },
   "sm10": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "magnetpole", seite: 49,
     kapitel: "Strom und Magnete",
     name: "Wo zieht ein Magnet am stärksten?",
@@ -3242,7 +3242,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle mit dem Regler den Abstand d auf 2 cm ein und lies ab, wie viele Skalenteile der Kraftmesser zeigt.", "Schiebe den Regler nacheinander auf 4 cm, 8 cm und 12 cm und trage die Skalenteile jeweils in die Tabelle ein.", "Wähle die Taste Magnet an der Tür umgedreht und beobachte, was aus der Anziehung wird und wohin die Pfeile jetzt zeigen."]
   },
   "sm11": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "magnet-stoffe", seite: 51,
     kapitel: "Strom und Magnete",
     name: "Was zieht ein Magnet an - und was nicht?",
@@ -3252,7 +3252,7 @@ const HEFT_SEITEN = {
     schritte: ["Tippe der Reihe nach auf alle neun Materialien, vom Eisen-Nagel bis zu Blech 3.", "Beobachte die Meldung unten im Bild – „wird angezogen!“ oder „bleibt liegen – nicht magnetisch“ – und trage Ja oder Nein in die Tabelle ein.", "Vergleiche am Ende die beiden Gruppen „wird angezogen“ und „wird nicht angezogen“ und lies die Regel unter der Tabelle ab."]
   },
   "sm12": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "magnetfeld", seite: 53,
     kapitel: "Strom und Magnete",
     name: "Wie sieht man das Unsichtbare um den Magneten?",
@@ -3262,7 +3262,7 @@ const HEFT_SEITEN = {
     schritte: ["Schiebe den Regler „Stelle am Magneten“ auf 0° und den Regler „Abstand des Prüfkompasses vom Magneten“ auf 55 und beobachte die rote Spitze des Prüfkompasses.", "Stelle danach 90° und 180° ein und vergleiche, wie sich die Nadel an jeder Stelle des Magneten ausrichtet.", "Lass die Taste „Feldlinien“ eingeschaltet und untersuche, wo die Linien dicht beieinanderliegen und wo sie weit auseinanderlaufen – auch beim Abstand 140."]
   },
   "sm13": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "elementarmagnete", seite: 56,
     kapitel: "Strom und Magnete",
     name: "Wie wird ein Nagel selbst zum Magneten?",
@@ -3272,7 +3272,7 @@ const HEFT_SEITEN = {
     schritte: ["Lass die Streichwirkung auf 30 % stehen und tippe dreimal nacheinander auf „Mit Magnet streichen“ – lies nach jedem Strich unter „Nachgerechnet“ ab, wie viele der 64 Pfeile ausgerichtet sind und wie viele Büroklammern der Nagel trägt, und trage die Werte in die Tabelle ein.", "Tippe danach auf „Erhitzen“ und trage ein, wie viele Pfeile jetzt noch ausgerichtet sind und wie viele Büroklammern hängen bleiben.", "Magnetisiere den Nagel mit drei neuen Strichen und tippe auf „Nagel durchsägen“ – prüfe unter „Nachgerechnet“, ob eines der beiden Stücke nur einen einzigen Pol hat."]
   },
   "sm14": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "kompass", seite: 59,
     kapitel: "Strom und Magnete",
     name: "Warum zeigt der Kompass nach Norden?",
@@ -3282,7 +3282,7 @@ const HEFT_SEITEN = {
     schritte: ["Tippe mehrmals auf „Nadel anstoßen“ und beobachte, wo die rote Nadelspitze jedes Mal zur Ruhe kommt.", "Schalte die Taste „in der Bude: Noahs Magnetleiste“ ein und stelle „Magnet – Abstand“ erst auf 3 cm, dann auf 15 cm – beobachte die rote Spitze.", "Schalte zuletzt die Taste „Erdmagnetfeld“ aus und prüfe, wohin sich die Nadel jetzt dreht."]
   },
   "sl1": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "ton-entsteht", seite: 69,
     kapitel: "Schall",
     name: "Wie entsteht ein Ton?",
@@ -3292,7 +3292,7 @@ const HEFT_SEITEN = {
     schritte: ["Tippe auf»Gummiband zupfen«und beobachte, wie das Band ausschlägt und welche Linien von ihm ausgehen.", "Lies im Feld»Zustand«ab, ob du einen Ton hörst, und trage es in die Tabelle ein.", "Tippe auf»Finger auf das Band legen«und vergleiche, was das Band jetzt macht und was im Feld»Zustand«steht."]
   },
   "sl2": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "tonhoehe", seite: 71,
     kapitel: "Schall",
     name: "Was macht einen Ton hoch oder tief?",
@@ -3302,7 +3302,7 @@ const HEFT_SEITEN = {
     schritte: ["Schiebe den Regler»So schnell schwingt Emmas Glas«ganz nach links auf 100 Hz und betrachte, wie weit die Wellenberge auseinanderliegen.", "Lies im Feld»Tonhöhe«ab, ob der Ton tief, mittel oder hoch ist, und trage es mit dem Hz-Wert in die Tabelle ein.", "Stelle nacheinander 300 Hz, 560 Hz und 800 Hz ein und beobachte, wie der Punkt auf der Skala von»tief«nach»hoch«wandert."]
   },
   "sl3": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "lautstaerke", seite: 73,
     kapitel: "Schall",
     name: "Was macht einen Ton laut oder leise?",
@@ -3312,7 +3312,7 @@ const HEFT_SEITEN = {
     schritte: ["Schiebe den Regler»So fest zupft Ben am Gummiband«ganz nach links und betrachte den Ausschlag der Kurve und die gestrichelte Linie»Amplitude«.", "Lies im Feld»Lautstärke«ab, was dort steht, und trage es in die Tabelle ein.", "Stelle den Regler in die Mitte und danach ganz nach rechts und vergleiche Ausschlag, Balken und Anzeige."]
   },
   "sl4": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "schallausbreitung", seite: 75,
     kapitel: "Schall",
     name: "Wie kommt der Schall zu uns?",
@@ -3322,7 +3322,7 @@ const HEFT_SEITEN = {
     schritte: ["Wähle unter»Stoff zwischen Glocke und Ohr«zuerst»Luft«und beobachte, wie die Teilchen die Schwingung von der Glocke zum Ohr weitergeben.", "Lies im Feld»Ergebnis«ab, ob du die Glocke hörst und was dort über die Geschwindigkeit steht, und trage beides in die Tabelle ein.", "Wähle danach»Wasser«,»Balken (Holz)«und zuletzt»Vakuum (Weltall)«und vergleiche, was mit den Teilchen und dem Ton passiert."]
   },
   "sl5": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "schall", seite: 77,
     kapitel: "Schall",
     name: "Warum hallt es in der Turnhalle?",
@@ -3332,7 +3332,7 @@ const HEFT_SEITEN = {
     schritte: ["Schiebe den Regler Frequenz f ganz nach links auf 100 Hz und sieh dir an, wie weit die Verdichtungen im Bild auseinanderliegen.", "Lies im weißen Kästchen oben rechts den Abstand λ und die Geschwindigkeit c ab und trage beide in die Tabelle ein.", "Stelle nacheinander 400 Hz, 1000 Hz und 2000 Hz ein und prüfe jedes Mal, ob sich die Geschwindigkeit c ändert."]
   },
   "sl6": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "laermschutz", seite: 79,
     kapitel: "Schall",
     name: "Wann wird Schall zu Lärm?",
@@ -3342,7 +3342,7 @@ const HEFT_SEITEN = {
     schritte: ["Lass die Lautstärke der Quelle auf 100 dB stehen und lies in der Statuszeile ab, wie viele dB bei 2 m Abstand am Ohr ankommen.", "Schiebe den Regler Abstand zur Quelle auf 16 m, lies erneut ab und stelle danach wieder 2 m ein.", "Tippe zuerst auf Gehörschutz, schalte ihn wieder aus und tippe dann auf Schallschutz (Absorption) – vergleiche die Zahlen am Ohr."]
   },
   "sl7": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "ohr", seite: 81,
     kapitel: "Schall",
     name: "Wie hört das Ohr?",
@@ -3352,7 +3352,7 @@ const HEFT_SEITEN = {
     schritte: ["Schiebe den Regler So laut schlägt Noah den Topf an ganz nach links auf leise und beobachte das rote Trommelfell im Bild.", "Stelle danach mittel und laut ein und vergleiche, wie stark das Trommelfell jedes Mal hin- und herschwingt.", "Öffne erst zum Schluss den Klapptext Erst nach dem Versuch öffnen: der Weg des Schalls und lies die sechs Stationen nach."]
   },
   "sl8": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "tonhoehe", seite: 83,
     kapitel: "Schall",
     name: "Was hören Tiere, was wir nicht hören?",
@@ -3362,7 +3362,7 @@ const HEFT_SEITEN = {
     schritte: ["Schiebe den Regler So schnell schwingt Emmas Glas ganz nach links auf 100 Hz und lies die Anzeige in der Statuszeile ab.", "Stelle danach 300 Hz und 800 Hz ein und trage jedes Mal ein, ob dort tiefer, mittlerer oder hoher Ton steht.", "Beobachte die violette Welle im Bild: Zähle, ob bei 800 Hz mehr Wellenberge zu sehen sind als bei 100 Hz."]
   },
   "li1": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "lichtausbreitung", seite: 93,
     kapitel: "Licht",
     name: "Wie breitet sich Licht aus?",
@@ -3372,7 +3372,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle den Regler „Loch der 1. Blende“ auf +18 und lass „Loch der 2. Blende“ auf 0 stehen. Lies die Statuszeile.", "Schiebe „Loch der 2. Blende“, bis die Statuszeile „Das Licht kommt durch!“ meldet und der Strahl genau durch die Mitte des Lochs läuft. Notiere beide Zahlen in der Tabelle.", "Wiederhole das mit „Loch der 1. Blende“ auf -20 und auf 0 und trage jedes Mal die passende Zahl der 2. Blende ein."]
   },
   "li2": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "sehen", seite: 95,
     kapitel: "Licht",
     name: "Warum sehen wir Dinge?",
@@ -3382,7 +3382,7 @@ const HEFT_SEITEN = {
     schritte: ["Tippe auf „Zimmerlicht“, sodass dort „aus“ steht, und wähle nacheinander Kerze und Taschenlampe. Lies jedes Mal die Statuszeile.", "Wähle bei ausgeschaltetem Zimmerlicht die Tüte Gummibärchen und den Mond und trage ein, ob du etwas siehst.", "Schalte das Zimmerlicht wieder an und prüfe alle Gegenstände noch einmal – auch das Katzenauge."]
   },
   "li3": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "licht-oberflaeche", seite: 97,
     kapitel: "Licht",
     name: "Warum spiegelt das eine und das andere nicht?",
@@ -3392,7 +3392,7 @@ const HEFT_SEITEN = {
     schritte: ["Wähle nacheinander Spiegel, Fensterglas, schwarzes Papier und weißes Papier und lies in der Statuszeile die drei Prozentzahlen ab.", "Beobachte im Bild genau, auf wie vielen Wegen das Licht beim Spiegel und beim weißen Papier zurückläuft.", "Stelle den „Winkel zum Lot“ erst auf 0° und dann auf 80° und prüfe, ob sich die Prozentzahlen ändern."]
   },
   "li4": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "dunkle-flaechen", seite: 99,
     kapitel: "Licht",
     name: "Warum wird Dunkles in der Sonne heißer?",
@@ -3402,7 +3402,7 @@ const HEFT_SEITEN = {
     schritte: ["Wähle unter „Farbe der Fläche wählen“ zuerst schwarz und beobachte, wie die Temperaturanzeige neben der Fläche von 20 °C aus steigt.", "Lies in der Liste „Endtemperatur im Vergleich“ die Werte für alle vier Farben ab und trage sie in die Tabelle ein.", "Vergleiche im Bild, wie viele blaue „reflektiert“-Strahlen bei schwarz und bei silber (blank) zurücklaufen."]
   },
   "li5": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "schatten-entstehung", seite: 101,
     kapitel: "Licht",
     name: "Wie entsteht ein Schatten?",
@@ -3412,7 +3412,7 @@ const HEFT_SEITEN = {
     schritte: ["Tippe auf „Gegenstand“, sodass dort „entfernt“ steht, und lies die Statuszeile. Hole den Gegenstand dann zurück.", "Stelle den Regler „Lampe (Höhe)“ nacheinander auf oben, Mitte und unten und beobachte den Schatten an der Bretterwand.", "Trage in die Tabelle ein, wo der Schatten an der Bretterwand liegt – und was ohne Gegenstand passiert."]
   },
   "li6": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "schatten-groesse", seite: 103,
     kapitel: "Licht",
     name: "Wovon hängt die Größe des Schattens ab?",
@@ -3422,7 +3422,7 @@ const HEFT_SEITEN = {
     schritte: ["Wähle „Bretterwand verschieben“ und stelle den Schirmabstand b nacheinander auf 30 cm, 60 cm und 90 cm ein.", "Lies nach jeder Einstellung unter dem Bild die aktuelle Schattengröße B ab und trage sie in die Tabelle ein.", "Wähle danach „Pappwolf verschieben“ und schiebe den Gegenstandsabstand a von 10 cm bis 40 cm – beobachte dabei die Anzeige von B."]
   },
   "li7": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "kern-halbschatten", seite: 105,
     kapitel: "Licht",
     name: "Warum hat ein Schatten manchmal einen Rand?",
@@ -3432,7 +3432,7 @@ const HEFT_SEITEN = {
     schritte: ["Tippe auf „nur eine Taschenlampe“ und sieh dir den Rand des Schattens an der Wand ganz genau an.", "Schiebe den Regler „Größe der Lichtquelle“ langsam nach rechts, bis neben Quelle „groß ausgedehnt“ steht, und beobachte, was am Rand erscheint.", "Vergleiche mit der Taste „zwei Lampen weit auseinander“ und lies in der Statuszeile ab, welche zwei Schattenbereiche genannt werden."]
   },
   "li8": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "lochkamera", seite: 107,
     kapitel: "Licht",
     name: "Wie malt eine Lochkamera ein Bild?",
@@ -3442,7 +3442,7 @@ const HEFT_SEITEN = {
     schritte: ["Beobachte den leuchtenden Pfeil und sein Bild auf dem Schirm und lies in der Statuszeile ab, wie das Bild steht.", "Schiebe zuerst die Gegenstandsweite g auf 60 cm, stelle sie zurück auf 40 cm und schiebe dann die Bildweite b (Kameralänge) auf 55 cm – vergleiche nach jedem Schritt die Bildgröße in der Statuszeile.", "Stelle die Lochgröße von klein auf groß und lies ab, was mit der Schärfe des Bildes passiert."]
   },
   "li9": {
-    klasse: 5/6, schulform: "Gymnasium NRW",
+    klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "spektrum-unsichtbar", seite: 109,
     kapitel: "Licht",
     name: "Welches Licht sehen wir nicht?",
