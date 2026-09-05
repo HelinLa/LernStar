@@ -4629,7 +4629,7 @@ const HEFT_SEITEN = {
     titel: "Der staubige Globus",
     frage: "Wovon hängt es ab, ob es gerade Tag oder Nacht ist?",
     auftrag: "",
-    schritte: ["Drücke „⏯ Pause“, damit der Globus stehen bleibt.", "Stelle den Regler „Erde von Hand drehen“ auf 0°. Lies ab: Wer hat Sonne?", "Stelle 180° ein und vergleiche.", "Ergänze die letzte Zeile nach einer vollen Drehung."]
+    schritte: ["Drücke „Pause“, damit der Globus stehen bleibt.", "Stelle den Regler „Erde von Hand drehen“ auf 0°. Lies ab: Wer hat Sonne?", "Stelle 180° ein und vergleiche.", "Ergänze die letzte Zeile nach einer vollen Drehung."]
   },
   "fw3": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4639,7 +4639,7 @@ const HEFT_SEITEN = {
     titel: "Warum alles nach unten fällt",
     frage: "Fallen Stein und Feder gleich schnell, wenn keine Luft da ist?",
     auftrag: "",
-    schritte: ["Drücke „⬇ Noch einmal fallen lassen“. Beobachte beide Rohre.", "Wähle den Mond und lies g und die Fallzeit ab.", "Wähle Erde und Jupiter und ergänze die Tabelle.", "Vergleiche: Wo fällt der Stein am schnellsten?"]
+    schritte: ["Drücke „Noch einmal fallen lassen“. Beobachte beide Rohre.", "Wähle den Mond und lies g und die Fallzeit ab.", "Wähle Erde und Jupiter und ergänze die Tabelle.", "Vergleiche: Wo fällt der Stein am schnellsten?"]
   },
   "fw4": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4649,7 +4649,7 @@ const HEFT_SEITEN = {
     titel: "Warum Planeten nicht abstürzen",
     frage: "Warum stürzt ein Planet nicht in die Sonne?",
     auftrag: "",
-    schritte: ["Drücke „➊ ganz klein“ und lies die Bahnform ab.", "Drücke „➋ mittlerer Wert“ und vergleiche.", "Drücke „➍ Gegenprobe groß“ und lies die Meldung.", "Trage alle drei Zeilen in die Tabelle ein."]
+    schritte: ["Drücke „ganz klein“ und lies die Bahnform ab.", "Drücke „mittlerer Wert“ und vergleiche.", "Drücke „Gegenprobe groß“ und lies die Meldung.", "Trage alle drei Zeilen in die Tabelle ein."]
   },
   "fw5": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4669,7 +4669,7 @@ const HEFT_SEITEN = {
     titel: "Ein Wort auf der Rückseite",
     frage: "Wie lange ist das Licht von fernen Zielen zu uns unterwegs?",
     auftrag: "",
-    schritte: ["Drücke „💡 Lichtblitz senden“ und beobachte den Weg zum Mond.", "Lies Entfernung und Zeit in der Statuszeile ab.", "Drücke „weiter ▶“ und lies die Werte für die Sonne ab.", "Gehe mit „weiter ▶“ bis zum nächsten Stern und trage ein."]
+    schritte: ["Drücke „Lichtblitz senden“ und beobachte den Weg zum Mond.", "Lies Entfernung und Zeit in der Statuszeile ab.", "Drücke „weiter ▶“ und lies die Werte für die Sonne ab.", "Gehe mit „weiter ▶“ bis zum nächsten Stern und trage ein."]
   },
   "fw7": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4679,7 +4679,7 @@ const HEFT_SEITEN = {
     titel: "Zwei Linsen und ein Rohr",
     frage: "Wie verändert das Fernrohr Größe, Lage und Helligkeit des Bildes?",
     auftrag: "",
-    schritte: ["Drücke „👁 bloßes Auge“. Achte auf die Größe und die gelbe Marke.", "Drücke „🔭 mit Teleskop“ und lies die Vergrößerung ab.", "Vergleiche „◯ große Öffnung“ und „◦ kleine Öffnung“: Achte nur auf die Helligkeit.", "Trage alle drei Zeilen in die Tabelle ein."]
+    schritte: ["Drücke „bloßes Auge“. Achte auf die Größe und die gelbe Marke.", "Drücke „mit Teleskop“ und lies die Vergrößerung ab.", "Vergleiche „große Öffnung“ und „◦ kleine Öffnung“: Achte nur auf die Helligkeit.", "Trage alle drei Zeilen in die Tabelle ein."]
   },
   "fw8": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4719,7 +4719,7 @@ const HEFT_SEITEN = {
     titel: "Zwei Weltbilder",
     frage: "Welches Weltbild erklärt den Himmel ohne Zusatzkreise?",
     auftrag: "",
-    schritte: ["Drücke „🌍 Erde in der Mitte (alt)“ und lies die Statuszeile.", "Drücke „☀️ Sonne in der Mitte (heute)“ und vergleiche.", "Beobachte unten den Streifen: Wie läuft der Mars von der Erde aus?", "Trage beide Zeilen in die Tabelle ein."]
+    schritte: ["Drücke „Erde in der Mitte (alt)“ und lies die Statuszeile.", "Drücke „Sonne in der Mitte (heute)“ und vergleiche.", "Beobachte unten den Streifen: Wie läuft der Mars von der Erde aus?", "Trage beide Zeilen in die Tabelle ein."]
   },
   "fw12": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4729,7 +4729,7 @@ const HEFT_SEITEN = {
     titel: "Ein Kreis um ein leeres Feld",
     frage: "Woran erkennt man ein schwarzes Loch, wenn es nicht leuchtet?",
     auftrag: "",
-    schritte: ["Drücke „➌ weit weg“ und dann „💡 Lichtstrahl senden“.", "Lies die Statuszeile ab und trage ein.", "Wiederhole mit „➋ mittel“ und „➊ sehr nah“.", "Vergleiche die drei Wege im Bild."]
+    schritte: ["Drücke „weit weg“ und dann „Lichtstrahl senden“.", "Lies die Statuszeile ab und trage ein.", "Wiederhole mit „mittel“ und „sehr nah“.", "Vergleiche die drei Wege im Bild."]
   },
   "fw13": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4739,7 +4739,7 @@ const HEFT_SEITEN = {
     titel: "Woher kommt alles?",
     frage: "Wie hat sich das Weltall seit dem Urknall verändert?",
     auftrag: "",
-    schritte: ["Drücke „↺ zum Anfang“ und lies Zeitanzeige und Statuszeile.", "Drücke „▶ Urknall starten“ und beobachte die Galaxien.", "Vergleiche das Bild am Anfang mit dem Bild am Ende.", "Trage alle Zeilen in die Tabelle ein."]
+    schritte: ["Drücke „zum Anfang“ und lies Zeitanzeige und Statuszeile.", "Drücke „▶ Urknall starten“ und beobachte die Galaxien.", "Vergleiche das Bild am Anfang mit dem Bild am Ende.", "Trage alle Zeilen in die Tabelle ein."]
   },
   "fs1": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4789,7 +4789,7 @@ const HEFT_SEITEN = {
     titel: "Zwei Messgeräte auf der Werkbank",
     frage: "Wohin gehört das Amperemeter, wohin das Voltmeter?",
     auftrag: "",
-    schritte: ["Drücke den Knopf „Ⓐ Amperemeter“ und lies die Statuszeile.", "Drücke „Ⓥ Voltmeter“ und dann „in Reihe“. Beobachte die Lampe.", "Wähle danach „parallel“, nicht die Quiz-Antwort „Parallel zum Bauteil“.", "Trage in die Tabelle ein, was die Statuszeile meldet."]
+    schritte: ["Drücke den Knopf „Amperemeter“ und lies die Statuszeile.", "Drücke „Voltmeter“ und dann „in Reihe“. Beobachte die Lampe.", "Wähle danach „parallel“, nicht die Quiz-Antwort „Parallel zum Bauteil“.", "Trage in die Tabelle ein, was die Statuszeile meldet."]
   },
   "fs6": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4829,7 +4829,7 @@ const HEFT_SEITEN = {
     titel: "Was passiert hintereinander?",
     frage: "Was macht ein zweiter Widerstand in der Reihe mit dem Strom?",
     auftrag: "",
-    schritte: ["Drücke zuerst ↺. Jetzt steht R₁ auf 10 Ω und R₂ auf 20 Ω, wie in Zeile 1. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.", "Drücke bei R₁ auf 20 Ω. Lies R_ges und den Strom I ab und trage Zeile 2 ein.", "Drücke bei R₁ auf 30 Ω und bei R₂ auf 30 Ω. Trage Zeile 3 ein.", "Vergleiche die drei Zeilen. Wird der Strom größer oder kleiner?"]
+    schritte: ["Drücke zuerst . Jetzt steht R₁ auf 10 Ω und R₂ auf 20 Ω, wie in Zeile 1. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.", "Drücke bei R₁ auf 20 Ω. Lies R_ges und den Strom I ab und trage Zeile 2 ein.", "Drücke bei R₁ auf 30 Ω und bei R₂ auf 30 Ω. Trage Zeile 3 ein.", "Vergleiche die drei Zeilen. Wird der Strom größer oder kleiner?"]
   },
   "fs10": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4839,7 +4839,7 @@ const HEFT_SEITEN = {
     titel: "Was passiert nebeneinander?",
     frage: "Wie groß ist der Strom insgesamt, wenn er zwei Wege hat?",
     auftrag: "",
-    schritte: ["Drücke in Zeile R₁ den Knopf 10 Ω, in Zeile R₂ den Knopf 20 Ω.", "Lies I₁, I₂ und den Gesamtstrom I in der Statuszeile ab.", "Drücke in Zeile R₁ den Knopf 30 Ω. Trage die zweite Zeile ein.", "Drücke danach in Zeile R₂ den Knopf 10 Ω. Ergänze die letzte Zeile."]
+    schritte: ["Drücke bei R₁ auf 10 Ω und bei R₂ auf 20 Ω. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.", "Lies I₁, I₂ und den Gesamtstrom I in der Statuszeile ab.", "Drücke bei R₁ auf 30 Ω. Trage die zweite Tabellenzeile ein.", "Drücke danach bei R₂ auf 10 Ω. Ergänze die letzte Tabellenzeile."]
   },
   "fs11": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4869,7 +4869,7 @@ const HEFT_SEITEN = {
     titel: "Zu viel an einer Steckdose",
     frage: "Wann unterbricht die Sicherung den Stromkreis?",
     auftrag: "",
-    schritte: ["Lies die Anzeige ab: 1 Gerät zieht 6 A. Die Sicherung erlaubt 16 A.", "Drücke „➕ Gerät anschließen“. Lies den Strom ab und trage Zeile 2 ein.", "Drücke „➕ Gerät anschließen“ noch einmal. Lies die Meldung und trage Zeile 3 ein.", "Achte auf den Warnhinweis: Nie mit der Netzspannung (230 V) experimentieren – nur mit ungefährlicher Kleinspannung!"]
+    schritte: ["Lies die Anzeige ab: 1 Gerät zieht 6 A. Die Sicherung erlaubt 16 A.", "Drücke „Gerät anschließen“. Lies den Strom ab und trage Zeile 2 ein.", "Drücke „Gerät anschließen“ noch einmal. Lies die Meldung und trage Zeile 3 ein.", "Achte auf den Warnhinweis: Nie mit der Netzspannung (230 V) experimentieren – nur mit ungefährlicher Kleinspannung!"]
   },
   "fb1": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4899,7 +4899,7 @@ const HEFT_SEITEN = {
     titel: "km/h oder m/s?",
     frage: "Wie rechnest du einen Wert von m/s in km/h um?",
     auftrag: "",
-    schritte: ["Lies zuerst die Statuszeile ab. Dort steht die Rechnung mit 3,6.", "Drücke „🚶 Fußgänger“. Vergleiche die Statuszeile mit Zeile 1 der Tabelle.", "Drücke „🚴 Radfahrer“. Trage beide Zahlen in Zeile 2 ein.", "Drücke „🚗 Auto (Stadt)“. Trage beide Zahlen in Zeile 3 ein."]
+    schritte: ["Lies zuerst die Statuszeile ab. Dort steht die Rechnung mit 3,6.", "Drücke „Fußgänger“. Vergleiche die Statuszeile mit Zeile 1 der Tabelle.", "Drücke „Radfahrer“. Trage beide Zahlen in Zeile 2 ein.", "Drücke „Auto (Stadt)“. Trage beide Zahlen in Zeile 3 ein."]
   },
   "fb4": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",

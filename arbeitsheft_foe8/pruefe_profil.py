@@ -11,6 +11,11 @@ Aufruf: python3 pruefe_profil.py            → Selbsttest + alle Einheiten
 """
 import json, os, re, sys, copy
 
+# Bekannt gute Einheit fuer den Selbsttest. Sie kommt aus Band 7 (fo10, die
+# freigegebene Pilotseite) - so kann der Pruefer auch dann schon urteilen, wenn
+# in diesem Band noch keine einzige Einheit fertig ist.
+
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Kapitel und ihre Kennungen kommen aus plan.py - sonst misst der Pruefer im
 # naechsten Band die Antwortpositionen von null Einheiten und meldet trotzdem
@@ -21,6 +26,10 @@ _s = _ilu.spec_from_file_location("plan", os.path.join(HERE, "plan.py"))
 _plan = _ilu.module_from_spec(_s); _s.loader.exec_module(_plan)
 KAPITEL_IDS = [(f"Kapitel {n+1}", [t["id"] for t in k["themen"]])
                for n, k in enumerate(_plan.KAPITEL)]
+# Bekannt gute Einheit fuer den Selbsttest: die freigegebene Pilotseite fo10 aus
+# Band 7. So kann der Pruefer auch dann urteilen, wenn dieser Band noch leer ist.
+MUSTER_PFAD = os.path.join(os.path.dirname(HERE), "arbeitsheft_foe7",
+                           "einheiten", "fo10.json")
 
 
 # ── Druckbarkeit: hat die Schrift ueberhaupt ein Zeichen dafuer? ──────────
@@ -212,7 +221,7 @@ if __name__ == "__main__":
     alle = sorted(os.listdir(os.path.join(HERE, "einheiten")))
     ids = sys.argv[1:] or [a[:-5] for a in alle if a.endswith(".json")]
 
-    gut = json.load(open(os.path.join(HERE, "einheiten", "fo10.json"), encoding="utf-8"))
+    gut = json.load(open(MUSTER_PFAD, encoding="utf-8"))
     st, n_proben = selbsttest(gut)
     if st:
         print("SELBSTTEST NICHT BESTANDEN – der Prüfer darf nicht urteilen:")
