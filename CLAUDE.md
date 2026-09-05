@@ -234,12 +234,32 @@ Uebungsseite). In `plan.py` gilt die ASCII-Konvention deshalb nur fuer Kommentar
 NICHT fuer `RAHMEN`, `titel`, `vorhaben`, `inhaltsfeld` und `name` – dort stehen ä, ö, ü, ß.
 Beim Anlegen der vier Baende waren 75 Stellen betroffen ("Oberflaeche" statt "Oberfläche").
 
-## Arbeitshefte – Reihe FELO Foerderheft (`arbeitsheft_foe7/`)
+## Arbeitshefte – Reihe FELO Foerderheft (`arbeitsheft_foe7/`, `_foe8/`, `_foe9/`)
 
 Dritte Reihe derselben Marke: **FÖRDERHEFT**, Schulform GESAMTSCHULE NRW. Gleiche
-fachliche Ziele wie `arbeitsheft_gts7`, leichterer Lernweg (A2–B1, Foerderbedarf Lernen,
-DaZ). Hausstil steht in `FOERDER_PROFIL.md`, die Herleitung in `SEITENPLAN.md`
-(am 04.09.2026 freigegeben). Kennungen: `fo` (Optik) · `fw` (Weltall).
+fachliche Ziele wie die Regelhefte `arbeitsheft_gts7/8/9`, leichterer Lernweg (A2–B1,
+Foerderbedarf Lernen, DaZ). Hausstil steht in `arbeitsheft_foe7/FOERDER_PROFIL.md`
+(gilt fuer ALLE Baende), die Herleitung je Band in `SEITENPLAN.md`.
+
+| Band | Quellband | Kennungen | Einheiten | Seiten | Lehrerband |
+|---|---|---|---|---|---|
+| foe7 | gts7 | `fo` `fw` | 25 (aus 29) | 59 | 29 |
+| foe8 | gts8 | `fs` `fb` | 20 (aus 23) | 49 | 24 |
+| foe9 | gts9 | `fk` `fe` | 25 (aus 27) | 59 | 29 |
+
+**Ein neuer Band braucht nur `plan.py` und die Inhalte** – alle Skripte sind
+bandunabhaengig und ziehen Klasse, Kapitelfarben, Dateinamen und `QUELLBAND` aus
+`plan.py`. Skripte kopieren genuegt.
+
+**Wortbudget (seit Band 9): hoechstens 380 Woerter je Doppelseite.** Der
+Umfangskorridor haengt an ZWEI Zahlen – Seitenzahl UND Gewicht. Gemessen: Band 7
+Median 363, Band 8 aber 451 (+24 %); mit dem Gewicht haette Band 9 den Korridor
+verfehlt. `pruefe_profil.py` misst und meldet es (`BUDGET`).
+
+**`seiten_nachbereiten.py` streut die Antwortpositionen.** Parallel geschriebene
+Einheiten setzen die richtige Antwort systematisch an dieselbe Stelle – in Band 8
+standen die ersten SECHS Einheiten alle gleich. Das Werkzeug verteilt deterministisch
+reihum, zieht die Lehrerseite mit und warnt, wenn ein Text eine Position benennt.
 
 **Andere Inhaltsdateien als die Regelhefte.** Statt forscherseiten/uebungen/assessment/
 transfer gibt es `content/foerderseiten.json` und `content/loesungen_lehrer.json`
