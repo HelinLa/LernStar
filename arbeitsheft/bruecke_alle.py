@@ -20,7 +20,7 @@ ORDNER = ["arbeitsheft", "arbeitsheft7", "arbeitsheft8", "arbeitsheft9", "arbeit
           "arbeitsheft_gym56", "arbeitsheft_gym7", "arbeitsheft_gym8",
           "arbeitsheft_gym9", "arbeitsheft_gym10",
           # Foerderreihe (A2-B1) - eigene Kennungen (fo/fw, fs/fb), eigene Inhaltsdateien
-          "arbeitsheft_foe7", "arbeitsheft_foe8", "arbeitsheft_foe9"]
+          "arbeitsheft_foe7", "arbeitsheft_foe8", "arbeitsheft_foe9", "arbeitsheft_foe10"]
 
 # Welche Inhaltsdateien ein Band braucht, damit er gebaut werden kann.
 # Die Foerderbaende haben einen anderen Satz: keine Uebungsseiten, kein

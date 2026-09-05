@@ -234,10 +234,10 @@ Uebungsseite). In `plan.py` gilt die ASCII-Konvention deshalb nur fuer Kommentar
 NICHT fuer `RAHMEN`, `titel`, `vorhaben`, `inhaltsfeld` und `name` – dort stehen ä, ö, ü, ß.
 Beim Anlegen der vier Baende waren 75 Stellen betroffen ("Oberflaeche" statt "Oberfläche").
 
-## Arbeitshefte – Reihe FELO Foerderheft (`arbeitsheft_foe7/`, `_foe8/`, `_foe9/`)
+## Arbeitshefte – Reihe FELO Foerderheft (`arbeitsheft_foe7/` … `_foe10/`)
 
 Dritte Reihe derselben Marke: **FÖRDERHEFT**, Schulform GESAMTSCHULE NRW. Gleiche
-fachliche Ziele wie die Regelhefte `arbeitsheft_gts7/8/9`, leichterer Lernweg (A2–B1,
+fachliche Ziele wie die Regelhefte `arbeitsheft_gts7/8/9/10`, leichterer Lernweg (A2–B1,
 Foerderbedarf Lernen, DaZ). Hausstil steht in `arbeitsheft_foe7/FOERDER_PROFIL.md`
 (gilt fuer ALLE Baende), die Herleitung je Band in `SEITENPLAN.md`.
 
@@ -246,6 +246,7 @@ Foerderbedarf Lernen, DaZ). Hausstil steht in `arbeitsheft_foe7/FOERDER_PROFIL.m
 | foe7 | gts7 | `fo` `fw` | 25 (aus 29) | 59 | 29 |
 | foe8 | gts8 | `fs` `fb` | 20 (aus 23) | 49 | 24 |
 | foe9 | gts9 | `fk` `fe` | 25 (aus 27) | 59 | 29 |
+| foe10 | gts10 | `fv` `fn` | 28 (aus 32) | 65 | 32 |
 
 **Ein neuer Band braucht nur `plan.py` und die Inhalte** – alle Skripte sind
 bandunabhaengig und ziehen Klasse, Kapitelfarben, Dateinamen und `QUELLBAND` aus
@@ -271,15 +272,23 @@ transfer gibt es `content/foerderseiten.json` und `content/loesungen_lehrer.json
 content-Dateien in der Reihenfolge von `plan.py`. So ueberlebt ein langer Lauf
 einen Abbruch ([[lange-laeufe-ruhezustand]]).
 
-**Werte kommen aus `fakten/<sim>.json`** – simfakten-Dumps aller 25 Simulationen.
-Nie aus dem Kopf schreiben, was am Bildschirm steht.
+**Werte kommen aus `fakten/<sim>.json`** – simfakten-Dumps aller Simulationen des
+Bandes. Nie aus dem Kopf schreiben, was am Bildschirm steht.
+
+**Band 10 kuerzt allein ueber Streichungen.** 32 Einheiten minus die VIER, die
+`arbeitsheft_gts10/plan.py` als `"kurs": "E"` fuehrt (ev5, ev15, rk8, rk14) – das
+Foerderheft bedient den G-Kurs. Null Zusammenlegungen: mit den vorgeschlagenen
+Paaren waere der Band bei N=25 auf −53 % gelandet, also aus dem Korridor heraus.
+Drei Simulationen tragen dort je ZWEI Einheiten mit getrennten Lernzielen
+(`freileitungen`, `geiger-mueller`, `kettenreaktion`) – das ist Absicht, keine
+vergessene Zusammenlegung.
 
 **Rendervertrag ist eng** (`build_pilot.py` setzt Seite A / B / Lehrerseite):
 genau 3 Tabellenspalten, 2–5 Zeilen mit vollstaendig gefuellter Beispielzeile,
 GENAU 2 Merksatz-Luecken, Aufgaben exakt erkennen–einsetzen–erklaeren, 3 Hilfestufen
 (H3 mit `___`), 3 Selbstcheck-Aussagen. `pruefe_profil.py` prueft das plus die
-Sprachregeln – und besteht vorher einen **Selbsttest** (1 gute + 10 absichtlich
-kaputte Proben), sonst urteilt er nicht.
+Sprachregeln – und besteht vorher einen **Selbsttest** (1 gute + 11 absichtlich
+kaputte Proben; in Band 10 zusaetzlich 2 Datenblatt-Proben), sonst urteilt er nicht.
 
 **Seite A und Seite B tragen denselben QR-Code.** `simcheck/seitenzahlen.py` nimmt
 deshalb den **ersten** Treffer (= Seite A, wo das Thema anfaengt). Fuer die
@@ -317,6 +326,37 @@ Ein hoeheres Datenblatt kann dazu fuehren, dass Abschnitt 4 und 5 auf eine **zwe
 Seite** rutschen (`sichern_aufgaben_seite`). Das ist so gewollt – lieber eine zweite
 Seite als weniger Schreiblinien. Dadurch wuchs Heft 9 von 255 auf 257, Heft 10 von 179
 auf 186 und FELO 10 Gesamtschule von 121 auf 126 Seiten.
+
+**Im Foerderheft ist es ein anderer Renderer und ein anderes Mass**
+(`arbeitsheft_foe10/build_pilot.py::datenblatt`, seit 05.09.2026). Die Seite steht
+im Foerdersatz, und dort gilt der Faktor 0,48: 13,5 Einheiten waeren **6,5 pt** –
+kleiner als jedes andere Element der Seite (Alltag 9,6 pt, Schreibtabelle 7,9 pt)
+und in Reichweite der 4,3-pt-Katastrophe des Loesungsteils. Gesetzt wird deshalb
+auf **16,5 Einheiten = 7,9 pt**, also genau im Mass der Schreibtabelle.
+
+Die Spaltenbreite wird **gemessen, nicht in Zeichen geschaetzt** – mein erster
+Schaetzwert lag um den Faktor 2 daneben, weil `build_final` jede Schrift mit `S=2`
+doppelt so gross laedt und `tw()` die Breite wieder durch S teilt. Mit der echten
+Schrift bleiben einzeilig rund **17 / 16 / 14 Zeichen**. Mehrwortzellen duerfen
+umbrechen; gefaehrlich ist nur ein EINZELNES zu langes Wort, das der Renderer dann
+still auf bis zu 6,0 pt herunterzieht. `pruefe_profil.py` misst jedes Wort gegen
+seine Spalte (`BREITE_MESSEN`) – mit eigener Kaputt-Probe im Selbsttest.
+
+**Der Renderer wird jetzt mitgeprueft** (`renderer_zeichen()`). Die Zeichenpruefung
+sah bisher nur die Inhalte; ein Zeichen im Setzskript selbst rutschte durch – das
+Abzeichen "▤" (U+25A4) am Datenblatt-Kasten druckte ein leeres Kaestchen, obwohl
+jede Einheit sauber war. Gefunden habe ich es erst an der gerenderten Seite.
+Geprueft werden nur Zeilen mit `h.T(` / `h.para(` / `h.tracked(` / `h.wrap(`: Der
+erste Anlauf prueft jede Zeile und lieferte fuenf Fehlalarme aus fuenf Meldungen
+(ein Trennstrich aus einem `print()`, eine tote Zeile mit `if False`). Zwei eigene
+Proben im Selbsttest halten beide Richtungen fest.
+
+Weitere Foerder-Regeln (in `FOERDER_PROFIL.md`, Abschnitt "Datenblattseiten"):
+Dreischritt **ablesen – ordnen/vergleichen – beurteilen** (nicht "rechnen" – die
+Blaetter sind qualitativ, ein erzwungener Rechenschritt waere Scheinrechnen),
+Operatoren zusaetzlich `Beurteile` `Entscheide` `Begruende`, und die `merke`-Zeile
+ist Lesehilfe und nimmt das Ergebnis NIE vorweg. `pruefe_profil.py` haelt
+`DATENBLATT_IDS` aus `plan.py` gegen das Feld `daten` – in beide Richtungen.
 
 ## simcheck/ – Pruefwerkzeuge
 

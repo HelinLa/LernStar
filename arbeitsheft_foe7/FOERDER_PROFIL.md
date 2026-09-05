@@ -98,6 +98,22 @@ Verbindlich ist deshalb:
    Formelzeichen oder eine Einheit dazukommt, zählen sie wieder: *Tempo* ist
    frei, *Tempo v in m/s* zählt. (Ohne diese Regel riss schon die erste Einheit
    von Heft 9 das Limit.)
+6. **Tätigkeitswort und Ergebniswort desselben Vorgangs zählen als EIN
+   Fachwort** — *ionisieren* / *Ionenpaar* (Heft 10, fn4). Es müssen alle drei
+   Bedingungen gelten: (a) es ist derselbe Vorgang, einmal als Tätigkeit und
+   einmal als das, was dabei entsteht; (b) das Ergebniswort erklärt sich
+   vollständig aus dem Vorgang („Ein Ionenpaar ist das, was beim Ionisieren
+   entsteht"); (c) beide werden auf derselben Seite in einem Zug erklärt.
+   **Zwei verschiedene Vorgänge bleiben zwei Einträge**, auch wenn sie im
+   selben Satz stehen: *Alphazerfall* und *Betazerfall* (Heft 10, fn7) sind
+   zwei, nicht einer — dort fehlt (a). Wer bündelt, schreibt in den Lehrerteil,
+   welche Regel er anwendet; „dieselbe Handhabung wie in Einheit X" ist keine
+   Begründung, solange X es anders hält. (Ohne diese Regel stand fn4 mit drei
+   Einträgen über dem Limit und fn5 — „ionisiert" in Wortbank UND
+   Merksatzlücke — ebenfalls; die Bündelung war zwei Bände lang Praxis, aber
+   nirgends geschrieben.) Nicht gedeckt sind Gruppen aus drei und mehr
+   Gliedern (Heft 10, fn3: „drei Arten von Strahlung"); dafür ist bis heute
+   keine Regel geschrieben. **[OFFEN für Abdullah]**
 
 ## Wortbudget je Doppelseite (seit 05.09.2026)
 
@@ -109,6 +125,39 @@ Korridor verfehlt (25 × 451 = 11 275 Wörter = nur −28,7 % statt −40 %).
 Ab Band 9 gilt deshalb ein Budget von **höchstens 380 Wörtern je Doppelseite**
 (Schülerseite ohne den Bildauftrag). `pruefe_profil.py` misst das Gewicht und
 meldet jede Überschreitung; die Konstante heißt `BUDGET`.
+
+## Datenblattseiten (seit 05.09.2026, zuerst in Band 10)
+
+Manche Lerneinheiten haben keine Simulation — Kraftwerksarten, Endlagerung,
+Nuklearmedizin, eine Bewertungsseite. Dort tritt an die Stelle des Bildschirms
+ein **gedrucktes Datenblatt** im Feld `seite.daten` (`titel`, `spalten`,
+`zeilen`, `quelle`, `merke`). Es steht rechts **neben** den Arbeitsschritten,
+nie darüber: sonst bleiben unten null Schreiblinien.
+
+- Abschnitt 3 heißt dort **„AUSWERTEN & BEURTEILEN"**, nicht „Forschen am
+  Bildschirm". Es gibt **keinen QR-Code** und keinen `ersatz`-Satz.
+- Der Dreischritt lautet **„ablesen – ordnen/vergleichen – beurteilen"**.
+  Nicht „ablesen – rechnen – beurteilen": Qualitative Datenblätter tragen im
+  Körper keine oder genau eine Zahl, ein erzwungener Rechenschritt wäre
+  Scheinrechnen. Erlaubte Operatoren zusätzlich: Beurteile, Entscheide,
+  Begründe.
+- Die Zeile `merke` unter dem Blatt ist eine **Lesehilfe und nimmt nie das
+  Ergebnis vorweg** — sonst nimmt sie Schritt 2 die Aufgabe weg (dieselbe
+  Regel wie bei den Bildaufträgen).
+- **Schriftgrad:** Der Faktor 0,48 gilt auch hier. Das Blatt steht auf 16,5
+  Einheiten = **7,9 pt**, also im Maß der Schreibtabelle; kleiner darf es
+  nicht werden (die erste Fassung lief auf 6,5 pt).
+- **Spaltenbreite wird gemessen, nicht in Zeichen geschätzt.** Mein erster
+  Schätzwert lag um den Faktor 2 daneben: `build_final` lädt jede Schrift mit
+  `S=2` doppelt so groß und teilt die Breite wieder durch S. Mit der echten
+  Schrift gemessen bleiben einzeilig rund **17 / 16 / 14 Zeichen**. Eine
+  Zelle aus mehreren Wörtern darf ruhig umbrechen — gefährlich ist nur ein
+  **einzelnes zu langes Wort**: Dafür greift das Sicherheitsnetz und zieht die
+  Zeile auf bis zu 6,0 pt herunter. Also „Pumpspeicher" statt
+  „Pumpspeicherkraftwerk". `pruefe_profil.py` misst jedes Wort gegen seine
+  Spalte (`BREITE_MESSEN`) und meldet es.
+- Die Heft-gegen-Sim-Regel gilt sinngemäß weiter: Verlangt werden darf nur,
+  was **im gedruckten Blatt wirklich steht**.
 
 ## Layout
 
