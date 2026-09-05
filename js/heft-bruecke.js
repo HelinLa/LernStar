@@ -4909,7 +4909,7 @@ const HEFT_SEITEN = {
     titel: "Kreidestriche auf dem Schulhof",
     frage: "Was sagen dir die Abstände zwischen den Sekunden-Marken?",
     auftrag: "",
-    schritte: ["Lies zuerst Zeile 1 der Tabelle. So startet die Simulation.", "Wähle den Knopf „langsam“ und drücke danach „▶ Fahren“.", "Lies ab, welche Zahl bei v steht. Beobachte dabei die Abstände der Marken.", "Wiederhole das mit „schnell“ und fülle die letzte Zeile aus."]
+    schritte: ["Lies zuerst Zeile 1 der Tabelle. So startet die Simulation.", "Wähle den Knopf „langsam“ und drücke danach „▶ Fahren“.", "Lies ab, welche Zahl bei v steht. Sieh dir die Abstände an. Fülle Zeile 2 aus.", "Wiederhole das mit „schnell“ und fülle die letzte Zeile aus."]
   },
   "fb5": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
