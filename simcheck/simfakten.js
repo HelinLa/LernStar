@@ -14,10 +14,16 @@
 const vm = require('vm');
 const { baueContext } = require('./rauchtest.js');
 
+// Nur ECHTE Tags entfernen: '<' gefolgt von einem Buchstaben oder '/'.
+// Der frueher benutzte Ausdruck /<[^>]+>/g fraß auch literale Kleiner-Zeichen im
+// Text - aus "Haltekraft 4 N < Gewichtskraft 5 N → Gesamtkraft 1 N nach unten.
+// Die Lampe sinkt nach <b>unten</b>." wurde stillschweigend "Haltekraft 4 N
+// unten." Jede Statuszeile mit < oder > war damit unbrauchbar (gefunden am
+// 05.09.2026 beim Bau von Foerderheft 9, Einheit fk8).
 function entkerne(html) {
   return String(html || '')
     .replace(/<br\s*\/?>/gi, ' | ')
-    .replace(/<[^>]+>/g, '')
+    .replace(/<\/?[a-zA-Z][^>]*>/g, '')
     .replace(/&nbsp;/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();

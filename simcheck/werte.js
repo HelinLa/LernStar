@@ -17,6 +17,12 @@ for (const s of schritte) {
     `(function(){var e=document.getElementById(${JSON.stringify(s.lies)});
       return e ? (e.innerHTML || e.textContent || '') : '(fehlt)';})()`, H.ctx);
   console.log('── ' + (s.tue || 'Anfangszustand'));
-  console.log(String(txt).replace(/<br\s*\/?>/g, '\n').replace(/<[^>]+>/g, '').replace(/\n{2,}/g, '\n').trim());
+  // Nur ECHTE Tags entfernen: '<' gefolgt von einem Buchstaben oder '/'.
+  // Der frueher benutzte Ausdruck /<[^>]+>/g fraß auch literale Kleiner-Zeichen im
+  // Text - aus "Haltekraft 4 N < Gewichtskraft 5 N → Gesamtkraft 1 N nach unten.
+  // Die Lampe sinkt nach <b>unten</b>." wurde stillschweigend "Haltekraft 4 N
+  // unten." Jede Statuszeile mit < oder > war damit unbrauchbar (gefunden am
+  // 05.09.2026 beim Bau von Foerderheft 9, Einheit fk8).
+  console.log(String(txt).replace(/<br\s*\/?>/g, '\n').replace(/<\/?[a-zA-Z][^>]*>/g, '').replace(/\n{2,}/g, '\n').trim());
   console.log();
 }

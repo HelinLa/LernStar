@@ -4941,6 +4941,256 @@ const HEFT_SEITEN = {
     auftrag: "",
     schritte: ["Drücke „▶ Gefahr! (Start)“ und beobachte, wie weit das Auto noch fährt.", "Lies in der Statuszeile Reaktionsweg und Bremsweg ab. Zeile 1 (50 km/h) ist schon ausgefüllt.", "Drücke „100 km/h“ für Zeile 2, danach „30 km/h“ für Zeile 3.", "Vergleiche den Bremsweg bei 50 km/h mit dem Bremsweg bei 100 km/h."]
   },
+  "fk1": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "kraft-wirkung", seite: 5,
+    kapitel: "Kräfte auf der Bühne",
+    name: "Woran erkennt man eine Kraft?",
+    titel: "Der unsichtbare Schubs",
+    frage: "Woran erkennst du, dass eine Kraft gewirkt hat?",
+    auftrag: "",
+    schritte: ["Wähle „Bewegen“, drücke „Kraft wirken lassen“ und lies die Statuszeile ab.", "Wähle „Verformen“, drücke „Kraft wirken lassen“ und lies ab.", "Wähle „Richtung ändern“, drücke „Kraft wirken lassen“ und lies ab.", "Trage in die Tabelle ein, was sich jedes Mal ändert."]
+  },
+  "fk2": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "kraftmesser", seite: 7,
+    kapitel: "Kräfte auf der Bühne",
+    name: "Wie misst man eine Kraft?",
+    titel: "Was der Zeiger verrät",
+    frage: "Wie kannst du eine Kraft messen, die du nicht siehst?",
+    auftrag: "",
+    schritte: ["Drücke auf „Feder leeren“ und lies die Statuszeile.", "Drücke einmal auf „Gewicht anhängen (1 N)“ und fülle Zeile 2 aus.", "Drücke auf „Gewicht abnehmen“ und fülle Zeile 3 aus."]
+  },
+  "fk3": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "federgesetz", seite: 9,
+    kapitel: "Kräfte auf der Bühne",
+    name: "Warum gibt eine Feder nach?",
+    titel: "Weicher Puffer, harter Puffer",
+    frage: "Wovon hängt es ab, wie weit sich eine Feder dehnt?",
+    auftrag: "",
+    schritte: ["Wähle „weiche Feder“ und drücke einmal „mehr ▶“.", "Lies hinter dem Pfeil → die Zahl in cm ab. Trage sie ein.", "Drücke einmal „◀ weniger“ und wähle dann „harte Feder“.", "Lies wieder ab. Fülle die letzte Zeile aus."]
+  },
+  "fk4": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "masse-gewicht", seite: 11,
+    kapitel: "Kräfte auf der Bühne",
+    name: "Masse oder Gewichtskraft?",
+    titel: "Zwei Zahlen für ein Klavier",
+    frage: "Sind Masse und Gewichtskraft dasselbe?",
+    auftrag: "",
+    schritte: ["Drücke zuerst „100 g“. Sonst steht noch 1 kg da.", "Lies in der Statuszeile Masse und Gewichtskraft ab. Trage beides ein.", "Drücke danach „1 kg“ und „2 kg“. Vergleiche die beiden Zeilen."]
+  },
+  "fk5": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "ortsfaktor", seite: 13,
+    kapitel: "Kräfte auf der Bühne",
+    name: "Wäre das Klavier auf dem Mond leichter?",
+    titel: "Das Klavier auf dem Mond",
+    frage: "Wird auf dem Mond die Masse kleiner oder die Gewichtskraft?",
+    auftrag: "",
+    schritte: ["Wähle Mond und lies g und F in der Statuszeile ab.", "Trage beide Werte in die Zeile Mond ein.", "Wiederhole das mit Jupiter.", "Vergleiche: Welche Zahl bleibt überall gleich?"]
+  },
+  "fk6": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "kraftpfeil", seite: 15,
+    kapitel: "Kräfte auf der Bühne",
+    name: "Wie zeichnet man eine Kraft auf?",
+    titel: "Pfeile auf dem Bühnenplan",
+    frage: "Was zeigt der Kraftpfeil außer der Stärke noch?",
+    auftrag: "",
+    schritte: ["Drücke immer zuerst eine Zahl, dann einen Pfeil-Knopf.", "Drücke 6 N und →. Lies den letzten Satz in der Statuszeile.", "Wiederhole das mit ↑ (nach oben) und ↗ (schräg nach rechts oben).", "Trage alles in die Tabelle ein."]
+  },
+  "fk7": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "kraefte-addieren", seite: 17,
+    kapitel: "Kräfte auf der Bühne",
+    name: "Was passiert, wenn zwei ziehen?",
+    titel: "Zwei ziehen am selben Seil",
+    frage: "Wann wird die Gesamtkraft größer, wann kleiner?",
+    auftrag: "",
+    schritte: ["Lies die Statuszeile ab. Zeile 1 ist schon ausgefüllt.", "Drücke bei F1 auf „Richtung“. Prüfe: F1 zieht jetzt nach links. Trage Zeile 2 ein.", "Drücke bei F2 auf „– N“. Trage Zeile 3 ein."]
+  },
+  "fk8": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "kraefte-gleichgewicht", seite: 19,
+    kapitel: "Kräfte auf der Bühne",
+    name: "Warum bewegt sich die Lampe nicht?",
+    titel: "Die Lampe hängt still",
+    frage: "Wirken an der stillen Lampe wirklich keine Kräfte?",
+    auftrag: "",
+    schritte: ["Lies am Anfang ab: Halte 5 N, Gewicht 5 N.", "Drücke einmal auf – N. Beobachte die Lampe.", "Lies im Bild unter der Lampe die Gesamtkraft ab.", "Drücke auf den Knopf zurück in die Mitte. Vergleiche."]
+  },
+  "fk9": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "traegheit-rs", seite: 21,
+    kapitel: "Kräfte auf der Bühne",
+    name: "Warum rutscht die Kiste weiter?",
+    titel: "Niemand schiebt mehr",
+    frage: "Warum bleibt der Wagen stehen – und was passiert ohne Reibung?",
+    auftrag: "",
+    schritte: ["Wähle „Tisch“, drücke „Anstoßen“ und warte, bis er steht.", "Drücke „Zurücksetzen“, wähle „Eis“ und stoße wieder an.", "Wähle „Weltall“, stoße an und lies die Statuszeile.", "Trage alles in die Tabelle ein."]
+  },
+  "fk10": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "wechselwirkung", seite: 23,
+    kapitel: "Kräfte auf der Bühne",
+    name: "Warum rollt das Rollbrett zurück?",
+    titel: "Rückwärts auf dem Rollbrett",
+    frage: "Warum rollt Jannis zurück, wenn er das Klavier wegdrückt?",
+    auftrag: "",
+    schritte: ["Drücke Eisläufer. Trage das Tempo v von Läufer B ein.", "Drücke Boot. Trage das Tempo v von Boot und Person ein.", "Drücke Rakete. Lies die Statuszeile.", "Vergleiche: Wer ist leichter? Wer wird schneller?"]
+  },
+  "fk11": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "druck-flaeche", seite: 25,
+    kapitel: "Kräfte auf der Bühne",
+    name: "Warum sinkt der schmale Fuß ein?",
+    titel: "Vier Dellen im neuen Podest",
+    frage: "Warum hinterlassen schmale Rollen Dellen und breite Bretter nicht?",
+    auftrag: "",
+    schritte: ["Drücke Turnschuhe. Lies bei p die Zahl vor kPa.", "Drücke Stöckelabsatz und fülle die zweite Zeile aus.", "Drücke Skier und fülle die letzte Zeile aus."]
+  },
+  "fk12": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "schweredruck", seite: 27,
+    kapitel: "Kräfte auf der Bühne",
+    name: "Warum drückt Wasser in der Tiefe mehr?",
+    titel: "Der untere Hahn spritzt weiter",
+    frage: "Warum drückt das Wasser unten stärker als oben?",
+    auftrag: "",
+    schritte: ["Lies zuerst unter der Überschrift Der Schweredruck die Zahl vor kPa.", "Drücke Öl und trage den Wert bei 10 m ein.", "Drücke Quecksilber und fülle die dritte Zeile aus.", "Drücke zuletzt 40 m – Tauchgrenze und ergänze die letzte Zeile."]
+  },
+  "fk13": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "dichte", seite: 29,
+    kapitel: "Kräfte auf der Bühne",
+    name: "Warum sind gleich große Würfel verschieden schwer?",
+    titel: "Zwei Klötze auf der Werkbank",
+    frage: "Warum hat der eine Würfel mehr Masse als der andere?",
+    auftrag: "",
+    schritte: ["Drücke Blei und suche die Zeile 2 · Die Masse.", "Drücke Eisen und fülle die zweite Tabellenzeile aus.", "Drücke Styropor und fülle die letzte Zeile aus.", "Lies in Zeile 4: schwimmt oder sinkt der Würfel?"]
+  },
+  "fk14": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "auftrieb", seite: 31,
+    kapitel: "Kräfte auf der Bühne",
+    name: "Warum schwimmt ein Schiff aus Eisen?",
+    titel: "Ein Stahlrohr in der Regentonne",
+    frage: "Warum sinkt massives Eisen, ein hohler Eisenwürfel aber nicht?",
+    auftrag: "",
+    schritte: ["Drücke „massiv – sinkt“ und lies die mittlere Dichte ab.", "Drücke „87 % – sinkt noch“ und dann „88 % – schwimmt gerade“.", "Drücke „90 % – Schiff“ und vergleiche jede Zahl mit 1000 kg/m³."]
+  },
+  "fe1": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "arbeit", seite: 36,
+    kapitel: "Arbeit, Energie und Maschinen",
+    name: "Wann wird Arbeit verrichtet?",
+    titel: "Vier Meter über den Hof",
+    frage: "Wann verrichtet Jannis wirklich Arbeit?",
+    auftrag: "",
+    schritte: ["Drücke „Schieben“ und „Ausführen“. Lies die Arbeit ab.", "Drücke „Waagerecht tragen“. Vergleiche mit 400 J.", "Drücke „Hochheben“. Lies die Arbeit im Bild ab.", "Trage alles in die Tabelle ein."]
+  },
+  "fe2": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "lageenergie", seite: 38,
+    kapitel: "Arbeit, Energie und Maschinen",
+    name: "Wo steckt die Energie oben?",
+    titel: "Der Sack liegt oben still",
+    frage: "Wovon hängt es ab, wie viel Lageenergie ein Körper oben hat?",
+    auftrag: "",
+    schritte: ["Lies in der Statuszeile ab, wie viel Lageenergie der Klotz oben hat.", "Drücke „×2 Masse“ und trage den Wert in die Tabelle ein.", "Drücke danach „×2 Höhe“ und trage ein. Setze vorher nicht zurück.", "Vergleiche die drei Werte."]
+  },
+  "fe3": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "bewegungsenergie", seite: 40,
+    kapitel: "Arbeit, Energie und Maschinen",
+    name: "Wo steckt die Energie beim Rollen?",
+    titel: "Der Ball wirft den Eimer um",
+    frage: "Was bringt mehr Bewegungsenergie: doppelte Masse oder doppeltes Tempo v?",
+    auftrag: "",
+    schritte: ["Drücke „zurücksetzen“. Am Bildschirm stehen 4 kg und 4 m/s.", "Drücke „×2 Masse“ und fülle Zeile 2 aus.", "Drücke danach „×2 Tempo“ und fülle Zeile 3 aus.", "Vergleiche die drei Werte. Drücke „Rollen lassen“ und beobachte den Klotz."]
+  },
+  "fe4": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "energieerhaltung", seite: 42,
+    kapitel: "Arbeit, Energie und Maschinen",
+    name: "Was passiert beim Fallen?",
+    titel: "Der Ball vom Bühnenrand",
+    frage: "Wo bleibt die Lageenergie, während der Ball fällt?",
+    auftrag: "",
+    schritte: ["Öffne die Simulation. Fasse die beiden Regler nicht an.", "Sieh dir den Ball an. Er fällt, springt hoch und fällt wieder.", "Beobachte die zwei Balken „E_pot“ und „E_kin“, solange der Ball nach unten fällt.", "Trage in die Tabelle ein: Wird der Balken kürzer oder länger?"]
+  },
+  "fe5": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "energie-entwerten", seite: 44,
+    kapitel: "Arbeit, Energie und Maschinen",
+    name: "Warum wird alles am Ende warm?",
+    titel: "Am Ende ist alles warm",
+    frage: "Warum soll man Energie sparen, wenn keine Energie verloren geht?",
+    auftrag: "",
+    schritte: ["Drücke zuerst „Benzin → Fahrt“. Sonst misst du die falsche Kette.", "Drücke „nächster Schritt“. Lies ab, wie viel man noch gebrauchen kann.", "Lies auch die letzte Zeile: Wie viel ist zusammen da?", "Trage beides in die Tabelle ein."]
+  },
+  "fe6": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "leistung-rs", seite: 46,
+    kapitel: "Arbeit, Energie und Maschinen",
+    name: "Was ist Leistung?",
+    titel: "Nour zieht schneller",
+    frage: "Was ändert sich, wenn Nour die halbe Zeit braucht?",
+    auftrag: "",
+    schritte: ["Drücke „zurücksetzen“ und dann „Hochziehen“. Die Zahlen stehen schon vorher da.", "Drücke „÷2 Zeit“ und fülle Zeile 2 aus.", "Drücke „zurücksetzen“. Stelle 20 kg ein und fülle Zeile 3 aus."]
+  },
+  "fe7": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "wirkungsgrad", seite: 48,
+    kapitel: "Arbeit, Energie und Maschinen",
+    name: "Wie viel Energie kommt an?",
+    titel: "Die alte Glühlampe im Scheinwerfer",
+    frage: "Wie viel von 1000 J wird bei einer Maschine wirklich Licht oder Bewegung?",
+    auftrag: "",
+    schritte: ["Lies die Statuszeile. Fasse den Regler nicht an. Zeile 1 der Tabelle ist schon ausgefüllt.", "Drücke „LED-Lampe“ und fülle Zeile 2 aus.", "Drücke „Benzinmotor“ und „Elektromotor“. Fülle Zeile 3 und 4 aus.", "Vergleiche: Wo kommt am meisten heraus?"]
+  },
+  "fe8": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "hebel", seite: 50,
+    kapitel: "Arbeit, Energie und Maschinen",
+    name: "Warum hilft eine lange Stange?",
+    titel: "Die Eisenstange unter dem Klavier",
+    frage: "Was passiert mit Kraft und Weg, wenn der Kraftarm länger wird?",
+    auftrag: "",
+    schritte: ["Stelle den Kraftarm l₁ auf 1,00 m. Die Last F₂ bleibt 200 N.", "Drücke „gleich lang – nichts gespart“. Fülle Zeile 2 aus.", "Drücke „achtfach – ein Achtel der Kraft“. Fülle Zeile 3 aus.", "Vergleiche die drei Zeilen. Lies im Bild die Arbeit ab."]
+  },
+  "fe9": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "flaschenzug", seite: 52,
+    kapitel: "Arbeit, Energie und Maschinen",
+    name: "Was bringen Rollen und Seile?",
+    titel: "Vier Seile für das Klavier",
+    frage: "Was ändert sich, wenn mehr Seilstücke die Last tragen?",
+    auftrag: "",
+    schritte: ["Drücke „n = 1 · volle Kraft“ und prüfe Zeile 1.", "Drücke „n = 2 · halbe Kraft“ und fülle Zeile 2.", "Drücke „n = 4 · ein Viertel“ und fülle Zeile 3.", "Vergleiche die Zeile „Zugarbeit“ bei den drei Knöpfen."]
+  },
+  "fe10": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "zahnrad", seite: 54,
+    kapitel: "Arbeit, Energie und Maschinen",
+    name: "Warum dreht sich das kleine Rad schneller?",
+    titel: "Dreimal kurbeln, einmal herum",
+    frage: "Wovon hängt es ab, wie schnell sich Rad 2 dreht?",
+    auftrag: "",
+    schritte: ["Drücke „gleich groß (24 : 24)“. Jeder Knopf stellt Rad 1 auf 60 U/min.", "Drücke „groß treibt klein – schneller“. Trage n₂ ein.", "Drücke „klein treibt groß – langsamer, kräftiger“. Trage n₂ ein.", "Vergleiche die drei Zeilen."]
+  },
+  "fe11": {
+    klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "schiefe-ebene", seite: 56,
+    kapitel: "Arbeit, Energie und Maschinen",
+    name: "Was spart die Rampe?",
+    titel: "Zwei Bretter an der Bühnenkante",
+    frage: "Was ändert sich an Kraft und Weg, wenn die Rampe flacher liegt?",
+    auftrag: "",
+    schritte: ["Drücke nur „flach“, „mittel“ oder „steil“. Die anderen Knöpfe brauchst du hier nicht.", "Lies die Kraft F in der Statuszeile ab. Die Zahl steht vor N.", "Trage Kraft und Weg für „mittel“ und „steil“ in die Tabelle ein."]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen

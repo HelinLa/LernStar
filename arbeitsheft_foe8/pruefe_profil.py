@@ -53,6 +53,29 @@ def _schriftzeichen():
 
 CMAP = _schriftzeichen()
 
+
+# ── Wortgewicht: wie schwer wird die fertige Doppelseite? ────────────────
+# Der Umfangskorridor (35-50 % schlanker) haengt an ZWEI Zahlen: der Zahl der
+# Doppelseiten UND ihrem Gewicht. Band 7 kam auf Median 363 Woerter, Band 8 auf
+# 451 (+24 %) - damit haette Band 9 bei gleicher Seitenzahl den Korridor
+# verfehlt. Das Gewicht wird deshalb gemessen und ausgewiesen, nicht geschaetzt.
+# BUDGET ist die Obergrenze, ab der eine Seite gemeldet wird; None = nur messen.
+BUDGET = None
+_OHNE = ("bildauftrag", "id", "sim", "quelle", "theme", "sicherheit")
+
+def wortgewicht(seite):
+    n = 0
+    def go(x, key=None):
+        nonlocal n
+        if isinstance(x, str):
+            if key not in _OHNE: n += len(x.split())
+        elif isinstance(x, dict):
+            for k, v in x.items(): go(v, k)
+        elif isinstance(x, list):
+            for v in x: go(v, key)
+    go(seite)
+    return n
+
 OPERATOREN = ("Wähle", "Stelle", "Lies", "Trage", "Drücke", "Vergleiche",
               "Beobachte", "Miss", "Berechne", "Kreuze", "Ordne", "Erkläre",
               "Untersuche", "Schiebe", "Wiederhole", "Ergänze", "Prüfe",
@@ -237,6 +260,21 @@ if __name__ == "__main__":
             gesamt += len(bef)
             print(f"── {eid} ──")
             for b in bef: print("  ✗", b)
+    # Wortgewicht je Einheit und Median des Bandes
+    gew = []
+    for eid in ids:
+        e = json.load(open(os.path.join(HERE, "einheiten", eid + ".json"), encoding="utf-8"))
+        gew.append((wortgewicht(e["seite"]), eid))
+    if gew:
+        gew.sort()
+        med = gew[len(gew)//2][0]
+        ueber = [f"{e} ({w})" for w, e in gew if BUDGET and w > BUDGET]
+        print(f"\nWortgewicht: Median {med} · leichteste {gew[0][1]} ({gew[0][0]}) · "
+              f"schwerste {gew[-1][1]} ({gew[-1][0]})"
+              + (f" · Budget {BUDGET}" if BUDGET else ""))
+        if ueber:
+            print("  über dem Budget:", ", ".join(ueber))
+            gesamt += len(ueber)
     # Antwortpositionen je Kapitel zählen (Messregel)
     for kap, kennungen in KAPITEL_IDS:
         p_zaehl, r_zaehl = {0: 0, 1: 0}, {0: 0, 1: 0, 2: 0}
