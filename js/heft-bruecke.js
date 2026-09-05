@@ -4741,6 +4741,206 @@ const HEFT_SEITEN = {
     auftrag: "",
     schritte: ["Drücke „↺ zum Anfang“ und lies Zeitanzeige und Statuszeile.", "Drücke „▶ Urknall starten“ und beobachte die Galaxien.", "Vergleiche das Bild am Anfang mit dem Bild am Ende.", "Trage alle Zeilen in die Tabelle ein."]
   },
+  "fs1": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "ladung", seite: 5,
+    kapitel: "Strom in der Werkstatt",
+    name: "Wie wirken Ladungen aufeinander?",
+    titel: "Das Knistern im Pullover",
+    frage: "Wann ziehen sich zwei geladene Kugeln an und wann stoßen sie sich ab?",
+    auftrag: "",
+    schritte: ["Öffne die Simulation und lies die Statuszeile.", "Drücke bei Kugel A und bei Kugel B den Knopf „− negativ“.", "Lies die Statuszeile noch einmal und trage die zweite Zeile ein.", "Vergleiche die zwei Zeilen: Wann ziehen sich die Kugeln an?"]
+  },
+  "fs2": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "ladungen-kraft", seite: 7,
+    kapitel: "Strom in der Werkstatt",
+    name: "Was macht die Kraft größer?",
+    titel: "Zwei geladene Kugeln",
+    frage: "Was macht die Kraft F größer und was macht sie kleiner?",
+    auftrag: "",
+    schritte: ["Öffne die Simulation. Die kleine grüne Kugel brauchst du hier nicht.", "Drücke „Abstand verdoppeln“. Trage die Kraft F in Zeile 2 ein. Der Abstand bleibt jetzt 12,0 cm.", "Stelle „Ladung je Kugel“ auf 4 nC. Trage die Kraft F in Zeile 3 ein.", "Stelle „Ladung je Kugel“ auf 18 nC. Trage die Kraft F in Zeile 4 ein."]
+  },
+  "fs3": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "spannung", seite: 9,
+    kapitel: "Strom in der Werkstatt",
+    name: "Was sagt die Zahl mit dem V?",
+    titel: "Die Zahl mit dem V auf der Zelle",
+    frage: "Was ändert sich am Voltmeter und an der Lampe, wenn du mehr Zellen einsetzt?",
+    auftrag: "",
+    schritte: ["Drücke „1 Zelle (1,5 V)“ und lies die Spannung U am Voltmeter ab.", "Lies in der Statuszeile, wie hell die Lampe leuchtet.", "Drücke „2 Zellen (3 V)“ und trage die zweite Zeile ein.", "Drücke „3 Zellen (4,5 V)“ und trage die dritte Zeile ein."]
+  },
+  "fs4": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "stromstaerke", seite: 11,
+    kapitel: "Strom in der Werkstatt",
+    name: "Wie viel Strom fließt?",
+    titel: "Wie viel fließt da?",
+    frage: "Wie groß ist die Stromstärke – und wann fließt gar nichts mehr?",
+    auftrag: "",
+    schritte: ["Drücke „mittel“ und trage die Stromstärke I in die Tabelle ein.", "Drücke „stark“ und trage die Stromstärke I ein.", "Drücke den Knopf „Schalter: geschlossen“. Damit öffnest du den Kreis.", "Lies die Stromstärke ab und fülle die letzte Zeile aus."]
+  },
+  "fs5": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "messen", seite: 13,
+    kapitel: "Strom in der Werkstatt",
+    name: "Wohin kommt das Messgerät?",
+    titel: "Zwei Messgeräte auf der Werkbank",
+    frage: "Wohin gehört das Amperemeter, wohin das Voltmeter?",
+    auftrag: "",
+    schritte: ["Drücke den Knopf „Ⓐ Amperemeter“ und lies die Statuszeile.", "Drücke „Ⓥ Voltmeter“ und dann „in Reihe“. Beobachte die Lampe.", "Wähle danach „parallel“, nicht die Quiz-Antwort „Parallel zum Bauteil“.", "Trage in die Tabelle ein, was die Statuszeile meldet."]
+  },
+  "fs6": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "widerstand", seite: 15,
+    kapitel: "Strom in der Werkstatt",
+    name: "Großer Widerstand, kleiner Strom",
+    titel: "Was bremst den Strom?",
+    frage: "Warum fließt bei 4,5 Volt durch jedes Bauteil ein anderer Strom?",
+    auftrag: "",
+    schritte: ["Drücke „kleiner Widerstand“ und lies die Statuszeile.", "Trage Widerstand R und Stromstärke I in die Tabelle ein.", "Drücke „großer Widerstand“ und trage die beiden Werte ein.", "Vergleiche die drei Zeilen: Wo fließt der meiste Strom?"]
+  },
+  "fs7": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "draht", seite: 17,
+    kapitel: "Strom in der Werkstatt",
+    name: "Wovon hängt der Widerstand ab?",
+    titel: "Der lange dünne Draht",
+    frage: "Wovon hängt es ab, wie stark ein Draht den Strom bremst?",
+    auftrag: "",
+    schritte: ["Drücke „lang“. Trage den Widerstand R und die Stromstärke I ein.", "Drücke „dünn“. Trage beide Werte in die nächste Zeile ein.", "Drücke „Eisen“. Trage beide Werte in die letzte Zeile ein.", "Vergleiche die vier Zeilen: Wo ist der Widerstand am größten?"]
+  },
+  "fs8": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "ohm-kennlinie", seite: 19,
+    kapitel: "Strom in der Werkstatt",
+    name: "Doppelte Spannung, doppelter Strom",
+    titel: "Was macht doppelte Spannung?",
+    frage: "Fließt bei doppelter Spannung auch doppelt so viel Strom?",
+    auftrag: "",
+    schritte: ["Drücke „20 Ω“ und dann einmal „◀ weniger“. Vergleiche die Statuszeile mit Zeile 1.", "Drücke einmal „mehr ▶“. Trage Spannung U und Stromstärke I in Zeile 2 ein.", "Drücke „10 Ω“. Trage die beiden neuen Werte in Zeile 3 ein.", "Vergleiche Zeile 1 und Zeile 2: Wie ändert sich die Stromstärke?"]
+  },
+  "fs9": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "reihe-widerstand", seite: 21,
+    kapitel: "Strom in der Werkstatt",
+    name: "Zwei Widerstände in einer Reihe",
+    titel: "Was passiert hintereinander?",
+    frage: "Was macht ein zweiter Widerstand in der Reihe mit dem Strom?",
+    auftrag: "",
+    schritte: ["Drücke zuerst ↺. Jetzt steht R₁ auf 10 Ω und R₂ auf 20 Ω, wie in Zeile 1. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.", "Drücke bei R₁ auf 20 Ω. Lies R_ges und den Strom I ab und trage Zeile 2 ein.", "Drücke bei R₁ auf 30 Ω und bei R₂ auf 30 Ω. Trage Zeile 3 ein.", "Vergleiche die drei Zeilen. Wird der Strom größer oder kleiner?"]
+  },
+  "fs10": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "parallel-widerstand", seite: 23,
+    kapitel: "Strom in der Werkstatt",
+    name: "Zwei Wege für den Strom",
+    titel: "Was passiert nebeneinander?",
+    frage: "Wie groß ist der Strom insgesamt, wenn er zwei Wege hat?",
+    auftrag: "",
+    schritte: ["Drücke in Zeile R₁ den Knopf 10 Ω, in Zeile R₂ den Knopf 20 Ω.", "Lies I₁, I₂ und den Gesamtstrom I in der Statuszeile ab.", "Drücke in Zeile R₁ den Knopf 30 Ω. Trage die zweite Zeile ein.", "Drücke danach in Zeile R₂ den Knopf 10 Ω. Ergänze die letzte Zeile."]
+  },
+  "fs11": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "elektronen-drift", seite: 25,
+    kapitel: "Strom in der Werkstatt",
+    name: "Langsames Wandern, schnelles Signal",
+    titel: "Warum geht das Licht sofort an?",
+    frage: "Müssen die Elektronen schnell durch das Kabel fahren, damit die Lampe sofort leuchtet?",
+    auftrag: "",
+    schritte: ["Drücke „Leselampe“ und sieh dir das Bild vom Kupferdraht an.", "Lies im Bild die Werte für Zappeln und Signal ab.", "Trage die zwei leeren Zeilen in die Tabelle ein.", "Lies in der Statuszeile, wie lange ein Elektron für einen Meter Kabel braucht."]
+  },
+  "fs12": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "blitz", seite: 27,
+    kapitel: "Strom in der Werkstatt",
+    name: "Warum kommt der Donner später?",
+    titel: "Blitz und Donner",
+    frage: "Warum hören wir den Donner erst nach dem Blitz?",
+    auftrag: "",
+    schritte: ["Stelle den Regler „Entfernung des Gewitters“ auf 1,0 km.", "Lies unter „4 · Der Donner kommt hinterher“ ab, wie lange der Donner braucht.", "Stelle den Regler danach auf 2,0 km und zuletzt auf 3,0 km.", "Trage die Zeit für den Donner und die Zeit für das Licht in die Tabelle ein."]
+  },
+  "fs13": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "stromgefahren", seite: 29,
+    kapitel: "Strom in der Werkstatt",
+    name: "Wann schaltet die Sicherung ab?",
+    titel: "Zu viel an einer Steckdose",
+    frage: "Wann unterbricht die Sicherung den Stromkreis?",
+    auftrag: "",
+    schritte: ["Lies die Anzeige ab: 1 Gerät zieht 6 A. Die Sicherung erlaubt 16 A.", "Drücke „➕ Gerät anschließen“. Lies den Strom ab und trage Zeile 2 ein.", "Drücke „➕ Gerät anschließen“ noch einmal. Lies die Meldung und trage Zeile 3 ein.", "Achte auf den Warnhinweis: Nie mit der Netzspannung (230 V) experimentieren – nur mit ungefährlicher Kleinspannung!"]
+  },
+  "fb1": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "v-begriff", seite: 34,
+    kapitel: "Wie schnell ist schnell?",
+    name: "Wer ist schneller?",
+    titel: "Das Wettrennen am Bildschirm",
+    frage: "Woran erkennst du, welches der zwei Autos schneller ist?",
+    auftrag: "",
+    schritte: ["Drücke den Knopf „Rennen starten“ und beobachte die zwei Autos.", "Lies die Statuszeile unter „Wer ist schneller?“. Zeile 1 ist schon ausgefüllt.", "Drücke bei Auto A den Knopf „schnell“ und dann „Rennen starten“. Trage Zeile 2 ein.", "Drücke bei Auto B den Knopf „langsam“ und dann „Rennen starten“. Trage Zeile 3 ein."]
+  },
+  "fb2": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "v-messen", seite: 36,
+    kapitel: "Wie schnell ist schnell?",
+    name: "Wie misst und rechnet man das Tempo?",
+    titel: "Messen und ausrechnen",
+    frage: "Wie rechnest du aus Strecke und Zeit die Geschwindigkeit aus?",
+    auftrag: "",
+    schritte: ["Drücke den Knopf langsam und danach den Knopf „Messung starten“.", "Vergleiche die Zeit im Bild mit der ersten Zeile der Tabelle.", "Drücke mittel und dann „Messung starten“. Trage die zweite Zeile ein.", "Drücke schnell und dann „Messung starten“. Ergänze die letzte Zeile."]
+  },
+  "fb3": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "v-umrechnung", seite: 38,
+    kapitel: "Wie schnell ist schnell?",
+    name: "Von m/s zu km/h – mal 3,6",
+    titel: "km/h oder m/s?",
+    frage: "Wie rechnest du einen Wert von m/s in km/h um?",
+    auftrag: "",
+    schritte: ["Lies zuerst die Statuszeile ab. Dort steht die Rechnung mit 3,6.", "Drücke „🚶 Fußgänger“. Vergleiche die Statuszeile mit Zeile 1 der Tabelle.", "Drücke „🚴 Radfahrer“. Trage beide Zahlen in Zeile 2 ein.", "Drücke „🚗 Auto (Stadt)“. Trage beide Zahlen in Zeile 3 ein."]
+  },
+  "fb4": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "gleichfoermig-rs", seite: 40,
+    kapitel: "Wie schnell ist schnell?",
+    name: "Was sagen die Abstände?",
+    titel: "Kreidestriche auf dem Schulhof",
+    frage: "Was sagen dir die Abstände zwischen den Sekunden-Marken?",
+    auftrag: "",
+    schritte: ["Lies zuerst Zeile 1 der Tabelle. So startet die Simulation.", "Wähle den Knopf „langsam“ und drücke danach „▶ Fahren“.", "Lies ab, welche Zahl bei v steht. Beobachte dabei die Abstände der Marken.", "Wiederhole das mit „schnell“ und fülle die letzte Zeile aus."]
+  },
+  "fb5": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "weg-zeit-diagramm", seite: 42,
+    kapitel: "Wie schnell ist schnell?",
+    name: "Was verrät die Linie im Weg-Zeit-Bild?",
+    titel: "Linien an der Werkstattwand",
+    frage: "Was sagt dir die Linie im Weg-Zeit-Diagramm über die Fahrt?",
+    auftrag: "",
+    schritte: ["Drücke „schnell“ und dann „▶ Fahren“. Zeile 1 der Tabelle ist schon ausgefüllt.", "Drücke „langsam“ und dann „▶ Fahren“. Beobachte, wie stark die Linie steigt.", "Lies die Statuszeile und trage Zeile 2 in die Tabelle ein.", "Drücke „mit Pause“ und dann „▶ Fahren“. Trage danach Zeile 3 ein."]
+  },
+  "fb6": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "v-zeit-diagramm", seite: 44,
+    kapitel: "Wie schnell ist schnell?",
+    name: "Was verrät die Linie im Tempo-Bild?",
+    titel: "Die Linie steigt und fällt",
+    frage: "Was bedeutet eine waagerechte, eine ansteigende und eine fallende Linie?",
+    auftrag: "",
+    schritte: ["Öffne die Simulation. Das Bild oben heißt dort „v-t-Diagramm“ – gemeint ist das Tempo-Zeit-Diagramm.", "Drücke den Knopf „konstant“ und dann „▶ Fahren“. Zeile 1 der Tabelle ist schon ausgefüllt.", "Drücke den Knopf „beschleunigen“ und dann „▶ Fahren“. Lies die Statuszeile und fülle Zeile 2 aus.", "Drücke den Knopf „bremsen“ und dann „▶ Fahren“. Lies die Statuszeile und fülle Zeile 3 aus."]
+  },
+  "fb7": {
+    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "bremsweg-jg9", seite: 46,
+    kapitel: "Wie schnell ist schnell?",
+    name: "Wie weit fährt ein Auto bis zum Halt?",
+    titel: "Bis das Auto steht",
+    frage: "Woraus besteht der Weg, bis das Auto wirklich steht?",
+    auftrag: "",
+    schritte: ["Drücke „▶ Gefahr! (Start)“ und beobachte, wie weit das Auto noch fährt.", "Lies in der Statuszeile Reaktionsweg und Bremsweg ab. Zeile 1 (50 km/h) ist schon ausgefüllt.", "Drücke „100 km/h“ für Zeile 2, danach „30 km/h“ für Zeile 3.", "Vergleiche den Bremsweg bei 50 km/h mit dem Bremsweg bei 100 km/h."]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen
