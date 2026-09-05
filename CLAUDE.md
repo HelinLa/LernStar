@@ -244,9 +244,20 @@ Foerderbedarf Lernen, DaZ). Hausstil steht in `arbeitsheft_foe7/FOERDER_PROFIL.m
 | Band | Quellband | Kennungen | Einheiten | Seiten | Lehrerband |
 |---|---|---|---|---|---|
 | foe7 | gts7 | `fo` `fw` | 25 (aus 29) | 59 | 29 |
-| foe8 | gts8 | `fs` `fb` | 20 (aus 23) | 49 | 24 |
-| foe9 | gts9 | `fk` `fe` | 25 (aus 27) | 59 | 29 |
-| foe10 | gts10 | `fv` `fn` | 28 (aus 32) | 65 | 32 |
+| foe8 | gts8 | `fs` `fb` | 20 (aus 23) | 49 | 39 |
+| foe9 | gts9 | `fk` `fe` | 25 (aus 27) | 59 | 53 |
+| foe10 | gts10 | `fv` `fn` | 28 (aus 32) | 65 | 95 |
+
+> **Der Lehrerteil lief unter der Blattkante weiter** (gefunden 05.09.2026).
+> `build_pilot.seite_l` setzte GENAU EINE Seite und schnitt alles unterhalb von
+> `y = H-90` stillschweigend ab. Gemessen in foe9: jede der 25 Lehrerseiten endete
+> zwischen 1833 und 2817 statt bei 1664 – im Druck fehlten Loesungswort zu Hilfe 3,
+> die Hinweise fuer schwache Lernende, die Zusatzaufgabe und der Kernlehrplan-Bezug.
+> `seite_l` gibt jetzt eine LISTE von Seiten zurueck und bricht auf Punktebene um
+> (Titel oben mit "· FORTSETZUNG"). Daher die neuen Lehrerband-Zahlen: foe8 24 → 39,
+> foe9 29 → 53. **foe7 war NICHT betroffen** – dort passen alle 25 Lehrerteile auf
+> eine Seite (nachgemessen 1433–1502). Die Schuelerseiten aendern sich nicht, gedruckte
+> QR-Codes sind also unberuehrt (foe9 bleibt bei 59 Seiten).
 
 **Ein neuer Band braucht nur `plan.py` und die Inhalte** – alle Skripte sind
 bandunabhaengig und ziehen Klasse, Kapitelfarben, Dateinamen und `QUELLBAND` aus
