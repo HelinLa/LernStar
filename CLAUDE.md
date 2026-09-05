@@ -311,6 +311,27 @@ Sieben Werkzeuge, alle an bekannten Faellen geeicht. Ausfuehrlich in `simcheck/R
 | `einbau.py` | Registry-Eintrag und Implementierung in `physics-sim.js` einsetzen |
 | `heft_gegen_sim.py` | prueft, ob eine Heftseite nur Werte verlangt, die am Bildschirm stehen |
 | `seitenzahlen.py` | liest die Seitenzahlen aus den gesetzten Seiten (siehe oben) |
+| `qr_live.py` | prueft die GEDRUCKTEN QR-Codes gegen den AUSGELIEFERTEN Stand (siehe unten) |
+
+**Ein gedruckter QR-Code ist erst gut, wenn er LIVE oeffnet.** Der Code traegt nur
+`#heft=<kennung>`; welche Simulation dazugehoert, weiss allein `js/heft-bruecke.js` –
+und zwar die Fassung, die auf helinla.github.io liegt, nicht die auf dem Schreibtisch.
+Zweimal (01.09. und 05.09.2026) ging deshalb beim Scannen nur die Startseite auf:
+einmal waren die drei `js/`-Dateien nie eingecheckt, einmal fehlten der ausgelieferten
+Bruecke die 25 neuen Foerderheft-Kennungen. Beide Male war alles andere in Ordnung.
+
+> **Nach jedem Heftbau:** `python3 simcheck/qr_live.py <heftordner>` (oder `--alle`).
+> Liest die Codes aus `build/book_p*.png` und haelt jede Kennung ueber das Netz gegen
+> `heft-bruecke.js` und `physics-sim.js`. Exitcode 1 = mindestens ein gedruckter Code
+> laeuft ins Leere. Geeicht an gts7 (29/29), Klasse 9 (42/42) und einem bekannt
+> kaputten Stand (0/50).
+
+Zwei Fehlalarme, die das Werkzeug beim Eichen selbst hatte und die als Kommentar
+darin stehen: Die Registry `_physSimDefs` haelt `'prisma': modal => {`, nicht
+`'prisma': {` – ein Muster auf `:` + `{` findet nur 110 statt 221 Simulationen.
+Und `qr/qr_ew9.png` ist als Einzeldatei (Palettenmodus) von OpenCV bei KEINER
+Vergroesserung lesbar, auf der gesetzten Seite dagegen sofort. Gelesen wird
+deshalb die Seite, nicht die Einzeldatei.
 
 Dazu `arbeitsheft/formregeln.py` – die Formregeln der Forscherseiten, geeicht an den 162
 abgenommenen Seiten der Realschulreihe (0 Fehlalarme). `seiten_nachbereiten.py` streut ausserdem
