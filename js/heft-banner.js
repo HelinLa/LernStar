@@ -71,7 +71,7 @@
       <p class="heft-kopf-frage">${op ? '<b>' + op + '</b> ' : ''}${rest}</p>
       ${auftrag}
       ${schritte ? `<ul class="heft-schritte">${schritte}</ul>
-      <button class="heft-mehr" type="button">Die drei Schritte aus dem Heft ▾</button>` : ''}
+      <button class="heft-mehr" type="button">Die Schritte aus dem Heft ▾</button>` : ''}
     </div>`;
   }
 
@@ -89,7 +89,7 @@
     if (btn && ul) btn.onclick = () => {
       const auf = ul.style.display === 'block';
       ul.style.display = auf ? 'none' : 'block';
-      btn.textContent = auf ? 'Die drei Schritte aus dem Heft ▾' : 'Schritte ausblenden ▴';
+      btn.textContent = auf ? 'Die Schritte aus dem Heft ▾' : 'Schritte ausblenden ▴';
     };
   }
 

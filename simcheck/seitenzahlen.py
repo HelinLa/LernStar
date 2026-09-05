@@ -46,8 +46,14 @@ def messen(heft):
         n = int(re.search(r"book_p(\d+)\.png$", p).group(1))
         tid = lies_qr(p)
         if tid:
+            # ERSTER Treffer gilt. In den Regelheften kommt jede Kennung genau einmal
+            # vor - dort ist das gleichbedeutend. Im Foerderheft tragen Seite A und
+            # Seite B denselben Code; gemeint ist die Seite, auf der das Thema
+            # anfaengt, also A. Wer den letzten Treffer nimmt, schickt die App auf
+            # die Uebungsseite.
             if tid in seiten:
-                print(f"   ! {tid} steht auf Seite {seiten[tid]} UND {n}")
+                print(f"   · {tid}: auch auf Seite {n} (gilt weiter Seite {seiten[tid]})")
+                continue
             seiten[tid] = n
         else:
             ohne += 1

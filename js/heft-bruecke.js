@@ -4491,6 +4491,256 @@ const HEFT_SEITEN = {
     auftrag: "Vergleiche für drei Sparmaßnahmen den Stromverbrauch pro Jahr vorher und nachher und bestimme die Ersparnis.",
     schritte: ["Wähle die Maßnahme „Glühlampe→LED“.", "Wechsle danach zu „Standby aus“ und schließlich zu „Kühlschrank“.", "Lies bei jeder Maßnahme unter „Ersparnis pro Jahr“ den Verbrauch vorher und nachher sowie die Ersparnis in Kilowattstunden und Euro ab."]
   },
+  "fo1": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "licht-oberflaeche", seite: 5,
+    kapitel: "Sehen, spiegeln, brechen",
+    name: "Was macht eine Oberfläche mit Licht?",
+    titel: "Zwei Kisten ohne Beschriftung",
+    frage: "Was macht eine Oberfläche mit dem Licht, das auf sie trifft?",
+    auftrag: "",
+    schritte: ["Wähle den Spiegel und lies die drei Zahlen in der Statuszeile ab.", "Trage die Zahlen für Fensterglas, schwarzes Papier und weißes Papier ein.", "Berechne für jede Zeile die Summe der drei Zahlen."]
+  },
+  "fo2": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "reflexionsgesetz", seite: 7,
+    kapitel: "Sehen, spiegeln, brechen",
+    name: "Wie wirft der Spiegel Licht zurück?",
+    titel: "Der Spiegel",
+    frage: "Wie hängen Einfallswinkel und Reflexionswinkel zusammen?",
+    auftrag: "",
+    schritte: ["Stelle den Einfallswinkel zum Lot auf 0° und lies die Statuszeile.", "Trage beide Winkel in die Tabelle ein.", "Stelle nacheinander 20°, 40° und 80° ein und ergänze die Tabelle."]
+  },
+  "fo3": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "brechung-eintritt", seite: 9,
+    kapitel: "Sehen, spiegeln, brechen",
+    name: "Warum knickt Licht im Glas?",
+    titel: "Der halbrunde Glasklotz",
+    frage: "Wohin knickt der Lichtstrahl, wenn er ins Glas eintritt?",
+    auftrag: "",
+    schritte: ["Drücke „↓ genau auf das Lot“ und lies die Statuszeile.", "Stelle den Winkel in der Luft auf 40° und lies den Winkel im Glas ab.", "Stelle 75° ein und ergänze die letzte Zeile der Tabelle.", "Vergleiche: Ist der Winkel im Glas größer oder kleiner?"]
+  },
+  "fo4": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "brechung-austritt", seite: 11,
+    kapitel: "Sehen, spiegeln, brechen",
+    name: "Wann kommt Licht nicht mehr heraus?",
+    titel: "Wenn Licht nicht mehr herauskommt",
+    frage: "Wann tritt Licht aus dem Glas aus – und wann nicht mehr?",
+    auftrag: "",
+    schritte: ["Stelle den Winkel im Glas auf 20° und lies den Winkel in der Luft ab.", "Stelle 25° ein und vergleiche beide Winkel.", "Drücke den Knopf „55° – Totalreflexion“ und lies die Meldung.", "Trage ein, bei welchen Winkeln Licht austritt."]
+  },
+  "fo5": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "sammellinse", seite: 13,
+    kapitel: "Sehen, spiegeln, brechen",
+    name: "Welches Glas bündelt das Licht?",
+    titel: "Zwei geschliffene Gläser",
+    frage: "Welches Glas bündelt paralleles Licht – und welches nicht?",
+    auftrag: "",
+    schritte: ["Wähle „in der Mitte dicker“ und lies die Statuszeile.", "Trage ein, wo sich die Strahlen treffen.", "Wähle „in der Mitte dünner“ und beobachte die Strahlen.", "Ergänze die zweite Zeile der Tabelle."]
+  },
+  "fo6": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "bild-linse", seite: 15,
+    kapitel: "Sehen, spiegeln, brechen",
+    name: "Wo entsteht das Bild der Linse?",
+    titel: "Das Bild der Linse und die Lupe",
+    frage: "Wovon hängt es ab, wie das Bild der Linse aussieht?",
+    auftrag: "",
+    schritte: ["Stelle die Gegenstandsweite g auf 190 und lies die Statuszeile.", "Stelle 100 ein und vergleiche Größe und Lage des Bildes.", "Stelle 25 ein – näher als die Brennweite f = 62.", "Trage jedes Mal ein, wie das Bild aussieht."]
+  },
+  "fo7": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "auge", seite: 17,
+    kapitel: "Sehen, spiegeln, brechen",
+    name: "Wie entsteht ein Bild im Auge?",
+    titel: "Das aufklappbare Augenmodell",
+    frage: "Wo entsteht das Bild im Auge – und wie bleibt es scharf?",
+    auftrag: "",
+    schritte: ["Schiebe den Regler „Abstand des Gegenstands“ ganz nach rechts und lies die Statuszeile.", "Schiebe ihn ganz nach links und vergleiche die Wölbung der Linse.", "Schiebe den Regler „Pupille“ nach links und nach rechts. Lies beide Meldungen.", "Trage deine Beobachtungen in die Tabelle ein."]
+  },
+  "fo8": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "brille", seite: 19,
+    kapitel: "Sehen, spiegeln, brechen",
+    name: "Wie hilft eine Brille?",
+    titel: "Zwei Brillen ohne Etikett",
+    frage: "Welche Linse gehört zu welchem Sehfehler?",
+    auftrag: "",
+    schritte: ["Wähle „kurzsichtig“ und lies ab, wo das Bild liegt.", "Drücke „Brille“ und lies die neue Meldung.", "Wähle „weitsichtig“ und wiederhole beide Schritte.", "Trage alle vier Ergebnisse in die Tabelle ein."]
+  },
+  "fo9": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "lochkamera", seite: 21,
+    kapitel: "Sehen, spiegeln, brechen",
+    name: "Wie macht die Lochkamera ein Bild?",
+    titel: "Die Pappkiste mit dem Nadelloch",
+    frage: "Wie sieht das Bild aus, das ein kleines Loch auf den Schirm wirft?",
+    auftrag: "",
+    schritte: ["Stelle die Bildweite b auf 29 cm und lies die Statuszeile.", "Stelle b auf 39 cm und dann auf 51 cm. Vergleiche die Bildgröße.", "Schiebe den Regler „Lochgröße“ ganz nach rechts und lies die Statuszeile.", "Trage alle vier Zeilen in die Tabelle ein."]
+  },
+  "fo10": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "prisma", seite: 23,
+    kapitel: "Sehen, spiegeln, brechen",
+    name: "Woraus besteht weißes Licht?",
+    titel: "Der Glaskeil in der Schublade",
+    frage: "Macht das Prisma die Farben – oder stecken sie schon im weißen Licht?",
+    auftrag: "",
+    schritte: ["Wähle weißes Licht und lies die Meldung in der Statuszeile.", "Trage in die Tabelle ein, was hinter dem Prisma erscheint.", "Wähle nur Rot. Beobachte, ob sich das Licht noch auffächert.", "Vergleiche mit nur Blau und ergänze die letzte Zeile."]
+  },
+  "fo11": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "farbmischung-additiv", seite: 25,
+    kapitel: "Sehen, spiegeln, brechen",
+    name: "Wie macht der Bildschirm Farben?",
+    titel: "Die Lupe auf dem Bildschirm",
+    frage: "Wie entsteht Weiß, wenn dort nur Rot, Grün und Blau leuchten?",
+    auftrag: "",
+    schritte: ["Lies im Statusfeld die Ergebnisfarbe mit ihren drei Zahlen ab.", "Drücke „aus“ und notiere alle drei Werte.", "Drücke „Gelb“ und notiere die Werte.", "Schiebe den Regler „Blau“ auf 255 und vergleiche mit dem Knopf „Weiß“."]
+  },
+  "fo12": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "spektrum-unsichtbar", seite: 27,
+    kapitel: "Sehen, spiegeln, brechen",
+    name: "Welches Licht sehen wir nicht?",
+    titel: "Das Thermometer mit der schwarzen Kugel",
+    frage: "Kommt hinter dem letzten Rot noch etwas an, das wir nicht sehen?",
+    auftrag: "",
+    schritte: ["Drücke „555 nm – Grün“ und lies die Erwärmung ab.", "Drücke „700 nm – letztes Rot“ und vergleiche die Erwärmung.", "Drücke „940 nm – Fernbedienung“ und lies beide Angaben.", "Trage alle drei Zeilen in die Tabelle ein."]
+  },
+  "fw1": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "himmelskoerper", seite: 32,
+    kapitel: "Der Blick ins Weltall",
+    name: "Was leuchtet am Nachthimmel?",
+    titel: "Ein Karton voller Sternkarten",
+    frage: "Welche Himmelskörper leuchten selbst – und welche werden beleuchtet?",
+    auftrag: "",
+    schritte: ["Wähle nacheinander Sonne, Stern, Mond und Planet. Lies jede Statuszeile.", "Trage ein, wer selbst leuchtet.", "Drücke „Sonnenlicht abdecken“ und wähle wieder alle vier.", "Ergänze: Wer ist jetzt dunkel, wer strahlt weiter?"]
+  },
+  "fw2": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "tag-nacht", seite: 34,
+    kapitel: "Der Blick ins Weltall",
+    name: "Warum wird es Tag und Nacht?",
+    titel: "Der staubige Globus",
+    frage: "Wovon hängt es ab, ob es gerade Tag oder Nacht ist?",
+    auftrag: "",
+    schritte: ["Drücke „⏯ Pause“, damit der Globus stehen bleibt.", "Stelle den Regler „Erde von Hand drehen“ auf 0°. Lies ab: Wer hat Sonne?", "Stelle 180° ein und vergleiche.", "Ergänze die letzte Zeile nach einer vollen Drehung."]
+  },
+  "fw3": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "gravitation", seite: 36,
+    kapitel: "Der Blick ins Weltall",
+    name: "Warum fällt alles nach unten?",
+    titel: "Warum alles nach unten fällt",
+    frage: "Fallen Stein und Feder gleich schnell, wenn keine Luft da ist?",
+    auftrag: "",
+    schritte: ["Drücke „⬇ Noch einmal fallen lassen“. Beobachte beide Rohre.", "Wähle den Mond und lies g und die Fallzeit ab.", "Wähle Erde und Jupiter und ergänze die Tabelle.", "Vergleiche: Wo fällt der Stein am schnellsten?"]
+  },
+  "fw4": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "planetenbahn", seite: 38,
+    kapitel: "Der Blick ins Weltall",
+    name: "Warum stürzen Planeten nicht ab?",
+    titel: "Warum Planeten nicht abstürzen",
+    frage: "Warum stürzt ein Planet nicht in die Sonne?",
+    auftrag: "",
+    schritte: ["Drücke „➊ ganz klein“ und lies die Bahnform ab.", "Drücke „➋ mittlerer Wert“ und vergleiche.", "Drücke „➍ Gegenprobe groß“ und lies die Meldung.", "Trage alle drei Zeilen in die Tabelle ein."]
+  },
+  "fw5": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "sonnensystem", seite: 40,
+    kapitel: "Der Blick ins Weltall",
+    name: "Wie unterscheiden sich die Planeten?",
+    titel: "Acht gleich große Kugeln",
+    frage: "Was unterscheidet die inneren Planeten von den äußeren?",
+    auftrag: "",
+    schritte: ["Drücke „Steckbrief“ und lies für die Erde Sorte und Durchmesser ab.", "Drücke „Größen“ und vergleiche die acht Planeten.", "Drücke „Umlauf“ und „sehr schnell“. Wer kommt öfter herum: innen oder außen?", "Trage deine Beobachtungen in die Tabelle ein."]
+  },
+  "fw6": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "entfernungen", seite: 42,
+    kapitel: "Der Blick ins Weltall",
+    name: "Wie groß ist das Sonnensystem?",
+    titel: "Ein Wort auf der Rückseite",
+    frage: "Wie lange ist das Licht von fernen Zielen zu uns unterwegs?",
+    auftrag: "",
+    schritte: ["Drücke „💡 Lichtblitz senden“ und beobachte den Weg zum Mond.", "Lies Entfernung und Zeit in der Statuszeile ab.", "Drücke „weiter ▶“ und lies die Werte für die Sonne ab.", "Gehe mit „weiter ▶“ bis zum nächsten Stern und trage ein."]
+  },
+  "fw7": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "teleskop", seite: 44,
+    kapitel: "Der Blick ins Weltall",
+    name: "Was macht das Fernrohr mit dem Bild?",
+    titel: "Zwei Linsen und ein Rohr",
+    frage: "Wie verändert das Fernrohr Größe, Lage und Helligkeit des Bildes?",
+    auftrag: "",
+    schritte: ["Drücke „👁 bloßes Auge“. Achte auf die Größe und die gelbe Marke.", "Drücke „🔭 mit Teleskop“ und lies die Vergrößerung ab.", "Vergleiche „◯ große Öffnung“ und „◦ kleine Öffnung“: Achte nur auf die Helligkeit.", "Trage alle drei Zeilen in die Tabelle ein."]
+  },
+  "fw8": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "sternparallaxe", seite: 46,
+    kapitel: "Der Blick ins Weltall",
+    name: "Wie weit ist ein Stern entfernt?",
+    titel: "Kein Maßband bis zum Stern",
+    frage: "Wie hängt der gemessene Winkel mit der Entfernung zusammen?",
+    auftrag: "",
+    schritte: ["Drücke „Proxima Centauri“ und lies den Winkel p und die Lichtjahre ab.", "Vergleiche mit „61 Cygni“ und „Wega“. Trage alle Werte ein.", "Wähle „Polarstern“ und drücke „Lupe ×100“, um den winzigen Sprung zu sehen.", "Vergleiche: Wie ändert sich der Winkel mit der Entfernung?"]
+  },
+  "fw9": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "sternleben", seite: 48,
+    kapitel: "Der Blick ins Weltall",
+    name: "Wie lange leuchtet ein Stern?",
+    titel: "Die Randnotiz auf der Sternkarte",
+    frage: "Lebt ein schwerer Stern länger als ein leichter?",
+    auftrag: "",
+    schritte: ["Drücke „1“ und sieh den ganzen Lebenslauf durch.", "Lies die Lebensdauer ab und trage sie ein.", "Drücke „10“ und vergleiche.", "Prüfe mit „Gegenprobe 25“: Lebt er noch kürzer?"]
+  },
+  "fw10": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "milchstrasse", seite: 50,
+    kapitel: "Der Blick ins Weltall",
+    name: "Wo stehen wir in der Milchstraße?",
+    titel: "Das blasse Band",
+    frage: "Steht die Sonne in der Mitte der Milchstraße?",
+    auftrag: "",
+    schritte: ["Drücke nacheinander „zur Mitte“, „nach außen“ und „quer heraus“.", "Lies jedes Mal die Sterne im Blickfeld ab und trage ein.", "Drücke „Gegenprobe: Sonne in die Mitte“ und lies die Meldung.", "Vergleiche: Passt die Gegenprobe zu unserem Himmel?"]
+  },
+  "fw11": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "weltbild", seite: 52,
+    kapitel: "Der Blick ins Weltall",
+    name: "Wer steht in der Mitte?",
+    titel: "Zwei Weltbilder",
+    frage: "Welches Weltbild erklärt den Himmel ohne Zusatzkreise?",
+    auftrag: "",
+    schritte: ["Drücke „🌍 Erde in der Mitte (alt)“ und lies die Statuszeile.", "Drücke „☀️ Sonne in der Mitte (heute)“ und vergleiche.", "Beobachte unten den Streifen: Wie läuft der Mars von der Erde aus?", "Trage beide Zeilen in die Tabelle ein."]
+  },
+  "fw12": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "schwarzes-loch", seite: 54,
+    kapitel: "Der Blick ins Weltall",
+    name: "Wie findet man ein schwarzes Loch?",
+    titel: "Ein Kreis um ein leeres Feld",
+    frage: "Woran erkennt man ein schwarzes Loch, wenn es nicht leuchtet?",
+    auftrag: "",
+    schritte: ["Drücke „➌ weit weg“ und dann „💡 Lichtstrahl senden“.", "Lies die Statuszeile ab und trage ein.", "Wiederhole mit „➋ mittel“ und „➊ sehr nah“.", "Vergleiche die drei Wege im Bild."]
+  },
+  "fw13": {
+    klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "urknall", seite: 56,
+    kapitel: "Der Blick ins Weltall",
+    name: "Wie hat sich das Weltall seit dem Urknall verändert?",
+    titel: "Woher kommt alles?",
+    frage: "Wie hat sich das Weltall seit dem Urknall verändert?",
+    auftrag: "",
+    schritte: ["Drücke „↺ zum Anfang“ und lies Zeitanzeige und Statuszeile.", "Drücke „▶ Urknall starten“ und beobachte die Galaxien.", "Vergleiche das Bild am Anfang mit dem Bild am Ende.", "Trage alle Zeilen in die Tabelle ein."]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen

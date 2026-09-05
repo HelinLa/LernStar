@@ -18,7 +18,15 @@ ORDNER = ["arbeitsheft", "arbeitsheft7", "arbeitsheft8", "arbeitsheft9", "arbeit
           "arbeitsheft_gts7", "arbeitsheft_gts8", "arbeitsheft_gts9", "arbeitsheft_gts10",
           # Gymnasialreihe (im Aufbau) - Ordner ohne fertige Inhalte werden uebersprungen
           "arbeitsheft_gym56", "arbeitsheft_gym7", "arbeitsheft_gym8",
-          "arbeitsheft_gym9", "arbeitsheft_gym10"]
+          "arbeitsheft_gym9", "arbeitsheft_gym10",
+          # Foerderreihe (A2-B1) - eigene Kennungen fo/fw, eigene Inhaltsdateien
+          "arbeitsheft_foe7"]
+
+# Welche Inhaltsdateien ein Band braucht, damit er gebaut werden kann.
+# Die Foerderbaende haben einen anderen Satz: keine Uebungsseiten, kein
+# Kapiteltest im Schuelerteil, dafuer den getrennten Lehrerteil.
+NOETIG_REGEL   = ["forscherseiten.json", "uebungen.json", "assessment.json", "transfer.json"]
+NOETIG_FOERDER = ["foerderseiten.json", "loesungen_lehrer.json"]
 HEFTE = [os.path.join(WURZEL, o, "export_bruecke.py") for o in ORDNER]
 
 alle = []
@@ -32,7 +40,7 @@ for skript in HEFTE:
     # und das liest beim Import auch uebungen, assessment und transfer. Fehlt eine,
     # bricht sonst der ganze Lauf ab, statt nur diesen Band zu ueberspringen.
     _ordner = os.path.dirname(skript)
-    _noetig = ["forscherseiten.json", "uebungen.json", "assessment.json", "transfer.json"]
+    _noetig = NOETIG_FOERDER if "_foe" in os.path.basename(_ordner) else NOETIG_REGEL
     _fehlt = [n for n in _noetig if not os.path.exists(os.path.join(_ordner, "content", n))]
     if _fehlt:
         print(f"übersprungen ({', '.join(_fehlt)} fehlt):", os.path.relpath(_ordner, WURZEL)); continue

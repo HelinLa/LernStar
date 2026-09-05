@@ -191,7 +191,8 @@ aus `build/book_p*.png` (Ausschnitt x = 1050…1176, y = 53…179) und schreibt
 > bekannten Seitenzahlen von Klasse 10 exakt.
 
 **Bruecke neu erzeugen** nach jeder Inhaltsaenderung: `python3 arbeitsheft/bruecke_alle.py`
-(schreibt `js/heft-bruecke.js` aus ALLEN NEUN Heften – fuenf Realschule, vier Gesamtschule),
+(schreibt `js/heft-bruecke.js` aus ALLEN Heften – fuenf Realschule, vier Gesamtschule,
+fuenf Gymnasium, ein Foerderheft),
 danach die `?v=`-Nummer in `index.html` hochzaehlen. Baende ohne `content/forscherseiten.json`
 werden uebersprungen, nicht als Fehler behandelt.
 
@@ -232,6 +233,43 @@ Bauplan `"kurs": "E"`; `uebernehmen.py` reicht das durch und `topic_page()` setz
 Uebungsseite). In `plan.py` gilt die ASCII-Konvention deshalb nur fuer Kommentare und Docstrings,
 NICHT fuer `RAHMEN`, `titel`, `vorhaben`, `inhaltsfeld` und `name` – dort stehen ä, ö, ü, ß.
 Beim Anlegen der vier Baende waren 75 Stellen betroffen ("Oberflaeche" statt "Oberfläche").
+
+## Arbeitshefte – Reihe FELO Foerderheft (`arbeitsheft_foe7/`)
+
+Dritte Reihe derselben Marke: **FÖRDERHEFT**, Schulform GESAMTSCHULE NRW. Gleiche
+fachliche Ziele wie `arbeitsheft_gts7`, leichterer Lernweg (A2–B1, Foerderbedarf Lernen,
+DaZ). Hausstil steht in `FOERDER_PROFIL.md`, die Herleitung in `SEITENPLAN.md`
+(am 04.09.2026 freigegeben). Kennungen: `fo` (Optik) · `fw` (Weltall).
+
+**Andere Inhaltsdateien als die Regelhefte.** Statt forscherseiten/uebungen/assessment/
+transfer gibt es `content/foerderseiten.json` und `content/loesungen_lehrer.json`
+(je 25 Eintraege) plus `content/foerdertests.json` (2 Tests à 13 Punkte).
+`arbeitsheft/bruecke_alle.py` kennt beide Saetze (`NOETIG_REGEL` / `NOETIG_FOERDER`).
+
+**Arbeitsstand liegt einheitenweise.** `einheiten/<id>.json` enthaelt je
+`{"seite": …, "lehrer": …}`; `zusammenfuehren.py` baut daraus die beiden
+content-Dateien in der Reihenfolge von `plan.py`. So ueberlebt ein langer Lauf
+einen Abbruch ([[lange-laeufe-ruhezustand]]).
+
+**Werte kommen aus `fakten/<sim>.json`** – simfakten-Dumps aller 25 Simulationen.
+Nie aus dem Kopf schreiben, was am Bildschirm steht.
+
+**Rendervertrag ist eng** (`build_pilot.py` setzt Seite A / B / Lehrerseite):
+genau 3 Tabellenspalten, 2–5 Zeilen mit vollstaendig gefuellter Beispielzeile,
+GENAU 2 Merksatz-Luecken, Aufgaben exakt erkennen–einsetzen–erklaeren, 3 Hilfestufen
+(H3 mit `___`), 3 Selbstcheck-Aussagen. `pruefe_profil.py` prueft das plus die
+Sprachregeln – und besteht vorher einen **Selbsttest** (1 gute + 10 absichtlich
+kaputte Proben), sonst urteilt er nicht.
+
+**Seite A und Seite B tragen denselben QR-Code.** `simcheck/seitenzahlen.py` nimmt
+deshalb den **ersten** Treffer (= Seite A, wo das Thema anfaengt). Fuer die
+Regelhefte aendert das nichts, dort kommt jede Kennung genau einmal vor; die
+Eichung an Klasse 10 (39 Seitenzahlen) reproduziert unveraendert.
+
+Ablauf: `python3 make_qr.py` → `python3 build_book.py` (setzt Heft **und**
+Lehrerband) → `python3 ../simcheck/seitenzahlen.py arbeitsheft_foe7` →
+`python3 ../arbeitsheft/bruecke_alle.py` → `?v=` in `index.html` hochzaehlen.
+Ergebnis: 59 Schuelerseiten + 29 Seiten Lehrerband.
 
 ## Datenblaetter (Seiten ohne Simulation)
 
@@ -347,3 +385,9 @@ Danach die `?v=`-Nummer von `js/heft-bruecke.js` in `index.html` hochzaehlen.
   Poloshirt, graue Jeans.
   Bei weiteren Bänden Figuren ebenso einmal kanonisch festlegen,
   BEVOR die Bildaufträge geschrieben werden.
+
+- **Kapitel-Trennseite (Navy):** Die Themenkästen zeigen NUR den Seitentitel,
+  mittig. Die frühere graue Fachthema-Zeile darunter (`FSD[tid]["name"]` in
+  DF((150,164,196))) war auf dem dunkelblauen Grund schlecht lesbar und wurde
+  am 04.09.2026 auf Abdullahs Wunsch aus allen 14 `build_book.py` entfernt.
+  Nicht wieder einbauen.
