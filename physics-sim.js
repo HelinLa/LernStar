@@ -6475,6 +6475,44 @@ const _physSimDefs = {
   'luftdruck-hoehe': modal => { _ldhInit(); modal.innerHTML = _ldhHTML(); _ldhStatus(); _pSim = new PhysicsSimEngine('ldhAnim','ldhAnim'); _pSim.start(dt => _ldhUpdate(dt), (ctx,cv) => _ldhDraw(ctx,cv), []); },
   'elektroskop': modal => { _eskInit(); modal.innerHTML = _eskHTML(); _eskStatus(); _pSim = new PhysicsSimEngine('eskAnim','eskAnim'); _pSim.start(dt => _eskUpdate(dt), (ctx,cv) => _eskDraw(ctx,cv), []); },
   'lorentzkraft': modal => { _lozInit(); modal.innerHTML = _lozHTML(); _lozStatus(); _pSim = new PhysicsSimEngine('lozAnim','lozAnim'); _pSim.start(dt => _lozUpdate(dt), (ctx,cv) => _lozDraw(ctx,cv), []); },
+
+  // ── SPANNENERGIE (EF) – E = ½·D·s² als Fläche unter der F-s-Geraden ──
+  'spannenergie': modal => {
+    _speInit();
+    modal.innerHTML = _speHTML();
+    _speStatus();
+    _speRenderTabelle();
+    _pSim = new PhysicsSimEngine('speAnim', 'speAnim');
+    _pSim.start(dt => _speUpdate(dt), (ctx, cv) => _speDraw(ctx, cv), []);
+  },
+  // ── WAAGERECHTER WURF (EF) – Superposition: gleichförmig quer, beschleunigt senkrecht ──
+  'wurf-waagerecht': modal => {
+    _wwfInit();
+    modal.innerHTML = _wwfHTML();
+    _wwfStatus();
+    _wwfListe();
+    _pSim = new PhysicsSimEngine('wwfAnim', 'wwfAnim');
+    _pSim.start(dt => _wwfUpdate(dt), (ctx, cv) => _wwfDraw(ctx, cv), []);
+  },
+  // ── WECHSELWIRKUNG (EF) – actio = reactio, quantitativ ──
+  'wechselwirkung-ef': modal => {
+    _wwkfInit();
+    modal.innerHTML = _wwkfHTML();
+    _wwkfStatus();
+    _pSim = new PhysicsSimEngine('wwkfAnim', 'wwkfAnim');
+    _pSim.start(dt => _wwkfUpdate(dt), (ctx, cv) => _wwkfDraw(ctx, cv), []);
+  },
+  // ── ZENTRIPETALKRAFT (EF) – alle sieben Groessen der Kreisbewegung ──
+  'zentripetalkraft': modal => {
+    _zpkInit();
+    modal.innerHTML = _zpkHTML();
+    _zpkRenderTable();
+    _zpkStatus();
+    _pSim = new PhysicsSimEngine('zpkAnim', 'zpkPlot');
+    _pSim.start(dt => _zpkUpdate(dt), (ctx, cv) => _zpkDraw(ctx, cv), []);
+    _mlabRenderTheorie(_zpk, false);
+    _mlabDrawPlot('zpkPlot', _zpk);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -41122,8 +41160,27 @@ function _mlabRenderFit(st, groups, P) {
 
 // kleine Helfer fuer den Abschluss-Block
 function _mlabBadge(dev) { return dev < 1 ? 'ok' : dev < 5 ? 'mid' : 'no'; }
+// Deutsche Anzeigezahl ("4,011", "1.895,0") zurueck in eine Rechenzahl.
+// Gebraucht, weil _mlabErgebnis an allen sechs Aufrufstellen bereits
+// FORMATIERTE Strings bekommt (_fpmNum liefert Komma). "4,011" - "4,000" ist
+// in JavaScript NaN, und _mlabBadge(NaN) setzt das rote Abzeichen: jede
+// Simulation mit Literaturvergleich zeigte deshalb dauerhaft "Abweichung — %".
+// Gefunden am 08.09.2026 beim Gegenlesen der EF-Seiten; im Faktendump von
+// gleichfoermig und beschleunigung steht es je zehnmal woertlich so.
+function _mlabZahl(x) {
+  if (typeof x === 'number') return x;
+  const t = String(x).trim();
+  // Nur wenn ein Komma da ist, sind Punkte Tausendertrenner.
+  const r = t.indexOf(',') >= 0 ? t.replace(/\./g, '').replace(',', '.') : t;
+  const z = parseFloat(r);
+  return isFinite(z) ? z : NaN;
+}
+
 function _mlabErgebnis(label, wert, einheit, lit, formel) {
-  const dev = lit ? Math.abs(wert - lit) / Math.abs(lit) * 100 : null;
+  const _w = _mlabZahl(wert), _l = _mlabZahl(lit);
+  const dev = (lit !== null && lit !== undefined && lit !== '' &&
+               isFinite(_w) && isFinite(_l) && _l !== 0)
+              ? Math.abs(_w - _l) / Math.abs(_l) * 100 : null;
   const cls = dev === null ? 'ok' : _mlabBadge(dev);
   return `<div class="fpm-fitline" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">
       <span class="fpm-fitmeta">${label}</span>
@@ -78553,4 +78610,1993 @@ function _lozHTML() {
       Die Lorentzkraft steht senkrecht auf v und B · Kreisbahn mit <b>r = m·v : (|q|·B)</b>
     </p>
   </div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// SPANNENERGIE – E = ½ · D · s² ALS FLÄCHE UNTER DER F-s-GERADEN
+// Gymnasiale Oberstufe (EF) · Kernlehrplan: "Energie (Lage-, Bewegungs- und
+// Spannenergie)".
+//
+// Die vorhandene Simulation 'federgesetz' zeigt nur das Kraftgesetz F = D · s.
+// Hier kommt der Energieteil dazu, und zwar über den Weg, der ihn begründet:
+// Die Kraft wächst beim Spannen von 0 auf F. Die verrichtete Arbeit ist deshalb
+// nicht F · s, sondern die FLÄCHE unter der F-s-Geraden – ein Dreieck mit der
+// Grundseite s und der Höhe F = D · s, also ½ · D · s².
+// Daraus folgt der Kern der Seite: doppelte Auslenkung = doppelte Kraft, aber
+// vierfache Energie. Im Bild ist das die Zerlegung des großen Dreiecks in vier
+// gleiche kleine.
+// Der Knopf "Loslassen" schließt die Bilanz: E_Spann wird vollständig zu
+// E_Kin = ½ · m · v² eines Wagens mit 0,50 kg, also v = √(2E/m). Die Anschub-
+// bewegung ist die echte Viertelschwingung x(t) = s · cos(ωt) mit ω = √(D/m).
+//
+// GRUNDREGEL DIESER DATEI: Wo ein Rechenweg dasteht, muss das Ergebnis aus den
+// ANGEZEIGTEN Zahlen folgen, nicht aus den internen. Deshalb wird überall erst
+// formatiert und dann aus dem formatierten Wert weitergerechnet (_speZahl auf
+// den fertigen String). Sonst rechnet jemand die Zeile nach, bekommt etwas
+// anderes heraus und hält sich für dumm.
+// ═══════════════════════════════════════════════════════
+let _spe = null;
+const _SPE_M = 0.5;            // Wagenmasse in kg (fest)
+const _SPE_SMAX = 30;          // größte Auslenkung in cm
+const _SPE_SMIN = 0;
+const _SPE_DMAX = 60;          // größte Federkonstante in N/m
+const _SPE_DMIN = 5;
+const _SPE_ROWMAX = 24;        // so viele Zeilen fasst die Wertetabelle
+const _SPE_X0 = 132;           // x des entspannten Federendes (Pixel)
+const _SPE_WBREIT = 32;        // Wagenlänge in Pixeln
+const _SPE_RAILX = 420;        // rechtes Ende der Bahn (Pixel)
+const _SPE_XEND = _SPE_RAILX - _SPE_WBREIT;  // so weit darf der Wagen fahren
+const _SPE_PXPMS = 90;         // Bahnmaßstab: 1 m/s ≙ 90 Pixel je Sekunde
+const _SPE_STAUCH = 72;        // Pixel je 30 cm Auslenkung
+
+function _speInit() {
+  _spe = {
+    D: 20, s: 10,              // Startwerte: 20 N/m und 10 cm
+    t: 0,                      // läuft immer weiter – treibt die Aufbaumarke
+    phase: 'gespannt',         // gespannt | schub | rollt | fertig
+    pt: 0, wagenX: _SPE_X0,
+    hinweis: '',
+    rows: [], nextId: 1,
+  };
+}
+
+// ── Physik ─────────────────────────────────────────────
+function _speKraft(D, sCm) { return D * (sCm / 100); }                       // N
+function _speEnergie(D, sCm) { return 0.5 * D * (sCm / 100) * (sCm / 100); } // J
+function _speTempo(E) { return Math.sqrt(2 * E / _SPE_M); }                  // m/s
+function _speOmega(D) { return Math.sqrt(D / _SPE_M); }                      // 1/s
+function _speSchubdauer(D) { return (Math.PI / 2) / _speOmega(D); }          // s (Viertelschwingung)
+
+/* Aus einer angezeigten Zahl wieder eine Zahl machen. Jeder Rechenweg dieser
+   Simulation setzt hier an: gerechnet wird mit dem, was dasteht. */
+function _speZahl(txt) { return parseFloat(String(txt).replace(',', '.')); }
+
+/* Gerundet wird nach der SCHULREGEL, also auf der Dezimalzahl - nicht auf ihrer
+   Binärnäherung. 0,5 · 0,09 m · 0,45 N sind genau 0,02025 J, als double aber
+   0,020249999999999997; toFixed(4) macht daraus 0,0202, wer von Hand rundet
+   schreibt 0,0203. Jede Energie hier ist ein Vielfaches von 0,00025 J, der
+   kleinste Abstand zu einer Rundungsgrenze also 0,00005 - die Anhebung um
+   1e-9 trifft damit genau die Gleichstände und sonst nichts. */
+function _speFmt(x, nk) { return _fpmNum(x > 0 ? x + 1e-9 : x, nk); }
+
+/* Energien reichen von 0,00025 J bis 2,7 J – eine feste Stellenzahl wäre für
+   das eine Ende zu grob und für das andere zu genau. */
+function _speNkJ(E) {
+  return !(E > 0) ? 3 : (E >= 1 ? 2 : (E >= 0.1 ? 3 : (E >= 0.01 ? 4 : 5)));
+}
+function _speJ(E) {
+  if (!(E > 0)) return '0,000';
+  return _speFmt(E, _speNkJ(E));
+}
+/* Zwei Energien, die im selben Satz stehen und um den Faktor 4 auseinander
+   liegen, bekommen dieselbe Stellenzahl – und zwar so viele Stellen, dass
+   4 · E₁ auch als ANGEZEIGTE Zahl genau E₂ ergibt. Mit je eigener Stellenzahl
+   stand hier "0,281 J auf 1,13 J, also auf das Vierfache", und 0,281 · 4 ist
+   1,124. Bei 5 Stellen ist jede Energie dieser Simulation exakt (E = D·s²/20000
+   mit ganzem s und D als Vielfachem von 5), die Schleife endet also immer. */
+function _speNkPaar(E1, E2) {
+  let nk = Math.max(_speNkJ(E1), _speNkJ(E2));
+  while (nk < 5 && _speFmt(4 * _speZahl(_speFmt(E1, nk)), nk) !== _speFmt(E2, nk)) nk++;
+  return nk;
+}
+/* Das v der Statuszeile folgt aus der ANGEZEIGTEN Energie: wer
+   √(2 · 1,15 J / 0,50 kg) nachrechnet, bekommt 2,14 m/s und nicht 2,15. */
+function _speTempoAus(D, sCm) { return _speTempo(_speZahl(_speJ(_speEnergie(D, sCm)))); }
+/* Die mJ-Klammer rechnet die ANGEZEIGTE Joule-Zahl um, nicht die interne: sonst
+   steht "0,0902 J (= 90,3 mJ)" da, und 0,0902 · 1000 sind 90,2. */
+function _speMJ(E) {
+  const m = _speZahl(_speJ(E)) * 1000;
+  return _fpmNum(m, m >= 100 ? 0 : (m >= 10 ? 1 : 2));
+}
+function _speCm(x) { return _fpmNum(x, Math.abs(x - Math.round(x)) < 1e-9 ? 0 : 1); }
+
+/* Das Paar für die Verdopplungszeile. Beide Werte müssen ganzzahlig und damit
+   mit dem Regler einstellbar bleiben – sonst nennt die Statuszeile eine
+   Auslenkung, die die Heftseite nachher nicht einstellen kann. Oberhalb von
+   15 cm wird deshalb von der halben Auslenkung aus gerechnet. */
+function _spePaar() {
+  if (2 * _spe.s <= _SPE_SMAX) return { s1: _spe.s, s2: 2 * _spe.s, art: 'direkt' };
+  const s1 = Math.floor(_spe.s / 2);
+  return { s1: s1, s2: 2 * s1, art: 2 * s1 === _spe.s ? 'halb' : 'nah' };
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _speSetD(v) {
+  if (!_spe) return;
+  let d = Math.round((+v || 0) / 5) * 5;
+  if (!isFinite(d)) d = 20;
+  _spe.D = Math.max(_SPE_DMIN, Math.min(_SPE_DMAX, d));
+  const el = document.getElementById('speDLbl');
+  if (el) el.innerHTML = _fpmNum(_spe.D, 0) + ' N/m';
+  _speSpannen();
+}
+function _speSetS(v) {
+  if (!_spe) return;
+  let s = Math.round(+v || 0);
+  if (!isFinite(s)) s = 10;
+  _spe.s = Math.max(_SPE_SMIN, Math.min(_SPE_SMAX, s));
+  const el = document.getElementById('speSLbl');
+  if (el) el.innerHTML = _fpmNum(_spe.s, 0) + ' cm';
+  _speSpannen();
+}
+/* Jede Reglerbewegung spannt die Feder neu – ein rollender Wagen gehört zu
+   einer Einstellung, die es dann nicht mehr gibt. */
+function _speSpannen() {
+  if (!_spe) return;
+  _spe.phase = 'gespannt'; _spe.pt = 0; _spe.wagenX = _SPE_X0; _spe.hinweis = '';
+  _speStatus();
+}
+function _speLoslassen() {
+  if (!_spe) return;
+  const E = _speEnergie(_spe.D, _spe.s);
+  if (!(E > 0)) {
+    _spe.phase = 'gespannt'; _spe.wagenX = _SPE_X0;
+    _spe.hinweis = 'Zum Loslassen brauchst du eine Auslenkung: stelle s größer als 0 cm ein.';
+    _speStatus(); return;
+  }
+  _spe.phase = 'schub'; _spe.pt = 0; _spe.wagenX = _SPE_X0; _spe.hinweis = '';
+  _speStatus();
+}
+function _speMesspunkt() {
+  if (!_spe) return;
+  const D = _spe.D, s = _spe.s;
+  if (_spe.rows.some(r => r.D === D && r.s === s)) {
+    _spe.hinweis = 'Dieser Messpunkt steht schon in der Tabelle (D = ' + _fpmNum(D, 0) + ' N/m, s = ' + _fpmNum(s, 0) + ' cm).';
+  } else if (_spe.rows.length >= _SPE_ROWMAX) {
+    _spe.hinweis = 'Die Tabelle fasst ' + _SPE_ROWMAX + ' Zeilen. Leere sie, um weiterzumessen.';
+  } else {
+    _spe.rows.push({ id: _spe.nextId++, D: D, s: s, F: _speKraft(D, s), E: _speEnergie(D, s) });
+    _spe.rows.sort((a, b) => a.D - b.D || a.s - b.s);
+    _spe.hinweis = '';
+  }
+  _speRenderTabelle();
+  _speStatus();
+}
+function _speDelRow(id) {
+  if (!_spe) return;
+  _spe.rows = _spe.rows.filter(r => r.id !== id);
+  _speRenderTabelle(); _speStatus();
+}
+function _speTabelleLeeren() {
+  if (!_spe) return;
+  if (_spe.rows.length && !confirm('Alle ' + _spe.rows.length + ' Messwerte löschen?')) return;
+  _spe.rows = []; _spe.hinweis = '';
+  _speRenderTabelle(); _speStatus();
+}
+
+// ── Wertetabelle und ihre Auswertung ───────────────────
+/* Eine Spalte, eine Stellenzahl: die feinste Zeile gibt sie für alle vor.
+   Wechselnde Nachkommastellen in derselben Spalte sind in einer Messreihe nicht
+   ablesbar - und diese Tabelle soll ins Heft abgeschrieben werden. Die
+   Auswertung darunter rechnet mit denselben Stellen, damit beide Stellen
+   dieselbe Zahl zeigen. */
+function _speNk() {
+  let nk = 2;
+  for (const r of _spe.rows) {
+    const n = !(r.E > 0) ? 2 : _speNkJ(r.E);
+    if (n > nk) nk = n;
+  }
+  /* Steht ein Verdopplungspaar in der Tabelle, muss die Spalte so fein sein,
+     dass die Auswertung darunter ("das 4,0-fache") mit den GEDRUCKTEN Zeilen
+     aufgeht – sonst ergibt 4 · 0,281 J nicht die 1,125 J der Nachbarzeile. */
+  const p = _speFindePaar();
+  if (p) nk = Math.max(nk, _speNkPaar(p.a.E, p.b.E));
+  return nk;
+}
+function _speRenderTabelle() {
+  if (!_spe) return;
+  const tb = document.getElementById('speTbody');
+  const leer = document.getElementById('speEmpty');
+  if (leer) leer.style.display = _spe.rows.length ? 'none' : 'block';
+  if (tb) {
+    const nk = _speNk();
+    tb.innerHTML = _spe.rows.map((r, i) =>
+      `<tr><td>${i + 1}</td><td>${_fpmNum(r.D, 0)}</td><td>${_fpmNum(r.s, 0)}</td>
+         <td>${_fpmNum(r.F, 2)}</td><td><b>${_speFmt(r.E, nk)}</b></td>
+         <td class="fpm-del" onclick="_speDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+  }
+  const a = document.getElementById('speAusw');
+  if (a) a.innerHTML = _speAuswertungHTML();
+}
+
+/* Sucht in der Messreihe zwei Zeilen mit gleichem D, bei denen die zweite
+   Auslenkung die doppelte der ersten ist. Genau dieses Paar beweist E ~ s². */
+function _speFindePaar() {
+  const r = _spe.rows;
+  for (let i = 0; i < r.length; i++) {
+    for (let j = 0; j < r.length; j++) {
+      if (i === j) continue;
+      if (r[i].D === r[j].D && r[i].s > 0 && Math.abs(r[j].s - 2 * r[i].s) < 1e-9) {
+        return { a: r[i], b: r[j], ia: i + 1, ib: j + 1 };
+      }
+    }
+  }
+  return null;
+}
+function _speAuswertungHTML() {
+  if (!_spe) return '';
+  if (!_spe.rows.length) {
+    return 'Noch keine Messwerte. Stelle D und s ein und übernimm den Punkt in die Tabelle. '
+         + 'Für den Nachweis E ~ s² brauchst du zu <b>einer</b> Federkonstante mindestens zwei Auslenkungen, '
+         + 'von denen eine die doppelte der anderen ist – zum Beispiel 10 cm und 20 cm.';
+  }
+  const p = _speFindePaar();
+  if (p) {
+    const qF = p.b.F / p.a.F, qE = p.b.E / p.a.E, nk = _speNk();
+    return `<b>Auswertung der Messreihe:</b> Zeile ${p.ia} und Zeile ${p.ib} gehören zur selben Feder `
+      + `(D = ${_fpmNum(p.a.D, 0)} N/m), die Auslenkung ist verdoppelt: ${_fpmNum(p.a.s, 0)} cm → ${_fpmNum(p.b.s, 0)} cm.<br>`
+      + `Kraft: ${_fpmNum(p.a.F, 2)} N → ${_fpmNum(p.b.F, 2)} N, also das <b>${_fpmNum(qF, 1)}-fache</b>.<br>`
+      + `Energie: ${_speFmt(p.a.E, nk)} J → ${_speFmt(p.b.E, nk)} J, also das <b>${_fpmNum(qE, 1)}-fache</b>.<br>`
+      + `Das ist der Beleg: F ~ s, aber E ~ s².`;
+  }
+  const r = _spe.rows;
+  const kand = r.find(x => x.s > 0 && 2 * x.s <= _SPE_SMAX) || null;
+  if (kand) {
+    return `<b>Auswertung:</b> ${r.length} Messwert${r.length === 1 ? '' : 'e'} in der Tabelle. `
+      + `Für den Nachweis E ~ s² fehlt noch ein Partner: nimm bei D = ${_fpmNum(kand.D, 0)} N/m auch `
+      + `<b>s = ${_fpmNum(2 * kand.s, 0)} cm</b> auf – die doppelte Auslenkung zu Zeile mit ${_fpmNum(kand.s, 0)} cm.`;
+  }
+  return `<b>Auswertung:</b> ${r.length} Messwerte in der Tabelle. Nimm zu einer Federkonstante zwei `
+    + `Auslenkungen auf, von denen eine die doppelte der anderen ist (höchstens ${_SPE_SMAX} cm).`;
+}
+
+// ── Statuszeile: die wichtigste Ausgabe dieser Simulation ──
+function _speStatus() {
+  const el = document.getElementById('speStatus');
+  if (!el || !_spe) return;
+  const D = _spe.D, sCm = _spe.s, sM = sCm / 100;
+  const F = _speKraft(D, sCm), E = _speEnergie(D, sCm), v = _speTempoAus(D, sCm);
+  const p = _spePaar();
+  const F1 = _speKraft(D, p.s1), F2 = _speKraft(D, p.s2);
+  const E1 = _speEnergie(D, p.s1), E2 = _speEnergie(D, p.s2);
+  const nkP = _speNkPaar(E1, E2);
+
+  let t = `<b>Federkonstante D = ${_fpmNum(D, 0)} N/m</b> &nbsp;·&nbsp; <b>Auslenkung s = ${_fpmNum(sCm, 0)} cm = ${_fpmNum(sM, 2)} m</b><br><br>`;
+
+  t += `<b>Kraft</b> F = D · s = ${_fpmNum(D, 0)} N/m · ${_fpmNum(sM, 2)} m = <b>${_fpmNum(F, 2)} N</b><br>`;
+  t += `<b>Spannenergie</b> E = ½ · D · s² = 0,5 · ${_fpmNum(D, 0)} N/m · (${_fpmNum(sM, 2)} m)² = <b>${_speJ(E)} J</b>`;
+  t += (E > 0 && E < 0.1) ? ` &nbsp;(= ${_speMJ(E)} mJ)<br><br>` : `<br><br>`;
+
+  t += `<b>E ist die Fläche</b> unter der F-s-Geraden: ein Dreieck mit der Grundseite s = ${_fpmNum(sM, 2)} m `
+     + `und der Höhe F = ${_fpmNum(F, 2)} N.<br>`
+     + `½ · Grundseite · Höhe = 0,5 · ${_fpmNum(sM, 2)} m · ${_fpmNum(F, 2)} N = <b>${_speJ(E)} J</b> – dieselbe Zahl. `
+     + `(1 N · 1 m = 1 J)<br><br>`;
+
+  if (sCm === 0) {
+    t += `<b>Doppelte Auslenkung:</b> Bei s = 0 cm ist die Feder entspannt – F = 0 N und E = 0 J. `
+       + `Stelle eine Auslenkung ein, dann steht hier der Vergleich mit der doppelten.<br><br>`;
+  } else {
+    t += `<b>Doppelte Auslenkung:</b> von s₁ = ${_speCm(p.s1)} cm auf s₂ = ${_speCm(p.s2)} cm. `
+       + `Die Kraft wächst von ${_fpmNum(F1, 2)} N auf ${_fpmNum(F2, 2)} N, also auf das <b>Doppelte</b>. `
+       + `Die Energie wächst von ${_speFmt(E1, nkP)} J auf ${_speFmt(E2, nkP)} J, also auf das <b>Vierfache</b>. `
+       + `Grund: In E = ½ · D · s² steht s im Quadrat.`;
+    if (p.art === 'halb') {
+      t += ` <i>(Gerechnet ab der halben Auslenkung, weil 2 · ${_fpmNum(sCm, 0)} cm über den Regler hinausginge.)</i>`;
+    } else if (p.art === 'nah') {
+      t += ` <i>(Zwei einstellbare Werte neben deiner Auslenkung, weil 2 · ${_fpmNum(sCm, 0)} cm über den Regler hinausginge.)</i>`;
+    }
+    // Sonst stünde oben "2,03 J" und hier "2,02500 J" - derselbe Wert, aber wer
+    // das nicht erklärt bekommt, sucht den Fehler bei sich.
+    if (nkP > Math.max(_speNkJ(E1), _speNkJ(E2))) {
+      t += ` <i>(Beide Energien mit ${_fpmNum(nkP, 0)} Nachkommastellen, damit das Vierfache genau aufgeht.)</i>`;
+    }
+    t += `<br><br>`;
+  }
+
+  t += `<b>Loslassen</b> – Wagen mit m = ${_fpmNum(_SPE_M, 2)} kg: Die Spannenergie wird vollständig zu Bewegungsenergie.<br>`
+     + `E<sub>Spann</sub> = E<sub>Kin</sub> &nbsp;⇒&nbsp; ${_speJ(E)} J = ½ · m · v²<br>`
+     // Der Radikand ist die ANGEZEIGTE Energie, also muss auch das Ergebnis aus
+     // ihr folgen (_speTempoAus). Mit dem exakten E stand bei D = 40 N/m und
+     // s = 24 cm "√(2 · 1,15 J / 0,50 kg) = 2,15 m/s" - nachgerechnet 2,14.
+     + `v = √(2 · E / m) = √(2 · ${_speJ(E)} J / ${_fpmNum(_SPE_M, 2)} kg) = <b>${_fpmNum(v, 2)} m/s</b><br>`;
+  // Die Gegenprobe wird mit dem ABGELESENEN, also gerundeten v gerechnet - sonst
+  // steht hier eine Zahl, die beim Nachrechnen auf dem Heft nicht herauskommt.
+  const vR = _speZahl(_fpmNum(v, 2)), EG = 0.5 * _SPE_M * vR * vR;
+  t += `Gegenprobe mit diesem v: ½ · m · v² = 0,5 · ${_fpmNum(_SPE_M, 2)} kg · (${_fpmNum(vR, 2)} m/s)² = ${_speJ(EG)} J`;
+  t += _speJ(EG) === _speJ(E) ? `<br><br>` : ` ≈ ${_speJ(E)} J (der Unterschied kommt nur vom Runden von v)<br><br>`;
+
+  // Bei s = 0 cm ist nichts gespannt - sonst stünde hier "Feder gespannt" neben
+  // dem Absatz darüber, der die Feder gerade entspannt genannt hat.
+  if (!(E > 0)) {
+    t += `Zustand: <b>Feder entspannt</b> – ohne Auslenkung ist keine Energie gespeichert.`;
+  } else if (_spe.phase === 'gespannt') {
+    t += `Zustand: <b>Feder gespannt</b> – die ganze Energie steckt in der Feder.`;
+  } else if (_spe.phase === 'schub') {
+    t += `Zustand: <b>Feder entspannt sich</b> – E<sub>Spann</sub> geht in E<sub>Kin</sub> über, die Summe bleibt ${_speJ(E)} J.`;
+  } else if (_spe.phase === 'rollt') {
+    t += `Zustand: <b>Wagen rollt</b> mit v = ${_fpmNum(v, 2)} m/s. Feder entspannt: E<sub>Spann</sub> = 0 J, E<sub>Kin</sub> = ${_speJ(E)} J.`;
+  } else {
+    t += `Zustand: <b>Wagen am Bahnende</b>, immer noch v = ${_fpmNum(v, 2)} m/s (reibungsfrei gerechnet). E<sub>Kin</sub> = ${_speJ(E)} J.`;
+  }
+  if (_spe.hinweis) t += `<br><i>${_spe.hinweis}</i>`;
+
+  el.innerHTML = t;
+  el.className = 'lmp-status';
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _speUpdate(dt) {
+  if (!_spe) return;
+  _spe.t += dt;                       // treibt die Aufbaumarke im Diagramm
+  if (_spe.phase === 'schub') {
+    _spe.pt += dt;
+    if (_spe.pt >= _speSchubdauer(_spe.D)) {
+      _spe.pt = 0; _spe.phase = 'rollt'; _spe.wagenX = _SPE_X0; _speStatus();
+    }
+  } else if (_spe.phase === 'rollt') {
+    // Der Wagen rollt mit dem v, das die Statuszeile ausweist - der Fuß des
+    // Bildes nennt den Maßstab, also muss die Fahrt zu der Zahl passen.
+    _spe.wagenX += _speTempoAus(_spe.D, _spe.s) * _SPE_PXPMS * dt;
+    if (_spe.wagenX >= _SPE_XEND) {
+      _spe.wagenX = _SPE_XEND; _spe.phase = 'fertig'; _speStatus();
+    }
+  }
+}
+
+// ── Bild ───────────────────────────────────────────────
+function _speDraw(ctx, cv) {
+  if (!_spe) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  const D = _spe.D, sCm = _spe.s;
+  const F = _speKraft(D, sCm), E = _speEnergie(D, sCm), v = _speTempoAus(D, sCm);
+  const Fende = _speKraft(D, _SPE_SMAX);       // Kraft am rechten Achsenende
+  const oxL = 52, oxR = W - 16, oyT = 40, oyB = 196;
+  const px = c => oxL + (c / _SPE_SMAX) * (oxR - oxL);
+  const py = f => oyB - (f / Fende) * (oyB - oyT);
+
+  // Überschrift des Diagramms
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = '#1e293b'; ctx.font = '700 12px sans-serif';
+  ctx.fillText('F-s-Diagramm   F = D · s   mit D = ' + _fpmNum(D, 0) + ' N/m', 14, 16);
+  ctx.fillStyle = '#7c3aed'; ctx.font = '700 12px sans-serif';
+  ctx.fillText('Fläche unter der Geraden = Spannenergie E = ' + _speJ(E) + ' J', 14, 31);
+
+  // Gitter und Achsen
+  ctx.strokeStyle = 'rgba(148,163,184,0.35)'; ctx.lineWidth = 1;
+  ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif';
+  ctx.textAlign = 'center';
+  for (let c = 0; c <= _SPE_SMAX; c += 5) {
+    ctx.beginPath(); ctx.moveTo(px(c), oyT); ctx.lineTo(px(c), oyB); ctx.stroke();
+    ctx.fillText(String(c), px(c), oyB + 13);
+  }
+  ctx.textAlign = 'right';
+  const dF = Fende / 6;
+  for (let i = 0; i <= 6; i++) {
+    const f = i * dF;
+    ctx.beginPath(); ctx.moveTo(oxL, py(f)); ctx.lineTo(oxR, py(f)); ctx.stroke();
+    ctx.fillText(_fpmNum(f, dF < 1 ? 2 : 1), oxL - 5, py(f) + 3);
+  }
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(oxL, oyT - 4); ctx.lineTo(oxL, oyB); ctx.lineTo(oxR, oyB); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '10px sans-serif';
+  // Rechts ans Achsenende, nicht in die Mitte: mittig stieß die Beschriftung
+  // in die Überschrift des unteren Streifens (Grundlinie 221 gegen 224).
+  ctx.textAlign = 'right'; ctx.fillText('s in cm', oxR, oyB + 25);
+  ctx.textAlign = 'center';
+  ctx.save(); ctx.translate(13, (oyT + oyB) / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('F in N', 0, 0); ctx.restore();
+
+  // Das große Dreieck bei doppelter Auslenkung, zerlegt in vier gleiche kleine.
+  // Genau diese Zerlegung ist der Grund für den Faktor 4.
+  // Gezeichnet wird das Paar aus _spePaar() – also DAS Paar, über das die
+  // Statuszeile spricht. Vorher stand dort ab 16 cm ein Vergleich, zu dem im
+  // Bild kein Dreieck gehörte (192 von 372 Einstellungen).
+  const pD = _spePaar();
+  if (sCm > 0) {
+    const s1 = pD.s1, s2 = pD.s2, F1 = _speKraft(D, s1), F2 = _speKraft(D, s2);
+    ctx.setLineDash([4, 4]);
+    ctx.strokeStyle = 'rgba(219,39,119,0.9)'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(px(0), py(0)); ctx.lineTo(px(s2), py(0));
+    ctx.lineTo(px(s2), py(F2)); ctx.closePath(); ctx.stroke();
+    ctx.strokeStyle = 'rgba(219,39,119,0.45)'; ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(px(s1), py(0)); ctx.lineTo(px(s1), py(F1));
+    ctx.moveTo(px(s1), py(F1)); ctx.lineTo(px(s2), py(F1));
+    ctx.moveTo(px(s1), py(0)); ctx.lineTo(px(s2), py(F1));
+    ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#db2777'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('4 · E₁', px(s2 * 0.80), py(F2 * 0.30));
+    // Liegt das kleine Dreieck nicht auf der eingestellten Auslenkung, braucht
+    // es einen eigenen Namen – sonst meint "E" im Bild zwei verschiedene Werte.
+    if (s1 !== sCm) ctx.fillText('E₁', px(s1 * 0.55), py(F1 * 0.30));
+  }
+
+  // Die Fläche selbst: hell das ganze Dreieck, kräftig der Teil, der beim
+  // Spannen schon zusammengekommen ist. Die Aufbaumarke läuft mit der Zeit.
+  const zyk = 2.6;
+  const u = Math.min(1, (_spe.t % zyk) / (zyk * 0.78));
+  if (sCm > 0) {
+    ctx.fillStyle = 'rgba(124,58,237,0.18)';
+    ctx.beginPath(); ctx.moveTo(px(0), py(0)); ctx.lineTo(px(sCm), py(0));
+    ctx.lineTo(px(sCm), py(F)); ctx.closePath(); ctx.fill();
+    const su = u * sCm, fu = _speKraft(D, su);
+    ctx.fillStyle = 'rgba(124,58,237,0.42)';
+    ctx.beginPath(); ctx.moveTo(px(0), py(0)); ctx.lineTo(px(su), py(0));
+    ctx.lineTo(px(su), py(fu)); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(px(su), py(0)); ctx.lineTo(px(su), py(fu)); ctx.stroke();
+  }
+
+  // die Gerade F = D · s
+  ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(px(0), py(0)); ctx.lineTo(px(_SPE_SMAX), py(Fende)); ctx.stroke();
+
+  // Beschriftung der Fläche und der eingestellte Punkt
+  if (sCm > 0) {
+    ctx.fillStyle = '#5b21b6'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+    if (px(sCm) - oxL > 78 && oyB - py(F) > 26) {
+      ctx.fillText('E = ' + _speJ(E) + ' J', px(sCm * 0.5), py(F * 0.28));
+    }
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(px(sCm), py(0)); ctx.lineTo(px(sCm), py(F));
+    ctx.lineTo(oxL, py(F)); ctx.stroke(); ctx.setLineDash([]);
+  }
+  ctx.fillStyle = '#1d4ed8';
+  ctx.beginPath(); ctx.arc(px(sCm), py(F), 4.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('F = ' + _fpmNum(F, 2) + ' N', Math.min(px(sCm) + 7, oxR - 62), Math.max(py(F) - 6, oyT + 9));
+
+  // ── unterer Streifen: Feder, Wagen, Energiebilanz ────
+  const rail = 306;
+  ctx.fillStyle = '#1e293b'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Loslassen: E_Spann wird zu E_Kin   (Wagen m = ' + _fpmNum(_SPE_M, 2) + ' kg)', 14, 233);
+
+  // aktuelle Aufteilung der Energie
+  let xcm = sCm, eSpann = E, eKin = 0;
+  if (_spe.phase === 'schub') {
+    xcm = sCm * Math.cos(_speOmega(D) * _spe.pt);
+    if (xcm < 0) xcm = 0;
+    eSpann = _speEnergie(D, xcm); eKin = E - eSpann;
+  } else if (_spe.phase === 'rollt' || _spe.phase === 'fertig') {
+    xcm = 0; eSpann = 0; eKin = E;
+  }
+  const balken = (y, name, wert, farbe) => {
+    const bx = 92, bw = 150;
+    ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(name, 14, y + 9);
+    ctx.fillStyle = '#e2e8f0'; ctx.fillRect(bx, y, bw, 11);
+    ctx.fillStyle = farbe;
+    ctx.fillRect(bx, y, E > 0 ? bw * Math.max(0, Math.min(1, wert / E)) : 0, 11);
+    ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif';
+    ctx.fillText(_speJ(wert) + ' J', bx + bw + 8, y + 9);
+  };
+  // Die Balken sitzen unter der Überschrift (Unterlänge des "p" reicht bis 236).
+  balken(241, 'E_Spann', eSpann, '#7c3aed');
+  balken(259, 'E_Kin', eKin, '#16a34a');
+
+  // Bahn, Wand, Feder, Wagen
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(26, rail, _SPE_RAILX - 26, 6);
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(26, rail - 46, 8, 46);
+  let wx;
+  if (_spe.phase === 'rollt' || _spe.phase === 'fertig') wx = _spe.wagenX;
+  else wx = _SPE_X0 - (xcm / _SPE_SMAX) * _SPE_STAUCH;
+  // Feder als Zickzack von der Wand bis zum Wagen (bzw. bis zur Ruhelage)
+  const federEnde = Math.min(wx, _SPE_X0);
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2; ctx.beginPath();
+  ctx.moveTo(34, rail - 12);
+  for (let i = 0; i <= 16; i++) {
+    const fx = 34 + (federEnde - 34) * (i / 16);
+    ctx.lineTo(fx, rail - 12 + (i % 2 === 0 ? -8 : 8));
+  }
+  ctx.lineTo(federEnde, rail - 12); ctx.stroke();
+  // Wagen
+  ctx.fillStyle = (_spe.phase === 'rollt' || _spe.phase === 'schub') ? '#16a34a' : '#475569';
+  ctx.fillRect(wx, rail - 22, _SPE_WBREIT, 16);
+  ctx.fillStyle = '#1e293b';
+  ctx.beginPath(); ctx.arc(wx + 8, rail, 4, 0, 2 * Math.PI);
+  ctx.arc(wx + 24, rail, 4, 0, 2 * Math.PI); ctx.fill();
+  // Geschwindigkeitspfeil und Beschriftung. Der Pfeil braucht eine Spitze: ein
+  // grüner Strich vorn am Wagen liest sich sonst als Kraft in Fahrtrichtung –
+  // genau die Fehlvorstellung, die das Heft abbauen soll.
+  const vJetzt = (_spe.phase === 'rollt' || _spe.phase === 'fertig') ? v
+               : (_spe.phase === 'schub' ? Math.sqrt(Math.max(0, 2 * eKin / _SPE_M)) : 0);
+  if (vJetzt > 0) {
+    const ax = wx + _SPE_WBREIT, ay = rail - 14;
+    const aend = Math.min(ax + 8 + vJetzt * 22, W - 8);
+    ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(aend - 6, ay); ctx.stroke();
+    ctx.fillStyle = '#16a34a';
+    ctx.beginPath(); ctx.moveTo(aend, ay);
+    ctx.lineTo(aend - 8, ay - 5); ctx.lineTo(aend - 8, ay + 5);
+    ctx.closePath(); ctx.fill();
+  }
+  // Die Zahl steht neben dem E_Kin-Balken, wohin sie gehört - und nicht mehr
+  // links unten: dort lag sie bei großen Auslenkungen auf dem Wagen (der steht
+  // bei s = 30 cm ab x = 60, die Beschriftung reichte bis x = 90).
+  ctx.fillStyle = '#16a34a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('v = ' + _fpmNum(vJetzt, 2) + ' m/s', 300, 268);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
+  ctx.fillText('Auslenkung s = ' + _fpmNum(sCm, 0) + ' cm  ·  Bahn reibungsfrei  ·  1 m/s ≙ ' + _SPE_PXPMS + ' Pixel je Sekunde', 14, 330);
+}
+
+// ── Oberfläche ─────────────────────────────────────────
+function _speHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim spe-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Spannenergie – warum E = ½ · D · s² und nicht F · s</h3>
+    <div class="fpm-note" style="margin-top:2px">Beim Spannen wächst die Kraft von 0 auf F. Die gespeicherte Energie ist deshalb nicht F · s, sondern die <b>Fläche unter der F-s-Geraden</b>: ein Dreieck. Verstelle D und s und verfolge, wie sich Kraft und Fläche unterschiedlich schnell ändern.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="speAnim" width="440" height="340" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Federkonstante D: <b id="speDLbl">20 N/m</b></span>
+          <input type="range" id="speD" min="5" max="60" step="5" value="20"
+            oninput="_speSetD(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Auslenkung s: <b id="speSLbl">10 cm</b></span>
+          <input type="range" id="speS" min="0" max="30" step="1" value="10"
+            oninput="_speSetS(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="speBLos" onclick="_speLoslassen()">Loslassen</button>
+          <button class="sim-btn" id="speBMess" onclick="_speMesspunkt()">Messpunkt übernehmen</button>
+          <button class="sim-btn" id="speBLeer" onclick="_speTabelleLeeren()">Tabelle leeren</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Kraft, Fläche, Energie</div>
+        <div class="lmp-status" id="speStatus" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:12px">Messreihe</div>
+        <div class="fpm-tablewrap">
+          <table class="sim-table">
+            <thead><tr><th>Nr.</th><th>D (N/m)</th><th>s (cm)</th><th>F (N)</th><th>E (J)</th><th></th></tr></thead>
+            <tbody id="speTbody"></tbody>
+          </table>
+          <div class="fpm-empty" id="speEmpty">Noch keine Messwerte.<br>D und s einstellen, dann „Messpunkt übernehmen“.</div>
+        </div>
+        <div class="fpm-note" id="speAusw" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:8px"><b>Modellgrenzen:</b> Die Feder gilt als ideal (F = D · s über den ganzen Bereich, keine Verformung, keine eigene Masse), die Bahn als reibungsfrei. Deshalb wird die Spannenergie <b>vollständig</b> zu Bewegungsenergie und der Wagen wird nicht langsamer. In der echten Fahrbahn gehen einige Prozent an Reibung und an die mitschwingende Federmasse verloren.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>F = D · s</b> (Gerade) &nbsp;·&nbsp; <b>E = ½ · D · s²</b> (Dreiecksfläche darunter) &nbsp;·&nbsp; doppeltes s: doppelte Kraft, vierfache Energie
+    </p>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// EF · WAAGERECHTER WURF – zwei Bewegungen zur selben Zeit
+// Gymnasiale Oberstufe, Einfuehrungsphase, Inhaltsfeld 1 (Mechanik).
+// Konkretisierte Kompetenzerwartung: "unterscheiden gleichfoermige und
+// gleichmaessig beschleunigte Bewegungen und erklaeren zugrunde liegende
+// Ursachen auch am waagerechten Wurf." Basiskonzept "Superposition und
+// Komponenten".
+//
+// Warum eine eigene Simulation: 'wurfbewegung' kann den waagerechten Wurf
+// NICHT - ihr Winkelregler wfAlpha hat min="10", 0 Grad ist unerreichbar.
+//
+// Der Kern der Einheit steht im Bild: NEBEN dem geworfenen Koerper faellt ein
+// zweiter senkrecht aus derselben Hoehe. In gleichen Zeitabstaenden (0,25 s)
+// gesetzte Marken auf beiden Bahnen werden durch waagerechte Verbindungslinien
+// zusammengehalten - beide Koerper sind zu JEDER Zeit auf gleicher Hoehe und
+// kommen gleichzeitig unten an. Die Fallzeit t = wurzel(2h/g) enthaelt v0
+// nicht; genau das ist die Aussage.
+//
+// Registry-Eintrag fuer simcheck/einbau.py:
+//   'wurf-waagerecht': modal => {
+//     _wwfInit();
+//     modal.innerHTML = _wwfHTML();
+//     _wwfStatus();
+//     _pSim = new PhysicsSimEngine('wwfAnim', 'wwfAnim');
+//     _pSim.start(dt => _wwfUpdate(dt), (ctx, cv) => _wwfDraw(ctx, cv), []);
+//   },
+// ═══════════════════════════════════════════════════════
+
+const _WWF_G      = 9.81;    // Ortsfaktor in m/s²
+const _WWF_DTM    = 0.25;    // Zeitabstand der Marken in s
+const _WWF_LUPE   = 0.55;    // Zeitlupe: 1 s Bildschirmzeit = 0,55 s Wurfzeit
+const _WWF_FARBEN = ['#7c3aed', '#0891b2', '#ea580c', '#16a34a'];
+
+let _wwf = null;
+
+function _wwfInit() {
+  _wwf = {
+    h: 20,          // Abwurfhoehe in m
+    v0: 8,          // Abwurfgeschwindigkeit in m/s
+    t: 0,           // Wurfzeit in s
+    laeuft: true,
+    gelandet: false,
+    bahnen: [],     // aufgezeichnete Bahnkurven
+    acc: 0,         // Sammler fuer die Statuszeile (nicht 60-mal je Sekunde)
+    puls: 0,        // laeuft immer weiter, haelt das Bild lebendig
+  };
+}
+
+// ── Physik ─────────────────────────────────────────────
+function _wwfFallzeit() { return Math.sqrt(2 * _wwf.h / _WWF_G); }
+function _wwfWeite()    { return _wwf.v0 * _wwfFallzeit(); }
+function _wwfHoehe(t)   { return Math.max(0, _wwf.h - 0.5 * _WWF_G * t * t); }
+
+// ── Bedienung ──────────────────────────────────────────
+function _wwfSetH(v) {
+  if (!_wwf) return;
+  _wwf.h = +v;
+  const el = document.getElementById('wwfHLbl');
+  if (el) el.textContent = _fpmNum(_wwf.h, 0) + ' m';
+  _wwfNeu();
+}
+
+function _wwfSetV0(v) {
+  if (!_wwf) return;
+  _wwf.v0 = +v;
+  const el = document.getElementById('wwfV0Lbl');
+  if (el) el.textContent = _fpmNum(_wwf.v0, 0) + ' m/s';
+  _wwfNeu();
+}
+
+function _wwfNeu() {
+  if (!_wwf) return;
+  _wwf.t = 0; _wwf.laeuft = true; _wwf.gelandet = false;
+  _wwfStatus();
+}
+
+/* Sprungmarke: anteil = 0 (Abwurf), 0,5 (halbe Fallzeit), 1 (Aufprall).
+   Die Bewegung haelt an, damit sich der Wert in Ruhe ablesen laesst. */
+function _wwfSprung(anteil) {
+  if (!_wwf) return;
+  _wwf.t = _wwfFallzeit() * anteil;
+  _wwf.laeuft = false;
+  _wwf.gelandet = anteil >= 1;
+  _wwfStatus();
+}
+
+function _wwfAufzeichnen() {
+  if (!_wwf) return;
+  const tF = _wwfFallzeit(), pkt = [];
+  for (let i = 0; i <= 60; i++) {
+    const t = tF * i / 60;
+    pkt.push({ x: _wwf.v0 * t, y: _wwf.h - 0.5 * _WWF_G * t * t });
+  }
+  _wwf.bahnen.push({
+    h: _wwf.h, v0: _wwf.v0, tF: tF, weite: _wwf.v0 * tF, punkte: pkt,
+    farbe: _WWF_FARBEN[_wwf.bahnen.length % _WWF_FARBEN.length],
+  });
+  if (_wwf.bahnen.length > 4) _wwf.bahnen.shift();
+  _wwfListe();
+}
+
+function _wwfLoeschen() {
+  if (!_wwf) return;
+  _wwf.bahnen = [];
+  _wwfListe();
+}
+
+/* Die aufgezeichneten Bahnen stehen in einem EIGENEN Feld - so bleibt die
+   Statuszeile kurz genug, dass simfakten.js sie nicht abschneidet. */
+function _wwfListe() {
+  const el = document.getElementById('wwfBahnen');
+  if (!el || !_wwf) return;
+  if (!_wwf.bahnen.length) {
+    el.innerHTML = 'Noch keine Bahn aufgezeichnet.';
+    return;
+  }
+  el.innerHTML = _wwf.bahnen.map(b =>
+    `<span class="fpm-dot" style="background:${b.farbe}"></span>` +
+    `h = <b>${_fpmNum(b.h, 0)} m</b> · v₀ = <b>${_fpmNum(b.v0, 0)} m/s</b> ` +
+    `→ Fallzeit <b>${_fpmNum(b.tF, 2)} s</b>, Wurfweite <b>${_fpmNum(b.weite, 2)} m</b>`
+  ).join('<br>');
+}
+
+// ── Zeit ───────────────────────────────────────────────
+function _wwfUpdate(dt) {
+  if (!_wwf) return;
+  _wwf.puls += dt;
+  if (_wwf.laeuft) {
+    const tF = _wwfFallzeit();
+    _wwf.t += dt * _WWF_LUPE;
+    if (_wwf.t >= tF) { _wwf.t = tF; _wwf.laeuft = false; _wwf.gelandet = true; _wwf.acc = 1; }
+    _wwf.acc += dt;
+    if (_wwf.acc >= 0.05) { _wwf.acc = 0; _wwfStatus(); }
+  }
+}
+
+// ── Statuszeile: die wichtigste Ausgabe ────────────────
+function _wwfStatus() {
+  const el = document.getElementById('wwfStatus');
+  if (!el || !_wwf) return;
+  const h = _wwf.h, v0 = _wwf.v0, g = _WWF_G;
+  const tF = Math.sqrt(2 * h / g);
+  const t  = Math.min(_wwf.t, tF);
+  const x  = v0 * t;
+  const y  = Math.max(0, h - 0.5 * g * t * t);
+  const vy = g * t;
+  const v  = Math.sqrt(v0 * v0 + vy * vy);
+  const weite = v0 * tF;
+
+  let s = `Abwurfhöhe h = <b>${_fpmNum(h, 0)} m</b> · ` +
+          `Abwurfgeschwindigkeit v₀ = <b>${_fpmNum(v0, 0)} m/s</b> · ` +
+          `g = <b>9,81 m/s²</b><br><br>`;
+
+  s += `t = <b>${_fpmNum(t, 2)} s</b><br>`;
+  s += `x = <b>${_fpmNum(x, 2)} m</b><br>`;
+  s += `y = <b>${_fpmNum(y, 2)} m</b><br>`;
+  s += `v<sub>x</sub> = <b>${_fpmNum(v0, 2)} m/s</b> (konstant)<br>`;
+  s += `v<sub>y</sub> = <b>${_fpmNum(vy, 2)} m/s</b><br>`;
+  s += `v = <b>${_fpmNum(v, 2)} m/s</b><br><br>`;
+
+  s += `Der senkrecht fallende Vergleichskörper ist zur selben Zeit bei ` +
+       `y = <b>${_fpmNum(y, 2)} m</b> – auf gleicher Höhe.<br><br>`;
+
+  s += `x = v₀ · t = ${_fpmNum(v0, 2)} m/s · ${_fpmNum(t, 2)} s = <b>${_fpmNum(x, 2)} m</b> (gleichförmig)<br>`;
+  s += `y = h − 0,5 · g · t² = ${_fpmNum(h, 0)} m − 0,5 · 9,81 m/s² · (${_fpmNum(t, 2)} s)² = <b>${_fpmNum(y, 2)} m</b> (gleichmäßig beschleunigt)<br>`;
+  s += `v = √(v₀² + v<sub>y</sub>²) = <b>${_fpmNum(v, 2)} m/s</b><br><br>`;
+
+  s += `Fallzeit t = √(2h/g) = √(2 · ${_fpmNum(h, 0)} m / 9,81 m/s²) = <b>${_fpmNum(tF, 2)} s</b>. ` +
+       `In dieser Formel kommt v₀ <b>nicht</b> vor – die Abwurfgeschwindigkeit ändert die Fallzeit nicht.<br>`;
+  s += `Wurfweite x<sub>W</sub> = v₀ · t = ${_fpmNum(v0, 2)} m/s · ${_fpmNum(tF, 2)} s = <b>${_fpmNum(weite, 2)} m</b><br>`;
+
+  s += _wwf.gelandet
+    ? `<b>Beide sind unten – gleichzeitig, nach ${_fpmNum(tF, 2)} s.</b>`
+    : `Noch <b>${_fpmNum(tF - t, 2)} s</b> bis zum Aufprall.`;
+
+  el.innerHTML = s;
+}
+
+// ── Bild ───────────────────────────────────────────────
+/* Runde Achsenschrittweite zu einer Spanne. */
+function _wwfSchritt(spanne) {
+  const roh = Math.max(spanne, 0.001) / 5;
+  const p = Math.pow(10, Math.floor(Math.log10(roh)));
+  const n = roh / p;
+  return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * p;
+}
+
+function _wwfPfeil(ctx, x1, y1, x2, y2, farbe) {
+  const dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy);
+  if (L < 3) return;
+  ctx.strokeStyle = farbe; ctx.fillStyle = farbe; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+  const ux = dx / L, uy = dy / L, s = 6;
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - s * ux + s * 0.55 * uy, y2 - s * uy - s * 0.55 * ux);
+  ctx.lineTo(x2 - s * ux - s * 0.55 * uy, y2 - s * uy + s * 0.55 * ux);
+  ctx.closePath(); ctx.fill();
+}
+
+/* Beschriftung mit hellem Grund - sonst liegt sie auf der Bahnkurve. */
+function _wwfSchild(ctx, txt, x, y, farbe) {
+  ctx.font = '700 10px system-ui, sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+  const b = ctx.measureText(txt).width;
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  ctx.fillRect(x - b / 2 - 4, y - 12, b + 8, 14);
+  ctx.fillStyle = farbe;
+  ctx.fillText(txt, x, y);
+}
+
+function _wwfDraw(ctx, cv) {
+  if (!_wwf) return;
+  const W = cv.width, H = cv.height;
+  const h = _wwf.h, v0 = _wwf.v0;
+  const tF = _wwfFallzeit(), weite = _wwfWeite();
+  const t  = Math.min(_wwf.t, tF);
+  const x  = v0 * t, y = _wwfHoehe(t);
+  const vy = _WWF_G * t, v = Math.sqrt(v0 * v0 + vy * vy);
+
+  // Weltausschnitt: aufgezeichnete Bahnen zaehlen mit, sonst laufen sie hinaus
+  let wmax = weite, hmax = h;
+  _wwf.bahnen.forEach(b => { if (b.weite > wmax) wmax = b.weite; if (b.h > hmax) hmax = b.h; });
+  const wW = Math.max(wmax * 1.10, 2.5), wH = Math.max(hmax * 1.08, 5);
+
+  // xLab liegt links der Abwurfplattform - sonst deckt die Plattform die
+  // oberste Hoehenmarke zu (im gemalten Bild nachgesehen)
+  const topY = 48, gY = 298, x0 = 88, xR = W - 12, xF = 60, xLab = 40;
+  // gleicher Massstab in beide Richtungen - sonst waere die Parabel verzerrt
+  const sc = Math.min((xR - x0) / wW, (gY - topY) / wH);
+  const PX = m => x0 + m * sc;
+  const PY = m => gY - m * sc;
+
+  // Himmel und Boden
+  ctx.fillStyle = '#eff6ff'; ctx.fillRect(0, 0, W, gY);
+  ctx.fillStyle = '#dcfce7'; ctx.fillRect(0, gY, W, H - gY);
+  ctx.strokeStyle = '#86efac'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(0, gY); ctx.lineTo(W, gY); ctx.stroke();
+
+  // Gitter und Achsenbeschriftung
+  ctx.font = '9px system-ui, sans-serif';
+  ctx.textBaseline = 'middle'; ctx.textAlign = 'right';
+  // Schrittweite so waehlen, dass die Marken auch auf dem Schirm auseinander
+  // liegen: bei h = 5 m standen sonst sechs Zahlen auf 77 Pixeln
+  const sy = _wwfSchritt(Math.max(hmax, 140 / sc));
+  for (let m = 0; m <= hmax + sy * 0.05; m += sy) {
+    const gy = PY(m);
+    if (gy < topY - 2) break;
+    ctx.strokeStyle = '#dbeafe'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(xF - 6, gy); ctx.lineTo(xR, gy); ctx.stroke();
+    ctx.fillStyle = '#94a3b8';
+    ctx.fillText(_fpmNum(m, sy < 1 ? 1 : 0), xLab, gy);
+  }
+  ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+  const sx = _wwfSchritt(Math.max(wmax, 170 / sc));
+  for (let m = 0; m <= wmax + sx * 0.6; m += sx) {
+    const gx = PX(m);
+    if (gx > xR) break;
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(gx, gY); ctx.lineTo(gx, topY); ctx.stroke();
+    ctx.fillStyle = '#94a3b8';
+    ctx.fillText(_fpmNum(m, sx < 1 ? 1 : 0), gx, gY + 6);
+  }
+  ctx.fillStyle = '#64748b';
+  ctx.textAlign = 'right'; ctx.fillText('x in m', xR, gY + 20);
+
+  // Achsen
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(x0, gY); ctx.lineTo(x0, topY); ctx.stroke();
+  ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.fillText('y in m', x0 + 5, topY + 6);
+  ctx.textBaseline = 'top';
+
+  // Kasten fuer das Geschwindigkeitsdreieck (oben rechts, immer frei:
+  // die Parabel faellt von links oben nach rechts unten)
+  const bx = xR - 160, by = topY + 6, bw = 160, bh = 82;
+
+  // Abwurfplattform - beide Koerper starten aus derselben Hoehe
+  const pyH = PY(h);
+  ctx.fillStyle = '#cbd5e1';
+  ctx.fillRect(xF - 14, pyH, x0 - (xF - 14), 5);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.setLineDash([3, 4]);
+  ctx.beginPath(); ctx.moveTo(x0, pyH);
+  ctx.lineTo(pyH > by - 6 && pyH < by + bh + 6 ? bx - 6 : xR, pyH);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // aufgezeichnete Bahnen
+  _wwf.bahnen.forEach(b => {
+    ctx.strokeStyle = b.farbe; ctx.lineWidth = 1.4; ctx.globalAlpha = 0.65;
+    ctx.setLineDash([4, 3]);
+    ctx.beginPath();
+    b.punkte.forEach((p, i) => i ? ctx.lineTo(PX(p.x), PY(p.y)) : ctx.moveTo(PX(p.x), PY(p.y)));
+    ctx.stroke();
+    ctx.setLineDash([]); ctx.globalAlpha = 1;
+  });
+
+  // Fallinie des Vergleichskoerpers
+  ctx.strokeStyle = '#fca5a5'; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+  ctx.beginPath(); ctx.moveTo(xF, pyH); ctx.lineTo(xF, gY); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Wurfparabel bis zur aktuellen Zeit
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2.4;
+  ctx.beginPath();
+  for (let i = 0; i <= 48; i++) {
+    const tt = t * i / 48, bxx = PX(v0 * tt), byy = PY(_wwfHoehe(tt));
+    i ? ctx.lineTo(bxx, byy) : ctx.moveTo(bxx, byy);
+  }
+  ctx.stroke();
+
+  // schon gefallene Strecke des Vergleichskoerpers
+  ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2.4;
+  ctx.beginPath(); ctx.moveTo(xF, pyH); ctx.lineTo(xF, PY(y)); ctx.stroke();
+
+  // Marken in GLEICHEN Zeitabstaenden auf beiden Bahnen
+  for (let k = 0; k * _WWF_DTM <= t + 1e-9; k++) {
+    const tk = k * _WWF_DTM, yk = _wwfHoehe(tk), pyk = PY(yk), pxk = PX(v0 * tk);
+    ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+    ctx.beginPath(); ctx.moveTo(xF, pyk); ctx.lineTo(pxk, pyk); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#ef4444';
+    ctx.beginPath(); ctx.arc(xF, pyk, 3, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#7c3aed';
+    ctx.beginPath(); ctx.arc(pxk, pyk, 3, 0, Math.PI * 2); ctx.fill();
+  }
+
+  // Verbindung der beiden Koerper im JETZT - gleiche Hoehe zur selben Zeit
+  const px = PX(x), py = PY(y);
+  ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 1.2;
+  ctx.setLineDash([5, 4]); ctx.lineDashOffset = -(_wwf.puls * 14) % 9;
+  ctx.beginPath(); ctx.moveTo(xF, py); ctx.lineTo(px, py); ctx.stroke();
+  ctx.setLineDash([]); ctx.lineDashOffset = 0;
+  if (px - xF > 118 && !_wwf.gelandet) {
+    _wwfSchild(ctx, 'gleiche Höhe: y = ' + _fpmNum(y, 2) + ' m', (xF + px) / 2, py - 5, '#0f172a');
+  }
+
+  // Geschwindigkeitsdreieck im festen Kasten. Am Koerper selbst wuerde der
+  // v_y-Pfeil beim Aufprall unter den Boden und aus dem Bild laufen.
+  const kI = 58 / Math.max(1, Math.sqrt(v0 * v0 + 2 * _WWF_G * h));
+  ctx.fillStyle = 'rgba(255,255,255,0.93)'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.rect(bx, by, bw, bh); ctx.fill(); ctx.stroke();
+  const ox = bx + 12, oy = by + 14;
+  _wwfPfeil(ctx, ox, oy, ox + v0 * kI, oy, '#0891b2');
+  if (vy > 0.2) {
+    _wwfPfeil(ctx, ox, oy, ox, oy + vy * kI, '#ef4444');
+    _wwfPfeil(ctx, ox, oy, ox + v0 * kI, oy + vy * kI, '#1e293b');
+  }
+  ctx.font = '700 9px system-ui, sans-serif';
+  ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+  ctx.fillStyle = '#0891b2'; ctx.fillText('vx = ' + _fpmNum(v0, 2) + ' m/s', bx + bw - 7, by + 20);
+  ctx.fillStyle = '#ef4444'; ctx.fillText('vy = ' + _fpmNum(vy, 2) + ' m/s', bx + bw - 7, by + 36);
+  ctx.fillStyle = '#1e293b'; ctx.fillText('v = ' + _fpmNum(v, 2) + ' m/s', bx + bw - 7, by + 52);
+  ctx.fillStyle = '#64748b'; ctx.font = '9px system-ui, sans-serif';
+  ctx.fillText('vx bleibt gleich, vy wächst', bx + bw - 7, by + 74);
+
+  // die beiden Koerper
+  ctx.fillStyle = '#ef4444'; ctx.strokeStyle = '#fff'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(xF, py, 7, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#7c3aed';
+  ctx.beginPath(); ctx.arc(px, py, 7, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+  // Aufprall: Wurfweite und die gemeinsame Ankunft
+  if (_wwf.gelandet) {
+    const r = 10 + 5 * Math.abs(Math.sin(_wwf.puls * 2.2));
+    ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.arc(xF, gY, r, 0, Math.PI * 2); ctx.stroke();
+    ctx.strokeStyle = '#7c3aed';
+    ctx.beginPath(); ctx.arc(PX(weite), gY, r, 0, Math.PI * 2); ctx.stroke();
+
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(x0, gY - 12); ctx.lineTo(PX(weite), gY - 12); ctx.stroke();
+    ctx.setLineDash([]);
+    _wwfSchild(ctx, 'Wurfweite ' + _fpmNum(weite, 2) + ' m', (x0 + PX(weite)) / 2, gY - 15, '#475569');
+  }
+
+  // Kopfzeilen
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px system-ui, sans-serif';
+  ctx.fillText('h = ' + _fpmNum(h, 0) + ' m   ·   v₀ = ' + _fpmNum(v0, 0) +
+               ' m/s   ·   g = 9,81 m/s²', 10, 17);
+  ctx.fillStyle = '#7c3aed'; ctx.font = '700 11px system-ui, sans-serif';
+  ctx.fillText('t = ' + _fpmNum(t, 2) + ' s   ·   x = ' + _fpmNum(x, 2) +
+               ' m   ·   y = ' + _fpmNum(y, 2) + ' m   ·   v = ' + _fpmNum(v, 2) + ' m/s', 10, 33);
+  ctx.fillStyle = '#475569'; ctx.font = '10px system-ui, sans-serif';
+  ctx.fillText(_wwf.gelandet
+    ? 'beide gleichzeitig unten nach t = ' + _fpmNum(tF, 2) + ' s'
+    : 'Fallzeit t = √(2h/g) = ' + _fpmNum(tF, 2) + ' s – ohne v₀', 10, 45);
+
+  // Legende
+  ctx.font = '9px system-ui, sans-serif'; ctx.textBaseline = 'middle';
+  ctx.fillStyle = '#7c3aed';
+  ctx.beginPath(); ctx.arc(14, gY + 40, 4, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#475569'; ctx.fillText('waagerecht geworfen', 22, gY + 40);
+  ctx.fillStyle = '#ef4444';
+  ctx.beginPath(); ctx.arc(154, gY + 40, 4, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#475569'; ctx.fillText('senkrecht fallend (Vergleich)', 162, gY + 40);
+  ctx.fillText('Marken: 0,25 s', 336, gY + 40);
+  ctx.textBaseline = 'alphabetic';
+}
+
+// ── Oberflaeche ────────────────────────────────────────
+function _wwfHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🏹 Waagerechter Wurf – zwei Bewegungen zur selben Zeit</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Körper wird waagerecht abgeworfen. Im selben Augenblick fällt ein zweiter Körper aus <b>derselben Höhe</b> senkrecht nach unten. Waagerecht wirkt keine Kraft – dort bleibt die Geschwindigkeit gleich. Senkrecht zieht die Gewichtskraft – dort wird der Körper gleichmäßig schneller. Die Wurfbahn ist die <b>Überlagerung</b> beider Bewegungen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="wwfAnim" width="440" height="350" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <label class="phys-ctrl-label" for="wwfH">Abwurfhöhe h: <b id="wwfHLbl">${_fpmNum(_wwf.h, 0)} m</b></label>
+          <input type="range" id="wwfH" min="5" max="45" step="5" value="${_wwf.h}"
+            oninput="_wwfSetH(this.value)" style="width:100%;accent-color:#ef4444">
+        </div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <label class="phys-ctrl-label" for="wwfV0">Abwurfgeschwindigkeit v₀: <b id="wwfV0Lbl">${_fpmNum(_wwf.v0, 0)} m/s</b></label>
+          <input type="range" id="wwfV0" min="2" max="20" step="1" value="${_wwf.v0}"
+            oninput="_wwfSetV0(this.value)" style="width:100%;accent-color:#0891b2">
+        </div>
+        <div class="sim-btn-row">
+          <button class="sim-btn primary" onclick="_wwfAufzeichnen()">Bahn aufzeichnen</button>
+          <button class="sim-btn" onclick="_wwfNeu()">Neu starten</button>
+          <button class="sim-btn" onclick="_wwfLoeschen()">Aufzeichnungen löschen</button>
+        </div>
+        <div class="fpm-label" style="margin-top:4px">Zeitmarken – hier hält die Bewegung an</div>
+        <div class="sim-btn-row">
+          <button class="sim-btn" onclick="_wwfSprung(0)">Abwurf</button>
+          <button class="sim-btn" onclick="_wwfSprung(0.5)">halbe Fallzeit</button>
+          <button class="sim-btn" onclick="_wwfSprung(1)">Aufprall</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Messwerte</div>
+        <div class="lmp-status" id="wwfStatus"></div>
+        <div class="fpm-label" style="margin-top:10px">Aufgezeichnete Bahnen</div>
+        <div class="fpm-note" id="wwfBahnen">Noch keine Bahn aufgezeichnet.</div>
+        <div class="fpm-note" style="margin-top:10px"><b>Modellgrenze:</b> Gerechnet wird ohne Luftwiderstand und mit g = 9,81 m/s². Der senkrecht fallende Vergleichskörper ist im Bild nach <b>links versetzt</b> gezeichnet, damit beide Körper zu sehen sind – in Wirklichkeit startet er am selben Punkt wie der geworfene. Die Marken auf beiden Bahnen liegen 0,25 s auseinander.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>x = v₀ · t</b> (gleichförmig) &nbsp;|&nbsp; <b>y = h − 0,5 · g · t²</b> (gleichmäßig beschleunigt) &nbsp;|&nbsp; die Fallzeit <b>t = √(2h/g)</b> hängt nicht von v₀ ab
+    </p>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// EF.x  WECHSELWIRKUNG - DAS DRITTE NEWTON'SCHE GESETZ
+// Gymnasiale Oberstufe (EF) - Inhaltsfeld "Dynamik: Newton'sche Gesetze"
+//
+// Zwei Wagen auf einer reibungsfreien Bahn, dazwischen eine gespannte Feder.
+// Beim Loesen drueckt die Feder beide Wagen auseinander. Gemessen wird
+// quantitativ: F1, F2, a1, a2, v1, v2, p1, p2 und p1 + p2.
+//
+// Die Aussage, auf die alles hinauslaeuft:
+//   |F1| = |F2| zu JEDEM Zeitpunkt - auch wenn ein Wagen zehnmal so schwer ist,
+//   waehrend sich a1 : a2 = m2 : m1 verhaelt und p1 + p2 = 0 bleibt.
+//
+// ── ACHTUNG BEIM EINBAU ────────────────────────────────────────────────
+// Das Praefix _wwk und der Registry-Schluessel 'wechselwirkung' sind in
+// physics-sim.js SCHON VERGEBEN (qualitative Realschul-Simulation Klasse 9,
+// Eislaeufer/Boot/Rakete, ab Zeile ~66585). Diese Datei benutzt deshalb das
+// freie Praefix _wwkf; alle DOM-Kennungen beginnen weiterhin mit "wwk".
+// Registry-Eintrag fuer simcheck/einbau.py:
+//
+//     'wechselwirkung-ef': modal => {
+//       _wwkfInit();
+//       modal.innerHTML = _wwkfHTML();
+//       _wwkfStatus();
+//       _pSim = new PhysicsSimEngine('wwkfAnim', 'wwkfAnim');
+//       _pSim.start(dt => _wwkfUpdate(dt), (ctx, cv) => _wwkfDraw(ctx, cv), []);
+//     },
+// ═══════════════════════════════════════════════════════
+
+let _wwkf = null;
+
+// ── Der Versuchsaufbau in Zahlen ───────────────────────
+// Die Feder ist bewusst FEST vorgegeben: nur die beiden Massen sind Regler.
+// Dadurch ist die Hoechstkraft F = D * s0 = 20,00 N von den Massen voellig
+// unabhaengig - genau das ist die Aussage, die die Heftseite braucht.
+const _WWKF_D    = 250;      // Federhaerte in N/m
+const _WWKF_S0   = 0.08;     // Vorspannung (Zusammendrueckung) in m
+const _WWKF_FMAX = 20;       // = _WWKF_D * _WWKF_S0, Hoechstkraft in N
+const _WWKF_EF   = 0.8;      // = 0,5 * D * s0^2, gespeicherte Energie in J
+const _WWKF_L0   = 0.30;     // entspannte Federlaenge in m
+const _WWKF_BAHN = 3.2;      // Laenge der Fahrbahn in m
+const _WWKF_RAND = 0.05;     // Puffer an beiden Bahnenden in m
+// Zeitlupe in zwei Stufen. Das Abstossen dauert in Wirklichkeit nur rund
+// 0,12 s - bei einem einzigen Faktor waeren die Kraftpfeile fuer den Bruchteil
+// einer Sekunde zu sehen und danach nie wieder. Deshalb wird die Stossphase
+// stark gedehnt (auf rund 2 s) und die freie Fahrt danach schneller abgespielt.
+const _WWKF_LUPE_D = 0.06;   // waehrend des Abstossens: 1 s Bildschirm = 0,06 s
+const _WWKF_LUPE_F = 0.30;   // danach:                  1 s Bildschirm = 0,30 s
+const _WWKF_X0   = 34;       // linker Bildrand der Bahn in Pixeln
+const _WWKF_XB   = 404;      // Bahnbreite in Pixeln
+const _WWKF_YB   = 176;      // Hoehe der Schiene im Bild
+
+// ── Abgeleitete Groessen ───────────────────────────────
+// Relativbewegung der beiden Wagen: mu * r'' = -D * r  mit der reduzierten
+// Masse mu. Also eine harmonische Schwingung, abgebrochen nach einer
+// Viertelperiode - dann ist die Feder entspannt und die Wagen trennen sich.
+function _wwkfMu()    { return _wwkf.m1 * _wwkf.m2 / (_wwkf.m1 + _wwkf.m2); }
+function _wwkfOmega() { return Math.sqrt(_WWKF_D / _wwkfMu()); }
+function _wwkfTc()    { return Math.PI / 2 / _wwkfOmega(); }          // Stossdauer in s
+function _wwkfPend()  { return _wwkfMu() * _WWKF_S0 * _wwkfOmega(); } // Impulsbetrag danach
+function _wwkfBreite(m) { return 0.20 + 0.02 * m; }                   // Wagenlaenge in m
+function _wwkfPx(x)   { return _WWKF_X0 + x * (_WWKF_XB / _WWKF_BAHN); }
+
+// Zahl mit Vorzeichen und Dezimalkomma. Eine gerundete Null bekommt KEIN
+// Vorzeichen - sonst stuende in der Statuszeile "+0,000" neben "-0,000".
+function _wwkfSig(x, n) {
+  const g = Math.abs(x) < 5 * Math.pow(10, -(n + 1)) ? 0 : x;
+  return (g > 0 ? '+' : '') + _fpmNum(g, n);
+}
+
+// Verhaeltnis m2 : m1 gekuerzt, damit "5 : 2" dasteht und nicht "10 : 4".
+function _wwkfKuerze(a, b) {
+  let x = a, y = b;
+  while (y) { const h = x % y; x = y; y = h; }
+  return [a / x, b / x];
+}
+
+// ── Zustand ────────────────────────────────────────────
+function _wwkfInit() {
+  _wwkf = {
+    m1: 2, m2: 5,
+    phase: 'gespannt',      // gespannt | druck | frei | ende
+    t: 0, tAnim: 0,
+    F: _WWKF_FMAX,          // Betrag der Federkraft in N
+    s: _WWKF_L0 - _WWKF_S0, // aktuelle Federlaenge in m
+    v1: 0, v2: 0, x1: 0, x2: 0,
+  };
+  _wwkfAufstellen();
+}
+
+// Die Wagen so hinstellen, dass beide gleichzeitig am Puffer ankommen: der
+// leichte Wagen wird schneller, also braucht er mehr Bahn. Die freie Strecke
+// wird im Verhaeltnis der Endgeschwindigkeiten aufgeteilt, also wie m2 : m1.
+function _wwkfAufstellen() {
+  _wwkf.phase = 'gespannt';
+  _wwkf.t = 0;
+  _wwkf.F = _WWKF_FMAX;
+  _wwkf.s = _WWKF_L0 - _WWKF_S0;
+  _wwkf.v1 = 0; _wwkf.v2 = 0;
+  const b1 = _wwkfBreite(_wwkf.m1), b2 = _wwkfBreite(_wwkf.m2);
+  const block = b1 + _wwkf.s + b2;
+  const frei = _WWKF_BAHN - 2 * _WWKF_RAND - block;
+  const weg1 = frei * _wwkf.m2 / (_wwkf.m1 + _wwkf.m2);
+  _wwkf.x1 = _WWKF_RAND + weg1 + b1 / 2;
+  _wwkf.x2 = _wwkf.x1 + b1 / 2 + _wwkf.s + b2 / 2;
+}
+
+// Aus der Federlaenge die beiden Wagenmitten berechnen. Der Schwerpunkt bleibt
+// dabei stehen - das ist die Impulserhaltung im Bild.
+function _wwkfGeometrie(xs) {
+  const b1 = _wwkfBreite(_wwkf.m1), b2 = _wwkfBreite(_wwkf.m2);
+  const d = b1 / 2 + _wwkf.s + b2 / 2;
+  const M = _wwkf.m1 + _wwkf.m2;
+  _wwkf.x1 = xs - _wwkf.m2 / M * d;
+  _wwkf.x2 = xs + _wwkf.m1 / M * d;
+  if (_wwkf.x1 - b1 / 2 <= _WWKF_RAND || _wwkf.x2 + b2 / 2 >= _WWKF_BAHN - _WWKF_RAND) {
+    _wwkf.phase = 'ende';
+  }
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _wwkfSetM1(v) {
+  if (!_wwkf) return;
+  _wwkf.m1 = Math.max(1, Math.min(10, Math.round(+v)));
+  const el = document.getElementById('wwkfM1Lbl');
+  if (el) el.textContent = _wwkf.m1 + ' kg';
+  _wwkfAufstellen(); _wwkfStatus();
+}
+function _wwkfSetM2(v) {
+  if (!_wwkf) return;
+  _wwkf.m2 = Math.max(1, Math.min(10, Math.round(+v)));
+  const el = document.getElementById('wwkfM2Lbl');
+  if (el) el.textContent = _wwkf.m2 + ' kg';
+  _wwkfAufstellen(); _wwkfStatus();
+}
+function _wwkfLoesen() {
+  if (!_wwkf) return;
+  if (_wwkf.phase !== 'gespannt') _wwkfAufstellen();
+  _wwkf.phase = 'druck';
+  _wwkf.t = 0;
+  _wwkfStatus();
+}
+function _wwkfNeu() {
+  if (!_wwkf) return;
+  _wwkfAufstellen(); _wwkfStatus();
+}
+
+// ── Zeit fortschreiben ─────────────────────────────────
+function _wwkfUpdate(dt) {
+  if (!_wwkf) return;
+  _wwkf.tAnim += dt;
+  if (_wwkf.phase === 'gespannt' || _wwkf.phase === 'ende') return;
+
+  // Schwerpunkt merken: er darf sich nicht verschieben.
+  const M = _wwkf.m1 + _wwkf.m2;
+  const xs = (_wwkf.m1 * _wwkf.x1 + _wwkf.m2 * _wwkf.x2) / M;
+
+  const tc = _wwkfTc(), w = _wwkfOmega();
+  _wwkf.t += dt * (_wwkf.t < tc ? _WWKF_LUPE_D : _WWKF_LUPE_F);
+  if (_wwkf.t < tc) {
+    // Feder drueckt: Zusammendrueckung r(t) = s0 * cos(w t), F = D * r
+    const r = _WWKF_S0 * Math.cos(w * _wwkf.t);
+    _wwkf.phase = 'druck';
+    _wwkf.F = _WWKF_D * r;
+    _wwkf.s = _WWKF_L0 - r;
+    const p = _wwkfMu() * _WWKF_S0 * w * Math.sin(w * _wwkf.t);
+    _wwkf.v1 = -p / _wwkf.m1;
+    _wwkf.v2 = p / _wwkf.m2;
+  } else {
+    // Feder entspannt, die Wagen beruehren sich nicht mehr: keine Kraft mehr.
+    const p = _wwkfPend();
+    _wwkf.phase = 'frei';
+    _wwkf.F = 0;
+    _wwkf.v1 = -p / _wwkf.m1;
+    _wwkf.v2 = p / _wwkf.m2;
+    _wwkf.s = _WWKF_L0 + (_wwkf.v2 - _wwkf.v1) * (_wwkf.t - tc);
+  }
+  _wwkfGeometrie(xs);
+  _wwkfStatus();
+}
+
+// ── Statuszeile: die wichtigste Ausgabe ────────────────
+function _wwkfStatus() {
+  const el = document.getElementById('wwkfStatus');
+  if (!el || !_wwkf) return;
+  const m1 = _wwkf.m1, m2 = _wwkf.m2;
+
+  // Im gespannten Zustand werden die Werte im AUGENBLICK DES LOESENS gezeigt -
+  // sonst stuenden dort lauter Nullen und die Heftseite haette nichts zu zitieren.
+  const F = (_wwkf.phase === 'gespannt') ? _WWKF_FMAX : _wwkf.F;
+  const F1 = -F, F2 = F;
+  const a1 = F1 / m1, a2 = F2 / m2;
+  const v1 = _wwkf.v1, v2 = _wwkf.v2;
+  const p1 = m1 * v1, p2 = m2 * v2;
+
+  const pE = _wwkfPend(), vE1 = -pE / m1, vE2 = pE / m2;
+  const eK1 = 0.5 * m1 * vE1 * vE1, eK2 = 0.5 * m2 * vE2 * vE2;
+  const vh = _wwkfKuerze(m2, m1);
+
+  const zust = { gespannt: 'Feder gespannt – angezeigt sind die Werte im Augenblick des Lösens',
+                 druck:    'Feder drückt – beide Wagen werden gerade beschleunigt',
+                 frei:     'Feder entspannt, Wagen getrennt – ab jetzt wirkt keine Kraft mehr',
+                 ende:     'Wagen am Bahnende – die Messfahrt ist beendet' }[_wwkf.phase];
+
+  el.innerHTML =
+    `<b>Zustand:</b> ${zust}. t = ${_fpmNum(_wwkf.t, 3)} s<br>` +
+    `Feder: D = 250 N/m · Vorspannung s0 = 8,0 cm · gespeicherte Energie E = 0,800 J<br>` +
+    `Wagen 1: m1 = ${m1} kg (nach links, negativ) · Wagen 2: m2 = ${m2} kg (nach rechts, positiv)<br>` +
+    `<b>F1 = ${_wwkfSig(F1, 2)} N · F2 = ${_wwkfSig(F2, 2)} N</b><br>` +
+    `a1 = ${_wwkfSig(a1, 2)} m/s² · a2 = ${_wwkfSig(a2, 2)} m/s²<br>` +
+    `v1 = ${_wwkfSig(v1, 3)} m/s · v2 = ${_wwkfSig(v2, 3)} m/s<br>` +
+    `p1 = ${_wwkfSig(p1, 3)} kg·m/s · p2 = ${_wwkfSig(p2, 3)} kg·m/s · <b>p1 + p2 = ${_wwkfSig(p1 + p2, 3)} kg·m/s</b><br>` +
+    `<b>|F1| = |F2|</b> zu jedem Zeitpunkt, Höchstwert 20,00 N – gleich groß, egal wie verschieden die Massen sind. ` +
+    `Dagegen <b>a1 : a2 = ${vh[0]} : ${vh[1]} = m2 : m1</b> (= ${_fpmNum(m2 / m1, 2)}): die Beschleunigungen verhalten sich umgekehrt wie die Massen.<br>` +
+    `Beim Lösen: F1 = ${_wwkfSig(-_WWKF_FMAX, 2)} N, F2 = ${_wwkfSig(_WWKF_FMAX, 2)} N, ` +
+    `a1 = ${_wwkfSig(-_WWKF_FMAX / m1, 2)} m/s², a2 = ${_wwkfSig(_WWKF_FMAX / m2, 2)} m/s² · ` +
+    `Stoßdauer Δt = ${_fpmNum(_wwkfTc(), 3)} s, für beide Wagen dieselbe<br>` +
+    `Endwerte: v1 = ${_wwkfSig(vE1, 3)} m/s, v2 = ${_wwkfSig(vE2, 3)} m/s, ` +
+    `p1 = ${_wwkfSig(-pE, 3)} kg·m/s, p2 = ${_wwkfSig(pE, 3)} kg·m/s, Summe 0,000 kg·m/s<br>` +
+    `Energie: E(Feder) = 0,800 J = ${_fpmNum(eK1, 3)} J + ${_fpmNum(eK2, 3)} J = E(kin,1) + E(kin,2)`;
+  el.className = 'lmp-status on';
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+function _wwkfPfeil(ctx, xa, ya, xb, yb, farbe, dick) {
+  ctx.strokeStyle = farbe; ctx.fillStyle = farbe; ctx.lineWidth = dick || 3;
+  ctx.beginPath(); ctx.moveTo(xa, ya); ctx.lineTo(xb, yb); ctx.stroke();
+  const win = Math.atan2(yb - ya, xb - xa), k = 8;
+  ctx.beginPath();
+  ctx.moveTo(xb, yb);
+  ctx.lineTo(xb - k * Math.cos(win - 0.42), yb - k * Math.sin(win - 0.42));
+  ctx.lineTo(xb - k * Math.cos(win + 0.42), yb - k * Math.sin(win + 0.42));
+  ctx.closePath(); ctx.fill();
+}
+
+// Mittig gesetzte Beschriftungen am Bildrand festhalten - am Bahnende steht ein
+// Wagen sonst so weit aussen, dass sein Zahlenwert halb abgeschnitten waere.
+function _wwkfHalt(x) { return Math.max(52, Math.min(418, x)); }
+
+function _wwkfFeder(ctx, xa, xb, y) {
+  ctx.strokeStyle = '#0f766e'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(xa, y);
+  const n = 9, br = (xb - xa) / n;
+  for (let i = 0; i < n; i++) ctx.lineTo(xa + br * (i + 0.5), y + (i % 2 ? 8 : -8));
+  ctx.lineTo(xb, y); ctx.stroke();
+}
+
+function _wwkfWagen(ctx, xm, m, farbe, name) {
+  const br = _wwkfBreite(m) * (_WWKF_XB / _WWKF_BAHN);
+  const ho = 20 + 1.8 * m;
+  const cx = _wwkfPx(xm), oben = _WWKF_YB - 7 - ho;
+  ctx.fillStyle = farbe;
+  if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(cx - br / 2, oben, br, ho, 4); ctx.fill(); }
+  else ctx.fillRect(cx - br / 2, oben, br, ho);
+  ctx.fillStyle = '#1e293b';
+  ctx.beginPath();
+  ctx.arc(cx - br * 0.28, _WWKF_YB - 3, 4, 0, 2 * Math.PI);
+  ctx.arc(cx + br * 0.28, _WWKF_YB - 3, 4, 0, 2 * Math.PI);
+  ctx.fill();
+  ctx.fillStyle = '#fff'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(name, cx, oben + ho / 2 + 4);
+  return { cx: cx, oben: oben, br: br };
+}
+
+function _wwkfDraw(ctx, cv) {
+  if (!_wwkf) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const m1 = _wwkf.m1, m2 = _wwkf.m2;
+  const F = (_wwkf.phase === 'gespannt') ? _WWKF_FMAX : _wwkf.F;
+  const a1 = -F / m1, a2 = F / m2;
+  const pE = _wwkfPend();
+
+  // Kopfzeile
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Zwei Wagen, eine Feder – reibungsfreie Bahn', W / 2, 18);
+  ctx.font = '11px sans-serif'; ctx.fillStyle = '#475569';
+  const zk = { gespannt: 'Feder gespannt – Werte gelten für den Augenblick des Lösens',
+               druck: 'Feder drückt – beide Wagen werden beschleunigt',
+               frei: 'getrennt – keine Kraft mehr, beide fahren gleichförmig',
+               ende: 'Bahnende erreicht – Messfahrt beendet' }[_wwkf.phase];
+  ctx.fillText(zk + '   t = ' + _fpmNum(_wwkf.t, 3) + ' s', W / 2, 34);
+
+  const skx = _WWKF_XB / _WWKF_BAHN;
+  const b1 = _wwkfBreite(m1) * skx, b2 = _wwkfBreite(m2) * skx;
+  const c1 = _wwkfPx(_wwkf.x1), c2 = _wwkfPx(_wwkf.x2);
+  const kontakt = (c1 + b1 / 2 + c2 - b2 / 2) / 2;
+
+  // ── Beschleunigungspfeile (verschieden lang) ─────────
+  const aMax = _WWKF_FMAX / Math.min(m1, m2);
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#b45309';
+  ctx.fillText('Beschleunigung a – ungleich lang', 12, 52);
+  if (F > 0.01) {
+    const l1 = 58 * Math.abs(a1) / aMax, l2 = 58 * Math.abs(a2) / aMax;
+    _wwkfPfeil(ctx, c1, 68, c1 - l1, 68, '#f59e0b', 3);
+    _wwkfPfeil(ctx, c2, 68, c2 + l2, 68, '#f59e0b', 3);
+    ctx.fillStyle = '#b45309'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('a1 = ' + _wwkfSig(a1, 2) + ' m/s²', _wwkfHalt(c1 - l1 / 2), 60);
+    ctx.fillText('a2 = ' + _wwkfSig(a2, 2) + ' m/s²', _wwkfHalt(c2 + l2 / 2), 60);
+  } else {
+    ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('a1 = 0,00 m/s²   a2 = 0,00 m/s²  (keine Kraft mehr)', W / 2, 68);
+  }
+
+  // ── Kraftpfeile: IMMER gleich lang, entgegengesetzt ──
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#334155';
+  ctx.fillText('Kraft F an der Berührstelle – immer gleich lang', 12, 92);
+  if (F > 0.01) {
+    const lf = 26 + 44 * (F / _WWKF_FMAX);
+    _wwkfPfeil(ctx, kontakt, 110, kontakt - lf, 110, '#dc2626', 4);
+    _wwkfPfeil(ctx, kontakt, 110, kontakt + lf, 110, '#2563eb', 4);
+    ctx.textAlign = 'right'; ctx.fillStyle = '#dc2626'; ctx.font = '700 11px sans-serif';
+    ctx.fillText('F1 = ' + _wwkfSig(-F, 2) + ' N', kontakt - 8, 102);
+    ctx.textAlign = 'left'; ctx.fillStyle = '#2563eb';
+    ctx.fillText('F2 = ' + _wwkfSig(F, 2) + ' N', kontakt + 8, 102);
+    ctx.fillStyle = '#334155'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('gleicher Betrag ' + _fpmNum(F, 2) + ' N, entgegengesetzte Richtung', kontakt, 128);
+  } else {
+    ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('F1 = 0,00 N   F2 = 0,00 N  –  die Wagen berühren sich nicht mehr', W / 2, 110);
+  }
+
+  // ── Bahn ─────────────────────────────────────────────
+  ctx.fillStyle = '#cbd5e1';
+  ctx.fillRect(_WWKF_X0, _WWKF_YB, _WWKF_XB, 6);
+  ctx.fillStyle = '#94a3b8';
+  ctx.fillRect(_wwkfPx(_WWKF_RAND) - 6, _WWKF_YB - 22, 6, 22);
+  ctx.fillRect(_wwkfPx(_WWKF_BAHN - _WWKF_RAND), _WWKF_YB - 22, 6, 22);
+
+  // Feder zwischen den Wagen (nach der Trennung entspannt am linken Wagen)
+  const federL = (_wwkf.phase === 'druck' || _wwkf.phase === 'gespannt')
+    ? _wwkf.s * skx : _WWKF_L0 * skx;
+  _wwkfFeder(ctx, c1 + b1 / 2, c1 + b1 / 2 + federL, _WWKF_YB - 24);
+
+  _wwkfWagen(ctx, _wwkf.x1, m1, '#dc2626', 'm1 = ' + m1 + ' kg');
+  _wwkfWagen(ctx, _wwkf.x2, m2, '#2563eb', 'm2 = ' + m2 + ' kg');
+
+  // Schwerpunkt: er steht still - das sieht man nur, wenn er markiert ist.
+  const xs = (m1 * _wwkf.x1 + m2 * _wwkf.x2) / (m1 + m2);
+  ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(_wwkfPx(xs), _WWKF_YB - 60); ctx.lineTo(_wwkfPx(xs), _WWKF_YB + 12); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#16a34a'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Schwerpunkt steht still', _wwkfPx(xs), _WWKF_YB - 64);
+
+  // Massstab
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  for (let x = 0; x <= _WWKF_BAHN + 0.001; x += 0.4) {
+    ctx.beginPath(); ctx.moveTo(_wwkfPx(x), _WWKF_YB + 6); ctx.lineTo(_wwkfPx(x), _WWKF_YB + 12); ctx.stroke();
+    ctx.fillText(_fpmNum(x, 1), _wwkfPx(x), _WWKF_YB + 23);
+  }
+  ctx.textAlign = 'left'; ctx.fillText('Ort in m', _WWKF_X0, _WWKF_YB + 36);
+
+  // ── Geschwindigkeitspfeile ───────────────────────────
+  const vMax = pE / Math.min(m1, m2);
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#0f766e';
+  ctx.fillText('Geschwindigkeit v', 12, 232);
+  if (Math.abs(_wwkf.v1) > 0.001) {
+    const g1 = 60 * Math.abs(_wwkf.v1) / vMax, g2 = 60 * Math.abs(_wwkf.v2) / vMax;
+    _wwkfPfeil(ctx, c1, 246, c1 - g1, 246, '#0d9488', 3);
+    _wwkfPfeil(ctx, c2, 246, c2 + g2, 246, '#0d9488', 3);
+    ctx.fillStyle = '#0f766e'; ctx.textAlign = 'center';
+    ctx.fillText('v1 = ' + _wwkfSig(_wwkf.v1, 3) + ' m/s', _wwkfHalt(c1 - g1 / 2), 260);
+    ctx.fillText('v2 = ' + _wwkfSig(_wwkf.v2, 3) + ' m/s', _wwkfHalt(c2 + g2 / 2), 260);
+  } else {
+    ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('v1 = 0,000 m/s   v2 = 0,000 m/s  (noch in Ruhe)', W / 2, 248);
+  }
+
+  // ── Impulsbalken ─────────────────────────────────────
+  const p1 = m1 * _wwkf.v1, p2 = m2 * _wwkf.v2, mitte = W / 2, yB = 292;
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(mitte, yB - 12); ctx.lineTo(mitte, yB + 12); ctx.stroke();
+  const sp = 150 / Math.max(pE, 0.001);
+  ctx.fillStyle = '#dc2626'; ctx.fillRect(mitte + p1 * sp, yB - 8, -p1 * sp, 9);
+  ctx.fillStyle = '#2563eb'; ctx.fillRect(mitte, yB - 8, p2 * sp, 9);
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Impuls: p1 = ' + _wwkfSig(p1, 3) + ' kg·m/s   p2 = ' + _wwkfSig(p2, 3) + ' kg·m/s', 12, yB + 22);
+  // leicht pulsierende Marke - sie zeigt, dass die Summe null BLEIBT
+  const puls = 3 + 1.5 * Math.sin(_wwkf.tAnim * 3);
+  ctx.fillStyle = '#16a34a';
+  ctx.beginPath(); ctx.arc(mitte, yB - 3.5, puls, 0, 2 * Math.PI); ctx.fill();
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('p1 + p2 = ' + _wwkfSig(p1 + p2, 3) + ' kg·m/s', mitte, yB + 36);
+
+  ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('rot = Wagen 1 (nach links, negativ)   ·   blau = Wagen 2 (nach rechts, positiv)', W / 2, 334);
+}
+
+// ── Oberflaeche ────────────────────────────────────────
+function _wwkfHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim wwkf-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wechselwirkung – zwei Wagen, eine Feder, zwei Kräfte</h3>
+    <div class="fpm-note" style="margin-top:2px">Zwischen den beiden Wagen sitzt eine gespannte Feder. Löse sie und lies ab, was an <b>beiden</b> Wagen gleichzeitig passiert. Stelle danach sehr verschiedene Massen ein und wiederhole die Messung.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="wwkfAnim" width="470" height="340" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <label class="phys-ctrl-label" for="wwkfM1">Masse m1 (linker Wagen): <b id="wwkfM1Lbl">2 kg</b></label>
+          <input type="range" id="wwkfM1" min="1" max="10" step="1" value="2"
+            oninput="_wwkfSetM1(this.value)" style="width:100%;accent-color:#dc2626">
+        </div>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <label class="phys-ctrl-label" for="wwkfM2">Masse m2 (rechter Wagen): <b id="wwkfM2Lbl">5 kg</b></label>
+          <input type="range" id="wwkfM2" min="1" max="10" step="1" value="5"
+            oninput="_wwkfSetM2(this.value)" style="width:100%;accent-color:#2563eb">
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_wwkfLoesen()">Feder lösen</button>
+          <button class="sim-btn" onclick="_wwkfNeu()">Neu aufstellen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Messwerte</div>
+        <div class="lmp-status" id="wwkfStatus" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>Drittes Newton'sches Gesetz (Wechselwirkungsprinzip):</b> Übt Körper 1 auf Körper 2 die Kraft F2 aus, so übt Körper 2 auf Körper 1 die Kraft F1 = −F2 aus. Die beiden Kräfte sind <b>gleich groß und entgegengesetzt gerichtet</b>, greifen aber an <b>verschiedenen</b> Körpern an – deshalb heben sie sich nicht auf. Aus F = m·a folgt sofort a1 : a2 = m2 : m1 und aus F1 = −F2 über die ganze Stoßdauer p1 + p2 = 0.</div>
+        <div class="fpm-note" style="margin-top:8px"><b>Modellgrenzen:</b> Die Bahn ist reibungsfrei und die Feder ideal (masselos, F = D·s). Die Bewegung läuft in <b>Zeitlupe</b>, und zwar in zwei Stufen: Das Abstoßen dauert in Wirklichkeit nur rund 0,12 s und ist auf etwa 2 Sekunden gedehnt (1 s am Bildschirm = 0,06 s), die freie Fahrt danach läuft schneller ab (1 s am Bildschirm = 0,30 s). Angezeigt wird immer die <b>wirkliche</b> Zeit t. Am Bahnende stoppt die Messfahrt – der Puffer ist nur eine Anzeigegrenze und gehört nicht zum Versuch. Die Stoßdauer Δt hängt von den Massen ab (Δt = (π/2)·√(μ/D) mit der reduzierten Masse μ = m1·m2/(m1+m2)), die Höchstkraft dagegen nicht.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>|F1| = |F2|</b> immer &nbsp;·&nbsp; <b>a1 : a2 = m2 : m1</b> &nbsp;·&nbsp; <b>p1 + p2 = 0</b>
+    </p>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// ZENTRIPETALKRAFT – gleichfoermige Kreisbewegung quantitativ
+// Gymnasiale Oberstufe (EF), Kernlehrplan NRW:
+//   "beschreiben quantitativ die bei einer gleichfoermigen Kreisbewegung
+//    wirkende Zentripetalkraft in Abhaengigkeit der Beschreibungsgroessen"
+//   "interpretieren Messergebnisse aus Experimenten zur quantitativen
+//    Untersuchung der Zentripetalkraft"
+//
+// Die alte 'kreisbewegung' fuehrt nur omega und F_z und misst den Radius in
+// PIXELN. Hier ist der Radius in Metern, und die Statuszeile fuehrt alle
+// sieben Beschreibungsgroessen mit Formelzeichen und Einheit:
+//   r [m] · phi [Grad] · T [s] · f [Hz] · v [m/s] · omega [rad/s] · a_z [m/s²]
+// dazu die Zentripetalkraft F_z [N].
+//
+// Messwerterfassung wie in 'gleichfoermig': Messpunkte in eine Wertetabelle,
+// drei Auftragungen mit Ausgleichsgerade, Steigung und R².
+//
+// REGISTRY-EINTRAG fuer simcheck/einbau.py:
+//   'zentripetalkraft': modal => {
+//     _zpkInit();
+//     modal.innerHTML = _zpkHTML();
+//     _zpkRenderTable();
+//     _zpkStatus();
+//     _pSim = new PhysicsSimEngine('zpkAnim', 'zpkPlot');
+//     _pSim.start(dt => _zpkUpdate(dt), (ctx, cv) => _zpkDraw(ctx, cv), []);
+//     _mlabRenderTheorie(_zpk, false);
+//     _mlabDrawPlot('zpkPlot', _zpk);
+//   },
+// ═══════════════════════════════════════════════════════
+
+let _zpk = null;
+
+const _ZPK_4PI2 = 4 * Math.PI * Math.PI;   // 39,478…  – steckt in jeder Steigung
+const _ZPK_SKALA = 70;                     // Pixel je Meter im Bild (Radius maßstäblich)
+const _ZPK_STREU = 0.03;                   // Kraftmessdose: ±1,5 % Streuung
+
+// ── Gruppenschluessel ──────────────────────────────────
+// Eine Ausgleichsgerade entsteht nur, wenn zwischen zwei Messpunkten NUR die
+// aufgetragene Groesse veraendert wurde. Deshalb werden die Messzeilen nach den
+// beiden festgehaltenen Groessen gruppiert. Beide stecken in einer Zahl:
+// A (Schritt 0,1; hoechstens 2,0) mal 100, dazu B (hoechstens 4,0).
+function _zpkKey(a, b) { return Math.round(a * 10) * 100 + Math.round(b * 10) / 10; }
+function _zpkKeyA(k) { return Math.floor(k / 100 + 1e-9) / 10; }
+function _zpkKeyB(k) { return Math.round((k - Math.floor(k / 100 + 1e-9) * 100) * 10) / 10; }
+
+// ── Physik an einer Stelle ─────────────────────────────
+function _zpkGroessen(m, r, f) {
+  const T = 1 / f;
+  const om = 2 * Math.PI * f;
+  const v = om * r;
+  const az = om * om * r;          // = v²/r
+  return { m: m, r: r, f: f, T: T, om: om, v: v, az: az, F: m * az };
+}
+
+// ── Anzeigen heisst rechnen ────────────────────────────
+// Grundsatz: Was im Rechenweg steht, muss aus den ANGEZEIGTEN Zahlen folgen.
+// Sonst rechnet jemand die Zeile nach, bekommt etwas anderes heraus und haelt
+// sich fuer dumm. Also ZUERST runden, DANN mit den gerundeten Werten weiter.
+
+// Runden wie von Hand: die halbe Einheit geht nach oben. Math.round allein taugt
+// dafuer nicht – 35,495 liegt als Gleitkommazahl knapp UNTER der Mitte und wuerde
+// zu 35,49 statt 35,50. toPrecision(12) raeumt dieses Rauschen vorher weg.
+function _zpkRund(v, n) {
+  if (!isFinite(v)) return v;
+  const p = Math.pow(10, n);
+  return Math.sign(v) * Math.round(Number((Math.abs(v) * p).toPrecision(12))) / p;
+}
+
+// Anzeigegenauigkeit nach Groessenordnung: 0,197 N und 1895 N im selben Format
+// waere unsinnig. Gilt fuer die Kraft UND fuer die Zentripetalbeschleunigung.
+function _zpkNk(v) { const a = Math.abs(v); return a >= 100 ? 1 : (a >= 10 ? 2 : 3); }
+function _zpkFmt(v, n) { return _fpmNum(_zpkRund(v, n), n); }
+
+// Eine Spalte, EIN Format – sonst stehen 8,867 und 17,77 untereinander.
+// Gewaehlt wird es aus dem groessten Betrag der Spalte (so grob ist die Messdose
+// ueber diesen Bereich), aber nie so grob, dass der kleinste Wert unter drei
+// geltende Ziffern faellt.
+function _zpkSpaltenNk(werte) {
+  const w = werte.filter(v => isFinite(v) && v !== 0).map(Math.abs);
+  if (!w.length) return 3;
+  const klein = Math.min(...w);
+  const drei = Math.min(3, Math.max(0, 3 - (Math.floor(Math.log10(klein)) + 1)));
+  return Math.max(_zpkNk(Math.max(...w)), drei);
+}
+
+// omega mit 4, v mit 5 Nachkommastellen. Die 5 ist kein Zierrat: r hat genau EINE
+// Nachkommastelle, also ist v = omega·r bei 5 Stellen exakt – und damit ist v²/r
+// rechnerisch dasselbe wie omega²·r. Nur so geht die Probe unten wirklich auf,
+// statt sie bloss zu behaupten. Bei 4 Stellen fuer v laufen die beiden Wege in
+// 36 von 504 (r,f)-Paaren um eine Einheit der letzten Stelle auseinander.
+// Mit nur 2 Stellen fuer omega laege a_z ausserdem bis zu 0,3 % neben dem Wert,
+// den der Theoriekasten nebenan aus 4·π²·f²·r nennt.
+const _ZPK_NK_OM = 4;
+const _ZPK_NK_V = 5;
+
+// Alles, was auf dem Schirm steht – als Zahl UND als fertige Zeichenkette.
+// Jede Zeile des Rechenwegs rechnet mit genau diesen Zahlen weiter.
+function _zpkAnzeige(m, r, f) {
+  const md = _zpkRund(m, 2), rd = _zpkRund(r, 2), fd = _zpkRund(f, 2);
+  const T = _zpkRund(1 / fd, 3);
+  const om = _zpkRund(2 * Math.PI * fd, _ZPK_NK_OM);
+  const v = _zpkRund(om * rd, _ZPK_NK_V);
+  // Zwei getrennte Rechnungen, nicht zweimal dieselbe Variable.
+  const azV = v * v / rd, azOm = om * om * rd;
+  const nkA = _zpkNk(azOm);
+  const az = _zpkRund(azOm, nkA);
+  const Froh = md * az, nkF = _zpkNk(Froh);
+  return {
+    m: md, r: rd, f: fd, T: T, om: om, v: v, az: az,
+    azV: _zpkRund(azV, nkA), F: _zpkRund(Froh, nkF),
+    sm: _fpmNum(md, 2), sr: _fpmNum(rd, 2), sf: _fpmNum(fd, 2),
+    sT: _fpmNum(T, 3), som: _fpmNum(om, _ZPK_NK_OM), sv: _fpmNum(v, _ZPK_NK_V),
+    saz: _zpkFmt(azOm, nkA), sazV: _zpkFmt(azV, nkA), sF: _zpkFmt(Froh, nkF)
+  };
+}
+
+// 359,7 Grad runden auf "360" – und widersprechen dem Satz, dass der Winkel nach
+// einer vollen Umdrehung wieder bei 0 steht. Deshalb wird der GERUNDETE Wert auf
+// den Vollkreis zurueckgeholt, nicht der ungerundete.
+function _zpkGrad(phi) { return _fpmNum(_zpkRund(phi * 180 / Math.PI, 0) % 360, 0); }
+
+// Abschlussblock der Auswertung. _mlabErgebnis() rechnet die Abweichung aus
+// zwei bereits mit Dezimalkomma formatierten Zeichenketten – das ergibt NaN.
+// Hier wird deshalb mit Zahlen gerechnet und erst danach formatiert.
+function _zpkErgebnis(label, wert, einheit, soll, formel) {
+  const dev = (isFinite(soll) && soll !== 0 && isFinite(wert))
+    ? Math.abs(wert - soll) / Math.abs(soll) * 100 : null;
+  const cls = dev === null ? 'ok' : (dev < 1 ? 'ok' : (dev < 5 ? 'mid' : 'no'));
+  const nk = Math.abs(wert) >= 100 ? 1 : (Math.abs(wert) >= 10 ? 2 : 3);
+  return `<div class="fpm-fitline" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">
+      <span class="fpm-fitmeta">${label}</span>
+      <span class="fpm-fiteq">${_fpmNum(wert, nk)} ${einheit} &nbsp;·&nbsp; eingestellt: ${_fpmNum(soll, nk)} ${einheit}</span>
+      ${dev !== null ? `<span class="fpm-badge ${cls}">Abweichung ${_fpmNum(dev, 2)} %</span>` : ''}
+      <span class="fpm-fitmeta" style="margin-top:3px">${formel}</span>
+    </div>`;
+}
+
+// ── Die drei Auftragungen ──────────────────────────────
+const _ZPK_PRESETS = [
+  { tab: 'F über r auftragen', xl: 'r in m', yl: 'F_z in N',
+    x: z => z.r, y: z => z.F, grp: z => _zpkKey(z.m, z.f),
+    gl: k => 'm = ' + _fpmNum(_zpkKeyA(k), 1) + ' kg, f = ' + _fpmNum(_zpkKeyB(k), 1) + ' Hz',
+    slope: k => _ZPK_4PI2 * _zpkKeyA(k) * _zpkKeyB(k) * _zpkKeyB(k),
+    curveFn: (xv, k) => _ZPK_4PI2 * _zpkKeyA(k) * _zpkKeyB(k) * _zpkKeyB(k) * xv,
+    note: 'Ursprungsgerade ⇒ F_z ~ r bei festgehaltener Masse und Umlauffrequenz. Doppelter Radius, doppelte Kraft. Die Steigung ist 4·π²·m·f² und hat die Einheit N/m. Punkte, die einzeln herumliegen, stammen aus einer Einstellung, bei der m oder f mitverändert wurde.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'F_z(r) = 4·π²·m·f² · r',
+    param: () => 'Steigung = 4·π²·m·f² = ' + _fpmNum(_ZPK_4PI2 * _zpk.m * _zpk.f * _zpk.f, 2) + ' N/m (aktuelle Einstellung)',
+    term: () => (_ZPK_4PI2 * _zpk.m * _zpk.f * _zpk.f).toFixed(4) + '*x',
+    deutung: 'Bei gleicher Umlauffrequenz wächst die Zentripetalkraft proportional zum Radius: Der Körper muss auf der weiteren Bahn in derselben Zeit stärker zur Mitte gezogen werden.',
+    ergebnis: g0 => {
+      const m = _zpkKeyA(g0.key), f = _zpkKeyB(g0.key);
+      return _zpkErgebnis('Masse m aus der Steigung k', g0.fit.k / (_ZPK_4PI2 * f * f), 'kg', m,
+        'F_z = 4·π²·m·f²·r  ⇒  m = k / (4·π²·f²)'); } },
+
+  { tab: 'F über f² auftragen', xl: 'f² in 1/s²', yl: 'F_z in N',
+    x: z => z.f * z.f, y: z => z.F, grp: z => _zpkKey(z.m, z.r),
+    gl: k => 'm = ' + _fpmNum(_zpkKeyA(k), 1) + ' kg, r = ' + _fpmNum(_zpkKeyB(k), 1) + ' m',
+    slope: k => _ZPK_4PI2 * _zpkKeyA(k) * _zpkKeyB(k),
+    curveFn: (xv, k) => _ZPK_4PI2 * _zpkKeyA(k) * _zpkKeyB(k) * xv,
+    note: 'Über f allein ergäbe sich eine Parabel. Erst über f² liegen die Punkte auf einer Ursprungsgeraden ⇒ F_z ~ f². Doppelte Umlauffrequenz, vierfache Kraft. Die Steigung ist 4·π²·m·r in N·s².',
+    typ: 'proportionale Funktion (Ursprungsgerade nach dem Quadrieren)', form: 'F_z(f²) = 4·π²·m·r · f²',
+    param: () => 'Steigung = 4·π²·m·r = ' + _fpmNum(_ZPK_4PI2 * _zpk.m * _zpk.r, 2) + ' N·s² (aktuelle Einstellung)',
+    term: () => (_ZPK_4PI2 * _zpk.m * _zpk.r).toFixed(4) + '*x',
+    deutung: 'Die Zentripetalkraft wächst quadratisch mit der Umlauffrequenz. Deshalb reißt der Faden beim schnelleren Schleudern so plötzlich.',
+    ergebnis: g0 => {
+      const m = _zpkKeyA(g0.key), r = _zpkKeyB(g0.key);
+      return _zpkErgebnis('Masse m aus der Steigung k', g0.fit.k / (_ZPK_4PI2 * r), 'kg', m,
+        'F_z = 4·π²·m·r·f²  ⇒  m = k / (4·π²·r)'); } },
+
+  { tab: 'F über m auftragen', xl: 'm in kg', yl: 'F_z in N',
+    x: z => z.m, y: z => z.F, grp: z => _zpkKey(z.r, z.f),
+    gl: k => 'r = ' + _fpmNum(_zpkKeyA(k), 1) + ' m, f = ' + _fpmNum(_zpkKeyB(k), 1) + ' Hz',
+    slope: k => _ZPK_4PI2 * _zpkKeyA(k) * _zpkKeyB(k) * _zpkKeyB(k),
+    curveFn: (xv, k) => _ZPK_4PI2 * _zpkKeyA(k) * _zpkKeyB(k) * _zpkKeyB(k) * xv,
+    note: 'Ursprungsgerade ⇒ F_z ~ m. Die Steigung ist hier die Zentripetalbeschleunigung a_z selbst, denn F_z = m · a_z. Ihre Einheit ist N/kg = m/s².',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'F_z(m) = a_z · m  mit  a_z = 4·π²·f²·r',
+    // Dieselbe Zahl wie in der Statuszeile - nicht der exakte Wert daneben.
+    // 4·π²·f²·r liegt bei 80 von 10080 Reglerstellungen genau auf einer
+    // Rundungsgrenze (r = 0,5 m, f = 1,8 Hz: 63,955) und stuende dann als
+    // 63,96 neben einer Statuszeile, die 63,95 anzeigt.
+    param: () => 'Steigung = a_z = 4·π²·f²·r = ' + _zpkAnzeige(_zpk.m, _zpk.r, _zpk.f).saz + ' m/s² (aktuelle Einstellung)',
+    term: () => (_ZPK_4PI2 * _zpk.f * _zpk.f * _zpk.r).toFixed(4) + '*x',
+    deutung: 'Die Bahn hängt nicht von der Masse ab – die nötige Kraft schon. Die Steigung dieser Geraden ist unmittelbar die Zentripetalbeschleunigung.',
+    ergebnis: g0 => {
+      const r = _zpkKeyA(g0.key), f = _zpkKeyB(g0.key);
+      return _zpkErgebnis('Zentripetalbeschleunigung a_z aus der Steigung k', g0.fit.k, 'm/s²',
+        _ZPK_4PI2 * f * f * r, 'F_z = m · a_z  ⇒  a_z = k = 4·π²·f²·r'); } }
+];
+
+// ── Zustand ────────────────────────────────────────────
+function _zpkInit() {
+  _zpk = {
+    m: 0.5, r: 0.8, f: 1.5,
+    phi: 0,          // laufender Drehwinkel in rad
+    t: 0,            // Stoppuhr seit der letzten Änderung
+    umlauf: 0,       // gezählte volle Umläufe
+    tLetzt: 0,       // Zeitpunkt des letzten Nulldurchgangs
+    Tgem: 0,         // daraus gemessene Umlaufzeit
+    blitz: 0,        // kurzes Aufleuchten nach einem Messpunkt
+    rows: [], nextId: 1,
+    preset: 0, fn: null, fnAuto: false, origin: true, showTheory: false,
+    pre: 'zpk', plotId: 'zpkPlot', fitId: 'zpkFit', fnId: 'zpkFn',
+    fnErrId: 'zpkErr', theoId: 'zpkTheo',
+    presets: _ZPK_PRESETS
+  };
+}
+
+// ── Oberflaeche ────────────────────────────────────────
+function _zpkHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim zpk-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">⭕ Zentripetalkraft – die gleichförmige Kreisbewegung nachrechnen</h3>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="zpkAnim" width="440" height="330" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Masse m: <b id="zpkMLbl">0,5 kg</b></span>
+          <input type="range" id="zpkM" min="0.1" max="2" step="0.1" value="0.5"
+            oninput="_zpkSetM(this.value)" style="width:100%;accent-color:#7c3aed">
+        </div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Radius r: <b id="zpkRLbl">0,8 m</b></span>
+          <input type="range" id="zpkR" min="0.2" max="1.5" step="0.1" value="0.8"
+            oninput="_zpkSetR(this.value)" style="width:100%;accent-color:#0284c7">
+        </div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Umlauffrequenz f: <b id="zpkFLbl">1,5 Hz</b></span>
+          <input type="range" id="zpkF" min="0.5" max="4" step="0.1" value="1.5"
+            oninput="_zpkSetF(this.value)" style="width:100%;accent-color:#f97316">
+        </div>
+        <div class="fpm-note" style="margin-top:7px">Das Bild zeigt den <b>Blick von oben auf eine waagerechte Kreisbahn</b> – die Gewichtskraft zeigt aus dem Bild heraus und wird von der Unterlage getragen. Deshalb ist das Kraftbild vollständig: Der rote Pfeil zeigt <b>immer zum Mittelpunkt</b>, die Zentripetalkraft hält den Körper auf der Bahn. Nach außen wirkt keine Kraft – der grüne Pfeil zeigt nur, wohin der Körper ohne diese Kraft weiterfliegen würde: <b>tangential</b>, geradeaus. Bei einer <i>senkrechten</i> Bahn (Looping, Eimer am Seil) käme die Gewichtskraft dazu; die zeigt dieses Bild nicht.</div>
+      </div>
+      <div>
+        <div class="fpm-label">Alle Größen der Kreisbewegung</div>
+        <div class="lmp-status" id="zpkStatus" style="font-weight:400;margin-top:6px"></div>
+      </div>
+    </div>
+
+    <div class="fpm-label" style="margin-top:12px">Messreihe aufnehmen</div>
+    <div class="sim-btn-row">
+      <button class="sim-btn primary" onclick="_zpkMesspunkt()">Messpunkt übernehmen</button>
+      <button class="sim-btn" onclick="_zpkReihe()">Messreihe automatisch aufnehmen</button>
+      <button class="sim-btn" onclick="_zpkClear()">Tabelle leeren</button>
+    </div>
+    <div class="fpm-note" style="margin-top:5px">Für eine auswertbare Gerade darf zwischen zwei Messpunkten <b>nur eine</b> Größe verändert werden. Die automatische Messreihe verändert genau die Größe, die gerade auf der x-Achse steht, fährt dabei von einem Reglerende zum anderen und hält die beiden anderen Größen fest. Die Kraftmessdose sitzt in der Drehachse (der dunkle Block im Bild) und misst die Fadenspannung; sie streut um etwa 1,5 % – deshalb liegen die Punkte nicht exakt auf der Geraden.</div>
+    <div class="fpm-tablewrap">
+      <table class="sim-table">
+        <thead><tr><th>m (kg)</th><th>r (m)</th><th>f (Hz)</th><th>F_z (N)</th><th></th></tr></thead>
+        <tbody id="zpkTbody"></tbody>
+      </table>
+      <div class="fpm-empty" id="zpkEmpty">Noch keine Messwerte.<br>Regler einstellen → Messpunkt übernehmen.</div>
+    </div>
+
+    <div class="fpm-label" style="margin-top:12px">Auswertung – in welcher Auftragung liegen die Punkte auf einer Ursprungsgeraden?</div>
+    ${_mlabAuswertungHTML(_zpk, { preset: '_zpkSetPreset', setfn: '_zpkSetFn', theo: '_zpkTheorieFn', clear: '_zpkClearFn', bool: '_zpkSetBool' })}
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>T = 1/f</b> &nbsp;|&nbsp; <b>ω = 2·π·f</b> &nbsp;|&nbsp; <b>v = ω·r</b> &nbsp;|&nbsp; <b>a_z = v²/r = ω²·r</b> &nbsp;|&nbsp; <b>F_z = m·a_z</b>
+    </p>
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _zpkNeu() {
+  // Stoppuhr und Umlaufzähler gehören zur eingestellten Umlauffrequenz
+  _zpk.t = 0; _zpk.umlauf = 0; _zpk.tLetzt = 0; _zpk.Tgem = 0; _zpk.phi = 0;
+}
+function _zpkSetM(v) {
+  _zpk.m = Math.round(+v * 10) / 10;
+  const el = document.getElementById('zpkMLbl'); if (el) el.textContent = _fpmNum(_zpk.m, 1) + ' kg';
+  _zpkStatus(); _mlabRefreshTheorie(_zpk);
+}
+function _zpkSetR(v) {
+  _zpk.r = Math.round(+v * 10) / 10;
+  const el = document.getElementById('zpkRLbl'); if (el) el.textContent = _fpmNum(_zpk.r, 1) + ' m';
+  _zpkStatus(); _mlabRefreshTheorie(_zpk);
+}
+function _zpkSetF(v) {
+  _zpk.f = Math.round(+v * 10) / 10;
+  const el = document.getElementById('zpkFLbl'); if (el) el.textContent = _fpmNum(_zpk.f, 1) + ' Hz';
+  _zpkNeu();
+  _zpkStatus(); _mlabRefreshTheorie(_zpk);
+}
+
+// ── Messwerterfassung ──────────────────────────────────
+function _zpkMesswert(m, r, f) {
+  const F = _zpkGroessen(m, r, f).F * (1 + (Math.random() - 0.5) * _ZPK_STREU);
+  return _zpkRund(F, _zpkNk(F));
+}
+function _zpkAddRow(m, r, f) {
+  _zpk.rows.push({ id: _zpk.nextId++, m: m, r: r, f: f, F: _zpkMesswert(m, r, f) });
+}
+function _zpkMesspunkt() {
+  _zpkAddRow(_zpk.m, _zpk.r, _zpk.f);
+  _zpk.blitz = 1;
+  _zpkRenderTable(); _mlabDrawPlot('zpkPlot', _zpk);
+}
+// Nimmt die Größe auf, die in der gewählten Auftragung auf der x-Achse steht.
+// Jede Reihe laeuft von einem Reglerende zum anderen – sonst fehlt der Messreihe
+// genau der Bereich, den eine Heftseite mit "Regler ganz nach rechts" meint.
+function _zpkReihe() {
+  if (_zpk.preset === 0)      [0.2, 0.4, 0.6, 0.9, 1.1, 1.3, 1.5].forEach(r => _zpkAddRow(_zpk.m, r, _zpk.f));
+  else if (_zpk.preset === 1) [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0].forEach(f => _zpkAddRow(_zpk.m, _zpk.r, f));
+  else                        [0.1, 0.4, 0.7, 1.0, 1.4, 1.7, 2.0].forEach(m => _zpkAddRow(m, _zpk.r, _zpk.f));
+  _zpk.blitz = 1;
+  _zpkRenderTable(); _mlabDrawPlot('zpkPlot', _zpk);
+}
+function _zpkDelRow(id) {
+  _zpk.rows = _zpk.rows.filter(z => z.id !== id);
+  _zpkRenderTable(); _mlabDrawPlot('zpkPlot', _zpk);
+}
+function _zpkClear() {
+  if (_zpk.rows.length && !confirm('Alle ' + _zpk.rows.length + ' Messwerte löschen?')) return;
+  _zpk.rows = [];
+  _zpkRenderTable(); _mlabDrawPlot('zpkPlot', _zpk);
+}
+function _zpkRenderTable() {
+  const tb = document.getElementById('zpkTbody'); if (!tb) return;
+  const leer = document.getElementById('zpkEmpty');
+  if (leer) leer.style.display = _zpk.rows.length ? 'none' : 'block';
+  const P = _zpk.presets[_zpk.preset];
+  // Die Farbkugel muss dieselbe Gruppe meinen wie der Punkt im Diagramm.
+  // _mlabDrawPlot sortiert die Gruppenschluessel AUFSTEIGEND und faerbt danach;
+  // wer hier nach dem ersten Auftreten faerbt, vertauscht die Farben genau dann,
+  // wenn die groessere Gruppe zuerst gemessen wurde.
+  const keys = [...new Set(_zpk.rows.map(z => P.grp(z)))].sort((a, b) => a - b);
+  const nk = _zpkSpaltenNk(_zpk.rows.map(z => z.F));   // ein Format fuer die ganze Spalte
+  tb.innerHTML = _zpk.rows.map(z => {
+    const i = keys.indexOf(P.grp(z));
+    return `<tr><td><span class="fpm-dot" style="background:${_MLAB_PALETTE[i % _MLAB_PALETTE.length]}"></span>${_fpmNum(z.m, 1)}</td>
+       <td>${_fpmNum(z.r, 1)}</td><td>${_fpmNum(z.f, 1)}</td><td><b>${_zpkFmt(z.F, nk)}</b></td>
+       <td class="fpm-del" onclick="_zpkDelRow(${z.id})" title="löschen">✕</td></tr>`;
+  }).join('');
+}
+
+// ── Anschluss an das Auswertungs-Gerüst ────────────────
+function _zpkSetPreset(i) { _mlabSetPreset(_zpk, i); _zpkRenderTable(); }
+function _zpkSetFn(s) { _mlabSetFn(_zpk, s); }
+function _zpkTheorieFn() { _mlabTheorieFn(_zpk); }
+function _zpkClearFn() { _mlabClearFn(_zpk); }
+function _zpkSetBool(k, v) { _zpk[k] = v; _mlabDrawPlot('zpkPlot', _zpk); }
+
+// ── Zeit ───────────────────────────────────────────────
+function _zpkUpdate(dt) {
+  if (!_zpk) return;
+  const om = 2 * Math.PI * _zpk.f;
+  _zpk.t += dt;
+  _zpk.phi += om * dt;
+  while (_zpk.phi >= 2 * Math.PI) {
+    _zpk.phi -= 2 * Math.PI;
+    _zpk.umlauf++;
+    // Der Nulldurchgang liegt MITTEN im Einzelbild. Nähme man einfach die
+    // Bildzeit, käme bei 4 Hz T = 0,256 s statt 0,250 s heraus – ein Fehler der
+    // Bildrate, den die Heftseite dann der Formel anlasten würde.
+    const tKreuz = _zpk.t - _zpk.phi / om;
+    _zpk.Tgem = tKreuz - _zpk.tLetzt;   // gemessene Umlaufzeit: Probe auf T = 1/f
+    _zpk.tLetzt = tKreuz;
+  }
+  if (_zpk.blitz > 0) _zpk.blitz = Math.max(0, _zpk.blitz - dt * 2);
+  // Nur die beiden laufenden Felder nachziehen – die ganze Statuszeile jedes
+  // Bild neu zu schreiben wäre Verschwendung.
+  const p = document.getElementById('zpkPhi');
+  if (p) p.textContent = _zpkGrad(_zpk.phi);
+  const u = document.getElementById('zpkUhr');
+  if (u) u.textContent = _zpkUhrText();
+}
+
+function _zpkUhrText() {
+  return 'Uhr der Simulation: ' + _fpmNum(_zpk.t, 2) + ' s · vollendete Umläufe: ' + _zpk.umlauf +
+    ' · daraus gemessene Umlaufzeit T = ' + (_zpk.Tgem > 0 ? _fpmNum(_zpk.Tgem, 3) + ' s' : '–');
+}
+
+// ── Statuszeile: die wichtigste Ausgabe ────────────────
+function _zpkStatus() {
+  const el = document.getElementById('zpkStatus');
+  if (!el || !_zpk) return;
+  const g = _zpkAnzeige(_zpk.m, _zpk.r, _zpk.f);
+  const grad = _zpkGrad(_zpk.phi);
+  const probe = g.saz === g.sazV;
+
+  const ro = (k, w, e, id) => `<div class="fpm-ro"><span class="fpm-ro-k">${k}</span>` +
+    `<span class="fpm-ro-v"${id ? ' id="' + id + '"' : ''}>${w}</span><span class="fpm-ro-u">${e}</span></div>`;
+
+  let t = `<div class="fpm-readout">
+      ${ro('Masse m', g.sm, 'kg')}
+      ${ro('Radius r', g.sr, 'm')}
+      ${ro('Umlauffrequenz f', g.sf, 'Hz')}
+      ${ro('Drehwinkel φ', grad, 'Grad', 'zpkPhi')}
+      ${ro('Umlaufzeit T', g.sT, 's')}
+      ${ro('Winkelgeschw. ω', g.som, 'rad/s')}
+      ${ro('Bahngeschw. v', g.sv, 'm/s')}
+      ${ro('Zentripetalbeschl. a_z', g.saz, 'm/s²')}
+      ${ro('Zentripetalkraft F_z', g.sF, 'N')}
+    </div>`;
+
+  t += `<div class="fpm-note" id="zpkUhr" style="margin-top:7px;font-weight:700;color:#475569">${_zpkUhrText()}</div>`;
+
+  // Jede Zeile rechnet mit den Zahlen weiter, die eine Zeile hoeher stehen.
+  // Mit dem Taschenrechner kommt genau das heraus, was hier fett gedruckt ist.
+  t += `<div style="font-family:ui-monospace,monospace;font-size:.73rem;line-height:1.75;color:#334155;margin-top:8px;border-top:1px solid #e2e8f0;padding-top:7px">
+      T&nbsp;&nbsp; = 1/f = 1 / ${g.sf} Hz = <b>${g.sT} s</b><br>
+      ω&nbsp;&nbsp; = 2·π·f = 2·π·${g.sf} Hz = <b>${g.som} rad/s</b><br>
+      v&nbsp;&nbsp; = ω·r = ${g.som} rad/s · ${g.sr} m = <b>${g.sv} m/s</b><br>
+      a_z = v²/r = (${g.sv} m/s)² / ${g.sr} m = <b>${g.sazV} m/s²</b><br>
+      a_z = ω²·r = (${g.som} rad/s)² · ${g.sr} m = <b>${g.saz} m/s²</b><br>
+      F_z = m·a_z = ${g.sm} kg · ${g.saz} m/s² = <b>${g.sF} N</b>
+    </div>`;
+
+  t += `<div class="fpm-note" style="margin-top:7px">${probe
+      ? 'Die beiden a_z-Zeilen sind <b>getrennt gerechnet</b> – einmal aus v, einmal aus ω – und kommen beide auf <b>' + g.saz + ' m/s²</b>. Genau deshalb ist ω hier auf vier und v auf fünf Stellen angegeben: Mit weniger Stellen würden die beiden Wege auseinanderlaufen, und die Probe wäre keine.'
+      : 'Hier stimmt etwas nicht: Der Weg über v ergibt <b>' + g.sazV + ' m/s²</b>, der Weg über ω <b>' + g.saz + ' m/s²</b>. Beide müssten gleich sein.'}
+    Der Drehwinkel φ läuft mit: nach einer vollen Umdrehung steht er wieder bei 0 Grad, und die Uhr zeigt dann gerade die Umlaufzeit T – in Simulationszeit, 16 ms je Bild.</div>`;
+
+  el.innerHTML = t;
+}
+
+// ── Bild ───────────────────────────────────────────────
+function _zpkPfeil(ctx, x1, y1, x2, y2, farbe, breite) {
+  const dx = x2 - x1, dy = y2 - y1, l = Math.sqrt(dx * dx + dy * dy);
+  if (!(l > 1)) return;
+  ctx.strokeStyle = farbe; ctx.fillStyle = farbe; ctx.lineWidth = breite;
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+  const ux = dx / l, uy = dy / l, s = 4 + breite * 2;
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - ux * s * 2 + uy * s, y2 - uy * s * 2 - ux * s);
+  ctx.lineTo(x2 - ux * s * 2 - uy * s, y2 - uy * s * 2 + ux * s);
+  ctx.closePath(); ctx.fill();
+}
+
+function _zpkDraw(ctx, cv) {
+  if (!_zpk) return;
+  const W = cv.width, H = cv.height;
+  const g = _zpkAnzeige(_zpk.m, _zpk.r, _zpk.f);   // dieselben Zahlen wie die Statuszeile
+  const cx = 140, cy = 172, rp = _zpk.r * _ZPK_SKALA;
+  const phi = _zpk.phi;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  // Bahn
+  ctx.strokeStyle = '#c4b5fd'; ctx.lineWidth = 2; ctx.setLineDash([5, 5]);
+  ctx.beginPath(); ctx.arc(cx, cy, rp, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
+
+  // Bezugsrichtung 0 Grad
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + rp + 16, cy); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('0°', cx + rp + 19, cy + 4);
+
+  // Spur der letzten 0,25 s – daran sieht man Drehsinn und Tempo
+  const spur = 2 * Math.PI * _zpk.f * 0.25;
+  ctx.strokeStyle = 'rgba(124,58,237,0.35)'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.arc(cx, cy, rp, -phi, -phi + Math.min(spur, Math.PI * 1.9)); ctx.stroke();
+
+  // Drehwinkel phi als Bogen
+  const ar = Math.max(9, Math.min(30, rp * 0.55));
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.arc(cx, cy, ar, -phi, 0); ctx.stroke();
+  ctx.fillStyle = '#7c3aed'; ctx.font = '700 11px sans-serif';
+  ctx.fillText('φ = ' + _zpkGrad(phi) + '°',
+    cx + (ar + 8) * Math.cos(phi / 2), cy - (ar + 8) * Math.sin(phi / 2) + 4);
+
+  // Faden und Drehachse. In der Achse sitzt die Kraftmessdose – sie misst die
+  // Fadenspannung, also genau F_z. Der Hinweistext nennt sie; also muss sie auch
+  // im Bild stehen. Sie liegt im Mittelpunkt und kann deshalb bei keinem Radius
+  // mit der Bahn zusammenstossen.
+  const bx = cx + rp * Math.cos(phi), by = cy - rp * Math.sin(phi);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(bx, by); ctx.stroke();
+  ctx.fillStyle = '#1e293b'; ctx.fillRect(cx - 6, cy - 6, 12, 12);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(cx - 2, cy - 2, 4, 4);
+
+  // Zentripetalkraft: IMMER zum Mittelpunkt. Nach aussen wird nichts gezeichnet.
+  const lF = Math.min(18 + 40 * (Math.sqrt(g.F) - 0.44) / (Math.sqrt(1900) - 0.44), 58, rp * 0.95);
+  _zpkPfeil(ctx, bx, by, bx + (cx - bx) / rp * lF, by + (cy - by) / rp * lF, '#dc2626', 3);
+
+  // Bahngeschwindigkeit: tangential, in Drehrichtung
+  const lv = 18 + 34 * (Math.sqrt(g.v) - 0.79) / (Math.sqrt(37.7) - 0.79);
+  const tx = -Math.sin(phi), ty = -Math.cos(phi);
+  _zpkPfeil(ctx, bx, by, bx + tx * lv, by + ty * lv, '#16a34a', 3);
+
+  // Koerper
+  ctx.fillStyle = _zpk.blitz > 0.3 ? '#f59e0b' : '#f97316';
+  ctx.beginPath(); ctx.arc(bx, by, 9, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.6; ctx.stroke();
+
+  // Kurzzeichen an den Pfeilspitzen
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillStyle = '#dc2626';
+  ctx.fillText('F_z', bx + (cx - bx) / rp * (lF + 12), by + (cy - by) / rp * (lF + 12) + 4);
+  ctx.fillStyle = '#16a34a';
+  ctx.fillText('v', bx + tx * (lv + 11), by + ty * (lv + 11) + 4);
+
+  // Zahlenfeld rechts
+  ctx.textAlign = 'left';
+  const px = 288;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.rect(px - 8, 14, 152, 150); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif';
+  ctx.fillText('m = ' + g.sm + ' kg', px, 32);
+  ctx.fillText('r = ' + g.sr + ' m', px, 48);
+  ctx.fillText('f = ' + g.sf + ' Hz', px, 64);
+  ctx.fillStyle = '#7c3aed';
+  ctx.fillText('T = ' + g.sT + ' s', px, 84);
+  ctx.fillText('ω = ' + g.som + ' rad/s', px, 100);
+  ctx.fillStyle = '#16a34a';
+  ctx.fillText('v = ' + g.sv + ' m/s', px, 120);
+  ctx.fillStyle = '#dc2626';
+  ctx.fillText('a_z = ' + g.saz + ' m/s²', px, 140);
+  ctx.fillText('F_z = ' + g.sF + ' N', px, 156);
+
+  // laufende Uhr – ohne sie sieht man nicht, dass T wirklich stimmt.
+  // Sie zaehlt Simulationszeit: PhysicsSimEngine.start() rechnet mit festen
+  // 16 ms je Bild, nicht mit der gemessenen Bildzeit. Auf einem 120-Hz-Schirm
+  // laeuft das Bild deshalb schneller als die Uhr am Handgelenk – untereinander
+  // bleiben alle Zahlen stimmig, mit einer echten Stoppuhr messen darf man aber
+  // nicht.
+  ctx.fillStyle = '#475569'; ctx.font = '11px sans-serif';
+  ctx.fillText('Uhr der Simulation: ' + _fpmNum(_zpk.t, 2) + ' s', px, 190);
+  ctx.fillText('Umläufe: ' + _zpk.umlauf, px, 206);
+  ctx.fillText('gemessen: T = ' + (_zpk.Tgem > 0 ? _fpmNum(_zpk.Tgem, 3) + ' s' : '–'), px, 222);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif';
+  ctx.fillText('16 ms Zeitschritt je Bild –', px, 242);
+  ctx.fillText('keine Echtzeit.', px, 256);
+  ctx.fillText('Pfeillängen nicht maßstäblich.', px, 270);
+
+  // Massstab fuer den Radius
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.moveTo(24, 312); ctx.lineTo(24 + _ZPK_SKALA, 312);
+  ctx.moveTo(24, 307); ctx.lineTo(24, 317);
+  ctx.moveTo(24 + _ZPK_SKALA, 307); ctx.lineTo(24 + _ZPK_SKALA, 317);
+  ctx.stroke();
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif';
+  ctx.fillText('1,00 m – der Radius ist maßstäblich gezeichnet', 24 + _ZPK_SKALA + 8, 316);
+
+  // Blickrichtung. Ohne sie liest man den Kreis als senkrechte Bahn (Looping,
+  // Eimer) – und dann waere "nach aussen wirkt keine Kraft" nur die halbe
+  // Wahrheit, weil die Gewichtskraft fehlt.
+  ctx.fillStyle = '#64748b'; ctx.font = '700 10px sans-serif';
+  ctx.fillText('Blick von oben auf eine waagerechte Kreisbahn', 24, 292);
+
+  // Legende
+  ctx.font = '700 10px sans-serif';
+  ctx.fillStyle = '#dc2626'; ctx.fillText('F_z zum Mittelpunkt', 24, 24);
+  ctx.fillStyle = '#16a34a'; ctx.fillText('v tangential', 24, 40);
+  ctx.fillStyle = '#1e293b'; ctx.fillRect(24, 49, 8, 8);
+  ctx.fillText('Kraftmessdose in der Drehachse', 37, 56);
 }

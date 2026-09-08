@@ -5431,6 +5431,286 @@ const HEFT_SEITEN = {
     auftrag: "",
     schritte: ["Schiebe den Regler nach links auf 4 Millionen °C.", "Lies die Statuszeile rechts neben dem Bild ab.", "Stelle nacheinander 8, 10 und 16 Millionen °C ein.", "Trage alles in die Tabelle ein."]
   },
+  "ki1": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "gleichfoermig", seite: 5,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Wie schnell fährt der Wagen wirklich?",
+    titel: "Sechs Zeiten, eine Gerade",
+    frage: "Wie liest man aus sechs Weg-Zeit-Paaren die Geschwindigkeit des Wagens ab?",
+    auftrag: "Bestimme aus den Messreihen die Steigung der s-t-Geraden und prüfe, ob sie mit der eingestellten Geschwindigkeit übereinstimmt.",
+    schritte: ["Lass den Regler „Geschwindigkeit v“ auf 4,0 m/s stehen und drücke „Lichtschranken-Messfahrt“. Lies aus der Tabelle zu jedem der sechs Wege s die gestoppte Zeit t ab.", "Vergleiche unter „Auswertung“ die Zeile „y = …·x“ und die Angabe „Geschwindigkeit v = Steigung der Ausgleichsgeraden“ mit den 4,0 m/s, die du eingestellt hast.", "Drücke „Beispielmessreihe“, ohne die Tabelle vorher zu leeren: Zu deiner Messreihe kommen drei weitere mit 3,0 m/s, 5,0 m/s und 7,0 m/s dazu. Vergleiche für jede die Steigung ihrer Ausgleichsgeraden mit der Zeit an der Schranke bei 4,5 m. Die Ergebniszeile unter den vier Geraden gehört jetzt zur langsamsten Reihe."]
+  },
+  "ki2": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "gleichfoermig", seite: 8,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Wie gut ist eine digitale Messung?",
+    titel: "Perfekt und trotzdem daneben",
+    frage: "Was sagt R² = 1,0000 über eine Messung aus – und was sagt es nicht?",
+    auftrag: "Vergleiche die Steigungen von vier gemessenen Ausgleichsgeraden mit den eingestellten Geschwindigkeiten, wiederhole eine Messfahrt und beurteile, was das angezeigte R² darüber aussagt.",
+    schritte: ["Stelle den Regler „Geschwindigkeit v“ auf 4,0 m/s und drücke „Lichtschranken-Messfahrt“. Übertrage die sechs Zeiten aus der Tabelle und lies in der Auswertung „t → s“ die Ausgleichsgerade y = …·x ab; ihre Steigung nennen wir k. Notiere auch das R² und den Wert hinter „erwartet:“ – nimm nicht die Ergebniszeile darunter, die auf zwei Stellen rundet und gerade das verdeckt, was du suchst.", "Drücke „Beispielmessreihe“: Sie nimmt drei weitere Messreihen mit 3,0 m/s, 5,0 m/s und 7,0 m/s auf. Notiere für jede der vier Geraden k und R² und berechne die Abweichung vom Wert hinter „erwartet:“ selbst – das Feld „Abweichung“ der Simulation bleibt leer und zeigt nur einen Strich.", "Drücke „Tabelle leeren“, bestätige die Rückfrage und wiederhole die Messfahrt bei 4,0 m/s. Leere die Tabelle noch einmal und miss ein drittes Mal. Trage alle drei Steigungen in dieselbe Zeile ein und bilde ihre Spannweite vom kleinsten bis zum größten Wert."]
+  },
+  "ki3": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "beschleunigung", seite: 11,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Wie schnell wird der Wagen schneller?",
+    titel: "Nicht der Weg, die Geschwindigkeit",
+    frage: "Woran erkennt man in der v-t-Messreihe, wie schnell der Wagen schneller wird?",
+    auftrag: "Bestimme die Beschleunigung als Steigung der v-t-Geraden – aufgetragen wird jetzt die Geschwindigkeit, nicht der Weg – und vergleiche sie mit dem eingestellten Wert.",
+    schritte: ["Lass den Regler „Beschleunigung a“ auf 2,0 m/s² stehen und drücke „Lichtschranken-Messfahrt“. Übertrage aus der Tabelle t (s) und v (m/s) der Schranken bei s = 1,0 m und s = 6,0 m.", "Die Auftragung „t → v“ ist schon eingestellt. Lies im Auswertungsfeld die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R² und die Zeile „Beschleunigung a = Steigung der v-t-Geraden“ ab.", "Drücke „Tabelle leeren“ und danach „Beispielmessreihe“: Sie nimmt dieselbe Messung mit a = 1,0 m/s², 2,0 m/s² und 4,0 m/s² auf. Lies für jede der drei Reihen die letzte Zeile (s = 6,0 m) ab und vergleiche die drei Steigungen mit den eingestellten Beschleunigungen."]
+  },
+  "ki4": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "beschleunigung", seite: 14,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Warum trägt man t² auf?",
+    titel: "Aus der Kurve eine Gerade machen",
+    frage: "Wie wird aus der s-t-Parabel eine Gerade, aus der man a ablesen kann?",
+    auftrag: "Vergleiche die Auftragungen t → s und t² → s derselben Messwerte und bestimme die Beschleunigung jeder der drei Messreihen aus einem Punkt und aus der Ausgleichsgeraden.",
+    schritte: ["Lass den Regler „Beschleunigung a“ auf 2,0 m/s² stehen, drücke „Tabelle leeren“ und danach „Beispielmessreihe“: Sie füllt die Tabelle mit je sechs Zeilen zu 1,0, 2,0 und 4,0 m/s².", "Wechsle mit „t → s“ die Auftragung und lies im Auswertungsfeld, was dort über die Form der Punktreihe steht; wechsle dann auf „t² → s“ und vergleiche beide Aussagen samt Achsenbeschriftung.", "Lies für jede Tabellenzeile die Zeit an der genannten Lichtschranke ab, rechne t² und a = 2 · s/t² aus und vergleiche das Ergebnis mit der Beschleunigung, die das Auswertungsfeld für dieselbe Messreihe angibt."]
+  },
+  "ki5": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "freierfall", seite: 17,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Zwei Wege zum Ortsfaktor – warum kommt nicht dasselbe heraus?",
+    titel: "Zwei Wege, zwei Zahlen",
+    frage: "Warum liefern v/t und 2s/t² aus demselben Wertetripel nicht denselben Wert für g?",
+    auftrag: "Vergleiche für dasselbe Wertetripel die Ergebnisse von g = v/t und g = 2s/t² und prüfe, ob die Abweichung von der Ablesestelle abhängt.",
+    schritte: ["Belasse den Regler „Fallhöhe“ bei 50 m und drücke „Neu starten“ – dann fällt die Kugel gut drei Sekunden lang. Im weißen Anzeigefeld oben rechts im Fallbild laufen s, v und t gemeinsam weiter.", "Halte den Bildschirm während des Falls viermal als Foto fest – das erste, wenn die Zeitanzeige über 0,2 s steht, das letzte kurz vor dem Aufprall – und notiere t, s und v aus jeweils demselben Foto. Eine bestimmte Zeit lässt sich nicht treffen; das Muster zeigt sich in jedem Tripel.", "Rechne für jede Tabellenzeile g = v/t und g = 2s/t² aus und vergleiche, wie sich der Abstand zwischen beiden Zahlen von der frühen zur späten Ablesung ändert."]
+  },
+  "ki6": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "wurf-waagerecht", seite: 20,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Warum trifft die geworfene Kugel gleichzeitig auf?",
+    titel: "Ein Schlag, nicht zwei",
+    frage: "Wovon hängt die Fallzeit beim waagerechten Wurf ab – von h oder von v₀?",
+    auftrag: "Prüfe unter Variablenkontrolle, ob eine größere Abwurfgeschwindigkeit die Fallzeit verlängert: Verändere allein v₀ und lass die Abwurfhöhe unangetastet.",
+    schritte: ["Lass zuerst die Ausgangsstellung stehen – „Abwurfhöhe h“ auf 20 m, „Abwurfgeschwindigkeit v₀“ auf 8 m/s. Drücke nacheinander „Abwurf“, „halbe Fallzeit“ und „Aufprall“ und notiere jedes Mal t, x, y, vx und vy aus dem Feld „Messwerte“ – diese Werte kommen nicht in die Tabelle, du brauchst sie für die Aufgabe.", "Drücke „Aufzeichnungen löschen“ – die Simulation behält nur die letzten vier Bahnen. Stelle dann „Abwurfhöhe h“ auf 45 m und ziehe „Abwurfgeschwindigkeit v₀“ nacheinander auf 2, 4, 7 und 8 m/s; drücke nach jeder Einstellung „Bahn aufzeichnen“.", "Vergleiche für die vier Bahnen die Fallzeit und die Wurfweite in der Liste „Aufgezeichnete Bahnen“ – nur eine der beiden Größen ändert sich mit v₀."]
+  },
+  "ki7": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: null, seite: 17,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Eine Kraft, zwei Richtungen",
+    titel: "Zwei Kisten, ein schräges Seil",
+    frage: "Welcher Teil einer schräg ziehenden Kraft zieht den Schlitten vorwärts?",
+    auftrag: "Bestimme aus dem Datenblatt die waagerechte und die senkrechte Komponente der Zugkraft und vergleiche, wie beide sich mit dem Winkel ändern.",
+    schritte: ["Lies im Datenblatt die Zeilen für α = 0°, α = 30° und α = 60° ab und notiere beide Komponenten mit Einheit.", "Rechne die Zeile α = 30° selbst nach: F · cos(30°) mit cos(30°) = 0,8660 und F · sin(30°) mit sin(30°) = 0,5000. Vergleiche dein Ergebnis mit den gedruckten Werten.", "Ordne die fünf Zeilen danach, wie groß die waagerechte Komponente ist, und halte fest, was dabei mit der senkrechten Komponente geschieht."]
+  },
+  "ki8": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "traegheit", seite: 26,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Was macht ein Körper, wenn keine Kraft mehr zieht?",
+    titel: "Niemand schiebt, nichts ändert sich",
+    frage: "Wie ändert sich die Geschwindigkeit, wenn die resultierende Kraft null ist?",
+    auftrag: "Prüfe unter Variablenkontrolle, ob ein Körper ohne resultierende Kraft sein Tempo behält: Halte den Regler für die Kraft bei 0 N und verändere allein die Anfangsgeschwindigkeit.",
+    schritte: ["Stelle den Regler „Externe Kraft F“ auf 0 N und den Regler „Anfangsgeschwindigkeit v₀“ auf 20 m/s. Lies im weißen Kästchen rechts oben v₀, F und v ab.", "Lass die Simulation eine Weile laufen, ohne einen Regler anzufassen, und lies v ein zweites Mal ab. Beobachte dabei, wo die Linie v(t) im oberen Diagramm verläuft.", "Ziehe v₀ nacheinander auf 5 m/s, 12 m/s und 40 m/s, ohne F anzurühren. Warte nach jeder Änderung, bis die Linie v(t) wieder auf ganzer Breite waagerecht durchläuft, und lies v erneut ab."]
+  },
+  "ki9": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "newton2", seite: 29,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Wovon hängt die Beschleunigung ab?",
+    titel: "Ein Regler nach dem anderen",
+    frage: "Wie hängt die Beschleunigung von der Zugkraft und von der Masse ab?",
+    auftrag: "Untersuche unter Variablenkontrolle, wovon die Beschleunigung abhängt: Verändere in jeder Messreihe genau einen der beiden Regler und lass den anderen fest stehen.",
+    schritte: ["Erste Messreihe, feste Masse: Lass den Regler „Masse m“ auf 5 kg stehen und ziehe „Kraft F“ nacheinander auf 20 N und auf 40 N. Lies jedes Mal im Infofeld rechts oben im Bild die Zeile a ab.", "Zweite Messreihe, feste Kraft: Lass „Kraft F“ jetzt auf 40 N stehen und ziehe allein „Masse m“ auf 10 kg und danach auf 20 kg. Notiere wieder a aus dem Infofeld und beobachte dabei, ob die Linie im unteren a-t-Diagramm nach dem Anfahren wieder ansteigt.", "Rechne für jede Tabellenzeile das Produkt aus Masse und abgelesener Beschleunigung aus und vergleiche es mit der Kraft, die im selben Augenblick eingestellt war."]
+  },
+  "ki10": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "kraefte-gleichgewicht", seite: 32,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Warum hängt die Lampe still, obwohl an ihr gezogen wird?",
+    titel: "Still, aber nicht kräftefrei",
+    frage: "Bedeutet Ruhe, dass keine Kraft wirkt – oder dass die Gesamtkraft null ist?",
+    auftrag: "Prüfe, ob die Lampe nur dann in Ruhe bleibt, wenn Haltekraft und Gewichtskraft gleich groß sind, und beobachte, was eine Abweichung von 1 N nach unten und nach oben ändert.",
+    schritte: ["Lies im Ausgangszustand das Statusfeld ab: Haltekraft, Gewichtskraft und Gesamtkraft stehen dort mit Zahl und Einheit, dazu der Zustand der Lampe. Vergleiche die Zahlen mit den Beschriftungen am Bild („Halte 5 N“, „Gewicht 5 N“).", "Drücke einmal „– N“ und notiere sofort Betrag und Richtung der Gesamtkraft sowie das Verhalten der Lampe. Drücke danach zweimal „+ N“ und zuletzt „zurück in die Mitte“ und halte jede Statuszeile gegen den Ausgangszustand.", "Drücke noch einmal „– N“ und warte, bis sich das Bild nicht mehr ändert. Vergleiche dann, was die Zeichnung zeigt, mit dem, was die Statuszeile weiterhin meldet, und notiere den Unterschied."]
+  },
+  "ki11": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "wechselwirkung-ef", seite: 35,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Warum drückt die Wand zurück?",
+    titel: "Gleiche Kraft, ungleiche Fahrt",
+    frage: "Wie hängen Kraft und Beschleunigung von den Massen zweier Wagen ab?",
+    auftrag: "Vergleiche bei sehr verschiedenen Massen die beiden Kräfte mit den beiden Beschleunigungen und stelle fest, welche der Größen von den Massen abhängt.",
+    schritte: ["Drücke „Feder lösen“ und lies im Statusfeld die Zeile „Beim Lösen“ ab: F1, F2, a1, a2 und die Stoßdauer Δt. Notiere dazu die Zeile mit dem Verhältnis a1 : a2.", "Drücke „Neu aufstellen“ und ziehe den Regler „Masse m1 (linker Wagen)“ nacheinander auf 1 kg, 2 kg und 5 kg, während „Masse m2 (rechter Wagen)“ auf 5 kg steht. Ziehe zuletzt m2 auf 1 kg und lass m1 bei 5 kg. Löse die Feder jedes Mal neu.", "Vergleiche die vier Zeilen deiner Tabelle und halte fest, welche der eingetragenen Zahlen sich kein einziges Mal ändert. Lies zum Schluss einmal die Zeilen „Endwerte“ und „Energie“ ab: Wie groß ist E(Feder), und was ergibt p1 + p2?"]
+  },
+  "ki12": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "reibung", seite: 38,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Wie viel Kraft bleibt zum Beschleunigen übrig?",
+    titel: "Was von 80 Newton übrig bleibt",
+    frage: "Wovon hängt die Reibungskraft ab – und was beschleunigt den Wagen wirklich?",
+    auftrag: "Bestimme unter Variablenkontrolle, wie die Reibungskraft vom Reibungskoeffizienten abhängt: Lass Antriebskraft und Masse in der ganzen Messreihe unverändert stehen und verstelle allein den Regler für μ.",
+    schritte: ["Halte zuerst die Bedingungen fest, die fest bleiben sollen: Der Regler „Antriebskraft F“ steht auf 80 N, der Regler „Masse m“ auf 5 kg. Der Infokasten rechts oben zeigt vier Angaben – F, F_R, μ und v; in der Ausgangsstellung stehen dort F = 80 N, μ = 0,30 und F_R = 14,7 N. Diese Zeile kommt nicht in die Tabelle.", "Ziehe nun allein den Regler „Reibungskoeffizient μ“ nacheinander auf 0,00, dann 0,20, dann 0,40 und zuletzt 0,60. Der Regler zählt in Hundertsteln und rastet in Schritten von 0,05, μ = 0,20 steht also bei 20. Notiere jedes Mal den Wert hinter „F_R=“ und rechne F_res = 80 N − F_R sowie a = F_res / 5 kg aus.", "Lass die Simulation nach dem letzten Reglerwechsel etwa fünf Sekunden unberührt weiterlaufen, bis die Stufe aus der vorigen Stellung links aus dem Diagramm gewandert ist. Vergleiche erst dann im Diagramm „Reibungskraft F_R“ den Verlauf über der Zeitachse t mit der Anzeige „v=“ im Bild, die immer weiter hochzählt, und halte fest, ob F_R mit wachsender Geschwindigkeit größer wird."]
+  },
+  "ki13": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "arbeit", seite: 41,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Wann wird wirklich Arbeit verrichtet?",
+    titel: "Vier Meter getragen, null Joule",
+    frage: "Wann verrichtet eine Kraft Arbeit – und wann bleibt W trotz Anstrengung null?",
+    auftrag: "Vergleiche die drei Situationen Schieben, Waagerecht tragen und Hochheben an derselben Kiste und begründe aus der Richtung von Kraft und Weg, wie viel Arbeit dabei jeweils herauskommt.",
+    schritte: ["Drücke „Schieben“. Der Regler „Schiebekraft F“ steht auf 100 N, der Regler „Weg s“ auf 4 m – lass beide in der ganzen Messreihe stehen. Notiere aus dem Statusfeld die Rechnung für W, den Wert im Balken am oberen und den Satz am unteren Bildrand.", "Drücke „Waagerecht tragen“. Die Regler heißen jetzt „Masse der Kiste m“ (20 kg) und „getragener Weg s“ – derselbe Regler wie eben, er bleibt auf 4 m. Welche Haltekraft nennt das Statusfeld, wie groß ist W, was sagt der Satz am unteren Bildrand?", "Drücke „Hochheben“; „Masse der Kiste m“ bleibt auf 20 kg, „Höhe h“ steht auf 2,0 m. Drücke „Ausführen“, verfolge den wachsenden Wegpfeil und schreibe den Rechenweg ab. Prüfe nach, ob 20 kg · 9,81 N/kg · 2,0 m den angezeigten Wert ergibt."]
+  },
+  "ki14": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "bewegungsenergie", seite: 44,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Warum zählt das Tempo doppelt?",
+    titel: "Zweimal verdoppelt, zweimal anders",
+    frage: "Zählt eine Verdopplung des Tempos genauso viel wie eine der Masse?",
+    auftrag: "Untersuche unter Variablenkontrolle, wie die Bewegungsenergie von Masse und Tempo abhängt: Verändere je Messreihe genau eine der beiden Größen und lies die Energie im Statusfeld ab.",
+    schritte: ["Drücke „zurücksetzen“ und lies im Statusfeld die Grundeinstellung ab: 4 kg mit 4 m/s und die Energie in Joule. Drücke danach „Rollen lassen“ und lies unter der Energie ab, wie weit der Klotz geschoben wurde.", "Massenreihe bei festem Tempo: Drücke „×2 Masse“ und notiere die Energie, ziehe danach den Regler „Masse m“ auf 16 kg. Der Regler „Tempo v“ bleibt in dieser ganzen Reihe auf 4 m/s stehen. Jede Einstellung setzt den Klotz zurück – drücke deshalb jedes Mal erneut „Rollen lassen“ und vergleiche die Schiebestrecken.", "Temporeihe bei fester Masse: Stelle „Masse m“ wieder auf 8 kg und drücke genau einmal „×2 Tempo“ – dann stehen 8 kg mit 8 m/s da. Lass auch hier noch einmal rollen. Teile jeden der vier Werte durch die 32 J der ersten Zeile und vergleiche zum Schluss die letzte Zeile mit der zweiten: dort hat sich allein das Tempo verdoppelt."]
+  },
+  "ki15": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "spannenergie", seite: 47,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Die gespannte Feder – wo steckt die Energie?",
+    titel: "Das Dreieck unter der Geraden",
+    frage: "Wie viel Energie speichert eine gespannte Feder – und warum nicht F · s?",
+    auftrag: "Untersuche mit den Reglern „Federkonstante D“ und „Auslenkung s“, wie viel Energie die Feder speichert, und vergleiche die Fläche unter der F-s-Geraden mit dem Produkt aus Kraft und Auslenkung.",
+    schritte: ["Der Ausgangszustand steht auf D = 20 N/m und s = 10 cm. Lies im Feld „Kraft, Fläche, Energie“ die Kraft F und die Spannenergie E ab, darunter im selben Feld die Dreiecksrechnung ½ · Grundseite · Höhe; im Diagramm nennt die Zeile „Fläche unter der Geraden“ dieselbe Energie. Drücke dann „Messpunkt übernehmen“.", "Drücke „Loslassen“: Verfolge die Balken E_Spann und E_Kin und lies die Geschwindigkeit v ab. Ziehe danach den Regler „Auslenkung s“ auf 20 cm und übernimm auch diesen Messpunkt. Die Auswertung unter der Messreihe nennt zwei Faktoren – einen für die Kraft, einen für die Energie.", "Stelle nacheinander D = 40 N/m mit s = 10 cm und D = 50 N/m mit s = 8 cm ein und übernimm beide Messpunkte. Rechne zu jeder Zeile das Produkt F · s aus (s in Metern) und halte es neben E. Drei Zeilen zeigen dieselbe Kraft – vergleiche dort die Energien."]
+  },
+  "ki16": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "impuls", seite: 50,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Bleibt die Summe gleich, wenn zwei zusammenstoßen?",
+    titel: "Die Summe mit Vorzeichen",
+    frage: "Was bleibt beim Stoß gleich – und warum zählt das Vorzeichen mit?",
+    auftrag: "Prüfe am geraden Stoß zweier Kugeln, ob sich die Summe p_ges beim Zusammenstoß ändert, und vergleiche p₁ und p₂ jeweils vor und nach der Berührung.",
+    schritte: ["Beim Öffnen rollt die Kugel mit der Aufschrift m3 auf die ruhende Kugel m5 zu; der Regler „Masse 2 (kg)“ bleibt die ganze Seite über auf 5 kg stehen. Lies im Anzeigefeld über der Bahn die drei Zeilen p₁, p₂ und p_ges ab, solange die beiden noch getrennt sind – der Zusammenstoß kommt nach rund drei Sekunden. Mit „Stoß auslösen“ beginnt der Durchgang von vorn.", "Stelle den Regler „Masse 1 (kg)“ auf 1 kg und starte mit „Stoß auslösen“ einen neuen Durchgang. Notiere p₁, p₂ und p_ges vor der Berührung und noch einmal danach, und verfolge dabei die Kurve „Gesamtimpuls“ im unteren Diagramm.", "Der Stoß ist jetzt vorbei. Ziehe den Regler „Masse 1 (kg)“ auf 2 kg und lies die drei Zeilen erneut ab. Halte außerdem die Zahl p₁ im Anzeigefeld gegen den Wert, den die Kurve „Impuls Ball 1“ im selben Augenblick anzeigt."]
+  },
+  "gw1": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "kreisbewegung", seite: 61,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Wie schnell ist ein Punkt auf der Kreisbahn?",
+    titel: "Gleicher Winkel, verschiedener Weg",
+    frage: "Wie hängen Winkelgeschwindigkeit ω und Bahngeschwindigkeit v zusammen?",
+    auftrag: "Untersuche mit den beiden Reglern, wovon der Wert in der Zeile v≈ abhängt, und bilde in jeder Zeile den Quotienten aus diesem Wert und der eingestellten Winkelgeschwindigkeit.",
+    schritte: ["Die Simulation startet mit ω = 3 rad/s und r = 70 px. Prüfe beide Regler und lies im weißen Anzeigefeld rechts oben im Bild die Zeile ab, die mit v≈ beginnt – darüber steht ω=…rad/s, darunter F_z≈…N. Die Simulation schreibt dort einen Punkt statt eines Kommas. Übertrage den Wert in die erste Tabellenzeile.", "Erhöhe ω auf 6 rad/s und danach auf 7 rad/s, ohne den Radius zu verändern. Notiere jedes Mal den Wert aus der Zeile v≈ und teile ihn durch die eingestellte Winkelgeschwindigkeit.", "Ziehe nun bei 7 rad/s den Regler „Radius r“ von 70 px auf 40 px – der kleinere Radius steht für eine weiter innen hängende Kette desselben Karussells: ω bleibt gleich, nur der Abstand von der Achse ändert sich. Vergleiche v≈-Wert und Quotient mit der Zeile darüber und halte fest, welche der beiden Zahlen sich ändert."]
+  },
+  "gw2": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "zentripetalkraft", seite: 64,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Was hält den Körper auf der Kreisbahn?",
+    titel: "Der Pfeil zeigt nach innen",
+    frage: "Wohin zeigt die Kraft auf der Kreisbahn – und wovon hängt ihr Betrag ab?",
+    auftrag: "Untersuche am Bildschirm, in welche Richtung der Kraftpfeil zeigt, und bestimme aus Radius und Umlauffrequenz die Zentripetalbeschleunigung, mit der Masse zusätzlich die Zentripetalkraft.",
+    schritte: ["Lies in der Ausgangsstellung m = 0,50 kg, r = 0,80 m, f = 1,50 Hz im Feld „Alle Größen der Kreisbewegung“ die fünf berechneten Größen ab: Umlaufzeit T, Winkelgeschwindigkeit ω, Bahngeschwindigkeit v, Zentripetalbeschleunigung a_z und Zentripetalkraft F_z.", "Vergleiche im Bild die beiden Pfeile „F_z zum Mittelpunkt“ und „v tangential“, während der Drehwinkel φ einmal ganz herumläuft. Halte danach den Wert hinter „daraus gemessene Umlaufzeit“ gegen die Rechenzeile T = 1/f.", "Ziehe den Regler „Masse m“ von 0,50 kg über 1,00 kg auf 2,00 kg, ohne Radius und Umlauffrequenz anzurühren, und verfolge dabei getrennt die Zeile für a_z und die Zeile für F_z."]
+  },
+  "gw3": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "zentripetalkraft", seite: 67,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Was sagt eine Messreihe über die Zentripetalkraft?",
+    titel: "Acht Punkte, eine Steigung",
+    frage: "Wie gewinnt man aus einer streuenden Messreihe die Masse zurück?",
+    auftrag: "Bestimme aus deiner Messreihe die Steigung der Ausgleichsgeraden, rechne daraus die Masse zurück und vergleiche sie mit dem eingestellten Wert.",
+    schritte: ["Drücke zuerst „Tabelle leeren“, damit du mit einer leeren Tabelle beginnst. Notiere dann bei m = 0,50 kg, r = 0,80 m und f = 1,50 Hz die Zentripetalkraft F_z aus dem Statusfeld „Alle Größen der Kreisbewegung“, drücke „Messpunkt übernehmen“ und notiere auch den Wert, der dafür in der Tabelle erscheint. Vergleiche beide.", "Wähle „F über r auftragen“ und drücke „Messreihe automatisch aufnehmen“. Lies im Auswertungsfeld die Ausgleichsgerade y = k·x, die daneben stehende erwartete Steigung, das Bestimmtheitsmaß R², die Masse aus der Steigung und deren Abweichung ab.", "Leere die Tabelle – sonst rechnet der Ergebniskasten nicht mit deiner neuen Reihe –, wähle „F über f² auftragen“ und nimm die Messreihe erneut auf. Leere die Tabelle danach ein drittes Mal, stelle „Masse m“ auf 1,50 kg, wähle wieder „F über r auftragen“ und nimm die Reihe auf. Rechne aus ihrer Steigung mit m = k/(4·π²·f²) die Masse selbst nach und halte sie gegen den Ergebniskasten."]
+  },
+  "gw4": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "gravitation-abstand", seite: 70,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Mehr Masse oder weniger Abstand – was wirkt stärker?",
+    titel: "Zwei Kugeln, drei Regler",
+    frage: "Wie ändert sich die Anziehung, wenn man Masse oder Abstand verdoppelt?",
+    auftrag: "Untersuche unter Variablenkontrolle, wie die Anziehung von jeder der beiden Massen und vom Abstand abhängt, und verstelle dazu immer nur einen der drei Regler.",
+    schritte: ["Lies im Ausgangszustand den Wert im Statusfeld ab: Anziehung 8,0 Einheiten. Drücke danach „×2 Masse links“ und anschließend „×2 Abstand“ und notiere jedes Mal, was das Statusfeld gegen den Ausgangswert meldet – ein Vielfaches oder einen Bruchteil.", "Drücke „zurücksetzen“ und ziehe dann den Regler „Masse der linken Kugel“ Schritt für Schritt von 1 auf 5. Prüfe, ob sich die fünf Werte wie 1 : 2 : 3 : 4 : 5 verhalten, und wiederhole das mit dem Regler „Masse der rechten Kugel“.", "Stelle beide Massen auf 5 – das Statusfeld meldet 200,0 Einheiten – und ziehe erst danach den Regler „Abstand“ Schritt für Schritt von 1 auf 5. Trage die vier neuen Anzeigen in die Tabelle ein und vergleiche jede mit den 200,0 Einheiten vom Anfang."]
+  },
+  "gw5": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "ortsfaktor", seite: 73,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Warum wiegt derselbe Mensch auf dem Mond weniger?",
+    titel: "Dieselbe Person, drei Zahlen",
+    frage: "Was ändert sich mit dem Ort, was bleibt – und wofür steht g in N/kg?",
+    auftrag: "Vergleiche bei gleichbleibender Masse von 60 kg die Gewichtskraft auf Mond, Erde und Jupiter und bestimme zu jeder Zeile den Quotienten F/m.",
+    schritte: ["Drücke „Erde“ und notiere aus dem Statusfeld die Masse m, den Ortsfaktor g und die Gewichtskraft F.", "Drücke „Mond“ und „Jupiter“ und lies jedes Mal dieselben drei Größen ab – eine der drei Zahlen bleibt unverändert stehen.", "Beantworte danach die drei Quizfragen und halte fest, welche Formel die Rückmeldung zu „Von der Masse und dem Ortsfaktor g“ nennt."]
+  },
+  "gw6": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: null, seite: 55,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Was ist ein Feld?",
+    titel: "Vier Orte, ein Feld",
+    frage: "Wie stark ist das Feld der Erde dort, wo Menschen schwerelos schweben?",
+    auftrag: "Vergleiche die vier Feldstärken des Datenblatts und prüfe, ob in der Bahnhöhe der ISS überhaupt noch ein Gravitationsfeld vorhanden ist.",
+    schritte: ["Übertrage zu jedem Ort den Abstand r in die Tabelle und rechne für die ISS-Zeile nach, wie viel davon Höhe über dem Erdboden ist – der Erdradius steht in der ersten Zeile.", "Bilde für jede Zeile den Anteil g : 9,82 N/kg am Wert an der Erdoberfläche und trage ihn in die Tabelle ein.", "Prüfe eine Zeile nach: Berechne g = G · M / r² für die ISS-Bahn mit r = 6771 km und vergleiche dein Ergebnis mit dem Datenblatt."]
+  },
+  "gw7": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: null, seite: 57,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Wie wiegt man die Erde?",
+    titel: "Die Drehwaage im Gartenhaus",
+    frage: "Was hat Cavendish wirklich gemessen – und wie kommt man von dort zur Erdmasse?",
+    auftrag: "Bestimme aus den Kenngrößen des Datenblatts die Anziehungskraft zwischen einer großen und einer kleinen Kugel und deute, welche Größe der Versuch liefert.",
+    schritte: ["Lies im Datenblatt die beiden Massen und den Abstand ihrer Mittelpunkte ab und notiere die drei Werte mit Einheit.", "Berechne mit F = G · m₁ · m₂ / r² und G = 6,674 · 10⁻¹¹ N·m²/kg² die Anziehungskraft zwischen einer großen und einer kleinen Kugel und vergleiche sie mit der letzten Zeile der Tabelle.", "Vergleiche diese Kraft mit der Gewichtskraft m₂ · g einer kleinen Kugel (g = 9,81 N/kg), löse dann F = G · m₁ · m₂ / r² nach G auf und begründe, welche Größe der Versuch liefert."]
+  },
+  "gw8": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "planetenbahn", seite: 81,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Warum fällt die Erde nicht in die Sonne?",
+    titel: "Das ewige Vorbeifallen",
+    frage: "Warum stürzt der Planet nicht in die Sonne, obwohl sie ihn ständig anzieht?",
+    auftrag: "Untersuche, wie die Bahnform allein von der Startgeschwindigkeit quer zur Sonne abhängt, und lies die beiden Kennwerte ab, die die Statuszeile nennt: den Kreiswert und den Fluchtwert.",
+    schritte: ["Stelle den Regler „Startgeschwindigkeit quer zur Sonne“ auf 6 km/s und drücke „neu starten“. Verfolge die Anzeige „Abstand zur Sonne“, bis dort „Treffer – der Planet stürzt in die Sonne“ steht. Taste dich danach von 12 km/s an in Einerschritten aufwärts und halte fest, ab welchem Wert die Statuszeile nicht mehr „stürzt in die Sonne“ meldet.", "Stelle nacheinander 18, 24, 30 und 36 km/s ein. Notiere zu jeder Einstellung aus der Statuszeile die Bahnform, den kleinsten und den größten Abstand sowie die Dauer eines Umlaufs.", "Vergleiche 42 km/s mit 48 km/s und prüfe, ob die Statuszeile noch einen größten Abstand meldet. Notiere für 42 km/s beide Abstände und die Umlaufzeit und halte die beiden Kennwerte fest, die am Ende jeder Statuszeile stehen."]
+  },
+  "gw9": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: null, seite: 61,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Was verrät die Umlaufzeit über den Bahnradius?",
+    titel: "Sechs Planeten, eine Konstante",
+    frage: "Welche Verknüpfung von Halbachse und Umlaufzeit ist für alle Planeten gleich?",
+    auftrag: "Prüfe am Datenblatt, ob der Quotient T²/a³ für alle sechs Planeten denselben Wert ergibt.",
+    schritte: ["Lies für jeden Planeten die große Halbachse a und die Umlaufzeit T aus dem Datenblatt ab und notiere beide Werte mit ihren Einheiten.", "Berechne zeilenweise a³ und T² und bilde daraus den Quotienten T²/a³. Runde erst den Quotienten auf vier Nachkommastellen, nicht schon die Zwischenwerte, sonst verschiebt sich das Ergebnis bei Merkur.", "Trage Merkur, Erde, Jupiter und Saturn in die Tabelle ein, vergleiche die sechs Quotienten und entscheide, ob die Unterschiede aus der Regel selbst stammen oder aus der Stellenzahl der Tabelle."]
+  },
+  "gw10": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "weltbild", seite: 87,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Warum läuft der Mars manchmal rückwärts?",
+    titel: "Zwei Modelle, ein Himmel",
+    frage: "Was entscheidet zwischen dem geozentrischen und dem heliozentrischen Weltbild?",
+    auftrag: "Vergleiche beide Modelle darin, wer im Zentrum steht, wie viele Kreise der Mars in jedem Modell braucht und was sie für den Himmel vorhersagen.",
+    schritte: ["Drücke „Erde in der Mitte (alt)“ und lies in der Statuszeile ab, wer im Zentrum steht, was für die Schleifen der Planeten nötig ist und wie die Zeile die Anordnung am Ende bewertet.", "Drücke „Sonne in der Mitte (heute)“ und vergleiche dieselben drei Angaben. Zähle, wie viele Kreise der Mars in jeder Tafel braucht, und verfolge im Streifen unten, wann die Spur des Mars orange wird.", "Beobachte in der rechten Tafel das kleine Kästchen „Jupitermonde“: Verfolge einen inneren und einen äußeren Mond und vergleiche, wie lange sie für einen Umlauf brauchen. Halte aus dem Hinweistext rechts daneben fest, was Galilei 1610 sah und was Bessel 1838 nachwies."]
+  },
+  "gw11": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: null, seite: 65,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Wem glaubt man ein Weltbild?",
+    titel: "Vier Quellen, eine Behauptung",
+    frage: "Woran erkennt man, welche Quelle eine physikalische Aussage verlässlich belegt?",
+    auftrag: "Prüfe die vier Aussagen des Datenblatts an nachprüfbaren Kriterien und ordne die Quellenarten nach ihrer Verlässlichkeit.",
+    schritte: ["Lies die vier Zeilen des Datenblatts und markiere in jeder Zeile, welche der vier Kriterien erfüllt sind: Quellenangabe, Begutachtung, offengelegte Daten, Trennung von Beobachtung und Deutung.", "Rechne die Behauptung der ersten Zeile nach: r = 6371 km + 400 km, dann g = G · M / r² mit G = 6,674 · 10⁻¹¹ N · m² / kg² und M = 5,972 · 10²⁴ kg. Vergleiche mit dem Bodenwert, den dieselbe Formel für r = 6371 km liefert.", "Zähle für jede Quellenart, wie viele der vier Kriterien sie erfüllt, trage die Zahl in die Tabelle ein und vergib danach die Rangplätze 1 bis 4."]
+  },
+  "gw12": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
+    sim: "lichtuhr", seite: 93,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Warum geht die bewegte Uhr langsamer?",
+    titel: "Ein Photon, zwei Zeitspannen",
+    frage: "Warum geht eine bewegte Uhr langsamer – und für wen gilt dann welche Zeit?",
+    auftrag: "Miss an Station 6 den Zeitdehnungsfaktor bei mehreren Geschwindigkeiten und prüfe an den Stationen 3 und 4, ob der Satz des Pythagoras genau diese Werte liefert.",
+    schritte: ["Drücke „1 · Die Lichtuhr“ und beobachte einen Takt. Wechsle zu „2 · Die bewegte Lichtuhr“, stelle „Relativgeschwindigkeit v/c“ erst auf 0, dann auf 0,95 und notiere jedes Mal, um welchen Faktor der A-Takt laut Text länger ist als der B-Takt.", "Stelle v/c auf 0,60 zurück, drücke „3 · Herleitung mit Pythagoras“ und übertrage die drei Dreiecksseiten und die Gleichung. Wechsle zu „4 · Der relativistische Faktor“ und lies bei v/c = 0,600 und bei 0,950 den Faktor √(1−β²), den Lorentzfaktor γ und die Minutenzahl je Stunde in A ab.", "Drücke „5 · Wo es zählt: GPS & Co.“ und halte fest, welche Teilchen die Zeitdehnung belegen. Drücke „6 · Zeitdehnung messen“, stelle v/c nacheinander auf 0,10, 0,60, 0,84 und 0,95, trage Ticks und Faktor f in die Tabelle ein und übernimm jeden Messwert. Drücke „Theoriefunktion“ und lies Geradengleichung und R² ab."]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen

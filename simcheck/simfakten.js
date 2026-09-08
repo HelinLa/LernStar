@@ -92,6 +92,32 @@ function fakten(datei, simId) {
 
   // Ablesbare Textfelder: ALLE Elemente mit id, nicht nur die mit Klasse lmp-status.
   // Manche Simulationen schreiben mit textContent statt innerHTML - beides lesen.
+  // ── Deckelung der Ablesungen ─────────────────────────────────────
+  // Die Grenzen 1200 / 2500 stammen aus der Sekundarstufe I, wo Statuszeilen
+  // kurz sind. Die Oberstufensimulationen fuehren lange Herleitungen im
+  // Anzeigefeld: bei den EF-Dumps vom 07.09.2026 standen 97 Statusfelder exakt
+  // an der 2500er-Grenze, darunter lichtuhr und myonenzerfall. Wer daraus
+  // schliesst, eine Groesse werde "nicht angezeigt", irrt womoeglich - sie
+  // stand im abgeschnittenen Teil. Mit --voll wird gar nicht gekuerzt,
+  // mit --max=<n> die Grenze gesetzt. Der Standard bleibt unveraendert,
+  // damit alte Dumps reproduzierbar bleiben.
+  const _voll = process.argv.includes('--voll');
+  const _max  = (process.argv.find(a => a.startsWith('--max=')) || '').slice(6);
+  // Frames je Bedienschritt. Der Standard 2 stammt aus der Sekundarstufe I, wo
+  // die Anzeige sofort nach dem Klick steht. Animierte Simulationen (freier
+  // Fall, Stoss, springender Ball) sind nach zwei Frames noch im Startzustand:
+  // freierfall belegte damit nur die ersten 0,64 s, impuls meldete p2 = 0.0 und
+  // energieerhaltung "noch kein Aufprall" - gefunden am 07.09.2026 beim Bau der
+  // Einfuehrungsphase. --frames=n rechnet weiter, --verlauf=k liest danach k
+  // weitere Male im selben Abstand ab und macht so den zeitlichen Verlauf
+  // sichtbar (Wertetripel s, v, t einer Bewegung).
+  const _fr = (process.argv.find(a => a.startsWith('--frames=')) || '').slice(9);
+  const _vl = (process.argv.find(a => a.startsWith('--verlauf=')) || '').slice(10);
+  const FRAMES  = Number(_fr) > 0 ? Number(_fr) : 2;
+  const VERLAUF = Number(_vl) > 0 ? Number(_vl) : 0;
+  const MAX_FELD     = _voll ? Infinity : (Number(_max) ? Number(_max) : 1200);
+  const MAX_ABLESUNG = _voll ? Infinity : (Number(_max) ? Number(_max) * 2 : 2500);
+
   const textFelder = () => {
     const ids = [...H.elemente.keys()];
     const treffer = {};
@@ -104,7 +130,7 @@ function fakten(datei, simId) {
       // (transformator-schluessel, generator, geiger-mueller, freileitungen)
       // liefern sonst je Bedienschritt die ganze Tabelle - 7 MB je Simulation.
       const k = entkerne(t);
-      if (k.length > 18) treffer[id] = k.length > 1200 ? k.slice(0, 1200) + ' …' : k;
+      if (k.length > 18) treffer[id] = k.length > MAX_FELD ? k.slice(0, MAX_FELD) + ' …' : k;
     }
     return treffer;
   };
@@ -113,7 +139,7 @@ function fakten(datei, simId) {
     const ganz = Object.entries(t).map(([id, v]) => id + ': ' + v).join('  ||  ');
     // Auch die GESAMTE Ablesung deckeln: Simulationen mit Messreihen-Tabelle
     // haben Dutzende Textfelder, und 90 Ablesungen ergaeben sonst ein Megabyte.
-    return ganz.length > 2500 ? ganz.slice(0, 2500) + ' …' : ganz;
+    return ganz.length > MAX_ABLESUNG ? ganz.slice(0, MAX_ABLESUNG) + ' …' : ganz;
   };
 
   out.status.push({ einstellung: 'Ausgangszustand', text: lies() });
@@ -125,8 +151,13 @@ function fakten(datei, simId) {
     if (out.status.length >= MAX_ANZEIGEN) break;
     try {
       vm.runInContext(`(function(){var f=function(){${k.ruft}};f();})()`, H.ctx);
-      H.frames(2);
+      H.frames(FRAMES);
       out.status.push({ einstellung: k.aufschrift, text: lies() });
+      for (let v = 1; v <= VERLAUF; v++) {
+        H.frames(FRAMES);
+        out.status.push({ einstellung: `${k.aufschrift} · nach ${(v + 1) * FRAMES} Frames`,
+                          text: lies(), bild: H.zeichnung.slice(-40).join(' | ') });
+      }
     } catch (e) { out.status.push({ einstellung: k.aufschrift, text: 'FEHLER: ' + e.message }); }
   }
 
@@ -168,8 +199,13 @@ function fakten(datei, simId) {
           `(function(){var this_=document.getElementById(${JSON.stringify(r.id)});
             this_.value=${JSON.stringify(String(w))};
             var f=function(){${code.replace(/\bthis\b/g, 'this_')}};f();})()`, H.ctx);
-        H.frames(2);
+        H.frames(FRAMES);
         out.status.push({ einstellung: `${r.beschriftung || r.id} = ${w}`, text: lies() });
+        for (let v = 1; v <= VERLAUF; v++) {
+          H.frames(FRAMES);
+          out.status.push({ einstellung: `${r.beschriftung || r.id} = ${w} · nach ${(v + 1) * FRAMES} Frames`,
+                            text: lies(), bild: H.zeichnung.slice(-40).join(' | ') });
+        }
       } catch (e) { /* Regler, die erst nach einem Klick erscheinen */ }
     }
   }
@@ -181,7 +217,8 @@ function fakten(datei, simId) {
 
 if (require.main === module) {
   const datei = process.argv[2];
-  const alle = process.argv.slice(3).map(s => {
+  // Schalter (--voll, --max=n) sind keine Simulationskennungen.
+  const alle = process.argv.slice(3).filter(a => !a.startsWith('--')).map(s => {
     try { return fakten(datei, s); }
     catch (e) { return { sim: s, fehler: e.message }; }
   });

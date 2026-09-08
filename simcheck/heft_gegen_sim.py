@@ -43,6 +43,12 @@ EINHEITEN = {
     # gezaehlte Groessen, die die Simulationen wirklich anzeigen
     'Impulse', 'Ionenpaare', 'Zähne', 'Windungen', 'Bildpunkte', 'Umdrehungen',
     'Büroklammern', 'Bogensekunden', 'Nanosekunden',
+    # Oberstufe (Einfuehrungsphase). Ohne diese Zeile ueberspringt der Pruefer
+    # jeden Impuls-, Winkel- und Drehwert STILLSCHWEIGEND und meldet trotzdem
+    # "0 Werte ohne Entsprechung" - gefunden am 08.09.2026, als ein Gegenleser
+    # testweise "p1 = 4444,5 kg·m/s" auf eine Seite schrieb und gruenes Licht bekam.
+    'rad', 'rad/s', 'rad/s²', 'kg·m/s', 'N·s', 'N·m', 'N/m', 'N·m²/kg²',
+    'm³/s²', 'J/kg', 'px', 'Pixel', 'Grad', 'Umläufe', 'Messwerte',
 }
 
 def wert(s):
@@ -90,6 +96,19 @@ def zwischenwerte(f):
         v = wert(m.group(0))
         if v is not None:
             roh.add(v)
+    # Simulationen schreiben teils DEZIMALPUNKT ("F_R=14.7N"), die Heftseite
+    # nach Hausregel immer Komma ("14,7 N"). Die Regex oben liest den Punkt nur
+    # als Tausendertrenner und macht aus 14.7 die Zahl 14 - der Prueferver misst
+    # dann den belegten Wert als unbelegt. Gefunden am 08.09.2026 an ki12
+    # (reibung), wo sechs richtige Werte als Fehler gemeldet wurden.
+    # Punktzahlen sind mehrdeutig, deshalb kommen BEIDE Lesarten in die Menge:
+    # zu streng waere hier schlimmer als zu grosszuegig - das Werkzeug soll
+    # Erfundenes finden, nicht Schreibweisen bemaengeln.
+    for m in re.finditer(r'\d+\.\d+', t):
+        try:
+            roh.add(round(float(m.group(0)), 6))          # englisch: 14.7 -> 14,7
+        except ValueError:
+            pass
     # Reglerbereiche: jeder ganzzahlige Schritt gilt als einstellbar
     for r in f.get('regler', []):
         b = r.get('bereich') or {}
@@ -131,7 +150,53 @@ def pruefe(seiten, fakten, sim_von):
                 treffer.append((s['id'], sim_von[s['id']], roh))
     return treffer
 
+def selbsttest():
+    """Ohne bestandenen Selbsttest darf das Werkzeug nicht urteilen.
+
+    Der Anlass: Das Werkzeug meldete fuer eine Seite mit der frei erfundenen
+    Zahl "p1 = 4444,5 kg·m/s" weiterhin "0 Werte ohne Entsprechung" - weil die
+    Einheit nicht in EINHEITEN stand und der Wert deshalb gar nicht geprueft
+    wurde. Ein Pruefer, der schweigt, weil er nichts sieht, ist schlimmer als
+    keiner.
+    """
+    f = []
+    fakten = {"probe": [{"sim": "probe",
+                         "status": [{"einstellung": "Start",
+                                     "text": "v = 4,00 m/s · p = 12,5 kg·m/s · omega = 9,4248 rad/s "
+                                             "· F_R=14.7N · s=1.28m"}],
+                         "bildtexte": ["s = 1,50 m"], "regler": [], "knoepfe": []}]}
+    sim_von = {"t1": "probe"}
+
+    def lauf(text):
+        return pruefe([{"id": "t1", "forschen": [text], "tabRows": [], "beobachtung": ""}],
+                      {k: v[0] for k, v in fakten.items()}, sim_von)
+
+    # 1. GUTE Probe: alle drei Werte stehen so am Bildschirm - kein Befund.
+    t = lauf("Lies v = 4,00 m/s, p = 12,5 kg·m/s und omega = 9,4248 rad/s ab.")
+    if t:
+        f.append(f"Gute Probe meldete {len(t)} Befunde: {t}")
+
+    # 1b. Die Simulation schreibt Punkt, die Seite Komma - das ist KEIN Befund.
+    t = lauf("Die Reibungskraft betraegt 14,7 N, der Weg 1,28 m.")
+    if t:
+        f.append(f"Punkt-gegen-Komma meldete faelschlich: {t}")
+
+    # 2. KAPUTTE Proben: jede erfundene Zahl MUSS auffallen.
+    for text, was in (("Lies p = 4444,5 kg·m/s ab.", "erfundener Impuls"),
+                      ("Lies omega = 99,9 rad/s ab.", "erfundene Winkelgeschwindigkeit"),
+                      ("Lies v = 4,44 m/s ab.", "erfundene Geschwindigkeit"),
+                      ("Der Radius betraegt 777 px.", "erfundene Pixelzahl")):
+        if not lauf(text):
+            f.append(f"Kaputte Probe ({was}) blieb unbemerkt: {text}")
+    return f
+
+
 def main():
+    _f = selbsttest()
+    if _f:
+        print('SELBSTTEST NICHT BESTANDEN - der Pruefer darf nicht urteilen:')
+        for _z in _f: print('  x', _z)
+        sys.exit(2)
     seiten = json.load(open(sys.argv[1], encoding='utf-8'))
     if isinstance(seiten, dict):
         seiten = seiten.get('seiten', [])
