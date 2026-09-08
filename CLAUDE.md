@@ -375,9 +375,20 @@ Vierte Reihe: **Gymnasiale Oberstufe NRW**, ein Band fuer Gymnasium UND
 Gesamtschule (der Kernlehrplan Heft 4721 gilt fuer beide). Einfuehrungsphase,
 28 Einheiten in 2 Kapiteln, Kennungen `ki` und `gw`.
 
-Stand 08.09.2026 **fertig und ausgeliefert**: 163 Schuelerseiten, 28 Einheiten,
+Stand 08.09.2026 **fertig und ausgeliefert**: 186 Schuelerseiten, 28 Einheiten,
 23 gedruckte QR-Codes (fuenf Datenblattseiten ohne Code), alle live geprueft.
 Bruecke bei 570 Heftseiten, Registry bei 225 Simulationen.
+
+> **`ch_uebung` lief unter die Blattkante** (gefunden 08.09.2026, derselbe Fehler
+> wie `build_pilot.seite_l` in der Foerderreihe). Die Funktion setzte GENAU EINE
+> Seite; PIL schnitt den Rest wortlos ab. Gemessen: **22 der 28 Uebungsseiten**
+> ueber dem Satzspiegel (1674), bei **14** fiel „UND JETZT?" unter die Blattkante
+> (1754) - die Ueberleitung zur naechsten Einheit stand im Druck nirgends
+> (schlimmster Fall gw9: Ende bei 2005). `ch_uebung` gibt jetzt eine LISTE von
+> Seiten zurueck und bricht auf Blockebene um. Muss ueberhaupt umgebrochen
+> werden, wandert schon die offene Schreibaufgabe auf Seite 2 - reiner
+> Greedy-Umbruch haette dort nur die zwei Zeilen Ueberleitung stehen lassen, ein
+> zu 91 % leeres Blatt. Daher 163 → 186 Seiten.
 
 > **Die Seitenschaetzung war um 37 % zu niedrig.** Das an gym9/gym10 geeichte
 > Modell `9,7 + 8·Kapitel + 3,33·Themen` sagte 119 Seiten voraus; gesetzt wurden
@@ -426,6 +437,39 @@ formatierten Werten weiterrechnen. Siehe [[rechenweg-aus-angezeigten-zahlen]].
   leeres `<div>` - der Dump meldet `regler: []`. Wer sich darauf verlaesst,
   verbietet einer Heftseite Reglerstellungen, die es gibt. NOCH OFFEN.
 
+## Messlabor - Messreihe statt Einzelablesung (seit 08.09.2026)
+
+Sechs Simulationen nehmen jetzt **Messpunkte in eine Wertetabelle** auf und
+**linearisieren**: `newton2`, `bewegungsenergie`, `freierfall`, `spannenergie`,
+`gravitation-abstand`, `wurf-waagerecht` (dazu die schon vorher ausgeruesteten
+`zentripetalkraft`, `beschleunigung`, `gleichfoermig`). Der Schueler waehlt die
+Auftragung, nimmt eine Reihe auf und gewinnt die Formel aus der **Steigung** -
+statt sie im Fachtext behauptet zu bekommen.
+
+**Die alten Bedienelemente bleiben unveraendert an ihrem Platz**, das Labor
+haengt darunter. Das ist Pflicht: `bewegungsenergie` traegt fuenf Heftseiten
+(en5, el3, me20, fe3, ki14), `gravitation-abstand` vier (g9, ew4, wa8, gw4) -
+die Sek-I-Seiten sind gedruckt und zitieren „×2 Masse", „Rollen lassen",
+„×2 Abstand". Vor jeder Aenderung an einer geteilten Simulation erst
+`js/heft-bruecke.js` fragen, WER darauf zeigt.
+
+**Drei Werkzeugfallen, alle am 08.09.2026 gefunden:**
+
+- **Kein Dump enthielt eine Ausgleichsgerade.** `simfakten.js` drueckt die
+  Knoepfe der Reihe nach, und „Tabelle leeren" steht VOR den Preset-Knoepfen -
+  jede Auftragung traf auf eine leere Tabelle. Steigung, R² und die
+  zurueckgerechnete Groesse sind aber genau das, was eine Heftseite zitiert.
+  Jetzt gibt es einen eigenen Messlabor-Durchgang: leeren → Auftragung waehlen →
+  Messreihe aufnehmen → ablesen (die automatische Reihe veraendert die Groesse,
+  die gerade auf der x-Achse steht, die Reihenfolge ist also nicht beliebig).
+- **`entkerne()` klebte Tabellenzellen zusammen.** `</td><td>` fiel ersatzlos
+  weg, aus „15 | 8 | 1,7487" wurde „81,7487" - richtige Werte galten als
+  unbelegt. Betrifft jede Simulation mit Wertetabelle in ALLEN Baenden.
+- **Faktendumps veralten still.** Sie tragen kein Datum und nicht die Schalter,
+  mit denen sie gezogen wurden. 15 der 36 EF-Dumps stammten noch aus der Zeit
+  vor `--frames`/`--verlauf`. Nach jeder Aenderung an `physics-sim.js` ODER an
+  `simfakten.js` **alle** Dumps zusammen neu ziehen.
+
 **`simfakten.js` hat zwei neue Schalter** (07.09.2026). `--voll` hebt die
 Zeichengrenze auf (die 2500er-Deckelung schnitt bei `lichtuhr` zwei Drittel ab),
 `--frames=n` und `--verlauf=k` rechnen animierte Simulationen weiter und lesen
@@ -444,7 +488,7 @@ Sieben Werkzeuge, alle an bekannten Faellen geeicht. Ausfuehrlich in `simcheck/R
 | `werte.js` | eine Simulation einstellen und eine bestimmte Anzeige ausgeben (Rechentest) |
 | `einbaupruefung.py` | neue Simulationsdatei vor dem Einbau pruefen (Namens- und DOM-Kollisionen) |
 | `einbau.py` | Registry-Eintrag und Implementierung in `physics-sim.js` einsetzen |
-| `heft_gegen_sim.py` | prueft, ob eine Heftseite nur Werte verlangt, die am Bildschirm stehen |
+| `heft_gegen_sim.py` | prueft, ob eine Heftseite nur Werte verlangt, die am Bildschirm stehen; trennt Befunde von NACHGERECHNETEN Werten (t², 1/m) |
 | `seitenzahlen.py` | liest die Seitenzahlen aus den gesetzten Seiten (siehe oben) |
 | `qr_live.py` | prueft die GEDRUCKTEN QR-Codes gegen den AUSGELIEFERTEN Stand (siehe unten) |
 
