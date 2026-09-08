@@ -375,9 +375,9 @@ Vierte Reihe: **Gymnasiale Oberstufe NRW**, ein Band fuer Gymnasium UND
 Gesamtschule (der Kernlehrplan Heft 4721 gilt fuer beide). Einfuehrungsphase,
 28 Einheiten in 2 Kapiteln, Kennungen `ki` und `gw`.
 
-Stand 08.09.2026 **fertig und ausgeliefert**: 186 Schuelerseiten, 28 Einheiten,
+Stand 08.09.2026 **fertig und ausgeliefert**: 188 Schuelerseiten, 28 Einheiten,
 23 gedruckte QR-Codes (fuenf Datenblattseiten ohne Code), alle live geprueft.
-Bruecke bei 570 Heftseiten, Registry bei 225 Simulationen.
+Bruecke bei 570 Heftseiten, Registry bei 226 Simulationen.
 
 > **`ch_uebung` lief unter die Blattkante** (gefunden 08.09.2026, derselbe Fehler
 > wie `build_pilot.seite_l` in der Foerderreihe). Die Funktion setzte GENAU EINE
@@ -446,6 +446,23 @@ Sechs Simulationen nehmen jetzt **Messpunkte in eine Wertetabelle** auf und
 Auftragung, nimmt eine Reihe auf und gewinnt die Formel aus der **Steigung** -
 statt sie im Fachtext behauptet zu bekommen.
 
+**Bewegung wird GESTOPPT, nicht eingestellt** (seit 08.09.2026). `gleichfoermig`
+und die neue `beschleunigung-ef` haben eine Stoppuhr: Der Wagen faehrt, „⏱ Zeit
+stoppen" schreibt den Augenblickswert (t, s, Tacho v) als Zeile, „↺ neue Fahrt"
+setzt die Uhr zurueck und laesst die Tabelle stehen. Die Geschwindigkeit kommt
+aus der STEIGUNG der t-s-Geraden, die Beschleunigung aus der Steigung der
+t-v-Geraden. Auftragungen durchgehend **t → s · t → v · t → a** (bei
+`beschleunigung-ef` zusaetzlich t² → s). Die a-Spalte wird aus je zwei Zeilen
+gerechnet (a = Δv/Δt) und bei der mittleren Zeit aufgetragen; Zeilen tragen eine
+Fahrtnummer, sonst paart die Rechnung ueber einen Fahrtwechsel hinweg.
+
+> **Warum `beschleunigung-ef` und nicht `beschleunigung`:** Die alte Simulation
+> traegt die GEDRUCKTE Heftseite me6 (Klasse 8 Gymnasium) und wird nicht
+> angefasst - sie verlangt woertlich den Regler „Beschleunigung a", den Knopf
+> „Lichtschranken-Messfahrt" und die Auftragung „t → v". Die Oberstufe zeigt
+> ueber `plan.py` und die Bruecke auf die neue Fassung. Dasselbe Muster wie
+> `gleichfoermig-rs` / `beschleunigung-rs`.
+
 **Die alten Bedienelemente bleiben unveraendert an ihrem Platz**, das Labor
 haengt darunter. Das ist Pflicht: `bewegungsenergie` traegt fuenf Heftseiten
 (en5, el3, me20, fe3, ki14), `gravitation-abstand` vier (g9, ew4, wa8, gw4) -
@@ -469,6 +486,22 @@ die Sek-I-Seiten sind gedruckt und zitieren „×2 Masse", „Rollen lassen",
   mit denen sie gezogen wurden. 15 der 36 EF-Dumps stammten noch aus der Zeit
   vor `--frames`/`--verlauf`. Nach jeder Aenderung an `physics-sim.js` ODER an
   `simfakten.js` **alle** Dumps zusammen neu ziehen.
+- **Knoepfe werden am HANDLER erkannt, nicht an der Aufschrift.** Die einen
+  Simulationen beschriften ihre Reiter „F ueber 1/r² auftragen", die anderen
+  schlicht „t → v"; die einen sagen „Messreihe automatisch aufnehmen", die
+  anderen „Lichtschranken-Messfahrt". Einheitlich ist nur der Aufruf dahinter
+  (`SetPreset(`, `Reihe()`/`Messen()`/`Demo()`, `Clear()` - nicht `ClearFn()`).
+  Mit der Aufschrift als Merkmal blieben ausgerechnet die Bewegungs-
+  simulationen ohne eine einzige Ausgleichsgerade im Dump.
+- **`_mlabRenderFit` nahm `groups[0]`** statt der ersten Gruppe MIT Fit. Ein
+  einziger Stopp vor der Messfahrt liess den ganzen Ergebniskasten
+  verschwinden - die Zeile, die eine Heftseite ablesen laesst. Jetzt
+  `groups.find(g => g.fit)`; betrifft JEDES Messlabor (13 von 13 statt 3 von 13).
+- **Das Haekchen „durch den Ursprung" auf einer Waagerechten** setzte stille
+  Falschwerte: „Beschleunigung 0,00 m/s², Abweichung 100 %" bei sichtbar
+  beschleunigter Fahrt, ohne Abzeichen, weil der Sollwert null ist.
+  `_fpmFitOrigin` setzt `b` hart auf 0, und der Ergebniskasten las genau dieses
+  `b`. Waagerechte Auftragungen drucken jetzt den Grund statt der Zahlen.
 
 **`simfakten.js` hat zwei neue Schalter** (07.09.2026). `--voll` hebt die
 Zeichengrenze auf (die 2500er-Deckelung schnitt bei `lichtuhr` zwei Drittel ab),
