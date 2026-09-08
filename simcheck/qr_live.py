@@ -141,7 +141,35 @@ def main():
         registry = sims_der_registry(hole("physics-sim.js"))
     except Exception as e:
         print("FEHLER: ausgelieferter Stand nicht erreichbar:", e); return 1
-    print(f"  live: {len(bruecke)} Heftseiten in der Bruecke, {len(registry)} Simulationen\n")
+    print(f"  live: {len(bruecke)} Heftseiten in der Bruecke, {len(registry)} Simulationen")
+
+    # Ist der ausgelieferte Stand ueberhaupt der, den man gerade gebaut hat?
+    # Diese Frage beantwortet die Pruefung unten NICHT. Sind Bruecke und
+    # Registry BEIDE alt, sind sie in sich stimmig - jeder gedruckte Code
+    # oeffnet brav die ALTE Simulation, und das Werkzeug meldet gruen. Genau
+    # das ist am 08.09.2026 passiert: 23/23 OK, waehrend die neu gebaute
+    # Simulation live noch gar nicht existierte (CDN-Zwischenspeicher, die
+    # Live-Datei war 52 KB kleiner als die lokale).
+    for name in ("physics-sim.js", "js/heft-bruecke.js"):
+        lokal = os.path.join(WURZEL, name)
+        if not os.path.exists(lokal):
+            continue
+        try:
+            live_txt = hole(name)
+        except Exception:
+            continue
+        lokal_txt = open(lokal, encoding="utf-8").read()
+        if live_txt == lokal_txt:
+            print(f"  {name}: live = lokal")
+        else:
+            # BEIDE in Zeichen messen. Mit os.path.getsize stuenden hier Bytes
+            # gegen Zeichen, und zwei gleiche Dateien saehen verschieden aus.
+            print(f"  ACHTUNG {name}: live weicht vom lokalen Stand ab "
+                  f"({len(live_txt)//1024} KB live, "
+                  f"{len(lokal_txt)//1024} KB lokal) - der Zwischenspeicher "
+                  f"haengt noch nach. Die Pruefung unten gilt fuer den AUSGELIEFERTEN "
+                  f"Stand, nicht fuer deine Arbeit.")
+    print()
     alle = []
     for d in ordner:
         alle += pruefe(d, bruecke, registry)
