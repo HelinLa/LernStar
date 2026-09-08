@@ -5436,40 +5436,40 @@ const HEFT_SEITEN = {
     sim: "gleichfoermig", seite: 5,
     kapitel: "Grundlagen der Mechanik",
     name: "Wie schnell fährt der Wagen wirklich?",
-    titel: "Sechs Zeiten, eine Gerade",
-    frage: "Wie liest man aus sechs Weg-Zeit-Paaren die Geschwindigkeit des Wagens ab?",
-    auftrag: "Bestimme aus den Messreihen die Steigung der s-t-Geraden und prüfe, ob sie mit der eingestellten Geschwindigkeit übereinstimmt.",
-    schritte: ["Lass den Regler „Geschwindigkeit v“ auf 4,0 m/s stehen und drücke „Lichtschranken-Messfahrt“. Lies aus der Tabelle zu jedem der sechs Wege s die gestoppte Zeit t ab.", "Vergleiche unter „Auswertung“ die Zeile „y = …·x“ und die Angabe „Geschwindigkeit v = Steigung der Ausgleichsgeraden“ mit den 4,0 m/s, die du eingestellt hast.", "Drücke „Beispielmessreihe“, ohne die Tabelle vorher zu leeren: Zu deiner Messreihe kommen drei weitere mit 3,0 m/s, 5,0 m/s und 7,0 m/s dazu. Vergleiche für jede die Steigung ihrer Ausgleichsgeraden mit der Zeit an der Schranke bei 4,5 m. Die Ergebniszeile unter den vier Geraden gehört jetzt zur langsamsten Reihe."]
+    titel: "Fünf Stopps, eine Steigung",
+    frage: "Wie misst man die Geschwindigkeit, statt sie am Regler abzulesen?",
+    auftrag: "Miss mit der Stoppuhr eine eigene Wertereihe, bestimme die Geschwindigkeit aus der Steigung der t-s-Geraden und prüfe das Ergebnis an den Auftragungen t → v und t → a.",
+    schritte: ["Lass den Wagen bei „Geschwindigkeit v“ = 4,0 m/s fahren und drücke fünfmal „Zeit stoppen“, ruhig in ungleichen Abständen. Jede Zeile hält fest, was in diesem Augenblick auf der Anzeigetafel steht: Uhr t, Wegmesser s und Tacho v. Stoppe so lange, bis die Statuszeile „5 von mindestens 5 gestoppten Messwerten“ meldet.", "Wähle „t → s“. Über dem Ergebniskasten steht deine Reihe als „Stoppuhr · v = 4,0 m/s“ mit ihrer Ausgleichsgeraden y = …·x. Notiere diese Steigung und daneben die Zeile „Geschwindigkeit v = Steigung der Ausgleichsgeraden“. Rechne danach aus zwei beliebigen Tabellenzeilen Δs/Δt von Hand nach und vergleiche beide Zahlen.", "Wähle nacheinander „t → v“ und „t → a“ und notiere beide Gleichungen. Stelle den Regler danach auf 7,0 m/s – Uhr und Weg beginnen von vorn – und stoppe wieder fünfmal. Vergleiche die beiden t-s-Geraden: Die steilere gehört zur schnelleren Fahrt."]
   },
   "ki2": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
     sim: "gleichfoermig", seite: 8,
     kapitel: "Grundlagen der Mechanik",
     name: "Wie gut ist eine digitale Messung?",
-    titel: "Perfekt und trotzdem daneben",
-    frage: "Was sagt R² = 1,0000 über eine Messung aus – und was sagt es nicht?",
-    auftrag: "Vergleiche die Steigungen von vier gemessenen Ausgleichsgeraden mit den eingestellten Geschwindigkeiten, wiederhole eine Messfahrt und beurteile, was das angezeigte R² darüber aussagt.",
-    schritte: ["Stelle den Regler „Geschwindigkeit v“ auf 4,0 m/s und drücke „Lichtschranken-Messfahrt“. Übertrage die sechs Zeiten aus der Tabelle und lies in der Auswertung „t → s“ die Ausgleichsgerade y = …·x ab; ihre Steigung nennen wir k. Notiere auch das R² und den Wert hinter „erwartet:“ – nimm nicht die Ergebniszeile darunter, die auf zwei Stellen rundet und gerade das verdeckt, was du suchst.", "Drücke „Beispielmessreihe“: Sie nimmt drei weitere Messreihen mit 3,0 m/s, 5,0 m/s und 7,0 m/s auf. Notiere für jede der vier Geraden k und R² und berechne die Abweichung vom Wert hinter „erwartet:“ selbst – das Feld „Abweichung“ der Simulation bleibt leer und zeigt nur einen Strich.", "Drücke „Tabelle leeren“, bestätige die Rückfrage und wiederhole die Messfahrt bei 4,0 m/s. Leere die Tabelle noch einmal und miss ein drittes Mal. Trage alle drei Steigungen in dieselbe Zeile ein und bilde ihre Spannweite vom kleinsten bis zum größten Wert."]
+    titel: "Wann du stoppst, ist gleichgültig",
+    frage: "Wie gewinnt man die Geschwindigkeit aus einer selbst gestoppten Messreihe?",
+    auftrag: "Bestimme aus einer selbst gestoppten Messreihe die Steigung der t-s-Geraden, wiederhole das bei einer zweiten Reglerstellung und prüfe beide Ergebnisse an den Auftragungen t → v und t → a.",
+    schritte: ["Lass den Regler „Geschwindigkeit v“ auf 4,0 m/s stehen und drücke „neue Fahrt“. Während der Wagen rollt, drückst du fünfmal „Zeit stoppen“ – wann, ist gleichgültig. Jede Zeile der Wertetabelle trägt danach die abgelesene Zeit, den Weg und den Tachowert. Wähle „t → s“ und lies unter „Auswertung“ die Zeile „y = …·x“ ab.", "Stelle den Regler auf 6,0 m/s; damit beginnt eine neue Fahrt, die Tabelle bleibt stehen. Stoppe wieder fünfmal. Unter „t → s“ stehen jetzt zwei Ursprungsgeraden untereinander, jede mit ihrer Reihe beschriftet. Trage beide Steigungen ein und halte daneben, was am Regler stand.", "Wähle „t → v“ und danach „t → a“, ohne die Tabelle zu leeren. Notiere bei „t → v“ den Achsenabschnitt der Waagerechten und ihre Steigung, bei „t → a“ die Höhe der Geraden. Beide Auftragungen benutzen dieselben Zeilen wie „t → s“."]
   },
   "ki3": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "beschleunigung", seite: 11,
+    sim: "beschleunigung-ef", seite: 11,
     kapitel: "Grundlagen der Mechanik",
     name: "Wie schnell wird der Wagen schneller?",
-    titel: "Nicht der Weg, die Geschwindigkeit",
-    frage: "Woran erkennt man in der v-t-Messreihe, wie schnell der Wagen schneller wird?",
-    auftrag: "Bestimme die Beschleunigung als Steigung der v-t-Geraden – aufgetragen wird jetzt die Geschwindigkeit, nicht der Weg – und vergleiche sie mit dem eingestellten Wert.",
-    schritte: ["Lass den Regler „Beschleunigung a“ auf 2,0 m/s² stehen und drücke „Lichtschranken-Messfahrt“. Übertrage aus der Tabelle t (s) und v (m/s) der Schranken bei s = 1,0 m und s = 6,0 m.", "Die Auftragung „t → v“ ist schon eingestellt. Lies im Auswertungsfeld die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R² und die Zeile „Beschleunigung a = Steigung der v-t-Geraden“ ab.", "Drücke „Tabelle leeren“ und danach „Beispielmessreihe“: Sie nimmt dieselbe Messung mit a = 1,0 m/s², 2,0 m/s² und 4,0 m/s² auf. Lies für jede der drei Reihen die letzte Zeile (s = 6,0 m) ab und vergleiche die drei Steigungen mit den eingestellten Beschleunigungen."]
+    titel: "Drei Diagramme, eine Zahl",
+    frage: "Welche Zahl der t-v-Geraden sagt, wie schnell der Wagen schneller wird?",
+    auftrag: "Bestimme die Beschleunigung als Steigung deiner selbst gestoppten t-v-Geraden und vergleiche, was die Auftragungen t → s, t → v und t → a über diese Zahl hergeben.",
+    schritte: ["Drücke „Tabelle leeren“ und stelle den Regler „Beschleunigung a“ auf 2,0 m/s². Der Wagen fährt bereits; drücke während einer Fahrt fünfmal „Zeit stoppen“, ungefähr gleichmäßig über die Bahn verteilt. Verpasst du den Start, setzt „neue Fahrt“ Uhr und Weg auf null zurück. Übertrage die fünf Zeilen mit t, s, v und der gerechneten Spalte a.", "Wähle nacheinander die Auftragungen „t → s“, „t → v“ und „t → a“ und halte zu jeder fest, welche Form die Punktreihe hat und welche Zahl für a herauskommt. Bei „t → v“ liest du die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R² und die Zeile „Beschleunigung a = Steigung der v-t-Geraden“ ab.", "Stelle den Regler danach auf 4,0 m/s² – die Uhr beginnt eine neue Fahrt, die Tabelle bleibt stehen – und stoppe wieder fünfmal. Vergleiche in „t → v“ die beiden Steigungen und in „t → a“ die Höhen der beiden Waagerechten miteinander."]
   },
   "ki4": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "beschleunigung", seite: 15,
+    sim: "beschleunigung-ef", seite: 15,
     kapitel: "Grundlagen der Mechanik",
     name: "Warum trägt man t² auf?",
     titel: "Aus der Kurve eine Gerade machen",
     frage: "Wie wird aus der s-t-Parabel eine Gerade, aus der man a ablesen kann?",
-    auftrag: "Vergleiche die Auftragungen t → s und t² → s derselben Messwerte und bestimme die Beschleunigung jeder der drei Messreihen aus einem Punkt und aus der Ausgleichsgeraden.",
-    schritte: ["Lass den Regler „Beschleunigung a“ auf 2,0 m/s² stehen, drücke „Tabelle leeren“ und danach „Beispielmessreihe“: Sie füllt die Tabelle mit je sechs Zeilen zu 1,0, 2,0 und 4,0 m/s².", "Wechsle mit „t → s“ die Auftragung und lies im Auswertungsfeld, was dort über die Form der Punktreihe steht; wechsle dann auf „t² → s“ und vergleiche beide Aussagen samt Achsenbeschriftung.", "Lies für jede Tabellenzeile die Zeit an der genannten Lichtschranke ab, rechne t² und a = 2 · s/t² aus und vergleiche das Ergebnis mit der Beschleunigung, die das Auswertungsfeld für dieselbe Messreihe angibt."]
+    auftrag: "Bestimme die Beschleunigung aus der Steigung der s-t²-Geraden deiner eigenen Stoppuhr-Messreihe und vergleiche sie mit den Steigungen der Auftragungen t → v und t → a.",
+    schritte: ["Stelle den Regler „Beschleunigung a“ auf 2,0 m/s² und drücke „Tabelle leeren“. Lass den Wagen aus der Ruhe fahren und drücke während derselben Fahrt fünfmal „Zeit stoppen“ – die Statuszeile zählt mit, bis fünf gestoppte Messwerte beisammen sind. Übertrage die ersten vier Zeilen mit t, s und v in die Tabelle.", "Wähle die Auftragung „t → s“. Das Auswertungsfeld nennt keine Steigung, sondern rät: quadriere t und wechsle zur Auftragung t² → s. Folge dem Rat mit „t² → s“ und lies die Achsenbeschriftung, die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R² und die Zeile „Beschleunigung a = 2 × Steigung“ ab.", "Rechne für deine vier Zeilen t² und den Quotienten s/t² aus und halte ihn gegen die abgelesene Steigung. Prüfe dasselbe a anschließend über „t → v“ – dort ist die Steigung selbst die Beschleunigung – und über „t → a“, wo die Höhe der waagerechten Ausgleichsgeraden dieselbe Zahl liefert."]
   },
   "ki5": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",

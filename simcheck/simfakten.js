@@ -161,9 +161,15 @@ function fakten(datei, simId) {
   // Reihenfolge: erst leeren, dann die Auftragung waehlen, dann die Messreihe
   // aufnehmen - die automatische Reihe veraendert genau die Groesse, die gerade
   // auf der x-Achse steht.
-  const _mlReihe = out.knoepfe.find(k => /Messreihe automatisch/i.test(k.aufschrift));
-  const _mlLeer  = out.knoepfe.find(k => /Tabelle leeren/i.test(k.aufschrift));
-  const _mlAuf   = out.knoepfe.filter(k => /auftragen/i.test(k.aufschrift));
+  // Erkannt wird am HANDLER, nicht an der Aufschrift: Die einen Simulationen
+  // beschriften ihre Reiter "F ueber 1/r² auftragen", die anderen schlicht
+  // "t → v"; die einen sagen "Messreihe automatisch aufnehmen", die anderen
+  // "Lichtschranken-Messfahrt". Der Aufruf dahinter ist dagegen einheitlich.
+  // Mit der Aufschrift als Merkmal blieben ausgerechnet die Bewegungs-
+  // simulationen ohne eine einzige Ausgleichsgerade im Dump.
+  const _mlReihe = out.knoepfe.find(k => /(Reihe|Messen|Demo|Messfahrt)\(\)/i.test(k.ruft));
+  const _mlLeer  = out.knoepfe.find(k => /Clear\(\)/.test(k.ruft));   // nicht ClearFn()
+  const _mlAuf   = out.knoepfe.filter(k => /SetPreset\(\s*\d+\s*\)/.test(k.ruft));
   const _klick = (k) => vm.runInContext(
     `(function(){var f=function(){${k.ruft}};f();})()`, H.ctx);
   if (_mlReihe && _mlAuf.length) {
