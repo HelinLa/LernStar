@@ -3537,10 +3537,15 @@ const _physSimDefs = {
   // ── 7.3.0 ANZIEHUNG: MASSE UND ABSTAND  (Heft 7 · g9) ──────────
   'gravitation-abstand': modal => {
     _gabInit();
+    _gabLabInit();          // Messlabor: Wertetabelle + Auftragungen (eigener Zustand,
+                            // damit "↺ zurücksetzen" nur die Regler zurückstellt)
     modal.innerHTML = _gabHTML();
     _gabStatus();
+    _gabRenderTable();
     _pSim = new PhysicsSimEngine('gabAnim', 'gabAnim');
     _pSim.start(dt => _gabUpdate(dt), (ctx, cv) => _gabDraw(ctx, cv), []);
+    _mlabRenderTheorie(_gabLab, false);
+    _mlabDrawPlot('gabPlot', _gabLab);
   },
 
   // ── 7.3.1 EBBE UND FLUT  (Heft 7 · g10) ────────────────────────
@@ -3593,9 +3598,12 @@ const _physSimDefs = {
   'bewegungsenergie': modal => {
     _bgeInit();
     modal.innerHTML = _bgeHTML();
+    _bgeRenderTable();
     _bgeStatus();
     _pSim = new PhysicsSimEngine('bgeAnim', 'bgeAnim');
     _pSim.start(dt => _bgeUpdate(dt), (ctx, cv) => _bgeDraw(ctx, cv), []);
+    _mlabRenderTheorie(_bge, false);
+    _mlabDrawPlot('bgePlot', _bge);
   },
 
   // ── 9.3.6/9 ENERGIE: REIBUNGSWAERME ────────────────────────────
@@ -4260,46 +4268,30 @@ const _physSimDefs = {
   },
 
   // ── 3. FREIER FALL ─────────────────────────────────────
+  // Die Zeichnung, der Regler ffH, der Knopf "Neu starten" und das weisse
+  // Anzeigefeld mit s, v und t bleiben Zeichen fuer Zeichen so, wie sie waren -
+  // die Heftseite ki5 liest genau dort ab. Neu ist das Messlabor darunter
+  // (_ff*, am Dateiende): Pausetaste, "Messpunkt uebernehmen", Wertetabelle,
+  // drei Auftragungen und ein Ergebniskasten, der die beiden g-Werte der
+  // Simulation nebeneinanderstellt, statt einen davon fuer richtig zu erklaeren.
   'freierfall': modal => {
-    modal.innerHTML = _simModalHTML('freierfall', '🎯 Freier Fall – s = ½·g·t²',
-      _slider_html('ffH', 'Fallhöhe', 10, 100, 50, 5, 'm') +
-      `<button onclick="_ffReset()" class="phys-btn">🔄 Neu starten</button>`, true);
+    _ffInit();
+    modal.innerHTML = _ffHTML();
+    _ffRenderTable();
+    _ffStatus();
+    _ffKnoepfe();
     _pSim = new PhysicsSimEngine('physAnim', 'physChart');
     _pSim.addSeries('s'); _pSim.addSeries('v');
-    let y = 0, vy = 0, falling = true;
-    window._ffReset = () => { y = 0; vy = 0; falling = true; _pSim.reset(); _pSim.addSeries('s'); _pSim.addSeries('v'); };
     _pSim.start(
-      dt => {
-        const H = _slider('ffH');
-        if (falling && y < H) {
-          vy += 9.81 * dt; y += vy * dt;
-          if (y >= H) { y = H; falling = false; }
-        }
-        _pSim.record('s', y); _pSim.record('v', vy);
-      },
-      (ctx, cv) => {
-        const H = _slider('ffH');
-        ctx.clearRect(0, 0, cv.width, cv.height);
-        // Himmel & Boden
-        ctx.fillStyle = '#e0f2fe'; ctx.fillRect(0, 0, cv.width, cv.height);
-        ctx.fillStyle = '#86efac'; ctx.fillRect(0, cv.height - 30, cv.width, 30);
-        // Ball
-        const by = 30 + (y / H) * (cv.height - 60);
-        ctx.fillStyle = '#ef4444';
-        ctx.beginPath(); ctx.arc(cv.width / 2, by, 14, 0, Math.PI * 2); ctx.fill();
-        // Höhenmarkierung
-        ctx.strokeStyle = '#94a3b8'; ctx.setLineDash([4, 4]); ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(cv.width / 2 + 20, 30); ctx.lineTo(cv.width / 2 + 20, by); ctx.stroke();
-        ctx.setLineDash([]);
-        ctx.fillStyle = '#1f2937'; ctx.font = '12px sans-serif';
-        ctx.fillText(`${(H - y).toFixed(1)} m`, cv.width / 2 + 24, (30 + by) / 2);
-        _infoBox(ctx, cv, [`s = ${y.toFixed(2)} m`, `v = ${vy.toFixed(2)} m/s`, `t = ${_pSim.t.toFixed(2)} s`]);
-      },
+      dt => _ffUpdate(dt),
+      (ctx, cv) => _ffDraw(ctx, cv),
       [
         { series: 's', title: 's-t-Diagramm', label: 's', unit: 'm', color: '#7c3aed', yMin: 0 },
         { series: 'v', title: 'v-t-Diagramm', label: 'v', unit: 'm/s', color: '#ef4444', yMin: 0 }
       ]
     );
+    _mlabRenderTheorie(_ff, false);
+    _mlabDrawPlot('ffPlot', _ff);
   },
 
   // ── 4. WURFBEWEGUNG ────────────────────────────────────
@@ -4349,9 +4341,14 @@ const _physSimDefs = {
 
   // ── 5. NEWTON 2: F = m·a ───────────────────────────────
   'newton2': modal => {
-    modal.innerHTML = _simModalHTML('newton2', '⚡ Newtons 2. Gesetz: F = m · a',
-      _slider_html('n2F', 'Kraft F', 10, 200, 50, 5, 'N') +
-      _slider_html('n2M', 'Masse m', 1, 20, 5, 1, 'kg'), true);
+    // Der obere Teil bleibt unveraendert: Ueberschrift, Regler n2F/n2M, Infofeld,
+    // v-t- und a-t-Diagramm. Darunter haengt seit 08.09.2026 das Messlabor
+    // (_n2m*), das aus denselben Reglerstellungen eine Wertetabelle und drei
+    // Auftragungen macht. Siehe Block "NEWTON 2 - MESSLABOR" am Dateiende.
+    _n2mInit();
+    modal.innerHTML = _n2mModalHTML();
+    _n2mRenderTable();
+    _n2mStatus();
     _pSim = new PhysicsSimEngine('physAnim', 'physChart');
     _pSim.addSeries('v'); _pSim.addSeries('a');
     let v = 0, x = 0;
@@ -4375,12 +4372,18 @@ const _physSimDefs = {
         ctx.fillStyle = '#ef4444'; ctx.font = '700 12px sans-serif';
         ctx.fillText(`F=${F}N`, px + 65, cv.height - 50);
         _infoBox(ctx, cv, [`F=${F}N`, `m=${m}kg`, `a=${a}m/s²`, `v=${v.toFixed(1)}m/s`]);
+        // Die beiden Regler bekommen KEINEN zusaetzlichen Handler - ihre
+        // Kennungen und ihr oninput bleiben, wie die Heftseite sie zitiert.
+        // Das Messlabor greift sie hier im Zeichenschritt ab.
+        _n2mTick();
       },
       [
         { series: 'v', title: 'v-t-Diagramm (Steigung = a)', label: 'v', unit: 'm/s', color: '#f97316', yMin: 0 },
         { series: 'a', title: 'a-t-Diagramm', label: 'a', unit: 'm/s²', color: '#7c3aed', yMin: 0 }
       ]
     );
+    _mlabRenderTheorie(_n2m, false);
+    _mlabDrawPlot('n2mPlot', _n2m);
   },
 
   // ── 6. REIBUNG ─────────────────────────────────────────
@@ -6491,8 +6494,11 @@ const _physSimDefs = {
     modal.innerHTML = _wwfHTML();
     _wwfStatus();
     _wwfListe();
+    _wwfRenderTable();
     _pSim = new PhysicsSimEngine('wwfAnim', 'wwfAnim');
     _pSim.start(dt => _wwfUpdate(dt), (ctx, cv) => _wwfDraw(ctx, cv), []);
+    _mlabRenderTheorie(_wwf, false);
+    _mlabDrawPlot('wwfPlot', _wwf);
   },
   // ── WECHSELWIRKUNG (EF) – actio = reactio, quantitativ ──
   'wechselwirkung-ef': modal => {
@@ -9511,7 +9517,17 @@ function _fpmInit() {
   };
 }
 
-function _fpmNum(v, d) { return isFinite(v) ? v.toFixed(d).replace('.', ',') : '—'; }
+// Minuszeichen vor einer gerundeten Null wegnehmen. Eine Ausgleichsgerade durch
+// lauter gleiche Messwerte bekommt als Steigung nicht die 0, sondern das
+// Gleitkommarauschen -1,6e-16; toFixed(4) macht daraus "-0.0000". Auf der
+// waagerechten Geraden von wurf-waagerecht (t_F ueber v0) stand deshalb
+// "y = -0,0000·x + 1,0096" - ausgerechnet dort, wo die Seite zeigen soll, dass
+// die Steigung NULL ist. Gefunden am 08.09.2026 beim Nachrechnen der Steigungen.
+function _fpmNum(v, d) {
+  if (!isFinite(v)) return '—';
+  const s = v.toFixed(d);
+  return (/^-0(\.0*)?$/.test(s) ? s.slice(1) : s).replace('.', ',');
+}
 function _fpmMeff() { return _fpm.m + (_fpm.springMass ? _FPM_MF / 3 : 0); }
 function _fpmOmega() { return Math.sqrt(_fpm.D / _fpmMeff()); }
 function _fpmTtheo() { return 2 * Math.PI / _fpmOmega(); }
@@ -9857,9 +9873,19 @@ function _fpmFitLinear(pts) {
   const den = n * sxx - sx * sx;
   if (!den) return null;
   const k = (n * sxy - sx * sy) / den, b = (sy - k * sx) / n, my = sy / n;
-  let ssr = 0, sst = 0;
-  pts.forEach(p => { ssr += (p.y - (k * p.x + b)) ** 2; sst += (p.y - my) ** 2; });
-  return { k, b, r2: sst > 0 ? 1 - ssr / sst : 1 };
+  let ssr = 0, sst = 0, syy = 0;
+  pts.forEach(p => { ssr += (p.y - (k * p.x + b)) ** 2; sst += (p.y - my) ** 2; syy += p.y * p.y; });
+  // Liegen ALLE Messwerte auf derselben Hoehe, ist sst rechnerisch null - uebrig
+  // bleibt nur Gleitkommarauschen, und 1 - ssr/sst aus zwei Rauschzahlen ergibt
+  // eine beliebige Zahl. Auf der waagerechten Geraden von wurf-waagerecht
+  // (t_F ueber v0, jede Gruppe eine Hoehe, also ueberall dieselbe Fallzeit)
+  // stand dadurch "R² = -6,8750" neben einer perfekt passenden Geraden.
+  // Gemessen: sst = 3,9e-31 bei einer Wertesumme syy = 16,3 - also 1e-31 vom
+  // Mass der Werte entfernt. Unterhalb von 1e-20 der Wertesumme sind die
+  // Messwerte auf zehn geltende Ziffern gleich; dann ist die Gerade exakt und
+  // R² = 1 - dieselbe Verabredung, die _fpmFitOrigin oben schon trifft.
+  const echt = sst > syy * 1e-20;
+  return { k, b, r2: echt ? 1 - ssr / sst : 1 };
 }
 
 // ── Formelparser (Shunting-Yard, ohne eval) ────────────
@@ -41273,7 +41299,7 @@ function _mlabAuswertungHTML(st, fns) {
         </div>
         <div class="fpm-theo" id="${st.theoId}"></div>
         <div class="fpm-note">Erlaubt: x, pi, + − * / ^, sqrt(), sin(), cos(), abs(), exp(), ln(). Malpunkt immer schreiben.</div>
-        <label class="fpm-check"><input type="checkbox"${st.origin ? ' checked' : ''} onchange="${fns.bool}('origin',this.checked)">
+        <label class="fpm-check"><input type="checkbox" id="${st.pre}Orig"${st.origin ? ' checked' : ''} onchange="${fns.bool}('origin',this.checked)">
           Ausgleichsgerade durch den Ursprung</label>
         <label class="fpm-check"><input type="checkbox" onchange="${fns.bool}('showTheory',this.checked)">
           Theoriekurve einblenden</label>
@@ -70149,6 +70175,7 @@ let _gab = null;
 function _gabInit() { _gab = { m1: 1, m2: 1, r: 1, t: 0 }; }
 function _gabF(m1, m2, r) { return 8 * m1 * m2 / (r * r); }
 function _gabHTML() {
+  if (!_gabLab) _gabLabInit();          // _mlabAuswertungHTML() liest den Laborzustand
   return `<div class="sim-box sim-box-wide fpm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🪐 Wovon hängt die Anziehung zweier Körper ab?</h3>
@@ -70182,6 +70209,24 @@ function _gabHTML() {
         <div class="fpm-note" style="margin-top:10px">Beide Kugeln ziehen <b>gleich stark</b> aneinander – auch die kleine an der großen. Die Pfeile sind deshalb immer gleich lang.</div>
       </div>
     </div>
+    <div class="fpm-label" style="margin-top:12px">Messreihe aufnehmen</div>
+    <div class="sim-btn-row">
+      <button class="sim-btn primary" onclick="_gabMesspunkt()">Messpunkt übernehmen</button>
+      <button class="sim-btn" onclick="_gabReihe()">Messreihe automatisch aufnehmen</button>
+      <button class="sim-btn" onclick="_gabClear()">Tabelle leeren</button>
+    </div>
+    <div class="fpm-note" id="gabMeldung" style="margin-top:5px">Noch kein Messpunkt übernommen.</div>
+    <div class="fpm-note">Für eine auswertbare Gerade darf zwischen zwei Messpunkten <b>nur eine</b> Größe verändert werden. Die automatische Messreihe verändert genau die Größe, die gerade auf der x-Achse steht, fährt dabei von einem Reglerende zum anderen (1 bis 5) und hält die beiden anderen fest; die Regler selbst bleiben dabei stehen, wo sie stehen. Die Tabelle zeigt die Anziehung mit <b>zwei</b> Nachkommastellen, die Statuszeile oben mit einer – es ist derselbe Wert, nur feiner abgelesen. „↺ zurücksetzen“ stellt nur die Regler zurück und lässt die Messwerte stehen.</div>
+    <div class="fpm-tablewrap">
+      <table class="sim-table">
+        <thead><tr><th>m₁ in kg</th><th>m₂ in kg</th><th>r (reine Zahl)</th><th>1/r² (reine Zahl)</th><th>F in Einheiten</th><th></th></tr></thead>
+        <tbody id="gabTbody"></tbody>
+      </table>
+      <div class="fpm-empty" id="gabEmpty">Noch keine Messwerte.<br>Regler einstellen → Messpunkt übernehmen.</div>
+    </div>
+
+    <div class="fpm-label" style="margin-top:12px">Auswertung – in welcher Auftragung liegen die Punkte auf einer Ursprungsgeraden?</div>
+    ${_mlabAuswertungHTML(_gabLab, { preset: '_gabSetPreset', setfn: '_gabSetFn', theo: '_gabTheorieFn', clear: '_gabClearFn', bool: '_gabSetBool' })}
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">Doppelte Masse → doppelte Anziehung &nbsp;|&nbsp; doppelter Abstand → nur noch ein <b>Viertel</b></p>
   </div>`;
 }
@@ -70196,6 +70241,9 @@ function _gabSync() {
     const l = document.getElementById(id + 'Lbl'); if (l) l.textContent = String(_gab[k]);
   });
   _gabStatus();
+  // Die Theoriebox nennt die erwartete Steigung fuer die AKTUELLE Reglerstellung -
+  // sie muss deshalb mitwandern, wenn ein Regler bewegt wird.
+  if (_gabLab) _mlabRefreshTheorie(_gabLab);
 }
 function _gabStatus() {
   const el = document.getElementById('gabStatus'); if (!el || !_gab) return;
@@ -70256,6 +70304,270 @@ function _gabDraw(ctx, cv) {
   ctx.fillStyle = '#94a3b8'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
   ctx.fillText('Masse zählt einfach · der Abstand zählt doppelt', W / 2, H - 8);
 }
+
+// ═══════════════════════════════════════════════════════
+// 7.3.0b  MESSLABOR ZUM ABSTANDSGESETZ   (Ergaenzung zu 'gravitation-abstand')
+//
+// Die Simulation zeigte bisher nur EINE Reglerstellung nach der anderen. Damit
+// laesst sich das Abstandsgesetz behaupten, aber nicht nachweisen. Hier kommen
+// Wertetabelle und vier Auftragungen dazu:
+//     F ueber r          -> faellt steil ab, KEINE Gerade (bewusst ohne Fit)
+//     F ueber 1/r²       -> Ursprungsgerade. Das ist der Nachweis.
+//     F ueber m1         -> Ursprungsgerade, aus der Steigung faellt m2 heraus
+//     F ueber m1·m2/r²   -> alle Messreihen auf EINER Geraden: das ganze Gesetz
+//
+// KEINE SI-EINHEITEN. Die Kraft steht in "Einheiten", der Abstand ist eine reine
+// Zahl, die Massen sind Kilogramm. Deshalb nennt der Ergebniskasten auch keine
+// Naturkonstante, sondern das VERHAELTNIS k/(m1·m2) = 8 Einheiten je kg² - die
+// Zahl, die in der Natur an dieser Stelle die Gravitationskonstante G traegt.
+//
+// Der Laborzustand liegt ABSICHTLICH nicht in _gab: Der Knopf "↺ zurücksetzen"
+// ruft _gabInit() auf, und der soll weiterhin nur die drei Regler zurueckstellen.
+// Laege die Tabelle in _gab, waeren nach jedem Zuruecksetzen alle Messwerte weg -
+// genau zwischen zwei Messreihen, wo die Heftseiten g9, wa8 und ew4 das
+// Zuruecksetzen ausdruecklich verlangen.
+//
+// Die Statuszeile (gabStatus) bleibt unveraendert: An ihren Zahlen haengen die
+// Ablesestellen von gw4, g9, wa8 und ew4.
+// ═══════════════════════════════════════════════════════
+
+let _gabLab = null;
+
+// 8 Einheiten je kg² - die Anziehung bei m1 = m2 = 1 kg und r = 1. Genau der
+// "Ausgangswert (8)", den die Statuszeile und vier Heftseiten nennen.
+const _GAB_E = _gabF(1, 1, 1);
+
+// Anzeigegenauigkeit. Beide Spalten haben EIN festes Format - nicht eines, das
+// vom groessten Wert der Tabelle abhaengt. Sonst aendert sich eine bereits im
+// Heft zitierte Tabellenzahl, sobald jemand eine weitere Zeile aufnimmt.
+// Zwei Nachkommastellen reichen: F = 8·m1·m2/r² ist fuer r = 1, 2, 4 und 5 damit
+// exakt (0,32 bis 200,00); nur r = 3 rundet (8/9 -> 0,89).
+const _GAB_NK_F = 2;    // Kraftspalte in Einheiten
+const _GAB_NK_X = 4;    // 1/r² und m1·m2/r² - reine Zahlen
+
+// Runden wie von Hand: die halbe Einheit geht nach oben. toPrecision(12) raeumt
+// vorher das Gleitkommarauschen weg, sonst faellt 0,005 nach unten.
+function _gabRund(v, n) {
+  if (!isFinite(v)) return v;
+  const p = Math.pow(10, n);
+  return Math.sign(v) * Math.round(Number((Math.abs(v) * p).toPrecision(12))) / p;
+}
+function _gabFmt(v, n) { return _fpmNum(_gabRund(v, n), n); }
+
+// ── Gruppenschluessel ──────────────────────────────────
+// Eine Ausgleichsgerade entsteht nur, wenn zwischen zwei Messpunkten NUR die
+// aufgetragene Groesse veraendert wurde. Alle drei Regler laufen ganzzahlig von
+// 1 bis 5, deshalb passen die beiden festgehaltenen Groessen in eine Zahl.
+function _gabKey(a, b) { return Math.round(a) * 10 + Math.round(b); }
+function _gabKeyA(k) { return Math.floor(k / 10); }
+function _gabKeyB(k) { return k % 10; }
+
+// ── Anzeigen heisst rechnen ────────────────────────────
+// Grundsatz dieses Bandes: Was als Rechenzeile auf dem Schirm steht, muss aus
+// den ANGEZEIGTEN Zahlen folgen. Deshalb wird der Messwert schon beim Aufnehmen
+// gerundet und danach ueberall - Tabelle, Diagramm, Ausgleichsgerade - genau
+// diese eine Zahl weiterverwendet. Auch die x-Werte sind die gerundeten aus der
+// Tabellenspalte, nicht die exakten Bruecke 1/9 = 0,1111111...
+function _gabMesswert(m1, m2, r) { return _gabRund(_gabF(m1, m2, r), _GAB_NK_F); }
+function _gabInvR2(z) { return _gabRund(1 / (z.r * z.r), _GAB_NK_X); }
+function _gabProdR2(z) { return _gabRund(z.m1 * z.m2 / (z.r * z.r), _GAB_NK_X); }
+
+// Die Fitzeile von _mlabRenderFit zeigt die Steigung mit 3 Nachkommastellen
+// (4 bei |k| < 1). Der Ergebniskasten rechnet mit GENAU dieser Zahl weiter -
+// sonst stuende dort "200,000 / 25 = 8,001".
+function _gabRundK(k) { return _gabRund(k, Math.abs(k) < 1 ? 4 : 3); }
+function _gabFmtK(k) { return _fpmNum(k, Math.abs(k) < 1 ? 4 : 3); }
+
+// Reglerstellung, auch wenn die Simulation noch nicht geoeffnet wurde.
+function _gabP() { return _gab || { m1: 1, m2: 1, r: 1 }; }
+
+// Abschlussblock. _mlabErgebnis() spricht von "Literatur" - hier gibt es keine,
+// denn die Simulation rechnet in Einheiten. Verglichen wird mit dem, was an den
+// Reglern eingestellt war.
+function _gabErgebnis(label, wert, einheit, soll, formel) {
+  // Die Abweichung muss aus den beiden GEDRUCKTEN Zahlen folgen. Aus den
+  // ungerundeten gerechnet stand neben "0,496 kg · eingestellt: 0,500 kg" eine
+  // Abweichung von 0,84 % - nachrechnen laesst sich daraus nur 0,80 %. Wer
+  // nachrechnet und etwas anderes herausbekommt, haelt nicht die Simulation
+  // fuer falsch, sondern sich selbst. Deshalb: erst runden, dann rechnen.
+  const _w = +(+wert).toFixed(3), _s = +(+soll).toFixed(3);
+  const dev = (isFinite(_s) && _s !== 0 && isFinite(_w))
+    ? Math.abs(_w - _s) / Math.abs(_s) * 100 : null;
+  const cls = dev === null ? 'ok' : (dev < 1 ? 'ok' : (dev < 5 ? 'mid' : 'no'));
+  return `<div class="fpm-fitline" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">
+      <span class="fpm-fitmeta">${label}</span>
+      <span class="fpm-fiteq">${_fpmNum(_w, 3)} ${einheit} &nbsp;·&nbsp; erwartet: ${_fpmNum(_s, 3)} ${einheit}</span>
+      ${dev !== null ? `<span class="fpm-badge ${cls}">Abweichung ${_fpmNum(dev, 2)} %</span>` : ''}
+      <span class="fpm-fitmeta" style="margin-top:3px">${formel}</span>
+    </div>`;
+}
+
+// ── Die vier Auftragungen ──────────────────────────────
+const _GAB_PRESETS = [
+  // 0 – die krumme Auftragung. Absichtlich OHNE Ausgleichsgerade: Eine Gerade
+  //     durch diese Punkte waere eine Behauptung, kein Messergebnis.
+  { tab: 'F über r auftragen', xl: 'r (reine Zahl)', yl: 'F in Einheiten',
+    x: z => z.r, y: z => z.F, grp: z => _gabKey(z.m1, z.m2),
+    gl: k => 'm₁ = ' + _fpmNum(_gabKeyA(k), 0) + ' kg, m₂ = ' + _fpmNum(_gabKeyB(k), 0) + ' kg',
+    curve: true,
+    curveFn: (xv, k) => _gabF(_gabKeyA(k), _gabKeyB(k), xv),
+    note: 'Die Punkte liegen auf einer fallenden Kurve, nicht auf einer Geraden. Von r = 1 auf r = 2 stürzt die Anziehung auf ein Viertel ab, von r = 4 auf r = 5 nur noch wenig – der Abfall wird immer flacher. Aus einer Kurve lässt sich keine Steigung ablesen, deshalb wird hier bewusst keine Ausgleichsgerade gezeichnet. Der Ausweg heißt Linearisieren: nicht r auf die x-Achse, sondern 1/r².',
+    typ: 'umgekehrt quadratische Funktion – eine Kurve, keine Gerade',
+    form: 'F(r) = 8 · m₁ · m₂ / r²',
+    param: () => 'Zähler = 8 · m₁ · m₂ = 8 · ' + _gabP().m1 + ' · ' + _gabP().m2 + ' = '
+      + _fpmNum(_GAB_E * _gabP().m1 * _gabP().m2, 0) + ' (aktuelle Reglerstellung)',
+    term: () => (_GAB_E * _gabP().m1 * _gabP().m2).toFixed(4) + '/x^2',
+    deutung: 'Der Abstand zählt doppelt: Er steht im Nenner und dort im Quadrat. Deshalb fällt die Kurve zuerst steil und wird dann immer flacher – ganz auf null geht sie nie.' },
+
+  // 1 – DER NACHWEIS. Ursprungsgerade, Steigung 8·m1·m2.
+  { tab: 'F über 1/r² auftragen', xl: '1/r² (reine Zahl)', yl: 'F in Einheiten',
+    x: z => _gabInvR2(z), y: z => z.F, grp: z => _gabKey(z.m1, z.m2),
+    gl: k => 'm₁ = ' + _fpmNum(_gabKeyA(k), 0) + ' kg, m₂ = ' + _fpmNum(_gabKeyB(k), 0) + ' kg',
+    slope: k => _GAB_E * _gabKeyA(k) * _gabKeyB(k),
+    curveFn: (xv, k) => _GAB_E * _gabKeyA(k) * _gabKeyB(k) * xv,
+    note: 'Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ F ist zu 1/r² proportional, also F ~ 1/r². Damit ist das Abstandsgesetz nachgewiesen und nicht nur behauptet. Die Steigung ist 8 · m₁ · m₂ und steht in Einheiten. Teilt man sie durch das Produkt der beiden Massen, bleibt für jede Messreihe dieselbe Zahl übrig. Ein Punkt, der einzeln danebenliegt, stammt aus einer Einstellung, bei der auch eine Masse verändert wurde.',
+    typ: 'proportionale Funktion (Ursprungsgerade nach dem Linearisieren)',
+    form: 'F(1/r²) = (8 · m₁ · m₂) · 1/r²',
+    param: () => 'Steigung = 8 · m₁ · m₂ = 8 · ' + _gabP().m1 + ' · ' + _gabP().m2 + ' = '
+      + _fpmNum(_GAB_E * _gabP().m1 * _gabP().m2, 0) + ' (aktuelle Reglerstellung)',
+    term: () => (_GAB_E * _gabP().m1 * _gabP().m2).toFixed(4) + '*x',
+    deutung: 'Trägt man F gegen 1/r² auf, wird aus der Kurve eine Gerade durch den Ursprung. Genau das meint der Satz „die Anziehung ist zum Quadrat des Abstands antiproportional“.',
+    ergebnis: g0 => {
+      const m1 = _gabKeyA(g0.key), m2 = _gabKeyB(g0.key);
+      const k = _gabRundK(g0.fit.k);
+      const v = _gabRund(k / (m1 * m2), 3);
+      return _gabErgebnis('Verhältniszahl der Simulation aus der Steigung k', v, 'Einheiten je kg²', _GAB_E,
+        'F = k · 1/r² mit k = 8 · m₁ · m₂ &nbsp;⇒&nbsp; k / (m₁ · m₂) = '
+        + _gabFmtK(k) + ' / ' + (m1 * m2) + ' = ' + _fpmNum(v, 3)
+        + ' – dieselbe Zahl für jede Messreihe. In Newton lässt sie sich nicht umrechnen, die Simulation zählt in Einheiten.'); } },
+
+  // 2 – die Massenabhaengigkeit. Steigung 8·m2/r², daraus faellt m2 heraus.
+  { tab: 'F über m₁ auftragen', xl: 'm₁ in kg', yl: 'F in Einheiten',
+    x: z => z.m1, y: z => z.F, grp: z => _gabKey(z.m2, z.r),
+    gl: k => 'm₂ = ' + _fpmNum(_gabKeyA(k), 0) + ' kg, r = ' + _fpmNum(_gabKeyB(k), 0),
+    slope: k => _GAB_E * _gabKeyA(k) / (_gabKeyB(k) * _gabKeyB(k)),
+    curveFn: (xv, k) => _GAB_E * _gabKeyA(k) / (_gabKeyB(k) * _gabKeyB(k)) * xv,
+    note: 'Ursprungsgerade ⇒ F ~ m₁ bei festgehaltener zweiter Masse und festem Abstand. Doppelte Masse, doppelte Anziehung – hier ist keine Linearisierung nötig, die Masse zählt einfach. Die Steigung ist 8 · m₂ / r² und steht in Einheiten je Kilogramm. Aus ihr lässt sich die Masse der rechten Kugel zurückrechnen, obwohl an ihr nie ein Regler bewegt wurde. Für m₂ gilt dasselbe: Beide Kugeln ziehen gleich stark aneinander.',
+    typ: 'proportionale Funktion (Ursprungsgerade)',
+    form: 'F(m₁) = (8 · m₂ / r²) · m₁',
+    param: () => 'Steigung = 8 · m₂ / r² = 8 · ' + _gabP().m2 + ' / ' + _gabP().r + '² = '
+      + _fpmNum(_GAB_E * _gabP().m2 / (_gabP().r * _gabP().r), 3) + ' (aktuelle Reglerstellung)',
+    term: () => (_GAB_E * _gabP().m2 / (_gabP().r * _gabP().r)).toFixed(4) + '*x',
+    deutung: 'Jede der beiden Massen zählt einfach. Verdoppelt man m₁, verdoppelt sich die Anziehung – die Punkte bleiben dabei auf derselben Geraden, sie rücken nur weiter hinaus.',
+    ergebnis: g0 => {
+      const m2 = _gabKeyA(g0.key), r = _gabKeyB(g0.key);
+      const k = _gabRundK(g0.fit.k);
+      const v = _gabRund(k * r * r / _GAB_E, 3);
+      return _gabErgebnis('Masse m₂ der rechten Kugel aus der Steigung k', v, 'kg', m2,
+        'F = k · m₁ mit k = 8 · m₂ / r² &nbsp;⇒&nbsp; m₂ = k · r² / 8 = '
+        + _gabFmtK(k) + ' · ' + (r * r) + ' / 8 = ' + _fpmNum(v, 3)); } },
+
+  // 3 – das ganze Gesetz in einer Auftragung. Alle Messreihen fallen zusammen.
+  { tab: 'F über m₁·m₂/r² auftragen', xl: 'm₁ · m₂ / r² in kg²', yl: 'F in Einheiten',
+    x: z => _gabProdR2(z), y: z => z.F, grp: null,
+    slope: () => _GAB_E,
+    curveFn: xv => _GAB_E * xv,
+    note: 'Hier zählt keine Messreihe mehr für sich: Alle Punkte aus allen Einstellungen liegen auf EINER Ursprungsgeraden, gleich welche Massen und welcher Abstand eingestellt waren ⇒ F ~ m₁ · m₂ / r². Die Steigung ist unmittelbar die Verhältniszahl der Simulation, 8 Einheiten je kg². An ihrer Stelle steht in der Natur die Gravitationskonstante G – die kennt die Simulation nicht, weil sie in Einheiten statt in Newton rechnet.',
+    typ: 'proportionale Funktion (Ursprungsgerade) – das vollständige Gesetz',
+    form: 'F = 8 · (m₁ · m₂ / r²)',
+    param: () => 'Steigung = 8 (die Verhältniszahl selbst) – sie hängt von keiner Reglerstellung ab',
+    term: () => _GAB_E.toFixed(4) + '*x',
+    deutung: 'Masse mal Masse, geteilt durch den Abstand zum Quadrat: In dieser einen Auftragung steckt das ganze Gesetz. Dass alle Messreihen auf dieselbe Gerade fallen, ist der Beweis, dass die drei Regler nicht drei Gesetze haben, sondern eines.',
+    ergebnis: g0 => {
+      const k = _gabRundK(g0.fit.k);
+      return _gabErgebnis('Verhältniszahl der Simulation – hier unmittelbar die Steigung k', k, 'Einheiten je kg²', _GAB_E,
+        'F = k · (m₁ · m₂ / r²) &nbsp;⇒&nbsp; k ist die Verhältniszahl, für jede Messreihe dieselbe.'); } }
+];
+
+// ── Zustand des Messlabors ─────────────────────────────
+function _gabLabInit() {
+  _gabLab = {
+    rows: [], nextId: 1,
+    preset: 0, fn: null, fnAuto: false, origin: true, showTheory: false,
+    pre: 'gab', plotId: 'gabPlot', fitId: 'gabFit', fnId: 'gabFn',
+    fnErrId: 'gabErr', theoId: 'gabTheo',
+    presets: _GAB_PRESETS
+  };
+}
+
+// ── Messwerterfassung ──────────────────────────────────
+// Ohne Streuung: Die Statuszeile nennt denselben Messwert, und an ihren Zahlen
+// haengen vier gedruckte Heftseiten. Eine gestreute Tabelle wuerde neben einer
+// ungestreuten Statuszeile stehen und beide unglaubwuerdig machen.
+function _gabAddRow(m1, m2, r) {
+  _gabLab.rows.push({ id: _gabLab.nextId++, m1: m1, m2: m2, r: r, F: _gabMesswert(m1, m2, r) });
+}
+// anzahl > 1 meldet eine ganze Messreihe. Ohne diese Unterscheidung staende nach
+// fuenf auf einmal aufgenommenen Werten "Messpunkt 5 uebernommen" da - richtig
+// gezaehlt, aber falsch gelesen.
+function _gabZeigeMeldung(z, anzahl) {
+  const el = document.getElementById('gabMeldung'); if (!el) return;
+  if (!z) { el.innerHTML = 'Noch kein Messpunkt übernommen.'; return; }
+  const wo = 'm₁ = ' + z.m1 + ' kg, m₂ = ' + z.m2 + ' kg, r = ' + z.r
+    + ' → F = ' + _gabFmt(z.F, _GAB_NK_F) + ' Einheiten.';
+  el.innerHTML = anzahl > 1
+    ? 'Messreihe aufgenommen: ' + anzahl + ' Messpunkte, die Tabelle enthält jetzt '
+      + _gabLab.rows.length + ' Zeilen. Zuletzt ' + wo
+    : 'Messpunkt ' + _gabLab.rows.length + ' übernommen: ' + wo;
+}
+function _gabZeichneNeu() {
+  _gabRenderTable();
+  _mlabDrawPlot('gabPlot', _gabLab);
+}
+function _gabMesspunkt() {
+  if (!_gabLab || !_gab) return;
+  _gabAddRow(_gab.m1, _gab.m2, _gab.r);
+  _gabZeigeMeldung(_gabLab.rows[_gabLab.rows.length - 1]);
+  _gabZeichneNeu();
+}
+// Nimmt die Groesse auf, die in der gewaehlten Auftragung auf der x-Achse steht,
+// und faehrt dabei von einem Reglerende zum anderen - sonst fehlt der Messreihe
+// genau der Bereich, den eine Heftseite mit "Regler ganz nach rechts" meint.
+function _gabReihe() {
+  if (!_gabLab || !_gab) return;
+  if (_gabLab.preset === 2) for (let m1 = 1; m1 <= 5; m1++) _gabAddRow(m1, _gab.m2, _gab.r);
+  else                      for (let r = 1; r <= 5; r++)   _gabAddRow(_gab.m1, _gab.m2, r);
+  _gabZeigeMeldung(_gabLab.rows[_gabLab.rows.length - 1], 5);
+  _gabZeichneNeu();
+}
+function _gabDelRow(id) {
+  if (!_gabLab) return;
+  _gabLab.rows = _gabLab.rows.filter(z => z.id !== id);
+  if (!_gabLab.rows.length) _gabZeigeMeldung(null);
+  _gabZeichneNeu();
+}
+function _gabClear() {
+  if (!_gabLab) return;
+  if (_gabLab.rows.length && !confirm('Alle ' + _gabLab.rows.length + ' Messwerte löschen?')) return;
+  _gabLab.rows = [];
+  _gabZeigeMeldung(null);
+  _gabZeichneNeu();
+}
+function _gabRenderTable() {
+  const tb = document.getElementById('gabTbody'); if (!tb || !_gabLab) return;
+  const leer = document.getElementById('gabEmpty');
+  if (leer) leer.style.display = _gabLab.rows.length ? 'none' : 'block';
+  const P = _gabLab.presets[_gabLab.preset];
+  // Die Farbkugel muss dieselbe Gruppe meinen wie der Punkt im Diagramm.
+  // _mlabDrawPlot sortiert die Gruppenschluessel AUFSTEIGEND und faerbt danach.
+  const keys = P.grp ? [...new Set(_gabLab.rows.map(z => P.grp(z)))].sort((a, b) => a - b) : [];
+  tb.innerHTML = _gabLab.rows.map(z => {
+    const i = P.grp ? keys.indexOf(P.grp(z)) : 0;
+    const col = P.col ? P.col(P.grp ? P.grp(z) : null, i) : _MLAB_PALETTE[i % _MLAB_PALETTE.length];
+    return `<tr><td><span class="fpm-dot" style="background:${col}"></span>${_fpmNum(z.m1, 0)}</td>
+       <td>${_fpmNum(z.m2, 0)}</td><td>${_fpmNum(z.r, 0)}</td>
+       <td>${_fpmNum(_gabInvR2(z), _GAB_NK_X)}</td>
+       <td><b>${_gabFmt(z.F, _GAB_NK_F)}</b></td>
+       <td class="fpm-del" onclick="_gabDelRow(${z.id})" title="löschen">✕</td></tr>`;
+  }).join('');
+}
+
+// ── Anschluss an das Auswertungs-Geruest ───────────────
+function _gabSetPreset(i) { _mlabSetPreset(_gabLab, i); _gabRenderTable(); }
+function _gabSetFn(s) { _mlabSetFn(_gabLab, s); }
+function _gabTheorieFn() { _mlabTheorieFn(_gabLab); }
+function _gabClearFn() { _mlabClearFn(_gabLab); }
+function _gabSetBool(k, v) { _gabLab[k] = v; _mlabDrawPlot('gabPlot', _gabLab); }
 
 // ═══════════════════════════════════════════════════════
 // 7.3.1  EBBE UND FLUT   (Heft 7 · g10)
@@ -71217,7 +71529,105 @@ function _lgeDraw(ctx, cv) {
 // ═══════════════════════════════════════════════════════
 const _BGE_F = 200;                                 // Reibungskraft des Klotzes in N
 let _bge = null;
-function _bgeInit() { _bge = { m: 4, v: 4, x: 0, s: 0, rollt: false, fertig: false, klotz: 0 }; }
+
+// ── Anzeigen heisst rechnen ────────────────────────────
+// In der Wertetabelle steht E = F · s. Wer 0,0025 m als "0,00 m" druckt und
+// daneben 0,5 J schreibt, liefert eine Zeile, die niemand nachrechnen kann.
+// Beide Regler laufen in Schritten von 1, also ist k = m·v² eine GANZE Zahl und
+// der Schiebeweg s = k/400 m laesst sich immer exakt anschreiben:
+//   k durch 4 teilbar -> 2 Nachkommastellen (0,16 m)
+//   k gerade          -> 3 Nachkommastellen (0,005 m)
+//   k ungerade        -> 4 Nachkommastellen (0,0025 m)
+// Damit ist 200 · s(angezeigt) immer genau E(angezeigt) - die Zeile geht auf.
+function _bgeK(m, v) { return m * v * v; }
+function _bgeNkWeg(k) { return k % 2 ? 4 : (k % 4 ? 3 : 2); }
+function _bgeNkE(k) { return k % 2 ? 1 : 0; }       // E = k/2 ist halb- oder ganzzahlig
+
+// Eine Spalte, EIN Format: das groebste Format, das noch fuer JEDE Zeile exakt ist.
+function _bgeSpalteWeg(rows) { return rows.reduce((n, r) => Math.max(n, _bgeNkWeg(_bgeK(r.m, r.v))), 2); }
+function _bgeSpalteE(rows) { return rows.reduce((n, r) => Math.max(n, _bgeNkE(_bgeK(r.m, r.v))), 0); }
+
+// Abschlussblock der Auswertung: gesuchte Groesse aus der Steigung, daneben der
+// eingestellte Wert. _mlabErgebnis() schreibt "Literatur:" - hier ist der
+// Vergleichswert aber der selbst eingestellte, deshalb ein eigener Kasten.
+function _bgeErgebnis(label, wert, einheit, soll, formel) {
+  // Die Abweichung muss aus den beiden GEDRUCKTEN Zahlen folgen. Aus den
+  // ungerundeten gerechnet stand neben "0,496 kg · eingestellt: 0,500 kg" eine
+  // Abweichung von 0,84 % - nachrechnen laesst sich daraus nur 0,80 %. Wer
+  // nachrechnet und etwas anderes herausbekommt, haelt nicht die Simulation
+  // fuer falsch, sondern sich selbst. Deshalb: erst runden, dann rechnen.
+  const _w = +(+wert).toFixed(2), _s = +(+soll).toFixed(2);
+  const dev = (isFinite(_s) && _s !== 0 && isFinite(_w))
+    ? Math.abs(_w - _s) / Math.abs(_s) * 100 : null;
+  const cls = dev === null ? 'ok' : (dev < 1 ? 'ok' : (dev < 5 ? 'mid' : 'no'));
+  return `<div class="fpm-fitline" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">
+      <span class="fpm-fitmeta">${label}</span>
+      <span class="fpm-fiteq">${_fpmNum(_w, 2)} ${einheit} &nbsp;·&nbsp; eingestellt: ${_fpmNum(_s, 2)} ${einheit}</span>
+      ${dev !== null ? `<span class="fpm-badge ${cls}">Abweichung ${_fpmNum(dev, 2)} %</span>` : ''}
+      <span class="fpm-fitmeta" style="margin-top:3px">${formel}</span>
+    </div>`;
+}
+
+// ── Die drei Auftragungen ──────────────────────────────
+// Die erste ist die wichtigste: Erst an der krummen Kurve sieht man, warum man
+// ueberhaupt quadriert. Deshalb steht sie vorn und bekommt bewusst KEINE
+// Ausgleichsgerade (curve: true) - eine Gerade durch eine Parabel zu legen waere
+// genau der Fehler, den die Seite aufdecken soll.
+const _BGE_PRESETS = [
+  { tab: 'E über v auftragen', xl: 'v in m/s', yl: 'E in J',
+    x: r => r.v, y: r => r.E, grp: r => r.m,
+    gl: k => 'm = ' + _fpmNum(k, 0) + ' kg',
+    curve: true,
+    curveFn: (xv, k) => k / 2 * xv * xv,
+    note: 'Die Punkte liegen auf einer nach oben gekrümmten Kurve, nicht auf einer Geraden – eine Ausgleichsgerade wird hier deshalb gar nicht erst gezeichnet. Von Punkt zu Punkt wird der Zuwachs immer größer: Zwischen 1 m/s und 2 m/s ändert sich wenig, zwischen 10 m/s und 12 m/s sehr viel. Blende die Theoriekurve ein – sie trifft die Punkte, ist aber eben eine Parabel. Genau darum liegt im nächsten Reiter v² statt v auf der x-Achse.',
+    typ: 'quadratische Funktion (Parabel durch den Ursprung)', form: 'E(v) = (m/2) · v²',
+    param: () => 'Streckfaktor = m/2 = ' + _fpmNum(_bge.m / 2, 1) + ' kg (eingestellte Masse ' + _fpmNum(_bge.m, 0) + ' kg)',
+    term: () => (_bge.m / 2).toFixed(4) + '*x^2',
+    deutung: 'Die Bewegungsenergie wächst schneller als das Tempo. Dreifaches Tempo bedeutet nicht dreifache, sondern neunfache Energie – deshalb wird der Bremsweg bei hohem Tempo so unangenehm lang.' },
+
+  { tab: 'E über v² auftragen', xl: 'v² in m²/s²', yl: 'E in J',
+    x: r => r.v2, y: r => r.E, grp: r => r.m,
+    gl: k => 'm = ' + _fpmNum(k, 0) + ' kg',
+    slope: k => k / 2,
+    curveFn: (xv, k) => k / 2 * xv,
+    note: 'Dieselben Messwerte, nur über v² aufgetragen: Jetzt liegen sie auf einer Ursprungsgeraden ⇒ E ~ v². Doppeltes Tempo, vierfache Energie. Die Steigung ist m/2 und hat die Einheit J/(m²/s²) = kg; aus ihr folgt die Masse zurück: m = 2·k. Punkte, die aus der Reihe fallen, stammen aus einer Einstellung, bei der die Masse mitverändert wurde – jede Masse bekommt eine eigene Farbe und eine eigene Gerade.',
+    typ: 'proportionale Funktion (Ursprungsgerade nach dem Quadrieren)', form: 'E(v²) = (m/2) · v²',
+    param: () => 'Steigung = m/2 = ' + _fpmNum(_bge.m / 2, 1) + ' kg (aktuelle Einstellung)',
+    term: () => (_bge.m / 2).toFixed(4) + '*x',
+    deutung: 'Erst das Quadrieren macht aus der Parabel eine Gerade. Dass die Punkte über v² auf einer Ursprungsgeraden liegen, ist der Nachweis für das Quadrat in E = ½ · m · v².',
+    ergebnis: g0 => _bgeErgebnis('Masse m aus der Steigung k', 2 * g0.fit.k, 'kg', g0.key,
+      'E = (m/2) · v²  ⇒  m = 2 · k') },
+
+  { tab: 'E über m auftragen', xl: 'm in kg', yl: 'E in J',
+    x: r => r.m, y: r => r.E, grp: r => r.v,
+    gl: k => 'v = ' + _fpmNum(k, 0) + ' m/s',
+    slope: k => k * k / 2,
+    curveFn: (xv, k) => k * k / 2 * xv,
+    note: 'Ursprungsgerade ⇒ E ~ m bei festgehaltenem Tempo. Doppelte Masse, doppelte Energie – hier ist nichts krumm, es muss also auch nichts quadriert werden. Die Steigung ist v²/2 in J/kg = m²/s²; aus ihr folgt das Tempo zurück: v = √(2·k). Der Vergleich mit dem vorigen Reiter ist der Kern der Stunde: Die Masse steht in der ersten Potenz, das Tempo im Quadrat.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'E(m) = (v²/2) · m',
+    param: () => 'Steigung = v²/2 = ' + _fpmNum(_bge.v * _bge.v / 2, 1) + ' m²/s² (aktuelle Einstellung)',
+    term: () => (_bge.v * _bge.v / 2).toFixed(4) + '*x',
+    deutung: 'Bei gleichem Tempo trägt die doppelte Masse die doppelte Energie. Zwei Körper mit gleichem Produkt m · v haben deshalb nicht die gleiche Energie: 16 kg mit 4 m/s bringen 128 J, 8 kg mit 8 m/s dagegen 256 J.',
+    ergebnis: g0 => _bgeErgebnis('Geschwindigkeit v aus der Steigung k', Math.sqrt(2 * g0.fit.k), 'm/s', g0.key,
+      'E = (v²/2) · m  ⇒  v = √(2 · k)') }
+];
+
+// Die Messwerte gehoeren dem Schueler, nicht dem Zustand der Kugel: "zurücksetzen"
+// stellt 4 kg und 4 m/s wieder her (so steht es auf den Heftseiten), raeumt aber
+// NICHT die Tabelle ab. Dafuer gibt es den eigenen Knopf "Tabelle leeren".
+function _bgeInit() {
+  const alt = _bge;
+  _bge = {
+    m: 4, v: 4, x: 0, s: 0, rollt: false, fertig: false, klotz: 0,
+    rows: alt ? alt.rows : [], nextId: alt ? alt.nextId : 1,
+    preset: alt ? alt.preset : 0,
+    fn: null, fnAuto: false,
+    origin: alt ? alt.origin : true, showTheory: alt ? alt.showTheory : false,
+    pre: 'bge', plotId: 'bgePlot', fitId: 'bgeFit', fnId: 'bgeFn',
+    fnErrId: 'bgeErr', theoId: 'bgeTheo',
+    presets: _BGE_PRESETS
+  };
+}
 function _bgeE() { return 0.5 * _bge.m * _bge.v * _bge.v; }
 function _bgeWeg() { return _bgeE() / _BGE_F; }     // W = F · s  →  s = E / F
 function _bgeHTML() {
@@ -71250,6 +71660,24 @@ function _bgeHTML() {
         <div class="fpm-note" style="margin-top:10px">Verdopple erst die Masse, dann das Tempo – und vergleiche die beiden Schiebestrecken. Sie sind <b>nicht</b> gleich.</div>
       </div>
     </div>
+
+    <div class="fpm-label" style="margin-top:12px">Messreihe aufnehmen</div>
+    <div class="sim-btn-row">
+      <button class="sim-btn primary" onclick="_bgeMesspunkt()">Messpunkt übernehmen</button>
+      <button class="sim-btn" onclick="_bgeReihe()">Messreihe automatisch aufnehmen</button>
+      <button class="sim-btn" onclick="_bgeClear()">Tabelle leeren</button>
+    </div>
+    <div class="fpm-note" style="margin-top:5px">Die Energie wird hier nicht behauptet, sondern <b>gemessen</b>: Der Klotz wird gegen die Reibungskraft F = 200 N um die Strecke s geschoben, und die dafür nötige Arbeit ist genau die Energie, die die Kugel mitbrachte – <b>E = F · s</b>. „Messpunkt übernehmen“ lässt die Kugel rollen und schreibt die Einstellung mit dem gemessenen Schiebeweg in die Tabelle. Für eine auswertbare Gerade darf zwischen zwei Messpunkten <b>nur eine</b> Größe verändert werden; die automatische Messreihe verändert genau die Größe, die gerade auf der x-Achse steht, fährt dabei von einem Reglerende zum anderen und hält die andere fest.</div>
+    <div class="fpm-tablewrap">
+      <table class="sim-table">
+        <thead><tr><th>m (kg)</th><th>v (m/s)</th><th>v² (m²/s²)</th><th>s (m)</th><th>E = F·s (J)</th><th></th></tr></thead>
+        <tbody id="bgeTbody"></tbody>
+      </table>
+      <div class="fpm-empty" id="bgeEmpty">Noch keine Messwerte.<br>Regler einstellen → Messpunkt übernehmen.</div>
+    </div>
+
+    <div class="fpm-label" style="margin-top:12px">Auswertung – in welcher Auftragung liegen die Punkte auf einer Ursprungsgeraden?</div>
+    ${_mlabAuswertungHTML(_bge, { preset: '_bgeSetPreset', setfn: '_bgeSetFn', theo: '_bgeTheorieFn', clear: '_bgeClearFn', bool: '_bgeSetBool' })}
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">E<sub>bew</sub> = ½ · m · v² &nbsp;|&nbsp; doppelte Masse → doppelte Energie &nbsp;|&nbsp; doppeltes Tempo → <b>vierfache</b> Energie</p>
   </div>`;
 }
@@ -71263,16 +71691,23 @@ function _bgeSync() {
   const m = document.getElementById('bgeM'), v = document.getElementById('bgeV');
   if (m) { m.value = _bge.m; document.getElementById('bgeMLbl').textContent = _fpmNum(_bge.m, 0); }
   if (v) { v.value = _bge.v; document.getElementById('bgeVLbl').textContent = _fpmNum(_bge.v, 0); }
-  _bgeStatus();
+  _bgeStatus(); _mlabRefreshTheorie(_bge);
 }
 function _bgeGo() { _bge.x = 0; _bge.s = 0; _bge.klotz = 0; _bge.rollt = true; _bge.fertig = false; }
 function _bgeStatus() {
   const el = document.getElementById('bgeStatus'); if (!el || !_bge) return;
   const E = _bgeE();
-  let s = `${_fpmNum(_bge.m, 0)} kg mit ${_fpmNum(_bge.v, 0)} m/s<br>E = ½ · ${_fpmNum(_bge.m, 0)} · ${_fpmNum(_bge.v, 0)}² = <b>${_fpmNum(E, 0)} J</b>`;
+  // Stellenzahl nach der Reglerstellung, nicht fest: Bei 1 kg mit 1 m/s sind es
+  // 0,5 J - mit fest 0 Nachkommastellen stuende dort "E = ½ · 1 · 1² = 1 J",
+  // und die Zeile ginge nicht auf. Bei allen geradzahligen m·v² (darunter die
+  // Grundeinstellung 4 kg / 4 m/s = 32 J) bleibt die Anzeige unveraendert.
+  const k = _bgeK(_bge.m, _bge.v);
+  const nkE = _bgeNkE(k), nkS = _bgeNkWeg(k);
+  let s = `${_fpmNum(_bge.m, 0)} kg mit ${_fpmNum(_bge.v, 0)} m/s<br>E = ½ · ${_fpmNum(_bge.m, 0)} · ${_fpmNum(_bge.v, 0)}² = <b>${_fpmNum(E, nkE)} J</b>`;
   if (_bge.rollt) s += `<br>rollt …`;
-  else if (_bge.fertig) s += `<br>Klotz <b>${_fpmNum(_bgeWeg(), 2)} m</b> weit geschoben.`;
+  else if (_bge.fertig) s += `<br>Klotz <b>${_fpmNum(_bgeWeg(), nkS)} m</b> weit geschoben.`;
   else s += `<br>Drücke „Rollen lassen“.`;
+  s += `<br><span style="font-weight:400">gemessen: E = F · s = 200 N · ${_fpmNum(_bgeWeg(), nkS)} m = <b>${_fpmNum(E, nkE)} J</b></span>`;
   el.innerHTML = s; el.className = 'lmp-status on';
 }
 function _bgeUpdate(dt) {
@@ -71327,6 +71762,64 @@ function _bgeDraw(ctx, cv) {
   ctx.textAlign = 'center'; ctx.font = '700 11px sans-serif'; ctx.fillStyle = '#0f172a';
   ctx.fillText('das Tempo zählt doppelt: v steht im Quadrat', W / 2, H - 8);
 }
+
+// ── Messwerterfassung ──────────────────────────────────
+// Gemessen wird der Schiebeweg s; die Energie folgt daraus ueber E = F · s.
+// Keine Streuung: Die Kugel verliert unterwegs nichts, der Massstab am Klotz ist
+// ideal. Die Punkte liegen deshalb exakt auf der Geraden - was hier gezeigt
+// werden soll, ist der Unterschied zwischen m und v², nicht Messunsicherheit.
+function _bgeAddRow(m, v) {
+  const k = _bgeK(m, v);
+  _bge.rows.push({ id: _bge.nextId++, m: m, v: v, v2: v * v, s: k / (2 * _BGE_F), E: k / 2 });
+}
+function _bgeMesspunkt() {
+  if (!_bge) return;
+  _bgeAddRow(_bge.m, _bge.v);
+  _bgeGo();                       // die Messung ist die Fahrt - also faehrt sie auch
+  _bgeRenderTable(); _mlabDrawPlot('bgePlot', _bge);
+}
+// Nimmt die Groesse auf, die in der gewaehlten Auftragung auf der x-Achse steht,
+// und faehrt dabei von einem Reglerende zum anderen - sonst fehlt der Messreihe
+// genau der Bereich, den eine Heftseite mit "Regler ganz nach rechts" meint.
+function _bgeReihe() {
+  if (!_bge) return;
+  if (_bge.preset === 2) [1, 2, 4, 6, 8, 10, 13, 16].forEach(m => _bgeAddRow(m, _bge.v));
+  else                   [1, 2, 3, 4, 6, 8, 10, 12].forEach(v => _bgeAddRow(_bge.m, v));
+  _bgeRenderTable(); _mlabDrawPlot('bgePlot', _bge);
+}
+function _bgeDelRow(id) {
+  _bge.rows = _bge.rows.filter(r => r.id !== id);
+  _bgeRenderTable(); _mlabDrawPlot('bgePlot', _bge);
+}
+function _bgeClear() {
+  if (_bge.rows.length && !confirm('Alle ' + _bge.rows.length + ' Messwerte löschen?')) return;
+  _bge.rows = [];
+  _bgeRenderTable(); _mlabDrawPlot('bgePlot', _bge);
+}
+function _bgeRenderTable() {
+  const tb = document.getElementById('bgeTbody'); if (!tb || !_bge) return;
+  const leer = document.getElementById('bgeEmpty');
+  if (leer) leer.style.display = _bge.rows.length ? 'none' : 'block';
+  const P = _bge.presets[_bge.preset];
+  // Die Farbkugel muss dieselbe Gruppe meinen wie der Punkt im Diagramm.
+  // _mlabDrawPlot sortiert die Gruppenschluessel AUFSTEIGEND und faerbt danach.
+  const keys = [...new Set(_bge.rows.map(r => P.grp(r)))].sort((a, b) => a - b);
+  const nkS = _bgeSpalteWeg(_bge.rows), nkE = _bgeSpalteE(_bge.rows);
+  tb.innerHTML = _bge.rows.map(r => {
+    const i = keys.indexOf(P.grp(r));
+    return `<tr><td><span class="fpm-dot" style="background:${_MLAB_PALETTE[i % _MLAB_PALETTE.length]}"></span>${_fpmNum(r.m, 0)}</td>
+       <td>${_fpmNum(r.v, 0)}</td><td>${_fpmNum(r.v2, 0)}</td><td>${_fpmNum(r.s, nkS)}</td>
+       <td><b>${_fpmNum(r.E, nkE)}</b></td>
+       <td class="fpm-del" onclick="_bgeDelRow(${r.id})" title="löschen">✕</td></tr>`;
+  }).join('');
+}
+
+// ── Anschluss an das Auswertungs-Geruest ───────────────
+function _bgeSetPreset(i) { _mlabSetPreset(_bge, i); _bgeRenderTable(); }
+function _bgeSetFn(s) { _mlabSetFn(_bge, s); }
+function _bgeTheorieFn() { _mlabTheorieFn(_bge); }
+function _bgeClearFn() { _mlabClearFn(_bge); }
+function _bgeSetBool(k, v) { _bge[k] = v; _mlabDrawPlot('bgePlot', _bge); }
 
 // ═══════════════════════════════════════════════════════
 // 9.3.8  ACHTERBAHN – UMWANDLUNG HIN UND HER   (Heft 9 · en8)
@@ -78657,6 +79150,13 @@ function _speInit() {
     pt: 0, wagenX: _SPE_X0,
     hinweis: '',
     rows: [], nextId: 1,
+    // ── Anschluss ans Messlabor (Auftragungen, Fit, Funktionsplotter) ──
+    // Die Wertetabelle war bisher eine Liste. Diese Felder machen aus ihr ein
+    // Diagramm mit Ausgleichsgeraden; die Namen sind die des Messlabors.
+    preset: 0, fn: null, fnAuto: false, origin: true, showTheory: false,
+    pre: 'spe', plotId: 'spePlot', fitId: 'speFit', fnId: 'speFn',
+    fnErrId: 'speErr', theoId: 'speTheo',
+    presets: _SPE_PRESETS
   };
 }
 
@@ -78745,6 +79245,10 @@ function _speSpannen() {
   if (!_spe) return;
   _spe.phase = 'gespannt'; _spe.pt = 0; _spe.wagenX = _SPE_X0; _spe.hinweis = '';
   _speStatus();
+  // Die Theoriebox nennt die AKTUELL eingestellte Federkonstante - also muss sie
+  // mitwandern, wenn der Regler bewegt wird. Steht die Theoriefunktion im Feld,
+  // wird auch sie neu eingesetzt.
+  _mlabRefreshTheorie(_spe);
 }
 function _speLoslassen() {
   if (!_spe) return;
@@ -78810,13 +79314,22 @@ function _speRenderTabelle() {
   if (leer) leer.style.display = _spe.rows.length ? 'none' : 'block';
   if (tb) {
     const nk = _speNk();
+    // Die Farbkugel vor der Federkonstante meint dieselbe Messreihe wie der Punkt
+    // im Diagramm. _mlabDrawPlot sortiert die Gruppenschluessel AUFSTEIGEND und
+    // faerbt danach - hier also genauso, sonst tauschen die Farben, sobald die
+    // haertere Feder zuerst gemessen wurde.
+    const keys = [...new Set(_spe.rows.map(r => r.D))].sort((a, b) => a - b);
     tb.innerHTML = _spe.rows.map((r, i) =>
-      `<tr><td>${i + 1}</td><td>${_fpmNum(r.D, 0)}</td><td>${_fpmNum(r.s, 0)}</td>
+      `<tr><td>${i + 1}</td><td><span class="fpm-dot" style="background:${_MLAB_PALETTE[keys.indexOf(r.D) % _MLAB_PALETTE.length]}"></span>${_fpmNum(r.D, 0)}</td><td>${_fpmNum(r.s, 0)}</td>
+         <td>${_fpmNum(_speS2(r.s), _SPE_NK_S2)}</td>
          <td>${_fpmNum(r.F, 2)}</td><td><b>${_speFmt(r.E, nk)}</b></td>
          <td class="fpm-del" onclick="_speDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
   }
   const a = document.getElementById('speAusw');
   if (a) a.innerHTML = _speAuswertungHTML();
+  // Jede Aenderung an der Tabelle ist eine Aenderung am Diagramm.
+  _mlabRenderTheorie(_spe, _spe.fnAuto);
+  _mlabDrawPlot('spePlot', _spe);
 }
 
 /* Sucht in der Messreihe zwei Zeilen mit gleichem D, bei denen die zweite
@@ -79154,8 +79667,10 @@ function _speHTML() {
         <div class="sim-btn-row" style="margin-top:6px">
           <button class="sim-btn primary" id="speBLos" onclick="_speLoslassen()">Loslassen</button>
           <button class="sim-btn" id="speBMess" onclick="_speMesspunkt()">Messpunkt übernehmen</button>
+          <button class="sim-btn" id="speBReihe" onclick="_speMessreihe()">Messreihe automatisch aufnehmen</button>
           <button class="sim-btn" id="speBLeer" onclick="_speTabelleLeeren()">Tabelle leeren</button>
         </div>
+        <div class="fpm-note" style="margin-top:5px">Für eine auswertbare Gerade darf zwischen zwei Messpunkten <b>nur eine</b> Größe verändert werden. „Messreihe automatisch aufnehmen“ hält die eingestellte Federkonstante fest und fährt die Auslenkung von einem Reglerende zum anderen: s = 0, 5, 10, 15, 20, 25, 30 cm. Für eine zweite Gerade stellst du danach eine andere Federkonstante ein und nimmst die Reihe noch einmal auf.</div>
       </div>
       <div>
         <div class="fpm-label">Kraft, Fläche, Energie</div>
@@ -79163,7 +79678,7 @@ function _speHTML() {
         <div class="fpm-label" style="margin-top:12px">Messreihe</div>
         <div class="fpm-tablewrap">
           <table class="sim-table">
-            <thead><tr><th>Nr.</th><th>D (N/m)</th><th>s (cm)</th><th>F (N)</th><th>E (J)</th><th></th></tr></thead>
+            <thead><tr><th>Nr.</th><th>D (N/m)</th><th>s (cm)</th><th>s² (m²)</th><th>F (N)</th><th>E (J)</th><th></th></tr></thead>
             <tbody id="speTbody"></tbody>
           </table>
           <div class="fpm-empty" id="speEmpty">Noch keine Messwerte.<br>D und s einstellen, dann „Messpunkt übernehmen“.</div>
@@ -79172,11 +79687,159 @@ function _speHTML() {
         <div class="fpm-note" style="margin-top:8px"><b>Modellgrenzen:</b> Die Feder gilt als ideal (F = D · s über den ganzen Bereich, keine Verformung, keine eigene Masse), die Bahn als reibungsfrei. Deshalb wird die Spannenergie <b>vollständig</b> zu Bewegungsenergie und der Wagen wird nicht langsamer. In der echten Fahrbahn gehen einige Prozent an Reibung und an die mitschwingende Federmasse verloren.</div>
       </div>
     </div>
+
+    <div class="fpm-label" style="margin-top:12px">Auswertung – welche Auftragung macht aus der krummen Kurve eine Gerade?</div>
+    ${_mlabAuswertungHTML(_spe, { preset: '_speSetPreset', setfn: '_speSetFn', theo: '_speTheorieFn', clear: '_speClearFn', bool: '_speSetBool' })}
+    <div class="fpm-note" style="margin-top:6px"><b>So findest du die Formel selbst:</b> Nimm zu <b>einer</b> Federkonstante mehrere Auslenkungen auf. Der erste Reiter gibt eine Ursprungsgerade – ihre Steigung ist die Federkonstante D. Der zweite trägt die Energie über derselben Auslenkung auf und wird krumm: eine Steigung gibt es dort nicht. Erst der dritte Reiter trägt E über s² auf; dort liegen dieselben Messwerte wieder auf einer Ursprungsgeraden, und ihre Steigung ist D/2. Auf der x-Achse steht die Auslenkung in <b>Metern</b>: 10 cm sind 0,10 m, und s² steht in der vierten Tabellenspalte.</div>
+
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
       <b>F = D · s</b> (Gerade) &nbsp;·&nbsp; <b>E = ½ · D · s²</b> (Dreiecksfläche darunter) &nbsp;·&nbsp; doppeltes s: doppelte Kraft, vierfache Energie
     </p>
   </div>`;
 }
+
+// ═══════════════════════════════════════════════════════
+// SPANNENERGIE · ANSCHLUSS ANS MESSLABOR
+// Die Wertetabelle oben war bisher eine Liste: Zahlen sammeln, fertig. Aus
+// Zahlen wird aber erst dann eine Formel, wenn man sie AUFTRAEGT - und zwar so
+// lange umformt, bis eine Gerade dasteht. Genau das leisten die drei
+// Auftragungen unten:
+//
+//   1) F ueber s          Ursprungsgerade, Steigung D      -> D = k
+//   2) E ueber s          PARABEL, keine Gerade            -> keine Steigung
+//   3) E ueber s²         Ursprungsgerade, Steigung D/2    -> D = 2·k
+//
+// Der Zusammenhang der beiden Geraden ist der Kern der Seite: DIESELBE Feder
+// liefert einmal die Steigung D und einmal die Steigung D/2. Der Faktor ½ ist
+// kein Rechenzufall - die Energie ist die DREIECKSFLAECHE unter der
+// Kraftgeraden, und ein Dreieck ist halb so gross wie das Rechteck mit
+// denselben Seiten. Das steht in der Anmerkung der dritten Auftragung.
+//
+// GRUNDREGEL wie im ganzen Modul: Was als Rechenweg dasteht, muss aus den
+// ANGEZEIGTEN Zahlen folgen. Der Ergebniskasten rechnet deshalb nicht mit
+// fit.k weiter, sondern mit der Zeichenkette, die die Fitzeile darueber
+// gedruckt hat (_speFitStr -> _speZahl).
+// ═══════════════════════════════════════════════════════
+
+// Quadrat der Auslenkung in m². Genau die Rechnung von _speEnergie, damit die
+// Tabellenspalte und die x-Achse der dritten Auftragung dieselbe Zahl meinen.
+function _speS2(sCm) { return (sCm / 100) * (sCm / 100); }
+// s ist ganzzahlig in cm, also ist s² = s·s/10000 mit hoechstens VIER
+// Nachkommastellen exakt - von 0,0001 m² (1 cm) bis 0,0900 m² (30 cm).
+// Eine Spalte, eine Stellenzahl, und keine Zeile wird dabei gerundet.
+const _SPE_NK_S2 = 4;
+
+// Die automatische Messreihe faehrt von einem Reglerende zum anderen. Ohne die
+// 0 fehlt der Ursprung, ohne die 30 das obere Reglerende - genau die beiden
+// Stellen, die eine Heftseite mit "Regler ganz nach links/rechts" meint.
+const _SPE_REIHE = [0, 5, 10, 15, 20, 25, 30];
+
+// So und nicht anders druckt _mlabRenderFit die Steigung. Wer den
+// Ergebniskasten aus fit.k statt aus dieser Zeichenkette rechnet, bekommt eine
+// Zahl, die neben der Fitzeile darueber nicht aufgeht.
+function _speFitNk(k) { return Math.abs(k) < 1 ? 4 : 3; }
+function _speFitStr(k) { return _fpmNum(k, _speFitNk(k)); }
+
+// Ergebniskasten: zurueckgerechnete Groesse gegen den EINGESTELLTEN Wert.
+// Beide Zahlen kommen fertig formatiert herein, die Abweichung wird aus ihnen
+// gerechnet - so steht im Kasten nichts, was sich nicht nachrechnen laesst.
+function _speErgebnis(label, wertStr, einheit, sollStr, formel) {
+  const w = _speZahl(wertStr), s = _speZahl(sollStr);
+  const dev = (isFinite(w) && isFinite(s) && s !== 0) ? Math.abs(w - s) / Math.abs(s) * 100 : null;
+  const cls = dev === null ? 'ok' : (dev < 1 ? 'ok' : (dev < 5 ? 'mid' : 'no'));
+  return `<div class="fpm-fitline" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">
+      <span class="fpm-fitmeta">${label}</span>
+      <span class="fpm-fiteq">${wertStr} ${einheit} &nbsp;·&nbsp; eingestellt: ${sollStr} ${einheit}</span>
+      ${dev !== null ? `<span class="fpm-badge ${cls}">Abweichung ${_fpmNum(dev, 2)} %</span>` : ''}
+      <span class="fpm-fitmeta" style="margin-top:3px">${formel}</span>
+    </div>`;
+}
+
+// ── Die drei Auftragungen ──────────────────────────────
+// Gruppiert wird ueberall nach der Federkonstante D: Eine Ausgleichsgerade
+// entsteht nur, wenn zwischen zwei Messpunkten allein die Auslenkung veraendert
+// wurde. Zwei Federn geben zwei Geraden, keine Punktwolke.
+const _SPE_PRESETS = [
+
+  // 1) F ueber s -> Ursprungsgerade, Steigung D
+  { tab: 'F über s auftragen', xl: 's in m', yl: 'F in N',
+    x: r => r.s / 100, y: r => r.F, grp: r => r.D,
+    gl: k => 'D = ' + _fpmNum(k, 0) + ' N/m',
+    slope: k => k,
+    curveFn: (xv, k) => k * xv,
+    note: 'Ursprungsgerade ⇒ F ~ s. Doppelte Auslenkung, doppelte Kraft. Die Steigung ist die Federkonstante D selbst, ihre Einheit ist N/m. Auf der x-Achse steht die Auslenkung in Metern: 10 cm aus der Tabelle sind 0,10 m. Liegen zwei Federn in der Tabelle, gehört zu jeder eine eigene Gerade – die härtere ist die steilere.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'F(s) = D · s',
+    param: () => 'Steigung = D = ' + _fpmNum(_spe.D, 0) + ' N/m (aktuell eingestellt)',
+    term: () => _spe.D.toFixed(4) + '*x',
+    deutung: 'Das Kraftgesetz der Feder. Die Kraft wächst gleichmäßig mit der Auslenkung; die Steigung dieser Geraden ist unmittelbar die Federkonstante.',
+    ergebnis: g0 => {
+      const ks = _speFitStr(g0.fit.k);
+      return _speErgebnis('Federkonstante D aus der Steigung k', ks, 'N/m', _fpmNum(g0.key, 0),
+        'F = D · s  ⇒  D = k = ' + ks + ' N/m'); } },
+
+  // 2) E ueber s -> Parabel. Bewusst OHNE Fit: hier gibt es keine Steigung.
+  { tab: 'E über s auftragen', xl: 's in m', yl: 'E in J',
+    x: r => r.s / 100, y: r => r.E, grp: r => r.D,
+    curve: true,
+    curveFn: (xv, k) => 0.5 * k * xv * xv,
+    gl: k => 'D = ' + _fpmNum(k, 0) + ' N/m',
+    note: 'Hier liegen die Punkte NICHT auf einer Geraden: Die Energie wächst schneller als die Auslenkung. Doppeltes s bedeutet vierfaches E – die Messwerte liegen auf einer Parabel durch den Ursprung, und eine Parabel hat keine Steigung, die man ablesen könnte. Deshalb wird linearisiert: Setze im nächsten Reiter s² statt s auf die x-Achse. (Schalte „Theoriekurve einblenden“ ein, um die Parabel zu sehen.)',
+    typ: 'quadratische Funktion (Parabel durch den Ursprung) – keine Gerade', form: 'E(s) = (D/2) · s²',
+    param: () => 'Faktor = D/2 = ' + _fpmNum(_spe.D / 2, 1) + ' N/m (aktuell eingestellt)',
+    term: () => (_spe.D / 2).toFixed(4) + '*x^2',
+    deutung: 'Die Energie ist die Dreiecksfläche unter der Kraftgeraden. Wird die Auslenkung doppelt so groß, wird das Dreieck in beiden Richtungen doppelt so groß – seine Fläche also viermal so groß.' },
+
+  // 3) E ueber s² -> Ursprungsgerade, Steigung D/2. Hier faellt die Formel.
+  { tab: 'E über s² auftragen', xl: 's² in m²', yl: 'E in J',
+    x: r => _speS2(r.s), y: r => r.E, grp: r => r.D,
+    gl: k => 'D = ' + _fpmNum(k, 0) + ' N/m',
+    slope: k => k / 2,
+    curveFn: (xv, k) => k / 2 * xv,
+    note: 'Über s² liegen dieselben Messwerte auf einer Ursprungsgeraden ⇒ E ~ s². Die Steigung ist D/2, also die HALBE Federkonstante. Dieselbe Feder liefert damit zwei Geraden: F über s hat die Steigung D, E über s² die Steigung D/2. Der Faktor ½ ist kein Zufall – die Energie ist die Fläche unter der Kraftgeraden, und diese Fläche ist ein Dreieck: halb so groß wie das Rechteck F · s mit denselben Seiten. Genau deshalb heißt es E = ½ · D · s² und nicht E = F · s. Die Werte für die x-Achse stehen in der Tabellenspalte s².',
+    typ: 'proportionale Funktion (Ursprungsgerade nach dem Quadrieren)', form: 'E(s²) = (D/2) · s²',
+    param: () => 'Steigung = D/2 = ' + _fpmNum(_spe.D / 2, 1) + ' N/m (aktuell eingestellt)',
+    term: () => (_spe.D / 2).toFixed(4) + '*x',
+    deutung: 'Aufgetragen über s² wird aus der Parabel eine Gerade – das ist das Linearisieren. Aus ihrer Steigung k folgt die Federkonstante zurück: D = 2 · k. Sie muss dieselbe Zahl ergeben wie die Steigung der F-s-Geraden im ersten Reiter.',
+    ergebnis: g0 => {
+      // Erst formatieren, dann verdoppeln: 2 · 10,000 muss die 20,000 im Kasten
+      // ergeben, auch wenn fit.k intern 9,999999999 lautet.
+      const ks = _speFitStr(g0.fit.k);
+      const ds = _fpmNum(2 * _speZahl(ks), _speFitNk(g0.fit.k));
+      return _speErgebnis('Federkonstante D aus der Steigung k', ds, 'N/m', _fpmNum(g0.key, 0),
+        'E = ½ · D · s²  ⇒  D = 2 · k = 2 · ' + ks + ' N/m = ' + ds + ' N/m'); } }
+];
+
+// ── Messreihe in einem Zug ─────────────────────────────
+// Haelt die eingestellte Federkonstante fest und nimmt die Auslenkungen aus
+// _SPE_REIHE auf. Schon vorhandene Einstellungen werden uebersprungen, nicht
+// doppelt eingetragen - sonst zieht dieselbe Zeile die Ausgleichsgerade zweimal.
+function _speMessreihe() {
+  if (!_spe) return;
+  const D = _spe.D;
+  let neu = 0, schon = 0, voll = false;
+  for (const s of _SPE_REIHE) {
+    if (_spe.rows.some(r => r.D === D && r.s === s)) { schon++; continue; }
+    if (_spe.rows.length >= _SPE_ROWMAX) { voll = true; break; }
+    _spe.rows.push({ id: _spe.nextId++, D: D, s: s, F: _speKraft(D, s), E: _speEnergie(D, s) });
+    neu++;
+  }
+  _spe.rows.sort((a, b) => a.D - b.D || a.s - b.s);
+  let h = 'Messreihe bei D = ' + _fpmNum(D, 0) + ' N/m: ' + _fpmNum(neu, 0)
+        + (neu === 1 ? ' neue Zeile' : ' neue Zeilen') + ' (s von 0 cm bis '
+        + _fpmNum(_SPE_SMAX, 0) + ' cm).';
+  if (schon) h += ' ' + _fpmNum(schon, 0) + (schon === 1 ? ' Einstellung stand' : ' Einstellungen standen') + ' schon in der Tabelle.';
+  if (voll) h += ' Die Tabelle fasst ' + _SPE_ROWMAX + ' Zeilen – leere sie, um weiterzumessen.';
+  _spe.hinweis = h;
+  _speRenderTabelle();
+  _speStatus();
+}
+
+// ── Anschluss an das Auswertungs-Geruest ───────────────
+function _speSetPreset(i) { _mlabSetPreset(_spe, i); _speRenderTabelle(); }
+function _speSetFn(s) { _mlabSetFn(_spe, s); }
+function _speTheorieFn() { _mlabTheorieFn(_spe); }
+function _speClearFn() { _mlabClearFn(_spe); }
+function _speSetBool(k, v) { _spe[k] = v; _mlabDrawPlot('spePlot', _spe); }
 
 // ═══════════════════════════════════════════════════════
 // EF · WAAGERECHTER WURF – zwei Bewegungen zur selben Zeit
@@ -79196,13 +79859,21 @@ function _speHTML() {
 // kommen gleichzeitig unten an. Die Fallzeit t = wurzel(2h/g) enthaelt v0
 // nicht; genau das ist die Aussage.
 //
+// Unten am Bild haengt ausserdem ein Messlabor (_mlab): Messpunkte sammeln,
+// Wertetabelle, vier Auftragungen mit Ausgleichsrechnung. Siehe den Abschnitt
+// "MESSLABOR ZUM WAAGERECHTEN WURF" hinter _wwfHTML().
+//
 // Registry-Eintrag fuer simcheck/einbau.py:
 //   'wurf-waagerecht': modal => {
 //     _wwfInit();
 //     modal.innerHTML = _wwfHTML();
 //     _wwfStatus();
+//     _wwfListe();
+//     _wwfRenderTable();
 //     _pSim = new PhysicsSimEngine('wwfAnim', 'wwfAnim');
 //     _pSim.start(dt => _wwfUpdate(dt), (ctx, cv) => _wwfDraw(ctx, cv), []);
+//     _mlabRenderTheorie(_wwf, false);
+//     _mlabDrawPlot('wwfPlot', _wwf);
 //   },
 // ═══════════════════════════════════════════════════════
 
@@ -79223,6 +79894,12 @@ function _wwfInit() {
     bahnen: [],     // aufgezeichnete Bahnkurven
     acc: 0,         // Sammler fuer die Statuszeile (nicht 60-mal je Sekunde)
     puls: 0,        // laeuft immer weiter, haelt das Bild lebendig
+    // ── Messlabor (_mlab): Wertetabelle, Auftragungen, Ausgleichsrechnung ──
+    rows: [], nextId: 1,
+    preset: 0, fn: null, fnAuto: false, origin: true, showTheory: false,
+    pre: 'wwf', plotId: 'wwfPlot', fitId: 'wwfFit', fnId: 'wwfFn',
+    fnErrId: 'wwfErr', theoId: 'wwfTheo',
+    presets: _WWF_PRESETS
   };
 }
 
@@ -79238,6 +79915,7 @@ function _wwfSetH(v) {
   const el = document.getElementById('wwfHLbl');
   if (el) el.textContent = _fpmNum(_wwf.h, 0) + ' m';
   _wwfNeu();
+  _mlabRefreshTheorie(_wwf);   // Theoriebox und geplottete Funktion folgen dem Regler
 }
 
 function _wwfSetV0(v) {
@@ -79246,6 +79924,7 @@ function _wwfSetV0(v) {
   const el = document.getElementById('wwfV0Lbl');
   if (el) el.textContent = _fpmNum(_wwf.v0, 0) + ' m/s';
   _wwfNeu();
+  _mlabRefreshTheorie(_wwf);
 }
 
 function _wwfNeu() {
@@ -79341,13 +80020,25 @@ function _wwfStatus() {
   s += `Der senkrecht fallende Vergleichskörper ist zur selben Zeit bei ` +
        `y = <b>${_fpmNum(y, 2)} m</b> – auf gleicher Höhe.<br><br>`;
 
-  s += `x = v₀ · t = ${_fpmNum(v0, 2)} m/s · ${_fpmNum(t, 2)} s = <b>${_fpmNum(x, 2)} m</b> (gleichförmig)<br>`;
-  s += `y = h − 0,5 · g · t² = ${_fpmNum(h, 0)} m − 0,5 · 9,81 m/s² · (${_fpmNum(t, 2)} s)² = <b>${_fpmNum(y, 2)} m</b> (gleichmäßig beschleunigt)<br>`;
+  // In den Rechenzeilen steht t mit VIER Nachkommastellen, in der Werteliste
+  // darueber mit zwei. Das ist Absicht: Wer die Zeile nachrechnet, muss auf das
+  // gedruckte Ergebnis kommen. Mit den zwei Stellen der Werteliste ging keine der
+  // drei Zeilen auf - "8,00 m/s · 2,02 s = 16,15 m" ergibt 16,16, und beim
+  // Aufprall stand "20 m − 0,5 · 9,81 m/s² · (2,02 s)² = 0,00 m" statt −0,01 m.
+  // Der Fehler steckt im Faktor: 20 · 0,005 s sind schon 0,1 m.
+  // Nachgemessen ueber alle 171 Reglerstellungen an den drei Sprungmarken:
+  // mit zwei Stellen waren 299 von 513 x-Zeilen, 304 y-Zeilen und 144 von 171
+  // Wurfweiten nicht nachrechenbar, mit vier Stellen noch 9, 0 und 3. Der Rest
+  // sind echte Grenzfaelle, bei denen das exakte Produkt selbst auf einem
+  // halben Zentimeter liegt (h = 35 m: 4 · 2,67124988 s = 10,68499952 m) -
+  // die bekommt auch eine fuenfte Stelle nicht weg.
+  s += `x = v₀ · t = ${_fpmNum(v0, 2)} m/s · ${_fpmNum(t, 4)} s = <b>${_fpmNum(x, 2)} m</b> (gleichförmig)<br>`;
+  s += `y = h − 0,5 · g · t² = ${_fpmNum(h, 0)} m − 0,5 · 9,81 m/s² · (${_fpmNum(t, 4)} s)² = <b>${_fpmNum(y, 2)} m</b> (gleichmäßig beschleunigt)<br>`;
   s += `v = √(v₀² + v<sub>y</sub>²) = <b>${_fpmNum(v, 2)} m/s</b><br><br>`;
 
   s += `Fallzeit t = √(2h/g) = √(2 · ${_fpmNum(h, 0)} m / 9,81 m/s²) = <b>${_fpmNum(tF, 2)} s</b>. ` +
        `In dieser Formel kommt v₀ <b>nicht</b> vor – die Abwurfgeschwindigkeit ändert die Fallzeit nicht.<br>`;
-  s += `Wurfweite x<sub>W</sub> = v₀ · t = ${_fpmNum(v0, 2)} m/s · ${_fpmNum(tF, 2)} s = <b>${_fpmNum(weite, 2)} m</b><br>`;
+  s += `Wurfweite x<sub>W</sub> = v₀ · t = ${_fpmNum(v0, 2)} m/s · ${_fpmNum(tF, 4)} s = <b>${_fpmNum(weite, 2)} m</b><br>`;
 
   s += _wwf.gelandet
     ? `<b>Beide sind unten – gleichzeitig, nach ${_fpmNum(tF, 2)} s.</b>`
@@ -79618,11 +80309,238 @@ function _wwfHTML() {
         <div class="fpm-note" style="margin-top:10px"><b>Modellgrenze:</b> Gerechnet wird ohne Luftwiderstand und mit g = 9,81 m/s². Der senkrecht fallende Vergleichskörper ist im Bild nach <b>links versetzt</b> gezeichnet, damit beide Körper zu sehen sind – in Wirklichkeit startet er am selben Punkt wie der geworfene. Die Marken auf beiden Bahnen liegen 0,25 s auseinander.</div>
       </div>
     </div>
+
+    <div class="fpm-label" style="margin-top:12px">Messreihe aufnehmen</div>
+    <div class="sim-btn-row">
+      <button class="sim-btn primary" onclick="_wwfMesspunkt()">Messpunkt übernehmen</button>
+      <button class="sim-btn" onclick="_wwfReihe()">Messreihe automatisch aufnehmen</button>
+      <button class="sim-btn" onclick="_wwfClear()">Tabelle leeren</button>
+    </div>
+    <div class="fpm-note" style="margin-top:5px">Ein Messpunkt hält die eingestellte Abwurfhöhe und Abwurfgeschwindigkeit zusammen mit der gemessenen Fallzeit und der gemessenen Wurfweite fest. Für eine auswertbare Gerade darf zwischen zwei Messpunkten <b>nur eine</b> Größe verändert werden. Die automatische Messreihe verändert genau die Größe, die in der gewählten Auftragung auf der x-Achse steht, und fährt dabei von einem Reglerende zum anderen. Die Fallzeit stoppt eine Lichtschranke am Boden auf 0,1 ms genau, die Wurfweite misst ein Maßband auf den Zentimeter. Gerechnet wird ohne Luftwiderstand – deshalb streuen die Punkte nicht.</div>
+    <div class="fpm-tablewrap">
+      <table class="sim-table">
+        <thead><tr><th>h (m)</th><th>v₀ (m/s)</th><th>t_F (s)</th><th>x_W (m)</th><th></th></tr></thead>
+        <tbody id="wwfTbody"></tbody>
+      </table>
+      <div class="fpm-empty" id="wwfEmpty">Noch keine Messwerte.<br>Regler einstellen → Messpunkt übernehmen.</div>
+    </div>
+
+    <div class="fpm-label" style="margin-top:12px">Auswertung – in welcher Auftragung liegen die Punkte auf einer Geraden?</div>
+    ${_mlabAuswertungHTML(_wwf, { preset: '_wwfSetPreset', setfn: '_wwfSetFn', theo: '_wwfTheorieFn', clear: '_wwfClearFn', bool: '_wwfSetBool' })}
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
       <b>x = v₀ · t</b> (gleichförmig) &nbsp;|&nbsp; <b>y = h − 0,5 · g · t²</b> (gleichmäßig beschleunigt) &nbsp;|&nbsp; die Fallzeit <b>t = √(2h/g)</b> hängt nicht von v₀ ab
     </p>
   </div>`;
 }
+
+// ═══════════════════════════════════════════════════════
+// MESSLABOR ZUM WAAGERECHTEN WURF
+// Einzelne Reglerstellungen werden zu einer Messreihe, die Messreihe zur Formel.
+// Die drei Sprungmarken zeigen den Wurf an DREI Einzelfaellen; erst die Tabelle
+// macht aus "die Fallzeit haengt nicht von v0 ab" eine gemessene Aussage.
+//
+// Die vier Auftragungen bauen aufeinander auf:
+//   0  t_F ueber h   – Wurzelkurve, KEINE Gerade (nichts abzulesen)
+//   1  t_F² ueber h  – Ursprungsgerade, Steigung 2/g  ⇒  g = 2/k
+//   2  t_F ueber v0  – WAAGERECHTE Gerade: Steigung null, Achsenabschnitt t_F.
+//                      Braucht _fpmFitLinear, nicht _fpmFitOrigin - die Gerade
+//                      geht nicht durch den Ursprung. Deshalb schaltet
+//                      _wwfSetPreset() das Haekchen "durch den Ursprung" hier ab.
+//   3  x_W ueber v0  – Ursprungsgerade, Steigung t_F  ⇒  h = g·k²/2
+// ═══════════════════════════════════════════════════════
+
+// Nachkommastellen der beiden gemessenen Spalten. EINE Stellenzahl je Spalte.
+// Die vier Stellen der Fallzeit sind kein Zierrat: Mit drei Stellen weicht die
+// Wurfweite v0·t_F in 43 der 171 Reglerstellungen um einen Zentimeter von der
+// Zahl ab, die die Liste "Aufgezeichnete Bahnen" nebenan nennt - der Faktor v0
+// vergroessert den Rundungsfehler bis auf das Zwanzigfache.
+const _WWF_NK_T = 4;    // Fallzeit t_F in s
+const _WWF_NK_W = 2;    // Wurfweite x_W in m
+
+// Beide Reihen laufen von einem Reglerende zum anderen - sonst fehlt der
+// Messreihe genau der Bereich, den eine Heftseite mit "Regler ganz nach rechts"
+// meint. Die Hoehenreihe nimmt jede Reglerstufe mit (Schrittweite 5 m).
+const _WWF_H_REIHE  = [5, 10, 15, 20, 25, 30, 35, 40, 45];
+const _WWF_V0_REIHE = [2, 4, 6, 9, 12, 15, 18, 20];
+
+// Runden wie von Hand: die halbe Einheit geht nach oben. Math.round allein taugt
+// dafuer nicht - 1,00965 liegt als Gleitkommazahl knapp UNTER der Mitte und
+// wuerde zu 1,0096 statt 1,0097. toPrecision(12) raeumt dieses Rauschen weg.
+function _wwfRund(v, n) {
+  if (!isFinite(v)) return v;
+  const p = Math.pow(10, n);
+  return Math.sign(v) * Math.round(Number((Math.abs(v) * p).toPrecision(12))) / p;
+}
+
+// Eine Messung an einer Reglerstellung. Grundsatz des Bandes: ZUERST runden,
+// DANN weiterrechnen. Gespeichert wird genau das, was in der Tabelle steht -
+// Diagramm, Ausgleichsgerade und Ergebniskasten rechnen mit diesen Zahlen, und
+// die Wurfweite folgt aus der ANGEZEIGTEN Fallzeit, nicht aus der internen.
+// In drei der 171 Reglerstellungen (h=5/v₀=13, h=10/v₀=16, h=20/v₀=7) faellt
+// x_W dadurch einen Zentimeter neben die Liste "Aufgezeichnete Bahnen", die vom
+// ungerundeten Wert ausgeht. Das ist der Preis dafuer, dass die Tabelle in sich
+// aufgeht - und die Tabelle ist die Zeile, die nachgerechnet wird.
+function _wwfMessung(h, v0) {
+  const tF = _wwfRund(Math.sqrt(2 * h / _WWF_G), _WWF_NK_T);
+  return { h: h, v0: v0, tF: tF, xW: _wwfRund(v0 * tF, _WWF_NK_W) };
+}
+
+// Fallzeit einer Hoehe, gerundet wie in der Tabelle - fuer Theoriekurve,
+// Theoriebox und Ergebniskasten dieselbe Zahl wie in der Spalte t_F.
+function _wwfTF(h) { return _wwfRund(Math.sqrt(2 * h / _WWF_G), _WWF_NK_T); }
+
+// Die Steigung, die die Fitzeile darueber ANZEIGT - mit genau den Stellen, die
+// _mlabRenderFit dafuer waehlt. Der Ergebniskasten rechnet mit dieser Zahl
+// weiter, sonst geht "g = 2 / 0,2039 = 9,809" von Hand nicht auf.
+function _wwfFitK(k) { return _wwfRund(k, Math.abs(k) < 1 ? 4 : 3); }
+function _wwfFitB(b) { return _wwfRund(b, 4); }
+
+// Wie _mlabErgebnis, aber der Vergleichswert heisst hier nicht "Literatur":
+// verglichen wird mit dem, was am Regler steht bzw. was die Formel fuer diese
+// Einstellung fordert. Gerechnet wird mit Zahlen, formatiert wird erst danach.
+function _wwfErgebnis(label, wert, soll, nk, einheit, sollTxt, formel) {
+  // Auch das Abzeichen muss aus den beiden GEDRUCKTEN Zahlen folgen. Aus dem
+  // ungerundeten Wert gerechnet stand neben "45,00 m · eingestellt: 45,00 m"
+  // eine Abweichung von 0,01 % - nachrechnen laesst sich daraus nur 0,00 %.
+  const w = _wwfRund(wert, nk), z = _wwfRund(soll, nk);
+  const dev = (isFinite(z) && z !== 0 && isFinite(w))
+    ? Math.abs(w - z) / Math.abs(z) * 100 : null;
+  return `<div class="fpm-fitline" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">
+      <span class="fpm-fitmeta">${label}</span>
+      <span class="fpm-fiteq">${_fpmNum(w, nk)} ${einheit}${isFinite(soll) ? ` &nbsp;·&nbsp; ${sollTxt}: ${_fpmNum(z, nk)} ${einheit}` : ''}</span>
+      ${dev !== null ? `<span class="fpm-badge ${_mlabBadge(dev)}">Abweichung ${_fpmNum(dev, 2)} %</span>` : ''}
+      <span class="fpm-fitmeta" style="margin-top:3px">${formel}</span>
+    </div>`;
+}
+
+// ── Die vier Auftragungen ──────────────────────────────
+const _WWF_PRESETS = [
+  { tab: 't_F über h auftragen', xl: 'h in m', yl: 't_F in s',
+    x: r => r.h, y: r => r.tF, grp: null, curve: true, orig: true,
+    col: () => '#ef4444',
+    curveFn: xv => (xv > 0 ? Math.sqrt(2 * xv / _WWF_G) : 0),
+    note: 'Die Punkte liegen auf einer nach rechts <b>abflachenden Kurve</b>, nicht auf einer Geraden: Bei vierfacher Höhe ist die Fallzeit erst doppelt so groß. Aus einer krummen Auftragung lässt sich keine Steigung ablesen und damit keine Formel gewinnen. Quadriere deshalb die Fallzeit und wechsle zur Auftragung t_F² über h.',
+    typ: 'Wurzelfunktion – keine Gerade', form: 't_F(h) = √(2·h/g)',
+    param: () => 'bei h = ' + _fpmNum(_wwf.h, 0) + ' m ist t_F = ' + _fpmNum(_wwfTF(_wwf.h), _WWF_NK_T) + ' s (aktuelle Einstellung)',
+    term: () => 'sqrt(2*x/9.81)',
+    deutung: 'Die Fallzeit wächst mit der Wurzel aus der Abwurfhöhe. Vierfache Höhe bedeutet doppelte Fallzeit – nicht vierfache.' },
+
+  { tab: 't_F² über h auftragen', xl: 'h in m', yl: 't_F² in s²',
+    x: r => r.h, y: r => r.tF * r.tF, grp: null, orig: true,
+    col: () => '#7c3aed',
+    slope: () => 2 / _WWF_G,
+    curveFn: xv => 2 / _WWF_G * xv,
+    note: 'Nach dem Quadrieren liegen die Punkte auf einer <b>Ursprungsgeraden</b> ⇒ t_F² ~ h. Genau das ist das Linearisieren: Aus der krummen Auftragung wird eine Gerade, und die Gerade hat eine ablesbare Steigung. Sie ist 2/g in s²/m; daraus folgt der Ortsfaktor g = 2/k zurück. Punkte mit gleicher Höhe, aber verschiedener Abwurfgeschwindigkeit fallen aufeinander – die Fallzeit hängt nur von h ab.',
+    typ: 'proportionale Funktion (Ursprungsgerade nach dem Quadrieren)', form: 't_F²(h) = (2/g) · h',
+    param: () => 'Steigung = 2/g = ' + _fpmNum(2 / _WWF_G, 5) + ' s²/m',
+    term: () => (2 / _WWF_G).toFixed(5) + '*x',
+    deutung: 'Das Quadrat der Fallzeit ist proportional zur Abwurfhöhe. Die Steigung der Geraden enthält nur noch den Ortsfaktor – die Abwurfgeschwindigkeit kommt darin nicht vor.',
+    ergebnis: g0 => {
+      const k = _wwfFitK(g0.fit.k);
+      return _wwfErgebnis('Ortsfaktor g aus der Steigung k', 2 / k, _WWF_G, 3, 'm/s²',
+        'Literatur', 't_F² = (2/g) · h &nbsp;⇒&nbsp; g = 2/k = 2 / ' + _fpmNum(k, 4)); } },
+
+  { tab: 't_F über v₀ auftragen', xl: 'v₀ in m/s', yl: 't_F in s',
+    x: r => r.v0, y: r => r.tF, grp: r => r.h, orig: false,
+    gl: k => 'h = ' + _fpmNum(k, 0) + ' m',
+    slope: () => 0,
+    curveFn: (xv, k) => _wwfTF(k),
+    note: 'Alle Punkte einer Höhe liegen auf <b>derselben Waagerechten</b>: Die Fallzeit ändert sich nicht, während die Abwurfgeschwindigkeit von einem Reglerende zum anderen wandert. Die Steigung ist null, der Achsenabschnitt ist die Fallzeit. Diese Gerade geht <b>nicht</b> durch den Ursprung – das Häkchen „Ausgleichsgerade durch den Ursprung“ ist für diese Auftragung ausgeschaltet, sonst würde die Gerade zum Nullpunkt gezwungen und die Aussage verschwände.',
+    typ: 'lineare Funktion mit der Steigung null (waagerechte Gerade)', form: 't_F(v₀) = √(2·h/g) = konstant',
+    param: () => 'Steigung = 0 s²/m, Achsenabschnitt = √(2·h/g) = ' + _fpmNum(_wwfTF(_wwf.h), _WWF_NK_T) + ' s (bei h = ' + _fpmNum(_wwf.h, 0) + ' m)',
+    term: () => '0*x+' + _wwfTF(_wwf.h).toFixed(_WWF_NK_T),
+    deutung: 'Die Abwurfgeschwindigkeit ändert die Fallzeit nicht. Waagerecht und senkrecht laufen unabhängig voneinander ab – der geworfene Körper braucht genauso lange nach unten wie der fallen gelassene.',
+    ergebnis: g0 => {
+      const k = _wwfFitK(g0.fit.k), b = _wwfFitB(g0.fit.b);
+      return _wwfErgebnis('Steigung k der Ausgleichsgeraden', k, 0, 4, 's²/m',
+        'erwartet', 'k = 0 heißt: t_F ist von v₀ unabhängig – die Kernaussage dieser Einheit') +
+        _wwfErgebnis('Abwurfhöhe h aus dem Achsenabschnitt b', _WWF_G * b * b / 2, g0.key, 2, 'm',
+          'eingestellt', 'b = t_F = √(2h/g) &nbsp;⇒&nbsp; h = g·b²/2 = 9,81 · ' + _fpmNum(b, _WWF_NK_T) + '² / 2'); } },
+
+  { tab: 'x_W über v₀ auftragen', xl: 'v₀ in m/s', yl: 'x_W in m',
+    x: r => r.v0, y: r => r.xW, grp: r => r.h, orig: true,
+    gl: k => 'h = ' + _fpmNum(k, 0) + ' m',
+    slope: k => _wwfTF(k),
+    curveFn: (xv, k) => _wwfTF(k) * xv,
+    note: 'Ursprungsgerade ⇒ x_W ~ v₀. Die Steigung ist die <b>Fallzeit</b> und hat die Einheit s. Doppelte Abwurfgeschwindigkeit, doppelte Wurfweite – bei unveränderter Flugdauer. Die Abwurfgeschwindigkeit wirkt sich also auf die Weite aus, nicht auf die Zeit. Jede Höhe gibt eine eigene Gerade; die höhere Abwurfhöhe ist die steilere.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'x_W(v₀) = t_F · v₀  mit  t_F = √(2·h/g)',
+    param: () => 'Steigung = t_F = ' + _fpmNum(_wwfTF(_wwf.h), _WWF_NK_T) + ' s (bei h = ' + _fpmNum(_wwf.h, 0) + ' m)',
+    term: () => _wwfTF(_wwf.h).toFixed(_WWF_NK_T) + '*x',
+    deutung: 'Waagerecht wirkt keine Kraft: In der Flugzeit legt der Körper gleichförmig die Strecke v₀·t_F zurück. Die Steigung dieser Geraden ist unmittelbar die Fallzeit.',
+    ergebnis: g0 => {
+      const k = _wwfFitK(g0.fit.k);
+      return _wwfErgebnis('Fallzeit t_F aus der Steigung k', k, _wwfTF(g0.key), _WWF_NK_T, 's',
+        'gemessen', 'x_W = t_F · v₀ &nbsp;⇒&nbsp; t_F = k') +
+        _wwfErgebnis('Abwurfhöhe h aus der Steigung k', _WWF_G * k * k / 2, g0.key, 2, 'm',
+          'eingestellt', 'k = √(2h/g) &nbsp;⇒&nbsp; h = g·k²/2 = 9,81 · ' + _fpmNum(k, 3) + '² / 2'); } }
+];
+
+// ── Messwerterfassung ──────────────────────────────────
+function _wwfAddRow(h, v0) {
+  const m = _wwfMessung(h, v0);
+  _wwf.rows.push({ id: _wwf.nextId++, h: m.h, v0: m.v0, tF: m.tF, xW: m.xW });
+}
+function _wwfMesspunkt() {
+  if (!_wwf) return;
+  _wwfAddRow(_wwf.h, _wwf.v0);
+  _wwfRenderTable(); _mlabDrawPlot('wwfPlot', _wwf);
+}
+// Nimmt die Groesse auf, die in der gewaehlten Auftragung auf der x-Achse steht.
+function _wwfReihe() {
+  if (!_wwf) return;
+  if (_wwf.preset <= 1) _WWF_H_REIHE.forEach(h => _wwfAddRow(h, _wwf.v0));
+  else                  _WWF_V0_REIHE.forEach(v => _wwfAddRow(_wwf.h, v));
+  _wwfRenderTable(); _mlabDrawPlot('wwfPlot', _wwf);
+}
+function _wwfDelRow(id) {
+  if (!_wwf) return;
+  _wwf.rows = _wwf.rows.filter(r => r.id !== id);
+  _wwfRenderTable(); _mlabDrawPlot('wwfPlot', _wwf);
+}
+function _wwfClear() {
+  if (!_wwf) return;
+  if (_wwf.rows.length && !confirm('Alle ' + _wwf.rows.length + ' Messwerte löschen?')) return;
+  _wwf.rows = [];
+  _wwfRenderTable(); _mlabDrawPlot('wwfPlot', _wwf);
+}
+
+// Die Farbkugel muss dieselbe Gruppe meinen wie der Punkt im Diagramm.
+// _mlabDrawPlot sortiert die Gruppenschluessel AUFSTEIGEND und faerbt danach;
+// wer hier nach dem ersten Auftreten faerbt, vertauscht die Farben genau dann,
+// wenn die groessere Hoehe zuerst gemessen wurde.
+function _wwfRenderTable() {
+  const tb = document.getElementById('wwfTbody'); if (!tb || !_wwf) return;
+  const leer = document.getElementById('wwfEmpty');
+  if (leer) leer.style.display = _wwf.rows.length ? 'none' : 'block';
+  const P = _wwf.presets[_wwf.preset];
+  const keys = P.grp ? [...new Set(_wwf.rows.map(r => P.grp(r)))].sort((a, b) => a - b) : [];
+  tb.innerHTML = _wwf.rows.map(r => {
+    const key = P.grp ? P.grp(r) : null;
+    const i = P.grp ? keys.indexOf(key) : 0;
+    const col = P.col ? P.col(key, i) : _MLAB_PALETTE[i % _MLAB_PALETTE.length];
+    return `<tr><td><span class="fpm-dot" style="background:${col}"></span>${_fpmNum(r.h, 0)}</td>
+       <td>${_fpmNum(r.v0, 0)}</td><td><b>${_fpmNum(r.tF, _WWF_NK_T)}</b></td>
+       <td><b>${_fpmNum(r.xW, _WWF_NK_W)}</b></td>
+       <td class="fpm-del" onclick="_wwfDelRow(${r.id})" title="löschen">✕</td></tr>`;
+  }).join('');
+}
+
+// ── Anschluss an das Auswertungs-Geruest ───────────────
+// Jede Auftragung bringt ihre Fitart mit: Nur die waagerechte Gerade braucht
+// einen Achsenabschnitt. Das Haekchen wird mitgezogen, damit es nicht das
+// Gegenteil dessen anzeigt, was gerechnet wird - von Hand umschaltbar bleibt es.
+function _wwfSetPreset(i) {
+  if (!_wwf) return;
+  _wwf.origin = _WWF_PRESETS[i].orig !== false;
+  const ck = document.getElementById('wwfOrig');
+  if (ck) ck.checked = _wwf.origin;
+  _mlabSetPreset(_wwf, i);
+  _wwfRenderTable();
+}
+function _wwfSetFn(s) { _mlabSetFn(_wwf, s); }
+function _wwfTheorieFn() { _mlabTheorieFn(_wwf); }
+function _wwfClearFn() { _mlabClearFn(_wwf); }
+function _wwfSetBool(k, v) { _wwf[k] = v; _mlabDrawPlot('wwfPlot', _wwf); }
 
 // ═══════════════════════════════════════════════════════
 // EF.x  WECHSELWIRKUNG - DAS DRITTE NEWTON'SCHE GESETZ
@@ -80176,13 +81094,19 @@ function _zpkGrad(phi) { return _fpmNum(_zpkRund(phi * 180 / Math.PI, 0) % 360, 
 // zwei bereits mit Dezimalkomma formatierten Zeichenketten – das ergibt NaN.
 // Hier wird deshalb mit Zahlen gerechnet und erst danach formatiert.
 function _zpkErgebnis(label, wert, einheit, soll, formel) {
-  const dev = (isFinite(soll) && soll !== 0 && isFinite(wert))
-    ? Math.abs(wert - soll) / Math.abs(soll) * 100 : null;
-  const cls = dev === null ? 'ok' : (dev < 1 ? 'ok' : (dev < 5 ? 'mid' : 'no'));
+  // Die Abweichung muss aus den beiden GEDRUCKTEN Zahlen folgen. Aus den
+  // ungerundeten gerechnet stand neben "0,496 kg · eingestellt: 0,500 kg" eine
+  // Abweichung von 0,84 % - nachrechnen laesst sich daraus nur 0,80 %. Wer
+  // nachrechnet und etwas anderes herausbekommt, haelt nicht die Simulation
+  // fuer falsch, sondern sich selbst. Deshalb: erst runden, dann rechnen.
   const nk = Math.abs(wert) >= 100 ? 1 : (Math.abs(wert) >= 10 ? 2 : 3);
+  const _w = +(+wert).toFixed(nk), _s = +(+soll).toFixed(nk);
+  const dev = (isFinite(_s) && _s !== 0 && isFinite(_w))
+    ? Math.abs(_w - _s) / Math.abs(_s) * 100 : null;
+  const cls = dev === null ? 'ok' : (dev < 1 ? 'ok' : (dev < 5 ? 'mid' : 'no'));
   return `<div class="fpm-fitline" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">
       <span class="fpm-fitmeta">${label}</span>
-      <span class="fpm-fiteq">${_fpmNum(wert, nk)} ${einheit} &nbsp;·&nbsp; eingestellt: ${_fpmNum(soll, nk)} ${einheit}</span>
+      <span class="fpm-fiteq">${_fpmNum(_w, nk)} ${einheit} &nbsp;·&nbsp; eingestellt: ${_fpmNum(_s, nk)} ${einheit}</span>
       ${dev !== null ? `<span class="fpm-badge ${cls}">Abweichung ${_fpmNum(dev, 2)} %</span>` : ''}
       <span class="fpm-fitmeta" style="margin-top:3px">${formel}</span>
     </div>`;
@@ -80599,4 +81523,809 @@ function _zpkDraw(ctx, cv) {
   ctx.fillStyle = '#16a34a'; ctx.fillText('v tangential', 24, 40);
   ctx.fillStyle = '#1e293b'; ctx.fillRect(24, 49, 8, 8);
   ctx.fillText('Kraftmessdose in der Drehachse', 37, 56);
+}
+
+// ═══════════════════════════════════════════════════════
+// NEWTON 2 – MESSLABOR: F = m·a aus Messpunkten herleiten
+//
+// Die Simulation 'newton2' bleibt unveraendert erhalten: dieselbe Ueberschrift,
+// dieselben Regler n2F/n2M, dieselben Leinwaende physAnim und physChart mit
+// Infofeld, v-t- und a-t-Diagramm. Die Heftseite ki9 ("Ein Regler nach dem
+// anderen") liest ihre vier Zahlen aus genau diesem Infofeld ab – dort darf
+// nichts verschwinden. Angebaut wird nur ein zweiter Teil unter den Reglern.
+//
+// Bisher las die Heftseite einzelne Wertepaare ab, und F = m·a stand danach als
+// Behauptung da. Mit den drei Auftragungen entsteht das Gesetz aus den
+// Messpunkten:
+//   0  a ueber F  bei festgehaltener Masse  -> Ursprungsgerade, Steigung 1/m
+//   1  a ueber 1/m bei festgehaltener Kraft -> Ursprungsgerade, Steigung F
+//   2  a ueber m  bei festgehaltener Kraft  -> Hyperbel, KEINE Gerade
+// Reiter 2 traegt bewusst keine Ausgleichsgerade: An ihm sieht man, warum man
+// den Kehrwert auftraegt. Gruppiert wird jeweils nach der festgehaltenen Groesse.
+//
+// GRUNDSATZ FUER JEDE RECHENZEILE: Was angezeigt wird, muss aus den ANGEZEIGTEN
+// Zahlen folgen. Deshalb wird zuerst gerundet und danach mit den gerundeten
+// Werten weitergerechnet – Tabelle, Diagramm, Ausgleichsgerade und
+// Ergebniskasten benutzen alle dieselbe angezeigte Beschleunigung, nicht F/m.
+// ═══════════════════════════════════════════════════════
+
+let _n2m = null;
+
+// Reglerenden gehoeren in jede Messreihe: Ohne sie fehlt der Messreihe genau der
+// Bereich, den eine Heftseite mit "Regler ganz nach rechts" meint.
+// F laeuft in Schritten von 5 N (10 … 200), m in Schritten von 1 kg (1 … 20).
+const _N2M_F_STUFEN = [10, 30, 50, 80, 110, 140, 170, 200];
+const _N2M_M_STUFEN = [1, 2, 3, 4, 5, 8, 10, 14, 20];
+
+// Nachkommastellen der Spalte 1/m. m ist ganzzahlig von 1 bis 20, also liegt der
+// Kehrwert zwischen 0,05 und 1,00 – mit vier Stellen hat auch der kleinste Wert
+// (0,0500) noch drei geltende Ziffern.
+const _N2M_NK_KM = 4;
+
+// ── Anzeigegenauigkeit ─────────────────────────────────
+// _zpkRund (kaufmaennisch aufrunden ohne Gleitkommarauschen), _zpkNk
+// (Stellenzahl nach Groessenordnung) und _zpkSpaltenNk (EIN Format je Spalte)
+// sind allgemeine Anzeigehelfer dieser Datei und werden hier wiederverwendet –
+// so, wie das _mlab-Geruest die _fpm*-Helfer des Federpendels wiederverwendet.
+// a reicht von 0,5 m/s² (F = 10 N, m = 20 kg) bis 200 m/s² (F = 200 N, m = 1 kg);
+// eine feste Stellenzahl waere an einem der beiden Enden unsinnig.
+
+// Die Stellenzahl der a-Spalte haengt an ALLEN Zeilen der Tabelle. Sie muss
+// deshalb an einer Stelle berechnet und von Tabelle UND Diagramm benutzt werden,
+// sonst zeigt die Tabelle 13,33 und die Ausgleichsgerade rechnet mit 13,3333.
+function _n2mNkA() {
+  return (_n2m && _n2m.rows.length) ? _zpkSpaltenNk(_n2m.rows.map(r => r.a)) : 3;
+}
+// Die ANGEZEIGTE Beschleunigung einer Zeile – die einzige a-Zahl, mit der
+// weitergerechnet wird.
+function _n2mAnzA(r) { return _zpkRund(r.a, _n2mNkA()); }
+// Der ANGEZEIGTE Kehrwert der Masse.
+function _n2mAnzKm(r) { return _zpkRund(1 / r.m, _N2M_NK_KM); }
+
+// ── Die drei Auftragungen ──────────────────────────────
+const _N2M_PRESETS = [
+  { tab: 'a über F auftragen', xl: 'F in N', yl: 'a in m/s²',
+    x: r => r.F, y: r => _n2mAnzA(r), grp: r => r.m,
+    gl: k => 'm = ' + _fpmNum(k, 0) + ' kg',
+    slope: k => 1 / k,
+    curveFn: (xv, k) => xv / k,
+    note: 'Ursprungsgerade ⇒ a ~ F bei festgehaltener Masse. Doppelte Kraft, doppelte Beschleunigung. Die Steigung ist 1/m mit der Einheit 1/kg – aus ihr lässt sich die eingestellte Masse zurückrechnen. Messpunkte, bei denen auch die Masse verändert wurde, bilden eine eigene Farbe und eine eigene Gerade.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'a(F) = (1/m) · F',
+    param: () => 'Steigung = 1/m = ' + _fpmNum(1 / _n2m.m, _N2M_NK_KM) + ' 1/kg (aktuelle Einstellung: m = ' + _fpmNum(_n2m.m, 0) + ' kg)',
+    term: () => (1 / _n2m.m).toFixed(4) + '*x',
+    deutung: 'Bei festgehaltener Masse bestimmt allein die ziehende Kraft die Beschleunigung. Die Steigung ist der Kehrwert der Masse: Je schwerer der Wagen, desto flacher die Gerade.',
+    ergebnis: g0 => _zpkErgebnis('Masse m aus der Steigung k', 1 / g0.fit.k, 'kg', g0.key,
+      'a = (1/m) · F  ⇒  m = 1/k') },
+
+  { tab: 'a über 1/m auftragen', xl: '1/m in 1/kg', yl: 'a in m/s²',
+    x: r => _n2mAnzKm(r), y: r => _n2mAnzA(r), grp: r => r.F,
+    gl: k => 'F = ' + _fpmNum(k, 0) + ' N',
+    slope: k => k,
+    curveFn: (xv, k) => k * xv,
+    note: 'Über der Masse selbst liegen dieselben Messwerte auf einer Hyperbel (rechter Reiter). Erst über dem Kehrwert 1/m liegen sie auf einer Ursprungsgeraden ⇒ a ~ 1/m. Die Steigung ist die festgehaltene Kraft F; ihre Einheit kg · m/s² ist gerade das Newton.',
+    typ: 'proportionale Funktion (Ursprungsgerade nach dem Bilden des Kehrwerts)', form: 'a(1/m) = F · (1/m)',
+    param: () => 'Steigung = F = ' + _fpmNum(_n2m.F, 0) + ' N (aktuelle Einstellung)',
+    term: () => _n2m.F.toFixed(1) + '*x',
+    deutung: 'Die Beschleunigung ist der Masse umgekehrt proportional. Über 1/m aufgetragen wird daraus eine Gerade, deren Steigung unmittelbar die ziehende Kraft ist – damit ist F = m · a aus Messpunkten gewonnen und nicht behauptet.',
+    ergebnis: g0 => _zpkErgebnis('Kraft F aus der Steigung k', g0.fit.k, 'N', g0.key,
+      'a = F · (1/m)  ⇒  F = k') },
+
+  { tab: 'a über m auftragen', xl: 'm in kg', yl: 'a in m/s²',
+    x: r => r.m, y: r => _n2mAnzA(r), grp: r => r.F,
+    gl: k => 'F = ' + _fpmNum(k, 0) + ' N',
+    curve: true,
+    curveFn: (xv, k) => (xv > 0 ? k / xv : NaN),
+    note: 'Keine Gerade – trage 1/m auf. Die Punkte liegen auf einer Hyperbel: doppelte Masse, halbe Beschleunigung. Aus einer krummen Kurve lässt sich keine Steigung ablesen, deshalb wird hier keine Ausgleichsgerade gezeichnet. Der mittlere Reiter zeigt dieselben Messwerte über 1/m – dort werden sie zur Ursprungsgeraden.',
+    typ: 'antiproportionale Funktion (Hyperbel)', form: 'a(m) = F / m',
+    param: () => 'Zähler = F = ' + _fpmNum(_n2m.F, 0) + ' N (aktuelle Einstellung)',
+    term: () => _n2m.F.toFixed(1) + '/x',
+    deutung: 'Das Produkt m · a ist in jeder Zeile dieselbe Zahl – genau die eingestellte Kraft; wo die letzte Stelle abweicht, liegt es an der Rundung von a. Genau das ist die Antiproportionalität, und sie ist der Grund, warum man den Kehrwert der Masse aufträgt.' }
+];
+
+// ── Zustand ────────────────────────────────────────────
+function _n2mInit() {
+  _n2m = {
+    F: 50, m: 5,                 // Startstellung der beiden vorhandenen Regler
+    rows: [], nextId: 1,
+    preset: 0, fn: null, fnAuto: false, origin: true, showTheory: false,
+    pre: 'n2m', plotId: 'n2mPlot', fitId: 'n2mFit', fnId: 'n2mFn',
+    fnErrId: 'n2mErr', theoId: 'n2mTheo',
+    presets: _N2M_PRESETS
+  };
+}
+
+// ── Anzeigen heisst rechnen ────────────────────────────
+// Jede Zeile des Rechenwegs rechnet mit genau diesen Zahlen weiter. m ist
+// ganzzahlig, a hat nk Nachkommastellen – das Produkt m · a hat deshalb ebenfalls
+// genau nk Nachkommastellen und ist mit dem Taschenrechner exakt nachvollziehbar.
+function _n2mAnzeige(F, m) {
+  const nk = _zpkNk(F / m);
+  const a = _zpkRund(F / m, nk);
+  const km = _zpkRund(1 / m, _N2M_NK_KM);
+  const prod = _zpkRund(m * a, nk);
+  return {
+    F: F, m: m, a: a, km: km, prod: prod, nk: nk, genau: prod === F,
+    sF: _fpmNum(F, 0), sm: _fpmNum(m, 0), sa: _fpmNum(a, nk),
+    skm: _fpmNum(km, _N2M_NK_KM), sprod: _fpmNum(prod, nk)
+  };
+}
+
+// ── Oberflaeche ────────────────────────────────────────
+function _n2mModalHTML() {
+  // Der bestehende Rahmen wird unveraendert erzeugt – gleiche Ueberschrift,
+  // gleiche Regler-Kennungen n2F/n2M, gleiche Leinwaende physAnim/physChart.
+  const rahmen = _simModalHTML('newton2', '⚡ Newtons 2. Gesetz: F = m · a',
+    _slider_html('n2F', 'Kraft F', 10, 200, 50, 5, 'N') +
+    _slider_html('n2M', 'Masse m', 1, 20, 5, 1, 'kg'), true);
+  // Das Messlabor gehoert IN dieselbe .sim-box: .sim-overlay ist ein Flex-Kasten
+  // und wuerde zwei Geschwister-Boxen nebeneinander stellen. Das letzte </div>
+  // schliesst die Box, davor wird eingesetzt.
+  const schluss = rahmen.lastIndexOf('</div>');
+  return schluss < 0 ? rahmen + _n2mLaborHTML()
+                     : rahmen.slice(0, schluss) + _n2mLaborHTML() + rahmen.slice(schluss);
+}
+
+function _n2mLaborHTML() {
+  return `<div class="fpm-sim" style="margin-top:14px;border-top:1px solid #e2e8f0;padding-top:10px">
+    <div class="fpm-label">Messlabor – aus Messpunkten zur Formel</div>
+    <div class="lmp-status" id="n2mStatus" style="font-weight:400"></div>
+
+    <div class="fpm-label" style="margin-top:12px">Messreihe aufnehmen</div>
+    <div class="sim-btn-row">
+      <button class="sim-btn primary" onclick="_n2mMesspunkt()">Messpunkt übernehmen</button>
+      <button class="sim-btn" onclick="_n2mReihe()">Messreihe automatisch aufnehmen</button>
+      <button class="sim-btn" onclick="_n2mClear()">Tabelle leeren</button>
+    </div>
+    <div class="fpm-note" style="margin-top:5px">Für eine auswertbare Gerade darf zwischen zwei Messpunkten <b>nur eine</b> Größe verändert werden – das ist die Variablenkontrolle. Die automatische Messreihe verändert genau die Größe, die im gewählten Reiter auf der x-Achse steht, fährt dabei von einem Reglerende zum anderen und hält die andere Größe fest. Der Wagen fährt ohne Reibung, die eingestellte Kraft ist zugleich die resultierende Kraft: Die Messwerte streuen nicht. Die Spalte m · a ist genau das Produkt der beiden Spalten links daneben; dass dort nicht in jeder Zeile dieselbe Zahl steht, liegt allein an der Rundung von a – bei F = 40 N und m = 3 kg etwa ist 3 · 13,33 = 39,99.</div>
+    <div class="fpm-tablewrap">
+      <table class="sim-table">
+        <thead><tr><th>F (N)</th><th>m (kg)</th><th>1/m (1/kg)</th><th>a (m/s²)</th><th>m · a (N)</th><th></th></tr></thead>
+        <tbody id="n2mTbody"></tbody>
+      </table>
+      <div class="fpm-empty" id="n2mEmpty">Noch keine Messwerte.<br>Regler einstellen → Messpunkt übernehmen.</div>
+    </div>
+
+    <div class="fpm-label" style="margin-top:12px">Auswertung – in welcher Auftragung liegen die Punkte auf einer Ursprungsgeraden?</div>
+    <div class="fpm-note" style="margin-bottom:6px">Dieses Diagramm zeigt die Zeilen der Wertetabelle, nicht den zeitlichen Verlauf einer Fahrt: Auf den Achsen stehen die eingestellten Größen, jeder Punkt ist eine Messung. Die beiden Diagramme oben im Bild bleiben davon unberührt.</div>
+    ${_mlabAuswertungHTML(_n2m, { preset: '_n2mSetPreset', setfn: '_n2mSetFn', theo: '_n2mTheorieFn', clear: '_n2mClearFn', bool: '_n2mSetBool' })}
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>a = F/m</b> &nbsp;|&nbsp; <b>F = m · a</b> &nbsp;|&nbsp; <b>1 N = 1 kg · m/s²</b>
+    </p>
+  </div>`;
+}
+
+// ── Regler abgreifen ───────────────────────────────────
+// Die beiden Regler gehoeren dem alten Teil der Simulation und bekommen KEINEN
+// zusaetzlichen Handler – ihre Kennungen und ihr oninput bleiben so, wie die
+// Heftseite sie zitiert. Das Messlabor liest sie stattdessen ab.
+function _n2mLies() {
+  if (!_n2m) return false;
+  const F = _slider('n2F'), m = _slider('n2M');
+  if (!(F > 0) || !(m > 0)) return false;      // Regler (noch) nicht im Dokument
+  const neu = (F !== _n2m.F || m !== _n2m.m);
+  _n2m.F = F; _n2m.m = m;
+  return neu;
+}
+// Laeuft im Zeichenschritt der Simulation mit: Wird ein Regler bewegt, ziehen
+// Statuszeile und Theoriekasten nach. Ein Vergleich verhindert, dass beides in
+// jedem Einzelbild neu geschrieben wird.
+function _n2mTick() {
+  if (!_n2m) return;
+  if (!_n2mLies()) return;
+  _n2mStatus();
+  _mlabRefreshTheorie(_n2m);
+}
+
+// ── Messwerterfassung ──────────────────────────────────
+function _n2mAddRow(F, m) {
+  _n2m.rows.push({ id: _n2m.nextId++, F: F, m: m, a: F / m });
+}
+function _n2mMesspunkt() {
+  if (!_n2m) return;
+  _n2mLies();
+  _n2mAddRow(_n2m.F, _n2m.m);
+  _n2mStatus();
+  _n2mRenderTable(); _mlabDrawPlot('n2mPlot', _n2m);
+}
+// Nimmt die Groesse auf, die in der gewaehlten Auftragung auf der x-Achse steht,
+// und faehrt dabei von einem Reglerende zum anderen.
+function _n2mReihe() {
+  if (!_n2m) return;
+  _n2mLies();
+  if (_n2m.preset === 0) _N2M_F_STUFEN.forEach(F => _n2mAddRow(F, _n2m.m));
+  else                   _N2M_M_STUFEN.forEach(m => _n2mAddRow(_n2m.F, m));
+  _n2mStatus();
+  _n2mRenderTable(); _mlabDrawPlot('n2mPlot', _n2m);
+}
+function _n2mDelRow(id) {
+  if (!_n2m) return;
+  _n2m.rows = _n2m.rows.filter(r => r.id !== id);
+  _n2mRenderTable(); _mlabDrawPlot('n2mPlot', _n2m);
+}
+function _n2mClear() {
+  if (!_n2m) return;
+  if (_n2m.rows.length && !confirm('Alle ' + _n2m.rows.length + ' Messwerte löschen?')) return;
+  _n2m.rows = [];
+  _n2mRenderTable(); _mlabDrawPlot('n2mPlot', _n2m);
+}
+
+function _n2mRenderTable() {
+  const tb = document.getElementById('n2mTbody'); if (!tb || !_n2m) return;
+  const leer = document.getElementById('n2mEmpty');
+  if (leer) leer.style.display = _n2m.rows.length ? 'none' : 'block';
+  const P = _n2m.presets[_n2m.preset];
+  // Die Farbkugel muss dieselbe Gruppe meinen wie der Punkt im Diagramm:
+  // _mlabDrawPlot sortiert die Gruppenschluessel aufsteigend und faerbt danach.
+  const keys = [...new Set(_n2m.rows.map(r => P.grp(r)))].sort((a, b) => a - b);
+  const nk = _n2mNkA();                       // ein Format fuer die ganze a-Spalte
+  tb.innerHTML = _n2m.rows.map(r => {
+    const i = keys.indexOf(P.grp(r));
+    const a = _zpkRund(r.a, nk);
+    const prod = _zpkRund(r.m * a, nk);       // exakt das Produkt der angezeigten Spalten
+    return `<tr><td><span class="fpm-dot" style="background:${_MLAB_PALETTE[i % _MLAB_PALETTE.length]}"></span>${_fpmNum(r.F, 0)}</td>
+       <td>${_fpmNum(r.m, 0)}</td>
+       <td>${_fpmNum(_n2mAnzKm(r), _N2M_NK_KM)}</td>
+       <td><b>${_fpmNum(a, nk)}</b></td>
+       <td>${_fpmNum(prod, nk)}</td>
+       <td class="fpm-del" onclick="_n2mDelRow(${r.id})" title="löschen">✕</td></tr>`;
+  }).join('');
+}
+
+// ── Statuszeile: die wichtigste Ausgabe ────────────────
+function _n2mStatus() {
+  const el = document.getElementById('n2mStatus');
+  if (!el || !_n2m) return;
+  const g = _n2mAnzeige(_n2m.F, _n2m.m);
+
+  const ro = (k, w, e) => `<div class="fpm-ro"><span class="fpm-ro-k">${k}</span>` +
+    `<span class="fpm-ro-v">${w}</span><span class="fpm-ro-u">${e}</span></div>`;
+
+  let t = `<div class="fpm-readout">
+      ${ro('Kraft F', g.sF, 'N')}
+      ${ro('Masse m', g.sm, 'kg')}
+      ${ro('Kehrwert 1/m', g.skm, '1/kg')}
+      ${ro('Beschleunigung a', g.sa, 'm/s²')}
+      ${ro('Probe m · a', g.sprod, 'N')}
+    </div>`;
+
+  // Jede Zeile rechnet mit den Zahlen weiter, die daneben stehen. Mit dem
+  // Taschenrechner kommt genau das heraus, was hier fett gedruckt ist.
+  t += `<div style="font-family:ui-monospace,monospace;font-size:.73rem;line-height:1.75;color:#334155;margin-top:8px;border-top:1px solid #e2e8f0;padding-top:7px">
+      a&nbsp;&nbsp;&nbsp; = F/m = ${g.sF} N / ${g.sm} kg = <b>${g.sa} m/s²</b><br>
+      1/m&nbsp; = 1 / ${g.sm} kg = <b>${g.skm} 1/kg</b><br>
+      m·a&nbsp; = ${g.sm} kg · ${g.sa} m/s² = <b>${g.sprod} N</b>
+    </div>`;
+
+  t += `<div class="fpm-note" style="margin-top:7px">${g.genau
+      ? 'Die Probe geht <b>genau auf</b>: m · a ergibt wieder die eingestellten ' + g.sF + ' N. Das ist der ganze Inhalt von F = m · a – und zugleich die Festlegung 1 N = 1 kg · m/s².'
+      : 'Die Probe ergibt <b>' + g.sprod + ' N</b> statt der eingestellten ' + g.sF + ' N. Der Unterschied steckt allein in der Rundung: ' + g.sF + ' : ' + g.sm + ' lässt sich mit ' + g.nk + ' Nachkommastellen nicht genau angeben, und weitergerechnet wird mit dem <b>angezeigten</b> a. Genau aufgehen kann die Probe nur, wenn a mit ' + g.nk + ' Stellen genau darstellbar ist – mit m = 1, 2, 4, 5, 10 oder 20 kg ist das bei jeder Kraft der Fall.'}
+    Dieselbe Beschleunigung steht im Infofeld oben im Bild – dort mit einer Nachkommastelle.</div>`;
+
+  el.innerHTML = t;
+}
+
+// ── Anschluss an das Auswertungs-Geruest ───────────────
+function _n2mSetPreset(i) { _mlabSetPreset(_n2m, i); _n2mRenderTable(); }
+function _n2mSetFn(s) { _mlabSetFn(_n2m, s); }
+function _n2mTheorieFn() { _mlabTheorieFn(_n2m); }
+function _n2mClearFn() { _mlabClearFn(_n2m); }
+function _n2mSetBool(k, v) { _n2m[k] = v; _mlabDrawPlot('n2mPlot', _n2m); }
+
+// ═══════════════════════════════════════════════════════
+// FREIER FALL – Messlabor am bestehenden Fallbild
+//
+// Angebaut, nicht ersetzt: Bild, Regler ffH, Knopf "Neu starten" und das
+// weisse Anzeigefeld mit s, v und t sind unveraendert. Die Heftseite ki5
+// ("Zwei Wege zum Ortsfaktor") liest genau dort ab und muss weiter gelten.
+//
+// Was fehlte: Man konnte die Werte nur im Lauf erwischen. Neu sind deshalb
+//   - "Anhalten" (haelt Fall UND Uhr an),
+//   - "Messpunkt uebernehmen" (haelt an und schreibt t, s, v in die Tabelle),
+//   - "Messreihe automatisch aufnehmen" (rechnet denselben Fall noch einmal
+//     durch und liest ihn ueber die ganze Falldauer ab),
+//   - "Tabelle leeren",
+//   - eine Wertetabelle mit H, t, s, v, t² und beiden g-Wegen,
+//   - drei Auftragungen (Parabel -> zwei Ursprungsgeraden),
+//   - eine Statuszeile (die Simulation hatte 21 leere status-Eintraege).
+//
+// BEKANNTE MODELLGRENZE, die hier Gegenstand ist und nicht repariert wird:
+// Die Simulation integriert mit Vorwaerts-Euler bei festem Δt = 0,016 s.
+// In jedem Schritt wird ZUERST v um g·Δt erhoeht und DANACH v·Δt zum Weg
+// addiert. Daraus folgt exakt
+//        v_n = g·t_n            (exakt)
+//        s_n = ½·g·t_n·(t_n+Δt) = ½·g·t_n²·(1 + Δt/t_n)   (zu gross)
+// also  2s/t² = g·(1 + Δt/t)  gegen  v/t = g.
+// Die Auftragungen 2 und 3 liefern deshalb VERSCHIEDENE g-Werte. Der
+// Ergebniskasten stellt beide nebeneinander und nennt die Ursache, statt
+// einen der beiden als den richtigen auszugeben (ki5, E8/E11).
+//
+// RECHENWEGE: Erst formatieren, dann aus den formatierten Zahlen weiter.
+// Jede angezeigte Zeile geht mit dem Taschenrechner auf.
+// ═══════════════════════════════════════════════════════
+
+let _ff = null;
+
+const _FF_G  = 9.81;      // Fallbeschleunigung, mit der die Simulation rechnet
+const _FF_DT = 0.016;     // fester Zeitschritt der PhysicsSimEngine (16 ms je Bild)
+const _FF_LIT = 9.81;     // Literaturwert zum Vergleich im Ergebniskasten
+const _FF_TMIN = 0.15;    // vorher sind s und v auf zwei Stellen zu grob fuer g
+
+// Nachkommastellen – EINE Zahl je Spalte, sonst stehen 0,53 und 12,404 untereinander.
+const _FF_NK_T = 2, _FF_NK_S = 2, _FF_NK_V = 2, _FF_NK_T2 = 4, _FF_NK_G = 2;
+
+// Runden wie von Hand: die halbe Einheit geht nach oben. Math.round allein
+// taugt dafuer nicht – toPrecision(12) raeumt das Gleitkommarauschen vorher weg.
+// Nachgemessen ueber die ersten 400 Schritte: liefert fuer t, s und v Zeichen
+// fuer Zeichen dasselbe wie das toFixed(2) im weissen Anzeigefeld. Nur deshalb
+// duerfen Tabelle und Bild nebeneinander stehen.
+function _ffRund(v, n) {
+  if (!isFinite(v)) return v;
+  const p = Math.pow(10, n);
+  return Math.sign(v) * Math.round(Number((Math.abs(v) * p).toPrecision(12))) / p;
+}
+function _ffFmt(v, n) { return isFinite(v) ? _fpmNum(_ffRund(v, n), n) : '—'; }
+
+// ── Anzeigen heisst rechnen ────────────────────────────
+// Alles, was auf dem Schirm steht, als Zahl UND als fertige Zeichenkette.
+// t² wird aus dem GERUNDETEN t gebildet: t hat zwei Nachkommastellen, t²
+// damit genau vier – die Spalte ist exakt und von Hand nachpruefbar.
+// Beide g-Wege rechnen mit den gerundeten Zahlen der Tabelle weiter.
+function _ffAnzeige(t, s, v) {
+  const td = _ffRund(t, _FF_NK_T), sd = _ffRund(s, _FF_NK_S), vd = _ffRund(v, _FF_NK_V);
+  const t2 = _ffRund(td * td, _FF_NK_T2);
+  const s2 = _ffRund(2 * sd, _FF_NK_S);                 // bei 2 Stellen exakt
+  const gv = td > 0 ? _ffRund(vd / td, _FF_NK_G) : NaN;
+  const gs = t2 > 0 ? _ffRund(s2 / t2, _FF_NK_G) : NaN;
+  return {
+    t: td, s: sd, v: vd, t2: t2, s2: s2, gv: gv, gs: gs,
+    st: _fpmNum(td, _FF_NK_T), ss: _fpmNum(sd, _FF_NK_S), sv: _fpmNum(vd, _FF_NK_V),
+    st2: _fpmNum(t2, _FF_NK_T2), ss2: _fpmNum(s2, _FF_NK_S),
+    sgv: _ffFmt(gv, _FF_NK_G), sgs: _ffFmt(gs, _FF_NK_G)
+  };
+}
+
+// ── Denselben Fall noch einmal durchrechnen ────────────
+// Schrittweise identisch zu _ffUpdate: erst die Uhr, dann v, dann s. Nur so
+// stehen in der automatischen Messreihe dieselben Zahlen wie im Bild, wenn
+// die Uhr dort steht. Zurueck kommen NUR die Schritte, in denen die Kugel
+// noch faellt – im Aufprallschritt friert die Simulation s ein.
+function _ffSpur(H) {
+  const out = [];
+  let y = 0, vy = 0, t = 0;
+  for (let n = 1; n <= 4000; n++) {
+    t += _FF_DT;
+    vy += _FF_G * _FF_DT;
+    y += vy * _FF_DT;
+    if (y >= H) break;
+    out.push({ n: n, t: t, y: y, v: vy });
+  }
+  return out;
+}
+
+// ── Ausgleichsrechnung fuer den Ergebniskasten ─────────
+// Rechnet ueber dieselben Zeilen und mit derselben Einstellung wie die
+// Fitzeile darueber – sonst stuenden zwei verschiedene Steigungen auf
+// derselben Seite.
+function _ffFitVon(st, xf, yf) {
+  const pts = st.rows.map(r => ({ x: xf(r), y: yf(r) })).filter(p => isFinite(p.x) && isFinite(p.y));
+  if (pts.length < 2) return null;
+  return st.origin ? _fpmFitOrigin(pts) : _fpmFitLinear(pts);
+}
+
+// Aus der Steigung wird g zurueckgerechnet – aus der ANGEZEIGTEN Steigung.
+// Die Nachkommastellen sind dieselben wie in _mlabRenderFit, damit die Zeile
+// "g = 2 · 4,979 m/s² = 9,958 m/s²" mit dem Wert der Fitzeile aufgeht.
+function _ffAusSteigung(fit, faktor) {
+  if (!fit) return null;
+  const nk = Math.abs(fit.k) < 1 ? 4 : 3;
+  const k = _ffRund(fit.k, nk);
+  const g = _ffRund(faktor * k, nk);          // bei faktor 1 und 2 exakt
+  const dev = _ffRund(Math.abs(g - _FF_LIT) / _FF_LIT * 100, 2);
+  return {
+    nk: nk, k: k, g: g, dev: dev,
+    sk: _fpmNum(k, nk), sg: _fpmNum(g, nk), sdev: _fpmNum(dev, 2),
+    cls: dev < 1 ? 'ok' : (dev < 5 ? 'mid' : 'no')
+  };
+}
+
+// Der Ergebniskasten. welche = 1 (s über t²) oder 2 (v über t) – die gerade
+// gewaehlte Auftragung wird markiert, beide Zahlen stehen aber immer da.
+function _ffErgebnisKasten(st, welche) {
+  const a2 = _ffAusSteigung(_ffFitVon(st, r => r.t2, r => r.s), 2);
+  const a3 = _ffAusSteigung(_ffFitVon(st, r => r.t, r => r.v), 1);
+  const marke = i => i === welche ? ' – <b>diese Auftragung</b>' : '';
+  let h = `<div class="fpm-fitline" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">
+      <span class="fpm-fitmeta">Fallbeschleunigung g aus der Steigung &nbsp;·&nbsp; Literaturwert 9,81 m/s²</span>
+    </div>`;
+  if (a2) h += `<div class="fpm-fitline">
+      <span class="fpm-fitmeta">aus <b>s über t²</b>${marke(1)} &nbsp;·&nbsp; s = (g/2)·t² ⇒ g = 2·k</span>
+      <span class="fpm-fiteq">g = 2 · ${a2.sk} m/s² = ${a2.sg} m/s²</span>
+      <span class="fpm-badge ${a2.cls}">Abweichung ${a2.sdev} %</span>
+    </div>`;
+  if (a3) h += `<div class="fpm-fitline">
+      <span class="fpm-fitmeta">aus <b>v über t</b>${marke(2)} &nbsp;·&nbsp; v = g·t ⇒ g = k</span>
+      <span class="fpm-fiteq">g = ${a3.sg} m/s²</span>
+      <span class="fpm-badge ${a3.cls}">Abweichung ${a3.sdev} %</span>
+    </div>`;
+  if (a2 && a3) {
+    // Die Differenz muss aus den beiden angezeigten Zahlen folgen. Beide
+    // werden dafuer auf dieselbe – die feinere – Stellenzahl gebracht; das
+    // ist exakt, weil jede von ihnen dort schon endet.
+    const nk = Math.max(a2.nk, a3.nk);
+    const g2 = _ffRund(a2.g, nk), g3 = _ffRund(a3.g, nk);
+    const d = _ffRund(g2 - g3, nk);
+    h += `<div class="fpm-fitline">
+      <span class="fpm-fitmeta">Vergleich der beiden Wege</span>
+      <span class="fpm-fiteq">${_fpmNum(g2, nk)} m/s² − ${_fpmNum(g3, nk)} m/s² = ${_fpmNum(d, nk)} m/s²</span>
+      <span class="fpm-fitmeta" style="margin-top:3px">Beide Zahlen stammen aus <b>derselben</b> Messreihe und sind beide richtig ausgewertet – trotzdem stimmen sie nicht überein. Die Ursache liegt nicht in der Messung, sondern im Rechenverfahren: Die Simulation summiert den Fallweg in festen Schritten von Δt = 0,016 s auf und addiert dabei in jedem Schritt v·Δt mit der Geschwindigkeit am <b>Schrittende</b>. Der Weg fällt dadurch um den Faktor (1 + Δt/t) zu groß aus, während v = g·t exakt bleibt. Der Wert aus s liegt deshalb <b>immer</b> über dem Wert aus v – früh im Fall deutlich, spät nur noch wenig. Welche der beiden Zahlen „stimmt", entscheidet nicht diese Messreihe, sondern die Kenntnis des Rechenverfahrens. Zeile für Zeile siehst du denselben Unterschied in den beiden letzten Tabellenspalten.</span>
+    </div>`;
+  }
+  return h;
+}
+
+// ── Die drei Auftragungen ──────────────────────────────
+// Eine krumme und zwei, die durch Linearisieren gerade werden. Gruppiert wird
+// nicht: Der Fall haengt gar nicht von der Fallhoehe ab, Punkte aus 10 m und
+// aus 100 m gehoeren auf DIESELBE Gerade. Genau das soll man sehen.
+const _FF_PRESETS = [
+  { tab: 't → s auftragen', xl: 't in s', yl: 's in m',
+    x: r => r.t, y: r => r.s, grp: null, curve: true, col: () => '#7c3aed',
+    curveFn: xv => 0.5 * _FF_G * xv * xv,
+    note: 'Keine Gerade, sondern eine Parabel: Verdoppelst du die Fallzeit, vervierfacht sich der Fallweg. Aus einer Kurve lässt sich keine Steigung ablesen – quadriere deshalb die Zeit und wechsle zur Auftragung t² → s.',
+    typ: 'quadratische Funktion (Parabel)', form: 's(t) = ½ · g · t²',
+    param: () => '½ · g = ' + _fpmNum(_FF_G / 2, 3) + ' m/s² (mit dem Literaturwert g = ' + _fpmNum(_FF_G, 2) + ' m/s²)',
+    term: () => (_FF_G / 2).toFixed(3) + '*x^2',
+    deutung: 'Der Fallweg wächst quadratisch mit der Zeit. In der ersten Zehntelsekunde fällt die Kugel wenige Zentimeter, in der letzten vor dem Aufprall mehrere Meter.' },
+
+  { tab: 't² → s auftragen', xl: 't² in s²', yl: 's in m',
+    x: r => r.t2, y: r => r.s, grp: null, col: () => '#0284c7',
+    slope: () => _FF_G / 2, curveFn: xv => _FF_G / 2 * xv,
+    note: 'Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist g/2, also g = 2 · Steigung. Messpunkte aus verschiedenen Fallhöhen liegen auf derselben Geraden – die Fallbeschleunigung hängt nicht davon ab, aus welcher Höhe man loslässt.',
+    typ: 'proportionale Funktion (Ursprungsgerade nach dem Quadrieren)', form: 's(t²) = (g/2) · t²',
+    param: () => 'Steigung = g/2 = ' + _fpmNum(_FF_G / 2, 3) + ' m/s² (mit dem Literaturwert g = ' + _fpmNum(_FF_G, 2) + ' m/s²)',
+    term: () => (_FF_G / 2).toFixed(3) + '*x',
+    deutung: 'Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Ihre Steigung ist die halbe Fallbeschleunigung.',
+    ergebnis: (g0, st) => _ffErgebnisKasten(st, 1) },
+
+  { tab: 't → v auftragen', xl: 't in s', yl: 'v in m/s',
+    x: r => r.t, y: r => r.v, grp: null, col: () => '#16a34a',
+    slope: () => _FF_G, curveFn: xv => _FF_G * xv,
+    note: 'Ursprungsgerade ⇒ v ~ t. Die Steigung ist unmittelbar g, ohne Umweg über eine Formel. Dieser Weg braucht den Fallweg gar nicht – und v = g·t ist im Rechenverfahren der Simulation exakt, anders als der aufsummierte Weg s.',
+    typ: 'proportionale Funktion (Ursprungsgerade)', form: 'v(t) = g · t',
+    param: () => 'Steigung = g = ' + _fpmNum(_FF_G, 2) + ' m/s² (Literaturwert)',
+    term: () => _FF_G.toFixed(2) + '*x',
+    deutung: 'Die Fallgeschwindigkeit wächst gleichmäßig mit der Zeit: in jeder Sekunde um 9,81 m/s. Die Steigung dieser Geraden ist die Fallbeschleunigung selbst.',
+    ergebnis: (g0, st) => _ffErgebnisKasten(st, 2) }
+];
+
+// ── Zustand ────────────────────────────────────────────
+function _ffInit() {
+  _ff = {
+    y: 0, vy: 0, t: 0,       // Fallweg, Geschwindigkeit, eigene Uhr
+    falling: true,           // faellt die Kugel noch?
+    pause: false,            // angehalten: Fall UND Uhr stehen
+    blitz: 0,                // kurzes Aufleuchten nach einem Messpunkt
+    rows: [], nextId: 1,
+    preset: 0, fn: null, fnAuto: false, origin: true, showTheory: false,
+    pre: 'ff', plotId: 'ffPlot', fitId: 'ffFit', fnId: 'ffFn',
+    fnErrId: 'ffErr', theoId: 'ffTheo',
+    presets: _FF_PRESETS
+  };
+}
+
+// ── Oberflaeche ────────────────────────────────────────
+// Bild, Diagramme, Regler, Knopf und Hinweiszeile stehen hier Zeichen fuer
+// Zeichen so, wie _simModalHTML sie gesetzt hat – auch der Tangentenhinweis,
+// den 200 andere Simulationen genauso tragen. Darunter kommt das Messlabor.
+function _ffHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim ff-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">🎯 Freier Fall – s = ½·g·t²</h3>
+    <div class="phys-layout">
+      <canvas id="physAnim" width="420" height="240" class="phys-anim-cv"></canvas>
+      <canvas id="physChart" width="420" height="240" class="phys-chart-cv"></canvas>
+    </div>
+    <div class="phys-controls">${_slider_html('ffH', 'Fallhöhe', 10, 100, 50, 5, 'm')}<button onclick="_ffReset()" class="phys-btn">🔄 Neu starten</button> <button onclick="_ffAnhalten()" id="ffAnBtn" class="phys-btn">Anhalten</button> <button onclick="_ffWeiter()" id="ffWeiterBtn" class="phys-btn">Weiterlaufen lassen</button></div>
+    <div class="phys-hint">💡 Klicke auf das Diagramm um die Steigung (Tangente) anzuzeigen</div>
+
+    <div class="fpm-label" style="margin-top:12px">Alle Größen dieses Augenblicks</div>
+    <div class="lmp-status" id="ffStatus" style="font-weight:400"></div>
+
+    <div class="fpm-label" style="margin-top:12px">Messreihe aufnehmen</div>
+    <div class="sim-btn-row">
+      <button class="sim-btn primary" onclick="_ffMesspunkt()">Messpunkt übernehmen</button>
+      <button class="sim-btn" onclick="_ffReihe()">Messreihe automatisch aufnehmen</button>
+      <button class="sim-btn" onclick="_ffClear()">Tabelle leeren</button>
+    </div>
+    <div class="fpm-note" id="ffHinweis" style="margin-top:5px;min-height:15px"></div>
+    <div class="fpm-note" style="margin-top:3px">Ein Messpunkt ist ein <b>Wertetripel aus demselben Augenblick</b>. „Messpunkt übernehmen" schreibt t, s und v genau so in die Tabelle, wie sie in diesem Augenblick im weißen Anzeigefeld stehen. Halte den Fall vorher mit <b>„Anhalten"</b> an – dann triffst du den Zeitpunkt, statt ihn im Vorbeifliegen zu erwischen; „Weiterlaufen lassen" setzt ihn fort, „Neu starten" beginnt von vorn. Die automatische Messreihe rechnet denselben Fall noch einmal durch und liest ihn in gleichen Zeitabständen über die ganze Falldauer ab (acht oder neun Zeitpunkte, je nach Fallhöhe) – es sind dieselben Zahlen, die im Bild stehen, wenn die Uhr dort steht. Nach dem Aufprall wird nichts mehr übernommen: s und v stehen dann still, während die Uhr weiterläuft.</div>
+    <div class="fpm-tablewrap">
+      <table class="sim-table">
+        <thead><tr>
+          <th>H (m)</th><th>t (s)</th><th>s (m)</th><th>v (m/s)</th>
+          <th>t² (s²)</th><th>g = v/t (m/s²)</th><th>g = 2s/t² (m/s²)</th><th></th>
+        </tr></thead>
+        <tbody id="ffTbody"></tbody>
+      </table>
+      <div class="fpm-empty" id="ffEmpty">Noch keine Messwerte.<br>Fall laufen lassen → Messpunkt übernehmen.</div>
+    </div>
+
+    <div class="fpm-label" style="margin-top:12px">Auswertung – in welcher Auftragung liegen die Punkte auf einer Ursprungsgeraden?</div>
+    ${_mlabAuswertungHTML(_ff, { preset: '_ffSetPreset', setfn: '_ffSetFn', theo: '_ffTheorieFn', clear: '_ffClearFn', bool: '_ffSetBool' })}
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">
+      <b>v = g·t</b> (Gerade, Steigung g) &nbsp;|&nbsp; <b>s = ½·g·t²</b> (Parabel → Gerade nach t²) &nbsp;|&nbsp; <b>g = v/t = 2s/t²</b>
+    </p>
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+// _ffReset behaelt Namen und Wirkung des alten Knopfes "Neu starten"; ki5
+// verlangt ihn woertlich. Der Test auf _pSim ist neu: Der Rauchtest betaetigt
+// zuerst das Schliesskreuz (das _pSim auf null setzt) und danach diesen Knopf.
+function _ffReset() {
+  if (!_ff) return;
+  _ff.y = 0; _ff.vy = 0; _ff.t = 0; _ff.falling = true; _ff.pause = false; _ff.blitz = 0;
+  if (_pSim) { _pSim.reset(); _pSim.addSeries('s'); _pSim.addSeries('v'); }
+  _ffKnoepfe(); _ffSagen(''); _ffStatus();
+}
+
+// ZWEI Knoepfe statt eines Umschalters, mit Absicht: Ein Umschalter, dessen
+// Aufschrift unter dem Finger wechselt, laesst den Schueler raten, in welchem
+// Zustand er gerade ist – und er bringt simfakten.js in eine Sackgasse. Der
+// Faktendump betaetigt jedes Bedienelement genau EINMAL; ein Umschalter bliebe
+// danach auf "angehalten" stehen, und in der Datei, aus der die Heftseiten
+// geschrieben werden, staende ab da in jeder Zeile derselbe eingefrorene
+// Augenblick. Mit zwei Knoepfen laeuft die Simulation danach weiter.
+function _ffAnhalten() {
+  if (!_ff || _ff.pause) return;
+  _ff.pause = true;
+  _ffKnoepfe();
+  _ffSagen('Fall und Uhr stehen. Jetzt lässt sich das Wertetripel in Ruhe ablesen und übernehmen.');
+  _ffLauf();
+}
+function _ffWeiter() {
+  if (!_ff || !_ff.pause) return;
+  _ff.pause = false;
+  _ffKnoepfe();
+  _ffSagen('');
+  _ffLauf();
+}
+// Der gerade wirkungslose Knopf wird gedaempft – sonst greift man ins Leere.
+function _ffKnoepfe() {
+  const a = document.getElementById('ffAnBtn'), w = document.getElementById('ffWeiterBtn');
+  const p = !!(_ff && _ff.pause);
+  if (a) a.style.opacity = p ? '.4' : '1';
+  if (w) w.style.opacity = p ? '1' : '.4';
+}
+function _ffSagen(text) {
+  const el = document.getElementById('ffHinweis');
+  if (el) el.innerHTML = text || '';
+}
+
+// ── Messwerterfassung ──────────────────────────────────
+function _ffAddRow(H, t, s, v) {
+  const a = _ffAnzeige(t, s, v);
+  _ff.rows.push({ id: _ff.nextId++, H: Math.round(H), t: a.t, s: a.s, v: a.v, t2: a.t2, gv: a.gv, gs: a.gs });
+  return a;
+}
+
+// Haelt den Zustand an und schreibt ihn in die Tabelle. Zwei Faelle werden
+// abgewiesen, beide mit Begruendung – wortlos abweisen waere schlimmer als
+// eine unbrauchbare Zeile:
+//   zu frueh: bei t unter 0,15 s sind s und v auf zwei Stellen so grob
+//             gerundet, dass v/t und 2s/t² sinnlos werden.
+//   nach dem Aufprall: s und v stehen still, die Uhr laeuft weiter. Solche
+//             Tripel gehoeren nicht in die Messreihe (ki5, Modellgrenze).
+function _ffMesspunkt() {
+  if (!_ff) return;
+  const a = _ffAnzeige(_ff.t, _ff.y, _ff.vy);
+  if (!_ff.falling) {
+    _ffSagen('Die Kugel liegt schon am Boden. Nach dem Aufprall friert die Simulation s und v ein, während die Uhr weiterläuft – aus solchen Werten folgt ein falsches g. Drücke „Neu starten".');
+    return;
+  }
+  if (_ff.t < _FF_TMIN) {
+    _ffSagen('Die Uhr steht erst bei ' + a.st + ' s. Warte, bis sie über ' + _fpmNum(_FF_TMIN, 2) +
+      ' s steht: Vorher sind s und v auf zwei Nachkommastellen zu grob gerundet, um daraus g zu berechnen.');
+    return;
+  }
+  // Eingefroren wird das Wertetripel IN DIE TABELLE, nicht die Simulation:
+  // Anhalten ist ein eigener Knopf und bleibt es. Wer beides in einen Knopf
+  // legt, kann keine zweite Messung machen, ohne vorher wieder zu starten.
+  _ff.blitz = 1;
+  _ffAddRow(_slider('ffH') || 50, _ff.t, _ff.y, _ff.vy);
+  _ffSagen('Übernommen: t = ' + a.st + ' s, s = ' + a.ss + ' m, v = ' + a.sv + ' m/s' +
+    (_ff.pause ? '. Der Fall steht weiterhin still.'
+               : ' – aus dem Augenblick des Drückens. Der Fall läuft weiter; mit „Anhalten" triffst du den Zeitpunkt genauer.'));
+  _ffRenderTable(); _mlabDrawPlot('ffPlot', _ff); _ffLauf();
+}
+
+// Acht Messpunkte in gleichen Zeitabstaenden ueber den ganzen Fall, dazu der
+// letzte Schritt vor dem Aufprall. Der Abstand ist ein Vielfaches von fuenf
+// Schritten – dann liegt t genau auf zwei Nachkommastellen (5 · 0,016 s =
+// 0,08 s), und die Spalte v/t wird nicht durch die Anzeigerundung verwackelt.
+function _ffReihe() {
+  if (!_ff) return;
+  const H = _slider('ffH') || 50;
+  const spur = _ffSpur(H);
+  const nL = spur.length;                       // letzter Schritt im freien Fall
+  if (nL < 10) { _ffSagen('Bei dieser Fallhöhe ist der Fall zu kurz für eine Messreihe.'); return; }
+  let schritt = Math.floor(nL / 8 / 5) * 5;
+  if (schritt < 5) schritt = 5;
+  const ns = [];
+  for (let i = 1; i <= 8; i++) { const n = i * schritt; if (n <= nL) ns.push(n); }
+  if (nL - ns[ns.length - 1] >= 5) ns.push(nL);
+  ns.forEach(n => { const p = spur[n - 1]; _ffAddRow(H, p.t, p.y, p.v); });
+  _ff.blitz = 1;
+  _ffSagen(ns.length + ' Messpunkte aus dem Fall aus ' + _fpmNum(H, 0) + ' m übernommen – von t = ' +
+    _ffFmt(spur[ns[0] - 1].t, _FF_NK_T) + ' s bis t = ' + _ffFmt(spur[ns[ns.length - 1] - 1].t, _FF_NK_T) +
+    ' s. Es sind dieselben Zahlen, die im Bild stehen, wenn die Uhr dort steht.');
+  _ffRenderTable(); _mlabDrawPlot('ffPlot', _ff);
+}
+
+function _ffDelRow(id) {
+  if (!_ff) return;
+  _ff.rows = _ff.rows.filter(r => r.id !== id);
+  _ffRenderTable(); _mlabDrawPlot('ffPlot', _ff);
+}
+function _ffClear() {
+  if (!_ff) return;
+  if (_ff.rows.length && !confirm('Alle ' + _ff.rows.length + ' Messwerte löschen?')) return;
+  _ff.rows = [];
+  _ffSagen('');
+  _ffRenderTable(); _mlabDrawPlot('ffPlot', _ff);
+}
+
+function _ffRenderTable() {
+  const tb = document.getElementById('ffTbody'); if (!tb || !_ff) return;
+  const leer = document.getElementById('ffEmpty');
+  if (leer) leer.style.display = _ff.rows.length ? 'none' : 'block';
+  const P = _ff.presets[_ff.preset];
+  const col = P.col ? P.col(null, 0) : _MLAB_PALETTE[0];   // dieselbe Farbe wie die Punkte
+  tb.innerHTML = _ff.rows.map(r =>
+    `<tr><td><span class="fpm-dot" style="background:${col}"></span>${_fpmNum(r.H, 0)}</td>
+       <td><b>${_fpmNum(r.t, _FF_NK_T)}</b></td>
+       <td><b>${_fpmNum(r.s, _FF_NK_S)}</b></td>
+       <td><b>${_fpmNum(r.v, _FF_NK_V)}</b></td>
+       <td>${_fpmNum(r.t2, _FF_NK_T2)}</td>
+       <td>${_ffFmt(r.gv, _FF_NK_G)}</td>
+       <td>${_ffFmt(r.gs, _FF_NK_G)}</td>
+       <td class="fpm-del" onclick="_ffDelRow(${r.id})" title="löschen">✕</td></tr>`).join('');
+}
+
+// ── Anschluss an das Auswertungs-Geruest ───────────────
+function _ffSetPreset(i) { _mlabSetPreset(_ff, i); _ffRenderTable(); }
+function _ffSetFn(s) { _mlabSetFn(_ff, s); }
+function _ffTheorieFn() { _mlabTheorieFn(_ff); }
+function _ffClearFn() { _mlabClearFn(_ff); }
+function _ffSetBool(k, v) { _ff[k] = v; _mlabDrawPlot('ffPlot', _ff); }
+
+// ── Zeit ───────────────────────────────────────────────
+// Der Rechenschritt ist Zeichen fuer Zeichen der alte: erst v um g·Δt erhoehen,
+// dann v·Δt zum Weg addieren, dann auf den Boden pruefen. Daran darf sich
+// nichts aendern – ki5 zitiert die Zahlen, die dabei herauskommen
+// (t = 0,32 s → s = 0,53 m, v = 3,14 m/s).
+//
+// Neu ist nur die eigene Uhr _ff.t: Sie steht still, solange angehalten ist,
+// waehrend die Engine ihre eigene Uhr weiterlaufen laesst. Vor dem Aufzeichnen
+// wird _pSim.t deshalb auf _ff.t gesetzt, damit die Zeitachse der beiden
+// Diagramme dieselbe Zeit meint wie das weisse Anzeigefeld.
+function _ffUpdate(dt) {
+  if (!_ff) return;
+  const H = _slider('ffH') || 50;
+  if (!_ff.pause) {
+    _ff.t += dt;
+    if (_ff.falling && _ff.y < H) {
+      _ff.vy += _FF_G * dt; _ff.y += _ff.vy * dt;
+      if (_ff.y >= H) { _ff.y = H; _ff.falling = false; }
+    }
+    if (_pSim) {
+      _pSim.t = _ff.t;
+      _pSim.record('s', _ff.y); _pSim.record('v', _ff.vy);
+    }
+  }
+  if (_ff.blitz > 0) _ff.blitz = Math.max(0, _ff.blitz - dt * 2);
+  _ffLauf();
+}
+
+// ── Statuszeile ────────────────────────────────────────
+// Die Simulation hatte 21 leere status-Eintraege – alles stand nur im Bild.
+// Jetzt steht jede Groesse mit Formelzeichen und Einheit da, und darunter der
+// Rechenweg zu beiden g-Werten. Jede Zeile rechnet mit den Zahlen weiter, die
+// eine Zeile hoeher stehen; mit dem Taschenrechner kommt genau das heraus,
+// was fett gedruckt ist.
+// Das Geruest steht nur einmal; die Zahlen schreibt _ffLauf() hinein. Beide
+// Faecher haben eine eigene Kennung, damit simfakten.js sie einzeln ausliest -
+// im Faktendump stand sonst neben dem laufenden Rechenweg eine Wertetafel, die
+// seit dem Oeffnen auf 0,00 steht, und wer die Heftseite schreibt, glaubt der
+// falschen von beiden.
+function _ffStatus() {
+  const el = document.getElementById('ffStatus'); if (!el || !_ff) return;
+  el.innerHTML = `<div class="fpm-readout" id="ffWerte"></div>
+    <div id="ffRechnung" style="margin-top:8px"></div>`;
+  _ffLauf();
+}
+
+function _ffZustand() {
+  if (!_ff) return '–';
+  if (!_ff.falling) return 'liegt';
+  return _ff.pause ? 'angehalten' : 'fällt';
+}
+
+// Der Rechenweg zu beiden g-Wegen, aus den angezeigten Zahlen.
+//   2s     wird vorher ausgeschrieben (2 · 0,53 m = 1,06 m), sonst muesste
+//          man beim Nachrechnen zwei Schritte auf einmal machen.
+//   t²     stammt aus dem gerundeten t und ist bei vier Stellen exakt.
+function _ffRechnungHTML(a) {
+  if (!(_ff.t >= _FF_TMIN)) {
+    return `<div class="fpm-note">Der Fall hat gerade erst begonnen. Ab t = ` + _fpmNum(_FF_TMIN, 2) +
+      ` s stehen hier die beiden Rechenwege zur Fallbeschleunigung g.</div>`;
+  }
+  const gleich = a.sgv === a.sgs;
+  return `<div style="font-family:ui-monospace,monospace;font-size:.73rem;line-height:1.75;color:#334155;border-top:1px solid #e2e8f0;padding-top:7px">
+      t²&nbsp; = (${a.st} s)² = <b>${a.st2} s²</b><br>
+      g&nbsp;&nbsp; = v/t = ${a.sv} m/s / ${a.st} s = <b>${a.sgv} m/s²</b><br>
+      g&nbsp;&nbsp; = 2·s/t² = 2 · ${a.ss} m / ${a.st2} s² = ${a.ss2} m / ${a.st2} s² = <b>${a.sgs} m/s²</b>
+    </div>
+    <div class="fpm-note" style="margin-top:6px">${gleich
+      ? 'An dieser Ablesestelle liefern beide Wege gerundet <b>' + a.sgv + ' m/s²</b>. Lies weiter vorn im Fall noch einmal ab – dort gehen sie auseinander.'
+      : 'Zwei Wege, zwei Zahlen: <b>' + a.sgv + ' m/s²</b> gegenüber <b>' + a.sgs + ' m/s²</b>. Der Weg über s liegt immer oben, weil die Simulation den Fallweg in Schritten von 0,016 s aufsummiert und dabei zu viel Weg erhält. Der Vorsprung schrumpft, je länger der Fall dauert. Nimm Messpunkte auf und sieh dir die beiden letzten Tabellenspalten an.'}</div>`;
+}
+
+// Jedes Bild neu geschrieben – hier aendert sich, anders als bei einer Sim mit
+// festen Reglerwerten, in jedem Bild JEDE Zahl. Es sind zwei kleine Faecher,
+// keine ganze Seite.
+function _ffLauf() {
+  if (!_ff) return;
+  const a = _ffAnzeige(_ff.t, _ff.y, _ff.vy);
+  const w = document.getElementById('ffWerte');
+  if (w) {
+    const ro = (k, v, e) => `<div class="fpm-ro"><span class="fpm-ro-k">${k}</span>` +
+      `<span class="fpm-ro-v">${v}</span><span class="fpm-ro-u">${e}</span></div>`;
+    w.innerHTML =
+      ro('Fallhöhe H', _fpmNum(_slider('ffH') || 50, 0), 'm') +
+      ro('Fallzeit t', a.st, 's') +
+      ro('Fallweg s', a.ss, 'm') +
+      ro('Geschwindigkeit v', a.sv, 'm/s') +
+      ro('Quadrat der Zeit t²', a.st2, 's²') +
+      ro('Zustand', _ffZustand(), '');
+  }
+  const r = document.getElementById('ffRechnung');
+  if (r) r.innerHTML = _ffRechnungHTML(a);
+}
+
+// ── Bild ───────────────────────────────────────────────
+// Himmel, Boden, Kugel, Hoehenmarkierung und das weisse Anzeigefeld sind
+// unveraendert – auch die Punkte als Dezimaltrenner, weil ki5 dort abliest.
+// Dazugekommen sind nur: das Aufleuchten nach einem Messpunkt, die Marke
+// "ANGEHALTEN" und die Zahl der bisher aufgenommenen Messpunkte.
+function _ffDraw(ctx, cv) {
+  if (!_ff) return;
+  const H = _slider('ffH') || 50;
+  const y = _ff.y, vy = _ff.vy;
+  ctx.clearRect(0, 0, cv.width, cv.height);
+  // Himmel & Boden
+  ctx.fillStyle = '#e0f2fe'; ctx.fillRect(0, 0, cv.width, cv.height);
+  ctx.fillStyle = '#86efac'; ctx.fillRect(0, cv.height - 30, cv.width, 30);
+  // Ball
+  const by = 30 + (y / H) * (cv.height - 60);
+  ctx.fillStyle = _ff.blitz > 0.3 ? '#f59e0b' : '#ef4444';
+  ctx.beginPath(); ctx.arc(cv.width / 2, by, 14, 0, Math.PI * 2); ctx.fill();
+  // Höhenmarkierung
+  ctx.strokeStyle = '#94a3b8'; ctx.setLineDash([4, 4]); ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(cv.width / 2 + 20, 30); ctx.lineTo(cv.width / 2 + 20, by); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#1f2937'; ctx.font = '12px sans-serif';
+  ctx.fillText(`${(H - y).toFixed(1)} m`, cv.width / 2 + 24, (30 + by) / 2);
+  // Zustand und Zaehler – ohne sie sieht man nicht, ob die Uhr steht
+  ctx.font = '700 11px sans-serif';
+  if (_ff.pause) {
+    ctx.fillStyle = '#b45309';
+    ctx.fillText('ANGEHALTEN – Uhr steht', 10, 20);
+  } else if (!_ff.falling) {
+    ctx.fillStyle = '#b91c1c';
+    ctx.fillText('aufgeschlagen – s und v stehen still, die Uhr läuft weiter', 10, 20);
+  }
+  ctx.fillStyle = '#475569';
+  ctx.fillText('Messpunkte in der Tabelle: ' + _ff.rows.length, 10, cv.height - 10);
+  _infoBox(ctx, cv, [`s = ${y.toFixed(2)} m`, `v = ${vy.toFixed(2)} m/s`, `t = ${_ff.t.toFixed(2)} s`]);
 }

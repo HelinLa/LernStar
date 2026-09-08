@@ -23,6 +23,13 @@ const { baueContext } = require('./rauchtest.js');
 function entkerne(html) {
   return String(html || '')
     .replace(/<br\s*\/?>/gi, ' | ')
+    // Zellgrenzen MUESSEN ein Trennzeichen hinterlassen. Ohne diese Zeile
+    // klebten Tabellenzellen aneinander: Aus "15 | 8 | 1,7487" wurde
+    // "81,7487", und heft_gegen_sim.py meldete den richtigen Wert 1,7487 s
+    // als "steht nicht am Bildschirm". Betrifft jede Simulation mit
+    // Wertetabelle, also alle Messlabore.
+    .replace(/<\/t[dh]>\s*<t[dh][^>]*>/gi, ' | ')
+    .replace(/<\/tr>\s*<tr[^>]*>/gi, ' | ')
     .replace(/<\/?[a-zA-Z][^>]*>/g, '')
     .replace(/&nbsp;/g, ' ')
     .replace(/\s+/g, ' ')
@@ -143,6 +150,37 @@ function fakten(datei, simId) {
   };
 
   out.status.push({ einstellung: 'Ausgangszustand', text: lies() });
+
+  // ---- MESSLABOR: eine Auftragung ohne Messwerte wertet nichts aus --------
+  // Die Presetknoepfe ("F ueber 1/r² auftragen") rechnen die Ausgleichsgerade
+  // aus der Wertetabelle. Im normalen Knopfdurchgang steht vor ihnen aber
+  // "Tabelle leeren" - sie treffen also auf eine LEERE Tabelle, und der Dump
+  // enthaelt keine einzige Ausgleichsgerade. Ausgerechnet Steigung, R² und die
+  // zurueckgerechnete Groesse sind das, was eine Heftseite zitiert; ohne sie
+  // meldet heft_gegen_sim.py jede richtige Zahl als "steht nicht am Bildschirm".
+  // Reihenfolge: erst leeren, dann die Auftragung waehlen, dann die Messreihe
+  // aufnehmen - die automatische Reihe veraendert genau die Groesse, die gerade
+  // auf der x-Achse steht.
+  const _mlReihe = out.knoepfe.find(k => /Messreihe automatisch/i.test(k.aufschrift));
+  const _mlLeer  = out.knoepfe.find(k => /Tabelle leeren/i.test(k.aufschrift));
+  const _mlAuf   = out.knoepfe.filter(k => /auftragen/i.test(k.aufschrift));
+  const _klick = (k) => vm.runInContext(
+    `(function(){var f=function(){${k.ruft}};f();})()`, H.ctx);
+  if (_mlReihe && _mlAuf.length) {
+    for (const k of _mlAuf) {
+      try {
+        if (_mlLeer) _klick(_mlLeer);
+        _klick(k);
+        _klick(_mlReihe);
+        H.frames(FRAMES);
+        out.status.push({ einstellung: `${k.aufschrift} · mit Messreihe`, text: lies() });
+      } catch (e) {
+        out.status.push({ einstellung: `${k.aufschrift} · mit Messreihe`,
+                          text: 'FEHLER: ' + e.message });
+      }
+    }
+    if (_mlLeer) { try { _klick(_mlLeer); } catch (e) {} }   // sauber weitergeben
+  }
 
   // Hoechstens 90 Anzeigen je Simulation - mehr braucht keine Heftseite, und
   // bei Messreihen-Simulationen waeren es sonst mehrere hundert.
