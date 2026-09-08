@@ -148,7 +148,7 @@ def main():
     print()
     if alle:
         print(f"{len(alle)} gedruckte QR-Codes laufen ins Leere.")
-        print("Wahrscheinlichste Ursache: js/heft-bruecke.js ist nicht committet/gepusht.")
+        print("Zwei moegliche Ursachen, in dieser Reihenfolge pruefen:\n  1. Der Auslieferungs-Cache hinkt nach. GitHub Pages meldet den Build als\n     fertig, waehrend das CDN noch die alte Datei ausliefert - gemessen am\n     08.09.2026: 403 KB live gegen 438 KB im Commit, alle 23 Codes 'tot'.\n     Gegenprobe:  curl -s '<BASE>/js/heft-bruecke.js?x=$RANDOM' | grep '\"<kennung>\"'\n     Wenn die Kennung dort fehlt, ein paar Minuten warten und neu pruefen.\n  2. Erst wenn der Cache durch ist: js/heft-bruecke.js ist nicht committet/gepusht.")
         print("  python3 arbeitsheft/bruecke_alle.py && git add js/heft-bruecke.js index.html && git commit && git push")
         return 1
     print("Alle gedruckten QR-Codes oeffnen live ihre Simulation.")

@@ -369,6 +369,70 @@ Operatoren zusaetzlich `Beurteile` `Entscheide` `Begruende`, und die `merke`-Zei
 ist Lesehilfe und nimmt das Ergebnis NIE vorweg. `pruefe_profil.py` haelt
 `DATENBLATT_IDS` aus `plan.py` gegen das Feld `daten` – in beide Richtungen.
 
+## Oberstufe (`arbeitsheft_ef/`, im Aufbau)
+
+Vierte Reihe: **Gymnasiale Oberstufe NRW**, ein Band fuer Gymnasium UND
+Gesamtschule (der Kernlehrplan Heft 4721 gilt fuer beide). Einfuehrungsphase,
+28 Einheiten in 2 Kapiteln, Kennungen `ki` und `gw`.
+
+Stand 08.09.2026 **fertig und ausgeliefert**: 163 Schuelerseiten, 28 Einheiten,
+23 gedruckte QR-Codes (fuenf Datenblattseiten ohne Code), alle live geprueft.
+Bruecke bei 570 Heftseiten, Registry bei 225 Simulationen.
+
+> **Die Seitenschaetzung war um 37 % zu niedrig.** Das an gym9/gym10 geeichte
+> Modell `9,7 + 8·Kapitel + 3,33·Themen` sagte 119 Seiten voraus; gesetzt wurden
+> **163**. Oberstufenseiten tragen mehr Text - Rechenwege mit Einheiten, laengere
+> Fachtexte, mehr Loesungsraum. Fuer die Qualifikationsphase rechnen mit
+> **rund 5,2 Seiten je Thema**, nicht mit 3,33.
+
+**Alles ist anders als in der Sek I** – wer Skripte kopiert, muss drei Dinge
+umstellen: die Kompetenzcodes (`S1-S7 / E1-E11 / K1-K10 / B1-B8` statt
+`UF/E/K/B`, Modul `arbeitsheft/kompetenzen_gost.py`), die Basiskonzepte (vier
+andere, aus den KMK-Bildungsstandards, Modul `arbeitsheft/lehrplan_gost.py`) und
+die Anforderungsbereiche – die stehen hier, anders als im Realschulplan,
+**ausdruecklich im Lehrplan** (Kap. 4, S. 59-60) und duerfen als dessen Vorgabe
+gekennzeichnet werden. `kompetenzen_gost.pruefe()` meldet versehentlich
+uebernommene Sek-I-Codes.
+
+> **Der Simulationsbestand traegt die Oberstufe nicht.** Ein erster Abgleich
+> ueber Simulations*namen* ergab „zwei Luecken, gute Ausgangslage" – nach
+> Auswertung der 32 Faktendumps taugen **zehn nicht und zwoelf nur
+> eingeschraenkt**. `wurfbewegung` kann den waagerechten Wurf nicht (Winkelregler
+> min=10), `federgesetz` hat keine Spannenergie, `kepler` liefert 91 von 91
+> leeren Statuszeilen. Der Band bringt deshalb **vier neue Simulationen** mit
+> (`wurf-waagerecht`, `wechselwirkung-ef`, `spannenergie`, `zentripetalkraft`)
+> und fuenf Datenblattseiten. Zum Vergleich: `arbeitsheft_gym10` brauchte eine.
+
+**Rechenwege muessen mit den gedruckten Zahlen aufgehen.** Beide neu gebauten
+Simulationen setzten zunaechst gerundete Zwischenwerte in den Text und druckten
+das exakte Ergebnis – `(9,42)²·0,80 = 71,06` statt 70,99. Gemessen: in 96 % der
+Reglerstellungen nicht nachrechenbar. Erst formatieren, dann aus den
+formatierten Werten weiterrechnen. Siehe [[rechenweg-aus-angezeigten-zahlen]].
+
+**Drei Werkzeugfehler, gefunden beim Bau der Einfuehrungsphase (08.09.2026):**
+
+- **`_mlabErgebnis` in `physics-sim.js` rechnete NaN.** Die Funktion bekommt an
+  allen sechs Aufrufstellen bereits formatierte Zahlen mit Komma; `"4,011" -
+  "4,000"` ist in JavaScript NaN, und `_mlabBadge(NaN)` setzt das rote Abzeichen.
+  Jede Simulation mit Literaturvergleich zeigte dauerhaft "Abweichung — %".
+  Behoben mit `_mlabZahl()` (versteht Komma und Tausenderpunkt).
+- **`heft_gegen_sim.py` meldete gruen, ohne zu pruefen.** Fehlende Einheiten
+  (`rad/s`, `kg·m/s`, `px`) wurden stillschweigend uebersprungen, und
+  Dezimalpunkt-Zahlen der Simulationen (`F_R=14.7N`) las die Regex als
+  Tausendertrenner. Beides behoben, dazu ein **Selbsttest mit 2 guten und 4
+  kaputten Proben**. Ergebnis: von 40 Meldungen auf 12, alle erklaerbar.
+- **`simfakten.js` sieht dynamisch erzeugte Regler nicht.** Bei `arbeit` schreibt
+  `_arbRegler()` sechs `<input type="range">` erst nach dem Einhaengen in ein
+  leeres `<div>` - der Dump meldet `regler: []`. Wer sich darauf verlaesst,
+  verbietet einer Heftseite Reglerstellungen, die es gibt. NOCH OFFEN.
+
+**`simfakten.js` hat zwei neue Schalter** (07.09.2026). `--voll` hebt die
+Zeichengrenze auf (die 2500er-Deckelung schnitt bei `lichtuhr` zwei Drittel ab),
+`--frames=n` und `--verlauf=k` rechnen animierte Simulationen weiter und lesen
+mehrfach ab. Mit den Voreinstellungen (2 Frames) meldete `impuls` nur `p₂=0.0`
+und `energieerhaltung` „noch kein Aufprall" – die Simulationen standen im Dump
+noch im Startzustand.
+
 ## simcheck/ – Pruefwerkzeuge
 
 Sieben Werkzeuge, alle an bekannten Faellen geeicht. Ausfuehrlich in `simcheck/README.md`.
