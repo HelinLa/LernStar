@@ -241,12 +241,14 @@ fachliche Ziele wie die Regelhefte `arbeitsheft_gts7/8/9/10`, leichterer Lernweg
 Foerderbedarf Lernen, DaZ). Hausstil steht in `arbeitsheft_foe7/FOERDER_PROFIL.md`
 (gilt fuer ALLE Baende), die Herleitung je Band in `SEITENPLAN.md`.
 
+Seitenzahlen seit der Satzumstellung vom 09.09.2026 (12 pt):
+
 | Band | Quellband | Kennungen | Einheiten | Seiten | Lehrerband |
 |---|---|---|---|---|---|
-| foe7 | gts7 | `fo` `fw` | 25 (aus 29) | 59 | 29 |
-| foe8 | gts8 | `fs` `fb` | 20 (aus 23) | 49 | 39 |
-| foe9 | gts9 | `fk` `fe` | 25 (aus 27) | 59 | 53 |
-| foe10 | gts10 | `fv` `fn` | 28 (aus 32) | 65 | 95 |
+| foe7 | gts7 | `fo` `fw` | 25 (aus 29) | 111 | 54 |
+| foe8 | gts8 | `fs` `fb` | 20 (aus 23) | 91 | 70 |
+| foe9 | gts9 | `fk` `fe` | 25 (aus 27) | 111 | 102 |
+| foe10 | gts10 | `fv` `fn` | 28 (aus 32) | 124 | 232 |
 
 > **Der Lehrerteil lief unter der Blattkante weiter** (gefunden 05.09.2026).
 > `build_pilot.seite_l` setzte GENAU EINE Seite und schnitt alles unterhalb von
