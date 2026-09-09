@@ -510,6 +510,67 @@ mehrfach ab. Mit den Voreinstellungen (2 Frames) meldete `impuls` nur `p₂=0.0`
 und `energieerhaltung` „noch kein Aufprall" – die Simulationen standen im Dump
 noch im Startzustand.
 
+## Gestaltungssystem `arbeitsheft/felo_design.py` (seit 09.09.2026)
+
+**Die ganze Reihe ist auf 12 pt umgestellt.** Vorher lag der Fliesstext zwischen
+6,96 und 9,12 pt, Kopf- und Fusszeile auf 4,32 pt, Bildbeschriftungen auf
+4,80 pt: von 2883 Schriftaufrufen erreichten **31** die 10-pt-Marke, **keiner**
+die 12. Jetzt steht alles auf 12,00 pt, das Kleinste im Band auf 10,08 pt.
+
+**Alle Groessen und Farben kommen aus dem Modul. Eine nackte `AV(15.5)` ist
+nicht mehr schreibbar** – `schrift(art, GRAD)` nimmt nur Konstanten, und die
+Umrechnung mit dem Faktor 0,48 steht an genau einer Stelle (`einheiten()`).
+
+| Konstante | Soll | gedruckt | | Farbe | Hex | Kontrast |
+|---|---|---|---|---|---|---|
+| `HAUPT` | 22 pt | 22,08 | | `TEXT` | #1F2937 | 14,68:1 |
+| `ZWISCHEN` | 15 pt | 14,88 | | `TITEL` | #163A5F | 11,64:1 |
+| `KASTEN_KOPF` | 14 pt | 13,92 | | `AKZENT` | #00777D | 5,34 / 4,78 / 4,81 |
+| `MARKE_ZIFFER` | 13 pt | 12,96 | | `MERK_GRUND` | #EAF4F8 | Text 13,14:1 |
+| `FLIESS` / `MERK` | 12 pt | 12,00 | | `EXP_GRUND` | #EAF6EE | Text 13,22:1 |
+| `KLEIN` | 10 pt | 10,08 | | `WARN` | #B42318 | 6,57:1 |
+
+> **Petrol ist #00777D, nicht #007C83.** Der hellere Ton liegt auf dem
+> Merkkastengrund bei **4,46:1** und damit unter der Schwelle – genau dort steht
+> die Kastenueberschrift. Die Abdunklung ist mit blossem Auge nicht zu sehen.
+
+**Der Selbsttest laeuft beim Import mit; faellt er durch, wirft der Import.**
+Sechs Proben, jede mit einer Gegenprobe, die den kaputten Zustand nachstellt und
+durchfallen MUSS: Kontrast jedes Farbpaars · Zeichenpruefung in beide Richtungen
+· Groessentafel ≥ 10 pt · die vier Kastenarten in Graustufen · Klammerung ueber
+zwei Stufen · Zeilenlaenge der Kaesten.
+
+**Zwei Fehler, die der Selbsttest erst nach seiner eigenen Gegenprobe fand:**
+Probe 4 verglich die Kaesten nur paarweise – ein Merkkasten ohne Balken rutschte
+durch, weil er sich vom Experimentierkasten trotzdem unterschied. Und der
+Selbsttest liess zwei Probesaetze in der unsichtbaren Textebene stehen; sie
+haetten in **jedem der 19 Baende** unsichtbar auf Seite 1 gestanden.
+
+**Zeilenlaenge ist die zweite Haelfte der Lesbarkeit.** 12 pt ueber die volle
+Blattbreite waeren 91 Zeichen je Zeile – gemessen lagen im ersten Umbau
+**29 % aller Zeilen ueber 85**, die laengste bei 107. Kaesten und Tabellen
+stehen deshalb auf der Lesespalte (`KASTEN_X0/X1`), nicht auf dem Satzspiegel
+des Blattes. Danach: Median 66, Maximum 81. Nur Schreiblinien, Zierlinien und
+die beiden 22-pt-Schaugroessen gehen ueber die volle Breite.
+
+**Umbrochen wird auf Blockebene, und `haftet` wirkt durchgehend.** `umbrechen()`
+rechnet die Klammerung von rechts nach links durch (`verklammern()`). Mit einer
+nur einstufigen Pruefung stand in **allen vier Kapiteltests** von Band 8
+„4 Erklaere in ganzen Saetzen." allein am Seitenfuss. Kostet null Seiten.
+
+**Raetsel raus, Lehrerband getrennt** (Entscheidung Abdullah, 09.09.2026):
+Wortgitter und Kreuzwortraetsel werden nicht mehr gesetzt (90 Seiten), der
+Loesungsteil wandert in ein eigenes `<DATEINAME>_Lehrerband.pdf` (488 Seiten),
+wie es die Foerderreihe schon machte. Der **Messwerte-Anhang bleibt beim
+Schueler** – die Heftseiten verweisen mit „Ohne Geraet: Messwerte im Anhang"
+darauf. Zusammen zahlen die beiden Kuerzungen den groesseren Schriftgrad fast:
+Schuelerbaende **2378 → 2947 Seiten (+24 %)** statt +65 %.
+
+> **Beim Zaehlen von Seiten die iCloud-Duplikate ausschliessen.** Der
+> Schreibtisch legt Dateien wie `book_p99 3.png` an. `ls build/book_p*.png | wc -l`
+> zaehlt sie mit – meine erste Bilanz lag dadurch um **142 Seiten** zu hoch, und
+> `simcheck/seitenzahlen.py` stuerzt an ihnen ab. Muster: `book_p\d+\.png$`.
+
 ## simcheck/ – Pruefwerkzeuge
 
 Sieben Werkzeuge, alle an bekannten Faellen geeicht. Ausfuehrlich in `simcheck/README.md`.
