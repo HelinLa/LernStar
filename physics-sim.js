@@ -70384,6 +70384,31 @@ function _optLauf(ctx, punkte, t, tempo, farbe, anzahl) {
 // drei Anteile: zurueckgeworfen, durchgelassen, geschluckt. Welcher
 // Anteil ueberwiegt, haengt allein von der Oberflaeche ab.
 // ═══════════════════════════════════════════════════════
+// ── Lesbare Schrift auf beliebigem Grund ──────────────────────────────
+// Die Prozentzahlen und Beschriftungen dieser Simulation standen durchweg in
+// Fast-Weiss (#e2e8f0). Gemessen nach WCAG war das auf fast jedem Grund
+// unlesbar: 1,07:1 auf dem gelben Balken, 1,35:1 auf dem hellblauen, 1,08:1
+// auf dem Fensterglas - nur auf schwarzem Papier stimmte es (8,40:1). Beim
+// Spiegel liegt die Zahl "95 %" voll auf dem Gelb und war praktisch unsichtbar.
+//
+// Statt einer Sonderfallliste (die es fuer 'weiss' schon gab und 'glas'
+// uebersah) entscheidet die Leuchtdichte des Grundes. Damit stimmt es auch,
+// wenn jemand eine Flaeche oder eine Balkenfarbe aendert.
+function _lesLeucht(hex) {
+  const h = String(hex).replace('#', '');
+  const k = v => { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+  return 0.2126 * k(parseInt(h.slice(0, 2), 16))
+       + 0.7152 * k(parseInt(h.slice(2, 4), 16))
+       + 0.0722 * k(parseInt(h.slice(4, 6), 16));
+}
+const _LES_DUNKEL = '#0b1220', _LES_HELL = '#e2e8f0';
+function _lesTinte(grund) {
+  const L = _lesLeucht(grund);
+  const kD = (L + 0.05) / (_lesLeucht(_LES_DUNKEL) + 0.05);
+  const kH = (_lesLeucht(_LES_HELL) + 0.05) / (L + 0.05);
+  return kD >= kH ? _LES_DUNKEL : _LES_HELL;
+}
+
 const _LOB_F = {
   spiegel: { name: 'Spiegel',           R: 0.95, T: 0.00, A: 0.05, diffus: false, farbe: '#94a3b8', unten: '#64748b' },
   glas:    { name: 'Fensterglas',       R: 0.08, T: 0.90, A: 0.02, diffus: false, farbe: '#bae6fd', unten: '#e0f2fe' },
@@ -70464,7 +70489,7 @@ function _lobDraw(ctx, cv) {
   }
   ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, yS); ctx.lineTo(W, yS); ctx.stroke();
   ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Luft', 8, 16);
-  ctx.fillStyle = _lob.flaeche === 'weiss' ? '#475569' : '#e2e8f0'; ctx.fillText(f.name, 8, yS + 18);
+  ctx.fillStyle = _lesTinte(f.farbe); ctx.fillText(f.name, 8, yS + 18);
   // Lot
   ctx.strokeStyle = 'rgba(226,232,240,0.45)'; ctx.setLineDash([4, 4]); ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(ox, yS - 78); ctx.lineTo(ox, yS + 52); ctx.stroke(); ctx.setLineDash([]);
@@ -70515,11 +70540,18 @@ function _lobDraw(ctx, cv) {
     const y = by + i * 30;
     ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(z[0], bx, y - 3);
     ctx.fillStyle = 'rgba(148,163,184,0.25)'; ctx.fillRect(bx, y, bw, bh);
-    ctx.fillStyle = z[2]; ctx.fillRect(bx, y, bw * z[1], bh);
-    ctx.fillStyle = '#e2e8f0'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+    const voll = bw * z[1];
+    ctx.fillStyle = z[2]; ctx.fillRect(bx, y, voll, bh);
+    // Liegt die Zahl auf der Farbe oder auf der leeren Spur? Danach richtet
+    // sich ihre Tinte. Die leere Spur ist halbdurchsichtiges Grau auf dunklem
+    // Grund, zaehlt also als dunkel.
+    ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillStyle = voll > bw - 26 ? _lesTinte(z[2]) : _LES_HELL;
     ctx.fillText(Math.round(z[1] * 100) + ' %', bx + bw - 3, y + 11);
   });
-  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  // Diese Zeile steht auf dem MATERIAL, nicht auf dunklem Grund - bei
+  // Fensterglas (#e0f2fe) war sie in Weiss mit 1,07:1 nicht zu lesen.
+  ctx.fillStyle = _lesTinte(f.unten); ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
   ctx.fillText('zusammen immer 100 % – nur die Anteile ändern sich', W / 2, H - 8);
 }
 
