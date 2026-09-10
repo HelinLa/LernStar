@@ -2795,10 +2795,15 @@ tr.msf-diag-surprise { background:#fffbeb; }
   max-width: none !important;
   width: 100%; min-height: 100vh;
   border-radius: 0; margin: 0;
-  padding: clamp(18px, 2.2vw, 44px);
+  padding: clamp(12px, 1.3vw, 26px);   /* jeder Pixel Rand fehlt dem Bild */
   font-size: clamp(1rem, 1.05vw, 1.6rem);      /* traegt alle em-Masse mit */
 }
-#physModal.sim-gross .sim-h3      { font-size: clamp(1.4rem, 2.1vw, 3rem); }
+/* Der Titel darf lesbar sein, aber nicht ein Zehntel der Wand fressen -
+   gemessen kostete er mit 3rem 109 px Hoehe, die dem Bild fehlten. */
+#physModal.sim-gross .sim-h3 {
+  font-size: clamp(1.25rem, 1.5vw, 2rem);
+  margin: 0 0 .4em;
+}
 #physModal.sim-gross .fpm-note,
 #physModal.sim-gross .sim-hint    { font-size: .82em; }
 #physModal.sim-gross .lmp-status,
@@ -2817,9 +2822,12 @@ tr.msf-diag-surprise { background:#fffbeb; }
 @media (min-width: 1100px) {
   /* Am Beamer ist das BILD die Hauptsache - der Text daneben ist Beiwerk.
      Zwei gleiche Spalten verschenken die halbe Wand an eine Statuszeile. */
+  /* Sehr breite Bildspalte: Die endgueltige Groesse legt _simBildAnpassen()
+     fest, begrenzt von der Bildschirmhoehe. Waere die Spalte hier eng, wuerde
+     SIE begrenzen und die Hoehe blieb ungenutzt. */
   #physModal.sim-gross .fpm-grid,
   #physModal.sim-gross .fpm-grid2 {
-    grid-template-columns: minmax(0, 1.75fr) minmax(300px, 1fr);
+    grid-template-columns: minmax(0, 3fr) minmax(280px, 1fr);
     align-items: start;
   }
 }

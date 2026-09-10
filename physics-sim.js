@@ -253,8 +253,104 @@ function _simSkala(cv, k) {
 // damit eine 8K-Wand nicht 64-fach Speicher frisst.
 function _simVollbildFaktor(box) {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  // Am Nennmass bemessen, nicht an der Kastenbreite: Entscheidend ist, um
+  // welchen Faktor die Leinwand WIRKLICH vergroessert dasteht - sonst rechnet
+  // man Aufloesung fuer Pixel, die es nicht gibt, oder zu wenig fuer die,
+  // die da sind.
+  const cv = box && (box.querySelector('.phys-anim-cv') || box.querySelector('canvas'));
+  if (cv && cv._nomW) {
+    const breit = cv.getBoundingClientRect().width || cv._nomW;
+    return Math.max(1, Math.min(6, (breit / cv._nomW) * dpr));
+  }
   const breite = (box && box.clientWidth) || window.innerWidth;
   return Math.max(1, Math.min(6, (breite / 760) * dpr));
+}
+
+// Im Vollbild wird die Hauptleinwand so gross gemacht, wie sie WIRKLICH passt -
+// begrenzt von der Breite UND von der Hoehe. Eine feste Spaltenzahl reicht
+// dafuer nicht: Gemessen war die Leinwand bei zwei Spalten 1158x691 auf einem
+// 1920x1080-Beamer, also 60 % der Breite. Zieht man sie breiter, schlaegt sofort
+// die Hoehe an, und der Knopfstreifen rutscht unter den Bildschirmrand - dann
+// sieht die Klasse ein grosses Bild, das niemand mehr bedienen kann.
+//
+// Deshalb wird angepasst, nicht gerechnet: Startwert so gross wie moeglich,
+// dann in wenigen Schritten zuruecknehmen, bis Breite und Bedienung passen.
+// Das Seitenverhaeltnis kommt aus dem Nennmass der jeweiligen Simulation -
+// die reicht von 1,42 (470x330) bis 1,76 (440x250), eine Zahl im CSS waere
+// fuer die Haelfte falsch.
+function _simBildAnpassen(el) {
+  // Die SICHTBARE Leinwand ist die, an der gemessen wird. lichtuhr bringt acht
+  // mit, davon sieben ausgeblendet (Schritte der Herleitung) - und die erste im
+  // Dokument ist eine 1x1 grosse Hilfsflaeche. Wer einfach die erste nimmt,
+  // rechnet an einer unsichtbaren Leinwand.
+  const sichtbar = a => { const r = a.getBoundingClientRect(); return r.width > 1 && r.height > 1; };
+  const bilder = Array.prototype.slice.call(el.querySelectorAll('.phys-anim-cv'));
+  const cv = bilder.filter(sichtbar)[0] || bilder[0]
+          || Array.prototype.slice.call(el.querySelectorAll('canvas')).filter(sichtbar)[0];
+  if (!cv || !window.innerHeight) return;
+  // Was sichtbar bleiben MUSS, damit die Simulation bedienbar ist: die
+  // UNTERSTE Bedienzeile, nicht die erste. Mit querySelector traf es den
+  // Regler direkt unter dem Bild - der war sichtbar, der Knopf "Zeit stoppen"
+  // darunter aber abgeschnitten. Die Klasse saehe dann ein grosses Bild, das
+  // niemand mehr starten kann.
+  //
+  // Welche Bedienelemente sind wesentlich? Nicht die nach Abstand nahen - ein
+  // Pixelfenster zog bei den Messlaboren die Auswertungsknoepfe mit herein und
+  // drueckte newton2 auf 617x353. Die Grenze ist inhaltlich: Alles VOR der
+  // ersten Abschnittsueberschrift (.fpm-label, z. B. "Messreihe aufnehmen" oder
+  // "Auswertung") gehoert zum Bedienen des Bildes, alles danach zur Auswertung
+  // und darf unter den Rand rutschen - dorthin scrollt man ohnehin.
+  const wesentlich = () => {
+    const alle = Array.prototype.slice.call(el.querySelectorAll(
+      '.fpm-label, .sim-btn-row, .phys-controls, .phys-ctrl, .lmp-status'));
+    const schnitt = alle.findIndex(x => x.classList.contains('fpm-label'));
+    return schnitt >= 0 ? alle.slice(0, schnitt) : alle;
+  };
+  const untenGrenze = () => {
+    let u = 0;
+    wesentlich().forEach(x => {
+      const b = x.getBoundingClientRect();
+      if (b.height) u = Math.max(u, b.bottom);
+    });
+    return u;
+  };
+  const platzB = () => Math.max(240, el.clientWidth - 48);
+  let h = Math.max(220, window.innerHeight - 90);
+  for (let i = 0; i < 5; i++) {
+    cv.style.width = 'auto';
+    cv.style.maxWidth = '100%';
+    cv.style.height = Math.round(h) + 'px';
+    const r = cv.getBoundingClientRect();
+    if (r.width > platzB() + 1) { h *= platzB() / r.width; continue; }
+    // Erst das Bild selbst: Es muss immer ganz auf den Schirm. Ohne diese
+    // Klammer lief lichtuhr bis y=1101 auf einem 1080er Beamer - unten fehlte
+    // ein Stueck. Sie greift, wo es keine Bedienzeile vor der Auswertung gibt
+    // und untenGrenze() deshalb nichts liefert.
+    const ueberBild = r.bottom - window.innerHeight + 14;
+    if (ueberBild > 0) { h = Math.max(220, h - ueberBild); continue; }
+    const unten = untenGrenze();
+    if (!unten) break;
+    const ueber = unten - window.innerHeight + 14;
+    if (ueber <= 0) break;
+    h = Math.max(220, h - ueber);
+  }
+  // Dieselbe Hoehe auf ALLE Bildleinwaende: Bei lichtuhr wird beim naechsten
+  // Schritt eine andere sichtbar. Jede behaelt ihr eigenes Seitenverhaeltnis
+  // (width:auto), maxWidth haelt sie in der Spalte.
+  const hoehe = cv.style.height;
+  bilder.forEach(b => {
+    b.style.width = 'auto'; b.style.maxWidth = '100%'; b.style.height = hoehe;
+    b._voll = true;
+  });
+  cv._voll = true;
+}
+
+function _simBildZurueck(el) {
+  el.querySelectorAll('canvas').forEach(cv => {
+    if (!cv._voll) return;
+    cv.style.width = ''; cv.style.height = ''; cv.style.maxWidth = '';
+    cv._voll = false;
+  });
 }
 
 function _simAlleLeinwaende(wurzel, k) {
@@ -314,6 +410,9 @@ function _simVollbildLayout(an) {
   // dann auf der grossen Leinwand stehen (nachgemessen: Faktor 2,53 statt 1).
   // Ein Lesen von offsetWidth erzwingt den Umbruch hier und jetzt.
   void (box && box.offsetWidth);
+  if (an) _simBildAnpassen(el); else _simBildZurueck(el);
+  // Erst die Anzeigegroesse, dann die Aufloesung - der Faktor haengt an der
+  // Breite, die die Anpassung gerade festgelegt hat.
   _simAlleLeinwaende(el, an ? _simVollbildFaktor(box) : 1);
   // Beim echten Vollbild setzt sich die Fenstergroesse erst ein Bild spaeter;
   // deshalb ein zweiter Anlauf, der nichts tut, wenn sich nichts geaendert hat.
