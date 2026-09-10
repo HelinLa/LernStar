@@ -4474,22 +4474,28 @@ const _physSimDefs = {
       _slider_html('wfAlpha', 'Winkel α', 10, 80, 45, 1, '°') +
       _slider_html('wfV0', 'v₀', 10, 60, 30, 1, 'm/s') +
       `<button onclick="_wfReset()" class="phys-btn">🔄 Neu</button>`, true);
-    _pSim = new PhysicsSimEngine('physAnim', 'physChart');
-    _pSim.addSeries('sx'); _pSim.addSeries('sy'); _pSim.addSeries('v');
+    // Der Motor wird in einer EIGENEN Konstanten festgehalten. Die globale
+    // _pSim raeumt closePhysicsSim() weg - ein Knopf, der sie erst beim Klick
+    // liest, wirft dann "Cannot read properties of null". Genau daran sind
+    // impuls und wurfbewegung im Rauchtest gescheitert, weil der Pruefstand
+    // ALLE Knoepfe betaetigt, das Schliesskreuz eingeschlossen.
+    const eng = new PhysicsSimEngine('physAnim', 'physChart');
+    _pSim = eng;
+    eng.addSeries('sx'); eng.addSeries('sy'); eng.addSeries('v');
     const sc = 3; let bx = 0, by = 0, vx = 0, vy = 0, active = true, path = [];
     window._wfReset = () => {
       const a = _slider('wfAlpha') * Math.PI / 180, v0 = _slider('wfV0');
       bx = 20; by = 0; vx = v0 * Math.cos(a); vy = v0 * Math.sin(a); active = true; path = [];
-      _pSim.reset(); _pSim.addSeries('sx'); _pSim.addSeries('sy'); _pSim.addSeries('v');
+      eng.reset(); eng.addSeries('sx'); eng.addSeries('sy'); eng.addSeries('v');
     };
     window._wfReset();
-    _pSim.start(
+    eng.start(
       dt => {
         if (!active) return;
         vy -= 9.81 * dt; bx += vx * dt; by += vy * dt;
         if (by < 0) { by = 0; active = false; }
-        _pSim.record('sx', bx); _pSim.record('sy', by);
-        _pSim.record('v', Math.sqrt(vx * vx + vy * vy));
+        eng.record('sx', bx); eng.record('sy', by);
+        eng.record('v', Math.sqrt(vx * vx + vy * vy));
         path.push({ x: 20 + bx * sc, y: 200 - by * sc });
       },
       (ctx, cv) => {
@@ -4688,11 +4694,16 @@ const _physSimDefs = {
       _slider_html('impM1', 'Masse 1 (kg)', 1, 10, 3, 1, 'kg') +
       _slider_html('impM2', 'Masse 2 (kg)', 1, 10, 5, 1, 'kg') +
       `<button onclick="_impReset()" class="phys-btn">🔄 Stoß auslösen</button>`, true);
-    _pSim = new PhysicsSimEngine('physAnim', 'physChart');
-    _pSim.addSeries('p1'); _pSim.addSeries('p2'); _pSim.addSeries('pges');
+    // Eigene Konstante statt der globalen _pSim - siehe wurfbewegung.
+    const eng = new PhysicsSimEngine('physAnim', 'physChart');
+    _pSim = eng;
+    eng.addSeries('p1'); eng.addSeries('p2'); eng.addSeries('pges');
     let x1 = 80, x2 = 300, v1 = 60, v2 = 0, collided = false;
-    window._impReset = () => { x1 = 80; x2 = 300; v1 = 60; v2 = 0; collided = false; _pSim.reset(); _pSim.addSeries('p1'); _pSim.addSeries('p2'); _pSim.addSeries('pges'); };
-    _pSim.start(
+    window._impReset = () => {
+      x1 = 80; x2 = 300; v1 = 60; v2 = 0; collided = false;
+      eng.reset(); eng.addSeries('p1'); eng.addSeries('p2'); eng.addSeries('pges');
+    };
+    eng.start(
       dt => {
         const m1 = _slider('impM1'), m2 = _slider('impM2');
         x1 += v1 * dt; x2 += v2 * dt;
@@ -4702,9 +4713,9 @@ const _physSimDefs = {
           const nv2 = ((m2 - m1) * v2 + 2 * m1 * v1) / (m1 + m2);
           v1 = nv1; v2 = nv2;
         }
-        _pSim.record('p1', m1 * Math.abs(v1));
-        _pSim.record('p2', m2 * Math.abs(v2));
-        _pSim.record('pges', m1 * v1 + m2 * v2);
+        eng.record('p1', m1 * Math.abs(v1));
+        eng.record('p2', m2 * Math.abs(v2));
+        eng.record('pges', m1 * v1 + m2 * v2);
       },
       (ctx, cv) => {
         const m1 = _slider('impM1'), m2 = _slider('impM2');
@@ -54316,7 +54327,15 @@ function _priDraw(ctx, cv) {
   ctx.strokeStyle = _pri.mode === 'weiss' ? '#e2e8f0' : (_pri.mode === 'rot' ? '#ef4444' : '#3b82f6'); ctx.lineWidth = 3;
   ctx.beginPath(); ctx.moveTo(28, cy); ctx.lineTo(px - 12, cy - 8); ctx.stroke();
   // Ausgang
-  const ex = px + 12, ey = cy + 4, sx = W - 30;
+  // Die Beschriftung stand frueher bei sx + 14 und lief rechts aus dem Bild:
+  // "Violett" braucht rund 35 Pixel, es waren aber nur 16 uebrig - gedruckt
+  // stand dort "Viole". Der Platz wird jetzt an der ECHTEN Textbreite gemessen,
+  // damit er auch stimmt, wenn jemand die Schrift oder die Farbnamen aendert.
+  ctx.font = '9px sans-serif';
+  const _priBeschr = Math.max(ctx.measureText('Violett').width,
+                              ctx.measureText('Rot').width);
+  const ex = px + 12, ey = cy + 4;
+  const sx = Math.min(W - 30, W - 8 - _priBeschr - 14);
   if (_pri.mode === 'weiss') {
     _PRI_COLS.forEach(col => {
       ctx.strokeStyle = col.c; ctx.lineWidth = 2.4;
