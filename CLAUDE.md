@@ -573,6 +573,46 @@ Schuelerbaende **2378 → 2947 Seiten (+24 %)** statt +65 %.
 > zaehlt sie mit – meine erste Bilanz lag dadurch um **142 Seiten** zu hoch, und
 > `simcheck/seitenzahlen.py` stuerzt an ihnen ab. Muster: `book_p\d+\.png$`.
 
+## Vollbild fuer den Beamer (seit 10.09.2026)
+
+Jede Simulation hat oben rechts einen Knopf **„⤢ Vollbild"**. Er haengt an
+EINER Stelle (`openPhysicsSim`) - keine der 226 Simulationen musste dafuer
+angefasst werden.
+
+**Warum das geht:** Alle 255 Zeichenfunktionen lesen vom Leinwandobjekt **nur
+`.width` und `.height`** (nachgezaehlt: 269 + 255 Zugriffe, sonst nichts). Sie
+bekommen deshalb weiterhin ihr Nennmass von 420x250 zu sehen - ueber einen
+eigenen Getter auf dem Element -, waehrend die Leinwand darunter in voller
+Aufloesung liegt und `ctx.setTransform(k,0,0,k,0,0)` den Rest erledigt.
+Gemessen: echte Leinwand 1061x632 statt 420x250, Faktor 2,53. Scharf, nicht
+gedehnt.
+
+> **Das traegt nur, solange zwei Dinge gelten**, beide nachgeprueft:
+> `setTransform` und `resetTransform` kommen im ganzen Bestand **null Mal** vor,
+> und die 14 `ctx.scale()` stehen **alle** in `save`/`restore`-Paaren, komponieren
+> sich also sauber mit der Grundtransformation. Wer eines davon aendert, macht
+> das Vollbild kaputt.
+
+**Drei Fallen, die dabei zuschnappten:**
+
+- **`HTMLCanvasElement.prototype` auf Modulebene** liess JEDE Simulation im
+  Rauchtest durchfallen (`HTMLCanvasElement is not defined`) - die Mini-DOM von
+  `simcheck/rauchtest.js` und `simfakten.js` kennt die Klasse nicht. Der Zugriff
+  ist jetzt faul (`_cvBeschreiber()`) und abgesichert. Wer in `physics-sim.js`
+  etwas auf Modulebene aus dem Browser anfasst, legt den ganzen Pruefstand lahm.
+- **`requestAnimationFrame` ist der falsche Weg**, um nach einem Layoutwechsel
+  zu messen: Der Hinweg klappte, der Rueckweg blieb auf der grossen Leinwand
+  stehen (gemessen Faktor 2,53 statt 1), und im Hintergrund-Tab feuert es gar
+  nicht. Der Umbruch wird jetzt mit einem Lesen von `offsetWidth` erzwungen.
+- **Eine Leinwand wird beim Setzen der Masse GELEERT.** Simulationen ohne
+  hinterlegten Neuzeichner (`cv._neu`) bekaemen eine leere Flaeche. Deshalb wird
+  das alte Bild vorher gesichert und notfalls hochskaliert zurueckgeblittet -
+  lieber weich als weg. Den Haken setzen `PhysicsSimEngine.start()` und
+  `_mlabDrawPlot()`.
+
+Am Beamer bekommt das Bild `1,75` von `2,75` Spalten statt der Haelfte - die
+Statuszeile daneben ist Beiwerk.
+
 ## simcheck/ – Pruefwerkzeuge
 
 Sieben Werkzeuge, alle an bekannten Faellen geeicht. Ausfuehrlich in `simcheck/README.md`.
