@@ -2773,6 +2773,61 @@ tr.msf-diag-surprise { background:#fffbeb; }
 }
 .sim-box-wide { max-width: 900px !important; }
 
+/* ── VOLLBILD fuer den Beamer im Physikraum ────────────────────────────
+   Im Vollbild ist nicht die Leinwand das Problem, sondern der Text daneben:
+   Regler, Statuszeile und Wertetabelle sind fuer 760 px gebaut. Deshalb
+   waechst der Schriftgrad ueber eine Variable mit, statt die Kiste bloss
+   breiter zu ziehen. Die Leinwaende bekommen ihre Aufloesung aus
+   _simSkala() - hier steht nur das Layout. */
+.sim-voll {
+  position: absolute; top: 14px; right: 60px;
+  background: #0f766e; color: #fff; border: none;
+  padding: 8px 14px; border-radius: 999px;
+  font: 600 .82rem/1 inherit; letter-spacing: .01em;
+  cursor: pointer; white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(15,118,110,.35);
+}
+.sim-voll:hover  { background: #115e59; }
+.sim-voll:focus-visible { outline: 3px solid #99f6e4; outline-offset: 2px; }
+
+#physModal.sim-gross { padding: 0; overflow: auto; background: #0b1220; }
+#physModal.sim-gross .sim-box {
+  max-width: none !important;
+  width: 100%; min-height: 100vh;
+  border-radius: 0; margin: 0;
+  padding: clamp(18px, 2.2vw, 44px);
+  font-size: clamp(1rem, 1.05vw, 1.6rem);      /* traegt alle em-Masse mit */
+}
+#physModal.sim-gross .sim-h3      { font-size: clamp(1.4rem, 2.1vw, 3rem); }
+#physModal.sim-gross .fpm-note,
+#physModal.sim-gross .sim-hint    { font-size: .82em; }
+#physModal.sim-gross .lmp-status,
+#physModal.sim-gross .fpm-fitline { font-size: .92em; }
+#physModal.sim-gross .sim-table   { font-size: .86em; }
+#physModal.sim-gross .sim-btn     { font-size: .9em; padding: .55em 1.1em; }
+#physModal.sim-gross .phys-ctrl-label { font-size: .88em; }
+#physModal.sim-gross input[type=range] { height: 1.6em; }
+#physModal.sim-gross .sim-voll,
+#physModal.sim-gross .sim-x { top: clamp(14px, 1.4vw, 28px); }
+#physModal.sim-gross .sim-x { right: clamp(16px, 1.6vw, 32px); }
+#physModal.sim-gross .sim-voll { right: clamp(60px, 6vw, 150px); }
+
+/* Zwei Spalten sind am Beamer von hinten schlechter zu lesen als eine
+   breite - ab hier laeuft die Simulation ueber die volle Wand. */
+@media (min-width: 1100px) {
+  /* Am Beamer ist das BILD die Hauptsache - der Text daneben ist Beiwerk.
+     Zwei gleiche Spalten verschenken die halbe Wand an eine Statuszeile. */
+  #physModal.sim-gross .fpm-grid,
+  #physModal.sim-gross .fpm-grid2 {
+    grid-template-columns: minmax(0, 1.75fr) minmax(300px, 1fr);
+    align-items: start;
+  }
+}
+@media (max-width: 1099px) {
+  #physModal.sim-gross .fpm-grid,
+  #physModal.sim-gross .fpm-grid2 { grid-template-columns: 1fr; }
+}
+
 /* ================================================================
    ERKLÄRVIDEO PLAYER + 3D CHARAKTER MR. LALA
    ================================================================ */

@@ -166,6 +166,170 @@ function _wrText(ctx, x, y, s, opt) {
   ctx.restore();
 }
 
+// ═══════════════════════════════════════════════════════
+// VOLLBILD - Simulationen fuer den Beamer im Physikraum
+//
+// Das Problem: Die Leinwaende sind auf 440x250 gebaut, und JEDE der 255
+// Zeichenfunktionen rechnet mit festen Pixelwerten dagegen (road = 168,
+// carX = 132). Man kann die Leinwand also nicht einfach groesser machen -
+// das Bild klebte dann in der Ecke.
+//
+// Der Ausweg: Die Zeichenfunktionen lesen NUR .width und .height (nachgezaehlt:
+// 269 + 255 Zugriffe, sonst nichts). Also bekommen sie weiterhin ihr
+// Nennmass zu sehen, waehrend die Leinwand darunter in voller Aufloesung
+// liegt und die Grundtransformation den Rest erledigt. Keine einzige
+// Simulation muss dafuer angefasst werden.
+//
+// Dass das traegt, haengt an einer nachgepruefen Eigenschaft des Bestands:
+// setTransform und resetTransform kommen NULL Mal vor. Die 14 ctx.scale()
+// stehen alle in save/restore-Paaren und komponieren sich sauber mit der
+// Grundtransformation. Wer das aendert, macht das Vollbild kaputt.
+// ═══════════════════════════════════════════════════════
+// Die Beschreiber werden ERST BEIM ERSTEN GEBRAUCH geholt. Beim Laden geht das
+// nicht: Die Mini-DOM der Pruefwerkzeuge (simcheck/rauchtest.js, simfakten.js)
+// kennt HTMLCanvasElement nicht, und ein Zugriff auf Modulebene liess dort
+// jede einzelne Simulation mit "HTMLCanvasElement is not defined" durchfallen -
+// nicht nur das Vollbild, sondern der ganze Bestand.
+let _CV_W = null, _CV_H = null;
+function _cvBeschreiber() {
+  if (_CV_W && _CV_H) return true;
+  if (typeof HTMLCanvasElement === 'undefined') return false;
+  _CV_W = Object.getOwnPropertyDescriptor(HTMLCanvasElement.prototype, 'width');
+  _CV_H = Object.getOwnPropertyDescriptor(HTMLCanvasElement.prototype, 'height');
+  return !!(_CV_W && _CV_H);
+}
+
+function _simSkala(cv, k) {
+  if (!cv || !cv.getContext || !_cvBeschreiber()) return;
+  if (cv._nomW === undefined) {          // Nennmass einmalig festhalten
+    cv._nomW = _CV_W.get.call(cv);
+    cv._nomH = _CV_H.get.call(cv);
+    // Ab hier sieht jede Zeichenfunktion das Nennmass. Der Setzer schreibt
+    // durch - sonst wuerde eine Zuweisung still ins Leere laufen.
+    Object.defineProperty(cv, 'width', {
+      configurable: true,
+      get() { return cv._nomW; },
+      set(v) { cv._nomW = v; _simSkala(cv, cv._k || 1); },
+    });
+    Object.defineProperty(cv, 'height', {
+      configurable: true,
+      get() { return cv._nomH; },
+      set(v) { cv._nomH = v; _simSkala(cv, cv._k || 1); },
+    });
+  }
+  const alt = cv._k || 1;
+  if (Math.abs(alt - k) < 1e-6 && cv._skaliert) return;
+
+  // Das Bild geht beim Groessenwechsel verloren. Wer keinen Neuzeichner
+  // hinterlegt hat (statische Simulationen, die einmal direkt malen), bekaeme
+  // sonst eine leere Flaeche - deshalb vorher sichern und notfalls
+  // hochskaliert zurueckblitten. Lieber weich als weg.
+  let sicher = null;
+  try {
+    if (_CV_W.get.call(cv) > 0 && _CV_H.get.call(cv) > 0) {
+      sicher = document.createElement('canvas');
+      _CV_W.set.call(sicher, _CV_W.get.call(cv));
+      _CV_H.set.call(sicher, _CV_H.get.call(cv));
+      sicher.getContext('2d').drawImage(cv, 0, 0);
+    }
+  } catch (e) { sicher = null; }
+
+  _CV_W.set.call(cv, Math.round(cv._nomW * k));   // leert die Leinwand
+  _CV_H.set.call(cv, Math.round(cv._nomH * k));
+  cv._k = k; cv._skaliert = true;
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(k, 0, 0, k, 0, 0);
+
+  if (cv._neu) { try { cv._neu(); return; } catch (e) { /* faellt unten auf */ } }
+  if (sicher) {                                    // Notnagel: altes Bild dehnen
+    ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(sicher, 0, 0, _CV_W.get.call(cv), _CV_H.get.call(cv));
+    ctx.restore();
+  }
+}
+
+// Wie stark darf vergroessert werden? Der Bildschirm gibt es vor, gedeckelt,
+// damit eine 8K-Wand nicht 64-fach Speicher frisst.
+function _simVollbildFaktor(box) {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const breite = (box && box.clientWidth) || window.innerWidth;
+  return Math.max(1, Math.min(6, (breite / 760) * dpr));
+}
+
+function _simAlleLeinwaende(wurzel, k) {
+  (wurzel || document).querySelectorAll('canvas').forEach(cv => _simSkala(cv, k));
+}
+
+function _simVollbildAn() {
+  const box = document.querySelector('#physModal .sim-box');
+  const el  = document.getElementById('physModal');
+  if (!el || !box) return;
+  const auf = el.requestFullscreen || el.webkitRequestFullscreen;
+  if (auf) { try { auf.call(el); } catch (e) { _simVollbildLayout(true); } }
+  else _simVollbildLayout(true);          // Browser ohne Vollbild: wenigstens gross
+}
+
+function _simVollbildAus() {
+  const raus = document.exitFullscreen || document.webkitExitFullscreen;
+  if (document.fullscreenElement && raus) { try { raus.call(document); } catch (e) {} }
+  else _simVollbildLayout(false);
+}
+
+// Der Knopf wird EINMAL zentral eingehaengt, nicht in 255 HTML-Bausteinen.
+// Er sitzt links neben dem Schliessen-Kreuz, damit er nicht mit ihm verwechselt
+// wird, und traegt Text - ein blosses Symbol haette im Unterricht niemand
+// gefunden.
+function _simVollbildKnopf(modal) {
+  const box = modal && modal.querySelector('.sim-box');
+  if (!box || box.querySelector('.sim-voll')) return;
+  const b = document.createElement('button');
+  b.className = 'sim-voll';
+  b.type = 'button';
+  b.textContent = '⤢ Vollbild';
+  b.title = 'Simulation bildschirmfuellend zeigen';
+  b.setAttribute('aria-label', 'Simulation im Vollbild zeigen');
+  b.onclick = _simVollbild;
+  box.appendChild(b);
+}
+
+function _simVollbild() {
+  if (document.fullscreenElement || document.getElementById('physModal')?.classList.contains('sim-gross'))
+    _simVollbildAus(); else _simVollbildAn();
+}
+
+function _simVollbildLayout(an) {
+  const el = document.getElementById('physModal');
+  if (!el) return;
+  const box = el.querySelector('.sim-box');
+  el.classList.toggle('sim-gross', !!an);
+  const knopf = el.querySelector('.sim-voll');
+  if (knopf) {
+    knopf.textContent = an ? '⤡ Vollbild verlassen' : '⤢ Vollbild';
+    knopf.title = an ? 'Zurueck zur normalen Groesse (Esc)' : 'Simulation bildschirmfuellend zeigen';
+  }
+  // Erst umbauen lassen, dann messen - sonst steht die alte Breite im Weg.
+  // NICHT ueber requestAnimationFrame: Im Hintergrund-Tab feuert es gar nicht,
+  // und im kopflosen Browser feuerte es nur beim Hinweg - der Rueckweg blieb
+  // dann auf der grossen Leinwand stehen (nachgemessen: Faktor 2,53 statt 1).
+  // Ein Lesen von offsetWidth erzwingt den Umbruch hier und jetzt.
+  void (box && box.offsetWidth);
+  _simAlleLeinwaende(el, an ? _simVollbildFaktor(box) : 1);
+  // Beim echten Vollbild setzt sich die Fenstergroesse erst ein Bild spaeter;
+  // deshalb ein zweiter Anlauf, der nichts tut, wenn sich nichts geaendert hat.
+  if (an && typeof requestAnimationFrame === 'function')
+    requestAnimationFrame(() => _simAlleLeinwaende(el, _simVollbildFaktor(box)));
+}
+
+// Auch das nur, wenn es ein echtes document gibt - siehe oben.
+if (typeof document !== 'undefined' && document.addEventListener) {
+  ['fullscreenchange', 'webkitfullscreenchange'].forEach(ev =>
+    document.addEventListener(ev, () => {
+      if (document.getElementById('physModal'))
+        _simVollbildLayout(!!(document.fullscreenElement || document.webkitFullscreenElement));
+    }));
+}
+
 class PhysicsSimEngine {
   constructor(animId, chartId) {
     this.animCanvas  = document.getElementById(animId);
@@ -193,6 +357,11 @@ class PhysicsSimEngine {
   start(updateFn, animFn, chartCfg, dtMs = 16) {
     this.running = true;
     this.chartCfg = chartCfg;
+    // Beim Groessenwechsel wird die Leinwand geleert. Damit _simSkala scharf
+    // neu zeichnen kann statt das alte Bild zu dehnen, haengt hier der Weg
+    // zurueck zum Zeichner.
+    if (this.animCanvas)  this.animCanvas._neu  = () => animFn(this.actx, this.animCanvas);
+    if (this.chartCanvas) this.chartCanvas._neu = () => this._drawCharts();
     const loop = () => {
       if (!this.running) return;
       const dt = dtMs / 1000;
@@ -2860,7 +3029,11 @@ function openPhysicsSim(simId) {
   document.body.appendChild(modal);
 
   const fn = _physSimDefs[simId];
-  if (fn) { fn(modal); return; }
+  if (fn) {
+    fn(modal);
+    _simVollbildKnopf(modal);   // zentral: jede Simulation bekommt ihn
+    return;
+  }
   // Unbekannte Kennung: Frueher stand hier "wird vorbereitet…" - das klang nach
   // Warten, obwohl nichts mehr kam, und in der Konsole stand kein Wort davon.
   console.warn('openPhysicsSim: unbekannte Kennung "' + simId + '" - '
@@ -41048,6 +41221,7 @@ const _MLAB_PALETTE = ['#7c3aed', '#f97316', '#0284c7', '#16a34a', '#db2777', '#
 function _mlabDrawPlot(cvId, st) {
   const cv = document.getElementById(cvId);
   if (!cv || !st) return;
+  cv._neu = () => _mlabDrawPlot(cvId, st);   // fuer den Groessenwechsel
   const ctx = cv.getContext('2d');
   const W = cv.width, H = cv.height;
   const P = st.presets[st.preset];
