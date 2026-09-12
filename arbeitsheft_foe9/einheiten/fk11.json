@@ -18,10 +18,11 @@
   ],
   "frage": "Warum hinterlassen schmale Rollen Dellen und breite Bretter nicht?",
   "predict": [
+   "Wer schwerer ist, sinkt tiefer ein. Die Fläche A ist egal.",
    "Bei gleicher Kraft entscheidet die Fläche A: kleine Fläche, großer Druck.",
-   "Wer schwerer ist, sinkt tiefer ein. Die Fläche A ist egal."
+   "Bei den Turnschuhen ist der Druck größer. Die Fläche A ist größer."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke Turnschuhe. Lies bei p die Zahl vor kPa.",
    "Drücke Stöckelabsatz und fülle die zweite Zeile aus.",

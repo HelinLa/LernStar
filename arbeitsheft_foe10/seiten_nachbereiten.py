@@ -149,10 +149,24 @@ def main():
 
             pred_map, opt_map = {}, {}
 
-            ziel_p = n % 2                       # Vermutung: abwechselnd
+            # Reihum ueber ALLE vorhandenen Stellen. Fest "% 2" liess Platz 3
+            # nie zu, seit die Einheiten drei Moeglichkeiten haben.
+            ziel_p = n % max(2, len(s.get("predict") or [2]))
             if s["predictOk"] != ziel_p:
-                s["predict"] = list(reversed(s["predict"]))
-                s["predictOk"] = ziel_p
+                # Die richtige Moeglichkeit an ziel_p setzen, die falschen in
+                # ihrer Reihenfolge dahinter. Vorher stand hier reversed():
+                # bei ZWEI Moeglichkeiten richtig, bei DREI landet die richtige
+                # damit auf Platz 3, waehrend predictOk auf 1 zeigt - der
+                # Lehrerband haette die falsche Loesung gedruckt. Seit dem
+                # Einstiegsumbau (12.09.2026) haben alle Einheiten drei.
+                _pr = list(s["predict"]); _ok = s["predictOk"]
+                if 0 <= _ok < len(_pr) and 0 <= ziel_p < len(_pr):
+                    _richtig = _pr[_ok]
+                    _neu = [t for k, t in enumerate(_pr) if k != _ok]
+                    _neu.insert(ziel_p, _richtig)
+                    assert _neu[ziel_p] == _richtig and len(_neu) == len(_pr)
+                    s["predict"] = _neu
+                    s["predictOk"] = ziel_p
                 pred_map = {1: 2, 2: 1}
                 geaendert += 1
 

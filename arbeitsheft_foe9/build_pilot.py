@@ -386,6 +386,38 @@ def b_ankreuz(text,art="reg",grad=None,breite=None,abstand=fd.ABS_ZEILE,name="An
         ende=fd.para(h,fd.X0+ANKREUZ+18,y,text,fd.schrift(art,grad),fd.STIL["text"],br,hh)
         return max(y+ANKREUZ+4,ende)
     return bst(name,f,abstand)
+def b_schreibzeile(label, abstand=fd.ABS_ZEILE, name=None):
+    """Beschriftung, dahinter eine Schreiblinie bis zum rechten Rand."""
+    def f(h, d, y):
+        ft = fd.schrift("med", FOE)
+        fd.T(h, fd.X0, y, label, ft, fd.STIL["text"])
+        b = h.tw(label, ft) + 12
+        h.ln([(fd.X0+b, y+_lh(FOE)*0.82), (fd.X1, y+_lh(FOE)*0.82)],
+             fd.STIL["linie"], fd.LINIE_STAERKE)
+        return y + _lh(FOE)
+    return bst(name or label.rstrip(":"), f, abstand)
+
+
+def b_kreuzreihe(vorsatz, labels, abstand=fd.ABS_ZEILE, name="Kreuzreihe"):
+    """Mehrere Ankreuzkaestchen NEBENEINANDER in einer Zeile.
+
+    Untereinander kostete das drei Zeilen. Jede Gruppe wird EINZELN vermessen;
+    passt die Reihe nicht, bricht sie um, statt unter den Satzspiegel zu laufen."""
+    def f(h, d, y):
+        ft = fd.schrift("med", FOE); fr = fd.schrift("reg", FOE)
+        x = fd.X0; zeile = y
+        if vorsatz:
+            fd.T(h, x, zeile, vorsatz, ft, fd.STIL["text"])
+            x += h.tw(vorsatz, ft) + 18
+        for lab in labels:
+            br = ANKREUZ + 10 + h.tw(lab, fr)
+            if x + br > fd.X0 + LESE and x > fd.X0:
+                zeile += _lh(FOE); x = fd.X0
+            ankreuz(h, d, x, zeile+2)
+            fd.T(h, x+ANKREUZ+10, zeile, lab, fr, fd.STIL["text"])
+            x += br + 20
+        return max(zeile+ANKREUZ+4, zeile+_lh(FOE))
+    return bst(name, f, abstand)
 
 
 def luecken_satz(h,x,y,m,st,maxw,grad=None):
@@ -660,7 +692,7 @@ def bausteine_a(cfg,luft=0.0):
                regel_bis=QR_LINKS if hat_qr else None)]
 
     # ① Lesen - drei kurze Saetze, Bild rechts in der Randspalte
-    B.append(b_marke(1,"Lesen"))
+    B.append(b_marke(1,"Das Problem"))
     def b_alltag(h,d,y):
         yy=y; r=round(fd.einheiten(FOE)*0.28,1)
         for s in cfg["alltag"]:
@@ -678,13 +710,15 @@ def bausteine_a(cfg,luft=0.0):
                  fd.ABS_ABSCHNITT))
 
     # ② Deine Vermutung
-    B.append(b_marke(2,"Deine Vermutung"))
+    B.append(b_marke(2,"Meine Vermutung"))
     B.append(b_para("Kreuze eine Vermutung an.",art="med",haftet=1,name="Anweisung"))
     for t in cfg.get("predict",[]): B.append(b_ankreuz(t,name="Vermutung"))
-    B[-1].abstand=fd.ABS_ABSCHNITT
+    # Seit dem Einstiegsumbau drei Moeglichkeiten plus eine eigene. Die Schleife
+    # nimmt sie ohne Schnitt, es genuegt also der Inhalt.
+    B.append(b_schreibzeile("Eigene Vermutung:",fd.ABS_ABSCHNITT,name="Eigene Vermutung"))
 
     # ③ Forschen am Bildschirm
-    B.append(b_marke(3,"Forschen am Bildschirm"))
+    B.append(b_marke(3,"Am Bildschirm"))
     B.append(bst("Bildschirm",
                  lambda h,d,y: kasten_bildschirm(h,d,y,fd.STIL,
                      ["Öffne die Simulation über den QR-Code oben rechts.",
@@ -695,14 +729,33 @@ def bausteine_a(cfg,luft=0.0):
     B[-1].abstand=fd.ABS_ABSCHNITT
 
     # ④ Trage ein - Kopf und Beispielzeile sind schon gefuellt
-    B.append(b_marke(4,"Trage ein"))
+    B.append(b_marke(4,"Meine Beobachtung"))
     B.append(b_para("Die erste Zeile ist schon fertig – so geht es.",art="med",
                     haftet=1,name="Tabellenhinweis"))
     cols=cfg["tabCols"]; rows=cfg["tabRows"]
     B.append(bst("Tabelle",
                  lambda h,d,y: tabelle(h,d,y,fd.STIL,cols,rows,[0.24,0.44,0.32],
                                        beispiel=True,schreib=True,luft=luft),
-                 fd.ABS_ABSCHNITT))
+                 fd.ABS_AUFGABE))
+
+    # Satzanfang: die Beobachtung in Worte fassen, bevor sie gedeutet wird.
+    B.append(b_para(cfg.get("satzanfang") or "Ich sehe, dass …",
+                    art="med",haftet=1,name="Satzanfang"))
+    B+=b_linien(1,praefix="Beobachtungslinie")
+    B[-1].abstand=fd.ABS_ABSCHNITT
+
+    # ⑤ Überprüfe deine Vermutung - DER SCHRITT, DEN ES NICHT GAB.
+    # Ohne ihn kreuzt das Kind in ② etwas an und kommt nie darauf zurueck; das
+    # Raten bleibt folgenlos, und genau das Raten ist der Grund, warum man
+    # vorher raten laesst. Er steht VOR dem Merksatz (der auf Seite B kommt):
+    # stuende der Merksatz davor, pruefte das Kind seine Vermutung am
+    # gedruckten Loesungstext statt an der eigenen Tabelle.
+    B.append(b_marke(5,"Stimmt deine Vermutung?"))
+    B.append(b_kreuzreihe("Meine Vermutung war:",
+                          ["richtig","fast richtig","nicht richtig"],
+                          name="Vermutung geprüft"))
+    B.append(b_schreibzeile("Das sehe ich in meiner Tabelle:",
+                            fd.ABS_ZEILE,name="Beleg"))
     return B
 
 

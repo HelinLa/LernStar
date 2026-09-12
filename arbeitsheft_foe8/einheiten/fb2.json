@@ -20,9 +20,10 @@
   "frage": "Wie rechnest du aus Strecke und Zeit die Geschwindigkeit aus?",
   "predict": [
    "Bei kleinerer Zeit ist die Geschwindigkeit kleiner. Die Strecke bleibt ja gleich.",
+   "Du liest nur die Strecke ab. Die Zeit brauchst du für die Geschwindigkeit nicht.",
    "Bei kleinerer Zeit ist die Geschwindigkeit größer. Die Strecke bleibt ja gleich."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke den Knopf langsam und danach den Knopf „Messung starten“.",
    "Vergleiche die Zeit im Bild mit der ersten Zeile der Tabelle.",

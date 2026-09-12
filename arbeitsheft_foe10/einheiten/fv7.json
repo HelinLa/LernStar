@@ -20,7 +20,8 @@
   "frage": "Wie ändert sich die Spannung, wenn sich die Spule schneller dreht?",
   "predict": [
    "Die Spannung wird größer, wenn sich die Spule schneller dreht.",
-   "Die Spannung bleibt gleich. Der Magnet allein macht sie."
+   "Die Spannung bleibt gleich. Der Magnet allein macht sie.",
+   "Dreht die Spule schneller, wird die Spannung kleiner. Es bleibt weniger Zeit."
   ],
   "predictOk": 0,
   "forschen": [

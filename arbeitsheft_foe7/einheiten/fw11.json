@@ -18,10 +18,11 @@
   ],
   "frage": "Welches Weltbild erklärt den Himmel ohne Zusatzkreise?",
   "predict": [
+   "Die zwei Weltbilder zeigen einen ganz verschiedenen Himmel.",
    "Beide zeigen denselben Himmel, aber nur das heutige braucht keine Zusatzkreise.",
-   "Die zwei Weltbilder zeigen einen ganz verschiedenen Himmel."
+   "Auch im heutigen Weltbild braucht jeder Planet einen kleinen Zusatzkreis."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke „Erde in der Mitte (alt)“ und lies die Statuszeile.",
    "Drücke „Sonne in der Mitte (heute)“ und vergleiche.",

@@ -18,10 +18,11 @@
   ],
   "frage": "Was bedeutet eine waagerechte, eine ansteigende und eine fallende Linie?",
   "predict": [
+   "Eine waagerechte Linie bedeutet: Der Wagen fährt gleich schnell weiter.",
    "Eine waagerechte Linie bedeutet: Der Wagen steht still.",
-   "Eine waagerechte Linie bedeutet: Der Wagen fährt gleich schnell weiter."
+   "Eine waagerechte Linie bedeutet: Der Wagen wird immer schneller."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Öffne die Simulation. Das Bild oben heißt dort „v-t-Diagramm“ – gemeint ist das Tempo-Zeit-Diagramm.",
    "Drücke den Knopf „konstant“ und dann „▶ Fahren“. Zeile 1 der Tabelle ist schon ausgefüllt.",

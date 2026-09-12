@@ -18,7 +18,8 @@
   "frage": "Warum soll man Energie sparen, wenn keine Energie verloren geht?",
   "predict": [
    "Am Ende sind immer noch 1000 J da. Aber fast alles ist Wärme.",
-   "Bei jedem Schritt geht Energie verloren. Am Ende sind es weniger."
+   "Bei jedem Schritt geht Energie verloren. Am Ende sind es weniger.",
+   "Am Ende sind noch 1000 J da. Du kannst alles davon gebrauchen."
   ],
   "predictOk": 0,
   "forschen": [

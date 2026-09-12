@@ -15,10 +15,11 @@
   ],
   "frage": "Wie entsteht Weiß, wenn dort nur Rot, Grün und Blau leuchten?",
   "predict": [
+   "Zwischen den Streifen sitzt eine versteckte weiße Lampe.",
    "Rot, Grün und Blau zusammen ergeben im Auge Weiß.",
-   "Zwischen den Streifen sitzt eine versteckte weiße Lampe."
+   "Rot, Grün und Blau zusammen ergeben Braun. Das kennst du vom Malkasten."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Lies im Statusfeld die Ergebnisfarbe mit ihren drei Zahlen ab.",
    "Drücke „aus“ und notiere alle drei Werte.",

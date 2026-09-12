@@ -18,9 +18,10 @@
   "frage": "Wo bleibt die Lageenergie, während der Ball fällt?",
   "predict": [
    "Beim Fallen geht die Lageenergie nach und nach verloren.",
+   "Beim Fallen kommt neue Energie dazu. Die Lageenergie bleibt dabei gleich.",
    "Beim Fallen wird die Lageenergie zu Bewegungsenergie."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Öffne die Simulation. Fasse die beiden Regler nicht an.",
    "Sieh dir den Ball an. Er fällt, springt hoch und fällt wieder.",

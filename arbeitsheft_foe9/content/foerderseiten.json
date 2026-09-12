@@ -19,7 +19,8 @@
   "frage": "Woran erkennst du, dass eine Kraft gewirkt hat?",
   "predict": [
    "Eine Kraft erkennt man daran, was sich danach ändert.",
-   "Eine Kraft wirkt nur dann, wenn sich etwas verformt."
+   "Eine Kraft wirkt nur dann, wenn sich etwas verformt.",
+   "Eine Kraft wirkt nur, wenn sich das Tempo ändert."
   ],
   "predictOk": 0,
   "forschen": [
@@ -141,7 +142,8 @@
   "frage": "Wie kannst du eine Kraft messen, die du nicht siehst?",
   "predict": [
    "Am Federkraftmesser liest man ab, wie viel Gramm ein Gewicht hat.",
-   "Die Feder wird länger. Daran kann man die Kraft ablesen."
+   "Die Feder wird länger. Daran kann man die Kraft ablesen.",
+   "Du hängst ein Gewicht an. Dann wird die Feder kürzer."
   ],
   "predictOk": 1,
   "forschen": [
@@ -259,10 +261,11 @@
   ],
   "frage": "Wovon hängt es ab, wie weit sich eine Feder dehnt?",
   "predict": [
-   "Die harte Feder dehnt sich bei 1 N weniger weit.",
-   "Beide Federn dehnen sich bei 1 N gleich weit."
+   "Beide Federn dehnen sich bei 1 N gleich weit.",
+   "Die harte Feder dehnt sich weiter. Sie kann mehr aushalten.",
+   "Die harte Feder dehnt sich bei 1 N weniger weit."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Wähle „weiche Feder“ und drücke einmal „mehr ▶“.",
    "Lies hinter dem Pfeil → die Zahl in cm ab. Trage sie ein.",
@@ -383,10 +386,11 @@
   ],
   "frage": "Sind Masse und Gewichtskraft dasselbe?",
   "predict": [
+   "Masse und Gewichtskraft sind zwei verschiedene Größen.",
    "Masse und Gewichtskraft sind dasselbe in anderen Einheiten.",
-   "Masse und Gewichtskraft sind zwei verschiedene Größen."
+   "Ganz leichte Körper haben keine Gewichtskraft. Bei 100 g steht 0 N."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke zuerst „100 g“. Sonst steht noch 1 kg da.",
    "Lies in der Statuszeile Masse und Gewichtskraft ab. Trage beides ein.",
@@ -504,10 +508,11 @@
   ],
   "frage": "Wird auf dem Mond die Masse kleiner oder die Gewichtskraft?",
   "predict": [
+   "Das Klavier hat auf dem Mond weniger Masse.",
    "Die Masse bleibt gleich. Nur die Gewichtskraft wird kleiner.",
-   "Das Klavier hat auf dem Mond weniger Masse."
+   "Auf dem Mond zieht nichts. Die Gewichtskraft ist dort 0 N."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Wähle Mond und lies g und F in der Statuszeile ab.",
    "Trage beide Werte in die Zeile Mond ein.",
@@ -627,9 +632,10 @@
   "frage": "Was zeigt der Kraftpfeil außer der Stärke noch?",
   "predict": [
    "Der Pfeil wird nur länger oder kürzer.",
+   "Die Dicke des Pfeils zeigt die Stärke. Die Länge ist egal.",
    "Die Pfeil-Länge zeigt die Stärke. Die Pfeil-Richtung zeigt die Richtung."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke immer zuerst eine Zahl, dann einen Pfeil-Knopf.",
    "Drücke 6 N und →. Lies den letzten Satz in der Statuszeile.",
@@ -753,7 +759,8 @@
   "frage": "Wann wird die Gesamtkraft größer, wann kleiner?",
   "predict": [
    "Nur bei gleicher Richtung wird addiert. Sonst wird abgezogen.",
-   "Zwei Kräfte werden immer addiert. Die Richtung ist egal."
+   "Zwei Kräfte werden immer addiert. Die Richtung ist egal.",
+   "Nur die größere Kraft zählt. Die kleinere Kraft kannst du weglassen."
   ],
   "predictOk": 0,
   "forschen": [
@@ -874,7 +881,8 @@
   "frage": "Wirken an der stillen Lampe wirklich keine Kräfte?",
   "predict": [
    "An der Lampe wirken keine Kräfte mehr.",
-   "Es wirken zwei Kräfte. Sie gleichen sich aus."
+   "Es wirken zwei Kräfte. Sie gleichen sich aus.",
+   "Das Seil zieht stärker nach oben. Sonst würde die Lampe herunterfallen."
   ],
   "predictOk": 1,
   "forschen": [
@@ -997,10 +1005,11 @@
   ],
   "frage": "Warum bleibt der Wagen stehen – und was passiert ohne Reibung?",
   "predict": [
-   "Die Reibung bremst ihn. Ohne Reibung rollt er immer weiter.",
-   "Der Anstoß ist in dem Wagen langsam aufgebraucht."
+   "Der Anstoß ist in dem Wagen langsam aufgebraucht.",
+   "Auf dem Eis wird der Wagen immer schneller. Eis ist ja glatt.",
+   "Die Reibung bremst ihn. Ohne Reibung rollt er immer weiter."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Wähle „Tisch“, drücke „Anstoßen“ und warte, bis er steht.",
    "Drücke „Zurücksetzen“, wähle „Eis“ und stoße wieder an.",
@@ -1119,10 +1128,11 @@
   ],
   "frage": "Warum rollt Jannis zurück, wenn er das Klavier wegdrückt?",
   "predict": [
+   "Beide Kräfte sind gleich groß. Der leichtere Körper wird schneller.",
    "Nur Jannis drückt. Das Klavier drückt nicht zurück.",
-   "Beide Kräfte sind gleich groß. Der leichtere Körper wird schneller."
+   "Die zwei Kräfte sind gleich groß. Darum bewegt sich niemand."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke Eisläufer. Trage das Tempo v von Läufer B ein.",
    "Drücke Boot. Trage das Tempo v von Boot und Person ein.",
@@ -1247,10 +1257,11 @@
   ],
   "frage": "Warum hinterlassen schmale Rollen Dellen und breite Bretter nicht?",
   "predict": [
+   "Wer schwerer ist, sinkt tiefer ein. Die Fläche A ist egal.",
    "Bei gleicher Kraft entscheidet die Fläche A: kleine Fläche, großer Druck.",
-   "Wer schwerer ist, sinkt tiefer ein. Die Fläche A ist egal."
+   "Bei den Turnschuhen ist der Druck größer. Die Fläche A ist größer."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke Turnschuhe. Lies bei p die Zahl vor kPa.",
    "Drücke Stöckelabsatz und fülle die zweite Zeile aus.",
@@ -1370,9 +1381,10 @@
   "frage": "Warum drückt das Wasser unten stärker als oben?",
   "predict": [
    "Der Schweredruck hängt davon ab, wie viel Wasser im Tank steht.",
+   "Öl drückt stärker als Wasser. Öl ist dick und zäh.",
    "Der Schweredruck hängt von der Tiefe und von der Flüssigkeit ab."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Lies zuerst unter der Überschrift Der Schweredruck die Zahl vor kPa.",
    "Drücke Öl und trage den Wert bei 10 m ein.",
@@ -1499,7 +1511,8 @@
   "frage": "Warum hat der eine Würfel mehr Masse als der andere?",
   "predict": [
    "Bei gleichem Volumen V entscheidet der Stoff. Jeder Stoff hat eine eigene Dichte ρ.",
-   "Gleich große Würfel haben ungefähr gleich viel Masse."
+   "Gleich große Würfel haben ungefähr gleich viel Masse.",
+   "Der Eisenwürfel hat die größere Masse. Eisen ist härter als Blei."
   ],
   "predictOk": 0,
   "forschen": [
@@ -1621,7 +1634,8 @@
   "frage": "Warum sinkt massives Eisen, ein hohler Eisenwürfel aber nicht?",
   "predict": [
    "Eisen ist schwerer als Wasser. Jedes Stück Eisen sinkt, egal welche Form.",
-   "Steckt genug Luft im Würfel, wird seine mittlere Dichte kleiner. Dann schwimmt er."
+   "Steckt genug Luft im Würfel, wird seine mittlere Dichte kleiner. Dann schwimmt er.",
+   "Es kommt auf die Masse an. Der leichtere Würfel schwimmt immer."
   ],
   "predictOk": 1,
   "forschen": [
@@ -1748,10 +1762,11 @@
   ],
   "frage": "Wann verrichtet Jannis wirklich Arbeit?",
   "predict": [
-   "Beim Tragen zeigt die Kraft nach oben. Die Arbeit ist null.",
-   "Tragen ist anstrengend. Also ist es Arbeit."
+   "Tragen ist anstrengend. Also ist es Arbeit.",
+   "Beim Schieben ist die Arbeit null. Die Kiste kommt ja nicht höher.",
+   "Beim Tragen zeigt die Kraft nach oben. Die Arbeit ist null."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „Schieben“ und „Ausführen“. Lies die Arbeit ab.",
    "Drücke „Waagerecht tragen“. Vergleiche mit 400 J.",
@@ -1870,10 +1885,11 @@
   ],
   "frage": "Wovon hängt es ab, wie viel Lageenergie ein Körper oben hat?",
   "predict": [
+   "Masse und Höhe zählen gleich stark.",
    "Die Höhe zählt mehr als die Masse.",
-   "Masse und Höhe zählen gleich stark."
+   "Nur die Masse zählt. Die doppelte Höhe ändert die Lageenergie nicht."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Lies in der Statuszeile ab, wie viel Lageenergie der Klotz oben hat.",
    "Drücke „×2 Masse“ und trage den Wert in die Tabelle ein.",
@@ -1992,10 +2008,11 @@
   ],
   "frage": "Was bringt mehr Bewegungsenergie: doppelte Masse oder doppeltes Tempo v?",
   "predict": [
+   "Masse und Tempo v wirken gleich stark.",
    "Doppeltes Tempo v bringt mehr Energie als doppelte Masse.",
-   "Masse und Tempo v wirken gleich stark."
+   "Doppelte Masse m bringt mehr Energie als doppeltes Tempo v."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke „zurücksetzen“. Am Bildschirm stehen 4 kg und 4 m/s.",
    "Drücke „×2 Masse“ und fülle Zeile 2 aus.",
@@ -2115,9 +2132,10 @@
   "frage": "Wo bleibt die Lageenergie, während der Ball fällt?",
   "predict": [
    "Beim Fallen geht die Lageenergie nach und nach verloren.",
+   "Beim Fallen kommt neue Energie dazu. Die Lageenergie bleibt dabei gleich.",
    "Beim Fallen wird die Lageenergie zu Bewegungsenergie."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Öffne die Simulation. Fasse die beiden Regler nicht an.",
    "Sieh dir den Ball an. Er fällt, springt hoch und fällt wieder.",
@@ -2237,7 +2255,8 @@
   "frage": "Warum soll man Energie sparen, wenn keine Energie verloren geht?",
   "predict": [
    "Am Ende sind immer noch 1000 J da. Aber fast alles ist Wärme.",
-   "Bei jedem Schritt geht Energie verloren. Am Ende sind es weniger."
+   "Bei jedem Schritt geht Energie verloren. Am Ende sind es weniger.",
+   "Am Ende sind noch 1000 J da. Du kannst alles davon gebrauchen."
   ],
   "predictOk": 0,
   "forschen": [
@@ -2354,7 +2373,8 @@
   "frage": "Was ändert sich, wenn Nour die halbe Zeit braucht?",
   "predict": [
    "Wer schneller zieht, verrichtet mehr Arbeit W.",
-   "Die Arbeit W bleibt gleich. Nur die Leistung P wird doppelt."
+   "Die Arbeit W bleibt gleich. Nur die Leistung P wird doppelt.",
+   "Nour braucht die halbe Zeit. Arbeit und Leistung bleiben trotzdem gleich."
   ],
   "predictOk": 1,
   "forschen": [
@@ -2474,10 +2494,11 @@
   ],
   "frage": "Wie viel von 1000 J wird bei einer Maschine wirklich Licht oder Bewegung?",
   "predict": [
-   "Eine Glühlampe macht nur einen kleinen Teil zu Licht. Fast alles wird Wärme.",
-   "Eine Glühlampe macht ungefähr die Hälfte zu Licht."
+   "Eine Glühlampe macht ungefähr die Hälfte zu Licht.",
+   "Die LED-Lampe macht alles zu Licht. Ihr Wirkungsgrad ist 100 %.",
+   "Eine Glühlampe macht nur einen kleinen Teil zu Licht. Fast alles wird Wärme."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Lies die Statuszeile. Fasse den Regler nicht an. Zeile 1 der Tabelle ist schon ausgefüllt.",
    "Drücke „LED-Lampe“ und fülle Zeile 2 aus.",
@@ -2603,10 +2624,11 @@
   ],
   "frage": "Was passiert mit Kraft und Weg, wenn der Kraftarm länger wird?",
   "predict": [
+   "Der lange Kraftarm spart Kraft. Die Hand läuft dafür weiter.",
    "Der lange Kraftarm spart Kraft. Der Weg bleibt gleich.",
-   "Der lange Kraftarm spart Kraft. Die Hand läuft dafür weiter."
+   "Der Kraftarm l₁ ist egal. Du brauchst immer 200 N."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Stelle den Kraftarm l₁ auf 1,00 m. Die Last F₂ bleibt 200 N.",
    "Drücke „gleich lang – nichts gespart“. Fülle Zeile 2 aus.",
@@ -2727,10 +2749,11 @@
   ],
   "frage": "Was ändert sich, wenn mehr Seilstücke die Last tragen?",
   "predict": [
+   "Mehr Seilstücke: Dann wird auch die Arbeit kleiner.",
    "Mehr Seilstücke: Die Kraft wird kleiner, der Weg wird länger.",
-   "Mehr Seilstücke: Dann wird auch die Arbeit kleiner."
+   "Die Rollen drehen nur die Richtung um. Die Kraft bleibt gleich groß."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke „n = 1 · volle Kraft“ und prüfe Zeile 1.",
    "Drücke „n = 2 · halbe Kraft“ und fülle Zeile 2.",
@@ -2851,9 +2874,10 @@
   "frage": "Wovon hängt es ab, wie schnell sich Rad 2 dreht?",
   "predict": [
    "Das kleine Rad dreht schneller, weil es leichter ist.",
+   "Beide Räder drehen gleich schnell. Sie hängen ja zusammen.",
    "Beide Räder schieben gleich viele Zähne durch. Wenige Zähne sind schnell herum."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke „gleich groß (24 : 24)“. Jeder Knopf stellt Rad 1 auf 60 U/min.",
    "Drücke „groß treibt klein – schneller“. Trage n₂ ein.",
@@ -2974,7 +2998,8 @@
   "frage": "Was ändert sich an Kraft und Weg, wenn die Rampe flacher liegt?",
   "predict": [
    "Auf der flachen Rampe braucht Nour weniger Kraft. Die Kiste bleibt gleich schwer.",
-   "Auf der flachen Rampe wird die Kiste leichter."
+   "Auf der flachen Rampe wird die Kiste leichter.",
+   "Auf der flachen Rampe brauchst du mehr Kraft. Der Weg ist länger."
   ],
   "predictOk": 0,
   "forschen": [

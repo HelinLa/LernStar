@@ -17,10 +17,11 @@
   ],
   "frage": "Wovon hängt es ab, wie viel Lageenergie ein Körper oben hat?",
   "predict": [
+   "Masse und Höhe zählen gleich stark.",
    "Die Höhe zählt mehr als die Masse.",
-   "Masse und Höhe zählen gleich stark."
+   "Nur die Masse zählt. Die doppelte Höhe ändert die Lageenergie nicht."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Lies in der Statuszeile ab, wie viel Lageenergie der Klotz oben hat.",
    "Drücke „×2 Masse“ und trage den Wert in die Tabelle ein.",

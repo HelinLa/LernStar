@@ -20,9 +20,10 @@
   "frage": "Woher kommt die Energie bei einer Kernspaltung?",
   "predict": [
    "Alles wiegt zusammen gleich viel wie vorher. Die Energie kam vom Neutron.",
+   "Alles wiegt zusammen mehr als vorher. Das Neutron kommt ja noch dazu.",
    "Alles wiegt zusammen weniger als vorher. Daraus wird die Energie."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke „Spaltung noch einmal“. Beobachte das langsame Neutron.",
    "Lies in der Statuszeile die fehlende Masse ab. Sie steht vor „weniger als vorher“.",

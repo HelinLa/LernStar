@@ -17,9 +17,10 @@
   "frage": "Warum hören wir den Donner erst nach dem Blitz?",
   "predict": [
    "Der Donner entsteht erst einige Sekunden nach dem Blitz.",
+   "Pro Kilometer vergeht eine Sekunde. Bei 1,0 km kommt der Donner nach 1 Sekunde.",
    "Blitz und Donner starten zusammen. Der Donner ist nur viel langsamer."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Stelle den Regler „Entfernung des Gewitters“ auf 1,0 km.",
    "Lies unter „4 · Der Donner kommt hinterher“ ab, wie lange der Donner braucht.",

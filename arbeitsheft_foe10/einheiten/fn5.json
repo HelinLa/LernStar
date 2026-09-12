@@ -19,10 +19,11 @@
   ],
   "frage": "Wie hoch sind die Impulse bei etwa 200 V und bei etwa 450 V?",
   "predict": [
-   "Bei etwa 200 V sind die Impulse verschieden hoch, bei etwa 450 V gleich.",
-   "α macht auch bei etwa 450 V den größten Impuls."
+   "α macht auch bei etwa 450 V den größten Impuls.",
+   "Bei 200 V sind alle Impulse gleich hoch. Bei 450 V sind sie verschieden.",
+   "Bei etwa 200 V sind die Impulse verschieden hoch, bei etwa 450 V gleich."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „3 · Proportional- oder Auslösebereich“, dann „Proportionalbereich“.",
    "Lies unter „Proportionalbereich (~200 V)“ die Spalte „Impulshöhe“. Ergänze die mittlere Spalte.",

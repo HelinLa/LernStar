@@ -18,10 +18,11 @@
   ],
   "frage": "Woran erkennst du, welches der zwei Autos schneller ist?",
   "predict": [
+   "Schneller ist das Auto, das die größere Strecke schafft.",
    "Schneller ist das Auto, das in gleicher Zeit weiter kommt.",
-   "Schneller ist das Auto, das die größere Strecke schafft."
+   "Das größere Auto ist schneller. Die Größe entscheidet das Rennen."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke den Knopf „Rennen starten“ und beobachte die zwei Autos.",
    "Lies die Statuszeile unter „Wer ist schneller?“. Zeile 1 ist schon ausgefüllt.",

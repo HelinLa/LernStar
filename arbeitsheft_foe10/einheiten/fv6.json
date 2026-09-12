@@ -19,9 +19,10 @@
   "frage": "Wann zeigt das Messgerät eine Spannung an?",
   "predict": [
    "Der Magnet liegt in der Spule. Also zeigt das Messgerät weiter Spannung.",
+   "Nur beim Hineinfahren zeigt das Messgerät Spannung. Beim Herausziehen zeigt es nichts.",
    "Das Messgerät zeigt nur Spannung, solange sich der Magnet bewegt."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Beobachte das Messgerät. Der Magnet fährt hinein, liegt still, fährt heraus.",
    "Wähle „stark“. Lies bei 50 cm/s ab und trage ein.",

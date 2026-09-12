@@ -17,10 +17,11 @@
   ],
   "frage": "Warum rollt Jannis zurück, wenn er das Klavier wegdrückt?",
   "predict": [
+   "Beide Kräfte sind gleich groß. Der leichtere Körper wird schneller.",
    "Nur Jannis drückt. Das Klavier drückt nicht zurück.",
-   "Beide Kräfte sind gleich groß. Der leichtere Körper wird schneller."
+   "Die zwei Kräfte sind gleich groß. Darum bewegt sich niemand."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke Eisläufer. Trage das Tempo v von Läufer B ein.",
    "Drücke Boot. Trage das Tempo v von Boot und Person ein.",

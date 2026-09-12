@@ -19,10 +19,11 @@
   ],
   "frage": "Reicht eine einzige Kraftwerksart für den Strom einer Stadt?",
   "predict": [
+   "Eine Kraftwerksart reicht, wenn man genug davon baut.",
    "Eine Stadt braucht mehrere Kraftwerksarten zusammen.",
-   "Eine Kraftwerksart reicht, wenn man genug davon baut."
+   "Ein Windpark ist regelbar. Deshalb reicht Wind allein für die ganze Stadt."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Lies im Datenblatt die Zeile „Kernkraftwerk“ von links nach rechts.",
    "Trage bei den drei offenen Zeilen ein, ob der Brennstoff Geld kostet.",

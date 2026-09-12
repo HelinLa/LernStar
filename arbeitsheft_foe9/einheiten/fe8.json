@@ -19,10 +19,11 @@
   ],
   "frage": "Was passiert mit Kraft und Weg, wenn der Kraftarm länger wird?",
   "predict": [
+   "Der lange Kraftarm spart Kraft. Die Hand läuft dafür weiter.",
    "Der lange Kraftarm spart Kraft. Der Weg bleibt gleich.",
-   "Der lange Kraftarm spart Kraft. Die Hand läuft dafür weiter."
+   "Der Kraftarm l₁ ist egal. Du brauchst immer 200 N."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Stelle den Kraftarm l₁ auf 1,00 m. Die Last F₂ bleibt 200 N.",
    "Drücke „gleich lang – nichts gespart“. Fülle Zeile 2 aus.",

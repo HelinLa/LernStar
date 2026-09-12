@@ -19,10 +19,11 @@
   ],
   "frage": "Sind Masse und Gewichtskraft dasselbe?",
   "predict": [
+   "Masse und Gewichtskraft sind zwei verschiedene Größen.",
    "Masse und Gewichtskraft sind dasselbe in anderen Einheiten.",
-   "Masse und Gewichtskraft sind zwei verschiedene Größen."
+   "Ganz leichte Körper haben keine Gewichtskraft. Bei 100 g steht 0 N."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke zuerst „100 g“. Sonst steht noch 1 kg da.",
    "Lies in der Statuszeile Masse und Gewichtskraft ab. Trage beides ein.",

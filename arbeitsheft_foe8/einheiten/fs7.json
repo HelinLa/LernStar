@@ -17,7 +17,8 @@
   "frage": "Wovon hängt es ab, wie stark ein Draht den Strom bremst?",
   "predict": [
    "Ein langer und dünner Draht bremst stärker. Auch das Material zählt mit.",
-   "Jeder Draht aus Metall bremst gleich stark. Nur das Netzteil entscheidet."
+   "Jeder Draht aus Metall bremst gleich stark. Nur das Netzteil entscheidet.",
+   "Nur die Länge zählt. Ein dünner Draht bremst genauso stark wie ein dicker."
   ],
   "predictOk": 0,
   "forschen": [

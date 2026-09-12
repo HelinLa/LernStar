@@ -19,10 +19,11 @@
   ],
   "frage": "Am Bildschirm liegen 200 Kerne. Sind nach einer Halbwertszeit immer genau 100 übrig?",
   "predict": [
+   "Ungefähr 100 Kerne sind übrig.",
    "Immer genau 100 Kerne sind übrig.",
-   "Ungefähr 100 Kerne sind übrig."
+   "Nach einer Halbwertszeit sind noch etwa 150 Kerne übrig. Nur ein Viertel zerfällt."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke „Radon-220“. Lies in Zeile 1 der Statuszeile die Halbwertszeit ab.",
    "Drücke „eine Halbwertszeit weiter“. Lies in Zeile 2 die übrigen Kerne ab.",

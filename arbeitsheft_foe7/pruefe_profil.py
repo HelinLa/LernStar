@@ -9,6 +9,7 @@ genau ihren Fehler auslösen). Erst danach werden die echten Einheiten geprüft.
 Aufruf: python3 pruefe_profil.py            → Selbsttest + alle Einheiten
         python3 pruefe_profil.py fo3 fw8    → Selbsttest + nur diese
 """
+import collections
 import json, os, re, sys, copy
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -122,8 +123,16 @@ def pruefe(einheit):
         f.append("Selbstcheck braucht genau 3 Aussagen")
     if any(not a.startswith("Ich ") for a in s.get("selbstcheck", [])):
         f.append("Selbstcheck-Aussagen beginnen mit „Ich …“")
-    if len(s.get("predict", [])) != 2 or s.get("predictOk") not in (0, 1):
-        f.append("Genau 2 Vermutungen mit predictOk 0 oder 1")
+    # DREI Vermutungen seit dem Einstiegsumbau (12.09.2026). Zwei sind faktisch
+    # eine Ja/Nein-Frage; mit der dritten muss das Kind wirklich waehlen.
+    if len(s.get("predict", [])) != 3 or s.get("predictOk") not in (0, 1, 2):
+        f.append("Genau 3 Vermutungen mit predictOk 0, 1 oder 2")
+    # Zwei Falschantworten, die DASSELBE vorhersagen, kann das Kind am
+    # Bildschirm nicht unterscheiden - dann prueft die Seite nichts. Wortgleich
+    # ist der Fall, den sich maschinell fassen laesst; der inhaltliche gehoert
+    # in die Gegenlese.
+    if len(set(s.get("predict", []))) != len(s.get("predict", [])):
+        f.append("Zwei Vermutungen sind wortgleich")
 
     # ── Sprach- und Formregeln des Profils ──────────────────────────
     woerter = sum(len((m["pre"] + " " + m["loesung"] + " " + m["post"]).split()) for m in ms)
@@ -224,6 +233,11 @@ def selbsttest(gut):
     kaputt(("seite", "hilfen", "h3"), "Fast fertig ohne Lücke.", "___")
     kaputt(("lehrer", "a1", "richtig"), 9, "widerspricht")
     kaputt(("seite", "fachwoerter_neu"), ["A", "B", "C"], "ZWEI neue Fachwörter")
+    # Die Vermutungsregel hatte bis zum 12.09.2026 KEINE Kaputt-Probe - eine
+    # Regel, die nie gegen ihren Fehlerfall gehalten wird, ist keine Pruefung.
+    kaputt(("seite", "predict"), gut["seite"]["predict"][:2], "Genau 3 Vermutungen")
+    kaputt(("seite", "predict"),
+           [gut["seite"]["predict"][0]] * 3, "wortgleich")
     if CMAP:
         # Kaputt-Probe Schrift: ein Knopfname mit Zierziffer, wie ihn die
         # Simulationen wirklich tragen - muss als undruckbar auffallen.
@@ -268,12 +282,15 @@ if __name__ == "__main__":
             gesamt += len(ueber)
     # Antwortpositionen je Kapitel zählen (Messregel)
     for kap, kennungen in KAPITEL_IDS:
-        p_zaehl, r_zaehl = {0: 0, 1: 0}, {0: 0, 1: 0, 2: 0}
+        # Counter statt fester Schluessel: mit der dritten Vermutung gibt es
+        # predictOk = 2, und ein Dict mit nur {0,1} stuerzte hier mit
+        # KeyError ab - mitten in der Auswertung, nach allen Befunden.
+        p_zaehl, r_zaehl = collections.Counter(), collections.Counter()
         for eid in ids:
             if eid not in kennungen: continue
             e = json.load(open(os.path.join(HERE, "einheiten", eid + ".json"), encoding="utf-8"))
             p_zaehl[e["seite"]["predictOk"]] += 1
             r_zaehl[e["seite"]["aufgaben"][0]["richtig"]] += 1
-        print(f"{kap}: predictOk {dict(p_zaehl)} · Aufgabe-1-richtig {dict(r_zaehl)}")
+        print(f"{kap}: predictOk {dict(sorted(p_zaehl.items()))} · Aufgabe-1-richtig {dict(sorted(r_zaehl.items()))}")
     print("\nBEFUNDE GESAMT:", gesamt)
     sys.exit(1 if gesamt else 0)

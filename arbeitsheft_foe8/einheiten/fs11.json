@@ -18,10 +18,11 @@
   ],
   "frage": "Müssen die Elektronen schnell durch das Kabel fahren, damit die Lampe sofort leuchtet?",
   "predict": [
+   "Ja. Die Elektronen sausen ganz schnell durch das ganze Kabel.",
    "Nein. Die Elektronen wandern langsam. Trotzdem ist das Signal sofort da.",
-   "Ja. Die Elektronen sausen ganz schnell durch das ganze Kabel."
+   "Nein. Die Elektronen bleiben stehen. Nur das Signal läuft durch das Kabel."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke „Leselampe“ und sieh dir das Bild vom Kupferdraht an.",
    "Lies im Bild die Werte für Zappeln und Signal ab.",

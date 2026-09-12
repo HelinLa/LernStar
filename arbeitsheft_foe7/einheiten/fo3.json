@@ -18,10 +18,11 @@
   ],
   "frage": "Wohin knickt der Lichtstrahl, wenn er ins Glas eintritt?",
   "predict": [
-   "Der Strahl knickt an der Grenze zum Lot hin.",
-   "Der Strahl knickt an der Grenze vom Lot weg."
+   "Der Strahl knickt an der Grenze vom Lot weg.",
+   "Im Glas läuft der Strahl immer geradeaus weiter. Es gibt gar keinen Knick.",
+   "Der Strahl knickt an der Grenze zum Lot hin."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „↓ genau auf das Lot“ und lies die Statuszeile.",
    "Stelle den Winkel in der Luft auf 40° und lies den Winkel im Glas ab.",

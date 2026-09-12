@@ -19,10 +19,11 @@
   ],
   "frage": "Lebt ein schwerer Stern länger als ein leichter?",
   "predict": [
-   "Ein schwerer Stern verbraucht seinen Brennstoff schneller und lebt kürzer.",
-   "Ein schwerer Stern hat mehr Brennstoff und lebt länger."
+   "Ein schwerer Stern hat mehr Brennstoff und lebt länger.",
+   "Alle Sterne leben gleich lang. Die Masse ändert daran nichts.",
+   "Ein schwerer Stern verbraucht seinen Brennstoff schneller und lebt kürzer."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „1“ und sieh den ganzen Lebenslauf durch.",
    "Lies die Lebensdauer ab und trage sie ein.",

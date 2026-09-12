@@ -18,10 +18,11 @@
   ],
   "frage": "Wovon hängt es ab, ob es gerade Tag oder Nacht ist?",
   "predict": [
+   "Die Sonne wandert um die Erde herum.",
    "Die Erde dreht sich. Tag hat die Seite, die zur Sonne zeigt.",
-   "Die Sonne wandert um die Erde herum."
+   "Die Erde dreht sich sehr langsam. Für eine volle Drehung braucht sie ein ganzes Jahr."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke „Pause“, damit der Globus stehen bleibt.",
    "Stelle den Regler „Erde von Hand drehen“ auf 0°. Lies ab: Wer hat Sonne?",

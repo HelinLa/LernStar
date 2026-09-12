@@ -17,10 +17,11 @@
   ],
   "frage": "Was bringt mehr Bewegungsenergie: doppelte Masse oder doppeltes Tempo v?",
   "predict": [
+   "Masse und Tempo v wirken gleich stark.",
    "Doppeltes Tempo v bringt mehr Energie als doppelte Masse.",
-   "Masse und Tempo v wirken gleich stark."
+   "Doppelte Masse m bringt mehr Energie als doppeltes Tempo v."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke „zurücksetzen“. Am Bildschirm stehen 4 kg und 4 m/s.",
    "Drücke „×2 Masse“ und fülle Zeile 2 aus.",

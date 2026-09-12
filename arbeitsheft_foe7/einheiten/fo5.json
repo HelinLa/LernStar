@@ -20,7 +20,8 @@
   "frage": "Welches Glas bündelt paralleles Licht – und welches nicht?",
   "predict": [
    "Beide Gläser bündeln das Licht, das dünne nur schwächer.",
-   "Nur das dicke Glas bündelt. Das dünne lenkt die Strahlen auseinander."
+   "Nur das dicke Glas bündelt. Das dünne lenkt die Strahlen auseinander.",
+   "Nur das dünne Glas bündelt das Licht. Das dicke lenkt die Strahlen auseinander."
   ],
   "predictOk": 1,
   "forschen": [

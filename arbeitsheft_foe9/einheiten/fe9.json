@@ -19,10 +19,11 @@
   ],
   "frage": "Was ändert sich, wenn mehr Seilstücke die Last tragen?",
   "predict": [
+   "Mehr Seilstücke: Dann wird auch die Arbeit kleiner.",
    "Mehr Seilstücke: Die Kraft wird kleiner, der Weg wird länger.",
-   "Mehr Seilstücke: Dann wird auch die Arbeit kleiner."
+   "Die Rollen drehen nur die Richtung um. Die Kraft bleibt gleich groß."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke „n = 1 · volle Kraft“ und prüfe Zeile 1.",
    "Drücke „n = 2 · halbe Kraft“ und fülle Zeile 2.",

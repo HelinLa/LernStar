@@ -18,7 +18,8 @@
   "frage": "Was ändert sich an Kraft und Weg, wenn die Rampe flacher liegt?",
   "predict": [
    "Auf der flachen Rampe braucht Nour weniger Kraft. Die Kiste bleibt gleich schwer.",
-   "Auf der flachen Rampe wird die Kiste leichter."
+   "Auf der flachen Rampe wird die Kiste leichter.",
+   "Auf der flachen Rampe brauchst du mehr Kraft. Der Weg ist länger."
   ],
   "predictOk": 0,
   "forschen": [

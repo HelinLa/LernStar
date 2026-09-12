@@ -19,10 +19,11 @@
   ],
   "frage": "Was macht ein zweiter Widerstand in der Reihe mit dem Strom?",
   "predict": [
-   "Der Strom ist an jeder Stelle gleich groß.",
-   "Am zweiten Widerstand kommt weniger Strom an als am ersten."
+   "Am zweiten Widerstand kommt weniger Strom an als am ersten.",
+   "R_ges ist so groß wie der größere Widerstand. Der kleinere zählt nicht mit.",
+   "Der Strom ist an jeder Stelle gleich groß."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke zuerst . Jetzt steht R₁ auf 10 Ω und R₂ auf 20 Ω, wie in Zeile 1. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.",
    "Drücke bei R₁ auf 20 Ω. Lies R_ges und den Strom I ab und trage Zeile 2 ein.",

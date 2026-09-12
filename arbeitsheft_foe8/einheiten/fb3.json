@@ -19,7 +19,8 @@
   "frage": "Wie rechnest du einen Wert von m/s in km/h um?",
   "predict": [
    "Man rechnet mal 3,6.",
-   "Man rechnet mal 1000, weil 1 Kilometer 1000 Meter sind."
+   "Man rechnet mal 1000, weil 1 Kilometer 1000 Meter sind.",
+   "Man rechnet mal 60, weil eine Stunde 60 Minuten hat."
   ],
   "predictOk": 0,
   "forschen": [

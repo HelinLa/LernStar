@@ -20,7 +20,8 @@
   "frage": "An welcher Stelle ist das Magnetfeld am stärksten?",
   "predict": [
    "An den Enden ist das Magnetfeld stark, über der Mitte schwach.",
-   "Das Magnetfeld ist überall gleich stark."
+   "Das Magnetfeld ist überall gleich stark.",
+   "In der Mitte ist das Magnetfeld am stärksten. Außen ist es schwach."
   ],
   "predictOk": 0,
   "forschen": [

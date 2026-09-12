@@ -18,10 +18,11 @@
   ],
   "frage": "Wie lange ist das Licht von fernen Zielen zu uns unterwegs?",
   "predict": [
-   "Auch Licht braucht Zeit. Je weiter weg, desto länger ist es unterwegs.",
-   "Licht ist so schnell, dass es sofort da ist."
+   "Licht ist so schnell, dass es sofort da ist.",
+   "Bis zum Mond braucht das Licht viele Jahre. So weit ist der Weg.",
+   "Auch Licht braucht Zeit. Je weiter weg, desto länger ist es unterwegs."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „Lichtblitz senden“ und beobachte den Weg zum Mond.",
    "Lies Entfernung und Zeit in der Statuszeile ab.",

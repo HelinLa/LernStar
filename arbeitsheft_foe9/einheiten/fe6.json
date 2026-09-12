@@ -18,7 +18,8 @@
   "frage": "Was ändert sich, wenn Nour die halbe Zeit braucht?",
   "predict": [
    "Wer schneller zieht, verrichtet mehr Arbeit W.",
-   "Die Arbeit W bleibt gleich. Nur die Leistung P wird doppelt."
+   "Die Arbeit W bleibt gleich. Nur die Leistung P wird doppelt.",
+   "Nour braucht die halbe Zeit. Arbeit und Leistung bleiben trotzdem gleich."
   ],
   "predictOk": 1,
   "forschen": [

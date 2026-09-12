@@ -18,10 +18,11 @@
   ],
   "frage": "Wohin drückt die Kraft F auf den Stab?",
   "predict": [
+   "Der Stab wird quer geschoben, nicht angezogen.",
    "Der Magnet zieht den Stab zum Nordpol.",
-   "Der Stab wird quer geschoben, nicht angezogen."
+   "Der Stab bewegt sich gar nicht. Kupfer ist ja kein Magnet."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke „zurücksetzen“. Lies den ersten Satz und die Zahl vor N. Den Absatz über drei Finger brauchst du nicht.",
    "Stelle 0 A ein. Nimm nur den ersten Satz. Trage Zeile 2 ein.",

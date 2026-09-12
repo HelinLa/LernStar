@@ -19,9 +19,10 @@
   "frage": "Warum drückt das Wasser unten stärker als oben?",
   "predict": [
    "Der Schweredruck hängt davon ab, wie viel Wasser im Tank steht.",
+   "Öl drückt stärker als Wasser. Öl ist dick und zäh.",
    "Der Schweredruck hängt von der Tiefe und von der Flüssigkeit ab."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Lies zuerst unter der Überschrift Der Schweredruck die Zahl vor kPa.",
    "Drücke Öl und trage den Wert bei 10 m ein.",

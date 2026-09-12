@@ -18,10 +18,11 @@
   ],
   "frage": "Was sagt dir die Linie im Weg-Zeit-Diagramm über die Fahrt?",
   "predict": [
-   "Die steile Linie gehört zur schnellen Fahrt. In gleicher Zeit ist der Weg groß.",
-   "Die steile Linie gehört zur langsamen Fahrt. Der Wagen muss ja bergauf."
+   "Die steile Linie gehört zur langsamen Fahrt. Der Wagen muss ja bergauf.",
+   "Die Linie zeigt die Straße. Bei schnell und langsam sieht sie gleich aus.",
+   "Die steile Linie gehört zur schnellen Fahrt. In gleicher Zeit ist der Weg groß."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „schnell“ und dann „▶ Fahren“. Zeile 1 der Tabelle ist schon ausgefüllt.",
    "Drücke „langsam“ und dann „▶ Fahren“. Beobachte, wie stark die Linie steigt.",

@@ -18,10 +18,11 @@
   ],
   "frage": "Was ändert sich am Voltmeter und an der Lampe, wenn du mehr Zellen einsetzt?",
   "predict": [
-   "Mehr Zellen geben mehr Volt. Die Lampe leuchtet dann heller.",
-   "Mehr Zellen halten nur länger. Die Lampe bleibt gleich hell."
+   "Mehr Zellen halten nur länger. Die Lampe bleibt gleich hell.",
+   "Die Lampe leuchtet heller. Das Voltmeter zeigt aber weiter 1,5 Volt.",
+   "Mehr Zellen geben mehr Volt. Die Lampe leuchtet dann heller."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „1 Zelle (1,5 V)“ und lies die Spannung U am Voltmeter ab.",
    "Lies in der Statuszeile, wie hell die Lampe leuchtet.",

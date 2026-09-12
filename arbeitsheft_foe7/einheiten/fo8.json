@@ -18,10 +18,11 @@
   ],
   "frage": "Welche Linse gehört zu welchem Sehfehler?",
   "predict": [
+   "Beide Sehfehler brauchen dieselbe Linse, nur verschieden stark.",
    "Kurzsichtige brauchen eine Zerstreuungslinse, Weitsichtige eine Sammellinse.",
-   "Beide Sehfehler brauchen dieselbe Linse, nur verschieden stark."
+   "Kurzsichtige brauchen eine Sammellinse. Weitsichtige brauchen eine Zerstreuungslinse."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Wähle „kurzsichtig“ und lies ab, wo das Bild liegt.",
    "Drücke „Brille“ und lies die neue Meldung.",

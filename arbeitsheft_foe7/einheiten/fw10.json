@@ -18,10 +18,11 @@
   ],
   "frage": "Steht die Sonne in der Mitte der Milchstraße?",
   "predict": [
+   "Nein – zur Mitte hin sehen wir viel mehr Sterne als nach außen.",
    "Ja – darum sehen wir in alle Richtungen gleich viele Sterne.",
-   "Nein – zur Mitte hin sehen wir viel mehr Sterne als nach außen."
+   "Quer aus der Scheibe heraus siehst du die meisten Sterne. Dort ist der Blick frei."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke nacheinander „zur Mitte“, „nach außen“ und „quer heraus“.",
    "Lies jedes Mal die Sterne im Blickfeld ab und trage ein.",

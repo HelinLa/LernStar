@@ -19,10 +19,11 @@
   ],
   "frage": "Warum bleibt der Wagen stehen – und was passiert ohne Reibung?",
   "predict": [
-   "Die Reibung bremst ihn. Ohne Reibung rollt er immer weiter.",
-   "Der Anstoß ist in dem Wagen langsam aufgebraucht."
+   "Der Anstoß ist in dem Wagen langsam aufgebraucht.",
+   "Auf dem Eis wird der Wagen immer schneller. Eis ist ja glatt.",
+   "Die Reibung bremst ihn. Ohne Reibung rollt er immer weiter."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Wähle „Tisch“, drücke „Anstoßen“ und warte, bis er steht.",
    "Drücke „Zurücksetzen“, wähle „Eis“ und stoße wieder an.",

@@ -20,7 +20,8 @@
   "frage": "An welcher Stelle ist das Magnetfeld am stärksten?",
   "predict": [
    "An den Enden ist das Magnetfeld stark, über der Mitte schwach.",
-   "Das Magnetfeld ist überall gleich stark."
+   "Das Magnetfeld ist überall gleich stark.",
+   "In der Mitte ist das Magnetfeld am stärksten. Außen ist es schwach."
   ],
   "predictOk": 0,
   "forschen": [
@@ -143,7 +144,8 @@
   "frage": "Was macht die Kompassnadel, wenn Strom fließt?",
   "predict": [
    "Der Draht zieht die Nadel an wie ein Magnet.",
-   "Die Nadel dreht sich nur zur Seite."
+   "Die Nadel dreht sich nur zur Seite.",
+   "Die Nadel zeigt weiter nach Norden. Der Strom ändert nichts."
   ],
   "predictOk": 1,
   "forschen": [
@@ -261,10 +263,11 @@
   ],
   "frage": "Wie ändert sich die Tragkraft, wenn mehr Strom fließt?",
   "predict": [
-   "Die Tragkraft wird größer. Der Magnet hält mehr Klammern.",
-   "Die Tragkraft bleibt gleich. Mehr Strom ändert nichts."
+   "Die Tragkraft bleibt gleich. Mehr Strom ändert nichts.",
+   "Die Tragkraft wird kleiner. Der Magnet hält dann weniger Klammern.",
+   "Die Tragkraft wird größer. Der Magnet hält mehr Klammern."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke zuerst „Stromstärke ändern“. Sonst füllt sich die falsche Tabelle.",
    "Drücke danach „Beispielmessreihe“. Lies die Tragkraft bei 1 A, 3 A und 5 A ab.",
@@ -384,10 +387,11 @@
   ],
   "frage": "Wohin drückt die Kraft F auf den Stab?",
   "predict": [
+   "Der Stab wird quer geschoben, nicht angezogen.",
    "Der Magnet zieht den Stab zum Nordpol.",
-   "Der Stab wird quer geschoben, nicht angezogen."
+   "Der Stab bewegt sich gar nicht. Kupfer ist ja kein Magnet."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke „zurücksetzen“. Lies den ersten Satz und die Zahl vor N. Den Absatz über drei Finger brauchst du nicht.",
    "Stelle 0 A ein. Nimm nur den ersten Satz. Trage Zeile 2 ein.",
@@ -513,10 +517,11 @@
   ],
   "frage": "Was macht die Spule, wenn der Kommutator aus ist?",
   "predict": [
+   "Ohne Kommutator dreht die Spule langsamer weiter.",
    "Ohne Kommutator wackelt die Spule und bleibt stehen.",
-   "Ohne Kommutator dreht die Spule langsamer weiter."
+   "Ohne Kommutator steht die Spule sofort still. Sie wackelt nicht einmal."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Beobachte die Spule. Das ist Zeile 1.",
    "Drücke den Knopf mit dem Wort Kommutator. Dort steht dann: Kommutator ist AUS.",
@@ -637,9 +642,10 @@
   "frage": "Wann zeigt das Messgerät eine Spannung an?",
   "predict": [
    "Der Magnet liegt in der Spule. Also zeigt das Messgerät weiter Spannung.",
+   "Nur beim Hineinfahren zeigt das Messgerät Spannung. Beim Herausziehen zeigt es nichts.",
    "Das Messgerät zeigt nur Spannung, solange sich der Magnet bewegt."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Beobachte das Messgerät. Der Magnet fährt hinein, liegt still, fährt heraus.",
    "Wähle „stark“. Lies bei 50 cm/s ab und trage ein.",
@@ -766,7 +772,8 @@
   "frage": "Wie ändert sich die Spannung, wenn sich die Spule schneller dreht?",
   "predict": [
    "Die Spannung wird größer, wenn sich die Spule schneller dreht.",
-   "Die Spannung bleibt gleich. Der Magnet allein macht sie."
+   "Die Spannung bleibt gleich. Der Magnet allein macht sie.",
+   "Dreht die Spule schneller, wird die Spannung kleiner. Es bleibt weniger Zeit."
   ],
   "predictOk": 0,
   "forschen": [
@@ -891,7 +898,8 @@
   "frage": "Wovon hängt es ab, wie viel Volt aus der Sekundärspule kommen?",
   "predict": [
    "Die Windungen sind egal. Es kommen immer gleich viele Volt.",
-   "Mit mehr Windungen kommen mehr Volt aus der Sekundärspule."
+   "Mit mehr Windungen kommen mehr Volt aus der Sekundärspule.",
+   "Mit mehr Windungen bei der Sekundärspule kommen weniger Volt heraus."
   ],
   "predictOk": 1,
   "forschen": [
@@ -1014,10 +1022,11 @@
   ],
   "frage": "Warum ist der Verlust mit Hochspannung so klein?",
   "predict": [
-   "Mit Hochspannung fließt ein kleiner Strom. Dann ist der Verlust klein.",
-   "Mit Hochspannung fließt mehr Energie. Dann ist der Verlust größer."
+   "Mit Hochspannung fließt mehr Energie. Dann ist der Verlust größer.",
+   "Bei Hochspannung fließt gleich viel Strom wie vorher. Nur der Verlust wird kleiner.",
+   "Mit Hochspannung fließt ein kleiner Strom. Dann ist der Verlust klein."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „1 · Die drei Teilversuche“, dann „Hochspannung“.",
    "Lies in der Zeile mit „Strom“ die Zahl vor A ab. Lies in der Zeile „Verlust in der Leitung“ die Zahl vor W ab.",
@@ -1133,10 +1142,11 @@
   ],
   "frage": "Welche Stellen liegen auf dem Weg vom Kraftwerk bis zur Steckdose?",
   "predict": [
+   "Die Spannung wird unterwegs zweimal geändert: erst größer, am Ende wieder kleiner.",
    "Aus dem Kraftwerk kommen schon 230 V. Die Spannung bleibt gleich.",
-   "Die Spannung wird unterwegs zweimal geändert: erst größer, am Ende wieder kleiner."
+   "Die Spannung wird nur einmal geändert. Erst kurz vor dem Haus wird sie kleiner."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke „5 · Konzepte im Vergleich“.",
    "Sieh dir die fünf Kreise an. Jeder Kreis ist eine Stelle auf dem Weg.",
@@ -1267,10 +1277,11 @@
   ],
   "frage": "Reicht eine einzige Kraftwerksart für den Strom einer Stadt?",
   "predict": [
+   "Eine Kraftwerksart reicht, wenn man genug davon baut.",
    "Eine Stadt braucht mehrere Kraftwerksarten zusammen.",
-   "Eine Kraftwerksart reicht, wenn man genug davon baut."
+   "Ein Windpark ist regelbar. Deshalb reicht Wind allein für die ganze Stadt."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Lies im Datenblatt die Zeile „Kernkraftwerk“ von links nach rechts.",
    "Trage bei den drei offenen Zeilen ein, ob der Brennstoff Geld kostet.",
@@ -1427,9 +1438,10 @@
   "frage": "Bleibt der Wirkungsgrad η gleich, wenn mehr Energie hineingeht?",
   "predict": [
    "Bei mehr Energie wird der Wirkungsgrad η größer.",
+   "Bei mehr Energie wird der Wirkungsgrad η kleiner. Es geht mehr Wärme verloren.",
    "Der Wirkungsgrad η bleibt gleich. Nur die Zahlen werden größer."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke „Handy-Ladegerät“. Zeile 1 ist schon ausgefüllt.",
    "Stelle den Regler auf 200 J, 600 J und 1200 J. Bleibe beim Handy-Ladegerät.",
@@ -1556,7 +1568,8 @@
   "frage": "Wovon hängt es ab, was ein Gerät im Jahr kostet?",
   "predict": [
    "Ein starkes Gerät kostet viel, auch bei kurzer Zeit.",
-   "Am meisten kostet das Gerät, das am längsten läuft."
+   "Am meisten kostet das Gerät, das am längsten läuft.",
+   "Du nimmst die Watt-Zahl mal 0,30 €. Das sind die Kosten im Jahr."
   ],
   "predictOk": 0,
   "forschen": [
@@ -1684,10 +1697,11 @@
   ],
   "frage": "Welche Teilchen im Kern bestimmen den Namen?",
   "predict": [
+   "Mehr Neutronen geben dem Kern einen anderen Namen. Dann ist es ein anderer Stoff.",
    "Nur die Zahl der Protonen bestimmt den Namen. Mehr Neutronen geben nur eine andere Sorte.",
-   "Mehr Neutronen geben dem Kern einen anderen Namen. Dann ist es ein anderer Stoff."
+   "Bei Kohlenstoff-12 liegen 12 Protonen im Kern. Die Zahl im Namen zählt die Protonen."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke Wasserstoff-1. Die erste Zeile der Tabelle ist schon ausgefüllt.",
    "Drücke Kohlenstoff-12. Trage die zweite Zeile ein.",
@@ -1814,9 +1828,10 @@
   "frage": "Warum knackt das Zählrohr bei manchen Spannungen nicht?",
   "predict": [
    "Je mehr Spannung, desto besser zählt das Zählrohr.",
+   "Das Zählrohr zählt bei jeder Spannung gleich viele Impulse. Die Spannung ist egal.",
    "Das Zählrohr zählt nur bei mittlerer Spannung. Zu wenig und zu viel sind schlecht."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke oben den Knopf „2 · Die Kennlinie“.",
    "Stelle den Regler „Zählrohrspannung U“ nacheinander auf 0 V, 450 V und 650 V.",
@@ -1937,7 +1952,8 @@
   "frage": "Welches Material hält welche Strahlung auf?",
   "predict": [
    "Papier hält Alphastrahlung auf. Durch Blei kommt noch Gammastrahlung.",
-   "Alphastrahlung kommt am weitesten. Sie geht sogar durch Blei."
+   "Alphastrahlung kommt am weitesten. Sie geht sogar durch Blei.",
+   "Blei hält alle drei Strahlungsarten ganz auf. Dahinter zeigt das Gerät null."
   ],
   "predictOk": 0,
   "forschen": [
@@ -2061,7 +2077,8 @@
   "frage": "Warum ist Alphastrahlung im Körper am gefährlichsten?",
   "predict": [
    "Gefährlich ist die Strahlung, die am weitesten kommt.",
-   "Gefährlich ist, wie dicht die Ionenpaare beieinanderliegen."
+   "Gefährlich ist, wie dicht die Ionenpaare beieinanderliegen.",
+   "Betastrahlung macht mehr Ionenpaare je Millimeter als Alphastrahlung. Darum ist Beta gefährlicher."
   ],
   "predictOk": 1,
   "forschen": [
@@ -2184,10 +2201,11 @@
   ],
   "frage": "Wie hoch sind die Impulse bei etwa 200 V und bei etwa 450 V?",
   "predict": [
-   "Bei etwa 200 V sind die Impulse verschieden hoch, bei etwa 450 V gleich.",
-   "α macht auch bei etwa 450 V den größten Impuls."
+   "α macht auch bei etwa 450 V den größten Impuls.",
+   "Bei 200 V sind alle Impulse gleich hoch. Bei 450 V sind sie verschieden.",
+   "Bei etwa 200 V sind die Impulse verschieden hoch, bei etwa 450 V gleich."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „3 · Proportional- oder Auslösebereich“, dann „Proportionalbereich“.",
    "Lies unter „Proportionalbereich (~200 V)“ die Spalte „Impulshöhe“. Ergänze die mittlere Spalte.",
@@ -2308,10 +2326,11 @@
   ],
   "frage": "Am Bildschirm liegen 200 Kerne. Sind nach einer Halbwertszeit immer genau 100 übrig?",
   "predict": [
+   "Ungefähr 100 Kerne sind übrig.",
    "Immer genau 100 Kerne sind übrig.",
-   "Ungefähr 100 Kerne sind übrig."
+   "Nach einer Halbwertszeit sind noch etwa 150 Kerne übrig. Nur ein Viertel zerfällt."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke „Radon-220“. Lies in Zeile 1 der Statuszeile die Halbwertszeit ab.",
    "Drücke „eine Halbwertszeit weiter“. Lies in Zeile 2 die übrigen Kerne ab.",
@@ -2432,10 +2451,11 @@
   ],
   "frage": "Von 200 Kernen sind noch 50 übrig. Wie viele Halbwertszeiten sind vergangen?",
   "predict": [
+   "Vier Halbwertszeiten. 200 geteilt durch 50 ist vier.",
    "Zwei Halbwertszeiten. 50 Kerne sind ein Viertel von 200.",
-   "Vier Halbwertszeiten. 200 geteilt durch 50 ist vier."
+   "Drei Halbwertszeiten. Du zählst die Zahlen 200, 100 und 50."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke „Kohlenstoff-14“. Lies im ersten Teil der Statuszeile die Halbwertszeit ab.",
    "Drücke „eine Halbwertszeit weiter“. Lies im zweiten Teil die Jahre ab.",
@@ -2562,9 +2582,10 @@
   "frage": "Woher kommt die Energie bei einer Kernspaltung?",
   "predict": [
    "Alles wiegt zusammen gleich viel wie vorher. Die Energie kam vom Neutron.",
+   "Alles wiegt zusammen mehr als vorher. Das Neutron kommt ja noch dazu.",
    "Alles wiegt zusammen weniger als vorher. Daraus wird die Energie."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke „Spaltung noch einmal“. Beobachte das langsame Neutron.",
    "Lies in der Statuszeile die fehlende Masse ab. Sie steht vor „weniger als vorher“.",
@@ -2686,7 +2707,8 @@
   "frage": "Was macht k, wenn die Steuerstäbe weiter drin sind?",
   "predict": [
    "Je weiter die Steuerstäbe drin sind, desto weniger Spaltungen folgen.",
-   "Die Steuerstäbe bremsen kaum. k bleibt über 1,00."
+   "Die Steuerstäbe bremsen kaum. k bleibt über 1,00.",
+   "Bei 50 % hört die Kette auf. Dann folgt keine Spaltung mehr."
   ],
   "predictOk": 0,
   "forschen": [
@@ -2814,7 +2836,8 @@
   "frage": "Wo im Kernkraftwerk entsteht der Strom?",
   "predict": [
    "Der Strom entsteht schon im Brennstab. Das Kabel führt ihn weg.",
-   "Der Strom entsteht erst am Ende der Kette."
+   "Der Strom entsteht erst am Ende der Kette.",
+   "Der Strom entsteht in der Turbine. Das Rad dreht sich und macht Strom."
   ],
   "predictOk": 1,
   "forschen": [
@@ -2941,10 +2964,11 @@
   ],
   "frage": "Reicht ein Abklingraum für Abfall aus dem Kernkraftwerk?",
   "predict": [
-   "Ein Teil strahlt noch nach vielen Tausend Jahren. Für diesen Teil hilft kein Warten.",
-   "Auch dieser Abfall ist nach ein paar Jahren fertig."
+   "Auch dieser Abfall ist nach ein paar Jahren fertig.",
+   "Jeder Abfall muss ins Endlager. Für keinen Stoff reicht der Abklingraum.",
+   "Ein Teil strahlt noch nach vielen Tausend Jahren. Für diesen Teil hilft kein Warten."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Lies im Datenblatt die fehlenden Halbwertszeiten ab. Trage sie ein.",
    "Ordne beide Zeiten ein. Kurz heißt: Ein Mensch kann die Zeit rechts abwarten.",
@@ -3090,10 +3114,11 @@
   ],
   "frage": "Was hilft mehr: ein Schritt zurück oder Blei?",
   "predict": [
+   "Doppelter Abstand senkt die Dosisleistung H′ auf ein Viertel.",
    "Doppelter Abstand halbiert die Dosisleistung H′.",
-   "Doppelter Abstand senkt die Dosisleistung H′ auf ein Viertel."
+   "Der Abstand ändert nichts. Nur Blei senkt die Dosisleistung H′."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Stelle den Abstand auf 50 cm und lies beide Zahlen ab.",
    "Stelle 100 cm ein, dann 200 cm. Trage die Zahlen ein.",
@@ -3218,10 +3243,11 @@
   ],
   "frage": "Warum passt nicht jeder Stoff für jede Aufgabe?",
   "predict": [
+   "Man nimmt immer die schwächste Strahlung. Die schadet niemandem.",
    "Für ein Bild braucht man andere Strahlung als für eine Therapie.",
-   "Man nimmt immer die schwächste Strahlung. Die schadet niemandem."
+   "Für ein Bild aus dem Körper passt Alphastrahlung am besten. Gammastrahlung ist zu schwach."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Lies im Datenblatt die Strahlung ab und trage sie ein.",
    "Ordne ein: Diagnose oder Therapie? Trage es in die letzte Spalte ein.",
@@ -3368,9 +3394,10 @@
   "frage": "Ab welcher Temperatur verschmelzen kleine Kerne zu einem Heliumkern?",
   "predict": [
    "Die Sonne verbrennt Wasserstoff wie ein großes Feuer.",
+   "Die Kerne verschmelzen bei jeder Temperatur. Bei Kälte geht es nur langsamer.",
    "Unter etwa 10 Millionen Grad passiert nichts. Erst darüber verschmelzen die Kerne."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Schiebe den Regler nach links auf 4 Millionen °C.",
    "Lies die Statuszeile rechts neben dem Bild ab.",
@@ -3494,7 +3521,8 @@
   "frage": "Was wiegt für dich schwerer: dafür oder dagegen?",
   "predict": [
    "Das Datenblatt zeigt nur die Folgen. Wie schwer sie wiegen, entscheidest du.",
-   "Wer alle Angaben kennt, entscheidet von allein."
+   "Wer alle Angaben kennt, entscheidet von allein.",
+   "Im Datenblatt stehen nur Nachteile. Für die Kernenergie spricht dort nichts."
   ],
   "predictOk": 0,
   "forschen": [

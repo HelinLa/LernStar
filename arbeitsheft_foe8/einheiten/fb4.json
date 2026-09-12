@@ -20,7 +20,8 @@
   "frage": "Was sagen dir die Abstände zwischen den Sekunden-Marken?",
   "predict": [
    "Jannis rollt immer weiter. Die Abstände werden nach hinten größer.",
-   "Bleibt das Tempo gleich, sind alle Abstände gleich groß."
+   "Bleibt das Tempo gleich, sind alle Abstände gleich groß.",
+   "Jannis wird müde. Die Abstände werden nach hinten immer kleiner."
   ],
   "predictOk": 1,
   "forschen": [

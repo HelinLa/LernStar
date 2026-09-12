@@ -19,10 +19,11 @@
   ],
   "frage": "Wie ändert sich die Tragkraft, wenn mehr Strom fließt?",
   "predict": [
-   "Die Tragkraft wird größer. Der Magnet hält mehr Klammern.",
-   "Die Tragkraft bleibt gleich. Mehr Strom ändert nichts."
+   "Die Tragkraft bleibt gleich. Mehr Strom ändert nichts.",
+   "Die Tragkraft wird kleiner. Der Magnet hält dann weniger Klammern.",
+   "Die Tragkraft wird größer. Der Magnet hält mehr Klammern."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke zuerst „Stromstärke ändern“. Sonst füllt sich die falsche Tabelle.",
    "Drücke danach „Beispielmessreihe“. Lies die Tragkraft bei 1 A, 3 A und 5 A ab.",

@@ -19,9 +19,10 @@
   "frage": "Woran erkennt man ein schwarzes Loch, wenn es nicht leuchtet?",
   "predict": [
    "Licht läuft unverändert vorbei, denn Licht wiegt nichts.",
+   "Jeder Lichtstrahl wird gleich stark gebogen. Der Abstand spielt keine Rolle.",
    "Je näher das Licht vorbeiläuft, desto stärker wird es gebogen."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke „weit weg“ und dann „Lichtstrahl senden“.",
    "Lies die Statuszeile ab und trage ein.",

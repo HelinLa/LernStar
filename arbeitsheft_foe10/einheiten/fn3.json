@@ -19,7 +19,8 @@
   "frage": "Welches Material hält welche Strahlung auf?",
   "predict": [
    "Papier hält Alphastrahlung auf. Durch Blei kommt noch Gammastrahlung.",
-   "Alphastrahlung kommt am weitesten. Sie geht sogar durch Blei."
+   "Alphastrahlung kommt am weitesten. Sie geht sogar durch Blei.",
+   "Blei hält alle drei Strahlungsarten ganz auf. Dahinter zeigt das Gerät null."
   ],
   "predictOk": 0,
   "forschen": [

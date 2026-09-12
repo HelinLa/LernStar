@@ -19,10 +19,11 @@
   ],
   "frage": "Was hilft mehr: ein Schritt zurück oder Blei?",
   "predict": [
+   "Doppelter Abstand senkt die Dosisleistung H′ auf ein Viertel.",
    "Doppelter Abstand halbiert die Dosisleistung H′.",
-   "Doppelter Abstand senkt die Dosisleistung H′ auf ein Viertel."
+   "Der Abstand ändert nichts. Nur Blei senkt die Dosisleistung H′."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Stelle den Abstand auf 50 cm und lies beide Zahlen ab.",
    "Stelle 100 cm ein, dann 200 cm. Trage die Zahlen ein.",

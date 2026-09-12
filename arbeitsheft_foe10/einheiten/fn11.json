@@ -19,10 +19,11 @@
   ],
   "frage": "Reicht ein Abklingraum für Abfall aus dem Kernkraftwerk?",
   "predict": [
-   "Ein Teil strahlt noch nach vielen Tausend Jahren. Für diesen Teil hilft kein Warten.",
-   "Auch dieser Abfall ist nach ein paar Jahren fertig."
+   "Auch dieser Abfall ist nach ein paar Jahren fertig.",
+   "Jeder Abfall muss ins Endlager. Für keinen Stoff reicht der Abklingraum.",
+   "Ein Teil strahlt noch nach vielen Tausend Jahren. Für diesen Teil hilft kein Warten."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Lies im Datenblatt die fehlenden Halbwertszeiten ab. Trage sie ein.",
    "Ordne beide Zeiten ein. Kurz heißt: Ein Mensch kann die Zeit rechts abwarten.",

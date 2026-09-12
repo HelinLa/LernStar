@@ -27,19 +27,44 @@ def lade(pfad, name):
 
 
 def streuen(seiten, kapitel_von):
-    """Verteilt die richtige Vermutung gleichmaessig auf beide Stellen."""
+    """Verteilt die richtige Vermutung gleichmaessig auf ALLE Stellen.
+
+    Die Zahl der Moeglichkeiten wird je Einheit GEMESSEN, nicht angenommen.
+    Bis zum 12.09.2026 stand hier fest `[predict[1], predict[0]]` - mit zwei
+    Moeglichkeiten richtig, mit dreien haette es die dritte stillschweigend
+    GELOESCHT. Seit dem Einstiegsumbau haben alle Einheiten drei; ein Lauf mit
+    dem alten Stand haette in jedem Band die dritte Vermutung gefressen, ohne
+    dass jemand etwas gemerkt haette.
+
+    Die falschen Moeglichkeiten behalten ihre Reihenfolge untereinander; nur die
+    richtige wandert. So bleibt eine bewusst gesetzte Reihenfolge der beiden
+    Falschantworten erhalten."""
     getauscht = 0
     nach = collections.defaultdict(list)
     for s in seiten:
         nach[kapitel_von.get(s['id'], '?')].append(s)
     for kap, gruppe in nach.items():
         for i, s in enumerate(gruppe):
-            # Muster 0,1,1,0 wiederholt: haelftig verteilt, keine langen Serien
-            ziel = [0, 1, 1, 0][i % 4]
-            if s.get('predictOk') != ziel:
-                s['predict'] = [s['predict'][1], s['predict'][0]]
-                s['predictOk'] = ziel
-                getauscht += 1
+            pr = list(s.get('predict') or [])
+            n = len(pr)
+            if n < 2:
+                continue
+            ok = s.get('predictOk', 0)
+            if not 0 <= ok < n:
+                continue
+            # Reihum ueber alle vorhandenen Stellen - bei n=2 ergibt das
+            # dieselbe haelftige Verteilung wie das fruehere Muster 0,1,1,0.
+            ziel = (i % n) if n > 2 else [0, 1, 1, 0][i % 4]
+            if ok == ziel:
+                continue
+            richtig = pr[ok]
+            falsch = [t for k, t in enumerate(pr) if k != ok]
+            neu = list(falsch)
+            neu.insert(ziel, richtig)
+            assert len(neu) == n and neu[ziel] == richtig, s['id']
+            s['predict'] = neu
+            s['predictOk'] = ziel
+            getauscht += 1
     return getauscht
 
 

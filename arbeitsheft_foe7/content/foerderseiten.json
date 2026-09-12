@@ -16,7 +16,8 @@
   "frage": "Was macht eine Oberfläche mit dem Licht, das auf sie trifft?",
   "predict": [
    "Jede Oberfläche teilt das Licht in drei Anteile auf.",
-   "Jede Oberfläche macht nur eine einzige Sache mit dem Licht."
+   "Jede Oberfläche macht nur eine einzige Sache mit dem Licht.",
+   "Geschlucktes Licht ist einfach weg. Die drei Zahlen ergeben zusammen weniger als 100 Prozent."
   ],
   "predictOk": 0,
   "forschen": [
@@ -145,7 +146,8 @@
   "frage": "Wie hängen Einfallswinkel und Reflexionswinkel zusammen?",
   "predict": [
    "Der Reflexionswinkel ist immer kleiner als der Einfallswinkel.",
-   "Der Reflexionswinkel ist genauso groß wie der Einfallswinkel."
+   "Der Reflexionswinkel ist genauso groß wie der Einfallswinkel.",
+   "Das Licht kommt immer auf demselben Weg zurück. Der Reflexionswinkel ist dann 0°."
   ],
   "predictOk": 1,
   "forschen": [
@@ -272,10 +274,11 @@
   ],
   "frage": "Wohin knickt der Lichtstrahl, wenn er ins Glas eintritt?",
   "predict": [
-   "Der Strahl knickt an der Grenze zum Lot hin.",
-   "Der Strahl knickt an der Grenze vom Lot weg."
+   "Der Strahl knickt an der Grenze vom Lot weg.",
+   "Im Glas läuft der Strahl immer geradeaus weiter. Es gibt gar keinen Knick.",
+   "Der Strahl knickt an der Grenze zum Lot hin."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „↓ genau auf das Lot“ und lies die Statuszeile.",
    "Stelle den Winkel in der Luft auf 40° und lies den Winkel im Glas ab.",
@@ -398,7 +401,8 @@
   "frage": "Wann tritt Licht aus dem Glas aus – und wann nicht mehr?",
   "predict": [
    "Ab einem bestimmten Winkel tritt gar kein Licht mehr aus.",
-   "Licht tritt bei jedem Winkel aus, nur immer schräger."
+   "Licht tritt bei jedem Winkel aus, nur immer schräger.",
+   "Beim Austritt knickt der Strahl zum Lot hin. Der Winkel in der Luft ist kleiner."
   ],
   "predictOk": 0,
   "forschen": [
@@ -528,7 +532,8 @@
   "frage": "Welches Glas bündelt paralleles Licht – und welches nicht?",
   "predict": [
    "Beide Gläser bündeln das Licht, das dünne nur schwächer.",
-   "Nur das dicke Glas bündelt. Das dünne lenkt die Strahlen auseinander."
+   "Nur das dicke Glas bündelt. Das dünne lenkt die Strahlen auseinander.",
+   "Nur das dünne Glas bündelt das Licht. Das dicke lenkt die Strahlen auseinander."
   ],
   "predictOk": 1,
   "forschen": [
@@ -646,10 +651,11 @@
   ],
   "frage": "Wovon hängt es ab, wie das Bild der Linse aussieht?",
   "predict": [
-   "Es kommt darauf an, wie nah der Gegenstand an der Linse steht.",
-   "Das Bild einer Linse steht immer auf dem Kopf."
+   "Das Bild einer Linse steht immer auf dem Kopf.",
+   "Das Bild ist immer aufrecht und größer. Die Linse ist immer eine Lupe.",
+   "Es kommt darauf an, wie nah der Gegenstand an der Linse steht."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Stelle die Gegenstandsweite g auf 190 und lies die Statuszeile.",
    "Stelle 100 ein und vergleiche Größe und Lage des Bildes.",
@@ -771,10 +777,11 @@
   ],
   "frage": "Wo entsteht das Bild im Auge – und wie bleibt es scharf?",
   "predict": [
+   "Zum Scharfstellen verformt sich die Linse im Auge.",
    "Zum Scharfstellen rückt die Netzhaut nach vorn oder hinten.",
-   "Zum Scharfstellen verformt sich die Linse im Auge."
+   "Zum Scharfstellen wird die Pupille größer oder kleiner. Die Linse bleibt dabei gleich."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Schiebe den Regler „Abstand des Gegenstands“ ganz nach rechts und lies die Statuszeile.",
    "Schiebe ihn ganz nach links und vergleiche die Wölbung der Linse.",
@@ -900,10 +907,11 @@
   ],
   "frage": "Welche Linse gehört zu welchem Sehfehler?",
   "predict": [
+   "Beide Sehfehler brauchen dieselbe Linse, nur verschieden stark.",
    "Kurzsichtige brauchen eine Zerstreuungslinse, Weitsichtige eine Sammellinse.",
-   "Beide Sehfehler brauchen dieselbe Linse, nur verschieden stark."
+   "Kurzsichtige brauchen eine Sammellinse. Weitsichtige brauchen eine Zerstreuungslinse."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Wähle „kurzsichtig“ und lies ab, wo das Bild liegt.",
    "Drücke „Brille“ und lies die neue Meldung.",
@@ -1030,9 +1038,10 @@
   "frage": "Wie sieht das Bild aus, das ein kleines Loch auf den Schirm wirft?",
   "predict": [
    "Ein größeres Loch macht das Bild größer.",
+   "Eine längere Kamera macht das Bild kleiner. Der Schirm ist ja weiter weg.",
    "Nur eine längere Kamera macht das Bild größer."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Stelle die Bildweite b auf 29 cm und lies die Statuszeile.",
    "Stelle b auf 39 cm und dann auf 51 cm. Vergleiche die Bildgröße.",
@@ -1159,10 +1168,11 @@
   ],
   "frage": "Macht das Prisma die Farben – oder stecken sie schon im weißen Licht?",
   "predict": [
+   "Die Farben stecken schon im weißen Licht. Das Prisma trennt sie nur.",
    "Das Prisma färbt das Licht bunt, so wie eine bunte Folie.",
-   "Die Farben stecken schon im weißen Licht. Das Prisma trennt sie nur."
+   "Hinter dem Prisma bleibt das weiße Licht weiß. Es wird nur zur Seite geknickt."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Wähle weißes Licht und lies die Meldung in der Statuszeile.",
    "Trage in die Tabelle ein, was hinter dem Prisma erscheint.",
@@ -1279,10 +1289,11 @@
   ],
   "frage": "Wie entsteht Weiß, wenn dort nur Rot, Grün und Blau leuchten?",
   "predict": [
+   "Zwischen den Streifen sitzt eine versteckte weiße Lampe.",
    "Rot, Grün und Blau zusammen ergeben im Auge Weiß.",
-   "Zwischen den Streifen sitzt eine versteckte weiße Lampe."
+   "Rot, Grün und Blau zusammen ergeben Braun. Das kennst du vom Malkasten."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Lies im Statusfeld die Ergebnisfarbe mit ihren drei Zahlen ab.",
    "Drücke „aus“ und notiere alle drei Werte.",
@@ -1409,9 +1420,10 @@
   "frage": "Kommt hinter dem letzten Rot noch etwas an, das wir nicht sehen?",
   "predict": [
    "Wo das Auge nichts sieht, kommt auch nichts an.",
+   "Grünes Licht wärmt am stärksten. Es sieht ja auch am hellsten aus.",
    "Hinter dem Rot kommt unsichtbares Licht an – dort wärmt es sogar am stärksten."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke „555 nm – Grün“ und lies die Erwärmung ab.",
    "Drücke „700 nm – letztes Rot“ und vergleiche die Erwärmung.",
@@ -1533,10 +1545,11 @@
   ],
   "frage": "Welche Himmelskörper leuchten selbst – und welche werden beleuchtet?",
   "predict": [
+   "Nur Sonne und Sterne leuchten selbst. Der Mond wirft Sonnenlicht zurück.",
    "Der Mond leuchtet selbst, nur schwächer als die Sonne.",
-   "Nur Sonne und Sterne leuchten selbst. Der Mond wirft Sonnenlicht zurück."
+   "Auch die Planeten leuchten selbst. Nur der Mond wird von der Sonne beleuchtet."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Wähle nacheinander Sonne, Stern, Mond und Planet. Lies jede Statuszeile.",
    "Trage ein, wer selbst leuchtet.",
@@ -1662,10 +1675,11 @@
   ],
   "frage": "Wovon hängt es ab, ob es gerade Tag oder Nacht ist?",
   "predict": [
+   "Die Sonne wandert um die Erde herum.",
    "Die Erde dreht sich. Tag hat die Seite, die zur Sonne zeigt.",
-   "Die Sonne wandert um die Erde herum."
+   "Die Erde dreht sich sehr langsam. Für eine volle Drehung braucht sie ein ganzes Jahr."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke „Pause“, damit der Globus stehen bleibt.",
    "Stelle den Regler „Erde von Hand drehen“ auf 0°. Lies ab: Wer hat Sonne?",
@@ -1787,9 +1801,10 @@
   "frage": "Fallen Stein und Feder gleich schnell, wenn keine Luft da ist?",
   "predict": [
    "Der Stein hat mehr Masse und kommt zuerst unten an.",
+   "Auf dem Mond fällt der Stein genauso schnell wie auf der Erde.",
    "Ohne Luft kommen Stein und Feder gleichzeitig unten an."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke „Noch einmal fallen lassen“. Beobachte beide Rohre.",
    "Wähle den Mond und lies g und die Fallzeit ab.",
@@ -1911,7 +1926,8 @@
   "frage": "Warum stürzt ein Planet nicht in die Sonne?",
   "predict": [
    "Der Planet ist quer zur Sonne schnell unterwegs und fällt immer vorbei.",
-   "Die Sonne ist zu weit weg und zieht ihn kaum an."
+   "Die Sonne ist zu weit weg und zieht ihn kaum an.",
+   "Die Bahn ist immer ein Kreis. Das Tempo des Planeten ändert daran nichts."
   ],
   "predictOk": 0,
   "forschen": [
@@ -2036,7 +2052,8 @@
   "frage": "Was unterscheidet die inneren Planeten von den äußeren?",
   "predict": [
    "Alle acht sind gleich gebaut: Gestein mit fester Oberfläche.",
-   "Innen kreisen kleine Gesteinsplaneten, außen sehr große Riesen aus Gas und Eis."
+   "Innen kreisen kleine Gesteinsplaneten, außen sehr große Riesen aus Gas und Eis.",
+   "Innen kreisen die großen Gasriesen. Außen kreisen die kleinen Gesteinsplaneten."
   ],
   "predictOk": 1,
   "forschen": [
@@ -2159,10 +2176,11 @@
   ],
   "frage": "Wie lange ist das Licht von fernen Zielen zu uns unterwegs?",
   "predict": [
-   "Auch Licht braucht Zeit. Je weiter weg, desto länger ist es unterwegs.",
-   "Licht ist so schnell, dass es sofort da ist."
+   "Licht ist so schnell, dass es sofort da ist.",
+   "Bis zum Mond braucht das Licht viele Jahre. So weit ist der Weg.",
+   "Auch Licht braucht Zeit. Je weiter weg, desto länger ist es unterwegs."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „Lichtblitz senden“ und beobachte den Weg zum Mond.",
    "Lies Entfernung und Zeit in der Statuszeile ab.",
@@ -2285,7 +2303,8 @@
   "frage": "Wie verändert das Fernrohr Größe, Lage und Helligkeit des Bildes?",
   "predict": [
    "Nur das Bild des Mondes wird größer. Es steht auf dem Kopf.",
-   "Das Fernrohr holt den Mond wirklich näher heran."
+   "Das Fernrohr holt den Mond wirklich näher heran.",
+   "Das Fernrohr macht das Bild nur heller. Größer wird der Mond dabei nicht."
   ],
   "predictOk": 0,
   "forschen": [
@@ -2409,7 +2428,8 @@
   "frage": "Wie hängt der gemessene Winkel mit der Entfernung zusammen?",
   "predict": [
    "Je weiter ein Stern weg ist, desto größer ist sein Winkel.",
-   "Je weiter ein Stern weg ist, desto kleiner ist sein Winkel."
+   "Je weiter ein Stern weg ist, desto kleiner ist sein Winkel.",
+   "Alle Sterne haben fast denselben Winkel. Der Winkel sagt nichts über die Entfernung."
   ],
   "predictOk": 1,
   "forschen": [
@@ -2538,10 +2558,11 @@
   ],
   "frage": "Lebt ein schwerer Stern länger als ein leichter?",
   "predict": [
-   "Ein schwerer Stern verbraucht seinen Brennstoff schneller und lebt kürzer.",
-   "Ein schwerer Stern hat mehr Brennstoff und lebt länger."
+   "Ein schwerer Stern hat mehr Brennstoff und lebt länger.",
+   "Alle Sterne leben gleich lang. Die Masse ändert daran nichts.",
+   "Ein schwerer Stern verbraucht seinen Brennstoff schneller und lebt kürzer."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „1“ und sieh den ganzen Lebenslauf durch.",
    "Lies die Lebensdauer ab und trage sie ein.",
@@ -2662,10 +2683,11 @@
   ],
   "frage": "Steht die Sonne in der Mitte der Milchstraße?",
   "predict": [
+   "Nein – zur Mitte hin sehen wir viel mehr Sterne als nach außen.",
    "Ja – darum sehen wir in alle Richtungen gleich viele Sterne.",
-   "Nein – zur Mitte hin sehen wir viel mehr Sterne als nach außen."
+   "Quer aus der Scheibe heraus siehst du die meisten Sterne. Dort ist der Blick frei."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke nacheinander „zur Mitte“, „nach außen“ und „quer heraus“.",
    "Lies jedes Mal die Sterne im Blickfeld ab und trage ein.",
@@ -2786,10 +2808,11 @@
   ],
   "frage": "Welches Weltbild erklärt den Himmel ohne Zusatzkreise?",
   "predict": [
+   "Die zwei Weltbilder zeigen einen ganz verschiedenen Himmel.",
    "Beide zeigen denselben Himmel, aber nur das heutige braucht keine Zusatzkreise.",
-   "Die zwei Weltbilder zeigen einen ganz verschiedenen Himmel."
+   "Auch im heutigen Weltbild braucht jeder Planet einen kleinen Zusatzkreis."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke „Erde in der Mitte (alt)“ und lies die Statuszeile.",
    "Drücke „Sonne in der Mitte (heute)“ und vergleiche.",
@@ -2906,9 +2929,10 @@
   "frage": "Woran erkennt man ein schwarzes Loch, wenn es nicht leuchtet?",
   "predict": [
    "Licht läuft unverändert vorbei, denn Licht wiegt nichts.",
+   "Jeder Lichtstrahl wird gleich stark gebogen. Der Abstand spielt keine Rolle.",
    "Je näher das Licht vorbeiläuft, desto stärker wird es gebogen."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke „weit weg“ und dann „Lichtstrahl senden“.",
    "Lies die Statuszeile ab und trage ein.",
@@ -3030,7 +3054,8 @@
   "frage": "Wie hat sich das Weltall seit dem Urknall verändert?",
   "predict": [
    "Das Weltall war am Anfang winzig, heiß und dicht – und dehnt sich aus.",
-   "Das Weltall war schon immer so groß wie heute."
+   "Das Weltall war schon immer so groß wie heute.",
+   "Seit dem Urknall wird das Weltall wieder kleiner. Die Galaxien rücken zusammen."
   ],
   "predictOk": 0,
   "forschen": [

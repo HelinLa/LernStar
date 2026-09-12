@@ -20,7 +20,8 @@
   "frage": "Warum hat der eine Würfel mehr Masse als der andere?",
   "predict": [
    "Bei gleichem Volumen V entscheidet der Stoff. Jeder Stoff hat eine eigene Dichte ρ.",
-   "Gleich große Würfel haben ungefähr gleich viel Masse."
+   "Gleich große Würfel haben ungefähr gleich viel Masse.",
+   "Der Eisenwürfel hat die größere Masse. Eisen ist härter als Blei."
   ],
   "predictOk": 0,
   "forschen": [

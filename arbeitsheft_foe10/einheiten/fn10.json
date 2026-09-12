@@ -20,7 +20,8 @@
   "frage": "Wo im Kernkraftwerk entsteht der Strom?",
   "predict": [
    "Der Strom entsteht schon im Brennstab. Das Kabel führt ihn weg.",
-   "Der Strom entsteht erst am Ende der Kette."
+   "Der Strom entsteht erst am Ende der Kette.",
+   "Der Strom entsteht in der Turbine. Das Rad dreht sich und macht Strom."
   ],
   "predictOk": 1,
   "forschen": [

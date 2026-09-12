@@ -7,7 +7,9 @@
   "theme": "foe_optik",
   "titel": "Das Bild der Linse und die Lupe",
   "name": "Wo entsteht das Bild der Linse?",
-  "fachwoerter_neu": ["Brennweite"],
+  "fachwoerter_neu": [
+   "Brennweite"
+  ],
   "alltag": [
    "Jannis hält eine Linse gegen das Fenster.",
    "Auf einem Zettel dahinter erscheint der Schulhof – klein und auf dem Kopf.",
@@ -16,10 +18,11 @@
   ],
   "frage": "Wovon hängt es ab, wie das Bild der Linse aussieht?",
   "predict": [
-   "Es kommt darauf an, wie nah der Gegenstand an der Linse steht.",
-   "Das Bild einer Linse steht immer auf dem Kopf."
+   "Das Bild einer Linse steht immer auf dem Kopf.",
+   "Das Bild ist immer aufrecht und größer. Die Linse ist immer eine Lupe.",
+   "Es kommt darauf an, wie nah der Gegenstand an der Linse steht."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Stelle die Gegenstandsweite g auf 190 und lies die Statuszeile.",
    "Stelle 100 ein und vergleiche Größe und Lage des Bildes.",
@@ -27,17 +30,47 @@
    "Trage jedes Mal ein, wie das Bild aussieht."
   ],
   "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
-  "tabCols": ["Abstand g", "Wie groß ist das Bild?", "aufrecht oder umgekehrt?"],
+  "tabCols": [
+   "Abstand g",
+   "Wie groß ist das Bild?",
+   "aufrecht oder umgekehrt?"
+  ],
   "tabRows": [
-   ["g = 190", "verkleinert", "umgekehrt"],
-   ["g = 100", "", ""],
-   ["g = 25", "", ""]
+   [
+    "g = 190",
+    "verkleinert",
+    "umgekehrt"
+   ],
+   [
+    "g = 100",
+    "",
+    ""
+   ],
+   [
+    "g = 25",
+    "",
+    ""
+   ]
   ],
   "merksatz": [
-   {"pre": "Steht der Gegenstand weiter weg als die Brennweite, ist das Bild", "loesung": "umgekehrt", "post": "."},
-   {"pre": "Näher als die Brennweite wird es aufrecht und vergrößert – die Linse ist eine", "loesung": "Lupe", "post": "."}
+   {
+    "pre": "Steht der Gegenstand weiter weg als die Brennweite, ist das Bild",
+    "loesung": "umgekehrt",
+    "post": "."
+   },
+   {
+    "pre": "Näher als die Brennweite wird es aufrecht und vergrößert – die Linse ist eine",
+    "loesung": "Lupe",
+    "post": "."
+   }
   ],
-  "wortbank": ["umgekehrt", "Lupe", "aufrecht", "vergrößert", "Brennweite"],
+  "wortbank": [
+   "umgekehrt",
+   "Lupe",
+   "aufrecht",
+   "vergrößert",
+   "Brennweite"
+  ],
   "beispiel": {
    "frage": "Nour hält die Karte bei g = 25 unter die Linse. Was sieht sie?",
    "antwort": "25 ist kleiner als die Brennweite f = 62. Das Bild ist vergrößert und aufrecht. Die Linse arbeitet als Lupe."
@@ -58,8 +91,16 @@
     "typ": "einsetzen",
     "op": "Trage ein",
     "luecken": [
-     {"pre": "Weiter weg als f steht das Bild", "loesung": "umgekehrt", "post": "."},
-     {"pre": "Näher als f ist das Bild aufrecht und", "loesung": "vergrößert", "post": "."}
+     {
+      "pre": "Weiter weg als f steht das Bild",
+      "loesung": "umgekehrt",
+      "post": "."
+     },
+     {
+      "pre": "Näher als f ist das Bild aufrecht und",
+      "loesung": "vergrößert",
+      "post": "."
+     }
     ]
    },
    {
@@ -90,10 +131,21 @@
   "zeit": "insgesamt etwa 60 Minuten: Seite A rund 25 Minuten, Seite B rund 35 Minuten",
   "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
   "ersatz_ohne_simulation": "Die drei Statuszeilen als Karten zeigen: g = 190 → verkleinert, umgekehrt, reell · g = 100 → vergrößert, umgekehrt, reell · g = 25 → vergrößert, aufrecht, virtuell (Lupe). Der Regler nennt dazu f = 62 und 2f = 124.",
-  "merksatz": ["umgekehrt", "Lupe"],
+  "merksatz": [
+   "umgekehrt",
+   "Lupe"
+  ],
   "tabelle_erwartet": [
-   ["g = 100", "vergrößert", "umgekehrt"],
-   ["g = 25", "vergrößert", "aufrecht"]
+   [
+    "g = 100",
+    "vergrößert",
+    "umgekehrt"
+   ],
+   [
+    "g = 25",
+    "vergrößert",
+    "aufrecht"
+   ]
   ],
   "a1": {
    "richtig": 1,
@@ -103,7 +155,10 @@
    ]
   },
   "a2": {
-   "loesungen": ["umgekehrt", "vergrößert"],
+   "loesungen": [
+    "umgekehrt",
+    "vergrößert"
+   ],
    "typische_fehler": [
     "„seitenverkehrt“ statt „umgekehrt“ – Verwechslung mit dem Spiegel.",
     "„größer“ statt der Wortbank-Form „vergrößert“."

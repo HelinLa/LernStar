@@ -19,10 +19,11 @@
   ],
   "frage": "Welche Teilchen im Kern bestimmen den Namen?",
   "predict": [
+   "Mehr Neutronen geben dem Kern einen anderen Namen. Dann ist es ein anderer Stoff.",
    "Nur die Zahl der Protonen bestimmt den Namen. Mehr Neutronen geben nur eine andere Sorte.",
-   "Mehr Neutronen geben dem Kern einen anderen Namen. Dann ist es ein anderer Stoff."
+   "Bei Kohlenstoff-12 liegen 12 Protonen im Kern. Die Zahl im Namen zählt die Protonen."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke Wasserstoff-1. Die erste Zeile der Tabelle ist schon ausgefüllt.",
    "Drücke Kohlenstoff-12. Trage die zweite Zeile ein.",

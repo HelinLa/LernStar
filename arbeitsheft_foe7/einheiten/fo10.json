@@ -19,10 +19,11 @@
   ],
   "frage": "Macht das Prisma die Farben – oder stecken sie schon im weißen Licht?",
   "predict": [
+   "Die Farben stecken schon im weißen Licht. Das Prisma trennt sie nur.",
    "Das Prisma färbt das Licht bunt, so wie eine bunte Folie.",
-   "Die Farben stecken schon im weißen Licht. Das Prisma trennt sie nur."
+   "Hinter dem Prisma bleibt das weiße Licht weiß. Es wird nur zur Seite geknickt."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Wähle weißes Licht und lies die Meldung in der Statuszeile.",
    "Trage in die Tabelle ein, was hinter dem Prisma erscheint.",

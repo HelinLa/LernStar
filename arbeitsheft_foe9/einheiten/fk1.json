@@ -19,7 +19,8 @@
   "frage": "Woran erkennst du, dass eine Kraft gewirkt hat?",
   "predict": [
    "Eine Kraft erkennt man daran, was sich danach ändert.",
-   "Eine Kraft wirkt nur dann, wenn sich etwas verformt."
+   "Eine Kraft wirkt nur dann, wenn sich etwas verformt.",
+   "Eine Kraft wirkt nur, wenn sich das Tempo ändert."
   ],
   "predictOk": 0,
   "forschen": [

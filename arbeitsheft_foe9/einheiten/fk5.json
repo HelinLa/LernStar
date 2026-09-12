@@ -17,10 +17,11 @@
   ],
   "frage": "Wird auf dem Mond die Masse kleiner oder die Gewichtskraft?",
   "predict": [
+   "Das Klavier hat auf dem Mond weniger Masse.",
    "Die Masse bleibt gleich. Nur die Gewichtskraft wird kleiner.",
-   "Das Klavier hat auf dem Mond weniger Masse."
+   "Auf dem Mond zieht nichts. Die Gewichtskraft ist dort 0 N."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Wähle Mond und lies g und F in der Statuszeile ab.",
    "Trage beide Werte in die Zeile Mond ein.",

@@ -20,7 +20,8 @@
   "frage": "Wovon hängt es ab, was ein Gerät im Jahr kostet?",
   "predict": [
    "Ein starkes Gerät kostet viel, auch bei kurzer Zeit.",
-   "Am meisten kostet das Gerät, das am längsten läuft."
+   "Am meisten kostet das Gerät, das am längsten läuft.",
+   "Du nimmst die Watt-Zahl mal 0,30 €. Das sind die Kosten im Jahr."
   ],
   "predictOk": 0,
   "forschen": [

@@ -19,10 +19,11 @@
   ],
   "frage": "Welche Stellen liegen auf dem Weg vom Kraftwerk bis zur Steckdose?",
   "predict": [
+   "Die Spannung wird unterwegs zweimal geändert: erst größer, am Ende wieder kleiner.",
    "Aus dem Kraftwerk kommen schon 230 V. Die Spannung bleibt gleich.",
-   "Die Spannung wird unterwegs zweimal geändert: erst größer, am Ende wieder kleiner."
+   "Die Spannung wird nur einmal geändert. Erst kurz vor dem Haus wird sie kleiner."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke „5 · Konzepte im Vergleich“.",
    "Sieh dir die fünf Kreise an. Jeder Kreis ist eine Stelle auf dem Weg.",

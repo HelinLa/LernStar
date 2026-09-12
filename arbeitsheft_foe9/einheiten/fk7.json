@@ -17,7 +17,8 @@
   "frage": "Wann wird die Gesamtkraft größer, wann kleiner?",
   "predict": [
    "Nur bei gleicher Richtung wird addiert. Sonst wird abgezogen.",
-   "Zwei Kräfte werden immer addiert. Die Richtung ist egal."
+   "Zwei Kräfte werden immer addiert. Die Richtung ist egal.",
+   "Nur die größere Kraft zählt. Die kleinere Kraft kannst du weglassen."
   ],
   "predictOk": 0,
   "forschen": [

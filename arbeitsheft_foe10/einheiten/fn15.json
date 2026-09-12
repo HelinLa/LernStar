@@ -17,7 +17,8 @@
   "frage": "Was wiegt für dich schwerer: dafür oder dagegen?",
   "predict": [
    "Das Datenblatt zeigt nur die Folgen. Wie schwer sie wiegen, entscheidest du.",
-   "Wer alle Angaben kennt, entscheidet von allein."
+   "Wer alle Angaben kennt, entscheidet von allein.",
+   "Im Datenblatt stehen nur Nachteile. Für die Kernenergie spricht dort nichts."
   ],
   "predictOk": 0,
   "forschen": [

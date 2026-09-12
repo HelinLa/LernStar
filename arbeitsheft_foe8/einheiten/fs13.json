@@ -19,7 +19,8 @@
   "frage": "Wann unterbricht die Sicherung den Stromkreis?",
   "predict": [
    "Die Ströme der Geräte addieren sich. Über 16 A schaltet die Sicherung ab.",
-   "Jedes Gerät holt sich seinen eigenen Strom. Die Sicherung merkt davon nichts."
+   "Jedes Gerät holt sich seinen eigenen Strom. Die Sicherung merkt davon nichts.",
+   "Schon zwei Geräte sind zu viel. Die Sicherung schaltet bei 12 A ab."
   ],
   "predictOk": 0,
   "forschen": [

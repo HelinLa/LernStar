@@ -7,7 +7,9 @@
   "theme": "foe_optik",
   "titel": "Die Pappkiste mit dem Nadelloch",
   "name": "Wie macht die Lochkamera ein Bild?",
-  "fachwoerter_neu": ["Lochkamera"],
+  "fachwoerter_neu": [
+   "Lochkamera"
+  ],
   "alltag": [
    "Hinten im Schrank steht eine schwarze Pappkiste.",
    "Vorn hat sie nur ein Nadelloch, hinten eine Milchglas-Scheibe.",
@@ -17,9 +19,10 @@
   "frage": "Wie sieht das Bild aus, das ein kleines Loch auf den Schirm wirft?",
   "predict": [
    "Ein größeres Loch macht das Bild größer.",
+   "Eine längere Kamera macht das Bild kleiner. Der Schirm ist ja weiter weg.",
    "Nur eine längere Kamera macht das Bild größer."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Stelle die Bildweite b auf 29 cm und lies die Statuszeile.",
    "Stelle b auf 39 cm und dann auf 51 cm. Vergleiche die Bildgröße.",
@@ -27,18 +30,52 @@
    "Trage alle vier Zeilen in die Tabelle ein."
   ],
   "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
-  "tabCols": ["Einstellung", "Wie groß ist das Bild?", "scharf oder unscharf?"],
+  "tabCols": [
+   "Einstellung",
+   "Wie groß ist das Bild?",
+   "scharf oder unscharf?"
+  ],
   "tabRows": [
-   ["b = 29 cm, Loch klein", "kleiner als der Gegenstand", "scharf"],
-   ["b = 39 cm, Loch klein", "", ""],
-   ["b = 51 cm, Loch klein", "", ""],
-   ["b = 51 cm, Loch groß", "", ""]
+   [
+    "b = 29 cm, Loch klein",
+    "kleiner als der Gegenstand",
+    "scharf"
+   ],
+   [
+    "b = 39 cm, Loch klein",
+    "",
+    ""
+   ],
+   [
+    "b = 51 cm, Loch klein",
+    "",
+    ""
+   ],
+   [
+    "b = 51 cm, Loch groß",
+    "",
+    ""
+   ]
   ],
   "merksatz": [
-   {"pre": "Das Bild der Lochkamera steht", "loesung": "auf dem Kopf", "post": ", weil sich die Strahlen im Loch kreuzen."},
-   {"pre": "Eine längere Kamera macht das Bild", "loesung": "größer", "post": ". Ein großes Loch macht es unscharf."}
+   {
+    "pre": "Das Bild der Lochkamera steht",
+    "loesung": "auf dem Kopf",
+    "post": ", weil sich die Strahlen im Loch kreuzen."
+   },
+   {
+    "pre": "Eine längere Kamera macht das Bild",
+    "loesung": "größer",
+    "post": ". Ein großes Loch macht es unscharf."
+   }
   ],
-  "wortbank": ["auf dem Kopf", "größer", "unscharf", "geradeaus", "Loch"],
+  "wortbank": [
+   "auf dem Kopf",
+   "größer",
+   "unscharf",
+   "geradeaus",
+   "Loch"
+  ],
   "beispiel": {
    "frage": "Warum steht das Bild der Lochkamera auf dem Kopf?",
    "antwort": "Licht läuft immer geradeaus. Die Strahlen kreuzen sich im kleinen Loch. Darum kommt oben und unten vertauscht auf dem Schirm an."
@@ -59,8 +96,16 @@
     "typ": "einsetzen",
     "op": "Trage ein",
     "luecken": [
-     {"pre": "Das Licht läuft immer", "loesung": "geradeaus", "post": "."},
-     {"pre": "Ein großes Loch macht das Bild hell, aber", "loesung": "unscharf", "post": "."}
+     {
+      "pre": "Das Licht läuft immer",
+      "loesung": "geradeaus",
+      "post": "."
+     },
+     {
+      "pre": "Ein großes Loch macht das Bild hell, aber",
+      "loesung": "unscharf",
+      "post": "."
+     }
     ]
    },
    {
@@ -91,11 +136,26 @@
   "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
   "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Bastelauftrag als Hausaufgabe",
   "ersatz_ohne_simulation": "Die vier Statuszeilen als Karten zeigen: b = 29 cm, Loch klein → umgekehrt, kleiner als der Gegenstand, scharf · b = 39 cm → etwa so groß wie der Gegenstand, scharf · b = 51 cm → größer als der Gegenstand, scharf · b = 51 cm, Loch groß → unscharf.",
-  "merksatz": ["auf dem Kopf", "größer"],
+  "merksatz": [
+   "auf dem Kopf",
+   "größer"
+  ],
   "tabelle_erwartet": [
-   ["b = 39 cm, Loch klein", "etwa so groß wie der Gegenstand", "scharf"],
-   ["b = 51 cm, Loch klein", "größer als der Gegenstand", "scharf"],
-   ["b = 51 cm, Loch groß", "größer als der Gegenstand", "unscharf"]
+   [
+    "b = 39 cm, Loch klein",
+    "etwa so groß wie der Gegenstand",
+    "scharf"
+   ],
+   [
+    "b = 51 cm, Loch klein",
+    "größer als der Gegenstand",
+    "scharf"
+   ],
+   [
+    "b = 51 cm, Loch groß",
+    "größer als der Gegenstand",
+    "unscharf"
+   ]
   ],
   "a1": {
    "richtig": 0,
@@ -105,7 +165,10 @@
    ]
   },
   "a2": {
-   "loesungen": ["geradeaus", "unscharf"],
+   "loesungen": [
+    "geradeaus",
+    "unscharf"
+   ],
    "typische_fehler": [
     "„schnell“ statt „geradeaus“ – die Ausbreitungsrichtung wird nicht genannt.",
     "hell und scharf werden gleichgesetzt."

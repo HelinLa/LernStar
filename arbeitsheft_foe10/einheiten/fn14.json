@@ -20,9 +20,10 @@
   "frage": "Ab welcher Temperatur verschmelzen kleine Kerne zu einem Heliumkern?",
   "predict": [
    "Die Sonne verbrennt Wasserstoff wie ein großes Feuer.",
+   "Die Kerne verschmelzen bei jeder Temperatur. Bei Kälte geht es nur langsamer.",
    "Unter etwa 10 Millionen Grad passiert nichts. Erst darüber verschmelzen die Kerne."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Schiebe den Regler nach links auf 4 Millionen °C.",
    "Lies die Statuszeile rechts neben dem Bild ab.",

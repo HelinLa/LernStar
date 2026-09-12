@@ -19,9 +19,10 @@
   "frage": "Fallen Stein und Feder gleich schnell, wenn keine Luft da ist?",
   "predict": [
    "Der Stein hat mehr Masse und kommt zuerst unten an.",
+   "Auf dem Mond fällt der Stein genauso schnell wie auf der Erde.",
    "Ohne Luft kommen Stein und Feder gleichzeitig unten an."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke „Noch einmal fallen lassen“. Beobachte beide Rohre.",
    "Wähle den Mond und lies g und die Fallzeit ab.",

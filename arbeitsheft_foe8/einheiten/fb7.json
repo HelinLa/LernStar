@@ -19,10 +19,11 @@
   ],
   "frage": "Woraus besteht der Weg, bis das Auto wirklich steht?",
   "predict": [
+   "Zu diesem Weg gehört nur das Stück, in dem das Auto bremst.",
    "Zu diesem Weg gehört auch das Stück, bevor das Auto bremst.",
-   "Zu diesem Weg gehört nur das Stück, in dem das Auto bremst."
+   "Wenn du bremst, steht das Auto sofort. Es rollt dann keinen Meter weiter."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke „▶ Gefahr! (Start)“ und beobachte, wie weit das Auto noch fährt.",
    "Lies in der Statuszeile Reaktionsweg und Bremsweg ab. Zeile 1 (50 km/h) ist schon ausgefüllt.",

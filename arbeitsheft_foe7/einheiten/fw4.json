@@ -19,7 +19,8 @@
   "frage": "Warum stürzt ein Planet nicht in die Sonne?",
   "predict": [
    "Der Planet ist quer zur Sonne schnell unterwegs und fällt immer vorbei.",
-   "Die Sonne ist zu weit weg und zieht ihn kaum an."
+   "Die Sonne ist zu weit weg und zieht ihn kaum an.",
+   "Die Bahn ist immer ein Kreis. Das Tempo des Planeten ändert daran nichts."
   ],
   "predictOk": 0,
   "forschen": [

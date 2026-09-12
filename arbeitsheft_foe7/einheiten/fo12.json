@@ -19,9 +19,10 @@
   "frage": "Kommt hinter dem letzten Rot noch etwas an, das wir nicht sehen?",
   "predict": [
    "Wo das Auge nichts sieht, kommt auch nichts an.",
+   "Grünes Licht wärmt am stärksten. Es sieht ja auch am hellsten aus.",
    "Hinter dem Rot kommt unsichtbares Licht an – dort wärmt es sogar am stärksten."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke „555 nm – Grün“ und lies die Erwärmung ab.",
    "Drücke „700 nm – letztes Rot“ und vergleiche die Erwärmung.",

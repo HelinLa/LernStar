@@ -19,10 +19,11 @@
   ],
   "frage": "Von 200 Kernen sind noch 50 übrig. Wie viele Halbwertszeiten sind vergangen?",
   "predict": [
+   "Vier Halbwertszeiten. 200 geteilt durch 50 ist vier.",
    "Zwei Halbwertszeiten. 50 Kerne sind ein Viertel von 200.",
-   "Vier Halbwertszeiten. 200 geteilt durch 50 ist vier."
+   "Drei Halbwertszeiten. Du zählst die Zahlen 200, 100 und 50."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke „Kohlenstoff-14“. Lies im ersten Teil der Statuszeile die Halbwertszeit ab.",
    "Drücke „eine Halbwertszeit weiter“. Lies im zweiten Teil die Jahre ab.",

@@ -19,10 +19,11 @@
   ],
   "frage": "Wie groß ist der Strom insgesamt, wenn er zwei Wege hat?",
   "predict": [
+   "Die zwei Ströme addieren sich. Zusammen sind sie größer als jeder einzelne.",
    "Der Strom teilt sich auf zwei Wege. Darum wird er insgesamt kleiner.",
-   "Die zwei Ströme addieren sich. Zusammen sind sie größer als jeder einzelne."
+   "Durch beide Wege fließt gleich viel Strom. Der Widerstand ist dabei egal."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke bei R₁ auf 10 Ω und bei R₂ auf 20 Ω. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.",
    "Lies I₁, I₂ und den Gesamtstrom I in der Statuszeile ab.",

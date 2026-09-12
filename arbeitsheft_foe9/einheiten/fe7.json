@@ -17,10 +17,11 @@
   ],
   "frage": "Wie viel von 1000 J wird bei einer Maschine wirklich Licht oder Bewegung?",
   "predict": [
-   "Eine Glühlampe macht nur einen kleinen Teil zu Licht. Fast alles wird Wärme.",
-   "Eine Glühlampe macht ungefähr die Hälfte zu Licht."
+   "Eine Glühlampe macht ungefähr die Hälfte zu Licht.",
+   "Die LED-Lampe macht alles zu Licht. Ihr Wirkungsgrad ist 100 %.",
+   "Eine Glühlampe macht nur einen kleinen Teil zu Licht. Fast alles wird Wärme."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Lies die Statuszeile. Fasse den Regler nicht an. Zeile 1 der Tabelle ist schon ausgefüllt.",
    "Drücke „LED-Lampe“ und fülle Zeile 2 aus.",

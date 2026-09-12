@@ -16,7 +16,8 @@
   "frage": "Was macht eine Oberfläche mit dem Licht, das auf sie trifft?",
   "predict": [
    "Jede Oberfläche teilt das Licht in drei Anteile auf.",
-   "Jede Oberfläche macht nur eine einzige Sache mit dem Licht."
+   "Jede Oberfläche macht nur eine einzige Sache mit dem Licht.",
+   "Geschlucktes Licht ist einfach weg. Die drei Zahlen ergeben zusammen weniger als 100 Prozent."
   ],
   "predictOk": 0,
   "forschen": [
@@ -25,18 +26,52 @@
    "Berechne für jede Zeile die Summe der drei Zahlen."
   ],
   "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
-  "tabCols": ["Oberfläche", "zurück · hindurch · geschluckt", "Wie groß ist die Summe?"],
+  "tabCols": [
+   "Oberfläche",
+   "zurück · hindurch · geschluckt",
+   "Wie groß ist die Summe?"
+  ],
   "tabRows": [
-   ["Spiegel", "95 % · 0 % · 5 %", "100 %"],
-   ["Fensterglas", "", ""],
-   ["schwarzes Papier", "", ""],
-   ["weißes Papier", "", ""]
+   [
+    "Spiegel",
+    "95 % · 0 % · 5 %",
+    "100 %"
+   ],
+   [
+    "Fensterglas",
+    "",
+    ""
+   ],
+   [
+    "schwarzes Papier",
+    "",
+    ""
+   ],
+   [
+    "weißes Papier",
+    "",
+    ""
+   ]
   ],
   "merksatz": [
-   {"pre": "Eine Oberfläche teilt Licht in drei Anteile: zurück, hindurch, geschluckt. Zusammen ergeben die Anteile immer", "loesung": "100 Prozent", "post": "."},
-   {"pre": "Geschlucktes Licht macht den Körper", "loesung": "warm", "post": "."}
+   {
+    "pre": "Eine Oberfläche teilt Licht in drei Anteile: zurück, hindurch, geschluckt. Zusammen ergeben die Anteile immer",
+    "loesung": "100 Prozent",
+    "post": "."
+   },
+   {
+    "pre": "Geschlucktes Licht macht den Körper",
+    "loesung": "warm",
+    "post": "."
+   }
   ],
-  "wortbank": ["100 Prozent", "warm", "zurück", "hindurch", "geschluckt"],
+  "wortbank": [
+   "100 Prozent",
+   "warm",
+   "zurück",
+   "hindurch",
+   "geschluckt"
+  ],
   "beispiel": {
    "frage": "Was macht schwarzes Papier mit dem Licht?",
    "antwort": "Schwarzes Papier wirft 5 % zurück und schluckt 95 %. Hindurch geht nichts. Das geschluckte Licht macht das Papier warm."
@@ -57,8 +92,16 @@
     "typ": "einsetzen",
     "op": "Trage ein",
     "luecken": [
-     {"pre": "Die drei Anteile ergeben zusammen immer", "loesung": "100 Prozent", "post": "."},
-     {"pre": "Schwarzes Papier wird in der Sonne", "loesung": "warm", "post": ", weil es fast alles Licht schluckt."}
+     {
+      "pre": "Die drei Anteile ergeben zusammen immer",
+      "loesung": "100 Prozent",
+      "post": "."
+     },
+     {
+      "pre": "Schwarzes Papier wird in der Sonne",
+      "loesung": "warm",
+      "post": ", weil es fast alles Licht schluckt."
+     }
     ]
    },
    {
@@ -89,11 +132,26 @@
   "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
   "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
   "ersatz_ohne_simulation": "Die vier Statuszeilen vorlesen oder als Tabelle an die Tafel: Spiegel → zurück 95 %, hindurch 0 %, geschluckt 5 % · Fensterglas → zurück 8 %, hindurch 90 %, geschluckt 2 % · schwarzes Papier → zurück 5 %, hindurch 0 %, geschluckt 95 % · weißes Papier → zurück 80 %, hindurch 0 %, geschluckt 20 %.",
-  "merksatz": ["100 Prozent", "warm"],
+  "merksatz": [
+   "100 Prozent",
+   "warm"
+  ],
   "tabelle_erwartet": [
-   ["Fensterglas", "8 % · 90 % · 2 %", "100 %"],
-   ["schwarzes Papier", "5 % · 0 % · 95 %", "100 %"],
-   ["weißes Papier", "80 % · 0 % · 20 %", "100 %"]
+   [
+    "Fensterglas",
+    "8 % · 90 % · 2 %",
+    "100 %"
+   ],
+   [
+    "schwarzes Papier",
+    "5 % · 0 % · 95 %",
+    "100 %"
+   ],
+   [
+    "weißes Papier",
+    "80 % · 0 % · 20 %",
+    "100 %"
+   ]
   ],
   "a1": {
    "richtig": 0,
@@ -103,7 +161,10 @@
    ]
   },
   "a2": {
-   "loesungen": ["100 Prozent", "warm"],
+   "loesungen": [
+    "100 Prozent",
+    "warm"
+   ],
    "typische_fehler": [
     "Die Summe wird nur für den Spiegel geprüft und dann als Sonderfall abgetan.",
     "„heiß“ statt „warm“ – die Wortbank-Form wird nicht übernommen."

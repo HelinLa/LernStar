@@ -18,9 +18,10 @@
   "frage": "Was zeigt der Kraftpfeil außer der Stärke noch?",
   "predict": [
    "Der Pfeil wird nur länger oder kürzer.",
+   "Die Dicke des Pfeils zeigt die Stärke. Die Länge ist egal.",
    "Die Pfeil-Länge zeigt die Stärke. Die Pfeil-Richtung zeigt die Richtung."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke immer zuerst eine Zahl, dann einen Pfeil-Knopf.",
    "Drücke 6 N und →. Lies den letzten Satz in der Statuszeile.",

@@ -20,7 +20,8 @@
   "frage": "Wann tritt Licht aus dem Glas aus – und wann nicht mehr?",
   "predict": [
    "Ab einem bestimmten Winkel tritt gar kein Licht mehr aus.",
-   "Licht tritt bei jedem Winkel aus, nur immer schräger."
+   "Licht tritt bei jedem Winkel aus, nur immer schräger.",
+   "Beim Austritt knickt der Strahl zum Lot hin. Der Winkel in der Luft ist kleiner."
   ],
   "predictOk": 0,
   "forschen": [

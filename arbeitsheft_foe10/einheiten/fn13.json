@@ -18,10 +18,11 @@
   ],
   "frage": "Warum passt nicht jeder Stoff für jede Aufgabe?",
   "predict": [
+   "Man nimmt immer die schwächste Strahlung. Die schadet niemandem.",
    "Für ein Bild braucht man andere Strahlung als für eine Therapie.",
-   "Man nimmt immer die schwächste Strahlung. Die schadet niemandem."
+   "Für ein Bild aus dem Körper passt Alphastrahlung am besten. Gammastrahlung ist zu schwach."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Lies im Datenblatt die Strahlung ab und trage sie ein.",
    "Ordne ein: Diagnose oder Therapie? Trage es in die letzte Spalte ein.",

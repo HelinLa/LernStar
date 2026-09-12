@@ -19,10 +19,11 @@
   ],
   "frage": "Wohin gehört das Amperemeter, wohin das Voltmeter?",
   "predict": [
+   "Beide Messgeräte hängt man einfach in die Leitung.",
    "Ein Gerät hängt in der Leitung, das andere daneben.",
-   "Beide Messgeräte hängt man einfach in die Leitung."
+   "Das Voltmeter gehört in die Leitung. Das Amperemeter hängt man daneben."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke den Knopf „Amperemeter“ und lies die Statuszeile.",
    "Drücke „Voltmeter“ und dann „in Reihe“. Beobachte die Lampe.",

@@ -5413,7 +5413,7 @@ const HEFT_SEITEN = {
   },
   "fn12": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "strahlenschutz", seite: 107,
+    sim: "strahlenschutz", seite: 108,
     kapitel: "Aus dem Atomkern",
     name: "Wie schützt man sich vor Strahlung?",
     titel: "Nours Schritt zurück",
@@ -5423,7 +5423,7 @@ const HEFT_SEITEN = {
   },
   "fn14": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "kernfusion", seite: 115,
+    sim: "kernfusion", seite: 117,
     kapitel: "Aus dem Atomkern",
     name: "Woher nimmt die Sonne ihre Energie?",
     titel: "Die Heizung ohne Holz",

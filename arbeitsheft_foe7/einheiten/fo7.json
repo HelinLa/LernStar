@@ -19,10 +19,11 @@
   ],
   "frage": "Wo entsteht das Bild im Auge – und wie bleibt es scharf?",
   "predict": [
+   "Zum Scharfstellen verformt sich die Linse im Auge.",
    "Zum Scharfstellen rückt die Netzhaut nach vorn oder hinten.",
-   "Zum Scharfstellen verformt sich die Linse im Auge."
+   "Zum Scharfstellen wird die Pupille größer oder kleiner. Die Linse bleibt dabei gleich."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Schiebe den Regler „Abstand des Gegenstands“ ganz nach rechts und lies die Statuszeile.",
    "Schiebe ihn ganz nach links und vergleiche die Wölbung der Linse.",

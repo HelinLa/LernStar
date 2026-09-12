@@ -19,9 +19,10 @@
   "frage": "Bleibt der Wirkungsgrad η gleich, wenn mehr Energie hineingeht?",
   "predict": [
    "Bei mehr Energie wird der Wirkungsgrad η größer.",
+   "Bei mehr Energie wird der Wirkungsgrad η kleiner. Es geht mehr Wärme verloren.",
    "Der Wirkungsgrad η bleibt gleich. Nur die Zahlen werden größer."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke „Handy-Ladegerät“. Zeile 1 ist schon ausgefüllt.",
    "Stelle den Regler auf 200 J, 600 J und 1200 J. Bleibe beim Handy-Ladegerät.",

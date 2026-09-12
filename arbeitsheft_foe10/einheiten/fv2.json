@@ -19,7 +19,8 @@
   "frage": "Was macht die Kompassnadel, wenn Strom fließt?",
   "predict": [
    "Der Draht zieht die Nadel an wie ein Magnet.",
-   "Die Nadel dreht sich nur zur Seite."
+   "Die Nadel dreht sich nur zur Seite.",
+   "Die Nadel zeigt weiter nach Norden. Der Strom ändert nichts."
   ],
   "predictOk": 1,
   "forschen": [

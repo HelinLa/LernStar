@@ -20,7 +20,8 @@
   "frage": "Wie verändert das Fernrohr Größe, Lage und Helligkeit des Bildes?",
   "predict": [
    "Nur das Bild des Mondes wird größer. Es steht auf dem Kopf.",
-   "Das Fernrohr holt den Mond wirklich näher heran."
+   "Das Fernrohr holt den Mond wirklich näher heran.",
+   "Das Fernrohr macht das Bild nur heller. Größer wird der Mond dabei nicht."
   ],
   "predictOk": 0,
   "forschen": [

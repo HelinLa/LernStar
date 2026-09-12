@@ -18,7 +18,8 @@
   "frage": "Wirken an der stillen Lampe wirklich keine Kräfte?",
   "predict": [
    "An der Lampe wirken keine Kräfte mehr.",
-   "Es wirken zwei Kräfte. Sie gleichen sich aus."
+   "Es wirken zwei Kräfte. Sie gleichen sich aus.",
+   "Das Seil zieht stärker nach oben. Sonst würde die Lampe herunterfallen."
   ],
   "predictOk": 1,
   "forschen": [

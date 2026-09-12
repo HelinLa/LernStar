@@ -19,10 +19,11 @@
   ],
   "frage": "Welche Himmelskörper leuchten selbst – und welche werden beleuchtet?",
   "predict": [
+   "Nur Sonne und Sterne leuchten selbst. Der Mond wirft Sonnenlicht zurück.",
    "Der Mond leuchtet selbst, nur schwächer als die Sonne.",
-   "Nur Sonne und Sterne leuchten selbst. Der Mond wirft Sonnenlicht zurück."
+   "Auch die Planeten leuchten selbst. Nur der Mond wird von der Sonne beleuchtet."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Wähle nacheinander Sonne, Stern, Mond und Planet. Lies jede Statuszeile.",
    "Trage ein, wer selbst leuchtet.",

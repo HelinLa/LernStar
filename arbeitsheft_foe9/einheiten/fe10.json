@@ -19,9 +19,10 @@
   "frage": "Wovon hängt es ab, wie schnell sich Rad 2 dreht?",
   "predict": [
    "Das kleine Rad dreht schneller, weil es leichter ist.",
+   "Beide Räder drehen gleich schnell. Sie hängen ja zusammen.",
    "Beide Räder schieben gleich viele Zähne durch. Wenige Zähne sind schnell herum."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke „gleich groß (24 : 24)“. Jeder Knopf stellt Rad 1 auf 60 U/min.",
    "Drücke „groß treibt klein – schneller“. Trage n₂ ein.",

@@ -19,7 +19,8 @@
   "frage": "Wie hängt der gemessene Winkel mit der Entfernung zusammen?",
   "predict": [
    "Je weiter ein Stern weg ist, desto größer ist sein Winkel.",
-   "Je weiter ein Stern weg ist, desto kleiner ist sein Winkel."
+   "Je weiter ein Stern weg ist, desto kleiner ist sein Winkel.",
+   "Alle Sterne haben fast denselben Winkel. Der Winkel sagt nichts über die Entfernung."
   ],
   "predictOk": 1,
   "forschen": [

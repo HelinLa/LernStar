@@ -15,10 +15,11 @@
   ],
   "frage": "Wovon hängt es ab, wie weit sich eine Feder dehnt?",
   "predict": [
-   "Die harte Feder dehnt sich bei 1 N weniger weit.",
-   "Beide Federn dehnen sich bei 1 N gleich weit."
+   "Beide Federn dehnen sich bei 1 N gleich weit.",
+   "Die harte Feder dehnt sich weiter. Sie kann mehr aushalten.",
+   "Die harte Feder dehnt sich bei 1 N weniger weit."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Wähle „weiche Feder“ und drücke einmal „mehr ▶“.",
    "Lies hinter dem Pfeil → die Zahl in cm ab. Trage sie ein.",

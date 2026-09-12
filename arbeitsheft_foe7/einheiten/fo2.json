@@ -20,7 +20,8 @@
   "frage": "Wie hängen Einfallswinkel und Reflexionswinkel zusammen?",
   "predict": [
    "Der Reflexionswinkel ist immer kleiner als der Einfallswinkel.",
-   "Der Reflexionswinkel ist genauso groß wie der Einfallswinkel."
+   "Der Reflexionswinkel ist genauso groß wie der Einfallswinkel.",
+   "Das Licht kommt immer auf demselben Weg zurück. Der Reflexionswinkel ist dann 0°."
   ],
   "predictOk": 1,
   "forschen": [

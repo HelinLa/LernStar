@@ -19,7 +19,8 @@
   "frage": "Wann ziehen sich zwei geladene Kugeln an und wann stoßen sie sich ab?",
   "predict": [
    "Gleiche Ladung stößt ab. Ungleiche Ladung zieht an.",
-   "Zwei geladene Kugeln ziehen sich immer an."
+   "Zwei geladene Kugeln ziehen sich immer an.",
+   "Zwei geladene Kugeln stoßen sich immer ab. Die Ladung ist dabei egal."
   ],
   "predictOk": 0,
   "forschen": [
@@ -137,7 +138,8 @@
   "frage": "Was macht die Kraft F größer und was macht sie kleiner?",
   "predict": [
    "Doppelter Abstand macht die Kraft F halb so groß.",
-   "Doppelter Abstand macht die Kraft F nur ein Viertel so groß."
+   "Doppelter Abstand macht die Kraft F nur ein Viertel so groß.",
+   "Doppelter Abstand ändert nichts. Die Kraft F bleibt gleich groß."
   ],
   "predictOk": 1,
   "forschen": [
@@ -264,10 +266,11 @@
   ],
   "frage": "Was ändert sich am Voltmeter und an der Lampe, wenn du mehr Zellen einsetzt?",
   "predict": [
-   "Mehr Zellen geben mehr Volt. Die Lampe leuchtet dann heller.",
-   "Mehr Zellen halten nur länger. Die Lampe bleibt gleich hell."
+   "Mehr Zellen halten nur länger. Die Lampe bleibt gleich hell.",
+   "Die Lampe leuchtet heller. Das Voltmeter zeigt aber weiter 1,5 Volt.",
+   "Mehr Zellen geben mehr Volt. Die Lampe leuchtet dann heller."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „1 Zelle (1,5 V)“ und lies die Spannung U am Voltmeter ab.",
    "Lies in der Statuszeile, wie hell die Lampe leuchtet.",
@@ -388,10 +391,11 @@
   ],
   "frage": "Wie groß ist die Stromstärke – und wann fließt gar nichts mehr?",
   "predict": [
+   "Bei offenem Kreis zeigt das Amperemeter sofort 0 A.",
    "Bei offenem Kreis fließt noch ein kleiner Rest Strom weiter.",
-   "Bei offenem Kreis zeigt das Amperemeter sofort 0 A."
+   "Nach dem Öffnen wird der Strom langsam kleiner. Erst dann zeigt das Amperemeter 0 A."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke „mittel“ und trage die Stromstärke I in die Tabelle ein.",
    "Drücke „stark“ und trage die Stromstärke I ein.",
@@ -517,10 +521,11 @@
   ],
   "frage": "Wohin gehört das Amperemeter, wohin das Voltmeter?",
   "predict": [
+   "Beide Messgeräte hängt man einfach in die Leitung.",
    "Ein Gerät hängt in der Leitung, das andere daneben.",
-   "Beide Messgeräte hängt man einfach in die Leitung."
+   "Das Voltmeter gehört in die Leitung. Das Amperemeter hängt man daneben."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke den Knopf „Amperemeter“ und lies die Statuszeile.",
    "Drücke „Voltmeter“ und dann „in Reihe“. Beobachte die Lampe.",
@@ -641,9 +646,10 @@
   "frage": "Warum fließt bei 4,5 Volt durch jedes Bauteil ein anderer Strom?",
   "predict": [
    "Die Spannung bleibt 4,5 Volt. Also bleibt der Strom gleich.",
+   "Ein großer Widerstand lässt mehr Strom durch als ein kleiner.",
    "Ein großer Widerstand bremst stark. Dann fließt weniger Strom."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke „kleiner Widerstand“ und lies die Statuszeile.",
    "Trage Widerstand R und Stromstärke I in die Tabelle ein.",
@@ -762,7 +768,8 @@
   "frage": "Wovon hängt es ab, wie stark ein Draht den Strom bremst?",
   "predict": [
    "Ein langer und dünner Draht bremst stärker. Auch das Material zählt mit.",
-   "Jeder Draht aus Metall bremst gleich stark. Nur das Netzteil entscheidet."
+   "Jeder Draht aus Metall bremst gleich stark. Nur das Netzteil entscheidet.",
+   "Nur die Länge zählt. Ein dünner Draht bremst genauso stark wie ein dicker."
   ],
   "predictOk": 0,
   "forschen": [
@@ -887,7 +894,8 @@
   "frage": "Fließt bei doppelter Spannung auch doppelt so viel Strom?",
   "predict": [
    "Der Strom bleibt gleich. Das Bauteil bremst ja immer gleich stark.",
-   "Der Strom wird ungefähr doppelt so groß."
+   "Der Strom wird ungefähr doppelt so groß.",
+   "Doppelte Spannung macht den Strom viermal so groß."
   ],
   "predictOk": 1,
   "forschen": [
@@ -1010,10 +1018,11 @@
   ],
   "frage": "Was macht ein zweiter Widerstand in der Reihe mit dem Strom?",
   "predict": [
-   "Der Strom ist an jeder Stelle gleich groß.",
-   "Am zweiten Widerstand kommt weniger Strom an als am ersten."
+   "Am zweiten Widerstand kommt weniger Strom an als am ersten.",
+   "R_ges ist so groß wie der größere Widerstand. Der kleinere zählt nicht mit.",
+   "Der Strom ist an jeder Stelle gleich groß."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke zuerst . Jetzt steht R₁ auf 10 Ω und R₂ auf 20 Ω, wie in Zeile 1. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.",
    "Drücke bei R₁ auf 20 Ω. Lies R_ges und den Strom I ab und trage Zeile 2 ein.",
@@ -1134,10 +1143,11 @@
   ],
   "frage": "Wie groß ist der Strom insgesamt, wenn er zwei Wege hat?",
   "predict": [
+   "Die zwei Ströme addieren sich. Zusammen sind sie größer als jeder einzelne.",
    "Der Strom teilt sich auf zwei Wege. Darum wird er insgesamt kleiner.",
-   "Die zwei Ströme addieren sich. Zusammen sind sie größer als jeder einzelne."
+   "Durch beide Wege fließt gleich viel Strom. Der Widerstand ist dabei egal."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke bei R₁ auf 10 Ω und bei R₂ auf 20 Ω. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.",
    "Lies I₁, I₂ und den Gesamtstrom I in der Statuszeile ab.",
@@ -1257,10 +1267,11 @@
   ],
   "frage": "Müssen die Elektronen schnell durch das Kabel fahren, damit die Lampe sofort leuchtet?",
   "predict": [
+   "Ja. Die Elektronen sausen ganz schnell durch das ganze Kabel.",
    "Nein. Die Elektronen wandern langsam. Trotzdem ist das Signal sofort da.",
-   "Ja. Die Elektronen sausen ganz schnell durch das ganze Kabel."
+   "Nein. Die Elektronen bleiben stehen. Nur das Signal läuft durch das Kabel."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke „Leselampe“ und sieh dir das Bild vom Kupferdraht an.",
    "Lies im Bild die Werte für Zappeln und Signal ab.",
@@ -1379,9 +1390,10 @@
   "frage": "Warum hören wir den Donner erst nach dem Blitz?",
   "predict": [
    "Der Donner entsteht erst einige Sekunden nach dem Blitz.",
+   "Pro Kilometer vergeht eine Sekunde. Bei 1,0 km kommt der Donner nach 1 Sekunde.",
    "Blitz und Donner starten zusammen. Der Donner ist nur viel langsamer."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Stelle den Regler „Entfernung des Gewitters“ auf 1,0 km.",
    "Lies unter „4 · Der Donner kommt hinterher“ ab, wie lange der Donner braucht.",
@@ -1502,7 +1514,8 @@
   "frage": "Wann unterbricht die Sicherung den Stromkreis?",
   "predict": [
    "Die Ströme der Geräte addieren sich. Über 16 A schaltet die Sicherung ab.",
-   "Jedes Gerät holt sich seinen eigenen Strom. Die Sicherung merkt davon nichts."
+   "Jedes Gerät holt sich seinen eigenen Strom. Die Sicherung merkt davon nichts.",
+   "Schon zwei Geräte sind zu viel. Die Sicherung schaltet bei 12 A ab."
   ],
   "predictOk": 0,
   "forschen": [
@@ -1624,10 +1637,11 @@
   ],
   "frage": "Woran erkennst du, welches der zwei Autos schneller ist?",
   "predict": [
+   "Schneller ist das Auto, das die größere Strecke schafft.",
    "Schneller ist das Auto, das in gleicher Zeit weiter kommt.",
-   "Schneller ist das Auto, das die größere Strecke schafft."
+   "Das größere Auto ist schneller. Die Größe entscheidet das Rennen."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke den Knopf „Rennen starten“ und beobachte die zwei Autos.",
    "Lies die Statuszeile unter „Wer ist schneller?“. Zeile 1 ist schon ausgefüllt.",
@@ -1749,9 +1763,10 @@
   "frage": "Wie rechnest du aus Strecke und Zeit die Geschwindigkeit aus?",
   "predict": [
    "Bei kleinerer Zeit ist die Geschwindigkeit kleiner. Die Strecke bleibt ja gleich.",
+   "Du liest nur die Strecke ab. Die Zeit brauchst du für die Geschwindigkeit nicht.",
    "Bei kleinerer Zeit ist die Geschwindigkeit größer. Die Strecke bleibt ja gleich."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke den Knopf langsam und danach den Knopf „Messung starten“.",
    "Vergleiche die Zeit im Bild mit der ersten Zeile der Tabelle.",
@@ -1872,7 +1887,8 @@
   "frage": "Wie rechnest du einen Wert von m/s in km/h um?",
   "predict": [
    "Man rechnet mal 3,6.",
-   "Man rechnet mal 1000, weil 1 Kilometer 1000 Meter sind."
+   "Man rechnet mal 1000, weil 1 Kilometer 1000 Meter sind.",
+   "Man rechnet mal 60, weil eine Stunde 60 Minuten hat."
   ],
   "predictOk": 0,
   "forschen": [
@@ -1996,7 +2012,8 @@
   "frage": "Was sagen dir die Abstände zwischen den Sekunden-Marken?",
   "predict": [
    "Jannis rollt immer weiter. Die Abstände werden nach hinten größer.",
-   "Bleibt das Tempo gleich, sind alle Abstände gleich groß."
+   "Bleibt das Tempo gleich, sind alle Abstände gleich groß.",
+   "Jannis wird müde. Die Abstände werden nach hinten immer kleiner."
   ],
   "predictOk": 1,
   "forschen": [
@@ -2118,10 +2135,11 @@
   ],
   "frage": "Was sagt dir die Linie im Weg-Zeit-Diagramm über die Fahrt?",
   "predict": [
-   "Die steile Linie gehört zur schnellen Fahrt. In gleicher Zeit ist der Weg groß.",
-   "Die steile Linie gehört zur langsamen Fahrt. Der Wagen muss ja bergauf."
+   "Die steile Linie gehört zur langsamen Fahrt. Der Wagen muss ja bergauf.",
+   "Die Linie zeigt die Straße. Bei schnell und langsam sieht sie gleich aus.",
+   "Die steile Linie gehört zur schnellen Fahrt. In gleicher Zeit ist der Weg groß."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „schnell“ und dann „▶ Fahren“. Zeile 1 der Tabelle ist schon ausgefüllt.",
    "Drücke „langsam“ und dann „▶ Fahren“. Beobachte, wie stark die Linie steigt.",
@@ -2241,10 +2259,11 @@
   ],
   "frage": "Was bedeutet eine waagerechte, eine ansteigende und eine fallende Linie?",
   "predict": [
+   "Eine waagerechte Linie bedeutet: Der Wagen fährt gleich schnell weiter.",
    "Eine waagerechte Linie bedeutet: Der Wagen steht still.",
-   "Eine waagerechte Linie bedeutet: Der Wagen fährt gleich schnell weiter."
+   "Eine waagerechte Linie bedeutet: Der Wagen wird immer schneller."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Öffne die Simulation. Das Bild oben heißt dort „v-t-Diagramm“ – gemeint ist das Tempo-Zeit-Diagramm.",
    "Drücke den Knopf „konstant“ und dann „▶ Fahren“. Zeile 1 der Tabelle ist schon ausgefüllt.",
@@ -2365,10 +2384,11 @@
   ],
   "frage": "Woraus besteht der Weg, bis das Auto wirklich steht?",
   "predict": [
+   "Zu diesem Weg gehört nur das Stück, in dem das Auto bremst.",
    "Zu diesem Weg gehört auch das Stück, bevor das Auto bremst.",
-   "Zu diesem Weg gehört nur das Stück, in dem das Auto bremst."
+   "Wenn du bremst, steht das Auto sofort. Es rollt dann keinen Meter weiter."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Drücke „▶ Gefahr! (Start)“ und beobachte, wie weit das Auto noch fährt.",
    "Lies in der Statuszeile Reaktionsweg und Bremsweg ab. Zeile 1 (50 km/h) ist schon ausgefüllt.",

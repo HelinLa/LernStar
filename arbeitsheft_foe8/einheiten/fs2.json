@@ -19,7 +19,8 @@
   "frage": "Was macht die Kraft F größer und was macht sie kleiner?",
   "predict": [
    "Doppelter Abstand macht die Kraft F halb so groß.",
-   "Doppelter Abstand macht die Kraft F nur ein Viertel so groß."
+   "Doppelter Abstand macht die Kraft F nur ein Viertel so groß.",
+   "Doppelter Abstand ändert nichts. Die Kraft F bleibt gleich groß."
   ],
   "predictOk": 1,
   "forschen": [

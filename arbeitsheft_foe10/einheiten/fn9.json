@@ -20,7 +20,8 @@
   "frage": "Was macht k, wenn die Steuerstäbe weiter drin sind?",
   "predict": [
    "Je weiter die Steuerstäbe drin sind, desto weniger Spaltungen folgen.",
-   "Die Steuerstäbe bremsen kaum. k bleibt über 1,00."
+   "Die Steuerstäbe bremsen kaum. k bleibt über 1,00.",
+   "Bei 50 % hört die Kette auf. Dann folgt keine Spaltung mehr."
   ],
   "predictOk": 0,
   "forschen": [

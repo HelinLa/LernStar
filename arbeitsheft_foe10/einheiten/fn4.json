@@ -20,7 +20,8 @@
   "frage": "Warum ist Alphastrahlung im Körper am gefährlichsten?",
   "predict": [
    "Gefährlich ist die Strahlung, die am weitesten kommt.",
-   "Gefährlich ist, wie dicht die Ionenpaare beieinanderliegen."
+   "Gefährlich ist, wie dicht die Ionenpaare beieinanderliegen.",
+   "Betastrahlung macht mehr Ionenpaare je Millimeter als Alphastrahlung. Darum ist Beta gefährlicher."
   ],
   "predictOk": 1,
   "forschen": [

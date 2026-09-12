@@ -20,9 +20,10 @@
   "frage": "Warum knackt das Zählrohr bei manchen Spannungen nicht?",
   "predict": [
    "Je mehr Spannung, desto besser zählt das Zählrohr.",
+   "Das Zählrohr zählt bei jeder Spannung gleich viele Impulse. Die Spannung ist egal.",
    "Das Zählrohr zählt nur bei mittlerer Spannung. Zu wenig und zu viel sind schlecht."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke oben den Knopf „2 · Die Kennlinie“.",
    "Stelle den Regler „Zählrohrspannung U“ nacheinander auf 0 V, 450 V und 650 V.",

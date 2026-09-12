@@ -19,10 +19,11 @@
   ],
   "frage": "Warum ist der Verlust mit Hochspannung so klein?",
   "predict": [
-   "Mit Hochspannung fließt ein kleiner Strom. Dann ist der Verlust klein.",
-   "Mit Hochspannung fließt mehr Energie. Dann ist der Verlust größer."
+   "Mit Hochspannung fließt mehr Energie. Dann ist der Verlust größer.",
+   "Bei Hochspannung fließt gleich viel Strom wie vorher. Nur der Verlust wird kleiner.",
+   "Mit Hochspannung fließt ein kleiner Strom. Dann ist der Verlust klein."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „1 · Die drei Teilversuche“, dann „Hochspannung“.",
    "Lies in der Zeile mit „Strom“ die Zahl vor A ab. Lies in der Zeile „Verlust in der Leitung“ die Zahl vor W ab.",

@@ -19,7 +19,8 @@
   "frage": "Wann ziehen sich zwei geladene Kugeln an und wann stoßen sie sich ab?",
   "predict": [
    "Gleiche Ladung stößt ab. Ungleiche Ladung zieht an.",
-   "Zwei geladene Kugeln ziehen sich immer an."
+   "Zwei geladene Kugeln ziehen sich immer an.",
+   "Zwei geladene Kugeln stoßen sich immer ab. Die Ladung ist dabei egal."
   ],
   "predictOk": 0,
   "forschen": [

@@ -18,10 +18,11 @@
   ],
   "frage": "Wann verrichtet Jannis wirklich Arbeit?",
   "predict": [
-   "Beim Tragen zeigt die Kraft nach oben. Die Arbeit ist null.",
-   "Tragen ist anstrengend. Also ist es Arbeit."
+   "Tragen ist anstrengend. Also ist es Arbeit.",
+   "Beim Schieben ist die Arbeit null. Die Kiste kommt ja nicht höher.",
+   "Beim Tragen zeigt die Kraft nach oben. Die Arbeit ist null."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
    "Drücke „Schieben“ und „Ausführen“. Lies die Arbeit ab.",
    "Drücke „Waagerecht tragen“. Vergleiche mit 400 J.",

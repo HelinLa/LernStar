@@ -16,7 +16,8 @@
   "frage": "Fließt bei doppelter Spannung auch doppelt so viel Strom?",
   "predict": [
    "Der Strom bleibt gleich. Das Bauteil bremst ja immer gleich stark.",
-   "Der Strom wird ungefähr doppelt so groß."
+   "Der Strom wird ungefähr doppelt so groß.",
+   "Doppelte Spannung macht den Strom viermal so groß."
   ],
   "predictOk": 1,
   "forschen": [

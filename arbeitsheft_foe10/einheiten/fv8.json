@@ -20,7 +20,8 @@
   "frage": "Wovon hängt es ab, wie viel Volt aus der Sekundärspule kommen?",
   "predict": [
    "Die Windungen sind egal. Es kommen immer gleich viele Volt.",
-   "Mit mehr Windungen kommen mehr Volt aus der Sekundärspule."
+   "Mit mehr Windungen kommen mehr Volt aus der Sekundärspule.",
+   "Mit mehr Windungen bei der Sekundärspule kommen weniger Volt heraus."
   ],
   "predictOk": 1,
   "forschen": [

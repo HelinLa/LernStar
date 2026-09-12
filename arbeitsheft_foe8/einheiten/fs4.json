@@ -19,10 +19,11 @@
   ],
   "frage": "Wie groß ist die Stromstärke – und wann fließt gar nichts mehr?",
   "predict": [
+   "Bei offenem Kreis zeigt das Amperemeter sofort 0 A.",
    "Bei offenem Kreis fließt noch ein kleiner Rest Strom weiter.",
-   "Bei offenem Kreis zeigt das Amperemeter sofort 0 A."
+   "Nach dem Öffnen wird der Strom langsam kleiner. Erst dann zeigt das Amperemeter 0 A."
   ],
-  "predictOk": 1,
+  "predictOk": 0,
   "forschen": [
    "Drücke „mittel“ und trage die Stromstärke I in die Tabelle ein.",
    "Drücke „stark“ und trage die Stromstärke I ein.",

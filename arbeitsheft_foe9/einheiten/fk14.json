@@ -18,7 +18,8 @@
   "frage": "Warum sinkt massives Eisen, ein hohler Eisenwürfel aber nicht?",
   "predict": [
    "Eisen ist schwerer als Wasser. Jedes Stück Eisen sinkt, egal welche Form.",
-   "Steckt genug Luft im Würfel, wird seine mittlere Dichte kleiner. Dann schwimmt er."
+   "Steckt genug Luft im Würfel, wird seine mittlere Dichte kleiner. Dann schwimmt er.",
+   "Es kommt auf die Masse an. Der leichtere Würfel schwimmt immer."
   ],
   "predictOk": 1,
   "forschen": [

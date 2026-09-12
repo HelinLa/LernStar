@@ -19,9 +19,10 @@
   "frage": "Warum fließt bei 4,5 Volt durch jedes Bauteil ein anderer Strom?",
   "predict": [
    "Die Spannung bleibt 4,5 Volt. Also bleibt der Strom gleich.",
+   "Ein großer Widerstand lässt mehr Strom durch als ein kleiner.",
    "Ein großer Widerstand bremst stark. Dann fließt weniger Strom."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
    "Drücke „kleiner Widerstand“ und lies die Statuszeile.",
    "Trage Widerstand R und Stromstärke I in die Tabelle ein.",

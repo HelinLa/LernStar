@@ -19,10 +19,11 @@
   ],
   "frage": "Was macht die Spule, wenn der Kommutator aus ist?",
   "predict": [
+   "Ohne Kommutator dreht die Spule langsamer weiter.",
    "Ohne Kommutator wackelt die Spule und bleibt stehen.",
-   "Ohne Kommutator dreht die Spule langsamer weiter."
+   "Ohne Kommutator steht die Spule sofort still. Sie wackelt nicht einmal."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
    "Beobachte die Spule. Das ist Zeile 1.",
    "Drücke den Knopf mit dem Wort Kommutator. Dort steht dann: Kommutator ist AUS.",

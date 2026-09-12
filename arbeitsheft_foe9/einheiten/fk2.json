@@ -18,7 +18,8 @@
   "frage": "Wie kannst du eine Kraft messen, die du nicht siehst?",
   "predict": [
    "Am Federkraftmesser liest man ab, wie viel Gramm ein Gewicht hat.",
-   "Die Feder wird länger. Daran kann man die Kraft ablesen."
+   "Die Feder wird länger. Daran kann man die Kraft ablesen.",
+   "Du hängst ein Gewicht an. Dann wird die Feder kürzer."
   ],
   "predictOk": 1,
   "forschen": [
